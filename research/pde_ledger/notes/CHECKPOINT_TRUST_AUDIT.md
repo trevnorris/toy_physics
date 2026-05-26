@@ -9,15 +9,24 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-25` (batch I.1 v2 close — first paper-grounded
-re-audit pass over an already-verified batch. No checkpoint stages fall
-in range 001-012, so no tier-table rows changed directly. Two stages
-in I.1 flagged `material_change: true` (001 source/gauge sign flips,
-004 Faraday/Bianchi restructure); 001's cascade reaches stages 003+
-005-009 in principle, but those stages were just re-verified in the
-same v2 sweep against the corrected stage 001, so no separate
-upstream-stale check is needed. Previous III.3 update remains accurate
-for stage 069; III.4 close remains accurate for batches III.1-III.4.)
+Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded
+re-audit pass. Checkpoints `022` and `023` fall in this batch's range.
+Stage 022 audited clean (0 findings) at v2 depth; stage 023 had F1
+tautological_check (resolved by fix_loop: N0_target self-substitution
+replaced with abstract-vs-explicit normalization equivalence) and F2
+insufficient_verification (Schur-complement derivation added in both
+engines after a Codex remediation pass that read the paper's §2
+Lagrangian to resolve a sign-convention conflict — option α chosen,
+existing `+2*g_U*g_W*R_mix` numerator confirmed correct given paper's
+`+R U W` Lagrangian → frequency-space spring matrix off-diagonal is
+`-R`). Both checkpoints remain at their prior trust tier with stronger
+verification. Four other I.2 stages (013, 014, 015, 018) flagged
+`material_change: true` due to script-side scope reductions removing
+duplicates; downstream consumers should rebind to the destination
+stages that genuinely own each piece (013 δP_n/sieve → 010/014; 015
+wall-only/Y20/grouped → 017; 018 one-pole/gate/Xi_1 → 019/020; 020 Y20
+→ 010/017). I.1 v2 close text remains accurate for batches III.1-III.4
+and for the I.1 stage range.)
 
 ## Scope
 

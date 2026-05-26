@@ -126,6 +126,7 @@ N(0) =
       4    4        2    2  2    4    
    Ω_A ⋅Ω_W  - 2⋅Ω_A ⋅Ω_W ⋅R  + R     
 So the mixed-sector outgoing port is transferred to the wall with a manifestly nonnegative coefficient.
+delta D_2^(odd) composed from Section III N(0) closed form and Section IV Gamma5 = a^5/(27 c_s^5) = 0
 If Pi_out = + i Gamma_port omega^5 + O(omega^7), then
 delta D_wall^(odd) =
           5 ⎛   4    2        2              2    2⎞ 

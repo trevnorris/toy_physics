@@ -1,181 +1,46 @@
 ---
 unit_id: 018
 batch: I.2
-created_at: 2026-05-21T12:29:31-06:00
-findings_count: 4
+created_at: 2026-05-25T18:06:25-06:00
+findings_count: 1
 stop_cold: null
-applied: true
-applied_at: 2026-05-21T13:28:53-06:00
-findings_applied: 4
-findings_blocked: 0
+applied: false
 verification_status: pending
+needs_user_resolution: true
 ---
 
 # Codex directive — unit 018
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+This directive contains a single `paper_misalignment` finding. **Codex must apply nothing on this unit until the user resolves the question below.** The orchestrator will halt and surface the question; do not edit paper.tex, notes/, or the scripts to "fix" this finding speculatively.
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+## F1 — paper_misalignment
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+**Subtype:** paper_missing_script_claim
 
-Do NOT run python or mathematica. Only edit files.
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_018.tex:26-28` quote: "Stage~018 exports the parent-wall bundle bridge \eqref{eq:stage018-msigma}--\eqref{eq:stage018-ksigma}."
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_018.tex:14-22` quote: the only body equations are `M_\Sigma=\int dw\,\mu_\eta\beta_2^2` and `K_\Sigma=\int dw\,[T_w(\beta_2')^2+(K_\eta+6T_\Omega)\beta_2^2]`.
+- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex:58` quote: "018 & Parent throat action bundle master & \StatusExactClosure{} & Bundle-level parent-action identities used by the projected electromagnetic response."
+- No `notes/stages/moving_throat_pde_stage018_*.md` file exists; the docstring-referenced `step_16_parent_throat_action_bundle_master_notes.md` is not present anywhere in the repository.
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:1-2` quote: `"""Master-note audit for step_16_parent_throat_action_bundle_master_notes.md."""`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:25-88` — assertions covering one-pole numerator identity, two `KSigma` closures, compatibility cross-closure, even-gate determinant `= 1/27`, closed-form wall-stiffness slope `dKSigma = B01+Z01+27(B41+Z41)`, closed-form wall-inertia slope `dMSigma = -(B21+Z21)+3(B41+Z41)`, and residual amplitude `Xi1 = N01/N0 - 27(B41+Z41)/(KSigma-B0-Z0)`.
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:90-95` — the only script-side checks that directly map to the paper's bridge equations are the Gaussian-profile reductions `MSigma_example = sqrt(pi)` and `KSigma_example = 3*sqrt(pi)/2`, with `mu_eta = T_w = K_eta + 6 T_Omega = 1` and `beta = exp(-w^2/2)` hardcoded.
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.wl:3-15` — header explicitly enumerates claim families M1–M8 (one-pole numerator, KSigma closures, compatibility, even-gate determinant, wall-slope solve, Xi1 residual, Gaussian integrals), mirroring the SymPy scope.
 
-## F1 — tautological_check
+## Resolve before fix_loop
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:41-42`
+The script (both engines) verifies five families of identities, but the stage-018 paper card only declares the two `M_Σ` / `K_Σ` bridge integrals as `\stagefield{Output}`. The script's families 1–4 (one-pole numerator, KSigma closures + compatibility, even-gate determinant + wall-slope solve, Xi1 residual) have no anchor in either the .tex card or any existing notes file. The docstring-referenced `step_16_parent_throat_action_bundle_master_notes.md` has been deleted from the repository.
 
-**Issue:**
-The assertion `assert_zero("compatibility equality", sp.simplify(K_from_norm - K_from_one_pole) - compatibility)` reduces to `expr - expr == 0` by construction: `K_from_norm - K_from_one_pole` is, by definition, `N0/Ptarget - 3*(MSigma+B2+Z2)**2/(B4+Z4)`, and `compatibility` is defined on the preceding line as exactly that expression. The assertion cannot fail regardless of physics.
+**Which is correct?**
 
-**Required change:**
-Replace lines 41-42 of `moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py` with a substantive cross-closure check.
+Possible directions (the user picks one):
 
-Before:
-```python
-    compatibility = N0 / Ptarget - 3 * (MSigma + B2 + Z2) ** 2 / (B4 + Z4)
-    assert_zero("compatibility equality", sp.simplify(K_from_norm - K_from_one_pole) - compatibility)
-```
+- **(a) The paper card is too terse and should be expanded.** Stage 018 genuinely owns all five script-side claim families. The paper card and a fresh `notes/stages/moving_throat_pde_stage018_*.md` need to be written so the script's assertions trace to declared deliverables. If this is the direction: a follow-up directive will name the .tex and notes edits and Codex will be told to update the script docstring's stale `step_16_*` reference; no script-side algebra changes.
+- **(b) The script's extra families belong to a different stage.** Families 1–4 actually live in (e.g.) stage 015 ("Parent throat action master"), 016 ("Parent throat action candidate"), 017 ("Parent throat action weak-axisymmetric law"), or 021 ("Reduced Maxwell/mixed one-port normal form"). If this is the direction: a follow-up directive will tell Codex to delete A1–A17 (sympy) and M1–M7-mut (mathematica) from the stage-018 scripts and (separately, if needed) verify the deleted claims appear in the named upstream stage's scripts. The stage-018 audit then reduces to A18/A19 / M8 only, and even those should be lifted from a single Gaussian profile to a symbolic check of the bridge identity itself.
+- **(c) The paper card is correct as-is and the script is over-scoped.** Stage 018's responsibility ends at exporting the two bridge integrals; the extra algebra is scaffolding from an earlier draft. If this is the direction: a follow-up directive will tell Codex to delete A1–A17 / M1–M7-mut, restructure A18/A19 / M8 to verify the abstract `M_Σ = ∫ μ_η β² dw` and `K_Σ = ∫ [T_w (β')² + (K_η + 6 T_Ω) β²] dw` identities symbolically (not just under the Gaussian collapse `μ_η = T_w = K_η + 6 T_Ω = 1`), and update the docstring.
 
-After:
-```python
-    compatibility = N0 / Ptarget - 3 * (MSigma + B2 + Z2) ** 2 / (B4 + Z4)
-    N0_from_compat = sp.solve(compatibility, N0)[0]
-    N0_from_equality = sp.solve(K_from_norm - K_from_one_pole, N0)[0]
-    assert_zero("compatibility equality", N0_from_compat - N0_from_equality)
-    assert_nonzero("mutated compatibility equality should fail", N0_from_compat - 2 * N0_from_equality)
-```
+In addition to choosing (a), (b), or (c), the user should also indicate whether the dangling `step_16_parent_throat_action_bundle_master_notes.md` reference in the SymPy docstring (line 2) reflects a missing notes file that should be restored, or simply a stale reference that should be replaced with the correct stage-018 notes path once one exists.
 
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 018` and confirm the substantive check appears and the script exits 0.
-
-## Applied: F1
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py`
-- summary: Replaced the compatibility identity assertion with independent N0 solves and a mutation check.
-- deviation: none
-
-## F2 — tautological_check
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:70-71`
-
-**Issue:**
-The assertions `assert_zero("compensated K1", K1.subs(sol))` and `assert_zero("compensated H_even", H_even.subs(sol))` substitute `sol` — the `sp.solve` solution that *defines* `K1 = 0` and `H_even = 0` — back into the same expressions. Both assertions are algebraically guaranteed by the contract of `sp.solve` and cannot fail.
-
-**Required change:**
-Replace lines 70-71 of `moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py` with substantive cross-checks routed through `expected_dK` and `expected_dM` instead of `sol`.
-
-Before:
-```python
-    assert_zero("compensated K1", K1.subs(sol))
-    assert_zero("compensated H_even", H_even.subs(sol))
-```
-
-After:
-```python
-    assert_zero("expected slopes satisfy K1", K1.subs({dKSigma: expected_dK, dMSigma: expected_dM}))
-    assert_zero("expected slopes satisfy H_even", H_even.subs({dKSigma: expected_dK, dMSigma: expected_dM}))
-    assert_nonzero("mutated expected slopes fail K1", K1.subs({dKSigma: expected_dK + 1, dMSigma: expected_dM}))
-```
-
-Do not move or alter lines 69 (`D01_comp`) or 72-79 (`Xi1` block).
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 018` and confirm the new substantive checks appear and the script exits 0.
-
-## Applied: F2
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py`
-- summary: Replaced solve back-substitution checks with direct closed-form slope checks and a mutation check.
-- deviation: none
-
-## F3 — missing_verification_script
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.wl` (create new file)
-
-**Issue:**
-No Mathematica audit script exists for stage 018. Manifest entry `is_checkpoint: false` and `is_status_only_candidate: false` require the two-engine policy. The new `.wl` file must independently re-derive (not transliterate the SymPy choreography) the claims enumerated in the manifest below.
-
-**Required change:**
-Create the file at the Target path. The script must:
-
-1. Begin with a comment block stating the unit, that this is the Mathematica counterpart of the SymPy audit, and the claim list.
-2. For each claim, write the symbolic setup *from physical premises* (definitions of `D0, D2, D4, K1, H_even, Xi1`, etc.) in Mathematica idiom — use `D[expr, var]`, `Solve[eqns, vars]`, `Integrate[expr, {w, -Infinity, Infinity}]`. Do NOT mirror the SymPy variable-by-variable choreography line-by-line; derive each claim independently.
-3. Wrap each assertion in `If[FullSimplify[lhs - rhs] =!= 0, (Print["FAIL: <label>"]; Exit[1])]` for `assert_zero` claims, and `If[FullSimplify[expr] === 0, (Print["FAIL: <label> unexpectedly vanished"]; Exit[1])]` for `assert_nonzero` mutation claims.
-4. End with `Print["STAGE 018 MATHEMATICA AUDIT PASS"]; Exit[0]`.
-
-**Claim manifest:**
-
-M1 — One-pole numerator identity:
-$$ (u_4 - 4 u_2^2) - \frac{D_0 (B_4 + Z_4) - 3(M_\Sigma + B_2 + Z_2)^2}{D_0^2} = 0 $$
-where $D_0 = K_\Sigma - B_0 - Z_0$, $D_2 = -(M_\Sigma + B_2 + Z_2)$, $D_4 = -(B_4 + Z_4)$, $u_2 = -D_2/D_0$, $u_4 = (D_2^2 - D_0 D_4)/D_0^2$.
-
-M2 — One-pole `KSigma` closure: substituting $K_\Sigma \to B_0 + Z_0 + 3(M_\Sigma + B_2 + Z_2)^2/(B_4 + Z_4)$ into $u_4 - 4 u_2^2$ gives 0.
-
-M3 — Normalization closure: substituting $K_\Sigma \to B_0 + Z_0 + N_0/P_{\rm target}$ into $N_0/D_0$ gives $P_{\rm target}$.
-
-M3-mut — Mutation check: $(N_0/D_0)|_{K_\Sigma = K_{\rm from\_norm}} - 2 P_{\rm target} \neq 0$.
-
-M4 — Compatibility cross-closure: with `compatibility = N0/Ptarget - 3(M+B2+Z2)^2/(B4+Z4)`, the `N0` solution of `compatibility = 0` equals the `N0` solution of `K_from_norm - K_from_one_pole = 0`. (Mirror F1's substantive form.)
-
-M5 — Even-gate determinant:
-$$ \det \begin{pmatrix} \partial K_1 / \partial \delta K_\Sigma & \partial K_1 / \partial \delta M_\Sigma \\ \partial H_{\rm even}/\partial \delta K_\Sigma & \partial H_{\rm even}/\partial \delta M_\Sigma \end{pmatrix} = \frac{1}{27} $$
-where $K_1 = D_{21} + D_{01}/9$, $H_{\rm even} = D_{41} - (2/3) D_{21} - D_{01}/27$, $D_{01} = \delta K_\Sigma - B_{01} - Z_{01}$, $D_{21} = -(\delta M_\Sigma + B_{21} + Z_{21})$, $D_{41} = -(B_{41} + Z_{41})$.
-
-M5-mut — `det + 1/27 != 0`.
-
-M6 — Wall-stiffness slope: the closed-form $\delta K_\Sigma = B_{01} + Z_{01} + 27(B_{41} + Z_{41})$ together with $\delta M_\Sigma = -(B_{21} + Z_{21}) + 3(B_{41} + Z_{41})$ satisfies both $K_1 = 0$ and $H_{\rm even} = 0$. (Verify by direct substitution, not by re-running `Solve` and back-substituting — that path mirrors SymPy too closely and would be tautological.)
-
-M7 — Residual amplitude: with the closed-form slopes substituted,
-$$ \Xi_1 = \frac{N_{01}}{N_0} - \frac{27(B_{41}+Z_{41})}{K_\Sigma - B_0 - Z_0} $$
-where $\Xi_1 = N_{01}/N_0 - D_{01}/D_0$.
-
-M7-mut — Same with sign flipped on the second term, must not vanish.
-
-M8 — Gaussian wall integrals: with $\beta(w) = \exp(-w^2/2)$,
-$$ \int_{-\infty}^{\infty} \beta^2 \, dw = \sqrt{\pi}, \qquad \int_{-\infty}^{\infty} \left( \left(\frac{d\beta}{dw}\right)^2 + \beta^2 \right) dw = \frac{3\sqrt{\pi}}{2}. $$
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 018` and confirm the new `.wl` script is present, contains the `If[... Exit[1]]` assertions for each Mn above, and exits 0.
-
-## Applied: F3
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.wl`
-- summary: Added the stage 018 Mathematica audit covering the manifest checks and mutation checks.
-- deviation: none
-
-## F4 — insufficient_verification
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:79`
-
-**Issue:**
-The `residual Xi1` assertion at lines 72-75 follows by elementary substitution from A11 (`D01_comp = 27*(B41+Z41)`). The only independent path is to recompute `Xi1` from the *closed-form expected slopes* rather than from `sp.solve`'s output `sol`, then verify it equals the same right-hand side.
-
-**Required change:**
-Insert an additional check directly after line 79 (after the existing `assert_nonzero` mutation block on `Xi1`). Do not modify lines 72-79.
-
-Insert after line 79:
-```python
-    Xi1_from_expected = Xi1.subs({dKSigma: expected_dK, dMSigma: expected_dM})
-    assert_zero(
-        "residual Xi1 from expected slopes",
-        Xi1_from_expected - (N01 / N0 - 27 * (B41 + Z41) / (KSigma - B0 - Z0)),
-    )
-```
-
-This routes the `Xi1` claim through `expected_dK`/`expected_dM` (the closed forms) instead of `sol`, providing an independent verification path that does not share intermediate simplification with A11.
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 018` and confirm the new check appears after the existing mutation row and the script exits 0.
-
-## Applied: F4
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py`
-- summary: Added an Xi1 residual check routed through the closed-form expected slopes.
-- deviation: none
+The orchestrator will not invoke Codex on this unit until the user has chosen a direction.

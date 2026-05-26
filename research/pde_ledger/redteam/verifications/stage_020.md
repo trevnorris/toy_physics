@@ -2,7 +2,7 @@
 unit_id: 020
 batch: I.2
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-21T00:00:00Z
+verify_date: 2026-05-25T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
@@ -15,62 +15,64 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — missing_verification_script
+### F1 — paper_misalignment
 
 **Classification:** resolved
 
 **What changed:**
-Codex created the new file `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl` (155 lines). It defines its own `GauntIntegral[la,lb,lc,ma,mb,mc]` from `ThreeJSymbol` and a `gauntWeight` prefactor (lines 21-30), then independently derives and asserts M1-M5 inside a top-level `Module`. Each claim has an explicit `If[!TrueQ[FullSimplify[...] === 0], Print["FAIL: ..."]; Exit[1]]` guard (lines 49-50, 53-55, 57-59, 61-63, 65-67, 91-93, 98-100, 110-112, 114-116, 127-129, 131-133, 135-137, 146-149) and ends with `Print["STATUS: PASS"]; Exit[0]`.
+Per user resolution Q5=b (TRIM), the Y20 / Gaunt lane-ratio scaffolding has been removed from both engines. The diff at `redteam/exec_logs/stage_020_diff.patch` shows:
+
+- `scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py`: removed `from sympy.physics.wigner import gaunt` (formerly line 11), the `real_y20_square_ratio(m)` helper (formerly lines 20-26), and the three `assert_zero('Y20 overlap lane ...')` calls plus the three `lam2{0,1,2}` bindings (formerly lines 45-50). The wall-slope solve, even-gate Jacobian, dKSigma/dMSigma closed forms, the three compensated-D deficits, and the Xi1 residual all remain at lines 35-53.
+- `mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl`: removed the top-of-file `ClearAll[GauntIntegral]` / `SetAttributes[GauntIntegral, Listable]` (formerly lines 6-7), the `gauntWeight` / `GauntIntegral` definitions (formerly lines 21-30 inside the Module), and the entire angular block (formerly lines 34-68, covering `overlapBase`, `lambda0`/`lambda1`/`lambda2`, `crossOne`/`crossTwo`, `angularResiduals`, and the five M1 guards including the `M1 OK` print). The Module's variable list was correspondingly pruned of `gauntWeight, overlapBase, lambda0, lambda1, lambda2, crossOne, crossTwo, angularResiduals`. The algebraic core (M2-M5: Jacobian determinant, unique-solution branch, dKSigma/dMSigma closed forms, three deficit checks, Xi1 residual) remains intact at the current lines 35-100.
 
 **Assessment:**
-The Mathematica file is not a transliteration of the SymPy script. It uses Mathematica idioms (`ClearAll`, `Module`, `SetAttributes`, `Listable`, `$Assumptions`, `ThreeJSymbol`, `Solve`, `Det`, `FullSimplify`), defines its own Gaunt integral from first principles (`Sqrt[(2L1+1)(2L2+1)(2L3+1)/(4 Pi)]` times two `ThreeJSymbol` factors) rather than calling `sympy.physics.wigner.gaunt`, uses CamelCase (`HEven`, `gateJacobian`, `branchSolve`, `branchRules`) where the Python uses snake_case (`H_even`), and reorders operations so the angular block is computed before any wall-slope symbols are declared. M1 covers the five Gaunt-ratio claims including the non-tautological m=0 lane (line 35: `lambda0 = FullSimplify[(-1)^0 GauntIntegral[2,2,2,0,0,0]/overlapBase]` — it does NOT short-circuit; it computes the numerator and denominator separately and lets `FullSimplify` reduce them). M2 verifies the 1/27 determinant via `Det` on the symbolic Jacobian. M3 checks both the uniqueness (`Length[branchSolve] - 1 === 0`) and the explicit closed forms. M4 verifies the three deficit identities by substitution. M5 verifies the Xi1 closed form. The saved output (`mathematica/output/.../stage020...txt`, mtime newer than the script) shows every residual = 0 and `STATUS: PASS`.
-
-Spot-checked the Gaunt ratios against known values: gaunt(2,2,2,0,1,-1)/gaunt(2,2,2,0,0,0) = -1/2 (so `(-1)^1 * (-1/2) = 1/2` ✓), gaunt(2,2,2,0,2,-2)/gaunt(2,2,2,0,0,0) = -1 (so `(-1)^2 * (-1) = -1` ✓). The same-sign m=1,2 cross terms vanish identically (selection rule on m1+m2+m3). All consistent.
-
-No collateral edits — only the new `.wl` file was added.
+The trim is exactly the direction (b) the original directive listed under "Possible directions". Every script-side artifact named in F1's `paper_missing_script_claim` (sympy `:45-50`, wl `:34-67`) is now absent, while every paper-anchored algebraic-core check (eq. stage020-wall-slopes through eq. stage020-residual-xi) is preserved. The destinations the user cited (stages 010 and 017) both already contain Gaunt machinery in their sympy scripts, so the Y20 lane content is not lost system-wide. No collateral edits visible in the diff: the only deletions are the named symbols/helpers/imports plus their declarations in the Module variable list, and no algebraic-core line was touched. Both engines still produce `STATUS: PASS`. F1 routes to `resolved` (paper card no longer overclaims relative to what the script asserts).
 
 ### F2 — tautological_check
 
 **Classification:** resolved
 
 **What changed:**
-`scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py:20-26`: the `if m == 0: return sp.Integer(1)` short-circuit was removed and replaced with an `if m != 0:` guard wrapping the same-sign cross-term check. The return statement is now reached for all m in {0, 1, 2} and uniformly evaluates `(sp.Integer(-1) ** m) * gaunt(2,2,2,0,m,-m) / base`. The diff (`stage_020_diff.patch`) shows exactly the swap of the m=0 short-circuit for the m!=0 guard with no other edits.
+F2 was contingent on F1 per the original report and the directive's "Resolution gate" ("If user chose direction (b), the entire Y20 block is removed and this finding is moot"). The F1 trim deleted both `real_y20_square_ratio` (which constructed `gaunt(2,2,2,0,0,0)/base` for m=0) and the `assert_zero('Y20 overlap lane 20', lam20 - 1)` site on the SymPy side, and both the `overlapBase`/`lambda0` definitions and the `If[!TrueQ[FullSimplify[lambda0 - 1] === 0], ...]` guard on the Mathematica side. The tautological self-ratio simply no longer exists in either engine.
 
 **Assessment:**
-The change matches the directive's "After" code block exactly. For m=0 the function now computes `gaunt(2,2,2,0,0,0) / gaunt(2,2,2,0,0,0)` and `assert_zero('Y20 overlap lane 20', lam20 - 1)` will fail if SymPy's `gaunt(2,2,2,0,0,0)` ever returns 0 or an inconsistent value — the assertion is no longer a literal `1 - 1`. Same-sign cross-term guard is correctly gated on `m != 0` so it isn't triggered by the m=0 base self-overlap. Function signature, name, and call sites unchanged. The SymPy exec log shows `STATUS: PASS` and `exit_code: 0`, confirming the new m=0 lane still passes — i.e., the Gaunt evaluation is self-consistent.
+The defect surface is gone. There is no remaining assertion of the form `x - x == 0` masquerading as a content check. The F2 closure is mechanical — it requires no separate fix because the offending lines were deleted as part of F1.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines:
+**SymPy:** exit=0. From `redteam/exec_logs/stage_020_sympy.log` (mtime 2026-05-21, but the script and saved output were re-touched 2026-05-25 21:42/21:49 — the saved output is the authoritative post-trim record):
 - `dKSigma_from_even_gates = B01 + 27*B41 + Z01 + 27*Z41`
-- `D21_on_compensated_branch = -3*B41 - 3*Z41`
+- `dMSigma_from_even_gates = -B21 + 3*B41 - Z21 + 3*Z41`
 - `Check_D21_plus_D01_over_9 = 0` and `Check_D41_minus_2D21_over_3_minus_D01_over_27 = 0`
 - `STATUS: PASS`
 
-**Mathematica:** exit=0 (inferred from `STATUS: PASS` line in saved output; no `stage_020_mathematica.log` in `redteam/exec_logs/`, but the output txt is post-fix). Notable lines:
-- `M1 lambda_0 residual = 0`, `M1 lambda_1 residual = 0`, `M1 lambda_2 residual = 0`
-- `M1 same-sign m=1 residual = 0`, `M1 same-sign m=2 residual = 0`
-- `M2 even-gate Jacobian determinant residual = 0`
-- `M3 solution count residual = 0`, `M3 dKSigma residual = 0`, `M3 dMSigma residual = 0`
-- `M4 D01 residual = 0`, `M4 D21 residual = 0`, `M4 D41 residual = 0`
-- `M5 Xi1 residual = 0`
+No `Y20 overlap lane` lines appear in the saved output, consistent with their removal.
+
+**Mathematica:** exit=0 (inferred from `STATUS: PASS` line in saved output; no `stage_020_mathematica.log` was captured). Notable lines from `mathematica/output/.../stage020...txt`:
+- `M2 even-gate Jacobian determinant residual = 0` / `M2 OK`
+- `M3 solution count residual = 0`, `M3 dKSigma residual = 0`, `M3 dMSigma residual = 0` / `M3 OK`
+- `M4 D01 residual = 0`, `M4 D21 residual = 0`, `M4 D41 residual = 0` / `M4 OK`
+- `M5 Xi1 residual = 0` / `M5 OK`
 - `STATUS: PASS`
 
+The `M1` block (Y20 lane ratios) is correctly absent.
+
 **Output freshness:** Confirmed.
-- sympy script mtime: 1779392353, sympy output mtime: 1779397233 (output newer ✓)
-- mathematica script mtime: 1779392466, mathematica output mtime: 1779397357 (output newer ✓)
+- sympy script mtime: 2026-05-25 21:42; sympy output mtime: 2026-05-25 21:49 (output newer)
+- mathematica script mtime: 2026-05-25 21:42; mathematica output mtime: 2026-05-25 21:50 (output newer)
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The F1 edit is purely additive (new independent Mathematica derivation that reproduces existing SymPy results — no new claim, no changed numeric value). The F2 edit tightens an existing assertion's non-tautology guarantee but does not change any computed value: `lam20` still equals `1` post-fix (it just now arrives through a real Gaunt division rather than a literal short-circuit), and all downstream assertions on the compensated branch reference unchanged closed forms. No downstream unit depends on a different result.
+The trim is purely subtractive — it removes script-only scaffolding (Y20 lane ratios and a tautological self-ratio) that no other unit consumes as a derived input. The paper-anchored algebraic-core results (wall-slope closed forms, `1/27` determinant, compensated D-deficits, Xi1 residual) are bit-identical in both engines pre- and post-trim. The user has independently confirmed that the Y20 lane verification exists in stages 010 and 017, so no claim is dropped at the project level; only the misplaced verification site is removed.
 
 ## Side observations (non-blocking)
 
-- The orchestrator did not save a `redteam/exec_logs/stage_020_mathematica.log` file, only the saved output under `mathematica/output/`. The mathematica exit code is therefore inferred from the `STATUS: PASS` terminator in the .txt rather than a top-of-file `# exit_code: 0` line. This does not block verification (the freshness and content of the output are direct evidence of a successful run), but the missing log is worth flagging for the orchestrator's bookkeeping.
-- The `expectedRules` list and `solveResiduals` vector in the .wl are computed but only used for printing — the actual pass/fail guards re-run `FullSimplify[(dKSigma /. branchRules) - (B01 + Z01 + 27 (B41 + Z41))]` directly, which is correct and non-tautological. No change requested.
+- No `redteam/exec_logs/stage_020_mathematica.log` file is present; the Mathematica exit code is inferred from the `STATUS: PASS` terminator in `mathematica/output/.../stage020...txt`. This was flagged in the prior verification file and remains a minor orchestrator-bookkeeping gap; the freshness and content of the saved output are direct evidence of a successful run.
+- The `redteam/exec_logs/stage_020_sympy.log` header date (2026-05-21) predates the current script/output mtimes (2026-05-25). The authoritative post-trim record is the saved `scripts/output/.../stage020...txt`, which is dated 2026-05-25 and contains no Y20 lane lines.
+- The directive file at `redteam/directives/stage_020.md` has no `## Applied:` block from Codex because F1 was a paper_misalignment routed to user resolution and F2 was contingent on F1; the actual edits were applied via the user's Q5=b TRIM follow-up rather than the original codex apply step. The diff is complete and self-consistent regardless.
 
 ## Verdict justification
 
-Both findings are fully resolved. F1's new `.wl` is an independent Mathematica derivation (not a SymPy port) that exercises `ThreeJSymbol`, `Det`, `Solve`, and `FullSimplify` to confirm the same five claim blocks M1-M5; the saved output shows every residual evaluates to 0 with `STATUS: PASS`. F2's `if m == 0: return sp.Integer(1)` short-circuit is gone, replaced by a uniform Gaunt-ratio computation that exercises `gaunt(2,2,2,0,0,0)` non-tautologically; the SymPy script still exits 0. No regressions in the diff, no collateral edits, and the material content of the unit (wall-slope closed forms, determinant 1/27, compensated identities, Xi1) is unchanged.
+The F1 trim is mechanically clean: every script-side artifact named in the original finding is gone from both engines, the paper-anchored algebraic core is untouched, and both scripts still emit `STATUS: PASS` with all residuals identically zero. F2 was contingent on F1 and is auto-closed by the trim — the tautological `lambda_0 = 1` site no longer exists. No regressions visible in the diff, no collateral edits, no material change to downstream-visible content.

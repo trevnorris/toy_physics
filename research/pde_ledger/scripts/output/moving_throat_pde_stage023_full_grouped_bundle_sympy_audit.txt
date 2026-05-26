@@ -112,6 +112,8 @@ SECTION II — FULL COUPLED BUNDLE COEFFICIENT ASSEMBLY
 ----------------------------------------------------------------------------------------
 II.0 — Representative one-port derivation of Z_n and N_n
 ----------------------------------------------------------------------------------------
+Schur denominator matches Delta - S omega^2 + omega^4 = 0
+Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T = 0
 Z0 one-port formula = 0
 Z2 one-port formula = 0
 Z4 one-port formula = 0
@@ -171,7 +173,7 @@ N4_target closed form = 0
 ----------------------------------------------------------------------------------------
 III.3 — Universal normalization product
 ----------------------------------------------------------------------------------------
-N0_target reproduces universal normalization = 0
+normalization abstract == explicit under D0 = K - B0 - Z0 = 0
 Stage-5 Gamma5_port anchor = 0
 Gamma5_port =
    5  

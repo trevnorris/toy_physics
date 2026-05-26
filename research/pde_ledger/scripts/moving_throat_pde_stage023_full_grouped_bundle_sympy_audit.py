@@ -129,6 +129,24 @@ def bundle_coefficient_assembly() -> dict[str, sp.Expr]:
     H_expr = sp.simplify(gU**2 + gW**2)
     P_expr = sp.simplify(OmegaU**2 * gW + Rmix * gU)
 
+    # Schur-complement derivation of the rational form used below.
+    # The paper's one-port Lagrangian has +R U W, so the frequency-space
+    # spring matrix has off-diagonal -R. Its determinant is the denominator.
+    Mblock = sp.Matrix([[OmegaU**2 - omega**2, -Rmix], [-Rmix, OmegaW**2 - omega**2]])
+    det_M = sp.expand(Mblock.det())
+    expect_zero(
+        "Schur denominator matches Delta - S omega^2 + omega^4",
+        sp.expand(det_M - (Delta_expr - S_expr * omega**2 + omega**4)),
+    )
+    # The Schur reduction of q -> (U,W) -> q gives
+    # (g_U, g_W) M(omega)^(-1) (g_U, g_W)^T.
+    g_vec = sp.Matrix([gU, gW])
+    Z_schur = sp.simplify(((g_vec.T * Mblock.adjugate() * g_vec)[0]) / det_M)
+    expect_zero(
+        "Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T",
+        sp.simplify(Z_schur - (Q_expr - H_expr * omega**2) / det_M),
+    )
+
     Z_one_port = sp.expand(
         sp.series(
             (Q_expr - H_expr * omega**2) / (Delta_expr - S_expr * omega**2 + omega**4),
@@ -311,12 +329,18 @@ def isotropic_branch_and_target() -> dict[str, sp.Expr]:
     expect_zero("N4_target closed form", sp.simplify(N4_target - N4_target_closed))
 
     subbanner("III.3 — Universal normalization product")
-    N0_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * (N0/D0), 54 * G * c_s**5 / (5 * a**5 * c**5)), N0)[0])
-    # Substantive check: N0_target, when substituted into mhat^2 * P0, must
-    # reproduce the universal normalization 54 G c_s^5 / (5 a^5 c^5).
+    # Non-tautological substitution check: the abstract normalization
+    # mhat^2 * P0 = 54 G c_s^5/(5 a^5 c^5) must agree with the explicit
+    # full-bundle form mhat^2 * N0/(K - B0 - Z0) = 54 G c_s^5/(5 a^5 c^5)
+    # after substituting D0 = K - B0 - Z0. This exercises the paper's
+    # eq:app-stage023-normalization-test equivalence between abstract P0
+    # and explicit (K, B0, Z0) denominators.
+    K_sym, B0_sym, Z0_sym = sp.symbols("K_sym B0_sym Z0_sym", positive=True, real=True)
+    norm_abstract = mhat**2 * N0 / D0 - 54 * G * c_s**5 / (5 * a**5 * c**5)
+    norm_explicit = mhat**2 * N0 / (K_sym - B0_sym - Z0_sym) - 54 * G * c_s**5 / (5 * a**5 * c**5)
     expect_zero(
-        "N0_target reproduces universal normalization",
-        (mhat**2 * (N0_target/D0)) - 54 * G * c_s**5 / (5 * a**5 * c**5),
+        "normalization abstract == explicit under D0 = K - B0 - Z0",
+        sp.simplify(norm_abstract.subs(D0, K_sym - B0_sym - Z0_sym) - norm_explicit),
     )
     # Carry the outgoing odd coefficient through the same exact Stage-4/5 DtN
     # route used in Stage 022 instead of retyping a^5/(27 c_s^5).

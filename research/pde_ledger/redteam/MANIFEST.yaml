@@ -477,7 +477,8 @@ stages:
     codex_session: 019e4bda-8cd0-7302-8221-0a7db26ce21b
     codex_log_paths:
     - redteam/codex_logs/013_iter1.txt
-    last_codex_run: 2026-05-21 12:50:47-06:00
+    - redteam/codex_logs/013_iter1.txt
+    last_codex_run: 2026-05-25 21:53:59-06:00
     last_codex_exit: 0
   '014':
     stage: 14
@@ -512,7 +513,8 @@ stages:
     codex_session: 019e4be0-7af8-7ea3-a888-cb87b0a42028
     codex_log_paths:
     - redteam/codex_logs/014_iter1.txt
-    last_codex_run: 2026-05-21 13:08:26-06:00
+    - redteam/codex_logs/014_iter1.txt
+    last_codex_run: 2026-05-25 21:56:24-06:00
     last_codex_exit: 0
   '015':
     stage: 15
@@ -547,7 +549,8 @@ stages:
     codex_session: 019e4bf0-9f2a-7822-9f8f-197e6d98ddf2
     codex_log_paths:
     - redteam/codex_logs/015_iter1.txt
-    last_codex_run: 2026-05-21 13:14:07-06:00
+    - redteam/codex_logs/015_iter1.txt
+    last_codex_run: 2026-05-25 22:02:18-06:00
     last_codex_exit: 0
     last_sympy_exit: 0
   '016':
@@ -689,7 +692,8 @@ stages:
     codex_session: 019e4c05-a756-7382-8af4-bb6ef45fc4ec
     codex_log_paths:
     - redteam/codex_logs/019_iter1.txt
-    last_codex_run: 2026-05-21 13:36:47-06:00
+    - redteam/codex_logs/019_iter1.txt
+    last_codex_run: 2026-05-25 22:07:34-06:00
     last_codex_exit: 0
   '020':
     stage: 20
@@ -830,7 +834,8 @@ stages:
     codex_session: 019e4c13-b6e2-75c1-8564-a408a14f60e7
     codex_log_paths:
     - redteam/codex_logs/023_iter1.txt
-    last_codex_run: 2026-05-21 13:49:58-06:00
+    - redteam/codex_logs/023_iter1.txt
+    last_codex_run: 2026-05-25 22:10:50-06:00
     last_codex_exit: 0
   '024':
     stage: 24

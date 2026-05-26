@@ -1,11 +1,11 @@
 ---
 unit_id: 019
 batch: I.2
-verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-21T15:25:00Z
+verifier_model: claude-opus-4-7[1m]
+verify_date: 2026-05-25T22:15:00Z
 verdict: verified
 sympy_exit: 0
-mathematica_exit: 0
+mathematica_exit: n/a
 findings_resolved: 1
 findings_total: 1
 material_change: false
@@ -15,73 +15,61 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — missing_verification_script
+### F1 — symbol_assumption_error
 
 **Classification:** resolved
 
 **What changed:**
-Codex created a new file `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.wl` (202 lines). The script:
-- Declares symbolic variables and reality/nonzero assumptions (`$Assumptions` set, line 62-69).
-- Derives `u2`, `u4` via `Series[1/den, {x, 0, 2}]` then `D0*poleSeries` and reads off coefficients of x^1, x^2 (lines 71-75).
-- Derives `P0, P2, P4` via `Series[D0 (N0 + N2 x + N4 x^2)/den^2, {x, 0, 2}]` (lines 77-82).
-- Defines `Mplus`, `Mminus`, `N2closed`, `N4closed`, `P0target` as standalone Mathematica expressions (lines 50-60).
-- Runs explicit M1-M12 assertions with `FullSimplify` residuals printed; on a passing residual prints `M<k> OK`; on mismatch calls `Print["FAIL: …"]; Exit[1]` (lines 84-198).
-- Terminates with `Print["STATUS: PASS"]; Exit[0]` (lines 200-201).
+`scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py:25-29` — symbol declarations updated exactly per the directive. The diff at `redteam/exec_logs/stage_019_diff.patch` shows only those 5 lines changed:
 
-The saved output `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.txt` (mtime 2026-05-21 15:02) shows residuals = 0 for every algebraic claim (M1–M12) and the literal strings `M1 OK` … `M12 OK` followed by `STATUS: PASS`. The M9 mutation guards show the expected nonzero residual `-(eps/(B0 - KSigma + Z0))` (= `eps/D0`), confirming the guard fires non-tautologically.
+- Lines 25-27: `KSigma, MSigma`, `B0..Z4`, `N0, N2, N4` now carry `real=True, nonzero=True` (previously `nonzero=True` only).
+- Line 28: `mhat0, G, cs, a, c` now declared `positive=True` (was `nonzero=True`).
+- Line 29: `eps` now `real=True, nonzero=True`.
+
+The directive's prohibition against making KSigma/MSigma/B*/Z*/N* positive was respected — only the dimensionful prefactors got `positive=True`, preserving the response-sign criterion's ability to genuinely sweep `D_0` and `MSigma` signs. No collateral edits anywhere else in the file or repository.
 
 **Assessment:**
+The edit matches the directive's "After" block character-for-character. The Codex `## Applied: F1` block correctly reports `deviation: none`.
 
-Each manifest item is exercised non-tautologically:
+Saved-output checks against the directive's verification criteria (canonical `scripts/output/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.txt`):
 
-- **M1**: `u4 - 4 u2^2` is computed from the `1/den` Series (independent of any sympy form) and compared to the hand-written one-pole numerator. Residual = 0.
-- **M2**: `Solve[u4 - 4 u2^2 == 0, KSigma]` is taken and compared against the independently-stated closed form `B0+Z0+3(MSigma+B2+Z2)^2/(B4+Z4)`. Independent re-derivation.
-- **M3**: `Solve[P0 == P0target, KSigma]` against the closed form `B0+Z0+N0/P0target`. Independent.
-- **M4–M5**: `Solve[P2==0, N2]` and `Solve[(P4 /. N2->N2solve)==0, N4]` against hand-written `N2closed`, `N4closed`. The check is non-tautological — the solver result is matched to a specific algebraic expression. The N4 closed form has 13 distinct terms in the numerator and is unlikely to coincide by accident.
-- **M6**: Jacobian determinant of the constant-prefactor system equals `D0^3`. The product `D[P2zeroEq,N2] * D[P4zeroEq,N4]` (since the off-diagonals vanish — P2zeroEq has no N4 dependence by construction) is checked to equal `D0^3`; this is a non-trivial algebraic identity.
-- **M7–M8**: Factorization checks `P2 - (N2-N2closed)/D0 == 0` and `(P4 /. N2->N2closed) - (N4-N4closed)/D0 == 0`. Both non-tautological.
-- **M9**: Mutation guards on the factorizations — `expectNonzero` confirms the residual `-eps/(B0-KSigma+Z0)` (which is `eps/D0`) is detected as nonzero. Non-trivial.
-- **M10**: The M-root factorization `D0(B4+Z4) - 3(MSigma+B2+Z2)^2 == -3(MSigma-Mplus)(MSigma-Mminus)` plus Vieta sum and product. Independent algebraic check.
-- **M11**: `u2 |_{MSigma=Mplus}` against `Sqrt[D0(B4+Z4)/3]/D0`, and similarly for Mminus. `expectZeroPower` handles the sqrt branch correctly.
-- **M12**: Concrete Gaussian integrals computed via `Integrate[…]` on `Sqrt[Pi]` and `3 Sqrt[Pi]/2`. Independent.
+- Output line 26: `positive-root numeric u2 = 0.6324555320336759` — unchanged.
+- Output line 27: `negative-root numeric u2 = -0.6324555320336759` — unchanged.
+- Output line 22: `constant-prefactor mutation guards = PASS` — preserved.
+- Output line 32: `one-pole numerical response-sign guard = PASS` — preserved.
+- Output line 37: `STATUS: PASS` — preserved.
 
-No collateral edits — the patch is limited to creating the one specified `.wl` file. The empty `stage_019_diff.patch` is consistent with `git diff` not including untracked files (the new `.wl` is untracked); the file itself does exist on disk and is the substantive change.
+Output line 23 (`u2_on_positive_root = -sqrt(3)*sqrt(-(B4 + Z4)*(B0 - KSigma + Z0))/(3*B0 - 3*KSigma + 3*Z0)`) retains its pre-fix form; the directive explicitly permits this line to either collapse or remain — non-collapse is acceptable because SymPy's simplifier does not automatically rewrite the `sqrt(-...)` even with positive prefactors when the radicand involves real symbols of unconstrained sign (`B4+Z4`, `B0-KSigma+Z0`, which remain `real=True, nonzero=True` per the directive's deliberate choice). This is consistent with the finding's intent: assumption hygiene is now in place for future-proofing without changing any current assertion.
+
+The edit strengthens the symbol domain only and does not introduce or weaken any check, so non-tautology is preserved trivially.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines (from `/var/projects/toy_physics/research/pde_ledger/redteam/exec_logs/stage_019_sympy.log`):
-- `# date: 2026-05-21T14:58:13-06:00`
-- `constant-prefactor mutation guards = PASS`
-- `one-pole numerical response-sign guard = PASS`
-- `STATUS: PASS`
-- `# exit_code: 0`
+**SymPy:** exit=0 (inferred from `STATUS: PASS` trailer on the canonical saved output at `scripts/output/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.txt`, mtime 2026-05-25 22:08, which is newer than the script mtime 2026-05-25 22:07). The orchestrator's `redteam/exec_logs/stage_019_sympy.log` (mtime May 21 14:58) is stale relative to the fix and was not used, per the prompt's explicit instruction to fall back to canonical outputs. Notable lines from the canonical output:
 
-**Mathematica:** there is no `stage_019_mathematica.log` file in `redteam/exec_logs/`. However, the saved output `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.txt` (mtime 2026-05-21 15:02:33, newer than the `.wl` mtime 2026-05-21 13:35:12) contains:
-- 12 residual lines of `residual = 0`
-- `M9 mutated N2 closure guard residual = -(eps/(B0 - KSigma + Z0))` (expected nonzero)
-- `M1 OK` through `M12 OK`
-- `STATUS: PASS`
+```
+constant-prefactor mutation guards = PASS
+one-pole numerical response-sign guard = PASS
+STATUS: PASS
+```
 
-The script calls `Exit[0]` only after the final `STATUS: PASS` print, so the presence of that string in the saved output implies a clean exit. Reported `mathematica_exit: 0` based on saved output evidence; the orchestrator's missing `.log` capture is a tooling note, not a substantive verification issue.
+All M-root, K-from-one-pole, K-from-normalization, P2/P4 closures, mutation-guard residuals, and three numeric response-sign samples report PASS.
 
-**Output freshness:** confirmed.
-- `.wl` mtime 2026-05-21 13:35:12 → `.txt` mtime 2026-05-21 15:02:33 (mathematica output is fresher than the script).
-- `.py` mtime 2026-05-04 12:00:51 → `.txt` mtime 2026-05-21 15:00:37 (sympy output is fresher).
+**Mathematica:** exit=n/a. The directive scope was SymPy-only; the `.wl` file (mtime May 21 13:35) and its output (mtime May 21 15:02) are both untouched and were already passing per the original auditor report (`STATUS: PASS`, all M1-M12 OK). No regression possible.
+
+**Output freshness:** SymPy script mtime is 2026-05-25 22:07; saved SymPy output mtime is 2026-05-25 22:08 — output is one minute newer than the script, confirming re-generation post-fix. Mathematica script/output pair predate the fix consistently (script May 21 13:35 < output May 21 15:02) and were correctly out of scope.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The added Mathematica auditor only re-checks existing claims; no derived results change. Downstream units do not depend on the verifier-side artifacts. No upstream stale marking needed beyond the orchestrator's standard policy.
+No derived result changed. The closed-form expressions printed in the saved output (K_from_one_pole, K_from_norm, P0_target, P2, P4, N2_const, N4_const, compatibility, M-root expressions, numeric u2 values, Gaussian wall result) are bit-identical to the pre-fix output the auditor reviewed. Only SymPy symbol-domain metadata changed inside the script. Each stage's audit script is self-contained — no downstream unit consumes this script's outputs — so no narrow upstream-stale concern beyond the orchestrator's default `upstream_stale: true` flag.
 
 ## Side observations (non-blocking)
 
-1. **Ansatz deviation from directive.** The directive's item 4 prescribed `Series[(N0 + N2 x^2 + N4 x^4)/(D0 + D2 x + D4 x^2), {x, 0, 4}]` with coefficients read off at x^0, x^2, x^4. Codex instead used `Series[D0 (N0 + N2 x + N4 x^2)/(D0 + D2 x + D4 x^2)^2, {x, 0, 2}]` with coefficients read at x^0, x^1, x^2. The two ansatzes are NOT mathematically equivalent: the directive's `(N0+N2 x^2+N4 x^4)/den` form yields `P2_dir = (D0^2 N2 + N0(D2^2 - D0 D4))/D0^3`, whereas Codex's `D0 (N0+N2 x+N4 x^2)/den^2` ansatz yields `(D0 N2 - 2 D2 N0)/D0^2`, the same as the SymPy hand-written form. Codex's ansatz reproduces the SymPy target P2/P4 (which is why M4–M8 pass) but it structurally mirrors the SymPy `D0^k` denominator choreography that the directive explicitly told Codex not to mirror ("Do NOT hand-copy the SymPy form"). Codex did not flag this in the `## Applied` block (marked `deviation: none`). This is not blocking because (a) the directive's specified ansatz would have failed M4–M8 (the auditor's ansatz spec is itself slightly wrong relative to the sympy P2/P4 definitions), and (b) the M1–M12 cross-check on the closed-form solutions, factorizations, Jacobian determinant, M-root factorization, and Gaussian integrals is substantively useful as a second-engine confirmation. The choreography overlap on the rational-function ansatz is a real but secondary concern; flagging here so the auditor can decide whether a future revision should make the bundle definition explicit upstream.
-
-2. **Missing mathematica exec log.** `stage_019_mathematica.log` is absent from `redteam/exec_logs/`, although the saved output file in `mathematica/output/` is fresh and contains the explicit `STATUS: PASS`. This is an orchestrator/tooling note; the verifier accepted the saved output as evidence of a passing run per the verification prompt's "saved outputs are already fresh — read them."
-
-3. **Empty diff patch.** `stage_019_diff.patch` is 0 bytes because the new `.wl` file is untracked by git; `git diff` without `--no-index` or explicit add does not include untracked files. The change is real on disk.
+- The orchestrator's `exec_logs/stage_019_sympy.log` is stale (May 21) relative to the post-fix run (May 25 22:08). The prompt directed me to the canonical `scripts/output/...txt` instead, which I used; flagging only so the orchestrator can decide whether to refresh exec_log capture for future audits.
+- The directive's `applied_at` is `2026-05-26T04:07:07Z` while today is `2026-05-25` — UTC vs. local timezone artifact, not substantive.
 
 ## Verdict justification
 
-F1 is `resolved`: a new Mathematica auditor exists, runs cleanly per the saved output, and every M1–M12 claim has a residual = 0 (or the expected nonzero `-eps/(B0-KSigma+Z0)` for M9 guards), with explicit `M<k> OK` strings and `STATUS: PASS`. The script's Mathematica derivation is mostly independent (M1–M3, M10–M12 use Series/Integrate/Solve from scratch; M4–M9 share structural ansatz with sympy but verify against hand-written closed forms that are non-tautological). The remaining concern — Codex used a `den^2`-style ansatz instead of the directive's `(N0+N2 x^2+N4 x^4)/den` ansatz — is documented as a side observation rather than rework because the directive's specified ansatz would have produced different P2/P4 expressions than those tested in the manifest, so following it literally would have caused M4–M8 to fail. The substantive second-engine confirmation of M1–M12 is in place.
+The single finding (low-severity symbol-assumption hygiene) is fully resolved. Codex's edit matches the directive's "After" block character-for-character, touches only the 5 specified lines, makes no collateral changes, and the post-fix saved output preserves every PASS line and every numeric value the directive required to remain identical. Mathematica was correctly left untouched per directive scope. No regressions, no material change to derived results, no new findings.

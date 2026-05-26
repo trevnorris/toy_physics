@@ -8,22 +8,12 @@ slope packets.
 from __future__ import annotations
 
 import sympy as sp
-from sympy.physics.wigner import gaunt
 
 
 def assert_zero(label: str, expr: sp.Expr) -> None:
     residue = sp.factor(sp.together(sp.simplify(expr)))
     if residue != 0:
         raise AssertionError(f"{label} failed: {sp.sstr(residue)}")
-
-
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m != 0:
-        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-        if same_sign != 0:
-            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
 
 
 def main() -> None:
@@ -41,13 +31,6 @@ def main() -> None:
     K1 = sp.expand(D21 + D01 / sp.Integer(9))
     H_even = sp.expand(D41 - sp.Rational(2, 3) * D21 - D01 / sp.Integer(27))
     Xi1 = sp.expand(N01 / N0 - D01 / D0)
-
-    lam20 = real_y20_square_ratio(0)
-    lam21 = real_y20_square_ratio(1)
-    lam22 = real_y20_square_ratio(2)
-    assert_zero('Y20 overlap lane 20', lam20 - 1)
-    assert_zero('Y20 overlap lane 21', lam21 - sp.Rational(1, 2))
-    assert_zero('Y20 overlap lane 22', lam22 + 1)
 
     coeff_matrix = sp.Matrix([
         [sp.diff(K1, dKSigma), sp.diff(K1, dMSigma)],

@@ -7,50 +7,16 @@ M2 Gaussian IBP boundary discharge residual = 0
 PASS: M2 Gaussian IBP boundary discharge
 M2 Gaussian IBP cross equals bulk residual = 0
 PASS: M2 Gaussian IBP cross equals bulk
-M3 K_eta raw eta etaw cross coefficient residual = 0
-PASS: M3 K_eta raw eta etaw cross coefficient
-M3 K_eta canonical quadratic form residual = 0
-PASS: M3 K_eta canonical quadratic form
-M3 K_eta dTwRR0p sign mutation residual = dTwRR0p*eta^2
-PASS: M3 K_eta dTwRR0p sign mutation
-M4 wall-only K1 specialization residual = 0
-PASS: M4 wall-only K1 specialization
-M4 wall-only H_even specialization residual = 0
-PASS: M4 wall-only H_even specialization
-M5 Gaussian dM overlap closed form residual = 0
-PASS: M5 Gaussian dM overlap closed form
-M5 Gaussian dK overlap closed form residual = 0
-PASS: M5 Gaussian dK overlap closed form
-M5 wall-only K1 from concrete Gaussian overlap integrals residual = 0
-PASS: M5 wall-only K1 from concrete Gaussian overlap integrals
-M5 wall-only H_even from concrete Gaussian overlap integrals residual = 0
-PASS: M5 wall-only H_even from concrete Gaussian overlap integrals
-M5 wall-only K1 detects mutated 6 deltaTO coefficient residual = -1/9*Sqrt[Pi/3]
-PASS: M5 wall-only K1 detects mutated 6 deltaTO coefficient
-M6 wall-only Jacobian determinant residual = 0
-PASS: M6 wall-only Jacobian determinant
-M6 wall determinant perturbation value residual = 0
-PASS: M6 wall determinant perturbation value
-M6 wall determinant perturbation nonzero guard residual = (2*eps)/3
-PASS: M6 wall determinant perturbation nonzero guard
-M7 wall-only zero solve residual = True
-PASS: M7 wall-only zero solve
-M7 perturbed solve nonzero dK residual = -18*eps
-PASS: M7 perturbed solve nonzero dK
-M7 perturbed solve nonzero dM residual = -eps
-PASS: M7 perturbed solve nonzero dM
-M8 real-Y20 ratio m=0 residual = 0
-PASS: M8 real-Y20 ratio m=0
-M8 real-Y20 ratio m=1 residual = 0
-PASS: M8 real-Y20 ratio m=1
-M8 real-Y20 ratio m=2 residual = 0
-PASS: M8 real-Y20 ratio m=2
-M8 same-sign cross term m=1 residual = 0
-PASS: M8 same-sign cross term m=1
-M8 same-sign cross term m=2 residual = 0
-PASS: M8 same-sign cross term m=2
-M9 grouped trace residual = 0
-PASS: M9 grouped trace
-M9 grouped line b=3a residual = 0
-PASS: M9 grouped line b=3a
+M2 asymmetric IBP cross nontrivial residual = Sqrt[Pi/2]/4
+PASS: M2 asymmetric IBP cross nontrivial
+M2 asymmetric IBP bulk nontrivial residual = Sqrt[Pi/2]/4
+PASS: M2 asymmetric IBP bulk nontrivial
+M2 asymmetric IBP boundary discharge residual = 0
+PASS: M2 asymmetric IBP boundary discharge
+M2 asymmetric IBP cross equals bulk residual = 0
+PASS: M2 asymmetric IBP cross equals bulk
+M3 K_eta via EL linearization matches IBP form residual = 0
+PASS: M3 K_eta via EL linearization matches IBP form
+M3 K_eta via EL dTwRR0p sign mutation residual = -2*dTwRR0p
+PASS: M3 K_eta via EL dTwRR0p sign mutation
 STATUS: PASS

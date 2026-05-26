@@ -1,86 +1,89 @@
 ---
 unit_id: 018
 batch: I.2
-verifier_model: claude-opus-4-7
-verify_date: 2026-05-21T15:10:00-06:00
+verifier_model: claude-opus-4-7[1m]
+verify_date: 2026-05-25T22:30:00-06:00
 verdict: verified
 sympy_exit: 0
-mathematica_exit: n/a
-findings_resolved: 4
-findings_total: 4
-material_change: false
+mathematica_exit: 0
+findings_resolved: 1
+findings_total: 1
+material_change: true
 ---
 
-# Verification — unit 018
+# Verification — unit 018 (v2, post-trim)
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — paper_misalignment (paper_missing_script_claim)
 
 **Classification:** resolved
 
 **What changed:**
-At `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:41-45` the tautological assertion `assert_zero("compatibility equality", sp.simplify(K_from_norm - K_from_one_pole) - compatibility)` was replaced exactly per directive with two independent `sp.solve` calls (one on `compatibility`, one on `K_from_norm - K_from_one_pole`) followed by an equality assertion on the two `N0` solutions and a mutation assertion `N0_from_compat - 2 * N0_from_equality`.
+
+Per the user's Q4=b (TRIM) resolution, Codex trimmed the over-scoped algebra from both engines and kept only the Gaussian-profile bridge probes that anchor to the stage-018 paper card's `M_Σ` / `K_Σ` exports.
+
+- SymPy (`scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py`): deleted the block that previously held A1–A17 (one-pole numerator identity, two `KSigma` closures, compatibility cross-closure, even-gate 2x2 determinant + wall-stiffness/wall-inertia slope solve, `Xi1` residual + mutations). The new `main()` (file lines 20–34) declares `w`, `beta = exp(-w²/2)`, computes `MSigma_example = ∫ β² dw` and `KSigma_example = ∫ ((β')² + β²) dw`, and asserts both equal `√π` and `3√π/2` (lines 25–26). Print banner updated (line 29) from the old "isotropic compatibility / wall-slope solve / Xi1" string to "concrete Gaussian parent-wall inertia and stiffness branch integrals."
+- Mathematica (`mathematica/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.wl`): header claims block (lines 1–5) collapsed from M1–M8 to just "M1 Gaussian wall inertia and stiffness integrals." Body M1–M7-mut blocks deleted; surviving block (file lines 14–27) holds the Gaussian inertia and stiffness checks, renumbered M1, with `If[FullSimplify[...] =!= 0, ...; Exit[1]]` failure guards retained.
+- Diff (`exec_logs/stage_018_diff.patch`) confirms the edits are confined to these two files and consist of deletions plus the docstring/banner relabel — no algebraic substitutions and no smuggled-in new assertions.
 
 **Assessment:**
-The edit matches the directive's `Before`/`After` blocks verbatim. The previous form expanded literally to `expr - expr == 0`; the new form invokes `sp.solve` twice on two different expressions and compares their roots. The mutation row introduces a nonzero residual `-N0_from_equality = -3*Ptarget*(MSigma+B2+Z2)^2/(B4+Z4)` that is genuinely nonvanishing, so it would fail if the equality row were silently degenerate. No collateral edits beyond the prescribed line range. SymPy exec log shows the script still exits 0. See side observations for a residual nuance about the two solve inputs being algebraically equivalent (the directive's own prescription).
 
-### F2 — tautological_check
+The trim matches directive option (b)'s TRIM branch: drop A1–A17 / M1–M7-mut from stage 018 and leave the Gaussian bridge probes. The surviving assertions (sympy A18/A19 ↔ math M1a/M1b) directly exercise the paper card's `\stagefield{Output}` integrals `M_Σ = ∫ μ_η β² dw` and `K_Σ = ∫ [T_w (β')² + (K_η + 6 T_Ω) β²] dw` under the concrete Gaussian collapse (`μ_η = T_w = K_η + 6 T_Ω = 1`, `β = exp(-w²/2)`). They are not tautological: `∫ exp(-w²) dw = √π` and `∫(w² + 1) exp(-w²) dw = √π/2 + √π = 3√π/2` are genuine closed-form definite integrals, not algebraic identities that fold to `0` by symbol cancellation. The Mathematica side uses the independent `Integrate[...]` engine path and arrives at the same residual `0`, so engines-agree is preserved. No collateral edits.
 
-**Classification:** resolved
+Substantive coverage after trim: yes, stage 018 still verifies something — the two Gaussian bridge integrals — and those are precisely the bridge identities the paper card exports. The displaced families now belong to stages 019 and 020; both stage files exist on disk under `scripts/` and `mathematica/` (per the resolution note, stage 019 owns one-pole closure + compatibility; stage 020 owns gate determinant + wall-slope solve + Xi_1). Codex's pre-trim "destination verification" of those owners is presumed; the verifier does not re-audit them here, only confirms the files exist.
 
-**What changed:**
-At `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:73-75` the two `K1.subs(sol)` / `H_even.subs(sol)` assertions were replaced exactly per directive with three substitutions that use the independently defined closed forms `expected_dK = B01+Z01+27*(B41+Z41)` and `expected_dM = -(B21+Z21)+3*(B41+Z41)` (defined at lines 65-66) plus a mutation `K1.subs({dKSigma: expected_dK + 1, dMSigma: expected_dM})`.
-
-**Assessment:**
-The new checks no longer route through `sp.solve`'s output `sol`, so they no longer reduce to the contract of `sp.solve`. `K1 = D21 + D01/9 = -(dM+B21+Z21) + (dK-B01-Z01)/9`; substituting the closed forms collapses to `-3(B41+Z41) + 27(B41+Z41)/9 = 0`, which is the substantive identity. The mutation `expected_dK + 1` yields `K1 = 1/9 != 0`, a genuine nonzero residue that the assertion will catch if SymPy fails to simplify. No collateral edits to lines 69 (`D01_comp`) or 76-83 (`Xi1` block) as required. SymPy exec exit 0.
-
-### F3 — missing_verification_script
-
-**Classification:** resolved
-
-**What changed:**
-New file created at `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.wl` (141 lines). It covers M1-M8 and their mutation rows (M3-mut, M5-mut, M7-mut) with `If[FullSimplify[...] =!= 0, Exit[1]]` and `If[FullSimplify[...] === 0, Exit[1]]` guards, and ends with `Print["STAGE 018 MATHEMATICA AUDIT PASS"]; Exit[0]`.
-
-**Assessment:**
-The script is not a line-by-line transliteration of the SymPy script. M1 derives `u2, u4` from the pole-series expansion `Normal[Series[1/(D0+D2 x^2+D4 x^4), {x,0,4}]]` followed by `Coefficient[...*D0, x, 2]` and `Coefficient[...*D0, x, 4]` — this re-derives the rational-function coefficients independently of the SymPy script's hand-computed `u2 = -D2/D0`, `u4 = (D2^2 - D0*D4)/D0^2`. M5 uses Mathematica's matrix-derivative idiom `D[gateVector, {{dKSigma, dMSigma}}]`. M6 substitutes the closed-form slopes via a rule list (no `Solve` round-trip), as the directive demanded. M8 uses `Integrate[..., {w, -Infinity, Infinity}]` with `$Assumptions = Element[w, Reals]`. The saved output at `mathematica/output/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.txt` (mtime 15:02, newer than the script mtime 13:30) shows all M1, M2, M3, M3-mut, M4, M5, M5-mut, M6 (K1 and H_even), M7, M7-mut, M8 (inertia and stiffness) residuals printed with the expected values: zeros for the equality rows and the genuinely nonzero `-Ptarget`, `2/27`, and `(54*(B41+Z41))/(B0-KSigma+Z0)` for the mutation rows, then "STAGE 018 MATHEMATICA AUDIT PASS". The exec log file `stage_018_mathematica.log` is missing from `redteam/exec_logs/`, so I rely on the saved output file as the freshness evidence (see Exec log assessment).
-
-### F4 — insufficient_verification
-
-**Classification:** resolved
-
-**What changed:**
-At `scripts/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.py:84-88` an additional block was inserted after the existing `Xi1` mutation row: it computes `Xi1_from_expected = Xi1.subs({dKSigma: expected_dK, dMSigma: expected_dM})` and asserts it equals `N01/N0 - 27*(B41+Z41)/(KSigma-B0-Z0)`. Lines 76-83 (original A14/A15 block) are untouched, matching the directive's instruction to add, not replace.
-
-**Assessment:**
-The new check routes through `expected_dK`/`expected_dM` (the closed forms defined directly from physical premises) rather than through `sp.solve`'s output `sol`, so it does not share intermediate simplification with A11 (`D01.subs(sol)`). If SymPy's `subs` for `sol` were silently miscomputing `D01.subs(sol)`, that error would propagate through both A11 and A14, but the new check is independent of `sol` and would diverge. Substantive. SymPy exec exit 0.
+One residual: the SymPy docstring (line 2) still reads `"""Master-note audit for step_16_parent_throat_action_bundle_master_notes.md."""` — the dangling notes reference flagged in the v2 directive's "in addition to choosing (a)/(b)/(c)" paragraph was not updated. Flagging as a side observation, not a blocker, because that secondary question was routed to user choice rather than named as a definite required edit, and the trim resolution focused on the algebraic scope.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines:
+**SymPy:** exit=0 (per orchestrator note; the canonical exec log `exec_logs/stage_018_sympy.log` is the pre-trim May-21 file, so I use the canonical script output for fresh evidence).
+
+Output file `scripts/output/moving_throat_pde_stage018_parent_throat_action_bundle_master_sympy_audit.txt` (mtime 2026-05-25 21:49):
 ```
 STEP 16 PARENT THROAT ACTION BUNDLE MASTER AUDIT
-Checked isotropic compatibility, exact weak-axisymmetric wall-slope solve, and residual Xi1.
+Checked concrete Gaussian parent-wall inertia and stiffness branch integrals.
 STATUS: PASS
-# exit_code: 0
 ```
-All four new/changed assertions ran without an `AssertionError`, including the two new `assert_nonzero` mutation rows from F1 and F2.
 
-**Mathematica:** exit=n/a. The orchestrator did not capture `redteam/exec_logs/stage_018_mathematica.log`; only `stage_018_sympy.log` and `stage_018_diff.patch` are present in that directory. However, the saved Mathematica output at `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.txt` (mtime 2026-05-21 15:02:27, newer than the `.wl` mtime 2026-05-21 13:30:20) ends with `STAGE 018 MATHEMATICA AUDIT PASS`, and every printed residual is consistent with the script's `If[... Exit[1]]` guards passing (zeros for the M1, M2, M3, M4, M5, M6, M7, M8 equality rows; the expected nonzero values `-Ptarget`, `2/27`, `(54*(B41+Z41))/(B0-KSigma+Z0)` for M3-mut, M5-mut, M7-mut). Treating the saved output as authoritative for exit status, the Mathematica run succeeded (exit 0). Recording `mathematica_exit: n/a` in the front-matter because the exec log itself was not captured by the orchestrator.
+The banner text matches the trimmed `print(...)` (line 29 of the script), confirming the saved output was regenerated against the trimmed source. `STATUS: PASS` implies no `AssertionError` was raised, so both `assert_zero` calls (lines 25, 26) returned `sp.factor(sp.together(sp.simplify(...))) == 0`.
 
-**Output freshness:** Confirmed. SymPy script mtime 1779391793 (13:29:53); SymPy output mtime 1779397234 (14:58:13). Mathematica `.wl` mtime 1779391820 (13:30:20); Mathematica output mtime 1779397347 (15:02:27). Both saved outputs are newer than their corresponding scripts, so they reflect the post-fix scripts.
+**Mathematica:** exit=0 (per orchestrator; no canonical exec log for math).
+
+Output file `mathematica/output/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.txt` (mtime 2026-05-25 21:50):
+```
+STAGE 018 PARENT THROAT ACTION BUNDLE MASTER MATHEMATICA AUDIT
+M1 Gaussian inertia integral residual = 0
+M1 Gaussian stiffness integral residual = 0
+STAGE 018 MATHEMATICA AUDIT PASS
+```
+
+Both M1 residuals are `0` and the script reached the terminal `Exit[0]` after `Print["STAGE 018 MATHEMATICA AUDIT PASS"]` (line 29 of the `.wl`). The two `If[FullSimplify[...] =!= 0, ...; Exit[1]]` guards (lines 21–22, 26–27) did not trip.
+
+**Output freshness:**
+- sympy script mtime: 2026-05-25 21:41; sympy output mtime: 2026-05-25 21:49 → output is newer (fresh).
+- mathematica script mtime: 2026-05-25 21:47; mathematica output mtime: 2026-05-25 21:50 → output is newer (fresh).
+
+Both engines regenerated post-trim. `outputs_fresh: true`.
 
 ## Material-change assessment
 
-`material_change`: false.
+`material_change`: **true**.
 
-No derived results changed downstream. The four edits are all in the verification layer: F1 and F2 swap tautological assertions for substantive ones over the same physical claims, F4 adds an independent verification path for an already-existing claim, and F3 adds an independent Mathematica engine for the same set of claims. No new symbolic identities are introduced, and no existing claims are revised. Downstream units that import results from unit 018 (none do mechanically; stage 018 is a master-note audit) would see identical numeric and symbolic outputs.
+The trim removed five claim families from stage 018's certified scope. Per the resolution note, stages 019 and 020 now own:
+- stage 019 (`parent_throat_action_isotropic_bundle`): one-pole numerator identity, two `KSigma` closures (one-pole + normalization), and their compatibility cross-closure.
+- stage 020 (`parent_throat_action_weak_axisym_packet`): even-gate 2x2 determinant (`= 1/27`), wall-stiffness slope (`dKSigma = B01 + Z01 + 27(B41 + Z41)`), wall-inertia slope (`dMSigma = -(B21 + Z21) + 3(B41 + Z41)`), and `Xi1` residual amplitude `Xi1 = N01/N0 - 27(B41 + Z41)/(KSigma - B0 - Z0)`.
+
+Downstream concerns:
+- Any unit > 018 that previously consumed stage 018's `Xi1`, wall-slope, or KSigma-closure results as a verified upstream must now bind to stage 019 or 020 instead. The orchestrator's blanket `upstream_stale: true` for units > 018 already captures this; the specific narrow re-audits are stages 019 and 020 themselves (to confirm the displaced families landed correctly there) and any stage that imports the parent-action bundle (stages 021 onward — the "Reduced Maxwell/mixed one-port normal form" the auditor explicitly named as a candidate home).
+- The Gaussian bridge probes themselves are unchanged (sympy A18/A19 and math integrals match the pre-trim values `√π` and `3√π/2` bit-for-bit), so any consumer that only needed the `M_Σ`/`K_Σ` exports is unaffected.
 
 ## Side observations (non-blocking)
 
-- F1's substantive replacement is exactly what the directive prescribed, but the two `sp.solve` inputs are algebraically identical: `K_from_norm - K_from_one_pole = (B0+Z0+N0/Ptarget) - (B0+Z0+3(M+B2+Z2)^2/(B4+Z4)) = N0/Ptarget - 3(M+B2+Z2)^2/(B4+Z4) = compatibility`, so `sp.solve(compatibility, N0)` and `sp.solve(K_from_norm - K_from_one_pole, N0)` solve the same equation. The check therefore exercises SymPy's `solve` normalization on two algebraically equivalent forms rather than verifying a non-trivial physical equivalence; the substantive cross-closure content was already covered by A2 and A3. This is the auditor's own prescribed form and Codex applied it correctly, so I do not block on it. A future audit pass may want to strengthen F1 (e.g., assert that `N0_from_compat` equals `3*Ptarget*(MSigma+B2+Z2)^2/(B4+Z4)` in closed form), but that is a re-audit concern, not a verification failure.
-- Mathematica exec log was not captured. The orchestrator's `redteam exec-mathematica 018` step appears to have either skipped or failed to write `stage_018_mathematica.log`, while the actual Mathematica run did produce a fresh output file. If this is a recurring pattern across other units, the orchestrator's log-capture for the Mathematica path may need review — but stage 018 itself is not blocked on it because the saved output is fresh and shows PASS.
+1. SymPy docstring (line 2) still references `step_16_parent_throat_action_bundle_master_notes.md`, a file that does not exist anywhere under `/var/projects/toy_physics/research/pde_ledger/`. The auditor's report flagged this and the directive routed the question to the user; the trim resolution did not relabel it. Suggest a follow-up doc-pass to either point at the correct stage-018 notes path or drop the reference. Not blocking because the Gaussian probes are the only substantive content and they don't depend on the docstring.
+2. The Mathematica header comment was updated to list only "M1 Gaussian wall inertia and stiffness integrals" — internally consistent with the body, but note that the surviving block uses `M1` as the label for *both* the inertia and the stiffness integral (lines 19, 24), where a small relabel to `M1a`/`M1b` would have matched the auditor's original `M8a`/`M8b` convention. Cosmetic only.
+3. Coverage after trim is thin but non-empty: two concrete Gaussian-profile integrals against fixed numeric targets. The auditor's original report already noted this is a `partial` cover of the abstract `M_Σ`/`K_Σ` bridge identity (since `μ_η`, `T_w`, `K_η`, `T_Ω` are collapsed to 1 and only one `β` profile is exercised). The trim does not improve that and no symbolic abstract-bridge check was added — directive option (b) did not require it, but option (c) explicitly would have. If a future audit wants the abstract bridge symbolically exercised, that is a fresh finding for a fresh audit; the verifier does not block on it.
 
 ## Verdict justification
 
-All four findings are resolved. F1 and F2 replaced tautological assertions with substantive ones using closed-form expressions or independent solve paths, exactly as the directive specified. F3 adds a Mathematica audit that re-derives M1 via series expansion (not a transliteration) and verifies all eight claim families with proper `Exit[1]` guards; the saved output (newer than the script) shows PASS with genuine nonzero residuals on every mutation row. F4 adds an independent `Xi1` recomputation routed through the closed-form slopes rather than `sp.solve`'s output. SymPy exec exits 0 and the Mathematica saved output reports PASS with consistent residuals; no regressions appear in the diff. One subtle concern about F1's algebraic equivalence is recorded as a side observation but does not warrant rework, since the directive's prescription was applied verbatim and the mutation row is genuinely nonzero.
+The Q4=b TRIM resolution lands cleanly: both engines now verify exactly and only the two Gaussian bridge integrals that the stage-018 paper card declares as `\stagefield{Output}`. The deletions are confined to the two script files, the diff shows no smuggled-in edits, the saved outputs are fresh (post-trim mtimes), both engines exit 0 with non-tautological `residual = 0` results on the surviving checks (`∫ exp(-w²) dw = √π`, `∫(w²+1) exp(-w²) dw = 3√π/2`), and the displaced claim families have named destinations (stages 019 and 020) whose script files exist on disk. The lingering docstring reference to the missing `step_16_*_notes.md` is a non-blocking documentation hygiene item already known to the user. Overall verdict: `verified`, `material_change: true`.

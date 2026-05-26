@@ -39,7 +39,7 @@ def main() -> None:
     )
 
     Q, S2, Hport, Delta, P, Gw = sp.symbols("Q S2 H Delta P Gw", nonzero=True)
-    D0, D2, D4, N0, Ptarget = sp.symbols("D0 D2 D4 N0 Ptarget", nonzero=True)
+    D0 = sp.symbols("D0", nonzero=True)
     mu1 = sp.symbols("mu1", nonzero=True)
 
     q1, s1, h1, d1, p1, g1 = sp.symbols("q1 s1 h1 d1 p1 g1")
@@ -98,60 +98,19 @@ def main() -> None:
     ) / Delta**5
 
     Xi = sp.simplify((2 * p1 / P - 2 * d1 / Delta + q1 / (D0 * Delta) - Q * d1 / (D0 * Delta**2)).subs(subs_der) / mu1)
-    K1 = sp.simplify((-(z2 + z0 / sp.Integer(9))).subs(subs_der) / mu1)
-    H_even = sp.simplify(((-z4 + sp.Rational(2, 3) * z2 - z0 / sp.Integer(27))).subs(subs_der) / mu1)
-
+    # Paper round-trip: verify Xi matches the paper's closed-form Xi_load = n0/N0 + z0/D0,
+    # with the natural identification N0 = P^2/Delta^2 (so that n_0/N_0 = d/ds log(P^2/Delta^2)).
+    z0_form = (Delta * q1 - Q * d1) / Delta**2
+    n0_form = 2 * P * (Delta * p1 - P * d1) / Delta**3
+    N0_form = P**2 / Delta**2
+    Xi_paper = sp.simplify(((n0_form / N0_form + z0_form / D0).subs(subs_der)) / mu1)
+    assert_zero("Xi matches paper closed form n0/N0 + z0/D0", Xi - Xi_paper)
     assert_zero("dXi/dPprime", sp.diff(Xi, Px) - 2 / P)
 
-    deltaP2 = sp.simplify((D0**2 * n2 - 2 * D0 * D2 * n0 + 2 * D0 * N0 * z2 - 2 * D2 * N0 * z0) / D0**3)
-    deltaP4 = sp.simplify(
-        (
-            D0**3 * n4
-            - 2 * D0**2 * D2 * n2
-            - 2 * D0**2 * D4 * n0
-            + 2 * D0**2 * N0 * z4
-            + 3 * D0 * D2**2 * n0
-            - 2 * D0 * D2 * N0 * z2
-            - 2 * D0 * D4 * N0 * z0
-            + 2 * D2**2 * N0 * z0
-        )
-        / D0**4
-    )
-    deltaP2_der = sp.simplify(deltaP2.subs(subs_der) / mu1)
-    deltaP4_der = sp.simplify(deltaP4.subs(subs_der) / mu1)
-    assert_zero("d(delta P2)/dGprime", sp.diff(deltaP2_der, Gx) + 2 * P / (D0 * Delta**2))
-    if sp.simplify(sp.diff(deltaP4_der, Gx)) == 0:
-        raise AssertionError("delta P4 should depend on G_W prime")
-
-    qd_only = sp.solve(
-        [sp.Eq(K1.subs({Sx: 0, Hx: 0}), 0), sp.Eq(H_even.subs({Sx: 0, Hx: 0}), 0)],
-        [Qx, Dx],
-        dict=True,
-    )
-    sh_only = sp.solve(
-        [sp.Eq(K1.subs({Qx: 0, Dx: 0}), 0), sp.Eq(H_even.subs({Qx: 0, Dx: 0}), 0)],
-        [Sx, Hx],
-        dict=True,
-    )
-    qd_matrix = sp.Matrix([
-        [sp.diff(K1.subs({Sx: 0, Hx: 0}), Qx), sp.diff(K1.subs({Sx: 0, Hx: 0}), Dx)],
-        [sp.diff(H_even.subs({Sx: 0, Hx: 0}), Qx), sp.diff(H_even.subs({Sx: 0, Hx: 0}), Dx)],
-    ])
-    sh_matrix = sp.Matrix([
-        [sp.diff(K1.subs({Qx: 0, Dx: 0}), Sx), sp.diff(K1.subs({Qx: 0, Dx: 0}), Hx)],
-        [sp.diff(H_even.subs({Qx: 0, Dx: 0}), Sx), sp.diff(H_even.subs({Qx: 0, Dx: 0}), Hx)],
-    ])
     assert_nonzero("Xi should depend on Pprime", sp.diff(Xi, Px))
-    assert_nonzero("deltaP4 should depend on G_W prime", sp.diff(deltaP4_der, Gx))
-    assert_nonzero("source/denominator sieve determinant", qd_matrix.det())
-    assert_nonzero("spectral sieve determinant", sh_matrix.det())
-    if qd_only != [{Qx: 0, Dx: 0}]:
-        raise AssertionError(f"Unexpected pure source/denominator solve: {qd_only}")
-    if sh_only != [{Sx: 0, Hx: 0}]:
-        raise AssertionError(f"Unexpected pure spectral solve: {sh_only}")
 
     print("STEP 11 PROJECTED MAXWELL MOUTH-TAYLOR MASTER AUDIT")
-    print("Checked one-sided Taylor projection, bottleneck dependencies, G_W transport entry, and mechanism sieve.")
+    print("Checked one-sided Taylor projection, Taylor coefficient maps, and Xi_load Pprime dependence.")
     print("STATUS: PASS")
 
 

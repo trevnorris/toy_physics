@@ -1,10 +1,4 @@
 STAGE 014 PROJECTED MAXWELL MOUTH-TAYLOR GATE BRIDGE MATHEMATICA AUDIT
-M1 XiLoad independence from Sx residual = 0
-PASS: M1 XiLoad independence from Sx
-M1 XiLoad independence from Hx residual = 0
-PASS: M1 XiLoad independence from Hx
-M1 XiLoad independence from Gx residual = 0
-PASS: M1 XiLoad independence from Gx
 M1 K1 independence from Px residual = 0
 PASS: M1 K1 independence from Px
 M1 He independence from Px residual = 0
@@ -13,12 +7,6 @@ M1 K1 independence from Gx residual = 0
 PASS: M1 K1 independence from Gx
 M1 He independence from Gx residual = 0
 PASS: M1 He independence from Gx
-M2 dXiLoad/dPx residual = 0
-PASS: M2 dXiLoad/dPx
-M3 d(deltaP2)/dGx residual = 0
-PASS: M3 d(deltaP2)/dGx
-M4 deltaP4 Gx dependence residual = (2*D0*Delta*Gw + 4*D2*Delta*P - 4*D0*P*S2)/(D0^2*Delta^3)
-PASS: M4 deltaP4 Gx dependence
 M5 source/denominator solve residual = True
 PASS: M5 source/denominator solve
 M6 spectral solve residual = True

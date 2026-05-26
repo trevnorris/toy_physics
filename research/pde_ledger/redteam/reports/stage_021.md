@@ -2,262 +2,202 @@
 unit_id: 021
 batch: I.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T12:30:55-06:00
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 2
+findings_count: 1
+paper_alignment: partial
 scripts_checked:
   sympy: present
-  mathematica: insufficient
+  mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 021 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_021.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (rows 9 and 64; stage `\input` on row 121)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.txt`
 
+## What the paper claims
+
+The card's Output paragraph states verbatim: "Stage~021 exports the reduced one-port self-energy \eqref{eq:app-stage021-self-energy}, the transfer factor \eqref{eq:app-stage021-transfer-factor}, and the wall-level outgoing quadrupole coefficient \eqref{eq:app-stage021-wall-odd}." Three distinct deliverables: (1) the exact conservative Σ_l^(EM+mix,cons)(ω) = [g_A² W_l(ω) + 2 g_A g_W R_l + g_W² A_l(ω)] / [A_l W_l − R_l²]; (2) the first-order outgoing transfer factor N_l(ω) = [A_l(ω) g_W,l + R_l g_A,l]² / [A_l(ω) W_l(ω) − R_l²]²; (3) the composed wall-level odd quadrupole coefficient δD_2^(odd)(ω) = −i N_2(0) (a^5/(27 c_s^5)) ω^5 + O(ω^7). Body equations additionally pin down gauge invariance of E_w, C_a; the z0/z2/z4 low-frequency coefficients; the manifestly nonnegative N_l(0); and the compact outgoing fingerprint Ŷ_2^(out)(ω) = 1 + a²ω²/(9c_s²) + 4a⁴ω⁴/(81c_s⁴) + i a⁵ω⁵/(27c_s⁵) + O(ω⁶). The notes additionally elaborate the scalar derivative-coupling check (notes §8, mirrored in part-appendix row 64's "scalar-compatibility criterion").
+
 ## What the script claims to verify
 
-The two scripts purport to verify a five-part chain for the moving-throat reduced one-port normal form (Stage 4 / Maxwell + mixed-sector reduction): (I) the mixed 4+1 Maxwell fields `E_w = F_w0` and `C_a = F_aw` are gauge invariant; (II) a reduced wall (Q) + brane-like Maxwell (A) + mixed mode (W) Lagrangian gives the Schur-complement self-energy `Sigma_cons = (g_A^2 W_ker + 2 g_A g_W R + g_W^2 A_ker)/Delta` with `Delta = A_ker W_ker - R^2`, and its low-frequency `omega^0/omega^2/omega^4` coefficients match a generic toy rational; (III) dressing the mixed block by a retarded port `Pi_out` transfers the odd part to the wall with coefficient `N(0) = (Omega_A^2 g_W + R g_A)^2 / (Omega_A^2 Omega_W^2 - R^2)^2 >= 0`; (IV) the compact outgoing l=2 normalized response equals `1 + a^2 omega^2/(9 c_s^2) + 4 a^4 omega^4/(81 c_s^4) + i a^5 omega^5/(27 c_s^5)`, so the leading outgoing imaginary coefficient is `Gamma_5_port = a^5/(27 c_s^5)`; (V) a derivative-coupled scalar mixed outlet with `g_A = 0`, `g_W = eta omega` and `Pi_0 = i gamma_1 omega` converts the naive `i omega` port law into an `i omega^3` wall correction with coefficient `gamma_1 eta^2 Omega_A^4 / (Omega_A^2 Omega_W^2 - R^2)^2`.
+Both scripts (.py and .wl) verify, in five sections: (I) gauge invariance of the mixed Maxwell fields E_w and C_a under the scalar gauge transformation; (II) Euler–Lagrange equations for the reduced Lagrangian, the exact conservative self-energy Σ_cons obtained by eliminating A, W (sympy uses hand-written A_sol/W_sol with residual checks; mathematica uses LinearSolve and additionally asserts Σ_cons = g_A A_sol + g_W W_sol), and the closed forms for z0, z2, z4 via series-coefficient extraction matched against the notes formulas; (III) the first-order-in-Π_out correction giving the compact transfer factor N(ω) = (A_ker g_W + R g_A)² / Δ², and its zero-frequency limit; (IV) the compact outgoing l=2 fingerprint Ŷ_2^(out)(ω) via the spherical Hankel solution (sympy uses explicit j_2/y_2 series; mathematica uses the built-in SphericalHankelH1[2,·]) and the extracted Γ_5^port = a^5/(27 c_s^5); (V) the scalar derivative-coupling case (g_A = 0, g_W = ηω) showing the wall-level odd term starts at iω^3 rather than iω.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| Gauge invariance of E_w, C_a (eq:app-stage021-mixed-fields) | sympy `mixed_field_gauge_invariance_audit`; .wl §I | match |
+| Σ_l^(EM+mix,cons) (eq:app-stage021-self-energy) | sympy §II A/W residuals + closed form; .wl §II LinearSolve + `sigmaConsDerived - sigmaCons` | match |
+| z0, z2, z4 coefficients (eq:app-stage021-z-coeffs) | sympy/`.wl` §II.3 series-coefficient comparisons | match |
+| Transfer factor N_l(ω) (eq:app-stage021-transfer-factor) | sympy `N(omega) compact formula`; .wl `N(omega) compact formula` (derivative method) | match |
+| N_l(0) closed form (eq:app-stage021-n0-positive) | sympy/`.wl` `N(0) positive-square form` | match |
+| Ŷ_2^(out)(ω) fingerprint (eq:app-stage021-outgoing-fingerprint) | sympy/`.wl` §IV `Y2_hat minimal branch` and `Gamma5_port - a^5/(27 c_s^5)` | match |
+| Composed δD_2^(odd)(ω) (eq:app-stage021-wall-odd) — Output item #3 | sympy/`.wl` §III prints `Dcorr = -i Gamma_port ω^5 N0`, but `Gamma_port` is a generic symbol; never substituted to `a^5/(27 c_s^5)` and never asserted as identity against the paper's specific eq | partial / missing |
+| Scalar-compatibility criterion (notes §8; part-appendix row 64) | sympy/`.wl` §V `N_scalar leading term` and `scalar odd order` | match |
+
+Set `paper_alignment: partial` — seven of eight deliverables have direct assertions; the third Output item (composed δD_2^(odd)) is computed in pieces (N_2(0) and Γ_5^port separately, in different sections) but never multiplied together and asserted as the literal paper formula.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 88 | `simplify(Ewp - Ew) == 0` | yes |
-| A2 | sympy | 89 | `simplify(Cap - Ca) == 0` | yes |
-| A3 | sympy | 128 | `EQ_Q.lhs + M Q'' + K Q - gA A - gW W == 0` (EL for Q) | yes |
-| A4 | sympy | 129 | `EQ_A.lhs + A'' + Omega_A^2 A - R W - gA Q == 0` (EL for A) | yes |
-| A5 | sympy | 130 | `EQ_W.lhs + W'' + Omega_W^2 W - R A - gW Q == 0` (EL for W) | yes |
-| A6 | sympy | 148 | `Aker A_sol - R W_sol - gA == 0` (matrix inverse residual) | yes |
-| A7 | sympy | 149 | `Wker W_sol - R A_sol - gW == 0` (matrix inverse residual) | yes |
-| A8-10 | sympy | 161-163 | `z0/z2/z4` of generic toy rational match closed form | yes |
-| A11-13 | sympy | 175-177 | `Sigma z0/z2/z4` under subs match generic formulas | yes |
-| A14 | sympy | 223-225 | `N_omega - (Aker gW + R gA)^2 / Delta^2 == 0` | yes |
-| A15 | sympy | 228-231 | `N(0) - (OA^2 gW + R gA)^2 / (OA^2 OW^2 - R^2)^2 == 0` | yes |
-| A16 | sympy | 278-287 | `Y2_hat == 1 + a^2 omega^2/(9 c_s^2) + ... + i a^5 omega^5/(27 c_s^5)` | yes |
-| A17 | sympy | 290 | `Gamma5_port - a^5/(27 c_s^5) == 0` | yes |
-| A18 | sympy | 323-326 | `N_scalar - eta^2 OA^4 omega^2 / Delta_0^2 == 0` | yes |
-| A19 | sympy | 332-335 | `Pi0 N_scalar - i gamma1 eta^2 OA^4 omega^3 / Delta_0^2 == 0` | yes |
-| B1 | mathematica | 53 | `eWp - eW == 0` | yes |
-| B2 | mathematica | 54 | `cAp - cA == 0` | yes |
-| B3 | mathematica | 81 | `Coefficient[lVel, vq^2] - m/2 == 0` | **no — tautological** |
-| B4 | mathematica | 93 | `aKer aSol - r wSol - gA == 0` | yes |
-| B5 | mathematica | 94 | `wKer wSol - r aSol - gW == 0` | yes |
-| B6-8 | mathematica | 102-104 | toy `z0/z2/z4` formulas match closed form | yes |
-| B9-11 | mathematica | 115-117 | `Sigma z0/z2/z4` under subs match generic | yes |
-| B12 | mathematica | 140 | `nOmega - (aKer gW + r gA)^2 / delta^2 == 0` | yes |
-| B13 | mathematica | 141 | `n0 - (oA^2 gW + r gA)^2/(oA^2 oW^2 - r^2)^2 == 0` | yes |
-| B14 | mathematica | 163-166 | `Y2_hat - (...closed form...) == 0` | yes |
-| B15 | mathematica | 167 | `gamma5Port - radius^5/(27 cS^5) == 0` | yes |
-| B16 | mathematica | 187 | `nSeries - eta^2 oA^4 omega^2/(oA^2 oW^2 - r^2)^2 == 0` | yes |
-| B17 | mathematica | 188 | `deltaD0 - I gamma1 eta^2 oA^4 omega^3/(oA^2 oW^2 - r^2)^2 == 0` | yes |
-
-Notable mismatch: the SymPy script verifies all three Euler-Lagrange equations (A3-A5) of the reduced Lagrangian via `euler_equations(Lred, ...)`. The Mathematica script has no corresponding check — only the tautological B3 — so it never derives the EOMs from `lRed` at all.
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 88 | `expect_zero("E_w gauge variation", ...)` | gauge invariance of E_w | yes |
+| A2 | sympy | 89 | `expect_zero("C_a=F_aw gauge variation", ...)` | gauge invariance of C_a | yes |
+| A3 | sympy | 128–130 | `expect_zero` on Q/A/W EL equations vs hand-written form | EL reduction (notes §3) | yes (notes-anchored) |
+| A4 | sympy | 148–149 | `A/W exact solution residuals` (Schur-complement check) | self-energy derivation foundation | yes |
+| A5 | sympy | 161–163 | `z0/z2/z4 formula` from toy rational | z-coeffs formulas (eq:app-stage021-z-coeffs) | yes |
+| A6 | sympy | 175–177 | `Sigma z0/z2/z4` series match closed forms | z-coeffs specialized | yes |
+| A7 | sympy | 222–225 | `N(omega) compact formula` | transfer factor N_l(ω) (eq:…transfer-factor) | yes |
+| A8 | sympy | 228–231 | `N(0) positive-square form` | N_l(0) (eq:…n0-positive) | yes |
+| A9 | sympy | 278–287 | `Y2_hat minimal branch` | Ŷ_2 fingerprint (eq:…outgoing-fingerprint) | yes |
+| A10 | sympy | 290 | `Gamma5_port - a^5/(27 c_s^5)` | Γ_5^port quoted in notes §6 | yes |
+| A11 | sympy | 323–326 | `N_scalar leading term` | scalar-compatibility (notes §8) | yes |
+| A12 | sympy | 332–335 | `scalar odd order` (iω^3) | scalar-compatibility (notes §8) | yes |
+| — | sympy | 239–242 | `Dcorr` printed only, no assert | δD_2^(odd) (eq:…wall-odd) Output item #3 | NO — print-only, generic Γ_port not specialized |
+| B1 | .wl | 55–56 | `expectZero` on E_w/C_a gauge variation | same as A1/A2 | yes |
+| B2 | .wl | 77–79 | `expectZero` on Q/A/W EL equations | same as A3 | yes |
+| B3 | .wl | 91 | `sigmaCons from LinearSolve matches closed form` | Σ_cons consistency (independent derivation route vs. sympy) | yes |
+| B4 | .wl | 95–96 | A/W exact solution residuals | foundation | yes |
+| B5 | .wl | 104–106 | `z0/z2/z4 formula` | z-coeffs | yes |
+| B6 | .wl | 117–119 | `Sigma z0/z2/z4` | z-coeffs specialized | yes |
+| B7 | .wl | 141 | `N(omega) compact formula` (derivative method) | transfer factor | yes |
+| B8 | .wl | 142 | `N(0) positive-square form` | N_l(0) | yes |
+| B9 | .wl | 162–165 | `Y2_hat minimal branch` (built-in SphericalHankelH1) | Ŷ_2 fingerprint | yes |
+| B10 | .wl | 166 | `Gamma5_port - a^5/(27 c_s^5)` | Γ_5^port | yes |
+| B11 | .wl | 186 | `N_scalar leading term` | scalar-compatibility | yes |
+| B12 | .wl | 187 | `scalar odd order` | scalar-compatibility | yes |
+| — | .wl | 135, 140 | `dCorr` printed only, no assert | δD_2^(odd) Output item #3 | NO — print-only, generic gammaPort |
 
 ## Findings
 
-### F1 — insufficient_verification
+### F1 — paper_misalignment
 
 **Severity:** medium
+**Subtype:** script_missing_paper_claim
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:67-81`
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_021.tex:77-81` — Output paragraph
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_021.tex:71-75` — eq:app-stage021-wall-odd
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py:238-244` — Dcorr is computed and printed, no assertion
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:135, 140` — dCorr is computed and printed, no assertion
 
 **What's wrong:**
 
-In Section II of the Mathematica script the reduced Lagrangian `lRed = 1/2 m D[q,t]^2 - 1/2 k q^2 + 1/2 D[a,t]^2 - 1/2 oA^2 a^2 + 1/2 D[ww,t]^2 - 1/2 oW^2 ww^2 + r a ww + gA q a + gW q ww` is defined at lines 67-72. The only assertion that touches this Lagrangian is:
+The paper's Output paragraph (stage_021.tex:77–81) explicitly enumerates three exports: (1) the reduced one-port self-energy, (2) the transfer factor, and (3) "the wall-level outgoing quadrupole coefficient \eqref{eq:app-stage021-wall-odd}". Equation `eq:app-stage021-wall-odd` (lines 71–75) reads:
+
+> δ D_2^{odd}(ω) = -i N_2(0) a^5/(27 c_s^5) ω^5 + O(ω^7)
+
+with the explicit numeric coefficient `a^5/(27 c_s^5)` substituted in for Γ_5^port.
+
+In the sympy script, Section III computes:
 
 ```
-expectZero["Q kinetic coefficient", Coefficient[lVel, vq^2] - m/2];   (* line 81 *)
+Gamma_port = sp.symbols("Gamma_port", positive=True, real=True)
+Dcorr = sp.simplify(-I * Gamma_port * omega**5 * N0)
+print("delta D_wall^(odd) =")
+sp.pprint(Dcorr)
 ```
 
-where `lVel` is `lRed` with the time derivatives replaced by symbolic placeholders `vq, va, vw`. Because the Lagrangian was *written* with the literal coefficient `1/2 m D[q,t]^2`, `Coefficient[lVel, vq^2]` is `m/2` by construction; the residual is identically zero independent of any physics. This is a `tautological_check` posing as the Lagrangian-sector test.
+`Gamma_port` is a free symbolic constant; it is never specialized to `a^5/(27 c_s^5)` and `Dcorr` is never asserted against `-i N_2(0) * a^5/(27 c_s^5) * omega**5`. The matching Mathematica block (lines 122–142) has the same shape: `dCorr = -I gammaPort omega^5 n0` printed but not asserted. The .wl `gammaPort` is similarly never tied to `radius^5/(27 cS^5)`.
 
-By contrast the SymPy script (lines 123-130) actually computes the three Euler-Lagrange equations via `euler_equations(Lred, Q, [t])` etc. and verifies each one against the expected EOM:
+Sections III and IV separately verify the two pieces (N_l(0) closed form and Γ_5^port = a^5/(27 c_s^5)), and the FINAL ledger comments narrate "the first wall-level odd quadrupole coefficient is the outgoing-port coefficient a^5/(27 c_s^5) multiplied by the conservative mixed-sector transfer factor N(0)" — but the composition is asserted only in prose, not in code. A reader running the scripts would never see an assertion fail (or pass) for the paper's third Output deliverable.
 
-```
-EQ_Q = euler_equations(Lred, Q, [t])[0]
-expect_zero("Q equation", EQ_Q.lhs + M*sp.diff(Q,t,2) + K*Q - gA*A - gW*W)
-expect_zero("A equation", EQ_A.lhs + sp.diff(A,t,2) + OA**2*A - R*W - gA*Q)
-expect_zero("W equation", EQ_W.lhs + sp.diff(W,t,2) + OW**2*W - R*A - gW*Q)
-```
+Quoting paper card:
 
-The Mathematica script omits the EL derivation entirely. Consequently the only piece of the Lagrangian → EOM map exercised on the Mathematica side is the kinetic-term coefficient, which is trivially built into the source. If a sign error or missing cross-coupling were introduced into `lRed`, the SymPy `Q/A/W equation` checks would catch it; the Mathematica side would silently pass.
+> Stage~021 exports the reduced one-port self-energy \eqref{eq:app-stage021-self-energy}, the transfer factor \eqref{eq:app-stage021-transfer-factor}, and the wall-level outgoing quadrupole coefficient \eqref{eq:app-stage021-wall-odd}.
+
+Quoting sympy (line 239):
+
+> `Dcorr = sp.simplify(-I * Gamma_port * omega**5 * N0)`
+
+At the reduced one-port level the index l is just a label, so the natural script-side check is: substitute `Gamma_port → a^5/(27 c_s^5)` (no other index substitution required since N(0) is already the per-lane formula), then assert that the result equals `-i * (Ω_A² g_W + R g_A)² / (Ω_A² Ω_W² − R²)² * a^5/(27 c_s^5) * ω^5`.
 
 **Why this matters:**
 
-Section II is the algebraic heart of unit 021 — every downstream object (`sigmaCons`, `sigmaFull`, `nOmega`, `n0`) is supposed to follow from the Lagrangian. If Mathematica never verifies that the Lagrangian gives the claimed EOMs, the "second-engine" status of Section II is reduced to a check of the Schur complement of an *asserted* 2x2 matrix, with no audit of whether that matrix came from the stated Lagrangian. A typo in `lRed` (e.g. `gA q a` written as `gA q^2 a` or a missing factor of 1/2) would not be detected by Mathematica.
+The paper Output is a three-item list, and one item has no script-side check. The composition is algebraically trivial (a substitution + multiplication), but absence of the assertion means a future edit that mis-substitutes one of the two pieces would silently pass the audit. More importantly, the paper Output line tells the reader the script proves three things; a faithful audit must prove all three.
 
 **Required change:**
 
-In `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`, replace the tautological assertion at line 81 with three real Euler-Lagrange checks. The EL operator for a Lagrangian `L[q[t], q'[t], a[t], a'[t], ww[t], ww'[t]]` and variable `q` is `D[D[L, D[q,t]], t] - D[L, q]`. Add (after the `lRed` definition, before the Section II.2 `aKer`/`wKer` block):
+(Routed to user via the directive's `## Resolve before fix_loop` block — Codex must not auto-edit either paper or scripts to resolve this until the user picks a direction.)
 
-```
-elQ = D[D[lRed, D[q,t]], t] - D[lRed, q];
-elA = D[D[lRed, D[a,t]], t] - D[lRed, a];
-elW = D[D[lRed, D[ww,t]], t] - D[lRed, ww];
-expectZero["Q equation", elQ - (m D[q,t,t] + k q - gA a - gW ww)];
-expectZero["A equation", elA - (D[a,t,t] + oA^2 a - r ww - gA q)];
-expectZero["W equation", elW - (D[ww,t,t] + oW^2 ww - r a - gW q)];
+The natural fix is to add one assertion in each script. For sympy, add to Section III (after `Dcorr` is defined) imports of the constants from Section IV, or restructure as a Section VI; the assertion shape is:
+
+```python
+expect_zero(
+    "delta D_2^(odd) composed from Section III N(0) and Section IV Gamma5_port",
+    Dcorr.subs(Gamma_port, a**5 / (27 * c_s**5))
+    - (-I * (OA**2 * gW + R * gA)**2 / (OA**2 * OW**2 - R**2)**2 * a**5 / (27 * c_s**5) * omega**5),
+)
 ```
 
-Delete the existing line 81 (`expectZero["Q kinetic coefficient", Coefficient[lVel, vq^2] - m/2]`) and the no-longer-needed `staticL`, `staticTmp`, `staticBack`, `qd`, `ad`, `wd`, `lVel` assignments at lines 73-79 (they are dead once the EL checks are added).
+For mathematica, mirror the same composed-identity assertion at the end of §IV or in a new §VI.
 
 **Verification:**
 
-After the fix the new output should contain three `PASS` lines: `PASS: Q equation`, `PASS: A equation`, `PASS: W equation`, and should no longer contain `Q kinetic coefficient`. If `lRed` is correct each residual will simplify to 0. Trivial-case sanity: at `q=a=ww=0` every term in both `elX` and the canonical EOM is 0, so the residual is 0; with nonzero coordinates the residual is also 0 only when both sides agree term-by-term, which exercises the Lagrangian.
-
-### F2 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:83-141`
-
-**What's wrong:**
-
-The `.wl` script does not derive the Stage-4 algebra independently; it transliterates the `.py` step-by-step. The intermediate-variable choreography is essentially identical between the two engines. Three corresponding excerpts (SymPy → Mathematica):
-
-Section II.2, self-energy:
-```
-# sympy lines 132-136
-Aker = OA**2 - omega**2
-Wker = OW**2 - omega**2
-Delta = sp.simplify(Aker * Wker - R**2)
-Sigma_cons = sp.simplify((gA**2 * Wker + 2 * gA * gW * R + gW**2 * Aker) / Delta)
-A_sol = sp.simplify((gA * Wker + gW * R) / Delta)
-W_sol = sp.simplify((gW * Aker + gA * R) / Delta)
-```
-```
-(* mathematica lines 83-89 *)
-aKer = oA^2 - omega^2;
-wKer = oW^2 - omega^2;
-delta = FullSimplify[aKer wKer - r^2, ...];
-sigmaCons = FullSimplify[(gA^2 wKer + 2 gA gW r + gW^2 aKer)/delta, ...];
-aSol = FullSimplify[(gA wKer + gW r)/delta, ...];
-wSol = FullSimplify[(gW aKer + gA r)/delta, ...];
-```
-
-Section III, port dressing:
-```
-# sympy lines 211-214
-Sigma_full = sp.simplify((gA**2 * (Wker - Pi) + 2 * gA * gW * R + gW**2 * Aker) / (Aker * (Wker - Pi) - R**2))
-Sigma_first = sp.expand(sp.series(Sigma_full, Pi, 0, 2).removeO())
-N_omega = sp.simplify((Sigma_first - Sigma_cons) / Pi)
-```
-```
-(* mathematica lines 130-132 *)
-sigmaFull = FullSimplify[(gA^2 (wKer - piOut) + 2 gA gW r + gW^2 aKer)/(aKer (wKer - piOut) - r^2), ...];
-sigmaFirst = Expand[Normal[Series[sigmaFull, {piOut, 0, 1}]]];
-nOmega = FullSimplify[(sigmaFirst - sigmaCons)/piOut, ...];
-```
-
-Section IV, l=2 fingerprint:
-```
-# sympy lines 261-269
-j2a = (3/za**3 - 1/za)*sin(za) - 3*cos(za)/za**2
-y2a = -(3/za**3 - 1/za)*cos(za) - 3*sin(za)/za**2
-h2a = sp.simplify(j2a + I*y2a)
-Lambda2 = sp.simplify((k * sp.diff(h2a, za) / h2a).subs(za, k * a))
-Lambda2_series = sp.series(Lambda2, k, 0, 7).removeO()
-Y2 = sp.simplify(sp.series(1/Lambda2_series, k, 0, 6).removeO())
-Y2_static = sp.simplify(Y2.subs(k, 0))
-Y2_hat = sp.simplify(sp.expand(Y2/Y2_static))
-```
-```
-(* mathematica lines 149-156 *)
-j2a = ((3/za^3) - 1/za) Sin[za] - 3 Cos[za]/za^2;
-y2a = -((3/za^3) - 1/za) Cos[za] - 3 Sin[za]/za^2;
-h2a = FullSimplify[j2a + I y2a, ...];
-lambda2 = FullSimplify[(kWave D[h2a, za]/h2a) /. za -> kWave radius, ...];
-lambda2Series = Normal[Series[lambda2, {kWave, 0, 6}]];
-y2 = Normal[Series[1/lambda2Series, {kWave, 0, 5}]] // FullSimplify;
-y2Static = FullSimplify[y2 /. kWave -> 0, ...];
-y2Hat = Expand[y2/y2Static];
-```
-
-Same variable names, same order of operations, same `Series → take coefficient → divide by lower-order term` pattern. The Mathematica script could (and should) at minimum derive `aSol/wSol` via `LinearSolve` of the 2x2 mixed system, get `nOmega` via `D[sigmaFull, piOut] /. piOut -> 0` (analytic derivative, not Series), and use the built-in `SphericalHankelH1[2, z]` instead of constructing `j2 + I y2` by hand. Each replacement uses different Mathematica machinery than the SymPy path and so constitutes a genuine independent re-derivation.
-
-**Why this matters:**
-
-The "second engine" policy is supposed to guarantee that if both scripts agree, the result is not an artifact of one CAS's symbolic-simplification quirks. If the second script just re-walks the first's algebra in a different surface syntax, that guarantee degrades to "the same algebra simplifies to the same form" — a much weaker statement. In particular, an error in the *derivation path* shared by both engines (e.g., wrong Schur complement, wrong order of the Pi expansion, wrong spherical-Hankel convention) would propagate to both and be missed by their agreement.
-
-**Required change:**
-
-In `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`, replace three derivation steps with their Mathematica-native independent computations. Do **not** delete the existing assertions — the closed-form targets remain the same; only the route to them changes.
-
-1. Section II.2 (lines 88-89): replace the hand-written
-   ```
-   aSol = FullSimplify[(gA wKer + gW r)/delta, ...];
-   wSol = FullSimplify[(gW aKer + gA r)/delta, ...];
-   ```
-   with a matrix-inversion derivation:
-   ```
-   matEAW = {{aKer, -r}, {-r, wKer}};
-   solAW = LinearSolve[matEAW, {gA, gW}];
-   aSol = FullSimplify[solAW[[1]], Assumptions -> $Assumptions];
-   wSol = FullSimplify[solAW[[2]], Assumptions -> $Assumptions];
-   sigmaConsDerived = FullSimplify[gA aSol + gW wSol, Assumptions -> $Assumptions];
-   expectZero["sigmaCons from LinearSolve matches closed form", sigmaConsDerived - sigmaCons];
-   ```
-   (`matEAW` is the conservative kernel matrix for the (A, W) subsystem at fixed omega; solving against the source vector `{gA, gW}` gives `aSol, wSol` directly without writing the Schur-complement inverse by hand.)
-
-2. Section III (line 132): replace
-   ```
-   sigmaFirst = Expand[Normal[Series[sigmaFull, {piOut, 0, 1}]]];
-   nOmega = FullSimplify[(sigmaFirst - sigmaCons)/piOut, ...];
-   ```
-   with an analytic-derivative computation:
-   ```
-   nOmega = FullSimplify[D[sigmaFull, piOut] /. piOut -> 0, Assumptions -> $Assumptions];
-   ```
-   (i.e. take the first-order Pi coefficient via differentiation rather than via series expansion).
-
-3. Section IV (lines 149-151): replace the hand-built spherical Bessel functions
-   ```
-   j2a = ((3/za^3) - 1/za) Sin[za] - 3 Cos[za]/za^2;
-   y2a = -((3/za^3) - 1/za) Cos[za] - 3 Sin[za]/za^2;
-   h2a = FullSimplify[j2a + I y2a, Assumptions -> $Assumptions];
-   ```
-   with the built-in spherical Hankel function of the first kind:
-   ```
-   h2a = SphericalHankelH1[2, za];
-   ```
-   Leave the subsequent `lambda2 = (kWave D[h2a, za]/h2a) /. za -> kWave radius` line and the rest of the section unchanged; `SphericalHankelH1[2, za]` is mathematically identical to `j2 + I y2` at l=2 but is derived through Mathematica's native special-function machinery, not by hand-coded power-series formulas that mirror the `.py`.
-
-**Verification:**
-
-After the fix the script must still exit 0, the existing assertions (`A exact solution residual`, `W exact solution residual`, `N(omega) compact formula`, `N(0) positive-square form`, `Y2_hat minimal branch`, `Gamma5_port - a^5/(27 c_s^5)`) must continue to pass, and there must be one *new* PASS line `PASS: sigmaCons from LinearSolve matches closed form` confirming the matrix-inversion route reproduces the closed-form `sigmaCons`. The Mathematica output's `Lambda2(k)` line should still report `-3/radius + (kWave^2 radius)/3 + (kWave^4 radius^3)/9 + (I/9) kWave^5 radius^4 - (2 kWave^6 radius^5)/27` (since `SphericalHankelH1[2, .]` and `j2 + I y2` agree exactly). The `Gamma5_port` line should still print `radius^5/(27 cS^5)`.
+After the fix, both `.py` and `.wl` should contain at least one `expect_zero` / `expectZero` assertion naming the composed wall-level odd coefficient. The new check should appear in the saved output as a `= 0` line. The paper's eq `eq:app-stage021-wall-odd` is then traceable to a specific script-side line.
 
 ## Independent-derivation check (Mathematica)
 
-A `.wl` file is present, but as documented in F2 above it is a step-by-step transliteration of the `.py` rather than an independent re-derivation. The variable names (aKer ↔ Aker, wKer ↔ Wker, delta ↔ Delta, sigmaCons ↔ Sigma_cons, sigmaFull ↔ Sigma_full, sigmaFirst ↔ Sigma_first, nOmega ↔ N_omega, n0 ↔ N0, j2a ↔ j2a, y2a ↔ y2a, h2a ↔ h2a, lambda2 ↔ Lambda2, y2 ↔ Y2, y2Hat ↔ Y2_hat) and the order of operations match line-for-line. F2 records this and gives the minimal set of Mathematica-native replacements (LinearSolve, analytic derivative, SphericalHankelH1) that would make the second engine genuinely independent.
+The `.wl` is NOT a transliteration of the `.py`. Three concrete points of structural divergence:
+
+1. **Schur reduction of Σ_cons**: sympy hand-writes `A_sol`, `W_sol` and verifies them via residuals; mathematica uses `LinearSolve[matEAW, {gA, gW}]` and additionally asserts `sigmaConsDerived = gA aSol + gW wSol = sigmaCons` (line 91 — a check that sympy does not perform). Different derivation routes, with mathematica strictly stronger at this step.
+
+2. **Transfer factor N(ω) derivation**: sympy expands `Sigma_full` in a Taylor series in `Pi` and divides out: `N_omega = (Sigma_first - Sigma_cons) / Pi` (line 214); mathematica takes the analytic derivative directly: `nOmega = D[sigmaFull, piOut] /. piOut -> 0` (line 133). Different mathematical operations producing the same formula — exactly the kind of cross-check the second-engine policy requires.
+
+3. **Outgoing l=2 fingerprint**: sympy builds `j_2`, `y_2` from explicit closed forms (`j2a = (3/za^3 - 1/za) sin(za) - 3 cos(za)/za^2`, similarly y_2, then `h2a = j2a + I*y2a`); mathematica uses the built-in `SphericalHankelH1[2, za]`. Different sources for the same special function.
+
+Conclusion: not a `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-Where both engines do verify the same closed-form targets, they agree:
+Both scripts pass all assertions (all `... = 0` lines in saved outputs). Final printed identities match across engines:
 
-| Quantity | SymPy output | Mathematica output |
+| Quantity | sympy output | mathematica output |
 |---|---|---|
-| `Sigma_cons numerator` | `gA^2(OW^2-ω^2) + 2 gA gW R + gW^2(OA^2-ω^2)` | `gW^2(-oA^2+ω^2) + gA^2(ω-oW)(ω+oW) - 2 gA gW r` (equivalent up to sign factoring; `Sigma_cons` denominator also differs only by overall sign) |
-| `z0^(EM+mix)` | `(OA^2 gW^2 + OW^2 gA^2 + 2 R gA gW)/(OA^2 OW^2 - R^2)` | `(gW^2 oA^2 + gA^2 oW^2 + 2 gA gW r)/(oA^2 oW^2 - r^2)` |
-| `N(0)` | `(OA^2 gW^2 + 2 OA^2 R gA gW + R^2 gA^2)/(OA^2 OW^2 - R^2)^2` (expanded square) | `(gW oA^2 + gA r)^2/(-(oA^2 oW^2) + r^2)^2` (squared form; identical after expansion since the denominator squared loses the sign) |
-| `Y2_hat` | `1 + a^2 ω^2/(9 c_s^2) + 4 a^4 ω^4/(81 c_s^4) + i a^5 ω^5/(27 c_s^5)` | `1 + ω^2 radius^2/(9 cS^2) + 4 ω^4 radius^4/(81 cS^4) + (I/27) ω^5 radius^5/cS^5` |
-| `Gamma5_port` | `a^5/(27 c_s^5)` | `radius^5/(27 cS^5)` |
-| `N_scalar leading` | `OA^4 eta^2 ω^2 / (OA^4 OW^4 - 2 OA^2 OW^2 R^2 + R^4)` | `eta^2 oA^4 ω^2/(-(oA^2 oW^2) + r^2)^2` |
-| `Pi_0 N_scalar` | `i OA^4 eta^2 gamma_1 ω^3 / Delta_0^2` | `(I eta^2 gamma_1 oA^4 ω^3)/(-(oA^2 oW^2) + r^2)^2` |
+| Σ_cons | `(-2 R gA gW + gA² (-Ω_W²+ω²) + gW² (-Ω_A²+ω²)) / (R² - (Ω_A²-ω²)(Ω_W²-ω²))` | `(gW²(-oA²+omega²) + gA²(omega-oW)(omega+oW) - 2 gA gW r)/((oA-omega)(oA+omega)(omega-oW)(omega+oW) + r²)` |
+| z0^(EM+mix) | `(Ω_A² g_W² + Ω_W² g_A² + 2 R g_A g_W)/(Ω_A² Ω_W² - R²)` | `(gW² oA² + gA² oW² + 2 gA gW r)/(oA² oW² - r²)` |
+| N(0) | `(Ω_A⁴ g_W² + 2 Ω_A² R g_A g_W + R² g_A²)/(Ω_A⁴ Ω_W⁴ - 2 Ω_A² Ω_W² R² + R⁴)` | `(gW oA² + gA r)²/(-(oA² oW²) + r²)²` |
+| Γ_5^port | `a^5/(27 c_s^5)` | `radius^5/(27 cS^5)` |
+| Ŷ_2^(out)(ω) | `1 + a²ω²/(9 c_s²) + 4 a⁴ω⁴/(81 c_s⁴) + i a⁵ω⁵/(27 c_s⁵)` | `1 + omega² radius²/(9 cS²) + 4 omega⁴ radius⁴/(81 cS⁴) + I omega⁵ radius⁵/(27 cS⁵)` |
 
-All paired entries are algebraically identical (after recognizing `(−x)^2 = x^2` for the squared denominators and the symbol renaming `OA ↔ oA`, `OW ↔ oW`, `R ↔ r`, `a ↔ radius`, `c_s ↔ cS`). No engine_disagreement finding.
+Engines agree (modulo symbol naming). `engines_agree: true`.
 
 ## Verdict justification
 
-The SymPy script is substantive across all five sections: gauge invariance is checked symbolically, Euler-Lagrange equations are derived from the Lagrangian and checked against the expected EOMs, the Schur-complement self-energy is verified by an independent matrix-inverse residual check, the low-frequency `z0/z2/z4` coefficients are matched against a generic toy rational *and* against the EM/mixed substitution dictionary, the port dressing's first-order coefficient `N(omega)` is reduced to a manifestly nonnegative squared form, the l=2 outgoing fingerprint is built from the standard spherical Hankel function and the leading imaginary coefficient is identified, and the derivative-coupled scalar variant correctly demotes the odd port law from `i omega` to `i omega^3`. I attacked: a possible sign error in `Sigma_cons = -toy` (no — `Delta = D0 − S2 ω^2 + ω^4` carries a `+1` ω^4 coefficient so Sigma_cons = toy, no sign flip); a possible `Pi` series-vs-derivative discrepancy in Section III (no — the linear term in Series equals the derivative); a possible spherical-Hankel sign-convention mismatch (no — `h^{(1)} = j + i y` is consistent with the `+i omega^5` outgoing convention asserted); a possible parity error in the `gA=0, gW=eta omega` substitution of Section V (no — `(Aker gW)^2 ∝ ω^2`, the resulting wall correction goes as `ω·ω^2 = ω^3`). The SymPy side holds up. The Mathematica side reproduces the same closed forms but (a) replaces the entire Euler-Lagrange derivation with a tautological kinetic-coefficient check (F1) and (b) transliterates the rest of the algebra rather than re-deriving it via Mathematica-native machinery (F2). Verdict: `findings`, not stop-cold — the math is correct, but the second engine needs to be made genuinely second.
+The two scripts pass all assertions they make, and those assertions cover seven of eight paper-side deliverables faithfully and non-tautologically. The cross-engine independence is real (different reduction routes, different ways to extract N(ω), different sources for the spherical Hankel function). The outputs are fresh.
+
+The one gap: the paper Output paragraph names three exports, and the third (the composed wall-level odd quadrupole coefficient, eq:app-stage021-wall-odd) is computed only as a symbolic placeholder (`Dcorr = -i Gamma_port ω^5 N0`) and never substituted+asserted against the paper's specific value. This is `paper_misalignment / script_missing_paper_claim`: the paper says three things are exported; the scripts assert two and a half. The composition is algebraically trivial, but the auditor's job is to flag missing assertions even when the algebra is straightforward.
+
+I also noted but did not file as findings: the cosmetic stale labels "STAGE 004 — …" and "FINAL STAGE-4 LEDGER" in the script banners and module docstring (sympy line 3, line 352; mathematica line 35, line 190) — these reflect the script's pre-renumbering history. They are documentation drift, not math findings; none of the ten finding categories cleanly apply. Worth fixing on the next pass but not blocking.
+
+Attacks I tried that failed:
+- Verified by hand that `dΣ/dΠ |_{Π=0} = (Aker gW + R gA)² / Δ²` from the Schur quotient. Matches.
+- Checked sign convention: notes line 200 says `δD_l^(odd) = −i N_l(0) Γ_l^port ω^{2l+1}`. Script's Dcorr = `−i Γ_port ω^5 N0`. Sign consistent.
+- Checked symbol assumptions: `OA, OW, M, K > 0`; `R, gA, gW` real (no positivity assumed). This matches the physical setup (frequencies positive, couplings can be either sign). No `simplify` under aggressive assumptions hides anything.
+- Checked variable independence for `sp.diff` / `D[..., piOut]`: Sigma_full does depend on piOut/Pi; derivative is non-trivial.
+- Checked parity / domains: no unbounded-domain integrals here; no parity traps.
+- Checked the toy rational `(N0 - G2 ω²)/(D0 - S2 ω² + ω⁴)`: it is a non-tautological model whose ω-series coefficients are computed and then compared to the claimed closed forms. Not tautological.
+- Checked Y2_hat construction: sympy uses explicit j_2/y_2 formulas, normalizes by Y2_static, then expands in k → ω/c_s. Mathematica uses built-in SphericalHankelH1. Both give the same minimal branch. Cross-engine check passes.
 
 ## Self-test notes
 
-I checked variable-independence for the proposed F1 EL operators: `lRed` depends on `q[t], a[t], ww[t]` and their time derivatives, so `D[lRed, q]`, `D[lRed, D[q,t]]`, etc. are non-degenerate and the EL combinations match the canonical EOMs term-by-term, with the trivial-case substitution `q=a=ww=0` giving `0 - 0 = 0` (consistent). I checked parity in Section V — the scalar `(Aker gW)^2 = (Aker eta omega)^2` is even in omega, so the leading `omega^2` term is real and the subsequent `Pi_0 = i gamma_1 omega` multiplication gives `i omega^3`, consistent with the claim. I confirmed that `SphericalHankelH1[2, z]` and `j2(z) + i y2(z)` agree (both engines' small-z expansion `Lambda2 = -3/a + (k^2 a)/3 + (k^4 a^3)/9 + ...` matches exactly), so the F2 substitution preserves all downstream checks. I confirmed that `D[sigmaFull, piOut] /. piOut -> 0` equals the first-order Series coefficient algebraically, so the F2 derivative substitution preserves the existing `N(omega) compact formula` and `N(0) positive-square form` assertions.
+- **Variable independence**: For Section III's `sp.series(Sigma_full, Pi, 0, 2)` and `.wl`'s `D[sigmaFull, piOut]`, confirmed Sigma_full depends explicitly on Pi/piOut (sympy line 212 / .wl line 132). Derivatives are non-degenerate.
+- **Parity / symmetry**: no unbounded-domain integrals; the only ω-series steps operate over a polynomial truncation, no parity-zero traps.
+- **Trivial-case pre-check for proposed F1 fix**: substituting `Gamma_port = a^5/(27 c_s^5)` into `Dcorr = -I Gamma_port omega^5 N0` and subtracting `-I * N0 * a^5/(27 c_s^5) * omega^5` gives identically zero by inspection — assert_zero will pass for the correct composition. There is no risk of trivially-zero collapse since both N0 (a non-trivial rational function of OA, OW, R, gA, gW) and the constant a^5/(27 c_s^5) are present in the asserted side.
+- **Paper round-trip**: the proposed F1 fix uses the same constant `a^5/(27 c_s^5)` that the paper card states verbatim and the script's Section IV already proves. No new `paper_misalignment` introduced.
+- **Stale-output check**: sympy output mtime (May 21) > script mtime (Apr 1); .wl output mtime (May 21 15:16) > .wl mtime (May 21 15:14). Both fresh; banner "STAGE 004" is in the script source itself, so the output legitimately reflects it. No `stale_output` finding.

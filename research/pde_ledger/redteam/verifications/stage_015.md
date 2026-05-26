@@ -2,104 +2,106 @@
 unit_id: 015
 batch: I.2
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-21T21:14:30Z
+verify_date: 2026-05-25T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
-material_change: false
+findings_resolved: 4
+findings_total: 4
+material_change: true
 ---
 
 # Verification — unit 015
 
 ## Per-finding outcomes
 
-### F1 — missing_verification_script
+### F1 — paper_misalignment
 
 **Classification:** resolved
 
 **What changed:**
-Codex created the new file `mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl` (200 lines). It defines `expectZero`, `expectNonzero`, and `expectEqual` helpers that each call `Exit[1]` on failure, then walks through the M1-M9 claim manifest with distinct local names (`lagrangian`, `effectiveMass`, `gateMatrix`, `gauntBase`, `realY20Ratio[m_]`) rather than the SymPy names (`L`, `K_eta`, `wall_matrix`, `real_y20_square_ratio`). The saved output `mathematica/output/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.txt` (mtime 2026-05-21 15:01) records `STATUS: PASS` with every M1-M9 PASS line printed, post-dating the script's mtime (13:12), so the file is freshly regenerated.
+Per orchestrator note, the user selected Q3 direction (b) (TRIM). Codex removed the wall-only / Y20 / grouped trace blocks from both engines:
+
+- `scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`: removed the `gaunt` import, the `real_y20_square_ratio` helper, the `grouped_trace_anomaly` helper, and the wall-only / Y20 / grouped trace block (former lines ~103-208). Updated the final `print` summary to drop the wall-only/grouped wording (lines 110-113). Script is now 117 lines.
+- `mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl`: removed M4-M9 (wall-only K1/H_even specializations, Gaussian overlap closed forms, perturbed-solve, Y20 ratios, grouped trace). Wall-only block at former lines 104-196 fully excised.
 
 **Assessment:**
-The script is non-tautological and independent of the `.py` choreography in the ways the directive required:
+The trim correctly retains the K_eta exact-quadratic-recovery and IBP/boundary checks (the only items the stage card actually exports) and removes the orphaned `step_13_*_notes.md`-derived material. Stage 017 covers the trimmed content per orchestrator context. The sympy docstring still references `step_13_parent_throat_action_master_notes.md` at line 2 — minor cosmetic carry-over but the script body no longer pretends to verify those blocks. Not a defect for verification purposes since the orchestrator's resolution explicitly authorized direction (b) with the script trim.
 
-- M3 reads `L2raw = Coefficient[Series[lagrangian, {eps, 0, 2}] // Normal, eps, 2]` rather than the `.py`'s `sp.diff(sp.expand(L), eps, 2).subs(eps, 0) / 2`. Two distinct primitives compute the eps^2 coefficient; the residual check `L2afterIBP - canonicalL2` equates them and the sign-mutation guard (`URR0 + dTwRR0p ...` instead of `URR0 - dTwRR0p ...`) returns `dTwRR0p eta^2`, correctly nonzero.
-- M4 builds `D01full = dK - b01 - z01`, `D21full = -(dM + b21 + z21)`, `D41full = -(b41 + z41)` explicitly and then specializes with `wallSpec = {b01 -> 0, b21 -> 0, ...}` — the directive's "do NOT skip the construction" requirement is honored.
-- M5 evaluates the Gaussian overlap integrals to closed forms and additionally asserts the *values* `dMoverlap == Sqrt[Pi/3]` and `dKoverlap == 23 Sqrt[Pi] / (3 Sqrt[3])`, which is a stronger substantive guard than the `.py`. I cross-checked: `Integrate[exp(-3w^2), -inf, inf] = Sqrt[Pi/3]`, and the dK breakdown `4*w^2 exp(-3w^2) + 7 exp(-3w^2)` integrates to `(2/3 + 7) Sqrt[Pi/3] = 23 Sqrt[Pi/3] / 3`, matching the closed form. The 6→5 mutation residual `-1/9 * Sqrt[Pi/3]` is exactly what one expects from the integral difference -Sqrt[Pi/3] divided by 9.
-- M6 reproduces the `Det = 1/27` and the perturbation shift `2 eps/3` exactly (I checked: `(2/3)(1/9+eps) - 1/27 = 1/27 + 2 eps/3`). Both an equality-to-`2 eps/3` check and a nonzero-guard are present.
-- M7 yields `dK = -18 eps`, `dM = -eps` for the perturbed solve, matching the closed-form derivation by hand (Hevenwall = 0 forces `dK = 18 dM`, substituted gives the printed values).
-- M8 uses `ThreeJSymbol[{2,0},{2,m},{2,-m}]/ThreeJSymbol[{2,0},{2,0},{2,0}]` with no m=0 short-circuit; the ratio is well-defined because all three j's are 2 so the Gaunt prefactors cancel, and Wigner 3-j values are nonzero. Same-sign cross terms are checked via the `m + m + 0 = 0` selection-rule violation, yielding 0 from `ThreeJSymbol` directly.
-- M9 reuses the canonical real-Y20 weights `(1, 1/2, -1)` directly to assemble the grouped trace and `b = 3a` identity.
-
-Engine cross-check is now non-trivially satisfied: independent code paths in two systems agree on every numerical residual.
-
-### F2 — tautological_check
+### F2 — insufficient_verification
 
 **Classification:** resolved
 
 **What changed:**
-At `scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:129-167` (new block), Codex deleted the two old `wall-only K1 from overlap-generated slots` / `wall-only H_even from overlap-generated slots` assertions and replaced them with concrete Gaussian profiles for `beta`, `delta_mu`, `delta_Tw`, `delta_TO`, `delta_Keta`, computed `dM_overlap_concrete` and `dK_overlap_concrete` via `sp.integrate(..., (wall_w, -sp.oo, sp.oo))`, and added three new assertions:
-- `wall-only K1 from concrete Gaussian overlap integrals` (concrete-numerical check)
-- `wall-only H_even from concrete Gaussian overlap integrals` (concrete-numerical check)
-- `wall-only K1 detects mutated 6*delta_TO coefficient` (substantive coefficient guard via `assert_nonzero` against a 5-instead-of-6 mutated overlap)
+Both engines gained an asymmetric concrete IBP probe immediately after the original Gaussian baseline:
+
+- sympy lines 56-79: `A_concrete_asym = w_ibp * exp(-w_ibp**2)` (odd), `eta_concrete_asym = exp(-w_ibp**2 / 2)` (even); asserts cross and bulk are nonzero individually, boundary discharge is zero, and the IBP identity `cross - (boundary + bulk) = 0` holds.
+- mathematica lines 83-100: parallel `aConcreteAsym = w*Exp[-w^2]`, `etaConcreteAsym = Exp[-w^2/2]`, same four `expectNonzero` / `expectZero` checks.
 
 **Assessment:**
-The new K1 check is no longer the substitution-rename tautology the auditor flagged. With `dM_overlap_concrete = Sqrt[pi/3]` and `dK_overlap_concrete = 23 Sqrt[pi]/(3 Sqrt[3])` (both closed-form sympy integrals), the residual `K1_wall.subs(...) - (-dM_concrete + dK_concrete/9)` exercises concrete `sqrt(pi)` arithmetic. Crucially, the mutation guard exercises the `6 delta_TO` coefficient: changing 6 to 5 shifts `dK_overlap_concrete` by `-Sqrt[pi/3]` and the K1 residual by `-Sqrt[pi/3]/9`, which `assert_nonzero` correctly detects. The Mathematica mirror reports this exact residual `-1/9 Sqrt[Pi/3]` in M5, agreeing with the sympy form.
+Mathematica output confirms the residuals are non-tautological: `M2 asymmetric IBP cross nontrivial residual = Sqrt[Pi/2]/4` and `M2 asymmetric IBP bulk nontrivial residual = Sqrt[Pi/2]/4` — both individually `sqrt(pi/2)/4 ≠ 0` (matching the directive's predicted value), with their difference vanishing (true IBP cancellation, not 0=0). The original Gaussian baseline was preserved as a parity check, per directive. Matches the directive's required-change block character-for-character.
 
-Side note: the symbolic `dM_overlap`/`dK_overlap` `sp.Integral` definitions at lines 109-113 still exist (unused now) but are inert — they don't paper over the new check.
+### F3 — tautological_check
 
-### F3 — hardcoded_result
+**Classification:** blocked_legitimate (resolved by F1 trim)
+
+**What changed:**
+Codex correctly skipped F3 in iter1 per directive. The trim from F1 (direction b) physically removed the wall-only K1/H_even specialization asserts (former sympy 126-127 and mathematica 112-113) along with the rest of the wall-only block.
+
+**Assessment:**
+The tautological assertions no longer exist. The blocked classification is legitimate — F3 was contingent on F1's resolution direction; F1's TRIM outcome dissolves F3 mechanically (nothing left to assert against). This is `blocked_legitimate` in the prompt's taxonomy, but the underlying defect is removed, so for rollup purposes it counts as resolved.
+
+### F4 — mathematica_transliteration
 
 **Classification:** resolved
 
 **What changed:**
-At `scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:25-31`, Codex removed the `if m == 0: return sp.Integer(1)` shortcut. The function now uniformly returns `sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)` for all m, with the same-sign sanity check gated on `m != 0` (correctly, since m=0 is structurally self-negating).
+The K_eta portion of F4 was applied via iter2 (iter1 introduced a `Dt[..., Constants -> ...]` bug producing nonzero residual; iter2 reworked to use ordinary `D` with an explicit temporary `twR[w]` profile carrying the w-dependence of `Tw_R0`). The new M3 block (mathematica lines 102-145) computes K_eta by:
 
-**Assessment:**
-For m=0, the returned value is now `gaunt(2,2,2,0,0,0) / gaunt(2,2,2,0,0,0)`, which sympy reduces to 1 only after evaluating the Wigner 3-j. The assertion `assert_zero("Y20 overlap lane 20", lam20 - 1)` is therefore no longer a `1 - 1 == 0` tautology; the Gaunt machinery actually runs and divides. A mutation to the `base` definition (e.g., multiplying by 2) would now flip `lam20 = 1/2`, surfacing the regression, exactly as the directive specified. The Mathematica mirror in M8 uses the same `gauntBase` denominator structure and produces residual 0 for m=0, confirming the lanes agree across engines.
+1. Defining `LDensity[R, Rt, Rw, gO, w]` with R/Rt/Rw/gO as independent slot variables.
+2. Applying the Euler-Lagrange operator symbolically: `dLdRSlot - D[dLdRtSlot, t] - D[dLdRwSlot, w]` with the on-shell field substitution `rSlot -> R0[w] + eps*eta`, etc., taken AFTER the slot derivatives.
+3. Reading off the O(eps) coefficient, then the eta-coefficient, then identifying it with `-K_eta`.
+4. Collapsing `R0p * twR'[w] -> dTwRR0p - TwR0*R0pp` (the IBP product-rule rewrite, an identification of bookkeeping symbols, not a derivation shortcut).
+
+The wall-only portion of F4 correctly skipped because the wall-only block was trimmed by F1.
+
+**Assessment — is the iter2 EL derivation actually independent of SymPy's Series approach, or just retransliterated?**
+
+It IS substantively independent. The SymPy script (lines 93-104) builds the quadratic Lagrangian `L2_raw = diff(L, eps, 2)|_{eps=0}/2`, peels the cross term `-TwR0*R0p*eta*eta_w`, IBPs it manually to `dTwRR0p*eta^2/2`, then compares the resulting `L2_after_ibp_derived` against a hand-written `canonical_L2 = mu0*eta_t^2/2 - Tw0*eta_w^2/2 - TO0*grad2/2 - K_eta*eta^2/2`. The Mathematica iter2 path does NOT touch a quadratic Lagrangian, does NOT do a manual IBP peel, does NOT compare against a hand-written canonical L2. Instead it: applies the EL operator to the FULL nonlinear `LDensity`, linearizes the resulting equation in eps, and extracts the mass coefficient from the field equation. The two paths arrive at K_eta from genuinely different intermediate representations (Lagrangian quadratic form vs. linearized field equation). The collapse rule `R0p * twR'[w] -> dTwRR0p - TwR0*R0pp` is just symbol identification (`dTwRR0p ≡ d/dw(TwR0 R0')` by definition), not an algebraic shortcut. A search-and-replace `s/sp.diff/D/`, `s/sp.expand/Expand/` transliteration would not produce this structure. The mutation guard returns `-2*dTwRR0p`, the correct expected diagnostic. The output line `M3 K_eta via EL linearization matches IBP form residual = 0` confirms agreement.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines from `redteam/exec_logs/stage_015_sympy.log`:
-- `STEP 13 PARENT THROAT ACTION MASTER AUDIT`
-- `Boundary operator nonzero sanity check = PASS`
-- `Wall-only perturbed-gate solve guard = PASS`
-- `Wall-only coefficient determinant guard = PASS`
-- `STATUS: PASS`
-- `# exit_code: 0`
+**SymPy:** exit_code per saved output = PASS (canonical `scripts/output/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.txt` shows `STATUS: PASS`). The orchestrator-captured `redteam/exec_logs/stage_015_sympy.log` is stale (dated 2026-05-21, references removed wall-only print lines) — using canonical output per orchestrator instruction. The saved txt (mtime 2026-05-25 22:02) post-dates the script (mtime 2026-05-25 22:00), confirming freshness. Notable lines:
+```
+STEP 13 PARENT THROAT ACTION MASTER AUDIT
+Checked promoted-action quadratic limit, concrete boundary discharge, and K_eta formula.
+Boundary operator nonzero sanity check = PASS
+STATUS: PASS
+```
 
-The sympy `assert_zero`/`assert_nonzero` helpers only raise on failure — they do not print per-assertion PASS lines — so the new `wall-only K1 from concrete Gaussian overlap integrals`, `wall-only H_even from concrete Gaussian overlap integrals`, and `wall-only K1 detects mutated 6*delta_TO coefficient` checks are silently passing (no exception). The clean exit confirms all 23 assertions, including the three new ones, hold.
+**Mathematica:** exit_code per saved output = PASS (canonical `mathematica/output/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.txt` shows `STATUS: PASS` on the final line with all per-check PASS lines and residuals). No stage_015_mathematica.log file exists in `exec_logs/`; using canonical output. Saved txt mtime 2026-05-25 22:06 > script mtime 22:05. Notable lines:
+```
+M2 asymmetric IBP cross nontrivial residual = Sqrt[Pi/2]/4
+M2 asymmetric IBP bulk nontrivial residual = Sqrt[Pi/2]/4
+M2 asymmetric IBP cross equals bulk residual = 0
+M3 K_eta via EL linearization matches IBP form residual = 0
+M3 K_eta via EL dTwRR0p sign mutation residual = -2*dTwRR0p
+STATUS: PASS
+```
 
-**Mathematica:** exit=0 (inferred from saved output's final `STATUS: PASS` and the script's structure where any individual claim failure calls `Exit[1]` immediately). No `redteam/exec_logs/stage_015_mathematica.log` file exists in the exec_logs directory — the orchestrator's mathematica log is missing — but the saved output transcript at `mathematica/output/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.txt` shows every PASS line through M9 and terminates with `STATUS: PASS`. Notable lines:
-- `M3 K_eta canonical quadratic form residual = 0` / `PASS`
-- `M3 K_eta dTwRR0p sign mutation residual = dTwRR0p*eta^2` / `PASS` (correctly nonzero)
-- `M5 Gaussian dM overlap closed form residual = 0` (i.e., dMoverlap = Sqrt[Pi/3])
-- `M5 Gaussian dK overlap closed form residual = 0` (i.e., dKoverlap = 23 Sqrt[Pi]/(3 Sqrt[3]))
-- `M5 wall-only K1 detects mutated 6 deltaTO coefficient residual = -1/9*Sqrt[Pi/3]` / `PASS`
-- `M6 wall determinant perturbation value residual = 0` (i.e., shift = 2 eps/3 exactly)
-- `M7 perturbed solve nonzero dK residual = -18*eps`, `dM residual = -eps`
-- `M8 real-Y20 ratio m=0 residual = 0`, `m=1 residual = 0`, `m=2 residual = 0`
-- `STATUS: PASS`
-
-**Output freshness:**
-- `scripts/.../stage015_sympy_audit.py` mtime 2026-05-21 13:11:45; output mtime 15:00:34 — output is newer.
-- `mathematica/.../stage015_mathematica_audit.wl` mtime 2026-05-21 13:12:26; output mtime 15:01:19 — output is newer.
-Both saved outputs were re-generated post-fix.
+**Output freshness:** confirmed (both sympy and mathematica output `.txt` files have mtimes post-dating their respective scripts, by ~2 and ~1 minutes respectively, indicating fresh regeneration after the iter2 fix).
 
 ## Material-change assessment
 
-`material_change`: false.
+`material_change`: true.
 
-No derived numerical result quoted forward by downstream units has changed. The substantive content (`K_eta = URR0 - d_TwR_R0p + TwRR0 R0p^2/2`, det = 1/27, Gaunt ratios (1, 1/2, -1)) is unchanged — only the verification surface around it has tightened (added Mathematica mirror, replaced one tautological pair with concrete-integral checks, removed one hardcoded m=0 lane). Downstream units depending on stage 015 results need not re-verify their own assertions.
+Stage 015 lost ~half of its prior assertion count (wall-only K1/H_even gates, Jacobian determinant 1/27, Gaussian overlap closed forms, perturbed-solve diagnostics, real-Y20 overlap ratios, grouped trace identities). Per orchestrator context, that content was relocated to / now lives in stage 017. Downstream units that previously cited stage 015 assertions for wall-only K1/H_even, Y20 ratios, or grouped trace identities should be re-validated against stage 017 instead. Specific concern: any downstream stage that imports the `wall_only_specialization` block, `K1_wall`/`H_even_wall` symbols, the `delta_TO` 6→5 mutation guard, the `2*eps/3` determinant perturbation, or the `xbar = x0` / `bx = 3*ax` grouped identities now needs to look at stage 017 (which the orchestrator confirms already verifies the trimmed content). The orchestrator will mark all units > 015 as `upstream_stale: true`; recommend narrow re-audit of stages that referenced wall-only / Y20 / grouped material rather than a broad sweep.
 
 ## Side observations (non-blocking)
 
-- The `redteam/exec_logs/stage_015_mathematica.log` file is absent. The orchestrator may want to capture a fresh `redteam exec-mathematica 015` log alongside the existing sympy log for symmetry; the saved `.txt` output provides equivalent ground truth for now.
-- The symbolic `dM_overlap` / `dK_overlap` `sp.Integral` objects at lines 109-113 of the sympy script are now dead code (no assertion references them after F2's removal of lines 129-136). Not blocking — they document the symbolic forms — but they could be deleted in a future janitorial pass.
-- The directive's M5 step said `dKoverlap` and `dMoverlap` "should evaluate to closed-form `Sqrt[Pi]`-multiples" without specifying values; Codex went further and added explicit `expectZero` checks against `Sqrt[Pi/3]` and `23 Sqrt[Pi] / (3 Sqrt[3])`. This is a positive deviation beyond the directive — stronger substantive content.
+- The sympy docstring at line 2 still reads `"""Master-note audit for step_13_parent_throat_action_master_notes.md."""` — directive Q3=b mentions updating the docstring "to a stage 015 description that does not reference `step_13_*_notes.md`". Not a math defect; cosmetic and does not affect any assertion. Flagging only for cleanup.
+- Mathematica `M1 mutated IBP boundary sign residual` prints a long expression instead of simplifying to a recognizable scalar — this is fine (the `expectNonzero` correctly returns PASS), just less polished display than M2's `Sqrt[Pi/2]/4`.
 
 ## Verdict justification
 
-All three findings are resolved with non-tautological, substance-bearing edits. The new Mathematica companion independently re-derives every claim using the required primitives (`Series`/`Coefficient`, explicit `D01full/D21full/D41full` construction, `ThreeJSymbol` without short-circuit, Gaussian `Integrate` to closed forms), exits 0, and prints PASS for all M1-M9. The sympy script's old substitution-rename pair is gone, replaced by concrete Gaussian integrals plus a coefficient mutation guard whose `-Sqrt[pi/3]/9` residual matches the Mathematica mirror's `-1/9 Sqrt[Pi/3]` value byte-for-byte. The m=0 Gaunt short-circuit is gone. Exec logs (sympy explicit, mathematica via saved output) confirm exit 0. No regressions in the diff. Verified.
+All four findings are addressed. F1 is resolved by the user-authorized trim to direction (b); the wall-only / Y20 / grouped blocks are gone from both engines and (per orchestrator) covered downstream in stage 017. F2 is resolved by the asymmetric IBP probe in both engines, with the predicted `Sqrt[Pi/2]/4` residual confirming the new check is non-trivial. F3 is mechanically dissolved by the F1 trim — the tautological asserts no longer exist to be tautological. F4's K_eta portion is resolved by an Euler-Lagrange linearization path that is genuinely distinct from the SymPy series-coefficient + IBP-peel choreography (different intermediate representations, no hand-written `canonical_L2` to match against); the wall-only portion of F4 is dissolved by the F1 trim. Both engines exit 0, outputs are fresh, and the iter2 fix correctly replaced the iter1 `Dt[..., Constants -> ...]` bug with explicit ordinary `D` plus a temporary `twR[w]` profile. Verdict: `verified`. `material_change: true` because the trim removes assertions that downstream units may have implicitly depended on (now covered by stage 017).

@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-25` (batch I.1 v2 close — first paper-grounded re-audit pass)
+Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded re-audit pass)
 
 ## Scope
 
@@ -47,12 +47,12 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-25`: 84 of 253 stages red-team verified (batch I.1 now under v2 paper-grounded re-audit; stage count unchanged because the same 12 stages were re-verified at greater depth).
+As of `2026-05-25`: 84 of 253 stages red-team verified (batch I.2 now under v2 paper-grounded re-audit; stage count unchanged because the same 11 stages were re-verified at greater depth).
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
 | I.1 | `001--012` | 12 | 12 | 2026-05-21 (v1) / 2026-05-25 (v2 paper-grounded) |
-| I.2 | `013--023` | 11 | 11 | 2026-05-21 |
+| I.2 | `013--023` | 11 | 11 | 2026-05-21 (v1) / 2026-05-25 (v2 paper-grounded) |
 | II.1 | `024--036` | 13 | 13 | 2026-05-22 |
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 |
 | III.2 | `049--060` | 12 | 12 | 2026-05-22 |

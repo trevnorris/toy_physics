@@ -22,11 +22,11 @@ def assert_nonzero(label: str, expr: sp.Expr) -> None:
 
 
 def main() -> None:
-    KSigma, MSigma = sp.symbols('KSigma MSigma', nonzero=True)
-    B0, B2, B4, Z0, Z2, Z4 = sp.symbols('B0 B2 B4 Z0 Z2 Z4', nonzero=True)
-    N0, N2, N4 = sp.symbols('N0 N2 N4', nonzero=True)
-    mhat0, G, cs, a, c = sp.symbols('mhat0 G cs a c', nonzero=True)
-    eps = sp.symbols('eps', nonzero=True)
+    KSigma, MSigma = sp.symbols('KSigma MSigma', real=True, nonzero=True)
+    B0, B2, B4, Z0, Z2, Z4 = sp.symbols('B0 B2 B4 Z0 Z2 Z4', real=True, nonzero=True)
+    N0, N2, N4 = sp.symbols('N0 N2 N4', real=True, nonzero=True)
+    mhat0, G, cs, a, c = sp.symbols('mhat0 G cs a c', positive=True)
+    eps = sp.symbols('eps', real=True, nonzero=True)
 
     D0 = KSigma - B0 - Z0
     D2 = -(MSigma + B2 + Z2)

@@ -80,6 +80,18 @@ qExpr = gU^2*omegaW^2 + 2*gU*gW*rMix + gW^2*omegaU^2;
 hExpr = gU^2 + gW^2;
 pExpr = omegaU^2*gW + rMix*gU;
 
+(* Schur-complement derivation of the rational form used below.
+   The paper's one-port Lagrangian has +R U W, so the frequency-space
+   spring matrix has off-diagonal -R. Its determinant is the denominator. *)
+mBlock = {{omegaU^2 - omega^2, -rMix}, {-rMix, omegaW^2 - omega^2}};
+detM = Expand[Det[mBlock]];
+expectZero["Schur denominator matches Delta - S omega^2 + omega^4",
+  Expand[detM - (deltaExpr - sExpr*omega^2 + omega^4)]];
+gVec = {gU, gW};
+zSchur = FullSimplify[gVec . Inverse[mBlock] . gVec, Assumptions -> $Assumptions];
+expectZero["Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T",
+  FullSimplify[zSchur - (qExpr - hExpr*omega^2)/detM, Assumptions -> $Assumptions]];
+
 zOnePort = Expand[Normal[Series[(qExpr - hExpr*omega^2)/(deltaExpr - sExpr*omega^2 + omega^4), {omega, 0, 4}]]];
 nOnePort = Expand[Normal[Series[(pExpr - gW*omega^2)^2/(deltaExpr - sExpr*omega^2 + omega^4)^2, {omega, 0, 4}]]];
 
@@ -189,6 +201,16 @@ n2TargetClosed = 2*d2*n0/d0;
 n4TargetClosed = FullSimplify[n0*(2*d0*d4 + d2^2)/d0^2, Assumptions -> $Assumptions];
 expectZero["N2_target closed form", FullSimplify[n2Target - n2TargetClosed, Assumptions -> $Assumptions]];
 expectZero["N4_target closed form", FullSimplify[n4Target - n4TargetClosed, Assumptions -> $Assumptions]];
+
+(* Non-tautological substitution check: abstract mhat^2 * P0 == explicit
+   mhat^2 * N0/(K - B0 - Z0) under D0 = K - B0 - Z0. *)
+Clear[kNorm, b0Norm, z0Norm];
+$Assumptions = $Assumptions && Element[{kNorm, b0Norm, z0Norm}, Reals] && kNorm - b0Norm - z0Norm != 0;
+normAbstract = mhat^2*n0/d0 - 54*G*cS^5/(5*a^5*c^5);
+normExplicit = mhat^2*n0/(kNorm - b0Norm - z0Norm) - 54*G*cS^5/(5*a^5*c^5);
+expectZero["normalization abstract == explicit under D0 = K - B0 - Z0",
+  FullSimplify[(normAbstract /. d0 -> kNorm - b0Norm - z0Norm) - normExplicit,
+    Assumptions -> $Assumptions]];
 
 Clear[z, j2, y2, h2, lambda2, lambda2Series, y2Resp, y2Static, y2Hat, g5Stage4];
 $Assumptions =

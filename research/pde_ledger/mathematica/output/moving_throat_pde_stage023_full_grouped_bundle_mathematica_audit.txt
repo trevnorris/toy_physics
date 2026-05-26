@@ -42,6 +42,10 @@ PASS: Pb*x - bx*eb
 ========================================================================================
 SECTION II — BUNDLE COEFFICIENT ASSEMBLY
 ========================================================================================
+Schur denominator matches Delta - S omega^2 + omega^4 = 0
+PASS: Schur denominator matches Delta - S omega^2 + omega^4
+Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T = 0
+PASS: Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T
 Z0 one-port = 0
 PASS: Z0 one-port
 Z2 one-port = 0
@@ -108,6 +112,8 @@ N2_target closed form = 0
 PASS: N2_target closed form
 N4_target closed form = 0
 PASS: N4_target closed form
+normalization abstract == explicit under D0 = K - B0 - Z0 = 0
+PASS: normalization abstract == explicit under D0 = K - B0 - Z0
 Stage-5 Gamma5_port anchor = 0
 PASS: Stage-5 Gamma5_port anchor
 Gamma5_port via direct Bessel small-z expansion = 0

@@ -2,164 +2,253 @@
 unit_id: 015
 batch: I.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T18:30:15Z
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 3
+findings_count: 4
+paper_alignment: partial
 scripts_checked:
   sympy: present
-  mathematica: missing
-  engines_agree: n/a
+  mathematica: present
+  engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: []
+  paper_appendix: present
 ---
 
 # Audit unit 015 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_015.tex`
+- notes: `(none)` (no `notes/stages/moving_throat_pde_stage015_*.md` files exist)
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 52 + `\input{stages/stage_015}` at line 109)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`
-- mathematica: (missing)
+- mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.txt`
-- mathematica output: (missing)
+- mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.txt`
+
+## What the paper claims
+
+Stage 015 promotes the throat to an autonomous graph field `R(Omega, w, t)` and posits the parent action `S_Sigma[R] = int dt dw dOmega L_Sigma` with density `L_Sigma = (1/2) mu_Sigma R_t^2 - (1/2) T_{w,Sigma} R_w^2 - (1/2) T_{Omega,Sigma} |grad_Omega R|^2 - U_Sigma`. The total parent-level model is `S_total = S_psi[psi, A; Sigma] + S_EM[A] + S_Sigma[R]`. The stage's `\stagefield{Output}` is quoted verbatim: "Stage~015 exports the parent throat action promotion and the exact quadratic recovery formula \eqref{eq:stage015-keta}", i.e., `K_eta = U_{Sigma,RR}(R_0,w) - partial_w(T_{w,Sigma,R}(R_0,w) R_0') + (1/2) T_{w,Sigma,RR}(R_0,w) (R_0')^2`. The card also asserts that "The audit carries the boundary densities explicitly and tests both zero and nonzero boundary-discharge probes." The part-appendix row for stage 015 calls it the "parent throat-action packet and projection/reduction status boundary" with status `\StatusExact{}/\StatusReduced{}`. No notes file exists for the stage.
 
 ## What the script claims to verify
 
-The script audits step 13 ("parent throat action master") by checking five algebraic structures. First, a generic and a concrete (Gaussian-weighted) integration-by-parts identity for the boundary discharge of an `-A η η_w` cross term against `-A η^2/2` and `(dA/dw) η^2/2`. Second, the quadratic limit of the promoted wall action `L = mu0 Rt^2/2 - Tw Rw^2/2 - TO0 eps^2 grad2/2 - U` reduces — after substituting the IBP image `-TwR0 R0p η η_w → +d_TwR_R0p η^2/2` — to the canonical Lagrangian with the closed-form effective mass `K_eta = URR0 - d_TwR_R0p + TwRR0 R0p^2/2`. Third, the wall-only specialization of the full even-gate combinations `K1 = D21 + D01/9` and `H_even = D41 - (2/3) D21 - D01/27` (with `B0_l = Z_l = 0`) collapses to `K1 = -dM + dK/9` and `H_even = (2/3) dM - dK/27`, and the corresponding 2x2 Jacobian in `(dK, dM)` has determinant `1/27` (and detects perturbations of the `1/9` coefficient). Fourth, the real-Y20 squared overlap ratios are `lam20 = 1, lam21 = 1/2, lam22 = -1` via Gaunt coefficients. Fifth, the grouped (weight 1,2,2) trace `xbar = (x20 + 2 x21 + 2 x22)/5` is invariant `x0`, and the `b = 3a` projection identity holds for the (a, b) duo computed from the same group weights. There is no Mathematica companion.
+The sympy script tests: (a) a generic quadratic IBP product-rule identity and a concrete Gaussian instantiation, plus a `boundary_value`-operator sanity check on `atan(w)`; (b) the K_eta canonical-quadratic-form recovery by symbolically expanding `L` to O(eps^2), peeling the eta-eta_w cross term, and matching the IBPed result against the textbook K_eta plus a sign-mutation guard; (c) a wall-only specialization of full even-channel gates K1, H_even (with B/Z modes set to zero), Jacobian determinant `1/27`, perturbed-gate solves, a Gaussian-overlap closed-form check with a `5*delta_TO` vs `6*delta_TO` mutation guard; (d) three real-Y20 overlap ratios (`{1, 1/2, -1}`) plus same-sign-cross-term vanishing; (e) a grouped trace/anomaly identity `xbar = x0` and `bx = 3*ax`. The mathematica script tests the same nine M1-M9 blocks in the same order, with minor extras (closed-form values `dMoverlap = sqrt(pi/3)`, `dKoverlap = 23*sqrt(pi)/(3*sqrt(3))`, `wallDetShift = 2*eps/3`).
+
+## Paper <-> script cross-check
+
+| Paper-side deliverable | Script-side coverage | Status |
+|---|---|---|
+| Lagrangian density form `L_Sigma` (eq:stage015-parent-density) | Built into `lagrangian = mu0*Rt^2/2 - Tw*Rw^2/2 - TO0*eps^2*grad2/2 - U` (used as input to K_eta derivation; not separately asserted) | partial |
+| Total action `S_total = S_psi + S_EM + S_Sigma` (eq:stage015-total-action) | No script-side check (additive declaration only - not algebraically testable in isolation) | missing |
+| K_eta exact quadratic recovery formula (eq:stage015-keta) | sympy line 88-97 / mathematica M3 (`L2afterIBP` vs `canonicalL2`), plus dTwRR0p sign mutation | match |
+| Boundary densities + zero-discharge probe | sympy line 59-72 / mathematica M2 (Gaussian profiles) | partial (degenerate - see F2) |
+| Boundary densities + nonzero-discharge probe | sympy line 57-58 (atan probe); mathematica omits this entirely | partial |
+| Wall-only K1/H_even gates, Jacobian det 1/27, Gaussian overlaps | sympy lines 123-193 / mathematica M4-M7 | extra (no paper-side counterpart - see F1) |
+| Y20 overlap ratios `{1, 1/2, -1}` | sympy lines 195-200 / mathematica M8 | extra (see F1) |
+| Grouped trace/line `xbar=x0, bx=3*ax` | sympy lines 202-208 / mathematica M9 | extra (see F1) |
+
+`paper_alignment: partial`. The central K_eta deliverable is matched. The boundary-density story is partly matched but with a degenerate concrete profile that does not actually exercise the asymmetric-discharge case. The Lagrangian-form and total-action structural claims are declarative (carried by construction, not independently asserted). A large block of the script (M4-M9, six asserts in sympy plus their mathematica mirrors) verifies wall-only gates, Y20 ratios, and grouped-trace identities that the stage card and appendix row do not mention.
 
 ## Assertion inventory
 
-| #   | Script | Line       | Form                                                                                  | Anchored to claim? |
-|-----|--------|------------|---------------------------------------------------------------------------------------|--------------------|
-| A1  | sympy  | 48-51      | `assert_zero -A eta eta_w - (d/dw(-A eta^2/2) + A' eta^2/2)`                          | partial (product rule + guarded by A2) |
-| A2  | sympy  | 52-55      | `assert_nonzero` mutated-sign IBP residual                                            | yes (sign guard)   |
-| A3  | sympy  | 58-59      | `assert_nonzero boundary_value(atan(w), w)` (= pi)                                    | yes (helper sanity) |
-| A4  | sympy  | 69         | `assert_zero boundary_value(-exp(-2 w^2)/2, w)`                                       | yes (Gaussian decay) |
-| A5  | sympy  | 70-73      | `assert_zero ∫(-A eta eta_w) - (boundary + ∫A' eta^2/2)`                              | yes (concrete IBP)  |
-| A6  | sympy  | 94         | `assert_zero ∂^2 L2_raw/∂eta ∂eta_w + TwR0 R0p`                                       | yes                |
-| A7  | sympy  | 98         | `assert_zero L2_after_ibp_derived - canonical_L2`                                     | yes (K_eta formula) |
-| A8  | sympy  | 99-102     | `assert_nonzero` mutated K_eta sign                                                   | yes (sign guard)   |
-| A9  | sympy  | 127        | `assert_zero K1_wall - (-dM + dK/9)`                                                  | partial (typed-form typo guard) |
-| A10 | sympy  | 128        | `assert_zero H_even_wall - (2/3 dM - dK/27)`                                          | partial (typed-form typo guard) |
-| A11 | sympy  | 129-132    | `assert_zero K1_wall.subs(dK→dK_overlap, dM→dM_overlap) - (-dM_overlap + dK_overlap/9)` | no (tautological)  |
-| A12 | sympy  | 133-136    | `assert_zero H_even_wall.subs(...) - (2/3 dM_overlap - dK_overlap/27)`                | no (tautological)  |
-| A13 | sympy  | 143        | `assert_zero det(wall_matrix) - 1/27`                                                 | yes                |
-| A14 | sympy  | 145        | `assert_zero wall_even_solve[dK]`                                                     | yes (follows from det≠0) |
-| A15 | sympy  | 146        | `assert_zero wall_even_solve[dM]`                                                     | yes (follows from det≠0) |
-| A16 | sympy  | 148        | `assert_nonzero wall_even_solve_perturbed[dK]`                                        | yes (perturbation guard) |
-| A17 | sympy  | 149        | `assert_nonzero wall_even_solve_perturbed[dM]`                                        | yes (perturbation guard) |
-| A18 | sympy  | 162        | `assert_nonzero wall_det_shift` (= 2 eps/3)                                           | yes (coefficient guard) |
-| A19 | sympy  | 167        | `assert_zero lam20 - 1`                                                               | no (hardcoded shortcut) |
-| A20 | sympy  | 168        | `assert_zero lam21 - 1/2`                                                             | yes (Gaunt-derived) |
-| A21 | sympy  | 169        | `assert_zero lam22 + 1`                                                               | yes (Gaunt-derived) |
-| A22 | sympy  | 176        | `assert_zero xbar - x0`                                                               | yes                |
-| A23 | sympy  | 177        | `assert_zero bx - 3 ax`                                                               | yes                |
+| #  | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|----|--------|------|------|-------------------------------|---------------------|
+| A1 | sympy | 47-50 | `assert_zero(generic quadratic IBP identity, ...)` | "boundary densities" (general IBP) | yes |
+| A2 | sympy | 51-54 | `assert_nonzero(mutated quadratic IBP sign should fail)` | guard for A1 | yes |
+| A3 | sympy | 58 | `assert_nonzero(boundary operator detects nonzero endpoint discharge)` (atan probe) | "nonzero boundary-discharge probe" (literal but decorative) | partial |
+| A4 | sympy | 68 | `assert_zero(concrete quadratic IBP boundary discharge)` (Gaussian) | "zero boundary-discharge probe" | partial (degenerate, see F2) |
+| A5 | sympy | 69-72 | `assert_zero(concrete quadratic IBP with boundary)` | IBP identity at Gaussian | partial (degenerate, see F2) |
+| A6 | sympy | 93 | `assert_zero(raw eta eta_w cross term)` | K_eta derivation step | yes |
+| A7 | sympy | 97 | `assert_zero(quadratic wall action after integration by parts)` | K_eta exact formula | yes |
+| A8 | sympy | 101 | `assert_nonzero(mutated K_eta sign should fail)` | guard for A7 | yes |
+| A9 | sympy | 126 | `assert_zero(wall-only K1 specialization)` | none (extra) | tautological - see F3 |
+| A10 | sympy | 127 | `assert_zero(wall-only H_even specialization)` | none (extra) | tautological - see F3 |
+| A11 | sympy | 146-150 | `assert_zero(wall-only K1 from Gaussian overlaps)` | none (extra) | yes (within extra scope) |
+| A12 | sympy | 151-155 | `assert_zero(wall-only H_even from Gaussian overlaps)` | none (extra) | yes (within extra scope) |
+| A13 | sympy | 163-167 | `assert_nonzero(wall-only K1 detects mutated 6*delta_TO)` | none (extra) | yes (within extra scope) |
+| A14 | sympy | 174 | `assert_zero(wall-only even-gate determinant - 1/27)` | none (extra) | yes (within extra scope) |
+| A15 | sympy | 176-177 | `assert_zero(wall-only dK closed form)`, `assert_zero(... dM ...)` | none (extra) | yes (within extra scope) |
+| A16 | sympy | 179-180 | `assert_nonzero(wall-only solve detects perturbed K1 gate ...)` | none (extra) | yes (within extra scope) |
+| A17 | sympy | 193 | `assert_nonzero(wall-only determinant detects perturbed K1 coefficient)` | none (extra) | yes (within extra scope) |
+| A18 | sympy | 198-200 | `assert_zero(Y20 overlap lane 20/21/22)` | none (extra) | yes (within extra scope) |
+| A19 | sympy | 207-208 | `assert_zero(grouped trace, grouped line b=3a)` | none (extra) | yes (within extra scope) |
+| M1 | math | 60 | `expectZero[M1 generic IBP product-rule identity]` | mirrors A1 | yes |
+| M2 | math | 65 | `expectNonzero[M1 mutated IBP boundary sign]` | mirrors A2 | yes |
+| M3 | math | 75 | `expectZero[M2 Gaussian IBP boundary discharge]` | mirrors A4 | partial |
+| M4 | math | 81 | `expectZero[M2 Gaussian IBP cross equals bulk]` | mirrors A5 | partial |
+| M5 | math | 90 | `expectZero[M3 K_eta raw eta etaw cross coefficient]` | mirrors A6 | yes |
+| M6 | math | 96 | `expectZero[M3 K_eta canonical quadratic form]` | mirrors A7 | yes |
+| M7 | math | 102 | `expectNonzero[M3 K_eta dTwRR0p sign mutation]` | mirrors A8 | yes |
+| M8-M9 | math | 112-113 | wall-only K1/H_even specializations | mirrors A9-A10 | tautological - see F3 |
+| M10-M11 | math | 126-127 | `expectZero[M5 Gaussian dM/dK overlap closed form]` | none (extra, but useful checkpoint of integrals) | yes (within extra scope) |
+| M12-M16 | math | 131-148 | K1wallNum / HevenwallNum / mutated guard | mirrors A11-A13 | yes (within extra scope) |
+| M17 | math | 151 | `expectZero[M6 wall-only Jacobian determinant - 1/27]` | mirrors A14 | yes (within extra scope) |
+| M18-M19 | math | 164-165 | wall det perturbation = `2*eps/3`, nonzero | extra to sympy A17 (closed-form check) | yes |
+| M20-M22 | math | 168-171 | wall solve + perturbed solve | mirrors A15-A16 | yes (within extra scope) |
+| M23-M25 | math | 175-177 | Y20 ratios | mirrors A18 | yes (within extra scope) |
+| M26 | math | 178-184 | `Do[expectZero[same-sign cross term m=...]]` | mirrors `real_y20_square_ratio` interior `same_sign` guard | yes (within extra scope) |
+| M27-M28 | math | 195-196 | grouped trace / line | mirrors A19 | yes (within extra scope) |
+
+The mathematica script does not include an analogue of A3 (the `atan` nonzero-discharge sanity probe). Otherwise, the mathematica spine is a structurally identical port of the sympy spine, with two extras (closed-form `sqrt(pi/3)`, `23 sqrt(pi)/(3 sqrt(3))` for the overlap integrals, and `2*eps/3` for the determinant perturbation).
 
 ## Findings
 
-### F1 — missing_verification_script
+### F1 - paper_misalignment
 
 **Severity:** high
+**Subtype:** paper_missing_script_claim
 **Files:**
-- `(missing)` — no Mathematica script for unit 015
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_015.tex:44-46` (the entire `\paragraph{Output.}` block)
+- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex:52` (the appendix row for stage 015)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:103-208` (wall-only gates, Y20 ratios, grouped trace)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl:104-196` (mirroring blocks M4-M9)
 
 **What's wrong:**
-The unit's manifest entry has `is_status_only_candidate: False`, so a second-engine companion is required. Only a SymPy script exists at `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`; there is no matching `.wl` under `mathematica/`. Consequently `engines_agree = n/a`. Every claim of unit 015 — the IBP closure, the closed-form `K_eta = URR0 - d_TwR_R0p + TwRR0 R0p^2/2`, the wall-only even-gate Jacobian determinant `1/27`, the Gaunt-driven Y20 overlap weights `(1, 1/2, -1)`, and the grouped trace/`b = 3a` identity — is verified by a single algebra system.
+The paper card's `\stagefield{Output}` says only: "Stage~015 exports the parent throat action promotion and the exact quadratic recovery formula \eqref{eq:stage015-keta}." The card body discusses promotion to `R(Omega,w,t)`, the Lagrangian density `L_Sigma`, the total action sum, and the K_eta formula - and nothing else. The appendix row reinforces this with "Parent throat-action packet and projection/reduction status boundary." Yet the scripts dedicate ~6 of 12 sympy asserts (A9-A19) and ~21 of 28 mathematica checks (M8-M28) to:
+- wall-only specializations of full even-channel gates K1 = -dM + dK/9 and H_even = (2/3)dM - dK/27, the `wall_only_specialization` substitution `{B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}` (sympy:123 / math:109), the Jacobian determinant `1/27` (sympy:174 / math:151), perturbed-solve diagnostics (sympy:176-180 / math:168-171), Gaussian overlap integrals `dMoverlap = sqrt(pi/3)` / `dKoverlap = 23 sqrt(pi)/(3 sqrt(3))` (math:126-127);
+- real-Y20 overlap ratios `{1, 1/2, -1}` for `m = 0, 1, 2` (sympy:195-200 / math:175-184);
+- grouped trace/line identities `xbar = x0`, `bx = 3*ax` with `lam20=1, lam21=1/2, lam22=-1` (sympy:202-208 / math:186-196).
+
+Nothing in the stage card, the eq:stage015-keta formula, the appendix row, or any (nonexistent) notes file references B/Z modes, K1/H_even gate algebra, Y20 STF coefficients, or a grouped trace-anomaly identity. The sympy docstring (line 2) even names the source as `step_13_parent_throat_action_master_notes.md` - a note that does not exist in `notes/stages/`. The script appears written against an unindexed master-note that may have been split or absorbed into other stages; without that source available, the wall-only / Y20 / grouped blocks are unmotivated relative to the published stage card.
 
 **Why this matters:**
-The closed-form effective mass `K_eta` and the even-gate Jacobian determinant `1/27` are quoted forward and consumed downstream. With only sympy, a wrong sign in `K_eta` or a coefficient slip in the gate Jacobian (e.g., `1/9` vs `1/3` vs `2/9` for the `D01_full` coefficient inside `K1_full`, or `1/27` vs `2/27` for `D01_full` inside `H_even_full`) would not be caught by an independent engine.
+A reader of the paper card has no way to know what the wall-only K1/H_even, Y20 ratios, or grouped trace identities are doing in this audit, or what claim they substantiate. Either the audit over-promises (the script verifies more than the stage exports) or the stage card under-promises (the gate/Y20/grouped scaffolding is genuinely a deliverable that the card forgot to mention). Direction of resolution is the user's call - Codex must not silently trim either side.
 
 **Required change:**
-Create `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl` that independently re-derives — not transliterates — the unit's claims using Mathematica primitives (`D`, `Series`, `Coefficient`, `Solve`, `Det`, `FullSimplify`, `Integrate`, `ThreeJSymbol` / `Gaunt`). It must terminate with an explicit pass/fail (`If[FullSimplify[...] =!= 0, Print["FAIL"]; Exit[1]]`) for each numbered claim. The Mathematica script must NOT mirror the sympy code line-for-line; it must derive `K_eta` by computing the second `eps`-derivative of `L` via Mathematica's `Series` (not `D[..., {eps, 2}]/2`), substitute the IBP image symbolically, and read the `eta^2` coefficient via `Coefficient`. Gaunt overlaps should use `ThreeJSymbol` directly (not `Gaunt`) and reduce via the standard `(2l+1)(2l'+1)(2l''+1)/(4 pi)` prefactor explicitly.
+`## Resolve before fix_loop` (see directive). The directive asks the user whether (a) the paper card should be expanded to mention the wall-only gates, Y20 ratios, and grouped trace as additional deliverables (with reference to the missing `step_13_parent_throat_action_master_notes.md` source), or (b) the script blocks M4-M9 (sympy lines 103-208; mathematica lines 104-196) should be trimmed because they were imported from a stale master-note draft that no longer belongs in stage 015.
 
 **Verification:**
-After Codex creates the `.wl`, the verifier runs `redteam exec-mathematica 015` and expects (i) the file to exist under `mathematica/`, (ii) the script to exit 0, (iii) all eight numbered claims in the directive's claim manifest to print PASS lines.
+After user picks a direction: if (a), `paper/stages/stage_015.tex` acquires new paragraphs and/or a notes file is added under `notes/stages/moving_throat_pde_stage015_*.md`; if (b), the script is trimmed to A1-A8 (sympy) and M1-M7 (mathematica), and the stale outputs are regenerated.
 
-### F2 — tautological_check
+### F2 - insufficient_verification
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:129-132`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:133-136`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:55-72`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl:67-81`
 
 **What's wrong:**
-By the time the script reaches line 129, the previous assertion at line 127 has already established `K1_wall == -dM + dK/9` (and 128 established `H_even_wall == (2/3) dM - dK/27`). Line 129-132 then asserts:
-```
-K1_wall.subs({dK: dK_overlap, dM: dM_overlap}) - (-dM_overlap + dK_overlap / 9) == 0
-```
-Because `K1_wall` is literally the symbolic expression `-dM + dK/9`, applying the substitution `{dK: dK_overlap, dM: dM_overlap}` produces, by linear substitution, exactly `-dM_overlap + dK_overlap/9`. The right-hand side is the same expression typed out. The residual is `0` by sympy's substitution mechanics alone — no integral, no Gaussian moment, no physics. The same pattern repeats verbatim at line 133-136 for `H_even_wall`. The labels in the output (`wall-only K1 from overlap-generated slots`, `wall-only H_even from overlap-generated slots`) imply the script verifies a coupling between the overlap integrals (`dK_overlap`, `dM_overlap` defined at line 110-114) and the wall-only gate forms, but the integrals are never actually evaluated, simplified against any concrete `beta(w)` profile, or compared to anything beyond a rename.
+The "concrete quadratic IBP with boundary" block uses `A_concrete = exp(-w^2)` and `eta_concrete = exp(-w^2/2)`. Both factors are even in `w`, so the cross integrand `-A * eta * eta_w = -exp(-w^2) * exp(-w^2/2) * (-w * exp(-w^2/2)) = w * exp(-2 w^2)` is odd and vanishes by parity over `(-oo, oo)`. The bulk integrand `(1/2) A_w * eta^2 = (1/2)(-2w) exp(-w^2) * exp(-w^2) = -w * exp(-2 w^2)` is also odd and vanishes. The boundary discharge `[-A * eta^2/2]` from `-oo` to `+oo` is 0 - 0 = 0. So the assertion `quad_cross_concrete - (quad_boundary_concrete + quad_bulk_concrete) = 0 - (0 + 0) = 0` is `0 = 0` - it does not exercise the IBP identity on a profile that produces nonzero pieces on either side. The paper card promises "both zero and nonzero boundary-discharge probes"; the nonzero probe (sympy line 57-58, `atan(w)`) is wired only to the `boundary_value` operator sanity check, never to the IBP identity itself. So the concrete IBP test never sees a case where boundary discharge is actually nonzero and IBP cancellation is doing real work.
 
 **Why this matters:**
-A reader of the output transcript sees two PASS lines that appear to anchor the overlap-integral generators against the gate-coefficient algebra. They anchor nothing — the overlap integrals enter only as variable names. If the overlap-generated story (`dK_overlap`, `dM_overlap`) had a sign flip, or a wrong coefficient on `delta_TO`/`delta_Keta`, or a `delta_Tw beta^2` instead of `delta_Tw (d beta/dw)^2`, this test would not detect it. Two assertions consume audit budget while exercising zero physics, and they sit in a stage that is the only verification of the wall-only gate collapse.
+The IBP check at the concrete level is decorative; only the generic symbolic identity A1 carries the IBP claim, and a wrong sign in the concrete instantiation would still pass because all three pieces are zero independently. The paper-promised "nonzero discharge probe" is satisfied only by an unrelated `atan` test that has nothing to do with the action density.
 
 **Required change:**
-Replace lines 129-136 with a check that exercises a concrete profile. Concretely:
-
-(a) At line 104 the script declares `wall_w = sp.symbols("wall_w", real=True)` and `beta = sp.Function("beta")(wall_w)`. Introduce a concrete real-valued profile `beta_concrete = sp.exp(-wall_w**2)` and four concrete radial-shift profiles, e.g. `delta_mu_concrete = sp.exp(-wall_w**2)`, `delta_Tw_concrete = sp.exp(-wall_w**2)`, `delta_TO_concrete = sp.exp(-wall_w**2)`, `delta_Keta_concrete = sp.exp(-wall_w**2)`. (Choose Gaussians to keep the integrals closed-form.)
-
-(b) Evaluate `dM_overlap_concrete = sp.integrate(delta_mu_concrete*beta_concrete**2, (wall_w,-sp.oo,sp.oo))` and `dK_overlap_concrete = sp.integrate(delta_Tw_concrete*sp.diff(beta_concrete, wall_w)**2 + (delta_Keta_concrete + 6*delta_TO_concrete)*beta_concrete**2, (wall_w,-sp.oo,sp.oo))`.
-
-(c) Assert that the wall-only `K1_wall.subs({dK: dK_overlap_concrete, dM: dM_overlap_concrete})` equals the concretely-substituted closed form `-dM_overlap_concrete + dK_overlap_concrete/9`. This still has the substitution-tautology issue at the symbolic level, but now both sides are concrete numbers, so any wrong coefficient or integrand sign in lines 110-114 propagates into a concrete numerical mismatch.
-
-(d) Additionally, mutate the `(delta_Keta + 6*delta_TO)*beta^2` term by changing the `6` to `5` and assert that the wall-only K1 (using the mutated `dK_overlap`) no longer matches the unmutated `dK_overlap_concrete/9` form. This guards the `6 delta_TO` coefficient.
-
-After patching, lines 129-136 are removed and the new concrete-Gaussian block (with the mutation guard) sits in their place.
+Add a second concrete pair whose profiles break the global parity so the integrals are nonzero and the IBP cancellation is meaningful. Concrete suggestion: keep the existing Gaussian pair as a degenerate-baseline check, and add new asserts using `A_extra = exp(-w^2)`, `eta_extra = w * exp(-w^2/2)`. Then the cross integrand is `-A_extra * eta_extra * D[eta_extra, w]`. With `eta_extra = w * exp(-w^2/2)`, `D[eta_extra, w] = exp(-w^2/2) - w^2 * exp(-w^2/2) = (1 - w^2) exp(-w^2/2)`. So `eta_extra * D[eta_extra, w] = w (1 - w^2) exp(-w^2)`; `A_extra * eta_extra * D[eta_extra, w] = w (1 - w^2) exp(-2 w^2)`, odd in `w`, still vanishes. Better profile: `A_extra = 1/(1 + w^2)` (even), `eta_extra = exp(-w^2/2)/(1+w^2)` - still even-times-even, same problem. The robust fix is to break the symmetry of `A`: use `A_extra(w) = w * exp(-w^2)` (odd) and keep `eta_extra = exp(-w^2/2)` (even). Then `A_extra * eta * eta_w = w * exp(-w^2) * exp(-w^2/2) * (-w * exp(-w^2/2)) = -w^2 * exp(-2 w^2)` is even, integral is nonzero (`-sqrt(pi/2)/4`). The bulk integrand `(1/2) A_extra' * eta^2` where `A_extra' = exp(-w^2) - 2 w^2 exp(-w^2) = (1 - 2 w^2) exp(-w^2)`, giving `(1/2)(1 - 2 w^2) exp(-2 w^2)`, also even and nonzero (`sqrt(pi/2)/4`). Boundary discharge `[-A_extra * eta_extra^2 / 2]_{-oo}^{+oo} = 0 - 0 = 0`. So the cross now equals bulk (both nonzero with opposite signs from the IBP sign), and the assertion `cross - (boundary + bulk) = 0` is non-trivial. Apply the analogous change in mathematica.
 
 **Verification:**
-The output transcript prints two new labels such as `wall-only K1 from concrete overlap integrals` and `wall-only K1 detects mutated 6 delta_TO coefficient`, both with PASS, and the labels `wall-only K1 from overlap-generated slots` and `wall-only H_even from overlap-generated slots` no longer appear (or have been re-purposed to fail under the same mutation).
+After the fix, the residual print lines for the new concrete IBP block should display nonzero `quad_cross_concrete_extra` and `quad_bulk_concrete_extra` summands (with the residual still 0 after cancellation). Mathematica's M2 output likewise. The existing Gaussian-pair asserts may remain as a parity baseline but must be augmented, not replaced silently.
 
-### F3 — hardcoded_result
+### F3 - tautological_check
 
-**Severity:** low
+**Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:25-32` (function `real_y20_square_ratio`)
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:167` (assertion `lam20 - 1 == 0`)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py:118-127`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl:104-113`
 
 **What's wrong:**
-The function `real_y20_square_ratio` defined at line 25-32 short-circuits the m=0 case:
-```python
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    ...
+The "wall-only K1/H_even specialization" asserts are tautological by construction. The script defines:
 ```
-When `m == 0`, the function returns the literal `Integer(1)` without computing any Gaunt coefficient — note the line above already evaluates `base = gaunt(2,2,2,0,0,0)`, but the returned value ignores it entirely. The subsequent assertion at line 167, `assert_zero("Y20 overlap lane 20", lam20 - 1)`, then reads `1 - 1 = 0` regardless of what the actual Gaunt structure is. For `m = 1, 2` the function does compute `(-1)^m gaunt(2,2,2,0,m,-m) / base`, so lines 168-169 are substantive. Only the `lam20 = 1` lane is hardcoded.
+D01_full = dK - B01 - Z01
+D21_full = -(dM + B21 + Z21)
+D41_full = -(B41 + Z41)
+K1_full  = D21_full + D01_full / 9
+H_even_full = D41_full - (2/3)*D21_full - D01_full / 27
+```
+then substitutes `{B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}` to produce `K1_wall = -dM + dK/9` and `H_even_wall = (2/3) dM - dK/27`, and immediately asserts these match `-dM + dK/9` and `(2/3) dM - dK/27`. The right-hand sides are not derived from anything physical; they are simply the same substitution applied by inspection. The assert cannot fail under any choice of coefficient because the LHS *is* the substitution. The same pattern is mirrored in mathematica M4. (This contrasts with A11-A12 which then substitute Gaussian-overlap closed forms - those are non-tautological *within* the extra scope, but the substitution identities A9-A10 / M4 are not.)
 
 **Why this matters:**
-The unit's claim is that the three real-Y20 overlap ratios `(lam20, lam21, lam22) = (1, 1/2, -1)` follow from Wigner 3-j algebra. The `lam20 = 1` lane is a coincidence of the normalization choice (dividing by `base = gaunt(2,2,2,0,0,0)`), not a free physics input — but the script never executes that division for `m=0`. If a future refactor swaps the normalization choice (e.g., divides by `(-1)^m gaunt(2,2,2,0,0,0)` or by some other lane), the `m=0` shortcut would silently continue to return 1 while the other lanes would shift relative to a different reference. The substantive content (`m=1: 1/2`, `m=2: -1`) is checked; the trivial m=0 lane is not.
+These two asserts spend script lines without testing anything. They look load-bearing in the verdict ("PASS") but cannot detect any error. They should either be removed, or replaced with a derivation of the K1/H_even reduction from the actual `\StatusExactClosure` reduction paper claim (which would lift the whole block out of `paper_missing_script_claim` territory if such a paper claim were available).
 
 **Required change:**
-Remove the m=0 short-circuit. Edit lines 25-32 so the function uniformly computes the Gaunt ratio for all m, with the same-sign sanity check skipped only when it is structurally degenerate (m=0 is its own negation). Concretely:
-```python
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m != 0:
-        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-        if same_sign != 0:
-            raise AssertionError(
-                f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}"
-            )
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
-```
-For m=0 this returns `gaunt(2,2,2,0,0,0)/gaunt(2,2,2,0,0,0)` which simplifies to 1 only after the Gaunt coefficient is actually evaluated and divided. The assertion at line 167 then exercises the Gaunt machinery rather than the literal `Integer(1)` shortcut.
+If F1 resolves toward keeping the wall-only block (paper-side expansion), replace A9-A10 / M4 with a derivation that traces back to a non-trivial paper-side coefficient claim (the values `1/9`, `-1`, `2/3`, `-1/27` for the linear combinations defining K1 and H_even must come from somewhere paper-side - quote that source and derive the wall-only forms by independent substitution). If F1 resolves toward removing the wall-only block, delete A9-A10 (sympy 126-127) and M4 (mathematica 112-113) along with the rest of the wall-only scaffolding. Either way, do not leave a tautological substitution-against-itself check.
+
+This finding is therefore **blocked on F1** - the right action depends on F1's user resolution.
 
 **Verification:**
-After patching, line 167's `lam20 - 1` is residual-zero only because sympy's `gaunt(2,2,2,0,0,0)` actually computes a nonzero rational and divides cleanly. The output transcript still prints `Y20 overlap lane 20` with PASS, but a mutation to the `base` definition (e.g., replacing `gaunt(2,2,2,0,0,0)` with `2*gaunt(2,2,2,0,0,0)`) would now flip `lam20` to `1/2` and surface the regression.
+The assertion must, after fix, be capable of failing under at least one wrong choice of coefficient. If the derivation paths to K1/H_even are independent (one symbolic substitution, one derivation from the paper-stated invariant), the assert is non-tautological.
+
+### F4 - mathematica_transliteration
+
+**Severity:** medium
+**Files:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl`
+
+**What's wrong:**
+The Mathematica script's algebraic spine is a structurally identical re-encoding of the SymPy script rather than an independent re-derivation. Paired examples:
+
+- SymPy 81-86 vs Mathematica 83-87 - same `Tw = Tw0 + eps*TwR0*eta + eps^2*TwRR0*eta^2/2`, same `U`, same `Rt = eps*eta_t`, same `Rw = R0p + eps*eta_w`, same `L` decomposition.
+- SymPy 87 `L2_raw = sp.diff(sp.expand(L), eps, 2).subs(eps, 0) / 2` vs Mathematica 88 `L2raw = Coefficient[Series[lagrangian, {eps, 0, 2}] // Normal, eps, 2]` - different SDK function calls, same operation (extract eps^2 coefficient).
+- SymPy 96 `L2_after_ibp_derived = sp.expand(L2_raw - cross_term + cross_after_ibp)` vs Mathematica 95 `L2afterIBP = Expand[L2raw - (-TwR0*R0p*eta*etaw) + dTwRR0p*eta^2/2]` - character-for-character algebraic mirror.
+- SymPy 118-125 vs Mathematica 104-111 - same `D01_full`, `D21_full`, `D41_full`, same `K1_full = D21_full + D01_full/9`, same `wall_only_specialization`/`wallSpec`. The variable choreography is line-for-line preserved.
+- SymPy `real_y20_square_ratio` (25-31) vs Mathematica `realY20Ratio` (174) - identical normalization-by-`gauntBase`.
+- SymPy 202-208 vs Mathematica 189-196 - identical `xbar = (x20 + 2 x21 + 2 x22)/5`, `ax = (2 x20 - x21 - x22)/10`, `bx = (x21 - x22)/2`.
+
+The two scripts do not derive the K_eta formula or the wall-only K1/H_even combinations from independent physical premises; they share the same intermediate algebraic representation. The Mathematica does add `Sqrt[Pi/3]`, `23 Sqrt[Pi]/(3 Sqrt[3])`, and `2*eps/3` as extra closed-form checkpoints (M5, M6), which is genuine independent content - but the algebraic backbone is a port.
+
+**Why this matters:**
+A second engine is meant to catch silent algebra/typo errors in the first. When both engines walk the same intermediate steps with the same variable names and decompositions, an error in the derivation strategy propagates into both engines identically and is invisible to the cross-check. The closed-form checkpoints added in M5/M6 are good but do not redeem the K_eta or wall-only blocks.
+
+**Required change:**
+Restructure the Mathematica K_eta block (M3) to derive K_eta independently, *without* pre-expanding `lagrangian` to eps^2 with `Series[...] // Normal` and pattern-matching against a pre-written `canonicalL2`. Concrete prescription: compute the Euler-Lagrange operator on `lagrangian` for the field `R` directly, linearize around `R = R0(w)` by writing `R = R0[w] + eps*eta[t,w,Omega]` (treat eta as a separate field), expand the EL equation to O(eps), and read off the linearized PDE's mass coefficient. Specifically, define `RFull[t_, w_, om_] := R0[w] + eps*eta[t,w,om]` and `LSig[R_, Rt_, Rw_, gO_, w_] := mu0*Rt^2/2 - (Tw0 + (R - R0[w])*TwR0 + (R - R0[w])^2*TwRR0/2)*Rw^2/2 - TO0*gO/2 - (U0 + (R - R0[w])*UR0 + (R - R0[w])^2*URR0/2)`. Then the EL coefficient of `eta` linearized in eps gives the K_eta combination via `D[LSig, R] - D[D[LSig, Rt], t] - D[D[LSig, Rw], w]` evaluated at R = R0[w] with appropriate variable replacements. Compute that combination, extract the linear-in-eta coefficient (the mass term), and compare to `URR0 - dTwRR0p + TwRR0*R0p^2/2`. This derivation path does not go through `Series` and does not share variable names with the sympy script's intermediate `L2raw`/`canonicalL2` decomposition.
+
+For the wall-only block (M4): the wall-only K1/H_even combinations are tautological (F3) - resolve F3 first; the transliteration call applies only conditionally if the wall-only block survives F1 resolution.
+
+**Verification:**
+After restructuring, the Mathematica script should reach the same K_eta formula but via Euler-Lagrange linearization, not via series-expansion-and-pattern-match. The diff between the SymPy and Mathematica scripts at the K_eta-block level should not be a literal `s/sp.diff/D/`, `s/sp.expand/Expand/` rewrite. Search-and-replace transliteration should be impossible to construct.
 
 ## Independent-derivation check (Mathematica)
 
-No `.wl` exists. See finding F1. There is no second engine to compare against.
+See F4. The Mathematica script's spine is a transliteration of the SymPy script's algebra for the K_eta block and the wall-only block. Two-paired examples justifying the call:
+
+SymPy 95-96:
+```
+cross_term = -TwR0 * R0p * eta * eta_w
+cross_after_ibp = d_TwR_R0p * eta**2 / 2
+L2_after_ibp_derived = sp.expand(L2_raw - cross_term + cross_after_ibp)
+```
+Mathematica 95:
+```
+L2afterIBP = Expand[L2raw - (-TwR0*R0p*eta*etaw) + dTwRR0p*eta^2/2];
+```
+
+SymPy 118-127:
+```
+D01_full = dK - B01 - Z01
+D21_full = -(dM + B21 + Z21)
+D41_full = -(B41 + Z41)
+K1_full = sp.expand(D21_full + D01_full / 9)
+H_even_full = sp.expand(D41_full - sp.Rational(2, 3) * D21_full - D01_full / 27)
+wall_only_specialization = {B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}
+K1_wall = sp.expand(K1_full.subs(wall_only_specialization))
+H_even_wall = sp.expand(H_even_full.subs(wall_only_specialization))
+```
+Mathematica 104-111:
+```
+D01full = dK - b01 - z01;
+D21full = -(dM + b21 + z21);
+D41full = -(b41 + z41);
+K1full = D21full + D01full/9;
+Hevenfull = D41full - (2/3)*D21full - D01full/27;
+wallSpec = {b01 -> 0, b21 -> 0, b41 -> 0, z01 -> 0, z21 -> 0, z41 -> 0};
+K1wall = Expand[K1full /. wallSpec];
+Hevenwall = Expand[Hevenfull /. wallSpec];
+```
+This is a port, not a re-derivation. The closed-form Gaussian checkpoints in M5 and the perturbation value `2*eps/3` in M6 are independent content; the K_eta and wall-only spines are not.
 
 ## Engine cross-check
 
-`engines_agree = n/a` — only sympy is present.
+Both engines produce identical PASS verdicts across all asserts. SymPy output (7 lines) is a summary; Mathematica output (56 lines) reports per-check residuals, all "= 0" or matching the expected nonzero residual. No engine disagreement. The Mathematica script also independently confirms two closed forms the SymPy script does not state explicitly: `dMoverlap = Sqrt[Pi/3]` and `dKoverlap = 23 Sqrt[Pi]/(3 Sqrt[3])`. Outputs are fresh (sympy txt mtime 1779397234 > script 1779390705; mathematica txt 1779397279 > script 1779390746).
 
 ## Verdict justification
 
-The SymPy script's substantive content is the closed-form `K_eta = URR0 - d_TwR_R0p + TwRR0 R0p^2/2` (anchored by A6-A8, including the mutated sign guard at A8), the wall-only Jacobian determinant `1/27` (A13) with two perturbation guards (A16, A17, A18), the Gaunt-derived `lam21 = 1/2`, `lam22 = -1` (A20, A21), and the grouped-trace / `b=3a` identities (A22, A23). These hold up under attack: I tried to break the K_eta sign by recomputing the `eps^2` coefficient of `L = mu0 Rt^2/2 - Tw Rw^2/2 - TO0 eps^2 grad2/2 - U` by hand and the script's `L2_raw - cross_term + cross_after_ibp` correctly yields `mu0 eta_t^2/2 - Tw0 eta_w^2/2 - TO0 grad2/2 - (URR0 - d_TwR_R0p + TwRR0 R0p^2/2) eta^2/2`. I tried to find a sign-error path in the Jacobian: with `K1_wall = -dM + dK/9` and `H_even_wall = (2/3) dM - dK/27`, the 2x2 matrix's columns are `[1/9, -1/27]^T` and `[-1, 2/3]^T`, giving det `(1/9)(2/3) - (-1)(-1/27) = 2/27 - 1/27 = 1/27` — the script's value. I checked the grouped-trace coefficients: `(2*1 - 1/2 - (-1))/10 = (2.5)/10 = 1/4 = a`, `(1/2 - (-1))/2 = 3/4 = b`, and `b - 3a = 0`. All substantive checks pass.
-
-The three findings are: (1) the Mathematica engine is absent, which is required for `is_status_only_candidate: False`; (2) the wall-only-overlap-from-slots assertions at lines 129-136 reduce to symbolic substitution renames and exercise no physics or integral structure; (3) the `lam20 = 1` lane is a literal shortcut in the `real_y20_square_ratio` helper that never invokes the Gaunt coefficient it claims to. The unit is repairable; verdict is `findings`, not `stop_cold`. None of the corrections would propagate a sign or coefficient change to downstream units (the substantive results F1 must reproduce are unchanged).
+`findings`. The K_eta exact-quadratic-recovery deliverable that the paper card calls out is genuinely verified (sympy A6-A8 / mathematica M5-M7) with an honest sign-mutation guard. However: (1) about half of each script is dedicated to wall-only gate algebra, Y20 overlap ratios, and grouped-trace identities that the paper card never mentions - this is paper_misalignment requiring user resolution, not a Codex fix. (2) The concrete Gaussian boundary-discharge probe is degenerate (cross, bulk, and boundary are all individually zero by parity), so it does not exercise the IBP cancellation. (3) The wall-only K1/H_even specialization asserts are tautological substitutions of the same coefficients against themselves (and depend on F1's resolution for the right action). (4) The Mathematica script's K_eta and wall-only spines are transliterations of the SymPy spine, weakening the second-engine cross-check (independent closed-form checkpoints in M5/M6 are a partial mitigation only). I am not flagging `CRITICAL_DOWNSTREAM` because the K_eta formula itself does match the paper, and the questionable extra blocks (wall-only, Y20, grouped) would only propagate downstream if downstream stages depend on them - which is exactly what the user-side resolution of F1 will determine.
 
 ## Self-test notes
 
-I checked four traps. Variable independence: F1's required mathematica derivation uses `D[L, eps, 2]` on a polynomial in eps where every named symbol is independent of eps after the eps-expansion of Tw, U, Rw, Rt is performed, so each `D` exercises a real channel; no derivative is identically zero by construction. Symmetry/parity: F2's proposed Gaussian profiles `beta = exp(-w^2)` and `delta_X = exp(-w^2)` are all even in `wall_w`, so `delta_Tw (d beta/dw)^2` integrand is `exp(-w^2) * 4 w^2 exp(-2 w^2)` = even, and `(delta_Keta + 6 delta_TO) beta^2 = 7 exp(-3 w^2)` = even — both nonzero finite Gaussian moments; the mutation guard (changing 6 to 5) shifts the integral by `-exp(-3 w^2)` integrated, again nonzero. Trivial-case pre-check: for F3, with `gaunt(2,2,2,0,0,0)` being a known nonzero rational (Wigner 3-j with l1=l2=l3=2, m's all zero is sqrt(5/(14 pi)) * (-2/sqrt(35)) or similar nonzero closed form), `gaunt(2,2,2,0,0,0)/gaunt(2,2,2,0,0,0) = 1` symbolically; the assertion `lam20 - 1 == 0` still passes. Path specifications: F1's target path is `mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl` — under `mathematica/`, with `_mathematica_audit.wl` suffix, matching the existing `.py` filename pattern. No self-test step uncovered an error.
+For F2 I confirmed by symmetry argument that `A_concrete = exp(-w^2)` and `eta_concrete = exp(-w^2/2)` produce odd integrands on both the cross and bulk integrals over the symmetric domain `(-oo, oo)`, so both individually vanish - the IBP identity at the concrete level is `0 = 0 + 0`. I then mentally pre-checked the F2 fix profile `A_extra = w * exp(-w^2)`, `eta_extra = exp(-w^2/2)`: cross integrand `w * exp(-w^2) * exp(-w^2/2) * (-w) * exp(-w^2/2)` is even (w^2 factor), integral nonzero; A_extra' = (1 - 2w^2) exp(-w^2), bulk integrand `(1 - 2w^2) exp(-2w^2)/2` is even, integral nonzero; boundary `[-A_extra * eta_extra^2 / 2]` at +-oo is 0; so the IBP cancellation cross - bulk = 0 is a real (nonzero=nonzero) identity. For F3 I traced both `K1_wall` and `(-dM + dK/9)` back to the same substitution and confirmed the assert is provably 0 by construction. For F4 I paired four spine blocks line-by-line across the two scripts to confirm the transliteration call. For F1, I confirmed by file listing that no `notes/stages/moving_throat_pde_stage015_*.md` file exists, and that the paper card and appendix row contain no mention of wall-only gates, Y20 ratios, or grouped trace identities; therefore the routing of F1 to user resolution (not Codex auto-fix) is correct. I also verified the `assert_zero("wall-only dK closed form", wall_even_solve[dK])` substantively: solving `-dM + dK/9 = 0, (2/3) dM - dK/27 = 0` yields the unique trivial kernel `dK = 0, dM = 0`, so the assert is non-tautological even though the assertion's label "closed form" is misleading (there is no nontrivial closed form, only the trivial kernel).

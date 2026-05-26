@@ -120,10 +120,10 @@ expectZero["Sigma z4", z4 - ((n0 (s2^2 - d0) - s2 g2 d0)/d0^3 /. subsDict)];
 
 subbanner["III. Outgoing dressing of the mixed block"];
 
-Clear[piOut, gammaPort];
+Clear[piOut, gammaPort, radius, cS];
 $Assumptions =
-  Element[{omega, oA, oW, r, gA, gW, piOut, gammaPort}, Reals] &&
-  oA > 0 && oW > 0 && gammaPort > 0;
+  Element[{omega, oA, oW, r, gA, gW, piOut, gammaPort, radius, cS}, Reals] &&
+  oA > 0 && oW > 0 && gammaPort > 0 && radius > 0 && cS > 0;
 
 aKer = oA^2 - omega^2;
 wKer = oW^2 - omega^2;
@@ -133,6 +133,11 @@ sigmaFull = FullSimplify[(gA^2 (wKer - piOut) + 2 gA gW r + gW^2 aKer)/(aKer (wK
 nOmega = FullSimplify[D[sigmaFull, piOut] /. piOut -> 0, Assumptions -> $Assumptions];
 n0 = FullSimplify[nOmega /. omega -> 0, Assumptions -> oA > 0 && oW > 0];
 dCorr = FullSimplify[-I gammaPort omega^5 n0, Assumptions -> $Assumptions];
+expectZero[
+  "delta D_2^(odd) composed from Section III N(0) closed form and Section IV Gamma5 = a^5/(27 c_s^5)",
+  (dCorr /. gammaPort -> radius^5/(27 cS^5)) -
+    (-I (oA^2 gW + r gA)^2/(oA^2 oW^2 - r^2)^2 radius^5 omega^5/(27 cS^5))
+];
 
 Print["Sigma_full(omega) = ", fmt[sigmaFull]];
 Print["N(omega) = ", fmt[nOmega]];

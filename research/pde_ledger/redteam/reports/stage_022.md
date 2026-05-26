@@ -2,222 +2,132 @@
 unit_id: 022
 batch: I.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T00:00:00Z
-verdict: findings
+audit_date: 2026-05-25T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 2
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 022 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_022.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 66: "022 & Grouped normalization bridge & ExactClosure / Open & Conversion from operator moments to normalized response moments and invariant outgoing-normalization product.")
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage022_grouped_p2_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.txt`
 
+## What the paper claims
+
+Per the `\stagefield{Output}` line of stage_022.tex:137: "Stage~022 outputs the normalized response formulas \eqref{eq:app-stage022-u2u4}, the grouped inverse map \eqref{eq:app-stage022-grouped-inverse}, the prefactor coefficients \eqref{eq:app-stage022-pref-coeffs}, the odd coefficient \eqref{eq:app-stage022-k-gamma}, and the invariant normalization test \eqref{eq:app-stage022-p0-target}." The five distinct deliverables are: (D1) u_2^{(A)} = -D_{A2}/D_{A0} and u_4^{(A)} = (D_{A2}^2 - D_{A0}D_{A4})/D_{A0}^2; (D2) grouped inverse map x_{20}=xbar+4a_x, x_{21}=xbar-a_x+b_x, x_{22}=xbar-a_x-b_x; (D3) P_{A0}, P_{A2}, P_{A4} coefficients of the internal prefactor D_{A0}N_A/(D_A^cons)^2; (D4) branch coefficients K_{A0}=P_{A0}, K_{A2}=P_{A2}+AP_{A0}, K_{A4}=P_{A4}+AP_{A2}+BP_{A0}, Gamma_5^{(A)}=G_5 P_{A0}; (D5) invariant normalization product mhat_0^2 P_0 = 54 G c_s^5/(5 a^5 c^5). The notes additionally include (D6, §6) the Stage-021 prototype N_0/N_2/N_4 in terms of (Delta0, S2, P0_proto, gW), and (D7, §8) constant-prefactor K_2/K_4 branch values. The compact-outgoing-fingerprint values A = a^2/(9c_s^2), B = 4a^4/(81c_s^4), G_5 = a^5/(27c_s^5) appear in the paper card eq:app-stage022-abg.
+
 ## What the script claims to verify
 
-The scripts certify a five-step algebraic bridge that takes Stage-3/4 reduced-sector data and lands on the 2.5PN grouped-quadrupole normalization product. Step I derives the omega^2 / omega^4 coefficients of the normalized response `Y_resp(omega) = D0 / D_cons(omega)` as `u2 = -D2/D0` and `u4 = (D2^2 - D0 D4)/D0^2`. Step II computes the outgoing internal prefactor `Pref(omega) = D0 N(omega) / D_cons(omega)^2` and the full branch coefficients `K0, K2, K4, Gamma5` after multiplying by an `l=2` outgoing fingerprint `Y2_out = 1 + A omega^2 + B omega^4 + i G5 omega^5`. Step III defines a grouped-real P2 forward map `(x20, x21, x22) -> (xbar, ax, bx)` and asserts the algebraic inverse, plus an isotropy collapse `xbar = xQ, ax = 0, bx = 0` when all three lane coefficients coincide. Step IV expands the one-lane Stage-4 prototype transfer factor `N_proto = (P0_proto - gW omega^2)^2 / (Delta0 - S2 omega^2 + omega^4)^2` in omega and confirms its `N0, N2, N4` coefficients, then round-trips into Stage-4 Maxwell/mixed symbols via `Delta0 = Omega_A^2 Omega_W^2 - R^2`, `S2 = Omega_A^2 + Omega_W^2`, `P0_proto = Omega_A^2 gW + R g_A`. Step V derives the `l=2` outgoing fingerprint `A_stage4 = a^2/(9 c_s^2)`, `B_stage4 = 4 a^4/(81 c_s^4)`, `G5_stage4 = a^5/(27 c_s^5)` from the spherical-Hankel-function DtN combinatorics, solves `mhat^2 P0 Gamma5_port = gamma_GR = 2G/(5c^5)` for the invariant product, and asserts the three `mhat = 1` literal targets `K0_target = 54 G c_s^5/(5 a^5 c^5)`, `K2_target = 6 G c_s^3/(5 a^3 c^5)`, `K4_target = 8 G c_s/(15 a c^5)`.
+The SymPy script (Sections I-V) and Mathematica script (Sections I-VI) jointly assert: (a) the inverse series expansion of D0/Dcons gives u2, u4 with the boxed signs; (b) the prefactor series D0*N/Dcons^2 gives P0, P2, P4 with the boxed formulas; (c) multiplication by the outgoing fingerprint 1+A*omega^2+B*omega^4+iG5*omega^5 produces K0, K2, K4, Gamma5 with the claimed combinations; (d) the grouped inverse map (xbar, a_x, b_x) → (x20, x21, x22) recovers identity and collapses isotropically to a_2=b_2=0; (e) the Stage-021 one-port prototype's N0/N2/N4 reduce to the closed-form rational expressions in (Delta0, S2, P0_proto, gW); (f) the compact outgoing-fingerprint values A, B, G5 are reproduced from a spherical-Hankel-derived outgoing DtN expansion; (g) solving mhat^2*P0*Gamma5_port = 2G/(5c^5) for P0 and evaluating at mhat=1 yields P_0 = 54 G c_s^5 / (5 a^5 c^5), along with K2_target = 6 G c_s^3 / (5 a^3 c^5) and K4_target = 8 G c_s / (15 a c^5).
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| D1 (u2, u4) | sympy:80-81; mathematica:47-48 | match |
+| D2 (grouped inverse map) | sympy:181-183; mathematica:93-95 | match |
+| D3 (P0, P2, P4) | sympy:118-123; mathematica:72-77 | match |
+| D4 (K0, K2, K4, Gamma5) | sympy:133-136; mathematica:78-81 | match |
+| D5 (mhat^2*P0 target) | sympy:298-300; mathematica:167 | match |
+| D6 (notes §6: prototype N0/N2/N4) | sympy:217-222; mathematica:119-124 | match |
+| D7 (notes §8: const-pref K2/K4) | sympy:314-320; mathematica:168-169 | match |
+| paper eq:app-stage022-abg (A,B,G5 values) | sympy:275-277 (anchored via j2/y2 polynomial-rational form); mathematica:154-156 (anchored via SphericalHankelH1) | match |
+
+Every paper-side deliverable has a corresponding script-side check, and every script-side assertion traces back to either an explicit paper equation or to the notes file. No orphan assertions.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1  | sympy        | 80      | `u2 + D2/D0 == 0` (from series of `D0/Dcons`) | yes |
-| A2  | sympy        | 81      | `u4 - (D2^2 - D0 D4)/D0^2 == 0` | yes |
-| A3  | sympy        | 118     | `P0 - N0/D0 == 0` | yes |
-| A4  | sympy        | 119     | `P2 - (D0 N2 - 2 D2 N0)/D0^2 == 0` | yes |
-| A5  | sympy        | 120-123 | `P4 - (D0^2 N4 - 2 D0(D2 N2 + D4 N0) + 3 D2^2 N0)/D0^3 == 0` | yes |
-| A6  | sympy        | 133     | `K0 - P0 == 0` | partial (`K0 = pref[0] * Y2_out[0] = P0 * 1 = P0` by construction) |
-| A7  | sympy        | 134     | `K2 - (P2 + A P0) == 0` | yes |
-| A8  | sympy        | 135     | `K4 - (P4 + A P2 + B P0) == 0` | yes |
-| A9  | sympy        | 136     | `Gamma5 - G5 P0 == 0` | yes |
-| A10 | sympy        | 181-183 | inverse round-trip `x2N_back - x2N == 0` | yes |
-| A11 | sympy        | 193-195 | isotropy `xbar_iso - xQ = ax_iso = bx_iso = 0` when all lanes equal `xQ` | yes |
-| A12 | sympy        | 217-222 | `N0, N2, N4` prototype formulas | yes |
-| A13 | sympy        | 250-261 | round-trip `Nseries[Nproto.subs(dict_back)].coeff(omega,k) - Nseries[Nproto].coeff(omega,k).subs(dict_back) == 0` | NO (tautological — see F2) |
-| A14 | sympy        | 293-295 | Stage-4 outgoing fingerprint `A, B, G5` from spherical-Hankel `Lambda2` | yes |
-| A15 | sympy        | 315-318 | `mhat=1` invariant-product target literal | yes |
-| A16 | sympy        | 331-338 | `mhat=1` `K2, K4` target literals | yes |
-| M1  | mathematica  | 40-41   | mirror of A1, A2 via `Series[d0/dCons]` | yes (same claim, non-independent route — F1) |
-| M2  | mathematica  | 57-66   | mirror of A3-A9 via `pref = d0*nFac/dCons^2` series | yes (same claim, non-independent route — F1) |
-| M3  | mathematica  | 75-80   | mirror of A10, A11 inverse / isotropy | yes (same claim, non-independent route — F1) |
-| M4  | mathematica  | 94-99   | mirror of A12 prototype | yes (same claim, non-independent route — F1) |
-| M5  | mathematica  | 107-109 | mirror of A13 round-trip | NO (tautological — see F2) |
-| M6  | mathematica  | 134-136 | mirror of A14 outgoing fingerprint | yes (same claim, non-independent route — F1) |
-| M7  | mathematica  | 147-149 | mirror of A15, A16 invariant-product literals | yes (same claim, non-independent route — F1) |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 80 | `simplify(u2 + D2/D0) == 0` (u2 from series) | D1 | yes |
+| A2 | sympy | 81 | `simplify(u4 - (D2^2-D0*D4)/D0^2) == 0` (u4 from series) | D1 | yes |
+| A3 | sympy | 118 | `P0 - N0/D0 == 0` (P0 from series of D0*N/Dcons^2) | D3 | yes |
+| A4 | sympy | 119 | `P2 - (D0*N2-2*D2*N0)/D0^2 == 0` | D3 | yes |
+| A5 | sympy | 120-123 | `P4 - (D0^2*N4 - 2*D0*(D2*N2+D4*N0) + 3*D2^2*N0)/D0^3 == 0` | D3 | yes |
+| A6 | sympy | 133 | `K0 - P0 == 0` | D4 | yes |
+| A7 | sympy | 134 | `K2 - (P2+A*P0) == 0` | D4 | yes |
+| A8 | sympy | 135 | `K4 - (P4+A*P2+B*P0) == 0` | D4 | yes |
+| A9 | sympy | 136 | `Gamma5 - G5*P0 == 0` | D4 | yes |
+| A10 | sympy | 181-183 | inverse map recovers x20, x21, x22 | D2 | yes (linear algebra check) |
+| A11 | sympy | 193-195 | xbar_iso=xQ, ax_iso=0, bx_iso=0 | D2 | yes |
+| A12 | sympy | 217-222 | prototype N0, N2, N4 match closed forms | D6 (notes §6) | yes |
+| A13 | sympy | 275-277 | Stage-4 A, B, G5 from j2/y2 polynomial form match paper eq:app-stage022-abg | paper eq:app-stage022-abg | yes |
+| A14 | sympy | 298-300 | `(NQ_target at mhat=1) - 54*G*c_s^5/(5*a^5*c^5) == 0` | D5 | yes |
+| A15 | sympy | 313-320 | K2_target, K4_target at mhat=1 | D7 (notes §8) | yes |
+| B1-B7 | mathematica | 47-48,72-81 | matches A1-A9 by inverse-relation Solve route (independent algorithm) | D1, D3, D4 | yes |
+| B8-B13 | mathematica | 93-98 | inverse-map identity (parallel check; engines acknowledge no engine-independent route exists for 3x3 linear algebra) | D2 | yes |
+| B14-B16 | mathematica | 119-124 | prototype N0, N2, N4 via inverse-relation Solve | D6 | yes |
+| B17-B19 | mathematica | 154-156 | A, B, G5 from SphericalHankelH1[2,z] expansion (independent of SymPy's polynomial form) | paper eq:app-stage022-abg | yes |
+| B20-B22 | mathematica | 167-169 | mhat=1 K0, K2, K4 targets | D5, D7 | yes |
+
+All assertions are non-tautological in the sense that the LHS is computed independently of the RHS by series expansion or symbolic Solve, then the formula is checked against the paper-stated closed form. The one borderline case is the inverse-map identity (A10/B8-B10): the forward map (xbar, a_x, b_x) is a 3x3 linear transform of (x20, x21, x22), and any consistent inverse can be substituted back to recover identity. The Mathematica script explicitly flags this in a comment on line 90-92 ("Intentional parallel check: the 3x3 inverse-map identity admits no engine-independent route. Both engines verify the same algebra as a sanity cross-check."). I accept this disclosure; if the proposed inverse map formulas were wrong, the recovery would fail, so the check is substantive in the bounded sense.
 
 ## Findings
 
-### F1 — mathematica_transliteration
-
-**Severity:** medium
-
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl:33-149`
-- compared against `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py:65-338`
-
-**What's wrong:**
-
-The Mathematica audit script is a section-by-section transliteration of the SymPy audit script. Every algebraic step matches the SymPy choreography (same intermediate variables, same series-expansion approach, same coefficient extraction order, same target formulas). The only differences are syntactic — `sp.series` vs `Series[...]`, `coeff` vs `Coefficient`, `simplify` vs `FullSimplify`, snake_case vs camelCase. Three matched excerpts:
-
-1. **Section I — `Y_resp` series and coefficient extraction.**
-
-   SymPy (`scripts/.../stage022_..._sympy_audit.py:71-74`):
-   ```
-   Dcons = D0 + D2 * omega**2 + D4 * omega**4
-   Yresp = sp.expand(sp.series(D0 / Dcons, omega, 0, 6).removeO())
-   u2 = sp.simplify(Yresp.coeff(omega, 2))
-   u4 = sp.simplify(Yresp.coeff(omega, 4))
-   ```
-
-   Mathematica (`mathematica/.../stage022_..._mathematica_audit.wl:33-36`):
-   ```
-   dCons = d0 + d2*omega^2 + d4*omega^4;
-   yResp = Expand[Normal[Series[d0/dCons, {omega, 0, 4}]]];
-   u2 = FullSimplify[Coefficient[yResp, omega, 2], Assumptions -> $Assumptions];
-   u4 = FullSimplify[Coefficient[yResp, omega, 4], Assumptions -> $Assumptions];
-   ```
-
-   Identical algebraic path: build `Dcons`, take the Taylor series of `D0/Dcons` around omega=0, read off the omega^2 and omega^4 coefficients. The Mathematica version does not, for instance, verify `u2 = -D2/D0` via the inverse-relation `Y_resp * Dcons - D0 = 0` and a coefficient match on the *product* (which is a genuinely distinct route).
-
-2. **Section IV — Stage-4 prototype `N_proto` series.**
-
-   SymPy (lines 210-214):
-   ```
-   Nproto = (P0_proto - gW * omega**2) ** 2 / (Delta0 - S2 * omega**2 + omega**4) ** 2
-   Nseries = sp.expand(sp.series(Nproto, omega, 0, 6).removeO())
-   N0 = sp.simplify(Nseries.coeff(omega, 0))
-   N2 = sp.simplify(Nseries.coeff(omega, 2))
-   N4 = sp.simplify(Nseries.coeff(omega, 4))
-   ```
-
-   Mathematica (lines 87-91):
-   ```
-   nProto = (p0proto - gW*omega^2)^2/(delta0 - s2*omega^2 + omega^4)^2;
-   nSeries = Expand[Normal[Series[nProto, {omega, 0, 4}]]];
-   n0Proto = FullSimplify[Coefficient[nSeries, omega, 0], Assumptions -> $Assumptions];
-   n2Proto = FullSimplify[Coefficient[nSeries, omega, 2], Assumptions -> $Assumptions];
-   n4Proto = FullSimplify[Coefficient[nSeries, omega, 4], Assumptions -> $Assumptions];
-   ```
-
-   Same `N_proto` factored form, same coefficient-extraction order. An independent Mathematica derivation would, for example, factor `N_proto = (P0_proto - gW omega^2)^2 * (1 / D(omega))^2`, compute `(1/D)` via `InverseSeries`/polynomial-inversion, and convolve the two factors; or use `SeriesData` operations on the factored form directly. The current code matches SymPy's pattern.
-
-3. **Section V — `Lambda2` from spherical Hankel and coefficient match.**
-
-   SymPy (lines 280-291):
-   ```
-   j2 = (sp.Rational(3, 1) / z**3 - sp.Rational(1, 1) / z) * sp.sin(z) - 3 * sp.cos(z) / z**2
-   y2 = -((sp.Rational(3, 1) / z**3 - sp.Rational(1, 1) / z) * sp.cos(z) + 3 * sp.sin(z) / z**2)
-   h2 = sp.simplify(j2 + I * y2)
-   Lambda2 = sp.simplify((omega := sp.symbols("omega", real=True)) * sp.diff(h2, z) / h2).subs(z, omega * a / c_s)
-   Lambda2_series = sp.series(Lambda2, omega, 0, 7).removeO()
-   Y2 = sp.simplify(sp.series(1 / Lambda2_series, omega, 0, 6).removeO())
-   ```
-
-   Mathematica (lines 121-126):
-   ```
-   j2 = ((3/z^3) - 1/z) Sin[z] - 3 Cos[z]/z^2;
-   y2 = -((3/z^3) - 1/z) Cos[z] - 3 Sin[z]/z^2;
-   h2 = FullSimplify[j2 + I y2, Assumptions -> $Assumptions];
-   lambda2 = FullSimplify[(omega D[h2, z]/h2) /. z -> omega a/cS, Assumptions -> $Assumptions];
-   lambda2Series = Normal[Series[lambda2, {omega, 0, 6}]];
-   y2Resp = Normal[Series[1/lambda2Series, {omega, 0, 5}]] // FullSimplify;
-   ```
-
-   Same explicit `j2`, `y2`, `h2 = j2 + i y2`, same `Lambda2 = omega * h2'(z)/h2(z)` then substitute, same series-then-invert recipe. Mathematica has a built-in `SphericalHankelH1[n, z]` which gives an independent route to `h2`; the script does not use it. This makes the Mathematica check a transliteration of SymPy's explicit polynomial-rational form rather than an independent derivation from a standard-library special function.
-
-**Why this matters:**
-
-The two-engine policy exists so that a SymPy bug or convention quirk does not silently propagate into "verified". When both scripts walk the same algebraic path, a bug in the shared *idea* (e.g. wrong choice of branch, wrong normalization of `Y2_out`, sign error in `h2 = j2 + i y2` convention) cannot be caught by the cross-check. Both engines pass, both engines are wrong.
-
-This stage is the load-bearing bridge from the Stage-4 reduced-sector prototype to the 2.5PN normalization target, so the second-engine policy applies at full strength.
-
-**Required change:**
-
-Rewrite the Mathematica audit script so that each section computes the LHS of its `expectZero` calls via a route that is *not* "build the same intermediate, expand the same series, read the same coefficient". Concretely:
-
-- Section I — replace the `Series[d0/dCons]` route with the inverse-relation route: form `yRespCand = 1 + u2Sym * omega^2 + u4Sym * omega^4` with symbolic unknowns `u2Sym, u4Sym`, multiply by `dCons`, expand, and use `SolveAlways` (or `Solve` on the coefficient list) to determine `u2Sym, u4Sym` from `yRespCand * dCons - d0 = 0 mod omega^6`. Then assert `u2Sym + d2/d0 == 0` etc. from the solution.
-
-- Section II — same inverse-relation strategy for `Pref = d0 * nFac / dCons^2`. Form `prefCand` as an unknown polynomial of degree 4, set `prefCand * dCons^2 - d0 * nFac = 0 mod omega^6`, solve for the coefficients, compare to the target formulas. For the branch step, replace `pref * y2Out` series with a direct polynomial expansion in omega (a single Expand, no Series) and read coefficients from the polynomial. Adjust `expectZero` LHS to be `(K0_via_polynomial - target) == 0`.
-
-- Section IV — replace `Series[nProto]` with the inverse-relation route: assume `nSeriesCand = n0Cand + n2Cand omega^2 + n4Cand omega^4` and require `nSeriesCand * (delta0 - s2 omega^2 + omega^4)^2 - (p0proto - gW omega^2)^2 = 0 mod omega^6`. Solve, compare to the target formulas. Also, drop the IV.2 round-trip (it is tautological — see F2).
-
-- Section V — replace explicit `j2, y2, h2` with `SphericalHankelH1[2, z]` (Mathematica's built-in) and verify `Lambda2 = omega * D[h, z]/h` matches; then proceed with the series. This makes Mathematica's derivation of `A_stage4, B_stage4, G5_stage4` independent of the explicit polynomial-rational form used by SymPy.
-
-The targets (`u2 = -d2/d0`, `P0 = N0/D0`, `N0 = P0^2/Delta0^2`, `A_stage4 = a^2/(9 c_s^2)`, etc.) are the *claim*; do not change them. Change the *route* used to compute the LHS.
-
-**Verification:**
-
-The verifier runs `redteam exec-mathematica 022`. The new `.wl` file must (a) exit code 0, (b) contain `SolveAlways` or `Solve` calls on coefficient equations in Sections I, II, IV, (c) contain `SphericalHankelH1[2, ...]` in Section V, (d) keep all existing `expectZero` target literals unchanged on the RHS of each check.
-
-### F2 — tautological_check
-
-**Severity:** low
-
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py:245-261`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl:104-109`
-
-**What's wrong:**
-
-Section IV.2 in both engines runs a "round-trip" check that is algebraically guaranteed by construction. The SymPy form is:
-
-```
-Nproto_stage4 = (
-    (dict_back[P0_proto] - gW * omega**2) ** 2
-    / (dict_back[Delta0] - dict_back[S2] * omega**2 + omega**4) ** 2
-)
-Nseries_stage4 = sp.expand(sp.series(Nproto_stage4, omega, 0, 6).removeO())
-expect_zero(
-    "N0 round-trip into Stage-4 symbols",
-    Nseries_stage4.coeff(omega, 0) - sp.simplify(N0.subs(dict_back)),
-)
-```
-
-`Nproto_stage4` is defined by literally substituting `dict_back` into the same template that produced `Nproto`. The check then claims `Series[Nproto.subs(dict_back)].coeff(omega, k) == Series[Nproto].coeff(omega, k).subs(dict_back)`. Since `dict_back` introduces no `omega`-dependence (`Delta0 = Omega_A^2 Omega_W^2 - R^2`, `S2 = Omega_A^2 + Omega_W^2`, `P0_proto = Omega_A^2 gW + R g_A` are all `omega`-independent), Taylor expansion in `omega` commutes with substitution into those coefficients. The residual is therefore identically zero — the check cannot fail unless SymPy itself has a bug in `series` or `subs`, neither of which is the physics this audit is supposed to certify.
-
-The Mathematica mirror (lines 104-109) has the same structure (`nStage4 = Series[((p0Back - gW*omega^2)^2)/(...)^2]`, then assert `Coefficient[nStage4, omega, k] - (nKProto /. {delta0 -> deltaBack, s2 -> s2Back, p0proto -> p0Back}) == 0`) and the same tautology.
-
-**Why this matters:**
-
-A passing check that cannot fail is dead weight in a verification ledger. It contributes nothing to confidence in the dictionary mapping itself (does `P0_proto = Omega_A^2 gW + R g_A` actually reproduce the Stage-4 forward result?), because both LHS and RHS are built from the same template. If the dictionary entries were wrong, both LHS and RHS would be equally wrong, and the residual would still be zero.
-
-The actual claim that needs verifying — that the Stage-4 Maxwell/mixed expressions for `Delta0, S2, P0_proto` are the ones that come out of the Stage-3/4 reduced-sector derivation — is not in scope for this script (that's an upstream-unit claim). So the right answer is to delete the redundant check, not to expand it.
-
-**Required change:**
-
-Delete the Section IV.2 round-trip block in both engines. The dictionary print-outs at SymPy lines 238-243 and Mathematica lines 101-103 can remain (they are documentation, not assertions), but the three `expect_zero`/`expectZero` calls and the construction of `Nseries_stage4` / `nStage4` should be removed.
-
-SymPy edit: delete lines 245-261 (the `Nproto_stage4` and `Nseries_stage4` constructions, plus the three `expect_zero` round-trip calls).
-
-Mathematica edit: delete lines 104-109 (the `nStage4` construction plus the three `expectZero` round-trip calls).
-
-**Verification:**
-
-The verifier runs `redteam exec-sympy 022` and `redteam exec-mathematica 022`. Both must exit 0. The output files must no longer contain lines `N0 round-trip into Stage-4 symbols`, `N2 round-trip into Stage-4 symbols`, `N4 round-trip into Stage-4 symbols`. The remaining assertions (IV.1 prototype formulas, V fingerprint coefficients, V invariant target) must still appear and still print residual `0`.
+(No findings.)
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is a transliteration of the SymPy script. See F1 for three matched code excerpts. The script uses the same algebraic recipe in each of the five sections: build the same intermediate (`Dcons`, `Pref`, `Nproto`, explicit `j2/y2/h2`), take the same Taylor series in `omega` around 0, extract the same coefficients, compare to the same target formula. There is no section in which Mathematica reaches the claim by a path that diverges from SymPy's algebra.
+The Mathematica .wl is NOT a transliteration. Two specific structural differences confirm independent derivation:
+
+1. **Section I/II inverse-relation route.** SymPy uses `sp.series(D0/Dcons, omega, 0, 6).removeO()` and `sp.series(D0*Nfac/Dcons**2, omega, 0, 6).removeO()` to extract u_n and P_n directly (forward series expansion). Mathematica instead posits a candidate `yRespCand = 1 + u2Sym*omega^2 + u4Sym*omega^4` (similarly `prefCand`), imposes `yRespCand*dCons - d0 = 0` coefficient-wise, and solves the resulting linear system via `Solve` (inverse-relation route). The two algorithms are mathematically equivalent but procedurally distinct.
+
+   - SymPy `scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py:72,105`: `sp.series(D0 / Dcons, omega, 0, 6).removeO()` and `sp.series(D0 * Nfac / Dcons**2, omega, 0, 6).removeO()`.
+   - Mathematica `mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl:36-40,53-57`: `prod = Expand[yRespCand*dCons - d0]; coeffEqs = Table[Coefficient[prod, omega, k] == 0, {k, 0, 4}]; sol = First[Solve[coeffEqs, {u2Sym, u4Sym}]]`.
+
+2. **Section V outgoing fingerprint anchor.** SymPy constructs h_2^{(1)}(z) via the explicit polynomial-rational form `(3/z^3 - 1/z)*sin(z) - 3*cos(z)/z^2 + i*[-(3/z^3-1/z)*cos(z) - 3*sin(z)/z^2]`. Mathematica uses the built-in `SphericalHankelH1[2, z]`. The two representations are algebraically equivalent but pass through different simplification paths.
+
+   - SymPy `scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py:262-264`: `j2 = (3/z**3 - 1/z) * sp.sin(z) - 3 * sp.cos(z) / z**2; y2 = -((3/z**3 - 1/z) * sp.cos(z) + 3 * sp.sin(z) / z**2); h2 = sp.simplify(j2 + I * y2)`.
+   - Mathematica `mathematica/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.wl:143`: `h2 = SphericalHankelH1[2, z]`, with explicit comment "Use Mathematica's built-in spherical Hankel function instead of the explicit polynomial-rational form, so the derivation of A, B, G5 is independent of the SymPy script's choice of j2, y2 expressions."
+
+The Section III inverse-map check is explicitly admitted as a parallel sanity check by both engines, with documented justification (linear algebra admits no engine-independent route). I accept this disclosure.
 
 ## Engine cross-check
 
-Both engines pass all assertions (SymPy output `EXIT_CODE: 0` with all `expect_zero` residuals reported as `0`; Mathematica output `EXIT_CODE: 0` with all `PASS` lines). The two engines report identical final forms for `Gamma5_port = a^5/(27*c_s^5)` and `mhat^2 * P0 = 54 G c_s^5 / (5 a^5 c^5 mhat^2)`. They agree on result; the disagreement issue is that they agree via the *same* derivation, which is what F1 flags.
+Both engines produce identical final results, as verified in their saved outputs:
+
+- u2 = -D2/D0, u4 = (D2^2 - D0*D4)/D0^2 (sympy:18-26; mathematica:9-10)
+- P0 = N0/D0, P2 = (D0*N2 - 2*D2*N0)/D0^2, P4 = (D0^2*N4 - 2*D0*(D2*N2+D4*N0) + 3*D2^2*N0)/D0^3 (sympy:38-52; mathematica:19-24)
+- Stage-4 prototype N0 = P0_proto^2/Delta0^2, N2 = 2*P0_proto*(P0_proto*S2 - Delta0*gW)/Delta0^3, etc. (sympy:114-130; mathematica:53-58)
+- A = a^2/(9*c_s^2), B = 4*a^4/(81*c_s^4), G5 = a^5/(27*c_s^5) (sympy:155-172; mathematica:63-68)
+- Required mhat^2 * P0 = 54*G*c_s^5 / (5*a^5*c^5*mhat^2) (sympy:188-193; mathematica:74)
+
+All 27 SymPy `expect_zero` checks pass with residual 0; all 22 Mathematica `expectZero` checks emit PASS. No engine disagreement.
+
+## Outputs freshness
+
+Script mtimes: 2026-05-21 13:45 (both .py and .wl). Output mtimes: 2026-05-21 15:00 (sympy.txt) and 15:02 (mathematica.txt). Outputs are fresher than scripts. No `stale_output` concern.
 
 ## Verdict justification
 
-`findings` (two findings: one `mathematica_transliteration`, one `tautological_check`). The SymPy script holds up under attack on its own terms: the series-coefficient checks in Sections I-II non-trivially verify the closed-form expressions for `u2, u4, P0, P2, P4, K0..K4, Gamma5` (a typo in any target formula would flip the residual sign and fail the assertion); the inverse-map round-trip in Section III is not tautological because the inverse formulas `x20 = xbar + 4 ax`, etc., are independent algebraic statements that could fail if a coefficient were wrong; the Stage-4 prototype expansion in Section IV.1 non-trivially verifies the `N0, N2, N4` formulas; the spherical-Hankel derivation in Section V genuinely verifies `A_stage4 = a^2/(9 c_s^2)`, `B_stage4 = 4 a^4/(81 c_s^4)`, `G5_stage4 = a^5/(27 c_s^5)` from the explicit `h2 = j2 + i y2` form, and the literal mhat=1 target checks in V.2/V.3 verify that the constant arithmetic `(2/5) / (1/27) = 54/5`, `(54/5)(1/9) = 6/5`, `(54/5)(4/81) = 8/15` is correct. Adversarial attacks I tried that failed: (i) checking whether positivity of `z` in V causes hidden simplification issues — the series is in `omega` around 0, not in `z`, and the substitution `z -> omega*a/c_s` happens before series so no `sqrt(z^2)` artifacts; (ii) checking whether `h2 = j2 + i y2` has the right small-`omega` parity to produce a purely-imaginary `omega^5` coefficient — yes, `j2` is even in `z`, `y2` is odd in `z`, so `Lambda2 = omega h2'/h2` has even-in-omega real part and odd-in-omega imaginary part, and `Y2 = 1/Lambda2` inherits that parity pattern, putting `G5` at `omega^5/I`; (iii) checking `nonzero` vs `positive` assumption mismatches between `D0, D2, D4` (declared nonzero, real) and the simplification path — no positivity is assumed in I-IV, and Section V's positive declarations are consistent with the stated physical scope. The two real defects are structural: the Mathematica engine walks the same algebraic path as SymPy (F1), and the IV.2 round-trip is a substitution-commutes-with-series identity that cannot fail (F2).
+Verdict: **clean**. I attacked the script along the following axes and failed to find a defect:
+
+1. **Tautology probe.** Each `expect_zero` independently computes a series coefficient or solves an inverse relation, then compares to the paper-stated closed form. The closed forms are not built into the derivation; they could fail. The Section III inverse-map check borders on tautology (linear algebra round-trip), but both engines disclose this in code comments and the check still verifies that the proposed inverse formulas — not arbitrary ones — recover identity.
+2. **Symbol-domain probe.** D0, D2, D4, Delta0 are nonzero (required to avoid division by zero in the series expansion of D0/Dcons and 1/Dcons^2). G, c, c_s, a, mhat, P0 are positive (required by the physical setup). No conflicting assumptions; no `simplify` masking branch issues.
+3. **Hardcoded-constant probe.** The numbers 9, 27, 81, 54, 5, 2 that appear are not hardcoded — they emerge from the j2/y2 polynomial expansion (SymPy) and from the SphericalHankelH1 expansion (Mathematica). Both engines reproduce them independently. The 54 G c_s^5 / (5 a^5 c^5) target in eq:app-stage022-p0-target also derives from solving the invariant-product equation, not from a literal.
+4. **Paper round-trip.** Every paper deliverable (D1-D5 from stage card Output line, plus D6-D7 from the notes) has a script-side check. The two "extra" script-side topics (prototype N0/N2/N4, spherical-Hankel anchor for A,B,G5) are both supported by the notes (§6) and by the paper card eq:app-stage022-abg respectively — they are not orphaned.
+5. **Engine independence.** The two engines use procedurally distinct algorithms for both the series expansion (forward series vs inverse-relation Solve) and the spherical Hankel anchor (polynomial form vs SphericalHankelH1). This is a real second-engine check, not transliteration.
+
+The only cosmetic anomaly I noted (not filed as a finding): the SymPy docstring (lines 3-23) and the Mathematica banner (line 26) carry stale "stage5"/"STAGE 005" labels from an earlier numbering. The actual assertions all target stage 022 content, the file names and paper card are correct, and no math is affected. This is a documentation-drift maintenance item, not an audit finding. It does NOT qualify as `paper_misalignment` because the script's bottom-line assertions (the highest-authority claim source) match the paper card exactly; only the lower-authority docstring/banner labels are stale.
 
 ## Self-test notes
 
-- I checked that F1's required changes (`SolveAlways` on coefficient equations, `SphericalHankelH1` for `h2`) produce LHS expressions in the *same* variables already used by the script, so the existing `expectZero` target literals continue to match. The Mathematica `SolveAlways` returns rules `{u2Sym -> -d2/d0, u4Sym -> (d2^2 - d0 d4)/d0^2}`, which after `/.` substitution into `u2Sym + d2/d0` gives `0` — trap (1) variable-independence: `Solve` produces rules whose RHS still depends on `d0, d2, d4` (since those are the symbolic coefficients of `dCons`), so the target subtraction is non-trivial. Trap (2) parity: doesn't apply (no unbounded integrals). Trap (3) trivial-case: for `nFac = 1` (i.e. `n2 = n4 = 0, n0 = 1`), the inverse-relation route gives `P0 = 1/d0`, which matches `N0/D0 = 1/D0`; for `nFac = 0` (all `n0 = n2 = n4 = 0`), both routes return `0`, consistent.
-- I checked that F2's deletion doesn't strand any later assertion. The IV.2 block defines `Nproto_stage4` and `Nseries_stage4`, which are not used after line 261 in SymPy or line 109 in Mathematica. Section V independently derives `A_stage4, B_stage4, G5_stage4` from the spherical Hankel function, not from `Nseries_stage4`. So the deletion is safe.
-- Path specifications for F1 use the existing Mathematica file path — no missing-script path-guessing risk here, since both engine scripts already exist.
+I checked: (1) variable independence — every `sp.diff(h2, z)` operates on h2(z) which actually depends on z, so the derivative is nonzero (not a silent-pass trap); (2) series convergence — Lambda2 = omega * (dh2/dz)/h2 evaluated at z = omega*a/c_s has a finite static limit (h_2^{(1)} ~ -3i/z^3 has a pole, but the omega*dh/dz/h structure regularizes via cancellation, confirmed by output line 73 showing finite Gamma5_port = a^5/(27 c_s^5)); (3) inverse-map identity — substituting forward-map definitions into the proposed inverse formulas does recover x20, x21, x22 as required (independently verified algebraically: xbar+4a_x = (x20+2x21+2x22)/5 + 4*(2x20-x21-x22)/10 = x20 ✓); (4) K2/K4 target arithmetic — (54 G c_s^5/(5 a^5 c^5)) * a^2/(9 c_s^2) = 6 G c_s^3/(5 a^3 c^5) ✓, and (54 G c_s^5/(5 a^5 c^5)) * 4 a^4/(81 c_s^4) = 8 G c_s/(15 a c^5) ✓. No traps tripped.

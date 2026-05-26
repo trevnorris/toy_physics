@@ -6,12 +6,16 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-25` (batch I.1 v2 close — first paper-grounded
-re-audit pass over an already-verified batch. No checkpoint stages
-fall in range 001-012, so no new entries needed. The v2 re-audit
-surfaced 0 new hardcoded_result findings on I.1; all paper_misalignment
-items were resolved by Codex with file-cited recommendations. Previous
-III.4 update remains accurate for batches III.1-III.4.)
+Snapshot date: `2026-05-25` (batch I.2 v2 close — second paper-grounded
+re-audit pass. Checkpoints `022` and `023` fall in range. The I.2 v2
+sweep surfaced 0 new hardcoded_result findings; all 6 paper_misalignment
+items were resolved via Codex apply (4 stages with material_change:true
+due to script trims removing content duplicated from destination
+stages). Stage 023's Schur-derivation block added via Codex remediation
+introduced no new literals — the Schur derivation closes against
+existing `Q_expr`/`H_expr` symbolic forms with no magic numbers. I.1 v2
+close text remains accurate for I.1 range; III.4 update remains
+accurate for batches III.1-III.4.)
 
 ## Audit Rule
 

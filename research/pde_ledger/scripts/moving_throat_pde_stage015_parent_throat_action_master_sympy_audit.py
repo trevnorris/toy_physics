@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import sympy as sp
-from sympy.physics.wigner import gaunt
 
 
 def assert_zero(label: str, expr: sp.Expr) -> None:
@@ -20,22 +19,6 @@ def assert_nonzero(label: str, expr: sp.Expr) -> None:
 
 def boundary_value(expr: sp.Expr, var: sp.Symbol) -> sp.Expr:
     return sp.simplify(sp.limit(expr, var, sp.oo) - sp.limit(expr, var, -sp.oo))
-
-
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m != 0:
-        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-        if same_sign != 0:
-            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
-
-
-def grouped_trace_anomaly(x20: sp.Expr, x21: sp.Expr, x22: sp.Expr) -> tuple[sp.Expr, sp.Expr, sp.Expr]:
-    xbar = sp.simplify((x20 + 2 * x21 + 2 * x22) / 5)
-    ax = sp.simplify((2 * x20 - x21 - x22) / 10)
-    bx = sp.simplify((x21 - x22) / 2)
-    return xbar, ax, bx
 
 
 def main() -> None:
@@ -70,6 +53,30 @@ def main() -> None:
         "concrete quadratic IBP with boundary",
         quad_cross_concrete - (quad_boundary_concrete + quad_bulk_concrete),
     )
+    # Second concrete probe with asymmetric A profile so the cross and bulk
+    # integrals are individually nonzero. Both integrals are even by parity
+    # (A_extra is odd, eta is even, products produce even integrands), so
+    # the IBP identity asserts a real cancellation, not 0 = 0 + 0.
+    A_concrete_asym = w_ibp * sp.exp(-w_ibp**2)
+    eta_concrete_asym = sp.exp(-w_ibp**2 / 2)
+    quad_boundary_concrete_asym = boundary_value(
+        (-A_concrete_asym * eta_concrete_asym**2 / 2), w_ibp
+    )
+    quad_cross_concrete_asym = sp.integrate(
+        -A_concrete_asym * eta_concrete_asym * sp.diff(eta_concrete_asym, w_ibp),
+        (w_ibp, -sp.oo, sp.oo),
+    )
+    quad_bulk_concrete_asym = sp.integrate(
+        sp.diff(A_concrete_asym, w_ibp) * eta_concrete_asym**2 / 2,
+        (w_ibp, -sp.oo, sp.oo),
+    )
+    assert_nonzero("asymmetric concrete IBP cross is nontrivial", quad_cross_concrete_asym)
+    assert_nonzero("asymmetric concrete IBP bulk is nontrivial", quad_bulk_concrete_asym)
+    assert_zero("asymmetric concrete quadratic IBP boundary discharge", quad_boundary_concrete_asym)
+    assert_zero(
+        "asymmetric concrete quadratic IBP with boundary",
+        quad_cross_concrete_asym - (quad_boundary_concrete_asym + quad_bulk_concrete_asym),
+    )
 
     eps = sp.symbols("eps")
     eta, eta_t, eta_w, grad2 = sp.symbols("eta eta_t eta_w grad2")
@@ -100,118 +107,9 @@ def main() -> None:
     ) * eta**2 / 2
     assert_nonzero("mutated K_eta sign should fail", L2_after_ibp_derived - canonical_L2_mutated)
 
-    wall_w = sp.symbols("wall_w", real=True)
-    beta = sp.Function("beta")(wall_w)
-    delta_mu = sp.Function("delta_mu")(wall_w)
-    delta_Tw = sp.Function("delta_Tw")(wall_w)
-    delta_TO = sp.Function("delta_TO")(wall_w)
-    delta_Keta = sp.Function("delta_Keta")(wall_w)
-    dM_overlap = sp.Integral(delta_mu * beta**2, (wall_w, -sp.oo, sp.oo))
-    dK_overlap = sp.Integral(
-        delta_Tw * sp.diff(beta, wall_w)**2 + (delta_Keta + 6 * delta_TO) * beta**2,
-        (wall_w, -sp.oo, sp.oo),
-    )
-
-    dK, dM = sp.symbols("dK dM")
-    B01, B21, B41 = sp.symbols("B01 B21 B41")
-    Z01, Z21, Z41 = sp.symbols("Z01 Z21 Z41")
-    D01_full = dK - B01 - Z01
-    D21_full = -(dM + B21 + Z21)
-    D41_full = -(B41 + Z41)
-    K1_full = sp.expand(D21_full + D01_full / 9)
-    H_even_full = sp.expand(D41_full - sp.Rational(2, 3) * D21_full - D01_full / 27)
-    wall_only_specialization = {B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}
-    K1_wall = sp.expand(K1_full.subs(wall_only_specialization))
-    H_even_wall = sp.expand(H_even_full.subs(wall_only_specialization))
-    assert_zero("wall-only K1 specialization", K1_wall - (-dM + dK / 9))
-    assert_zero("wall-only H_even specialization", H_even_wall - (sp.Rational(2, 3) * dM - dK / 27))
-
-    # Concretize the symbolic overlaps with Gaussian profiles so the wall-only
-    # K1/H_even algebra is exercised against actual closed-form integrals, not
-    # against a substitution rename of the same algebra.
-    beta_concrete = sp.exp(-wall_w**2)
-    delta_mu_concrete = sp.exp(-wall_w**2)
-    delta_Tw_concrete = sp.exp(-wall_w**2)
-    delta_TO_concrete = sp.exp(-wall_w**2)
-    delta_Keta_concrete = sp.exp(-wall_w**2)
-    dM_overlap_concrete = sp.integrate(
-        delta_mu_concrete * beta_concrete**2,
-        (wall_w, -sp.oo, sp.oo),
-    )
-    dK_overlap_concrete = sp.integrate(
-        delta_Tw_concrete * sp.diff(beta_concrete, wall_w)**2
-        + (delta_Keta_concrete + 6 * delta_TO_concrete) * beta_concrete**2,
-        (wall_w, -sp.oo, sp.oo),
-    )
-    assert_zero(
-        "wall-only K1 from concrete Gaussian overlap integrals",
-        K1_wall.subs({dK: dK_overlap_concrete, dM: dM_overlap_concrete})
-        - (-dM_overlap_concrete + dK_overlap_concrete / 9),
-    )
-    assert_zero(
-        "wall-only H_even from concrete Gaussian overlap integrals",
-        H_even_wall.subs({dK: dK_overlap_concrete, dM: dM_overlap_concrete})
-        - (sp.Rational(2, 3) * dM_overlap_concrete - dK_overlap_concrete / 27),
-    )
-    # Coefficient guard: changing the 6*delta_TO coefficient to 5*delta_TO must
-    # break the K1 identity against the unmutated dK_overlap.
-    dK_overlap_mutated = sp.integrate(
-        delta_Tw_concrete * sp.diff(beta_concrete, wall_w)**2
-        + (delta_Keta_concrete + 5 * delta_TO_concrete) * beta_concrete**2,
-        (wall_w, -sp.oo, sp.oo),
-    )
-    assert_nonzero(
-        "wall-only K1 detects mutated 6*delta_TO coefficient",
-        K1_wall.subs({dK: dK_overlap_mutated, dM: dM_overlap_concrete})
-        - (-dM_overlap_concrete + dK_overlap_concrete / 9),
-    )
-    wall_matrix = sp.Matrix(
-        [
-            [sp.diff(K1_wall, dK), sp.diff(K1_wall, dM)],
-            [sp.diff(H_even_wall, dK), sp.diff(H_even_wall, dM)],
-        ]
-    )
-    assert_zero("wall-only even-gate determinant", wall_matrix.det() - sp.Rational(1, 27))
-    wall_even_solve = sp.solve([sp.Eq(K1_wall, 0), sp.Eq(H_even_wall, 0)], [dK, dM], dict=True)[0]
-    assert_zero("wall-only dK closed form", wall_even_solve[dK])
-    assert_zero("wall-only dM closed form", wall_even_solve[dM])
-    wall_even_solve_perturbed = sp.solve([sp.Eq(K1_wall + eps, 0), sp.Eq(H_even_wall, 0)], [dK, dM], dict=True)[0]
-    assert_nonzero("wall-only solve detects perturbed K1 gate in dK", wall_even_solve_perturbed[dK])
-    assert_nonzero("wall-only solve detects perturbed K1 gate in dM", wall_even_solve_perturbed[dM])
-    gate_coeff = sp.symbols("gate_coeff", real=True)
-    K1_wall_param = -dM + gate_coeff * dK
-    wall_matrix_param = sp.Matrix(
-        [
-            [sp.diff(K1_wall_param, dK), sp.diff(K1_wall_param, dM)],
-            [sp.diff(H_even_wall, dK), sp.diff(H_even_wall, dM)],
-        ]
-    )
-    wall_det_shift = sp.simplify(
-        wall_matrix_param.det().subs(gate_coeff, sp.Rational(1, 9) + eps)
-        - wall_matrix_param.det().subs(gate_coeff, sp.Rational(1, 9))
-    )
-    assert_nonzero("wall-only determinant detects perturbed K1 coefficient", wall_det_shift)
-
-    lam20 = real_y20_square_ratio(0)
-    lam21 = real_y20_square_ratio(1)
-    lam22 = real_y20_square_ratio(2)
-    assert_zero("Y20 overlap lane 20", lam20 - 1)
-    assert_zero("Y20 overlap lane 21", lam21 - sp.Rational(1, 2))
-    assert_zero("Y20 overlap lane 22", lam22 + 1)
-
-    x0, eps1 = sp.symbols("x0 eps1")
-    x20 = x0 + eps1 * lam20
-    x21 = x0 + eps1 * lam21
-    x22 = x0 + eps1 * lam22
-    xbar, ax, bx = grouped_trace_anomaly(x20, x21, x22)
-    assert_zero("grouped trace", xbar - x0)
-    assert_zero("grouped line b=3a", bx - 3 * ax)
-
     print("STEP 13 PARENT THROAT ACTION MASTER AUDIT")
-    print("Checked promoted-action quadratic limit, concrete boundary discharge, K_eta formula, grouped signature, and wall-only gate obstruction as the zero-support/zero-mixed specialization of the full even gates.")
+    print("Checked promoted-action quadratic limit, concrete boundary discharge, and K_eta formula.")
     print("Boundary operator nonzero sanity check = PASS")
-    print("Wall-only perturbed-gate solve guard = PASS")
-    print("Wall-only coefficient determinant guard = PASS")
     print("STATUS: PASS")
 
 

@@ -1,3 +1,3 @@
 STEP 11 PROJECTED MAXWELL MOUTH-TAYLOR MASTER AUDIT
-Checked one-sided Taylor projection, bottleneck dependencies, G_W transport entry, and mechanism sieve.
+Checked one-sided Taylor projection, Taylor coefficient maps, and Xi_load Pprime dependence.
 STATUS: PASS

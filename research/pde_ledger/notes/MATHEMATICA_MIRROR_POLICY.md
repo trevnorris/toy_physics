@@ -3,7 +3,7 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-25` (batch I.1 v2 close)
+Snapshot date: `2026-05-25` (batch I.2 v2 close)
 
 ## Rule
 

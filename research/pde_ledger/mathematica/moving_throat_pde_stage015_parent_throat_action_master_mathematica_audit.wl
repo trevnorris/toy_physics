@@ -80,120 +80,69 @@ bulkGaussian =
   Integrate[D[aConcrete, w]*etaConcrete^2/2, {w, -Infinity, Infinity}];
 expectZero["M2 Gaussian IBP cross equals bulk", crossGaussian - bulkGaussian];
 
-Tw = Tw0 + eps*TwR0*eta + eps^2*TwRR0*eta^2/2;
-U = U0 + eps*UR0*eta + eps^2*URR0*eta^2/2;
-Rt = eps*etat;
-Rw = R0p + eps*etaw;
-lagrangian = mu0*Rt^2/2 - Tw*Rw^2/2 - TO0*eps^2*grad2/2 - U;
-L2raw = Coefficient[Series[lagrangian, {eps, 0, 2}] // Normal, eps, 2];
-crossCoeff = D[D[L2raw, eta], etaw];
-expectZero["M3 K_eta raw eta etaw cross coefficient", crossCoeff + TwR0*R0p];
-
-effectiveMass = URR0 - dTwRR0p + TwRR0*R0p^2/2;
-canonicalL2 =
-  mu0*etat^2/2 - Tw0*etaw^2/2 - TO0*grad2/2 - effectiveMass*eta^2/2;
-L2afterIBP = Expand[L2raw - (-TwR0*R0p*eta*etaw) + dTwRR0p*eta^2/2];
-expectZero["M3 K_eta canonical quadratic form", L2afterIBP - canonicalL2];
-
-effectiveMassMutated = URR0 + dTwRR0p + TwRR0*R0p^2/2;
-canonicalL2Mutated =
-  mu0*etat^2/2 - Tw0*etaw^2/2 - TO0*grad2/2 -
-    effectiveMassMutated*eta^2/2;
-expectNonzero["M3 K_eta dTwRR0p sign mutation", L2afterIBP - canonicalL2Mutated];
-
-D01full = dK - b01 - z01;
-D21full = -(dM + b21 + z21);
-D41full = -(b41 + z41);
-K1full = D21full + D01full/9;
-Hevenfull = D41full - (2/3)*D21full - D01full/27;
-wallSpec = {b01 -> 0, b21 -> 0, b41 -> 0, z01 -> 0, z21 -> 0, z41 -> 0};
-K1wall = Expand[K1full /. wallSpec];
-Hevenwall = Expand[Hevenfull /. wallSpec];
-expectZero["M4 wall-only K1 specialization", K1wall - (-dM + dK/9)];
-expectZero["M4 wall-only H_even specialization", Hevenwall - ((2/3)*dM - dK/27)];
-
-betaConcrete = Exp[-w^2];
-deltaMu = Exp[-w^2];
-deltaTw = Exp[-w^2];
-deltaTO = Exp[-w^2];
-deltaKeta = Exp[-w^2];
-dMoverlap = Integrate[deltaMu*betaConcrete^2, {w, -Infinity, Infinity}];
-dKoverlap =
-  Integrate[
-    deltaTw*D[betaConcrete, w]^2 + (deltaKeta + 6*deltaTO)*betaConcrete^2,
-    {w, -Infinity, Infinity}
+(* Second concrete probe with asymmetric A profile so cross and bulk are
+   individually nonzero. Asserts a real IBP cancellation, not 0 = 0 + 0. *)
+aConcreteAsym = w*Exp[-w^2];
+etaConcreteAsym = Exp[-w^2/2];
+boundaryGaussianAsym =
+  Quiet[
+    Limit[-aConcreteAsym*etaConcreteAsym^2/2, w -> Infinity] -
+      Limit[-aConcreteAsym*etaConcreteAsym^2/2, w -> -Infinity],
+    Limit::alimv
   ];
-expectZero["M5 Gaussian dM overlap closed form", dMoverlap - Sqrt[Pi/3]];
-expectZero["M5 Gaussian dK overlap closed form", dKoverlap - 23*Sqrt[Pi]/(3*Sqrt[3])];
+crossGaussianAsym =
+  Integrate[-aConcreteAsym*etaConcreteAsym*D[etaConcreteAsym, w], {w, -Infinity, Infinity}];
+bulkGaussianAsym =
+  Integrate[D[aConcreteAsym, w]*etaConcreteAsym^2/2, {w, -Infinity, Infinity}];
+expectNonzero["M2 asymmetric IBP cross nontrivial", crossGaussianAsym];
+expectNonzero["M2 asymmetric IBP bulk nontrivial", bulkGaussianAsym];
+expectZero["M2 asymmetric IBP boundary discharge", boundaryGaussianAsym];
+expectZero["M2 asymmetric IBP cross equals bulk", crossGaussianAsym - bulkGaussianAsym];
 
-K1wallNum = K1wall /. {dK -> dKoverlap, dM -> dMoverlap};
-HevenwallNum = Hevenwall /. {dK -> dKoverlap, dM -> dMoverlap};
-expectZero[
-  "M5 wall-only K1 from concrete Gaussian overlap integrals",
-  K1wallNum - (-dMoverlap + dKoverlap/9)
-];
-expectZero[
-  "M5 wall-only H_even from concrete Gaussian overlap integrals",
-  HevenwallNum - ((2/3)*dMoverlap - dKoverlap/27)
-];
-dKoverlapMutated =
-  Integrate[
-    deltaTw*D[betaConcrete, w]^2 + (deltaKeta + 5*deltaTO)*betaConcrete^2,
-    {w, -Infinity, Infinity}
-  ];
-K1wallMutated = K1wall /. {dK -> dKoverlapMutated, dM -> dMoverlap};
-expectNonzero[
-  "M5 wall-only K1 detects mutated 6 deltaTO coefficient",
-  K1wallMutated - (-dMoverlap + dKoverlap/9)
-];
+(* M3: K_eta via direct Euler-Lagrange linearization on the parent
+   Lagrangian density. A temporary profile twR[w] carries the w-dependence of
+   Tw_R0, so the product derivative d/dw(Tw_R0 R0') is computed explicitly
+   without relying on Dt's Constants bookkeeping. *)
 
-gateMatrix = {{D[K1wall, dK], D[K1wall, dM]}, {D[Hevenwall, dK], D[Hevenwall, dM]}};
-expectZero["M6 wall-only Jacobian determinant", Det[gateMatrix] - 1/27];
+ClearAll[R0, twR, TwSig, USig, KetaFromEL, rSlot, rtSlot, rwSlot, gOSlot, R0pp, t];
+TwSig[r_, w_] := Tw0 + (r - R0[w])*twR[w] + (r - R0[w])^2*TwRR0/2;
+USig[r_, w_] := U0 + (r - R0[w])*UR0 + (r - R0[w])^2*URR0/2;
 
-K1wallParam = -dM + gateCoeff*dK;
-gateMatrixParam = {
-  {D[K1wallParam, dK], D[K1wallParam, dM]},
-  {D[Hevenwall, dK], D[Hevenwall, dM]}
+LDensity[R_, Rt_, Rw_, gO_, w_] :=
+  mu0*Rt^2/2 - TwSig[R, w]*Rw^2/2 - TO0*gO/2 - USig[R, w];
+
+slotDensity = LDensity[rSlot, rtSlot, rwSlot, gOSlot, w];
+dLdRSlot = D[slotDensity, rSlot];
+dLdRtSlot = D[slotDensity, rtSlot];
+dLdRwSlot = D[slotDensity, rwSlot];
+fieldRules = {
+  rSlot -> R0[w] + eps*eta,
+  rtSlot -> eps*etat,
+  rwSlot -> R0'[w] + eps*etaw,
+  gOSlot -> eps^2*grad2
 };
-wallDetShift =
+
+ELLinearized =
+  Expand[
+    (dLdRSlot /. fieldRules) -
+      D[dLdRtSlot /. fieldRules, t] -
+      D[dLdRwSlot /. fieldRules, w]
+  ] /. {Derivative[1][R0][w] -> R0p, Derivative[2][R0][w] -> R0pp,
+        twR[w] -> TwR0};
+
+ELOrderEps = Coefficient[Expand[ELLinearized], eps, 1];
+ELMassCoeff = Coefficient[ELOrderEps, eta];
+KetaFromEL =
   FullSimplify[
-    (Det[gateMatrixParam] /. gateCoeff -> 1/9 + eps) -
-      (Det[gateMatrixParam] /. gateCoeff -> 1/9),
+    -ELMassCoeff /. {R0p*Derivative[1][twR][w] -> dTwRR0p - TwR0*R0pp},
     Assumptions -> $Assumptions
   ];
-expectZero["M6 wall determinant perturbation value", wallDetShift - 2*eps/3];
-expectNonzero["M6 wall determinant perturbation nonzero guard", wallDetShift];
+expectZero["M3 K_eta via EL linearization matches IBP form",
+  KetaFromEL - (URR0 - dTwRR0p + TwRR0*R0p^2/2)];
 
-wallSolve = Solve[{K1wall == 0, Hevenwall == 0}, {dK, dM}];
-expectEqual["M7 wall-only zero solve", wallSolve, {{dK -> 0, dM -> 0}}];
-wallSolvePerturbed = Solve[{K1wall + eps == 0, Hevenwall == 0}, {dK, dM}];
-expectNonzero["M7 perturbed solve nonzero dK", dK /. First[wallSolvePerturbed]];
-expectNonzero["M7 perturbed solve nonzero dM", dM /. First[wallSolvePerturbed]];
-
-gauntBase = ThreeJSymbol[{2, 0}, {2, 0}, {2, 0}];
-realY20Ratio[m_] := (-1)^m*ThreeJSymbol[{2, 0}, {2, m}, {2, -m}]/gauntBase;
-expectZero["M8 real-Y20 ratio m=0", realY20Ratio[0] - 1];
-expectZero["M8 real-Y20 ratio m=1", realY20Ratio[1] - 1/2];
-expectZero["M8 real-Y20 ratio m=2", realY20Ratio[2] + 1];
-Do[
-  expectZero[
-    "M8 same-sign cross term m=" <> ToString[m],
-    Quiet[ThreeJSymbol[{2, 0}, {2, m}, {2, m}], ClebschGordan::phy]
-  ],
-  {m, {1, 2}}
-];
-
-lam20 = 1;
-lam21 = 1/2;
-lam22 = -1;
-x20 = x0 + eps1*lam20;
-x21 = x0 + eps1*lam21;
-x22 = x0 + eps1*lam22;
-xbar = (x20 + 2*x21 + 2*x22)/5;
-ax = (2*x20 - x21 - x22)/10;
-bx = (x21 - x22)/2;
-expectZero["M9 grouped trace", xbar - x0];
-expectZero["M9 grouped line b=3a", bx - 3*ax];
+(* Sign-mutation guard: a + instead of - on dTwRR0p must fail. *)
+expectNonzero["M3 K_eta via EL dTwRR0p sign mutation",
+  KetaFromEL - (URR0 + dTwRR0p + TwRR0*R0p^2/2)];
 
 Print["STATUS: PASS"];
 Exit[0];

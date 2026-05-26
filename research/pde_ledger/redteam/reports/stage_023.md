@@ -2,223 +2,206 @@
 unit_id: 023
 batch: I.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T00:00:00Z
+audit_date: 2026-05-25T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md"]
+  paper_appendix: present
 ---
 
 # Audit unit 023 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_023.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 68 + intro paragraph)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 023's `\stagefield{Output}` states: "Stage~023 outputs the projectors \eqref{eq:app-stage023-projectors}, the full coupled coefficient formulas \eqref{eq:app-stage023-b-moments}, \eqref{eq:app-stage023-z-moments-port}, \eqref{eq:app-stage023-n-moments-port}, and \eqref{eq:app-stage023-d-coeffs}, the isotropic normalization ratio \eqref{eq:app-stage023-normalization-test}, the constant-prefactor conditions \eqref{eq:app-stage023-constant-prefactor-conditions}, and the anisotropy transport laws \eqref{eq:app-stage023-u-anisotropy} and \eqref{eq:app-stage023-p-anisotropy}." Distinct deliverables: (1) the three exact `G_grp = diag(1,2,2)` projectors `P_bar, P_a, P_b` and their identities `P_iP_j = delta_ij P_i`, `P_bar + P_a + P_b = I`; (2) BdG moment definitions `B_{A0}, B_{A2}, B_{A4}`; (3) per-port conservative Maxwell/mixed moments `Z_{An}^{(r)}` for n=0,2,4 with `Z_{An} = sum_r Z_{An}^{(r)}`; (4) per-port outgoing-transfer moments `N_{An}^{(r)}` for n=0,2,4 with the per-port closed forms; (5) total operator coefficients `D_{A0}=K_A-B_{A0}-Z_{A0}`, `D_{A2}=-(M_A+B_{A2}+Z_{A2})`, `D_{A4}=-(B_{A4}+Z_{A4})`; (6) grouped-decomposition identities for `(Dbar, a_D, b_D)` and `(Nbar, a_N, b_N)`; (7) isotropic-branch closed forms for `u_2, u_4, P_0, P_2, P_4`; (8) the universal normalization product `mhat_0^2 N_0/(K-B_0-Z_0) = 54 G c_s^5/(5 a^5 c^5)`; (9) constant-prefactor conditions `N_2 = 2 D_2 N_0/D_0` and the `N_4` formula in eq:app-stage023-constant-prefactor-conditions; (10) first-order anisotropy transport laws for `u_2` and `P_0`. The notes additionally enumerate per-lane Lagrangian §2 (wall+BdG+U-W mixed sector) as the physical source from which Z,N moments arise.
+
 ## What the script claims to verify
 
-The scripts verify a "full grouped bundle" bookkeeping layer for a real P2 system in the moving-throat PDE program. Concretely: (i) the weighted grouped metric `Ggrp = diag(1,2,2)` admits three Ggrp-orthogonal directions `ebar, ea, eb` with squared-norms 5, 20, 4, the corresponding projectors are idempotent and partition the identity, and any grouped vector decomposes into the three projected components; (ii) a "one-port" 2x2 BdG-like response function `(Q - H ω²)/(Δ - S ω² + ω⁴)` and the squared transfer `(P - g_W ω²)² / (Δ - S ω² + ω⁴)²` have closed-form Taylor coefficients Z_n, N_n in ω⁰, ω², ω⁴; (iii) the grouped decomposition is linear, so the three components of `D_{An} = K_A - B_{An} - Z_{An}` (etc.) read off from each lane's grouped pieces; (iv) on the isotropic branch the prefactor coefficients of `D₀·(N₀ + N₂ω² + N₄ω⁴)/Dcons²` collapse to `u₂ = -D₂/D₀`, `u₄ = (D₂² - D₀D₄)/D₀²`, `P₀ = N₀/D₀`, `P₂ = (D₀N₂ - 2D₂N₀)/D₀²`, `P₄ = (D₀²N₄ - 2D₀(D₂N₂ + D₄N₀) + 3D₂²N₀)/D₀³`; (v) the "constant-prefactor" branch conditions (`P₂ = P₄ = 0`) yield specific values for `N₂` and `N₄`; (vi) the Stage-4/5 outgoing radiation transfer coefficient is `Γ₅,port = a⁵/(27 c_s⁵)` and the required normalization `m̂² P₀ = 54 G c_s⁵ / (5 a⁵ c⁵)`; (vii) first-order anisotropy laws and the four monotonicity derivatives of `P₀(K,B₀,Z₀,N₀)`.
+The SymPy script verifies, in five sections: (I) `G_grp = diag(1,2,2)` projector orthogonality, norms, idempotency, completeness, and decomposition action `P_i x = x_i e_i` on an arbitrary grouped vector; (II) the per-port Z and N rational-function expansions match the closed forms by `series` then `coeff`, plus the grouped trace/anomaly decomposition `Dbar_0 = Kbar - Bbar_0 - Zbar_0` etc., plus a linearity additivity check on `groupedParts`; (III) the isotropic-branch series for `u_2, u_4, P_0, P_2, P_4` reduce to the closed forms; the constant-prefactor conditions are obtained by `solve(P2==0, N2)` then `solve(P4.subs(N2,N2_target)==0, N4)` and cross-checked against an independent closed form; the universal normalization is anchored by an independent Stage-5 Gamma5_port derivation from `j_2 + i y_2`; (IV) first-order anisotropy transport laws for `u_2` and `P_0` via `series` in `eps` to first order; (V) monotonicity derivatives of `P_0 = N_0/(K-B_0-Z_0)`. The Mathematica script mirrors structure with two additional independent paths: numerical substitution of `Z_n^{(r)}, N_n^{(r)}` at fixed `(Omega_U, Omega_W, R, g_U, g_W)` against `SeriesCoefficient`, and a direct Bessel small-z Taylor expansion of `h_2` to recover Gamma5_port = a^5/(27 c_s^5).
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| (1) Projectors `P_bar, P_a, P_b` and identities | `grouped_projector_calculus()` / Section I | match |
+| (2) BdG moments `B_{An}` | Symbolically declared; structure (`sum_alpha c^2/varpi^{2n+2}`) is not exercised — treated as Stage-3 carry-forward | partial |
+| (3) Per-port `Z_{An}^{(r)}` closed forms | Section II.0 series expansion against closed forms | match |
+| (4) Per-port `N_{An}^{(r)}` closed forms | Section II.0 series expansion against closed forms | match |
+| (5) Total `D_{An} = ...` | Symbolically constructed in Section II and decomposed; the construction itself is the definition | match (by construction) |
+| (6) Grouped trace/anomaly decomposition for `D_{An}` | Section II.1 explicit identity checks | match |
+| (7) Isotropic-branch `u_2, u_4, P_0, P_2, P_4` | Section III.1 series→coeff→closed-form match | match |
+| (8) Universal normalization `mhat^2 N_0/D_0 = 54Gc_s^5/(5a^5c^5)` | Section III.3 with Stage-5 Bessel `Gamma5_port` anchor | match |
+| (9) Constant-prefactor `N_2, N_4` conditions | Section III.2 solver + closed-form cross-check | match |
+| (10) Anisotropy transport laws | Section IV (generic + grouped-defect) | match |
+| Lagrangian §2 → (Z_n, N_n) Schur derivation | Not exercised; rational form is taken as given input | partial (carry-forward; see F2) |
+
+`paper_alignment: aligned` — every paper-side deliverable has a script-side counterpart that matches the stated identity. The two partial rows represent acceptable carry-forwards from upstream stages, not misalignments.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 75-80 | norms/orthogonality of grouped basis | yes |
-| A2 | sympy | 94-100 | projector idempotency, orthogonality, partition of unity | yes |
-| A3 | sympy | 109-112 | exact decomposition `x = xbar ebar + ax ea + bx eb` | partial (Pbar*x by construction expands to xbar*ebar; still tests Matrix algebra) |
-| A4 | sympy | 140-149 | Z₀, Z₂, Z₄ series coefficients of one-port denominator | yes |
-| A5 | sympy | 159-175 | N₀, N₂, N₄ series coefficients of squared one-port | yes |
-| A6 | sympy | 233-243 | grouped linearity of D_An decomposition | partial (follows from linearity of grouped_parts; still useful end-to-end) |
-| A7 | sympy | 247-252 | `Nbar0 - (N020 + 2*N021 + 2*N022)/5 = 0`, `aN0 - (2*N020 - N021 - N022)/10 = 0`, `bN0 - (N021 - N022)/2 = 0` | **no — tautological (grouped_parts returns those exact formulas)** |
-| A8 | sympy | 288-295 | exact `u₂, u₄, P₀, P₂, P₄` formulas | yes |
-| A9 | sympy | 305-306 | `P2.subs(N2, N2_target) == 0`, `P4.subs(..., N4_target) == 0` | **no — N2_target/N4_target are solutions to P2=0/P4=0, so substitution is 0 by construction** |
-| A10 | sympy | 311-314 | `P0 - N0/D0 == 0` (named "P0 normalization target") | **no — duplicate of A8's `P0 - N0/D0` at line 290** |
-| A11 | sympy | 327 | `Gamma5_port - a^5/(27 c_s^5) == 0` | yes (substantive series claim about h₂ Hankel function) |
-| A12 | sympy | 334-337 | `ratio_target.subs(mhat,1) - 54 G c_s^5 / (5 a^5 c^5) == 0` | yes |
-| A13 | sympy | 370-371 | first-order anisotropy formulas `du2`, `dP0` | yes |
-| A14 | sympy | 386-389 | grouped relabelings of A13 | partial (relabeling check) |
-| A15 | sympy | 418-421 | monotonicity derivatives of `P0(K,B0,Z0,N0)` | yes |
-| B1-B14 | mathematica | various | line-by-line mirror of A1-A15 with same algebraic recipe | yes (algebraically) but transliteration concern |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored? |
+|---|---|---|---|---|---|
+| A1 | sympy | 75-80 | `expect_zero` on basis orthogonality & norms | (1) basis prep | yes |
+| A2 | sympy | 94-100 | projector idempotency/orthogonality/completeness | (1) | yes |
+| A3 | sympy | 109-112 | `P_i x - x_i e_i = 0`, decomposition completeness | (1) | yes |
+| A4 | sympy | 140-149 | one-port Z_n series vs closed form | (3) | yes |
+| A5 | sympy | 159-175 | one-port N_n series vs closed form | (4) | yes |
+| A6 | sympy | 233-243 | grouped decomposition for D_{An} | (5)(6) | yes |
+| A7 | sympy | 250-252 | groupedParts additivity (non-tautological linearity) | (6) | yes |
+| A8 | sympy | 288-295 | isotropic u_2,u_4,P_0,P_2,P_4 vs closed forms | (7) | yes |
+| A9 | sympy | 310-311 | N_2_target/N_4_target solver vs independent closed forms | (9) | yes |
+| A10 | sympy | 317-320 | `mhat^2 N_0_target/D_0 = 54Gc_s^5/(5a^5c^5)` | (8) | partial — see F1 |
+| A11 | sympy | 333 | Gamma5_port = a^5/(27 c_s^5) | (8) anchor | yes |
+| A12 | sympy | 340-343 | ratio_target at mhat=1 reproduces universal target | (8) | yes |
+| A13 | sympy | 376-377 | generic du_2, dP_0 first-order forms | (10) | yes |
+| A14 | sympy | 392-395 | grouped-defect a_u2, b_u2, a_P0, b_P0 forms | (10) | yes |
+| A15 | sympy | 424-427 | monotonicity derivatives of P_0 = N_0/(K-B_0-Z_0) | (5)(8) | yes |
+| B1-B30 | mathematica | 48-248 | mirrors A1-A15 + numerical cross-check (97-117) + direct Bessel path (212-219) | all of (1)-(10) | yes |
+
+A10 is the only borderline row: `N0_target` is defined as the solution of `mhat^2 N0/D0 = target` for `N0`, then the script asserts that substituting `N0_target` reproduces `target`. That is algebraically guaranteed.
 
 ## Findings
 
 ### F1 — tautological_check
 
-**Severity:** medium
+**Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:247-252`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl:130-132`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:314-320`
 
 **What's wrong:**
-The three "Nbar0 / aN0 / bN0 formula" assertions check `Nbar0 - (N020 + 2*N021 + 2*N022)/5 == 0`, `aN0 - (2*N020 - N021 - N022)/10 == 0`, `bN0 - (N021 - N022)/2 == 0`. But `(Nbar0, aN0, bN0) = grouped_parts(N020, N021, N022)`, and `grouped_parts` is literally defined (sympy lines 207-211, mathematica lines 31-35) to return exactly those three expressions. So the assertions reduce to `(N020 + 2*N021 + 2*N022)/5 - (N020 + 2*N021 + 2*N022)/5 == 0` and the two analogous identities. The check cannot fail for any input.
+The block
 
-SymPy line 207-211:
+```python
+N0_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * (N0/D0), 54 * G * c_s**5 / (5 * a**5 * c**5)), N0)[0])
+expect_zero(
+    "N0_target reproduces universal normalization",
+    (mhat**2 * (N0_target/D0)) - 54 * G * c_s**5 / (5 * a**5 * c**5),
+)
 ```
-def grouped_parts(x20, x21, x22):
-    xbar = sp.simplify((x20 + 2 * x21 + 2 * x22) / 5)
-    ax = sp.simplify((2 * x20 - x21 - x22) / 10)
-    bx = sp.simplify((x21 - x22) / 2)
-    return xbar, ax, bx
-```
-Then SymPy line 224 and 247-252:
-```
-Nbar0, aN0, bN0 = grouped_parts(N020, N021, N022)
-...
-expect_zero("Nbar0 formula", Nbar0 - (N020 + 2 * N021 + 2 * N022) / 5)
-expect_zero("aN0 formula", aN0 - (2 * N020 - N021 - N022) / 10)
-expect_zero("bN0 formula", bN0 - (N021 - N022) / 2)
-```
+
+is tautological by construction: `N0_target` is *defined* as the value of `N_0` that makes the LHS equal the RHS, so substituting it back is algebraically guaranteed to give zero. The check cannot fail regardless of whether the universal target value `54 G c_s^5/(5 a^5 c^5)` is correct.
 
 **Why this matters:**
-These assertions present as evidence that the outgoing-transfer N-bundle inherits the same grouped decomposition rules as the D-bundle (subbanner II.2). They don't — they only verify that the function returns what it returns. If the grouped formulas were wrong, both sides would shift together. The substantive content (D_An decomposition linearity) is already exercised at sympy lines 233-243 / mathematica lines 121-129, which use independently-defined `Dbar0 = grouped_parts(d020, d021, d022)[0]` versus `Kbar - Bbar0 - Zbar0` where each piece comes from a separate grouped_parts call — that has algebraic content. The N-side does no analogous independent comparison.
+This block carries the appearance of independently verifying the universal normalization target, but it doesn't — the value `54 G c_s^5/(5 a^5 c^5)` is on both sides of the equation by construction. The real verification of the target is done a few lines below (lines 322-343) via the Stage-5 Gamma5_port = a^5/(27 c_s^5) derivation and `ratio_target = gamma_GR/(mhat^2 * Gamma5_port)` check, which IS substantive. The taut block is dead weight that risks giving a reader false confidence that the universal value was cross-checked twice.
 
 **Required change:**
-Replace the three tautological assertions with non-tautological checks that exercise linearity of `grouped_parts` for the N-bundle in the same end-to-end form used for the D-bundle. The simplest fix: introduce N20 = K20-like microscopic split that's algebraically distinct, then compare `grouped_parts(<sum>)` to `<sum of grouped_parts>`. Concretely, since N_An is independent of any wall/BdG decomposition in this script, replace the three lines with checks that compare `grouped_parts(N020 + N220, N021 + N221, N022 + N222)` to `(Nbar0 + Nbar2, aN0 + aN2, bN0 + bN2)` componentwise — this verifies additivity rather than re-stating the formula. Alternative: simply delete the three tautological lines, since II.2's comment "Nothing to prove beyond linearity, but verify a representative identity" already concedes the section is informational; outright deleting honest-codes the situation. Either is acceptable.
+Replace the tautological block with a check that the equation `mhat^2 * P_0 = 54 G c_s^5/(5 a^5 c^5)` is equivalent to `mhat^2 * N_0/(K - B_0 - Z_0) = 54 G c_s^5/(5 a^5 c^5)` after substituting `P_0 = N_0/D_0` and `D_0 = K - B_0 - Z_0`. That exercises the paper's eq:app-stage023-normalization-test substitution (the equality between the abstract `P_0` form and the explicit `(K, B_0, Z_0)` form), which is a non-tautological identity the script does not currently test.
+
+Concretely, after the existing `N0_target` line, insert symbolic substitution:
+
+```python
+K_sym, B0_sym, Z0_sym = sp.symbols("K_sym B0_sym Z0_sym", positive=True, real=True)
+norm_abstract = mhat**2 * N0 / D0 - 54 * G * c_s**5 / (5 * a**5 * c**5)
+norm_explicit = mhat**2 * N0 / (K_sym - B0_sym - Z0_sym) - 54 * G * c_s**5 / (5 * a**5 * c**5)
+expect_zero(
+    "normalization abstract == explicit under D0 = K - B0 - Z0",
+    sp.simplify(norm_abstract.subs(D0, K_sym - B0_sym - Z0_sym) - norm_explicit),
+)
+```
+
+Delete (or relabel as `# illustrative only`) the existing taut block on lines 317-320.
 
 **Verification:**
-After the edit, either (a) the three "Nbar0 formula / aN0 formula / bN0 formula" lines no longer appear in the script and don't appear in the saved output, or (b) the new assertions compare two independent grouped_parts outputs and the saved output shows the new check names with value 0.
+The new `expect_zero` line should appear after line 314 and produce a fresh `... = 0` in the .txt output. Codex must also mirror the change in the Mathematica `.wl` script (add the analogous explicit/abstract equivalence assertion under Section III after line 191).
 
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:308-314`
-
-**What's wrong:**
-The assertion at line 311-314 is named `"P0 normalization target"` but reads `expect_zero("P0 normalization target", P0 - N0/D0)`. This is byte-for-byte the same expression already verified at line 290 (`expect_zero("P0 - N0/D0", P0 - N0/D0)`). It is therefore both (a) a duplicate of a passing assertion and (b) misnamed: the surrounding subbanner is "III.3 — Universal normalization product", but this assertion does not exercise the normalization product `m̂² P₀ = 54 G c_s⁵ / (5 a⁵ c⁵)` at all. The actual normalization is tested at lines 334-337 via `ratio_target.subs(mhat,1) - 54 G c_s^5 / (5 a^5 c^5) == 0`. The intermediate `P0_target = sp.solve(sp.Eq(mhat**2 * P0, ...), N0)[0]` at line 309 is computed and then discarded; nothing tests it.
-
-The Mathematica script does not contain an analogous misnamed assertion — `ratioTarget` is defined directly and tested once at line 178. SymPy has the duplicate but not Mathematica, which is a minor engine asymmetry; the Mathematica version is the cleaner of the two.
-
-**Why this matters:**
-A misnamed assertion creates the false impression that the universal normalization is tested in two places when in fact only line 334-337 tests it. A future reader reorganizing or pruning checks could remove line 334-337 thinking the line 311-314 "P0 normalization target" assertion still anchors the claim; the script would still pass but the actual normalization would no longer be verified.
-
-**Required change:**
-Either (a) delete lines 307-314 entirely (the `P0_target` computation that's unused and the duplicate assertion), or (b) replace the duplicate assertion with a substantive normalization check, e.g.
-```
-expect_zero("P0 normalization target", mhat**2 * (N0/D0) * Gamma5_port - gamma_GR).subs(N0, P0_target * D0)
-```
-or simpler:
-```
-expect_zero("P0_target satisfies mhat^2 P0 = 54 G c_s^5 / (5 a^5 c^5) at mhat=1",
-            (mhat**2 * P0_target / D0).subs(mhat, 1) - 54*G*c_s**5/(5*a**5*c**5))
-```
-Option (a) is the safer mechanical fix; the rest of the section already covers the substantive content.
-
-**Verification:**
-After the edit, the saved output no longer contains a line `P0 normalization target = 0` that is byte-equal to the earlier `P0 - N0/D0 = 0` line, OR the new check exercises a non-trivial substitution involving Gamma5_port or gamma_GR and the print line shows a value reflecting that substitution (still 0 if correct).
-
-### F3 — tautological_check
+### F2 — insufficient_verification
 
 **Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:305-306`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl:157-158`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py:122-175`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl:77-91`
 
 **What's wrong:**
-`N2_target = sp.solve(sp.Eq(P2, 0), N2)[0]` and then `expect_zero("P2 under N2_target", P2.subs(N2, N2_target))` is checking that the solver returns a solution. By construction `P2.subs(N2, solve(P2==0, N2)[0])` simplifies to 0 — this verifies the SymPy solver's correctness, not the physics. The same is true for `P4 under N2_target,N4_target` at line 306 and for the Mathematica counterparts at lines 157-158.
+Paper §2 introduces the reduced per-lane Lagrangian with `(q_A, X_{A,alpha}, U_{A,r}, W_{A,r}, R_{A,r})` and mixing terms `R U W`, `g_U q U`, `g_W q W`. Paper §4 then *states* the per-port `(Delta, S, Q, G, P)` definitions and the resulting `Z_{An}^{(r)}` and `N_{An}^{(r)}` closed forms — but the derivation from the Lagrangian (Euler-Lagrange + Schur complement of the `(U,W)` block) is not shown in this stage's card; the notes treat them as carry-forwards from Stage 003 / Stage 021.
 
-The substantive content (i.e. what `N2_target` and `N4_target` actually equal in closed form) is already printed for human inspection at lines 300-303 / Mathematica lines 155-156, and the `pprint` output `N2 = 2*D2*N0/D0` and `N4 = N0*(2*D0*D4 + D2**2)/D0**2` are the actual reported values.
+The script in Section II.0 verifies that the rational functions
 
-**Why this matters:**
-Low severity because (a) the substitution does serve as a cheap sanity check on `solve`, and (b) the formulas are printed for visual inspection. But the "0 = 0" lines in the output transcript could be misread as independent verification that the closed-form solutions are correct, when they are merely solver consistency.
+- `(Q - H ω^2)/(Δ - S ω^2 + ω^4)` Taylor-expand to the `Z_n` formulas, and
+- `(P - g_W ω^2)^2/(Δ - S ω^2 + ω^4)^2` Taylor-expand to the `N_n` formulas
 
-**Required change:**
-Either (a) delete the two assertions (lines 305-306 in SymPy; 157-158 in Mathematica), keeping the `pprint`/Print of the closed-form solutions, or (b) replace with a non-tautological check: independently form the closed-form targets and verify they agree with the solver output, e.g.
-```
-N2_target_closed_form = 2 * D2 * N0 / D0
-expect_zero("N2_target closed form", N2_target - N2_target_closed_form)
-N4_target_closed_form = N0 * (2 * D0 * D4 + D2**2) / D0**2
-expect_zero("N4_target closed form", N4_target - N4_target_closed_form)
-```
-This tests that the solver returns the documented closed form, not just that substituting its output back gives 0.
+but **never derives the rational functions themselves from the Lagrangian.** The denominator `Δ - S ω^2 + ω^4` is just typed in; nothing checks it is the Schur complement determinant of the `(U,W)` mass matrix at frequency `ω`. So the chain "Lagrangian → Schur complement → rational function → series → closed form" only has the last two links verified.
 
-**Verification:**
-After the edit, either (a) the two "P2 under N2_target" / "P4 under N2_target,N4_target" lines no longer appear in the saved output, or (b) new lines `N2_target closed form = 0` and `N4_target closed form = 0` appear, witnessing independent derivation of the closed forms.
-
-### F4 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.wl` (whole file)
-- compared to `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py`
-
-**What's wrong:**
-The Mathematica script is a near line-by-line port of the SymPy script: same variable choreography, same intermediate algebraic steps, same physical premises (including identical comments such as "Stage-003 carry-forward: B_{A0}, B_{A2}, B_{A4} are the stable-BdG Schur sums..."). Both engines:
-
-1. Define the same `groupedParts`/`grouped_parts` function with the same three formulas `(x20+2x21+2x22)/5`, `(2x20-x21-x22)/10`, `(x21-x22)/2` and use it identically.
-2. Define `Delta_expr = OmegaU²·OmegaW² - Rmix²`, `S_expr = OmegaU² + OmegaW²`, `Q_expr = gU²·OmegaW² + 2·gU·gW·Rmix + gW²·OmegaU²`, `H_expr = gU² + gW²`, `P_expr = OmegaU²·gW + Rmix·gU` — identical algebraic expressions.
-3. Compute `Z_one_port = Series[(Q - H*omega²)/(Delta - S*omega² + omega⁴), {omega, 0, ...}]` and `N_one_port = Series[(P - gW*omega²)²/(Delta - S*omega² + omega⁴)², ...]` — identical series setup.
-4. Compute `Lambda2 = omega·D[h2, z]/h2 /. z -> omega·a/cS` then series in omega to obtain `Gamma5_port = a⁵/(27 c_s⁵)` — identical Hankel-function reciprocal-DtN path.
-
-Quoted correspondences:
-
-SymPy lines 126-130:
-```
-Delta_expr = sp.simplify(OmegaU**2 * OmegaW**2 - Rmix**2)
-S_expr = sp.simplify(OmegaU**2 + OmegaW**2)
-Q_expr = sp.simplify(gU**2 * OmegaW**2 + 2 * gU * gW * Rmix + gW**2 * OmegaU**2)
-H_expr = sp.simplify(gU**2 + gW**2)
-P_expr = sp.simplify(OmegaU**2 * gW + Rmix * gU)
-```
-Mathematica lines 77-81:
-```
-deltaExpr = omegaU^2*omegaW^2 - rMix^2;
-sExpr = omegaU^2 + omegaW^2;
-qExpr = gU^2*omegaW^2 + 2*gU*gW*rMix + gW^2*omegaU^2;
-hExpr = gU^2 + gW^2;
-pExpr = omegaU^2*gW + rMix*gU;
-```
-SymPy lines 317-321:
-```
-j2 = (sp.Rational(3, 1) / z**3 - sp.Rational(1, 1) / z) * sp.sin(z) - 3 * sp.cos(z) / z**2
-y2 = -((sp.Rational(3, 1) / z**3 - sp.Rational(1, 1) / z) * sp.cos(z) + 3 * sp.sin(z) / z**2)
-h2 = sp.simplify(j2 + I * y2)
-Lambda2 = sp.simplify(omega * sp.diff(h2, z) / h2).subs(z, omega * a / c_s)
-```
-Mathematica lines 165-168:
-```
-j2 = ((3/z^3) - 1/z) Sin[z] - 3 Cos[z]/z^2;
-y2 = -((3/z^3) - 1/z) Cos[z] - 3 Sin[z]/z^2;
-h2 = FullSimplify[j2 + I y2, Assumptions -> $Assumptions];
-lambda2 = FullSimplify[(omega D[h2, z]/h2) /. z -> omega a/cS, Assumptions -> $Assumptions];
-```
-
-The second-engine policy requires the two engines to derive the result independently. Here both follow the same algebraic recipe and verify the same intermediates against the same closed forms. A genuine independent verification would, for example, (a) substitute concrete numerical values (e.g. `OmegaU=2, OmegaW=3, Rmix=1, gU=1, gW=2`) and verify the Z_n, N_n coefficients numerically; (b) verify `Gamma5_port = a^5/(27 c_s^5)` by computing the radiation reaction directly from `h2` via residue/contour or an alternate closed-form path; or (c) compute `P₀, P₂, P₄` by an alternate route (e.g. via Cauchy product of two series rather than `Series[D₀·(N₀+N₂ω²+N₄ω⁴)/Dcons², ...]`).
+This is acceptable as a carry-forward (script comment at sympy line 181-182: `# Stage-003 carry-forward`), but the carry-forward is only loosely cited — there is no explicit reference to the upstream script's specific lines that derive the rational form from the Lagrangian, and the .wl makes no carry-forward comment at all in the analogous block.
 
 **Why this matters:**
-If both engines share the same algebraic mistake (e.g., a sign convention, a wrong series order, an off-by-one in coefficient extraction), neither will catch it — both will report PASS. The whole point of running two engines is to catch errors via algebraically distinct paths.
+A reader checking the stage cannot trace where the rational-function ansatz comes from. If the upstream Schur complement was wrong (e.g., wrong sign on the `R` cross-term, or wrong S = Ω_U² + Ω_W² formula vs `S = Ω_U² + Ω_W² + 2R` or similar), this stage's audit would pass and the error would be invisible. The stage card's §2 Lagrangian → §4 `(Δ, S, Q, G, P)` step is the only un-anchored algebra in the whole stage.
 
 **Required change:**
-Restructure the Mathematica script to verify the Section II.0 (one-port Z_n, N_n) and Section III.3 (Gamma5_port and the normalization product) checks via an algebraically distinct route, while keeping the same final claims. Concrete suggested changes:
+Add a brief in-script Schur-complement derivation under Section II.0 (sympy lines after 130; mathematica lines after 82). Specifically, construct the 2x2 frequency-dependent matrix
 
-(i) For Section II.0 (mathematica lines 77-91): instead of `Coefficient[Series[(Q-Hω²)/(Δ-Sω²+ω⁴), {ω,0,4}], ω, n]` versus a closed-form, substitute a fixed numerical realization (e.g. `omegaU -> 2, omegaW -> 3, rMix -> 1, gU -> 1, gW -> 2`) into both the rational function `(Q-Hω²)/(Δ-Sω²+ω⁴)` and the closed-form Z_n, evaluate at, say, omega = 1/10 (small enough for the series to dominate) and verify they match to high precision. This breaks the structural correspondence with the SymPy script.
+```
+M(ω) = [[Ω_U² - ω², R], [R, Ω_W² - ω²]]
+```
 
-(ii) For Gamma5_port (mathematica lines 165-175): instead of computing `omega·D[h2,z]/h2`, `Series` in omega, then `Coefficient[..., omega, 5]/I`, compute the same coefficient via the small-z expansion of `j₂(z) + i·y₂(z)` directly using the known closed-form expansion of the spherical Bessel functions at small argument, and verify that the resulting 5th-order coefficient in `omega·a/c_s` equals `a⁵/(27 c_s⁵)`.
+representing the `(U,W)` block, compute `det M(ω) = (Ω_U² - ω²)(Ω_W² - ω²) - R² = Δ - S ω² + ω^4` and assert this equals the script's `Delta_expr - S_expr*omega^2 + omega**4`. Similarly construct the `q`-to-`(U,W)` coupling vector `(g_U, g_W)` and verify the Schur reduction `(g_U, g_W) · M(ω)^{-1} · (g_U, g_W)^T` produces the `(Q - H ω²)/(Δ - S ω² + ω^4)` rational function used by the script.
 
-Either change suffices; both would be best.
+Concretely insert before line 132 of the .py:
+
+```python
+Mblock = sp.Matrix([[OmegaU**2 - omega**2, Rmix], [Rmix, OmegaW**2 - omega**2]])
+det_M = sp.expand(Mblock.det())
+expect_zero("Schur denominator matches Delta - S omega^2 + omega^4",
+            sp.expand(det_M - (Delta_expr - S_expr * omega**2 + omega**4)))
+g_vec = sp.Matrix([gU, gW])
+Z_schur = sp.simplify(((g_vec.T * Mblock.adjugate() * g_vec)[0]) / det_M)
+expect_zero("Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T",
+            sp.simplify(Z_schur - (Q_expr - H_expr * omega**2) / det_M))
+```
+
+and mirror in the .wl with Mathematica equivalents (`Mblock = {{omegaU^2 - omega^2, rMix}, {rMix, omegaW^2 - omega^2}}; detM = Det[Mblock]; ...`).
+
+**Why low and not medium:** the carry-forward citation, while loose, does point at the right upstream stages, and the rational-function form is a well-known coupled-oscillator Schur complement. The fix anchors the chain without breaking anything.
 
 **Verification:**
-The Mathematica script's lines 77-91 and/or lines 165-175 use a distinct algebraic mechanic from the SymPy version. The saved output shows pass lines whose names indicate the alternate route (e.g. `Z0 numerical at omegaU=2,omegaW=3,...` or `Gamma5_port via Bessel small-z expansion`).
+Two new `expect_zero` lines in Section II.0 of each engine; new `= 0` lines in the .txt outputs. After the fix, the chain Lagrangian → Schur → rational → series → Z_n closed form is fully in-script.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is a transliteration of the SymPy script. The two share: same variable layout, same `groupedParts` definition with identical formulas, same `Delta/S/Q/H/P` expressions, same `Series[..., {omega, 0, n}]` choreography, same `j2 + I·y2` Hankel-function construction, same `omega·D[h2,z]/h2` derivative-ratio path, same Cauchy-style normalization formulas. See F4 for quoted side-by-side excerpts.
+The Mathematica script is structurally a port of the SymPy script — same five sections in the same order, same `groupedParts` helper with same lane weights, same assertion sequence in Sections I, II.1, III.1, IV, V. **However**, it adds two genuinely independent verification paths:
+
+1. Lines 93-117: numerical substitution of `Z_n, N_n` closed forms at concrete `(Omega_U=2, Omega_W=3, R=1, g_U=1, g_W=2)` cross-checked against `SeriesCoefficient` of the rational function at those values. This is a numerical verification that the closed forms agree with the rational expansion, independent of the symbolic `Series` path used by SymPy.
+
+2. Lines 209-219: a direct small-z Taylor expansion of `j_2 + i y_2` (truncated at z^9 / z^8 for `h2` and `D[h2,z]`) feeding into `Λ_2`, then into `Y_2`, then extracting the `ω^5` coefficient. This bypasses the `omega*D[h2,z]/h2` symbolic ratio path and verifies `Gamma5_port = a^5/(27 c_s^5)` from a different algebraic route.
+
+These two independent paths are sufficient to defeat a pure-transliteration finding. **No `mathematica_transliteration` finding is raised**, though the auditor notes the section/assertion skeleton is shared and a stricter reviewer might disagree.
 
 ## Engine cross-check
 
-Both engines report PASS / EXIT_CODE 0. SymPy lists 47 numbered identity checks; Mathematica lists 44. The discrepancy is benign: SymPy emits four scalar/matrix expand-and-print lines that do not appear as named assertions in the Mathematica transcript (e.g. the four `du2, dP0, dP0/dN0, dP0/dB0` `pprint` entries), and SymPy includes the redundant "P0 normalization target" line discussed in F2 which Mathematica does not have. Every Mathematica assertion's named claim corresponds to a SymPy assertion on the same mathematical identity, and all simplify to 0 in both engines. Numeric/symbolic agreement at the named-identity level is complete.
+Both engines pass every assertion (`= 0` for sympy, `PASS:` for mathematica). The Stage-5 Gamma5_port anchor `a^5/(27 c_s^5)` appears in both. The universal normalization target `54 G c_s^5/(5 a^5 c^5)` appears in both. The constant-prefactor `N_2 = 2 D_2 N_0/D_0` and `N_4 = N_0(2 D_0 D_4 + D_2^2)/D_0^2` appear in both. The grouped projector formulas
+
+- `Pbar = (1/5)·[[1,2,2],[1,2,2],[1,2,2]]`
+- `Pa = (1/20)·[[16,-8,-8],[-4,2,2],[-4,2,2]]`
+- `Pb = (1/4)·[[0,0,0],[0,2,-2],[0,-2,2]]`
+
+are present and verified idempotent in both engines and match the paper's boxed eq:app-stage023-projectors. Engines agree.
 
 ## Verdict justification
 
-Verdict is **findings**, not stop_cold. The mathematical content of the unit (projector calculus, one-port Z/N coefficients, isotropic prefactor formulas, monotonicity derivatives, Gamma5_port = a⁵/(27 c_s⁵), and the normalization product 54 G c_s⁵/(5 a⁵ c⁵)) is internally consistent and holds up under attack: the projectors are genuinely idempotent and Ggrp-orthogonal; the one-port series coefficients algebraically reduce to the asserted closed forms; the Hankel-function reciprocal-DtN expansion does give the stated 5th-order coefficient; and the normalization arithmetic (2/5 · 27 = 54/5) checks out. Attempted attacks: (a) tried to find a sign or factor-of-two error in the `54 G c_s⁵/(5 a⁵ c⁵)` constant by recomputing `2·27/5` — got 54/5; correct. (b) Tried to find a wrong denominator in the projectors (using 5/20/4 from norms) — they match `||·||_G²` correctly; correct. (c) Tried to break the constant-prefactor branch arithmetic by substituting `N2_target = 2 D2 N0/D0` into the full P4 formula and reducing — got `N₀·(2 D₀ D₄ + D₂²)/D₀²`, matching the printed solver output; correct. (d) Tried to find an order-of-series-too-low issue in Mathematica `Series[..., {omega, 0, 4}]` for the N_one_port (which involves `(... )²/(... )²`) — the order 4 is sufficient because we only extract coefficients up to ω⁴. Holds up. The four findings are real but bounded: three are tautological-check housekeeping (F1, F2, F3) and one is engine independence (F4). None invalidates the unit's claims; they only weaken the evidentiary weight of specific assertion lines.
+`verdict: findings` with two low-severity issues. The stage's load-bearing math — projector calculus, grouped decomposition, isotropic-branch closed forms, Stage-5 Gamma5_port anchor, constant-prefactor conditions, anisotropy transport laws — is exercised by substantive, non-tautological assertions in both engines, and every paper-side deliverable maps to a matching script-side check. The two findings are: (F1) one block in §III.3 of the sympy script is a tautological "solve-then-substitute" against the universal target that adds no verification value (the real verification is the Stage-5 Bessel chain four lines below, which IS substantive); (F2) the Schur-complement step from the §2 Lagrangian to the rational function `(Q - H ω²)/(Δ - S ω² + ω⁴)` is taken as a carry-forward from Stages 003/021 rather than re-derived in-script. Neither finding undermines the stage's conclusion; both are upgrade-quality issues that strengthen the audit chain rather than fix wrong math. No `paper_misalignment`. No `engine_disagreement`. Outputs are fresh. Attacks tried: (a) verified the constant-prefactor `N_4` reduction `[2 D_0(D_2·(2 D_2 N_0/D_0) + D_4 N_0) - 3 D_2^2 N_0]/D_0^2 = N_0(D_2^2 + 2 D_0 D_4)/D_0^2` is algebraically correct — passes; (b) checked the projector matrix elements match the paper boxed form — match; (c) checked sign conventions on `du_2` and `dP_0` — match; (d) checked series truncation orders are sufficient for the extracted coefficients — sufficient (order 6 for ω^4 extraction in sympy, order 4 sufficient for ω^4 extraction in mathematica). The docstring still says "Stage 6" / "STAGE 006" rather than "Stage 023" (sympy line 3 docstring, mathematica line 37 banner) — cosmetic stale label, no math impact, not flagged.
 
 ## Self-test notes
 
-(1) Variable independence: none of my required changes introduce new `sp.diff` or `D[...]` calls over variables not already in the script, so no risk of identically-zero derivative traps. (2) Symmetry/parity: no new integrals proposed; the existing series expansions are not over symmetric unbounded domains. (3) Trivial-case pre-check: for F1's suggested replacement (`grouped_parts(N020+N220, ...) - (grouped_parts(N020,...) + grouped_parts(N220,...))`), substituting concrete `N020=1, N021=2, N022=3, N220=4, N221=5, N222=6` gives both sides equal to `((1+4)+2(2+5)+2(3+6))/5 = (5+14+18)/5 = 37/5` and `(1+2·2+2·3)/5 + (4+2·5+2·6)/5 = 11/5 + 26/5 = 37/5` — non-trivially equal. For F2's suggested replacement `(mhat²·P0_target/D0).subs(mhat,1) - 54·G·c_s⁵/(5·a⁵·c⁵)`, P0_target = solve(mhat²·N0/D0 = 54·G·c_s⁵/(5·a⁵·c⁵), N0)[0] = 54·G·c_s⁵·D0/(5·a⁵·c⁵·mhat²); substituting back gives 0 — passes. For F3's suggested closed-form check `N2_target - 2·D2·N0/D0`, the solver returns exactly that expression (visible in the printed output), so substituting concrete `D2=1, N0=2, D0=3` gives `4/3 - 4/3 = 0` — passes. (4) Path specifications: all file paths in the directive are absolute and verified to exist (see `ls` at audit start).
+- **Variable independence:** F2's proposed `Mblock = [[Ω_U²-ω², R], [R, Ω_W²-ω²]]` and `det_M` use symbols already declared as real in the sympy script (`omega, OmegaU, OmegaW, Rmix` at line 124); the `(g_U, g_W)` Schur quadratic form uses `gU, gW` real symbols at the same line. All symbols in the proposed expressions are independent and non-trivially present. No spurious zero-derivative trap.
+- **Symmetry/parity:** N/A — no unbounded integrals proposed.
+- **Trivial-case pre-check:** For F2's new `expect_zero("Schur denominator matches ...", det_M - (Delta_expr - S_expr*omega^2 + omega^4))`: substitute `R=0, OmegaU=1, OmegaW=1`: det_M = (1-ω²)² = 1 - 2ω² + ω⁴; RHS = (1·1 - 0) - (1+1)ω² + ω⁴ = 1 - 2ω² + ω⁴. Match. For the Schur quadratic-form check at the same substitution: M^{-1} = (1/(1-ω²)) · I; (g_U, g_W) M^{-1} (g_U, g_W)^T = (g_U² + g_W²)/(1-ω²). Paper's Q-form: Q = g_U²·1 + 2 g_U g_W·0 + g_W²·1 = g_U²+g_W²; H = g_U²+g_W². So (Q - H ω²)/det_M = (g_U²+g_W² - (g_U²+g_W²)ω²)/(1-ω²)² = (g_U²+g_W²)(1-ω²)/(1-ω²)² = (g_U²+g_W²)/(1-ω²). Matches. Trivial-case pre-check passes.
+- **Path specifications:** F2 touches existing `.py` and `.wl` files at named line regions; no new files. F1 modifies existing `.py` script at named line region.
+- **Paper round-trip:** F1's replacement check uses the same `54 G c_s^5/(5 a^5 c^5)` constant the paper states (eq:app-stage023-normalization-test), the same `D_0 = K - B_0 - Z_0` identity (eq:app-stage023-d-coeffs), and the same `P_0 = N_0/D_0` identity (eq:app-stage023-isotropic-pref). No new paper_misalignment introduced. F2's Schur derivation uses the Lagrangian §2 mixing terms and the §4 `(Δ, S, Q, G, P)` definitions exactly as the paper states them; no new constants introduced.

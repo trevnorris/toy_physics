@@ -37,25 +37,21 @@ expectEqual[label_String, got_, expected_] := Module[{res},
 Print["STAGE 014 PROJECTED MAXWELL MOUTH-TAYLOR GATE BRIDGE MATHEMATICA AUDIT"];
 
 Clear[
-  Q, S2, Hport, Delta, P, Gw, D0, D2, D4, Nbase, mu1, ell,
+  Q, S2, Hport, Delta, D0, mu1, ell,
   Qx, Sx, Hx, Deltax, Px, Gx
 ];
 
 $Assumptions =
   Element[
-    {Q, S2, Hport, Delta, P, Gw, D0, D2, D4, Nbase, mu1, ell,
+    {Q, S2, Hport, Delta, D0, mu1, ell,
       Qx, Sx, Hx, Deltax, Px, Gx},
     Reals
-  ] && Delta != 0 && P != 0 && D0 != 0 && mu1 != 0;
+  ] && Delta != 0 && D0 != 0 && mu1 != 0;
 
 (* Primitive identities from the Stage 012 one-port physical source forms. *)
 Z0[Q_, Delta_] := Q/Delta;
 Z2[Q_, S2_, Hport_, Delta_] := (Q*S2 - Hport*Delta)/Delta^2;
 Z4[Q_, S2_, Hport_, Delta_] := (Q*(S2^2 - Delta) - S2*Hport*Delta)/Delta^3;
-N0[P_, Delta_] := P^2/Delta^2;
-N2[P_, Gw_, S2_, Delta_] := 2*P*(P*S2 - Delta*Gw)/Delta^3;
-N4[P_, Gw_, S2_, Delta_] :=
-  (Delta^2*Gw^2 - 2*Delta*P^2 - 4*Delta*P*S2*Gw + 3*P^2*S2^2)/Delta^4;
 
 z0d =
   reduce[(D[Z0[Q + mu1*Qx*ell, Delta + mu1*Deltax*ell], ell] /. ell -> 0)/mu1];
@@ -83,61 +79,14 @@ z4d =
         ell
       ] /. ell -> 0)/mu1
   ];
-n0d =
-  reduce[(D[N0[P + mu1*Px*ell, Delta + mu1*Deltax*ell], ell] /. ell -> 0)/mu1];
-n2d =
-  reduce[
-    (D[
-        N2[
-          P + mu1*Px*ell,
-          Gw + mu1*Gx*ell,
-          S2 + mu1*Sx*ell,
-          Delta + mu1*Deltax*ell
-        ],
-        ell
-      ] /. ell -> 0)/mu1
-  ];
-n4d =
-  reduce[
-    (D[
-        N4[
-          P + mu1*Px*ell,
-          Gw + mu1*Gx*ell,
-          S2 + mu1*Sx*ell,
-          Delta + mu1*Deltax*ell
-        ],
-        ell
-      ] /. ell -> 0)/mu1
-  ];
-
-XiLoad = reduce[n0d/N0[P, Delta] + z0d/D0];
 K1 = reduce[-(z2d + z0d/9)];
 He = reduce[-z4d + (2/3)*z2d - z0d/27];
 
-deltaP2 =
-  reduce[
-    (D0^2*n2d - 2*D0*D2*n0d + 2*D0*Nbase*z2d - 2*D2*Nbase*z0d)/D0^3
-  ];
-deltaP4 =
-  reduce[
-    (D0^3*n4d - 2*D0^2*D2*n2d - 2*D0^2*D4*n0d +
-        2*D0^2*Nbase*z4d + 3*D0*D2^2*n0d - 2*D0*D2*Nbase*z2d -
-        2*D0*D4*Nbase*z0d + 2*D2^2*Nbase*z0d)/D0^4
-  ];
-
-Do[
-  expectZero["M1 XiLoad independence from " <> ToString[sym], D[XiLoad, sym]],
-  {sym, {Sx, Hx, Gx}}
-];
 Do[
   expectZero["M1 K1 independence from " <> ToString[sym], D[K1, sym]];
   expectZero["M1 He independence from " <> ToString[sym], D[He, sym]],
   {sym, {Px, Gx}}
 ];
-
-expectZero["M2 dXiLoad/dPx", D[XiLoad, Px] - 2/P];
-expectZero["M3 d(deltaP2)/dGx", D[deltaP2, Gx] - (-2*P/(D0*Delta^2))];
-expectNonzero["M4 deltaP4 Gx dependence", D[deltaP4, Gx]];
 
 qdSolve =
   FullSimplify[

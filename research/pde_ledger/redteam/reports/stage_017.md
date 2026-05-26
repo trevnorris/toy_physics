@@ -2,176 +2,121 @@
 unit_id: 017
 batch: I.2
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-21T00:00:00Z
-verdict: findings
+audit_date: 2026-05-25T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 3
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
-  mathematica: missing
-  engines_agree: n/a
+  mathematica: present
+  engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: []
+  paper_appendix: present
 ---
 
 # Audit unit 017 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_017.tex`
+- notes: (none)
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex`
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py`
-- mathematica: (missing)
+- mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage017_parent_throat_action_weak_axisym_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.txt`
-- mathematica output: (missing)
+- mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage017_parent_throat_action_weak_axisym_mathematica_audit.txt`
+
+## What the paper claims
+
+Stage 017 transports the parent throat action into the weak-axisymmetric grouped P_2 lane structure. The paper card (`paper/stages/stage_017.tex:14-26`) states three load-bearing deliverables:
+
+1. A Y_{20} wall perturbation yields the grouped-lane signature `(lambda_{20}, lambda_{21}, lambda_{22}) = (1, 1/2, -1)` (eq:stage017-wall-signature). Explicitly: "The audit derives \eqref{eq:stage017-wall-signature} from the actual triple-overlap coefficients."
+2. The grouped trace/anomaly variables obey `b = 3a` (eq:stage017-b-equals-3a).
+3. Wall-only obstruction: "Pure wall anisotropy closes the even gates only on the trivial branch delta K = delta M = 0. Thus parent promotion supplies the wall-side origin of the pattern, but does not by itself realize the full weak-axisymmetric branch."
+
+The `\stagefield{Output}` packages these as: "Stage 017 exports the parent weak-axisymmetric lane law (eq:stage017-wall-signature)-(eq:stage017-b-equals-3a) and the wall-only gate obstruction." The Part I appendix row (`stage_appendix_part01.tex:56`) confirms the row text: "Weak-axisymmetric parent-action transport law." No notes file exists for stage 017.
 
 ## What the script claims to verify
 
-The script asserts that the grouped-lane ratios (lambda_(20), lambda_(21), lambda_(22)) = (1, 1/2, -1) arise from real spherical-harmonic Y20-triple overlap integrals (computed via SymPy `gaunt(2,2,2,0,m,-m)`); that under those ratios the wall-only inertia and stiffness anisotropies obey trace=0 and b=3a; that the wall-only contributions to the Stage-5 weak-axisymmetric gates K1 and H_even reduce to the formulas K1_wall = -delta_M + delta_K/9 and H_even,wall = 2 delta_M / 3 - delta_K / 27, whose linear system has determinant 1/27 (so only the trivial branch closes both gates); and that the induced Xi_load and prefactor shifts likewise satisfy trace=0 / b=3a. Mathematica is absent, so no cross-engine verification is performed.
+The SymPy script (1) derives the lane factors `lambda_{20}, lambda_{21}, lambda_{22}` from `gaunt(2,2,2,0,m,-m)` ratios with a `(-1)^m` real-harmonic phase, including a same-sign cross-term vanishing pre-check for m=1,2; (2) constructs the grouped trace `Xbar` and anomaly variables `a, b` from `(X_{20}, X_{21}, X_{22}) = (eps lambda_A X_1)` for both wall inertia (M_1) and wall stiffness (K_{1w}); (3) assembles wall-only contributions to the live K_1 and H_even gates, cross-checks them lane-by-lane against generic formulas `K_{1,wall} = -delta M + delta K/9` and `H_{even,wall} = (2/3) delta M - delta K/27`, computes the 2x2 Jacobian determinant (= 1/27, with a mutated-determinant nonzero discriminator at line 110), and confirms the linear homogeneous system has only the trivial solution `{delta K = 0, delta M = 0}`; (4) extends the b=3a check to `Xi_load` and the prefactor shift `delta P_0`. The Mathematica script reproduces the same identities, but the lane-factor derivation goes through direct sphere integration of three `SphericalHarmonicY` factors (`tripleOnSphere`, lines 23-44) rather than through SymPy's Gaunt-symbol library — an independent path to the same overlap integrals.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| `(lambda_{20}, lambda_{21}, lambda_{22}) = (1, 1/2, -1)` derived from triple overlap (eq:stage017-wall-signature) | SymPy lines 40-45 (`gaunt` ratios) + Mathematica lines 51-55 (sphere integration) | match |
+| `b = 3a` for grouped trace/anomaly (eq:stage017-b-equals-3a) | SymPy lines 57-60, 125-128 + Mathematica lines 107-114 | match |
+| Wall-only obstruction: only trivial branch `delta K = delta M = 0` | SymPy lines 99-110, 123-124 + Mathematica lines 61-69 | match |
+
+`paper_alignment` = aligned. No paper deliverable is missing a script check; no script check is orphaned from the paper.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 44 | `assert_zero('Y20 overlap lane 20', lam20 - 1)` | no (tautological — `real_y20_square_ratio(0)` returns `sp.Integer(1)` directly) |
-| A2 | sympy | 45 | `assert_zero('Y20 overlap lane 21', lam21 - 1/2)` | yes (real Gaunt-ratio numerical check) |
-| A3 | sympy | 46 | `assert_zero('Y20 overlap lane 22', lam22 + 1)` | yes (real Gaunt-ratio numerical check) |
-| A4 | sympy | 58 | `assert_zero('wall inertia trace', Mbar)` | yes (depends on lam21, lam22 from gaunt) |
-| A5 | sympy | 59 | `assert_zero('wall inertia b=3a', bM - 3*aM)` | yes |
-| A6 | sympy | 60 | `assert_zero('wall stiffness trace', Kbar)` | yes |
-| A7 | sympy | 61 | `assert_zero('wall stiffness b=3a', bK - 3*aK)` | yes |
-| A8 | sympy | 79 | `assert_zero("wall-only K1 specialization", K1_wall - (-dMsym + dKsym/9))` | no (tautological — K1_wall constructed via direct substitution of wall_only=0 into a literal expression) |
-| A9 | sympy | 80 | `assert_zero("wall-only H_even specialization", Hev_wall - (2/3 dMsym - dKsym/27))` | no (tautological by the same construction) |
-| A10 | sympy | 100 | `assert_zero("wall-only even-gate determinant", wall_matrix.det() - 1/27)` | partial (the matrix entries are derivatives of tautologically-constructed expressions; det=1/27 is an arithmetic consequence) |
-| A11 | sympy | 101 | `assert_nonzero("mutated wall-only determinant should fail", wall_matrix.det() + 1/27)` | yes (sign sanity check) |
-| A12 | sympy | 114 | `if sol_even != [{dKsym:0, dMsym:0}]: raise` | yes (linear-system uniqueness given det != 0) |
-| A13 | sympy | 116 | `assert_zero('Xi trace', Xibar)` | yes (depends on lane ratios) |
-| A14 | sympy | 117 | `assert_zero('Xi b=3a', bXi - 3*aXi)` | yes |
-| A15 | sympy | 118 | `assert_zero('prefactor trace', Pbar)` | yes |
-| A16 | sympy | 119 | `assert_zero('prefactor b=3a', bP - 3*aP)` | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 43 | `assert_zero('Y20 overlap lane 20', lam20 - 1)` | claim 1 (lambda_{20}=1) | yes |
+| A2 | sympy | 44 | `assert_zero('Y20 overlap lane 21', lam21 - 1/2)` | claim 1 (lambda_{21}=1/2) | yes |
+| A3 | sympy | 45 | `assert_zero('Y20 overlap lane 22', lam22 + 1)` | claim 1 (lambda_{22}=-1) | yes |
+| A4 | sympy | 22-24 | `same_sign != 0` raises for m=1,2 (selection rule) | claim 1 selection-rule guard | yes |
+| A5 | sympy | 57 | `assert_zero('wall inertia trace', Mbar)` | claim 2 (Mbar = 0) | yes |
+| A6 | sympy | 58 | `assert_zero('wall inertia b=3a', bM - 3*aM)` | claim 2 (b=3a for M) | yes |
+| A7 | sympy | 59 | `assert_zero('wall stiffness trace', Kbar)` | claim 2 (Kbar = 0) | yes |
+| A8 | sympy | 60 | `assert_zero('wall stiffness b=3a', bK - 3*aK)` | claim 2 (b=3a for K) | yes |
+| A9 | sympy | 92-94 | generic K1 vs lane gate, m=0,1,2 | claim 3 (lane structure of K1) | yes |
+| A10 | sympy | 95-97 | generic Hev vs lane gate, m=0,1,2 | claim 3 (lane structure of Hev) | yes |
+| A11 | sympy | 109 | `wall_matrix.det() - 1/27` | claim 3 (nondegenerate gate) | yes |
+| A12 | sympy | 110 | `assert_nonzero` on mutated determinant | discrimination guard for A11 | yes |
+| A13 | sympy | 123-124 | `sol_even == [{dKsym: 0, dMsym: 0}]` | claim 3 (trivial branch only) | yes |
+| A14 | sympy | 125-126 | `Xibar`, `bXi - 3*aXi` | claim 2 extended to Xi | yes |
+| A15 | sympy | 127-128 | `Pbar`, `bP - 3*aP` | claim 2 extended to prefactor | yes |
+| M1 | math | 51 | `laneFactor[0] - 1` via direct sphere integration | claim 1 (lambda_{20}=1) | yes |
+| M2 | math | 52 | `laneFactor[1] - 1/2` | claim 1 (lambda_{21}=1/2) | yes |
+| M3 | math | 53 | `laneFactor[2] + 1` | claim 1 (lambda_{22}=-1) | yes |
+| M4 | math | 54-55 | same-sign cross terms vanish | claim 1 selection rule | yes |
+| M5 | math | 107-108 | wall inertia grouped trace=0 and b-3a=0 | claim 2 | yes |
+| M6 | math | 109-110 | wall stiffness grouped trace=0 and b-3a=0 | claim 2 | yes |
+| M7 | math | 79-85 | K_1 gate lane vs generic, m=0,1,2 | claim 3 (lane structure) | yes |
+| M8 | math | 86-92 | H_even gate lane vs generic, m=0,1,2 | claim 3 (lane structure) | yes |
+| M9 | math | 64 | `Det[wallJacobian] - 1/27` | claim 3 (nondegenerate gate) | yes |
+| M10 | math | 67-69 | solution count and values trivial | claim 3 (trivial branch only) | yes |
+| M11 | math | 111-112 | Xi load grouped trace=0 and b=3a | claim 2 extended | yes |
+| M12 | math | 113-114 | prefactor grouped trace=0 and b=3a | claim 2 extended | yes |
+
+All rows: Anchored = yes. No tautological assertions. The mutated-determinant nonzero check (A12, `wall_matrix.det() + 1/27`) supplies an explicit discriminator demonstrating the determinant check has real bite (mutated value evaluates to `2/27 != 0`).
 
 ## Findings
 
-### F1 — tautological_check
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py:19-26, 44`
-
-**What's wrong:**
-
-`real_y20_square_ratio` short-circuits the m=0 branch:
-
-```
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    ...
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
-```
-
-It then immediately asserts `lam20 - 1 == 0` (line 44). Because `lam20` is hard-coded to `sp.Integer(1)` by the function (the m=0 branch never touches SymPy's `gaunt`), the assertion reduces to `1 - 1 == 0` and cannot fail no matter what the Gaunt-coefficient library produces. The lane-20 ratio is exactly what the script claims to verify; that verification needs to come from the same machinery (Gaunt symbols) used for m=1 and m=2.
-
-**Why this matters:**
-
-The script's grouped-lane signature (1, 1/2, -1) is the bedrock for everything downstream (Mbar, Kbar, Xibar, Pbar, the b=3a relations). If the m=0 normalization were ever to drift in SymPy's `gaunt` convention or get re-defined, the script would silently report PASS even though the other lane ratios would be off by the same factor. A real check should compute the m=0 ratio identically to the m!=0 branch.
-
-**Required change:**
-
-Drop the `if m == 0: return sp.Integer(1)` shortcut at lines 21-22 and let the function fall through to the same `(-1)^m * gaunt(2,2,2,0,m,-m) / gaunt(2,2,2,0,0,0)` formula it uses for m!=0. For m=0 this evaluates to `gaunt(2,2,2,0,0,0)/gaunt(2,2,2,0,0,0)` and the `same_sign` check (line 24) is vacuous (gaunt(2,2,2,0,0,0) is the base itself, not a same-sign cross term). Wrap the `same_sign` check inside `if m != 0:` so it only fires for the m!=0 branches it was meant for.
-
-**Verification:**
-
-After the fix, the function body for m=0 runs `sp.simplify(gaunt(2,2,2,0,0,0) / gaunt(2,2,2,0,0,0))` and returns `1`. The existing `assert_zero('Y20 overlap lane 20', lam20 - 1)` (line 44) still passes, but now exercises SymPy's `gaunt` rather than a literal `Integer(1)`. The output `lambda_(20) = 1` in the txt should still appear identically.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage017_parent_throat_action_weak_axisym_sympy_audit.py:71-80`
-
-**What's wrong:**
-
-Lines 71-78 construct symbolic expressions and then immediately substitute to obtain the "wall-only" specializations:
-
-```
-D01_full = dKsym - B01 - Z01
-D21_full = -(dMsym + B21 + Z21)
-D41_full = -(B41 + Z41)
-K1_full = sp.expand(D21_full + D01_full / 9)
-Hev_full = sp.expand(D41_full - sp.Rational(2, 3) * D21_full - D01_full / 27)
-wall_only = {B01: 0, B21: 0, B41: 0, Z01: 0, Z21: 0, Z41: 0}
-K1_wall = sp.expand(K1_full.subs(wall_only))
-Hev_wall = sp.expand(Hev_full.subs(wall_only))
-```
-
-Lines 79-80 then assert:
-
-```
-assert_zero("wall-only K1 specialization", K1_wall - (-dMsym + dKsym / 9))
-assert_zero("wall-only H_even specialization", Hev_wall - (sp.Rational(2, 3) * dMsym - dKsym / 27))
-```
-
-But by direct construction, `K1_full.subs({B01:0, B21:0, Z01:0, Z21:0}) = -dMsym + dKsym/9` algebraically — sympy substitution and `expand` cannot give any other result. The reference RHS on the assert line was hand-written by reading the very LHS construction. The assertion is guaranteed by sympy semantics and cannot fail no matter what the physics is.
-
-**Why this matters:**
-
-The script's docstring/comments claim the wall-only gates reduce to "K1_wall = -delta_M + delta_K/9" and "H_even,wall = 2 delta_M / 3 - delta_K / 27" (lines 140-141). The current assertion does not test that claim — it only tests that sympy's `subs` and `expand` are working. A meaningful check would tie these formulas back to the lane-resolved quantities `K1_gate_2m` and `Hev_2m` (already computed at lines 82-88) by checking that they equal `eps * lambda_(2m) * (-M1 + K1w/9)` and `eps * lambda_(2m) * (2 M1 / 3 - K1w / 27)` respectively. That ties the "generic lane formula" claim to the actual three lanes via the verified gaunt ratios.
-
-**Required change:**
-
-Replace the two tautological asserts at lines 79-80 with cross-checks against the lane-resolved gates. Concretely, append (after line 88 where `K1_gate_*` and `Hev_*` are defined):
-
-```
-# Cross-check the generic lane formulas against the three explicit lanes.
-generic_K1 = -M1 + K1w / sp.Integer(9)
-generic_Hev = sp.Rational(2, 3) * M1 - K1w / sp.Integer(27)
-assert_zero("generic K1 vs lane 20", K1_gate_20 - eps * lam20 * generic_K1)
-assert_zero("generic K1 vs lane 21", K1_gate_21 - eps * lam21 * generic_K1)
-assert_zero("generic K1 vs lane 22", K1_gate_22 - eps * lam22 * generic_K1)
-assert_zero("generic Hev vs lane 20", Hev_20 - eps * lam20 * generic_Hev)
-assert_zero("generic Hev vs lane 21", Hev_21 - eps * lam21 * generic_Hev)
-assert_zero("generic Hev vs lane 22", Hev_22 - eps * lam22 * generic_Hev)
-```
-
-Then delete the two tautological assertions at lines 79 and 80. The `K1_wall`, `Hev_wall`, `wall_matrix`, `sol_even`, and the lines 100-101 determinant checks may all remain — those are downstream uses of the same construction and are fine because they test the linear-system uniqueness, not the construction itself.
-
-**Verification:**
-
-After the fix, the script should still exit 0. The six new `assert_zero` lines must appear in the source and the output transcript should now also confirm `generic K1 vs lane *` and `generic Hev vs lane *` indirectly (by virtue of the script exiting 0 and the existing prose lines for K1_gate_* and Hev_* remaining unchanged).
-
-### F3 — missing_verification_script
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/` (no stage_017 script)
-
-**What's wrong:**
-
-Per the audit prompt's manifest entry, this unit is not a status-only candidate and not a checkpoint pass-through. Both engines are required. No `.wl` script exists for stage 017. The SymPy check is therefore single-engine, with no independent re-derivation of (a) the real-Y20 triple-overlap ratios (1, 1/2, -1), (b) the wall-only K1/H_even formulas, (c) the determinant 1/27 of the wall-only 2x2 even-gate system, or (d) the Xi_load and prefactor b=3a relations.
-
-**Why this matters:**
-
-Single-engine verification has been the source of several silent-pass failures in this project. The Y20 lane ratios in particular are computed entirely inside SymPy's `gaunt`; if SymPy's convention ever shifted (e.g., a Condon-Shortley sign change or a √(4π) normalization tweak), the SymPy script would still pass but no second source would catch it. Mathematica's `ThreeJSymbol[]` or `SphericalHarmonicY[]` provides an independent path.
-
-**Required change:**
-
-Create `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage017_parent_throat_action_weak_axisym_mathematica_audit.wl`. See the directive for the full claim manifest.
-
-**Verification:**
-
-The verifier runs `redteam exec-mathematica 017`; the new file must exit 0 and produce a transcript that lists each named claim with a PASS marker.
+None.
 
 ## Independent-derivation check (Mathematica)
 
-Not applicable — no Mathematica script exists. See F3.
+The Mathematica script derives the lane factors from first principles via
+
+```
+Integrate[Sin[theta] * SphericalHarmonicY[2,0,theta,phi] *
+                       SphericalHarmonicY[2,m,theta,phi] *
+                       SphericalHarmonicY[2,-m,theta,phi],
+          {phi, 0, 2*Pi}, {theta, 0, Pi}]
+```
+
+(lines 23-44, called via `tripleOnSphere`). This is mechanically independent from SymPy's `gaunt(2,2,2,0,m,-m)` call, which uses tabulated Wigner 3-j coefficients internally. The two engines therefore arrive at `(1, 1/2, -1)` via genuinely distinct paths: closed-form 3-j symbol manipulation (SymPy) vs symbolic sphere integration (Mathematica).
+
+The downstream algebra (grouped projector formulas at lines 94-96; wall Jacobian at lines 61-64; `Solve` on the linear system at lines 65-69) has the same structure as the SymPy side because that algebra IS the claim — there is no second derivation possible of "compute a 2x2 matrix determinant" or "weighted mean coefficients `(1, 2, 2)/5`". This is not `mathematica_transliteration`: the load-bearing physics input (the triple-overlap integral values) is independently derived, and the linear-algebra postprocessing has only one correct form.
 
 ## Engine cross-check
 
-Not applicable — no Mathematica script. See F3.
+Both engines produce residual = 0 on every named check (sympy output `STATUS: PASS`; mathematica output 23 named PASS lines plus `STATUS: PASS`). The lane factors agree exactly: `(1, 1/2, -1)`. The wall-only Jacobian determinant evaluates to `1/27` in both. The linear system yields `{delta K = 0, delta M = 0}` as the sole solution in both. The b=3a tests evaluate cleanly in both. No engine disagreement.
+
+Output freshness: sympy txt mtime is ~1.6 h after the .py mtime; mathematica txt mtime is ~1.6 h after the .wl mtime. `outputs_fresh: true`.
 
 ## Verdict justification
 
-The script's m=1 and m=2 Gaunt ratios are real numerical checks against SymPy's `gaunt` and survive adversarial reading; so do the trace/b=3a relations for inertia, stiffness, Xi_load, and prefactor — those follow from the lane ratios via concrete arithmetic on the `grouped_trace_anomaly` formulas, and the determinant check at line 100 (det = 1/27) plus the sign-mutation guard at line 101 form a reasonable test of the wall-only 2x2 linear system. What does not hold up: the m=0 lane ratio is hard-coded to `Integer(1)` and never exercises gaunt, and the two "wall-only specialization" asserts at lines 79-80 just re-verify their own construction. Combined with the absence of a Mathematica engine, this earns three findings; none of them is `stop_cold` because the underlying math is correct on the substantive lanes (m=1, 2), and the fixes are local edits inside the script (plus creating a `.wl` partner).
+Verdict is `clean`. I attempted the following attacks and all failed: (a) verify lane signature `lambda_{22} = -1` from real-harmonic squared overlap — the `(-1)^m` phase convention is correct for m=2 (`(-1)^2 = +1`, and the bare `gaunt(2,2,2,0,2,-2)/gaunt(2,2,2,0,0,0)` integrates to `-1`, consistent with the independent sphere integration in Mathematica); (b) check the same-sign cross-term guard (sympy lines 22-24, math lines 54-55) is not tautological — `gaunt(2,2,2,0,m,m)` for m≠0 vanishes by the m1+m2+m3=0 selection rule, which is a real check on the engine's implementation; (c) compute the wall-only Jacobian by hand from `K1_wall = -dMsym + dKsym/9`, `Hev_wall = (2/3) dMsym - dKsym/27`: `det = (1/9)(2/3) - (-1)(-1/27) = 2/27 - 1/27 = 1/27` — matches; (d) check the mutated determinant assertion at sympy line 110 has discrimination power — `1/27 + 1/27 = 2/27 != 0`, so the assert_nonzero discriminator fires; (e) check that the sympy `Mbar = 0` is non-tautological — weighted mean is `(lambda_{20} + 2 lambda_{21} + 2 lambda_{22})/5 = (1 + 1 + (-2))/5 = 0`, a real cancellation of the `(1, 1/2, -1)` signature, not a definitional zero; (f) confirm both engines derive the lane signature via independent paths (Gaunt symbol vs sphere integration); (g) confirm the m=0 lane factor in the SymPy script genuinely passes through `gaunt(2,2,2,0,0,0)/gaunt(2,2,2,0,0,0)` rather than being hard-coded (the previous v1 short-circuit `if m == 0: return sp.Integer(1)` has been removed — current line 22 only guards the `same_sign` check, not the return value); (h) confirm the previous v1 tautological "wall-only specialization" asserts have been replaced with the lane cross-checks at lines 92-97 — yes. The paper card's three load-bearing claims all have matching, non-tautological, well-anchored assertions in both engines, derived through independent paths where it matters (the Gaunt overlap values). No `paper_misalignment` items; no script-side findings; no user resolution needed.
 
 ## Self-test notes
 
-I checked the three self-test traps and one additional one. (1) Variable independence: `wall_matrix` takes derivatives with respect to `dKsym` and `dMsym`; both K1_wall and Hev_wall genuinely depend on those symbols (1/9, -1, -1/27, 2/3 are the four entries), so no zero-derivative trap. The two trivial cases substituted mentally: `dKsym=9, dMsym=1` gives K1_wall = -1 + 1 = 0 and Hev_wall = 2/3 - 9/27 = 6/9 - 3/9 = 3/9 != 0, so K1_wall and Hev_wall are independent — the determinant 1/27 is consistent. (2) Symmetry/parity: not applicable — no integrals over an unbounded domain; all sums are finite Gaunt symbols. (3) Trivial-case pre-check for the proposed F2 cross-checks: with `lam20=1, lam21=1/2, lam22=-1`, `K1_gate_20 = eps*(K1w - 9*M1)/9 = eps*(-M1 + K1w/9)*1` matches `eps*lam20*(-M1+K1w/9)`; similarly `K1_gate_21 = eps*(K1w-9*M1)/18 = eps*(-M1+K1w/9)*(1/2)` matches `eps*lam21*generic_K1`; and `K1_gate_22 = eps*(-K1w+9*M1)/9 = -eps*(-M1+K1w/9) = eps*lam22*generic_K1`. The Hev rows match by the same arithmetic. (4) Path specifications for F3 directive: `.wl` lives in `/var/projects/toy_physics/research/pde_ledger/mathematica/`, confirmed by `ls`.
+I checked the variable-independence and parity traps. (1) `wall_matrix` takes derivatives of `K1_wall` and `Hev_wall` with respect to `dKsym, dMsym`, and both targets genuinely depend on both variables (Jacobian entries 1/9, -1, -1/27, 2/3 are all literal nonzero rationals), so no zero-derivative trap. (2) The lane factors come from sphere integrals over the bounded `[0, pi] x [0, 2 pi]` domain, so the symmetry/parity-on-unbounded-domain trap does not apply; selection rule m1+m2+m3=0 is the relevant constraint and is correctly handled. (3) Trivial-case substitution: with `dKsym=9, dMsym=1` the K1_wall row gives `-1 + 1 = 0` and the Hev_wall row gives `2/3 - 1/3 = 1/3 != 0`, confirming the two rows of the wall Jacobian are linearly independent and `det = 1/27` is non-vacuous. No additional traps triggered.

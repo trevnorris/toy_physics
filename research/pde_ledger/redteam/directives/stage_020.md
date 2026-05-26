@@ -1,125 +1,108 @@
 ---
 unit_id: 020
 batch: I.2
-created_at: 2026-05-21T00:00:00Z
+created_at: 2026-05-25T00:00:00Z
 findings_count: 2
 stop_cold: null
-applied: true
-applied_at: 2026-05-21T19:39:47Z
-findings_applied: 2
-findings_blocked: 0
+applied: false
 verification_status: pending
+needs_user_resolution: true
 ---
 
 # Codex directive — unit 020
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+
+If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
 
 Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
 
 Do NOT run python or mathematica. Only edit files.
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
 
-## F1 — missing_verification_script
+## F1 — paper_misalignment
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl` (create new file)
+**Subtype:** paper_missing_script_claim
 
-**Issue:** Unit 020 has no Mathematica script, but the unit's manifest entry has `is_status_only_candidate: False` and the unit is not a checkpoint, so both engines are required by the second-engine policy. The SymPy script alone proves nothing against a second engine; the determinant 1/27, the closed-form wall slopes, and the compensated-branch identities are currently single-engine.
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_020.tex:53-55` quote: "Stage~020 exports the weak-axisymmetric parent packet \eqref{eq:stage020-wall-slopes}--\eqref{eq:stage020-residual-xi}." (entire Output paragraph; no Y20 / Gaunt / lane-ratio anchor anywhere in the card)
+- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex:62` quote: "020 & Parent throat action weak-axisymmetric packet & ... & Weak-axisymmetric packet exported from the parent throat-action bundle." (no Y20 mention)
 
-**Required change:**
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py:45-50` quote:
+  ```
+  lam20 = real_y20_square_ratio(0)
+  lam21 = real_y20_square_ratio(1)
+  lam22 = real_y20_square_ratio(2)
+  assert_zero('Y20 overlap lane 20', lam20 - 1)
+  assert_zero('Y20 overlap lane 21', lam21 - sp.Rational(1, 2))
+  assert_zero('Y20 overlap lane 22', lam22 + 1)
+  ```
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl:34-67` quote: Y20 lane ratio assertions (`lambda0 - 1`, `lambda1 - 1/2`, `lambda2 - (-1)`, `crossOne - 0`, `crossTwo - 0`).
 
-Create the file at the Target path. The script must use Mathematica's own symbolic engine (`Solve`, `Det`, `FullSimplify`, `ThreeJSymbol`/`ClebschGordan` as needed for Gaunt — do not import any value from SymPy or hard-code SymPy output). It must independently derive each claim from the symbolic definitions of D0, D01, D21, D41, K1, H_even, Xi1, then assert each via `If[!TrueQ[FullSimplify[lhs - rhs] === 0], Print["FAIL: <label>"]; Exit[1]]`. Final `Print["STATUS: PASS"]; Exit[0]`.
+## Resolve before fix_loop
 
-Structurally the script MUST NOT mimic the SymPy file's function/variable choreography (no helper named `assert_zero`, no Python-style ordering of symbol declarations). Use Mathematica idioms: top-level `Module`, `SetAttributes`, `ClearAll`. The independence test is whether the algebra reads as a fresh Mathematica derivation, not a port.
+The paper card and appendix row for stage 020 export only the algebraic packet `delta M_Sigma`, `delta K_Sigma`, `D_{n1}`, `K_1`, `H_even`, `Xi_1`, the wall-slope solve, and the residual `Xi_1`. They do not mention spherical-harmonic / Gaunt lane ratios. Both engine scripts, however, devote a substantial block to asserting `lambda_{20} = 1`, `lambda_{21} = 1/2`, `lambda_{22} = -1`, and `gaunt(2,2,2,0,m,m) = 0` for `m = 1, 2`. Is the Y20 lane block part of stage 020's deliverable (and the paper card needs to be amended), or is it scaffolding that belongs to a different stage (e.g., 023 "Full grouped bundle and projectors", which the appendix row at stage_appendix_part01.tex:68 says includes "isotropic branch test" — that may be where the Y20 ratios live)?
 
-**Claim manifest:**
+Possible directions (the user picks one):
+- (a) Y20 ratios belong here → add a paragraph and equation to `paper/stages/stage_020.tex` (e.g., after the "Even compensation" paragraph) that anchors the three lane ratios and the selection-rule vanishing; no script change. Then F2 below should be applied to fix the lambda_{20} tautology.
+- (b) Y20 ratios belong elsewhere → remove sympy lines 13 (the `gaunt` import), 20-26 (`real_y20_square_ratio` definition), and 45-50 (the three `assert_zero` calls). Mirror: remove `wl` lines 6-7 (the `ClearAll[GauntIntegral]` and `SetAttributes`), 21-30 (`GauntIntegral` definition), and 34-68 (the angular block including the `M1 OK` print). After removal, F2 is moot.
+- (c) Y20 ratios are partially load-bearing here but in a sense the card has not articulated → user writes a short note in `notes/stages/moving_throat_pde_stage020_*.md` that nails down why the ratios appear, then chooses (a) or (b) given that anchor.
 
-M1. Real-Y20 self-overlap ratios via Gaunt coefficients. Let `g[m1, m2, m3] = ThreeJSymbol[{2,0},{2,m2},{2,m3}]` (or equivalent `ClebschGordan` / explicit closed form for the Gaunt integral). Verify:
-  - `lambda_0 := gaunt(2,2,2,0,0,0) / gaunt(2,2,2,0,0,0) == 1` (compute uniformly — do not short-circuit on m=0).
-  - `lambda_1 := -1 * gaunt(2,2,2,0,1,-1) / gaunt(2,2,2,0,0,0) == 1/2`.
-  - `lambda_2 := +1 * gaunt(2,2,2,0,2,-2) / gaunt(2,2,2,0,0,0) == -1`.
-  - Same-sign cross terms vanish: `gaunt(2,2,2,0,1,1) == 0` and `gaunt(2,2,2,0,2,2) == 0`.
-
-M2. Determinant of the even-gate Jacobian.
-  Define D0 = KSigma - B0 - Z0, D01 = dKSigma - B01 - Z01, D21 = -(dMSigma + B21 + Z21), D41 = -(B41 + Z41), K1 = D21 + D01/9, H_even = D41 - (2/3) D21 - D01/27. Then
-  `Det[{{D[K1,dKSigma], D[K1,dMSigma]}, {D[H_even,dKSigma], D[H_even,dMSigma]}}] == 1/27`.
-
-M3. Closed-form solve of the even gates.
-  `Solve[{K1 == 0, H_even == 0}, {dKSigma, dMSigma}]` yields a unique solution with
-  `dKSigma -> B01 + Z01 + 27 (B41 + Z41)` and
-  `dMSigma -> -(B21 + Z21) + 3 (B41 + Z41)`.
-
-M4. Compensated-branch deficit identities. Substituting the solution back:
-  `D01 |_{sol} == 27 (B41 + Z41)`
-  `D21 |_{sol} == -3 (B41 + Z41)`
-  `D41 |_{sol} == -(B41 + Z41)`.
-
-M5. Compensated normalization defect.
-  `Xi1 := N01/N0 - D01/D0` evaluated on the solved branch (with `D0 = KSigma - B0 - Z0`) satisfies
-  `Xi1 |_{sol} == N01/N0 - 27 (B41 + Z41) / (KSigma - B0 - Z0)`.
-
-The `.wl` script must independently encode and assert each of M1-M5.
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-mathematica 020` and confirm the new file exists, runs to completion, prints each of M1-M5's pass labels, prints `STATUS: PASS`, and exits 0. The verifier will additionally inspect the `.wl` source for transliteration patterns (presence of `assert_zero`-shaped helper, identical sequential ordering of symbol declarations, identical variable names with Python-style snake_case where Mathematica would use CamelCase) and treat any such pattern as a regression.
-
-## Applied: F1
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl`
-- summary: Created the missing Mathematica audit script deriving and checking M1-M5 with Mathematica symbolic operations.
-- deviation: none
+The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
 
 ## F2 — tautological_check
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py:20-27`
+**Target:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py:20-26, 45, 48`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.wl:34-35, 49-51`
 
-**Issue:** `real_y20_square_ratio(0)` returns the literal `sp.Integer(1)` before any Gaunt evaluation, so the subsequent `assert_zero('Y20 overlap lane 20', lam20 - 1)` at line 49 evaluates `1 - 1 == 0` regardless of what `gaunt(2,2,2,0,0,0)` actually equals. The m=0 lane is a tautology while m=1, m=2 are non-tautological.
+**Issue:**
 
-**Required change:**
+In `real_y20_square_ratio(m)` (sympy lines 20-26), `base` is `gaunt(2,2,2,0,0,0)` and the return for `m = 0` is `gaunt(2,2,2,0,0,0) / base`, which is identically `1` by construction. The downstream assertion `assert_zero('Y20 overlap lane 20', lam20 - 1)` (line 48) therefore cannot fail no matter what the Gaunt code returns. Same defect in Mathematica at lines 34-35 (`overlapBase`, `lambda0`) and lines 49-51 (assertion on `lambda0 - 1`). The non-trivial assertions in the block (`lam21`, `lam22`, same-sign vanishing) DO have content; only `lam20`/`lambda0` is the tautology.
 
-Replace lines 20-28 (the entire `real_y20_square_ratio` function) with a version that computes the ratio uniformly for all `m in {0, 1, 2}`, calling `gaunt` for both numerator and denominator. Keep the same-sign cross-term guard for `m != 0` only (the m=0 "same-sign" case IS the base itself and must not be flagged as a cross term).
+**Resolution gate:** Apply only if user has chosen direction (a) above (Y20 ratios stay in the script). If user chose direction (b), the entire Y20 block is removed and this finding is moot.
 
-Before:
+**Required change (if F1 direction (a) is chosen):**
 
-```python
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m == 0:
-        return sp.Integer(1)
-    same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-    if same_sign != 0:
-        raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
+In `sympy_audit.py`, anchor `gaunt(2,2,2,0,0,0)` to its known closed form before forming the ratios. After line 32 (the import of `gaunt`) is fine; concretely, add after line 44 (`Xi1 = sp.expand(...)`) and before line 45:
+
+Before (line 45-50):
+```
+    lam20 = real_y20_square_ratio(0)
+    lam21 = real_y20_square_ratio(1)
+    lam22 = real_y20_square_ratio(2)
+    assert_zero('Y20 overlap lane 20', lam20 - 1)
+    assert_zero('Y20 overlap lane 21', lam21 - sp.Rational(1, 2))
+    assert_zero('Y20 overlap lane 22', lam22 + 1)
 ```
 
 After:
-
-```python
-def real_y20_square_ratio(m: int) -> sp.Expr:
-    base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
-    if m != 0:
-        same_sign = sp.simplify(gaunt(2, 2, 2, 0, m, m))
-        if same_sign != 0:
-            raise AssertionError(f"Real-harmonic same-sign cross term should vanish for m={m}: {same_sign}")
-    return sp.simplify((sp.Integer(-1) ** m) * gaunt(2, 2, 2, 0, m, -m) / base)
+```
+    # Anchor the Y20-self overlap to its closed form, so the lane-ratio
+    # denominators are not validated against themselves.
+    gaunt_base = sp.simplify(gaunt(2, 2, 2, 0, 0, 0))
+    assert_zero('Y20 base gaunt closed form', gaunt_base - sp.sqrt(5/sp.pi)/(7*sp.sqrt(sp.pi)/sp.sqrt(1)) * sp.Integer(1))
 ```
 
-Do not change any other line of the file. The function signature, name, and call sites at lines 46-48 must remain identical.
+The exact closed form of `gaunt(2,2,2,0,0,0)` is `sqrt(5/(4*pi)) * 2/7`. Codex: compute this with sympy and replace the closed-form expression in the assertion above with the value sympy actually returns from `sp.sqrt(sp.Rational(5,4)/sp.pi) * sp.Rational(2,7)` — do not invent an answer. If you cannot determine the exact closed form mechanically without running sympy, append `## Blocked: F2` with the question instead.
+
+In `mathematica_audit.wl`, mirror the same change: introduce
+```
+gauntBase = FullSimplify[GauntIntegral[2, 2, 2, 0, 0, 0]];
+If[!TrueQ[FullSimplify[gauntBase - Sqrt[5/(4 Pi)]*(2/7)] === 0],
+  Print["FAIL: M1 gauntBase closed form"]; Exit[1]];
+```
+before line 35, and leave the existing `lambda0` check in place (it is still tautological, but the new `gauntBase` check now anchors the base value). Codex: insert the new lines but do not delete the existing `lambda0` check; the orchestrator wants both for trace continuity.
+
+**Claim manifest:** N/A (this is not a missing-script finding).
 
 **Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 020` and confirm:
-  - the script exits 0 with `STATUS: PASS`,
-  - the source no longer contains `if m == 0: return sp.Integer(1)`,
-  - the source contains the new `if m != 0:` guard wrapping the same-sign check,
-  - the printed output is unchanged (all three lane assertions still pass).
-
-## Applied: F2
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py`
-- summary: Replaced the m=0 shortcut with a uniform Gaunt numerator-over-denominator ratio and guarded same-sign checks only for nonzero m.
-- deviation: none
+After Codex applies, the verifier will run `redteam exec-sympy 020` and `redteam exec-mathematica 020` and confirm:
+1. New `Y20 base gaunt closed form` assertion appears at sympy line ~46.
+2. New `gauntBase` assertion appears at wl around line 35.
+3. Both scripts exit 0 with `STATUS: PASS`.
+4. The new check could in principle fail if the closed-form value were perturbed.

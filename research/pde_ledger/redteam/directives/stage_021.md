@@ -1,152 +1,70 @@
 ---
 unit_id: 021
 batch: I.2
-created_at: 2026-05-21T12:30:55-06:00
-findings_count: 2
+created_at: 2026-05-25T00:00:00Z
+findings_count: 1
 stop_cold: null
 applied: true
-applied_at: 2026-05-21T15:16:05-06:00
-findings_applied: 2
-findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 021
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+The only finding for this unit is a `paper_misalignment`. **Codex must not edit anything for this unit until the user picks a direction below.** Do not touch paper.tex, notes/, or the scripts. The orchestrator is holding pending user resolution.
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+## F1 — paper_misalignment
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+**Subtype:** script_missing_paper_claim
 
-Do NOT run python or mathematica. Only edit files.
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_021.tex:77-81` quote:
+  > Stage~021 exports the reduced one-port self-energy \eqref{eq:app-stage021-self-energy}, the transfer factor \eqref{eq:app-stage021-transfer-factor}, and the wall-level outgoing quadrupole coefficient \eqref{eq:app-stage021-wall-odd}.
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_021.tex:71-75` quote:
+  > δ D_2^{odd}(ω) = -i N_2(0) a^5/(27 c_s^5) ω^5 + O(ω^7)
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py:238-244` quote:
+  > Gamma_port = sp.symbols("Gamma_port", positive=True, real=True)
+  > Dcorr = sp.simplify(-I * Gamma_port * omega**5 * N0)
+  > print("If Pi_out = + i Gamma_port omega^5 + O(omega^7), then")
+  > print("delta D_wall^(odd) =")
+  > sp.pprint(Dcorr)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:135, 140` quote:
+  > dCorr = FullSimplify[-I gammaPort omega^5 n0, Assumptions -> $Assumptions];
+  > Print["delta D_wall^(odd) = ", fmt[dCorr]];
 
-## F1 — insufficient_verification
+`Dcorr`/`dCorr` is printed but never asserted, and `Gamma_port`/`gammaPort` is never specialized to the paper's value `a^5/(27 c_s^5)`. The paper's third Output deliverable (the composed wall-level odd quadrupole coefficient) therefore has no script-side check.
 
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:73-81`
+## Resolve before fix_loop
 
-**Issue:**
-The Mathematica Section II.1 currently contains only one assertion touching the reduced Lagrangian `lRed`, namely `expectZero["Q kinetic coefficient", Coefficient[lVel, vq^2] - m/2]` (line 81). Because `lRed` is constructed at line 67 with the explicit term `1/2 m D[q,t]^2`, that coefficient is `m/2` by construction, making the assertion algebraically guaranteed independent of any physics. The SymPy counterpart (sympy file lines 123-130) actually derives the three Euler-Lagrange equations from `Lred` via `euler_equations(...)` and matches each one against the expected EOM. The Mathematica script never derives the EOMs from `lRed`, so any sign or coupling error in the Lagrangian definition would not be detected on the Mathematica side.
+The paper's Output paragraph lists three deliverables; the scripts assert two of them and only narrate the third in prose. Which direction should we take?
 
-**Required change:**
+Possible directions (the user picks one):
 
-Edit the file as follows. The current lines 73-81 are:
+- (a) **Script is incomplete — add the composed assertion.** Add a new check in both the sympy and mathematica scripts that substitutes `Gamma_port → a^5/(27 c_s^5)` into the wall-operator-convention odd term and asserts the result equals `-i * (Ω_A² g_W + R g_A)² / (Ω_A² Ω_W² − R²)² * a^5/(27 c_s^5) * ω^5`. Concretely for sympy (insert after Section III's `Dcorr` is defined, or as a new Section VI that imports the constants):
+  ```python
+  expect_zero(
+      "delta D_2^(odd) composed (paper eq:app-stage021-wall-odd)",
+      Dcorr.subs(Gamma_port, a**5 / (27 * c_s**5))
+      - (-I * (OA**2 * gW + R * gA)**2 / (OA**2 * OW**2 - R**2)**2
+         * a**5 / (27 * c_s**5) * omega**5),
+  )
+  ```
+  Note: `a` and `c_s` are currently declared inside `outgoing_l2_fingerprint_audit()` (sympy line 258), not in Section III. The cleanest restructure is a new Section VI that re-declares the symbols and re-imports the formulas. Mirror in the .wl at end of §IV or in a new §VI.
 
-```
-staticL = lRed /. {D[q, t] -> 0, D[a, t] -> 0, D[ww, t] -> 0};
-staticTmp = staticL /. {q -> q0, a -> a0r, ww -> w0};
-staticBack = {q0 -> q, a0r -> a, w0 -> ww};
-qd = D[q, t];
-ad = D[a, t];
-wd = D[ww, t];
-lVel = Expand[lRed /. {qd -> vq, ad -> va, wd -> vw}];
+- (b) **Paper is overstating — trim the Output paragraph.** Remove the third item from the Output paragraph (lines 77–81) so it lists only the reduced one-port self-energy and the transfer factor. Also drop `\eqref{eq:app-stage021-wall-odd}` and the surrounding paragraph "Compact outgoing fingerprint" (lines 60–75) if the wall-level composition is genuinely out of scope for this stage. Likely wrong direction given the notes (§7) treat this as the headline result.
 
-expectZero["Q kinetic coefficient", Coefficient[lVel, vq^2] - m/2];
-```
+- (c) **Both sides are fine; the composition is intended to be implicit.** Document explicitly in the script's final ledger comment or in the paper card that the composition is asserted by inspection from the two separately-verified pieces, not by an end-to-end `expect_zero`. (This is the weakest direction; the auditor flags it because a future edit could silently break it.)
 
-Replace those nine lines (73-81 inclusive) with the following six lines, which compute the Euler-Lagrange operator for each mode directly and verify against the canonical EOMs:
+Recommended: (a). The fix is mechanical and adds <10 lines per script.
 
-```
-elQ = D[D[lRed, D[q, t]], t] - D[lRed, q];
-elA = D[D[lRed, D[a, t]], t] - D[lRed, a];
-elW = D[D[lRed, D[ww, t]], t] - D[lRed, ww];
-expectZero["Q equation", elQ - (m D[q, t, t] + k q - gA a - gW ww)];
-expectZero["A equation", elA - (D[a, t, t] + oA^2 a - r ww - gA q)];
-expectZero["W equation", elW - (D[ww, t, t] + oW^2 ww - r a - gW q)];
-```
+The orchestrator will not invoke Codex on this unit until the user has chosen a direction. If the user picks (a), a follow-up directive should be issued naming the exact insertion points and assertion shapes for both scripts.
 
-Do not change any other lines. The blank line at line 80 (between the assignments block and the `expectZero` call) collapses naturally; preserve a single blank line of separation if the local style elsewhere in the file uses one.
-
-**Verification command:**
-
-After Codex applies, the verifier will run `redteam exec-mathematica 021` and confirm:
-- the script still exits 0;
-- the output file no longer contains the line `Q kinetic coefficient = ...`;
-- the output file contains three new lines: `PASS: Q equation`, `PASS: A equation`, `PASS: W equation`;
-- the residuals printed before those PASS lines are all `0`.
-
-## Applied: F1
+## Applied: F1 (iter2)
 
 - files_changed:
+  - `scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py`
   - `mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`
-- summary: Replaced the tautological reduced-Lagrangian kinetic coefficient check with VariationalMethods EulerEquations checks for Q, A, and W.
-- deviation: Also parenthesized the existing lRed RHS so Mathematica parses the intended full reduced Lagrangian instead of only the first line.
-
-## F2 — mathematica_transliteration
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl:88-89, 131-132, 149-151`
-
-**Issue:**
-The Mathematica script reproduces the SymPy script's algebra step-for-step using the same intermediate-variable choreography (aKer ↔ Aker, wKer ↔ Wker, delta ↔ Delta, sigmaCons ↔ Sigma_cons, sigmaFull ↔ Sigma_full, sigmaFirst ↔ Sigma_first, nOmega ↔ N_omega, j2a ↔ j2a, y2a ↔ y2a, h2a ↔ h2a, lambda2 ↔ Lambda2). The "second engine" check thereby reduces to "the same algebra simplifies to the same form in two CAS surfaces". Three Mathematica-native independent derivations are available and replace the transliterated steps without altering the closed-form targets being verified.
-
-**Required change:**
-
-Three separate, localized edits in `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`. Apply all three; the existing assertions downstream of each block must continue to work unchanged.
-
-**Edit 2.1 — Section II.2 Schur complement via LinearSolve.** The current lines 88-89 are:
-
-```
-aSol = FullSimplify[(gA wKer + gW r)/delta, Assumptions -> $Assumptions];
-wSol = FullSimplify[(gW aKer + gA r)/delta, Assumptions -> $Assumptions];
-```
-
-Replace those two lines with the following six lines, which derive `aSol` and `wSol` by inverting the 2x2 mixed kernel against the source vector `{gA, gW}`, and add one new assertion that the resulting `sigmaCons` from `gA*aSol + gW*wSol` matches the closed form already assigned to `sigmaCons` at line 86:
-
-```
-matEAW = {{aKer, -r}, {-r, wKer}};
-solAW = LinearSolve[matEAW, {gA, gW}];
-aSol = FullSimplify[solAW[[1]], Assumptions -> $Assumptions];
-wSol = FullSimplify[solAW[[2]], Assumptions -> $Assumptions];
-sigmaConsDerived = FullSimplify[gA aSol + gW wSol, Assumptions -> $Assumptions];
-expectZero["sigmaCons from LinearSolve matches closed form", sigmaConsDerived - sigmaCons];
-```
-
-Place the new lines in the same position the deleted lines occupied (immediately after the line `wSol = FullSimplify[...]` would have been, i.e. just before the `Print["Sigma_EM+mix^cons(omega) = ..."]` line at the current line 91).
-
-**Edit 2.2 — Section III analytic derivative for N(omega).** The current lines 131-132 are:
-
-```
-sigmaFirst = Expand[Normal[Series[sigmaFull, {piOut, 0, 1}]]];
-nOmega = FullSimplify[(sigmaFirst - sigmaCons)/piOut, Assumptions -> $Assumptions];
-```
-
-Replace those two lines with a single analytic-derivative line:
-
-```
-nOmega = FullSimplify[D[sigmaFull, piOut] /. piOut -> 0, Assumptions -> $Assumptions];
-```
-
-Delete the now-unused `sigmaFirst` assignment entirely. Keep the surrounding lines (the `sigmaFull` definition above and the `n0 = FullSimplify[nOmega /. omega -> 0, ...]` line below) unchanged.
-
-**Edit 2.3 — Section IV spherical Hankel via built-in.** The current lines 149-151 are:
-
-```
-j2a = ((3/za^3) - 1/za) Sin[za] - 3 Cos[za]/za^2;
-y2a = -((3/za^3) - 1/za) Cos[za] - 3 Sin[za]/za^2;
-h2a = FullSimplify[j2a + I y2a, Assumptions -> $Assumptions];
-```
-
-Replace those three lines with a single built-in call:
-
-```
-h2a = SphericalHankelH1[2, za];
-```
-
-`SphericalHankelH1[2, za]` is the standard spherical Hankel function of the first kind at `l=2` and equals `j_2(za) + I y_2(za)` exactly; the small-`za` expansion downstream is unaffected. Keep all subsequent lines unchanged.
-
-**Verification command:**
-
-After Codex applies, the verifier will run `redteam exec-mathematica 021` and confirm:
-- the script still exits 0;
-- the output file contains a new line `PASS: sigmaCons from LinearSolve matches closed form`;
-- the existing PASS lines `A exact solution residual`, `W exact solution residual`, `N(omega) compact formula`, `N(0) positive-square form`, `Y2_hat minimal branch`, `Gamma5_port - a^5/(27 c_s^5)`, `N_scalar leading term`, `scalar odd order` all remain present;
-- the printed values of `N(omega)`, `N(0)`, `delta D_wall^(odd)`, `Lambda2(k)`, `Y2_hat(omega)`, `Gamma5_port` are unchanged (the closed forms must match the previous output line-for-line modulo Mathematica's `Together`/`FullSimplify` reordering).
-
-## Applied: F2
-
-- files_changed:
-  - `mathematica/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.wl`
-- summary: Replaced transliterated Schur complement, first-order expansion, and spherical Hankel steps with LinearSolve, analytic differentiation, and SphericalHankelH1.
+- summary: Reworked the composed odd wall-operator assertion so it substitutes the explicit Section III `N(0)` closed form and the Section IV `Gamma5_port = a^5/(27 c_s^5)` coefficient.
 - deviation: none

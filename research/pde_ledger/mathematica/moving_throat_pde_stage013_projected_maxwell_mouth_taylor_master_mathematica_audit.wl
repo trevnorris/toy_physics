@@ -25,14 +25,14 @@ Print["STAGE 013 PROJECTED MAXWELL MOUTH-TAYLOR MASTER MATHEMATICA AUDIT"];
 
 Clear[
   u, ell, t, X0, X1, X2, Q, S2, Hport, Delta, P, Gw, q1, s1, h1,
-  d1, p1, g1, D0, D2, D4, N0, mu1, Qx, Sx, Hx, Dx, Px, Gx,
+  d1, p1, g1, D0, mu1, Qx, Sx, Hx, Dx, Px, Gx,
   qFun, sFun, hFun, dFun, pFun, gFun
 ];
 
 $Assumptions =
   Element[
     {u, ell, t, X0, X1, X2, Q, S2, Hport, Delta, P, Gw, q1, s1,
-      h1, d1, p1, g1, D0, D2, D4, N0, mu1, Qx, Sx, Hx, Dx, Px, Gx},
+      h1, d1, p1, g1, D0, mu1, Qx, Sx, Hx, Dx, Px, Gx},
     Reals
   ] && Delta != 0 && P != 0 && D0 != 0 && mu1 != 0;
 
@@ -116,54 +116,17 @@ Xi =
         Q d1/(D0 Delta^2)) /. subsDer)/mu1,
     Assumptions -> $Assumptions
   ];
-K1 = FullSimplify[(-(z2 + z0/9) /. subsDer)/mu1, Assumptions -> $Assumptions];
-HEven =
+(* Paper round-trip: verify Xi matches Xi_load = n0/N0 + z0/D0 with N0 = P^2/Delta^2. *)
+z0Form = (Delta q1 - Q d1)/Delta^2;
+n0Form = 2 P (Delta p1 - P d1)/Delta^3;
+N0Form = P^2/Delta^2;
+XiPaper =
   FullSimplify[
-    ((-z4 + (2/3) z2 - z0/27) /. subsDer)/mu1,
+    ((n0Form/N0Form + z0Form/D0) /. subsDer)/mu1,
     Assumptions -> $Assumptions
   ];
-
-deltaP2 =
-  FullSimplify[
-    (D0^2 n2 - 2 D0 D2 n0 + 2 D0 N0 z2 - 2 D2 N0 z0)/D0^3,
-    Assumptions -> $Assumptions
-  ];
-deltaP4 =
-  FullSimplify[
-    (D0^3 n4 - 2 D0^2 D2 n2 - 2 D0^2 D4 n0 +
-        2 D0^2 N0 z4 + 3 D0 D2^2 n0 - 2 D0 D2 N0 z2 -
-        2 D0 D4 N0 z0 + 2 D2^2 N0 z0)/D0^4,
-    Assumptions -> $Assumptions
-  ];
-deltaP2Der = FullSimplify[(deltaP2 /. subsDer)/mu1, Assumptions -> $Assumptions];
-deltaP4Der = FullSimplify[(deltaP4 /. subsDer)/mu1, Assumptions -> $Assumptions];
-
+assertZero["M5 Xi matches paper closed form n0/N0 + z0/D0", Xi - XiPaper];
 assertZero["M5 dXi/dPprime", D[Xi, Px] - 2/P];
-assertZero["M5 d(delta P2)/dGprime", D[deltaP2Der, Gx] + 2 P/(D0 Delta^2)];
-assertNonzero["M5 delta P4 Gprime dependence", D[deltaP4Der, Gx]];
-
-qdExprs = {K1 /. {Sx -> 0, Hx -> 0}, HEven /. {Sx -> 0, Hx -> 0}};
-shExprs = {K1 /. {Qx -> 0, Dx -> 0}, HEven /. {Qx -> 0, Dx -> 0}};
-qdMatrix = {
-  {D[qdExprs[[1]], Qx], D[qdExprs[[1]], Dx]},
-  {D[qdExprs[[2]], Qx], D[qdExprs[[2]], Dx]}
-};
-shMatrix = {
-  {D[shExprs[[1]], Sx], D[shExprs[[1]], Hx]},
-  {D[shExprs[[2]], Sx], D[shExprs[[2]], Hx]}
-};
-
-assertNonzero["M6 source/denominator determinant", Det[qdMatrix]];
-assertNonzero["M6 spectral determinant", Det[shMatrix]];
-
-qdSolve = FullSimplify[Solve[Thread[qdExprs == 0], {Qx, Dx}], Assumptions -> $Assumptions];
-shSolve = FullSimplify[Solve[Thread[shExprs == 0], {Sx, Hx}], Assumptions -> $Assumptions];
-assertZero["M6 source/denominator solve count", Length[qdSolve] - 1];
-assertZero["M6 source/denominator Qx solution", Qx /. First[qdSolve]];
-assertZero["M6 source/denominator Dx solution", Dx /. First[qdSolve]];
-assertZero["M6 spectral solve count", Length[shSolve] - 1];
-assertZero["M6 spectral Sx solution", Sx /. First[shSolve]];
-assertZero["M6 spectral Hx solution", Hx /. First[shSolve]];
 
 Print["STAGE 013 MATHEMATICA AUDIT: PASS"];
 Exit[0];

@@ -193,3 +193,61 @@ Former post-EM ledger stages start at Stage `022`.
   `redteam/resolutions/batch_I1_paper_alignment.md` (Codex's 7
   recommendations with rationales), and per-stage reports/verifications
   under `redteam/reports/stage_NNN.md` and `redteam/verifications/stage_NNN.md`.
+- Red-team v2 paper-grounded re-audit of batch I.2 (stages 013-023, "Part
+  I.2 -- Maxwell bridge, parent throat action, reduced one-port")
+  completed 2026-05-25, **certifying paper-alignment for the back half
+  of the linear projected-EM core range (013-021) plus the
+  grouped-bundle bookends (022, 023)**. All 11 stages reached `verified`
+  (3 clean: 016, 017, 022). 6 paper_misalignment items surfaced (Q1-Q6
+  across stages 013, 014, 015, 018, 020, 021). Pattern notably different
+  from I.1: dominated by **(b) trim scripts**, because cross-stage
+  cross-check revealed duplication — the EM-projected scripts were
+  file-for-file ports of `notes/em_projected/step_NN_*` master notes,
+  and the later compact paper cards distributed content across multiple
+  stages. Specific duplications resolved by trim: stage 013's
+  `δP_2`/`δP_4`/sieve (destinations: stage 010 owns δP_n per I.1 v2
+  paper add; stage 014 owns sieve); stage 014's
+  Xi_load/`δP_n`/Compat (destinations: stage 013 owns Xi_load; stage
+  010 owns δP_n + compatibility transport); stage 015's
+  wall-only/Y20/grouped (~half of each engine — destination stage 017
+  owns lane signature + b=3a + wall-only obstruction); stage 018's
+  one-pole/gate/Xi_1 (destinations: stage 019 owns one-pole closure +
+  normalization compatibility; stage 020 owns gate determinant +
+  wall-slope solve + Xi_1 residual); stage 020's Y20 block
+  (destinations: stages 010, 017 both own Y20 lane ratios). The sixth
+  item (Q6 on stage 021) was the inverse direction —
+  script_missing_paper_claim — paper Output enumerated three exports
+  but scripts only asserted two-and-a-half; resolved by **adding** a
+  composed `δD_2^(odd)(ω)` assertion in both engines. After verifier
+  wave caught the initial composed assertion as tautological (used
+  bare `N0` symbol on RHS instead of closed form), a Codex remediation
+  pass replaced the RHS with the Section III closed form
+  `(Ω_A² g_W + R g_A)² / (Ω_A² Ω_W² - R²)²` — assertion now
+  non-tautologically requires both Section III's N(0) derivation and
+  Section IV's `Γ_5^port = a^5/(27 c_s^5)` to be correct. Stage 023's
+  Schur-complement F2 finding produced a real Codex iteration:
+  directive's `+R_mix` prescription conflicted with existing
+  `+2*g_U*g_W*R_mix` rational numerator; Codex deferred, then a
+  remediation pass had Codex read paper's `eq:app-stage023-full-lagrangian`
+  to derive the sign convention from physics — option α chosen
+  (`+R U W` Lagrangian → `-R` off-diagonal in frequency-space spring
+  matrix → existing numerator sign confirmed correct). 4 stages
+  flagged `material_change: true` (013, 014, 015, 018 — all script-side
+  scope reductions removing duplicates). User re-direction was load-
+  bearing this batch: Codex initially recommended (c) acknowledgement
+  for Q1/Q2; user pushed "each step builds on prior" principle; cross-
+  check by orchestrator confirmed destination scripts already verified
+  the content → Q1/Q2 flipped to (b) trim before apply. Apply prompt
+  added a **destination-verification guardrail** ("grep destination
+  script to confirm equivalent assertion exists before deleting from
+  source") that worked as designed — no orphan trims occurred. With
+  batch I.2 v2 closed, **the entire linear projected-EM core range
+  (004-021) is now paper-aligned at v2 depth**, plus the grouped
+  bookends 022-023. The 4 material_change cascades are contained within
+  the same batch's verified stages (destinations 010/014/017/019/020
+  are all in batches I.1 v2 or I.2 v2). See
+  `redteam/batches/batch_I2_v2.md`,
+  `redteam/resolutions/batch_I2_paper_alignment.md` (Codex's 6
+  recommendations with rationales, plus user-revised Q1/Q2), and
+  `redteam/resolutions/codex_remediation_batch_I2.md` (the math-decision
+  remediation pass for 021 and 023).

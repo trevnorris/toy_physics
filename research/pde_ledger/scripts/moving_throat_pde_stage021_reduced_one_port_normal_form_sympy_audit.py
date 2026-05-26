@@ -236,7 +236,19 @@ def outgoing_mixed_dressing_audit() -> dict[str, sp.Expr]:
 
     # Translate to wall-operator convention D = K - M omega^2 - Sigma.
     Gamma_port = sp.symbols("Gamma_port", positive=True, real=True)
+    a, c_s = sp.symbols("a c_s", positive=True, real=True)
     Dcorr = sp.simplify(-I * Gamma_port * omega**5 * N0)
+    expect_zero(
+        "delta D_2^(odd) composed from Section III N(0) closed form and Section IV Gamma5 = a^5/(27 c_s^5)",
+        Dcorr.subs(Gamma_port, a**5 / (27 * c_s**5))
+        - (
+            -I
+            * ((OA**2 * gW + R * gA) ** 2 / (OA**2 * OW**2 - R**2) ** 2)
+            * a**5
+            / (27 * c_s**5)
+            * omega**5
+        ),
+    )
     print("If Pi_out = + i Gamma_port omega^5 + O(omega^7), then")
     print("delta D_wall^(odd) =")
     sp.pprint(Dcorr)

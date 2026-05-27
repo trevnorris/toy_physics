@@ -16,6 +16,7 @@ alpha      = 111*sqrt(5)/5
 alpha (numeric) = 49.640709100495331260
 chi_ref - 37/2 = 0
 kappa_ref - 12321/5 = 0
+alpha_ref - 111/sqrt(5) = 0
 
 Final ledger:
   chi_s = 37/2

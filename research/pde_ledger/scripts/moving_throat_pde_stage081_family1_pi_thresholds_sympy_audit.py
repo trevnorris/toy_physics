@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SymPy audit for Stage 64.
+SymPy audit for Stage 081.
 
 Translates the explicit Family-1 zeta-demand thresholds into the selected-branch
 product variable Pi_tr / C_mix.
@@ -25,7 +25,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 64 — FAMILY-1 PRODUCT THRESHOLDS")
+banner("STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS")
 
 zeta, Pi, Cmix, eps_blk = sp.symbols('zeta Pi Cmix eps_blk', real=True)
 

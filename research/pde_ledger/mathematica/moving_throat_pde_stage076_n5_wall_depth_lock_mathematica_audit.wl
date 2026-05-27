@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 059 — EXACT n=5 WALL-DEPTH LOCK"];
+banner["STAGE 076 — EXACT n=5 WALL-DEPTH LOCK"];
 
 Clear[kConst, rho, mpsi, hbar, cSw, lambdaMu, rhoW, ell, a, nPoly];
 $Assumptions =
@@ -52,9 +52,10 @@ $Assumptions = $Assumptions && muStarSym > 0;
 enthalpyLock = muStarSym - lambdaMu*mpsi*cSw^2/4;
 muStarSolved = First[muStarSym /. Solve[enthalpyLock == 0, muStarSym]];
 thetaW = FullSimplify[4*rhoW^2*muStarSolved^2/(hbar^2*cSw^2), Assumptions -> $Assumptions];
-thetaCanonical = FullSimplify[(2*rhoW*muStarSolved/(hbar*cSw))^2, Assumptions -> $Assumptions];
+(* Closed-form target from notes section 2; the assertion exercises the 1/4 in the enthalpy lock. *)
+thetaTarget = FullSimplify[(1/4)*lambdaMu^2*mpsi^2*rhoW^2*cSw^2/hbar^2, Assumptions -> $Assumptions];
 Print["Theta_w (enthalpy lock) = ", fmt[thetaW]];
-expectZero["Theta_w vs alternative-form derivation", thetaW - thetaCanonical];
+expectZero["Theta_w under enthalpy lock", thetaW - thetaTarget];
 
 healingCondition = cSw - hbar/(2*mpsi*ell);
 cSwFromEll = FullSimplify[First[cSw /. Solve[healingCondition == 0, cSw]] /. ConditionalExpression[e_, _] :> e, Assumptions -> $Assumptions];
@@ -66,9 +67,10 @@ expectZero["healing-lock reduction", thetaWInEll - thetaHealReduced];
 Print["Theta_w (healing lock) = ", fmt[thetaHealReduced]];
 
 (* Reference-branch convention: ell = a * refFactor with refFactor = 1/20.
-   TODO(provenance): cite the upstream stage that fixes refFactor. This factor is
-   the load-bearing piece of the "25" in the normalized reference identity. *)
-refFactor = 1/20;  (* reference-branch convention: ell = a * refFactor  (see F2 below for provenance) *)
+   Source: Family-1 reference-branch description carried forward as input to this stage
+   (notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md section 4).
+   This factor is the load-bearing piece of the "25" in the normalized reference identity. *)
+refFactor = 1/20;
 thetaRef = FullSimplify[thetaHealReduced /. ell -> a*refFactor, Assumptions -> $Assumptions];
 thetaRefNorm = FullSimplify[thetaRef /. a -> 1, Assumptions -> $Assumptions];
 Print["Theta_w (reference branch, general a) = ", fmt[thetaRef]];

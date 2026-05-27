@@ -2,152 +2,169 @@
 unit_id: 074
 batch: III.4
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-25T00:00:00Z
+verify_date: 2026-05-27T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 2
-findings_total: 2
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
-# Verification — unit 074
+# Verification -- unit 074 (v2)
+
+This is the v2 verifier pass. The v1 audit (resolved in the prior pass)
+hardened the SymPy substitution chain (F1 `tautological_check`) and added
+a provenance comment (F2 `insufficient_verification`); both were verified
+clean. The v2 audit raised one new finding -- a paper-side internal
+inconsistency in the boxed `alpha` value -- which is the subject of this
+verification.
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 -- paper_misalignment (alpha = 128/sqrt(5) vs 179 vs 111)
 
 **Classification:** resolved
 
 **What changed:**
-`scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:29-41` (per
-the diff at `redteam/exec_logs/stage_074_diff.patch`). The previous block
 
-```
-chi_s = sp.symbols("chi_s", positive=True)
-kappa = sp.symbols("kappa", positive=True)
-chi_lock = sp.simplify(Lambda_ell / 2)
-```
+Per the directive front-matter and the captured diff
+(`redteam/exec_logs/stage_074_diff.patch`), the orchestrator applied the
+user's chosen direction (a) directly (no Codex iteration needed):
 
-was replaced with the directive's substitution chain: declare positive symbols
-`hbar, m_psi, c_s, ell, L`; define `chi_def = m_psi * c_s * L / hbar` (line 33);
-apply `subs(c_s, hbar/(2*m_psi*ell))` to get `chi_in_ell = L/(2*ell)` (line 37);
-print the intermediate; then apply `subs(L, Lambda_ell*ell)` to produce
-`chi_lock = Lambda_ell/2` (line 41). The unused literal `chi_s`/`kappa` symbol
-declarations were removed (they were only definitional and not referenced
-downstream). The redundant first `chi_def` line shown in the directive's
-illustrative snippet was correctly omitted — only the single canonical
-assignment exists at line 33.
+- Paper-side: `paper/stages/stage_074.tex:31`, `\frac{128}{\sqrt5}` ->
+  `\frac{111}{\sqrt5}` (recorded in directive; verifier does not re-read
+  prose per scope rules).
+- Notes-side: `notes/stages/.../stage074..._family1_healing_lock.md:117`,
+  `179/sqrt(5)` -> `111/sqrt(5)`; and the collateral typo at
+  `notes/stages/.../stage075..._family1_threshold_window.md:63`,
+  `179/sqrt(5)` -> `111/sqrt(5)`.
+- Script-side (SymPy):
+  `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:70`
+  now reads
+  `expect_zero("alpha_ref - 111/sqrt(5)", alpha_ref - sp.Rational(111) / sp.sqrt(5))`,
+  added immediately after the `kappa_ref - 12321/5` assertion.
+- Script-side (Mathematica):
+  `mathematica/moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.wl:59`
+  now reads
+  `expectZero["alpha_ref - 111/sqrt(5)", alphaRef - 111/Sqrt[5]]`,
+  added immediately after the `kappaRef - 12321/5` assertion.
 
-**Assessment:**
-Edit is correct and matches the directive exactly. The assertion at line 53
-(`chi_s - Lambda_ell/2`) is now non-tautological: `chi_lock` arrives via the
-substitution chain `m_psi*c_s*L/hbar -> L/(2*ell) -> Lambda_ell/2`. If any link
-in the chain were wrong, the assertion would fail. The output transcript
-confirms the intermediate print `chi (after healing-length substitution) =
-L/(2*ell)` and the final `chi_s (locked) = Lambda_ell/2`, both expected.
-Reference branch lines 56-58 still derive `chi_ref` and `kappa_ref` from the
-derived `chi_lock`/`kappa_lock` via subs(Lambda_ell, 37), so they inherit the
-non-tautological derivation as the directive intended. No collateral edits
-beyond the symbol-declaration cleanup that was required for the new chain.
-
-### F2 — insufficient_verification
-
-**Classification:** resolved
-
-**What changed:**
-`scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:43-47`
-now contains the required four-line provenance comment immediately above the
-`kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)`
-definition (line 48). The comment text matches the directive verbatim.
+The diff against both script files matches what the directive
+prescribed exactly: one new assertion line per engine, no collateral
+script edits.
 
 **Assessment:**
-Correct. The comment anchors the `4` and `4/5` coefficients to the Family-1
-Euler-Lagrange branch from earlier stages and clarifies the scope of this
-stage's check. Combined with the F1 chain, the kappa assertion at line 54 is
-now a meaningful test that the locked `chi_s = Lambda_ell/2` substituted into
-the Family-1 branch formula yields `(9/5) Lambda_ell^2`. The assertion still
-passes in the refreshed output.
+
+The edit is correct and addresses the finding. Critically, the new
+assertion is non-tautological: `alpha_ref` is derived inside each
+script as `sqrt(kappa_ref)` where `kappa_ref` itself comes from
+specializing the upstream derivation chain
+`kappa_lock = 4*chi_lock**2 + (4/5)*Lambda_ell**2` (SymPy line 48 /
+Mathematica `kappaLock` line 38) at `Lambda_ref = 37`. The literal
+`111/sqrt(5)` in the assertion call is *not* used anywhere upstream of
+`alpha_ref`, so the comparison `alpha_ref - 111/sqrt(5) == 0` is a real
+test of the upstream chain -- if any step were wrong, the assertion
+would fail.
+
+Both engines' regenerated outputs confirm the assertion passes:
+
+- SymPy
+  (`scripts/output/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.txt:19`):
+  `alpha_ref - 111/sqrt(5) = 0`.
+- Mathematica
+  (`mathematica/output/moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.txt:21-22`):
+  `alpha_ref - 111/sqrt(5) = 0` followed by `PASS: alpha_ref - 111/sqrt(5)`.
+
+All previously passing assertions (`chi_s - Lambda_ell/2`,
+`kappa - (9/5) Lambda_ell^2`, `chi_ref - 37/2`, `kappa_ref - 12321/5`)
+still pass on both engines, so no regression.
+
+The paper/notes edits themselves cannot be re-verified from inside the
+scripts-only scope, but the directive front-matter records that they
+were applied; the script-side hard assertion now locks the engine
+output to the canonical `111/sqrt(5)`, so any future drift on the
+paper/notes prose away from that literal will be caught the next time
+this stage is audited.
 
 ## Exec log assessment
 
-**SymPy:** exit=0 (inferred). The captured exec log file
-`redteam/exec_logs/stage_074_sympy.log` is absent from the exec_logs
-directory; only `stage_074_diff.patch` is present. However, the refreshed
-output transcript at
+**SymPy:** exit=0. No dedicated
+`redteam/exec_logs/stage_074_sympy.log` was captured because the
+orchestrator did not invoke the Codex `$RT exec-sympy` wrapper for this
+resolution path (the fix was applied directly). The regenerated
 `scripts/output/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.txt`
-shows all six expected lines and four `= 0` assertion outputs without any
-`AssertionError` trace, which the `expect_zero` helper would have raised on
-failure. Output mtime is May 22 23:12, newer than the script mtime May 22
-23:11, confirming the post-fix run. Notable lines:
+serves as the run record. Notable lines:
 
-```
-chi (after healing-length substitution) = L/(2*ell)
-chi_s (locked) = Lambda_ell/2
-kappa(Lambda_ell) = 9*Lambda_ell**2/5
-chi_s - Lambda_ell/2 = 0
-kappa - (9/5) Lambda_ell^2 = 0
-chi_ref - 37/2 = 0
-kappa_ref - 12321/5 = 0
-alpha (numeric) = 49.640709100495331260
-```
+> `chi_s - Lambda_ell/2 = 0`
+> `kappa - (9/5) Lambda_ell^2 = 0`
+> `chi_ref - 37/2 = 0`
+> `kappa_ref - 12321/5 = 0`
+> `alpha_ref - 111/sqrt(5) = 0`
 
-**Mathematica:** exit=0 (inferred). Log file
-`redteam/exec_logs/stage_074_mathematica.log` is also absent, but the
-Mathematica script was untouched by this directive (F1 and F2 both target the
-SymPy file only), so a re-run was not strictly required. The Mathematica
-output at
+The script reaches its trailing `Final ledger:` block, which the
+`expect_zero` helper would have prevented via `AssertionError` if any
+check had failed, so exit status is effectively 0.
+
+**Mathematica:** exit=0. No dedicated
+`redteam/exec_logs/stage_074_mathematica.log` was captured for the
+same reason; the regenerated
 `mathematica/output/moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.txt`
-shows four `PASS:` lines and the trailing `Stage 074 Mathematica audit
-passed.` banner; mtime May 22 23:12. Notable lines:
+is the run record. Notable lines:
 
-```
-PASS: chi_s - Lambda_ell/2
-PASS: kappa - (9/5) Lambda_ell^2
-PASS: chi_ref - 37/2
-PASS: kappa_ref - 12321/5
-Stage 074 Mathematica audit passed.
-```
+> `PASS: chi_s - Lambda_ell/2`
+> `PASS: kappa - (9/5) Lambda_ell^2`
+> `PASS: chi_ref - 37/2`
+> `PASS: kappa_ref - 12321/5`
+> `PASS: alpha_ref - 111/sqrt(5)`
+> `Stage 074 Mathematica audit passed.`
 
-**Output freshness:** SymPy output mtime (May 22 23:12) > SymPy script mtime
-(May 22 23:11). Mathematica output mtime (May 22 23:12) > Mathematica script
-mtime (May 11 11:56). Both outputs are post-fix.
+`Exit[0]` is reached on the final script line.
+
+**Output freshness:** confirmed.
+
+- SymPy `.py` mtime = 1779869150, `.txt` mtime = 1779869734 (txt newer
+  by 584 s).
+- Mathematica `.wl` mtime = 1779869153, `.txt` mtime = 1779869887 (txt
+  newer by 734 s).
+
+Both outputs are post-fix.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The edit only changes the derivation route for `chi_lock`; the final symbolic
-and numeric values are identical to the pre-fix audit (compare row-by-row in
-the original report's engine-cross-check table — every printed quantity
-matches: `chi_s = Lambda_ell/2`, `kappa = 9*Lambda_ell**2/5`, `chi_ref = 37/2`,
-`kappa_ref = 12321/5`, `alpha = 111*sqrt(5)/5`, `alpha (numeric) =
-49.640709100495331260`). No downstream-quoted constant or symbolic result has
-changed. This is a provenance-only fix: the SymPy script now derives the value
-the Mathematica script already derived, rather than declaring it.
+The only script-side change is an additional assertion that locks the
+already-computed `alpha_ref` to its already-correct symbolic form
+`111/sqrt(5)`. No constant, symbolic intermediate, or carry-forward
+quantity changes value. Stage 075 already consumes the script-computed
+`alpha`, not the (now-fixed) paper literal, so the paper/notes typo
+fix likewise does not change any downstream numeric. No need to mark
+units > 074 as upstream_stale.
 
 ## Side observations (non-blocking)
 
-- The exec log files `stage_074_sympy.log` and `stage_074_mathematica.log` are
-  not present in `redteam/exec_logs/`. I inferred exit=0 from the refreshed
-  output transcripts (the `expect_zero` helper raises `AssertionError` on
-  failure, which would have prevented the trailing `Final ledger:` print on
-  the SymPy side and the trailing `Stage 074 Mathematica audit passed.` line
-  on the Mathematica side; both are present). Orchestrator may want to confirm
-  log-capture behaviour, but this does not impede verification.
-- The banner string on SymPy line 27 still reads "STAGE 57" (and Mathematica
-  output line 3 reads "STAGE 057"), inherited from the original Stage-57 file
-  the script was renamed from. The docstring header on line 3 of the SymPy
-  file also still names `stage57_family1_healing_lock_sympy_audit.py`. Cosmetic
-  only; not part of either finding.
+- The orchestrator's "user-resolved paper_misalignment" path skips
+  capture of `redteam/exec_logs/stage_074_{sympy,mathematica}.log`
+  because no Codex iteration runs. The verifier had to fall back on
+  the regenerated `.txt` outputs to confirm exit status. Future
+  resolutions on this path might either still capture a one-shot log
+  or document explicitly in the directive that the `.txt` outputs are
+  the substitute log record. This is not a verification blocker.
+- The cosmetic "STAGE 57"/"STAGE 057" banner strings still appear in
+  both script outputs (inherited from the pre-rename Stage-57 file).
+  Already noted in the v1 verifier report; still not part of any
+  finding.
 
 ## Verdict justification
 
-Both findings were applied exactly as the directive specified, with no
-deviation and no collateral edits beyond the symbol-declaration cleanup
-necessitated by F1's substitution chain. The refreshed outputs confirm all
-four assertions still pass on both engines, and all printed quantities are
-identical to the pre-fix values — the fix changes provenance, not results.
-Verdict is `verified` with `material_change: false`.
+The single F1 paper_misalignment was resolved as direction (a) and the
+orchestrator's applied edits match the directive: paper line 31 and
+both notes files updated to `111/sqrt(5)`; both engines gained a
+non-tautological `alpha_ref - 111/sqrt(5) == 0` assertion that locks
+the engine-computed `sqrt(kappa_ref)` to the canonical literal. Both
+engine outputs are fresh and show every assertion passing, including
+the new one. No regressions, no material change to any
+downstream-relevant quantity. Verdict: `verified`.
 
 stage 074: verified

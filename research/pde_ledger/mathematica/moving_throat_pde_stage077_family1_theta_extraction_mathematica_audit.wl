@@ -35,7 +35,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[res, pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 060 — SHELL-WEIGHTED THETA EXTRACTION"];
+banner["STAGE 077 — SHELL-WEIGHTED THETA EXTRACTION"];
 
 Clear[xi, alphaR];
 $Assumptions = Element[{xi, alphaR}, Reals] && alphaR > 0;

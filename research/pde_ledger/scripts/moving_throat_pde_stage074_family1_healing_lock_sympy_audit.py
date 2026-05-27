@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage57_family1_healing_lock_sympy_audit.py
 
-SymPy audit for Stage 57:
+SymPy audit for Stage 074:
 - use the exact GNLS healing/compliance width ell = hbar/(2 m c_s),
 - verify chi_s = Lambda_ell/2,
 - verify kappa = (9/5) Lambda_ell^2 on the explicit Family-1 branch,
@@ -24,7 +24,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 57 — HEALING-LENGTH LOCK AND SUPPORT SCALE")
+banner("STAGE 074 — HEALING-LENGTH LOCK AND SUPPORT SCALE")
 
 Lambda_ell = sp.symbols("Lambda_ell", positive=True)
 hbar, m_psi, c_s, ell, L = sp.symbols("hbar m_psi c_s ell L", positive=True)
@@ -67,6 +67,7 @@ print("alpha (numeric) =", sp.N(alpha_ref, 20))
 
 expect_zero("chi_ref - 37/2", chi_ref - sp.Rational(37, 2))
 expect_zero("kappa_ref - 12321/5", kappa_ref - sp.Rational(12321, 5))
+expect_zero("alpha_ref - 111/sqrt(5)", alpha_ref - sp.Rational(111) / sp.sqrt(5))
 
 print("\nFinal ledger:")
 print("  chi_s = 37/2")

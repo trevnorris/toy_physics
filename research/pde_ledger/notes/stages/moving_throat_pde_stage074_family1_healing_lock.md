@@ -114,7 +114,7 @@ Write
 
 Then on the same branch
 
-`alpha = sqrt(12321/5) = 179/sqrt(5) ≈ 49.6407091.`
+`alpha = sqrt(12321/5) = 111/sqrt(5) ≈ 49.6407091.`
 
 This is the support-decay scale entering the exact Stage-41/42 kernel formulas.
 

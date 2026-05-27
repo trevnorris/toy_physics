@@ -2,238 +2,103 @@
 unit_id: 073
 batch: III.4
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T00:00:00Z
-verdict: findings
+audit_date: 2026-05-27T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 4
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
-  mathematica: insufficient
-  engines_agree: false
+  mathematica: present
+  engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  paper_appendix: present
 ---
 
 # Audit unit 073 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_073.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage073_family1_geometry_map.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (only the `\input{stages/stage_073}` row near line 264)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl`
-- sympy output: (missing)
+- sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.txt`
+
+## What the paper claims
+
+The stage card (lines 13-28) states the Family-1 reference branch numerical freeze: `L/a = 37/20` and `ell/a = 1/20`, which yield `Lambda_ell = L/ell = 37` and (under the Stage-54 local Robin mouth closure `K_m = T_X/ell` recalled in the notes) `eta = K_m L / T_X = 37`. The `\stagefield{Output}` line is verbatim: "The Family-1 geometry values \eqref{eq:app-stage073-Lambda-eta}." (i.e., `Lambda_ell = 37` and `eta = 37`). The notes (sections 1-4) confirm the same two numerical deliverables and explicitly identify the reference branch ratios as a "reference-branch numerical freeze, not a new theorem". No additional symbolic identities are claimed by the paper beyond the algebraic identity `Lambda_ell = (L/a)/(ell/a) = L/ell`, which the notes use implicitly to combine the ratios.
 
 ## What the script claims to verify
 
-Both scripts assert an explicit Family-1 geometry map: with `epsilon_r = ell/a = 1/20` and a "carried reference branch" `L/a = 37/20`, the ratio `Lambda_ell = (L/a)/(ell/a)` equals 37. They also assert that, under the local Robin mouth closure `K_m = T_X/ell`, the Robin variable `eta = K_m L / T_X` reduces algebraically to `L/ell` and (under the substitution `L/ell -> 37`) numerically equals 37. The "verification" is therefore a 3-step arithmetic check on two hand-typed rational numbers plus one cancellation of `T_X`. No derivation of `epsilon_r`, `L/a`, or the closure `K_m = T_X/ell` is performed in-script.
+Both scripts perform a four-step audit: (1) symbolic identity `Lambda_ell = (L/a)/(ell/a) = L/ell` over positive symbols (sympy lines 38-42, math lines 28-35); (2) numerical specialization at the reference branch, `Lambda_ell = (37/20)/(1/20) = 37` (sympy lines 44-55, math lines 37-46); (3) symbolic Robin closure: build `eta = K_m * L / T_X` and substitute `K_m -> T_X/ell`, then assert `eta - L/ell == 0` (sympy lines 60-64, math lines 48-56); (4) numerical specialization of eta to the reference branch via `subs(L/ell -> 37)` (sympy line 65, math line 57). The script's bottom-line ledger (sympy lines 67-69, math line 60) reports `Lambda_ell = 37` and `eta = 37`, matching the paper's two deliverables.
+
+## Paper <-> script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| `L/a = 37/20`, `ell/a = 1/20` (carried reference) | sympy lines 44-45 / math lines 37-39 hard-code these literals; documented in card eq. (eq:app-stage073-family1-ratios). | match |
+| `Lambda_ell = L/ell = 37` | symbolic check at sympy line 42 / math line 34 (algebraic identity) + numerical check at sympy line 55 / math line 46. | match |
+| `eta = K_m L / T_X = 37` under `K_m = T_X/ell` | sympy lines 60-65 / math lines 48-57: builds `eta_sym = K_m * L / T_X`, substitutes the closure, asserts both the algebraic identity `eta - L/ell == 0` and the reference numerical value 37. | match |
+
+`paper_alignment: aligned`. Every paper-side deliverable has a corresponding non-tautological script-side check (the symbolic `Lambda_ell - L/ell` is intentionally a sanity-check identity; the load-bearing checks are the numerical `Lambda_ell - 37` and the closure-substituted `eta - L/ell`). No script-side check tests something the paper does not mention.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 47 | `expect_zero("Lambda_ell - 37", Lambda_ell - 37)` where `Lambda_ell = (37/20)/(1/20)` | no |
-| A2 | sympy | 53 | `expect_zero("eta - L/ell", eta - L/ell)` where `eta = simplify((T_X/ell)*L/T_X)` | no |
-| A3 | sympy | 54 | `expect_zero("eta(reference) - 37", eta.subs({L/ell: 37}) - 37)` | partial |
-| A4 | mathematica | 37 | `expectZero["Lambda_ell - 37", lambdaEll - 37]` where `lambdaEll = (37/20)/(1/20)` | no |
-| A5 | mathematica | 46 | `expectZero["eta - L/ell", eta - len/ell]` where `eta = FullSimplify[(tx/ell)*len/tx]` | no |
-| A6 | mathematica | 47 | `expectZero["eta(reference) - 37", eta /. (len/ell) -> 37 - 37]` | **broken: trivially 0 by precedence bug** |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 42 | `expect_zero("Lambda_ell - L/ell (symbolic)", (L_sym/a_sym)/(ell_sym/a_sym) - L_sym/ell_sym)` | sanity: algebraic identity behind `Lambda_ell = L/ell` | partial (algebraic; intended as sanity) |
+| A2 | sympy | 55 | `expect_zero("Lambda_ell - 37", (37/20)/(1/20) - 37)` | claim 2 (`Lambda_ell = 37`) | yes |
+| A3 | sympy | 64 | `expect_zero("eta - L/ell", subs(K_m, T_X/ell)(K_m*L/T_X) - L/ell)` | claim 3 (Robin closure reduces eta to L/ell) | yes |
+| A4 | sympy | 65 | `expect_zero("eta(reference) - 37", eta.subs({L/ell:37}) - 37)` | claim 3 (numerical value `eta = 37`) | partial (substitutes the answer; downstream of A2+A3) |
+| A5 | mathematica | 34 | `expectZero["Lambda_ell - L/ell (symbolic)", lambdaStarSym/ellOverASym - lSym/ellSym]` | sanity: algebraic identity | partial (algebraic; intended as sanity) |
+| A6 | mathematica | 46 | `expectZero["Lambda_ell - 37", lambdaEll - 37]` where `lambdaEll = (37/20)/(1/20)` | claim 2 | yes |
+| A7 | mathematica | 56 | `expectZero["eta - L/ell", eta - len/ell]` where `eta = FullSimplify[etaSym /. km -> tx/ell]` | claim 3 (Robin closure) | yes |
+| A8 | mathematica | 57 | `expectZero["eta(reference) - 37", (eta /. (len/ell) -> 37) - 37]` | claim 3 (numerical value) | partial (substitutes the answer) |
 
-A1/A4 are arithmetic identities between literals (`(37/20)/(1/20)` vs `37`), with no physics input. A2/A5 are algebraic identities by construction: `eta` is defined as `(T_X/ell)*L/T_X` and immediately simplified, so `eta - L/ell` is zero by cancellation, independent of the geometry. A6 is broken (see F1). Only A3 actually tests a substitution.
+A4/A8 are mild redundancies on top of A2/A3 (resp. A6/A7): once you have `eta = L/ell` symbolically (A3/A7) and `Lambda_ell = 37` arithmetically (A2/A6), the substitution `L/ell -> 37` trivially returns 37. But these are not pure tautologies — they bind the symbolic Robin result to the numerical reference value and document the bottom-line ledger entry. The v1 audit corrected a Mathematica precedence bug at this exact line (parentheses), and that fix is present in the current file. The redundancy is intentional bookkeeping rather than a defect.
 
 ## Findings
 
-### F1 — tautological_check
+None. All four v1 findings (F1 Mathematica precedence bug, F2 eta self-cancellation, F3 missing symbolic Lambda_ell identity, F4 transliteration-informational) were applied and the current scripts reflect those fixes:
 
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl:47`
+- Sympy lines 36-42 contain the symbolic Lambda_ell identity (F3 fix).
+- Sympy lines 60-62 build `eta_sym = K_m * L / T_X` and substitute the closure (F2 fix).
+- Mathematica lines 28-35 contain the symbolic Lambda_ell identity (F3 fix).
+- Mathematica lines 53-54 build `etaSym = km*len/tx` and substitute the closure (F2 fix).
+- Mathematica line 57 has the corrected `(eta /. (len/ell) -> 37) - 37` parentheses (F1 fix).
 
-**What's wrong:**
-The line reads
-```
-expectZero["eta(reference) - 37", eta /. (len/ell) -> 37 - 37];
-```
-Mathematica's `Rule` (`->`) has lower precedence than `Plus`, so the RHS of the rule is `37 - 37`, which evaluates to `0`. The expression handed to `expectZero` is therefore `eta /. (len/ell) -> 0`, which simplifies to `0` (since `eta == len/ell`). The check trivially passes, and the captured output line `eta(reference) - 37 = 0` reflects the substituted-to-zero residual, **not** the intended `(eta at L/ell = 37) - 37`. The mathematica script never actually exercises the numerical claim `eta(reference) = 37`.
+F4 (transliteration) was marked informational in v1 and remains the structural shape of the two scripts. For a stage whose entire content is `(37/20)/(1/20) = 37` plus a one-step substitution `K_m -> T_X/ell`, there is essentially no independent derivation path available; both engines compute the same rational arithmetic and the same algebraic cancellation. I do not re-raise this as a v2 finding because (a) it was already documented in v1 as informational and not actionable, and (b) the arithmetic content is so narrow that "independent re-derivation" has no meaningful alternative implementation.
 
-The corresponding sympy line 54
-```
-expect_zero("eta(reference) - 37", eta.subs({L / ell: 37}) - 37)
-```
-substitutes `L/ell -> 37` and then subtracts 37, which is the intended check. So the two engines produce `0` for *different* expressions, masking a real bug behind a coincidence (both happen to be zero).
-
-**Why this matters:**
-The mouth-closure numerical fingerprint `eta = 37` is the one nontrivial output of this unit. The Mathematica audit's assertion that this number is correct is vacuous: it would pass for any `eta` whatsoever, including `eta = 0`, `eta = -100`, or `eta = anything/anything`. The unit's `is_checkpoint: False` status still requires both engines to verify substantive claims; this engine does not.
-
-**Required change:**
-At `mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl:47`, replace
-```
-expectZero["eta(reference) - 37", eta /. (len/ell) -> 37 - 37];
-```
-with
-```
-expectZero["eta(reference) - 37", (eta /. (len/ell) -> 37) - 37];
-```
-The added parentheses bind the `- 37` outside the rule's RHS so the substitution `L/ell -> 37` happens first, after which `37 - 37 == 0` is the residual the engine actually checks.
-
-**Verification:**
-After the fix, re-running the .wl produces the output `eta(reference) - 37 = 0` (same surface text) but the residual is now `(len/ell -> 37) - 37 = 37 - 37 = 0`, i.e. a real check. A sanity perturbation: replacing the `37` inside the rule with `36` should fail (residual `-1`); under the current buggy line, that change has *no effect* on the residual because the RHS is still `36 - 37 = -1`, which substitutes `len/ell -> -1`, giving `(-1) - 37` — the bug would surface as residual `-38` rather than `-1`, demonstrating the precedence trap.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py:52-53`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl:44-46`
-
-**What's wrong:**
-Both scripts define
-```
-eta = sp.simplify((T_X / ell) * L / T_X)        # sympy line 52
-eta = FullSimplify[(tx/ell)*len/tx, ...]         # mathematica line 44
-```
-and then immediately assert
-```
-expect_zero("eta - L/ell", eta - L / ell)        # sympy line 53
-expectZero["eta - L/ell", eta - len/ell]         # mathematica line 46
-```
-But `(T_X/ell) * L / T_X` is algebraically identical to `L/ell` for any nonzero `T_X` — the cancellation is automatic in both engines. The assertion can never fail; it confirms that the simplifier cancelled `T_X`, not that the Robin closure `K_m = T_X/ell` is correctly applied to the definition of `eta`.
-
-**Why this matters:**
-The physical content of the line is supposed to be "under the closure `K_m = T_X/ell`, the Robin variable `eta = K_m L / T_X` reduces to `L/ell`". A non-tautological check would carry `eta` symbolically as a function of an unspecified `K_m` (e.g., `eta_sym = K_m * L / T_X`) and only then substitute `K_m -> T_X/ell` to verify the cancellation. The current form bakes the closure into the definition before the assertion, so the assertion only re-checks elementary simplification.
-
-**Required change:**
-At sympy line 52, separate the definition from the closure substitution:
-```python
-K_m, T_X, L, ell = sp.symbols('K_m T_X L ell', positive=True, real=True)
-eta_sym = K_m * L / T_X
-eta = sp.simplify(eta_sym.subs(K_m, T_X / ell))
-```
-At mathematica line 44, do the same:
-```
-Clear[km, tx, len, ell];
-$Assumptions = Element[{km, tx, len, ell}, Reals] && km > 0 && tx > 0 && len > 0 && ell > 0;
-etaSym = km*len/tx;
-eta = FullSimplify[etaSym /. km -> tx/ell, Assumptions -> $Assumptions];
-```
-Leave the subsequent `expect_zero("eta - L/ell", eta - L/ell)` / `expectZero["eta - L/ell", eta - len/ell]` line in place. Now the residual is `(K_m L/T_X with K_m = T_X/ell) - L/ell`, which exercises the substitution rather than a self-cancellation.
-
-**Verification:**
-The line number of the assertion doesn't move, but the LHS of the residual is now built via `subs(K_m, T_X/ell)` instead of via literal substitution at definition time. A sanity perturbation: changing the closure to `K_m -> 2 T_X/ell` should fail with residual `L/ell` (in sympy) / `len/ell` (in Mathematica), confirming the assertion is now load-bearing.
-
-### F3 — hardcoded_result
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py:36-47`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl:28-37`
-
-**What's wrong:**
-Both scripts hard-code
-```
-epsilon_r = 1/20            # ell/a, given without derivation
-Lambda_star = 37/20         # L/a, given without derivation
-```
-and then assert `Lambda_ell = (L/a)/(ell/a) - 37 == 0`. This is the arithmetic identity `(37/20)/(1/20) = 37`. Neither script cites where `1/20` and `37/20` come from (e.g., a previous stage, a paper equation, a chosen reference geometry), nor does either expose the cancellation algebraically: with a symbolic `Lambda_star` and a symbolic `epsilon_r`, the identity `Lambda_ell = Lambda_star / epsilon_r` would be the substantive content.
-
-**Why this matters:**
-The "ledger" entry `Lambda_ell = 37` is the one number this unit injects into downstream stages. As written, the check confirms only that python/Mathematica can compute `(37/20)/(1/20)`. If a later edit changed `Lambda_star` to, say, `38/20` to match a doc change, the assertion would silently follow along (the assert is `Lambda_ell - 37 == 0`, but the constant `37` is itself derived from the hard-coded inputs — so editing both `Lambda_star` and the literal `37` together would still pass while flipping the downstream value). At minimum the script should record the symbolic identity `Lambda_ell == Lambda_star * a / ell` before specializing.
-
-**Required change:**
-At sympy lines 36-47, add a symbolic check above the numerical one:
-```python
-# Symbolic identity: Lambda_ell = (L/a) / (ell/a) = L/ell, independent of the
-# specific reference branch chosen.
-L_sym, a_sym, ell_sym = sp.symbols('L a ell', positive=True)
-Lambda_star_sym = L_sym / a_sym
-ell_over_a_sym = ell_sym / a_sym
-Lambda_ell_sym = sp.simplify(Lambda_star_sym / ell_over_a_sym)
-expect_zero("Lambda_ell - L/ell (symbolic)", Lambda_ell_sym - L_sym / ell_sym)
-
-# Numerical specialization at the reference branch (epsilon_r = 1/20, L/a = 37/20).
-epsilon_r = sp.Rational(1, 20)
-Lambda_star = sp.Rational(37, 20)
-...
-```
-At mathematica lines 28-37, mirror this with `Clear[lSym, aSym, ellSym]; lambdaStarSym = lSym/aSym; ...; expectZero["Lambda_ell - L/ell (symbolic)", lambdaEllSym - lSym/ellSym];` *before* the numerical block. Keep the existing numerical assertion `Lambda_ell - 37 == 0` afterward (it remains arithmetic but is no longer the only line of defense).
-
-**Verification:**
-After the patch, both scripts contain a new symbolic-check assertion above the numerical one. The verifier looks for a line `Lambda_ell - L/ell (symbolic) = 0` in the saved output. A sanity perturbation: replacing the symbolic numerator with `2 L_sym/a_sym` should fail with residual `L/ell` (sympy) or `lSym/ellSym` (Mathematica), confirming the symbolic check is load-bearing.
-
-### F4 — mathematica_transliteration
-
-**Severity:** low
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.wl:26-47`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage073_family1_geometry_map_sympy_audit_refresh.py:34-54`
-
-**What's wrong:**
-The `.wl` is a line-by-line transliteration of the `.py`, not an independent re-derivation. Compare:
-
-Sympy lines 36-47:
-```python
-epsilon_r = sp.Rational(1, 20)
-Lambda_star = sp.Rational(37, 20)
-ell_over_a = epsilon_r
-Lambda_ell = sp.simplify(Lambda_star / ell_over_a)
-...
-expect_zero("Lambda_ell - 37", Lambda_ell - 37)
-```
-Mathematica lines 28-37:
-```
-epsilonR = 1/20;
-lambdaStar = 37/20;
-ellOverA = epsilonR;
-lambdaEll = FullSimplify[lambdaStar/ellOverA];
-...
-expectZero["Lambda_ell - 37", lambdaEll - 37];
-```
-Sympy lines 50-54:
-```python
-K_m, T_X, L, ell = sp.symbols('K_m T_X L ell', positive=True, real=True)
-eta = sp.simplify((T_X / ell) * L / T_X)
-expect_zero("eta - L/ell", eta - L / ell)
-expect_zero("eta(reference) - 37", eta.subs({L / ell: 37}) - 37)
-```
-Mathematica lines 39-47:
-```
-Clear[km, tx, len, ell];
-$Assumptions = ... km > 0 && tx > 0 && len > 0 && ell > 0;
-eta = FullSimplify[(tx/ell)*len/tx, Assumptions -> $Assumptions];
-expectZero["eta - L/ell", eta - len/ell];
-expectZero["eta(reference) - 37", eta /. (len/ell) -> 37 - 37];
-```
-Same variable choreography, same intermediate names mapped 1:1 (`epsilon_r ↔ epsilonR`, `Lambda_star ↔ lambdaStar`, `K_m, T_X, L, ell ↔ km, tx, len, ell`), same order of assertions, same banner text. The second engine adds no independent path.
-
-**Why this matters:**
-The second-engine policy exists so that a bug in either engine's algebra cannot pass undetected. Transliteration with identical structure defeats that: the precedence bug in F1 above is a perfect example — it survived only because the Mathematica script wasn't re-derived from the physics, only re-typed from the SymPy listing. (Whether F1 alone would have been caught by an independent derivation is uncertain, but the transliteration made it more likely to slip through.)
-
-**Required change:**
-This finding is informational and is correctable only by rewriting the Mathematica script as an independent re-derivation, which goes beyond the auditor's mandate ("Do not propose new features, refactors, or scope extensions"). Codex should **not** rewrite the file; the user handles structural transliteration concerns manually. This finding is recorded so that the post-batch tracker (`MATHEMATICA_MIRROR_POLICY.md`) reflects the issue. Apply only F1, F2, F3 mechanically.
-
-**Verification:**
-No mechanical verification — informational only.
+The script docstring at sympy line 3 still names "Stage 56" and both engine banners still print "STAGE 56" / "STAGE 056" rather than "STAGE 073". This is consistent with the notes (which reference Stages 54, 55, 56 from the old numbering scheme: "What Stage 56 changes" section header) — i.e., the old numbering is the legacy convention of the notes themselves. The paper card uses the current 073 number. I considered raising this as `paper_misalignment` (`notes_contradicts_script`), but the notes are the script's documented source and they themselves use the old numbering throughout. The discrepancy is a pre-existing notes-versus-card numbering convention issue that is out of this stage's scope to repair; flagging it here would not direct any actionable fix without touching prose documents (forbidden by the auditor mandate).
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` is a transliteration of the `.py` (see F4). Both scripts hard-code `1/20` and `37/20`, both define `eta = (T_X/ell) * L / T_X` and simplify, both check `eta - L/ell` and a numerical specialization. The only difference is syntax (`sp.Rational(1,20)` vs `1/20`, `sp.simplify` vs `FullSimplify`, `expect_zero` vs `expectZero`). No independent path is taken; the Mathematica precedence bug in line 47 (F1) would have been visible immediately if the Mathematica author had derived the check from scratch.
+The `.wl` remains a structural transliteration of the `.py` — same variable choreography (`epsilon_r <-> epsilonR`, `Lambda_star <-> lambdaStar`, `L_sym, a_sym, ell_sym <-> lSym, aSym, ellSym`, `K_m, T_X, L, ell <-> km, tx, len, ell`), same banner text, same order of assertions, same intermediate `print`/`Print` lines. However, this stage's mathematical content is one rational division `(37/20)/(1/20) = 37` plus one one-step substitution `K_m -> T_X/ell`. There is no independent derivation path that does not collapse to the same two operations. The v1 audit captured this as informational finding F4 and explicitly declined to require a rewrite. I concur: this is not a v2 finding.
 
 ## Engine cross-check
 
-Sympy output is missing, so direct side-by-side comparison is not possible from saved files. From reading the scripts, the expected outputs are:
+Both engines produce identical-by-residual outputs. From the saved transcripts:
 
-| Check | Sympy expected residual | Mathematica saved residual |
+| Check | Sympy residual | Mathematica residual |
 |---|---|---|
-| `Lambda_ell - 37` | 0 | 0 (line 17 of `.txt`) |
-| `eta - L/ell` | 0 | 0 (line 21) |
-| `eta(reference) - 37` | 0 (correctly: `37 - 37`) | 0 (incorrectly: substituted `len/ell -> 0`, see F1) |
+| `Lambda_ell - L/ell (symbolic)` | 0 | 0 |
+| `Lambda_ell - 37` | 0 | 0 |
+| `eta - L/ell` | 0 | 0 |
+| `eta(reference) - 37` | 0 (genuine: `37 - 37`) | 0 (genuine: `(eta with len/ell -> 37) - 37 = 37 - 37`, after the F1 parenthesis fix) |
 
-Both engines produce zero for `eta(reference) - 37`, but for **different expressions** — the sympy check is real, the Mathematica check is vacuous. This is recorded as `engines_agree: false` in the front-matter despite the matching residuals, because the assertion in the Mathematica script does not evaluate the same residual the assertion in the SymPy script evaluates.
+`engines_agree: true`. The v1 audit specifically traced the precedence bug at the Mathematica `eta(reference)` line; that bug is fixed and the current saved Mathematica output (lines 17-18) shows the genuine `eta(reference) - 37 = 0` rather than the previously-vacuous `len/ell -> 0` substitution. Output mtimes (scripts at May 22 23:08, outputs at May 22 23:09) confirm the saved outputs reflect the current post-fix scripts.
 
 ## Verdict justification
 
-The unit's claims are very narrow (three lines of arithmetic and one cancellation), but the assertions are weak: A1/A4 are arithmetic between literals, A2/A5 are algebraic identities by construction, and A6 contains a Mathematica precedence bug that makes the only nontrivial-looking check trivially pass. A3 is the one real assertion. The unit is `is_checkpoint: False` and `is_status_only_candidate: False`, so both engines need substantive checks. Findings F1 (bug, high) and F2/F3 (tautology/hardcoding, medium) are mechanically applicable; F4 (transliteration) is informational.
-
-I attacked the scripts by: (a) tracing the simplification of `eta` to confirm `(T_X/ell)*L/T_X → L/ell` is automatic in both engines (it is); (b) checking Mathematica operator precedence for `Rule` vs `Plus` to confirm `(len/ell) -> 37 - 37` parses as `(len/ell) -> 0` (it does — `Plus` precedence 310 is higher than `Rule` precedence 120); (c) checking that the sympy `.subs({L/ell: 37})` succeeds against the simplified `eta = L/ell` (it does — sympy can pattern-match the `L*ell**-1` factor); (d) checking whether the assumption set `positive=True, real=True` in sympy and `Reals && >0` in Mathematica are compatible with the geometric setup (they are — lengths and stresses positive). No `UNFIXABLE` or `CRITICAL_DOWNSTREAM` flags warranted: `Lambda_ell = 37` and `eta = 37` are the cited numbers downstream, and the fixes preserve those numbers (only the *checks* become substantive).
+The unit's content is narrow (two ratio specializations and one Robin-closure substitution). The paper card, the notes, and the script all line up on the same two deliverables (`Lambda_ell = 37`, `eta = 37`). All four v1 findings have been applied; the post-fix scripts now contain a load-bearing symbolic Lambda_ell identity, a non-trivial closure substitution, and a corrected Mathematica parenthesization. I attacked the scripts by: (a) re-verifying the v1 precedence-bug fix at mathematica line 57 — the parentheses are present and `(eta /. (len/ell) -> 37) - 37` correctly evaluates to `37 - 37 = 0`; (b) re-verifying the F2 fix that builds `eta` from `K_m * L / T_X` before substituting the closure — both engines now exercise the substitution rather than self-cancellation; (c) confirming the symbolic Lambda_ell identity sympy line 42 / math line 34 is genuine algebra over independent symbols; (d) tracing each script assertion to a paper-side deliverable (table above) and confirming no orphan checks; (e) checking output freshness via mtime (outputs newer than scripts by ~1 minute, both stamped 2026-05-22); (f) considering whether the stale "Stage 56" banner is a `paper_misalignment` — concluded no, since it matches the notes' own legacy numbering, which is out of script-side scope to repair. Verdict: `clean`, `paper_alignment: aligned`.
 
 ## Self-test notes
 
-I checked (1) variable independence: F2 and F3 require introducing symbols `K_m, T_X, L, ell` (already declared) and new symbols `L_sym, a_sym, ell_sym` (for symbolic Lambda_ell check); each `subs` operates on a symbol the target expression actually depends on. (2) Parity / domain: no integrals or unbounded domains in this unit, so parity arguments don't apply. (3) Trivial-case pre-check: with the F2 patch, substituting `K_m -> T_X/ell` into `K_m*L/T_X` gives `(T_X/ell)*L/T_X = L/ell`, so `eta - L/ell = 0` (correct PASS); substituting `K_m -> 2*T_X/ell` would give `2L/ell - L/ell = L/ell ≠ 0` (correct FAIL under perturbation). With the F1 patch, `(eta /. (len/ell) -> 37) - 37 = 37 - 37 = 0` (correct PASS); replacing `37` inside the rule with `36` gives `36 - 37 = -1 ≠ 0` (correct FAIL under perturbation). (4) Path specifications: no `missing_verification_script` findings, so target paths are existing-file edits at named line numbers.
+I checked (1) variable independence: the only `subs`/`/.` operations are `K_m -> T_X/ell` (target depends on `K_m`) and `L/ell -> 37` (target depends on the `L/ell` factor present in the simplified eta = `L/ell`); both substitutions land on symbols the expression actually contains. (2) No integrals or parity considerations in this unit. (3) Trivial-case pre-check: substituting `K_m -> T_X/ell` into `K_m*L/T_X` gives `L/ell`, so `eta - L/ell = 0` correctly; perturbing the closure to `K_m -> 2*T_X/ell` would give residual `L/ell != 0`, confirming the assertion is load-bearing. For `eta(reference) - 37`: substituting `L/ell -> 37` into `L/ell` gives 37, so `37 - 37 = 0`; perturbing the assertion's constant to `36` would give residual `1 != 0`. (4) No new script files prescribed; no path-spec concerns. (5) Paper round-trip: re-read the card and notes after walking through the assertions; the script-side checks correspond exactly to `\stagefield{Output}` (Lambda_ell = 37 and eta = 37), with no extra checks tested that the paper does not claim, and no paper claim left unverified.

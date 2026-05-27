@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage58_family1_threshold_window_sympy_audit.py
+moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
 
-SymPy audit for Stage 58:
+SymPy audit for Stage 075:
 - evaluate Delta_0 and Delta_inf on the explicit Family-1 / healing-locked branch,
 - compute the explicit Upsilon and Xi thresholds,
 - reduce the remaining amplitude to Upsilon_w = alpha_r^2 Theta_w with alpha_r = 10,
@@ -18,10 +18,15 @@ def banner(title: str) -> None:
     print(title)
     print(line)
 
-banner("STAGE 58 — EXPLICIT FAMILY-1 THRESHOLD WINDOW")
+banner("STAGE 075 — EXPLICIT FAMILY-1 THRESHOLD WINDOW")
 
 Pe_req = sp.symbols("Pe_req", positive=True, real=True)
 alpha_r = sp.Integer(10)
+# F4 (v2 paper-alignment Q2 direction (a) lock): paper Inputs line states
+# Upsilon_w = alpha_r^2 Theta_w with alpha_r^2 = 100. Lock the value so any
+# future drift between the paper Inputs line and the script surfaces here.
+assert alpha_r**2 == 100, "paper Inputs line lock: alpha_r^2 must equal 100"
+print("alpha_r^2 (paper Inputs line lock) =", alpha_r**2, "  PASS")
 
 Lambda_ell = sp.Integer(37)
 eta = sp.Integer(37)
@@ -59,6 +64,22 @@ print("Delta_0 algebraic identity (free alpha, eta) =", delta0_identity)
 print("Delta_inf algebraic identity (free alpha, eta) =", deltainf_identity)
 assert delta0_identity == 0
 assert deltainf_identity == 0
+
+# F1 (v2): the algebraic identities above are tautological by construction —
+# they only verify that the CAS can cancel a common factor. Add asymptotic-limit
+# checks that exercise non-trivial properties of the closed forms.
+#
+# Large-alpha: alpha * Delta_inf -> 1 (since Delta_inf ~ 1/alpha in that limit).
+# A wrong factor in numerator or denominator of Delta_inf would change this limit.
+large_alpha_check = sp.limit(alpha_sym * Deltainf_sym, alpha_sym, sp.oo)
+print("alpha * Delta_inf large-alpha limit =", large_alpha_check)
+assert large_alpha_check == 1
+# Small-alpha: Delta_0 -> 1/2 (since cosh(alpha)-1 ~ alpha^2/2 and
+# alpha*sinh(alpha)+eta*cosh(alpha) ~ eta as alpha -> 0).
+small_alpha_check_delta0 = sp.limit(Delta0_sym, alpha_sym, 0)
+print("Delta_0 small-alpha limit =", small_alpha_check_delta0)
+assert small_alpha_check_delta0 == sp.Rational(1, 2)
+print("PASS: alpha * Delta_inf -> 1 (large-alpha) and Delta_0 -> 1/2 (small-alpha)")
 
 print("Lambda_ell =", Lambda_ell)
 print("eta =", eta)

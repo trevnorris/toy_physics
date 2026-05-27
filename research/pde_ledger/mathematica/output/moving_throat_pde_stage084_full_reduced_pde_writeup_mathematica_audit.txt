@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 067 — FULL REDUCED MOVING-THROAT PDE WRITE-UP SKELETON
+STAGE 084 — FULL REDUCED MOVING-THROAT PDE WRITE-UP SKELETON
 ========================================================================================
 zeta_phys(Pe,eta;kappa) = (pe^2*Pi^2*(2*E^pe*pe + Pi)^2*(kappa + Pi^2/4))/((-1 + E^pe)^2*(4*pe^2 + Pi^2)^2*(kappa + y^2))
 zeta_req(Pi_tr,C_mix,eps_blk) = -((cMix - piTr)/(cMix - 2*cMix*epsBlk + epsBlk*piTr))

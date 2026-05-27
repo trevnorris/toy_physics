@@ -9,7 +9,7 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-26` (batch III.3 v2 close — sixth paper-grounded
+Snapshot date: `2026-05-27` (batch III.4 v2 close — seventh paper-grounded
 re-audit pass. Checkpoint stage `069` falls in III.3's range (061-072)
 and returned **clean (0 findings)** under v2 — the three-zone classification
 combining Stage 066's matched window with Stage 068's resonance penalty

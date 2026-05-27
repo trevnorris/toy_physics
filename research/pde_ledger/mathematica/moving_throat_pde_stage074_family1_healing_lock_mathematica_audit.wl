@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 057 — HEALING-LENGTH LOCK AND SUPPORT SCALE"];
+banner["STAGE 074 — HEALING-LENGTH LOCK AND SUPPORT SCALE"];
 
 Clear[lambdaEll, chiS, kappa, len, ell, mpsi, cSw, hbar];
 $Assumptions =
@@ -56,6 +56,7 @@ Print["alpha (numeric) = ", fmt[N[alphaRef, 20]]];
 
 expectZero["chi_ref - 37/2", chiRef - 37/2];
 expectZero["kappa_ref - 12321/5", kappaRef - 12321/5];
+expectZero["alpha_ref - 111/sqrt(5)", alphaRef - 111/Sqrt[5]];
 
 Print[""];
 Print["Stage 074 Mathematica audit passed."];

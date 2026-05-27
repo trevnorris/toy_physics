@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 66 SymPy audit
+Moving-Throat PDE — Stage 083 SymPy audit
 
 Checks
 ------
@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 66 — DIRECT FAMILY-1 OPERATOR WINDOW")
+banner("STAGE 083 — DIRECT FAMILY-1 OPERATOR WINDOW")
 
 # ------------------------------------------------------------------
 # 1. Implicit differentiation of the fixed-point branch

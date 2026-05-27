@@ -7,7 +7,7 @@ h(rho)      [n=5] = 5*K*rho**4/4
 n=5 enthalpy identity = 0
 n=3 residual (should be NONZERO) = 3*K*rho**2/4
 Theta_w (enthalpy lock) = c_sw**2*lambda_mu**2*m**2*rho_w**2/(4*hbar**2)
-Theta_w vs alternative-form derivation = 0
+Theta_w under enthalpy lock = 0
 ell from healing condition = hbar/(2*c_sw*m)
 healing-lock reduction = 0
 Theta_w (healing lock) = lambda_mu**2*rho_w**2/(16*ell**2)

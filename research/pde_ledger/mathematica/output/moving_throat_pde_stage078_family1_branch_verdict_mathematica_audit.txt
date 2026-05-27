@@ -1,16 +1,16 @@
 
 ========================================================================================
-STAGE 061 — FAMILY-1 BRANCH VERDICT
+STAGE 078 — FAMILY-1 BRANCH VERDICT
 ========================================================================================
-Pe_suff^(chi) / lambda_mu^2 = 96.52852472643852
+Pe_suff^(chi) / lambda_mu^2 = 96.52852472643840784595012857615221543668`30.
 Pe_fail^(chi) / lambda_mu^2 = 11220.54416262589764129696275246581666836108`30.
-Pe_suff^(J) / lambda_mu^2 = 22.006222633075424
+Pe_suff^(J) / lambda_mu^2 = 22.00622263307539771882406767414045438469`30.
 Pe_fail^(J) / lambda_mu^2 = 2558.0189234920537145921595536146147137509`30.
-Pe_suff^(chi) numeric check diff = 0.
+Pe_suff^(chi) numeric check diff = 0``27.71431433552255
 PASS: Pe_suff^(chi) numeric check
 Pe_fail^(chi) numeric check diff = 0``25.648956084907972
 PASS: Pe_fail^(chi) numeric check
-Pe_suff^(J) numeric check diff = 0.
+Pe_suff^(J) numeric check diff = 0``28.35642450198806
 PASS: Pe_suff^(J) numeric check
 Pe_fail^(J) numeric check diff = 0``26.291066251373472
 PASS: Pe_fail^(J) numeric check

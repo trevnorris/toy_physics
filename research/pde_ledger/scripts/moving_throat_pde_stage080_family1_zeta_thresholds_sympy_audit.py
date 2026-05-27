@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SymPy audit for Stage 63.
+SymPy audit for Stage 080.
 
 Converts the Stage-61 Family-1 Pe_req thresholds into explicit quadrupole-demand
 thresholds zeta_req using the Stage-62 Family-1 demand map.
@@ -18,7 +18,7 @@ def banner(title: str) -> None:
     print(line)
 
 
-banner("STAGE 63 — FAMILY-1 ZETA THRESHOLDS")
+banner("STAGE 080 — FAMILY-1 ZETA THRESHOLDS")
 
 lam = sp.symbols('lambda_mu', positive=True, real=True)
 Pe = sp.symbols('Pe', positive=True, real=True)

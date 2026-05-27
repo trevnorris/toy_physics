@@ -8,8 +8,8 @@ n=5 enthalpy identity = 0
 PASS: n=5 enthalpy identity
 n=3 residual (should be NONZERO) = (3*kConst*rho^2)/4
 Theta_w (enthalpy lock) = (cSw^2*lambdaMu^2*mpsi^2*rhoW^2)/(4*hbar^2)
-Theta_w vs alternative-form derivation = 0
-PASS: Theta_w vs alternative-form derivation
+Theta_w under enthalpy lock = 0
+PASS: Theta_w under enthalpy lock
 ell from healing condition = hbar/(2*cSw*mpsi)
 healing-lock reduction = 0
 PASS: healing-lock reduction

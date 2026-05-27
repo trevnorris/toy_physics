@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 056 — FAMILY-1 GEOMETRY MAP"];
+banner["STAGE 073 — FAMILY-1 GEOMETRY MAP"];
 
 Clear[lSym, aSym, ellSym];
 Module[{lambdaStarSym, ellOverASym, lambdaEllSym},

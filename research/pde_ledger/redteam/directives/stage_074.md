@@ -1,134 +1,70 @@
 ---
 unit_id: 074
 batch: III.4
-created_at: 2026-05-22T00:00:00Z
-findings_count: 2
+created_at: 2026-05-27T00:00:00Z
+findings_count: 1
 stop_cold: null
 applied: true
-applied_at: 2026-05-23T05:10:54Z
-findings_applied: 2
-findings_blocked: 0
 verification_status: pending
+needs_user_resolution: false
 ---
 
-# Codex directive — unit 074
+# Codex directive -- unit 074 (resolved orchestrator-direct)
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+The single F1 `paper_misalignment` (alpha value mismatch) was resolved by the user as direction (a) on 2026-05-27 and applied by the orchestrator directly:
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+- `paper/stages/stage_074.tex:31`: `\frac{128}{\sqrt5}` -> `\frac{111}{\sqrt5}`
+- `notes/stages/moving_throat_pde_stage074_family1_healing_lock.md:117`: `179/sqrt(5)` -> `111/sqrt(5)`
+- `notes/stages/moving_throat_pde_stage075_family1_threshold_window.md:63`: `179/sqrt(5)` -> `111/sqrt(5)` (same typo, collateral fix)
+- `scripts/.../stage074..._sympy_audit.py`: added `expect_zero("alpha_ref - 111/sqrt(5)", alpha_ref - 111/sqrt(5))` after the `kappa_ref` assertion.
+- `mathematica/.../stage074..._mathematica_audit.wl`: added `expectZero["alpha_ref - 111/sqrt(5)", alphaRef - 111/Sqrt[5]]` after the `kappaRef` assertion.
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+No Codex invocation required. Verifier will confirm the new assertion appears and both scripts exit 0.
 
-Do NOT run python or mathematica. Only edit files.
+Do NOT touch paper.tex, notes/, or any prose document.
+Do NOT edit the scripts to "fix" a paper_misalignment.
+Do NOT run python or mathematica.
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+## F1 -- paper_misalignment
 
-## F1 — tautological_check
+**Subtype:** value_mismatch
 
-**Target:** `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:29-40`
+**Paper side:**
 
-**Issue:**
-The SymPy script defines `chi_lock = sp.simplify(Lambda_ell / 2)` (line 33) and then asserts `chi_lock - Lambda_ell/2 == 0` (line 39). This is tautological: the subtraction equals zero by construction, regardless of whether the GNLS healing-length relation `ell = hbar/(2 m c_s)` actually produces `chi_s = Lambda_ell/2`. The Mathematica counterpart (lines 33-37 of the `.wl`) derives `chi_s` from `m c_s L / hbar` with the substitutions `c_s -> hbar/(2 m ell)` then `L/ell -> Lambda_ell`. The SymPy script must mirror that derivation chain so the assertion becomes non-tautological.
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_074.tex:26-31` quote:
+  > `\kappa=\frac95\Lambda_\ell^2=\frac{12321}{5}, \qquad \alpha=\sqrt\kappa=\frac{128}{\sqrt5}`
 
-**Required change:**
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage074_family1_healing_lock.md:113-117` quote:
+  > `alpha = sqrt(12321/5) = 179/sqrt(5) ~ 49.6407091.`
 
-Edit the block from line 29 through line 40 of `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py`.
+**Script side:**
 
-Replace the current block:
-```python
-Lambda_ell = sp.symbols("Lambda_ell", positive=True)
-chi_s = sp.symbols("chi_s", positive=True)
-kappa = sp.symbols("kappa", positive=True)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:59-66` script-output quote:
+  > `alpha = 111*sqrt(5)/5`,  `alpha (numeric) = 49.640709100495331260`
 
-chi_lock = sp.simplify(Lambda_ell / 2)
-kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.wl:48-55` script-output quote:
+  > `alpha = 111/Sqrt[5]`,  `alpha (numeric) = 49.64070910049533126028365544583433242664`
 
-print("chi_s (locked) =", chi_lock)
-print("kappa(Lambda_ell) =", kappa_lock)
+## Resolve before fix_loop
 
-expect_zero("chi_s - Lambda_ell/2", chi_lock - Lambda_ell / 2)
-expect_zero("kappa - (9/5) Lambda_ell^2", kappa_lock - sp.Rational(9, 5) * Lambda_ell**2)
-```
+The paper card states (boxed) `alpha = sqrt(kappa) = 128/sqrt(5)`, but the same equation also boxes `kappa = 12321/5`. Since `sqrt(12321/5) = 111/sqrt(5)` (because `111^2 = 12321`), the paper's three claims `kappa = 12321/5`, `alpha = sqrt(kappa)`, and `alpha = 128/sqrt(5)` are mutually inconsistent. The notes likewise state `alpha = 179/sqrt(5)`, which is also wrong as a literal (`179^2 = 32041 != 12321`), but the notes' decimal `~49.6407091` is correct and matches the scripts' `111/sqrt(5)`. The scripts compute the arithmetically correct value `111/sqrt(5)` but do not assert it.
 
-with:
-```python
-Lambda_ell = sp.symbols("Lambda_ell", positive=True)
-hbar, m_psi, c_s, ell, L = sp.symbols("hbar m_psi c_s ell L", positive=True)
+Question for the user: which value of `alpha` is intended?
 
-# Physical definition of the dimensionless support scale chi_s = m c_s L / hbar.
-chi_def = m_psi * c_s * L / sp.symbols("hbar", positive=True)
-chi_def = m_psi * c_s * L / hbar
+Possible directions (the user picks one):
 
-# Apply the GNLS healing/compliance width: ell = hbar / (2 m c_s),
-# equivalently c_s = hbar / (2 m_psi ell).
-chi_in_ell = sp.simplify(chi_def.subs(c_s, hbar / (2 * m_psi * ell)))
-print("chi (after healing-length substitution) =", chi_in_ell)
+- (a) `alpha = 111/sqrt(5)` is correct (consistent with `kappa = 12321/5` and with both engines' output). In `paper/stages/stage_074.tex` line 31, change `\frac{128}{\sqrt5}` to `\frac{111}{\sqrt5}`. In `notes/stages/moving_throat_pde_stage074_family1_healing_lock.md` section 5, change `179/sqrt(5)` to `111/sqrt(5)`. No script change required.
+- (b) `kappa` is wrong and the correct `kappa` is `(128)^2/5 = 16384/5`, with `alpha = 128/sqrt(5)`. This would require revising the entire chain `kappa = (9/5) Lambda_ell^2`, the Stage 54 coefficient `4 chi_s^2 + (4/5) Lambda_ell^2`, and the carry-forward `Lambda_ell = 37`. Highly unlikely (would invalidate Stages 56, 073, 075+), but listed for completeness.
+- (c) Both literals are wrong relative to a third intended derivation -- flag for deeper review.
 
-# Re-express L/ell as the dimensionless ratio Lambda_ell.
-chi_lock = sp.simplify(chi_in_ell.subs(L, Lambda_ell * ell))
+Recommended direction: (a). Both engines independently produce `111/sqrt(5)`; the notes' decimal also corresponds to `111/sqrt(5)`; only the two prose literals (paper `128`, notes `179`) disagree, and they disagree with each other as well as with the engines, which is a strong signature of a copy-paste typo on the paper-prose side.
 
-# Family-1 branch coefficient: kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.
-# Coefficients 4 and 4/5 come from the Family-1 Euler-Lagrange branch
-# (carried forward from the earlier Family-1 stages); this stage only
-# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to
-# (9/5) Lambda_ell^2.
-kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)
+The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
 
-print("chi_s (locked) =", chi_lock)
-print("kappa(Lambda_ell) =", kappa_lock)
+## Self-test trace (auditor-side, for the user's reference)
 
-expect_zero("chi_s - Lambda_ell/2", chi_lock - Lambda_ell / 2)
-expect_zero("kappa - (9/5) Lambda_ell^2", kappa_lock - sp.Rational(9, 5) * Lambda_ell**2)
-```
-
-Remove the redundant first assignment of `chi_def` (the line that re-uses `sp.symbols("hbar", positive=True)`) — the two-line pair above is shown for clarity; use only the second `chi_def = m_psi * c_s * L / hbar` line and delete the first. After the edit, `chi_def` should be defined exactly once, immediately after the symbol declarations.
-
-Do not touch the reference-branch block at lines 42-55 or the final ledger print at lines 57-59. Those remain valid once `chi_lock` is derived non-tautologically.
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 074` and confirm:
-- The script source contains the symbols `hbar`, `m_psi`, `c_s`, `ell`, `L`.
-- The intermediate print `chi (after healing-length substitution) = L/(2*ell)` appears in the output.
-- The assertion `chi_s - Lambda_ell/2 = 0` still passes.
-- The script exits 0.
-
-## Applied: F1
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py`
-- summary: Replaced the direct chi lock assignment with the healing-length substitution chain deriving `chi_s = Lambda_ell/2`.
-- deviation: none
-
-## F2 — insufficient_verification
-
-**Target:** `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py:33-34`
-
-**Issue:**
-The kappa formula `4 chi_s^2 + (4/5) Lambda_ell^2` is introduced on line 34 without comment or provenance. A reader cannot tell from the script alone whether the `4` and `4/5` are Family-1 branch coefficients or an unjustified hard-coded form. Combined with F1, the resulting check then reduces to the arithmetic identity `(1/2)^2 * 4 + 4/5 = 9/5`, which tests no physics. Adding the substitution chain from F1 fixes the chi_s side; this finding requires an inline comment anchoring the kappa coefficients.
-
-**Required change:**
-
-The replacement block in F1 already includes the required comment immediately above the `kappa_lock = ...` line:
-
-```
-# Family-1 branch coefficient: kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.
-# Coefficients 4 and 4/5 come from the Family-1 Euler-Lagrange branch
-# (carried forward from the earlier Family-1 stages); this stage only
-# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to
-# (9/5) Lambda_ell^2.
-```
-
-If F1 is applied as specified above, F2 is satisfied by the same edit. If F1 is blocked, apply only the comment block: insert the four-line comment immediately above the existing `kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)` line (currently line 34) and make no other change.
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 074` and confirm:
-- The four-line comment beginning `# Family-1 branch coefficient` appears immediately above the `kappa_lock = ...` definition.
-- The assertion `kappa - (9/5) Lambda_ell^2 = 0` still passes.
-- The script exits 0.
-
-## Applied: F2
-
-- files_changed:
-  - `scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py`
-- summary: Added the required inline provenance comment for the Family-1 kappa coefficients above the `kappa_lock` definition.
-- deviation: none
+- Verified `111^2 = (100+11)^2 = 10000 + 2200 + 121 = 12321`. Confirmed.
+- Verified `128^2 = 16384 != 12321`.
+- Verified `179^2 = (180-1)^2 = 32400 - 360 + 1 = 32041 != 12321`.
+- Verified numeric: `111/sqrt(5) = 111/2.2360679... ~ 49.64070910...`. Matches the scripts and the notes' decimal.
+- Confirmed no script-side assertion currently fails: the scripts only print `alpha`, they do not assert any literal, so the discrepancy is invisible to the current verifier and was not caught by the v1 audit.

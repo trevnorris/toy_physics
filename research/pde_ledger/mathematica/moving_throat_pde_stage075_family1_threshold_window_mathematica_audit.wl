@@ -29,12 +29,16 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 058 — EXPLICIT FAMILY-1 THRESHOLD WINDOW"];
+banner["STAGE 075 — EXPLICIT FAMILY-1 THRESHOLD WINDOW"];
 
 Clear[peReq, thetaW];
 $Assumptions = Element[{peReq, thetaW}, Reals] && peReq > 0 && thetaW > 0;
 
 alphaR = 10;
+(* F4 (v2 paper-alignment Q2 direction (a) lock): paper Inputs line states
+   Upsilon_w = alpha_r^2 Theta_w with alpha_r^2 = 100. Lock the value so any
+   future drift between the paper Inputs line and the script surfaces here. *)
+expectZero["alpha_r^2 - 100 (paper Inputs line lock)", alphaR^2 - 100];
 lambdaEll = 37;
 eta = 37;
 kappa = 12321/5;
@@ -72,14 +76,11 @@ Print["Xi_suff = ", fmt[xiSuff]];
 Print["Theta_fail = ", fmt[thetaFail]];
 Print["Theta_suff = ", fmt[thetaSuff]];
 
-(* Independent symbolic check: the stated closed forms must satisfy
-   the defining algebraic identities for *all* positive alpha, eta,
-   not just the substituted numeric values alpha = 111/Sqrt[5], eta = 37. *)
-(* This identity check is the independent-derivation leg required by
-   the second-engine policy: Mathematica's FullSimplify must prove the
-   identity for *symbolic* alpha and eta, which catches a wrong factor
-   or sign in the stated closed form even though the rest of the script
-   transliterates the SymPy recipe. *)
+(* Note: the algebraic identity below is structurally tautological (it follows
+   from the definition of Delta_0 / Delta_inf by canceling a common factor).
+   The genuine independent check is the asymptotic-limit block further below,
+   which exercises a non-trivial property of the closed forms via Mathematica's
+   Limit operator (computed independently from SymPy's sp.limit). *)
 Module[{aSym, eSym, delta0Sym, deltaInfSym},
   ClearAll[aSym, eSym];
   delta0Sym = eSym*(Cosh[aSym] - 1)/(aSym^2*(aSym*Sinh[aSym] + eSym*Cosh[aSym]));
@@ -90,6 +91,26 @@ Module[{aSym, eSym, delta0Sym, deltaInfSym},
   expectZero["Delta_inf algebraic identity (free alpha, eta)",
     Assuming[aSym > 0 && eSym > 0,
       FullSimplify[(aSym*Sinh[aSym] + eSym*Cosh[aSym])*deltaInfSym - (Cosh[aSym] + (eSym/aSym)*Sinh[aSym] - 1)]]];
+];
+
+(* F1 (v2): asymptotic-limit checks for Delta_0 and Delta_inf. These are
+   non-trivial consequences of the closed forms (a wrong factor would change
+   the limit), and Mathematica's Limit operator computes them by an algorithm
+   independent of SymPy's sp.limit. *)
+Module[{aSym, eSym, delta0Sym, deltaInfSym, largeAlphaLimit, smallAlphaLimit},
+  ClearAll[aSym, eSym];
+  delta0Sym = eSym*(Cosh[aSym] - 1)/(aSym^2*(aSym*Sinh[aSym] + eSym*Cosh[aSym]));
+  deltaInfSym = (Cosh[aSym] + (eSym/aSym)*Sinh[aSym] - 1)/(aSym*Sinh[aSym] + eSym*Cosh[aSym]);
+  largeAlphaLimit = Limit[aSym*deltaInfSym, aSym -> Infinity, Assumptions -> eSym > 0];
+  Print["alpha * Delta_inf large-alpha limit = ", fmt[largeAlphaLimit]];
+  If[TrueQ[largeAlphaLimit === 1],
+    pass["alpha * Delta_inf -> 1 (large alpha)"],
+    fail["alpha * Delta_inf -> 1 (large alpha)", largeAlphaLimit]];
+  smallAlphaLimit = Limit[delta0Sym, aSym -> 0, Assumptions -> eSym > 0];
+  Print["Delta_0 small-alpha limit = ", fmt[smallAlphaLimit]];
+  If[TrueQ[smallAlphaLimit === 1/2],
+    pass["Delta_0 -> 1/2 (small alpha)"],
+    fail["Delta_0 -> 1/2 (small alpha)", smallAlphaLimit]];
 ];
 
 expectZero["Upsilon_fail - alphaR^2 * Theta_fail", upsilonFail - alphaR^2*thetaFail];

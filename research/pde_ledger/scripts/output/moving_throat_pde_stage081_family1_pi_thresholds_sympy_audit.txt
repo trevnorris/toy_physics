@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 64 — FAMILY-1 PRODUCT THRESHOLDS
+STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS
 ========================================================================================
 Pi_of_zeta = Cmix*(2*eps_blk*zeta - zeta - 1)/(eps_blk*zeta - 1)
 Q(zeta;eps_blk) = (2*eps_blk*zeta - zeta - 1)/(eps_blk*zeta - 1)

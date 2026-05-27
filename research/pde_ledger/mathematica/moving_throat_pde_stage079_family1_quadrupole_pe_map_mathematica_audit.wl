@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 062 — FAMILY-1 QUADRUPOLE-DEMAND / PE MAP"];
+banner["STAGE 079 — FAMILY-1 QUADRUPOLE-DEMAND / PE MAP"];
 
 Clear[pe, y];
 $Assumptions = Element[{pe, y}, Reals] && pe > 0;

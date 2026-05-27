@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 065 — MASTER QUADRUPOLE RESIDUAL
+STAGE 082 — MASTER QUADRUPOLE RESIDUAL
 ========================================================================================
 zeta_req(Pi_tr,C_mix,eps_blk) = (-cMix + PiTr)/(cMix - 2*cMix*epsBlk + epsBlk*PiTr)
 Q(zeta;eps_blk) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)
@@ -17,10 +17,18 @@ R_quad(Pi_suff, zeta_phys=zeta_-) = 0
 PASS: R_quad(Pi_suff, zeta_phys=zeta_-)
 R_quad(Pi_fail, zeta_phys=zeta_+) = 0
 PASS: R_quad(Pi_fail, zeta_phys=zeta_+)
-dR_quad/dzeta_phys + 1 = 0
-PASS: dR_quad/dzeta_phys + 1
-dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-) = 0
-PASS: dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-)
+dzeta_req/dPi_tr = (cMix - cMix*epsBlk)/(cMix - 2*cMix*epsBlk + epsBlk*PiTr)^2
+numerator(d zeta_req/d Pi_tr) - C_mix*(1 - eps_blk) = 0
+PASS: numerator(d zeta_req/d Pi_tr) - C_mix*(1 - eps_blk)
+denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))^2 = 0
+PASS: denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))^2
+Omega_Pe -> Pi/2 as Pe -> oo
+Omega_Pe -> Pi/2 as Pe -> oo = 0
+PASS: Omega_Pe -> Pi/2 as Pe -> oo
+y_F1 (root of y tan y = 37, smallest positive) = 1.5294824837146996499271076224024730266867806218758702464039`30.
+zeta_phys(Pe->oo, kappa_F1, y_F1) = 2.46752922945601223332958450157053542039`20.
+|zeta_phys(F1, Pe->oo) - zeta_max^(F1)| = 1.772333295845015705354203883422648899999822777`16.855460083196522*^-13
+PASS: Family-1 closed-form pin matches upstream zeta_max^(F1) to 10^-10
 Xi_F1 from Upsilon_w = 1369*upsilonW
 Xi_F1 from Theta_w = 136900*thetaW
 Xi_F1(Theta_w) - 136900 Theta_w = 0  (display only)

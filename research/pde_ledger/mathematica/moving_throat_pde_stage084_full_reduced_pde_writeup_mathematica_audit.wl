@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 067 — FULL REDUCED MOVING-THROAT PDE WRITE-UP SKELETON"];
+banner["STAGE 084 — FULL REDUCED MOVING-THROAT PDE WRITE-UP SKELETON"];
 
 Clear[piTr, cMix, epsBlk, zeta, pe, kappa, eta, y, thetaW, upsilonW];
 $Assumptions =

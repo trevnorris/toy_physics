@@ -1,7 +1,9 @@
 
 ========================================================================================
-STAGE 058 — EXPLICIT FAMILY-1 THRESHOLD WINDOW
+STAGE 075 — EXPLICIT FAMILY-1 THRESHOLD WINDOW
 ========================================================================================
+alpha_r^2 - 100 (paper Inputs line lock) = 0
+PASS: alpha_r^2 - 100 (paper Inputs line lock)
 Lambda_ell = 37
 eta = 37
 kappa = 12321/5
@@ -20,6 +22,10 @@ Delta_0 algebraic identity (free alpha, eta) = 0
 PASS: Delta_0 algebraic identity (free alpha, eta)
 Delta_inf algebraic identity (free alpha, eta) = 0
 PASS: Delta_inf algebraic identity (free alpha, eta)
+alpha * Delta_inf large-alpha limit = 1
+PASS: alpha * Delta_inf -> 1 (large alpha)
+Delta_0 small-alpha limit = 1/2
+PASS: Delta_0 -> 1/2 (small alpha)
 Upsilon_fail - alphaR^2 * Theta_fail = 0
 PASS: Upsilon_fail - alphaR^2 * Theta_fail
 Upsilon_suff - alphaR^2 * Theta_suff = 0

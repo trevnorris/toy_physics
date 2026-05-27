@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage56_family1_geometry_map_sympy_audit.py
+moving_throat_pde_stage073_family1_geometry_map_sympy_audit.py
 
-SymPy audit for Stage 56.
+SymPy audit for Stage 073.
 
 Verifies the explicit Family-1 geometry map:
 - epsilon_r = 1/20,
@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 56 — FAMILY-1 GEOMETRY MAP")
+banner("STAGE 073 — FAMILY-1 GEOMETRY MAP")
 
 # Symbolic identity: Lambda_ell = (L/a) / (ell/a) = L/ell, independent of the
 # specific reference-branch values chosen below.

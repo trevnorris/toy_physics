@@ -6,7 +6,7 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-26` (batch III.3 v2 close — sixth paper-grounded
+Snapshot date: `2026-05-27` (batch III.4 v2 close — seventh paper-grounded
 re-audit pass. Checkpoint stage `069` falls in III.3's range; returned
 **clean (0 findings)** under v2 with no hardcoded constants — every
 constant in 069's scripts is either derived (`Cres2` from definition,

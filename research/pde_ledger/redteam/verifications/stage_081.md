@@ -2,12 +2,12 @@
 unit_id: 081
 batch: III.4
 verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-25T00:40:00Z
+verify_date: 2026-05-27T00:00:00Z
 verdict: verified
-sympy_exit: n/a
-mathematica_exit: 0
-findings_resolved: 4
-findings_total: 4
+sympy_exit: 0
+mathematica_exit: n/a
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
@@ -15,76 +15,67 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — hardcoded_result
+### F1 — paper_misalignment (target_mismatch)
 
 **Classification:** resolved
 
 **What changed:**
-`mathematica/moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.wl:52-55` — `qq` is now `FullSimplify[piOfZeta / cMix, Assumptions -> $Assumptions]` (then a `ConditionalExpression` strip on :53), and the new `expectZero["Q matches closed form", qq - (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)]` ties the derived `qq` back to the closed form. The Solve-derived `piOfZeta` (line 46) is now consumed.
+Orchestrator-direct edit (no Codex invocation) applied direction (a) — script-side relabel only — to the SymPy script:
+
+- `scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py:3` docstring changed from `SymPy audit for Stage 64.` to `SymPy audit for Stage 081.`.
+- `scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py:28` banner changed from `banner("STAGE 64 — FAMILY-1 PRODUCT THRESHOLDS")` to `banner("STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS")`.
+
+The diff captured at `redteam/exec_logs/stage_081_diff.patch` shows exactly these two hunks and nothing else (one-line edits at lines 3 and 28 of the `.py`). The companion `.wl` file already carried the correct `STAGE 081` banner per the auditor report (auditor cited `mathematica/...wl:38` as already-correct) and the diff confirms the `.wl` was not touched.
 
 **Assessment:**
-Matches the directive verbatim modulo the orchestrator's pre-disclosed cosmetic edits (the `ConditionalExpression[e_, _] :> e` strip applied to `piOfZeta`, to `qq`, and inside `expectZero`). The residual `qq - (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)` evaluates to plain `0` in the output (line 5: `Q matches closed form = 0`), which means the Solve-derived inversion and the previously hand-encoded closed form are now provably the same rational function on the declared domain. This is genuinely non-tautological: if `Solve[zeta == zetaExpr, piTr]` returned a different root or the premise `zetaExpr` were retyped, this check would fire.
+The edit precisely matches the auditor's "Verification" prescription in `redteam/reports/stage_081.md:95`:
+> After resolution, the SymPy script's line 3 docstring reads "SymPy audit for Stage 081." and line 28 banner reads `"STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS"`. A re-run of `redteam exec-sympy 081` produces a transcript whose third line reads `STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS`.
 
-### F2 — tautological_check
+Reading the current files:
 
-**Classification:** resolved
+- `scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py:3` now reads `SymPy audit for Stage 081.` (verified).
+- `scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py:28` now reads `banner("STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS")` (verified).
+- `scripts/output/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.txt:3` now reads `STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS` (verified).
 
-**What changed:**
-Both the `dqq = FullSimplify[D[qq, zeta], ...]` definition (originally line 42) and the `expectZero["dQ/dzeta exact formula", dqq - (1 - epsBlk)/(1 - epsBlk*zeta)^2]` assertion (originally line 48) are deleted. `grep` for `dqq` and `dQ/dzeta` in both the script and its output returns nothing.
+No algebra, assertion, or symbol-definition lines were touched. The two `expect_zero` assertions (`Q(0)-1` at line 40 and `Q(1)-2` at line 41) are identical to v1, and the refreshed transcript at `scripts/output/...txt:7-8` confirms both still produce `Q(0)-1 = 0` and `Q(1)-2 = 0`. There is no tautological-assertion concern because no assertion changed.
 
-**Assessment:**
-Matches the directive exactly. No `dqq`/`dQ/dzeta` lines remain in the transcript. No side effects: nothing else referenced `dqq`.
-
-### F3 — tautological_check
-
-**Classification:** resolved
-
-**What changed:**
-Lines 80-84 of the post-edit script replace each `expectApprox[..., N[piXxxOverC /. epsBlk -> 0, 40], ToExpression["3.46…`25"], 10^-14]` with `expectApprox["… matches 1+zeta", N[(piXxxOverC - (1 + zetaXxx)) /. epsBlk -> 0, 40], 0, 10^-14]`.
-
-**Assessment:**
-Matches the directive. The substantive content of each check is now "the symbolic value `qq /. zeta -> zeta_* /. epsBlk -> 0` minus `1 + zeta_*` equals 0 numerically", which exercises `qq`'s functional form rather than comparing a constant to its typed expansion. Output (lines 18-27) shows five `PASS: …matches 1+zeta` lines with `diff = 0``…`. After F1, `qq` is derived from `piOfZeta`, so these checks now do propagate failures in the inversion. Non-tautological.
-
-### F4 — tautological_check
-
-**Classification:** resolved
-
-**What changed:**
-Lines 86-88 replace the literal `expectApprox["blocking ceiling numeric check", epsCeiling, ToExpression["0.40526368971137149977`25"], 10^-14]` with `expectApprox["blocking ceiling reciprocal", N[epsCeiling*zetaMaxF1 - 1, 40], 0, 10^-14]`.
-
-**Assessment:**
-Matches the directive exactly. The transcript (line 29) shows `blocking ceiling reciprocal diff = 0``19.69…` then PASS. The new check verifies the reciprocal identity `epsCeiling * zetaMaxF1 == 1`. While at the symbolic level this is the definition of `epsCeiling`, the surrounding numeric `N[..., 40]` round-trip turns this into a meaningful guard against `N[]` precision loss / wrong `zetaMaxF1` retyping — and is exactly what the directive prescribed.
+No collateral edits beyond the two-line label change.
 
 ## Exec log assessment
 
-**SymPy:** exit=n/a. No SymPy script was modified for unit 081 (all findings were against the Mathematica mirror), and no `stage_081_sympy.log` is present in `redteam/exec_logs/`. The pre-existing SymPy output (`scripts/output/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.txt`, mtime 2026-05-22) is still the canonical reference and matches both engines' closed form and numerics.
+**SymPy:** exit=0 (per orchestrator note; no `redteam/exec_logs/stage_081_sympy.log` file was captured this iteration, only the diff patch — see note below). The saved transcript `scripts/output/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.txt` was refreshed post-fix (mtime 2026-05-27 02:15:47 > script mtime 2026-05-27 02:05:20). Notable lines from the refreshed transcript:
 
-**Mathematica:** exit=0. The orchestrator-supplied log file `redteam/exec_logs/stage_081_mathematica.log` is missing (only `stage_081_diff.patch` is present in exec_logs), but the canonical refreshed transcript `mathematica/output/moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.txt` ends with `Stage 081 Mathematica audit passed.` and shows every expected PASS line:
+```
+STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS
+Q(0)-1 = 0
+Q(1)-2 = 0
+Blocking ceiling eps_blk < 0.40526368971137149977
+```
 
-- `PASS: Q matches closed form` (new from F1)
-- `PASS: Q(0)-1`, `PASS: Q(1)-2` (still pass against Solve-derived `qq`)
-- Five `PASS: … matches 1+zeta` lines (new from F3, replacing magic-number checks)
-- `PASS: blocking ceiling reciprocal` (new from F4, replacing magic-number check)
-- No `dQ/dzeta exact formula` line (removed per F2)
+The `expect_zero` helper raises `AssertionError` on any non-zero residue; both `= 0` prints together with the script reaching the `FINAL LEDGER` banner imply exit 0. The PASS set is identical to v1 (the two anchor `= 0` results and the same `Pi_xxx/C_mix` numerical values to all printed digits).
 
-The `Pi_of_zeta` symbolic print on line 7 of the output now shows `cMix*(1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)` — i.e. the Solve branch is the expected one, confirming the cross-engine inversion match. Q symbolic form on line 8 matches both engines.
+**Mathematica:** exit=n/a. The `.wl` was not touched this iteration (the auditor explicitly noted the `.wl` banner at line 38 was already correctly `STAGE 081`). No `stage_081_mathematica.log` is present, which is correct given no Mathematica re-run was required.
 
-**Output freshness:** `mathematica/output/...stage081...txt` mtime is 2026-05-25 00:21:34, post-dating the .wl mtime of 2026-05-23 10:36:58. Confirmed refreshed.
+**Output freshness:** confirmed.
+
+- `scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py` mtime: 2026-05-27 02:05:20.
+- `scripts/output/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.txt` mtime: 2026-05-27 02:15:47 (newer than script — refreshed post-fix).
+- `mathematica/moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.wl` mtime: 2026-05-23 10:36:58.
+- `mathematica/output/moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.txt` mtime: 2026-05-25 00:21:34 (newer than the `.wl`; untouched this iteration, as expected).
+
+Note (non-blocking): no `redteam/exec_logs/stage_081_sympy.log` file exists; only `stage_081_diff.patch` is present in `redteam/exec_logs/`. The orchestrator's contextual statement plus the refreshed transcript timestamps and assertion prints are sufficient to confirm a passing run.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The Mathematica-side closed-form `Q(zeta;eps_blk) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)` is unchanged; only the route by which it is obtained changed (derived from `piOfZeta/cMix` instead of hand-encoded). All printed numeric values (`Pi_xxx/cMix`, blocking ceiling `0.40526368971137148…`) are unchanged from the prior version of the script, and they still agree with the SymPy output. No downstream-visible derivation result moved.
+The only change is a two-line string-literal relabel in the SymPy script's docstring and banner. No symbol definitions, no assertion expressions, no numerical thresholds, no print statements with derived results, and no Mathematica content were modified. No downstream unit depends on the banner text of an upstream sympy script.
 
 ## Side observations (non-blocking)
 
-1. The `Pi_xxx^()/C_mix` symbolic prints (output lines 13-17) are now partial-fraction-decomposed rationals in `epsBlk` (e.g. `2 + 0.594…/(0.405… - 1.*epsBlk)`) rather than the SymPy-style `(a*epsBlk - b)/(c*epsBlk - 1)` ratio. This is `FullSimplify` choosing a different normal form on the Solve-derived `qq`. At `epsBlk -> 0` they reduce to the same `1 + zeta_*` numbers (verified by the F3 residual checks), so it is purely cosmetic — but a reader comparing SymPy/Mathematica outputs side-by-side will need to evaluate at `epsBlk = 0` to see the agreement. Not a finding.
-
-2. Orchestrator's manual ConditionalExpression-strip in `expectZero` (the wrapper helper) is generic and will apply to all future stages using this helper. The strip is sound under `$Assumptions` because `ConditionalExpression[0, cond]` is identically zero on the declared domain — but if a future audit places an assertion outside the declared domain, the strip could mask a genuine failure. Out of scope for this verification.
+- The SymPy script's `dQ/dzeta` print (line 42) and blocking-ceiling print (line 73) remain print-only, not assertions, consistent with the auditor's row "partial (print-only)". This is the v1 design choice the auditor explicitly tolerated (the load-bearing Mathematica side carries the corresponding assertions M9 and M4–M8). Not a finding for this iteration.
+- A prior version of this verification file (dated 2026-05-25) on disk covered the earlier four-finding iteration (F1–F4 against the Mathematica mirror). That file is overwritten by this current verification for the new single-finding iteration.
 
 ## Verdict justification
 
-All four findings are resolved exactly per directive: `qq` is now derived from the Solve-based `piOfZeta` and tied to the closed form by a new residual assertion (F1); the tautological derivative check is removed (F2); the five magic-number numeric comparisons are replaced with residuals against the `1 + zeta` functional form (F3); and the blocking-ceiling magic-number check is replaced with the reciprocal identity (F4). The refreshed Mathematica transcript shows every expected PASS line and exits 0. The orchestrator's pre-disclosed manual edit (the `ConditionalExpression` wrapper stripping) is cosmetic — it lets the new F1 residual print as bare `0` instead of `ConditionalExpression[0, cond]` and does not alter any numeric or symbolic result. No SymPy script was touched; the cross-engine agreement still holds at the closed-form and numeric levels. No regressions in the diff.
-
-stage 081: verified
+The single F1 paper_misalignment was resolved by orchestrator-direct two-line relabel of the SymPy docstring (line 3) and banner (line 28) from "Stage 64" to "Stage 081", matching the auditor's prescribed verification text exactly. The diff at `redteam/exec_logs/stage_081_diff.patch` shows no collateral edits, no algebra changes, and no touch of the `.wl`. The refreshed SymPy transcript now reads `STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS` on its banner line and still emits both assertion prints (`Q(0)-1 = 0`, `Q(1)-2 = 0`) — meaning the script still exits 0 with the v1 PASS set, no tautology, no regression. `material_change: false`. Verdict: `verified`.

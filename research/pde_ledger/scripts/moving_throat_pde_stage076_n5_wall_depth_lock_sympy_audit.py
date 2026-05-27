@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 59 SymPy audit.
+Stage 076 SymPy audit.
 
 Checks:
 1. Exact n=5 enthalpy-sound-speed identity h = m c_s^2 / 4.
@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 59 — EXACT n=5 WALL-DEPTH LOCK")
+banner("STAGE 076 — EXACT n=5 WALL-DEPTH LOCK")
 
 K, rho, m, hbar, csw = sp.symbols("K rho m hbar c_sw", positive=True, real=True)
 lambda_mu, rho_w, ell, a = sp.symbols("lambda_mu rho_w ell a", positive=True, real=True)
@@ -59,10 +59,12 @@ mu_star_sym = sp.symbols("mu_star_sym", positive=True, real=True)
 enthalpy_lock = mu_star_sym - lambda_mu * m * csw**2 / 4  # set this to zero
 mu_star_solved = sp.solve(enthalpy_lock, mu_star_sym)[0]
 Theta_w = sp.simplify(4 * rho_w**2 * mu_star_solved**2 / (hbar**2 * csw**2))
-# Independent route: Theta_w as (2 rho_w mu_star / (hbar c_sw))^2
-Theta_w_alt = sp.simplify((2 * rho_w * mu_star_solved / (hbar * csw))**2)
+# Closed-form target from notes section 2: Theta_w = lambda_mu^2 m^2 rho_w^2 c_sw^2 / (4 hbar^2).
+# This independently states the simplified form; the assertion below exercises the /4 factor
+# in the enthalpy lock (mu_* = lambda_mu * m * c_sw^2 / 4).
+Theta_target = sp.Rational(1, 4) * lambda_mu**2 * m**2 * rho_w**2 * csw**2 / hbar**2
 print("Theta_w (enthalpy lock) =", Theta_w)
-expect_zero("Theta_w vs alternative-form derivation", Theta_w - Theta_w_alt)
+expect_zero("Theta_w under enthalpy lock", Theta_w - Theta_target)
 
 healing_condition = csw - hbar / (2 * m * ell)  # the healing-length defining relation
 ell_solved = sp.solve(healing_condition, ell)[0]
@@ -75,9 +77,10 @@ expect_zero("healing-lock reduction", Theta_w_in_ell - Theta_heal_target)
 print("Theta_w (healing lock) =", Theta_heal_target)
 
 # Reference-branch convention: ell = a * ref_factor with ref_factor = 1/20.
-# TODO(provenance): cite the upstream stage that fixes ref_factor. This factor is
-# the load-bearing piece of the "25" in the normalized reference identity.
-ref_factor = sp.Rational(1, 20)  # reference-branch convention: ell = a * ref_factor  (see F2 below for provenance)
+# Source: Family-1 reference-branch description carried forward as input to this stage
+# (notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md section 4).
+# This factor is the load-bearing piece of the "25" in the normalized reference identity.
+ref_factor = sp.Rational(1, 20)
 ref_sub = {ell: a * ref_factor}
 Theta_ref = sp.simplify(Theta_heal_target.subs(ref_sub))
 print("Theta_w (reference branch, general a) =", Theta_ref)

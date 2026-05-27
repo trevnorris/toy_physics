@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 65 — MASTER QUADRUPOLE RESIDUAL
+STAGE 082 — MASTER QUADRUPOLE RESIDUAL
 ========================================================================================
 zeta_req(Pi_tr,C_mix,eps_blk) =
          -Cₘᵢₓ + Πₜᵣ         
@@ -31,8 +31,17 @@ R_quad =
            Cₘᵢₓ - eps_blk⋅(2⋅Cₘᵢₓ - Πₜᵣ)            
 R_quad(Pi_suff, zeta_phys=zeta_-) = 0
 R_quad(Pi_fail, zeta_phys=zeta_+) = 0
-dR_quad/dzeta_phys + 1 = 0
-dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-) = 0
+
+dzeta_req/dPi_tr = (C_mix + eps_blk*(C_mix - Pi_tr) - eps_blk*(2*C_mix - Pi_tr))/(C_mix - eps_blk*(2*C_mix - Pi_tr))**2
+numerator(d zeta_req/d Pi_tr) - C_mix*(1 - eps_blk) = 0
+denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))**2 = 0
+
+Omega_Pe -> pi/2 as Pe -> oo
+Omega_Pe -> pi/2 as Pe -> oo = 0
+y_F1 (root of y tan y = 37, smallest positive) = 1.52948248371469964992710762240
+zeta_phys(Pe->oo, kappa_F1, y_F1) = 2.4675292294560122333
+|zeta_phys(F1, Pe->oo) - zeta_max^(F1)| = 1.77233329100813225006336971399E-13
+PASS: Family-1 closed-form pin matches upstream zeta_max^(F1) to 10^-10.
 
 Xi_F1 from Upsilon_w =
 1369⋅Υ_w

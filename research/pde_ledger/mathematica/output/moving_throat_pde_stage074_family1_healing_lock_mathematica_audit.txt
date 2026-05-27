@@ -18,5 +18,7 @@ chi_ref - 37/2 = 0
 PASS: chi_ref - 37/2
 kappa_ref - 12321/5 = 0
 PASS: kappa_ref - 12321/5
+alpha_ref - 111/sqrt(5) = 0
+PASS: alpha_ref - 111/sqrt(5)
 
 Stage 074 Mathematica audit passed.

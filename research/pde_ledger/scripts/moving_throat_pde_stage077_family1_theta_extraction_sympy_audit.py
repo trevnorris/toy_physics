@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 60 SymPy/mpmath audit.
+Stage 077 SymPy/mpmath audit.
 
 Checks:
 1. Exact cut point xi_* for the Family-1 radial wall profile.
@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 60 — SHELL-WEIGHTED THETA EXTRACTION")
+banner("STAGE 077 — SHELL-WEIGHTED THETA EXTRACTION")
 
 xi, alpha_r, lambda_mu = sp.symbols("xi alpha_r lambda_mu", positive=True, real=True)
 S = (1 + sp.tanh(xi)) / 2

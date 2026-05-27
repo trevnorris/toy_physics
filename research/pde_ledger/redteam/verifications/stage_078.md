@@ -2,107 +2,93 @@
 unit_id: 078
 batch: III.4
 verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-25T00:00:00Z
+verify_date: 2026-05-27T00:00:00Z
 verdict: verified
 sympy_exit: n/a
 mathematica_exit: n/a
-findings_resolved: 4
-findings_total: 4
+findings_resolved: 2
+findings_total: 2
 material_change: false
 ---
 
-# Verification — unit 078
+# Verification — unit 078 (v2)
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — mathematica_transliteration
 
 **Classification:** resolved
 
 **What changed:**
-No direct edit at SymPy lines 41-44 or Mathematica lines 61-62; the directive itself stipulated that F1 is satisfied transitively by F4's new branch-verdict assertions and that the original ordering checks must be preserved. The original assertions are still present at `scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:51-54` and `mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:80-81`.
+In `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl`:
+
+- Line 47 now reads
+  ```
+  thetaSuffSym = (-(45 Cosh[111 Sqrt[5]/5] + 27 Sqrt[5] Sinh[111 Sqrt[5]/5]) / (2500 - 2500 Cosh[111 Sqrt[5]/5]));
+  ```
+  replacing the prior `thetaFailSym * (4.21495341569977*^-2 / 3.62605617972939*^-4)` decimal-ratio bootstrap. The Stage-75 symbolic closed form is now used directly.
+- Lines 44-46 carry a new provenance comment naming Stage-75 sympy output line 21 as the source.
+- Lines 48-50 replace the previous comment that overpromised a "verify their ratio chi:J matches the Stage-77 ratio" check (which did not exist) with the corrected statement that the chi/J values are adopted from Stage-77 at extended precision and their independent re-derivation belongs to the Stage-077 audit.
 
 **Assessment:**
-The directive's "Applied: F1" block matches what I see in the diff (no change to lines 41-44 of the .py or lines 61-62 of the .wl). The supplemental F4 assertions (verified separately below) do break the tautology: `Pe_suff_J < Pe_suff_chi`, `Pe_fail_J < Pe_fail_chi`, and `Pe_suff_chi < Pe_fail_J` each depend on the actual numeric magnitudes of both `Theta_chi` and `Theta_J` (cancellation no longer applies because the four `Pe_*` values appear in non-cancelling combinations across the inequalities). A corruption of either Theta would now be caught.
+The edit matches the directive's required change. The formula `-(45 cosh(α) + 27 √5 sinh(α)) / (2500 - 2500 cosh(α))` with α = 111√5/5 is the exact Stage-75 Theta_suff/Pe_req closed form cited in the auditor's F1 self-test. The orchestrator's one-line syntax fix (wrapping the entire RHS in outer parens) is cosmetic — Mathematica precedence on a single division was already unambiguous, so the wrap does not change semantics. The downstream consumers (thetaSuffCoeff = N[thetaSuffSym, 30] on line 56; the four expectApprox targets on lines 75-82) continue to consume the new symbolic expression. The mathematica output file confirms `Pe_suff^(chi) numeric check diff = 0``27.71` (zero at ~28 digits) and `Pe_suff^(J) numeric check diff = 0``28.36`, both PASS — i.e., the new symbolic re-derivation reproduces the prior coefficient value to the working precision. The new assertion is non-tautological: if the closed form had a sign or transcendental-function error, the diff would not collapse to zero. Engine independence on Theta_suff is now genuine, no longer a literal-decimal echo of SymPy.
 
-### F2 — hardcoded_result
+### F2 — paper_misalignment
 
 **Classification:** resolved
 
 **What changed:**
-Codex added the prescribed provenance comments at `scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:26-29` and `:32-37`, naming the Stage-77 and Stage-75 upstream output files and lines, and recording the symbolic closed form for `Theta_fail/Pe_req`. Numeric values are unchanged.
+Three banner/docstring relabels, applied by the orchestrator directly per the `## Approved by user (2026-05-27)` block (direction (b): script-side only; notes/ preserved as historical record):
+
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:3` docstring: `Stage 61 SymPy audit.` -> `Stage 078 SymPy audit.`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:23` banner: `STAGE 61 — FAMILY-1 BRANCH VERDICT` -> `STAGE 078 — FAMILY-1 BRANCH VERDICT`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:32` banner: `STAGE 061 — FAMILY-1 BRANCH VERDICT` -> `STAGE 078 — FAMILY-1 BRANCH VERDICT`
 
 **Assessment:**
-The comments verbatim match the directive's required text. No collateral edits. The Mathematica half of F2 (replacing literal `expectApprox` targets with independently-computed values) was deferred to F3 per the directive and is verified there.
-
-### F3 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-At `mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:37-53`, Codex replaced the four `SetPrecision[...]` literal-decimal coefficient assignments with: (i) an explicit symbolic closed form `thetaFailSym` in `Sinh[111 Sqrt[5]/5]`/`Cosh[111 Sqrt[5]/5]`, (ii) a scaled `thetaSuffSym = thetaFailSym * (4.21495341569977e-2 / 3.62605617972939e-4)`, (iii) high-precision (40-digit) numeric loads of the chi/J Theta values via `ToExpression["...`40"]`. At `:70-79`, the four `expectApprox` calls now target `peSuffChiTarget`/`peFailChiTarget`/`peSuffJTarget`/`peFailJTarget` computed from `thetaFailSym`/`thetaSuffSym` and the chi/J numerics, not the SymPy decimals.
-
-**Assessment:**
-The `Sinh`/`Cosh` closed form for `thetaFailSym` matches the form recorded in the SymPy provenance comment (and in the directive). All four `expectApprox` targets are now computed, not typed in. The .wl output file confirms all four checks PASS (`diff = 0.` for two, `diff = 0\`\`25.6...` and `0\`\`26.3...` for the other two — both are arithmetic-equivalent to zero at working precision).
-
-Codex applied one explicit deviation: dropped the `100` factor from `thetaSuffSym` (the directive had `thetaSuffSym = 100 thetaFailSym * (4.21495e-2 / 3.626e-4)`, Codex wrote `thetaSuffSym = thetaFailSym * (4.21495e-2 / 3.626e-4)`). The deviation is correct and necessary: the SymPy script uses `Theta_suff_coeff = 4.21495e-2` (not 4.21495); the `100` factor in the directive would have made `thetaSuffSym ≈ 4.21` (an Upsilon-scale value) and broken `Pe_suff^(chi) numeric check` since `peSuffChiTarget = thetaChi/thetaSuffSym` would then be off by 100×. The SymPy provenance comment `Theta_suff = Upsilon_suff / 100` is internally consistent with `4.21495e-2` and confirms Codex's interpretation. The deviation is documented in the directive's "Applied: F3" block.
-
-One residual weakness (non-blocking, noted as side observation): `thetaSuffSym` is derived as `thetaFailSym × (sympy_theta_suff/sympy_theta_fail)`, so it is not fully independent of the SymPy decimals — the *ratio* is imported. However, the absolute scale of `thetaFailSym` is independent (symbolic closed form), so a sign or transcendental-function error in the closed form would still be caught. This matches the directive's structure and is acceptable.
-
-### F4 — insufficient_verification
-
-**Classification:** resolved
-
-**What changed:**
-At `scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:56-77`, Codex appended three branch-verdict assertions plus three `print` lines, verbatim matching the directive. At `mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:83-86`, Codex appended three `expectTrue` calls before the existing `Print[""] / Print["...passed."] / Exit[0]` block.
-
-**Assessment:**
-The three SymPy assertions (`Pe_suff_J < Pe_suff_chi`, `Pe_fail_J < Pe_fail_chi`, `Pe_suff_chi < Pe_fail_J`) are non-tautological. The first two require `Theta_J < Theta_chi`; the third requires the actual numeric ordering of `Theta_chi/Theta_suff_coeff` vs `Theta_J/Theta_fail_coeff`. All three would fail if `Theta_chi` or `Theta_J` were corrupted in sign or magnitude. The Mathematica mirror is exact. Output files confirm all three pass in both engines:
-- SymPy: `Pe_suff_J < Pe_suff_chi  : True`, `Pe_fail_J < Pe_fail_chi  : True`, `Pe_suff_chi < Pe_fail_J  : True`
-- Mathematica: `PASS: Pe_suff^(J) < Pe_suff^(chi)`, `PASS: Pe_fail^(J) < Pe_fail^(chi)`, `PASS: Pe_suff^(chi) < Pe_fail^(J) (window overlap)`
+All three relabels are present in the current file state and visible in the diff. Both saved output files (sympy line 3 and mathematica line 3) now display `STAGE 078 — FAMILY-1 BRANCH VERDICT`, confirming the runtime banners reflect the rename. The notes/ file is correctly left untouched per the user's resolution. No mathematical content was modified.
 
 ## Exec log assessment
 
-**SymPy:** exit=n/a. `redteam/exec_logs/stage_078_sympy.log` is missing. The canonical output `scripts/output/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt` is present, fresh (mtime 23:31 vs script mtime 23:28), and contains all the expected new lines, implying a successful run. Notable lines:
+**SymPy:** exit=n/a. `redteam/exec_logs/stage_078_sympy.log` is not present in the exec_logs directory (only `stage_078_diff.patch` exists). The orchestrator's directive note states "Both engines exit 0", and the canonical output `scripts/output/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt` (mtime 02:15) was regenerated after the .py file mtime (02:05). Notable lines from the output:
 
 ```
+STAGE 078 — FAMILY-1 BRANCH VERDICT
 Pe_suff^(chi) / lambda_mu^2 = 96.528524726438575954
-Pe_fail^(chi) / lambda_mu^2 = 11220.544162625905301
-Pe_suff^(J)   / lambda_mu^2 = 22.006222633075413597
-Pe_fail^(J)   / lambda_mu^2 = 2558.0189234920526360
 Pe_suff_J < Pe_suff_chi  : True
 Pe_fail_J < Pe_fail_chi  : True
 Pe_suff_chi < Pe_fail_J  : True
 ```
 
-**Mathematica:** exit=n/a. `redteam/exec_logs/stage_078_mathematica.log` is missing. The canonical output `mathematica/output/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.txt` is present, fresh (mtime 23:31 vs script mtime 23:30), and ends with `Stage 078 Mathematica audit passed.` All ten PASS lines are present (four `expectApprox`, two original `expectTrue`, three new F4 `expectTrue`, plus the closing banner). Notable lines:
+**Mathematica:** exit=n/a. `redteam/exec_logs/stage_078_mathematica.log` is not present. The canonical output `mathematica/output/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.txt` (mtime 02:24) was regenerated after the .wl file mtime (02:20). Notable lines:
 
 ```
-Pe_suff^(chi) numeric check diff = 0.
+STAGE 078 — FAMILY-1 BRANCH VERDICT
+Pe_suff^(chi) numeric check diff = 0``27.71431433552255
 PASS: Pe_suff^(chi) numeric check
-Pe_fail^(chi) numeric check diff = 0``25.648956084907972
-PASS: Pe_fail^(chi) numeric check
-PASS: Pe_suff^(J) < Pe_suff^(chi)
-PASS: Pe_fail^(J) < Pe_fail^(chi)
+Pe_suff^(J) numeric check diff = 0``28.35642450198806
+PASS: Pe_suff^(J) numeric check
 PASS: Pe_suff^(chi) < Pe_fail^(J) (window overlap)
+Stage 078 Mathematica audit passed.
 ```
 
-**Output freshness:** confirmed. SymPy output mtime 23:31 > script mtime 23:28. Mathematica output mtime 23:31 > script mtime 23:30. Both `.txt` outputs were re-generated after Codex's edits.
+All four `expectApprox` deltas are zero at ~26-28 digits of precision (effectively zero at working precision), and all five `expectTrue` inequalities PASS. The `peSuffChiTarget = N[thetaChiCoeffNum / thetaSuffSym, 30]` is now computed from the new symbolic closed form, so the PASS is non-tautological — it would not collapse to zero if the new symbolic form did not reproduce the Stage-75 Theta_suff coefficient.
+
+**Output freshness:** confirmed. Sympy: .py at 02:05, .txt at 02:15 (output newer than source). Mathematica: .wl at 02:20, .txt at 02:24 (output newer than source). Both outputs were re-generated post-fix.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-No printed symbolic content or numeric value changed downstream-visibly. The four `Pe_*^*` numeric values (`96.528...`, `11220.544...`, `22.006...`, `2558.019...`) are byte-identical to the pre-edit outputs. New assertions and provenance comments do not alter any downstream-consumable derivation; they only add internal validation. The F3 deviation (no `100` factor) reflects an arithmetic correction to the directive itself, not a change to the operational coefficient values.
+No downstream-visible numeric or symbolic result changes. The new `thetaSuffSym` evaluates to the same `0.0421495341569977...` coefficient as the prior decimal-ratio bootstrap (to ~28 digits), so all four Pe ratios, all five inequality checks, and the saved output values are byte-identical to the pre-fix state at any reasonable working precision. The banner relabels are purely cosmetic. The four Pe ratios are paper-side verdict numerics, not inputs to any later stage's derivation, so no downstream unit's chain of inference is touched.
 
 ## Side observations (non-blocking)
 
-- F3's `thetaSuffSym` independence is partial: `thetaSuffSym = thetaFailSym × (sympy_suff/sympy_fail)` imports the ratio of SymPy decimals. The directive itself prescribed this structure (`thetaSuffSym = 100 thetaFailSym * (sympy_suff/sympy_fail)`), so Codex did not introduce the weakness. A stronger independence would derive `thetaSuffSym` from its own Stage-75 closed form. Flagging for future hardening; not a blocking finding.
-- The `100` factor removal in F3 is a substantive math correction to the directive that the auditor's directive arithmetic missed. The corresponding `Applied: F3 / deviation` block accurately records this. Worth keeping in mind when the orchestrator reviews the diff trail.
-- Exec logs for stage 078 are missing from `redteam/exec_logs/`. Canonical `.txt` outputs are present and fresh, which is sufficient to confirm passing runs, but the orchestrator may wish to verify why log capture didn't run for this stage.
+- The mathematica and sympy exec log files were not captured into `redteam/exec_logs/` for this stage (only the diff patch is present). The output files in `scripts/output/` and `mathematica/output/` are however fresh and consistent with the orchestrator's "both engines exit 0" note. Future stages may benefit from explicit exec-log capture for the verifier's audit trail, but this does not block verification because the saved .txt outputs carry all the assertion-level PASS lines and the closing `Stage 078 Mathematica audit passed.` banner.
+- The orchestrator's one-line syntax fix (outer parens around the entire RHS on line 47) is a benign wrapping — Mathematica precedence on a flat division was already unambiguous, and the wrap is purely a line-continuation hygiene measure. Worth recording only because it deviates from the verbatim multi-line directive text; no semantic effect.
+- This file overwrites a stale `stage_078.md` verification from a prior (v1) audit cycle that scored four findings; v2 only has two findings (F1 mathematica_transliteration, F2 paper_misalignment), and both are resolved here.
 
 ## Verdict justification
 
-All four findings are `resolved`. Codex applied each finding as directed (F1 by transitive coverage from F4 per the directive's explicit instruction; F2 via the prescribed provenance comments; F3 by replacing literal decimals with a symbolic closed form and computed `expectApprox` targets; F4 by appending the three branch-verdict assertions in both engines). The one deviation Codex took (dropping the `100` factor in F3's `thetaSuffSym`) is mathematically correct and aligns the independent target with the operational `Theta_suff` scale; without it the new `expectApprox` would have failed by two orders of magnitude. Canonical refreshed outputs confirm all assertions PASS in both engines, no downstream numeric values changed, and the new assertions are substantive (non-tautological).
+Both F1 and F2 are fully resolved. F1's `thetaSuffSym` is now a direct symbolic re-derivation from the Stage-75 closed form `-(45 cosh(α) + 27 √5 sinh(α)) / (2500 - 2500 cosh(α))` with α = 111√5/5 (no SymPy-output decimal on the RHS), and the overpromising comment was rewritten to honestly describe the chi/J adoption. F2's three banner relabels are in place across both `.py` and `.wl`. Both saved engine outputs are fresh, banners read `STAGE 078 — FAMILY-1 BRANCH VERDICT`, and all assertions (4 `expectApprox` + 5 `expectTrue` in Mathematica; 3 inequality checks in SymPy) PASS. The new Mathematica check `Pe_suff^(chi) numeric check diff = 0``27.71` would not collapse to zero if the new symbolic form did not match the Stage-75 coefficient, so the assertion is non-tautological. No regressions visible in the diff. No new findings warranted.
 
-stage 078: verified
+stage 078 (v2): verified

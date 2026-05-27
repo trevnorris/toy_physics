@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-26` (batch III.3 v2 close — sixth paper-grounded re-audit pass)
+Snapshot date: `2026-05-27` (batch III.4 v2 close — seventh paper-grounded re-audit pass)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-26`: 96 of 253 stages red-team verified (batch III.3 now under v2 paper-grounded re-audit; stage count unchanged because the same 12 stages were re-verified at greater depth). With III.3 v2 closed, the entire range 001–072 is now paper-aligned at v2 depth.
+As of `2026-05-27`: 96 of 253 stages red-team verified (batch III.4 now under v2 paper-grounded re-audit; stage count unchanged because the same 12 stages were re-verified at greater depth). With III.4 v2 closed, the entire range 001–084 is now paper-aligned at v2 depth.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -57,30 +57,39 @@ As of `2026-05-26`: 96 of 253 stages red-team verified (batch III.3 now under v2
 | III.1 | `037--048` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.2 | `049--060` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.3 | `061--072` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
-| III.4 | `073--084` | 12 | 12 | 2026-05-25 |
+| III.4 | `073--084` | 12 | 12 | 2026-05-25 (v1) / 2026-05-27 (v2 paper-grounded) |
 | III.5 onward | `085--253` | 169 | 0 | pending |
 
-Cumulative findings closed: ~299 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3).
+Cumulative findings closed: ~313 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3 + 14 v2 from III.4).
 `tautological_check` dominant overall, `mathematica_transliteration` second.
 `hardcoded_result` rose sharply in III.4 to 12 because the Family-1 numerology
 cluster 075-084 packs many literal constants. v2 added `paper_misalignment` as
-the 10th category — 22 items total across the six v2 batches (7 in I.1,
-3 in I.2, 3 in II.1, 3 in III.1, 2 in III.2, 4 in III.3 — 2 substantive + 2 banner relabels);
-zero user redirections in II.1, III.1, III.2, III.3 (4 consecutive batches — Codex's
-first-pass recommendations all held up). v2 surfaces `insufficient_verification`
-prominently — 8 in II.1, 5 in III.1, 8 in III.2, 4 in III.3 = 25 cumulative.
+the 10th category — 29 items total across the seven v2 batches (7 in I.1,
+3 in I.2, 3 in II.1, 3 in III.1, 2 in III.2, 4 in III.3 — 2 substantive + 2 banner relabels,
+7 in III.4 — 4 substantive + 3 audit-flagged banner relabels, plus an 8-stage
+orchestrator-direct banner-relabel sweep when the global-renumber leftover
+turned out to be pervasive across III.4);
+zero user redirections in II.1, III.1, III.2, III.3, III.4 (5 consecutive batches — Codex's
+first-pass recommendations all held up; Codex stalled mid-consultation on III.4 Q1,
+orchestrator-direct apply substituted with the audit + grep evidence already conclusive).
+v2 surfaces `insufficient_verification` prominently — 8 in II.1, 5 in III.1, 8 in III.2,
+4 in III.3, 1 in III.4 = 26 cumulative.
 Stage 060 (v1 `material_change: true`) returned **clean (0 findings)** under III.2 v2.
-**Stage 068 (v1 `material_change: true`) returned clean at v2** — Solve-derived
-`Wfail_res`/`Wfail_match` preserved; Mathematica upgraded from `Solve` to `Reduce`
-without value change. Stages now carrying `material_change: true`: 001, 004
+**Stage 068 (v1 `material_change: true`) returned clean at v2**.
+Stages now carrying `material_change: true`: 001, 004
 (I.1 v2); 013, 014, 015, 018 (I.2 v2); 045 (III.1 v2 — structural-only, F_tr
 export value unchanged); 060 (v1, clean at v2); 068 (v1, clean at v2). II.1,
-III.1, III.2, III.3 v2 each added **zero** value-changing material_change.
+III.1, III.2, III.3, III.4 v2 each added **zero** value-changing material_change.
 III.3 v2 introduced one orchestrator hot-fix on stage 064 Mathematica
 (`Integrate[]` with symbolic functions does not factor constants — verify
-integrands first; new pitfall #9 candidate). Pitfall #8 was promoted from
-candidate to documented in `codex.md` "Common cross-engine pitfalls" item #1
-before III.3 launched. Pitfalls #6, #7 remain candidates; #9 newly added.
+integrands first; pitfall #9 candidate). III.4 v2 introduced one orchestrator
+fix on stage 082 SymPy (`sp.nsolve` is unstable for `y tan y = 37` near
+`pi/2` and jumps to far-away roots — use `mpmath.findroot(..., solver="bisect")`
+instead; pitfall #10 candidate). Pitfall #8 was promoted from candidate to
+documented in `codex.md` "Common cross-engine pitfalls" item #1 before
+III.3 launched. Pitfalls #6, #7 remain candidates; #9 (Mathematica
+`Integrate[]` constant factoring) and #10 (SymPy `nsolve` near
+singularities) newly added.
 See per-batch summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update

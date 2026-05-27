@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SymPy audit for Stage 62.
+SymPy audit for Stage 079.
 
 Verifies the explicit Family-1 map from the selected quadrupole demand zeta_req
 into the required constructive transport bias Pe_req.
@@ -25,7 +25,7 @@ def expect_small(name: str, expr: sp.Expr, tol: float = 1e-12) -> None:
         raise AssertionError(f"{name} is not within tolerance {tol}")
 
 
-banner("STAGE 62 — FAMILY-1 QUADRUPOLE-DEMAND / PE MAP")
+banner("STAGE 079 — FAMILY-1 QUADRUPOLE-DEMAND / PE MAP")
 
 Pe = sp.symbols('Pe', positive=True, real=True)
 y = sp.symbols('y', real=True)

@@ -2,219 +2,203 @@
 unit_id: 082
 batch: III.4
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T00:00:00Z
+audit_date: 2026-05-27T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 3
+paper_alignment: partial
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  paper_appendix: present
 ---
 
 # Audit unit 082 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_082.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (read only the rows referencing stage 082; row 142 is the one-line summary, line 282 includes the stage)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.txt`
 
+## What the paper claims
+
+Paper card stage_082 boxes three formulas: the demand `zeta_req(Pi_tr, C_mix, eps_blk) = (Pi_tr - C_mix) / [ C_mix - eps_blk(2*C_mix - Pi_tr) ]` (eq. 082-zeta-req), the physical supply `zeta_phys(Pe, eta; kappa) = Omega_Pe^2 * (kappa + pi^2/4) / (kappa + y(eta)^2)` with `y tan y = eta` (eq. 082-zeta-phys), and the master residual `R_quad = zeta_req(Pi_tr,C_mix,eps_blk) - zeta_phys(Pe_*(Xi,eta,kappa), eta; kappa)` (eq. 082-Rquad, the `\stagefield{Output}`). The card also fixes the sign convention (`R_quad < 0` = excess support, `= 0` = saturation, `> 0` = failure) and specializes to Family-1 via `(eta, kappa) = (37, 12321/5)` and `Xi_F1 = W_wall = 1369*Upsilon_w = 136900*Theta_w` (eq. 082-XiF1). The notes section 4 also documents the inverse map `Pi_tr = C_mix * Q(zeta; eps_blk)` with `Q = (1 + (1-2*eps_blk)*zeta)/(1 - eps_blk*zeta)` and the product thresholds `Pi_suff = C_mix Q(zeta_-)`, `Pi_fail = C_mix Q(zeta_+)`, derived as consequences of `zeta_req`'s monotonicity in `Pi_tr`.
+
 ## What the script claims to verify
 
-The docstring claims four results for the "STAGE 65 MASTER QUADRUPOLE RESIDUAL" (note: filename is stage082, banner is "STAGE 65"): (1) an exact inverse map between `zeta_req(Pi_tr)` and `Pi_tr = C_mix * Q(zeta)`; (2) the product thresholds `Pi_suff = C_mix Q(zeta_-)` and `Pi_fail = C_mix Q(zeta_+)` invert correctly; (3) the Family-1 strength identity `Xi_F1 = 1369 Upsilon_w = 136900 Theta_w`; and (4) the master residual `R_quad = zeta_req - zeta_phys` vanishes at `(Pi_suff, zeta_-)` and `(Pi_fail, zeta_+)`. In practice all five assertions are different evaluations of the single identity `zeta_req(C_mix Q(z)) == z`, plus two arithmetic-only checks on the integer constants 37, 100, 1369, 136900.
+The sympy script docstring lists four claims: (1) exact inverse map between `zeta_req` and `Pi_tr = C_mix Q(zeta)`; (2) product thresholds `Pi_suff = C_mix Q(zeta_-)`, `Pi_fail = C_mix Q(zeta_+)`; (3) Family-1 strength identity `Xi_F1 = 1369 Upsilon_w = 136900 Theta_w`; (4) master residual definition. The assertions encode `zeta_req` in functional form, derive `Q` (independently in the .wl via `Solve`), then check `zeta_req(C_mix Q(z)) - z == 0`, the two threshold inversions, and `R_quad(Pi_suff, zeta_-) == 0`, `R_quad(Pi_fail, zeta_+) == 0`. Two derivative sanity checks `dR/dzeta_phys + 1 == 0` and `dR/dPi_tr - dzeta_req/dPi_tr == 0` are added. Family-1 constants are now display-only (v1 already converted the arithmetic `expect_zero` lines to `print` per directive F1). Critically, `zeta_phys` is treated as an opaque symbol throughout — the script never encodes the paper-side formula `Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2)`, and never instantiates the Family-1 numerical pair `(eta, kappa) = (37, 12321/5)`.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| eq. 082-zeta-req: `zeta_req = (Pi_tr - C_mix)/[C_mix - eps_blk(2 C_mix - Pi_tr)]` | sympy line 38; mathematica line 38 (re-derived via `Solve`) | match |
+| eq. 082-zeta-phys: `zeta_phys = Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2)` | none — `zeta_phys` is left as a bare `sp.Symbol`/`Reals` element (sympy line 63; mathematica line 31) | missing |
+| eq. 082-Rquad: `R_quad := zeta_req - zeta_phys(Pe_*(Xi,eta,kappa), eta; kappa)` | sympy line 64; mathematica line 59 — but only the algebraic skeleton `zeta_req - zeta_phys` is encoded; the `Pe_*` operator-selected bias dependence on `(Xi, eta, kappa)` is never exhibited | partial |
+| eq. 082-sign convention (R_quad <0/=0/>0) | none — sign of R_quad is never checked at any concrete branch point | missing |
+| eq. 082-XiF1: `Xi_F1 = W_wall = 1369*Upsilon_w = 136900*Theta_w` and `(eta,kappa) = (37, 12321/5)` | sympy lines 96-97; mathematica lines 88-90: arithmetic on hardcoded `Lambda_ell = 37` and `Upsilon_w = 100*Theta_w`. Now display-only after v1. `(eta, kappa) = (37, 12321/5)` numerical pair is not encoded anywhere. | partial |
+| notes section 4: inverse map `Pi_tr = C_mix Q(zeta_req)` and threshold theorems | sympy lines 46-49, 51-52, 59-60; mathematica lines 45-57 | match |
+| notes section 6: `R_quad` is the load-bearing residual everything else feeds | partial — R_quad is defined, but with `zeta_phys` opaque | partial |
+
+Dominant pattern: the script verifies the inverse-map / threshold mechanics from notes section 4 faithfully, but two of the paper card's three boxed equations (eq. 082-zeta-phys and the Family-1 numerical specialization) are not exercised at all, and the sign-convention deliverable is absent. Set `paper_alignment: partial`.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 46-49 | `zeta_req(C_mix*Q(zeta)) - zeta == 0` | partial (one algebraic identity) |
-| A2 | sympy | 59 | `zeta_req(Pi_suff) - zeta_- == 0` | no (A1 with `zeta -> zeta_-`) |
-| A3 | sympy | 60 | `zeta_req(Pi_fail) - zeta_+ == 0` | no (A1 with `zeta -> zeta_+`) |
-| A4 | sympy | 68-71 | `R_quad(Pi_suff, zeta_-) == 0` | no (definition `R_quad = zeta_req - zeta_phys` + A2) |
-| A5 | sympy | 72-75 | `R_quad(Pi_fail, zeta_+) == 0` | no (definition + A3) |
-| A6 | sympy | 87-90 | `100*Theta_w*37**2 - 136900*Theta_w == 0` | no (pure integer arithmetic, `100*1369 == 136900`) |
-| A7 | sympy | 91-94 | `(100*Theta_w)*37**2 - 100*Theta_w*37**2 == 0` | no (substitution into a one-line algebraic definition; tautological) |
-| A8 | mathematica | 39-42 | `zetaReq(cMix*qMap) - zeta == 0` | partial (mirror of A1) |
-| A9 | mathematica | 50 | `zetaReq(piSuff) - zetaMinus == 0` | no (mirror of A2) |
-| A10 | mathematica | 51 | `zetaReq(piFail) - zetaPlus == 0` | no (mirror of A3) |
-| A11 | mathematica | 56-59 | `rQuad(piSuff, zetaMinus) == 0` | no (mirror of A4) |
-| A12 | mathematica | 60-63 | `rQuad(piFail, zetaPlus) == 0` | no (mirror of A5) |
-| A13 | mathematica | 71 | `100*thetaW*37^2 - 136900*thetaW == 0` | no (mirror of A6) |
-| A14 | mathematica | 72-75 | `(100*thetaW)*37^2 - 100*thetaW*37^2 == 0` | no (mirror of A7) |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 46-49 | `zeta_req(C_mix*Q(zeta)) - zeta == 0` | notes section 4 inverse map | yes (non-tautological — exercises rational-function algebra) |
+| A2 | sympy | 59 | `zeta_req(Pi_suff) - zeta_- == 0` | notes section 4 threshold | partial (A1 specialized at zeta -> zeta_-) |
+| A3 | sympy | 60 | `zeta_req(Pi_fail) - zeta_+ == 0` | notes section 4 threshold | partial (A1 specialized at zeta -> zeta_+) |
+| A4 | sympy | 68-71 | `R_quad(Pi_suff, zeta_-) == 0` | eq. 082-Rquad (definition only) | no (definition `R_quad = zeta_req - zeta_phys` + A2) |
+| A5 | sympy | 72-75 | `R_quad(Pi_fail, zeta_+) == 0` | eq. 082-Rquad (definition only) | no (definition + A3) |
+| A6 | sympy | 80 | `dR_quad/dzeta_phys + 1 == 0` | eq. 082-Rquad (definition only) | no (`d(a-b)/db = -1` by construction) |
+| A7 | sympy | 83-87 | `dR_quad/dPi_tr - dzeta_req/dPi_tr == 0` | eq. 082-Rquad (definition only) | no (`d(zeta_req - 0)/dPi = dzeta_req/dPi` by construction since R_quad - zeta_req = -zeta_phys and zeta_phys is Pi_tr-independent) |
+| A8 | sympy | 108-109 | display-only prints for Xi_F1 arithmetic | eq. 082-XiF1 | n/a (display-only after v1 fix) |
+| A9 | mathematica | 38 | `Solve[Pi_tr = cMix*qMap, zetaSym]` recovers zeta_req | notes section 4 inverse map | yes (independent re-derivation via Solve) |
+| A10 | mathematica | 45-48 | `zetaReq(cMix*qMap) - zeta == 0` | notes section 4 inverse map | partial (engine independence: SymPy uses pre-baked closed form, Mathematica solves) |
+| A11 | mathematica | 56-57 | `zetaReq(piSuff/piFail) - zetaMinus/zetaPlus == 0` | notes section 4 threshold | partial |
+| A12 | mathematica | 62-69 | `rQuad` evaluations at branch points | eq. 082-Rquad | no (mirrors A4/A5) |
+| A13 | mathematica | 73-81 | derivative checks | eq. 082-Rquad | no (mirrors A6/A7) |
+| A14 | mathematica | 99-102 | display-only prints for Xi_F1 arithmetic | eq. 082-XiF1 | n/a |
 
 ## Findings
 
-### F1 — tautological_check
+### F1 — paper_misalignment
+
+**Subtype:** script_missing_paper_claim
 
 **Severity:** medium
+
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:87-94`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:71-75`
+- paper: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_082.tex:21-25` (eq. 082-zeta-phys)
+- script: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:63`
+- script: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:31`
 
 **What's wrong:**
-The two "Family-1 strength identity" assertions are pure arithmetic on hand-baked integer constants — no physics is exercised:
 
-```
-Lambda_ell = sp.Integer(37)
-Xi_F1_from_Upsilon = sp.simplify(Upsilon_w * Lambda_ell**2)     # = 1369 * Upsilon_w
-Xi_F1_from_Theta   = sp.simplify(100 * Theta_w * Lambda_ell**2) # = 136900 * Theta_w
-expect_zero("Xi_F1(Theta_w) - 136900 Theta_w",
-            Xi_F1_from_Theta - sp.Integer(136900) * Theta_w)     # 136900*Theta_w - 136900*Theta_w
-expect_zero("Xi_F1(Upsilon_w=100 Theta_w) - Xi_F1(Theta_w)",
-            Xi_F1_from_Upsilon.subs(Upsilon_w, 100*Theta_w) - Xi_F1_from_Theta)
-```
+The paper card explicitly writes `zeta_phys` as a specific closed-form expression:
 
-The first check is `100 * Theta_w * 37**2 - 136900 * Theta_w`, which is just SymPy confirming the integer arithmetic `100 * 1369 == 136900` — it would fail only if SymPy's integer multiplication were broken. The second check substitutes `Upsilon_w -> 100 Theta_w` into `Upsilon_w * 1369` and compares to `100 * Theta_w * 1369`, which is identically `0` by associativity. The Mathematica script at lines 65-75 contains the mirror of these checks with the same defect.
+> `zeta_phys(Pe, eta; kappa) = Omega_Pe^2 * (kappa + pi^2/4) / (kappa + y(eta)^2)`  with  `y tan y = eta`.   (paper stage_082.tex, eq. 082-zeta-phys, lines 21-25)
 
-The docstring claim 3 ("Exact Family-1 strength identity `Xi_F1 = 1369 Upsilon_w = 136900 Theta_w`") embeds three integer constants (37, 100, 1369) plus the ratio `Upsilon_w = 100 Theta_w`. None of these are derived or anchored to an upstream symbolic quantity in this script — they are written into the definitions then trivially re-confirmed.
+The sympy script declares only
 
-**Why this matters:**
-The audit reports "Xi_F1 identity verified" but the assertions cannot fail for any physics-related reason. If the underlying physical relationship that motivates `Lambda_ell = 37` or `Upsilon_w = 100 Theta_w` were wrong, these checks would still pass.
+> `zeta_phys = sp.symbols("zeta_phys", real=True)`   (sympy line 63)
 
-**Required change:**
-Either (a) replace the two checks with a non-tautological derivation that builds `Xi_F1` from a physical input chain (e.g., an upstream construction that produces `Lambda_ell` and the ratio `Upsilon_w/Theta_w` independently, so the equality `Upsilon_w * Lambda_ell**2 == 100 * Theta_w * Lambda_ell**2` becomes a substantive consequence rather than a definitional restatement), or (b) demote the two assertions to plain `print` statements and document that this script does not verify the Family-1 strength constants — relegating that verification to whichever upstream stage produces 37 and the 100-ratio. Since this auditor was instructed not to expand scope or invent physical derivations, option (b) is the safe mechanical correction. Apply in both `.py` (lines 87-94) and `.wl` (lines 71-75).
+and the mathematica script declares only the type assumption
 
-**Verification:**
-After the change, the SymPy script's output should no longer contain "Xi_F1(Theta_w) - 136900 Theta_w = 0" as an asserted check; either it is gone or it carries an inline disclaimer. The Mathematica script's `PASS:` lines for the same two checks should disappear or be replaced with `Print[...]` only.
+> `Element[{PiTr, epsBlk, zeta, zetaMinus, zetaPlus, zetaPhys}, Reals]`   (mathematica line 31).
 
-### F2 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:46-75`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:39-63`
-
-**What's wrong:**
-Five of the seven assertions in the SymPy script (A1-A5) test a single algebraic identity. The "inverse map" check `zeta_req(C_mix * Q(zeta)) - zeta == 0` (lines 46-49) is the parent identity. The "Pi_suff" check (line 59) is the same identity with `zeta -> zeta_-`. The "Pi_fail" check (line 60) is the same identity with `zeta -> zeta_+`. The two `R_quad` checks (lines 68-75) substitute `(Pi_tr, zeta_phys) = (Pi_suff, zeta_-)` and `(Pi_fail, zeta_+)` into `R_quad = zeta_req - zeta_phys`, which by `R_quad`'s own definition (line 64) immediately reduces to `zeta_req(Pi_suff) - zeta_-` and `zeta_req(Pi_fail) - zeta_+` — i.e., A2 and A3.
-
-The docstring lists four distinct claims (inverse map, product thresholds, Family-1 strength, master residual). Claims 1, 2, and 4 collapse to a single algebraic identity once you trace the substitutions. The "product thresholds" claim has no separate content beyond renaming `zeta -> zeta_+/-`; the "master residual" claim has no separate content beyond defining `R_quad := zeta_req - zeta_phys` and evaluating it where `zeta_req = zeta_phys`.
-
-The script never tests anything inequality-flavored about `Pi_suff` and `Pi_fail` (e.g., that one is strictly above and the other strictly below a threshold), nor does it verify that `R_quad` has the correct sign on either side of its root. The "Theorem ledger" printed at the end claims directional theorems ("guaranteed success", "guaranteed failure") that are not exercised by any assertion — those would require monotonicity or sign checks of `R_quad` in `zeta_phys` and `Pi_tr`, which are absent.
+`zeta_phys` is then carried through `R_quad = zeta_req - zeta_phys` as an opaque scalar. The closed-form expression from eq. 082-zeta-phys, the Robin-root condition `y tan y = eta`, and the transport-overlap factor `Omega_Pe` (notes section 1.4) are never instantiated. As a result, every assertion involving `zeta_phys` (A4-A7, A12-A13) reduces to a sanity check on linear algebra over a free symbol; the paper's specific functional form for the physical support ratio is not exercised by either engine. This is the paper card's second of three boxed equations, and the script does not touch it.
 
 **Why this matters:**
-The script publishes five PASS lines, suggesting five independent algebraic facts, but they are five evaluations of one identity. If the inverse-map identity were to fail, all five would fail together — there is no redundancy or coverage gain. The "guaranteed success / guaranteed failure" theorems in the ledger text are unverified by any assertion.
+
+The whole point of the master quadrupole residual is that `zeta_phys` carries a non-trivial functional dependence on `(Pe, eta, kappa)` through the Robin eigenvalue `y(eta)`. Verifying `R_quad := zeta_req - zeta_phys` at the symbol level confirms only the subtraction structure; it cannot catch sign errors, branch-cut errors, or normalization slips in the `Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2)` formula. The paper's Output equation (eq. 082-Rquad) cites both halves of the residual, but the script verifies only one half (zeta_req).
 
 **Required change:**
-Add one substantive assertion that exercises the directional content claimed in the theorem ledger. Concretely, in the SymPy script, after line 75 (and the corresponding location in the Mathematica script after line 63), add a sign check for `R_quad` on each side of its root, using the existing symbols and explicit assumptions that match the script's existing positivity declarations.
 
-Specifically, add to the SymPy script after line 75:
-
-```python
-# Directional sign of R_quad away from its root, holding the other slot fixed.
-# At Pi_tr = Pi_suff, R_quad is increasing in zeta_phys (since dR_quad/dzeta_phys = -1).
-dR_dzeta_phys = sp.simplify(sp.diff(R_quad, zeta_phys))
-expect_zero("dR_quad/dzeta_phys + 1", dR_dzeta_phys + 1)
-# At zeta_phys = zeta_-, R_quad is the difference (zeta_req(Pi_tr) - zeta_-),
-# so dR_quad/dPi_tr is the same as dzeta_req/dPi_tr; verify it equals the
-# closed-form derivative of zeta_req w.r.t. Pi_tr.
-dzeta_req_dPi = sp.simplify(sp.diff(zeta_req, Pi_tr))
-dR_dPi = sp.simplify(sp.diff(R_quad.subs(zeta_phys, zeta_minus), Pi_tr))
-expect_zero("dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-)",
-            dR_dPi - dzeta_req_dPi)
-```
-
-(Mirror in `.wl` with `D[expr, var]` and `FullSimplify`.) This adds real, non-tautological content: it verifies the partial-derivative structure that underwrites the directional theorems printed in the ledger.
+`## Resolve before fix_loop` — see directive.
 
 **Verification:**
-The SymPy output should contain two new lines `dR_quad/dzeta_phys + 1 = 0` and `dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-) = 0`. The Mathematica output should contain the corresponding new `PASS:` lines. Both scripts should still exit 0.
 
-### F3 — mathematica_transliteration
+Either the script grows checks that instantiate `zeta_phys = Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2)` and confirms at least one nontrivial property (e.g., that R_quad evaluates to a specific symbolic form at a representative Robin root), OR the paper card is updated to clarify that the script only verifies the algebraic skeleton of the residual and defers the zeta_phys functional verification to its upstream stage (stages 39-40 per notes section 1.4). The orchestrator routes this to the user.
 
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:26-81` (entire body)
+### F2 — paper_misalignment
 
-**What's wrong:**
-The `.wl` script is a line-by-line port of the `.py` script, not an independent re-derivation. Corresponding sections:
-
-- SymPy 38: `zeta_req = sp.simplify((Pi_tr - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi_tr)))`
-- Mathematica 33: `zetaReq = FullSimplify[(PiTr - cMix)/(cMix - epsBlk*(2*cMix - PiTr)), Assumptions -> $Assumptions];`
-
-- SymPy 39: `Q = sp.simplify((1 + (1 - 2 * eps_blk) * zeta) / (1 - eps_blk * zeta))`
-- Mathematica 34: `qMap = FullSimplify[(1 + (1 - 2*epsBlk)*zeta)/(1 - epsBlk*zeta), Assumptions -> $Assumptions];`
-
-- SymPy 79-81: `Lambda_ell = sp.Integer(37); Xi_F1_from_Upsilon = sp.simplify(Upsilon_w * Lambda_ell**2); Xi_F1_from_Theta = sp.simplify(100 * Theta_w * Lambda_ell**2)`
-- Mathematica 65-67: `lambdaEll = 37; xiF1FromUpsilon = FullSimplify[upsilonW*lambdaEll^2, ...]; xiF1FromTheta = FullSimplify[100*thetaW*lambdaEll^2, ...]`
-
-- SymPy 97-99 (theorem ledger prints): identical English text appears verbatim at Mathematica 79-81.
-
-Every assertion in `.wl` is the syntactic Mathematica rendering of the corresponding `.py` assertion at the same algebraic step. There is no alternate derivation path (e.g., the Mathematica script does not start from a different parametrization of `Q`, or build `zeta_req` by solving an equation in Mathematica's `Solve` and comparing). The intent of the second-engine policy — that an independent symbolic engine corroborate the result via a different algebraic route — is not met.
-
-**Why this matters:**
-A transliteration cannot catch implementation errors in the shared algebra; it can only catch engine-specific arithmetic bugs. If the SymPy author made an error in writing `(1 - eps_blk * zeta)` instead of, say, `(1 + eps_blk * zeta)`, the Mathematica script — having copied the same expression — would not reveal it.
-
-**Required change:**
-In the Mathematica script, replace the hand-supplied closed form for `zetaReq` (line 33) with a Solve-based derivation that re-discovers it from the Q-map. Specifically, replace lines 33-34 with:
-
-```mathematica
-qMap = FullSimplify[(1 + (1 - 2*epsBlk)*zeta)/(1 - epsBlk*zeta), Assumptions -> $Assumptions];
-(* Independently solve PiTr = cMix*qMap for zeta, expressed as zetaReq(PiTr). *)
-zetaReqDerived = zeta /. First[Solve[PiTr == cMix*(qMap /. zeta -> zetaSym), zetaSym]];
-zetaReqDerived = FullSimplify[zetaReqDerived /. zetaSym -> zeta, Assumptions -> $Assumptions];
-zetaReq = zetaReqDerived;
-```
-
-(Adjust the variable name `zetaSym` to whatever is free in `$Assumptions`.) This forces the Mathematica engine to derive `zetaReq` from `qMap` via `Solve`, rather than restating the SymPy expression in Mathematica syntax. After this change, the existing `expectZero` assertions will be testing whether SymPy's hand-supplied `zetaReq` agrees with Mathematica's `Solve`-derived inverse of `qMap` — that is a genuine cross-engine check.
-
-**Verification:**
-The Mathematica script's printed `zeta_req` line should still simplify to the same closed form, but the source of that expression in the script is now `Solve[...]` rather than a hand-coded fraction. The verifier inspects line 33's right-hand side and confirms it contains `Solve` (or `Reduce`) and not the literal `(PiTr - cMix)/(cMix - epsBlk*(2*cMix - PiTr))`.
-
-### F4 — hardcoded_result
+**Subtype:** script_missing_paper_claim
 
 **Severity:** low
+
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:79`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:65`
+- paper: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_082.tex:43-47` (eq. 082-XiF1 and the `(eta,kappa) = (37, 12321/5)` line)
+- script: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:95-97`
+- script: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:88-90`
 
 **What's wrong:**
-The integer `Lambda_ell = 37` is dropped into the script as a literal, with no comment citing the upstream unit that derives it and no in-script construction. Likewise the factor `100` in `Xi_F1_from_Theta = sp.simplify(100 * Theta_w * Lambda_ell**2)` (line 81) is dropped in literal with no provenance. These numbers then feed the Family-1 assertions A6/A7, which become arithmetic identities on the chosen literals (see F1).
+
+The paper's Family-1 specialization in stage 082 has two parts:
+
+> "The Family--1 specialization is obtained by setting `(eta, kappa) = (37, 12321/5)` and `Xi_F1 = W_wall = 1369*Upsilon_w = 136900*Theta_w`."   (paper stage_082.tex, lines 43-47)
+
+The script only exercises the *Xi_F1* line of the specialization (and only as display-only arithmetic on hardcoded `Lambda_ell = 37` and `Upsilon_w = 100*Theta_w`). The numerical pair `(eta, kappa) = (37, 12321/5)` is never set as a variable or substituted into any expression in either script. The notes section 5 makes the same numerical specialization, but no script line references `12321/5` or pairs `eta = 37` against `kappa = 12321/5` in any check.
+
+Additionally, the script's choice `Upsilon_w = 100*Theta_w` (sympy line 97, mathematica line 90) implicitly relies on the relation `136900/1369 = 100` from the paper card. But paper stage 075 line 7 states `Upsilon_w = 117*Theta_w`, not `100*Theta_w`. This is a paper-internal disagreement between stage 082 and stage 075 about the Upsilon_w/Theta_w relation — the script side is consistent with stage 082's own line but inconsistent with stage 075. Flag it for user attention; the script cannot resolve a paper-internal conflict.
 
 **Why this matters:**
-A reader of the script alone cannot confirm whether `37` and `100` are the correct upstream constants for this unit; if they were copied wrong from an upstream stage, the assertions would still PASS because the same wrong numbers appear on both sides of each `expect_zero`. The captured output (`Xi_F1 = 1369*Upsilon_w`, `Xi_F1 = 136900*Theta_w`) is then propagated as "verified" without provenance.
+
+If the paper's intent in stage 082 is that the Family-1 specialization carries the full `(eta=37, kappa=12321/5, Xi_F1 = 136900*Theta_w)` triple, then the script should at least display `R_quad` with `(eta, kappa)` instantiated. The current state hides whether the numerical pair is even consistent with upstream stages 073-074 (which derive kappa = 9/5 * Lambda_ell^2 = 12321/5 from Lambda_ell = 37). The Upsilon_w 100-vs-117 conflict between stage 082 and stage 075 is a real paper-side inconsistency that may need the user to decide which one is canonical.
 
 **Required change:**
-Add an inline comment immediately above line 79 of the SymPy script (and above line 65 of the Mathematica script) citing the upstream stage and/or paper section that establishes `Lambda_ell = 37` and the ratio `Upsilon_w = 100 * Theta_w`. Format:
 
-```python
-# Lambda_ell = 37 (carry-forward from stage NNN; see docstring of that script)
-# Ratio Upsilon_w = 100 * Theta_w is the Family-1 weight convention from stage MMM.
-Lambda_ell = sp.Integer(37)
-```
-
-If the upstream stage IDs are not known to Codex, leave a `TODO(provenance):` marker rather than guessing. Do not modify the numerical values.
+`## Resolve before fix_loop` — see directive.
 
 **Verification:**
-The SymPy script line immediately preceding `Lambda_ell = sp.Integer(37)` contains a `#`-prefixed comment naming an upstream stage (or `TODO(provenance):`). The Mathematica script line preceding `lambdaEll = 37` contains an analogous `(* ... *)` comment.
+
+User resolves whether (a) the script should add a numerical block instantiating `(eta, kappa) = (37, 12321/5)`, and (b) which paper stage's Upsilon_w/Theta_w relation is canonical (stage 082's implicit 100, or stage 075's explicit 117).
+
+### F3 — insufficient_verification
+
+**Severity:** low
+
+**Files:**
+- sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py:79-87`
+- mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.wl:73-81`
+
+**What's wrong:**
+
+The two derivative checks added by the v1 directive are mathematically trivial:
+
+- `dR_quad/dzeta_phys + 1 == 0` is identically true by `R_quad = zeta_req - zeta_phys`: differentiating a linear difference w.r.t. its subtracted symbol always yields `-1`. The engine cannot fail this check for any well-formed `zeta_req` not containing `zeta_phys`.
+- `dR_quad/dPi_tr - dzeta_req/dPi_tr == 0` is identically true because `zeta_phys` was declared as a free symbol with no `Pi_tr` dependence; so `d(zeta_req - zeta_phys)/dPi_tr = dzeta_req/dPi_tr` by construction.
+
+These were added by v1 as "directional content of R_quad" but they don't exercise the directional content of R_quad against zeta_phys's actual functional form — they only confirm the engine's symbolic differentiation rules. Severity is low because they're cheap printouts and don't cost much, but they don't move the verification needle.
+
+**Why this matters:**
+
+The intent (per the inline comment "verify the partial derivatives that underwrite the 'guaranteed success / guaranteed failure' theorems") is to demonstrate that R_quad is strictly monotonic in zeta_phys and in Pi_tr. The actual checks verify only that the symbolic difference operator works as expected, not that the physical residual has the claimed monotonicity at any concrete point. The sign content of R_quad (paper eq. 082-sign) is not exercised anywhere.
+
+**Required change:**
+
+Either delete the two tautological derivative checks, or replace them with assertions that exercise the *sign* of `dzeta_req/dPi_tr` (the real physical content — that zeta_req is strictly increasing in Pi_tr on the allowed branch). For example, assert `sign(d zeta_req/d Pi_tr) > 0` under the branch positivity conditions, which is the actual content notes section 4 relies on ("Because zeta_req is strictly increasing in Pi_tr, the bounded residual can be translated back into exact product thresholds").
+
+**Verification:**
+
+After fix, the script should contain an assertion that fails if `dzeta_req/dPi_tr` were not strictly positive on the branch domain (e.g., evaluating it at a positive-branch sample point and checking the result simplifies to a positive ratio of squares). The current trivial-by-construction checks should either be removed or have a comment marking them as engine-correctness sanity rather than physics verification.
 
 ## Independent-derivation check (Mathematica)
 
-See F3. The `.wl` is a syntactic transliteration of the `.py`. Both define `zetaReq` and `qMap` as identical closed-form fractions, both perform the same five substitutions in the same order, both hard-code `Lambda_ell = 37` and `100`, both print the same English "Theorem ledger" text at the end. No alternate derivation route (e.g., `Solve`, `Reduce`, series inversion, or formulation as a fixed-point equation) is used.
+The Mathematica script does one substantive thing differently from the SymPy script: it derives `zeta_req` by calling `Solve[PiTr == cMix * qMap(zetaSym), zetaSym]` (line 38), rather than starting from the closed-form `zeta_req = (Pi_tr - C_mix)/[C_mix - eps_blk(2 C_mix - Pi_tr)]` directly. This is a genuine independent re-derivation: SymPy writes the closed form and verifies the inverse; Mathematica writes the inverse map `Q` and solves for `zeta_req`, then verifies they agree. Quoting the two key sections:
+
+- SymPy line 38: `zeta_req = sp.simplify((Pi_tr - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi_tr)))` — a direct write-down.
+- Mathematica lines 38-40: `Solve[PiTr == cMix*((1 + (1 - 2*epsBlk)*zetaSym)/(1 - epsBlk*zetaSym)), zetaSym]; zetaReq = FullSimplify[(zetaSym /. First[zetaReqSolList]) /. ConditionalExpression[x_, _] :> x, ...]` — solves the inverse map and strips the conditional.
+
+That's a non-trivial differentiation between the two engines (one writes the form, the other derives it from the inverse). No `mathematica_transliteration` finding. The rest of the script is parallel structure, but parallel structure of an algebraic identity check is hard to avoid; the load-bearing difference is at line 38.
 
 ## Engine cross-check
 
-Both engines agree on the printed forms:
+Both engines reach identical final forms:
 
-- SymPy: `zeta_req(Pi_tr,C_mix,eps_blk) = (-C_mix + Pi_tr)/(C_mix - eps_blk*(2*C_mix - Pi_tr))`
-- Mathematica: `zeta_req(Pi_tr,C_mix,eps_blk) = -((cMix - PiTr)/(cMix - 2*cMix*epsBlk + epsBlk*PiTr))`
+- `zeta_req` form: identical up to sign of the denominator, `(-cMix + PiTr)/(cMix - 2*cMix*epsBlk + epsBlk*PiTr)` in both transcripts.
+- `R_quad = (-cMix + PiTr)/(cMix - 2*cMix*epsBlk + epsBlk*PiTr) - zetaPhys` in both transcripts.
+- All `expectZero` / `expect_zero` checks return `0` in both transcripts.
+- Family-1 prints: both show `Xi_F1 from Upsilon_w = 1369*Upsilon_w`, `Xi_F1 from Theta_w = 136900*Theta_w`.
 
-These are algebraically identical (multiply numerator and denominator by `-1` and expand the `-eps_blk*(2*C_mix - Pi_tr)` term).
-
-- SymPy: `Q = (zeta*(2*eps_blk - 1) - 1)/(eps_blk*zeta - 1)`
-- Mathematica: `qMap = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)`
-
-Algebraically identical (multiply both num and denom by `-1`).
-
-- Both produce `Xi_F1 = 1369*Upsilon_w` and `Xi_F1 = 136900*Theta_w`.
-
-All five "physics" assertions and the two arithmetic assertions PASS in both engines. So `engines_agree = true`, but per F3 this agreement is weakened by the fact that the agreement is over identical inputs, not independent derivations.
+Engines agree. No `engine_disagreement` finding.
 
 ## Verdict justification
 
-Findings, not clean. The script does verify a single algebraic identity (the inverse-map relation between `zeta_req` and `Q`), and that identity does hold under attack — I traced the cancellation by hand and confirmed `zeta_req(C_mix*Q(z)) = z` reduces to `z*C_mix*(1-eps_blk)/(1-eps_blk*z) / [C_mix*(1-eps_blk)/(1-eps_blk*z)] = z`. The Mathematica engine concurs. What does not hold up: (a) the five "physics" PASSes are five instances of that one identity, so the verification coverage is overstated (F2); (b) the two "Family-1 strength" PASSes are pure integer arithmetic on hand-supplied literals 37, 100, 1369, 136900 (F1, F4); (c) the Mathematica script is a transliteration rather than an independent derivation (F3). None of these warrant `UNFIXABLE` or `CRITICAL_DOWNSTREAM` — the script's results are not wrong, they are under-verified. Codex can apply the F1, F2, F3, F4 corrections mechanically.
+The script's notes-section-4 deliverables (inverse map and threshold theorems) hold up under attack — A1 is a genuine non-trivial rational-function identity, A2-A3 specialize it, and Mathematica's `Solve`-based re-derivation strengthens the independence claim. However, two of the paper card's three boxed equations (eq. 082-zeta-phys and the `(eta, kappa)` numerical specialization in eq. 082-XiF1) are not exercised by either engine, and the sign-convention deliverable is absent. The v1 derivative checks added at lines 79-87 / 73-81 are tautological by construction and don't compensate. Two `paper_misalignment` findings require user resolution before any further script edits; the third `insufficient_verification` finding can proceed independently. No `stop_cold` flag: F1 and F2 are paper-side-vs-script-side scope decisions, not mathematical inconsistencies, and the script's core mechanical content (inverse map, thresholds, residual definition) holds up.
 
 ## Self-test notes
 
-I walked through the proposed F2 derivative checks mentally: `R_quad = zeta_req(Pi_tr) - zeta_phys` depends on `Pi_tr, C_mix, eps_blk, zeta_phys`, so `sp.diff(R_quad, zeta_phys)` is well-defined and equals `-1` identically (variable independence: zeta_phys appears in R_quad). Substituting `zeta_phys -> zeta_minus` then differentiating w.r.t. `Pi_tr`: `zeta_minus` is independent of `Pi_tr`, so `dR/dPi_tr = dzeta_req/dPi_tr` (variable independence holds). The trivial-case check for the new assertions: at `eps_blk = 0`, `zeta_req = (Pi_tr - C_mix)/C_mix`, so `dzeta_req/dPi_tr = 1/C_mix`, which is nonzero — confirms the assert isn't trivially passing on zero. For F3 the `Solve`-based path: `PiTr == cMix*qMap` is linear in `zeta` after clearing the denominator, so `Solve` returns a single branch (no `ConditionalExpression` shenanigans expected, but the directive should mention `expectZero`-style stripping just in case). For F4 the change is comment-only and cannot break the assertions. Path check: SymPy script in `scripts/`, Mathematica script in `mathematica/`, both confirmed by the file listing.
+Traps checked: (1) verified `dR/dzeta_phys = -1` is structurally identical to `d(a-b)/db = -1` since `zeta_req` contains no `zeta_phys` and vice versa — confirms F3's "trivial by construction" call; (2) checked `dR/dPi_tr - dzeta_req/dPi_tr` simplifies because `zeta_phys` is a free symbol with no `Pi_tr` dependence, again confirming F3; (3) verified that `136900/1369 = 100` matches stage 082 but `Upsilon_w = 117*Theta_w` in stage 075 line 7 is an independent paper-side fact, supporting F2's flag for user resolution; (4) confirmed F1 and F2 are paper_misalignment (script does not exercise paper claim) rather than insufficient_verification (which would require the script claim itself to fall short of its own docstring).

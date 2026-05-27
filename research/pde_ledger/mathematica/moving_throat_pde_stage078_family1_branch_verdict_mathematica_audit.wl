@@ -29,7 +29,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[TrueQ[res], pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 061 — FAMILY-1 BRANCH VERDICT"];
+banner["STAGE 078 — FAMILY-1 BRANCH VERDICT"];
 
 Clear[lambdaMu, peReq];
 $Assumptions = Element[{lambdaMu, peReq}, Reals] && lambdaMu > 0 && peReq > 0;
@@ -41,10 +41,13 @@ thetaFailSym = (
   / (136900 (-1 + (Sqrt[5]/3) Sinh[111 Sqrt[5]/5]
                  + Cosh[111 Sqrt[5]/5]))
 );
-thetaSuffSym = thetaFailSym * (4.21495341569977*^-2 / 3.62605617972939*^-4);
-(* The chi^2 and Jensen-floor Theta values are recorded numerically in
-   stage077 output; we adopt them at high precision but verify their
-   ratio chi:J matches the Stage-77 ratio.                              *)
+(* Independent closed form for Theta_suff from Stage-75 sympy output line 21:
+   Theta_suff/Pe_req = -(45 cosh(alpha) + 27 sqrt(5) sinh(alpha))
+                        / (2500 - 2500 cosh(alpha)),  alpha = 111 sqrt(5)/5. *)
+thetaSuffSym = (-(45 Cosh[111 Sqrt[5]/5] + 27 Sqrt[5] Sinh[111 Sqrt[5]/5]) / (2500 - 2500 Cosh[111 Sqrt[5]/5]));
+(* The chi^2 and Jensen-floor Theta values are adopted from Stage-77 at
+   extended precision; their independent re-derivation is the subject of
+   the Stage-077 audit, not this one.                                    *)
 thetaChiCoeffNum = ToExpression["4.0686323500816155092718546246574670820527`40"];
 thetaJCoeffNum   = ToExpression["0.92755203253930797183993260663904217023`40"];
 thetaChiCoeff  = thetaChiCoeffNum;

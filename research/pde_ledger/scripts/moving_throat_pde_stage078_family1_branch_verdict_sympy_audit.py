@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 61 SymPy audit.
+Stage 078 SymPy audit.
 
 Checks:
 1. Insert the explicit Stage-60 Theta values into the Stage-58 threshold window.
@@ -20,7 +20,7 @@ def banner(title: str) -> None:
     print(line)
 
 
-banner("STAGE 61 — FAMILY-1 BRANCH VERDICT")
+banner("STAGE 078 — FAMILY-1 BRANCH VERDICT")
 
 lambda_mu, Pe_req = sp.symbols("lambda_mu Pe_req", positive=True, real=True)
 # Stage-77 family-1 Theta extraction:

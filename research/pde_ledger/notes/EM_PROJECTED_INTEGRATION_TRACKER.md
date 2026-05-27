@@ -1,7 +1,7 @@
 # EM projected integration tracker
 
 Created: 2026-05-11
-Updated: 2026-05-26 (batch III.3 v2 close — entire range 001-072 now paper-aligned at v2 depth; the projected-EM core 004-021 was closed at I.2 v2; II.1 v2 closed the post-EM bookend 022-036; III.1 v2 closed the rank-2 / continuum-kernel range 037-048; III.2 v2 closed the tracking / zeta-threshold / asymmetry / boost range 049-060 including checkpoint stage 051 clean; III.3 v2 closed the microclosure / gain-thresholds / equilibrium / walls range 061-072 including checkpoint stage 069 clean and v1 material_change at stage 068 confirmed clean)
+Updated: 2026-05-27 (batch III.4 v2 close — entire range 001-084 now paper-aligned at v2 depth; the projected-EM core 004-021 was closed at I.2 v2; II.1 v2 closed the post-EM bookend 022-036; III.1 v2 closed the rank-2 / continuum-kernel range 037-048; III.2 v2 closed the tracking / zeta-threshold / asymmetry / boost range 049-060 including checkpoint stage 051 clean; III.3 v2 closed the microclosure / gain-thresholds / equilibrium / walls range 061-072 including checkpoint stage 069 clean and v1 material_change at stage 068 confirmed clean; III.4 v2 closed the Family-1 geometry / thresholds / quadrupole range 073-084 with zero material_change and 4 substantive paper-misalignment fixes — 074 alpha `128/sqrt(5)` → `111/sqrt(5)`, 075 Upsilon_w `117 Theta_w` → `100 Theta_w`, 082 closed-form `zeta_phys` pin + Family-1 instantiation, plus 11-stage banner-relabel sweep aligning all III.4 self-banners with the post-renumber numbering)
 
 ## Scope decision
 

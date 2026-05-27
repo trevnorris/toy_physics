@@ -2,195 +2,130 @@
 unit_id: 077
 batch: III.4
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00Z
-verdict: findings
+audit_date: 2026-05-27T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 3
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  paper_appendix: present
 ---
 
 # Audit unit 077 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_077.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (line 272: `\input{stages/stage_077}` — no inline appendix prose for this stage; the part-level file is a stage-include table of contents)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.txt`
 
+## What the paper claims
+
+The stage card states the Purpose as "Stage~077 evaluates the natural wall-density weighting and a conservative lower envelope", with Inputs "The explicit radial wall profile and the canonical support weighting", and Output "Natural and conservative Family-1 wall-depth data \eqref{eq:app-stage077-theta-chi}--\eqref{eq:app-stage077-theta-J}". The two boxed deliverables are
+- `\Theta_w^{(\chi)} = 25 \lambda_\mu^2 \langle\rho_r^2\rangle_\chi \simeq 4.06863235008162 \lambda_\mu^2` (natural shell-weighted datum)
+- `\Theta_w^{(J)}  = 25 \lambda_\mu^2 \langle\rho_r\rangle_\chi^2 \simeq 0.927552032539308 \lambda_\mu^2` (conservative Jensen lower envelope)
+
+together with the moments `\langle\rho_r\rangle_\chi \simeq 0.192619005556493` and `\langle\rho_r^2\rangle_\chi \simeq 0.162745294003265`. The notes carry the additional binding inputs: the Family-1 branch uses `alpha_r = 10`, the radial wall profile `rho_r(xi) = [1 - alpha_r S(xi)^2]_+^{1/4}` with `S(xi) = (1+tanh xi)/2`, the canonical support weight `chi_phi(xi) = S'(xi) = sech^2(xi)/2`, the exact cut point `xi_* = artanh(2/sqrt(alpha_r) - 1) ≈ -0.3855810692` (for `alpha_r=10`), and the support normalization `I_f = int chi^2 dxi = 1/3`. The coefficient `25` is carried from Stage 76 via `\eqref{eq:app-stage076-theta}`.
+
 ## What the script claims to verify
 
-Per its docstring, the script verifies four items for the Family-1 radial wall profile `rho^4 = 1 - alpha_r * S(xi)^2` with `S(xi) = (1+tanh(xi))/2`:
-(1) the exact cut point `xi_* = atanh(2/sqrt(alpha_r) - 1)` (where the profile vanishes);
-(2) the canonical support normalization `I_f = ∫ chi^2 d xi = 1/3` with `chi = dS/dxi = sech^2(xi)/2`;
-(3) the numerical shell-weighted moments `<rho>_chi` and `<rho^2>_chi` on the `alpha_r = 10` branch (integrated from `-∞` to `xi_*` weighted by `chi^2`, normalized by `∫_{-∞}^{∞} chi^2`);
-(4) the numerical effective wall-depth datum `Theta_w^(chi) = 25 <rho^2>_chi` and conservative Jensen floor `Theta_w^(J) = 25 <rho>_chi^2`. SymPy enforces only (2) symbolically and a Jensen-like ordering `Theta_chi >= Theta_J > 0`; Mathematica reproduces (2) symbolically and additionally enforces the numerical values of (1), (3), (4) by `expectApprox` against hardcoded 50-digit constants.
+The SymPy script verifies (i) the symbolic identity `I_f = 1/3` for the canonical support normalization, (ii) the symbolic cut-point identity `1 - alpha_r * S(xi_*)^2 = 0`, (iii) the numerical shell-weighted moments `<rho>_chi` and `<rho^2>_chi` at `alpha_r = 10` against 50-digit literals, (iv) the numerical wall-depth data `Theta_w^(chi) = 25 <rho^2>_chi` and `Theta_w^(J) = 25 <rho>_chi^2` against 50-digit literals, and (v) the Jensen ordering `Theta_w^(chi) >= Theta_w^(J) > 0`. The Mathematica script independently re-derives the same identities using a different integration choreography (`NIntegrate` with `WorkingPrecision -> 60` and a distinct `rhoSqNum = Sqrt[1 - alphaR S^2]` integrand rather than squaring a fourth root) and enforces the same numeric targets to 28+ digits via `expectApprox` plus the same Jensen ordering. The docstrings and assertions are anchored to the same physics the paper card describes.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| `<rho_r>_chi ≈ 0.192619005556493` | sympy `expect_close("<rho>_chi", R1, 0.19261900555649309777..., 1e-28)` and mathematica `expectApprox["<rho>_chi numeric check", ...]` | match |
+| `<rho_r^2>_chi ≈ 0.162745294003265` | sympy `expect_close("<rho^2>_chi", R2, 0.16274529400326462037..., 1e-28)` and mathematica `expectApprox["<rho^2>_chi numeric check", ...]` | match |
+| `Theta_w^(chi) ≈ 4.06863235008162 lambda_mu^2` (boxed) | sympy `expect_close("Theta_w^(chi)", Theta_chi, 4.0686323500816155092..., 1e-26)` and mathematica analogue | match |
+| `Theta_w^(J) ≈ 0.927552032539308 lambda_mu^2` (boxed) | sympy `expect_close("Theta_w^(J)", Theta_J, 0.92755203253930797183..., 1e-27)` and mathematica analogue | match |
+| Inequality `<rho_r^2>_chi >= <rho_r>_chi^2` ⇒ `Theta_w^(chi) >= Theta_w^(J)` (notes §5) | sympy `if not (Theta_chi >= Theta_J > 0)` and mathematica `expectTrue["Theta_w^(chi) >= Theta_w^(J) > 0", ...]` | match |
+| Input: `alpha_r = 10` (notes §1) | both scripts use `alpha_num = mp.mpf('10')` / `alphaNum = 10` | match |
+| Input: `S(xi) = (1+tanh xi)/2` (notes §1) | both scripts define `S = (1+tanh(xi))/2` and use it consistently | match |
+| Input: `chi_phi = sech^2 xi / 2` (notes §2) | sympy `chi = sp.diff(S, xi)`; mathematica `D[sXi, xi]` | match |
+| Input: `xi_* = artanh(2/sqrt(alpha_r) - 1)` (notes §1) | sympy `xi_star = sp.simplify(sp.atanh(2/sp.sqrt(alpha_r) - 1))`; mathematica `xiStar = FullSimplify[ArcTanh[2/Sqrt[alphaR] - 1], ...]` with symbolic cut-point identity then enforced | match |
+| Input: `I_f = 1/3` (notes §2) | sympy `expect_zero("I_f - 1/3", If - 1/3)` and mathematica `expectZero["I_f - 1/3", ifMom - 1/3]` | match |
+| Coefficient `25` (notes §3, paper card via Stage 76) | both scripts use literal `25` in `Theta_chi = 25*R2` and `Theta_J = 25*R1^2` | match (carried Input from Stage 076; not derived in 077 by design) |
+
+Every paper-side deliverable has a corresponding script-side check, and every script-side load-bearing assertion exercises a paper-side claim. `paper_alignment: aligned`.
 
 ## Assertion inventory
 
-| #  | Script        | Line   | Form                                                                 | Anchored to claim? |
-|----|---------------|--------|----------------------------------------------------------------------|--------------------|
-| A1 | sympy         | 39     | `expect_zero("I_f - 1/3", If - 1/3)`                                 | yes (claim 2)      |
-| A2 | sympy         | 77-78  | `if not (Theta_chi >= Theta_J > 0): raise`                           | partial (Jensen ordering only; numerical values themselves not asserted) |
-| A3 | mathematica   | 50     | `expectZero["I_f - 1/3", ifMom - 1/3]`                               | yes (claim 2)      |
-| A4 | mathematica   | 89     | `expectApprox["xi_* numeric check", xiCut, "-0.38558...`50", 1e-30]` | partial — see F1   |
-| A5 | mathematica   | 90     | `expectApprox["<rho>_chi numeric check", r1, "0.192619...`50", 1e-28]` | yes (cross-engine numerical) |
-| A6 | mathematica   | 91     | `expectApprox["<rho^2>_chi numeric check", r2, "0.162745...`50", 1e-28]` | yes (cross-engine numerical) |
-| A7 | mathematica   | 92     | `expectApprox["Theta_w^(chi) numeric check", thetaChi, "4.06863...`50", 1e-26]` | yes (cross-engine numerical) |
-| A8 | mathematica   | 93     | `expectApprox["Theta_w^(J) numeric check", thetaJ, "0.927552...`50", 1e-27]` | yes (cross-engine numerical) |
-| A9 | mathematica   | 94     | `expectTrue["Theta_w^(chi) >= Theta_w^(J) > 0", thetaChi >= thetaJ && thetaJ > 0]` | partial (Jensen ordering only) |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 39 | `expect_zero("I_f - 1/3", If - sp.Rational(1,3))` | Input: `I_f = 1/3` | yes |
+| A2 | sympy | 47 | `expect_zero("1 - alpha_r * S(xi_*)**2", rho_quartic_at_star)` | Input: cut point `xi_*` formula | yes |
+| A3 | sympy | 88-93 | `expect_close("<rho>_chi", R1, 0.19261900555649309777..., 1e-28)` | `<rho_r>_chi ≈ 0.192619005556493` | yes |
+| A4 | sympy | 94-99 | `expect_close("<rho^2>_chi", R2, 0.16274529400326462037..., 1e-28)` | `<rho_r^2>_chi ≈ 0.162745294003265` | yes |
+| A5 | sympy | 100-105 | `expect_close("Theta_w^(chi)", Theta_chi, 4.0686323500816155092..., 1e-26)` | boxed `Theta_w^(chi)` | yes |
+| A6 | sympy | 106-111 | `expect_close("Theta_w^(J)", Theta_J, 0.92755203253930797183..., 1e-27)` | boxed `Theta_w^(J)` | yes |
+| A7 | sympy | 112-113 | `if not (Theta_chi >= Theta_J > 0): raise` | Jensen ordering (notes §5) | yes |
+| A8 | mathematica | 50 | `expectZero["I_f - 1/3", ifMom - 1/3]` | Input: `I_f = 1/3` | yes |
+| A9 | mathematica | 55 | `expectZero["1 - alphaR*S[xi_*]^2", rhoQuarticAtStar]` | Input: cut point `xi_*` formula | yes |
+| A10 | mathematica | 92 | `expectApprox["<rho>_chi numeric check", r1, 0.19261900555649309777..., 10^-28]` | `<rho_r>_chi` value | yes |
+| A11 | mathematica | 93 | `expectApprox["<rho^2>_chi numeric check", r2, 0.16274529400326462037..., 10^-28]` | `<rho_r^2>_chi` value | yes |
+| A12 | mathematica | 94 | `expectApprox["Theta_w^(chi) numeric check", thetaChi, 4.0686323500816155092..., 10^-26]` | boxed `Theta_w^(chi)` | yes |
+| A13 | mathematica | 95 | `expectApprox["Theta_w^(J) numeric check", thetaJ, 0.92755203253930797183..., 10^-27]` | boxed `Theta_w^(J)` | yes |
+| A14 | mathematica | 96 | `expectTrue["Theta_w^(chi) >= Theta_w^(J) > 0", thetaChi >= thetaJ && thetaJ > 0]` | Jensen ordering (notes §5) | yes |
+
+Every assertion is anchored to a paper-side claim. No tautological constructions remain. No assertions test claims absent from the paper.
 
 ## Findings
 
-### F1 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py:41-43`
-- `mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl:46-52,89`
-
-**What's wrong:**
-The docstring's claim (1) is "Exact cut point `xi_*` for the Family-1 radial wall profile." The physical content of "cut point" is: `xi_*` is the value of `xi` where `1 - alpha_r * S(xi)^2 = 0`, i.e., where the fourth-root profile `rho = (1 - alpha_r * S^2)^{1/4}` first vanishes. Neither script ever asserts this.
-
-SymPy (line 41) simply defines
-```
-xi_star = sp.simplify(sp.atanh(2 / sp.sqrt(alpha_r) - 1))
-```
-and prints it (lines 42-43). There is no `expect_zero` confirming that `1 - alpha_r * S(xi_star)^2 == 0` as a symbolic identity over `alpha_r`. The closed form is asserted only by author fiat.
-
-Mathematica is no better: it defines `xiStar = FullSimplify[ArcTanh[2/Sqrt[alphaR] - 1], ...]` (line 46) and then `expectApprox` on line 89 only verifies that `N[xiStar /. alphaR -> 10, 50]` matches the literal 50-digit string `-0.38558106921542562...`. That literal is just `N[ArcTanh[2/Sqrt[10]-1], 50]` reproduced — see F2 — and exercises no physics.
-
-**Why this matters:**
-The unit's title and item (1) of the docstring claim an **exact** cut-point identity, but the framework currently treats `xi_*` as a definition, not a derivation. If `alpha_r` had been chosen differently (or if a future edit perturbed the formula by a factor of two), no assertion in either engine would fail until the downstream numerical Theta values shifted, and even then the failure would be diagnosed in the wrong place.
-
-**Required change:**
-In `scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py`, immediately after line 41 (where `xi_star` is defined), add a symbolic check that the radial profile vanishes there. Concretely, with `xi, alpha_r` already declared:
-```
-S_at_star = ((1 + sp.tanh(xi_star)) / 2)
-rho_quartic_at_star = sp.simplify(1 - alpha_r * S_at_star**2)
-expect_zero("1 - alpha_r * S(xi_*)**2", rho_quartic_at_star)
-```
-Because `tanh(atanh(2/sqrt(alpha_r) - 1)) = 2/sqrt(alpha_r) - 1`, `S(xi_*) = 1/sqrt(alpha_r)`, and `1 - alpha_r * (1/sqrt(alpha_r))^2 = 0` identically. SymPy will reduce it to 0 under the existing `positive=True, real=True` assumptions on `alpha_r`.
-
-In `mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl`, add the analogous symbolic check immediately after line 46 (where `xiStar` is defined), independent of any numeric evaluation:
-```
-sAtStar = (1 + Tanh[xiStar])/2;
-rhoQuarticAtStar = FullSimplify[1 - alphaR*sAtStar^2, Assumptions -> $Assumptions];
-expectZero["1 - alphaR*S[xi_*]^2", rhoQuarticAtStar];
-```
-This must reduce to `0` symbolically under `alphaR > 0`.
-
-**Verification:**
-After Codex applies, the SymPy output should contain a new line `1 - alpha_r * S(xi_*)**2 = 0` (followed by no AssertionError), and the Mathematica output should contain `1 - alphaR*S[xi_*]^2 = 0` and `PASS: 1 - alphaR*S[xi_*]^2`. Both scripts must still exit 0.
-
-### F2 — tautological_check
-
-**Severity:** low
-**Files:**
-- `mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl:89`
-
-**What's wrong:**
-Line 89 is
-```
-expectApprox["xi_* numeric check", xiCut,
-  ToExpression["-0.38558106921542562403635498846713378847348301441599`50"],
-  10^-30];
-```
-But `xiCut` is defined on line 57 as `N[xiStar /. alphaR -> alphaNum, 50]`, i.e. `N[ArcTanh[2/Sqrt[10] - 1], 50]`. The hardcoded right-hand side is simply a literal copy of that same evaluation to 50 digits. The check therefore confirms a number against itself: there is no independently-derived target, no physics. If Mathematica's `ArcTanh` returned a wrong value, the literal in the script would presumably have been generated by the same (wrong) routine at script-authoring time, so the assertion would still pass.
-
-Unlike the other `expectApprox` calls on lines 90-93 — which compare an independent numerical quadrature (NIntegrate) against a value computed by a different engine (SymPy/mpmath quad), and therefore constitute a real cross-engine check — line 89 has no second-engine content.
-
-**Why this matters:**
-The check looks substantive but adds no verification leverage. It also masks the real missing check (F1): if F1 is applied (the symbolic vanishing identity), the residual purpose of line 89 is sanity-checking Mathematica's `ArcTanh` numerical evaluator, which is not within the unit's scope.
-
-**Required change:**
-Delete line 89 of `mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl`. Keep the print of `numeric xi_*` (line 82) so the value is still visible in the output.
-
-The symbolic identity added by F1 (`1 - alphaR*S[xi_*]^2 == 0`) replaces this with a real check.
-
-**Verification:**
-After Codex applies, line 89 is removed; the Mathematica output will no longer contain the line `xi_* numeric check diff = 0...` or `PASS: xi_* numeric check`. The script must still exit 0 and all remaining `expectApprox` calls must still pass.
-
-### F3 — insufficient_verification
-
-**Severity:** low
-**Files:**
-- `scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py:55-79`
-
-**What's wrong:**
-The SymPy script computes `<rho>_chi`, `<rho^2>_chi`, `Theta_w^(chi)`, and `Theta_w^(J)` numerically at `alpha_r = 10` (lines 47-76) but the only assertion exercising these numbers is
-```
-if not (Theta_chi >= Theta_J > 0):
-    raise AssertionError("Expected Theta_w^(chi) >= Theta_w^(J) > 0")
-```
-(lines 77-78). That is a Jensen-inequality ordering, which is `<f^2> >= <f>^2` and holds for any reasonable quadrature result with `f >= 0`; it does not verify the specific numerical values claimed in items (3) and (4) of the docstring.
-
-The Mathematica side does enforce the specific values via `expectApprox` (lines 90-93), so the unit as a whole has cross-engine coverage; but the SymPy script's `expect_zero`-style assertion infrastructure (lines 24-28) is never used on the actual numerical results that the script's `print` statements parade as the bottom line. A reader of the SymPy script alone cannot tell whether the printed `<rho>_chi = 0.192619...` reflects a real check or just noise from `mp.quad`.
-
-**Why this matters:**
-The unit's numerical results are the data inputs to whatever downstream Theta_w consumer exists. Within the SymPy script, those values currently sit between two `print` calls and outside any assertion. If `mp.quad` regressed or the breakpoint `-4` on lines 62-64 was changed inadvertently, the SymPy script would still exit 0 silently as long as the Jensen ordering survived.
-
-**Required change:**
-In `scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py`, after line 76 (where `Theta_chi` and `Theta_J` are printed) and before the Jensen check on lines 77-78, add numerical-assertion lines using mpmath comparisons against the same 50-digit constants the Mathematica script already uses (these constants are the cross-engine ground truth, not invented by SymPy):
-```
-def expect_close(name, value, target, tol):
-    diff = abs(value - target)
-    print(f"{name} diff = {diff}")
-    if diff > tol:
-        raise AssertionError(f"{name} exceeds tol {tol}")
-
-expect_close("<rho>_chi",
-             R1, mp.mpf('0.19261900555649309777068139356018510792903510747507'),
-             mp.mpf('1e-28'))
-expect_close("<rho^2>_chi",
-             R2, mp.mpf('0.16274529400326462037087418498629868328210821103971'),
-             mp.mpf('1e-28'))
-expect_close("Theta_w^(chi)",
-             Theta_chi, mp.mpf('4.0686323500816155092718546246574670820527052759928'),
-             mp.mpf('1e-26'))
-expect_close("Theta_w^(J)",
-             Theta_J, mp.mpf('0.92755203253930797183993260663904217023332624032789'),
-             mp.mpf('1e-27'))
-```
-Keep the Jensen-ordering check on lines 77-78 intact.
-
-**Verification:**
-After Codex applies, the SymPy output should contain four new `<...> diff = <small number>` lines and the script must still exit 0. If any numeric quadrature drift introduced by an unrelated edit pushes a result above its tolerance, the script will now fail rather than silently pass.
+None.
 
 ## Independent-derivation check (Mathematica)
 
-Both engines target the same physics (Family-1 wall profile `rho = (1 - alpha_r * S^2)^{1/4}`, `S = (1+tanh(xi))/2`, `chi = dS/dxi`) but they do not transliterate. Three observations:
+The two scripts are not transliterations. Three structural differences confirm independent derivation:
 
-1. The integration choreography differs. SymPy uses `mp.quad` with explicit breakpoints `[-mp.inf, -4, xi_cut]` to help adaptive quadrature (lines 62-64); Mathematica uses a single `NIntegrate` from `-Infinity` to `xiCut` with `WorkingPrecision -> 60` (lines 65-75) and uses `Quiet[..., NIntegrate::precw]` rather than introducing manual breakpoints.
-2. The handling of the moment integrand differs. SymPy builds `rho_num` as the fourth root and then squares it inside the integrand for `<rho^2>` (lines 56-57, 64). Mathematica avoids the square-then-root by defining `rhoSqNum[x] := Sqrt[1 - alphaNum*sNum[x]^2]` directly (line 62) — a numerically distinct evaluation path.
-3. Assertion strategies differ. SymPy enforces only the symbolic `I_f = 1/3` identity and a Jensen ordering; Mathematica enforces the symbolic identity *and* the numerical values to 28+ digits.
+1. **Integration choreography differs.** SymPy uses `mp.quad` with explicit breakpoints `[-mp.inf, -4, xi_cut]` to assist adaptive quadrature (lines 66-68). Mathematica uses `NIntegrate` from `-Infinity` to `xiCut` with `WorkingPrecision -> 60` and `Quiet[..., NIntegrate::precw]` (lines 67-78) — no manual breakpoints.
 
-No transliteration concern.
+2. **Integrand for the second moment differs.** SymPy builds `rho_num(x)` as the fourth root and then squares it inside the integrand for `<rho^2>` (lines 59-61, 68). Mathematica avoids the square-then-root by defining `rhoSqNum[x] := Sqrt[1 - alphaNum*sNum[x]^2]` directly (line 65) — a numerically distinct evaluation path.
+
+3. **Positivity / clip handling.** SymPy explicitly clips `val**0.25 if val > 0 else 0` (line 61); Mathematica does not clip but relies on the integration bound being `xiCut = xi_*`, where the bracket is non-negative on the integration domain.
+
+The fact that all four numerical results agree to 50 digits across these two genuinely different code paths is a strong cross-engine check, not a transliteration artifact.
 
 ## Engine cross-check
 
-The numerical results match across engines to the precision claimed:
+Numerical agreement at the printed precision (extracted verbatim from the saved output transcripts):
 
 ```
-SymPy mp.quad (dps=50)                        Mathematica NIntegrate (WP=60)
-<rho>_chi   = 0.19261900555649309777068139356  0.19261900555649309777068139356
-<rho^2>_chi = 0.16274529400326462037087418498  0.16274529400326462037087418498
-denom        = 0.33333333333333333333333333333  0.33333333333333333333333333333
-Theta_chi   = 4.0686323500816155092718546246    4.0686323500816155092718546246
-Theta_J     = 0.92755203253930797183993260663   0.92755203253930797183993260663
-xi_*(10)    = -0.38558106921542562403635498846  -0.38558106921542562403635498846
+                              SymPy mp.quad (dps=50)                                    Mathematica NIntegrate (WP=60)
+<rho>_chi    = 0.19261900555649309777068139356018510792903510747507     0.19261900555649309777068139356018510792903510747506717457...
+<rho^2>_chi  = 0.16274529400326462037087418498629868328210821103971     0.16274529400326462037087418498629868328210821103971427483...
+denominator  = 0.33333333333333333333333333333333333333333333333333     0.33333333333333333333333333333333333333333333333333268403...
+Theta_chi    = 4.0686323500816155092718546246574670820527052759928      4.06863235008161550927185462465746708205270527599285687082...
+Theta_J      = 0.92755203253930797183993260663904217023332624032789     0.92755203253930797183993260663904217023332624032789843141...
+xi_*(10)     = -0.38558106921542562403635498846713378847348301441599    -0.38558106921542562403635498846713378847348301441599100022...
 ```
 
-Symbolic results also agree (`I_f = 1/3`, `xi_* = -atanh(1 - 2/sqrt(alpha_r))` aka `-(1/2)*Log[-1+Sqrt[alphaR]]`). `engines_agree: true`.
+Symbolic results also agree: `chi_phi(xi) = sech^2(xi)/2`, `I_f = 1/3`, `xi_* = -atanh(1 - 2/sqrt(alpha_r))` (SymPy form) = `-(1/2)*Log[-1 + Sqrt[alphaR]]` (Mathematica form). Both engines verify `1 - alpha_r * S(xi_*)^2 = 0` symbolically. `engines_agree: true`.
+
+## Output freshness
+
+Script and output mtimes (epoch seconds):
+- sympy script: 1779513885; sympy output: 1779513990 — output fresher than script by 105 s.
+- mathematica script: 1779513885; mathematica output: 1779514003 — output fresher than script by 118 s.
+
+`outputs_fresh: true`.
 
 ## Verdict justification
 
-Engines agree numerically and symbolically. The `I_f = 1/3` identity is non-tautologically verified in both engines. The numerical moments and Theta values are protected on the Mathematica side by genuine cross-engine `expectApprox` checks but not on the SymPy side (F3). The "exact cut point" claim (docstring item 1) is asserted as a definition rather than derived from `1 - alpha_r * S^2 = 0` — easy to repair with a one-line symbolic identity check in each engine (F1), at which point the redundant `xi_*` numeric-evaluator self-check on Mathematica line 89 (F2) loses its purpose and should be removed. None of the issues propagate downstream; the verdict is `findings` with three low-to-medium items.
+The v2 paper-grounded audit confirms full alignment between the paper card, the source notes, and the two engines' scripts. Every paper-side deliverable (both boxed Theta_w results, both moments, the Jensen ordering, and the carried inputs from the notes — alpha_r=10, S, chi, xi_*, I_f) has a corresponding non-tautological script-side assertion in both engines. The two engines derive the results via genuinely different integration paths and agree to 50 digits. All three v1 findings (missing symbolic cut-point identity in both engines, the tautological xi_* numeric self-check in Mathematica, and missing SymPy `expect_close` assertions on the numerical results) have been fully resolved by the prior Codex pass and are visible in the current scripts and output transcripts. Adversarial attacks tried and failed: (a) checked whether `alpha_r=10` is actually exercised — yes, in both numerical extraction blocks; (b) checked whether the coefficient `25` matches the paper (carried from Stage 76 by design and consistent); (c) checked whether the cut-point identity holds symbolically under the declared assumptions (`alpha_r positive` is sufficient because `tanh(atanh(z))=z` is formal); (d) checked whether the moment integrand handles the positive-part clip correctly (SymPy clips explicitly; Mathematica relies on the integration upper bound = xi_* keeping the bracket non-negative — both correct); (e) checked whether the assertion tolerances (1e-28, 1e-27, 1e-26) are tight enough to catch real numerical drift (residuals are ~1e-50, well below tolerance, so a real drift would be caught). Verdict: `clean`.
 
 ## Self-test notes
 
-For F1's proposed check `expect_zero("1 - alpha_r * S(xi_*)**2", 1 - alpha_r * S(xi_star)^2)`: substituting `tanh(atanh(z)) = z`, `S(xi_*) = (1 + (2/sqrt(alpha_r) - 1))/2 = 1/sqrt(alpha_r)`, so `1 - alpha_r * (1/sqrt(alpha_r))^2 = 1 - 1 = 0`. SymPy's `simplify` with `alpha_r` positive collapses `tanh(atanh(...))` correctly; Mathematica's `FullSimplify` does the same. For F3's `expect_close` calls, the literal targets are the existing 50-digit Mathematica targets verbatim; mpmath's `abs(R1 - target)` with `R1` already at dps=50 yields a residual at or below 1e-30, well within the 1e-28 tolerance band I set (matching the Mathematica tolerances). No variable-independence trap (every `sp.diff` already involves a real dependence); no parity trap (no new integrals introduced).
+Variable-independence: no `sp.diff` or `D` traps — `chi = sp.diff(S, xi)` and `D[sXi, xi]` both involve real `xi`-dependence in `S`. Parity: the `I_f` integrand `sech^4(xi)/4` is even on a symmetric domain, integral is nonzero (1/3) — assertion has real content. Trivial-case: at `alpha_r → ∞`, `xi_* → atanh(-1) → -∞`, so the upper integration bound retreats and `<rho>_chi → 0` — limiting behavior consistent with the wall vanishing. Cut-point identity reduces to `1 - alpha_r * (1/sqrt(alpha_r))^2 = 0` algebraically, confirmed in the output. Numeric targets in the four `expect_close` calls match the paper's quoted decimals to all printed digits. No new paper_misalignment introduced. No directive written (zero findings).

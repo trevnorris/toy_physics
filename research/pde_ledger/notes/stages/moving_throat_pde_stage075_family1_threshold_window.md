@@ -60,7 +60,7 @@ So the first explicit throat-support branch has a very wide "indeterminate" oper
 
 On this branch,
 
-`alpha := sqrt(kappa) = 179/sqrt(5) ≈ 49.6407091,`
+`alpha := sqrt(kappa) = 111/sqrt(5) ≈ 49.6407091,`
 
 which is already deep in the large-`alpha` regime.
 
@@ -105,7 +105,7 @@ where the only remaining microscopic amplitude datum is
 
 So on the balanced Family-1 reference branch,
 
-`Upsilon_w = 168 Theta_w.`
+`Upsilon_w = 100 Theta_w.`
 
 This is the sharpest explicit reduction of the wall branch so far: after fixing the geometry/support coordinates, the branch no longer depends on a free wall amplitude and a free wall depth separately. It depends on one dimensionless microscopic wall-depth datum `Theta_w`.
 
@@ -113,7 +113,7 @@ This is the sharpest explicit reduction of the wall branch so far: after fixing 
 
 ## 4. Explicit threshold window for `Theta_w`
 
-Since `Upsilon_w = 168 Theta_w`, the explicit branch theorem becomes
+Since `Upsilon_w = 100 Theta_w`, the explicit branch theorem becomes
 
 `Theta_w <= Theta_fail`  -> fail,
 
@@ -121,10 +121,10 @@ Since `Upsilon_w = 168 Theta_w`, the explicit branch theorem becomes
 
 with
 
-`Theta_fail = Upsilon_fail / 168`
+`Theta_fail = Upsilon_fail / 100`
 `           ≈ 3.62605617972939e-4 * Pe_req,`
 
-`Theta_suff = Upsilon_suff / 168`
+`Theta_suff = Upsilon_suff / 100`
 `           ≈ 4.21495341569977e-2 * Pe_req.`
 
 So the moving-throat placement problem is now no longer a three-parameter branch hunt.

@@ -2,238 +2,175 @@
 unit_id: 078
 batch: III.4
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T00:00:00Z
+audit_date: 2026-05-27T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
-  sympy: insufficient
-  mathematica: insufficient
+  sympy: present
+  mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  paper_appendix: present
 ---
 
-# Audit unit 078 red-team report
+# Audit unit 078 red-team report (v2)
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_078.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row 274 includes this stage in Part III)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 078 decides whether the explicit Family-1 wall-depth datum is the bottleneck. Two boxed numeric verdicts are stated: for the natural shell-weighted (chi^2) datum, `Pe_suff^(chi) ≈ 96.5285247264386 lambda_mu^2` and `Pe_fail^(chi) ≈ 11220.5441626259 lambda_mu^2`; for the conservative Jensen floor, `Pe_suff^(J) ≈ 22.0062226330754 lambda_mu^2` and `Pe_fail^(J) ≈ 2558.01892349205 lambda_mu^2`. The `\stagefield{Output}` line states: "The first explicit Family-1 support/source verdict: wall-depth is not the leading bottleneck for moderate demand." The notes derive these as ratios `Theta_w^(branch) / Theta_X_coeff` using the Stage-75 threshold-window coefficients and the Stage-77 Theta_w extraction.
+
 ## What the script claims to verify
 
-According to its docstring/banner, the script "Insert[s] the explicit Stage-60 Theta values into the Stage-58 threshold window", computes Pe_req success/failure windows for both the natural quadratic datum (`chi`) and the Jensen-floor (`J`) Theta values, and verifies the ordering `Pe_suff < Pe_fail` in both cases. Concretely, four hardcoded coefficients (`Theta_chi=4.06863..`, `Theta_J=0.927552..`, `Theta_fail=3.62606e-4`, `Theta_suff=4.21495e-2`) are divided pairwise to produce four `Pe / lambda_mu^2` numbers, then two strict-less-than tests are asserted. The Mathematica script does the same arithmetic and additionally `expectApprox`s the four ratios against literal targets equal to the SymPy script's printed values.
+The SymPy script computes the four `Pe / lambda_mu^2` ratios from the Stage-75 threshold-window coefficients (`Theta_fail/Pe_req ≈ 3.62606e-4`, `Theta_suff/Pe_req ≈ 4.21495e-2`) and the Stage-77 Theta extractions (`Theta_chi/lambda_mu^2 ≈ 4.06863`, `Theta_J/lambda_mu^2 ≈ 0.927552`), prints them, asserts the in-branch ordering `Pe_suff < Pe_fail` for both branches, and asserts the cross-branch nesting `Pe_suff_J < Pe_suff_chi`, `Pe_fail_J < Pe_fail_chi`, and the window overlap `Pe_suff_chi < Pe_fail_J`. The Mathematica script independently re-derives `Theta_fail` from the symbolic `Sinh/Cosh` closed form (Stage-75 line 20 of its output), bootstraps `Theta_suff` from `Theta_fail` times the decimal ratio `(4.21495e-2 / 3.62606e-4)`, adopts the Stage-77 chi/J Theta values at extended precision, computes the same four ratios, and runs `expectApprox` and `expectTrue` mirrors of the SymPy checks.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| `Pe_suff^(chi) ≈ 96.5285247264386 lambda_mu^2` | SymPy line 46 print, Mathematica `expectApprox` line 76 | match (sympy 96.528524726438575954; mathematica 96.52852472643852; agree to 1e-13) |
+| `Pe_fail^(chi) ≈ 11220.5441626259 lambda_mu^2` | SymPy line 47 print, Mathematica `expectApprox` line 77 | match |
+| `Pe_suff^(J) ≈ 22.0062226330754 lambda_mu^2` | SymPy line 48 print, Mathematica `expectApprox` line 78 | match |
+| `Pe_fail^(J) ≈ 2558.01892349205 lambda_mu^2` | SymPy line 49 print, Mathematica `expectApprox` line 79 | match |
+| Verdict: "wall-depth not leading bottleneck" | SymPy `Pe_suff_chi < Pe_fail_J` (window overlap), Mathematica `expectTrue` line 86 | match (the chi-branch success threshold lies below even the Jensen-floor failure ceiling, so any modest demand below 22.0 lies in the joint admissible band) |
+
+Paper alignment: aligned. All four boxed values are reproduced to 13+ digits in both engines, and the qualitative verdict is anchored by a non-tautological window-overlap inequality.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 41-42 | `Pe_suff_chi < Pe_fail_chi`  → `AssertionError` if not | no (tautological in the literals) |
-| A2 | sympy | 43-44 | `Pe_suff_J < Pe_fail_J`  → `AssertionError` if not | no (tautological in the literals) |
-| A3 | mathematica | 57 | `expectApprox[..., 96.528524726438575954, 10^-12]` | no (target = SymPy output) |
-| A4 | mathematica | 58 | `expectApprox[..., 11220.544162625905301, 10^-9]` | no (target = SymPy output) |
-| A5 | mathematica | 59 | `expectApprox[..., 22.006222633075413597, 10^-12]` | no (target = SymPy output) |
-| A6 | mathematica | 60 | `expectApprox[..., 2558.0189234920526360, 10^-10]` | no (target = SymPy output) |
-| A7 | mathematica | 61 | `expectTrue["Pe_suff^(chi) < Pe_fail^(chi)", peSuffChi < peFailChi]` | no (tautological in the literals) |
-| A8 | mathematica | 62 | `expectTrue["Pe_suff^(J) < Pe_fail^(J)", peSuffJ < peFailJ]` | no (tautological in the literals) |
+| #  | Script      | Line | Form                                                              | Exercises which paper claim?                            | Anchored to claim? |
+|----|-------------|------|-------------------------------------------------------------------|---------------------------------------------------------|--------------------|
+| A1 | sympy       | 51-52 | `Pe_suff_chi < Pe_fail_chi` (raises AssertionError)              | structural sanity (Theta_chi cancels)                  | partial            |
+| A2 | sympy       | 53-54 | `Pe_suff_J < Pe_fail_J`                                           | structural sanity (Theta_J cancels)                    | partial            |
+| A3 | sympy       | 60-64 | `Pe_suff_J < Pe_suff_chi` (verdict, depends on Theta_J/Theta_chi)| chi-vs-J branch nesting                                 | yes                |
+| A4 | sympy       | 65-69 | `Pe_fail_J < Pe_fail_chi`                                         | chi-vs-J branch nesting                                 | yes                |
+| A5 | sympy       | 70-74 | `Pe_suff_chi < Pe_fail_J` (window overlap = verdict)             | "wall-depth not leading bottleneck"                    | yes (depends on all 4 constants) |
+| A6 | mathematica | 76-79 | `expectApprox` of the four Pe ratios against independently computed targets | the four numeric Pe values                  | partial (Theta_fail genuinely independent; Theta_suff and Theta_chi/J adopted) |
+| A7 | mathematica | 80-81 | `expectTrue["Pe_suff^(chi) < Pe_fail^(chi)", ...]` etc.          | structural sanity (cancellation again)                 | partial            |
+| A8 | mathematica | 84-86 | `expectTrue["Pe_suff^(J) < Pe_suff^(chi)", ...]` etc.            | chi-vs-J branch nesting + window overlap               | yes                |
 
 ## Findings
 
-### F1 — tautological_check
+### F1 — mathematica_transliteration
 
-**Severity:** high
+**Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:41-44`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:61-62`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:44` (`thetaSuffSym = thetaFailSym * (4.21495341569977*^-2 / 3.62605617972939*^-4)`)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:48-49` (`thetaChiCoeffNum`, `thetaJCoeffNum` as typed decimals)
 
 **What's wrong:**
-The two "ordering" assertions reduce to a comparison of two hardcoded numbers. By construction
+The v1 directive (F3) instructed Codex to derive `Theta_suff` symbolically; Codex instead bootstrapped it from `thetaFailSym` times a literal decimal ratio. The actual Stage-75 closed form is
+
 ```
-Pe_suff_chi = Theta_chi_coeff / Theta_suff_coeff,
-Pe_fail_chi = Theta_chi_coeff / Theta_fail_coeff,
+Theta_suff = -(45*Pe_req*cosh(111*sqrt(5)/5) + 27*sqrt(5)*Pe_req*sinh(111*sqrt(5)/5))
+              / (2500 - 2500*cosh(111*sqrt(5)/5))
 ```
-so `Pe_suff_chi < Pe_fail_chi` is algebraically equivalent to `Theta_fail_coeff < Theta_suff_coeff` (Theta_chi cancels). The same simplification applies to the J branch (`Theta_J` cancels). Therefore the four `<` tests are *all* the single arithmetic statement `3.62605617972939e-4 < 4.21495341569977e-2`, which is true by inspection of the literals and entirely independent of the Stage-60 Theta values the script *claims* to be exercising.
+
+(Stage-75 sympy output line 21), but the Mathematica script does not use it. Consequently if the literal decimal ratio `(4.21495341569977e-2 / 3.62605617972939e-4)` were corrupted, the Mathematica `expectApprox` target for `Pe_suff^*` would shift in lockstep with the literal used by SymPy and the engine cross-check would still pass.
+
+Similarly, `thetaChiCoeffNum` and `thetaJCoeffNum` are typed-in 40-digit decimal strings; the inline comment at lines 45-47 says "we adopt them at high precision but verify their ratio chi:J matches the Stage-77 ratio" — but no such ratio check exists anywhere in the script.
 
 **Why this matters:**
-The script's stated purpose is to verify the Stage-60 Theta-window verdict — that the success threshold lies below the failure threshold once the Stage-60 Theta values are plugged into the Stage-58 window. As coded, the Stage-60 Theta values (`Theta_chi`, `Theta_J`) never participate in the verdict; only the success/failure coefficients do. A bogus or sign-flipped Theta_chi or Theta_J would pass the script unchanged, so the verdict the script issues is unrelated to the verdict it claims to be issuing.
+The load-bearing `Theta_fail` IS independently derived (correctly, from the symbolic `Sinh/Cosh` form). The remaining three coefficients are not, so the second engine's independence is partial. Given that all four Stage-75/77 values come from upstream stages whose audits are themselves in this red-team campaign, the cross-check is weakened but not broken. This is a residual concern, not a blocker.
 
 **Required change:**
-Add at least one *non-cancelling* assertion that depends on all four coefficients. The natural choice is the actual threshold-window membership statement: for `lambda_mu = 1` (numerical) the script must show that there is a non-empty `Pe_req` interval such that `Theta_chi_coeff * 1^2 < Theta_suff_coeff * Pe_req` AND `Theta_chi_coeff * 1^2 < Theta_fail_coeff * Pe_req` is *false*, i.e. compute the explicit `Pe_req` bounds
-```
-Pe_req_lower(branch) = Theta(branch) / Theta_suff_coeff,    # success threshold
-Pe_req_upper(branch) = Theta(branch) / Theta_fail_coeff,    # failure threshold
-```
-and assert `Pe_req_lower(chi) < Pe_req_upper(chi)` *and* `Pe_req_lower(chi) < Pe_req_lower(J)` *and* `Pe_req_upper(J) < Pe_req_upper(chi)` (the Jensen floor moves both bounds inward because `Theta_J < Theta_chi`). The last two checks depend on `Theta_chi` *and* `Theta_J` and so cannot be passed if either Stage-60 value is corrupted.
-
-**Verification:**
-After the fix the SymPy script must contain at least two new assertions referencing both `Theta_chi` and `Theta_J` (e.g. comparing the two branches' windows), and the Mathematica script must mirror them with `expectTrue`. The auditor re-runs `redteam exec-sympy 078` / `redteam exec-mathematica 078`, exits 0, and the output text contains four new "Pe_req_lower(chi) < Pe_req_lower(J)" / "Pe_req_upper(J) < Pe_req_upper(chi)" lines.
-
-### F2 — hardcoded_result
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:26-29`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:37-40`
-
-**What's wrong:**
-All four Theta coefficients enter the script as bare 15-digit floats with no comment naming the upstream source script, the symbolic closed form, or the verification stage that produced them. They originate (per upstream output files) from stage075 (`Upsilon_suff/Pe_req` and `Theta_fail/Pe_req`) and stage077 (`Theta_w^(chi)`, `Theta_w^(J)`), but the stage078 script offers no traceable anchor. Additionally, the Mathematica script's `expectApprox` targets at lines 57-60 are literal-for-literal copies of the SymPy script's printed output (compare `scripts/output/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.txt` lines 13-16 with `mathematica/.../audit.wl` lines 57-60), so the cross-engine "check" is `assert sympy_number == sympy_number`, not an independent derivation.
-
-**Why this matters:**
-If any upstream Theta value were edited tomorrow, this unit would still pass without complaint, because nothing in stage078 binds it to the upstream symbolic form. The Mathematica engine in particular provides no independent verification: it simply re-types the SymPy result and confirms it equals itself.
-
-**Required change:**
-At the four definitions in each script, add a comment giving the symbolic provenance, e.g.
-
-In SymPy (lines 26-29), add comments like:
-```python
-# Theta_chi = (1/9) * (chi^2 weighted Stage-77 result); numeric value reproduced from
-# scripts/output/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.txt:22
-Theta_chi = sp.Float("4.06863235008162") * lambda_mu**2
-# ...similarly for Theta_J (stage077:23), Theta_fail/Theta_suff (stage075:30,34).
-```
-
-In Mathematica (lines 37-40), replace the `expectApprox` literal targets at lines 57-60 by an *independent* computation of the same ratios from the closed-form expressions: for `Theta_fail / Pe_req`, the symbolic form (from stage075 output line 26) is
-```
-(37 Cosh[111 Sqrt[5]/5] + 111 Sqrt[5] Sinh[111 Sqrt[5]/5]/5)
-   / (136900 (-1 + Sqrt[5] Sinh[111 Sqrt[5]/5]/3 + Cosh[111 Sqrt[5]/5]))
-```
-and for `Upsilon_suff / Pe_req` (from stage075 output line 18 or equivalent) the analogous closed form. Compute these via `N[..., 30]` in Mathematica, then use *those* values (not the SymPy-derived constants) as the `expectApprox` targets, with tolerance `10^-12`. This breaks the SymPy→Mathematica copy-loop.
-
-**Verification:**
-The four `Theta*` assignment lines in each script have a comment that names the upstream output file (and line) supplying the number. The Mathematica `expectApprox` targets at lines 57-60 are computed inside the .wl from `Sinh`/`Cosh` expressions, not from typed-in decimals.
-
-### F3 — mathematica_transliteration
-
-**Severity:** high
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:32-62`
-
-**What's wrong:**
-The `.wl` file is a one-to-one port of the `.py` file. Compare for example
-
-SymPy (lines 25-34):
-```python
-lambda_mu, Pe_req = sp.symbols("lambda_mu Pe_req", positive=True, real=True)
-Theta_chi  = sp.Float("4.06863235008162")       * lambda_mu**2
-Theta_J    = sp.Float("0.927552032539308")      * lambda_mu**2
-Theta_fail = sp.Float("3.62605617972939e-4")    * Pe_req
-Theta_suff = sp.Float("4.21495341569977e-2")    * Pe_req
-Pe_suff_chi = sp.simplify(Theta_chi / sp.Float("4.21495341569977e-2") / lambda_mu**2)
-Pe_fail_chi = sp.simplify(Theta_chi / sp.Float("3.62605617972939e-4") / lambda_mu**2)
-Pe_suff_J   = sp.simplify(Theta_J   / sp.Float("4.21495341569977e-2") / lambda_mu**2)
-Pe_fail_J   = sp.simplify(Theta_J   / sp.Float("3.62605617972939e-4") / lambda_mu**2)
-```
-
-Mathematica (lines 34-50):
-```mathematica
-Clear[lambdaMu, peReq];
-$Assumptions = ... lambdaMu > 0 && peReq > 0;
-thetaChiCoeff  = SetPrecision[4.06863235008162, 20];
-thetaJCoeff    = SetPrecision[0.927552032539308, 20];
-thetaFailCoeff = SetPrecision[3.62605617972939*^-4, 20];
-thetaSuffCoeff = SetPrecision[4.21495341569977*^-2, 20];
-thetaChi = thetaChiCoeff*lambdaMu^2;   thetaJ = thetaJCoeff*lambdaMu^2;
-thetaFail = thetaFailCoeff*peReq;       thetaSuff = thetaSuffCoeff*peReq;
-peSuffChi = N[thetaChiCoeff/thetaSuffCoeff, 30];
-peFailChi = N[thetaChiCoeff/thetaFailCoeff, 30];
-peSuffJ   = N[thetaJCoeff /thetaSuffCoeff, 30];
-peFailJ   = N[thetaJCoeff /thetaFailCoeff, 30];
-```
-
-Identical sequence of definitions, identical variable choreography, identical use of the same hardcoded decimals, and the final ordering tests (lines 61-62) reproduce the SymPy assertions verbatim. There is no independent derivation: the Mathematica script does not start from the Stage-58 threshold-window expressions or the Stage-60/77 closed-form Theta values; it consumes the same prebaked numbers in the same arrangement.
-
-**Why this matters:**
-The second-engine policy exists to catch algebra errors and sympy-specific simplification bugs. Re-typing the SymPy script in Mathematica syntax catches none of them. A sign error, factor-of-2 error, or hidden simplify-under-strong-assumption in any upstream symbolic computation would propagate unflagged because the Mathematica script begins where the SymPy script's algebra ends.
-
-**Required change:**
-Rewrite lines 34-50 of the `.wl` file so that the four Theta values are *computed in Mathematica* from the symbolic closed forms recorded in upstream stages (stage075 output line 26 for `Theta_fail`, stage075 output for `Upsilon_suff`/`Theta_suff`, stage077 for `Theta_chi`/`Theta_J`). Specifically:
+Replace line 44 with a direct symbolic re-derivation of `Theta_suff`:
 
 ```mathematica
-(* Independent re-derivation of the four window coefficients from
-   their symbolic closed forms (Stage-58 / Stage-75 / Stage-77). *)
-thetaFailSym = (37 Cosh[111 Sqrt[5]/5] + 111 Sqrt[5] Sinh[111 Sqrt[5]/5]/5)
-              / (136900 (-1 + Sqrt[5] Sinh[111 Sqrt[5]/5]/3
-                              + Cosh[111 Sqrt[5]/5]));
-thetaSuffSym = ... (* analogous closed form from stage075 *);
-thetaChiSym  = ... (* closed form from stage077 *);
-thetaJSym    = ... (* closed form from stage077 *);
-thetaFailCoeff = N[thetaFailSym, 30];
-thetaSuffCoeff = N[thetaSuffSym, 30];
-thetaChiCoeff  = N[thetaChiSym, 30];
-thetaJCoeff    = N[thetaJSym, 30];
+(* Independent closed form for Theta_suff from Stage-75 (sympy output line 21):
+   Theta_suff/Pe_req = -(45 cosh(alpha) + 27 sqrt(5) sinh(alpha))
+                        / (2500 - 2500 cosh(alpha)),  alpha = 111 sqrt(5)/5 *)
+thetaSuffSym = -(45 Cosh[111 Sqrt[5]/5] + 27 Sqrt[5] Sinh[111 Sqrt[5]/5])
+                / (2500 - 2500 Cosh[111 Sqrt[5]/5]);
 ```
 
-Then the `expectApprox` targets at lines 57-60 should be the same closed forms `N[..., 30]`-evaluated, not literal decimals copied from the SymPy output. If the upstream symbolic forms are unavailable in stage075/77 output, fall back to deriving them inside this script from the same starting equations cited in the upstream `.py` docstrings, but do not import the prebaked decimals.
+Either remove the misleading comment at lines 45-47 (about a ratio check that does not exist) OR add the ratio check it promises:
+
+```mathematica
+expectApprox["Theta_chi/Theta_J ratio",
+  thetaChiCoeffNum / thetaJCoeffNum,
+  ToExpression["4.387185...`30"],  (* the Stage-77 ratio, computed independently *)
+  10^-10];
+```
+
+(If no upstream stage gives this ratio numerically, simply delete the lines 45-47 comment claim.)
 
 **Verification:**
-The `.wl` file contains explicit `Sinh`/`Cosh` (or other transcendental) expressions for `thetaFailSym`, `thetaSuffSym`, `thetaChiSym`, `thetaJSym`, and the four `expectApprox` calls compare the SymPy decimals against `N[thetaFailSym, 30]` etc. with tolerance `10^-12`. The literal decimal targets `96.528...`, `11220.54...`, `22.006...`, `2558.01...` no longer appear as `expectApprox` arguments.
+After fix, line 44 contains `Cosh[111 Sqrt[5]/5]` (not just a decimal ratio), and either the comment at lines 45-47 is removed or a corresponding `expectApprox` exists below the chi/J definitions. The four `... numeric check diff = ...` output lines remain PASS.
 
-### F4 — insufficient_verification
+### F2 — paper_misalignment
 
-**Severity:** medium
+**Subtype:** notes_contradicts_script
+
+**Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:23-44`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:32-62`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:3` (`"""Stage 61 SymPy audit."""`)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py:23` (`banner("STAGE 61 — FAMILY-1 BRANCH VERDICT")`)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl:32` (`banner["STAGE 061 — FAMILY-1 BRANCH VERDICT"]`)
+- notes file mentions `Stage 58`, `Stage 60`, `Stage 61` throughout when the paper-side numbering is `075`, `077`, `078`.
 
 **What's wrong:**
-The docstring promises three deliverables: (i) insert Stage-60 Theta into the Stage-58 window, (ii) compute Pe_req success/failure windows for both branches, (iii) verify `Pe_suff < Pe_fail`. As coded, only (iii) is exercised, and as shown in F1 it's tautological in the literals. (i) is never demonstrated: there is no symbolic Stage-58 window equation in the script for the Stage-60 Theta to be "inserted into"; the script just performs a one-line division. (ii) is reduced to the same division. The branch verdict comparing `chi` vs `J` Jensen-floor outcomes — which is the headline result implied by the filename `family1_branch_verdict` — is not asserted at all.
+The SymPy docstring/banner and Mathematica banner identify this unit as "Stage 61" (or "061"), while the paper card, filename, and pipeline manifest say `stage 078`. The notes file similarly uses the older numbering (`Stage 58`, `60`, `61`). This is purely a labeling artifact from a previous numbering scheme, but it means an unsuspecting reader of the script output sees `STAGE 61` while the paper card cites `Stage 078`, which is a documentation hazard.
 
 **Why this matters:**
-The unit is a "branch verdict" stage but never asserts a verdict that distinguishes one branch from the other. Whether the Jensen floor narrows or widens the Pe_req window is the only physics question the unit can plausibly answer, and the script answers it nowhere.
+No mathematical content is affected. The risk is cosmetic: future readers (including automated audits) may confuse "Stage 61" output with a non-existent stage. The notes-side stale numbering is the user's call — notes/ is not editable by Codex per the directive policy.
 
-**Required change:**
-Append, in both scripts, the explicit branch-verdict assertions:
+**Required change (script side only, paper_misalignment fix scope is the user's call):**
 
-SymPy (after line 44):
-```python
-# Branch verdict: the Jensen floor narrows the success window from below
-# (Pe_suff_J < Pe_suff_chi since Theta_J < Theta_chi and both share Theta_suff_coeff > 0)
-# and narrows the failure ceiling from above (Pe_fail_J < Pe_fail_chi by the same logic).
-# Therefore the J branch's admissible window strictly nests inside the chi branch's:
-if not (sp.N(Pe_suff_J) < sp.N(Pe_suff_chi)):
-    raise AssertionError("Expected Jensen-floor success threshold to lie below chi datum's")
-if not (sp.N(Pe_fail_J) < sp.N(Pe_fail_chi)):
-    raise AssertionError("Expected Jensen-floor failure ceiling to lie below chi datum's")
-# Strict nesting of admissible windows:
-if not (sp.N(Pe_suff_chi) < sp.N(Pe_fail_J)):
-    raise AssertionError(
-        "Expected chi-datum success threshold to remain below Jensen-floor failure ceiling "
-        "(both windows must overlap for the verdict to be meaningful)"
-    )
-```
+(a) In `scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py`:
+- Line 3: replace `Stage 61 SymPy audit.` with `Stage 078 SymPy audit.`
+- Line 23: replace `banner("STAGE 61 — FAMILY-1 BRANCH VERDICT")` with `banner("STAGE 078 — FAMILY-1 BRANCH VERDICT")`
 
-Mathematica (after line 62), the corresponding `expectTrue` calls.
+(b) In `mathematica/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.wl`:
+- Line 32: replace `banner["STAGE 061 — FAMILY-1 BRANCH VERDICT"]` with `banner["STAGE 078 — FAMILY-1 BRANCH VERDICT"]`
 
-These four checks each genuinely depend on the relative magnitudes of `Theta_chi` and `Theta_J` (or of `Theta_suff_coeff` and `Theta_fail_coeff` combined with both Thetas), so a corruption of any of the four upstream constants would now produce a visible failure.
+The notes file labeling is not the script's responsibility and is not modified.
+
+## Resolve before fix_loop
+
+The notes file at `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md` uses the legacy numbering "Stage 58 / Stage 60 / Stage 61" while the paper uses "Stage 075 / 077 / 078". This is a notes-side editorial question the user should resolve (renumber notes to match paper, or leave as historical record). Codex must not edit notes/.
 
 **Verification:**
-SymPy script exits 0 with three new `if not (...)` blocks present at lines 46+. Mathematica script exits 0 with three new `expectTrue` calls beneath line 62. Output text from both engines lists three new verdict checks.
+After Codex applies the script-side renames, the script output text shows `STAGE 078 — FAMILY-1 BRANCH VERDICT` instead of `STAGE 61` / `STAGE 061`. The mathematica output's banner matches. The notes-side question is logged for user resolution.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is a transliteration, not an independent re-derivation; see F3. The same four hardcoded decimals are typed in, the same arithmetic is performed, and the cross-check targets are literal copies of the SymPy output. No closed-form `Sinh`/`Cosh` expressions appear anywhere, despite stage075's SymPy output containing exactly such forms for the `Theta_fail`/`Upsilon_fail` window. This is exactly the failure mode that the `mathematica_transliteration` category exists to flag.
+The Mathematica script now derives `thetaFailSym` from the explicit `Sinh/Cosh` closed form (lines 39-43), which is the load-bearing independence the v1 directive (F3) required. However, `thetaSuffSym` (line 44) is bootstrapped from `thetaFailSym` times a decimal literal ratio rather than its own symbolic closed form, and `thetaChiCoeffNum` / `thetaJCoeffNum` (lines 48-49) are typed-in decimals rather than derived. The `expectApprox` targets at lines 76-79 are now computed by Mathematica from `thetaFailSym` and the typed-in chi/J numerics, not literal-copied from SymPy output. This is a genuine improvement over v1 (where every target was a SymPy-output decimal). The remaining partial-dependency is a low-severity residual — see F1.
 
 ## Engine cross-check
 
-Both engines compute (to better than 1e-12) the same four ratios:
+| Quantity                       | SymPy                          | Mathematica                   |
+|--------------------------------|--------------------------------|-------------------------------|
+| `Pe_suff^(chi) / lambda_mu^2` | `96.528524726438575954`        | `96.52852472643852`           |
+| `Pe_fail^(chi) / lambda_mu^2` | `11220.544162625905301`        | `11220.54416262589764...`     |
+| `Pe_suff^(J)   / lambda_mu^2` | `22.006222633075413597`        | `22.006222633075424`          |
+| `Pe_fail^(J)   / lambda_mu^2` | `2558.0189234920526360`        | `2558.0189234920537145...`    |
 
-| Quantity | SymPy | Mathematica |
-|---|---|---|
-| `Pe_suff^(chi) / lambda_mu^2` | `96.528524726438575954` | `96.52852472643856904608...` |
-| `Pe_fail^(chi) / lambda_mu^2` | `11220.544162625905301` | `11220.54416262590551355...` |
-| `Pe_suff^(J)   / lambda_mu^2` | `22.006222633075413597` | `22.00622263307541136581...` |
-| `Pe_fail^(J)   / lambda_mu^2` | `2558.0189234920526360` | `2558.01892349205282379...` |
+Agreement is to ~13 digits in all four. The Mathematica `expectApprox` deltas report `0` or `0``25.6...` (i.e. zero at precision ~25), so the cross-engine check is healthy. No `engine_disagreement` finding.
 
-Agreement is to ~14 digits. This agreement is unsurprising and does not constitute verification: both engines are dividing the same hardcoded numerators by the same hardcoded denominators in IEEE-double-derived precision, so they *must* agree to the working precision. There is no engine-disagreement finding.
+The Mathematica engine also independently verifies the three branch-verdict inequalities `Pe_suff^(J) < Pe_suff^(chi)`, `Pe_fail^(J) < Pe_fail^(chi)`, and `Pe_suff^(chi) < Pe_fail^(J)` via `expectTrue`, mirroring the SymPy `if not (...)` checks. Both engines emit PASS for all three. The window-overlap inequality (which depends on all four upstream constants) is the load-bearing assertion for the paper verdict and is honored by both engines.
 
 ## Verdict justification
 
-Verdict: `findings` (4). The scripts run, agree, and produce the printed numbers without difficulty, but they do not verify what they claim. The four ordering assertions are tautological in the hardcoded literals (F1); the upstream Theta provenance is unrecorded and the Mathematica `expectApprox` targets are SymPy-output copies (F2); the .wl is a line-by-line transliteration of the .py with no independent derivation (F3); the branch-verdict comparison the unit's name promises is never asserted (F4). No stop-cold: the verdict the scripts ought to be asserting is consistent with the underlying upstream stage075/077 numbers, so fixing these four findings only requires adding substantive assertions; nothing downstream is invalidated by the fix because no derived constant changes.
+Verdict: `findings` (2, both low-severity). The v1 directive's core requirements have been satisfied: the branch-verdict assertions now exist and depend on all four upstream constants (so a corruption in `Theta_chi`, `Theta_J`, `Theta_fail_coeff`, or `Theta_suff_coeff` would now fail the script), the Mathematica engine derives the load-bearing `Theta_fail` from its symbolic closed form, and the four boxed paper values are reproduced to ~13 digits by both engines. The paper card's verdict ("wall-depth not leading bottleneck") is anchored by the window-overlap assertion `Pe_suff_chi < Pe_fail_J`. Remaining issues: `Theta_suff` is decimal-ratio-bootstrapped rather than independently re-derived (F1), and the script banners are mis-labeled "Stage 61"/"061" instead of "Stage 078" (F2). No stop-cold: no math error, no downstream propagation, no paper↔script value mismatch.
 
-Outputs are fresh (script and output mtimes within hours of each other; outputs younger than scripts), so `stale_output` is not flagged.
+Outputs are fresh (script .py at epoch 1779514083, .txt at 1779514311; .wl at 1779514238, .txt at 1779514318 — outputs newer than scripts in both cases).
 
 ## Self-test notes
 
-I verified the F1 cancellation by writing out `Pe_suff_chi / Pe_fail_chi = (Theta_chi / Theta_suff_coeff) / (Theta_chi / Theta_fail_coeff) = Theta_fail_coeff / Theta_suff_coeff`; `Theta_chi` and `lambda_mu^2` cancel cleanly because they appear identically in numerator and denominator. I checked the proposed F4 branch-verdict signs against the inequalities `Theta_J ≈ 0.928 < Theta_chi ≈ 4.069` and `Theta_fail_coeff ≈ 3.6e-4 < Theta_suff_coeff ≈ 4.2e-2`: with `Pe_X^(Y) = Theta_Y / Theta_X_coeff`, smaller `Theta_Y` numerator gives smaller `Pe`, so `Pe_*_J < Pe_*_chi` holds branchwise, and `Pe_suff_chi ≈ 96.5 < Pe_fail_J ≈ 2558` confirms window overlap. I also confirmed F2's claim that the Mathematica `expectApprox` targets at lines 57-60 are literal SymPy outputs by matching `96.528524726438575954`, `11220.544162625905301`, `22.006222633075413597`, `2558.0189234920526360` against `scripts/output/.../audit.txt` lines 13-16 — bit-identical character strings.
+I verified that the new branch-verdict assertion `Pe_suff_chi < Pe_fail_J` depends on all four upstream constants by reducing to `Theta_chi × Theta_fail_coeff < Theta_J × Theta_suff_coeff` (no cancellation), confirming F4 of v1 has the intended teeth. I also computed `4.21495341569977e-2 / 3.62605617972939e-4 ≈ 116.24` and `3.62605617972939e-4 × 116.24 ≈ 4.215e-2`, confirming the Mathematica `thetaSuffSym` bootstrap reproduces the Stage-75 Theta_suff coefficient — the math is right; the issue is only that the derivation is not independent. Finally, I matched the paper's four boxed values byte-for-byte against the SymPy output digits (96.5285247264386 vs 96.528524726438575954; 11220.5441626259 vs 11220.544162625905301; 22.0062226330754 vs 22.006222633075413597; 2558.01892349205 vs 2558.0189234920526360) — agreement to all stated paper digits.

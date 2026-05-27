@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 065 — MASTER QUADRUPOLE RESIDUAL"];
+banner["STAGE 082 — MASTER QUADRUPOLE RESIDUAL"];
 
 Clear[PiTr, cMix, epsBlk, zeta, zetaMinus, zetaPlus, zetaPhys, thetaW, upsilonW];
 $Assumptions =
@@ -68,23 +68,54 @@ expectZero[
   FullSimplify[rQuad /. {PiTr -> piFail, zetaPhys -> zetaPlus}, Assumptions -> $Assumptions]
 ];
 
-(* Directional content of R_quad: verify the partial derivatives that
-   underwrite the "guaranteed success / guaranteed failure" theorems. *)
-dRDzetaPhys = FullSimplify[D[rQuad, zetaPhys], Assumptions -> $Assumptions];
-expectZero["dR_quad/dzeta_phys + 1", dRDzetaPhys + 1];
-
+(* F3 (v2): directional content of zeta_req. The inverse-map theorem
+   (notes section 4) relies on zeta_req being strictly increasing in Pi_tr
+   on the physical branch (where PiTr, cMix, epsBlk are positive). Verify
+   by factoring d zeta_req / d Pi_tr into a sign-controlled numerator /
+   denominator pair under those assumptions. *)
 dZetaReqDPi = FullSimplify[D[zetaReq, PiTr], Assumptions -> $Assumptions];
-dRDPiAtZetaMinus = FullSimplify[D[rQuad /. zetaPhys -> zetaMinus, PiTr], Assumptions -> $Assumptions];
+Print["dzeta_req/dPi_tr = ", fmt[dZetaReqDPi]];
+{numD, denD} = {Numerator[Together[dZetaReqDPi]], Denominator[Together[dZetaReqDPi]]};
 expectZero[
-  "dR_quad/dPi_tr - dzeta_req/dPi_tr (at zeta_phys=zeta_-)",
-  FullSimplify[dRDPiAtZetaMinus - dZetaReqDPi, Assumptions -> $Assumptions]
+  "numerator(d zeta_req/d Pi_tr) - C_mix*(1 - eps_blk)",
+  FullSimplify[numD - cMix*(1 - epsBlk), Assumptions -> $Assumptions]
+];
+expectZero[
+  "denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))^2",
+  FullSimplify[denD - (cMix - epsBlk*(2*cMix - PiTr))^2, Assumptions -> $Assumptions]
 ];
 
-(* TODO(provenance): lambdaEll = 37 and the convention upsilonW = 100 * thetaW
-   are carry-forward constants. Cite the upstream stage's script (likely an
-   earlier moving_throat_pde_stage*_mathematica_audit.wl) that derives them.
-   Until then, this stage treats them as inputs and only displays their
-   consequences. *)
+(* F1 (v2 paper-alignment Q3 direction (a)): closed-form pin for zeta_phys.
+   Paper eq. app-stage082-zeta-phys:
+     zeta_phys(Pe, eta; kappa) = Omega_Pe(Pe)^2 * (kappa + Pi^2/4) / (kappa + y(eta)^2)
+   with Omega_Pe(Pe) = Pi*Pe*(2*Pe*Exp[Pe] + Pi) / ((4*Pe^2 + Pi^2)*(Exp[Pe] - 1))
+   and y(eta) the smallest positive root of y*Tan[y] = eta.
+   Verify by reproducing the Pe->Infinity limit at Family-1 (eta, kappa) = (37, 12321/5),
+   matching stage 084's zeta_max^(F1) constant. *)
+Module[{peSym, kappaSym, ySym, OmegaPe, OmegaPeLimit,
+         yF1, kappaF1, zetaPhysF1Limit, zetaMaxF1Reference, diffToReference},
+  ClearAll[peSym, kappaSym, ySym];
+  OmegaPe = Pi*peSym*(2*peSym*Exp[peSym] + Pi) / ((4*peSym^2 + Pi^2)*(Exp[peSym] - 1));
+  OmegaPeLimit = Limit[OmegaPe, peSym -> Infinity];
+  Print["Omega_Pe -> ", fmt[OmegaPeLimit], " as Pe -> oo"];
+  expectZero["Omega_Pe -> Pi/2 as Pe -> oo", OmegaPeLimit - Pi/2];
+  yF1 = ySym /. FindRoot[ySym*Tan[ySym] - 37 == 0, {ySym, 1.527}, WorkingPrecision -> 30];
+  Print["y_F1 (root of y tan y = 37, smallest positive) = ", fmt[yF1]];
+  kappaF1 = 12321/5;
+  zetaPhysF1Limit = FullSimplify[(Pi^2/4) * (kappaF1 + Pi^2/4) / (kappaF1 + yF1^2)];
+  Print["zeta_phys(Pe->oo, kappa_F1, y_F1) = ", fmt[N[zetaPhysF1Limit, 20]]];
+  zetaMaxF1Reference = ToExpression["2.467529229455835`30"];
+  diffToReference = Abs[N[zetaPhysF1Limit - zetaMaxF1Reference, 30]];
+  Print["|zeta_phys(F1, Pe->oo) - zeta_max^(F1)| = ", fmt[diffToReference]];
+  If[TrueQ[diffToReference < 10^-10],
+    pass["Family-1 closed-form pin matches upstream zeta_max^(F1) to 10^-10"],
+    fail["Family-1 closed-form pin matches upstream zeta_max^(F1) to 10^-10", diffToReference]];
+];
+
+(* Carry-forward constants (lambdaEll = 37 from stages 056/073; upsilonW = 100 thetaW
+   from stage 075 with alphaR = 10). After v2 paper-alignment Q2 direction (a):
+   paper/stages/stage_075.tex Inputs line and notes/.../stage075...md were updated to
+   state Upsilon_w = 100 Theta_w, fully consistent with the script's value here. *)
 lambdaEll = 37;
 xiF1FromUpsilon = FullSimplify[upsilonW*lambdaEll^2, Assumptions -> $Assumptions];
 xiF1FromTheta = FullSimplify[100*thetaW*lambdaEll^2, Assumptions -> $Assumptions];

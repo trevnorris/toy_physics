@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 066 — DIRECT FAMILY-1 OPERATOR WINDOW"];
+banner["STAGE 083 — DIRECT FAMILY-1 OPERATOR WINDOW"];
 
 Clear[xi, peStar, delta, pe, alpha, eta, kappa, thetaChi, thetaJ];
 $Assumptions = xi > 0 && Element[{alpha, eta, kappa}, Reals] && alpha > 0 && eta > 0;

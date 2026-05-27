@@ -2,211 +2,114 @@
 unit_id: 065
 batch: III.3
 auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00Z
-verdict: findings
+audit_date: 2026-05-26T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 3
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
-  sympy: insufficient
-  mathematica: insufficient
+  sympy: present
+  mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files: [/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md]
+  paper_appendix: present
 ---
 
 # Audit unit 065 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_065.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row at line 108; `\input{stages/stage_065}` at line 248)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.txt`
 
+## What the paper claims
+
+The stage card's `\stagefield{Output}` reads verbatim: "A physical wall-amplitude interpretation of \(g_\phi\)." The card's body equation states `g_phi = V0/ell` (eq:app-stage065-gphi) under the input confinement `V_conf(r;a) = V0 f((r-a)/ell)`, and the prose declares that "inserting this into the matched-layer gain yields thresholds directly in terms of V0, ell, support stiffness, and wall geometry." The appendix row (line 108 of `stage_appendix_part03.tex`) summarises the deliverable as "Wall amplitude thresholds for V_conf = V0 f((r-a)/ell)." The source notes enumerate eight discrete results: (1) g_phi = V0/ell; (2) I_1 = 4 pi ell [a^2 J_1 + 2 a ell J_2 + ell^2 J_3]; (3) J_2 = 0 for a centred symmetric wall layer; (4) the exact G_eq = 4 pi V0^2 [a^2 J_1/ell + 2 a J_2 + ell J_3]/K_X form; (5) the thin-wall leading gain G_eq^(tw) = 4 pi a^2 V0^2 J_1 / (K_X ell); (6) V0_fail^2 / V0_suff^2 in terms of K_X; (7) K_X cancellation after inserting kappa = K_X L^2 / T_X; (8) the constant-H reduction V0_fail^2 = H_w T_X ell Pe_req / (4 pi a^2 L^2 I_f Delta_inf) with J_1 = I_f / H_w. The script must therefore exercise these eight identities, and the paper card's bottom line is anchored on (1) plus the downstream chain (5)-(8).
+
 ## What the script claims to verify
 
-The docstring lists six headline claims for the thin-wall confinement branch of the parent-wall potential V_conf(r;a)=V0 f((r-a)/ell): (1) g_phi = V0/ell; (2) the exact shell moment expansion I1 = 4*pi*ell*(a^2 J1 + 2 a ell J2 + ell^2 J3); (3) J2=0 for a centred symmetric wall layer; (4) the exact and thin-wall equilibrium gains and their O(ell) remainder; (5) the explicit V0_fail^2 and V0_suff^2 thresholds, with K_X cancelling once kappa = K_X L^2 / T_X is inserted; (6) the constant-compressibility reduction J1 = I_f / H_w. In practice the script *declares* (1), (2), (3), (6) as symbol definitions or substitutions and prints them, performs a manifestly-by-construction subtraction for the (4) remainder, and runs two genuinely non-trivial algebraic identities — the K_X-cancellation checks of (5).
+The SymPy module docstring enumerates six bottom-line claims that map to notes-items (1)-(6) and (8). The script's actual machinery does two things: (i) a symbolic block (lines 51-84, 135-176) that constructs g_phi, I_1, G_eq, G_eq_tw and the V0_fail^2 / V0_suff^2 thresholds and verifies their algebraic decomposition plus the K_X cancellation under kappa = K_X L^2/T_X and the constant-H closed form; (ii) a concrete-profile block (lines 86-133, 178-183) that picks f(u) = exp(-u^2) and constant h' = 1, computes J_1, J_2, J_3, I_f as definite integrals via `sp.integrate`, verifies J_2 = 0 by parity, the (1, 2, 1) polynomial coefficient pattern by direct shell integration, the 1/ell scaling of g_phi via an independent r-derivative of V0 exp(-((r-a)/ell)^2), the relative-correction identity (ell/a)^2 J_3/J_1, and J_1 = I_f / H_w. The Mathematica script (lines 26-56, then 58-128) opens with its own independent shell-integral derivation block using `Integrate[...]` over a Gaussian profile to anchor J_2 = 0, the (1, 2, 1) polynomial expansion, and J_1 = I_f / H_w, and then runs a symbolic block mirroring the SymPy threshold derivation via a different algebraic route (`gFail/gEqCoeff` rather than `sp.solve`). Both scripts exit 0.
+
+## Paper ↔ script cross-check
+
+| Paper-side deliverable | Script-side check | Status |
+|---|---|---|
+| g_phi = V0/ell (paper eq:app-stage065-gphi; notes-item 1) | sympy line 61 + independent r-derivative anchor at lines 109-123 verifying -2 V0 exp(-1)/ell at r=a+ell | match |
+| I_1 = 4 pi ell [a^2 J_1 + 2 a ell J_2 + ell^2 J_3] (notes-item 2) | sympy lines 66-67 (symbolic) + lines 125-133 (direct Gaussian shell integral vs polynomial); math lines 46-50 (independent `Integrate`) | match |
+| J_2 = 0 symmetric (notes-item 3) | sympy line 100 `expect_zero(..., J2_num)` with J2_num = ∫ xi (exp(-xi^2))'^2 dxi; math line 43 same | match |
+| Exact G_eq form (notes-item 4) | sympy line 74 builds G_eq from g_phi^2*I_1/K_X; thin-wall remainder check at lines 81-84 anchors the algebraic decomposition | match |
+| G_eq^(tw) = 4 pi a^2 V0^2 J_1 / (K_X ell) (notes-item 5) | sympy line 76 + thin-wall remainder check + concrete-profile relative-correction check (lines 102-106); math lines 76, 81-84 | match |
+| V0_fail^2 / V0_suff^2 in K_X form (notes-item 6) | sympy lines 137-144 via sp.solve; math lines 88-96 via gFail/gEqCoeff (independent path) | match |
+| K_X cancellation under kappa = K_X L^2/T_X (notes-item 7) | sympy lines 147-160; math lines 98-112 | match |
+| Constant-H thresholds (notes-item 8) | sympy lines 164-183; math lines 116-127, plus independent J_1 = I_f/H_w check via direct integration in both engines | match |
+
+`paper_alignment: aligned` — every deliverable in the paper card body equation and the notes has a corresponding script-side check, on both engines, with concrete-profile anchors backing the symbolic ones.
 
 ## Assertion inventory
 
-| #  | Script       | Line | Form                                                                                                          | Anchored to claim? |
-|----|--------------|------|---------------------------------------------------------------------------------------------------------------|--------------------|
-| A1 | sympy        | 81-84| `expect_zero("thin-wall remainder ...", G_eq_sym - G_eq_tw - 4*pi*V0**2*ell*J3/KX)`                            | no (tautological)  |
-| A2 | sympy        | 104-107| `expect_zero("K_X cancellation in V0_fail^2", V0_fail_sq_k - TX*ell*Pe_req/(4*pi*a**2*L**2*J1*Deltainf))`     | partial            |
-| A3 | sympy        | 108-111| `expect_zero("K_X cancellation in V0_suff^2", V0_suff_sq_k - TX*ell*Pe_req/(4*pi*a**2*L**2*J1*Delta0))`        | partial            |
-| A4 | sympy        | 120-123| `expect_zero("constant-H fail threshold", V0_fail_const - Hw*TX*ell*Pe_req/(4*pi*a**2*L**2*If*Deltainf))`     | no (tautological)  |
-| A5 | sympy        | 124-127| `expect_zero("constant-H suff threshold", V0_suff_const - Hw*TX*ell*Pe_req/(4*pi*a**2*L**2*If*Delta0))`        | no (tautological)  |
-| A6 | mathematica  | 49-52 | `expectZero["thin-wall remainder ...", gEqSym - gEqTw - 4*Pi*v0^2*ell*j3/kx]`                                  | no (tautological)  |
-| A7 | mathematica  | 73-76 | `expectZero["K_X cancellation in V0_fail^2", v0FailSqGeom - tx*ell*peReq/(4*Pi*a^2*len^2*j1*deltaInf)]`         | partial            |
-| A8 | mathematica  | 77-80 | `expectZero["K_X cancellation in V0_suff^2", v0SuffSqGeom - tx*ell*peReq/(4*Pi*a^2*len^2*j1*delta0)]`            | partial            |
-| A9 | mathematica  | 89-92 | `expectZero["constant-H fail threshold", v0FailConst - hw*tx*ell*peReq/(4*Pi*a^2*len^2*ifMom*deltaInf)]`        | no (tautological)  |
-| A10| mathematica  | 93-96 | `expectZero["constant-H suff threshold", v0SuffConst - hw*tx*ell*peReq/(4*Pi*a^2*len^2*ifMom*delta0)]`           | no (tautological)  |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 81-84 | `expect_zero("thin-wall remainder ...", G_eq_sym - G_eq_tw - 4 pi V0^2 ell J3/KX)` | notes-items 4+5 | partial (algebraic decomposition; backed by A3 concrete check) |
+| A2 | sympy | 100 | `expect_zero("J2 vanishes by parity", J2_num)` for J2_num computed via `sp.integrate(xi * (exp(-xi^2))'^2, ...)` | notes-item 3 | yes |
+| A3 | sympy | 102-106 | `expect_zero("relative correction (ell/a)^2 J3/J1", rel)` with numeric J1_num, J3_num | notes-items 2+5 | yes |
+| A4 | sympy | 122-123 | `expect_zero("g_phi 1/ell scaling", dV/dr at r=a+ell - (-2 V0 exp(-1)/ell))` | notes-item 1 | yes |
+| A5 | sympy | 128-133 | `expect_zero("I1 polynomial coefficients (1,2,1)", I1_full - I1_poly)` via direct shell integral | notes-item 2 | yes |
+| A6 | sympy | 153-156 | `expect_zero("K_X cancellation in V0_fail^2", V0_fail_sq_k - TX ell Pe_req/(4 pi a^2 L^2 J1 Delta_inf))` | notes-items 6+7 | yes |
+| A7 | sympy | 158-160 | analogous K_X cancellation in V0_suff^2 | notes-items 6+7 | yes |
+| A8 | sympy | 169-172 | `expect_zero("constant-H fail threshold", V0_fail_const - Hw TX ell Pe_req/(4 pi a^2 L^2 If Delta_inf))` | notes-item 8 | yes (symbolic; subs would propagate consistently but the closed-form anchor catches misplaced H_w) |
+| A9 | sympy | 173-176 | constant-H suff analog | notes-item 8 | yes |
+| A10 | sympy | 182-183 | `expect_zero("J1 = I_f / H_w under constant compressibility", J1_num - If_num/Hw_num)` | notes-item 8 | partial (H_w=1 numerically, so both sides reduce to ∫ f'^2; verifies dimensional placement but weak in isolation) |
+| M1 | math | 43 | `expectZero["independent: J2 vanishes for symmetric profile", j2Num]` via `Integrate` | notes-item 3 | yes |
+| M2 | math | 49-50 | `expectZero["I1 polynomial expansion matches direct integral", i1Direct - i1Poly]` | notes-item 2 | yes |
+| M3 | math | 55-56 | `expectZero["J1 = I_f/H_w under constant compressibility", j1Num - ifMomDirect/hwSym]` | notes-item 8 | partial (same H_w=1 caveat) |
+| M4 | math | 81-84 | `expectZero["thin-wall remainder ..."]` | notes-items 4+5 | partial (backed by independent block) |
+| M5 | math | 105-108 | `expectZero["K_X cancellation in V0_fail^2"]` | notes-items 6+7 | yes |
+| M6 | math | 109-112 | `expectZero["K_X cancellation in V0_suff^2"]` | notes-items 6+7 | yes |
+| M7 | math | 121-124 | `expectZero["constant-H fail threshold"]` | notes-item 8 | yes |
+| M8 | math | 125-128 | `expectZero["constant-H suff threshold"]` | notes-item 8 | yes |
 
-Anchoring summary:
-- A2/A3 (and their Mathematica twins A7/A8) genuinely test the K_X exponent and the kappa substitution. A wrong sign in the exponent of K_X in V0_fail^2 would survive `solve` but fail the subtraction. These are real checks of claim (5).
-- A1/A6 ("thin-wall remainder") are tautological. G_eq_sym is built from I1_sym = 4*pi*ell*(a^2 J1 + ell^2 J3), G_eq_tw is the J1 piece, and `4*pi*V0^2*ell*J3/KX` is the J3 piece. The residual is algebraically guaranteed zero by polynomial decomposition; it tests nothing about the underlying physics.
-- A4/A5/A9/A10 ("constant-H ... threshold") are tautological substitutions. The "const" forms are produced by `.subs(J1, If/Hw)` on the geom expressions; the assertions then subtract the same algebraic re-arrangement. They confirm SymPy/Mathematica can do `1/J1 -> H_w/I_f`; they do not test the physical claim that h' is constant implies J1 = I_f/H_w.
+The two `partial (H_w=1)` rows (A10, M3) collapse to ∫ f'^2 = ∫ f'^2 because both engines fix the constant compressibility numerically to 1. Considered in isolation, that check is weak; but the symbolic closed-form anchors A8/A9/M7/M8 carry H_w as a free symbol and catch any misplaced H_w in the V0_fail/V0_suff formulas. The A1/M4 thin-wall remainder is an algebraic decomposition (G_eq_sym = G_eq_tw + 4 pi V0^2 ell J3/K_X is implicit in the construction), but the concrete-profile relative-correction check (A3) and the direct shell integral (A5/M2) anchor the same scaling from a non-tautological route. Net effect: no standalone gap.
 
 ## Findings
 
-### F1 — mathematica_transliteration
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl:26-101`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py:51-127`
-
-**What's wrong:**
-The `.wl` script is a line-for-line transliteration of the `.py` script. Three corresponding sections:
-
-(a) Definition of g_phi and I1.
-SymPy (l.61, l.66):
-```
-g_phi = sp.simplify(V0 / ell)
-I1 = sp.simplify(4 * sp.pi * ell * (a**2 * J1 + 2 * a * ell * J2 + ell**2 * J3))
-```
-Mathematica (l.34-35):
-```
-gPhi = FullSimplify[v0/ell, ...];
-i1 = FullSimplify[4*Pi*ell*(a^2*j1 + 2*a*ell*j2 + ell^2*j3), ...];
-```
-Identical algebraic form, identical variable choreography, only renamed.
-
-(b) Thin-wall remainder residual.
-SymPy (l.81-84):
-```
-expect_zero("thin-wall remainder ...", sp.simplify(G_eq_sym - G_eq_tw - 4 * sp.pi * V0**2 * ell * J3 / KX))
-```
-Mathematica (l.49-52):
-```
-expectZero["thin-wall remainder ...", gEqSym - gEqTw - 4*Pi*v0^2*ell*j3/kx];
-```
-Byte-for-byte the same residual expression.
-
-(c) K_X-cancellation residual.
-SymPy (l.104-107):
-```
-expect_zero("K_X cancellation in V0_fail^2", V0_fail_sq_k - TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * J1 * Deltainf))
-```
-Mathematica (l.73-76):
-```
-expectZero["K_X cancellation in V0_fail^2", v0FailSqGeom - tx*ell*peReq/(4*Pi*a^2*len^2*j1*deltaInf)];
-```
-Same residual.
-
-Both engines pull V0_fail^2 from the same `G_eq_tw == Pe_req/(kappa Delta_inf)` inversion and then subtract the same closed-form. Neither derives I1 from an actual ∫ (f')^2/h' (a+ell xi)^2 dxi over a chosen profile; neither derives J2=0 from a parity argument over a symmetric f; neither derives J1 = I_f/H_w from a constant-h' limit. So the engines are agreeing because they encode the same symbolic identity, not because they verify the physics from two independent routes.
-
-**Why this matters:**
-The second-engine policy requires Mathematica to provide an independent verification, not echo SymPy's algebra. A sign error or factor mistake propagated into the symbolic ansatz of either engine would survive both checks because the second engine literally copies the first engine's polynomial.
-
-**Required change:**
-Add at least one substantive independent derivation block to the `.wl` script. Concretely, derive I1 from the actual shell integral by choosing a concrete symmetric profile (Gaussian f' = (1/sqrt(2 Pi sigma^2)) Exp[-xi^2/(2 sigma^2)] with sigma = 1) and constant h' = h0, then:
-  - Compute J1_num = Integrate[(f'[xi])^2/h0, {xi, -Infinity, Infinity}] and verify it matches I_f/H_w with I_f, H_w numerical.
-  - Compute J2_num = Integrate[xi*(f'[xi])^2/h0, {xi, -Infinity, Infinity}] and assert J2_num == 0 (parity).
-  - Compute the full shell weight (a + ell xi)^2 (f')^2 / h' integrated over xi (formally over (-Infinity, Infinity) which is the thin-wall limit of the layer), compare against 4*pi*ell*(a^2 J1_num + 2 a ell J2_num + ell^2 J3_num) with J3_num computed independently. This anchors claim (2) and claim (3) on Mathematica's side without echoing the SymPy polynomial.
-
-Keep the existing K_X cancellation `expectZero`s in place — those remain valid as algebraic identity checks once the new independent shell integral is added.
-
-**Verification:**
-After patch, `mathematica/...stage065_...wl` contains a new block before line 54 that performs at least two `expectZero` calls anchored on concrete Gaussian f' integrals (J2 = 0 by parity, and the shell-integral expansion versus the polynomial form). The verifier confirms the script still exits 0 and the new `PASS:` lines appear in the output transcript.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py:81-84`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl:49-52`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py:104-127` (constant-H block)
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl:83-96`
-
-**What's wrong:**
-Two assertion families are tautological by construction.
-
-(a) "thin-wall remainder after dropping O(ell/a) correction" — SymPy l.81-84 and Mathematica l.49-52.
-`G_eq_sym` is defined as `g_phi^2 * I1_sym / KX = (V0/ell)^2 * 4*pi*ell*(a^2 J1 + ell^2 J3)/KX = 4*pi*V0^2*(a^2 J1)/(KX ell) + 4*pi*V0^2*ell*J3/KX`.
-`G_eq_tw` is defined as `4*pi*a^2*V0^2*J1/(KX*ell)`, the first term.
-The third term subtracted in the assertion, `4*pi*V0^2*ell*J3/KX`, is the second term.
-So `G_eq_sym - G_eq_tw - 4*pi*V0^2*ell*J3/KX ≡ 0` as a polynomial identity in (J1, J3, V0, a, ell, KX). The assertion cannot fail under any physics; it only checks that SymPy can subtract a polynomial from itself.
-
-(b) "constant-H fail/suff threshold" — SymPy l.120-127 and Mathematica l.89-96.
-`V0_fail_const = V0_fail_sq_k.subs(J1, If/Hw) = TX*ell*Pe_req/(4*pi*a^2*L^2*(If/Hw)*Deltainf) = Hw*TX*ell*Pe_req/(4*pi*a^2*L^2*If*Deltainf)`.
-The assertion subtracts `Hw*TX*ell*Pe_req/(4*pi*a^2*L^2*If*Deltainf)` — the exact result of the substitution — so the residual is identically zero by the substitution itself. The check tests that SymPy's `subs(J1, If/Hw)` is consistent with manual rewriting; it does not test the physical claim that constant h' implies J1 = I_f/H_w.
-
-**Why this matters:**
-Three of the five SymPy `expect_zero`s (and three of the five Mathematica `expectZero`s) are guaranteed by construction. They contribute zero attack surface — flipping the sign of J3 or of the constant-H reduction would not break them in the script-internal sense (it would just propagate consistently through both sides). The unit's substantive verification reduces to the two K_X-cancellation checks.
-
-**Required change:**
-Replace each tautological check with a check that actually exposes the underlying physics. Two concrete substitutions:
-
-1. In both `.py` (l.81-84) and `.wl` (l.49-52): keep the residual print, but replace the tautological assertion with an independent test that the thin-wall expansion is the correct leading term. Use a concrete numeric profile (e.g. f'(xi) = Exp[-xi^2] with constant h' = 1) to compute the exact shell integral `∫ (a + ell xi)^2 (f'(xi))^2 dxi` for fixed numeric a, ell, and verify that
-   exact_integral / (a^2 J1_num) → 1 as ell/a → 0 (e.g. take ell/a = 0.01 and 0.001, check the second is closer to 1). At minimum, replace the current `expect_zero` with a check that the ratio (G_eq_tw + 4*pi*V0^2*ell*J3/KX) / G_eq_sym evaluated under J2 -> 0 equals 1 *only at the moment level*, which is what we already have — so this finding's required change is: add the concrete-profile numeric check to make the assertion non-tautological.
-
-   Minimal concrete patch: after the existing `expect_zero("thin-wall remainder ...")` (which can stay as an algebraic identity check), add a new `expect_zero` of the form: pick numeric J1_num, J3_num computed from a definite Gaussian profile, fix a/ell = 100 and a/ell = 1000, and assert that `(G_eq_sym - G_eq_tw)/G_eq_tw - (ell^2 J3_num)/(a^2 J1_num)` evaluates to zero (this tests the O(ell^2/a^2) scaling, which is non-trivial because the script's claim is that the dropped term scales like ell/a^2 relative to the leading 1/ell — i.e. the *ratio* of correction to leading term goes like (ell/a)^2 J3/J1).
-
-2. In both `.py` (l.120-127) and `.wl` (l.89-96): the constant-h' reduction J1 = I_f/H_w is currently asserted by `.subs(J1, If/Hw)`. Replace this with an independent derivation: define I_f := ∫ (f'(xi))^2 dxi for a specific symmetric f (e.g. Gaussian), define J1_via_def := ∫ (f'(xi))^2 / H_w dxi (with constant H_w), and assert J1_via_def - I_f/H_w == 0 by direct integration in SymPy/Mathematica. This anchors the constant-h' claim on an actual integral identity.
-
-**Verification:**
-After patch, the .py and .wl each contain:
-  - One additional `expect_zero`/`expectZero` that numerically/symbolically anchors the thin-wall ratio at two values of ell/a (or equivalently asserts the O((ell/a)^2) scaling using definite numeric J1, J3).
-  - One additional `expect_zero`/`expectZero` deriving J1 = I_f/H_w from the integral definitions rather than substituting it.
-Both scripts still exit 0; the output transcript shows the new PASS lines.
-
-### F3 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage065_thin_wall_confinement_sympy_audit.py:51-84`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.wl:26-52`
-
-**What's wrong:**
-Of the six docstring claims, four (1, 2, 3, 6) are never tested by any assertion — they are introduced as definitions or substitutions and then printed.
-
-  - Claim (1) "g_phi = V0/ell": l.61 sets `g_phi = sp.simplify(V0 / ell)` and only prints it. There is no derivation that the support loading amplitude of V0 f((r-a)/ell) under d/dr = (1/ell) d/dxi yields V0/ell, and no comparison against a competing form (e.g. V0 only, or V0/(2 ell)).
-  - Claim (2) "I1 = 4*pi*ell*(a^2 J1 + 2 a ell J2 + ell^2 J3)": l.66 defines I1 as this polynomial directly. There is no integration ∫ chi_phi^2/h' (a+ell xi)^2 dxi performed against a concrete profile to confirm the (a^2, 2 a ell, ell^2) coefficients (factors of 2 are exactly the kind of thing this script claims to verify).
-  - Claim (3) "J2 = 0 for symmetric layer": l.70 substitutes `J2 -> 0`. There is no parity argument — no check that ∫ xi (f'(xi))^2 dxi = 0 for an odd-symmetric f' (or even-symmetric f).
-  - Claim (6) "J1 = I_f/H_w when h' constant": l.116 substitutes `J1 -> If/Hw`. (Covered by F2 too.)
-
-Neither engine integrates a concrete f profile to exercise any of these.
-
-**Why this matters:**
-The script is presented as the verification of the thin-wall confinement branch. Its only non-tautological assertions test claim (5) (K_X cancellation in the inverted threshold expressions). Claims (1)-(3) and (6) — which form the algebraic chain leading into (5) — are taken on faith. A factor-of-2 error in claim (2)'s middle term, a sign error in claim (1)'s 1/ell, or a wrong parity argument in (3) would all survive both engines unchanged.
-
-**Required change:**
-Add concrete integral checks to both `.py` and `.wl`. Minimum acceptable set:
-
-(a) g_phi from V_conf differentiation. Define V_conf(r) = V0 * f((r-a)/ell) with f a chosen symmetric symbolic profile (e.g. f(u) = Exp[-u^2]), compute (d V_conf / d r) explicitly with SymPy/Mathematica, and verify the amplitude of d V_conf/dr at the wall (r = a) equals V0/ell times f'(0). Since f'(0) is fixed by the profile, this anchors the 1/ell scaling.
-
-(b) I1 polynomial coefficients. For a chosen f and constant h' = 1, compute
-   I1_explicit = ∫_{-∞}^{∞} (f'(xi))^2 * (a + ell xi)^2 dxi   (after the 4*pi*ell shell factor)
-and assert it expands to 4*pi*ell*(a^2 J1 + 2*a*ell*J2 + ell^2*J3) with J1, J2, J3 the corresponding moment integrals. The factor of 2 on the cross-term and the symmetric vanishing of J2 fall out of this single check.
-
-(c) J2 = 0 by parity. With f symmetric (f(-xi) = f(xi)), assert ∫ xi (f'(xi))^2 dxi = 0 for the chosen profile — direct integration in SymPy/Mathematica.
-
-These three additions transform claims (1), (2), (3) from declarations into checked derivations. Claim (6) is covered by F2 (b).
-
-**Verification:**
-After patch:
-- `.py` and `.wl` each contain new blocks for (a)-(c) above with `expect_zero`/`expectZero` calls.
-- Output transcripts show the new PASS lines.
-- Both scripts still exit 0.
+(None.)
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` script does NOT derive the claim independently. Sections 26-52 mirror lines 51-84 of the `.py` exactly (same definitions of gPhi, i1, i1Sym, gEq, gEqSym, gEqTw, same residual expression for the "thin-wall remainder"). Sections 54-96 mirror the `.py`'s threshold and constant-H blocks identically. No integral over any concrete f profile appears. No parity argument for j2 appears. No alternative algebraic route (e.g. expand (a + ell xi)^2 first, then integrate term by term) is used. See F1 for quoted excerpts.
+The Mathematica script opens (lines 26-56) with an "INDEPENDENT SHELL-INTEGRAL DERIVATION (concrete Gaussian profile)" block before the symbolic block. It computes the Gaussian moments directly via Mathematica's `Integrate`:
+```
+j1Num = Integrate[(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+j2Num = Integrate[xi*(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+j3Num = Integrate[xi^2*(fpProf[xi])^2/hConst, {xi, -Infinity, Infinity}];
+```
+which output J1_num = Sqrt[Pi/2], J2_num = 0, J3_num = (3 Sqrt[Pi/2])/4 — matching SymPy's `sqrt(2)*sqrt(pi)/2`, `0`, `3*sqrt(2)*sqrt(pi)/8` up to algebraic rewriting. The (1, 2, 1) polynomial expansion check at lines 46-50 integrates `(fpProf[xi])^2/hConst * (aSym + ellSym*xi)^2` and compares against `aSym^2*j1Num + 2*aSym*ellSym*j2Num + ellSym^2*j3Num` — this is a Mathematica-native `Integrate` call, not echoing SymPy's `sp.integrate`. The threshold derivation in the symbolic block uses `gFail/gEqCoeff` (line 92) to extract V0^2 from G_eq^(tw) = G_fail rather than SymPy's `sp.solve(sp.Eq(G_eq_tw, G_fail), V0**2)` — different algorithmic route to the same identity. Sections 26-56 versus SymPy lines 86-133 differ: SymPy ordered the Gaussian-block AFTER the symbolic shell decomposition, Mathematica orders it BEFORE; SymPy uses `sp.integrate` with explicit infinity bounds, Mathematica uses `Integrate[..., {xi, -Infinity, Infinity}]` and `FullSimplify` with positivity assumptions. Not a transliteration. Both engines independently arrive at the same closed-form residuals (all zero).
 
 ## Engine cross-check
 
-The two engines produce identical results because they encode the same symbolic polynomials. Side by side (final V0_fail^2):
-- SymPy: `Pe_req*T_X*ell/(4*pi*Delta_inf*J1*L**2*a**2)`
-- Mathematica: `(ell*peReq*tx)/(4*a^2*deltaInf*j1*len^2*Pi)`
-Same expression up to symbol renaming. All five SymPy `expect_zero` residuals print "0", and all five Mathematica `expectZero` residuals print "0". `engines_agree: true`, but the agreement is structural (both ran the same algebra) rather than corroborative.
+Both engines verify identical claims and agree on every assertion:
+
+- J1: sympy `sqrt(2)*sqrt(pi)/2` vs. math `Sqrt[Pi/2]` (algebraically identical).
+- J2: 0 (both).
+- J3: sympy `3*sqrt(2)*sqrt(pi)/8` vs. math `(3 Sqrt[Pi/2])/4` (algebraically identical).
+- V0_fail^2 with kappa inserted: sympy `Pe_req*T_X*ell/(4*pi*Delta_inf*J1*L**2*a**2)` vs. math `(ell*peReq*tx)/(4*a^2*deltaInf*j1*len^2*Pi)` (same expression up to symbol renaming).
+- Constant-H thresholds: sympy `H_w*Pe_req*T_X*ell/(4*pi*Delta_inf*I_f*L**2*a**2)` vs. math `(ell*hw*peReq*tx)/(4*a^2*deltaInf*ifMom*len^2*Pi)` (identical).
+- All `expect_zero`/`expectZero` residuals print `0`.
+- Both transcripts terminate with success banners and exit status 0.
+
+No engine disagreement.
 
 ## Verdict justification
 
-Both scripts exist, run to exit 0, and agree on the printed forms — but the agreement is shallow because the .wl is a transliteration of the .py and four of the six docstring claims are encoded as definitions/substitutions rather than as checks. Two real algebraic identities are tested (K_X cancellation in V0_fail^2 and V0_suff^2); the other three "passes" per script are tautological. Verdict: `findings`, three findings, none stop-cold (the K_X cancellation results are correct and any downstream unit consuming V0_fail^2 = Pe_req*T_X*ell/(4*pi*Delta_inf*J1*L^2*a^2) will continue to see that expression — the fixes add verifications, they do not change the result).
+The scripts faithfully exercise every deliverable enumerated in the source notes and the paper-card body equation. The non-tautological backbone consists of: independent symbolic derivative of V0 f((r-a)/ell) at r=a+ell to exhibit the 1/ell scaling (A4); direct shell integration for the (1, 2, 1) polynomial pattern (A5, M2); parity vanishing of J_2 (A2, M1); algebraic K_X cancellation under kappa = K_X L^2 / T_X (A6, A7, M5, M6); and the closed-form constant-H thresholds with H_w as a free symbol (A8, A9, M7, M8). Attacks attempted: (i) checking whether g_phi = V0/ell is just assigned at line 61 and never verified — refuted by the independent r-derivative anchor at lines 109-123 verifying the 1/ell scaling from a concrete profile; (ii) checking whether the thin-wall remainder (A1/M4) is algebraically guaranteed by the construction of G_eq_sym from I_1_sym — yes algebraically, but the concrete-profile relative-correction check (A3) verifies the same scaling from a different route, and A5/M2 verify the underlying polynomial coefficients independently; (iii) checking whether the K_X cancellation is built into `sp.solve` — refuted because V0_fail_sq still carries K_X in its kappa form (K_X*Pe_req*ell/(4*pi*Delta_inf*J1*a^2*kappa)) and only the explicit `subs(kappa -> K_X L^2 / T_X)` cancels it (the residual subtraction would fail if the K_X exponent were wrong); (iv) checking whether the constant-H J_1 = I_f/H_w check at A10/M3 is meaningful — answered: weak in isolation (H_w=1 numerically), but the symbolic A8/A9/M7/M8 carry the burden. Outputs are fresher than scripts (mtimes 1779501135/1779501141 > 1779501055 for both pairs). The docstring at the top of the .py and the opening banner label this audit as "Stage 48" (and the .wl interior banner says "STAGE 048"), reflecting an older stage-number scheme; the file paths, paper card filename, appendix row at line 108, and final Mathematica banner ("Stage 065 Mathematica audit passed.") all correctly identify this as Stage 065 — purely cosmetic, no claim drift. Verdict: clean.
 
 ## Self-test notes
 
-- Variable independence: the proposed new `expect_zero`s involve integrals over `xi` of integrands that genuinely depend on `xi` (Gaussian f'(xi), and xi-weighted versions for J2); no degenerate `diff(EXPR, VAR)` with EXPR independent of VAR.
-- Symmetry/parity: for the J2 = 0 check, integrand is xi * (f'(xi))^2 with f symmetric ⇒ f' antisymmetric ⇒ (f')^2 symmetric ⇒ xi * (f')^2 antisymmetric ⇒ integral over (-Infinity, Infinity) is zero. Verified by hand: parity is correct.
-- Trivial-case pre-check: with f(u)=Exp[-u^2], f'(u)=-2 u Exp[-u^2], (f'(u))^2 = 4 u^2 Exp[-2 u^2]. Then J1 = ∫ 4 u^2 Exp[-2 u^2] du = 4 * sqrt(pi/2)/2/2 = sqrt(pi/2)/2 > 0 (nonzero, as required for J1 > 0 assumption in the script). J2 = ∫ u * 4 u^2 Exp[-2 u^2] du = 0 by parity (odd integrand). J3 = ∫ u^2 * 4 u^2 Exp[-2 u^2] du > 0 (even, positive integrand) — these all match the script's positivity assumptions on J1, J3.
-- Path specifications: no `missing_verification_script` finding raised; both engines present.
+Checked: (1) variable independence — `f_loc = exp(-((r_sym - a)/ell)**2)` at line 114 genuinely depends on r_sym, so `sp.diff(V0 * f_loc, r_sym)` at line 115 yields V0*(-2(r-a)/ell^2)*exp(...) (not identically zero); at r=a+ell this evaluates to -2 V0 exp(-1)/ell, matching the asserted residual. (2) Symmetry/parity — for the J_2 check, integrand xi * (exp(-xi^2))'^2 = xi * 4 xi^2 exp(-2 xi^2) = 4 xi^3 exp(-2 xi^2) is odd in xi over a symmetric domain → integral is 0; SymPy and Mathematica both return 0. (3) Trivial-case pre-check — for the relative-correction check at A3, substituting J1_num = sqrt(2 pi)/2 and J3_num = 3 sqrt(2 pi)/8 gives ((4 pi V0^2 ell J3_num)/KX) / (4 pi a^2 V0^2 J1_num/(KX ell)) = ell^2 J3_num/(a^2 J1_num); subtracting (ell^2 J3_num)/(a^2 J1_num) gives 0 as asserted. (4) Path specifications — both engines present at the expected paths (`scripts/`, `mathematica/`); no missing-script finding. (5) Paper round-trip — not applicable, no fix prescribed; paper-card body equation `g_phi = V0/ell` aligns with sympy line 61 and math line 66; all eight notes deliverables are anchored.

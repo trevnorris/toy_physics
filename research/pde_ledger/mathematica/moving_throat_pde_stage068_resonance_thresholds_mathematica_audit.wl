@@ -30,27 +30,65 @@ $Assumptions =
   Element[{C2, Cres, Wwall, Wres, Pres, PeReq, Delta0, Deltainf, Ain}, Reals] &&
   C2 > 0 && Cres > 0 && Wwall > 0 && Pres > 0 && PeReq > 0 && Delta0 > 0 && Deltainf > 0 && Ain > 0;
 
-(* Premise: transmission coefficient C maps wall amplitude Ain to C*Ain.   *)
-(* Power = amplitude^2 ; W_wall normalises to Ain^2 ; transmitted power:   *)
-(* |C * Ain|^2 = C^2 * W_wall. Use Reduce to extract the C^2 coefficient.  *)
-WresRule = First@Solve[Wres == (C2)*Wwall, Wres];
-WresDerived = Wres /. WresRule;
-expectZero["W_res - C2 * W_wall", WresDerived - C2*Wwall];
+(* W_res derived from matched-branch gain decomposition (notes section 1): *)
+(*   G_match = rho_star g_phi^2 N_phiphi / (m c_s^2 K_X),                  *)
+(*   W_wall  = kappa G_match,    G_res = C^2 G_match,    W_res = kappa G_res *)
+Clear[rhoStar, gPhi, Nphi, mPart, cs, KX, kappaW, GmatchExpr, WwallExpr, GresExpr, WresExpr];
+$Assumptions = $Assumptions && Element[{rhoStar, gPhi, Nphi, mPart, cs, KX, kappaW}, Reals] &&
+  rhoStar > 0 && gPhi > 0 && Nphi > 0 && mPart > 0 && cs > 0 && KX > 0 && kappaW > 0;
+GmatchExpr = rhoStar*gPhi^2*Nphi / (mPart*cs^2*KX);
+WwallExpr  = kappaW*GmatchExpr;
+GresExpr   = C2*GmatchExpr;
+WresExpr   = kappaW*GresExpr;
+expectZero["W_res - C2 * W_wall (from gain decomposition)",
+  FullSimplify[WresExpr - C2*WwallExpr, Assumptions -> $Assumptions]];
+expectZero["W_res(C2->1) - W_wall (matched limit)",
+  FullSimplify[(WresExpr /. C2 -> 1) - WwallExpr, Assumptions -> $Assumptions]];
 
-(* P_res = 1/C_res^2 derived as the inverse of the amplification *)
-PresFromCres = First@Solve[Pres*Cres^2 == 1, Pres];
-PresDerived = Pres /. PresFromCres;
-expectZero["P_res - 1/C_res^2", PresDerived - 1/Cres^2];
+(* P_res derived from ratio of required wall figures at resonance C2 -> Cres^2. *)
+PresFromRatio =
+  FullSimplify[
+    ((PeReq/(C2*Delta1)) / (PeReq/Delta1)) /. C2 -> Cres^2,
+    Assumptions -> $Assumptions && Delta1 > 0
+  ];
+expectZero["P_res - 1/C_res^2 (from required-wall-figure ratio)",
+  FullSimplify[PresFromRatio - 1/Cres^2, Assumptions -> $Assumptions]];
 
-(* Matched-branch threshold from W_match * Delta = Pe_req *)
-WmatchSol = First@Solve[Wmatch*DeltaSym == PeReq, Wmatch];
-WfailMatch = FullSimplify[(Wmatch /. WmatchSol) /. DeltaSym -> Deltainf];
-WsuffMatch = FullSimplify[(Wmatch /. WmatchSol) /. DeltaSym -> Delta0];
+(* Numeric anchor: paper card states P_res = 1.005612487760576 and             *)
+(* C_res^2 = 0.994418836451529 (carried from stage 067).                       *)
+With[{CresSqNum = SetPrecision[0.994418836451529, 20],
+      PresPaperNum = SetPrecision[1.005612487760576, 20]},
+  PresNumResidual = Abs[1/CresSqNum - PresPaperNum];
+  Print["P_res numeric residual = ", fmt[PresNumResidual]];
+  If[!TrueQ[PresNumResidual < 10^-12],
+    fail["P_res numeric anchor", PresNumResidual]
+  ];
+];
 
-(* Profile-family threshold from C2 * W_prof * Delta = Pe_req *)
-WprofSol = First@Solve[C2*Wprof*DeltaSym == PeReq, Wprof];
-WfailRes = FullSimplify[(Wprof /. WprofSol) /. DeltaSym -> Deltainf];
-WsuffRes = FullSimplify[(Wprof /. WprofSol) /. DeltaSym -> Delta0];
+(* Matched-branch threshold from Reduce[W*Delta == PeReq && W > 0, W].       *)
+(* Use Reduce rather than Solve to keep the positivity premise explicit.     *)
+WfailMatch = First[Cases[
+    Reduce[Wmatch*Deltainf == PeReq && Wmatch > 0 && Deltainf > 0 && PeReq > 0, Wmatch, Reals],
+    HoldPattern[Wmatch == rhs_] :> rhs, Infinity
+  ]];
+WsuffMatch = First[Cases[
+    Reduce[Wmatch*Delta0 == PeReq && Wmatch > 0 && Delta0 > 0 && PeReq > 0, Wmatch, Reals],
+    HoldPattern[Wmatch == rhs_] :> rhs, Infinity
+  ]];
+WfailMatch = FullSimplify[WfailMatch, Assumptions -> $Assumptions];
+WsuffMatch = FullSimplify[WsuffMatch, Assumptions -> $Assumptions];
+
+(* Profile-family threshold from Reduce[C2*W*Delta == PeReq && W > 0, W].   *)
+WfailRes = First[Cases[
+    Reduce[C2*Wprof*Deltainf == PeReq && Wprof > 0 && Deltainf > 0 && PeReq > 0 && C2 > 0, Wprof, Reals],
+    HoldPattern[Wprof == rhs_] :> rhs, Infinity
+  ]];
+WsuffRes = First[Cases[
+    Reduce[C2*Wprof*Delta0 == PeReq && Wprof > 0 && Delta0 > 0 && PeReq > 0 && C2 > 0, Wprof, Reals],
+    HoldPattern[Wprof == rhs_] :> rhs, Infinity
+  ]];
+WfailRes = FullSimplify[WfailRes, Assumptions -> $Assumptions];
+WsuffRes = FullSimplify[WsuffRes, Assumptions -> $Assumptions];
 
 Print["Matched fail threshold     = ", fmt[WfailMatch]];
 Print["Matched succeed threshold  = ", fmt[WsuffMatch]];
@@ -66,22 +104,25 @@ expectZero["Wfail_res(C2->1/Pres) - Pres*Wfail_match", (WfailRes /. C2 -> 1/Pres
 expectZero["Wsuff_res(C2->1/Pres) - Pres*Wsuff_match", (WsuffRes /. C2 -> 1/Pres) - Pres*WsuffMatch];
 
 banner["PROFILE-SENSITIVE BANDS"];
-(* Way A: difference of profile and matched thresholds at C2 = 1/Pres. *)
-successBandA = FullSimplify[(WsuffRes - WsuffMatch) /. C2 -> 1/Pres, Assumptions -> $Assumptions];
-failureBandA = FullSimplify[(WfailRes - WfailMatch) /. C2 -> 1/Pres, Assumptions -> $Assumptions];
+(* C-form: evaluate WsuffRes at C2 -> Cres^2 (NOT via Pres substitution). *)
+WsuffResC = PeReq/(Cres^2 * Delta0);
+WfailResC = PeReq/(Cres^2 * Deltainf);
+successBandA = FullSimplify[WsuffResC - WsuffMatch, Assumptions -> $Assumptions];
+failureBandA = FullSimplify[WfailResC - WfailMatch, Assumptions -> $Assumptions];
 
-(* Way B: Solve WsuffMatch + gap == Pres*WsuffMatch for gap. *)
-gapSym;
-successBandB = gap /. First@Solve[WsuffMatch + gap == Pres*WsuffMatch, gap];
-failureBandB = gap /. First@Solve[WfailMatch + gap == Pres*WfailMatch, gap];
+(* P-form: (Pres - 1) * Wmatch directly. *)
+successBandB = FullSimplify[(Pres - 1)*WsuffMatch, Assumptions -> $Assumptions];
+failureBandB = FullSimplify[(Pres - 1)*WfailMatch, Assumptions -> $Assumptions];
 
-Print["Success-side band width (A) = ", fmt[successBandA]];
-Print["Failure-side band width (A) = ", fmt[failureBandA]];
-Print["Success-side band width (B) = ", fmt[successBandB]];
-Print["Failure-side band width (B) = ", fmt[failureBandB]];
+Print["Success-side band width (C-form) = ", fmt[successBandA]];
+Print["Failure-side band width (C-form) = ", fmt[failureBandA]];
+Print["Success-side band width (P-form) = ", fmt[successBandB]];
+Print["Failure-side band width (P-form) = ", fmt[failureBandB]];
 
-expectZero["success band A vs B", successBandA - successBandB];
-expectZero["failure band A vs B", failureBandA - failureBandB];
+expectZero["success band C-form vs P-form (under Pres = 1/Cres^2)",
+  FullSimplify[(successBandA - successBandB) /. Pres -> 1/Cres^2, Assumptions -> $Assumptions]];
+expectZero["failure band C-form vs P-form (under Pres = 1/Cres^2)",
+  FullSimplify[(failureBandA - failureBandB) /. Pres -> 1/Cres^2, Assumptions -> $Assumptions]];
 
 banner["FINAL LEDGER"];
 Print["W_res derived as |C|^2 W_wall."];

@@ -2241,7 +2241,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1778525675
-    last_status_change: 2026-05-22 19:33:22-06:00
+    last_status_change: 2026-05-26 11:55:01-06:00
   '062':
     stage: 62
     stage_str: '062'
@@ -2271,12 +2271,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage062_parent_action_gain_mathematica_audit.txt
         exists: true
         mtime: 1779500444
-    last_status_change: 2026-05-22 21:44:59-06:00
+    last_status_change: 2026-05-26 13:41:10-06:00
     codex_session: 019e5279-68eb-7e11-a6d8-42d416e3134e
     codex_log_paths:
     - redteam/codex_logs/062_iter1.txt
     last_codex_run: 2026-05-22 19:40:33-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:12:18-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:12:26-06:00
   '063':
     stage: 63
     stage_str: '063'
@@ -2306,7 +2310,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage063_parent_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1779500643
-    last_status_change: 2026-05-22 21:45:04-06:00
+    last_status_change: 2026-05-26 11:55:04-06:00
     codex_session: 019e527e-16ed-7c30-ab8a-f97820cecaaf
     codex_log_paths:
     - redteam/codex_logs/063_iter1.txt
@@ -2341,12 +2345,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.txt
         exists: true
         mtime: 1779500930
-    last_status_change: 2026-05-22 21:45:08-06:00
+    last_status_change: 2026-05-26 13:41:14-06:00
     codex_session: 019e5281-2612-72a1-ade6-f4b24abef732
     codex_log_paths:
     - redteam/codex_logs/064_iter1.txt
-    last_codex_run: 2026-05-22 19:48:35-06:00
+    - redteam/codex_logs/064_iter1.txt
+    last_codex_run: 2026-05-26 12:51:11-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:12:35-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:21:43-06:00
   '065':
     stage: 65
     stage_str: '065'
@@ -2376,7 +2385,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage065_thin_wall_confinement_mathematica_audit.txt
         exists: true
         mtime: 1779501141
-    last_status_change: 2026-05-22 21:45:13-06:00
+    last_status_change: 2026-05-26 11:55:07-06:00
     codex_session: 019e5285-9104-7010-bca8-592c8ada30a8
     codex_log_paths:
     - redteam/codex_logs/065_iter1.txt
@@ -2387,7 +2396,7 @@ stages:
     stage_str: '066'
     batch_id: III.3
     status: verified
-    iteration_count: 0
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2411,7 +2420,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage066_wall_figure_of_merit_mathematica_audit.txt
         exists: true
         mtime: 1778525747
-    last_status_change: 2026-05-22 19:33:30-06:00
+    last_status_change: 2026-05-26 13:41:17-06:00
+    codex_session: 019e65a0-ba4d-7bc1-ac6d-5884d368a218
+    codex_log_paths:
+    - redteam/codex_logs/066_iter1.txt
+    last_codex_run: 2026-05-26 12:52:48-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:12:53-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:13:01-06:00
   '067':
     stage: 67
     stage_str: '067'
@@ -2441,12 +2459,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.txt
         exists: true
         mtime: 1779501389
-    last_status_change: 2026-05-22 21:45:17-06:00
+    last_status_change: 2026-05-26 13:41:21-06:00
     codex_session: 019e5288-c63b-7d31-9dc8-c72ce004ab45
     codex_log_paths:
     - redteam/codex_logs/067_iter1.txt
-    last_codex_run: 2026-05-22 19:55:54-06:00
+    - redteam/codex_logs/067_iter1.txt
+    last_codex_run: 2026-05-26 12:53:39-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:13:16-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:13:29-06:00
   068:
     stage: 68
     stage_str: 068
@@ -2476,12 +2499,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1779501617
-    last_status_change: 2026-05-22 21:45:21-06:00
+    last_status_change: 2026-05-26 13:41:24-06:00
     codex_session: 019e528c-9197-7001-bdc9-9c2f84083622
     codex_log_paths:
     - redteam/codex_logs/068_iter1.txt
-    last_codex_run: 2026-05-22 20:00:03-06:00
+    - redteam/codex_logs/068_iter1.txt
+    last_codex_run: 2026-05-26 12:58:37-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:13:38-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:13:47-06:00
   069:
     stage: 69
     stage_str: 069
@@ -2511,7 +2539,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage069_final_reduced_verdict_mathematica_audit.txt
         exists: true
         mtime: 1779501936
-    last_status_change: 2026-05-22 21:45:26-06:00
+    last_status_change: 2026-05-26 11:55:11-06:00
     codex_session: 019e5290-15b1-70d2-acd4-8c27824ad00b
     codex_log_paths:
     - redteam/codex_logs/069_iter1.txt
@@ -2546,12 +2574,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage070_gnls_wall_shell_mathematica_audit.txt
         exists: true
         mtime: 1779502149
-    last_status_change: 2026-05-22 21:45:30-06:00
+    last_status_change: 2026-05-26 13:41:28-06:00
     codex_session: 019e5294-db8b-71c1-ad10-9dd2205c983f
     codex_log_paths:
     - redteam/codex_logs/070_iter1.txt
-    last_codex_run: 2026-05-22 20:08:59-06:00
+    - redteam/codex_logs/070_iter1.txt
+    last_codex_run: 2026-05-26 13:04:41-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:13:57-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:14:05-06:00
   '071':
     stage: 71
     stage_str: '071'
@@ -2581,7 +2614,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.txt
         exists: true
         mtime: 1779502270
-    last_status_change: 2026-05-22 21:45:34-06:00
+    last_status_change: 2026-05-26 11:55:14-06:00
     codex_session: 019e5298-1964-7040-b999-265c0f06745b
     codex_log_paths:
     - redteam/codex_logs/071_iter1.txt
@@ -2616,12 +2649,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage072_explicit_branch_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1779507544
-    last_status_change: 2026-05-22 21:45:39-06:00
+    last_status_change: 2026-05-26 13:41:31-06:00
     codex_session: 019e5299-f4c6-7332-a0cd-e64e6df1cf01
     codex_log_paths:
     - redteam/codex_logs/072_iter1.txt
-    last_codex_run: 2026-05-22 20:13:42-06:00
+    - redteam/codex_logs/072_iter1.txt
+    last_codex_run: 2026-05-26 13:09:56-06:00
     last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-26 13:14:26-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-26 13:14:41-06:00
   '073':
     stage: 73
     stage_str: '073'

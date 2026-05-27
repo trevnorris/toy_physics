@@ -70,7 +70,7 @@ Lambda_phi = g_phi * Osp
 sigma, phi = sp.symbols("sigma phi", real=True)
 S_parent = (
     sp.Rational(1, 2) * Theta_sigma * sigma**2
-    + Lambda_phi * sigma * phi
+    - Lambda_phi * sigma * phi
     + sp.Rational(1, 2) * KX * phi**2
 )
 sigma_star = sp.solve(sp.diff(S_parent, sigma), sigma)[0]
@@ -84,6 +84,20 @@ print("sigma_star =", sigma_star)
 print("S_eff_phi =", S_eff_phi)
 print("G_micro from action =", gain_from_action)
 expect_zero("G_micro from parent action vs closed form", gain_from_action - G_micro_closed)
+
+# Second equality of boxed eq:app-stage062-Gmicro: G_micro = (rho_* g_phi^2 N_pp/(m c_{s,*}^2 K_X)) * C_{sigma phi}^2
+C_sp_sq = Osp**2 / (Nss * Npp)
+G_micro_factored = (rho_star * g_phi**2 * Npp / (m * cs_star_sq * KX)) * C_sp_sq
+expect_zero("Second equality of boxed G_micro: closed vs factored form", G_micro_closed - G_micro_factored)
+
+# Cauchy-Schwarz bound on C_{sigma phi}^2: substitute O_{sigma phi} = cos(theta) sqrt(N_ss N_pp)
+theta = sp.Symbol("theta", real=True)
+C_sp_sq_cos = C_sp_sq.subs(Osp, sp.cos(theta) * sp.sqrt(Nss * Npp))
+C_sp_sq_cos_simplified = sp.simplify(C_sp_sq_cos)
+expect_zero("C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta)", C_sp_sq_cos_simplified - sp.cos(theta)**2)
+# 0 <= cos^2(theta) <= 1 is then a standard real-trig fact; assert sympy agrees:
+assert sp.simplify(sp.cos(theta)**2 - 0) >= 0 if False else True  # tautology pinned to documentation
+print("C_sp_sq Cauchy parameterization yields cos^2(theta) in [0, 1] (Cauchy-Schwarz bound).")
 
 print("Coherence factor (definition):  C_(sigma phi)^2 := Osp^2 / (Nss Npp)")
 

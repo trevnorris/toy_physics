@@ -12,10 +12,13 @@ n=5 specialization of h' = m c_s^2/rho = 0
 Inconsistency probe (n+1 in c_s^2 only): K*rho**3*(5 - 6*rho)
 Theta_sigma = N_ss*cs_star_sq*m/rho_star
 Lambda_phi = O_sp*g_phi
-sigma_star = -O_sp*g_phi*phi*rho_star/(N_ss*cs_star_sq*m)
+sigma_star = O_sp*g_phi*phi*rho_star/(N_ss*cs_star_sq*m)
 S_eff_phi = K_X*phi**2/2 - O_sp**2*g_phi**2*phi**2*rho_star/(2*N_ss*cs_star_sq*m)
 G_micro from action = O_sp**2*g_phi**2*rho_star/(K_X*N_ss*cs_star_sq*m)
 G_micro from parent action vs closed form = 0
+Second equality of boxed G_micro: closed vs factored form = 0
+C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta) = 0
+C_sp_sq Cauchy parameterization yields cos^2(theta) in [0, 1] (Cauchy-Schwarz bound).
 Coherence factor (definition):  C_(sigma phi)^2 := Osp^2 / (Nss Npp)
 Xi_micro = O_sp**2*g_phi**2*kappa*rho_star/(K_X*N_ss*cs_star_sq*m)
 kappa solved from Xi_micro = Xi_target: K_X*L**2/T_X

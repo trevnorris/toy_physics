@@ -6,23 +6,23 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-26` (batch III.2 v2 close — fifth paper-grounded
-re-audit pass. Checkpoint stage `051` falls in III.2's range; returned
+Snapshot date: `2026-05-26` (batch III.3 v2 close — sixth paper-grounded
+re-audit pass. Checkpoint stage `069` falls in III.3's range; returned
 **clean (0 findings)** under v2 with no hardcoded constants — every
-constant in 051's scripts is either derived (`xi_(2x)` from quadratic
-`Solve`, `Pi_tr` closed form from `Factor[Together[...]]`,
-`Z_W^(twin,req)` from the forward map) or carried forward with source
-anchor (`C_mix = 8 Lambda (1-eps)/pi^2` from stage 030 export,
-`zeta_req` from stage 052 import). The III.2 v2 sweep surfaced 0 new
-hardcoded_result findings across the batch; the two paper_misalignment
-items (050 F2, 057 F1) involved no new constants. Stage 050's added
-boxed `S_n^(max)(ε) := 1 + (1-ε)/((2n+1)^2 - ε)` uses only paper-side
-symbols `eps, n` already declared in the stage card; no magic numbers
-introduced. Stage 057's added Pe-monotonicity sweep uses sample values
-`Pe ∈ {1/10, 1/2, 1, 2, 5, 10}` at `(kappa=1, y=π/4)` — declared as
-sweep samples, not derivation constants. III.1 v2 update remains
-accurate for that range; I.1, I.2, II.1 v2 close text remains accurate
-for those ranges; III.4 update remains accurate for batches III.3-III.4.)
+constant in 069's scripts is either derived (`Cres2` from definition,
+`PresGap` via `Solve` in Mathematica) or carried forward with source
+anchor (`Cres2 ≈ 0.99441883...` and `Pres ≈ 1.005612487...` carried
+from stage 067's sech-Gaussian benchmark with 60-dps mpmath provenance,
+`Pe_req` carried from stages 048/049/052). The III.3 v2 sweep surfaced
+0 new hardcoded_result findings across the batch. The 2 substantive
+paper_misalignment items at stage 062 added: (a) closed-form definition
+`C_sp_sq := Osp²/(Nss·Npp)` (no new constant) and (b) Cauchy
+parameterization `Osp = cos(θ)·√(Nss·Npp)` (introduces only the
+declarative symbol `θ`); the σφ coupling sign flip changed only the sign
+of an existing expression. The two banner-relabel items (067, 072) are
+pure string changes. III.2 v2 update text remains accurate for that range;
+I.1, I.2, II.1, III.1 v2 close text remains accurate for those ranges;
+III.4 update remains accurate for batch III.4.)
 
 ## Audit Rule
 

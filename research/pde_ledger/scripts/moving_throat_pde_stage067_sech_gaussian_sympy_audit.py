@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage50_sech_gaussian_sympy_audit.py
+moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
 
 SymPy-backed audit for the explicit sech–Gaussian source/support coherence benchmark.
 
@@ -50,7 +50,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 50 — EXACT SECH–GAUSSIAN COHERENCE BENCHMARK")
+banner("STAGE 067 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK")
 
 # ---------------------------------------------------------------------------
 # 1. Exact norm algebra

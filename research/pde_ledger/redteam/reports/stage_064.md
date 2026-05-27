@@ -1,229 +1,213 @@
 ---
 unit_id: 064
 batch: III.3
-auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-22T00:00:00Z
+auditor_model: claude-opus-4-7-1m
+audit_date: 2026-05-26T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 2
+paper_alignment: partial
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  paper_appendix: present
 ---
 
 # Audit unit 064 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_064.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row at line 106, input directive at line 246)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.txt`
 
+## What the paper claims
+
+The paper card and notes claim, for the parent equilibrium source/support alignment in the local compressional linearization, the following deliverables. (a) The equilibrium-induced source profile is fixed pointwise by the support loading, `chi_sigma(y) = g_phi chi_phi(y) / H(y)` with `H(y) = h'(rho_*(y))` (boxed Eq. (eq:app-stage064-source-profile)). (b) On this aligned branch the overlap invariants reduce to `O_(sigma phi) = g_phi I_1`, `N_(sigma sigma) = g_phi^2 I_2`, with `I_1 = int chi_phi^2/H`, `I_2 = int chi_phi^2/H^2` (Eqs. (eq:app-stage064-I1I2), (eq:app-stage064-overlaps)). (c) The coherence factor `C_(sigma phi)^2 = I_1^2 / (N_(phi phi) I_2)` with Cauchy bound `<= 1` (Eq. (eq:app-stage064-coherence)). (d) The *general* equilibrium softening is `Delta K_X^(eq) = g_phi^2 I_1` and `G_eq = g_phi^2 I_1 / K_X` (Eq. (eq:app-stage064-softening)) — this holds for any `H(y)`, not only the matched layer. (e) In the thin active layer where `H` is approximately constant, the branch becomes exactly matched: `C_(sigma phi)^2 = 1` and `G_eq = g_phi^2 N_(phi phi) / (K_X H_w)` (boxed Eq. (eq:app-stage064-matched-layer)). The `\stagefield{Output}` line cites (a) and (e) explicitly; (b)-(d) are body equations supporting those outputs.
+
 ## What the script claims to verify
 
-Per the docstring, the script claims to verify five things: (1) a closure law `chi_sigma(y) = g_phi * chi_phi(y) / H(y)` from a local static linear-response argument; (2) that the overlap invariants reduce to `O = g_phi*I1`, `N_ss = g_phi^2*I2` with `I1 = ∫chi_phi^2/H` and `I2 = ∫chi_phi^2/H^2`; (3) that the coherence factor is `C^2 = I1^2/(N_pp*I2)`; (4) that in the constant-compressibility limit `H = H_w`, the coherence becomes exactly 1 and the gain reproduces the Stage-45/46 formula `G_eq = g_phi^2 N_pp/(K_X H_w)`; (5) the discrete two-point Cauchy gap identity; and (6) an eliminated-source softening identity `F_eff = (1/2)(K_X - Lambda^2/Theta) phi^2` with `Lambda^2/Theta = g_phi^2 N_pp/H_w` under the matched branch.
+The sympy script asserts: (A1) the closure `chi_sigma = g_phi chi_phi/H` from local sigma-energy minimisation; (A2-A3) the overlap identities `O = g_phi I_1`, `N_ss = g_phi^2 I_2` on a concrete constant-H Gaussian; (A4-A5) Gaussian-integral reductions `I_1 = N_pp/H_w`, `I_2 = N_pp/H_w^2` for the constant Gaussian; (A6-A7) substituting these matched-layer reductions into the abstract `C^2` and `G_eq` gives `C^2 = 1` and `G_eq = g_phi^2 N_pp/(K_X H_w)`; (A8) the discrete two-point Cauchy gap identity `N_pp I_2 - I_1^2 = w1 w2 (H1-H2)^2/(H1^2 H2^2) >= 0`; (A9) the abstract elimination `sigma_stat = Lambda phi/Theta` gives `F_eff = (1/2)(K_X - Lambda^2/Theta) phi^2`; (A10) substituting `I_2 -> I_1^2/N_pp` and `N_pp -> I_1 H_w` into `Lambda_abs^2/Theta_abs` (with `Theta_abs = H_w N_ss`, `Lambda_abs = g_phi O_(sigma phi)`) reduces to `g_phi^2 I_1`. The mathematica script mirrors all of these checks 1-for-1.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script check(s) | Status |
+|---|---|---|
+| (a) closure law `chi_sigma = g_phi chi_phi/H` | A1 (sympy:64-68, math:36-41) | match |
+| (b) overlap identities `O = g_phi I_1`, `N_ss = g_phi^2 I_2` | A2-A3 (sympy:74-82, math:46-56), abstract definitions sympy:85-86, math:58-59 | partial — checked only on constant-H Gaussian; general case is algebraic-by-substitution (chi_sigma already substituted), so this is essentially definitional. The discrete two-point check (A8) supplies the real general-case audit. |
+| (c) `C^2 = I_1^2/(N_pp I_2) <= 1` | A8 Cauchy gap (sympy:124-139, math:96-108); the formula `C^2 = I_1^2/(N_pp I_2)` is built at sympy:87 / math:60 | match (formula construction + Cauchy bound check) |
+| (d) general softening `Delta K_X^eq = g_phi^2 I_1` (for ANY H(y)) | A10 (sympy:156-165, math:123-129) attempts this but uses matched-layer substitutions to force the answer | mismatch — see Finding F1 |
+| (e) matched layer: `C^2 = 1` and `G_eq = g_phi^2 N_pp/(K_X H_w)` | A6-A7 (sympy:115-122, math:88-94) | match |
+| Engine independence (policy requirement) | sympy + mathematica scripts | mismatch — transliteration (Finding F2) |
+
+`paper_alignment: partial` — four of five deliverables verified, but (d) the general softening is not verified.
 
 ## Assertion inventory
 
-| #  | Script       | Line | Form                                                                                                  | Anchored to claim? |
-|----|--------------|------|-------------------------------------------------------------------------------------------------------|--------------------|
-| A1 | sympy        | 77   | `expect_zero("matched-layer coherence", C2_const - 1)`                                                | no (tautological under `const_subs`) |
-| A2 | sympy        | 78   | `expect_zero("matched-layer gain ...", Geq_const - g_phi**2 * Npp / (KX * Hw))`                       | no (tautological under `const_subs`) |
-| A3 | sympy        | 95   | `expect_zero("two-point Cauchy gap identity", gap_disc - gap_expected)`                               | yes (non-trivial algebraic identity) |
-| A4 | sympy        | 107  | `expect_zero("effective support softening", F_eff - (1/2)(K_X - Lambda^2/Theta) phi^2)`               | yes (real derivation from F) |
-| A5 | sympy        | 118  | `expect_zero("equilibrium softening equals g_phi^2 I1", soft_eq - g_phi**2 * (Npp/Hw))`               | no (tautological under `const_subs`) |
-| A6 | mathematica  | 49   | `expectZero["matched-layer coherence", c2Const - 1]`                                                  | no (mirror of A1) |
-| A7 | mathematica  | 50   | `expectZero["matched-layer gain ...", gEqConst - gPhi^2*npp/(kX*hw)]`                                 | no (mirror of A2) |
-| A8 | mathematica  | 64   | `expectZero["two-point Cauchy gap identity", gapDisc - gapExpected]`                                  | yes (mirror of A3, but holds) |
-| A9 | mathematica  | 77   | `expectZero["effective support softening", fEff - 1/2*(kX - lambda^2/theta)*phi^2]`                   | yes (mirror of A4) |
-| A10| mathematica  | 84   | `expectZero["equilibrium softening equals g_phi^2 I1", softEq - gPhi^2*(npp/hw)]`                     | no (mirror of A5) |
-
-Of the 10 assertions, six (A1, A2, A5, A6, A7, A10) are guaranteed-true by direct substitution; only A3/A8 and A4/A9 carry real algebraic content.
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 68 | `expect_zero("closure law ...", chi_sigma_closure - g_phi*chi_phi_loc/H_loc)` | (a) closure law | yes |
+| A2 | sympy | 81 | `expect_zero("overlap O = g_phi * I1 (integral form)", ...)` (constant Hw, Gaussian) | (b) | partial — Gaussian + constant H only; algebraically definitional once chi_sigma is substituted |
+| A3 | sympy | 82 | `expect_zero("overlap N_ss = g_phi^2 * I2 (integral form)", ...)` | (b) | partial — same caveat as A2 |
+| A4 | sympy | 108 | `expect_zero("matched-layer I1 reduction", I1_int - Npp_int/Hw)` | supports (e) | yes |
+| A5 | sympy | 109 | `expect_zero("matched-layer I2 reduction", I2_int - Npp_int/Hw^2)` | supports (e) | yes |
+| A6 | sympy | 121 | `expect_zero("matched-layer coherence", C2_const - 1)` | (e) C^2=1 | yes |
+| A7 | sympy | 122 | `expect_zero("matched-layer gain ...", Geq_const - g_phi^2*Npp/(KX*Hw))` | (e) G_eq matched | yes |
+| A8 | sympy | 139 | `expect_zero("two-point Cauchy gap identity", gap_disc - gap_expected)` | (c) Cauchy bound | yes |
+| A9 | sympy | 151-154 | `expect_zero("effective support softening", F_eff - (1/2)(KX - Lambda^2/Theta)*phi^2)` | abstract elimination scaffolding for (d) | yes (algebraic identity, but does not by itself anchor `Delta K_X = g_phi^2 I_1` to the parent equilibrium) |
+| A10 | sympy | 163-165 | `expect_zero("equilibrium softening equals g_phi^2 I1", soft_matched - g_phi^2*I1)` | claims to verify (d), but uses matched-layer subs `I2 -> I_1^2/N_pp` AND `N_pp -> I_1 H_w` | no — only re-derives the matched-layer value; the general claim `Delta K_X^eq = g_phi^2 I_1` for arbitrary `H(y)` is not exercised |
+| M1-M10 | mathematica | 41,55,56,81,82,93,94,108,121,129 | parallel to A1-A10 | same | same — see Finding F2 |
 
 ## Findings
 
-### F1 — tautological_check
-
-**Severity:** high
-**Files:**
-- `scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py:71-78`
-- `mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl:43-50`
-
-**What's wrong:**
-The "matched-layer coherence = 1" and "matched-layer gain" assertions (A1/A2 and their Mathematica mirrors A6/A7) are forced true by the substitution dictionary `const_subs = {I1: Npp/Hw, I2: Npp/Hw**2}`. Tracing the algebra:
-
-```
-C2 = (g_phi*I1)^2 / (Npp * g_phi^2 * I2) = I1^2 / (Npp * I2)
-C2.subs(I1=Npp/Hw, I2=Npp/Hw^2) = (Npp/Hw)^2 / (Npp * Npp/Hw^2)
-                                = (Npp^2/Hw^2) / (Npp^2/Hw^2) = 1
-```
-
-The result `C2_const = 1` is an arithmetic consequence of choosing `I2 = I1^2/Npp` — and the substitution dictionary *is* exactly that choice in disguise (`(Npp/Hw)^2/Npp = Npp/Hw^2`). The physical content the docstring claims to verify — that "the matched-layer limit `H(y) = H_w` forces `I1 = Npp/Hw` and `I2 = Npp/Hw^2`" — is asserted by the substitution rather than derived. No `chi_phi(y)` profile is ever defined, no `H(y)` function is ever defined, and `Npp = ∫chi_phi^2` is never tied to the discrete `Npp` symbol.
-
-The gain assertion `Geq_const - g_phi**2 * Npp / (KX * Hw) == 0` is the same trick one step later: `Geq = g_phi^2 * I1 / KX` and `I1` is substituted to `Npp/Hw`, so the RHS is just `g_phi^2 * (Npp/Hw) / KX`, identical to the subtracted constant. The assertion cannot fail.
-
-**Why this matters:**
-Two of the five "main checks" the docstring advertises (coherence reaching 1 in the matched-layer limit, gain reproducing Stage-45/46) are verified only by a tautology. If `Hw` were typoed as `Hw^2` in the substitution, the assertion would still pass with a corresponding redefinition. The script provides no defense against a wrong derivation upstream.
-
-**Required change:**
-Add an explicit, parameterised concrete-profile derivation. Introduce a smooth `chi_phi(y)` (e.g., a Gaussian `chi_phi = exp(-y^2/(2*L^2))`) and a constant `H(y) = Hw`, define `Npp_int = sp.integrate(chi_phi**2, (y, -sp.oo, sp.oo))`, `I1_int = sp.integrate(chi_phi**2 / Hw, (y, -sp.oo, sp.oo))`, `I2_int = sp.integrate(chi_phi**2 / Hw**2, (y, -sp.oo, sp.oo))`, then `expect_zero` on `I1_int - Npp_int/Hw` and `I2_int - Npp_int/Hw**2`. This verifies that the matched-layer reductions follow from the integral definitions — not from a hand-substitution. Only after that step should the existing `C2_const - 1` and `Geq_const - ...` checks run (and at that point they would consume `Npp_int, I1_int, I2_int` rather than abstract symbols). Mirror the same derivation in the `.wl` script with `Integrate[Exp[-y^2/L^2], {y, -Infinity, Infinity}]`-style calls.
-
-**Verification:**
-New checks `matched-layer I1 reduction = 0` and `matched-layer I2 reduction = 0` should appear in the sympy output ahead of "matched-layer coherence", with a printed concrete value of `Npp_int = sqrt(pi)*L` (for a unit-amplitude Gaussian) or similar.
-
-### F2 — tautological_check
+### F1 — insufficient_verification
 
 **Severity:** medium
+
 **Files:**
-- `scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py:114-118`
-- `mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl:79-84`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py:156-165`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl:123-129`
 
 **What's wrong:**
-The "equilibrium softening equals g_phi^2 I1" assertion (A5/A10) is tautological by the same `const_subs` mechanism. Trace:
 
-```
-Theta_eq = Hw * Nss.subs(const_subs) = Hw * g_phi^2 * (Npp/Hw^2) = g_phi^2 * Npp/Hw
-Lambda_eq = g_phi * Osp.subs(const_subs) = g_phi * g_phi * (Npp/Hw) = g_phi^2 * Npp/Hw
-soft_eq = Lambda_eq^2 / Theta_eq = (g_phi^2*Npp/Hw)^2 / (g_phi^2*Npp/Hw) = g_phi^2 * Npp/Hw
-```
+The paper states the equilibrium softening as a general (any-H) identity (notes Section 4, paper Eq. (eq:app-stage064-softening)):
 
-`soft_eq - g_phi**2 * (Npp/Hw) == 0` is therefore an algebraic identity once `const_subs` is applied; no physics is being checked. The docstring says this verifies that the "equilibrium softening equals `g_phi^2 * I1`" — but again `I1` has been hand-substituted to `Npp/Hw`, so the equality `soft_eq = g_phi^2 * I1` is just `g_phi^2 * Npp/Hw = g_phi^2 * (Npp/Hw)`.
+> "On the equilibrium-aligned branch, the direct parent elimination gives `Delta K_X^(eq) = g_phi^2 I_1`."
 
-**Why this matters:**
-The script presents this as the "equilibrium softening" identity tying `Lambda^2/Theta` back to the `g_phi^2 I1` overlap. A genuine check would compare `Lambda^2/Theta` derived from the abstract `Osp, Nss` (before substitution) against `g_phi^2 I1` (also before substitution) using only the closure relations.
+The paper card boxes it without a matched-layer qualifier:
 
-**Required change:**
-Replace lines 114-118 of the sympy script (and the mirroring block in the .wl) with a check at the abstract level:
-```
-Theta_abs = Hw * Nss   # = Hw * g_phi^2 * I2
-Lambda_abs = g_phi * Osp   # = g_phi^2 * I1
-soft_abs = sp.simplify(Lambda_abs**2 / Theta_abs)
-# In the matched layer, the closure gives I2 = I1^2/Npp; only THEN should it reduce to g_phi^2 * I1.
-soft_matched = sp.simplify(soft_abs.subs(I2, I1**2 / Npp))
-expect_zero("equilibrium softening (closure form)", soft_matched - g_phi**2 * I1)
-```
-This separates two facts the current code conflates: (i) `Lambda^2/Theta = g_phi^2 * I1^2 / (Npp * I2)` always, and (ii) the matched-layer closure forces `I2 = I1^2/Npp`. The assertion `soft_matched - g_phi^2 * I1 == 0` then non-trivially exercises the closure.
+> `\Delta K_X^{\rm eq}=g_\phi^2 I_1, \qquad G_{\rm eq}=\frac{g_\phi^2 I_1}{K_X}.`
 
-**Verification:**
-A new printed line `soft_abs = I1**2*g_phi**2/(I2*Npp)` (or equivalent) must appear before the assertion, demonstrating that the pre-substitution form is non-trivial; the assertion then fires after a single `subs(I2, I1**2/Npp)`.
-
-### F3 — insufficient_verification
-
-**Severity:** high
-**Files:**
-- `scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py:30-50`
-- `mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl:26-41`
-
-**What's wrong:**
-The docstring's first and second main checks are: (1) the closure law `chi_sigma(y) = g_phi * chi_phi(y) / H(y)` arising from a "local static linear-response closure"; (2) the overlap invariants `O = g_phi * I1`, `N_ss = g_phi^2 * I2` with `I1 = ∫chi_phi^2/H, I2 = ∫chi_phi^2/H^2`. The script declares `I1, I2, Npp, g_phi, KX, Hw` as abstract positive symbols and writes:
-
+The sympy script tries to verify this at lines 156-165 via:
 ```python
-Osp = sp.simplify(g_phi * I1)
-Nss = sp.simplify(g_phi**2 * I2)
+Theta_abs = sp.simplify(Hw * Nss)          # = Hw * g_phi^2 * I2
+Lambda_abs = sp.simplify(g_phi * Osp)      # = g_phi^2 * I1
+soft_abs = sp.simplify(Lambda_abs**2 / Theta_abs)   # = g_phi^2 * I1^2 / (Hw * I2)
+soft_matched = sp.simplify(soft_abs.subs(I2, I1**2 / Npp).subs(Npp, I1 * Hw))
+expect_zero("equilibrium softening equals g_phi^2 I1", soft_matched - g_phi**2 * I1)
 ```
 
-These are *definitional* — `sp.simplify(g_phi*I1)` does no algebraic work since the product is already simplified. The "closure law" itself (chi_sigma = g_phi chi_phi/H) is never written down as a sympy expression, never verified by minimising a free-energy functional in sigma, never tied to any local linear response argument. Neither integral expression for `I1` or `I2` ever appears. The audit therefore does not exercise main checks 1-2 at all; the assertions only fire on later algebraic manipulations of the abstract symbols.
+Two problems:
+
+1. `Theta_abs = H_w * N_(sigma sigma)` is the matched-layer identification of the source self-energy coefficient, not the general one. From the parent equilibrium with `chi_sigma = g_phi chi_phi/H`, the general source self-energy coefficient is `Theta = int H(y) chi_sigma^2 d^3y = g_phi^2 int chi_phi^2/H = g_phi^2 I_1`, NOT `H_w * g_phi^2 * I_2`.
+
+2. To get the desired answer `g_phi^2 I_1` out of the formula in (1), the script substitutes BOTH `I_2 -> I_1^2/N_pp` (the Cauchy-equality condition) AND `N_pp -> I_1 H_w` (the matched-layer constant-H consequence). After these two matched-layer substitutions the algebra is forced to the matched-layer answer; it does not test the general identity. The mathematica script (lines 123-129) does exactly the same chain.
+
+The general identity `Delta K_X^eq = g_phi^2 I_1` (valid for any `H(y)`) is therefore not actually verified in either engine.
 
 **Why this matters:**
-The script presents itself as verifying the physics closure that *leads to* the overlap forms. In fact it only verifies arithmetic on the assumed forms. A reader of the saved output would conclude the closure was checked — it wasn't.
+
+The paper card lists the general softening as a body equation that supports the matched-layer output. If a future stage cites `Delta K_X^eq = g_phi^2 I_1` outside the matched-layer regime, the audit chain currently provides no script-side verification. The matched-layer case is independently established by A6-A7, so A10 as written contributes nothing beyond a self-consistency loop.
 
 **Required change:**
-Add an explicit derivation block before line 49 of the sympy script:
+
+Replace the matched-layer-only chain at sympy lines 156-165 (and mathematica lines 123-129) with a derivation that verifies `Delta K_X^eq = g_phi^2 I_1` directly from the parent equilibrium for *general* H(y). One clean way is a discrete two-point construction (which has already been used at A8 to verify the Cauchy gap):
+
+For two support points with weights `w_k` (representing `chi_phi_k^2 dV`) and stiffnesses `H_k`, with `chi_sigma_k = g_phi chi_phi_k / H_k`, on the equilibrium-aligned branch:
+- `I_1 = sum_k chi_phi_k^2 / H_k = w_1/H_1 + w_2/H_2` (matches `I1_disc`).
+- `Theta = sum_k H_k chi_sigma_k^2 = g_phi^2 sum_k chi_phi_k^2 / H_k = g_phi^2 I_1`.
+- `Lambda = g_phi sum_k chi_phi_k chi_sigma_k = g_phi^2 sum_k chi_phi_k^2 / H_k = g_phi^2 I_1`.
+- Therefore `Lambda^2/Theta = (g_phi^2 I_1)^2 / (g_phi^2 I_1) = g_phi^2 I_1`.
+
+Concretely, after the existing two-point Cauchy-gap block (sympy lines 124-139), add (do NOT delete the existing A9 `F_eff` check — that block is the abstract elimination scaffolding and is fine):
+```python
+# General-H equilibrium softening on a two-point parent equilibrium branch.
+Theta_general = sp.simplify(g_phi**2 * I1_disc)
+Lambda_general = sp.simplify(g_phi**2 * I1_disc)
+soft_general = sp.simplify(Lambda_general**2 / Theta_general)
+expect_zero(
+    "general equilibrium softening equals g_phi^2 I_1",
+    soft_general - g_phi**2 * I1_disc,
+)
 ```
-# Local static closure: minimize (1/2) H(y) sigma^2 - g_phi chi_phi(y) sigma over sigma
-# at fixed y.  H(y) > 0, real.
-y = sp.symbols('y', real=True)
-chi_phi_sym = sp.Function('chi_phi')(y)
-H_sym = sp.Function('H')(y)
-sigma_sym = sp.symbols('sigma_local', real=True)
-local_F = sp.Rational(1,2) * H_sym * sigma_sym**2 - g_phi * chi_phi_sym * sigma_sym
-chi_sigma_pred = sp.solve(sp.diff(local_F, sigma_sym), sigma_sym)[0]
-expect_zero("closure law chi_sigma = g_phi chi_phi/H", chi_sigma_pred - g_phi*chi_phi_sym/H_sym)
-```
-Then, with a concrete `chi_phi = exp(-y^2/(2 L^2))` and `H = Hw` constant, define `Npp_int, I1_int, I2_int` as integrals and `Osp_int = sp.integrate(chi_phi*chi_sigma_pred.subs(...), y)` and confirm `Osp_int - g_phi*I1_int == 0` etc. Mirror the same construction in the `.wl` (using `D[]` and `Integrate[]`).
+Then delete (or relabel as a sanity-check on the matched layer) the existing lines 156-165. The replacement does NOT use `H_w`, does not assume `I_2 = I_1^2/N_pp`, and does not assume `N_pp = I_1 H_w` — i.e., it exercises the general-H case (H1 != H2 in the two-point model). Mirror the same restructuring in the mathematica script at lines 123-129, but write it independently — see F2.
 
 **Verification:**
-A line `closure law chi_sigma = g_phi chi_phi/H = 0` must appear in the new sympy output, followed by `Osp_int - g_phi*I1_int = 0` and `Nss_int - g_phi^2*I2_int = 0` with concrete integral values printed.
 
-### F4 — mathematica_transliteration
+After the patch, the sympy and mathematica scripts each produce a new `expect_zero`/`expectZero` line with name containing "general equilibrium softening" and the assertion evaluates to 0. The check must NOT contain substitutions of the form `I_2 -> I_1^2/N_pp` or `N_pp -> I_1 H_w`. Both scripts still exit 0.
+
+### F2 — mathematica_transliteration
 
 **Severity:** medium
+
 **Files:**
-- `mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl:26-84`
-- (against) `scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py:49-118`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage064_equilibrium_alignment_mathematica_audit.wl` (entire script, lines 26-134)
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py` (entire script, lines 49-167)
 
 **What's wrong:**
-The Mathematica script is a line-by-line port of the SymPy script rather than an independent derivation. Quoting corresponding blocks:
 
-SymPy lines 57-65:
-```
-Osp = sp.simplify(g_phi * I1)
-Nss = sp.simplify(g_phi**2 * I2)
-C2 = sp.simplify(Osp**2 / (Npp * Nss))
-Geq = sp.simplify(g_phi**2 * I1 / KX)
-```
-Mathematica lines 33-36 (same order, same lowercased names):
-```
-osp = FullSimplify[gPhi*i1, ...];
-nss = FullSimplify[gPhi^2*i2, ...];
-c2 = FullSimplify[osp^2/(npp*nss), ...];
-gEq = FullSimplify[gPhi^2*i1/kX, ...];
-```
+The `.wl` script is a line-by-line port of the `.py` script: same variable choreography (sympy `g_phi, K_X, N_pp, I1, I2, H_w` -> mathematica `gPhi, kX, npp, i1, i2, hw`), same intermediate steps in the same order, same Gaussian profile `Exp[-y^2/(2 L^2)]`, same `solve(diff(F, sigma), sigma)` -> `Solve[D[f, sigma] == 0, sigma]`, same matched-layer substitution chain. Three corresponding sections:
 
-SymPy lines 71-72:
-```
-const_subs = {I1: Npp / Hw, I2: Npp / Hw**2}
-C2_const = sp.simplify(C2.subs(const_subs))
-```
-Mathematica lines 43-44:
-```
-constSubs = {i1 -> npp/hw, i2 -> npp/hw^2};
-c2Const = FullSimplify[c2 /. constSubs, ...];
-```
+(1) Closure law minimisation:
+- sympy:63-68 — `F_loc = sp.Rational(1,2)*H_loc*sigma_loc**2 - g_phi*chi_phi_loc*sigma_loc; closure_solutions = sp.solve(sp.diff(F_loc, sigma_loc), sigma_loc); chi_sigma_closure = closure_solutions[0]`
+- mathematica:36-41 — `fLoc = (1/2) hLoc[yLoc] sigmaLoc^2 - gPhi chiPhiLoc[yLoc] sigmaLoc; closureSolutions = Solve[D[fLoc, sigmaLoc] == 0, sigmaLoc]; chiSigmaClosure = sigmaLoc /. First[closureSolutions]`
 
-SymPy lines 82-91 vs. Mathematica lines 52-60: identical `w1, w2, H1, H2` choreography, identical `Npp_disc/i1Disc/i2Disc` definitions, identical `expected_gap` form.
+(2) Gaussian integral block:
+- sympy:71-82 — `chi_phi_g = sp.exp(-y_int**2/(2*L_int**2)); H_g = Hw; ... Osp_int_check = sp.integrate(chi_sigma_g*chi_phi_g, (y_int, -sp.oo, sp.oo))`
+- mathematica:45-56 — `chiPhiG = Exp[-yInt^2/(2 lInt^2)]; hG = hw; ... ospIntCheck = Integrate[chiSigmaG*chiPhiG, {yInt, -Infinity, Infinity}, ...]`
 
-SymPy lines 100-110 vs. Mathematica lines 71-77: identical free-energy `F = (Theta/2)sigma^2 - Lambda sigma phi + (KX/2) phi^2`, identical Solve step, identical target form.
+(3) Matched-layer softening chain (the part flagged in F1):
+- sympy:158-165 — `Theta_abs = sp.simplify(Hw * Nss); Lambda_abs = sp.simplify(g_phi * Osp); soft_abs = sp.simplify(Lambda_abs**2 / Theta_abs); soft_matched = sp.simplify(soft_abs.subs(I2, I1**2/Npp).subs(Npp, I1*Hw))`
+- mathematica:123-127 — `thetaAbs = FullSimplify[hw*nss, ...]; lambdaAbs = FullSimplify[gPhi*osp, ...]; softAbs = FullSimplify[lambdaAbs^2/thetaAbs, ...]; softMatched = FullSimplify[(softAbs /. i2 -> i1^2/npp) /. npp -> i1*hw, ...]`
 
-This mirror-image structure violates the second-engine policy: when both engines make the same definitional choices (e.g., the `const_subs` dictionary appears verbatim), they cannot independently catch a derivation error upstream.
+The mathematica script never derives any identity by an alternative path. It does not, for example, verify the Gaussian-integral block on a different profile, treat Cauchy-Schwarz as a continuous-integral inequality, or take a controlled limit. It echoes the sympy algebra in Wolfram Language syntax.
 
 **Why this matters:**
-The point of a second engine is *adversarial cross-check* on the algebra. If the .wl makes every choice the .py makes, the second engine's `PASS` adds no information beyond confirming that Mathematica's algebra agrees with sympy's on the same inputs — which we already know.
+
+The second-engine policy requires the Mathematica audit to derive each claim *independently* from physical premises, so that the two engines act as cross-checks on each other rather than a single derivation re-typed. A transliteration cannot detect algebraic bugs in the original derivation; both engines would carry the same error.
 
 **Required change:**
-Refactor the `.wl` so its derivation proceeds independently. Concretely:
-- In the matched-layer block, do not use a `constSubs` dictionary. Instead define a concrete `chiPhi[y_] := Exp[-y^2/(2 L^2)]` and `H[y_] := hw`, then `nppInt = Integrate[chiPhi[y]^2, {y, -Infinity, Infinity}]`, `i1Int = Integrate[chiPhi[y]^2/H[y], ...]`, `i2Int = Integrate[chiPhi[y]^2/H[y]^2, ...]`. Then `c2Const` is computed from these integrals, not from a substitution dict.
-- In the softening block, derive `Lambda^2/Theta` from a `Reduce` of `D[f, sigma] == 0` followed by `Eliminate[..., sigma]` rather than reproducing the sympy `Solve`/`subs` pattern.
+
+Rewrite the Mathematica audit so each claim is derived by a path that does *not* mirror the sympy choreography. Suggested independent paths (use these or equivalents):
+
+- **Closure law (M1)**: derive `chi_sigma = g_phi chi_phi/H` from the Euler-Lagrange / variational derivative of the source-energy functional with respect to `sigma[y]` (treating `sigma` as a function, not a finite-dim variable). For example, use `VariationalD[(1/2) H[y] sigma[y]^2 - gPhi chiPhi[y] sigma[y], sigma[y], y]` from `` VariationalMethods` ``, set it to zero, and solve for `sigma[y]`.
+- **Overlap identities (M2-M3) and matched-layer integral reductions (M4-M5)**: verify on a *different* concrete profile than the sympy Gaussian — for example a Lorentzian `1/(1 + y^2/L^2)` (which has finite `Integrate[..., {y, -Infinity, Infinity}]` and would give independent symbolic results). Using a Gaussian like sympy makes this a transliteration; using a different profile makes it an independent check.
+- **Cauchy bound (M8)**: instead of repeating the two-point algebra, invoke Cauchy-Schwarz in continuous form by setting `f[y] = chiPhi[y]/Sqrt[H[y]]`, `g[y] = chiPhi[y]/H[y]`, and showing `(Integrate[f g])^2 <= Integrate[f^2] Integrate[g^2]` symbolically for a concrete (non-Gaussian) profile and a non-constant H, e.g., H[y] = h0 + a*y^2.
+- **Softening (M10, see F1)**: write the *general* derivation `Theta = gPhi^2 I_1`, `Lambda = gPhi^2 I_1` -> `Lambda^2/Theta = gPhi^2 I_1` symbolically on the two-point branch (no matched-layer substitutions). Compute `Theta = Sum[H_k chiSigma_k^2, ...]` and `Lambda = gPhi Sum[chiPhi_k chiSigma_k, ...]` literally rather than via `hw*nss` / `gPhi*osp`.
+- **Matched-layer reductions on the abstract `C^2` and `G_eq` (M6-M7)**: take the limit by `Limit[..., H[y] -> hwConst]` applied to the abstract integral expressions, or by an explicit perturbative expansion `H[y] = hw (1 + epsilon delta[y])` and showing the leading-order coherence is 1.
+
+The goal is that no two corresponding lines in `.py` and `.wl` should be one-to-one syntactic translations.
 
 **Verification:**
-The refactored `.wl` should print concrete integral values (e.g., `nppInt = Sqrt[Pi]*L`) and the matched-layer `c2Const` and `gEqConst` checks should consume those integrals — not symbolic `i1/i2`. The directive for F1 and F3 dovetails with this requirement.
+
+After the rewrite, a per-line correspondence audit between `.py` and `.wl` should show no clear 1:1 mapping between sympy and mathematica blocks. The mathematica script must still verify every claim in the paper card (closure, overlaps, coherence, Cauchy bound, matched-layer C^2 = 1, matched-layer gain, and the general softening from F1), and its assertions must still exit 0.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is **not** an independent re-derivation; it is a transliteration of the SymPy script (see F4 for paired excerpts). Same variable order, same `constSubs == const_subs`, same five-assertion structure, same labels on `expectZero`. Both engines arrive at the same `PASS` lines via the same algebraic path; the cross-check therefore degenerates to "two CASes agree on substitution arithmetic."
+Both `.py` and `.wl` are present. The `.wl` is a line-by-line port of the `.py`, not an independent derivation. See Finding F2 above for three pairs of corresponding sections.
 
 ## Engine cross-check
 
-Both engines print the same numerical and symbolic results:
-- `O_(sigma phi) = I1*g_phi` (py) / `gPhi*i1` (wl) — agree
-- `C_(sigma phi)^2 = I1**2/(I2*N_pp)` (py) / `i1^2/(i2*npp)` (wl) — agree
-- `G_eq | H=const = N_pp*g_phi**2/(H_w*K_X)` (py) / `(gPhi^2*npp)/(hw*kX)` (wl) — agree
-- `N_pp I2 - I1^2 = w1*w2*(H1-H2)^2/(H1^2*H2^2)` — agree
-- `F_eff = phi^2*(K_X*Theta - Lambda^2)/(2*Theta)` (py) / `(phi^2*(-lambda^2 + kX*theta))/(2*theta)` (wl) — agree
-- `(Lambda^2/Theta)_eq = N_pp*g_phi**2/H_w` — agree
+Both engines pass their assertions to zero. The captured outputs agree on every numerical/symbolic result:
 
-The engines agree, but because the .wl is a transliteration of the .py, the agreement is mechanical, not adversarial.
+| Quantity | sympy | mathematica |
+|---|---|---|
+| Closure | `g_phi*chi_phi(y_loc)/H(y_loc)` | `(gPhi*chiPhiLoc[yLoc])/hLoc[yLoc]` |
+| `N_pp_int` (Gaussian) | `sqrt(pi)*L_int` | `lInt*Sqrt[Pi]` |
+| `I_1_int` | `sqrt(pi)*L_int/H_w` | `(lInt*Sqrt[Pi])/hw` |
+| `I_2_int` | `sqrt(pi)*L_int/H_w^2` | `(lInt*Sqrt[Pi])/hw^2` |
+| `C^2 \| H=const` | `1` | `1` |
+| `G_eq \| H=const` | `N_pp*g_phi^2/(H_w*K_X)` | `(gPhi^2*L*Sqrt[Pi])/(hw*kX)` (= same up to identifying `N_pp = L*Sqrt[Pi]`) |
+| Two-point Cauchy gap | `w1*w2*(H1-H2)^2/(H1^2*H2^2)` | `((h1-h2)^2*w1*w2)/(h1^2*h2^2)` |
+| `sigma_stat` | `Lambda*phi/Theta` | `(lambda*phi)/theta` |
+| Softening (matched-only) | `I1*g_phi^2` | `gPhi^2*i1` |
+
+`engines_agree: true`. Outputs are fresh (sympy .txt mtime 2026-05-22 19:48 vs .py 19:46; mathematica .txt 19:48 vs .wl 19:47).
 
 ## Verdict justification
 
-The script passes its `expect_zero` calls because six of ten assertions (A1, A2, A5, A6, A7, A10) are tautologies under the `const_subs` dictionary that hand-encodes the answers; the only non-trivial checks are the discrete Cauchy gap identity (A3/A8) and the free-energy softening algebra (A4/A9). The docstring's claimed main checks 1 and 2 (the closure law and the integral definitions of `I1`, `I2`) are never actually exercised — `chi_phi(y)` and `H(y)` are never instantiated. Add to this the fact that the Mathematica script mirrors the SymPy script structurally rather than re-deriving from first principles, and the cross-engine cross-check provides no additional safety. Verdict: **findings**; not stop-cold because the corrections are local (replace abstract-symbol assertions with concrete-profile integral derivations) and do not propagate to downstream units in a way that would invert a constant or sign.
+The script-side closure law, overlap formulas, coherence formula, Cauchy bound, matched-layer coherence, and matched-layer gain all match the paper card and notes; their assertions are non-tautological and exercised against concrete integrals and a discrete two-point model. The paper's *general* equilibrium softening `Delta K_X^eq = g_phi^2 I_1` (valid for any `H(y)`, not only matched layer) is not actually verified — the script's A10 chain forces the answer via two matched-layer substitutions (`I_2 -> I_1^2/N_pp` and `N_pp -> I_1 H_w`), so the check is essentially `g_phi^2 I_1 == g_phi^2 I_1` once the dust settles, providing no independent test of the general case. Additionally, the Mathematica script is structurally a line-by-line port of the SymPy script, violating the second-engine independent-derivation policy. Verdict: `findings`, two medium-severity items. No `stop_cold` — neither finding is `UNFIXABLE` (both have clean remediations) and neither is `CRITICAL_DOWNSTREAM` (the matched-layer outputs that downstream stages 065-066 use *are* verified correctly by A6-A7; the more general softening identity is unproven but is not specifically cited by 065-066 per the paper card).
 
 ## Self-test notes
 
-- Variable independence: F3's proposed `sp.diff(local_F, sigma_sym)` — `local_F` depends on `sigma_sym` via the `(1/2) H sigma^2 - g_phi chi_phi sigma` form, so the derivative is `H*sigma - g_phi*chi_phi`, non-trivially zero at `sigma = g_phi chi_phi/H`. Confirmed.
-- Symmetry/parity: F1's proposed Gaussian `chi_phi = exp(-y^2/(2L^2))` is even; `chi_phi^2/H` is even, integral over `(-∞, ∞)` is nonzero (`Hw>0`, gives `sqrt(pi)*L/Hw`). No parity-driven zero traps.
-- Trivial-case pre-check: With `L=1, Hw=1`, `Npp_int = sqrt(pi)`, `I1_int = sqrt(pi)`, `I2_int = sqrt(pi)`, so `I1_int - Npp_int/Hw = 0` and `I2_int - Npp_int/Hw^2 = 0` — proposed assertions reduce correctly.
-- Path specifications: F-block targets reference `scripts/...sympy_audit.py` and `mathematica/...mathematica_audit.wl`, consistent with the rest of the project layout.
+I checked: (i) no `sp.diff(EXPR, VAR)` where `VAR` is independent of `EXPR` — the local-energy minimisation `diff(F_loc, sigma_loc)` is genuine (F_loc depends on sigma_loc explicitly through the quadratic term); (ii) parity of the Gaussian integrals is OK (`chi_phi^2/H_w^k` is even, integral is nonzero, no spurious cancellation); (iii) the proposed two-point fix for F1 reduces to `g_phi^2 I_1 = g_phi^2 I_1` on a general-H model only by virtue of `Theta = g_phi^2 I_1` and `Lambda = g_phi^2 I_1` — both computed from the equilibrium-aligned closure `chi_sigma_k = g_phi chi_phi_k/H_k` without any matched-layer assumption, so the new check exercises the general identity; (iv) the directive targets are existing files at the correct directories (`scripts/`, `mathematica/`); (v) the patch does not introduce a new paper-misalignment because both fixes only restructure script-side algebra to better cover paper claims already stated in the card and notes.

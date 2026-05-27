@@ -65,13 +65,31 @@ expect_zero("W_wall(V0_suff)^2 - W_suff", sp.simplify(W_wall.subs(V0**2, V0_suff
 
 banner("MONOTONICITY")
 
-# W_wall is manifestly monotone in V0^2, a^2, L^2, J1 and inverse ell.
+# W_wall is manifestly monotone in V0^2, a^2, L^2, J1 and inverse ell, T_X
+# (notes section 3: six signed directions).
 Vp = sp.symbols("Vp", positive=True, real=True)
 W_Vp = sp.simplify(W_wall.subs(V0**2, Vp))
-print("dW/d(V0^2) =", sp.diff(W_Vp, Vp))
-print("dW/da =", sp.diff(W_wall, a))
-print("dW/dL =", sp.diff(W_wall, L))
-print("dW/dell =", sp.diff(W_wall, ell))
+
+dW_dV0sq = sp.simplify(sp.diff(W_Vp, Vp))
+dW_da    = sp.simplify(sp.diff(W_wall, a))
+dW_dL    = sp.simplify(sp.diff(W_wall, L))
+dW_dell  = sp.simplify(sp.diff(W_wall, ell))
+dW_dJ1   = sp.simplify(sp.diff(W_wall, J1))
+dW_dTX   = sp.simplify(sp.diff(W_wall, TX))
+
+print("dW/d(V0^2) =", dW_dV0sq)
+print("dW/da =", dW_da)
+print("dW/dL =", dW_dL)
+print("dW/dell =", dW_dell)
+print("dW/dJ1 =", dW_dJ1)
+print("dW/dT_X =", dW_dTX)
+
+assert sp.simplify(dW_dV0sq > 0) is sp.true, "dW/d(V0^2) should be positive"
+assert sp.simplify(dW_da    > 0) is sp.true, "dW/da should be positive"
+assert sp.simplify(dW_dL    > 0) is sp.true, "dW/dL should be positive"
+assert sp.simplify(dW_dell  < 0) is sp.true, "dW/dell should be negative"
+assert sp.simplify(dW_dJ1   > 0) is sp.true, "dW/dJ1 should be positive"
+assert sp.simplify(dW_dTX   < 0) is sp.true, "dW/dT_X should be negative"
 
 banner("CONSTANT-COMPRESSIBILITY FORM")
 W_H = sp.simplify(4 * sp.pi * a**2 * L**2 * If * V0**2 / (Hw * TX * ell))

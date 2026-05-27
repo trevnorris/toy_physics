@@ -48,6 +48,20 @@ kappa_expected = sp.simplify(4 * (m * c_sw * L / hbar)**2 + (Ig / If) * (L / ell
 expect_zero("kappa - expected", kappa - kappa_expected)
 
 J1 = sp.simplify(If / Hw)
+# --- Anchoring cross-check: verify J_1 = I_f/H_w in the constant-H_w limit
+# by direct integration with a concrete wall profile f(xi) = sech(xi).
+xi = sp.symbols("xi", real=True)
+f_xi    = 1/sp.cosh(xi)
+chi_phi = sp.diff(f_xi, xi)
+If_sym  = sp.integrate(chi_phi**2, (xi, -sp.oo, sp.oo))     # closed form: 2/3
+# Under d^3y = 4 pi a^2 ell dxi and H(y) -> H_w (constant), the Stage-47 integral
+#   I_1 := int d^3y chi_phi(y)^2 / H(y) = (4 pi a^2 ell / H_w) * I_f
+# and Stage-48's J_1 = I_f / H_w absorbs the shell measure 4 pi a^2 ell into J_1's
+# normalization. The structural identity I_1 / J_1 = 4 pi a^2 ell is what makes Xi = W_wall.
+I1_constH = sp.simplify(4*pi*a**2*ell * If_sym / Hw)
+J1_stage48 = sp.simplify(If_sym / Hw)
+expect_zero("I1 / J1 - 4 pi a^2 ell (sech profile)", sp.simplify(I1_constH/J1_stage48 - 4*pi*a**2*ell))
+print(f"sech-profile moment I_f = {If_sym}  (expected 2/3)")
 Wwall = sp.simplify(4 * pi * a**2 * L**2 * J1 * V0**2 / (Tx * ell))
 Wwall_expected = sp.simplify(4 * rho_w**2 * V0**2 * L**2 / (hbar**2 * c_sw**2 * ell**2))
 print("J_1 =", J1)

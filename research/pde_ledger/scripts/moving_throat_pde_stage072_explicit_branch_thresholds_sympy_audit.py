@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage55_explicit_branch_thresholds_sympy_audit.py
+moving_throat_pde_stage072_explicit_branch_thresholds_sympy_audit.py
 
-SymPy audit for Stage 55:
+SymPy audit for Stage 072:
 explicit branch placement map and threshold surfaces.
 """
 
@@ -21,7 +21,7 @@ def expect_zero(name: str, expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 55 — EXPLICIT BRANCH THRESHOLD SURFACES")
+banner("STAGE 072 — EXPLICIT BRANCH THRESHOLD SURFACES")
 
 chi_s, Lambda_ell, Upsilon_w, Pe_req = sp.symbols("chi_s Lambda_ell Upsilon_w Pe_req", positive=True, real=True)
 rho_w, c_sw, V0, hbar = sp.symbols("rho_w c_sw V0 hbar", positive=True, real=True)
@@ -107,7 +107,7 @@ expect_zero("compression fail asymptotic", Upsilon_fail_comp - 2 * Pe_req * chi_
 expect_zero("compression suff asymptotic",
             Upsilon_suff_comp - 4 * Pe_req * chi_s**2 * (Lambda_ell + 2 * chi_s) / Lambda_ell**3)
 
-banner("STAGE 55 THEOREM LEDGER")
+banner("STAGE 072 THEOREM LEDGER")
 print("Explicit branch fail surface:")
 print("  Upsilon_fail = Pe_req / [Lambda_ell^2 Delta_inf(4 chi_s^2 + 4/5 Lambda_ell^2, Lambda_ell)]")
 print("Explicit branch success surface:")

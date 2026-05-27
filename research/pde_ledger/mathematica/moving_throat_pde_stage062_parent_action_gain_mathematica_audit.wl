@@ -62,7 +62,14 @@ $Assumptions =
 
 thetaSigma = (m*csStarSq/rhoStar)*nSS;
 lambdaPhi = gPhi*oSP;
-sParent = (1/2)*thetaSigma*sigma^2 + lambdaPhi*sigma*phi + (1/2)*kX*phi^2;
+
+(* Independent susceptibility-route derivation (notes section 4):
+   chi_sigma^(eff) = 1/Theta_sigma, then G_micro = chi_sigma^(eff) * Lambda_phi^2 / K_X *)
+chiSigmaEff = 1/thetaSigma;
+gainViaSusceptibility = FullSimplify[chiSigmaEff * lambdaPhi^2 / kX, Assumptions -> $Assumptions];
+
+(* Action-coefficient route. *)
+sParent = (1/2)*thetaSigma*sigma^2 - lambdaPhi*sigma*phi + (1/2)*kX*phi^2;
 sigmaStar = sigma /. First[Solve[D[sParent, sigma] == 0, sigma]];
 sigmaStar = sigmaStar /. ConditionalExpression[e_, _] :> e;
 sEff = Expand[sParent /. sigma -> sigmaStar];
@@ -73,11 +80,27 @@ gClosed = FullSimplify[rhoStar*gPhi^2*oSP^2/(m*csStarSq*kX*nSS), Assumptions -> 
 
 Print["Theta_sigma = ", fmt[thetaSigma]];
 Print["Lambda_phi = ", fmt[lambdaPhi]];
+Print["chi_sigma^(eff) = ", fmt[chiSigmaEff]];
+Print["G_micro via susceptibility route = ", fmt[gainViaSusceptibility]];
 Print["sigmaStar = ", fmt[sigmaStar]];
 Print["S_eff = ", fmt[sEff]];
 Print["G_micro from action = ", fmt[gainFromAction]];
+expectZero["G_micro via susceptibility route vs closed form", gainViaSusceptibility - gClosed];
+expectZero["G_micro: action route equals susceptibility route", gainFromAction - gainViaSusceptibility];
 expectZero["Mathematica two-route consistency", gainFromAction - gainFromSeries];
 expectZero["gMicro from parent action vs closed form", gainFromAction - gClosed];
+
+(* Second equality of boxed eq:app-stage062-Gmicro *)
+cSpSq = oSP^2 / (nSS * nPP);
+gMicroFactored = (rhoStar * gPhi^2 * nPP / (m * csStarSq * kX)) * cSpSq;
+expectZero["Second equality of boxed G_micro: closed vs factored form", gClosed - gMicroFactored];
+
+(* Cauchy-Schwarz parameterization: O_{sigma phi} = cos(theta) sqrt(N_ss N_pp) *)
+theta = Symbol["theta"];
+cSpSqCos = cSpSq /. oSP -> Cos[theta] * Sqrt[nSS * nPP];
+expectZero["C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta)",
+           FullSimplify[cSpSqCos - Cos[theta]^2, Assumptions -> $Assumptions]];
+Print["C_sp_sq Cauchy parameterization yields Cos[theta]^2 in [0, 1] (Cauchy-Schwarz bound)."];
 
 Print["Coherence factor (definition):  C_(sigma phi)^2 := O_sp^2 / (N_ss N_pp)"];
 

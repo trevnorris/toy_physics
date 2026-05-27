@@ -42,30 +42,63 @@ C2, W_wall, Pe_req, Delta0, Deltainf = sp.symbols(
 Pres = sp.symbols("P_res", positive=True, real=True)
 
 # ---------------------------------------------------------------------------
-# 1. Resonance-corrected wall figure (derived, not postulated)
+# 1. Resonance-corrected wall figure (derived from matched-branch gain)
 # ---------------------------------------------------------------------------
 #
-# Premise: a wall-incident wave of complex amplitude A_in encounters a
-# transmission coefficient C(r) (real, positive at the resonance branch
-# we consider).  Power scales as |amplitude|^2, so the transmitted wall
-# power figure is |C|^2 * W_wall.  We carry C2 := C^2 as the audit symbol.
+# Premise (notes section 1): the matched-branch gain is
+#   G_match = rho_star * g_phi^2 * N_phiphi / (m * c_s^2 * K_X),
+# and the wall figure of merit is W_wall = kappa * G_match.
+# The profile-family gain at coherence C^2 is G_res = C^2 * G_match,
+# so W_res = kappa * G_res. We verify that W_res = C^2 * W_wall by
+# building each side from these independent component symbols.
 
-A_in, C_sym = sp.symbols("A_in C", positive=True, real=True)
-A_trans = C_sym * A_in
-# Power in the incident wave ~ |A_in|^2 normalises to W_wall; transmitted power:
-W_wall_def = A_in**2
-W_res_derived = sp.simplify((A_trans**2).subs(A_in**2, W_wall) * 1)
-# Re-express |C|^2 as the audit symbol C2:
-W_res_derived = sp.simplify(W_res_derived.subs(C_sym**2, C2))
-expect_zero("W_res - C2 * W_wall", W_res_derived - C2 * W_wall)
+rho_star, g_phi, N_phiphi, m_s, c_s, K_X, kappa = sp.symbols(
+    "rho_star g_phi N_phiphi m c_s K_X kappa", positive=True, real=True
+)
+Gmatch_expr = rho_star * g_phi**2 * N_phiphi / (m_s * c_s**2 * K_X)
+Wwall_expr = kappa * Gmatch_expr
+Gres_expr  = C2 * Gmatch_expr
+Wres_expr  = kappa * Gres_expr
+expect_zero("W_res - C2 * W_wall (from gain decomposition)",
+            sp.simplify(Wres_expr - C2 * Wwall_expr))
+# Also confirm the matched limit C2 -> 1 collapses W_res to W_wall:
+expect_zero("W_res(C2->1) - W_wall (matched limit)",
+            sp.simplify(Wres_expr.subs(C2, 1) - Wwall_expr))
 
-# At the resonance point r = r_*, C^2 -> C_res^2 by definition of the
-# resonance branch; the penalty factor is the *inverse* of the amplification.
-Cres = sp.symbols("C_res", positive=True, real=True)
-Pres_derived = sp.simplify(1 / Cres**2)
-expect_zero("P_res - 1/C_res^2", Pres_derived - 1/Cres**2)
-# And consistency with the audit-level symbol P_res introduced as positive:
-expect_zero("P_res*C_res^2 - 1", (1/Cres**2)*Cres**2 - 1)
+# ---------------------------------------------------------------------------
+# 1b. Resonance penalty factor (derived from ratio of required wall figures)
+# ---------------------------------------------------------------------------
+#
+# The required wall figure on the matched branch is W_wall = Pe_req/Delta.
+# On the profile family at coherence C^2, it is W_wall = Pe_req/(C^2 Delta).
+# The amplification of the *required* wall figure from matched to profile
+# is therefore 1/C^2.  At the resonance point C^2 -> C_res^2 (carried in
+# from stage 067), this amplification factor is P_res = 1/C_res^2.
+
+Cres, Delta_sym_pre = sp.symbols("C_res Delta", positive=True, real=True)
+W_required_match = sp.solve(
+    sp.Eq(sp.Symbol("Wm", positive=True) * Delta_sym_pre, Pe_req),
+    sp.Symbol("Wm", positive=True),
+)[0]
+W_required_prof = sp.solve(
+    sp.Eq(C2 * sp.Symbol("Wp", positive=True) * Delta_sym_pre, Pe_req),
+    sp.Symbol("Wp", positive=True),
+)[0]
+Pres_from_ratio = sp.simplify((W_required_prof / W_required_match).subs(C2, Cres**2))
+expect_zero("P_res - 1/C_res^2 (from required-wall-figure ratio)",
+            Pres_from_ratio - 1/Cres**2)
+
+# Numeric anchor: the paper card states P_res = 1.005612487760576 and
+# C_res^2 = 0.994418836451529 (carried from stage 067). Verify the link.
+Cres_sq_numeric = sp.Float("0.994418836451529", 20)
+Pres_numeric    = 1 / Cres_sq_numeric
+Pres_paper      = sp.Float("1.005612487760576", 20)
+numeric_residual = sp.Abs(Pres_numeric - Pres_paper)
+print(f"P_res numeric residual = {numeric_residual}")
+if numeric_residual >= sp.Float("1e-12", 20):
+    raise AssertionError(
+        f"P_res numeric anchor failed: |1/C_res^2 - paper P_res| = {numeric_residual}"
+    )
 
 # ---------------------------------------------------------------------------
 # 2. Exact threshold translation (derived from W_res, not postulated)
@@ -110,28 +143,35 @@ expect_zero("Wsuff_res(C2->1/Pres) - Pres*Wsuff_match",
             Wsuff_res.subs(C2, 1 / Pres) - Pres * Wsuff_match)
 
 # ---------------------------------------------------------------------------
-# 3. Profile-sensitive band widths, computed two independent ways
+# 3. Profile-sensitive band widths, two routes through different symbols
 # ---------------------------------------------------------------------------
 #
-# Way A: as the difference of the F1-derived profile and matched thresholds,
-#        evaluated at the resonance point C^2 = 1/P_res.
-success_band_widthA = sp.simplify((Wsuff_res - Wsuff_match).subs(C2, 1 / Pres))
-failure_band_widthA = sp.simplify((Wfail_res - Wfail_match).subs(C2, 1 / Pres))
+# Way A (C-form): compute the difference at the resonance point using Cres
+#   directly. Wsuff_res evaluated at C^2 = Cres^2 is Pe_req/(Cres^2 Delta_0).
+# Way B (P-form): compute the difference using Pres as the audit symbol.
+# Both should equal (Pres - 1)*Wsuff_match after the relation Pres = 1/Cres^2.
+# Any perturbation of that relation breaks one form but not the other, so the
+# cross-check is now sensitive to the Pres = 1/Cres^2 link.
 
-# Way B: by solving Wsuff_res = Pres * Wsuff_match for the gap directly.
-#        We pose the equation and let Solve extract the difference symbolically.
-gap_sym = sp.symbols("gap", real=True)
-success_band_widthB = sp.solve(sp.Eq(Wsuff_match + gap_sym, Pres * Wsuff_match), gap_sym)[0]
-failure_band_widthB = sp.solve(sp.Eq(Wfail_match + gap_sym, Pres * Wfail_match), gap_sym)[0]
+# Cres is defined in section 1b above; reuse it here.
+Wsuff_res_C   = Pe_req / (Cres**2 * Delta0)
+Wfail_res_C   = Pe_req / (Cres**2 * Deltainf)
+success_band_widthA = sp.simplify(Wsuff_res_C - Wsuff_match)
+failure_band_widthA = sp.simplify(Wfail_res_C - Wfail_match)
 
-print("Success-side band width (A) =", success_band_widthA)
-print("Failure-side band width (A) =", failure_band_widthA)
-print("Success-side band width (B) =", success_band_widthB)
-print("Failure-side band width (B) =", failure_band_widthB)
+success_band_widthB = sp.simplify((Pres - 1) * Wsuff_match)
+failure_band_widthB = sp.simplify((Pres - 1) * Wfail_match)
 
-# Independent-derivation cross-check: the two ways must agree.
-expect_zero("success band A vs B", success_band_widthA - success_band_widthB)
-expect_zero("failure band A vs B", failure_band_widthA - failure_band_widthB)
+print("Success-side band width (C-form) =", success_band_widthA)
+print("Failure-side band width (C-form) =", failure_band_widthA)
+print("Success-side band width (P-form) =", success_band_widthB)
+print("Failure-side band width (P-form) =", failure_band_widthB)
+
+# Cross-check: under the relation Pres = 1/Cres^2, the two forms must agree.
+expect_zero("success band C-form vs P-form (under Pres = 1/Cres^2)",
+            sp.simplify((success_band_widthA - success_band_widthB).subs(Pres, 1/Cres**2)))
+expect_zero("failure band C-form vs P-form (under Pres = 1/Cres^2)",
+            sp.simplify((failure_band_widthA - failure_band_widthB).subs(Pres, 1/Cres**2)))
 
 banner("FINAL LEDGER")
 print("Exact formulas:")

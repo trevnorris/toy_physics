@@ -14,13 +14,24 @@ PASS: n=5 specialization of h' = m c_s^2/rho
 inconsistency probe nonzero: capitalK*(5 - 6*rho)*rho^3
 Theta_sigma = (csStarSq*m*nSS)/rhoStar
 Lambda_phi = gPhi*oSP
-sigmaStar = -((gPhi*oSP*phi*rhoStar)/(csStarSq*m*nSS))
+chi_sigma^(eff) = rhoStar/(csStarSq*m*nSS)
+G_micro via susceptibility route = (gPhi^2*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
+sigmaStar = (gPhi*oSP*phi*rhoStar)/(csStarSq*m*nSS)
 S_eff = (kX*phi^2)/2 - (gPhi^2*oSP^2*phi^2*rhoStar)/(2*csStarSq*m*nSS)
 G_micro from action = (gPhi^2*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
+G_micro via susceptibility route vs closed form = 0
+PASS: G_micro via susceptibility route vs closed form
+G_micro: action route equals susceptibility route = 0
+PASS: G_micro: action route equals susceptibility route
 Mathematica two-route consistency = 0
 PASS: Mathematica two-route consistency
 gMicro from parent action vs closed form = 0
 PASS: gMicro from parent action vs closed form
+Second equality of boxed G_micro: closed vs factored form = 0
+PASS: Second equality of boxed G_micro: closed vs factored form
+C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta) = 0
+PASS: C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta)
+C_sp_sq Cauchy parameterization yields Cos[theta]^2 in [0, 1] (Cauchy-Schwarz bound).
 Coherence factor (definition):  C_(sigma phi)^2 := O_sp^2 / (N_ss N_pp)
 Xi_micro = (gPhi^2*kappa*oSP^2*rhoStar)/(csStarSq*kX*m*nSS)
 kappa solved from xiMicro = xiTarget: (ell^2*kX)/tX

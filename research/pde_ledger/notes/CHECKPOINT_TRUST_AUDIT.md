@@ -9,9 +9,28 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-26` (batch III.2 v2 close — fifth paper-grounded
-re-audit pass. Checkpoint stage `051` falls in III.2's range (049-060)
-and returned **clean (0 findings)** under v2 — load-bearing boxed
+Snapshot date: `2026-05-26` (batch III.3 v2 close — sixth paper-grounded
+re-audit pass. Checkpoint stage `069` falls in III.3's range (061-072)
+and returned **clean (0 findings)** under v2 — the three-zone classification
+combining Stage 066's matched window with Stage 068's resonance penalty
+verified at v2 depth via parameterized `W_match` generator + monotonicity
+check (SymPy) and `Cres2Prim` primitive + `Pres = 1/Cres2` derivation +
+`PresGap` via `Solve` (Mathematica). Engine independence genuine: SymPy
+uses `Pres_gap` primitive with multiplication-by-Pres; Mathematica uses
+`Cres2Prim` primitive with division-by-Cres2 and Solve-based extraction.
+The batch closed with all 12 stages verified, **4 paper_misalignment
+(2 substantive + 2 banner relabels) + 9 script-side findings**;
+**zero `material_change: true` flags**. Stage 068 (v1 material_change:true)
+returned clean at v2 — Solve-derived `Wfail_res`/`Wfail_match` preserved
+on resonance-corrected premises (Mathematica upgraded from `Solve` to
+`Reduce` without value change). **One orchestrator hot-fix on stage 064
+Mathematica**: `Integrate[]` does not factor constant multipliers when
+the integrand has unspecified symbolic functions — verify integrand
+equality first (NEW pitfall #9 candidate). With III.3 v2 closed, entire
+range 001-072 is now paper-aligned at v2 depth.
+
+Previous (III.2 v2) snapshot: Checkpoint stage `051` falls in III.2's range
+(049-060) and returned **clean (0 findings)** under v2 — load-bearing boxed
 criterion `Pi_tr <= 2 C_mix = 16 Lambda(1-eps)/pi^2` plus all six
 notes-side deliverables (closed `Pi_tr`, endpoint limits, `zeta_req`
 threshold, `Lambda_twin,req`, `M_mix^(twin,req)=G_tr/2`,

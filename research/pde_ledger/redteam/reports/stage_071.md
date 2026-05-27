@@ -2,140 +2,106 @@
 unit_id: 071
 batch: III.3
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T00:00:00Z
-verdict: findings
+audit_date: 2026-05-26T00:00:00Z
+verdict: clean
 stop_cold: null
-findings_count: 1
+findings_count: 0
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+  paper_appendix: present
 ---
 
 # Audit unit 071 red-team report
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_071.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (line 260 `\input{stages/stage_071}` — no per-stage prose row beyond the include)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.txt`
 
+## What the paper claims
+
+Stage 071 chooses the canonical tanh wall `f(xi) = (1 + tanh xi)/2` and the natural local Robin mouth closure `K_m = T_X/ell`, and records the resulting branch controls. The boxed shell-moment ledger (paper eq. `app-stage071-moments`) is `I_f = 1/3`, `I_g = 4/15`, `I_g/I_f = 4/5`. With definitions `chi_s = m c_{s,w} L/hbar`, `Lambda_ell = L/ell`, `Upsilon_w = 4 rho_w^2 V0^2/(hbar^2 c_{s,w}^2)`, the stage's `\stagefield{Output}` is the canonical branch-control laws (boxed eq. `app-stage071-control-laws`): `kappa = 4 chi_s^2 + (4/5) Lambda_ell^2`, `eta = Lambda_ell`, `W_wall = Upsilon_w Lambda_ell^2`. The notes additionally pin the closed forms `T_X = pi a^2 ell hbar^2/(3 m rho_w)`, `K_X = 4 pi a^2 (5 m^2 c_{s,w}^2 ell^2 + hbar^2)/(15 ell m rho_w)`, and `J_1 = 1/(3 H_w) = rho_w/(3 m c_{s,w}^2)` with `H_w = m c_{s,w}^2/rho_w` as derivation-support results.
+
 ## What the script claims to verify
 
-The scripts audit the canonical tanh-wall branch built from `f(xi) = (1 + tanh(xi))/2`. They evaluate two shape integrals `I_f = ∫(f')^2 dxi = 1/3` and `I_g = ∫(f'')^2 dxi = 4/15` (and the ratio `I_g/I_f = 4/5`), both by direct integration on the real line and via the substitution `t = tanh(xi)` mapping to `[-1,1]`. They then assemble the wall energetics `T_X`, `K_X`, `J_1`, `W_wall`, the local closure `K_m = T_X/ell` with `eta = K_m L / T_X`, the reduced stiffness ratio `kappa = K_X L^2 / T_X = 4 chi_s^2 + (4/5) Lambda_ell^2`, and the reduced wall energy `W_wall = Upsilon_w Lambda_ell^2`. The Mathematica side additionally pins exact closed forms for `T_X`, `K_X`, and `J_1`, which the SymPy side does not check.
+Both engines independently (i) compute `f'`, `f''` from the tanh profile and evaluate the moment integrals on the full real line; (ii) cross-check those integrals against a `t = tanh xi` substitution form on `[-1, 1]`; (iii) assert `I_f = 1/3`, `I_g = 4/15`, `I_g/I_f = 4/5`; (iv) build `T_X`, `K_X`, `J_1`, `W_wall` from the integral results, set `K_m = T_X/ell`, and assert that the closed-form `K_m = pi a^2 hbar^2 / (3 m rho_w)` matches and that `Km_expected * L / Tx = L/ell`; and (v) assert that `kappa = K_X L^2/T_X` reduces to `4 chi_s^2 + (4/5) Lambda_ell^2` and that `W_wall` reduces to `Upsilon_w Lambda_ell^2`. The Mathematica script additionally asserts the closed forms of `T_X`, `K_X`, and `J_1` against the notes' formulas.
+
+## Paper ↔ script cross-check
+
+| Paper deliverable | Script-side check | Status |
+|---|---|---|
+| `I_f = 1/3` | sympy L48 `expect_zero("I_f - 1/3", ...)`; .wl L50 `expectZero["I_f - 1/3", ...]` | match |
+| `I_g = 4/15` | sympy L50; .wl L52 | match |
+| `I_g/I_f = 4/5` | sympy L52; .wl L54 | match |
+| `eta = Lambda_ell` (i.e. `L/ell`) | sympy L71 (closed-form K_m route); .wl L83 (closed-form K_m route) | match |
+| `kappa = 4 chi_s^2 + (4/5) Lambda_ell^2` | sympy L81–82 (via pattern subs); .wl L91 (direct identity in physical vars) | match |
+| `W_wall = Upsilon_w Lambda_ell^2` | sympy L89; .wl L94 | match |
+| `T_X`, `K_X`, `J_1` closed forms (notes-level) | sympy: built but not asserted in closed form; .wl L70/L73/L75 explicit `expectZero` | match (the .wl pins all three; the .py builds them and uses them downstream, which is equivalent verification through `kappa` and `eta`) |
+
+`paper_alignment: aligned`.
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 48 | `expect_zero("I_f - 1/3", If - 1/3)` | yes |
-| A2 | sympy | 49 | `expect_zero("I_f direct - substitution", If - If_sub)` | partial (both integrals are evaluated, but they encode the same change of variable; primarily a self-consistency probe) |
-| A3 | sympy | 50 | `expect_zero("I_g - 4/15", Ig - 4/15)` | yes |
-| A4 | sympy | 51 | `expect_zero("I_g direct - substitution", Ig - Ig_sub)` | partial (see A2) |
-| A5 | sympy | 52 | `expect_zero("I_g/I_f - 4/5", Ig/If - 4/5)` | yes |
-| A6 | sympy | 69 | `expect_zero("eta - L/ell", eta - L/ell)` | NO — tautological (see F1) |
-| A7 | sympy | 79-80 | `expect_zero("kappa_reduced - [4 chi_s^2 + 4/5 Lambda_ell^2]", kappa_red - (4*chi_s**2 + 4/5*Lambda_ell**2))` | yes (depends on `subs` pattern-matching succeeding, but output confirms it does) |
-| A8 | sympy | 87 | `expect_zero("W_wall_reduced - Upsilon_w Lambda_ell^2", W_red - Upsilon_w*Lambda_ell**2)` | yes (same caveat) |
-| B1 | mathematica | 50 | `expectZero["I_f - 1/3", ifDirect - 1/3]` | yes |
-| B2 | mathematica | 51 | `expectZero["I_f direct - substitution", ifDirect - ifSub]` | partial |
-| B3 | mathematica | 52 | `expectZero["I_g - 4/15", igDirect - 4/15]` | yes |
-| B4 | mathematica | 53 | `expectZero["I_g direct - substitution", igDirect - igSub]` | partial |
-| B5 | mathematica | 54 | `expectZero["I_g/I_f - 4/5", igDirect/ifDirect - 4/5]` | yes |
-| B6 | mathematica | 70 | `expectZero["T_X exact formula", tx - Pi*a^2*ell*hbar^2/(3*m*rhoW)]` | yes (independent closed-form pin) |
-| B7 | mathematica | 71-74 | `expectZero["K_X exact formula", kx - 4*Pi*a^2*(5*m^2*cSw^2*ell^2 + hbar^2)/(15*ell*m*rhoW)]` | yes |
-| B8 | mathematica | 75 | `expectZero["J_1 exact formula", j1 - rhoW/(3*m*cSw^2)]` | yes |
-| B9 | mathematica | 81 | `expectZero["eta - L/ell", eta - L/ell]` | NO — tautological (see F1) |
-| B10 | mathematica | 89 | `expectZero["kappa reduced law", kappa - kappaExpected]` | yes (kappaExpected is built from `(m cSw L/hbar)^2` and `(L/ell)^2` as an independent symbolic target) |
-| B11 | mathematica | 92 | `expectZero["W_wall reduced law", wwall - wExpected]` | yes |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 48 | `expect_zero("I_f - 1/3", If - 1/3)` | `I_f = 1/3` | yes |
+| A2 | sympy | 49 | `expect_zero("I_f direct - substitution", If - If_sub)` | cross-check of integration form | yes (non-tautological: two independent integrals — `int_{-oo,oo} f'^2 dxi` vs. `int_{-1,1} (1-t^2)/4 dt`) |
+| A3 | sympy | 50 | `expect_zero("I_g - 4/15", Ig - 4/15)` | `I_g = 4/15` | yes |
+| A4 | sympy | 51 | `expect_zero("I_g direct - substitution", Ig - Ig_sub)` | cross-check | yes |
+| A5 | sympy | 52 | `expect_zero("I_g/I_f - 4/5", ...)` | `I_g/I_f = 4/5` | yes |
+| A6 | sympy | 70 | `expect_zero("K_m - pi a^2 hbar^2 / (3 m rho_w)", Km - Km_expected)` | closed-form `K_m` (cross-checks closed-form against symbolic `T_X/ell`) | yes |
+| A7 | sympy | 71 | `expect_zero("eta - L/ell (from closed-form K_m)", (Km_expected*L/Tx) - L/ell)` | `eta = Lambda_ell`, non-tautologically pinned via closed-form `K_m` and symbolic `Tx` | yes |
+| A8 | sympy | 81–82 | `expect_zero("kappa_reduced - [4 chi_s^2 + 4/5 Lambda_ell^2]", ...)` | `kappa` control law | yes |
+| A9 | sympy | 89 | `expect_zero("W_wall_reduced - Upsilon_w Lambda_ell^2", ...)` | `W_wall` control law | yes |
+| B1 | mathematica | 50 | `expectZero["I_f - 1/3", ...]` | `I_f = 1/3` | yes |
+| B2 | mathematica | 51 | `expectZero["I_f direct - substitution", ...]` | cross-check | yes |
+| B3 | mathematica | 52 | `expectZero["I_g - 4/15", ...]` | `I_g = 4/15` | yes |
+| B4 | mathematica | 53 | `expectZero["I_g direct - substitution", ...]` | cross-check | yes |
+| B5 | mathematica | 54 | `expectZero["I_g/I_f - 4/5", ...]` | `I_g/I_f = 4/5` | yes |
+| B6 | mathematica | 70 | `expectZero["T_X exact formula", ...]` | closed-form `T_X` (notes) | yes |
+| B7 | mathematica | 71–74 | `expectZero["K_X exact formula", ...]` | closed-form `K_X` (notes) | yes |
+| B8 | mathematica | 75 | `expectZero["J_1 exact formula", ...]` | closed-form `J_1` (notes) | yes |
+| B9 | mathematica | 82 | `expectZero["K_m - pi a^2 hbar^2 / (3 m rhoW)", ...]` | closed-form `K_m` | yes |
+| B10 | mathematica | 83 | `expectZero["eta - L/ell (from closed-form K_m)", ...]` | `eta = Lambda_ell` (non-tautological route) | yes |
+| B11 | mathematica | 91 | `expectZero["kappa reduced law", kappa - kappaExpected]` | `kappa` control law (direct identity, no pattern-subs) | yes |
+| B12 | mathematica | 94 | `expectZero["W_wall reduced law", wwall - wExpected]` | `W_wall` control law | yes |
+
+All assertions trace to specific paper- or notes-side deliverables. The previous prior-tautological `eta - L/ell` check (which was a definitional rewrite of `K_m = T_X/ell`) has been replaced in both engines by the closed-form-`K_m` route shown at A6/A7 and B9/B10, which is non-tautological because it pins `K_m` to the explicit `pi a^2 hbar^2/(3 m rho_w)` and divides by the symbolic `T_X` built from the integrated `I_f`; the assertion fails under any factor or sign error in `T_X`.
 
 ## Findings
 
-### F1 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py:65-69`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.wl:77-81`
-
-**What's wrong:**
-
-The SymPy script defines
-
-```python
-Km = sp.simplify(Tx / ell)
-eta = sp.simplify(Km * L / Tx)
-...
-expect_zero("eta - L/ell", eta - L / ell)
-```
-
-and the Mathematica script does the same:
-
-```mathematica
-km = FullSimplify[tx/ell, Assumptions -> $Assumptions];
-eta = FullSimplify[km*L/tx, Assumptions -> $Assumptions];
-...
-expectZero["eta - L/ell", eta - L/ell];
-```
-
-By construction, `Km` is set equal to `Tx/ell`, so `eta = Km*L/Tx = (Tx/ell)*L/Tx = L/ell` is an algebraic identity that holds regardless of the value or physical content of `Tx`. The assertion `eta - L/ell = 0` is guaranteed to pass even if `Tx` were replaced with any nonzero expression — e.g. `Tx = 42*xi**3 + cos(L)` — so it does not test the physics of the canonical tanh-wall branch. The script prints in the theorem ledger "eta = L/ell under K_m = T_X/ell", but the `under` clause is the very definition that makes the equality automatic; the check therefore has no failure mode.
-
-**Why this matters:**
-
-The unit's theorem ledger lists `eta = L/ell under K_m = T_X/ell` alongside non-trivial results (`I_f = 1/3`, `kappa = 4 chi_s^2 + (4/5) Lambda_ell^2`). A reader scanning the asserted checks would reasonably believe `eta = L/ell` is an independently verified consequence of the wall branch's wall energetics. It is not — it is a definitional rewrite. Leaving the assertion in place gives the audit a false sense of coverage on this row of the ledger.
-
-**Required change:**
-
-Replace the tautological identity check with a substantive verification that actually exercises the closed-form structure of `T_X`. Concretely, verify (a) that `K_m * ell` equals the closed form of `T_X` (so the definition `K_m = T_X/ell` is the correct one given the explicit `T_X = pi a^2 ell I_f hbar^2 / (m rho_w)`), and (b) that `eta * ell` equals `L` after substitution — i.e. the check should pin `K_m` to the actual closed form rather than to `Tx/ell` by fiat.
-
-In SymPy at line 65-69 of `scripts/moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py`, replace the existing block with:
-
-```python
-Km = sp.simplify(Tx / ell)
-eta = sp.simplify(Km * L / Tx)
-print("K_m =", Km)
-print("eta =", eta)
-# Independent pin: K_m equals the closed form pi a^2 hbar^2 / (3 m rho_w)
-Km_expected = sp.pi * a**2 * hbar**2 / (3 * m * rho_w)
-expect_zero("K_m - pi a^2 hbar^2 / (3 m rho_w)", Km - Km_expected)
-# eta equality reduces to L/ell only when K_m is built from T_X/ell;
-# pin eta to L/ell against the closed-form K_m, not against the tautological Tx/ell.
-expect_zero("eta - L/ell (from closed-form K_m)", (Km_expected * L / Tx) - L / ell)
-```
-
-In Mathematica at lines 77-81 of `mathematica/moving_throat_pde_stage071_tanh_wall_branch_mathematica_audit.wl`, replace the existing block with:
-
-```mathematica
-km = FullSimplify[tx/ell, Assumptions -> $Assumptions];
-eta = FullSimplify[km*L/tx, Assumptions -> $Assumptions];
-Print["K_m = ", fmt[km]];
-Print["eta = ", fmt[eta]];
-kmExpected = Pi*a^2*hbar^2/(3*m*rhoW);
-expectZero["K_m - pi a^2 hbar^2 / (3 m rhoW)", km - kmExpected];
-expectZero["eta - L/ell (from closed-form K_m)", (kmExpected*L/tx) - L/ell];
-```
-
-**Verification:**
-
-After Codex applies the fix, the verifier confirms that:
-1. In the SymPy script, the line containing `expect_zero("eta - L/ell", eta - L / ell)` no longer exists; in its place the two new `expect_zero` calls (`K_m - pi a^2 hbar^2 / (3 m rho_w)` and `eta - L/ell (from closed-form K_m)`) appear.
-2. In the Mathematica script, the line `expectZero["eta - L/ell", eta - L/ell];` no longer exists; in its place the two new `expectZero` calls appear.
-3. Both scripts re-run via `redteam exec-sympy 071` and `redteam exec-mathematica 071` and exit 0, with new output lines `K_m - pi a^2 hbar^2 / (3 m rho_w) = 0` (or Mathematica equivalent) and `eta - L/ell (from closed-form K_m) = 0` appearing in the saved transcripts.
+None.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is structurally parallel to SymPy (same `f`, `fp`, `fpp`, same `ifDirect`/`ifSub`/`igDirect`/`igSub`, same `T_X`, `K_X`, `J_1`, `W_wall` definitions). However it is not a pure transliteration: it adds three independent closed-form pins not present in SymPy — `T_X exact formula`, `K_X exact formula`, `J_1 exact formula` (Mathematica lines 70-75) — and it constructs `kappaExpected` and `wExpected` from the *symbolic* expressions `4*(m*cSw*L/hbar)^2 + (4/5)*(L/ell)^2` and `(4*rhoW^2*V0^2/(hbar^2*cSw^2))*(L/ell)^2` and checks them by direct difference, whereas SymPy relies on `subs`-based substitution and verifies the substituted form. These are genuinely different verification paths for `kappa` and `W_wall`. I judge this not a `mathematica_transliteration` finding.
+The `.wl` script is not a transliteration of the `.py`. The two engines share the natural calculation path (compute `f`, `f'`, `f''`; integrate; assemble physical quantities), but their verification idioms differ in load-bearing ways:
 
-Quoted corresponding sections:
-- SymPy lines 73-80 (`kappa_red = sp.simplify(kappa.subs({m * c_sw * L / hbar: chi_s, L / ell: Lambda_ell})); expect_zero("kappa_reduced - [4 chi_s^2 + 4/5 Lambda_ell^2]", kappa_red - (4 * chi_s**2 + sp.Rational(4, 5) * Lambda_ell**2))`)
-- Mathematica lines 83-89 (`kappa = FullSimplify[kx*L^2/tx, ...]; kappaExpected = FullSimplify[4*(m*cSw*L/hbar)^2 + (4/5)*(L/ell)^2, ...]; expectZero["kappa reduced law", kappa - kappaExpected]`)
+- The .py reduces `kappa` by SymPy `subs({m*c_sw*L/hbar: chi_s, L/ell: Lambda_ell})` and then asserts equality with `4 chi_s^2 + (4/5) Lambda_ell^2`. The .wl avoids the pattern-subs entirely and writes `kappaExpected = FullSimplify[4*(m*cSw*L/hbar)^2 + (4/5)*(L/ell)^2, ...]` in the same physical variables, asserting `kappa - kappaExpected == 0`. The SymPy path probes whether `subs` pattern-matches; the Mathematica path probes whether the closed-form combination matches.
+- The .wl additionally asserts closed forms for `T_X` (L70), `K_X` (L71–74), and `J_1` (L75) — the .py builds these but does not pin them to their notes-level closed forms (it only asserts the downstream `kappa` and `eta` they feed). This is an honest second-engine difference, not a transliteration.
 
-The SymPy path probes whether the `subs` pattern matches; the Mathematica path probes whether the closed-form combination matches. They are not the same algebraic manipulation.
+Quoted parallel sections:
+
+- sympy 32–34: `f = sp.Rational(1, 2) * (1 + sp.tanh(xi))` / `fp = sp.simplify(sp.diff(f, xi))` / `fpp = sp.simplify(sp.diff(fp, xi))`
+- mathematica 34–36: `f = (1 + Tanh[xi])/2;` / `fp = FullSimplify[D[f, xi], ...];` / `fpp = FullSimplify[D[fp, xi], ...];`
+
+The shared structure here is inevitable given the profile is `f = (1 + tanh xi)/2`; downstream the engines diverge in verification approach (subs-based reduction vs. direct closed-form identity). Independent-derivation: confirmed; not a `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-Both engines produce identical numeric/symbolic forms:
+Both transcripts show every check passing with residual `0` in the same theorem ledger. Side-by-side highlights:
 
 | Quantity | SymPy output | Mathematica output |
 |---|---|---|
@@ -150,16 +116,22 @@ Both engines produce identical numeric/symbolic forms:
 | `kappa` (raw) | `4*L**2*c_sw**2*m**2/hbar**2 + 4*L**2/(5*ell**2)` | `(4*L^2*(ell^(-2) + (5*cSw^2*m^2)/hbar^2))/5` |
 | `eta` | `L/ell` | `L/ell` |
 
-Engines agree at the level claimed. No `engine_disagreement` finding.
+Engines agree at the level claimed. No `engine_disagreement` finding. `engines_agree: true`.
+
+Output freshness: both `.txt` mtimes (`2026-05-22 20:11`) post-date their script mtimes (`2026-05-22 20:10`) by ~50 s. `outputs_fresh: true`.
 
 ## Verdict justification
 
-The non-trivial content of the unit — the two shape integrals (`I_f = 1/3`, `I_g = 4/15`), the ratio (`4/5`), the closed forms of `T_X`/`K_X`/`J_1`/`W_wall`, and the reductions `kappa = 4 chi_s^2 + (4/5) Lambda_ell^2`, `W_wall = Upsilon_w Lambda_ell^2` — holds up under attack. I tried (a) recomputing `I_f` and `I_g` by hand via `u = tanh(xi)` substitution and got 1/3 and 4/15 respectively; (b) re-deriving `kappa` by direct algebra `K_X L^2 / T_X` and got `4 chi_s^2 + (4/5) Lambda_ell^2` with `chi_s = m c_sw L / hbar`, `Lambda_ell = L/ell`; (c) checking that the SymPy `subs` pattern in line 73-76 is in fact matching the squared form in the printed output and is therefore not silently leaving the expression unreduced (the printed `kappa reduced = 4*Lambda_ell**2/5 + 4*chi_s**2` confirms the substitution succeeded). The Mathematica script independently pins `T_X`, `K_X`, `J_1` to their closed forms, which strengthens the audit.
+`clean`. I attacked the audit on five fronts and each held:
 
-The single defect is the `eta - L/ell` assertion in both engines: it is an algebraic consequence of the definition `K_m := T_X/ell` and therefore cannot fail. This is a clear `tautological_check` and warrants a fix that pins `K_m` to its closed form before forming `eta`. It is not a `stop_cold` issue — replacing the tautology with a substantive check does not propagate to downstream units' results; only this row of the local ledger gains a real verification.
+1. **Tautology check on `eta`** (the original finding from the prior audit pass): the current scripts no longer write `expect_zero("eta - L/ell", eta - L/ell)` where `eta = Km*L/Tx` and `Km = Tx/ell` (which would be a definitional rewrite). They write `expect_zero("eta - L/ell (from closed-form K_m)", (Km_expected*L/Tx) - L/ell)` — i.e. they pin `Km_expected` to the closed form `pi a^2 hbar^2/(3 m rho_w)` and divide by the symbolic `Tx` (which is itself built from the integrated `I_f`). This fails if `I_f != 1/3`, if a factor of `ell` is dropped from `Tx`, or if `Km` is mis-defined. The earlier finding's required change has been applied correctly and the new assertion has a genuine failure mode.
+2. **`kappa` reduction by pattern-subs**: SymPy's `.subs` of `m*c_sw*L/hbar -> chi_s` into `m^2 c_sw^2 L^2/hbar^2` is fragile, but the transcript confirms it worked, and the assertion `kappa_red - (4 chi_s^2 + 4/5 Lambda_ell^2) == 0` non-trivially exercises the result. The Mathematica engine corroborates by an entirely different idiom (direct identity in physical variables, no pattern-subs), eliminating subs-fragility as a hidden risk.
+3. **Moment integrals**: Hand-checked `I_f = (1/4) int sech^4 xi dxi = (1/4) int_{-1}^{1} (1-t^2) dt = (1/4)(4/3) = 1/3` and `I_g = int sech^4 xi tanh^2 xi dxi = int_{-1}^{1} t^2(1-t^2) dt = 4/15`. The substitution-form checks reproduce these.
+4. **Closed-form `K_X`**: Computed `4 pi a^2 ell (1/3) Hw + pi a^2 (4/15) hbar^2/(m rho_w ell) = (4 pi a^2/(15 ell m rho_w))(5 m^2 c_{s,w}^2 ell^2 + hbar^2)`. Matches the notes form pinned by the Mathematica assertion at L71–74.
+5. **Paper alignment**: every paper-side deliverable (boxed moments and the three control laws) maps to a script-side assertion in at least one engine; the Mathematica engine pins additional notes-level closed forms.
 
-Verdict: `findings`, one finding, severity medium, fixable in-place.
+A minor cosmetic note (not a finding): the SymPy docstring header (`stage54`) and both engines' banners (`STAGE 54` / `STAGE 054`) reflect the unit's prior numbering before the part-III reorder. Filenames and content are correct for stage 071; the discrepancy is metadata-only and does not fit any of the ten finding categories.
 
 ## Self-test notes
 
-Checked: (i) the substitution-form integrals `I_f_sub` and `I_g_sub` evaluate correctly under `t = tanh(xi)` and reproduce 1/3 and 4/15 — not a derivative-of-constant trap; (ii) the proposed replacement check `Km - pi*a^2*hbar^2/(3*m*rho_w)` exercises the closed form of `Tx` non-trivially (substituting the explicit `Tx = pi*a^2*ell*hbar^2/(3*m*rho_w)` gives `Km = pi*a^2*hbar^2/(3*m*rho_w)`, matching `Km_expected`, so the new `assert_zero` is satisfied for the correct physics and would fail if `I_f != 1/3` or if a factor of `ell` were dropped); (iii) the second proposed check `(Km_expected * L / Tx) - L/ell` evaluates to `(pi*a^2*hbar^2/(3*m*rho_w))*L / (pi*a^2*ell*hbar^2/(3*m*rho_w)) - L/ell = L/ell - L/ell = 0`, so it is true for the correct closed form and would fail under any sign or factor error in `Tx`. The `.py` target lives in `scripts/`, the `.wl` target lives in `mathematica/` — paths checked.
+I checked: (1) no `sp.diff(expr, var)` where `var` does not appear in `expr` — all derivatives are wrt `xi` against tanh-expressions, so derivatives are nonzero by construction; (2) the integrands `f'^2 = sech^4 xi /4` and `f''^2 = sech^4 xi * tanh^2 xi` are both even in `xi`, so the symmetric `(-oo, oo)` integrals genuinely sample both halves; (3) the substitution-form integrands `(1 - t^2)/4` and `t^2(1 - t^2)` are also even, so the `[-1, 1]` evaluation is non-degenerate; (4) the closed-form `K_m` check `Km - Km_expected = 0` fails under any factor or sign error in `Tx` (substituting the explicit `Tx = pi a^2 ell hbar^2/(3 m rho_w)` gives `Km = pi a^2 hbar^2/(3 m rho_w) = Km_expected`, matching only for the correct `I_f = 1/3`); (5) the follow-up `(Km_expected * L / Tx) - L/ell` collapses to `L/ell - L/ell = 0` only when `Tx` carries the correct `pi a^2 ell hbar^2/(3 m rho_w)` factor structure. No traps tripped.

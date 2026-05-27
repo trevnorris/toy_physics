@@ -2,234 +2,152 @@
 unit_id: 067
 batch: III.3
 auditor_model: claude-opus-4-7-1m
-audit_date: 2026-05-22T00:00:00Z
+audit_date: 2026-05-26T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
+findings_count: 1
+paper_alignment: aligned
 scripts_checked:
   sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
+docs_read:
+  paper_stage_tex: present
+  notes_stage_files:
+    - /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  paper_appendix: present
 ---
 
-# Audit unit 067 red-team report
+# Audit unit 067 red-team report (second pass)
 
 ## Files reviewed
 
+- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_067.tex`
+- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md`
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (the only stage 067 reference is the `\input{stages/stage_067}` line at 252; no prose summary row)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.txt`
 
+Prior-pass directive (`redteam/directives/stage_067.md`) records that four findings (F1-F4 from the first pass: duality-implication labeling, tautological self-dual scaffolding, missing sympy norm integration, mathematica numeric-target provenance) were applied at 2026-05-22T19:54:59 and the current scripts/outputs reflect those fixes.
+
+## What the paper claims
+
+The stage card (`paper/stages/stage_067.tex`) declares the unit a sech-Gaussian coherence resonance benchmark, with `\stagefield{Inputs}{Source profile chi_sigma=sech(y/w_f) and support profile chi_phi=e^{-y^2/w_g^2}.}` and three boxed deliverables: (i) the exact self-dual stationary point `w_g/w_f = sqrt(pi)` (eq:app-stage067-self-dual), (ii) the resonance coherence `C_res^2 ~= 0.994418836451529` (eq:app-stage067-Cres), and (iii) the penalty `P_res = 1/C_res^2 ~= 1.005612487760576` (eq:app-stage067-Pres). `\stagefield{Output}` collects (ii) and (iii): "The near-perfect benchmark coherence (eq:app-stage067-Cres) and penalty (eq:app-stage067-Pres)." `\claimstatus{}` marks the family exact-closure and the quoted coherence value numerical. The notes also enumerate (iv) the duality identity `I(r) = (r/sqrt(pi)) I(pi/r)` and the implied symmetry `C^2(r) = C^2(pi/r)`, plus (v) the uniqueness of `r_*` as the global maximum on the constructive branch (claimed there via "a numerical monotonicity audit").
+
 ## What the script claims to verify
 
-The two scripts assert that for the explicit sech-Gaussian profile family, (1) the transverse norms reduce to `N_{sigma sigma}=2 w_f` and `N_{phi phi}=w_g sqrt(pi/2)`, (2) the dimensionless coherence factor `C^2(r)=I(r)^2/(r sqrt(2 pi))` is invariant under the duality `I(r)=(r/sqrt(pi)) I(pi/r)`, hence `C^2(r)=C^2(pi/r)`, (3) the duality implies a stationary point of `C^2` at `r_*=sqrt(pi)`, (4) the non-elementary overlap integral `I(r)=\int sech(x) e^{-x^2/r^2} dx` evaluated at `r_*` yields `C_res^2 \approx 0.99441883...` and `P_res = 1/C_res^2 \approx 1.00561249...`, and (5) `C^2(r)` is monotonically increasing on a constructive grid up to `r_*` and decreasing on a grid above `r_*`. The numerical duality identity is also sampled at five rationals.
+After the first-pass fixes, both scripts now exercise: (1) the closed-form transverse norms `N_ss = 2 w_f` and `N_pp = w_g sqrt(pi/2)` via direct symbolic integration in both engines; (2) the algebraic implication `I(r) -> (r/sqrt(pi)) I(pi/r) => C^2(r) = C^2(pi/r)`, explicitly labeled as implication-only in inline comments; (3) the self-dual stationarity of `C^2` at `r_* = sqrt(pi)` from the symmetry, with the formal expect-zero assertions labeled as tautological calculus identities and the substantive evidence shifted to the broken-tangent perturbation (sympy lines 137-142) and the numerical monotonicity scan; (4) the numerical 60-dps evaluation `C_res^2 = 0.99441883645152934870...` (sympy mpmath quad; mathematica `NIntegrate` at WorkingPrecision 80); (5) numerical verification of the sech-Gaussian duality identity at five sample r-values; (6) numerical strict monotonicity on the left and right of `r_*`. The mathematica numeric targets are now annotated as cross-engine cross-checks against the sympy run.
+
+## Paper <-> script cross-check
+
+| Paper deliverable | Script-side coverage | Status |
+|---|---|---|
+| Exact self-dual point `w_g/w_f = sqrt(pi)` (eq:app-stage067-self-dual) | Sec.3 of both: differentiated symmetry forces zero slope at `r_*` (labeled tautological), broken-tangent perturbation (sympy 137-142) confirms non-vacuity, Sec.6 monotonicity localizes the maximum | match |
+| Exact duality `C^2(r) = C^2(pi/r)` (notes Sec.2) | Sec.2: algebraic implication asserted (now labeled implication-only); Sec.5: numerical `\|I(r) - (r/sqrt(pi)) I(pi/r)\|` at five r-samples vanishes to <= 1e-40 (sympy) / <= 1e-35 (mathematica) | match |
+| `C_res^2 = 0.994418836451529...` (eq:app-stage067-Cres) | Sec.4 sympy: mpmath quad at 60 dps; Sec.4 mathematica: NIntegrate at WP 80, cross-checked against sympy value at 35-digit tolerance | match |
+| `P_res = 1.005612487760576...` (eq:app-stage067-Pres) | Sec.4: `1/C_res^2` computed and (mathematica) cross-checked at 34-digit tolerance | match |
+| Norms `N_ss = 2 w_f`, `N_pp = w_g sqrt(pi/2)` (notes Sec.1) | Sec.1 of both: direct symbolic integration confirms the boxed values (sympy now uses `(...).rewrite(sp.cosh)` so the integral evaluates) | match |
+| Uniqueness of `r_*` as global maximum on constructive branch (notes Sec.3) | Sec.6 of both: strict-increase on `{0.55, ..., r_*}` and strict-decrease on `{r_*, ..., 4}` | match (sampled, not exhaustive — notes label it numerical too) |
+
+`paper_alignment: aligned`. All paper-side deliverables are exercised, and at the precision/coverage the paper itself claims (exact closure for the analytic ratio, numerical for the coherence value and monotonicity).
 
 ## Assertion inventory
 
-| # | Script | Line | Form | Anchored to claim? |
-|---|---|---|---|---|
-| A1 | sympy | 62-63 | `Nss = 2*wf; Npp = wg*sqrt(pi/2)` (printed, never integrated) | no — values are declared, not derived |
-| A2 | sympy | 82 | `expect_zero("C^2(r) - C^2(pi/r) under duality", C2_dual - C2_target)` | no — pure algebra on abstract `I`, duality assumed not verified symbolically |
-| A3 | sympy | 104-107 | `expect_zero("self-dual overlap-slope relation", ...)` with `Iprime_left = Istar/(2*sqrt(pi))` | no — substitutes the solution of `2 Iprime_left - Istar/sqrt(pi) = 0` back into that same expression |
-| A4 | sympy | 113-116 | `expect_zero("stationary derivative of C^2 ...", ...)` with `Iprime_left = Istar/(2*sqrt(pi))` | partial — derivative formula was inserted by hand, then evaluated at the assumed slope |
-| A5 | sympy | 123-124 | `if dC2_broken == 0: raise AssertionError(...)` for perturbed slope | partial — confirms `sqrt(2) Istar delta_bad/pi != 0` for nonzero `delta_bad` |
-| A6 | sympy | 165-166 | `if diff > 1e-40: raise AssertionError(...)` over `r` in {0.75,1,1.2,1.5,2} | yes — substantive numerical duality of the actual sech-Gaussian integral |
-| A7 | sympy | 181-182 | strict-increase check on `vals_left` | yes — substantive |
-| A8 | sympy | 189-191 | strict-decrease check on `vals_right` | yes — substantive |
-| B1 | mathematica | 52 | `expectZero["N_(sigma sigma) - 2 w_f", nssDirect - nssExpected]` | yes — `nssDirect` is `Integrate[Sech[y/wf]^2, ...]`, an independent derivation |
-| B2 | mathematica | 53 | `expectZero["N_(phi phi) - w_g sqrt(pi/2)", nppDirect - nppExpected]` | yes — independent integration |
-| B3 | mathematica | 64 | `expectZero["C^2(r) - C^2(pi/r) under duality", c2Dual - c2Target]` | no — same algebraic tautology as A2 |
-| B4 | mathematica | 86-89 | `expectZero["self-dual C^2 stationary slope from symmetry solve", C2PrimeLeft /. First[Solve[...]]]` | no — `Solve[2*C2PrimeLeft == 0, C2PrimeLeft]` then substituting that solution back |
-| B5 | mathematica | 123-124 | `expectApprox["C_res^2 numeric check", c2Star, c2Target, 10^-35]` / `presTarget` | no — `c2Target`/`presTarget` are literal numeric constants matching sympy's output |
-| B6 | mathematica | 134 | `expectTrue["duality sample ...", diff <= 10^-35]` over 5 rationals | yes — substantive |
-| B7 | mathematica | 146-149 | `expectTrue["constructive-branch increase up to r_*", ...]` | yes — substantive |
-| B8 | mathematica | 157-160 | `expectTrue["constructive-branch decrease after r_*", ...]` | yes — substantive |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 74 | `expect_zero("N_ss integral - 2 w_f", Nss_integral - Nss)` | norms (notes Sec.1) | yes |
+| A2 | sympy | 75 | `expect_zero("N_pp integral - w_g sqrt(pi/2)", ...)` | norms | yes |
+| A3 | sympy | 94 | `expect_zero("C^2(r) - C^2(pi/r) under duality", C2_dual - C2_target)` | duality (notes Sec.2) | partial (algebraic implication only, labeled) |
+| A4 | sympy | 118-121 | `expect_zero("self-dual overlap-slope relation", ...)` | stationary point | no (tautological, labeled at 116-117) |
+| A5 | sympy | 131-134 | `expect_zero("stationary derivative of C^2 at the self-dual point", ...)` | stationary point | no (tautological, labeled at 128-130) |
+| A6 | sympy | 141-142 | `if dC2_broken == 0: raise` (broken-tangent must be nonzero) | stationary-point non-vacuity | yes |
+| A7 | sympy | 183-184 | `if diff > 1e-40: raise` over five r-samples | sech-Gaussian duality identity | yes |
+| A8 | sympy | 198-200 | strict-increase on left grid | monotonicity / uniqueness | yes |
+| A9 | sympy | 207-209 | strict-decrease on right grid | monotonicity / uniqueness | yes |
+| B1 | mathematica | 52 | `expectZero["N_ss - 2 w_f", nssDirect - nssExpected]` | norms | yes |
+| B2 | mathematica | 53 | `expectZero["N_pp - w_g sqrt(pi/2)", nppDirect - nppExpected]` | norms | yes |
+| B3 | mathematica | 67 | `expectZero["C^2(r) - C^2(pi/r) under duality", c2Dual - c2Target]` | duality | partial (algebraic implication only, labeled at 64-66) |
+| B4 | mathematica | 93-96 | `expectZero["self-dual C^2 stationary slope from symmetry solve", ...]` | stationary point | no (tautological, labeled at 89-92) |
+| B5 | mathematica | 134 | `expectApprox["C_res^2 numeric check", c2Star, c2Target, 10^-35]` | C_res^2 benchmark | yes (cross-engine) |
+| B6 | mathematica | 135 | `expectApprox["P_res numeric check", pres, presTarget, 10^-34]` | P_res benchmark | yes (cross-engine) |
+| B7 | mathematica | 145 | `expectTrue["duality sample ...", diff <= 10^-35]` over five r-samples | duality identity | yes |
+| B8 | mathematica | 157-160 | left-grid strict-increase | monotonicity / uniqueness | yes |
+| B9 | mathematica | 168-171 | right-grid strict-decrease | monotonicity / uniqueness | yes |
+
+The tautological assertions A4/A5/B4 are kept as formal assertions but explicitly annotated as such in adjacent comments. The first-pass auditor chose to label rather than demote; the second pass does not re-litigate that choice. The substantive stationary-point evidence (A6 and A8/A9 / B7-B9) covers the paper claim.
 
 ## Findings
 
-### F1 — tautological_check
+### F1 — paper_misalignment
 
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py:79-84`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl:61-64`
-
-**What's wrong:**
-The "exact duality implication" block uses the abstract function `I = sp.Function("I")` (and `OverlapI` in Mathematica). It then forms
-```
-duality_rhs = (r / sqrt(pi)) * I(pi/r)
-C2_dual   = duality_rhs**2 / (r * sqrt(2*pi))         # = r * I(pi/r)^2 / (pi * sqrt(2 pi))
-C2_target = I(pi/r)**2 / ((pi/r) * sqrt(2*pi))        # = r * I(pi/r)^2 / (pi * sqrt(2 pi))
-expect_zero("C^2(r) - C^2(pi/r) under duality", C2_dual - C2_target)
-```
-The difference `C2_dual - C2_target` reduces to zero by pure algebra for *any* function `I`. The script never verifies the duality identity `I(r) = (r/sqrt(pi)) I(pi/r)` symbolically — that identity is *assumed* (only checked numerically in section 5). What this assertion actually confirms is the algebraic identity `(r/sqrt(pi))^2 / r = r/pi = 1/((pi/r))`, which has nothing to do with the sech-Gaussian profile.
-
-**Why this matters:**
-The script presents this as the "exact duality implication" — readers reasonably believe symbolic evidence has been produced that the sech-Gaussian overlap satisfies the duality. In fact only the *implication* "if duality holds for `I`, then `C^2(r)=C^2(pi/r)`" is checked, and that implication is a one-line variable substitution. The actual physics (duality of the sech-Gaussian overlap) has only the numerical evidence in section 5.
-
-**Required change:**
-Add an inline comment (and no more) above the `expect_zero` line in both files clarifying that this is an algebraic *implication-only* check on an abstract `I`, and that the duality identity itself is verified numerically in the subsequent section. Do NOT alter the assertion logic; just label it honestly.
-
-For sympy at line 81 add immediately above `expect_zero(...)`:
-```
-# Algebraic implication only: substitutes I -> (r/sqrt(pi)) I(pi/r) into C^2(r) and
-# checks it equals C^2(pi/r). Holds for ANY function I; the duality identity for the
-# sech-Gaussian overlap is exercised numerically in section 5.
-```
-
-For mathematica at line 63 add an equivalent comment above the `expectZero[...]` call.
-
-**Verification:**
-The comments appear in the script source. The output transcripts are unchanged.
-
-### F2 — tautological_check
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py:92-116`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl:68-89`
-
-**What's wrong:**
-The "stationary point at the self-dual ratio" block is a circular calculation:
-- sympy lines 97-103 build `duality_tangent = Iprime_left - (Istar/sqrt(pi) - sqrt(pi)*Iprime_dual/r)`, sub `r=sqrt(pi)` and `Iprime_dual=Iprime_left` to get `2*Iprime_left - Istar/sqrt(pi)` (printed as "differentiated overlap duality at r_* = -I_star/sqrt(pi) + 2*Iprime_left"). Then line 104-107 substitutes `Iprime_left = Istar/(2*sqrt(pi))` into that same expression and asserts zero. The substituted value is exactly the solution of `2*Iprime_left - Istar/sqrt(pi) = 0`, so this is algebraically guaranteed.
-- sympy lines 109-116 form a hand-written formula `dC2_selfdual = (2*Istar*Iprime_left*rstar - Istar^2)/(rstar^2 * sqrt(2 pi))`, which is the asserted derivative of `C^2 = I^2/(r sqrt(2 pi))` at `r=sqrt(pi)`. This expression is *not derived* in script (no `diff` call) — it is the claim. Substituting the previously-derived slope back makes the numerator `Istar*sqrt(pi)*Istar/(sqrt(pi)) - Istar^2 = 0`. Again tautological by construction.
-- Mathematica lines 72-89 do something equivalent but in `C^2`-space: differentiate `c2Fn[r] - c2Fn[pi/r]`, get `2*C2PrimeLeft` at `r=sqrt(pi)`, then `Solve[2*C2PrimeLeft == 0, C2PrimeLeft]` returns `{C2PrimeLeft -> 0}` (printed at output line 31), and the script asserts that solution substituted back yields 0. The output line 32 reads `self-dual C^2 stationary slope from symmetry solve = 0` — but that is `Solve[x == 0]` returning `x -> 0` and then verifying `x == 0`. Pure tautology.
-
-These checks would pass for *any* differentiable function that is symmetric under `r <-> pi/r`. They do not verify any property of the sech-Gaussian profile; they verify the elementary calculus fact "a differentiable function symmetric about a point has zero derivative there."
-
-**Why this matters:**
-The script claims to prove "the self-dual point r_* = sqrt(pi) is an exact stationary point" of the sech-Gaussian coherence `C^2`. The actual derivation requires: (i) the duality identity holds for the specific sech-Gaussian overlap, and (ii) the symmetry implies stationarity. The scripts handle (ii) tautologically and never establish (i) symbolically. The numerical monotonicity scan (section 6) and the numerical duality samples (section 5) provide indirect numerical evidence for stationarity, but the "exact" stationary-point claim is not exactly checked.
-
-**Required change:**
-Add an inline comment immediately above the relevant `expect_zero` / `expectZero` blocks documenting that these are symmetry-implies-stationarity tautologies on an abstract symmetric function, and the substantive stationary-point evidence is in the numerical monotonicity scan. Do NOT alter the assertion logic.
-
-For sympy, immediately above line 104 (`expect_zero("self-dual overlap-slope relation", ...)`) insert:
-```
-# Tautological: the substitution Iprime_left -> Istar/(2*sqrt(pi)) is the solution of
-# the preceding equation. This checks calculus, not the sech-Gaussian profile.
-```
-
-Immediately above line 113 (`expect_zero("stationary derivative of C^2 at the self-dual point", ...)`) insert:
-```
-# Tautological: dC2_selfdual is a hand-written derivative formula, then the slope value
-# derived above is substituted back. Stationarity of a symmetric differentiable function
-# at the symmetric point is a calculus identity, not specific to sech-Gaussian.
-# The substantive stationary-point evidence is the numerical monotonicity scan below.
-```
-
-For mathematica, immediately above line 86 (`expectZero[...]` for the symmetry-solve slope) insert:
-```
-(* Tautological: Solve[2*C2PrimeLeft == 0] returns C2PrimeLeft -> 0; substituting that
-   back into C2PrimeLeft yields 0. This is the calculus fact that a function symmetric
-   under r <-> Pi/r has zero derivative at r = Sqrt[Pi], not a sech-Gaussian-specific
-   result. The numerical monotonicity scan below provides the substantive evidence. *)
-```
-
-**Verification:**
-The comments appear in the script source. The output transcripts are unchanged (these are documentation-only fixes).
-
-### F3 — hardcoded_result
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py:62-66`
-
-**What's wrong:**
-The sympy script declares
-```
-Nss = 2 * wf
-Npp = wg * sp.sqrt(sp.pi / 2)
-```
-as the transverse norms and prints them, but never integrates `sech(y/wf)**2` or `exp(-2*y**2/wg**2)` to derive them. There is no `sp.integrate(...)` call in section 1; the values appear as literal expressions and pass through the rest of the script unchallenged. The script header (line 11) claims "Exact transverse norms for the sech and Gaussian profiles" are checked — they are stated, not checked.
-
-(The Mathematica script does derive these via `Integrate` at lines 45-46 and compares against the expected forms at lines 52-53; the sympy script lacks this independent step.)
-
-**Why this matters:**
-The norms are a foundational claim of the unit. If a future edit changes the profile (e.g., to `sech(y/wf)` non-squared, or `exp(-y^2/wg^2)` without the factor 2 in the exponent), the sympy script will silently still "pass" because nothing here is anchored to an integral. A second engine catching the discrepancy is fine, but the unit's stated bar is that both engines verify the result; per the audit ground rules ("both engines must derive the result independently from the physical premises"), sympy currently doesn't.
-
-**Required change:**
-In `moving_throat_pde_stage067_sech_gaussian_sympy_audit.py`, between line 63 (where `Npp` is defined) and line 67 (the blank line preceding section 2), add an explicit derivation that ties the declared norms to actual integrals. Specifically, immediately after the existing `print("N_(phi phi)     =", Npp)` line (line 66), insert:
-
-```python
-# Derive the norms by direct integration to anchor the declared values.
-y = sp.symbols("y", real=True)
-Nss_integral = sp.integrate(sp.sech(y / wf) ** 2, (y, -sp.oo, sp.oo))
-Npp_integral = sp.integrate(sp.exp(-2 * y ** 2 / wg ** 2), (y, -sp.oo, sp.oo))
-print("integrate(sech(y/w_f)^2)        =", sp.simplify(Nss_integral))
-print("integrate(exp(-2 y^2/w_g^2))    =", sp.simplify(Npp_integral))
-expect_zero("N_(sigma sigma) integral - 2 w_f", Nss_integral - Nss)
-expect_zero("N_(phi phi) integral - w_g sqrt(pi/2)", Npp_integral - Npp)
-```
-
-Do not change the existing `Nss` / `Npp` definitions, the existing prints, or the rest of the script.
-
-**Verification:**
-After the change, re-running the sympy script should produce two new `expect_zero` lines anchoring `N_(sigma sigma) integral - 2 w_f = 0` and `N_(phi phi) integral - w_g sqrt(pi/2) = 0` in the output. Exit code remains 0.
-
-### F4 — hardcoded_result
+**Subtype:** notes_contradicts_script (script labels are pre-renumbering "Stage 50/050" while paper card and file paths are "Stage 067")
 
 **Severity:** low
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl:115-124`
+- paper-side: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_067.tex:1` quote: `\section[Stage 067]{Stage 067: Exact Sech--Gaussian Coherence Resonance Benchmark}`
+- script-side: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py:4` quote: `moving_throat_pde_stage50_sech_gaussian_sympy_audit.py`
+- script-side: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py:53` quote: `banner("STAGE 50 — EXACT SECH–GAUSSIAN COHERENCE BENCHMARK")`
+- script-side: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl:38` quote: `banner["STAGE 050 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"];`
 
 **What's wrong:**
-The Mathematica script defines
-```
-c2Target   = ToExpression["0.994418836451529348706428351608877628170873348983716948813464`60"];
-presTarget = ToExpression["1.00561248776057621695172301479763550405448504648609605997534`60"];
-```
-and then asserts `expectApprox[..., c2Star, c2Target, 10^-35]` / `expectApprox[..., pres, presTarget, 10^-34]`. The literal digits of `c2Target` match the sympy output (`scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt:40`) and `presTarget` matches the sympy output line 41. The Mathematica check is therefore "Mathematica's `NIntegrate` agrees, to 35 digits, with a number that was pasted in from the sympy run."
+After the renumbering that produced `stage_067.tex` and the matching script filenames (`..._stage067_...py` / `..._stage067_...wl`), the script docstring and the printed banners still carry the old `Stage 50` / `STAGE 050` label. The transcripts emit:
+- sympy output line 3: `STAGE 50 — EXACT SECH–GAUSSIAN COHERENCE BENCHMARK`
+- mathematica output line 3-4: `STAGE 050 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK`
+- mathematica output line 78: `Stage 067 Mathematica audit passed.` (this line *was* fixed, so the inconsistency is internal even to the .wl).
 
-This is not catastrophic — both engines integrate the same definite integral, so cross-engine agreement is the point — but the *target* value is hardcoded from the other engine rather than being a known closed form or being derived in-script. If sympy's number were wrong (e.g., a precision regression), the pasted target would migrate the same error here.
+There is no actual math error. The notes file's title also still reads `Stage 50` (notes line 2), but the red-team must not edit notes/, so only the script-side labels are in scope. The direction of resolution is unambiguous (paper card and filenames are authoritative; "067" is the correct label everywhere), so no `## Resolve before fix_loop` block is needed.
 
 **Why this matters:**
-The `c2Target`/`presTarget` constants are presented as ground truth and not labeled as "agreement with the sympy mpmath quad." A future verifier reading the .wl in isolation cannot tell whether these targets are an analytic result or an empirical match.
+Audit transcripts feed downstream review. A reader cross-referencing the sympy output banner against the paper card sees "STAGE 50" and "Stage 067" and has to verify they are the same stage. The mathematica `.wl` is even inconsistent with itself: the banner says 050 but the closing print says 067. Fixing the labels keeps the transcripts aligned with the paper card and removes a stumbling block for downstream review.
 
 **Required change:**
-Add an inline comment above line 115 noting the provenance of the targets. Do not change the values.
+Bring the script labels into agreement with the file paths and paper card. Specifically:
+1. In `scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py`, replace the docstring filename on line 4 from `moving_throat_pde_stage50_sech_gaussian_sympy_audit.py` to `moving_throat_pde_stage067_sech_gaussian_sympy_audit.py`, and replace the banner on line 53 from `"STAGE 50 — EXACT SECH–GAUSSIAN COHERENCE BENCHMARK"` to `"STAGE 067 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"`.
+2. In `mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl`, replace the banner on line 38 from `"STAGE 050 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"` to `"STAGE 067 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"`.
 
-Insert immediately above line 115 (`c2Target = ToExpression[...]`):
-```
-(* c2Target / presTarget are the sympy mpmath quad results from
-   scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt.
-   This block confirms cross-engine numerical agreement on the same definite
-   integral, not agreement with any closed-form benchmark. *)
-```
+Do not touch the notes file or the paper card. The notes' "Stage 50" header is documentation drift that the user can address out-of-band; it does not affect script correctness.
 
 **Verification:**
-Comment appears in source. Output transcript unchanged.
+After the edit, re-running the scripts emits banner lines that begin with `STAGE 067` (matching the paper card and filenames). The sympy docstring's filename line matches the actual filename. No assertion changes; the `PASS` / numeric content is unchanged.
 
 ## Independent-derivation check (Mathematica)
 
-The Mathematica script is *not* a line-by-line transliteration of the sympy script. Notable independent steps:
-- Mathematica computes the transverse norms via `Integrate[Sech[y/wf]^2, ...]` and `Integrate[Exp[-2*y^2/wg^2], ...]` (lines 45-46); sympy just declares them.
-- Mathematica formulates the stationarity check in `C^2`-space using `D[c2Fn[r] - c2Fn[Pi/r], r]` and `Solve` (lines 72-85); sympy works in `I`-space using `Iprime_left`, `Iprime_dual` substitution (lines 92-107).
-- The numeric integration uses `NIntegrate` with `WorkingPrecision -> 80` (folded as `2 * NIntegrate[..., {x, 0, Infinity}]`), whereas sympy uses `mpmath.quad` over `[-inf, inf]` with `dps=60`. These are independent integrators.
+The Mathematica script is independent from the SymPy script on the math side (already concluded in the first-pass report, still holds):
+- Norms: Mathematica integrates `Sech[y/wf]^2` and `Exp[-2 y^2/wg^2]` directly (lines 45-46); SymPy rewrites `sech` as `cosh` then integrates (lines 70-71). Same identity, different code paths.
+- Stationary-point block: Mathematica works in `C^2`-space using `D[c2Fn[r] - c2Fn[Pi/r], r]` with `Solve` (lines 75-87); SymPy works in `I`-space with a hand-built `duality_tangent` and a separate hand-written `dC2_selfdual` formula (sympy lines 109-134). Different algebraic backbones reaching the same calculus identity.
+- Numeric integrator: Mathematica uses `NIntegrate` with `WorkingPrecision -> 80, AccuracyGoal -> 32` over the half-line (then `*2`); SymPy uses `mpmath.quad` over `(-inf, inf)` at `dps=60`. Independent.
 
-Parallels exist (same banner ordering, same sample grids with the floats rationalized into exact rationals `{3/4, 1, 6/5, 3/2, 2}`), but the algebraic backbone differs. Not a `mathematica_transliteration` finding.
+The mathematica numeric targets are explicitly labeled (lines 122-125) as cross-engine targets sourced from the sympy transcript, which is honest documentation of an agreement check.
+
+No `mathematica_transliteration` finding.
 
 ## Engine cross-check
 
-Both engines arrive at identical numbers to 60 digits:
+Both engines agree to >35 digits on `C_res^2` and `P_res`:
+- sympy (output line 36): `C_res^2 = 0.994418836451529348706428351608877628170873348983716948813464`
+- mathematica (output line 31): `C_res^2 = 0.99441883645152934870642835160887762817087334898371694998969514187456256874872`60.`
+- The first 50+ digits match.
+- `expectApprox["C_res^2 numeric check", c2Star, c2Target, 10^-35]` passes (mathematica output line 35).
+- Duality samples at `r = 3/4, 1, 6/5, 3/2, 2` vanish to well below the tolerance in both engines.
+- Monotonicity grids agree on both engines.
 
-- sympy `C_res^2 = 0.994418836451529348706428351608877628170873348983716948813464` (output line 40)
-- mathematica `C_res^2 = 0.99441883645152934870642835160887762817087334898371694998969514187456256874872`60.` (output line 39)
+`engines_agree: true`.
 
-The first 60 digits match exactly; the Mathematica value has more digits because of the higher working precision. Likewise for `P_res` to 60 digits. Both engines' duality samples at `r = 0.75, 1, 1.2, 1.5, 2` agree at the precision-limit zero level. Engine agreement is satisfied.
+Output freshness:
+- sympy script mtime 2026-05-22 19:54, sympy output 19:56 (fresh, post-first-pass fix).
+- mathematica script 19:53, mathematica output 19:56 (fresh, post-first-pass fix).
+
+`outputs_fresh: true`.
 
 ## Verdict justification
 
-The unit's *numerical* claims (sech-Gaussian overlap duality at five sample points, monotonicity below and above `r_*`, the `C_res^2 ~ 0.9944` benchmark) are substantively verified by both engines and agree to 60 digits. The unit's *symbolic* claims (duality implication, stationary-point characterization, exact norms) are either tautological calculus identities on abstract symbols (F1, F2) or declared rather than derived (F3, F4). The findings are documentation/anchoring issues, not math errors — nothing here is unfixable, and nothing propagates downstream because the substantive numerics are correct. Verdict: `findings`, four medium/low-severity issues.
+Every paper deliverable is verified by substantive script-side evidence: the norms by direct symbolic integration in both engines (post-first-pass fix on the sympy side); the duality identity by 60-dps numerical evaluation at five sample r-values, in agreement to <= 1e-40 (sympy) / <= 1e-35 (mathematica); the stationary point at `r_* = sqrt(pi)` by the broken-tangent counter-check plus a strict-monotonicity scan on either side of `r_*`; and the boxed numerical values `C_res^2` and `P_res` by independent 60-dps integrations in two engines that agree to >35 digits. Tautological calculus identities are present in both scripts but explicitly labeled as such in the source. After the first-pass fixes (F1-F4 from the prior directive), the only remaining issue is cosmetic: the script docstring and printed banners still carry the pre-renumbering "Stage 50" / "STAGE 050" label rather than "Stage 067". This is a paper-script misalignment in the labels but not in the math; resolving it is mechanical (the paper card and filename use "067"), so it is being routed directly to Codex rather than to the user. Verdict: `findings`, one low-severity label/banner cleanup.
 
-Attacks tried that failed:
-- Looked for sign/factor errors in `C^2(r)` algebra and in the derivative formula — both match `d/dr[I^2/(r sqrt(2 pi))]` correctly.
-- Checked parity/symmetry of the overlap `I(r) = ∫ sech(x) exp(-x^2/r^2) dx`: integrand is even in `x`, so the half-line integration in Mathematica (multiplied by 2) is valid.
-- Verified the Mathematica `Solve[2*C2PrimeLeft == 0]` returns `{C2PrimeLeft -> 0}` as the output transcript shows — no missing branch.
-- Verified `stale_output` is not an issue: sympy script mtime Apr 21 17:04, output May 11 12:44 (fresh); mathematica script May 11 11:56, output May 11 12:56 (fresh).
-- Verified the perturbed-stationarity check (sympy line 119-124): `dC2_broken = sqrt(2)*Istar*delta_bad/pi` is structurally nonzero with `delta_bad` declared `nonzero=True`, so the `if dC2_broken == 0` branch correctly does not trigger and the script proceeds.
+Attacks tried that failed in this pass: (i) re-checked whether the new `(... ).rewrite(sp.cosh)` step in sympy line 70 changes the integrand's domain — no, `sech(y/wf)^2 = 1/cosh(y/wf)^2`, both even and positive, integral evaluates to `2 w_f` for `wf > 0`; (ii) re-checked the half-line `2 * NIntegrate[... {x, 0, Infinity}]` is correct for the even integrand — yes, `sech(x) Exp[-x^2/r^2]` is even; (iii) checked that the labeled-tautology comments do not silently mask a real check the script would otherwise need — no, the `dC2_broken` block (sympy 137-142) handles the non-vacuity, and the monotonicity scan handles uniqueness on the sampled branch; (iv) re-verified `expect_zero` triggers `raise AssertionError` rather than silently passing (sympy line 50) — confirmed, behavior is correct; (v) checked Mathematica's `Solve[c2SymmetryAtRStar == 0, c2PrimeLeft, Reals]` for hidden `ConditionalExpression` wrappers — output transcript line 23 shows `{{C2PrimeLeft -> 0}}` clean, no conditional expression appears.
 
 ## Self-test notes
 
-I checked: (1) the duality algebra on abstract `I` to confirm it is identically zero regardless of `I` (`C2_dual - C2_target = r I(pi/r)^2/(pi sqrt(2 pi)) - r I(pi/r)^2/(pi sqrt(2 pi)) = 0`); (2) the integrand parity for the half-line Mathematica integration (`sech(x) exp(-x^2/r^2)` is even, so `2 * ∫_0^∞ = ∫_{-∞}^∞` is valid); (3) that the proposed F3 addition uses real-valued `y` (the sympy `assumptions` already cover positivity of `wf`, `wg`, which makes the closed-form definite integrals well-defined). The F3 patch is in `scripts/` (.py), and F1/F2/F4 are comment-only edits in their respective files; no path mistakes possible.
+I checked: (1) variable independence — F1 is label-only, no derivatives or assertions are added or modified; (2) symmetry/parity — N/A for label-only fix; (3) trivial-case substitution — N/A (no new mathematical expressions); (4) path specs — both targeted files exist at the absolute paths quoted (`scripts/...stage067...py` and `mathematica/...stage067...wl`), confirmed via the file listing; (5) paper round-trip — after relabeling the scripts to "Stage 067", the script labels match the paper card (`\section{Stage 067: ...}`), the appendix `\input{stages/stage_067}`, and the file paths. No new paper_misalignment is introduced. The notes file's "Stage 50" header is the one remaining pre-renumbering label, but it is out of scope for the red-team and does not affect script behavior.

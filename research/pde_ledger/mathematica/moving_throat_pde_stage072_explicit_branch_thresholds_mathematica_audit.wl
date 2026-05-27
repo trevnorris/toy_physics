@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 055 — EXPLICIT BRANCH THRESHOLD SURFACES"];
+banner["STAGE 072 — EXPLICIT BRANCH THRESHOLD SURFACES"];
 
 Clear[chiS, lambdaEll, upsilonW, peReq, rhoW, cSw, v0, hbar];
 $Assumptions =

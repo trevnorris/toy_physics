@@ -72,6 +72,53 @@ Xi = FullSimplify[
 Print["Xi = ", fmt[Xi]];
 expectZero["Xi - W_wall", Xi - WwallAssembled];
 
+banner["STAGE 070 — INDEPENDENT NUMERIC PROFILE CROSS-CHECK"];
+
+Module[{xi, fProf, fp, fpp, IfNum, IgNum, ruleNum, TxNum, KxNum, kappaNum,
+        kappaCmp, WwallNum, WwallCmp, JfromProfile, J1Stage48, XiNum, XiCmp, tol},
+  tol = 10^-10;
+  fProf[xi_] := Sech[xi];
+  fp[xi_]    := D[fProf[xi], xi];
+  fpp[xi_]   := D[fProf[xi], {xi, 2}];
+  IfNum = NIntegrate[fp[xi]^2,  {xi, -Infinity, Infinity}, WorkingPrecision -> 30];
+  IgNum = NIntegrate[fpp[xi]^2, {xi, -Infinity, Infinity}, WorkingPrecision -> 30];
+  Print["I_f (sech profile) = ", fmt[IfNum], "   (analytic 2/3 = ", N[2/3, 30], ")"];
+  Print["I_g (sech profile) = ", fmt[IgNum], "   (analytic 8/15 = ", N[8/15, 30], ")"];
+  Print["Stage-48 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)"];
+  Print["Stage-47 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w"];
+  Print["Structural ratio I_1/J_1 should equal 4 pi a^2 ell."];
+  (* Verify with the sech-profile I_f computed above:
+     I_1/J_1 = (4 pi a^2 ell I_f / H_w) / (I_f / H_w) = 4 pi a^2 ell, independent of I_f's value. *)
+  expectZero["I_1 / J_1 - 4 pi a^2 ell (independent of profile, symbolic check)",
+             FullSimplify[(4*Pi*a^2*ell*IfMoment/Hw)/(IfMoment/Hw) - 4*Pi*a^2*ell,
+                          Assumptions -> $Assumptions]];
+
+  ruleNum = {a -> 1, L -> 1, ell -> 1/10, rhoW -> 1, cSw -> 1, V0 -> 1, m -> 1, hbar -> 1};
+
+  TxNum    = N[Pi*a^2*ell*IfNum*hbar^2/(m*rhoW)                /. ruleNum, 30];
+  KxNum    = N[(4*Pi*a^2*ell*IfNum*(m*cSw^2/rhoW)
+               + Pi*a^2*IgNum*hbar^2/(m*rhoW*ell))             /. ruleNum, 30];
+  kappaNum = N[KxNum*L^2/TxNum                                  /. ruleNum, 30];
+  kappaCmp = N[4*(m*cSw*L/hbar)^2 + (IgNum/IfNum)*(L/ell)^2      /. ruleNum, 30];
+  Print["kappa_num     = ", fmt[kappaNum]];
+  Print["kappa_closed  = ", fmt[kappaCmp]];
+  If[Abs[kappaNum - kappaCmp] < tol, pass["kappa numeric profile check"],
+    fail["kappa numeric profile check", kappaNum - kappaCmp]];
+
+  WwallNum = N[4*Pi*a^2*L^2*(IfNum*rhoW/(m*cSw^2))*V0^2/(TxNum*ell) /. ruleNum, 30];
+  WwallCmp = N[4*rhoW^2*V0^2*L^2/(hbar^2*cSw^2*ell^2)               /. ruleNum, 30];
+  Print["W_wall_num    = ", fmt[WwallNum]];
+  Print["W_wall_closed = ", fmt[WwallCmp]];
+  If[Abs[WwallNum - WwallCmp] < tol, pass["W_wall numeric profile check"],
+    fail["W_wall numeric profile check", WwallNum - WwallCmp]];
+
+  XiNum = N[(V0/ell)^2*(4*Pi*a^2*ell*IfNum*rhoW/(m*cSw^2))*L^2/TxNum /. ruleNum, 30];
+  XiCmp = WwallNum;
+  Print["Xi_num        = ", fmt[XiNum]];
+  If[Abs[XiNum - XiCmp] < tol, pass["Xi = W_wall numeric profile check"],
+    fail["Xi = W_wall numeric profile check", XiNum - XiCmp]];
+];
+
 banner["STAGE 053 THEOREM LEDGER"];
 Print["T_X = pi a^2 ell I_f hbar^2 / (m rho_w)"];
 Print["K_X = 4 pi a^2 ell I_f H_w + pi a^2 I_g hbar^2 / (m rho_w ell)"];

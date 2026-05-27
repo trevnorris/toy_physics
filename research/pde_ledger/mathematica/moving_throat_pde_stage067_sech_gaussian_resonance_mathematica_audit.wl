@@ -35,7 +35,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[res, pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 050 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"];
+banner["STAGE 067 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK"];
 
 Clear[y, x, wf, wg, r];
 $Assumptions =

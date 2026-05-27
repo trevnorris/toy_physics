@@ -2,16 +2,16 @@
 unit_id: 068
 batch: III.3
 verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-22T21:45:00-06:00
+verify_date: 2026-05-26T13:20:00-06:00
 verdict: verified
-sympy_exit: n/a
-mathematica_exit: n/a
+sympy_exit: 0
+mathematica_exit: 0
 findings_resolved: 3
 findings_total: 3
-material_change: true
+material_change: false
 ---
 
-# Verification — unit 068
+# Verification — unit 068 (v2)
 
 ## Per-finding outcomes
 
@@ -20,107 +20,253 @@ material_change: true
 **Classification:** resolved
 
 **What changed:**
-SymPy (`scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py:44-110`):
-- Lines 53-60 introduce symbols `A_in, C_sym`, form `A_trans = C_sym * A_in`, square it, substitute `A_in**2 -> W_wall` and `C_sym**2 -> C2`, and assert `W_res_derived - C2*W_wall == 0`.
-- Lines 64-68 introduce `Cres = sp.symbols("C_res", positive=True)`, set `Pres_derived = 1/Cres**2`, and assert `Pres_derived - 1/Cres**2 == 0` and `(1/Cres**2)*Cres**2 - 1 == 0`.
-- Lines 81-110 replace the postulated `Wfail_match = Pe_req/Delta_inf` etc. with `sp.solve(sp.Eq(W_match_sym*Delta_sym, Pe_req), W_match_sym)` for the matched branch and `sp.solve(sp.Eq(C2*W_prof_sym*Delta_sym, Pe_req), W_prof_sym)` for the profile branch. Adds the new non-trivial cross-relations `Wfail_res * C2 - Wfail_match == 0` and `Wsuff_res * C2 - Wsuff_match == 0`, then keeps the resonance-substitution assertions `Wfail_res(C2->1/Pres) - Pres*Wfail_match == 0` and the Wsuff counterpart.
-
-Mathematica (`mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl:28-66`):
-- Mirrors the SymPy structure via independent `Solve[...]` calls: `Solve[Wres == C2*Wwall, Wres]` (line 36), `Solve[Pres*Cres^2 == 1, Pres]` (line 41), `Solve[Wmatch*DeltaSym == PeReq, Wmatch]` (line 46), `Solve[C2*Wprof*DeltaSym == PeReq, Wprof]` (line 51). Same assertion set as SymPy.
+- `scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py:44-101` and
+  `mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl:33-66`
+  replace the three tautological "derivations" with three substantive anchors:
+  1. **Gain decomposition (W_res = C^2 W_wall).** SymPy lines 55-63 build
+     `Gmatch_expr = rho_star*g_phi^2*N_phiphi/(m*c_s^2*K_X)`,
+     `Wwall_expr = kappa*Gmatch_expr`, `Gres_expr = C2*Gmatch_expr`,
+     `Wres_expr = kappa*Gres_expr`, then assert
+     `simplify(Wres_expr - C2*Wwall_expr) == 0`. Mathematica lines 36-44 mirror
+     this with `GmatchExpr = rhoStar*gPhi^2*Nphi/(mPart*cs^2*KX)` etc.
+  2. **Matched limit (C2 -> 1 collapses W_res to W_wall).** SymPy lines 64-66 and
+     Mathematica lines 45-46 add the limit check.
+  3. **P_res = 1/C_res^2 from required-wall-figure ratio.** SymPy lines 78-89
+     use two independent `sp.solve` calls on the matched and profile Peclet
+     balances (local symbols `Wm`, `Wp`), then take the ratio at
+     `C2 -> Cres^2`. Mathematica lines 49-55 use
+     `FullSimplify[((PeReq/(C2*Delta1))/(PeReq/Delta1)) /. C2 -> Cres^2, ...]`.
+  4. **Numeric anchor.** SymPy lines 91-101 and Mathematica lines 57-66 verify
+     the paper card's `P_res = 1.005612487760576` against `1/C_res^2` with
+     `C_res^2 = 0.994418836451529` to 20-digit precision.
 
 **Assessment:**
-The diff matches the directive's required-change block essentially verbatim in both engines. The new `Wfail_res * C2 - Wfail_match` and `Wsuff_res * C2 - Wsuff_match` assertions are genuinely non-tautological: `Wfail_match` is solved from `W_match*Delta = Pe_req` (no `C2` involvement), while `Wfail_res` is independently solved from `C2*W_prof*Delta = Pe_req`. The two solutions come from two different posed equations, and their `C2`-weighted equality is a real cross-relation between the matched and profile branches (i.e. M3/M4 of the claim manifest).
+The fix is correct and substantive.
+- The gain-decomposition assertion `Wres_expr - C2*Wwall_expr` non-trivially
+  collapses `rho_star, g_phi, N_phiphi, m, c_s, K_X, kappa` — perturbing any
+  single factor (e.g., changing `N_phiphi` to `2*N_phiphi` on only one side)
+  would cause the residual to be non-zero. This is NOT a relabel-then-compare;
+  W_wall is built independently as `kappa * Gmatch` and W_res independently as
+  `kappa * C2 * Gmatch`, then their difference modulo `C2*Wwall` is symbolically
+  simplified. The anchor in the matched-branch gain decomposition is exactly
+  what the directive asked for.
+- The `P_res = 1/C_res^2` derivation now flows through two genuine `sp.solve`
+  calls on the Peclet balances and a ratio simplification — it is not the
+  literal `(1/Cres^2) - (1/Cres^2)` of v1.
+- The numeric anchor exec-log lines
+  `P_res numeric residual = 5.6958391724936524581E-16` (SymPy) and
+  `5.1512360584381274304121e-16` (Mathematica) confirm the paper card's quoted
+  value agrees with `1/C_res^2` to ~5e-16, well below the 1e-12 threshold.
+- The original tautological `P_res*C_res^2 - 1 = 0` line (which did not even
+  contain `Pres`) is removed entirely.
+- The Mathematica derivation uses `FullSimplify` on the ratio of required-wall
+  figures rather than a `Solve` call, satisfying the F2 independence requirement
+  in tandem.
 
-Caveats noted but not blocking:
-- The `W_res - C2*W_wall` derivation in SymPy is partly cosmetic — `(C_sym * A_in)**2` simplifies algebraically to `C_sym**2 * A_in**2`, then two substitutions rename to the audit symbols. SymPy *does* perform the symbolic squaring step, so it is not strictly tautological, but it is the weakest of the four assertions.
-- The `P_res - 1/C_res^2` assertion compares `Pres_derived` (defined one line earlier as `1/Cres**2`) to `1/Cres**2`. By itself this is the identity `x - x = 0`. The directive explicitly specifies this exact code, so the verifier marks F1 as resolved per directive compliance; however, the practical non-triviality of *this particular* assertion is low. The cross-relation assertions (M3/M4) carry the load.
-- The Mathematica `Solve[Wres == C2*Wwall, Wres]` likewise returns `Wres -> C2*Wwall` and the subsequent assertion is then trivially zero; same caveat as the SymPy mirror.
+No collateral edits beyond what the directive asked for. The directive's
+deviation note ("Mathematica check labels were aligned to the directive's
+verification inventory by adding 'from' to two labels") is a cosmetic label
+change that does not affect substance.
 
-Overall: F1 is resolved because (a) Codex applied the directive's verbatim replacement, (b) the new M3/M4 cross-relations are non-tautological, (c) the structural separation between matched-branch and profile-family solves is now in place, and (d) the docstring claims are now exercised by independent `solve`/`Solve` calls rather than postulated symbols.
-
-### F2 — tautological_check
+### F2 — mathematica_transliteration
 
 **Classification:** resolved
 
 **What changed:**
-SymPy (`scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py:112-134`):
-- Way A: `success_band_widthA = sp.simplify((Wsuff_res - Wsuff_match).subs(C2, 1/Pres))` and the failure analog.
-- Way B: solves `sp.Eq(Wsuff_match + gap_sym, Pres * Wsuff_match)` for `gap_sym` (and the failure analog).
-- Asserts `success_band_widthA - success_band_widthB == 0` and `failure_band_widthA - failure_band_widthB == 0`.
-
-Mathematica (`mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl:68-84`):
-- Way A: `FullSimplify[(WsuffRes - WsuffMatch) /. C2 -> 1/Pres, ...]`.
-- Way B: `gap /. First@Solve[WsuffMatch + gap == Pres*WsuffMatch, gap]`.
-- Same two A-vs-B assertions.
+- `mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl:68-91`
+  replaces the line-by-line port of SymPy's `Solve` choreography with
+  `Reduce`-and-`Cases` derivations that keep the positivity premise explicit:
+  ```
+  WfailMatch = First[Cases[
+      Reduce[Wmatch*Deltainf == PeReq && Wmatch > 0 && Deltainf > 0 && PeReq > 0, Wmatch, Reals],
+      HoldPattern[Wmatch == rhs_] :> rhs, Infinity
+    ]];
+  ```
+  applied to each of the four thresholds (WfailMatch, WsuffMatch, WfailRes,
+  WsuffRes).
+- The stray `gapSym;` no-op line (was line 74) is removed.
+- The F1 P_res derivation uses a direct ratio expression with `FullSimplify`
+  rather than mirroring SymPy's two-Solve idiom.
+- The "Way B" band-width Solve idiom (`gap /. First@Solve[WsuffMatch + gap == Pres*WsuffMatch, gap]`)
+  is replaced by the F3 P-form construction (the directive notes that F3
+  supersedes the interim F2 Series form).
 
 **Assessment:**
-This is genuinely non-trivial. Way A pulls from the F1-derived `Wsuff_res = Pe_req/(C2*Delta_0)` (which came from the profile-family Solve) and `Wsuff_match = Pe_req/Delta_0` (from the matched-branch Solve), takes their raw difference, then substitutes `C2 -> 1/Pres` to get `Pe_req*(Pres-1)/Delta_0`. Way B solves a different equation (`x + gap = Pres*x`) for `gap`, giving `(Pres-1)*Wsuff_match = (Pres-1)*Pe_req/Delta_0`. The agreement is not built into either definition — it tests the relation between the F1-derived profile threshold (at the resonance point) and the gap-equation algebra. If F1's profile-threshold solve had returned the wrong functional form (e.g. `Pe_req/(C2^2*Delta_0)`), Way A would no longer equal Way B and the assertion would fail.
+The Mathematica script no longer mirrors the SymPy script line-by-line:
+- SymPy uses
+  `sp.solve(sp.Eq(W_match_sym * Delta_sym, Pe_req), W_match_sym)[0]` then
+  substitutes `Delta_sym -> Deltainf/Delta0`. Mathematica uses
+  `Reduce[Wmatch*Deltainf == PeReq && Wmatch > 0 ..., Wmatch, Reals]` with
+  `Cases` pattern extraction, separately for each Delta. The algebraic path is
+  different: Mathematica's `Reduce` returns an `And`-clause structure that gets
+  pattern-matched with `HoldPattern[Wmatch == rhs_] :> rhs`, while SymPy's
+  `solve` returns a bare expression directly.
+- For the F1 P_res derivation, SymPy uses two Solve calls then a ratio;
+  Mathematica uses `FullSimplify` on a direct ratio expression with `C2 -> Cres^2`
+  substitution and explicit `Delta1 > 0` assumption.
+- For the F3 band-width check, SymPy uses `sp.simplify` on
+  `Wsuff_res_C - Wsuff_match`; Mathematica uses `FullSimplify` with explicit
+  `Assumptions -> $Assumptions`.
+- The `gapSym;` leftover is gone (the diff at line 101 of stage_068_diff.patch
+  shows the deletion of `gapSym;`).
 
-The literal anti-pattern from the original report — "`Pres*X - X` followed by `X/Pres - (Pres-1)`" — is no longer present in either script.
+The exec log confirms both engines produce the same algebraic output for the
+threshold quantities (`PeReq/Deltainf`, `PeReq/Delta0`, `PeReq/(C2*Deltainf)`,
+`PeReq/(C2*Delta0)`), but the printed intermediate forms differ. Mathematica's
+C-form band width is printed as `(PeReq - Cres^2*PeReq)/(Cres^2*Delta0)` while
+SymPy's is `-Pe_req/Delta_0 + Pe_req/(C_res**2*Delta_0)` — same expression
+post-simplification but distinct simplification paths, confirming
+non-parallel symbolic processing.
 
-Stylistic note (non-blocking): the Mathematica file contains a dangling line `gapSym;` (line 74) that does nothing — the substantive `gap /. First@Solve[..., gap]` uses the symbol `gap`, not `gapSym`. The directive itself contained this same stray line, so Codex faithfully copied it. The assertion semantics are unaffected.
-
-### F3 — mathematica_transliteration
+### F3 — insufficient_verification
 
 **Classification:** resolved
 
 **What changed:**
-The Mathematica file now contains six distinct `Solve` calls (lines 36, 41, 46, 51, 75, 76) — none of which appear in the SymPy script as `Solve[...]`-shaped operations. The SymPy script uses `sp.solve(sp.Eq(...))` and `.subs(...)` rather than the same algebraic operations. The `expect_zero`/`expectZero` helper signatures still parallel each other, but the underlying algebraic path differs.
-
-The verbatim "FINAL LEDGER" prose block (originally a word-for-word copy of the SymPy script's interpretation text) has been replaced with three lines:
-```
-W_res derived as |C|^2 W_wall.
-P_res derived as 1/C_res^2.
-Band widths cross-checked two ways.
-```
-This satisfies the directive's structural requirement that the .wl no longer mirror the .py's interpretation text.
+- `scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py:145-174`
+  and `mathematica/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.wl:106-125`
+  replace the redundant "Way B" Solve idiom with a C-form vs P-form cross-check.
+  - **C-form (Way A):** SymPy `Wsuff_res_C = Pe_req / (Cres**2 * Delta0)`,
+    `success_band_widthA = sp.simplify(Wsuff_res_C - Wsuff_match)`. Mathematica
+    `WsuffResC = PeReq/(Cres^2 * Delta0)`,
+    `successBandA = FullSimplify[WsuffResC - WsuffMatch, ...]`. Routes through
+    `Cres` directly, NOT through `Pres`.
+  - **P-form (Way B):** SymPy
+    `success_band_widthB = sp.simplify((Pres - 1) * Wsuff_match)`. Mathematica
+    `successBandB = FullSimplify[(Pres - 1)*WsuffMatch, ...]`. Routes through
+    `Pres` directly.
+  - **Cross-check:** the comparison `(A - B).subs(Pres, 1/Cres**2) == 0` (SymPy)
+    and `(A - B) /. Pres -> 1/Cres^2` (Mathematica) — this is now sensitive to
+    the `Pres = 1/Cres^2` relation itself.
 
 **Assessment:**
-F3 is resolved as a side-effect of F1+F2 plus the explicit prose rewrite. Concretely: (a) ≥4 distinct `Solve[...]` calls present (✓), (b) FINAL LEDGER prose no longer matches the SymPy script verbatim (✓), (c) Mathematica still calls `Exit[0]` at the bottom (✓ line 91).
+The Way A and Way B paths are now substantively distinct:
+- Way A's expression involves `Cres^2` in the denominator (`-Pe_req/Delta_0 +
+  Pe_req/(C_res**2*Delta_0)` from the SymPy log).
+- Way B's expression involves `Pres`
+  (`Pe_req*(P_res - 1)/Delta_0` from the SymPy log).
+- The cross-check explicitly substitutes `Pres -> 1/Cres**2` before asserting
+  equality, so any perturbation of the `Pres = 1/Cres^2` link would now produce
+  a non-zero residual. Conceptual perturbation test: if `Pres` were redefined
+  as `2/Cres^2` instead of `1/Cres^2`, Way A would still equal
+  `Pe_req*(1/Cres^2 - 1)/Delta_0` while Way B (after the substitution) would
+  equal `Pe_req*(2/Cres^2 - 1)/Delta_0` — a factor-of-2 discrepancy in the
+  leading `Pe_req/Cres^2/Delta_0` term that the assertion would catch.
+- The exec logs show both forms printed for both Delta_0 (success) and
+  Delta_inf (failure), and both cross-checks pass: `success band C-form vs
+  P-form (under Pres = 1/Cres^2) = 0` and the corresponding failure-side line.
 
-One residual transliteration concern: the assertion labels in `expectZero` strings (e.g. `"Wfail_res * C2 - Wfail_match"`, `"P_res - 1/C_res^2"`) still match the SymPy `expect_zero` labels verbatim. The directive did not require renaming these, and they are diagnostic strings rather than derivation steps, so this is a cosmetic match rather than a transliteration of derivation logic. Not blocking.
+The directive's prescription is faithfully applied in both engines.
 
 ## Exec log assessment
 
-**SymPy:** exit=n/a. Both exec_logs/stage_068_sympy.log and stage_068_mathematica.log are absent from `/var/projects/toy_physics/research/pde_ledger/redteam/exec_logs/` — only `stage_068_diff.patch` is present. The orchestrator appears not to have re-run the scripts after Codex's edits, or the log capture was skipped for this batch.
+**SymPy:** exit=0. Notable lines:
+- `W_res - C2 * W_wall (from gain decomposition) = 0`
+- `W_res(C2->1) - W_wall (matched limit) = 0`
+- `P_res - 1/C_res^2 (from required-wall-figure ratio) = 0`
+- `P_res numeric residual = 5.6958391724936524581E-16`
+- `Wfail_res * C2 - Wfail_match = 0` and
+  `Wsuff_res * C2 - Wsuff_match = 0`
+- `success band C-form vs P-form (under Pres = 1/Cres^2) = 0`
+- `failure band C-form vs P-form (under Pres = 1/Cres^2) = 0`
 
-However, the output `.txt` files were regenerated:
-- `scripts/output/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.txt` (mtime 20:00, vs. source mtime 19:57)
-- `mathematica/output/moving_throat_pde_stage068_resonance_thresholds_mathematica_audit.txt` (mtime 20:00, vs. source mtime 19:58)
+**Mathematica:** exit=0. Notable lines:
+- `W_res - C2 * W_wall (from gain decomposition) = 0` / `PASS`
+- `W_res(C2->1) - W_wall (matched limit) = 0` / `PASS`
+- `P_res - 1/C_res^2 (from required-wall-figure ratio) = 0` / `PASS`
+- `P_res numeric residual = 5.1512360584381274304121e-16`
+- `Success-side band width (C-form) = (PeReq - Cres^2*PeReq)/(Cres^2*Delta0)`
+- `Success-side band width (P-form) = (PeReq*(-1 + Pres))/Delta0`
+- `success band C-form vs P-form (under Pres = 1/Cres^2) = 0` / `PASS`
+- `failure band C-form vs P-form (under Pres = 1/Cres^2) = 0` / `PASS`
 
-Both output files show all assertions printing residual `= 0`, and the Mathematica output shows `PASS:` for every `expectZero` call. Specifically the SymPy output (lines 5-21) contains:
-```
-W_res - C2 * W_wall = 0
-P_res - 1/C_res^2 = 0
-P_res*C_res^2 - 1 = 0
-Wfail_res * C2 - Wfail_match = 0
-Wsuff_res * C2 - Wsuff_match = 0
-Wfail_res(C2->1/Pres) - Pres*Wfail_match = 0
-Wsuff_res(C2->1/Pres) - Pres*Wsuff_match = 0
-success band A vs B = 0
-failure band A vs B = 0
-```
-And the Mathematica output (lines 5-32) shows the same nine residuals, each followed by a `PASS:` line.
+Engines agree on every comparable quantity; intermediate forms differ
+(Mathematica's `(PeReq - Cres^2*PeReq)/(Cres^2*Delta0)` vs SymPy's
+`-Pe_req/Delta_0 + Pe_req/(C_res**2*Delta_0)`), consistent with the F2
+non-parallel-symbolic-path requirement. The numeric anchor residuals (~5e-16
+in both engines) are well below the 1e-12 threshold.
 
-**Mathematica:** exit=n/a (log missing). Output file shows all `PASS:` lines and reaches the FINAL LEDGER banner, implying `Exit[0]` was hit successfully.
-
-**Output freshness:** Confirmed. Both output `.txt` files are newer than their source scripts (20:00 vs. 19:57/19:58).
-
-The missing exec logs are a process gap; the regenerated output files provide circumstantial evidence that the scripts ran to completion without raising, but the verifier flags this as an audit-trail caveat. Given the output content (every assertion = 0, every PASS recorded, FINAL LEDGER reached), the verifier accepts the substantive outcome.
+**Output freshness:** the saved `.txt` outputs under `scripts/output/` and
+`mathematica/output/` carry mtimes of May 22 (pre-edit), while the scripts have
+mtimes of May 26 (post-edit). The exec logs at
+`redteam/exec_logs/stage_068_*.log` are dated May 26 13:13 and contain the
+post-fix transcripts. The orchestrator's exec logs are the authoritative
+post-fix record; the saved `.txt` outputs appear to be the older v1
+transcripts. This is a side observation (the verifier reads the exec logs, not
+the saved `.txt` outputs).
 
 ## Material-change assessment
 
-`material_change`: true.
+`material_change`: false.
 
-Stage 068's substantive content changed: the audit script now derives `W_res = C^2 W_wall`, `P_res = 1/C_res^2`, and the matched/profile threshold pair from `solve`-based premises rather than postulating them. Downstream units that consume the `P_res = 1/C_res^2` relation or the resonance-amplification scaling could in principle be re-audited against a tightened upstream. However, since the *symbolic content* of the derived expressions is identical to the previously postulated forms (the same `W_res = C^2*W_wall` and `Wfail_res = Pe_req/(C2*Delta_inf)` come out of the new solves), no numerical or functional result actually changed — only the derivation route. The orchestrator's policy of marking units > 068 as `upstream_stale: true` is appropriate, but a targeted re-audit on downstream units is unlikely to surface new defects from this edit alone.
+The v1 material change (lifting `Wfail_res / Wfail_match` from postulated
+literals to Solve-derived expressions on resonance-corrected premises) is
+intact and unaffected by v2 edits. Confirmed:
+- SymPy section 2 (lines 113-127) still uses
+  `sp.solve(sp.Eq(W_match_sym * Delta_sym, Pe_req), W_match_sym)[0]` and
+  `sp.solve(sp.Eq(C2 * W_prof_sym * Delta_sym, Pe_req), W_prof_sym)[0]` to
+  derive the four thresholds. The exec log confirms these produce
+  `Pe_req/Delta_inf`, `Pe_req/Delta_0`, `Pe_req/(C2*Delta_inf)`,
+  `Pe_req/(C2*Delta_0)` — the same load-bearing expressions the v1 fix
+  delivered.
+- Mathematica section 2 (lines 68-91) was upgraded by F2 from `First@Solve[...]`
+  to `Reduce[...]` with positivity constraints and `Cases` pattern-matching.
+  The derivation is now *more rigorous* (positivity premise made explicit) but
+  the output expressions are unchanged: `PeReq/Deltainf`, `PeReq/Delta0`,
+  `PeReq/(C2*Deltainf)`, `PeReq/(C2*Delta0)`. The v1 premise-replacement (still
+  derived from the matched and profile Peclet balances, not assigned from
+  literals) is preserved.
+
+v2 edits modified:
+1. The top-of-script W_res / P_res derivations (F1) — these were tautologies in
+   v1; the v2 fix makes them substantive but the final asserted relations
+   (`W_res = C^2 W_wall`, `P_res = 1/C_res^2`) are unchanged.
+2. The Mathematica engine path for section 2 (F2) — Reduce instead of Solve,
+   but same output.
+3. The band-width cross-check (F3) — Way B now uses Pres directly instead of a
+   Solve-for-gap. Output expressions for the band widths are unchanged
+   (`Pe_req*(P_res - 1)/Delta_0` etc.).
+
+No downstream stage's symbolic input from stage 068 changes. `Pe_req`,
+`Delta_0`, `Delta_inf`, `Pres`, `Cres`, the four threshold expressions, and the
+two band widths all remain symbolically identical to v1. Therefore no
+downstream unit needs re-audit on account of v2.
 
 ## Side observations (non-blocking)
 
-- The SymPy banner still reads `"STAGE 51 — RESONANCE-CORRECTED THRESHOLDS"` (line 37) and the Mathematica banner reads `"STAGE 051 — RESONANCE-CORRECTED THRESHOLDS"` (line 26). Both should plausibly say `STAGE 068`. The original auditor report did not flag this and the directive did not ask for renaming, so it is out of scope here. Worth a future cleanup pass.
-- The Mathematica file has a stray no-op statement `gapSym;` on line 74 that the directive itself contained. Cosmetic only.
-- The `expectZero` label strings in the Mathematica script still match the SymPy label strings verbatim. This is non-blocking under F3 since labels are diagnostic, not derivation logic.
-- The SymPy `W_res` derivation (lines 53-60) and the Mathematica `WresRule` derivation (line 36) are both close to identity-style operations under the hood. The non-triviality of stage 068 now rests primarily on M3/M4 (`Wfail_res * C2 - Wfail_match == 0` and friends) and on the band-widths A-vs-B cross-check, which are the genuine load-bearing assertions.
+- The saved `.txt` outputs under `scripts/output/` and `mathematica/output/`
+  are older than the post-fix scripts (May 22 vs. May 26). The exec logs at
+  `redteam/exec_logs/stage_068_*.log` are the authoritative post-fix
+  transcripts. If the orchestrator's downstream consumers read the saved
+  `.txt` files instead of the exec logs, they will see stale output. This is
+  a process question for the orchestrator, not a verification failure.
+- Both scripts retain the original "STAGE 51" / "STAGE 051" banner text
+  (file numbering 068 vs. legacy banner 51/051). Cosmetic only; flagged in v1
+  side observations and remains out of scope.
+- The Mathematica script's `$Assumptions` accumulates symbol declarations
+  across two `$Assumptions = $Assumptions && ...` lines (lines 29-31 then
+  37-38), which is fine but slightly unusual. No functional impact.
+- SymPy's local symbols `Wm`, `Wp` used in the section 1b Solve calls are
+  unlabelled (no `print` of the resulting Solve solutions). The directive
+  explicitly notes they are scoped to those lines, so this is intentional.
+
+None of these affect verification.
 
 ## Verdict justification
 
-All three findings are `resolved`: Codex applied each directive's required-change block essentially verbatim in both engines; the new cross-relations (`Wfail_res * C2 - Wfail_match`, `Wsuff_res * C2 - Wsuff_match`, band A vs B) are non-tautological because they connect independently-solved expressions from differently-posed equations; the Mathematica script now uses six distinct `Solve` calls and a Mathematica-idiom FINAL LEDGER, breaking the transliteration. Exec logs were not captured for this batch, but the regenerated output files show every assertion evaluating to zero with explicit `PASS:` markers and both scripts reaching their final banners. The previously-flagged tautology pattern (`Pres*X - X` followed by `X/Pres - (Pres-1)`) is gone. Verified.
+All three findings are resolved. F1's tautologies are replaced by substantive
+derivations: the gain-decomposition anchor for `W_res = C^2 W_wall` (which
+non-trivially collapses seven independent component symbols), the
+required-wall-figure ratio for `P_res = 1/C_res^2` (which routes through two
+genuine Solve calls and a ratio simplification), and a 20-digit numeric anchor
+against the paper card's `P_res = 1.005612487760576`. F2's Mathematica
+transliteration is broken: section 2 thresholds now derive via
+`Reduce[...] && Cases[...]` with positivity premises, the `gapSym;` no-op is
+gone, and the F1 P_res derivation uses a direct ratio simplification instead
+of mirroring SymPy's two-Solve choreography. F3's band-width "two ways" check
+is now genuinely two routes — Cres-form (no Pres) vs. Pres-form (no Cres) —
+with the cross-check explicitly substituting `Pres -> 1/Cres^2`, making the
+assertion sensitive to that link rather than absorbing errors symmetrically.
+Both engines exit 0; the v1 material_change carry-forward (Solve-derived
+thresholds in section 2) is intact and produces the same symbolic outputs as
+before. No material_change in v2; downstream stages are not affected.

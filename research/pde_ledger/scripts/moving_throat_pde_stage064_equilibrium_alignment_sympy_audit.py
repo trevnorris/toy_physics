@@ -138,6 +138,26 @@ print("N_pp I2 - I1^2 =", gap_disc)
 print("expected gap     =", gap_expected)
 expect_zero("two-point Cauchy gap identity", gap_disc - gap_expected)
 
+banner("GENERAL-H EQUILIBRIUM SOFTENING CHECK")
+
+# General-H equilibrium softening on a two-point parent-equilibrium-aligned branch.
+# On the aligned branch chi_sigma_k = g_phi chi_phi_k / H_k, so
+#   Theta   = sum_k H_k chi_sigma_k^2     = g_phi^2 sum_k chi_phi_k^2 / H_k = g_phi^2 I_1
+#   Lambda  = g_phi sum_k chi_phi_k chi_sigma_k = g_phi^2 sum_k chi_phi_k^2 / H_k = g_phi^2 I_1
+# Therefore Lambda^2/Theta = g_phi^2 I_1 for ANY H(y), with no matched-layer assumption.
+chi_sig1 = g_phi * sp.sqrt(w1) / H1  # chi_sigma_k for w_k = chi_phi_k^2
+chi_sig2 = g_phi * sp.sqrt(w2) / H2
+Theta_general = sp.simplify(H1 * chi_sig1**2 + H2 * chi_sig2**2)
+Lambda_general = sp.simplify(g_phi * (sp.sqrt(w1) * chi_sig1 + sp.sqrt(w2) * chi_sig2))
+soft_general = sp.simplify(Lambda_general**2 / Theta_general)
+print("Theta (general, two-point) =", Theta_general)
+print("Lambda (general, two-point) =", Lambda_general)
+print("Lambda^2/Theta (general, two-point) =", soft_general)
+expect_zero(
+    "general equilibrium softening equals g_phi^2 I_1",
+    soft_general - g_phi**2 * I1_disc,
+)
+
 banner("ELIMINATED-SOURCE SOFTENING CHECK")
 
 # Reduced static energy F = (Theta/2) sigma^2 - Lambda sigma phi + (KX/2) phi^2
@@ -152,17 +172,6 @@ expect_zero(
     "effective support softening",
     F_eff - sp.Rational(1, 2) * (KX - Lambda**2 / Theta) * phi**2,
 )
-
-# Closure-level definitions: Theta = H_w * N_(sigma sigma), Lambda = g_phi * O_(sigma phi).
-Theta_abs = sp.simplify(Hw * Nss)
-Lambda_abs = sp.simplify(g_phi * Osp)
-soft_abs = sp.simplify(Lambda_abs**2 / Theta_abs)
-print("Lambda^2/Theta (closure form) =", soft_abs)
-# The matched-layer closure forces I2 = I1^2 / N_pp; only THEN should the softening
-# reduce to g_phi^2 * I1.
-soft_matched = sp.simplify(soft_abs.subs(I2, I1**2 / Npp).subs(Npp, I1 * Hw))
-print("Lambda^2/Theta (matched layer) =", soft_matched)
-expect_zero("equilibrium softening equals g_phi^2 I1", soft_matched - g_phi**2 * I1)
 
 banner("STAGE 47 AUDIT PASSED")
 print("1. The equilibrium-induced source channel is aligned with the support loading through 1/H.")

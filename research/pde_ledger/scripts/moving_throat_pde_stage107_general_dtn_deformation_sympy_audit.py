@@ -22,7 +22,7 @@ S, beta = sp.symbols('S beta', nonzero=True, real=True)
 Sigma0, Sigma2, Sigma4, Sigma5 = sp.symbols('Sigma0 Sigma2 Sigma4 Sigma5', real=True)
 I = sp.I
 
-banner('STAGE 90 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA')
+banner('STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA')
 
 Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
 print('Lambda_out(z) =', Lambda_out)
@@ -57,6 +57,14 @@ if len(sol) != 1:
 sol = sol[0]
 print('Sigma2_evenmatch =', sp.simplify(sol[Sigma2]))
 print('Sigma4_evenmatch =', sp.simplify(sol[Sigma4]))
+expect_zero(
+    'Sigma2 exact formula',
+    sol[Sigma2] - (-(3*S*beta**2 - 3*S + Sigma0)) / sp.Integer(9),
+)
+expect_zero(
+    'Sigma4 exact formula',
+    sol[Sigma4] - (-(3*S*beta**4 - 3*S + Sigma0)) / sp.Integer(27),
+)
 
 chi_even = sp.simplify(chiQ.subs(sol))
 print('chi_Q under canonical-even matching =', sp.factor(chi_even))

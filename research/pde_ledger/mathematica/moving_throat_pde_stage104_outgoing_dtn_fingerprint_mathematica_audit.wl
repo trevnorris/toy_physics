@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 087 — EXACT OUTGOING l=2 DTN FINGERPRINT"];
+banner["STAGE 104 — EXACT OUTGOING l=2 DTN FINGERPRINT"];
 
 Clear[z];
 $Assumptions = Element[z, Reals];

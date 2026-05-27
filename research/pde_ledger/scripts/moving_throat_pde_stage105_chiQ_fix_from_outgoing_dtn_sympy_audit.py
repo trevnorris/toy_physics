@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 88 SymPy audit.
+Stage 105 SymPy audit.
 
 Provenance notes
 ----------------
@@ -25,7 +25,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 88 — EXACT FIXING OF chi_Q")
+banner("STAGE 105 — EXACT FIXING OF chi_Q")
 
 a, c_s, omega, chi_Q = sp.symbols("a c_s omega chi_Q", positive=True, real=True)
 # Stage 088/074 minimal isotropic pole scale, carried into the retarded lane.

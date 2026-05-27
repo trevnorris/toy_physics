@@ -28,4 +28,4 @@ assert sp.simplify(c4 - (4 - rho)/(9*(3 - rho)**2)) == 0
 assert sp.simplify(c5 - 1/(27 - 9*rho)) == 0
 assert sp.simplify(chi_R - 3/(3 - rho)) == 0
 assert sp.simplify(chi_R_lin - (1 + rho/3 + rho**2/9)) == 0
-print('stage93: PASS')
+print('stage110: PASS')

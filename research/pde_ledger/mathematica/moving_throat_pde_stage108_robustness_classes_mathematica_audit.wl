@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 091 — ROBUSTNESS CLASSES FOR chi_Q"];
+banner["STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q"];
 
 Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5];
 $Assumptions =
@@ -52,7 +52,7 @@ expectZero["chi_arg - beta^5", chiArg - beta^5];
 betaRoots = Sort[beta /. Solve[{beta^2 == 1, beta^4 == 1}, beta, Reals]];
 Print["solutions preserving canonical even fingerprint = ", fmt[betaRoots]];
 If[betaRoots =!= {-1, 1}, fail["expected beta roots { -1, 1 }", betaRoots]];
-expectZero["chi_arg(beta=1) - 1", chiArg /. beta -> 1 - 1];
+expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];
 
 lambdaAdd = Expand[sNorm*lambdaOut + sigma0 + sigma2*z^2 + sigma4*z^4 + I*sigma5*z^5];
 l0 = FullSimplify[lambdaAdd /. z -> 0, Assumptions -> $Assumptions];
@@ -79,6 +79,37 @@ sigma5Pres = FullSimplify[sigma5 /. First[Solve[chiAdd == 1, sigma5, Reals]], As
 Print["Sigma5 preservation locus = ", fmt[sigma5Pres]];
 expectZero["Sigma5 preservation locus + sigma0/27", sigma5Pres + sigma0/27];
 expectZero["preservation locus check", (chiAdd /. sigma5 -> sigma5Pres) - 1];
+
+(* Class D: general scale + argument + additive (β-parameterized preservation submanifold). *)
+(* Notes box: Σ_5 = S(1 - β^5)/9 - Σ_0/27 (general locus); Class C is the β=1 reduction. *)
+lambdaGen = Expand[
+  sNorm*(lambdaOut /. z -> beta*z)
+  + sigma0 + sigma2*z^2 + sigma4*z^4 + I*sigma5*z^5
+];
+l0g = FullSimplify[lambdaGen /. z -> 0, Assumptions -> $Assumptions];
+l2g = FullSimplify[Coefficient[lambdaGen, z, 2], Assumptions -> $Assumptions];
+l4g = FullSimplify[Coefficient[lambdaGen, z, 4], Assumptions -> $Assumptions];
+l5g = FullSimplify[Coefficient[lambdaGen, z, 5]/I, Assumptions -> $Assumptions];
+m2g = FullSimplify[-l2g/l0g, Assumptions -> $Assumptions];
+m4g = FullSimplify[l2g^2/l0g^2 - l4g/l0g, Assumptions -> $Assumptions];
+solG = Solve[{m2g == 1/9, m4g == 4/81}, {sigma2, sigma4}, Reals];
+If[Length[solG] =!= 1, fail["unique β-parameterized even-match solution", solG]];
+solG = First[solG];
+Print["Sigma2(beta) = ", fmt[Simplify[sigma2 /. solG]]];
+Print["Sigma4(beta) = ", fmt[Simplify[sigma4 /. solG]]];
+chiGen = FullSimplify[((-l5g/l0g)/(1/27)) /. solG, Assumptions -> $Assumptions];
+Print["chi_gen(beta) = ", fmt[Factor[chiGen]]];
+sigma5PresGen = FullSimplify[sigma5 /. First[Solve[chiGen == 1, sigma5, Reals]], Assumptions -> $Assumptions];
+Print["Sigma5 general preservation locus = ", fmt[sigma5PresGen]];
+expectZero[
+  "general preservation submanifold = S(1 - beta^5)/9 - sigma0/27",
+  sigma5PresGen - (sNorm*(1 - beta^5)/9 - sigma0/27)
+];
+expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];
+expectZero[
+  "general locus reduces to beta=1 (Class C)",
+  (sigma5PresGen - (-sigma0/27)) /. beta -> 1
+];
 
 Print[""];
 Print["Stage 108 Mathematica audit passed."];

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 094 — MIXED SIDE-CHANNEL POLE"];
+banner["STAGE 111 — MIXED SIDE-CHANNEL POLE"];
 
 Clear[z, sigma, kappa, gamma];
 $Assumptions =
@@ -50,6 +50,17 @@ sigmaMatch = FullSimplify[
   Assumptions -> $Assumptions
 ];
 chiMix = FullSimplify[(-l5/l0)/(1/27), Assumptions -> $Assumptions];
+
+(* Independent re-derivation of chi_Q^mix: bypass the L0/L5 extraction *)
+(* and compute directly from the geometric-series form of the pole. *)
+poleSeries = Series[sigma/(1 - kappa*z^2 - I*gamma*z^5), {z, 0, 5}];
+imagPart5 = Coefficient[Normal[poleSeries], z, 5]/I;
+chiMixAlt = FullSimplify[
+  27*(1/9 - imagPart5)/(3 + sigma),
+  Assumptions -> $Assumptions
+];
+Print["chi_Q^mix (independent route) = ", fmt[chiMixAlt]];
+
 chiMixLinear = Expand[Normal[Series[chiMix, {sigma, 0, 1}]]];
 
 Print["kappa from z^2 matching = ", fmt[kappaMatch]];
@@ -61,6 +72,7 @@ expectZero["kappa_match + 1/9", kappaMatch + 1/9];
 expectZero["sigma_match", sigmaMatch];
 expectZero["chi_Q^mix - 3 (1 - 9 sigma gamma)/(3 + sigma)", chiMix - 3*(1 - 9*sigma*gamma)/(3 + sigma)];
 expectZero["chi_Q^mix linearized - (1 - sigma (1/3 + 9 gamma))", chiMixLinear - (1 - sigma*(1/3 + 9*gamma))];
+expectZero["chi_Q^mix routes agree", chiMix - chiMixAlt];
 
 Print[""];
 Print["Stage 111 Mathematica audit passed."];

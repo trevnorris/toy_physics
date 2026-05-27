@@ -15,7 +15,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 87 — EXACT OUTGOING l=2 DtN FINGERPRINT")
+banner("STAGE 104 — EXACT OUTGOING l=2 DtN FINGERPRINT")
 
 z = sp.symbols("z")
 h2 = sp.expand_func(jn(2, z) + sp.I * yn(2, z))

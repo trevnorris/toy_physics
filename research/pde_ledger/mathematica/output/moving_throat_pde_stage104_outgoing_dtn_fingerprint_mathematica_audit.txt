@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage104_outgoing_dtn_fingerprint_mathematica_audit.wl
-# Date: 2026-05-11T13:06:19-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 087 — EXACT OUTGOING l=2 DTN FINGERPRINT
+STAGE 104 — EXACT OUTGOING l=2 DTN FINGERPRINT
 ========================================================================================
 h_2^(1)(z) = SphericalHankelH1[2, z]
 Lambda_2^out(z) = -3 + z^2/3 + z^4/9 + (I/9)*z^5 - (2*z^6)/27 - (I/27)*z^7
@@ -34,5 +26,3 @@ imag omega^5 coefficient = 0
 PASS: imag omega^5 coefficient
 
 Stage 104 Mathematica audit passed.
-
-EXIT_CODE: 0

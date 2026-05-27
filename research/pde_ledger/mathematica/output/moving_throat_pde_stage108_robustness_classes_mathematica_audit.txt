@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl
-# Date: 2026-05-11T13:07:17-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 091 — ROBUSTNESS CLASSES FOR chi_Q
+STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q
 ========================================================================================
 pure scale invariance = 0
 PASS: pure scale invariance
@@ -39,7 +31,15 @@ Sigma5 preservation locus + sigma0/27 = 0
 PASS: Sigma5 preservation locus + sigma0/27
 preservation locus check = 0
 PASS: preservation locus check
+Sigma2(beta) = (-sigma0 - 3*(-1 + beta^2)*sNorm)/9
+Sigma4(beta) = (-sigma0 - 3*(-1 + beta^4)*sNorm)/27
+chi_gen(beta) = (-3*(9*sigma5 + beta^5*sNorm))/(sigma0 - 3*sNorm)
+Sigma5 general preservation locus = (-sigma0 - 3*(-1 + beta^5)*sNorm)/27
+general preservation submanifold = S(1 - beta^5)/9 - sigma0/27 = 0
+PASS: general preservation submanifold = S(1 - beta^5)/9 - sigma0/27
+general preservation locus check = 0
+PASS: general preservation locus check
+general locus reduces to beta=1 (Class C) = 0
+PASS: general locus reduces to beta=1 (Class C)
 
 Stage 108 Mathematica audit passed.
-
-EXIT_CODE: 0

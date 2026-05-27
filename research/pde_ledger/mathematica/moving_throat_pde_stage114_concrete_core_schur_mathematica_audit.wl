@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 097 — CONCRETE TWO-CHANNEL CORE OUTLET MODEL"];
+banner["STAGE 114 — CONCRETE TWO-CHANNEL CORE OUTLET MODEL"];
 
 Clear[kS, kQ, lam, gS, gQ, kappa0, gamma0, z, dSym];
 $Assumptions =

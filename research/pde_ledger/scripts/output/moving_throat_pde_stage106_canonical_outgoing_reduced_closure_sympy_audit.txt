@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
-# Date: 2026-05-11T12:45:16-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 89 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
 ========================================================================================
 Normalization constraint = Eq(N_Q*chi_Q*m0hat**2, 1)
 N_Q on the general outgoing branch = 1/(chi_Q*m0hat**2)
@@ -18,13 +10,13 @@ K0 = 54*G*c_s**5/(5*a**5*c**5*chi_Q*m0hat**2)
 K2 = 6*G*c_s**3/(5*a**3*c**5*chi_Q*m0hat**2)
 K4 = 8*G*c_s/(15*a*c**5*chi_Q*m0hat**2)
 Gamma5 = 2*G/(5*c**5*chi_Q*m0hat**2)
-branch identity K4 - 4 K2^2 / K0 = 0
-branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2) = 0
+target identity K0_target K4_target - 4 K2_target^2 = 0
+target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3) = 0
 canonical gamma_eff - target = 0
+Delta_Q first-order sensitivity coefficient = 0
+Delta_Q zeroth-order coefficient equals Gamma5_target = 0
 
 RESULT:
   On the canonical outgoing branch, N_Q = 1/m0hat^2 and therefore
   the strict point-particle limit m0hat = 1 collapses the reduced closure to N_Q = 1.
   The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.
-
-EXIT_CODE: 0

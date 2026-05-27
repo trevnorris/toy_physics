@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 090 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA"];
+banner["STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA"];
 
 Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5];
 $Assumptions =

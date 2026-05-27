@@ -6,7 +6,28 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.2 close — first-pass paper-grounded
+audit on stages 103-114. **Checkpoint stage `105` (chi_Q fix from outgoing
+DtN) verified after first-pass cycle at the higher-bar standard.**
+Constant provenance assessment for 105: the load-bearing constant
+`sigma_Q^can = 4 a^5/(27 c_s^5)` is *derived* in-script from the pole-scale
+identity `sigma_Q^can = (9/8)/Omega_Q^5` with `Omega_Q = 3 c_s/(2 a)`,
+checked via `expect_zero("sigma_Q^can - 4 a^5/(27 c_s^5)", ...)` (rather than
+literal-asserted). The canonical odd-coefficient identification
+`chi_Q = 1` is derived non-tautologically via two independent paths: SymPy
+solves `sp.Eq(Yret.coeff(omega, 5)/I, a^5/(27 c_s^5))` directly for
+`chi_Q`; Mathematica uses `Reduce[c5/I == a^5/(27 c_s^5), chiQ, Reals]` on
+an `Apart`-decomposed retarded-module form. The deformed-branch
+coefficients `(1, 1/9, 4/81, xi_Q/27)` for `Y_def` are derived in SymPy
+via `sp.series(-3/Lambda_def)` and in Mathematica via a structurally
+distinct polynomial inversion `Solve[Lambda_def · y_ansatz = -3]`, with
+neither engine importing the other's RHS. **Zero unexplained literals in
+checkpoint 105's scripts**; every constant is either pole-scale-derived,
+imported with explicit provenance from stages 074/088 (now 104) on the
+SymPy docstring, or pinned via a paper-quoted carry-in (`Lambda_out`
+fingerprint coefficients from stage 104).
+
+Snapshot date prior: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
 audit on stages 091-102. **Checkpoint stage `096` (geometry-lane check verdict)
 verified after first-pass cycle.** Constant provenance assessment for 096:
 the four cardinal constants (`c_pole = 1/4`, `c_geom = 3/4`, `rho_alpha = 4/3`,

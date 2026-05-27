@@ -1,30 +1,30 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl
-# Date: 2026-05-11T13:06:33-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 088 — EXACT FIXING OF chi_Q
+STAGE 105 — EXACT FIXING OF chi_Q
 ========================================================================================
-Omega_Q = (3*cSound)/(2*aThroat)
+pole scale = (3*cSound)/(2*aThroat)
 sigma_Q^can = (4*aThroat^5)/(27*cSound^5)
 sigma_Q^can - 4 a^5/(27 c_s^5) = 0
 PASS: sigma_Q^can - 4 a^5/(27 c_s^5)
-Y_Q^ret(omega) = 1 + (aThroat^2*omega^2)/(9*cSound^2) + (4*aThroat^4*omega^4)/(81*cSound^4) + ((I/27)*aThroat^5*chiQ*omega^5)/cSound^5
+Y_Q^ret partial-fraction form check (Apart of unfactored ratio) = 0
+PASS: Y_Q^ret partial-fraction form check (Apart of unfactored ratio)
+Y_Q^ret omega^2 coeff = aThroat^2/(9*cSound^2)
+Y_Q^ret omega^4 coeff = (4*aThroat^4)/(81*cSound^4)
+Y_Q^ret omega^5 coeff = ((I/27)*aThroat^5*chiQ)/cSound^5
 omega^2 coefficient = 0
 PASS: omega^2 coefficient
 omega^4 coefficient = 0
 PASS: omega^4 coefficient
 imag omega^5 coefficient = 0
 PASS: imag omega^5 coefficient
-chi_Q from exact outgoing match = ConditionalExpression[1, Element[omega, Reals]]
+
+ReplaceAll::argt: ReplaceAll called with 7 arguments; 1 or 2 arguments are expected.
+chi_Q from exact outgoing match (Reduce) = chiQ /. Sequence[ToRules[aThroat == 0 && cSound < 0], ToRules[aThroat == 0 && cSound > 0], ToRules[aThroat < 0 && cSound < 0 && chiQ == 1], ToRules[aThroat < 0 && cSound > 0 && chiQ == 1], ToRules[aThroat > 0 && cSound < 0 && chiQ == 1], ToRules[aThroat > 0 && cSound > 0 && chiQ == 1]]
 chi_Q - 1 = 0
 PASS: chi_Q - 1
-Deformed DtN normalized branch = 1 + z^2/9 + (4*z^4)/81 + (I/27)*xiQ*z^5
+Deformed DtN normalized branch (polynomial-inverse) = 1 + z^2/9 + (4*z^4)/81 + (I/27)*xiQ*z^5
+deformed constant coefficient = 0
+PASS: deformed constant coefficient
 deformed z^2 coefficient = 0
 PASS: deformed z^2 coefficient
 deformed z^4 coefficient = 0
@@ -33,5 +33,3 @@ deformed imag z^5 coefficient = 0
 PASS: deformed imag z^5 coefficient
 
 Stage 105 Mathematica audit passed.
-
-EXIT_CODE: 0

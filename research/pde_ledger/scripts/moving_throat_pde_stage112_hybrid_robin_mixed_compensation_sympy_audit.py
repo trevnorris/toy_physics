@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Stage 95 SymPy audit.
+Stage 112 SymPy audit.
 
 Provenance notes
 ----------------
-- `Lambda_out` is the exact canonical outgoing DtN branch from Stages 087--088.
+- `Lambda_out` is the exact canonical outgoing DtN branch from Stages 104/105.
 - The Robin denominator and the two-branch hybrid solve are the same Stage 110
   / Stage 111 compensation seam; this script only checks the exact `chi_Q`
   consequences of those carried solves.
@@ -19,7 +19,7 @@ import sympy as sp
 z, rho, sigma, kappa, gamma = sp.symbols('z rho sigma kappa gamma', real=True)
 I = sp.I
 
-# Stage 104/088 canonical outgoing DtN branch carried into the hybrid solve.
+# Stage 104 canonical outgoing DtN branch carried into the hybrid solve.
 Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
 Lambda_hyb = sp.expand(sp.series(Lambda_out + rho - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())
 
@@ -51,4 +51,4 @@ assert sp.simplify(chi_B.subs(gamma, sp.Rational(1, 9)) - 1) == 0
 scaled_identity = sp.expand((Lambda_hyb.subs(sols[1]) - (1 - sigma)*Lambda_out).subs(gamma, sp.Rational(1, 9)))
 print('scaled identity on branch B =', scaled_identity)
 assert sp.simplify(scaled_identity) == 0
-print('stage95: PASS')
+print('stage112: PASS')

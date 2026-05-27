@@ -33,4 +33,4 @@ assert sp.simplify(kappa_match + sp.Rational(1, 9)) == 0
 assert sp.simplify(sigma_match) == 0
 assert sp.simplify(chi_mix - 3*(1 - 9*sigma*gamma)/(3 + sigma)) == 0
 assert sp.simplify(chi_mix_lin - (1 - sigma*(sp.Rational(1,3) + 9*gamma))) == 0
-print('stage94: PASS')
+print('stage111: PASS')

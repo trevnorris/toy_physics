@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 093 — EXPLICIT ISOTROPIC ROBIN OUTLET MODEL"];
+banner["STAGE 110 — EXPLICIT ISOTROPIC ROBIN OUTLET MODEL"];
 
 Clear[z, rho];
 $Assumptions = Element[{z, rho}, Reals] && rho != 3;

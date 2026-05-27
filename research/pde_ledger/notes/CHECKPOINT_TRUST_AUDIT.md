@@ -9,7 +9,32 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.2 close — first-pass paper-grounded
+audit on stages 103-114. **Checkpoint stage `105` (chi_Q fix from outgoing
+DtN) returned `verified` after first-pass v2 audit + apply + verifier
+cycle at the higher-bar standard.** 105 cleared 2 findings: F1
+(mathematica_transliteration) — full `.wl` re-author with a structurally
+distinct independent path (unfactored ratio + `Apart` round-trip
+verification of the canonical 3/4 + 1/(4D) partial-fraction form +
+`SeriesCoefficient` operator-form coefficient extraction + `Reduce`-over-
+reals for chi_Q + polynomial inversion of `Λ_def·Y_def = -3` for the
+deformed branch). All variable names changed (no `yRet`/`lamDef`/`yDef`/
+`omegaQ`/`sigmaCan`); the forbidden substring `(1/4)/(1 - omega^2/omegaQ^2`
+is absent from the rewritten script. F2 (paper_misalignment, Cluster C)
+— banner/docstring labels updated from stale "Stage 88/STAGE 088" to
+"Stage 105/STAGE 105" matching `\label{stage:105}`. Both engines exit 0
+with 10 PASS lines on Mathematica (sigma_Q^can identity + Apart-form
+check + 3 series-coefficient checks + chi_Q-1 + 4 deformed-branch
+coefficient checks) and 13 explicit `expect_zero` results on SymPy. The
+substantive `chi_Q = 1` derivation passes via two independent paths
+(SymPy's `sp.solve` on coeff(omega^5)/I = a^5/(27 c_s^5) vs Mathematica's
+`Reduce[..., chiQ, Reals]`); the deformed-branch closure also passes via
+two genuinely independent paths (SymPy: series of `-3/Lambda_def`;
+Mathematica: polynomial inversion via `Solve[Lambda_def · y_ansatz = -3]`
+matching coefficients). This is the third paper-grounded v2 checkpoint
+verified at the higher bar (after 069 III.3 v2, 089/090 III.5, 096 IV.1).
+
+Snapshot date prior: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
 audit on stages 091-102. **Checkpoint stage `096` (geometry-lane check verdict)
 returned `verified` after first-pass v2 audit + apply + verifier cycle.**
 096 cleared 3 findings: F1 (tautological_check) — deleted the trivially-true

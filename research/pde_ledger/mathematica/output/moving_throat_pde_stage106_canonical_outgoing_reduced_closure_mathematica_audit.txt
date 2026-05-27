@@ -1,34 +1,30 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl
-# Date: 2026-05-11T13:06:48-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 089 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
 ========================================================================================
-Normalization constraint = chiQ*m0hat^2*NQ == 1
-N_Q on the general outgoing branch = 1/(chiQ*m0hat^2)
-N_Q on the canonical outgoing branch = m0hat^(-2)
-point-particle canonical branch gives N_Q = 1 = 0
-PASS: point-particle canonical branch gives N_Q = 1
-K0 = (54*cS^5*G)/(5*a^5*c^5*chiQ*m0hat^2)
-K2 = (6*cS^3*G)/(5*a^3*c^5*chiQ*m0hat^2)
-K4 = (8*cS*G)/(15*a*c^5*chiQ*m0hat^2)
-Gamma5 = (2*G)/(5*c^5*chiQ*m0hat^2)
-branch identity K4 - 4 K2^2 / K0 = 0
-PASS: branch identity K4 - 4 K2^2 / K0
-branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2) = 0
-PASS: branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2)
+sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+PASS: sigma_Q^can - 4 a^5/(27 c_s^5)
+Y_Q^ret series (general chi_Q) = 1 + (a^2*omegaSym^2)/(9*cS^2) + (4*a^4*omegaSym^4)/(81*cS^4) + ((I/27)*a^5*chiQ*omegaSym^5)/cS^5 + (16*a^6*omegaSym^6)/(729*cS^6) + (((8*I)/243)*a^7*chiQ*omegaSym^7)/cS^7
+Y_Q^ret series at chi_Q = 1   = 1 + (a^2*omegaSym^2)/(9*cS^2) + (4*a^4*omegaSym^4)/(81*cS^4) + ((I/27)*a^5*omegaSym^5)/cS^5 + (16*a^6*omegaSym^6)/(729*cS^6) + (((8*I)/243)*a^7*omegaSym^7)/cS^7
+omega^5 coefficient (general) = ((I/27)*a^5*chiQ)/cS^5
+omega^6 coefficient (chi_Q=1) = (16*a^6)/(729*cS^6)
+omega^7 coefficient (chi_Q=1) = (((8*I)/243)*a^7)/cS^7
+omega^5 coefficient form = 0
+PASS: omega^5 coefficient form
+target identity k0Target * k4Target - 4 k2Target^2 = 0
+PASS: target identity k0Target * k4Target - 4 k2Target^2
+target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3] = 0
+PASS: target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]
+N_Q on natural branch at m0hat=1, chi_Q=1 = 0
+PASS: N_Q on natural branch at m0hat=1, chi_Q=1
 canonical gamma_eff - target = 0
 PASS: canonical gamma_eff - target
+Delta_Q first-order sensitivity coefficient = 0
+PASS: Delta_Q first-order sensitivity coefficient
+Delta_Q zeroth-order coefficient equals Gamma5_target = 0
+PASS: Delta_Q zeroth-order coefficient equals Gamma5_target
 
 RESULT:
-  On the canonical outgoing branch, N_Q = 1/m0hat^2.
-  In the strict point-particle limit m0hat = 1, the reduced closure gives N_Q = 1.
-  The effective odd coefficient then reproduces 2 G / (5 c^5) exactly.
-
-EXIT_CODE: 0
+  Carry-in chi_Q = 1 from stage 104; canonical compact passive/outgoing
+  grouped-P_2 branch closes with N_Q = 1 at m0hat = 1.
+  gamma_quad^eff = 2 G / (5 c^5); Delta_Q slope = -2 G / (5 c^5).

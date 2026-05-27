@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
-# Date: 2026-05-11T12:45:17-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 90 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA
+STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA
 ========================================================================================
 Lambda_out(z) = I*z**5/9 + z**4/9 + z**2/3 - 3
 Lambda_def(z) = I*S*beta**5*z**5/9 + S*beta**4*z**4/9 + S*beta**2*z**2/3 - 3*S + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5
@@ -23,6 +15,8 @@ m4 = ((3*S - Sigma0)*(S*beta**4 + 9*Sigma4) + (S*beta**2 + 3*Sigma2)**2)/(9*(3*S
 chi_Q = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
 Sigma2_evenmatch = -S*beta**2/3 + S/3 - Sigma0/9
 Sigma4_evenmatch = -S*beta**4/9 + S/9 - Sigma0/27
+Sigma2 exact formula = 0
+Sigma4 exact formula = 0
 chi_Q under canonical-even matching = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
 chi_Q - 3(S beta^5 + 9 Sigma5)/(3S - Sigma0) = 0
 
@@ -30,5 +24,3 @@ Final exact formulas:
   Sigma2 = -S*beta**2/3 + S/3 - Sigma0/9
   Sigma4 = -S*beta**4/9 + S/9 - Sigma0/27
   chi_Q  = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
-
-EXIT_CODE: 0

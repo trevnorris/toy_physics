@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""Stage 109 SymPy audit — linearized branch-selection law.
+
+Paper card's secondary `Checks` items (Robin and standalone mixed-pole limits;
+even-coefficient preservation under the compensated branch) are exercised at
+downstream stages: stage 110 (Robin outlet model), stage 111 (mixed side-channel
+pole), stage 112 (hybrid Robin+mixed compensation, which verifies the
+compensated branch's even-coefficient preservation alongside the odd-norm
+match). This stage establishes the linearized framework that those downstream
+verifications consume.
+"""
 from __future__ import annotations
 import sympy as sp
 
@@ -20,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 eps = sp.symbols('eps', real=True)
 s, b, a0, a5 = sp.symbols('s b a0 a5', real=True)
 
-banner('STAGE 92 — LINEARIZED BRANCH-SELECTION LAW')
+banner('STAGE 109 — LINEARIZED BRANCH-SELECTION LAW')
 
 S = 1 + eps*s
 beta = 1 + eps*b
@@ -40,4 +50,6 @@ expect_zero('overall scale cancels', sp.diff(coeff, s))
 # Linearized preservation condition.
 a5_sol = sp.solve(sp.Eq(coeff, 0), a5)[0]
 print('a5 preservation condition =', sp.simplify(a5_sol))
+expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
+expect_zero('a5 preservation closed-form', sp.simplify(a5_sol - expected_a5_sol))
 expect_zero('preservation substitution', coeff.subs(a5, a5_sol))

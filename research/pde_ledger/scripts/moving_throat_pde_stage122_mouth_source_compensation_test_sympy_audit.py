@@ -13,7 +13,13 @@ def expect_zero(name, expr):
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 105 — NATURAL MOUTH-SOURCE BRANCH VS COMPENSATION FAMILY")
+def expect_nonzero(name, expr):
+    expr = sp.simplify(sp.expand(expr))
+    print(f"{name} = {expr}")
+    if expr == 0:
+        raise AssertionError(f"{name} is unexpectedly zero")
+
+banner("STAGE 122 — NATURAL MOUTH-SOURCE BRANCH VS COMPENSATION FAMILY")
 
 R = sp.Rational(37,20)
 rF = sp.sqrt(12*R**2/sp.pi**2 - 1)
@@ -46,3 +52,14 @@ gminus_exact = sp.simplify((2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (2
 gplus_exact = sp.simplify((2*sp.sqrt(4107 - 100*sp.pi**2) + 37*sp.sqrt(3)) / (20*sp.pi))
 expect_zero("gminus exact form", gminus - gminus_exact)
 expect_zero("gplus exact form", gplus - gplus_exact)
+
+expect_zero("compensation quadratic at gminus", 1 + rF**2 - 4*(gminus - rF)**2)
+expect_zero("compensation quadratic at gplus",  1 + rF**2 - 4*(gplus  - rF)**2)
+
+defect_exact = (-12321 + 80*sp.pi*sp.sqrt(4107 - 100*sp.pi**2)) / (100*sp.pi**2)
+expect_zero("defect closed form", comp_def - defect_exact)
+
+expect_nonzero("natural off compensation", comp_def)
+
+expect_zero("traction ratio (-) identity", gminus * T_ratio_minus - 1)
+expect_zero("traction ratio (+) identity", gplus  * T_ratio_plus  - 1)

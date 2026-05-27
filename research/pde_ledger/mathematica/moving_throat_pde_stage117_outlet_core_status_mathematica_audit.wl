@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 100 — CONCRETE OUTLET-CORE STATUS"];
+banner["STAGE 117 — CONCRETE OUTLET-CORE STATUS"];
 
 Clear[z, s, beta, rho, sigma, kappa, gamma, ks, kq, lam, gs, gq, kappa0, gamma0, a, lW];
 $Assumptions =
@@ -95,6 +95,12 @@ expectZero[
 ];
 
 banner["5. Concrete core realization of the compensated class"];
+(* Status-consolidation card. Forward expressions for kappa_0_bare = (1+r_c)/3
+   and gamma_0_bare = (1+r_c)/9 come from stages 115 (Schur reduction) and 116
+   (D/N half-wave eigenvalue: k_W = Pi/(2 L_W) on q(0)=0, q'(L_W)=0). Here we
+   substitute those forward expressions and read off kappa_c = 1/3, gamma_c = 1/9
+   as arithmetic consequences. The load-bearing check in this stage is the
+   residual deltaCore - deltaCoreExpected at order z^5. *)
 rC = FullSimplify[lam^2/(ks kq)];
 rhoC = FullSimplify[gs^2/ks];
 sigmaC = FullSimplify[(ks gq - lam gs)^2/(ks^2 kq (1 + rC))];
@@ -110,8 +116,10 @@ expectZero[
 expectZero["core-balance sigma_* value", (sigmaC /. First[gqSolutions]) - sigmaStar];
 
 lWRequired = FullSimplify[lW /. First[Solve[4 lW^2/(Pi^2 a^2) == (1 + rC)/3, lW, Reals]]];
-expectZero["D/N tube fixes kappa_c = 1/3", (kappaC /. kappa0 -> 4 lWRequired^2/(Pi^2 a^2)) - 1/3];
-expectZero["bare mixed normalization fixes gamma_c = 1/9", (gammaC /. gamma0 -> (1 + rC)/9) - 1/9];
+(* Stage 116 fixes kappa_0_bare = (1+r_c)/3 via the D/N tube; carrying forward
+   to kappa_c = kappa_0/(1+r_c) = 1/3 is then arithmetic, not an independent check. *)
+Print["carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3"];
+Print["carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9"];
 
 deltaCore = FullSimplify[
   rhoC - sigmaC/(1 - kappaC z^2 - I gammaC z^5)
@@ -123,12 +131,36 @@ expectZero[
 ];
 
 banner["6. Classification capstone"];
+(* Wired booleans from sections 1-5 residuals. The load-bearing entry is
+   `nontrivialCompensated`, anchored to the section-5 series residual. *)
+evenOkScale = TrueQ[Sort[beta /. betaSolutions] === {-1, 1}];
+oddOkScale = TrueQ[FullSimplify[(chiArg /. beta -> 1) - 1] === 0];
+nontrivialScale = False;
+
+evenOkRobin = TrueQ[robinSolutions === {{rho -> 0}}];
+oddOkRobin = TrueQ[FullSimplify[(chiR /. rho -> 0) - 1] === 0];
+nontrivialRobin = False;
+
+evenOkStandalone = TrueQ[FullSimplify[kappaMatch + 1/9] === 0];
+oddOkStandalone = TrueQ[FullSimplify[(chiMix /. sigma -> 0) - 1] === 0];
+nontrivialStandalone = !TrueQ[FullSimplify[sigmaMatch] === 0];
+
+evenOkHybCancel = TrueQ[FullSimplify[(kappa /. branchCancel)] === 0];
+oddOkHybCancel = TrueQ[FullSimplify[chiCancel - (1 - 9 sigma gamma)] === 0];
+nontrivialHybCancel = False;
+
+evenOkCompensated = TrueQ[FullSimplify[(kappa /. branchComp) - 1/3] === 0];
+oddOkCompensated = TrueQ[FullSimplify[(chiComp /. gamma -> 1/9) - 1] === 0];
+nontrivialCompensated = TrueQ[
+  Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]] === 0
+];
+
 classificationRows = {
-  {"scale/argument", True, True, False, "harmless beta = 1 pure-scale branch"},
-  {"pure Robin", False, False, False, "rho_R = 0 only"},
-  {"standalone mixed pole", False, False, False, "sigma_W = 0 only (formal kappa = -1/9)"},
-  {"hybrid cancellation", True, True, False, "gamma_W = 0 reduces to exact cancellation"},
-  {"compensated Robin-mixed core realization", True, True, True, "balance surface + D/N tube normalization"}
+  {"scale/argument", evenOkScale, oddOkScale, nontrivialScale, "harmless beta = 1 pure-scale branch"},
+  {"pure Robin", evenOkRobin, oddOkRobin, nontrivialRobin, "rho_R = 0 only"},
+  {"standalone mixed pole", evenOkStandalone, oddOkStandalone, nontrivialStandalone, "sigma_W = 0 only (formal kappa = -1/9)"},
+  {"hybrid cancellation", evenOkHybCancel, oddOkHybCancel, nontrivialHybCancel, "gamma_W = 0 reduces to exact cancellation"},
+  {"compensated Robin-mixed core realization", evenOkCompensated, oddOkCompensated, nontrivialCompensated, "balance surface + D/N tube normalization"}
 };
 Scan[Print, classificationRows];
 nontrivialSurvivors = Cases[classificationRows, {name_, True, True, True, _} :> name];

@@ -66,7 +66,7 @@ the geometric branch value is
 =
 \sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
 =
-\frac{\sqrt{4107-168\pi^2}}{10\pi}
+\frac{\sqrt{4107-100\pi^2}}{10\pi}
 \approx 1.77799353547498.
 }
 \]

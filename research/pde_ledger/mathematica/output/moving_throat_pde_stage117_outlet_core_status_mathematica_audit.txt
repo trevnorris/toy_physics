@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl
-# Date: 2026-05-11T13:09:15-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 100 — CONCRETE OUTLET-CORE STATUS
+STAGE 117 — CONCRETE OUTLET-CORE STATUS
 ========================================================================================
 
 ========================================================================================
@@ -58,10 +50,8 @@ both core-balance branches give the same sigma_* = 0
 PASS: both core-balance branches give the same sigma_*
 core-balance sigma_* value = 0
 PASS: core-balance sigma_* value
-D/N tube fixes kappa_c = 1/3 = 0
-PASS: D/N tube fixes kappa_c = 1/3
-bare mixed normalization fixes gamma_c = 1/9 = 0
-PASS: bare mixed normalization fixes gamma_c = 1/9
+carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3
+carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9
 concrete core collapses to the compensated hybrid class = 0
 PASS: concrete core collapses to the compensated hybrid class
 
@@ -69,8 +59,8 @@ PASS: concrete core collapses to the compensated hybrid class
 6. Classification capstone
 ========================================================================================
 {scale/argument, True, True, False, harmless beta = 1 pure-scale branch}
-{pure Robin, False, False, False, rho_R = 0 only}
-{standalone mixed pole, False, False, False, sigma_W = 0 only (formal kappa = -1/9)}
+{pure Robin, True, True, False, rho_R = 0 only}
+{standalone mixed pole, True, True, False, sigma_W = 0 only (formal kappa = -1/9)}
 {hybrid cancellation, True, True, False, gamma_W = 0 reduces to exact cancellation}
 {compensated Robin-mixed core realization, True, True, True, balance surface + D/N tube normalization}
 
@@ -80,5 +70,3 @@ Open microscopic question:
   D/N tube normalization. This script does not assert that realization.
 
 Stage 117 Mathematica audit passed.
-
-EXIT_CODE: 0

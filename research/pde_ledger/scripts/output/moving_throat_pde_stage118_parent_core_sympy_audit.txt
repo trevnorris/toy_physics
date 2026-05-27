@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage118_parent_core_sympy_audit.py
-# Date: 2026-05-11T12:45:28-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 I. Tanh-wall shell moments
@@ -45,12 +37,13 @@ g_q = sqrt(2)*pi*Zq/(2*L_W**(3/2)*mu0)
 J_s = 4*pi*a**2*ell/3
 g_s = 4*pi*Tm*a**2*ell/3
 I_sq (uniform-core closure) = 8*sqrt(2)*sqrt(L_W)*a**2*ell/3
-lambda (uniform-core closure) = 8*sqrt(2)*sqrt(L_W)*a**2*ell*qstar*v0/3
+lambda (uniform-core closure) = -8*sqrt(2)*sqrt(L_W)*a**2*ell*qstar*v0/3
+K_q closed form = 0
 g_q closed form = 0
 J_s closed form = 0
+g_s closed form = 0
 I_q closed form = 0
 lambda uniform closure = 0
+lambda from bilinear = 0
 
 All Stage 118 symbolic checks passed.
-
-EXIT_CODE: 0

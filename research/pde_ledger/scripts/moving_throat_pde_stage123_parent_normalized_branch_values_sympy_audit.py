@@ -13,7 +13,7 @@ def expect_zero(name, expr):
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 106 — PARENT-NORMALIZED BRANCH VALUES")
+banner("STAGE 123 — PARENT-NORMALIZED BRANCH VALUES")
 
 # Symbols
 a, L, ell, mu0, Zq, m, rho, q, hbar, cs = sp.symbols(

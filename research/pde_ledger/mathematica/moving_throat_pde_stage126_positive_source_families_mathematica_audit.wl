@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES"];
+banner["STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES"];
 
 Clear[z, lM, xi];
 $Assumptions = Element[{z, lM, xi}, Reals] && lM > 0;
@@ -57,6 +57,22 @@ gXi = FullSimplify[Integrate[sigmaXi*Cos[k*z], {z, 0, lM}], Assumptions -> $Assu
 Print["sigma_xi normalization = ", fmt[normXi]];
 Print["g_xi = ", fmt[gXi]];
 expectZero["convex-family normalization", normXi - 1];
+
+(* Positivity: sigma_xi(z) >= 0 on z in [0, lM], xi in [0, 1].
+   Each summand of sigma_xi is nonnegative on the stated domain because
+   cos(k z) decreases monotonically from 1 (at z=0) to 0 (at z=lM) for k=Pi/(2 lM). *)
+sigmaMatchAtLM = FullSimplify[k*Cos[k*z] /. z -> lM, Assumptions -> $Assumptions];
+Print["sigma_match(lM) = ", fmt[sigmaMatchAtLM]];
+expectZero["sigma_match(lM) = 0 (boundary min on [0,lM])", sigmaMatchAtLM];
+sigmaMatchAt0 = FullSimplify[k*Cos[k*z] /. z -> 0, Assumptions -> $Assumptions];
+Print["sigma_match(0) = ", fmt[sigmaMatchAt0]];
+expectZero["sigma_match(0) = k (interior max on [0,lM])", sigmaMatchAt0 - k];
+sigmaXiAtLM = FullSimplify[(sigmaXi /. xi -> 0) /. z -> lM, Assumptions -> $Assumptions];
+Print["sigma_xi(z=lM, xi=0) = ", fmt[sigmaXiAtLM]];
+expectZero["sigma_xi(z=lM, xi=0) = 0", sigmaXiAtLM];
+valXiAt1 = FullSimplify[sigmaXi /. xi -> 1, Assumptions -> $Assumptions];
+Print["sigma_xi(xi=1) = ", fmt[valXiAt1]];
+expectZero["sigma_xi(xi=1) = 1/lM", valXiAt1 - 1/lM];
 
 xiStar = FullSimplify[xi /. First[Solve[gXi == gMinus, xi, Reals]], Assumptions -> $Assumptions];
 Print["xi_* = ", fmt[xiStar]];

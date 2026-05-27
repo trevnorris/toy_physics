@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-27` (batch IV.2 close — first-pass paper-grounded audit under v2 prompt for stages 103-114, including checkpoint 105)
+Snapshot date: `2026-05-27` (batch IV.3 close — first-pass paper-grounded audit under v2 prompt for stages 115-126, no checkpoints; one material_change at stage 118 — script-side λ sign flip after auditor caught internal section IV vs section V disagreement)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-27`: **126** of 253 stages red-team verified. With IV.2 closed (first audit pass for these 12 stages, performed directly under the v2 paper-grounded prompt), the entire range 001–114 is now paper-aligned at v2 depth. Checkpoint stage 105 (chi_Q fix from outgoing DtN) passed at the higher-bar standard; stages 103 and 113 were status-only-clean (consolidation cards, both engines intentionally absent).
+As of `2026-05-27`: **138** of 253 stages red-team verified. With IV.3 closed (first audit pass for these 12 stages under v2), the entire range 001–126 is now paper-aligned at v2 depth. No checkpoints in IV.3; stages 120 and 124 were status-only-clean (consolidation cards). One material_change at stage 118 (λ sign flip — internal script inconsistency between sections IV and V; resolved by aligning section V with both section IV's bilinear derivation and the notes' boxed form). Three stages (121, 122, 123) have no Mathematica mirror by design.
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -61,9 +61,10 @@ As of `2026-05-27`: **126** of 253 stages red-team verified. With IV.2 closed (f
 | III.5 | `085--090` | 6 | 6 | 2026-05-27 (v2 paper-grounded, first-pass) |
 | IV.1 | `091--102` | 12 | 12 | 2026-05-27 (v2 paper-grounded — first pass) |
 | IV.2 | `103--114` | 12 | 12 | 2026-05-27 (v2 paper-grounded — first pass) |
-| IV.3 onward | `115--253` | 139 | 0 | pending |
+| IV.3 | `115--126` | 12 | 12 | 2026-05-27 (v2 paper-grounded — first pass) |
+| IV.4 onward | `127--253` | 127 | 0 | pending |
 
-Cumulative findings closed: ~371 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3 + 14 v2 from III.4 + 15 from III.5 + 27 from IV.1 + 16 from IV.2, plus 1 blocked-legitimate from IV.1). Of the 16 IV.2 closes, 5 were `paper_misalignment` (2 Cluster A Checks-coverage docstring carry-forwards at 106/109, 1 Cluster B substantive β-locus extension at 108, 2 Cluster C banner-label relabels at 105/112), 4 `mathematica_transliteration` (105, 106, 109, 111, 112 — independent-route additions; 109 also a tautological_check resolution), 2 `tautological_check` (106 F2, 109 F1), 2 `insufficient_verification` (106 F4 Δ_Q sensitivity, 107 F1 SymPy parity, 108 F2 Mathematica parse bug), and 1 `stale_output` banner (108 F3). Plus a 24-site banner-relabel sweep across all 10 scripted IV.2 stages (Cluster C — orchestrator-direct).
+Cumulative findings closed: ~398 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3 + 14 v2 from III.4 + 15 from III.5 + 27 from IV.1 + 16 from IV.2 + **27 from IV.3**, plus 1 blocked-legitimate from IV.1). Of the 27 IV.3 closes, 7 were `paper_misalignment` (Cluster A 4 notes-side numerical typos at 121/122/123/126 — `168π²→100π²` for three stages and `228→160` for stage 123; Cluster B λ sign flip at 118 — internal script inconsistency; Cluster C integral inequality coverage gap at 125; **Cluster D 117 transliteration + 2 tautological resolved via cite-upstream-and-downgrade**), 3 `mathematica_transliteration` (115, 117 F1, 125 F2 — independent-derivation insertions), 6 `tautological_check` (116 F1, 116 F2, 117 F2, 117 F3, 117 F4, 119 F1), 5 `insufficient_verification` (116 F4, 119 F2, 121 F2, 122 F2, 126 F3), 2 `hardcoded_result` (116 F3, included in F3 count), 1 `script_missing_paper_claim` (121 F3 Ω_W), 1 `paper_missing_script_claim` (126 F2 positivity), 1 `stale_output` banner (126 F4). Plus a 10-site banner-relabel sweep across all IV.3 scripted stages (115, 116, 117, 121, 122, 123, 125, 126 — orchestrator-direct, matching IV.2's pattern).
 `tautological_check` dominant overall, `mathematica_transliteration` second.
 `hardcoded_result` rose sharply in III.4 to 12 because the Family-1 numerology
 cluster 075-084 packs many literal constants; III.5 quieted again (1 hardcoded
@@ -75,17 +76,17 @@ orchestrator-direct banner-relabel sweep when the global-renumber leftover
 turned out to be pervasive across III.4; **2 in III.5 — both substantive (087 F1
 status/checkpoint consolidation, 089 F1 Pe_req=0 chain closure), plus a 12-script
 orchestrator-direct banner-relabel sweep**);
-zero user redirections in II.1, III.1, III.2, III.3, III.4, III.5, IV.1, **IV.2** (8 consecutive
-batches — Codex was bypassed in III.5, IV.1, and IV.2 per the III.4 availability lesson; orchestrator-direct
+zero user redirections in II.1, III.1, III.2, III.3, III.4, III.5, IV.1, IV.2, **IV.3** (9 consecutive
+batches — Codex was bypassed in III.5, IV.1, IV.2, and IV.3 per the III.4 availability lesson; orchestrator-direct
 math-authority worked cleanly because the audit + grep evidence was conclusive).
 v2 surfaces `insufficient_verification` prominently — 8 in II.1, 5 in III.1, 8 in III.2,
-4 in III.3, 1 in III.4, 1 in III.5, 7 in IV.1, 2 in IV.2 = **36** cumulative.
+4 in III.3, 1 in III.4, 1 in III.5, 7 in IV.1, 2 in IV.2, 5 in IV.3 = **41** cumulative.
 Stage 060 (v1 `material_change: true`) returned **clean (0 findings)** under III.2 v2.
 **Stage 068 (v1 `material_change: true`) returned clean at v2**.
 Stages now carrying `material_change: true`: 001, 004
 (I.1 v2); 013, 014, 015, 018 (I.2 v2); 045 (III.1 v2 — structural-only, F_tr
 export value unchanged); 060 (v1, clean at v2); 068 (v1, clean at v2). II.1,
-III.1, III.2, III.3, III.4, III.5 v2 each added **zero** value-changing material_change. **IV.1 added one structural material_change at stage 100** (closure derivation strengthened from tautological cross-check to substantive `mhat_0^2 Gamma_5 = Gamma_5_target` imposition; no derived value changed; downstream stages > 100 not marked `upstream_stale`). **IV.2 added one structural material_change at stage 108** (Cluster B β-parameterized preservation submanifold added; the β=1 reduction already verified previously is unchanged, only the verification surface widened; downstream stages > 108 not marked `upstream_stale`).
+III.1, III.2, III.3, III.4, III.5 v2 each added **zero** value-changing material_change. **IV.1 added one structural material_change at stage 100** (closure derivation strengthened from tautological cross-check to substantive `mhat_0^2 Gamma_5 = Gamma_5_target` imposition; no derived value changed; downstream stages > 100 not marked `upstream_stale`). **IV.2 added one structural material_change at stage 108** (Cluster B β-parameterized preservation submanifold added; the β=1 reduction already verified previously is unchanged, only the verification surface widened; downstream stages > 108 not marked `upstream_stale`). **IV.3 added one substantive material_change at stage 118** (λ sign flip from + to − in section V's `lam_uniform = qstar*v0*I_sq` closure; internal script inconsistency where section IV's bilinear derivation and the notes' boxed form both had `−` but section V dropped the minus during integration. Resolved by aligning section V with section IV. Downstream Schur reductions use `K_s K_q + λ²` and `(K_s g_q − λ g_s)²` — both sign-invariant under squaring — so no numerical downstream propagation; upstream_stale NOT flagged. Future-batch caveat: revisit if a downstream stage uses λ in an unsquared cross-term).
 III.3 v2 introduced one orchestrator hot-fix on stage 064 Mathematica
 (`Integrate[]` with symbolic functions does not factor constants — verify
 integrands first; pitfall #9 candidate). III.4 v2 introduced one orchestrator
@@ -117,7 +118,20 @@ docstring carry-forwards + Cluster B 108 β-locus extension + Cluster C 24-site
 banner sweep), plus a Mathematica parse-bug correction (`chiArg /. beta -> 1 - 1`
 parsed as `beta -> 0` at 108 F2; fix: `(chiArg /. beta -> 1) - 1`) which
 re-confirms pitfall #11 PASS-line discipline (the buggy line passed by accident).
-See per-batch summaries in `redteam/batches/batch_<ID>.md`.
+**IV.3 added pitfall #12 candidate** (Mathematica `Solve[expr == 0, frakG]`
+fails with "frakG is not a valid variable" when `frakG` is bound to its definition
+`= gQ*Sqrt[kS]/(gS*Sqrt[kQ])` — always introduce a fresh symbol for Solve's
+target variable, then substitute back). Also re-confirmed: Mathematica `Minimize[]`
+on `cos` over an interval frequently returns the input unevaluated; use boundary-value
+checks instead under monotone-decreasing assumptions. Directive-correction during
+edit: (a) stage 116 directive's `gamma0_from_D = -I·coeff(z,5)` produced wrong sign;
+orchestrator corrected to `+I·coeff(z,5)` (analytic check confirms `+I` is right);
+(b) stage 115 directive's `parentFamilyResidual - balanceEq*(kS*kQ)/(gS^2)`
+multiplicative factor was wrong because `balanceEq` carries denominator
+`kS*(kQ*kS + lam^2)`; correct factor is `(kS*kQ + lam^2)/(gS²*kQ)`. Both
+corrections caught by re-running the scripts; sub-agents would otherwise have
+silently produced FAIL residuals. See per-batch summaries in
+`redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update
 
@@ -251,7 +265,7 @@ be treated as targeted spot-checking, not broad numerical validation.
    execution-coverage gap or an independence gap.
 4. Then widen the audit wave to the remaining repo-wide gaps.
 5. Backfill executable audits for the remaining no-executable stages:
-   `120`, `124`, `128`, `132`, `136`, `141`, `145`, `149`, `153`. (103 and
-   113 cleared as status-only consolidation cards under IV.2.)
+   `128`, `132`, `136`, `141`, `145`, `149`, `153`. (103, 113, 120, 124
+   cleared as status-only consolidation cards under IV.2/IV.3.)
 6. Use the new `248` / `253` harnesses as the template if numerical-stress
    coverage is widened beyond the current spot-check set.

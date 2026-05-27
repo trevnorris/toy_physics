@@ -46,14 +46,14 @@ equivalently
 
 Inserting the Stage 223 geometric value
 \[
-\mathfrak r=\mathfrak r_{F1}=\frac{\sqrt{4107-168\pi^2}}{10\pi}
+\mathfrak r=\mathfrak r_{F1}=\frac{\sqrt{4107-100\pi^2}}{10\pi}
 \]
 gives the two exact compensated mouth-coupling values
 \[
 \boxed{
 \mathfrak g_{\pm}^{F1}
 =
-\frac{2\sqrt{4107-168\pi^2}\pm 37\sqrt3}{20\pi}.
+\frac{2\sqrt{4107-100\pi^2}\pm 37\sqrt3}{20\pi}.
 }
 \]
 
@@ -85,7 +85,7 @@ Equivalently, the exact compensation defect evaluated on the natural branch is
 :=
 1+\mathfrak r_{F1}^2-4(1-\mathfrak r_{F1})^2
 =
-\frac{-12321+80\pi\sqrt{4107-168\pi^2}}{168\pi^2}
+\frac{-12321+80\pi\sqrt{4107-100\pi^2}}{100\pi^2}
 \approx 1.74016524722739,
 \]
 so the natural branch misses the compensated surface.

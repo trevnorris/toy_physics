@@ -15,7 +15,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if s != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 98 — EXACT CORE-BALANCE COMPENSATION THEOREM")
+banner("STAGE 115 — EXACT CORE-BALANCE COMPENSATION THEOREM")
 
 K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
 g_s, g_q = sp.symbols("g_s g_q", real=True)

@@ -9,7 +9,13 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-27` (batch IV.2 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.3 close — first-pass paper-grounded
+audit on stages 115-126. **No checkpoints in IV.3 range.** Cumulative checkpoint
+status (105 from IV.2, 096 from IV.1, 089/090 from III.5, 069 from III.3, 051
+from III.2) unchanged. IV.3 closed range 001-126 paper-aligned at v2 depth.
+Previous IV.2 entry retained below.
+
+batch IV.2 close — first-pass paper-grounded
 audit on stages 103-114. **Checkpoint stage `105` (chi_Q fix from outgoing
 DtN) returned `verified` after first-pass v2 audit + apply + verifier
 cycle at the higher-bar standard.** 105 cleared 2 findings: F1

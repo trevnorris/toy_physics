@@ -97,7 +97,7 @@ The exact solution is
 =
 \frac{\frac{\pi}{4}-\mathfrak g_-^{F1}}{\frac{\pi}{4}-\frac{2}{\pi}}
 =
-\frac{-37\sqrt3-5\pi^2+2\sqrt{4107-168\pi^2}}{5(8-\pi^2)}
+\frac{-37\sqrt3-5\pi^2+2\sqrt{4107-100\pi^2}}{5(8-\pi^2)}
 \approx 0.183918405511538.
 }
 \]

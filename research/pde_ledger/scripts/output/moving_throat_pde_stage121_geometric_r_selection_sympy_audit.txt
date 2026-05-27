@@ -1,21 +1,17 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
-# Date: 2026-05-11T12:45:30-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 104 — GEOMETRIC SELECTION OF r
+STAGE 121 — GEOMETRIC SELECTION OF r
 ========================================================================================
 r_geom(L/a) = sqrt(12*L**2 - pi**2*a**2)/(pi*a)
+r_geom closed-form (explicit) = 0
 tube-length relation = 0
 r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)
 r_F1 numeric = 1.7779935354749781185
+r_F1 symbolic value at L/a = 37/20 = 0
 r_c(F1) = -1 + 4107/(100*pi**2)
 r_c(F1) numeric = 3.1612610121908122732
+r_c(F1) symbolic value = 0
+Omega_W(L_W = L) = pi*c_s/(2*L)
+Omega_W identification at L_W = L = 0
 existence threshold L/a >= sqrt(3)*pi/6 ≈ 0.90689968211710892530
-
-EXIT_CODE: 0
+r_geom vanishes at existence threshold = 0

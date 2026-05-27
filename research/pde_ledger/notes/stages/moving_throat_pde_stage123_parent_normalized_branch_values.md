@@ -27,7 +27,7 @@ Then the exact branch law is
 \boxed{
 \Xi_v
 =
--\frac{3\sqrt{30}\,\pi^{3/2}}{228}\,\mathfrak r.
+-\frac{3\sqrt{30}\,\pi^{3/2}}{160}\,\mathfrak r.
 }
 \]
 
@@ -36,7 +36,7 @@ On the explicit Family-1 geometric branch,
 \boxed{
 \Xi_v^{F1}
 =
--\frac{3\sqrt{30}\,\pi^{3/2}}{228}\,\mathfrak r_{F1}
+-\frac{3\sqrt{30}\,\pi^{3/2}}{160}\,\mathfrak r_{F1}
 \approx -1.01675633282526.
 }
 \]

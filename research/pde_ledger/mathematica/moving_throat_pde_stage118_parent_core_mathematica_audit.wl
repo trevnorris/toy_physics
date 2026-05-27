@@ -93,7 +93,7 @@ jS = FullSimplify[4*Pi*a^2*ell*iF, Assumptions -> $Assumptions];
 gS = FullSimplify[tM*jS, Assumptions -> $Assumptions];
 iQ = FullSimplify[chiInt, Assumptions -> $Assumptions];
 iSqUniform = FullSimplify[jS*iQ, Assumptions -> $Assumptions];
-lamUniform = FullSimplify[qStar*v0*iSqUniform, Assumptions -> $Assumptions];
+lamUniform = FullSimplify[-qStar*v0*iSqUniform, Assumptions -> $Assumptions];
 
 Print["K_q = ", fmt[kQ]];
 Print["g_q = ", fmt[gQ]];
@@ -102,10 +102,13 @@ Print["g_s = ", fmt[gS]];
 Print["I_sq (uniform-core closure) = ", fmt[iSqUniform]];
 Print["lambda (uniform-core closure) = ", fmt[lamUniform]];
 
+expectZero["K_q closed form", kQ - (zQ/mu0)*Pi^2*cSound^2/(4*lW^2)];
 expectZero["g_q closed form", gQ - (zQ/mu0)*Pi/(Sqrt[2]*lW^(3/2))];
 expectZero["J_s closed form", jS - 4*Pi*a^2*ell/3];
+expectZero["g_s closed form", gS - tM*4*Pi*a^2*ell/3];
 expectZero["I_q closed form", iQ - 2*Sqrt[2*lW]/Pi];
-expectZero["lambda uniform closure", lamUniform - (8*Sqrt[2]*qStar*v0*a^2*ell*Sqrt[lW])/3];
+expectZero["lambda uniform closure", lamUniform + (8*Sqrt[2]*qStar*v0*a^2*ell*Sqrt[lW])/3];
+expectZero["lambda from bilinear", lamUniform + qStar*v0*jS*iQ];
 
 Print[""];
 Print["Stage 118 Mathematica audit passed."];

@@ -28,7 +28,7 @@ def expect_true(name: str, cond: bool) -> None:
         raise AssertionError(f"{name} is false")
 
 
-banner("STAGE 108 — POSITIVE LOCAL MOUTH-SOURCE THEOREM")
+banner("STAGE 125 — POSITIVE LOCAL MOUTH-SOURCE THEOREM")
 
 z, L = sp.symbols("z L", positive=True, real=True)
 x = sp.symbols("x", real=True)
@@ -64,6 +64,28 @@ print("g_+ (numeric) =", sp.N(gplus, 20))
 expect_true("g_- > 0", bool(sp.N(gminus) > 0))
 expect_true("g_- < 1", bool(sp.N(gminus) < 1))
 expect_true("g_+ > 1", bool(sp.N(gplus) > 1))
+
+# Integral-bound test on a one-parameter family of positive normalized sources.
+# sigma_a(z) = (a + 1) * (z/L)^a / L is nonneg on [0,L] for a >= 0 and integrates to 1.
+# Endpoint values: a = 0 -> uniform (g = 2/pi); a -> oo -> peaked at z = L (g -> 0).
+sigma_a = sp.symbols("sigma_param", nonnegative=True, real=True)
+sigma_profile = (sigma_a + 1) * (z / L) ** sigma_a / L
+norm_a = sp.simplify(sp.integrate(sigma_profile, (z, 0, L)))
+expect_zero("parametric family normalization", norm_a - 1)
+
+g_a = sp.simplify(sp.integrate(sigma_profile * sp.cos(sp.pi * z / (2 * L)), (z, 0, L)))
+print("g_a (parametric moment) =", g_a)
+
+expect_zero("moment g[uniform] - 2/pi", g_a.subs(sigma_a, 0) - 2 / sp.pi)
+
+# Numerical check that g_a -> 0 as a -> oo (SymPy can't take a symbolic limit on the
+# resulting hypergeometric form, so verify the trend at a = 100 instead).
+g_a_large = sp.N(g_a.subs(sigma_a, 100))
+print("g_a at sigma_param = 100 (peaked-at-L proxy) =", g_a_large)
+expect_true("g[peaked@L proxy a=100] < 0.05", bool(abs(g_a_large) < sp.Rational(1, 20)))
+
+expect_true("g[uniform] >= 0", bool(sp.N(g_a.subs(sigma_a, 0)) >= 0))
+expect_true("g[uniform] <= 1", bool(sp.N(g_a.subs(sigma_a, 0)) <= 1))
 
 print("\nConclusion: under any positive localized mouth source law,")
 print("the upper compensated branch is impossible and the lower branch is unique.")

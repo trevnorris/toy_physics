@@ -35,7 +35,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 100 — CONCRETE OUTLET-CORE STATUS")
+banner("STAGE 117 — CONCRETE OUTLET-CORE STATUS")
 
 z = sp.symbols("z", real=True)
 S, beta = sp.symbols("S beta", nonzero=True, real=True)
@@ -138,6 +138,15 @@ expect_zero(
 )
 
 banner("5. Concrete core realization of the compensated class")
+# This stage is a status-consolidation card. The forward expressions for
+# kappa_0_bare = (1+r_c)/3 and gamma_0_bare = (1+r_c)/9 are derived upstream:
+#   - Stage 115: parent-overlap reparametrization and Schur reduction;
+#   - Stage 116: D/N half-wave eigenvalue k_W = pi/(2 L_W) on q(0)=0, q'(L_W)=0,
+#                yielding kappa_0_bare from the tube-length law.
+# Here we substitute those forward expressions and read off the *arithmetic
+# consequences* kappa_c = kappa_0/(1+r_c) = 1/3 and gamma_c = gamma_0/(1+r_c) = 1/9.
+# Those substitutions are not independent derivations; the load-bearing check in
+# this stage is the residual delta_core - delta_core_expected at order z^6.
 r_c = sp.simplify(lam**2 / (Ks * Kq))
 rho_c = sp.simplify(gs**2 / Ks)
 sigma_c = sp.simplify((Ks * gq - lam * gs) ** 2 / (Ks**2 * Kq * (1 + r_c)))
@@ -153,8 +162,10 @@ expect_zero(
 expect_zero("core-balance sigma_* value", sigma_c.subs(gq, gq_solutions[0]) - sigma_star)
 
 Lw_required = sp.solve(sp.Eq(4 * Lw**2 / (sp.pi**2 * a**2), (1 + r_c) / 3), Lw)[0]
-expect_zero("D/N tube fixes kappa_c = 1/3", kappa_c.subs(kappa0, 4 * Lw_required**2 / (sp.pi**2 * a**2)) - sp.Rational(1, 3))
-expect_zero("bare mixed normalization fixes gamma_c = 1/9", gamma_c.subs(gamma0, (1 + r_c) / 9) - sp.Rational(1, 9))
+# Stage 116 fixes kappa_0_bare = (1+r_c)/3 via the D/N tube; carrying forward
+# to kappa_c = kappa_0/(1+r_c) = 1/3 is then arithmetic, not an independent check.
+print("carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3")
+print("carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9")
 
 delta_core = sp.simplify(
     rho_c - sigma_c / (1 - kappa_c * z**2 - I * gamma_c * z**5)
@@ -167,12 +178,37 @@ delta_core_expected = sp.simplify(4 * sigma_star - sigma_star / (1 - z**2 / 3 - 
 expect_zero("concrete core collapses to the compensated hybrid class", sp.expand(sp.series(delta_core - delta_core_expected, z, 0, 6).removeO()))
 
 banner("6. Classification capstone")
+# Compute pass-flags from sections 1-5 intermediate residuals rather than
+# hardcoding True/False.  The load-bearing entry is `nontrivial_compensated`,
+# which is wired to the section-5 residual delta_core - delta_core_expected.
+even_ok_scale = ({sol[beta] for sol in beta_solutions} == {sp.Integer(-1), sp.Integer(1)})
+odd_ok_scale = (sp.simplify(chi_arg.subs(beta, 1) - 1) == 0)
+nontrivial_scale = False  # scale class is trivially canonical with rescale
+
+even_ok_robin = (robin_even_solutions == [{rho: sp.Integer(0)}])
+odd_ok_robin = (sp.simplify(chi_R.subs(rho, 0) - 1) == 0)
+nontrivial_robin = False  # rho_R = 0 only
+
+even_ok_standalone = (sp.simplify(kappa_match + sp.Rational(1, 9)) == 0)
+odd_ok_standalone = (sp.simplify(chi_mix.subs(sigma, 0) - 1) == 0)
+nontrivial_standalone = (sp.simplify(sigma_match) != 0)
+
+even_ok_hyb_cancel = any(sol[kappa] == 0 for sol in hybrid_solutions)
+odd_ok_hyb_cancel = (sp.simplify(chi_cancel - (1 - 9 * sigma * gamma)) == 0)
+nontrivial_hyb_cancel = False  # collapses at gamma = 0
+
+even_ok_compensated = any(sol[kappa] == sp.Rational(1, 3) for sol in hybrid_solutions)
+odd_ok_compensated = (sp.simplify(chi_comp.subs(gamma, sp.Rational(1, 9)) - 1) == 0)
+nontrivial_compensated = (
+    sp.simplify(sp.expand(sp.series(delta_core - delta_core_expected, z, 0, 6).removeO())) == 0
+)
+
 classification_rows = [
-    ("scale/argument", True, True, False, "harmless beta = 1 pure-scale branch"),
-    ("pure Robin", False, False, False, "rho_R = 0 only"),
-    ("standalone mixed pole", False, False, False, "sigma_W = 0 only (formal kappa = -1/9)"),
-    ("hybrid cancellation", True, True, False, "gamma_W = 0 reduces to exact cancellation"),
-    ("compensated Robin-mixed core realization", True, True, True, "balance surface + D/N tube normalization"),
+    ("scale/argument", even_ok_scale, odd_ok_scale, nontrivial_scale, "harmless beta = 1 pure-scale branch"),
+    ("pure Robin", even_ok_robin, odd_ok_robin, nontrivial_robin, "rho_R = 0 only"),
+    ("standalone mixed pole", even_ok_standalone, odd_ok_standalone, nontrivial_standalone, "sigma_W = 0 only (formal kappa = -1/9)"),
+    ("hybrid cancellation", even_ok_hyb_cancel, odd_ok_hyb_cancel, nontrivial_hyb_cancel, "gamma_W = 0 reduces to exact cancellation"),
+    ("compensated Robin-mixed core realization", even_ok_compensated, odd_ok_compensated, nontrivial_compensated, "balance surface + D/N tube normalization"),
 ]
 for row in classification_rows:
     print(row)

@@ -85,7 +85,7 @@ J_s = sp.simplify(4*sp.pi*a**2*ell*I_f)
 g_s = sp.simplify(Tm * J_s)
 I_q = chi_int
 I_sq_uniform = sp.simplify(J_s * I_q)
-lam_uniform = sp.simplify(qstar * v0 * I_sq_uniform)
+lam_uniform = sp.simplify(-qstar * v0 * I_sq_uniform)
 
 print("K_q =", K_q)
 print("g_q =", g_q)
@@ -94,10 +94,13 @@ print("g_s =", g_s)
 print("I_sq (uniform-core closure) =", I_sq_uniform)
 print("lambda (uniform-core closure) =", lam_uniform)
 
+expect_zero("K_q closed form", K_q - (Zq/mu0) * sp.pi**2 * c_s**2 / (4*L_W**2))
 expect_zero("g_q closed form", g_q - (Zq/mu0) * sp.pi/(sp.sqrt(2)*L_W**sp.Rational(3,2)))
 expect_zero("J_s closed form", J_s - 4*sp.pi*a**2*ell/3)
+expect_zero("g_s closed form", g_s - Tm * 4*sp.pi*a**2*ell/3)
 expect_zero("I_q closed form", I_q - 2*sp.sqrt(2*L_W)/sp.pi)
 expect_zero("lambda uniform closure",
-            lam_uniform - 8*sp.sqrt(2)*qstar*v0*a**2*ell*sp.sqrt(L_W)/3)
+            lam_uniform + 8*sp.sqrt(2)*qstar*v0*a**2*ell*sp.sqrt(L_W)/3)
+expect_zero("lambda from bilinear", lam_uniform + qstar * v0 * J_s * I_q)
 
 print("\nAll Stage 118 symbolic checks passed.")

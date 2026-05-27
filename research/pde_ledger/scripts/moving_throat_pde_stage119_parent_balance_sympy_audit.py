@@ -50,6 +50,10 @@ kappa0 = 4*L_W**2/(sp.pi**2*a**2)
 L_sel = sp.solve(sp.Eq(kappa0, (1+rc)/3), L_W)[0]
 print("L_W =", sp.simplify(L_sel))
 expect_zero("tube-length law", L_sel - sp.pi*a*sp.sqrt((1+rc)/3)/2)
+expect_zero(
+    "tube-length law (rc -> rhat**2 link)",
+    L_sel.subs(rc, rhat**2) - sp.pi*a*sp.sqrt((1+rhat**2)/3)/2
+)
 
 banner("IV. Explicit traction law")
 
@@ -67,5 +71,16 @@ Tm_sol_plus = sp.simplify(sp.solve(sp.Eq(ghat_expr, rhat + sp.sqrt(1+rhat**2)/2)
 Tm_sol_minus = sp.simplify(sp.solve(sp.Eq(ghat_expr, rhat - sp.sqrt(1+rhat**2)/2), Tm)[0])
 print("T_m (+ branch) =", Tm_sol_plus)
 print("T_m (- branch) =", Tm_sol_minus)
+
+expect_zero(
+    "T_m (+ branch) match",
+    Tm_sol_plus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat + sp.sqrt(1+rhat**2)))
+)
+expect_zero(
+    "T_m (- branch) match",
+    Tm_sol_minus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat - sp.sqrt(1+rhat**2)))
+)
 
 print("\nAll Stage 119 symbolic checks passed.")

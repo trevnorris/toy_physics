@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
-# Date: 2026-05-11T12:45:32-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 108 — POSITIVE LOCAL MOUTH-SOURCE THEOREM
+STAGE 125 — POSITIVE LOCAL MOUTH-SOURCE THEOREM
 ========================================================================================
 D/N half-wave derivative factor:
 cos(k z) with k = pi/(2L) = cos(pi*z/(2*L))
@@ -29,8 +21,13 @@ g_+ (numeric) = 2.7979519920052934101
 g_- > 0 = True
 g_- < 1 = True
 g_+ > 1 = True
+parametric family normalization = 0
+g_a (parametric moment) = hyper((sigma_param/2 + 1/2,), (1/2, sigma_param/2 + 3/2), -pi**2/16)
+moment g[uniform] - 2/pi = 0
+g_a at sigma_param = 100 (peaked-at-L proxy) = 0.0153964175481027
+g[peaked@L proxy a=100] < 0.05 = True
+g[uniform] >= 0 = True
+g[uniform] <= 1 = True
 
 Conclusion: under any positive localized mouth source law,
 the upper compensated branch is impossible and the lower branch is unique.
-
-EXIT_CODE: 0

@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage125_positive_source_theorem_mathematica_audit.wl
-# Date: 2026-05-11T13:10:01-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 108 — POSITIVE LOCAL MOUTH-SOURCE THEOREM
+STAGE 125 — POSITIVE LOCAL MOUTH-SOURCE THEOREM
 ========================================================================================
 D/N half-wave derivative factor:
 Cos[k z] with k = Pi/(2 L) = Cos[(Pi*z)/(2*L)]
@@ -21,10 +13,10 @@ Because the normalized kernel lies in [0,1] on x in [0,1],
 every positive normalized source law has its cosine moment in [0,1].
 r - sqrt(4107 - 100 Pi^2)/(10 Pi) = 0
 PASS: r - sqrt(4107 - 100 Pi^2)/(10 Pi)
-lower branch balance relation = 0
-PASS: lower branch balance relation
-upper branch balance relation = 0
-PASS: upper branch balance relation
+g_- matches closed form (2*rrad - 37*Sqrt[3])/(20*Pi) = 0
+PASS: g_- matches closed form (2*rrad - 37*Sqrt[3])/(20*Pi)
+g_+ matches closed form (2*rrad + 37*Sqrt[3])/(20*Pi) = 0
+PASS: g_+ matches closed form (2*rrad + 37*Sqrt[3])/(20*Pi)
 
 Explicit Family-1 compensated branches:
 g_- = (-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])/(20*Pi)
@@ -37,8 +29,19 @@ g_- < 1 = True
 PASS: g_- < 1
 g_+ > 1 = True
 PASS: g_+ > 1
+parametric family normalization = 0
+PASS: parametric family normalization
+g_a (parametric moment) = (-I)*2^aSym*(1 + aSym)*Pi^(-1 - aSym)*(I^aSym*Gamma[1 + aSym, (-1/2*I)*Pi] - (-I)^aSym*Gamma[1 + aSym, (I/2)*Pi] - (2*I)*Gamma[1 + aSym]*Sin[(aSym*Pi)/2])
+moment g[uniform] - 2/Pi = 0
+PASS: moment g[uniform] - 2/Pi
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+moment g[peaked@L] limit = 0
+PASS: moment g[peaked@L] limit
+g[uniform] >= 0 = True
+PASS: g[uniform] >= 0
+g[uniform] <= 1 = True
+PASS: g[uniform] <= 1
 
 Conclusion: under any positive localized mouth source law,
 the upper compensated branch is impossible and the lower branch is unique.
-
-EXIT_CODE: 0

@@ -30,7 +30,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[TrueQ[res], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 108 — POSITIVE LOCAL MOUTH-SOURCE THEOREM"];
+banner["STAGE 125 — POSITIVE LOCAL MOUTH-SOURCE THEOREM"];
 
 Clear[x, z, L];
 $Assumptions = L > 0 && Element[{x, z}, Reals];
@@ -52,12 +52,18 @@ Print["every positive normalized source law has its cosine moment in [0,1]."];
 
 rrad = Sqrt[4107 - 100*Pi^2];
 r = FullSimplify[Sqrt[12*(37/20)^2/Pi^2 - 1], Assumptions -> $Assumptions];
-gminus = FullSimplify[(2*rrad - 37*Sqrt[3])/(20*Pi), Assumptions -> $Assumptions];
-gplus = FullSimplify[(2*rrad + 37*Sqrt[3])/(20*Pi), Assumptions -> $Assumptions];
+
+Clear[gSym];
+branchSolutions = Solve[1 + r^2 - 4*(gSym - r)^2 == 0, gSym];
+branchValues = FullSimplify[gSym /. branchSolutions, Assumptions -> $Assumptions];
+gminus = First[Sort[branchValues]];
+gplus  = Last[Sort[branchValues]];
 
 expectZero["r - sqrt(4107 - 100 Pi^2)/(10 Pi)", r - rrad/(10*Pi)];
-expectZero["lower branch balance relation", 1 + r^2 - 4*(gminus - r)^2];
-expectZero["upper branch balance relation", 1 + r^2 - 4*(gplus - r)^2];
+expectZero["g_- matches closed form (2*rrad - 37*Sqrt[3])/(20*Pi)",
+  gminus - (2*rrad - 37*Sqrt[3])/(20*Pi)];
+expectZero["g_+ matches closed form (2*rrad + 37*Sqrt[3])/(20*Pi)",
+  gplus - (2*rrad + 37*Sqrt[3])/(20*Pi)];
 
 Print[""];
 Print["Explicit Family-1 compensated branches:"];
@@ -69,6 +75,25 @@ Print["g_+ (numeric) = ", N[gplus, 20]];
 expectTrue["g_- > 0", gminus > 0];
 expectTrue["g_- < 1", gminus < 1];
 expectTrue["g_+ > 1", gplus > 1];
+
+(* Integral-bound test on a one-parameter family of positive normalized sources.
+   sigmaA(z) = (a + 1) * (z/L)^a / L is nonneg on [0,L] for a >= 0 and integrates to 1.
+   Endpoint values: a = 0 -> uniform (g = 2/Pi); a -> oo -> peaked at z = L (g -> 0). *)
+Clear[aSym, zSym];
+$Assumptions = $Assumptions && aSym >= 0;
+sigmaProfile = (aSym + 1)*(zSym/L)^aSym / L;
+normA = FullSimplify[Integrate[sigmaProfile, {zSym, 0, L}], Assumptions -> $Assumptions];
+expectZero["parametric family normalization", normA - 1];
+
+gA = FullSimplify[Integrate[sigmaProfile*Cos[Pi*zSym/(2*L)], {zSym, 0, L}],
+                  Assumptions -> $Assumptions];
+Print["g_a (parametric moment) = ", fmt[gA]];
+
+expectZero["moment g[uniform] - 2/Pi", (gA /. aSym -> 0) - 2/Pi];
+expectZero["moment g[peaked@L] limit", Limit[gA, aSym -> Infinity]];
+
+expectTrue["g[uniform] >= 0", (gA /. aSym -> 0) >= 0];
+expectTrue["g[uniform] <= 1", (gA /. aSym -> 0) <= 1];
 
 Print[""];
 Print["Conclusion: under any positive localized mouth source law,"];

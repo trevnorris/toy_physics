@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 098 — EXACT CORE-BALANCE COMPENSATION THEOREM"];
+banner["STAGE 115 — EXACT CORE-BALANCE COMPENSATION THEOREM"];
 
 Clear[kS, kQ, lam, gS, gQ, kappa0, gamma0, z];
 $Assumptions =
@@ -44,6 +44,46 @@ Print["Exact coupling-balance solutions for g_q = ", fmt[gQ /. gQSolutions]];
 gQBranch = FullSimplify[gQ /. First[gQSolutions], Assumptions -> $Assumptions];
 sigmaStar = FullSimplify[gS^2/(4*kS), Assumptions -> $Assumptions];
 expectZero["sigma_c on balance surface", (sigmaC /. gQ -> gQBranch) - sigmaStar];
+
+(* Independent derivation: parent-overlap reparametrization (Part-IV appendix
+   eqs eq:app-part04-r-g-parent-ratios and eq:app-part04-parent-compensation-family). *)
+frakR = lam/Sqrt[kS*kQ];
+frakG = gQ*Sqrt[kS]/(gS*Sqrt[kQ]);
+parentFamilyResidual = 1 + frakR^2 - 4*(frakG - frakR)^2;
+expectZero[
+  "independent: parent family identical balance equation",
+  FullSimplify[
+    parentFamilyResidual - balanceEq*(kS*kQ + lam^2)/(gS^2*kQ),
+    Assumptions -> $Assumptions
+  ]
+];
+(* Solve the parent family for a fresh variable, then translate back. *)
+Clear[gVar];
+parentResidualGen = 1 + frakR^2 - 4*(gVar - frakR)^2;
+frakGRoots = gVar /. Solve[parentResidualGen == 0, gVar];
+If[Length[frakGRoots] =!= 2,
+  fail["expected two parent-family roots", frakGRoots]];
+Print["Parent-family roots for frakG = ", fmt[frakGRoots]];
+frakGMinus = FullSimplify[frakR - Sqrt[1 + frakR^2]/2,
+  Assumptions -> $Assumptions];
+expectZero[
+  "independent: frakG_- root matches Solve output",
+  FullSimplify[(frakGRoots[[1]]) - frakGMinus,
+    Assumptions -> $Assumptions] *
+  FullSimplify[(frakGRoots[[2]]) - frakGMinus,
+    Assumptions -> $Assumptions]
+];
+gQFromFrakMinus = FullSimplify[
+  frakGMinus*gS*Sqrt[kQ]/Sqrt[kS],
+  Assumptions -> $Assumptions
+];
+expectZero[
+  "independent: sigma_c = sigma_* via parent reparametrization",
+  FullSimplify[
+    (sigmaC /. gQ -> gQFromFrakMinus) - sigmaStar,
+    Assumptions -> $Assumptions
+  ]
+];
 
 kappa0Can = FullSimplify[(1 + rC)/3, Assumptions -> $Assumptions];
 gamma0Can = FullSimplify[(1 + rC)/9, Assumptions -> $Assumptions];

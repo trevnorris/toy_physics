@@ -49,14 +49,18 @@ expectZero["second branch check", 1 + rHat^2 - 4*((gHat /. gHatSol[[2]]) - rHat)
 
 banner["III. D/N-TUBE LENGTH IN TERMS OF THE SAME NORMALIZED HYBRIDIZATION"];
 
-Clear[a, lW, rC];
-$Assumptions = Element[{a, lW, rC}, Reals] && a > 0 && lW > 0 && rC > 0;
+Clear[a, lW, rC, rHat];
+$Assumptions = Element[{a, lW, rC, rHat}, Reals] && a > 0 && lW > 0 && rC > 0;
 
 kappa0 = FullSimplify[4*lW^2/(Pi^2*a^2), Assumptions -> $Assumptions];
 lSel = FullSimplify[lW /. First[Solve[kappa0 == (1 + rC)/3, lW, Reals]], Assumptions -> $Assumptions];
 
 Print["L_W = ", fmt[lSel]];
 expectZero["tube-length law", lSel - (Pi*a*Sqrt[(1 + rC)/3])/2];
+expectZero[
+  "tube-length law (rC -> rHat^2 link)",
+  (lSel /. rC -> rHat^2) - (Pi*a*Sqrt[(1 + rHat^2)/3])/2
+];
 
 banner["IV. EXPLICIT TRACTION LAW"];
 
@@ -80,6 +84,19 @@ tMMinus = FullSimplify[tM /. First[Solve[gHatExpr == rHat - Sqrt[1 + rHat^2]/2, 
 
 Print["T_m (+ branch) = ", fmt[tMPlus]];
 Print["T_m (- branch) = ", fmt[tMMinus]];
+
+stripCE[expr_] := expr /. ConditionalExpression[v_, _] :> v;
+
+expectZero[
+  "T_m (+ branch) match",
+  stripCE[tMPlus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat + Sqrt[1 + rHat^2]))
+];
+expectZero[
+  "T_m (- branch) match",
+  stripCE[tMMinus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat - Sqrt[1 + rHat^2]))
+];
 
 Print[""];
 Print["Stage 119 Mathematica audit passed."];

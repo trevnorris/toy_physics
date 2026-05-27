@@ -29,42 +29,66 @@ expectTrue[name_String, cond_] := Module[{res},
   If[TrueQ[res], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 071 — LOADING-RATIO EXTRACTION FROM THE MINIMAL ISOTROPIC MODULE"];
+banner["STAGE 088 — LOADING-RATIO EXTRACTION FROM THE MINIMAL ISOTROPIC MODULE"];
 
-Clear[rhoAlpha, omega, omegaQ, alphaReq, alphaMix, c0, c1, cMix];
+(* Independent Mathematica derivation: start from the paper Y_Q^cons input
+   directly and use Limit + subtraction to extract (c0, c1). This is a
+   different algebraic path than the SymPy script (which works in the
+   rho_alpha-parameterized form first); both engines arrive at the same
+   numerical answer. *)
+
+Clear[rhoAlpha, omega, omegaQ, u, cMix];
 $Assumptions =
-  Element[{rhoAlpha, omega, omegaQ, alphaReq, alphaMix, c0, c1, cMix}, Reals] &&
-  rhoAlpha > 0 && omegaQ > 0 && alphaReq > 0 && alphaMix > 0 && c0 > 0 && c1 > 0 && cMix > 0;
+  Element[{rhoAlpha, omega, omegaQ, u, cMix}, Reals] &&
+  rhoAlpha > 0 && omegaQ > 0 && cMix > 0 && -1 < u < 1;
 
-yLoading = FullSimplify[alphaMix/alphaReq + ((alphaReq - alphaMix)/alphaReq)/(1 - omega^2/omegaQ^2), Assumptions -> $Assumptions];
-yRho = FullSimplify[1/rhoAlpha + ((rhoAlpha - 1)/rhoAlpha)/(1 - omega^2/omegaQ^2), Assumptions -> $Assumptions];
+(* Paper Input: Y_Q^cons = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2). *)
+yQpaper = 3/4 + (1/4)/(1 - omega^2/omegaQ^2);
+yQpaperU = yQpaper /. omega^2/omegaQ^2 -> u;
 
-Print["Y_loading(omega) = ", fmt[yLoading]];
-Print["Y_rho(omega) = ", fmt[yRho]];
-expectZero["loading form - rho form", (yLoading /. alphaReq -> rhoAlpha*alphaMix) - yRho];
+(* Independent extraction: c1 from pole residue at u = 1, then c0 by
+   subtraction at u = 0. This is a single non-tautological probe of the
+   paper form. *)
+c1Paper = FullSimplify[Limit[(1 - u)*yQpaperU, u -> 1]];
+c0Paper = FullSimplify[(yQpaperU /. u -> 0) - c1Paper];
 
-c0FromRho = FullSimplify[1/rhoAlpha, Assumptions -> $Assumptions];
-c1FromRho = FullSimplify[(rhoAlpha - 1)/rhoAlpha, Assumptions -> $Assumptions];
-expectZero["contact-plus-pole reconstruction", yRho - (c0FromRho + c1FromRho/(1 - omega^2/omegaQ^2))];
-expectZero["c0 + c1 - 1", c0FromRho + c1FromRho - 1];
+Print["Y_Q^cons (paper)   = ", fmt[yQpaper]];
+Print["c0 (subtract-pole) = ", fmt[c0Paper]];
+Print["c1 (pole residue)  = ", fmt[c1Paper]];
 
-rhoFromC0 = 1/c0;
-rhoFromC1 = 1/(1 - c1);
-zetaFromC = c1/c0;
-expectZero["rho(c0(rho)) - rho", (rhoFromC0 /. c0 -> c0FromRho) - rhoAlpha];
-expectZero["rho(c1(rho)) - rho", (rhoFromC1 /. c1 -> c1FromRho) - rhoAlpha];
-expectZero["zeta(c(rho)) - (rho-1)", (zetaFromC /. {c0 -> c0FromRho, c1 -> c1FromRho}) - (rhoAlpha - 1)];
+expectZero["c0_paper - 3/4", c0Paper - 3/4];
+expectZero["c1_paper - 1/4", c1Paper - 1/4];
+expectZero["c0_paper + c1_paper - 1", c0Paper + c1Paper - 1];
 
-rhoMin = FullSimplify[rhoFromC0 /. c0 -> 3/4];
-zetaMin = FullSimplify[zetaFromC /. {c0 -> 3/4, c1 -> 1/4}];
-piMin = FullSimplify[(4/3)*cMix];
+(* Loading-ratio extraction from coefficients: rho_alpha = 1/c0, zeta = c1/c0. *)
+rhoMin = FullSimplify[1/c0Paper];
+zetaMin = FullSimplify[c1Paper/c0Paper];
 
-Print["rho_alpha(minimal isotropic module) = ", fmt[rhoMin]];
-Print["zeta_req(minimal isotropic module) = ", fmt[zetaMin]];
+Print["rho_alpha (= 1/c0) = ", fmt[rhoMin]];
+Print["zeta_req (= c1/c0) = ", fmt[zetaMin]];
+
 expectZero["rho_min - 4/3", rhoMin - 4/3];
 expectZero["zeta_min - 1/3", zetaMin - 1/3];
-expectZero["Pi_tr/C_mix - 4/3", piMin/cMix - 4/3];
-expectTrue["C_mix < Pi_tr < 2 C_mix", cMix < piMin < 2*cMix];
+
+(* Reconstruct the contact-plus-pole form from extracted (c0, c1) and confirm
+   it matches the paper precursor. This is the actual coefficient-matching
+   claim of the stage. *)
+yRhoFromCoeffs = c0Paper + c1Paper/(1 - omega^2/omegaQ^2);
+expectZero["paper form - reconstruction from extracted (c0, c1)",
+           yQpaper - yRhoFromCoeffs];
+
+(* Also confirm the general rho-parameterized form rebuilds yQpaper after
+   the substitution rhoAlpha -> rhoMin. *)
+yRhoParam = 1/rhoAlpha + ((rhoAlpha - 1)/rhoAlpha)/(1 - omega^2/omegaQ^2);
+expectZero["rho-parameterized form (rhoAlpha -> rhoMin) - paper form",
+           (yRhoParam /. rhoAlpha -> rhoMin) - yQpaper];
+
+(* Stage-085 product identity: Pi_tr = rho_alpha * C_mix (verified upstream
+   in the stage 085 Mathematica audit files). Substitute rho_min. *)
+piFromRho = FullSimplify[rhoMin*cMix];
+Print["Pi_tr (= rho_min * C_mix) = ", fmt[piFromRho]];
+expectZero["Pi_tr_from_rho - (4/3) C_mix", piFromRho - (4/3)*cMix];
+expectTrue["1 < rho_min < 2 (symmetric-lowest-twin regime)", 1 < rhoMin < 2];
 
 Print[""];
 Print["Stage 088 Mathematica audit passed."];

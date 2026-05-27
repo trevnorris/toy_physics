@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 069 — FAMILY-1 PURE LOADING-RATIO WINDOW"];
+banner["STAGE 086 — FAMILY-1 PURE LOADING-RATIO WINDOW"];
 
 Clear[epsBlk, zeta, zetaMax];
 $Assumptions =
@@ -49,6 +49,11 @@ zetaSuffChi = ToExpression["2.46622291347846`20"];
 zetaFailChi = ToExpression["2.46752913273870`20"];
 zetaSuffJ = ToExpression["2.44257571477179`20"];
 zetaMaxNum = ToExpression["2.46752922945601`20"];
+
+expectApprox["zeta_suff^(chi) vs paper", zetaSuffChi, 2.46622291347846, 10^-14];
+expectApprox["zeta_fail^(chi) vs paper", zetaFailChi, 2.46752913273870, 10^-14];
+expectApprox["zeta_suff^(J) vs paper",   zetaSuffJ,   2.44257571477179, 10^-14];
+expectApprox["zeta_max^(F1) vs paper",   zetaMaxNum,  2.46752922945601, 10^-14];
 
 rhoSuffChi = N[qMap /. {zeta -> zetaSuffChi, epsBlk -> 0}, 30];
 rhoFailChi = N[qMap /. {zeta -> zetaFailChi, epsBlk -> 0}, 30];

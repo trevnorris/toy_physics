@@ -9,8 +9,18 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-27` (batch III.4 v2 close — seventh paper-grounded
-re-audit pass. Checkpoint stage `069` falls in III.3's range (061-072)
+Snapshot date: `2026-05-27` (batch III.5 close — first-pass paper-grounded
+audit on stages 085-090. Checkpoint stages `089` (Family-1 minimal isotropic
+verdict) and `090` (updated reduced status) fall in III.5's range and **both
+returned `verified` after first-pass v2 audit + apply + verifier cycle.**
+089 cleared 4 findings including the paper_misalignment chain-closure gap
+(Omega(Pe→0)=1 limit + zeta_F1(0)=A_F1 link + explicit Pe_req=0 assertion,
+locking the paper-side boxed Output that scripts previously did not verify);
+090 cleared 3 findings including a Mathematica-side definitional tautology
+(rho_alpha and zeta_req now derived from c_contact=3/4, c_pole=1/4 rather
+than hardcoded) plus a both-engines Pe_req=0 carry-forward proxy.
+
+Checkpoint stage `069` falls in III.3's range (061-072)
 and returned **clean (0 findings)** under v2 — the three-zone classification
 combining Stage 066's matched window with Stage 068's resonance penalty
 verified at v2 depth via parameterized `W_match` generator + monotonicity

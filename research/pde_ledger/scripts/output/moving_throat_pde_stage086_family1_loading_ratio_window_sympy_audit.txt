@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
-# Date: 2026-05-11T12:44:56-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 69 — FAMILY-1 PURE LOADING-RATIO WINDOW
+STAGE 086 — FAMILY-1 PURE LOADING-RATIO WINDOW
 ========================================================================================
 Q(zeta;eps) = (zeta*(2*eps - 1) - 1)/(eps*zeta - 1)
 dQ/dzeta = (1 - eps)/(eps**2*zeta**2 - 2*eps*zeta + 1)
@@ -17,10 +9,10 @@ rho_suff^(chi)(eps=0) = 3.46622291347846012143918414949
 rho_fail^(chi)(eps=0) = 3.46752913273869989296827043290
 rho_suff^(J)(eps=0)   = 3.44257571477178991870005120290
 rho_max^(F1)(eps=0)   = 3.46752922945601005366711433453
-rho_suff^(chi) - (1+zeta_suff) = 0
-rho_fail^(chi) - (1+zeta_fail) = 0
-rho_suff^(J) - (1+zeta_suff_J) = 0
-rho_max - (1+zeta_max) = 0
+rho_suff^(chi) vs paper diff = 1.214391841494943541093365767218853890273E-16
+rho_fail^(chi) vs paper diff = 1.070317295670973629640094647445676925917E-16
+rho_suff^(J)   vs paper diff = 8.129994879709555720190268933381680602833E-17
+rho_max        vs paper diff = 5.366711433453002476816172462459761803208E-17
 eps_blk cap = 1/zeta_max = 0.4052636897113714997686884
 rho_max^(F1)(eps) = (4.93505845891202*eps - 3.46752922945601)/(2.46752922945601*eps - 1)
 d rho_max / d eps = (8.93534595054088*eps - 3.62117126876376)/(2.46752922945601*eps - 1)**3
@@ -29,5 +21,3 @@ FINAL LEDGER
 rho_alpha <= Q(zeta_suff^(chi);eps_blk)  -> guaranteed success
 rho_alpha >= Q(zeta_fail^(chi);eps_blk)  -> guaranteed failure
 rho_alpha <  Q(zeta_max^(F1);eps_blk)    -> hard ceiling
-
-EXIT_CODE: 0

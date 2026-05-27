@@ -6,8 +6,25 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-27` (batch III.4 v2 close — seventh paper-grounded
-re-audit pass. Checkpoint stage `069` falls in III.3's range; returned
+Snapshot date: `2026-05-27` (batch III.5 close — first-pass paper-grounded
+audit on stages 085-090. Checkpoint stages `089` and `090` (both in III.5)
+verified after first-pass cycle. **Constant provenance assessment for III.5
+checkpoints**: 089's `Pe_suff_chi = 96.5285247264386` and `Pe_fail_chi =
+11220.5441626259` are now anchored by an explicit provenance comment
+naming `scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt` as the
+upstream source (SymPy side; per pitfall #10 SymPy nsolve was not used).
+On the Mathematica side, the same Pe values are *rederived* via
+`FindRoot[zetaF1[pe] == zetaTarget, {pe, …}]` from notes-quoted
+`rho_target - 1`, giving a second-engine independent path. 090's
+`c_contact = 3/4` and `c_pole = 1/4` are paper-quoted minimal-isotropic
+module coefficients; both engines derive `rho_alpha = 1/c_contact` and
+`zeta_req = c_pole/c_contact` from them (no longer hardcoded on the
+Mathematica side). Both checkpoints add a `Pe_req = 0` carry-forward
+proxy with source-anchored comments. Every load-bearing constant in
+III.5 checkpoint scripts is now either derived in-script or
+carry-forward with explicit source anchor.
+
+Checkpoint stage `069` falls in III.3's range; returned
 **clean (0 findings)** under v2 with no hardcoded constants — every
 constant in 069's scripts is either derived (`Cres2` from definition,
 `PresGap` via `Solve` in Mathematica) or carried forward with source

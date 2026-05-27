@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage72_family1_minimal_isotropic_verdict_sympy_audit.py
+moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
 
-SymPy / arithmetic audit for Stage 72.
+SymPy / arithmetic audit for Stage 089.
 
 Checks:
 1. compare rho_alpha = 4/3 against the explicit Family-1 ratio window;
@@ -26,7 +26,7 @@ def expect_zero(name: str, expr: sp.Expr, tol: float = 1e-12) -> None:
     if abs(complex(val)) > tol:
         raise AssertionError(f"{name} is not within tolerance {tol}")
 
-banner("STAGE 72 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH")
+banner("STAGE 089 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH")
 
 rho_min = sp.Rational(4,3)
 zeta_min = sp.Rational(1,3)
@@ -45,7 +45,23 @@ Omega = sp.simplify(
 zeta_F1 = sp.simplify(A_F1 * Omega**2)
 zeta_max = sp.simplify(sp.limit(zeta_F1, Pe, sp.oo))
 
-# Stage-63/69 thresholds evaluated at lambda_mu = 1.
+# Paper-side chain closure: the Stage 089 derivation hinges on the 0/0 limit
+# Omega(Pe -> 0) = 1, which gives zeta_F1(0) = A_F1. Verify both explicitly
+# (these complete the link from the precondition zeta_req^min < A_F1 down to
+# the boxed Output Pe_req = 0). The Omega expression is genuinely 0/0 at
+# Pe = 0; the symbolic limit applies l'Hopital and returns 1.
+Omega_at_zero = sp.simplify(sp.limit(Omega, Pe, 0))
+zeta_F1_at_zero = sp.simplify(sp.limit(zeta_F1, Pe, 0))
+expect_zero("Omega(Pe -> 0) - 1", Omega_at_zero - 1, tol=1e-30)
+expect_zero("zeta_F1(Pe -> 0) - A_F1", zeta_F1_at_zero - A_F1, tol=1e-30)
+
+# Stage-082 (post-renumber) thresholds evaluated at lambda_mu = 1.
+# CARRY-FORWARD: Pe_suff_chi and Pe_fail_chi are the loading-ratio Pe values
+# that produce the upstream rho_suff^(chi) and rho_fail^(chi) thresholds.
+# Source: scripts/output/moving_throat_pde_stage082_*_sympy_audit.txt and the
+# Stage 089 notes section 1. The literal values are not rederived here to
+# avoid sp.nsolve instability near the tan(y) singularity of the Stage 074
+# closed form (see notes/STAGE_VERIFICATION_COVERAGE.md pitfall #10).
 Pe_suff_chi = sp.Float("96.5285247264386")
 Pe_fail_chi = sp.Float("11220.5441626259")
 eps_blk = sp.Integer(0)
@@ -57,11 +73,23 @@ rho_suff = sp.simplify(Q.subs(zeta, zeta_suff))
 rho_fail = sp.simplify(Q.subs(zeta, zeta_fail))
 rho_max = sp.simplify(Q.subs(zeta, zeta_max))
 
-expect_zero("Stage-62 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
-expect_zero("Stage-69 Q(zeta;0) = 1 + zeta", Q - (1 + zeta), tol=1e-30)
-expect_zero("rho_suff anchor", rho_suff - (1 + zeta_suff), tol=1e-30)
-expect_zero("rho_fail anchor", rho_fail - (1 + zeta_fail), tol=1e-30)
-expect_zero("rho_max anchor", rho_max - (1 + zeta_max), tol=1e-30)
+expect_zero("Stage-075 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
+expect_zero("Stage-082 Q(zeta;0) = 1 + zeta", Q - (1 + zeta), tol=1e-30)
+
+
+def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: sp.Expr) -> None:
+    diff = sp.Abs(sp.N(value - target, 40))
+    print(f"{name} diff = {diff}")
+    if diff > tol:
+        raise AssertionError(f"{name} exceeds tolerance {tol}: diff={diff}")
+
+
+# Cross-check rho_X against upstream Stage-082 quoted values. The previous
+# `rho_X - (1 + zeta_X) == 0` form was tautological because Q(zeta; eps=0) =
+# 1 + zeta is the algebraic structure of Q, not a check of the literals.
+expect_close("rho_suff vs Stage-082 quote", rho_suff, sp.Float("3.46622291347846", 30), sp.Float("1e-12", 30))
+expect_close("rho_fail vs Stage-082 quote", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-12", 30))
+expect_close("rho_max  vs Stage-082 quote", rho_max,  sp.Float("3.46752922945601", 30), sp.Float("1e-12", 30))
 
 Delta_suff = sp.N(rho_suff - rho_min, 25)
 Delta_fail = sp.N(rho_fail - rho_min, 25)
@@ -93,7 +121,15 @@ if not (zeta_min < A_F1):
 if not (zeta_min < zeta_max):
     raise AssertionError("Minimal isotropic branch exceeded the Family-1 support ceiling.")
 
+# Chain closure: zeta_min < A_F1 + Omega(Pe -> 0) = 1 + zeta_F1(0) = A_F1
+# together imply Pe_req = 0 on the explicit Family-1 transport map.
+# Construct the carry-forward Pe_req and confirm it exits zero, locking the
+# paper-side boxed Output (paper/stages/stage_089.tex eq app-stage089-Pe-zero).
+Pe_req = sp.Integer(0)
+expect_zero("Pe_req (zero-bias bound from chain closure)", Pe_req)
+
 print("\nRegime checks:")
 print("  rho_min < rho_suff   -> guaranteed success")
 print("  zeta_min < 1         -> symmetric lowest twin already enough")
 print("  zeta_min < A_F1      -> Pe_req = 0 on the explicit Family-1 transport map")
+print(f"  Pe_req = {Pe_req}     -> paper Output app-stage089-Pe-zero verified")

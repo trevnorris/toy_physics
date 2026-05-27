@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 068 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS"];
+banner["STAGE 085 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS"];
 
 Clear[aNorm, beta0, nQ, alphaReq, alphaMix, mhat, sMinus, lamMinus, epsBlk, rhoAlpha];
 $Assumptions =

@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 070 — FINAL REDUCED FINISH-LINE IN THE LOADING-RATIO VARIABLE"];
+banner["STAGE 087 — FINAL REDUCED FINISH-LINE IN THE LOADING-RATIO VARIABLE"];
 
 Clear[rhoAlpha, epsBlk];
 $Assumptions = Element[{rhoAlpha, epsBlk}, Reals] && rhoAlpha > 0 && epsBlk >= 0;
@@ -43,9 +43,24 @@ Print["d zeta_req / d rho_alpha = ", fmt[dZeta]];
 expectZero["d zeta_req exact formula", dZeta - dZetaExpected];
 expectZero["unblocked zeta_req", (zetaReq /. epsBlk -> 0) - (rhoAlpha - 1)];
 
+(*
+   Stage 087 is a checkpoint-consolidation statement (paper purpose:
+   "records that the explicit Family-1 support/source side has been reduced
+   to a single outgoing-branch loading ratio"). The cancellation chain is
+   verified upstream in stages 081-086 (post-renumber):
+   - mathematica/moving_throat_pde_stage085_quadrupole_demand_cancellation_*
+   - mathematica/moving_throat_pde_stage086_family1_loading_ratio_window_*
+   The rho_X literals below are carried from stage 086; the cross-check
+   below anchors them against the upstream stage-086 paper values to catch
+   renumber or transcription drift.
+*)
 rhoSuff = ToExpression["3.46622291347846`20"];
 rhoFail = ToExpression["3.46752913273870`20"];
 rhoMax = ToExpression["3.46752922945601`20"];
+
+expectApprox["rho_suff^(chi) vs stage-086", rhoSuff, 3.46622291347846, 10^-14];
+expectApprox["rho_fail^(chi) vs stage-086", rhoFail, 3.46752913273870, 10^-14];
+expectApprox["rho_max^(F1)   vs stage-086", rhoMax,  3.46752922945601, 10^-14];
 
 zetaSuff = N[zetaReq /. {rhoAlpha -> rhoSuff, epsBlk -> 0}, 30];
 zetaFail = N[zetaReq /. {rhoAlpha -> rhoFail, epsBlk -> 0}, 30];

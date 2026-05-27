@@ -1,4 +1,25 @@
 #!/usr/bin/env python3
+"""
+SymPy audit for Stage 087.
+
+This stage is a checkpoint-consolidation statement, not a fresh derivation.
+The paper card (paper/stages/stage_087.tex) `Purpose` line reads:
+"Stage 087 records that the explicit Family-1 support/source side has been
+reduced to a single outgoing-branch loading ratio." Its `Inputs` are stages
+085 and 086. The cancellation chain that collapses dependence on
+s_-, lambda_-, beta_0, mhat_-, Pi_tr, C_mix, Pe_req down to rho_alpha alone
+is performed and verified upstream in stages 081-086 (post-renumber):
+- scripts/moving_throat_pde_stage081_*_sympy_audit.py / .wl  (a.k.a. former stage 65)
+- scripts/moving_throat_pde_stage082_*_sympy_audit.py / .wl  (former stage 69 closure)
+- scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_*  (Pi_tr/C_mix cancellation)
+- scripts/moving_throat_pde_stage086_family1_loading_ratio_window_*  (Family-1 window)
+
+This script restates the unblocked one-ratio criterion `zeta_req(rho_alpha; 0) = rho_alpha - 1`
+as a downstream-consistency probe and cross-checks the Family-1 window
+literals against the upstream stage-086 quoted values to catch renumber
+or transcription drift.
+"""
+
 from __future__ import annotations
 import sympy as sp
 
@@ -16,7 +37,14 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 70 — FINAL REDUCED FINISH-LINE IN THE LOADING-RATIO VARIABLE")
+def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: sp.Expr) -> None:
+    diff = sp.Abs(sp.N(value - target, 40))
+    print(f"{name} diff = {diff}")
+    if diff > tol:
+        raise AssertionError(f"{name} exceeds tolerance {tol}: diff={diff}")
+
+
+banner("STAGE 087 — FINAL REDUCED FINISH-LINE IN THE LOADING-RATIO VARIABLE")
 
 rho_alpha, eps_blk = sp.symbols("rho_alpha eps_blk", positive=True, real=True)
 zeta_req = sp.simplify((rho_alpha - 1) / (1 - eps_blk * (2 - rho_alpha)))
@@ -38,9 +66,13 @@ print("zeta at success ratio =", zeta_suff)
 print("zeta at failure ratio =", zeta_fail)
 print("zeta at max ratio     =", zeta_max)
 
-expect_zero("zeta_suff - 2.46622291347846", sp.N(zeta_suff - sp.Float("2.46622291347846"), 18))
-expect_zero("zeta_fail - 2.46752913273870", sp.N(zeta_fail - sp.Float("2.46752913273870"), 18))
-expect_zero("zeta_max - 2.46752922945601", sp.N(zeta_max - sp.Float("2.46752922945601"), 18))
+# Cross-check the Family-1 ratio-window literals against the upstream
+# stage 086 quoted values to catch renumber/transcription drift. The rho_X
+# literals carried into this script ARE the upstream stage-086 values; if a
+# renumber or copy-edit shifts them, the upstream-anchored check below fails.
+expect_close("rho_suff^(chi) vs stage-086", rho_suff, sp.Float("3.46622291347846", 30), sp.Float("1e-13", 30))
+expect_close("rho_fail^(chi) vs stage-086", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-13", 30))
+expect_close("rho_max^(F1)   vs stage-086", rho_max,  sp.Float("3.46752922945601", 30), sp.Float("1e-13", 30))
 
 print("\nFINAL LEDGER")
 print("The reduced explicit Family-1 theorem is completely equivalent to a one-number test:")

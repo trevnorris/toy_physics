@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage086_family1_loading_ratio_window_mathematica_audit.wl
-# Date: 2026-05-11T13:01:20-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 069 — FAMILY-1 PURE LOADING-RATIO WINDOW
+STAGE 086 — FAMILY-1 PURE LOADING-RATIO WINDOW
 ========================================================================================
 Q(zeta;eps) = (1 + zeta - 2*epsBlk*zeta)/(1 - epsBlk*zeta)
 dQ/dzeta = (1 - epsBlk)/(-1 + epsBlk*zeta)^2
@@ -16,6 +8,14 @@ dQ exact formula = 0
 PASS: dQ exact formula
 Q(zeta;0) - (1+zeta) = 0
 PASS: Q(zeta;0) - (1+zeta)
+zeta_suff^(chi) vs paper diff = 0.
+PASS: zeta_suff^(chi) vs paper
+zeta_fail^(chi) vs paper diff = 0.
+PASS: zeta_fail^(chi) vs paper
+zeta_suff^(J) vs paper diff = 0.
+PASS: zeta_suff^(J) vs paper
+zeta_max^(F1) vs paper diff = 0.
+PASS: zeta_max^(F1) vs paper
 rho_suff^(chi)(0) = 3.46622291347846`20.147824160408735
 rho_fail^(chi)(0) = 3.4675291327387`20.147757829678003
 rho_suff^(J)(0) = 3.44257571477179`20.149035465924605
@@ -34,5 +34,3 @@ eps_blk cap numeric check diff = 1.803508033556857462192`3.6483696708385422*^-17
 PASS: eps_blk cap numeric check
 
 Stage 086 Mathematica audit passed.
-
-EXIT_CODE: 0

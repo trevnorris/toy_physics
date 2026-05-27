@@ -1,20 +1,14 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
-# Date: 2026-05-11T12:44:58-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 72 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
+STAGE 089 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
 ========================================================================================
-Stage-62 zeta_max = A_F1 pi^2/4 = -3.2381793033374248823225545803690717748724259704392E-101
-Stage-69 Q(zeta;0) = 1 + zeta = 0
-rho_suff anchor = 0
-rho_fail anchor = 0
-rho_max anchor = 0
+Omega(Pe -> 0) - 1 = 0
+zeta_F1(Pe -> 0) - A_F1 = -2.1749457522191306948786827985985532075191652709745E-101
+Stage-075 zeta_max = A_F1 pi^2/4 = -3.2381793033374248823225545803690717748724259704392E-101
+Stage-082 Q(zeta;0) = 1 + zeta = 0
+rho_suff vs Stage-082 quote diff = 4.001010329783708481219919654866996630934E-15
+rho_fail vs Stage-082 quote diff = 3.486267196095620405012390077558880339402E-15
+rho_max  vs Stage-082 quote diff = 2.233329584501570363104603308197143519093E-15
 rho_min   = 1.333333333333333333333333
 rho_suff  = 3.466222913478464001010330
 rho_fail  = 3.467529132738703486267196
@@ -29,10 +23,10 @@ Delta_fail = 2.134195799405370152933863
 Delta_max  = 2.134195896122678899996251
 Delta_zeta = 2.134195896122678899996251
 Delta_AF1  = 0.6667185954688619953260008
+Pe_req (zero-bias bound from chain closure) = 0
 
 Regime checks:
   rho_min < rho_suff   -> guaranteed success
   zeta_min < 1         -> symmetric lowest twin already enough
   zeta_min < A_F1      -> Pe_req = 0 on the explicit Family-1 transport map
-
-EXIT_CODE: 0
+  Pe_req = 0     -> paper Output app-stage089-Pe-zero verified

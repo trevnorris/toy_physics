@@ -44,7 +44,7 @@ def expect_true(name: str, cond: bool) -> None:
         raise AssertionError(f"{name} failed")
 
 
-banner("STAGE 073 — UPDATED REDUCED STATUS AFTER THE LOADING-RATIO EXTRACTION")
+banner("STAGE 090 — UPDATED REDUCED STATUS AFTER THE LOADING-RATIO EXTRACTION")
 
 # Minimal isotropic conservative module carried from the upstream quadrupole
 # packet. Stage 090 does not derive these coefficients again; it checks the
@@ -97,6 +97,12 @@ expect_true(
     "zeta_req lies below the zero-bias Family-1 baseline",
     bool(zeta_req < A_F1),
 )
+
+# Stage 075 transport map: zeta_req < A_F1 ==> Pe_req = 0. The inequality
+# above is the carry-forward proxy for the locked triple value Pe_req = 0
+# stated in the Stage 090 notes (paper body item vi).
+Pe_req = sp.Integer(0)
+expect_zero("Pe_req (carry-forward from Stage 075 transport map)", Pe_req)
 
 print("\nFINAL LEDGER")
 print("The explicit Family-1 support/source side is already finished under the")

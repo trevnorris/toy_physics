@@ -16,7 +16,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 68 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS")
+banner("STAGE 085 — EXACT CANCELLATION OF OUTGOING-NORMALIZATION FACTORS")
 
 pi = sp.pi
 A, beta0, NQ = sp.symbols("A beta0 NQ", positive=True, real=True)

@@ -8,7 +8,7 @@ Use it together with `STAGE_PROVENANCE_INDEX.md`:
 - `STAGE_VERIFICATION_COVERAGE.md` summarizes the current verification surface,
   exposes the main gaps, and gives us a stable baseline for audit planning.
 
-Snapshot date: `2026-05-27` (batch III.5 close — first-pass paper-grounded audit under v2 prompt for the next 6 stages)
+Snapshot date: `2026-05-27` (batch IV.1 close — first-pass paper-grounded audit under v2 prompt for stages 091-102, including checkpoint 096)
 
 ## Scope
 
@@ -47,7 +47,7 @@ out of `redteam/`, with both engines independently checking load-bearing
 claims and a clean-context verifier agent confirming the directive's intent
 was honored. See `redteam/BATCHES.md` for the live batch table.
 
-As of `2026-05-27`: **102** of 253 stages red-team verified. With III.5 closed (first audit pass for these 6 stages, performed directly under the v2 paper-grounded prompt), the entire range 001–090 is now paper-aligned at v2 depth.
+As of `2026-05-27`: **114** of 253 stages red-team verified. With IV.1 closed (first audit pass for these 12 stages, performed directly under the v2 paper-grounded prompt), the entire range 001–102 is now paper-aligned at v2 depth. Checkpoint stage 096 (geometry-lane check verdict) passed at the higher-bar standard; stage 093 was status-only-clean (Mathematica-only mirror, SymPy intentionally absent).
 
 | Batch | Range | Stages | Verified | Date |
 |---|---|---:|---:|---|
@@ -59,9 +59,10 @@ As of `2026-05-27`: **102** of 253 stages red-team verified. With III.5 closed (
 | III.3 | `061--072` | 12 | 12 | 2026-05-22 (v1) / 2026-05-26 (v2 paper-grounded) |
 | III.4 | `073--084` | 12 | 12 | 2026-05-25 (v1) / 2026-05-27 (v2 paper-grounded) |
 | III.5 | `085--090` | 6 | 6 | 2026-05-27 (v2 paper-grounded, first-pass) |
-| IV.1 onward | `091--253` | 163 | 0 | pending |
+| IV.1 | `091--102` | 12 | 12 | 2026-05-27 (v2 paper-grounded — first pass) |
+| IV.2 onward | `103--253` | 151 | 0 | pending |
 
-Cumulative findings closed: ~328 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3 + 14 v2 from III.4 + 15 from III.5).
+Cumulative findings closed: ~355 (~219 v1 + 10 v2 from I.1 + 10 v2 from I.2 + 18 v2 from II.1 + 13 v2 from III.1 + 16 v2 from III.2 + 13 v2 from III.3 + 14 v2 from III.4 + 15 from III.5 + 27 from IV.1, plus 1 blocked-legitimate). Of the 27 IV.1 closes, 10 were `paper_misalignment` (4 orthogonality carry-forward, 2 stage-number relabels, 4 Cluster B closure-derivation/DtN-fingerprint), 7 `insufficient_verification`, 4 `mathematica_transliteration`, 4 `tautological_check`, 1 `engine_disagreement`, 1 `hardcoded_result`, 1 `symbol_assumption_error`, and 1 `script_doesnt_cover_claim` (SymPy 101 had zero asserts). Plus a 23-site banner-relabel sweep across all 12 IV.1 stages (Cluster C — orchestrator-direct, not counted in findings).
 `tautological_check` dominant overall, `mathematica_transliteration` second.
 `hardcoded_result` rose sharply in III.4 to 12 because the Family-1 numerology
 cluster 075-084 packs many literal constants; III.5 quieted again (1 hardcoded
@@ -73,17 +74,17 @@ orchestrator-direct banner-relabel sweep when the global-renumber leftover
 turned out to be pervasive across III.4; **2 in III.5 — both substantive (087 F1
 status/checkpoint consolidation, 089 F1 Pe_req=0 chain closure), plus a 12-script
 orchestrator-direct banner-relabel sweep**);
-zero user redirections in II.1, III.1, III.2, III.3, III.4, **III.5** (6 consecutive
-batches — Codex was bypassed in III.5 per the III.4 availability lesson; orchestrator-direct
+zero user redirections in II.1, III.1, III.2, III.3, III.4, III.5, **IV.1** (7 consecutive
+batches — Codex was bypassed in III.5 and IV.1 per the III.4 availability lesson; orchestrator-direct
 math-authority worked cleanly because the audit + grep evidence was conclusive).
 v2 surfaces `insufficient_verification` prominently — 8 in II.1, 5 in III.1, 8 in III.2,
-4 in III.3, 1 in III.4, 1 in III.5 = **27** cumulative.
+4 in III.3, 1 in III.4, 1 in III.5, 7 in IV.1 = **34** cumulative.
 Stage 060 (v1 `material_change: true`) returned **clean (0 findings)** under III.2 v2.
 **Stage 068 (v1 `material_change: true`) returned clean at v2**.
 Stages now carrying `material_change: true`: 001, 004
 (I.1 v2); 013, 014, 015, 018 (I.2 v2); 045 (III.1 v2 — structural-only, F_tr
 export value unchanged); 060 (v1, clean at v2); 068 (v1, clean at v2). II.1,
-III.1, III.2, III.3, III.4, **III.5** v2 each added **zero** value-changing material_change.
+III.1, III.2, III.3, III.4, III.5 v2 each added **zero** value-changing material_change. **IV.1 added one structural material_change at stage 100** (closure derivation strengthened from tautological cross-check to substantive `mhat_0^2 Gamma_5 = Gamma_5_target` imposition; no derived value changed; downstream stages > 100 not marked `upstream_stale`).
 III.3 v2 introduced one orchestrator hot-fix on stage 064 Mathematica
 (`Integrate[]` with symbolic functions does not factor constants — verify
 integrands first; pitfall #9 candidate). III.4 v2 introduced one orchestrator
@@ -103,9 +104,13 @@ Pitfall #8 was promoted from candidate to
 documented in `codex.md` "Common cross-engine pitfalls" item #1 before
 III.3 launched. Pitfalls #6, #7 remain candidates; #9 (Mathematica
 `Integrate[]` constant factoring), #10 (SymPy `nsolve` near
-singularities), **and #11 (Mathematica `*)` substring inside comment body
+singularities), and #11 (Mathematica `*)` substring inside comment body
 closes prematurely; verifier must check that all expected PASS lines appear,
-not just `rc=0`)** newly added.
+not just `rc=0`) added in III.5. **IV.1 added no new pitfall candidates** —
+all orchestrator-direct edits applied first-attempt clean (Cluster A docstring
+carry-forwards + Cluster B 100 closure derivation + Cluster C 23-site banner
+sweep), with verifier PASS-line counting confirming all expected substantive
+checks across the 12 stages.
 See per-batch summaries in `redteam/batches/batch_<ID>.md`.
 
 ### Linear projected-EM update

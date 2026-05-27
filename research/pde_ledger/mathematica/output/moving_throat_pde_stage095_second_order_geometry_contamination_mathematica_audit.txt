@@ -1,15 +1,9 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage095_second_order_geometry_contamination_mathematica_audit.wl
-# Date: 2026-05-11T13:03:35-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 078 — SECOND-ORDER GEOMETRY CONTAMINATION
+STAGE 095 — SECOND-ORDER GEOMETRY CONTAMINATION
 ========================================================================================
+D_eff Schur derivation matches -chi^2 m0^2 / dG = 0
+PASS: D_eff Schur derivation matches -chi^2 m0^2 / dG
 Schur-complement correction = -((chi^2*m0^2)/g0) + (chi^2*g2*m0^2*w^2)/g0^2 - (chi^2*g2^2*m0^2*w^4)/g0^3 + (chi^2*g4*m0^2*w^4)/g0^2
 K0corr = -((chi^2*m0^2)/g0)
 K2corr = (chi^2*g2*m0^2)/g0^2
@@ -29,5 +23,3 @@ PASS: d c_pole / dchi |0
 d^2 c_pole / dchi^2 |0 = -1/2*(m0^2*(2*g0*g2*oQ^2 + (g2^2 - g0*g4)*oQ^4))/(g0^3*kPole)
 
 Stage 095 Mathematica audit passed.
-
-EXIT_CODE: 0

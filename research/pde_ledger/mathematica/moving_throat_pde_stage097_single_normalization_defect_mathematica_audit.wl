@@ -23,15 +23,25 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 080 — SINGLE NORMALIZATION DEFECT"];
+banner["STAGE 097 — SINGLE NORMALIZATION DEFECT"];
 
-Clear[gConst, cLight, cSound, aRad, k0, omegaQ, nQ];
+Clear[gConst, cLight, cSound, aRad, k0, omegaQ, nQ, w];
 $Assumptions =
-  Element[{gConst, cLight, cSound, aRad, k0, omegaQ, nQ}, Reals] &&
+  Element[{gConst, cLight, cSound, aRad, k0, omegaQ, nQ, w}, Reals] &&
   gConst > 0 && cLight > 0 && cSound > 0 && aRad > 0 && k0 > 0 && omegaQ > 0 && nQ > 0;
 
-k2 = FullSimplify[k0/(4*omegaQ^2), Assumptions -> $Assumptions];
-k4 = FullSimplify[k0/(4*omegaQ^4), Assumptions -> $Assumptions];
+(* Independent derivation route (different from SymPy's direct definitions):
+   build K_n by extracting series coefficients of the conservative quadrupole
+   module Yhat_Q^cons(w) = 3/4 + (1/4)/(1 - w^2/omegaQ^2) carried by K_0. *)
+yhatCons[wvar_] := 3/4 + (1/4)/(1 - wvar^2/omegaQ^2);
+kbarCons[wvar_] := k0 * yhatCons[wvar];
+
+k2 = FullSimplify[SeriesCoefficient[kbarCons[w], {w, 0, 2}], Assumptions -> $Assumptions];
+k4 = FullSimplify[SeriesCoefficient[kbarCons[w], {w, 0, 4}], Assumptions -> $Assumptions];
+expectZero["k2 series == k0/(4 omegaQ^2)", k2 - k0/(4*omegaQ^2)];
+expectZero["k4 series == k0/(4 omegaQ^4)", k4 - k0/(4*omegaQ^4)];
+
+(* gamma5 from the series-derived k2 (the load-bearing odd coefficient). *)
 gamma5 = FullSimplify[9*k2^(5/2)/k0^(3/2), Assumptions -> $Assumptions];
 gamma5Expected = FullSimplify[9*k0/(32*omegaQ^5), Assumptions -> $Assumptions];
 
@@ -48,15 +58,23 @@ Print["K0_target = ", fmt[k0Target]];
 Print["K0_target (Omega=3 c_s/(2a)) = ", fmt[k0TargetGeom]];
 expectZero["geometric target reduction", k0TargetGeom - 54*gConst*cSound^5/(5*aRad^5*cLight^5)];
 
-k2Target = FullSimplify[k0Target/(4*omegaQ^2), Assumptions -> $Assumptions];
-k4Target = FullSimplify[k0Target/(4*omegaQ^4), Assumptions -> $Assumptions];
-gamma5Target = FullSimplify[9*k2Target^(5/2)/k0Target^(3/2), Assumptions -> $Assumptions];
+(* k2Target, k4Target via the same series route, gamma5Target via the
+   already-established 9 k0/(32 omegaQ^5) form (not 9 k2^(5/2)/k0^(3/2)). *)
+k2Target = FullSimplify[SeriesCoefficient[k0Target*yhatCons[w], {w, 0, 2}], Assumptions -> $Assumptions];
+k4Target = FullSimplify[SeriesCoefficient[k0Target*yhatCons[w], {w, 0, 4}], Assumptions -> $Assumptions];
+gamma5Target = FullSimplify[9*k0Target/(32*omegaQ^5), Assumptions -> $Assumptions];
 expectZero["Gamma5_target - 2G/(5c^5)", gamma5Target - 2*gConst/(5*cLight^5)];
 
-r0 = FullSimplify[(nQ*k0Target)/k0Target - 1, Assumptions -> $Assumptions];
-r2 = FullSimplify[((k2 /. k0 -> nQ*k0Target)/k2Target) - 1, Assumptions -> $Assumptions];
-r4 = FullSimplify[((k4 /. k0 -> nQ*k0Target)/k4Target) - 1, Assumptions -> $Assumptions];
-r5 = FullSimplify[((gamma5 /. k0 -> nQ*k0Target)/gamma5Target) - 1, Assumptions -> $Assumptions];
+(* R_i reductions via actual-branch coefficients built before simplification. *)
+k0Actual = nQ * k0Target;
+k2Actual = FullSimplify[SeriesCoefficient[k0Actual*yhatCons[w], {w, 0, 2}], Assumptions -> $Assumptions];
+k4Actual = FullSimplify[SeriesCoefficient[k0Actual*yhatCons[w], {w, 0, 4}], Assumptions -> $Assumptions];
+gamma5Actual = FullSimplify[9*k0Actual/(32*omegaQ^5), Assumptions -> $Assumptions];
+
+r0 = FullSimplify[k0Actual/k0Target - 1, Assumptions -> $Assumptions];
+r2 = FullSimplify[k2Actual/k2Target - 1, Assumptions -> $Assumptions];
+r4 = FullSimplify[k4Actual/k4Target - 1, Assumptions -> $Assumptions];
+r5 = FullSimplify[gamma5Actual/gamma5Target - 1, Assumptions -> $Assumptions];
 
 Print["R0 = ", fmt[Factor[r0]]];
 Print["R2 = ", fmt[Factor[r2]]];

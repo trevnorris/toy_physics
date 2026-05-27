@@ -23,12 +23,25 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 078 — SECOND-ORDER GEOMETRY CONTAMINATION"];
+banner["STAGE 095 — SECOND-ORDER GEOMETRY CONTAMINATION"];
 
 Clear[chi, m0, g0, g2, g4, w, oQ, kPole];
 $Assumptions =
   Element[{chi, m0, g0, g2, g4, w, oQ, kPole}, Reals] &&
   g0 != 0 && oQ != 0 && kPole != 0;
+
+(* Independent Schur derivation from the bilinear action
+   L = (1/2) q dQ q + (1/2) g dG g + chi m0 q g.
+   Treat dQ, dG as scalars at fixed omega; integrate out g and identify the
+   q^2 coefficient. Notes Section 1 of stage 095 notes file. *)
+Clear[dQsym, dGsym, qSym, gSym];
+Lq = (1/2)*qSym^2*dQsym + (1/2)*gSym^2*dGsym + chi*m0*qSym*gSym;
+gStar = First[gSym /. Solve[D[Lq, gSym] == 0, gSym]];
+LqEff = FullSimplify[Lq /. gSym -> gStar, Assumptions -> dGsym != 0];
+dEffCoeff = 2*Coefficient[LqEff, qSym, 2];
+corrDerived = FullSimplify[dEffCoeff - dQsym, Assumptions -> dGsym != 0];
+expectZero["D_eff Schur derivation matches -chi^2 m0^2 / dG",
+  corrDerived - (-chi^2*m0^2/dGsym)];
 
 dG = g0 + g2*w^2 + g4*w^4;
 corr = Expand[Normal[Series[-chi^2*m0^2/dG, {w, 0, 5}]]];

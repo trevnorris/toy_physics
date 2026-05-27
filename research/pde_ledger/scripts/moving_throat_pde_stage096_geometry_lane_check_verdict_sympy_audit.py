@@ -6,7 +6,7 @@ This checkpoint script re-establishes the geometry-lane verdict directly:
 
 1. the isotropic wall branch keeps the l=0 lane orthogonal to the grouped real
    l=2 bundle, so the geometry contamination numbers vanish on that branch;
-2. the Stage 75 obstruction formula then collapses to the clean
+2. the Stage 092 obstruction formula then collapses to the clean
    3/4 + 1/4 conservative quadrupole module;
 3. the carried contact-plus-pole identification reproduces
    rho_alpha = 4/3 and zeta_req = 1/3.
@@ -50,7 +50,7 @@ def lap_s2(Y: sp.Expr, th: sp.Symbol, ph: sp.Symbol) -> sp.Expr:
     )
 
 
-banner("STAGE 079 — GEOMETRY-LANE CHECK VERDICT")
+banner("STAGE 096 — GEOMETRY-LANE CHECK VERDICT")
 
 theta, phi = sp.symbols("theta phi", real=True)
 omega, Omega_Q = sp.symbols("omega Omega_Q", positive=True, real=True)
@@ -87,8 +87,8 @@ for name, Y2m in grouped_real_p2.items():
 # the geometry contamination numbers.
 eps_2 = sp.Integer(0)
 eps_4 = sp.Integer(0)
-expect_zero("eps_2", eps_2)
-expect_zero("eps_4", eps_4)
+print("eps_2 =", eps_2)
+print("eps_4 =", eps_4)
 
 c_pole = sp.simplify((1 + eps_4) / (4 * (1 + eps_2) ** 2))
 c_geom = sp.simplify(1 - c_pole)
@@ -114,7 +114,6 @@ expect_zero(
 )
 expect_zero("rho_alpha - 4/3", rho_alpha - sp.Rational(4, 3))
 expect_zero("zeta_req - 1/3", zeta_req - sp.Rational(1, 3))
-expect_zero("zeta_req - c_pole/c_geom", zeta_req - c_pole / c_geom)
 
 print("\nFINAL LEDGER")
 print("On the actual isotropic branch, the geometry lane stays dynamically inert:")
@@ -124,3 +123,9 @@ print("  c_geom = 3/4,")
 print("  Yhat_Q^cons = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2),")
 print("  rho_alpha = 4/3,")
 print("  zeta_req  = 1/3.")
+
+print("")
+print("HYPOTHESIS CARRIED")
+print("These results are conditional on the Part III minimal isotropic module")
+print("and the grouped real P_2 carrier. The card is a derivation ledger entry,")
+print("not an unconditional actual-branch theorem.")

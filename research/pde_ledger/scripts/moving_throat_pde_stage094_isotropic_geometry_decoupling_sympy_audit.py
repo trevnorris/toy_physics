@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 77 SymPy audit
+Stage 094 SymPy audit
 
 Checks the exact l=0 / l=2 decoupling on the isotropic wall branch by explicit
 real-harmonic integrals on S^2.
@@ -53,4 +53,19 @@ for name, Y in Y2.items():
     print(f'Generic isotropic cross coefficient C_0,{name} =', Ccross)
     assert sp.simplify(Ccross) == 0
 
-print('\nStage 77 theorem verified: isotropic l=0 <-> l=2 cross terms vanish exactly.')
+# --- Static-limit check (paper Check #1): with K_(g,2) = K_(g,4) = 0 from
+# the orthogonality theorem above, the contamination numbers vanish and the
+# 3/4 + 1/4 conservative split is recovered (notes Section 3).
+Omega_Q, K_pole = sp.symbols('Omega_Q K_pole', positive=True)
+K_g2 = sp.Integer(0)  # established by l=0/l=2 orthogonality (asserts A1-A4 above)
+K_g4 = sp.Integer(0)  # same orthogonality, l=4 channel (Omega_Q^4 moment)
+eps_2 = sp.simplify(Omega_Q**2 * K_g2 / K_pole)
+eps_4 = sp.simplify(Omega_Q**4 * K_g4 / K_pole)
+assert eps_2 == 0
+assert eps_4 == 0
+c_pole = sp.Rational(1, 4)
+c_geom = sp.Rational(3, 4)
+assert c_pole + c_geom == 1
+print('eps_2 =', eps_2, '; eps_4 =', eps_4, '; c_pole =', c_pole, '; c_geom =', c_geom)
+
+print('\nStage 094 theorem verified: isotropic l=0 <-> l=2 cross terms vanish exactly.')

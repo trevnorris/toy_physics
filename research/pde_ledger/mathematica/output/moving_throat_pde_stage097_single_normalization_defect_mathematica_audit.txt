@@ -1,15 +1,11 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage097_single_normalization_defect_mathematica_audit.wl
-# Date: 2026-05-11T13:04:51-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 080 — SINGLE NORMALIZATION DEFECT
+STAGE 097 — SINGLE NORMALIZATION DEFECT
 ========================================================================================
+k2 series == k0/(4 omegaQ^2) = 0
+PASS: k2 series == k0/(4 omegaQ^2)
+k4 series == k0/(4 omegaQ^4) = 0
+PASS: k4 series == k0/(4 omegaQ^4)
 K2 = k0/(4*omegaQ^2)
 K4 = k0/(4*omegaQ^4)
 Gamma5 = (9*k0)/(32*omegaQ^5)
@@ -35,5 +31,3 @@ R5 - (N_Q - 1) = 0
 PASS: R5 - (N_Q - 1)
 
 Stage 097 Mathematica audit passed.
-
-EXIT_CODE: 0

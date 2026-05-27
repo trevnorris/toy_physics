@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage100_outgoing_normalization_factorization_mathematica_audit.wl
-# Date: 2026-05-11T13:05:35-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 083 — OUTGOING NORMALIZATION FACTORIZATION
+STAGE 100 — OUTGOING NORMALIZATION FACTORIZATION
 ========================================================================================
 Yhat_Q^ret series = 1 + (((9*I)/32)*chiQ*omega^5)/omegaQ^5 + omega^4/(4*omegaQ^4) + omega^2/(4*omegaQ^2)
 K2 = k0/(4*omegaQ^2)
@@ -21,11 +13,9 @@ K4/K4_target - NQ = 0
 PASS: K4/K4_target - NQ
 Gamma5/Gamma5_target - chiQ*NQ = 0
 PASS: Gamma5/Gamma5_target - chiQ*NQ
-mhat0^2*Gamma5/Gamma5_target - mhat0^2*chiQ*NQ = 0
-PASS: mhat0^2*Gamma5/Gamma5_target - mhat0^2*chiQ*NQ
-NQ - 1/(mhat0^2*chiQ) after odd normalization = 0
-PASS: NQ - 1/(mhat0^2*chiQ) after odd normalization
+closure_residual / Gamma5_target = -1 + (45*chiQ*cLight^5*k0*mHat0^2)/(64*gNewton*omegaQ^5)
+closure_ratio - (mhat0^2 chi_Q N_Q - 1) = 0
+PASS: closure_ratio - (mhat0^2 chi_Q N_Q - 1)
 
+Closure ledger: mhat_0^2 * Gamma_5 = Gamma_5_target  <=>  mhat_0^2 chi_Q N_Q = 1
 Stage 100 Mathematica audit passed.
-
-EXIT_CODE: 0

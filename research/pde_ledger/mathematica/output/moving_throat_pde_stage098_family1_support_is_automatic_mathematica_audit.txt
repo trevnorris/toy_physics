@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage098_family1_support_is_automatic_mathematica_audit.wl
-# Date: 2026-05-11T13:05:06-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 081 — FAMILY-1 SUPPORT IS AUTOMATIC
+STAGE 098 — FAMILY-1 SUPPORT IS AUTOMATIC
 ========================================================================================
 zeta_req(eps) = (3 - 2*epsBlk)^(-1)
 d zeta_req / d eps = 2/(3 - 2*epsBlk)^2
@@ -30,5 +22,3 @@ Family-1 margin numeric check diff = 4.11245079433137997165`2.063863820586525*^-
 PASS: Family-1 margin numeric check
 
 Stage 098 Mathematica audit passed.
-
-EXIT_CODE: 0

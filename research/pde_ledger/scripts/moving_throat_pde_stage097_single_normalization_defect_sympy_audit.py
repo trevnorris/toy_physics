@@ -1,7 +1,21 @@
 #!/usr/bin/env python3
 """
-Stage 80 SymPy audit: the actual isotropic passive/outgoing quadrupole branch
+Stage 097 SymPy audit: the actual isotropic passive/outgoing quadrupole branch
 collapses to a single normalization defect.
+
+Carry-forward annotations (per [[batch-IV1-paper-alignment]] Cluster A
+direction (a)): paper card `\\stagefield{Checks}` items
+  (i) "static limit eps_2=eps_4=0 returns c_pole=1/4"
+  (ii) "l=0 and l=2 orthogonality before applying the geometry firewall"
+  (iii) "minimal-module hypothesis on any support/source success statement"
+are upstream carry-ins from Part III + IV.1 stages:
+  (i)  derives from stage 091 (grouped P2 + static geometry) and stage 092
+       (dynamic-geometry obstruction); reduction is asserted explicitly at
+       stage 094 (after orthogonality) and stage 096 (verdict).
+  (ii) is the full content of stage 094 (15 angular integrals + Laplace
+       eigenvalue) in both engines.
+  (iii) is anchored by the Part III chain stages 088 / 089 / 090.
+This stage uses those upstream outputs without re-deriving them.
 """
 from __future__ import annotations
 import sympy as sp
@@ -49,4 +63,4 @@ print('R0 =', sp.factor(R0))
 print('R2 =', sp.factor(R2))
 print('R4 =', sp.factor(R4))
 print('R5 =', sp.factor(R5))
-print('\nSTAGE 80 AUDIT PASSED')
+print('\nSTAGE 097 AUDIT PASSED')

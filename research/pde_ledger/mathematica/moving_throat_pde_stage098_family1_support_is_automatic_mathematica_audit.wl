@@ -35,7 +35,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[TrueQ[res], pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 081 — FAMILY-1 SUPPORT IS AUTOMATIC"];
+banner["STAGE 098 — FAMILY-1 SUPPORT IS AUTOMATIC"];
 
 Clear[epsBlk, zMax];
 $Assumptions =
@@ -58,6 +58,9 @@ expectZero["d zeta_req / d eps exact formula", dZ - 2/(3 - 2*epsBlk)^2];
 expectZero["gap factorization", gap - gapExpected];
 expectTrue["automatic-support gap is positive for zmax > 1", gap > 0];
 
+(* zeta_max^(F1) is an external carry-forward; not derived in this stage.
+   Source: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+   (Family-1 specialization). *)
 zMaxF1 = SetPrecision[2.46752922945601, 20];
 zetaEdgeF1 = N[zetaEdge /. zMax -> zMaxF1, 30];
 gapF1 = N[zMaxF1 - zetaEdgeF1, 30];

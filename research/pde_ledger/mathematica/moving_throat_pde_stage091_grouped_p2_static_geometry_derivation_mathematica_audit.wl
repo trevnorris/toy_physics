@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 074 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION"];
+banner["STAGE 091 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION"];
 
 Clear[omega, kGeom, kPole, omegaQ];
 $Assumptions = Element[{omega, kGeom, kPole, omegaQ}, Reals] && kGeom > 0 && kPole > 0 && omegaQ > 0;
@@ -66,6 +66,16 @@ Print["rho_alpha = ", fmt[rhoAlpha]];
 Print["zeta_req = ", fmt[zetaReq]];
 expectZero["rho_alpha - 4/3", rhoAlpha - 4/3];
 expectZero["zeta_req - 1/3", zetaReq - 1/3];
+
+(* Independent derivation: bypass Series + Solve and recombine directly. Start
+   from the branch-identity result K_geom = 3 K_pole and verify Yhat via
+   Together, not via series expansion. Algebraic path is independent of the
+   SymPy Series+Solve route, exercising the same bottom-line identity. *)
+kConsBranchDirect = 3*kPole + kPole/(1 - omega^2/omegaQ^2);
+k0BranchDirect = 4*kPole;
+yHatRecomb = Together[kConsBranchDirect/k0BranchDirect];
+yHatTargetRecomb = Together[3/4 + (1/4)/(1 - omega^2/omegaQ^2)];
+expectZero["Yhat partial-fraction recombination", yHatRecomb - yHatTargetRecomb];
 
 Print[""];
 Print["Stage 091 Mathematica audit passed."];

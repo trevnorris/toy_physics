@@ -9,7 +9,26 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-27` (batch III.5 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
+audit on stages 091-102. **Checkpoint stage `096` (geometry-lane check verdict)
+returned `verified` after first-pass v2 audit + apply + verifier cycle.**
+096 cleared 3 findings: F1 (tautological_check) — deleted the trivially-true
+`eps_2`/`eps_4`/`zeta_req - c_pole/c_geom` asserts (these were forced-zero by
+the line-above definitions), replaced with `Print`/`Print` of values so the
+transcript still shows the carried zeros; F2 (insufficient_verification) —
+appended a printed-only "HYPOTHESIS CARRIED" block annotating the Part III
+minimal-isotropic-module + grouped real `P_2` carrier conditioning per paper
+card Check (iii); F3 (banner-label correction) — STAGE 079 → STAGE 096 in
+both engines, plus a docstring "Stage 75" → "Stage 092" fix for the
+upstream-obstruction reference. The 5 substantive final-ledger asserts
+(`c_pole - 1/4`, `c_geom - 3/4`, `Yhat_Q^cons - […]`, `rho_alpha - 4/3`,
+`zeta_req - 1/3`) remain in both engines as documented arithmetic
+confirmations of paper Check (i). The 15-mode orthogonality block (5 Y2A
+labels × 3 checks each) at the top of the script is the substantive
+geometric-decoupling content that justifies the verdict; PASS-line count of
+20 (15 orthogonality + 5 final ledger) confirms full coverage.
+
+Snapshot date prior: `2026-05-27` (batch III.5 close — first-pass paper-grounded
 audit on stages 085-090. Checkpoint stages `089` (Family-1 minimal isotropic
 verdict) and `090` (updated reduced status) fall in III.5's range and **both
 returned `verified` after first-pass v2 audit + apply + verifier cycle.**

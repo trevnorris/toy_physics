@@ -1,9 +1,18 @@
 #!/usr/bin/env python3
 """
-Stage 74 SymPy audit.
+Stage 091 SymPy audit.
 
 Derive the minimal isotropic conservative quadrupole module directly from a
 static geometry contact term plus one isotropic grouped-P2 conservative pole.
+
+Carry-forward annotations (paper card `\\stagefield{Checks}` items resolved
+upstream, per [[batch-IV1-paper-alignment]] Cluster A direction (a)):
+
+- "Check `l=0` and `l=2` orthogonality before applying the geometry firewall":
+  exercised at stage 094 (Isotropic Geometry-Decoupling Theorem) via 15 angular
+  integrals plus the Laplace eigenvalue check in both engines. This stage uses
+  the scalar `Kcons(omega)` ansatz that the upstream orthogonality result
+  authorises.
 """
 
 from __future__ import annotations
@@ -28,7 +37,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 omega = sp.symbols("omega", real=True)
 Kgeom, Kpole, OmegaQ = sp.symbols("K_geom K_pole Omega_Q", positive=True, real=True)
 
-banner("STAGE 74 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION")
+banner("STAGE 091 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION")
 
 Kcons = sp.simplify(Kgeom + Kpole / (1 - omega**2 / OmegaQ**2))
 series = sp.expand(sp.series(Kcons, omega, 0, 6).removeO())

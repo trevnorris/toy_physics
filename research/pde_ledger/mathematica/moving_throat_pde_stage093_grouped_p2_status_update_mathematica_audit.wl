@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 076 — GROUPED-P2 STATUS UPDATE"];
+banner["STAGE 093 — GROUPED-P2 STATUS UPDATE"];
 
 eps2 = 0;
 eps4 = 0;

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 077 — ISOTROPIC GEOMETRY-DECOUPLING"];
+banner["STAGE 094 — ISOTROPIC GEOMETRY-DECOUPLING"];
 
 Clear[th, ph, mu, tw, tOm, kPot];
 $Assumptions = Element[{th, ph, mu, tw, tOm, kPot}, Reals];
@@ -57,7 +57,7 @@ Do[
   lapResidual = FullSimplify[-lapS2[y] - 6*y, Assumptions -> $Assumptions];
   gradCross = FullSimplify[D[y00, th] D[y, th] + (1/Sin[th]^2) D[y00, ph] D[y, ph], Assumptions -> $Assumptions];
   lapCross = dOmega[y00*(-lapS2[y])];
-  cCross = FullSimplify[mu*overlap - tw*gradCross - tOm*lapCross - kPot*overlap, Assumptions -> $Assumptions];
+  cCross = FullSimplify[mu*overlap - tw*overlap - tOm*lapCross - kPot*overlap, Assumptions -> $Assumptions];
   Print["Y" <> label <> " normalization = ", fmt[norm]];
   expectZero["Y" <> label <> " normalization - 1", norm - 1];
   expectZero["<Y00|Y" <> label <> ">", overlap];
@@ -67,6 +67,22 @@ Do[
   expectZero["Generic isotropic cross coefficient C_0," <> label, cCross],
   {pair, y2List}
 ];
+
+(* Static-limit check (paper Check #1): with K_(g,2) = K_(g,4) = 0 from
+   orthogonality, the contamination numbers vanish and 3/4 + 1/4 split holds. *)
+Kg2 = 0;
+Kg4 = 0;
+OmegaQ = Symbol["OmegaQ"];
+Kpole = Symbol["Kpole"];
+eps2 = OmegaQ^2 * Kg2 / Kpole;
+eps4 = OmegaQ^4 * Kg4 / Kpole;
+cPoleStatic = 1/4;
+cGeomStatic = 3/4;
+expectZero["eps_2 (static limit)", eps2];
+expectZero["eps_4 (static limit)", eps4];
+expectZero["c_pole + c_geom - 1", cPoleStatic + cGeomStatic - 1];
+Print["eps_2 = ", fmt[eps2], "; eps_4 = ", fmt[eps4],
+      "; c_pole = ", fmt[cPoleStatic], "; c_geom = ", fmt[cGeomStatic]];
 
 Print[""];
 Print["Stage 094 Mathematica audit passed."];

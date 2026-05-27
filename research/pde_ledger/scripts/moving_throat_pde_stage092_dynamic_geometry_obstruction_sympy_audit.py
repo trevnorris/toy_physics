@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 75 SymPy audit.
+Stage 092 SymPy audit.
 
 Derive the exact obstruction formula for the grouped-P2 + geometry split when the
 geometry lane carries O(omega^2) and O(omega^4) moments.
@@ -30,7 +30,7 @@ Kg0, Kg2, Kg4 = sp.symbols("K_g0 K_g2 K_g4", real=True)
 Kp, OmegaQ = sp.symbols("K_p Omega_Q", positive=True, real=True)
 eps2, eps4 = sp.symbols("eps_2 eps_4", real=True)
 
-banner("STAGE 75 — DYNAMIC-GEOMETRY OBSTRUCTION")
+banner("STAGE 092 — DYNAMIC-GEOMETRY OBSTRUCTION")
 
 K = sp.simplify(Kg0 + Kg2 * omega**2 + Kg4 * omega**4 + Kp / (1 - omega**2 / OmegaQ**2))
 series = sp.expand(sp.series(K, omega, 0, 6).removeO())
@@ -76,6 +76,10 @@ remainder = sp.expand(small_series - linear_part)
 print("First-order expansion of c_pole =", small_series)
 print("Linear part                =", linear_part)
 print("Dropped higher-order tail  =", remainder)
+
+expect_zero("first-order eps^0 coefficient", small_series.coeff(eps2, 0).coeff(eps4, 0) - sp.Rational(1, 4))
+expect_zero("first-order eps2 coefficient", small_series.coeff(eps2, 1).coeff(eps4, 0) - sp.Rational(-1, 2))
+expect_zero("first-order eps4 coefficient", small_series.coeff(eps4, 1).coeff(eps2, 0) - sp.Rational(1, 4))
 
 banner("FINAL LEDGER")
 print("With dynamic geometry contamination,")

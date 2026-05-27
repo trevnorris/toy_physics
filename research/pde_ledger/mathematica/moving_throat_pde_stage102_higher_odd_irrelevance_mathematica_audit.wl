@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 085 — HIGHER ODD IRRELEVANCE"];
+banner["STAGE 102 — HIGHER ODD IRRELEVANCE"];
 
 Clear[omega, omegaQ, chiQ, tauQ];
 $Assumptions =

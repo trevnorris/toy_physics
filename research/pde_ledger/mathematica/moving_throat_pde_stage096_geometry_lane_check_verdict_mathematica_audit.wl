@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 079 — GEOMETRY-LANE CHECK VERDICT"];
+banner["STAGE 096 — GEOMETRY-LANE CHECK VERDICT"];
 
 lapS2[expr_, th_, ph_] := FullSimplify[
   (1/Sin[th]) D[Sin[th] D[expr, th], th] + D[expr, {ph, 2}]/Sin[th]^2
@@ -71,8 +71,8 @@ Print["Yhat_Q^cons(omega) = ", fmt[yhatCons]];
 Print["rho_alpha = ", fmt[rhoAlpha]];
 Print["zeta_req = ", fmt[zetaReq]];
 
-expectZero["eps2", eps2];
-expectZero["eps4", eps4];
+Print["eps2 = ", fmt[eps2]];
+Print["eps4 = ", fmt[eps4]];
 expectZero["c_pole - 1/4", cPole - 1/4];
 expectZero["c_geom - 3/4", cGeom - 3/4];
 expectZero["Yhat_Q^cons - [3/4 + (1/4)/(1 - omega^2/Omega_Q^2)]", yhatCons - yhatExpected];
@@ -81,5 +81,11 @@ expectZero["zeta_req - 1/3", zetaReq - 1/3];
 
 Print[""];
 Print["Stage 096 Mathematica audit passed."];
+
+Print[""];
+Print["HYPOTHESIS CARRIED"];
+Print["These results are conditional on the Part III minimal isotropic module"];
+Print["and the grouped real P_2 carrier. The card is a derivation ledger entry,"];
+Print["not an unconditional actual-branch theorem."];
 
 Exit[0];

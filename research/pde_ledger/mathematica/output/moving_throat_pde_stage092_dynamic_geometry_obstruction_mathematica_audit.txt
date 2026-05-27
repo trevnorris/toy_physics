@@ -1,33 +1,28 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.wl
-# Date: 2026-05-11T13:02:47-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 075 — DYNAMIC-GEOMETRY OBSTRUCTION
+STAGE 092 — DYNAMIC-GEOMETRY OBSTRUCTION
 ========================================================================================
-K_Q^cons(omega) = kg0 + kg2*omega^2 + kg4*omega^4 + kPole/(1 - omega^2/omegaQ^2)
-Series = kg0 + kPole + kg2*omega^2 + kg4*omega^4 + (kPole*omega^4)/omegaQ^4 + (kPole*omega^2)/omegaQ^2
-K0 = kg0 + kPole
-K2 = kg2 + kPole/omegaQ^2
-K4 = kg4 + kPole/omegaQ^4
-Branch obstruction = (kg0 + kPole)*(kg4 + kPole/omegaQ^4) - 4*(kg2 + kPole/omegaQ^2)^2
-K_g0 on branch = (3*kPole^2 + 8*kg2*kPole*omegaQ^2 + 4*kg2^2*omegaQ^4 - kg4*kPole*omegaQ^4)/(kPole + kg4*omegaQ^4)
-static-geometry limit gives 3 K_pole = 0
-PASS: static-geometry limit gives 3 K_pole
-c_pole = (kPole*(kPole + kg4*omegaQ^4))/(4*(kPole + kg2*omegaQ^2)^2)
-c_pole in (eps2,eps4) variables = (1 + eps4)/(4*(1 + eps2)^2)
+K_2 in eps variables = ((1 + eps2)*kPole)/omegaQ^2
+K_4 in eps variables = ((1 + eps4)*kPole)/omegaQ^4
+K_0 from branch (eps form) = (4*(1 + eps2)^2*kPole)/(1 + eps4)
+K_0 closed form matches 4 K_pole (1+eps2)^2/(1+eps4) = 0
+PASS: K_0 closed form matches 4 K_pole (1+eps2)^2/(1+eps4)
+c_pole = (1 + eps4)/(4*(1 + eps2)^2)
 c_pole - (1+eps4)/(4(1+eps2)^2) = 0
 PASS: c_pole - (1+eps4)/(4(1+eps2)^2)
+static-geometry limit c_pole = 1/4 = 0
+PASS: static-geometry limit c_pole = 1/4
 c_geom in (eps2,eps4) variables = (3 + 8*eps2 + 4*eps2^2 - eps4)/(4*(1 + eps2)^2)
+static-geometry limit c_geom = 3/4 = 0
+PASS: static-geometry limit c_geom = 3/4
 First-order expansion of c_pole = 1/4 - eps2/2 + eps4/4 - (eps2*eps4)/2
 Linear part = 1/4 - eps2/2 + eps4/4
 Dropped higher-order tail = -1/2*(eps2*eps4)
+first-order eps^0 coefficient = 0
+PASS: first-order eps^0 coefficient
+first-order eps2 coefficient = 0
+PASS: first-order eps2 coefficient
+first-order eps4 coefficient = 0
+PASS: first-order eps4 coefficient
 
 Stage 092 Mathematica audit passed.
-
-EXIT_CODE: 0

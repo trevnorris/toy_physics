@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
-# Date: 2026-05-11T12:45:00-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 75 — DYNAMIC-GEOMETRY OBSTRUCTION
+STAGE 092 — DYNAMIC-GEOMETRY OBSTRUCTION
 ========================================================================================
 K_Q^cons(omega) = (K_p*Omega_Q**2 + (Omega_Q**2 - omega**2)*(K_g0 + K_g2*omega**2 + K_g4*omega**4))/(Omega_Q**2 - omega**2)
 Series = K_g0 + K_g2*omega**2 + K_g4*omega**4 + K_p + K_p*omega**2/Omega_Q**2 + K_p*omega**4/Omega_Q**4
@@ -25,6 +17,9 @@ c_geom in (eps2, eps4) variables = (4*eps_2**2 + 8*eps_2 - eps_4 + 3)/(4*(eps_2 
 First-order expansion of c_pole = -eps_2*eps_4/2 - eps_2/2 + eps_4/4 + 1/4
 Linear part                = -eps_2/2 + eps_4/4 + 1/4
 Dropped higher-order tail  = -eps_2*eps_4/2
+first-order eps^0 coefficient = 0
+first-order eps2 coefficient = 0
+first-order eps4 coefficient = 0
 
 ========================================================================================
 FINAL LEDGER
@@ -32,5 +27,3 @@ FINAL LEDGER
 With dynamic geometry contamination,
   c_pole = (1 + eps4) / [4 (1 + eps2)^2].
 So the 3/4 + 1/4 split is recovered iff eps2 = eps4 = 0.
-
-EXIT_CODE: 0

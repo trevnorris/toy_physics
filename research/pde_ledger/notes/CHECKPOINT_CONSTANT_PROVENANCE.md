@@ -6,7 +6,25 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-27` (batch III.5 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.1 close — first-pass paper-grounded
+audit on stages 091-102. **Checkpoint stage `096` (geometry-lane check verdict)
+verified after first-pass cycle.** Constant provenance assessment for 096:
+the four cardinal constants (`c_pole = 1/4`, `c_geom = 3/4`, `rho_alpha = 4/3`,
+`zeta_req = 1/3`) are *derived* in-script from the static-limit hypotheses
+`eps_2 = eps_4 = 0` (themselves established by stage 094's orthogonality
+output `K_{g,2} = K_{g,4} = 0`) via the `c_pole = (1 + eps_4)/(4(1 + eps_2)^2)`
+obstruction formula carried from stage 092. The `Yhat_Q^cons(omega) = 3/4 +
+(1/4)/(1 - omega^2/Omega_Q^2)` partial-fraction form is built from these
+derived constants, not literal-asserted. The 15-mode orthogonality block at
+the top derives `K_{g,2} = K_{g,4} = 0` from explicit angular integrals
+(5 Y2A labels × 3 checks each: overlap, Laplace eigenvalue, gradient cross).
+The `l = 2` Laplace eigenvalue `6 = ell(ell+1)` is documented in the
+constant-provenance docstring. **Zero unexplained literals in checkpoint
+096's scripts**; every load-bearing constant is either derived in-script
+from orthogonality / obstruction-formula inputs or carry-forward with explicit
+source anchor.
+
+Snapshot date prior: `2026-05-27` (batch III.5 close — first-pass paper-grounded
 audit on stages 085-090. Checkpoint stages `089` and `090` (both in III.5)
 verified after first-pass cycle. **Constant provenance assessment for III.5
 checkpoints**: 089's `Pe_suff_chi = 96.5285247264386` and `Pe_fail_chi =

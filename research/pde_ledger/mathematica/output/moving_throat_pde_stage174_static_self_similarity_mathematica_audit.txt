@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl
-# Date: 2026-05-11T13:21:28-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION
+STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION
 ========================================================================================
 weight identity = 0
 PASS: weight identity
@@ -55,5 +47,3 @@ Carry-forward formulas:
   static self-similarity => Xi_load = 0
 
 Stage 174 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage167_bundle_transport_tangent_compensation_mathematica_audit.wl
-# Date: 2026-05-11T13:19:43-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 150 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION
+STAGE 167 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION
 ========================================================================================
 delta ln rho_w  = dTheta/2
 delta ln a      = dKs/2 - dTheta/4
@@ -76,5 +68,3 @@ Carry-forward formulas:
   delta_perp = 0
 
 Stage 167 Mathematica audit passed.
-
-EXIT_CODE: 0

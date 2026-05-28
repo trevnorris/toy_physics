@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 156 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT"];
+banner["STAGE 173 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT"];
 
 Clear[eps, lam, d0, d01, d2, d21, d4, d41, n0, n01, u2, u4, p0];
 $Assumptions = Element[{eps, lam, d0, d01, d2, d21, d4, d41, n0, n01, u2, u4, p0}, Reals] &&
@@ -34,13 +34,9 @@ d2A = d2 + eps*lam*d21;
 d4A = d4 + eps*lam*d41;
 n0A = n0 + eps*lam*n01;
 
-u2A = Expand[Normal[Series[-d2A/d0A, {eps, 0, 1}]]];
-u4A = Expand[Normal[Series[(d2A^2 - d0A*d4A)/d0A^2, {eps, 0, 1}]]];
-p0A = Expand[Normal[Series[n0A/d0A, {eps, 0, 1}]]];
-
-u21 = FullSimplify[(D[u2A, eps] /. eps -> 0)/lam, Assumptions -> $Assumptions];
-u41 = FullSimplify[(D[u4A, eps] /. eps -> 0)/lam, Assumptions -> $Assumptions];
-p1 = FullSimplify[(D[p0A, eps] /. eps -> 0)/lam, Assumptions -> $Assumptions];
+u21 = FullSimplify[Coefficient[Series[-d2A/d0A, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
+u41 = FullSimplify[Coefficient[Series[(d2A^2 - d0A*d4A)/d0A^2, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
+p1 = FullSimplify[Coefficient[Series[n0A/d0A, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
 
 Print["u2^(1) general = ", fmt[u21]];
 Print["u4^(1) general = ", fmt[u41]];
@@ -64,14 +60,13 @@ banner["Hidden-even operator identity"];
 hiddenEvenResidual = Expand[u41Can - 8*u21Can/9 - (d01/(27*d0) + 2*d21/(3*d0) - d41/d0)];
 expectZero["hidden-even residual", hiddenEvenResidual];
 
-d41Hidden = FullSimplify[d41 /. First[Solve[u41Can == 8*u21Can/9, d41]], Assumptions -> $Assumptions];
-Print["D41 from hidden-even relation = ", fmt[d41Hidden]];
-
 banner["Even-preserving collapse"];
 u21ZeroD21 = FullSimplify[d21 /. First[Solve[u21Can == 0, d21]], Assumptions -> $Assumptions];
 Print["D21 from u2^(1)=0 = ", fmt[u21ZeroD21]];
 
-d41Even = FullSimplify[d41Hidden /. d21 -> u21ZeroD21, Assumptions -> $Assumptions];
+d41Even = FullSimplify[
+  d41 /. First[Solve[(u41Can == 8 u21Can/9) /. d21 -> u21ZeroD21, d41]],
+  Assumptions -> $Assumptions];
 Print["D41 on even-preserving branch = ", fmt[d41Even]];
 
 expectZero["D21 + D01/9", u21ZeroD21 + d01/9];

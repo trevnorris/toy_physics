@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 149 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS"];
+banner["STAGE 166 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS"];
 
 Clear[dTheta, dKs, dKq, dP, drho, da, dcs, dZ, dN0, dD0];
 $Assumptions = Element[{dTheta, dKs, dKq, dP, drho, da, dcs, dZ, dN0, dD0}, Reals];
@@ -44,11 +44,36 @@ Print["da   = ", fmt[daSol]];
 Print["dcs  = ", fmt[dcsSol]];
 Print["dZ   = ", fmt[dZSol]];
 
+banner["General inversion forms (paper Sec. 2)"];
+expectZero["drho general", drhoSol - dTheta/2];
+expectZero["da general", daSol - (dKs/2 - dTheta/4)];
+expectZero["dcs general", dcsSol - (dKs/2 - dTheta/4 + dP/5)];
+expectZero["dZ general", dZSol - (dKq - 2*dP/5)];
+
 banner["Forward verification"];
 expectZero["Theta law", (dTheta - 2*drho) /. sol];
 expectZero["Ks law", (dKs - 2*da - drho) /. sol];
 expectZero["Kq law", (dKq - dZ - 2*dcs + 2*da) /. sol];
 expectZero["P0 law", (dP - 5*(dcs - da)) /. sol];
+
+banner["Independent matrix-inverse cross-check"];
+(* Forward map M: (drho, da, dcs, dZ) -> (dTheta, dKs, dKq, dP) from eq1..eq4. *)
+Mmat = {
+  {2, 0, 0, 0},   (* dTheta = 2 drho *)
+  {1, 2, 0, 0},   (* dKs    = drho + 2 da *)
+  {0, -2, 2, 1},  (* dKq    = -2 da + 2 dcs + dZ *)
+  {0, -5, 5, 0}   (* dP     = -5 da + 5 dcs *)
+};
+inv = Inverse[Mmat];
+solVec = inv . {dTheta, dKs, dKq, dP};
+expectZero["matrix drho", solVec[[1]] - dTheta/2];
+expectZero["matrix da", solVec[[2]] - (dKs/2 - dTheta/4)];
+expectZero["matrix dcs", solVec[[3]] - (dKs/2 - dTheta/4 + dP/5)];
+expectZero["matrix dZ", solVec[[4]] - (dKq - 2*dP/5)];
+(* Round-trip: forward map of the matrix solution recovers the observables.   *)
+(* Sum-of-squares scalarization (zero iff every component residual is zero;    *)
+(* expectZero tests res === 0, which is False for a length-4 list).            *)
+expectZero["matrix round-trip", Total[(Mmat . solVec - {dTheta, dKs, dKq, dP})^2]];
 
 banner["Equivalent full-bundle form with P_0 = N_0 / D_0"];
 dcsBundle = FullSimplify[dcsSol /. dP -> dN0 - dD0, Assumptions -> $Assumptions];

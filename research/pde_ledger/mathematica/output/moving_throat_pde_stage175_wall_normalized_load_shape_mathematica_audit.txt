@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage175_wall_normalized_load_shape_mathematica_audit.wl
-# Date: 2026-05-11T13:21:45-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 158 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION
+STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION
 ========================================================================================
 B0 - K*chi^2 = 0
 PASS: B0 - K*chi^2
@@ -32,8 +24,6 @@ Sigma_Z - dln(Upsilon) = 0
 PASS: Sigma_Z - dln(Upsilon)
 Sigma_N - dln(Lambda^2/K) = 0
 PASS: Sigma_N - dln(Lambda^2/K)
-Sigma_N - (2 dln Lambda - dK) = 0
-PASS: Sigma_N - (2 dln Lambda - dK)
 
 ========================================================================================
 Conservative-shape-preserving reductions
@@ -44,6 +34,8 @@ Conservative-shape branch Sigma_Z = 0
 PASS: Conservative-shape branch Sigma_Z
 Common-shape branch Sigma_N + dK = 0
 PASS: Common-shape branch Sigma_N + dK
+Xi_load (all shapes frozen) + dK = 0
+PASS: Xi_load (all shapes frozen) + dK
 
 Conclusions:
   B0 = K chi^2,  Z0 = K Upsilon,  N0 = Lambda^2.
@@ -55,5 +47,3 @@ Conclusions:
   So naive common self-similarity does not kill the grouped defect.
 
 Stage 175 Mathematica audit passed.
-
-EXIT_CODE: 0

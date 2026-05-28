@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage171_microscopic_grouped_obstructions_sympy_audit.py
-# Date: 2026-05-11T12:47:19-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
+STAGE 171 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
 ========================================================================================
 K_A split = 0
 G_A split = 0
@@ -36,5 +28,3 @@ Carry-forward formulas:
   K_A = (1/9 delta K_A - delta M_A) - (delta B_A2 + 1/9 delta B_A0) - (delta Z_A2 + 1/9 delta Z_A0)
   G_A = -P0 delta K_A + P0 delta B_A0 + (delta N_A0 + P0 delta Z_A0)
   The weak grouped branch collapses to the scalar pair (K_1, G_1).
-
-EXIT_CODE: 0

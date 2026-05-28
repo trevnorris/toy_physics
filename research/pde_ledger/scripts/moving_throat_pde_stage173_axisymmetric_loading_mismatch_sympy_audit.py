@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 156 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT")
+banner("STAGE 173 — WEAK-AXISYMMETRIC PHYSICAL-SLOPE TRANSPORT")
 
 eps, lam = sp.symbols("eps lam", real=True)
 D0, D01, D2, D21, D4, D41 = sp.symbols("D0 D01 D2 D21 D4 D41", real=True, nonzero=True)

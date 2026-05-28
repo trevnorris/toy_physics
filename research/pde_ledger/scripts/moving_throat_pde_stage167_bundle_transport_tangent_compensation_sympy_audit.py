@@ -26,7 +26,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 150 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION")
+banner("STAGE 167 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION")
 
 dTheta, dKs, dKq, dP = sp.symbols("dTheta dKs dKq dP", real=True)
 

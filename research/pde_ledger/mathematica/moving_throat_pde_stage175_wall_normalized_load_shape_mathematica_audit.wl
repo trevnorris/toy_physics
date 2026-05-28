@@ -28,7 +28,7 @@ dlog[expr_] := FullSimplify[
   Assumptions -> $Assumptions
 ];
 
-banner["STAGE 158 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION"];
+banner["STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION"];
 
 Clear[k, chi, varpi];
 $Assumptions = Element[{k, chi, varpi}, Reals] && k > 0 && chi > 0 && varpi > 0;
@@ -88,12 +88,21 @@ sigmaZDirect = FullSimplify[dlog[exprZ] - kappa, Assumptions -> $Assumptions];
 sigmaZShape = FullSimplify[dlog[exprU], Assumptions -> $Assumptions];
 expectZero["Sigma_Z - dln(Upsilon)", sigmaZDirect - sigmaZShape];
 
-exprRatio = ((p/delta) /. subsHat) /. subsEps;
-exprL = lambda /. subsEps;
-sigmaNDirect = FullSimplify[2*dlog[exprRatio] - kappa, Assumptions -> $Assumptions];
+(* Direct route: build (P/Delta) from the physical primitives and apply the
+   physical wall scaling (subsHat) THEN the eps-flow, without first simplifying
+   to the cached lambda. This keeps the K-dependence explicit before cancellation,
+   so the -kappa (= -delta_K) subtraction is load-bearing rather than tautological. *)
+exprPoverDeltaPhys = ((p/delta) /. subsHat) /. subsEps;
+sigmaNDirect = FullSimplify[2*dlog[exprPoverDeltaPhys] - kappa, Assumptions -> $Assumptions];
 sigmaNShape = FullSimplify[dlog[(lambda^2/k) /. subsEps], Assumptions -> $Assumptions];
 expectZero["Sigma_N - dln(Lambda^2/K)", sigmaNDirect - sigmaNShape];
-expectZero["Sigma_N - (2 dln Lambda - dK)", sigmaNDirect - (2*dlog[exprL] - kappa)];
+(* Note (red-team F1 resolution): the differential Sigma_N claim is fully and
+   non-trivially exercised by the check above — 2 dln(P/Delta) - dK = dln(Lambda^2/K)
+   is load-bearing on kappa = delta_K, and the genuine homogeneity coverage is
+   N0 = Lambda^2 (checked earlier). The earlier "2 dln(P/Delta) - 2 dln Lambda" /
+   "Sigma_N - (2 dln Lambda - dK)" lines reduced to a simplify-commutes identity
+   (p/delta and lambda are value-equal), so they are omitted rather than reported
+   as substantive PASS lines. *)
 
 banner["Conservative-shape-preserving reductions"];
 sigmaBCons = FullSimplify[sigmaBDirect /. schi -> 0, Assumptions -> $Assumptions];
@@ -102,6 +111,11 @@ sigmaNCommon = FullSimplify[sigmaNDirect /. {su -> 0, sw -> 0, sr -> 0, sgu -> 0
 expectZero["Conservative-shape branch Sigma_B", sigmaBCons];
 expectZero["Conservative-shape branch Sigma_Z", sigmaZCons];
 expectZero["Common-shape branch Sigma_N + dK", sigmaNCommon + kappa];
+(* Weighted aggregate no-go using sum_r rho_r^(N) = 1. *)
+Clear[rho1, rho2];
+$Assumptions = $Assumptions && Element[{rho1, rho2}, Reals] && rho1 >= 0 && rho2 >= 0;
+xiLoadFrozen = (rho1 + rho2)*sigmaNCommon;
+expectZero["Xi_load (all shapes frozen) + dK", (xiLoadFrozen /. (rho1 + rho2) -> 1) + kappa];
 
 Print[""];
 Print["Conclusions:"];

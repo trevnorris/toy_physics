@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage170_linear_grouped_outlet_map_mathematica_audit.wl
-# Date: 2026-05-11T13:20:30-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 153 — LINEAR GROUPED-P2 DIRECT OUTLET MAP
+STAGE 170 — LINEAR GROUPED-P2 DIRECT OUTLET MAP
 ========================================================================================
 
 ========================================================================================
@@ -57,6 +49,30 @@ PASS: trace gamma coefficient
 anomaly gamma coefficient = 0
 PASS: anomaly gamma coefficient
 
+========================================================================================
+Weak-axisymmetric signature (1, 1/2, -1) and scalar amplitudes
+========================================================================================
+delta kappa_W^(20) - eps kappa1 = 0
+PASS: delta kappa_W^(20) - eps kappa1
+delta kappa_W^(21) - (eps/2) kappa1 = 0
+PASS: delta kappa_W^(21) - (eps/2) kappa1
+delta kappa_W^(22) + eps kappa1 = 0
+PASS: delta kappa_W^(22) + eps kappa1
+delta gamma_W^(20) - eps gamma1 = 0
+PASS: delta gamma_W^(20) - eps gamma1
+delta gamma_W^(21) - (eps/2) gamma1 = 0
+PASS: delta gamma_W^(21) - (eps/2) gamma1
+delta gamma_W^(22) + eps gamma1 = 0
+PASS: delta gamma_W^(22) + eps gamma1
+kappa signature: 21 = (1/2) 20 = 0
+PASS: kappa signature: 21 = (1/2) 20
+kappa signature: 22 = -20 = 0
+PASS: kappa signature: 22 = -20
+gamma signature: 21 = (1/2) 20 = 0
+PASS: gamma signature: 21 = (1/2) 20
+gamma signature: 22 = -20 = 0
+PASS: gamma signature: 22 = -20
+
 Carry-forward formulas:
   delta kappa_W^(A) = 3(1-sigma_*) [delta D_(A,2) + delta D_(A,0)/9] / (sigma_* D0)
   delta gamma_W^(A) = -(1-sigma_*) [delta N_(A,0) - P0 delta D_(A,0)] / (9 sigma_* N0)
@@ -64,5 +80,3 @@ Carry-forward formulas:
   so the full linear grouped-anisotropy outlet problem collapses to the pair
       K_A := delta D_(A,2) + delta D_(A,0)/9
       G_A := delta N_(A,0) - P0 delta D_(A,0)
-
-EXIT_CODE: 0

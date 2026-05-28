@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 149 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS")
+banner("STAGE 166 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS")
 
 dTheta, dKs, dKq, dP = sp.symbols("dTheta dKs dKq dP", real=True)
 drho, da, dcs, dZ = sp.symbols("drho da dcs dZ", real=True)
@@ -48,6 +48,12 @@ print("drho =", sp.simplify(sol[drho]))
 print("da   =", sp.simplify(sol[da]))
 print("dcs  =", sp.simplify(sol[dcs]))
 print("dZ   =", sp.simplify(sol[dZ]))
+
+banner("General inversion forms (paper Sec. 2)")
+expect_zero("drho general", sol[drho] - sp.Rational(1, 2) * dTheta)
+expect_zero("da general", sol[da] - (sp.Rational(1, 2) * dKs - sp.Rational(1, 4) * dTheta))
+expect_zero("dcs general", sol[dcs] - (sp.Rational(1, 2) * dKs - sp.Rational(1, 4) * dTheta + sp.Rational(1, 5) * dP))
+expect_zero("dZ general", sol[dZ] - (dKq - sp.Rational(2, 5) * dP))
 
 banner("Forward verification")
 expect_zero("Theta law", eq1.lhs.subs(sol) - eq1.rhs.subs(sol))

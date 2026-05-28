@@ -36,7 +36,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 158 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION")
+banner("STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION")
 
 # ---------------------------------------------------------------------------
 # Exact algebraic factorization
@@ -125,12 +125,21 @@ Sigma_Z_shape = sp.simplify(dlog(expr_U))
 expect_zero("Sigma_Z - dln(Upsilon)", Sigma_Z_direct - Sigma_Z_shape)
 
 # Sigma_N = 2 dln(P/Delta) - dK = dln(Lambda^2/K)
-expr_ratio = (P / Delta).subs(subs_hat).subs(subs_eps)
-expr_L = Lambda.subs(subs_eps)
-Sigma_N_direct = sp.simplify(2 * dlog(expr_ratio) - kappa)
+# Direct route: build (P/Delta) from the physical primitives and apply the
+# physical wall scaling (subs_hat) THEN the eps-flow, without first simplifying
+# to the cached Lambda. This keeps the K-dependence explicit before cancellation,
+# so the -kappa (= -delta_K) subtraction is load-bearing rather than tautological.
+expr_PoverDelta_phys = (P / Delta).subs(subs_hat).subs(subs_eps)
+Sigma_N_direct = sp.simplify(2 * dlog(expr_PoverDelta_phys) - kappa)
 Sigma_N_shape = sp.simplify(dlog((Lambda**2 / K).subs(subs_eps)))
 expect_zero("Sigma_N - dln(Lambda^2/K)", Sigma_N_direct - Sigma_N_shape)
-expect_zero("Sigma_N - (2 dln Lambda - dK)", Sigma_N_direct - (2 * dlog(expr_L) - kappa))
+# Note (red-team F1 resolution): the differential Sigma_N claim is fully and
+# non-trivially exercised by the check above — 2 dln(P/Delta) - dK = dln(Lambda^2/K)
+# is load-bearing on kappa = delta_K (a wrong kappa fails it), while the genuine
+# homogeneity coverage is N0 = Lambda^2 (checked earlier). The earlier
+# "2 dln(P/Delta) - 2 dln Lambda" / "Sigma_N - (2 dln Lambda - dK)" lines reduced
+# to a simplify-commutes identity (P/Delta and Lambda are value-equal), so they are
+# omitted rather than reported as substantive PASS lines.
 
 # ---------------------------------------------------------------------------
 # Conservative-shape-preserving and common-shape branches
@@ -145,6 +154,15 @@ Sigma_N_common = sp.simplify(Sigma_N_direct.subs({su: 0, sw: 0, sr: 0, sgu: 0, s
 expect_zero("Conservative-shape branch Sigma_B", Sigma_B_cons)
 expect_zero("Conservative-shape branch Sigma_Z", Sigma_Z_cons)
 expect_zero("Common-shape branch Sigma_N + dK", Sigma_N_common + kappa)
+# Weighted aggregate no-go: Xi_load = sum_r rho_r^(N) * Sigma_N. With all
+# wall-normalized shapes frozen, Sigma_N = -kappa per port, so
+# Xi_load = (sum_r rho_r^(N)) * (-kappa) = -kappa, using sum_r rho_r^(N) = 1.
+rho1, rho2 = sp.symbols("rho1 rho2", nonnegative=True, real=True)
+Xi_load_frozen = (rho1 + rho2) * Sigma_N_common
+expect_zero(
+    "Xi_load (all shapes frozen) + dK",
+    Xi_load_frozen.subs(rho1 + rho2, 1) + kappa,
+)
 
 print("\nConclusions:")
 print("  B0 = K chi^2,  Z0 = K Upsilon,  N0 = Lambda^2.")

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS"];
+banner["STAGE 171 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS"];
 
 Clear[p0, dK, dM, dB0, dB2, dZ0, dZ2, dN0];
 $Assumptions = Element[{p0, dK, dM, dB0, dB2, dZ0, dZ2, dN0}, Reals] && p0 != 0;
@@ -111,6 +111,9 @@ expectZero[
 expectZero["delta N0 formula", dN0Exact - (2*p*dP/delta^2 - 2*p^2*dDelta/delta^3)];
 
 zCombExact = Expand[dZ2Exact + dZ0Exact/9];
+(* Paper's collected closed-form bundle target (native-typed). Comparing the   *)
+(* engine's D[]-derived zCombExact against it is load-bearing: a wrong collected *)
+(* coefficient leaves a nonzero residual.                                       *)
 zCombFormula = Expand[
   (s/delta^2 + 1/(9*delta))*dQ +
   (q/delta^2)*dS -
@@ -118,13 +121,26 @@ zCombFormula = Expand[
   (gSym/delta^2 - q/(9*delta^2) - 2*q*s/delta^3)*dDelta
 ];
 expectZero["Z obstruction bundle", zCombExact - zCombFormula];
+(* Independent second route: first-order variation of (z2 + z0/9) via Series in *)
+(* a perturbation parameter (a distinct mechanism from the D[]-summed total      *)
+(* differential above), compared against the same collected target.             *)
+zCombSeries = Coefficient[Normal[Series[
+  (z2 + z0/9) /. {q -> q + eps2*dQ, s -> s + eps2*dS, gSym -> gSym + eps2*dG, delta -> delta + eps2*dDelta},
+  {eps2, 0, 1}]], eps2];
+expectZero["Z obstruction bundle (series route)", zCombSeries - zCombFormula];
 
 nCombExact = Expand[dN0Exact + p0*dZ0Exact];
+(* Paper's collected closed-form bundle target (native-typed). *)
 nCombFormula = Expand[
   (p0/delta)*dQ + (2*p/delta^2)*dP -
   (p0*q/delta^2 + 2*p^2/delta^3)*dDelta
 ];
 expectZero["N obstruction bundle", nCombExact - nCombFormula];
+(* Independent second route via Series, same distinct-mechanism cross-check. *)
+nCombSeries = Coefficient[Normal[Series[
+  (n0Expr + p0*z0) /. {q -> q + eps2*dQ, p -> p + eps2*dP, delta -> delta + eps2*dDelta},
+  {eps2, 0, 1}]], eps2];
+expectZero["N obstruction bundle (series route)", nCombSeries - nCombFormula];
 
 Clear[eps, k1, m1, b01, b21, z01, z21, n01];
 $Assumptions = Element[{eps, k1, m1, b01, b21, z01, z21, n01, p0}, Reals] && p0 != 0;

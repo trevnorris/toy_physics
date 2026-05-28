@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 151 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION"];
+banner["STAGE 168 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION"];
 
 Clear[g, r, s, xi, csw, cs, a, lW, vw0, tM, epsL, epsv, epsT, sigma0, sCan, dSigma0, dS, sigma, dKappaW, dGammaW];
 $Assumptions =

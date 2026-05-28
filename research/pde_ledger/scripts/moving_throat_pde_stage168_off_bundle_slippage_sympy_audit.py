@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 151 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION")
+banner("STAGE 168 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION")
 
 # Symbols
 g, r = sp.symbols("g r", positive=True, real=True)

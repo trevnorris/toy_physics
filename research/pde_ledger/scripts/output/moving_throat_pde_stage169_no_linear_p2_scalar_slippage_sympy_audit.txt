@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
-# Date: 2026-05-11T12:47:18-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
+STAGE 169 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
 ========================================================================================
 
 ========================================================================================
@@ -40,11 +32,12 @@ Stage 168 weighted transport
 ========================================================================================
 eps_perp - Xi_perp Igrp = 0
 Numeric Xi_perp combination = 1.883732191180045539*XiL + 0.758035078944663*XiT + 1.003143101138476026*Xiv
+Xi_perp coeff on XiT = 0.75803507894466300000 (paper 0.75803507894466300000, |diff| = 0)
+Xi_perp coeff on Xiv = 1.0031431011384760260 (paper 1.0031431011384800000, |diff| = 3.9739905973151107288E-15)
+Xi_perp coeff on XiL = 1.8837321911800455390 (paper 1.8837321911800500000, |diff| = 4.4609871081412871829E-15)
 
 Carry-forward formulas:
   I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y
   Pure grouped P2 anisotropy has no linear scalar feed-down on an isotropic branch.
   Weak axisymmetric branch: b = 3 a and I[x,y] = (7/10) eps^2 x^(1) y^(1).
   Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.
-
-EXIT_CODE: 0

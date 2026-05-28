@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 153 — LINEAR GROUPED-P2 DIRECT OUTLET MAP")
+banner("STAGE 170 — LINEAR GROUPED-P2 DIRECT OUTLET MAP")
 
 # ---------------------------------------------------------------------------
 # 1. Linear grouped transport around the canonical isotropic branch
@@ -127,6 +127,43 @@ expect_zero(
     "anomaly gamma coefficient",
     sp.simplify(b_gamma_from_map.subs(P0, P0_ref) - b_gamma.subs(P0, P0_ref)),
 )
+
+# ---------------------------------------------------------------------------
+# 5. Weak-axisymmetric branch: signature (1, 1/2, -1) and scalar amplitudes
+#    (paper Sec. 5 / card Checks item 2)
+# ---------------------------------------------------------------------------
+# On the weak-axisymmetric Y_20 branch the grouped bundle defects scale as
+#   delta D_(A,n) = eps * lambda_A * D_n^(1),  delta N_(A,0) = eps * lambda_A * N_0^(1)
+# with (lambda_20, lambda_21, lambda_22) = (1, 1/2, -1). Feeding these lane-scaled
+# inputs through the SAME linear outlet maps verified in Sec. 2 must reproduce the
+# grouped signature on delta kappa_W / delta gamma_W and collapse to two scalar
+# amplitudes kappa1, gamma1 with the closed forms boxed in notes Sec. 5.
+D0_1, D2_1, N0_1 = sp.symbols('D0_1 D2_1 N0_1', real=True)
+eps_l = sp.symbols('eps_l', real=True)
+
+def kappa_map(dD2_, dD0_):
+    return 3*(1 - sigma)*(dD2_ + dD0_/9)/(sigma*D0)
+
+def gamma_map(dN0_, dD0_):
+    return -(1 - sigma)*(dN0_ - P0*dD0_)/(9*sigma*N0)
+
+kappa1 = 3*(1 - sigma)*(D2_1 + D0_1/9)/(sigma*D0)
+gamma1 = -(1 - sigma)*(N0_1 - P0*D0_1)/(9*sigma*N0)
+
+banner("Weak-axisymmetric signature (1, 1/2, -1) and scalar amplitudes")
+lanes = {20: sp.Integer(1), 21: sp.Rational(1, 2), 22: sp.Integer(-1)}
+dkW = {}
+dgW = {}
+for A, lam in lanes.items():
+    dkW[A] = kappa_map(eps_l*lam*D2_1, eps_l*lam*D0_1)
+    dgW[A] = gamma_map(eps_l*lam*N0_1, eps_l*lam*D0_1)
+    expect_zero(f"delta kappa_W^({A}) - eps lambda kappa1", dkW[A] - eps_l*lam*kappa1)
+    expect_zero(f"delta gamma_W^({A}) - eps lambda gamma1", dgW[A] - eps_l*lam*gamma1)
+# grouped signature ratios (lambda_20, lambda_21, lambda_22) = (1, 1/2, -1)
+expect_zero("kappa signature: 21 = (1/2) 20", dkW[21] - sp.Rational(1, 2)*dkW[20])
+expect_zero("kappa signature: 22 = -20", dkW[22] + dkW[20])
+expect_zero("gamma signature: 21 = (1/2) 20", dgW[21] - sp.Rational(1, 2)*dgW[20])
+expect_zero("gamma signature: 22 = -20", dgW[22] + dgW[20])
 
 print("\nCarry-forward formulas:")
 print("  delta kappa_W^(A) = 3(1-sigma_*) [delta D_(A,2) + delta D_(A,0)/9] / (sigma_* D0)")

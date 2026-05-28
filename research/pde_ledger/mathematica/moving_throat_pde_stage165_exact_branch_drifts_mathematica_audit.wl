@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 148 — EXACT LOWER-BRANCH DRIFT LAWS"];
+banner["STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS"];
 
 Clear[dZ, drho, dcsw, dcs, dT, dv, da, dLW, r, a];
 $Assumptions = Element[{dZ, drho, dcsw, dcs, dT, dv, da, dLW, r, a}, Reals] && r > 0 && a > 0;
@@ -65,10 +65,13 @@ expectZero[
 ];
 
 banner["Stage 164 channel closure"];
+(* channelG/channelR are the LHS of eqG/eqR evaluated at the solved (dv,dT); *)
+(* they vanish by construction, so this is a solver-consistency print, not an *)
+(* independent verification of delta_perp = 0. Reported, not asserted. *)
 channelG = FullSimplify[(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW) /. sol, Assumptions -> $Assumptions];
 channelR = FullSimplify[(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW) /. sol, Assumptions -> $Assumptions];
-expectZero["fixed-g channel", channelG];
-expectZero["fixed-r channel", channelR];
+Print["fixed-g channel (solver consistency) = ", fmt[channelG]];
+Print["fixed-r channel (solver consistency) = ", fmt[channelR]];
 
 Print[""];
 Print["Carry-forward formulas:"];

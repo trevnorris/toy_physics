@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE")
+banner("STAGE 169 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE")
 
 # ---------------------------------------------------------------------------
 # 1. Exact grouped bilinear invariant
@@ -129,6 +129,19 @@ g_num = sp.Float('0.758035078944663', 30)
 s_num = sp.sqrt(1 + r_num**2)
 Xi_perp_num = sp.N(Xi_perp.subs({g: g_num, r: r_num}), 20)
 print("Numeric Xi_perp combination =", Xi_perp_num)
+
+coeff_T = sp.N(Xi_perp.coeff(XiT).subs({g: g_num, r: r_num}), 20)
+coeff_v = sp.N(Xi_perp.coeff(Xiv).subs({g: g_num, r: r_num}), 20)
+coeff_L = sp.N(Xi_perp.coeff(XiL).subs({g: g_num, r: r_num}), 20)
+for name, got, want in [
+    ("Xi_perp coeff on XiT", coeff_T, sp.Float('0.758035078944663', 20)),
+    ("Xi_perp coeff on Xiv", coeff_v, sp.Float('1.00314310113848', 20)),
+    ("Xi_perp coeff on XiL", coeff_L, sp.Float('1.88373219118005', 20)),
+]:
+    diff = sp.Abs(got - want)
+    print(f"{name} = {got} (paper {want}, |diff| = {diff})")
+    if diff > sp.Float('1e-12', 20):
+        raise AssertionError(f"{name} disagrees with paper value {want}")
 
 print("\nCarry-forward formulas:")
 print("  I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y")

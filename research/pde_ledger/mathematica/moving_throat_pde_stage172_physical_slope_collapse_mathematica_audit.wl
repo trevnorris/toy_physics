@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM"];
+banner["STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM"];
 
 Clear[d0, n0, u2, dD0, dD2, dD4, dN0, eps, lam, sigma];
 $Assumptions = Element[{d0, n0, u2, dD0, dD2, dD4, dN0, eps, lam, sigma}, Reals] &&
@@ -39,8 +39,11 @@ nA0 = n0 + eps*lam*dN0;
 u2A = -dA2/dA0;
 p0A = nA0/dA0;
 
-deltaU2 = FullSimplify[(Normal[Series[u2A, {eps, 0, 1}]] - u2)/(eps*lam), Assumptions -> $Assumptions];
-deltaP0 = FullSimplify[(Normal[Series[p0A, {eps, 0, 1}]] - p0)/(eps*lam), Assumptions -> $Assumptions];
+(* Independent route: differentiate the implicit defining relations, not the explicit quotient. *)
+du2sol = Solve[D[(u2 + t*deltaU2)*(d0 + t*dD0) + (d2 + t*dD2), t] == 0 /. t -> 0, deltaU2];
+deltaU2 = FullSimplify[deltaU2 /. First[du2sol], Assumptions -> $Assumptions];
+dp0sol = Solve[D[(p0 + t*deltaP0)*(d0 + t*dD0) - (n0 + t*dN0), t] == 0 /. t -> 0, deltaP0];
+deltaP0 = FullSimplify[deltaP0 /. First[dp0sol], Assumptions -> $Assumptions];
 
 Print["delta u_2^(A) = ", fmt[deltaU2]];
 Print["delta P_0^(A) = ", fmt[deltaP0]];
@@ -73,8 +76,12 @@ dA4Star = d4Star + eps*lam*dD4;
 u2AStar = -dA2Star/dA0;
 u4AStar = (dA2Star^2 - dA0*dA4Star)/dA0^2;
 
-deltaU2Star = FullSimplify[(Normal[Series[u2AStar, {eps, 0, 1}]] - u2Star)/(eps*lam), Assumptions -> $Assumptions];
-deltaU4Star = FullSimplify[(Normal[Series[u4AStar, {eps, 0, 1}]] - u4Star)/(eps*lam), Assumptions -> $Assumptions];
+du2StarSol = Solve[D[(u2Star + t*deltaU2Star)*(d0 + t*dD0) + (d2Star + t*dD2), t] == 0 /. t -> 0, deltaU2Star];
+deltaU2Star = FullSimplify[deltaU2Star /. First[du2StarSol], Assumptions -> $Assumptions];
+du4StarSol = Solve[
+  D[(u4Star + t*deltaU4Star)*(d0 + t*dD0)^2 - ((d2Star + t*dD2)^2 - (d0 + t*dD0)*(d4Star + t*dD4)), t] == 0 /. t -> 0,
+  deltaU4Star];
+deltaU4Star = FullSimplify[deltaU4Star /. First[du4StarSol], Assumptions -> $Assumptions];
 
 Print["delta u_2^(A) on canonical branch = ", fmt[deltaU2Star]];
 Print["delta u_4^(A) on canonical branch = ", fmt[deltaU4Star]];

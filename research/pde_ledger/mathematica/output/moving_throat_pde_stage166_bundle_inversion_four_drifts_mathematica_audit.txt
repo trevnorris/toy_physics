@@ -1,19 +1,23 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage166_bundle_inversion_four_drifts_mathematica_audit.wl
-# Date: 2026-05-11T13:19:29-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 149 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS
+STAGE 166 — EXACT BUNDLE INVERSION OF THE LAST FOUR DRIFTS
 ========================================================================================
 drho = dTheta/2
 da   = (2*dKs - dTheta)/4
 dcs  = (10*dKs + 4*dP - 5*dTheta)/20
 dZ   = dKq - (2*dP)/5
+
+========================================================================================
+General inversion forms (paper Sec. 2)
+========================================================================================
+drho general = 0
+PASS: drho general
+da general = 0
+PASS: da general
+dcs general = 0
+PASS: dcs general
+dZ general = 0
+PASS: dZ general
 
 ========================================================================================
 Forward verification
@@ -26,6 +30,20 @@ Kq law = 0
 PASS: Kq law
 P0 law = 0
 PASS: P0 law
+
+========================================================================================
+Independent matrix-inverse cross-check
+========================================================================================
+matrix drho = 0
+PASS: matrix drho
+matrix da = 0
+PASS: matrix da
+matrix dcs = 0
+PASS: matrix dcs
+matrix dZ = 0
+PASS: matrix dZ
+matrix round-trip = 0
+PASS: matrix round-trip
 
 ========================================================================================
 Equivalent full-bundle form with P_0 = N_0 / D_0
@@ -66,5 +84,3 @@ Carry-forward formulas:
   with delta ln P_0 = delta ln N_0 - delta ln D_0 on the isotropic bundle.
 
 Stage 166 Mathematica audit passed.
-
-EXIT_CODE: 0

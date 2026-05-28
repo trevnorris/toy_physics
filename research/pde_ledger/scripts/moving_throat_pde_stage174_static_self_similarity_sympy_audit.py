@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION")
+banner("STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION")
 
 # ---------------------------------------------------------------------------
 # 1. Exact weighted decomposition of the conservative static slope

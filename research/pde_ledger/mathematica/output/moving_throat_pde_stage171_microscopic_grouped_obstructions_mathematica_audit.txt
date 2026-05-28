@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.wl
-# Date: 2026-05-11T13:20:44-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
+STAGE 171 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS
 ========================================================================================
 K_A split = 0
 PASS: K_A split
@@ -38,8 +30,12 @@ delta N0 formula = 0
 PASS: delta N0 formula
 Z obstruction bundle = 0
 PASS: Z obstruction bundle
+Z obstruction bundle (series route) = 0
+PASS: Z obstruction bundle (series route)
 N obstruction bundle = 0
 PASS: N obstruction bundle
+N obstruction bundle (series route) = 0
+PASS: N obstruction bundle (series route)
 weak-axisymmetric K obstruction lambda=1 = 0
 PASS: weak-axisymmetric K obstruction lambda=1
 weak-axisymmetric G obstruction lambda=1 = 0
@@ -59,5 +55,3 @@ Carry-forward formulas:
   The weak grouped branch collapses to the scalar pair (K_1, G_1).
 
 Stage 171 Mathematica audit passed.
-
-EXIT_CODE: 0

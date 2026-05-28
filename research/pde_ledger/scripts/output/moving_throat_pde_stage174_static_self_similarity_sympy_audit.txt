@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
-# Date: 2026-05-11T12:47:23-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION
+STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION
 ========================================================================================
 weight identity = 0
 delta_D weighted decomposition = 0
@@ -45,5 +37,3 @@ Carry-forward formulas:
   delta_Z = weighted average of dln(Q_r/Delta_r)
   delta_N = weighted average of 2 dln(P_r/Delta_r)
   static self-similarity => Xi_load = 0
-
-EXIT_CODE: 0

@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 147 — MICROSCOPIC LOG-IMBALANCE CHANNELS")
+banner("STAGE 164 — MICROSCOPIC LOG-IMBALANCE CHANNELS")
 
 # ------------------------------------------------------------------
 # 1. Exact parent-ratio identities

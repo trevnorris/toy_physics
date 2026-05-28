@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
-# Date: 2026-05-11T12:47:20-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
+STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
 ========================================================================================
 delta u_2^(A) = (-dD0*u2 - dD2)/D0
 delta P_0^(A) = (D0*dN0 - N0*dD0)/D0**2
@@ -45,5 +37,3 @@ Carry-forward formulas:
   delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)
   delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0
   Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch
-
-EXIT_CODE: 0

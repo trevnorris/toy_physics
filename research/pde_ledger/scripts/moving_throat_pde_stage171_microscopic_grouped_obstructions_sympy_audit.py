@@ -3,7 +3,7 @@
 moving_throat_pde_stage171_microscopic_grouped_obstructions_sympy_audit.py
 
 SymPy-backed audit for the microscopic decomposition of the linear grouped outlet
-obstructions from Stage 170.
+obstructions for Stage 171.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 154 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS")
+banner("STAGE 171 — MICROSCOPIC GROUPED OUTLET OBSTRUCTIONS")
 
 # ---------------------------------------------------------------------------
 # 1. Exact decomposition of K_A and G_A.

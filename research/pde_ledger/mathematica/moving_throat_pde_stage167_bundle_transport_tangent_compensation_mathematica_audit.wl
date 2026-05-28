@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 150 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION"];
+banner["STAGE 167 — BUNDLE TRANSPORT AND TANGENT-COMPENSATION"];
 
 Clear[dTheta, dKs, dKq, dP, drho, da, dcs, dZ, dcsw, dell, dLW, dv, dT, dgq, dgs, dIsq, dlam, drc, dr, dg, gstar, rstar];
 $Assumptions = Element[{dTheta, dKs, dKq, dP, drho, da, dcs, dZ, dcsw, dell, dLW, dv, dT, dgq, dgs, dIsq, dlam, drc, dr, dg, gstar, rstar}, Reals] && gstar > 0 && rstar > 0;

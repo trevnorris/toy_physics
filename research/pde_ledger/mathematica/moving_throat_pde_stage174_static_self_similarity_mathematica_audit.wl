@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION"];
+banner["STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION"];
 
 Clear[k, b0, z0, k1, b01, z01, n0, n01];
 $Assumptions = Element[{k, b0, z0, k1, b01, z01, n0, n01}, Reals] &&
@@ -64,11 +64,8 @@ $Assumptions = Element[{c1, c2, w1, w2, dc1, dc2, dw1, dw2}, Reals] &&
 b1 = c1^2/w1^2;
 b2Term = c2^2/w2^2;
 b0Two = FullSimplify[b1 + b2Term, Assumptions -> $Assumptions];
-b01Two = FullSimplify[
-  2*c1*dc1/w1^2 - 2*c1^2*dw1/w1^3 +
-  2*c2*dc2/w2^2 - 2*c2^2*dw2/w2^3,
-  Assumptions -> $Assumptions
-];
+b0Eps = (c1 + eps*dc1)^2/(w1 + eps*dw1)^2 + (c2 + eps*dc2)^2/(w2 + eps*dw2)^2;
+b01Two = FullSimplify[D[b0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
 
 rhoB1 = FullSimplify[b1/b0Two, Assumptions -> $Assumptions];
 rhoB2 = FullSimplify[b2Term/b0Two, Assumptions -> $Assumptions];
@@ -86,11 +83,8 @@ $Assumptions = Element[{q1, q2, delta1, delta2, q1p, q2p, delta1p, delta2p}, Rea
 z1 = q1/delta1;
 z2Term = q2/delta2;
 z0Two = FullSimplify[z1 + z2Term, Assumptions -> $Assumptions];
-z01Two = FullSimplify[
-  (delta1*q1p - q1*delta1p)/delta1^2 +
-  (delta2*q2p - q2*delta2p)/delta2^2,
-  Assumptions -> $Assumptions
-];
+z0Eps = (q1 + eps*q1p)/(delta1 + eps*delta1p) + (q2 + eps*q2p)/(delta2 + eps*delta2p);
+z01Two = FullSimplify[D[z0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
 
 rhoZ1 = FullSimplify[z1/z0Two, Assumptions -> $Assumptions];
 rhoZ2 = FullSimplify[z2Term/z0Two, Assumptions -> $Assumptions];
@@ -108,11 +102,8 @@ $Assumptions = Element[{p1, p2, p1p, p2p, delta1, delta2, delta1p, delta2p}, Rea
 n1s = p1^2/delta1^2;
 n2s = p2^2/delta2^2;
 n0Two = FullSimplify[n1s + n2s, Assumptions -> $Assumptions];
-n01Two = FullSimplify[
-  2*p1*p1p/delta1^2 - 2*p1^2*delta1p/delta1^3 +
-  2*p2*p2p/delta2^2 - 2*p2^2*delta2p/delta2^3,
-  Assumptions -> $Assumptions
-];
+n0Eps = (p1 + eps*p1p)^2/(delta1 + eps*delta1p)^2 + (p2 + eps*p2p)^2/(delta2 + eps*delta2p)^2;
+n01Two = FullSimplify[D[n0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
 
 rhoN1 = FullSimplify[n1s/n0Two, Assumptions -> $Assumptions];
 rhoN2 = FullSimplify[n2s/n0Two, Assumptions -> $Assumptions];

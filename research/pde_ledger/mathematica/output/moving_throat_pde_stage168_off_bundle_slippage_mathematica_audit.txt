@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage168_off_bundle_slippage_mathematica_audit.wl
-# Date: 2026-05-11T13:19:58-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 151 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION
+STAGE 168 — EXACT OFF-BUNDLE SLIPPAGE DECOMPOSITION
 ========================================================================================
 delta_perp = -2*a*g + 3*csw*g - 2*g*lW - a/(2*s) + cs/(2*s) + (3*csw)/(4*s) - (3*lW)/(4*s) - g*tM - g*vw0 - vw0/(2*s) + g*xi + xi/(4*s)
 
@@ -64,5 +56,3 @@ Carry-forward formulas:
   All first-order off-bundle conservative-even defects depend only on eps_perp.
 
 Stage 168 Mathematica audit passed.
-
-EXIT_CODE: 0

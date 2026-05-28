@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 147 — MICROSCOPIC LOG-IMBALANCE CHANNELS"];
+banner["STAGE 164 — MICROSCOPIC LOG-IMBALANCE CHANNELS"];
 
 Clear[
   ks, kq, lam, gs, gq, tm, js, zq, mu0, lw, qstar, vw0, isq, cs,
@@ -114,6 +114,56 @@ Print["healing-locked first product = ", fmt[firstProdHeal]];
 Print["healing-locked second product = ", fmt[secondProdHeal]];
 expectZero["healing first product exact formula", firstProdHeal - firstHealExpected];
 expectZero["healing second product exact formula", secondProdHeal - secondHealExpected];
+
+banner["Independent series route: log channels from explicit monomials"];
+
+(* Take the already-asserted explicit healing-locked product monomials and
+   extract each log-channel coefficient vector by a first-order multiplicative
+   perturbation p -> p (1 + eps dlnP), reading off the O(eps) coefficient of
+   the perturbed/unperturbed product RATIO. Using the ratio (not Log) avoids the
+   negative-sign branch of the first product. This route uses Series + Coefficient,
+   which the SymPy script does not use, so it is an independent derivation. *)
+Clear[eps];
+pertRule = {
+  zq  -> zq  (1 + eps dlnZ),
+  csw -> csw (1 + eps dlncsw),
+  rhoW -> rhoW (1 + eps dlnrho),
+  tm  -> tm  (1 + eps dlnTm),
+  vw0 -> vw0 (1 + eps dlnv),
+  a   -> a   (1 + eps dlna),
+  lw  -> lw  (1 + eps dlnLw),
+  cs  -> cs  (1 + eps dlncs)
+};
+
+firstRatio  = (firstHealExpected /. pertRule) / firstHealExpected;
+secondRatio = (secondHealExpected /. pertRule) / secondHealExpected;
+
+firstHealSeries  = Coefficient[Normal[Series[firstRatio,  {eps, 0, 1}]], eps];
+secondHealSeries = Coefficient[Normal[Series[secondRatio, {eps, 0, 1}]], eps];
+
+firstHealHand  = dlnZ + 3*dlncsw - dlnrho - dlnTm - dlnv - 2*dlna - 2*dlnLw;
+secondHealHand = dlnZ + 2*dlncs + 3*dlncsw - dlnrho - 2*dlnv - 2*dlna - 3*dlnLw;
+
+expectZero["first channel via series route",  firstHealSeries  - firstHealHand];
+expectZero["second channel via series route", secondHealSeries - secondHealHand];
+
+(* Build delta_perp from the series-derived coefficient vectors and reconcile
+   against the compressed A_*/B_*/C_* target. *)
+bWeight = 1/(4*Sqrt[1 + rstar^2]);
+deltaPerpSeries = Expand[gstar*firstHealSeries + bWeight*secondHealSeries];
+deltaPerpSeriesExpected = Expand[
+  (gstar + bWeight)*(dlnZ - dlnrho)
+  + 3*(gstar + bWeight)*dlncsw
+  + 2*bWeight*dlncs
+  - gstar*dlnTm
+  - (gstar + 2*bWeight)*dlnv
+  - 2*(gstar + bWeight)*dlna
+  - (2*gstar + 3*bWeight)*dlnLw
+];
+expectZero["delta_perp via series route", deltaPerpSeries - deltaPerpSeriesExpected];
+
+Clear[eps, pertRule, firstRatio, secondRatio, firstHealSeries, secondHealSeries,
+      firstHealHand, secondHealHand, bWeight, deltaPerpSeries, deltaPerpSeriesExpected];
 
 banner["delta_perp on the healing-locked branch"];
 

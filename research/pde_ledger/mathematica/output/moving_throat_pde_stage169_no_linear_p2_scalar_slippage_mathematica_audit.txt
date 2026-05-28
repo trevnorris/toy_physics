@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage169_no_linear_p2_scalar_slippage_mathematica_audit.wl
-# Date: 2026-05-11T13:20:15-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
+STAGE 169 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE
 ========================================================================================
 
 ========================================================================================
@@ -47,6 +39,12 @@ Stage 168 weighted transport
 eps_perp - Xi_perp Igrp = 0
 PASS: eps_perp - Xi_perp Igrp
 Numeric Xi_perp combination = 1.88373219118004561473246690540253089711`20.*xiL + 0.75803507894466304328773276210995391011`20.*xiT + 1.00314310113847606205906701623170262804`20.*xiv
+Xi_perp coeff on xiT = 0.75803507894466304328773276210995391011`20. (paper 0.758035078944663)
+PASS: Xi_perp coeff on xiT
+Xi_perp coeff on xiv = 1.00314310113847606205906701623170262804`20. (paper 1.00314310113848)
+PASS: Xi_perp coeff on xiv
+Xi_perp coeff on xiL = 1.88373219118004561473246690540253089711`20. (paper 1.88373219118005)
+PASS: Xi_perp coeff on xiL
 
 Carry-forward formulas:
   I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y
@@ -55,5 +53,3 @@ Carry-forward formulas:
   Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.
 
 Stage 169 Mathematica audit passed.
-
-EXIT_CODE: 0

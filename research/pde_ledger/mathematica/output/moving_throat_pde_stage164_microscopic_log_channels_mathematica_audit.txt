@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.wl
-# Date: 2026-05-11T13:19:00-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 147 — MICROSCOPIC LOG-IMBALANCE CHANNELS
+STAGE 164 — MICROSCOPIC LOG-IMBALANCE CHANNELS
 ========================================================================================
 g/r - (g_q K_s)/(g_s lam) = 0
 PASS: g/r - (g_q K_s)/(g_s lam)
@@ -40,6 +32,16 @@ healing first product exact formula = 0
 PASS: healing first product exact formula
 healing second product exact formula = 0
 PASS: healing second product exact formula
+
+========================================================================================
+Independent series route: log channels from explicit monomials
+========================================================================================
+first channel via series route = 0
+PASS: first channel via series route
+second channel via series route = 0
+PASS: second channel via series route
+delta_perp via series route = 0
+PASS: delta_perp via series route
 
 ========================================================================================
 delta_perp on the healing-locked branch
@@ -79,5 +81,3 @@ Carry-forward formulas:
   dln[(K_s K_q)/lam^2] = - dln(r_c)
   On the healing-locked branch the two channels reduce to direct microscopic drifts.
   delta_perp is the weighted sum of those two channels.
-
-EXIT_CODE: 0

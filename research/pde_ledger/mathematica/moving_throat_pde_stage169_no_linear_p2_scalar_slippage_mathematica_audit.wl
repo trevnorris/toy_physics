@@ -28,7 +28,7 @@ sphereAvg[expr_] := FullSimplify[
   Assumptions -> $Assumptions
 ];
 
-banner["STAGE 152 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE"];
+banner["STAGE 169 — NO LINEAR GROUPED-P2 SCALAR SLIPPAGE"];
 
 Clear[x20, x21, x22, y20, y21, y22, eps, x1, y1, x0, y0, th, ph, x0s, e, xiL, xiv, xiT, iGrp, g, r];
 $Assumptions =
@@ -101,6 +101,22 @@ expectZero["eps_perp - Xi_perp Igrp", epsPerp - xiPerp*iGrp];
 rNum = SetPrecision[1.77799353547498, 30];
 gNum = SetPrecision[0.758035078944663, 30];
 Print["Numeric Xi_perp combination = ", fmt[N[xiPerp /. {g -> gNum, r -> rNum}, 20]]];
+
+coeffT = N[Coefficient[xiPerp /. {g -> gNum, r -> rNum}, xiT], 20];
+coeffV = N[Coefficient[xiPerp /. {g -> gNum, r -> rNum}, xiv], 20];
+coeffL = N[Coefficient[xiPerp /. {g -> gNum, r -> rNum}, xiL], 20];
+Module[{checks},
+  checks = {
+    {"Xi_perp coeff on xiT", coeffT, 0.758035078944663},
+    {"Xi_perp coeff on xiv", coeffV, 1.00314310113848},
+    {"Xi_perp coeff on xiL", coeffL, 1.88373219118005}
+  };
+  Do[
+    With[{nm = c[[1]], got = c[[2]], want = c[[3]]},
+      Print[nm, " = ", fmt[got], " (paper ", fmt[want], ")"];
+      If[Abs[got - want] > 10^-12, fail[nm, got - want], pass[nm]]
+    ], {c, checks}]
+];
 
 Print[""];
 Print["Carry-forward formulas:"];

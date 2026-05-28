@@ -27,7 +27,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 148 — EXACT LOWER-BRANCH DRIFT LAWS")
+banner("STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS")
 
 dZ, drho, dcsw, dcs, dT, dv, da, dLW = sp.symbols(
     "dZ drho dcsw dcs dT dv da dLW", real=True
@@ -38,9 +38,10 @@ a, LW = sp.symbols("a LW", positive=True, real=True)
 
 # 1. D/N law
 LW_law = sp.pi * a * sp.sqrt(1 + r**2) / (2 * sp.sqrt(3))
-dlog_LW = sp.simplify(sp.diff(sp.log(LW_law), sp.log(a)) if False else 1)  # documentary only
+dlog_LW = sp.simplify(a * sp.diff(sp.log(LW_law), a))
 print("D/N law: L_W =", LW_law)
 print("At fixed r_* : d ln L_W = d ln a")
+expect_zero("d ln L_W - d ln a at fixed r_*", dlog_LW - 1)
 
 # 2. Fixed-r and fixed-g channel conditions from Stage 164
 eq_r = sp.Eq(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW, 0)
@@ -78,10 +79,14 @@ expect_zero(
 )
 
 # 5. Stage 164 off-family channels vanish identically
+# NOTE: channel_g/channel_r are the LHS of eq_g/eq_r evaluated at the solved (dv,dT).
+# They vanish by construction (substituting a linear solution into its own system),
+# so this is a consistency print of the solver, not an independent verification of
+# delta_perp = 0. Reported, not asserted.
 channel_g = sp.simplify((dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW).subs({dv: dv_sol, dT: dT_sol}))
 channel_r = sp.simplify((dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW).subs({dv: dv_sol, dT: dT_sol}))
-expect_zero("fixed-g channel", channel_g)
-expect_zero("fixed-r channel", channel_r)
+print("fixed-g channel (solver consistency) =", channel_g)
+print("fixed-r channel (solver consistency) =", channel_r)
 
 print("\nCarry-forward formulas:")
 print("  d ln L_W = d ln a")

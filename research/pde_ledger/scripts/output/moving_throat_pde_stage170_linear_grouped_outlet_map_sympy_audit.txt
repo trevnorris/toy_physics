@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
-# Date: 2026-05-11T12:47:19-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 153 — LINEAR GROUPED-P2 DIRECT OUTLET MAP
+STAGE 170 — LINEAR GROUPED-P2 DIRECT OUTLET MAP
 ========================================================================================
 
 ========================================================================================
@@ -46,6 +38,20 @@ anomaly kappa coefficient = 0
 trace gamma coefficient = 0
 anomaly gamma coefficient = 0
 
+========================================================================================
+Weak-axisymmetric signature (1, 1/2, -1) and scalar amplitudes
+========================================================================================
+delta kappa_W^(20) - eps lambda kappa1 = 0
+delta gamma_W^(20) - eps lambda gamma1 = 0
+delta kappa_W^(21) - eps lambda kappa1 = 0
+delta gamma_W^(21) - eps lambda gamma1 = 0
+delta kappa_W^(22) - eps lambda kappa1 = 0
+delta gamma_W^(22) - eps lambda gamma1 = 0
+kappa signature: 21 = (1/2) 20 = 0
+kappa signature: 22 = -20 = 0
+gamma signature: 21 = (1/2) 20 = 0
+gamma signature: 22 = -20 = 0
+
 Carry-forward formulas:
   delta kappa_W^(A) = 3(1-sigma_*) [delta D_(A,2) + delta D_(A,0)/9] / (sigma_* D0)
   delta gamma_W^(A) = -(1-sigma_*) [delta N_(A,0) - P0 delta D_(A,0)] / (9 sigma_* N0)
@@ -53,5 +59,3 @@ Carry-forward formulas:
   so the full linear grouped-anisotropy outlet problem collapses to the pair
       K_A := delta D_(A,2) + delta D_(A,0)/9
       G_A := delta N_(A,0) - P0 delta D_(A,0)
-
-EXIT_CODE: 0

@@ -1,20 +1,12 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage160_bare_mixed_port_slippage_mathematica_audit.wl
-# Date: 2026-05-11T13:17:59-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 143 — BARE MIXED-PORT SLIPPAGE THEOREM
+STAGE 160 — BARE MIXED-PORT SLIPPAGE THEOREM
 ========================================================================================
-dκ_W = (3*dk0 - drc)/(3 + 3*rc)
-dγ_W = (9*dg0 - drc)/(9 + 9*rc)
+dκ_W = -((deltaR - 3*dKappa0)/(3 + 3*rStar))
+dγ_W = -((deltaR - 9*dGamma0)/(9 + 9*rStar))
 exact compensated-branch slippage identity = 0
 PASS: exact compensated-branch slippage identity
-dγ_W under dκ_W = 0 = (dg0 - dk0/3)/(1 + rc)
+dγ_W under dκ_W = 0 = (dGamma0 - dKappa0/3)/(1 + rStar)
 pure-scale harmlessness = 0
 PASS: pure-scale harmlessness
 
@@ -37,5 +29,3 @@ Carry-forward formulas
    N_Q-1 = +9 σ_* Upsilon_Pi dPi_tan / [(1-σ_*)(1+r_c)]
 
 Stage 160 Mathematica audit passed.
-
-EXIT_CODE: 0

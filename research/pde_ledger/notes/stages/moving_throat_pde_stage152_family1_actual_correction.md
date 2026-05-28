@@ -132,7 +132,7 @@ the linearized estimate, but in the same direction and by the same overall scale
 ## 4. Effective positive-family interpretation
 
 Comparing the actual first-order correction to the explicit positive-family
-interpolation from Stage 250 gives
+interpolation from Stage 148 gives
 \[
 \lambda_{\rm eff}^{(\Pi)}\approx 0.380487632771110,
 \qquad

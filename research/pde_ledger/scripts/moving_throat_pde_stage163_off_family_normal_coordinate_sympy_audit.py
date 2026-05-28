@@ -37,7 +37,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 146 — OFF-FAMILY NORMAL COORDINATE")
+banner("STAGE 163 — OFF-FAMILY NORMAL COORDINATE")
 
 # ------------------------------------------------------------------
 # 1. Parent compensation defect and compensation-ratio transport

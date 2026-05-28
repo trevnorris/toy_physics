@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
-# Date: 2026-05-11T12:47:09-06:00
-# Elapsed: 6s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 142 — HYBRID OUTLET LINEARIZATION
+STAGE 159 — HYBRID OUTLET LINEARIZATION
 ========================================================================================
 delta chi formula = 0
 delta E2 formula = 0
@@ -38,5 +30,3 @@ Carry-forward formulas:
   Delta_Q  = (delta C - 27 sigma_* delta gamma_W)/(3(1-sigma_*))
   Canonical-even preservation => delta C = delta kappa_W = 0
   Hence Delta_Q = -9 sigma_* delta gamma_W/(1-sigma_*)
-
-EXIT_CODE: 0

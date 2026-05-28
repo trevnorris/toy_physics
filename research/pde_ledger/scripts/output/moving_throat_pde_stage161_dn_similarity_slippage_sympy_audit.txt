@@ -1,18 +1,10 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
-# Date: 2026-05-11T12:47:11-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION
+STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION
 ========================================================================================
 B_W = (eps_gamma - eps_kappa)*(r_c + 1)/9
 exact similarity-defect decomposition = 0
-dB_W = d_eps_g*r_c_star/9 + d_eps_g/9 - d_eps_k*r_c_star/9 - d_eps_k/9
+dB_W = (d_eps_g - d_eps_k)*(r_c_star + 1)/9
 linearized slippage law = 0
 
 ========================================================================================
@@ -21,8 +13,9 @@ D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION
 eps_kappa = (12*LW**2 - pi**2*a**2*(r_c + 1))/(pi**2*a**2*(r_c + 1))
 d eps_kappa = (24*LW*dLW - pi**2*a**2*dr_c - 2*pi**2*a*da*(r_c + 1))/(pi**2*a**2*(r_c + 1))
 d eps_kappa identity = 0
+eps_gamma = (9*gamma0 - r_c - 1)/(r_c + 1)
 d eps_gamma = (9*d_gamma0 - dr_c)/(r_c + 1)
-d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c) = 0
+d eps_gamma = d ln gamma0 - d ln(1+r_c) = 0
 difference identity = 0
 
 ========================================================================================
@@ -52,5 +45,3 @@ Carry-forward formulas
 4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)
 5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan
 6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes.
-
-EXIT_CODE: 0

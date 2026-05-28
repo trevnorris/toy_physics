@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 142 — HYBRID OUTLET LINEARIZATION"];
+banner["STAGE 159 — HYBRID OUTLET LINEARIZATION"];
 
 Clear[rho, sigma, kappa, gamma, sigma0, drho, dsigma, dkappa, dgamma];
 $Assumptions = Element[{rho, sigma, kappa, gamma, sigma0, drho, dsigma, dkappa, dgamma}, Reals];

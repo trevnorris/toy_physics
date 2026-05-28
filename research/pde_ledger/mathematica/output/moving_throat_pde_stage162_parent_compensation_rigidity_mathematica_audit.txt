@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage162_parent_compensation_rigidity_mathematica_audit.wl
-# Date: 2026-05-11T13:18:28-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 145 — PARENT COMPENSATION-SURFACE RIGIDITY
+STAGE 162 — PARENT COMPENSATION-SURFACE RIGIDITY
 ========================================================================================
 gamma0(r) = (1 + r^2)/9
 L_W/a (r) = (Pi*Sqrt[1 + r^2])/(2*Sqrt[3])
@@ -34,5 +26,3 @@ Carry-forward formulas:
   D/N similarity defect and the reduced 2.5PN normalization defect vanish.
 
 Stage 162 Mathematica audit passed.
-
-EXIT_CODE: 0

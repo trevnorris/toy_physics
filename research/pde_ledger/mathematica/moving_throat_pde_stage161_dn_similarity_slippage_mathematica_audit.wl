@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION"];
+banner["STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION"];
 
 Clear[rc, epsKappa, epsGamma];
 $Assumptions = Element[{rc, epsKappa, epsGamma}, Reals];
@@ -37,8 +37,8 @@ expectZero["exact similarity-defect decomposition", bW - (1 + rc)*(epsGamma - ep
 Clear[eps, rcStar, drc, depsK, depsG];
 $Assumptions = Element[{eps, rcStar, drc, depsK, depsG}, Reals];
 
-bWLin = Normal[Series[((1 + rcStar + eps*drc)/9)*(eps*depsG - eps*depsK), {eps, 0, 1}]];
-dBW = Expand[Coefficient[bWLin, eps, 1]];
+bWPert = bW /. {epsKappa -> eps*depsK, epsGamma -> eps*depsG, rc -> rcStar + eps*drc};
+dBW = FullSimplify[D[bWPert, eps] /. eps -> 0];
 Print["dB_W = ", fmt[dBW]];
 expectZero["linearized slippage law", dBW - (1 + rcStar)*(depsG - depsK)/9];
 
@@ -62,11 +62,17 @@ depsKDiff = PolynomialRemainder[
 depsKDiff = FullSimplify[depsKDiff];
 expectZero["d eps_kappa identity", depsKDiff];
 
-depsGBranch = FullSimplify[9*dgamma0/(1 + rc) - drc/(1 + rc)];
+Clear[gamma0Sym, dgamma0, dlnGamma0];
+$Assumptions = $Assumptions && Element[{gamma0Sym, dgamma0, dlnGamma0}, Reals] && gamma0Sym > 0;
+epsGExact = FullSimplify[9*gamma0Sym/(1 + rc) - 1];
+Print["eps_gamma = ", fmt[epsGExact]];
+depsGDirect = D[epsGExact, gamma0Sym]*dgamma0 + D[epsGExact, rc]*drc;
+depsGBranch = FullSimplify[depsGDirect /. gamma0Sym -> (1 + rc)/9];
 Print["d eps_gamma = ", fmt[depsGBranch]];
+(* On the branch d gamma_0 = (1+r_c)/9 * d ln gamma_0. *)
 expectZero[
-  "d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)",
-  depsGBranch - (9*dgamma0/(1 + rc) - drc/(1 + rc))
+  "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
+  (depsGBranch /. dgamma0 -> (1 + rc)*dlnGamma0/9) - (dlnGamma0 - drc/(1 + rc))
 ];
 diffIdentity = PolynomialRemainder[
   Expand[

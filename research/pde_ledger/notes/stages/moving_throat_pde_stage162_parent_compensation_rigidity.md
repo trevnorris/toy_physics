@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 246 reduced the entire first-order co-evolving Family-1 normalization problem to one microscopic scalar,
+Stage 161 reduced the entire first-order co-evolving Family-1 normalization problem to one microscopic scalar,
 \[
 \Xi_{\rm slip}=\Xi_\gamma-2\Xi_L,
 \qquad
@@ -31,13 +31,13 @@ They imply two stronger statements.
 
 So the first-order reduced 2.5PN defect vanishes automatically on any co-evolving tangential deformation that remains inside the exact parent compensation family.
 
-This is stronger than Stage 246, because it no longer treats D/N similarity preservation as an extra assumption. Inside the exact parent family, it is an identity.
+This is stronger than Stage 161, because it no longer treats D/N similarity preservation as an extra assumption. Inside the exact parent family, it is an identity.
 
 ---
 
 ## 1. Exact parent compensation family
 
-Stage 221 rewrote the compensated throat-core condition in terms of the normalized parent ratios
+Stage 119 rewrote the compensated throat-core condition in terms of the normalized parent ratios
 \[
 \mathfrak r:=\frac{\lambda}{\sqrt{K_sK_q}},
 \qquad
@@ -97,13 +97,13 @@ Subtracting,
 =0.
 }
 \]
-So the Stage 246 similarity-slippage scalar vanishes identically on the exact parent family:
+So the Stage 161 similarity-slippage scalar vanishes identically on the exact parent family:
 \[
 \boxed{
 \Xi_{\rm slip}=0.
 }
 \]
-This result does **not** require the extra Stage 244 even-preservation gate.
+This result does **not** require the extra Stage 159 even-preservation gate.
 It is true for any infinitesimal motion that stays on the exact parent compensation family.
 
 Equivalently, the bare mixed side-channel remains an exact pure-scale deformation of the canonical compact outgoing branch all along that family.
@@ -185,7 +185,7 @@ Once \(\delta\mathfrak r=0\), all first-order parent-family D/N quantities freez
 \qquad
 \delta\gamma_0=0.
 \]
-Therefore the bare similarity defects of Stage 246 vanish individually,
+Therefore the bare similarity defects of Stage 161 vanish individually,
 \[
 \boxed{
 \delta\varepsilon_\kappa=0,
@@ -201,7 +201,7 @@ and so does the renormalized odd outlet defect,
 \delta\gamma_W=0.
 }
 \]
-Substituting back into the Stage 246 defect law,
+Substituting back into the Stage 161 defect law,
 \[
 \boxed{
 \Delta_Q=0,
@@ -216,7 +216,7 @@ The first-order reduced 2.5PN obstruction disappears automatically.
 
 ---
 
-## 5. Best current theorem statement after Stage 247
+## 5. Best current theorem statement after Stage 162
 
 Inside the explicit co-evolving Family-1 closure, together with the exact parent compensation family of Stages 99 and 170:
 

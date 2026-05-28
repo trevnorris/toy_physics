@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 242 left the program at a very narrow finish line:
+Stage 157 left the program at a very narrow finish line:
 
 > derive the actual deviation of the moving-throat mouth/core system from the
 > explicit co-evolving Family-1 canonical fixed point, and translate that
@@ -24,7 +24,7 @@ into the isotropic outgoing-branch deformation triple of Stages 90–92.
 
 ## 1. Renormalized canonical base point
 
-From Stage 241, the exact co-evolving compensated Family-1 point is
+From Stage 156, the exact co-evolving compensated Family-1 point is
 
 \[
 \Sigma_0^{\rm can}
@@ -60,7 +60,7 @@ The carried Family-1 core parameter is
 
 ## 2. Exact first transport step: `delta g -> delta R`
 
-Stage 239 already fixed the exact Family-1 core law
+Stage 154 already fixed the exact Family-1 core law
 
 \[
 \mathcal R(\mathfrak g)
@@ -111,7 +111,7 @@ ratio upward (`delta R > 0`).
 
 ## 3. Mouth-gain transport at the co-evolving canonical point
 
-From Stages 188–189, the actual coupled mouth gains are
+From Stages 137--138, the actual coupled mouth gains are
 
 \[
 M_s=\Sigma_0,
@@ -290,7 +290,7 @@ with linearized normalization shift
 }
 \]
 
-So the whole reduced theorem gap after Stage 242 is now exactly the Jacobian
+So the whole reduced theorem gap after Stage 157 is now exactly the Jacobian
 
 \[
 \boxed{
@@ -374,7 +374,7 @@ purely the odd mixed-channel renormalization.
 
 ---
 
-## 7. Best current reduced statement after Stage 242
+## 7. Best current reduced statement after Stage 157
 
 The program no longer needs to discover a broad new mouth/core structure.
 That structure is already explicit.

@@ -114,6 +114,11 @@ lam_T = (mp.mpf("0.508756302215085") - deltaT) / mp.mpf("0.625700104366894")
 print("lambda_eff^(Pi)   =", lam_Pi)
 print("lambda_eff^(T)    =", lam_T)
 
+expect_close("delta Pi_act scale", float(deltaPi), 0.907084414842908, tol=1e-6)
+expect_close("delta Tm_act scale", float(deltaT), 0.271653979462338, tol=1e-6)
+expect_close("lambda_eff^(Pi) scale", float(lam_Pi), 0.380487632771110, tol=1e-6)
+expect_close("lambda_eff^(T) scale", float(lam_T), 0.378939241176339, tol=1e-6)
+
 # Internal consistency checks
 expect_close("delta g from sigma1-linearized covariance check",
              mp.quad(lambda t: Sigma_star(t)*(1 - (R_star(t)-avg(R_star))) * c_kernel(t), [0,1]) - g_star,

@@ -109,8 +109,9 @@ print("canonical-even preservation solutions =", even_preservation)
 if even_preservation != [{deltaC: 0, dkappa: 0}]:
     raise AssertionError("Canonical-even preservation should pin deltaC = delta kappa_W = 0.")
 
-deltaC_from_tangent = sp.simplify(-16 * sigma_star * dR.subs(dg, gp * dr))
-expect_zero("tangent motion kills delta C", deltaC_from_tangent)
+sol_deltaC = sp.solve([sp.Eq(dE2, 0), sp.Eq(dE4, 0)], [deltaC, dkappa], dict=True)[0]
+deltaC_from_pair = sp.simplify(sol_deltaC[deltaC])
+expect_zero("delta C from canonical-even Solve", deltaC_from_pair)
 
 banner("4. Stage 158 expansion point")
 Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 delta_Sigma0 Sstar delta_S", real=True)

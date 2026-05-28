@@ -99,7 +99,7 @@ def bisect(lo: float, hi: float, target: float, iters: int = 60) -> float:
             lo = mid
     return 0.5 * (lo + hi)
 
-banner("STAGE 139 — RENORMALIZED CANONICAL BRANCH")
+banner("STAGE 156 — RENORMALIZED CANONICAL BRANCH")
 Sigma0_can = bisect(3.0, 6.0, g_star, 55)
 sig_can = solve_fixed_point(Sigma0_can)
 g_can = g(sig_can)
@@ -124,6 +124,14 @@ if abs(g_can - g_star) > 1e-10:
     raise AssertionError("Renormalized canonical branch did not restore g = g_*.")
 if abs(R_can - 0.25) > 1e-10:
     raise AssertionError("Renormalized canonical branch did not restore R = 1/4.")
+if abs(Sigma0_can - 4.651033550168867) > 1e-10:
+    raise AssertionError("Sigma0_can deviates from notes value 4.651033550168867.")
+if abs(S_can - 0.6703621156734617) > 1e-11:
+    raise AssertionError("S_can deviates from notes value 0.6703621156734617.")
+if abs(Pi_can - 3.871564377479002) > 1e-10:
+    raise AssertionError("Pi_can deviates from notes value 3.871564377479002.")
+if abs(T_hat_can - 1.4467083664567613) > 1e-10:
+    raise AssertionError("T_hat_can deviates from notes value 1.4467083664567613.")
 
 print("\nConclusion:")
 print("  Full co-evolution preserves the lower compensated branch,")

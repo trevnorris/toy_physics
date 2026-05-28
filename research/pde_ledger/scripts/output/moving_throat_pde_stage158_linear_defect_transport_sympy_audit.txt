@@ -1,19 +1,12 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
-# Date: 2026-05-11T12:47:03-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 141 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT
+STAGE 158 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT
 ========================================================================================
 linear delta R law = 0
-delta Ms law = 0
 delta Mq law = 0
 delta Pi law = 0
+composed delta Mq law = 0
+composed delta Pi law = 0
 linear Delta_Q law = 0
 
 ========================================================================================
@@ -33,5 +26,3 @@ Carry-forward summary:
   delta Mq = -(1/4) delta Sigma0 + Sigma0_can/sqrt(1+r_F1^2) delta g + O(2)
   delta Pi = (1-S_can/4) delta Sigma0 - (Sigma0_can/4) delta S + Sigma0_can*S_can/sqrt(1+r_F1^2) delta g + O(2)
   Delta_Q  = 5 b + a0/3 + 9 a5 + O(2)
-
-EXIT_CODE: 0

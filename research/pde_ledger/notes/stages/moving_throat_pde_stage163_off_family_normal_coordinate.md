@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 247 showed that the first-order reduced \(2.5\)PN quadrupole-normalization defect vanishes automatically if the true co-evolving branch stays on the exact lower parent compensation family.
+Stage 162 showed that the first-order reduced \(2.5\)PN quadrupole-normalization defect vanishes automatically if the true co-evolving branch stays on the exact lower parent compensation family.
 
 So the next serious question is no longer broad:
 
@@ -208,13 +208,13 @@ so numerically
 }
 \]
 
-This is the microscopic normal-coordinate formula Stage 247 was asking for.
+This is the microscopic normal-coordinate formula Stage 162 was asking for.
 
 ---
 
 ## 4. Transport into the outlet-surface defects
 
-Stage 244 already showed that the compensated hybrid outlet surface is monitored by
+Stage 159 already showed that the compensated hybrid outlet surface is monitored by
 \[
 \delta\mathcal C
 :=
@@ -289,13 +289,13 @@ Inside the fixed compensated hybrid class (\(\delta\kappa_W=0\)), exact first-or
 \delta_\perp=0.
 }
 \]
-That is the reduced theorem-level content of the earlier Stage 244 even gate.
+That is the reduced theorem-level content of the earlier Stage 159 even gate.
 
 ---
 
 ## 5. Tangent/normal decomposition of the mouth-bias transport
 
-Using the exact Stage 239 transport law
+Using the exact Stage 154 transport law
 \[
 \delta\Pi
 =
@@ -357,7 +357,7 @@ So the normal off-family drift enters the mouth bias with a completely explicit 
 
 ---
 
-## 6. Best current theorem statement after Stage 248
+## 6. Best current theorem statement after Stage 163
 
 The co-evolving Family-1 branch now has a full first-order tangent/normal decomposition.
 
@@ -415,5 +415,5 @@ It is the much smaller question:
 > \]
 > on the true moving-throat branch?
 
-If that scalar vanishes, Stage 247 is recovered and the first-order reduced \(2.5\)PN obstruction disappears automatically.
+If that scalar vanishes, Stage 162 is recovered and the first-order reduced \(2.5\)PN obstruction disappears automatically.
 If it does not, the whole first-order defect ledger is already explicit.

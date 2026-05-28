@@ -26,7 +26,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 137 — EXACT CO-EVOLVING CORE–MOUTH MAP")
+banner("STAGE 154 — EXACT CO-EVOLVING CORE–MOUTH MAP")
 
 g, r, dg = sp.symbols("g r dg", real=True)
 R = (g - r)**2 / (1 + r**2)

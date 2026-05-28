@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage156_renormalized_canonical_branch_mathematica_audit.wl
-# Date: 2026-05-11T13:17:01-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 139 — RENORMALIZED CANONICAL BRANCH
+STAGE 156 — RENORMALIZED CANONICAL BRANCH
 ========================================================================================
 g_fp scan on [3,6] = {{3., 0.72374962253914}, {3.5, 0.7350004257810926}, {4., 0.7454706602213994}, {4.5, 0.7552219597759368}, {5., 0.7643130503561042}, {5.5, 0.7727989420213213}, {6., 0.7807305570148612}}
 monotone increase on scan grid = True
@@ -40,5 +32,3 @@ PASS: T_hat_can numeric check
 Conclusion:
   Full co-evolution preserves the lower compensated branch,
   but only after a unique upward traction renormalization.
-
-EXIT_CODE: 0

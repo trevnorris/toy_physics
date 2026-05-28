@@ -29,7 +29,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[res, pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 139 — RENORMALIZED CANONICAL BRANCH"];
+banner["STAGE 156 — RENORMALIZED CANONICAL BRANCH"];
 
 rF1 = 1.77799353547498;
 gStar = 0.758035078944663;

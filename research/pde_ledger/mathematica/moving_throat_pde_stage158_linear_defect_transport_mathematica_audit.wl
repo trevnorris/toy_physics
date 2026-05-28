@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 141 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT"];
+banner["STAGE 158 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT"];
 
 Clear[g, r, dg];
 $Assumptions = Element[{g, r, dg}, Reals];
@@ -38,11 +38,9 @@ expectZero["linear delta R law", rLin - rExpected];
 Clear[sigma0, dSigma0, rStar, dR];
 $Assumptions = Element[{sigma0, dSigma0, rStar, dR}, Reals];
 
-mS = sigma0 + dSigma0;
 mQ = -(sigma0 + dSigma0)*(rStar + dR);
 mQLin = Expand[mQ] /. dSigma0*dR -> 0;
 mQ0 = -sigma0*rStar;
-expectZero["delta Ms law", mS - sigma0 - dSigma0];
 expectZero["delta Mq law", (mQLin - mQ0) - (-rStar*dSigma0 - sigma0*dR)];
 
 Clear[sStar, dS];
@@ -53,6 +51,18 @@ piLin = Expand[piExpr] /. {dSigma0*dR -> 0, dSigma0*dS -> 0, dR*dS -> 0};
 pi0 = sigma0*(1 - rStar*sStar);
 dPiExpected = (1 - rStar*sStar)*dSigma0 - sigma0*(rStar*dS + sStar*dR);
 expectZero["delta Pi law", (piLin - pi0) - dPiExpected];
+
+Clear[dgSym, rSym];
+$Assumptions = Element[{sigma0, dSigma0, sStar, dS, dgSym, rSym}, Reals] && rSym > 0;
+dRFromDg = -dgSym/Sqrt[1 + rSym^2];
+
+dMqComposed = -(1/4)*dSigma0 - sigma0*dRFromDg;
+dMqBoxed = -(1/4)*dSigma0 + (sigma0/Sqrt[1 + rSym^2])*dgSym;
+expectZero["composed delta Mq law", Expand[dMqComposed - dMqBoxed]];
+
+dPiComposed = (1 - sStar/4)*dSigma0 - sigma0*((1/4)*dS + sStar*dRFromDg);
+dPiBoxed = (1 - sStar/4)*dSigma0 - (sigma0/4)*dS + (sigma0*sStar/Sqrt[1 + rSym^2])*dgSym;
+expectZero["composed delta Pi law", Expand[dPiComposed - dPiBoxed]];
 
 Clear[eps, s, b, a0, a5];
 $Assumptions = Element[{eps, s, b, a0, a5}, Reals];

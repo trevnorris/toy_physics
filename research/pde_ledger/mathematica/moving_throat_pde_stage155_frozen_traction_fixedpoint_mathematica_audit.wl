@@ -23,7 +23,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"];
+banner["STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"];
 
 rF1 = 1.77799353547498;
 gStar = 0.758035078944663;

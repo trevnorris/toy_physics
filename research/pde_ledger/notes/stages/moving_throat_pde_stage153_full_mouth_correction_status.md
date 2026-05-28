@@ -25,7 +25,7 @@ broadens the actual source relative to the tangent exponential branch.
 
 ## Actual first-order Family-1 correction
 
-Projecting the exact residual against the Stage 249 rigidity kernel gives
+Projecting the exact residual against the Stage 147 rigidity kernel gives
 \[
 \delta\mathfrak g_{\rm act}\approx -0.0648069688,
 \qquad

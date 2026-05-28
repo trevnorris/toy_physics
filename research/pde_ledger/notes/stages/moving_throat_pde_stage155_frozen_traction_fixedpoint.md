@@ -110,7 +110,7 @@ close to the old canonical bias:
 
 ## 3. Exact first-order transport check
 
-Using the exact transport law from Stage 239,
+Using the exact transport law from Stage 154,
 \[
 \delta\mathcal R
 =

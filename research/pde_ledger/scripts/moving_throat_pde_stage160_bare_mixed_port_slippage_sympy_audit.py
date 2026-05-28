@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 143 — BARE MIXED-PORT SLIPPAGE THEOREM")
+banner("STAGE 160 — BARE MIXED-PORT SLIPPAGE THEOREM")
 
 eps = sp.symbols("eps", real=True)
 rc, drc = sp.symbols("r_c dr_c", real=True)

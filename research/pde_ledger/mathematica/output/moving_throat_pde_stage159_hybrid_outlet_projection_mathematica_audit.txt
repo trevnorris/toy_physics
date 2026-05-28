@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage159_hybrid_outlet_projection_mathematica_audit.wl
-# Date: 2026-05-11T13:17:45-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 142 — HYBRID OUTLET LINEARIZATION
+STAGE 159 — HYBRID OUTLET LINEARIZATION
 ========================================================================================
 delta chi formula = 0
 PASS: delta chi formula
@@ -46,5 +38,3 @@ Carry-forward formulas:
   Hence Delta_Q = -9 sigma_* delta gamma_W/(1-sigma_*)
 
 Stage 159 Mathematica audit passed.
-
-EXIT_CODE: 0

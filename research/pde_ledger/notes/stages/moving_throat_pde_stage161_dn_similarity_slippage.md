@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 245 reduced the whole first-order co-evolving Family-1 normalization problem to one scalar susceptibility:
+Stage 160 reduced the whole first-order co-evolving Family-1 normalization problem to one scalar susceptibility:
 \[
 \delta\mathfrak B_W
 =
@@ -232,7 +232,7 @@ Then the exact linear bare slippage law becomes
 \delta\Pi_{\rm tan}.
 }
 \]
-So the Stage 245 susceptibility is
+So the Stage 160 susceptibility is
 \[
 \boxed{
 \Upsilon_\Pi
@@ -282,7 +282,7 @@ So the unknown is no longer a generic DtN susceptibility. It is one dimensionles
 
 ## 5. Collapse of the final defect law
 
-Stage 245 already gave
+Stage 160 already gave
 \[
 \Delta_Q
 =
@@ -296,7 +296,7 @@ N_Q-1
 \Upsilon_\Pi\,\delta\Pi_{\rm tan}.
 \]
 
-Substituting the exact Stage 246 decomposition, all prefactors cancel:
+Substituting the exact Stage 161 decomposition, all prefactors cancel:
 \[
 \boxed{
 \Delta_Q
@@ -325,7 +325,7 @@ The first-order reduced 2.5PN defect no longer depends explicitly on the core hy
 2. the tangential mouth deformation `\delta\Pi_{\rm tan}`,
 3. the D/N similarity-slippage scalar `\Xi_{\rm slip}`.
 
-Using the Stage 244 tangential transport,
+Using the Stage 159 tangential transport,
 \[
 \delta\Pi_{\rm tan}
 =
@@ -459,7 +459,7 @@ It says that the reduced 2.5PN obstruction survives only if the tangential co-ev
 
 ---
 
-## 7. Best current theorem statement after Stage 246
+## 7. Best current theorem statement after Stage 161
 
 Inside the explicit co-evolving Family-1 closure, the compensated Robin–mixed outlet class, and the concrete D/N-tube realization of the bare mixed side-channel:
 

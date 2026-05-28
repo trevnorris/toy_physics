@@ -1,9 +1,9 @@
 
-# Moving-Throat PDE — Stage 244: Linear Projection of the Co-Evolving Family-1 Defect onto the Compensated Robin–Mixed Outlet
+# Moving-Throat PDE — Stage 159: Linear Projection of the Co-Evolving Family-1 Defect onto the Compensated Robin–Mixed Outlet
 
 ## Goal
 
-Stage 243 reduced the explicit co-evolving Family-1 mouth/core system to the linear
+Stage 158 reduced the explicit co-evolving Family-1 mouth/core system to the linear
 defect ledger
 \[
 (\delta\Sigma_0,\delta\mathfrak g,\delta\mathcal S)
@@ -50,7 +50,7 @@ the only surviving linear obstruction is the odd mixed-channel renormalization
 
 ## 1. Core-outlet loadings from the actual mouth gains
 
-Stages 188–189 already fixed the exact relation between the isotropic hybrid outlet
+Stages 137--138 already fixed the exact relation between the isotropic hybrid outlet
 loads and the mouth gains:
 \[
 M_s=\frac{L}{\Theta_\sigma}\,\rho_R,
@@ -71,7 +71,7 @@ one has
 }
 \]
 
-At the renormalized canonical Family-1 point of Stage 241,
+At the renormalized canonical Family-1 point of Stage 156,
 \[
 M_{s,*}=\Sigma_0^{\rm can},
 \qquad
@@ -90,7 +90,7 @@ so the compensated hybrid branch parameter is
 
 ## 2. Direct mouth/core transport into the hybrid loading defect
 
-Stage 243 gave
+Stage 158 gave
 \[
 \delta M_s=\delta\Sigma_0,
 \qquad
@@ -250,7 +250,7 @@ So the compensated hybrid outlet separates the remaining linear data into:
 
 ## 4. Substituting the explicit Family-1 mouth/core transport
 
-Using the Stage 243/Stage 244 transport
+Using the Stage 158/Stage 159 transport
 \[
 \delta\mathcal C=-16\sigma_*\,\delta\mathcal R
 =
@@ -374,7 +374,7 @@ So the compensated hybrid outlet does something very strong:
 > `\mathfrak g=\mathfrak g_*`, and it simultaneously forbids a first-order shift
 > in the hidden even pole parameter `\kappa_W`.
 
-This is the sharpened bridge that Stage 243 was pointing toward.
+This is the sharpened bridge that Stage 158 was pointing toward.
 
 ---
 
@@ -386,7 +386,7 @@ Once the canonical-even gate is imposed,
 \qquad
 \delta\kappa_W=0,
 \]
-so the Stage 244 defect law collapses to
+so the Stage 159 defect law collapses to
 \[
 \boxed{
 \Delta_Q
@@ -426,12 +426,12 @@ Inside the explicit compensated Robin–mixed outlet class:
 
 ## 7. Immediate PDE-facing consequence
 
-Stage 243 ended with the unresolved bridge
+Stage 158 ended with the unresolved bridge
 \[
 (\delta M_s,\delta M_q,\delta\Pi)\to(b,a_0,a_5).
 \]
 
-Inside the compensated hybrid outlet class, Stage 244 sharpens that to:
+Inside the compensated hybrid outlet class, Stage 159 sharpens that to:
 
 1. the even fingerprint already fixes the direct loading projection:
    \[

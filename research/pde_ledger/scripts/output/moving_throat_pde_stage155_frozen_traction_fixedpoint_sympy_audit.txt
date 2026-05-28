@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
-# Date: 2026-05-11T12:47:01-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT
+STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT
 ========================================================================================
 iterations = 16
 max residual = 6.084022174945858e-14
@@ -22,5 +14,3 @@ delta R from exact transport law = 0.0327139049082376621515011616188
 Conclusion:
   At frozen canonical traction, the co-evolving fixed point remains close in Pi
   but drifts to R > 1/4, so exact compensation is lost.
-
-EXIT_CODE: 0

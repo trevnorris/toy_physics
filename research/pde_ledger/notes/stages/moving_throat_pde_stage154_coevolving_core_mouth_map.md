@@ -180,7 +180,7 @@ Hence the co-evolving canonical branch is determined by the coupled conditions
 \Pi=\Sigma_0\left(1-\frac14\mathcal S[\Sigma]\right).
 \]
 
-Under the self-matched susceptibility closure from Stage 242,
+Under the self-matched susceptibility closure from Stage 140,
 \[
 \boxed{
 \Sigma_0=\frac{20}{9}\widehat T_m^2.

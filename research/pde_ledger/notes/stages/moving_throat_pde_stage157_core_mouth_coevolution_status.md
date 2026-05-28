@@ -33,11 +33,11 @@ inside this reduced closure, not merely a frozen-core correction.
 
 ## What the full solve says
 
-The numerics below are carried directly from Stage 240 for the frozen canonical
-traction on the analyzed fixed-point branch and from Stage 241 for the
+The numerics below are carried directly from Stage 155 for the frozen canonical
+traction on the analyzed fixed-point branch and from Stage 156 for the
 renormalized canonical branch.
 
-At the old canonical traction from Stage 240, the solved positive fixed point on the
+At the old canonical traction from Stage 155, the solved positive fixed point on the
 analyzed branch lands at
 \[
 \Sigma_0^*\approx 1.80594111095636
@@ -56,7 +56,7 @@ So the branch survives and stays close in bias, but it is no longer exactly
 compensated.
 
 Restoring the exact lower compensated branch requires the numerically located
-renormalized traction from Stage 241 on the analyzed monotone bracket
+renormalized traction from Stage 156 on the analyzed monotone bracket
 \[
 \Sigma_0^{\rm can}\approx 4.651033550168867,
 \qquad

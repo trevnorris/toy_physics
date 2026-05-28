@@ -77,7 +77,7 @@ def solve_fixed_point(Sigma0: float, maxit: int = 400) -> tuple[np.ndarray, int,
             return sig, n + 1, err
     return sig, maxit, err
 
-banner("STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT")
+banner("STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT")
 sig, niter, err = solve_fixed_point(Sigma0_star)
 g_fp = g(sig)
 S_fp = S(sig)
@@ -90,6 +90,11 @@ print("g_fp =", g_fp)
 print("S_fp =", S_fp)
 print("R_fp =", R_fp)
 print("Pi_fp =", Pi_fp)
+
+assert abs(g_fp - 0.693352419668063) < 1e-12, ("g_fp mismatch", g_fp)
+assert abs(S_fp - 0.6216013167514007) < 1e-12, ("S_fp mismatch", S_fp)
+assert abs(R_fp - 0.2827139049082381) < 1e-12, ("R_fp mismatch", R_fp)
+assert abs(Pi_fp - 1.4885734438300713) < 1e-12, ("Pi_fp mismatch", Pi_fp)
 
 dg = sp.Float(g_fp - g_star, 30)
 r = sp.Float(rF1, 30)

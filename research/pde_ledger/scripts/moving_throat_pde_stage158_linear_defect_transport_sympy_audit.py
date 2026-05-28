@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 141 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT")
+banner("STAGE 158 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT")
 
 # ---------------------------------------------------------------------------
 # 1. delta R from delta g
@@ -46,11 +46,9 @@ expect_zero("linear delta R law", R_lin - R_expected)
 # 2. Mouth gains
 # ---------------------------------------------------------------------------
 Sigma0, dSigma0, Rstar, dR = sp.symbols("Sigma0 dSigma0 Rstar dR", real=True)
-Ms = Sigma0 + dSigma0
 Mq = -(Sigma0 + dSigma0) * (Rstar + dR)
 Mq_lin = sp.expand(Mq).subs({dSigma0 * dR: 0})
 Mq0 = -Sigma0 * Rstar
-expect_zero("delta Ms law", Ms - Sigma0 - dSigma0)
 expect_zero("delta Mq law", (Mq_lin - Mq0) - (-Rstar * dSigma0 - Sigma0 * dR))
 
 # ---------------------------------------------------------------------------
@@ -62,6 +60,23 @@ Pi_lin = sp.expand(Pi).subs({dSigma0 * dR: 0, dSigma0 * dS: 0, dR * dS: 0})
 Pi0 = Sigma0 * (1 - Rstar * Sstar)
 dPi_expected = (1 - Rstar * Sstar) * dSigma0 - Sigma0 * (Rstar * dS + Sstar * dR)
 expect_zero("delta Pi law", (Pi_lin - Pi0) - dPi_expected)
+
+# ---------------------------------------------------------------------------
+# 3b. Composed boxed identities (notes §3-§4)
+# ---------------------------------------------------------------------------
+dg_sym, r_sym = sp.symbols("dg_sym r_sym", real=True, positive=True)
+dR_from_dg = -dg_sym / sp.sqrt(1 + r_sym**2)
+
+dMq_composed = -sp.Rational(1, 4) * dSigma0 - Sigma0 * dR_from_dg
+dMq_boxed = -sp.Rational(1, 4) * dSigma0 + Sigma0 / sp.sqrt(1 + r_sym**2) * dg_sym
+expect_zero("composed delta Mq law", sp.expand(dMq_composed - dMq_boxed))
+
+dPi_composed = (1 - sp.Rational(1, 4) * Sstar) * dSigma0 \
+    - Sigma0 * (sp.Rational(1, 4) * dS + Sstar * dR_from_dg)
+dPi_boxed = (1 - Sstar / 4) * dSigma0 \
+    - (Sigma0 / 4) * dS \
+    + (Sigma0 * Sstar) / sp.sqrt(1 + r_sym**2) * dg_sym
+expect_zero("composed delta Pi law", sp.expand(dPi_composed - dPi_boxed))
 
 # ---------------------------------------------------------------------------
 # 4. Linear outgoing-normalization defect

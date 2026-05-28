@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 145 — PARENT COMPENSATION-SURFACE RIGIDITY")
+banner("STAGE 162 — PARENT COMPENSATION-SURFACE RIGIDITY")
 
 r, dr = sp.symbols("r dr", real=True)
 pi = sp.pi

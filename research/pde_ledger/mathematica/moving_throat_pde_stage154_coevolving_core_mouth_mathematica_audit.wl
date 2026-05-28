@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 137 — EXACT CO-EVOLVING CORE-MOUTH MAP"];
+banner["STAGE 154 — EXACT CO-EVOLVING CORE-MOUTH MAP"];
 
 Clear[g, r, dg];
 $Assumptions = Element[{g, r, dg}, Reals];
@@ -34,9 +34,9 @@ Print["R(g) = ", fmt[FullSimplify[rFun]]];
 gStar = r - Sqrt[1 + r^2]/2;
 expectZero["R(g_star) - 1/4", (rFun /. g -> gStar) - 1/4];
 
-rShift = Expand[rFun /. g -> gStar + dg];
-rShiftExpected = Expand[1/4 - dg/Sqrt[1 + r^2] + dg^2/(1 + r^2)];
-expectZero["exact shifted R formula", rShift - rShiftExpected];
+rShiftSeries = Normal[Series[rFun /. g -> gStar + dg, {dg, 0, 2}]];
+rShiftExpected = 1/4 - dg/Sqrt[1 + r^2] + dg^2/(1 + r^2);
+expectZero["exact shifted R formula", rShiftSeries - rShiftExpected];
 
 banner["Linearized slope identity"];
 
@@ -44,7 +44,9 @@ Clear[sigma0, dSigma0, sStar, dS, rStar, dR];
 $Assumptions = Element[{sigma0, dSigma0, sStar, dS, rStar, dR}, Reals];
 
 piExpr = (sigma0 + dSigma0) * (1 - (rStar + dR) * (sStar + dS));
-piLin = Expand[piExpr] /. {dSigma0*dR -> 0, dSigma0*dS -> 0, dR*dS -> 0, dSigma0*dR*dS -> 0};
+Clear[epsLin];
+piExprEps = piExpr /. {dSigma0 -> epsLin*dSigma0, dR -> epsLin*dR, dS -> epsLin*dS};
+piLin = Expand[Normal[Series[piExprEps, {epsLin, 0, 1}]] /. epsLin -> 1];
 pi0 = sigma0*(1 - rStar*sStar);
 dPi = Expand[piLin - pi0];
 dPiExpected = Expand[(1 - rStar*sStar)*dSigma0 - sigma0*(rStar*dS + sStar*dR)];

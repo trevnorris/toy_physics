@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 142 — HYBRID OUTLET LINEARIZATION")
+banner("STAGE 159 — HYBRID OUTLET LINEARIZATION")
 
 # General hybrid outlet data.
 rho, sigma, kappa, gamma = sp.symbols("rho sigma kappa gamma", real=True)

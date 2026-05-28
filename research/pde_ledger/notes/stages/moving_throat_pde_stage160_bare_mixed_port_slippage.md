@@ -1,9 +1,9 @@
 
-# Moving-Throat PDE — Stage 245: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate
+# Moving-Throat PDE — Stage 160: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate
 
 ## Goal
 
-Stage 244 reduced the co-evolving Family-1 problem to one exact first-order obstruction:
+Stage 159 reduced the co-evolving Family-1 problem to one exact first-order obstruction:
 \[
 \Delta_Q
 =
@@ -134,9 +134,9 @@ hybridization itself.
 
 ---
 
-## 2. Collapse under the Stage 244 canonical-even gate
+## 2. Collapse under the Stage 159 canonical-even gate
 
-Stage 244 already proved that exact first-order preservation of the canonical even
+Stage 159 already proved that exact first-order preservation of the canonical even
 `l=2` fingerprint forces
 \[
 \delta\kappa_W=0,
@@ -218,7 +218,7 @@ and therefore
 }
 \]
 
-Combining with the Stage 244 defect law gives
+Combining with the Stage 159 defect law gives
 \[
 \boxed{
 \Delta_Q=0,
@@ -247,7 +247,7 @@ mixed-port slippage susceptibility by
 \Upsilon_\Pi\,\delta\Pi_{\rm tan},
 }
 \]
-where the Stage 244 tangential mouth deformation is
+where the Stage 159 tangential mouth deformation is
 \[
 \delta\Pi_{\rm tan}
 =
@@ -278,7 +278,7 @@ packaged into one scalar susceptibility `\Upsilon_\Pi`.
 
 ## 5. Final linear defect law in mouth variables
 
-Using the Stage 244 result
+Using the Stage 159 result
 \[
 \Delta_Q
 =
@@ -398,7 +398,7 @@ scalar:
 
 ---
 
-## 6. Best current theorem statement after Stage 245
+## 6. Best current theorem statement after Stage 160
 
 Inside the explicit co-evolving Family-1 closure and the compensated Robin–mixed
 outlet class, the sequence of reductions is now:

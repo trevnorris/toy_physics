@@ -1,15 +1,9 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage163_off_family_normal_coordinate_mathematica_audit.wl
-# Date: 2026-05-11T13:18:45-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 146 — OFF-FAMILY NORMAL COORDINATE
+STAGE 163 — OFF-FAMILY NORMAL COORDINATE
 ========================================================================================
+gPrime matches implicit-function route = 0
+PASS: gPrime matches implicit-function route
 delta F - 4 s delta_perp = 0
 PASS: delta F - 4 s delta_perp
 delta R + delta_perp/s = 0
@@ -18,6 +12,12 @@ g_-'(r) = 1 - r/(2*Sqrt[1 + r^2])
 microscopic delta_perp identity = 0
 PASS: microscopic delta_perp identity
 delta_perp microscopic form = (dlnKq + dlnKs - 2*dlnLam)/(4*Sqrt[1 + r^2]) + (dlnGq - dlnGs + dlnKs - dlnLam)*(r - Sqrt[1 + r^2]/2)
+delta r series matches hand form = 0
+PASS: delta r series matches hand form
+delta g series matches hand form = 0
+PASS: delta g series matches hand form
+microscopic delta_perp via series route = 0
+PASS: microscopic delta_perp via series route
 delta C = (16*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2]
 delta E2 = (-9*dkapW*sigmaStar + (16*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2])/(27*(1 - sigmaStar))
 delta E4 = (-72*dkapW*sigmaStar + (80*(dg + (dr*(-2 + r/Sqrt[1 + r^2]))/2)*sigmaStar)/Sqrt[1 + r^2])/(243*(1 - sigmaStar))
@@ -46,5 +46,3 @@ Carry-forward formulas:
   delta C, delta E2, delta E4, Delta_Q are all linear in delta_perp
 
 Stage 163 Mathematica audit passed.
-
-EXIT_CODE: 0

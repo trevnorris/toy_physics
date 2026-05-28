@@ -1,32 +1,22 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
-# Date: 2026-05-11T12:46:58-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 FIRST-ORDER SELF-CONSISTENT SOURCE CORRECTION
 ========================================================================================
-delta g + Cov(c,R) = 0
-delta S + Cov(K,R) = 0
-deltaPi =
--R̅⋅c̅ + cR̅
-─────────
-   g′    
-deltaT  =
-AT⋅(R̅⋅c̅ - cR̅) - BT⋅(KR̅ - K̅⋅R̅)
-deltaPi in covariance form =
--R̅⋅c̅ + cR̅
-─────────
-   g′    
-deltaT in covariance form =
-AT⋅(R̅⋅c̅ - cR̅) - BT⋅(KR̅ - K̅⋅R̅)
+<1>_* = 1 (canonical normalization) = 1.0   (target 1.0, diff 0.0)
+<R>_*       = 0.4476327139241674169923418512633281559625
+<c>_*       = 0.7580350789446631424934209200271355774948
+<K>_*       = 0.6580759376054294882708381104284142043414
+Cov(c,R)    = -0.05967492458671911449768186626917693665397
+Cov(K,R)    = -0.04629359020009867394846525156457088516646
+<delta_Sigma>_*  (centering) = 1.375847592069469627811980620665879893659e-42   (target 0.0, diff 1.375847592069469627811980620665879893659e-42)
+delta_g_int = -Cov(c,R) = 0.05967492458671911449768186626917693665397   (target 0.05967492458671911449768186626917693665397, diff 2.152394441202919020938848639933311177646e-42)
+delta_S_int = -Cov(K,R) = 0.04629359020009867394846525156457088516646   (target 0.04629359020009867394846525156457088516646, diff 0.0)
+deltaPi = Cov(c,R)/gprime = -0.8352526754408049272301627991484590975534   (target -0.8352526754408049272301627991484590975534, diff 2.29588740394978028900143854926219858949e-41)
+deltaT = -AT*Cov(c,R) - BT*Cov(K,R) = -0.2487255954387427073926383751847982791579   (target -0.248725595438742707392638375184798279158, diff 5.739718509874450722503596373155496473724e-42)
+
+deltaPi  = -0.8352526754408049272301627991484590975534
+deltaT   = -0.2487255954387427073926383751847982791579
 
 Theorem:
   Once the full mouth residual R_*(x) is known, the selected first-order
   source correction is completely determined by Cov_*(c,R_*) and Cov_*(K_q,R_*).
-
-EXIT_CODE: 0

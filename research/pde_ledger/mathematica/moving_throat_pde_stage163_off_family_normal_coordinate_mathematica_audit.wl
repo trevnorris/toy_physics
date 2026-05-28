@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 146 — OFF-FAMILY NORMAL COORDINATE"];
+banner["STAGE 163 — OFF-FAMILY NORMAL COORDINATE"];
 
 Clear[r, g, dg, dr];
 $Assumptions = Element[{r, g, dg, dr}, Reals] && r > 0 && g > 0;
@@ -34,6 +34,10 @@ gPrime = D[gMinus, r];
 fComp = 1 + r^2 - 4*(g - r)^2;
 rComp = (g - r)^2/(1 + r^2);
 deltaPerp = dg - gPrime*dr;
+
+(* Independent route: implicit-function derivative of g_-(r) from F(g,r)=0 *)
+gPrimeImplicit = -((D[fComp, r])/(D[fComp, g])) /. g -> gMinus;
+expectZero["gPrime matches implicit-function route", gPrime - gPrimeImplicit];
 
 dF = (D[fComp, g] /. g -> gMinus)*dg + (D[fComp, r] /. g -> gMinus)*dr;
 dR = (D[rComp, g] /. g -> gMinus)*dg + (D[rComp, r] /. g -> gMinus)*dr;
@@ -53,6 +57,30 @@ deltaPerpExpected = FullSimplify[
 ];
 expectZero["microscopic delta_perp identity", deltaPerpMicro - deltaPerpExpected];
 Print["delta_perp microscopic form = ", fmt[deltaPerpExpected]];
+
+(* Independent route: derive delta r, delta g via chain-rule on Log[...] *)
+Clear[Ks, Kq, lam, gs, gq, eps];
+rExpr  = lam/Sqrt[Ks*Kq];
+gExpr  = gq*Sqrt[Ks]/(gs*Sqrt[Kq]);
+pertRule = {
+  Ks -> Ks (1 + eps dlnKs),
+  Kq -> Kq (1 + eps dlnKq),
+  lam -> lam (1 + eps dlnLam),
+  gs -> gs (1 + eps dlnGs),
+  gq -> gq (1 + eps dlnGq)
+};
+deltaRSeries = Coefficient[Series[rExpr /. pertRule, {eps, 0, 1}] // Normal, eps];
+deltaGSeries = Coefficient[Series[gExpr /. pertRule, {eps, 0, 1}] // Normal, eps];
+deltaRSubst = FullSimplify[deltaRSeries] /. {lam -> r*Sqrt[Ks*Kq]};
+deltaGSubst = FullSimplify[deltaGSeries] /. {gq -> gMinus*gs*Sqrt[Kq]/Sqrt[Ks]};
+expectZero["delta r series matches hand form", deltaRSubst - r*(dlnLam - dlnKs/2 - dlnKq/2)];
+expectZero["delta g series matches hand form", deltaGSubst - gMinus*(dlnGq - dlnGs + dlnKs/2 - dlnKq/2)];
+deltaPerpSeries = FullSimplify[deltaGSubst - gPrime*deltaRSubst];
+expectZero["microscopic delta_perp via series route",
+  deltaPerpSeries -
+    (gMinus*(dlnGq - dlnGs - dlnLam + dlnKs) + (dlnKs + dlnKq - 2*dlnLam)/(4*s))];
+
+Clear[Ks, Kq, lam, gs, gq, eps, pertRule, rExpr, gExpr, deltaRSeries, deltaGSeries, deltaRSubst, deltaGSubst, deltaPerpSeries];
 
 Clear[sigmaStar, dkapW, dgamW];
 $Assumptions = Element[{r, sigmaStar, dkapW, dgamW, deltaPerp}, Reals] && r > 0;

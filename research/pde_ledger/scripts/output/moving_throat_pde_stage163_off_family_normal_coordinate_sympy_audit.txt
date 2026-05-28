@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
-# Date: 2026-05-11T12:47:13-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 146 — OFF-FAMILY NORMAL COORDINATE
+STAGE 163 — OFF-FAMILY NORMAL COORDINATE
 ========================================================================================
 delta F - 4 s delta_perp = 0
 delta R + delta_perp/s = 0
@@ -41,5 +33,3 @@ Carry-forward formulas:
   delta R_q = -delta_perp/sqrt(1+r_*^2)
   delta_perp = g_* dln[(g_q K_s)/(g_s lam)] + [4 sqrt(1+r_*^2)]^{-1} dln[(K_s K_q)/lam^2]
   delta C, delta E2, delta E4, Delta_Q are all linear in delta_perp
-
-EXIT_CODE: 0

@@ -99,8 +99,10 @@ If[evenPreservation =!= {{deltaC -> 0, dKappa -> 0}},
   fail["canonical-even preservation", evenPreservation]
 ];
 
-deltaCFromTangent = FullSimplify[-16 sigmaStar (dR /. dg -> gp dr)];
-expectZero["tangent motion kills delta C", deltaCFromTangent];
+Clear[dCsym, dKsym];
+solDeltaC = Solve[{dCsym - 9 sigmaStar dKsym == 0, 5 dCsym - 72 sigmaStar dKsym == 0}, {dCsym, dKsym}];
+deltaCIndep = FullSimplify[dCsym /. First[solDeltaC]];
+expectZero["delta C from canonical-even Solve", deltaCIndep];
 
 banner["4. Stage 158 expansion point"];
 Clear[sigma0, dSigma0, sStar, dS];

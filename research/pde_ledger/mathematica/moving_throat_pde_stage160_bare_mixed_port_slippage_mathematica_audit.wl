@@ -23,27 +23,30 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 143 — BARE MIXED-PORT SLIPPAGE THEOREM"];
+banner["STAGE 160 — BARE MIXED-PORT SLIPPAGE THEOREM"];
 
-Clear[eps, rc, drc, dk0, dg0];
-$Assumptions = Element[{eps, rc, drc, dk0, dg0}, Reals];
+Clear[rStar, deltaR, dKappa0, dGamma0];
+$Assumptions = Element[{rStar, deltaR, dKappa0, dGamma0}, Reals];
 
-k0Star = (1 + rc)/3;
-g0Star = (1 + rc)/9;
-kW = Normal[Series[(k0Star + eps*dk0)/(1 + rc + eps*drc), {eps, 0, 1}]];
-gW = Normal[Series[(g0Star + eps*dg0)/(1 + rc + eps*drc), {eps, 0, 1}]];
-dkW = Expand[Coefficient[kW, eps, 1]];
-dgW = Expand[Coefficient[gW, eps, 1]];
+kappa0Canon = (1 + rStar)/3;
+gamma0Canon = (1 + rStar)/9;
+(* Total differential of kappa_W = kappa_0 / (1 + r_c) at the canonical point. *)
+deltaKappaW = Together[
+  dKappa0/(1 + rStar) - (kappa0Canon/(1 + rStar)^2) * deltaR
+];
+deltaGammaW = Together[
+  dGamma0/(1 + rStar) - (gamma0Canon/(1 + rStar)^2) * deltaR
+];
 
-Print["dκ_W = ", fmt[FullSimplify[dkW]]];
-Print["dγ_W = ", fmt[FullSimplify[dgW]]];
+Print["dκ_W = ", fmt[FullSimplify[deltaKappaW]]];
+Print["dγ_W = ", fmt[FullSimplify[deltaGammaW]]];
 
-identity = dgW - 1/3*dkW - (dg0 - 1/3*dk0)/(1 + rc);
+identity = deltaGammaW - (1/3)*deltaKappaW - (dGamma0 - (1/3)*dKappa0)/(1 + rStar);
 expectZero["exact compensated-branch slippage identity", identity];
 
-dgWGate = FullSimplify[(dg0 - 1/3*dk0)/(1 + rc)];
-Print["dγ_W under dκ_W = 0 = ", fmt[dgWGate]];
-expectZero["pure-scale harmlessness", dgWGate /. dg0 -> dk0/3];
+deltaGammaWGate = FullSimplify[(dGamma0 - (1/3)*dKappa0)/(1 + rStar)];
+Print["dγ_W under dκ_W = 0 = ", fmt[deltaGammaWGate]];
+expectZero["pure-scale harmlessness", deltaGammaWGate /. dGamma0 -> dKappa0/3];
 
 banner["Tangential DtN susceptibility and final defect law"];
 

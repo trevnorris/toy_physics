@@ -25,25 +25,43 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["FIRST-ORDER SELF-CONSISTENT SOURCE CORRECTION"];
 
-Clear[rBar, cBar, kBar, cRBar, kRBar, gPrime, aT, bT];
-$Assumptions = Element[{rBar, cBar, kBar, cRBar, kRBar, gPrime, aT, bT}, Reals] && gPrime != 0;
+Clear[x, piStar, r1, r2, gPrime, aT, bT, epsilon];
+$Assumptions = piStar > 0 && Element[{r1, r2, gPrime, aT, bT}, Reals] && gPrime != 0;
 
-covCR = cRBar - cBar*rBar;
-covKR = kRBar - kBar*rBar;
+Phi[x_] := piStar*x + epsilon*(r1*x + r2*x^2);
+unnorm[x_] := Exp[-Phi[x]];
+Z = Integrate[unnorm[x], {x, 0, 1}, Assumptions -> piStar > 0];
+SigmaFull[x_] := unnorm[x]/Z;
+SigmaSeries = Normal[Series[SigmaFull[x], {epsilon, 0, 1}]];
+SigmaStar = Coefficient[SigmaSeries, epsilon, 0];
+deltaSigma = Coefficient[SigmaSeries, epsilon, 1];
 
-deltaG = -(cRBar - cBar*rBar);
-deltaS = -(kRBar - kBar*rBar);
+cKernel[x_] := Cos[Pi*x/2];
+kKernel[x_] := Cosh[Pi*(1 - x)/2]/Cosh[Pi/2];
+RResidual[x_] := r1*x + r2*x^2;
 
-expectZero["delta g + Cov(c,R)", deltaG + covCR];
-expectZero["delta S + Cov(K,R)", deltaS + covKR];
+mean[f_] := Integrate[SigmaStar*f, {x, 0, 1}, Assumptions -> piStar > 0];
 
-deltaPi = FullSimplify[-deltaG/gPrime];
-deltaT = FullSimplify[aT*deltaG + bT*deltaS];
+rBar = FullSimplify[mean[RResidual[x]]];
+cBar = FullSimplify[mean[cKernel[x]]];
+kBar = FullSimplify[mean[kKernel[x]]];
+cRBar = FullSimplify[mean[cKernel[x]*RResidual[x]]];
+kRBar = FullSimplify[mean[kKernel[x]*RResidual[x]]];
+covCR = FullSimplify[cRBar - cBar*rBar];
+covKR = FullSimplify[kRBar - kBar*rBar];
 
-Print["deltaPi = ", fmt[deltaPi]];
-Print["deltaT  = ", fmt[deltaT]];
-Print["deltaPi in covariance form = ", fmt[deltaPi]];
-Print["deltaT in covariance form = ", fmt[deltaT]];
+expectZero["<deltaSigma>_*  (centering, from Series)", Integrate[deltaSigma, {x, 0, 1}, Assumptions -> piStar > 0]];
+expectZero["deltaSigma + SigmaStar*(R - <R>)", deltaSigma + SigmaStar*(RResidual[x] - rBar)];
+
+deltaGInt = Integrate[cKernel[x]*deltaSigma, {x, 0, 1}, Assumptions -> piStar > 0];
+deltaSInt = Integrate[kKernel[x]*deltaSigma, {x, 0, 1}, Assumptions -> piStar > 0];
+expectZero["deltaGInt + Cov(c,R)", deltaGInt + covCR];
+expectZero["deltaSInt + Cov(K,R)", deltaSInt + covKR];
+
+deltaPi = -deltaGInt/gPrime;
+deltaT = aT*deltaGInt + bT*deltaSInt;
+expectZero["deltaPi - Cov(c,R)/gPrime", deltaPi - covCR/gPrime];
+expectZero["deltaT + aT*Cov(c,R) + bT*Cov(K,R)", deltaT + aT*covCR + bT*covKR];
 
 Print[""];
 Print["Theorem:"];

@@ -46,7 +46,7 @@ it is exactly the centered residual of the full mouth potential.
 
 ## 2. Only two moment shifts matter
 
-As in Stages 197–198, define
+As in Stages 146--147, define
 \[
 c(x)=\cos\!\left(\frac{\pi x}{2}\right),
 \qquad
@@ -117,7 +117,7 @@ B_T\,\delta\mathcal S_{\rm act}
 
 So the full-mouth selected correction is now completely explicit:
 it is the projection of the exact residual \(R_*(x)\) against the same rigidity
-kernel already derived in Stage 249.
+kernel already derived in Stage 147.
 
 ---
 

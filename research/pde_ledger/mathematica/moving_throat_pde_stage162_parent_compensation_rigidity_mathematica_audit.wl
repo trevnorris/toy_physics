@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 145 — PARENT COMPENSATION-SURFACE RIGIDITY"];
+banner["STAGE 162 — PARENT COMPENSATION-SURFACE RIGIDITY"];
 
 Clear[r, dr];
 $Assumptions = Element[{r, dr}, Reals];

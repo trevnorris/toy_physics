@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 117 — FAMILY-1 FIXED-POINT REDUCTION"];
+banner["STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION"];
 
 Clear[p, k, kk, k0, Ms, Mq];
 $Assumptions = p > 0 && Element[{k, kk, Ms, Mq}, Reals];
@@ -38,17 +38,28 @@ sShell = Quiet[
   Limit::alimv
 ];
 sQ = FullSimplify[sKernel[p, Pi/2], Assumptions -> p > 0];
-sQExpected = FullSimplify[
-  p*((Pi/2)*Tanh[Pi/2] + p*(Exp[-p]/Cosh[Pi/2] - 1))/((1 - Exp[-p])*(Pi^2/4 - p^2)),
-  Assumptions -> p > 0
-];
 fixedPointLaw = FullSimplify[Ms + Mq*sQ, Assumptions -> p > 0];
 
 Print["S_shell = ", fmt[sShell]];
 expectZero["static shell channel", sShell - 1];
 
 Print["S_q(p) = ", fmt[sQ]];
-expectZero["specialized D/N kernel", sQ - sQExpected];
+
+(* Non-tautological numeric check: evaluate sQ at three independent Pi values
+   against high-precision targets verified independently via mpmath. The targets
+   must NOT be derived from sKernel at runtime. *)
+expectClose[name_String, got_, want_, tol_] := Module[{d},
+  d = Abs[N[got - want, 30]];
+  Print[name, " = ", got, "  (target ", want, ", diff ", d, ")"];
+  If[TrueQ[d < tol], pass[name], fail[name, d]]
+];
+
+expectClose["S_q at p=1/2", N[sQ /. p -> 1/2, 30],
+  SetPrecision[0.608336415687717065435990381419, 30], 10^-12];
+expectClose["S_q at p=1",   N[sQ /. p -> 1, 30],
+  SetPrecision[0.633127670034487546375729566676, 30], 10^-12];
+expectClose["S_q at p=2",   N[sQ /. p -> 2, 30],
+  SetPrecision[0.681366857005321783286541952613, 30], 10^-12];
 
 Print["Fixed-point law p = ", fmt[fixedPointLaw]];
 

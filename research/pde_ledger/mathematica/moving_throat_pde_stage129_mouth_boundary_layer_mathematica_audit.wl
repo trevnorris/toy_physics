@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 112 — EXPLICIT GNLS + LOCALIZED-MAXWELL MOUTH BOUNDARY LAYER"];
+banner["STAGE 129 — EXPLICIT GNLS + LOCALIZED-MAXWELL MOUTH BOUNDARY LAYER"];
 
 Clear[z, lM, piM, thetaSigma, v1, mobility, sigmaStar];
 $Assumptions =

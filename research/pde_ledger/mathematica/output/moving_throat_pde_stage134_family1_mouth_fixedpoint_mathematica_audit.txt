@@ -1,21 +1,17 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl
-# Date: 2026-05-11T13:12:37-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 117 — FAMILY-1 FIXED-POINT REDUCTION
+STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION
 ========================================================================================
 S_shell = 1
 static shell channel = 0
 PASS: static shell channel
 S_q(p) = (2*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
-specialized D/N kernel = 0
-PASS: specialized D/N kernel
+S_q at p=1/2 = 0.6083364156877170654359903814193976740207802891324252704208`30.  (target 0.6083364156877170654359903814189999999999999999999999999999`30., diff 0``29.914826189749036)
+PASS: S_q at p=1/2
+S_q at p=1 = 0.6331276700344875463757295666760496952335536640369021447167`30.  (target 0.633127670034487546375729566676`30., diff 0``29.897478710115298)
+PASS: S_q at p=1
+S_q at p=2 = 0.6813668570053217832865419526134255802652444016918238310235`30.  (target 0.681366857005321783286541952613`30., diff 0``29.865588999509455)
+PASS: S_q at p=2
 Fixed-point law p = Ms + (2*Mq*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
 S_q(Pi_star) = 0.65807593760542948674050367268182940317`28.269941337792933
 Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q
@@ -25,5 +21,3 @@ RESULT:
   Family-1 reduces the coupled mouth law to p = Ms + Mq S_q(p).
   The static shell lane gives S_shell = 1 exactly.
   Evaluated at Pi_star, the canonical compensation line matches the Stage 134 note.
-
-EXIT_CODE: 0

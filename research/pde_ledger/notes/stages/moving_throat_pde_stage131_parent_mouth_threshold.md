@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 233: Parent Micro-Threshold for Canonical Mouth Compensation
+# Moving-Throat PDE — Stage 131: Parent Micro-Threshold for Canonical Mouth Compensation
 
 ## Goal
 

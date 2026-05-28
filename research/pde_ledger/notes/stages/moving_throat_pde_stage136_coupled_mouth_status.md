@@ -1,9 +1,9 @@
 
-# Moving-Throat PDE — Stage 238: Mouth-Layer Fixed-Point Status After the Coupled Solve
+# Moving-Throat PDE — Stage 136: Mouth-Layer Fixed-Point Status After the Coupled Solve
 
 ## What is now fixed
 
-After Stages 184–186, the mouth-source selection problem has narrowed again.
+After Stages 133–135, the mouth-source selection problem has narrowed again.
 
 1. The actual GNLS + localized-Maxwell mouth layer is no longer described by an
    effective slope alone. It is governed by the exact coupled fixed-point law

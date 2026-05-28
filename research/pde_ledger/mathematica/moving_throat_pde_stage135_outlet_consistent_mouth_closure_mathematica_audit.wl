@@ -35,7 +35,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[res, pass[name], fail[name, cond]];
 ];
 
-banner["STAGE 118 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE"];
+banner["STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE"];
 
 Clear[pi, sigmaM, ms, mq, sigmaVar];
 $Assumptions =

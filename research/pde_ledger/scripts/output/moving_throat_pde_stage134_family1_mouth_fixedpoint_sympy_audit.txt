@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
-# Date: 2026-05-11T12:45:45-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 117 — FAMILY-1 FIXED-POINT REDUCTION
+STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION
 ========================================================================================
 S_shell = 1
 S_q(Pi) =
@@ -32,5 +24,11 @@ Fixed-point law Pi =
 S_q(Pi_star) = 0.658075937605428494269581645208
 Canonical gain line: M_s = Pi_star - S_q(Pi_star) M_q
 1.50882951349315996836253361835 - 0.658075937605428494269581645208⋅M_q
-
-EXIT_CODE: 0
+S_shell - 1 = 0
+OK: S_shell = 1
+S_q(1/2) = 0.608336415687717065435990381419  (target 0.608336415687717065435990381419, diff 3.94430452610505902705864282641E-31)
+S_q(1) = 0.633127670034487546375729566676  (target 0.633127670034487546375729566676, diff 0)
+S_q(2) = 0.681366857005321783286541952613  (target 0.681366857005321783286541952613, diff 4.93038065763132378382330353302E-31)
+OK: S_q matches independent numeric targets at Pi=1/2, 1, 2
+OK: S_q(Pi_star) matches notes value 0.658075937605428
+OK: gain line coefficients match notes (intercept 1.50882951349316, slope -0.658075937605428)

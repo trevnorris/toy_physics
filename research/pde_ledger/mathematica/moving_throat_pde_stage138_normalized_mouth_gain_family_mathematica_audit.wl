@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 121 — NORMALIZED MOUTH-GAIN FAMILY AND COMPENSATION RATIO"];
+banner["STAGE 138 — NORMALIZED MOUTH-GAIN FAMILY AND COMPENSATION RATIO"];
 
 Clear[lM, thetaSigma, kS, kQ, lam, gS, gQ, rHat, gCore, sigma0];
 $Assumptions =

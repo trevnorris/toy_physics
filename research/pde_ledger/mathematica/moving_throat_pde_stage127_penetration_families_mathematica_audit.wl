@@ -23,16 +23,30 @@ expectApprox[name_String, value_, target_, tol_] := Module[{delta},
   If[TrueQ[Abs[delta] < tol], pass[name], fail[name, delta]];
 ];
 
-banner["STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];
+banner["STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];
 
-Clear[x];
-$Assumptions = Element[x, Reals] && x > 0;
+Clear[x, z];
+$Assumptions = Element[x, Reals] && x > 0 && Element[z, Reals];
 
 rDisc = Sqrt[4107 - 100*Pi^2];
 gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
 
+(* Independent derivation of g_slab from the slab source integral.
+   With L = 1 (the bias factor is L-independent after u = z/L). *)
+gSlabFromIntegral = FullSimplify[Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}], Assumptions -> x > 0];
 gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+slabClosedFormResidual = FullSimplify[gSlabFromIntegral - gSlab, Assumptions -> x > 0];
+If[TrueQ[slabClosedFormResidual === 0],
+   pass["slab closed-form matches source integral"],
+   fail["slab closed-form matches source integral", slabClosedFormResidual]];
+
+(* Independent derivation of g_exp from the exponential source integral. *)
+gExpFromIntegral = FullSimplify[Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}], Assumptions -> x > 0];
 gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+expClosedFormResidual = FullSimplify[gExpFromIntegral - gExp, Assumptions -> x > 0];
+If[TrueQ[expClosedFormResidual === 0],
+   pass["exp closed-form matches source integral"],
+   fail["exp closed-form matches source integral", expClosedFormResidual]];
 
 Print["g_slab(x) = ", fmt[gSlab]];
 Print["g_exp(x) = ", fmt[gExp]];

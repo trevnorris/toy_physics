@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 116 — SCALAR D/N RESPONSE KERNEL")
+banner("STAGE 133 — SCALAR D/N RESPONSE KERNEL")
 
 x, Pi, kappa, G = sp.symbols("x Pi kappa G", positive=True, real=True)
 Sigma = Pi * sp.exp(-Pi*x) / (1 - sp.exp(-Pi))
@@ -61,7 +61,7 @@ print("S(Pi,0) =", S0)
 if sp.simplify(S0 - 1) != 0:
     raise AssertionError("Static-shell limit failed.")
 
-banner("STAGE 116 — GENERAL TWO-CHANNEL FIXED-POINT LAW")
+banner("STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW")
 print("Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)")
 print("with")
 print("  S(Pi,kappa) =")

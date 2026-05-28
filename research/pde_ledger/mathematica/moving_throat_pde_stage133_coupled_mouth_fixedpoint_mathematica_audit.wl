@@ -23,17 +23,22 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 116 — SCALAR D/N RESPONSE KERNEL"];
+banner["STAGE 133 — SCALAR D/N RESPONSE KERNEL"];
 
-Clear[x, piM, kappa, gSrc];
+Clear[x, piM, kappa, gSrc, uFun];
 $Assumptions =
   Element[{x, piM, kappa, gSrc}, Reals] &&
   0 <= x <= 1 && piM > 0 && kappa > 0 && gSrc > 0 && kappa != piM;
 
 sigma = piM*Exp[-piM*x]/(1 - Exp[-piM]);
-cCoeff = FullSimplify[gSrc*piM/((1 - Exp[-piM])*(kappa^2 - piM^2)), Assumptions -> $Assumptions];
-aCoeff = FullSimplify[cCoeff*(kappa*Sinh[kappa] + piM*Exp[-piM])/(kappa*Cosh[kappa]), Assumptions -> $Assumptions];
-u = FullSimplify[aCoeff*Sinh[kappa*x] - cCoeff*Cosh[kappa*x] + cCoeff*Exp[-piM*x], Assumptions -> $Assumptions];
+
+(* Independent derivation: let DSolveValue solve the D/N problem from scratch. *)
+uSol = DSolveValue[
+  {-uFun''[x] + kappa^2*uFun[x] == gSrc*sigma, uFun[0] == 0, uFun'[1] == 0},
+  uFun[x],
+  x
+];
+u = FullSimplify[uSol, Assumptions -> $Assumptions];
 
 residual = FullSimplify[-D[u, {x, 2}] + kappa^2*u - gSrc*sigma, Assumptions -> $Assumptions];
 bc0 = FullSimplify[u /. x -> 0, Assumptions -> $Assumptions];
@@ -57,7 +62,7 @@ s0 = FullSimplify[Normal[Series[sTarget /. kappa -> kk, {kk, 0, 0}]], Assumption
 Print["S(Pi,0) = ", fmt[s0]];
 expectZero["static-shell limit", s0 - 1];
 
-banner["STAGE 116 — GENERAL TWO-CHANNEL FIXED-POINT LAW"];
+banner["STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW"];
 
 Print["Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)"];
 Print["with"];

@@ -4275,43 +4275,48 @@ stages:
     stage: 127
     stage_str: '127'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 2
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
         exists: true
-        mtime: 1775100991
+        mtime: 1779924055
       mathematica:
         path: mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779924177
       sympy_output:
         path: scripts/output/moving_throat_pde_stage127_penetration_families_sympy_audit.txt
         exists: true
-        mtime: 1778525133
+        mtime: 1779925537
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage127_penetration_families_mathematica_audit.txt
         exists: true
-        mtime: 1778526632
+        mtime: 1779925585
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '128':
     stage: 128
     stage_str: '128'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: true
-    last_audit_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
     last_audit_findings: 0
-    last_verify_date: null
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: null
@@ -4325,18 +4330,19 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-05-27 18:30:00-06:00
   '129':
     stage: 129
     stage_str: '129'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
     last_audit_findings: 0
-    last_verify_date: null
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
@@ -4345,7 +4351,7 @@ stages:
       mathematica:
         path: mathematica/moving_throat_pde_stage129_mouth_boundary_layer_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779924055
       sympy_output:
         path: scripts/output/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.txt
         exists: true
@@ -4353,77 +4359,90 @@ stages:
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage129_mouth_boundary_layer_mathematica_audit.txt
         exists: true
-        mtime: 1778526648
+        mtime: 1779925591
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '130':
     stage: 130
     stage_str: '130'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 2
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1779924194
       mathematica:
         path: mathematica/moving_throat_pde_stage130_mouth_bias_map_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779924213
       sympy_output:
         path: scripts/output/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.txt
         exists: true
-        mtime: 1778525136
+        mtime: 1779925539
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage130_mouth_bias_map_mathematica_audit.txt
         exists: true
-        mtime: 1778526709
+        mtime: 1779925642
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '131':
     stage: 131
     stage_str: '131'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 4
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1779924249
       mathematica:
         path: mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779925909
       sympy_output:
         path: scripts/output/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt
         exists: true
-        mtime: 1778525137
+        mtime: 1779925540
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt
         exists: true
-        mtime: 1778526724
+        mtime: 1779925919
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '132':
     stage: 132
     stage_str: '132'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: true
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: null
@@ -4437,105 +4456,121 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-05-27 18:30:00-06:00
   '133':
     stage: 133
     stage_str: '133'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1779924055
       mathematica:
         path: mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779924157
       sympy_output:
         path: scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt
         exists: true
-        mtime: 1778525140
+        mtime: 1779925543
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt
         exists: true
-        mtime: 1778526740
+        mtime: 1779925653
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '134':
     stage: 134
     stage_str: '134'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 4
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1779925352
       mathematica:
         path: mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl
         exists: true
-        mtime: 1778522213
+        mtime: 1779925370
       sympy_output:
         path: scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt
         exists: true
-        mtime: 1778525145
+        mtime: 1779925548
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt
         exists: true
-        mtime: 1778526757
+        mtime: 1779925661
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '135':
     stage: 135
     stage_str: '135'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 2
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1779925397
       mathematica:
         path: mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl
         exists: true
-        mtime: 1776812696
+        mtime: 1779924055
       sympy_output:
         path: scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt
         exists: true
-        mtime: 1778525148
+        mtime: 1779925552
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt
         exists: true
-        mtime: 1778526775
+        mtime: 1779925669
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '136':
     stage: 136
     stage_str: '136'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: true
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: null
@@ -4549,47 +4584,53 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-05-27 18:30:00-06:00
   '137':
     stage: 137
     stage_str: '137'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 4
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
         exists: true
-        mtime: 1775100991
+        mtime: 1779925455
       mathematica:
         path: mathematica/moving_throat_pde_stage137_core_to_mouth_gain_map_mathematica_audit.wl
         exists: true
-        mtime: 1776812696
+        mtime: 1779925472
       sympy_output:
         path: scripts/output/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.txt
         exists: true
-        mtime: 1778525149
+        mtime: 1779925552
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage137_core_to_mouth_gain_map_mathematica_audit.txt
         exists: true
-        mtime: 1778526789
+        mtime: 1779925674
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_sympy_run: 2026-05-27 18:00:00-06:00
+    last_sympy_exit: 0
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '138':
     stage: 138
     stage_str: '138'
     batch_id: IV.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-05-27T15:30:00-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-05-27T18:30:00-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
@@ -4598,7 +4639,7 @@ stages:
       mathematica:
         path: mathematica/moving_throat_pde_stage138_normalized_mouth_gain_family_mathematica_audit.wl
         exists: true
-        mtime: 1776812696
+        mtime: 1779924055
       sympy_output:
         path: scripts/output/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.txt
         exists: true
@@ -4606,7 +4647,10 @@ stages:
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage138_normalized_mouth_gain_family_mathematica_audit.txt
         exists: true
-        mtime: 1778526804
+        mtime: 1779925678
+    last_status_change: 2026-05-27 18:30:00-06:00
+    last_mathematica_run: 2026-05-27 18:15:00-06:00
+    last_mathematica_exit: 0
   '139':
     stage: 139
     stage_str: '139'

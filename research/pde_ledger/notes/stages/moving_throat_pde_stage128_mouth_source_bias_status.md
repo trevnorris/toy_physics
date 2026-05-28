@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 230: Mouth-Source Bias Status
+# Moving-Throat PDE — Stage 128: Mouth-Source Bias Status
 
 ## What is now fixed
 

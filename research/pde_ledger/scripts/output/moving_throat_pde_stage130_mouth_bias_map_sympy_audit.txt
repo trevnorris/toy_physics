@@ -1,18 +1,14 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
-# Date: 2026-05-11T12:45:36-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 g_Pi = 2*Pi*(2*Pi*exp(Pi) + pi)/((4*Pi**2 + pi**2)*(exp(Pi) - 1))
 Covariance identity residual = 0
 limit Pi->0+ = 2/pi
 limit Pi->oo = 1
+dg/dPi at Pi=1/10 = 0.0864671597536833089116376050526
+dg/dPi at Pi=1/2 = 0.0835880414389104993673208606382
+dg/dPi at Pi=1 = 0.0782944273569854807693684772716
+dg/dPi at Pi=943/625 = 0.0714457843797285412431849950796
+dg/dPi at Pi=3 = 0.0484540387109940858353839741724
+dg/dPi at Pi=10 = 0.00464828472924130549419177192744
 Pi_* = 1.50882951349315861144664988336
 x_* = 1/Pi_* = 0.662765402623160072245672286609
 g(Pi_*) = 0.758035078944663043287732762110
 g'(Pi_*) = 0.0714453558083194772127035664826
-
-EXIT_CODE: 0

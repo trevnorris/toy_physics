@@ -9,7 +9,7 @@ def banner(t: str):
 
 x = sp.symbols('x', positive=True, real=True)
 
-banner("STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES")
+banner("STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES")
 
 R = sp.sqrt(4107 - 100*sp.pi**2)
 gminus = sp.simplify((2*R - 37*sp.sqrt(3))/(20*sp.pi))

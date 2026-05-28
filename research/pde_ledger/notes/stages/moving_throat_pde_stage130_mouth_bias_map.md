@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 232: Exact Mouth-Bias Map and Family-1 Compensation Point
+# Moving-Throat PDE — Stage 130: Exact Mouth-Bias Map and Family-1 Compensation Point
 
 ## Goal
 

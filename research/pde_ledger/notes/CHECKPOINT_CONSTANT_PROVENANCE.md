@@ -6,7 +6,12 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-27` (batch IV.3 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.4 close — first-pass paper-grounded
+audit on stages 127-138. **No checkpoints in IV.4 range.** Cumulative
+checkpoint-constant provenance unchanged from IV.2 close (105 retained at
+higher-bar standard). Previous IV.3 entry retained below.
+
+batch IV.3 close — first-pass paper-grounded
 audit on stages 115-126. **No checkpoints in IV.3 range.** Cumulative
 checkpoint-constant provenance unchanged from IV.2 close (105 retained at
 higher-bar standard). Previous IV.2 entry below.

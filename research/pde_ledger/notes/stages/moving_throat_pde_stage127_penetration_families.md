@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 229: Geometric Mouth-Penetration Families
+# Moving-Throat PDE — Stage 127: Geometric Mouth-Penetration Families
 
 ## Goal
 

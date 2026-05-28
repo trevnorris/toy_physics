@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl
-# Date: 2026-05-11T13:12:55-06:00
-# Elapsed: 8s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 118 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE
+STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE
 ========================================================================================
 Pi = sigmaM*(4 - (2*pi*(2*pi*Sech[Pi/2] + E^pi*(-2*pi + Pi*Tanh[Pi/2])))/((-1 + E^pi)*(-4*pi^2 + Pi^2)))
 outlet-consistent reduction = 0
@@ -38,5 +30,3 @@ Carry-forward formulas:
   M_s = 4 Sigma_m,   M_q = -Sigma_m
   Pi = Sigma_m [4 - S_q(Pi)]
   The canonical outlet-consistent branch is selected by one moderate mouth-gain amplitude.
-
-EXIT_CODE: 0

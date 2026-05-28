@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 236: Family-1 Shell + First Mixed D/N Tube Reduction
+# Moving-Throat PDE — Stage 134: Family-1 Shell + First Mixed D/N Tube Reduction
 
 ## Goal
 
@@ -137,7 +137,7 @@ bias is determined by
 and the canonical compensated branch sits on the straight gain line
 \[
 \boxed{
-M_s \approx 1.50882951349316 - 0.658075937605429\,M_q.
+M_s \approx 1.50882951349316 - 0.658075937605428\,M_q.
 }
 \]
 

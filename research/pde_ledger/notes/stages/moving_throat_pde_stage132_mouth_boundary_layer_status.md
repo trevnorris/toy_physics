@@ -1,9 +1,9 @@
 
-# Moving-Throat PDE — Stage 234: Mouth Boundary-Layer Status After Explicit Source-Law Extraction
+# Moving-Throat PDE — Stage 132: Mouth Boundary-Layer Status After Explicit Source-Law Extraction
 
 ## What is now fixed
 
-After Stages 180–182, the mouth-source side is no longer an abstract profile problem.
+After Stages 129–131, the mouth-source side is no longer an abstract profile problem.
 
 1. The actual positive source family is fixed by an explicit GNLS + localized-Maxwell
    boundary-layer law:

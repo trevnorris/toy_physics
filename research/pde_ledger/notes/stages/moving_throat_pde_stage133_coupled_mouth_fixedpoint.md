@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 235: Full Coupled Mouth-Layer Fixed-Point Law
+# Moving-Throat PDE — Stage 133: Full Coupled Mouth-Layer Fixed-Point Law
 
 ## Goal
 

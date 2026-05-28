@@ -1,22 +1,18 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl
-# Date: 2026-05-11T13:12:04-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 114 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION
+STAGE 131 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION
 ========================================================================================
+g_-^F1 closed form vs literal residual = -1.730803191095858895422494703765224306785646882281423802474949`34.057528388002225*^-16
+PASS: g_-^F1 closed form vs literal
 Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
 V1_* = (1.5088295134931555830055507559542749287786371931530784314262`30.*thetaSigma)/lM
 g'(Pi_*) = 0.071445355808319521189460301988135751110742153928880903667`30.
 Parent bias mismatch formula = -(a0Prime*qStar) - (piM*thetaSigma)/lM + tM
-Pi_* compensation point residual = 8.92158055695105409424027319355077730156`22.229621263047616*^-58
-PASS: Pi_* compensation point
+piStar notes Sec. 1 value residual = -4.41699444924404572507122136280684692156857381408878827675384151`35.16545668732165*^-15
+PASS: piStar notes Sec. 1 value
+slope at piStar notes Sec. 3 value residual = 2.118946030198813575111074215392888090366692503843511136204512`34.171115896234156*^-17
+PASS: slope at piStar notes Sec. 3 value
+PASS: parent threshold identity at piM = piStar (notes Sec. 2)
+PASS: lower-branch discrimination (paper Checks item 3)
 
 Stage 131 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 231: Explicit GNLS + Localized-Maxwell Mouth Boundary Layer
+# Moving-Throat PDE — Stage 129: Explicit GNLS + Localized-Maxwell Mouth Boundary Layer
 
 ## Goal
 

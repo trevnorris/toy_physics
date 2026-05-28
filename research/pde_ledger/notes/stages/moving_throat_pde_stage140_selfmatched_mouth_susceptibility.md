@@ -35,7 +35,7 @@ fitting a new branch-dependent coefficient by hand. If the actual mouth source
 lives on a materially different layer, the numerical prefactor derived below would
 change with that microscopic choice.
 
-Using the Stage 220 shell coupling
+Using the Stage 118 shell coupling
 \[
 g_s=\mathcal T_m J_s,
 \]
@@ -43,7 +43,7 @@ and the healing-locked shell stiffness
 \[
 K_s=\frac{3\pi a^2\hbar^2}{5m_\psi\rho_w\ell},
 \]
-Stage 240 gives
+Stage 138 gives
 \[
 \Sigma_0=M_s=\frac{L g_s^2}{K_s\Theta_\sigma}.
 \]
@@ -87,7 +87,7 @@ M_q = -R_q\frac{20}{9}\widehat T_m^2.
 
 ## 3. Required traction on the Family-1 branch
 
-From Stage 241:
+From Stage 139:
 
 - natural equal-normalized branch requires
   \[

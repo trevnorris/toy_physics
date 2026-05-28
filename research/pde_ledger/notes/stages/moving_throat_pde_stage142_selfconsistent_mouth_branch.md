@@ -69,7 +69,7 @@ So the explicit mouth branch is now one scalar function \(\Sigma_0(\Pi)\), not a
 
 ## 2. Self-matched mouth susceptibility closure
 
-Under the self-matched closure from Stage 242,
+Under the self-matched closure from Stage 140,
 \[
 \Sigma_0=\frac{20}{9}\,\widehat T_m^2.
 \]

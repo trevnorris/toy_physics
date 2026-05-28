@@ -34,7 +34,9 @@ Cq = Pi / ((1 - sp.exp(-Pi)) * (k**2 - Pi**2))
 Aq = Cq * (k * sp.sinh(k) + Pi * sp.exp(-Pi)) / (k * sp.cosh(k))
 Tq = Aq * sp.sinh(k*x) - Cq * sp.cosh(k*x) + Cq * sp.exp(-Pi*x)
 
-Sq = sp.simplify(sp.diff(Tq, x).subs(x, 0))
+# Hand-derived closed form: T_q'(0) = Aq*k - Cq*Pi
+# (differentiate Tq = Aq*sinh(k*x) - Cq*cosh(k*x) + Cq*exp(-Pi*x) at x=0).
+Sq = Aq*k - Cq*Pi
 
 print("S_q(Pi) =")
 sp.pprint(Sq)

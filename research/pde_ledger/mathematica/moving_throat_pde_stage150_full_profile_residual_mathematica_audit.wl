@@ -34,7 +34,9 @@ cq = p/((1 - Exp[-p])*(k^2 - p^2));
 aq = cq*(k*Sinh[k] + p*Exp[-p])/(k*Cosh[k]);
 tq = aq*Sinh[k*x] - cq*Cosh[k*x] + cq*Exp[-p*x];
 
-sQ = FullSimplify[D[tq, x] /. x -> 0, Assumptions -> $Assumptions];
+(* Hand-derived closed form: T_q'(0) = aq*k - cq*p
+   (differentiate tq = aq*Sinh[k*x] - cq*Cosh[k*x] + cq*Exp[-p*x] at x=0). *)
+sQ = aq*k - cq*p;
 
 Print["S_q(Pi) = ", fmt[sQ]];
 

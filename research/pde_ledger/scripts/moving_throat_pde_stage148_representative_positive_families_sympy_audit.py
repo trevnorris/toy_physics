@@ -83,9 +83,12 @@ print("lambda_(Pi,0) =", lam_Pi_zero)
 print("lambda_(T,0) =", lam_T_zero)
 print("1 - lambda_(Pi,0) =", sp.N(1-lam_Pi_zero, 30))
 
-# Stage 127 consistency value xi_* (exact positive-family compensation broadening)
-xi_star = sp.N(sp.Float("0.183918405511538"), 30)
-print("xi_* (Stage 127) =", xi_star)
-print("(1-lambda_(Pi,0)) - xi_* =", sp.N((1-lam_Pi_zero) - xi_star, 20))
+# Stage 126 positive-family compensation closed form (see notes section 3)
+xi_star_closed = (-37*sp.sqrt(3) - 5*sp.pi**2 + 2*sp.sqrt(4107 - 100*sp.pi**2)) / (5*(8 - sp.pi**2))
+xi_star = sp.N(xi_star_closed, 30)
+print("xi_* (Stage 126 closed form) =", xi_star)
+residual = sp.N((1 - lam_Pi_zero) - xi_star, 30)
+print("(1-lambda_(Pi,0)) - xi_* =", residual)
+assert abs(residual) < sp.Float("1e-15"), f"Stage 148 D4 consistency failed: residual = {residual}"
 
 print("\nStage 148 complete.")

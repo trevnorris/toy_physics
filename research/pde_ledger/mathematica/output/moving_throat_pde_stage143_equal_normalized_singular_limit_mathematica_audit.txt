@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl
-# Date: 2026-05-11T13:14:21-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 126 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT
+STAGE 143 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -17,23 +9,41 @@ Exact strict inequality g_Pi < 1 for finite Pi
 numerator = -Pi^2 + E^piM*Pi^2 - 4*piM^2 + 4*E^piM*piM^2 + (2*Pi^3*piM)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) - (2*E^piM*Pi^3*piM)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) + (4*E^piM*Pi^2*piM^2)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) - (4*E^(2*piM)*Pi^2*piM^2)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) + (8*Pi*piM^3)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) - (8*E^piM*Pi*piM^3)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) + (16*E^piM*piM^4)/((-1 + E^piM)*(Pi^2 + 4*piM^2)) - (16*E^(2*piM)*piM^4)/((-1 + E^piM)*(Pi^2 + 4*piM^2))
 numerator - exact positive decomposition = 0
 PASS: numerator - exact positive decomposition
+Reduce[num > 0, piM, Reals] = True
+PASS: num > 0 for piM > 0 via Reduce
 positive pieces:
   exp remainder = -1 + E^piM - piM - piM^2/2
   linear coeff  = (-2 + Pi)*Pi
   quadratic coeff = (-8 + Pi^2)/2
+Pi^2 - 2*Pi > 0: (-2 + Pi)*Pi
+PASS: Pi^2 - 2*Pi > 0
+Pi^2/2 - 4 > 0: (-8 + Pi^2)/2
+PASS: Pi^2/2 - 4 > 0
+exp remainder leading term is piM^3/6: lhs - rhs = 0
+PASS: exp remainder leading term is piM^3/6
 
 ----------------------------------------------------------------------------------------
 Endpoint limits
 ----------------------------------------------------------------------------------------
 lim_{Pi->0+} g_Pi = 2/Pi
 lim_{Pi->oo} g_Pi = 1
+lim_{piM->0+} g_Pi == 2/Pi: lhs - rhs = 0
+PASS: lim_{piM->0+} g_Pi == 2/Pi
+lim_{piM->oo} g_Pi == 1: lhs - rhs = 0
+PASS: lim_{piM->oo} g_Pi == 1
 R_infty = 1 - (20*Pi*Sqrt[4107 - 100*Pi^2])/4107
 S_infty = 1
 lim Sigma0/Pi = 4107/(20*Pi*Sqrt[4107 - 100*Pi^2])
 lim That/sqrt(Pi) = (111*Sqrt[3/Pi])/(20*(4107 - 100*Pi^2)^(1/4))
+R_infty == (1-r)^2/(1+r^2): lhs - rhs = 0
+PASS: R_infty == (1-r)^2/(1+r^2)
+S_infty == 1: lhs - rhs = 0
+PASS: S_infty == 1
+lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty)): lhs - rhs = 0
+PASS: lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty))
 
 ========================================================================================
-STAGE 126 LEDGER
+STAGE 143 LEDGER
 ========================================================================================
 For every finite Pi>0:
   2/pi < g_Pi < 1
@@ -48,5 +58,3 @@ Numerics:
   lim That/sqrt(Pi) = 0.7256691307007132197810411250114145098613931689620003558428`30.
 
 Stage 143 Mathematica audit passed.
-
-EXIT_CODE: 0

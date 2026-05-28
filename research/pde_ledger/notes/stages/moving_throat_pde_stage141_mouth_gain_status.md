@@ -1,6 +1,6 @@
 # Moving-Throat PDE — Stage 141: Mouth-Gain Status Update
 
-The coupled mouth-layer problem is now much tighter than it was at Stage 235.
+The coupled mouth-layer problem is now much tighter than it was at Stage 133.
 
 ## What is now explicit
 
@@ -11,7 +11,7 @@ The coupled mouth-layer problem is now much tighter than it was at Stage 235.
    M_q=-\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
    \]
    This statement is within the explicit throat-core plus mouth-layer closure of
-   Stages 188–191; it is not yet a theorem that the full PDE admits no other
+   Stages 137–140; it is not yet a theorem that the full PDE admits no other
    microscopic realization of the mouth source law.
 
 2. In normalized core variables,

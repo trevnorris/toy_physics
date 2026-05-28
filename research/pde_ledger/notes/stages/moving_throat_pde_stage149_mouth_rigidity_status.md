@@ -1,7 +1,7 @@
 
-# Moving-Throat PDE — Stage 251: Non-Exponential Mouth-Rigidity Status
+# Moving-Throat PDE — Stage 149: Non-Exponential Mouth-Rigidity Status
 
-The mouth-side branch problem is now significantly tighter than it was at Stage 247.
+The mouth-side branch problem is now significantly tighter than it was at Stage 145.
 
 ## What is now explicit
 
@@ -55,13 +55,13 @@ The mouth-side branch problem is now significantly tighter than it was at Stage 
    deformation level:
    - uniform broadening raises the canonical point,
    - derivative matching lowers it,
-   - and the zero-shift mixture coincides almost exactly with the earlier Stage 228
+   - and the zero-shift mixture coincides almost exactly with the earlier Stage 126
      exact compensation broadening fraction.
 
 ## Updated interpretation
 
 Inside the explicit Family-1 positive mouth-layer closure, and at the same
-first-order deformation level used in Stages 197-199, the mouth-side ambiguity is now
+first-order deformation level used in Stages 146-148, the mouth-side ambiguity is now
 no longer a branch-selection problem and no longer a large shape-space uncertainty.
 
 It has been reduced to:

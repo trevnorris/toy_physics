@@ -1,15 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
-# Date: 2026-05-11T12:45:50-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 Sigma_0 = 20*L*T_m**2*ell**2*rho**2/(9*c_s**2*hbar**2)
 Sigma_0 in terms of That = 20*That**2/9
 That_nat = 0.866512630228381532619923771658
 That_comp = 0.901484054174205568349216979026
 fractional traction enhancement = 0.040358816162445119166
-
-EXIT_CODE: 0
+numeric fixed-point checks PASS

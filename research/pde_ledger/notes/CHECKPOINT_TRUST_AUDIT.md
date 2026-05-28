@@ -9,7 +9,15 @@ It does not replace:
 - `STAGE_VERIFICATION_COVERAGE.md`, which tracks repo-wide coverage classes,
 - `CHECKPOINT_CONSTANT_PROVENANCE.md`, which tracks the no-magic-numbers log.
 
-Snapshot date: `2026-05-27` (batch IV.4 close — first-pass paper-grounded
+Snapshot date: `2026-05-27` (batch IV.5 close — first-pass paper-grounded
+audit on stages 139-150. **No checkpoints in IV.5 range.** Cumulative checkpoint
+status (105 from IV.2, 096 from IV.1, 089/090 from III.5, 069 from III.3, 051
+from III.2) unchanged. IV.5 closed range 001-150 paper-aligned at v2 depth.
+Same renumbering pattern as IV.4 (banners −17, notes H1 +102, body citations
+−51/−102), plus stage 144 paper-card Checks downgrade mirroring stage 134.
+Eleventh consecutive zero-redirection batch. Previous IV.4 entry retained below.
+
+Snapshot date prior: `2026-05-27` (batch IV.4 close — first-pass paper-grounded
 audit on stages 127-138. **No checkpoints in IV.4 range.** Cumulative checkpoint
 status (105 from IV.2, 096 from IV.1, 089/090 from III.5, 069 from III.3, 051
 from III.2) unchanged. IV.4 closed range 001-138 paper-aligned at v2 depth.

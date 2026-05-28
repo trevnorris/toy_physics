@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage144_unique_regular_canonical_branch_mathematica_audit.wl
-# Date: 2026-05-11T13:14:36-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 127 — UNIQUE REGULAR CANONICAL MOUTH BRANCH
+STAGE 144 — UNIQUE REGULAR CANONICAL MOUTH BRANCH
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -21,9 +13,18 @@ Pi_*          = 1.5088295134931555830055507559542749287786371931530784314106`30.
 That(Pi_*)    = 0.9014840541742040389645127111412155822626259873684112194619`30.
 Pi_match      = 1.9084860065485453947610306052087306981202482373890894003204`30.
 That(Pi_match)= 1.0113297280359947602555983007368397250854967614539903700583`30.
+Sigma0(Pi_*)  = 1.8059411109563538723736729091995054268193435351723899810506`30.
+Sigma0(Pi_match)= 2.2728618195763536137749655615305747478862481388393039211149`30.
+PASS: upper branch g_+^F1 > 1
+PASS: lower branch bracket 2/pi < g_-^F1 < 1
+PASS: Pi_* matches notes target
+PASS: That(Pi_*) matches notes target
+PASS: Sigma0(Pi_*) matches notes target
+PASS: Pi_match matches notes target
+PASS: That(Pi_match) matches notes target
 
 ========================================================================================
-STAGE 127 LEDGER
+STAGE 144 LEDGER
 ========================================================================================
 Positive-source theorem gives 0 <= g <= 1, so the upper compensated branch is impossible.
 The exponential mouth family is monotone and spans (2/pi, 1).
@@ -36,5 +37,3 @@ Pi_match   = 1.9084860065485453947610306052087306981202482373890894003204`30.
 That_match = 1.0113297280359947602555983007368397250854967614539903700583`30.
 
 Stage 144 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -74,7 +74,7 @@ In source-profile language, this is the delta-function mouth limit.
 
 ## 3. Traction divergence on the equal-normalized branch
 
-From Stage 244,
+From Stage 142,
 \[
 \widehat T_m(\Pi)
 =

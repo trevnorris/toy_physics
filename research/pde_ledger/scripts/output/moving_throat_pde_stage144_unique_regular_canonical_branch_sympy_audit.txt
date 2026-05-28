@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
-# Date: 2026-05-11T12:46:04-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 127 — UNIQUE REGULAR CANONICAL MOUTH BRANCH
+STAGE 144 — UNIQUE REGULAR CANONICAL MOUTH BRANCH
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -19,11 +11,14 @@ g_+^F1 = 2.79795199200529341011158893417
 2/pi   = 0.636619772367581343075535053490
 Pi_*          = 1.50882951349315552747043511772
 That(Pi_*)    = 0.901484054174204022702401688674
+Sigma0(Pi_*)  = 1.80594111095635380721796724713
+Sigma0(Pi_match)= 2.27286181957635360635379332349
 Pi_match      = 1.90848600654854538838378630317
 That(Pi_match)= 1.01132972803599475860454058210
+PASS: numerical-target assertions (upper/lower branches, Pi_*, Sigma0_*, That_*, Pi_match, That_match)
 
 ========================================================================================
-STAGE 127 LEDGER
+STAGE 144 LEDGER
 ========================================================================================
 Positive-source theorem gives 0 <= g <= 1, so the upper compensated branch is impossible.
 The exponential mouth family is monotone and spans (2/pi, 1).
@@ -34,5 +29,3 @@ Pi_*       = 1.50882951349315552747043511772
 That_*     = 0.901484054174204022702401688674
 Pi_match   = 1.90848600654854538838378630317
 That_match = 1.01132972803599475860454058210
-
-EXIT_CODE: 0

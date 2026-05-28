@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 248: First-Order Expansion for Positive Mouth-Layer Deformations
+# Moving-Throat PDE — Stage 146: First-Order Expansion for Positive Mouth-Layer Deformations
 
 ## Goal
 

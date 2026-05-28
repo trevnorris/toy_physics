@@ -1,12 +1,12 @@
 
-# Moving-Throat PDE — Stage 250: Representative Non-Exponential Positive Mouth Families
+# Moving-Throat PDE — Stage 148: Representative Non-Exponential Positive Mouth Families
 
 ## Goal
 
 Evaluate the first-order Family-1 correction formulas on two explicit positive
 non-exponential mouth families and on their convex interpolation.
 
-This converts the abstract rigidity kernel of Stage 249 into concrete scale estimates.
+This converts the abstract rigidity kernel of Stage 147 into concrete scale estimates.
 
 ---
 
@@ -123,13 +123,13 @@ Equivalently,
 \[
 1-\lambda_{\Pi,0}\approx 0.183918405511540,
 \]
-which agrees to numerical precision with the earlier Stage 228 broadening fraction
+which agrees to numerical precision with the earlier Stage 126 broadening fraction
 \[
 \xi_*
 =
 \frac{\frac{\pi}{4}-\mathfrak g_-^{F1}}{\frac{\pi}{4}-\frac{2}{\pi}}
 =
-\frac{-37\sqrt3-5\pi^2+2\sqrt{4107-168\pi^2}}{5(8-\pi^2)}
+\frac{-37\sqrt3-5\pi^2+2\sqrt{4107-100\pi^2}}{5(8-\pi^2)}
 \approx 0.183918405511538
 \]
 for the positive family that hit the Family-1 lower compensated branch.

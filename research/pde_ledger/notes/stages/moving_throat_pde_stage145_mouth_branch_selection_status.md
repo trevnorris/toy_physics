@@ -1,7 +1,7 @@
 # Moving-Throat PDE — Stage 145: Mouth-Branch Selection Status
 
 Inside the explicit positive exponential mouth-family reduction, the mouth-source
-side is now much tighter than it was at Stage 243.
+side is now much tighter than it was at Stage 141.
 
 ## What is now explicit
 

@@ -16,10 +16,22 @@ def expect_zero(name, expr):
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
+def expect_equal(name, lhs, rhs):
+    diff = sp.simplify(lhs - rhs)
+    print(f"{name}: lhs - rhs = {diff}")
+    if diff != 0:
+        raise AssertionError(f"{name} mismatch: {lhs} vs {rhs}")
+
+def expect_positive(name, expr):
+    val = sp.simplify(expr)
+    print(f"{name}: {val}")
+    if not (val.is_positive is True or (val.is_number and float(val) > 0)):
+        raise AssertionError(f"{name} not positive: {val}")
+
 Pi = sp.symbols("Pi", positive=True, real=True)
 pi = sp.pi
 
-banner("STAGE 126 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT")
+banner("STAGE 143 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT")
 
 r = sp.sqrt(sp.Integer(4107) - 100*pi**2)/(10*pi)
 gPi = 2*Pi*(2*Pi*sp.exp(Pi)+pi)/((4*Pi**2+pi**2)*(sp.exp(Pi)-1))
@@ -35,12 +47,19 @@ print("positive pieces:")
 print("  exp remainder =", sp.exp(Pi)-1-Pi-Pi**2/2)
 print("  linear coeff  =", sp.simplify(pi**2-2*pi))
 print("  quadratic coeff =", sp.simplify(pi**2/2-4))
+expect_positive("pi**2 - 2*pi > 0", pi**2 - 2*pi)
+expect_positive("pi**2/2 - 4 > 0", pi**2/2 - 4)
+# exp-remainder positivity via Taylor coefficient
+exp_rem_series = sp.series(sp.exp(Pi) - 1 - Pi - Pi**2/2, Pi, 0, 5).removeO()
+expect_equal("exp remainder leading term is Pi**3/6", exp_rem_series.coeff(Pi, 3), sp.Rational(1, 6))
 
 subbanner("Endpoint limits")
 g0 = sp.limit(gPi, Pi, 0, dir='+')
 ginf = sp.limit(gPi, Pi, sp.oo)
 print("lim_{Pi->0+} g_Pi =", g0)
 print("lim_{Pi->oo} g_Pi =", ginf)
+expect_equal("lim_{Pi->0+} g_Pi == 2/pi", g0, 2/pi)
+expect_equal("lim_{Pi->oo} g_Pi == 1", ginf, sp.Integer(1))
 
 Sq = Pi*(((pi/2)*sp.tanh(pi/2)) + Pi*(sp.exp(-Pi)*sp.sech(pi/2)-1))/((1-sp.exp(-Pi))*(((pi/2)**2)-Pi**2))
 Rq = (gPi-r)**2/(1+r**2)
@@ -55,8 +74,11 @@ sigma_ratio = sp.simplify(sp.limit(Sigma0/Pi, Pi, sp.oo))
 print("lim Sigma0/Pi =", sigma_ratio)
 that_ratio = sp.simplify(sp.sqrt(sp.Rational(9,20)*sigma_ratio))
 print("lim That/sqrt(Pi) =", that_ratio)
+expect_equal("R_infty == (1-r)**2/(1+r**2)", Rinf, (1-r)**2/(1+r**2))
+expect_equal("S_infty == 1", Sinf, sp.Integer(1))
+expect_equal("lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty))", that_ratio, sp.sqrt(sp.Rational(9,20)/(1-Rinf)))
 
-banner("STAGE 126 LEDGER")
+banner("STAGE 143 LEDGER")
 print("For every finite Pi>0:")
 print("  2/pi < g_Pi < 1")
 print("So g_c = 1 is not a finite positive-bias branch.")

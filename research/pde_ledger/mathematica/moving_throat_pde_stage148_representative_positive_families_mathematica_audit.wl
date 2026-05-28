@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 131 — REPRESENTATIVE NON-EXPONENTIAL POSITIVE FAMILIES"];
+banner["STAGE 148 — REPRESENTATIVE NON-EXPONENTIAL POSITIVE FAMILIES"];
 
 Clear[p, lam];
 $Assumptions = Element[{p, lam}, Reals] && p > 0 && 0 <= lam <= 1;
@@ -40,16 +40,17 @@ gPrimeStar = N[D[gFormula, p] /. p -> pStar, 40];
 sPrimeStar = N[D[sFormula, p] /. p -> pStar, 40];
 sigmaStar = N[pStar/(1 - sStar/4), 40];
 tStar = N[Sqrt[9*sigmaStar/20], 40];
-aT = N[
-  -(9/(40*tStar))*(1/(gPrimeStar*(1 - sStar/4)) + pStar*sPrimeStar/(4*gPrimeStar*(1 - sStar/4)^2)),
-  30
+(* dSigma in terms of dPi (= -(g_target - gStar)/gPrimeStar) and dS = (s_target - sStar) *)
+dSigmaOfDeltas[dPi_, dS_] := dPi/(1 - sStar/4) + pStar*dS/(4*(1 - sStar/4)^2);
+dTOfDeltas[dG_, dS_] := Module[{dPi},
+  dPi = -dG/gPrimeStar;
+  N[(9/(40*tStar))*dSigmaOfDeltas[dPi, dS], 30]
 ];
-bT = N[(9/(40*tStar))*pStar/(4*(1 - sStar/4)^2), 30];
 
 gU = N[2/Pi, 30];
 sU = N[2*Tanh[Pi/2]/Pi, 30];
 dPiU = N[-(gU - gStar)/gPrimeStar, 30];
-dTU = N[aT*(gU - gStar) + bT*(sU - sStar), 30];
+dTU = dTOfDeltas[gU - gStar, sU - sStar];
 
 Print["uniform: g_u = ", fmt[gU]];
 Print["uniform: S_u = ", fmt[sU]];
@@ -59,7 +60,7 @@ Print["uniform: dT/eps = ", fmt[dTU]];
 gD = N[Pi/4, 30];
 sD = N[(1 + Sinh[Pi/2])/(2*Cosh[Pi/2]), 30];
 dPiD = N[-(gD - gStar)/gPrimeStar, 30];
-dTD = N[aT*(gD - gStar) + bT*(sD - sStar), 30];
+dTD = dTOfDeltas[gD - gStar, sD - sStar];
 
 Print["derivative: g_d = ", fmt[gD]];
 Print["derivative: S_d = ", fmt[sD]];
@@ -69,7 +70,7 @@ Print["derivative: dT/eps = ", fmt[dTD]];
 gLam = FullSimplify[(1 - lam)*(2/Pi) + lam*(Pi/4), Assumptions -> True];
 sLam = FullSimplify[(1 - lam)*(2*Tanh[Pi/2]/Pi) + lam*((1 + Sinh[Pi/2])/(2*Cosh[Pi/2])), Assumptions -> True];
 dPiLam = FullSimplify[-(gLam - gStar)/gPrimeStar];
-dTLam = FullSimplify[aT*(gLam - gStar) + bT*(sLam - sStar)];
+dTLam = FullSimplify[dTOfDeltas[gLam - gStar, sLam - sStar]];
 
 Print["dPi_lambda/eps = ", fmt[Expand[dPiLam]]];
 Print["dT_lambda/eps = ", fmt[Expand[dTLam]]];
@@ -80,9 +81,9 @@ Print["lambda_(Pi,0) = ", fmt[N[lamPiZero, 30]]];
 Print["lambda_(T,0) = ", fmt[lamTZero]];
 Print["1 - lambda_(Pi,0) = ", fmt[N[1 - lamPiZero, 30]]];
 
-xiStar = FullSimplify[((Pi/4) - gMinus)/((Pi/4) - 2/Pi), Assumptions -> True];
-Print["xi_* (Stage 126) = ", fmt[N[xiStar, 30]]];
-expectZero["(1-lambda_(Pi,0)) - xi_*", (1 - lamPiZero) - xiStar];
+xiStarClosed = (-37*Sqrt[3] - 5*Pi^2 + 2*Sqrt[4107 - 100*Pi^2]) / (5*(8 - Pi^2));
+Print["xi_* (Stage 126 closed form) = ", fmt[N[xiStarClosed, 30]]];
+expectZero["(1-lambda_(Pi,0)) - xi_*", FullSimplify[(1 - lamPiZero) - xiStarClosed]];
 
 Print[""];
 Print["Stage 148 Mathematica audit passed."];

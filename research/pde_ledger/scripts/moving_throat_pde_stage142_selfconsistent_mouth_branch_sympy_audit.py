@@ -16,13 +16,26 @@ def expect_zero(name, expr):
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
+def expect_close(name, value, target, tol):
+    res = abs(float(sp.N(value, 30) - sp.N(target, 30)))
+    print(f"{name} residual = {res}")
+    if res > tol:
+        raise AssertionError(f"{name} off by {res} > tol {tol}")
+
 Pi = sp.symbols("Pi", positive=True, real=True)
 pi = sp.pi
 
-banner("STAGE 125 — SELF-CONSISTENT MOUTH-BRANCH LAW")
+banner("STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW")
 
+# r_F1: Family-1 reduced mixed-core ratio. Carried forward from upstream
+# (see notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+# section 1; original derivation is in the upstream "shell/mixed core" block
+# referenced by paper/stages/stage_142.tex Inputs field).
 r = sp.sqrt(sp.Integer(4107) - 100*pi**2)/(10*pi)
 gPi = 2*Pi*(2*Pi*sp.exp(Pi)+pi)/((4*Pi**2+pi**2)*(sp.exp(Pi)-1))
+# S_q(Pi) closed form: carried forward from the self-matched mouth-susceptibility
+# closure (Stage 140 / Sigma_0 = (20/9) That_m^2). The closed form here is
+# S(Pi, pi/2), evaluated at the fixed second argument pi/2.
 Sq = Pi*(((pi/2)*sp.tanh(pi/2)) + Pi*(sp.exp(-Pi)*sp.sech(pi/2)-1))/((1-sp.exp(-Pi))*(((pi/2)**2)-Pi**2))
 Rq = sp.simplify((gPi-r)**2/(1+r**2))
 Sigma0 = Pi/(1-Rq*Sq)
@@ -59,7 +72,18 @@ print("That(Pi_*)   =", That_star)
 if abs(float(g_star - sp.N(gminus,30))) > 1e-12:
     raise AssertionError("Pi_* does not solve the compensation equation accurately enough.")
 
-banner("STAGE 125 LEDGER")
+Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))
+print(f"R_q(Pi_*) - 1/4 = {Rq_star - sp.Rational(1,4)}")
+if Rq_star_residual > 1e-15:
+    raise AssertionError(f"R_q(Pi_*) does not equal 1/4 at nsolve'd Pi_* (residual {Rq_star_residual}).")
+
+expect_close("g_-^{F1} value", gminus, sp.Float("0.7580350789446628269196808904", 30), 1e-25)
+expect_close("Pi_* value",      Pi_star, sp.Float("1.5088295134931555274704351177", 30), 1e-12)
+expect_close("S_q(Pi_*) value", Sq_star, sp.Float("0.6580759376054292719303153134", 30), 1e-12)
+expect_close("Sigma_0(Pi_*) value", Sigma_star, sp.Float("1.8059411109563538072179672471", 30), 1e-12)
+expect_close("That(Pi_*) value", That_star, sp.Float("0.9014840541742040227024016887", 30), 1e-12)
+
+banner("STAGE 142 LEDGER")
 print("Self-consistent Family-1 mouth branch:")
 print("  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]")
 print("  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))")

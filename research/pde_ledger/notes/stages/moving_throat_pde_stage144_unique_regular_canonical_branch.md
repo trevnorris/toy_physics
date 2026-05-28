@@ -40,7 +40,7 @@ So
 
 ## 2. Lower branch is uniquely reachable at finite bias
 
-From Stage 232, \(\mathfrak g_\Pi\) is strictly monotone increasing in \(\Pi\), with range
+From Stage 130, \(\mathfrak g_\Pi\) is strictly monotone increasing in \(\Pi\), with range
 \[
 \frac{2}{\pi}<\mathfrak g_\Pi<1
 \qquad (\Pi>0).
@@ -71,7 +71,7 @@ positive mouth family it is the **unique finite-bias** compensated branch.
 
 ## 3. Finite regular traction at the canonical point
 
-At \(\Pi=\Pi_*\), Stage 244 gives
+At \(\Pi=\Pi_*\), Stage 142 gives
 \[
 \Sigma_0(\Pi_*)\approx 1.80594111095636,
 \qquad

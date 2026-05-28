@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage143_equal_normalized_singular_limit_sympy_audit.py
-# Date: 2026-05-11T12:46:04-06:00
-# Elapsed: 13s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 126 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT
+STAGE 143 — EQUAL-NORMALIZED BRANCH IS A SINGULAR LIMIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -20,19 +12,27 @@ positive pieces:
   exp remainder = -Pi**2/2 - Pi + exp(Pi) - 1
   linear coeff  = pi*(-2 + pi)
   quadratic coeff = -4 + pi**2/2
+pi**2 - 2*pi > 0: pi*(-2 + pi)
+pi**2/2 - 4 > 0: -4 + pi**2/2
+exp remainder leading term is Pi**3/6: lhs - rhs = 0
 
 ----------------------------------------------------------------------------------------
 Endpoint limits
 ----------------------------------------------------------------------------------------
 lim_{Pi->0+} g_Pi = 2/pi
 lim_{Pi->oo} g_Pi = 1
+lim_{Pi->0+} g_Pi == 2/pi: lhs - rhs = 0
+lim_{Pi->oo} g_Pi == 1: lhs - rhs = 0
 R_infty = (-sqrt(4107 - 100*pi**2) + 10*pi)**2/4107
 S_infty = 1
 lim Sigma0/Pi = 4107/(20*pi*sqrt(4107 - 100*pi**2))
 lim That/sqrt(Pi) = 111*sqrt(3)/(20*sqrt(pi)*(4107 - 100*pi**2)**(1/4))
+R_infty == (1-r)**2/(1+r**2): lhs - rhs = 0
+S_infty == 1: lhs - rhs = 0
+lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty)): lhs - rhs = 0
 
 ========================================================================================
-STAGE 126 LEDGER
+STAGE 143 LEDGER
 ========================================================================================
 For every finite Pi>0:
   2/pi < g_Pi < 1
@@ -45,5 +45,3 @@ Equal-normalized branch:
 Numerics:
   R_infty = 0.145454452260420126101421595368
   lim That/sqrt(Pi) = 0.725669130700713219781041125011
-
-EXIT_CODE: 0

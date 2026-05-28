@@ -60,7 +60,7 @@ A_q=
 {\frac{\pi}{2}\cosh(\pi/2)}.
 \]
 
-The compensated core outlet from Stage 237 fixes
+The compensated core outlet from Stage 135 fixes
 \[
 M_s^*=4\Sigma_m^*,
 \qquad

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 123 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];
+banner["STAGE 140 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];
 
 Clear[lM, a, ell, rhoW, tM, hbar, cSound, mPsi, tHat];
 $Assumptions =
@@ -51,6 +51,16 @@ tHatComp = N[Sqrt[9*mSComp/20], 30];
 Print["That_nat = ", fmt[tHatNat]];
 Print["That_comp = ", fmt[tHatComp]];
 Print["fractional traction enhancement = ", fmt[N[tHatComp/tHatNat - 1, 20]]];
+
+Module[{diff1, diff2, diff3, tol},
+  tol = 10^-12;
+  diff1 = N[tHatNat - SetPrecision[0.866512630228382, 30], 30];
+  diff2 = N[tHatComp - SetPrecision[0.901484054174206, 30], 30];
+  diff3 = N[(tHatComp/tHatNat - 1) - SetPrecision[0.0403588161624, 30], 30];
+  If[Abs[diff1] < tol, pass["That_nat matches notes"], fail["That_nat matches notes", diff1]];
+  If[Abs[diff2] < tol, pass["That_comp matches notes"], fail["That_comp matches notes", diff2]];
+  If[Abs[diff3] < tol, pass["fractional enhancement matches notes"], fail["fractional enhancement matches notes", diff3]];
+];
 
 Print[""];
 Print["Stage 140 Mathematica audit passed."];

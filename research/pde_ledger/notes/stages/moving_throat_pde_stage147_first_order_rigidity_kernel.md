@@ -1,9 +1,9 @@
 
-# Moving-Throat PDE — Stage 249: First-Order Rigidity Kernel at the Canonical Family-1 Point
+# Moving-Throat PDE — Stage 147: First-Order Rigidity Kernel at the Canonical Family-1 Point
 
 ## Goal
 
-Turn the general first-order correction formulas from Stage 248 into one explicit
+Turn the general first-order correction formulas from Stage 146 into one explicit
 rigidity law for the physical normalized mouth traction
 \[
 \widehat T_m.
@@ -31,7 +31,7 @@ So at fixed canonical branch structure,
 \frac{\Pi_*}{4(1-\mathcal S_*/4)^2}\,\delta\mathcal S_q.
 \]
 
-Substituting the Stage 248 retuning formulas gives
+Substituting the Stage 146 retuning formulas gives
 \[
 \boxed{
 \delta \widehat T_m

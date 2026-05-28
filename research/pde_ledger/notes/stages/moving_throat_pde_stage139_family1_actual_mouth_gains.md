@@ -2,7 +2,7 @@
 
 ## Goal
 
-Evaluate the explicit gain formulas of Stages 188–189 on the concrete Family-1 branch.
+Evaluate the explicit gain formulas of Stages 137–138 on the concrete Family-1 branch.
 
 This answers the practical question:
 
@@ -13,7 +13,7 @@ This answers the practical question:
 
 ## 1. Family-1 geometric input
 
-From Stage 223,
+From Stage 121,
 \[
 \mathfrak r_{F1}
 =
@@ -21,7 +21,7 @@ From Stage 223,
 \approx 1.77799353547498.
 \]
 
-From Stage 236,
+From Stage 134,
 \[
 \Pi_* \approx 1.50882951349316,
 \qquad
@@ -32,7 +32,7 @@ So the actual Family-1 fixed-point law is
 \[
 \Pi_* = M_s + M_q\,\mathcal S_q(\Pi_*).
 \]
-Using Stage 240,
+Using Stage 138,
 \[
 M_q=-R_q M_s,
 \qquad
@@ -117,7 +117,7 @@ M_q^{\rm comp,*}=-\frac{M_s^{\rm comp,*}}{4}
 }
 \]
 
-This is exactly the Stage 237 one-parameter canonical branch.
+This is exactly the Stage 135 one-parameter canonical branch.
 
 ---
 

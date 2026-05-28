@@ -1,11 +1,9 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py
-# Date: 2026-05-11T12:46:32-06:00
-# Elapsed: 28s
-# Exit code: 0
-# Status: PASS
-#
-
+g(Pi) direct-formula = 0
+S_q(Pi) numeric sample Pi=7/10: diff=0E-165
+S_q(Pi) numeric sample Pi=11/10: diff=0E-165
+S_q(Pi) numeric sample Pi=17/10: diff=0E-165
+S_q(Pi) numeric sample Pi=23/10: diff=0E-165
+PASS: S_q(Pi) direct-formula (numeric fallback at 4 samples)
 
 ========================================================================================
 Stage 146 audit: exact source moments
@@ -155,9 +153,11 @@ delta S =
 ↪  
 ↪  
 ↪  
-g_eps affine law = 0
-S_eps affine law = 0
+g_eps affine law (integral form) at eps=1/10: residual = -3.57095348696680035154967176897E-18
+S_eps affine law (integral form) at eps=1/10: residual = -5.57590340409872713823196860019E-31
+g_eps affine law (integral form) at eps=1/2: residual = -1.98386304831492151078289784838E-18
+S_eps affine law (integral form) at eps=1/2: residual = -6.32408825968108691242864597464E-31
+PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2
+PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2
 
 Stage 146 complete.
-
-EXIT_CODE: 0

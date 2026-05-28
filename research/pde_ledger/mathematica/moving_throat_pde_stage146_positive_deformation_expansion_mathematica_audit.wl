@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 129 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
+banner["STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
 
 Clear[p, x, gBar, sBar, eps];
 $Assumptions = Element[{p, x, gBar, sBar, eps}, Reals] && p > 0 && 0 <= x <= 1;
@@ -46,6 +46,9 @@ gDirect = FullSimplify[Integrate[sigma*Cos[Pi*x/2], {x, 0, 1}], Assumptions -> p
 Print["g(Pi) = ", fmt[gFormula]];
 Print["S_q(Pi) = ", fmt[sFormula]];
 expectZero["g(Pi) direct-formula", gDirect - gFormula];
+
+sDirect = FullSimplify[Integrate[sigma*kq, {x, 0, 1}], Assumptions -> p > 0];
+expectZero["S_q(Pi) direct-formula", sDirect - sFormula];
 
 nint[expr_] := NIntegrate[Evaluate[expr], {x, 0, 1}, WorkingPrecision -> 50, AccuracyGoal -> 20, PrecisionGoal -> 20];
 Do[
@@ -82,12 +85,40 @@ banner["FIRST-ORDER CANONICAL RETUNING LAW"];
 Print["delta Pi = ", fmt[dPi]];
 Print["delta S = ", fmt[dS]];
 
-gEps = (1 - eps)*gMinus + eps*gBar;
-sEps = (1 - eps)*sStar + eps*sBar;
-expectZero["g_eps affine law", Expand[gEps - (gMinus + eps*(gBar - gMinus))]];
-resSEps = Chop[Expand[sEps - (sStar + eps*(sBar - sStar))]];
-Print["S_eps affine law = ", fmt[resSEps]];
-If[TrueQ[resSEps === 0], pass["S_eps affine law"], fail["S_eps affine law", resSEps]];
+(* Affine laws tested via integral form, not via algebraic restatement. *)
+varsigmaTest = 6*x*(1 - x);
+sigmaEps = (1 - eps)*(sigma /. p -> pStar) + eps*varsigmaTest;
+gBarPhys = Integrate[sigmaEps*Cos[Pi*x/2], {x, 0, 1}];
+sBarPhys = Integrate[sigmaEps*kq, {x, 0, 1}];
+gBarV    = Integrate[varsigmaTest*Cos[Pi*x/2], {x, 0, 1}];
+sBarV    = Integrate[varsigmaTest*kq, {x, 0, 1}];
+(* Numeric-sample fallback: evaluate at two concrete eps values rather than
+   simplifying an eps-polynomial residual (the integrate-with-numeric-pStar
+   path produces complex near-zero coefficients that FullSimplify cannot
+   reduce symbolically). *)
+(* The numeric pStar substitution causes Integrate to produce complex near-zero
+   residuals at low working-precision (~9-10 digits). Treat any value whose
+   numerical magnitude is below 10^-6 (i.e., consistent with precision-9 zero)
+   as satisfying the affine law. *)
+gEpsRes = gBarPhys - (gMinus + eps*(gBarV - gMinus));
+gEpsSample1 = N[gEpsRes /. eps -> 1/10, 40];
+gEpsSample2 = N[gEpsRes /. eps -> 1/2, 40];
+Print["g_eps affine law (integral form) at eps=1/10: ", fmt[Chop[gEpsSample1, 10^-6]]];
+Print["g_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[gEpsSample2, 10^-6]]];
+If[NumericQ[gEpsSample1] && NumericQ[gEpsSample2] && Abs[gEpsSample1] < 10^-6 && Abs[gEpsSample2] < 10^-6,
+  pass["g_eps affine law (integral form)"],
+  fail["g_eps affine law (integral form)", {gEpsSample1, gEpsSample2}]
+];
+
+sEpsRes = sBarPhys - (sStar + eps*(sBarV - sStar));
+sEpsSample1 = N[sEpsRes /. eps -> 1/10, 40];
+sEpsSample2 = N[sEpsRes /. eps -> 1/2, 40];
+Print["S_eps affine law (integral form) at eps=1/10: ", fmt[Chop[sEpsSample1, 10^-6]]];
+Print["S_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[sEpsSample2, 10^-6]]];
+If[NumericQ[sEpsSample1] && NumericQ[sEpsSample2] && Abs[sEpsSample1] < 10^-6 && Abs[sEpsSample2] < 10^-6,
+  pass["S_eps affine law (integral form)"],
+  fail["S_eps affine law (integral form)", {sEpsSample1, sEpsSample2}]
+];
 
 Print[""];
 Print["Stage 146 Mathematica audit passed."];

@@ -24,7 +24,7 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
   Exit[1];
 );
 
-banner["STAGE 127 — UNIQUE REGULAR CANONICAL MOUTH BRANCH"];
+banner["STAGE 144 — UNIQUE REGULAR CANONICAL MOUTH BRANCH"];
 
 Clear[piM];
 $Assumptions = Element[piM, Reals] && piM > 0;
@@ -56,7 +56,21 @@ Print["That(Pi_match)= ", fmt[tHatMatch]];
 
 If[!(N[piStar, 30] > 0 && N[piMatch, 30] > N[piStar, 30]), fail["unexpected ordering of canonical and matched-derivative points", {N[piStar, 20], N[piMatch, 20]}]];
 
-banner["STAGE 127 LEDGER"];
+sigma0Star = N[sigma0 /. piM -> piStar, 30];
+sigma0Match = N[sigma0 /. piM -> piMatch, 30];
+Print["Sigma0(Pi_*)  = ", fmt[sigma0Star]];
+Print["Sigma0(Pi_match)= ", fmt[sigma0Match]];
+
+If[!(N[gPlus, 30] > 1), fail["upper branch must satisfy g_+^F1 > 1", N[gPlus, 30]], pass["upper branch g_+^F1 > 1"]];
+If[!(N[2/Pi, 30] < N[gMinus, 30] < 1), fail["lower branch must satisfy 2/pi < g_-^F1 < 1", N[gMinus, 30]], pass["lower branch bracket 2/pi < g_-^F1 < 1"]];
+tol = 10^(-12);
+If[!(Abs[N[piStar - 1.50882951349316`30, 30]] < tol), fail["Pi_* drift", N[piStar, 30]], pass["Pi_* matches notes target"]];
+If[!(Abs[N[tHatStar - 0.901484054174205`30, 30]] < tol), fail["That(Pi_*) drift", tHatStar], pass["That(Pi_*) matches notes target"]];
+If[!(Abs[N[sigma0Star - 1.80594111095636`30, 30]] < tol), fail["Sigma0(Pi_*) drift", sigma0Star], pass["Sigma0(Pi_*) matches notes target"]];
+If[!(Abs[N[piMatch - 1.90848600654854`30, 30]] < tol), fail["Pi_match drift", N[piMatch, 30]], pass["Pi_match matches notes target"]];
+If[!(Abs[N[tHatMatch - 1.01132972803599`30, 30]] < tol), fail["That(Pi_match) drift", tHatMatch], pass["That(Pi_match) matches notes target"]];
+
+banner["STAGE 144 LEDGER"];
 Print["Positive-source theorem gives 0 <= g <= 1, so the upper compensated branch is impossible."];
 Print["The exponential mouth family is monotone and spans (2/pi, 1)."];
 Print["Since g_-^F1 lies strictly inside that interval, it is reached at one unique finite Pi_*."];

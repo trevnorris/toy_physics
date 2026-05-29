@@ -61,18 +61,26 @@ expectZero["convex-family normalization", normXi - 1];
 (* Positivity: sigma_xi(z) >= 0 on z in [0, lM], xi in [0, 1].
    Each summand of sigma_xi is nonnegative on the stated domain because
    cos(k z) decreases monotonically from 1 (at z=0) to 0 (at z=lM) for k=Pi/(2 lM). *)
-sigmaMatchAtLM = FullSimplify[k*Cos[k*z] /. z -> lM, Assumptions -> $Assumptions];
+(* Global positivity on z in [0,lM], xi in [0,1]. sigmaXi is affine in xi, so
+   D[sigmaXi, {xi, 2}] == 0; its min over xi in [0,1] is at an endpoint. We also
+   confirm the whole-box claim directly with Resolve[ForAll[...]] over explicit
+   domains, so an interior-negative source FAILS this block. *)
+d2Xi = FullSimplify[D[sigmaXi, {xi, 2}], Assumptions -> $Assumptions];
+Print["d^2 sigma_xi / d xi^2 = ", fmt[d2Xi]];
+expectZero["sigma_xi affine in xi", d2Xi];
+sigmaMatchAtLM = FullSimplify[(k*Cos[k*z] /. z -> lM), Assumptions -> $Assumptions];
 Print["sigma_match(lM) = ", fmt[sigmaMatchAtLM]];
 expectZero["sigma_match(lM) = 0 (boundary min on [0,lM])", sigmaMatchAtLM];
-sigmaMatchAt0 = FullSimplify[k*Cos[k*z] /. z -> 0, Assumptions -> $Assumptions];
-Print["sigma_match(0) = ", fmt[sigmaMatchAt0]];
-expectZero["sigma_match(0) = k (interior max on [0,lM])", sigmaMatchAt0 - k];
-sigmaXiAtLM = FullSimplify[(sigmaXi /. xi -> 0) /. z -> lM, Assumptions -> $Assumptions];
-Print["sigma_xi(z=lM, xi=0) = ", fmt[sigmaXiAtLM]];
-expectZero["sigma_xi(z=lM, xi=0) = 0", sigmaXiAtLM];
-valXiAt1 = FullSimplify[sigmaXi /. xi -> 1, Assumptions -> $Assumptions];
+valXiAt1 = FullSimplify[(sigmaXi /. xi -> 1), Assumptions -> $Assumptions];
 Print["sigma_xi(xi=1) = ", fmt[valXiAt1]];
 expectZero["sigma_xi(xi=1) = 1/lM", valXiAt1 - 1/lM];
+globalPos = Resolve[
+  ForAll[{z, xi}, 0 <= z <= 1 && 0 <= xi <= 1, (sigmaXi /. lM -> 1) >= 0],
+  Reals
+];
+globalPos = Simplify[globalPos, Assumptions -> (lM > 0)];
+Print["ForAll sigma_xi >= 0 on box -> ", fmt[globalPos]];
+If[!TrueQ[globalPos], fail["sigma_xi >= 0 on box (z in [0,lM], xi in [0,1])", globalPos]];
 
 xiStar = FullSimplify[xi /. First[Solve[gXi == gMinus, xi, Reals]], Assumptions -> $Assumptions];
 Print["xi_* = ", fmt[xiStar]];

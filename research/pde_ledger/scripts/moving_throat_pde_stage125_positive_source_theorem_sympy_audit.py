@@ -82,7 +82,14 @@ expect_zero("moment g[uniform] - 2/pi", g_a.subs(sigma_a, 0) - 2 / sp.pi)
 # resulting hypergeometric form, so verify the trend at a = 100 instead).
 g_a_large = sp.N(g_a.subs(sigma_a, 100))
 print("g_a at sigma_param = 100 (peaked-at-L proxy) =", g_a_large)
-expect_true("g[peaked@L proxy a=100] < 0.05", bool(abs(g_a_large) < sp.Rational(1, 20)))
+# Genuine range check of the paper bound 0 <= g[sigma] <= 1 at the peaked endpoint.
+# NOT wrapped in abs(): a small NEGATIVE moment (a sign error in the closed form)
+# now FAILS the lower bound, instead of passing a mere smallness test.
+expect_true("g[peaked@L proxy a=100] >= 0", bool(g_a_large >= 0))
+expect_true("g[peaked@L proxy a=100] <= 1", bool(g_a_large <= 1))
+# Retain the smallness fact (peaked source biases g toward the lower endpoint):
+# a strictly positive value below 1/20 confirms the trend without admitting negatives.
+expect_true("g[peaked@L proxy a=100] < 1/20", bool(g_a_large < sp.Rational(1, 20)))
 
 expect_true("g[uniform] >= 0", bool(sp.N(g_a.subs(sigma_a, 0)) >= 0))
 expect_true("g[uniform] <= 1", bool(sp.N(g_a.subs(sigma_a, 0)) <= 1))

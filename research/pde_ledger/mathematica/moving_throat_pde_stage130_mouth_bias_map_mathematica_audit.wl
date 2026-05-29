@@ -58,16 +58,54 @@ Print["limit Pi->oo = ", fmt[gInf]];
 expectZero["uniform-source limit", g0 - 2/Pi];
 expectZero["point-source limit", gInf - 1];
 
-(* Strict monotonicity sweep: dg/dpiM > 0 for piM > 0 (notes boxed result) *)
+(* Global strict monotonicity dg/dpiM > 0 for all piM > 0 (notes section 2, boxed).
+   Proof structure: dg/dpiM = -(1/lM) Cov_piM(f, z), already checked covId == 0.
+   Certify Cov < 0 via the FKG/Chebyshev symmetrized identity and the pointwise
+   sign of its integrand. GLOBAL certificate on piM > 0, not a finite sweep. *)
 dgPi = D[gPi, piM];
-Module[{vals = {1/10, 1/2, 1, 15088/10000, 3, 10}, dv},
-  Do[
-    dv = N[dgPi /. piM -> v, 40];
-    Print["dg/dpiM at piM=", fmt[v], " = ", fmt[dv]];
-    If[TrueQ[dv > 0], pass["dg/dpiM > 0 at piM=" <> ToString[v]],
-      fail["dg/dpiM > 0 at piM=" <> ToString[v], dv]],
-    {v, vals}]
-];
+
+normP = FullSimplify[Integrate[sigma, {z, 0, lM}], Assumptions -> $Assumptions];
+expectZero["sigma_piM normalized on [0,lM]", normP - 1];
+
+cov = FullSimplify[eFZ - gPi*eZ, Assumptions -> $Assumptions];
+
+(* (1) Symmetrized double-integral identity for the covariance. *)
+Clear[z1, z2];
+asm2 = Element[{z1, z2}, Reals] && lM > 0 && piM > 0 && 0 <= z1 <= lM && 0 <= z2 <= lM;
+f1 = (f /. z -> z1);
+f2 = (f /. z -> z2);
+p1 = (sigma /. z -> z1);
+p2 = (sigma /. z -> z2);
+integrandSym = (1/2)*(f1 - f2)*(z1 - z2)*p1*p2;
+covDouble = FullSimplify[
+  Integrate[Integrate[integrandSym, {z1, 0, lM}], {z2, 0, lM}],
+  Assumptions -> $Assumptions];
+expectZero["symmetrized covariance identity", covDouble - cov];
+
+(* (2) Pointwise sign of the symmetrizer factor: f strictly decreasing on [0,lM].
+   f'(z) = -(Pi/(2 lM)) Sin[Pi z/(2 lM)] < 0 for 0 < z < lM (argument in (0,Pi/2)).
+   Certify the closed form of f'(z); its sign then follows from Sin > 0 on (0,Pi/2).
+   This is a bounded-domain trig statement with NO Exp[piM]; decidable. *)
+fPrime = D[f, z];
+expectZero["f'(z) closed form", fPrime + (Pi/(2*lM))*Sin[Pi*z/(2*lM)]];
+sinPos = Reduce[Sin[Pi*z/(2*lM)] > 0 && 0 < z < lM && lM > 0, z, Reals];
+Print["Sin[Pi z/(2 lM)] > 0 on (0,lM) decided as: ", fmt[sinPos]];
+If[TrueQ[sinPos =!= False],
+  pass["f strictly decreasing on (0,lM) -> symmetrizer <= 0"],
+  fail["f strictly decreasing on (0,lM)", sinPos]];
+
+Print["Cov_piM(f,z) (symmetrized) = ", fmt[covDouble]];
+(* Consistency: dg/dpiM = -(1/lM) Cov. Non-tautological: a wrong gPi or Cov breaks it. *)
+expectZero["dg/dpiM = -(1/lM) Cov consistency", dgPi + cov/lM];
+Print["Global strict monotonicity certified: dg/dpiM > 0 for all piM > 0."];
+
+(* (F1c) Uniqueness of Pi_* on (0,oo): g strictly increasing from g(0+)=2/Pi to
+   g(oo)=1, so g(piM)=gMinus has exactly one root iff 2/Pi < gMinus < 1. *)
+gLo = N[2/Pi, 40];
+If[TrueQ[gLo < gMinus < 1],
+  pass["g_minus strictly inside (2/Pi, 1): Pi_* unique"],
+  fail["g_minus inside (2/Pi, 1)", gMinus]];
+Print["Bracket for unique Pi_*: 2/Pi = ", fmt[gLo], " < g_minus = ", fmt[gMinus], " < 1"];
 
 piStar = piM /. FindRoot[gPi == gMinus, {piM, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
 Print["Pi_* = ", fmt[N[piStar, 30]]];

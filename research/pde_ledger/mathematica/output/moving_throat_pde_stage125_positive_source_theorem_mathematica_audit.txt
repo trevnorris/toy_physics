@@ -38,6 +38,11 @@ PASS: moment g[uniform] - 2/Pi
 Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 moment g[peaked@L] limit = 0
 PASS: moment g[peaked@L] limit
+g_a at aSym -> 100 (peaked-at-L proxy) = 0.0153964175481027004067829884625571116168147118125075332981`30.15051499783199
+g[peaked@L proxy a=100] >= 0 = True
+PASS: g[peaked@L proxy a=100] >= 0
+g[peaked@L proxy a=100] <= 1 = True
+PASS: g[peaked@L proxy a=100] <= 1
 g[uniform] >= 0 = True
 PASS: g[uniform] >= 0
 g[uniform] <= 1 = True

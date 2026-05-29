@@ -84,6 +84,10 @@ ensure_config_loaded() {
   REDTEAM_DIR_REL="$($YAML get "$CONFIG" project.redteam_dir)"
   REDTEAM_DIR="$PROJECT_ROOT/$REDTEAM_DIR_REL"
   MANIFEST="$REDTEAM_DIR/MANIFEST.yaml"
+  # Serializes every MANIFEST read-modify-write so parallel `$RT` calls (e.g. two
+  # codex-invoke instances on different stages) can't corrupt the file. All MANIFEST
+  # mutators funnel through _manifest_locked. flock creates this file if absent.
+  MANIFEST_LOCK="$REDTEAM_DIR/.manifest.lock"
   BATCHES_MD="$REDTEAM_DIR/BATCHES.md"
   STAGE_PAD="$($YAML get "$CONFIG" stage_pad)"
 }
@@ -132,9 +136,18 @@ is_status_only_candidate() {
 
 # --- manifest mutation -------------------------------------------------------
 
+# Run a MANIFEST-mutating command under an exclusive flock so concurrent `$RT`
+# invocations serialize their read-modify-write of MANIFEST.yaml. Every writer
+# (set, set-yaml, init, manifest.py append-stage-list / mark-stale-downstream)
+# must go through this. Leaf-level only — never wrap a scope that itself calls a
+# locked helper, to avoid self-deadlock.
+_manifest_locked() {
+  flock "$MANIFEST_LOCK" "$@"
+}
+
 ensure_manifest() {
   mkdir -p "$REDTEAM_DIR"/{reports,directives,verifications,batches,exec_logs,codex_logs}
-  $YAML init "$MANIFEST"
+  _manifest_locked $YAML init "$MANIFEST"
 }
 
 manifest_set_stage_field() {
@@ -142,7 +155,7 @@ manifest_set_stage_field() {
   local stage_str=$1
   local field=$2
   local value=$3
-  $YAML set "$MANIFEST" "stages.$stage_str.$field" "$value"
+  _manifest_locked $YAML set "$MANIFEST" "stages.$stage_str.$field" "$value"
 }
 
 manifest_get_stage_field() {
@@ -179,9 +192,9 @@ cmd_init() {
   if ! $YAML has "$MANIFEST" project_name; then
     local proj
     proj="$($YAML get "$CONFIG" project.name)"
-    $YAML set "$MANIFEST" project_name "$proj" --raw
-    $YAML set "$MANIFEST" schema_version 2
-    $YAML set "$MANIFEST" created_at "$(date -Iseconds)" --raw
+    _manifest_locked $YAML set "$MANIFEST" project_name "$proj" --raw
+    _manifest_locked $YAML set "$MANIFEST" schema_version 2
+    _manifest_locked $YAML set "$MANIFEST" created_at "$(date -Iseconds)" --raw
   fi
 
   local n stage_str batch_id scan_out
@@ -210,7 +223,7 @@ cmd_init() {
       echo "last_verify_date: null"
       echo "files:"
       echo "$scan_out" | sed 's/^/  /' | sed '/^  stage:/d;/^  stage_str:/d'
-    } | $YAML set-yaml "$MANIFEST" "stages.$stage_str"
+    } | _manifest_locked $YAML set-yaml "$MANIFEST" "stages.$stage_str"
     created=$((created+1))
   done < <(all_stages)
 
@@ -237,7 +250,7 @@ cmd_scan() {
     # Strip the stage/stage_str header since the manifest entry already has them.
     local files_yaml
     files_yaml=$(echo "$scan_out" | sed '/^stage:/d;/^stage_str:/d')
-    echo "$files_yaml" | $YAML set-yaml "$MANIFEST" "stages.$stage_str.files"
+    echo "$files_yaml" | _manifest_locked $YAML set-yaml "$MANIFEST" "stages.$stage_str.files"
   done
   echo "scan: ${#stages[@]} stage(s) updated"
 }
@@ -313,7 +326,7 @@ cmd_set_iter() {
 
 cmd_mark_stale_downstream() {
   ensure_config_loaded
-  $MANIFEST_PY "$CONFIG" mark-stale-downstream "$1"
+  _manifest_locked $MANIFEST_PY "$CONFIG" mark-stale-downstream "$1"
 }
 
 cmd_paths() {
@@ -471,7 +484,7 @@ cmd_codex_invoke() {
 
   # Append log path to codex_log_paths list (atomic, via manifest.py).
   local rel_log="${log#$PROJECT_ROOT/}"
-  echo "$rel_log" | $MANIFEST_PY "$CONFIG" append-stage-list "$unit" codex_log_paths
+  echo "$rel_log" | _manifest_locked $MANIFEST_PY "$CONFIG" append-stage-list "$unit" codex_log_paths
 
   manifest_set_stage_field "$unit" iteration_count "$iter"
   manifest_set_stage_field "$unit" last_codex_run "$(date -Iseconds)"

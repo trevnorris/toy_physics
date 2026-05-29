@@ -52,18 +52,29 @@ min_match = sp.calculus.util.minimum(k*sp.cos(k*z), z, sp.Interval(0, L))
 print("min sigma_match on [0,L] =", min_match)
 if sp.simplify(min_match) != 0:
     raise AssertionError("sigma_match minimum on [0,L] should be 0 (at z=L).")
+# Global positivity on the box z in [0,L], xi in [0,1].
+# sigma_xi is AFFINE in xi: sigma_xi = k*cos(k*z) + xi*(1/L - k*cos(k*z)),
+# so d^2 sigma_xi / d xi^2 == 0 and its minimum over xi in [0,1] is attained
+# at an endpoint. Affine-in-xi (i) + both endpoint slices nonneg on [0,L] (ii)
+# => sigma_xi >= 0 on the whole box. An interior-negative perturbation is NOT
+# affine in xi and fails (i); a sign-changing endpoint slice fails (ii).
+d2_xi = sp.simplify(sp.diff(sigma_xi, xi, 2))
+print("d^2 sigma_xi / d xi^2 =", d2_xi)
+if d2_xi != 0:
+    raise AssertionError("sigma_xi must be affine in xi for the endpoint-min argument.")
 min_xi0 = sp.calculus.util.minimum(sigma_xi.subs(xi, 0), z, sp.Interval(0, L))
-val_xi1 = sp.simplify(sigma_xi.subs(xi, 1))
+min_xi1 = sp.calculus.util.minimum(sigma_xi.subs(xi, 1), z, sp.Interval(0, L))
 print("min sigma_xi(xi=0) on [0,L] =", min_xi0)
-print("sigma_xi(xi=1) =", val_xi1)
+print("min sigma_xi(xi=1) on [0,L] =", min_xi1)
+if not (sp.simplify(min_xi0) >= 0) is sp.true:
+    raise AssertionError("sigma_xi(xi=0) must be nonnegative on [0,L].")
+if not (sp.simplify(min_xi1) >= 0) is sp.true:
+    raise AssertionError("sigma_xi(xi=1) must be nonnegative on [0,L].")
+# Endpoint identities (informational, pin the known minima/values).
 if sp.simplify(min_xi0) != 0:
-    raise AssertionError("sigma_xi(xi=0) minimum on [0,L] should be 0.")
-if sp.simplify(val_xi1 - 1/L) != 0:
+    raise AssertionError("sigma_xi(xi=0) minimum on [0,L] should be 0 (at z=L).")
+if sp.simplify(sigma_xi.subs(xi, 1) - 1/L) != 0:
     raise AssertionError("sigma_xi(xi=1) should equal 1/L.")
-sigma_corner = sp.simplify(sigma_xi.subs([(z, L), (xi, 0)]))
-print("sigma_xi(z=L, xi=0) =", sigma_corner)
-if sp.simplify(sigma_corner) != 0:
-    raise AssertionError("sigma_xi(z=L, xi=0) should equal 0.")
 
 xi_star = sp.simplify(sp.solve(sp.Eq(g_xi, gminus), xi)[0])
 print("xi_* =", xi_star)

@@ -14,24 +14,20 @@ uniform-source limit = 0
 PASS: uniform-source limit
 point-source limit = 0
 PASS: point-source limit
-dg/dpiM at piM=1/10 = 0.0864671597536833089116376050526184975387961706466579747605`40.
-PASS: dg/dpiM > 0 at piM=1
---
-10
-dg/dpiM at piM=1/2 = 0.0835880414389104993673208606382040228818619358966933686606`40.
-PASS: dg/dpiM > 0 at piM=1
--
-2
-dg/dpiM at piM=1 = 0.0782944273569854807693684772715644695511927877687370154873`40.
-PASS: dg/dpiM > 0 at piM=1
-dg/dpiM at piM=943/625 = 0.0714457843797285412431849950796212495718049379092380120792`40.
-PASS: dg/dpiM > 0 at piM=943
----
-625
-dg/dpiM at piM=3 = 0.0484540387109940858353839741724226847710820339419237315808`40.
-PASS: dg/dpiM > 0 at piM=3
-dg/dpiM at piM=10 = 0.0046482847292413054941917719274378807215472885894143061749`40.
-PASS: dg/dpiM > 0 at piM=10
+sigma_piM normalized on [0,lM] = 0
+PASS: sigma_piM normalized on [0,lM]
+symmetrized covariance identity = 0
+PASS: symmetrized covariance identity
+f'(z) closed form = 0
+PASS: f'(z) closed form
+Sin[Pi z/(2 lM)] > 0 on (0,lM) decided as: lM > 0 && Inequality[0, Less, z, Less, lM]
+PASS: f strictly decreasing on (0,lM) -> symmetrizer <= 0
+Cov_piM(f,z) (symmetrized) = (2*lM*(Pi^3 - 4*E^(2*piM)*Pi^2*piM - 4*Pi*piM^2 + E^piM*(Pi^3*(-1 + piM) + 8*piM^4 + 4*Pi*piM^2*(1 + piM) + 2*Pi^2*piM*(2 + piM))))/((-1 + E^piM)^2*(Pi^2 + 4*piM^2)^2)
+dg/dpiM = -(1/lM) Cov consistency = 0
+PASS: dg/dpiM = -(1/lM) Cov consistency
+Global strict monotonicity certified: dg/dpiM > 0 for all piM > 0.
+PASS: g_minus strictly inside (2/Pi, 1): Pi_* unique
+Bracket for unique Pi_*: 2/Pi = 0.6366197723675813430755350534900574481378385829618257949907`40. < g_minus = 0.75803507894466282691968089041411045775052962347756932143531177185761975485938474194632572183273`80. < 1
 Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
 x_* = 1/Pi_* = 0.6627654026231614025125887501352902661785511376116529146987`30.
 g(Pi_*) = 0.7580350789446628269196808904141104577505296234775693214362`30.

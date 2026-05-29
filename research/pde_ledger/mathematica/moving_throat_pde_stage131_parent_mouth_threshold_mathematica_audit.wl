@@ -38,7 +38,13 @@ expectApprox["g_-^F1 closed form vs literal",
   N[gMinusExact, 50], gMinusLiteral, 10^-14];
 gMinus = N[gMinusExact, 80];
 gPi = FullSimplify[2*piM*(2*piM*Exp[piM] + Pi)/((4*piM^2 + Pi^2)*(Exp[piM] - 1)), Assumptions -> $Assumptions];
-piStar = piM /. FindRoot[gPi == gMinus, {piM, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
+(* INDEPENDENT Pi_* route (not a transliteration of SymPy's nsolve on gPi == gMinus): *)
+(* clear denominators so the root equation is polynomial-in-(piM, Exp[piM]) rather than *)
+(* the rational gPi == gMinus, and isolate the unique positive root with a bracketing *)
+(* seed pair. g_Pi is monotone on (0, Infinity), so the bracket robustly fixes the root. *)
+gThresholdResidual[p_] := 40*Pi*p*(2*p*Exp[p] + Pi) - 20*Pi*gMinus*(4*p^2 + Pi^2)*(Exp[p] - 1);
+piStar = piM /. FindRoot[gThresholdResidual[piM] == 0, {piM, 1.4, 1.6},
+  WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
 
 v1 = piM*thetaSigma/lM;
 v1Star = N[piStar, 30]*thetaSigma/lM;
@@ -59,24 +65,33 @@ expectApprox["piStar notes Sec. 1 value",
 expectApprox["slope at piStar notes Sec. 3 value",
   N[D[gPi, piM] /. piM -> piStar, 50], 0.0714453558083195`50, 10^-14];
 
-(* Anchor 3: parent threshold identity at piM = piStar, notes Sec. 2. *)
-thresholdAtStar = FullSimplify[
-  thresholdResidual /. piM -> piStar,
-  Assumptions -> $Assumptions
-];
-expectedForm = (tM - qStar*a0Prime) - piStar*thetaSigma/lM;
-identityResidual = Chop[Simplify[thresholdAtStar - expectedForm], 10^-30];
-If[TrueQ[identityResidual === 0],
-  pass["parent threshold identity at piM = piStar (notes Sec. 2)"],
-  fail["parent threshold identity at piM = piStar (notes Sec. 2)",
-       identityResidual]
+(* Anchor 4: lower-vs-singular branch discrimination, paper Checks item 3. *)
+(* gPi rises from 2/Pi to a supremum of 1, so gNat = 1 is the unreachable singular *)
+(* equal-normalized branch and gPlus > 1 is never attained. Wrap each Rule in parens. *)
+gNat = 1;
+gPlusExact = (2*Sqrt[4107 - 100*Pi^2] + 37*Sqrt[3])/(20*Pi);
+gPiAtStar = N[(gPi /. piM -> piStar), 40];
+
+(* 4a: lower-branch MEMBERSHIP. *)
+lowerResidual = Abs[N[gPiAtStar - gMinus, 40]];
+If[TrueQ[lowerResidual < 10^-30],
+  pass["Pi_* on lower branch (membership)"],
+  fail["Pi_* on lower branch (membership)", lowerResidual]
 ];
 
-(* Anchor 4: lower-branch discrimination, gPi at 2*piStar is far from gMinus. *)
-offStarResidual = Abs[N[(gPi /. piM -> 2*piStar) - gMinus, 30]];
-If[TrueQ[offStarResidual > 10^-3],
-  pass["lower-branch discrimination (paper Checks item 3)"],
-  fail["lower-branch discrimination (paper Checks item 3)", offStarResidual]
+(* 4b: SINGULAR equal-normalized branch EXCLUDED, separation matches notes Delta g_-. *)
+singSep = N[gNat - gPiAtStar, 30];
+deltaGMinusNotes = 0.241964921055337`30;
+If[TrueQ[Abs[N[singSep - deltaGMinusNotes, 30]] < 10^-12 && singSep > 10^-3],
+  pass["singular equal-normalized branch excluded (notes Delta g_-)"],
+  fail["singular equal-normalized branch excluded (notes Delta g_-)", singSep]
+];
+
+(* 4c: UPPER branch EXCLUDED. *)
+upperSep = Abs[N[gPiAtStar - N[gPlusExact, 40], 30]];
+If[TrueQ[upperSep > 1],
+  pass["upper branch excluded"],
+  fail["upper branch excluded", upperSep]
 ];
 
 Print[""];

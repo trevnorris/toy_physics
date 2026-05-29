@@ -31,6 +31,7 @@ research/*/redteam/tmp_prompts/
 # Red-team runtime artifacts (captured per fix/verify cycle; reproducible)
 research/*/redteam/exec_logs/
 research/*/redteam/codex_logs/
+research/*/redteam/.manifest.lock
 research/*/redteam/fix_batch_*.log
 research/*/redteam/fix_batch_*.marker
 research/*/redteam/MORNING_SUMMARY.md

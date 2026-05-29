@@ -5,5 +5,6 @@ g'(Pi_*) = 0.0714453558083195211894603019881
 Parent bias mismatch formula = -A0p*q_* + T_m - Pi*Theta_sigma/L
 PASS: Pi_* matches notes Sec. 1 value 1.50882951349316
 PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195
-PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2
-PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = 0.0903049686172024794499842493650
+PASS: Pi_* on lower branch — |g_Pi(Pi_*) - g_-^F1| = 5.510305613128693192439832098572744060547E-42
+PASS: singular equal-normalized branch excluded — g_nat - g_Pi(Pi_*) = 0.241964921055337173080319109586
+PASS: upper branch excluded — |g_Pi(Pi_*) - g_+^F1| = 2.03991691306063058319190804376

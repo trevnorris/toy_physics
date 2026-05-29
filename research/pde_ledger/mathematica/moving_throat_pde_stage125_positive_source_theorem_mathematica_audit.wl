@@ -91,6 +91,10 @@ Print["g_a (parametric moment) = ", fmt[gA]];
 
 expectZero["moment g[uniform] - 2/Pi", (gA /. aSym -> 0) - 2/Pi];
 expectZero["moment g[peaked@L] limit", Limit[gA, aSym -> Infinity]];
+gApeaked = Chop[Re[Block[{$MaxExtraPrecision = 10000}, N[(gA /. aSym -> 100), 30]]]];
+Print["g_a at aSym -> 100 (peaked-at-L proxy) = ", fmt[gApeaked]];
+expectTrue["g[peaked@L proxy a=100] >= 0", gApeaked >= 0];
+expectTrue["g[peaked@L proxy a=100] <= 1", gApeaked <= 1];
 
 expectTrue["g[uniform] >= 0", (gA /. aSym -> 0) >= 0];
 expectTrue["g[uniform] <= 1", (gA /. aSym -> 0) <= 1];

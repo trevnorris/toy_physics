@@ -2,12 +2,10 @@ g_Pi = 2*Pi*(2*Pi*exp(Pi) + pi)/((4*Pi**2 + pi**2)*(exp(Pi) - 1))
 Covariance identity residual = 0
 limit Pi->0+ = 2/pi
 limit Pi->oo = 1
-dg/dPi at Pi=1/10 = 0.0864671597536833089116376050526
-dg/dPi at Pi=1/2 = 0.0835880414389104993673208606382
-dg/dPi at Pi=1 = 0.0782944273569854807693684772716
-dg/dPi at Pi=943/625 = 0.0714457843797285412431849950796
-dg/dPi at Pi=3 = 0.0484540387109940858353839741724
-dg/dPi at Pi=10 = 0.00464828472924130549419177192744
+Cov_Pi(f,z) (symmetrized) = 2*L*(-4*pi**2*Pi*exp(2*Pi) - pi*(4*Pi**2 - pi**2) + (8*Pi**4 + 4*pi*Pi**3 + 4*pi*Pi**2 + 2*pi**2*Pi**2 + pi**3*Pi + 4*pi**2*Pi - pi**3)*exp(Pi))/((1 - exp(Pi))**2*(16*Pi**4 + 8*pi**2*Pi**2 + pi**4))
+f'(z) = pi*sin(pi*z/(2*L))/(2*L)
+Global strict monotonicity certified: dg/dPi = -(1/L) Cov_Pi(f,z) > 0 for Pi>0.
+Bracket for unique Pi_*: 2/pi = 0.636619772367581343075535053490 < g_minus = 0.758035078944663 < 1 = 1
 Pi_* = 1.50882951349315861144664988336
 x_* = 1/Pi_* = 0.662765402623160072245672286609
 g(Pi_*) = 0.758035078944663043287732762110

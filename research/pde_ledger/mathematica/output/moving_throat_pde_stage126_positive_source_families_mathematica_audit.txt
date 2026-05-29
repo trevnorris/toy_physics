@@ -18,18 +18,16 @@ sigma_xi normalization = 1
 g_xi = -1/4*(Pi*(-1 + xi)) + (2*xi)/Pi
 convex-family normalization = 0
 PASS: convex-family normalization
+d^2 sigma_xi / d xi^2 = 0
+sigma_xi affine in xi = 0
+PASS: sigma_xi affine in xi
 sigma_match(lM) = 0
 sigma_match(lM) = 0 (boundary min on [0,lM]) = 0
 PASS: sigma_match(lM) = 0 (boundary min on [0,lM])
-sigma_match(0) = Pi/(2*lM)
-sigma_match(0) = k (interior max on [0,lM]) = 0
-PASS: sigma_match(0) = k (interior max on [0,lM])
-sigma_xi(z=lM, xi=0) = 0
-sigma_xi(z=lM, xi=0) = 0 = 0
-PASS: sigma_xi(z=lM, xi=0) = 0
 sigma_xi(xi=1) = lM^(-1)
 sigma_xi(xi=1) = 1/lM = 0
 PASS: sigma_xi(xi=1) = 1/lM
+ForAll sigma_xi >= 0 on box -> True
 xi_* = 1 + (40 + 37*Sqrt[3] - 2*Sqrt[4107 - 100*Pi^2])/(5*(-8 + Pi^2))
 xi_* numeric = 0.18391840551153962830834428246014671147`20.
 g_xi(xi_*) - g_- = 0

@@ -15,9 +15,9 @@ traction ratio  = 1.0360973854809996332
 sigma_xi normalization = 1
 g_xi = (8*xi + pi**2*(1 - xi))/(4*pi)
 min sigma_match on [0,L] = 0
+d^2 sigma_xi / d xi^2 = 0
 min sigma_xi(xi=0) on [0,L] = 0
-sigma_xi(xi=1) = 1/L
-sigma_xi(z=L, xi=0) = 0
+min sigma_xi(xi=1) on [0,L] = 1/L
 xi_* = (-37*sqrt(3) - 5*pi**2 + 2*sqrt(4107 - 100*pi**2))/(5*(8 - pi**2))
 xi_* numeric = 0.18391840551153962831
 g_xi(xi_*) - g_- = 0

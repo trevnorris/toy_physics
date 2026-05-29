@@ -52,4 +52,5 @@ a5_sol = sp.solve(sp.Eq(coeff, 0), a5)[0]
 print('a5 preservation condition =', sp.simplify(a5_sol))
 expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
 expect_zero('a5 preservation closed-form', sp.simplify(a5_sol - expected_a5_sol))
-expect_zero('preservation substitution', coeff.subs(a5, a5_sol))
+# De-tautologized: substitute the INDEPENDENT closed form (not the self-solved a5_sol).
+expect_zero('preservation substitution', sp.simplify(coeff.subs(a5, expected_a5_sol)))

@@ -60,7 +60,8 @@ expectZero["overall scale cancels", D[defectCoeff, s]];
 a5Pres = FullSimplify[a5 /. First[Solve[chiSeries - 1 == 0, a5, Reals]], Assumptions -> $Assumptions];
 Print["a5 preservation condition = ", fmt[a5Pres]];
 expectZero["a5 preservation condition + 5 b/9 + a0/27", a5Pres + 5*b/9 + a0/27];
-expectZero["preservation substitution", (chiSeries - 1) /. a5 -> a5Pres];
+(* De-tautologized: substitute the INDEPENDENT closed form, not the self-solved a5Pres. *)
+expectZero["preservation substitution", (chiSeries - 1) /. a5 -> (-5*b/9 - a0/27)];
 
 Print[""];
 Print["Stage 109 Mathematica audit passed."];

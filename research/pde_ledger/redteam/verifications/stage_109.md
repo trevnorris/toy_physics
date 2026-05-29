@@ -1,12 +1,12 @@
 ---
 unit_id: 109
 batch: IV.2
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
+findings_resolved: 2
 findings_total: 3
 material_change: false
 ---
@@ -15,92 +15,121 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — tautological_check (SymPy)
 
 **Classification:** resolved
 
 **What changed:**
-`scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py:53-54` adds the new anchored check between the existing `print('a5 preservation condition = ...')` (L52) and the existing tautological `expect_zero('preservation substitution', ...)` (L55):
-
-```
-expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
-expect_zero('a5 preservation closed-form', sp.simplify(a5_sol - expected_a5_sol))
-```
+`scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py:51-56`. The
+self-solved root `a5_sol = sp.solve(sp.Eq(coeff, 0), a5)[0]` remains (L51) but the two follow-on
+assertions are now de-tautologized:
+- L53-54: `expected_a5_sol = -sp.Rational(5,9)*b - sp.Rational(1,27)*a0` and
+  `expect_zero('a5 preservation closed-form', sp.simplify(a5_sol - expected_a5_sol))` — compares the
+  solved root to the INDEPENDENT closed form from the notes.
+- L56: `expect_zero('preservation substitution', sp.simplify(coeff.subs(a5, expected_a5_sol)))` — the
+  substitution argument is now `expected_a5_sol`, NOT the self-solved `a5_sol`.
 
 **Assessment:**
-Matches the directive's "After" block exactly. The new assertion compares `a5_sol` (computed from `sp.solve(sp.Eq(coeff, 0), a5)`) against a closed-form hard-coded from the notes (`-5b/9 - a0/27`). This is non-tautological: a regression altering any of the three `coeff` coefficients (on `s`, `b`, `a0`, or `a5`) would propagate into `a5_sol` and break the anchor. The pre-existing tautological L55 check is retained as the directive instructed. The exec log line `a5 preservation closed-form = 0` is present at the expected position between `a5 preservation condition = -a0/27 - 5*b/9` and `preservation substitution = 0`.
+Correct; matches the directive's "After" block exactly. Both required checks present. The
+"preservation substitution" is genuinely non-tautological now: it substitutes the hardcoded closed
+form into `coeff` (derived from the ansatz at L46 = `(chi_series-1)/eps`). A structural error in
+`coeff` would make this nonzero rather than silently passing. The closed-form check would fail if
+the solved root disagreed with `a_5 = -5b/9 - a_0/27`. Diff confirms only L53-onward changed; no
+collateral edits. Exec log: `a5 preservation closed-form = 0`, `preservation substitution = 0`, both
+pass.
 
-### F2 — mathematica_transliteration
+### F2 — mathematica_transliteration (.wl)
 
 **Classification:** resolved
 
 **What changed:**
-`mathematica/moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.wl:40-63` replaces the previous series-of-the-ratio path with an independent numerator/denominator-separate path. Specifically:
-- L42-47: builds `num`, `den`, `numLin`, `denLin`, `invDenLin`, then `chiSeries = numLin*invDenLin` (series-expanded).
-- L55: `defectCoeff` is now extracted via `Coefficient[chiSeries, eps, 1]` rather than `(chiSeries - 1)/eps`.
-- L60: `Solve[chiSeries - 1 == 0, a5, Reals]` operates directly on the series-minus-one instead of on the `coeff` intermediate.
-- L63: substitution check now uses `(chiSeries - 1) /. a5 -> a5Pres` (no `coeff` reference).
+`mathematica/moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.wl:40-64`. The
+derivation path is algebraically distinct from the `.py`: `num`/`den` expanded separately (L42-43),
+linearized separately (L44-45), denominator inverted via its own series `invDenLin =
+Normal[Series[1/denLin, {eps,0,1}]]` (L46), then multiplied and re-seriesed (L47) — versus the
+`.py`'s single direct ratio `sp.series` of the whole quotient. `defectCoeff` is read off via
+`Coefficient[chiSeries, eps, 1]` (L55). The preservation solve is direct on `Solve[chiSeries - 1 ==
+0, a5]` (L60). The "preservation substitution" (L64) now substitutes the literal closed form
+`(chiSeries - 1) /. a5 -> (-5*b/9 - a0/27)`, NOT `a5Pres`.
 
 **Assessment:**
-Matches the directive's "After" block exactly. The `coeff = (chiSeries - 1)/eps` intermediate is fully gone — `grep` of the .wl shows only `defectCoeff` (a different quantity, derived via `Coefficient`). The algebraic route — separate-then-invert — is genuinely distinct from the SymPy `sp.series(chi, eps, 0, 2)` of the whole ratio. The four `PASS:` lines (`linearized chi law`, `overall scale cancels`, `a5 preservation condition + 5 b/9 + a0/27`, `preservation substitution`) are present in the exec log, exit code 0, and the printed `first-order defect coefficient = a0/3 + 9*a5 + 5*b` matches the SymPy side symbol-for-symbol. The `a5Pres = -1/27*a0 - (5*b)/9` value agrees with the closed-form. Scaffolding (banner, `$Assumptions`, ansatz L35-38, trailing Print/Exit) is intact.
+Correct; matches the directive's "After" block. Case-sensitive grep confirms the `(chiSeries -
+1)/eps` intermediate is gone (0 matches); the only `coeff`-bearing token is the distinct
+`defectCoeff` plus prose comments. The separate-then-invert path is genuinely distinct from the
+`.py` single-ratio series, satisfying the second-engine policy. The de-tautologized substitution
+depends on `chiSeries` being correct — a structural error breaks it. Diff confirms only the L63→L64
+substitution line changed (plus its comment); all surrounding scaffolding intact. Exec log: 4 PASS /
+0 FAIL.
 
-### F3 — paper_misalignment / script_missing_paper_claim (Cluster A resolution)
+### F3 — paper_misalignment (resolved as cross-reference, NO script change)
 
-**Classification:** resolved
+**Classification:** resolved (correctly untouched)
 
-**What changed:**
-- `.py` L2-11: module docstring added stating that the card's secondary `Checks` items (Robin/mixed-pole limits, even-coefficient preservation under compensation) are exercised at stages 110, 111, and 112 respectively, with this stage establishing the linearized framework those downstream stages consume.
-- `.wl` L28-30: mirror comment block in Mathematica with the same Cluster A carry-forward content (downstream stages 110/111/112).
+**What changed:** Nothing in any script/paper/notes for F3. The directive has NO `## Applied: F3`
+block (confirmed by grep). The diff touches only the F1 `.py` and F2 `.wl` files — no F3 edits.
+Direction (c) routes the three secondary card Checks to sibling owners (scale/argument→108,
+Robin→110, mixed-pole→111, compensated even+odd→112) with a paper-card cross-reference in the manual
+paper pass (PAPER_CLEANUP_TRACKER).
 
-**Assessment:**
-The directive originally held F3 for user resolution ("Resolve before fix_loop") with three candidate directions; the user picked variant (c)-style routing — citing downstream stages where (b)/(c) are demonstrated. Both engines now carry mirror-image docstrings explaining the cross-stage referencing. This does not change any derived result; it documents the script-side scope so a future auditor can match `Checks` to verifying stages without alarm. No script logic added (consistent with not expanding this stage's `Inputs`).
+**Assessment:** Correct. The script header docstrings already mention the downstream
+cross-reference (110/111/112), but these predate this diff and document the agreed direction (c);
+they are not part of the stage-109 diff under review and are not an F3 script "fix." Verified
+untouched per directive.
 
-### Cluster C — banner correction
+## Load-bearing non-tautology check
 
-**Classification:** resolved (collateral, expected)
-
-**What changed:**
-- `.py` L33: `STAGE 92` → `STAGE 109`
-- `.wl` L26: `STAGE 092` → `STAGE 109`
-
-**Assessment:**
-Banner labels now correctly reflect the unit ID. Exec logs show the corrected banner. No mathematical content affected.
+Confirmed: the real anchor is `expectZero["linearized chi law", chiSeries - expected]` (.wl L51) and
+`expect_zero('linearized chi law', chi_series - expected)` (.py L44), with `expected = 1 + eps*(5*b +
+a0/3 + 9*a5)` hardcoded — the paper's first-order law — in both engines (.wl L48, .py L43).
+`chiSeries`/`chi_series` is derived from the (S, beta, Sigma0, Sigma5) ansatz independently of
+`expected`, so this check would FAIL if the linearization were wrong. The de-tautologized
+preservation-substitution checks (.py L56, .wl L64) substitute the independent closed form into the
+ansatz-derived `coeff`/`chiSeries`; a structural error breaks them. They are no longer X−X.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- `chi_Q series = a0*eps/3 + 9*a5*eps + 5*b*eps + 1`
-- `linearized chi law = 0`
-- `overall scale cancels = 0`
-- `a5 preservation condition = -a0/27 - 5*b/9`
-- `a5 preservation closed-form = 0`  (new F1 anchor)
-- `preservation substitution = 0`
+- `linearized chi law = 0` (load-bearing anchor passes)
+- `a5 preservation condition = -a0/27 - 5*b/9` (matches notes' closed form)
+- `a5 preservation closed-form = 0` and `preservation substitution = 0` (both de-tautologized checks pass)
 
-**Mathematica:** exit=0. Notable lines:
-- `chi_Q series = 1 + (a0*eps)/3 + 9*a5*eps + 5*b*eps`
+**Mathematica:** exit=0, 4 PASS / 0 FAIL. Notable lines:
 - `PASS: linearized chi law`
 - `PASS: overall scale cancels`
-- `first-order defect coefficient = a0/3 + 9*a5 + 5*b`
-- `a5 preservation condition = -1/27*a0 - (5*b)/9`
-- `PASS: a5 preservation condition + 5 b/9 + a0/27`
+- `PASS: a5 preservation condition + 5 b/9 + a0/27` (with `a5 preservation condition = -1/27*a0 - (5*b)/9`)
 - `PASS: preservation substitution`
-- `Stage 109 Mathematica audit passed.`
+All four PASS lines are content-bearing (each named, preceded by its printed residual `= 0`).
 
-Four `PASS:` lines on the Mathematica side as expected.
-
-**Output freshness:** Confirmed. Script mtimes: `.py` 2026-05-27 15:10:13, `.wl` 2026-05-27 15:10:26. Output mtimes: `.txt` (sympy) 2026-05-27 15:18:05, `.txt` (mathematica) 2026-05-27 15:24:26. Both outputs are newer than their corresponding scripts; the saved `.txt` outputs were re-generated post-fix.
+**Output freshness:** confirmed. `scripts/output/...sympy_audit.txt` (mtime 2026-05-29 11:23:13) and
+`mathematica/output/...mathematica_audit.txt` (mtime 2026-05-29 11:23:32) are both newer than their
+source scripts (both 2026-05-29 10:57:28). Outputs regenerated post-fix.
 
 ## Material-change assessment
 
-`material_change`: false.
-
-The only derived quantities asserted by this stage — `Delta_Q = 5b + a_0/3 + 9 a_5` and `a_5 = -5b/9 - a_0/27` — are unchanged. F1 adds a new non-tautological anchor for an already-correct value; F2 reaches the same closed-form via an independent algebraic route; F3 is documentation-only; Cluster C corrects a label. No downstream unit's inputs change.
+`material_change`: false. The edits strengthen assertions and reorganize the `.wl` derivation, but
+the derived results are unchanged: the `chi_Q` first-order law (`5b + a0/3 + 9a5`) and the
+preservation closed form (`a_5 = -5b/9 - a_0/27`) are identical pre- and post-fix. No downstream
+unit consumes a changed value. (Orchestrator will still mark units > 109 upstream_stale per policy;
+no specific concern here.)
 
 ## Side observations (non-blocking)
 
-- The carry-forward docstring asserts that stages 110/111/112 perform the Robin, mixed-pole, and even-coefficient checks respectively. This is a claim about downstream content that the verifier did not (and per scope cannot) cross-check against those stages' scripts here. If those stages do not in fact perform those checks, this docstring will become a future audit flag — but that is the auditor's job, not blocking F3 closure.
-- The `.wl` retains the `expectZero` step for `(chiSeries - 1) /. a5 -> a5Pres` (still tautological by construction, since `a5Pres` solves that equation). The directive explicitly kept this — paired with the new anchored closed-form check, this is acceptable.
+- `redteam/codex_reviews/stage_109.md` reflects an EARLIER iteration: its verdict table flags
+  `.py:55`/`.wl:63` as still tautological (substituting `a5_sol`/`a5Pres`). The CURRENT source and
+  diff show both were subsequently de-tautologized to the independent closed form. The current state
+  supersedes that review (consistent with an iterate-to-clean loop).
+- The prior `verifications/stage_109.md` (2026-05-27) likewise described the substitutions as
+  retained-tautological; this verdict reflects the newer directive/source state where both are fixed.
+- Both scripts carry a header docstring documenting the F3 downstream cross-reference (110/111/112).
+  This documents direction (c), not a behavior change, and is not part of the stage-109 diff.
 
 ## Verdict justification
 
-All three findings have correct, in-place edits matching the directive's "After" blocks exactly. F1's new SymPy anchor is non-tautological (the right-hand side is hard-coded from notes, not from `coeff`). F2's Mathematica path no longer shares the `coeff = (chiSeries - 1)/eps` intermediate and uses a genuinely distinct algebraic route (separate-then-invert vs. series-of-the-ratio). F3's Cluster A carry-forward documents the downstream verification routing without altering script logic. Cluster C banners are corrected. Both engines pass with exit 0, four `PASS:` lines on the Mathematica side, and outputs are fresh. No regressions in the diff. Verdict: `verified`.
+Both findings are genuinely resolved. F1 and F2 each replace the self-solved-root substitution with
+the INDEPENDENT closed form `a_5 = -5b/9 - a_0/27`, and F1 adds a direct closed-form comparison of
+the solved root; both now depend on the ansatz-derived `coeff`/`chiSeries` and would fail under a
+structural error. The `.wl` path is algebraically distinct (separate num/den linearization plus
+denominator-inverse series; the `(chiSeries-1)/eps` intermediate is gone — grep confirms 0). F3 was
+correctly left untouched (no `## Applied: F3`, no F3 edits in the diff). Both exec logs exit 0 with
+all content-bearing checks passing, and saved outputs are fresher than the sources. Verdict:
+verified.

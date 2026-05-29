@@ -6,8 +6,9 @@ Paper-card `Checks` items (ii) "higher odd terms beyond the point-particle 2.5PN
 coefficient" and (iii) "outgoing l=2 DtN fingerprint against the normalized
 z = omega a / c_s expansion" are verified upstream. Specifically:
   * Stage 102 (higher_odd_irrelevance) covers item (ii).
-  * Stage 104 (outgoing_dtn_fingerprint) covers item (iii) and is the source of
-    chi_Q = 1 on the canonical compact passive/outgoing grouped-P_2 branch.
+  * Stage 104 (outgoing_dtn_fingerprint) covers item (iii).
+  * Stage 105 (chiQ_fix_from_outgoing_dtn) fixes chi_Q = 1 from that fingerprint
+    on the canonical compact passive/outgoing grouped-P_2 branch.
 This stage uses chi_Q = 1 as a carry-in and focuses on item (i): factorization
 separability of m0hat^2 * chi_Q * N_Q and the closure to N_Q = 1.
 """

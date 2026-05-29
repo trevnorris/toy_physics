@@ -6,7 +6,9 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-05-28` (batch V.1 close — first-pass paper-grounded audit on stages 164-175. **No checkpoints in V.1 range**, so no checkpoint-constant provenance to log; cumulative unchanged. Previous IV.6 entry retained below.)
+Snapshot date: `2026-05-29` (**IV.x/V.1 orchestrator-direct integrity remediation, batch 2** — re-verification of stages 105/106/109/112 whose first-pass IV.2 fixes had been applied orchestrator-direct while Codex was bypassed. **Checkpoint stage `105` is the only checkpoint in this batch.** 105 was REMEDIATION-`verified` (2026-05-29) with **`material_change: false`** — the `.wl` chi_Q derivation was rewritten along an independent residue/`Reduce`-witness route, but no derived or carried constant changed, so **105's constant provenance is unchanged from the IV.2 close** (`sigma_Q^can = 4 a^5/(27 c_s^5)` still pole-scale-derived in-script; `chi_Q = 1` still derived non-tautologically — now via the residue/`Reduce` witness on the Mathematica side; deformed-branch coefficients still imported with explicit provenance; zero unexplained literals). The IV.2 105 provenance entry below remains accurate. The other three batch-2 stages (106, 109, 112) are NOT checkpoints, so no further checkpoint-constant provenance to log; cumulative unchanged. Previous V.1 entry retained below.)
+
+Snapshot date prior: `2026-05-28` (batch V.1 close — first-pass paper-grounded audit on stages 164-175. **No checkpoints in V.1 range**, so no checkpoint-constant provenance to log; cumulative unchanged. Previous IV.6 entry retained below.)
 
 Snapshot date prior: `2026-05-28` (batch IV.6 close — first-pass paper-grounded
 audit on stages 151-163. **No checkpoints in IV.6 range.** Cumulative

@@ -3680,6 +3680,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt
         exists: true
         mtime: 1779917046
+    last_status_change: 2026-05-29 10:45:37-06:00
+    codex_session: 019e7495-62bd-7fb2-819a-b84019df3223
+    codex_log_paths:
+    - redteam/codex_logs/105_iter1.txt
+    last_codex_run: 2026-05-29 10:37:40-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 10:39:31-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 10:40:11-06:00
   '106':
     stage: 106
     stage_str: '106'
@@ -3709,6 +3719,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt
         exists: true
         mtime: 1779917051
+    last_status_change: 2026-05-29 10:56:01-06:00
+    codex_session: 019e74a0-e554-7282-8a75-068485f5be83
+    codex_log_paths:
+    - redteam/codex_logs/106_iter1.txt
+    last_codex_run: 2026-05-29 10:50:05-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 10:50:40-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 10:50:58-06:00
   '107':
     stage: 107
     stage_str: '107'
@@ -3806,6 +3826,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.txt
         exists: true
         mtime: 1779917066
+    last_status_change: 2026-05-29 11:27:26-06:00
+    codex_session: 019e74aa-ca08-71e2-9182-26b4ad48da55
+    codex_log_paths:
+    - redteam/codex_logs/109_iter1.txt
+    last_codex_run: 2026-05-29 10:59:12-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 11:22:03-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 11:22:48-06:00
   '110':
     stage: 110
     stage_str: '110'
@@ -3893,6 +3923,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_mathematica_audit.txt
         exists: true
         mtime: 1779917080
+    last_status_change: 2026-05-29 11:41:45-06:00
+    codex_session: 019e74c6-f0ad-7050-b09c-57ec036c984f
+    codex_log_paths:
+    - redteam/codex_logs/112_iter1.txt
+    last_codex_run: 2026-05-29 11:32:44-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 11:34:24-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 11:34:48-06:00
   '113':
     stage: 113
     stage_str: '113'

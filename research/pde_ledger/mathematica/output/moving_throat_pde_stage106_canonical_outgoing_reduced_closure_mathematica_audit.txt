@@ -11,10 +11,16 @@ omega^6 coefficient (chi_Q=1) = (16*a^6)/(729*cS^6)
 omega^7 coefficient (chi_Q=1) = (((8*I)/243)*a^7)/cS^7
 omega^5 coefficient form = 0
 PASS: omega^5 coefficient form
-target identity k0Target * k4Target - 4 k2Target^2 = 0
-PASS: target identity k0Target * k4Target - 4 k2Target^2
-target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3] = 0
-PASS: target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]
+first next-odd omega^7 coefficient = 0
+PASS: first next-odd omega^7 coefficient
+omega^5 coefficient gives chi_Q Gamma5_target = 0
+PASS: omega^5 coefficient gives chi_Q Gamma5_target
+chi_Q fixed by canonical omega^5 match = 0
+PASS: chi_Q fixed by canonical omega^5 match
+target identity K0_target K4_target - 4 K2_target^2 = 0
+PASS: target identity K0_target K4_target - 4 K2_target^2
+target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3) = 0
+PASS: target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)
 N_Q on natural branch at m0hat=1, chi_Q=1 = 0
 PASS: N_Q on natural branch at m0hat=1, chi_Q=1
 canonical gamma_eff - target = 0
@@ -25,6 +31,6 @@ Delta_Q zeroth-order coefficient equals Gamma5_target = 0
 PASS: Delta_Q zeroth-order coefficient equals Gamma5_target
 
 RESULT:
-  Carry-in chi_Q = 1 from stage 104; canonical compact passive/outgoing
+  Carry-in chi_Q = 1 from stage 105; canonical compact passive/outgoing
   grouped-P_2 branch closes with N_Q = 1 at m0hat = 1.
   gamma_quad^eff = 2 G / (5 c^5); Delta_Q slope = -2 G / (5 c^5).

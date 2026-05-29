@@ -1,117 +1,185 @@
 ---
 unit_id: 112
 batch: IV.2
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T11:50:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 2
-findings_total: 2
+findings_resolved: 3
+findings_total: 3
 material_change: false
 ---
 
 # Verification — unit 112
 
-Note on finding ordering: the auditor report numbered F1 = mathematica_transliteration and F2 = paper_misalignment. The directive swapped them (F1 = paper_misalignment / Cluster C, F2 = mathematica_transliteration) because Cluster C resolution was held first pending user direction. This verification follows the directive's ordering, which also matches the close-out summary from the orchestrator.
+Note: this supersedes the earlier 2-finding verification (claude-opus-4-7, 2026-05-27).
+The directive was subsequently amended to fold in F3 (the sigma_W != 0 qualifier from
+Codex review R1) and the F2 `.wl` block was revised to add `bDef`, the `presCond`
+factorization, the `Reduce[... && sigma != 0]` branch isolation, and the degenerate
+sigma=0 case. This verifies the current 3-finding state (F1 label / F2 independent route /
+F3 sigma!=0 qualifier).
 
 ## Per-finding outcomes
 
-### F1 — paper_misalignment (notes_contradicts_script, Cluster C)
+### F1 — paper_misalignment (notes_contradicts_script; resolved direction (a), label only)
 
 **Classification:** resolved
 
 **What changed:**
-
-Cluster C resolution along direction (a) — "internal unit number 'Stage 112' is canonical for scripts". The three identifying strings flagged in the directive are now updated:
-
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py:3` reads `Stage 112 SymPy audit.` (previously `Stage 95 SymPy audit.`).
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py:54` reads `print('stage112: PASS')` (previously `print('stage95: PASS')`).
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_mathematica_audit.wl:26` reads `banner["STAGE 112 — EXACT ROBIN-MIXED COMPENSATION LAW"];` (previously `STAGE 095`).
-- The trailing Mathematica print at `.wl:83` already said `Stage 112 Mathematica audit passed.` and is unchanged, consistent with direction (a) in the directive.
-
-In addition the SymPy provenance comment block at `.py:5-13` was refreshed; line 7 now reads `` `Lambda_out` is the exact canonical outgoing DtN branch from Stages 104/105. `` (was `Stage 087-088` per the orchestrator summary). Stage 104 is the canonical Lambda_out source after the renumber chain, so this aligns the provenance comment with the rest of the script's stage references and with the directive's "Stage 104" anchor at the top of the file. This is an additive cosmetic update beyond the three lines named in the directive, but it is internally consistent with direction (a) and does not touch any derivation, assertion, or assumption.
+The stale "Stage 95 / STAGE 095" identifier strings were re-anchored to the canonical
+internal "Stage 112":
+- `scripts/...sympy_audit.py:3` → `Stage 112 SymPy audit.`
+- `scripts/...sympy_audit.py:66` → `print('stage112: PASS')` (was `.py:54`; the F3
+  insertion shifted line numbers down)
+- `mathematica/...mathematica_audit.wl:26` → `banner["STAGE 112 — EXACT ROBIN-MIXED COMPENSATION LAW"];`
+- `mathematica/...mathematica_audit.wl:90` already read `Stage 112 Mathematica audit passed.` and was left untouched per direction (a).
 
 **Assessment:**
+Correct and complete. Direct inspection of the current files (grep) shows no residual
+`Stage 95`/`STAGE 095`/`Stage 129` strings; all four identifier strings read "Stage 112".
+The exec-log banner prints `STAGE 112 — EXACT ROBIN-MIXED COMPENSATION LAW` and the SymPy
+log ends `stage112: PASS`, so both runtime transcripts are now self-consistent. No
+paper/notes edit — direction (a) was an APPROVED override of the paper_misalignment hold
+(Claude+Codex consult 019e748e). These label edits do not appear in `stage_112_diff.patch`
+because that diff was captured against a baseline in which F1 had already been applied (the
+`## Applied: F1` block predates the F2/F3 iteration); their current presence is verified
+directly from the working tree.
 
-The three required label edits are in place and align across both engines and across all banner/intermediate/final strings:
-
-- SymPy transcript shows `stage112: PASS` (`scripts/output/...sympy_audit.txt:6`).
-- Mathematica transcript shows `STAGE 112 — EXACT ROBIN-MIXED COMPENSATION LAW` in the banner (`mathematica/output/...mathematica_audit.txt:3`) and `Stage 112 Mathematica audit passed.` at the tail (`...:34`).
-
-Both engines now consistently identify the unit as Stage 112. No algebraic content was touched by the label sweep. The provenance comment update is editorial, references stages that the rest of the script already cites, and is not load-bearing for any assertion. Direction (a) was the path the directive itemized most explicitly, so the closure matches the directive's offered resolutions.
-
-### F2 — mathematica_transliteration
+### F2 — mathematica_transliteration (independent route)
 
 **Classification:** resolved
 
 **What changed:**
+`.wl:55-71` inserts — ALONGSIDE the still-present chi_Q block (`.wl:75-87`) — an
+independent Stage-92 linearized cross-check deriving `gamma_W = 1/9` from the deformation
+data `(b, a0, a5)`:
+- `bDef = 9*(-L2/L0) - 1` on solB (canonical-even consistency via the z^2/z^0 ratio),
+- `a0Def = (z^0 of lambdaHyb on solB) - (z^0 of lambdaOut)` (the z^0 deformation difference),
+- `a5Def = (z^5/I of lambdaHyb on solB) - (z^5/I of lambdaOut)` (the z^5 deformation difference),
+then `presCond = a0Def/3 + 9 a5Def`, checked to factor as `sigma*(1 - 9 gamma)`, and
+`Reduce[presCond == 0 && sigma != 0, gamma, Reals]` → `gamma = 1/9`.
 
-A new independent Stage-92 linearized cross-check block was inserted in `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_mathematica_audit.wl:55-66`, sitting between the four branch-identity `expectZero` calls (lines 50–53) and the `chiA = ...` definition (line 68). The block:
+**Assessment — GENUINELY independent (complementary path, NOT a silent restatement):**
 
-1. Extracts `a0Def` as the deviation of the constant-piece (`z^0` coefficient) of `lambdaHyb /. solB` from the Lambda_out constant `-3` (line 60), and `a5Def` as the imaginary-part deviation of the `z^5` coefficient from `1/9` (line 61).
-2. Asserts `a0Def - 3*sigma == 0` and `a5Def + sigma*gamma == 0` (lines 62–63), matching the notes' branch-selection data `(a_0, a_5) = (3 sigma_W, -sigma_W gamma_W)`.
-3. Solves the preservation condition `a0Def/3 + 9*a5Def == 0` for `gamma` (line 64), prints the result (line 65), and asserts `gammaFromLinear - 1/9 == 0` (line 66).
+1. **Different intermediates.** The chi route uses only the z^0 and z^5 coefficients and
+   forms the single rational ratio `chi = (-l5/l0)/(1/27)`, comparing it to
+   `(1-9 sigma gamma)/(1-sigma)`. The linearized route instead extracts three separate,
+   individually-checked deformation data — `a0` (a z^0 DIFFERENCE `lambdaHyb - lambdaOut`,
+   never formed by the chi route), `a5` (a z^5 difference), and `b` (a z^2/z^0 ratio, an
+   intermediate the chi route never touches) — and combines them through a DIFFERENT
+   functional `a0/3 + 9 a5`. The only shared primitive is series/coefficient extraction
+   from the same Lambda_hyb, which is unavoidable; the path from coefficients to
+   `gamma_W = 1/9` is structurally distinct.
 
-The existing chi_Q-based derivation (`chiA`/`chiB`, the chi_Q assertions at lines 74–76, and the scaled-identity check at lines 78–80) is left in place unchanged, so the two derivation paths now run as complementary engine paths to `gamma_W = 1/9` rather than as a transliterated echo.
+2. **The algebraic equivalence is exactly what makes it a valid cross-check, not a
+   tautology.** Yes, `a0/3 + 9 a5 = sigma(1-9 gamma)` is equivalent to
+   `chi_B - 1 = 0 ⟺ sigma(1-9 gamma) = 0`. But equivalence of the FINAL RESULT is the
+   point of cross-route verification — two independent paths should land the same answer.
+   The tautology test is whether they share the load-bearing computation, and they do not:
+   the linear route reaches `sigma(1-9 gamma)` by contracting the deformation vector
+   (`a0/3 + 9 a5`), whereas the chi route reaches it via the rational `-l5/l0` scaled by 27
+   and minus 1. A transliteration bug in the shared chi choreography (sign slip in the `/I`
+   normalization, miscopied `1/27` scale, wrong branch substitution) would NOT propagate
+   into `a0Def`/`a5Def`, because those are direct coefficient differences against
+   `lambdaOut` with their own normalizations — so the linear route would diverge and one of
+   its `expectZero` checks would fail. That is real complementary content.
+
+3. **a0/a5/b extraction checks are NON-TAUTOLOGICAL.** Each is extracted-vs-normalization,
+   not identity-by-construction. On `solB = {rho->4 sigma, kappa->1/3}` the z^0 coeff of
+   lambdaHyb is `-3 + 3 sigma`, the z^2 coeff `(1-sigma)/3`, the z^5/I coeff `1/9 - gamma sigma`:
+   - `a0Def - 3*sigma`: a0Def = `(-3 + 3 sigma) - (-3) = 3 sigma` → check = 0; would FAIL if
+     solB carried a wrong rho or the lambdaOut constant were mis-stated.
+   - `a5Def + sigma*gamma`: a5Def = `(1/9 - gamma sigma) - 1/9 = -gamma sigma` → check = 0;
+     would FAIL on a sign error or wrong gamma coupling in z^5.
+   - `bDef = 9*(-L2/L0) - 1` = `9*(1/9) - 1 = 0` only because the canonical-even z^2/z^0
+     ratio holds on solB; a wrong kappa breaks it.
+   These match the notes' boxed `(b,a0,a5)=(0, 3 sigma_W, -sigma_W gamma_W)` and condition
+   `a0/3 + 9 a5 = sigma_W(1-9 gamma_W) = 0` (notes lines 96-106), so the prescribed targets
+   are correct, not invented to pass.
+
+4. **Existing chi_Q branch checks REMAIN.** Directive said "alongside, not replacing" —
+   confirmed: `.wl:75-87` still computes `chiA`/`chiB` and runs all four original chi checks
+   (branch A, branch B formula, branch B at gamma=1/9, scaled identity), unchanged.
+
+### F3 — symbol_assumption_error (sigma_W != 0 qualifier)
+
+**Classification:** resolved
+
+**What changed:**
+- `.wl` side (inside the F2 block): `presCond` factorizes to `sigma*(1-9 gamma)`
+  (`.wl:67-68`, COMPUTED and checked), the iff is closed only on the nontrivial branch via
+  `Reduce[presCond == 0 && sigma != 0, gamma, Reals]` (`.wl:69-71`), and the degenerate
+  case is `(chiBgen /. sigma -> 0) - 1` (`.wl:72-73`) where chiBgen is symbolic in gamma.
+- `.py` side (`.py:55-61`): adds `chi_B_general = (1-9*sigma*gamma)/(1-sigma)`, a comment
+  stating preservation holds iff `sigma*(1-9 gamma)=0`, the factorization check
+  `together(chi_B_general - 1).as_numer_denom()[0] - sigma*(1-9 gamma)` (numerator of
+  chi_B-1 = `sigma(1-9 gamma)` up to SymPy sign normalization, landing at 0 per the log),
+  and the degenerate check `chi_B_general.subs(sigma, 0) - 1`.
 
 **Assessment:**
-
-The block uses a genuinely different algebraic route to land `gamma_W = 1/9`:
-
-- The chi_Q path uses `(-L5/L0)/(1/27)` evaluated on `solB`, asserts the closed form `(1 - 9 sigma gamma)/(1 - sigma)`, substitutes `gamma -> 1/9`, and checks the residual is 1.
-- The new block reads off `(a_0, a_5)` directly from `lambdaHyb /. solB - lambdaOut` (no chi_Q construction, no division-and-substitution choreography), asserts the notes' branch-selection identifications, and `Solve`s the linearized preservation constraint for `gamma`.
-
-These are algebraically independent: a bug in the chi_Q normalization (`(-L5/L0)/(1/27)`) would not also break the direct coefficient read-off, and conversely a sign error in the `(a_0, a_5)` extraction would not also break the chi_Q closed form. The Mathematica transcript shows the three new lines `independent: a_0 - 3 sigma on solB = 0`, `independent: a_5 + sigma gamma on solB = 0`, and `independent: gamma_W from a_0/3 + 9 a_5 = 0 = 0` all PASS, with `gamma_W from linearized preservation = 1/9` printed in between (transcript lines 15–21). The assertions are non-tautological: `a0Def` and `a5Def` are computed before any substitution that would force them to 3*sigma or -sigma*gamma, and `gammaFromLinear` is the symbolic output of `Solve`, not a constant the script writes in.
-
-The SymPy script is unchanged (the auditor's F1 in the original report only required an *independent* path in the Mathematica twin; the SymPy script's chi_Q-based derivation remains the primary engine A path). Engine independence is now restored.
+Both real, not asserted by construction. The factorization genuinely shows
+`chi_B - 1 ⟺ sigma(1-9 gamma) = 0` by extracting and comparing the numerator (a wrong
+factorization leaves a nonzero residual and fails). The degenerate assertion is real: at
+sigma=0, `chi_B_general` is `1/1 = 1` INDEPENDENTLY of the still-symbolic gamma, genuinely
+exercising gamma-independence rather than substituting gamma to a fixed value. This
+directly closes Codex R1, which complained that the original
+`Solve[a0/3 + 9 a5 == 0, gamma]` proved only the generic branch while the declared
+assumptions still permitted sigma=0; the `sigma != 0` restriction is now explicit in the
+Reduce and the sigma=0 case is handled separately on both engines.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
+- `chi_B - 1 factorizes as sigma(1-9 gamma) = 0`
+- `degenerate sigma=0: chi_B = 1 for any gamma = 0`
+- `scaled identity on branch B = 0`
+- `stage112: PASS`
 
-```
-Lambda_hyb(z) = -I*gamma*sigma*z**5 - kappa**2*sigma*z**4 - kappa*sigma*z**2 + rho - sigma + I*z**5/9 + z**4/9 + z**2/3 - 3
-canonical-even solutions = [{kappa: 0, rho: sigma}, {kappa: 1/3, rho: 4*sigma}]
-chi_Q branch B = (9*gamma*sigma - 1)/(sigma - 1)
-scaled identity on branch B = 0
-stage112: PASS
-```
+**Mathematica:** exit=0, 14 PASS / 0 FAIL. All 14 are content-bearing (none is an
+identity-by-construction `0`):
+1. branch A rho - sigma; 2. branch A kappa; 3. branch B rho - 4 sigma;
+4. branch B kappa - 1/3; 5. independent: b = 0 on solB;
+6. independent: a0 - 3 sigma on solB; 7. independent: a5 + sigma*gamma on solB;
+8. independent: preservation cond = sigma (1 - 9 gamma);
+9. independent: gamma_W = 1/9 on nontrivial branch (sigma != 0);
+10. degenerate sigma=0: chi_B = 1 for any gamma;
+11. chi_Q branch A - (1 - 9 sigma gamma); 12. chi_Q branch B - (1 - 9 sigma gamma)/(1 - sigma);
+13. chi_Q branch B at gamma=1/9; 14. scaled identity on branch B.
+Banner correctly reads `STAGE 112 — EXACT ROBIN-MIXED COMPENSATION LAW`.
 
-**Mathematica:** exit=0. 11 PASS lines:
-
-```
-PASS: branch A rho - sigma
-PASS: branch A kappa
-PASS: branch B rho - 4 sigma
-PASS: branch B kappa - 1/3
-PASS: independent: a_0 - 3 sigma on solB
-PASS: independent: a_5 + sigma gamma on solB
-PASS: independent: gamma_W from a_0/3 + 9 a_5 = 0
-PASS: chi_Q branch A - (1 - 9 sigma gamma)
-PASS: chi_Q branch B - (1 - 9 sigma gamma)/(1 - sigma)
-PASS: chi_Q branch B at gamma=1/9
-PASS: scaled identity on branch B
-```
-
-The three new independent-route lines (a_0, a_5, gamma_W) appear exactly where the directive placed them — between the branch-identity block and the chi_Q closed-form block — and `gamma_W from linearized preservation = 1/9` is printed verbatim (transcript line 19).
-
-**Output freshness:** both transcripts are newer than their scripts.
-
-- SymPy script mtime 2026-05-27 15:15; SymPy output mtime 2026-05-27 15:18 (output newer).
-- Mathematica script mtime 2026-05-27 15:16; Mathematica output mtime 2026-05-27 15:24 (output newer).
+**Output freshness:** confirmed. Script mtimes (sympy 11:28:29, wl 11:31:27) precede the
+saved `.txt` outputs (sympy out 11:35:04, wl out 11:35:37), so the committed outputs were
+re-generated post-fix.
 
 ## Material-change assessment
 
-`material_change`: false.
-
-F1 is a string-only label sweep plus a provenance-comment refresh; no algebra changed. F2 adds an independent verification path that lands the same `gamma_W = 1/9` already verified by the chi_Q route — it expands the verification surface area but does not change any derived result. Downstream units that consume `gamma_W = 1/9`, the branch B identifications `(rho_R = 4 sigma_W, kappa_W = 1/3)`, the chi_Q^hyb closed form, or the collapse identity `Lambda_hyb = (1 - sigma_W) Lambda_out` will see exactly the same values as before. No downstream re-audit is required on derivation-content grounds.
+`material_change`: false. No derived result changed. All edits are (a) cosmetic identifier
+strings (F1), (b) an additive independent cross-check re-deriving the already-established
+`gamma_W = 1/9` (F2), and (c) additive honesty qualifiers around the already-true
+`chi_B = 1` claim plus its degenerate exception (F3). The five original paper deliverables
+(two-branch solve, branch-B chi_Q, preservation at gamma=1/9, collapse identity) are
+computed exactly as before; no downstream unit's carried value is altered.
 
 ## Side observations (non-blocking)
 
-- The Mathematica block's `a0Def` line uses `(Coefficient[lambdaHyb /. solB, z, 0]) - (-3)` to peel off the Lambda_out constant. This is correct (Lambda_out's `z^0` coefficient is `-3`) but is implicit — a future reader without the notes open might miss why `-3` appears as a literal. Not a finding; just a readability note.
-- The directive offered direction (a), (b), or (c) for F1 and the close-out chose (a). Direction (a) is reflected consistently across all four flagged strings (sympy:3, sympy:54, math:26, math:83), so the choice is internally consistent.
+- The new `.wl` comment calls the route "Stage-92 linearized" (dropping the older
+  "(= stage 109)" parenthetical); this matches the notes box wording (line 96, "Stage-92
+  deformation data"). Cosmetic.
+- `a0Def` peels the Lambda_out constant via `Coefficient[lambdaOut, z, 0]` rather than the
+  literal `-3` used in the earlier draft — slightly more robust to a future lambdaOut edit.
+  Non-blocking.
 
 ## Verdict justification
 
-Both findings are resolved with no regressions. F1: the three flagged identifier strings (sympy:3 docstring, sympy:54 final print, math:26 banner) all now reference Stage 112, and the trailing math:83 print that already read "Stage 112" is unchanged, exactly per direction (a) of the directive; a small additive provenance-comment refresh on the SymPy side is internally consistent and non-load-bearing. F2: the Mathematica script now derives `gamma_W = 1/9` via the Stage-92 linearized `(a_0, a_5)` cross-check using a genuinely independent algebraic path (direct coefficient read-off + `Solve` on the linear preservation condition), and the three new `expectZero` lines (a_0, a_5, gamma_W) PASS alongside the seven pre-existing PASS lines for a total of 11 PASS lines in the Mathematica transcript. SymPy exits 0 with `stage112: PASS`. Outputs are fresher than scripts in both engines. No material change to any derived result downstream. Verdict: `verified`.
+All three findings are resolved. F1's label re-anchoring to "Stage 112" is present in all
+four identifier strings across both engines and confirmed in the runtime transcripts. F2's
+linearized `(b, a0, a5)` route is a genuine complementary computational path, not a silent
+restatement: it uses distinct intermediates (z^0 and z^5 deformation differences against
+lambdaOut, plus a z^2/z^0 ratio) the chi route never forms, its a0/a5/b extraction checks
+are non-tautological (each would fail under a wrong branch, sign, or normalization), and the
+existing chi_Q block is retained alongside it. F3 closes Codex R1 by making the `sigma != 0`
+restriction explicit (Reduce) and handling the degenerate sigma=0 case separately on both
+engines, with the factorization computed and checked rather than asserted. Both exec logs
+exit 0 (SymPy clean; Mathematica 14/14 PASS, all content-bearing), outputs are fresh, and no
+regressions appear in the diff. Verdict: verified.

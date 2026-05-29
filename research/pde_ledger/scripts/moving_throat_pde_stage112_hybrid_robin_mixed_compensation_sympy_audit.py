@@ -19,6 +19,11 @@ import sympy as sp
 z, rho, sigma, kappa, gamma = sp.symbols('z rho sigma kappa gamma', real=True)
 I = sp.I
 
+def expect_zero(name, expr):
+    residual = sp.simplify(expr)
+    print(f'{name} =', residual)
+    assert residual == 0
+
 # Stage 104 canonical outgoing DtN branch carried into the hybrid solve.
 Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
 Lambda_hyb = sp.expand(sp.series(Lambda_out + rho - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())
@@ -47,6 +52,13 @@ chi_B = sp.simplify(((-L5/L0) / sp.Rational(1, 27)).subs(sols[1]))
 print('chi_Q branch B =', chi_B)
 assert sp.simplify(chi_B - (1 - 9*sigma*gamma)/(1 - sigma)) == 0
 assert sp.simplify(chi_B.subs(gamma, sp.Rational(1, 9)) - 1) == 0
+chi_B_general = (1 - 9*sigma*gamma)/(1 - sigma)
+# Preservation chi_B = 1 iff sigma*(1 - 9*gamma) = 0: on the
+# nontrivial branch sigma != 0 iff gamma = 1/9; at sigma = 0 any gamma works.
+expect_zero('chi_B - 1 factorizes as sigma(1-9 gamma)',
+            sp.together(chi_B_general - 1).as_numer_denom()[0] - sigma*(1 - 9*gamma))
+expect_zero('degenerate sigma=0: chi_B = 1 for any gamma',
+            chi_B_general.subs(sigma, 0) - 1)
 
 scaled_identity = sp.expand((Lambda_hyb.subs(sols[1]) - (1 - sigma)*Lambda_out).subs(gamma, sp.Rational(1, 9)))
 print('scaled identity on branch B =', scaled_identity)

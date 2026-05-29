@@ -26,10 +26,10 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH"];
 
-(* Paper-card Checks (ii) and (iii) are exercised upstream at stages 102 and
-   104; this engine uses chi_Q = 1 as carry-in and proves N_Q = 1 from the
-   retarded one-pole form via a path structurally distinct from the SymPy
-   script (no nqGeneral/k0/k2/k4/gamma5 intermediates). *)
+(* Paper-card Check (ii) is exercised upstream at stage 102. Stage 104 proves
+   the outgoing l=2 DtN fingerprint, and Stage 105 fixes chi_Q = 1 from that
+   fingerprint. This engine uses chi_Q = 1 as carry-in and proves N_Q = 1 from
+   the retarded one-pole form via a path structurally distinct from SymPy. *)
 
 Clear[G, c, cS, a, omegaSym, chiQ, m0Sym, DeltaQ];
 $Assumptions =
@@ -61,6 +61,10 @@ Print["omega^7 coefficient (chi_Q=1) = ", fmt[omega7Coeff]];
 
 (* Sanity check on the omega^5 coefficient form: equals i chi_Q sigmaQcan/4.  *)
 expectZero["omega^5 coefficient form", omega5Coeff - (I*chiQ*sigmaQcan/4)];
+expectZero[
+  "first next-odd omega^7 coefficient",
+  omega7Coeff - (I*sigmaQcan/(2*OmegaQ^2))
+];
 
 (* Carry-in target literals (paper appendix Box). *)
 k0Target = 54*G*cS^5/(5*a^5*c^5);
@@ -68,37 +72,45 @@ k2Target = 6*G*cS^3/(5*a^3*c^5);
 k4Target = 8*G*cS/(15*a*c^5);
 gamma5Target = 2*G/(5*c^5);
 
+oddScaleFromSeries = FullSimplify[k0Target*omega5Coeff/I, Assumptions -> $Assumptions];
+expectZero[
+  "omega^5 coefficient gives chi_Q Gamma5_target",
+  oddScaleFromSeries - chiQ*gamma5Target
+];
+chiFromOmega5Match = chiQ /. First[Solve[oddScaleFromSeries == gamma5Target, chiQ]];
+expectZero["chi_Q fixed by canonical omega^5 match", chiFromOmega5Match - 1];
+
 (* F2 fix: assert the four target literals satisfy the canonical-even branch  *)
 (* identities (testing the literals' mutual algebraic consistency, not the    *)
 (* tautology K4 = K0/(4 OmegaQ^4)).                                            *)
 expectZero[
-  "target identity k0Target * k4Target - 4 k2Target^2",
+  "target identity K0_target K4_target - 4 K2_target^2",
   k0Target*k4Target - 4*k2Target^2
 ];
 expectZero[
-  "target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]",
+  "target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)",
   gamma5Target - 9*Sqrt[k2Target^5/k0Target^3]
 ];
 
 (* Closure: impose the source-map relation m0hat^2 * chi_Q * N_Q = 1 with     *)
 (* m0hat -> 1 (point-particle source) and chi_Q -> 1 (canonical branch),     *)
 (* yielding N_Q = 1.                                                          *)
-nqNatural = 1/(m0Sym^2 * chiQ);
+sourceNormalizer = 1/(m0Sym^2 * chiQ);
 expectZero[
   "N_Q on natural branch at m0hat=1, chi_Q=1",
-  (nqNatural /. {m0Sym -> 1, chiQ -> 1}) - 1
+  (sourceNormalizer /. {m0Sym -> 1, chiQ -> 1}) - 1
 ];
 
 (* Effective canonical odd coefficient: gamma_eff = m0hat^2 * N_Q * gamma5Target. *)
-gamma5OnNatural = nqNatural * gamma5Target;
-gammaEffCanonical = (m0Sym^2 * gamma5OnNatural) /. chiQ -> 1;
+oddCoefficientOnBranch = sourceNormalizer * gamma5Target;
+gammaEffCanonical = (m0Sym^2 * oddCoefficientOnBranch) /. chiQ -> 1;
 expectZero["canonical gamma_eff - target", gammaEffCanonical - gamma5Target];
 
 (* F4: first-order Delta_Q sensitivity. On the natural branch (m0hat=1),     *)
 (*   gamma_eff = gamma5Target / chi_Q; expansion around chi_Q = 1 + Delta_Q  *)
 (*   gives zeroth coefficient gamma5Target and first-order slope             *)
 (*   -gamma5Target = -2G/(5 c^5). A sign flip in N_Q would change the slope. *)
-gammaEffOff = (m0Sym^2 * gamma5OnNatural) /. {m0Sym -> 1, chiQ -> 1 + DeltaQ};
+gammaEffOff = (m0Sym^2 * oddCoefficientOnBranch) /. {m0Sym -> 1, chiQ -> 1 + DeltaQ};
 gammaEffSeries = Normal[Series[gammaEffOff, {DeltaQ, 0, 1}]];
 linearCoeff = FullSimplify[Coefficient[gammaEffSeries, DeltaQ, 1], Assumptions -> $Assumptions];
 expectZero[
@@ -113,7 +125,7 @@ expectZero[
 
 Print[""];
 Print["RESULT:"];
-Print["  Carry-in chi_Q = 1 from stage 104; canonical compact passive/outgoing"];
+Print["  Carry-in chi_Q = 1 from stage 105; canonical compact passive/outgoing"];
 Print["  grouped-P_2 branch closes with N_Q = 1 at m0hat = 1."];
 Print["  gamma_quad^eff = 2 G / (5 c^5); Delta_Q slope = -2 G / (5 c^5)."];
 

@@ -4,9 +4,12 @@ batch: IV.2
 created_at: 2026-05-27T00:00:00Z
 findings_count: 3
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-29T16:58:05Z
+findings_applied: 2
+findings_blocked: 0
 verification_status: pending
-needs_user_resolution: true
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 109
@@ -48,13 +51,21 @@ After:
     print('a5 preservation condition =', sp.simplify(a5_sol))
     expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
     expect_zero('a5 preservation closed-form', sp.simplify(a5_sol - expected_a5_sol))
-    expect_zero('preservation substitution', coeff.subs(a5, a5_sol))
+    # De-tautologized: substitute the INDEPENDENT closed form (not the self-solved a5_sol).
+    expect_zero('preservation substitution', sp.simplify(coeff.subs(a5, expected_a5_sol)))
 ```
 
 Note: there is no enclosing function in this script — the relevant lines are at module scope. Match the existing indentation (no leading whitespace).
 
 **Verification command:**
 After Codex applies, run `redteam exec-sympy 109`. The output must contain the new line `a5 preservation closed-form = 0` between the existing `a5 preservation condition = -a0/27 - 5*b/9` line and `preservation substitution = 0`. Exit code must remain 0.
+
+## Applied: F1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py`
+- summary: Added the independent closed-form `a5` check and used that closed form for the preservation substitution.
+- deviation: none
 
 ## F2 — mathematica_transliteration
 
@@ -110,13 +121,21 @@ expectZero["overall scale cancels", D[defectCoeff, s]];
 a5Pres = FullSimplify[a5 /. First[Solve[chiSeries - 1 == 0, a5, Reals]], Assumptions -> $Assumptions];
 Print["a5 preservation condition = ", fmt[a5Pres]];
 expectZero["a5 preservation condition + 5 b/9 + a0/27", a5Pres + 5*b/9 + a0/27];
-expectZero["preservation substitution", (chiSeries - 1) /. a5 -> a5Pres];
+(* De-tautologized: substitute the INDEPENDENT closed form, not the self-solved a5Pres. *)
+expectZero["preservation substitution", (chiSeries - 1) /. a5 -> (-5*b/9 - a0/27)];
 ```
 
 Keep the surrounding scaffolding (banner, $Assumptions, ansatz definitions L26-34, and the final L52-55 Print/Exit) unchanged.
 
 **Verification command:**
 After Codex applies, run `redteam exec-mathematica 109`. Output must contain all four `PASS:` lines (`linearized chi law`, `overall scale cancels`, `a5 preservation condition + 5 b/9 + a0/27`, `preservation substitution`), the printed `chi_Q series`, `first-order defect coefficient = a0/3 + 9 a5 + 5 b`, and `a5 preservation condition = -1/27 a0 - 5 b/9` (in any algebraically-equivalent form). Exit code must remain 0. The `coeff = (chiSeries - 1)/eps` intermediate must no longer appear.
+
+## Applied: F2
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.wl`
+- summary: Replaced the Mathematica ratio derivation with separate numerator and denominator linearizations and used the independent closed-form preservation substitution.
+- deviation: none
 
 ## F3 — paper_misalignment
 
@@ -140,4 +159,11 @@ Possible directions (the user picks one):
 - (b) Card governs, scope expands → add Robin and mixed-pole parameters to the ansatz, derive their first-order contributions to `Delta_Q`, and add even-coefficient preservation checks. This would require importing Robin/mixed-pole constants from upstream stages (currently outside this stage's declared `Inputs`), so it likely requires a separate stage redesign and is outside this audit's scope.
 - (c) Card's intent is that those secondary checks are demonstrated upstream and only referenced here → add a citation in the card to the upstream stages where (b) and (c) are actually performed. No script change for this unit.
 
-The orchestrator will not invoke Codex on F3 until the user has chosen a direction.
+## RESOLVED — direction (c) (Claude+Codex consult 019e748e, 2026-05-29)
+
+Codex CONCUR: stage 109 (linearized branch-selection setup) must NOT absorb secondary checks owned elsewhere. **Direction (c): NO stage-109 script change for F3.** The three secondary Checks are genuinely proven at their owners and get a paper-card cross-reference (manual paper pass, logged to PAPER_CLEANUP_TRACKER):
+- (a) pure scale/argument deformations → stage **108** (`pure scale invariance`; beta=±1, `chi_arg(beta=1) - 1`)
+- (b) Robin limit → stage **110** (`chi_R - 3/(3-rho)`); standalone mixed-pole no-go → stage **111** (`kappa_match + 1/9`, `sigma_match`)
+- (c) compensated branch even-coeff + odd normalization → stage **112** (canonical-even solve; `chi_B(gamma=1/9) - 1`)
+
+**Codex: do NOT edit scripts/paper/notes for F3.** The stage-109 script work is the SEPARATE F1/F2 tautological_check fixes above.

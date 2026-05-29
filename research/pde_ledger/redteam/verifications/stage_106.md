@@ -1,8 +1,8 @@
 ---
 unit_id: 106
 batch: IV.2
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
@@ -13,223 +13,178 @@ material_change: false
 
 # Verification — unit 106
 
+Re-verification against the current directive, which now carries
+`## Applied: F1..F4` blocks. This supersedes the 2026-05-27 first pass, whose F1
+write-up cited the pre-correction attribution ("Stage 104 is the source of
+chi_Q = 1"); that line has since been corrected to Stage 105 and is re-checked
+below.
+
 ## Per-finding outcomes
 
-Note on directive bookkeeping: the directive file `redteam/directives/stage_106.md`
-does not carry the standard `## Applied: F<n>` annotation blocks Codex usually
-appends. The verifier nonetheless cross-checks the current state of the two
-script files against the directive's "Required change" specifications, and the
-human-provided close-out note in the verifier prompt enumerates exactly which
-finding each edit addresses. All four findings can be reconciled from script
-content alone.
-
-### F1 — paper_misalignment (script_missing_paper_claim)
+### F1 — paper_misalignment (resolved, doc-only)
 
 **Classification:** resolved
 
 **What changed:**
-- SymPy module docstring at
-  `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:1-13`
-  was extended with a carry-forward annotation naming Stage 102
-  (`higher_odd_irrelevance`) as the upstream verifier of Check (ii) and Stage 104
-  (`outgoing_dtn_fingerprint`) as the upstream verifier of Check (iii) and the
-  source of `chi_Q = 1`. The docstring explicitly limits the present stage's
-  responsibility to Check (i) (factorization separability and closure to
-  `N_Q = 1`).
-- The corresponding annotation appears as a comment block in
-  `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:29-32`
-  ("Paper-card Checks (ii) and (iii) are exercised upstream at stages 102 and
-  104; this engine uses chi_Q = 1 as carry-in …").
-- No new SymPy or Mathematica `expect_zero` / `expectZero` calls were
-  introduced specifically for F1 itself; the resolution is the user's chosen
-  direction (b) — delegate Checks (ii) and (iii) to upstream stages 102 and 104.
+The directive RESOLVED F1 via direction (b)-style: chi_Q=1 is a legitimate
+carry-in, no Hankel/z-expansion is added to stage 106, and the only script
+action was a citation correction.
+- `scripts/...sympy_audit.py:5-13` — docstring now attributes item (ii) higher
+  odd → **Stage 102**; item (iii) outgoing l=2 DtN fingerprint → **Stage 104**;
+  **chi_Q=1 fixed → Stage 105** (`chiQ_fix_from_outgoing_dtn`). The diff
+  (patch lines 101-105) shows the stale "Stage 104 ... is the source of
+  chi_Q = 1" wording removed and replaced. No residual "Stage 88" reference.
+- `mathematica/...mathematica_audit.wl:29-32` — header comment matches: Check
+  (ii) → stage 102; Stage 104 proves the DtN fingerprint; Stage 105 fixes
+  chi_Q=1. (Diff patch lines 13-16 show the prior "stages 102 and 104" lumped
+  wording was corrected to split 104=fingerprint / 105=chi_Q.)
 
 **Assessment:**
-The auditor's F1 was a `paper_misalignment` blocked on user resolution. The
-prompt confirms the user chose option (b) (carry-forward) rather than option
-(a) (extend scripts to own Checks (ii)/(iii)). Per the directive's "Resolve
-before fix_loop" block, option (b) requires the paper card to delegate, and the
-red-team is instructed not to edit paper.tex. The scripts have been annotated
-with an explicit carry-forward note pointing at stages 102 and 104, which is
-the appropriate script-side companion edit for the chosen direction.
-Independently, the Mathematica script (lines 47-60) does in fact series-expand
-`Y_Q^ret` to omega^7 and exhibits the next odd term at omega^7
-(`(8 I/243) a^7/cS^7`) — this is a bonus script-side trace of Check (ii) that
-does not contradict the carry-forward annotation, since the load-bearing
-assertion ownership still lives in stage 102. No new fragile assertion was
-added to either script for F1. The cross-stage chain is internally
-consistent.
+Correct and complete, matching the resolved-directive requirement exactly
+(ii→102, iii DtN→104, chi_Q=1→105). NO Hankel/z-expansion verification was
+added to stage 106 (no `Lambda_2`, no `z = omega a/c_s` expansion in either
+file). The diff touches only the two target scripts — no paper.tex or notes
+edits appear in the patch. chi_Q=1 remains a carry-in. Properly scoped doc-only
+fix.
 
-### F2 — tautological_check
+### F2 — tautological_check (resolved)
 
 **Classification:** resolved
 
 **What changed:**
-- SymPy
-  `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:64-71`
-  now asserts
-  `expect_zero("target identity K0_target K4_target - 4 K2_target^2", K0_target*K4_target - 4*K2_target**2)`
-  and
-  `expect_zero("target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)", Gamma5_target - 9*sqrt(K2_target**5/K0_target**3))`,
-  replacing the previous tautological `K4 - 4 K2^2/K0` and
-  `Gamma5 - 9 sqrt(K2^5/K0^3)` checks.
-- Mathematica
-  `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:74-81`
-  has the structurally equivalent `expectZero` calls on `k0Target*k4Target -
-  4*k2Target^2` and `gamma5Target - 9*Sqrt[k2Target^5/k0Target^3]`.
+- `scripts/...sympy_audit.py:65-72` — replaced the old `K4 - 4*K2**2/K0` and
+  `Gamma5 - 9*sqrt(K2**5/K0**3)` checks (tautological because K2, K4 were
+  defined as `K0/(4Ω²)`, `K0/(4Ω⁴)`) with checks on the hardcoded literals:
+  `K0_target*K4_target - 4*K2_target**2` and
+  `Gamma5_target - 9*sqrt(K2_target**5/K0_target**3)`.
+- `mathematica/...audit.wl:86-93` — equivalent target-literal checks.
 
-**Assessment:**
-Matches the directive's "After" patches verbatim. The new residuals depend on
-the four hardcoded literal coefficients (`54/5, 6/5, 8/15, 2/5`) rather than on
-the script-defined `K2 = K0/(4 OmegaQ^2)` chain, so substituting any one literal
-with a wrong value would now cause the assertion to fail. The exec logs show
-both new lines printing `0` and (in the Mathematica case) `PASS:`. Non-
-tautological.
+**Assessment — LOAD-BEARING target-literal independence judgment:**
+Each `*_target` literal is set INDEPENDENTLY (sympy lines 50-53; wl lines
+70-73); none is derived from another:
+- `K0_target = 54·G·c_s⁵/(5·a⁵·c⁵)`
+- `K2_target = 6·G·c_s³/(5·a³·c⁵)`
+- `K4_target = 8·G·c_s/(15·a·c⁵)`
+- `Gamma5_target = 2·G/(5·c⁵)`
 
-### F3 — mathematica_transliteration
+`K0_target·K4_target - 4·K2_target² = 0` is a GENUINE (non-constructed) numerical
+agreement: `K0·K4 = (54/5)(8/15) = 432/75 = 144/25` and `4·K2² = 4·(6/5)² =
+144/25` (both times the common factor `G²c_s⁶/(a⁶c¹⁰)`). The two
+independently-written rational prefactors happen to satisfy K0·K4 = 4K2². The
+old check collapsed to identity for ANY K0; the new check would FAIL under a
+perturbation of any one literal (e.g. K2_target → 7/5·...). Non-tautological.
 
-**Classification:** resolved
-
-**What changed:**
-`mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`
-was rewritten body-down. Compared to the SymPy script the choreography is now:
-
-1. lines 39-41: `OmegaQ = 3 cS/(2 a)`, `sigmaQcan = (9/8)/OmegaQ^5`, with an
-   independent sanity check `sigmaQcan - 4 a^5/(27 cS^5) == 0`.
-2. line 45: defines `Yret[omSym_, chiSym_] := 3/4 + (1/4)/(1 - omSym^2/OmegaQ^2
-   - I*chiSym*sigmaQcan*omSym^5)` — the appendix's retarded one-pole form.
-3. lines 49-60: series-expands `Yret` to omega^7, extracts the omega^5/6/7
-   coefficients, and asserts `omega^5 coefficient form = (I chiQ sigmaQcan)/4`.
-4. lines 65-81: defines the four target literals and tests their mutual
-   identity (the F2 fix).
-5. lines 86-95: closes `N_Q = 1` via the source-map relation rather than via
-   `Solve[constraint, NQ]`. Variable names `nqNatural`, `gamma5OnNatural`,
-   `gammaEffCanonical` replace the SymPy `NQ_general`, `NQ_canonical`, `K0`,
-   `K2`, `K4`, `Gamma5` chain.
-6. lines 101-112: F4 sensitivity addition.
-
-No `nqGeneral`, `k0`, `k2`, `k4`, or `gamma5` intermediates exist in the
-rewritten file (the only `k0Target/k2Target/k4Target/gamma5Target` symbols are
-hardcoded literal constants, not intermediate quantities derived from the
-constraint). The bottom-line claim remains `N_Q = 1` and
-`gamma_quad^eff = 2 G/(5 c^5)` as required.
-
-**Assessment:**
-The rewritten path uses a structurally different starting point (retarded one-
-pole form + series expansion) from the SymPy path (algebraic constraint solve
-+ chi_Q substitution). A bug in `Solve` or in the SymPy branch selection would
-not be reproduced in the Mathematica path because the Mathematica path never
-calls `Solve` and never picks a branch. The directive's "Required change"
-items 1-7 are all present in the rewritten file. No transliteration concern
-remains.
-
-### F4 — insufficient_verification
+### F3 — mathematica_transliteration (resolved)
 
 **Classification:** resolved
 
 **What changed:**
-- SymPy
-  `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:79-96`
-  defines `Delta_Q = sp.symbols("Delta_Q", real=True)`, substitutes
-  `m0hat=1, chi_Q=1+Delta_Q` into `m0hat**2 * Gamma5`, series-expands to order
-  1, and asserts `linear_coeff - (-2 G/(5 c^5)) == 0` and
-  `zeroth_coeff - Gamma5_target == 0`. Code matches the directive's "After"
-  block.
-- Mathematica
-  `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:101-112`
-  has the structurally equivalent block on `gammaEffOff` / `gammaEffSeries`
-  with the same two `expectZero` calls.
+The `.wl` derives the bottom line via an independent one-pole `Yret`
+omega-series path:
+`Yret[om,chi] = 3/4 + (1/4)/(1 - om²/OmegaQ² - I·chi·sigmaQcan·om⁵)`,
+series-expanded in omega; reads off the ω⁵ coefficient; then solves
+`Solve[oddScaleFromSeries == gamma5Target, chiQ]` to FIX chi_Q = 1
+(wl lines 39-81). The F2 target-literal checks and F4 sensitivity ride on top.
 
-**Assessment:**
-Both engines print the new pair of residuals (=0) per the exec logs
-(`Delta_Q first-order sensitivity coefficient = 0` and `Delta_Q zeroth-order
-coefficient equals Gamma5_target = 0`). The assertions are non-tautological:
-the linear coefficient depends on the sign and form of `N_Q = 1/(chi_Q
-m0hat^2)` (a sign flip or factor error in N_Q would change the slope), and the
-zeroth coefficient depends on `Gamma5_target = 2G/(5 c^5)`. Spot-check:
-`gamma_eff = m0hat^2 * (1/(chi_Q m0hat^2)) * Gamma5_target` at `m0hat=1` and
-`chi_Q = 1 + Delta_Q` is `Gamma5_target/(1+Delta_Q) = Gamma5_target -
-Gamma5_target * Delta_Q + O(Delta_Q^2)`, giving zeroth = `Gamma5_target`,
-linear = `-Gamma5_target = -2 G/(5 c^5)`. Matches.
+**Assessment — independence judgment:**
+Genuinely distinct, not a renamed mirror. The case-sensitive grep returns 0
+occurrences of the `.py` intermediate names `nqGeneral`, `nqCanonical`, `k0`,
+`k2`, `k4`, `gamma5` in the `.wl` (the only `…Target` symbols are hardcoded
+literals, not constraint-derived intermediates). The `.wl` uses `Yret`,
+`seriesY`, `OmegaQ`, `sigmaQcan`, `omegaSym`, `oddScaleFromSeries`,
+`chiFromOmega5Match`, `sourceNormalizer` — different starting object (retarded
+one-pole), different operation (omega-series), different derivation order. It
+never calls `Solve[constraint, NQ]` nor performs a branch pick, so a SymPy
+branch/sign bug could not be reproduced verbatim. It actually does MORE than the
+`.py`: it DERIVES chi_Q=1 from the ω⁵ match rather than importing it, which also
+answers the codex_reviews R3 concern. Assertions are non-tautological — the
+ω⁵-form match, the chi_Q=1 solve, and the ω⁷-onset check
+(`omega7Coeff = (8I/243)a⁷/cS⁷` vs the independently-written closed form
+`I·sigmaQcan/(2·OmegaQ²)`, which I confirmed evaluates to `(8I/243)a⁷/cS⁷`) each
+test a real relation between the series and an independent target.
+
+### F4 — insufficient_verification (resolved)
+
+**Classification:** resolved
+
+**What changed:**
+- `scripts/...sympy_audit.py:80-97` — Delta_Q sensitivity: expand
+  `gamma_eff_off = (m0hat²·Gamma5).subs(m0hat→1, chi_Q→1+Delta_Q)` to first
+  order; assert `linear_coeff == -2G/(5c⁵)` and `zeroth_coeff == Gamma5_target`.
+- `mathematica/...audit.wl:109-124` — equivalent Delta_Q first-order block.
+
+**Assessment — non-triviality:**
+Non-trivial. On the natural branch gamma_eff = Gamma5_target/(chi_Q·m0hat²); at
+m0hat=1, chi_Q=1+Delta_Q this is Gamma5_target·(1 - Delta_Q + O(Delta_Q²)), so
+the first-order slope = -Gamma5_target = -2G/(5c⁵) and the zeroth =
+Gamma5_target. The check exercises the actual series expansion of 1/(1+Delta_Q);
+a sign flip or factor error in N_Q would change the linear coefficient and break
+the assertion. Both engines print the two residuals = 0 (sympy log lines 21-22;
+mathematica log lines 33-36, both PASS). Not a 0==0.
 
 ## Exec log assessment
 
-**SymPy:** exit=0 (inferred; no traceback, no `AssertionError`, all
-`expect_zero` lines print `= 0`, RESULT block emitted in full). Notable lines:
+**SymPy:** exit=0. Notable lines:
+- `target identity K0_target K4_target - 4 K2_target^2 = 0`
+- `target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3) = 0`
+- `Delta_Q first-order sensitivity coefficient = 0`
+- `Delta_Q zeroth-order coefficient equals Gamma5_target = 0`
 
-```
-target identity K0_target K4_target - 4 K2_target^2 = 0
-target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3) = 0
-canonical gamma_eff - target = 0
-Delta_Q first-order sensitivity coefficient = 0
-Delta_Q zeroth-order coefficient equals Gamma5_target = 0
-```
+**Mathematica:** exit=0, 11 PASS / 0 FAIL. All 11 are content-bearing (distinct
+named residuals, no 0==0):
+`sigma_Q^can - 4 a^5/(27 c_s^5)`; `omega^5 coefficient form`;
+`first next-odd omega^7 coefficient`; `omega^5 coefficient gives chi_Q
+Gamma5_target`; `chi_Q fixed by canonical omega^5 match`;
+`target identity K0_target K4_target - 4 K2_target^2`;
+`target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)`;
+`N_Q on natural branch at m0hat=1, chi_Q=1`; `canonical gamma_eff - target`;
+`Delta_Q first-order sensitivity coefficient`;
+`Delta_Q zeroth-order coefficient equals Gamma5_target`.
 
-**Mathematica:** exit=0 (script ends with `Exit[0]`; no `FAIL:` lines; every
-`expectZero` was followed by a `PASS:`). Notable lines:
+Engine cross-check: SymPy reaches `Gamma5 = 2G/(5c⁵·chi_Q·m0hat²)` →
+gamma_eff = 2G/(5c⁵) on the canonical branch; Mathematica reaches the same via
+the retarded one-pole series, and both report the Delta_Q slope -2G/(5c⁵). The
+two engines now reach the bottom line via structurally different paths, so the
+agreement is substantive.
 
-```
-PASS: omega^5 coefficient form
-PASS: target identity k0Target * k4Target - 4 k2Target^2
-PASS: target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]
-PASS: Delta_Q first-order sensitivity coefficient
-PASS: Delta_Q zeroth-order coefficient equals Gamma5_target
-```
-
-Engine cross-check: SymPy reports `K0 = 54 G c_s^5 /(5 a^5 c^5 chi_Q m0hat^2)`,
-…, `Gamma5 = 2 G/(5 c^5 chi_Q m0hat^2)`. Mathematica derives `gamma_eff =
-2 G/(5 c^5)` on the canonical branch and the same Delta_Q slope of
-`-2 G/(5 c^5)`. The two engines reach the same bottom line via structurally
-different paths (constraint-solve vs. retarded one-pole series expansion), so
-this engine agreement is now substantive evidence.
-
-**Output freshness:** confirmed — SymPy log mtime `2026-05-27 15:18:01` is
-later than its script mtime `15:13:22`; Mathematica log mtime
-`2026-05-27 15:24:11` is later than its script mtime `15:14:04`. Both outputs
-were regenerated after the post-fix script edits.
+**Output freshness:** confirmed. Source mtimes (py 1780073275, wl 1780073348)
+predate the saved-output mtimes (py .txt 1780073489, wl .txt 1780073508). The
+saved sympy `.txt` is byte-identical to the exec-log body (diff returned no
+difference).
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The fixes consist of: (i) docstring annotations and one structural rewrite of
-the Mathematica audit whose bottom-line printed values are unchanged
-(`N_Q = 1`, `gamma_quad^eff = 2 G/(5 c^5)`); (ii) two replaced assertions in
-each engine that now test the four `*_target` literals' mutual algebraic
-consistency rather than a definitional identity (residual is still
-identically zero in both forms); (iii) two new sensitivity assertions whose
-correctness is implied by the existing closure and which do not export any
-new symbol or change any downstream-visible constant. No
-constant, no derived expression, no carry-forward symbol was modified.
-Downstream units that import `chi_Q = 1`, `N_Q = 1`, or
-`gamma_quad^eff = 2 G/(5 c^5)` see no change.
+All four fixes add or correct verification depth (target-literal consistency,
+independent `.wl` derivation, Delta_Q sensitivity, citation accuracy). None
+changes a derived numerical result: the bottom line is still N_Q = 1 on the
+canonical branch and gamma_quad^eff = 2G/(5c⁵). chi_Q=1 remains an upstream
+carry-in (Stage 105). No downstream unit is affected.
 
 ## Side observations (non-blocking)
 
-- The SymPy script's `K0/K2/K4/Gamma5` intermediate variables (lines 54-62) are
-  retained from the pre-fix structure and are no longer load-bearing for any
-  assertion now that F2 replaced the branch-identity checks with target-only
-  checks. They are still printed for narrative purposes; this is not a defect,
-  but they could be removed in a future cleanup. Not blocking.
-- The Mathematica script's omega^6 coefficient (`(16 a^6)/(729 cS^6)`) is
-  printed but not asserted on. It is mentioned for completeness; the load-
-  bearing odd-coefficient assertion is on omega^5. Acceptable.
-- The auditor's secondary observation about stale banner labels in the pre-fix
-  scripts is now moot — both scripts banner `STAGE 106 — REDUCED 2.5PN
-  CLOSURE ON CANONICAL OUTGOING DtN BRANCH` correctly.
+- The `.wl` prints (but does not assert on) the ω⁶ coefficient `(16a⁶)/(729cS⁶)`.
+  Print-only; the load-bearing odd checks are on ω⁵ and ω⁷. Acceptable.
+- codex_reviews/stage_106.md raised R1 (paper card still assigning ii/iii to
+  stage 106). R1 is out of scripts-only scope and is logged to
+  PAPER_CLEANUP_TRACKER for the manual paper pass per the resolved F1 direction.
+  Its R2 (ω⁷ print-only) and R3 (`.wl` imports chi_Q=1) are ALREADY addressed by
+  the applied edits: the `.wl` now has an explicit ω⁷-coefficient assertion and
+  derives chi_Q=1 from the ω⁵ match. Non-blocking.
+- Both scripts now banner `STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL
+  OUTGOING DtN BRANCH`; the auditor's stale-banner observation is moot.
 
 ## Verdict justification
 
-All four auditor findings have been addressed correctly. F1 was resolved by
-the user's chosen carry-forward direction (option (b) in the directive) and is
-documented in both engines' header comments naming stages 102 and 104 as the
-upstream owners of Checks (ii) and (iii). F2's replacement assertion now tests
-the mutual consistency of the four hardcoded target literals and would fail
-under perturbation of any one of them. F3's Mathematica rewrite uses a
-structurally independent retarded one-pole + series-expansion path with no
-shared intermediate names against the SymPy file, so the engine cross-check is
-no longer hostage to transliteration. F4's Delta_Q sensitivity adds two non-
-tautological assertions in each engine whose residuals depend on the sign and
-form of `N_Q` and on `Gamma5_target`. Both exec logs run clean. No regression
-is visible and no downstream-visible constant changed; `material_change` is
-false.
+All four findings are resolved. F1 is a correctly-scoped doc-only citation fix
+(ii→102, iii DtN→104, chi_Q=1→105) with no Hankel/z-expansion and no paper/notes
+edits. F2's new checks test four independently-hardcoded literals whose
+K0·K4 = 4K2² (144/25 = 144/25) is a genuine non-constructed agreement — not a
+renamed tautology. F3's `.wl` is a structurally independent one-pole `Yret`
+omega-series derivation (0 occurrences of the `.py` lowercase names; it even
+derives chi_Q=1 rather than importing it). F4's Delta_Q first-order slope
+(-2G/(5c⁵)) exercises the series algebra non-trivially in both engines. SymPy
+exits 0; Mathematica exits 0 with 11 content-bearing PASS / 0 FAIL; outputs are
+fresh; the diff shows no collateral edits beyond the two target scripts.
+Verdict: verified.

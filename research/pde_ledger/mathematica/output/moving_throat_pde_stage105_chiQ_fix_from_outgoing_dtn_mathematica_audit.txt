@@ -3,23 +3,19 @@
 STAGE 105 — EXACT FIXING OF chi_Q
 ========================================================================================
 pole scale = (3*cSound)/(2*aThroat)
-sigma_Q^can = (4*aThroat^5)/(27*cSound^5)
-sigma_Q^can - 4 a^5/(27 c_s^5) = 0
-PASS: sigma_Q^can - 4 a^5/(27 c_s^5)
-Y_Q^ret partial-fraction form check (Apart of unfactored ratio) = 0
-PASS: Y_Q^ret partial-fraction form check (Apart of unfactored ratio)
-Y_Q^ret omega^2 coeff = aThroat^2/(9*cSound^2)
-Y_Q^ret omega^4 coeff = (4*aThroat^4)/(81*cSound^4)
-Y_Q^ret omega^5 coeff = ((I/27)*aThroat^5*chiQ)/cSound^5
+sigma_Q = (4*aThroat^5)/(27*cSound^5)
+sigma_Q - 4 a^5/(27 c_s^5) = 0
+PASS: sigma_Q - 4 a^5/(27 c_s^5)
+retarded real projection = 1 + (aThroat^2*omega^2)/(9*cSound^2) + (4*aThroat^4*omega^4)/(81*cSound^4)
+retarded imaginary projection = (aThroat^5*chiQ*omega^5)/(27*cSound^5)
 omega^2 coefficient = 0
 PASS: omega^2 coefficient
 omega^4 coefficient = 0
 PASS: omega^4 coefficient
 imag omega^5 coefficient = 0
 PASS: imag omega^5 coefficient
-
-ReplaceAll::argt: ReplaceAll called with 7 arguments; 1 or 2 arguments are expected.
-chi_Q from exact outgoing match (Reduce) = chiQ /. Sequence[ToRules[aThroat == 0 && cSound < 0], ToRules[aThroat == 0 && cSound > 0], ToRules[aThroat < 0 && cSound < 0 && chiQ == 1], ToRules[aThroat < 0 && cSound > 0 && chiQ == 1], ToRules[aThroat > 0 && cSound < 0 && chiQ == 1], ToRules[aThroat > 0 && cSound > 0 && chiQ == 1]]
+chi_Q condition from outgoing match (Reduce) = chiQ == 1
+chi_Q from exact outgoing match = 1
 chi_Q - 1 = 0
 PASS: chi_Q - 1
 Deformed DtN normalized branch (polynomial-inverse) = 1 + z^2/9 + (4*z^4)/81 + (I/27)*xiQ*z^5

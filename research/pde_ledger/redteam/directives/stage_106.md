@@ -4,9 +4,12 @@ batch: IV.2
 created_at: 2026-05-27T00:00:00Z
 findings_count: 4
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-29T16:49:38Z
+findings_applied: 4
+findings_blocked: 0
 verification_status: pending
-needs_user_resolution: true
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 106
@@ -45,7 +48,23 @@ Possible directions (the user picks one):
 - (b) **Card delegates Checks (ii) and (iii) to upstream Stage 88.** Per the notes ("From Stage 88, the canonical compact passive/outgoing grouped-`P2` DtN model gives `\chi_Q=1`"), the z-expansion may already be the responsibility of Stage 88's scripts. If so, update the stage_106.tex Checks block to read "carry forward from Stage 88" for items (ii) and (iii), and only list item (i) as a Stage-106-side check.
 - (c) **Item (iii) belongs upstream but item (ii) belongs here.** Split: keep (ii) as a Stage-106-side script check (assert no `\omega^7` term in the expanded `\widehat Y_Q^{\rm ret}` at chi_Q=1, m0hat=1), delegate (iii) to Stage 88.
 
-The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+## RESOLVED — direction (b)-style, refined by Codex (consult 019e748e, 2026-05-29)
+
+Codex CONCUR: chi_Q=1 is a LEGITIMATE carry-in (not a hidden assumption), so **no stage-106 Hankel z-expansion / new verification is needed.** Codex refined the upstream citation (R4 DISPUTE): **Stage 104 proves the DtN fingerprint but introduces no `chi_Q` symbol — chi_Q=1 is FIXED at Stage 105** (inheriting 104's fingerprint). Accurate ownership:
+- item (ii) [higher odd at O(ω⁷)] → stage **102**
+- item (iii) [outgoing l=2 DtN fingerprint] → stage **104**; **chi_Q=1 → stage 105**
+
+Paper-card cross-reference (ii→102, iii→104+105) logged to PAPER_CLEANUP_TRACKER (manual paper pass).
+
+**Codex: ONE script-doc accuracy edit rides this fix loop (the only F1 script action):** in BOTH the SymPy docstring and the `.wl` header comment, the line attributing chi_Q=1 to "Stage 104" must be corrected — Stage 104 provides the DtN fingerprint (item iii); **chi_Q=1 is fixed at Stage 105** from that fingerprint; Stage 102 covers item (ii). Keep chi_Q=1 as the carry-in. Then append `## Applied: F1`. Do NOT add any Hankel/z-expansion verification to 106 and do NOT edit paper/notes.
+
+## Applied: F1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`
+- summary: Corrected the script comments to cite Stage 104 for the DtN fingerprint and Stage 105 for fixing `chi_Q=1`.
+- deviation: none
 
 ## F2 — tautological_check
 
@@ -110,6 +129,14 @@ After applying F3 (Mathematica re-authoring), this F2 fix may need to be re-appl
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-sympy 106` and `redteam exec-mathematica 106` and confirm: (1) both scripts still exit 0; (2) the new assertion lines print residuals = 0 (since the four target literals are mutually consistent); (3) replacing `K2_target = 6*G*c_s**3/(5*a**3*c**5)` with `K2_target = 7*G*c_s**3/(5*a**3*c**5)` causes the SymPy run to fail at the new assertion (manual spot-check; not part of automated verifier).
 
+## Applied: F2
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`
+- summary: Replaced tautological branch checks with target-literal consistency checks for the canonical even and odd coefficients.
+- deviation: none
+
 ## F3 — mathematica_transliteration
 
 **Target:**
@@ -139,6 +166,13 @@ Use entirely different intermediate variable names from the SymPy file: `Yret`, 
 
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-mathematica 106` and confirm: (1) the script exits 0; (2) the script's variable names and assertion sequence are visibly different from the SymPy script (the verifier may diff structurally); (3) the bottom-line printed result still says `N_Q = 1` on the canonical point-particle branch and `\gamma_{\rm quad}^{\rm eff} = 2G/(5c^5)`.
+
+## Applied: F3
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`
+- summary: Re-authored the Mathematica audit around the retarded one-pole `Yret` omega-series witness and independent target-normalization checks.
+- deviation: none
 
 ## F4 — insufficient_verification
 
@@ -190,3 +224,11 @@ Self-test (already in report's Self-test notes):
 
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-sympy 106` and `redteam exec-mathematica 106` and confirm: (1) both scripts still exit 0; (2) two new assertion lines appear in each output transcript with residuals = 0; (3) the new printed lines reference `Delta_Q first-order sensitivity coefficient` and `Delta_Q zeroth-order coefficient equals Gamma5_target`.
+
+## Applied: F4
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`
+- summary: Added the first-order `Delta_Q` sensitivity and zeroth-order target checks to both script witnesses.
+- deviation: none

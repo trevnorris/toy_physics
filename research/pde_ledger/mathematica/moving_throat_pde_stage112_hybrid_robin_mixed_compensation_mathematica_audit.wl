@@ -52,18 +52,25 @@ expectZero["branch A kappa", kappa /. solA];
 expectZero["branch B rho - 4 sigma", (rho /. solB) - 4*sigma];
 expectZero["branch B kappa - 1/3", (kappa /. solB) - 1/3];
 
-(* Independent Stage-92 (= stage 109) linearized cross-check on solB.        *)
-(* The notes' Branch-selection data box gives (b, a_0, a_5) = (0, 3 sigma_W, *)
-(* -sigma_W gamma_W) on the nontrivial compensated branch.  The preservation *)
-(* condition a_0/3 + 9 a_5 = sigma_W (1 - 9 gamma_W) = 0 determines gamma_W   *)
-(* = 1/9 by an algebraically independent route from the chi_Q-based solve.    *)
-a0Def = FullSimplify[(Coefficient[lambdaHyb /. solB, z, 0]) - (-3), Assumptions -> $Assumptions];
-a5Def = FullSimplify[Coefficient[lambdaHyb /. solB, z, 5]/I - 1/9, Assumptions -> $Assumptions];
-expectZero["independent: a_0 - 3 sigma on solB", a0Def - 3*sigma];
-expectZero["independent: a_5 + sigma gamma on solB", a5Def + sigma*gamma];
-gammaFromLinear = FullSimplify[gamma /. First[Solve[a0Def/3 + 9*a5Def == 0, gamma, Reals]], Assumptions -> $Assumptions];
-Print["gamma_W from linearized preservation = ", fmt[gammaFromLinear]];
-expectZero["independent: gamma_W from a_0/3 + 9 a_5 = 0", gammaFromLinear - 1/9];
+(* Independent derivation: Stage-92 linearized (b, a0, a5) cross-check. *)
+(* On the nontrivial compensated branch (solB), the net deformation data are *)
+(*   b   = 0, *)
+(*   a0  = 3 sigma_W, *)
+(*   a5  = -sigma_W gamma_W, *)
+(* and the linearized preservation condition is a0/3 + 9 a5 == 0. *)
+bDef = FullSimplify[9*(-Coefficient[lambdaHyb /. solB, z, 2]/Coefficient[lambdaHyb /. solB, z, 0]) - 1, Assumptions -> $Assumptions];
+a0Def = FullSimplify[Coefficient[lambdaHyb /. solB, z, 0] - Coefficient[lambdaOut, z, 0], Assumptions -> $Assumptions];
+a5Def = FullSimplify[Coefficient[lambdaHyb /. solB, z, 5]/I - Coefficient[lambdaOut, z, 5]/I, Assumptions -> $Assumptions];
+expectZero["independent: b = 0 on solB", bDef];
+expectZero["independent: a0 - 3 sigma on solB", a0Def - 3*sigma];
+expectZero["independent: a5 + sigma*gamma on solB", a5Def + sigma*gamma];
+presCond = FullSimplify[a0Def/3 + 9*a5Def, Assumptions -> $Assumptions];
+expectZero["independent: preservation cond = sigma (1 - 9 gamma)", presCond - sigma*(1 - 9*gamma)];
+gammaReduce = Reduce[presCond == 0 && sigma != 0, gamma, Reals];
+gammaRule = First[Solve[gammaReduce, gamma, Reals]];
+expectZero["independent: gamma_W = 1/9 on nontrivial branch (sigma != 0)", (gamma /. gammaRule) - 1/9];
+chiBgen = (1 - 9*sigma*gamma)/(1 - sigma);
+expectZero["degenerate sigma=0: chi_B = 1 for any gamma", (chiBgen /. sigma -> 0) - 1];
 
 chiA = FullSimplify[((-l5/l0)/(1/27)) /. solA, Assumptions -> $Assumptions];
 chiB = FullSimplify[((-l5/l0)/(1/27)) /. solB, Assumptions -> $Assumptions];

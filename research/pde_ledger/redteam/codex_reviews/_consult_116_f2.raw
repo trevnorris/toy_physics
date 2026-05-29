@@ -1,0 +1,172 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e717e-ab7b-7db2-a2cc-0b891662bf3c
+--------
+user
+Read-only math consult (no edits, no running scripts). I want your independent judgment on the correct non-tautological fix for one block of a SymPy red-team script.
+
+File: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+Please read it (lines 1-100).
+
+Context of what the stage must prove (paper card): a finite D/N mixed-tube realization where the D/N half-wave eigenvalue k_W = pi/(2 L_W) gives bare even coefficient kappa0 = (1+r_c)/3, realized by tube length L_W = pi a sqrt((1+r_c)/3)/2; after renormalization (removing the common (1+r_c) hybridization factor) the canonical coefficients are kappa_c = 1/3, gamma_c = 1/9. Here r_c = lam^2/(K_s K_q), and gamma0 = (1+r_c)/9 is carried in from upstream (stage ~98 compensation requirement).
+
+My assessment:
+- Lines 24-62 are GENUINE and falsifiable: the eigenvalue ODE+BCs, kappa0_derived from (omega/Omega_W)^2 matching 4 L_W^2/(pi^2 a^2), and the tube-length law solved + checked against the closed form. Keep these.
+- Lines 64-93 are ALL tautological:
+  * 64-69: kappa0_bare_geom = 4 L_W_required^2/(pi^2 a^2) checked == (1+r_c)/3, but L_W_required was just SOLVED from that same equation (round-trip).
+  * 70-74: gamma0_bare = (1+r_c)/9 is a literal; kappa_c = kappa0_bare_geom/(1+r_c), gamma_c = gamma0_bare/(1+r_c); checks kappa_c==1/3, gamma_c==1/9 are (1+r_c)/3/(1+r_c) etc. — division of a literal by its own factor.
+  * 76-93: D_bare = (1+r_c)*(1 - z^2/3 - i z^5/9) is a hand-typed ansatz; extracting its z^2/z^5 coefficients and dividing by (1+r_c) just reads back typed literals.
+
+A prior audit proposed replacing 64-93 with: kappa0_bare=(1+r_c)/3, gamma0_bare=(1+r_c)/9 (both literals), then expect_zero("3*kappa0 == 9*gamma0", 3*kappa0_bare - 9*gamma0_bare) and expect_zero("3*kappa0 == (1+r_c)", 3*kappa0_bare-(1+r_c)). I think this is STILL tautological: both operands are literals built from (1+r_c), so 3*((1+r_c)/3) - 9*((1+r_c)/9) = (1+r_c)-(1+r_c) = 0 identically — it can only catch a typo, never a physics error. gamma0 has no independent derivation anywhere in this stage, so any check on it is hardcoded.
+
+My proposed resolution: DELETE 64-93 entirely. The genuine deliverable (eigenvalue -> kappa0=(1+r_c)/3 -> tube-length law) is fully verified at 24-62. For the renormalization to canonical, since kappa0 is already established and gamma0 is an upstream-carried input, the statement kappa_c=kappa0/(1+r_c)=1/3 is a definitional arithmetic consequence with NO independent falsifiable content. So replace 64-93 with: keep the kappa_c/gamma_c definitions anchored to the GENUINELY-derived kappa0_derived (not a re-solved round-trip) and the upstream gamma0, but present the renormalization as PRINTS (or a single clearly-labeled consistency line), not as falsifiable physics assertions. No D_bare read-back.
+
+Questions:
+1. Do you agree the proposed "3*kappa0==9*gamma0" fix is still tautological (hardcoded both sides)?
+2. Is there ANY genuinely falsifiable renormalization check available within this stage's scope (without inventing a new gamma0 derivation, which would be out-of-scope scope-creep)? If yes, state it precisely.
+3. If no, do you concur that deleting 64-93 and demoting the renormalization to labeled prints (keeping 24-62 as the load-bearing checks) is the correct, honest fix?
+
+Be adversarial and concrete. If you disagree with me, say why.
+
+codex
+I’ll inspect the requested slice only and treat this as a math/code audit, not a patch. I’m using `rg`/`sed` reads only, per your constraints.
+exec
+/bin/bash -lc "sed -n '1,100p' scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+
+#!/usr/bin/env python3
+from __future__ import annotations
+import sympy as sp
+
+def banner(title: str) -> None:
+    line = "=" * 88
+    print("\n" + line)
+    print(title)
+    print(line)
+
+def expect_zero(name: str, expr: sp.Expr) -> None:
+    s = sp.simplify(sp.expand(expr))
+    print(f"{name} = {s}")
+    if s != 0:
+        raise AssertionError(f"{name} is not zero")
+
+banner("STAGE 116 — FINITE D/N MIXED-TUBE REALIZATION")
+
+a, L_W = sp.symbols("a L_W", positive=True, real=True)
+K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+z = sp.symbols("z", real=True)
+
+# D/N half-wave eigenvalue derivation: solve q'' + k^2 q = 0 with q(0)=0, q'(L_W)=0.
+# q(x) = sin(k*x) satisfies q(0)=0; the second BC requires cos(k*L_W) = 0, so the
+# smallest positive eigenvalue is k_W = pi/(2*L_W).
+x_var = sp.symbols("x", real=True)
+k_sym = sp.symbols("k_sym", positive=True, real=True)
+q_trial = sp.sin(k_sym * x_var)
+ode_residual = sp.simplify(sp.diff(q_trial, x_var, 2) + k_sym**2 * q_trial)
+expect_zero("D/N trial satisfies q'' + k^2 q = 0", ode_residual)
+bc_left = sp.simplify(q_trial.subs(x_var, 0))
+expect_zero("D/N trial satisfies q(0) = 0", bc_left)
+bc_right = sp.simplify(sp.diff(q_trial, x_var).subs(x_var, L_W))
+k_W_value = sp.pi / (2 * L_W)
+expect_zero(
+    "D/N trial satisfies q'(L_W) = 0 at k = pi/(2 L_W)",
+    sp.simplify(bc_right.subs(k_sym, k_W_value)),
+)
+
+omega_sym, c_s_sym = sp.symbols("omega c_s", positive=True, real=True)
+Omega_W = k_W_value * c_s_sym
+kappa0_derived = sp.simplify((omega_sym / Omega_W)**2 / (a * omega_sym / c_s_sym)**2)
+expect_zero(
+    "kappa0 from D/N eigenvalue matches geometric expression",
+    kappa0_derived - 4 * L_W**2 / (sp.pi**2 * a**2),
+)
+
+r_c = lam**2 / (K_s * K_q)
+
+kappa0_from_tube = sp.simplify(kappa0_derived)
+L_W_required = sp.solve(
+    sp.Eq(kappa0_from_tube, (1 + r_c) / 3),
+    L_W,
+)[0]
+
+print("kappa0 from D/N half-wave tube =", kappa0_from_tube)
+print("Required tube length L_W =", sp.simplify(L_W_required))
+expect_zero(
+    "tube-length law: L_W = pi a sqrt((1+r_c)/3) / 2",
+    sp.simplify(L_W_required - sp.pi * a * sp.sqrt((1 + r_c) / 3) / 2),
+)
+
+# Round-trip the geometric kappa0 through L_W_required:
+kappa0_bare_geom = sp.simplify(4 * L_W_required**2 / (sp.pi**2 * a**2))
+expect_zero(
+    "geometric kappa0 at L_W_required equals (1+r_c)/3",
+    kappa0_bare_geom - (1 + r_c) / 3,
+)
+gamma0_bare = sp.simplify((1 + r_c) / 9)
+kappa_c = sp.simplify(kappa0_bare_geom / (1 + r_c))
+gamma_c = sp.simplify(gamma0_bare / (1 + r_c))
+expect_zero("final kappa_c - 1/3", kappa_c - sp.Rational(1, 3))
+expect_zero("final gamma_c - 1/9", gamma_c - sp.Rational(1, 9))
+
+# Bare outgoing form as pure-scale deformation of canonical l=2 branch.
+# Extract gamma0 from the z^5 coefficient and check it matches (1+r_c)/9.
+D_bare = sp.expand((1 + r_c) * (1 - z**2 / 3 - sp.I * z**5 / 9))
+gamma0_from_D = sp.I * D_bare.coeff(z, 5)
+expect_zero(
+    "gamma0 extracted from D_bare matches (1+r_c)/9",
+    sp.simplify(gamma0_from_D - (1 + r_c) / 9),
+)
+D_final = sp.simplify(D_bare / (1 + r_c))
+expect_zero(
+    "bare scaled-canonical branch renormalizes to canonical",
+    D_final - (1 - z**2 / 3 - sp.I * z**5 / 9),
+)
+kappa0_from_D = -D_bare.coeff(z, 2)
+expect_zero(
+    "kappa0_bare extracted from D_bare matches (1+r_c)/3",
+    sp.simplify(kappa0_from_D - (1 + r_c) / 3),
+)
+kappa0_bare = sp.simplify((1 + r_c) / 3)
+
+print("\nSummary:")
+print("  D/N half-wave mixed tube length:", sp.simplify(L_W_required))
+print("  Bare mixed coefficients: kappa0 =", kappa0_bare, ", gamma0 =", gamma0_bare)
+print("  Final coefficients: kappa_c =", kappa_c, ", gamma_c =", gamma_c)
+
+codex
+1. Yes. `3*kappa0 == 9*gamma0` is still tautological in this stage if both are assigned as `(1+r_c)/3` and `(1+r_c)/9`. It only checks that two hardcoded literals were typed consistently. It does not independently constrain `gamma0`, and it cannot detect a physics error in the upstream compensation requirement.
+
+2. No, not for the coefficient values. Within lines 1-100, the only independently derived object is the D/N tube contribution to `kappa0`, via `k_W = pi/(2 L_W)` and the geometric expression `4 L_W**2/(pi**2 a**2)`. `gamma0` has no independent derivation here. Renormalization by `(1+r_c)` is just a definition once the common factor is assumed. The only legitimate local “check” is a precondition-style one: the renormalization factor is nonzero/positive under `K_s, K_q, lam > 0`. That is not a physics check of `gamma_c = 1/9`.
+
+3. Yes. I concur with deleting lines 64-93 as falsifiable assertions. Keep 24-62 as the load-bearing part. Then report the renormalized coefficients as labeled consequences, anchored as:
+
+- `kappa0_bare` from the derived tube expression evaluated at `L_W_required`
+- `gamma0_bare` explicitly labeled as upstream-carried input
+- `kappa_c = kappa0_bare/(1+r_c)`
+- `gamma_c = gamma0_bare/(1+r_c)`
+
+I would not keep `D_bare`; it is pure read-back of a hand-entered scaled canonical branch. If retained at all, it should be printed as an illustrative ansatz, not asserted as evidence.
+tokens used
+6,177
+1. Yes. `3*kappa0 == 9*gamma0` is still tautological in this stage if both are assigned as `(1+r_c)/3` and `(1+r_c)/9`. It only checks that two hardcoded literals were typed consistently. It does not independently constrain `gamma0`, and it cannot detect a physics error in the upstream compensation requirement.
+
+2. No, not for the coefficient values. Within lines 1-100, the only independently derived object is the D/N tube contribution to `kappa0`, via `k_W = pi/(2 L_W)` and the geometric expression `4 L_W**2/(pi**2 a**2)`. `gamma0` has no independent derivation here. Renormalization by `(1+r_c)` is just a definition once the common factor is assumed. The only legitimate local “check” is a precondition-style one: the renormalization factor is nonzero/positive under `K_s, K_q, lam > 0`. That is not a physics check of `gamma_c = 1/9`.
+
+3. Yes. I concur with deleting lines 64-93 as falsifiable assertions. Keep 24-62 as the load-bearing part. Then report the renormalized coefficients as labeled consequences, anchored as:
+
+- `kappa0_bare` from the derived tube expression evaluated at `L_W_required`
+- `gamma0_bare` explicitly labeled as upstream-carried input
+- `kappa_c = kappa0_bare/(1+r_c)`
+- `gamma_c = gamma0_bare/(1+r_c)`
+
+I would not keep `D_bare`; it is pure read-back of a hand-entered scaled canonical branch. If retained at all, it should be printed as an illustrative ansatz, not asserted as evidence.
+
+---
+codex_session_id: 019e717e-ab7b-7db2-a2cc-0b891662bf3c

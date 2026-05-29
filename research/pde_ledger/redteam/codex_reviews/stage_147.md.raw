@@ -1,0 +1,854 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7125-7fa1-7e20-aae7-55fbf87e37e3
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 147)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_147.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_147.tex
+
+Write your verdict report for stage 147 now, following the format above exactly.
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_147.md | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_147.tex | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 147]{Stage 147: First-Order Rigidity Kernel at the Canonical Family-1 Point}
+     2	\label{stage:147}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~147 is a finite mouth-profile corrections ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the regular canonical mouth branch, positive deformations of the source profile, the first-order rigidity kernel, and the full mouth potential.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Finite mouth-profile corrections} block.  The computation isolates the finite first-order/nonlinear correction to \((\Pi,\widehat T_m)\) and the decision to co-evolve core and mouth.}
+    14	
+    15	\begin{quote}
+    16	Traction shift is one kernel projection with coefficients \(A_T\approx-4.27264\), \(B_T\approx0.134875\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check that first-order profile deformations are centered before covariance formulas are used.
+    23	\item Check that the rigidity kernel, not branch ambiguity, controls non-exponential corrections.
+    24	\item Check the one-step nonlinear correction remains within the reduced mouth-layer regime.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 154--163 and the linearized defect transport.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 147
+     3	batch: IV.5
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 3
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 147
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents.
+    23	
+    24	## F1 — missing_verification_script (script_doesnt_cover_claim, sympy)
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:44-63`
+    27	
+    28	**Issue:**
+    29	The SymPy audit script contains zero `assert` statements. Its body is print-only and exits 0 regardless of correctness. The paper-quoted constants `A_T \approx -4.27263956256927` and `B_T \approx 0.134875005736706` (paper/stages/stage_147.tex line 16 quote-block; paper/appendices/stage_appendix_part04.tex:846-848) are never tested.
+    30	
+    31	**Required change:**
+    32	
+    33	After the existing `print("|A_T|/B_T =", ...)` line (currently line 50), and before the existing `# Weight kernel representation` comment (currently line 52), insert the following assertion block. Keep the existing `print` lines above and below untouched.
+    34	
+    35	```python
+    36	# --- Audit assertions: numerical anchor against paper-quoted literals ---
+    37	AT_paper = sp.Float("-4.27263956256927", 30)
+    38	BT_paper = sp.Float("0.134875005736706", 30)
+    39	ratio_paper = sp.Float("31.6785", 20)
+    40	assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
+    41	    f"A_T deviates from paper-quoted value: {sp.N(AT)} vs {AT_paper}"
+    42	print("PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12")
+    43	assert abs(sp.N(BT) - BT_paper) < sp.Float("1e-12", 30), \
+    44	    f"B_T deviates from paper-quoted value: {sp.N(BT)} vs {BT_paper}"
+    45	print("PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12")
+    46	assert abs(sp.N(sp.Abs(AT)/BT) - ratio_paper) < sp.Float("1e-3", 30), \
+    47	    f"|A_T|/B_T deviates from paper-quoted 31.6785: {sp.N(sp.Abs(AT)/BT)}"
+    48	print("PASS: |A_T|/B_T matches paper-quoted 31.6785 to 1e-3")
+    49	
+    50	# --- Audit assertion: chain-rule consistency for A_T (independent derivation route) ---
+    51	# d T_m / d Sigma_0 = (1/2) * sqrt(9/(20 Sigma_*)) = 9/(40 T_*); cross-check the
+    52	# closed-form A_T against this differential identity assembled from scratch.
+    53	dTm_dSigma = sp.Rational(9, 40) / T_star
+    54	dSigma_dPi_at_star = 1/(1 - S_star/4) + Pi_star * Sp_star / (4*(1-S_star/4)**2)
+    55	AT_chain = sp.N(-dTm_dSigma * dSigma_dPi_at_star / gp_star, 30)
+    56	assert abs(AT_chain - sp.N(AT)) < sp.Float("1e-20", 30), \
+    57	    f"A_T chain-rule route disagrees with closed form: {AT_chain} vs {sp.N(AT)}"
+    58	print("PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)")
+    59	```
+    60	
+    61	After the existing `Wcenter = sp.simplify(...)` line (currently line 59), add a structural assertion that the centered-kernel definition matches the paper's stated form:
+    62	
+    63	```python
+    64	# --- Audit assertion: centered kernel structure matches the notes' boxed form ---
+    65	# Notes (section 2): W_*(x) = A_T (c(x) - g_*) + B_T (K_q(x) - S_*).
+    66	# g_* is the value of gFormula at Pi_*; S_* is Sformula(Pi_*). Verify the
+    67	# constant offsets in Wcenter equal A_T*(-gminus) + B_T*(-S_*) by extracting
+    68	# the constant term.
+    69	Wcenter_const = sp.simplify(Wcenter.subs([(x, sp.Symbol("__dummy"))]) -
+    70	                            (AT*c.subs(x, sp.Symbol("__dummy")) +
+    71	                             BT*Kq.subs(x, sp.Symbol("__dummy"))))
+    72	Wcenter_const_expected = sp.simplify(-AT*gminus - BT*Sformula.subs(Pi, Pi_star))
+    73	assert sp.simplify(Wcenter_const - Wcenter_const_expected) == 0, \
+    74	    f"Centered kernel constant offset mismatch: {Wcenter_const} vs {Wcenter_const_expected}"
+    75	print("PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)")
+    76	```
+    77	
+    78	**Verification command:**
+    79	After Codex applies, the verifier will run `redteam exec-sympy 147` and confirm the new `PASS:` lines appear in the transcript AND the script exits 0.
+    80	
+    81	## F2 — tautological_check (mathematica)
+    82	
+    83	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:63-64`
+    84	
+    85	**Issue:**
+    86	The single assertion `expectZero["R_q(g_minus)-1/4", rQMinus - 1/4]` where `rQMinus = ((gMinus - rF1)^2)/(1 + rF1^2)` is algebraically guaranteed by the definition `gMinus = rF1 - Sqrt[1 + rF1^2]/2` (line 39). Substitution gives `(gMinus - rF1)^2 / (1 + rF1^2) = 1/4` for ANY `rF1`, so the check exercises no physics.
+    87	
+    88	**Required change:**
+    89	
+    90	(a) Replace the tautology and add real numerical anchor assertions. Replace existing lines 63-70 (from `rQMinus = ...` through `wCenter = ...`) with the following block. Note: keep `dT = FullSimplify[...]` and `Print["delta T_m = ", ...]` intact, just add new assertions around them.
+    91	
+    92	```mathematica
+    93	(* --- Audit assertions: numerical anchor against paper-quoted literals --- *)
+    94	aTPaper = -4.27263956256927`30;
+    95	bTPaper = 0.134875005736706`30;
+    96	ratioPaper = 31.6785`20;
+    97	expectZero["A_T vs paper -4.27263956256927",
+    98	  If[Abs[aT - aTPaper] < 10^-12, 0, aT - aTPaper]];
+    99	expectZero["B_T vs paper 0.134875005736706",
+   100	  If[Abs[bT - bTPaper] < 10^-12, 0, bT - bTPaper]];
+   101	expectZero["|A_T|/B_T vs paper 31.6785",
+   102	  If[Abs[Abs[aT]/bT - ratioPaper] < 10^-3, 0, Abs[aT]/bT - ratioPaper]];
+   103	
+   104	(* --- Audit assertion: chain-rule consistency for A_T (independent route) --- *)
+   105	dTmDSigma = 9/(40*tStar);
+   106	dSigmaDPi = 1/(1 - sStar/4) + pStar*sPrimeStar/(4*(1 - sStar/4)^2);
+   107	aTChain = N[-dTmDSigma*dSigmaDPi/gPrimeStar, 30];
+   108	expectZero["A_T closed form vs chain-rule route",
+   109	  If[Abs[aTChain - aT] < 10^-20, 0, aTChain - aT]];
+   110	
+   111	dT = FullSimplify[eps*(aT*(gBar - gMinus) + bT*(sBar - sStar))];
+   112	Print["delta T_m = ", fmt[dT]];
+   113	
+   114	wCenter = FullSimplify[aT*(c - gMinus) + bT*(kq - sStar)];
+   115	Print["Centered rigidity kernel W_*(x) = ", fmt[wCenter]];
+   116	
+   117	(* --- Audit assertion: centered kernel structure --- *)
+   118	wCenterConst = FullSimplify[(wCenter - (aT*c + bT*kq)) /. x -> 1/2];
+   119	wCenterConstExpected = FullSimplify[-aT*gMinus - bT*sStar];
+   120	expectZero["W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*)",
+   121	  wCenterConst - wCenterConstExpected];
+   122	```
+   123	
+   124	(b) Fix the cosmetic banner mismatch. On line 26 currently:
+   125	
+   126	```mathematica
+   127	banner["STAGE 130 — FIRST-ORDER RIGIDITY KERNEL"];
+   128	```
+   129	
+   130	change to:
+   131	
+   132	```mathematica
+   133	banner["STAGE 147 — FIRST-ORDER RIGIDITY KERNEL"];
+   134	```
+   135	
+   136	**Verification command:**
+   137	After Codex applies, the verifier will run `redteam exec-mathematica 147` and confirm the new `PASS:` lines appear in the transcript AND the script exits 0. The transcript banner should read `STAGE 147` not `STAGE 130`.
+   138	
+   139	## F3 — insufficient_verification (centering / kernel structure)
+   140	
+   141	**Target:**
+   142	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py` (insert near new assertions from F1)
+   143	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl` (insert near new assertions from F2)
+   144	
+   145	**Issue:**
+   146	Neither engine asserts the centering identity that anchors the stage's title claim ("first-order rigidity *kernel*"). The notes' Section 2 boxed form `W_*(x) = A_T (c(x) - g_*) + B_T (K_q(x) - S_*)` is structurally consistent with the centered representation only because `c(x) - g_*` and `K_q(x) - S_*` are zero-mean against the linearized source-moment inner product used to define `g_*`, `S_*`. The structure check from F1/F2 confirms the constant offset; this finding adds the moment-orthogonality check.
+   147	
+   148	**Required change:**
+   149	
+   150	(a) In the SymPy script, append the following after the F1 block (after the `print("PASS: Centered kernel W_*(x) has form ...")` line):
+   151	
+   152	```python
+   153	# --- Audit assertion: source-moment definitions of g_*, S_* reproduce gFormula(Pi_*), Sformula(Pi_*) ---
+   154	# In the notes' inner product (lines 96-105), g_* is identified with the value
+   155	# gFormula takes at the canonical Pi_*, and S_* with Sformula at Pi_*.
+   156	# Verify the script's evaluation of g_*, S_* matches the symbolic substitution
+   157	# to high precision (this guards against an accidental redefinition of either
+   158	# moment between the family-1 anchor block and the kernel-assembly block).
+   159	g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)
+   160	S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)
+   161	assert abs(g_star_resub - g_star) < sp.Float("1e-30", 40), \
+   162	    f"g_* resubstitution drift: {g_star_resub} vs {g_star}"
+   163	assert abs(S_star_resub - S_star) < sp.Float("1e-30", 40), \
+   164	    f"S_* resubstitution drift: {S_star_resub} vs {S_star}"
+   165	print("PASS: g_*, S_* moment values stable across audit (drift < 1e-30)")
+   166	```
+   167	
+   168	(b) In the Mathematica script, append the following after the F2 `expectZero["W_*(x) centered form ..."]` line:
+   169	
+   170	```mathematica
+   171	(* --- Audit assertion: source-moment values g_*, S_* stable under resubstitution --- *)
+   172	gStarResub = N[gFormula /. p -> pStar, 40];
+   173	sStarResub = N[sFormula /. p -> pStar, 40];
+   174	expectZero["g_* resubstitution drift",
+   175	  If[Abs[gStarResub - gStar] < 10^-30, 0, gStarResub - gStar]];
+   176	expectZero["S_* resubstitution drift",
+   177	  If[Abs[sStarResub - sStar] < 10^-30, 0, sStarResub - sStar]];
+   178	```
+   179	
+   180	**Verification command:**
+   181	After Codex applies, the verifier will run `redteam exec-sympy 147` and `redteam exec-mathematica 147`. Both transcripts should contain the new `PASS:` lines for the moment-stability checks.
+   182	
+   183	## Self-test of this directive
+   184	
+   185	- F1 numerical anchors: `A_T_paper = -4.27263956256927` is exactly what the appendix line 846 states; SymPy's computed value `-4.27263956256927466...` differs by `< 5e-15`, well inside the `1e-12` tolerance. Pass.
+   186	- F1 chain-rule route: `dTm/dSigma_0 = (1/2) * (9/20)^(1/2) / Sigma_0^(1/2) = (1/2)*(9/(20*Sigma_*))^(1/2)`. Since `T_* = sqrt(9*Sigma_*/20)`, we have `(9/(20 Sigma_*))^(1/2) = T_*/Sigma_* * (9/20) / (9/20) ... ` — equivalently `dTm/dSigma_0 = 9/(40 T_*)` (standard algebra; well-defined for `T_* > 0`). The chain-rule recompositon `-dTm/dSigma_0 * dSigma_0/dPi / (dg/dPi) = A_T` exactly matches the closed form in lines 33-38 of the existing script, by construction; this is a self-consistency check across the script's *own* algebra and will fail only if a `1/(1-S/4)` power changes. Not tautological because it pairs an independently assembled `dTmDSigma` with the existing closed-form numerator.
+   187	- F2 cosmetic banner: line 26 currently reads `"STAGE 130 — FIRST-ORDER RIGIDITY KERNEL"` (verified in the file Read); the change is a single string. No collateral.
+   188	- F3 moment-stability: `gPi.subs(Pi, Pi_star)` and `Sformula.subs(Pi, Pi_star)` are evaluated freshly at the audit point and compared with the cached `g_star`, `S_star`. Drift can only be nonzero from a numeric-precision regression; not tautological because both sides go through different evaluation paths (cached numeric vs. fresh `.subs` + `sp.N`).
+   189	- Path specs: `.py` writes to `scripts/`; `.wl` writes to `mathematica/`. Verified.
+   190	- Paper round-trip: all new literals (`-4.27263956256927`, `0.134875005736706`, `31.6785`) appear verbatim in the paper (`stage_147.tex:16` and `stage_appendix_part04.tex:846-848`). No new constants introduced.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl | sed -n '1,280p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py | sed -n '1,280p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 147 — FIRST-ORDER RIGIDITY KERNEL"];
+    27	
+    28	Clear[p, x, eps, gBar, sBar];
+    29	$Assumptions = Element[{p, x, eps, gBar, sBar}, Reals] && p > 0 && 0 <= x <= 1;
+    30	
+    31	kap = Pi/2;
+    32	c = Cos[Pi*x/2];
+    33	kq = Cosh[kap*(1 - x)]/Cosh[kap];
+    34	
+    35	gFormula = 2*p*(2*p*Exp[p] + Pi)/((4*p^2 + Pi^2)*(Exp[p] - 1));
+    36	sFormula = p*(kap*Tanh[kap] + p*(Exp[-p]*Sech[kap] - 1))/((1 - Exp[-p])*(kap^2 - p^2));
+    37	
+    38	rF1 = Sqrt[(12*(37/20)^2)/Pi^2 - 1];
+    39	gMinus = FullSimplify[rF1 - Sqrt[1 + rF1^2]/2, Assumptions -> True];
+    40	pStar = p /. FindRoot[gFormula == gMinus, {p, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
+    41	gStar = N[gFormula /. p -> pStar, 40];
+    42	sStar = N[sFormula /. p -> pStar, 40];
+    43	gPrimeStar = N[D[gFormula, p] /. p -> pStar, 40];
+    44	sPrimeStar = N[D[sFormula, p] /. p -> pStar, 40];
+    45	
+    46	sigmaStar = N[pStar/(1 - sStar/4), 40];
+    47	tStar = N[Sqrt[9*sigmaStar/20], 40];
+    48	
+    49	aT = N[
+    50	  -(9/(40*tStar))*(1/(gPrimeStar*(1 - sStar/4)) + pStar*sPrimeStar/(4*gPrimeStar*(1 - sStar/4)^2)),
+    51	  30
+    52	];
+    53	bT = N[(9/(40*tStar))*pStar/(4*(1 - sStar/4)^2), 30];
+    54	
+    55	banner["Stage 147 audit: first-order rigidity coefficients"];
+    56	Print["Pi_* = ", fmt[N[pStar, 30]]];
+    57	Print["Sigma_* = ", fmt[sigmaStar]];
+    58	Print["T_* = ", fmt[tStar]];
+    59	Print["A_T = ", fmt[aT]];
+    60	Print["B_T = ", fmt[bT]];
+    61	Print["|A_T|/B_T = ", fmt[N[Abs[aT]/bT, 20]]];
+    62	
+    63	(* --- Audit assertions: numerical anchor against paper-quoted literals --- *)
+    64	aTPaper = -4.27263956256927`30;
+    65	bTPaper = 0.134875005736706`30;
+    66	ratioPaper = 31.6785`20;
+    67	expectZero["A_T vs paper -4.27263956256927",
+    68	  If[Abs[aT - aTPaper] < 10^-12, 0, aT - aTPaper]];
+    69	expectZero["B_T vs paper 0.134875005736706",
+    70	  If[Abs[bT - bTPaper] < 10^-12, 0, bT - bTPaper]];
+    71	expectZero["|A_T|/B_T vs paper 31.6785",
+    72	  If[Abs[Abs[aT]/bT - ratioPaper] < 10^-3, 0, Abs[aT]/bT - ratioPaper]];
+    73	
+    74	(* --- Audit assertion: chain-rule consistency for A_T (independent route) --- *)
+    75	dTmDSigma = 9/(40*tStar);
+    76	dSigmaDPi = 1/(1 - sStar/4) + pStar*sPrimeStar/(4*(1 - sStar/4)^2);
+    77	aTChain = N[-dTmDSigma*dSigmaDPi/gPrimeStar, 30];
+    78	expectZero["A_T closed form vs chain-rule route",
+    79	  If[Abs[aTChain - aT] < 10^-20, 0, aTChain - aT]];
+    80	
+    81	dT = FullSimplify[eps*(aT*(gBar - gMinus) + bT*(sBar - sStar))];
+    82	Print["delta T_m = ", fmt[dT]];
+    83	
+    84	wCenter = FullSimplify[aT*(c - gMinus) + bT*(kq - sStar)];
+    85	Print["Centered rigidity kernel W_*(x) = ", fmt[wCenter]];
+    86	
+    87	(* --- Audit assertion: centered kernel structure --- *)
+    88	wCenterConst = FullSimplify[(wCenter - (aT*c + bT*kq)) /. x -> 1/2];
+    89	wCenterConstExpected = FullSimplify[-aT*gMinus - bT*sStar];
+    90	expectZero["W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*)",
+    91	  Chop[wCenterConst - wCenterConstExpected, 10^-25]];
+    92	
+    93	(* --- Audit assertion: source-moment values g_*, S_* stable under resubstitution --- *)
+    94	gStarResub = N[gFormula /. p -> pStar, 40];
+    95	sStarResub = N[sFormula /. p -> pStar, 40];
+    96	expectZero["g_* resubstitution drift",
+    97	  If[Abs[gStarResub - gStar] < 10^-30, 0, gStarResub - gStar]];
+    98	expectZero["S_* resubstitution drift",
+    99	  If[Abs[sStarResub - sStar] < 10^-30, 0, sStarResub - sStar]];
+   100	
+   101	Print[""];
+   102	Print["Stage 147 Mathematica audit passed."];
+   103	
+   104	Exit[0];
+
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(t):
+     6	    print("\n" + "="*88)
+     7	    print(t)
+     8	    print("="*88)
+     9	
+    10	Pi = sp.symbols("Pi", positive=True, real=True)
+    11	x, eps = sp.symbols("x eps", real=True)
+    12	kap = sp.pi/2
+    13	c = sp.cos(sp.pi*x/2)
+    14	Kq = sp.cosh(kap*(1-x))/sp.cosh(kap)
+    15	
+    16	gPi = 2*Pi*(2*Pi*sp.exp(Pi)+sp.pi)/((4*Pi**2+sp.pi**2)*(sp.exp(Pi)-1))
+    17	Sformula = sp.simplify(
+    18	    Pi*(kap*sp.tanh(kap) + Pi*(sp.exp(-Pi)*sp.sech(kap) - 1))
+    19	    / ((1-sp.exp(-Pi))*(kap**2-Pi**2))
+    20	)
+    21	
+    22	rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
+    23	gminus = sp.simplify(rF1 - sp.sqrt(1+rF1**2)/2)
+    24	Pi_star = sp.N(sp.nsolve(gPi - gminus, 1.5), 40)
+    25	g_star = sp.N(gPi.subs(Pi, Pi_star), 40)
+    26	S_star = sp.N(Sformula.subs(Pi, Pi_star), 40)
+    27	gp_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 40)
+    28	Sp_star = sp.N(sp.diff(Sformula, Pi).subs(Pi, Pi_star), 40)
+    29	
+    30	Sigma_star = sp.N(Pi_star/(1-S_star/4), 40)
+    31	T_star = sp.N(sp.sqrt(9*Sigma_star/20), 40)
+    32	
+    33	AT = sp.N(
+    34	    -(sp.Rational(9,1)/(40*T_star)) * (
+    35	        1/(gp_star*(1-S_star/4)) + Pi_star*Sp_star/(4*gp_star*(1-S_star/4)**2)
+    36	    ),
+    37	    30
+    38	)
+    39	BT = sp.N(
+    40	    (sp.Rational(9,1)/(40*T_star)) * Pi_star/(4*(1-S_star/4)**2),
+    41	    30
+    42	)
+    43	
+    44	banner("Stage 147 audit: first-order rigidity coefficients")
+    45	print("Pi_* =", Pi_star)
+    46	print("Sigma_* =", Sigma_star)
+    47	print("T_* =", T_star)
+    48	print("A_T =", AT)
+    49	print("B_T =", BT)
+    50	print("|A_T|/B_T =", sp.N(abs(AT)/BT, 20))
+    51	
+    52	# --- Audit assertions: numerical anchor against paper-quoted literals ---
+    53	AT_paper = sp.Float("-4.27263956256927", 30)
+    54	BT_paper = sp.Float("0.134875005736706", 30)
+    55	ratio_paper = sp.Float("31.6785", 20)
+    56	assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
+    57	    f"A_T deviates from paper-quoted value: {sp.N(AT)} vs {AT_paper}"
+    58	print("PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12")
+    59	assert abs(sp.N(BT) - BT_paper) < sp.Float("1e-12", 30), \
+    60	    f"B_T deviates from paper-quoted value: {sp.N(BT)} vs {BT_paper}"
+    61	print("PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12")
+    62	assert abs(sp.N(sp.Abs(AT)/BT) - ratio_paper) < sp.Float("1e-3", 30), \
+    63	    f"|A_T|/B_T deviates from paper-quoted 31.6785: {sp.N(sp.Abs(AT)/BT)}"
+    64	print("PASS: |A_T|/B_T matches paper-quoted 31.6785 to 1e-3")
+    65	
+    66	# --- Audit assertion: chain-rule consistency for A_T (independent derivation route) ---
+    67	# d T_m / d Sigma_0 = (1/2) * sqrt(9/(20 Sigma_*)) = 9/(40 T_*); cross-check the
+    68	# closed-form A_T against this differential identity assembled from scratch.
+    69	dTm_dSigma = sp.Rational(9, 40) / T_star
+    70	dSigma_dPi_at_star = 1/(1 - S_star/4) + Pi_star * Sp_star / (4*(1-S_star/4)**2)
+    71	AT_chain = sp.N(-dTm_dSigma * dSigma_dPi_at_star / gp_star, 30)
+    72	AT_30 = sp.N(AT, 30)
+    73	assert abs(AT_chain - AT_30) < sp.Float("1e-20", 30), \
+    74	    f"A_T chain-rule route disagrees with closed form: {AT_chain} vs {AT_30}"
+    75	print("PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)")
+    76	
+    77	# Weight kernel representation
+    78	gbar, Sbar = sp.symbols("gbar Sbar", real=True)
+    79	dT = sp.simplify(eps*(AT*(gbar-gminus) + BT*(Sbar-Sformula.subs(Pi, Pi_star))))
+    80	print("delta T_m =")
+    81	sp.pprint(dT)
+    82	
+    83	# Centered kernel form: constant pieces cancel against normalization.
+    84	Wcenter = sp.simplify(AT*(c-gminus) + BT*(Kq-Sformula.subs(Pi, Pi_star)))
+    85	print("Centered rigidity kernel W_*(x) =")
+    86	sp.pprint(Wcenter)
+    87	
+    88	# --- Audit assertion: centered kernel structure matches the notes' boxed form ---
+    89	# Notes (section 2): W_*(x) = A_T (c(x) - g_*) + B_T (K_q(x) - S_*).
+    90	# g_* is the value of gFormula at Pi_*; S_* is Sformula(Pi_*). Verify the
+    91	# constant offsets in Wcenter equal A_T*(-gminus) + B_T*(-S_*) by extracting
+    92	# the constant term.
+    93	Wcenter_const = sp.simplify(Wcenter.subs([(x, sp.Symbol("__dummy"))]) -
+    94	                            (AT*c.subs(x, sp.Symbol("__dummy")) +
+    95	                             BT*Kq.subs(x, sp.Symbol("__dummy"))))
+    96	Wcenter_const_expected = sp.simplify(-AT*gminus - BT*Sformula.subs(Pi, Pi_star))
+    97	assert sp.simplify(Wcenter_const - Wcenter_const_expected) == 0, \
+    98	    f"Centered kernel constant offset mismatch: {Wcenter_const} vs {Wcenter_const_expected}"
+    99	print("PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)")
+   100	
+   101	# --- Audit assertion: source-moment definitions of g_*, S_* reproduce gFormula(Pi_*), Sformula(Pi_*) ---
+   102	# In the notes' inner product (lines 96-105), g_* is identified with the value
+   103	# gFormula takes at the canonical Pi_*, and S_* with Sformula at Pi_*.
+   104	# Verify the script's evaluation of g_*, S_* matches the symbolic substitution
+   105	# to high precision (this guards against an accidental redefinition of either
+   106	# moment between the family-1 anchor block and the kernel-assembly block).
+   107	g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)
+   108	S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)
+   109	assert abs(g_star_resub - g_star) < sp.Float("1e-30", 40), \
+   110	    f"g_* resubstitution drift: {g_star_resub} vs {g_star}"
+   111	assert abs(S_star_resub - S_star) < sp.Float("1e-30", 40), \
+   112	    f"S_* resubstitution drift: {S_star_resub} vs {S_star}"
+   113	print("PASS: g_*, S_* moment values stable across audit (drift < 1e-30)")
+   114	
+   115	print("\nStage 147 complete.")
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	Stage 147 audit: first-order rigidity coefficients
+     4	========================================================================================
+     5	Pi_* = 1.508829513493155527470435117720626294613
+     6	Sigma_* = 1.805941110956353804451202617950474992639
+     7	T_* = 0.9014840541742040220118492172422879595856
+     8	A_T = -4.27263956256927466681875206233
+     9	B_T = 0.134875005736705540316968999027
+    10	|A_T|/B_T = 31.678512554876561144
+    11	PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12
+    12	PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12
+    13	PASS: |A_T|/B_T matches paper-quoted 31.6785 to 1e-3
+    14	PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)
+    15	delta T_m =
+    16	    ⎛                                                                          ↪
+    17	    ⎜  ⎛                                             2⎞                        ↪
+    18	eps⋅⎜π⋅⎝9.106266003151969591744607421646654281322 - π ⎠⋅(0.1348750057367055403 ↪
+    19	    ⎝                                                                          ↪
+    20	────────────────────────────────────────────────────────────────────────────── ↪
+    21	                                                                               ↪
+    22	                                                                               ↪
+    23	
+    24	↪                                                                              ↪
+    25	↪                                                      ⎛                       ↪
+    26	↪ 16968999027⋅S̅ - 4.27263956256927466681875206233⋅g̅) - ⎝9.10626600315196959174 ↪
+    27	↪                                                                              ↪
+    28	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    29	↪                                                                              ↪
+    30	↪                                                                              ↪
+    31	
+    32	↪                           ⎛                                      ___________ ↪
+    33	↪                        2⎞ ⎜                                     ╱            ↪
+    34	↪ 4607421646654281322 - π ⎠⋅⎝- 0.427263956256927466681875206233⋅╲╱  4107 - 100 ↪
+    35	↪                                                                              ↪
+    36	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    37	↪                                      ⎛                                       ↪
+    38	↪                                    π⋅⎝9.106266003151969591744607421646654281 ↪
+    39	
+    40	↪ ____                                    ⎞                                    ↪
+    41	↪   2                                     ⎟     ⎛                              ↪
+    42	↪ ⋅π   + 7.9043831907531581336146913153⋅√3⎠ + π⋅⎜-1.57698808685764551251511263 ↪
+    43	↪                                               ⎝                              ↪
+    44	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    45	↪        2⎞                                                                    ↪
+    46	↪ 322 - π ⎠                                                                    ↪
+    47	
+    48	↪                                                                              ↪
+    49	↪                                                                ⎛π⎞           ↪
+    50	↪ 1499485677426 + 0.3487804074425569819465932667386381053175⋅sech⎜─⎟ + 0.52258 ↪
+    51	↪                                                                ⎝2⎠           ↪
+    52	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    53	↪                                                                              ↪
+    54	↪                                                                              ↪
+    55	
+    56	↪                                               ⎞
+    57	↪                                           ⎛π⎞⎞⎟
+    58	↪ 65721590682456484296060062262592941⋅π⋅tanh⎜─⎟⎟⎟
+    59	↪                                           ⎝2⎠⎠⎠
+    60	↪ ───────────────────────────────────────────────
+    61	↪                                                
+    62	↪                                                
+    63	Centered rigidity kernel W_*(x) =
+    64	 ⎛                                                                             ↪
+    65	 ⎜                                  ⎛                                          ↪
+    66	-⎜4.27263956256927466681875206233⋅π⋅⎝9.106266003151969591744607421646654281322 ↪
+    67	 ⎝                                                                             ↪
+    68	────────────────────────────────────────────────────────────────────────────── ↪
+    69	                                                                               ↪
+    70	                                                                               ↪
+    71	                                                                               ↪
+    72	
+    73	↪                                                                              ↪
+    74	↪     2⎞    ⎛π⋅x⎞     ⎛π⎞                                      ⎛               ↪
+    75	↪  - π ⎠⋅cos⎜───⎟⋅cosh⎜─⎟ - 0.134875005736705540316968999027⋅π⋅⎝9.106266003151 ↪
+    76	↪           ⎝ 2 ⎠     ⎝2⎠                                                      ↪
+    77	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    78	↪                                                                              ↪
+    79	↪                                                                              ↪
+    80	↪                                                                              ↪
+    81	
+    82	↪                                                                              ↪
+    83	↪                                2⎞     ⎛π⋅(x - 1)⎞     ⎛                      ↪
+    84	↪ 969591744607421646654281322 - π ⎠⋅cosh⎜─────────⎟ - π⋅⎜- 1.57698808685764551 ↪
+    85	↪                                       ⎝    2    ⎠     ⎝                      ↪
+    86	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    87	↪                                                                              ↪
+    88	↪                                                                           π⋅ ↪
+    89	↪                                                                              ↪
+    90	
+    91	↪                                                                              ↪
+    92	↪                            ⎛π⎞                                               ↪
+    93	↪ 2515112631499485677426⋅cosh⎜─⎟ + 0.3487804074425569819465932667386381053175  ↪
+    94	↪                            ⎝2⎠                                               ↪
+    95	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    96	↪ ⎛                                             2⎞     ⎛π⎞                     ↪
+    97	↪ ⎝9.106266003151969591744607421646654281322 - π ⎠⋅cosh⎜─⎟                     ↪
+    98	↪                                                      ⎝2⎠                     ↪
+    99	
+   100	↪                                                                              ↪
+   101	↪                                                    ⎛π⎞⎞   ⎛                  ↪
+   102	↪ + 0.5225865721590682456484296060062262592941⋅π⋅sinh⎜─⎟⎟ + ⎝9.106266003151969 ↪
+   103	↪                                                    ⎝2⎠⎠                      ↪
+   104	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   105	↪                                                                              ↪
+   106	↪                                                                              ↪
+   107	↪                                                                              ↪
+   108	
+   109	↪                                ⎛                                      ______ ↪
+   110	↪                             2⎞ ⎜                                     ╱       ↪
+   111	↪ 591744607421646654281322 - π ⎠⋅⎝- 0.427263956256927466681875206233⋅╲╱  4107  ↪
+   112	↪                                                                              ↪
+   113	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   114	↪                                                                              ↪
+   115	↪                                                                              ↪
+   116	↪                                                                              ↪
+   117	
+   118	↪ _________                                    ⎞        ⎞ 
+   119	↪        2                                     ⎟     ⎛π⎞⎟ 
+   120	↪ - 100⋅π   + 7.9043831907531581336146913153⋅√3⎠⋅cosh⎜─⎟⎟ 
+   121	↪                                                    ⎝2⎠⎠ 
+   122	↪ ────────────────────────────────────────────────────────
+   123	↪                                                         
+   124	↪                                                         
+   125	↪                                                         
+   126	PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)
+   127	PASS: g_*, S_* moment values stable across audit (drift < 1e-30)
+   128	
+   129	Stage 147 complete.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 147 — FIRST-ORDER RIGIDITY KERNEL
+     4	========================================================================================
+     5	
+     6	========================================================================================
+     7	Stage 147 audit: first-order rigidity coefficients
+     8	========================================================================================
+     9	Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
+    10	Sigma_* = 1.8059411109563538723736729091995054268193435351723899810697`40.
+    11	T_* = 0.9014840541742040389645127111412155822626259873684112194667`40.
+    12	A_T = -4.2726395625692746412223747285390913640779670607396554156641`30.
+    13	B_T = 0.1348750057367055429617462273081053431702673851068498020443`30.
+    14	|A_T|/B_T = 31.67851255487656033274322154149180316197`20.
+    15	A_T vs paper -4.27263956256927 = 0
+    16	PASS: A_T vs paper -4.27263956256927
+    17	B_T vs paper 0.134875005736706 = 0
+    18	PASS: B_T vs paper 0.134875005736706
+    19	|A_T|/B_T vs paper 31.6785 = 0
+    20	PASS: |A_T|/B_T vs paper 31.6785
+    21	A_T closed form vs chain-rule route = 0
+    22	PASS: A_T closed form vs chain-rule route
+    23	delta T_m = eps*(3.15005267225456959828325604970107588591`27.825109349586285 - 4.27263956256927464122237472853909136408`27.89619627904404*gBar + 0.13487500573670554296174622730810534317`27.89619627904404*sBar)
+    24	Centered rigidity kernel W_*(x) = 3.15005267225456959828325604970107588591`28.58603969127844 - 4.27263956256927464122237472853909136408`29.04575749056067*Cos[(Pi*x)/2] + 0.0537526552550532611495295938333516211660200712634480837671`29.04575749056067*Cosh[(Pi*(-1 + x))/2]
+    25	W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*) = 0
+    26	PASS: W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*)
+    27	g_* resubstitution drift = 0
+    28	PASS: g_* resubstitution drift
+    29	S_* resubstitution drift = 0
+    30	PASS: S_* resubstitution drift
+    31	
+    32	Stage 147 Mathematica audit passed.
+
+codex
+---
+stage: 147
+reviewer: codex
+verdict: FINDINGS
+findings_count: 5
+files_reviewed: [stage_147.md, stage_147.tex, moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py, moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.txt, moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl, moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt]
+---
+# Codex review — stage 147
+
+## What the edit was supposed to do
+The directive was to replace print-only or tautological stage-147 checks with assertions: numerical anchors for \(A_T\), \(B_T\), and \(|A_T|/B_T\), a chain-rule consistency check for \(A_T\), and a centered-kernel structure check. For Mathematica it also required replacing the old `R_q(g_minus)-1/4` tautology and fixing the stage banner. F3 was supposed to add centering / moment support for the rigidity-kernel claim, but the inserted code only resubstitutes cached \(g_*\) and \(S_*\) formulas.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:56 | `A_T` vs paper literal | Yes, against hard-coded paper value | Yes, coefficient quote | PASS |
+| 2 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:59 | `B_T` vs paper literal | Yes, against hard-coded paper value | Yes, coefficient quote | PASS |
+| 3 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:62 | `|A_T|/B_T` vs literal | Yes, against hard-coded ratio | Adjacent/redundant to coefficients | PASS |
+| 4 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:73 | `A_T` closed form vs chain route | Only if the copied algebra diverges | Weak; self-consistency, not independent derivation | FINDING |
+| 5 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:97 | `Wcenter` constant offset | No meaningful physics failure; built from same `Wcenter` definition | Weak; does not test centering source moments | FINDING |
+| 6 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:109 | `g_*` resubstitution drift | No; repeats line 25 expression | No moment-orthogonality check | FINDING |
+| 7 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:111 | `S_*` resubstitution drift | No; repeats line 26 expression | No moment-orthogonality check | FINDING |
+| 8 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:67 | `A_T` vs paper literal | Yes, outside tolerance | Yes, coefficient quote | PASS |
+| 9 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:69 | `B_T` vs paper literal | Yes, outside tolerance | Yes, coefficient quote | PASS |
+| 10 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:71 | `|A_T|/B_T` vs literal | Yes, outside tolerance | Adjacent/redundant to coefficients | PASS |
+| 11 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:78 | `A_T` closed form vs chain route | Only if the copied algebra diverges | Weak; self-consistency, not independent derivation | FINDING |
+| 12 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:90 | `Wcenter` centered form | No meaningful physics failure; also samples one `x` | Weak; does not test centering source moments | FINDING |
+| 13 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:96 | `g_*` resubstitution drift | No; repeats line 41 expression | No moment-orthogonality check | FINDING |
+| 14 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:98 | `S_*` resubstitution drift | No; repeats line 42 expression | No moment-orthogonality check | FINDING |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:69`
+- **What's wrong:** `dSigma_dPi_at_star = 1/(1 - S_star/4) + Pi_star * Sp_star / (4*(1-S_star/4)**2)` is then used to rebuild the same algebra used in `AT` at lines 33-38. I tried to break it by assuming the derivative formula itself has a missing factor or sign; the check would pass if both the closed form and this “chain” route share that same copied mistake.
+- **What it should be:** Differentiate an independently defined `T(Pi) = sqrt(9*(Pi/(1-Sformula(Pi)/4))/20)` with respect to `Pi`, then compare `-dT/dPi / dgPi/dPi` at `Pi_*` to `A_T`.
+
+### R2 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:84`
+- **What's wrong:** `Wcenter = sp.simplify(AT*(c-gminus) + BT*(Kq-Sformula.subs(Pi, Pi_star)))` defines the kernel in exactly the form later asserted at lines 93-98. I tried the failure mode “the centered kernel derivation is wrong but the final expression was typed in the desired form”; this assertion still passes.
+- **What it should be:** Derive the kernel from an independent variation/projection formula, or directly check the stated centering moments for `c-g_*` and `K_q-S_*` under the declared source-moment inner product.
+
+### R3 — insufficient_verification
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:88`
+- **What's wrong:** `wCenterConst = FullSimplify[(wCenter - (aT*c + bT*kq)) /. x -> 1/2]` checks one sample point after `wCenter` was already defined as `aT*(c - gMinus) + bT*(kq - sStar)`. A nonconstant erroneous residue vanishing at `x = 1/2` would pass.
+- **What it should be:** Check the full symbolic residual in `x`, and source `wCenter` from an independent derivation rather than the asserted target form.
+
+### R4 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:107`
+- **What's wrong:** `g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)` and `S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)` repeat the exact definitions of `g_star` and `S_star` from lines 25-26. This can catch mutation, not mathematical centering or moment orthogonality.
+- **What it should be:** Compute the moments from the actual inner-product/integral definitions and compare those independent moment values to `gFormula(Pi_*)` and `Sformula(Pi_*)`.
+
+### R5 — transliteration
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:63`
+- **What's wrong:** The Mathematica assertion block is a direct port of the SymPy block: same literals, same hand-written chain rule, same target-form kernel definition, same resubstitution drift checks. The saved `.txt` files corroborate that both engines print `PASS`, but a wrong target copied into both engines would still pass in both.
+- **What it should be:** Use the second engine for an independent derivation path, especially for the chain rule and centering/moment checks.
+
+## Bottom line
+The numerical coefficient anchors are real and the saved outputs show the expected `PASS` lines, including the fixed Mathematica banner. The important failure is that the new kernel and moment checks do not independently test the stage’s centered first-order rigidity-kernel claim: they mostly reassert definitions already typed into the scripts. The stage therefore remains insufficiently verified despite passing transcripts.
+tokens used
+26,305
+---
+stage: 147
+reviewer: codex
+verdict: FINDINGS
+findings_count: 5
+files_reviewed: [stage_147.md, stage_147.tex, moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py, moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.txt, moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl, moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt]
+---
+# Codex review — stage 147
+
+## What the edit was supposed to do
+The directive was to replace print-only or tautological stage-147 checks with assertions: numerical anchors for \(A_T\), \(B_T\), and \(|A_T|/B_T\), a chain-rule consistency check for \(A_T\), and a centered-kernel structure check. For Mathematica it also required replacing the old `R_q(g_minus)-1/4` tautology and fixing the stage banner. F3 was supposed to add centering / moment support for the rigidity-kernel claim, but the inserted code only resubstitutes cached \(g_*\) and \(S_*\) formulas.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:56 | `A_T` vs paper literal | Yes, against hard-coded paper value | Yes, coefficient quote | PASS |
+| 2 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:59 | `B_T` vs paper literal | Yes, against hard-coded paper value | Yes, coefficient quote | PASS |
+| 3 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:62 | `|A_T|/B_T` vs literal | Yes, against hard-coded ratio | Adjacent/redundant to coefficients | PASS |
+| 4 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:73 | `A_T` closed form vs chain route | Only if the copied algebra diverges | Weak; self-consistency, not independent derivation | FINDING |
+| 5 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:97 | `Wcenter` constant offset | No meaningful physics failure; built from same `Wcenter` definition | Weak; does not test centering source moments | FINDING |
+| 6 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:109 | `g_*` resubstitution drift | No; repeats line 25 expression | No moment-orthogonality check | FINDING |
+| 7 | moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:111 | `S_*` resubstitution drift | No; repeats line 26 expression | No moment-orthogonality check | FINDING |
+| 8 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:67 | `A_T` vs paper literal | Yes, outside tolerance | Yes, coefficient quote | PASS |
+| 9 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:69 | `B_T` vs paper literal | Yes, outside tolerance | Yes, coefficient quote | PASS |
+| 10 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:71 | `|A_T|/B_T` vs literal | Yes, outside tolerance | Adjacent/redundant to coefficients | PASS |
+| 11 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:78 | `A_T` closed form vs chain route | Only if the copied algebra diverges | Weak; self-consistency, not independent derivation | FINDING |
+| 12 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:90 | `Wcenter` centered form | No meaningful physics failure; also samples one `x` | Weak; does not test centering source moments | FINDING |
+| 13 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:96 | `g_*` resubstitution drift | No; repeats line 41 expression | No moment-orthogonality check | FINDING |
+| 14 | moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:98 | `S_*` resubstitution drift | No; repeats line 42 expression | No moment-orthogonality check | FINDING |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:69`
+- **What's wrong:** `dSigma_dPi_at_star = 1/(1 - S_star/4) + Pi_star * Sp_star / (4*(1-S_star/4)**2)` is then used to rebuild the same algebra used in `AT` at lines 33-38. I tried to break it by assuming the derivative formula itself has a missing factor or sign; the check would pass if both the closed form and this “chain” route share that same copied mistake.
+- **What it should be:** Differentiate an independently defined `T(Pi) = sqrt(9*(Pi/(1-Sformula(Pi)/4))/20)` with respect to `Pi`, then compare `-dT/dPi / dgPi/dPi` at `Pi_*` to `A_T`.
+
+### R2 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:84`
+- **What's wrong:** `Wcenter = sp.simplify(AT*(c-gminus) + BT*(Kq-Sformula.subs(Pi, Pi_star)))` defines the kernel in exactly the form later asserted at lines 93-98. I tried the failure mode “the centered kernel derivation is wrong but the final expression was typed in the desired form”; this assertion still passes.
+- **What it should be:** Derive the kernel from an independent variation/projection formula, or directly check the stated centering moments for `c-g_*` and `K_q-S_*` under the declared source-moment inner product.
+
+### R3 — insufficient_verification
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:88`
+- **What's wrong:** `wCenterConst = FullSimplify[(wCenter - (aT*c + bT*kq)) /. x -> 1/2]` checks one sample point after `wCenter` was already defined as `aT*(c - gMinus) + bT*(kq - sStar)`. A nonconstant erroneous residue vanishing at `x = 1/2` would pass.
+- **What it should be:** Check the full symbolic residual in `x`, and source `wCenter` from an independent derivation rather than the asserted target form.
+
+### R4 — tautological_check
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:107`
+- **What's wrong:** `g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)` and `S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)` repeat the exact definitions of `g_star` and `S_star` from lines 25-26. This can catch mutation, not mathematical centering or moment orthogonality.
+- **What it should be:** Compute the moments from the actual inner-product/integral definitions and compare those independent moment values to `gFormula(Pi_*)` and `Sformula(Pi_*)`.
+
+### R5 — transliteration
+- **Where:** `moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:63`
+- **What's wrong:** The Mathematica assertion block is a direct port of the SymPy block: same literals, same hand-written chain rule, same target-form kernel definition, same resubstitution drift checks. The saved `.txt` files corroborate that both engines print `PASS`, but a wrong target copied into both engines would still pass in both.
+- **What it should be:** Use the second engine for an independent derivation path, especially for the chain rule and centering/moment checks.
+
+## Bottom line
+The numerical coefficient anchors are real and the saved outputs show the expected `PASS` lines, including the fixed Mathematica banner. The important failure is that the new kernel and moment checks do not independently test the stage’s centered first-order rigidity-kernel claim: they mostly reassert definitions already typed into the scripts. The stage therefore remains insufficiently verified despite passing transcripts.
+
+---
+codex_session_id: 019e7125-7fa1-7e20-aae7-55fbf87e37e3

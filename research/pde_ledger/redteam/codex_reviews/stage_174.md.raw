@@ -1,0 +1,679 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7129-80b6-7a62-bca8-3839541c70e2
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 174)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage174_static_self_similarity_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_174.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_174.tex
+
+Write your verdict report for stage 174 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_174.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_174.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 174]{Stage 174: Static self-similarity}
+     2	\label{stage:174}
+     3	
+     4	\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.2}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~174 is the original-stage audit card for \emph{Static self-similarity}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the even-preserving grouped branch, the loading mismatch \(\Xi_{\rm load}\), and the wall-normalized Maxwell/mixed transfer factors.  It works inside the conservative-shape-preserving and weak-axisymmetric reduced branch.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage174_static_self_similarity_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The derivation rewrites the loading defect as failure of self-similar wall-referenced loading, factors the outgoing port into mixed-leg/interference/hybridization pieces, and collapses all weak-axisymmetric port slippages to one scalar.}
+    14	
+    15	\stagefield{Output}{Expresses \(\Xi_{\rm load}\) as weighted failure of static self-similarity between wall, BdG, conservative port, and outgoing port slopes.}
+    16	
+    17	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
+    18	
+    19	\stagefield{Checks}{\begin{verificationchecklist}
+    20	\item Check that self-similarity is defined relative to the wall baseline, not by freezing every port shape.
+    21	\item Check the conservative-shape-preserving hypothesis before using \(\Xi_1=P_1/P_0\).
+    22	\item Check any square-root mixed-leg use carries the interference/hybridization rigidity assumptions.
+    23	\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
+    24	\end{verificationchecklist}}
+    25	
+    26	\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.2} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+    27	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 174
+     3	batch: V.1
+     4	created_at: 2026-05-28T00:00:00-06:00
+     5	findings_count: 1
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 174
+    13	
+    14	Apply the finding below. After applying, append an `## Applied: F1` block under it with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If the required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F1` with a question instead.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the lines named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents. Edit only the Mathematica script.
+    23	
+    24	## F1 — mathematica_transliteration
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:26,67-71,89-93,111-115`
+    27	
+    28	**Issue:**
+    29	The `.wl` is a line-for-line port of the SymPy script. The only non-trivial inputs — the first-order differentials `b01Two`, `z01Two`, `n01Two` — are hand-typed identically to the SymPy `B01_two`, `Z01_two`, `N01_two`, so the second engine re-types the same closed form rather than independently deriving it. A transcription error in either differential would be invisible to the cross-engine check. The banner text is also a stale copy ("STAGE 157" in a stage-174 unit).
+    30	
+    31	**Required change:**
+    32	Replace the three hand-typed differential assignments with independent symbolic derivations via a perturbation parameter `eps`, so Mathematica reconstructs the differentials itself. Keep the `expectZero` checks at L79, L101, L123 unchanged; they should still pass.
+    33	
+    34	1. BdG block. Replace lines 67-71:
+    35	```
+    36	b01Two = FullSimplify[
+    37	  2*c1*dc1/w1^2 - 2*c1^2*dw1/w1^3 +
+    38	  2*c2*dc2/w2^2 - 2*c2^2*dw2/w2^3,
+    39	  Assumptions -> $Assumptions
+    40	];
+    41	```
+    42	with:
+    43	```
+    44	b0Eps = (c1 + eps*dc1)^2/(w1 + eps*dw1)^2 + (c2 + eps*dc2)^2/(w2 + eps*dw2)^2;
+    45	b01Two = FullSimplify[D[b0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+    46	```
+    47	
+    48	2. Conservative Maxwell/mixed block. Replace lines 89-93:
+    49	```
+    50	z01Two = FullSimplify[
+    51	  (delta1*q1p - q1*delta1p)/delta1^2 +
+    52	  (delta2*q2p - q2*delta2p)/delta2^2,
+    53	  Assumptions -> $Assumptions
+    54	];
+    55	```
+    56	with:
+    57	```
+    58	z0Eps = (q1 + eps*q1p)/(delta1 + eps*delta1p) + (q2 + eps*q2p)/(delta2 + eps*delta2p);
+    59	z01Two = FullSimplify[D[z0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+    60	```
+    61	
+    62	3. Outgoing-transfer block. Replace lines 111-115:
+    63	```
+    64	n01Two = FullSimplify[
+    65	  2*p1*p1p/delta1^2 - 2*p1^2*delta1p/delta1^3 +
+    66	  2*p2*p2p/delta2^2 - 2*p2^2*delta2p/delta2^3,
+    67	  Assumptions -> $Assumptions
+    68	];
+    69	```
+    70	with:
+    71	```
+    72	n0Eps = (p1 + eps*p1p)^2/(delta1 + eps*delta1p)^2 + (p2 + eps*p2p)^2/(delta2 + eps*delta2p)^2;
+    73	n01Two = FullSimplify[D[n0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+    74	```
+    75	Add `Clear[eps]` once near the top of each affected block, or rely on `eps` being a fresh symbol; do not add `eps` to `$Assumptions` (it is eliminated by the `eps -> 0` substitution).
+    76	
+    77	4. Banner. On line 26, change `banner["STAGE 157 — STATIC SELF-SIMILARITY DECOMPOSITION"];` to `banner["STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION"];`.
+    78	
+    79	Do not change any `expectZero` line, the `$Assumptions` declarations, the weighted-slope candidate expressions (`deltaBWeighted`, `deltaZWeighted`, `deltaNWeighted`), the theorem substitutions, or the carry-forward print block.
+    80	
+    81	**Verification command:**
+    82	After Codex applies, the verifier will run `redteam exec-mathematica 174` and confirm: the transcript still prints `BdG weighted-average formula = 0`, `Z weighted-average formula = 0`, `N weighted-average formula = 0` each followed by `PASS`; the banner now reads `STAGE 174 ...`; the `b01Two`/`z01Two`/`n01Two` assignments now use `D[..., eps]`; and the script exits 0.
+    83	
+    84	## Applied: F1
+    85	
+    86	files_changed: mathematica/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl
+    87	summary: Replaced the three hand-typed differential assignments (b01Two, z01Two, n01Two) with independent symbolic perturbation derivations via D[..., eps] /. eps -> 0, and corrected the stale banner from STAGE 157 to STAGE 174.
+    88	deviation: For the eps-symbol step, relied on the directive's explicitly-permitted option of eps being a fresh symbol (guaranteed by the file-opening ClearAll["Global`*"] and eps never being assigned) rather than adding Clear[eps]; eps was not added to $Assumptions, as instructed.
+
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION"];
+    27	
+    28	Clear[k, b0, z0, k1, b01, z01, n0, n01];
+    29	$Assumptions = Element[{k, b0, z0, k1, b01, z01, n0, n01}, Reals] &&
+    30	  k != 0 && b0 != 0 && z0 != 0 && n0 != 0;
+    31	
+    32	d0 = k - b0 - z0;
+    33	d01 = k1 - b01 - z01;
+    34	
+    35	deltaK = k1/k;
+    36	deltaB = b01/b0;
+    37	deltaZ = z01/z0;
+    38	deltaN = n01/n0;
+    39	deltaD = d01/d0;
+    40	
+    41	omegaK = k/d0;
+    42	omegaB = b0/d0;
+    43	omegaZ = z0/d0;
+    44	
+    45	expectZero["weight identity", omegaK - omegaB - omegaZ - 1];
+    46	expectZero[
+    47	  "delta_D weighted decomposition",
+    48	  deltaD - (omegaK*deltaK - omegaB*deltaB - omegaZ*deltaZ)
+    49	];
+    50	
+    51	xiLoad = FullSimplify[deltaN - deltaD, Assumptions -> $Assumptions];
+    52	xiWallRef = FullSimplify[
+    53	  (deltaN - deltaK) + omegaB*(deltaB - deltaK) + omegaZ*(deltaZ - deltaK),
+    54	  Assumptions -> $Assumptions
+    55	];
+    56	expectZero["Xi_load wall-referenced form", xiLoad - xiWallRef];
+    57	Print["Xi_load = ", fmt[xiLoad]];
+    58	
+    59	banner["BdG bundle weighted logarithmic slope"];
+    60	Clear[c1, c2, w1, w2, dc1, dc2, dw1, dw2];
+    61	$Assumptions = Element[{c1, c2, w1, w2, dc1, dc2, dw1, dw2}, Reals] &&
+    62	  c1 != 0 && c2 != 0 && w1 != 0 && w2 != 0;
+    63	
+    64	b1 = c1^2/w1^2;
+    65	b2Term = c2^2/w2^2;
+    66	b0Two = FullSimplify[b1 + b2Term, Assumptions -> $Assumptions];
+    67	b0Eps = (c1 + eps*dc1)^2/(w1 + eps*dw1)^2 + (c2 + eps*dc2)^2/(w2 + eps*dw2)^2;
+    68	b01Two = FullSimplify[D[b0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+    69	
+    70	rhoB1 = FullSimplify[b1/b0Two, Assumptions -> $Assumptions];
+    71	rhoB2 = FullSimplify[b2Term/b0Two, Assumptions -> $Assumptions];
+    72	deltaBWeighted = FullSimplify[
+    73	  rhoB1*(2*dc1/c1 - 2*dw1/w1) + rhoB2*(2*dc2/c2 - 2*dw2/w2),
+    74	  Assumptions -> $Assumptions
+    75	];
+    76	expectZero["BdG weighted-average formula", b01Two/b0Two - deltaBWeighted];
+    77	
+    78	banner["Conservative Maxwell/mixed weighted logarithmic slope"];
+    79	Clear[q1, q2, delta1, delta2, q1p, q2p, delta1p, delta2p];
+    80	$Assumptions = Element[{q1, q2, delta1, delta2, q1p, q2p, delta1p, delta2p}, Reals] &&
+    81	  q1 != 0 && q2 != 0 && delta1 != 0 && delta2 != 0;
+    82	
+    83	z1 = q1/delta1;
+    84	z2Term = q2/delta2;
+    85	z0Two = FullSimplify[z1 + z2Term, Assumptions -> $Assumptions];
+    86	z0Eps = (q1 + eps*q1p)/(delta1 + eps*delta1p) + (q2 + eps*q2p)/(delta2 + eps*delta2p);
+    87	z01Two = FullSimplify[D[z0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+    88	
+    89	rhoZ1 = FullSimplify[z1/z0Two, Assumptions -> $Assumptions];
+    90	rhoZ2 = FullSimplify[z2Term/z0Two, Assumptions -> $Assumptions];
+    91	deltaZWeighted = FullSimplify[
+    92	  rhoZ1*(q1p/q1 - delta1p/delta1) + rhoZ2*(q2p/q2 - delta2p/delta2),
+    93	  Assumptions -> $Assumptions
+    94	];
+    95	expectZero["Z weighted-average formula", z01Two/z0Two - deltaZWeighted];
+    96	
+    97	banner["Outgoing-transfer weighted logarithmic slope"];
+    98	Clear[p1, p2, p1p, p2p];
+    99	$Assumptions = Element[{p1, p2, p1p, p2p, delta1, delta2, delta1p, delta2p}, Reals] &&
+   100	  p1 != 0 && p2 != 0 && delta1 != 0 && delta2 != 0;
+   101	
+   102	n1s = p1^2/delta1^2;
+   103	n2s = p2^2/delta2^2;
+   104	n0Two = FullSimplify[n1s + n2s, Assumptions -> $Assumptions];
+   105	n0Eps = (p1 + eps*p1p)^2/(delta1 + eps*delta1p)^2 + (p2 + eps*p2p)^2/(delta2 + eps*delta2p)^2;
+   106	n01Two = FullSimplify[D[n0Eps, eps] /. eps -> 0, Assumptions -> $Assumptions];
+   107	
+   108	rhoN1 = FullSimplify[n1s/n0Two, Assumptions -> $Assumptions];
+   109	rhoN2 = FullSimplify[n2s/n0Two, Assumptions -> $Assumptions];
+   110	deltaNWeighted = FullSimplify[
+   111	  rhoN1*(2*p1p/p1 - 2*delta1p/delta1) + rhoN2*(2*p2p/p2 - 2*delta2p/delta2),
+   112	  Assumptions -> $Assumptions
+   113	];
+   114	expectZero["N weighted-average formula", n01Two/n0Two - deltaNWeighted];
+   115	
+   116	banner["Static self-similarity theorem"];
+   117	Clear[deltaStar, sigmaB, sigmaZ, sigmaN];
+   118	$Assumptions = Element[{k, b0, z0, n0, deltaStar, sigmaB, sigmaZ, sigmaN}, Reals] &&
+   119	  k != 0 && b0 != 0 && z0 != 0 && n0 != 0;
+   120	
+   121	xiSelfSimilar = FullSimplify[
+   122	  xiLoad /. {k1 -> deltaStar*k, b01 -> deltaStar*b0, z01 -> deltaStar*z0, n01 -> deltaStar*n0},
+   123	  Assumptions -> $Assumptions
+   124	];
+   125	expectZero["Xi_load under static self-similarity", xiSelfSimilar];
+   126	
+   127	xiSigma = FullSimplify[
+   128	  xiLoad /. {b01 -> (deltaK + sigmaB)*b0, z01 -> (deltaK + sigmaZ)*z0, n01 -> (deltaK + sigmaN)*n0},
+   129	  Assumptions -> $Assumptions
+   130	];
+   131	expectZero["Xi_load mismatch-field form", xiSigma - (sigmaN + omegaB*sigmaB + omegaZ*sigmaZ)];
+   132	Print["Xi_load mismatch-field prototype = ", fmt[FullSimplify[sigmaN + omegaB*sigmaB + omegaZ*sigmaZ, Assumptions -> $Assumptions]]];
+   133	
+   134	Print[""];
+   135	Print["Carry-forward formulas:"];
+   136	Print["  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ"];
+   137	Print["  omegaK - omegaB - omegaZ = 1"];
+   138	Print["  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)"];
+   139	Print["  delta_B = weighted average of 2 dln(c_alpha/varpi_alpha)"];
+   140	Print["  delta_Z = weighted average of dln(Q_r/Delta_r)"];
+   141	Print["  delta_N = weighted average of 2 dln(P_r/Delta_r)"];
+   142	Print["  static self-similarity => Xi_load = 0"];
+   143	
+   144	Print[""];
+   145	Print["Stage 174 Mathematica audit passed."];
+   146	
+   147	Exit[0];
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+     4	
+     5	SymPy-backed audit for the static self-similarity decomposition of the remaining
+     6	linear grouped loading defect.
+     7	
+     8	Checks:
+     9	1. Exact weighted decomposition of delta_D = D01/D0.
+    10	2. Exact wall-referenced decomposition of Xi_load.
+    11	3. Exact weighted-average formulas for BdG, conservative Maxwell/mixed, and
+    12	   outgoing-transfer logarithmic slopes.
+    13	4. Static self-similarity theorem Xi_load = 0.
+    14	"""
+    15	
+    16	from __future__ import annotations
+    17	import sympy as sp
+    18	
+    19	
+    20	def banner(title: str) -> None:
+    21	    line = "=" * 88
+    22	    print("\n" + line)
+    23	    print(title)
+    24	    print(line)
+    25	
+    26	
+    27	def expect_zero(name: str, expr: sp.Expr) -> None:
+    28	    expr = sp.simplify(sp.expand(expr))
+    29	    print(f"{name} = {expr}")
+    30	    if expr != 0:
+    31	        raise AssertionError(f"{name} is not zero")
+    32	
+    33	
+    34	banner("STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION")
+    35	
+    36	# ---------------------------------------------------------------------------
+    37	# 1. Exact weighted decomposition of the conservative static slope
+    38	# ---------------------------------------------------------------------------
+    39	K, B0, Z0 = sp.symbols("K B0 Z0", real=True, nonzero=True)
+    40	K1, B01, Z01 = sp.symbols("K1 B01 Z01", real=True)
+    41	N0, N01 = sp.symbols("N0 N01", real=True, nonzero=True)
+    42	
+    43	D0 = K - B0 - Z0
+    44	D01 = K1 - B01 - Z01
+    45	
+    46	deltaK = K1 / K
+    47	deltaB = B01 / B0
+    48	deltaZ = Z01 / Z0
+    49	deltaN = N01 / N0
+    50	deltaD = D01 / D0
+    51	
+    52	omegaK = K / D0
+    53	omegaB = B0 / D0
+    54	omegaZ = Z0 / D0
+    55	
+    56	expect_zero("weight identity", omegaK - omegaB - omegaZ - 1)
+    57	expect_zero(
+    58	    "delta_D weighted decomposition",
+    59	    deltaD - (omegaK * deltaK - omegaB * deltaB - omegaZ * deltaZ),
+    60	)
+    61	
+    62	Xi_load = sp.simplify(deltaN - deltaD)
+    63	Xi_wall_ref = sp.simplify((deltaN - deltaK) + omegaB * (deltaB - deltaK) + omegaZ * (deltaZ - deltaK))
+    64	expect_zero("Xi_load wall-referenced form", Xi_load - Xi_wall_ref)
+    65	print("Xi_load =", Xi_load)
+    66	
+    67	# ---------------------------------------------------------------------------
+    68	# 2. BdG weighted-average logarithmic slope
+    69	# ---------------------------------------------------------------------------
+    70	banner("BdG bundle weighted logarithmic slope")
+    71	
+    72	c1, c2, w1, w2 = sp.symbols("c1 c2 w1 w2", real=True, nonzero=True)
+    73	dc1, dc2, dw1, dw2 = sp.symbols("dc1 dc2 dw1 dw2", real=True)
+    74	
+    75	B1 = c1**2 / w1**2
+    76	B2 = c2**2 / w2**2
+    77	B0_two = sp.simplify(B1 + B2)
+    78	B01_two = sp.simplify(2 * c1 * dc1 / w1**2 - 2 * c1**2 * dw1 / w1**3 + 2 * c2 * dc2 / w2**2 - 2 * c2**2 * dw2 / w2**3)
+    79	
+    80	rhoB1 = sp.simplify(B1 / B0_two)
+    81	rhoB2 = sp.simplify(B2 / B0_two)
+    82	
+    83	deltaB_weighted = sp.simplify(rhoB1 * (2 * dc1 / c1 - 2 * dw1 / w1) + rhoB2 * (2 * dc2 / c2 - 2 * dw2 / w2))
+    84	expect_zero("BdG weighted-average formula", B01_two / B0_two - deltaB_weighted)
+    85	
+    86	# ---------------------------------------------------------------------------
+    87	# 3. Conservative Maxwell/mixed static weighted slope
+    88	# ---------------------------------------------------------------------------
+    89	banner("Conservative Maxwell/mixed weighted logarithmic slope")
+    90	
+    91	Q1, Q2, Delta1, Delta2 = sp.symbols("Q1 Q2 Delta1 Delta2", real=True, nonzero=True)
+    92	Q1p, Q2p, Delta1p, Delta2p = sp.symbols("Q1p Q2p Delta1p Delta2p", real=True)
+    93	
+    94	Z1 = Q1 / Delta1
+    95	Z2 = Q2 / Delta2
+    96	Z0_two = sp.simplify(Z1 + Z2)
+    97	Z01_two = sp.simplify((Delta1 * Q1p - Q1 * Delta1p) / Delta1**2 + (Delta2 * Q2p - Q2 * Delta2p) / Delta2**2)
+    98	
+    99	rhoZ1 = sp.simplify(Z1 / Z0_two)
+   100	rhoZ2 = sp.simplify(Z2 / Z0_two)
+   101	
+   102	deltaZ_weighted = sp.simplify(rhoZ1 * (Q1p / Q1 - Delta1p / Delta1) + rhoZ2 * (Q2p / Q2 - Delta2p / Delta2))
+   103	expect_zero("Z weighted-average formula", Z01_two / Z0_two - deltaZ_weighted)
+   104	
+   105	# ---------------------------------------------------------------------------
+   106	# 4. Outgoing-transfer weighted slope
+   107	# ---------------------------------------------------------------------------
+   108	banner("Outgoing-transfer weighted logarithmic slope")
+   109	
+   110	P1, P2 = sp.symbols("P1 P2", real=True, nonzero=True)
+   111	P1p, P2p = sp.symbols("P1p P2p", real=True)
+   112	
+   113	N1s = P1**2 / Delta1**2
+   114	N2s = P2**2 / Delta2**2
+   115	N0_two = sp.simplify(N1s + N2s)
+   116	N01_two = sp.simplify(2 * P1 * P1p / Delta1**2 - 2 * P1**2 * Delta1p / Delta1**3 + 2 * P2 * P2p / Delta2**2 - 2 * P2**2 * Delta2p / Delta2**3)
+   117	
+   118	rhoN1 = sp.simplify(N1s / N0_two)
+   119	rhoN2 = sp.simplify(N2s / N0_two)
+   120	
+   121	deltaN_weighted = sp.simplify(rhoN1 * (2 * P1p / P1 - 2 * Delta1p / Delta1) + rhoN2 * (2 * P2p / P2 - 2 * Delta2p / Delta2))
+   122	expect_zero("N weighted-average formula", N01_two / N0_two - deltaN_weighted)
+   123	
+   124	# ---------------------------------------------------------------------------
+   125	# 5. Static self-similarity theorem
+   126	# ---------------------------------------------------------------------------
+   127	banner("Static self-similarity theorem")
+   128	
+   129	delta_star = sp.symbols("delta_star", real=True)
+   130	Xi_self_similar = sp.simplify(Xi_load.subs({K1: delta_star*K, B01: delta_star*B0, Z01: delta_star*Z0, N01: delta_star*N0}))
+   131	expect_zero("Xi_load under static self-similarity", Xi_self_similar)
+   132	
+   133	# Wall-referenced defect-field form
+   134	SigmaB, SigmaZ, SigmaN = sp.symbols("SigmaB SigmaZ SigmaN", real=True)
+   135	Xi_sigma = sp.simplify(Xi_load.subs({B01: (deltaK + SigmaB)*B0, Z01: (deltaK + SigmaZ)*Z0, N01: (deltaK + SigmaN)*N0}))
+   136	expect_zero("Xi_load mismatch-field form", Xi_sigma - (SigmaN + omegaB * SigmaB + omegaZ * SigmaZ))
+   137	print("Xi_load mismatch-field prototype =", sp.simplify(SigmaN + omegaB * SigmaB + omegaZ * SigmaZ))
+   138	
+   139	print("\nCarry-forward formulas:")
+   140	print("  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ")
+   141	print("  omegaK - omegaB - omegaZ = 1")
+   142	print("  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)")
+   143	print("  delta_B = weighted average of 2 dln(c_alpha/varpi_alpha)")
+   144	print("  delta_Z = weighted average of dln(Q_r/Delta_r)")
+   145	print("  delta_N = weighted average of 2 dln(P_r/Delta_r)")
+   146	print("  static self-similarity => Xi_load = 0")
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage174_static_self_similarity_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION
+     4	========================================================================================
+     5	weight identity = 0
+     6	PASS: weight identity
+     7	delta_D weighted decomposition = 0
+     8	PASS: delta_D weighted decomposition
+     9	Xi_load wall-referenced form = 0
+    10	PASS: Xi_load wall-referenced form
+    11	Xi_load = n01/n0 - (b01 - k1 + z01)/(b0 - k + z0)
+    12	
+    13	========================================================================================
+    14	BdG bundle weighted logarithmic slope
+    15	========================================================================================
+    16	BdG weighted-average formula = 0
+    17	PASS: BdG weighted-average formula
+    18	
+    19	========================================================================================
+    20	Conservative Maxwell/mixed weighted logarithmic slope
+    21	========================================================================================
+    22	Z weighted-average formula = 0
+    23	PASS: Z weighted-average formula
+    24	
+    25	========================================================================================
+    26	Outgoing-transfer weighted logarithmic slope
+    27	========================================================================================
+    28	N weighted-average formula = 0
+    29	PASS: N weighted-average formula
+    30	
+    31	========================================================================================
+    32	Static self-similarity theorem
+    33	========================================================================================
+    34	Xi_load under static self-similarity = 0
+    35	PASS: Xi_load under static self-similarity
+    36	Xi_load mismatch-field form = 0
+    37	PASS: Xi_load mismatch-field form
+    38	Xi_load mismatch-field prototype = sigmaN - (b0*sigmaB + sigmaZ*z0)/(b0 - k + z0)
+    39	
+    40	Carry-forward formulas:
+    41	  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ
+    42	  omegaK - omegaB - omegaZ = 1
+    43	  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)
+    44	  delta_B = weighted average of 2 dln(c_alpha/varpi_alpha)
+    45	  delta_Z = weighted average of dln(Q_r/Delta_r)
+    46	  delta_N = weighted average of 2 dln(P_r/Delta_r)
+    47	  static self-similarity => Xi_load = 0
+    48	
+    49	Stage 174 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage174_static_self_similarity_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 174 — STATIC SELF-SIMILARITY DECOMPOSITION
+     4	========================================================================================
+     5	weight identity = 0
+     6	delta_D weighted decomposition = 0
+     7	Xi_load wall-referenced form = 0
+     8	Xi_load = (N0*(-B01 + K1 - Z01) + N01*(B0 - K + Z0))/(N0*(B0 - K + Z0))
+     9	
+    10	========================================================================================
+    11	BdG bundle weighted logarithmic slope
+    12	========================================================================================
+    13	BdG weighted-average formula = 0
+    14	
+    15	========================================================================================
+    16	Conservative Maxwell/mixed weighted logarithmic slope
+    17	========================================================================================
+    18	Z weighted-average formula = 0
+    19	
+    20	========================================================================================
+    21	Outgoing-transfer weighted logarithmic slope
+    22	========================================================================================
+    23	N weighted-average formula = 0
+    24	
+    25	========================================================================================
+    26	Static self-similarity theorem
+    27	========================================================================================
+    28	Xi_load under static self-similarity = 0
+    29	Xi_load mismatch-field form = 0
+    30	Xi_load mismatch-field prototype = (-B0*SigmaB + SigmaN*(B0 - K + Z0) - SigmaZ*Z0)/(B0 - K + Z0)
+    31	
+    32	Carry-forward formulas:
+    33	  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ
+    34	  omegaK - omegaB - omegaZ = 1
+    35	  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)
+    36	  delta_B = weighted average of 2 dln(c_alpha/varpi_alpha)
+    37	  delta_Z = weighted average of dln(Q_r/Delta_r)
+    38	  delta_N = weighted average of 2 dln(P_r/Delta_r)
+    39	  static self-similarity => Xi_load = 0
+
+codex
+---
+stage: 174
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage174_static_self_similarity_sympy_audit.py, moving_throat_pde_stage174_static_self_similarity_sympy_audit.txt, moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl, moving_throat_pde_stage174_static_self_similarity_mathematica_audit.txt, stage_174.md, stage_174.tex]
+---
+# Codex review — stage 174
+
+## What the edit was supposed to do
+F1 required fixing the Mathematica audit because it was a line-for-line SymPy port with the first-order differentials `b01Two`, `z01Two`, and `n01Two` hand-typed, making transcription errors invisible to the second engine. The required change was to derive those differentials from perturbed primitive expressions using `D[..., eps] /. eps -> 0`, while leaving the `expectZero` checks, assumptions, weighted-slope targets, theorem substitutions, and carry-forward block unchanged. It also required correcting the stale banner to `STAGE 174`.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:67-76 | BdG differential from `b0Eps`, checked against weighted log-slope formula | Yes. A wrong sign, factor 2, or denominator perturbation would make `b01Two/b0Two - deltaBWeighted` nonzero; it is not `X - X`. | Yes, this is the BdG slope piece in the weighted static self-similarity failure. | PASS |
+| 2 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:86-95 | Conservative Maxwell/mixed differential from `z0Eps`, checked against weighted quotient log-slope formula | Yes. Quotient-rule sign or denominator errors are independently exposed by the perturbation derivative. | Yes, this is the conservative port slope piece in the stage output. | PASS |
+| 3 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:105-114 | Outgoing-transfer differential from `n0Eps`, checked against weighted squared-ratio log-slope formula | Yes. Dropping the squared-ratio factor 2 or the `delta` variation would leave a residual. | Yes, this is the outgoing port slope piece in the stage output. | PASS |
+
+## Bottom line
+PASS. I checked the directive, the stage card, both scripts, and both saved transcripts. The edited Mathematica checks now derive the three first-order differentials from perturbed primitive expressions rather than retyping the SymPy closed forms, so the attacks I tried mentally — sign flips, missing factor 2, wrong quotient denominator variation, or omitted perturbation terms — would not cancel tautologically. The Mathematica output corroborates all three edited checks with `= 0` and `PASS`, and the banner is now `STAGE 174`; the SymPy transcript shows the corresponding audit identities evaluating to `0`.
+tokens used
+15,676
+---
+stage: 174
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage174_static_self_similarity_sympy_audit.py, moving_throat_pde_stage174_static_self_similarity_sympy_audit.txt, moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl, moving_throat_pde_stage174_static_self_similarity_mathematica_audit.txt, stage_174.md, stage_174.tex]
+---
+# Codex review — stage 174
+
+## What the edit was supposed to do
+F1 required fixing the Mathematica audit because it was a line-for-line SymPy port with the first-order differentials `b01Two`, `z01Two`, and `n01Two` hand-typed, making transcription errors invisible to the second engine. The required change was to derive those differentials from perturbed primitive expressions using `D[..., eps] /. eps -> 0`, while leaving the `expectZero` checks, assumptions, weighted-slope targets, theorem substitutions, and carry-forward block unchanged. It also required correcting the stale banner to `STAGE 174`.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:67-76 | BdG differential from `b0Eps`, checked against weighted log-slope formula | Yes. A wrong sign, factor 2, or denominator perturbation would make `b01Two/b0Two - deltaBWeighted` nonzero; it is not `X - X`. | Yes, this is the BdG slope piece in the weighted static self-similarity failure. | PASS |
+| 2 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:86-95 | Conservative Maxwell/mixed differential from `z0Eps`, checked against weighted quotient log-slope formula | Yes. Quotient-rule sign or denominator errors are independently exposed by the perturbation derivative. | Yes, this is the conservative port slope piece in the stage output. | PASS |
+| 3 | moving_throat_pde_stage174_static_self_similarity_mathematica_audit.wl:105-114 | Outgoing-transfer differential from `n0Eps`, checked against weighted squared-ratio log-slope formula | Yes. Dropping the squared-ratio factor 2 or the `delta` variation would leave a residual. | Yes, this is the outgoing port slope piece in the stage output. | PASS |
+
+## Bottom line
+PASS. I checked the directive, the stage card, both scripts, and both saved transcripts. The edited Mathematica checks now derive the three first-order differentials from perturbed primitive expressions rather than retyping the SymPy closed forms, so the attacks I tried mentally — sign flips, missing factor 2, wrong quotient denominator variation, or omitted perturbation terms — would not cancel tautologically. The Mathematica output corroborates all three edited checks with `= 0` and `PASS`, and the banner is now `STAGE 174`; the SymPy transcript shows the corresponding audit identities evaluating to `0`.
+
+---
+codex_session_id: 019e7129-80b6-7a62-bca8-3839541c70e2

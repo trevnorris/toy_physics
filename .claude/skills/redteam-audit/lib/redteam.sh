@@ -387,6 +387,16 @@ cmd_codex_invoke() {
     exit 1
   fi
 
+  # Guard: a directive must NEVER tell Codex to skip running scripts. Running and
+  # iterating to exit 0 is Codex's job (see codex.md). This historically slipped in
+  # via the auditor directive template and silently disabled the run-and-iterate
+  # contract — abort loudly instead of letting it pass.
+  if grep -qiE "do ?n[o']?t run (python|mathematica)" "$directive_path"; then
+    echo "error: directive $directive_path contains a 'do not run python/mathematica' prohibition." >&2
+    echo "       Codex must run + iterate to exit 0 (codex.md). Remove that clause from the directive, then re-invoke." >&2
+    exit 1
+  fi
+
   mkdir -p "$REDTEAM_DIR/codex_logs"
   local log="$REDTEAM_DIR/codex_logs/${unit}_iter${iter}.txt"
 

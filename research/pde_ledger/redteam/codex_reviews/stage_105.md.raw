@@ -1,0 +1,564 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b4d2-7bc0-b316-2a3aaa7410eb
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 105)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_105.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_105.tex
+
+Write your verdict report for stage 105 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_105.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~122]{Stage~122: Exact Fixing of chi-Q}
+     2	\label{stage:105}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~105 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+    14	
+    15	\begin{quote}
+    16	Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+    23	\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
+    24	\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages~107--113, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_105.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 105
+     3	batch: IV.2
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 105
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — mathematica_transliteration
+    27	
+    28	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:26-66`
+    29	
+    30	**Issue:**
+    31	
+    32	The `.wl` script is a line-by-line port of the `.py` script: the same intermediate variables (`omegaQ`, `sigmaCan`, `yRet`, `chiQ`, `lamDef`, `yDef`) are introduced in the same order, the same `Series`/`Coefficient` extraction is used at the same order, and the same closed-form right-hand sides are compared. The deformed-branch normalization `Y_def = -3/Lam_def` used by both engines is not stated in the notes — it is a script-side choice replicated on both sides. The second-engine policy requires Mathematica to derive `chi_Q = 1` from an independent algebraic path so that a transcription error in either the module form or the closed-form RHS cannot pass silently on both engines.
+    33	
+    34	**Required change:**
+    35	
+    36	Rewrite the `.wl` audit (current lines 26-66) so that the verification of `chi_Q = 1` follows a different algebraic path than the `.py`. One acceptable approach (the residue path):
+    37	
+    38	1. Keep the banner line (after F2 lands) and the `$Assumptions` block (`.wl:28-31`).
+    39	2. Define `omegaPole = 3 cSound / (2 aThroat)` as the (squared-)pole location of the retarded module.
+    40	3. Build the retarded module in factored form `yRetFactored = (3 (omegaPole^2 - omega^2) + 4 I chiQ sigmaQ omegaPole^2 omega^5 + (omegaPole^2)) / (4 (omegaPole^2 - omega^2 - I chiQ sigmaQ omegaPole^2 omega^5))` (or any algebraically distinct presentation that does not reuse the `3/4 + (1/4)/(...)` decomposition from the `.py`). State `sigmaQ = (9/8)/omegaPole^5` and assert `FullSimplify[sigmaQ - 4 aThroat^5/(27 cSound^5)] === 0` to re-confirm D1.
+    41	4. Replace the series-coefficient choreography with a residue/limit-based extraction. Concretely: compute `imagPart5 = Coefficient[ComplexExpand[Im[yRetFactored /. omega -> omega]], omega, 5]` *only after* an algebraically distinct simplification path (e.g. `Series[yRetFactored, {omega, 0, 5}] // Normal // ComplexExpand // Im // Expand`), then assert `FullSimplify[imagPart5 - chiQ aThroat^5/(27 cSound^5)] === 0`. The point is to avoid the `Coefficient[ySeries, omega, k]` extraction with the exact same intermediate `ySeries` variable.
+    42	5. For \(\chi_Q = 1\): instead of `Solve` over a linear equation, evaluate the imaginary-part residual at the outgoing-branch target `aThroat^5/(27 cSound^5)` and `Reduce` (or `FindInstance`) for `chiQ` over the reals, then assert the unique solution equals 1.
+    43	6. For the deformed branch, derive `yDefDirect` from the outgoing operator without going through `-3/lamDef`. Acceptable: invert `Λ_2^def · Ŷ_2^def = -3` symbolically using `SolveAlways` or `Reduce` over the series coefficients up to order 5, recovering `Ŷ_2^def = 1 + z^2/9 + 4 z^4/81 + I xiQ z^5/27`, then assert that match.
+    44	
+    45	The bottom-line assertion `(chiQ /. chiSol) - 1 == 0` (or its `Reduce`-based equivalent) must remain. Variable names must differ from the `.py` (no `yRet`, `lamDef`, `yDef`, `omegaQ`, `sigmaCan`).
+    46	
+    47	**Verification command:**
+    48	
+    49	After Codex applies, the verifier will run `redteam exec-mathematica 105` and confirm:
+    50	- the script exits 0;
+    51	- the substrings `(1/4)/(1 - omega^2/omegaQ^2`, `lamDef`, and `yDef` no longer appear in the `.wl`;
+    52	- the final transcript still asserts `chiQ - 1 == 0` (or equivalent) and prints `Stage 105 Mathematica audit passed.` (the latter conditional on F2 being applied first).
+    53	
+    54	## F2 — paper_misalignment
+    55	
+    56	**Subtype:** target_mismatch
+    57	
+    58	**Paper side:**
+    59	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_105.tex:2` quote: `\label{stage:105}`
+    60	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md:1` quote: `# Moving-Throat PDE — Stage 105: Exact Fixing of chi_Q`
+    61	
+    62	**Script side:**
+    63	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:3` quote: `Stage 88 SymPy audit.`
+    64	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:28` quote: `banner("STAGE 88 — EXACT FIXING OF chi_Q")`
+    65	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:26` quote: `banner["STAGE 088 — EXACT FIXING OF chi_Q"];`
+    66	
+    67	## Resolve before fix_loop
+    68	
+    69	The script's docstring and banner labels declare "Stage 88" / "Stage 088" while the file path, notes, paper card label (`\label{stage:105}`), and the `.wl`'s own closing print line (`"Stage 105 Mathematica audit passed."`) all identify this as Stage 105. The paper card's display section also names it "Stage~122" (the public display number from the global stage→display map). Which label should the script's banner/docstring carry?
+    70	
+    71	Possible directions (the user picks one):
+    72	- (a) Script labels should read "Stage 105" (matching the file path, notes, and label-id) → Codex updates `.py:3` to `"""Stage 105 SymPy audit."""`, `.py:28` to `banner("STAGE 105 — EXACT FIXING OF chi_Q")`, `.wl:26` to `banner["STAGE 105 — EXACT FIXING OF chi_Q"];` — no paper change.
+    73	- (b) Script labels should read "Stage 122" (matching the displayed section title) → Codex updates the same three lines using `Stage 122` instead — no paper change.
+    74	- (c) The stale "Stage 88" label is intentional historical provenance and should remain → Codex leaves the docstring/banner untouched; no script change.
+    75	
+    76	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 105 — EXACT FIXING OF chi_Q
+     4	========================================================================================
+     5	Omega_Q = 3*c_s/(2*a)
+     6	sigma_Q^can = 4*a**5/(27*c_s**5)
+     7	sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+     8	
+     9	Y_Q^ret(omega) =
+    10	   5      5      4  4    2  2    
+    11	ⅈ⋅a ⋅χ_Q⋅ω    4⋅a ⋅ω    a ⋅ω     
+    12	─────────── + ─────── + ───── + 1
+    13	       5           4        2    
+    14	  27⋅cₛ       81⋅cₛ     9⋅cₛ     
+    15	omega^2 coefficient = 0
+    16	omega^4 coefficient = 0
+    17	imag omega^5 coefficient = 0
+    18	
+    19	chi_Q from exact outgoing match = 1
+    20	
+    21	Deformed DtN normalized branch =
+    22	       5      4    2    
+    23	ⅈ⋅ξ_Q⋅z    4⋅z    z     
+    24	──────── + ──── + ── + 1
+    25	   27       81    9     
+    26	deformed z^2 coefficient = 0
+    27	deformed z^4 coefficient = 0
+    28	deformed imag z^5 coefficient = 0
+    29	
+    30	RESULT:
+    31	  On the canonical compact passive/outgoing grouped-P2 branch, chi_Q = 1 exactly.
+    32	  More generally, chi_Q is just the leading imaginary DtN deformation coefficient xi_Q.
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 105 — EXACT FIXING OF chi_Q
+     4	========================================================================================
+     5	pole scale = (3*cSound)/(2*aThroat)
+     6	sigma_Q^can = (4*aThroat^5)/(27*cSound^5)
+     7	sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+     8	PASS: sigma_Q^can - 4 a^5/(27 c_s^5)
+     9	Y_Q^ret partial-fraction form check (Apart of unfactored ratio) = 0
+    10	PASS: Y_Q^ret partial-fraction form check (Apart of unfactored ratio)
+    11	Y_Q^ret omega^2 coeff = aThroat^2/(9*cSound^2)
+    12	Y_Q^ret omega^4 coeff = (4*aThroat^4)/(81*cSound^4)
+    13	Y_Q^ret omega^5 coeff = ((I/27)*aThroat^5*chiQ)/cSound^5
+    14	omega^2 coefficient = 0
+    15	PASS: omega^2 coefficient
+    16	omega^4 coefficient = 0
+    17	PASS: omega^4 coefficient
+    18	imag omega^5 coefficient = 0
+    19	PASS: imag omega^5 coefficient
+    20	
+    21	ReplaceAll::argt: ReplaceAll called with 7 arguments; 1 or 2 arguments are expected.
+    22	chi_Q from exact outgoing match (Reduce) = chiQ /. Sequence[ToRules[aThroat == 0 && cSound < 0], ToRules[aThroat == 0 && cSound > 0], ToRules[aThroat < 0 && cSound < 0 && chiQ == 1], ToRules[aThroat < 0 && cSound > 0 && chiQ == 1], ToRules[aThroat > 0 && cSound < 0 && chiQ == 1], ToRules[aThroat > 0 && cSound > 0 && chiQ == 1]]
+    23	chi_Q - 1 = 0
+    24	PASS: chi_Q - 1
+    25	Deformed DtN normalized branch (polynomial-inverse) = 1 + z^2/9 + (4*z^4)/81 + (I/27)*xiQ*z^5
+    26	deformed constant coefficient = 0
+    27	PASS: deformed constant coefficient
+    28	deformed z^2 coefficient = 0
+    29	PASS: deformed z^2 coefficient
+    30	deformed z^4 coefficient = 0
+    31	PASS: deformed z^4 coefficient
+    32	deformed imag z^5 coefficient = 0
+    33	PASS: deformed imag z^5 coefficient
+    34	
+    35	Stage 105 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	Stage 105 SymPy audit.
+     4	
+     5	Provenance notes
+     6	----------------
+     7	- `Omega_Q = 3 c_s / (2 a)` is the same minimal-isotropic pole scale fixed by
+     8	  the Stage 088/074 conservative quadrupole module.
+     9	- `sigma_Q^can = 4 a^5 / (27 c_s^5)` is the canonical outgoing `l=2` DtN odd
+    10	  coefficient inherited from the Stage 104 exact fingerprint.
+    11	"""
+    12	
+    13	from __future__ import annotations
+    14	import sympy as sp
+    15	
+    16	def banner(title: str) -> None:
+    17	    line = "=" * 88
+    18	    print("\n" + line)
+    19	    print(title)
+    20	    print(line)
+    21	
+    22	def expect_zero(name: str, expr: sp.Expr) -> None:
+    23	    expr = sp.simplify(sp.expand(expr))
+    24	    print(f"{name} = {expr}")
+    25	    if expr != 0:
+    26	        raise AssertionError(f"{name} is not zero")
+    27	
+    28	banner("STAGE 105 — EXACT FIXING OF chi_Q")
+    29	
+    30	a, c_s, omega, chi_Q = sp.symbols("a c_s omega chi_Q", positive=True, real=True)
+    31	# Stage 088/074 minimal isotropic pole scale, carried into the retarded lane.
+    32	Omega_Q = sp.simplify(3*c_s/(2*a))
+    33	sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
+    34	
+    35	print("Omega_Q =", Omega_Q)
+    36	print("sigma_Q^can =", sigma_can)
+    37	expect_zero("sigma_Q^can - 4 a^5/(27 c_s^5)", sigma_can - 4*a**5/(27*c_s**5))
+    38	
+    39	Yret = sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2/Omega_Q**2 - sp.I*chi_Q*sigma_can*omega**5)
+    40	Yret_series = sp.expand(sp.series(Yret, omega, 0, 6).removeO())
+    41	
+    42	print("\nY_Q^ret(omega) =")
+    43	sp.pprint(Yret_series)
+    44	
+    45	expect_zero("omega^2 coefficient", Yret_series.coeff(omega, 2) - a**2/(9*c_s**2))
+    46	expect_zero("omega^4 coefficient", Yret_series.coeff(omega, 4) - 4*a**4/(81*c_s**4))
+    47	expect_zero("imag omega^5 coefficient", Yret_series.coeff(omega, 5)/sp.I - chi_Q*a**5/(27*c_s**5))
+    48	
+    49	chi_sol = sp.solve(
+    50	    sp.Eq(Yret_series.coeff(omega, 5)/sp.I, a**5/(27*c_s**5)),
+    51	    chi_Q
+    52	)[0]
+    53	print("\nchi_Q from exact outgoing match =", chi_sol)
+    54	if sp.simplify(chi_sol - 1) != 0:
+    55	    raise AssertionError("chi_Q did not match to 1.")
+    56	
+    57	# General deformed DtN coefficient xi_Q.
+    58	z, xi_Q = sp.symbols("z xi_Q", real=True)
+    59	Lam_def = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + sp.I*xi_Q*z**5/sp.Integer(9)
+    60	Y_def = sp.expand(sp.series(sp.Integer(-3)/Lam_def, z, 0, 6).removeO())
+    61	print("\nDeformed DtN normalized branch =")
+    62	sp.pprint(Y_def)
+    63	
+    64	expect_zero("deformed z^2 coefficient", Y_def.coeff(z, 2) - sp.Rational(1, 9))
+    65	expect_zero("deformed z^4 coefficient", Y_def.coeff(z, 4) - sp.Rational(4, 81))
+    66	expect_zero("deformed imag z^5 coefficient", Y_def.coeff(z, 5)/sp.I - xi_Q/sp.Integer(27))
+    67	
+    68	print("\nRESULT:")
+    69	print("  On the canonical compact passive/outgoing grouped-P2 branch, chi_Q = 1 exactly.")
+    70	print("  More generally, chi_Q is just the leading imaginary DtN deformation coefficient xi_Q.")
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 105 — EXACT FIXING OF chi_Q"];
+    27	
+    28	Clear[aThroat, cSound, omega, chiQ];
+    29	$Assumptions =
+    30	  Element[{aThroat, cSound, omega, chiQ}, Reals] &&
+    31	  aThroat > 0 && cSound > 0 && chiQ > 0;
+    32	
+    33	(* Independent derivation path: this engine derives chi_Q = 1 via Apart-based
+    34	   partial-fraction verification, SeriesCoefficient operator-form extraction,
+    35	   and Reduce over the reals, rather than the .py's manual 3/4 + (1/4)/(...)
+    36	   decomposition followed by Series/Normal/Coefficient/Solve. *)
+    37	
+    38	polescl = 3*cSound/(2*aThroat);          (* pole scale (formerly named omegaQ) *)
+    39	sigmaQcan = (9/8)/polescl^5;
+    40	Print["pole scale = ", fmt[polescl]];
+    41	Print["sigma_Q^can = ", fmt[sigmaQcan]];
+    42	expectZero["sigma_Q^can - 4 a^5/(27 c_s^5)", sigmaQcan - 4*aThroat^5/(27*cSound^5)];
+    43	
+    44	(* Retarded module written as a single ratio rather than as a partial-
+    45	   fraction decomposition. Apart should recover the canonical
+    46	   3/4 + 1/(4 denomRet) form; we assert that. *)
+    47	denomRet = 1 - omega^2/polescl^2 - I*chiQ*sigmaQcan*omega^5;
+    48	yQretRatio = (4 - 3*omega^2/polescl^2 - 3*I*chiQ*sigmaQcan*omega^5)/(4*denomRet);
+    49	expectZero[
+    50	  "Y_Q^ret partial-fraction form check (Apart of unfactored ratio)",
+    51	  Together[yQretRatio - (3/4 + 1/(4*denomRet))]
+    52	];
+    53	
+    54	(* Coefficient extraction via SeriesCoefficient (operator form), distinct from
+    55	   Series/Normal/Coefficient. *)
+    56	cRet2 = SeriesCoefficient[yQretRatio, {omega, 0, 2}];
+    57	cRet4 = SeriesCoefficient[yQretRatio, {omega, 0, 4}];
+    58	cRet5 = SeriesCoefficient[yQretRatio, {omega, 0, 5}];
+    59	Print["Y_Q^ret omega^2 coeff = ", fmt[cRet2]];
+    60	Print["Y_Q^ret omega^4 coeff = ", fmt[cRet4]];
+    61	Print["Y_Q^ret omega^5 coeff = ", fmt[cRet5]];
+    62	expectZero["omega^2 coefficient", cRet2 - aThroat^2/(9*cSound^2)];
+    63	expectZero["omega^4 coefficient", cRet4 - 4*aThroat^4/(81*cSound^4)];
+    64	expectZero["imag omega^5 coefficient", cRet5/I - chiQ*aThroat^5/(27*cSound^5)];
+    65	
+    66	(* chi_Q identification via Reduce over the reals (not Solve over chi_Q
+    67	   alone). The (cRet5/I) is a linear function of chiQ, so Reduce returns
+    68	   a single substitution rule. *)
+    69	chiReduce = Reduce[cRet5/I == aThroat^5/(27*cSound^5), chiQ, Reals];
+    70	chiVal = chiQ /. ToRules[chiReduce];
+    71	Print["chi_Q from exact outgoing match (Reduce) = ", fmt[chiVal]];
+    72	expectZero["chi_Q - 1", chiVal - 1];
+    73	
+    74	Clear[z, xiQ];
+    75	$Assumptions = Element[{z, xiQ}, Reals];
+    76	
+    77	(* Deformed-branch coefficients via polynomial inversion of Lambda * Y = -3
+    78	   (the operator identity), rather than Y := -3/Lambda. This avoids
+    79	   reproducing the .py's division-based normalization. *)
+    80	lamDeformed = -3 + z^2/3 + z^4/9 + I*xiQ*z^5/9;
+    81	yAnsatz = b0 + b1*z + b2*z^2 + b3*z^3 + b4*z^4 + b5*z^5;
+    82	prodTrunc = Normal[Series[lamDeformed*yAnsatz, {z, 0, 5}]] // Expand;
+    83	prodCoeffs = CoefficientList[prodTrunc, z];
+    84	While[Length[prodCoeffs] < 6, AppendTo[prodCoeffs, 0]];
+    85	coeffSys = Thread[(prodCoeffs + Join[{3}, ConstantArray[0, 5]]) == 0];
+    86	ySolved = First[Solve[coeffSys, {b0, b1, b2, b3, b4, b5}]];
+    87	yDeformedSeries = Expand[yAnsatz /. ySolved];
+    88	Print["Deformed DtN normalized branch (polynomial-inverse) = ", fmt[yDeformedSeries]];
+    89	expectZero["deformed constant coefficient", (b0 /. ySolved) - 1];
+    90	expectZero["deformed z^2 coefficient", (b2 /. ySolved) - 1/9];
+    91	expectZero["deformed z^4 coefficient", (b4 /. ySolved) - 4/81];
+    92	expectZero["deformed imag z^5 coefficient", (b5 /. ySolved)/I - xiQ/27];
+    93	
+    94	Print[""];
+    95	Print["Stage 105 Mathematica audit passed."];
+    96	
+    97	Exit[0];
+
+exec
+/bin/bash -lc "rg -n \"lamDef|yDef|omegaQ|sigmaCan|\\(1/4\\)/\\(1 - omega\\"'^2/omegaQ'"\\"'^2" mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+38:polescl = 3*cSound/(2*aThroat);          (* pole scale (formerly named omegaQ) *)
+80:lamDeformed = -3 + z^2/3 + z^4/9 + I*xiQ*z^5/9;
+82:prodTrunc = Normal[Series[lamDeformed*yAnsatz, {z, 0, 5}]] // Expand;
+87:yDeformedSeries = Expand[yAnsatz /. ySolved];
+88:Print["Deformed DtN normalized branch (polynomial-inverse) = ", fmt[yDeformedSeries]];
+
+codex
+---
+stage: 105
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [stage_105.md, stage_105.tex, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt]
+---
+# Codex review — stage 105
+
+## What the edit was supposed to do
+F1 required the Mathematica audit to stop being a line-by-line port of the SymPy audit and derive \(\chi_Q=1\) through a distinct algebraic path, with different variable names and a Reduce-based uniqueness check. It also required the deformed branch to be derived from the operator identity rather than by directly assigning \(Y=-3/\Lambda\). F2 identified a stage-label paper/script mismatch; the current files use Stage 105 labels, matching the file path and paper label.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:37 | canonical \(\sigma_Q=4a^5/(27c_s^5)\) | yes | yes, DtN coefficient normalization | PASS |
+| 2 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:45-47 | retarded branch \(\omega^2,\omega^4,\omega^5\) coefficients | yes | yes, outgoing DtN fingerprint | PASS |
+| 3 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:49-55 | solve outgoing match for \(\chi_Q=1\) | yes | yes, central paper claim | PASS |
+| 4 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:64-66 | deformed normalized branch coefficients | yes | yes, deformation coefficient relation | PASS |
+| 5 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:42 | canonical \(\sigma_Q=4a^5/(27c_s^5)\) | yes | yes | PASS |
+| 6 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:49-52 | unfactored ratio equals partial-fraction form | only for numerator algebra; shared denominator errors pass | supporting check only | PASS |
+| 7 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:62-64 | retarded branch coefficient checks | yes | yes | PASS |
+| 8 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:69-72 | Reduce-based \(\chi_Q=1\) check | not cleanly; malformed extraction still simplifies to PASS | intended to, but does not prove uniqueness as written | FINDING |
+| 9 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:89-92 | polynomial-inverse deformed coefficients | yes | yes, but directive naming constraint is violated | FINDING |
+
+## Findings
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:69`
+- **What's wrong:** `chiReduce = Reduce[cRet5/I == aThroat^5/(27*cSound^5), chiQ, Reals];` does not include the declared positive assumptions. The saved output confirms this: Mathematica emits `ReplaceAll::argt` and prints a disjunction with degenerate `aThroat == 0` branches before reporting `chi_Q - 1 = 0`. That is not the directive's requested unique real solution proof; it is a malformed `ToRules`/`ReplaceAll` expression later simplified under `$Assumptions`.
+- **What it should be:** Reduce the assumed problem directly and assert equivalence to `chiQ == 1`, e.g. `Reduce[aThroat > 0 && cSound > 0 && cRet5/I == aThroat^5/(27*cSound^5), chiQ, Reals]` followed by an explicit check that the result is `chiQ == 1`.
+
+### R2 — other
+- **Where:** `moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:80,87`
+- **What's wrong:** The directive explicitly required the substrings `lamDef` and `yDef` to disappear from the Mathematica file. They remain as prefixes in `lamDeformed = -3 + z^2/3 + z^4/9 + I*xiQ*z^5/9;` and `yDeformedSeries = Expand[yAnsatz /. ySolved];`. This is not a mathematical failure of the coefficient solve, but it is not faithful to the applied directive and would fail the stated verifier substring check.
+- **What it should be:** Rename those symbols to names without the forbidden substrings, such as `lambdaPoly` and `seriesFromInverse`.
+
+## Bottom line
+The SymPy checks and most Mathematica coefficient checks are mathematically anchored to the Stage 105 claim and are corroborated by the saved outputs. The blocking issue is the Mathematica \(\chi_Q\) proof: the output itself shows the Reduce result is not a clean unique-solution derivation, and the script reaches PASS only after simplifying a malformed replacement expression. Combined with the directive-forbidden `lamDef`/`yDef` substrings still present in the `.wl`, this stage cannot receive a trustworthy PASS.
+tokens used
+41,704
+---
+stage: 105
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [stage_105.md, stage_105.tex, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl, moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt]
+---
+# Codex review — stage 105
+
+## What the edit was supposed to do
+F1 required the Mathematica audit to stop being a line-by-line port of the SymPy audit and derive \(\chi_Q=1\) through a distinct algebraic path, with different variable names and a Reduce-based uniqueness check. It also required the deformed branch to be derived from the operator identity rather than by directly assigning \(Y=-3/\Lambda\). F2 identified a stage-label paper/script mismatch; the current files use Stage 105 labels, matching the file path and paper label.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:37 | canonical \(\sigma_Q=4a^5/(27c_s^5)\) | yes | yes, DtN coefficient normalization | PASS |
+| 2 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:45-47 | retarded branch \(\omega^2,\omega^4,\omega^5\) coefficients | yes | yes, outgoing DtN fingerprint | PASS |
+| 3 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:49-55 | solve outgoing match for \(\chi_Q=1\) | yes | yes, central paper claim | PASS |
+| 4 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py:64-66 | deformed normalized branch coefficients | yes | yes, deformation coefficient relation | PASS |
+| 5 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:42 | canonical \(\sigma_Q=4a^5/(27c_s^5)\) | yes | yes | PASS |
+| 6 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:49-52 | unfactored ratio equals partial-fraction form | only for numerator algebra; shared denominator errors pass | supporting check only | PASS |
+| 7 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:62-64 | retarded branch coefficient checks | yes | yes | PASS |
+| 8 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:69-72 | Reduce-based \(\chi_Q=1\) check | not cleanly; malformed extraction still simplifies to PASS | intended to, but does not prove uniqueness as written | FINDING |
+| 9 | moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:89-92 | polynomial-inverse deformed coefficients | yes | yes, but directive naming constraint is violated | FINDING |
+
+## Findings
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:69`
+- **What's wrong:** `chiReduce = Reduce[cRet5/I == aThroat^5/(27*cSound^5), chiQ, Reals];` does not include the declared positive assumptions. The saved output confirms this: Mathematica emits `ReplaceAll::argt` and prints a disjunction with degenerate `aThroat == 0` branches before reporting `chi_Q - 1 = 0`. That is not the directive's requested unique real solution proof; it is a malformed `ToRules`/`ReplaceAll` expression later simplified under `$Assumptions`.
+- **What it should be:** Reduce the assumed problem directly and assert equivalence to `chiQ == 1`, e.g. `Reduce[aThroat > 0 && cSound > 0 && cRet5/I == aThroat^5/(27*cSound^5), chiQ, Reals]` followed by an explicit check that the result is `chiQ == 1`.
+
+### R2 — other
+- **Where:** `moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl:80,87`
+- **What's wrong:** The directive explicitly required the substrings `lamDef` and `yDef` to disappear from the Mathematica file. They remain as prefixes in `lamDeformed = -3 + z^2/3 + z^4/9 + I*xiQ*z^5/9;` and `yDeformedSeries = Expand[yAnsatz /. ySolved];`. This is not a mathematical failure of the coefficient solve, but it is not faithful to the applied directive and would fail the stated verifier substring check.
+- **What it should be:** Rename those symbols to names without the forbidden substrings, such as `lambdaPoly` and `seriesFromInverse`.
+
+## Bottom line
+The SymPy checks and most Mathematica coefficient checks are mathematically anchored to the Stage 105 claim and are corroborated by the saved outputs. The blocking issue is the Mathematica \(\chi_Q\) proof: the output itself shows the Reduce result is not a clean unique-solution derivation, and the script reaches PASS only after simplifying a malformed replacement expression. Combined with the directive-forbidden `lamDef`/`yDef` substrings still present in the `.wl`, this stage cannot receive a trustworthy PASS.
+
+---
+codex_session_id: 019e711e-b4d2-7bc0-b316-2a3aaa7410eb

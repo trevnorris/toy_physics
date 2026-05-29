@@ -1,0 +1,722 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b4c5-7bf0-9181-1242cf5c06f9
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 106)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_106.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_106.tex
+
+Write your verdict report for stage 106 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_106.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_106.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~123]{Stage~123: Reduced 2.5PN Closure on the Canonical Outgoing DtN Branch}
+     2	\label{stage:106}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~106 is a retarded \(2.5\)pn factorization ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+    14	
+    15	\begin{quote}
+    16	Lists the canonical invariant coefficients and marks actual branch realization as the remaining open theorem.
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+    23	\item Check that higher odd terms begin beyond the point-particle \(2.5\)PN coefficient.
+    24	\item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages~107--113, the \(2.5\)PN/4PN outgoing bridge, and later same-charge prefactor audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 106
+     3	batch: IV.2
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 106
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — paper_misalignment
+    27	
+    28	**Subtype:** script_missing_paper_claim
+    29	
+    30	**Paper side:**
+    31	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_106.tex:21-25` quote: "Check the product `\widehat m_0^{\,2}\chi_Q N_Q` keeps source, conservative, and outgoing factors separate. Check that higher odd terms begin beyond the point-particle 2.5PN coefficient. Check the outgoing l=2 DtN fingerprint against the normalized `z=\omega a/c_s` expansion."
+    32	- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex:308-313` quote: "`\Lambda_2^{\rm out}(z) = z\frac{d}{dz}\ln h_2^{(1)}(z) = -3+\frac{z^2}{3}+\frac{z^4}{9}+i\frac{z^5}{9}+O(z^6).`"
+    33	- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex:317-322` quote: "`\widehat Y_2^{\rm out}(z) = \frac{-3}{\Lambda_2^{\rm out}(z)} = 1+\frac{z^2}{9}+\frac{4z^4}{81}+i\frac{z^5}{27}+O(z^6).`"
+    34	
+    35	**Script side:**
+    36	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:25-71` — no z-expansion of `\Lambda_2^{\rm out}` or `\widehat Y_2^{\rm out}` anywhere; `\chi_Q=1` is imported as a substitution at line 36.
+    37	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:27-75` — same gap.
+    38	
+    39	## Resolve before fix_loop
+    40	
+    41	The paper card's Checks block (stage_106.tex:21-25) names three verification items. The scripts cover only the first (and weakly): they display the factored product `m0hat^2·chi_Q·N_Q` and solve for `N_Q`, but they do not perform the z-expansion that derives `\chi_Q=1` (item iii) and they do not show that higher odd terms first appear at `O(\omega^7)` (item ii). Item (iii) in particular is the load-bearing derivation — without it, `\chi_Q=1` is an imported assumption, not a script-verified result, and the script's "closure" reduces to substitution algebra.
+    42	
+    43	Possible directions (the user picks one):
+    44	- (a) **Script must own all three Checks.** Extend both scripts to (i) construct `\Lambda_2^{\rm out}(z) = z·d/dz·log(h_2^{(1)}(z))` from the spherical-Hankel definition, series-expand to `O(z^6)`, and assert the coefficients match `(-3, 0, 1/3, 0, 1/9, i/9)`; (ii) form `\widehat Y_2^{\rm out}(z) = -3/\Lambda_2^{\rm out}(z)`, expand to `O(z^6)`, and assert the coefficients match `(1, 0, 1/9, 0, 4/81, i/27)`; (iii) match the canonical retarded form `1/(1 - \omega^2/\Omega_Q^2 - i\chi_Q\sigma_Q^{\rm can}\omega^5)` against this expansion and verify `\chi_Q = 1` falls out; (iv) verify the next odd term is at `O(\omega^7)`. After this is added, Checks (ii) and (iii) become independently verified rather than imported.
+    45	- (b) **Card delegates Checks (ii) and (iii) to upstream Stage 88.** Per the notes ("From Stage 88, the canonical compact passive/outgoing grouped-`P2` DtN model gives `\chi_Q=1`"), the z-expansion may already be the responsibility of Stage 88's scripts. If so, update the stage_106.tex Checks block to read "carry forward from Stage 88" for items (ii) and (iii), and only list item (i) as a Stage-106-side check.
+    46	- (c) **Item (iii) belongs upstream but item (ii) belongs here.** Split: keep (ii) as a Stage-106-side script check (assert no `\omega^7` term in the expanded `\widehat Y_Q^{\rm ret}` at chi_Q=1, m0hat=1), delegate (iii) to Stage 88.
+    47	
+    48	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+    49	
+    50	## F2 — tautological_check
+    51	
+    52	**Target:**
+    53	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:55`
+    54	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:60`
+    55	
+    56	**Issue:** The assertion `K4 - 4*K2**2/K0 == 0` is algebraically tautological because the script defines `K2 = K0/(4*(3*c_s/(2*a))**2)` and `K4 = K0/(4*(3*c_s/(2*a))**4)` immediately above. Substituting yields `4*K2^2/K0 = K0/(4Ω^4) = K4` identically, regardless of any numerical constant. The K0-K2-K4 canonical-target relation `K_0K_4 = 4K_2^2` (appendix line 114) is the intended physical claim, but the current check enforces this by construction rather than by independent numerical agreement among the four hardcoded `*_target` literals.
+    57	
+    58	**Required change:**
+    59	
+    60	In the SymPy script (`scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py`):
+    61	
+    62	Replace lines 55-59 (the two `expect_zero` calls for the branch identities) with versions that test the four hardcoded `*_target` literals' mutual consistency, not the script-defined K2/K4. Specifically:
+    63	
+    64	Before (lines 55-59):
+    65	```python
+    66	expect_zero("branch identity K4 - 4 K2^2 / K0", K4 - 4 * K2**2 / K0)
+    67	expect_zero(
+    68	    "branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2)",
+    69	    Gamma5 - 9 * sp.sqrt(K2**5 / K0**3),
+    70	)
+    71	```
+    72	
+    73	After:
+    74	```python
+    75	expect_zero(
+    76	    "target identity K0_target K4_target - 4 K2_target^2",
+    77	    K0_target * K4_target - 4 * K2_target**2,
+    78	)
+    79	expect_zero(
+    80	    "target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)",
+    81	    Gamma5_target - 9 * sp.sqrt(K2_target**5 / K0_target**3),
+    82	)
+    83	```
+    84	
+    85	These two assertions now test the four hardcoded literals' mutual algebraic consistency. Substituting (for example) `K2_target = 7*G*c_s**3/(5*a**3*c**5)` would cause both to fail.
+    86	
+    87	In the Mathematica script (`mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl`):
+    88	
+    89	Replace lines 60-64 with the Mathematica equivalent:
+    90	
+    91	Before (lines 60-64):
+    92	```mathematica
+    93	expectZero["branch identity K4 - 4 K2^2 / K0", k4 - 4*k2^2/k0];
+    94	expectZero[
+    95	  "branch identity Gamma5 - 9 K2^(5/2)/K0^(3/2)",
+    96	  gamma5 - 9*Sqrt[k2^5/k0^3]
+    97	];
+    98	```
+    99	
+   100	After:
+   101	```mathematica
+   102	expectZero["target identity K0_target K4_target - 4 K2_target^2",
+   103	  k0Target*k4Target - 4*k2Target^2];
+   104	expectZero["target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)",
+   105	  gamma5Target - 9*Sqrt[k2Target^5/k0Target^3]];
+   106	```
+   107	
+   108	After applying F3 (Mathematica re-authoring), this F2 fix may need to be re-applied inside the new derivation. Apply F3 first, then port the corrected target-identity assertions into the new structure.
+   109	
+   110	**Verification command:**
+   111	After Codex applies, the verifier will run `redteam exec-sympy 106` and `redteam exec-mathematica 106` and confirm: (1) both scripts still exit 0; (2) the new assertion lines print residuals = 0 (since the four target literals are mutually consistent); (3) replacing `K2_target = 6*G*c_s**3/(5*a**3*c**5)` with `K2_target = 7*G*c_s**3/(5*a**3*c**5)` causes the SymPy run to fail at the new assertion (manual spot-check; not part of automated verifier).
+   112	
+   113	## F3 — mathematica_transliteration
+   114	
+   115	**Target:**
+   116	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl` (entire body, lines 27-75)
+   117	
+   118	**Issue:** The Mathematica script reproduces the SymPy script's variable choreography line for line — same `constraint`, same `Solve` → `NQ` substitution, same `chi_Q → 1` substitution, same `K0 = NQ * K0_target`, same `K2 = K0/(4Ω^2)`, same final three `expectZero` calls in the same order, even the same prose in the RESULT block. This violates the second-engine policy: a SymPy bug would be reproduced verbatim.
+   119	
+   120	**Required change:**
+   121	
+   122	Re-author the Mathematica audit so that it derives the same bottom-line claim (`N_Q = 1` on the canonical point-particle branch, `\gamma_{\rm quad}^{\rm eff} = 2G/(5c^5)`) by a structurally independent path. Specifically, start from the appendix's retarded one-pole form `\widehat Y_Q^{\rm ret}(\omega) = 3/4 + (1/4)·1/(1 - \omega^2/\Omega_Q^2 - i\chi_Q\sigma_Q^{\rm can}\omega^5)` (appendix line 264-270) and proceed by symbolic series expansion in `\omega`:
+   123	
+   124	1. Define `\Omega_Q = 3 c_s/(2 a)` and `\sigma_Q^{\rm can} = 9/(8\Omega_Q^5)` symbolically.
+   125	2. Define `Yret[omega_, chiQ_] := 3/4 + (1/4) · 1/(1 - omega^2/OmegaQ^2 - I*chiQ*sigmaQcan*omega^5)`.
+   126	3. Series-expand `Yret[omega, chiQ]` in omega to order 5; read off the `\omega^0`, `\omega^2`, `\omega^4`, `\omega^5` coefficients. The `\omega^5` coefficient is `i·chi_Q·sigmaQcan/4`.
+   127	4. The canonical odd-coefficient relation (appendix eq. app-part04-gamma5-chiN, line 279-281): `\overline\Gamma_5 = \chi_Q · 9\overline K_0/(32\Omega_Q^5)`. Substitute `\overline K_0 = N_Q · K0_target`, `\overline\Gamma_5 = (chiQ·NQ) · (2G/(5c^5))` (this should drop out from the series coefficient).
+   128	5. Independently impose `\widehat m_0^2 · \chi_Q · N_Q = 1` from the source-map relation `\widehat m_0 → 1` plus the canonical `chi_Q → 1` and derive `N_Q = 1`.
+   129	6. Assert: at `m0hat=1, chi_Q=1`, the `\omega^5` coefficient of `Yret` equals `i·sigmaQcan/4 = i·9/(32·\Omega_Q^5)`, and verify this matches `9·K0_target/(32·\Omega_Q^5)/K0_target = 9/(32·\Omega_Q^5)` from the K0_target normalization, i.e., the canonical Gamma5_target = 2G/(5c^5) is consistent.
+   130	7. Verify the next-order odd coefficient in `Yret` begins at `\omega^7` (this also covers paper Check (ii) — see F1).
+   131	
+   132	Use entirely different intermediate variable names from the SymPy file: `Yret`, `seriesY`, `OmegaQ`, `sigmaQcan`, `omegaSym`, etc. Do NOT name any intermediate `nqGeneral`, `nqCanonical`, `k0`, `k2`, `k4`, `gamma5`.
+   133	
+   134	**Claim manifest** (this is a re-derivation, not a missing-script, but listing required physical results explicitly):
+   135	- M1: `\chi_Q = 1` follows from matching the `\omega^5` coefficient of `\widehat Y_Q^{\rm ret}` against `\chi_Q · 9·\overline K_0/(32·\Omega_Q^5)` at the canonical `\overline\Gamma_5 = 2G/(5c^5)`.
+   136	- M2: `N_Q = 1` follows from `\widehat m_0^2 · \chi_Q · N_Q = 1` at `\widehat m_0 = 1, \chi_Q = 1`.
+   137	- M3: The next odd term in `\widehat Y_Q^{\rm ret}` begins at `O(\omega^7)`, so the point-particle 2.5PN coefficient is exhausted by the `\omega^5` term.
+   138	- M4: The canonical invariant coefficients `\overline K_0 = 54Gc_s^5/(5a^5c^5)`, `\overline K_2 = 6Gc_s^3/(5a^3c^5)`, `\overline K_4 = 8Gc_s/(15ac^5)`, `\overline\Gamma_5 = 2G/(5c^5)` satisfy the canonical-even identity `K_0 K_4 = 4 K_2^2` and `Gamma5 = 9·sqrt(K2^5/K0^3)`.
+   139	
+   140	**Verification command:**
+   141	After Codex applies, the verifier will run `redteam exec-mathematica 106` and confirm: (1) the script exits 0; (2) the script's variable names and assertion sequence are visibly different from the SymPy script (the verifier may diff structurally); (3) the bottom-line printed result still says `N_Q = 1` on the canonical point-particle branch and `\gamma_{\rm quad}^{\rm eff} = 2G/(5c^5)`.
+   142	
+   143	## F4 — insufficient_verification
+   144	
+   145	**Target:**
+   146	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:61-65` (add new assertion immediately after the `canonical gamma_eff - target` check)
+   147	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:66-67` (add new assertion immediately after the `canonical gamma_eff - target` check; apply after F3 re-authoring)
+   148	
+   149	**Issue:** The two non-tautological assertions (`NQ_canonical at m0hat=1 equals 1`, and `gamma_eff_canonical equals target`) both collapse to substitution identities and provide weak evidence. The off-canonical sensitivity `\Delta_Q := \chi_Q - 1` (appendix eq. app-part04-DeltaQ-def, line 293), which "measures the entire reduced failure at leading order" per appendix line 342, is never exercised. Adding a first-order sensitivity check exercises the algebra non-trivially.
+   150	
+   151	**Required change:**
+   152	
+   153	In the SymPy script, after line 65, append:
+   154	
+   155	```python
+   156	Delta_Q = sp.symbols("Delta_Q", real=True)
+   157	gamma_eff_off = (m0hat**2 * Gamma5).subs([(m0hat, 1), (chi_Q, 1 + Delta_Q)])
+   158	gamma_eff_series = sp.series(gamma_eff_off, Delta_Q, 0, 2).removeO()
+   159	linear_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 1))
+   160	expect_zero(
+   161	    "Delta_Q first-order sensitivity coefficient",
+   162	    linear_coeff - (-2 * G / (5 * c**5)),
+   163	)
+   164	zeroth_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 0))
+   165	expect_zero(
+   166	    "Delta_Q zeroth-order coefficient equals Gamma5_target",
+   167	    zeroth_coeff - Gamma5_target,
+   168	)
+   169	```
+   170	
+   171	In the Mathematica script (apply after F3 re-authoring; insert at the analogous location near the bottom, before the `RESULT` block), add the same content with Mathematica syntax:
+   172	
+   173	```mathematica
+   174	gammaEffOff = (m0hat^2*gamma5) /. {m0hat -> 1, chiQ -> 1 + DeltaQ};
+   175	gammaEffSeries = Normal[Series[gammaEffOff, {DeltaQ, 0, 1}]];
+   176	linearCoeff = FullSimplify[Coefficient[gammaEffSeries, DeltaQ, 1], Assumptions -> $Assumptions];
+   177	expectZero["Delta_Q first-order sensitivity coefficient",
+   178	  linearCoeff - (-2*G/(5*c^5))];
+   179	zerothCoeff = FullSimplify[Coefficient[gammaEffSeries, DeltaQ, 0], Assumptions -> $Assumptions];
+   180	expectZero["Delta_Q zeroth-order coefficient equals Gamma5_target",
+   181	  zerothCoeff - gamma5Target];
+   182	```
+   183	
+   184	Self-test (already in report's Self-test notes):
+   185	- N_Q on natural branch (m0hat=1) at chi_Q = 1 + Delta_Q expands as `1/(1+Delta_Q) = 1 - Delta_Q + Delta_Q^2 - ...`
+   186	- gamma_eff = m0hat^2 * N_Q * Gamma5_target = (1 - Delta_Q + ...) * (2G/(5c^5))
+   187	- Zeroth-order coefficient = 2G/(5c^5) = Gamma5_target ✓
+   188	- First-order coefficient = -2G/(5c^5) ✓
+   189	- A wrong N_Q (sign flip, factor error) would change the first-order coefficient, so the assertion is sensitive.
+   190	
+   191	**Verification command:**
+   192	After Codex applies, the verifier will run `redteam exec-sympy 106` and `redteam exec-mathematica 106` and confirm: (1) both scripts still exit 0; (2) two new assertion lines appear in each output transcript with residuals = 0; (3) the new printed lines reference `Delta_Q first-order sensitivity coefficient` and `Delta_Q zeroth-order coefficient equals Gamma5_target`.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+     4	========================================================================================
+     5	sigma_Q^can - 4 a^5/(27 c_s^5) = 0
+     6	PASS: sigma_Q^can - 4 a^5/(27 c_s^5)
+     7	Y_Q^ret series (general chi_Q) = 1 + (a^2*omegaSym^2)/(9*cS^2) + (4*a^4*omegaSym^4)/(81*cS^4) + ((I/27)*a^5*chiQ*omegaSym^5)/cS^5 + (16*a^6*omegaSym^6)/(729*cS^6) + (((8*I)/243)*a^7*chiQ*omegaSym^7)/cS^7
+     8	Y_Q^ret series at chi_Q = 1   = 1 + (a^2*omegaSym^2)/(9*cS^2) + (4*a^4*omegaSym^4)/(81*cS^4) + ((I/27)*a^5*omegaSym^5)/cS^5 + (16*a^6*omegaSym^6)/(729*cS^6) + (((8*I)/243)*a^7*omegaSym^7)/cS^7
+     9	omega^5 coefficient (general) = ((I/27)*a^5*chiQ)/cS^5
+    10	omega^6 coefficient (chi_Q=1) = (16*a^6)/(729*cS^6)
+    11	omega^7 coefficient (chi_Q=1) = (((8*I)/243)*a^7)/cS^7
+    12	omega^5 coefficient form = 0
+    13	PASS: omega^5 coefficient form
+    14	target identity k0Target * k4Target - 4 k2Target^2 = 0
+    15	PASS: target identity k0Target * k4Target - 4 k2Target^2
+    16	target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3] = 0
+    17	PASS: target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]
+    18	N_Q on natural branch at m0hat=1, chi_Q=1 = 0
+    19	PASS: N_Q on natural branch at m0hat=1, chi_Q=1
+    20	canonical gamma_eff - target = 0
+    21	PASS: canonical gamma_eff - target
+    22	Delta_Q first-order sensitivity coefficient = 0
+    23	PASS: Delta_Q first-order sensitivity coefficient
+    24	Delta_Q zeroth-order coefficient equals Gamma5_target = 0
+    25	PASS: Delta_Q zeroth-order coefficient equals Gamma5_target
+    26	
+    27	RESULT:
+    28	  Carry-in chi_Q = 1 from stage 104; canonical compact passive/outgoing
+    29	  grouped-P_2 branch closes with N_Q = 1 at m0hat = 1.
+    30	  gamma_quad^eff = 2 G / (5 c^5); Delta_Q slope = -2 G / (5 c^5).
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH
+     4	========================================================================================
+     5	Normalization constraint = Eq(N_Q*chi_Q*m0hat**2, 1)
+     6	N_Q on the general outgoing branch = 1/(chi_Q*m0hat**2)
+     7	N_Q on the canonical outgoing branch = m0hat**(-2)
+     8	point-particle canonical branch gives N_Q = 1 = 0
+     9	K0 = 54*G*c_s**5/(5*a**5*c**5*chi_Q*m0hat**2)
+    10	K2 = 6*G*c_s**3/(5*a**3*c**5*chi_Q*m0hat**2)
+    11	K4 = 8*G*c_s/(15*a*c**5*chi_Q*m0hat**2)
+    12	Gamma5 = 2*G/(5*c**5*chi_Q*m0hat**2)
+    13	target identity K0_target K4_target - 4 K2_target^2 = 0
+    14	target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3) = 0
+    15	canonical gamma_eff - target = 0
+    16	Delta_Q first-order sensitivity coefficient = 0
+    17	Delta_Q zeroth-order coefficient equals Gamma5_target = 0
+    18	
+    19	RESULT:
+    20	  On the canonical outgoing branch, N_Q = 1/m0hat^2 and therefore
+    21	  the strict point-particle limit m0hat = 1 collapses the reduced closure to N_Q = 1.
+    22	  The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	Stage 106 SymPy audit: reduced 2.5PN closure on the canonical outgoing DtN branch.
+     4	
+     5	Paper-card `Checks` items (ii) "higher odd terms beyond the point-particle 2.5PN
+     6	coefficient" and (iii) "outgoing l=2 DtN fingerprint against the normalized
+     7	z = omega a / c_s expansion" are verified upstream. Specifically:
+     8	  * Stage 102 (higher_odd_irrelevance) covers item (ii).
+     9	  * Stage 104 (outgoing_dtn_fingerprint) covers item (iii) and is the source of
+    10	    chi_Q = 1 on the canonical compact passive/outgoing grouped-P_2 branch.
+    11	This stage uses chi_Q = 1 as a carry-in and focuses on item (i): factorization
+    12	separability of m0hat^2 * chi_Q * N_Q and the closure to N_Q = 1.
+    13	"""
+    14	
+    15	from __future__ import annotations
+    16	
+    17	import sympy as sp
+    18	
+    19	
+    20	def banner(title: str) -> None:
+    21	    line = "=" * 88
+    22	    print("\n" + line)
+    23	    print(title)
+    24	    print(line)
+    25	
+    26	
+    27	def expect_zero(name: str, expr: sp.Expr) -> None:
+    28	    expr = sp.simplify(sp.expand(expr))
+    29	    print(f"{name} = {expr}")
+    30	    if expr != 0:
+    31	        raise AssertionError(f"{name} is not zero")
+    32	
+    33	
+    34	banner("STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH")
+    35	
+    36	G, c, c_s, a = sp.symbols("G c c_s a", positive=True, real=True)
+    37	m0hat, chi_Q, N_Q = sp.symbols("m0hat chi_Q N_Q", positive=True, real=True)
+    38	
+    39	constraint = sp.Eq(m0hat**2 * chi_Q * N_Q, 1)
+    40	print("Normalization constraint =", constraint)
+    41	
+    42	NQ_general = sp.simplify(sp.solve(constraint, N_Q)[0])
+    43	print("N_Q on the general outgoing branch =", NQ_general)
+    44	
+    45	NQ_canonical = sp.simplify(NQ_general.subs(chi_Q, 1))
+    46	print("N_Q on the canonical outgoing branch =", NQ_canonical)
+    47	expect_zero("point-particle canonical branch gives N_Q = 1", NQ_canonical.subs(m0hat, 1) - 1)
+    48	
+    49	K0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+    50	K2_target = sp.simplify(6 * G * c_s**3 / (5 * a**3 * c**5))
+    51	K4_target = sp.simplify(8 * G * c_s / (15 * a * c**5))
+    52	Gamma5_target = sp.simplify(2 * G / (5 * c**5))
+    53	
+    54	K0 = sp.simplify(NQ_general * K0_target)
+    55	K2 = sp.simplify(K0 / (4 * (3 * c_s / (2 * a)) ** 2))
+    56	K4 = sp.simplify(K0 / (4 * (3 * c_s / (2 * a)) ** 4))
+    57	Gamma5 = sp.simplify(NQ_general * Gamma5_target)
+    58	
+    59	print("K0 =", K0)
+    60	print("K2 =", K2)
+    61	print("K4 =", K4)
+    62	print("Gamma5 =", Gamma5)
+    63	
+    64	expect_zero(
+    65	    "target identity K0_target K4_target - 4 K2_target^2",
+    66	    K0_target * K4_target - 4 * K2_target**2,
+    67	)
+    68	expect_zero(
+    69	    "target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)",
+    70	    Gamma5_target - 9 * sp.sqrt(K2_target**5 / K0_target**3),
+    71	)
+    72	
+    73	gamma_eff_canonical = sp.simplify((m0hat**2 * Gamma5).subs(chi_Q, 1))
+    74	expect_zero(
+    75	    "canonical gamma_eff - target",
+    76	    gamma_eff_canonical - Gamma5_target,
+    77	)
+    78	
+    79	# F4: Delta_Q first-order sensitivity. On the natural branch (m0hat=1) we have
+    80	# N_Q = 1/chi_Q, so gamma_eff = m0hat^2 * N_Q * Gamma5_target collapses to
+    81	# Gamma5_target / chi_Q. Expanding around chi_Q = 1 + Delta_Q gives a real
+    82	# first-order slope of -Gamma5_target. This exercises the algebra non-trivially
+    83	# (a sign flip or factor error in N_Q would change the slope).
+    84	Delta_Q = sp.symbols("Delta_Q", real=True)
+    85	gamma_eff_off = (m0hat**2 * Gamma5).subs([(m0hat, 1), (chi_Q, 1 + Delta_Q)])
+    86	gamma_eff_series = sp.series(gamma_eff_off, Delta_Q, 0, 2).removeO()
+    87	linear_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 1))
+    88	expect_zero(
+    89	    "Delta_Q first-order sensitivity coefficient",
+    90	    linear_coeff - (-2 * G / (5 * c**5)),
+    91	)
+    92	zeroth_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 0))
+    93	expect_zero(
+    94	    "Delta_Q zeroth-order coefficient equals Gamma5_target",
+    95	    zeroth_coeff - Gamma5_target,
+    96	)
+    97	
+    98	print("\nRESULT:")
+    99	print("  On the canonical outgoing branch, N_Q = 1/m0hat^2 and therefore")
+   100	print("  the strict point-particle limit m0hat = 1 collapses the reduced closure to N_Q = 1.")
+   101	print("  The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.")
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	
+    13	fmt[expr_] := ToString[InputForm[expr]];
+    14	
+    15	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    16	  Print["FAIL: ", name];
+    17	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    18	  Exit[1];
+    19	);
+    20	
+    21	expectZero[name_String, expr_] := Module[{res},
+    22	  res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+    23	  Print[name, " = ", fmt[res]];
+    24	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    25	];
+    26	
+    27	banner["STAGE 106 — REDUCED 2.5PN CLOSURE ON CANONICAL OUTGOING DtN BRANCH"];
+    28	
+    29	(* Paper-card Checks (ii) and (iii) are exercised upstream at stages 102 and
+    30	   104; this engine uses chi_Q = 1 as carry-in and proves N_Q = 1 from the
+    31	   retarded one-pole form via a path structurally distinct from the SymPy
+    32	   script (no nqGeneral/k0/k2/k4/gamma5 intermediates). *)
+    33	
+    34	Clear[G, c, cS, a, omegaSym, chiQ, m0Sym, DeltaQ];
+    35	$Assumptions =
+    36	  And @@ Thread[{G, c, cS, a, omegaSym, chiQ, m0Sym} > 0] &&
+    37	  Element[DeltaQ, Reals];
+    38	
+    39	OmegaQ = 3*cS/(2*a);
+    40	sigmaQcan = (9/8)/OmegaQ^5;
+    41	expectZero["sigma_Q^can - 4 a^5/(27 c_s^5)", sigmaQcan - 4*a^5/(27*cS^5)];
+    42	
+    43	(* The retarded reduced one-pole module on the canonical compact passive/    *)
+    44	(* outgoing grouped-P_2 branch (paper appendix, eq. app-part04-Yret-explicit). *)
+    45	Yret[omSym_, chiSym_] := 3/4 + (1/4)/(1 - omSym^2/OmegaQ^2 - I*chiSym*sigmaQcan*omSym^5);
+    46	
+    47	(* Series expand to order omega^7 so that paper Check (ii) "higher odd terms  *)
+    48	(* begin beyond omega^5" can be inspected on the canonical branch.            *)
+    49	seriesY = Normal[Series[Yret[omegaSym, chiQ], {omegaSym, 0, 7}]];
+    50	seriesYcan = Expand[seriesY /. chiQ -> 1];
+    51	
+    52	Print["Y_Q^ret series (general chi_Q) = ", fmt[Expand[seriesY]]];
+    53	Print["Y_Q^ret series at chi_Q = 1   = ", fmt[seriesYcan]];
+    54	
+    55	omega5Coeff = SeriesCoefficient[Yret[omegaSym, chiQ], {omegaSym, 0, 5}];
+    56	omega7Coeff = SeriesCoefficient[Yret[omegaSym, 1], {omegaSym, 0, 7}];
+    57	omega6Coeff = SeriesCoefficient[Yret[omegaSym, 1], {omegaSym, 0, 6}];
+    58	Print["omega^5 coefficient (general) = ", fmt[omega5Coeff]];
+    59	Print["omega^6 coefficient (chi_Q=1) = ", fmt[omega6Coeff]];
+    60	Print["omega^7 coefficient (chi_Q=1) = ", fmt[omega7Coeff]];
+    61	
+    62	(* Sanity check on the omega^5 coefficient form: equals i chi_Q sigmaQcan/4.  *)
+    63	expectZero["omega^5 coefficient form", omega5Coeff - (I*chiQ*sigmaQcan/4)];
+    64	
+    65	(* Carry-in target literals (paper appendix Box). *)
+    66	k0Target = 54*G*cS^5/(5*a^5*c^5);
+    67	k2Target = 6*G*cS^3/(5*a^3*c^5);
+    68	k4Target = 8*G*cS/(15*a*c^5);
+    69	gamma5Target = 2*G/(5*c^5);
+    70	
+    71	(* F2 fix: assert the four target literals satisfy the canonical-even branch  *)
+    72	(* identities (testing the literals' mutual algebraic consistency, not the    *)
+    73	(* tautology K4 = K0/(4 OmegaQ^4)).                                            *)
+    74	expectZero[
+    75	  "target identity k0Target * k4Target - 4 k2Target^2",
+    76	  k0Target*k4Target - 4*k2Target^2
+    77	];
+    78	expectZero[
+    79	  "target identity gamma5Target - 9 Sqrt[k2Target^5/k0Target^3]",
+    80	  gamma5Target - 9*Sqrt[k2Target^5/k0Target^3]
+    81	];
+    82	
+    83	(* Closure: impose the source-map relation m0hat^2 * chi_Q * N_Q = 1 with     *)
+    84	(* m0hat -> 1 (point-particle source) and chi_Q -> 1 (canonical branch),     *)
+    85	(* yielding N_Q = 1.                                                          *)
+    86	nqNatural = 1/(m0Sym^2 * chiQ);
+    87	expectZero[
+    88	  "N_Q on natural branch at m0hat=1, chi_Q=1",
+    89	  (nqNatural /. {m0Sym -> 1, chiQ -> 1}) - 1
+    90	];
+    91	
+    92	(* Effective canonical odd coefficient: gamma_eff = m0hat^2 * N_Q * gamma5Target. *)
+    93	gamma5OnNatural = nqNatural * gamma5Target;
+    94	gammaEffCanonical = (m0Sym^2 * gamma5OnNatural) /. chiQ -> 1;
+    95	expectZero["canonical gamma_eff - target", gammaEffCanonical - gamma5Target];
+    96	
+    97	(* F4: first-order Delta_Q sensitivity. On the natural branch (m0hat=1),     *)
+    98	(*   gamma_eff = gamma5Target / chi_Q; expansion around chi_Q = 1 + Delta_Q  *)
+    99	(*   gives zeroth coefficient gamma5Target and first-order slope             *)
+   100	(*   -gamma5Target = -2G/(5 c^5). A sign flip in N_Q would change the slope. *)
+   101	gammaEffOff = (m0Sym^2 * gamma5OnNatural) /. {m0Sym -> 1, chiQ -> 1 + DeltaQ};
+   102	gammaEffSeries = Normal[Series[gammaEffOff, {DeltaQ, 0, 1}]];
+   103	linearCoeff = FullSimplify[Coefficient[gammaEffSeries, DeltaQ, 1], Assumptions -> $Assumptions];
+   104	expectZero[
+   105	  "Delta_Q first-order sensitivity coefficient",
+   106	  linearCoeff - (-2*G/(5*c^5))
+   107	];
+   108	zerothCoeff = FullSimplify[Coefficient[gammaEffSeries, DeltaQ, 0], Assumptions -> $Assumptions];
+   109	expectZero[
+   110	  "Delta_Q zeroth-order coefficient equals Gamma5_target",
+   111	  zerothCoeff - gamma5Target
+   112	];
+   113	
+   114	Print[""];
+   115	Print["RESULT:"];
+   116	Print["  Carry-in chi_Q = 1 from stage 104; canonical compact passive/outgoing"];
+   117	Print["  grouped-P_2 branch closes with N_Q = 1 at m0hat = 1."];
+   118	Print["  gamma_quad^eff = 2 G / (5 c^5); Delta_Q slope = -2 G / (5 c^5)."];
+   119	
+   120	Exit[0];
+
+codex
+---
+stage: 106
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.txt, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt, stage_106.md, stage_106.tex]
+---
+# Codex review — stage 106
+
+## What the edit was supposed to do
+The directive required replacing tautological branch-identity checks with checks against the independent hardcoded target literals. It also required re-authoring the Mathematica audit along a structurally independent one-pole series path, including the omega-series evidence and canonical closure. Finally, it required adding a first-order `Delta_Q` sensitivity check. The unresolved F1 paper-misalignment warned that the stage card still asks for higher-odd and outgoing DtN fingerprint checks unless the paper is explicitly changed to delegate them upstream.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:64 | `K0_target*K4_target - 4*K2_target^2` | Yes | Yes, target-literal consistency | PASS |
+| 2 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:68 | `Gamma5_target - 9*sqrt(K2_target^5/K0_target^3)` | Yes | Yes, target-literal consistency | PASS |
+| 3 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:88 | `Delta_Q` first-order slope | Yes | Yes, reduced failure sensitivity | PASS |
+| 4 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:93 | `Delta_Q` zeroth coefficient | Yes | Yes, canonical limit | PASS |
+| 5 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:41 | `sigma_Q^can` normalization | Yes | Partial, one-pole setup only | PASS |
+| 6 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:63 | omega^5 coefficient form | Yes | Partial; does not derive `chi_Q=1` or DtN fingerprint | FINDING |
+| 7 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:74 | target-literal identities | Yes | Yes, target-literal consistency | PASS |
+| 8 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:87 | `N_Q=1`, canonical branch | Yes | Yes, product closure | PASS |
+| 9 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:104 | `Delta_Q` sensitivity checks | Yes | Yes, reduced failure sensitivity | PASS |
+| 10 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:47 | higher-odd “verification” by printed coefficients | No, print-only | No pass/fail assertion | FINDING |
+
+## Findings
+### R1 — paper_misalignment
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:5`
+- **What's wrong:** The script states that paper Checks (ii) and (iii) are “verified upstream,” but `stage_106.tex:21-25` still requires this stage to check higher odd terms and the outgoing `l=2` DtN fingerprint. The SymPy output contains no `z` expansion, no `Lambda_2^{out}`, no `Yhat_2^{out}`, and no higher-odd assertion.
+- **What it should be:** Either the paper card must be changed to explicitly delegate those checks, or this stage must add real assertions for the Hankel/DtN expansion and the higher-odd onset.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:47`
+- **What's wrong:** The comment says the omega series verifies that higher odd terms begin beyond omega^5, but lines 52-60 only print coefficients. If `omega7Coeff` were wrong, absent, or zero, the script would still pass.
+- **What it should be:** Add assertions, e.g. coefficient checks for zero odd terms below omega^5 and an expected nonzero omega^7 coefficient.
+
+### R3 — insufficient_verification
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:63`
+- **What's wrong:** The Mathematica audit checks only that the one-pole omega^5 coefficient equals `I chiQ sigmaQcan/4`. It never matches this coefficient to the canonical `Gamma5`/`K0` relation or solves/derives `chi_Q = 1`; the result block instead says `chi_Q = 1` is a carry-in.
+- **What it should be:** Assert the coefficient-to-`Gamma5` normalization relation required by F3/M1, then derive the canonical `chi_Q=1` closure rather than importing it.
+
+## Bottom line
+The replacement target-literal and `Delta_Q` assertions are not tautological and are corroborated by the saved outputs, but the stage still does not verify two paper-card checks. The most important problem is that the scripts substituted comments and printouts for the required DtN fingerprint and higher-odd assertions, while the paper card still assigns those checks to stage 106.
+tokens used
+42,372
+---
+stage: 106
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.txt, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl, moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt, stage_106.md, stage_106.tex]
+---
+# Codex review — stage 106
+
+## What the edit was supposed to do
+The directive required replacing tautological branch-identity checks with checks against the independent hardcoded target literals. It also required re-authoring the Mathematica audit along a structurally independent one-pole series path, including the omega-series evidence and canonical closure. Finally, it required adding a first-order `Delta_Q` sensitivity check. The unresolved F1 paper-misalignment warned that the stage card still asks for higher-odd and outgoing DtN fingerprint checks unless the paper is explicitly changed to delegate them upstream.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:64 | `K0_target*K4_target - 4*K2_target^2` | Yes | Yes, target-literal consistency | PASS |
+| 2 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:68 | `Gamma5_target - 9*sqrt(K2_target^5/K0_target^3)` | Yes | Yes, target-literal consistency | PASS |
+| 3 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:88 | `Delta_Q` first-order slope | Yes | Yes, reduced failure sensitivity | PASS |
+| 4 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:93 | `Delta_Q` zeroth coefficient | Yes | Yes, canonical limit | PASS |
+| 5 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:41 | `sigma_Q^can` normalization | Yes | Partial, one-pole setup only | PASS |
+| 6 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:63 | omega^5 coefficient form | Yes | Partial; does not derive `chi_Q=1` or DtN fingerprint | FINDING |
+| 7 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:74 | target-literal identities | Yes | Yes, target-literal consistency | PASS |
+| 8 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:87 | `N_Q=1`, canonical branch | Yes | Yes, product closure | PASS |
+| 9 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:104 | `Delta_Q` sensitivity checks | Yes | Yes, reduced failure sensitivity | PASS |
+| 10 | moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:47 | higher-odd “verification” by printed coefficients | No, print-only | No pass/fail assertion | FINDING |
+
+## Findings
+### R1 — paper_misalignment
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py:5`
+- **What's wrong:** The script states that paper Checks (ii) and (iii) are “verified upstream,” but `stage_106.tex:21-25` still requires this stage to check higher odd terms and the outgoing `l=2` DtN fingerprint. The SymPy output contains no `z` expansion, no `Lambda_2^{out}`, no `Yhat_2^{out}`, and no higher-odd assertion.
+- **What it should be:** Either the paper card must be changed to explicitly delegate those checks, or this stage must add real assertions for the Hankel/DtN expansion and the higher-odd onset.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:47`
+- **What's wrong:** The comment says the omega series verifies that higher odd terms begin beyond omega^5, but lines 52-60 only print coefficients. If `omega7Coeff` were wrong, absent, or zero, the script would still pass.
+- **What it should be:** Add assertions, e.g. coefficient checks for zero odd terms below omega^5 and an expected nonzero omega^7 coefficient.
+
+### R3 — insufficient_verification
+- **Where:** `moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.wl:63`
+- **What's wrong:** The Mathematica audit checks only that the one-pole omega^5 coefficient equals `I chiQ sigmaQcan/4`. It never matches this coefficient to the canonical `Gamma5`/`K0` relation or solves/derives `chi_Q = 1`; the result block instead says `chi_Q = 1` is a carry-in.
+- **What it should be:** Assert the coefficient-to-`Gamma5` normalization relation required by F3/M1, then derive the canonical `chi_Q=1` closure rather than importing it.
+
+## Bottom line
+The replacement target-literal and `Delta_Q` assertions are not tautological and are corroborated by the saved outputs, but the stage still does not verify two paper-card checks. The most important problem is that the scripts substituted comments and printouts for the required DtN fingerprint and higher-odd assertions, while the paper card still assigns those checks to stage 106.
+
+---
+codex_session_id: 019e711e-b4c5-7bf0-9181-1242cf5c06f9

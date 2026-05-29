@@ -2,30 +2,25 @@
 ========================================================================================
 STAGE 116 — FINITE D/N MIXED-TUBE REALIZATION
 ========================================================================================
-D/N trial satisfies q'' + k^2 q = 0 = 0
-PASS: D/N trial satisfies q'' + k^2 q = 0
-D/N trial satisfies q(0) = 0 = 0
-PASS: D/N trial satisfies q(0) = 0
-D/N trial satisfies q'(lW) = 0 at k = Pi/(2 lW) = 0
-PASS: D/N trial satisfies q'(lW) = 0 at k = Pi/(2 lW)
+D/N solved mode satisfies q'' + k^2 q = 0 = 0
+PASS: D/N solved mode satisfies q'' + k^2 q = 0
+D/N solved mode satisfies q(0) = 0 = 0
+PASS: D/N solved mode satisfies q(0) = 0
+D/N eigenvalue solves Cos[kW lW]==0 = 0
+PASS: D/N eigenvalue solves Cos[kW lW]==0
+D/N eigenvalue kW = Pi/(2 lW) = 0
+PASS: D/N eigenvalue kW = Pi/(2 lW)
 kappa0 from D/N eigenvalue matches geometric expression = 0
 PASS: kappa0 from D/N eigenvalue matches geometric expression
 kappa0 from D/N half-wave tube = (4*lW^2)/(a^2*Pi^2)
 Required tube length L_W = (a*Sqrt[3 + (3*lam^2)/(kQ*kS)]*Pi)/6
 tube-length law = 0
 PASS: tube-length law
-geometric kappa0 at lWRequired equals (1+r_c)/3 = 0
-PASS: geometric kappa0 at lWRequired equals (1+r_c)/3
-final kappa_c - 1/3 = 0
-PASS: final kappa_c - 1/3
-final gamma_c - 1/9 = 0
-PASS: final gamma_c - 1/9
-gamma0 extracted from dBare matches (1+rC)/9 = 0
-PASS: gamma0 extracted from dBare matches (1+rC)/9
-bare scaled-canonical branch renormalizes to canonical = 0
-PASS: bare scaled-canonical branch renormalizes to canonical
-kappa0_bare extracted from dBare matches (1+rC)/3 = 0
-PASS: kappa0_bare extracted from dBare matches (1+rC)/3
+Renormalization (definitional consequence, not an independent check):
+  kappa0_bare (derived tube coeff at lWRequired) = (1 + lam^2/(kQ*kS))/3
+  gamma0_bare (upstream-carried input, Stage 98) = (1 + lam^2/(kQ*kS))/9
+  kappa_c = kappa0Bare/(1+rC) = 1/3
+  gamma_c = gamma0Bare/(1+rC) = 1/9
 
 Summary:
   D/N half-wave mixed tube length: (a*Sqrt[3 + (3*lam^2)/(kQ*kS)]*Pi)/6
@@ -33,3 +28,4 @@ Summary:
   Final coefficients: kappa_c = 1/3, gamma_c = 1/9
 
 Stage 116 Mathematica audit passed.
+# exit_code: 0

@@ -9,14 +9,14 @@ kappa0 from D/N eigenvalue matches geometric expression = 0
 kappa0 from D/N half-wave tube = 4*L_W**2/(pi**2*a**2)
 Required tube length L_W = pi*a*sqrt(3*K_q*K_s + 3*lam**2)/(6*sqrt(K_q)*sqrt(K_s))
 tube-length law: L_W = pi a sqrt((1+r_c)/3) / 2 = 0
-geometric kappa0 at L_W_required equals (1+r_c)/3 = 0
-final kappa_c - 1/3 = 0
-final gamma_c - 1/9 = 0
-gamma0 extracted from D_bare matches (1+r_c)/9 = 0
-bare scaled-canonical branch renormalizes to canonical = 0
-kappa0_bare extracted from D_bare matches (1+r_c)/3 = 0
+Renormalization (definitional consequence, not an independent check):
+  kappa0_bare (derived tube coeff at L_W_required) = (K_q*K_s + lam**2)/(3*K_q*K_s)
+  gamma0_bare (upstream-carried input, Stage 98)   = (K_q*K_s + lam**2)/(9*K_q*K_s)
+  kappa_c = kappa0_bare/(1+r_c) = 1/3
+  gamma_c = gamma0_bare/(1+r_c) = 1/9
 
 Summary:
   D/N half-wave mixed tube length: pi*a*sqrt(3*K_q*K_s + 3*lam**2)/(6*sqrt(K_q)*sqrt(K_s))
   Bare mixed coefficients: kappa0 = (K_q*K_s + lam**2)/(3*K_q*K_s) , gamma0 = (K_q*K_s + lam**2)/(9*K_q*K_s)
   Final coefficients: kappa_c = 1/3 , gamma_c = 1/9
+# exit_code: 0

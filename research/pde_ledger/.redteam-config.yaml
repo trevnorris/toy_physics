@@ -13,8 +13,10 @@ paths:
   mathematica_output:
   - mathematica/output/moving_throat_pde_stage{N}_*_mathematica_audit.txt
 runners:
-  sympy: python3 {script}
-  mathematica: math -script {script}
+  # 10-minute hard cap: a script that can't finish in 600s is intractable as written
+  # and must be reformulated (it must never silently hang the pipeline). timeout exits 124 on kill.
+  sympy: timeout 600 python3 {script}
+  mathematica: timeout 600 math -script {script}
 stages:
   start: 1
   end: 253

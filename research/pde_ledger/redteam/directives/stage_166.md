@@ -15,7 +15,7 @@ Apply each finding below in order. After applying, append an `## Applied: F<n>` 
 
 If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
 
-Do NOT introduce new features, refactors, or stylistic changes beyond the lines named. Do NOT run python or mathematica. Do NOT touch paper.tex, notes/, or any prose document.
+Do NOT introduce new features, refactors, or stylistic changes beyond the lines named. Do NOT touch paper.tex, notes/, or any prose document.
 
 ## F1 — insufficient_verification
 

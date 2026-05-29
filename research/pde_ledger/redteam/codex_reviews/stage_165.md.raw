@@ -1,0 +1,592 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7128-19a9-7db1-9755-a622dea5c2df
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 165)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_165.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_165.tex
+
+Write your verdict report for stage 165 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_165.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 165]{Stage 165: Lower-branch drift laws}
+     2	\label{stage:165}
+     3	
+     4	\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.1}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~165 is the original-stage audit card for \emph{Lower-branch drift laws}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the Stage~163 off-family scalar, the lower compensated Family--1 branch, the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify the parent action or the charge/notation firewall.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The derivation removes tangent-compensated isotropic motion, proves no linear grouped feed-down into scalar slippages, and reduces the direct grouped outlet map to the physical even-response and prefactor slopes.}
+    14	
+    15	\stagefield{Output}{Shows \(\delta\ln L_W=\delta\ln a\) and reduces the lower compensated branch to four irreducible drifts \((\delta\ln\mathcal Z_q,\delta\ln\rho_w,\delta\ln c_s,\delta\ln a)\).}
+    16	
+    17	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
+    18	
+    19	\stagefield{Checks}{\begin{verificationchecklist}
+    20	\item Check that tangent-compensated isotropic drift is not counted as an off-family failure mode.
+    21	\item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+    22	\item Check that grouped real \(P_2\) anisotropy is not allowed to feed scalar slippages linearly.
+    23	\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
+    24	\end{verificationchecklist}}
+    25	
+    26	\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.1} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+    27	
+
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_165.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 165
+     3	batch: V.1
+     4	created_at: 2026-05-28T15:20:00-06:00
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 165
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+    23	
+    24	## F1 — insufficient_verification
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:39-43`
+    27	
+    28	**Issue:** The headline deliverable δlnL_W = δln a (the stage's `\stagefield{Output}` claim, used immediately as `subs(dLW, da)`) is not actually verified by the SymPy script. Line 41 short-circuits with `if False else 1`, always assigning the literal `1` and never differentiating `LW_law`; line 43 prints the claim as text only. The Mathematica script verifies it genuinely at its line 33. SymPy must do the same so the headline result is exercised by both engines.
+    29	
+    30	**Required change:**
+    31	In `scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py`, the current block is:
+    32	```python
+    33	# 1. D/N law
+    34	LW_law = sp.pi * a * sp.sqrt(1 + r**2) / (2 * sp.sqrt(3))
+    35	dlog_LW = sp.simplify(sp.diff(sp.log(LW_law), sp.log(a)) if False else 1)  # documentary only
+    36	print("D/N law: L_W =", LW_law)
+    37	print("At fixed r_* : d ln L_W = d ln a")
+    38	```
+    39	Replace it with:
+    40	```python
+    41	# 1. D/N law
+    42	LW_law = sp.pi * a * sp.sqrt(1 + r**2) / (2 * sp.sqrt(3))
+    43	dlog_LW = sp.simplify(a * sp.diff(sp.log(LW_law), a))
+    44	print("D/N law: L_W =", LW_law)
+    45	print("At fixed r_* : d ln L_W = d ln a")
+    46	expect_zero("d ln L_W - d ln a at fixed r_*", dlog_LW - 1)
+    47	```
+    48	Notes:
+    49	- Differentiate w.r.t. `a` directly and multiply by `a` (logarithmic derivative); do NOT differentiate w.r.t. `sp.log(a)` (SymPy cannot differentiate w.r.t. a composite expression and would error or return 0).
+    50	- Use the existing `expect_zero(name, expr)` helper (defined at line 24) — do not invent a new one.
+    51	- Keep the two existing `print` lines exactly as-is; add the `expect_zero` line after them.
+    52	
+    53	**Verification command:**
+    54	After Codex applies, the verifier will run `redteam exec-sympy 165` and confirm the new transcript line `d ln L_W - d ln a at fixed r_* = 0` appears AND the script exits 0.
+    55	
+    56	## Applied: F1
+    57	- files_changed: `scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py`
+    58	- summary: Replaced the documentary `if False else 1` short-circuit with a genuine logarithmic derivative `dlog_LW = sp.simplify(a * sp.diff(sp.log(LW_law), a))` and added `expect_zero("d ln L_W - d ln a at fixed r_*", dlog_LW - 1)` after the two existing print lines.
+    59	- deviation: none
+    60	
+    61	## F2 — tautological_check
+    62	
+    63	**Target:**
+    64	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:80-84`
+    65	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl:67-71`
+    66	
+    67	**Issue:** The "Stage 164 channel closure" check (D5, δ⊥=0) is tautological. `channel_g`/`channel_r` are the exact left-hand sides of `eq_g`/`eq_r`; substituting `dv_sol`, `dT_sol` (the solution of `solve([eq_r, eq_g], [dv, dT])`) back into them yields 0 by definition of "solution." The `expect_zero`/`expectZero` PASS lines therefore verify only that the solver works, not that the off-family channels vanish for any independent reason. The Mathematica mirror (`/. sol` at lines 68-69) is identically tautological.
+    68	
+    69	**Required change (minimal, safe variant — downgrade to print):**
+    70	The fully substantive variant (constructing the Stage-249 δ⊥ normal coordinate as an explicit linear combination of the two channels and asserting it vanishes on-branch while being nonzero off-branch) requires the δ⊥ coefficients, which are not stated in this stage's notes. Unless you can source those exact coefficients from this unit's notes (`notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md` — section 8 does not give them), do NOT fabricate them. Instead, demote the tautological assertions to clearly-labelled prints so the transcript no longer reports a tautology as a verified PASS:
+    71	
+    72	SymPy — replace lines 81-84:
+    73	```python
+    74	channel_g = sp.simplify((dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    75	channel_r = sp.simplify((dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    76	expect_zero("fixed-g channel", channel_g)
+    77	expect_zero("fixed-r channel", channel_r)
+    78	```
+    79	with:
+    80	```python
+    81	# NOTE: channel_g/channel_r are the LHS of eq_g/eq_r evaluated at the solved (dv,dT).
+    82	# They vanish by construction (substituting a linear solution into its own system),
+    83	# so this is a consistency print of the solver, not an independent verification of
+    84	# delta_perp = 0. Reported, not asserted.
+    85	channel_g = sp.simplify((dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    86	channel_r = sp.simplify((dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    87	print("fixed-g channel (solver consistency) =", channel_g)
+    88	print("fixed-r channel (solver consistency) =", channel_r)
+    89	```
+    90	
+    91	Mathematica — replace lines 67-71:
+    92	```
+    93	banner["Stage 164 channel closure"];
+    94	channelG = FullSimplify[(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW) /. sol, Assumptions -> $Assumptions];
+    95	channelR = FullSimplify[(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW) /. sol, Assumptions -> $Assumptions];
+    96	expectZero["fixed-g channel", channelG];
+    97	expectZero["fixed-r channel", channelR];
+    98	```
+    99	with:
+   100	```
+   101	banner["Stage 164 channel closure"];
+   102	(* channelG/channelR are the LHS of eqG/eqR evaluated at the solved (dv,dT); *)
+   103	(* they vanish by construction, so this is a solver-consistency print, not an *)
+   104	(* independent verification of delta_perp = 0. Reported, not asserted. *)
+   105	channelG = FullSimplify[(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW) /. sol, Assumptions -> $Assumptions];
+   106	channelR = FullSimplify[(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW) /. sol, Assumptions -> $Assumptions];
+   107	Print["fixed-g channel (solver consistency) = ", fmt[channelG]];
+   108	Print["fixed-r channel (solver consistency) = ", fmt[channelR]];
+   109	```
+   110	Do NOT change `eqR`, `eqG`, `sol`, `dvSol`, `dTSol`, or any of the substantive `expectZero` calls for the ratio/product/n=5 laws.
+   111	
+   112	**Verification command:**
+   113	After Codex applies, the verifier will run `redteam exec-sympy 165` and `redteam exec-mathematica 165`; confirm both scripts still exit 0, the substantive ratio/product/n=5 PASS lines are unchanged, and the two former `fixed-g channel`/`fixed-r channel` PASS lines are now plain "(solver consistency)" prints (no PASS:).
+   114	
+   115	## Applied: F2
+   116	- files_changed: `scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py`, `mathematica/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl`
+   117	- summary: Demoted the tautological `fixed-g`/`fixed-r` channel `expect_zero`/`expectZero` assertions to clearly-labelled "(solver consistency)" prints in both engines and added the explanatory comment block; channel_g/channel_r and channelG/channelR definitions and the substantive ratio/product/n=5 checks left unchanged.
+   118	- deviation: none
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS
+     4	========================================================================================
+     5	D/N law: L_W = sqrt(3)*pi*a*sqrt(r**2 + 1)/6
+     6	At fixed r_* : d ln L_W = d ln a
+     7	d ln L_W - d ln a at fixed r_* = 0
+     8	
+     9	Exact drift laws before using d ln L_W = d ln a:
+    10	d ln v_w0 = -3*dLW/2 + dZ/2 - da + dcs + 3*dcsw/2 - drho/2
+    11	d ln T_m  = -dLW/2 + dZ/2 - da - dcs + 3*dcsw/2 - drho/2
+    12	
+    13	After using d ln L_W = d ln a:
+    14	d ln v_w0 = dZ/2 - 5*da/2 + dcs + 3*dcsw/2 - drho/2
+    15	d ln T_m  = dZ/2 - 3*da/2 - dcs + 3*dcsw/2 - drho/2
+    16	ratio law - (2 d ln c_s - d ln a) = 0
+    17	product law - (dZ + 3 dcsw - drho - 4 da) = 0
+    18	
+    19	After n=5 wall EOS (d ln c_s,w = 2 d ln rho_w):
+    20	d ln v_w0 = dZ/2 - 5*da/2 + dcs + 5*drho/2
+    21	d ln T_m  = dZ/2 - 3*da/2 - dcs + 5*drho/2
+    22	n=5 product law - (dZ + 5 drho - 4 da) = 0
+    23	fixed-g channel (solver consistency) = 0
+    24	fixed-r channel (solver consistency) = 0
+    25	
+    26	Carry-forward formulas:
+    27	  d ln L_W = d ln a
+    28	  d ln v_w0 = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w + d ln c_s - d ln a - 3/2 d ln L_W
+    29	  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W
+    30	  d ln(v_w0/T_m) = 2 d ln c_s - d ln a
+    31	  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a
+    32	  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+     4	
+     5	SymPy-backed audit for the exact lower-compensated Family-1 branch drift laws.
+     6	
+     7	Checks:
+     8	1. D/N law implies d ln L_W = d ln a at fixed r_*.
+     9	2. Fixed-r and fixed-g conditions solve for d ln v_{w0} and d ln T_m.
+    10	3. Product/ratio transport laws collapse exactly.
+    11	4. n=5 wall EOS gives d ln c_{s,w} = 2 d ln rho_w.
+    12	5. The Stage 164 off-family channels vanish identically after substitution.
+    13	"""
+    14	
+    15	from __future__ import annotations
+    16	import sympy as sp
+    17	
+    18	def banner(title: str) -> None:
+    19	    line = "=" * 88
+    20	    print("\n" + line)
+    21	    print(title)
+    22	    print(line)
+    23	
+    24	def expect_zero(name: str, expr: sp.Expr) -> None:
+    25	    expr = sp.simplify(sp.expand(expr))
+    26	    print(f"{name} = {expr}")
+    27	    if expr != 0:
+    28	        raise AssertionError(f"{name} is not zero")
+    29	
+    30	banner("STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS")
+    31	
+    32	dZ, drho, dcsw, dcs, dT, dv, da, dLW = sp.symbols(
+    33	    "dZ drho dcsw dcs dT dv da dLW", real=True
+    34	)
+    35	
+    36	r = sp.symbols("r", positive=True, real=True)
+    37	a, LW = sp.symbols("a LW", positive=True, real=True)
+    38	
+    39	# 1. D/N law
+    40	LW_law = sp.pi * a * sp.sqrt(1 + r**2) / (2 * sp.sqrt(3))
+    41	dlog_LW = sp.simplify(a * sp.diff(sp.log(LW_law), a))
+    42	print("D/N law: L_W =", LW_law)
+    43	print("At fixed r_* : d ln L_W = d ln a")
+    44	expect_zero("d ln L_W - d ln a at fixed r_*", dlog_LW - 1)
+    45	
+    46	# 2. Fixed-r and fixed-g channel conditions from Stage 164
+    47	eq_r = sp.Eq(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW, 0)
+    48	eq_g = sp.Eq(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW, 0)
+    49	sol = sp.solve([eq_r, eq_g], [dv, dT], dict=True)[0]
+    50	dv_sol = sp.simplify(sol[dv])
+    51	dT_sol = sp.simplify(sol[dT])
+    52	
+    53	print("\nExact drift laws before using d ln L_W = d ln a:")
+    54	print("d ln v_w0 =", dv_sol)
+    55	print("d ln T_m  =", dT_sol)
+    56	
+    57	dv_DN = sp.simplify(dv_sol.subs(dLW, da))
+    58	dT_DN = sp.simplify(dT_sol.subs(dLW, da))
+    59	
+    60	print("\nAfter using d ln L_W = d ln a:")
+    61	print("d ln v_w0 =", dv_DN)
+    62	print("d ln T_m  =", dT_DN)
+    63	
+    64	# 3. Product/ratio laws
+    65	ratio_law = sp.simplify(dv_DN - dT_DN)
+    66	prod_law = sp.simplify(dv_DN + dT_DN)
+    67	expect_zero("ratio law - (2 d ln c_s - d ln a)", ratio_law - (2*dcs - da))
+    68	expect_zero("product law - (dZ + 3 dcsw - drho - 4 da)", prod_law - (dZ + 3*dcsw - drho - 4*da))
+    69	
+    70	# 4. n=5 wall EOS
+    71	dv_n5 = sp.simplify(dv_DN.subs(dcsw, 2*drho))
+    72	dT_n5 = sp.simplify(dT_DN.subs(dcsw, 2*drho))
+    73	print("\nAfter n=5 wall EOS (d ln c_s,w = 2 d ln rho_w):")
+    74	print("d ln v_w0 =", dv_n5)
+    75	print("d ln T_m  =", dT_n5)
+    76	expect_zero(
+    77	    "n=5 product law - (dZ + 5 drho - 4 da)",
+    78	    sp.simplify((dv_n5 + dT_n5) - (dZ + 5*drho - 4*da)),
+    79	)
+    80	
+    81	# 5. Stage 164 off-family channels vanish identically
+    82	# NOTE: channel_g/channel_r are the LHS of eq_g/eq_r evaluated at the solved (dv,dT).
+    83	# They vanish by construction (substituting a linear solution into its own system),
+    84	# so this is a consistency print of the solver, not an independent verification of
+    85	# delta_perp = 0. Reported, not asserted.
+    86	channel_g = sp.simplify((dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    87	channel_r = sp.simplify((dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW).subs({dv: dv_sol, dT: dT_sol}))
+    88	print("fixed-g channel (solver consistency) =", channel_g)
+    89	print("fixed-r channel (solver consistency) =", channel_r)
+    90	
+    91	print("\nCarry-forward formulas:")
+    92	print("  d ln L_W = d ln a")
+    93	print("  d ln v_w0 = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w + d ln c_s - d ln a - 3/2 d ln L_W")
+    94	print("  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W")
+    95	print("  d ln(v_w0/T_m) = 2 d ln c_s - d ln a")
+    96	print("  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a")
+    97	print("  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w")
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS
+     4	========================================================================================
+     5	D/N law: L_W = (a*Pi*Sqrt[1 + r^2])/(2*Sqrt[3])
+     6	d ln L_W - d ln a at fixed r_* = 0
+     7	PASS: d ln L_W - d ln a at fixed r_*
+     8	
+     9	========================================================================================
+    10	Exact fixed-r / fixed-g drift laws
+    11	========================================================================================
+    12	d ln v_w0 = (-2*da + 2*dcs + 3*dcsw - 3*dLW - drho + dZ)/2
+    13	d ln T_m  = (-2*da - 2*dcs + 3*dcsw - dLW - drho + dZ)/2
+    14	
+    15	========================================================================================
+    16	After using d ln L_W = d ln a
+    17	========================================================================================
+    18	d ln v_w0 = (-5*da + 2*dcs + 3*dcsw - drho + dZ)/2
+    19	d ln T_m  = (-3*da - 2*dcs + 3*dcsw - drho + dZ)/2
+    20	ratio law - (2 d ln c_s - d ln a) = 0
+    21	PASS: ratio law - (2 d ln c_s - d ln a)
+    22	product law - (dZ + 3 dcsw - drho - 4 da) = 0
+    23	PASS: product law - (dZ + 3 dcsw - drho - 4 da)
+    24	
+    25	========================================================================================
+    26	n=5 wall EOS
+    27	========================================================================================
+    28	d ln v_w0 = (-5*da + 2*dcs + 5*drho + dZ)/2
+    29	d ln T_m  = (-3*da - 2*dcs + 5*drho + dZ)/2
+    30	n=5 product law - (dZ + 5 drho - 4 da) = 0
+    31	PASS: n=5 product law - (dZ + 5 drho - 4 da)
+    32	
+    33	========================================================================================
+    34	Stage 164 channel closure
+    35	========================================================================================
+    36	fixed-g channel (solver consistency) = 0
+    37	fixed-r channel (solver consistency) = 0
+    38	
+    39	Carry-forward formulas:
+    40	  d ln L_W = d ln a
+    41	  d ln v_w0 = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w + d ln c_s - d ln a - 3/2 d ln L_W
+    42	  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W
+    43	  d ln(v_w0/T_m) = 2 d ln c_s - d ln a
+    44	  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a
+    45	  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w
+    46	
+    47	Stage 165 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS"];
+    27	
+    28	Clear[dZ, drho, dcsw, dcs, dT, dv, da, dLW, r, a];
+    29	$Assumptions = Element[{dZ, drho, dcsw, dcs, dT, dv, da, dLW, r, a}, Reals] && r > 0 && a > 0;
+    30	
+    31	lwLaw = Pi*a*Sqrt[1 + r^2]/(2*Sqrt[3]);
+    32	Print["D/N law: L_W = ", fmt[lwLaw]];
+    33	expectZero["d ln L_W - d ln a at fixed r_*", a*D[Log[lwLaw], a] - 1];
+    34	
+    35	eqR = dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW == 0;
+    36	eqG = dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW == 0;
+    37	sol = Solve[{eqR, eqG}, {dv, dT}, Reals][[1]];
+    38	dvSol = FullSimplify[dv /. sol, Assumptions -> $Assumptions];
+    39	dTSol = FullSimplify[dT /. sol, Assumptions -> $Assumptions];
+    40	
+    41	banner["Exact fixed-r / fixed-g drift laws"];
+    42	Print["d ln v_w0 = ", fmt[dvSol]];
+    43	Print["d ln T_m  = ", fmt[dTSol]];
+    44	
+    45	dvDN = FullSimplify[dvSol /. dLW -> da, Assumptions -> $Assumptions];
+    46	dTDN = FullSimplify[dTSol /. dLW -> da, Assumptions -> $Assumptions];
+    47	
+    48	banner["After using d ln L_W = d ln a"];
+    49	Print["d ln v_w0 = ", fmt[dvDN]];
+    50	Print["d ln T_m  = ", fmt[dTDN]];
+    51	
+    52	ratioLaw = FullSimplify[dvDN - dTDN, Assumptions -> $Assumptions];
+    53	prodLaw = FullSimplify[dvDN + dTDN, Assumptions -> $Assumptions];
+    54	expectZero["ratio law - (2 d ln c_s - d ln a)", ratioLaw - (2*dcs - da)];
+    55	expectZero["product law - (dZ + 3 dcsw - drho - 4 da)", prodLaw - (dZ + 3*dcsw - drho - 4*da)];
+    56	
+    57	banner["n=5 wall EOS"];
+    58	dvN5 = FullSimplify[dvDN /. dcsw -> 2*drho, Assumptions -> $Assumptions];
+    59	dTN5 = FullSimplify[dTDN /. dcsw -> 2*drho, Assumptions -> $Assumptions];
+    60	Print["d ln v_w0 = ", fmt[dvN5]];
+    61	Print["d ln T_m  = ", fmt[dTN5]];
+    62	expectZero[
+    63	  "n=5 product law - (dZ + 5 drho - 4 da)",
+    64	  (dvN5 + dTN5) - (dZ + 5*drho - 4*da)
+    65	];
+    66	
+    67	banner["Stage 164 channel closure"];
+    68	(* channelG/channelR are the LHS of eqG/eqR evaluated at the solved (dv,dT); *)
+    69	(* they vanish by construction, so this is a solver-consistency print, not an *)
+    70	(* independent verification of delta_perp = 0. Reported, not asserted. *)
+    71	channelG = FullSimplify[(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW) /. sol, Assumptions -> $Assumptions];
+    72	channelR = FullSimplify[(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW) /. sol, Assumptions -> $Assumptions];
+    73	Print["fixed-g channel (solver consistency) = ", fmt[channelG]];
+    74	Print["fixed-r channel (solver consistency) = ", fmt[channelR]];
+    75	
+    76	Print[""];
+    77	Print["Carry-forward formulas:"];
+    78	Print["  d ln L_W = d ln a"];
+    79	Print["  d ln v_w0 = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w + d ln c_s - d ln a - 3/2 d ln L_W"];
+    80	Print["  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W"];
+    81	Print["  d ln(v_w0/T_m) = 2 d ln c_s - d ln a"];
+    82	Print["  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a"];
+    83	Print["  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w"];
+    84	
+    85	Print[""];
+    86	Print["Stage 165 Mathematica audit passed."];
+    87	
+    88	Exit[0];
+
+codex
+---
+stage: 165
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [stage_165.md, stage_165.tex, moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py, moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.txt, moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl, moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.txt]
+---
+# Codex review — stage 165
+
+## What the edit was supposed to do
+F1 required the SymPy audit to stop short-circuiting the headline deliverable `d ln L_W = d ln a` with a literal `1`, and instead compute the logarithmic derivative of the stated `L_W` law with respect to `a`. F2 required the tautological Stage 164 fixed-g/fixed-r channel assertions to be demoted to clearly labelled solver-consistency prints in both SymPy and Mathematica, because those expressions are just the solved equations substituted back into themselves.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:41-44 | Computes `a*d/da log(LW_law)` and asserts `d ln L_W - d ln a = 0` | Yes; any non-linear `a` dependence in `LW_law` would leave a nonzero residual | Yes; directly checks the stage output `\delta\ln L_W=\delta\ln a` at fixed `r_*` | PASS |
+| 2 | moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:81-89 | Former fixed-g/fixed-r channel assertions demoted to solver-consistency prints | N/A; no longer asserted | Yes; it avoids claiming an independent proof of `delta_perp = 0` | PASS |
+| 3 | moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl:67-74 | Former fixed-g/fixed-r channel assertions demoted to solver-consistency prints | N/A; no longer asserted | Yes; mirrors the required downgrade without reporting tautological PASS lines | PASS |
+
+## Bottom line
+PASS. I tried to break the new SymPy `d ln L_W` check by looking for a reused intermediate or `X-X` construction; it is instead a derivative of the independently assigned `LW_law` compared to `1`, so wrong `a` scaling would fail. I also checked whether the former channel closures still report as assertions; both scripts now print them only as `(solver consistency)`, and the saved outputs contain no `PASS:` for those tautological channels. I read the directive, the stage card, both scripts, and both saved outputs; the SymPy output shows `d ln L_W - d ln a at fixed r_* = 0`, while the Mathematica output still corroborates the same headline check and the demoted channel prints.
+tokens used
+27,709
+---
+stage: 165
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [stage_165.md, stage_165.tex, moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py, moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.txt, moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl, moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.txt]
+---
+# Codex review — stage 165
+
+## What the edit was supposed to do
+F1 required the SymPy audit to stop short-circuiting the headline deliverable `d ln L_W = d ln a` with a literal `1`, and instead compute the logarithmic derivative of the stated `L_W` law with respect to `a`. F2 required the tautological Stage 164 fixed-g/fixed-r channel assertions to be demoted to clearly labelled solver-consistency prints in both SymPy and Mathematica, because those expressions are just the solved equations substituted back into themselves.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:41-44 | Computes `a*d/da log(LW_law)` and asserts `d ln L_W - d ln a = 0` | Yes; any non-linear `a` dependence in `LW_law` would leave a nonzero residual | Yes; directly checks the stage output `\delta\ln L_W=\delta\ln a` at fixed `r_*` | PASS |
+| 2 | moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py:81-89 | Former fixed-g/fixed-r channel assertions demoted to solver-consistency prints | N/A; no longer asserted | Yes; it avoids claiming an independent proof of `delta_perp = 0` | PASS |
+| 3 | moving_throat_pde_stage165_exact_branch_drifts_mathematica_audit.wl:67-74 | Former fixed-g/fixed-r channel assertions demoted to solver-consistency prints | N/A; no longer asserted | Yes; mirrors the required downgrade without reporting tautological PASS lines | PASS |
+
+## Bottom line
+PASS. I tried to break the new SymPy `d ln L_W` check by looking for a reused intermediate or `X-X` construction; it is instead a derivative of the independently assigned `LW_law` compared to `1`, so wrong `a` scaling would fail. I also checked whether the former channel closures still report as assertions; both scripts now print them only as `(solver consistency)`, and the saved outputs contain no `PASS:` for those tautological channels. I read the directive, the stage card, both scripts, and both saved outputs; the SymPy output shows `d ln L_W - d ln a at fixed r_* = 0`, while the Mathematica output still corroborates the same headline check and the demoted channel prints.
+
+---
+codex_session_id: 019e7128-19a9-7db1-9755-a622dea5c2df

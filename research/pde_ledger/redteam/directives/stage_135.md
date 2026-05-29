@@ -13,7 +13,7 @@ needs_user_resolution: false
 
 Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with `files_changed`, `summary` (one sentence), and `deviation` (or "none").
 
-Do NOT introduce new features, refactors, or stylistic changes beyond what is specified. Do NOT touch paper.tex, notes/, or any prose documents. Do NOT run python or mathematica.
+Do NOT introduce new features, refactors, or stylistic changes beyond what is specified. Do NOT touch paper.tex, notes/, or any prose documents.
 
 The two findings below are tightly coupled: F1 says "the only assertion is tautological"; F2 says "and the substantive deliverables are not tested." The required edit for both is a single edit batch on the SymPy script — apply F1's edit and F2's edit together as one revision of `scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py`. The Mathematica script does not require any edit.
 

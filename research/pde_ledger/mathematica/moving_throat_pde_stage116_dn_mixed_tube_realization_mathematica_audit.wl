@@ -32,18 +32,21 @@ $Assumptions =
   kSym > 0 && omegaSym > 0 && csSym > 0;
 
 (* D/N half-wave eigenvalue derivation:
-   Solve q'' + k^2 q = 0 with q(0)=0, q'(lW)=0.
-   q(x) = Sin[k x] satisfies q(0)=0. The second BC k Cos[k lW] = 0 gives
-   the smallest positive eigenvalue kW = Pi/(2 lW). *)
-qTrial[xVar_, kArg_] := Sin[kArg*xVar];
-odeRes = FullSimplify[D[qTrial[x, kSym], {x, 2}] + kSym^2 * qTrial[x, kSym], Assumptions -> $Assumptions];
-expectZero["D/N trial satisfies q'' + k^2 q = 0", odeRes];
-bcLeft = FullSimplify[qTrial[0, kSym], Assumptions -> $Assumptions];
-expectZero["D/N trial satisfies q(0) = 0", bcLeft];
-kWValue = Pi/(2*lW);
-bcRightAtKW = FullSimplify[(D[qTrial[x, kSym], x] /. x -> lW) /. kSym -> kWValue,
-                          Assumptions -> $Assumptions];
-expectZero["D/N trial satisfies q'(lW) = 0 at k = Pi/(2 lW)", bcRightAtKW];
+   Solve q'' + k^2 q = 0 with q(0)=0, then impose q'(lW)=0.
+   The normalized nonzero solution branch gives the characteristic equation
+   Cos[k lW] == 0; solve it for the smallest positive eigenvalue. *)
+gensol = DSolve[{q''[xv] + kSym^2*q[xv] == 0, q[0] == 0, q'[0] == 1}, q, xv];
+qGenExpr = FullSimplify[q[xv] /. First[gensol], Assumptions -> $Assumptions];
+odeRes = FullSimplify[D[qGenExpr, {xv, 2}] + kSym^2*qGenExpr, Assumptions -> $Assumptions];
+expectZero["D/N solved mode satisfies q'' + k^2 q = 0", odeRes];
+bcLeft = FullSimplify[qGenExpr /. xv -> 0, Assumptions -> $Assumptions];
+expectZero["D/N solved mode satisfies q(0) = 0", bcLeft];
+charEq = FullSimplify[D[qGenExpr, xv] /. xv -> lW, Assumptions -> $Assumptions];
+(* Solve for the product u = kW*lW on (0, Pi), avoiding symbolic division by lW. *)
+uRoot = u /. First[Solve[Cos[u] == 0 && 0 < u < Pi, u, Reals]];
+kWValue = FullSimplify[uRoot/lW, Assumptions -> $Assumptions];
+expectZero["D/N eigenvalue solves Cos[kW lW]==0", Cos[kWValue*lW]];
+expectZero["D/N eigenvalue kW = Pi/(2 lW)", kWValue - Pi/(2*lW)];
 
 OmegaW = kWValue * csSym;
 kappa0Derived = FullSimplify[(omegaSym/OmegaW)^2 / (a*omegaSym/csSym)^2,
@@ -59,26 +62,20 @@ Print["kappa0 from D/N half-wave tube = ", fmt[kappa0FromTube]];
 Print["Required tube length L_W = ", fmt[lWRequired]];
 expectZero["tube-length law", lWRequired - (Pi*a*Sqrt[(1 + rC)/3])/2];
 
-kappa0BareGeom = FullSimplify[4*lWRequired^2/(Pi^2*a^2), Assumptions -> $Assumptions];
-expectZero["geometric kappa0 at lWRequired equals (1+r_c)/3",
-           kappa0BareGeom - (1 + rC)/3];
-gamma0Bare = FullSimplify[(1 + rC)/9, Assumptions -> $Assumptions];
-kappaC = FullSimplify[kappa0BareGeom/(1 + rC), Assumptions -> $Assumptions];
-gammaC = FullSimplify[gamma0Bare/(1 + rC), Assumptions -> $Assumptions];
-
-expectZero["final kappa_c - 1/3", kappaC - 1/3];
-expectZero["final gamma_c - 1/9", gammaC - 1/9];
-
-dBare = Expand[(1 + rC)*(1 - z^2/3 - I*z^5/9)];
-gamma0FromD = FullSimplify[I * Coefficient[dBare, z, 5], Assumptions -> $Assumptions];
-expectZero["gamma0 extracted from dBare matches (1+rC)/9",
-           gamma0FromD - (1 + rC)/9];
-dFinal = FullSimplify[dBare/(1 + rC), Assumptions -> $Assumptions];
-expectZero["bare scaled-canonical branch renormalizes to canonical", dFinal - (1 - z^2/3 - I*z^5/9)];
-kappa0FromD = FullSimplify[-Coefficient[dBare, z, 2], Assumptions -> $Assumptions];
-expectZero["kappa0_bare extracted from dBare matches (1+rC)/3",
-           kappa0FromD - (1 + rC)/3];
-kappa0Bare = FullSimplify[(1 + rC)/3, Assumptions -> $Assumptions];
+(* --- Renormalization to canonical coefficients (REPORTED, not asserted) --- *)
+(* Load-bearing physics verified above; gamma0 is an upstream-carried input    *)
+(* (Stage 98), so kappa_c/gamma_c here are definitional consequences, printed  *)
+(* not asserted (an expectZero here would be tautological).                    *)
+kappa0Bare = FullSimplify[4*lWRequired^2/(Pi^2*a^2), Assumptions -> $Assumptions];  (* derived tube coeff at required length *)
+gamma0Bare = FullSimplify[(1 + rC)/9, Assumptions -> $Assumptions];                  (* upstream-carried input (Stage 98) *)
+commonScale = 1 + rC;
+kappaC = FullSimplify[kappa0Bare/commonScale, Assumptions -> $Assumptions];
+gammaC = FullSimplify[gamma0Bare/commonScale, Assumptions -> $Assumptions];
+Print["Renormalization (definitional consequence, not an independent check):"];
+Print["  kappa0_bare (derived tube coeff at lWRequired) = ", kappa0Bare];
+Print["  gamma0_bare (upstream-carried input, Stage 98) = ", gamma0Bare];
+Print["  kappa_c = kappa0Bare/(1+rC) = ", kappaC];
+Print["  gamma_c = gamma0Bare/(1+rC) = ", gammaC];
 
 Print[""];
 Print["Summary:"];

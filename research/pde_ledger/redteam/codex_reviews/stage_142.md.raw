@@ -1,0 +1,766 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7124-b135-7242-a7ee-db9e50ca28ae
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 142)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_142.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_142.tex
+
+Write your verdict report for stage 142 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_142.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 142]{Stage 142: Self-Consistent Mouth-Branch Law}
+     2	\label{stage:142}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~142 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+    14	
+    15	\begin{quote}
+    16	Identifying \(\mathfrak g_c=\mathfrak g_\Pi\) gives \(\Pi=\Sigma_0[1-R_q(\Pi)\mathcal S_q(\Pi)]\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+    23	\item Check the self-matched susceptibility closure before using the one-scalar branch law.
+    24	\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_142.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 142
+     3	batch: IV.5
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 5
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 142
+    13	
+    14	Apply each non-paper_misalignment finding below in order (F1, F2, F3, F4). After applying each, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	F5 is a `paper_misalignment` finding — DO NOT touch it; the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" F5 unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents.
+    25	
+    26	## F1 — tautological_check
+    27	
+    28	**Target:**
+    29	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:41`
+    30	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:61`
+    31	
+    32	**Issue:**
+    33	The symbolic assertion `R_q(g_minus) - 1/4 == 0` is algebraically guaranteed for any `r` and so does not exercise the specific value of `r_F1`. The check passes whether `r` is `sqrt(4107-100*pi^2)/(10*pi)` or anything else, because `R_q(g_minus) = ((1/2)sqrt(1+r^2))^2/(1+r^2) = 1/4` identically.
+    34	
+    35	**Required change:**
+    36	Keep the existing assertion (it confirms the algebraic identity `R_q(g_-) = 1/4` from `g_- = r - (1/2)sqrt(1+r^2)`), but ADD a numeric assertion that pins `R_q(Pi_*) = 1/4` where `Pi_*` is the nsolve'd canonical point. This is a non-tautological test because `Pi_*` is determined by `gPi(Pi_*) = g_-` with the specific `r_F1`; if `r_F1` were perturbed, `Pi_*` would shift and `R_q(Pi_*)` would no longer be exactly `1/4` (or rather, since the structural identity still holds at the nsolve'd point, swap the check to: `gPi(Pi_*) - g_- = 0` as a symbolic-into-numeric residual which DOES depend on `r_F1`).
+    37	
+    38	Concretely, in **sympy** (`scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py`), after the existing line 60 (the AssertionError on solver convergence), insert:
+    39	
+    40	```python
+    41	Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))
+    42	print(f"R_q(Pi_*) - 1/4 = {Rq_star - sp.Rational(1,4)}")
+    43	if Rq_star_residual > 1e-20:
+    44	    raise AssertionError(f"R_q(Pi_*) does not equal 1/4 at nsolve'd Pi_* (residual {Rq_star_residual}).")
+    45	```
+    46	
+    47	In **mathematica** (`mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl`), after the existing line 78 (`expectApprox["Pi_* compensation solve", ...]`), insert:
+    48	
+    49	```mathematica
+    50	expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20];
+    51	```
+    52	
+    53	**Verification:**
+    54	After Codex applies, the verifier will run `redteam exec-sympy 142` and `redteam exec-mathematica 142` and confirm both new assertions appear AND both scripts exit 0.
+    55	
+    56	## F2 — insufficient_verification
+    57	
+    58	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:57-60` and `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:77-78`
+    59	
+    60	**Issue:**
+    61	The notes pin five canonical-point numerical targets that the script computes but does not anchor: `g_-^{F1} ≈ 0.758035078944663`, `Pi_* ≈ 1.50882951349316`, `S_q(Pi_*) ≈ 0.658075937605429`, `Sigma_0(Pi_*) ≈ 1.80594111095636`, `That(Pi_*) ≈ 0.901484054174205`. None is asserted.
+    62	
+    63	**Required change:**
+    64	In **sympy**, after the existing assertion block (after line 60), insert (using the same `abs(float(... - target)) > tol` style as the existing solver-convergence check, since `expect_close` is not in this file):
+    65	
+    66	```python
+    67	def expect_close(name, value, target, tol):
+    68	    res = abs(float(sp.N(value, 30) - sp.N(target, 30)))
+    69	    print(f"{name} residual = {res}")
+    70	    if res > tol:
+    71	        raise AssertionError(f"{name} off by {res} > tol {tol}")
+    72	
+    73	expect_close("g_-^{F1} value", gminus, sp.Float("0.7580350789446628269196808904", 30), 1e-25)
+    74	expect_close("Pi_* value",      Pi_star, sp.Float("1.5088295134931555274704351177", 30), 1e-12)
+    75	expect_close("S_q(Pi_*) value", Sq_star, sp.Float("0.6580759376054292719303153134", 30), 1e-12)
+    76	expect_close("Sigma_0(Pi_*) value", Sigma_star, sp.Float("1.8059411109563538072179672471", 30), 1e-12)
+    77	expect_close("That(Pi_*) value", That_star, sp.Float("0.9014840541742040227024016887", 30), 1e-12)
+    78	```
+    79	
+    80	(The `expect_close` def should be inserted near the top with the other helpers, around line 13 next to `expect_zero`, NOT inline in the canonical-point block. If a more idiomatic helper already exists in this file family, reuse it; otherwise define this one local.)
+    81	
+    82	In **mathematica**, after the existing `expectApprox["Pi_* compensation solve", ...]` at line 78, insert:
+    83	
+    84	```mathematica
+    85	expectApprox["g_-^{F1} value",      N[gMinus, 30],   N[Rationalize[0.7580350789446628269196808904, 0], 30], 10^-25];
+    86	expectApprox["Pi_* value",          piStar,          N[Rationalize[1.5088295134931555274704351177, 0], 30], 10^-12];
+    87	expectApprox["S_q(Pi_*) value",     sQStar,          N[Rationalize[0.6580759376054292719303153134, 0], 30], 10^-12];
+    88	expectApprox["Sigma_0(Pi_*) value", sigmaStar,       N[Rationalize[1.8059411109563538072179672471, 0], 30], 10^-12];
+    89	expectApprox["That(Pi_*) value",    tHatStar,        N[Rationalize[0.9014840541742040227024016887, 0], 30], 10^-12];
+    90	```
+    91	
+    92	Tolerances rationale: `g_-` is purely algebraic in `r_F1` so engines should match to ~25 digits; the other four depend on numerically solving for `Pi_*`, where SymPy's nsolve is configured for 30 digits and Mathematica is configured for `WorkingPrecision -> 80` — both engines agreed to ~14 digits in the prior transcript, so `1e-12` is a safe shared tolerance.
+    93	
+    94	**Verification:**
+    95	After Codex applies, verifier confirms five new assertion-pass lines per engine and both scripts exit 0.
+    96	
+    97	## F3 — mathematica_transliteration
+    98	
+    99	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:44-49` (definitions block)
+   100	
+   101	**Issue:**
+   102	The Mathematica script transcribes SymPy's symbolic forms for `gPi`, `Sq`, and `r` verbatim. Two engines transcribing the same expressions cannot independently catch a typo in either expression.
+   103	
+   104	**Required change:**
+   105	Add an independent numerical cross-check block to the Mathematica script ONLY (do not edit the SymPy script for this finding). After the definitions block (current line 49) and before the `subbanner["Core-to-mouth reduction"]` (current line 51), insert:
+   106	
+   107	```mathematica
+   108	subbanner["Independent numerical cross-checks (Mathematica)"];
+   109	
+   110	(* Independent series expansion of gPi near Pi = 0. The closed form
+   111	   gPi = 2 Pi (2 Pi exp(Pi) + pi) / ((4 Pi^2 + pi^2)(exp(Pi)-1))
+   112	   expanded to O(Pi^3) should agree with a direct Series[] of the same
+   113	   expression, cross-checking the algebraic encoding. *)
+   114	gPiSeries = Normal[Series[gPi, {piM, 0, 4}]];
+   115	gPiSampleVals = Table[
+   116	    {pVal, N[gPi /. piM -> pVal, 30] - N[gPiSeries /. piM -> pVal, 30]},
+   117	    {pVal, {1/10, 2/10, 3/10}}];
+   118	Print["g_Pi closed-form vs series residuals at piM={0.1,0.2,0.3}: ", fmt[gPiSampleVals[[All, 2]]]];
+   119	Do[
+   120	    If[Abs[gPiSampleVals[[i, 2]]] > 10^-3,
+   121	        fail["g_Pi closed-form vs series small-piM disagreement", gPiSampleVals[[i, 2]]]],
+   122	    {i, 1, Length[gPiSampleVals]}];
+   123	pass["g_Pi closed-form/series consistency at small piM"];
+   124	
+   125	(* Independent r_F1 cross-check: r_F1 = sqrt(4107 - 100 pi^2)/(10 pi)
+   126	   should satisfy 100 pi^2 (1 + r^2) = 4107. *)
+   127	rSquared = 1 + r^2;
+   128	rIdentity = FullSimplify[100*Pi^2*rSquared - 4107];
+   129	expectZero["r_F1 satisfies 100 pi^2 (1+r^2) = 4107", rIdentity];
+   130	```
+   131	
+   132	This gives two independent checks: a small-`piM` series-vs-closed-form sanity check on `gPi`, and an algebraic identity check on `r_F1` that does not appear in the SymPy script.
+   133	
+   134	**Verification:**
+   135	After Codex applies, the Mathematica script contains the two new checks in a new `subbanner` block; the SymPy script is unchanged; Mathematica exits 0.
+   136	
+   137	## F4 — hardcoded_result
+   138	
+   139	**Target:**
+   140	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:24,26`
+   141	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:44,46`
+   142	
+   143	**Issue:**
+   144	`r_F1` and the closed form of `S_q(Pi)` are inserted without a comment naming the upstream stage that derives them.
+   145	
+   146	**Required change:**
+   147	In **sympy** (`scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py`), insert a comment above line 24 and above line 26:
+   148	
+   149	Above line 24 (the `r = sp.sqrt(...)` line) insert:
+   150	```python
+   151	# r_F1: Family-1 reduced mixed-core ratio. Carried forward from upstream
+   152	# (see notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+   153	# section 1; original derivation is in the upstream "shell/mixed core" block
+   154	# referenced by paper/stages/stage_142.tex Inputs field).
+   155	```
+   156	
+   157	Above line 26 (the `Sq = ...` line) insert:
+   158	```python
+   159	# S_q(Pi) closed form: carried forward from the self-matched mouth-susceptibility
+   160	# closure (Stage 242 / Sigma_0 = (20/9) That_m^2). The closed form here is
+   161	# S(Pi, pi/2), evaluated at the fixed second argument pi/2.
+   162	```
+   163	
+   164	In **mathematica**, mirror those two comments above lines 44 and 46 using Mathematica comment syntax `(* ... *)`.
+   165	
+   166	**Verification:**
+   167	After Codex applies, four new comment blocks appear (two per script) explaining provenance. No assertion changes; no output changes.
+   168	
+   169	## F5 — paper_misalignment
+   170	
+   171	**Subtype:** target_mismatch
+   172	
+   173	**Paper side:**
+   174	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_142.tex:1` quote: `\section[Stage 142]{Stage 142: Self-Consistent Mouth-Branch Law}`
+   175	
+   176	**Script side:**
+   177	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:22` quote: `banner("STAGE 125 — SELF-CONSISTENT MOUTH-BRANCH LAW")`
+   178	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:62` quote: `banner("STAGE 125 LEDGER")`
+   179	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:39` quote: `banner["STAGE 125 — SELF-CONSISTENT MOUTH-BRANCH LAW"];`
+   180	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:80` quote: `banner["STAGE 125 LEDGER"];`
+   181	
+   182	## Resolve before fix_loop
+   183	
+   184	The scripts banner themselves as **"STAGE 125"** in four places (sympy lines 22, 62; mathematica lines 39, 80) while the paper card, the filenames, and the notes file all unambiguously identify this as **Stage 142**. (The Mathematica script's very last line, line 92, correctly says "Stage 142 Mathematica audit passed." — so even the Mathematica script is internally inconsistent.)
+   185	
+   186	Possible directions (the user picks one):
+   187	- (a) Banners are stale labels from when this stage was numbered 125 in an earlier draft — replace all four occurrences of `STAGE 125` with `STAGE 142` in the script files; no paper-side change.
+   188	- (b) There is a separate, legitimate "Stage 125" that this script was originally intended to audit, and stage_142.tex was mis-pointed at the wrong script files — verify which script corresponds to which stage and possibly rename or repath; this requires user judgment.
+   189	- (c) Stage 125 and Stage 142 are intentionally the same stage in different parts of the paper draft (unlikely; the orchestrator should flag the original numbering decision).
+   190	
+   191	Direction (a) is the strongly likely answer (filenames are `stage142_*`, paper card is `stage_142.tex`, math itself matches what the notes describe for Stage 142), but the audit policy does not allow Codex to auto-resolve a `paper_misalignment` without user confirmation.
+   192	
+   193	The orchestrator will not invoke Codex on F5 until the user has chosen a direction. F1-F4 can be applied independently.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW
+     4	========================================================================================
+     5	
+     6	----------------------------------------------------------------------------------------
+     7	Core-to-mouth reduction
+     8	----------------------------------------------------------------------------------------
+     9	r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)
+    10	g_Pi = 2*Pi*(2*Pi*exp(Pi) + pi)/((4*Pi**2 + pi**2)*(exp(Pi) - 1))
+    11	S_q(Pi) = Pi*(Pi*(-1 + exp(-Pi)*sech(pi/2)) + pi*tanh(pi/2)/2)/((1 - exp(-Pi))*(-Pi**2 + pi**2/4))
+    12	R_q(Pi) = (20*pi*Pi*(2*Pi*exp(Pi) + pi) + (1 - exp(Pi))*sqrt(4107 - 100*pi**2)*(4*Pi**2 + pi**2))**2/(4107*(1 - exp(Pi))**2*(4*Pi**2 + pi**2)**2)
+    13	Sigma0(Pi) = Pi/(-Pi*(Pi*(-1 + exp(-Pi)*sech(pi/2)) + pi*tanh(pi/2)/2)*(20*pi*Pi*(2*Pi*exp(Pi) + pi) + (1 - exp(Pi))*sqrt(4107 - 100*pi**2)*(4*Pi**2 + pi**2))**2/(4107*(1 - exp(-Pi))*(1 - exp(Pi))**2*(-Pi**2 + pi**2/4)*(4*Pi**2 + pi**2)**2) + 1)
+    14	That(Pi) = 3*sqrt(5)*sqrt(Pi)*sqrt(1/(-Pi*(Pi*(-1 + exp(-Pi)*sech(pi/2)) + pi*tanh(pi/2)/2)*(20*pi*Pi*(2*Pi*exp(Pi) + pi) + (1 - exp(Pi))*sqrt(4107 - 100*pi**2)*(4*Pi**2 + pi**2))**2/(4107*(1 - exp(-Pi))*(1 - exp(Pi))**2*(-Pi**2 + pi**2/4)*(4*Pi**2 + pi**2)**2) + 1))/10
+    15	R_q(g_minus)-1/4 = 0
+    16	
+    17	----------------------------------------------------------------------------------------
+    18	Canonical compensation point
+    19	----------------------------------------------------------------------------------------
+    20	g_minus^F1 = 0.758035078944662826919680890414
+    21	Pi_*       = 1.50882951349315552747043511772
+    22	g(Pi_*)    = 0.758035078944662822951954793784
+    23	R_q(Pi_*)  = 0.250000000000000001945042992303
+    24	S_q(Pi_*)  = 0.658075937605429271930315313436
+    25	Sigma0(Pi_*) = 1.80594111095635380721796724713
+    26	That(Pi_*)   = 0.901484054174204022702401688674
+    27	R_q(Pi_*) - 1/4 = 1.94504299230340679204603915994E-18
+    28	g_-^{F1} value residual = 1.4100888680825586e-29
+    29	Pi_* value residual = 2.070759876205156e-29
+    30	S_q(Pi_*) value residual = 3.6188994027013917e-29
+    31	Sigma_0(Pi_*) value residual = 3.214608188775623e-29
+    32	That(Pi_*) value residual = 2.6426840324903895e-29
+    33	
+    34	========================================================================================
+    35	STAGE 142 LEDGER
+    36	========================================================================================
+    37	Self-consistent Family-1 mouth branch:
+    38	  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]
+    39	  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))
+    40	  That(Pi)   = sqrt(9 Sigma0(Pi) / 20)
+    41	
+    42	Canonical point:
+    43	  Pi_*       = 1.50882951349315552747043511772
+    44	  Sigma0_*   = 1.80594111095635380721796724713
+    45	  That_*     = 0.901484054174204022702401688674
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(t):
+     6	    line="="*88
+     7	    print("\n"+line); print(t); print(line)
+     8	
+     9	def subbanner(t):
+    10	    line="-"*88
+    11	    print("\n"+line); print(t); print(line)
+    12	
+    13	def expect_zero(name, expr):
+    14	    expr = sp.simplify(sp.expand(expr))
+    15	    print(f"{name} = {expr}")
+    16	    if expr != 0:
+    17	        raise AssertionError(f"{name} is not zero")
+    18	
+    19	def expect_close(name, value, target, tol):
+    20	    res = abs(float(sp.N(value, 30) - sp.N(target, 30)))
+    21	    print(f"{name} residual = {res}")
+    22	    if res > tol:
+    23	        raise AssertionError(f"{name} off by {res} > tol {tol}")
+    24	
+    25	Pi = sp.symbols("Pi", positive=True, real=True)
+    26	pi = sp.pi
+    27	
+    28	banner("STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW")
+    29	
+    30	# r_F1: Family-1 reduced mixed-core ratio. Carried forward from upstream
+    31	# (see notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    32	# section 1; original derivation is in the upstream "shell/mixed core" block
+    33	# referenced by paper/stages/stage_142.tex Inputs field).
+    34	r = sp.sqrt(sp.Integer(4107) - 100*pi**2)/(10*pi)
+    35	gPi = 2*Pi*(2*Pi*sp.exp(Pi)+pi)/((4*Pi**2+pi**2)*(sp.exp(Pi)-1))
+    36	# S_q(Pi) closed form: carried forward from the self-matched mouth-susceptibility
+    37	# closure (Stage 140 / Sigma_0 = (20/9) That_m^2). The closed form here is
+    38	# S(Pi, pi/2), evaluated at the fixed second argument pi/2.
+    39	Sq = Pi*(((pi/2)*sp.tanh(pi/2)) + Pi*(sp.exp(-Pi)*sp.sech(pi/2)-1))/((1-sp.exp(-Pi))*(((pi/2)**2)-Pi**2))
+    40	Rq = sp.simplify((gPi-r)**2/(1+r**2))
+    41	Sigma0 = Pi/(1-Rq*Sq)
+    42	That = sp.sqrt(sp.Rational(9,20)*Sigma0)
+    43	
+    44	subbanner("Core-to-mouth reduction")
+    45	print("r_F1 =", r)
+    46	print("g_Pi =", gPi)
+    47	print("S_q(Pi) =", Sq)
+    48	print("R_q(Pi) =", Rq)
+    49	print("Sigma0(Pi) =", Sigma0)
+    50	print("That(Pi) =", That)
+    51	
+    52	gminus = sp.simplify(r - sp.Rational(1,2)*sp.sqrt(1+r**2))
+    53	Rq_minus = sp.simplify(((gminus-r)**2)/(1+r**2))
+    54	expect_zero("R_q(g_minus)-1/4", Rq_minus - sp.Rational(1,4))
+    55	
+    56	subbanner("Canonical compensation point")
+    57	Pi_star = sp.N(sp.nsolve(sp.Eq(gPi, gminus), 1.5), 30)
+    58	g_star = sp.N(gPi.subs(Pi, Pi_star), 30)
+    59	Rq_star = sp.N(Rq.subs(Pi, Pi_star), 30)
+    60	Sq_star = sp.N(Sq.subs(Pi, Pi_star), 30)
+    61	Sigma_star = sp.N(Sigma0.subs(Pi, Pi_star), 30)
+    62	That_star = sp.N(That.subs(Pi, Pi_star), 30)
+    63	
+    64	print("g_minus^F1 =", sp.N(gminus, 30))
+    65	print("Pi_*       =", Pi_star)
+    66	print("g(Pi_*)    =", g_star)
+    67	print("R_q(Pi_*)  =", Rq_star)
+    68	print("S_q(Pi_*)  =", Sq_star)
+    69	print("Sigma0(Pi_*) =", Sigma_star)
+    70	print("That(Pi_*)   =", That_star)
+    71	
+    72	if abs(float(g_star - sp.N(gminus,30))) > 1e-12:
+    73	    raise AssertionError("Pi_* does not solve the compensation equation accurately enough.")
+    74	
+    75	Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))
+    76	print(f"R_q(Pi_*) - 1/4 = {Rq_star - sp.Rational(1,4)}")
+    77	if Rq_star_residual > 1e-15:
+    78	    raise AssertionError(f"R_q(Pi_*) does not equal 1/4 at nsolve'd Pi_* (residual {Rq_star_residual}).")
+    79	
+    80	expect_close("g_-^{F1} value", gminus, sp.Float("0.7580350789446628269196808904", 30), 1e-25)
+    81	expect_close("Pi_* value",      Pi_star, sp.Float("1.5088295134931555274704351177", 30), 1e-12)
+    82	expect_close("S_q(Pi_*) value", Sq_star, sp.Float("0.6580759376054292719303153134", 30), 1e-12)
+    83	expect_close("Sigma_0(Pi_*) value", Sigma_star, sp.Float("1.8059411109563538072179672471", 30), 1e-12)
+    84	expect_close("That(Pi_*) value", That_star, sp.Float("0.9014840541742040227024016887", 30), 1e-12)
+    85	
+    86	banner("STAGE 142 LEDGER")
+    87	print("Self-consistent Family-1 mouth branch:")
+    88	print("  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]")
+    89	print("  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))")
+    90	print("  That(Pi)   = sqrt(9 Sigma0(Pi) / 20)")
+    91	print()
+    92	print("Canonical point:")
+    93	print(f"  Pi_*       = {Pi_star}")
+    94	print(f"  Sigma0_*   = {Sigma_star}")
+    95	print(f"  That_*     = {That_star}")
+
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	subbanner[title_String] := (
+    12	  Print[""];
+    13	  Print[StringRepeat["-", 88]];
+    14	  Print[title];
+    15	  Print[StringRepeat["-", 88]];
+    16	);
+    17	
+    18	pass[name_String] := Print["PASS: ", name];
+    19	fmt[expr_] := ToString[InputForm[expr]];
+    20	
+    21	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    22	  Print["FAIL: ", name];
+    23	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    24	  Exit[1];
+    25	);
+    26	
+    27	expectZero[name_String, expr_] := Module[{res},
+    28	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    29	  Print[name, " = ", fmt[res]];
+    30	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    31	];
+    32	
+    33	expectApprox[name_String, value_, target_, tol_] := Module[{delta},
+    34	  delta = N[value - target, 40];
+    35	  Print[name, " residual = ", fmt[delta]];
+    36	  If[TrueQ[Abs[delta] < tol], pass[name], fail[name, delta]];
+    37	];
+    38	
+    39	banner["STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW"];
+    40	
+    41	Clear[piM];
+    42	$Assumptions = Element[piM, Reals] && piM > 0;
+    43	
+    44	(* r_F1: Family-1 reduced mixed-core ratio. Carried forward from upstream
+    45	   (see notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+    46	   section 1; original derivation is in the upstream "shell/mixed core" block
+    47	   referenced by paper/stages/stage_142.tex Inputs field). *)
+    48	r = Sqrt[4107 - 100*Pi^2]/(10*Pi);
+    49	gPi = 2*piM*(2*piM*Exp[piM] + Pi)/((4*piM^2 + Pi^2)*(Exp[piM] - 1));
+    50	(* S_q(Pi) closed form: carried forward from the self-matched mouth-susceptibility
+    51	   closure (Stage 140 / Sigma_0 = (20/9) That_m^2). The closed form here is
+    52	   S(Pi, pi/2), evaluated at the fixed second argument pi/2. *)
+    53	sQ = piM*(((Pi/2)*Tanh[Pi/2]) + piM*(Exp[-piM]*Sech[Pi/2] - 1))/((1 - Exp[-piM])*((Pi/2)^2 - piM^2));
+    54	rQ = (gPi - r)^2/(1 + r^2);
+    55	sigma0 = piM/(1 - rQ*sQ);
+    56	tHat = Sqrt[(9/20)*sigma0];
+    57	
+    58	subbanner["Independent numerical cross-checks (Mathematica)"];
+    59	
+    60	(* Independent series expansion of gPi near Pi = 0. The closed form
+    61	   gPi = 2 Pi (2 Pi exp(Pi) + pi) / ((4 Pi^2 + pi^2)(exp(Pi)-1))
+    62	   expanded to O(Pi^3) should agree with a direct Series[] of the same
+    63	   expression, cross-checking the algebraic encoding. *)
+    64	gPiSeries = Normal[Series[gPi, {piM, 0, 4}]];
+    65	gPiSampleVals = Table[
+    66	    {pVal, N[gPi /. piM -> pVal, 30] - N[gPiSeries /. piM -> pVal, 30]},
+    67	    {pVal, {1/10, 2/10, 3/10}}];
+    68	Print["g_Pi closed-form vs series residuals at piM={0.1,0.2,0.3}: ", fmt[gPiSampleVals[[All, 2]]]];
+    69	Do[
+    70	    If[Abs[gPiSampleVals[[i, 2]]] > 10^-3,
+    71	        fail["g_Pi closed-form vs series small-piM disagreement", gPiSampleVals[[i, 2]]]],
+    72	    {i, 1, Length[gPiSampleVals]}];
+    73	pass["g_Pi closed-form/series consistency at small piM"];
+    74	
+    75	(* Independent r_F1 cross-check: r_F1 = sqrt(4107 - 100 pi^2)/(10 pi)
+    76	   should satisfy 100 pi^2 (1 + r^2) = 4107. *)
+    77	rSquared = 1 + r^2;
+    78	rIdentity = FullSimplify[100*Pi^2*rSquared - 4107];
+    79	expectZero["r_F1 satisfies 100 pi^2 (1+r^2) = 4107", rIdentity];
+    80	
+    81	subbanner["Core-to-mouth reduction"];
+    82	Print["r_F1 = ", fmt[r]];
+    83	Print["g_Pi = ", fmt[gPi]];
+    84	Print["S_q(Pi) = ", fmt[sQ]];
+    85	Print["R_q(Pi) = ", fmt[rQ]];
+    86	Print["Sigma0(Pi) = ", fmt[sigma0]];
+    87	Print["That(Pi) = ", fmt[tHat]];
+    88	
+    89	gMinus = FullSimplify[r - Sqrt[1 + r^2]/2, Assumptions -> $Assumptions];
+    90	rQMinus = FullSimplify[(gMinus - r)^2/(1 + r^2), Assumptions -> $Assumptions];
+    91	expectZero["R_q(g_minus)-1/4", rQMinus - 1/4];
+    92	
+    93	subbanner["Canonical compensation point"];
+    94	piStar = piM /. FindRoot[gPi == gMinus, {piM, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
+    95	gStar = N[gPi /. piM -> piStar, 30];
+    96	rQStar = N[rQ /. piM -> piStar, 30];
+    97	sQStar = N[sQ /. piM -> piStar, 30];
+    98	sigmaStar = N[sigma0 /. piM -> piStar, 30];
+    99	tHatStar = N[tHat /. piM -> piStar, 30];
+   100	
+   101	Print["g_minus^F1 = ", fmt[N[gMinus, 30]]];
+   102	Print["Pi_*       = ", fmt[N[piStar, 30]]];
+   103	Print["g(Pi_*)    = ", fmt[gStar]];
+   104	Print["R_q(Pi_*)  = ", fmt[rQStar]];
+   105	Print["S_q(Pi_*)  = ", fmt[sQStar]];
+   106	Print["Sigma0(Pi_*) = ", fmt[sigmaStar]];
+   107	Print["That(Pi_*)   = ", fmt[tHatStar]];
+   108	expectApprox["Pi_* compensation solve", gStar, N[gMinus, 30], 10^-12];
+   109	expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20];
+   110	expectApprox["g_-^{F1} value",      N[gMinus, 30],   N[Rationalize[0.7580350789446628269196808904, 0], 30], 10^-25];
+   111	expectApprox["Pi_* value",          piStar,          N[Rationalize[1.5088295134931555274704351177, 0], 30], 10^-12];
+   112	expectApprox["S_q(Pi_*) value",     sQStar,          N[Rationalize[0.6580759376054292719303153134, 0], 30], 10^-12];
+   113	expectApprox["Sigma_0(Pi_*) value", sigmaStar,       N[Rationalize[1.8059411109563538072179672471, 0], 30], 10^-12];
+   114	expectApprox["That(Pi_*) value",    tHatStar,        N[Rationalize[0.9014840541742040227024016887, 0], 30], 10^-12];
+   115	
+   116	banner["STAGE 142 LEDGER"];
+   117	Print["Self-consistent Family-1 mouth branch:"];
+   118	Print["  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]"];
+   119	Print["  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))"];
+   120	Print["  That(Pi)   = sqrt(9 Sigma0(Pi) / 20)"];
+   121	Print[""];
+   122	Print["Canonical point:"];
+   123	Print["  Pi_*       = ", fmt[N[piStar, 30]]];
+   124	Print["  Sigma0_*   = ", fmt[sigmaStar]];
+   125	Print["  That_*     = ", fmt[tHatStar]];
+   126	
+   127	Print[""];
+   128	Print["Stage 142 Mathematica audit passed."];
+   129	
+   130	Exit[0];
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW
+     4	========================================================================================
+     5	
+     6	----------------------------------------------------------------------------------------
+     7	Independent numerical cross-checks (Mathematica)
+     8	----------------------------------------------------------------------------------------
+     9	g_Pi closed-form vs series residuals at piM={0.1,0.2,0.3}: {3.509692718824485584098090587017468217767399342544`20.434482411251707*^-10, 1.11783244951666264929177909070271292866567577309572`21.931828539427684*^-8, 8.44437072253328227019491186765881403925133090646589`22.804374864859437*^-8}
+    10	PASS: g_Pi closed-form/series consistency at small piM
+    11	r_F1 satisfies 100 pi^2 (1+r^2) = 4107 = 0
+    12	PASS: r_F1 satisfies 100 pi^2 (1+r^2) = 4107
+    13	
+    14	----------------------------------------------------------------------------------------
+    15	Core-to-mouth reduction
+    16	----------------------------------------------------------------------------------------
+    17	r_F1 = Sqrt[4107 - 100*Pi^2]/(10*Pi)
+    18	g_Pi = (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2))
+    19	S_q(Pi) = (piM*(piM*(-1 + Sech[Pi/2]/E^piM) + (Pi*Tanh[Pi/2])/2))/((1 - E^(-piM))*(Pi^2/4 - piM^2))
+    20	R_q(Pi) = (-1/10*Sqrt[4107 - 100*Pi^2]/Pi + (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2)))^2/(1 + (4107 - 100*Pi^2)/(100*Pi^2))
+    21	Sigma0(Pi) = piM/(1 - (piM*(-1/10*Sqrt[4107 - 100*Pi^2]/Pi + (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2)))^2*(piM*(-1 + Sech[Pi/2]/E^piM) + (Pi*Tanh[Pi/2])/2))/((1 - E^(-piM))*(1 + (4107 - 100*Pi^2)/(100*Pi^2))*(Pi^2/4 - piM^2)))
+    22	That(Pi) = (3*Sqrt[piM/(1 - (piM*(-1/10*Sqrt[4107 - 100*Pi^2]/Pi + (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2)))^2*(piM*(-1 + Sech[Pi/2]/E^piM) + (Pi*Tanh[Pi/2])/2))/((1 - E^(-piM))*(1 + (4107 - 100*Pi^2)/(100*Pi^2))*(Pi^2/4 - piM^2)))])/(2*Sqrt[5])
+    23	R_q(g_minus)-1/4 = 0
+    24	PASS: R_q(g_minus)-1/4
+    25	
+    26	----------------------------------------------------------------------------------------
+    27	Canonical compensation point
+    28	----------------------------------------------------------------------------------------
+    29	g_minus^F1 = 0.7580350789446628269196808904141104577505297153687811659837`30.
+    30	Pi_*       = 1.5088295134931555830055507559542749287786371931530784314106`30.
+    31	g(Pi_*)    = 0.7580350789446628269196808904141104577505296234775693214351`30.
+    32	R_q(Pi_*)  = 0.2500000000000000000000000000000000000000000000000000000002`30.
+    33	S_q(Pi_*)  = 0.658075937605429274616601849159948812608342499425302111083`30.
+    34	Sigma0(Pi_*) = 1.8059411109563538723736729091995054268193435351723899810506`30.
+    35	That(Pi_*)   = 0.9014840541742040389645127111412155822626259873684112194619`30.
+    36	Pi_* compensation solve residual = 0``29.819280700762548
+    37	PASS: Pi_* compensation solve
+    38	R_q(Pi_*) numeric = 1/4 residual = 0``30.602059991327963
+    39	PASS: R_q(Pi_*) numeric = 1/4
+    40	g_-^{F1} value residual = 1.31256111399500512835053815639`0.9374002344427416*^-29
+    41	PASS: g_-^{F1} value
+    42	Pi_* value residual = 5.5535115638281519724266718079100010633779`13.565927510013285*^-17
+    43	PASS: Pi_* value
+    44	S_q(Pi_*) value residual = 2.6862865357756260869937569896382644447574`12.309846328436098*^-18
+    45	PASS: S_q(Pi_*) value
+    46	Sigma_0(Pi_*) value residual = 6.51557056621932314032862836561358198537436`13.256218872551043*^-17
+    47	PASS: Sigma_0(Pi_*) value
+    48	That(Pi_*) value residual = 1.62621110224186543805419607880693758958072`12.955188876884913*^-17
+    49	PASS: That(Pi_*) value
+    50	
+    51	========================================================================================
+    52	STAGE 142 LEDGER
+    53	========================================================================================
+    54	Self-consistent Family-1 mouth branch:
+    55	  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]
+    56	  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))
+    57	  That(Pi)   = sqrt(9 Sigma0(Pi) / 20)
+    58	
+    59	Canonical point:
+    60	  Pi_*       = 1.5088295134931555830055507559542749287786371931530784314106`30.
+    61	  Sigma0_*   = 1.8059411109563538723736729091995054268193435351723899810506`30.
+    62	  That_*     = 0.9014840541742040389645127111412155822626259873684112194619`30.
+    63	
+    64	Stage 142 Mathematica audit passed.
+
+codex
+---
+stage: 142
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py, moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.txt, moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl, moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt, stage_142.md, stage_142.tex]
+---
+# Codex review — stage 142
+
+## What the edit was supposed to do
+The directive required F1-F4 to be applied: add a non-tautological canonical-point check beyond the algebraic \(R_q(g_-)=1/4\), anchor five recorded numerical targets, add Mathematica-side checks to reduce transliteration risk, and add provenance comments for \(r_{F1}\) and \(S_q\). F5 was a held paper-misalignment item and was not supposed to be changed by that directive. The paper card requires this stage to audit the coupled mouth fixed point/gain-selection ledger, especially \(\Pi=\Sigma_0[1-R_q(\Pi)\mathcal S_q(\Pi)]\) and the recorded numerical fixed point.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:75-78; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:109 | \(R_q(\Pi_*)=1/4\) after solving \(g_\Pi(\Pi_*)=g_-\) | Only on solver/numeric residual; wrong self-consistent \(r\) or \(g_\Pi\) still passes | No, it follows from the same definitions and solve equation | FINDING |
+| 2 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:80; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:110 | \(g_-^{F1}\) numeric target | Yes, against external decimal target | Yes | PASS |
+| 3 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:81; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:111 | \(\Pi_*\) numeric target | Yes, against external decimal target | Yes | PASS |
+| 4 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:82-84; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:112-114 | \(S_q(\Pi_*)\), \(\Sigma_0(\Pi_*)\), \(\widehat T(\Pi_*)\) targets | Yes, against external decimal targets | Yes | PASS |
+| 5 | moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:64-73 | \(g_\Pi\) closed form compared to `Series[gPi]` | Not for copied analytic formula errors; it compares expression to its own series | No, it checks local Taylor truncation only | FINDING |
+| 6 | moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:77-79 | \(100\pi^2(1+r^2)=4107\) | Yes for many wrong \(r\) magnitudes, though sign-blind | Adjacent upstream anchor | PASS |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:75-78`; `moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:109`
+- **What's wrong:** `Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))` and `expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20];` are determined by the same construction: \(\Pi_*\) is solved from \(g_\Pi(\Pi_*)=g_-\), while \(R_q=(g_\Pi-r)^2/(1+r^2)\) and \(g_-=r-\sqrt{1+r^2}/2\). For any self-consistent but wrong \(r\) or copied wrong \(g_\Pi\), this still gives \(R_q(\Pi_*)=1/4\). The SymPy output also shows a nonzero residual `1.945...E-18` and the code uses `1e-15`, not the directive’s `1e-20`.
+- **What it should be:** Treat this only as a redundant solver-consistency check, not as the non-tautological canonical anchor. The real non-tautological checks are the external decimal targets, or an \(R_q\) check evaluated at an independently supplied \(\Pi_*\) target rather than at a point solved from the same equations.
+
+### R2 — transliteration
+- **Where:** `moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:64-73`
+- **What's wrong:** `gPiSeries = Normal[Series[gPi, {piM, 0, 4}]];` followed by comparing `gPi` to `gPiSeries` is not an independent derivation. A typo copied into `gPi` is also copied into its Taylor series, so the residuals in the saved output only show that an expression is close to its own truncated series at `0.1,0.2,0.3`.
+- **What it should be:** Compare `Series[gPi]` coefficients against independently entered expected coefficients, or encode \(g_\Pi\) a second way from the upstream mouth-source law and compare those two independent expressions.
+
+## Bottom line
+The numerical target checks added for F2 are useful and corroborated by the saved outputs, but the two checks that were supposed to remove tautology/transliteration risk do not do that. I tried to break them conceptually by perturbing \(r_{F1}\) or replacing \(g_\Pi\) with a self-consistent copied typo: the \(R_q(\Pi_*)\) check still follows from the solve equation, and the Mathematica series check still compares the typo to its own series. The most important problem is that the added “independent” evidence is still built from the same intermediates it claims to verify.
+tokens used
+23,933
+---
+stage: 142
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py, moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.txt, moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl, moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt, stage_142.md, stage_142.tex]
+---
+# Codex review — stage 142
+
+## What the edit was supposed to do
+The directive required F1-F4 to be applied: add a non-tautological canonical-point check beyond the algebraic \(R_q(g_-)=1/4\), anchor five recorded numerical targets, add Mathematica-side checks to reduce transliteration risk, and add provenance comments for \(r_{F1}\) and \(S_q\). F5 was a held paper-misalignment item and was not supposed to be changed by that directive. The paper card requires this stage to audit the coupled mouth fixed point/gain-selection ledger, especially \(\Pi=\Sigma_0[1-R_q(\Pi)\mathcal S_q(\Pi)]\) and the recorded numerical fixed point.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:75-78; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:109 | \(R_q(\Pi_*)=1/4\) after solving \(g_\Pi(\Pi_*)=g_-\) | Only on solver/numeric residual; wrong self-consistent \(r\) or \(g_\Pi\) still passes | No, it follows from the same definitions and solve equation | FINDING |
+| 2 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:80; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:110 | \(g_-^{F1}\) numeric target | Yes, against external decimal target | Yes | PASS |
+| 3 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:81; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:111 | \(\Pi_*\) numeric target | Yes, against external decimal target | Yes | PASS |
+| 4 | moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:82-84; moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:112-114 | \(S_q(\Pi_*)\), \(\Sigma_0(\Pi_*)\), \(\widehat T(\Pi_*)\) targets | Yes, against external decimal targets | Yes | PASS |
+| 5 | moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:64-73 | \(g_\Pi\) closed form compared to `Series[gPi]` | Not for copied analytic formula errors; it compares expression to its own series | No, it checks local Taylor truncation only | FINDING |
+| 6 | moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:77-79 | \(100\pi^2(1+r^2)=4107\) | Yes for many wrong \(r\) magnitudes, though sign-blind | Adjacent upstream anchor | PASS |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:75-78`; `moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:109`
+- **What's wrong:** `Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))` and `expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20];` are determined by the same construction: \(\Pi_*\) is solved from \(g_\Pi(\Pi_*)=g_-\), while \(R_q=(g_\Pi-r)^2/(1+r^2)\) and \(g_-=r-\sqrt{1+r^2}/2\). For any self-consistent but wrong \(r\) or copied wrong \(g_\Pi\), this still gives \(R_q(\Pi_*)=1/4\). The SymPy output also shows a nonzero residual `1.945...E-18` and the code uses `1e-15`, not the directive’s `1e-20`.
+- **What it should be:** Treat this only as a redundant solver-consistency check, not as the non-tautological canonical anchor. The real non-tautological checks are the external decimal targets, or an \(R_q\) check evaluated at an independently supplied \(\Pi_*\) target rather than at a point solved from the same equations.
+
+### R2 — transliteration
+- **Where:** `moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.wl:64-73`
+- **What's wrong:** `gPiSeries = Normal[Series[gPi, {piM, 0, 4}]];` followed by comparing `gPi` to `gPiSeries` is not an independent derivation. A typo copied into `gPi` is also copied into its Taylor series, so the residuals in the saved output only show that an expression is close to its own truncated series at `0.1,0.2,0.3`.
+- **What it should be:** Compare `Series[gPi]` coefficients against independently entered expected coefficients, or encode \(g_\Pi\) a second way from the upstream mouth-source law and compare those two independent expressions.
+
+## Bottom line
+The numerical target checks added for F2 are useful and corroborated by the saved outputs, but the two checks that were supposed to remove tautology/transliteration risk do not do that. I tried to break them conceptually by perturbing \(r_{F1}\) or replacing \(g_\Pi\) with a self-consistent copied typo: the \(R_q(\Pi_*)\) check still follows from the solve equation, and the Mathematica series check still compares the typo to its own series. The most important problem is that the added “independent” evidence is still built from the same intermediates it claims to verify.
+
+---
+codex_session_id: 019e7124-b135-7242-a7ee-db9e50ca28ae

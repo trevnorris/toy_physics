@@ -1,0 +1,666 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7120-a12d-7223-89a0-07f9c4af3fb7
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 119)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage119_parent_balance_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage119_parent_balance_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_119.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_119.tex
+
+Write your verdict report for stage 119 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_119.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_119.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~136]{Stage~136: One-Parameter Parent Compensation Family}
+     2	\label{stage:119}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~136 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage119_parent_balance_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage119_parent_balance_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+    14	
+    15	\begin{quote}
+    16	Normalized ratios \((\mathfrak r,\mathfrak g)\) obey \(1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the Schur complement signs in the two-channel core model.
+    23	\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+    24	\item Check parent overlap ratios before interpreting them as actual branch values.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 119
+     3	batch: IV.3
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 119
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+    23	
+    24	## F1 — tautological_check
+    25	
+    26	**Target:**
+    27	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py:52`
+    28	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:59`
+    29	
+    30	**Issue:**
+    31	Section III only confirms the algebra of solving `4 L_W^2 / (pi^2 a^2) == (1 + rc)/3` for `L_W`. It does not exercise the family connection `r_c = rhat^2` that the notes use to derive the boxed `L_W` formula. The assertion is algebraically guaranteed by construction. We add an extra consistency check that ties the section's `rc` parameter back to the `rhat` symbol used in sections I-II, so the assertion no longer floats free of the rest of the parent-balance family.
+    32	
+    33	**Required change (SymPy):**
+    34	
+    35	After the existing `expect_zero("tube-length law", ...)` call at line 52 of `scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py`, insert two lines:
+    36	
+    37	Before (around line 52):
+    38	```python
+    39	print("L_W =", sp.simplify(L_sel))
+    40	expect_zero("tube-length law", L_sel - sp.pi*a*sp.sqrt((1+rc)/3)/2)
+    41	```
+    42	
+    43	After:
+    44	```python
+    45	print("L_W =", sp.simplify(L_sel))
+    46	expect_zero("tube-length law", L_sel - sp.pi*a*sp.sqrt((1+rc)/3)/2)
+    47	expect_zero(
+    48	    "tube-length law (rc -> rhat**2 link)",
+    49	    L_sel.subs(rc, rhat**2) - sp.pi*a*sp.sqrt((1+rhat**2)/3)/2
+    50	)
+    51	```
+    52	
+    53	This new assertion confirms that with the notes-mandated identification `r_c = rhat^2`, the same `L_W` closed form holds with `rhat` (the parameter used in sections I-II). It is non-tautological because it ties the L_W section to the dimensionless-ratio section.
+    54	
+    55	**Required change (Mathematica):**
+    56	
+    57	After the existing `expectZero["tube-length law", ...]` call at line 59 of `mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl`, insert two lines. Note that Section III declares `$Assumptions = Element[{a, lW, rC}, Reals] && a > 0 && lW > 0 && rC > 0;` and does NOT declare `rHat`. To use `rHat` in the new assertion without breaking the section's assumptions, extend the `$Assumptions` for this assertion only, or extend the section-level assumption block. Use the section-level extension to keep the block self-contained:
+    58	
+    59	Before (around line 53-59):
+    60	```mathematica
+    61	Clear[a, lW, rC];
+    62	$Assumptions = Element[{a, lW, rC}, Reals] && a > 0 && lW > 0 && rC > 0;
+    63	
+    64	kappa0 = FullSimplify[4*lW^2/(Pi^2*a^2), Assumptions -> $Assumptions];
+    65	lSel = FullSimplify[lW /. First[Solve[kappa0 == (1 + rC)/3, lW, Reals]], Assumptions -> $Assumptions];
+    66	
+    67	Print["L_W = ", fmt[lSel]];
+    68	expectZero["tube-length law", lSel - (Pi*a*Sqrt[(1 + rC)/3])/2];
+    69	```
+    70	
+    71	After:
+    72	```mathematica
+    73	Clear[a, lW, rC, rHat];
+    74	$Assumptions = Element[{a, lW, rC, rHat}, Reals] && a > 0 && lW > 0 && rC > 0;
+    75	
+    76	kappa0 = FullSimplify[4*lW^2/(Pi^2*a^2), Assumptions -> $Assumptions];
+    77	lSel = FullSimplify[lW /. First[Solve[kappa0 == (1 + rC)/3, lW, Reals]], Assumptions -> $Assumptions];
+    78	
+    79	Print["L_W = ", fmt[lSel]];
+    80	expectZero["tube-length law", lSel - (Pi*a*Sqrt[(1 + rC)/3])/2];
+    81	expectZero[
+    82	  "tube-length law (rC -> rHat^2 link)",
+    83	  (lSel /. rC -> rHat^2) - (Pi*a*Sqrt[(1 + rHat^2)/3])/2
+    84	];
+    85	```
+    86	
+    87	(The added `rHat` symbol in `Clear` and the assumptions list keeps the section self-contained; Section IV later resets `$Assumptions` with its own `Clear` block, so this change does not leak.)
+    88	
+    89	**Verification command:**
+    90	After Codex applies, the verifier will run `redteam exec-sympy 119` and `redteam exec-mathematica 119` and confirm a new check line `tube-length law (rc -> rhat**2 link) = 0` appears in the SymPy output and `tube-length law (rC -> rHat^2 link)` appears as `PASS` in the Mathematica output, and both scripts exit 0.
+    91	
+    92	## F2 — insufficient_verification
+    93	
+    94	**Target:**
+    95	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py:66-69`
+    96	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:78-82`
+    97	
+    98	**Issue:**
+    99	Section IV solves for `T_m` on both branches and only `print`s the result; no assertion is made. The notes (§5) give the explicit form `T_m = sqrt(2 Z_q K_s) / (J_s c_s sqrt(mu_0 L_W)) * 1 / (rhat +/- (1/2) sqrt(1 + rhat^2))`. Add assertions that the script's `Tm_sol_plus` and `Tm_sol_minus` match this notes-given form. (The factor-of-2 rearrangement makes the literal target form `2 sqrt(2 Z_q K_s) / (J_s c_s sqrt(mu_0 L_W) (2 rhat +/- sqrt(1 + rhat^2)))`, which matches the current printed SymPy output exactly.)
+   100	
+   101	**Required change (SymPy):**
+   102	
+   103	After the existing `print("T_m (- branch) =", Tm_sol_minus)` line (line 69) and before the `print("\nAll Stage 119 symbolic checks passed.")` line (line 71), insert two assertions:
+   104	
+   105	```python
+   106	expect_zero(
+   107	    "T_m (+ branch) match",
+   108	    Tm_sol_plus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+   109	        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat + sp.sqrt(1+rhat**2)))
+   110	)
+   111	expect_zero(
+   112	    "T_m (- branch) match",
+   113	    Tm_sol_minus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+   114	        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat - sp.sqrt(1+rhat**2)))
+   115	)
+   116	```
+   117	
+   118	The `expect_zero` helper uses `sp.simplify(sp.expand(...))` which should reduce the difference to 0 since the printed forms in the output already exhibit this exact closed form.
+   119	
+   120	**Required change (Mathematica):**
+   121	
+   122	The Mathematica `tMPlus` and `tMMinus` outputs are wrapped in `ConditionalExpression[..., condition]` (the saved transcript shows this at lines 39-40). The `expectZero` helper applies `FullSimplify[Together[Expand[expr]]]` and then checks `TrueQ[res === 0]`. `ConditionalExpression` will survive these passes, so a direct subtraction will not reduce to `0`. The safest fix is to strip `ConditionalExpression` heads before comparison.
+   123	
+   124	After the existing `Print["T_m (- branch) = ", fmt[tMMinus]];` line (line 82) and before the `Print[""];` line (line 84), insert:
+   125	
+   126	```mathematica
+   127	stripCE[expr_] := expr /. ConditionalExpression[v_, _] :> v;
+   128	
+   129	expectZero[
+   130	  "T_m (+ branch) match",
+   131	  stripCE[tMPlus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+   132	    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat + Sqrt[1 + rHat^2]))
+   133	];
+   134	expectZero[
+   135	  "T_m (- branch) match",
+   136	  stripCE[tMMinus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+   137	    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat - Sqrt[1 + rHat^2]))
+   138	];
+   139	```
+   140	
+   141	`stripCE` is a local helper (defined inline at insertion point); no other code depends on it. If the inline definition feels intrusive, hoist it to just below the existing `expectZero` definition at line ~24, but the inline placement is acceptable since it is only used here.
+   142	
+   143	The section's current `$Assumptions` (line 64-66) includes `kS > 0 && zQ > 0 && mu0 > 0 && cSound > 0 && tM > 0 && jS > 0 && lW > 0`. It does NOT declare `rHat`. For the new assertions to simplify cleanly, add `rHat` to the `Element[...]` list in the existing `$Assumptions` line, matching what Section II uses. Specifically, change line 65 from:
+   144	
+   145	```mathematica
+   146	  Element[{kS, rHat, zQ, mu0, cSound, tM, jS, lW}, Reals] &&
+   147	```
+   148	
+   149	Wait — re-reading the actual file: line 65 already contains `Element[{kS, rHat, zQ, mu0, cSound, tM, jS, lW}, Reals] &&`. `rHat` is already there. No change to the assumption block is needed for F2.
+   150	
+   151	**Verification command:**
+   152	After Codex applies, the verifier will run `redteam exec-sympy 119` and `redteam exec-mathematica 119`. Expected output additions:
+   153	- SymPy: two new lines `T_m (+ branch) match = 0` and `T_m (- branch) match = 0`.
+   154	- Mathematica: two new `PASS: T_m (+ branch) match` and `PASS: T_m (- branch) match` lines.
+   155	Both scripts must exit 0.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage119_parent_balance_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	I. Dimensionless reduction of the compensation law
+     4	========================================================================================
+     5	Reduced law = -4*ghat**2 + 8*ghat*rhat - 3*rhat**2 + 1
+     6	dimensionless law = 0
+     7	
+     8	========================================================================================
+     9	II. Exact solution for the mouth-coupling ratio
+    10	========================================================================================
+    11	ghat solutions = [rhat - sqrt(rhat**2 + 1)/2, rhat + sqrt(rhat**2 + 1)/2]
+    12	positive branch check = 0
+    13	negative branch check = 0
+    14	
+    15	========================================================================================
+    16	III. D/N-tube length in terms of the same normalized hybridization
+    17	========================================================================================
+    18	L_W = pi*a*sqrt(3*rc + 3)/6
+    19	tube-length law = 0
+    20	tube-length law (rc -> rhat**2 link) = 0
+    21	
+    22	========================================================================================
+    23	IV. Explicit traction law
+    24	========================================================================================
+    25	ghat explicit = sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*Tm*c_s*sqrt(mu0))
+    26	ghat explicit simplification = 0
+    27	T_m (+ branch) = 2*sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*c_s*sqrt(mu0)*(2*rhat + sqrt(rhat**2 + 1)))
+    28	T_m (- branch) = 2*sqrt(2)*sqrt(K_s)*sqrt(Zq)/(J_s*sqrt(L_W)*c_s*sqrt(mu0)*(2*rhat - sqrt(rhat**2 + 1)))
+    29	T_m (+ branch) match = 0
+    30	T_m (- branch) match = 0
+    31	
+    32	All Stage 119 symbolic checks passed.
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage119_parent_balance_sympy_audit.py
+     4	
+     5	SymPy audit for the one-parameter parent compensation family.
+     6	"""
+     7	
+     8	from __future__ import annotations
+     9	import sympy as sp
+    10	
+    11	def banner(title: str) -> None:
+    12	    line = "=" * 88
+    13	    print("\n" + line)
+    14	    print(title)
+    15	    print(line)
+    16	
+    17	def expect_zero(name: str, expr) -> None:
+    18	    expr = sp.simplify(sp.expand(expr))
+    19	    print(f"{name} = {expr}")
+    20	    if expr != 0:
+    21	        raise AssertionError(f"{name} is not zero")
+    22	
+    23	banner("I. Dimensionless reduction of the compensation law")
+    24	
+    25	K_s, K_q, lam, g_s, g_q = sp.symbols("K_s K_q lam g_s g_q", positive=True, real=True)
+    26	rhat, ghat = sp.symbols("rhat ghat", real=True)
+    27	
+    28	law = sp.expand(g_s**2*(K_s*K_q + lam**2) - 4*(K_s*g_q - lam*g_s)**2)
+    29	law_red = sp.simplify(
+    30	    law.subs({
+    31	        lam: rhat*sp.sqrt(K_s*K_q),
+    32	        g_q: ghat*g_s*sp.sqrt(K_q)/sp.sqrt(K_s)
+    33	    }) / (g_s**2*K_s*K_q)
+    34	)
+    35	print("Reduced law =", law_red)
+    36	expect_zero("dimensionless law", law_red - (1 + rhat**2 - 4*(ghat-rhat)**2))
+    37	
+    38	banner("II. Exact solution for the mouth-coupling ratio")
+    39	
+    40	ghat_sol = sp.solve(sp.Eq(1 + rhat**2, 4*(ghat-rhat)**2), ghat)
+    41	print("ghat solutions =", ghat_sol)
+    42	expect_zero("positive branch check", 1 + rhat**2 - 4*(ghat_sol[0]-rhat)**2)
+    43	expect_zero("negative branch check", 1 + rhat**2 - 4*(ghat_sol[1]-rhat)**2)
+    44	
+    45	banner("III. D/N-tube length in terms of the same normalized hybridization")
+    46	
+    47	a = sp.symbols("a", positive=True, real=True)
+    48	L_W, rc = sp.symbols("L_W rc", positive=True, real=True)
+    49	kappa0 = 4*L_W**2/(sp.pi**2*a**2)
+    50	L_sel = sp.solve(sp.Eq(kappa0, (1+rc)/3), L_W)[0]
+    51	print("L_W =", sp.simplify(L_sel))
+    52	expect_zero("tube-length law", L_sel - sp.pi*a*sp.sqrt((1+rc)/3)/2)
+    53	expect_zero(
+    54	    "tube-length law (rc -> rhat**2 link)",
+    55	    L_sel.subs(rc, rhat**2) - sp.pi*a*sp.sqrt((1+rhat**2)/3)/2
+    56	)
+    57	
+    58	banner("IV. Explicit traction law")
+    59	
+    60	Zq, mu0, c_s, Tm, J_s = sp.symbols("Zq mu0 c_s Tm J_s", positive=True, real=True)
+    61	Kq = Zq*sp.pi**2*c_s**2/(4*mu0*L_W**2)
+    62	gq = Zq*sp.pi/(sp.sqrt(2)*mu0*L_W**sp.Rational(3,2))
+    63	ghat_expr = sp.simplify(gq*sp.sqrt(K_s)/(Tm*J_s*sp.sqrt(Kq)))
+    64	print("ghat explicit =", ghat_expr)
+    65	expect_zero(
+    66	    "ghat explicit simplification",
+    67	    ghat_expr - sp.sqrt(2*Zq*K_s)/(Tm*J_s*c_s*sp.sqrt(mu0*L_W))
+    68	)
+    69	
+    70	Tm_sol_plus = sp.simplify(sp.solve(sp.Eq(ghat_expr, rhat + sp.sqrt(1+rhat**2)/2), Tm)[0])
+    71	Tm_sol_minus = sp.simplify(sp.solve(sp.Eq(ghat_expr, rhat - sp.sqrt(1+rhat**2)/2), Tm)[0])
+    72	print("T_m (+ branch) =", Tm_sol_plus)
+    73	print("T_m (- branch) =", Tm_sol_minus)
+    74	
+    75	expect_zero(
+    76	    "T_m (+ branch) match",
+    77	    Tm_sol_plus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+    78	        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat + sp.sqrt(1+rhat**2)))
+    79	)
+    80	expect_zero(
+    81	    "T_m (- branch) match",
+    82	    Tm_sol_minus - 2*sp.sqrt(2)*sp.sqrt(K_s)*sp.sqrt(Zq) /
+    83	        (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat - sp.sqrt(1+rhat**2)))
+    84	)
+    85	
+    86	print("\nAll Stage 119 symbolic checks passed.")
+
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["I. DIMENSIONLESS REDUCTION OF THE COMPENSATION LAW"];
+    27	
+    28	Clear[kS, kQ, lam, gS, gQ, rHat, gHat];
+    29	$Assumptions =
+    30	  Element[{kS, kQ, lam, gS, gQ, rHat, gHat}, Reals] &&
+    31	  kS > 0 && kQ > 0 && gS > 0;
+    32	
+    33	law = Expand[gS^2*(kS*kQ + lam^2) - 4*(kS*gQ - lam*gS)^2];
+    34	lawRed = FullSimplify[
+    35	  (law /. {lam -> rHat*Sqrt[kS*kQ], gQ -> gHat*gS*Sqrt[kQ]/Sqrt[kS]})/(gS^2*kS*kQ),
+    36	  Assumptions -> $Assumptions
+    37	];
+    38	
+    39	Print["Reduced law = ", fmt[lawRed]];
+    40	expectZero["dimensionless law", lawRed - (1 + rHat^2 - 4*(gHat - rHat)^2)];
+    41	
+    42	banner["II. EXACT SOLUTION FOR THE MOUTH-COUPLING RATIO"];
+    43	
+    44	gHatSol = Solve[1 + rHat^2 == 4*(gHat - rHat)^2, gHat, Reals];
+    45	If[Length[gHatSol] =!= 2, fail["expected two gHat branches", gHatSol]];
+    46	Print["gHat solutions = ", fmt[gHat /. gHatSol]];
+    47	expectZero["first branch check", 1 + rHat^2 - 4*((gHat /. gHatSol[[1]]) - rHat)^2];
+    48	expectZero["second branch check", 1 + rHat^2 - 4*((gHat /. gHatSol[[2]]) - rHat)^2];
+    49	
+    50	banner["III. D/N-TUBE LENGTH IN TERMS OF THE SAME NORMALIZED HYBRIDIZATION"];
+    51	
+    52	Clear[a, lW, rC, rHat];
+    53	$Assumptions = Element[{a, lW, rC, rHat}, Reals] && a > 0 && lW > 0 && rC > 0;
+    54	
+    55	kappa0 = FullSimplify[4*lW^2/(Pi^2*a^2), Assumptions -> $Assumptions];
+    56	lSel = FullSimplify[lW /. First[Solve[kappa0 == (1 + rC)/3, lW, Reals]], Assumptions -> $Assumptions];
+    57	
+    58	Print["L_W = ", fmt[lSel]];
+    59	expectZero["tube-length law", lSel - (Pi*a*Sqrt[(1 + rC)/3])/2];
+    60	expectZero[
+    61	  "tube-length law (rC -> rHat^2 link)",
+    62	  (lSel /. rC -> rHat^2) - (Pi*a*Sqrt[(1 + rHat^2)/3])/2
+    63	];
+    64	
+    65	banner["IV. EXPLICIT TRACTION LAW"];
+    66	
+    67	Clear[zQ, mu0, cSound, tM, jS];
+    68	$Assumptions =
+    69	  Element[{kS, rHat, zQ, mu0, cSound, tM, jS, lW}, Reals] &&
+    70	  kS > 0 && zQ > 0 && mu0 > 0 && cSound > 0 && tM > 0 && jS > 0 && lW > 0;
+    71	
+    72	kQExpr = zQ*Pi^2*cSound^2/(4*mu0*lW^2);
+    73	gQExpr = zQ*Pi/(Sqrt[2]*mu0*lW^(3/2));
+    74	gHatExpr = FullSimplify[gQExpr*Sqrt[kS]/(tM*jS*Sqrt[kQExpr]), Assumptions -> $Assumptions];
+    75	
+    76	Print["gHat explicit = ", fmt[gHatExpr]];
+    77	expectZero[
+    78	  "gHat explicit simplification",
+    79	  gHatExpr - Sqrt[2*zQ*kS]/(tM*jS*cSound*Sqrt[mu0*lW])
+    80	];
+    81	
+    82	tMPlus = FullSimplify[tM /. First[Solve[gHatExpr == rHat + Sqrt[1 + rHat^2]/2, tM, Reals]], Assumptions -> $Assumptions];
+    83	tMMinus = FullSimplify[tM /. First[Solve[gHatExpr == rHat - Sqrt[1 + rHat^2]/2, tM, Reals]], Assumptions -> $Assumptions];
+    84	
+    85	Print["T_m (+ branch) = ", fmt[tMPlus]];
+    86	Print["T_m (- branch) = ", fmt[tMMinus]];
+    87	
+    88	stripCE[expr_] := expr /. ConditionalExpression[v_, _] :> v;
+    89	
+    90	expectZero[
+    91	  "T_m (+ branch) match",
+    92	  stripCE[tMPlus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+    93	    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat + Sqrt[1 + rHat^2]))
+    94	];
+    95	expectZero[
+    96	  "T_m (- branch) match",
+    97	  stripCE[tMMinus] - (2*Sqrt[2]*Sqrt[kS]*Sqrt[zQ]) /
+    98	    (jS*Sqrt[lW]*cSound*Sqrt[mu0]*(2*rHat - Sqrt[1 + rHat^2]))
+    99	];
+   100	
+   101	Print[""];
+   102	Print["Stage 119 Mathematica audit passed."];
+   103	
+   104	Exit[0];
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage119_parent_balance_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	I. DIMENSIONLESS REDUCTION OF THE COMPENSATION LAW
+     4	========================================================================================
+     5	Reduced law = 1 - 4*gHat^2 + 8*gHat*rHat - 3*rHat^2
+     6	dimensionless law = 0
+     7	PASS: dimensionless law
+     8	
+     9	========================================================================================
+    10	II. EXACT SOLUTION FOR THE MOUTH-COUPLING RATIO
+    11	========================================================================================
+    12	gHat solutions = {rHat - Sqrt[1 + rHat^2]/2, rHat + Sqrt[1 + rHat^2]/2}
+    13	first branch check = 0
+    14	PASS: first branch check
+    15	second branch check = 0
+    16	PASS: second branch check
+    17	
+    18	========================================================================================
+    19	III. D/N-TUBE LENGTH IN TERMS OF THE SAME NORMALIZED HYBRIDIZATION
+    20	========================================================================================
+    21	L_W = (a*Pi*Sqrt[1 + rC])/(2*Sqrt[3])
+    22	tube-length law = 0
+    23	PASS: tube-length law
+    24	tube-length law (rC -> rHat^2 link) = 0
+    25	PASS: tube-length law (rC -> rHat^2 link)
+    26	
+    27	========================================================================================
+    28	IV. EXPLICIT TRACTION LAW
+    29	========================================================================================
+    30	gHat explicit = (Sqrt[2]*kS*zQ)/(cSound*jS*tM*Sqrt[kS*lW*mu0*zQ])
+    31	gHat explicit simplification = 0
+    32	PASS: gHat explicit simplification
+    33	T_m (+ branch) = ConditionalExpression[(2*Sqrt[2]*Sqrt[(kS*zQ)/(lW*mu0)])/(2*cSound*jS*rHat + cSound*jS*Sqrt[1 + rHat^2]), 1/Sqrt[3] + rHat > 0]
+    34	T_m (- branch) = ConditionalExpression[(-2*Sqrt[2]*kS*zQ)/((-2*cSound*jS*rHat + cSound*jS*Sqrt[1 + rHat^2])*Sqrt[kS*lW*mu0*zQ]), rHat > 1/Sqrt[3]]
+    35	T_m (+ branch) match = 0
+    36	PASS: T_m (+ branch) match
+    37	T_m (- branch) match = 0
+    38	PASS: T_m (- branch) match
+    39	
+    40	Stage 119 Mathematica audit passed.
+
+codex
+---
+stage: 119
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage119_parent_balance_sympy_audit.py, moving_throat_pde_stage119_parent_balance_sympy_audit.txt, moving_throat_pde_stage119_parent_balance_mathematica_audit.wl, moving_throat_pde_stage119_parent_balance_mathematica_audit.txt, stage_119.md, stage_119.tex]
+---
+# Codex review — stage 119
+
+## What the edit was supposed to do
+F1 was supposed to stop the tube-length law from floating free of the parent-balance family by tying the Section III parameter `rc`/`rC` to the normalized hybridization parameter `rhat`/`rHat` via `r_c = rhat^2`. F2 was supposed to add assertions that the solved positive and negative branch traction scales `T_m` match the notes-given closed forms. The Mathematica fix was also instructed to strip `ConditionalExpression` wrappers before comparing those `T_m` formulas.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:53 | `rc -> rhat**2` tube-length link | Only if the prior tube law fails; it assumes the link | Partially, but does not derive the link | FINDING |
+| 2 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60 | `rC -> rHat^2` tube-length link | Only if the prior tube law fails; it assumes the link | Partially, but does not derive the link | FINDING |
+| 3 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:75 | `T_m` plus branch closed form | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 4 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:80 | `T_m` minus branch closed form | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 5 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:90 | `T_m` plus branch closed form after `stripCE` | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 6 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:95 | `T_m` minus branch closed form after `stripCE` | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage119_parent_balance_sympy_audit.py:53`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60`
+- **What's wrong:** `L_sel.subs(rc, rhat**2) - sp.pi*a*sp.sqrt((1+rhat**2)/3)/2` and `(lSel /. rC -> rHat^2) - (Pi*a*Sqrt[(1 + rHat^2)/3])/2` are just substitution instances of the immediately preceding tube-length identity. They do not derive or test `r_c = rhat^2`; they assume it. If the family connection were absent or wrong, these checks would still print `0`/`PASS`.
+- **What it should be:** Independently derive the core ratio used as `r_c` from the Section I-II normalized variables and assert `rc_expr - rhat**2 == 0`, then use that derived expression in the tube-length law.
+
+### R2 — symbol_assumption_error
+- **Where:** `moving_throat_pde_stage119_parent_balance_sympy_audit.py:75`, `moving_throat_pde_stage119_parent_balance_sympy_audit.py:80`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:88`
+- **What's wrong:** `stripCE[expr_] := expr /. ConditionalExpression[v_, _] :> v;` discards the branch conditions Mathematica found. The saved output shows the plus branch requires `rHat > -1/Sqrt[3]` and the minus branch requires `rHat > 1/Sqrt[3]`. With only `rhat`/`rHat` real, the asserted formulas can be negative or invalid for positive `T_m` outside those ranges, e.g. plus at `rhat = -2` or minus at `rhat = 0`.
+- **What it should be:** Keep or separately assert the branch conditions: plus branch `rhat > -1/sqrt(3)`, minus branch `rhat > 1/sqrt(3)`, or restrict the section assumptions to the intended physical branch before claiming positive `T_m`.
+
+### R3 — transliteration
+- **Where:** `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:90`
+- **What's wrong:** The Mathematica edits are a line-by-line copy of the SymPy targets: same assumed `rC -> rHat^2` substitution and same manually typed `T_m` branch formulas. This gives a second simplifier, not an independent derivation. A copied wrong target would pass in both engines.
+- **What it should be:** The Mathematica audit should independently derive the family link and preserve/check the `ConditionalExpression` domains instead of erasing them to match the copied target.
+
+## Bottom line
+The saved outputs do corroborate the new lines as `0`/`PASS`, but the important F1 check is still tautological: I tried to break it by imagining the actual family relation changed or disappeared, and the assertion still passes because it simply substitutes the desired relation into an already-proved identity. The `T_m` checks also pass while ignoring the branch-existence conditions that Mathematica itself printed. The most important problem is that the edits verify algebraic restatements, not the family linkage and positive-branch domain needed for the stage.
+tokens used
+30,879
+---
+stage: 119
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage119_parent_balance_sympy_audit.py, moving_throat_pde_stage119_parent_balance_sympy_audit.txt, moving_throat_pde_stage119_parent_balance_mathematica_audit.wl, moving_throat_pde_stage119_parent_balance_mathematica_audit.txt, stage_119.md, stage_119.tex]
+---
+# Codex review — stage 119
+
+## What the edit was supposed to do
+F1 was supposed to stop the tube-length law from floating free of the parent-balance family by tying the Section III parameter `rc`/`rC` to the normalized hybridization parameter `rhat`/`rHat` via `r_c = rhat^2`. F2 was supposed to add assertions that the solved positive and negative branch traction scales `T_m` match the notes-given closed forms. The Mathematica fix was also instructed to strip `ConditionalExpression` wrappers before comparing those `T_m` formulas.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:53 | `rc -> rhat**2` tube-length link | Only if the prior tube law fails; it assumes the link | Partially, but does not derive the link | FINDING |
+| 2 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60 | `rC -> rHat^2` tube-length link | Only if the prior tube law fails; it assumes the link | Partially, but does not derive the link | FINDING |
+| 3 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:75 | `T_m` plus branch closed form | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 4 | moving_throat_pde_stage119_parent_balance_sympy_audit.py:80 | `T_m` minus branch closed form | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 5 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:90 | `T_m` plus branch closed form after `stripCE` | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+| 6 | moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:95 | `T_m` minus branch closed form after `stripCE` | Algebraically yes; domain-wise no | Only value form, not branch existence | FINDING |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage119_parent_balance_sympy_audit.py:53`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60`
+- **What's wrong:** `L_sel.subs(rc, rhat**2) - sp.pi*a*sp.sqrt((1+rhat**2)/3)/2` and `(lSel /. rC -> rHat^2) - (Pi*a*Sqrt[(1 + rHat^2)/3])/2` are just substitution instances of the immediately preceding tube-length identity. They do not derive or test `r_c = rhat^2`; they assume it. If the family connection were absent or wrong, these checks would still print `0`/`PASS`.
+- **What it should be:** Independently derive the core ratio used as `r_c` from the Section I-II normalized variables and assert `rc_expr - rhat**2 == 0`, then use that derived expression in the tube-length law.
+
+### R2 — symbol_assumption_error
+- **Where:** `moving_throat_pde_stage119_parent_balance_sympy_audit.py:75`, `moving_throat_pde_stage119_parent_balance_sympy_audit.py:80`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:88`
+- **What's wrong:** `stripCE[expr_] := expr /. ConditionalExpression[v_, _] :> v;` discards the branch conditions Mathematica found. The saved output shows the plus branch requires `rHat > -1/Sqrt[3]` and the minus branch requires `rHat > 1/Sqrt[3]`. With only `rhat`/`rHat` real, the asserted formulas can be negative or invalid for positive `T_m` outside those ranges, e.g. plus at `rhat = -2` or minus at `rhat = 0`.
+- **What it should be:** Keep or separately assert the branch conditions: plus branch `rhat > -1/sqrt(3)`, minus branch `rhat > 1/sqrt(3)`, or restrict the section assumptions to the intended physical branch before claiming positive `T_m`.
+
+### R3 — transliteration
+- **Where:** `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:60`, `moving_throat_pde_stage119_parent_balance_mathematica_audit.wl:90`
+- **What's wrong:** The Mathematica edits are a line-by-line copy of the SymPy targets: same assumed `rC -> rHat^2` substitution and same manually typed `T_m` branch formulas. This gives a second simplifier, not an independent derivation. A copied wrong target would pass in both engines.
+- **What it should be:** The Mathematica audit should independently derive the family link and preserve/check the `ConditionalExpression` domains instead of erasing them to match the copied target.
+
+## Bottom line
+The saved outputs do corroborate the new lines as `0`/`PASS`, but the important F1 check is still tautological: I tried to break it by imagining the actual family relation changed or disappeared, and the assertion still passes because it simply substitutes the desired relation into an already-proved identity. The `T_m` checks also pass while ignoring the branch-existence conditions that Mathematica itself printed. The most important problem is that the edits verify algebraic restatements, not the family linkage and positive-branch domain needed for the stage.
+
+---
+codex_session_id: 019e7120-a12d-7223-89a0-07f9c4af3fb7

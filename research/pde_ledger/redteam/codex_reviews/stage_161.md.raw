@@ -1,0 +1,793 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7127-8f75-7a10-b747-55301239be72
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 161)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_161.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_161.tex
+
+Write your verdict report for stage 161 now, following the format above exactly.
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_161.tex | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 161]{Stage 161: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility}
+     2	\label{stage:161}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~161 is a co-evolving core--mouth transport ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point, and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate \(\delta_\perp\).}
+    14	
+    15	\begin{quote}
+    16	Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check deviations are taken about the renormalized co-evolving canonical point.
+    23	\item Check even-preservation constraints are imposed before reading the remaining odd defect.
+    24	\item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Part V and downstream branch-realization, orbit-lock, and same-charge audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_161.md | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 161
+     3	batch: IV.6
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 3
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 161
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    17	
+    18	Do NOT run python or mathematica. Only edit files.
+    19	
+    20	Do NOT touch paper.tex, notes/, or any prose documents.
+    21	
+    22	## F1 — tautological_check
+    23	
+    24	**Target:**
+    25	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:71-80`
+    26	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:65-70`
+    27	
+    28	**Issue:**
+    29	The "d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)" check in both engines is `depsg_branch - depsg_branch == 0` by construction (after the symbolic rename `dln_gamma0 -> 9 dgamma0/(1+rc)` in sympy, or with no rename at all in Mathematica). The branch-point relation `gamma_{0,*} = (1+r_c)/9` — which is the actual physics that turns `9 dgamma0/(1+rc)` into `d ln gamma_0` — is never exercised.
+    30	
+    31	**Required change (sympy):**
+    32	Replace the block at lines 70-80 with a derivation that starts from `gamma_0 = (1+r_c) (1 + eps_gamma) / 9`, computes `eps_gamma` exactly, takes its first variation, and rewrites the result in terms of `d ln gamma_0` using the branch-point relation `gamma_{0,*} = (1+r_c)/9`. Suggested edit (before/after):
+    33	
+    34	BEFORE (lines 70-80):
+    35	```python
+    36	# Odd similarity-defect variable and its first variation.
+    37	dgamma0 = sp.symbols("d_gamma0", real=True)
+    38	depsg_branch = sp.simplify(9 * dgamma0 / (1 + rc) - drc / (1 + rc))
+    39	print("d eps_gamma =", depsg_branch)
+    40	
+    41	dln_gamma0, dln_ratio = sp.symbols("dln_gamma0 dln_ratio", real=True)
+    42	# On the compensated branch gamma0_* = (1+r_c)/9, so d ln gamma0 = 9 dgamma0/(1+r_c).
+    43	expect_zero(
+    44	    "d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)",
+    45	    depsg_branch - (dln_gamma0 - drc / (1 + rc)).subs(dln_gamma0, 9 * dgamma0 / (1 + rc)),
+    46	)
+    47	```
+    48	
+    49	AFTER:
+    50	```python
+    51	# Odd similarity-defect variable from gamma0 = (1+r_c)(1+eps_gamma)/9.
+    52	# Solve for eps_gamma exactly, then linearize about the branch.
+    53	gamma0_sym, dgamma0 = sp.symbols("gamma0 d_gamma0", positive=True, real=True)
+    54	epsg_exact = sp.simplify(9 * gamma0_sym / (1 + rc) - 1)
+    55	print("eps_gamma =", epsg_exact)
+    56	depsg_direct = sp.diff(epsg_exact, gamma0_sym) * dgamma0 + sp.diff(epsg_exact, rc) * drc
+    57	# On the compensated branch gamma0_* = (1+r_c)/9 (notes section 1).
+    58	depsg_branch = sp.simplify(depsg_direct.subs(gamma0_sym, (1 + rc) / 9))
+    59	print("d eps_gamma =", depsg_branch)
+    60	
+    61	dln_gamma0 = sp.symbols("dln_gamma0", real=True)
+    62	# On the branch, d gamma_0 = gamma_{0,*} d ln gamma_0 = (1+r_c) d ln gamma_0 / 9.
+    63	# Substitute this physical relation, NOT a bare symbolic rename.
+    64	expect_zero(
+    65	    "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
+    66	    depsg_direct.subs(dgamma0, (1 + rc) * dln_gamma0 / 9) - (dln_gamma0 - drc / (1 + rc)),
+    67	)
+    68	```
+    69	
+    70	Note: keep the subsequent `diff_identity` block (lines 81-88) but make sure it still references the now-renamed `depsg_branch`. The `depsg_branch` produced by the AFTER block evaluates to `(9 dgamma0 - drc)/(9(1+rc)/9 * 9/(1+rc) ...)` — verify symbolically: `epsg_exact = 9 gamma0/(1+rc) - 1`. `d/d gamma0 = 9/(1+rc)`. `d/d rc = -9 gamma0/(1+rc)^2`. Substituting `gamma0 -> (1+rc)/9`: `-9 (1+rc)/(9 (1+rc)^2) = -1/(1+rc)`. So `depsg_branch = 9 dgamma0/(1+rc) - drc/(1+rc)`. Identical to the old `depsg_branch`, so downstream code at lines 81-88 remains valid.
+    71	
+    72	**Required change (mathematica):**
+    73	Mirror in Mathematica syntax but re-derive — do NOT translate the python edit line for line. Replace lines 65-70 with:
+    74	
+    75	BEFORE (lines 65-70):
+    76	```mathematica
+    77	depsGBranch = FullSimplify[9*dgamma0/(1 + rc) - drc/(1 + rc)];
+    78	Print["d eps_gamma = ", fmt[depsGBranch]];
+    79	expectZero[
+    80	  "d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)",
+    81	  depsGBranch - (9*dgamma0/(1 + rc) - drc/(1 + rc))
+    82	];
+    83	```
+    84	
+    85	AFTER:
+    86	```mathematica
+    87	Clear[gamma0Sym, dgamma0, dlnGamma0];
+    88	$Assumptions = $Assumptions && Element[{gamma0Sym, dgamma0, dlnGamma0}, Reals] && gamma0Sym > 0;
+    89	epsGExact = FullSimplify[9*gamma0Sym/(1 + rc) - 1];
+    90	Print["eps_gamma = ", fmt[epsGExact]];
+    91	depsGDirect = D[epsGExact, gamma0Sym]*dgamma0 + D[epsGExact, rc]*drc;
+    92	depsGBranch = FullSimplify[depsGDirect /. gamma0Sym -> (1 + rc)/9];
+    93	Print["d eps_gamma = ", fmt[depsGBranch]];
+    94	(* On the branch d gamma_0 = (1+r_c)/9 * d ln gamma_0. *)
+    95	expectZero[
+    96	  "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
+    97	  (depsGDirect /. dgamma0 -> (1 + rc)*dlnGamma0/9) - (dlnGamma0 - drc/(1 + rc))
+    98	];
+    99	```
+   100	
+   101	**Verification:**
+   102	After Codex applies, the verifier will run sympy and mathematica audits and confirm both still PASS (exit 0) AND that the new printed lines `eps_gamma = -1 + 9 gamma0/(1+r_c)` (or equivalent) appear, AND that the assertion label changed from "d eps_gamma rewritten as d ln gamma0 - d ln(1+r_c)" to "d eps_gamma = d ln gamma0 - d ln(1+r_c)".
+   103	
+   104	## F2 — tautological_check
+   105	
+   106	**Target:**
+   107	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:46-52`
+   108	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:37-43`
+   109	
+   110	**Issue:**
+   111	The "linearized slippage law" check constructs a polynomial `((1+rc_star + eps*drc)/9)*(eps*deps_g - eps*deps_k)` purely as an `eps`-parameterized stand-in, then extracts its `eps^1` coefficient and compares against the hand-known answer. The check verifies `Series`/`Coefficient` machinery, not that the linearization of the exact `B_W` from line 42 actually yields `(1+r_c*)*(deps_g - deps_k)/9`.
+   112	
+   113	**Required change (sympy):**
+   114	Linearize the exact `BW` (line 42) directly. Replace lines 46-52:
+   115	
+   116	BEFORE:
+   117	```python
+   118	# Linearized law about eps_kappa = eps_gamma = 0.
+   119	eps = sp.symbols("eps", real=True)
+   120	rc_star, drc, deps_k, deps_g = sp.symbols("r_c_star dr_c d_eps_k d_eps_g", real=True)
+   121	BW_lin = sp.expand((((1 + rc_star + eps * drc) / 9) * (eps * deps_g - eps * deps_k)).series(eps, 0, 2).removeO())
+   122	dBW = sp.expand(BW_lin.coeff(eps, 1))
+   123	print("dB_W =", dBW)
+   124	expect_zero("linearized slippage law", dBW - (1 + rc_star) * (deps_g - deps_k) / 9)
+   125	```
+   126	
+   127	AFTER:
+   128	```python
+   129	# Linearized law about eps_kappa = eps_gamma = 0 derived from the exact BW above.
+   130	eps = sp.symbols("eps", real=True)
+   131	rc_star, drc, deps_k, deps_g = sp.symbols("r_c_star dr_c d_eps_k d_eps_g", real=True)
+   132	BW_pert = BW.subs({eps_kappa: eps * deps_k, eps_gamma: eps * deps_g, rc: rc_star + eps * drc})
+   133	dBW = sp.simplify(sp.diff(BW_pert, eps).subs(eps, 0))
+   134	print("dB_W =", dBW)
+   135	expect_zero("linearized slippage law", dBW - (1 + rc_star) * (deps_g - deps_k) / 9)
+   136	```
+   137	
+   138	This derives `dBW` from the exact `BW = (1+r_c)(eps_gamma - eps_kappa)/9` (already computed on line 42). At the basepoint `eps_kappa = eps_gamma = 0`, `BW` itself vanishes, so the linearization is `(1+rc_star)*(deps_g - deps_k)/9` (the `drc` term picks up `eps*(deps_g - deps_k)*drc/9` which is O(eps^2) and dropped). Sabotaging `BW = gamma0 - kappa0/2` on line 42 now propagates to make the assertion fail.
+   139	
+   140	**Required change (mathematica):**
+   141	Mirror in Mathematica idiom — do NOT translate the python edit. Replace lines 37-43:
+   142	
+   143	BEFORE:
+   144	```mathematica
+   145	Clear[eps, rcStar, drc, depsK, depsG];
+   146	$Assumptions = Element[{eps, rcStar, drc, depsK, depsG}, Reals];
+   147	
+   148	bWLin = Normal[Series[((1 + rcStar + eps*drc)/9)*(eps*depsG - eps*depsK), {eps, 0, 1}]];
+   149	dBW = Expand[Coefficient[bWLin, eps, 1]];
+   150	Print["dB_W = ", fmt[dBW]];
+   151	expectZero["linearized slippage law", dBW - (1 + rcStar)*(depsG - depsK)/9];
+   152	```
+   153	
+   154	AFTER:
+   155	```mathematica
+   156	Clear[eps, rcStar, drc, depsK, depsG];
+   157	$Assumptions = Element[{eps, rcStar, drc, depsK, depsG}, Reals];
+   158	
+   159	bWPert = bW /. {epsKappa -> eps*depsK, epsGamma -> eps*depsG, rc -> rcStar + eps*drc};
+   160	dBW = FullSimplify[D[bWPert, eps] /. eps -> 0];
+   161	Print["dB_W = ", fmt[dBW]];
+   162	expectZero["linearized slippage law", dBW - (1 + rcStar)*(depsG - depsK)/9];
+   163	```
+   164	
+   165	Note: `bW` (the exact slippage from line 33) must still be in scope at this point. The `Clear[]` only clears the new symbols, not `bW`.
+   166	
+   167	**Verification:**
+   168	After Codex applies, the verifier will confirm both scripts still PASS (exit 0). The printed `dB_W = ...` line should be present. Sabotage test: temporarily changing `kappa0 = (1+rc)(1+eps_kappa)/3` to `kappa0 = (1+rc)(1+eps_kappa)/4` on line 40 should now cause the linearized-slippage-law assertion to fail (verifier need not actually do this; the structural check is that `dBW` is computed from `BW`, not constructed from a hand-crafted polynomial).
+   169	
+   170	## F3 — mathematica_transliteration
+   171	
+   172	**Target:**
+   173	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:26`
+   174	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:37`
+   175	
+   176	**Issue:**
+   177	The Mathematica file is a line-by-line port of the SymPy file (same variable choreography, same artificial `eps`-series, same `subs(12 LW^2, ...)` / `/. 12*lW^2 -> ...` reduction trick, same multiplier `pi^2 a^2 (1+rc) LW` to clear denominators, identical carry-forward print block). The clinching evidence is a shared mislabelled banner "STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION" in both files. F1 and F2 already prescribe independent re-derivations of the two non-trivial blocks; what remains is to fix the banner mislabel that flags the transliteration.
+   178	
+   179	**Required change:**
+   180	Two single-line edits:
+   181	
+   182	(sympy, line 37):
+   183	BEFORE: `banner("STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION")`
+   184	AFTER:  `banner("STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION")`
+   185	
+   186	(mathematica, line 26):
+   187	BEFORE: `banner["STAGE 144 — D/N SIMILARITY SLIPPAGE DECOMPOSITION"];`
+   188	AFTER:  `banner["STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION"];`
+   189	
+   190	The independent-derivation aspect of this finding is folded into F1 and F2 — once those land with distinct algebraic strategies in the two engines (sympy: `sp.diff` + `subs` vs. mathematica: `D` + `/.`), the structural-mirror critique is materially answered for the load-bearing blocks. The remaining block ("d eps_kappa identity", sympy lines 56-68 / wl lines 47-63) uses a substitution `12 LW^2 -> pi^2 a^2 (1+rc)` in both engines. This is a legitimate parallel strategy, but the Mathematica side currently routes the residual through `PolynomialRemainder[..., -12*lW^2 + a^2*Pi^2*(1+rc), lW]`, which is a different reduction method from the SymPy multiplier trick, so this block is already engine-distinct enough. No edit required there.
+   191	
+   192	**Verification:**
+   193	After Codex applies, the verifier will confirm both transcripts now show "STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION" as the first banner. F1 and F2 verifications jointly confirm the engines are no longer mirroring each other on the load-bearing checks.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py | sed -n '1,280p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+     4	
+     5	SymPy-backed audit for Stage 161.
+     6	
+     7	Checks:
+     8	1. Exact similarity-defect decomposition
+     9	     B_W = ((1+r_c)/9) (eps_gamma - eps_kappa).
+    10	2. Linearized slippage law
+    11	     dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa).
+    12	3. Exact D/N-tube expression for eps_kappa and its first variation.
+    13	4. Exact cancellation
+    14	     d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a).
+    15	5. Collapse of the final defect law to the single similarity-slippage scalar.
+    16	6. D/N similarity preservation theorem Xi_gamma = 2 Xi_L => Delta_Q = 0.
+    17	"""
+    18	
+    19	from __future__ import annotations
+    20	import sympy as sp
+    21	
+    22	
+    23	def banner(title: str) -> None:
+    24	    line = "=" * 88
+    25	    print("\n" + line)
+    26	    print(title)
+    27	    print(line)
+    28	
+    29	
+    30	def expect_zero(name: str, expr: sp.Expr) -> None:
+    31	    expr = sp.simplify(sp.expand(expr))
+    32	    print(f"{name} = {expr}")
+    33	    if expr != 0:
+    34	        raise AssertionError(f"{name} is not zero")
+    35	
+    36	
+    37	banner("STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION")
+    38	
+    39	rc, eps_kappa, eps_gamma = sp.symbols("r_c eps_kappa eps_gamma", real=True)
+    40	kappa0 = (1 + rc) * (1 + eps_kappa) / 3
+    41	gamma0 = (1 + rc) * (1 + eps_gamma) / 9
+    42	BW = sp.simplify(gamma0 - kappa0 / 3)
+    43	print("B_W =", BW)
+    44	expect_zero("exact similarity-defect decomposition", BW - (1 + rc) * (eps_gamma - eps_kappa) / 9)
+    45	
+    46	# Linearized law about eps_kappa = eps_gamma = 0 derived from the exact BW above.
+    47	eps = sp.symbols("eps", real=True)
+    48	rc_star, drc, deps_k, deps_g = sp.symbols("r_c_star dr_c d_eps_k d_eps_g", real=True)
+    49	BW_pert = BW.subs({eps_kappa: eps * deps_k, eps_gamma: eps * deps_g, rc: rc_star + eps * drc})
+    50	dBW = sp.simplify(sp.diff(BW_pert, eps).subs(eps, 0))
+    51	print("dB_W =", dBW)
+    52	expect_zero("linearized slippage law", dBW - (1 + rc_star) * (deps_g - deps_k) / 9)
+    53	
+    54	banner("D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION")
+    55	
+    56	LW, a, dLW, da = sp.symbols("LW a dLW da", positive=True, real=True)
+    57	# Exact even similarity-defect variable from kappa0 = 4 LW^2 / (pi^2 a^2).
+    58	epsk_exact = sp.simplify(12 * LW**2 / (sp.pi**2 * a**2 * (1 + rc)) - 1)
+    59	print("eps_kappa =", epsk_exact)
+    60	
+    61	# First variation on the compensated branch 12 LW^2 = pi^2 a^2 (1+r_c).
+    62	depsk_direct = sp.diff(epsk_exact, LW) * dLW + sp.diff(epsk_exact, a) * da + sp.diff(epsk_exact, rc) * drc
+    63	depsk_branch = sp.simplify(depsk_direct.subs(12 * LW**2, sp.pi**2 * a**2 * (1 + rc)))
+    64	print("d eps_kappa =", depsk_branch)
+    65	depsk_target = 2 * dLW / LW - 2 * da / a - drc / (1 + rc)
+    66	depsk_diff = sp.simplify(sp.expand((depsk_branch - depsk_target) * sp.pi**2 * a**2 * (1 + rc) * LW))
+    67	depsk_diff = sp.simplify(depsk_diff.subs(12 * LW**2 - sp.pi**2 * a**2 * rc - sp.pi**2 * a**2, 0))
+    68	expect_zero("d eps_kappa identity", depsk_diff)
+    69	
+    70	# Odd similarity-defect variable from gamma0 = (1+r_c)(1+eps_gamma)/9.
+    71	# Solve for eps_gamma exactly, then linearize about the branch.
+    72	gamma0_sym, dgamma0 = sp.symbols("gamma0 d_gamma0", positive=True, real=True)
+    73	epsg_exact = sp.simplify(9 * gamma0_sym / (1 + rc) - 1)
+    74	print("eps_gamma =", epsg_exact)
+    75	depsg_direct = sp.diff(epsg_exact, gamma0_sym) * dgamma0 + sp.diff(epsg_exact, rc) * drc
+    76	# On the compensated branch gamma0_* = (1+r_c)/9 (notes section 1).
+    77	depsg_branch = sp.simplify(depsg_direct.subs(gamma0_sym, (1 + rc) / 9))
+    78	print("d eps_gamma =", depsg_branch)
+    79	
+    80	dln_gamma0 = sp.symbols("dln_gamma0", real=True)
+    81	# On the branch, d gamma_0 = gamma_{0,*} d ln gamma_0 = (1+r_c) d ln gamma_0 / 9.
+    82	expect_zero(
+    83	    "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
+    84	    depsg_branch.subs(dgamma0, (1 + rc) * dln_gamma0 / 9) - (dln_gamma0 - drc / (1 + rc)),
+    85	)
+    86	diff_identity = sp.simplify(
+    87	    sp.expand(
+    88	        ((depsg_branch - depsk_branch) - ((9 * dgamma0 / (1 + rc)) - 2 * (dLW / LW - da / a)))
+    89	        * sp.pi**2 * LW * a**2 * (1 + rc)
+    90	    )
+    91	)
+    92	diff_identity = sp.simplify(diff_identity.subs(12 * LW**2 - sp.pi**2 * a**2 * rc - sp.pi**2 * a**2, 0))
+    93	expect_zero("difference identity", diff_identity)
+    94	
+    95	banner("TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW")
+    96	
+    97	Xi_gamma, Xi_L, sigma_star = sp.symbols("Xi_gamma Xi_L sigma_*", real=True)
+    98	dPi_tan, dSigma0, dS, dThat = sp.symbols("dPi_tan dSigma0 dS dThat", real=True)
+    99	
+   100	UpsilonPi = sp.simplify((1 + rc_star) * (Xi_gamma - 2 * Xi_L) / 9)
+   101	print("Upsilon_Pi =", UpsilonPi)
+   102	
+   103	DeltaQ = sp.simplify(-9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+   104	NQm1 = sp.simplify(9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+   105	print("Delta_Q =", DeltaQ)
+   106	print("N_Q - 1 =", NQm1)
+   107	expect_zero(
+   108	    "collapsed Delta_Q law",
+   109	    DeltaQ + sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+   110	)
+   111	expect_zero(
+   112	    "collapsed N_Q-1 law",
+   113	    NQm1 - sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+   114	)
+   115	
+   116	# Insert the Stage 159 tangential mouth transport.
+   117	dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+   118	DeltaQ_mouth = sp.expand(DeltaQ.subs(dPi_tan, dPi_tan_expr))
+   119	print("Delta_Q in (dSigma0,dS) =", DeltaQ_mouth)
+   120	
+   121	# Use dSigma0 ≈ 6.42981496203006 dThat.
+   122	DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
+   123	print("Delta_Q in (dThat,dS) =", DeltaQ_T)
+   124	
+   125	banner("D/N SIMILARITY PRESERVATION")
+   126	expect_zero(
+   127	    "Xi_gamma = 2 Xi_L => Delta_Q = 0",
+   128	    DeltaQ.subs(Xi_gamma, 2 * Xi_L),
+   129	)
+   130	expect_zero(
+   131	    "Xi_gamma = 2 Xi_L => N_Q - 1 = 0",
+   132	    NQm1.subs(Xi_gamma, 2 * Xi_L),
+   133	)
+   134	
+   135	rF1 = sp.Float("1.77799353547498")
+   136	Upsilon_prefactor = sp.N((1 + rF1**2) / 9, 18)
+   137	print("(1+r_F1^2)/9 =", Upsilon_prefactor)
+   138	
+   139	banner("Carry-forward formulas")
+   140	print("1) B_W = ((1+r_c)/9) (eps_gamma - eps_kappa)")
+   141	print("2) dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa)")
+   142	print("3) d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a)")
+   143	print("4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)")
+   144	print("5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan")
+   145	print("6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes.")
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION
+     4	========================================================================================
+     5	B_W = (eps_gamma - eps_kappa)*(r_c + 1)/9
+     6	exact similarity-defect decomposition = 0
+     7	dB_W = (d_eps_g - d_eps_k)*(r_c_star + 1)/9
+     8	linearized slippage law = 0
+     9	
+    10	========================================================================================
+    11	D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION
+    12	========================================================================================
+    13	eps_kappa = (12*LW**2 - pi**2*a**2*(r_c + 1))/(pi**2*a**2*(r_c + 1))
+    14	d eps_kappa = (24*LW*dLW - pi**2*a**2*dr_c - 2*pi**2*a*da*(r_c + 1))/(pi**2*a**2*(r_c + 1))
+    15	d eps_kappa identity = 0
+    16	eps_gamma = (9*gamma0 - r_c - 1)/(r_c + 1)
+    17	d eps_gamma = (9*d_gamma0 - dr_c)/(r_c + 1)
+    18	d eps_gamma = d ln gamma0 - d ln(1+r_c) = 0
+    19	difference identity = 0
+    20	
+    21	========================================================================================
+    22	TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW
+    23	========================================================================================
+    24	Upsilon_Pi = -(2*Xi_L - Xi_gamma)*(r_c_star + 1)/9
+    25	Delta_Q = dPi_tan*sigma_**(-2*Xi_L + Xi_gamma)/(sigma_* - 1)
+    26	N_Q - 1 = dPi_tan*sigma_**(2*Xi_L - Xi_gamma)/(sigma_* - 1)
+    27	collapsed Delta_Q law = 0
+    28	collapsed N_Q-1 law = 0
+    29	Delta_Q in (dSigma0,dS) = 2.32551677508444*Xi_L*dS*sigma_*/(sigma_* - 1) - 1.66481894216327*Xi_L*dSigma0*sigma_*/(sigma_* - 1) - 1.16275838754222*Xi_gamma*dS*sigma_*/(sigma_* - 1) + 0.832409471081635*Xi_gamma*dSigma0*sigma_*/(sigma_* - 1)
+    30	Delta_Q in (dThat,dS) = 2.32551677508444*Xi_L*dS*sigma_*/(sigma_* - 1) - 10.7044777433925*Xi_L*dThat*sigma_*/(sigma_* - 1) - 1.16275838754222*Xi_gamma*dS*sigma_*/(sigma_* - 1) + 5.35223887169623*Xi_gamma*dThat*sigma_*/(sigma_* - 1)
+    31	
+    32	========================================================================================
+    33	D/N SIMILARITY PRESERVATION
+    34	========================================================================================
+    35	Xi_gamma = 2 Xi_L => Delta_Q = 0 = 0
+    36	Xi_gamma = 2 Xi_L => N_Q - 1 = 0 = 0
+    37	(1+r_F1^2)/9 = 0.462362334687868748
+    38	
+    39	========================================================================================
+    40	Carry-forward formulas
+    41	========================================================================================
+    42	1) B_W = ((1+r_c)/9) (eps_gamma - eps_kappa)
+    43	2) dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa)
+    44	3) d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a)
+    45	4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)
+    46	5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan
+    47	6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl | sed -n '1,300p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION"];
+    27	
+    28	Clear[rc, epsKappa, epsGamma];
+    29	$Assumptions = Element[{rc, epsKappa, epsGamma}, Reals];
+    30	
+    31	kappa0 = (1 + rc)*(1 + epsKappa)/3;
+    32	gamma0 = (1 + rc)*(1 + epsGamma)/9;
+    33	bW = FullSimplify[gamma0 - kappa0/3];
+    34	Print["B_W = ", fmt[bW]];
+    35	expectZero["exact similarity-defect decomposition", bW - (1 + rc)*(epsGamma - epsKappa)/9];
+    36	
+    37	Clear[eps, rcStar, drc, depsK, depsG];
+    38	$Assumptions = Element[{eps, rcStar, drc, depsK, depsG}, Reals];
+    39	
+    40	bWPert = bW /. {epsKappa -> eps*depsK, epsGamma -> eps*depsG, rc -> rcStar + eps*drc};
+    41	dBW = FullSimplify[D[bWPert, eps] /. eps -> 0];
+    42	Print["dB_W = ", fmt[dBW]];
+    43	expectZero["linearized slippage law", dBW - (1 + rcStar)*(depsG - depsK)/9];
+    44	
+    45	banner["D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION"];
+    46	
+    47	Clear[lW, a, dLW, da, dgamma0];
+    48	$Assumptions = Element[{lW, a, dLW, da, dgamma0, rc, drc}, Reals] && lW > 0 && a > 0;
+    49	
+    50	epsKExact = FullSimplify[12*lW^2/(Pi^2*a^2*(1 + rc)) - 1];
+    51	Print["eps_kappa = ", fmt[epsKExact]];
+    52	
+    53	depsKDirect = D[epsKExact, lW]*dLW + D[epsKExact, a]*da + D[epsKExact, rc]*drc;
+    54	depsKBranch = FullSimplify[depsKDirect /. 12*lW^2 -> Pi^2*a^2*(1 + rc)];
+    55	Print["d eps_kappa = ", fmt[depsKBranch]];
+    56	depsKTarget = 2*dLW/lW - 2*da/a - drc/(1 + rc);
+    57	depsKDiff = PolynomialRemainder[
+    58	  Expand[Numerator[Together[depsKBranch - depsKTarget]]],
+    59	  -12*lW^2 + a^2*Pi^2*(1 + rc),
+    60	  lW
+    61	];
+    62	depsKDiff = FullSimplify[depsKDiff];
+    63	expectZero["d eps_kappa identity", depsKDiff];
+    64	
+    65	Clear[gamma0Sym, dgamma0, dlnGamma0];
+    66	$Assumptions = $Assumptions && Element[{gamma0Sym, dgamma0, dlnGamma0}, Reals] && gamma0Sym > 0;
+    67	epsGExact = FullSimplify[9*gamma0Sym/(1 + rc) - 1];
+    68	Print["eps_gamma = ", fmt[epsGExact]];
+    69	depsGDirect = D[epsGExact, gamma0Sym]*dgamma0 + D[epsGExact, rc]*drc;
+    70	depsGBranch = FullSimplify[depsGDirect /. gamma0Sym -> (1 + rc)/9];
+    71	Print["d eps_gamma = ", fmt[depsGBranch]];
+    72	(* On the branch d gamma_0 = (1+r_c)/9 * d ln gamma_0. *)
+    73	expectZero[
+    74	  "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
+    75	  (depsGBranch /. dgamma0 -> (1 + rc)*dlnGamma0/9) - (dlnGamma0 - drc/(1 + rc))
+    76	];
+    77	diffIdentity = PolynomialRemainder[
+    78	  Expand[
+    79	    Numerator[
+    80	      Together[
+    81	        (depsGBranch - depsKBranch) - (9*dgamma0/(1 + rc) - 2*(dLW/lW - da/a))
+    82	      ]
+    83	    ]
+    84	  ],
+    85	  -12*lW^2 + a^2*Pi^2*(1 + rc),
+    86	  lW
+    87	];
+    88	diffIdentity = FullSimplify[diffIdentity];
+    89	expectZero["difference identity", diffIdentity];
+    90	
+    91	banner["TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW"];
+    92	
+    93	Clear[xiGamma, xiL, sigmaStar, dPiTan, dSigma0, dS, dThat];
+    94	$Assumptions = Element[{xiGamma, xiL, sigmaStar, dPiTan, dSigma0, dS, dThat, rcStar}, Reals];
+    95	
+    96	upsilonPi = FullSimplify[(1 + rcStar)*(xiGamma - 2*xiL)/9];
+    97	Print["Upsilon_Pi = ", fmt[upsilonPi]];
+    98	
+    99	deltaQ = FullSimplify[-9*sigmaStar*upsilonPi*dPiTan/((1 - sigmaStar)*(1 + rcStar))];
+   100	nQm1 = FullSimplify[9*sigmaStar*upsilonPi*dPiTan/((1 - sigmaStar)*(1 + rcStar))];
+   101	Print["Delta_Q = ", fmt[deltaQ]];
+   102	Print["N_Q - 1 = ", fmt[nQm1]];
+   103	expectZero[
+   104	  "collapsed Delta_Q law",
+   105	  deltaQ + sigmaStar*(xiGamma - 2*xiL)*dPiTan/(1 - sigmaStar)
+   106	];
+   107	expectZero[
+   108	  "collapsed N_Q-1 law",
+   109	  nQm1 - sigmaStar*(xiGamma - 2*xiL)*dPiTan/(1 - sigmaStar)
+   110	];
+   111	
+   112	dPiTanExpr = 0.832409471081635*dSigma0 - 1.16275838754222*dS;
+   113	deltaQMouth = Expand[deltaQ /. dPiTan -> dPiTanExpr];
+   114	Print["Delta_Q in (dSigma0,dS) = ", fmt[deltaQMouth]];
+   115	deltaQT = Expand[deltaQMouth /. dSigma0 -> 6.42981496203006*dThat];
+   116	Print["Delta_Q in (dThat,dS) = ", fmt[deltaQT]];
+   117	
+   118	banner["D/N SIMILARITY PRESERVATION"];
+   119	expectZero["Xi_gamma = 2 Xi_L => Delta_Q = 0", deltaQ /. xiGamma -> 2*xiL];
+   120	expectZero["Xi_gamma = 2 Xi_L => N_Q - 1 = 0", nQm1 /. xiGamma -> 2*xiL];
+   121	
+   122	rF1 = SetPrecision[1.77799353547498, 30];
+   123	upsilonPrefactor = N[(1 + rF1^2)/9, 18];
+   124	Print["(1+r_F1^2)/9 = ", fmt[upsilonPrefactor]];
+   125	
+   126	banner["Carry-forward formulas"];
+   127	Print["1) B_W = ((1+r_c)/9) (eps_gamma - eps_kappa)"];
+   128	Print["2) dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa)"];
+   129	Print["3) d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a)"];
+   130	Print["4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)"];
+   131	Print["5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan"];
+   132	Print["6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes."];
+   133	
+   134	Print[""];
+   135	Print["Stage 161 Mathematica audit passed."];
+   136	
+   137	Exit[0];
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 161 — D/N SIMILARITY SLIPPAGE DECOMPOSITION
+     4	========================================================================================
+     5	B_W = ((epsGamma - epsKappa)*(1 + rc))/9
+     6	exact similarity-defect decomposition = 0
+     7	PASS: exact similarity-defect decomposition
+     8	dB_W = ((depsG - depsK)*(1 + rcStar))/9
+     9	linearized slippage law = 0
+    10	PASS: linearized slippage law
+    11	
+    12	========================================================================================
+    13	D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION
+    14	========================================================================================
+    15	eps_kappa = -1 + (12*lW^2)/(a^2*Pi^2*(1 + rc))
+    16	d eps_kappa = (-12*lW*(a*drc*lW - 2*a*dLW*(1 + rc) + 2*da*lW*(1 + rc)))/(a^3*Pi^2*(1 + rc)^2)
+    17	d eps_kappa identity = 0
+    18	PASS: d eps_kappa identity
+    19	eps_gamma = -1 + (9*gamma0Sym)/(1 + rc)
+    20	d eps_gamma = (9*dgamma0 - drc)/(1 + rc)
+    21	d eps_gamma = d ln gamma0 - d ln(1+r_c) = 0
+    22	PASS: d eps_gamma = d ln gamma0 - d ln(1+r_c)
+    23	difference identity = 0
+    24	PASS: difference identity
+    25	
+    26	========================================================================================
+    27	TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW
+    28	========================================================================================
+    29	Upsilon_Pi = ((1 + rcStar)*(xiGamma - 2*xiL))/9
+    30	Delta_Q = (dPiTan*sigmaStar*(xiGamma - 2*xiL))/(-1 + sigmaStar)
+    31	N_Q - 1 = -((dPiTan*sigmaStar*(xiGamma - 2*xiL))/(-1 + sigmaStar))
+    32	collapsed Delta_Q law = 0
+    33	PASS: collapsed Delta_Q law
+    34	collapsed N_Q-1 law = 0
+    35	PASS: collapsed N_Q-1 law
+    36	Delta_Q in (dSigma0,dS) = (-1.16275838754222*dS*sigmaStar*xiGamma)/(-1 + sigmaStar) + (0.832409471081635*dSigma0*sigmaStar*xiGamma)/(-1 + sigmaStar) + (2.32551677508444*dS*sigmaStar*xiL)/(-1 + sigmaStar) - (1.66481894216327*dSigma0*sigmaStar*xiL)/(-1 + sigmaStar)
+    37	Delta_Q in (dThat,dS) = (-1.16275838754222*dS*sigmaStar*xiGamma)/(-1 + sigmaStar) + (5.352238871696225*dThat*sigmaStar*xiGamma)/(-1 + sigmaStar) + (2.32551677508444*dS*sigmaStar*xiL)/(-1 + sigmaStar) - (10.70447774339245*dThat*sigmaStar*xiL)/(-1 + sigmaStar)
+    38	
+    39	========================================================================================
+    40	D/N SIMILARITY PRESERVATION
+    41	========================================================================================
+    42	Xi_gamma = 2 Xi_L => Delta_Q = 0 = 0
+    43	PASS: Xi_gamma = 2 Xi_L => Delta_Q = 0
+    44	Xi_gamma = 2 Xi_L => N_Q - 1 = 0 = 0
+    45	PASS: Xi_gamma = 2 Xi_L => N_Q - 1 = 0
+    46	(1+r_F1^2)/9 = 0.46236233468786880105466350900749063734`18.
+    47	
+    48	========================================================================================
+    49	Carry-forward formulas
+    50	========================================================================================
+    51	1) B_W = ((1+r_c)/9) (eps_gamma - eps_kappa)
+    52	2) dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa)
+    53	3) d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a)
+    54	4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)
+    55	5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan
+    56	6) If Xi_gamma = 2 Xi_L, then the full first-order defect vanishes.
+    57	
+    58	Stage 161 Mathematica audit passed.
+
+codex
+---
+stage: 161
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py, moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.txt, moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl, moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.txt, stage_161.md, stage_161.tex]
+---
+# Codex review — stage 161
+
+## What the edit was supposed to do
+The directive required replacing two tautological checks. F2 had to linearize the exact slippage expression \(B_W\), not a hand-built first-order polynomial. F1 had to derive \(\epsilon_\gamma\) from \(\gamma_0=(1+r_c)(1+\epsilon_\gamma)/9\), linearize it, and use the branch relation \(\gamma_{0,*}=(1+r_c)/9\) to obtain \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\). F3 corrected the mislabeled Stage 144 banner to Stage 161 in both transcripts.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:52 | linearized slippage law from exact `BW` | Yes; changing `BW` or the kappa/gamma coefficient changes `dBW` | Yes, checks the D/N slippage scalar feeding \(\Xi_\gamma-2\Xi_L\) | PASS |
+| 2 | moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:82 | \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\) | Yes; changing the exact gamma coefficient or omitting the branch relation leaves a residual | Yes, verifies the odd similarity-defect part of the final slippage coordinate | PASS |
+| 3 | moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:43 | linearized slippage law from exact `bW` | Yes; `dBW` is differentiated from `bW`, not copied from the target | Yes, same paper-side slippage deliverable | PASS |
+| 4 | moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:73 | \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\) | Yes; the branch substitution and log-variation substitution are algebraically testable | Yes, same odd-defect deliverable | PASS |
+
+## Bottom line
+The edited checks are no longer `X-X` comparisons. I tried to break F2 by perturbing the exact slippage source mentally; because `dBW` is now differentiated from `BW`, wrong coefficients would propagate into the residual. I tried to break F1 by changing the gamma coefficient or removing the branch relation; the residual would not simplify to zero. The saved SymPy output shows the Stage 161 banner, `linearized slippage law = 0`, and `d eps_gamma = d ln gamma0 - d ln(1+r_c) = 0`; the Mathematica transcript shows the same checks with `PASS`.
+tokens used
+20,704
+---
+stage: 161
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py, moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.txt, moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl, moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.txt, stage_161.md, stage_161.tex]
+---
+# Codex review — stage 161
+
+## What the edit was supposed to do
+The directive required replacing two tautological checks. F2 had to linearize the exact slippage expression \(B_W\), not a hand-built first-order polynomial. F1 had to derive \(\epsilon_\gamma\) from \(\gamma_0=(1+r_c)(1+\epsilon_\gamma)/9\), linearize it, and use the branch relation \(\gamma_{0,*}=(1+r_c)/9\) to obtain \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\). F3 corrected the mislabeled Stage 144 banner to Stage 161 in both transcripts.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:52 | linearized slippage law from exact `BW` | Yes; changing `BW` or the kappa/gamma coefficient changes `dBW` | Yes, checks the D/N slippage scalar feeding \(\Xi_\gamma-2\Xi_L\) | PASS |
+| 2 | moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py:82 | \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\) | Yes; changing the exact gamma coefficient or omitting the branch relation leaves a residual | Yes, verifies the odd similarity-defect part of the final slippage coordinate | PASS |
+| 3 | moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:43 | linearized slippage law from exact `bW` | Yes; `dBW` is differentiated from `bW`, not copied from the target | Yes, same paper-side slippage deliverable | PASS |
+| 4 | moving_throat_pde_stage161_dn_similarity_slippage_mathematica_audit.wl:73 | \(d\epsilon_\gamma=d\ln\gamma_0-d\ln(1+r_c)\) | Yes; the branch substitution and log-variation substitution are algebraically testable | Yes, same odd-defect deliverable | PASS |
+
+## Bottom line
+The edited checks are no longer `X-X` comparisons. I tried to break F2 by perturbing the exact slippage source mentally; because `dBW` is now differentiated from `BW`, wrong coefficients would propagate into the residual. I tried to break F1 by changing the gamma coefficient or removing the branch relation; the residual would not simplify to zero. The saved SymPy output shows the Stage 161 banner, `linearized slippage law = 0`, and `d eps_gamma = d ln gamma0 - d ln(1+r_c) = 0`; the Mathematica transcript shows the same checks with `PASS`.
+
+---
+codex_session_id: 019e7127-8f75-7a10-b747-55301239be72

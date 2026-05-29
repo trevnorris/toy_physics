@@ -1,0 +1,973 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7122-3892-76b2-a274-059e3511ad25
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 131)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_131.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_131.tex
+
+Write your verdict report for stage 131 now, following the format above exactly.
+codex
+I’ll keep this strictly read-only and reason from the listed files plus saved outputs. I’m going to inspect the directive, card, scripts, and outputs without executing anything.
+exec
+/bin/bash -lc "sed -n '1,240p' redteam/directives/stage_131.md" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+---
+unit_id: 131
+batch: IV.4
+created_at: 2026-05-27T00:00:00Z
+findings_count: 4
+stop_cold: null
+applied: false
+verification_status: pending
+needs_user_resolution: false
+---
+
+# Codex directive — unit 131
+
+Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+
+If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+
+Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+
+Do NOT run python or mathematica. Only edit files.
+
+Do NOT touch paper.tex, notes/, or any prose documents.
+
+---
+
+## F1 — missing_verification_script (subtype: script_doesnt_cover_claim)
+
+**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py`
+
+**Issue:**
+The SymPy "audit" script has zero `assert` statements. It computes `Pi_*`, `V1_*`, `g'(Pi_*)`, and a "Parent bias mismatch formula", but only prints them — nothing can fail. The output transcript shows `Status: PASS` purely because nothing is tested.
+
+**Required change:**
+
+Append the following block at the end of the file (after the existing line 26 `print` of the threshold residual), keeping all current lines intact:
+
+```python
+# --- Anchored assertions vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md ---
+
+# Anchor (1): Pi_* matches the notes-quoted value 1.50882951349316 (Sec. 1).
+Pi_star_paper = sp.Float("1.50882951349316", 50)
+Pi_star_num = sp.N(Pi_star, 50)
+assert abs(Pi_star_num - Pi_star_paper) < sp.Float("1e-14", 50), (
+    f"Pi_* mismatch vs notes Sec. 1: computed {Pi_star_num}, paper {Pi_star_paper}"
+)
+print("PASS: Pi_* matches notes Sec. 1 value 1.50882951349316")
+
+# Anchor (2): g'(Pi_*) matches the notes-quoted slope 0.0714453558083195 (Sec. 3).
+gprime_paper = sp.Float("0.0714453558083195", 50)
+gprime_num = sp.N(gprime_star, 50)
+assert abs(gprime_num - gprime_paper) < sp.Float("1e-14", 50), (
+    f"g'(Pi_*) mismatch vs notes Sec. 3: computed {gprime_num}, paper {gprime_paper}"
+)
+print("PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195")
+
+# Anchor (3): parent threshold identity at Pi = Pi_*.
+# notes Sec. 2:  T_m - q_* A_0' = Pi_* * Theta_sigma / L
+threshold_at_star = threshold_residual.subs(Pi, sp.N(Pi_star, 50))
+expected_form = (Tm - qstar*A0p) - sp.N(Pi_star, 50)*Theta_sigma/L
+assert sp.simplify(threshold_at_star - expected_form) == 0, (
+    "parent threshold identity at Pi_* does not match (T_m - q_* A_0') - Pi_* Theta_sigma/L"
+)
+print("PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2")
+
+# Anchor (4): lower-branch discrimination — Pi_* sits on the g_- branch, NOT on a singular point.
+# A point clearly away from Pi_* (e.g. 2*Pi_*) must give a residual visibly far from zero.
+gPi_offstar = gPi.subs(Pi, 2*sp.N(Pi_star, 30))
+offstar_residual = abs(sp.N(gPi_offstar - g_minus, 30))
+assert offstar_residual > sp.Float("1e-3", 30), (
+    f"counter-example failed: gPi(2*Pi_*) residual vs g_- = {offstar_residual}, "
+    "expected clearly nonzero (lower-branch discrimination, paper Checks item 3)"
+)
+print(f"PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = {offstar_residual}")
+```
+
+**Claim manifest:**
+- M1: `Pi_* = 1.50882951349316` (from notes line 8 / Sec. 1).
+- M2: `g'(Pi_*) = 0.0714453558083195` (from notes line 93 / Sec. 3).
+- M3: `T_m - q_* A_0' = Pi_* Theta_sigma / L` (parent threshold identity, paper card body + notes Sec. 2).
+- M4: `Pi_*` lies on the lower (`g_-^{F1}`) branch, not on a singular branch (paper Checks item 3).
+
+**Verification command:**
+After Codex applies, the verifier will run `redteam exec-sympy 131` and confirm: (a) script exits 0; (b) transcript contains four new `PASS:` lines matching M1–M4.
+
+---
+
+## F2 — tautological_check
+
+**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:26,46`
+
+**Issue:**
+Line 46's `expectApprox["Pi_* compensation point", gPi /. piM -> piStar, gMinus, 10^-20]` is tautological: `piStar` was just defined at line 35 as the root of `FindRoot[gPi == gMinus, ...]`, so the residual is forced near zero by construction. The check verifies FindRoot's convergence, not any physics claim. Separately, line 26's banner string contains `"STAGE 114"` but this is stage 131.
+
+**Required change:**
+
+1. Replace line 26:
+   ```
+   banner["STAGE 114 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION"];
+   ```
+   with
+   ```
+   banner["STAGE 131 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION"];
+   ```
+
+2. Replace line 46:
+   ```
+   expectApprox["Pi_* compensation point", gPi /. piM -> piStar, gMinus, 10^-20];
+   ```
+   with the following block:
+   ```mathematica
+   (* Anchored checks vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md *)
+
+   (* Anchor (1): Pi_* matches notes Sec. 1 quoted value. *)
+   expectApprox["Pi_* notes Sec. 1 value",
+     N[piStar, 50], 1.50882951349316`50, 10^-14];
+
+   (* Anchor (2): g'(Pi_*) matches notes Sec. 3 quoted slope. *)
+   expectApprox["g'(Pi_*) notes Sec. 3 value",
+     N[D[gPi, piM] /. piM -> piStar, 50], 0.0714453558083195`50, 10^-14];
+
+   (* Anchor (3): parent threshold identity at piM = piStar — notes Sec. 2. *)
+   thresholdAtStar = FullSimplify[
+     thresholdResidual /. piM -> piStar,
+     Assumptions -> $Assumptions
+   ];
+   expectedForm = (tM - qStar*a0Prime) - piStar*thetaSigma/lM;
+   If[TrueQ[Simplify[thresholdAtStar - expectedForm] === 0],
+     pass["parent threshold identity at Pi = Pi_* (notes Sec. 2)"],
+     fail["parent threshold identity at Pi = Pi_* (notes Sec. 2)",
+          Simplify[thresholdAtStar - expectedForm]]
+   ];
+
+   (* Anchor (4): lower-branch discrimination — gPi(2*piStar) is clearly far from gMinus. *)
+   offStarResidual = Abs[N[(gPi /. piM -> 2*piStar) - gMinus, 30]];
+   If[TrueQ[offStarResidual > 10^-3],
+     pass["lower-branch discrimination (paper Checks item 3)"],
+     fail["lower-branch discrimination (paper Checks item 3)", offStarResidual]
+   ];
+   ```
+
+**Verification command:**
+After Codex applies, the verifier will run `redteam exec-mathematica 131` and confirm: (a) script exits 0; (b) banner reads `STAGE 131`; (c) transcript contains four `PASS:` lines for the four anchors; (d) NO `PASS: Pi_* compensation point` line (it was the tautological one).
+
+---
+
+## F3 — insufficient_verification
+
+**Target:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py` (anchored to F1 block above)
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl` (anchored to F2 block above)
+
+**Issue:**
+Neither script substitutes `Pi -> Pi_*` into the "Parent bias mismatch formula" or distinguishes the lower branch from the singular branch (paper Checks item 3). Both gaps are closed by Anchors (3) and (4) prescribed in F1 and F2.
+
+**Required change:**
+The F1 and F2 blocks above already contain the Anchor (3) and Anchor (4) checks that resolve this finding. No additional edits required beyond F1 and F2.
+
+**Verification command:**
+Same as F1 and F2 — the verifier confirms the Anchor (3) and Anchor (4) PASS lines in both transcripts.
+
+---
+
+## F4 — hardcoded_result
+
+**Target:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:12`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:33`
+
+**Issue:**
+`g_minus` is imported as a bare numeric literal (SymPy) or as an exact closed form (Mathematica) with no in-script citation to the upstream stage that derives the F1 lower-branch value. The two engines also use different representations (float vs exact), weakening independence.
+
+**Required change:**
+
+1. SymPy line 12. Replace:
+   ```python
+   g_minus = sp.Float("0.758035078944663")
+   ```
+   with:
+   ```python
+   # F1 lower-branch value g_-^{F1}: closed form is (2*sqrt(4107 - 100*pi^2) - 37*sqrt(3)) / (20*pi).
+   # Carried forward from the F1 family lower-branch derivation in the upstream
+   # parent-mouth stages (see notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3).
+   g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+   g_minus_literal = sp.Float("0.758035078944663", 50)
+   assert abs(sp.N(g_minus_exact, 50) - g_minus_literal) < sp.Float("1e-14", 50), (
+       f"g_-^{{F1}} closed form vs literal: {sp.N(g_minus_exact, 50)} != {g_minus_literal}"
+   )
+   g_minus = sp.N(g_minus_exact, 50)
+   print(f"PASS: g_-^F1 closed form matches literal 0.758035078944663")
+   ```
+
+2. Mathematica line 33. Replace:
+   ```
+   gMinus = N[(2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi), 80];
+   ```
+   with:
+   ```mathematica
+   (* F1 lower-branch value g_-^{F1}: closed form below; see notes/stages/
+      moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3 for context. *)
+   gMinusExact = (2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi);
+   gMinusLiteral = 0.758035078944663`50;
+   expectApprox["g_-^F1 closed form vs literal",
+     N[gMinusExact, 50], gMinusLiteral, 10^-14];
+   gMinus = N[gMinusExact, 80];
+   ```
+
+**Verification command:**
+After Codex applies, the verifier confirms: (a) both transcripts contain a PASS line tying the closed form `(2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi)` to the numeric `0.758035078944663`; (b) a grep for `4107` in both `.py` and `.wl` returns a match; (c) both scripts exit 0.
+
+exec
+/bin/bash -lc "sed -n '1,260p' scripts/output/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,260p' paper/stages/stage_131.tex" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,320p' scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+PASS: g_-^F1 closed form matches literal 0.758035078944663
+Pi_* = 1.50882951349315558300555075595
+V1_* = 1.50882951349315558300555075595*Theta_sigma/L
+g'(Pi_*) = 0.0714453558083195211894603019881
+Parent bias mismatch formula = -A0p*q_* + T_m - Pi*Theta_sigma/L
+PASS: Pi_* matches notes Sec. 1 value 1.50882951349316
+PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195
+PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2
+PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = 0.0903049686172024794499842493650
+
+ succeeded in 0ms:
+\section[Stage 131]{Stage 131: Parent Micro-Threshold for Canonical Mouth Compensation}
+\label{stage:131}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~131 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
+
+\begin{quote}
+Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
+\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+
+ succeeded in 0ms:
+#!/usr/bin/env python3
+"""
+Stage 131 SymPy audit — parent micro-threshold for canonical mouth compensation.
+"""
+
+from __future__ import annotations
+import sympy as sp
+
+Pi = sp.symbols("Pi", positive=True, real=True)
+Theta_sigma, L = sp.symbols("Theta_sigma L", positive=True, real=True)
+Tm, qstar, A0p = sp.symbols("T_m q_* A0p", real=True)
+# F1 lower-branch value g_-^{F1}: closed form is (2*sqrt(4107 - 100*pi^2) - 37*sqrt(3)) / (20*pi).
+# Carried forward from the F1 family lower-branch derivation in the upstream
+# parent-mouth stages (see notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3).
+g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+g_minus_literal = sp.Float("0.758035078944663", 50)
+assert abs(sp.N(g_minus_exact, 50) - g_minus_literal) < sp.Float("1e-14", 50), (
+    f"g_-^{{F1}} closed form vs literal: {sp.N(g_minus_exact, 50)} != {g_minus_literal}"
+)
+g_minus = sp.N(g_minus_exact, 50)
+print(f"PASS: g_-^F1 closed form matches literal 0.758035078944663")
+
+gPi = sp.simplify(2*Pi*(2*Pi*sp.exp(Pi) + sp.pi)/((4*Pi**2 + sp.pi**2)*(sp.exp(Pi) - 1)))
+Pi_star = sp.nsolve(gPi - g_minus, 1.5, tol=1e-30, maxsteps=100, prec=80)
+
+V1 = Pi*Theta_sigma/L
+V1_star = sp.N(Pi_star, 30)*Theta_sigma/L
+print("Pi_* =", sp.N(Pi_star, 30))
+print("V1_* =", V1_star)
+
+gprime_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30)
+print("g'(Pi_*) =", gprime_star)
+
+threshold_residual = sp.simplify((Tm - qstar*A0p) - Pi*Theta_sigma/L)
+print("Parent bias mismatch formula =", threshold_residual)
+
+# --- Anchored assertions vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md ---
+
+# Anchor (1): Pi_* matches the notes-quoted value 1.50882951349316 (Sec. 1).
+Pi_star_paper = sp.Float("1.50882951349316", 50)
+Pi_star_num = sp.N(Pi_star, 50)
+assert abs(Pi_star_num - Pi_star_paper) < sp.Float("1e-14", 50), (
+    f"Pi_* mismatch vs notes Sec. 1: computed {Pi_star_num}, paper {Pi_star_paper}"
+)
+print("PASS: Pi_* matches notes Sec. 1 value 1.50882951349316")
+
+# Anchor (2): g'(Pi_*) matches the notes-quoted slope 0.0714453558083195 (Sec. 3).
+gprime_paper = sp.Float("0.0714453558083195", 50)
+gprime_num = sp.N(gprime_star, 50)
+assert abs(gprime_num - gprime_paper) < sp.Float("1e-14", 50), (
+    f"g'(Pi_*) mismatch vs notes Sec. 3: computed {gprime_num}, paper {gprime_paper}"
+)
+print("PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195")
+
+# Anchor (3): parent threshold identity at Pi = Pi_*.
+# notes Sec. 2:  T_m - q_* A_0' = Pi_* * Theta_sigma / L
+threshold_at_star = threshold_residual.subs(Pi, sp.N(Pi_star, 50))
+expected_form = (Tm - qstar*A0p) - sp.N(Pi_star, 50)*Theta_sigma/L
+assert sp.simplify(threshold_at_star - expected_form) == 0, (
+    "parent threshold identity at Pi_* does not match (T_m - q_* A_0') - Pi_* Theta_sigma/L"
+)
+print("PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2")
+
+# Anchor (4): lower-branch discrimination — Pi_* sits on the g_- branch, NOT on a singular point.
+# A point clearly away from Pi_* (e.g. 2*Pi_*) must give a residual visibly far from zero.
+gPi_offstar = gPi.subs(Pi, 2*sp.N(Pi_star, 30))
+offstar_residual = abs(sp.N(gPi_offstar - g_minus, 30))
+assert offstar_residual > sp.Float("1e-3", 30), (
+    f"counter-example failed: gPi(2*Pi_*) residual vs g_- = {offstar_residual}, "
+    "expected clearly nonzero (lower-branch discrimination, paper Checks item 3)"
+)
+print(f"PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = {offstar_residual}")
+
+codex
+The SymPy side is now clear: the added threshold identity check is structurally suspicious because it compares two forms built from the same `threshold_residual` substitution. I’m checking the Mathematica source/output and line numbers before deciding whether that rises to a formal finding.
+exec
+/bin/bash -lc "nl -ba mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,260p' mathematica/output/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectApprox[name_String, value_, target_, tol_] := Module[{delta},
+    21	  delta = N[value - target, 40];
+    22	  Print[name, " residual = ", fmt[delta]];
+    23	  If[TrueQ[Abs[delta] < tol], pass[name], fail[name, delta]];
+    24	];
+    25	
+    26	banner["STAGE 131 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION"];
+    27	
+    28	Clear[piM, thetaSigma, lM, tM, qStar, a0Prime];
+    29	$Assumptions =
+    30	  Element[{piM, thetaSigma, lM, tM, qStar, a0Prime}, Reals] &&
+    31	  piM > 0 && thetaSigma > 0 && lM > 0;
+    32	
+    33	(* F1 lower-branch value g_-^{F1}: closed form below; see notes/stages/
+    34	   moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3 for context. *)
+    35	gMinusExact = (2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi);
+    36	gMinusLiteral = 0.758035078944663`50;
+    37	expectApprox["g_-^F1 closed form vs literal",
+    38	  N[gMinusExact, 50], gMinusLiteral, 10^-14];
+    39	gMinus = N[gMinusExact, 80];
+    40	gPi = FullSimplify[2*piM*(2*piM*Exp[piM] + Pi)/((4*piM^2 + Pi^2)*(Exp[piM] - 1)), Assumptions -> $Assumptions];
+    41	piStar = piM /. FindRoot[gPi == gMinus, {piM, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
+    42	
+    43	v1 = piM*thetaSigma/lM;
+    44	v1Star = N[piStar, 30]*thetaSigma/lM;
+    45	gPrimeStar = N[D[gPi, piM] /. piM -> piStar, 30];
+    46	thresholdResidual = FullSimplify[(tM - qStar*a0Prime) - piM*thetaSigma/lM, Assumptions -> $Assumptions];
+    47	
+    48	Print["Pi_* = ", fmt[N[piStar, 30]]];
+    49	Print["V1_* = ", fmt[v1Star]];
+    50	Print["g'(Pi_*) = ", fmt[gPrimeStar]];
+    51	Print["Parent bias mismatch formula = ", fmt[thresholdResidual]];
+    52	(* Anchored checks vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md *)
+    53	
+    54	(* Anchor 1: piStar matches notes Sec. 1 quoted value. *)
+    55	expectApprox["piStar notes Sec. 1 value",
+    56	  N[piStar, 50], 1.50882951349316`50, 10^-14];
+    57	
+    58	(* Anchor 2: slope D[gPi,piM] at piStar matches notes Sec. 3 quoted value. *)
+    59	expectApprox["slope at piStar notes Sec. 3 value",
+    60	  N[D[gPi, piM] /. piM -> piStar, 50], 0.0714453558083195`50, 10^-14];
+    61	
+    62	(* Anchor 3: parent threshold identity at piM = piStar, notes Sec. 2. *)
+    63	thresholdAtStar = FullSimplify[
+    64	  thresholdResidual /. piM -> piStar,
+    65	  Assumptions -> $Assumptions
+    66	];
+    67	expectedForm = (tM - qStar*a0Prime) - piStar*thetaSigma/lM;
+    68	identityResidual = Chop[Simplify[thresholdAtStar - expectedForm], 10^-30];
+    69	If[TrueQ[identityResidual === 0],
+    70	  pass["parent threshold identity at piM = piStar (notes Sec. 2)"],
+    71	  fail["parent threshold identity at piM = piStar (notes Sec. 2)",
+    72	       identityResidual]
+    73	];
+    74	
+    75	(* Anchor 4: lower-branch discrimination, gPi at 2*piStar is far from gMinus. *)
+    76	offStarResidual = Abs[N[(gPi /. piM -> 2*piStar) - gMinus, 30]];
+    77	If[TrueQ[offStarResidual > 10^-3],
+    78	  pass["lower-branch discrimination (paper Checks item 3)"],
+    79	  fail["lower-branch discrimination (paper Checks item 3)", offStarResidual]
+    80	];
+    81	
+    82	Print[""];
+    83	Print["Stage 131 Mathematica audit passed."];
+    84	
+    85	Exit[0];
+
+ succeeded in 0ms:
+
+========================================================================================
+STAGE 131 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION
+========================================================================================
+g_-^F1 closed form vs literal residual = -1.730803191095858895422494703765224306785646882281423802474949`34.057528388002225*^-16
+PASS: g_-^F1 closed form vs literal
+Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
+V1_* = (1.5088295134931555830055507559542749287786371931530784314262`30.*thetaSigma)/lM
+g'(Pi_*) = 0.071445355808319521189460301988135751110742153928880903667`30.
+Parent bias mismatch formula = -(a0Prime*qStar) - (piM*thetaSigma)/lM + tM
+piStar notes Sec. 1 value residual = -4.41699444924404572507122136280684692156857381408878827675384151`35.16545668732165*^-15
+PASS: piStar notes Sec. 1 value
+slope at piStar notes Sec. 3 value residual = 2.118946030198813575111074215392888090366692503843511136204512`34.171115896234156*^-17
+PASS: slope at piStar notes Sec. 3 value
+PASS: parent threshold identity at piM = piStar (notes Sec. 2)
+PASS: lower-branch discrimination (paper Checks item 3)
+
+Stage 131 Mathematica audit passed.
+
+exec
+/bin/bash -lc "nl -ba scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	Stage 131 SymPy audit — parent micro-threshold for canonical mouth compensation.
+     4	"""
+     5	
+     6	from __future__ import annotations
+     7	import sympy as sp
+     8	
+     9	Pi = sp.symbols("Pi", positive=True, real=True)
+    10	Theta_sigma, L = sp.symbols("Theta_sigma L", positive=True, real=True)
+    11	Tm, qstar, A0p = sp.symbols("T_m q_* A0p", real=True)
+    12	# F1 lower-branch value g_-^{F1}: closed form is (2*sqrt(4107 - 100*pi^2) - 37*sqrt(3)) / (20*pi).
+    13	# Carried forward from the F1 family lower-branch derivation in the upstream
+    14	# parent-mouth stages (see notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3).
+    15	g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+    16	g_minus_literal = sp.Float("0.758035078944663", 50)
+    17	assert abs(sp.N(g_minus_exact, 50) - g_minus_literal) < sp.Float("1e-14", 50), (
+    18	    f"g_-^{{F1}} closed form vs literal: {sp.N(g_minus_exact, 50)} != {g_minus_literal}"
+    19	)
+    20	g_minus = sp.N(g_minus_exact, 50)
+    21	print(f"PASS: g_-^F1 closed form matches literal 0.758035078944663")
+    22	
+    23	gPi = sp.simplify(2*Pi*(2*Pi*sp.exp(Pi) + sp.pi)/((4*Pi**2 + sp.pi**2)*(sp.exp(Pi) - 1)))
+    24	Pi_star = sp.nsolve(gPi - g_minus, 1.5, tol=1e-30, maxsteps=100, prec=80)
+    25	
+    26	V1 = Pi*Theta_sigma/L
+    27	V1_star = sp.N(Pi_star, 30)*Theta_sigma/L
+    28	print("Pi_* =", sp.N(Pi_star, 30))
+    29	print("V1_* =", V1_star)
+    30	
+    31	gprime_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30)
+    32	print("g'(Pi_*) =", gprime_star)
+    33	
+    34	threshold_residual = sp.simplify((Tm - qstar*A0p) - Pi*Theta_sigma/L)
+    35	print("Parent bias mismatch formula =", threshold_residual)
+    36	
+    37	# --- Anchored assertions vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md ---
+    38	
+    39	# Anchor (1): Pi_* matches the notes-quoted value 1.50882951349316 (Sec. 1).
+    40	Pi_star_paper = sp.Float("1.50882951349316", 50)
+    41	Pi_star_num = sp.N(Pi_star, 50)
+    42	assert abs(Pi_star_num - Pi_star_paper) < sp.Float("1e-14", 50), (
+    43	    f"Pi_* mismatch vs notes Sec. 1: computed {Pi_star_num}, paper {Pi_star_paper}"
+    44	)
+    45	print("PASS: Pi_* matches notes Sec. 1 value 1.50882951349316")
+    46	
+    47	# Anchor (2): g'(Pi_*) matches the notes-quoted slope 0.0714453558083195 (Sec. 3).
+    48	gprime_paper = sp.Float("0.0714453558083195", 50)
+    49	gprime_num = sp.N(gprime_star, 50)
+    50	assert abs(gprime_num - gprime_paper) < sp.Float("1e-14", 50), (
+    51	    f"g'(Pi_*) mismatch vs notes Sec. 3: computed {gprime_num}, paper {gprime_paper}"
+    52	)
+    53	print("PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195")
+    54	
+    55	# Anchor (3): parent threshold identity at Pi = Pi_*.
+    56	# notes Sec. 2:  T_m - q_* A_0' = Pi_* * Theta_sigma / L
+    57	threshold_at_star = threshold_residual.subs(Pi, sp.N(Pi_star, 50))
+    58	expected_form = (Tm - qstar*A0p) - sp.N(Pi_star, 50)*Theta_sigma/L
+    59	assert sp.simplify(threshold_at_star - expected_form) == 0, (
+    60	    "parent threshold identity at Pi_* does not match (T_m - q_* A_0') - Pi_* Theta_sigma/L"
+    61	)
+    62	print("PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2")
+    63	
+    64	# Anchor (4): lower-branch discrimination — Pi_* sits on the g_- branch, NOT on a singular point.
+    65	# A point clearly away from Pi_* (e.g. 2*Pi_*) must give a residual visibly far from zero.
+    66	gPi_offstar = gPi.subs(Pi, 2*sp.N(Pi_star, 30))
+    67	offstar_residual = abs(sp.N(gPi_offstar - g_minus, 30))
+    68	assert offstar_residual > sp.Float("1e-3", 30), (
+    69	    f"counter-example failed: gPi(2*Pi_*) residual vs g_- = {offstar_residual}, "
+    70	    "expected clearly nonzero (lower-branch discrimination, paper Checks item 3)"
+    71	)
+    72	print(f"PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = {offstar_residual}")
+
+exec
+/bin/bash -lc "nl -ba paper/stages/stage_131.tex | sed -n '1,180p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba redteam/directives/stage_131.md | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 131
+     3	batch: IV.4
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 131
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents.
+    23	
+    24	---
+    25	
+    26	## F1 — missing_verification_script (subtype: script_doesnt_cover_claim)
+    27	
+    28	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py`
+    29	
+    30	**Issue:**
+    31	The SymPy "audit" script has zero `assert` statements. It computes `Pi_*`, `V1_*`, `g'(Pi_*)`, and a "Parent bias mismatch formula", but only prints them — nothing can fail. The output transcript shows `Status: PASS` purely because nothing is tested.
+    32	
+    33	**Required change:**
+    34	
+    35	Append the following block at the end of the file (after the existing line 26 `print` of the threshold residual), keeping all current lines intact:
+    36	
+    37	```python
+    38	# --- Anchored assertions vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md ---
+    39	
+    40	# Anchor (1): Pi_* matches the notes-quoted value 1.50882951349316 (Sec. 1).
+    41	Pi_star_paper = sp.Float("1.50882951349316", 50)
+    42	Pi_star_num = sp.N(Pi_star, 50)
+    43	assert abs(Pi_star_num - Pi_star_paper) < sp.Float("1e-14", 50), (
+    44	    f"Pi_* mismatch vs notes Sec. 1: computed {Pi_star_num}, paper {Pi_star_paper}"
+    45	)
+    46	print("PASS: Pi_* matches notes Sec. 1 value 1.50882951349316")
+    47	
+    48	# Anchor (2): g'(Pi_*) matches the notes-quoted slope 0.0714453558083195 (Sec. 3).
+    49	gprime_paper = sp.Float("0.0714453558083195", 50)
+    50	gprime_num = sp.N(gprime_star, 50)
+    51	assert abs(gprime_num - gprime_paper) < sp.Float("1e-14", 50), (
+    52	    f"g'(Pi_*) mismatch vs notes Sec. 3: computed {gprime_num}, paper {gprime_paper}"
+    53	)
+    54	print("PASS: g'(Pi_*) matches notes Sec. 3 value 0.0714453558083195")
+    55	
+    56	# Anchor (3): parent threshold identity at Pi = Pi_*.
+    57	# notes Sec. 2:  T_m - q_* A_0' = Pi_* * Theta_sigma / L
+    58	threshold_at_star = threshold_residual.subs(Pi, sp.N(Pi_star, 50))
+    59	expected_form = (Tm - qstar*A0p) - sp.N(Pi_star, 50)*Theta_sigma/L
+    60	assert sp.simplify(threshold_at_star - expected_form) == 0, (
+    61	    "parent threshold identity at Pi_* does not match (T_m - q_* A_0') - Pi_* Theta_sigma/L"
+    62	)
+    63	print("PASS: parent threshold identity at Pi = Pi_* matches notes Sec. 2")
+    64	
+    65	# Anchor (4): lower-branch discrimination — Pi_* sits on the g_- branch, NOT on a singular point.
+    66	# A point clearly away from Pi_* (e.g. 2*Pi_*) must give a residual visibly far from zero.
+    67	gPi_offstar = gPi.subs(Pi, 2*sp.N(Pi_star, 30))
+    68	offstar_residual = abs(sp.N(gPi_offstar - g_minus, 30))
+    69	assert offstar_residual > sp.Float("1e-3", 30), (
+    70	    f"counter-example failed: gPi(2*Pi_*) residual vs g_- = {offstar_residual}, "
+    71	    "expected clearly nonzero (lower-branch discrimination, paper Checks item 3)"
+    72	)
+    73	print(f"PASS: lower-branch discrimination — gPi(2*Pi_*) - g_- = {offstar_residual}")
+    74	```
+    75	
+    76	**Claim manifest:**
+    77	- M1: `Pi_* = 1.50882951349316` (from notes line 8 / Sec. 1).
+    78	- M2: `g'(Pi_*) = 0.0714453558083195` (from notes line 93 / Sec. 3).
+    79	- M3: `T_m - q_* A_0' = Pi_* Theta_sigma / L` (parent threshold identity, paper card body + notes Sec. 2).
+    80	- M4: `Pi_*` lies on the lower (`g_-^{F1}`) branch, not on a singular branch (paper Checks item 3).
+    81	
+    82	**Verification command:**
+    83	After Codex applies, the verifier will run `redteam exec-sympy 131` and confirm: (a) script exits 0; (b) transcript contains four new `PASS:` lines matching M1–M4.
+    84	
+    85	---
+    86	
+    87	## F2 — tautological_check
+    88	
+    89	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:26,46`
+    90	
+    91	**Issue:**
+    92	Line 46's `expectApprox["Pi_* compensation point", gPi /. piM -> piStar, gMinus, 10^-20]` is tautological: `piStar` was just defined at line 35 as the root of `FindRoot[gPi == gMinus, ...]`, so the residual is forced near zero by construction. The check verifies FindRoot's convergence, not any physics claim. Separately, line 26's banner string contains `"STAGE 114"` but this is stage 131.
+    93	
+    94	**Required change:**
+    95	
+    96	1. Replace line 26:
+    97	   ```
+    98	   banner["STAGE 114 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION"];
+    99	   ```
+   100	   with
+   101	   ```
+   102	   banner["STAGE 131 — PARENT MICRO-THRESHOLD FOR CANONICAL MOUTH COMPENSATION"];
+   103	   ```
+   104	
+   105	2. Replace line 46:
+   106	   ```
+   107	   expectApprox["Pi_* compensation point", gPi /. piM -> piStar, gMinus, 10^-20];
+   108	   ```
+   109	   with the following block:
+   110	   ```mathematica
+   111	   (* Anchored checks vs notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md *)
+   112	
+   113	   (* Anchor (1): Pi_* matches notes Sec. 1 quoted value. *)
+   114	   expectApprox["Pi_* notes Sec. 1 value",
+   115	     N[piStar, 50], 1.50882951349316`50, 10^-14];
+   116	
+   117	   (* Anchor (2): g'(Pi_*) matches notes Sec. 3 quoted slope. *)
+   118	   expectApprox["g'(Pi_*) notes Sec. 3 value",
+   119	     N[D[gPi, piM] /. piM -> piStar, 50], 0.0714453558083195`50, 10^-14];
+   120	
+   121	   (* Anchor (3): parent threshold identity at piM = piStar — notes Sec. 2. *)
+   122	   thresholdAtStar = FullSimplify[
+   123	     thresholdResidual /. piM -> piStar,
+   124	     Assumptions -> $Assumptions
+   125	   ];
+   126	   expectedForm = (tM - qStar*a0Prime) - piStar*thetaSigma/lM;
+   127	   If[TrueQ[Simplify[thresholdAtStar - expectedForm] === 0],
+   128	     pass["parent threshold identity at Pi = Pi_* (notes Sec. 2)"],
+   129	     fail["parent threshold identity at Pi = Pi_* (notes Sec. 2)",
+   130	          Simplify[thresholdAtStar - expectedForm]]
+   131	   ];
+   132	
+   133	   (* Anchor (4): lower-branch discrimination — gPi(2*piStar) is clearly far from gMinus. *)
+   134	   offStarResidual = Abs[N[(gPi /. piM -> 2*piStar) - gMinus, 30]];
+   135	   If[TrueQ[offStarResidual > 10^-3],
+   136	     pass["lower-branch discrimination (paper Checks item 3)"],
+   137	     fail["lower-branch discrimination (paper Checks item 3)", offStarResidual]
+   138	   ];
+   139	   ```
+   140	
+   141	**Verification command:**
+   142	After Codex applies, the verifier will run `redteam exec-mathematica 131` and confirm: (a) script exits 0; (b) banner reads `STAGE 131`; (c) transcript contains four `PASS:` lines for the four anchors; (d) NO `PASS: Pi_* compensation point` line (it was the tautological one).
+   143	
+   144	---
+   145	
+   146	## F3 — insufficient_verification
+   147	
+   148	**Target:**
+   149	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py` (anchored to F1 block above)
+   150	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl` (anchored to F2 block above)
+   151	
+   152	**Issue:**
+   153	Neither script substitutes `Pi -> Pi_*` into the "Parent bias mismatch formula" or distinguishes the lower branch from the singular branch (paper Checks item 3). Both gaps are closed by Anchors (3) and (4) prescribed in F1 and F2.
+   154	
+   155	**Required change:**
+   156	The F1 and F2 blocks above already contain the Anchor (3) and Anchor (4) checks that resolve this finding. No additional edits required beyond F1 and F2.
+   157	
+   158	**Verification command:**
+   159	Same as F1 and F2 — the verifier confirms the Anchor (3) and Anchor (4) PASS lines in both transcripts.
+   160	
+   161	---
+   162	
+   163	## F4 — hardcoded_result
+   164	
+   165	**Target:**
+   166	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:12`
+   167	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:33`
+   168	
+   169	**Issue:**
+   170	`g_minus` is imported as a bare numeric literal (SymPy) or as an exact closed form (Mathematica) with no in-script citation to the upstream stage that derives the F1 lower-branch value. The two engines also use different representations (float vs exact), weakening independence.
+   171	
+   172	**Required change:**
+   173	
+   174	1. SymPy line 12. Replace:
+   175	   ```python
+   176	   g_minus = sp.Float("0.758035078944663")
+   177	   ```
+   178	   with:
+   179	   ```python
+   180	   # F1 lower-branch value g_-^{F1}: closed form is (2*sqrt(4107 - 100*pi^2) - 37*sqrt(3)) / (20*pi).
+   181	   # Carried forward from the F1 family lower-branch derivation in the upstream
+   182	   # parent-mouth stages (see notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3).
+   183	   g_minus_exact = (2*sp.sqrt(4107 - 100*sp.pi**2) - 37*sp.sqrt(3)) / (20*sp.pi)
+   184	   g_minus_literal = sp.Float("0.758035078944663", 50)
+   185	   assert abs(sp.N(g_minus_exact, 50) - g_minus_literal) < sp.Float("1e-14", 50), (
+   186	       f"g_-^{{F1}} closed form vs literal: {sp.N(g_minus_exact, 50)} != {g_minus_literal}"
+   187	   )
+   188	   g_minus = sp.N(g_minus_exact, 50)
+   189	   print(f"PASS: g_-^F1 closed form matches literal 0.758035078944663")
+   190	   ```
+   191	
+   192	2. Mathematica line 33. Replace:
+   193	   ```
+   194	   gMinus = N[(2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi), 80];
+   195	   ```
+   196	   with:
+   197	   ```mathematica
+   198	   (* F1 lower-branch value g_-^{F1}: closed form below; see notes/stages/
+   199	      moving_throat_pde_stage131_parent_mouth_threshold.md Sec. 3 for context. *)
+   200	   gMinusExact = (2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi);
+   201	   gMinusLiteral = 0.758035078944663`50;
+   202	   expectApprox["g_-^F1 closed form vs literal",
+   203	     N[gMinusExact, 50], gMinusLiteral, 10^-14];
+   204	   gMinus = N[gMinusExact, 80];
+   205	   ```
+   206	
+   207	**Verification command:**
+   208	After Codex applies, the verifier confirms: (a) both transcripts contain a PASS line tying the closed form `(2*Sqrt[4107 - 100*Pi^2] - 37*Sqrt[3])/(20*Pi)` to the numeric `0.758035078944663`; (b) a grep for `4107` in both `.py` and `.wl` returns a match; (c) both scripts exit 0.
+
+ succeeded in 0ms:
+     1	\section[Stage 131]{Stage 131: Parent Micro-Threshold for Canonical Mouth Compensation}
+     2	\label{stage:131}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~131 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
+    14	
+    15	\begin{quote}
+    16	Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+    23	\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
+    24	\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+codex
+---
+stage: 131
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [stage_131.md, stage_131.tex, moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py, moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt, moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl, moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt]
+---
+# Codex review — stage 131
+
+## What the edit was supposed to do
+The directive required replacing print-only or tautological checks with assertions for the quoted compensation point, slope, parent threshold identity, and lower-branch discrimination. It also required fixing the Mathematica banner from stage 114 to stage 131. Finally, both engines were supposed to cite/check the imported \(g_-^{F1}\) lower-branch closed form against the numeric literal.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:17 | \(g_-^{F1}\) closed form vs literal | Yes | Supports imported lower branch | OK |
+| 2 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:42 | \(\Pi_*\) vs quoted value | Yes | Supports compensation point | OK |
+| 3 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:50 | \(g'(\Pi_*)\) vs quoted slope | Yes | Supporting notes anchor, not the threshold itself | OK |
+| 4 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:59 | threshold-at-star equals expected form | No meaningful physics failure | No; duplicates the target residual | FINDING R1 |
+| 5 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:68 | \(g(2\Pi_*)\neq g_-\) | Yes | No; does not test singular-branch exclusion | FINDING R2 |
+| 6 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:37 | \(g_-^{F1}\) closed form vs literal | Yes | Supports imported lower branch | OK |
+| 7 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:55 | \(\pi_*\) vs quoted value | Yes | Supports compensation point | OK |
+| 8 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:59 | slope at \(\pi_*\) vs quoted value | Yes | Supporting notes anchor, not the threshold itself | OK |
+| 9 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:69 | threshold-at-star identity residual is zero | No meaningful physics failure | No; duplicates the target residual | FINDING R1 |
+| 10 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:77 | \(g(2\pi_*)\neq g_-\) | Yes | No; does not test singular-branch exclusion | FINDING R2 |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:57`, `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:63`
+- **What's wrong:** SymPy checks `assert sp.simplify(threshold_at_star - expected_form) == 0`, where `threshold_at_star` is just `threshold_residual.subs(Pi, Pi_star)` and `expected_form` is the same residual formula with `Pi_star` copied in. Mathematica repeats the same construction with `identityResidual = Chop[Simplify[thresholdAtStar - expectedForm], 10^-30]`. This verifies self-consistency of a hardcoded residual, not the paper claim \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+- **What it should be:** Derive the parent bias mismatch from the independent mouth-bias/source equations, then compare that derived expression at the paper \(\Pi_*\) to \((T_m-q_*A'_0)-\Pi_*\Theta_\sigma/L\), and separately show the residual vanishes under the canonical threshold relation.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:66`, `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:76`
+- **What's wrong:** The check `gPi(2*Pi_*) - g_-` only proves an arbitrary off-star point is not another lower-branch root. It does not compare \(\Pi_*\) against the singular equal-normalized branch, and \(\Pi_*\) itself was computed from `gPi == g_minus`, so lower-branch membership is not independently tested.
+- **What it should be:** Evaluate the paper-quoted \(\Pi_*\) against the lower-branch condition and against an independently imported/derived singular-branch condition, asserting lower residual small and singular residual separated from zero.
+
+### R3 — transliteration
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:33`
+- **What's wrong:** The Mathematica audit is a direct transliteration of the SymPy targets: same \(g_-\) closed form, same literals, same root solve, same threshold tautology, and same \(2\pi_*\) off-star check. The saved Mathematica output corroborates execution, but it is not an independent second-engine derivation capable of catching a wrong target copied into both scripts.
+- **What it should be:** One engine should independently derive or import the parent bias map and singular-branch discriminator rather than mirroring the same asserted targets.
+
+## Bottom line
+The most important problem is the parent-threshold assertion: both scripts report PASS while comparing the threshold residual to a restatement of itself. The saved outputs show the checks ran, but they do not establish the paper’s canonical branch equation or the lower-vs-singular branch discrimination required by the stage card.
+tokens used
+24,450
+---
+stage: 131
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [stage_131.md, stage_131.tex, moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py, moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.txt, moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl, moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.txt]
+---
+# Codex review — stage 131
+
+## What the edit was supposed to do
+The directive required replacing print-only or tautological checks with assertions for the quoted compensation point, slope, parent threshold identity, and lower-branch discrimination. It also required fixing the Mathematica banner from stage 114 to stage 131. Finally, both engines were supposed to cite/check the imported \(g_-^{F1}\) lower-branch closed form against the numeric literal.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:17 | \(g_-^{F1}\) closed form vs literal | Yes | Supports imported lower branch | OK |
+| 2 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:42 | \(\Pi_*\) vs quoted value | Yes | Supports compensation point | OK |
+| 3 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:50 | \(g'(\Pi_*)\) vs quoted slope | Yes | Supporting notes anchor, not the threshold itself | OK |
+| 4 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:59 | threshold-at-star equals expected form | No meaningful physics failure | No; duplicates the target residual | FINDING R1 |
+| 5 | moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:68 | \(g(2\Pi_*)\neq g_-\) | Yes | No; does not test singular-branch exclusion | FINDING R2 |
+| 6 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:37 | \(g_-^{F1}\) closed form vs literal | Yes | Supports imported lower branch | OK |
+| 7 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:55 | \(\pi_*\) vs quoted value | Yes | Supports compensation point | OK |
+| 8 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:59 | slope at \(\pi_*\) vs quoted value | Yes | Supporting notes anchor, not the threshold itself | OK |
+| 9 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:69 | threshold-at-star identity residual is zero | No meaningful physics failure | No; duplicates the target residual | FINDING R1 |
+| 10 | moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:77 | \(g(2\pi_*)\neq g_-\) | Yes | No; does not test singular-branch exclusion | FINDING R2 |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:57`, `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:63`
+- **What's wrong:** SymPy checks `assert sp.simplify(threshold_at_star - expected_form) == 0`, where `threshold_at_star` is just `threshold_residual.subs(Pi, Pi_star)` and `expected_form` is the same residual formula with `Pi_star` copied in. Mathematica repeats the same construction with `identityResidual = Chop[Simplify[thresholdAtStar - expectedForm], 10^-30]`. This verifies self-consistency of a hardcoded residual, not the paper claim \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+- **What it should be:** Derive the parent bias mismatch from the independent mouth-bias/source equations, then compare that derived expression at the paper \(\Pi_*\) to \((T_m-q_*A'_0)-\Pi_*\Theta_\sigma/L\), and separately show the residual vanishes under the canonical threshold relation.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py:66`, `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:76`
+- **What's wrong:** The check `gPi(2*Pi_*) - g_-` only proves an arbitrary off-star point is not another lower-branch root. It does not compare \(\Pi_*\) against the singular equal-normalized branch, and \(\Pi_*\) itself was computed from `gPi == g_minus`, so lower-branch membership is not independently tested.
+- **What it should be:** Evaluate the paper-quoted \(\Pi_*\) against the lower-branch condition and against an independently imported/derived singular-branch condition, asserting lower residual small and singular residual separated from zero.
+
+### R3 — transliteration
+- **Where:** `moving_throat_pde_stage131_parent_mouth_threshold_mathematica_audit.wl:33`
+- **What's wrong:** The Mathematica audit is a direct transliteration of the SymPy targets: same \(g_-\) closed form, same literals, same root solve, same threshold tautology, and same \(2\pi_*\) off-star check. The saved Mathematica output corroborates execution, but it is not an independent second-engine derivation capable of catching a wrong target copied into both scripts.
+- **What it should be:** One engine should independently derive or import the parent bias map and singular-branch discriminator rather than mirroring the same asserted targets.
+
+## Bottom line
+The most important problem is the parent-threshold assertion: both scripts report PASS while comparing the threshold residual to a restatement of itself. The saved outputs show the checks ran, but they do not establish the paper’s canonical branch equation or the lower-vs-singular branch discrimination required by the stage card.
+
+---
+codex_session_id: 019e7122-3892-76b2-a274-059e3511ad25

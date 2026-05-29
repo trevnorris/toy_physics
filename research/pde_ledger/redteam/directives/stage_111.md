@@ -15,7 +15,7 @@ Apply the finding below. After applying, append an `## Applied: F1` block under 
 
 If the required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F1` with a question instead.
 
-Do NOT introduce new features, refactors, or stylistic changes outside the scope below. Do NOT run python or mathematica. Do NOT touch `paper/`, `notes/`, or any prose documents.
+Do NOT introduce new features, refactors, or stylistic changes outside the scope below. Do NOT touch `paper/`, `notes/`, or any prose documents.
 
 ## F1 — mathematica_transliteration
 

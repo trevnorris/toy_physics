@@ -20,7 +20,7 @@ If a non-paper_misalignment finding's required change is ambiguous or unsafe to 
 
 Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
 
-Do NOT run python or mathematica. Only edit files.
+After editing, RUN the affected scripts (`python3 <path>` for SymPy, `math -script <path>` for Mathematica) and iterate until they exit 0 with all in-file checks passing. Getting the scripts to run cleanly is your job; the orchestrator independently re-runs afterward.
 
 Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
 

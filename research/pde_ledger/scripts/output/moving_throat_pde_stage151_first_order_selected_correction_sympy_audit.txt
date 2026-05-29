@@ -2,21 +2,53 @@
 ========================================================================================
 FIRST-ORDER SELF-CONSISTENT SOURCE CORRECTION
 ========================================================================================
-<1>_* = 1 (canonical normalization) = 1.0   (target 1.0, diff 0.0)
-<R>_*       = 0.4476327139241674169923418512633281559625
-<c>_*       = 0.7580350789446631424934209200271355774948
-<K>_*       = 0.6580759376054294882708381104284142043414
-Cov(c,R)    = -0.05967492458671911449768186626917693665397
-Cov(K,R)    = -0.04629359020009867394846525156457088516646
-<delta_Sigma>_*  (centering) = 1.375847592069469627811980620665879893659e-42   (target 0.0, diff 1.375847592069469627811980620665879893659e-42)
-delta_g_int = -Cov(c,R) = 0.05967492458671911449768186626917693665397   (target 0.05967492458671911449768186626917693665397, diff 2.152394441202919020938848639933311177646e-42)
-delta_S_int = -Cov(K,R) = 0.04629359020009867394846525156457088516646   (target 0.04629359020009867394846525156457088516646, diff 0.0)
-deltaPi = Cov(c,R)/gprime = -0.8352526754408049272301627991484590975534   (target -0.8352526754408049272301627991484590975534, diff 2.29588740394978028900143854926219858949e-41)
-deltaT = -AT*Cov(c,R) - BT*Cov(K,R) = -0.2487255954387427073926383751847982791579   (target -0.248725595438742707392638375184798279158, diff 5.739718509874450722503596373155496473724e-42)
 
-deltaPi  = -0.8352526754408049272301627991484590975534
-deltaT   = -0.2487255954387427073926383751847982791579
+[Pi=1/2]
+[Pi=1/2] M1 delta_Sigma + Sigma_star*(R - <R>) = 0
+[Pi=1/2] M2 int Sigma_star dx - 1 = 0
+[Pi=1/2] M3 int delta_Sigma dx = 0
+[Pi=1/2] M4 dg + CovcR = 0
+[Pi=1/2] M5 dS + CovKR = 0
+[Pi=1/2] M6 deltaPi - CovcR/gprime = 0
+[Pi=1/2] M7 deltaT + A_T*CovcR + B_T*CovKR = 0
+
+[Pi=1]
+[Pi=1] M1 delta_Sigma + Sigma_star*(R - <R>) = 0
+[Pi=1] M2 int Sigma_star dx - 1 = 0
+[Pi=1] M3 int delta_Sigma dx = 0
+[Pi=1] M4 dg + CovcR = 0
+[Pi=1] M5 dS + CovKR = 0
+[Pi=1] M6 deltaPi - CovcR/gprime = 0
+[Pi=1] M7 deltaT + A_T*CovcR + B_T*CovKR = 0
+
+[Pi=3/2]
+[Pi=3/2] M1 delta_Sigma + Sigma_star*(R - <R>) = 0
+[Pi=3/2] M2 int Sigma_star dx - 1 = 0
+[Pi=3/2] M3 int delta_Sigma dx = 0
+[Pi=3/2] M4 dg + CovcR = 0
+[Pi=3/2] M5 dS + CovKR = 0
+[Pi=3/2] M6 deltaPi - CovcR/gprime = 0
+[Pi=3/2] M7 deltaT + A_T*CovcR + B_T*CovKR = 0
+
+[Pi=2]
+[Pi=2] M1 delta_Sigma + Sigma_star*(R - <R>) = 0
+[Pi=2] M2 int Sigma_star dx - 1 = 0
+[Pi=2] M3 int delta_Sigma dx = 0
+[Pi=2] M4 dg + CovcR = 0
+[Pi=2] M5 dS + CovKR = 0
+[Pi=2] M6 deltaPi - CovcR/gprime = 0
+[Pi=2] M7 deltaT + A_T*CovcR + B_T*CovKR = 0
+
+[Pi=5/3]
+[Pi=5/3] M1 delta_Sigma + Sigma_star*(R - <R>) = 0
+[Pi=5/3] M2 int Sigma_star dx - 1 = 0
+[Pi=5/3] M3 int delta_Sigma dx = 0
+[Pi=5/3] M4 dg + CovcR = 0
+[Pi=5/3] M5 dS + CovKR = 0
+[Pi=5/3] M6 deltaPi - CovcR/gprime = 0
+[Pi=5/3] M7 deltaT + A_T*CovcR + B_T*CovKR = 0
 
 Theorem:
-  Once the full mouth residual R_*(x) is known, the selected first-order
-  source correction is completely determined by Cov_*(c,R_*) and Cov_*(K_q,R_*).
+  The selected first-order source correction is determined by
+  Cov_*(c,R_*) and Cov_*(K_q,R_*) at every exact Pi_star sample above.
+# exit_code: 0

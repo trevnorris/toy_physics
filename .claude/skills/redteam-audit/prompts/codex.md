@@ -22,7 +22,7 @@ The auditor read these files before writing the directive. Treat them as authori
 
 - **Scripts only.** Touch only `.py` and `.wl` script files (and their saved `.txt` outputs if the directive explicitly asks for regeneration). Do NOT touch `paper.tex`, `notes/*.md`, or any other prose document. The red-team is a script-verification loop; doc alignment is handled out-of-band (the auditor flags `paper_misalignment` findings to the user, not to you).
 - **No new features, no refactors, no stylistic changes.** If the directive says "fix the sign on line 42," fix the sign on line 42. Nothing else.
-- **Execute to validate, and iterate.** After you make edits, RUN the affected scripts and confirm they exit 0. Use `python3 <script-path>` for SymPy and `math -script <script-path>` for Mathematica. If the script fails (non-zero exit, error message, FAIL on an `expectZero`/`assert` check), read the output, diagnose the cause, fix the script, and run again. Do not stop iterating until every script you edited (or created) exits 0 with all its in-file checks passing. The orchestrator dispatches a separate clean-context verifier agent AFTER you confirm the scripts run — that verifier reviews substance, not whether the script runs. Getting the script to run is your job.
+- **Execute to validate, and iterate.** After you make edits, RUN the affected scripts and confirm they exit 0, **each under a 10-minute cap**: `timeout 600 python3 <script-path>` for SymPy and `timeout 600 math -script <script-path>` for Mathematica. **No script may take longer than 10 minutes** — if `timeout` kills it (exit code 124), that is a FAILURE, not a pass: the approach is intractable as written and you must reformulate the script so it completes within the cap (e.g., restructure the math, series/expand before integrating, avoid CAS operations that don't close). Never leave a script that cannot finish within the cap. If the script fails (non-zero exit, error message, FAIL on an `expectZero`/`assert` check), read the output, diagnose the cause, fix the script, and run again. Do not stop iterating until every script you edited (or created) exits 0 with all its in-file checks passing. The orchestrator dispatches a separate clean-context verifier agent AFTER you confirm the scripts run — that verifier reviews substance, not whether the script runs. Getting the script to run is your job.
 - **Iteration cap.** If the same failure persists after ~5 attempts, mark the finding `Blocked` rather than thrash. Better to escalate a hard case than burn the session.
 - **No guessing.** If a finding's required change is ambiguous, mark it blocked (see below) and skip it. Better to leave it unfixed than to apply the wrong change.
 - **Edit in place.** Files are already under git; the orchestrator handles staging/commits.
@@ -81,7 +81,7 @@ For Mathematica scripts:
 - `Print` each check and its reduced residual.
 - Use `Exit[1]` on failure.
 
-Both scripts must be runnable via the runners in `.redteam-config.yaml`. Run them yourself (`python3 <path>` / `math -script <path>`) and iterate until they exit 0 with all checks passing.
+Both scripts must be runnable via the runners in `.redteam-config.yaml`. Run them yourself under the 10-minute cap (`timeout 600 python3 <path>` / `timeout 600 math -script <path>`) and iterate until they exit 0 with all checks passing; a `timeout` kill (exit 124) means the script is too slow and must be reformulated to finish within the cap.
 
 ## Common Mathematica pitfalls (defects seen in prior batches)
 

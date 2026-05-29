@@ -23,7 +23,7 @@ No Codex invocation required. Verifier will confirm the new assertion appears an
 
 Do NOT touch paper.tex, notes/, or any prose document.
 Do NOT edit the scripts to "fix" a paper_misalignment.
-Do NOT run python or mathematica.
+
 
 ## F1 -- paper_misalignment
 

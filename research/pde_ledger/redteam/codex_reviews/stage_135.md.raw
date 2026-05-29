@@ -1,0 +1,591 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7123-392f-7283-a705-bb3c711d6fa3
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 135)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_135.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_135.tex
+
+Write your verdict report for stage 135 now, following the format above exactly.
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+86 /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+23 /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_135.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+116 /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_135.md
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+87 /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_135.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+28 /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_135.tex
+
+ succeeded in 0ms:
+32 /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_135.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_135.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 135]{Stage 135: Outlet-Consistent Mouth Closure}
+     2	\label{stage:135}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~135 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+    14	
+    15	\begin{quote}
+    16	Inheriting the compensated outlet ratio gives \(M_s=4\Sigma_m\), \(M_q=-\Sigma_m\), and \(\Sigma_m^*\approx0.451485\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+    23	\item Check the self-matched susceptibility closure before using the one-scalar branch law.
+    24	\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 135
+     3	batch: IV.4
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 135
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	Do NOT introduce new features, refactors, or stylistic changes beyond what is specified. Do NOT touch paper.tex, notes/, or any prose documents. Do NOT run python or mathematica.
+    17	
+    18	The two findings below are tightly coupled: F1 says "the only assertion is tautological"; F2 says "and the substantive deliverables are not tested." The required edit for both is a single edit batch on the SymPy script — apply F1's edit and F2's edit together as one revision of `scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py`. The Mathematica script does not require any edit.
+    19	
+    20	## F1 — tautological_check
+    21	
+    22	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:46-49`
+    23	
+    24	**Issue:** The only SymPy assertion is the closure residual `Pi_* - Sigma_*(4 - S_*)`, where `Sigma_*` was just defined as `solve(Pi_* == sigma*(4 - S_*), sigma)`. The residual is identically zero by construction (modulo floating-point noise), so the `raise AssertionError` cannot fire. The check verifies arithmetic on `solve`, not the physics.
+    25	
+    26	**Required change:**
+    27	
+    28	Keep the residual print as a numerical sanity probe, but the load-bearing assertion is moved into F2's anchored checks. Concretely: leave lines 46-47 as-is (they print the residual for the transcript), and delete lines 48-49:
+    29	
+    30	```python
+    31	if abs(residual) > 1e-12:
+    32	    raise AssertionError("Outlet-consistent threshold did not close.")
+    33	```
+    34	
+    35	The replacement assertions are added per F2 below. Do not silently drop the residual print — only drop the conditional `raise`.
+    36	
+    37	**Verification:** After applying, lines 48-49 of the prior revision (the `if abs(residual)...` block) are gone, and the residual is still printed at line 46-47. The new assertions from F2 are the only `assert`/`raise` statements in the script.
+    38	
+    39	## F2 — insufficient_verification
+    40	
+    41	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:19-49`
+    42	
+    43	**Issue:** The SymPy script does not assert any of the paper's six deliverables (the substitution `M_s + M_q*S_q -> Sigma_m*(4 - S_q)`; `0 < S_q(Pi_*) < 1`; numerical Sigma_m^*, M_s^*, M_q^*; mixed-lane correction). It only prints them. The Mathematica script has all six checks at lines 56, 67, 74-77; SymPy must reach parity.
+    44	
+    45	**Required change:**
+    46	
+    47	1. **Add a symbolic substitution check** immediately after the `S_q = sp.simplify(...)` line (currently line 28). Introduce two independent symbols `M_s_sym, M_q_sym` (positive=True is wrong for `M_q`, since `M_q` is negative — declare them as plain real symbols), then build the generic law and substitute:
+    48	
+    49	   ```python
+    50	   M_s_sym, M_q_sym = sp.symbols("M_s_sym M_q_sym", real=True)
+    51	   generic_law = M_s_sym + M_q_sym * S_q
+    52	   reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})
+    53	   expected_law = Sigma_m * (4 - S_q)
+    54	   residual_sub = sp.simplify(reduced_law - expected_law)
+    55	   print("M_s + M_q*S_q - Sigma_m*(4 - S_q) =", residual_sub)
+    56	   assert residual_sub == 0, f"Outlet substitution failed: residual = {residual_sub}"
+    57	   ```
+    58	
+    59	   Insert this block between the existing `S_q = sp.simplify(...)` and the existing `Pi_eq = sp.simplify(Sigma_m * (4 - S_q))` (current line 29).
+    60	
+    61	2. **Assert the inequality** `0 < S_q(Pi_*) < 1`. Replace the current line 41:
+    62	
+    63	   ```python
+    64	   print("0 < S_q(Pi_star) < 1 ->", bool(0 < S_star < 1))
+    65	   ```
+    66	
+    67	   with:
+    68	
+    69	   ```python
+    70	   s_in_range = bool(0 < S_star < 1)
+    71	   print("0 < S_q(Pi_star) < 1 ->", s_in_range)
+    72	   assert s_in_range, f"S_q(Pi_*) out of range: S_star = {S_star}"
+    73	   ```
+    74	
+    75	3. **Assert numerical anchors** against the notes-stated values. After the current `M_q_star = sp.N(-Sigma_star, 30)` (line 38) and the existing prints (lines 40-44), add:
+    76	
+    77	   ```python
+    78	   Sigma_target = sp.Float("0.451485277739090", 30)
+    79	   M_s_target = sp.Float("1.80594111095636", 30)
+    80	   M_q_target = sp.Float("-0.451485277739090", 30)
+    81	
+    82	   assert abs(Sigma_star - Sigma_target) < sp.Float("1e-12", 30), \
+    83	       f"Sigma_m^* mismatch: {Sigma_star} vs {Sigma_target}"
+    84	   assert abs(M_s_star - M_s_target) < sp.Float("1e-11", 30), \
+    85	       f"M_s^* mismatch: {M_s_star} vs {M_s_target}"
+    86	   assert abs(M_q_star - M_q_target) < sp.Float("1e-12", 30), \
+    87	       f"M_q^* mismatch: {M_q_star} vs {M_q_target}"
+    88	   print("Sigma_m^*, M_s^*, M_q^* anchored to notes values within tolerance.")
+    89	   ```
+    90	
+    91	4. **Compute and assert the mixed-lane correction**. After step 3 above, add:
+    92	
+    93	   ```python
+    94	   mixed_correction = sp.N(M_q_star * S_star, 30)
+    95	   mixed_target = sp.Float("-0.297111597463199", 30)
+    96	   print("M_q^* * S_q(Pi_*) =", mixed_correction)
+    97	   assert abs(mixed_correction - mixed_target) < sp.Float("1e-11", 30), \
+    98	       f"mixed-lane correction mismatch: {mixed_correction} vs {mixed_target}"
+    99	   ```
+   100	
+   101	   The notes file (line 125-127) gives the reference value `-0.297111597463199151`; using 15 digits with tolerance 1e-11 is safely inside that precision.
+   102	
+   103	5. Delete the conditional `raise` at lines 48-49 (per F1). The residual print at lines 46-47 stays.
+   104	
+   105	After all five steps, the script will have five new substantive `assert` statements plus the existing residual print.
+   106	
+   107	**Claim manifest** (so the verifier can confirm coverage):
+   108	- M1: `M_s + M_q*S_q` with `M_s=4Σ, M_q=-Σ` simplifies to `Σ*(4 - S_q)` — symbolic identity, step 1 above.
+   109	- M2: `0 < S_q(Pi_*) < 1` — boolean assertion, step 2 above.
+   110	- M3: `Sigma_m^* ≈ 0.451485277739090` — numeric anchor, step 3 above.
+   111	- M4: `M_s^* ≈ 1.80594111095636` — numeric anchor, step 3 above.
+   112	- M5: `M_q^* ≈ -0.451485277739090` — numeric anchor, step 3 above.
+   113	- M6: `M_q^* * S_q(Pi_*) ≈ -0.297111597463199` — numeric anchor, step 4 above.
+   114	
+   115	**Verification command:**
+   116	After Codex applies, the verifier will run `redteam exec-sympy 135` and confirm: (a) the new check at step 1 prints `M_s + M_q*S_q - Sigma_m*(4 - S_q) = 0` and the `assert` does not raise; (b) lines for M2-M6 each print and assert; (c) the script exits 0; (d) the residual print at lines 46-47 of the original remains visible in the new output.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE
+     4	========================================================================================
+     5	M_s + M_q*S_q - Sigma_m*(4 - S_q) = 0
+     6	Pi =
+     7	     ⎛                     2                                    ⎞
+     8	     ⎜   2  Π      2    2⋅Π           Π     ⎛π⎞      2  Π      2⎟
+     9	2⋅Σₘ⋅⎜6⋅Π ⋅ℯ  - 8⋅Π  + ─────── + π⋅Π⋅ℯ ⋅tanh⎜─⎟ - 2⋅π ⋅ℯ  + 2⋅π ⎟
+    10	     ⎜                     ⎛π⎞              ⎝2⎠                 ⎟
+    11	     ⎜                 cosh⎜─⎟                                  ⎟
+    12	     ⎝                     ⎝2⎠                                  ⎠
+    13	─────────────────────────────────────────────────────────────────
+    14	                      ⎛   2    2⎞ ⎛ Π    ⎞                       
+    15	                      ⎝4⋅Π  - π ⎠⋅⎝ℯ  - 1⎠                       
+    16	S_q(Pi_star) = 0.658075937605428494269581645208
+    17	0 < S_q(Pi_star) < 1 -> True
+    18	Sigma_m^* = 0.451485277739089696513730132210
+    19	M_s^* = 1.80594111095635878605492052884
+    20	M_q^* = -0.451485277739089696513730132210
+    21	Sigma_m^*, M_s^*, M_q^* anchored to notes values within tolerance.
+    22	M_q^* * S_q(Pi_*) = -0.297111597463198745446779533971
+    23	Pi_star - Sigma_star*(4 - S_star) = -7.22456073765234902012354489563e-17
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE
+     4	========================================================================================
+     5	Pi = sigmaM*(4 - (2*pi*(2*pi*Sech[Pi/2] + E^pi*(-2*pi + Pi*Tanh[Pi/2])))/((-1 + E^pi)*(-4*pi^2 + Pi^2)))
+     6	outlet-consistent reduction = 0
+     7	PASS: outlet-consistent reduction
+     8	S_q(Pi_star) = 0.65807593760542948674050367268182940317`28.269941337792933
+     9	0 < S_q(Pi_star) < 1 = True
+    10	PASS: 0 < S_q(Pi_star) < 1
+    11	Sigma_m^* = 0.4514852777390898089760109877847000591818502074253708581495`29.696301671958512
+    12	M_s^* = 1.8059411109563592359040439511388002367274008297014834325979`29.696301671958512
+    13	M_q^* = -0.4514852777390898089760109877847000591818502074253708581495`29.696301671958512
+    14	M_q^* S_q(Pi_*) = -0.29711159746319926754151033279246836332`28.25396738054503
+    15	Pi_star - Sigma_star*(4 - S_star) = 0``28.68818091139617
+    16	Sigma_m^* numeric check diff = 1.124622808555747000591818502074253708581495`13.770306635329915*^-16
+    17	PASS: Sigma_m^* numeric check
+    18	M_s^* numeric check diff = 4.4984912342229880023673`13.518439060425203*^-16
+    19	PASS: M_s^* numeric check
+    20	M_q^* numeric check diff = 1.124622808555747000591818502074253708581495`13.770306635329915*^-16
+    21	PASS: M_q^* numeric check
+    22	mixed-lane correction numeric check diff = 1.08162512384143646836332`13.789654206224501*^-15
+    23	PASS: mixed-lane correction numeric check
+    24	closure residual diff = 0``28.68818091139617
+    25	PASS: closure residual
+    26	3 Sigma_m^* < Pi_* < 4 Sigma_m^* = True
+    27	PASS: 3 Sigma_m^* < Pi_* < 4 Sigma_m^*
+    28	
+    29	Carry-forward formulas:
+    30	  M_s = 4 Sigma_m,   M_q = -Sigma_m
+    31	  Pi = Sigma_m [4 - S_q(Pi)]
+    32	  The canonical outlet-consistent branch is selected by one moderate mouth-gain amplitude.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	expectApprox[name_String, value_, target_, tol_] := Module[{diff},
+    27	  diff = Abs[N[value, 40] - N[target, 40]];
+    28	  Print[name, " diff = ", fmt[diff]];
+    29	  If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
+    30	];
+    31	
+    32	expectTrue[name_String, cond_] := Module[{res},
+    33	  res = TrueQ[cond];
+    34	  Print[name, " = ", fmt[res]];
+    35	  If[res, pass[name], fail[name, cond]];
+    36	];
+    37	
+    38	banner["STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE"];
+    39	
+    40	Clear[pi, sigmaM, ms, mq, sigmaVar];
+    41	$Assumptions =
+    42	  Element[{pi, sigmaM, ms, mq, sigmaVar}, Reals] &&
+    43	  pi > 0 && sigmaM > 0 && sigmaVar > 0;
+    44	
+    45	sKernel[p_, k_] := FullSimplify[
+    46	  p*(k*Tanh[k] + p*(Exp[-p]/Cosh[k] - 1))/((1 - Exp[-p])*(k^2 - p^2)),
+    47	  Assumptions -> $Assumptions
+    48	];
+    49	
+    50	sQ = FullSimplify[sKernel[pi, Pi/2], Assumptions -> $Assumptions];
+    51	genericLaw = FullSimplify[ms + mq*sQ, Assumptions -> $Assumptions];
+    52	reducedLaw = FullSimplify[genericLaw /. {ms -> 4*sigmaM, mq -> -sigmaM}, Assumptions -> $Assumptions];
+    53	expectedLaw = FullSimplify[sigmaM*(4 - sQ), Assumptions -> $Assumptions];
+    54	
+    55	Print["Pi = ", fmt[expectedLaw]];
+    56	expectZero["outlet-consistent reduction", reducedLaw - expectedLaw];
+    57	
+    58	piStar = SetPrecision[1.50882951349316, 30];
+    59	sStar = N[sQ /. pi -> piStar, 30];
+    60	sigmaStar = N[sigmaVar /. First[Solve[piStar == sigmaVar*(4 - sStar), sigmaVar, Reals]], 30];
+    61	msStar = N[4*sigmaStar, 30];
+    62	mqStar = N[-sigmaStar, 30];
+    63	mixedCorrection = N[mqStar*sStar, 30];
+    64	residual = N[piStar - sigmaStar*(4 - sStar), 30];
+    65	
+    66	Print["S_q(Pi_star) = ", sStar];
+    67	expectTrue["0 < S_q(Pi_star) < 1", 0 < sStar < 1];
+    68	Print["Sigma_m^* = ", sigmaStar];
+    69	Print["M_s^* = ", msStar];
+    70	Print["M_q^* = ", mqStar];
+    71	Print["M_q^* S_q(Pi_*) = ", mixedCorrection];
+    72	Print["Pi_star - Sigma_star*(4 - S_star) = ", residual];
+    73	
+    74	expectApprox["Sigma_m^* numeric check", sigmaStar, 0.451485277739089696513730132210, 10^-15];
+    75	expectApprox["M_s^* numeric check", msStar, 1.80594111095635878605492052884, 10^-14];
+    76	expectApprox["M_q^* numeric check", mqStar, -0.451485277739089696513730132210, 10^-15];
+    77	expectApprox["mixed-lane correction numeric check", mixedCorrection, -0.297111597463198185916386491356, 10^-14];
+    78	expectApprox["closure residual", residual, 0, 10^-14];
+    79	expectTrue["3 Sigma_m^* < Pi_* < 4 Sigma_m^*", 3*sigmaStar < piStar < 4*sigmaStar];
+    80	
+    81	Print[""];
+    82	Print["Carry-forward formulas:"];
+    83	Print["  M_s = 4 Sigma_m,   M_q = -Sigma_m"];
+    84	Print["  Pi = Sigma_m [4 - S_q(Pi)]"];
+    85	Print["  The canonical outlet-consistent branch is selected by one moderate mouth-gain amplitude."];
+    86	
+    87	Exit[0];
+
+ succeeded in 0ms:
+     1	
+     2	#!/usr/bin/env python3
+     3	"""
+     4	moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+     5	
+     6	SymPy audit for the outlet-consistent mouth closure:
+     7	    M_s = 4 Sigma_m,   M_q = -Sigma_m.
+     8	"""
+     9	
+    10	from __future__ import annotations
+    11	import sympy as sp
+    12	
+    13	def banner(title: str) -> None:
+    14	    line = "=" * 88
+    15	    print("\n" + line)
+    16	    print(title)
+    17	    print(line)
+    18	
+    19	Pi, Sigma_m = sp.symbols("Pi Sigma_m", positive=True, real=True)
+    20	
+    21	def S(Pi, kappa):
+    22	    return sp.simplify(
+    23	        Pi * (kappa * sp.tanh(kappa) + Pi * (sp.exp(-Pi) / sp.cosh(kappa) - 1))
+    24	        / ((1 - sp.exp(-Pi)) * (kappa**2 - Pi**2))
+    25	    )
+    26	
+    27	banner("STAGE 135 — OUTLET-CONSISTENT ONE-PARAMETER CLOSURE")
+    28	S_q = sp.simplify(S(Pi, sp.pi/2))
+    29	
+    30	# Step 1: outlet substitution check.
+    31	# Build the generic mouth-gain law M_s + M_q*S_q with independent symbols, then
+    32	# substitute the outlet-consistent reduction M_s = 4*Sigma_m, M_q = -Sigma_m and
+    33	# verify it reduces to Sigma_m*(4 - S_q).
+    34	M_s_sym, M_q_sym = sp.symbols("M_s_sym M_q_sym", real=True)
+    35	generic_law = M_s_sym + M_q_sym * S_q
+    36	reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})
+    37	expected_law = Sigma_m * (4 - S_q)
+    38	residual_sub = sp.simplify(reduced_law - expected_law)
+    39	print("M_s + M_q*S_q - Sigma_m*(4 - S_q) =", residual_sub)
+    40	assert residual_sub == 0, f"Outlet substitution failed: residual = {residual_sub}"
+    41	
+    42	Pi_eq = sp.simplify(Sigma_m * (4 - S_q))
+    43	print("Pi =")
+    44	sp.pprint(Pi_eq)
+    45	
+    46	Pi_star = sp.Float("1.50882951349316")
+    47	S_star = sp.N(S_q.subs(Pi, Pi_star), 30)
+    48	Sigma_var = sp.symbols("Sigma_var", positive=True, real=True)
+    49	Sigma_star = sp.N(sp.solve(sp.Eq(Pi_star, Sigma_var * (4 - S_star)), Sigma_var)[0], 30)
+    50	M_s_star = sp.N(4 * Sigma_star, 30)
+    51	M_q_star = sp.N(-Sigma_star, 30)
+    52	
+    53	print("S_q(Pi_star) =", S_star)
+    54	
+    55	# Step 2: assert the inequality 0 < S_q(Pi_*) < 1 (paper deliverable iii).
+    56	s_in_range = bool(0 < S_star < 1)
+    57	print("0 < S_q(Pi_star) < 1 ->", s_in_range)
+    58	assert s_in_range, f"S_q(Pi_*) out of range: S_star = {S_star}"
+    59	
+    60	print("Sigma_m^* =", Sigma_star)
+    61	print("M_s^* =", M_s_star)
+    62	print("M_q^* =", M_q_star)
+    63	
+    64	# Step 3: numerical anchors against notes-stated values (paper deliverables iv-vi).
+    65	Sigma_target = sp.Float("0.451485277739090", 30)
+    66	M_s_target = sp.Float("1.80594111095636", 30)
+    67	M_q_target = sp.Float("-0.451485277739090", 30)
+    68	
+    69	assert abs(Sigma_star - Sigma_target) < sp.Float("1e-12", 30), \
+    70	    f"Sigma_m^* mismatch: {Sigma_star} vs {Sigma_target}"
+    71	assert abs(M_s_star - M_s_target) < sp.Float("1e-11", 30), \
+    72	    f"M_s^* mismatch: {M_s_star} vs {M_s_target}"
+    73	assert abs(M_q_star - M_q_target) < sp.Float("1e-12", 30), \
+    74	    f"M_q^* mismatch: {M_q_star} vs {M_q_target}"
+    75	print("Sigma_m^*, M_s^*, M_q^* anchored to notes values within tolerance.")
+    76	
+    77	# Step 4: mixed-lane correction M_q^* * S_q(Pi_*) (notes line 125-127 ref value).
+    78	mixed_correction = sp.N(M_q_star * S_star, 30)
+    79	mixed_target = sp.Float("-0.297111597463199", 30)
+    80	print("M_q^* * S_q(Pi_*) =", mixed_correction)
+    81	assert abs(mixed_correction - mixed_target) < sp.Float("1e-11", 30), \
+    82	    f"mixed-lane correction mismatch: {mixed_correction} vs {mixed_target}"
+    83	
+    84	# Numerical sanity probe (was the original tautological closure residual).
+    85	residual = sp.N(Pi_star - Sigma_star * (4 - S_star), 30)
+    86	print("Pi_star - Sigma_star*(4 - S_star) =", residual)
+
+codex
+---
+stage: 135
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py, moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt, moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl, moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt, stage_135.md, stage_135.tex]
+---
+# Codex review — stage 135
+
+## What the edit was supposed to do
+The directive identified the old SymPy closure residual assertion as tautological because `Sigma_star` was solved from the same closure equation being asserted. The fix was to keep that residual only as a printed sanity probe, delete its load-bearing `raise`, and add substantive SymPy assertions matching the Mathematica coverage. The new checks had to cover the outlet substitution, the range `0 < S_q(Pi_*) < 1`, numerical anchors for `Sigma_m^*`, `M_s^*`, `M_q^*`, and the mixed-lane correction.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:40 | `M_s + M_q*S_q -> Sigma_m*(4 - S_q)` after independent gain-symbol substitution | Yes; wrong sign or factor in either gain leaves a nonzero residual | Yes; matches gain-pair outlet consistency | PASS |
+| 2 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:58 | Assert `0 < S_q(Pi_star) < 1` | Yes; wrong `S_q` or `Pi_star` can move it outside the interval | Yes; checks finite susceptibility branch range | PASS |
+| 3 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:69 | Assert `Sigma_m^*` numeric anchor | Yes; wrong `Pi_star`, `S_q`, or closure relation changes `Sigma_star` | Yes; matches quoted `Sigma_m^*` stage output | PASS |
+| 4 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:71 | Assert `M_s^*` numeric anchor | Yes; wrong outlet factor or `Sigma_star` changes it | Yes; checks `M_s = 4 Sigma_m` carry-forward value | PASS |
+| 5 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:73 | Assert `M_q^*` numeric anchor | Yes; wrong sign or `Sigma_star` changes it | Yes; checks `M_q = -Sigma_m` carry-forward value | PASS |
+| 6 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:81 | Assert mixed-lane correction `M_q^* S_q(Pi_*)` | Yes; wrong `S_q`, `M_q`, or numeric branch changes it | Yes; checks the finite mouth-profile correction value | PASS |
+
+## Bottom line
+PASS. I tried to break the new checks by treating the outlet gain sign/factor, the susceptibility value, the hard-coded branch point, and the numeric targets as independently wrong; each edited assertion would fail under those perturbations rather than reducing to `X - X`. The saved SymPy output corroborates the substitution residual as `0`, the interval check as `True`, the anchored values, and the mixed correction, with the old closure residual left only as a print. The Mathematica file is not an edited target here, but its saved transcript independently shows the same claim coverage with explicit `PASS` lines for the corresponding checks.
+tokens used
+29,479
+---
+stage: 135
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py, moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.txt, moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.wl, moving_throat_pde_stage135_outlet_consistent_mouth_closure_mathematica_audit.txt, stage_135.md, stage_135.tex]
+---
+# Codex review — stage 135
+
+## What the edit was supposed to do
+The directive identified the old SymPy closure residual assertion as tautological because `Sigma_star` was solved from the same closure equation being asserted. The fix was to keep that residual only as a printed sanity probe, delete its load-bearing `raise`, and add substantive SymPy assertions matching the Mathematica coverage. The new checks had to cover the outlet substitution, the range `0 < S_q(Pi_*) < 1`, numerical anchors for `Sigma_m^*`, `M_s^*`, `M_q^*`, and the mixed-lane correction.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:40 | `M_s + M_q*S_q -> Sigma_m*(4 - S_q)` after independent gain-symbol substitution | Yes; wrong sign or factor in either gain leaves a nonzero residual | Yes; matches gain-pair outlet consistency | PASS |
+| 2 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:58 | Assert `0 < S_q(Pi_star) < 1` | Yes; wrong `S_q` or `Pi_star` can move it outside the interval | Yes; checks finite susceptibility branch range | PASS |
+| 3 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:69 | Assert `Sigma_m^*` numeric anchor | Yes; wrong `Pi_star`, `S_q`, or closure relation changes `Sigma_star` | Yes; matches quoted `Sigma_m^*` stage output | PASS |
+| 4 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:71 | Assert `M_s^*` numeric anchor | Yes; wrong outlet factor or `Sigma_star` changes it | Yes; checks `M_s = 4 Sigma_m` carry-forward value | PASS |
+| 5 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:73 | Assert `M_q^*` numeric anchor | Yes; wrong sign or `Sigma_star` changes it | Yes; checks `M_q = -Sigma_m` carry-forward value | PASS |
+| 6 | moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py:81 | Assert mixed-lane correction `M_q^* S_q(Pi_*)` | Yes; wrong `S_q`, `M_q`, or numeric branch changes it | Yes; checks the finite mouth-profile correction value | PASS |
+
+## Bottom line
+PASS. I tried to break the new checks by treating the outlet gain sign/factor, the susceptibility value, the hard-coded branch point, and the numeric targets as independently wrong; each edited assertion would fail under those perturbations rather than reducing to `X - X`. The saved SymPy output corroborates the substitution residual as `0`, the interval check as `True`, the anchored values, and the mixed correction, with the old closure residual left only as a print. The Mathematica file is not an edited target here, but its saved transcript independently shows the same claim coverage with explicit `PASS` lines for the corresponding checks.
+
+---
+codex_session_id: 019e7123-392f-7283-a705-bb3c711d6fa3

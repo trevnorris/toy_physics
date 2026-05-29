@@ -1,0 +1,530 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b4d6-7e02-86b3-538daa7b229f
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 107)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_107.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_107.tex
+
+Write your verdict report for stage 107 now, following the format above exactly.
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_107.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_107.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+28 /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_107.tex
+
+ succeeded in 0ms:
+88 /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_107.md
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+81 /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+79 /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_107.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	
+     6	def banner(title: str) -> None:
+     7	    line = '=' * 88
+     8	    print('\n' + line)
+     9	    print(title)
+    10	    print(line)
+    11	
+    12	
+    13	def expect_zero(name: str, expr: sp.Expr) -> None:
+    14	    expr = sp.simplify(sp.expand(expr))
+    15	    print(f"{name} = {expr}")
+    16	    if expr != 0:
+    17	        raise AssertionError(f"{name} is not zero")
+    18	
+    19	
+    20	z = sp.symbols('z', real=True)
+    21	S, beta = sp.symbols('S beta', nonzero=True, real=True)
+    22	Sigma0, Sigma2, Sigma4, Sigma5 = sp.symbols('Sigma0 Sigma2 Sigma4 Sigma5', real=True)
+    23	I = sp.I
+    24	
+    25	banner('STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA')
+    26	
+    27	Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
+    28	print('Lambda_out(z) =', Lambda_out)
+    29	
+    30	Lambda_def = sp.expand(S*Lambda_out.subs(z, beta*z) + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5)
+    31	print('Lambda_def(z) =', Lambda_def)
+    32	
+    33	L0 = sp.simplify(Lambda_def.subs(z, 0))
+    34	L2 = sp.simplify(sp.expand(Lambda_def).coeff(z, 2))
+    35	L4 = sp.simplify(sp.expand(Lambda_def).coeff(z, 4))
+    36	L5 = sp.simplify(sp.im(sp.expand(Lambda_def).coeff(z, 5)))
+    37	print('L0 =', L0)
+    38	print('L2 =', L2)
+    39	print('L4 =', L4)
+    40	print('L5 =', L5)
+    41	
+    42	Y_direct = sp.series(L0 / Lambda_def, z, 0, 6).removeO()
+    43	Y_formula = 1 - (L2/L0)*z**2 + (L2**2/L0**2 - L4/L0)*z**4 - I*(L5/L0)*z**5
+    44	expect_zero('normalized expansion direct-formula', sp.expand(Y_direct - Y_formula))
+    45	print('Y_def(z) =', sp.expand(Y_formula))
+    46	
+    47	m2 = sp.simplify(-L2 / L0)
+    48	m4 = sp.simplify(L2**2 / L0**2 - L4 / L0)
+    49	chiQ = sp.simplify((-L5 / L0) / sp.Rational(1, 27))
+    50	print('m2 =', m2)
+    51	print('m4 =', m4)
+    52	print('chi_Q =', chiQ)
+    53	
+    54	sol = sp.solve([sp.Eq(m2, sp.Rational(1, 9)), sp.Eq(m4, sp.Rational(4, 81))], [Sigma2, Sigma4], dict=True)
+    55	if len(sol) != 1:
+    56	    raise AssertionError('Expected a unique solution for (Sigma2,Sigma4).')
+    57	sol = sol[0]
+    58	print('Sigma2_evenmatch =', sp.simplify(sol[Sigma2]))
+    59	print('Sigma4_evenmatch =', sp.simplify(sol[Sigma4]))
+    60	expect_zero(
+    61	    'Sigma2 exact formula',
+    62	    sol[Sigma2] - (-(3*S*beta**2 - 3*S + Sigma0)) / sp.Integer(9),
+    63	)
+    64	expect_zero(
+    65	    'Sigma4 exact formula',
+    66	    sol[Sigma4] - (-(3*S*beta**4 - 3*S + Sigma0)) / sp.Integer(27),
+    67	)
+    68	
+    69	chi_even = sp.simplify(chiQ.subs(sol))
+    70	print('chi_Q under canonical-even matching =', sp.factor(chi_even))
+    71	expect_zero(
+    72	    'chi_Q - 3(S beta^5 + 9 Sigma5)/(3S - Sigma0)',
+    73	    chi_even - 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+    74	)
+    75	
+    76	print('\nFinal exact formulas:')
+    77	print('  Sigma2 =', sp.simplify(sol[Sigma2]))
+    78	print('  Sigma4 =', sp.simplify(sol[Sigma4]))
+    79	print('  chi_Q  =', sp.factor(chi_even))
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 107
+     3	batch: IV.2
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 1
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 107
+    13	
+    14	Apply the finding below. After applying, append an `## Applied: F1` block under the finding
+    15	with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    16	
+    17	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line
+    18	ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents.
+    23	
+    24	## F1 — insufficient_verification
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py:58-60`
+    27	
+    28	**Issue:**
+    29	
+    30	The SymPy script computes `Sigma2_evenmatch = sp.simplify(sol[Sigma2])` and
+    31	`Sigma4_evenmatch = sp.simplify(sol[Sigma4])` (lines 58-59) but only prints them. The
+    32	paper's notes (`notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md`) state
+    33	two boxed closed forms:
+    34	```
+    35	Sigma_2 = -(3 S beta^2 - 3 S + Sigma_0)/9,
+    36	Sigma_4 = -(3 S beta^4 - 3 S + Sigma_0)/27.
+    37	```
+    38	The Mathematica twin asserts both at `mathematica/...stage107..._audit.wl:68-69` via
+    39	`expectZero["Sigma2 exact formula", ...]` and `expectZero["Sigma4 exact formula", ...]`. The
+    40	SymPy script has no analogous assertion, so two of the three boxed Stage 107 deliverables
+    41	are unguarded in SymPy.
+    42	
+    43	**Required change:**
+    44	
+    45	In `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py`,
+    46	immediately after the existing `print('Sigma4_evenmatch = ...')` line (currently line 59) and
+    47	before the `chi_even = sp.simplify(chiQ.subs(sol))` line (currently line 61), insert two new
+    48	`expect_zero` checks that lock in the paper's boxed closed forms.
+    49	
+    50	Before (lines 58-60):
+    51	```python
+    52	print('Sigma2_evenmatch =', sp.simplify(sol[Sigma2]))
+    53	print('Sigma4_evenmatch =', sp.simplify(sol[Sigma4]))
+    54	
+    55	```
+    56	
+    57	After:
+    58	```python
+    59	print('Sigma2_evenmatch =', sp.simplify(sol[Sigma2]))
+    60	print('Sigma4_evenmatch =', sp.simplify(sol[Sigma4]))
+    61	expect_zero(
+    62	    'Sigma2 exact formula',
+    63	    sol[Sigma2] - (-(3*S*beta**2 - 3*S + Sigma0)) / sp.Integer(9),
+    64	)
+    65	expect_zero(
+    66	    'Sigma4 exact formula',
+    67	    sol[Sigma4] - (-(3*S*beta**4 - 3*S + Sigma0)) / sp.Integer(27),
+    68	)
+    69	
+    70	```
+    71	
+    72	Notes for Codex:
+    73	- Use the existing `expect_zero` helper defined at the top of the file (lines 13-17); do not
+    74	  introduce a new helper.
+    75	- Use `sp.Integer(9)` / `sp.Integer(27)` so the division stays symbolic (the existing code
+    76	  in this script uses `sp.Integer(...)` for the same purpose; see lines 27 and 30).
+    77	- The `S`, `beta`, `Sigma0`, `Sigma2`, `Sigma4`, and `sol` names are already in scope (see
+    78	  lines 21-22 and 54).
+    79	- Do not alter any other line in the script.
+    80	
+    81	**Verification command:**
+    82	
+    83	After Codex applies, the verifier will run `redteam exec-sympy 107` and confirm that:
+    84	1. The transcript now contains two new lines, `Sigma2 exact formula = 0` and
+    85	   `Sigma4 exact formula = 0`, both before the existing `chi_Q under canonical-even matching`
+    86	   line.
+    87	2. The script still exits 0.
+    88	3. The existing `normalized expansion direct-formula = 0` and `chi_Q - 3(S beta^5 + 9 Sigma5)/(3S - Sigma0) = 0` lines still appear.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA"];
+    27	
+    28	Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5];
+    29	$Assumptions =
+    30	  Element[{z, sNorm, beta, sigma0, sigma2, sigma4, sigma5}, Reals] &&
+    31	  sNorm != 0 && beta != 0 && 3*sNorm - sigma0 != 0;
+    32	
+    33	lambdaOut = -3 + z^2/3 + z^4/9 + I*z^5/9;
+    34	lambdaDef = Expand[sNorm*(lambdaOut /. z -> beta*z) + sigma0 + sigma2*z^2 + sigma4*z^4 + I*sigma5*z^5];
+    35	
+    36	l0 = FullSimplify[lambdaDef /. z -> 0, Assumptions -> $Assumptions];
+    37	l2 = FullSimplify[Coefficient[lambdaDef, z, 2], Assumptions -> $Assumptions];
+    38	l4 = FullSimplify[Coefficient[lambdaDef, z, 4], Assumptions -> $Assumptions];
+    39	l5 = FullSimplify[Coefficient[lambdaDef, z, 5]/I, Assumptions -> $Assumptions];
+    40	
+    41	yDirect = Expand[Normal[Series[l0/lambdaDef, {z, 0, 5}]]];
+    42	yFormula = 1 - (l2/l0)*z^2 + (l2^2/l0^2 - l4/l0)*z^4 - I*(l5/l0)*z^5;
+    43	
+    44	Print["Lambda_out(z) = ", fmt[lambdaOut]];
+    45	Print["Lambda_def(z) = ", fmt[lambdaDef]];
+    46	Print["L0 = ", fmt[l0]];
+    47	Print["L2 = ", fmt[l2]];
+    48	Print["L4 = ", fmt[l4]];
+    49	Print["L5 = ", fmt[l5]];
+    50	Print["Y_def(z) = ", fmt[Expand[yFormula]]];
+    51	
+    52	expectZero["normalized expansion direct-formula", yDirect - yFormula];
+    53	
+    54	m2 = FullSimplify[-l2/l0, Assumptions -> $Assumptions];
+    55	m4 = FullSimplify[l2^2/l0^2 - l4/l0, Assumptions -> $Assumptions];
+    56	chiQ = FullSimplify[(-l5/l0)/(1/27), Assumptions -> $Assumptions];
+    57	
+    58	Print["m2 = ", fmt[m2]];
+    59	Print["m4 = ", fmt[m4]];
+    60	Print["chi_Q = ", fmt[chiQ]];
+    61	
+    62	sol = Solve[{m2 == 1/9, m4 == 4/81}, {sigma2, sigma4}, Reals];
+    63	If[Length[sol] =!= 1, fail["unique (sigma2, sigma4) solution", sol]];
+    64	sol = First[sol];
+    65	
+    66	Print["Sigma2_evenmatch = ", fmt[sigma2 /. sol]];
+    67	Print["Sigma4_evenmatch = ", fmt[sigma4 /. sol]];
+    68	expectZero["Sigma2 exact formula", (sigma2 /. sol) + (3*sNorm*beta^2 - 3*sNorm + sigma0)/9];
+    69	expectZero["Sigma4 exact formula", (sigma4 /. sol) + (3*sNorm*beta^4 - 3*sNorm + sigma0)/27];
+    70	
+    71	chiEven = FullSimplify[chiQ /. sol, Assumptions -> $Assumptions];
+    72	Print["chi_Q under canonical-even matching = ", fmt[Factor[chiEven]]];
+    73	expectZero[
+    74	  "chi_Q - 3(sNorm beta^5 + 9 sigma5)/(3 sNorm - sigma0)",
+    75	  chiEven - 3*(sNorm*beta^5 + 9*sigma5)/(3*sNorm - sigma0)
+    76	];
+    77	
+    78	Print[""];
+    79	Print["Stage 107 Mathematica audit passed."];
+    80	
+    81	Exit[0];
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_107.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~124]{Stage~124: General Isotropic l=2 DtN Deformation Algebra}
+     2	\label{stage:107}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~107 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+    14	
+    15	\begin{quote}
+    16	Deformed branch \(S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5\) gives explicit \(\chi_Q\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check pure scale and pure argument deformations separately.
+    23	\item Check Robin and standalone mixed-pole limits before imposing compensation.
+    24	\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA
+     4	========================================================================================
+     5	Lambda_out(z) = I*z**5/9 + z**4/9 + z**2/3 - 3
+     6	Lambda_def(z) = I*S*beta**5*z**5/9 + S*beta**4*z**4/9 + S*beta**2*z**2/3 - 3*S + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5
+     7	L0 = -3*S + Sigma0
+     8	L2 = S*beta**2/3 + Sigma2
+     9	L4 = S*beta**4/9 + Sigma4
+    10	L5 = S*beta**5/9 + Sigma5
+    11	normalized expansion direct-formula = 0
+    12	Y_def(z) = S**2*beta**4*z**4/(81*S**2 - 54*S*Sigma0 + 9*Sigma0**2) + 2*S*Sigma2*beta**2*z**4/(27*S**2 - 18*S*Sigma0 + 3*Sigma0**2) - I*S*beta**5*z**5/(-27*S + 9*Sigma0) - S*beta**4*z**4/(-27*S + 9*Sigma0) - S*beta**2*z**2/(-9*S + 3*Sigma0) + Sigma2**2*z**4/(9*S**2 - 6*S*Sigma0 + Sigma0**2) - Sigma2*z**2/(-3*S + Sigma0) - Sigma4*z**4/(-3*S + Sigma0) - I*Sigma5*z**5/(-3*S + Sigma0) + 1
+    13	m2 = (S*beta**2/3 + Sigma2)/(3*S - Sigma0)
+    14	m4 = ((3*S - Sigma0)*(S*beta**4 + 9*Sigma4) + (S*beta**2 + 3*Sigma2)**2)/(9*(3*S - Sigma0)**2)
+    15	chi_Q = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+    16	Sigma2_evenmatch = -S*beta**2/3 + S/3 - Sigma0/9
+    17	Sigma4_evenmatch = -S*beta**4/9 + S/9 - Sigma0/27
+    18	Sigma2 exact formula = 0
+    19	Sigma4 exact formula = 0
+    20	chi_Q under canonical-even matching = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+    21	chi_Q - 3(S beta^5 + 9 Sigma5)/(3S - Sigma0) = 0
+    22	
+    23	Final exact formulas:
+    24	  Sigma2 = -S*beta**2/3 + S/3 - Sigma0/9
+    25	  Sigma4 = -S*beta**4/9 + S/9 - Sigma0/27
+    26	  chi_Q  = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA
+     4	========================================================================================
+     5	Lambda_out(z) = -3 + z^2/3 + z^4/9 + (I/9)*z^5
+     6	Lambda_def(z) = sigma0 - 3*sNorm + sigma2*z^2 + (beta^2*sNorm*z^2)/3 + sigma4*z^4 + (beta^4*sNorm*z^4)/9 + I*sigma5*z^5 + (I/9)*beta^5*sNorm*z^5
+     7	L0 = sigma0 - 3*sNorm
+     8	L2 = sigma2 + (beta^2*sNorm)/3
+     9	L4 = sigma4 + (beta^4*sNorm)/9
+    10	L5 = sigma5 + (beta^5*sNorm)/9
+    11	Y_def(z) = 1 - (sigma2*z^2)/(sigma0 - 3*sNorm) - (beta^2*sNorm*z^2)/(3*(sigma0 - 3*sNorm)) + (sigma2^2*z^4)/(sigma0 - 3*sNorm)^2 - (sigma4*z^4)/(sigma0 - 3*sNorm) + (2*beta^2*sigma2*sNorm*z^4)/(3*(sigma0 - 3*sNorm)^2) - (beta^4*sNorm*z^4)/(9*(sigma0 - 3*sNorm)) + (beta^4*sNorm^2*z^4)/(9*(sigma0 - 3*sNorm)^2) - (I*sigma5*z^5)/(sigma0 - 3*sNorm) - ((I/9)*beta^5*sNorm*z^5)/(sigma0 - 3*sNorm)
+    12	normalized expansion direct-formula = 0
+    13	PASS: normalized expansion direct-formula
+    14	m2 = -((sigma2 + (beta^2*sNorm)/3)/(sigma0 - 3*sNorm))
+    15	m4 = ((sigma2 + (beta^2*sNorm)/3)^2 - (sigma0 - 3*sNorm)*(sigma4 + (beta^4*sNorm)/9))/(sigma0 - 3*sNorm)^2
+    16	chi_Q = (-3*(9*sigma5 + beta^5*sNorm))/(sigma0 - 3*sNorm)
+    17	Sigma2_evenmatch = (-sigma0 + 3*sNorm - 3*beta^2*sNorm)/9
+    18	Sigma4_evenmatch = (4*sigma0^2 - 24*sigma0*sNorm + 9*beta^4*sigma0*sNorm + 36*sNorm^2 - 36*beta^4*sNorm^2 - 6*beta^2*sNorm*(-sigma0 + 3*sNorm - 3*beta^2*sNorm) - (-sigma0 + 3*sNorm - 3*beta^2*sNorm)^2)/(-81*sigma0 + 243*sNorm)
+    19	Sigma2 exact formula = 0
+    20	PASS: Sigma2 exact formula
+    21	Sigma4 exact formula = 0
+    22	PASS: Sigma4 exact formula
+    23	chi_Q under canonical-even matching = (-3*(9*sigma5 + beta^5*sNorm))/(sigma0 - 3*sNorm)
+    24	chi_Q - 3(sNorm beta^5 + 9 sigma5)/(3 sNorm - sigma0) = 0
+    25	PASS: chi_Q - 3(sNorm beta^5 + 9 sigma5)/(3 sNorm - sigma0)
+    26	
+    27	Stage 107 Mathematica audit passed.
+
+codex
+---
+stage: 107
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py, moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt, moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl, moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt, stage_107.md, stage_107.tex]
+---
+# Codex review — stage 107
+
+## What the edit was supposed to do
+F1 said the SymPy audit solved for `Sigma2` and `Sigma4` but only printed the resulting even-matching coefficients. The directive required two new `expect_zero` assertions locking those coefficients to the boxed closed forms already asserted by the Mathematica twin. The verifier expected new transcript lines `Sigma2 exact formula = 0` and `Sigma4 exact formula = 0` before the existing compensated `chi_Q` check.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py:60 | `Sigma2 exact formula` compares solved `Sigma2` to `-(3*S*beta**2 - 3*S + Sigma0)/9` | Yes. The RHS is not built from `sol[Sigma2]`; a sign, denominator, or DtN coefficient error leaves a nonzero residual. | Yes. It checks the compensated branch preserves the canonical `z^2` even coefficient. | PASS |
+| 2 | moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py:64 | `Sigma4 exact formula` compares solved `Sigma4` to `-(3*S*beta**4 - 3*S + Sigma0)/27` | Yes. The RHS is independent of `sol[Sigma4]`; changing the target coefficient or solving equations breaks it. | Yes. It checks the compensated branch preserves the canonical `z^4` even coefficient. | PASS |
+
+## Bottom line
+PASS. I checked the new assertions against the directive, the stage card’s even-coefficient preservation requirement, and the saved transcripts. Independently deriving from `m2 = 1/9` gives `Sigma2 = S/3 - S beta^2/3 - Sigma0/9`; then using `m4 = 4/81` gives `Sigma4 = S/9 - S beta^4/9 - Sigma0/27`, matching the asserted forms. These are not `X - X` checks, and the SymPy output shows both new residuals as `0`; the Mathematica output also shows the corresponding checks passing, though I treated it as corroboration rather than the main proof because it follows the same algebraic structure.
+tokens used
+45,705
+---
+stage: 107
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py, moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt, moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl, moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt, stage_107.md, stage_107.tex]
+---
+# Codex review — stage 107
+
+## What the edit was supposed to do
+F1 said the SymPy audit solved for `Sigma2` and `Sigma4` but only printed the resulting even-matching coefficients. The directive required two new `expect_zero` assertions locking those coefficients to the boxed closed forms already asserted by the Mathematica twin. The verifier expected new transcript lines `Sigma2 exact formula = 0` and `Sigma4 exact formula = 0` before the existing compensated `chi_Q` check.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py:60 | `Sigma2 exact formula` compares solved `Sigma2` to `-(3*S*beta**2 - 3*S + Sigma0)/9` | Yes. The RHS is not built from `sol[Sigma2]`; a sign, denominator, or DtN coefficient error leaves a nonzero residual. | Yes. It checks the compensated branch preserves the canonical `z^2` even coefficient. | PASS |
+| 2 | moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py:64 | `Sigma4 exact formula` compares solved `Sigma4` to `-(3*S*beta**4 - 3*S + Sigma0)/27` | Yes. The RHS is independent of `sol[Sigma4]`; changing the target coefficient or solving equations breaks it. | Yes. It checks the compensated branch preserves the canonical `z^4` even coefficient. | PASS |
+
+## Bottom line
+PASS. I checked the new assertions against the directive, the stage card’s even-coefficient preservation requirement, and the saved transcripts. Independently deriving from `m2 = 1/9` gives `Sigma2 = S/3 - S beta^2/3 - Sigma0/9`; then using `m4 = 4/81` gives `Sigma4 = S/9 - S beta^4/9 - Sigma0/27`, matching the asserted forms. These are not `X - X` checks, and the SymPy output shows both new residuals as `0`; the Mathematica output also shows the corresponding checks passing, though I treated it as corroboration rather than the main proof because it follows the same algebraic structure.
+
+---
+codex_session_id: 019e711e-b4d6-7e02-86b3-538daa7b229f

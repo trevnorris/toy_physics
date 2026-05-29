@@ -1,0 +1,693 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7129-0df4-7e83-a951-e0cf7cbdfaf4
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 172)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_172.tex
+
+Write your verdict report for stage 172 now, following the format above exactly.
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_172.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+  137 /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+   39 /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt
+  123 /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
+   48 /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt
+  102 /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md
+   27 /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_172.tex
+  476 total
+
+exec
+/bin/bash -lc 'rg -n "''^(##|#|'"\\\\stagefield|\\\\begin|\\\\end)|F[0-9]|Applied|Orchestrator|Output|PASS|FAIL|assert|Assert|Simplify|FullSimplify|residual|slope|collapse|0\" /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_172.tex /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt" in /var/projects/toy_physics/research/pde_ledger
+ exited 2 in 0ms:
+rg: regex parse error:
+    (?:^(##|#|\stagefield|\begin|\end)|F[0-9]|Applied|Orchestrator|Output|PASS|FAIL|assert|Assert|Simplify|FullSimplify|residual|slope|collapse|0)
+                                 ^^
+error: unrecognized escape sequence
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_172.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 172]{Stage 172: Physical slope collapse}
+     2	\label{stage:172}
+     3	
+     4	\stagefield{Part / anchor}{Part V; primary anchor \resultanchor{MTDC-T9}, local subanchor \resultanchor{MTDC-T9.1}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~172 is the original-stage audit card for \emph{Physical slope collapse}.  Its purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the Stage~163 off-family scalar, the lower compensated Family--1 branch, the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify the parent action or the charge/notation firewall.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The derivation removes tangent-compensated isotropic motion, proves no linear grouped feed-down into scalar slippages, and reduces the direct grouped outlet map to the physical even-response and prefactor slopes.}
+    14	
+    15	\stagefield{Output}{Identifies \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), reducing the linear grouped outlet problem to physical slopes.}
+    16	
+    17	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a second independent proof.}
+    18	
+    19	\stagefield{Checks}{\begin{verificationchecklist}
+    20	\item Check that tangent-compensated isotropic drift is not counted as an off-family failure mode.
+    21	\item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+    22	\item Check that grouped real \(P_2\) anisotropy is not allowed to feed scalar slippages linearly.
+    23	\item Carry the claim-status tag above whenever this stage is cited outside the derivation ledger.
+    24	\end{verificationchecklist}}
+    25	
+    26	\stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar verdict.  Downstream papers should cite \resultanchor{MTDC-T9.1} for the local result and \resultanchor{MTDC-T9} for the full Part V compiler.}
+    27	
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 172
+     3	batch: V.1
+     4	created_at: 2026-05-28T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 172
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts.
+    23	
+    24	## F1 — mathematica_transliteration
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:42-77`
+    27	
+    28	**Issue:** The `.wl` script reaches every slope (`deltaU2`, `deltaP0`, `deltaU2Star`, `deltaU4Star`) by the same `Normal[Series[...,{eps,0,1}]]` truncation divided by `eps*lam` that the SymPy script uses, with the same intermediate variable names. It is a line-by-line port, not an independent re-derivation, so it cannot catch an algebra/transcription error that was copied into both engines. The fix is to obtain the slopes by an independent route — implicit differentiation of the defining relations — while keeping the seven final residual assertions (and their printed forms) identical, so the verified claim does not change.
+    29	
+    30	**Required change (independent re-derivation route):**
+    31	
+    32	1. Replace the `deltaU2`/`deltaP0` extraction (currently wl L42-43):
+    33	
+    34	   Before:
+    35	   ```
+    36	   deltaU2 = FullSimplify[(Normal[Series[u2A, {eps, 0, 1}]] - u2)/(eps*lam), Assumptions -> $Assumptions];
+    37	   deltaP0 = FullSimplify[(Normal[Series[p0A, {eps, 0, 1}]] - p0)/(eps*lam), Assumptions -> $Assumptions];
+    38	   ```
+    39	   After (implicit differentiation of `u2A*dA0 + dA2 == 0` and `p0A*dA0 - nA0 == 0` with respect to the perturbation parameter `t = eps*lam`):
+    40	   ```
+    41	   (* Independent route: differentiate the implicit defining relations, not the explicit quotient. *)
+    42	   du2sol = Solve[D[(u2 + t*deltaU2)*(d0 + t*dD0) + (d2 + t*dD2), t] == 0 /. t -> 0, deltaU2];
+    43	   deltaU2 = FullSimplify[deltaU2 /. First[du2sol], Assumptions -> $Assumptions];
+    44	   dp0sol = Solve[D[(p0 + t*deltaP0)*(d0 + t*dD0) - (n0 + t*dN0), t] == 0 /. t -> 0, deltaP0];
+    45	   deltaP0 = FullSimplify[deltaP0 /. First[dp0sol], Assumptions -> $Assumptions];
+    46	   ```
+    47	   (Here `d2 = -u2*d0` is already defined at L32; this uses the relation `u_2 = -D_2/D_0` <=> `u_2 D_0 + D_2 = 0`, and `P_0 = N_0/D_0` <=> `P_0 D_0 - N_0 = 0`, differentiated at the base point.)
+    48	
+    49	2. Replace the `deltaU2Star`/`deltaU4Star` extraction (currently wl L76-77):
+    50	
+    51	   Before:
+    52	   ```
+    53	   deltaU2Star = FullSimplify[(Normal[Series[u2AStar, {eps, 0, 1}]] - u2Star)/(eps*lam), Assumptions -> $Assumptions];
+    54	   deltaU4Star = FullSimplify[(Normal[Series[u4AStar, {eps, 0, 1}]] - u4Star)/(eps*lam), Assumptions -> $Assumptions];
+    55	   ```
+    56	   After (implicit differentiation of the `u_2` and `u_4` defining relations on the canonical branch, with `d2Star`, `d4Star` already defined at L67-68):
+    57	   ```
+    58	   du2StarSol = Solve[D[(u2Star + t*deltaU2Star)*(d0 + t*dD0) + (d2Star + t*dD2), t] == 0 /. t -> 0, deltaU2Star];
+    59	   deltaU2Star = FullSimplify[deltaU2Star /. First[du2StarSol], Assumptions -> $Assumptions];
+    60	   du4StarSol = Solve[
+    61	     D[(u4Star + t*deltaU4Star)*(d0 + t*dD0)^2 - ((d2Star + t*dD2)^2 - (d0 + t*dD0)*(d4Star + t*dD4)), t] == 0 /. t -> 0,
+    62	     deltaU4Star];
+    63	   deltaU4Star = FullSimplify[deltaU4Star /. First[du4StarSol], Assumptions -> $Assumptions];
+    64	   ```
+    65	   (Uses `u_4^(A) = (D_{A,2}^2 - D_{A,0} D_{A,4})/D_{A,0}^2` <=> `u_4 D_0^2 - (D_2^2 - D_0 D_4) = 0`, differentiated at the base point.)
+    66	
+    67	3. Leave everything else unchanged: the `kA`/`gA` definitions (L48-49), all seven `expectZero[...]` checks (L52-101), the print statements, and `Exit[0]`. Do NOT change the SymPy script for F1.
+    68	
+    69	**Self-test (auditor pre-checked):**
+    70	- `deltaU2` solved from `D[(u2 + t*deltaU2)(d0 + t*dD0) + (d2 + t*dD2), t]=0` at `t=0` gives `u2*dD0 + d0*deltaU2 + dD2 = 0` => `deltaU2 = -(dD2 + u2*dD0)/d0` — identical to the current series result.
+    71	- `deltaP0`: `D[(p0+t*deltaP0)(d0+t*dD0) - (n0+t*dN0),t]=0` at 0 => `p0*dD0 + d0*deltaP0 - dN0 = 0` => `deltaP0 = (dN0 - p0*dD0)/d0 = (d0*dN0 - n0*dD0)/d0^2` — identical.
+    72	- `deltaU4Star`: differentiating `u4 d0^2 - (d2^2 - d0 d4)` at the canonical base reproduces `-(5*dD0 + 18*dD2 + 81*dD4)/(81*d0)` — identical to the current series result (verified by hand in the report).
+    73	- The seven residual checks then evaluate to the same zeros. No `paper_misalignment` introduced (same constants, same final forms).
+    74	
+    75	**Verification command:**
+    76	After Codex applies, the verifier will run `redteam exec-mathematica 172`, confirm the `Normal[Series[...]]` slope extractions are gone (replaced by `Solve`/`D` on the implicit relations), that the printed `deltaU2`/`deltaP0`/`deltaU4Star` forms are unchanged, that all seven `PASS:` lines remain, and that the script exits 0.
+    77	
+    78	## Applied: F1
+    79	
+    80	files_changed: mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
+    81	summary: Replaced the `deltaU2`/`deltaP0` and `deltaU2Star`/`deltaU4Star` `Normal[Series[...]]` slope extractions with independent implicit-differentiation routes (`Solve`/`D` on the defining relations), matching the directive's "after" blocks verbatim; SymPy script left unchanged.
+    82	deviation: none
+    83	
+    84	## F2 — stale_banner_label
+    85	
+    86	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py:31` and `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:26`
+    87	
+    88	**Issue:** Both scripts print a banner labeled `STAGE 155` although this is stage 172. The label is print-only and affects no assertion, but it mislabels the transcript.
+    89	
+    90	**Required change:**
+    91	- In the SymPy script L31, change `banner("STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM")` to `banner("STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM")`.
+    92	- In the Mathematica script L26, change `banner["STAGE 155 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM"];` to `banner["STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM"];`.
+    93	- Change nothing else.
+    94	
+    95	**Verification command:**
+    96	The verifier re-runs both engines; the first banner line in each `.txt` transcript must read `STAGE 172 — PHYSICAL SLOPE COLLAPSE...`.
+    97	
+    98	## Applied: F2
+    99	
+   100	files_changed: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py, mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl
+   101	summary: Changed the stale `STAGE 155` banner label to `STAGE 172` in both the SymPy and Mathematica scripts.
+   102	deviation: none
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+     4	
+     5	SymPy-backed audit for Stage 172.
+     6	
+     7	Checks:
+     8	1. Exact first-order variation formulas for the physical grouped variables u_2^(A) and P_0^(A).
+     9	2. Exact collapse of the Stage 171 obstruction pair (K_A,G_A) to the physical slopes.
+    10	3. Canonical-even collapse K_A = -D_0 delta u_2^(A) at u_2 = 1/9.
+    11	4. Equivalence of the microscopic even-consistency relation to delta u_4 = (8/9) delta u_2.
+    12	5. Direct outlet formulas in physical grouped variables.
+    13	6. Exact identity Delta_Q = delta P_0 / P_0 on the even-preserving branch.
+    14	"""
+    15	
+    16	from __future__ import annotations
+    17	import sympy as sp
+    18	
+    19	def banner(title: str) -> None:
+    20	    line = "=" * 88
+    21	    print("\n" + line)
+    22	    print(title)
+    23	    print(line)
+    24	
+    25	def expect_zero(name: str, expr: sp.Expr) -> None:
+    26	    expr = sp.simplify(sp.expand(expr))
+    27	    print(f"{name} = {expr}")
+    28	    if expr != 0:
+    29	        raise AssertionError(f"{name} is not zero")
+    30	
+    31	banner("STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM")
+    32	
+    33	# ---------------------------------------------------------------------------
+    34	# First-order grouped physical variables
+    35	# ---------------------------------------------------------------------------
+    36	
+    37	D0, N0, u2 = sp.symbols("D0 N0 u2", real=True, nonzero=True)
+    38	dD0, dD2, dD4, dN0 = sp.symbols("dD0 dD2 dD4 dN0", real=True)
+    39	eps, lam = sp.symbols("eps lam", real=True)
+    40	sigma = sp.symbols("sigma", real=True, nonzero=True)
+    41	
+    42	D2 = -u2 * D0
+    43	P0 = N0 / D0
+    44	
+    45	DA0 = D0 + eps * lam * dD0
+    46	DA2 = D2 + eps * lam * dD2
+    47	NA0 = N0 + eps * lam * dN0
+    48	
+    49	u2A = -DA2 / DA0
+    50	P0A = NA0 / DA0
+    51	
+    52	delta_u2 = sp.simplify((sp.series(u2A, eps, 0, 2).removeO() - u2) / (eps * lam))
+    53	delta_P0 = sp.simplify((sp.series(P0A, eps, 0, 2).removeO() - P0) / (eps * lam))
+    54	
+    55	print("delta u_2^(A) =", delta_u2)
+    56	print("delta P_0^(A) =", delta_P0)
+    57	
+    58	KA = dD2 + sp.Rational(1, 9) * dD0
+    59	GA = dN0 - P0 * dD0
+    60	
+    61	banner("Exact obstruction-pair rewrite")
+    62	expect_zero(
+    63	    "K_A + D0*delta_u2 - (1/9-u2)*dD0",
+    64	    KA + D0 * delta_u2 - (sp.Rational(1, 9) - u2) * dD0,
+    65	)
+    66	expect_zero(
+    67	    "G_A - D0*delta_P0",
+    68	    GA - D0 * delta_P0,
+    69	)
+    70	
+    71	banner("Canonical-even collapse at u2 = 1/9")
+    72	expect_zero(
+    73	    "K_A + D0*delta_u2 on canonical branch",
+    74	    (KA + D0 * delta_u2).subs(u2, sp.Rational(1, 9)),
+    75	)
+    76	
+    77	# ---------------------------------------------------------------------------
+    78	# Hidden-even consistency relation in physical variables
+    79	# ---------------------------------------------------------------------------
+    80	
+    81	banner("Physical form of the hidden-even consistency relation")
+    82	
+    83	u2_star = sp.Rational(1, 9)
+    84	u4_star = sp.Rational(4, 81)
+    85	D2_star = -u2_star * D0
+    86	D4_star = D0 * (u2_star**2 - u4_star)
+    87	
+    88	DA2_star = D2_star + eps * lam * dD2
+    89	DA4_star = D4_star + eps * lam * dD4
+    90	
+    91	u2A_star = -DA2_star / DA0
+    92	u4A_star = (DA2_star**2 - DA0 * DA4_star) / DA0**2
+    93	
+    94	delta_u2_star = sp.simplify((sp.series(u2A_star, eps, 0, 2).removeO() - u2_star) / (eps * lam))
+    95	delta_u4_star = sp.simplify((sp.series(u4A_star, eps, 0, 2).removeO() - u4_star) / (eps * lam))
+    96	
+    97	print("delta u_2^(A) on canonical branch =", delta_u2_star)
+    98	print("delta u_4^(A) on canonical branch =", delta_u4_star)
+    99	
+   100	even_relation = sp.Rational(2, 3) * dD2 + sp.Rational(1, 27) * dD0
+   101	expect_zero(
+   102	    "delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation",
+   103	    (delta_u4_star - sp.Rational(8, 9) * delta_u2_star).subs(dD4, even_relation),
+   104	)
+   105	
+   106	# ---------------------------------------------------------------------------
+   107	# Direct outlet formulas in physical variables
+   108	# ---------------------------------------------------------------------------
+   109	
+   110	banner("Direct outlet formulas in physical grouped variables")
+   111	
+   112	delta_kappa = sp.simplify(3 * (1 - sigma) * KA / (sigma * D0))
+   113	delta_gamma = sp.simplify(-(1 - sigma) * GA / (9 * sigma * N0))
+   114	
+   115	expect_zero(
+   116	    "delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A)",
+   117	    (delta_kappa + 3 * (1 - sigma) * delta_u2 / sigma).subs(u2, sp.Rational(1, 9)),
+   118	)
+   119	
+   120	expect_zero(
+   121	    "delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A)",
+   122	    delta_gamma + (1 - sigma) * delta_P0 / (9 * sigma * P0),
+   123	)
+   124	
+   125	DeltaQ = sp.simplify(-9 * sigma * delta_gamma / (1 - sigma))
+   126	expect_zero(
+   127	    "Delta_Q^(A) - delta P_0^(A)/P0",
+   128	    DeltaQ - delta_P0 / P0,
+   129	)
+   130	
+   131	print("\nCarry-forward formulas:")
+   132	print("  K_A = -D_0 delta u_2^(A) on the canonical even branch")
+   133	print("  G_A = D_0 delta P_0^(A) exactly")
+   134	print("  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0")
+   135	print("  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)")
+   136	print("  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0")
+   137	print("  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch")
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
+     4	========================================================================================
+     5	delta u_2^(A) = -((dD2 + dD0*u2)/d0)
+     6	delta P_0^(A) = (d0*dN0 - dD0*n0)/d0^2
+     7	
+     8	========================================================================================
+     9	Exact obstruction-pair rewrite
+    10	========================================================================================
+    11	K_A + D0*delta_u2 - (1/9-u2)*dD0 = 0
+    12	PASS: K_A + D0*delta_u2 - (1/9-u2)*dD0
+    13	G_A - D0*delta_P0 = 0
+    14	PASS: G_A - D0*delta_P0
+    15	
+    16	========================================================================================
+    17	Canonical-even collapse at u2 = 1/9
+    18	========================================================================================
+    19	K_A + D0*delta_u2 on canonical branch = 0
+    20	PASS: K_A + D0*delta_u2 on canonical branch
+    21	
+    22	========================================================================================
+    23	Physical form of the hidden-even consistency relation
+    24	========================================================================================
+    25	delta u_2^(A) on canonical branch = -1/9*(dD0 + 9*dD2)/d0
+    26	delta u_4^(A) on canonical branch = -1/81*(5*dD0 + 18*dD2 + 81*dD4)/d0
+    27	delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation = 0
+    28	PASS: delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation
+    29	
+    30	========================================================================================
+    31	Direct outlet formulas in physical grouped variables
+    32	========================================================================================
+    33	delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A) = 0
+    34	PASS: delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A)
+    35	delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A) = 0
+    36	PASS: delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A)
+    37	Delta_Q^(A) - delta P_0^(A)/P0 = 0
+    38	PASS: Delta_Q^(A) - delta P_0^(A)/P0
+    39	
+    40	Carry-forward formulas:
+    41	  K_A = -D_0 delta u_2^(A) on the canonical even branch
+    42	  G_A = D_0 delta P_0^(A) exactly
+    43	  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0
+    44	  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)
+    45	  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0
+    46	  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch
+    47	
+    48	Stage 172 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM
+     4	========================================================================================
+     5	delta u_2^(A) = (-dD0*u2 - dD2)/D0
+     6	delta P_0^(A) = (D0*dN0 - N0*dD0)/D0**2
+     7	
+     8	========================================================================================
+     9	Exact obstruction-pair rewrite
+    10	========================================================================================
+    11	K_A + D0*delta_u2 - (1/9-u2)*dD0 = 0
+    12	G_A - D0*delta_P0 = 0
+    13	
+    14	========================================================================================
+    15	Canonical-even collapse at u2 = 1/9
+    16	========================================================================================
+    17	K_A + D0*delta_u2 on canonical branch = 0
+    18	
+    19	========================================================================================
+    20	Physical form of the hidden-even consistency relation
+    21	========================================================================================
+    22	delta u_2^(A) on canonical branch = (-dD0/9 - dD2)/D0
+    23	delta u_4^(A) on canonical branch = (-5*dD0 - 18*dD2 - 81*dD4)/(81*D0)
+    24	delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation = 0
+    25	
+    26	========================================================================================
+    27	Direct outlet formulas in physical grouped variables
+    28	========================================================================================
+    29	delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A) = 0
+    30	delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A) = 0
+    31	Delta_Q^(A) - delta P_0^(A)/P0 = 0
+    32	
+    33	Carry-forward formulas:
+    34	  K_A = -D_0 delta u_2^(A) on the canonical even branch
+    35	  G_A = D_0 delta P_0^(A) exactly
+    36	  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0
+    37	  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)
+    38	  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0
+    39	  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 172 — PHYSICAL SLOPE COLLAPSE OF THE LINEAR GROUPED OUTLET PROBLEM"];
+    27	
+    28	Clear[d0, n0, u2, dD0, dD2, dD4, dN0, eps, lam, sigma];
+    29	$Assumptions = Element[{d0, n0, u2, dD0, dD2, dD4, dN0, eps, lam, sigma}, Reals] &&
+    30	  d0 != 0 && n0 != 0 && sigma != 0;
+    31	
+    32	d2 = -u2*d0;
+    33	p0 = n0/d0;
+    34	
+    35	dA0 = d0 + eps*lam*dD0;
+    36	dA2 = d2 + eps*lam*dD2;
+    37	nA0 = n0 + eps*lam*dN0;
+    38	
+    39	u2A = -dA2/dA0;
+    40	p0A = nA0/dA0;
+    41	
+    42	(* Independent route: differentiate the implicit defining relations, not the explicit quotient. *)
+    43	du2sol = Solve[D[(u2 + t*deltaU2)*(d0 + t*dD0) + (d2 + t*dD2), t] == 0 /. t -> 0, deltaU2];
+    44	deltaU2 = FullSimplify[deltaU2 /. First[du2sol], Assumptions -> $Assumptions];
+    45	dp0sol = Solve[D[(p0 + t*deltaP0)*(d0 + t*dD0) - (n0 + t*dN0), t] == 0 /. t -> 0, deltaP0];
+    46	deltaP0 = FullSimplify[deltaP0 /. First[dp0sol], Assumptions -> $Assumptions];
+    47	
+    48	Print["delta u_2^(A) = ", fmt[deltaU2]];
+    49	Print["delta P_0^(A) = ", fmt[deltaP0]];
+    50	
+    51	kA = dD2 + dD0/9;
+    52	gA = dN0 - p0*dD0;
+    53	
+    54	banner["Exact obstruction-pair rewrite"];
+    55	expectZero[
+    56	  "K_A + D0*delta_u2 - (1/9-u2)*dD0",
+    57	  kA + d0*deltaU2 - (1/9 - u2)*dD0
+    58	];
+    59	expectZero["G_A - D0*delta_P0", gA - d0*deltaP0];
+    60	
+    61	banner["Canonical-even collapse at u2 = 1/9"];
+    62	expectZero[
+    63	  "K_A + D0*delta_u2 on canonical branch",
+    64	  (kA + d0*deltaU2) /. u2 -> 1/9
+    65	];
+    66	
+    67	banner["Physical form of the hidden-even consistency relation"];
+    68	u2Star = 1/9;
+    69	u4Star = 4/81;
+    70	d2Star = -u2Star*d0;
+    71	d4Star = d0*(u2Star^2 - u4Star);
+    72	
+    73	dA2Star = d2Star + eps*lam*dD2;
+    74	dA4Star = d4Star + eps*lam*dD4;
+    75	
+    76	u2AStar = -dA2Star/dA0;
+    77	u4AStar = (dA2Star^2 - dA0*dA4Star)/dA0^2;
+    78	
+    79	du2StarSol = Solve[D[(u2Star + t*deltaU2Star)*(d0 + t*dD0) + (d2Star + t*dD2), t] == 0 /. t -> 0, deltaU2Star];
+    80	deltaU2Star = FullSimplify[deltaU2Star /. First[du2StarSol], Assumptions -> $Assumptions];
+    81	du4StarSol = Solve[
+    82	  D[(u4Star + t*deltaU4Star)*(d0 + t*dD0)^2 - ((d2Star + t*dD2)^2 - (d0 + t*dD0)*(d4Star + t*dD4)), t] == 0 /. t -> 0,
+    83	  deltaU4Star];
+    84	deltaU4Star = FullSimplify[deltaU4Star /. First[du4StarSol], Assumptions -> $Assumptions];
+    85	
+    86	Print["delta u_2^(A) on canonical branch = ", fmt[deltaU2Star]];
+    87	Print["delta u_4^(A) on canonical branch = ", fmt[deltaU4Star]];
+    88	
+    89	evenRelation = 2*dD2/3 + dD0/27;
+    90	expectZero[
+    91	  "delta u_4 - (8/9) delta u_2 under microscopic even-consistency relation",
+    92	  (deltaU4Star - 8*deltaU2Star/9) /. dD4 -> evenRelation
+    93	];
+    94	
+    95	banner["Direct outlet formulas in physical grouped variables"];
+    96	deltaKappa = FullSimplify[3*(1 - sigma)*kA/(sigma*d0), Assumptions -> $Assumptions];
+    97	deltaGamma = FullSimplify[-(1 - sigma)*gA/(9*sigma*n0), Assumptions -> $Assumptions];
+    98	
+    99	expectZero[
+   100	  "delta kappa_W^(A) + 3(1-sigma)/sigma * delta u_2^(A)",
+   101	  (deltaKappa + 3*(1 - sigma)*deltaU2/sigma) /. u2 -> 1/9
+   102	];
+   103	expectZero[
+   104	  "delta gamma_W^(A) + (1-sigma)/(9 sigma P0) * delta P_0^(A)",
+   105	  deltaGamma + (1 - sigma)*deltaP0/(9*sigma*p0)
+   106	];
+   107	
+   108	deltaQ = FullSimplify[-9*sigma*deltaGamma/(1 - sigma), Assumptions -> $Assumptions];
+   109	expectZero["Delta_Q^(A) - delta P_0^(A)/P0", deltaQ - deltaP0/p0];
+   110	
+   111	Print[""];
+   112	Print["Carry-forward formulas:"];
+   113	Print["  K_A = -D_0 delta u_2^(A) on the canonical even branch"];
+   114	Print["  G_A = D_0 delta P_0^(A) exactly"];
+   115	Print["  delta u_4^(A) = (8/9) delta u_2^(A) iff dD_4 = (2/3) dD_2 + (1/27) dD_0"];
+   116	Print["  delta kappa_W^(A) = -3(1-sigma_*)/sigma_* * delta u_2^(A)"];
+   117	Print["  delta gamma_W^(A) = -(1-sigma_*)/(9 sigma_*) * delta P_0^(A)/P_0"];
+   118	Print["  Delta_Q^(A) = delta P_0^(A)/P_0 on the even-preserving branch"];
+   119	
+   120	Print[""];
+   121	Print["Stage 172 Mathematica audit passed."];
+   122	
+   123	Exit[0];
+
+exec
+/bin/bash -lc 'git diff -- /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'git diff -- /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'git diff -- /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+ succeeded in 0ms:
+ succeeded in 0ms:
+codex
+---
+stage: 172
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py, moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt, moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl, moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt, stage_172.md, stage_172.tex]
+---
+# Codex review — stage 172
+
+## What the edit was supposed to do
+F1 required the Mathematica audit to stop extracting the four slopes by the same `Normal[Series[...]]/(eps*lam)` route used in SymPy, and instead derive them by implicit differentiation of the defining relations. The seven final residual assertions and printed forms were supposed to stay unchanged. F2 only corrected stale `STAGE 155` transcript banners to `STAGE 172`. The paper card’s output is the collapse identifying \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), with the surrounding physical even-response reductions preserved.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:43 | `deltaU2` from implicit derivative of \(u_2D_0+D_2=0\) | Yes: sign or base-relation errors would change the printed slope and break the \(K_A\) residuals. | Yes, feeds \(\mathfrak K_1=-D_0u_2^{(1)}\). | PASS |
+| 2 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:45 | `deltaP0` from implicit derivative of \(P_0D_0-N_0=0\) | Yes: numerator/sign errors would break `G_A - D0*delta_P0`. | Yes, directly verifies \(\mathfrak G_1=D_0P_1\). | PASS |
+| 3 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:79 | canonical `deltaU2Star` by implicit derivative | Yes: wrong canonical branch data would break the hidden-even residual. | Yes, supports the physical even-response collapse. | PASS |
+| 4 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:81 | `deltaU4Star` from implicit \(u_4D_0^2-(D_2^2-D_0D_4)=0\) | Yes: coefficient/sign changes leave a nonzero hidden-even residual. | Yes, checks the even-consistency reduction used by the stage. | PASS |
+| 5 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:55 | seven residual assertions retained with independent slopes | Yes: they are not `X-X`; wrong slope, branch, or prefactor choices would leave symbolic residuals. | Yes, they cover the obstruction-pair and direct outlet physical-slope reductions. | PASS |
+| 6 | moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py:31; moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:26 | transcript banner says `STAGE 172` | Yes at transcript level; stale labels would show in saved output line 3. | No, print-only directive hygiene. | PASS |
+
+## Bottom line
+I tried to break the edit by treating the Mathematica slope derivations as copied quotient expansions, by checking whether the residuals were built as `X-X`, and by perturbing the relevant signs/coefficient roles mentally against the displayed formulas. Those attacks did not hold: the Mathematica slopes now come from `Solve[D[...]]` on implicit defining relations, the residuals compare those slopes against separately named obstruction/direct-outlet expressions, and both saved transcripts show the corrected `STAGE 172` banner plus the required zero/PASS lines.
+tokens used
+39,086
+---
+stage: 172
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py, moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.txt, moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl, moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.txt, stage_172.md, stage_172.tex]
+---
+# Codex review — stage 172
+
+## What the edit was supposed to do
+F1 required the Mathematica audit to stop extracting the four slopes by the same `Normal[Series[...]]/(eps*lam)` route used in SymPy, and instead derive them by implicit differentiation of the defining relations. The seven final residual assertions and printed forms were supposed to stay unchanged. F2 only corrected stale `STAGE 155` transcript banners to `STAGE 172`. The paper card’s output is the collapse identifying \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), with the surrounding physical even-response reductions preserved.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:43 | `deltaU2` from implicit derivative of \(u_2D_0+D_2=0\) | Yes: sign or base-relation errors would change the printed slope and break the \(K_A\) residuals. | Yes, feeds \(\mathfrak K_1=-D_0u_2^{(1)}\). | PASS |
+| 2 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:45 | `deltaP0` from implicit derivative of \(P_0D_0-N_0=0\) | Yes: numerator/sign errors would break `G_A - D0*delta_P0`. | Yes, directly verifies \(\mathfrak G_1=D_0P_1\). | PASS |
+| 3 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:79 | canonical `deltaU2Star` by implicit derivative | Yes: wrong canonical branch data would break the hidden-even residual. | Yes, supports the physical even-response collapse. | PASS |
+| 4 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:81 | `deltaU4Star` from implicit \(u_4D_0^2-(D_2^2-D_0D_4)=0\) | Yes: coefficient/sign changes leave a nonzero hidden-even residual. | Yes, checks the even-consistency reduction used by the stage. | PASS |
+| 5 | moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:55 | seven residual assertions retained with independent slopes | Yes: they are not `X-X`; wrong slope, branch, or prefactor choices would leave symbolic residuals. | Yes, they cover the obstruction-pair and direct outlet physical-slope reductions. | PASS |
+| 6 | moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py:31; moving_throat_pde_stage172_physical_slope_collapse_mathematica_audit.wl:26 | transcript banner says `STAGE 172` | Yes at transcript level; stale labels would show in saved output line 3. | No, print-only directive hygiene. | PASS |
+
+## Bottom line
+I tried to break the edit by treating the Mathematica slope derivations as copied quotient expansions, by checking whether the residuals were built as `X-X`, and by perturbing the relevant signs/coefficient roles mentally against the displayed formulas. Those attacks did not hold: the Mathematica slopes now come from `Solve[D[...]]` on implicit defining relations, the residuals compare those slopes against separately named obstruction/direct-outlet expressions, and both saved transcripts show the corrected `STAGE 172` banner plus the required zero/PASS lines.
+
+---
+codex_session_id: 019e7129-0df4-7e83-a951-e0cf7cbdfaf4

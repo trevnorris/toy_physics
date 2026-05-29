@@ -1,0 +1,551 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7127-0517-76d0-9c5c-498784643a42
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 155)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_155.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_155.tex
+
+Write your verdict report for stage 155 now, following the format above exactly.
+exec
+/bin/bash -lc "nl -ba paper/stages/stage_155.tex | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba redteam/directives/stage_155.md | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 155]{Stage 155: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction}
+     2	\label{stage:155}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusNumerical{} / \StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~155 is a co-evolving core--mouth transport ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point, and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate \(\delta_\perp\).}
+    14	
+    15	\begin{quote}
+    16	At old traction, fixed point survives but moves off exact compensation: \(\mathcal R_{\rm fp}\approx0.282714\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check deviations are taken about the renormalized co-evolving canonical point.
+    23	\item Check even-preservation constraints are imposed before reading the remaining odd defect.
+    24	\item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Part V and downstream branch-realization, orbit-lock, and same-charge audits.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 155
+     3	batch: IV.6
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 155
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents.
+    23	
+    24	## F1 — insufficient_verification
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:92`
+    27	
+    28	**Issue:** The SymPy script computes and prints g_fp, S_fp, R_fp, Pi_fp (lines 89–92) but the only assertion in the script (lines 100–101) tests the transport-law identity, which is internally self-consistent — it would pass even if the converged moments were silently off. The paper notes (§1, §2) elevate g_fp ≈ 0.693352419668063, S_fp ≈ 0.6216013167514007, R_fp ≈ 0.2827139049082381, and Pi_fp ≈ 1.4885734438300713 to load-bearing deliverables, and the Mathematica twin (lines 101–104) already anchors them with `expectApprox`. The SymPy side is asymmetric.
+    29	
+    30	**Required change:**
+    31	In `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py`, insert exactly the following four lines between the existing line 92 (`print("Pi_fp =", Pi_fp)`) and the existing blank line preceding line 94 (`dg = sp.Float(g_fp - g_star, 30)`). Keep the indentation at module level (no leading spaces):
+    32	
+    33	```python
+    34	assert abs(g_fp - 0.693352419668063) < 1e-12, ("g_fp mismatch", g_fp)
+    35	assert abs(S_fp - 0.6216013167514007) < 1e-12, ("S_fp mismatch", S_fp)
+    36	assert abs(R_fp - 0.2827139049082381) < 1e-12, ("R_fp mismatch", R_fp)
+    37	assert abs(Pi_fp - 1.4885734438300713) < 1e-12, ("Pi_fp mismatch", Pi_fp)
+    38	```
+    39	
+    40	The four numeric constants are taken verbatim from the existing Mathematica `expectApprox` calls (lines 101–104 of the `.wl` file) and from notes §1/§2; do not change them.
+    41	
+    42	**Claim manifest:** n/a (additive assertions on an existing script).
+    43	
+    44	**Verification command:**
+    45	After Codex applies, the verifier will run `redteam exec-sympy 155` and confirm the four new `assert` lines appear in the script AND the script exits 0.
+    46	
+    47	## F2 — paper_misalignment
+    48	
+    49	**Subtype:** target_mismatch (banner label)
+    50	
+    51	**Paper side:**
+    52	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_155.tex:1` quote: "`\section[Stage 155]{Stage 155: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction}`"
+    53	
+    54	**Script side:**
+    55	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:80` quote: `banner("STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT")`
+    56	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl:26` quote: `banner["STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"];`
+    57	
+    58	**Issue:**
+    59	Both audit scripts print a banner that says "STAGE 138" instead of "STAGE 155". This appears to be a leftover from copy-paste from an earlier stage's audit script. The paper card declares this unit to be stage 155. The math is unaffected, but the transcript labels are wrong, complicating downstream tracker correlation.
+    60	
+    61	This sub-finding is purely script-side (the paper card is correct; the scripts are wrong about their own identity). It is therefore safe for Codex to apply mechanically without user resolution.
+    62	
+    63	**Required change:**
+    64	- In `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py` line 80, change the string literal `"STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"` to `"STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"`.
+    65	- In `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl` line 26, change the string literal `"STAGE 138 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"` to `"STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"`.
+    66	
+    67	Do NOT touch the SymPy docstring at line 11 ("transport law from Stage 154"). The Stage 154 vs. notes §3 "Stage 239" cross-reference question is a paper/notes-side textual matter that the user will resolve separately; the script-side docstring is acceptable as-is for this directive.
+    68	
+    69	**Verification command:**
+    70	After Codex applies, the verifier will run `redteam exec-sympy 155` and `redteam exec-mathematica 155`. Fresh transcripts should begin with `STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT` instead of `STAGE 138 — …`.
+
+exec
+/bin/bash -lc "nl -ba mathematica/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl | sed -n '1,340p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectApprox[name_String, value_, target_, tol_] := Module[{diff},
+    21	  diff = Abs[N[value, 40] - N[target, 40]];
+    22	  Print[name, " diff = ", fmt[diff]];
+    23	  If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
+    24	];
+    25	
+    26	banner["STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT"];
+    27	
+    28	rF1 = 1.77799353547498;
+    29	gStar = 0.758035078944663;
+    30	piStar = 1.50882951349316;
+    31	sigma0Star = 1.80594111095636;
+    32	
+    33	n = 2401;
+    34	xGrid = Subdivide[0.0, 1.0, n - 1];
+    35	dx = xGrid[[2]] - xGrid[[1]];
+    36	weights = ConstantArray[dx, n];
+    37	weights[[1]] = dx/2;
+    38	weights[[-1]] = dx/2;
+    39	
+    40	kappa = N[Pi/2];
+    41	cGrid = Cos[(Pi*xGrid)/2];
+    42	kqGrid = Cosh[kappa*(1 - xGrid)]/Cosh[kappa];
+    43	
+    44	normalize[sig_List] := sig/Total[sig*weights];
+    45	
+    46	tsOperator[sig_List] := Module[{cumSig, cumY},
+    47	  cumSig = Accumulate[sig*weights];
+    48	  cumY = Accumulate[xGrid*sig*weights];
+    49	  cumY + xGrid*(Last[cumSig] - cumSig)
+    50	];
+    51	
+    52	tqOperator[sig_List] := Module[{aTerm, bTerm},
+    53	  aTerm = Accumulate[Sinh[kappa*xGrid]*sig*weights];
+    54	  bTerm = Reverse[Accumulate[Reverse[Cosh[kappa*(1 - xGrid)]*sig*weights]]];
+    55	  (Cosh[kappa*(1 - xGrid)]*aTerm + Sinh[kappa*xGrid]*bTerm)/(kappa*Cosh[kappa])
+    56	];
+    57	
+    58	gMoment[sig_List] := Total[cGrid*sig*weights];
+    59	sMoment[sig_List] := Total[kqGrid*sig*weights];
+    60	rMoment[sig_List] := ((gMoment[sig] - rF1)^2)/(1 + rF1^2);
+    61	phi[sig_List, sigma0_?NumericQ] := sigma0*(tsOperator[sig] - rMoment[sig]*tqOperator[sig]);
+    62	nextSigma[sig_List, sigma0_?NumericQ] := Module[{ph, phShift},
+    63	  ph = phi[sig, sigma0];
+    64	  phShift = ph - Min[ph];
+    65	  normalize[Exp[-phShift]]
+    66	];
+    67	
+    68	solveFixedPoint[sigma0_?NumericQ, maxIt_: 400, tol_: 1.*^-13] := Module[
+    69	  {sig, sigNew, err = Infinity, iter},
+    70	  sig = normalize[piStar*Exp[-piStar*xGrid]];
+    71	  For[iter = 1, iter <= maxIt, iter++,
+    72	    sigNew = nextSigma[sig, sigma0];
+    73	    err = Max[Abs[sigNew - sig]];
+    74	    sig = sigNew;
+    75	    If[err < tol,
+    76	      Return[<|"sigma" -> sig, "iterations" -> iter, "error" -> err|>]
+    77	    ];
+    78	  ];
+    79	  <|"sigma" -> sig, "iterations" -> maxIt, "error" -> err|>
+    80	];
+    81	
+    82	fp = solveFixedPoint[sigma0Star];
+    83	sigFp = fp["sigma"];
+    84	gFp = gMoment[sigFp];
+    85	sFp = sMoment[sigFp];
+    86	rFp = rMoment[sigFp];
+    87	piFp = sigma0Star*(1 - rFp*sFp);
+    88	deltaRDirect = rFp - 1/4;
+    89	deltaG = gFp - gStar;
+    90	deltaRPred = -deltaG/Sqrt[1 + rF1^2] + deltaG^2/(1 + rF1^2);
+    91	
+    92	Print["iterations = ", fp["iterations"]];
+    93	Print["max residual = ", fp["error"]];
+    94	Print["g_fp = ", N[gFp, 20]];
+    95	Print["S_fp = ", N[sFp, 20]];
+    96	Print["R_fp = ", N[rFp, 20]];
+    97	Print["Pi_fp = ", N[piFp, 20]];
+    98	Print["delta R from direct solve = ", N[deltaRDirect, 30]];
+    99	Print["delta R from exact transport law = ", N[deltaRPred, 30]];
+   100	
+   101	expectApprox["g_fp numeric check", gFp, 0.693352419668063, 10^-12];
+   102	expectApprox["S_fp numeric check", sFp, 0.6216013167514007, 10^-12];
+   103	expectApprox["R_fp numeric check", rFp, 0.2827139049082381, 10^-12];
+   104	expectApprox["Pi_fp numeric check", piFp, 1.4885734438300713, 10^-12];
+   105	expectApprox["transport law consistency", deltaRPred, deltaRDirect, 10^-10];
+   106	
+   107	Print[""];
+   108	Print["Conclusion:"];
+   109	Print["  At frozen canonical traction, the co-evolving fixed point stays close in Pi"];
+   110	Print["  but drifts to R > 1/4, so exact compensation is lost."];
+   111	
+   112	Exit[0];
+
+exec
+/bin/bash -lc "nl -ba scripts/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT
+     4	========================================================================================
+     5	iterations = 16
+     6	max residual = 6.084022174945858e-14
+     7	g_fp = 0.693352419668063
+     8	S_fp = 0.6216013167514007
+     9	R_fp = 0.2827139049082381
+    10	Pi_fp = 1.4885734438300713
+    11	delta R from direct solve = 0.0327139049082381117017348515219
+    12	delta R from exact transport law = 0.0327139049082376621515011616188
+    13	
+    14	Conclusion:
+    15	  At frozen canonical traction, the co-evolving fixed point remains close in Pi
+    16	  but drifts to R > 1/4, so exact compensation is lost.
+
+exec
+/bin/bash -lc "nl -ba mathematica/output/moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.txt | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT
+     4	========================================================================================
+     5	iterations = 16
+     6	max residual = 6.084022174945858*^-14
+     7	g_fp = 0.6933524196680632
+     8	S_fp = 0.621601316751401
+     9	R_fp = 0.2827139049082381
+    10	Pi_fp = 1.488573443830071
+    11	delta R from direct solve = 0.03271390490823811
+    12	delta R from exact transport law = 0.032713904908237605
+    13	g_fp numeric check diff = 1.1102230246251565*^-16
+    14	PASS: g_fp numeric check
+    15	S_fp numeric check diff = 2.220446049250313*^-16
+    16	PASS: S_fp numeric check
+    17	R_fp numeric check diff = 0.
+    18	PASS: R_fp numeric check
+    19	Pi_fp numeric check diff = 2.220446049250313*^-16
+    20	PASS: Pi_fp numeric check
+    21	transport law consistency diff = 5.065392549852277*^-16
+    22	PASS: transport law consistency
+    23	
+    24	Conclusion:
+    25	  At frozen canonical traction, the co-evolving fixed point stays close in Pi
+    26	  but drifts to R > 1/4, so exact compensation is lost.
+
+exec
+/bin/bash -lc "nl -ba scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py | sed -n '1,320p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+     4	
+     5	Numerical/SymPy audit for the full co-evolving Family-1 fixed point at frozen
+     6	canonical traction Sigma0*.
+     7	
+     8	Checks:
+     9	1. Solve the exact nonlinear fixed-point map.
+    10	2. Report g_fp, S_fp, R_fp, Pi_fp.
+    11	3. Verify the exact shifted-R transport law from Stage 154.
+    12	"""
+    13	
+    14	from __future__ import annotations
+    15	import math
+    16	import numpy as np
+    17	import sympy as sp
+    18	
+    19	def banner(title: str) -> None:
+    20	    line = "=" * 88
+    21	    print("\n" + line)
+    22	    print(title)
+    23	    print(line)
+    24	
+    25	rF1 = 1.77799353547498
+    26	g_star = 0.758035078944663
+    27	S_star = 0.658075937605429
+    28	Pi_star = 1.50882951349316
+    29	Sigma0_star = 1.80594111095636
+    30	
+    31	N = 2401
+    32	x = np.linspace(0.0, 1.0, N)
+    33	dx = x[1] - x[0]
+    34	w = np.ones(N) * dx
+    35	w[0] = w[-1] = dx / 2
+    36	kappa = math.pi / 2
+    37	c = np.cos(math.pi * x / 2)
+    38	Kq = np.cosh(kappa * (1 - x)) / np.cosh(kappa)
+    39	
+    40	def normalize(sig: np.ndarray) -> np.ndarray:
+    41	    return sig / np.sum(sig * w)
+    42	
+    43	def Ts(sig: np.ndarray) -> np.ndarray:
+    44	    cum_sig = np.cumsum(sig * w)
+    45	    cum_y = np.cumsum(x * sig * w)
+    46	    return cum_y + x * (cum_sig[-1] - cum_sig)
+    47	
+    48	def Tq(sig: np.ndarray) -> np.ndarray:
+    49	    A = np.cumsum(np.sinh(kappa * x) * sig * w)
+    50	    B = np.cumsum((np.cosh(kappa * (1 - x)) * sig * w)[::-1])[::-1]
+    51	    return (np.cosh(kappa * (1 - x)) * A + np.sinh(kappa * x) * B) / (kappa * np.cosh(kappa))
+    52	
+    53	def g(sig: np.ndarray) -> float:
+    54	    return float(np.sum(c * sig * w))
+    55	
+    56	def S(sig: np.ndarray) -> float:
+    57	    return float(np.sum(Kq * sig * w))
+    58	
+    59	def R(sig: np.ndarray) -> float:
+    60	    gv = g(sig)
+    61	    return ((gv - rF1) ** 2) / (1 + rF1**2)
+    62	
+    63	def Phi(sig: np.ndarray, Sigma0: float) -> np.ndarray:
+    64	    return Sigma0 * (Ts(sig) - R(sig) * Tq(sig))
+    65	
+    66	def next_sigma(sig: np.ndarray, Sigma0: float) -> np.ndarray:
+    67	    ph = Phi(sig, Sigma0)
+    68	    return normalize(np.exp(-ph))
+    69	
+    70	def solve_fixed_point(Sigma0: float, maxit: int = 400) -> tuple[np.ndarray, int, float]:
+    71	    sig = normalize(Pi_star * np.exp(-Pi_star * x))
+    72	    for n in range(maxit):
+    73	        sig_new = next_sigma(sig, Sigma0)
+    74	        err = float(np.max(np.abs(sig_new - sig)))
+    75	        sig = sig_new
+    76	        if err < 1e-13:
+    77	            return sig, n + 1, err
+    78	    return sig, maxit, err
+    79	
+    80	banner("STAGE 155 — FROZEN-TRACTION CO-EVOLVING FIXED POINT")
+    81	sig, niter, err = solve_fixed_point(Sigma0_star)
+    82	g_fp = g(sig)
+    83	S_fp = S(sig)
+    84	R_fp = R(sig)
+    85	Pi_fp = Sigma0_star * (1 - R_fp * S_fp)
+    86	
+    87	print("iterations =", niter)
+    88	print("max residual =", err)
+    89	print("g_fp =", g_fp)
+    90	print("S_fp =", S_fp)
+    91	print("R_fp =", R_fp)
+    92	print("Pi_fp =", Pi_fp)
+    93	
+    94	assert abs(g_fp - 0.693352419668063) < 1e-12, ("g_fp mismatch", g_fp)
+    95	assert abs(S_fp - 0.6216013167514007) < 1e-12, ("S_fp mismatch", S_fp)
+    96	assert abs(R_fp - 0.2827139049082381) < 1e-12, ("R_fp mismatch", R_fp)
+    97	assert abs(Pi_fp - 1.4885734438300713) < 1e-12, ("Pi_fp mismatch", Pi_fp)
+    98	
+    99	dg = sp.Float(g_fp - g_star, 30)
+   100	r = sp.Float(rF1, 30)
+   101	pred = sp.simplify(-dg / sp.sqrt(1 + r**2) + dg**2 / (1 + r**2))
+   102	direct = sp.Float(R_fp - sp.Rational(1, 4), 30)
+   103	print("delta R from direct solve =", direct)
+   104	print("delta R from exact transport law =", pred)
+   105	if abs(float(pred - direct)) > 1e-10:
+   106	    raise AssertionError("Exact transport law failed numerically.")
+   107	
+   108	print("\nConclusion:")
+   109	print("  At frozen canonical traction, the co-evolving fixed point remains close in Pi")
+   110	print("  but drifts to R > 1/4, so exact compensation is lost.")
+
+codex
+---
+stage: 155
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py, moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.txt, moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.txt, stage_155.md, stage_155.tex]
+---
+# Codex review — stage 155
+
+## What the edit was supposed to do
+The directive had two fixes. F1 required adding SymPy-side numeric assertions for the load-bearing fixed-point moments `g_fp`, `S_fp`, `R_fp`, and `Pi_fp`, matching constants already checked by the Mathematica audit, because the prior SymPy assertion only tested an internally consistent transport-law identity. F2 required correcting the printed banner in both audit scripts from `STAGE 138` to `STAGE 155`, matching the paper card title. The directive explicitly said not to alter the Stage 154 docstring reference.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:80 | SymPy banner says Stage 155 | Yes: transcript would retain wrong stage label | Yes: matches stage card identity | PASS |
+| 2 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:94 | `g_fp` equals fixed numeric target | Yes: computed moment is compared to external literal | Yes: anchors the co-evolving fixed-point output | PASS |
+| 3 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:95 | `S_fp` equals fixed numeric target | Yes: computed outlet moment is compared to external literal | Yes: supports the reported fixed-point/Pi ledger | PASS |
+| 4 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:96 | `R_fp` equals fixed numeric target | Yes: computed residual is compared to external literal | Yes: directly checks the paper quote `R_fp approx 0.282714` | PASS |
+| 5 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:97 | `Pi_fp` equals fixed numeric target | Yes: computed `Sigma0*(1 - R*S)` is compared to external literal | Yes: anchors the printed fixed-point output | PASS |
+| 6 | moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl:26 | Mathematica banner says Stage 155 | Yes: transcript would retain wrong stage label | Yes: matches stage card identity | PASS |
+
+## Bottom line
+The new SymPy assertions are not `X - X` checks: each compares a value computed from the fixed-point solve against a hard-coded target, so changing the map, quadrature, moment definitions, or constants would make them fail. I tried to break them by tracing shared intermediates, by checking whether `Pi_fp` was merely compared to itself, by mapping the targets back to the paper card’s fixed-point claim, and by checking the saved output order; the SymPy transcript prints the target values and then reaches later post-assert output, while the Mathematica transcript shows matching `PASS` lines and the corrected Stage 155 banner. The Mathematica file is a close algorithmic twin rather than a separate derivation, so I do not treat dual-engine agreement as independent proof, but the edited checks satisfy the directive and non-tautologically anchor the numerical stage deliverables.
+tokens used
+16,331
+---
+stage: 155
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py, moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.txt, moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.txt, stage_155.md, stage_155.tex]
+---
+# Codex review — stage 155
+
+## What the edit was supposed to do
+The directive had two fixes. F1 required adding SymPy-side numeric assertions for the load-bearing fixed-point moments `g_fp`, `S_fp`, `R_fp`, and `Pi_fp`, matching constants already checked by the Mathematica audit, because the prior SymPy assertion only tested an internally consistent transport-law identity. F2 required correcting the printed banner in both audit scripts from `STAGE 138` to `STAGE 155`, matching the paper card title. The directive explicitly said not to alter the Stage 154 docstring reference.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:80 | SymPy banner says Stage 155 | Yes: transcript would retain wrong stage label | Yes: matches stage card identity | PASS |
+| 2 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:94 | `g_fp` equals fixed numeric target | Yes: computed moment is compared to external literal | Yes: anchors the co-evolving fixed-point output | PASS |
+| 3 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:95 | `S_fp` equals fixed numeric target | Yes: computed outlet moment is compared to external literal | Yes: supports the reported fixed-point/Pi ledger | PASS |
+| 4 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:96 | `R_fp` equals fixed numeric target | Yes: computed residual is compared to external literal | Yes: directly checks the paper quote `R_fp approx 0.282714` | PASS |
+| 5 | moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py:97 | `Pi_fp` equals fixed numeric target | Yes: computed `Sigma0*(1 - R*S)` is compared to external literal | Yes: anchors the printed fixed-point output | PASS |
+| 6 | moving_throat_pde_stage155_frozen_traction_fixedpoint_mathematica_audit.wl:26 | Mathematica banner says Stage 155 | Yes: transcript would retain wrong stage label | Yes: matches stage card identity | PASS |
+
+## Bottom line
+The new SymPy assertions are not `X - X` checks: each compares a value computed from the fixed-point solve against a hard-coded target, so changing the map, quadrature, moment definitions, or constants would make them fail. I tried to break them by tracing shared intermediates, by checking whether `Pi_fp` was merely compared to itself, by mapping the targets back to the paper card’s fixed-point claim, and by checking the saved output order; the SymPy transcript prints the target values and then reaches later post-assert output, while the Mathematica transcript shows matching `PASS` lines and the corrected Stage 155 banner. The Mathematica file is a close algorithmic twin rather than a separate derivation, so I do not treat dual-engine agreement as independent proof, but the edited checks satisfy the directive and non-tautologically anchor the numerical stage deliverables.
+
+---
+codex_session_id: 019e7127-0517-76d0-9c5c-498784643a42

@@ -13,7 +13,7 @@ needs_user_resolution: false
 
 Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named. Do NOT run python or mathematica. Only edit files. Do NOT touch paper.tex, notes/, or any prose documents.
+Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named. After editing, RUN the affected scripts (`python3 <path>` for SymPy, `math -script <path>` for Mathematica) and iterate until they exit 0 with all in-file checks passing. Getting the scripts to run cleanly is your job; the orchestrator independently re-runs afterward. Do NOT touch paper.tex, notes/, or any prose documents.
 
 The numeric paper values that must remain untouched in the asserted outputs: `c0 = 3/4`, `c1 = 1/4`, `rho_alpha = 4/3`, `zeta_req = 1/3`, `Pi_tr = (4/3) C_mix`. Any new derivation path must arrive at these same numbers.
 

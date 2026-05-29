@@ -1,0 +1,442 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7124-a93b-7642-a06e-f804a27026ea
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 140)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_140.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_140.tex
+
+Write your verdict report for stage 140 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_140.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_140.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 140]{Stage 140: Self-Matched Mouth Susceptibility Closure}
+     2	\label{stage:140}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusReduced{} / \StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~140 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+    14	
+    15	\begin{quote}
+    16	Same-layer susceptibility gives \(\Sigma_0=M_s=(20/9)\widehat T_m^2\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+    23	\item Check the self-matched susceptibility closure before using the one-scalar branch law.
+    24	\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 140
+     3	batch: IV.5
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 2
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 140
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    17	
+    18	Do NOT run python or mathematica. Only edit files.
+    19	
+    20	Do NOT touch paper.tex, notes/, or any prose documents.
+    21	
+    22	## F1 — mathematica_transliteration
+    23	
+    24	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:26`
+    25	
+    26	**Issue:** The Mathematica banner is a copy-paste artifact from another stage. Line 26 currently reads `banner["STAGE 123 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];` but this is stage 140. The underlying math is correct; only the printed banner string is wrong.
+    27	
+    28	**Required change:**
+    29	Edit `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl` line 26.
+    30	
+    31	Before:
+    32	```
+    33	banner["STAGE 123 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];
+    34	```
+    35	
+    36	After:
+    37	```
+    38	banner["STAGE 140 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];
+    39	```
+    40	
+    41	Do not modify any other line in this file.
+    42	
+    43	**Verification command:**
+    44	After Codex applies, the verifier will run `redteam exec-mathematica 140` and confirm the printed banner reads "STAGE 140 — ..." and the `expectZero["Sigma_0_hat - 20 That^2/9", ...]` residual remains 0 with the script exiting 0.
+    45	
+    46	## F2 — insufficient_verification
+    47	
+    48	**Target:**
+    49	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:18-24`
+    50	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:46-53`
+    51	
+    52	**Issue:** The Section-3 numerics from the notes (`That_nat ≈ 0.866512630228382`, `That_comp ≈ 0.901484054174206`, fractional enhancement ≈ 0.0403588161624) are reproduced by `print` only. There is no `assert` / `expectZero` guarding them, so a regression on the input literals or the `sqrt(9*Ms/20)` formula would silently pass.
+    53	
+    54	**Required change:**
+    55	
+    56	(1) In `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py`, after the existing line 24 (which prints `fractional traction enhancement = ...`), append three assertions that compare the computed values to the notes' boxed numerics with a 1e-12 tolerance.
+    57	
+    58	Before (lines 18-24, unchanged):
+    59	```
+    60	Ms_nat = sp.N('1.6685425296562397', 30)
+    61	Ms_comp = sp.N('1.80594111095636', 30)
+    62	That_nat = sp.N(sp.sqrt(9*Ms_nat/20), 30)
+    63	That_comp = sp.N(sp.sqrt(9*Ms_comp/20), 30)
+    64	print('That_nat =', That_nat)
+    65	print('That_comp =', That_comp)
+    66	print('fractional traction enhancement =', sp.N(That_comp/That_nat - 1, 20))
+    67	```
+    68	
+    69	After (append immediately after line 24, with no other changes to lines 1-24):
+    70	```
+    71	assert sp.Abs(That_nat - sp.Float('0.866512630228382', 30)) < sp.Float('1e-12', 30)
+    72	assert sp.Abs(That_comp - sp.Float('0.901484054174206', 30)) < sp.Float('1e-12', 30)
+    73	assert sp.Abs(sp.N(That_comp/That_nat - 1, 30) - sp.Float('0.0403588161624', 30)) < sp.Float('1e-12', 30)
+    74	print('numeric fixed-point checks PASS')
+    75	```
+    76	
+    77	(2) In `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl`, after the existing `Print["fractional traction enhancement = ", ...]` (line 53), and before the `Print[""]` at line 55, insert three numeric checks using the existing `expectZero` helper. Because `expectZero` calls `FullSimplify === 0`, wrap each diff in `If[Abs[...] < tol, 0, ...]` so a tiny floating-point residual still resolves to literal 0.
+    78	
+    79	Before (lines 53-55, unchanged):
+    80	```
+    81	Print["fractional traction enhancement = ", fmt[N[tHatComp/tHatNat - 1, 20]]];
+    82	
+    83	Print[""];
+    84	```
+    85	
+    86	After (insert between line 53 and line 55):
+    87	```
+    88	Print["fractional traction enhancement = ", fmt[N[tHatComp/tHatNat - 1, 20]]];
+    89	
+    90	Module[{diff1, diff2, diff3, tol},
+    91	  tol = 10^-12;
+    92	  diff1 = N[tHatNat - SetPrecision[0.866512630228382, 30], 30];
+    93	  diff2 = N[tHatComp - SetPrecision[0.901484054174206, 30], 30];
+    94	  diff3 = N[(tHatComp/tHatNat - 1) - SetPrecision[0.0403588161624, 30], 30];
+    95	  If[Abs[diff1] < tol, pass["That_nat matches notes"], fail["That_nat matches notes", diff1]];
+    96	  If[Abs[diff2] < tol, pass["That_comp matches notes"], fail["That_comp matches notes", diff2]];
+    97	  If[Abs[diff3] < tol, pass["fractional enhancement matches notes"], fail["fractional enhancement matches notes", diff3]];
+    98	];
+    99	
+   100	Print[""];
+   101	```
+   102	
+   103	Do not modify the existing `Print["Stage 140 Mathematica audit passed."]` or `Exit[0]` lines.
+   104	
+   105	**Verification command:**
+   106	After Codex applies, the verifier will run `redteam exec-sympy 140` and `redteam exec-mathematica 140`. Both scripts must still exit 0. The sympy transcript must contain the new line `numeric fixed-point checks PASS`. The Mathematica transcript must contain three new `PASS:` lines for "That_nat matches notes", "That_comp matches notes", and "fractional enhancement matches notes".
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	Sigma_0 = 20*L*T_m**2*ell**2*rho**2/(9*c_s**2*hbar**2)
+     2	Sigma_0 in terms of That = 20*That**2/9
+     3	That_nat = 0.866512630228381532619923771658
+     4	That_comp = 0.901484054174205568349216979026
+     5	fractional traction enhancement = 0.040358816162445119166
+     6	numeric fixed-point checks PASS
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 140 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE
+     4	========================================================================================
+     5	Sigma_0 = (20*ell^2*lM*rhoW^2*tM^2)/(9*cSound^2*hbar^2)
+     6	Sigma_0 in terms of That = (20*tHat^2)/9
+     7	Sigma_0_hat - 20 That^2/9 = 0
+     8	PASS: Sigma_0_hat - 20 That^2/9
+     9	That_nat = 0.8665126302283815392959569642047049776046752355560060900671`30.
+    10	That_comp = 0.9014840541742055424613909744622661805033974943213822507436`30.
+    11	fractional traction enhancement = 0.04035881616244508127491719985972103265`20.
+    12	PASS: That_nat matches notes
+    13	PASS: That_comp matches notes
+    14	PASS: fractional enhancement matches notes
+    15	
+    16	Stage 140 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	L, a, ell, rho, Tm, hbar, cs, m, pi = sp.symbols('L a ell rho T_m hbar c_s m pi', positive=True, real=True)
+     6	Js = 4*sp.pi*a**2*ell/3
+     7	Hw = m*cs**2/rho
+     8	Theta = Hw*Js
+     9	Ks = 3*sp.pi*a**2*hbar**2/(5*m*rho*ell)
+    10	gs = Tm*Js
+    11	Sigma0 = sp.simplify(L*gs**2/(Ks*Theta))
+    12	print('Sigma_0 =', Sigma0)
+    13	That = sp.symbols('That', positive=True, real=True)
+    14	Sigma0_hat = sp.simplify(Sigma0.subs(Tm, That*hbar*cs/(rho*ell*sp.sqrt(L))))
+    15	print('Sigma_0 in terms of That =', Sigma0_hat)
+    16	assert sp.simplify(Sigma0_hat - sp.Rational(20,9)*That**2) == 0
+    17	
+    18	Ms_nat = sp.N('1.6685425296562397', 30)
+    19	Ms_comp = sp.N('1.80594111095636', 30)
+    20	That_nat = sp.N(sp.sqrt(9*Ms_nat/20), 30)
+    21	That_comp = sp.N(sp.sqrt(9*Ms_comp/20), 30)
+    22	print('That_nat =', That_nat)
+    23	print('That_comp =', That_comp)
+    24	print('fractional traction enhancement =', sp.N(That_comp/That_nat - 1, 20))
+    25	assert sp.Abs(That_nat - sp.Float('0.866512630228382', 30)) < sp.Float('1e-12', 30)
+    26	assert sp.Abs(That_comp - sp.Float('0.901484054174206', 30)) < sp.Float('1e-12', 30)
+    27	assert sp.Abs(sp.N(That_comp/That_nat - 1, 30) - sp.Float('0.0403588161624', 30)) < sp.Float('1e-12', 30)
+    28	print('numeric fixed-point checks PASS')
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 140 — SELFMATCHED MOUTH SUSCEPTIBILITY CLOSURE"];
+    27	
+    28	Clear[lM, a, ell, rhoW, tM, hbar, cSound, mPsi, tHat];
+    29	$Assumptions =
+    30	  Element[{lM, a, ell, rhoW, tM, hbar, cSound, mPsi, tHat}, Reals] &&
+    31	  lM > 0 && a > 0 && ell > 0 && rhoW > 0 && tM > 0 && hbar > 0 && cSound > 0 && mPsi > 0 && tHat > 0;
+    32	
+    33	jS = 4*Pi*a^2*ell/3;
+    34	hWall = mPsi*cSound^2/rhoW;
+    35	thetaSigma = hWall*jS;
+    36	kS = 3*Pi*a^2*hbar^2/(5*mPsi*rhoW*ell);
+    37	gS = tM*jS;
+    38	sigma0 = FullSimplify[lM*gS^2/(kS*thetaSigma), Assumptions -> $Assumptions];
+    39	
+    40	Print["Sigma_0 = ", fmt[sigma0]];
+    41	
+    42	sigma0Hat = FullSimplify[sigma0 /. tM -> tHat*hbar*cSound/(rhoW*ell*Sqrt[lM]), Assumptions -> $Assumptions];
+    43	Print["Sigma_0 in terms of That = ", fmt[sigma0Hat]];
+    44	expectZero["Sigma_0_hat - 20 That^2/9", sigma0Hat - (20/9)*tHat^2];
+    45	
+    46	mSNat = SetPrecision[1.6685425296562397, 30];
+    47	mSComp = SetPrecision[1.80594111095636, 30];
+    48	tHatNat = N[Sqrt[9*mSNat/20], 30];
+    49	tHatComp = N[Sqrt[9*mSComp/20], 30];
+    50	
+    51	Print["That_nat = ", fmt[tHatNat]];
+    52	Print["That_comp = ", fmt[tHatComp]];
+    53	Print["fractional traction enhancement = ", fmt[N[tHatComp/tHatNat - 1, 20]]];
+    54	
+    55	Module[{diff1, diff2, diff3, tol},
+    56	  tol = 10^-12;
+    57	  diff1 = N[tHatNat - SetPrecision[0.866512630228382, 30], 30];
+    58	  diff2 = N[tHatComp - SetPrecision[0.901484054174206, 30], 30];
+    59	  diff3 = N[(tHatComp/tHatNat - 1) - SetPrecision[0.0403588161624, 30], 30];
+    60	  If[Abs[diff1] < tol, pass["That_nat matches notes"], fail["That_nat matches notes", diff1]];
+    61	  If[Abs[diff2] < tol, pass["That_comp matches notes"], fail["That_comp matches notes", diff2]];
+    62	  If[Abs[diff3] < tol, pass["fractional enhancement matches notes"], fail["fractional enhancement matches notes", diff3]];
+    63	];
+    64	
+    65	Print[""];
+    66	Print["Stage 140 Mathematica audit passed."];
+    67	
+    68	Exit[0];
+
+codex
+---
+stage: 140
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [stage_140.md, stage_140.tex, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt]
+---
+# Codex review — stage 140
+
+## What the edit was supposed to do
+F1 required correcting the Mathematica transcript banner from Stage 123 to Stage 140, without changing the underlying math. F2 required turning the previously print-only Section-3 numerical values into enforced checks: `That_nat`, `That_comp`, and the fractional traction enhancement must match the notes' boxed numerics to `1e-12`. The intent was to make regressions in the `M_s` literals or the `sqrt(9 M_s/20)` conversion fail instead of silently printing changed values.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:26 | banner reports Stage 140 | Yes; stale Stage 123 would show in saved transcript | Yes; corroborates correct stage transcript identity | PASS |
+| 2 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:25 | `That_nat` matches `0.866512630228382` | Yes; changing `Ms_nat` or the `9/20` formula changes the computed value | Yes; checks the recorded numerical fixed point implied by `M_s=(20/9) That^2` | PASS |
+| 3 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:26 | `That_comp` matches `0.901484054174206` | Yes; changing `Ms_comp` or the `9/20` formula changes the computed value | Yes; checks the compensated numerical fixed point | PASS |
+| 4 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:27 | fractional enhancement matches `0.0403588161624` | Yes; depends on both computed hats and the ratio law | Yes; checks the printed gain enhancement value | PASS |
+| 5 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-60 | `That_nat` numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same numerical fixed-point deliverable as SymPy | PASS |
+| 6 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-61 | `That_comp` numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same compensated fixed-point deliverable as SymPy | PASS |
+| 7 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-62 | fractional enhancement numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same enhancement deliverable as SymPy | PASS |
+
+## Bottom line
+PASS. I checked for `X - X` construction by tracing each edited numeric check: the computed quantities come from the `M_s` literals and `sqrt(9 M_s/20)`, while the targets are separately typed note decimals, so the assertions are not tautological. Perturbing either `M_s` literal, the `9/20` factor, or the target decimal would break the corresponding check beyond the stated tolerance. The saved outputs corroborate the edits: SymPy reaches `numeric fixed-point checks PASS`, Mathematica prints the Stage 140 banner and all three new numeric `PASS:` lines, while the existing susceptibility residual remains `0`.
+tokens used
+34,182
+---
+stage: 140
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [stage_140.md, stage_140.tex, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.txt, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl, moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt]
+---
+# Codex review — stage 140
+
+## What the edit was supposed to do
+F1 required correcting the Mathematica transcript banner from Stage 123 to Stage 140, without changing the underlying math. F2 required turning the previously print-only Section-3 numerical values into enforced checks: `That_nat`, `That_comp`, and the fractional traction enhancement must match the notes' boxed numerics to `1e-12`. The intent was to make regressions in the `M_s` literals or the `sqrt(9 M_s/20)` conversion fail instead of silently printing changed values.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:26 | banner reports Stage 140 | Yes; stale Stage 123 would show in saved transcript | Yes; corroborates correct stage transcript identity | PASS |
+| 2 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:25 | `That_nat` matches `0.866512630228382` | Yes; changing `Ms_nat` or the `9/20` formula changes the computed value | Yes; checks the recorded numerical fixed point implied by `M_s=(20/9) That^2` | PASS |
+| 3 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:26 | `That_comp` matches `0.901484054174206` | Yes; changing `Ms_comp` or the `9/20` formula changes the computed value | Yes; checks the compensated numerical fixed point | PASS |
+| 4 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py:27 | fractional enhancement matches `0.0403588161624` | Yes; depends on both computed hats and the ratio law | Yes; checks the printed gain enhancement value | PASS |
+| 5 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-60 | `That_nat` numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same numerical fixed-point deliverable as SymPy | PASS |
+| 6 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-61 | `That_comp` numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same compensated fixed-point deliverable as SymPy | PASS |
+| 7 | moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.wl:55-62 | fractional enhancement numeric PASS gate | Yes; nonzero diff beyond tolerance calls `fail` and exits | Yes; same enhancement deliverable as SymPy | PASS |
+
+## Bottom line
+PASS. I checked for `X - X` construction by tracing each edited numeric check: the computed quantities come from the `M_s` literals and `sqrt(9 M_s/20)`, while the targets are separately typed note decimals, so the assertions are not tautological. Perturbing either `M_s` literal, the `9/20` factor, or the target decimal would break the corresponding check beyond the stated tolerance. The saved outputs corroborate the edits: SymPy reaches `numeric fixed-point checks PASS`, Mathematica prints the Stage 140 banner and all three new numeric `PASS:` lines, while the existing susceptibility residual remains `0`.
+
+---
+codex_session_id: 019e7124-a93b-7642-a06e-f804a27026ea

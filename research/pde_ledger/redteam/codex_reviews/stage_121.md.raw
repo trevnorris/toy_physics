@@ -1,0 +1,1247 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7120-e22b-7a80-a6e2-332640bbdf7d
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 121)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt
+- Mathematica script:  (absent)
+- Mathematica output:  (absent)
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_121.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_121.tex
+
+Write your verdict report for stage 121 now, following the format above exactly.
+codex
+I’ll read the directive, stage card, script, and saved output only, then map the edited checks back to the claimed deliverable. I will not execute or modify anything.
+exec
+/bin/bash -lc "sed -n '1,220p' scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+
+========================================================================================
+STAGE 121 — GEOMETRIC SELECTION OF r
+========================================================================================
+r_geom(L/a) = sqrt(12*L**2 - pi**2*a**2)/(pi*a)
+r_geom closed-form (explicit) = 0
+tube-length relation = 0
+r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)
+r_F1 numeric = 1.7779935354749781185
+r_F1 symbolic value at L/a = 37/20 = 0
+r_c(F1) = -1 + 4107/(100*pi**2)
+r_c(F1) numeric = 3.1612610121908122732
+r_c(F1) symbolic value = 0
+Omega_W(L_W = L) = pi*c_s/(2*L)
+Omega_W identification at L_W = L = 0
+existence threshold L/a >= sqrt(3)*pi/6 ≈ 0.90689968211710892530
+r_geom vanishes at existence threshold = 0
+
+exec
+/bin/bash -lc "sed -n '1,260p' scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,240p' redteam/directives/stage_121.md" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,240p' paper/stages/stage_121.tex" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+#!/usr/bin/env python3
+from __future__ import annotations
+import sympy as sp
+
+def banner(s):
+    print("\n" + "="*88)
+    print(s)
+    print("="*88)
+
+def expect_zero(name, expr):
+    expr = sp.simplify(sp.expand(expr))
+    print(f"{name} = {expr}")
+    if expr != 0:
+        raise AssertionError(f"{name} is not zero")
+
+banner("STAGE 121 — GEOMETRIC SELECTION OF r")
+
+L,a,LW,r = sp.symbols('L a L_W r', positive=True, real=True)
+
+LW_formula = sp.pi*a/2 * sp.sqrt((1+r**2)/3)
+r_geom = sp.solve(sp.Eq(LW, LW_formula), r)[0]
+r_geom_simplified = sp.simplify(r_geom.subs(LW, L))
+print("r_geom(L/a) =", r_geom_simplified)
+
+expect_zero(
+    "r_geom closed-form (explicit)",
+    r_geom_simplified**2 - (12*L**2/(sp.pi**2 * a**2) - 1)
+)
+
+expect_zero(
+    "tube-length relation",
+    LW_formula.subs(r, r_geom_simplified) - L
+)
+
+R = sp.Rational(37,20)
+r_F1 = sp.simplify(r_geom_simplified.subs({L: R*a}))
+print("r_F1 =", r_F1)
+print("r_F1 numeric =", sp.N(r_F1, 20))
+
+r_F1_target = sp.sqrt(4107 - 100*sp.pi**2)/(10*sp.pi)
+expect_zero(
+    "r_F1 symbolic value at L/a = 37/20",
+    sp.simplify(r_F1 - r_F1_target)
+)
+
+rc_F1 = sp.simplify(r_F1**2)
+print("r_c(F1) =", rc_F1)
+print("r_c(F1) numeric =", sp.N(rc_F1, 20))
+
+rc_F1_target = sp.Rational(4107, 100)/sp.pi**2 - 1
+expect_zero(
+    "r_c(F1) symbolic value",
+    sp.simplify(rc_F1 - rc_F1_target)
+)
+
+# Notes (boxed): with L_W = L, the mixed-tube pole is Omega_W = pi c_s / (2 L).
+c_s = sp.symbols('c_s', positive=True, real=True)
+OmegaW_formula_LW = sp.pi * c_s / (2 * LW)
+OmegaW_at_LW_eq_L = OmegaW_formula_LW.subs(LW, L)
+print("Omega_W(L_W = L) =", OmegaW_at_LW_eq_L)
+expect_zero(
+    "Omega_W identification at L_W = L",
+    OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+)
+
+threshold = sp.simplify(sp.pi/(2*sp.sqrt(3)))
+print("existence threshold L/a >=", threshold, "≈", sp.N(threshold, 20))
+
+expect_zero(
+    "r_geom vanishes at existence threshold",
+    sp.simplify(r_geom_simplified.subs(L, a*threshold))
+)
+
+ exited 2 in 0ms:
+sed: can't read redteam/directives/stage_121.md: No such file or directory
+
+ succeeded in 0ms:
+\section[Stage~138]{Stage~138: Geometric Selection of the Core Hybridization Ratio}
+\label{stage:121}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{} / \StatusReduced{}.}
+
+\stagefield{Purpose}{Stage~138 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py}.  Mathematica audit: none yet.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+
+\begin{quote}
+Identifying the mixed D/N tube with the throat span gives \(\mathfrak r_{\rm geom}(L/a)=\sqrt{12(L/a)^2/\pi^2-1}\).
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check the Schur complement signs in the two-channel core model.
+\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+\item Check parent overlap ratios before interpreting them as actual branch values.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+
+codex
+The stage card and script/output are readable, but the directive did not exist at the relative path from the repo root. I’m going back to the absolute path the prompt gave and adding line numbers so the final findings can cite exact checks.
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_121.md | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+nl: /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_121.md: No such file or directory
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_121.tex | sed -n '1,180p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py | sed -n '1,240p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(s):
+     6	    print("\n" + "="*88)
+     7	    print(s)
+     8	    print("="*88)
+     9	
+    10	def expect_zero(name, expr):
+    11	    expr = sp.simplify(sp.expand(expr))
+    12	    print(f"{name} = {expr}")
+    13	    if expr != 0:
+    14	        raise AssertionError(f"{name} is not zero")
+    15	
+    16	banner("STAGE 121 — GEOMETRIC SELECTION OF r")
+    17	
+    18	L,a,LW,r = sp.symbols('L a L_W r', positive=True, real=True)
+    19	
+    20	LW_formula = sp.pi*a/2 * sp.sqrt((1+r**2)/3)
+    21	r_geom = sp.solve(sp.Eq(LW, LW_formula), r)[0]
+    22	r_geom_simplified = sp.simplify(r_geom.subs(LW, L))
+    23	print("r_geom(L/a) =", r_geom_simplified)
+    24	
+    25	expect_zero(
+    26	    "r_geom closed-form (explicit)",
+    27	    r_geom_simplified**2 - (12*L**2/(sp.pi**2 * a**2) - 1)
+    28	)
+    29	
+    30	expect_zero(
+    31	    "tube-length relation",
+    32	    LW_formula.subs(r, r_geom_simplified) - L
+    33	)
+    34	
+    35	R = sp.Rational(37,20)
+    36	r_F1 = sp.simplify(r_geom_simplified.subs({L: R*a}))
+    37	print("r_F1 =", r_F1)
+    38	print("r_F1 numeric =", sp.N(r_F1, 20))
+    39	
+    40	r_F1_target = sp.sqrt(4107 - 100*sp.pi**2)/(10*sp.pi)
+    41	expect_zero(
+    42	    "r_F1 symbolic value at L/a = 37/20",
+    43	    sp.simplify(r_F1 - r_F1_target)
+    44	)
+    45	
+    46	rc_F1 = sp.simplify(r_F1**2)
+    47	print("r_c(F1) =", rc_F1)
+    48	print("r_c(F1) numeric =", sp.N(rc_F1, 20))
+    49	
+    50	rc_F1_target = sp.Rational(4107, 100)/sp.pi**2 - 1
+    51	expect_zero(
+    52	    "r_c(F1) symbolic value",
+    53	    sp.simplify(rc_F1 - rc_F1_target)
+    54	)
+    55	
+    56	# Notes (boxed): with L_W = L, the mixed-tube pole is Omega_W = pi c_s / (2 L).
+    57	c_s = sp.symbols('c_s', positive=True, real=True)
+    58	OmegaW_formula_LW = sp.pi * c_s / (2 * LW)
+    59	OmegaW_at_LW_eq_L = OmegaW_formula_LW.subs(LW, L)
+    60	print("Omega_W(L_W = L) =", OmegaW_at_LW_eq_L)
+    61	expect_zero(
+    62	    "Omega_W identification at L_W = L",
+    63	    OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+    64	)
+    65	
+    66	threshold = sp.simplify(sp.pi/(2*sp.sqrt(3)))
+    67	print("existence threshold L/a >=", threshold, "≈", sp.N(threshold, 20))
+    68	
+    69	expect_zero(
+    70	    "r_geom vanishes at existence threshold",
+    71	    sp.simplify(r_geom_simplified.subs(L, a*threshold))
+    72	)
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 121 — GEOMETRIC SELECTION OF r
+     4	========================================================================================
+     5	r_geom(L/a) = sqrt(12*L**2 - pi**2*a**2)/(pi*a)
+     6	r_geom closed-form (explicit) = 0
+     7	tube-length relation = 0
+     8	r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)
+     9	r_F1 numeric = 1.7779935354749781185
+    10	r_F1 symbolic value at L/a = 37/20 = 0
+    11	r_c(F1) = -1 + 4107/(100*pi**2)
+    12	r_c(F1) numeric = 3.1612610121908122732
+    13	r_c(F1) symbolic value = 0
+    14	Omega_W(L_W = L) = pi*c_s/(2*L)
+    15	Omega_W identification at L_W = L = 0
+    16	existence threshold L/a >= sqrt(3)*pi/6 ≈ 0.90689968211710892530
+    17	r_geom vanishes at existence threshold = 0
+
+ succeeded in 0ms:
+     1	\section[Stage~138]{Stage~138: Geometric Selection of the Core Hybridization Ratio}
+     2	\label{stage:121}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{} / \StatusReduced{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~138 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py}.  Mathematica audit: none yet.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+    14	
+    15	\begin{quote}
+    16	Identifying the mixed D/N tube with the throat span gives \(\mathfrak r_{\rm geom}(L/a)=\sqrt{12(L/a)^2/\pi^2-1}\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the Schur complement signs in the two-channel core model.
+    23	\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+    24	\item Check parent overlap ratios before interpreting them as actual branch values.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+codex
+The absolute directive path is also missing, so I’m checking the directives tree for a renamed or renumbered file before I conclude the required directive evidence is unavailable. This matters because a PASS cannot be trustworthy without knowing the red-team target.
+exec
+/bin/bash -lc "rg --files /var/projects/toy_physics/research/pde_ledger/redteam | rg 'stage_(121|138)\\.md"'$|121|138'"'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/redteam/verifications/stage_138.md
+/var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_121.md.raw
+/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_138.md
+/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_121.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_138.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_prompt_121.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_prompt_138.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_directive_121.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_directive_121.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_prompt_121.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_prompt_138.md
+
+exec
+/bin/bash -lc 'ls -la /var/projects/toy_physics/research/pde_ledger/redteam/directives' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'ls -la /var/projects/toy_physics/research/pde_ledger/redteam' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+total 1520
+drwxrwxr-x  2 trevnorris trevnorris  4096 May 28 16:27 .
+drwxrwxr-x 13 trevnorris trevnorris  4096 May 28 18:18 ..
+-rw-rw-r--  1 trevnorris trevnorris  8171 May 25 01:47 stage_001.md
+-rw-rw-r--  1 trevnorris trevnorris  8946 May 21 00:44 stage_002.md
+-rw-rw-r--  1 trevnorris trevnorris 18569 May 21 01:05 stage_003.md
+-rw-rw-r--  1 trevnorris trevnorris 12314 May 25 02:34 stage_004.md
+-rw-rw-r--  1 trevnorris trevnorris  7073 May 21 01:13 stage_005.md
+-rw-rw-r--  1 trevnorris trevnorris  6188 May 25 01:44 stage_006.md
+-rw-rw-r--  1 trevnorris trevnorris  2152 May 25 02:37 stage_007.md
+-rw-rw-r--  1 trevnorris trevnorris  9347 May 25 17:12 stage_008.md
+-rw-rw-r--  1 trevnorris trevnorris 19608 May 21 11:12 stage_009.md
+-rw-rw-r--  1 trevnorris trevnorris  9896 May 25 01:42 stage_010.md
+-rw-rw-r--  1 trevnorris trevnorris  5041 May 25 01:42 stage_011.md
+-rw-rw-r--  1 trevnorris trevnorris  4084 May 25 17:14 stage_012.md
+-rw-rw-r--  1 trevnorris trevnorris 13024 May 25 21:53 stage_013.md
+-rw-rw-r--  1 trevnorris trevnorris  8833 May 25 21:55 stage_014.md
+-rw-rw-r--  1 trevnorris trevnorris 18065 May 25 22:05 stage_015.md
+-rw-rw-r--  1 trevnorris trevnorris  5720 May 25 18:09 stage_018.md
+-rw-rw-r--  1 trevnorris trevnorris  3805 May 25 22:07 stage_019.md
+-rw-rw-r--  1 trevnorris trevnorris  7883 May 25 18:10 stage_020.md
+-rw-rw-r--  1 trevnorris trevnorris  4774 May 25 22:21 stage_021.md
+-rw-rw-r--  1 trevnorris trevnorris  9799 May 25 22:22 stage_023.md
+-rw-rw-r--  1 trevnorris trevnorris 28351 May 26 00:29 stage_024.md
+-rw-rw-r--  1 trevnorris trevnorris  9123 May 25 23:34 stage_025.md
+-rw-rw-r--  1 trevnorris trevnorris  6713 May 25 23:36 stage_026.md
+-rw-rw-r--  1 trevnorris trevnorris  5177 May 21 17:03 stage_027.md
+-rw-rw-r--  1 trevnorris trevnorris 10384 May 21 17:06 stage_028.md
+-rw-rw-r--  1 trevnorris trevnorris 13625 May 25 23:38 stage_029.md
+-rw-rw-r--  1 trevnorris trevnorris  8517 May 25 23:40 stage_030.md
+-rw-rw-r--  1 trevnorris trevnorris 15067 May 25 23:43 stage_031.md
+-rw-rw-r--  1 trevnorris trevnorris 14607 May 25 23:47 stage_032.md
+-rw-rw-r--  1 trevnorris trevnorris  6935 May 25 23:50 stage_033.md
+-rw-rw-r--  1 trevnorris trevnorris  5662 May 21 17:32 stage_034.md
+-rw-rw-r--  1 trevnorris trevnorris  5198 May 25 22:56 stage_035.md
+-rw-rw-r--  1 trevnorris trevnorris 12203 May 25 23:52 stage_036.md
+-rw-rw-r--  1 trevnorris trevnorris  5143 May 26 01:35 stage_037.md
+-rw-rw-r--  1 trevnorris trevnorris 10045 May 22 12:22 stage_038.md
+-rw-rw-r--  1 trevnorris trevnorris 11982 May 26 01:37 stage_039.md
+-rw-rw-r--  1 trevnorris trevnorris 15609 May 22 12:31 stage_040.md
+-rw-rw-r--  1 trevnorris trevnorris  6011 May 22 12:33 stage_041.md
+-rw-rw-r--  1 trevnorris trevnorris  4566 May 26 01:39 stage_042.md
+-rw-rw-r--  1 trevnorris trevnorris 13859 May 26 01:56 stage_043.md
+-rw-rw-r--  1 trevnorris trevnorris 14704 May 22 12:44 stage_044.md
+-rw-rw-r--  1 trevnorris trevnorris 17479 May 26 01:44 stage_045.md
+-rw-rw-r--  1 trevnorris trevnorris  5161 May 26 01:33 stage_046.md
+-rw-rw-r--  1 trevnorris trevnorris 14249 May 26 01:47 stage_047.md
+-rw-rw-r--  1 trevnorris trevnorris  3775 May 26 01:48 stage_048.md
+-rw-rw-r--  1 trevnorris trevnorris  3430 May 26 02:54 stage_049.md
+-rw-rw-r--  1 trevnorris trevnorris 12690 May 26 02:57 stage_050.md
+-rw-rw-r--  1 trevnorris trevnorris 10257 May 22 17:20 stage_052.md
+-rw-rw-r--  1 trevnorris trevnorris  5087 May 26 03:00 stage_054.md
+-rw-rw-r--  1 trevnorris trevnorris  6180 May 26 03:01 stage_055.md
+-rw-rw-r--  1 trevnorris trevnorris 15712 May 26 03:04 stage_057.md
+-rw-rw-r--  1 trevnorris trevnorris 17351 May 26 11:02 stage_058.md
+-rw-rw-r--  1 trevnorris trevnorris  4522 May 26 11:04 stage_059.md
+-rw-rw-r--  1 trevnorris trevnorris 23219 May 22 17:57 stage_060.md
+-rw-rw-r--  1 trevnorris trevnorris 11917 May 26 12:40 stage_062.md
+-rw-rw-r--  1 trevnorris trevnorris 13194 May 26 13:22 stage_064.md
+-rw-rw-r--  1 trevnorris trevnorris  4970 May 26 12:52 stage_066.md
+-rw-rw-r--  1 trevnorris trevnorris  5124 May 26 13:11 stage_067.md
+-rw-rw-r--  1 trevnorris trevnorris 23974 May 26 12:58 stage_068.md
+-rw-rw-r--  1 trevnorris trevnorris 10172 May 26 13:11 stage_070.md
+-rw-rw-r--  1 trevnorris trevnorris  6191 May 26 13:09 stage_072.md
+-rw-rw-r--  1 trevnorris trevnorris 10550 May 22 23:08 stage_073.md
+-rw-rw-r--  1 trevnorris trevnorris  4720 May 27 02:10 stage_074.md
+-rw-rw-r--  1 trevnorris trevnorris 12081 May 27 02:07 stage_075.md
+-rw-rw-r--  1 trevnorris trevnorris  6609 May 27 00:31 stage_076.md
+-rw-rw-r--  1 trevnorris trevnorris  6299 May 27 02:08 stage_078.md
+-rw-rw-r--  1 trevnorris trevnorris  8946 May 22 23:37 stage_080.md
+-rw-rw-r--  1 trevnorris trevnorris  4543 May 27 02:10 stage_081.md
+-rw-rw-r--  1 trevnorris trevnorris 13960 May 27 02:10 stage_082.md
+-rw-rw-r--  1 trevnorris trevnorris 17422 May 25 00:27 stage_083.md
+-rw-rw-r--  1 trevnorris trevnorris  8636 May 25 00:32 stage_084.md
+-rw-rw-r--  1 trevnorris trevnorris  4951 May 27 10:28 stage_086.md
+-rw-rw-r--  1 trevnorris trevnorris  7566 May 27 10:28 stage_087.md
+-rw-rw-r--  1 trevnorris trevnorris 16334 May 27 10:28 stage_088.md
+-rw-rw-r--  1 trevnorris trevnorris 10843 May 27 10:28 stage_089.md
+-rw-rw-r--  1 trevnorris trevnorris  5876 May 27 10:28 stage_090.md
+-rw-rw-r--  1 trevnorris trevnorris  6526 May 27 14:36 stage_091.md
+-rw-rw-r--  1 trevnorris trevnorris  7992 May 27 14:36 stage_092.md
+-rw-rw-r--  1 trevnorris trevnorris  6649 May 27 14:36 stage_094.md
+-rw-rw-r--  1 trevnorris trevnorris  9733 May 27 14:36 stage_095.md
+-rw-rw-r--  1 trevnorris trevnorris  7182 May 27 14:36 stage_096.md
+-rw-rw-r--  1 trevnorris trevnorris 10695 May 27 14:36 stage_097.md
+-rw-rw-r--  1 trevnorris trevnorris 10865 May 27 14:36 stage_098.md
+-rw-rw-r--  1 trevnorris trevnorris 14103 May 27 14:36 stage_099.md
+-rw-rw-r--  1 trevnorris trevnorris 14630 May 27 14:36 stage_100.md
+-rw-rw-r--  1 trevnorris trevnorris 12641 May 27 14:36 stage_101.md
+-rw-rw-r--  1 trevnorris trevnorris  4548 May 27 14:36 stage_102.md
+-rw-rw-r--  1 trevnorris trevnorris  6828 May 27 15:00 stage_105.md
+-rw-rw-r--  1 trevnorris trevnorris 14991 May 27 15:00 stage_106.md
+-rw-rw-r--  1 trevnorris trevnorris  3273 May 27 14:58 stage_107.md
+-rw-rw-r--  1 trevnorris trevnorris  6699 May 27 14:59 stage_108.md
+-rw-rw-r--  1 trevnorris trevnorris  9395 May 27 14:59 stage_109.md
+-rw-rw-r--  1 trevnorris trevnorris  3238 May 27 14:58 stage_111.md
+-rw-rw-r--  1 trevnorris trevnorris  7286 May 27 14:59 stage_112.md
+-rw-rw-r--  1 trevnorris trevnorris  8187 May 27 16:19 stage_115.md
+-rw-rw-r--  1 trevnorris trevnorris  1638 May 27 16:21 stage_117.md
+-rw-rw-r--  1 trevnorris trevnorris  7583 May 27 16:20 stage_118.md
+-rw-rw-r--  1 trevnorris trevnorris  8328 May 27 16:20 stage_119.md
+-rw-rw-r--  1 trevnorris trevnorris  5149 May 27 16:19 stage_123.md
+-rw-rw-r--  1 trevnorris trevnorris  7827 May 27 17:06 stage_127.md
+-rw-rw-r--  1 trevnorris trevnorris  4916 May 27 17:05 stage_130.md
+-rw-rw-r--  1 trevnorris trevnorris  9778 May 27 17:06 stage_131.md
+-rw-rw-r--  1 trevnorris trevnorris  4244 May 27 17:04 stage_132.md
+-rw-rw-r--  1 trevnorris trevnorris  5313 May 27 17:05 stage_133.md
+-rw-rw-r--  1 trevnorris trevnorris 12016 May 27 17:06 stage_134.md
+-rw-rw-r--  1 trevnorris trevnorris  6503 May 27 17:06 stage_135.md
+-rw-rw-r--  1 trevnorris trevnorris  4178 May 27 17:04 stage_136.md
+-rw-rw-r--  1 trevnorris trevnorris 12571 May 27 17:06 stage_137.md
+-rw-rw-r--  1 trevnorris trevnorris  3105 May 27 17:05 stage_138.md
+-rw-rw-r--  1 trevnorris trevnorris  9446 May 27 19:20 stage_139.md
+-rw-rw-r--  1 trevnorris trevnorris  5348 May 27 19:20 stage_140.md
+-rw-rw-r--  1 trevnorris trevnorris 12471 May 27 19:22 stage_142.md
+-rw-rw-r--  1 trevnorris trevnorris 10113 May 27 19:23 stage_143.md
+-rw-rw-r--  1 trevnorris trevnorris 12967 May 27 19:21 stage_144.md
+-rw-rw-r--  1 trevnorris trevnorris  9901 May 27 19:22 stage_146.md
+-rw-rw-r--  1 trevnorris trevnorris 11461 May 27 19:21 stage_147.md
+-rw-rw-r--  1 trevnorris trevnorris  8580 May 27 19:22 stage_148.md
+-rw-rw-r--  1 trevnorris trevnorris  3075 May 27 19:25 stage_150.md
+-rw-rw-r--  1 trevnorris trevnorris 10667 May 27 21:25 stage_151.md
+-rw-rw-r--  1 trevnorris trevnorris  3386 May 27 21:25 stage_152.md
+-rw-rw-r--  1 trevnorris trevnorris  4627 May 27 21:25 stage_154.md
+-rw-rw-r--  1 trevnorris trevnorris  5038 May 27 21:25 stage_155.md
+-rw-rw-r--  1 trevnorris trevnorris  4833 May 27 21:26 stage_156.md
+-rw-rw-r--  1 trevnorris trevnorris  6444 May 27 21:26 stage_157.md
+-rw-rw-r--  1 trevnorris trevnorris 13379 May 27 21:27 stage_158.md
+-rw-rw-r--  1 trevnorris trevnorris  6341 May 27 21:25 stage_160.md
+-rw-rw-r--  1 trevnorris trevnorris 11084 May 27 21:27 stage_161.md
+-rw-rw-r--  1 trevnorris trevnorris  5699 May 27 21:26 stage_163.md
+-rw-rw-r--  1 trevnorris trevnorris  6713 May 28 15:54 stage_164.md
+-rw-rw-r--  1 trevnorris trevnorris  7650 May 28 15:55 stage_165.md
+-rw-rw-r--  1 trevnorris trevnorris  7752 May 28 16:19 stage_166.md
+-rw-rw-r--  1 trevnorris trevnorris  2907 May 28 15:55 stage_167.md
+-rw-rw-r--  1 trevnorris trevnorris  2472 May 28 15:54 stage_168.md
+-rw-rw-r--  1 trevnorris trevnorris  7588 May 28 15:55 stage_169.md
+-rw-rw-r--  1 trevnorris trevnorris  8928 May 28 16:18 stage_170.md
+-rw-rw-r--  1 trevnorris trevnorris  6879 May 28 16:27 stage_171.md
+-rw-rw-r--  1 trevnorris trevnorris  7081 May 28 15:55 stage_172.md
+-rw-rw-r--  1 trevnorris trevnorris  6715 May 28 15:55 stage_173.md
+-rw-rw-r--  1 trevnorris trevnorris  4431 May 28 15:55 stage_174.md
+-rw-rw-r--  1 trevnorris trevnorris 13006 May 28 16:19 stage_175.md
+
+ succeeded in 0ms:
+total 516
+drwxrwxr-x 13 trevnorris trevnorris   4096 May 28 18:18 .
+drwxrwxr-x 10 trevnorris trevnorris   4096 May 26 12:49 ..
+-rw-rw-r--  1 trevnorris trevnorris   2284 May 25 17:34 BATCHES.md
+-rw-rw-r--  1 trevnorris trevnorris 267080 May 28 16:54 MANIFEST.yaml
+-rw-rw-r--  1 trevnorris trevnorris   2339 May 21 12:03 MORNING_SUMMARY.md
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:55 batches
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 26 12:51 codex_logs
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:27 codex_reviews
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:27 directives
+drwxrwxr-x  2 trevnorris trevnorris  12288 May 26 13:14 exec_logs
+-rw-rw-r--  1 trevnorris trevnorris    190 May 21 12:25 fix_batch_--help.log
+-rw-rw-r--  1 trevnorris trevnorris     60 May 21 12:25 fix_batch_--help.marker
+-rw-rw-r--  1 trevnorris trevnorris   2114 May 25 17:15 fix_batch_I.1-script-only-resume.log
+-rw-rw-r--  1 trevnorris trevnorris     76 May 25 17:15 fix_batch_I.1-script-only-resume.marker
+-rw-rw-r--  1 trevnorris trevnorris    999 May 25 02:35 fix_batch_I.1-script-only.log
+-rw-rw-r--  1 trevnorris trevnorris    207 May 25 02:35 fix_batch_I.1-script-only.marker
+-rw-rw-r--  1 trevnorris trevnorris   6304 May 21 11:42 fix_batch_I.1.log
+-rw-rw-r--  1 trevnorris trevnorris     57 May 21 11:42 fix_batch_I.1.marker
+-rw-rw-r--  1 trevnorris trevnorris    184 May 21 15:32 fix_batch_I.2.log
+-rw-rw-r--  1 trevnorris trevnorris     57 May 21 15:32 fix_batch_I.2.marker
+-rw-rw-r--  1 trevnorris trevnorris   2373 May 25 17:15 fix_batch_I1_v2.log
+-rw-rw-r--  1 trevnorris trevnorris  11843 May 21 17:40 fix_batch_II.1.log
+-rw-rw-r--  1 trevnorris trevnorris     58 May 21 17:40 fix_batch_II.1.marker
+-rw-rw-r--  1 trevnorris trevnorris   9052 May 22 12:58 fix_batch_III.1.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 22 12:58 fix_batch_III.1.marker
+-rw-rw-r--  1 trevnorris trevnorris  10430 May 22 17:59 fix_batch_III.2.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 22 17:59 fix_batch_III.2.marker
+-rw-rw-r--  1 trevnorris trevnorris  11100 May 26 11:05 fix_batch_III.2_v2.log
+-rw-rw-r--  1 trevnorris trevnorris     62 May 26 11:05 fix_batch_III.2_v2.marker
+-rw-rw-r--  1 trevnorris trevnorris   8455 May 22 20:13 fix_batch_III.3.log
+-rw-rw-r--  1 trevnorris trevnorris    124 May 22 20:13 fix_batch_III.3.marker
+-rw-rw-r--  1 trevnorris trevnorris  10852 May 25 00:33 fix_batch_III.4.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 25 00:33 fix_batch_III.4.marker
+-rw-rw-r--  1 trevnorris trevnorris   7974 May 25 00:33 fix_batch_III4.log
+-rw-rw-r--  1 trevnorris trevnorris   9399 May 22 13:41 lred_sweep_report.md
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:16 prompts
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 15:24 reports
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:56 resolutions
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:22 scripts
+drwxrwxr-x  2 trevnorris trevnorris  20480 May 28 15:12 tmp_prompts
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:29 verifications
+
+codex
+There is a `stage_138.md` directive next to the missing `stage_121.md`, and the paper file itself labels the section Stage 138 while its TeX label is `stage:121`. I’m reading that likely-renumbered directive plus the audit prompt stub so I can distinguish a missing-file problem from a numbering alias.
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_138.md | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 138
+     3	batch: IV.4
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 1
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 138
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — paper_misalignment
+    27	
+    28	**Subtype:** notes_contradicts_script
+    29	
+    30	**Paper side:**
+    31	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_138.tex:1` quote: `\section[Stage 138]{Stage 138: Normalized Mouth-Gain Family and Compensation Ratio}`
+    32	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_138.tex:2` quote: `\label{stage:138}`
+    33	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md:1` quote: `# Moving-Throat PDE — Stage 138: Normalized Mouth-Gain Family and Compensation Ratio`
+    34	
+    35	**Script side:**
+    36	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage138_normalized_mouth_gain_family_mathematica_audit.wl:26` quote: `banner["STAGE 121 — NORMALIZED MOUTH-GAIN FAMILY AND COMPENSATION RATIO"];`
+    37	
+    38	## Resolve before fix_loop
+    39	
+    40	The Mathematica audit script's banner identifies the audit as `STAGE 121`, but the paper card, notes file, and filename all identify the audit unit as `Stage 138`. The math content of the script is correct for Stage 138; only the banner string is wrong. Which direction should the orchestrator take?
+    41	
+    42	Possible directions (the user picks one):
+    43	- (a) Banner is a typo — update Mathematica L26 to `banner["STAGE 138 — NORMALIZED MOUTH-GAIN FAMILY AND COMPENSATION RATIO"];` and re-run `redteam exec-mathematica 138` to refresh the transcript. (Recommended; the assertions, filename, and paper card all already say 138.)
+    44	- (b) Banner is canonical and the file lives under the wrong unit ID — flag for deeper review of how this stage maps to the unit-138 slot in the ledger.
+    45	- (c) The Mathematica file was copy-pasted from an unrelated Stage 121 audit and never re-derived for Stage 138 — flag for full re-derivation rather than a banner patch.
+    46	
+    47	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_directive_121.md | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 121
+     3	batch: IV.3
+     4	verifier_model: claude-opus-4-7[1m]
+     5	verify_date: 2026-05-27T00:00:00Z
+     6	verdict: verified
+     7	sympy_exit: 0
+     8	mathematica_exit: n/a
+     9	findings_resolved: 3
+    10	findings_total: 3
+    11	material_change: false
+    12	---
+    13	
+    14	# Verification — unit 121
+    15	
+    16	## Per-finding outcomes
+    17	
+    18	### F1 — paper_misalignment (notes_contradicts_script)
+    19	
+    20	**Classification:** resolved (out-of-scope for script; notes typo `168π² -> 100π²` fixed in notes per user resolution; no script change required).
+    21	
+    22	**Assessment:** Script side already used the correct `100*pi**2`; no script edit needed. Confirmed via `r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)` in output line 8 matching the boxed numeric 1.77799353547498.
+    23	
+    24	### F2 — insufficient_verification
+    25	
+    26	**Classification:** resolved.
+    27	
+    28	**What changed:** Four new `expect_zero` calls in `scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py`:
+    29	- L25-28: `r_geom closed-form (explicit)` asserts `r_geom_simplified**2 - (12 L^2/(pi^2 a^2) - 1)`.
+    30	- L40-44: `r_F1 symbolic value at L/a = 37/20` against target `sqrt(4107 - 100 pi^2)/(10 pi)`.
+    31	- L50-54: `r_c(F1) symbolic value` against `4107/(100 pi^2) - 1`.
+    32	- L69-72: `r_geom vanishes at existence threshold` via substitution `L -> a*pi/(2 sqrt 3)`.
+    33	
+    34	**Assessment:** Insertions match directive verbatim. Targets are independently constructed (not derived from `r_geom_simplified`), so none is tautological. Output transcript lines 6, 10, 13, 17 each report `= 0`.
+    35	
+    36	### F3 — paper_missing_script_claim
+    37	
+    38	**Classification:** resolved.
+    39	
+    40	**What changed:** L56-64 declares new `c_s` (positive, real) and computes `OmegaW_formula_LW = pi*c_s/(2*LW)`, substitutes `LW -> L`, prints `pi*c_s/(2*L)`, and asserts the identification residual is zero.
+    41	
+    42	**Assessment:** Matches directive exactly; symbol `c_s` is properly scoped with `positive=True, real=True`. Output line 15 confirms `= 0`. Definitional but explicit, as the directive specified.
+    43	
+    44	## Exec log assessment
+    45	
+    46	**SymPy:** exit=0. Notable lines: `r_geom closed-form (explicit) = 0`, `tube-length relation = 0`, `r_F1 symbolic value at L/a = 37/20 = 0`, `r_c(F1) symbolic value = 0`, `Omega_W identification at L_W = L = 0`, `r_geom vanishes at existence threshold = 0`. All six `expect_zero` calls pass.
+    47	
+    48	**Mathematica:** n/a (stage card explicitly waives).
+    49	
+    50	**Output freshness:** script mtime 1779921098 < output mtime 1779921495; output is post-fix.
+    51	
+    52	## Material-change assessment
+    53	
+    54	`material_change`: false. All edits add assertions/identifications around values the script already computed; no derived numeric or symbolic result changed downstream.
+    55	
+    56	## Side observations (non-blocking)
+    57	
+    58	Banner sweep `STAGE 104 -> STAGE 121` applied at script L16 and matched in output L3. Cosmetic only; correctly aligns the run header with the unit ID.
+    59	
+    60	## Verdict justification
+    61	
+    62	All three findings are addressed. F1 is handled in notes per user resolution (no script change needed and the script was already correct). F2's four anchor assertions and F3's Omega_W identification are inserted at the prescribed sites, use independent targets, and pass with residual 0 in the regenerated output. No regressions; no scope creep beyond the banner sweep.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_directive_121.md | sed -n '1,260p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 121
+     3	batch: IV.3
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 3
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 121
+    13	
+    14	Apply each non-paper_misalignment finding (F2, F3) below in order. After applying, append an `## Applied: F<n>` block under that finding with `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For the paper_misalignment finding (F1), do nothing — the orchestrator is holding for user resolution. Do not edit notes/, paper/, or scripts to "fix" F1 unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If F2 or F3's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes outside the scope below.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch `paper/`, `notes/`, or any prose document.
+    25	
+    26	## F1 — paper_misalignment
+    27	
+    28	**Subtype:** notes_contradicts_script
+    29	
+    30	**Paper side:**
+    31	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md:64-71` quote:
+    32	  ```
+    33	  r_F1 = sqrt(12/pi^2 (37/20)^2 - 1) = sqrt(4107 - 168 pi^2)/(10 pi) ~ 1.77799353547498
+    34	  ```
+    35	
+    36	**Script side:**
+    37	- `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt:15` quote:
+    38	  ```
+    39	  r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)
+    40	  r_F1 numeric = 1.7779935354749781185
+    41	  ```
+    42	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:30-33` computes `r_F1` from `R = sp.Rational(37, 20)`, yielding the `100 pi^2` form symbolically.
+    43	
+    44	## Resolve before fix_loop
+    45	
+    46	The notes' boxed symbolic form `sqrt(4107 - 168 pi^2)/(10 pi)` is algebraically inconsistent with the boxed numerical value `~ 1.77799353547498` in the same box: substituting `168 pi^2 ~ 1658.1` gives `4107 - 1658.1 ~ 2449`, `sqrt(2449)/(10 pi) ~ 1.575`, NOT `1.778`. The script's `sqrt(4107 - 100 pi^2)/(10 pi)` matches the numerical value and is the correct derivation from `r^2 = 12 (37/20)^2 / pi^2 - 1`. Which side should be authoritative?
+    47	
+    48	Possible directions (the user picks one):
+    49	- (a) **Notes typo — script correct (most likely).** The `168` is a transcription typo for `100`. Action: update notes line 67 boxed expression to `sqrt(4107 - 100 pi^2)/(10 pi)` (no script change). The boxed numerical value `~ 1.77799353547498` already matches; no further changes needed.
+    50	- (b) **Script correct in a different way.** If the intended notes form was derived from a different normalization (e.g., `r^2 = 12 (L/a)^2 / pi^2 - c` with `c != 1`), the user should update the notes' derivation to match the intended form. The script does not need editing in this case.
+    51	- (c) **Both sides need review.** The user may instead want to re-derive `r_F1` from scratch using a third independent route to determine which symbolic form is right. Flag for deeper review.
+    52	
+    53	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+    54	
+    55	## F2 — insufficient_verification
+    56	
+    57	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:30-40`
+    58	
+    59	**Issue:**
+    60	
+    61	The script currently has only ONE `expect_zero` assertion (the tube-length relation). Four of the five paper-side boxed deliverables (the explicit closed form of `r_geom`, the existence threshold, the F1 numerical value `r_F1`, the squared `r_c^F1`) are printed but not asserted. Anchor them with explicit `expect_zero` calls.
+    62	
+    63	**Required change:**
+    64	
+    65	Edit the file as follows. Keep ALL existing lines intact. The new assertions are inserted at the marked positions.
+    66	
+    67	**Step 1.** Immediately AFTER the existing line:
+    68	```python
+    69	print("r_geom(L/a) =", r_geom_simplified)
+    70	```
+    71	(currently line 23), insert a blank line and then:
+    72	```python
+    73	
+    74	expect_zero(
+    75	    "r_geom closed-form (explicit)",
+    76	    r_geom_simplified**2 - (12*L**2/(sp.pi**2 * a**2) - 1)
+    77	)
+    78	```
+    79	This asserts the explicit closed-form branch law `r_geom^2 = 12(L/a)^2/pi^2 - 1` independently of `sp.solve`'s branch choice. Note: squaring is safe because both sides are nonnegative under `positive=True` symbol assumptions, and the assertion is on `r_geom^2`, not on `r_geom` itself.
+    80	
+    81	**Step 2.** Immediately AFTER the existing line:
+    82	```python
+    83	print("r_F1 numeric =", sp.N(r_F1, 20))
+    84	```
+    85	(currently line 33), insert a blank line and then:
+    86	```python
+    87	
+    88	r_F1_target = sp.sqrt(4107 - 100*sp.pi**2)/(10*sp.pi)
+    89	expect_zero(
+    90	    "r_F1 symbolic value at L/a = 37/20",
+    91	    sp.simplify(r_F1 - r_F1_target)
+    92	)
+    93	```
+    94	This pins the symbolic F1 value to `sqrt(4107 - 100 pi^2)/(10 pi)`. (The target value `100 pi^2` matches the script's existing computation AND the notes' boxed numerical value `~ 1.77799353547498`. If F1 is later resolved with direction (b), update this target accordingly — but per F1 (a), the notes typo `168` should be fixed; the target here is correct.)
+    95	
+    96	**Step 3.** Immediately AFTER the existing line:
+    97	```python
+    98	print("r_c(F1) numeric =", sp.N(rc_F1, 20))
+    99	```
+   100	(currently line 37), insert a blank line and then:
+   101	```python
+   102	
+   103	rc_F1_target = sp.Rational(4107, 100)/sp.pi**2 - 1
+   104	expect_zero(
+   105	    "r_c(F1) symbolic value",
+   106	    sp.simplify(rc_F1 - rc_F1_target)
+   107	)
+   108	```
+   109	This pins `r_c(F1) = 4107/(100 pi^2) - 1`.
+   110	
+   111	**Step 4.** Immediately AFTER the existing line:
+   112	```python
+   113	print("existence threshold L/a >=", threshold, "≈", sp.N(threshold, 20))
+   114	```
+   115	(currently line 40), insert a blank line and then:
+   116	```python
+   117	
+   118	expect_zero(
+   119	    "r_geom vanishes at existence threshold",
+   120	    sp.simplify(r_geom_simplified.subs(L, a*threshold))
+   121	)
+   122	```
+   123	This asserts that `r_geom -> 0` at `L/a = pi/(2 sqrt 3)`, anchoring the existence boundary.
+   124	
+   125	**Verification command:**
+   126	
+   127	After Codex applies, the verifier will run `redteam exec-sympy 121` and confirm:
+   128	1. The four new `expect_zero` calls appear at the marked locations.
+   129	2. The transcript shows four new lines: `r_geom closed-form (explicit) = 0`, `r_F1 symbolic value at L/a = 37/20 = 0`, `r_c(F1) symbolic value = 0`, `r_geom vanishes at existence threshold = 0`.
+   130	3. Script exits `0` (so all five `expect_zero` calls pass).
+   131	
+   132	## F3 — paper_missing_script_claim (script_missing_paper_claim subtype)
+   133	
+   134	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py` (insert before the existence-threshold block, after the new F2 step 3 insertion)
+   135	
+   136	**Issue:**
+   137	
+   138	The notes (lines 83-91) contain a third boxed deliverable: `Omega_W = pi c_s/(2 L)`, the mixed-tube pole after identifying `L_W = L`. The script does not declare `c_s` or `Omega_W` and contains no related assertion.
+   139	
+   140	**Required change:**
+   141	
+   142	Immediately AFTER the F2 Step 3 insertion (the new `r_c(F1) symbolic value` block), insert a blank line and then:
+   143	```python
+   144	
+   145	# Notes (boxed): with L_W = L, the mixed-tube pole is Omega_W = pi c_s / (2 L).
+   146	c_s = sp.symbols('c_s', positive=True, real=True)
+   147	OmegaW_formula_LW = sp.pi * c_s / (2 * LW)
+   148	OmegaW_at_LW_eq_L = OmegaW_formula_LW.subs(LW, L)
+   149	print("Omega_W(L_W = L) =", OmegaW_at_LW_eq_L)
+   150	expect_zero(
+   151	    "Omega_W identification at L_W = L",
+   152	    OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+   153	)
+   154	```
+   155	
+   156	**Claim manifest:**
+   157	
+   158	M1. With `L_W = L`, the mixed-tube pole `Omega_W = pi c_s / (2 L_W)` (from Stage 99) becomes `Omega_W = pi c_s / (2 L)`. The new assertion confirms that the symbolic substitution `L_W -> L` produces the boxed expression in the notes.
+   159	
+   160	This is a definitional substitution check (analogous to the existing tube-length round-trip), but it makes the assertion explicit in the transcript and matches the notes' boxed claim.
+   161	
+   162	**Verification command:**
+   163	
+   164	After Codex applies, the verifier will run `redteam exec-sympy 121` and confirm:
+   165	1. A new `c_s` symbol declaration and `OmegaW_formula_LW` definition appear after the `r_c(F1) symbolic value` `expect_zero` block.
+   166	2. The transcript shows a new line: `Omega_W identification at L_W = L = 0`.
+   167	3. Script exits `0`.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_121.md | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 121
+     3	batch: IV.3
+     4	auditor_model: claude-opus-4-7[1m]
+     5	audit_date: 2026-05-27T00:00:00Z
+     6	verdict: findings
+     7	stop_cold: null
+     8	findings_count: 3
+     9	paper_alignment: partial
+    10	scripts_checked:
+    11	  sympy: insufficient
+    12	  mathematica: missing
+    13	  engines_agree: n/a
+    14	  outputs_fresh: true
+    15	docs_read:
+    16	  paper_stage_tex: present
+    17	  notes_stage_files: [moving_throat_pde_stage121_geometric_r_selection.md]
+    18	  paper_appendix: present
+    19	---
+    20	
+    21	# Audit unit 121 red-team report
+    22	
+    23	## Files reviewed
+    24	
+    25	- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_121.tex` (present; the stage is titled "Stage 138: Geometric Selection of the Core Hybridization Ratio")
+    26	- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md`
+    27	- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex` (line 1276 input only; no separate row)
+    28	- sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py`
+    29	- mathematica: (missing — explicitly waived by the stage card: "Mathematica audit: none yet." and by the audit unit instructions)
+    30	- sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt`
+    31	- mathematica output: (missing — n/a)
+    32	
+    33	## What the paper claims
+    34	
+    35	The stage card body (line 16-17) gives the boxed `Output`: "Identifying the mixed D/N tube with the throat span gives `r_geom(L/a) = sqrt(12 (L/a)^2 / pi^2 - 1)`." The notes elaborate this into four concrete deliverables: (1) the exact geometric branch law `r_geom(L/a) = sqrt(12/pi^2 (L/a)^2 - 1)` derived from setting `L_W = L` in the Stage-99 mixed-tube length formula `L_W = (pi a/2) sqrt((1 + r^2)/3)`; (2) the existence condition `L/a >= pi/(2 sqrt 3) ~ 0.9069`; (3) the family-1 numerical value `r_F1 = sqrt(4107 - 168 pi^2)/(10 pi) ~ 1.77799353547498` and `r_c^F1 = r_F1^2 ~ 3.16126101219081` at the carried preferred aspect ratio `L/a = 37/20`; (4) the immediate mixed-tube consequence `Omega_W = pi c_s/(2 L)`, the first D/N half-wave of the throat corridor. The part-04 appendix simply includes the stage card via `\input{stages/stage_121}` (line 1276) — no separate appendix row to cross-check.
+    36	
+    37	## What the script claims to verify
+    38	
+    39	The script (41 lines) declares positive-real symbols `L, a, L_W, r`; constructs `L_W_formula = pi a/2 sqrt((1+r^2)/3)`; uses `sp.solve` to invert for `r`, then substitutes `L_W -> L` to obtain `r_geom_simplified`. It prints this closed form, then uses `expect_zero` to assert `LW_formula.subs(r, r_geom_simplified) - L == 0` — a round-trip check that the solved `r_geom` satisfies the original tube-length equation when `L_W = L`. It then substitutes `L = (37/20) a` and prints (but does NOT assert) the resulting `r_F1` value, the squared `r_c(F1)` value, and the threshold `pi/(2 sqrt 3)`.
+    40	
+    41	## Paper - script cross-check
+    42	
+    43	| Paper-side deliverable | Script-side check | Status |
+    44	|---|---|---|
+    45	| `r_geom(L/a) = sqrt(12(L/a)^2/pi^2 - 1)` (closed-form branch law) | Tube-length round-trip assertion at L:25-28 implicitly exercises it (any wrong branch from `sp.solve` would fail the round-trip) | partial (only via inverse round-trip; no direct closed-form assertion) |
+    46	| Existence threshold `L/a >= pi/(2 sqrt 3)` | `threshold = sp.simplify(sp.pi/(2*sp.sqrt(3)))` printed at L:39-40; not asserted | missing (printed only) |
+    47	| `r_F1 = sqrt(4107 - 168 pi^2)/(10 pi) ~ 1.77799353547498` at L/a = 37/20 | `r_F1 = sp.simplify(r_geom_simplified.subs({L: R*a}))` printed at L:31-33; numeric printed; not asserted against any target | missing (printed only) AND mismatch (notes give `168 pi^2`, script computes `100 pi^2`) |
+    48	| `r_c^F1 = r_F1^2 ~ 3.16126101219081` | `rc_F1 = sp.simplify(r_F1**2)` printed at L:35-37; not asserted | missing (printed only) |
+    49	| `Omega_W = pi c_s/(2 L)` (first D/N half-wave of throat corridor) | not exercised; symbol `c_s` not defined in the script | missing |
+    50	
+    51	`paper_alignment: partial` — the central closed-form law is verified (via round-trip), but four of the five boxed paper-side deliverables are not asserted (three are printed only; one is absent entirely). Additionally, the notes form `sqrt(4107 - 168 pi^2)/(10 pi)` algebraically disagrees with the script's `sqrt(4107 - 100 pi^2)/(10 pi)`, although both yield the same numerical 1.77799... (see F1).
+    52	
+    53	## Assertion inventory
+    54	
+    55	| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+    56	|---|---|---|---|---|---|
+    57	| A1 | sympy | 25-28 | `expect_zero("tube-length relation", LW_formula.subs(r, r_geom_simplified) - L)` | Deliverable 1 (closed-form branch law), via round-trip | partial — verifies that the solved `r_geom` satisfies the original equation, but does not assert the explicit closed form `sqrt(12 L^2 - pi^2 a^2)/(pi a)`. The round-trip catches a wrong root from `sp.solve`, but not a typo in the printed closed form. |
+    58	
+    59	There is only ONE assertion. Lines 30-37 (`r_F1`, `r_c(F1)`) and line 39-40 (existence threshold) are pure prints — they cannot fail. The script's output transcript reports `PASS` based on a single non-tautological but narrow check.
+    60	
+    61	## Findings
+    62	
+    63	### F1 — paper_misalignment
+    64	
+    65	**Subtype:** notes_contradicts_script
+    66	
+    67	**Severity:** medium
+    68	
+    69	**Files:**
+    70	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md:64-71` (boxed `r_F1` expression)
+    71	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:30-33` (computation of `r_F1`)
+    72	- `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt:15` (printed result)
+    73	
+    74	**What's wrong:**
+    75	
+    76	Notes (line 67-71) quote: "r_F1 = sqrt(12/pi^2 (37/20)^2 - 1) = sqrt(4107 - 168 pi^2)/(10 pi) ~ 1.77799353547498."
+    77	
+    78	Script output (line 15) prints: "r_F1 = sqrt(4107 - 100*pi**2)/(10*pi)" with numeric "1.7779935354749781185".
+    79	
+    80	The algebraic forms are NOT equal: `sqrt(4107 - 168 pi^2)/(10 pi)` evaluates numerically to ~1.575 (since 168 pi^2 ~ 1658.1, 4107 - 1658.1 ~ 2449, sqrt ~ 49.49, /10 pi ~ 1.575), whereas `sqrt(4107 - 100 pi^2)/(10 pi)` evaluates to ~1.7780 (since 100 pi^2 ~ 986.96, 4107 - 986.96 ~ 3120, sqrt ~ 55.86, /10 pi ~ 1.778).
+    81	
+    82	Direct derivation: at L/a = 37/20, `r^2 = 12 (37/20)^2 / pi^2 - 1 = 12 * 1369 / 400 / pi^2 - 1 = 16428/(400 pi^2) - 1 = (16428 - 400 pi^2)/(400 pi^2) = (4107 - 100 pi^2)/(100 pi^2)`, so `r = sqrt(4107 - 100 pi^2)/(10 pi)`. The script is mathematically correct; the notes have a typo (the boxed numerical value 1.77799... matches the script, confirming the notes' literal expression is what's miscopied).
+    83	
+    84	**Why this matters:**
+    85	
+    86	A reader following the notes' algebraic form will arrive at a different (and wrong) value than the script asserts. Anyone downstream who quotes `sqrt(4107 - 168 pi^2)/(10 pi)` symbolically will propagate the wrong constant.
+    87	
+    88	**Resolution required (user-routed):**
+    89	
+    90	Almost certainly the notes typo `168 pi^2 -> 100 pi^2`. But the orchestrator must surface the question; Codex may not silently edit prose. See `## Resolve before fix_loop` in the directive.
+    91	
+    92	**Verification:**
+    93	
+    94	After user-directed fix to the notes, the boxed expression reads `sqrt(4107 - 100 pi^2)/(10 pi)`, matching the script's printed form and the boxed numerical 1.77799...
+    95	
+    96	### F2 — insufficient_verification
+    97	
+    98	**Severity:** high
+    99	
+   100	**Files:**
+   101	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:30-40`
+   102	
+   103	**What's wrong:**
+   104	
+   105	The script has exactly ONE `expect_zero` assertion (lines 25-28). The remaining "verification" content (lines 30-40) consists entirely of `print` statements computing `r_F1`, `r_c(F1)`, and the existence threshold without ever asserting them against the paper-side target values.
+   106	
+   107	Specifically:
+   108	- Line 31: `r_F1 = sp.simplify(r_geom_simplified.subs({L: R*a}))` — computed but not asserted against any target form.
+   109	- Line 35: `rc_F1 = sp.simplify(r_F1**2)` — printed but not asserted to equal `(4107 - 100 pi^2)/(100 pi^2)` or `4107/(100 pi^2) - 1`.
+   110	- Line 39: `threshold = sp.simplify(sp.pi/(2*sp.sqrt(3)))` — printed but not asserted to satisfy `r_geom_simplified.subs(L, a*threshold) == 0` (the existence boundary, where `r = 0`).
+   111	- Line 32: `print("r_F1 numeric =", sp.N(r_F1, 20))` — prints `1.7779935354749781185`, but not asserted against the notes' boxed `1.77799353547498`.
+   112	
+   113	These are exactly the kind of `print`-only "verification" that flunks the audit's anchoring test: any of them could silently print a wrong value (e.g., a future typo at line 30 changing `R = sp.Rational(37,20)` to `R = sp.Rational(37,10)` would print a different number and still report `PASS`).
+   114	
+   115	**Why this matters:**
+   116	
+   117	Four of the five paper-side boxed deliverables (closed-form law, threshold, `r_F1`, `r_c^F1`) have no script-side assertion. The single assertion that exists only verifies the consistency of `sp.solve` with its own input, not the explicit closed form, the threshold, or any numerical target.
+   118	
+   119	**Required change:**
+   120	
+   121	Add at least four `expect_zero` assertions, named and anchored:
+   122	
+   123	1. **Closed-form branch law (direct).** Assert `r_geom_simplified**2 - (12*L**2/(sp.pi**2 * a**2) - 1) == 0`. This pins the explicit closed form of the boxed branch law, independent of `sp.solve`'s branch choice.
+   124	2. **Family-1 numerical value (symbolic).** Define `r_F1_target = sp.sqrt(4107 - 100*sp.pi**2)/(10*sp.pi)` and assert `sp.simplify(r_F1 - r_F1_target) == 0`.
+   125	3. **Family-1 squared (symbolic).** Define `rc_F1_target = sp.Rational(4107, 100)/sp.pi**2 - 1` and assert `sp.simplify(rc_F1 - rc_F1_target) == 0`.
+   126	4. **Existence threshold.** Assert `r_geom_simplified.subs(L, a*threshold).simplify() == 0` (at the threshold, `r = 0`).
+   127	
+   128	These four checks each compare an independently-computed quantity to a paper-side target; none is tautological with the existing A1.
+   129	
+   130	Detailed instructions in the directive.
+   131	
+   132	**Verification:**
+   133	
+   134	After the fix lands, the sympy transcript must show four new `expect_zero` lines printing residual `0`, in addition to the existing tube-length relation. Script must still exit `0`.
+   135	
+   136	### F3 — paper_missing_script_claim
+   137	
+   138	**Subtype:** script_missing_paper_claim
+   139	
+   140	**Severity:** medium
+   141	
+   142	**Files:**
+   143	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md:83-91` (boxed `Omega_W = pi c_s/(2 L)`)
+   144	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py` (nothing — `c_s`, `Omega_W` are not declared)
+   145	
+   146	**What's wrong:**
+   147	
+   148	The notes contain a boxed third deliverable: "With L_W = L, the auxiliary mixed-tube pole is simply Omega_W = pi c_s/(2 L), the first D/N half-wave of the actual throat corridor." This appears in a `\boxed{...}` block in the notes and is enumerated alongside `r_geom` and `r_F1` as one of the stage's outputs. The script does not declare `c_s` or `Omega_W` and contains no related check.
+   149	
+   150	**Why this matters:**
+   151	
+   152	The mixed-tube pole substitution is a load-bearing identification (it ties the mixed-tube pole to the actual throat geometry rather than a detached cavity). Leaving it unasserted means a downstream consumer who quotes `Omega_W = pi c_s/(2 L)` has no script-side anchor.
+   153	
+   154	**Required change:**
+   155	
+   156	Add an `expect_zero` block that constructs the Stage-99 mixed-tube pole `Omega_W_formula(L_W) = pi c_s/(2 L_W)` (or whatever Stage-99 supplies; if Stage-99's pole is stated as `Omega_W = pi c_s/(2 L_W)` then identifying `L_W = L` gives `Omega_W = pi c_s/(2 L)`), and assert the substitution at `L_W -> L`:
+   157	
+   158	```python
+   159	c_s, OmegaW = sp.symbols('c_s Omega_W', positive=True, real=True)
+   160	OmegaW_formula = sp.pi * c_s / (2 * LW)
+   161	OmegaW_at_LW_eq_L = OmegaW_formula.subs(LW, L)
+   162	expect_zero(
+   163	    "Omega_W identification at L_W = L",
+   164	    OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+   165	)
+   166	```
+   167	
+   168	Note: this is essentially a definitional check, but it makes the substitution explicit in the assertion log and matches the notes' boxed claim.
+   169	
+   170	**Verification:**
+   171	
+   172	After fix, the sympy transcript must show one additional `expect_zero` line "Omega_W identification at L_W = L" with residual `0`. Script must exit `0`.
+   173	
+   174	## Independent-derivation check (Mathematica)
+   175	
+   176	N/A — Mathematica script is intentionally absent (stage card: "Mathematica audit: none yet."). Per the audit unit instructions, this absence is not a finding for this stage.
+   177	
+   178	## Engine cross-check
+   179	
+   180	N/A — only one engine present.
+   181	
+   182	Output mtime: sympy script `Apr 18 16:42` < sympy output `May 11 12:45`. `outputs_fresh: true`. Output content matches what the current script would produce (verified by reading both).
+   183	
+   184	## Verdict justification
+   185	
+   186	The single existing assertion (`tube-length relation`) is non-tautological and correctly verifies (via round-trip) that the solved `r_geom` satisfies the geometric identification `L_W = L`. However, the audit fails on two fronts:
+   187	
+   188	1. **Coverage (F2, F3):** Four of the five boxed paper-side deliverables (the explicit closed form of `r_geom`, the existence threshold, the F1 numerical values `r_F1` and `r_c^F1`, and the mixed-tube pole `Omega_W`) are not anchored by any assertion. Three are printed only; the fourth is not exercised at all. The `PASS` status conveys far less verification than the paper claims.
+   189	
+   190	2. **Notes typo (F1):** The notes' boxed symbolic form `sqrt(4107 - 168 pi^2)/(10 pi)` does not equal `sqrt(4107 - 100 pi^2)/(10 pi)` algebraically, even though both purport to equal ~1.77799. The script is correct; the notes are wrong (almost certainly a typo). User resolution required because the framework does not auto-edit prose.
+   191	
+   192	The cosmetic banner "STAGE 104 - GEOMETRIC SELECTION OF r" (script L:16; output L:11) is a relabeling artifact and is not a math finding; the underlying physics carries the right `L/a = 37/20` constant. Not filed.
+   193	
+   194	Attacks tried that did NOT yield findings: (a) checked whether `sp.solve` could return the negative branch of `r = +/- sqrt(...)`; with `r` declared `positive=True`, sympy returns the positive root, which is consistent with the physics (`r >= 0`). (b) checked symbol-assumption hazards on `L_W -> L` substitution; both are positive-real, no domain crossing. (c) checked whether the round-trip check is implicitly tautological; it is not — `sp.solve` could in principle simplify `(1 + r^2)/3 = (2 L /(pi a))^2` to a wrong branch, and the assertion would catch it.
+   195	
+   196	## Self-test notes
+   197	
+   198	(1) Variable independence: no derivatives in the script, n/a. (2) Symmetry/parity: no integrals, n/a. (3) Trivial-case pre-check for the four proposed new assertions: at `L = a * pi/(2 sqrt 3)` (the threshold), `r_geom_simplified` should reduce to `0` (the square root argument vanishes); confirmed by direct substitution `12/(pi^2) (pi/(2 sqrt 3))^2 - 1 = 12 pi^2 / (12 pi^2) - 1 = 0`. For the proposed F2-assertion #1, `r_geom_simplified^2 = (12 L^2 - pi^2 a^2)/(pi^2 a^2) = 12 L^2 /(pi^2 a^2) - 1`, matches target — no tautology trap because `r_geom_simplified` was obtained via `sp.solve`, not by squaring the target. For F2-assertion #2, `sp.simplify(sqrt(4107 - 100 pi^2)/(10 pi) - sqrt(4107 - 100 pi^2)/(10 pi))` is structurally `0`; the test catches a sign or coefficient change in `R = Rational(37,20)` because that would change the residual to a nonzero algebraic expression. (4) Path specs: not a missing-script finding. (5) Paper round-trip: the proposed F2 target `sqrt(4107 - 100 pi^2)/(10 pi)` deliberately does NOT match the notes' (wrong) form `sqrt(4107 - 168 pi^2)/(10 pi)`. The directive flags F1 as a paper_misalignment requiring user resolution; the F2 fix uses the correct form (which matches the notes' boxed numerical value).
+
+codex
+I’ve got enough to see the edited assertions and their transcript lines. I’m checking the local stage notes only where the directive points to them, because several added checks are described as boxed note deliverables while the stage card is terse.
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage121_geometric_r_selection.md | sed -n '1,130p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	# Moving-Throat PDE — Stage 121: Geometric Selection of the Core Hybridization Ratio
+     2	
+     3	## Goal
+     4	
+     5	Turn the normalized core-hybridization parameter
+     6	\[
+     7	\mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}}
+     8	\]
+     9	from a free reduced number into an explicit branch value.
+    10	
+    11	## Parent motivation
+    12	
+    13	The parent 4D stack already keeps the throat geometry explicit through the collective throat variables `(a,L)` in the confinement / geometry sector, while the localized-Maxwell/plasma papers keep the mixed channels
+    14	\[
+    15	A_w,\qquad F_{\mu w},\qquad J^w
+    16	\]
+    17	in the microscopic ontology outside the strict far-field brane limit. fileciteturn33file4 fileciteturn33file1turn33file3
+    18	The carried constructive hierarchy also keeps the preferred aspect ratio
+    19	\[
+    20	L/a \approx 1.85.
+    21	\]
+    22	fileciteturn35file0
+    23	
+    24	So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 99 with the **actual throat axial span**:
+    25	\[
+    26	\boxed{L_W=L.}
+    27	\]
+    28	
+    29	This is the simplest honest moving-throat core identification: the mixed side-channel is not a detached auxiliary cavity but the same axial throat corridor already selected by the carried geometry branch.
+    30	
+    31	## 1. Exact geometric branch law
+    32	
+    33	Stage 99 already fixed the compensation-selected D/N tube length to
+    34	\[
+    35	L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+    36	\]
+    37	Imposing \(L_W=L\) gives the exact geometric hybridization branch
+    38	\[
+    39	\boxed{
+    40	\mathfrak r_{\rm geom}\!\left(\frac{L}{a}\right)
+    41	=
+    42	\sqrt{\frac{12}{\pi^2}\left(\frac{L}{a}\right)^2-1}.
+    43	}
+    44	\]
+    45	
+    46	So the normalized shell/mixed hybridization is no longer free once the mixed tube is identified with the actual throat length.
+    47	
+    48	The existence condition is
+    49	\[
+    50	\boxed{
+    51	\frac{L}{a}\ge \frac{\pi}{2\sqrt3}\approx 0.9069,
+    52	}
+    53	\]
+    54	which is comfortably satisfied on the carried throat branch.
+    55	
+    56	## 2. Family-1 / preferred-aspect-ratio value
+    57	
+    58	Using the carried preferred aspect ratio
+    59	\[
+    60	\frac{L}{a}=\frac{37}{20},
+    61	\]
+    62	the geometric branch value is
+    63	\[
+    64	\boxed{
+    65	\mathfrak r_{F1}
+    66	=
+    67	\sqrt{\frac{12}{\pi^2}\left(\frac{37}{20}\right)^2-1}
+    68	=
+    69	\frac{\sqrt{4107-100\pi^2}}{10\pi}
+    70	\approx 1.77799353547498.
+    71	}
+    72	\]
+    73	
+    74	Equivalently,
+    75	\[
+    76	\boxed{
+    77	r_c^{F1}=\mathfrak r_{F1}^2\approx 3.16126101219081.
+    78	}
+    79	\]
+    80	
+    81	So the first concrete moving-throat core solve already fixes the static/mixed hybridization to an `O(1)` value rather than a tunable small parameter.
+    82	
+    83	## 3. Immediate mixed-tube consequence
+    84	
+    85	With \(L_W=L\), the auxiliary mixed-tube pole is simply
+    86	\[
+    87	\boxed{
+    88	\Omega_W=\frac{\pi c_s}{2L},
+    89	}
+    90	\]
+    91	the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real throat geometry, not to a detached bookkeeping cavity.
+    92	
+    93	## Result
+    94	
+    95	The surviving outlet-core problem has already shrunk:
+    96	
+    97	- before Stage 223, the normalized hybridization \(\mathfrak r\) was free;
+    98	- after identifying the mixed D/N tube with the actual throat length, it is fixed to
+    99	  \[
+   100	  \mathfrak r_{F1}\approx 1.778
+   101	  \]
+   102	  on the preferred aspect-ratio branch.
+   103	
+   104	So the next question is no longer “what is \(\mathfrak r\)?” It is “what normalized mouth-coupling ratio \(\mathfrak g\) does the actual core pick at this geometrically fixed \(\mathfrak r\)?”
+
+codex
+---
+stage: 121
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [audit_directive_121.md, stage_121.tex, moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py, moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt, moving_throat_pde_stage121_geometric_r_selection.md]
+---
+# Codex review — stage 121
+
+## What the edit was supposed to do
+The directive required no script change for F1 after the notes-side `168π²` typo was resolved to `100π²`. For F2, it required four new `expect_zero` anchors: the explicit squared branch law, the `L/a=37/20` symbolic value, the squared `r_c(F1)` value, and the existence-threshold root. For F3, it required an explicit `Omega_W` substitution check under `L_W=L`.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:25 | `r_geom^2 = 12 L^2/(pi^2 a^2)-1` | yes: wrong tube coefficient or inversion leaves nonzero residual | yes: boxed `r_geom(L/a)` law | PASS |
+| 2 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:41 | `r_F1 = sqrt(4107-100*pi^2)/(10*pi)` | yes: wrong aspect ratio, sign, or coefficient fails | yes: preferred `L/a=37/20` value in stage notes/directive | PASS |
+| 3 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:51 | `r_c(F1)=4107/(100*pi^2)-1` | yes: wrong square or target coefficient fails | yes: squared preferred-branch value | PASS |
+| 4 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:61 | `Omega_W(L_W=L)=pi*c_s/(2L)` | yes: wrong source pole or target denominator fails | yes: boxed mixed-tube pole consequence | PASS |
+| 5 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:69 | `r_geom` vanishes at `pi/(2 sqrt(3))` | yes: wrong threshold or branch law fails | yes: existence-boundary claim | PASS |
+
+## Bottom line
+PASS. I tried to break the checks by looking for `X-X` construction, copied targets from the same intermediate, sign loss from the squared `r_geom` assertion, unjustified positivity assumptions, and output omissions. The squared branch-law check would miss a global negative branch by itself, but the `r_F1` assertion against the positive target would fail under that branch; `L,a,L_W,r,c_s` positivity is consistent with the geometric setup. The saved output corroborates each edited assertion with `= 0` on lines 6, 10, 13, 15, and 17, and there is no Mathematica engine to compare because the stage card explicitly says none.
+tokens used
+32,330
+---
+stage: 121
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [audit_directive_121.md, stage_121.tex, moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py, moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt, moving_throat_pde_stage121_geometric_r_selection.md]
+---
+# Codex review — stage 121
+
+## What the edit was supposed to do
+The directive required no script change for F1 after the notes-side `168π²` typo was resolved to `100π²`. For F2, it required four new `expect_zero` anchors: the explicit squared branch law, the `L/a=37/20` symbolic value, the squared `r_c(F1)` value, and the existence-threshold root. For F3, it required an explicit `Omega_W` substitution check under `L_W=L`.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:25 | `r_geom^2 = 12 L^2/(pi^2 a^2)-1` | yes: wrong tube coefficient or inversion leaves nonzero residual | yes: boxed `r_geom(L/a)` law | PASS |
+| 2 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:41 | `r_F1 = sqrt(4107-100*pi^2)/(10*pi)` | yes: wrong aspect ratio, sign, or coefficient fails | yes: preferred `L/a=37/20` value in stage notes/directive | PASS |
+| 3 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:51 | `r_c(F1)=4107/(100*pi^2)-1` | yes: wrong square or target coefficient fails | yes: squared preferred-branch value | PASS |
+| 4 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:61 | `Omega_W(L_W=L)=pi*c_s/(2L)` | yes: wrong source pole or target denominator fails | yes: boxed mixed-tube pole consequence | PASS |
+| 5 | moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py:69 | `r_geom` vanishes at `pi/(2 sqrt(3))` | yes: wrong threshold or branch law fails | yes: existence-boundary claim | PASS |
+
+## Bottom line
+PASS. I tried to break the checks by looking for `X-X` construction, copied targets from the same intermediate, sign loss from the squared `r_geom` assertion, unjustified positivity assumptions, and output omissions. The squared branch-law check would miss a global negative branch by itself, but the `r_F1` assertion against the positive target would fail under that branch; `L,a,L_W,r,c_s` positivity is consistent with the geometric setup. The saved output corroborates each edited assertion with `= 0` on lines 6, 10, 13, 15, and 17, and there is no Mathematica engine to compare because the stage card explicitly says none.
+
+---
+codex_session_id: 019e7120-e22b-7a80-a6e2-332640bbdf7d

@@ -20,3 +20,4 @@ Theorem:
   source correction is completely determined by Cov_*(c,R_*) and Cov_*(K_q,R_*).
 
 Stage 151 Mathematica audit passed.
+# exit_code: 0

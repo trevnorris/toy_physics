@@ -1,0 +1,693 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b447-7141-8cf9-47ccdaa92dab
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 108)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_108.tex
+
+Write your verdict report for stage 108 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_108.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~125]{Stage~125: Robustness Classes for chi-Q}
+     2	\label{stage:108}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~108 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+    14	
+    15	\begin{quote}
+    16	Pure scale is harmless; pure argument shift is harmless only if even moments remain canonical; additive throat-core data can move \(\chi_Q\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check pure scale and pure argument deformations separately.
+    23	\item Check Robin and standalone mixed-pole limits before imposing compensation.
+    24	\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+  106 /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  117 /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl
+   24 /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt
+   45 /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt
+  292 total
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 108
+     3	batch: IV.2
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 3
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 108
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — paper_misalignment
+    27	
+    28	**Subtype:** script_missing_paper_claim
+    29	
+    30	**Paper side:**
+    31	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage108_robustness_classes.md:84-92` quote:
+    32	  > "The deformation preserves the canonical outgoing normalization iff `chi_Q = 1`. The exact condition is `Sigma_5 = S(1 - beta^5)/9 - Sigma_0/27`. This includes as special cases: pure scale deformation, pure scale+argument deformation with beta = 1, additive core deformations whose odd slot is locked to the static shift."
+    33	
+    34	**Script side:**
+    35	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:50-70` — Class C is built with `Lambda_add = S*Lambda_out + Sigma_0 + Sigma_2 z^2 + Sigma_4 z^4 + I Sigma_5 z^5` (no `beta` substitution into `Lambda_out`); the preservation-locus check only verifies the `beta = 1` reduction `Sigma_5 = -Sigma_0/27`.
+    36	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:57-81` — same pattern; `lambdaAdd = sNorm*lambdaOut + ...` without `beta z` substitution, locus check only at `beta = 1`.
+    37	
+    38	## Resolve before fix_loop
+    39	
+    40	The notes box a general `beta`-dependent exact preservation submanifold `Sigma_5 = S(1 - beta^5)/9 - Sigma_0/27` that the scripts do not verify (they only test the `beta = 1` reduction `Sigma_5 = -Sigma_0/27`). Should the scripts be extended to test the general locus, or should the notes be trimmed to match what the scripts actually verify?
+    41	
+    42	Possible directions (the user picks one):
+    43	- (a) Notes/paper are correct, scripts under-verify -> extend both scripts: combine scale+argument with additive core (`lambdaAdd = sNorm * lambdaOut(beta z) + sigma_0 + sigma_2 z^2 + sigma_4 z^4 + I sigma_5 z^5`), re-solve `(sigma_2, sigma_4)` against even-moment match (the solutions will now depend on `beta`), then assert `chi_Q = 1` iff `sigma_5 = S(1 - beta^5)/9 - sigma_0/27`. The current `beta = 1` Class B and Class C blocks remain as sanity reductions.
+    44	- (b) Scripts are correct, notes overstate -> downgrade `notes/stages/moving_throat_pde_stage108_robustness_classes.md` "Exact preservation submanifold" section to state only the `beta = 1` special case `Sigma_5 = -Sigma_0/27`, and remove the boxed `Sigma_5 = S(1 - beta^5)/9 - Sigma_0/27` formula. No script change.
+    45	- (c) Both are correct but verify different things deliberately (notes are aspirational, scripts are the current verified subset) -> add a `\stagefield{Scope}` note in the card and the notes flagging that the general locus is unverified at this audit unit; no script change.
+    46	
+    47	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+    48	
+    49	## F2 — insufficient_verification
+    50	
+    51	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:55`
+    52	
+    53	**Issue:** The line `expectZero["chi_arg(beta=1) - 1", chiArg /. beta -> 1 - 1];` is parsed by Mathematica as `chiArg /. (beta -> (1 - 1))` = `chiArg /. (beta -> 0)`, because `Plus`/`Subtract` bind tighter than `Rule` and `ReplaceAll`. Since `chiArg = beta^5`, the substituted residual is `0^5 = 0` regardless of whether `chi_arg(beta=1)` actually equals 1. The check passes by accident, not by computing the intended quantity. The SymPy counterpart on L48 uses `.subs(beta, 1) - 1` and is correct.
+    54	
+    55	**Required change:**
+    56	Edit `mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl` line 55.
+    57	
+    58	Before:
+    59	```
+    60	expectZero["chi_arg(beta=1) - 1", chiArg /. beta -> 1 - 1];
+    61	```
+    62	
+    63	After:
+    64	```
+    65	expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];
+    66	```
+    67	
+    68	This is the only change. Do not touch surrounding lines.
+    69	
+    70	**Verification command:**
+    71	After Codex applies, the verifier will run `redteam exec-mathematica 108` and confirm:
+    72	1. The transcript still prints `chi_arg(beta=1) - 1 = 0` and `PASS: chi_arg(beta=1) - 1`.
+    73	2. The script exits 0.
+    74	3. Line 55 of the `.wl` file now reads `expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];` exactly.
+    75	
+    76	## F3 — stale_output
+    77	
+    78	**Target:**
+    79	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:25`
+    80	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:26`
+    81	
+    82	**Issue:** Both scripts banner this unit as "STAGE 91" / "STAGE 091", but this is unit 108. The mtime check confirms the saved outputs are fresh; the issue is the *banner string* in the script source, which propagates to the transcripts and misleads downstream grepping.
+    83	
+    84	**Required change:**
+    85	Edit `scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py` line 25.
+    86	
+    87	Before:
+    88	```
+    89	banner('STAGE 91 — ROBUSTNESS CLASSES FOR chi_Q')
+    90	```
+    91	
+    92	After:
+    93	```
+    94	banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
+    95	```
+    96	
+    97	Edit `mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl` line 26.
+    98	
+    99	Before:
+   100	```
+   101	banner["STAGE 091 — ROBUSTNESS CLASSES FOR chi_Q"];
+   102	```
+   103	
+   104	After:
+   105	```
+   106	banner["STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q"];
+   107	```
+   108	
+   109	Do not touch any other line. Preserve the em-dash and surrounding whitespace exactly.
+   110	
+   111	**Verification command:**
+   112	After Codex applies, the verifier will run `redteam exec-sympy 108` and `redteam exec-mathematica 108` and confirm both transcripts now print `STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q` in the banner section. Scripts must continue to exit 0.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q
+     4	========================================================================================
+     5	pure scale invariance = 0
+     6	Y_scale+arg(z) = I*beta**5*z**5/27 + 4*beta**4*z**4/81 + beta**2*z**2/9 + 1
+     7	m2_arg = beta**2/9
+     8	m4_arg = 4*beta**4/81
+     9	chi_arg = beta**5
+    10	solutions preserving canonical even fingerprint = [{beta: -1}, {beta: 1}]
+    11	chi_arg(beta=1) - 1 = 0
+    12	Sigma2(beta=1) = -Sigma0/9
+    13	Sigma4(beta=1) = -Sigma0/27
+    14	chi_add = 3*(S + 9*Sigma5)/(3*S - Sigma0)
+    15	chi_add - 3(S+9Sigma5)/(3S-Sigma0) = 0
+    16	Sigma5 preservation locus = -Sigma0/27
+    17	preservation locus check = 0
+    18	Sigma2(beta) = -S*beta**2/3 + S/3 - Sigma0/9
+    19	Sigma4(beta) = -S*beta**4/9 + S/9 - Sigma0/27
+    20	chi_gen(beta) = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+    21	Sigma5 general preservation locus = -S*beta**5/9 + S/9 - Sigma0/27
+    22	general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27 = 0
+    23	general preservation locus check = 0
+    24	general locus reduces to beta=1 (Class C) = 0
+
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	
+     6	def banner(title: str) -> None:
+     7	    line = '=' * 88
+     8	    print('\n' + line)
+     9	    print(title)
+    10	    print(line)
+    11	
+    12	
+    13	def expect_zero(name: str, expr: sp.Expr) -> None:
+    14	    expr = sp.simplify(sp.expand(expr))
+    15	    print(f"{name} = {expr}")
+    16	    if expr != 0:
+    17	        raise AssertionError(f"{name} is not zero")
+    18	
+    19	
+    20	z = sp.symbols('z', real=True)
+    21	S, beta = sp.symbols('S beta', nonzero=True, real=True)
+    22	Sigma0, Sigma2, Sigma4, Sigma5 = sp.symbols('Sigma0 Sigma2 Sigma4 Sigma5', real=True)
+    23	I = sp.I
+    24	
+    25	banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
+    26	
+    27	Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
+    28	
+    29	# Class A: pure scale
+    30	Y_scale = sp.series((-3*S)/(S*Lambda_out), z, 0, 6).removeO()
+    31	Y_can = sp.series((-3)/Lambda_out, z, 0, 6).removeO()
+    32	expect_zero('pure scale invariance', Y_scale - Y_can)
+    33	
+    34	# Class B: pure scale+argument
+    35	Y_arg = sp.series((-3*S)/(S*Lambda_out.subs(z, beta*z)), z, 0, 6).removeO()
+    36	print('Y_scale+arg(z) =', sp.expand(Y_arg))
+    37	m2_arg = sp.expand(Y_arg).coeff(z, 2)
+    38	m4_arg = sp.expand(Y_arg).coeff(z, 4)
+    39	chi_arg = sp.simplify(sp.im(sp.expand(Y_arg).coeff(z, 5)) / sp.Rational(1, 27))
+    40	print('m2_arg =', m2_arg)
+    41	print('m4_arg =', m4_arg)
+    42	print('chi_arg =', chi_arg)
+    43	
+    44	sol_beta = sp.solve([sp.Eq(m2_arg, sp.Rational(1, 9)), sp.Eq(m4_arg, sp.Rational(4, 81))], [beta], dict=True)
+    45	print('solutions preserving canonical even fingerprint =', sol_beta)
+    46	if {sol[beta] for sol in sol_beta} != {sp.Integer(-1), sp.Integer(1)}:
+    47	    raise AssertionError('Expected the two algebraic roots beta=±1.')
+    48	expect_zero('chi_arg(beta=1) - 1', chi_arg.subs(beta, 1) - 1)
+    49	
+    50	# Class C: additive core, beta=1
+    51	Lambda_add = sp.expand(S*Lambda_out + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5)
+    52	L0 = sp.simplify(Lambda_add.subs(z, 0))
+    53	L2 = sp.simplify(sp.expand(Lambda_add).coeff(z, 2))
+    54	L4 = sp.simplify(sp.expand(Lambda_add).coeff(z, 4))
+    55	L5 = sp.simplify(sp.im(sp.expand(Lambda_add).coeff(z, 5)))
+    56	m2 = sp.simplify(-L2/L0)
+    57	m4 = sp.simplify(L2**2/L0**2 - L4/L0)
+    58	sol = sp.solve([sp.Eq(m2, sp.Rational(1, 9)), sp.Eq(m4, sp.Rational(4, 81))], [Sigma2, Sigma4], dict=True)
+    59	if len(sol) != 1:
+    60	    raise AssertionError('Expected unique additive even-match solution.')
+    61	sol = sol[0]
+    62	print('Sigma2(beta=1) =', sp.simplify(sol[Sigma2]))
+    63	print('Sigma4(beta=1) =', sp.simplify(sol[Sigma4]))
+    64	chi_add = sp.simplify((-(L5/L0)).subs(sol) / sp.Rational(1, 27))
+    65	print('chi_add =', sp.factor(chi_add))
+    66	expect_zero('chi_add - 3(S+9Sigma5)/(3S-Sigma0)', chi_add - 3*(S + 9*Sigma5)/(3*S - Sigma0))
+    67	
+    68	chi_pres = sp.solve(sp.Eq(chi_add, 1), Sigma5)[0]
+    69	print('Sigma5 preservation locus =', sp.simplify(chi_pres))
+    70	expect_zero('preservation locus check', chi_add.subs(Sigma5, chi_pres) - 1)
+    71	
+    72	# Class D: general scale + argument + additive (β-parameterized preservation submanifold).
+    73	# Notes box: Σ_5 = S(1 - β^5)/9 - Σ_0/27 (general locus); Class C is the β=1 reduction.
+    74	Lambda_gen = sp.expand(
+    75	    S*Lambda_out.subs(z, beta*z)
+    76	    + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5
+    77	)
+    78	L0g = sp.simplify(Lambda_gen.subs(z, 0))
+    79	L2g = sp.simplify(sp.expand(Lambda_gen).coeff(z, 2))
+    80	L4g = sp.simplify(sp.expand(Lambda_gen).coeff(z, 4))
+    81	L5g = sp.simplify(sp.im(sp.expand(Lambda_gen).coeff(z, 5)))
+    82	m2g = sp.simplify(-L2g/L0g)
+    83	m4g = sp.simplify(L2g**2/L0g**2 - L4g/L0g)
+    84	sol_g = sp.solve(
+    85	    [sp.Eq(m2g, sp.Rational(1, 9)), sp.Eq(m4g, sp.Rational(4, 81))],
+    86	    [Sigma2, Sigma4],
+    87	    dict=True,
+    88	)
+    89	if len(sol_g) != 1:
+    90	    raise AssertionError('Expected unique β-parameterized even-match solution.')
+    91	sol_g = sol_g[0]
+    92	print('Sigma2(beta) =', sp.simplify(sol_g[Sigma2]))
+    93	print('Sigma4(beta) =', sp.simplify(sol_g[Sigma4]))
+    94	chi_gen = sp.simplify((-(L5g/L0g)).subs(sol_g) / sp.Rational(1, 27))
+    95	print('chi_gen(beta) =', sp.factor(chi_gen))
+    96	chi_pres_gen = sp.solve(sp.Eq(chi_gen, 1), Sigma5)[0]
+    97	print('Sigma5 general preservation locus =', sp.simplify(chi_pres_gen))
+    98	expect_zero(
+    99	    'general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27',
+   100	    sp.simplify(chi_pres_gen - (S*(1 - beta**5)/sp.Integer(9) - Sigma0/sp.Integer(27))),
+   101	)
+   102	expect_zero('general preservation locus check', chi_gen.subs(Sigma5, chi_pres_gen) - 1)
+   103	expect_zero(
+   104	    'general locus reduces to beta=1 (Class C)',
+   105	    (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),
+   106	)
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q
+     4	========================================================================================
+     5	pure scale invariance = 0
+     6	PASS: pure scale invariance
+     7	Y_scale+arg(z) = 1 + (beta^2*z^2)/9 + (4*beta^4*z^4)/81 + (I/27)*beta^5*z^5
+     8	m2_arg = beta^2/9
+     9	m4_arg = (4*beta^4)/81
+    10	chi_arg = beta^5
+    11	m2_arg - beta^2/9 = 0
+    12	PASS: m2_arg - beta^2/9
+    13	m4_arg - 4 beta^4/81 = 0
+    14	PASS: m4_arg - 4 beta^4/81
+    15	chi_arg - beta^5 = 0
+    16	PASS: chi_arg - beta^5
+    17	solutions preserving canonical even fingerprint = {-1, 1}
+    18	chi_arg(beta=1) - 1 = 0
+    19	PASS: chi_arg(beta=1) - 1
+    20	Sigma2(beta=1) = -1/9*sigma0
+    21	Sigma4(beta=1) = (3*sigma0^2 - 9*sigma0*sNorm)/(-81*sigma0 + 243*sNorm)
+    22	Sigma2(beta=1) + sigma0/9 = 0
+    23	PASS: Sigma2(beta=1) + sigma0/9
+    24	Sigma4(beta=1) + sigma0/27 = 0
+    25	PASS: Sigma4(beta=1) + sigma0/27
+    26	chi_add = (-3*(9*sigma5 + sNorm))/(sigma0 - 3*sNorm)
+    27	chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0) = 0
+    28	PASS: chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0)
+    29	Sigma5 preservation locus = -1/27*sigma0
+    30	Sigma5 preservation locus + sigma0/27 = 0
+    31	PASS: Sigma5 preservation locus + sigma0/27
+    32	preservation locus check = 0
+    33	PASS: preservation locus check
+    34	Sigma2(beta) = (-sigma0 - 3*(-1 + beta^2)*sNorm)/9
+    35	Sigma4(beta) = (-sigma0 - 3*(-1 + beta^4)*sNorm)/27
+    36	chi_gen(beta) = (-3*(9*sigma5 + beta^5*sNorm))/(sigma0 - 3*sNorm)
+    37	Sigma5 general preservation locus = (-sigma0 - 3*(-1 + beta^5)*sNorm)/27
+    38	general preservation submanifold = S(1 - beta^5)/9 - sigma0/27 = 0
+    39	PASS: general preservation submanifold = S(1 - beta^5)/9 - sigma0/27
+    40	general preservation locus check = 0
+    41	PASS: general preservation locus check
+    42	general locus reduces to beta=1 (Class C) = 0
+    43	PASS: general locus reduces to beta=1 (Class C)
+    44	
+    45	Stage 108 Mathematica audit passed.
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q"];
+    27	
+    28	Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5];
+    29	$Assumptions =
+    30	  Element[{z, sNorm, beta, sigma0, sigma2, sigma4, sigma5}, Reals] &&
+    31	  sNorm != 0 && beta != 0 && 3*sNorm - sigma0 != 0;
+    32	
+    33	lambdaOut = -3 + z^2/3 + z^4/9 + I*z^5/9;
+    34	
+    35	yScale = Expand[Normal[Series[(-3*sNorm)/(sNorm*lambdaOut), {z, 0, 5}]]];
+    36	yCan = Expand[Normal[Series[(-3)/lambdaOut, {z, 0, 5}]]];
+    37	expectZero["pure scale invariance", yScale - yCan];
+    38	
+    39	yArg = Expand[Normal[Series[(-3*sNorm)/(sNorm*(lambdaOut /. z -> beta*z)), {z, 0, 5}]]];
+    40	m2Arg = FullSimplify[Coefficient[yArg, z, 2], Assumptions -> $Assumptions];
+    41	m4Arg = FullSimplify[Coefficient[yArg, z, 4], Assumptions -> $Assumptions];
+    42	chiArg = FullSimplify[(Coefficient[yArg, z, 5]/I)/(1/27), Assumptions -> $Assumptions];
+    43	
+    44	Print["Y_scale+arg(z) = ", fmt[yArg]];
+    45	Print["m2_arg = ", fmt[m2Arg]];
+    46	Print["m4_arg = ", fmt[m4Arg]];
+    47	Print["chi_arg = ", fmt[chiArg]];
+    48	expectZero["m2_arg - beta^2/9", m2Arg - beta^2/9];
+    49	expectZero["m4_arg - 4 beta^4/81", m4Arg - 4*beta^4/81];
+    50	expectZero["chi_arg - beta^5", chiArg - beta^5];
+    51	
+    52	betaRoots = Sort[beta /. Solve[{beta^2 == 1, beta^4 == 1}, beta, Reals]];
+    53	Print["solutions preserving canonical even fingerprint = ", fmt[betaRoots]];
+    54	If[betaRoots =!= {-1, 1}, fail["expected beta roots { -1, 1 }", betaRoots]];
+    55	expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];
+    56	
+    57	lambdaAdd = Expand[sNorm*lambdaOut + sigma0 + sigma2*z^2 + sigma4*z^4 + I*sigma5*z^5];
+    58	l0 = FullSimplify[lambdaAdd /. z -> 0, Assumptions -> $Assumptions];
+    59	l2 = FullSimplify[Coefficient[lambdaAdd, z, 2], Assumptions -> $Assumptions];
+    60	l4 = FullSimplify[Coefficient[lambdaAdd, z, 4], Assumptions -> $Assumptions];
+    61	l5 = FullSimplify[Coefficient[lambdaAdd, z, 5]/I, Assumptions -> $Assumptions];
+    62	
+    63	m2 = FullSimplify[-l2/l0, Assumptions -> $Assumptions];
+    64	m4 = FullSimplify[l2^2/l0^2 - l4/l0, Assumptions -> $Assumptions];
+    65	sol = Solve[{m2 == 1/9, m4 == 4/81}, {sigma2, sigma4}, Reals];
+    66	If[Length[sol] =!= 1, fail["unique additive even-match solution", sol]];
+    67	sol = First[sol];
+    68	
+    69	Print["Sigma2(beta=1) = ", fmt[sigma2 /. sol]];
+    70	Print["Sigma4(beta=1) = ", fmt[sigma4 /. sol]];
+    71	expectZero["Sigma2(beta=1) + sigma0/9", (sigma2 /. sol) + sigma0/9];
+    72	expectZero["Sigma4(beta=1) + sigma0/27", (sigma4 /. sol) + sigma0/27];
+    73	
+    74	chiAdd = FullSimplify[((-l5/l0)/(1/27)) /. sol, Assumptions -> $Assumptions];
+    75	Print["chi_add = ", fmt[Factor[chiAdd]]];
+    76	expectZero["chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0)", chiAdd - 3*(sNorm + 9*sigma5)/(3*sNorm - sigma0)];
+    77	
+    78	sigma5Pres = FullSimplify[sigma5 /. First[Solve[chiAdd == 1, sigma5, Reals]], Assumptions -> $Assumptions];
+    79	Print["Sigma5 preservation locus = ", fmt[sigma5Pres]];
+    80	expectZero["Sigma5 preservation locus + sigma0/27", sigma5Pres + sigma0/27];
+    81	expectZero["preservation locus check", (chiAdd /. sigma5 -> sigma5Pres) - 1];
+    82	
+    83	(* Class D: general scale + argument + additive (β-parameterized preservation submanifold). *)
+    84	(* Notes box: Σ_5 = S(1 - β^5)/9 - Σ_0/27 (general locus); Class C is the β=1 reduction. *)
+    85	lambdaGen = Expand[
+    86	  sNorm*(lambdaOut /. z -> beta*z)
+    87	  + sigma0 + sigma2*z^2 + sigma4*z^4 + I*sigma5*z^5
+    88	];
+    89	l0g = FullSimplify[lambdaGen /. z -> 0, Assumptions -> $Assumptions];
+    90	l2g = FullSimplify[Coefficient[lambdaGen, z, 2], Assumptions -> $Assumptions];
+    91	l4g = FullSimplify[Coefficient[lambdaGen, z, 4], Assumptions -> $Assumptions];
+    92	l5g = FullSimplify[Coefficient[lambdaGen, z, 5]/I, Assumptions -> $Assumptions];
+    93	m2g = FullSimplify[-l2g/l0g, Assumptions -> $Assumptions];
+    94	m4g = FullSimplify[l2g^2/l0g^2 - l4g/l0g, Assumptions -> $Assumptions];
+    95	solG = Solve[{m2g == 1/9, m4g == 4/81}, {sigma2, sigma4}, Reals];
+    96	If[Length[solG] =!= 1, fail["unique β-parameterized even-match solution", solG]];
+    97	solG = First[solG];
+    98	Print["Sigma2(beta) = ", fmt[Simplify[sigma2 /. solG]]];
+    99	Print["Sigma4(beta) = ", fmt[Simplify[sigma4 /. solG]]];
+   100	chiGen = FullSimplify[((-l5g/l0g)/(1/27)) /. solG, Assumptions -> $Assumptions];
+   101	Print["chi_gen(beta) = ", fmt[Factor[chiGen]]];
+   102	sigma5PresGen = FullSimplify[sigma5 /. First[Solve[chiGen == 1, sigma5, Reals]], Assumptions -> $Assumptions];
+   103	Print["Sigma5 general preservation locus = ", fmt[sigma5PresGen]];
+   104	expectZero[
+   105	  "general preservation submanifold = S(1 - beta^5)/9 - sigma0/27",
+   106	  sigma5PresGen - (sNorm*(1 - beta^5)/9 - sigma0/27)
+   107	];
+   108	expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];
+   109	expectZero[
+   110	  "general locus reduces to beta=1 (Class C)",
+   111	  (sigma5PresGen - (-sigma0/27)) /. beta -> 1
+   112	];
+   113	
+   114	Print[""];
+   115	Print["Stage 108 Mathematica audit passed."];
+   116	
+   117	Exit[0];
+
+exec
+/bin/bash -lc 'git diff -- /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage108_robustness_classes_sympy_audit.txt /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_108.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "rg -n \"Applied|Orchestrator|Blocked|Stage 108|Sigma5 general|general preservation|chi_arg\\(beta=1\\)|STAGE 108|STAGE 91|STAGE 091\" /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_108.tex" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:26:banner["STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q"];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:55:expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:103:Print["Sigma5 general preservation locus = ", fmt[sigma5PresGen]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:105:  "general preservation submanifold = S(1 - beta^5)/9 - sigma0/27",
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:108:expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:115:Print["Stage 108 Mathematica audit passed."];
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:25:banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:48:expect_zero('chi_arg(beta=1) - 1', chi_arg.subs(beta, 1) - 1)
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:97:print('Sigma5 general preservation locus =', sp.simplify(chi_pres_gen))
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:99:    'general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27',
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py:102:expect_zero('general preservation locus check', chi_gen.subs(Sigma5, chi_pres_gen) - 1)
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:14:Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:18:If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:53:**Issue:** The line `expectZero["chi_arg(beta=1) - 1", chiArg /. beta -> 1 - 1];` is parsed by Mathematica as `chiArg /. (beta -> (1 - 1))` = `chiArg /. (beta -> 0)`, because `Plus`/`Subtract` bind tighter than `Rule` and `ReplaceAll`. Since `chiArg = beta^5`, the substituted residual is `0^5 = 0` regardless of whether `chi_arg(beta=1)` actually equals 1. The check passes by accident, not by computing the intended quantity. The SymPy counterpart on L48 uses `.subs(beta, 1) - 1` and is correct.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:60:expectZero["chi_arg(beta=1) - 1", chiArg /. beta -> 1 - 1];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:65:expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:72:1. The transcript still prints `chi_arg(beta=1) - 1 = 0` and `PASS: chi_arg(beta=1) - 1`.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:74:3. Line 55 of the `.wl` file now reads `expectZero["chi_arg(beta=1) - 1", (chiArg /. beta -> 1) - 1];` exactly.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:82:**Issue:** Both scripts banner this unit as "STAGE 91" / "STAGE 091", but this is unit 108. The mtime check confirms the saved outputs are fresh; the issue is the *banner string* in the script source, which propagates to the transcripts and misleads downstream grepping.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:89:banner('STAGE 91 — ROBUSTNESS CLASSES FOR chi_Q')
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:94:banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:101:banner["STAGE 091 — ROBUSTNESS CLASSES FOR chi_Q"];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:106:banner["STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q"];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_108.md:112:After Codex applies, the verifier will run `redteam exec-sympy 108` and `redteam exec-mathematica 108` and confirm both transcripts now print `STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q` in the banner section. Scripts must continue to exit 0.
+
+codex
+---
+stage: 108
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [moving_throat_pde_stage108_robustness_classes_sympy_audit.py, moving_throat_pde_stage108_robustness_classes_sympy_audit.txt, moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl, moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt, stage_108.md, stage_108.tex]
+---
+# Codex review — stage 108
+
+## What the edit was supposed to do
+The directive identified that the scripts only checked the beta=1 additive preservation locus, while the notes claimed the general beta-dependent locus `Sigma_5 = S(1 - beta^5)/9 - Sigma_0/27`; direction (a) was to extend both scripts with a scale+argument+additive class and re-solve the even-match compensation. It also required fixing a Mathematica precedence bug so `chi_arg(beta=1) - 1` substitutes beta=1 before subtracting 1. Finally, both script banners had to be updated from stage 91/091 to stage 108.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:25 | SymPy banner says stage 108 | yes | metadata, not math | PASS |
+| 2 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:26 | Mathematica banner says stage 108 | yes | metadata, not math | PASS |
+| 3 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:55 | parenthesized `chi_arg(beta=1) - 1` | yes | pure argument beta=1 odd normalization | PASS |
+| 4 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:84-90 | unique beta-parameterized even-match solution | yes | compensated branch even coefficients | PASS |
+| 5 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:95-96 | unique beta-parameterized even-match solution | yes | compensated branch even coefficients | PASS, but see R2 |
+| 6 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:98-101 | solved locus equals `S(1-beta^5)/9 - Sigma0/27` | yes | general preservation locus | PASS |
+| 7 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:104-107 | solved locus equals `S(1-beta^5)/9 - sigma0/27` | yes | general preservation locus | PASS, but see R2 |
+| 8 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:102 | substitute solved locus back into same `chi_gen == 1` | no | only self-consistency of `Solve` | FINDING R1 |
+| 9 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:108 | substitute solved locus back into same `chiGen == 1` | no | only self-consistency of `Solve` | FINDING R1 |
+| 10 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:103-106 | general locus reduces to beta=1 Class C | yes | special-case reduction | PASS |
+| 11 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:109-112 | general locus reduces to beta=1 Class C | yes | special-case reduction | PASS, but see R2 |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage108_robustness_classes_sympy_audit.py:102`; `moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:108`
+- **What's wrong:** `expect_zero('general preservation locus check', chi_gen.subs(Sigma5, chi_pres_gen) - 1)` and `expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];` substitute a value obtained by solving that same equation. If the model for `chi_gen`/`chiGen` were wrong but internally self-consistent, this check would still pass.
+- **What it should be:** Substitute the hard-coded paper locus directly, and assert the iff structure, e.g. check `chi_gen.subs(Sigma5, S*(1-beta**5)/9 - Sigma0/27) - 1 == 0` and factor `chi_gen - 1` to show it is proportional to `Sigma5 - (S*(1-beta**5)/9 - Sigma0/27)` under the nonzero denominator branch.
+
+### R2 — transliteration
+- **Where:** `moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:83-112`
+- **What's wrong:** The added Mathematica Class D block is a line-by-line translation of the SymPy block: build `lambdaGen`, extract `l0g/l2g/l4g/l5g`, define `m2g/m4g`, solve for even compensation, define `chiGen`, solve for `sigma5`, and compare to the same hard-coded target. It corroborates that a second CAS simplifies the same copied algebra, but it is not an independent derivation; a copied modeling error would survive in both engines.
+- **What it should be:** Use Mathematica to check the preservation statement independently, preferably with `Reduce`/`FullSimplify` on `chiGen == 1 <=> sigma5 == sNorm*(1-beta^5)/9 - sigma0/27` under the declared assumptions, or derive `chiGen` from a direct series coefficient route that is not just the SymPy intermediate chain rewritten.
+
+## Bottom line
+The corrected Mathematica precedence check is real and the saved output shows `chi_arg(beta=1) - 1 = 0` with `PASS`; the banner fixes are also corroborated in both transcripts. The hard-coded general locus comparison would fail under the old beta=1-only model, a wrong beta power, or a wrong odd normalization, so that assertion is meaningful. The failure is that the subsequent “general preservation locus check” is solved-locus self-substitution, and the Mathematica copy does not provide independent protection against a shared modeling mistake.
+tokens used
+25,181
+---
+stage: 108
+reviewer: codex
+verdict: FINDINGS
+findings_count: 2
+files_reviewed: [moving_throat_pde_stage108_robustness_classes_sympy_audit.py, moving_throat_pde_stage108_robustness_classes_sympy_audit.txt, moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl, moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt, stage_108.md, stage_108.tex]
+---
+# Codex review — stage 108
+
+## What the edit was supposed to do
+The directive identified that the scripts only checked the beta=1 additive preservation locus, while the notes claimed the general beta-dependent locus `Sigma_5 = S(1 - beta^5)/9 - Sigma_0/27`; direction (a) was to extend both scripts with a scale+argument+additive class and re-solve the even-match compensation. It also required fixing a Mathematica precedence bug so `chi_arg(beta=1) - 1` substitutes beta=1 before subtracting 1. Finally, both script banners had to be updated from stage 91/091 to stage 108.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:25 | SymPy banner says stage 108 | yes | metadata, not math | PASS |
+| 2 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:26 | Mathematica banner says stage 108 | yes | metadata, not math | PASS |
+| 3 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:55 | parenthesized `chi_arg(beta=1) - 1` | yes | pure argument beta=1 odd normalization | PASS |
+| 4 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:84-90 | unique beta-parameterized even-match solution | yes | compensated branch even coefficients | PASS |
+| 5 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:95-96 | unique beta-parameterized even-match solution | yes | compensated branch even coefficients | PASS, but see R2 |
+| 6 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:98-101 | solved locus equals `S(1-beta^5)/9 - Sigma0/27` | yes | general preservation locus | PASS |
+| 7 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:104-107 | solved locus equals `S(1-beta^5)/9 - sigma0/27` | yes | general preservation locus | PASS, but see R2 |
+| 8 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:102 | substitute solved locus back into same `chi_gen == 1` | no | only self-consistency of `Solve` | FINDING R1 |
+| 9 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:108 | substitute solved locus back into same `chiGen == 1` | no | only self-consistency of `Solve` | FINDING R1 |
+| 10 | moving_throat_pde_stage108_robustness_classes_sympy_audit.py:103-106 | general locus reduces to beta=1 Class C | yes | special-case reduction | PASS |
+| 11 | moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:109-112 | general locus reduces to beta=1 Class C | yes | special-case reduction | PASS, but see R2 |
+
+## Findings
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage108_robustness_classes_sympy_audit.py:102`; `moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:108`
+- **What's wrong:** `expect_zero('general preservation locus check', chi_gen.subs(Sigma5, chi_pres_gen) - 1)` and `expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];` substitute a value obtained by solving that same equation. If the model for `chi_gen`/`chiGen` were wrong but internally self-consistent, this check would still pass.
+- **What it should be:** Substitute the hard-coded paper locus directly, and assert the iff structure, e.g. check `chi_gen.subs(Sigma5, S*(1-beta**5)/9 - Sigma0/27) - 1 == 0` and factor `chi_gen - 1` to show it is proportional to `Sigma5 - (S*(1-beta**5)/9 - Sigma0/27)` under the nonzero denominator branch.
+
+### R2 — transliteration
+- **Where:** `moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl:83-112`
+- **What's wrong:** The added Mathematica Class D block is a line-by-line translation of the SymPy block: build `lambdaGen`, extract `l0g/l2g/l4g/l5g`, define `m2g/m4g`, solve for even compensation, define `chiGen`, solve for `sigma5`, and compare to the same hard-coded target. It corroborates that a second CAS simplifies the same copied algebra, but it is not an independent derivation; a copied modeling error would survive in both engines.
+- **What it should be:** Use Mathematica to check the preservation statement independently, preferably with `Reduce`/`FullSimplify` on `chiGen == 1 <=> sigma5 == sNorm*(1-beta^5)/9 - sigma0/27` under the declared assumptions, or derive `chiGen` from a direct series coefficient route that is not just the SymPy intermediate chain rewritten.
+
+## Bottom line
+The corrected Mathematica precedence check is real and the saved output shows `chi_arg(beta=1) - 1 = 0` with `PASS`; the banner fixes are also corroborated in both transcripts. The hard-coded general locus comparison would fail under the old beta=1-only model, a wrong beta power, or a wrong odd normalization, so that assertion is meaningful. The failure is that the subsequent “general preservation locus check” is solved-locus self-substitution, and the Mathematica copy does not provide independent protection against a shared modeling mistake.
+
+---
+codex_session_id: 019e711e-b447-7141-8cf9-47ccdaa92dab

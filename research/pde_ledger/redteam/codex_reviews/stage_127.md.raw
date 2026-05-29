@@ -1,0 +1,530 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7121-d625-7673-9de6-822ff2e7a3fe
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 127)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage127_penetration_families_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage127_penetration_families_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_127.tex
+
+Write your verdict report for stage 127 now, following the format above exactly.
+codex
+I’m going to read the directive, stage card, scripts, and saved outputs only. I’ll avoid running anything and treat the current checks as suspect until the source/output show otherwise.
+exec
+/bin/bash -lc 'cat /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage127_penetration_families_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py | sed -n '1,280p'" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,240p' /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md" in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc "sed -n '1,240p' /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_127.tex" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+
+========================================================================================
+STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES
+========================================================================================
+g_slab(x) = 2*sin(pi*x/2)/(pi*x)
+g_exp(x) = (2*pi*x + 4*exp(1/x))/((pi**2*x**2 + 4)*(exp(1/x) - 1))
+
+g_-^F1 = 0.758035078944662826919680890414
+x_*^slab = 0.79783936090456440508490881279972941789601018958900271741142733512870884256665312
+x_*^exp  = 0.66276540262316140251258875013529026617855113761165291470424652438625727951066625
+residual slab = -2.66696092767403190071722842020e-83
+residual exp  = -9.67012424716328641076781154243e-82
+
+Conclusion: moderate positive source penetration reaches the unique lower compensated branch.
+
+ succeeded in 0ms:
+\section[Stage 127]{Stage 127: Geometric Mouth-Penetration Families}
+\label{stage:127}
+
+\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+\claimstatus{\StatusExactClosure{}.}
+
+\stagefield{Purpose}{Stage~127 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
+
+\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+
+\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage127_penetration_families_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage127_penetration_families_mathematica_audit.txt}.}
+
+\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
+
+\begin{quote}
+Slab and truncated-exponential families reach the lower branch at moderate penetration depths.
+\end{quote}
+
+\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+
+\stagefield{Checks}{\begin{verificationchecklist}
+\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
+\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+\end{verificationchecklist}}
+
+\stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+
+ succeeded in 0ms:
+---
+unit_id: 127
+batch: IV.4
+created_at: 2026-05-27T00:00:00-06:00
+findings_count: 2
+stop_cold: null
+applied: false
+verification_status: pending
+needs_user_resolution: true
+---
+
+# Codex directive — unit 127
+
+Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+
+For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" a paper_misalignment unless the user has explicitly chosen a direction in a follow-up directive.
+
+If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+
+Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+
+Do NOT run python or mathematica. Only edit files.
+
+Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+
+## F1 — paper_misalignment
+
+**Subtype:** notes_contradicts_script
+
+**Paper side:**
+- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_127.tex:1` quote: `\section[Stage 127]{Stage 127: Geometric Mouth-Penetration Families}`
+- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage127_penetration_families.md:2` quote: `# Moving-Throat PDE — Stage 229: Geometric Mouth-Penetration Families` (note: notes file title says "Stage 229" rather than "Stage 127" — yet another label inconsistency in this unit's documentation chain)
+
+**Script side:**
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py:12` quote: `banner("STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES")`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:26` quote: `banner["STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];`
+
+## Resolve before fix_loop
+
+The script banner strings say "STAGE 110", the paper card and Mathematica end-message say "Stage 127", and the source notes file title says "Stage 229". Three different stage numbers reference the same unit. Which number is canonical for this stage?
+
+Possible directions (the user picks one):
+- (a) The paper card and filename are authoritative (Stage 127) → update both script banners at SymPy L12 and Mathematica L26 to "STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES"; also update notes title to "Stage 127". No numerical change.
+- (b) The notes file's "Stage 229" is canonical (this stage was re-numbered) → update paper card title, filename references, and both script banners to "Stage 229" — large refactor; would normally require renaming files. Almost certainly NOT the intended direction.
+- (c) The "STAGE 110" banner came from a sibling file by copy-paste and is purely clerical → same outcome as (a).
+
+Recommended direction: (a) or (c) — both lead to setting all banners to "STAGE 127". The notes title's "Stage 229" appears to be an old internal numbering left over from before the renumbering; the user should confirm and (optionally) also clean up the notes title in a separate paper-side patch.
+
+The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+
+## F2 — mathematica_transliteration
+
+**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:26–48`
+
+**Issue:**
+The Mathematica script is a structural line-by-line port of the SymPy script. Both engines take the closed-form bias factors `g_slab(x) = (2/(pi x)) sin(pi x / 2)` and `g_exp(x) = 2(2 + pi x e^{-1/x}) / ((4 + pi^2 x^2)(1 - e^{-1/x}))` from the notes verbatim, without independently deriving them from the source integrals `int_0^{xL} (1/(xL)) cos(pi z / (2 L)) dz` and `int_0^L (e^{-z/(xL)} / (xL (1 - e^{-1/x}))) cos(pi z / (2 L)) dz`. A typo or sign error in either closed form would slip through both audits identically.
+
+**Required change:**
+
+Edit `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl`. Between the existing line 29 (`$Assumptions = Element[x, Reals] && x > 0;`) and line 31 (`rDisc = Sqrt[4107 - 100*Pi^2];`), insert an independent symbolic-integration check.
+
+Before (current L28–35):
+```
+Clear[x];
+$Assumptions = Element[x, Reals] && x > 0;
+
+rDisc = Sqrt[4107 - 100*Pi^2];
+gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+
+gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+```
+
+After:
+```
+Clear[x, z];
+$Assumptions = Element[x, Reals] && x > 0 && Element[z, Reals];
+
+rDisc = Sqrt[4107 - 100*Pi^2];
+gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+
+(* Independent derivation of g_slab from the slab source integral.
+   With L = 1 (the bias factor is L-independent after the change of variables u = z/L). *)
+gSlabFromIntegral = FullSimplify[Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}], Assumptions -> x > 0];
+gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+slabClosedFormResidual = FullSimplify[gSlabFromIntegral - gSlab, Assumptions -> x > 0];
+If[TrueQ[slabClosedFormResidual === 0],
+   pass["slab closed-form matches source integral"],
+   fail["slab closed-form matches source integral", slabClosedFormResidual]];
+
+(* Independent derivation of g_exp from the exponential source integral. *)
+gExpFromIntegral = FullSimplify[Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}], Assumptions -> x > 0];
+gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+expClosedFormResidual = FullSimplify[gExpFromIntegral - gExp, Assumptions -> x > 0];
+If[TrueQ[expClosedFormResidual === 0],
+   pass["exp closed-form matches source integral"],
+   fail["exp closed-form matches source integral", expClosedFormResidual]];
+```
+
+(The `Clear[x, z]` is needed because the new code introduces `z` as a fresh symbol; `$Assumptions` is updated to allow `z` to be a real integration variable.)
+
+The rest of the script (lines 40–53) is unchanged: same `FindRoot` calls, same `expectApprox` residual checks, same `Stage 127 Mathematica audit passed.` message.
+
+**Claim manifest** (not a missing-script finding, but documenting what the new checks verify):
+
+M1: `Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}] === 2*Sin[Pi*x/2]/(Pi*x)`, i.e., the closed-form `g_slab(x)` is the true value of the slab source integral.
+
+M2: `Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}] === 2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x]))`, i.e., the closed-form `g_exp(x)` is the true value of the exponential source integral.
+
+Both integrals are evaluable in closed form by Mathematica (slab: standard `Cos` antiderivative; exp: standard `Exp * Cos` antiderivative with finite-interval evaluation). The `FullSimplify` step is needed to compare against the algebraically-rearranged form in the notes.
+
+**Verification command:**
+After Codex applies, the verifier will run `redteam exec-mathematica 127` and confirm:
+1. Two new `PASS:` lines appear in the output: `PASS: slab closed-form matches source integral` and `PASS: exp closed-form matches source integral`.
+2. The existing `PASS: slab compensation root` and `PASS: exponential compensation root` lines remain.
+3. The script exits 0.
+4. SymPy script is unchanged (the transliteration fix applies only to the second engine).
+
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(t: str):
+     6	    print("\n" + "="*88)
+     7	    print(t)
+     8	    print("="*88)
+     9	
+    10	x = sp.symbols('x', positive=True, real=True)
+    11	
+    12	banner("STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES")
+    13	
+    14	R = sp.sqrt(4107 - 100*sp.pi**2)
+    15	gminus = sp.simplify((2*R - 37*sp.sqrt(3))/(20*sp.pi))
+    16	
+    17	# Uniform slab family
+    18	g_slab = sp.simplify(2*sp.sin(sp.pi*x/2)/(sp.pi*x))
+    19	print("g_slab(x) =", g_slab)
+    20	
+    21	# truncated exponential family
+    22	g_exp = sp.simplify(2*(2 + sp.pi*x*sp.exp(-1/x))/((4 + sp.pi**2*x**2)*(1 - sp.exp(-1/x))))
+    23	print("g_exp(x) =", g_exp)
+    24	
+    25	# Numerical roots
+    26	x0_slab = sp.nsolve(sp.Eq(g_slab, gminus), 0.8, tol=1e-30, maxsteps=200, prec=80)
+    27	x0_exp = sp.nsolve(sp.Eq(g_exp, gminus), 0.66, tol=1e-30, maxsteps=200, prec=80)
+    28	
+    29	print("\ng_-^F1 =", sp.N(gminus, 30))
+    30	print("x_*^slab =", x0_slab)
+    31	print("x_*^exp  =", x0_exp)
+    32	
+    33	res_slab = sp.N(g_slab.subs(x, x0_slab) - gminus, 30)
+    34	res_exp = sp.N(g_exp.subs(x, x0_exp) - gminus, 30)
+    35	print("residual slab =", res_slab)
+    36	print("residual exp  =", res_exp)
+    37	
+    38	if abs(float(res_slab)) > 1e-20 or abs(float(res_exp)) > 1e-20:
+    39	    raise AssertionError("Penetration-family compensation solve failed.")
+    40	
+    41	print("\nConclusion: moderate positive source penetration reaches the unique lower compensated branch.")
+
+codex
+The directive only required a Mathematica-side independence fix for the closed-form bias factors; SymPy appears unchanged except for the stage banner resolution. I’m reading the Mathematica source and output with line numbers now so I can judge whether the new checks are independent and whether their PASS lines are present.
+exec
+/bin/bash -lc 'cat /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage127_penetration_families_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+
+========================================================================================
+STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES
+========================================================================================
+PASS: slab closed-form matches source integral
+PASS: exp closed-form matches source integral
+g_slab(x) = (2*Sin[(Pi*x)/2])/(Pi*x)
+g_exp(x) = (2*(2*E^x^(-1) + Pi*x))/((-1 + E^x^(-1))*(4 + Pi^2*x^2))
+g_-^F1 = 0.7580350789446628269196808904141104577505296234775693214353`30.
+x_*^slab = 0.7978393609045644050849088127997294178960101895890027174113`30.
+x_*^exp  = 0.6627654026231614025125887501352902661785511376116529147062`30.
+slab compensation root residual = 1.16882742585378873655042409453696839846`21.805699803526704*^-58
+PASS: slab compensation root
+exponential compensation root residual = -3.24825251379346805149450640626666467835`21.900281148171647*^-58
+PASS: exponential compensation root
+
+Stage 127 Mathematica audit passed.
+
+exec
+/bin/bash -lc "nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl | sed -n '1,220p'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectApprox[name_String, value_, target_, tol_] := Module[{delta},
+    21	  delta = N[value - target, 40];
+    22	  Print[name, " residual = ", fmt[delta]];
+    23	  If[TrueQ[Abs[delta] < tol], pass[name], fail[name, delta]];
+    24	];
+    25	
+    26	banner["STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];
+    27	
+    28	Clear[x, z];
+    29	$Assumptions = Element[x, Reals] && x > 0 && Element[z, Reals];
+    30	
+    31	rDisc = Sqrt[4107 - 100*Pi^2];
+    32	gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+    33	
+    34	(* Independent derivation of g_slab from the slab source integral.
+    35	   With L = 1 (the bias factor is L-independent after u = z/L). *)
+    36	gSlabFromIntegral = FullSimplify[Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}], Assumptions -> x > 0];
+    37	gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+    38	slabClosedFormResidual = FullSimplify[gSlabFromIntegral - gSlab, Assumptions -> x > 0];
+    39	If[TrueQ[slabClosedFormResidual === 0],
+    40	   pass["slab closed-form matches source integral"],
+    41	   fail["slab closed-form matches source integral", slabClosedFormResidual]];
+    42	
+    43	(* Independent derivation of g_exp from the exponential source integral. *)
+    44	gExpFromIntegral = FullSimplify[Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}], Assumptions -> x > 0];
+    45	gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+    46	expClosedFormResidual = FullSimplify[gExpFromIntegral - gExp, Assumptions -> x > 0];
+    47	If[TrueQ[expClosedFormResidual === 0],
+    48	   pass["exp closed-form matches source integral"],
+    49	   fail["exp closed-form matches source integral", expClosedFormResidual]];
+    50	
+    51	Print["g_slab(x) = ", fmt[gSlab]];
+    52	Print["g_exp(x) = ", fmt[gExp]];
+    53	
+    54	xStarSlab = x /. FindRoot[gSlab == gMinus, {x, 0.8}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 200];
+    55	xStarExp = x /. FindRoot[gExp == gMinus, {x, 0.66}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 200];
+    56	
+    57	Print["g_-^F1 = ", fmt[N[gMinus, 30]]];
+    58	Print["x_*^slab = ", fmt[N[xStarSlab, 30]]];
+    59	Print["x_*^exp  = ", fmt[N[xStarExp, 30]]];
+    60	
+    61	expectApprox["slab compensation root", gSlab /. x -> xStarSlab, gMinus, 10^-20];
+    62	expectApprox["exponential compensation root", gExp /. x -> xStarExp, gMinus, 10^-20];
+    63	
+    64	Print[""];
+    65	Print["Stage 127 Mathematica audit passed."];
+    66	
+    67	Exit[0];
+
+exec
+/bin/bash -lc "rg -n \"Applied|Orchestrator|F2|closed-form|Integral|Integrate|PASS|pass\\[|fail\\[|expectApprox|gSlab|gExp|gMinus|FindRoot|banner\" /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_127.tex" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py:5:def banner(t: str):
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py:12:banner("STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES")
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:4:banner[title_String] := (
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:11:pass[name_String] := Print["PASS: ", name];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:14:fail[name_String, detail_: Missing["NotAvailable"]] := (
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:20:expectApprox[name_String, value_, target_, tol_] := Module[{delta},
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:23:  If[TrueQ[Abs[delta] < tol], pass[name], fail[name, delta]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:26:banner["STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:32:gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:36:gSlabFromIntegral = FullSimplify[Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}], Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:37:gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:38:slabClosedFormResidual = FullSimplify[gSlabFromIntegral - gSlab, Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:40:   pass["slab closed-form matches source integral"],
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:41:   fail["slab closed-form matches source integral", slabClosedFormResidual]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:44:gExpFromIntegral = FullSimplify[Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}], Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:45:gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:46:expClosedFormResidual = FullSimplify[gExpFromIntegral - gExp, Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:48:   pass["exp closed-form matches source integral"],
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:49:   fail["exp closed-form matches source integral", expClosedFormResidual]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:51:Print["g_slab(x) = ", fmt[gSlab]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:52:Print["g_exp(x) = ", fmt[gExp]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:54:xStarSlab = x /. FindRoot[gSlab == gMinus, {x, 0.8}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 200];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:55:xStarExp = x /. FindRoot[gExp == gMinus, {x, 0.66}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 200];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:57:Print["g_-^F1 = ", fmt[N[gMinus, 30]]];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:61:expectApprox["slab compensation root", gSlab /. x -> xStarSlab, gMinus, 10^-20];
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:62:expectApprox["exponential compensation root", gExp /. x -> xStarExp, gMinus, 10^-20];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:14:Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:35:- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py:12` quote: `banner("STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES")`
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:36:- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:26` quote: `banner["STAGE 110 — GEOMETRIC MOUTH-PENETRATION FAMILIES"];`
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:40:The script banner strings say "STAGE 110", the paper card and Mathematica end-message say "Stage 127", and the source notes file title says "Stage 229". Three different stage numbers reference the same unit. Which number is canonical for this stage?
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:43:- (a) The paper card and filename are authoritative (Stage 127) → update both script banners at SymPy L12 and Mathematica L26 to "STAGE 127 — GEOMETRIC MOUTH-PENETRATION FAMILIES"; also update notes title to "Stage 127". No numerical change.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:44:- (b) The notes file's "Stage 229" is canonical (this stage was re-numbered) → update paper card title, filename references, and both script banners to "Stage 229" — large refactor; would normally require renaming files. Almost certainly NOT the intended direction.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:45:- (c) The "STAGE 110" banner came from a sibling file by copy-paste and is purely clerical → same outcome as (a).
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:47:Recommended direction: (a) or (c) — both lead to setting all banners to "STAGE 127". The notes title's "Stage 229" appears to be an old internal numbering left over from before the renumbering; the user should confirm and (optionally) also clean up the notes title in a separate paper-side patch.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:51:## F2 — mathematica_transliteration
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:56:The Mathematica script is a structural line-by-line port of the SymPy script. Both engines take the closed-form bias factors `g_slab(x) = (2/(pi x)) sin(pi x / 2)` and `g_exp(x) = 2(2 + pi x e^{-1/x}) / ((4 + pi^2 x^2)(1 - e^{-1/x}))` from the notes verbatim, without independently deriving them from the source integrals `int_0^{xL} (1/(xL)) cos(pi z / (2 L)) dz` and `int_0^L (e^{-z/(xL)} / (xL (1 - e^{-1/x}))) cos(pi z / (2 L)) dz`. A typo or sign error in either closed form would slip through both audits identically.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:68:gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:70:gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:71:gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:80:gMinus = N[(2*rDisc - 37*Sqrt[3])/(20*Pi), 80];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:84:gSlabFromIntegral = FullSimplify[Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}], Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:85:gSlab = FullSimplify[2*Sin[Pi*x/2]/(Pi*x), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:86:slabClosedFormResidual = FullSimplify[gSlabFromIntegral - gSlab, Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:88:   pass["slab closed-form matches source integral"],
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:89:   fail["slab closed-form matches source integral", slabClosedFormResidual]];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:92:gExpFromIntegral = FullSimplify[Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}], Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:93:gExp = FullSimplify[2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x])), Assumptions -> $Assumptions];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:94:expClosedFormResidual = FullSimplify[gExpFromIntegral - gExp, Assumptions -> x > 0];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:96:   pass["exp closed-form matches source integral"],
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:97:   fail["exp closed-form matches source integral", expClosedFormResidual]];
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:102:The rest of the script (lines 40–53) is unchanged: same `FindRoot` calls, same `expectApprox` residual checks, same `Stage 127 Mathematica audit passed.` message.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:106:M1: `Integrate[(1/x)*Cos[Pi*z/2], {z, 0, x}] === 2*Sin[Pi*x/2]/(Pi*x)`, i.e., the closed-form `g_slab(x)` is the true value of the slab source integral.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:108:M2: `Integrate[(Exp[-z/x]/(x*(1 - Exp[-1/x])))*Cos[Pi*z/2], {z, 0, 1}] === 2*(2 + Pi*x*Exp[-1/x])/((4 + Pi^2*x^2)*(1 - Exp[-1/x]))`, i.e., the closed-form `g_exp(x)` is the true value of the exponential source integral.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:114:1. Two new `PASS:` lines appear in the output: `PASS: slab closed-form matches source integral` and `PASS: exp closed-form matches source integral`.
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_127.md:115:2. The existing `PASS: slab compensation root` and `PASS: exponential compensation root` lines remain.
+
+codex
+---
+stage: 127
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage127_penetration_families_sympy_audit.py, moving_throat_pde_stage127_penetration_families_sympy_audit.txt, moving_throat_pde_stage127_penetration_families_mathematica_audit.wl, moving_throat_pde_stage127_penetration_families_mathematica_audit.txt, stage_127.md, stage_127.tex]
+---
+# Codex review — stage 127
+
+## What the edit was supposed to do
+The directive identified a paper/documentation stage-number mismatch as F1 and held that as a paper-misalignment item, with Stage 127 as the recommended canonical direction if resolved. The actionable mathematical fix was F2: the Mathematica audit was a line-by-line port of the SymPy audit and needed independent symbolic-integration checks for the slab and truncated-exponential mouth-bias closed forms. The new checks were required to derive `g_slab` and `g_exp` from their source integrals, print two new `PASS:` lines, and leave the existing compensation-root checks intact.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:36-41 | derive slab bias by `Integrate[(1/x) Cos[Pi z/2], {z,0,x}]` and compare to `2 Sin[Pi x/2]/(Pi x)` | Yes; a wrong factor, sign, limit, or normalization leaves a nonzero residual | Yes; anchors the slab mouth-bias map used for the penetration family reaching the lower branch | PASS |
+| 2 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:44-49 | derive exponential bias by integrating the normalized truncated exponential source against the boundary-layer cosine and compare to closed form | Yes; the integral is built independently from the closed form, so denominator/sign/exponential mistakes would fail | Yes; anchors the truncated-exponential mouth-bias map used for the compensation point | PASS |
+| 3 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:61-62 | existing slab/exponential compensation roots still satisfy `g == gMinus` | Yes numerically, if `FindRoot` converged to a wrong value or the formulas no longer hit `gMinus` | Yes; directly checks the card’s “reach the lower branch at moderate penetration depths” claim | PASS |
+
+## Bottom line
+PASS. I tried to break the added checks by looking for same-intermediate `X - X` construction, copied closed-form reuse, unjustified assumptions, and output gaps. The Mathematica additions instead integrate the source densities directly and subtract separately defined closed forms under the justified penetration-depth domain `x > 0`; the saved output shows both new `PASS:` lines plus the original slab and exponential compensation-root `PASS:` lines. The remaining SymPy audit is not the independent engine for the new derivation, but the directive only required that independence to be added on the Mathematica side, which it was.
+tokens used
+30,756
+---
+stage: 127
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage127_penetration_families_sympy_audit.py, moving_throat_pde_stage127_penetration_families_sympy_audit.txt, moving_throat_pde_stage127_penetration_families_mathematica_audit.wl, moving_throat_pde_stage127_penetration_families_mathematica_audit.txt, stage_127.md, stage_127.tex]
+---
+# Codex review — stage 127
+
+## What the edit was supposed to do
+The directive identified a paper/documentation stage-number mismatch as F1 and held that as a paper-misalignment item, with Stage 127 as the recommended canonical direction if resolved. The actionable mathematical fix was F2: the Mathematica audit was a line-by-line port of the SymPy audit and needed independent symbolic-integration checks for the slab and truncated-exponential mouth-bias closed forms. The new checks were required to derive `g_slab` and `g_exp` from their source integrals, print two new `PASS:` lines, and leave the existing compensation-root checks intact.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:36-41 | derive slab bias by `Integrate[(1/x) Cos[Pi z/2], {z,0,x}]` and compare to `2 Sin[Pi x/2]/(Pi x)` | Yes; a wrong factor, sign, limit, or normalization leaves a nonzero residual | Yes; anchors the slab mouth-bias map used for the penetration family reaching the lower branch | PASS |
+| 2 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:44-49 | derive exponential bias by integrating the normalized truncated exponential source against the boundary-layer cosine and compare to closed form | Yes; the integral is built independently from the closed form, so denominator/sign/exponential mistakes would fail | Yes; anchors the truncated-exponential mouth-bias map used for the compensation point | PASS |
+| 3 | moving_throat_pde_stage127_penetration_families_mathematica_audit.wl:61-62 | existing slab/exponential compensation roots still satisfy `g == gMinus` | Yes numerically, if `FindRoot` converged to a wrong value or the formulas no longer hit `gMinus` | Yes; directly checks the card’s “reach the lower branch at moderate penetration depths” claim | PASS |
+
+## Bottom line
+PASS. I tried to break the added checks by looking for same-intermediate `X - X` construction, copied closed-form reuse, unjustified assumptions, and output gaps. The Mathematica additions instead integrate the source densities directly and subtract separately defined closed forms under the justified penetration-depth domain `x > 0`; the saved output shows both new `PASS:` lines plus the original slab and exponential compensation-root `PASS:` lines. The remaining SymPy audit is not the independent engine for the new derivation, but the directive only required that independence to be added on the Mathematica side, which it was.
+
+---
+codex_session_id: 019e7121-d625-7673-9de6-822ff2e7a3fe

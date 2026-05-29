@@ -20,4 +20,4 @@ See `/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_dir
 
 Apply F4. Skip F1, F2, F3 with `## Blocked` blocks until user provides direction.
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named. Do NOT run python or mathematica. Do NOT touch paper.tex, notes/, or any prose documents.
+Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named. Do NOT touch paper.tex, notes/, or any prose documents.

@@ -1,20 +1,20 @@
 ---
 unit_id: 116
 batch: IV.3
-auditor_model: claude-opus-4-7[1m]
-audit_date: 2026-05-27T00:00:00Z
+auditor_model: claude-opus-4-8[1m]
+audit_date: 2026-05-28T00:00:00Z
 verdict: findings
 stop_cold: null
-findings_count: 4
-paper_alignment: partial
+findings_count: 2
+paper_alignment: aligned
 scripts_checked:
-  sympy: insufficient
+  sympy: present
   mathematica: present
   engines_agree: true
   outputs_fresh: true
 docs_read:
   paper_stage_tex: present
-  notes_stage_files: ["/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md"]
+  notes_stage_files: [moving_throat_pde_stage116_dn_mixed_tube_realization.md]
   paper_appendix: present
 ---
 
@@ -24,7 +24,7 @@ docs_read:
 
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_116.tex`
 - notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md`
-- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex` (rows for stage_116 found at line 1266; MTDC-T8 anchor block lines 1175-1179)
+- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex` (subsec "Core-balance theorem and D/N tube", lines 511-573; eq. `app-part04-LW-compensation` line 544-549)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.txt`
@@ -32,172 +32,129 @@ docs_read:
 
 ## What the paper claims
 
-The stage card (`stage_116.tex` line 15-17) states verbatim: "First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale." The notes (authoritative, more detailed) lay out four concrete deliverables: (1) the D/N half-wave eigenvalue `k_W = π/(2L_W)`, `Ω_W = π c_s/(2L_W)`; (2) the bare even coefficient `κ_0 = (ω²/Ω_W²)/z² = 4L_W²/(π²a²)` derived from the eigenfunction problem `q''+k²q=0, q(0)=0, q'(L_W)=0`; (3) the compensation-selected tube length `L_W = πa/2 · sqrt((1+r_c)/3)` enforced by `κ_0 = (1+r_c)/3` with `r_c = λ²/(K_s K_q)`; (4) the bare outgoing form `D_W^bare(z) = (1+r_c)(1 - z²/3 - i z⁵/9) + O(z⁶)` and γ_0 = (1+r_c)/9; (5) after Stage-97 (1+r_c) renormalization, the canonical coefficients `κ_c = 1/3`, `γ_c = 1/9`.
+The stage gives a concrete geometric realization of the abstract mixed-channel data `(kappa_0, gamma_0)`. The mixed side-channel lives on a finite auxiliary tube of length `L_W` carrying the first Dirichlet/Neumann half-wave of `q'' + k^2 q = 0` with `q(0)=0`, `q'(L_W)=0`, giving `k_W = pi/(2 L_W)` and `Omega_W = pi c_s/(2 L_W)`. The bare even coefficient is `kappa_0 = (omega^2/Omega_W^2)/z^2 = 4 L_W^2/(pi^2 a^2)` with `z = a*omega/c_s`. The Stage-98 compensation requirement `kappa_0 = (1+r_c)/3`, `r_c = lambda^2/(K_s K_q)`, then fixes the tube length (the card's boxed Output: `L_W = pi a sqrt((1+r_c)/3)/2`; appendix eq. line 547). The compensation also requires `gamma_0 = (1+r_c)/9`, realized by the pure-scale bare outgoing form `D_W^bare(z) = (1+r_c)(1 - z^2/3 - i z^5/9) + O(z^6)`; removing the `(1+r_c)` hybridization factor (Stage-97 renormalization) leaves the canonical coefficients `kappa_c = 1/3`, `gamma_c = 1/9`. The notes flag the `D_W^bare` form explicitly as "a simple concrete realization", i.e. a posited ansatz, not an in-stage derivation.
 
 ## What the script claims to verify
 
-The SymPy script defines `r_c = lam²/(K_s K_q)`, hardcodes `kappa0_from_tube = 4L_W²/(π²a²)`, solves the compensation equation `kappa0_from_tube = (1+r_c)/3` for `L_W` (printing the result, but with no assertion), then defines `kappa0_bare = (1+r_c)/3` and divides by `(1+r_c)` and asserts the quotient equals `1/3`. Same pattern for `γ_c`. Finally, it constructs `D_bare = (1+r_c)·(canonical-form)`, divides by `(1+r_c)`, and asserts the quotient equals the canonical form. The Mathematica script mirrors this structure, but adds one additional substantive assertion: `lWRequired - πa·sqrt((1+r_c)/3)/2 == 0` (the actual tube-length law of paper claim 3).
+Both scripts assert: (i) `sin(k x)` solves the ODE and `q(0)=0`; (ii) the Neumann BC `q'(L_W)=0` holds at `k = pi/(2 L_W)` (genuine eigenvalue check); (iii) the dimensionless combination `(omega/Omega_W)^2/z^2` collapses to `4 L_W^2/(pi^2 a^2)`; (iv) solving `4 L_W^2/(pi^2 a^2) = (1+r_c)/3` for `L_W` gives the boxed closed form `pi a sqrt((1+r_c)/3)/2`; (v) a battery of follow-on checks: round-tripping the geometric `kappa_0` back through the solved `L_W`, dividing `gamma_0=(1+r_c)/9` by `(1+r_c)` to get `1/9`, dividing `kappa_0=(1+r_c)/3` by `(1+r_c)` to get `1/3`, and reading the `z^2`/`z^5` coefficients back off the hand-built `D_bare`. The genuine content is (ii)-(iv); checks in (v) are constructed to be unfalsifiable.
 
 ## Paper ↔ script cross-check
 
-| Paper-side deliverable | Script-side check | Status |
+| Paper deliverable | Script check | Status |
 |---|---|---|
-| D/N half-wave eigenvalue `k_W = π/(2L_W)` derived from `q''+k²q=0, q(0)=0, q'(L_W)=0` | (none — eigenvalue problem not posed) | missing |
-| Bare coefficient `κ_0 = 4L_W²/(π²a²)` from the eigenvalue | Literal definition `kappa0_from_tube = 4L_W²/(π²a²)` (sympy:26; wl:34) | mismatch (asserted as literal, not derived) |
-| Tube-length law `L_W = πa√((1+r_c)/3)/2` | SymPy: only prints `L_W_required`, no assertion. Mathematica: `expectZero["tube-length law", ...]` (wl:39) | partial (only Mathematica covers it) |
-| `γ_0 = (1+r_c)/9` literally appears | Defined as literal `gamma0_bare = (1+r_c)/9` (sympy:36; wl:42) | extra/tautological scaffolding |
-| Renormalization: `(1+r_c)·canonical` ÷ `(1+r_c)` = canonical | Both engines assert this via tautological constructions | match-but-tautological |
-| Final values `κ_c = 1/3, γ_c = 1/9` | Both engines assert `kappa_c - 1/3 == 0`, `gamma_c - 1/9 == 0` | tautological (algebraic identity of construction) |
+| D/N eigenvalue `k_W = pi/(2 L_W)` | sympy 34-39 / wl 43-46 (Neumann BC at k_W) | match (genuine) |
+| `kappa_0 = (omega/Omega_W)^2/z^2 = 4 L_W^2/(pi^2 a^2)` | sympy 41-47 / wl 48-52 | match (genuine) |
+| Tube-length law `L_W = pi a sqrt((1+r_c)/3)/2` (card Output, appendix 547) | sympy 52-62 / wl 56-60 (solve + closed-form check) | match (genuine) |
+| `gamma_0 = (1+r_c)/9` | sympy 70,79-83 / wl 65,73-75 | partial (hardcoded ansatz + coefficient read-back, no independent derivation) |
+| Renormalization -> `kappa_c = 1/3`, `gamma_c = 1/9` | sympy 71-74,84-93 / wl 66-70,76-80 | partial (divide-by-own-scale tautologies) |
 
-`paper_alignment: partial` — the central paper claim 3 (tube-length law) is exercised on the Mathematica side but not on the SymPy side. The two interior claims of the stage (κ_0 derivation from eigenfunction, then κ_c emerging from renormalization) are not substantively verified: κ_0 is hardcoded and κ_c follows tautologically.
+`paper_alignment` = aligned: every paper-side target has a corresponding script-side target with the correct constants (`1/3`, `1/9`, `(1+r_c)/3`, `(1+r_c)/9`, tube-length closed form all match the card/notes/appendix). The deficiency is verification strength on the renormalization block, not a target/value mismatch -- hence `insufficient_verification`, not `paper_misalignment`.
 
 ## Assertion inventory
 
-| #  | Script       | Line | Form                                                  | Exercises which paper claim?                  | Anchored to claim? |
-|----|--------------|------|-------------------------------------------------------|-----------------------------------------------|--------------------|
-| A1 | sympy        | 41   | `expect_zero("final kappa_c - 1/3", kappa_c - 1/3)`   | claim 5 (final κ_c=1/3)                       | no (tautological)  |
-| A2 | sympy        | 42   | `expect_zero("final gamma_c - 1/9", gamma_c - 1/9)`   | claim 5 (final γ_c=1/9)                       | no (tautological)  |
-| A3 | sympy        | 46-49| `D_final - (1 - z²/3 - i z⁵/9) == 0`                  | claim 4/5 (renormalization)                   | no (tautological)  |
-| A4 | mathematica  | 39   | `lWRequired - πa·sqrt((1+r_c)/3)/2 == 0`              | claim 3 (tube-length law)                     | yes (substantive)  |
-| A5 | mathematica  | 46   | `kappaC - 1/3 == 0`                                   | claim 5                                       | no (tautological)  |
-| A6 | mathematica  | 47   | `gammaC - 1/9 == 0`                                   | claim 5                                       | no (tautological)  |
-| A7 | mathematica  | 51   | `dFinal - (1 - z²/3 - i z⁵/9) == 0`                   | claim 4/5                                     | no (tautological)  |
+| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+|---|---|---|---|---|---|
+| A1 | sympy | 30-31 | `simplify(q''+k^2 q)==0` | ODE (claim i) | yes |
+| A2 | sympy | 32-33 | `q(0)==0` | left BC (claim i) | yes (trivial but genuine) |
+| A3 | sympy | 34-39 | `cos(k_W L_W)==0` at k_W | eigenvalue (claim i) | yes |
+| A4 | sympy | 43-47 | `kappa0_derived - 4L_W^2/(pi^2 a^2)==0` | claim ii | yes |
+| A5 | sympy | 52-62 | `solve(...)[0] - pi a sqrt((1+r_c)/3)/2==0` | tube-length law (claim iii / Output) | yes |
+| A6 | sympy | 64-69 | `4 L_W_required^2/(pi^2 a^2) - (1+r_c)/3==0` | claim iii | no (solve-then-recheck round-trip) |
+| A7 | sympy | 73 | `kappa_c - 1/3==0` | renorm (claim v) | no (divide by own scale) |
+| A8 | sympy | 74 | `gamma_c - 1/9==0` | renorm (claim v) | no (divide hardcoded value by own scale) |
+| A9 | sympy | 79-83 | `i*D_bare.coeff(z,5) - (1+r_c)/9==0` | gamma_0 (claim iv) | no (read back constructed coefficient) |
+| A10 | sympy | 84-88 | `D_bare/(1+r_c) - (1-z^2/3-i z^5/9)==0` | renorm (claim v) | no (divide by own scale) |
+| A11 | sympy | 89-93 | `-D_bare.coeff(z,2) - (1+r_c)/3==0` | kappa_0 (claim iii) | no (read back constructed coefficient) |
+| B1-B11 | mathematica | 39-80 | one-to-one mirror of A1-A11 | same | same (see transliteration finding) |
 
-Only A4 is non-tautological. Every other assertion follows from the algebraic structure the script itself imposes a few lines earlier.
+A1-A5 (genuine) carry the stage's load-bearing physics -- the eigenvalue and the tube-length law that the card names as its Output. A6-A11 are unfalsifiable.
 
 ## Findings
 
-### F1 — tautological_check
+### F1 — mathematica_transliteration
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py:35-42`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl:41-47`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl:38-81`
 
 **What's wrong:**
-SymPy lines 35-42:
-```
-kappa0_bare = sp.simplify((1 + r_c) / 3)
-gamma0_bare = sp.simplify((1 + r_c) / 9)
-kappa_c = sp.simplify(kappa0_bare / (1 + r_c))
-gamma_c = sp.simplify(gamma0_bare / (1 + r_c))
-expect_zero("final kappa_c - 1/3", kappa_c - sp.Rational(1, 3))
-expect_zero("final gamma_c - 1/9", gamma_c - sp.Rational(1, 9))
-```
-The script defines `kappa0_bare = (1+r_c)/3` as a literal value, then divides by `(1+r_c)`. By construction `kappa_c == 1/3` for any value of r_c, so the assertion cannot fail. Same for γ_c, and same in Mathematica (lines 41-47).
+The `.wl` is a line-by-line port of the `.py`, not an independent re-derivation. Corresponding sections:
 
-The notes (paper claim 5) describe the renormalization as: the bare coefficient `(1+r_c)/3` is what falls out of the κ_0 = 4L_W²/(π²a²) calculation combined with κ_0 = (1+r_c)/3, and the (1+r_c) gets stripped by Stage-97's denominator renormalization. The script bypasses every step of that physics and writes the bare value as `(1+r_c)/3` directly. The assertion just confirms `(x/3)/x = 1/3`.
+SymPy 29-39:
+```
+q_trial = sp.sin(k_sym * x_var)
+ode_residual = sp.simplify(sp.diff(q_trial, x_var, 2) + k_sym**2 * q_trial)
+...
+bc_right = sp.simplify(sp.diff(q_trial, x_var).subs(x_var, L_W))
+k_W_value = sp.pi / (2 * L_W)
+```
+Mathematica 38-46:
+```
+qTrial[xVar_, kArg_] := Sin[kArg*xVar];
+odeRes = FullSimplify[D[qTrial[x, kSym], {x, 2}] + kSym^2 * qTrial[x, kSym], ...];
+...
+kWValue = Pi/(2*lW);
+bcRightAtKW = FullSimplify[(D[qTrial[x, kSym], x] /. x -> lW) /. kSym -> kWValue, ...];
+```
+Both *posit* the same trial function `sin(k x)` rather than solving the ODE+BCs independently (e.g. via `DSolve`), and verify it identically.
+
+SymPy 52-62 vs Mathematica 56-60:
+```
+L_W_required = sp.solve(sp.Eq(kappa0_from_tube, (1 + r_c) / 3), L_W)[0]
+expect_zero("tube-length law...", sp.simplify(L_W_required - sp.pi * a * sp.sqrt((1 + r_c) / 3) / 2))
+```
+```
+lWRequired = FullSimplify[lW /. First[Solve[kappa0FromTube == (1 + rC)/3, lW, Reals]], ...];
+expectZero["tube-length law", lWRequired - (Pi*a*Sqrt[(1 + rC)/3])/2];
+```
+`sp.solve(...)[0]` <-> `First[Solve[...]]`, identical variable choreography (`kappa0_derived`<->`kappa0Derived`, `r_c`<->`rC`, `L_W_required`<->`lWRequired`), identical step ordering through the entire file, and identical coefficient read-backs (`D_bare.coeff(z,5)` <-> `Coefficient[dBare, z, 5]`). This is a transliteration, not a second independent engine.
 
 **Why this matters:**
-The paper claim is that combining the D/N geometric κ_0 with the upstream compensation constraint yields κ_c = 1/3 after renormalization. The script's assertion confirms only the algebraic identity `((1+r_c)/3)/(1+r_c) = 1/3`, which is true for any rational expression. A bug in the upstream chain (e.g., if κ_0 from compensation were actually (1+2r_c)/3) would not be caught.
+The two-engine policy exists so a sign/branch error baked into one derivation is caught by a structurally different one. A transliteration cannot catch such an error because it reproduces the same algebra. The stage's load-bearing claim (the tube-length law) is therefore confirmed by only one genuine derivation, mirrored.
 
 **Required change:**
-Anchor `kappa0_bare` to the geometric derivation. Replace the literal `kappa0_bare = (1+r_c)/3` with the explicit solve: compute `L_W` from `kappa0_from_tube = (1+r_c)/3`, then substitute back to get `kappa0_bare = 4*L_W_required**2/(pi**2*a**2)`, simplify, and assert this equals `(1+r_c)/3` (i.e., the round-trip through L_W reproduces the input). Same for the Mathematica script. The renormalization check then becomes: assert that `kappa0_bare/(1+r_c)` simplifies to `1/3` where kappa0_bare came from the geometric round-trip — not where it was defined as `(1+r_c)/3` two lines earlier.
+In the `.wl`, derive the eigenvalue independently rather than positing `Sin[k x]`: use `DSolve[{q''[x] + k^2 q[x] == 0, q[0] == 0, q'[lW] == 0}, q, x]`, or solve the characteristic condition `Cos[k lW] == 0` for the smallest positive root via `Reduce[Cos[k lW] == 0 && 0 < k lW < Pi, k]`, to obtain `kW = Pi/(2 lW)` from first principles, then feed that into the `kappa0`/tube-length checks. Keep the asserted targets identical (they already match the paper). See directive F1.
 
 **Verification:**
-After the fix, `kappa_c = kappa0_bare/(1+r_c)` should still simplify to `1/3`, but `kappa0_bare` must now be obtained from `4*L_W_required**2/(pi**2*a**2)` (with `L_W_required` the symbolic solve result), not from the literal `(1+r_c)/3`. New round-trip assertion: `simplify(4*L_W_required**2/(pi**2*a**2) - (1+r_c)/3) == 0`.
+The new `.wl` must obtain `kW = Pi/(2 lW)` from an ODE/BC solve (not from a posited `Sin`) and still print all PASS lines and exit 0; the `kappa0`/tube-length/renorm assertions are unchanged.
 
-### F2 — tautological_check
+### F2 — insufficient_verification
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py:44-49`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl:49-51`
+- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py:64-93`
+- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl:62-80`
 
 **What's wrong:**
-SymPy lines 44-49:
-```
-D_bare = sp.expand((1 + r_c) * (1 - z**2 / 3 - sp.I * z**5 / 9))
-D_final = sp.simplify(D_bare / (1 + r_c))
-expect_zero("bare scaled-canonical branch renormalizes to canonical",
-            D_final - (1 - z**2 / 3 - sp.I * z**5 / 9))
-```
-`D_bare` is defined as exactly `(1+r_c)·canonical` and then divided by `(1+r_c)`. The assertion that the quotient equals canonical is algebraically guaranteed. Same structure in Mathematica (lines 49-51).
+A block of checks cannot fail regardless of the physics:
 
-The paper claim (notes section "Bare outgoing normalization") is that the bare outgoing branch is a *pure-scale deformation* of the canonical branch — i.e., the deformation factor is identically `(1+r_c)` with no z-dependence in the prefactor and that this is consistent with γ_0 = (1+r_c)/9 (which would otherwise require deriving γ_0 from the bare branch). The script's check confirms the trivial algebraic factoring, not the physical claim that the deformation is pure-scale.
+- Solve-then-recheck round-trip (sympy 64-69 / wl 62-64): `L_W_required` was obtained at line 52-55 by solving `4 L_W^2/(pi^2 a^2) = (1+r_c)/3`. Lines 65-69 then compute `kappa0_bare_geom = 4 L_W_required^2/(pi^2 a^2)` and assert it equals `(1+r_c)/3`. By construction this is identically true; the assertion adds nothing over the genuine tube-length check at 52-62.
+- Divide-by-own-scale (sympy 70-74, 84-88 / wl 65-70, 76-77): `gamma0_bare` is *defined* as `(1+r_c)/9` at line 70 and then divided by `(1+r_c)` at line 72 to assert `gamma_c == 1/9` at line 74. Likewise `D_final = D_bare/(1+r_c)` at line 84 is asserted to equal the canonical form at 85-88, but `D_bare` was *built* as `(1+r_c)*(canonical)` at line 78. Dividing a quantity by the literal factor it was constructed with is unfalsifiable.
+- Read-back of a constructed coefficient (sympy 79-83, 89-93 / wl 73-75, 78-80): `D_bare` is the hand-written ansatz `(1+r_c)(1 - z^2/3 - i z^5/9)`; lines 79-83 read its `z^5` coefficient and assert it gives `(1+r_c)/9`, and lines 89-93 read its `z^2` coefficient and assert `(1+r_c)/3`. These read back exactly the literals typed into line 78; they confirm Python's `coeff` extractor, not the physics.
+
+The genuine content of the stage -- the D/N eigenvalue and the tube-length law (A1-A5) -- is correctly and non-tautologically verified, so this is a verification-strength gap, not a wrong target or paper misalignment.
 
 **Why this matters:**
-A "pure-scale" claim has content only when the bare branch is derived from somewhere else and then shown to factor as `(1+r_c)·canonical`. As written, the script asserts `(c·X)/c = X` for `c = 1+r_c`, `X = 1 - z²/3 - i z⁵/9`. The check has no physics in it.
+The renormalization claim (that removing `(1+r_c)` yields canonical `1/3`, `1/9`) and the `gamma_0`/`kappa_0` coefficient claims are presented in the transcript as passing checks, giving false assurance that something physical was tested. As written they would pass even if the canonical coefficients, the bare scale factor, or the `D` ansatz were wrong, because each quantity is divided by / read back from the very expression that defines it.
 
 **Required change:**
-At minimum, derive γ_0 = (1+r_c)/9 from the D_bare polynomial (extracting the z⁵ coefficient and multiplying by appropriate power-counting), and assert that the derived γ_0 matches `(1+r_c)/9`. Concretely: `gamma0_from_D = -sp.I * (D_bare - (1+r_c)) ... ` extract z⁵ coefficient via `sp.Poly(D_bare, z).nth(5)` or `D_bare.coeff(z, 5)`. Assert `expect_zero("gamma0 from bare D matches", coeff_of_z5(D_bare)/(-sp.I) - (1+r_c)/9)`. Then the renormalization claim `gamma0_bare/(1+r_c) = 1/9` exercises that the z⁵ coefficient of D_bare divided by (1+r_c) gives 1/9 — which is the physical "pure-scale" assertion.
+Tie the renormalization checks to the *genuinely derived* `kappa_0` rather than to round-tripped or hardcoded quantities, and add a single falsifiable joint-uniformity check, so a wrong canonical value would actually surface. See directive F2 for the exact edits. Codex should apply what is mechanically safe and `## Blocked` any sub-step it deems unsafe.
 
 **Verification:**
-After the fix, the script must extract a coefficient from `D_bare` (a polynomial-level extraction step that is not algebraically guaranteed to give `(1+r_c)/9`) and compare it to the gamma0 claim. The bare γ_0 then becomes a derived quantity, not a defined-then-asserted one.
-
-### F3 — hardcoded_result
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py:26`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.wl:34`
-
-**What's wrong:**
-SymPy line 26: `kappa0_from_tube = sp.simplify(4 * L_W**2 / (sp.pi**2 * a**2))` and Mathematica line 34: `kappa0FromTube = FullSimplify[4*lW^2/(Pi^2*a^2), Assumptions -> $Assumptions]`. This expression is the *output* of the D/N eigenfunction analysis (notes paper claim 2): solving `q'' + k²q = 0` with `q(0)=0, q'(L_W)=0` gives `k_W = π/(2L_W)`, hence `Ω_W = k_W c_s = πc_s/(2L_W)`, hence `κ_0 = (ω²/Ω_W²)/z² = 4L_W²/(π²a²)` with `z = aω/c_s`.
-
-The scripts skip every step of that derivation and start at the answer.
-
-**Why this matters:**
-The notes title the relevant subsection "Bare mixed D/N tube" and box the eigenvalue formula explicitly. If the D/N boundary conditions were different (e.g., DD instead of DN), `k_W` would change to `π/L_W` and `κ_0` to `L_W²/(π²a²)` — a factor of 4 error. Hardcoding `4L_W²/(π²a²)` cannot detect such a setup error, and the rest of the cascade (`L_W = πa√((1+r_c)/3)/2`) would silently absorb the wrong constant.
-
-**Required change:**
-Add an explicit eigenvalue derivation block before line 26 (and before line 34 in Mathematica):
-1. Symbol declaration: define a generic eigenfunction `q(x) = sin(k*x)` (already satisfies `q(0)=0`), then impose the second BC `q'(L_W) = k*cos(k*L_W) = 0` → smallest positive root `k_W = π/(2*L_W)`.
-2. Compute `Omega_W = k_W * c_s` and let `z = a*ω/c_s`.
-3. Build `kappa0_derived = (ω/Omega_W)**2 / z**2` and `simplify`.
-4. Assert `expect_zero("kappa0 matches geometric expression", kappa0_derived - 4*L_W**2/(pi**2*a**2))`.
-
-Then keep `kappa0_from_tube = 4*L_W**2/(pi**2*a**2)` as a notational alias of the *verified* expression. The mathematica fix mirrors this: use `Solve[Cos[k*lW] == 0 && k > 0, k]` or directly write `kW = Pi/(2 lW)` and verify by substitution that the BC `D[Sin[kW*x], x] /. x -> lW` simplifies to 0.
-
-**Verification:**
-A new assertion appears in both engines that links the eigenvalue boundary condition `cos(k*L_W) = 0` and the derived `κ_0` formula. The new sympy assertion should appear before line 26 (current) and yield 0 on simplify.
-
-### F4 — insufficient_verification
-
-**Severity:** medium
-**Files:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py:27-33`
-
-**What's wrong:**
-The SymPy script obtains `L_W_required` via `sp.solve` (lines 27-30), then *prints* it (line 33) but never asserts it. The Mathematica script (line 39) does have a tube-length assertion: `expectZero["tube-length law", lWRequired - (Pi*a*Sqrt[(1 + rC)/3])/2]`. The SymPy script is missing the corresponding check.
-
-The paper card's body equation (line 16, stage_116.tex) is exactly this identity: "First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\)". This is the central stage claim and the SymPy engine does not test it.
-
-**Why this matters:**
-With both A1-A3 tautological and A4 (the tube-length law) only present in Mathematica, the SymPy script has *zero* non-tautological assertions exercising any paper claim. If the Mathematica engine were retired or had a transliteration drift, the SymPy script alone would not catch a bug in the central identity of the stage.
-
-**Required change:**
-After line 30 (after the solve), add:
-```
-expect_zero(
-    "tube-length law: L_W = pi a sqrt((1+r_c)/3) / 2",
-    sp.simplify(L_W_required - sp.pi * a * sp.sqrt((1 + r_c) / 3) / 2),
-)
-```
-The `sp.solve` returns a list; the script already takes `[0]`. If sympy returns the negative branch first (it should not given `positive=True`, but defensive), use `sp.Max(*sp.solve(...))` or filter for positive solutions before subtracting.
-
-**Verification:**
-A new line appears in the sympy output reading `tube-length law: ... = 0`. Engine cross-check now becomes symmetric: both engines test the same identity (A4 ↔ new sympy assertion).
+After the fix: sympy line range 64-93 no longer contains a `kappa0_bare_geom - (1+r_c)/3` round-trip, no `D_bare/(1+r_c)`-equals-canonical read-back, and no `D_bare.coeff(...)`-equals-literal read-back; instead a `3*kappa_0 - 9*gamma_0` (uniform-scale) check appears and the renormalization assertion references `(1+r_c)/3` as the required `kappa_0`. Both scripts still print all PASS lines and exit 0. The `.wl` shows the same structural change.
 
 ## Independent-derivation check (Mathematica)
 
-The `.wl` file mirrors the SymPy variable choreography one-to-one:
-- SymPy `kappa0_from_tube = sp.simplify(4 * L_W**2 / (sp.pi**2 * a**2))` ↔ Mathematica `kappa0FromTube = FullSimplify[4*lW^2/(Pi^2*a^2), ...]`
-- SymPy `L_W_required = sp.solve(sp.Eq(kappa0_from_tube, (1+r_c)/3), L_W)[0]` ↔ Mathematica `lWRequired = FullSimplify[lW /. First[Solve[kappa0FromTube == (1 + rC)/3, lW, Reals]], ...]`
-- SymPy `D_bare = sp.expand((1+r_c)*(1 - z**2/3 - sp.I*z**5/9))` ↔ Mathematica `dBare = Expand[(1+rC)*(1 - z^2/3 - I*z^5/9)]`
-
-This is a literal port: same intermediate names, same call shapes, same intermediate expressions. The Mathematica script does add one independent assertion (the tube-length law, line 39) that SymPy lacks, but the underlying algebraic flow is transliterated. The hardcoded `4*L_W²/(π²a²)` is the load-bearing expression in both engines, and neither engine derives it from the eigenvalue boundary-value problem the notes describe. I am flagging this as a structural concern but **not** filing it as a `mathematica_transliteration` finding because (a) Mathematica adds one independent assertion not present in SymPy, and (b) the load-bearing fix is the F3 eigenvalue derivation, which should be done independently in each engine. After F3 is applied (separately in each engine, using each engine's native ODE/Solve idiom), the transliteration concern is resolved.
+Not independent. The `.wl` posits the identical trial function `Sin[k x]` (line 38) the SymPy script posits (line 29), performs the identical `First[Solve[...]]` the SymPy `sp.solve(...)[0]` performs (line 56 vs 52-55), and reads the identical `Coefficient[dBare, z, 5]` / `Coefficient[dBare, z, 2]` the SymPy `D_bare.coeff(z, 5)` / `D_bare.coeff(z, 2)` reads (lines 73,78 vs 79,89). Every intermediate variable maps one-to-one. This is `mathematica_transliteration` (F1).
 
 ## Engine cross-check
 
-Both engines exit 0 with PASS outputs. The numerical/algebraic forms match modulo simplification: SymPy `pi*a*sqrt(3*K_q*K_s + 3*lam**2)/(6*sqrt(K_q)*sqrt(K_s))` and Mathematica `(a*Sqrt[3 + (3*lam^2)/(kQ*kS)]*Pi)/6` are equivalent (factor sqrt(3)/sqrt(3) and rewrite). No engine disagreement at the level the scripts claim. The output transcripts are fresh (mtime > script mtime for both engines).
+Both engines pass and agree. SymPy output line 10 / Mathematica output line 14 give the tube length in algebraically equivalent forms: `pi*a*sqrt(3*K_q*K_s + 3*lam**2)/(6*sqrt(K_q)*sqrt(K_s))` vs `(a*Sqrt[3 + (3*lam^2)/(kQ*kS)]*Pi)/6`, both equal to `pi a sqrt((1+r_c)/3)/2`. Final coefficients `kappa_c = 1/3`, `gamma_c = 1/9` agree (sympy out line 22, wl out line 33). No `engine_disagreement`.
 
 ## Verdict justification
 
-The two engines produce internally consistent transcripts, but three of the four script-side assertion families are tautological (F1, F2 — algebraic identities of the form `(c·X)/c = X` for c = 1+r_c, X = canonical). The fourth load-bearing quantity (the D/N geometric κ_0) is hardcoded with no derivation from the eigenvalue problem the notes describe (F3). The SymPy script additionally does not assert the central paper claim (the tube-length law) — the Mathematica script does, but SymPy only prints `L_W_required` without comparison (F4). Verdict is `findings`, not `clean`. No `stop_cold` — none of the findings is incompatible with the paper, and downstream stages cite the tube-length law as a forward; once the SymPy assertion is added and the κ_0 derivation is in place, the chain holds.
+Verdict is `findings`. The stage's central, card-named deliverable -- the tube-length law `L_W = pi a sqrt((1+r_c)/3)/2` derived from the D/N half-wave eigenvalue -- is genuinely and non-tautologically verified, with constants matching the card, notes, and appendix (so `paper_alignment` = aligned, no `paper_misalignment`). Two real defects remain: (F1) the Mathematica script is a line-by-line transliteration of the SymPy script and so is not an independent second engine; (F2) the renormalization / coefficient block (sympy 64-93, wl 62-80) is built from solve-then-recheck round-trips, divide-by-own-scale operations, and read-backs of a hand-constructed ansatz -- all unfalsifiable. Attacks that failed: the eigenvalue check is not trivial (Neumann BC genuinely forces `cos(k_W L_W)=0`); the `kappa0` dimensionless collapse genuinely cancels `omega` and `c_s`; the `solve(...)[0]` index happens to return the positive root and the closed-form assertion would catch a wrong branch; outputs are fresh (both `.txt` newer than their scripts); the symbol positivity assumptions (`a, L_W, K_s, K_q, lam > 0`) are justified by the geometric/physical setup. No stop-cold condition: neither finding propagates a sign/constant change downstream (the verified targets are unchanged).
 
 ## Self-test notes
 
-- **Variable independence (trap 1):** The proposed F3 fix uses `q(x) = sin(k*x)` then `D[q, x] /. x -> L_W = k*cos(k*L_W)`. The variables `q`, `k`, `x`, `L_W` are independent symbols; the derivative wrt x is genuinely nonzero and the BC condition `cos(k*L_W) = 0` truly constrains k. The smallest positive root is k=π/(2*L_W), nonzero. Not a vacuous derivative.
-- **Trivial-case pre-check (trap 3):** For F4, substituting `r_c = 0`: `L_W_required = πa·sqrt(1/3)/2 = πa/(2√3)`. RHS: `πa·sqrt(1/3)/2 = πa/(2√3)`. Residual = 0. For `r_c → ∞`: both sides scale as `πa·sqrt(r_c/3)/2`. Residual = 0. The assertion is non-vacuously zero across the parameter range.
-- **Paper round-trip (trap 5):** All proposed fixes (F1-F4) require no paper-side change; the paper card already states `L_W = πa√((1+r_c)/3)/2` (line 16), the notes derive κ_0 from the D/N eigenvalue problem (notes lines 9-25), and the canonical 1/3, 1/9 final values match the notes' boxed values. No new `paper_misalignment` is introduced.
+Checked the variable-independence trap: the proposed F2 uniform-scale check `3*kappa_0 - 9*gamma_0` uses no `diff`, so no identically-zero-derivative trap applies; the existing genuine `diff` calls (ODE residual, BC) depend on `x` and are non-trivial. Trivial-case substitution: with `r_c -> 0`, `3*kappa_0 = 9*gamma_0 = 1` so the proposed check gives `1 - 1 = 0` correctly, and against a hypothetically-wrong `gamma_0 = (1+r_c)/8` it gives `(1+r_c) - 9(1+r_c)/8 = -(1+r_c)/8 != 0`, confirming the new check is falsifiable. Paper round-trip: the F2 replacement keeps `kappa_0 = (1+r_c)/3` and `gamma_0 = (1+r_c)/9` exactly as the notes/appendix state, introducing no new constant, so no new `paper_misalignment`; F1 keeps every asserted target identical and only changes how the eigenvalue is obtained.

@@ -1,0 +1,931 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b4c5-7a50-921e-efe051755562
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 117)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage117_outlet_core_status_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_117.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_117.tex
+
+Write your verdict report for stage 117 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_117.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~134]{Stage~134: Concrete Outlet-Core Status}
+     2	\label{stage:117}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{} / \StatusOpen{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~134 is a core outlet realization ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement, finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+    14	
+    15	\begin{quote}
+    16	The microscopic question is whether the real core lands on the coupling-balance surface and D/N tube normalization.
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the Schur complement signs in the two-channel core model.
+    23	\item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+    24	\item Check parent overlap ratios before interpreting them as actual branch values.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	"""
+     3	Stage 117 SymPy audit.
+     4	
+     5	Checks:
+     6	1. Positive scale/argument deformations preserve the canonical fingerprint only
+     7	   on the harmless beta = 1 branch.
+     8	2. Pure Robin loading preserves the canonical branch only trivially at rho_R = 0.
+     9	3. A standalone mixed pole cannot preserve the canonical even branch except by
+    10	   disappearing.
+    11	4. The hybrid outlet has a trivial cancellation branch and a nontrivial
+    12	   compensated Robin-mixed branch.
+    13	5. The concrete two-channel core balance surface reproduces the nontrivial
+    14	   compensated branch.
+    15	6. The D/N mixed-tube normalization realizes kappa_c = 1/3 and gamma_c = 1/9,
+    16	   while leaving the actual microscopic throat-core realization open.
+    17	"""
+    18	
+    19	from __future__ import annotations
+    20	
+    21	import sympy as sp
+    22	
+    23	
+    24	def banner(title: str) -> None:
+    25	    line = "=" * 88
+    26	    print("\n" + line)
+    27	    print(title)
+    28	    print(line)
+    29	
+    30	
+    31	def expect_zero(name: str, expr: sp.Expr) -> None:
+    32	    expr = sp.simplify(sp.expand(expr))
+    33	    print(f"{name} = {expr}")
+    34	    if expr != 0:
+    35	        raise AssertionError(f"{name} is not zero")
+    36	
+    37	
+    38	banner("STAGE 117 — CONCRETE OUTLET-CORE STATUS")
+    39	
+    40	z = sp.symbols("z", real=True)
+    41	S, beta = sp.symbols("S beta", nonzero=True, real=True)
+    42	rho = sp.symbols("rho", real=True)
+    43	sigma, kappa, gamma = sp.symbols("sigma kappa gamma", real=True)
+    44	Ks, Kq, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+    45	gs, gq = sp.symbols("g_s g_q", real=True)
+    46	kappa0, gamma0, a = sp.symbols("kappa0 gamma0 a", positive=True, real=True)
+    47	Lw = sp.symbols("L_W", positive=True, real=True)
+    48	I = sp.I
+    49	
+    50	Lambda_out = -3 + z**2 / 3 + z**4 / 9 + I * z**5 / 9
+    51	Y_can = sp.expand(sp.series((-3) / Lambda_out, z, 0, 6).removeO())
+    52	
+    53	banner("1. Harmless scale/argument class")
+    54	Y_arg = sp.expand(sp.series((-3 * S) / (S * Lambda_out.subs(z, beta * z)), z, 0, 6).removeO())
+    55	m2_arg = sp.simplify(Y_arg.coeff(z, 2))
+    56	m4_arg = sp.simplify(Y_arg.coeff(z, 4))
+    57	chi_arg = sp.simplify(sp.im(Y_arg.coeff(z, 5)) / sp.Rational(1, 27))
+    58	beta_solutions = sp.solve(
+    59	    [sp.Eq(m2_arg, sp.Rational(1, 9)), sp.Eq(m4_arg, sp.Rational(4, 81))],
+    60	    [beta],
+    61	    dict=True,
+    62	)
+    63	print("scale/argument solutions =", beta_solutions)
+    64	if {sol[beta] for sol in beta_solutions} != {sp.Integer(-1), sp.Integer(1)}:
+    65	    raise AssertionError("Expected beta = ±1 from canonical-even matching.")
+    66	expect_zero("positive harmless branch has beta = 1 and chi_Q = 1", chi_arg.subs(beta, 1) - 1)
+    67	
+    68	banner("2. Pure Robin class")
+    69	Lambda_R = Lambda_out + rho
+    70	Y_R = sp.expand(sp.series((-3 + rho) / Lambda_R, z, 0, 6).removeO())
+    71	c2_R = sp.simplify(Y_R.coeff(z, 2))
+    72	c4_R = sp.simplify(Y_R.coeff(z, 4))
+    73	chi_R = sp.simplify(sp.im(Y_R.coeff(z, 5)) / sp.Rational(1, 27))
+    74	robin_even_solutions = sp.solve(
+    75	    [sp.Eq(c2_R, sp.Rational(1, 9)), sp.Eq(c4_R, sp.Rational(4, 81))],
+    76	    [rho],
+    77	    dict=True,
+    78	)
+    79	print("pure Robin canonical-even solutions =", robin_even_solutions)
+    80	if robin_even_solutions != [{rho: sp.Integer(0)}]:
+    81	    raise AssertionError("Pure Robin should preserve the canonical branch only trivially.")
+    82	expect_zero("pure Robin odd norm is trivial on rho = 0", chi_R.subs(rho, 0) - 1)
+    83	
+    84	banner("3. Standalone mixed-pole class")
+    85	Lambda_mix = sp.expand(sp.series(Lambda_out - sigma / (1 - kappa * z**2 - I * gamma * z**5), z, 0, 6).removeO())
+    86	L0_mix = sp.simplify(Lambda_mix.coeff(z, 0))
+    87	L2_mix = sp.simplify(Lambda_mix.coeff(z, 2))
+    88	L4_mix = sp.simplify(Lambda_mix.coeff(z, 4))
+    89	L5_mix = sp.simplify(sp.im(Lambda_mix.coeff(z, 5)))
+    90	kappa_match = sp.solve(sp.Eq(-L2_mix / L0_mix, sp.Rational(1, 9)), kappa)[0]
+    91	sigma_match = sp.solve(
+    92	    sp.Eq((L2_mix**2 / L0_mix**2 - L4_mix / L0_mix).subs(kappa, kappa_match), sp.Rational(4, 81)),
+    93	    sigma,
+    94	)[0]
+    95	chi_mix = sp.simplify((-L5_mix / L0_mix) / sp.Rational(1, 27))
+    96	print("standalone mixed-pole kappa match =", kappa_match)
+    97	print("standalone mixed-pole sigma match =", sigma_match)
+    98	expect_zero("formal even-match forces kappa = -1/9", kappa_match + sp.Rational(1, 9))
+    99	expect_zero("standalone mixed pole disappears on the canonical branch", sigma_match)
+   100	expect_zero("odd norm is then trivial", chi_mix.subs(sigma, 0) - 1)
+   101	
+   102	banner("4. Hybrid outlet class split")
+   103	Lambda_hyb = sp.expand(sp.series(Lambda_out + rho - sigma / (1 - kappa * z**2 - I * gamma * z**5), z, 0, 6).removeO())
+   104	L0_hyb = sp.simplify(Lambda_hyb.coeff(z, 0))
+   105	L2_hyb = sp.simplify(Lambda_hyb.coeff(z, 2))
+   106	L4_hyb = sp.simplify(Lambda_hyb.coeff(z, 4))
+   107	L5_hyb = sp.simplify(sp.im(Lambda_hyb.coeff(z, 5)))
+   108	hybrid_solutions = sp.solve(
+   109	    [
+   110	        sp.Eq(-L2_hyb / L0_hyb, sp.Rational(1, 9)),
+   111	        sp.Eq(L2_hyb**2 / L0_hyb**2 - L4_hyb / L0_hyb, sp.Rational(4, 81)),
+   112	    ],
+   113	    [rho, kappa],
+   114	    dict=True,
+   115	)
+   116	print("hybrid canonical-even branches =", hybrid_solutions)
+   117	branch_cancel = next(sol for sol in hybrid_solutions if sol[kappa] == 0)
+   118	branch_comp = next(sol for sol in hybrid_solutions if sol[kappa] == sp.Rational(1, 3))
+   119	
+   120	chi_cancel = sp.simplify(((-L5_hyb / L0_hyb) / sp.Rational(1, 27)).subs(branch_cancel))
+   121	chi_comp = sp.simplify(((-L5_hyb / L0_hyb) / sp.Rational(1, 27)).subs(branch_comp))
+   122	expect_zero("hybrid cancellation branch odd norm", chi_cancel - (1 - 9 * sigma * gamma))
+   123	expect_zero(
+   124	    "hybrid cancellation branch is trivial when gamma = 0",
+   125	    sp.expand(sp.series(Lambda_hyb.subs(branch_cancel).subs(gamma, 0) - Lambda_out, z, 0, 6).removeO()),
+   126	)
+   127	expect_zero("compensated branch odd norm", chi_comp.subs(gamma, sp.Rational(1, 9)) - 1)
+   128	expect_zero(
+   129	    "compensated branch collapses to a pure scale deformation",
+   130	    sp.expand(
+   131	        sp.series(
+   132	            Lambda_hyb.subs(branch_comp).subs(gamma, sp.Rational(1, 9)) - (1 - sigma) * Lambda_out,
+   133	            z,
+   134	            0,
+   135	            6,
+   136	        ).removeO()
+   137	    ),
+   138	)
+   139	
+   140	banner("5. Concrete core realization of the compensated class")
+   141	# This stage is a status-consolidation card. The forward expressions for
+   142	# kappa_0_bare = (1+r_c)/3 and gamma_0_bare = (1+r_c)/9 are derived upstream:
+   143	#   - Stage 115: parent-overlap reparametrization and Schur reduction;
+   144	#   - Stage 116: D/N half-wave eigenvalue k_W = pi/(2 L_W) on q(0)=0, q'(L_W)=0,
+   145	#                yielding kappa_0_bare from the tube-length law.
+   146	# Here we substitute those forward expressions and read off the *arithmetic
+   147	# consequences* kappa_c = kappa_0/(1+r_c) = 1/3 and gamma_c = gamma_0/(1+r_c) = 1/9.
+   148	# Those substitutions are not independent derivations; the load-bearing check in
+   149	# this stage is the residual delta_core - delta_core_expected at order z^6.
+   150	r_c = sp.simplify(lam**2 / (Ks * Kq))
+   151	rho_c = sp.simplify(gs**2 / Ks)
+   152	sigma_c = sp.simplify((Ks * gq - lam * gs) ** 2 / (Ks**2 * Kq * (1 + r_c)))
+   153	kappa_c = sp.simplify(kappa0 / (1 + r_c))
+   154	gamma_c = sp.simplify(gamma0 / (1 + r_c))
+   155	gq_solutions = sp.solve(sp.Eq(rho_c - 4 * sigma_c, 0), gq)
+   156	print("core-balance surface branches =", gq_solutions)
+   157	sigma_star = sp.simplify(gs**2 / (4 * Ks))
+   158	expect_zero(
+   159	    "both core-balance branches give the same sigma_*",
+   160	    sigma_c.subs(gq, gq_solutions[0]) - sigma_c.subs(gq, gq_solutions[1]),
+   161	)
+   162	expect_zero("core-balance sigma_* value", sigma_c.subs(gq, gq_solutions[0]) - sigma_star)
+   163	
+   164	Lw_required = sp.solve(sp.Eq(4 * Lw**2 / (sp.pi**2 * a**2), (1 + r_c) / 3), Lw)[0]
+   165	# Stage 116 fixes kappa_0_bare = (1+r_c)/3 via the D/N tube; carrying forward
+   166	# to kappa_c = kappa_0/(1+r_c) = 1/3 is then arithmetic, not an independent check.
+   167	print("carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3")
+   168	print("carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9")
+   169	
+   170	delta_core = sp.simplify(
+   171	    rho_c - sigma_c / (1 - kappa_c * z**2 - I * gamma_c * z**5)
+   172	).subs({
+   173	    gq: gq_solutions[0],
+   174	    kappa0: (1 + r_c) / 3,
+   175	    gamma0: (1 + r_c) / 9,
+   176	})
+   177	delta_core_expected = sp.simplify(4 * sigma_star - sigma_star / (1 - z**2 / 3 - I * z**5 / 9))
+   178	expect_zero("concrete core collapses to the compensated hybrid class", sp.expand(sp.series(delta_core - delta_core_expected, z, 0, 6).removeO()))
+   179	
+   180	banner("6. Classification capstone")
+   181	# Compute pass-flags from sections 1-5 intermediate residuals rather than
+   182	# hardcoding True/False.  The load-bearing entry is `nontrivial_compensated`,
+   183	# which is wired to the section-5 residual delta_core - delta_core_expected.
+   184	even_ok_scale = ({sol[beta] for sol in beta_solutions} == {sp.Integer(-1), sp.Integer(1)})
+   185	odd_ok_scale = (sp.simplify(chi_arg.subs(beta, 1) - 1) == 0)
+   186	nontrivial_scale = False  # scale class is trivially canonical with rescale
+   187	
+   188	even_ok_robin = (robin_even_solutions == [{rho: sp.Integer(0)}])
+   189	odd_ok_robin = (sp.simplify(chi_R.subs(rho, 0) - 1) == 0)
+   190	nontrivial_robin = False  # rho_R = 0 only
+   191	
+   192	even_ok_standalone = (sp.simplify(kappa_match + sp.Rational(1, 9)) == 0)
+   193	odd_ok_standalone = (sp.simplify(chi_mix.subs(sigma, 0) - 1) == 0)
+   194	nontrivial_standalone = (sp.simplify(sigma_match) != 0)
+   195	
+   196	even_ok_hyb_cancel = any(sol[kappa] == 0 for sol in hybrid_solutions)
+   197	odd_ok_hyb_cancel = (sp.simplify(chi_cancel - (1 - 9 * sigma * gamma)) == 0)
+   198	nontrivial_hyb_cancel = False  # collapses at gamma = 0
+   199	
+   200	even_ok_compensated = any(sol[kappa] == sp.Rational(1, 3) for sol in hybrid_solutions)
+   201	odd_ok_compensated = (sp.simplify(chi_comp.subs(gamma, sp.Rational(1, 9)) - 1) == 0)
+   202	nontrivial_compensated = (
+   203	    sp.simplify(sp.expand(sp.series(delta_core - delta_core_expected, z, 0, 6).removeO())) == 0
+   204	)
+   205	
+   206	classification_rows = [
+   207	    ("scale/argument", even_ok_scale, odd_ok_scale, nontrivial_scale, "harmless beta = 1 pure-scale branch"),
+   208	    ("pure Robin", even_ok_robin, odd_ok_robin, nontrivial_robin, "rho_R = 0 only"),
+   209	    ("standalone mixed pole", even_ok_standalone, odd_ok_standalone, nontrivial_standalone, "sigma_W = 0 only (formal kappa = -1/9)"),
+   210	    ("hybrid cancellation", even_ok_hyb_cancel, odd_ok_hyb_cancel, nontrivial_hyb_cancel, "gamma_W = 0 reduces to exact cancellation"),
+   211	    ("compensated Robin-mixed core realization", even_ok_compensated, odd_ok_compensated, nontrivial_compensated, "balance surface + D/N tube normalization"),
+   212	]
+   213	for row in classification_rows:
+   214	    print(row)
+   215	
+   216	nontrivial_survivors = [name for name, even_ok, odd_ok, nontrivial, _ in classification_rows if even_ok and odd_ok and nontrivial]
+   217	if nontrivial_survivors != ["compensated Robin-mixed core realization"]:
+   218	    raise AssertionError(f"Unexpected nontrivial survivors: {nontrivial_survivors}")
+   219	
+   220	print("\nOpen microscopic question:")
+   221	print("  The explicit low-frequency classification is closed at the reduced-model level,")
+   222	print("  but the actual moving-throat core still has to realize the balance surface and")
+   223	print("  D/N tube normalization. This script does not assert that realization.")
+   224	
+
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_117.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 117
+     3	batch: IV.3
+     4	created_at: 2026-05-27
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 117
+    13	
+    14	See `/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_directive_117.md` for the full directive body. The structure is:
+    15	
+    16	- **F1 — mathematica_transliteration** (Blocked): the `.wl` script is a line-by-line port of the `.py` script. Codex cannot safely invent an independent second-engine derivation; user must specify the alternative path.
+    17	- **F2 — tautological_check** (Blocked): D/N tube `kappa_c = 1/3` check at `sympy_audit.py:155-156` and `mathematica_audit.wl:112-113` is circular. Needs forward expression for `kappa0` from the D/N tube BVP (upstream physics); Codex cannot invent it.
+    18	- **F3 — tautological_check** (Blocked): `gamma_c = 1/9` check at `sympy_audit.py:157` and `mathematica_audit.wl:114` is pure algebraic substitution. Needs forward expression for `gamma0` from the bare mixed-channel construction; Codex cannot invent it.
+    19	- **F4 — tautological_check** (Apply): capstone classification table at `sympy_audit.py:170-182` and `mathematica_audit.wl:126-137` hardcodes the survivability flags. Wire flags to computed booleans drawn from sections 1-5 residuals. Concrete patch shape provided in the full directive.
+    20	
+    21	Apply F4. Skip F1, F2, F3 with `## Blocked` blocks until user provides direction.
+    22	
+    23	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named. Do NOT run python or mathematica. Do NOT touch paper.tex, notes/, or any prose documents.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage117_outlet_core_status_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 117 — CONCRETE OUTLET-CORE STATUS
+     4	========================================================================================
+     5	
+     6	========================================================================================
+     7	1. Harmless scale/argument class
+     8	========================================================================================
+     9	scale/argument solutions = [{beta: -1}, {beta: 1}]
+    10	positive harmless branch has beta = 1 and chi_Q = 1 = 0
+    11	
+    12	========================================================================================
+    13	2. Pure Robin class
+    14	========================================================================================
+    15	pure Robin canonical-even solutions = [{rho: 0}]
+    16	pure Robin odd norm is trivial on rho = 0 = 0
+    17	
+    18	========================================================================================
+    19	3. Standalone mixed-pole class
+    20	========================================================================================
+    21	standalone mixed-pole kappa match = -1/9
+    22	standalone mixed-pole sigma match = 0
+    23	formal even-match forces kappa = -1/9 = 0
+    24	standalone mixed pole disappears on the canonical branch = 0
+    25	odd norm is then trivial = 0
+    26	
+    27	========================================================================================
+    28	4. Hybrid outlet class split
+    29	========================================================================================
+    30	hybrid canonical-even branches = [{kappa: 0, rho: sigma}, {kappa: 1/3, rho: 4*sigma}]
+    31	hybrid cancellation branch odd norm = 0
+    32	hybrid cancellation branch is trivial when gamma = 0 = 0
+    33	compensated branch odd norm = 0
+    34	compensated branch collapses to a pure scale deformation = 0
+    35	
+    36	========================================================================================
+    37	5. Concrete core realization of the compensated class
+    38	========================================================================================
+    39	core-balance surface branches = [g_s*(2*lam - sqrt(K_q*K_s + lam**2))/(2*K_s), g_s*(2*lam + sqrt(K_q*K_s + lam**2))/(2*K_s)]
+    40	both core-balance branches give the same sigma_* = 0
+    41	core-balance sigma_* value = 0
+    42	carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3
+    43	carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9
+    44	concrete core collapses to the compensated hybrid class = 0
+    45	
+    46	========================================================================================
+    47	6. Classification capstone
+    48	========================================================================================
+    49	('scale/argument', True, True, False, 'harmless beta = 1 pure-scale branch')
+    50	('pure Robin', True, True, False, 'rho_R = 0 only')
+    51	('standalone mixed pole', True, True, False, 'sigma_W = 0 only (formal kappa = -1/9)')
+    52	('hybrid cancellation', True, True, False, 'gamma_W = 0 reduces to exact cancellation')
+    53	('compensated Robin-mixed core realization', True, True, True, 'balance surface + D/N tube normalization')
+    54	
+    55	Open microscopic question:
+    56	  The explicit low-frequency classification is closed at the reduced-model level,
+    57	  but the actual moving-throat core still has to realize the balance surface and
+    58	  D/N tube normalization. This script does not assert that realization.
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 117 — CONCRETE OUTLET-CORE STATUS"];
+    27	
+    28	Clear[z, s, beta, rho, sigma, kappa, gamma, ks, kq, lam, gs, gq, kappa0, gamma0, a, lW];
+    29	$Assumptions =
+    30	  Element[{z, s, beta, rho, sigma, kappa, gamma, gs, gq}, Reals] &&
+    31	  Element[{ks, kq, lam, kappa0, gamma0, a, lW}, Reals] &&
+    32	  ks > 0 && kq > 0 && lam > 0 && kappa0 > 0 && gamma0 > 0 && a > 0 && lW > 0;
+    33	
+    34	lambdaOut = -3 + z^2/3 + z^4/9 + I z^5/9;
+    35	
+    36	banner["1. Harmless scale/argument class"];
+    37	yArg = Normal[Series[(-3 s)/(s (lambdaOut /. z -> beta z)), {z, 0, 5}]];
+    38	m2Arg = FullSimplify[Coefficient[yArg, z, 2]];
+    39	m4Arg = FullSimplify[Coefficient[yArg, z, 4]];
+    40	chiArg = FullSimplify[Coefficient[yArg, z, 5]/I/(1/27)];
+    41	betaSolutions = Solve[{m2Arg == 1/9, m4Arg == 4/81}, beta, Reals];
+    42	Print["scale/argument solutions = ", fmt[betaSolutions]];
+    43	If[Sort[beta /. betaSolutions] =!= {-1, 1}, fail["scale/argument branch roots", betaSolutions]];
+    44	expectZero["positive harmless branch has beta = 1 and chi_Q = 1", (chiArg /. beta -> 1) - 1];
+    45	
+    46	banner["2. Pure Robin class"];
+    47	lambdaR = lambdaOut + rho;
+    48	yR = Normal[Series[(-3 + rho)/lambdaR, {z, 0, 5}]];
+    49	c2R = FullSimplify[Coefficient[yR, z, 2]];
+    50	c4R = FullSimplify[Coefficient[yR, z, 4]];
+    51	chiR = FullSimplify[Coefficient[yR, z, 5]/I/(1/27)];
+    52	robinSolutions = Solve[{c2R == 1/9, c4R == 4/81}, rho, Reals];
+    53	Print["pure Robin canonical-even solutions = ", fmt[robinSolutions]];
+    54	If[robinSolutions =!= {{rho -> 0}}, fail["pure Robin branch", robinSolutions]];
+    55	expectZero["pure Robin odd norm is trivial on rho = 0", (chiR /. rho -> 0) - 1];
+    56	
+    57	banner["3. Standalone mixed-pole class"];
+    58	lambdaMix = Normal[Series[lambdaOut - sigma/(1 - kappa z^2 - I gamma z^5), {z, 0, 5}]];
+    59	l0Mix = FullSimplify[Coefficient[lambdaMix, z, 0]];
+    60	l2Mix = FullSimplify[Coefficient[lambdaMix, z, 2]];
+    61	l4Mix = FullSimplify[Coefficient[lambdaMix, z, 4]];
+    62	l5Mix = FullSimplify[Coefficient[lambdaMix, z, 5]/I];
+    63	kappaMatch = FullSimplify[kappa /. First[Solve[-l2Mix/l0Mix == 1/9, kappa, Reals]]];
+    64	sigmaMatch = FullSimplify[
+    65	  sigma /. First[Solve[((l2Mix^2/l0Mix^2 - l4Mix/l0Mix) /. kappa -> kappaMatch) == 4/81, sigma, Reals]]
+    66	];
+    67	chiMix = FullSimplify[(-l5Mix/l0Mix)/(1/27)];
+    68	Print["standalone mixed-pole kappa match = ", fmt[kappaMatch]];
+    69	Print["standalone mixed-pole sigma match = ", fmt[sigmaMatch]];
+    70	expectZero["formal even-match forces kappa = -1/9", kappaMatch + 1/9];
+    71	expectZero["standalone mixed pole disappears on the canonical branch", sigmaMatch];
+    72	expectZero["odd norm is then trivial", (chiMix /. sigma -> 0) - 1];
+    73	
+    74	banner["4. Hybrid outlet class split"];
+    75	lambdaHyb = Normal[Series[lambdaOut + rho - sigma/(1 - kappa z^2 - I gamma z^5), {z, 0, 5}]];
+    76	l0Hyb = FullSimplify[Coefficient[lambdaHyb, z, 0]];
+    77	l2Hyb = FullSimplify[Coefficient[lambdaHyb, z, 2]];
+    78	l4Hyb = FullSimplify[Coefficient[lambdaHyb, z, 4]];
+    79	l5Hyb = FullSimplify[Coefficient[lambdaHyb, z, 5]/I];
+    80	hybridSolutions = Solve[{-l2Hyb/l0Hyb == 1/9, l2Hyb^2/l0Hyb^2 - l4Hyb/l0Hyb == 4/81}, {rho, kappa}, Reals];
+    81	Print["hybrid canonical-even branches = ", fmt[hybridSolutions]];
+    82	branchCancel = SelectFirst[hybridSolutions, (kappa /. #) === 0 &];
+    83	branchComp = SelectFirst[hybridSolutions, FullSimplify[(kappa /. #) - 1/3] === 0 &];
+    84	chiCancel = FullSimplify[((-l5Hyb/l0Hyb)/(1/27)) /. branchCancel];
+    85	chiComp = FullSimplify[((-l5Hyb/l0Hyb)/(1/27)) /. branchComp];
+    86	expectZero["hybrid cancellation branch odd norm", chiCancel - (1 - 9 sigma gamma)];
+    87	expectZero[
+    88	  "hybrid cancellation branch is trivial when gamma = 0",
+    89	  Normal[Series[(lambdaHyb /. branchCancel /. gamma -> 0) - lambdaOut, {z, 0, 5}]]
+    90	];
+    91	expectZero["compensated branch odd norm", (chiComp /. gamma -> 1/9) - 1];
+    92	expectZero[
+    93	  "compensated branch collapses to a pure scale deformation",
+    94	  Normal[Series[(lambdaHyb /. branchComp /. gamma -> 1/9) - (1 - sigma) lambdaOut, {z, 0, 5}]]
+    95	];
+    96	
+    97	banner["5. Concrete core realization of the compensated class"];
+    98	(* Status-consolidation card. Forward expressions for kappa_0_bare = (1+r_c)/3
+    99	   and gamma_0_bare = (1+r_c)/9 come from stages 115 (Schur reduction) and 116
+   100	   (D/N half-wave eigenvalue: k_W = Pi/(2 L_W) on q(0)=0, q'(L_W)=0). Here we
+   101	   substitute those forward expressions and read off kappa_c = 1/3, gamma_c = 1/9
+   102	   as arithmetic consequences. The load-bearing check in this stage is the
+   103	   residual deltaCore - deltaCoreExpected at order z^5. *)
+   104	rC = FullSimplify[lam^2/(ks kq)];
+   105	rhoC = FullSimplify[gs^2/ks];
+   106	sigmaC = FullSimplify[(ks gq - lam gs)^2/(ks^2 kq (1 + rC))];
+   107	kappaC = FullSimplify[kappa0/(1 + rC)];
+   108	gammaC = FullSimplify[gamma0/(1 + rC)];
+   109	gqSolutions = Solve[rhoC - 4 sigmaC == 0, gq, Reals];
+   110	Print["core-balance surface branches = ", fmt[gqSolutions]];
+   111	sigmaStar = FullSimplify[gs^2/(4 ks)];
+   112	expectZero[
+   113	  "both core-balance branches give the same sigma_*",
+   114	  (sigmaC /. First[gqSolutions]) - (sigmaC /. Last[gqSolutions])
+   115	];
+   116	expectZero["core-balance sigma_* value", (sigmaC /. First[gqSolutions]) - sigmaStar];
+   117	
+   118	lWRequired = FullSimplify[lW /. First[Solve[4 lW^2/(Pi^2 a^2) == (1 + rC)/3, lW, Reals]]];
+   119	(* Stage 116 fixes kappa_0_bare = (1+r_c)/3 via the D/N tube; carrying forward
+   120	   to kappa_c = kappa_0/(1+r_c) = 1/3 is then arithmetic, not an independent check. *)
+   121	Print["carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3"];
+   122	Print["carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9"];
+   123	
+   124	deltaCore = FullSimplify[
+   125	  rhoC - sigmaC/(1 - kappaC z^2 - I gammaC z^5)
+   126	] /. First[gqSolutions] /. {kappa0 -> (1 + rC)/3, gamma0 -> (1 + rC)/9};
+   127	deltaCoreExpected = FullSimplify[4 sigmaStar - sigmaStar/(1 - z^2/3 - I z^5/9)];
+   128	expectZero[
+   129	  "concrete core collapses to the compensated hybrid class",
+   130	  Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]]
+   131	];
+   132	
+   133	banner["6. Classification capstone"];
+   134	(* Wired booleans from sections 1-5 residuals. The load-bearing entry is
+   135	   `nontrivialCompensated`, anchored to the section-5 series residual. *)
+   136	evenOkScale = TrueQ[Sort[beta /. betaSolutions] === {-1, 1}];
+   137	oddOkScale = TrueQ[FullSimplify[(chiArg /. beta -> 1) - 1] === 0];
+   138	nontrivialScale = False;
+   139	
+   140	evenOkRobin = TrueQ[robinSolutions === {{rho -> 0}}];
+   141	oddOkRobin = TrueQ[FullSimplify[(chiR /. rho -> 0) - 1] === 0];
+   142	nontrivialRobin = False;
+   143	
+   144	evenOkStandalone = TrueQ[FullSimplify[kappaMatch + 1/9] === 0];
+   145	oddOkStandalone = TrueQ[FullSimplify[(chiMix /. sigma -> 0) - 1] === 0];
+   146	nontrivialStandalone = !TrueQ[FullSimplify[sigmaMatch] === 0];
+   147	
+   148	evenOkHybCancel = TrueQ[FullSimplify[(kappa /. branchCancel)] === 0];
+   149	oddOkHybCancel = TrueQ[FullSimplify[chiCancel - (1 - 9 sigma gamma)] === 0];
+   150	nontrivialHybCancel = False;
+   151	
+   152	evenOkCompensated = TrueQ[FullSimplify[(kappa /. branchComp) - 1/3] === 0];
+   153	oddOkCompensated = TrueQ[FullSimplify[(chiComp /. gamma -> 1/9) - 1] === 0];
+   154	nontrivialCompensated = TrueQ[
+   155	  Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]] === 0
+   156	];
+   157	
+   158	classificationRows = {
+   159	  {"scale/argument", evenOkScale, oddOkScale, nontrivialScale, "harmless beta = 1 pure-scale branch"},
+   160	  {"pure Robin", evenOkRobin, oddOkRobin, nontrivialRobin, "rho_R = 0 only"},
+   161	  {"standalone mixed pole", evenOkStandalone, oddOkStandalone, nontrivialStandalone, "sigma_W = 0 only (formal kappa = -1/9)"},
+   162	  {"hybrid cancellation", evenOkHybCancel, oddOkHybCancel, nontrivialHybCancel, "gamma_W = 0 reduces to exact cancellation"},
+   163	  {"compensated Robin-mixed core realization", evenOkCompensated, oddOkCompensated, nontrivialCompensated, "balance surface + D/N tube normalization"}
+   164	};
+   165	Scan[Print, classificationRows];
+   166	nontrivialSurvivors = Cases[classificationRows, {name_, True, True, True, _} :> name];
+   167	If[nontrivialSurvivors =!= {"compensated Robin-mixed core realization"},
+   168	  fail["classification survivor set", nontrivialSurvivors]
+   169	];
+   170	
+   171	Print[""];
+   172	Print["Open microscopic question:"];
+   173	Print["  The explicit low-frequency classification is closed at the reduced-model level,"];
+   174	Print["  but the actual moving-throat core still has to realize the balance surface and"];
+   175	Print["  D/N tube normalization. This script does not assert that realization."];
+   176	
+   177	Print[""];
+   178	Print["Stage 117 Mathematica audit passed."];
+   179	
+   180	Exit[0];
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 117 — CONCRETE OUTLET-CORE STATUS
+     4	========================================================================================
+     5	
+     6	========================================================================================
+     7	1. Harmless scale/argument class
+     8	========================================================================================
+     9	scale/argument solutions = {{beta -> -1}, {beta -> 1}}
+    10	positive harmless branch has beta = 1 and chi_Q = 1 = 0
+    11	PASS: positive harmless branch has beta = 1 and chi_Q = 1
+    12	
+    13	========================================================================================
+    14	2. Pure Robin class
+    15	========================================================================================
+    16	pure Robin canonical-even solutions = {{rho -> 0}}
+    17	pure Robin odd norm is trivial on rho = 0 = 0
+    18	PASS: pure Robin odd norm is trivial on rho = 0
+    19	
+    20	========================================================================================
+    21	3. Standalone mixed-pole class
+    22	========================================================================================
+    23	standalone mixed-pole kappa match = -1/9
+    24	standalone mixed-pole sigma match = 0
+    25	formal even-match forces kappa = -1/9 = 0
+    26	PASS: formal even-match forces kappa = -1/9
+    27	standalone mixed pole disappears on the canonical branch = 0
+    28	PASS: standalone mixed pole disappears on the canonical branch
+    29	odd norm is then trivial = 0
+    30	PASS: odd norm is then trivial
+    31	
+    32	========================================================================================
+    33	4. Hybrid outlet class split
+    34	========================================================================================
+    35	hybrid canonical-even branches = {{rho -> sigma, kappa -> 0}, {rho -> 4*sigma, kappa -> 1/3}}
+    36	hybrid cancellation branch odd norm = 0
+    37	PASS: hybrid cancellation branch odd norm
+    38	hybrid cancellation branch is trivial when gamma = 0 = 0
+    39	PASS: hybrid cancellation branch is trivial when gamma = 0
+    40	compensated branch odd norm = 0
+    41	PASS: compensated branch odd norm
+    42	compensated branch collapses to a pure scale deformation = 0
+    43	PASS: compensated branch collapses to a pure scale deformation
+    44	
+    45	========================================================================================
+    46	5. Concrete core realization of the compensated class
+    47	========================================================================================
+    48	core-balance surface branches = {{gq -> (gs*lam)/ks - Sqrt[gs^2*kq*ks + gs^2*lam^2]/(2*ks)}, {gq -> (gs*lam)/ks + Sqrt[gs^2*kq*ks + gs^2*lam^2]/(2*ks)}}
+    49	both core-balance branches give the same sigma_* = 0
+    50	PASS: both core-balance branches give the same sigma_*
+    51	core-balance sigma_* value = 0
+    52	PASS: core-balance sigma_* value
+    53	carrying forward (Stage 116): kappa_0_bare = (1+r_c)/3 -> kappa_c = 1/3
+    54	carrying forward (Stage 119): gamma_0_bare = (1+r_c)/9 -> gamma_c = 1/9
+    55	concrete core collapses to the compensated hybrid class = 0
+    56	PASS: concrete core collapses to the compensated hybrid class
+    57	
+    58	========================================================================================
+    59	6. Classification capstone
+    60	========================================================================================
+    61	{scale/argument, True, True, False, harmless beta = 1 pure-scale branch}
+    62	{pure Robin, True, True, False, rho_R = 0 only}
+    63	{standalone mixed pole, True, True, False, sigma_W = 0 only (formal kappa = -1/9)}
+    64	{hybrid cancellation, True, True, False, gamma_W = 0 reduces to exact cancellation}
+    65	{compensated Robin-mixed core realization, True, True, True, balance surface + D/N tube normalization}
+    66	
+    67	Open microscopic question:
+    68	  The explicit low-frequency classification is closed at the reduced-model level,
+    69	  but the actual moving-throat core still has to realize the balance surface and
+    70	  D/N tube normalization. This script does not assert that realization.
+    71	
+    72	Stage 117 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba redteam/tmp_prompts/audit_directive_117.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 117
+     3	batch: IV.3
+     4	created_at: 2026-05-27
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 117
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    23	
+    24	## F1 — mathematica_transliteration
+    25	
+    26	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:34-137`
+    27	
+    28	**Issue:** The `.wl` script is a line-by-line port of the `.py` script. Identical section banners, identical variable choreography (with naming-convention conversion only), identical pre-computed forms for `sigma_c`, `kappa_c`, `gamma_c`, `Lambda_eff`. Both engines need to derive the result independently from the physical premises (Schur-complement two-channel construction; D/N tube boundary-value problem; series expansion of the bare mixed outlet) rather than echo each other's reduced algebraic forms.
+    29	
+    30	**Required change:**
+    31	Block this finding — Codex must NOT auto-rewrite the second engine. Re-deriving from independent premises requires physics judgment about (i) the upstream Schur-complement reduction that defines `sigma_c = (K_s g_q - lam g_s)^2/(K_s^2 K_q (1+r_c))`, (ii) the bare mixed-channel construction that defines `gamma0`, and (iii) the D/N tube boundary problem that defines `kappa0`. Without explicit upstream-stage citations or a fresh first-principles derivation specified by the user, mechanical rewriting risks inventing physics.
+    32	
+    33	## Blocked: F1
+    34	
+    35	The orchestrator should surface to the user:
+    36	
+    37	> "The Mathematica script for stage 117 is a transliteration of the SymPy script. To make it an independent second-engine check, the user must specify either: (a) which upstream stages' notes define the Schur reduction / bare gamma0 / D/N tube kappa0, so Codex can carry them forward via independent algebraic paths in Mathematica; or (b) accept the transliteration as a known limitation and update the redteam policy doc accordingly; or (c) provide a sketch of an alternative derivation path (e.g., direct frequency-domain BVP solve in Mathematica) to use as the second engine. Codex should not invent the alternative derivation."
+    38	
+    39	## F2 — tautological_check
+    40	
+    41	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:155-156` AND `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:112-113`
+    42	
+    43	**Issue:**
+    44	```python
+    45	Lw_required = sp.solve(sp.Eq(4 * Lw**2 / (sp.pi**2 * a**2), (1 + r_c) / 3), Lw)[0]
+    46	expect_zero("D/N tube fixes kappa_c = 1/3", kappa_c.subs(kappa0, 4 * Lw_required**2 / (sp.pi**2 * a**2)) - sp.Rational(1, 3))
+    47	```
+    48	`Lw_required` is defined by solving `4 Lw^2/(pi^2 a^2) = (1+r_c)/3`. Substituting `kappa0 → 4 Lw_required^2/(pi^2 a^2)` is exactly the equation that defined `Lw_required`, so `kappa0 = (1+r_c)/3`, and `kappa_c = kappa0/(1+r_c) = 1/3` is forced by construction. The "check" cannot fail.
+    49	
+    50	**Required change:**
+    51	This finding requires either (a) wiring in an independent forward expression for `kappa0` derived from the D/N tube BVP (which is upstream physics and not specified in this script's scope), or (b) reframing the check as a definitional substitution rather than an assertion. Codex cannot safely invent the forward expression for `kappa0`. Block this finding and surface to the user.
+    52	
+    53	## Blocked: F2
+    54	
+    55	The orchestrator should surface to the user:
+    56	
+    57	> "The D/N tube `kappa_c = 1/3` check on `sympy_audit.py:155-156` and `mathematica_audit.wl:112-113` is tautological — it inverts the conclusion to define `Lw_required`, then substitutes back. To make this a real check, the user must specify the upstream forward expression `kappa0 = f(L_W, a, ...)` from the D/N tube boundary problem. If no such forward expression exists in this stage's scope, the user can choose between: (a) downgrading the assertion to a labeled definition (`gamma0 := (1+r_c)/9` style) with the misleading `expect_zero` wrapper removed; (b) citing the upstream stage that derives `kappa0` and importing the forward expression; (c) leaving as-is with a comment acknowledging the circularity. Codex should not invent the forward derivation."
+    58	
+    59	## F3 — tautological_check
+    60	
+    61	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:157` AND `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:114`
+    62	
+    63	**Issue:**
+    64	```python
+    65	expect_zero("bare mixed normalization fixes gamma_c = 1/9", gamma_c.subs(gamma0, (1 + r_c) / 9) - sp.Rational(1, 9))
+    66	```
+    67	With `gamma_c = gamma0/(1+r_c)`, substituting `gamma0 → (1+r_c)/9` is algebraically equivalent to dividing `(1+r_c)/9` by `(1+r_c)`. The assertion is `((1+r_c)/9)/(1+r_c) - 1/9 = 0`, i.e., `1/9 - 1/9 = 0`, which holds by pure cancellation regardless of physics. The "bare mixed normalization" is never derived — it is asserted by typing it in.
+    68	
+    69	**Required change:**
+    70	Same shape as F2 — either derive the forward expression for `gamma0` (from the bare mixed-channel construction, which is not specified in this script's scope), or reframe as a definitional substitution. Block this finding and surface to the user.
+    71	
+    72	## Blocked: F3
+    73	
+    74	The orchestrator should surface to the user:
+    75	
+    76	> "The `gamma_c = 1/9` check on `sympy_audit.py:157` and `mathematica_audit.wl:114` is tautological — `gamma0 := (1+r_c)/9` is a definitional choice, not a derived consequence. To make this a real check, the user must specify the upstream forward expression `gamma0 = g(physical inputs)` from the bare mixed-channel construction. As with F2, options are: (a) downgrade to a labeled definition with `expect_zero` wrapper removed; (b) cite/import the upstream forward derivation; (c) leave as-is with an explanatory comment. Codex should not invent the forward derivation."
+    77	
+    78	## F4 — tautological_check
+    79	
+    80	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:170-182` AND `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:126-137`
+    81	
+    82	**Issue:**
+    83	The `classification_rows` table at `sympy_audit.py:170-176` hardcodes boolean flags (`True/False`) for each class's `even_ok`, `odd_ok`, `nontrivial` columns. The capstone assertion `if nontrivial_survivors != ["compensated Robin-mixed core realization"]: raise` filters the hardcoded flags — it cannot detect a regression in sections 1-5 because the flags are not computed from those sections' results.
+    84	
+    85	**Required change:**
+    86	Wire each row's three boolean entries to expressions computed from sections 1-5's intermediate results. Concrete edit shape:
+    87	
+    88	For `sympy_audit.py:170-176`, replace the literal `True`/`False` in columns 2-4 with computed booleans. Example wiring (Codex should adapt to actual SymPy expression equality patterns already used in the script — use `sp.simplify(expr) == 0` consistently):
+    89	
+    90	```python
+    91	# Computed pass-flags from sections 1-5
+    92	even_ok_scale = (beta_solutions == [{beta: sp.Integer(-1)}, {beta: sp.Integer(1)}]) or (set(sol[beta] for sol in beta_solutions) == {sp.Integer(-1), sp.Integer(1)})
+    93	odd_ok_scale = (sp.simplify(chi_arg.subs(beta, 1) - 1) == 0)
+    94	nontrivial_scale = False  # scale class is trivially canonical with rescale
+    95	
+    96	even_ok_robin = (robin_even_solutions == [{rho: sp.Integer(0)}])
+    97	odd_ok_robin = (sp.simplify(chi_R.subs(rho, 0) - 1) == 0)
+    98	nontrivial_robin = False  # rho_R = 0 only
+    99	
+   100	even_ok_standalone = (sp.simplify(kappa_match + sp.Rational(1, 9)) == 0)
+   101	odd_ok_standalone = (sp.simplify(chi_mix.subs(sigma, 0) - 1) == 0)
+   102	nontrivial_standalone = (sp.simplify(sigma_match) != 0)  # i.e., False because sigma_match = 0
+   103	
+   104	even_ok_hyb_cancel = True  # captured by hybrid_solutions containing the kappa=0 branch
+   105	odd_ok_hyb_cancel = (sp.simplify(chi_cancel - (1 - 9 * sigma * gamma)) == 0)
+   106	nontrivial_hyb_cancel = False  # collapses at gamma=0
+   107	
+   108	even_ok_compensated = True  # captured by hybrid_solutions containing the kappa=1/3 branch
+   109	odd_ok_compensated = (sp.simplify(chi_comp.subs(gamma, sp.Rational(1, 9)) - 1) == 0)
+   110	nontrivial_compensated = (sp.simplify(sp.expand(sp.series(delta_core - delta_core_expected, z, 0, 6).removeO())) == 0)
+   111	
+   112	classification_rows = [
+   113	    ("scale/argument", even_ok_scale, odd_ok_scale, nontrivial_scale, "harmless beta = 1 pure-scale branch"),
+   114	    ("pure Robin", even_ok_robin, odd_ok_robin, nontrivial_robin, "rho_R = 0 only"),
+   115	    ("standalone mixed pole", even_ok_standalone, odd_ok_standalone, nontrivial_standalone, "sigma_W = 0 only (formal kappa = -1/9)"),
+   116	    ("hybrid cancellation", even_ok_hyb_cancel, odd_ok_hyb_cancel, nontrivial_hyb_cancel, "gamma_W = 0 reduces to exact cancellation"),
+   117	    ("compensated Robin-mixed core realization", even_ok_compensated, odd_ok_compensated, nontrivial_compensated, "balance surface + D/N tube normalization"),
+   118	]
+   119	```
+   120	
+   121	Then keep the existing filter and assertion. The `nontrivial_compensated` boolean is wired to the load-bearing `delta_core - delta_core_expected = 0` residual from line 167; if that residual is nonzero, the capstone now catches it.
+   122	
+   123	Mirror this in `mathematica_audit.wl:126-137`. Use `TrueQ[FullSimplify[...] === 0]` patterns analogous to the existing `expectZero` shape:
+   124	
+   125	```wolfram
+   126	evenOkScale = TrueQ[Sort[beta /. betaSolutions] === {-1, 1}];
+   127	oddOkScale = TrueQ[FullSimplify[(chiArg /. beta -> 1) - 1] === 0];
+   128	nontrivialScale = False;
+   129	(* ... similar for other classes ... *)
+   130	nontrivialCompensated = TrueQ[FullSimplify[Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]]] === 0];
+   131	
+   132	classificationRows = {
+   133	  {"scale/argument", evenOkScale, oddOkScale, nontrivialScale, "harmless beta = 1 pure-scale branch"},
+   134	  (* ... *)
+   135	  {"compensated Robin-mixed core realization", evenOkCompensated, oddOkCompensated, nontrivialCompensated, "balance surface + D/N tube normalization"}
+   136	};
+   137	```
+   138	
+   139	Pre-check: under the existing (passing) run, all wired booleans evaluate to their current literal values, so the assertion `nontrivial_survivors == ["compensated Robin-mixed core realization"]` still holds. Trivial-case substitution: if `delta_core - delta_core_expected` is forced nonzero (e.g., a developer breaks line 159-167), then `nontrivial_compensated = False`, `nontrivial_survivors = []`, and the capstone assertion fires.
+   140	
+   141	**Verification command:**
+   142	After Codex applies, the verifier will run `redteam exec-sympy 117` (or `redteam exec-mathematica 117`) and confirm:
+   143	- The script still exits 0.
+   144	- The `classification_rows` literal `True`/`False` entries in columns 2-4 of `sympy_audit.py:170-176` are replaced by variable references to computed booleans defined earlier in the script.
+   145	- Same structural change in `mathematica_audit.wl:126-137`.
+   146	- Output transcript still shows the five-row capstone table with the same final survivor set.
+
+codex
+---
+stage: 117
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [stage_117.md, audit_directive_117.md, stage_117.tex, moving_throat_pde_stage117_outlet_core_status_sympy_audit.py, moving_throat_pde_stage117_outlet_core_status_sympy_audit.txt, moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl, moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt]
+---
+# Codex review — stage 117
+
+## What the edit was supposed to do
+The directive required applying only F4: replace the capstone classification table's hardcoded boolean columns with booleans computed from the earlier residuals and branch solves. The compensated survivor specifically had to be wired to the section-5 residual `delta_core - delta_core_expected`, while keeping the final survivor-set assertion. F1-F3 were explicitly blocked: the Mathematica transliteration and the `kappa_c`/`gamma_c` normalization tautologies were not to be mechanically fixed without user-supplied upstream derivations.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:184 | SymPy capstone booleans wired to section results | Yes; bad roots/residuals change the booleans | Partly: reduced outlet classification, not independent D/N realization | PASS |
+| 2 | moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:216 | SymPy nontrivial survivor set | Yes; changed booleans alter `nontrivial_survivors` | Yes, for the reduced-model survivor classification | PASS |
+| 3 | moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:136 | Mathematica capstone booleans mirror SymPy | Only as the same reduced algebra; not independently | No independent second-engine corroboration | R1 |
+| 4 | moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:166 | Mathematica nontrivial survivor set | Only as the same reduced algebra; not independently | No independent second-engine corroboration | R1 |
+
+## Findings
+### R1 — transliteration
+- **Where:** `moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:136`
+- **What's wrong:** `evenOkScale = TrueQ[Sort[beta /. betaSolutions] === {-1, 1}];` begins a capstone block that is still a line-by-line port of the SymPy block, including `nontrivialCompensated = TrueQ[Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]] === 0]`. This was already called out as F1 and blocked in the directive. The saved Mathematica output corroborates that the copied check passes, but it is not an independent derivation; a wrong `deltaCoreExpected` target or carried-forward `kappa0/gamma0` substitution copied into both engines would pass in both.
+- **What it should be:** Either derive the Mathematica side through an independent path from the Schur complement / D/N BVP / bare mixed-channel premises, or explicitly mark the `.wl` file as duplicate corroboration rather than a second-engine audit.
+
+## Bottom line
+The SymPy F4 wiring is no longer the old hardcoded survivor table: the booleans are tied to prior solves and the section-5 residual, and the saved output shows the expected five-row table. The stage still cannot receive a clean PASS because the Mathematica “second engine” remains the known transliteration from F1, so its passing output does not independently protect the paper-side claim from a copied wrong reduced target.
+tokens used
+31,129
+---
+stage: 117
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [stage_117.md, audit_directive_117.md, stage_117.tex, moving_throat_pde_stage117_outlet_core_status_sympy_audit.py, moving_throat_pde_stage117_outlet_core_status_sympy_audit.txt, moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl, moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt]
+---
+# Codex review — stage 117
+
+## What the edit was supposed to do
+The directive required applying only F4: replace the capstone classification table's hardcoded boolean columns with booleans computed from the earlier residuals and branch solves. The compensated survivor specifically had to be wired to the section-5 residual `delta_core - delta_core_expected`, while keeping the final survivor-set assertion. F1-F3 were explicitly blocked: the Mathematica transliteration and the `kappa_c`/`gamma_c` normalization tautologies were not to be mechanically fixed without user-supplied upstream derivations.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:184 | SymPy capstone booleans wired to section results | Yes; bad roots/residuals change the booleans | Partly: reduced outlet classification, not independent D/N realization | PASS |
+| 2 | moving_throat_pde_stage117_outlet_core_status_sympy_audit.py:216 | SymPy nontrivial survivor set | Yes; changed booleans alter `nontrivial_survivors` | Yes, for the reduced-model survivor classification | PASS |
+| 3 | moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:136 | Mathematica capstone booleans mirror SymPy | Only as the same reduced algebra; not independently | No independent second-engine corroboration | R1 |
+| 4 | moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:166 | Mathematica nontrivial survivor set | Only as the same reduced algebra; not independently | No independent second-engine corroboration | R1 |
+
+## Findings
+### R1 — transliteration
+- **Where:** `moving_throat_pde_stage117_outlet_core_status_mathematica_audit.wl:136`
+- **What's wrong:** `evenOkScale = TrueQ[Sort[beta /. betaSolutions] === {-1, 1}];` begins a capstone block that is still a line-by-line port of the SymPy block, including `nontrivialCompensated = TrueQ[Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]] === 0]`. This was already called out as F1 and blocked in the directive. The saved Mathematica output corroborates that the copied check passes, but it is not an independent derivation; a wrong `deltaCoreExpected` target or carried-forward `kappa0/gamma0` substitution copied into both engines would pass in both.
+- **What it should be:** Either derive the Mathematica side through an independent path from the Schur complement / D/N BVP / bare mixed-channel premises, or explicitly mark the `.wl` file as duplicate corroboration rather than a second-engine audit.
+
+## Bottom line
+The SymPy F4 wiring is no longer the old hardcoded survivor table: the booleans are tied to prior solves and the section-5 residual, and the saved output shows the expected five-row table. The stage still cannot receive a clean PASS because the Mathematica “second engine” remains the known transliteration from F1, so its passing output does not independently protect the paper-side claim from a copied wrong reduced target.
+
+---
+codex_session_id: 019e711e-b4c5-7a50-921e-efe051755562

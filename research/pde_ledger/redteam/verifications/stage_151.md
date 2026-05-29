@@ -1,82 +1,83 @@
 ---
 unit_id: 151
 batch: IV.6
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-28T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-28T23:45:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
-material_change: true
+findings_resolved: 1
+findings_total: 1
+material_change: false
 ---
 
 # Verification — unit 151
 
+> Note: this file supersedes a prior stale verification that described the
+> earlier mpmath single-point implementation (and mislabeled the unit as having
+> 3 findings). The original auditor report for unit 151 records exactly ONE
+> finding (F1, insufficient_verification). The resolution evolved across
+> directive iterations: delta1's fully-symbolic SymPy target was intractable
+> (SymPy hangs on symbolic Pi_star), so the agreed final target (delta2 + delta3)
+> is: Mathematica = full all-Pi_star symbolic verifier; SymPy = an EXACT
+> multi-point cross-check at 5 rational Pi_star samples. Judged against that
+> final target below.
+
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — insufficient_verification
 
 **Classification:** resolved
 
 **What changed:**
-SymPy script (`scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py:23-130`) rewritten to use `mpmath` numerical integration at 40 dps with concrete `Pi_star=1.50882951349316`, `r1=1.7`, `r2=-0.9`, and concrete `gprime`, `AT`, `BT`. Defines `Sigma_star`, `c_kernel`, `K_kernel`, `R_residual`, `mean(f)`, computes `Rbar, cbar, Kbar, cRbar, KRbar, CovcR, CovKR` by quadrature, builds `delta_Sigma = -Sigma_star*(R - Rbar)` (hand form), then asserts `delta_g_int = -CovcR` and `delta_S_int = -CovKR` via independent integration. Mathematica script (`mathematica/...wl:26-74`) rewritten to derive `deltaSigma` independently via `Series[Exp[-Phi]/Z, {epsilon, 0, 1}]`, then verifies it agrees with the hand form, then derives covariance shifts via `Integrate`.
+`scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py` was fully rewritten (diff reworks ~271 lines). Removed: `import mpmath`, the `expect_close` tolerance helper, the fixed numeric anchors (`Pi_star = mp.mpf("1.50882951349316")`, `r1=1.7`, `r2=-0.9`, `gprime`, `AT`, `BT`), and all `mp.quad` numeric integration. Added:
+- Exact-zero helper `expect_zero` = `sp.simplify(sp.cancel(sp.together(expr)))` then `assert res == 0` — no float, no tolerance, no `.is_zero` (`.py:37-40`).
+- All of `r1, r2` (real), `gprime` (real, nonzero), `AT, BT` (real), `eps`, `x` kept SYMBOLIC; `k = sp.pi/2` (`.py:45-50`).
+- `PI_SAMPLES = [1/2, 1, 3/2, 2, 5/3]` as exact rationals (`.py:121-127`).
+- Per-sample fresh build: `Sigma_star`/`delta_Sigma` derived from an eps-first `sp.series` of `e^{-Pi*x}·e^{-eps·pert}/(Z0+eps·Z1)` (`.py:133-141`); M1–M7 asserted via `expect_zero` with `r1,r2,A_T,B_T,gprime` symbolic (`.py:153-186`).
+- delta3 anti-footgun comment block present verbatim right after the docstring (`.py:13-23`).
+- Mathematica `.wl` NOT touched (confirmed: absent from `git status` modified list; mtime 10:03, before the 23:18 `.py` edit).
 
 **Assessment:**
-Non-tautological. SymPy diffs in log are ~1e-42 (well below 1e-30 tol). Mathematica returns symbolic 0 after `FullSimplify`. Deviation from directive: SymPy uses `mpmath` (numeric) instead of `sympy.integrate` (symbolic) and helper renamed `expect_zero`→`expect_close`. Orchestrator note acknowledges this; functionally equivalent — the integrals would not numerically equal the covariance combinations unless the underlying identity holds.
+Confirmed against the four `verified` criteria:
 
-### F2 — insufficient_verification
+1. SymPy is now an exact multi-point check: 5 rational `Pi_star` samples, `r1/r2/A_T/B_T/gprime` symbolic, exact `expect_zero`. No mpmath, no `expect_close`, no numeric tolerance, no single fixed anchor.
 
-**Classification:** resolved
+2. M1–M7 are genuine, non-tautological identities. M1 (`delta_Sigma + Sigma_star*(pert - Rbar)`) verifies the `sp.series`-derived first-order coefficient equals the centered hand form — this is the deliverable-#1 derivation that previously had NO SymPy counterpart. M4/M5 integrate the series-derived `delta_Sigma` against the `cos`/`cosh` kernels and compare to independently-formed covariances `CovcR`/`CovKR`; the two sides have different integrands and agree only if the paper identity holds. M6/M7 are the bias/traction retunings. None is a definition checked against itself. The exec log shows exactly 35 `= 0` lines (5 samples × 7 M-items) and exit 0.
 
-**What changed:**
-Both scripts now assert `deltaPi - Cov(c,R)/gprime = 0` and `deltaT + AT*Cov(c,R) + BT*Cov(K,R) = 0` (SymPy lines 116-122; Mathematica lines 63-64). Both produce `= 0` lines in transcripts.
+3. Mathematica script unchanged and still does the full all-`piStar` symbolic proof: `$Assumptions = piStar > 0`, symbolic `Phi`, `Series` expansion, `Integrate` over symbolic `piStar`, `expectZero` via `FullSimplify[...] === 0`; all 6 checks PASS, exit 0.
 
-**Assessment:**
-Bias and traction retunings now exercised by assertion as required.
+4. delta3 anti-footgun comment block present near the top of the `.py`.
 
-### F3 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-Mathematica derives `deltaSigma` via `Series` expansion of `Exp[-Phi[x]]/Z` to first order in `epsilon` (wl:31-37), then verifies agreement with the SymPy-style hand form via `expectZero["deltaSigma + SigmaStar*(R - <R>)", ...]` (wl:54). SymPy keeps the hand-form path. Two genuinely different code paths reaching the same identities.
-
-**Assessment:**
-Independent derivation confirmed. The cross-check `deltaSigma + SigmaStar*(R - rBar) = 0` is a non-trivial bridge between the two paths and it PASSes in the Mathematica log.
+Collateral edit (non-blocking, see Side Observations): Codex introduced a custom monkeypatched `sp.integrate` (`_exact_unit_integrate`, `.py:52-119`) for the `(x,0,1)` case rather than relying on stock `sp.integrate`. I verified its math is correct: `_poly_exp_moment(rate,deg)` computes ∫₀¹ xⁿe^{ax}dx by the correct integration-by-parts recursion (`e^a/a − (n/a)·I_{n-1}`; base `(e^a−1)/a`; `a=0 → 1/(n+1)`), and `_expand_linear_exponentials` rewrites the trig/hyperbolic kernels to linear-in-x exponentials handled exactly by that formula. It is a mathematically sound exact evaluator (a speed workaround for the 600s cap — delta3 reported 126s runtime), not a tautology shim; it cannot manufacture a false zero because the compared sides have genuinely different integrands.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- `<1>_* = 1 (canonical normalization) = 1.0   (target 1.0, diff 0.0)`
-- `delta_g_int = -Cov(c,R) = 0.05967492458671911...   (target 0.05967..., diff 2.15e-42)`
-- `<delta_Sigma>_*  (centering) = 1.38e-42   (target 0.0, diff 1.38e-42)`
-- `deltaT = -AT*Cov(c,R) - BT*Cov(K,R) = -0.2487...   (target -0.2487..., diff 5.74e-42)`
-
-All six numeric checks pass at tol=1e-30 with residuals ~1e-42.
+- `[Pi=1/2] M1 delta_Sigma + Sigma_star*(R - <R>) = 0`
+- `[Pi=1] M4 dg + CovcR = 0`
+- `[Pi=5/3] M6 deltaPi - CovcR/gprime = 0`
+- `[Pi=5/3] M7 deltaT + A_T*CovcR + B_T*CovKR = 0`
+All 35 M-lines print `= 0` — exact, with NO `diff ...e-NN` tolerance residuals anywhere. The old ~1e-42 numeric diffs are gone.
 
 **Mathematica:** exit=0. Notable lines:
-- `<deltaSigma>_*  (centering, from Series) = 0   PASS`
-- `deltaSigma + SigmaStar*(R - <R>) = 0   PASS`
-- `deltaGInt + Cov(c,R) = 0   PASS`
-- `deltaT + aT*Cov(c,R) + bT*Cov(K,R) = 0   PASS`
+- `deltaSigma + SigmaStar*(R - <R>) = 0` / `PASS`
+- `deltaGInt + Cov(c,R) = 0` / `PASS`
+- `deltaPi - Cov(c,R)/gPrime = 0` / `PASS`
+- `deltaT + aT*Cov(c,R) + bT*Cov(K,R) = 0` / `PASS`
+All 6 `expectZero` checks pass over fully symbolic `piStar>0, r1,r2,gPrime,aT,bT`; `Stage 151 Mathematica audit passed.`
 
-All six symbolic `expectZero` checks pass.
-
-**Output freshness:** Confirmed. SymPy: script mtime 1779989270 < txt 1779989407. Mathematica: script 1779984192 < txt 1779989491.
+**Output freshness:** confirmed. `.py` mtime 23:18:31 < SymPy `.txt` 23:29:23. `.wl` mtime 10:03:12 < Mathematica `.txt` 23:29:23. Both transcripts regenerated post-fix.
 
 ## Material-change assessment
 
-`material_change`: true.
-
-The script now produces concrete numerical values for `deltaPi = -0.8352526754408...` and `deltaT = -0.2487255954387...` keyed to the chosen `Pi_star=1.50882951349316` (canonical Family-1 mouth bias, per docstring referencing stage 156) and the example residual coefficients `r1=1.7, r2=-0.9`. These concrete numbers were not previously asserted. Downstream stages that consume `deltaPi`/`deltaT` (any stage > 151, particularly stage 152 traction retuning) should be flagged stale.
+`material_change`: false. No derived constant or downstream-consumed numeric result changed — the fix only strengthened the SymPy engine's rigor (single mpmath point → exact 5-sample multi-point) and updated the docstring/comment. The verified identities and the Mathematica symbolic proof are identical to before. (The prior stale verification's `material_change: true` was an artifact of the now-removed hardcoded `deltaPi`/`deltaT` numeric values; the current script asserts no such numbers.) No downstream unit is affected.
 
 ## Side observations (non-blocking)
 
-- SymPy script uses `mpmath` numeric quadrature rather than the symbolic SymPy integration prescribed in the directive. Orchestrator note explicitly approves this deviation. The choice is reasonable because the symbolic `sp.integrate(c*Sigma_star, ...)` would yield closed-form expressions involving `Si`/`Ci`, and high-precision numerical agreement is at least as strong as symbolic equivalence for non-tautology.
-- The `expect_close` default tol parameter is `1e-15`, but all call sites override with `tol=1e-30`; observed residuals are ~1e-42, comfortably within either bound.
-- Pi_star value `1.50882951349316` is hardcoded and referenced as "canonical Family-1 mouth bias (notes / stage 156)" — this introduces a forward dependency on stage 156. If stage 156's canonical Pi_star ever changes, this script's numerics will need a refresh.
+- The custom monkeypatched integrator (`.py:52-119`) is a substantial collateral implementation beyond delta3's literal text (which envisioned stock `sp.integrate` at ~5-10s/sample). It is mathematically correct and is the apparent reason the run fits the 600s cap. Not a finding — flagged for visibility so a future maintainer knows this helper, not stock SymPy, performs the unit-interval integrals.
+- All 5 `PI_SAMPLES` rationals {1/2, 1, 3/2, 2, 5/3} match delta3's spec exactly; none dropped (delta3 floor was 4).
 
 ## Verdict justification
 
-All three findings resolved. Both scripts now exercise the paper's deliverables non-tautologically: SymPy via high-precision mpmath quadrature, Mathematica via independent `Series` expansion of the full mouth profile. The centering identity, both moment-shift identities, the bias retuning, and the traction retuning are all asserted (not just printed). The two engines reach the same boxed identities through genuinely different code paths.
+The sole finding F1 — that the SymPy engine verified exact symbolic identities only as a single-point mpmath numeric spot-check and never derived deliverable #1 — is resolved against the agreed final target. The SymPy engine is now an exact, tolerance-free, 5-rational-sample cross-check symbolic in `r1,r2,A_T,B_T,gprime`, with M1 supplying the previously-missing deliverable-#1 derivation, while the unchanged Mathematica engine carries the full all-`Pi_star` symbolic proof. Both engines exit 0 with all checks `= 0`/PASS, outputs are fresh, and the diff's one collateral edit (a custom exact integrator) is mathematically sound and non-tautological. Verdict: verified.

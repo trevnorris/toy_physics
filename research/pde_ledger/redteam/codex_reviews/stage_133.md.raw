@@ -1,0 +1,594 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7122-7fed-7e13-880d-375449d8990b
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 133)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_133.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_133.tex
+
+Write your verdict report for stage 133 now, following the format above exactly.
+exec
+/bin/bash -lc 'wc -l scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l redteam/directives/stage_133.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+135 redteam/directives/stage_133.md
+
+ succeeded in 0ms:
+68 scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py
+
+exec
+/bin/bash -lc 'wc -l mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+75 mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl
+
+ succeeded in 0ms:
+28 scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt
+
+exec
+/bin/bash -lc 'wc -l mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+26 mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt
+
+exec
+/bin/bash -lc 'wc -l paper/stages/stage_133.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+28 paper/stages/stage_133.tex
+
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_133.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_133.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 133]{Stage 133: Full Coupled Mouth-Layer Fixed-Point Law}
+     2	\label{stage:133}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{} / \StatusReduced{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~133 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+    14	
+    15	\begin{quote}
+    16	Two-channel D/N boundary layer gives \(\Pi=\sum_{\alpha=\pm}M_\alpha\mathcal S(\Pi,\kappa_\alpha)\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+    23	\item Check the self-matched susceptibility closure before using the one-scalar branch law.
+    24	\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 133
+     3	batch: IV.4
+     4	created_at: 2026-05-27T00:00:00-06:00
+     5	findings_count: 1
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 133
+    13	
+    14	Apply the finding below. After applying, append an `## Applied: F1` block under
+    15	the finding with: `files_changed`, `summary` (one sentence), and `deviation`
+    16	(or "none").
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes beyond what is
+    19	specified. Edit exactly the file:line ranges named.
+    20	
+    21	Do NOT run python or mathematica. Only edit files.
+    22	
+    23	Do NOT touch paper.tex, notes/, or any prose documents.
+    24	
+    25	## F1 — mathematica_transliteration
+    26	
+    27	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:33-52`
+    28	
+    29	**Issue:**
+    30	The Mathematica audit duplicates the SymPy script's hand-ansatz algebra: it
+    31	introduces the same `cCoeff` and `aCoeff` derived in the notes and assembles
+    32	the same closed-form `u` as a literal expression. It then verifies the ODE and
+    33	BCs against that hand-supplied `u`. The second engine therefore offers no
+    34	independent algebraic verification of `u`; an error in the hand-derived `A` or
+    35	`C` would propagate identically to both engines and both would pass. Replace
+    36	the hand-ansatz construction with an independent derivation via `DSolveValue`
+    37	so Mathematica genuinely re-derives the closed-form solution from the PDE and
+    38	boundary conditions.
+    39	
+    40	**Required change:**
+    41	
+    42	Replace the block at lines 28-52 of
+    43	`mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl`
+    44	(everything from `Clear[x, piM, kappa, gSrc];` through the
+    45	`expectZero["mouth derivative kernel", sKernel - sTarget];` line) with the
+    46	following independent-derivation block.
+    47	
+    48	Before:
+    49	```
+    50	Clear[x, piM, kappa, gSrc];
+    51	$Assumptions =
+    52	  Element[{x, piM, kappa, gSrc}, Reals] &&
+    53	  0 <= x <= 1 && piM > 0 && kappa > 0 && gSrc > 0 && kappa != piM;
+    54	
+    55	sigma = piM*Exp[-piM*x]/(1 - Exp[-piM]);
+    56	cCoeff = FullSimplify[gSrc*piM/((1 - Exp[-piM])*(kappa^2 - piM^2)), Assumptions -> $Assumptions];
+    57	aCoeff = FullSimplify[cCoeff*(kappa*Sinh[kappa] + piM*Exp[-piM])/(kappa*Cosh[kappa]), Assumptions -> $Assumptions];
+    58	u = FullSimplify[aCoeff*Sinh[kappa*x] - cCoeff*Cosh[kappa*x] + cCoeff*Exp[-piM*x], Assumptions -> $Assumptions];
+    59	
+    60	residual = FullSimplify[-D[u, {x, 2}] + kappa^2*u - gSrc*sigma, Assumptions -> $Assumptions];
+    61	bc0 = FullSimplify[u /. x -> 0, Assumptions -> $Assumptions];
+    62	bc1 = FullSimplify[D[u, x] /. x -> 1, Assumptions -> $Assumptions];
+    63	
+    64	sKernel = FullSimplify[(D[u, x] /. x -> 0)/gSrc, Assumptions -> $Assumptions];
+    65	sTarget = FullSimplify[
+    66	  piM*(kappa*Tanh[kappa] + piM*(Exp[-piM]/Cosh[kappa] - 1))/((1 - Exp[-piM])*(kappa^2 - piM^2)),
+    67	  Assumptions -> $Assumptions
+    68	];
+    69	
+    70	Print["u(x) = ", fmt[u]];
+    71	expectZero["ODE residual", residual];
+    72	expectZero["u(0)", bc0];
+    73	expectZero["u'(1)", bc1];
+    74	expectZero["mouth derivative kernel", sKernel - sTarget];
+    75	```
+    76	
+    77	After:
+    78	```
+    79	Clear[x, piM, kappa, gSrc, uFun];
+    80	$Assumptions =
+    81	  Element[{x, piM, kappa, gSrc}, Reals] &&
+    82	  0 <= x <= 1 && piM > 0 && kappa > 0 && gSrc > 0 && kappa != piM;
+    83	
+    84	sigma = piM*Exp[-piM*x]/(1 - Exp[-piM]);
+    85	
+    86	(* Independent derivation: let DSolveValue solve the D/N problem from scratch. *)
+    87	uSol = DSolveValue[
+    88	  {-uFun''[x] + kappa^2*uFun[x] == gSrc*sigma, uFun[0] == 0, uFun'[1] == 0},
+    89	  uFun[x],
+    90	  x
+    91	];
+    92	u = FullSimplify[uSol, Assumptions -> $Assumptions];
+    93	
+    94	residual = FullSimplify[-D[u, {x, 2}] + kappa^2*u - gSrc*sigma, Assumptions -> $Assumptions];
+    95	bc0 = FullSimplify[u /. x -> 0, Assumptions -> $Assumptions];
+    96	bc1 = FullSimplify[D[u, x] /. x -> 1, Assumptions -> $Assumptions];
+    97	
+    98	sKernel = FullSimplify[(D[u, x] /. x -> 0)/gSrc, Assumptions -> $Assumptions];
+    99	sTarget = FullSimplify[
+   100	  piM*(kappa*Tanh[kappa] + piM*(Exp[-piM]/Cosh[kappa] - 1))/((1 - Exp[-piM])*(kappa^2 - piM^2)),
+   101	  Assumptions -> $Assumptions
+   102	];
+   103	
+   104	Print["u(x) = ", fmt[u]];
+   105	expectZero["ODE residual", residual];
+   106	expectZero["u(0)", bc0];
+   107	expectZero["u'(1)", bc1];
+   108	expectZero["mouth derivative kernel", sKernel - sTarget];
+   109	```
+   110	
+   111	Key differences:
+   112	- `cCoeff` and `aCoeff` are removed.
+   113	- `u` is now obtained by `DSolveValue[{ODE, BCs}, uFun[x], x]` — Mathematica
+   114	  derives the closed form from the PDE itself rather than copying the SymPy
+   115	  ansatz.
+   116	- All four downstream `expectZero` assertions are unchanged and now serve as
+   117	  independent verification that the `DSolve` answer satisfies the ODE, both
+   118	  BCs, and reproduces the paper's boxed `S(Pi, kappa)` kernel via `u'(0)/G`.
+   119	
+   120	Do NOT change anything else in the file. Leave the static-shell limit block
+   121	(currently lines 54-58 in the original), the banner sections, the final two-
+   122	channel print block, and the `Exit[0]` line untouched.
+   123	
+   124	**Verification command:**
+   125	After Codex applies, the verifier will run `redteam exec-mathematica 133` and
+   126	confirm:
+   127	1. The script exits 0.
+   128	2. The script no longer contains the identifiers `cCoeff` or `aCoeff`
+   129	   (grep both literals; both should be absent).
+   130	3. The script contains a `DSolveValue` (or `DSolve`) call with the inhomogeneous
+   131	   ODE and both BCs.
+   132	4. All four `expectZero` lines for `ODE residual`, `u(0)`, `u'(1)`, and
+   133	   `mouth derivative kernel` are present and pass.
+   134	5. The static-shell limit block still prints `S(Pi,0) = 1` and the
+   135	   `static-shell limit` `expectZero` still passes.
+
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 133 — SCALAR D/N RESPONSE KERNEL
+     4	========================================================================================
+     5	u(x) =
+     6	     ⎛   Π⋅x                Π              Π⋅(x + 1)                ⎞  -Π⋅x 
+     7	-G⋅Π⋅⎝Π⋅ℯ   ⋅sinh(κ⋅x) + κ⋅ℯ ⋅cosh(κ) - κ⋅ℯ         ⋅cosh(κ⋅(x - 1))⎠⋅ℯ     
+     8	────────────────────────────────────────────────────────────────────────────
+     9	                          ⎛ 2    2⎞ ⎛ Π    ⎞                                
+    10	                        κ⋅⎝Π  - κ ⎠⋅⎝ℯ  - 1⎠⋅cosh(κ)                        
+    11	ODE residual = 0
+    12	u(0) = 0
+    13	u'(1) = 0
+    14	mouth derivative kernel = 0
+    15	S(Pi,0) = 1
+    16	
+    17	========================================================================================
+    18	STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW
+    19	========================================================================================
+    20	Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)
+    21	with
+    22	  S(Pi,kappa) =
+    23	   ⎛     Π      Π         Π        ⎞ 
+    24	-Π⋅⎜- Π⋅ℯ  + ─────── + κ⋅ℯ ⋅tanh(κ)⎟ 
+    25	   ⎝         cosh(κ)               ⎠ 
+    26	─────────────────────────────────────
+    27	         ⎛ 2    2⎞ ⎛ Π    ⎞          
+    28	         ⎝Π  - κ ⎠⋅⎝ℯ  - 1⎠          
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	#!/usr/bin/env python3
+     3	"""
+     4	moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py
+     5	
+     6	SymPy audit for the explicit coupled mouth-layer fixed-point law.
+     7	
+     8	Checks
+     9	------
+    10	1. Solve the scalar D/N problem with exponential source on x in [0,1].
+    11	2. Verify the exact mouth-derivative kernel S(Pi,kappa).
+    12	3. Verify the static-shell limit S(Pi,0)=1.
+    13	4. Record the general two-channel fixed-point law after diagonalization.
+    14	"""
+    15	
+    16	from __future__ import annotations
+    17	import sympy as sp
+    18	
+    19	def banner(title: str) -> None:
+    20	    line = "=" * 88
+    21	    print("\n" + line)
+    22	    print(title)
+    23	    print(line)
+    24	
+    25	def expect_zero(name: str, expr: sp.Expr) -> None:
+    26	    expr = sp.simplify(sp.expand(expr))
+    27	    print(f"{name} = {expr}")
+    28	    if expr != 0:
+    29	        raise AssertionError(f"{name} is not zero")
+    30	
+    31	banner("STAGE 133 — SCALAR D/N RESPONSE KERNEL")
+    32	
+    33	x, Pi, kappa, G = sp.symbols("x Pi kappa G", positive=True, real=True)
+    34	Sigma = Pi * sp.exp(-Pi*x) / (1 - sp.exp(-Pi))
+    35	
+    36	C = G * Pi / ((1 - sp.exp(-Pi)) * (kappa**2 - Pi**2))
+    37	A = sp.simplify(C * (kappa * sp.sinh(kappa) + Pi * sp.exp(-Pi)) / (kappa * sp.cosh(kappa)))
+    38	
+    39	u = sp.simplify(A * sp.sinh(kappa*x) - C * sp.cosh(kappa*x) + C * sp.exp(-Pi*x))
+    40	
+    41	res = sp.simplify(-sp.diff(u, x, 2) + kappa**2 * u - G * Sigma)
+    42	bc0 = sp.simplify(u.subs(x, 0))
+    43	bc1 = sp.simplify(sp.diff(u, x).subs(x, 1))
+    44	
+    45	S = sp.simplify(sp.diff(u, x).subs(x, 0) / G)
+    46	S_target = sp.simplify(
+    47	    Pi * (kappa * sp.tanh(kappa) + Pi * (sp.exp(-Pi) / sp.cosh(kappa) - 1))
+    48	    / ((1 - sp.exp(-Pi)) * (kappa**2 - Pi**2))
+    49	)
+    50	
+    51	print("u(x) =")
+    52	sp.pprint(u)
+    53	expect_zero("ODE residual", res)
+    54	expect_zero("u(0)", bc0)
+    55	expect_zero("u'(1)", bc1)
+    56	expect_zero("mouth derivative kernel", S - S_target)
+    57	
+    58	kk = sp.symbols("kk", positive=True, real=True)
+    59	S0 = sp.simplify(sp.limit(S_target.subs(kappa, kk), kk, 0))
+    60	print("S(Pi,0) =", S0)
+    61	if sp.simplify(S0 - 1) != 0:
+    62	    raise AssertionError("Static-shell limit failed.")
+    63	
+    64	banner("STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW")
+    65	print("Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)")
+    66	print("with")
+    67	print("  S(Pi,kappa) =")
+    68	sp.pprint(S_target)
+
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 133 — SCALAR D/N RESPONSE KERNEL"];
+    27	
+    28	Clear[x, piM, kappa, gSrc, uFun];
+    29	$Assumptions =
+    30	  Element[{x, piM, kappa, gSrc}, Reals] &&
+    31	  0 <= x <= 1 && piM > 0 && kappa > 0 && gSrc > 0 && kappa != piM;
+    32	
+    33	sigma = piM*Exp[-piM*x]/(1 - Exp[-piM]);
+    34	
+    35	(* Independent derivation: let DSolveValue solve the D/N problem from scratch. *)
+    36	uSol = DSolveValue[
+    37	  {-uFun''[x] + kappa^2*uFun[x] == gSrc*sigma, uFun[0] == 0, uFun'[1] == 0},
+    38	  uFun[x],
+    39	  x
+    40	];
+    41	u = FullSimplify[uSol, Assumptions -> $Assumptions];
+    42	
+    43	residual = FullSimplify[-D[u, {x, 2}] + kappa^2*u - gSrc*sigma, Assumptions -> $Assumptions];
+    44	bc0 = FullSimplify[u /. x -> 0, Assumptions -> $Assumptions];
+    45	bc1 = FullSimplify[D[u, x] /. x -> 1, Assumptions -> $Assumptions];
+    46	
+    47	sKernel = FullSimplify[(D[u, x] /. x -> 0)/gSrc, Assumptions -> $Assumptions];
+    48	sTarget = FullSimplify[
+    49	  piM*(kappa*Tanh[kappa] + piM*(Exp[-piM]/Cosh[kappa] - 1))/((1 - Exp[-piM])*(kappa^2 - piM^2)),
+    50	  Assumptions -> $Assumptions
+    51	];
+    52	
+    53	Print["u(x) = ", fmt[u]];
+    54	expectZero["ODE residual", residual];
+    55	expectZero["u(0)", bc0];
+    56	expectZero["u'(1)", bc1];
+    57	expectZero["mouth derivative kernel", sKernel - sTarget];
+    58	
+    59	Clear[kk];
+    60	$Assumptions = Element[{kk, piM}, Reals] && kk > 0 && piM > 0;
+    61	s0 = FullSimplify[Normal[Series[sTarget /. kappa -> kk, {kk, 0, 0}]], Assumptions -> $Assumptions];
+    62	Print["S(Pi,0) = ", fmt[s0]];
+    63	expectZero["static-shell limit", s0 - 1];
+    64	
+    65	banner["STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW"];
+    66	
+    67	Print["Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)"];
+    68	Print["with"];
+    69	Print["  S(Pi,kappa) ="];
+    70	Print["  ", fmt[sTarget]];
+    71	
+    72	Print[""];
+    73	Print["Stage 133 Mathematica audit passed."];
+    74	
+    75	Exit[0];
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 133 — SCALAR D/N RESPONSE KERNEL
+     4	========================================================================================
+     5	u(x) = (gSrc*piM*(E^(piM + kappa*x)*kappa - E^(2*kappa + piM + piM*x)*kappa - E^(piM + 2*kappa*x + piM*x)*kappa + E^(piM + kappa*(2 + x))*kappa - E^(kappa + piM*x)*piM + E^(kappa + 2*kappa*x + piM*x)*piM))/(E^((kappa + piM)*x)*(1 + E^(2*kappa))*(-1 + E^piM)*kappa*(kappa - piM)*(kappa + piM))
+     6	ODE residual = 0
+     7	PASS: ODE residual
+     8	u(0) = 0
+     9	PASS: u(0)
+    10	u'(1) = 0
+    11	PASS: u'(1)
+    12	mouth derivative kernel = 0
+    13	PASS: mouth derivative kernel
+    14	S(Pi,0) = 1
+    15	static-shell limit = 0
+    16	PASS: static-shell limit
+    17	
+    18	========================================================================================
+    19	STAGE 133 — GENERAL TWO-CHANNEL FIXED-POINT LAW
+    20	========================================================================================
+    21	Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)
+    22	with
+    23	  S(Pi,kappa) =
+    24	  (piM*(-(piM*Sech[kappa]) + E^piM*(piM - kappa*Tanh[kappa])))/((-1 + E^piM)*(-kappa^2 + piM^2))
+    25	
+    26	Stage 133 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'rg -n "cCoeff|aCoeff|DSolve|expectZero|expect_zero" scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:20:expectZero[name_String, expr_] := Module[{res},
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:35:(* Independent derivation: let DSolveValue solve the D/N problem from scratch. *)
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:36:uSol = DSolveValue[
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:54:expectZero["ODE residual", residual];
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:55:expectZero["u(0)", bc0];
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:56:expectZero["u'(1)", bc1];
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:57:expectZero["mouth derivative kernel", sKernel - sTarget];
+mathematica/moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:63:expectZero["static-shell limit", s0 - 1];
+scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py:25:def expect_zero(name: str, expr: sp.Expr) -> None:
+scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py:53:expect_zero("ODE residual", res)
+scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py:54:expect_zero("u(0)", bc0)
+scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py:55:expect_zero("u'(1)", bc1)
+scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py:56:expect_zero("mouth derivative kernel", S - S_target)
+
+codex
+---
+stage: 133
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py, moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt, moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt, stage_133.md, stage_133.tex]
+---
+# Codex review — stage 133
+
+## What the edit was supposed to do
+The directive required replacing the Mathematica hand-ansatz construction, which duplicated SymPy's `cCoeff`/`aCoeff` algebra, with an independent `DSolveValue` derivation of the scalar D/N mouth-layer solution. The downstream checks were supposed to remain: ODE residual, both boundary conditions, the mouth derivative kernel \(u'(0)/G\), and the static-shell limit. The purpose was to make Mathematica an independent derivation of the kernel used in the paper's two-channel fixed-point law.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:54 | DSolve-derived `u` satisfies scalar ODE | Yes; the residual is recomputed from the returned solution, not formed as `X-X`. | Yes, supports the D/N boundary-layer response behind \(\mathcal S(\Pi,\kappa)\). | PASS |
+| 2 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:55 | `u(0) = 0` | Yes; it substitutes the independently solved profile into the Dirichlet condition. | Yes, checks the D side of the D/N layer. | PASS |
+| 3 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:56 | `u'(1) = 0` | Yes; it differentiates the solved profile and evaluates the Neumann condition. | Yes, checks the N side of the D/N layer. | PASS |
+| 4 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:57 | `u'(0)/gSrc` equals target kernel | Yes; `sKernel` comes from `DSolveValue`, while `sTarget` is a separate closed-form formula. | Yes, this is the scalar kernel in the quoted two-channel fixed-point law. | PASS |
+| 5 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:63 | static-shell limit `S(Pi,0)=1` | Yes; the series limit is compared against the constant `1`. | Yes, checks the retained normalized static limit of the kernel. | PASS |
+
+## Bottom line
+PASS. I tried to break the fix by looking for reused hand coefficients, shared construction of both sides, and a copied SymPy ansatz in the Mathematica path: `cCoeff`/`aCoeff` are absent, `u` is obtained by `DSolveValue`, and the kernel target is only used after the independent solve. I also manually re-derived \(u'(0)/G\) from the D/N ODE and got the same \(\mathcal S(\Pi,\kappa)\), including the static limit \(1\). The saved Mathematica output shows `0` plus `PASS` for all five checks, and the SymPy output corroborates the same scalar kernel identity.
+tokens used
+30,092
+---
+stage: 133
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py, moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.txt, moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.txt, stage_133.md, stage_133.tex]
+---
+# Codex review — stage 133
+
+## What the edit was supposed to do
+The directive required replacing the Mathematica hand-ansatz construction, which duplicated SymPy's `cCoeff`/`aCoeff` algebra, with an independent `DSolveValue` derivation of the scalar D/N mouth-layer solution. The downstream checks were supposed to remain: ODE residual, both boundary conditions, the mouth derivative kernel \(u'(0)/G\), and the static-shell limit. The purpose was to make Mathematica an independent derivation of the kernel used in the paper's two-channel fixed-point law.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:54 | DSolve-derived `u` satisfies scalar ODE | Yes; the residual is recomputed from the returned solution, not formed as `X-X`. | Yes, supports the D/N boundary-layer response behind \(\mathcal S(\Pi,\kappa)\). | PASS |
+| 2 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:55 | `u(0) = 0` | Yes; it substitutes the independently solved profile into the Dirichlet condition. | Yes, checks the D side of the D/N layer. | PASS |
+| 3 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:56 | `u'(1) = 0` | Yes; it differentiates the solved profile and evaluates the Neumann condition. | Yes, checks the N side of the D/N layer. | PASS |
+| 4 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:57 | `u'(0)/gSrc` equals target kernel | Yes; `sKernel` comes from `DSolveValue`, while `sTarget` is a separate closed-form formula. | Yes, this is the scalar kernel in the quoted two-channel fixed-point law. | PASS |
+| 5 | moving_throat_pde_stage133_coupled_mouth_fixedpoint_mathematica_audit.wl:63 | static-shell limit `S(Pi,0)=1` | Yes; the series limit is compared against the constant `1`. | Yes, checks the retained normalized static limit of the kernel. | PASS |
+
+## Bottom line
+PASS. I tried to break the fix by looking for reused hand coefficients, shared construction of both sides, and a copied SymPy ansatz in the Mathematica path: `cCoeff`/`aCoeff` are absent, `u` is obtained by `DSolveValue`, and the kernel target is only used after the independent solve. I also manually re-derived \(u'(0)/G\) from the D/N ODE and got the same \(\mathcal S(\Pi,\kappa)\), including the static limit \(1\). The saved Mathematica output shows `0` plus `PASS` for all five checks, and the SymPy output corroborates the same scalar kernel identity.
+
+---
+codex_session_id: 019e7122-7fed-7e13-880d-375449d8990b

@@ -1,0 +1,668 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7122-f491-73b1-9fc6-edf80fdb2d93
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 134)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_134.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_134.tex
+
+Write your verdict report for stage 134 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba paper/stages/stage_134.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba redteam/directives/stage_134.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 134]{Stage 134: Family-1 Shell + First Mixed D/N Tube Reduction}
+     2	\label{stage:134}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~134 is a coupled mouth fixed point and gain selection ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the shell/mixed core, the mouth source law, outlet consistency, core-to-mouth gain maps, and self-matched susceptibility closure.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection} block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive equal-normalized limit.}
+    14	
+    15	\begin{quote}
+    16	First explicit reduction gives \(\Pi=M_s+M_q\mathcal S_q(\Pi)\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Outlet consistency of the gain pair \((M_s,M_q)\) is verified at Stage~\ref{stage:135} (outlet-consistent mouth closure); carried forward here.
+    23	\item Self-matched susceptibility closure is verified at Stage~\ref{stage:137} (explicit core-to-mouth gain map); carried forward here.
+    24	\item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 146--153 and the finite mouth-profile correction.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 134
+     3	batch: IV.4
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 134
+    13	
+    14	Apply each non-paper_misalignment finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For the `paper_misalignment` finding (F3), do nothing — the orchestrator is holding for user resolution. Do not edit paper.tex, notes/, or scripts to "fix" F3 until the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — missing_verification_script (subtype script_doesnt_cover_claim)
+    27	
+    28	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:27-43`
+    29	
+    30	**Issue:** The SymPy audit script for stage 134 contains zero assertions — only `print` and `sp.pprint` calls. The script's exit code 0 proves it ran, not that any of the stage's claims hold. The paper-side deliverables (shell limit `=1`, closed-form `S_q`, numerical `S_q(Pi_*) ≈ 0.658075937605428`, gain line) are unprotected.
+    31	
+    32	**Required change:**
+    33	
+    34	Replace the body from line 27 ("banner(...) FAMILY-1 FIXED-POINT REDUCTION") to end of file with the following:
+    35	
+    36	```python
+    37	banner("STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION")
+    38	kk = sp.symbols("kk", positive=True, real=True)
+    39	S_shell = sp.simplify(sp.limit(S(Pi, kk), kk, 0))
+    40	S_q_sym = sp.simplify(S(Pi, sp.pi/2))
+    41	Pi_eq = sp.simplify(M_s + M_q * S_q_sym)
+    42	
+    43	print("S_shell =", S_shell)
+    44	print("S_q(Pi) =")
+    45	sp.pprint(S_q_sym)
+    46	print("Fixed-point law Pi =")
+    47	sp.pprint(Pi_eq)
+    48	
+    49	# --- Substantive checks ---
+    50	
+    51	# Check 1: the kappa -> 0 limit of S equals 1 exactly (static shell channel).
+    52	residual_shell = sp.simplify(S_shell - 1)
+    53	print("S_shell - 1 =", residual_shell)
+    54	assert residual_shell == 0, f"static shell limit failed: residual={residual_shell}"
+    55	print("OK: S_shell = 1")
+    56	
+    57	# Check 2: S_q evaluated at three independent numeric Pi values matches
+    58	# high-precision targets computed by hand from the closed form. The targets
+    59	# are NOT computed by re-typing S(Pi, pi/2) here; they are literals.
+    60	# (If any of these targets are wrong, the verifier will catch it; the point
+    61	#  is that the literal is a separate source of truth from sKernel.)
+    62	S_q_at_half = sp.N(S_q_sym.subs(Pi, sp.Rational(1, 2)), 30)
+    63	S_q_at_one  = sp.N(S_q_sym.subs(Pi, 1), 30)
+    64	S_q_at_two  = sp.N(S_q_sym.subs(Pi, 2), 30)
+    65	# Targets (computed once with arbitrary precision; pasted here as literals):
+    66	target_half = sp.Float("0.227093746284344676170987858536", 30)
+    67	target_one  = sp.Float("0.448366247737067717571127316538", 30)
+    68	target_two  = sp.Float("0.873174944571379090909013017739", 30)
+    69	for name, got, want in [
+    70	    ("S_q(1/2)", S_q_at_half, target_half),
+    71	    ("S_q(1)",   S_q_at_one,  target_one),
+    72	    ("S_q(2)",   S_q_at_two,  target_two),
+    73	]:
+    74	    diff = abs(sp.N(got - want, 30))
+    75	    print(f"{name} = {got}  (target {want}, diff {diff})")
+    76	    assert diff < sp.Float("1e-12"), f"{name} mismatch: diff={diff}"
+    77	print("OK: S_q matches independent numeric targets at Pi=1/2, 1, 2")
+    78	
+    79	# Check 3: S_q(Pi_*) ≈ 0.658075937605428 (carried from notes; Pi_* = 1.50882951349316
+    80	# is numerically located in stage 233, not re-derived here).
+    81	Pi_star = sp.Float("1.50882951349316")
+    82	S_star = sp.N(S_q_sym.subs(Pi, Pi_star), 30)
+    83	S_star_target = sp.Float("0.658075937605428", 30)
+    84	diff_star = abs(sp.N(S_star - S_star_target, 30))
+    85	print("S_q(Pi_star) =", S_star)
+    86	assert diff_star < sp.Float("1e-12"), f"S_q(Pi_star) mismatch: diff={diff_star}"
+    87	print("OK: S_q(Pi_star) matches notes value 0.658075937605428")
+    88	
+    89	# Check 4: canonical gain line M_s = Pi_star - S_q(Pi_star)*M_q.
+    90	gain_line = sp.N(Pi_star - S_star*M_q, 30)
+    91	intercept = sp.N(Pi_star, 30)
+    92	slope = sp.N(-S_star, 30)
+    93	intercept_target = sp.Float("1.50882951349316", 30)
+    94	slope_target = sp.Float("-0.658075937605428", 30)
+    95	assert abs(sp.N(intercept - intercept_target, 30)) < sp.Float("1e-12"), \
+    96	    f"gain line intercept mismatch: got {intercept}, want {intercept_target}"
+    97	assert abs(sp.N(slope - slope_target, 30)) < sp.Float("1e-12"), \
+    98	    f"gain line slope mismatch: got {slope}, want {slope_target}"
+    99	print("Canonical gain line: M_s = Pi_star - S_q(Pi_star)*M_q")
+   100	sp.pprint(gain_line)
+   101	print("OK: gain line coefficients match notes (intercept 1.50882951349316, "
+   102	      "slope -0.658075937605428)")
+   103	```
+   104	
+   105	Notes for Codex:
+   106	- Keep imports and the existing `S(Pi, kappa)` function definition (lines 1-25) unchanged.
+   107	- The literal target values `target_half`, `target_one`, `target_two` are placeholders that must be filled with high-precision numerics. **If you cannot compute them independently from a separate source, replace this block with a single comment `# TODO: fill in high-precision S_q targets for Pi=1/2, 1, 2` and emit a `## Blocked: F1` block instead of applying this part. Do not generate target literals by evaluating sKernel at runtime — that would re-introduce the tautology.** The shell-limit check and the `Pi_*` checks (Checks 1, 3, 4) can be applied unconditionally and do not require external literals.
+   108	
+   109	**Verification command:**
+   110	After Codex applies, the verifier will run `redteam exec-sympy 134` and confirm the script exits 0 and the new "OK:" lines appear in the transcript.
+   111	
+   112	## F2 — tautological_check
+   113	
+   114	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:40-51`
+   115	
+   116	**Issue:** `expectZero["specialized D/N kernel", sQ - sQExpected]` compares `FullSimplify[sKernel[p, Pi/2]]` against `FullSimplify[<same algebraic form with k -> Pi/2 substituted by hand>]`. The two expressions are identical by construction; the check tests only that `FullSimplify` is deterministic. Remove or replace with a non-tautological check.
+   117	
+   118	**Required change:**
+   119	
+   120	Replace lines 40-51 (from `sQ = FullSimplify[...]` through the `expectZero["specialized D/N kernel", ...]` call) with:
+   121	
+   122	```mathematica
+   123	sQ = FullSimplify[sKernel[p, Pi/2], Assumptions -> p > 0];
+   124	fixedPointLaw = FullSimplify[Ms + Mq*sQ, Assumptions -> p > 0];
+   125	
+   126	Print["S_q(p) = ", fmt[sQ]];
+   127	
+   128	(* Non-tautological numeric check: evaluate sQ at three independent Pi values
+   129	   against high-precision targets. The targets are pasted as literals; they
+   130	   must NOT be derived from sKernel at runtime. *)
+   131	expectClose[name_String, got_, want_, tol_] := Module[{d},
+   132	  d = Abs[N[got - want, 30]];
+   133	  Print[name, " = ", got, "  (target ", want, ", diff ", d, ")"];
+   134	  If[TrueQ[d < tol], pass[name], fail[name, d]]
+   135	];
+   136	
+   137	expectClose["S_q at p=1/2", N[sQ /. p -> 1/2, 30],
+   138	  SetPrecision[0.227093746284344676170987858536, 30], 10^-12];
+   139	expectClose["S_q at p=1",   N[sQ /. p -> 1, 30],
+   140	  SetPrecision[0.448366247737067717571127316538, 30], 10^-12];
+   141	expectClose["S_q at p=2",   N[sQ /. p -> 2, 30],
+   142	  SetPrecision[0.873174944571379090909013017739, 30], 10^-12];
+   143	```
+   144	
+   145	The line `sQExpected = FullSimplify[...]` and the `expectZero["specialized D/N kernel", sQ - sQExpected]` call are deleted.
+   146	
+   147	Notes for Codex:
+   148	- The literal targets must match the ones inserted in F1 of the SymPy script. **If F1's targets cannot be sourced, do not apply this F2 patch either — emit `## Blocked: F2` with the same TODO note. The shell-limit `expectZero` (line 48) stays untouched in either case.**
+   149	
+   150	**Verification command:**
+   151	After Codex applies, the verifier will run `redteam exec-mathematica 134` and confirm the script exits 0 and the three new `expectClose` lines appear in the transcript with `PASS:` prefixes.
+   152	
+   153	## F3 — paper_misalignment
+   154	
+   155	**Subtype:** `script_missing_paper_claim`
+   156	
+   157	**Paper side:**
+   158	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_134.tex:21-25` quote:
+   159	  ```
+   160	  \stagefield{Checks}{\begin{verificationchecklist}
+   161	  \item Check the gain pair $(M_s,M_q)$ against outlet consistency.
+   162	  \item Check the self-matched susceptibility closure before using the one-scalar branch law.
+   163	  \item Check numerical fixed points are recorded as numerically located, not closed-form constants.
+   164	  \end{verificationchecklist}}
+   165	  ```
+   166	- `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex:709-725` quotes the outlet-consistent gains `M_s = 4 Sigma_m`, `M_q = -Sigma_m`, and `Sigma_m^* ≈ 0.451485277739090`.
+   167	
+   168	**Script side:**
+   169	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:27-43` — no outlet-consistency check, no susceptibility-closure check.
+   170	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:26-67` — no outlet-consistency check, no susceptibility-closure check.
+   171	
+   172	## Resolve before fix_loop
+   173	
+   174	The paper card's checklist items "Check the gain pair `(M_s, M_q)` against outlet consistency" and "Check the self-matched susceptibility closure before using the one-scalar branch law" are not exercised by either stage 134 script. Should these be added to stage 134, or do they belong to a downstream stage (e.g., 135 or later in Part IV.4) where the outlet-consistent reduction and the susceptibility closure are actually introduced?
+   175	
+   176	Possible directions (the user picks one):
+   177	- (a) Both checks belong to stage 134 → in a follow-up directive, instruct Codex to add to both scripts:
+   178	  - `assert sp.simplify(4*Sigma_m_star - 1.50882951349316 - 0.658075937605428*Sigma_m_star) < tol` (i.e., verify that the canonical `(M_s, M_q) = (4*Sigma_m^*, -Sigma_m^*)` lies on the gain line, with `Sigma_m^* = 0.451485277739090`),
+   179	  - and a check that `Sigma_m^* * (4 - S_q(Pi_*)) == Pi_*` numerically.
+   180	- (b) These checks belong to a later stage → in a follow-up directive, instruct the user (not Codex) to remove the first two `\item` lines from `paper/stages/stage_134.tex:22-23`, leaving only the numerical-fixed-point note. No script change for stage 134.
+   181	- (c) The checks split between stages → user specifies which item goes where.
+   182	
+   183	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+   184	
+   185	## F4 — mathematica_transliteration
+   186	
+   187	**Target:**
+   188	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:31-34` (kernel definition)
+   189	
+   190	**Issue:** Both engines use the same hand-typed closed form for `sKernel[p, k]` / `S(Pi, kappa)`. An error in the closed form would be invisible to the cross-check. The numeric F1/F2 cross-checks introduced above partially mitigate this (since the literal targets come from a separate computation), but the kernel itself is still typed identically.
+   191	
+   192	**Required change:**
+   193	
+   194	This finding is **subsumed by the F1+F2 fix**: once both engines compare their `S_q(Pi)` values at independent numeric points against pasted high-precision literals, the transliteration concern is operationally neutralized. **No additional code change is required for F4** beyond what F1 and F2 specify. If Codex blocks on F1/F2 (cannot source independent literals), it must also note `## Blocked: F4` with the same reason.
+   195	
+   196	If F1 and F2 are successfully applied, Codex should append `## Applied: F4` with:
+   197	- `files_changed`: (empty, or list the F1/F2 files)
+   198	- `summary`: "Subsumed by F1/F2 numeric cross-checks against pasted high-precision targets; no additional change."
+   199	- `deviation`: "none"
+   200	
+   201	**Verification command:**
+   202	Verifier confirms the F1 and F2 numeric checks pass; no separate exec needed for F4.
+
+ succeeded in 0ms:
+  91 scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  34 scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt
+  80 mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl
+  23 mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt
+ 228 total
+
+exec
+/bin/bash -lc 'nl -ba scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba scripts/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	#!/usr/bin/env python3
+     3	"""
+     4	moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+     5	
+     6	SymPy audit for the Family-1 shell + first mixed D/N tube reduction.
+     7	"""
+     8	
+     9	from __future__ import annotations
+    10	import sympy as sp
+    11	
+    12	def banner(title: str) -> None:
+    13	    line = "=" * 88
+    14	    print("\n" + line)
+    15	    print(title)
+    16	    print(line)
+    17	
+    18	Pi = sp.symbols("Pi", positive=True, real=True)
+    19	M_s, M_q = sp.symbols("M_s M_q", real=True)
+    20	
+    21	def S(Pi, kappa):
+    22	    return sp.simplify(
+    23	        Pi * (kappa * sp.tanh(kappa) + Pi * (sp.exp(-Pi) / sp.cosh(kappa) - 1))
+    24	        / ((1 - sp.exp(-Pi)) * (kappa**2 - Pi**2))
+    25	    )
+    26	
+    27	banner("STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION")
+    28	kk = sp.symbols("kk", positive=True, real=True)
+    29	S_shell = sp.simplify(sp.limit(S(Pi, kk), kk, 0))
+    30	S_q = sp.simplify(S(Pi, sp.pi/2))
+    31	Pi_eq = sp.simplify(M_s + M_q * S_q)
+    32	
+    33	print("S_shell =", S_shell)
+    34	print("S_q(Pi) =")
+    35	sp.pprint(S_q)
+    36	print("Fixed-point law Pi =")
+    37	sp.pprint(Pi_eq)
+    38	
+    39	Pi_star = sp.Float("1.50882951349316")
+    40	S_star = sp.N(S_q.subs(Pi, Pi_star), 30)
+    41	print("S_q(Pi_star) =", S_star)
+    42	print("Canonical gain line: M_s = Pi_star - S_q(Pi_star) M_q")
+    43	sp.pprint(sp.N(Pi_star - S_star*M_q, 30))
+    44	
+    45	# --- Substantive checks ---
+    46	
+    47	# Check 1: the kappa -> 0 limit of S equals 1 exactly (static shell channel).
+    48	residual_shell = sp.simplify(S_shell - 1)
+    49	print("S_shell - 1 =", residual_shell)
+    50	assert residual_shell == 0, f"static shell limit failed: residual={residual_shell}"
+    51	print("OK: S_shell = 1")
+    52	
+    53	# Check 2: S_q evaluated at three independent numeric Pi values matches
+    54	# high-precision targets computed independently via mpmath (see
+    55	# redteam/resolutions/batch_IV4_paper_alignment.md M3 for the verification).
+    56	# Targets are NOT computed by re-typing S(Pi, pi/2) here; they are literals
+    57	# from a separate mpmath run.
+    58	S_q_at_half = sp.N(S_q.subs(Pi, sp.Rational(1, 2)), 30)
+    59	S_q_at_one  = sp.N(S_q.subs(Pi, 1), 30)
+    60	S_q_at_two  = sp.N(S_q.subs(Pi, 2), 30)
+    61	target_half = sp.Float("0.608336415687717065435990381419", 30)
+    62	target_one  = sp.Float("0.633127670034487546375729566676", 30)
+    63	target_two  = sp.Float("0.681366857005321783286541952613", 30)
+    64	for name, got, want in [
+    65	    ("S_q(1/2)", S_q_at_half, target_half),
+    66	    ("S_q(1)",   S_q_at_one,  target_one),
+    67	    ("S_q(2)",   S_q_at_two,  target_two),
+    68	]:
+    69	    diff = abs(sp.N(got - want, 30))
+    70	    print(f"{name} = {got}  (target {want}, diff {diff})")
+    71	    assert diff < sp.Float("1e-12"), f"{name} mismatch: diff={diff}"
+    72	print("OK: S_q matches independent numeric targets at Pi=1/2, 1, 2")
+    73	
+    74	# Check 3: S_q(Pi_*) ≈ 0.658075937605428 (carried from notes; Pi_* = 1.50882951349316
+    75	# is numerically located in stage 131, not re-derived here).
+    76	S_star_target = sp.Float("0.658075937605428", 30)
+    77	diff_star = abs(sp.N(S_star - S_star_target, 30))
+    78	assert diff_star < sp.Float("1e-12"), f"S_q(Pi_star) mismatch: diff={diff_star}"
+    79	print("OK: S_q(Pi_star) matches notes value 0.658075937605428")
+    80	
+    81	# Check 4: canonical gain line M_s = Pi_star - S_q(Pi_star)*M_q.
+    82	intercept = sp.N(Pi_star, 30)
+    83	slope = sp.N(-S_star, 30)
+    84	intercept_target = sp.Float("1.50882951349316", 30)
+    85	slope_target = sp.Float("-0.658075937605428", 30)
+    86	assert abs(sp.N(intercept - intercept_target, 30)) < sp.Float("1e-12"), \
+    87	    f"gain line intercept mismatch: got {intercept}, want {intercept_target}"
+    88	assert abs(sp.N(slope - slope_target, 30)) < sp.Float("1e-12"), \
+    89	    f"gain line slope mismatch: got {slope}, want {slope_target}"
+    90	print("OK: gain line coefficients match notes (intercept 1.50882951349316, "
+    91	      "slope -0.658075937605428)")
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION
+     4	========================================================================================
+     5	S_shell = 1
+     6	S_q(Pi) =
+     7	     ⎛       Π     2⋅Π        Π     ⎛π⎞⎞ 
+     8	-2⋅Π⋅⎜- 2⋅Π⋅ℯ  + ─────── + π⋅ℯ ⋅tanh⎜─⎟⎟ 
+     9	     ⎜               ⎛π⎞            ⎝2⎠⎟ 
+    10	     ⎜           cosh⎜─⎟               ⎟ 
+    11	     ⎝               ⎝2⎠               ⎠ 
+    12	─────────────────────────────────────────
+    13	          ⎛   2    2⎞ ⎛ Π    ⎞           
+    14	          ⎝4⋅Π  - π ⎠⋅⎝ℯ  - 1⎠           
+    15	Fixed-point law Pi =
+    16	          ⎛       Π     2⋅Π        Π     ⎛π⎞⎞     
+    17	  2⋅M_q⋅Π⋅⎜- 2⋅Π⋅ℯ  + ─────── + π⋅ℯ ⋅tanh⎜─⎟⎟     
+    18	          ⎜               ⎛π⎞            ⎝2⎠⎟     
+    19	          ⎜           cosh⎜─⎟               ⎟     
+    20	          ⎝               ⎝2⎠               ⎠     
+    21	- ─────────────────────────────────────────── + Mₛ
+    22	             ⎛   2    2⎞ ⎛ Π    ⎞                 
+    23	             ⎝4⋅Π  - π ⎠⋅⎝ℯ  - 1⎠                 
+    24	S_q(Pi_star) = 0.658075937605428494269581645208
+    25	Canonical gain line: M_s = Pi_star - S_q(Pi_star) M_q
+    26	1.50882951349315996836253361835 - 0.658075937605428494269581645208⋅M_q
+    27	S_shell - 1 = 0
+    28	OK: S_shell = 1
+    29	S_q(1/2) = 0.608336415687717065435990381419  (target 0.608336415687717065435990381419, diff 3.94430452610505902705864282641E-31)
+    30	S_q(1) = 0.633127670034487546375729566676  (target 0.633127670034487546375729566676, diff 0)
+    31	S_q(2) = 0.681366857005321783286541952613  (target 0.681366857005321783286541952613, diff 4.93038065763132378382330353302E-31)
+    32	OK: S_q matches independent numeric targets at Pi=1/2, 1, 2
+    33	OK: S_q(Pi_star) matches notes value 0.658075937605428
+    34	OK: gain line coefficients match notes (intercept 1.50882951349316, slope -0.658075937605428)
+
+exec
+/bin/bash -lc 'nl -ba mathematica/output/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION
+     4	========================================================================================
+     5	S_shell = 1
+     6	static shell channel = 0
+     7	PASS: static shell channel
+     8	S_q(p) = (2*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
+     9	S_q at p=1/2 = 0.6083364156877170654359903814193976740207802891324252704208`30.  (target 0.6083364156877170654359903814189999999999999999999999999999`30., diff 0``29.914826189749036)
+    10	PASS: S_q at p=1/2
+    11	S_q at p=1 = 0.6331276700344875463757295666760496952335536640369021447167`30.  (target 0.633127670034487546375729566676`30., diff 0``29.897478710115298)
+    12	PASS: S_q at p=1
+    13	S_q at p=2 = 0.6813668570053217832865419526134255802652444016918238310235`30.  (target 0.681366857005321783286541952613`30., diff 0``29.865588999509455)
+    14	PASS: S_q at p=2
+    15	Fixed-point law p = Ms + (2*Mq*p*(2*p*Sech[Pi/2] + E^p*(-2*p + Pi*Tanh[Pi/2])))/((-1 + E^p)*(-4*p^2 + Pi^2))
+    16	S_q(Pi_star) = 0.65807593760542948674050367268182940317`28.269941337792933
+    17	Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q
+    18	1.508829513493159968362533618346787989139556884765625`30. - 0.65807593760542948674050367268182940317`28.269941337792933*Mq
+    19	
+    20	RESULT:
+    21	  Family-1 reduces the coupled mouth law to p = Ms + Mq S_q(p).
+    22	  The static shell lane gives S_shell = 1 exactly.
+    23	  Evaluated at Pi_star, the canonical compensation line matches the Stage 134 note.
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION"];
+    27	
+    28	Clear[p, k, kk, k0, Ms, Mq];
+    29	$Assumptions = p > 0 && Element[{k, kk, Ms, Mq}, Reals];
+    30	
+    31	sKernel[p_, k_] := FullSimplify[
+    32	  p*(k*Tanh[k] + p*(Exp[-p]/Cosh[k] - 1))/((1 - Exp[-p])*(k^2 - p^2)),
+    33	  Assumptions -> $Assumptions
+    34	];
+    35	
+    36	sShell = Quiet[
+    37	  FullSimplify[Limit[sKernel[p, k0], k0 -> 0], Assumptions -> p > 0],
+    38	  Limit::alimv
+    39	];
+    40	sQ = FullSimplify[sKernel[p, Pi/2], Assumptions -> p > 0];
+    41	fixedPointLaw = FullSimplify[Ms + Mq*sQ, Assumptions -> p > 0];
+    42	
+    43	Print["S_shell = ", fmt[sShell]];
+    44	expectZero["static shell channel", sShell - 1];
+    45	
+    46	Print["S_q(p) = ", fmt[sQ]];
+    47	
+    48	(* Non-tautological numeric check: evaluate sQ at three independent Pi values
+    49	   against high-precision targets verified independently via mpmath. The targets
+    50	   must NOT be derived from sKernel at runtime. *)
+    51	expectClose[name_String, got_, want_, tol_] := Module[{d},
+    52	  d = Abs[N[got - want, 30]];
+    53	  Print[name, " = ", got, "  (target ", want, ", diff ", d, ")"];
+    54	  If[TrueQ[d < tol], pass[name], fail[name, d]]
+    55	];
+    56	
+    57	expectClose["S_q at p=1/2", N[sQ /. p -> 1/2, 30],
+    58	  SetPrecision[0.608336415687717065435990381419, 30], 10^-12];
+    59	expectClose["S_q at p=1",   N[sQ /. p -> 1, 30],
+    60	  SetPrecision[0.633127670034487546375729566676, 30], 10^-12];
+    61	expectClose["S_q at p=2",   N[sQ /. p -> 2, 30],
+    62	  SetPrecision[0.681366857005321783286541952613, 30], 10^-12];
+    63	
+    64	Print["Fixed-point law p = ", fmt[fixedPointLaw]];
+    65	
+    66	piStar = SetPrecision[1.50882951349316, 30];
+    67	sStar = N[sQ /. p -> piStar, 30];
+    68	gainLine = N[piStar - sStar*Mq, 30];
+    69	
+    70	Print["S_q(Pi_star) = ", sStar];
+    71	Print["Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q"];
+    72	Print[gainLine];
+    73	
+    74	Print[""];
+    75	Print["RESULT:"];
+    76	Print["  Family-1 reduces the coupled mouth law to p = Ms + Mq S_q(p)."];
+    77	Print["  The static shell lane gives S_shell = 1 exactly."];
+    78	Print["  Evaluated at Pi_star, the canonical compensation line matches the Stage 134 note."];
+    79	
+    80	Exit[0];
+
+codex
+---
+stage: 134
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py, moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt, moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt, stage_134.md, stage_134.tex]
+---
+# Codex review — stage 134
+
+## What the edit was supposed to do
+F1 required replacing the SymPy print-only body with substantive checks for the shell limit, the specialized \(S_q\) branch, \(S_q(\Pi_*)\), and the canonical gain line. F2 required replacing the Mathematica tautological specialized-kernel comparison with numeric checks against pasted literal targets. F3 was a paper-misalignment hold, while F4 was to be neutralized by the F1/F2 independent numeric literals.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:48 | `S_shell - 1 == 0` | Yes; denominator/sign changes break it. | Yes, shell-channel limit. | PASS |
+| 2 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:58 | `S_q(1/2), S_q(1), S_q(2)` vs literals | Yes; the directive’s old placeholder values or a bad kernel would fail. | Yes, spot-checks the closed \(S_q\) branch. | PASS |
+| 3 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:76 | `S_q(Pi_star)` vs notes value | Yes; bad \(S_q\) or \(\Pi_*\) changes the residual. | Yes, checks the recorded numerical value. | PASS |
+| 4 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:82 | gain-line intercept/slope | No for the intercept; slope only restates check #3 with a minus sign. | No, not independently. | FINDING |
+| 5 | moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:43 | static shell `expectZero` | Yes; bad shell limit fails. | Yes, shell-channel limit. | PASS |
+| 6 | moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:57 | `S_q` numeric literals | Yes; bad specialized branch fails. | Yes, spot-checks the closed \(S_q\) branch. | PASS |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:82`
+- **What's wrong:** `intercept = sp.N(Pi_star, 30)` is compared to `sp.Float("1.50882951349316", 30)`, the same literal already used to define `Pi_star`. The slope check is `slope = -S_star` compared to `-0.658075937605428`, which only repeats the prior `S_star` check with a sign flip. This cannot detect a wrong gain-line derivation or an unsupported gain selection; it only confirms constants already inserted into the script.
+- **What it should be:** Either remove this as a substantive check, or compare an independently derived/stored gain-line expression or outlet-consistent gain pair against the fixed-point residual. If outlet consistency belongs to Stage 135 as the current card says, Stage 134 should not claim this as an independent gain-line verification.
+
+## Bottom line
+The shell and \(S_q\) numeric checks are corroborated by the saved outputs and are not runtime tautologies. The failure is the SymPy “canonical gain line” assertion: it is built from the same \(\Pi_*\) and \(S_q(\Pi_*)\) intermediates it claims to verify, so the stage still lacks a non-tautological check of that gain-line deliverable.
+tokens used
+23,321
+---
+stage: 134
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py, moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.txt, moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl, moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.txt, stage_134.md, stage_134.tex]
+---
+# Codex review — stage 134
+
+## What the edit was supposed to do
+F1 required replacing the SymPy print-only body with substantive checks for the shell limit, the specialized \(S_q\) branch, \(S_q(\Pi_*)\), and the canonical gain line. F2 required replacing the Mathematica tautological specialized-kernel comparison with numeric checks against pasted literal targets. F3 was a paper-misalignment hold, while F4 was to be neutralized by the F1/F2 independent numeric literals.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:48 | `S_shell - 1 == 0` | Yes; denominator/sign changes break it. | Yes, shell-channel limit. | PASS |
+| 2 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:58 | `S_q(1/2), S_q(1), S_q(2)` vs literals | Yes; the directive’s old placeholder values or a bad kernel would fail. | Yes, spot-checks the closed \(S_q\) branch. | PASS |
+| 3 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:76 | `S_q(Pi_star)` vs notes value | Yes; bad \(S_q\) or \(\Pi_*\) changes the residual. | Yes, checks the recorded numerical value. | PASS |
+| 4 | moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:82 | gain-line intercept/slope | No for the intercept; slope only restates check #3 with a minus sign. | No, not independently. | FINDING |
+| 5 | moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:43 | static shell `expectZero` | Yes; bad shell limit fails. | Yes, shell-channel limit. | PASS |
+| 6 | moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:57 | `S_q` numeric literals | Yes; bad specialized branch fails. | Yes, spot-checks the closed \(S_q\) branch. | PASS |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — tautological_check
+- **Where:** `moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:82`
+- **What's wrong:** `intercept = sp.N(Pi_star, 30)` is compared to `sp.Float("1.50882951349316", 30)`, the same literal already used to define `Pi_star`. The slope check is `slope = -S_star` compared to `-0.658075937605428`, which only repeats the prior `S_star` check with a sign flip. This cannot detect a wrong gain-line derivation or an unsupported gain selection; it only confirms constants already inserted into the script.
+- **What it should be:** Either remove this as a substantive check, or compare an independently derived/stored gain-line expression or outlet-consistent gain pair against the fixed-point residual. If outlet consistency belongs to Stage 135 as the current card says, Stage 134 should not claim this as an independent gain-line verification.
+
+## Bottom line
+The shell and \(S_q\) numeric checks are corroborated by the saved outputs and are not runtime tautologies. The failure is the SymPy “canonical gain line” assertion: it is built from the same \(\Pi_*\) and \(S_q(\Pi_*)\) intermediates it claims to verify, so the stage still lacks a non-tautological check of that gain-line deliverable.
+
+---
+codex_session_id: 019e7122-f491-73b1-9fc6-edf80fdb2d93

@@ -1,0 +1,449 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e711e-b4c1-7412-8204-0e77499a1f3f
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 111)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_111.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_111.tex
+
+Write your verdict report for stage 111 now, following the format above exactly.
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+36 /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py
+
+ succeeded in 0ms:
+80 /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl
+
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_111.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_111.tex' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'wc -l /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+60 /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_111.md
+
+ succeeded in 0ms:
+10 /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt
+
+ succeeded in 0ms:
+28 /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_111.tex
+
+ succeeded in 0ms:
+26 /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_111.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 111
+     3	batch: IV.2
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 1
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 111
+    13	
+    14	Apply the finding below. After applying, append an `## Applied: F1` block under it with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If the required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F1` with a question instead.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes outside the scope below. Do NOT run python or mathematica. Do NOT touch `paper/`, `notes/`, or any prose documents.
+    19	
+    20	## F1 — mathematica_transliteration
+    21	
+    22	**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl:26-66`
+    23	
+    24	**Issue:**
+    25	The Mathematica script reproduces the SymPy script's choreography line-by-line: it builds `lambdaMix` by the same subtraction, extracts the same four `Coefficient[lambdaMix, z, n]` quantities, solves `-l2/l0 == 1/9` then `(l2^2/l0^2 - l4/l0) /. kappa -> kappaMatch == 4/81` in the same order, then forms `chiMix = (-l5/l0)/(1/27)` and its `Series` linearization. The second-engine policy requires that the `.wl` derive at least one of the four paper-side identities by an independent algebraic path, so a choreography error in `.py` cannot silently pass in `.wl`.
+    26	
+    27	**Required change:**
+    28	
+    29	Add an independent cross-check of `chiMix` to the Mathematica script. Insert a new block immediately after the existing `chiMix` line (currently L52) that recomputes `chi_Q^mix` by a path that does not go through `l5`. Then add a fifth `expectZero` comparing the two routes.
+    30	
+    31	Specifically, after line 52 (the existing `chiMix = ...` line), add the following block (keep all existing lines):
+    32	
+    33	```mathematica
+    34	(* Independent re-derivation of chi_Q^mix: bypass the L0/L5 extraction *)
+    35	(* and compute directly from the geometric-series form of the pole. *)
+    36	poleSeries = Series[sigma/(1 - kappa*z^2 - I*gamma*z^5), {z, 0, 5}];
+    37	imagPart5 = Coefficient[Normal[poleSeries], z, 5]/I;
+    38	chiMixAlt = FullSimplify[
+    39	  27 (1/9 - imagPart5)/(3 + sigma),
+    40	  Assumptions -> $Assumptions
+    41	];
+    42	Print["chi_Q^mix (independent route) = ", fmt[chiMixAlt]];
+    43	```
+    44	
+    45	Then, after the existing four `expectZero` calls (lines 60-63), add:
+    46	
+    47	```mathematica
+    48	expectZero["chi_Q^mix routes agree", chiMix - chiMixAlt];
+    49	```
+    50	
+    51	This second route computes `chi_Q^mix = -27 L5 / L0` via the substitutions `L0 = -3 - sigma`, `L5 = 1/9 - imagPart5_of_pole_alone`, without first forming `lambdaMix` or running `Coefficient` on it for `z^5`. Algebraically it must reduce to the same closed form. The new `expectZero` will pass iff both routes give the same result.
+    52	
+    53	Do NOT delete or weaken the existing four `expectZero` calls or the existing `chiMix` definition.
+    54	
+    55	**Verification command:**
+    56	After Codex applies, the verifier will run `redteam exec-mathematica 111` and confirm:
+    57	1. The new lines appear at the locations specified.
+    58	2. The new transcript line `chi_Q^mix routes agree` prints with residual `0`.
+    59	3. `expectZero["chi_Q^mix routes agree", ...]` reports `PASS`.
+    60	4. Script still exits 0 with all five `expectZero` calls passing.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_111.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage~128]{Stage~128: Explicit Mixed A-w/F-mu w-Type Side-Channel Pole}
+     2	\label{stage:111}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~111 is a outlet deformation and compensation ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation} block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+    14	
+    15	\begin{quote}
+    16	A standalone hidden mixed pole cannot preserve the canonical even branch unless it is absent.
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check pure scale and pure argument deformations separately.
+    23	\item Check Robin and standalone mixed-pole limits before imposing compensation.
+    24	\item Check that the compensated branch preserves the even coefficients as well as the odd normalization.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	z, sigma, kappa, gamma = sp.symbols('z sigma kappa gamma', real=True)
+     6	I = sp.I
+     7	
+     8	Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
+     9	Lambda_mix = sp.expand(sp.series(Lambda_out - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())
+    10	
+    11	L0 = sp.simplify(Lambda_mix.coeff(z, 0))
+    12	L2 = sp.simplify(Lambda_mix.coeff(z, 2))
+    13	L4 = sp.simplify(Lambda_mix.coeff(z, 4))
+    14	L5 = sp.simplify(Lambda_mix.coeff(z, 5) / I)
+    15	
+    16	print('Lambda_mix(z) =', Lambda_mix)
+    17	print('L0 =', L0)
+    18	print('L2 =', L2)
+    19	print('L4 =', L4)
+    20	print('L5 =', L5)
+    21	
+    22	kappa_match = sp.solve(sp.Eq(-L2/L0, sp.Rational(1, 9)), kappa)[0]
+    23	sigma_match = sp.solve(sp.Eq((L2**2/L0**2 - L4/L0).subs(kappa, kappa_match), sp.Rational(4, 81)), sigma)[0]
+    24	chi_mix = sp.simplify((-L5/L0) / sp.Rational(1, 27))
+    25	chi_mix_lin = sp.expand(sp.series(chi_mix, sigma, 0, 2).removeO())
+    26	
+    27	print('kappa from z^2 matching =', kappa_match)
+    28	print('sigma from z^4 matching =', sigma_match)
+    29	print('chi_Q^mix =', chi_mix)
+    30	print('chi_Q^mix linearized =', chi_mix_lin)
+    31	
+    32	assert sp.simplify(kappa_match + sp.Rational(1, 9)) == 0
+    33	assert sp.simplify(sigma_match) == 0
+    34	assert sp.simplify(chi_mix - 3*(1 - 9*sigma*gamma)/(3 + sigma)) == 0
+    35	assert sp.simplify(chi_mix_lin - (1 - sigma*(sp.Rational(1,3) + 9*gamma))) == 0
+    36	print('stage111: PASS')
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 111 — MIXED SIDE-CHANNEL POLE"];
+    27	
+    28	Clear[z, sigma, kappa, gamma];
+    29	$Assumptions =
+    30	  Element[{z, sigma, kappa, gamma}, Reals] &&
+    31	  sigma != -3;
+    32	
+    33	lambdaOut = -3 + z^2/3 + z^4/9 + I*z^5/9;
+    34	lambdaMix = Expand[Normal[Series[lambdaOut - sigma/(1 - kappa*z^2 - I*gamma*z^5), {z, 0, 5}]]];
+    35	
+    36	l0 = FullSimplify[Coefficient[lambdaMix, z, 0], Assumptions -> $Assumptions];
+    37	l2 = FullSimplify[Coefficient[lambdaMix, z, 2], Assumptions -> $Assumptions];
+    38	l4 = FullSimplify[Coefficient[lambdaMix, z, 4], Assumptions -> $Assumptions];
+    39	l5 = FullSimplify[Coefficient[lambdaMix, z, 5]/I, Assumptions -> $Assumptions];
+    40	
+    41	Print["Lambda_mix(z) = ", fmt[lambdaMix]];
+    42	Print["L0 = ", fmt[l0]];
+    43	Print["L2 = ", fmt[l2]];
+    44	Print["L4 = ", fmt[l4]];
+    45	Print["L5 = ", fmt[l5]];
+    46	
+    47	kappaMatch = FullSimplify[kappa /. First[Solve[-l2/l0 == 1/9, kappa, Reals]], Assumptions -> $Assumptions];
+    48	sigmaMatch = FullSimplify[
+    49	  sigma /. First[Solve[((l2^2/l0^2 - l4/l0) /. kappa -> kappaMatch) == 4/81, sigma, Reals]],
+    50	  Assumptions -> $Assumptions
+    51	];
+    52	chiMix = FullSimplify[(-l5/l0)/(1/27), Assumptions -> $Assumptions];
+    53	
+    54	(* Independent re-derivation of chi_Q^mix: bypass the L0/L5 extraction *)
+    55	(* and compute directly from the geometric-series form of the pole. *)
+    56	poleSeries = Series[sigma/(1 - kappa*z^2 - I*gamma*z^5), {z, 0, 5}];
+    57	imagPart5 = Coefficient[Normal[poleSeries], z, 5]/I;
+    58	chiMixAlt = FullSimplify[
+    59	  27*(1/9 - imagPart5)/(3 + sigma),
+    60	  Assumptions -> $Assumptions
+    61	];
+    62	Print["chi_Q^mix (independent route) = ", fmt[chiMixAlt]];
+    63	
+    64	chiMixLinear = Expand[Normal[Series[chiMix, {sigma, 0, 1}]]];
+    65	
+    66	Print["kappa from z^2 matching = ", fmt[kappaMatch]];
+    67	Print["sigma from z^4 matching = ", fmt[sigmaMatch]];
+    68	Print["chi_Q^mix = ", fmt[chiMix]];
+    69	Print["chi_Q^mix linearized = ", fmt[chiMixLinear]];
+    70	
+    71	expectZero["kappa_match + 1/9", kappaMatch + 1/9];
+    72	expectZero["sigma_match", sigmaMatch];
+    73	expectZero["chi_Q^mix - 3 (1 - 9 sigma gamma)/(3 + sigma)", chiMix - 3*(1 - 9*sigma*gamma)/(3 + sigma)];
+    74	expectZero["chi_Q^mix linearized - (1 - sigma (1/3 + 9 gamma))", chiMixLinear - (1 - sigma*(1/3 + 9*gamma))];
+    75	expectZero["chi_Q^mix routes agree", chiMix - chiMixAlt];
+    76	
+    77	Print[""];
+    78	Print["Stage 111 Mathematica audit passed."];
+    79	
+    80	Exit[0];
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 111 — MIXED SIDE-CHANNEL POLE
+     4	========================================================================================
+     5	Lambda_mix(z) = -3 - sigma + z^2/3 - kappa*sigma*z^2 + z^4/9 - kappa^2*sigma*z^4 + (I/9)*z^5 - I*gamma*sigma*z^5
+     6	L0 = -3 - sigma
+     7	L2 = 1/3 - kappa*sigma
+     8	L4 = 1/9 - kappa^2*sigma
+     9	L5 = 1/9 - gamma*sigma
+    10	chi_Q^mix (independent route) = (3 - 27*gamma*sigma)/(3 + sigma)
+    11	kappa from z^2 matching = -1/9
+    12	sigma from z^4 matching = 0
+    13	chi_Q^mix = (3 - 27*gamma*sigma)/(3 + sigma)
+    14	chi_Q^mix linearized = 1 - sigma/3 - 9*gamma*sigma
+    15	kappa_match + 1/9 = 0
+    16	PASS: kappa_match + 1/9
+    17	sigma_match = 0
+    18	PASS: sigma_match
+    19	chi_Q^mix - 3 (1 - 9 sigma gamma)/(3 + sigma) = 0
+    20	PASS: chi_Q^mix - 3 (1 - 9 sigma gamma)/(3 + sigma)
+    21	chi_Q^mix linearized - (1 - sigma (1/3 + 9 gamma)) = 0
+    22	PASS: chi_Q^mix linearized - (1 - sigma (1/3 + 9 gamma))
+    23	chi_Q^mix routes agree = 0
+    24	PASS: chi_Q^mix routes agree
+    25	
+    26	Stage 111 Mathematica audit passed.
+
+ succeeded in 0ms:
+     1	Lambda_mix(z) = -I*gamma*sigma*z**5 - kappa**2*sigma*z**4 - kappa*sigma*z**2 - sigma + I*z**5/9 + z**4/9 + z**2/3 - 3
+     2	L0 = -sigma - 3
+     3	L2 = -kappa*sigma + 1/3
+     4	L4 = -kappa**2*sigma + 1/9
+     5	L5 = -gamma*sigma + 1/9
+     6	kappa from z^2 matching = -1/9
+     7	sigma from z^4 matching = 0
+     8	chi_Q^mix = 3*(-9*gamma*sigma + 1)/(sigma + 3)
+     9	chi_Q^mix linearized = -9*gamma*sigma - sigma/3 + 1
+    10	stage111: PASS
+
+codex
+---
+stage: 111
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py, moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt, moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl, moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt, stage_111.md, stage_111.tex]
+---
+# Codex review — stage 111
+
+## What the edit was supposed to do
+The directive identified the Mathematica audit as a line-by-line transliteration of the SymPy audit. It required adding an independent Mathematica re-derivation of `chi_Q^mix` that bypasses `lambdaMix`'s `l5` extraction and instead computes the pole's `z^5` contribution directly from the geometric series. The existing four checks were to remain intact, with a fifth `expectZero["chi_Q^mix routes agree", chiMix - chiMixAlt]` added and shown passing.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl:75 | `chi_Q^mix routes agree` | Yes. It compares `chiMix` from `l0,l5` extracted out of `lambdaMix` against `chiMixAlt` from a separate pole-series coefficient route. | Yes. It independently corroborates the mixed-pole odd-normalization expression used by the stage's compensated-branch check. | PASS |
+
+## Bottom line
+PASS. I tried to break the added check as a tautology, but `chiMixAlt` is not assigned from `chiMix`, `l5`, or `l0`; it recomputes the pole's `z^5` coefficient from `sigma/(1 - kappa*z^2 - I*gamma*z^5)` and uses the explicit `L0 = -3 - sigma` route. A sign error in the pole subtraction, a wrong `z^5` coefficient extraction, or dropping the `/I` normalization would make line 75 fail. The assumptions only require real symbols and `sigma != -3`, so they do not smuggle in the `sigma = 0` absence result. The saved Mathematica transcript shows the independent route as `(3 - 27*gamma*sigma)/(3 + sigma)` and the new residual `chi_Q^mix routes agree = 0` followed by `PASS`; the SymPy transcript and the existing Mathematica checks still corroborate the even-branch and odd-normalization identities.
+tokens used
+16,934
+---
+stage: 111
+reviewer: codex
+verdict: PASS
+findings_count: 0
+files_reviewed: [moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.py, moving_throat_pde_stage111_mixed_sidechannel_pole_sympy_audit.txt, moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl, moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt, stage_111.md, stage_111.tex]
+---
+# Codex review — stage 111
+
+## What the edit was supposed to do
+The directive identified the Mathematica audit as a line-by-line transliteration of the SymPy audit. It required adding an independent Mathematica re-derivation of `chi_Q^mix` that bypasses `lambdaMix`'s `l5` extraction and instead computes the pole's `z^5` contribution directly from the geometric series. The existing four checks were to remain intact, with a fifth `expectZero["chi_Q^mix routes agree", chiMix - chiMixAlt]` added and shown passing.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.wl:75 | `chi_Q^mix routes agree` | Yes. It compares `chiMix` from `l0,l5` extracted out of `lambdaMix` against `chiMixAlt` from a separate pole-series coefficient route. | Yes. It independently corroborates the mixed-pole odd-normalization expression used by the stage's compensated-branch check. | PASS |
+
+## Bottom line
+PASS. I tried to break the added check as a tautology, but `chiMixAlt` is not assigned from `chiMix`, `l5`, or `l0`; it recomputes the pole's `z^5` coefficient from `sigma/(1 - kappa*z^2 - I*gamma*z^5)` and uses the explicit `L0 = -3 - sigma` route. A sign error in the pole subtraction, a wrong `z^5` coefficient extraction, or dropping the `/I` normalization would make line 75 fail. The assumptions only require real symbols and `sigma != -3`, so they do not smuggle in the `sigma = 0` absence result. The saved Mathematica transcript shows the independent route as `(3 - 27*gamma*sigma)/(3 + sigma)` and the new residual `chi_Q^mix routes agree = 0` followed by `PASS`; the SymPy transcript and the existing Mathematica checks still corroborate the even-branch and odd-normalization identities.
+
+---
+codex_session_id: 019e711e-b4c1-7412-8204-0e77499a1f3f

@@ -1,0 +1,890 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7125-1eed-7580-b167-3c3f1bc5f745
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 146)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_146.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_146.tex
+
+Write your verdict report for stage 146 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS
+     4	========================================================================================
+     5	g(Pi) = (2*p*(2*E^p*p + Pi))/((-1 + E^p)*(4*p^2 + Pi^2))
+     6	S_q(Pi) = (p*(p*(-1 + Sech[Pi/2]/E^p) + (Pi*Tanh[Pi/2])/2))/((1 - E^(-p))*(-p^2 + Pi^2/4))
+     7	g(Pi) direct-formula = 0
+     8	PASS: g(Pi) direct-formula
+     9	S_q(Pi) direct-formula = 0
+    10	PASS: S_q(Pi) direct-formula
+    11	kernel check at Pi=1: integral=0.6331276700344875463757295666760496952105646163689135789068662130000350136331`50., formula=0.6331276700344875463757295666760496952105646163689135789062`40.
+    12	kernel formula sample 1 diff = 0``40.198508705735854
+    13	PASS: kernel formula sample 1
+    14	kernel check at Pi=3/2: integral=0.65764871799959582572063998753362254249033121537187056774847364923824522533008`50., formula=0.6576487179995958257206399875336225424903312153718705677448`40.
+    15	kernel formula sample 3/2 diff = 0``40.1820060221054
+    16	PASS: kernel formula sample 3/2
+    17	kernel check at Pi=5/2: integral=0.70386404609596161940940117796345710262758066438130959358270225279806319956344`50., formula=0.7038640460959616194094011779634571026275806643813095935825`40.
+    18	kernel formula sample 5/2 diff = 0``40.15251121827502
+    19	PASS: kernel formula sample 5/2
+    20	Pi_* = 1.5088295134931555830055507559542749287786371931530784314262`30.
+    21	g_* = 0.7580350789446628269196808904141104577505296234775693214362`40.
+    22	S_* = 0.6580759376054292746166018491599488126083424994253021110838`40.
+    23	g_*' = 0.071445355808319521189460301988135751110742153928880903667`40.
+    24	S_*' = 0.0483709542125040992653572761724701419081449614768102821884`40.
+    25	Pi_* compensation point diff = 0``39.819280700762555
+    26	PASS: Pi_* compensation point
+    27	
+    28	========================================================================================
+    29	FIRST-ORDER CANONICAL RETUNING LAW
+    30	========================================================================================
+    31	delta Pi = eps*(10.6099979539382841749632785238349395291598864566014336875697`39.328729130303785 - 13.996711034414836883861287207869633620514744270241070856019`39.69897000433602*gBar)
+    32	delta S = eps*(-0.1448602123807183535415864145352667747139475744077603266206`38.60720965403542 - 0.6770342685713309628725696856150390727819192617413840622353`39.52287874528034*gBar + sBar)
+    33	g_eps affine law (integral form) at eps=1/10: 0
+    34	g_eps affine law (integral form) at eps=1/2:  0
+    35	PASS: g_eps affine law (integral form)
+    36	S_eps affine law (integral form) at eps=1/10: 0
+    37	S_eps affine law (integral form) at eps=1/2:  0
+    38	PASS: S_eps affine law (integral form)
+    39	
+    40	Stage 146 Mathematica audit passed.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_146.tex' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	\section[Stage 146]{Stage 146: First-Order Expansion for Positive Mouth-Layer Deformations}
+     2	\label{stage:146}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~146 is a finite mouth-profile corrections ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the regular canonical mouth branch, positive deformations of the source profile, the first-order rigidity kernel, and the full mouth potential.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Finite mouth-profile corrections} block.  The computation isolates the finite first-order/nonlinear correction to \((\Pi,\widehat T_m)\) and the decision to co-evolve core and mouth.}
+    14	
+    15	\begin{quote}
+    16	First-order deformations depend only on \((\bar g_\varsigma,\bar S_\varsigma)\) and retune \(\Pi\).
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check that first-order profile deformations are centered before covariance formulas are used.
+    23	\item Check that the rigidity kernel, not branch ambiguity, controls non-exponential corrections.
+    24	\item Check the one-step nonlinear correction remains within the reduced mouth-layer regime.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 154--163 and the linearized defect transport.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_146.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 146
+     3	batch: IV.5
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 3
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: false
+    10	---
+    11	
+    12	# Codex directive — unit 146
+    13	
+    14	Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    17	
+    18	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    19	
+    20	Do NOT run python or mathematica. Only edit files.
+    21	
+    22	Do NOT touch paper.tex, notes/, or any prose documents.
+    23	
+    24	## F1 — tautological_check
+    25	
+    26	**Target:**
+    27	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:71-75`
+    28	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:85-90`
+    29	
+    30	**Issue:**
+    31	The "affine law" assertions are restatements of distributive arithmetic on the script's own definitions, not tests of the paper's affine identities for the source moments. `g_eps = (1-eps)*gminus + eps*gbar` already equals `gminus + eps*(gbar - gminus)` by algebra, so `expect_zero` cannot fail. Replace these with assertions that compare the *integral* form of \(\bar g_\epsilon\) and \(\bar S_\epsilon\) (linear combination of integrals against the kernels) against the affine right-hand side.
+    32	
+    33	**Required change:**
+    34	
+    35	(SymPy) In `scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py`, replace lines 71-75:
+    36	
+    37	Before:
+    38	```python
+    39	# Exact affine law for convex family moments.
+    40	g_eps = (1-eps)*gminus + eps*gbar
+    41	S_eps = (1-eps)*Sformula.subs(Pi, Pi_star) + eps*Sbar
+    42	expect_zero("g_eps affine law", sp.expand(g_eps - (gminus + eps*(gbar-gminus))))
+    43	expect_zero("S_eps affine law", sp.expand(S_eps - (Sformula.subs(Pi, Pi_star) + eps*(Sbar-Sformula.subs(Pi, Pi_star)))))
+    44	```
+    45	
+    46	After:
+    47	```python
+    48	# Exact affine law for convex family moments — tested via integration,
+    49	# not via redefining the affine form. Use a concrete positive normalized
+    50	# test profile varsigma_test(x) = 6 x (1 - x) (a polynomial bump,
+    51	# positive on (0,1), with integral 1 on [0,1]).
+    52	varsigma_test = 6*x*(1-x)
+    53	Sigma_eps = (1-eps)*Sigma.subs(Pi, Pi_star) + eps*varsigma_test
+    54	gbar_phys = sp.integrate(Sigma_eps*sp.cos(sp.pi*x/2), (x, 0, 1))
+    55	Sbar_phys = sp.integrate(Sigma_eps*Kq, (x, 0, 1))
+    56	gbar_v    = sp.integrate(varsigma_test*sp.cos(sp.pi*x/2), (x, 0, 1))
+    57	Sbar_v    = sp.integrate(varsigma_test*Kq, (x, 0, 1))
+    58	expect_zero(
+    59	    "g_eps affine law (integral form)",
+    60	    sp.simplify(gbar_phys - (gminus + eps*(gbar_v - gminus))),
+    61	)
+    62	expect_zero(
+    63	    "S_eps affine law (integral form)",
+    64	    sp.simplify(Sbar_phys - (Sformula.subs(Pi, Pi_star) + eps*(Sbar_v - Sformula.subs(Pi, Pi_star)))),
+    65	)
+    66	```
+    67	
+    68	Notes for Codex:
+    69	- `Sigma` and `Kq` are already defined above (lines 21-22). `Sigma.subs(Pi, Pi_star)` substitutes the numeric `Pi_*` so the integrals become numeric in `eps` only.
+    70	- `gminus` (line 47) and `Sformula.subs(Pi, Pi_star)` (already used on line 73 above) carry the numeric branch values; the residuals should reduce to 0 because both `gbar_phys` and the affine RHS share `gminus = integral of Sigma_*(x) cos(pi x/2)` and `Sformula.subs(Pi, Pi_star) = integral of Sigma_*(x) Kq(x)` (the latter only holds if F2 is also applied — see F2).
+    71	- `sp.simplify` may be slow if `sp.integrate` returns symbolic combinations of erf-like terms; if so, fall back to a numeric check at, e.g., `eps -> sp.Rational(1, 10)` and `eps -> sp.Rational(1, 2)` with `sp.N(..., 30)` and `assert abs(...) < 1e-25`.
+    72	
+    73	(Mathematica) In `mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl`, replace lines 85-90:
+    74	
+    75	Before:
+    76	```mathematica
+    77	gEps = (1 - eps)*gMinus + eps*gBar;
+    78	sEps = (1 - eps)*sStar + eps*sBar;
+    79	expectZero["g_eps affine law", Expand[gEps - (gMinus + eps*(gBar - gMinus))]];
+    80	resSEps = Chop[Expand[sEps - (sStar + eps*(sBar - sStar))]];
+    81	Print["S_eps affine law = ", fmt[resSEps]];
+    82	If[TrueQ[resSEps === 0], pass["S_eps affine law"], fail["S_eps affine law", resSEps]];
+    83	```
+    84	
+    85	After:
+    86	```mathematica
+    87	(* Affine laws tested via integral form, not via algebraic restatement. *)
+    88	varsigmaTest = 6*x*(1 - x);
+    89	sigmaEps = (1 - eps)*(sigma /. p -> pStar) + eps*varsigmaTest;
+    90	gBarPhys = Integrate[sigmaEps*Cos[Pi*x/2], {x, 0, 1}];
+    91	sBarPhys = Integrate[sigmaEps*kq, {x, 0, 1}];
+    92	gBarV    = Integrate[varsigmaTest*Cos[Pi*x/2], {x, 0, 1}];
+    93	sBarV    = Integrate[varsigmaTest*kq, {x, 0, 1}];
+    94	expectZero[
+    95	  "g_eps affine law (integral form)",
+    96	  FullSimplify[gBarPhys - (gMinus + eps*(gBarV - gMinus))]
+    97	];
+    98	resSEps = Chop[N[FullSimplify[sBarPhys - (sStar + eps*(sBarV - sStar))], 40]];
+    99	Print["S_eps affine law (integral form) = ", fmt[resSEps]];
+   100	If[TrueQ[resSEps === 0] || (NumericQ[resSEps] && Abs[resSEps] < 10^-25),
+   101	  pass["S_eps affine law (integral form)"],
+   102	  fail["S_eps affine law (integral form)", resSEps]
+   103	];
+   104	```
+   105	
+   106	Notes for Codex:
+   107	- The Mathematica `S_eps` check uses `sStar` (numeric, 40-digit) rather than the symbolic `Sformula /. p -> pStar`. Because `sStar` and `Integrate[sigma*kq /. p -> pStar, {x,0,1}]` are equal but only to numeric precision, the residual is allowed to be `< 10^-25` rather than literal `=== 0`. This mirrors how the existing `kernel check at Pi=...` already accepts a `10^-12` tolerance for numeric comparisons.
+   108	
+   109	**Claim manifest:** n/a (assertion-rewrite, not a missing-script finding).
+   110	
+   111	**Verification command:**
+   112	The verifier will run `redteam exec-sympy 146` and `redteam exec-mathematica 146`. Both should still exit 0. The new transcripts must contain the line `g_eps affine law (integral form) = 0` and either `S_eps affine law (integral form) = 0` or a residual under `10^-25`.
+   113	
+   114	## F2 — insufficient_verification
+   115	
+   116	**Target:**
+   117	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:28` (insertion point: after line 28, before line 30)
+   118	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:48` (insertion point: after line 48)
+   119	
+   120	**Issue:**
+   121	The closed-form moments `gPi`/`gFormula` and `Sformula`/`sFormula` are the load-bearing inputs to every numeric value in this unit. The Mathematica script symbolically checks `gFormula` against direct integration of `sigma*Cos[Pi*x/2]` (line 48), but the SymPy script never performs this symbolic check; \(\mathcal S_q(\Pi)\) is verified only at three numeric samples in both engines.
+   122	
+   123	**Required change:**
+   124	
+   125	(SymPy) Insert after line 28 in `scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py`:
+   126	
+   127	```python
+   128	# Symbolic verification that the closed-form moments equal the canonical
+   129	# integrals against the kernel functions. This anchors the formulas before
+   130	# the numeric Pi_* root-finder runs.
+   131	gPi_direct = sp.integrate(Sigma*sp.cos(sp.pi*x/2), (x, 0, 1))
+   132	expect_zero("g(Pi) direct-formula", sp.simplify(gPi_direct - gPi))
+   133	Sq_direct = sp.integrate(Sigma*Kq, (x, 0, 1))
+   134	expect_zero("S_q(Pi) direct-formula", sp.simplify(Sq_direct - Sformula))
+   135	```
+   136	
+   137	Notes for Codex:
+   138	- If `sp.integrate` returns an unevaluated `Integral` for one of these, fall back to:
+   139	  ```python
+   140	  for pp in [sp.Rational(7,10), sp.Rational(11,10), sp.Rational(17,10), sp.Rational(23,10)]:
+   141	      diff = sp.N(sp.integrate((Sigma*sp.cos(sp.pi*x/2)).subs(Pi, pp), (x,0,1)) - gPi.subs(Pi, pp), 30)
+   142	      print(f"g(Pi) numeric sample Pi={pp}: diff={diff}")
+   143	      if abs(float(diff)) > 1e-25:
+   144	          raise AssertionError("g(Pi) numeric mismatch")
+   145	  ```
+   146	  and analogously for `Sq_direct`. Prefer symbolic; fall back only if symbolic returns `Integral`.
+   147	
+   148	(Mathematica) Insert after line 48 in `mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl`:
+   149	
+   150	```mathematica
+   151	sDirect = FullSimplify[Integrate[sigma*kq, {x, 0, 1}], Assumptions -> p > 0];
+   152	expectZero["S_q(Pi) direct-formula", sDirect - sFormula];
+   153	```
+   154	
+   155	Notes for Codex:
+   156	- `sigma`, `kq`, `sFormula` are all defined on lines 38-42 above.
+   157	- If `Integrate` returns unevaluated under `Assumptions -> p > 0`, retry with `Assumptions -> p > 0 && p < Pi/2` (the kernel denominator `(kap^2 - p^2)` is the only thing that could cause a branch issue and the small-`p` regime suffices for the formula identity). If still unresolved, fall back to a 4-point numeric check at `p -> {7/10, 11/10, 17/10, 23/10}` with WorkingPrecision 50 and tolerance 10^-25.
+   158	
+   159	**Claim manifest:** n/a.
+   160	
+   161	**Verification command:**
+   162	The verifier will run `redteam exec-sympy 146` and `redteam exec-mathematica 146`. Both should still exit 0. The SymPy transcript must contain `g(Pi) direct-formula = 0` and `S_q(Pi) direct-formula = 0`; the Mathematica transcript must contain `S_q(Pi) direct-formula = 0`.
+   163	
+   164	## F3 — insufficient_verification
+   165	
+   166	**Target:**
+   167	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:32`
+   168	
+   169	**Issue:**
+   170	The Mathematica banner literal says `STAGE 129 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS`. This is the stage-146 audit script. The wrong stage number is stale scaffolding.
+   171	
+   172	**Required change:**
+   173	
+   174	Edit line 32 from:
+   175	```mathematica
+   176	banner["STAGE 129 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
+   177	```
+   178	to:
+   179	```mathematica
+   180	banner["STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
+   181	```
+   182	
+   183	**Claim manifest:** n/a.
+   184	
+   185	**Verification command:**
+   186	The verifier will confirm the new Mathematica transcript contains the literal string `STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS` in the banner block.
+
+ succeeded in 0ms:
+     1	g(Pi) direct-formula = 0
+     2	S_q(Pi) numeric sample Pi=7/10: diff=0E-165
+     3	S_q(Pi) numeric sample Pi=11/10: diff=0E-165
+     4	S_q(Pi) numeric sample Pi=17/10: diff=0E-165
+     5	S_q(Pi) numeric sample Pi=23/10: diff=0E-165
+     6	PASS: S_q(Pi) direct-formula (numeric fallback at 4 samples)
+     7	
+     8	========================================================================================
+     9	Stage 146 audit: exact source moments
+    10	========================================================================================
+    11	g(Pi) =
+    12	      ⎛     Π    ⎞  
+    13	  2⋅Π⋅⎝2⋅Π⋅ℯ  + π⎠  
+    14	────────────────────
+    15	⎛   2    2⎞ ⎛ Π    ⎞
+    16	⎝4⋅Π  + π ⎠⋅⎝ℯ  - 1⎠
+    17	S_q(Pi) =
+    18	    ⎛    ⎛ Π       ⎛π⎞⎞      Π     ⎛π⎞⎞
+    19	2⋅Π⋅⎜2⋅Π⋅⎜ℯ  - sech⎜─⎟⎟ - π⋅ℯ ⋅tanh⎜─⎟⎟
+    20	    ⎝    ⎝         ⎝2⎠⎠            ⎝2⎠⎠
+    21	───────────────────────────────────────
+    22	         ⎛   2    2⎞ ⎛ Π    ⎞          
+    23	         ⎝4⋅Π  - π ⎠⋅⎝ℯ  - 1⎠          
+    24	kernel check at Pi=1: integral=0.633127670034487546375729566676, formula=0.633127670034487546375729566676, diff=0
+    25	kernel check at Pi=3/2: integral=0.657648717999595825720639987534, formula=0.657648717999595825720639987534, diff=0
+    26	kernel check at Pi=5/2: integral=0.703864046095961619409401177963, formula=0.703864046095961619409401177963, diff=0
+    27	Pi_* = 1.50882951349315552747043511772
+    28	g_* = 0.758035078944662822951954793784
+    29	S_* = 0.658075937605429271930315313437
+    30	g_*' = 0.0714453558083195219958997177670
+    31	S_*' = 0.0483709542125040994477978749511
+    32	
+    33	========================================================================================
+    34	First-order canonical retuning law
+    35	========================================================================================
+    36	delta Pi =
+    37	                                                                               ↪
+    38	                                                        ⎛                      ↪
+    39	                                                    eps⋅⎝9.1062660031519695917 ↪
+    40	────────────────────────────────────────────────────────────────────────────── ↪
+    41	     ⎛                                                                         ↪
+    42	20⋅π⋅⎝(-12.1780971843116184832137009616 + 0.532339472655207971347153038985⋅π)⋅ ↪
+    43	
+    44	↪                 2 ⎛              _______________        ⎞                    ↪
+    45	↪               2⎞  ⎜             ╱             2         ⎟                    ↪
+    46	↪ 4460742165 + π ⎠ ⋅⎝20⋅π⋅g̅ - 2⋅╲╱  4107 - 100⋅π   + 37⋅√3⎠                    ↪
+    47	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    48	↪ ⎛                                   2⎞                                       ↪
+    49	↪ ⎝9.10626600315196959174460742165 + π ⎠ + 10.3438114582452450585855755082⋅π + ↪
+    50	
+    51	↪                                  
+    52	↪                                  
+    53	↪                                  
+    54	↪ ─────────────────────────────────
+    55	↪                                 ⎞
+    56	↪  141.132519246618586729500592737⎠
+    57	delta S =
+    58	     ⎛                                      2 ⎛              _______________   ↪
+    59	     ⎜⎛                                   2⎞  ⎜             ╱             2    ↪
+    60	-eps⋅⎜⎝9.10626600315196959174460742165 + π ⎠ ⋅⎝20⋅π⋅g̅ - 2⋅╲╱  4107 - 100⋅π   + ↪
+    61	     ⎝                                                                         ↪
+    62	────────────────────────────────────────────────────────────────────────────── ↪
+    63	                                                                               ↪
+    64	                                                                               ↪
+    65	                                                                               ↪
+    66	
+    67	↪       ⎞                                                                      ↪
+    68	↪       ⎟ ⎛                                        ⎛π⎞                         ↪
+    69	↪  37⋅√3⎠⋅⎜- 46.7688754708531234255640051948⋅π⋅tanh⎜─⎟ - 31.214096020418201464 ↪
+    70	↪         ⎝                                        ⎝2⎠                         ↪
+    71	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    72	↪                                                                              ↪
+    73	↪                                                                              ↪
+    74	↪                                                                              ↪
+    75	
+    76	↪                                                                              ↪
+    77	↪                ⎛π⎞   ⎛                                   2⎞ ⎛                ↪
+    78	↪ 1139896919⋅sech⎜─⎟ + ⎝9.10626600315196959174460742165 - π ⎠⋅⎜-12.17809718431 ↪
+    79	↪                ⎝2⎠                                          ⎝                ↪
+    80	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    81	↪                                                                              ↪
+    82	↪                                                                              ↪
+    83	↪                                                                              ↪
+    84	
+    85	↪                                                                              ↪
+    86	↪                                                          ⎛π⎞                 ↪
+    87	↪ 16184832137009616 + 0.107461076366374263450220019844⋅sech⎜─⎟ + 1.46766052734 ↪
+    88	↪                                                          ⎝2⎠                 ↪
+    89	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    90	↪                                                                              ↪
+    91	↪                                           ⎛                                  ↪
+    92	↪                                      20⋅π⋅⎝9.10626600315196959174460742165 - ↪
+    93	
+    94	↪                                                                              ↪
+    95	↪                          ⎛π⎞⎞                                  ⎞        ⎛    ↪
+    96	↪ 479202865284696101⋅π⋅tanh⎜─⎟⎟ + 141.132519246618586729500592737⎟ - 20⋅π⋅⎝9.1 ↪
+    97	↪                          ⎝2⎠⎠                                  ⎠             ↪
+    98	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+    99	↪     2                                                                        ↪
+   100	↪   2⎞  ⎛  ⎛                                   2⎞                              ↪
+   101	↪  π ⎠ ⋅⎝- ⎝9.10626600315196959174460742165 + π ⎠⋅(12.178097184311618483213700 ↪
+   102	
+   103	↪                                                                              ↪
+   104	↪                                 2⎞ ⎛  ⎛                                   2⎞ ↪
+   105	↪ 0626600315196959174460742165 - π ⎠⋅⎝- ⎝9.10626600315196959174460742165 + π ⎠ ↪
+   106	↪                                                                              ↪
+   107	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   108	↪                                                                              ↪
+   109	↪                                                                              ↪
+   110	↪ 9616 - 0.532339472655207971347153038985⋅π) + 10.3438114582452450585855755082 ↪
+   111	
+   112	↪                                                                              ↪
+   113	↪                                                                              ↪
+   114	↪ ⋅(12.1780971843116184832137009616 - 0.532339472655207971347153038985⋅π) + 10 ↪
+   115	↪                                                                              ↪
+   116	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   117	↪                                                                              ↪
+   118	↪                                     ⎞                                        ↪
+   119	↪ ⋅π + 141.132519246618586729500592737⎠                                        ↪
+   120	
+   121	↪                                                                              ↪
+   122	↪                                                                  ⎞ ⎛  ⎛      ↪
+   123	↪ .3438114582452450585855755082⋅π + 141.132519246618586729500592737⎠⋅⎜S̅⋅⎝9.106 ↪
+   124	↪                                                                    ⎝         ↪
+   125	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   126	↪                                                                              ↪
+   127	↪                                                                              ↪
+   128	↪                                                                              ↪
+   129	
+   130	↪                                                                              ↪
+   131	↪                               2⎞                                             ↪
+   132	↪ 26600315196959174460742165 - π ⎠ - 11.6922188677132808563910012987 + 2.58595 ↪
+   133	↪                                                                              ↪
+   134	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   135	↪                                                                              ↪
+   136	↪                                                                              ↪
+   137	↪                                                                              ↪
+   138	
+   139	↪                                                                            ⎞ ↪
+   140	↪                              ⎛π⎞                                       ⎛π⎞⎞⎟ ↪
+   141	↪ 286456131126464639387704⋅sech⎜─⎟ + 3.874599072709058600418035478⋅π⋅tanh⎜─⎟⎟⎟ ↪
+   142	↪                              ⎝2⎠                                       ⎝2⎠⎠⎠ ↪
+   143	↪ ──────────────────────────────────────────────────────────────────────────── ↪
+   144	↪                                                                              ↪
+   145	↪                                                                              ↪
+   146	↪                                                                              ↪
+   147	
+   148	↪  
+   149	↪  
+   150	↪  
+   151	↪  
+   152	↪ ─
+   153	↪  
+   154	↪  
+   155	↪  
+   156	g_eps affine law (integral form) at eps=1/10: residual = -3.57095348696680035154967176897E-18
+   157	S_eps affine law (integral form) at eps=1/10: residual = -5.57590340409872713823196860019E-31
+   158	g_eps affine law (integral form) at eps=1/2: residual = -1.98386304831492151078289784838E-18
+   159	S_eps affine law (integral form) at eps=1/2: residual = -6.32408825968108691242864597464E-31
+   160	PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2
+   161	PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2
+   162	
+   163	Stage 146 complete.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(t):
+     6	    print("\n" + "="*88)
+     7	    print(t)
+     8	    print("="*88)
+     9	
+    10	def expect_zero(name, expr):
+    11	    expr = sp.simplify(sp.expand(expr))
+    12	    print(f"{name} = {expr}")
+    13	    if expr != 0:
+    14	        raise AssertionError(f"{name} is not zero")
+    15	
+    16	Pi = sp.symbols("Pi", positive=True, real=True)
+    17	x = sp.symbols("x", real=True)
+    18	kap = sp.pi/2
+    19	
+    20	# Exact exponential-source overlap and mixed-response functions.
+    21	Sigma = Pi*sp.exp(-Pi*x)/(1-sp.exp(-Pi))
+    22	Kq = sp.cosh(kap*(1-x))/sp.cosh(kap)
+    23	
+    24	gPi = 2*Pi*(2*Pi*sp.exp(Pi)+sp.pi)/((4*Pi**2+sp.pi**2)*(sp.exp(Pi)-1))
+    25	Sformula = sp.simplify(
+    26	    Pi*(kap*sp.tanh(kap) + Pi*(sp.exp(-Pi)*sp.sech(kap) - 1))
+    27	    / ((1-sp.exp(-Pi))*(kap**2-Pi**2))
+    28	)
+    29	
+    30	# Symbolic verification that the closed-form moments equal the canonical
+    31	# integrals against the kernel functions. This anchors the formulas before
+    32	# the numeric Pi_* root-finder runs.
+    33	gPi_direct = sp.integrate(Sigma*sp.cos(sp.pi*x/2), (x, 0, 1))
+    34	if gPi_direct.has(sp.Integral):
+    35	    for pp in [sp.Rational(7,10), sp.Rational(11,10), sp.Rational(17,10), sp.Rational(23,10)]:
+    36	        diff_g = sp.N(sp.integrate((Sigma*sp.cos(sp.pi*x/2)).subs(Pi, pp), (x,0,1)) - gPi.subs(Pi, pp), 30)
+    37	        print(f"g(Pi) numeric sample Pi={pp}: diff={diff_g}")
+    38	        if abs(float(diff_g)) > 1e-25:
+    39	            raise AssertionError(f"g(Pi) numeric mismatch at Pi={pp}: {diff_g}")
+    40	    print("PASS: g(Pi) direct-formula (numeric fallback at 4 samples)")
+    41	else:
+    42	    expect_zero("g(Pi) direct-formula", sp.simplify(gPi_direct - gPi))
+    43	
+    44	Sq_direct = sp.integrate(Sigma*Kq, (x, 0, 1))
+    45	if Sq_direct.has(sp.Integral):
+    46	    for pp in [sp.Rational(7,10), sp.Rational(11,10), sp.Rational(17,10), sp.Rational(23,10)]:
+    47	        diff_s = sp.N(sp.integrate((Sigma*Kq).subs(Pi, pp), (x,0,1)) - Sformula.subs(Pi, pp), 30)
+    48	        print(f"S_q(Pi) numeric sample Pi={pp}: diff={diff_s}")
+    49	        if abs(float(diff_s)) > 1e-25:
+    50	            raise AssertionError(f"S_q(Pi) numeric mismatch at Pi={pp}: {diff_s}")
+    51	    print("PASS: S_q(Pi) direct-formula (numeric fallback at 4 samples)")
+    52	else:
+    53	    expect_zero("S_q(Pi) direct-formula", sp.simplify(Sq_direct - Sformula))
+    54	
+    55	banner("Stage 146 audit: exact source moments")
+    56	print("g(Pi) =")
+    57	sp.pprint(gPi)
+    58	print("S_q(Pi) =")
+    59	sp.pprint(Sformula)
+    60	
+    61	# Numerical kernel cross-check against direct integration.
+    62	for val in [sp.Integer(1), sp.Rational(3,2), sp.Rational(5,2)]:
+    63	    num_int = sp.N(sp.integrate((Sigma*Kq).subs(Pi, val), (x,0,1)), 30)
+    64	    num_formula = sp.N(Sformula.subs(Pi, val), 30)
+    65	    diff = sp.N(num_int - num_formula, 20)
+    66	    print(f"kernel check at Pi={val}: integral={num_int}, formula={num_formula}, diff={diff}")
+    67	    if abs(float(diff)) > 1e-12:
+    68	        raise AssertionError("Kernel formula mismatch.")
+    69	
+    70	# Family-1 canonical point
+    71	rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
+    72	gminus = sp.simplify(rF1 - sp.sqrt(1+rF1**2)/2)
+    73	Pi_star = sp.N(sp.nsolve(gPi - gminus, 1.5), 30)
+    74	print("Pi_* =", Pi_star)
+    75	
+    76	g_star = sp.N(gPi.subs(Pi, Pi_star), 30)
+    77	S_star = sp.N(Sformula.subs(Pi, Pi_star), 30)
+    78	gp_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30)
+    79	Sp_star = sp.N(sp.diff(Sformula, Pi).subs(Pi, Pi_star), 30)
+    80	print("g_* =", g_star)
+    81	print("S_* =", S_star)
+    82	print("g_*' =", gp_star)
+    83	print("S_*' =", Sp_star)
+    84	
+    85	# Generic positive convex deformation moments
+    86	gbar, Sbar, eps = sp.symbols("gbar Sbar eps", real=True)
+    87	dPi = sp.simplify(-eps*(gbar-gminus)/sp.diff(gPi, Pi).subs(Pi, Pi_star))
+    88	dS = sp.simplify(eps*(Sbar - Sformula.subs(Pi, Pi_star)) + sp.diff(Sformula, Pi).subs(Pi, Pi_star)*dPi)
+    89	
+    90	banner("First-order canonical retuning law")
+    91	print("delta Pi =")
+    92	sp.pprint(dPi)
+    93	print("delta S =")
+    94	sp.pprint(sp.simplify(dS))
+    95	
+    96	# Exact affine law for convex family moments — tested via integration,
+    97	# not via redefining the affine form. Use a concrete positive normalized
+    98	# test profile varsigma_test(x) = 6 x (1 - x) (a polynomial bump,
+    99	# positive on (0,1), with integral 1 on [0,1]).
+   100	varsigma_test = 6*x*(1-x)
+   101	Sigma_eps = (1-eps)*Sigma.subs(Pi, Pi_star) + eps*varsigma_test
+   102	gbar_phys = sp.integrate(Sigma_eps*sp.cos(sp.pi*x/2), (x, 0, 1))
+   103	Sbar_phys = sp.integrate(Sigma_eps*Kq, (x, 0, 1))
+   104	gbar_v    = sp.integrate(varsigma_test*sp.cos(sp.pi*x/2), (x, 0, 1))
+   105	Sbar_v    = sp.integrate(varsigma_test*Kq, (x, 0, 1))
+   106	# Symbolic simplify cannot reduce the residual (it contains both sqrt(3) and
+   107	# sqrt(4107 - 100*pi^2) factors that sp.simplify keeps). Fall back to numeric
+   108	# evaluation at two concrete eps samples, matching the Mathematica path.
+   109	g_eps_residual_expr = gbar_phys - (gminus + eps*(gbar_v - gminus))
+   110	S_eps_residual_expr = Sbar_phys - (Sformula.subs(Pi, Pi_star) + eps*(Sbar_v - Sformula.subs(Pi, Pi_star)))
+   111	for eps_val, label in [(sp.Rational(1, 10), "eps=1/10"), (sp.Rational(1, 2), "eps=1/2")]:
+   112	    g_res = sp.N(g_eps_residual_expr.subs(eps, eps_val), 30)
+   113	    S_res = sp.N(S_eps_residual_expr.subs(eps, eps_val), 30)
+   114	    print(f"g_eps affine law (integral form) at {label}: residual = {g_res}")
+   115	    print(f"S_eps affine law (integral form) at {label}: residual = {S_res}")
+   116	    if abs(float(g_res)) > 1e-15:
+   117	        raise AssertionError(f"g_eps affine law fails at {label}: {g_res}")
+   118	    if abs(float(S_res)) > 1e-15:
+   119	        raise AssertionError(f"S_eps affine law fails at {label}: {S_res}")
+   120	print("PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2")
+   121	print("PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2")
+   122	
+   123	print("\nStage 146 complete.")
+
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	expectApprox[name_String, value_, target_, tol_] := Module[{diff},
+    27	  diff = Abs[N[value, 50] - N[target, 50]];
+    28	  Print[name, " diff = ", fmt[diff]];
+    29	  If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
+    30	];
+    31	
+    32	banner["STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
+    33	
+    34	Clear[p, x, gBar, sBar, eps];
+    35	$Assumptions = Element[{p, x, gBar, sBar, eps}, Reals] && p > 0 && 0 <= x <= 1;
+    36	
+    37	kap = Pi/2;
+    38	sigma = p*Exp[-p*x]/(1 - Exp[-p]);
+    39	kq = Cosh[kap*(1 - x)]/Cosh[kap];
+    40	
+    41	gFormula = 2*p*(2*p*Exp[p] + Pi)/((4*p^2 + Pi^2)*(Exp[p] - 1));
+    42	sFormula = p*(kap*Tanh[kap] + p*(Exp[-p]*Sech[kap] - 1))/((1 - Exp[-p])*(kap^2 - p^2));
+    43	
+    44	gDirect = FullSimplify[Integrate[sigma*Cos[Pi*x/2], {x, 0, 1}], Assumptions -> p > 0];
+    45	
+    46	Print["g(Pi) = ", fmt[gFormula]];
+    47	Print["S_q(Pi) = ", fmt[sFormula]];
+    48	expectZero["g(Pi) direct-formula", gDirect - gFormula];
+    49	
+    50	sDirect = FullSimplify[Integrate[sigma*kq, {x, 0, 1}], Assumptions -> p > 0];
+    51	expectZero["S_q(Pi) direct-formula", sDirect - sFormula];
+    52	
+    53	nint[expr_] := NIntegrate[Evaluate[expr], {x, 0, 1}, WorkingPrecision -> 50, AccuracyGoal -> 20, PrecisionGoal -> 20];
+    54	Do[
+    55	  Module[{val = vv, numInt, numFormula},
+    56	    numInt = nint[(sigma*kq) /. p -> val];
+    57	    numFormula = N[sFormula /. p -> val, 40];
+    58	    Print["kernel check at Pi=", fmt[val], ": integral=", fmt[numInt], ", formula=", fmt[numFormula]];
+    59	    expectApprox["kernel formula sample " <> ToString[InputForm[val]], numInt, numFormula, 10^-12];
+    60	  ],
+    61	  {vv, {1, 3/2, 5/2}}
+    62	];
+    63	
+    64	rF1 = Sqrt[(12*(37/20)^2)/Pi^2 - 1];
+    65	gMinus = FullSimplify[rF1 - Sqrt[1 + rF1^2]/2, Assumptions -> True];
+    66	pStar = p /. FindRoot[gFormula == gMinus, {p, 1.5}, WorkingPrecision -> 80, AccuracyGoal -> 30, PrecisionGoal -> 30, MaxIterations -> 100];
+    67	
+    68	Print["Pi_* = ", fmt[N[pStar, 30]]];
+    69	
+    70	gStar = N[gFormula /. p -> pStar, 40];
+    71	sStar = N[sFormula /. p -> pStar, 40];
+    72	gPrimeStar = N[D[gFormula, p] /. p -> pStar, 40];
+    73	sPrimeStar = N[D[sFormula, p] /. p -> pStar, 40];
+    74	
+    75	Print["g_* = ", fmt[gStar]];
+    76	Print["S_* = ", fmt[sStar]];
+    77	Print["g_*' = ", fmt[gPrimeStar]];
+    78	Print["S_*' = ", fmt[sPrimeStar]];
+    79	expectApprox["Pi_* compensation point", gStar, N[gMinus, 40], 10^-20];
+    80	
+    81	dPi = FullSimplify[-eps*(gBar - gMinus)/gPrimeStar];
+    82	dS = FullSimplify[eps*(sBar - sStar) + sPrimeStar*dPi];
+    83	
+    84	banner["FIRST-ORDER CANONICAL RETUNING LAW"];
+    85	Print["delta Pi = ", fmt[dPi]];
+    86	Print["delta S = ", fmt[dS]];
+    87	
+    88	(* Affine laws tested via integral form, not via algebraic restatement. *)
+    89	varsigmaTest = 6*x*(1 - x);
+    90	sigmaEps = (1 - eps)*(sigma /. p -> pStar) + eps*varsigmaTest;
+    91	gBarPhys = Integrate[sigmaEps*Cos[Pi*x/2], {x, 0, 1}];
+    92	sBarPhys = Integrate[sigmaEps*kq, {x, 0, 1}];
+    93	gBarV    = Integrate[varsigmaTest*Cos[Pi*x/2], {x, 0, 1}];
+    94	sBarV    = Integrate[varsigmaTest*kq, {x, 0, 1}];
+    95	(* Numeric-sample fallback: evaluate at two concrete eps values rather than
+    96	   simplifying an eps-polynomial residual (the integrate-with-numeric-pStar
+    97	   path produces complex near-zero coefficients that FullSimplify cannot
+    98	   reduce symbolically). *)
+    99	(* The numeric pStar substitution causes Integrate to produce complex near-zero
+   100	   residuals at low working-precision (~9-10 digits). Treat any value whose
+   101	   numerical magnitude is below 10^-6 (i.e., consistent with precision-9 zero)
+   102	   as satisfying the affine law. *)
+   103	gEpsRes = gBarPhys - (gMinus + eps*(gBarV - gMinus));
+   104	gEpsSample1 = N[gEpsRes /. eps -> 1/10, 40];
+   105	gEpsSample2 = N[gEpsRes /. eps -> 1/2, 40];
+   106	Print["g_eps affine law (integral form) at eps=1/10: ", fmt[Chop[gEpsSample1, 10^-6]]];
+   107	Print["g_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[gEpsSample2, 10^-6]]];
+   108	If[NumericQ[gEpsSample1] && NumericQ[gEpsSample2] && Abs[gEpsSample1] < 10^-6 && Abs[gEpsSample2] < 10^-6,
+   109	  pass["g_eps affine law (integral form)"],
+   110	  fail["g_eps affine law (integral form)", {gEpsSample1, gEpsSample2}]
+   111	];
+   112	
+   113	sEpsRes = sBarPhys - (sStar + eps*(sBarV - sStar));
+   114	sEpsSample1 = N[sEpsRes /. eps -> 1/10, 40];
+   115	sEpsSample2 = N[sEpsRes /. eps -> 1/2, 40];
+   116	Print["S_eps affine law (integral form) at eps=1/10: ", fmt[Chop[sEpsSample1, 10^-6]]];
+   117	Print["S_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[sEpsSample2, 10^-6]]];
+   118	If[NumericQ[sEpsSample1] && NumericQ[sEpsSample2] && Abs[sEpsSample1] < 10^-6 && Abs[sEpsSample2] < 10^-6,
+   119	  pass["S_eps affine law (integral form)"],
+   120	  fail["S_eps affine law (integral form)", {sEpsSample1, sEpsSample2}]
+   121	];
+   122	
+   123	Print[""];
+   124	Print["Stage 146 Mathematica audit passed."];
+   125	
+   126	Exit[0];
+
+codex
+---
+stage: 146
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py, moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt, moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl, moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt, stage_146.md, stage_146.tex]
+---
+# Codex review — stage 146
+
+## What the edit was supposed to do
+F1 required replacing tautological affine-law checks with integral-form checks for the convex source moments, using a concrete positive normalized test profile and comparing the integrated moments against the affine law. F2 required anchoring the closed-form \(g(\Pi)\) and \(S_q(\Pi)\) formulas to direct integrals before the numeric \(\Pi_*\) work. F3 required correcting the Mathematica banner to the stage-146 first-order expansion title.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:42 | `g(Pi)` direct integral vs formula | Yes; direct integral is independent of `gPi`. | Yes | PASS |
+| 2 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:44 | `S_q(Pi)` direct integral vs formula, numeric fallback | Yes, at sampled points only. | Partially | PASS |
+| 3 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:50 | `S_q(Pi)` direct integral vs formula | Yes; Mathematica integrates independently. | Yes | PASS |
+| 4 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:109 | `g_eps` affine law via integral form | Yes, but only with relaxed `1e-15` numeric tolerance. | Yes | FINDING |
+| 5 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:110 | `S_eps` affine law via integral form | Yes, but only with relaxed `1e-15` numeric tolerance. | Yes | FINDING |
+| 6 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:103 | `g_eps` affine law via integral form | Only for residuals larger than `10^-6`; raw residual is chopped in output. | Weakly | FINDING |
+| 7 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:113 | `S_eps` affine law via integral form | Only for residuals larger than `10^-6`; raw residual is chopped in output. | Weakly | FINDING |
+| 8 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:32 | stage banner literal | N/A | No | FINDING |
+
+## Findings
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:116`
+- **What's wrong:** `if abs(float(g_res)) > 1e-15:` relaxes the directive's numeric fallback tolerance from `1e-25` to `1e-15`. The saved output shows `g_eps` residuals around `10^-18`, so this would not satisfy the directive's own fallback standard even though the script prints `PASS`.
+- **What it should be:** Use a symbolic zero check, or evaluate with enough precision that the numeric fallback can assert residuals below `1e-25`.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:106`
+- **What's wrong:** `Print["g_eps affine law (integral form) at eps=1/10: ", fmt[Chop[gEpsSample1, 10^-6]]];` hides the raw residual, and lines 108 and 118 accept anything below `10^-6`. That is far weaker than the required `10^-25` tolerance and could pass a nonzero first-order error.
+- **What it should be:** Print the raw residuals and require `Abs[...] < 10^-25`, or prove the residuals are exactly zero with `FullSimplify`.
+
+### R3 — paper_misalignment
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:32`
+- **What's wrong:** `banner["STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];` does not match the directive or the paper card title. The saved Mathematica output corroborates the wrong banner text.
+- **What it should be:** `banner["STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];`
+
+## Bottom line
+The main problem is that the edited affine-law checks were weakened during the numeric fallback: SymPy accepts `10^-15`, and Mathematica accepts and prints chopped zeros at `10^-6`. Those checks can miss nontrivial residuals, so the stage does not meet the directive's required non-tautological verification standard.
+tokens used
+22,360
+---
+stage: 146
+reviewer: codex
+verdict: FINDINGS
+findings_count: 3
+files_reviewed: [moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py, moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt, moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl, moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt, stage_146.md, stage_146.tex]
+---
+# Codex review — stage 146
+
+## What the edit was supposed to do
+F1 required replacing tautological affine-law checks with integral-form checks for the convex source moments, using a concrete positive normalized test profile and comparing the integrated moments against the affine law. F2 required anchoring the closed-form \(g(\Pi)\) and \(S_q(\Pi)\) formulas to direct integrals before the numeric \(\Pi_*\) work. F3 required correcting the Mathematica banner to the stage-146 first-order expansion title.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:42 | `g(Pi)` direct integral vs formula | Yes; direct integral is independent of `gPi`. | Yes | PASS |
+| 2 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:44 | `S_q(Pi)` direct integral vs formula, numeric fallback | Yes, at sampled points only. | Partially | PASS |
+| 3 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:50 | `S_q(Pi)` direct integral vs formula | Yes; Mathematica integrates independently. | Yes | PASS |
+| 4 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:109 | `g_eps` affine law via integral form | Yes, but only with relaxed `1e-15` numeric tolerance. | Yes | FINDING |
+| 5 | moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:110 | `S_eps` affine law via integral form | Yes, but only with relaxed `1e-15` numeric tolerance. | Yes | FINDING |
+| 6 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:103 | `g_eps` affine law via integral form | Only for residuals larger than `10^-6`; raw residual is chopped in output. | Weakly | FINDING |
+| 7 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:113 | `S_eps` affine law via integral form | Only for residuals larger than `10^-6`; raw residual is chopped in output. | Weakly | FINDING |
+| 8 | moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:32 | stage banner literal | N/A | No | FINDING |
+
+## Findings
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py:116`
+- **What's wrong:** `if abs(float(g_res)) > 1e-15:` relaxes the directive's numeric fallback tolerance from `1e-25` to `1e-15`. The saved output shows `g_eps` residuals around `10^-18`, so this would not satisfy the directive's own fallback standard even though the script prints `PASS`.
+- **What it should be:** Use a symbolic zero check, or evaluate with enough precision that the numeric fallback can assert residuals below `1e-25`.
+
+### R2 — insufficient_verification
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:106`
+- **What's wrong:** `Print["g_eps affine law (integral form) at eps=1/10: ", fmt[Chop[gEpsSample1, 10^-6]]];` hides the raw residual, and lines 108 and 118 accept anything below `10^-6`. That is far weaker than the required `10^-25` tolerance and could pass a nonzero first-order error.
+- **What it should be:** Print the raw residuals and require `Abs[...] < 10^-25`, or prove the residuals are exactly zero with `FullSimplify`.
+
+### R3 — paper_misalignment
+- **Where:** `moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl:32`
+- **What's wrong:** `banner["STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];` does not match the directive or the paper card title. The saved Mathematica output corroborates the wrong banner text.
+- **What it should be:** `banner["STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];`
+
+## Bottom line
+The main problem is that the edited affine-law checks were weakened during the numeric fallback: SymPy accepts `10^-15`, and Mathematica accepts and prints chopped zeros at `10^-6`. Those checks can miss nontrivial residuals, so the stage does not meet the directive's required non-tautological verification standard.
+
+---
+codex_session_id: 019e7125-1eed-7580-b167-3c3f1bc5f745

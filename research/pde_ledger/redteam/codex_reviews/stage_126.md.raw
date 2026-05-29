@@ -1,0 +1,1244 @@
+OpenAI Codex v0.133.0
+--------
+workdir: /var/projects/toy_physics/research/pde_ledger
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e7121-aff0-7323-9149-239dff04f36b
+--------
+user
+# Codex review — read-only adversarial code review of one audit stage
+
+You are an **adversarial code reviewer**. The SymPy (`.py`) and/or Mathematica (`.wl`)
+script(s) for this stage were edited to apply a red-team directive's fixes. Those
+edits were applied by the orchestrator, NOT by you, and they have not yet been
+independently checked by you. Your job is to decide whether the edits are
+**mathematically correct, non-tautological, and faithful to both the directive and
+the paper's claim.**
+
+Adopt a skeptical default: **assume each edited assertion is WRONG until the math
+forces you to conclude it is right.** Do not be agreeable. If you cannot find a way
+the assertion could fail when the physics is wrong, that is itself a finding
+(tautology). State concretely what you tried in order to break each check.
+
+## Hard constraints
+
+- **READ-ONLY. Do NOT edit any file** — not the `.py`, not the `.wl`, not the paper,
+  not the notes, nothing. You produce a verdict, not a patch.
+- **Do NOT run any script.** No `python3`, no `math -script`, no execution of any
+  kind. The saved output `.txt` files are provided and were regenerated from the
+  current scripts at batch close — **trust them as the scripts' actual output.**
+- Reason from the source and the saved output only.
+
+## What to read (paths are given in the "Files for this review" block appended below)
+
+1. The directive `redteam/directives/stage_<NNN>.md` — **what the fix was supposed to
+   do** (the `## F<n>` blocks and any `## Applied`/`## Orchestrator rework` notes).
+2. The paper stage card `paper/stages/stage_<NNN>.tex` — **what the stage must prove**
+   (`\stagefield{Output}` and the body equations). May be terse.
+3. The script(s) `.py` and/or `.wl` — the current, edited state.
+4. The saved output `.txt` for each script — what the script printed (the `= 0` /
+   `PASS` lines). This is your evidence the checks actually pass.
+
+## What to check, per edited / added assertion
+
+1. **Can it fail?** If the script does `x = expr` then asserts `x == expr` (or builds
+   both sides of a comparison from the *same* intermediate so the difference is `X − X`
+   by construction), it is **tautological** — a finding, regardless of what the output
+   says.
+2. **Does it exercise the paper's claim**, or merely something adjacent? Map the
+   assertion to a specific paper-side deliverable. An assertion that passes but tests a
+   different identity than the card requires is a finding.
+3. **Symbol domains / assumptions** — are positivity/reality assumptions justified by
+   the setup, or do they smuggle in the result?
+4. **Output corroboration** — does the saved `.txt` actually show this check evaluating
+   to `0` / `PASS` (not skipped, not absent, not trivially `0=0`)?
+5. **Second engine** (if both exist) — is the `.wl` an *independent* derivation, or a
+   line-by-line transliteration of the `.py`? A wrong target copied into both engines
+   passes in both and proves nothing.
+
+## Output — ONLY the report below, to stdout. Nothing else. No JSON.
+
+```
+---
+stage: <NNN>
+reviewer: codex
+verdict: PASS | FINDINGS
+findings_count: <int>
+files_reviewed: [<basenames you actually read>]
+---
+# Codex review — stage <NNN>
+
+## What the edit was supposed to do
+<2-4 sentences from the directive.>
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+
+## Findings (only if verdict = FINDINGS)
+### R1 — <category: tautological_check | insufficient_verification | paper_misalignment | transliteration | symbol_assumption_error | other>
+- **Where:** `<file>:<line>`
+- **What's wrong:** <quote the line; explain how it fails or what it really tests>
+- **What it should be:** <the corrected check, if you can state it>
+
+## Bottom line
+<One paragraph. If PASS: name the specific attacks you tried on the edited checks and
+why each failed to break them — confirm you read the directive, the card, and the
+saved output. If FINDINGS: the single most important problem.>
+```
+
+Set `verdict: PASS` only if every edited assertion is non-tautological, anchored to a
+real paper deliverable, and corroborated by the saved output. Otherwise `FINDINGS`.
+You are not graded on finding problems; you are graded on whether a PASS is trustworthy.
+
+---
+
+## Files for this review (stage 126)
+
+Read each path that is listed (skip any marked "(absent)"):
+
+- SymPy script:        /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+- SymPy saved output:  /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt
+- Mathematica script:  /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl
+- Mathematica output:  /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt
+- Directive (what the fix had to do): /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_126.md
+- Paper stage card (what to prove):   /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_126.tex
+
+Write your verdict report for stage 126 now, following the format above exactly.
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_126.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/paper/stages/stage_126.tex' in /var/projects/toy_physics/research/pde_ledger
+ exited 1 in 0ms:
+nl: /var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_126.md: No such file or directory
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES
+     4	========================================================================================
+     5	sigma_match normalization = 1
+     6	g_match = Pi/4
+     7	self-matched normalization = 0
+     8	PASS: self-matched normalization
+     9	self-matched bias = 0
+    10	PASS: self-matched bias
+    11	g_-^F1 = (-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])/(20*Pi)
+    12	delta_g_match = (37*Sqrt[3] + 5*Pi^2 - 2*Sqrt[4107 - 100*Pi^2])/(20*Pi)
+    13	T_- / T_match = (5*Pi^2)/(-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])
+    14	g_match numeric = 0.78539816339744830961566084581987572105`20.
+    15	g_- numeric     = 0.75803507894466282691968089041411045778`20.
+    16	traction ratio  = 1.03609738548099963321630004695627642987`20.
+    17	sigma_xi normalization = 1
+    18	g_xi = -1/4*(Pi*(-1 + xi)) + (2*xi)/Pi
+    19	convex-family normalization = 0
+    20	PASS: convex-family normalization
+    21	sigma_match(lM) = 0
+    22	sigma_match(lM) = 0 (boundary min on [0,lM]) = 0
+    23	PASS: sigma_match(lM) = 0 (boundary min on [0,lM])
+    24	sigma_match(0) = Pi/(2*lM)
+    25	sigma_match(0) = k (interior max on [0,lM]) = 0
+    26	PASS: sigma_match(0) = k (interior max on [0,lM])
+    27	sigma_xi(z=lM, xi=0) = 0
+    28	sigma_xi(z=lM, xi=0) = 0 = 0
+    29	PASS: sigma_xi(z=lM, xi=0) = 0
+    30	sigma_xi(xi=1) = lM^(-1)
+    31	sigma_xi(xi=1) = 1/lM = 0
+    32	PASS: sigma_xi(xi=1) = 1/lM
+    33	xi_* = 1 + (40 + 37*Sqrt[3] - 2*Sqrt[4107 - 100*Pi^2])/(5*(-8 + Pi^2))
+    34	xi_* numeric = 0.18391840551153962830834428246014671147`20.
+    35	g_xi(xi_*) - g_- = 0
+    36	PASS: g_xi(xi_*) - g_-
+    37	2/pi numeric = 0.63661977236758134307553505349005744814`20.
+    38	pi/4 numeric = 0.78539816339744830961566084581987572105`20.
+    39	Check 2/pi < g_- < pi/4 -> True
+    40	
+    41	Stage 126 Mathematica audit passed.
+
+ succeeded in 0ms:
+     1	
+     2	========================================================================================
+     3	STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES
+     4	========================================================================================
+     5	sigma_match normalization = 1
+     6	g_match = pi/4
+     7	
+     8	g_-^F1 = (-37*sqrt(3) + 2*sqrt(4107 - 100*pi**2))/(20*pi)
+     9	delta_g_match = (-2*sqrt(4107 - 100*pi**2) + 5*pi**2 + 37*sqrt(3))/(20*pi)
+    10	T_- / T_match = -5*pi**2/(-2*sqrt(4107 - 100*pi**2) + 37*sqrt(3))
+    11	g_match numeric = 0.78539816339744830962
+    12	g_- numeric     = 0.75803507894466282692
+    13	traction ratio  = 1.0360973854809996332
+    14	
+    15	sigma_xi normalization = 1
+    16	g_xi = (8*xi + pi**2*(1 - xi))/(4*pi)
+    17	min sigma_match on [0,L] = 0
+    18	min sigma_xi(xi=0) on [0,L] = 0
+    19	sigma_xi(xi=1) = 1/L
+    20	sigma_xi(z=L, xi=0) = 0
+    21	xi_* = (-37*sqrt(3) - 5*pi**2 + 2*sqrt(4107 - 100*pi**2))/(5*(8 - pi**2))
+    22	xi_* numeric = 0.18391840551153962831
+    23	g_xi(xi_*) - g_- = 0
+    24	
+    25	2/pi numeric = 0.63661977236758134308
+    26	pi/4 numeric = 0.78539816339744830962
+    27	Check 2/pi < g_- < pi/4 -> True
+
+ succeeded in 0ms:
+     1	\section[Stage 126]{Stage 126: Explicit Positive Source Families and the Family-1 Compensation Point}
+     2	\label{stage:126}
+     3	
+     4	\stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+     5	\claimstatus{\StatusExactClosure{}.}
+     6	
+     7	\stagefield{Purpose}{Stage~126 is a positive mouth-source and boundary layer ledger step.  Its audit target is the verification output quoted below.}
+     8	
+     9	\stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source, and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+    10	
+    11	\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py}; transcript: \StageFile{scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt}.}
+    12	
+    13	\stagefield{Derivation ledger}{The verification step belongs to the \emph{Positive mouth-source and boundary layer} block.  The computation isolates the positive source families, mouth-bias map, and micro-threshold for canonical compensation.}
+    14	
+    15	\begin{quote}
+    16	Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+    17	\end{quote}
+    18	
+    19	\stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block narrative above and in the source stage.}
+    20	
+    21	\stagefield{Checks}{\begin{verificationchecklist}
+    22	\item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+    23	\item Check zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction.
+    24	\item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+    25	\end{verificationchecklist}}
+    26	
+    27	\stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch theorem.}
+    28	
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	#!/usr/bin/env python3
+     2	from __future__ import annotations
+     3	import sympy as sp
+     4	
+     5	def banner(t: str):
+     6	    print("\n" + "="*88)
+     7	    print(t)
+     8	    print("="*88)
+     9	
+    10	z, L = sp.symbols('z L', positive=True, real=True)
+    11	k = sp.pi/(2*L)
+    12	
+    13	banner("STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES")
+    14	
+    15	# Self-matched derivative profile
+    16	sigma_match = k*sp.cos(k*z)
+    17	norm_match = sp.simplify(sp.integrate(sigma_match, (z, 0, L)))
+    18	g_match = sp.simplify(sp.integrate(sigma_match*sp.cos(k*z), (z, 0, L)))
+    19	
+    20	print("sigma_match normalization =", norm_match)
+    21	print("g_match =", g_match)
+    22	if sp.simplify(norm_match - 1) != 0 or sp.simplify(g_match - sp.pi/4) != 0:
+    23	    raise AssertionError("Self-matched profile formulas failed.")
+    24	
+    25	R = sp.sqrt(4107 - 100*sp.pi**2)
+    26	gminus = sp.simplify((2*R - 37*sp.sqrt(3))/(20*sp.pi))
+    27	delta_g = sp.simplify(sp.pi/4 - gminus)
+    28	traction_ratio = sp.simplify((sp.pi/4)/gminus)
+    29	
+    30	print("\ng_-^F1 =", gminus)
+    31	print("delta_g_match =", delta_g)
+    32	print("T_- / T_match =", traction_ratio)
+    33	print("g_match numeric =", sp.N(sp.pi/4, 20))
+    34	print("g_- numeric     =", sp.N(gminus, 20))
+    35	print("traction ratio  =", sp.N(traction_ratio, 20))
+    36	
+    37	# Convex positive family
+    38	xi = sp.symbols('xi', real=True)
+    39	sigma_xi = (1-xi)*k*sp.cos(k*z) + xi/L
+    40	norm_xi = sp.simplify(sp.integrate(sigma_xi, (z, 0, L)))
+    41	g_xi = sp.simplify(sp.integrate(sigma_xi*sp.cos(k*z), (z, 0, L)))
+    42	
+    43	print("\nsigma_xi normalization =", norm_xi)
+    44	print("g_xi =", g_xi)
+    45	if sp.simplify(norm_xi - 1) != 0:
+    46	    raise AssertionError("Convex family normalization failed.")
+    47	
+    48	# Positivity: sigma_xi(z) >= 0 on z in [0, L], xi in [0, 1].
+    49	# Decomposition: sigma_xi = (1 - xi)*k*cos(k*z) + xi/L. Each term is >= 0 on
+    50	# the stated domain (cos(k*z) >= 0 since k*z in [0, pi/2]; xi/L > 0 for xi >= 0).
+    51	min_match = sp.calculus.util.minimum(k*sp.cos(k*z), z, sp.Interval(0, L))
+    52	print("min sigma_match on [0,L] =", min_match)
+    53	if sp.simplify(min_match) != 0:
+    54	    raise AssertionError("sigma_match minimum on [0,L] should be 0 (at z=L).")
+    55	min_xi0 = sp.calculus.util.minimum(sigma_xi.subs(xi, 0), z, sp.Interval(0, L))
+    56	val_xi1 = sp.simplify(sigma_xi.subs(xi, 1))
+    57	print("min sigma_xi(xi=0) on [0,L] =", min_xi0)
+    58	print("sigma_xi(xi=1) =", val_xi1)
+    59	if sp.simplify(min_xi0) != 0:
+    60	    raise AssertionError("sigma_xi(xi=0) minimum on [0,L] should be 0.")
+    61	if sp.simplify(val_xi1 - 1/L) != 0:
+    62	    raise AssertionError("sigma_xi(xi=1) should equal 1/L.")
+    63	sigma_corner = sp.simplify(sigma_xi.subs([(z, L), (xi, 0)]))
+    64	print("sigma_xi(z=L, xi=0) =", sigma_corner)
+    65	if sp.simplify(sigma_corner) != 0:
+    66	    raise AssertionError("sigma_xi(z=L, xi=0) should equal 0.")
+    67	
+    68	xi_star = sp.simplify(sp.solve(sp.Eq(g_xi, gminus), xi)[0])
+    69	print("xi_* =", xi_star)
+    70	print("xi_* numeric =", sp.N(xi_star, 20))
+    71	
+    72	g_xi_star = sp.simplify(g_xi.subs(xi, xi_star) - gminus)
+    73	print("g_xi(xi_*) - g_- =", g_xi_star)
+    74	if sp.simplify(g_xi_star) != 0:
+    75	    raise AssertionError("Exact convex-family compensation failed.")
+    76	
+    77	# Interval check
+    78	print("\n2/pi numeric =", sp.N(2/sp.pi, 20))
+    79	print("pi/4 numeric =", sp.N(sp.pi/4, 20))
+    80	interval_check = bool(sp.N(2/sp.pi) < sp.N(gminus) < sp.N(sp.pi/4))
+    81	print("Check 2/pi < g_- < pi/4 ->", interval_check)
+    82	if not interval_check:
+    83	    raise AssertionError("g_-^F1 does not lie strictly between 2/pi and pi/4.")
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	ClearAll["Global`*"];
+     2	$HistoryLength = 0;
+     3	
+     4	banner[title_String] := (
+     5	  Print[""];
+     6	  Print[StringRepeat["=", 88]];
+     7	  Print[title];
+     8	  Print[StringRepeat["=", 88]];
+     9	);
+    10	
+    11	pass[name_String] := Print["PASS: ", name];
+    12	fmt[expr_] := ToString[InputForm[expr]];
+    13	
+    14	fail[name_String, detail_: Missing["NotAvailable"]] := (
+    15	  Print["FAIL: ", name];
+    16	  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
+    17	  Exit[1];
+    18	);
+    19	
+    20	expectZero[name_String, expr_] := Module[{res},
+    21	  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+    22	  Print[name, " = ", fmt[res]];
+    23	  If[TrueQ[res === 0], pass[name], fail[name, res]];
+    24	];
+    25	
+    26	banner["STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES"];
+    27	
+    28	Clear[z, lM, xi];
+    29	$Assumptions = Element[{z, lM, xi}, Reals] && lM > 0;
+    30	
+    31	k = Pi/(2*lM);
+    32	sigmaMatch = k*Cos[k*z];
+    33	normMatch = FullSimplify[Integrate[sigmaMatch, {z, 0, lM}], Assumptions -> $Assumptions];
+    34	gMatch = FullSimplify[Integrate[sigmaMatch*Cos[k*z], {z, 0, lM}], Assumptions -> $Assumptions];
+    35	
+    36	Print["sigma_match normalization = ", fmt[normMatch]];
+    37	Print["g_match = ", fmt[gMatch]];
+    38	expectZero["self-matched normalization", normMatch - 1];
+    39	expectZero["self-matched bias", gMatch - Pi/4];
+    40	
+    41	rDisc = Sqrt[4107 - 100*Pi^2];
+    42	gMinus = FullSimplify[(2*rDisc - 37*Sqrt[3])/(20*Pi), Assumptions -> $Assumptions];
+    43	deltaG = FullSimplify[Pi/4 - gMinus, Assumptions -> $Assumptions];
+    44	tractionRatio = FullSimplify[(Pi/4)/gMinus, Assumptions -> $Assumptions];
+    45	
+    46	Print["g_-^F1 = ", fmt[gMinus]];
+    47	Print["delta_g_match = ", fmt[deltaG]];
+    48	Print["T_- / T_match = ", fmt[tractionRatio]];
+    49	Print["g_match numeric = ", fmt[N[Pi/4, 20]]];
+    50	Print["g_- numeric     = ", fmt[N[gMinus, 20]]];
+    51	Print["traction ratio  = ", fmt[N[tractionRatio, 20]]];
+    52	
+    53	sigmaXi = (1 - xi)*k*Cos[k*z] + xi/lM;
+    54	normXi = FullSimplify[Integrate[sigmaXi, {z, 0, lM}], Assumptions -> $Assumptions];
+    55	gXi = FullSimplify[Integrate[sigmaXi*Cos[k*z], {z, 0, lM}], Assumptions -> $Assumptions];
+    56	
+    57	Print["sigma_xi normalization = ", fmt[normXi]];
+    58	Print["g_xi = ", fmt[gXi]];
+    59	expectZero["convex-family normalization", normXi - 1];
+    60	
+    61	(* Positivity: sigma_xi(z) >= 0 on z in [0, lM], xi in [0, 1].
+    62	   Each summand of sigma_xi is nonnegative on the stated domain because
+    63	   cos(k z) decreases monotonically from 1 (at z=0) to 0 (at z=lM) for k=Pi/(2 lM). *)
+    64	sigmaMatchAtLM = FullSimplify[k*Cos[k*z] /. z -> lM, Assumptions -> $Assumptions];
+    65	Print["sigma_match(lM) = ", fmt[sigmaMatchAtLM]];
+    66	expectZero["sigma_match(lM) = 0 (boundary min on [0,lM])", sigmaMatchAtLM];
+    67	sigmaMatchAt0 = FullSimplify[k*Cos[k*z] /. z -> 0, Assumptions -> $Assumptions];
+    68	Print["sigma_match(0) = ", fmt[sigmaMatchAt0]];
+    69	expectZero["sigma_match(0) = k (interior max on [0,lM])", sigmaMatchAt0 - k];
+    70	sigmaXiAtLM = FullSimplify[(sigmaXi /. xi -> 0) /. z -> lM, Assumptions -> $Assumptions];
+    71	Print["sigma_xi(z=lM, xi=0) = ", fmt[sigmaXiAtLM]];
+    72	expectZero["sigma_xi(z=lM, xi=0) = 0", sigmaXiAtLM];
+    73	valXiAt1 = FullSimplify[sigmaXi /. xi -> 1, Assumptions -> $Assumptions];
+    74	Print["sigma_xi(xi=1) = ", fmt[valXiAt1]];
+    75	expectZero["sigma_xi(xi=1) = 1/lM", valXiAt1 - 1/lM];
+    76	
+    77	xiStar = FullSimplify[xi /. First[Solve[gXi == gMinus, xi, Reals]], Assumptions -> $Assumptions];
+    78	Print["xi_* = ", fmt[xiStar]];
+    79	Print["xi_* numeric = ", fmt[N[xiStar, 20]]];
+    80	expectZero["g_xi(xi_*) - g_-", (gXi /. xi -> xiStar) - gMinus];
+    81	
+    82	Print["2/pi numeric = ", fmt[N[2/Pi, 20]]];
+    83	Print["pi/4 numeric = ", fmt[N[Pi/4, 20]]];
+    84	intervalCheck = N[2/Pi, 40] < N[gMinus, 40] < N[Pi/4, 40];
+    85	Print["Check 2/pi < g_- < pi/4 -> ", intervalCheck];
+    86	If[!TrueQ[intervalCheck], fail["interval check", {N[2/Pi, 20], N[gMinus, 20], N[Pi/4, 20]}]];
+    87	
+    88	Print[""];
+    89	Print["Stage 126 Mathematica audit passed."];
+    90	
+    91	Exit[0];
+
+exec
+/bin/bash -lc "rg --files /var/projects/toy_physics/research/pde_ledger/redteam /var/projects/toy_physics/research/pde_ledger/scripts /var/projects/toy_physics/research/pde_ledger/mathematica | rg 'stage_126|stage126|positive_source_families'" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl
+/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt
+/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_126.md
+/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+/var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_126.md.raw
+/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_126.md' in /var/projects/toy_physics/research/pde_ledger
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_126.md.raw' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 126
+     3	batch: IV.3
+     4	auditor_model: claude-opus-4-7-1m
+     5	audit_date: 2026-05-27T00:00:00Z
+     6	verdict: findings
+     7	stop_cold: null
+     8	findings_count: 4
+     9	paper_alignment: partial
+    10	scripts_checked:
+    11	  sympy: present
+    12	  mathematica: present
+    13	  engines_agree: true
+    14	  outputs_fresh: true
+    15	docs_read:
+    16	  paper_stage_tex: present
+    17	  notes_stage_files:
+    18	    - notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    19	  paper_appendix: present
+    20	---
+    21	
+    22	# Audit unit 126 red-team report
+    23	
+    24	## Files reviewed
+    25	
+    26	- paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_126.tex`
+    27	- notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md`
+    28	- part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex` (only a single `\input{stages/stage_126}` at L1286; no extra row content)
+    29	- sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py`
+    30	- mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl`
+    31	- sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt`
+    32	- mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt`
+    33	
+    34	## What the paper claims
+    35	
+    36	The stage card (line 16) states: "Self-matched derivative profile gives `g = pi/4`; a positive convex family hits the lower branch." The notes (authoritative since the .tex body is one sentence) give three concrete deliverables:
+    37	
+    38	1. The self-matched normalized source `sigma_match(z) = k cos(kz)` with `k = pi/(2L)` integrates to 1 over `[0,L]` and yields the exact mouth-bias `g_match = pi/4`.
+    39	2. The convex positive family `sigma_xi(z) = (1 - xi) k cos(kz) + xi/L` for `0 <= xi <= 1` is normalized and nonnegative on `[0,L]`, with bias `g_xi = (1 - xi)(pi/4) + xi (2/pi)`.
+    40	3. Because `2/pi < g_-^F1 < pi/4`, there is a unique `xi_* in (0,1)` such that `g_{xi_*} = g_-^F1`, with closed form `xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)`. The notes also give the explicit surd form (containing a transcription typo discussed in F1) and the numerical value `xi_* ~= 0.183918405511538`.
+    41	
+    42	The card's `Checks` field additionally requests: (i) positivity of the mouth source, (ii) zero-flux and boundary-layer normalizations in the GNLS/localized-Maxwell reduction, (iii) Family-1 compensation against the lower (not equal-normalized) branch. `Inputs` declares that `g_-^F1` is imported from "the lower compensated core branch" (upstream Family-1 branch derivation), so the script may treat its symbolic form as given.
+    43	
+    44	## What the script claims to verify
+    45	
+    46	Both the SymPy and Mathematica scripts implement the same five-step verification:
+    47	
+    48	1. Compute `int_0^L k cos(kz) dz` and assert it equals 1 (`self-matched normalization`).
+    49	2. Compute `int_0^L k cos(kz) * cos(kz) dz` and assert it equals `pi/4` (`self-matched bias`).
+    50	3. Define `g_-^F1 = (2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)` as a symbolic literal carried in from the Family-1 branch; print numeric values of `delta_g_match`, `T_-/T_match`.
+    51	4. Compute `int_0^L sigma_xi cos(kz) dz` for `sigma_xi = (1-xi) k cos(kz) + xi/L`; assert convex-family normalization equals 1; solve `g_xi = g_-^F1` for `xi`; assert `g_xi(xi_*) - g_-^F1 = 0`.
+    52	5. Verify numerically that `2/pi < g_-^F1 < pi/4` (Mathematica calls `fail[]` on violation; SymPy only prints `True`/`False`).
+    53	
+    54	The scripts do NOT explicitly verify pointwise nonnegativity of `sigma_match` or `sigma_xi`. Both scripts print a banner that mislabels the stage as "STAGE 109" rather than 126.
+    55	
+    56	## Paper <-> script cross-check
+    57	
+    58	| Paper-side deliverable | Script-side check | Status |
+    59	|---|---|---|
+    60	| `sigma_match` integrates to 1 on `[0,L]` | sympy L17,22; wl L33,38 `expectZero["self-matched normalization", normMatch - 1]` | match |
+    61	| `g_match = pi/4` (self-matched bias) | sympy L18,22; wl L34,39 `expectZero["self-matched bias", gMatch - Pi/4]` | match |
+    62	| Imported `g_-^F1 = (2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)` | sympy L25-26; wl L41-42 (literal symbolic form, no derivation) | match (Inputs declares this as imported; informational, see F4) |
+    63	| Convex family normalized to 1 | sympy L40,45; wl L54,59 | match |
+    64	| Convex family pointwise nonnegative on `[0,L]` for `0 <= xi <= 1` | (no script-side check) | missing (see F2) |
+    65	| Unique `xi_* in (0,1)` with `g_{xi_*} = g_-^F1` | sympy L48 `sp.solve(...)`, L52-55 assert; wl L61 `Solve[..., Reals]`, L64 assert | match (existence + value via Solve; uniqueness implicit via linear `g_xi(xi)`) |
+    66	| `xi_* ~= 0.183918405511538` numeric | sympy/wl print `xi_* numeric` matching to 20 digits | match |
+    67	| Interval `2/pi < g_-^F1 < pi/4` | sympy L60 prints bool; wl L68-70 asserts via `fail[]` | match (sympy side is print-only, not asserted; minor weakness — see verdict) |
+    68	| Card `Checks` (i) positivity of mouth source | (no explicit assertion) | missing (F2) |
+    69	| Card `Checks` (ii) zero-flux / boundary-layer normalizations | the `int = 1` integrations partially cover normalization; zero-flux not addressed | partial (informational; boundary-layer reduction is per Inputs from upstream) |
+    70	| Card `Checks` (iii) Family-1 lower branch (not equal-normalized) | scripts hit the explicit `g_-^F1` formula whose numerical value is `~0.758` (lower branch) | match |
+    71	| Notes' explicit surd for `xi_*` containing `4107 - 168 pi^2` | scripts produce `4107 - 100 pi^2` (script value is correct; notes have a typo) | mismatch (F1, paper_misalignment) |
+    72	
+    73	`paper_alignment: partial` — the four primary identities (normalizations, `g_match = pi/4`, convex-family compensation) are all faithfully verified, but the notes' written surd form of `xi_*` contradicts the script (F1) and two `Checks` items (positivity, zero-flux/boundary-layer) are not explicitly asserted (F2).
+    74	
+    75	## Assertion inventory
+    76	
+    77	| # | Script | Line | Form | Exercises which paper claim? | Anchored to claim? |
+    78	|---|---|---|---|---|---|
+    79	| A1 | sympy | 22 | `if simplify(norm_match - 1) != 0 or simplify(g_match - pi/4) != 0: raise` | self-matched normalization + bias | yes |
+    80	| A2 | sympy | 45-46 | `if simplify(norm_xi - 1) != 0: raise` | convex-family normalization | yes |
+    81	| A3 | sympy | 54-55 | `if simplify(g_xi_star) != 0: raise` (where `g_xi_star = g_xi(xi_*) - g_-^F1`) | Family-1 compensation `g_{xi_*} = g_-^F1` | yes |
+    82	| A4 | sympy | 60 | `print(bool(2/pi < gminus < pi/4))` | interval pre-condition | partial (printed, not asserted) |
+    83	| B1 | wl | 38 | `expectZero["self-matched normalization", normMatch - 1]` | self-matched normalization | yes |
+    84	| B2 | wl | 39 | `expectZero["self-matched bias", gMatch - Pi/4]` | self-matched bias | yes |
+    85	| B3 | wl | 59 | `expectZero["convex-family normalization", normXi - 1]` | convex-family normalization | yes |
+    86	| B4 | wl | 64 | `expectZero["g_xi(xi_*) - g_-", (gXi /. xi -> xiStar) - gMinus]` | Family-1 compensation | yes |
+    87	| B5 | wl | 68-70 | `If[!TrueQ[intervalCheck], fail[...]]` | interval pre-condition | yes |
+    88	
+    89	No `sigma >= 0` assertion in either engine. No explicit assertion that `xi_*` lies in `(0,1)` (only printed numerically). The Family-1 surd `(2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)` is hand-typed in both scripts — informational issue (F4).
+    90	
+    91	## Findings
+    92	
+    93	### F1 — paper_misalignment
+    94	
+    95	**Severity:** medium
+    96	**Subtype:** notes_contradicts_script
+    97	**Files:**
+    98	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md:100`
+    99	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:25,48`
+   100	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:41,61`
+   101	
+   102	**What's wrong:**
+   103	The notes give the boxed exact surd form for the convex-family compensation point as
+   104	
+   105	> `xi_* = (-37*sqrt(3) - 5*pi^2 + 2*sqrt(4107 - 168*pi^2)) / (5*(8 - pi^2)) ~= 0.183918405511538`
+   106	
+   107	(notes line 100, inside the box). The scripts compute (via `sp.solve`/`Solve`)
+   108	
+   109	```
+   110	xi_* = (-37*sqrt(3) - 5*pi^2 + 2*sqrt(4107 - 100*pi^2)) / (5*(8 - pi^2))
+   111	```
+   112	
+   113	(sympy L48 output L25; wl L61 output L29 in normalized form).
+   114	
+   115	The two forms differ only in `4107 - 168*pi^2` (notes) vs `4107 - 100*pi^2` (scripts). Numerically:
+   116	
+   117	- Script form: `2*sqrt(4107 - 100*pi^2) ~= 2*sqrt(3120.04) ~= 111.715`, so numerator `~= -64.086 - 49.348 + 111.715 = -1.719`, divided by `5*(8 - 9.870) ~= -9.348` gives `xi_* ~= 0.18392`. Matches the script printout `0.18391840551153962831` and the notes' stated numerical value `0.183918405511538`.
+   118	- Notes form: `2*sqrt(4107 - 168*pi^2) ~= 2*sqrt(2448.5) ~= 98.965`. Numerator `~= -64.086 - 49.348 + 98.965 = -14.469`, divided by `-9.348` gives `xi_* ~= 1.548`. This is outside `(0,1)` and does NOT equal the notes' own quoted numerical value.
+   119	
+   120	So the notes contain a transcription typo: `168` should be `100`. The notes' numerical answer and the scripts agree; only the algebraic display in the notes is wrong.
+   121	
+   122	Sanity check by re-deriving from the closed form `xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)`:
+   123	- Numerator with `g_-^F1 = (2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)`:
+   124	  `pi/4 - g_-^F1 = (5 pi^2 - 2 sqrt(4107 - 100 pi^2) + 37 sqrt(3))/(20 pi)`.
+   125	- Denominator: `pi/4 - 2/pi = (pi^2 - 8)/(4 pi) = (pi^2 - 8)/(4 pi)`.
+   126	- Ratio: `xi_* = ((5 pi^2 - 2 sqrt(4107 - 100 pi^2) + 37 sqrt(3))/(20 pi)) * (4 pi/(pi^2 - 8)) = (5 pi^2 - 2 sqrt(4107 - 100 pi^2) + 37 sqrt(3))/(5(pi^2 - 8)) = -(5 pi^2 - 2 sqrt(4107 - 100 pi^2) + 37 sqrt(3))/(5(8 - pi^2)) = (2 sqrt(4107 - 100 pi^2) - 5 pi^2 - 37 sqrt(3))/(5(8 - pi^2))`.
+   127	
+   128	This matches the script form exactly with `100*pi^2`, confirming the notes typo.
+   129	
+   130	**Why this matters:**
+   131	A reader cross-checking the script against the notes will see a symbolic mismatch in a load-bearing boxed equation. The numerical value happens to agree, but the algebraic display in the notes is wrong, and silently relying on numerical agreement obscures the typo. Future re-derivations or re-formulations that take the notes' symbolic form as truth will produce wrong results.
+   132	
+   133	**Required change:**
+   134	**This is a paper_misalignment requiring user resolution.** See the directive's `## Resolve before fix_loop` block. Codex must not auto-edit the notes or the scripts.
+   135	
+   136	**Verification:**
+   137	After user resolution: the notes' boxed `xi_*` formula and the scripts' computed `xi_*` symbolic form should be algebraically identical (up to sign normalization), and the numerical value `0.183918405511538...` should remain unchanged.
+   138	
+   139	### F2 — script_missing_paper_claim
+   140	
+   141	**Severity:** medium
+   142	**Files:**
+   143	- `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_126.tex:22` (first item of `\stagefield{Checks}`)
+   144	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md:78` ("This is normalized and nonnegative on [0,L]")
+   145	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:39` (definition of `sigma_xi`; no positivity assertion follows)
+   146	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:53` (definition of `sigmaXi`; no positivity assertion follows)
+   147	
+   148	**What's wrong:**
+   149	The paper card's `Checks` list begins with "Check positivity of the mouth source; do not use signed fitting to reach the upper branch." The notes also boxes "This is normalized and nonnegative on `[0,L]`." The scripts define `sigma_match = k cos(kz)` and `sigma_xi = (1 - xi) k cos(kz) + xi/L`, then check normalization and the Family-1 compensation, but never assert nonnegativity of either source on `z in [0, L]` for `xi in [0, 1]`.
+   150	
+   151	It is mathematically obvious that on `z in [0, L]` we have `kz in [0, pi/2]` and `cos(kz) >= 0`, so `sigma_match >= 0` and `sigma_xi >= 0` for `xi in [0, 1]`. But "obvious" is not a script-side check, and the paper explicitly enumerates positivity as a required check (it is the distinguishing feature versus signed fitting to the upper branch).
+   152	
+   153	**Why this matters:**
+   154	The whole purpose of Stage 126 versus other compensation-point analyses is reaching the lower branch with a *positive* source — the card explicitly forbids "signed fitting to reach the upper branch." Verifying that the convex family really is nonnegative for the full parameter range `xi in [0,1]` is the load-bearing positivity gate. Without an assertion, the scripts cannot detect a future regression where someone changes the family to one that goes negative.
+   155	
+   156	**Required change:**
+   157	Add to both scripts a nonnegativity check for `sigma_xi(z)` over `z in [0, L]` and `xi in [0, 1]`. Since `sigma_xi = (1-xi) k cos(kz) + xi/L` and both terms are individually nonnegative on the stated domain, a clean assertion is: verify that the minimum of `sigma_xi` over the box `(z, xi) in [0,L] x [0,1]` is `>= 0`. Concretely, one can assert each summand is nonnegative:
+   158	
+   159	- `(1 - xi) >= 0` for `xi in [0, 1]` (trivial bound).
+   160	- `k cos(kz) >= 0` for `z in [0, L]` (since `kz in [0, pi/2]`).
+   161	- `xi/L >= 0` for `xi in [0, 1]` and `L > 0`.
+   162	
+   163	In SymPy: e.g.,
+   164	```python
+   165	# Positivity: sigma_xi >= 0 on z in [0, L], xi in [0, 1]
+   166	assert sp.simplify(sp.cos(k*z).rewrite(sp.cos).subs(z, 0) - 1) == 0  # boundary check
+   167	assert bool(sp.cos(k*sp.Symbol('z0', positive=True)).subs('z0', L).equals(0))  # cos(pi/2) = 0
+   168	# Better: directly verify endpoints and use sp.solveset for interior minimum
+   169	min_match = sp.minimum(k*sp.cos(k*z), z, sp.Interval(0, L))
+   170	assert sp.simplify(min_match) == 0  # exact: cos(pi/2) = 0
+   171	# At xi extremes:
+   172	assert sp.minimum(sigma_xi.subs(xi, 0), z, sp.Interval(0, L)) == 0
+   173	assert sp.simplify(sigma_xi.subs(xi, 1) - 1/L) == 0  # constant 1/L > 0
+   174	```
+   175	
+   176	(See directive F2 for the precise patch.)
+   177	
+   178	In Mathematica: use `Minimize[sigmaXi, {z, xi} \[Element] Rectangle[{0, 0}, {lM, 1}]]` and assert the minimum is `>= 0`.
+   179	
+   180	**Verification:**
+   181	After Codex applies, the verifier should see a new `expectZero` (or assert) for positivity in both engines, and the saved transcript should print the verified minimum as `>= 0`.
+   182	
+   183	### F3 — insufficient_verification
+   184	
+   185	**Severity:** low
+   186	**Files:**
+   187	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:60`
+   188	
+   189	**What's wrong:**
+   190	The SymPy script prints
+   191	
+   192	```python
+   193	print("Check 2/pi < g_- < pi/4 ->", bool(sp.N(2/sp.pi) < sp.N(gminus) < sp.N(sp.pi/4)))
+   194	```
+   195	
+   196	but does NOT raise on `False`. The Mathematica counterpart (wl L68-70) does correctly halt with `fail[...]` if the interval check fails. The notes treat the inequality `2/pi < g_-^F1 < pi/4` as the load-bearing existence guarantee for `xi_* in (0,1)`; if this inequality were ever to fail (e.g. due to a future revision of the imported `g_-^F1`), the SymPy script would still exit 0 and print a banner-passing transcript.
+   197	
+   198	**Why this matters:**
+   199	The script's existence claim for `xi_* in (0,1)` depends on the bracketing inequality. A silent `False` print here would not halt the audit, defeating the purpose of the check.
+   200	
+   201	**Required change:**
+   202	Convert the print to a raising assertion in the SymPy script. E.g.,
+   203	```python
+   204	interval_check = bool(sp.N(2/sp.pi) < sp.N(gminus) < sp.N(sp.pi/4))
+   205	print("Check 2/pi < g_- < pi/4 ->", interval_check)
+   206	if not interval_check:
+   207	    raise AssertionError("g_-^F1 does not lie strictly between 2/pi and pi/4.")
+   208	```
+   209	
+   210	**Verification:**
+   211	After Codex applies, the SymPy script should still print `True` (output unchanged) but a hypothetical regression would now raise. The Mathematica side already does this.
+   212	
+   213	### F4 — stale_output
+   214	
+   215	**Severity:** low (informational, banner mislabel)
+   216	**Files:**
+   217	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:13`
+   218	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:26`
+   219	- `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt:11`
+   220	- `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt:11`
+   221	
+   222	**What's wrong:**
+   223	Both scripts emit `banner("STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES")` (sympy L13, wl L26), and the saved transcripts (output L11 in both) echo this. The unit is stage 126, not 109. Output mtimes (sympy 2026-05-11 12:45, wl 2026-05-11 13:10) are both newer than the script mtimes (sympy Apr 1 21:36, wl May 11 11:56), so the transcripts are fresh — the misnomer is in the script source.
+   224	
+   225	This is not strictly `stale_output` (mtimes are fine), but the banner text labels the wrong stage in the captured transcript, which is a traceability hazard if outputs are grepped by stage number. Flagged at low severity per the audit framework's standing convention.
+   226	
+   227	**Why this matters:**
+   228	A grep for `STAGE 126` in `scripts/output/` and `mathematica/output/` will miss this unit's transcripts. A grep for `STAGE 109` will return both the real stage 109 transcripts and this unit's mislabeled transcripts, causing cross-stage confusion.
+   229	
+   230	**Required change:**
+   231	- In `scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:13`, change `banner("STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES")` to `banner("STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES")`.
+   232	- In `mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:26`, change `banner["STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES"];` to `banner["STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES"];`.
+   233	
+   234	**Verification:**
+   235	After re-running, the saved transcripts should print `STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES` instead of `STAGE 109 — ...`.
+   236	
+   237	## Independent-derivation check (Mathematica)
+   238	
+   239	The Mathematica and SymPy scripts share a near-identical pipeline:
+   240	
+   241	- Same `k = pi/(2 L)`.
+   242	- Same `sigma_match` and `sigma_xi` definitions.
+   243	- Same integration calls (`Integrate[sigmaMatch, {z, 0, lM}]` <-> `sp.integrate(sigma_match, (z, 0, L))`).
+   244	- Same imported `g_-^F1` symbolic literal `(2*sqrt(4107 - 100*pi^2) - 37*sqrt(3))/(20*pi)`.
+   245	- Same `Solve[gXi == gMinus, xi, Reals]` <-> `sp.solve(sp.Eq(g_xi, gminus), xi)[0]`.
+   246	
+   247	Variable-name divergences are cosmetic (`L` vs `lM`, `R` vs `rDisc`, `gminus` vs `gMinus`). The Mathematica script does add an explicit `If[!TrueQ[intervalCheck], fail[...]]` halt that SymPy omits (see F3).
+   248	
+   249	The underlying computation is just a definite integral and a `Solve`. The "independent derivation" bar is hard to clear when the claim is structurally that simple — both engines necessarily must compute the same integral. The mirroring is not gratuitous transliteration; both engines genuinely re-derive `g_match = pi/4` from the integral definition. I do not flag `mathematica_transliteration` here, but note that the .wl is structurally a tight mirror of the .py.
+   250	
+   251	## Engine cross-check
+   252	
+   253	Both engines produce (after normalization):
+   254	
+   255	- `sigma_match normalization = 1` (both)
+   256	- `g_match = pi/4` (both)
+   257	- `g_-^F1 = (-37*sqrt(3) + 2*sqrt(4107 - 100*pi^2))/(20*pi)` (both; same form modulo Mathematica's `Sqrt[]` vs SymPy's `sqrt`)
+   258	- Numerical `g_match = 0.78539816339744830962` (SymPy) / `0.78539816339744830961566084581987572105` (Mathematica) — agree to all printed digits
+   259	- Numerical `g_-^F1 = 0.75803507894466282692` (SymPy) / `0.75803507894466282691968089041411045778` (Mathematica) — agree
+   260	- Numerical `xi_* = 0.18391840551153962831` (SymPy) / `0.18391840551153962830834428246014671147` (Mathematica) — agree
+   261	- `g_xi(xi_*) - g_- = 0` (both `PASS`)
+   262	- Interval check `True` (both)
+   263	
+   264	The Mathematica simplification gives `g_xi` in the form `-1/4*(Pi*(-1 + xi)) + (2*xi)/Pi` and `xi_* = 1 + (40 + 37*Sqrt[3] - 2*Sqrt[4107 - 100*Pi^2])/(5*(-8 + Pi^2))`, which are algebraically identical to SymPy's `(8*xi + pi**2*(1 - xi))/(4*pi)` and `(-37*sqrt(3) - 5*pi^2 + 2*sqrt(4107 - 100*pi^2))/(5*(8 - pi^2))` respectively (verified by sign-tracking).
+   265	
+   266	Engines agree. `engines_agree: true`.
+   267	
+   268	## Verdict justification
+   269	
+   270	`verdict: findings`. The four primary identities the stage exists to prove — `sigma_match` normalization, `g_match = pi/4`, convex-family normalization, and Family-1 compensation `g_{xi_*} = g_-^F1` — are correctly verified in both engines, and the engines agree numerically and symbolically. The findings are:
+   271	
+   272	- F1 (`paper_misalignment`, `notes_contradicts_script`): the notes' boxed surd form for `xi_*` contains a transcription typo (`168*pi^2` should be `100*pi^2`); the script's symbolic form and the notes' own numerical value agree. Routed to user via `## Resolve before fix_loop` (almost certainly: fix the notes typo).
+   273	- F2 (`script_missing_paper_claim`): the paper card's first `Checks` item — "Check positivity of the mouth source" — is not explicitly asserted in either engine, even though mathematical nonnegativity is straightforward. The whole point of this stage is reaching the lower branch with a positive source, so an explicit positivity assertion is required.
+   274	- F3 (`insufficient_verification`): SymPy interval check prints but does not raise; Mathematica side correctly raises. Small but real hardening.
+   275	- F4 (banner mislabel): both scripts print "STAGE 109" instead of "STAGE 126" — traceability hazard, mechanical fix.
+   276	
+   277	No `stop_cold`. F1 is `paper_misalignment` (notes typo, user resolves direction). F2/F3/F4 are mechanical and do not propagate downstream: positivity is structurally guaranteed by the definitions, the interval check passes numerically, and the banner is cosmetic. The card's Inputs declare `g_-^F1` as an imported result (from the lower-compensated-core-branch upstream Family-1 derivation), so `hardcoded_result` does not apply — the script is honoring the card's declared import boundary.
+   278	
+   279	Attacks tried that failed: (a) checking whether `2/pi < g_-^F1 < pi/4` actually holds — numerically `0.63662 < 0.75804 < 0.78540`, yes. (b) checking whether `g_xi` is monotone in `xi` so `xi_*` is unique — yes, `g_xi = (1-xi)(pi/4) + xi(2/pi)` is affine in `xi`, slope `(2/pi - pi/4) ~= -0.149 < 0`, monotone decreasing, unique solution in `(0,1)` given the bracketing. (c) checking whether `sp.solve(sp.Eq(g_xi, gminus), xi)` could return spurious branches — `g_xi` is linear in `xi`, exactly one solution. (d) checking whether `simplify` under `xi: real=True` (no positivity) could hide a sign issue — no, `xi_*` is computed by direct linear solve, not branch-sensitive. (e) checking whether the assertion `simplify(g_xi_star) != 0` is tautological — `g_xi_star = g_xi(xi_*) - g_-^F1`, where `g_xi` is computed by integration and `xi_*` is solved against `g_-^F1`; the assertion non-tautologically tests that the closed-form `Solve` solution actually substitutes back to zero (would fail if `simplify` couldn't reduce the surds, which is a real risk for nested radicals). (f) checking whether the imported `g_-^F1` literal in the script matches the upstream Family-1 derivation — the symbolic form `(2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)` produces `~0.75804`, matching the notes' stated `g_-^F1 ~= 0.758035078944663`; concordant.
+   280	
+   281	## Self-test notes
+   282	
+   283	Checked: (1) F1's numerical re-derivation from `xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)` — confirmed the script's `100*pi^2` form is correct and the notes' `168*pi^2` is the typo. (2) F2's positivity claim — verified `cos(kz) >= 0` on `kz in [0, pi/2]` (i.e., `z in [0, L]`) and that `sigma_xi` is a convex combination of nonnegative pieces; the proposed assertion will pass and is non-tautological (would fail if `sigma_xi` were ever changed to include a sign-changing term). (3) F3's interval-check hardening — confirmed the SymPy script currently does not raise on `False` while the Mathematica side does; the proposed assertion change keeps the printed output identical when the check passes. (4) F4's banner edit is a string-replace; no math impact. (5) Confirmed no `paper_misalignment` is auto-introduced by F2/F3/F4 fixes: positivity is asserted in both the card and the notes, so adding the check brings the script *closer* to the paper; F3 is a hardening only; F4 is cosmetic.
+
+exec
+/bin/bash -lc "find /var/projects/toy_physics/research/pde_ledger/redteam -maxdepth 3 -type f -name '*126*' -print" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_126.md.raw
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_directive_126.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_prompt_126.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_directive_126.md
+/var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_prompt_126.md
+/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_126.md
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_directive_126.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 126
+     3	batch: IV.3
+     4	verifier_model: claude-opus-4-7-1m
+     5	verify_date: 2026-05-27T00:00:00Z
+     6	verdict: verified
+     7	sympy_exit: 0
+     8	mathematica_exit: 0
+     9	findings_resolved: 4
+    10	findings_total: 4
+    11	material_change: false
+    12	---
+    13	
+    14	# Verification — unit 126
+    15	
+    16	## Per-finding outcomes
+    17	
+    18	### F1 — paper_misalignment (notes typo)
+    19	**Classification:** resolved
+    20	**What changed:** `notes/stages/moving_throat_pde_stage126_positive_source_families.md:100` now reads `2\sqrt{4107-100\pi^2}` (was `168`). Scripts unchanged (correct per audit).
+    21	**Assessment:** Aligns notes' boxed surd with the script-computed form and the notes' own numeric `~0.183918405511538`. Direction (a) was the correct call.
+    22	
+    23	### F2 — script_missing_paper_claim (positivity)
+    24	**Classification:** resolved
+    25	**What changed:** SymPy (L48-66) adds four raise-on-fail checks: `min sigma_match on [0,L] = 0`, `min sigma_xi(xi=0) on [0,L] = 0`, `sigma_xi(xi=1) = 1/L`, `sigma_xi(z=L, xi=0) = 0`. Mathematica (L61-75) uses boundary-value `expectZero` calls: `sigma_match(lM) = 0`, `sigma_match(0) = k`, `sigma_xi(z=lM, xi=0) = 0`, `sigma_xi(xi=1) = 1/lM`.
+    26	**Assessment:** Sympy uses `sp.calculus.util.minimum` (correct namespace). Mathematica swap from `Minimize` (which returned unevaluated) to boundary-value checks is semantically equivalent for the monotone-decreasing `k Cos[k z]` on `[0, lM]`; the maximum-at-0 + min-at-lM pair pins both endpoints, and `sigma_xi(xi=1) = 1/lM` covers the convex-combination endpoint. Non-tautological — a sign-changing source would now trip. Output transcripts show all four checks PASS in both engines.
+    27	
+    28	### F3 — insufficient_verification (sympy interval raise)
+    29	**Classification:** resolved
+    30	**What changed:** sympy L80-83 captures `interval_check` then raises `AssertionError` on `False`.
+    31	**Assessment:** Matches directive verbatim. Output still prints `True`.
+    32	
+    33	### F4 — banner mislabel
+    34	**Classification:** resolved
+    35	**What changed:** sympy L13 and wl L26 now read `STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES`; both transcripts echo the corrected banner.
+    36	
+    37	## Exec log assessment
+    38	
+    39	**SymPy:** exit=0. `sigma_xi normalization = 1`; `min sigma_match on [0,L] = 0`; `min sigma_xi(xi=0) on [0,L] = 0`; `xi_* numeric = 0.18391840551153962831`; `Check 2/pi < g_- < pi/4 -> True`.
+    40	**Mathematica:** exit=0. All six PASS lines (normalization, bias, convex-family normalization, sigma_match(lM)=0, sigma_match(0)=k, sigma_xi corner, sigma_xi(xi=1), g_xi(xi_*)−g_−). Final line: `Stage 126 Mathematica audit passed.`
+    41	**Output freshness:** sympy output mtime 1779921506 > script 1779921170; mathematica output 1779921825 > script 1779921762. Both fresh post-fix.
+    42	
+    43	## Material-change assessment
+    44	
+    45	`material_change`: false. Only added assertions and label fixes; no derived numeric or symbolic result changes. Downstream units unaffected.
+    46	
+    47	## Side observations (non-blocking)
+    48	
+    49	None.
+    50	
+    51	## Verdict justification
+    52	
+    53	All four findings resolved cleanly with non-tautological assertions and matching exec output. Mathematica's boundary-value substitution for the unevaluated `Minimize` is a sound equivalent for this monotone profile and preserves the regression-trip semantics intended by the directive.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/verify_prompt_126.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	# Red-Team Script Verifier
+     2	
+     3	You are verifying that Codex's edits actually closed the findings raised by the auditor for audit unit `126`. You are NOT re-auditing from scratch — you are checking that the specific findings in the directive were addressed correctly and that the post-fix scripts still hold up under their own assertions.
+     4	
+     5	You write one file: `/var/projects/toy_physics/research/pde_ledger/redteam/verifications/stage_126.md`.
+     6	
+     7	## Inputs
+     8	
+     9	- Original auditor report: `/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_126.md`
+    10	- Codex directive (now with `## Applied:` / `## Blocked:` blocks): `/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_126.md`
+    11	- Current state of edited script files (read them after Codex's edits)
+    12	- SymPy exec log: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage126_positive_source_families_sympy_audit.txt` (may be empty if no sympy script applies)
+    13	- Mathematica exec log: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt` (may be empty if no mathematica script applies)
+    14	- Git diff of all files Codex touched (already captured at `(no captured diff file — verifier reads current file state directly via git diff if needed)`)
+    15	
+    16	You do NOT read paper.tex or notes/. Like the auditor, the verifier is scripts-only.
+    17	
+    18	## What you do, per finding
+    19	
+    20	For each finding `F1, F2, …` in the original report:
+    21	
+    22	1. Did Codex apply it? Check the directive for an `## Applied: Fn` block.
+    23	2. If applied: open the target file at the cited line range. Does the change match what the directive's "required change" asked for? Is there any collateral edit Codex made beyond what was asked?
+    24	3. If the finding involved a script change or new script: does the exec log show a passing run? Does the new assertion correspond to the claim manifest items, and is it non-tautological?
+    25	4. If blocked: read the `## Blocked: Fn` block. Is the question legitimate (unblockable without human input) or could it have been resolved with closer reading?
+    26	
+    27	Classify the verification of each finding as one of:
+    28	
+    29	- **`resolved`** — change is in place, correct, and (if applicable) the script run confirms it.
+    30	- **`partial`** — change is in place but doesn't fully address the finding (e.g. fixed in `.py` but the `.wl` mirror wasn't updated to match; or the new check is tautological).
+    31	- **`regressed`** — applying the fix introduced a new problem visible in the diff or exec log.
+    32	- **`blocked_legitimate`** — Codex's blocked-reason is correct; needs human input.
+    33	- **`blocked_resolvable`** — Codex blocked unnecessarily; the directive was clear enough.
+    34	- **`not_attempted`** — directive had this finding but Codex neither applied nor blocked it.
+    35	
+    36	## Overall verdict
+    37	
+    38	Roll up the per-finding classifications:
+    39	
+    40	- **`verified`** — every finding is `resolved`. Exec logs pass. No regressions in the diff.
+    41	- **`needs_rework`** — at least one `partial`, `regressed`, `blocked_resolvable`, or `not_attempted`. Write a delta-directive (see below) for the next iteration.
+    42	- **`blocked_unfixable`** — at least one `blocked_legitimate` that the verifier confirms is unanswerable mechanically. Halt and escalate to human.
+    43	
+    44	## What you must NOT do
+    45	
+    46	- **Do not introduce new findings.** That's the auditor's job, not yours. If you notice an unrelated issue, flag it in a "side observations" section but do NOT block verification on it.
+    47	- **Do not execute scripts.** Use the exec logs the orchestrator captured. If a log is missing or truncated, say so in your report.
+    48	- **Do not re-derive the math.** You're checking edits against a directive, not re-running the audit.
+    49	- **Do not read prose documents.** Same scripts-only scope as the auditor.
+    50	- **Do not rubber-stamp.** A passing exec log is necessary but not sufficient — a script that now passes because Codex made the assertion tautological still fails verification.
+    51	
+    52	## Required output
+    53	
+    54	Write `/var/projects/toy_physics/research/pde_ledger/redteam/verifications/stage_126.md`:
+    55	
+    56	```markdown
+    57	---
+    58	unit_id: 126
+    59	batch: IV.3
+    60	verifier_model: <your model>
+    61	verify_date: <ISO 8601>
+    62	verdict: verified | needs_rework | blocked_unfixable
+    63	sympy_exit: <int or "n/a">
+    64	mathematica_exit: <int or "n/a">
+    65	findings_resolved: <int>
+    66	findings_total: <int>
+    67	material_change: true | false   # true if any edit changes a derived result downstream units might depend on
+    68	---
+    69	
+    70	# Verification — unit 126
+    71	
+    72	## Per-finding outcomes
+    73	
+    74	### F1 — <category from original report>
+    75	
+    76	**Classification:** resolved | partial | regressed | blocked_legitimate | blocked_resolvable | not_attempted
+    77	
+    78	**What changed:**
+    79	<concrete summary of Codex's edit, citing file:line>
+    80	
+    81	**Assessment:**
+    82	<is the edit correct? does it address the finding? any side effects? for assertion changes: is the new assertion non-tautological?>
+    83	
+    84	### F2 — …
+    85	
+    86	## Exec log assessment
+    87	
+    88	**SymPy:** exit=<int>. Notable lines:
+    89	<quote 2-4 relevant lines from the log — passing assertions, failures, warnings>
+    90	
+    91	**Mathematica:** exit=<int>. Notable lines:
+    92	<same>
+    93	
+    94	**Output freshness:** confirm the saved `.txt` outputs were re-generated post-fix (their mtimes should be newer than the corresponding script mtimes).
+    95	
+    96	## Material-change assessment
+    97	
+    98	`material_change`: true | false.
+    99	
+   100	If true, list which downstream units are likely to be affected and why. (The orchestrator will mark all units > 126 as `upstream_stale: true`, but flag any specific concern here so the user can decide whether to re-audit narrow vs. broad.)
+   101	
+   102	## Side observations (non-blocking)
+   103	
+   104	Anything you noticed that isn't part of any finding. Do NOT cause verification to fail based on these.
+   105	
+   106	## Delta directive (only if verdict is needs_rework)
+   107	
+   108	If verdict is `needs_rework`, write a delta-directive section that the orchestrator can hand to Codex for iteration 2. Use the same structure as the original directive but only include the findings that need rework. Be specific about what's still missing. (Codex will receive this via `codex-chat --resume <session>`, so it already remembers iteration 1 — keep the delta tight.)
+   109	
+   110	## Verdict justification
+   111	
+   112	One short paragraph.
+   113	```
+   114	
+   115	That's it. The orchestrator reads your front-matter to advance the state machine and reads your delta-directive (if any) to drive the next codex iteration via `codex-chat --resume`.
+
+exec
+/bin/bash -lc 'nl -ba /var/projects/toy_physics/research/pde_ledger/redteam/tmp_prompts/audit_directive_126.md' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+     1	---
+     2	unit_id: 126
+     3	batch: IV.3
+     4	created_at: 2026-05-27T00:00:00Z
+     5	findings_count: 4
+     6	stop_cold: null
+     7	applied: false
+     8	verification_status: pending
+     9	needs_user_resolution: true
+    10	---
+    11	
+    12	# Codex directive — unit 126
+    13	
+    14	Apply each non-paper_misalignment finding below in order (F2, F3, F4). After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+    15	
+    16	For F1 (paper_misalignment), do nothing — the orchestrator is holding for user resolution. Do not edit `notes/stages/moving_throat_pde_stage126_positive_source_families.md` or either script's `g_-^F1` literal to "fix" F1 unless the user has explicitly chosen a direction in a follow-up directive.
+    17	
+    18	If a non-paper_misalignment finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+    19	
+    20	Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+    21	
+    22	Do NOT run python or mathematica. Only edit files.
+    23	
+    24	Do NOT touch `paper/`, `notes/`, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+    25	
+    26	## F1 — paper_misalignment
+    27	
+    28	**Subtype:** notes_contradicts_script
+    29	
+    30	**Paper side:**
+    31	- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md:100` quote:
+    32	  ```
+    33	  xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)
+    34	       = (-37 sqrt(3) - 5 pi^2 + 2 sqrt(4107 - 168 pi^2))/(5 (8 - pi^2))
+    35	       ~= 0.183918405511538
+    36	  ```
+    37	
+    38	**Script side:**
+    39	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:48` produces (output L25):
+    40	  ```
+    41	  xi_* = (-37*sqrt(3) - 5*pi^2 + 2*sqrt(4107 - 100*pi**2))/(5*(8 - pi**2))
+    42	       ~= 0.18391840551153962831
+    43	  ```
+    44	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:61` produces (output L29):
+    45	  ```
+    46	  xi_* = 1 + (40 + 37*Sqrt[3] - 2*Sqrt[4107 - 100*Pi^2])/(5*(-8 + Pi^2))
+    47	       ~= 0.18391840551153962831
+    48	  ```
+    49	
+    50	The scripts and the notes' numerical value `0.183918405511538` all agree to all printed digits. Only the surd inside the notes' display differs: notes write `4107 - 168*pi^2`; both engines compute `4107 - 100*pi^2`. Independent re-derivation from `xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)` with `g_-^F1 = (2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)` gives the scripts' form (see report F1 for full algebra). The notes' surd plugged in numerically gives `~1.55`, contradicting the notes' own stated `~0.184`. Conclusion: the notes contain a transcription typo (`168` should be `100`).
+    51	
+    52	## Resolve before fix_loop
+    53	
+    54	The notes' boxed surd for `xi_*` writes `4107 - 168*pi^2`; the scripts produce `4107 - 100*pi^2`. The scripts' form is algebraically correct, matches `xi_* = (pi/4 - g_-^F1)/(pi/4 - 2/pi)` with the imported `g_-^F1 = (2 sqrt(4107 - 100 pi^2) - 37 sqrt(3))/(20 pi)`, and matches the notes' own numerical value `0.183918405511538`. The notes' `168` is almost certainly a transcription typo. Confirm and pick the direction:
+    55	
+    56	Possible directions (the user picks one):
+    57	- (a) Notes typo, scripts correct (most likely) — update `notes/stages/moving_throat_pde_stage126_positive_source_families.md:100` to replace `2\sqrt{4107-168\pi^2}` with `2\sqrt{4107-100\pi^2}`. No script change.
+    58	- (b) Notes correct, scripts wrong — would require revising the imported `g_-^F1` symbolic form upstream; the resulting numerical value would change and contradict the notes' own quoted `~0.184`. This is highly unlikely but listed for completeness.
+    59	- (c) Both derivations share an upstream input that needs auditing — flag the Family-1 derivation (notes' "Stages 172-173" pointer; user should confirm where in the current numbering the Family-1 lower-branch `g_-^F1` is actually derived).
+    60	
+    61	The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+    62	
+    63	## F2 — script_missing_paper_claim
+    64	
+    65	**Target:**
+    66	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py` (insert after L46, before the `xi_star = ...` block on L48)
+    67	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl` (insert after L59, before the `xiStar = ...` block on L61)
+    68	
+    69	**Issue:**
+    70	The paper card's `Checks` enumerates "Check positivity of the mouth source; do not use signed fitting to reach the upper branch." (paper/stages/stage_126.tex:22). The notes also state "This is normalized and nonnegative on `[0,L]`" (notes line 78). The scripts define `sigma_match = k*cos(k*z)` and `sigma_xi = (1-xi)*k*cos(k*z) + xi/L`, then check normalization and Family-1 compensation, but never assert nonnegativity. Without an assertion, a future regression that introduces a sign-changing source would not be caught — defeating the stage's load-bearing positivity claim.
+    71	
+    72	**Required change:**
+    73	
+    74	SymPy patch (insert after L46 of `scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py`):
+    75	
+    76	```python
+    77	# Positivity: sigma_xi(z) >= 0 on z in [0, L], xi in [0, 1].
+    78	# Decomposition: sigma_xi = (1 - xi)*k*cos(k*z) + xi/L. Each term is >= 0 on
+    79	# the stated domain (cos(k*z) >= 0 since k*z in [0, pi/2]; xi/L > 0 for xi >= 0).
+    80	min_match = sp.minimum(k*sp.cos(k*z), z, sp.Interval(0, L))
+    81	print("min sigma_match on [0,L] =", min_match)
+    82	if sp.simplify(min_match) != 0:
+    83	    raise AssertionError("sigma_match minimum on [0,L] should be 0 (at z=L).")
+    84	# At xi = 0: sigma_xi = k*cos(k*z), min on [0,L] is 0.
+    85	min_xi0 = sp.minimum(sigma_xi.subs(xi, 0), z, sp.Interval(0, L))
+    86	# At xi = 1: sigma_xi = 1/L, constant > 0.
+    87	val_xi1 = sp.simplify(sigma_xi.subs(xi, 1))
+    88	print("min sigma_xi(xi=0) on [0,L] =", min_xi0)
+    89	print("sigma_xi(xi=1) =", val_xi1)
+    90	if sp.simplify(min_xi0) != 0:
+    91	    raise AssertionError("sigma_xi(xi=0) minimum on [0,L] should be 0.")
+    92	if sp.simplify(val_xi1 - 1/L) != 0:
+    93	    raise AssertionError("sigma_xi(xi=1) should equal 1/L.")
+    94	# Interior xi: sigma_xi is a convex combination of two nonnegative functions,
+    95	# so sigma_xi >= 0 on the whole box. Confirm at the joint min candidate (z=L, xi=0):
+    96	sigma_corner = sp.simplify(sigma_xi.subs([(z, L), (xi, 0)]))
+    97	print("sigma_xi(z=L, xi=0) =", sigma_corner)
+    98	if sp.simplify(sigma_corner) != 0:
+    99	    raise AssertionError("sigma_xi(z=L, xi=0) should equal 0.")
+   100	```
+   101	
+   102	Mathematica patch (insert after L59 of `mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl`):
+   103	
+   104	```mathematica
+   105	(* Positivity: sigma_xi(z) >= 0 on z in [0, lM], xi in [0, 1]. *)
+   106	(* Each summand of sigma_xi is nonnegative on the stated domain. *)
+   107	minMatch = FullSimplify[Minimize[{k*Cos[k*z], 0 <= z <= lM}, z][[1]],
+   108	  Assumptions -> $Assumptions];
+   109	Print["min sigma_match on [0,lM] = ", fmt[minMatch]];
+   110	expectZero["sigma_match positivity (min = 0)", minMatch];
+   111	minXiAt0 = FullSimplify[Minimize[{sigmaXi /. xi -> 0, 0 <= z <= lM}, z][[1]],
+   112	  Assumptions -> $Assumptions];
+   113	Print["min sigma_xi(xi=0) on [0,lM] = ", fmt[minXiAt0]];
+   114	expectZero["sigma_xi(xi=0) positivity (min = 0)", minXiAt0];
+   115	valXiAt1 = FullSimplify[sigmaXi /. xi -> 1, Assumptions -> $Assumptions];
+   116	Print["sigma_xi(xi=1) = ", fmt[valXiAt1]];
+   117	expectZero["sigma_xi(xi=1) = 1/lM", valXiAt1 - 1/lM];
+   118	cornerVal = FullSimplify[sigmaXi /. {z -> lM, xi -> 0}, Assumptions -> $Assumptions];
+   119	Print["sigma_xi(z=lM, xi=0) = ", fmt[cornerVal]];
+   120	expectZero["sigma_xi corner (z=lM, xi=0) = 0", cornerVal];
+   121	```
+   122	
+   123	**Claim manifest:**
+   124	- M1: `min_{z in [0,L]} sigma_match(z) = 0` (attained at `z = L`, since `cos(pi/2) = 0`).
+   125	- M2: `min_{z in [0,L]} sigma_xi(z; xi=0) = 0` (reduces to M1).
+   126	- M3: `sigma_xi(z; xi=1) = 1/L` (constant, strictly positive).
+   127	- M4: `sigma_xi(z=L, xi=0) = 0` (corner check confirming the joint minimum candidate).
+   128	
+   129	Together these establish `sigma_xi >= 0` on `[0,L] x [0,1]` (the interior of `xi` is a convex combination of nonnegative pieces, so the joint minimum lies on the boundary `xi in {0,1}`).
+   130	
+   131	**Verification command:**
+   132	After Codex applies, the verifier will run `redteam exec-sympy 126` and `redteam exec-mathematica 126` and confirm the new checks appear (`min sigma_match on [0,L]`, `min sigma_xi(xi=0) on [0,L]`, `sigma_xi(xi=1)`, `sigma_xi(z=L, xi=0)`) AND each engine exits 0.
+   133	
+   134	## F3 — insufficient_verification
+   135	
+   136	**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:60`
+   137	
+   138	**Issue:**
+   139	The SymPy script prints the interval check `2/pi < g_- < pi/4` but does not raise on `False`. The Mathematica counterpart at wl:68-70 correctly halts via `fail[...]`. The interval is the load-bearing existence guarantee for `xi_* in (0,1)`; if a future revision of the imported `g_-^F1` ever violated it, the SymPy side would silently exit 0.
+   140	
+   141	**Required change:**
+   142	
+   143	Replace the current line 60:
+   144	
+   145	```python
+   146	print("Check 2/pi < g_- < pi/4 ->", bool(sp.N(2/sp.pi) < sp.N(gminus) < sp.N(sp.pi/4)))
+   147	```
+   148	
+   149	with:
+   150	
+   151	```python
+   152	interval_check = bool(sp.N(2/sp.pi) < sp.N(gminus) < sp.N(sp.pi/4))
+   153	print("Check 2/pi < g_- < pi/4 ->", interval_check)
+   154	if not interval_check:
+   155	    raise AssertionError("g_-^F1 does not lie strictly between 2/pi and pi/4.")
+   156	```
+   157	
+   158	**Verification command:**
+   159	After Codex applies, `redteam exec-sympy 126` should exit 0 and the printed transcript should still read `Check 2/pi < g_- < pi/4 -> True` (output unchanged when the check passes).
+   160	
+   161	## F4 — banner mislabel (filed under stale_output for traceability)
+   162	
+   163	**Target:**
+   164	- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py:13`
+   165	- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:26`
+   166	
+   167	**Issue:**
+   168	Both scripts emit `banner("STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES")` and the saved transcripts echo this. The unit is stage 126.
+   169	
+   170	**Required change:**
+   171	
+   172	SymPy (L13): change
+   173	```python
+   174	banner("STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES")
+   175	```
+   176	to
+   177	```python
+   178	banner("STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES")
+   179	```
+   180	
+   181	Mathematica (L26): change
+   182	```mathematica
+   183	banner["STAGE 109 — EXPLICIT POSITIVE SOURCE FAMILIES"];
+   184	```
+   185	to
+   186	```mathematica
+   187	banner["STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES"];
+   188	```
+   189	
+   190	**Verification command:**
+   191	After Codex applies, `redteam exec-sympy 126` and `redteam exec-mathematica 126` should produce transcripts whose banner line reads `STAGE 126 — EXPLICIT POSITIVE SOURCE FAMILIES`.
+
+exec
+/bin/bash -lc 'ls -la /var/projects/toy_physics/research/pde_ledger/redteam' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+total 516
+drwxrwxr-x 13 trevnorris trevnorris   4096 May 28 18:18 .
+drwxrwxr-x 10 trevnorris trevnorris   4096 May 26 12:49 ..
+-rw-rw-r--  1 trevnorris trevnorris   2284 May 25 17:34 BATCHES.md
+-rw-rw-r--  1 trevnorris trevnorris 267080 May 28 16:54 MANIFEST.yaml
+-rw-rw-r--  1 trevnorris trevnorris   2339 May 21 12:03 MORNING_SUMMARY.md
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:55 batches
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 26 12:51 codex_logs
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:29 codex_reviews
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:27 directives
+drwxrwxr-x  2 trevnorris trevnorris  12288 May 26 13:14 exec_logs
+-rw-rw-r--  1 trevnorris trevnorris    190 May 21 12:25 fix_batch_--help.log
+-rw-rw-r--  1 trevnorris trevnorris     60 May 21 12:25 fix_batch_--help.marker
+-rw-rw-r--  1 trevnorris trevnorris   2114 May 25 17:15 fix_batch_I.1-script-only-resume.log
+-rw-rw-r--  1 trevnorris trevnorris     76 May 25 17:15 fix_batch_I.1-script-only-resume.marker
+-rw-rw-r--  1 trevnorris trevnorris    999 May 25 02:35 fix_batch_I.1-script-only.log
+-rw-rw-r--  1 trevnorris trevnorris    207 May 25 02:35 fix_batch_I.1-script-only.marker
+-rw-rw-r--  1 trevnorris trevnorris   6304 May 21 11:42 fix_batch_I.1.log
+-rw-rw-r--  1 trevnorris trevnorris     57 May 21 11:42 fix_batch_I.1.marker
+-rw-rw-r--  1 trevnorris trevnorris    184 May 21 15:32 fix_batch_I.2.log
+-rw-rw-r--  1 trevnorris trevnorris     57 May 21 15:32 fix_batch_I.2.marker
+-rw-rw-r--  1 trevnorris trevnorris   2373 May 25 17:15 fix_batch_I1_v2.log
+-rw-rw-r--  1 trevnorris trevnorris  11843 May 21 17:40 fix_batch_II.1.log
+-rw-rw-r--  1 trevnorris trevnorris     58 May 21 17:40 fix_batch_II.1.marker
+-rw-rw-r--  1 trevnorris trevnorris   9052 May 22 12:58 fix_batch_III.1.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 22 12:58 fix_batch_III.1.marker
+-rw-rw-r--  1 trevnorris trevnorris  10430 May 22 17:59 fix_batch_III.2.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 22 17:59 fix_batch_III.2.marker
+-rw-rw-r--  1 trevnorris trevnorris  11100 May 26 11:05 fix_batch_III.2_v2.log
+-rw-rw-r--  1 trevnorris trevnorris     62 May 26 11:05 fix_batch_III.2_v2.marker
+-rw-rw-r--  1 trevnorris trevnorris   8455 May 22 20:13 fix_batch_III.3.log
+-rw-rw-r--  1 trevnorris trevnorris    124 May 22 20:13 fix_batch_III.3.marker
+-rw-rw-r--  1 trevnorris trevnorris  10852 May 25 00:33 fix_batch_III.4.log
+-rw-rw-r--  1 trevnorris trevnorris     59 May 25 00:33 fix_batch_III.4.marker
+-rw-rw-r--  1 trevnorris trevnorris   7974 May 25 00:33 fix_batch_III4.log
+-rw-rw-r--  1 trevnorris trevnorris   9399 May 22 13:41 lred_sweep_report.md
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:16 prompts
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 15:24 reports
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:56 resolutions
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 18:22 scripts
+drwxrwxr-x  2 trevnorris trevnorris  20480 May 28 15:12 tmp_prompts
+drwxrwxr-x  2 trevnorris trevnorris   4096 May 28 16:29 verifications
+
+exec
+/bin/bash -lc 'find /var/projects/toy_physics/research/pde_ledger/redteam/directives -maxdepth 1 -type f | sort | tail -30' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_140.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_142.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_143.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_144.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_146.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_147.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_148.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_150.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_151.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_152.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_154.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_155.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_156.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_157.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_158.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_160.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_161.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_163.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_164.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_165.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_166.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_167.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_168.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_169.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_170.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_171.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_172.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_173.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_174.md
+/var/projects/toy_physics/research/pde_ledger/redteam/directives/stage_175.md
+
+exec
+/bin/bash -lc "find /var/projects/toy_physics/research/pde_ledger/redteam -path '*/stage_126.md' -print" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+/var/projects/toy_physics/research/pde_ledger/redteam/reports/stage_126.md
+
+exec
+/bin/bash -lc "find /var/projects/toy_physics/research/pde_ledger/redteam/prompts -maxdepth 1 -type f -name '*126*' -print" in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+exec
+/bin/bash -lc 'wc -c /var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_126.md.raw' in /var/projects/toy_physics/research/pde_ledger
+ succeeded in 0ms:
+0 /var/projects/toy_physics/research/pde_ledger/redteam/codex_reviews/stage_126.md.raw
+
+codex
+---
+stage: 126
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [audit_directive_126.md, verify_directive_126.md, stage_126.tex, moving_throat_pde_stage126_positive_source_families_sympy_audit.py, moving_throat_pde_stage126_positive_source_families_sympy_audit.txt, moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl, moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt]
+---
+# Codex review — stage 126
+
+## What the edit was supposed to do
+The directive held F1 as a notes-side typo resolution, then required script fixes for F2-F4. F2 was supposed to add nonnegativity checks for the positive mouth-source family on `z in [0,L]`, `xi in [0,1]`. F3 was supposed to make the SymPy interval check raise on failure, and F4 corrected the banner from Stage 109 to Stage 126.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:51 | `min sigma_match on [0,L] = 0` | Yes for wrong endpoint/sign changes | Yes for the self-matched endpoint source | PASS |
+| 2 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:55-66 | `xi=0`, `xi=1`, and corner positivity checks | Only for endpoint failures; an interior negative perturbation can pass | Only partially; does not check full `sigma_xi >= 0` on the box | FINDING |
+| 3 | moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:64-75 | boundary-value positivity checks | Only for endpoint failures; an interior negative perturbation can pass | Only partially; does not check full `sigmaXi >= 0` on the box | FINDING |
+| 4 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:80-83 | raise if `2/pi < g_- < pi/4` is false | Yes | Yes; brackets the lower branch between family endpoint biases | PASS |
+| 5 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:13 / moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:26 | Stage 126 banner | N/A label fix | Traceability only | PASS |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage126_positive_source_families_sympy_audit.py:55-66`; `moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:64-75`
+- **What's wrong:** The added positivity checks only test `xi=0`, `xi=1`, and one corner. For example, SymPy checks `min_xi0 = ... sigma_xi.subs(xi, 0)`, `val_xi1 = ... sigma_xi.subs(xi, 1)`, and `sigma_corner = sigma_xi.subs([(z, L), (xi, 0)])`. A bad family with an added term like `-A*xi*(1-xi)*sin(2*pi*z/L)/L` can preserve those endpoint/corner checks and normalization while becoming negative in the interior of `[0,L] x [0,1]`. The saved outputs corroborate the endpoint checks, but not the full paper claim that the convex family is positive.
+- **What it should be:** Assert the global claim directly, e.g. prove/check `sigma_xi(z) >= 0` for `0 <= z <= L`, `0 <= xi <= 1`, `L > 0`, or add a non-tautological structural check that `sigma_xi` is affine in `xi` plus endpoint minima. In Mathematica, a `Resolve[ForAll[...]]`/successful `Minimize`-style check would match the directive’s intent.
+
+## Bottom line
+The interval hardening and banner fix are fine, and the saved transcripts show the new checks executing. The problem is F2: the paper’s load-bearing claim is positivity of the whole convex source family, but the edited scripts only verify boundary slices and a corner. That is not enough for an adversarial audit, because a sign-changing interior source can pass the added assertions while violating the stage’s positive-family claim.
+tokens used
+45,532
+---
+stage: 126
+reviewer: codex
+verdict: FINDINGS
+findings_count: 1
+files_reviewed: [audit_directive_126.md, verify_directive_126.md, stage_126.tex, moving_throat_pde_stage126_positive_source_families_sympy_audit.py, moving_throat_pde_stage126_positive_source_families_sympy_audit.txt, moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl, moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt]
+---
+# Codex review — stage 126
+
+## What the edit was supposed to do
+The directive held F1 as a notes-side typo resolution, then required script fixes for F2-F4. F2 was supposed to add nonnegativity checks for the positive mouth-source family on `z in [0,L]`, `xi in [0,1]`. F3 was supposed to make the SymPy interval check raise on failure, and F4 corrected the banner from Stage 109 to Stage 126.
+
+## Edited-assertion verdict table
+| # | file:line | edited check (short) | can it fail? | exercises paper claim? | verdict |
+|---|-----------|----------------------|--------------|------------------------|---------|
+| 1 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:51 | `min sigma_match on [0,L] = 0` | Yes for wrong endpoint/sign changes | Yes for the self-matched endpoint source | PASS |
+| 2 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:55-66 | `xi=0`, `xi=1`, and corner positivity checks | Only for endpoint failures; an interior negative perturbation can pass | Only partially; does not check full `sigma_xi >= 0` on the box | FINDING |
+| 3 | moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:64-75 | boundary-value positivity checks | Only for endpoint failures; an interior negative perturbation can pass | Only partially; does not check full `sigmaXi >= 0` on the box | FINDING |
+| 4 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:80-83 | raise if `2/pi < g_- < pi/4` is false | Yes | Yes; brackets the lower branch between family endpoint biases | PASS |
+| 5 | moving_throat_pde_stage126_positive_source_families_sympy_audit.py:13 / moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:26 | Stage 126 banner | N/A label fix | Traceability only | PASS |
+
+## Findings (only if verdict = FINDINGS)
+### R1 — insufficient_verification
+- **Where:** `moving_throat_pde_stage126_positive_source_families_sympy_audit.py:55-66`; `moving_throat_pde_stage126_positive_source_families_mathematica_audit.wl:64-75`
+- **What's wrong:** The added positivity checks only test `xi=0`, `xi=1`, and one corner. For example, SymPy checks `min_xi0 = ... sigma_xi.subs(xi, 0)`, `val_xi1 = ... sigma_xi.subs(xi, 1)`, and `sigma_corner = sigma_xi.subs([(z, L), (xi, 0)])`. A bad family with an added term like `-A*xi*(1-xi)*sin(2*pi*z/L)/L` can preserve those endpoint/corner checks and normalization while becoming negative in the interior of `[0,L] x [0,1]`. The saved outputs corroborate the endpoint checks, but not the full paper claim that the convex family is positive.
+- **What it should be:** Assert the global claim directly, e.g. prove/check `sigma_xi(z) >= 0` for `0 <= z <= L`, `0 <= xi <= 1`, `L > 0`, or add a non-tautological structural check that `sigma_xi` is affine in `xi` plus endpoint minima. In Mathematica, a `Resolve[ForAll[...]]`/successful `Minimize`-style check would match the directive’s intent.
+
+## Bottom line
+The interval hardening and banner fix are fine, and the saved transcripts show the new checks executing. The problem is F2: the paper’s load-bearing claim is positivity of the whole convex source family, but the edited scripts only verify boundary slices and a corner. That is not enough for an adversarial audit, because a sign-changing interior source can pass the added assertions while violating the stage’s positive-family claim.
+
+---
+codex_session_id: 019e7121-aff0-7323-9149-239dff04f36b

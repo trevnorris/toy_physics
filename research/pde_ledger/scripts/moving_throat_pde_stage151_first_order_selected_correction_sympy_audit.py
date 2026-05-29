@@ -4,24 +4,27 @@ moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
 
 Audit for the first-order source correction selected by the full mouth profile.
 
-The paper-claimed moment-shift identities are
-    delta_g = - Cov_*(c, R),   delta_S = - Cov_*(K_q, R),
-where delta_Sigma = -Sigma_* (R - <R>_*) is the linearized correction to the
-canonical exponential source.  The SymPy script verifies these by:
-
-  (1) symbolically defining delta_Sigma = -Sigma_*(R - <R>_*) (hand form), and
-  (2) numerically integrating delta_g_int = int c(x) delta_Sigma dx and
-      checking it matches the abstract covariance form to high precision.
-
-Numeric Pi_star, r1, r2 anchors (Pi_star = canonical Family-1 value from notes;
-r1, r2 are arbitrary non-zero example residual coefficients) make the integral
-identities computable yet non-trivial:  a sign flip on the centering, a missing
-factor in the moment, or a misordered Sigma_* would change the numeric value
-and trip the assertion.
+The SymPy engine is an exact multi-point cross-check: it verifies M1-M7 exactly
+at sampled rational Pi_star values, while keeping r1, r2, A_T, B_T, and gprime
+symbolic.  The full all-Pi_star symbolic proof is carried by the Mathematica
+engine.
 """
 
+# === DO NOT "fix" this into a fully-symbolic SymPy proof. =======================
+# SymPy CANNOT evaluate  integral_0^1 e^(-Pi_star*x) * {cos,cosh}(...) * x^n dx
+# with a SYMBOLIC Pi_star -- it hangs indefinitely (confirmed 2026-05-28; the
+# attempt was killed at 35 min and again at 19 min). This script is therefore an
+# intentional EXACT, MULTI-POINT cross-check at concrete rational Pi_star values
+# (symbolic in r1, r2, A_T, B_T, gprime). The full all-Pi_star symbolic proof is
+# carried by the Mathematica engine:
+#   mathematica/moving_throat_pde_stage151_first_order_selected_correction_mathematica_audit.wl
+# If you think you can make the SymPy side fully symbolic in Pi_star: you cannot
+# (tried definite-integrate, indefinite+bounds, and trig->exp rewrite -- all hang).
+# ================================================================================
+
 from __future__ import annotations
-import mpmath as mp
+
+import sympy as sp
 
 
 def banner(title: str) -> None:
@@ -31,99 +34,157 @@ def banner(title: str) -> None:
     print(line)
 
 
-def expect_close(name: str, val, target, tol: float = 1e-15) -> None:
-    diff = abs(mp.mpf(val) - mp.mpf(target))
-    print(f"{name} = {val}   (target {target}, diff {diff})")
-    if float(diff) > tol:
-        raise AssertionError(f"{name} mismatch")
+def expect_zero(name, expr):
+    res = sp.simplify(sp.cancel(sp.together(expr)))
+    print(f"{name} = {res}")
+    assert res == 0, f"{name} nonzero: {res}"
 
 
 banner("FIRST-ORDER SELF-CONSISTENT SOURCE CORRECTION")
 
-mp.mp.dps = 40
+x = sp.symbols("x", real=True)
+eps = sp.symbols("epsilon", real=True)
+r1, r2 = sp.symbols("r1 r2", real=True)
+gprime = sp.symbols("gprime", real=True, nonzero=True)
+AT, BT = sp.symbols("A_T B_T", real=True)
+k = sp.pi / 2
 
-# Numeric anchors.  Pi_star = canonical Family-1 mouth bias (notes / stage 156).
-# r1, r2 = arbitrary nonzero example coefficients in the residual R(x) = r1 x + r2 x^2.
-# gprime, AT, BT = arbitrary nonzero example parameters; we verify the algebraic
-# relations delta_Pi = -delta_g/gprime and delta_T = AT*delta_g + BT*delta_S
-# without needing the specific Family-1 values (those live in stage 152).
-Pi_star = mp.mpf("1.50882951349316")
-r1 = mp.mpf("1.7")
-r2 = mp.mpf("-0.9")
-gprime = mp.mpf("0.0714453558083195")
-AT = mp.mpf("-4.27263956256927")
-BT = mp.mpf("0.134875005736706")
-k = mp.pi / 2
+_sympy_integrate = sp.integrate
 
 
-def Sigma_star(x):
-    return Pi_star * mp.e ** (-Pi_star * x) / (1 - mp.e ** (-Pi_star))
+def _poly_exp_moment(rate, degree):
+    if rate == 0:
+        return sp.Rational(1, degree + 1)
+    if degree == 0:
+        return (sp.exp(rate) - 1) / rate
+    previous = _poly_exp_moment(rate, degree - 1)
+    return sp.exp(rate) / rate - sp.Integer(degree) * previous / rate
 
 
-def c_kernel(x):
-    return mp.cos(k * x)
+def _expand_linear_exponentials(expr):
+    expr = expr.rewrite(sp.exp)
+    if expr.is_Atom:
+        return expr
+    if expr.is_Add:
+        return sp.Add(*(_expand_linear_exponentials(arg) for arg in expr.args), evaluate=False)
+    if expr.is_Mul:
+        terms = [sp.Integer(1)]
+        for factor in expr.args:
+            expanded = _expand_linear_exponentials(factor)
+            factor_terms = expanded.args if expanded.is_Add else (expanded,)
+            terms = [term * factor_term for term in terms for factor_term in factor_terms]
+        return sp.Add(*terms, evaluate=False)
+    if expr.is_Pow:
+        return expr.func(
+            _expand_linear_exponentials(expr.base),
+            _expand_linear_exponentials(expr.exp),
+            evaluate=False,
+        )
+    return expr.func(*(_expand_linear_exponentials(arg) for arg in expr.args), evaluate=False)
 
 
-def K_kernel(x):
-    return mp.cosh(k * (1 - x)) / mp.cosh(k)
+def _integrate_exp_poly_term(term):
+    coeff, dependent = term.as_independent(x, as_Add=False)
+    dependent = sp.powsimp(dependent, force=True)
+    rate = sp.Integer(0)
+
+    for exp_factor in list(dependent.atoms(sp.exp)):
+        exponent = exp_factor.args[0]
+        if not exponent.has(x):
+            continue
+        slope = sp.diff(exponent, x)
+        constant = sp.simplify(exponent - slope * x)
+        if slope.has(x) or constant.has(x):
+            raise ValueError("nonlinear exponential argument")
+        rate += slope
+        coeff *= sp.exp(constant)
+        dependent = dependent / exp_factor
+
+    dependent = sp.cancel(sp.powsimp(dependent, force=True))
+    poly = sp.Poly(dependent, x)
+    return sum(
+        coeff * poly_coeff * _poly_exp_moment(rate, degree)
+        for (degree,), poly_coeff in poly.terms()
+    )
 
 
-def R_residual(x):
-    return r1 * x + r2 * x ** 2
+def _exact_unit_integrate(expr, *args, **kwargs):
+    if len(args) == 1 and args[0] == (x, 0, 1) and not kwargs:
+        rewritten = _expand_linear_exponentials(expr)
+        terms = rewritten.args if rewritten.is_Add else (rewritten,)
+        return sp.cancel(sp.together(sum(_integrate_exp_poly_term(term) for term in terms)))
+    return _sympy_integrate(expr, *args, **kwargs)
 
 
-def mean(f):
-    return mp.quad(lambda t: Sigma_star(t) * f(t), [0, 1])
+sp.integrate = _exact_unit_integrate
+
+PI_SAMPLES = [
+    sp.Rational(1, 2),
+    sp.Integer(1),
+    sp.Rational(3, 2),
+    sp.Integer(2),
+    sp.Rational(5, 3),
+]
 
 
-# Canonical normalization
-norm = mp.quad(Sigma_star, [0, 1])
-expect_close("<1>_* = 1 (canonical normalization)", norm, mp.mpf(1), tol=1e-30)
+for Pi_star in PI_SAMPLES:
+    print(f"\n[Pi={Pi_star}]")
 
-# Moments
-Rbar = mean(R_residual)
-cbar = mean(c_kernel)
-Kbar = mean(K_kernel)
-cRbar = mean(lambda t: c_kernel(t) * R_residual(t))
-KRbar = mean(lambda t: K_kernel(t) * R_residual(t))
-CovcR = cRbar - cbar * Rbar
-CovKR = KRbar - Kbar * Rbar
+    w0 = sp.exp(-Pi_star * x)
+    pert = r1 * x + r2 * x**2
 
-print(f"<R>_*       = {Rbar}")
-print(f"<c>_*       = {cbar}")
-print(f"<K>_*       = {Kbar}")
-print(f"Cov(c,R)    = {CovcR}")
-print(f"Cov(K,R)    = {CovKR}")
+    num = sp.series(w0 * sp.exp(-eps * pert), eps, 0, 2).removeO()
+    Z0 = sp.integrate(num.coeff(eps, 0), (x, 0, 1))
+    Z1 = sp.integrate(num.coeff(eps, 1), (x, 0, 1))
+    ser = sp.series(num / (Z0 + eps * Z1), eps, 0, 2).removeO()
+    Sigma_star = sp.simplify(ser.coeff(eps, 0))
+    delta_Sigma = sp.simplify(ser.coeff(eps, 1))
 
-# Linearized correction (hand form): delta_Sigma = -Sigma_* (R - <R>_*)
-def delta_Sigma(x):
-    return -Sigma_star(x) * (R_residual(x) - Rbar)
+    c_kernel = sp.cos(k * x)
+    K_kernel = sp.cosh(k * (1 - x)) / sp.cosh(k)
 
+    mean = lambda f: sp.integrate(Sigma_star * f, (x, 0, 1))
+    Rbar = mean(pert)
+    cbar = mean(c_kernel)
+    Kbar = mean(K_kernel)
+    CovcR = mean(c_kernel * pert) - cbar * Rbar
+    CovKR = mean(K_kernel * pert) - Kbar * Rbar
 
-# Centering check: <delta_Sigma>_* = 0 (proves the correction is mass-preserving)
-centering = mp.quad(delta_Sigma, [0, 1])
-expect_close("<delta_Sigma>_*  (centering)", centering, mp.mpf(0), tol=1e-30)
+    expect_zero(
+        f"[Pi={Pi_star}] M1 delta_Sigma + Sigma_star*(R - <R>)",
+        delta_Sigma + Sigma_star * (pert - Rbar),
+    )
+    expect_zero(
+        f"[Pi={Pi_star}] M2 int Sigma_star dx - 1",
+        sp.integrate(Sigma_star, (x, 0, 1)) - 1,
+    )
+    expect_zero(
+        f"[Pi={Pi_star}] M3 int delta_Sigma dx",
+        sp.integrate(delta_Sigma, (x, 0, 1)),
+    )
 
-# Moment-shift identities via integration
-delta_g_int = mp.quad(lambda t: c_kernel(t) * delta_Sigma(t), [0, 1])
-delta_S_int = mp.quad(lambda t: K_kernel(t) * delta_Sigma(t), [0, 1])
-expect_close("delta_g_int = -Cov(c,R)", delta_g_int, -CovcR, tol=1e-30)
-expect_close("delta_S_int = -Cov(K,R)", delta_S_int, -CovKR, tol=1e-30)
+    dg = sp.integrate(c_kernel * delta_Sigma, (x, 0, 1))
+    dS = sp.integrate(K_kernel * delta_Sigma, (x, 0, 1))
+    expect_zero(
+        f"[Pi={Pi_star}] M4 dg + CovcR",
+        dg + CovcR,
+    )
+    expect_zero(
+        f"[Pi={Pi_star}] M5 dS + CovKR",
+        dS + CovKR,
+    )
 
-# Bias and traction retunings
-deltaPi = -delta_g_int / gprime
-deltaT = AT * delta_g_int + BT * delta_S_int
-expect_close("deltaPi = Cov(c,R)/gprime", deltaPi, CovcR / gprime, tol=1e-30)
-expect_close(
-    "deltaT = -AT*Cov(c,R) - BT*Cov(K,R)",
-    deltaT,
-    -AT * CovcR - BT * CovKR,
-    tol=1e-30,
-)
-
-print(f"\ndeltaPi  = {deltaPi}")
-print(f"deltaT   = {deltaT}")
+    deltaPi = -dg / gprime
+    deltaT = AT * dg + BT * dS
+    expect_zero(
+        f"[Pi={Pi_star}] M6 deltaPi - CovcR/gprime",
+        deltaPi - CovcR / gprime,
+    )
+    expect_zero(
+        f"[Pi={Pi_star}] M7 deltaT + A_T*CovcR + B_T*CovKR",
+        deltaT + AT * CovcR + BT * CovKR,
+    )
 
 print("\nTheorem:")
-print("  Once the full mouth residual R_*(x) is known, the selected first-order")
-print("  source correction is completely determined by Cov_*(c,R_*) and Cov_*(K_q,R_*).")
+print("  The selected first-order source correction is determined by")
+print("  Cov_*(c,R_*) and Cov_*(K_q,R_*) at every exact Pi_star sample above.")

@@ -61,37 +61,24 @@ expect_zero(
     sp.simplify(L_W_required - sp.pi * a * sp.sqrt((1 + r_c) / 3) / 2),
 )
 
-# Round-trip the geometric kappa0 through L_W_required:
-kappa0_bare_geom = sp.simplify(4 * L_W_required**2 / (sp.pi**2 * a**2))
-expect_zero(
-    "geometric kappa0 at L_W_required equals (1+r_c)/3",
-    kappa0_bare_geom - (1 + r_c) / 3,
-)
-gamma0_bare = sp.simplify((1 + r_c) / 9)
-kappa_c = sp.simplify(kappa0_bare_geom / (1 + r_c))
-gamma_c = sp.simplify(gamma0_bare / (1 + r_c))
-expect_zero("final kappa_c - 1/3", kappa_c - sp.Rational(1, 3))
-expect_zero("final gamma_c - 1/9", gamma_c - sp.Rational(1, 9))
-
-# Bare outgoing form as pure-scale deformation of canonical l=2 branch.
-# Extract gamma0 from the z^5 coefficient and check it matches (1+r_c)/9.
-D_bare = sp.expand((1 + r_c) * (1 - z**2 / 3 - sp.I * z**5 / 9))
-gamma0_from_D = sp.I * D_bare.coeff(z, 5)
-expect_zero(
-    "gamma0 extracted from D_bare matches (1+r_c)/9",
-    sp.simplify(gamma0_from_D - (1 + r_c) / 9),
-)
-D_final = sp.simplify(D_bare / (1 + r_c))
-expect_zero(
-    "bare scaled-canonical branch renormalizes to canonical",
-    D_final - (1 - z**2 / 3 - sp.I * z**5 / 9),
-)
-kappa0_from_D = -D_bare.coeff(z, 2)
-expect_zero(
-    "kappa0_bare extracted from D_bare matches (1+r_c)/3",
-    sp.simplify(kappa0_from_D - (1 + r_c) / 3),
-)
-kappa0_bare = sp.simplify((1 + r_c) / 3)
+# --- Renormalization to canonical coefficients (REPORTED, not asserted) ---
+# The load-bearing, falsifiable physics is verified above (eigenvalue, kappa0
+# collapse, tube-length law). The renormalization below carries no independent
+# falsifiable content in this stage: kappa0 is already established above and
+# gamma0 is an upstream-carried input (Stage 98 compensation requirement) with
+# no in-stage derivation. Dividing out the common (1+r_c) hybridization factor
+# is therefore a definitional consequence, so these values are PRINTED, not
+# asserted (an expect_zero here would be tautological).
+kappa0_bare = sp.simplify(kappa0_from_tube.subs(L_W, L_W_required))  # derived tube coeff at required length
+gamma0_bare = sp.simplify((1 + r_c) / 9)                            # upstream-carried input (Stage 98), not derived in-stage
+common_scale = 1 + r_c
+kappa_c = sp.simplify(kappa0_bare / common_scale)
+gamma_c = sp.simplify(gamma0_bare / common_scale)
+print("Renormalization (definitional consequence, not an independent check):")
+print("  kappa0_bare (derived tube coeff at L_W_required) =", kappa0_bare)
+print("  gamma0_bare (upstream-carried input, Stage 98)   =", gamma0_bare)
+print("  kappa_c = kappa0_bare/(1+r_c) =", kappa_c)
+print("  gamma_c = gamma0_bare/(1+r_c) =", gamma_c)
 
 print("\nSummary:")
 print("  D/N half-wave mixed tube length:", sp.simplify(L_W_required))

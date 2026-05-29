@@ -26,10 +26,11 @@ banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
 
 Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
 
-# Class A: pure scale
+# Class A: pure scale -- anchor normalized scaled response to the literal canonical fingerprint
+# (appendix eq:app-part04-Yout-dtn) so the check is falsifiable, not a bare S-cancellation.
 Y_scale = sp.series((-3*S)/(S*Lambda_out), z, 0, 6).removeO()
-Y_can = sp.series((-3)/Lambda_out, z, 0, 6).removeO()
-expect_zero('pure scale invariance', Y_scale - Y_can)
+Y_can_literal = 1 + z**2/sp.Integer(9) + 4*z**4/sp.Integer(81) + I*z**5/sp.Integer(27)
+expect_zero('pure scale invariance', sp.expand(Y_scale) - Y_can_literal)
 
 # Class B: pure scale+argument
 Y_arg = sp.series((-3*S)/(S*Lambda_out.subs(z, beta*z)), z, 0, 6).removeO()
@@ -67,7 +68,9 @@ expect_zero('chi_add - 3(S+9Sigma5)/(3S-Sigma0)', chi_add - 3*(S + 9*Sigma5)/(3*
 
 chi_pres = sp.solve(sp.Eq(chi_add, 1), Sigma5)[0]
 print('Sigma5 preservation locus =', sp.simplify(chi_pres))
-expect_zero('preservation locus check', chi_add.subs(Sigma5, chi_pres) - 1)
+# Anchor the Class C locus value to the notes submanifold reduced to beta=1 (Sigma5 = -Sigma0/27),
+# instead of re-substituting the solved value back into the same equation.
+expect_zero('Sigma5 locus (Class C) = -Sigma0/27', sp.simplify(chi_pres) - (-Sigma0/sp.Integer(27)))
 
 # Class D: general scale + argument + additive (β-parameterized preservation submanifold).
 # Notes box: Σ_5 = S(1 - β^5)/9 - Σ_0/27 (general locus); Class C is the β=1 reduction.
@@ -99,7 +102,8 @@ expect_zero(
     'general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27',
     sp.simplify(chi_pres_gen - (S*(1 - beta**5)/sp.Integer(9) - Sigma0/sp.Integer(27))),
 )
-expect_zero('general preservation locus check', chi_gen.subs(Sigma5, chi_pres_gen) - 1)
+# (Round-trip check demoted to a print; the submanifold anchor above is the load-bearing test.)
+print('general preservation locus check =', sp.simplify(chi_gen.subs(Sigma5, chi_pres_gen) - 1))
 expect_zero(
     'general locus reduces to beta=1 (Class C)',
     (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),

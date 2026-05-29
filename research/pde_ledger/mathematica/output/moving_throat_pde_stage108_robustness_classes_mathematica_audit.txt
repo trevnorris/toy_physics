@@ -27,19 +27,19 @@ chi_add = (-3*(9*sigma5 + sNorm))/(sigma0 - 3*sNorm)
 chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0) = 0
 PASS: chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0)
 Sigma5 preservation locus = -1/27*sigma0
-Sigma5 preservation locus + sigma0/27 = 0
-PASS: Sigma5 preservation locus + sigma0/27
-preservation locus check = 0
-PASS: preservation locus check
+Sigma5 locus (Class C) = -sigma0/27 = 0
+PASS: Sigma5 locus (Class C) = -sigma0/27
 Sigma2(beta) = (-sigma0 - 3*(-1 + beta^2)*sNorm)/9
 Sigma4(beta) = (-sigma0 - 3*(-1 + beta^4)*sNorm)/27
 chi_gen(beta) = (-3*(9*sigma5 + beta^5*sNorm))/(sigma0 - 3*sNorm)
+chiGen independent-route agreement = 0
+PASS: chiGen independent-route agreement
 Sigma5 general preservation locus = (-sigma0 - 3*(-1 + beta^5)*sNorm)/27
 general preservation submanifold = S(1 - beta^5)/9 - sigma0/27 = 0
 PASS: general preservation submanifold = S(1 - beta^5)/9 - sigma0/27
 general preservation locus check = 0
-PASS: general preservation locus check
 general locus reduces to beta=1 (Class C) = 0
 PASS: general locus reduces to beta=1 (Class C)
 
 Stage 108 Mathematica audit passed.
+# exit_code: 0

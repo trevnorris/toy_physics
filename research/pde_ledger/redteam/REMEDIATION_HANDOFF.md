@@ -13,13 +13,26 @@
 **Per-stage loop now:** Claude audit agent (`render-audit-prompt`) → directive → `codex-invoke` (Codex applies + RUNS + iterates under 600s cap) → orchestrator `exec-sympy`+`exec-mathematica` (re-run + refresh `output/*.txt`) → `capture-diff` → `render-verify-prompt` → clean Claude verify agent → `set-status NNN verified`. Mathematica single-seat → fix/verify run SEQUENTIALLY.
 
 ## IMMEDIATE NEXT ACTION
-Batch 1 = {116, 108, 151, 170}. **116 ✅ verified · 151 ✅ verified.** Remaining:
-- **170** — directive `redteam/directives/stage_170.md` ready (F1 tautological_check: Section-5 lane inputs must be routed through the DERIVED Section-2 maps `dkappa_from_du2`/`dgamma_from_dP0`, not re-typed copies). Loop: `codex-reset 170; set-status 170 fixing; codex-invoke 170 redteam/directives/stage_170.md` → re-run+refresh → verify.
-- **108** — F1 RESOLVED as a paper-card cleanup (NO script change: card Checks #2/#3 are genuinely verified at sibling stages **110/111/112** — log to `notes/PAPER_CLEANUP_TRACKER.md`). Remaining script fixes F2 (transliteration), F3/F4 (tautological) in `redteam/directives/stage_108.md`. Same loop for F2/F3/F4 only.
+**BATCH 1 = {116, 108, 151, 170} — ✅ ALL VERIFIED & COMMITTED.** (116/151 in `e1cdfec`; 170/108 in `3419ab7`, 2026-05-29.) Trackers synced (PAPER_CLEANUP_TRACKER row **P4-42**, STAGE_VERIFICATION_COVERAGE 2026-05-29 snapshot, MATHEMATICA_MIRROR_POLICY remediation paragraph). **AT THE USER GATE — do not start the next batch without an explicit go.**
+
+**Next = BATCH 2.** Remaining 25 FINDINGS stages (29 total − batch 1's {108,116,151,170}):
+`105, 106, 109, 112, 117, 118, 119, 122, 125, 126, 130, 131, 134, 137, 139, 142, 143, 144, 146, 147, 148, 150, 157, 166, 175`.
+Pick the next ~4 (suggest by ascending stage #: **105, 106, 109, 112**), one batch at a time with a user gate. Per-stage loop (now hardened): directive → `codex-invoke` (Codex applies+RUNS+iterates under 600s cap) → orchestrator `exec-sympy`+`exec-mathematica` re-run + refresh `output/*.txt` (sed strip header at `---`) → `capture-diff` → `render-verify-prompt` → clean verify agent → `set-status NNN verified`. `$RT` = `/var/projects/toy_physics/.claude/skills/redteam-audit/lib/redteam.sh` (ABSOLUTE path — relative breaks in background shells; this bit me this session). Committed outputs live at `scripts/output/...sympy_audit.txt` + `mathematica/output/...mathematica_audit.txt`.
+
+**⚠️ BATCH 2 PREFLIGHT (verified 2026-05-29 — do not re-discover):**
+- The 25 remaining FINDINGS stages still show `status: verified` in MANIFEST. That is the **STALE *tainted* status** from the original orchestrator-direct pass, NOT remediation-verified. Do not be fooled into skipping them. Each has a remediation directive (`redteam/directives/stage_NNN.md`, dated **2026-05-27**, `applied: false`, encoding the `codex_reviews/stage_NNN.md` findings) that is **PENDING**. The fix loop overwrites the tainted state: `set-status NNN fixing` → `codex-invoke` → re-run+refresh → verify agent → `set-status NNN verified`.
+- Directives ALREADY EXIST (so skip the audit-agent step — go straight to `codex-invoke`, like 170 did). Confirmed: the "do not run python/mathematica" purge is complete across ALL directives (no `codex-invoke` guard-abort) and batch-2 directives carry the run-and-iterate language.
+- BUT directives are from 2026-05-27 → **RE-CONFIRM each directive's file:line anchors before `codex-invoke`** (line numbers may have drifted; do the `grep`/`sed` anchor sanity-check exactly as done for 170/108 this session).
+- Several batch-2 directives carry a `paper_misalignment` finding (`needs_user_resolution: true`). Resolve the direction via **Claude+Codex** (math-coverage call the user delegated — Claude+Codex agree, escalate only if CONCEPTUAL), exactly as 108-F1 was handled (evidence agent → `codex-chat` read-only consult → record + clear `needs_user_resolution` + log to PAPER_CLEANUP_TRACKER). **106's is already known: 106 → 102/104 paper-card cleanup (no script change), logged in P4-42.**
+
+**Carry-forward items already LOGGED (act on at the right stage, don't re-investigate):**
+- **112** (when it comes up in batch 2): fold in the `sigma_W != 0` precision qualifier on the "preservation iff `gamma_W=1/9`" statement (Codex side-finding from the 108-F1 consult; at `sigma_W=0`, `chi_B=1` for any `gamma_W`). Logged in P4-42.
+- **148** (FINDINGS): the directive `redteam/directives/stage_148.md` has a stale `168π²` that should be `100π²` (script's `100π²` is correct; Codex false-positive). Fix the directive doc when processing 148.
+- Paper-card cross-refs (manual paper pass, NOT red-team): 106→102/104, 139→140, 108→110/111/112. All in P4-42.
 
 **151 methodology (do NOT undo):** SymPy cannot integrate `∫₀¹ e^{-Pi_star·x}·{cos,cosh}·xⁿ dx` with symbolic `Pi_star` (hangs — killed at 35 & 19 min). Resolution (Codex-concurred): **Mathematica = full symbolic authority; SymPy = EXACT 5-point cross-check** at rational `Pi_star {1/2,1,3/2,2,5/3}`, symbolic in `r1,r2,A_T,B_T,gprime`. Codex used a targeted custom `∫₀¹ xⁿe^{ax}dx` integrator (stock `sp.integrate` fallback otherwise) to fit the cap — verified correct + corroborated by Mathematica. The `.py` carries an anti-footgun comment forbidding re-attempts at symbolic-`Pi_star`. See memory [[claude-codex-resolve-math]].
 
-After 170 + 108: batch 1 done → continue the remaining ~25 FINDINGS stages (see "Remaining script-fix set" below) one batch at a time with a user gate, then sync the 6 trackers, then the planned full second pass.
+After all batches verified: sync the 6 trackers (done incrementally per batch), then the planned full second end-to-end pass.
 
 ---
 
@@ -73,7 +86,8 @@ The 29 FINDINGS stages' tautological / insufficient / transliteration / symbol f
 
 ## Adjunct tooling (the calibrated skill was NOT modified)
 - `redteam/scripts/codex_review.sh` — per-stage read-only Codex review wrapper (read-only sandbox, ephemeral, extracts the clean report from the transcript; raw kept as `*.md.raw`). Its preamble `redteam/prompts/codex_review.md` was **deleted** (one-off; review complete). Spent artifact — don't re-run without recreating the preamble.
-- Codex consultation pattern (for Claude↔Codex math agreement): pipe a prompt to `~/.claude/hooks/codex-chat/codex-chat -s read-only -C <root> --ephemeral`. Example saved as the `_consult_misalign.raw`.
+- Codex consultation pattern (for Claude↔Codex math agreement): pipe a prompt to `~/.claude/hooks/codex-chat/codex-chat -s read-only -C <root> --ephemeral`. Examples: `_consult_misalign.raw`, `_consult_108_f1.md`.
+  - **Caveat (learned 2026-05-29):** a read-only consult can decide to run a repo-wide `grep` and dump the whole result into the captured transcript — the 108-F1 raw ballooned to ~800KB. Don't commit that. Save a CLEAN markdown summary (question + Codex's verdict, e.g. `_consult_108_f1.md`) and delete the bloated `.raw` before committing. Read the consult output via `grep -niE "CONCUR|DISPUTE|..."` rather than reading the whole file into context.
 
 ## Open side items (not blocking)
 - 36 cosmetic banner-only files: offered to dump diffs for the user to eyeball; not done.

@@ -4,7 +4,10 @@ batch: V.1
 created_at: 2026-05-28T16:30:00-06:00
 findings_count: 1
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-28T23:59:10-06:00
+findings_applied: 1
+findings_blocked: 0
 verification_status: pending
 needs_user_resolution: false
 ---
@@ -103,3 +106,11 @@ Leave the three kappa amplitude assertions (L150-152) and the four signature-rat
 
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-sympy 170` and `redteam exec-mathematica 170` and confirm: (a) the new `dkW`/`dgW` assignments reference the derived maps `dkappa_from_du2`/`dgamma_from_dP0` (sympy) and `dkappaFromdu2`/`dgammaFromdP0` (wl) — and `kappa_map`/`gamma_map`/`kappaMap`/`gammaMap` no longer exist in either file; (b) both scripts exit 0 with every Section-5 PASS / `= 0` line still present.
+
+## Applied: F1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage170_linear_grouped_outlet_map_mathematica_audit.wl`
+- summary: Routed the weak-axisymmetric lane-scaled Section-5 checks through the derived Section-2 outlet maps and reconciled the gamma target with `P0 -> N0/D0`.
+- deviation: none

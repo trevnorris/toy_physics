@@ -3742,7 +3742,7 @@ stages:
     stage: 108
     stage_str: '108'
     batch_id: IV.2
-    status: auditing
+    status: verified
     iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
@@ -3767,7 +3767,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt
         exists: true
         mtime: 1779917061
-    last_status_change: 2026-05-28 19:23:02-06:00
+    last_status_change: 2026-05-29 00:31:22-06:00
+    codex_session: 019e7260-5bfa-70f3-9115-5972e019dd85
+    codex_log_paths:
+    - redteam/codex_logs/108_iter1.txt
+    last_codex_run: 2026-05-29 00:18:10-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 00:21:00-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 00:21:16-06:00
   '109':
     stage: 109
     stage_str: '109'
@@ -5696,7 +5705,7 @@ stages:
     stage: 170
     stage_str: '170'
     batch_id: V.1
-    status: auditing
+    status: verified
     iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
@@ -5721,11 +5730,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage170_linear_grouped_outlet_map_mathematica_audit.txt
         exists: true
         mtime: 1780006409
-    last_status_change: 2026-05-28 19:23:09-06:00
-    last_sympy_run: 2026-05-28 16:00:00-06:00
+    last_status_change: 2026-05-29 00:13:29-06:00
+    last_sympy_run: 2026-05-29 00:03:20-06:00
     last_sympy_exit: 0
-    last_mathematica_run: 2026-05-28 16:25:00-06:00
+    last_mathematica_run: 2026-05-29 00:03:28-06:00
     last_mathematica_exit: 0
+    codex_session: 019e724f-b909-7781-8ff1-61340ff9ef3d
+    codex_log_paths:
+    - redteam/codex_logs/170_iter1.txt
+    last_codex_run: 2026-05-28 23:59:48-06:00
+    last_codex_exit: 0
   '171':
     stage: 171
     stage_str: '171'

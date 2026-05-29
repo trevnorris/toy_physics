@@ -59,3 +59,4 @@ Carry-forward formulas:
   so the full linear grouped-anisotropy outlet problem collapses to the pair
       K_A := delta D_(A,2) + delta D_(A,0)/9
       G_A := delta N_(A,0) - P0 delta D_(A,0)
+# exit_code: 0

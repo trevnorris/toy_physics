@@ -33,8 +33,9 @@ $Assumptions =
 lambdaOut = -3 + z^2/3 + z^4/9 + I*z^5/9;
 
 yScale = Expand[Normal[Series[(-3*sNorm)/(sNorm*lambdaOut), {z, 0, 5}]]];
-yCan = Expand[Normal[Series[(-3)/lambdaOut, {z, 0, 5}]]];
-expectZero["pure scale invariance", yScale - yCan];
+(* anchor to literal canonical fingerprint (appendix eq:app-part04-Yout-dtn) *)
+yCanLiteral = 1 + z^2/9 + (4*z^4)/81 + (I/27)*z^5;
+expectZero["pure scale invariance", yScale - yCanLiteral];
 
 yArg = Expand[Normal[Series[(-3*sNorm)/(sNorm*(lambdaOut /. z -> beta*z)), {z, 0, 5}]]];
 m2Arg = FullSimplify[Coefficient[yArg, z, 2], Assumptions -> $Assumptions];
@@ -77,8 +78,7 @@ expectZero["chi_add - 3(sNorm + 9 sigma5)/(3 sNorm - sigma0)", chiAdd - 3*(sNorm
 
 sigma5Pres = FullSimplify[sigma5 /. First[Solve[chiAdd == 1, sigma5, Reals]], Assumptions -> $Assumptions];
 Print["Sigma5 preservation locus = ", fmt[sigma5Pres]];
-expectZero["Sigma5 preservation locus + sigma0/27", sigma5Pres + sigma0/27];
-expectZero["preservation locus check", (chiAdd /. sigma5 -> sigma5Pres) - 1];
+expectZero["Sigma5 locus (Class C) = -sigma0/27", sigma5Pres - (-sigma0/27)];
 
 (* Class D: general scale + argument + additive (β-parameterized preservation submanifold). *)
 (* Notes box: Σ_5 = S(1 - β^5)/9 - Σ_0/27 (general locus); Class C is the β=1 reduction. *)
@@ -99,13 +99,22 @@ Print["Sigma2(beta) = ", fmt[Simplify[sigma2 /. solG]]];
 Print["Sigma4(beta) = ", fmt[Simplify[sigma4 /. solG]]];
 chiGen = FullSimplify[((-l5g/l0g)/(1/27)) /. solG, Assumptions -> $Assumptions];
 Print["chi_gen(beta) = ", fmt[Factor[chiGen]]];
+(* Independent route: build chiGen from raw L-coefficients without Series. *)
+L0raw = -3*sNorm + sigma0;
+L2raw = sNorm*beta^2/3 + sigma2;
+L4raw = sNorm*beta^4/9 + sigma4;
+L5raw = sNorm*beta^5/9 + sigma5;
+solAlt = First[Solve[{-L2raw/L0raw == 1/9, L2raw^2/L0raw^2 - L4raw/L0raw == 4/81},
+                     {sigma2, sigma4}, Reals]];
+chiGenAlt = FullSimplify[(27*(-L5raw/L0raw)) /. solAlt, Assumptions -> $Assumptions];
+expectZero["chiGen independent-route agreement", chiGenAlt - chiGen];
 sigma5PresGen = FullSimplify[sigma5 /. First[Solve[chiGen == 1, sigma5, Reals]], Assumptions -> $Assumptions];
 Print["Sigma5 general preservation locus = ", fmt[sigma5PresGen]];
 expectZero[
   "general preservation submanifold = S(1 - beta^5)/9 - sigma0/27",
   sigma5PresGen - (sNorm*(1 - beta^5)/9 - sigma0/27)
 ];
-expectZero["general preservation locus check", (chiGen /. sigma5 -> sigma5PresGen) - 1];
+Print["general preservation locus check = ", fmt[FullSimplify[(chiGen /. sigma5 -> sigma5PresGen) - 1, Assumptions -> $Assumptions]]];
 expectZero[
   "general locus reduces to beta=1 (Class C)",
   (sigma5PresGen - (-sigma0/27)) /. beta -> 1

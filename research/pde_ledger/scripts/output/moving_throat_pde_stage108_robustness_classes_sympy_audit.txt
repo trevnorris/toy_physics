@@ -14,7 +14,7 @@ Sigma4(beta=1) = -Sigma0/27
 chi_add = 3*(S + 9*Sigma5)/(3*S - Sigma0)
 chi_add - 3(S+9Sigma5)/(3S-Sigma0) = 0
 Sigma5 preservation locus = -Sigma0/27
-preservation locus check = 0
+Sigma5 locus (Class C) = -Sigma0/27 = 0
 Sigma2(beta) = -S*beta**2/3 + S/3 - Sigma0/9
 Sigma4(beta) = -S*beta**4/9 + S/9 - Sigma0/27
 chi_gen(beta) = 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
@@ -22,3 +22,4 @@ Sigma5 general preservation locus = -S*beta**5/9 + S/9 - Sigma0/27
 general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27 = 0
 general preservation locus check = 0
 general locus reduces to beta=1 (Class C) = 0
+# exit_code: 0

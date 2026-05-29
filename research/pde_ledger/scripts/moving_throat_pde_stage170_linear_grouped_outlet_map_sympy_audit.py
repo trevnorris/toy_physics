@@ -141,12 +141,6 @@ expect_zero(
 D0_1, D2_1, N0_1 = sp.symbols('D0_1 D2_1 N0_1', real=True)
 eps_l = sp.symbols('eps_l', real=True)
 
-def kappa_map(dD2_, dD0_):
-    return 3*(1 - sigma)*(dD2_ + dD0_/9)/(sigma*D0)
-
-def gamma_map(dN0_, dD0_):
-    return -(1 - sigma)*(dN0_ - P0*dD0_)/(9*sigma*N0)
-
 kappa1 = 3*(1 - sigma)*(D2_1 + D0_1/9)/(sigma*D0)
 gamma1 = -(1 - sigma)*(N0_1 - P0*D0_1)/(9*sigma*N0)
 
@@ -155,10 +149,13 @@ lanes = {20: sp.Integer(1), 21: sp.Rational(1, 2), 22: sp.Integer(-1)}
 dkW = {}
 dgW = {}
 for A, lam in lanes.items():
-    dkW[A] = kappa_map(eps_l*lam*D2_1, eps_l*lam*D0_1)
-    dgW[A] = gamma_map(eps_l*lam*N0_1, eps_l*lam*D0_1)
+    dkW[A] = dkappa_from_du2.subs({dD2: eps_l*lam*D2_1, dD0: eps_l*lam*D0_1})
+    dgW[A] = sp.simplify(
+        dgamma_from_dP0.subs({dN0: eps_l*lam*N0_1, dD0: eps_l*lam*D0_1}).subs(P0, N0/D0)
+    )
     expect_zero(f"delta kappa_W^({A}) - eps lambda kappa1", dkW[A] - eps_l*lam*kappa1)
-    expect_zero(f"delta gamma_W^({A}) - eps lambda gamma1", dgW[A] - eps_l*lam*gamma1)
+    expect_zero(f"delta gamma_W^({A}) - eps lambda gamma1",
+                sp.simplify(dgW[A] - eps_l*lam*gamma1.subs(P0, N0/D0)))
 # grouped signature ratios (lambda_20, lambda_21, lambda_22) = (1, 1/2, -1)
 expect_zero("kappa signature: 21 = (1/2) 20", dkW[21] - sp.Rational(1, 2)*dkW[20])
 expect_zero("kappa signature: 22 = -20", dkW[22] + dkW[20])

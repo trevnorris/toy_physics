@@ -135,24 +135,22 @@ expectZero[
 (* linear outlet maps verified in Sec. 2; output must inherit the signature  *)
 (* and collapse to kappa1, gamma1 with the closed forms boxed in notes Sec.5. *)
 $Assumptions = $Assumptions && Element[{D01, D21, N01, epsL}, Reals];
-kappaMap[dD2x_, dD0x_] := 3*(1 - sigma)*(dD2x + dD0x/9)/(sigma*D0);
-gammaMap[dN0x_, dD0x_] := -(1 - sigma)*(dN0x - P0*dD0x)/(9*sigma*N0);
 kappa1 = 3*(1 - sigma)*(D21 + D01/9)/(sigma*D0);
 gamma1 = -(1 - sigma)*(N01 - P0*D01)/(9*sigma*N0);
-dkW20 = kappaMap[epsL*1*D21, epsL*1*D01];
-dkW21 = kappaMap[epsL*(1/2)*D21, epsL*(1/2)*D01];
-dkW22 = kappaMap[epsL*(-1)*D21, epsL*(-1)*D01];
-dgW20 = gammaMap[epsL*1*N01, epsL*1*D01];
-dgW21 = gammaMap[epsL*(1/2)*N01, epsL*(1/2)*D01];
-dgW22 = gammaMap[epsL*(-1)*N01, epsL*(-1)*D01];
+dkW20 = dkappaFromdu2 /. {dD2 -> epsL*1*D21, dD0 -> epsL*1*D01};
+dkW21 = dkappaFromdu2 /. {dD2 -> epsL*(1/2)*D21, dD0 -> epsL*(1/2)*D01};
+dkW22 = dkappaFromdu2 /. {dD2 -> epsL*(-1)*D21, dD0 -> epsL*(-1)*D01};
+dgW20 = FullSimplify[(dgammaFromdP0 /. {dN0 -> epsL*1*N01, dD0 -> epsL*1*D01}) /. P0 -> N0/D0, Assumptions -> $Assumptions];
+dgW21 = FullSimplify[(dgammaFromdP0 /. {dN0 -> epsL*(1/2)*N01, dD0 -> epsL*(1/2)*D01}) /. P0 -> N0/D0, Assumptions -> $Assumptions];
+dgW22 = FullSimplify[(dgammaFromdP0 /. {dN0 -> epsL*(-1)*N01, dD0 -> epsL*(-1)*D01}) /. P0 -> N0/D0, Assumptions -> $Assumptions];
 
 banner["Weak-axisymmetric signature (1, 1/2, -1) and scalar amplitudes"];
 expectZero["delta kappa_W^(20) - eps kappa1", dkW20 - epsL*kappa1];
 expectZero["delta kappa_W^(21) - (eps/2) kappa1", dkW21 - epsL*(1/2)*kappa1];
 expectZero["delta kappa_W^(22) + eps kappa1", dkW22 + epsL*kappa1];
-expectZero["delta gamma_W^(20) - eps gamma1", dgW20 - epsL*gamma1];
-expectZero["delta gamma_W^(21) - (eps/2) gamma1", dgW21 - epsL*(1/2)*gamma1];
-expectZero["delta gamma_W^(22) + eps gamma1", dgW22 + epsL*gamma1];
+expectZero["delta gamma_W^(20) - eps gamma1", dgW20 - epsL*(gamma1 /. P0 -> N0/D0)];
+expectZero["delta gamma_W^(21) - (eps/2) gamma1", dgW21 - epsL*(1/2)*(gamma1 /. P0 -> N0/D0)];
+expectZero["delta gamma_W^(22) + eps gamma1", dgW22 + epsL*(gamma1 /. P0 -> N0/D0)];
 expectZero["kappa signature: 21 = (1/2) 20", dkW21 - (1/2)*dkW20];
 expectZero["kappa signature: 22 = -20", dkW22 + dkW20];
 expectZero["gamma signature: 21 = (1/2) 20", dgW21 - (1/2)*dgW20];

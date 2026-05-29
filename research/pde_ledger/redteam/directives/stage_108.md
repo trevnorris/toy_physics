@@ -4,9 +4,13 @@ batch: IV.2
 created_at: 2026-05-28T00:00:00-06:00
 findings_count: 4
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-29T00:17:21-06:00
+findings_applied: 3
+findings_blocked: 0
 verification_status: pending
-needs_user_resolution: true
+needs_user_resolution: false
+f1_resolution: direction_a_paper_card_cleanup
 ---
 
 # Codex directive — unit 108
@@ -45,7 +49,16 @@ Possible directions (the user picks one):
 - (b) They belong to stage 108 → extend BOTH scripts with Robin (`chi_Q^R = 3/(3-rho_R)`), standalone mixed-pole no-go (`kappa_W=-1/9` then `sigma_W=0`), and compensated-Robin–mixed (`chi_Q^hyb`, even solutions `(rho_R,kappa_W)=(sigma_W,0)` and `(4 sigma_W,1/3)`, `gamma_W=1/9`) checks; a follow-up directive will then specify the claim manifest.
 - (c) Shared block checklist deliberately repeated on every stage in 107–124 → leave both card and scripts as-is and record the convention; no edit.
 
-The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+## F1 Resolution — direction (a), no script change
+
+**Resolved 2026-05-29** (Claude orchestrator + evidence agent + Codex read-only consult `019e7279-d223-7263-95f9-b2a09371a96b`; user delegated this math-coverage call to Claude+Codex). **Direction (a):** the three checks are genuinely verified at sibling stages, in BOTH engines, with real failing assertions on derived (not hardcoded) quantities:
+- Robin `chi_Q^R = 3/(3-rho_R)` → **stage 110** (sympy:29, wl:52)
+- standalone mixed-pole no-go (`kappa_W=-1/9` then `sigma_W=0`) → **stage 111** (sympy:32-33, wl:71-72)
+- compensated Robin–mixed (`chi_Q^hyb`, pairs `(sigma_W,0)`/`(4 sigma_W,1/3)`, preservation iff `gamma_W=1/9`) → **stage 112** (sympy:38/48/49, wl:50-53/75/76 + independent route 64-66)
+
+None absent from 109–113 (113 is a status-only card with no script; 109 only sets up/cross-references). **Stage 108 scripts are correct as-is; NO script change.** F1 is a paper-card over-scoping → cross-reference the stage-108 card's Checks #2/#3 to stages 110/111/112 in the manual paper pass. Logged to `notes/PAPER_CLEANUP_TRACKER.md`. See `redteam/codex_reviews/_consult_108_f1.md`.
+
+Side-finding (stage 112, NOT 108): the "iff `gamma_W=1/9`" holds only for `sigma_W != 0` (at `sigma_W=0`, `chi_B=1` for any `gamma_W`). Precision caveat, not a missing check — fold the `sigma_W != 0` qualifier into stage 112's own FINDINGS fix loop.
 
 ## F2 — mathematica_transliteration
 
@@ -77,6 +90,13 @@ Place this block AFTER the line that defines `chiGen` (so `chiGen` is in scope) 
 
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-mathematica 108` and confirm the new `chiGen independent-route agreement` line appears, prints `0`, `PASS`, and the script exits 0.
+
+## Applied: F2
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl`
+- summary: Added an independent raw-coefficient route for `chiGen` and asserted agreement with the existing series route.
+- deviation: none
 
 ## F3 — tautological_check
 
@@ -124,6 +144,14 @@ expectZero["pure scale invariance", yScale - yCanLiteral];
 
 **Verification command:**
 `redteam exec-sympy 108` and `redteam exec-mathematica 108`; the `pure scale invariance` line still prints `0`/`PASS` and the scripts exit 0.
+
+## Applied: F3
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl`
+- summary: Replaced the Class A self-cancellation comparison with literal canonical fingerprint checks in both engines.
+- deviation: none
 
 ## F4 — tautological_check
 
@@ -191,3 +219,11 @@ Print["general preservation locus check = ", fmt[FullSimplify[(chiGen /. sigma5 
 
 **Verification command:**
 `redteam exec-sympy 108` and `redteam exec-mathematica 108`; confirm `Sigma5 locus (Class C) = -Sigma0/27` (or the equivalent `... + sigma0/27`) asserts and prints `0`/`PASS`, the demoted Class D line prints `0` (no longer an assertion), the submanifold anchor still `PASS`es, and the scripts exit 0.
+
+## Applied: F4
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage108_robustness_classes_mathematica_audit.wl`
+- summary: Replaced the Class C preservation round-trip with a locus-value assertion and demoted the redundant Class D round-trip to a print in both engines.
+- deviation: none

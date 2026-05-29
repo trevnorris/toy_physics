@@ -4085,6 +4085,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt
         exists: true
         mtime: 1779921613
+    last_status_change: 2026-05-29 13:29:49-06:00
+    codex_session: 019e752d-4652-7242-899f-0b1c03b0e781
+    codex_log_paths:
+    - redteam/codex_logs/117_iter1.txt
+    last_codex_run: 2026-05-29 13:24:10-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 13:24:43-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 13:25:31-06:00
   '118':
     stage: 118
     stage_str: '118'
@@ -4114,6 +4124,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage118_parent_core_mathematica_audit.txt
         exists: true
         mtime: 1779921619
+    last_status_change: 2026-05-29 12:51:16-06:00
+    codex_session: 019e750d-54b9-77d3-b397-cd5860922c3b
+    codex_log_paths:
+    - redteam/codex_logs/118_iter1.txt
+    last_codex_run: 2026-05-29 12:45:52-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 12:47:19-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 12:47:34-06:00
   '119':
     stage: 119
     stage_str: '119'
@@ -4143,6 +4163,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage119_parent_balance_mathematica_audit.txt
         exists: true
         mtime: 1779921624
+    last_status_change: 2026-05-29 12:40:22-06:00
+    codex_session: 019e7501-add3-7863-a8d5-efa93b90c348
+    codex_log_paths:
+    - redteam/codex_logs/119_iter1.txt
+    last_codex_run: 2026-05-29 12:32:45-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 12:34:42-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-05-29 12:35:54-06:00
   '120':
     stage: 120
     stage_str: '120'
@@ -4222,6 +4252,14 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-05-29 13:18:43-06:00
+    codex_session: 019e7516-9048-7de3-a237-42f09eac567b
+    codex_log_paths:
+    - redteam/codex_logs/122_iter1.txt
+    last_codex_run: 2026-05-29 12:55:44-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-05-29 13:14:37-06:00
   '123':
     stage: 123
     stage_str: '123'

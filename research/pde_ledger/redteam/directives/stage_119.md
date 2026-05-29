@@ -4,7 +4,10 @@ batch: IV.3
 created_at: 2026-05-27T00:00:00Z
 findings_count: 2
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-29T12:32:00-06:00
+findings_applied: 2
+findings_blocked: 0
 verification_status: pending
 needs_user_resolution: false
 ---
@@ -89,6 +92,14 @@ expectZero[
 **Verification command:**
 After Codex applies, the verifier will run `redteam exec-sympy 119` and `redteam exec-mathematica 119` and confirm a new check line `tube-length law (rc -> rhat**2 link) = 0` appears in the SymPy output and `tube-length law (rC -> rHat^2 link)` appears as `PASS` in the Mathematica output, and both scripts exit 0.
 
+## Applied: F1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl`
+- summary: Added the rc/rHat tube-length consistency checks and extended the Mathematica Section III assumptions to include rHat.
+- deviation: none
+
 ## F2 — insufficient_verification
 
 **Target:**
@@ -153,3 +164,11 @@ After Codex applies, the verifier will run `redteam exec-sympy 119` and `redteam
 - SymPy: two new lines `T_m (+ branch) match = 0` and `T_m (- branch) match = 0`.
 - Mathematica: two new `PASS: T_m (+ branch) match` and `PASS: T_m (- branch) match` lines.
 Both scripts must exit 0.
+
+## Applied: F2
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage119_parent_balance_mathematica_audit.wl`
+- summary: Added explicit T_m plus/minus branch match assertions, with ConditionalExpression stripping for the Mathematica branch solutions.
+- deviation: none

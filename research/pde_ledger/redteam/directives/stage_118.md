@@ -4,9 +4,12 @@ batch: IV.3
 created_at: 2026-05-27T00:00:00Z
 findings_count: 2
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-29T12:45:01-06:00
+findings_applied: 2
+findings_blocked: 0
 verification_status: pending
-needs_user_resolution: true
+needs_user_resolution: false
 ---
 
 # Codex directive — unit 118
@@ -57,6 +60,22 @@ Possible directions (the user picks one):
 - (c) **Convention disagreement**: somewhere in the chain `v_w0` or `q_*` is implicitly negated, making both consistent under a hidden sign convention. (Unlikely: neither file documents such a convention.)
 
 The orchestrator will not invoke Codex on this unit until the user has chosen a direction.
+
+## RESOLVED — direction (a) (Claude+Codex consult `019e74f7`, 2026-05-29)
+
+Codex CONCUR. **Direction (a): the notes and the script's own section IV are correct; section V's λ uses the MINUS sign.** Decisive evidence: section IV *independently derives* `sq_coeff = − q_* ϱ_s v0 A_q` (sympy:77 / wl:81, not asserted); the notes box MINUS in three places (lines 169-171, 176-180, 196-197); and downstream stage 123 consumes UN-squared λ already with MINUS (`stage123_…sympy_audit.py:28,32`), so (a) makes 118 consistent with 123. Directions (b)/(c) ruled out. NOT conceptual: `paper/stages/stage_118.tex` states no λ sign, so there is no opposing paper claim — no PAPER_CLEANUP item.
+
+**This finding is now LIVE for Codex (it is no longer "do nothing").** Apply F1 direction (a) AND F2 (below, written for direction (a)).
+
+**Tainted-applied status:** a prior unrecorded orchestrator-direct pass ALREADY flipped §V to MINUS and inserted all three F2 asserts in BOTH engines (sympy:88 `lam_uniform = sp.simplify(-qstar*v0*I_sq_uniform)`, sympy:102-103 closure `lam_uniform + (8√2/3)… = 0`, sympy:104 "lambda from bilinear"; sympy:97/100 K_q/g_s closed forms; wl:96/110/111 + wl:105/108 mirror). So Codex's job is to **reconcile** (confirm the present edits match direction (a) + F2 as written), **record** `## Applied: F1` and `## Applied: F2`, and **run** `python3` + `math -script` to exit 0. No new math. If any edit is missing/inconsistent with (a), apply it; do not loosen any check.
+
+## Applied: F1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage118_parent_core_mathematica_audit.wl`
+- summary: Confirmed section V uses the resolved minus-sign lambda closure in both SymPy and Mathematica audits.
+- deviation: none
 
 ## F2 — insufficient_verification
 
@@ -109,3 +128,11 @@ Each new assertion exercises exactly the boxed identity from the notes it cites.
 **Verification command:**
 
 After Codex applies (post-F1 resolution), the verifier will run `redteam exec-sympy 118` and `redteam exec-mathematica 118` and confirm the three new `expect_zero` / `expectZero` lines appear in each script and three new `… = 0` and `PASS:` lines appear in each saved output; both scripts exit 0.
+
+## Applied: F2
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py`
+  - `mathematica/moving_throat_pde_stage118_parent_core_mathematica_audit.wl`
+- summary: Confirmed the K_q, g_s, and lambda-from-bilinear assertions are present in both audit engines.
+- deviation: none

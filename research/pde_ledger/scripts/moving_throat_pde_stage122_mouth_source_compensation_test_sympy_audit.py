@@ -40,8 +40,17 @@ print("numeric defect =", sp.N(comp_def, 20))
 print("delta g_minus =", sp.N(g_nat - gminus, 20))
 print("delta g_plus  =", sp.N(gplus - g_nat, 20))
 
-T_ratio_minus = sp.simplify(1/gminus)
-T_ratio_plus  = sp.simplify(1/gplus)
+# Independent traction ratio from stage 119 boxed law  g = C / T_m,
+# with C = sqrt(2 Z_q K_s)/(J_s c_s sqrt(mu_0 L_W)) the SAME background-fixed
+# constant on every branch. Then T_m^(±)/T_m^nat = (C/g_±)/(C/g_nat) = g_nat/g_±.
+# C is carried symbolically so its cancellation is verified, not assumed; g_nat
+# is the equal-normalized natural-branch ansatz value (line 34), not 1/g_±.
+C = sp.symbols("C", positive=True)
+Tm_nat   = C / g_nat
+Tm_minus = C / gminus
+Tm_plus  = C / gplus
+T_ratio_minus = sp.simplify(Tm_minus / Tm_nat)
+T_ratio_plus  = sp.simplify(Tm_plus  / Tm_nat)
 print("T_m(-)/T_m(nat) =", T_ratio_minus)
 print("T_m(+)/T_m(nat) =", T_ratio_plus)
 print("numeric T ratio (-) =", sp.N(T_ratio_minus, 20))
@@ -61,5 +70,5 @@ expect_zero("defect closed form", comp_def - defect_exact)
 
 expect_nonzero("natural off compensation", comp_def)
 
-expect_zero("traction ratio (-) identity", gminus * T_ratio_minus - 1)
-expect_zero("traction ratio (+) identity", gplus  * T_ratio_plus  - 1)
+expect_zero("traction ratio (-) identity", T_ratio_minus - 1/gminus)
+expect_zero("traction ratio (+) identity", T_ratio_plus  - 1/gplus)

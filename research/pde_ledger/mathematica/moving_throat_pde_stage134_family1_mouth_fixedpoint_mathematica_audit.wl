@@ -63,18 +63,24 @@ expectClose["S_q at p=2",   N[sQ /. p -> 2, 30],
 
 Print["Fixed-point law p = ", fmt[fixedPointLaw]];
 
-piStar = SetPrecision[1.50882951349316, 30];
+piStar = SetPrecision[1.50882951349316, 30];   (* imported literal; owned by stage 131 note *)
 sStar = N[sQ /. p -> piStar, 30];
 gainLine = N[piStar - sStar*Mq, 30];
 
 Print["S_q(Pi_star) = ", sStar];
-Print["Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q"];
+Print["Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q (printed only; not asserted)"];
 Print[gainLine];
+
+(* No in-stage gain-line assertion: intercept is the imported literal PiStar
+   (stage 131) and the slope is -S_q(PiStar); re-asserting them here would be an
+   X-X tautology. Outlet consistency of (Ms, Mq) is verified at Stage 135;
+   susceptibility closure at Stage 137. *)
 
 Print[""];
 Print["RESULT:"];
 Print["  Family-1 reduces the coupled mouth law to p = Ms + Mq S_q(p)."];
 Print["  The static shell lane gives S_shell = 1 exactly."];
-Print["  Evaluated at Pi_star, the canonical compensation line matches the Stage 134 note."];
+Print["  S_q at p=1/2,1,2 and at Pi_star match independent literal targets (see checks above)."];
+Print["  Outlet consistency of the gain pair (Ms, Mq) is verified downstream at Stage 135."];
 
 Exit[0];

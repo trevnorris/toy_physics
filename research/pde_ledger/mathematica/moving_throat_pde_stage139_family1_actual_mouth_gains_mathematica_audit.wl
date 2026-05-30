@@ -30,23 +30,19 @@ rF = N[Sqrt[(12/Pi^2)*(37/20)^2 - 1], 30];
 (* piStar and sQStar (= S_q evaluated at piStar) imported from Stage 134. *)
 piStar = SetPrecision[1.50882951349316, 30];
 sQStar = SetPrecision[0.658075937605429, 30];
+(* Self-matched susceptibility closure (Sigma_0 = mS) is established at Stage 140, not here;
+   Stage 139 only evaluates the gain pair on the Family-1 branch. See P4-42. *)
 
 rQNat = N[(1 - rF)^2/(1 + rF^2), 30];
 mSNat = N[piStar/(1 - rQNat*sQStar), 30];
 mQNat = N[-rQNat*mSNat, 30];
 
-(* Derive g_c on the compensated branch by solving the defining condition
-   (g_c - r_F1)^2 / (1 + r_F1^2) == 1/4, branch g_c < r_F1 (lower
-   compensated branch, see notes/stages/moving_throat_pde_stage139*.md
-   section "Exact compensated branch"). *)
-gMinusSolutions = gc /. Solve[(gc - rF)^2 == (1 + rF^2)/4 && gc < rF, gc, Reals];
-If[Length[gMinusSolutions] =!= 1,
-  Print["FAIL: g_minus branch selection ambiguous, solutions = ", gMinusSolutions];
-  Exit[1];
-];
-gMinus = N[First[gMinusSolutions], 30];
-(* Cross-check the derived value against the closed form quoted in the notes. *)
-expectApprox["g_minus closed form", gMinus, rF - Sqrt[1 + rF^2]/2, 10^-25];
+(* g_- is the LOWER compensated branch g_c = rF - (1/2) Sqrt[1 + rF^2] (notes stage139 lines
+   91-100). R_q^comp = 1/4 is DEFINITIONAL on this branch (true for any rF) AND branch-blind.
+   Compute g_- DIRECTLY as the closed form (a sanctioned mirror of the SymPy route; rF is
+   independently anchored at line 71 and the branch is discriminated by the g_-^F1 value check
+   below) — NOT by solving (gc - rF)^2 == (1 + rF^2)/4, which would re-bake 1/4. *)
+gMinus = N[rF - Sqrt[1 + rF^2]/2, 30];
 rQComp = N[(gMinus - rF)^2/(1 + rF^2), 30];
 mSComp = N[piStar/(1 - rQComp*sQStar), 30];
 mQComp = N[-rQComp*mSComp, 30];
@@ -70,13 +66,27 @@ tolAlg = 10^-25;
 
 expectApprox["r_F1", rF, 1.77799353547498, tolLit];
 expectApprox["R_q^nat", rQNat, 0.145454452260421, tolLit];
+(* (R2 anchor) g_-^F1 VALUE vs the canonical cross-stage literal (owned at 127/142/144/164/169);
+   DISCRIMINATES the lower branch (g_- ~ 0.758) from the upper (g_+ ~ 2.79), which R_q = 1/4
+   cannot. Falsifiable: a sign/branch/rF typo gives ~2.79 and FAILS. *)
+expectApprox["g_-^F1 value", gMinus, 0.758035078944662826919680890414, tolLit];
 expectApprox["M_s^nat,*", mSNat, 1.66854252965624, tolLit];
 expectApprox["M_q^nat,*", mQNat, -0.242696939724365, tolLit];
 expectApprox["M_s^comp,*", mSComp, 1.80594111095636, tolLit];
 expectApprox["M_q^comp,*", mQComp, -0.451485277739090, tolLit];
-expectApprox["outlet consistency nat", piStar, mSNat + mQNat*sQStar, tolAlg];
-expectApprox["outlet consistency comp", piStar, mSComp + mQComp*sQStar, tolAlg];
-expectApprox["R_q^comp - 1/4", rQComp, 1/4, tolAlg];
+(* R1 (was tautological outlet residual): independently reconstruct S_q at piStar
+   from the Stage 134 closed-form kernel S(p, kappa) at kappa = Pi/2, and confirm it
+   matches the imported Stage 134 literal sQStar via a route that does NOT reuse
+   mS = piStar/(1 - rQ sQStar). ASCII-safe names only in comments/strings. *)
+kappaQ = Pi/2;
+sQRecon = N[piStar*(kappaQ*Tanh[kappaQ]
+            + piStar*(Exp[-piStar]/Cosh[kappaQ] - 1))
+            / ((1 - Exp[-piStar])*(kappaQ^2 - piStar^2)), 30];
+expectApprox["S_q recon from Stage 134 kernel", sQRecon, sQStar, tolLit];
+(* Structural sanity only (true by construction, NOT a literal check): *)
+Print["outlet form residual nat structural = ", fmt[N[piStar - (mSNat + mQNat*sQStar), 5]]];
+Print["outlet form residual comp structural = ", fmt[N[piStar - (mSComp + mQComp*sQStar), 5]]];
+expectApprox["R_q^comp - 1/4 (definitional-consistency)", rQComp, 1/4, tolAlg];
 
 Print[""];
 Print["Stage 139 Mathematica audit passed."];

@@ -2,6 +2,12 @@
 ========================================================================================
 STAGE 137 — EXPLICIT CORE-TO-MOUTH GAIN MAP
 ========================================================================================
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
+rho_c equals M_core Schur residue (D -> Infinity) = 0
+PASS: rho_c equals M_core Schur residue (D -> Infinity)
+sigma_c equals M_core Schur residue (static D = 1) = 0
+PASS: sigma_c equals M_core Schur residue (static D = 1)
 rho_c = gS^2/kS
 sigma_c = (gQ*kS - gS*lam)^2/(kS*(kQ*kS + lam^2))
 M_s = (gS^2*lM)/(kS*thetaSigma)
@@ -10,10 +16,13 @@ M_s matches paper card = 0
 PASS: M_s matches paper card
 M_q matches paper card = 0
 PASS: M_q matches paper card
-Schur static limit equals rho_c - sigma_c = 0
-PASS: Schur static limit equals rho_c - sigma_c
-Outlet consistency Pi = M_s at S_q = 0 = 0
-PASS: Outlet consistency Pi = M_s at S_q = 0
+reduced core susceptibility equals matrix-Schur source = 0
+PASS: reduced core susceptibility equals matrix-Schur source
+static core residue equals rho_c_schur - sigma_c_schur = 0
+PASS: static core residue equals rho_c_schur - sigma_c_schur
+outlet mixed channel equals matrix-Schur M_q (sq nonzero) = 0
+PASS: outlet mixed channel equals matrix-Schur M_q (sq nonzero)
+PASS: outlet consistency non-vacuous (sign of M_q is exercised)
 sigma_c (r_c form) = (gQ*kS - gS*lam)^2/(kS*(kQ*kS + lam^2))
 sigma_c equivalence with r_c form = 0
 PASS: sigma_c equivalence with r_c form

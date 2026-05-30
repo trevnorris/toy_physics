@@ -6,8 +6,13 @@ STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW
 ----------------------------------------------------------------------------------------
 Independent numerical cross-checks (Mathematica)
 ----------------------------------------------------------------------------------------
-g_Pi closed-form vs series residuals at piM={0.1,0.2,0.3}: {3.509692718824485584098090587017468217767399342544`20.434482411251707*^-10, 1.11783244951666264929177909070271292866567577309572`21.931828539427684*^-8, 8.44437072253328227019491186765881403925133090646589`22.804374864859437*^-8}
-PASS: g_Pi closed-form/series consistency at small piM
+
+----------------------------------------------------------------------------------------
+Independent re-derivation of g_Pi from the mouth-source law (Stage 130 §1)
+----------------------------------------------------------------------------------------
+g_Pi (source integral) = (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2))
+g_Pi closed form = integral of mouth-source law (Stage 130 §1) = 0
+PASS: g_Pi closed form = integral of mouth-source law (Stage 130 §1)
 r_F1 satisfies 100 pi^2 (1+r^2) = 4107 = 0
 PASS: r_F1 satisfies 100 pi^2 (1+r^2) = 4107
 
@@ -35,8 +40,10 @@ Sigma0(Pi_*) = 1.8059411109563538723736729091995054268193435351723899810506`30.
 That(Pi_*)   = 0.9014840541742040389645127111412155822626259873684112194619`30.
 Pi_* compensation solve residual = 0``29.819280700762548
 PASS: Pi_* compensation solve
-R_q(Pi_*) numeric = 1/4 residual = 0``30.602059991327963
-PASS: R_q(Pi_*) numeric = 1/4
+R_q(Pi_*) numeric = 1/4 (solver-consistency) residual = 0``30.602059991327963
+PASS: R_q(Pi_*) numeric = 1/4 (solver-consistency)
+R_q(Pi_ext) = 1/4 (independent anchor) residual = 0``29.656403401311227
+PASS: R_q(Pi_ext) = 1/4 (independent anchor)
 g_-^{F1} value residual = 1.31256111399500512835053815639`0.9374002344427416*^-29
 PASS: g_-^{F1} value
 Pi_* value residual = 5.5535115638281519724266718079100010633779`13.565927510013285*^-17

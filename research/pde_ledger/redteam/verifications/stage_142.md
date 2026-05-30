@@ -1,106 +1,172 @@
 ---
 unit_id: 142
 batch: IV.5
-verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T18:10:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 5
-findings_total: 5
+findings_resolved: 2
+findings_total: 2
 material_change: false
 ---
 
-# Verification — unit 142
+# Verification — unit 142 (REMEDIATION)
+
+This supersedes the stale 2026-05-27 verdict that PRE-DATED the authoritative
+recovery review. The authoritative findings are in
+`redteam/codex_reviews/stage_142.md` (verdict FINDINGS: R1 tautological,
+R2 transliteration). The directive `redteam/directives/stage_142.md` was rewritten
+against that review; only TWO findings were open (R1, R2). F2-kept (five
+external-decimal anchors) and F5 (banners) are pre-resolved per the directive's
+`## RESOLVED:` blocks. The crux: confirm the still-tautological R_q check was
+relabeled and a genuinely independent anchor added (R1), and the self-series
+transliteration was removed and replaced by an independent integral (R2).
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 (R1) — tautological_check
 
 **Classification:** resolved
 
 **What changed:**
-`scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py:75-78` computes `Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))` after the existing nsolve convergence check, prints it, and raises `AssertionError` if it exceeds `1e-15`. The original directive asked `1e-20`; the orchestrator loosened the tolerance to `1e-15` because the actual residual at `sp.nsolve(..., 1.5)`'s 30-digit precision is `1.94504299230340679e-18`, which is below `1e-15` but above `1e-20`. The existing symbolic `expect_zero("R_q(g_minus)-1/4", ...)` at line 54 is retained. Mathematica mirror at line 109: `expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20]` — passes because `FindRoot` is configured at `WorkingPrecision -> 80`, delivering a residual of `0` to 30 digits.
+- SymPy `scripts/...stage142...sympy_audit.py:75-95`: the original
+  `R_q(Pi_*)=1/4` check is KEPT but explicitly relabeled "solver-consistency"
+  (lines 75-83), tol `1e-15`. A NEW non-tautological anchor (lines 85-95)
+  evaluates `R_q` at `Pi_ext = sp.Float("1.50882951349315558300555075595", 30)`
+  annotated `# Stage 131 Pi_* (independent)`, asserting `|R_q(Pi_ext) - 1/4| <= 1e-12`.
+- Mathematica `mathematica/...stage142...mathematica_audit.wl:112-119`: the
+  solver-consistency `expectApprox` is relabeled (line 114) at tol `10^-15`; a new
+  anchor (lines 115-119) sets
+  `piExt = N[Rationalize[1.50882951349315558300555075595, 0], 30]` and asserts
+  `R_q(Pi_ext) = 1/4 (independent anchor)` at tol `10^-12`.
 
-**Assessment:**
-The check is non-tautological. The numeric `Rq_star` substitutes the nsolve'd `Pi_*` (which depends on `r_F1` via `gPi(Pi_*) = gminus(r_F1)`) into `Rq`. Perturbing `r_F1` shifts `Pi_*` by O(1), so the residual would become O(1) — far above `1e-15`. The loosened `1e-15` is mathematically justified by SymPy's 30-digit precision floor and remains 13 orders of magnitude below the magnitude of `1/4`. SymPy output line 27 shows residual `1.945e-18 < 1e-15`; Mathematica output line 38 shows `PASS: R_q(Pi_*) numeric = 1/4`.
+**Assessment:** Correct and genuinely non-tautological.
+- (a) The SymPy `Pi_ext` literal is `1.50882951349315558300555075595`. I
+  cross-checked it against Stage 131's own output
+  (`scripts/output/...stage131...sympy_audit.txt:2`: `Pi_* = 1.50882951349315558300555075595`)
+  — exact match; the comment cites Stage 131.
+- (b) The Mathematica `piExt` uses the identical Stage-131 literal.
+- (c) Both PASS: sympy log L33 `R_q(Pi_ext) - 1/4 (independent anchor) =
+  1.479...E-31`; mathematica log L50-51 `R_q(Pi_ext) = 1/4 (independent anchor)
+  residual = 0; PASS`.
+- The independence is real because `Pi_ext` is Stage 131's value, found by a
+  structurally different route (cleared-denominator FindRoot, batch-4-verified),
+  and is DISTINCT from 142's own nsolve output. Sympy log L26 shows 142's own
+  nsolve `Pi_*` = `1.50882951349315552747043511772`, diverging from 131's
+  `...558300555075595` at digit ~16 — exactly as the anti-tautology guard warned.
+  The anchor does NOT use 142's own line-81 literal `...5274704351177`, and does
+  NOT re-solve `gPi=g_-`. `R_q(Pi_ext)` lands on 1/4 only because the hardcoded
+  `gPi`/`r` genuinely cross `g_-` at this externally fixed bias; a `gPi` sign typo
+  shifts `R_q(Pi_ext)` by O(1), not O(1e-12).
+- Tolerance: solver-consistency uses `1e-15` (sympy L82) / `10^-15` (wl L114),
+  NOT the over-tight `1e-20`/`10^-20`. Sympy residual is `1.945e-18` (log L32),
+  inside `1e-15`. Not reverted.
+- No collateral edits; matches `## Applied: F1` ("deviation: none").
 
-### F2 — insufficient_verification
+### F2 (R2) — transliteration (self-series)
 
 **Classification:** resolved
 
 **What changed:**
-SymPy adds a local `expect_close` helper at lines 19-23 (matching the existing `expect_zero` style) and five anchored numeric assertions at lines 80-84 for `g_-^{F1}` (tol `1e-25`), `Pi_*`, `S_q(Pi_*)`, `Sigma_0(Pi_*)`, `That(Pi_*)` (each tol `1e-12`), comparing against the directive's quoted decimal strings. Mathematica mirrors with five `expectApprox` calls at lines 110-114.
+- Mathematica `mathematica/...stage142...mathematica_audit.wl:60-76`: the
+  `gPiSeries = Normal[Series[gPi,...]]` self-comparison (former wl:64-73) is GONE.
+  Replaced by an independent projection integral:
+  `sigmaPi = piM*Exp[-piM*zVar]/(1 - Exp[-piM])` (L69, Stage 129 §2 source law),
+  `gPiFromSource = FullSimplify[Integrate[sigmaPi*Cos[Pi*zVar/2], {zVar,0,1},
+  Assumptions -> piM > 0], ...]` (L70-73), then
+  `expectZero["g_Pi closed form = integral of mouth-source law (Stage 130 §1)",
+  gPiFromSource - gPi]` (L74-76).
+- SymPy script untouched for R2 (correct — it never had a `gPiSeries` check).
 
-**Assessment:**
-All five canonical-point anchors from the notes are now pinned to concrete decimal targets, not symbolic identities. Output transcripts show every PASS line — SymPy lines 28-32 show residuals `1.4e-29`, `2.1e-29`, `3.6e-29`, `3.2e-29`, `2.6e-29` (all under their tolerances); Mathematica lines 40-49 show residuals `1.3e-29`, `5.5e-17`, `2.7e-18`, `6.5e-17`, `1.6e-17` (all under their tolerances). Non-tautological — perturbing `r_F1` or any of the closed forms would break these residuals.
+**Assessment:** Correct and genuinely independent.
+- (a) The integrand is `sigmaPi * Cos[Pi*zVar/2]`. Here `Pi` is the geometric
+  constant (the bias variable is `piM`, used throughout), so the projection shape
+  is `cos(pi z / 2)` — the correct first D/N derivative shape, NOT the bias
+  variable. The integrand never references the hardcoded `gPi`, so a typo in
+  `gPi` is not shared with the integral. `grep` confirms zero `Series[` /
+  `gPiSeries` occurrences remain.
+- (b) PASS with symbolic-zero residual: mathematica log L18 the integral
+  evaluates to `(2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2))`,
+  exactly matching the hardcoded `gPi` (log L28); L19 reports the `expectZero`
+  residual `= 0`; L20 `PASS`. This is symbolic closure, not a small-`piM`
+  numeric coincidence.
+- Matches `## Applied: F2` ("deviation: none").
 
-### F3 — mathematica_transliteration
+### F2-kept (RESOLVED) — five external-decimal anchors
 
 **Classification:** resolved
 
-**What changed:**
-Mathematica gains a new `subbanner["Independent numerical cross-checks (Mathematica)"]` block at lines 58-79 with (a) `Series[gPi, {piM, 0, 4}]` evaluated against the closed form `gPi` at `piM ∈ {1/10, 2/10, 3/10}` (tolerance `1e-3`, since the Taylor truncation residual grows like `piM^5`), and (b) `expectZero["r_F1 satisfies 100 pi^2 (1+r^2) = 4107", FullSimplify[100*Pi^2*(1+r^2) - 4107]]`. The SymPy script is untouched.
+**What changed:** Intact and passing. SymPy L97-101: `g_-^{F1}` (tol 1e-25),
+`Pi_*`, `S_q(Pi_*)`, `Sigma_0(Pi_*)`, `That(Pi_*)` (tol 1e-12 each); log L34-38
+residuals ~1e-29. Mathematica L120-124 mirror; log L52-61 all PASS.
 
-**Assessment:**
-The `r_F1` algebraic identity is a genuine independent check — a typo in `r = Sqrt[4107 - 100*Pi^2]/(10*Pi)` would generically fail the squared-form identity `100*pi^2*(1+r^2) = 4107`. The series-vs-closed-form sanity check is informational (it cross-checks Mathematica's own `Series[]` against its own closed form), but the `r_F1` identity carries the independence weight, satisfying the directive's "at least one block" requirement. Exec log lines 9-12 confirm both PASS.
+**Assessment:** Untouched, un-re-toleranced, all passing — the genuine numeric
+anchors of the stage. Confirmed kept per directive.
 
-### F4 — hardcoded_result
-
-**Classification:** resolved
-
-**What changed:**
-Provenance comments inserted in both scripts: SymPy lines 30-33 (above `r = sp.sqrt(...)`) and lines 36-38 (above `Sq = ...`); Mathematica lines 44-47 and 50-52 in `(* ... *)` form. The `S_q` provenance cites "Stage 140" — orchestrator override of the directive's "Stage 242" to use the post-renumber stage label.
-
-**Assessment:**
-Provenance is now traceable from the script back to the upstream stage. Substantive content (telling a future reader the closed form for `S_q(Pi)` is `S(Pi, pi/2)` from the self-matched mouth-susceptibility closure with `Sigma_0 = (20/9) That_m^2`) matches the directive. No assertion or output changes. The "Stage 140" relabel is consistent with post-renumber numbering used elsewhere in the pipeline.
-
-### F5 — paper_misalignment
+### F5 (RESOLVED) — banner mismatch
 
 **Classification:** resolved
 
-**What changed:**
-Per orchestrator notes, Cluster A handled the mass-renumber. Confirmed in current script state:
-- sympy line 28: `banner("STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW")`
-- sympy line 86: `banner("STAGE 142 LEDGER")`
-- mathematica line 39: `banner["STAGE 142 — SELF-CONSISTENT MOUTH-BRANCH LAW"]`
-- mathematica line 116: `banner["STAGE 142 LEDGER"]`
+**What changed:** No edit required; already correct. `grep` for `STAGE 125` /
+`Stage 125` across both files returns zero hits. Banners read `STAGE 142`
+throughout (sympy L28/L103; wl L39/L126; wl L138 "Stage 142 Mathematica audit
+passed.").
 
-Output transcripts both show `STAGE 142` in their banners (sympy output lines 3 and 35; mathematica output lines 3 and 52). No `STAGE 125` remains anywhere in either file or transcript.
-
-**Assessment:**
-Banners are correct in all four locations; transcripts inherit the corrected labels. Fully resolved.
+**Assessment:** Correct.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- Line 15: `R_q(g_minus)-1/4 = 0` (symbolic check passes)
-- Line 27: `R_q(Pi_*) - 1/4 = 1.94504299230340679204603915994E-18` (under loosened `1e-15` tolerance, no AssertionError)
-- Lines 28-32: five `expect_close` residuals on the canonical-point values, all `~1e-29`, all under `1e-12`/`1e-25` tolerances
-- Script reaches the final `STAGE 142 LEDGER` block at line 35 and exits cleanly
+- L20: `R_q(g_minus)-1/4 = 0` (symbolic identity).
+- L32: `R_q(Pi_*) - 1/4 (solver-consistency) = 1.945...E-18` (within 1e-15).
+- L33: `R_q(Pi_ext) - 1/4 (independent anchor) = 1.479...E-31` (anchor passes).
+- L34-38: five external-decimal residuals ~1e-29, all passing.
 
-**Mathematica:** exit=0. Notable lines:
-- Line 10: `PASS: g_Pi closed-form/series consistency at small piM`
-- Line 12: `PASS: r_F1 satisfies 100 pi^2 (1+r^2) = 4107`
-- Line 24: `PASS: R_q(g_minus)-1/4`
-- Line 37: `PASS: Pi_* compensation solve`
-- Line 39: `PASS: R_q(Pi_*) numeric = 1/4`
-- Lines 41, 43, 45, 47, 49: five canonical-point value PASS lines
-- Line 64: `Stage 142 Mathematica audit passed.`
+**Mathematica:** exit=0, 11 PASS / 0 FAIL. Notable lines:
+- L18-20: integral `= (2*piM*(Pi + 2*E^piM*piM))/((-1 + E^piM)*(Pi^2 + 4*piM^2))`;
+  `g_Pi closed form = integral of mouth-source law (Stage 130 §1) = 0`; `PASS`.
+- L48-49: `R_q(Pi_*) numeric = 1/4 (solver-consistency)` residual 0 → PASS (tol 10^-15).
+- L50-51: `R_q(Pi_ext) = 1/4 (independent anchor)` residual 0 → PASS.
+- L52-61: five external-decimal anchors all PASS.
 
-**Output freshness:** SymPy `.py` mtime `1779934090` vs `.txt` output mtime `1779934169` (output is 79 s newer). Mathematica `.wl` mtime `1779933031` vs `.txt` output mtime `1779933154` (output is 123 s newer). Both transcripts regenerated post-rework.
+**Output freshness:** Confirmed regenerated post-fix. Scripts last modified
+2026-05-29 16:51 (both); saved outputs `scripts/output/...sympy_audit.txt` and
+`mathematica/output/...mathematica_audit.txt` both modified 2026-05-29 18:02 —
+newer than the scripts and consistent with the exec-log timestamps (17:58).
 
 ## Material-change assessment
 
 `material_change`: false.
 
-No derived numerical result changed. All edits were (a) adding assertions around already-computed values, (b) adding independent Mathematica-side cross-checks that confirm the same closed forms, (c) inserting provenance comments, and (d) relabeling banners. Symbolic forms for `Sigma_0(Pi)`, `That(Pi)`, `R_q(Pi)`, `S_q(Pi)`, and the canonical point `(Pi_*, Sigma_0_*, That_*)` are bit-identical to the pre-rework outputs. Downstream stages keying off these formulas or numerics are unaffected.
+No derived value changed. F1 relabeled a tautological solver-residual check (kept,
+not removed) and added an independent anchor; F2 removed a transliterated
+self-series check and replaced it with an independent integral. Canonical derived
+results (`Pi_*`, `Sigma0_*`, `That_*`, the five anchors) are unchanged — the edits
+only strengthened verification, altering no formula or numeric output. Downstream
+units depending on 142's ledger are unaffected.
 
 ## Side observations (non-blocking)
 
-- The directive text in `redteam/directives/stage_142.md` still shows the original `1e-20` tolerance and `Stage 242` provenance label; the rework values (`1e-15`, `Stage 140`) live in the orchestrator notes attached to this verification call. A future reader who consults only the directive (not the orchestrator notes) may briefly wonder why the script and directive disagree. Non-blocking — both deltas are mathematically justified and recorded.
-- The F3 Mathematica series-vs-closed-form check primarily catches gross typos in `gPi` (it compares Mathematica's own `Series[]` to its own closed form). The independence weight is carried by the `r_F1` algebraic identity. This is fine, but worth noting for anyone tightening F3 in a future pass.
+- The SymPy script carries no independent `gPi` re-derivation (R2 was
+  Mathematica-only per directive); its independence rests on F1's external anchor
+  and the F2-kept decimal targets. By design, not a gap.
+- The Mathematica `Pi_*` external-anchor residual is ~5.5e-17 (log L54), inside
+  the 10^-12 tolerance; the recorded decimal target (`...5274704351177`, 142's
+  own nsolve flavor) differs from FindRoot's higher-precision `...5830055...` at
+  digit ~16 — the same benign divergence the F1 guard documents. Affects no verdict.
 
 ## Verdict justification
 
-Post-rework, every finding from the original report is addressed. Both exec logs exit 0, every assertion passes (including the F1 numeric check at the loosened `1e-15` tolerance and all five F2 anchors on the SymPy side, which were previously unreachable due to F1's earlier abort), transcripts are newer than their corresponding scripts, no derived results changed, and the F1 tolerance adjustment is mathematically justified and recorded by the orchestrator. Verdict: `verified`.
+All four required closures hold. F1's tautological `R_q(Pi_*)=1/4` was kept but
+relabeled solver-consistency, and a genuinely independent anchor evaluating `R_q`
+at Stage 131's structurally-different-route `Pi_*`
+(`1.50882951349315558300555075595`, confirmed against 131's own output, distinct
+from 142's own nsolve `...552747...`) passes in both engines. F2's self-series
+transliteration is gone, replaced by a symbolic projection integral of the
+Stage-129 mouth-source law against `cos(pi z/2)` that closes to the hardcoded
+`gPi` with symbolic-zero residual and shares no literal with `gPi`. The F2-kept
+decimal anchors are intact and passing; F5 banners read STAGE 142; tolerances are
+`1e-15`/`10^-15` (not reverted). SymPy exits 0, Mathematica exits 0 with 11 PASS /
+0 FAIL, outputs freshly regenerated, and no derived value changed. Verdict:
+verified.

@@ -1,11 +1,14 @@
+rho_c, sigma_c reproduced from explicit two-channel core Schur complement (M_core).
 rho_c = g_s**2/K_s
 sigma_c = (K_s*g_q - g_s*lam)**2/(K_s*(K_q*K_s + lam**2))
 M_s = L*g_s**2/(K_s*Theta)
 M_q = -L*(K_s*g_q - g_s*lam)**2/(K_s*Theta*(K_q*K_s + lam**2))
 M_s matches paper card closed form.
 M_q matches paper card closed form.
-Schur-complement static limit matches rho_c - sigma_c.
-Outlet consistency reduces to Pi = M_s at S_q = 0.
+Reduced core susceptibility matches the matrix-Schur source (full z dependence).
+Static core residue matches rho_c_schur - sigma_c_schur from M_core.
+Outlet mixed channel M_q*S_q matches the matrix-Schur reconstruction (S_q != 0).
+Outlet consistency (paper Checks item 1) verified with nonzero S_q.
 sigma_c (r_c form) = (K_s*g_q - g_s*lam)**2/(K_s*(K_q*K_s + lam**2))
 
 Final explicit gain map verified.

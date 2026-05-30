@@ -78,14 +78,13 @@ diff_star = abs(sp.N(S_star - S_star_target, 30))
 assert diff_star < sp.Float("1e-12"), f"S_q(Pi_star) mismatch: diff={diff_star}"
 print("OK: S_q(Pi_star) matches notes value 0.658075937605428")
 
-# Check 4: canonical gain line M_s = Pi_star - S_q(Pi_star)*M_q.
-intercept = sp.N(Pi_star, 30)
-slope = sp.N(-S_star, 30)
-intercept_target = sp.Float("1.50882951349316", 30)
-slope_target = sp.Float("-0.658075937605428", 30)
-assert abs(sp.N(intercept - intercept_target, 30)) < sp.Float("1e-12"), \
-    f"gain line intercept mismatch: got {intercept}, want {intercept_target}"
-assert abs(sp.N(slope - slope_target, 30)) < sp.Float("1e-12"), \
-    f"gain line slope mismatch: got {slope}, want {slope_target}"
-print("OK: gain line coefficients match notes (intercept 1.50882951349316, "
-      "slope -0.658075937605428)")
+# Note (no in-stage gain-line assertion): the canonical gain line
+#   M_s = Pi_* - S_q(Pi_*)*M_q
+# is printed symbolically above for the transcript only. The intercept is the
+# imported literal Pi_* (owned by stage 131; see stage 131 note) and the slope
+# is -S_q(Pi_*), already validated against the notes value in Check 3 above.
+# Re-asserting intercept == Pi_* and slope == -S_q(Pi_*) here would be an X-X
+# tautology (it compares constants already inserted into the script), so it is
+# intentionally omitted. The substantive deliverable that uses this gain line --
+# outlet consistency of the gain pair (M_s, M_q) -- is verified downstream at
+# Stage 135 (outlet-consistent mouth closure); susceptibility closure at Stage 137.

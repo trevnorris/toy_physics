@@ -9,4 +9,6 @@ M_s^comp,* = 1.80594111095635901074188994207
 M_q^comp,* = -0.451485277739089752685472485519
 shell gain fractional shift = 0.082346466366924027407
 mixed gain magnitude ratio = 1.8602841809701057886
+outlet form residual (nat, structural) = 0
+outlet form residual (comp, structural) = 0
 all assertions passed

@@ -1,198 +1,178 @@
 ---
 unit_id: 137
 batch: IV.4
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T17:05:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
 findings_resolved: 3
-findings_total: 4
+findings_total: 3
 material_change: false
 ---
 
 # Verification — unit 137
 
-This unit was processed via orchestrator-direct edits (Codex bypassed); no
-`## Applied:` blocks exist in the directive. Verification is by reading the
-current state of the scripts and exec logs.
+This is a REMEDIATION verify. The authoritative findings are the Codex recovery review
+(`redteam/codex_reviews/stage_137.md`, verdict FINDINGS: R1/R2/R3), which the rewritten
+directive (`redteam/directives/stage_137.md`) re-encodes as F1=R3 (matrix-Schur
+reconstruction), F2=R1 (de-tautologize static limit), F3=R2 (nonzero-S_q outlet). F4 (banner
+relabel) was already RESOLVED pre-pass. This file supersedes the prior 2026-05-27 verdict, which
+verified the orchestrator-direct (Codex-bypassed) pass that the recovery review then flagged as
+non-adversarial. I checked each fix for genuine non-tautology against the load-bearing criteria,
+the edited scripts, the exec logs, the regenerated saved outputs, and the owner stage 114.
 
 ## Per-finding outcomes
 
-### F1 — insufficient_verification
+### F1 (=R3) — insufficient_verification: matrix-Schur reconstruction of rho_c, sigma_c
 
 **Classification:** resolved
 
 **What changed:**
-- `scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py:20-46`
-  adds three independent anchored assertions:
-  - L24-29: `Ms_paper` / `Mq_paper` constructed directly from
-    `gs, gq, lam, Ks, Kq, L, Theta` (the paper-card primitives), then
-    `simplify(Ms - Ms_paper) == 0` and `simplify(Mq - Mq_paper) == 0` (Ms/Mq
-    on the LHS are still built via `L*rho_c/Theta`, `-L*sigma_c/Theta`).
-  - L34-38: Schur static-limit anchor — builds
-    `delta_Lambda_core = rho_c - sigma_c / (1 - kappa_c z^2 - I gamma_c z^5)`,
-    extracts the `z -> 0` limit via `sp.limit`, and asserts
-    `simplify(static_limit - (rho_c - sigma_c)) == 0`.
-  - L43-46: Outlet consistency — at `S_q = 0`, the residual
-    `Pi - (Ms + Mq * Sq)` with `Pi -> Ms` simplifies to `0`.
-- `mathematica/...stage137_..._mathematica_audit.wl:45-59` mirrors the three
-  anchors using `expectZero` with the prescribed independent route:
-  Schur anchor uses `Normal[Series[deltaLambdaCore, {zVar, 0, 0}]]`
-  (Taylor extraction), not `Limit`.
-- `$Assumptions` and `Clear[...]` at .wl:28-32 properly extend the symbol
-  list to include `kappaC, gammaC, zVar, piVar, sqVar` with the required
-  domain restrictions.
+SymPy `scripts/...stage137...sympy_audit.py:12-28` inserts the matrix-Schur block AFTER the
+hand-assigned `rho_c, sigma_c` (lines 9-10) and BEFORE `Ms` (line 30):
+`M_core = sp.Matrix([[Ks, lam], [lam, -Kq*D_sch]])`, `v_coup = sp.Matrix([gs, gq])`,
+`delta_Lambda_schur = sp.apart((v_coup.T * M_core.inv() * v_coup)[0], D_sch)`,
+`rho_c_schur = limit(D_sch -> oo)`, `sigma_c_schur = rho_c_schur - delta_Lambda_schur|_{D=1}`,
+then asserts `rho_c - rho_c_schur == 0` and `sigma_c - sigma_c_schur == 0`.
+Mathematica `mathematica/...stage137...audit.wl:40-49` mirrors with
+`mCore = {{kS, lam}, {lam, -kQ*dSch}}`, `vCoup = {gS, gQ}`,
+`deltaLambdaSchur = Apart[vCoup . Inverse[mCore] . vCoup, dSch]`,
+`rhoCSchur = Limit[..., dSch -> Infinity]`, `sigmaCSchur = rhoCSchur - (deltaLambdaSchur /. dSch->1)`,
+and two `expectZero` asserts. Declarations added to `Clear[...]` (lines 28-30) and `$Assumptions`
+(lines 31-35: `dSch, kappa0, gamma0` with positivity).
 
 **Assessment:**
-The three anchors are non-tautological in the required sense:
+Genuinely non-tautological. The matrix entries are the PHYSICAL primitives `K_s, K_q, lam` and
+the source vector is `(g_s, g_q)` — none of which are functions of the hand-assigned
+`rho_c, sigma_c`. The reconstruction DERIVES the residues by inverting the stiffness matrix and
+then asserts they equal the hand-typed values, so a wrong factor/sign in the hand-typed
+`sigma_c` would make `sp.simplify(sigma_c - sigma_c_schur) != 0` and fail. I confirmed this is
+the identical primitive the already-verified owner stage 114 uses
+(`scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py:27-30`:
+`M = sp.Matrix([[K_s, lam],[lam, -K_q*D]])`, `c = sp.Matrix([g_s, g_q])`,
+`sp.apart((c.T*M.inv()*c)[0], D)`) — confirming the project-canonical independent route, NOT
+back-built from rho_c/sigma_c. Two engines, structurally distinct primitives
+(`M_core.inv()` + `sp.limit` vs `Inverse[mCore]` + `Limit`). Exec logs confirm the new SymPy
+line "rho_c, sigma_c reproduced from explicit two-channel core Schur complement (M_core)." and
+the two new Mathematica PASS lines for D->Infinity and static D=1.
 
-- `Ms_paper`, `Mq_paper` use a different construction route than `Ms`, `Mq`
-  (direct primitive product vs. `L*rho_c/Theta` chain). A sign flip or
-  factor-of-2 error anywhere in `rho_c`, `sigma_c`, `Ms`, or `Mq`
-  propagation breaks these.
-- The Schur static-limit anchor builds `delta_Lambda_core` from a Lorentzian
-  factor structure independent of the simpler hand-assigned `rho_c - sigma_c`
-  expression; a misquoted denominator structure (wrong powers of `z`, missing
-  imaginary unit, sign error) would fail. The fact that the static-limit
-  evaluates to `rho_c - sigma_c` is a non-trivial check on the Lorentzian
-  structure (not a tautology).
-- Outlet consistency exercises the sign convention of `M_q` at the `S_q = 0`
-  reduction.
-
-Exec logs confirm the three new SymPy print lines (sympy_audit.txt L5-8)
-and the three new Mathematica PASS lines (mathematica_audit.txt L10, L12,
-L14, L16).
-
-### F2 — mathematica_transliteration
+### F2 (=R1) — tautological_check: de-tautologize the static-limit / susceptibility check
 
 **Classification:** resolved
 
 **What changed:**
-The Mathematica Schur-anchor block at .wl:53-55 uses
-`Normal[Series[deltaLambdaCore, {zVar, 0, 0}]]`, while the SymPy version at
-.py:35-36 uses `sp.limit(delta_Lambda_core, z_var, 0)`. The two routes
-arrive at the same closed form `rho_c - sigma_c` via independent
-algorithms (series-coefficient extraction vs. symbolic limit). The
-remaining `rho_c, sigma_c, Ms, Mq` constructions in the .wl remain direct
-hand-assignments — F3 was the route by which they would be made independent
-(see F3 below).
+SymPy `...sympy_audit.py:49-72` replaces the old `static_limit - (rho_c - sigma_c)` X-X block.
+New block defines `r_c = lam**2/(Ks*Kq)`, `kappa_c = kappa0/(1+r_c)`, `gamma_c = gamma0/(1+r_c)`,
+`D_W_bare = 1 - kappa0*z_var**2 - I*gamma0*z_var**5`, the matrix source
+`delta_Lambda_matrix = delta_Lambda_schur.subs(D_sch, D_W_bare)`, the reduced envelope
+`delta_Lambda_reduced = rho_c - sigma_c/(1 - kappa_c*z**2 - I*gamma_c*z**5)`, asserts they are
+equal, then a static specialization `static_limit = sp.limit(delta_Lambda_matrix, z_var, 0)`
+asserted equal to `rho_c_schur - sigma_c_schur` (matrix-derived). Mathematica `...audit.wl:65-77`
+mirrors with `rC, kappaC, gammaC, dWbare`, `deltaLambdaMatrix = deltaLambdaSchur /. dSch -> dWbare`,
+`deltaLambdaReduced`, and `staticLimit = Normal[Series[deltaLambdaMatrix, {zVar, 0, 0}]]` (Series,
+the prescribed engine divergence from SymPy's `sp.limit`).
 
 **Assessment:**
-The independent-route requirement is satisfied for the Schur anchor as
-prescribed by the directive. The other M_s/M_q anchors are not engine-
-independent in algebraic-route terms, but the directive scoped F2 explicitly
-to the Schur anchor: "When F1 adds the Schur-complement anchor, the
-Mathematica version MUST use Normal[Series...]... Do not introduce any other
-algebraic rewrites." That instruction is honored exactly.
+The old `assert sp.simplify(static_limit - (rho_c - sigma_c)) == 0` and
+`expectZero["Schur static limit equals rho_c - sigma_c", staticLimit - (rhoC - sigmaC)]` are GONE
+(grep-confirmed absent; "Schur static limit equals rho_c - sigma_c" appears in neither
+transcript). The comparison is now matrix-route (`delta_Lambda_schur` on `D_W_bare(z)`) vs
+reduced-envelope (built from hand-assigned `rho_c, sigma_c` and the Stage-97/114 coefficient
+maps). The residual is zero ONLY if the hand-typed residues AND the coefficient maps
+`kappa_c, gamma_c, r_c` are all correct, so it is falsifiable. The static assert ties to the F1
+matrix-derived `rho_c_schur - sigma_c_schur`, not to the hand-assigned pair. Confirmed coefficient
+maps match the directive's prescription (`kappa_c = kappa0/(1+r_c)`, `gamma_c = gamma0/(1+r_c)`,
+`r_c = lam^2/(K_s K_q)`) and owner stage 114 lines 35-39. Exec logs show the two new SymPy lines
+and the two new Mathematica PASS lines.
 
-### F3 — hardcoded_result
-
-**Classification:** blocked_legitimate
-
-**What changed:**
-No matrix-Schur derivation was added — neither `sp.Matrix([[Ks, lam], [lam, Kq]])`
-in the .py nor `Inverse[{{kS, lam}, {lam, kQ}}]` in the .wl appear. Per the
-orchestrator's preamble (in the verify prompt), F3 was skipped with the
-documented reason that the directive itself acknowledged the prescribed
-matrix-Schur block is tautological: from directive L152, "the assertion is
-currently equality with the hand-assigned expression — this is not yet a
-full independent derivation from M_core (which would require sign convention
-bookkeeping the script does not currently track)."
-
-**Assessment:**
-The directive explicitly authorized skipping F3 if "Codex cannot mechanically
-verify the matrix-derivation route gives the correct sign and packaging
-without independent computation" — exactly the situation. F1's direct
-closed-form anchor (now resolved) provides non-trivial coverage of the same
-substantive claim that F3 targeted: any change to `rho_c` or `sigma_c`
-breaks the F1 anchors. So while F3 was not literally applied, its substance
-is covered by F1. Classifying as `blocked_legitimate` per orchestrator
-guidance; not a regression.
-
-### F4 — paper_misalignment (banner)
+### F3 (=R2) — tautological_check: nonzero-S_q outlet consistency
 
 **Classification:** resolved
 
 **What changed:**
-`.wl:26` now reads `banner["STAGE 137 — EXPLICIT CORE-TO-MOUTH GAIN MAP"];`
-(was `STAGE 120`). `.py` had no banner so no fix was needed there. Notes H1
-at `notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md:1`
-was already correct: `# Moving-Throat PDE — Stage 137: Explicit Core-to-Mouth
-Gain Map`.
+SymPy `...sympy_audit.py:74-91` replaces the old `outlet_residual.subs(Sq_var, 0).subs(Pi_var, Ms)`
+block. New block keeps `Sq_var` symbolic/nonzero: `Pi_map = Ms + Mq*Sq_var`,
+`mixed_contribution = sp.simplify(Pi_map - Ms)`, `Mq_from_schur = -L*sigma_c_schur/Theta`,
+asserts `mixed_contribution - Mq_from_schur*Sq_var == 0`, then a non-vacuity guard
+`assert sp.simplify(mixed_contribution - (-Mq_from_schur)*Sq_var) != 0`. Mathematica
+`...audit.wl:79-91` mirrors with `piMap`, `mixedContribution`, `mQFromSchur = -lM*sigmaCSchur/thetaSigma`,
+an `expectZero`, and an `If[TrueQ[vacuityResidual === 0], fail[...], pass["...non-vacuous..."]]`.
 
 **Assessment:**
-The Mathematica transcript at `mathematica_audit.txt:3` now records
-`STAGE 137 — EXPLICIT CORE-TO-MOUTH GAIN MAP`, exactly per the directive's
-verification spec.
+The `S_q = 0` substitution is GONE in both engines (grep confirms no `subs(Sq_var, 0)` in SymPy
+and no `sqVar -> 0` in Mathematica; the old "Outlet consistency ... at S_q = 0" PASS line is
+absent from both transcripts). The mixed `M_q*S_q` term is now isolated with `S_q` nonzero and
+compared against `-L*sigma_c_schur*S_q/Theta` where `sigma_c_schur` is rebuilt from the F1
+matrix Schur (traces to `Inverse(M_core)`), NOT from `Mq` itself — so a flipped sign or wrong
+factor in `M_q` makes the residual nonzero. The sign `-L*sigma_c/Theta` matches the notes:40-48
+relation `Pi = (L/Theta)[rho_c U_s'(0) - sigma_c U_q'(0)]` (negative on the q-channel) as cited
+and confirmed in the directive. The explicit non-vacuity guard proves `+M_q` and `-M_q` give
+different residuals (SymPy `!= 0` assert; Mathematica `If` branch that PASSes only when the
+flipped residual is nonzero) — so the check cannot be vacuously satisfied. Exec logs show both
+new SymPy lines and both new Mathematica PASS lines, including
+"outlet consistency non-vacuous (sign of M_q is exercised)".
 
 ## Exec log assessment
 
-**SymPy:** exit=0 (script exits cleanly after `print('\nFinal explicit gain
-map verified.')`; all `assert` statements pass — no traceback). Notable
-lines from `scripts/output/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.txt`:
+**SymPy:** exit=0. Notable lines:
+- "rho_c, sigma_c reproduced from explicit two-channel core Schur complement (M_core)." (F1)
+- "Reduced core susceptibility matches the matrix-Schur source (full z dependence)." +
+  "Static core residue matches rho_c_schur - sigma_c_schur from M_core." (F2)
+- "Outlet mixed channel M_q*S_q matches the matrix-Schur reconstruction (S_q != 0)." +
+  "Outlet consistency (paper Checks item 1) verified with nonzero S_q." (F3)
+- No "Schur-complement static limit matches rho_c - sigma_c." and no "Outlet consistency reduces
+  to Pi = M_s at S_q = 0." — the old tautological lines are gone.
 
-```
-M_s matches paper card closed form.
-M_q matches paper card closed form.
-Schur-complement static limit matches rho_c - sigma_c.
-Outlet consistency reduces to Pi = M_s at S_q = 0.
-```
+**Mathematica:** exit=0, 9 PASS / 0 FAIL. Notable lines:
+- Banner reads "STAGE 137 — EXPLICIT CORE-TO-MOUTH GAIN MAP" (no STAGE 120; .wl line 26 confirmed).
+- 9 PASS: rho_c@D->Infinity, sigma_c@static-D=1 (F1); M_s/M_q paper card (kept); reduced core
+  susceptibility, static core residue (F2); outlet mixed channel + outlet non-vacuous (F3);
+  sigma_c r_c-form equivalence (kept).
+- One benign warning `Limit::alimv` (Mathematica ignored the `dSch>0` assumption during
+  `dSch -> Infinity`); the immediately following residual = 0 and PASS confirm the limit
+  evaluated correctly. Non-blocking.
+- No old "Schur static limit equals rho_c - sigma_c" / "Outlet consistency Pi = M_s at S_q = 0"
+  PASS lines.
 
-**Mathematica:** exit=0 (file ends with `Exit[0];` after all `expectZero`
-calls pass). Notable lines from
-`mathematica/output/moving_throat_pde_stage137_core_to_mouth_gain_map_mathematica_audit.txt`:
-
-```
-PASS: M_s matches paper card
-PASS: M_q matches paper card
-PASS: Schur static limit equals rho_c - sigma_c
-PASS: Outlet consistency Pi = M_s at S_q = 0
-PASS: sigma_c equivalence with r_c form
-```
-
-Five PASS lines total — four new (F1) plus the original equivalence check.
-
-**Output freshness:**
-- SymPy script mtime 1779925455; SymPy output mtime 1779925552 → output is
-  ~97s newer than script. Fresh.
-- Mathematica script mtime 1779925472; Mathematica output mtime 1779925674
-  → output is ~202s newer than script. Fresh.
+**Output freshness:** confirmed regenerated post-fix. Saved outputs live at
+`scripts/output/...sympy_audit.txt` (mtime 2026-05-29 16:49:02) and
+`mathematica/output/...mathematica_audit.txt` (mtime 2026-05-29 16:49:02), both newer than the
+scripts (`.py` 16:41:48, `.wl` 16:42:16). Saved-output contents match the exec logs line-for-line
+(modulo the log header), including all new PASS lines and the absence of the old tautological ones.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-No derived numerical result, closed-form expression, or symbolic relation
-exposed to downstream units has changed. The script edits add verification
-breadth (more assertions covering the same underlying expressions). The
-banner correction is purely cosmetic. Downstream units that consume the
-`(M_s, M_q)` closed forms from this stage will see the same expressions as
-before.
+The verification surface was strengthened but no derived value/constant changed. `rho_c =
+g_s^2/K_s`, `sigma_c = (K_s g_q - lam g_s)^2/[K_s(K_s K_q + lam^2)]`, `M_s = L*rho_c/Theta`,
+`M_q = -L*sigma_c/Theta` are exactly the same expressions as before (transcript lines 7-10 / WL
+16-19) — they are now DERIVED from the physical core matrix and cross-asserted rather than only
+hand-typed. The fixes add independent anchors (matrix Schur, full-susceptibility comparison,
+nonzero-S_q outlet, non-vacuity guard); none alter the gain-map outputs downstream units consume.
+No downstream re-audit is warranted on account of stage 137.
 
 ## Side observations (non-blocking)
 
-- The directive prescribed sympy symbol names `z, Pi, S_q` but the applied
-  edit uses `z_var, Pi_var, S_q_var` to avoid colliding with `sp.pi` and
-  generic names. This is a safe deviation; the assertions are unaffected.
-- The Mathematica script likewise uses `zVar, piVar, sqVar` instead of
-  `z, Pi, Sq` — sensible since `Pi` is a built-in constant in Mathematica.
-- The Mathematica `$Assumptions` does not declare `piVar, sqVar` as positive
-  (only `Reals`); fine, since these are dummy substitution targets that
-  are immediately replaced with concrete values in the outlet-consistency
-  block.
-- The original "sigma_c equivalence with r_c form" check (the pre-F1
-  tautological assertion) is retained at .py:48-51 / .wl:61-63. Not a
-  regression — leaving it in place is harmless and is consistent with the
-  directive, which only added new anchors without removing the existing one.
+- The `Limit::alimv` warning in the Mathematica transcript is the standard Mathematica notice
+  when assumptions reference the limit variable; the residual evaluates to 0 and PASSes, so it is
+  cosmetic. Not a finding.
+- SymPy declares `rc = sp.symbols('r_c', ...)` at line 7 (unused after F2 introduced the assigned
+  `r_c = lam**2/(Ks*Kq)` at line 55, which shadows it). Harmless dead symbol; the directive
+  explicitly said not to chase unused-variable cleanup. Not blocking.
+- This verdict file overwrote a stale 2026-05-27 verdict (findings_total: 4, F3 marked
+  blocked_legitimate) that verified the pre-remediation orchestrator-direct edits. That older
+  state no longer matches the scripts and is fully superseded here.
 
 ## Verdict justification
 
-Three of four findings are resolved with non-tautological independent
-anchors that exercise the paper-card closed forms, the Schur static limit,
-and outlet consistency. The Mathematica engine uses a distinct Series-based
-route for the Schur anchor (per F2). F3 was legitimately skipped under the
-directive's own acknowledgment that the prescribed matrix-Schur block is
-not yet a full independent derivation and would be tautological as written;
-F1 covers the substantive claim. Both exec logs are fresh, exit 0, and
-show all expected PASS lines. No regressions. Overall verdict: `verified`.
+All three findings (F1=R3 matrix-Schur reconstruction, F2=R1 de-tautologized static limit,
+F3=R2 nonzero-S_q outlet) are resolved with genuinely non-tautological checks: the residues are
+now derived by inverting the physical core matrix (entries K_s,K_q,lam; source g_s,g_q — never
+functions of rho_c/sigma_c, matching owner stage 114), the static-limit check is matrix-route vs
+reduced-envelope, and the outlet check keeps S_q nonzero with a sign-discriminating non-vacuity
+guard. The old X-X static assert and the S_q=0 substitution are both gone from both engines.
+Both exec logs exit 0 (Mathematica 9 PASS / 0 FAIL), saved outputs are freshly regenerated, the
+banner reads STAGE 137 with no residual STAGE 120, and no derived value changed
+(material_change=false). Verdict: verified.

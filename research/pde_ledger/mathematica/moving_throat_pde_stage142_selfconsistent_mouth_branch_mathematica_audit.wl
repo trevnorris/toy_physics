@@ -57,20 +57,23 @@ tHat = Sqrt[(9/20)*sigma0];
 
 subbanner["Independent numerical cross-checks (Mathematica)"];
 
-(* Independent series expansion of gPi near Pi = 0. The closed form
-   gPi = 2 Pi (2 Pi exp(Pi) + pi) / ((4 Pi^2 + pi^2)(exp(Pi)-1))
-   expanded to O(Pi^3) should agree with a direct Series[] of the same
-   expression, cross-checking the algebraic encoding. *)
-gPiSeries = Normal[Series[gPi, {piM, 0, 4}]];
-gPiSampleVals = Table[
-    {pVal, N[gPi /. piM -> pVal, 30] - N[gPiSeries /. piM -> pVal, 30]},
-    {pVal, {1/10, 2/10, 3/10}}];
-Print["g_Pi closed-form vs series residuals at piM={0.1,0.2,0.3}: ", fmt[gPiSampleVals[[All, 2]]]];
-Do[
-    If[Abs[gPiSampleVals[[i, 2]]] > 10^-3,
-        fail["g_Pi closed-form vs series small-piM disagreement", gPiSampleVals[[i, 2]]]],
-    {i, 1, Length[gPiSampleVals]}];
-pass["g_Pi closed-form/series consistency at small piM"];
+subbanner["Independent re-derivation of g_Pi from the mouth-source law (Stage 130 §1)"];
+
+(* g_Pi is DEFINED upstream (Stage 129 §2 source law + Stage 130 §1 projection)
+   as the projection of the normalized exponential mouth source against the first
+   D/N derivative shape Cos[pi z / 2] on the normalized interval z in [0,1] (L=1).
+   Re-derive it here by direct symbolic integration and confirm it equals the
+   hardcoded closed form. This route is built only from sigma_Pi and Cos, so it
+   does NOT share a typo with the hardcoded gPi closed form. *)
+Clear[zVar];
+sigmaPi = piM*Exp[-piM*zVar]/(1 - Exp[-piM]);              (* Stage 129 §2, L=1 *)
+gPiFromSource = FullSimplify[
+    Integrate[sigmaPi*Cos[Pi*zVar/2], {zVar, 0, 1},
+        Assumptions -> piM > 0],
+    Assumptions -> $Assumptions];
+gPiDerivResidual = FullSimplify[gPiFromSource - gPi, Assumptions -> $Assumptions];
+Print["g_Pi (source integral) = ", fmt[gPiFromSource]];
+expectZero["g_Pi closed form = integral of mouth-source law (Stage 130 §1)", gPiDerivResidual];
 
 (* Independent r_F1 cross-check: r_F1 = sqrt(4107 - 100 pi^2)/(10 pi)
    should satisfy 100 pi^2 (1 + r^2) = 4107. *)
@@ -106,7 +109,14 @@ Print["S_q(Pi_*)  = ", fmt[sQStar]];
 Print["Sigma0(Pi_*) = ", fmt[sigmaStar]];
 Print["That(Pi_*)   = ", fmt[tHatStar]];
 expectApprox["Pi_* compensation solve", gStar, N[gMinus, 30], 10^-12];
-expectApprox["R_q(Pi_*) numeric = 1/4", rQStar, 1/4, 10^-20];
+(* (R1, solver-consistency) Identical at the solved point; keep as a redundant
+   solver residual, NOT a paper-claim test. Tol tracks the SymPy nsolve gap. *)
+expectApprox["R_q(Pi_*) numeric = 1/4 (solver-consistency)", rQStar, 1/4, 10^-15];
+(* (R1, NON-tautological anchor) R_q at STAGE 131's independently-derived Pi_* *)
+(* (cleared-denominator FindRoot, batch-4-verified) — NOT 142's own nsolve output. *)
+piExt = N[Rationalize[1.50882951349315558300555075595, 0], 30];
+rQAtExt = N[rQ /. piM -> piExt, 30];
+expectApprox["R_q(Pi_ext) = 1/4 (independent anchor)", rQAtExt, 1/4, 10^-12];
 expectApprox["g_-^{F1} value",      N[gMinus, 30],   N[Rationalize[0.7580350789446628269196808904, 0], 30], 10^-25];
 expectApprox["Pi_* value",          piStar,          N[Rationalize[1.5088295134931555274704351177, 0], 30], 10^-12];
 expectApprox["S_q(Pi_*) value",     sQStar,          N[Rationalize[0.6580759376054292719303153134, 0], 30], 10^-12];

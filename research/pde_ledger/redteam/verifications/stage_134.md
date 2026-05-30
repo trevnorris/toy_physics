@@ -1,107 +1,135 @@
 ---
 unit_id: 134
 batch: IV.4
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T00:00:00Z
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 4
-findings_total: 4
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
-# Verification — unit 134
+# Verification — unit 134 (REMEDIATION verify)
+
+This supersedes the stale 2026-05-27 verification (which pre-dated the recovery review
+and wrongly recorded the gain-line `OK:` line at py:82 as a PASS — the very check R1
+later flagged as tautological). The authoritative finding set is
+`redteam/codex_reviews/stage_134.md` (verdict FINDINGS, one live finding R1 —
+tautological_check). F1/F2/F4 are `tainted-applied` (their checks PASSED the review and
+are retained unchanged); F3 is RESOLVED via the IV.4 paper-card downgrade (no script
+action). The only live edit verified here is R1.
 
 ## Per-finding outcomes
 
-### F1 — missing_verification_script
+### R1 — tautological_check (canonical gain-line assertion)
 
 **Classification:** resolved
 
 **What changed:**
-`scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:27-91` now contains the banner update to `STAGE 134`, the symbolic computations (S_shell, S_q, fixed-point law) plus four substantive assertion blocks:
-- Check 1 (lines 47-51): `assert sp.simplify(S_shell - 1) == 0`.
-- Check 2 (lines 53-72): three independent numeric checks at Pi = 1/2, 1, 2 against pasted high-precision literal targets `0.608336415687717065435990381419`, `0.633127670034487546375729566676`, `0.681366857005321783286541952613` (the orchestrator-recomputed targets, not the auditor's fabricated values).
-- Check 3 (lines 74-79): `S_q(Pi_*) ≈ 0.658075937605428` to 1e-12.
-- Check 4 (lines 81-91): gain-line intercept and slope match notes' literals to 1e-12.
+- SymPy `scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py:81-90`:
+  the entire "Check 4: canonical gain line" block is DELETED. Formerly it asserted
+  `intercept = sp.N(Pi_star,30)` against the literal `1.50882951349316` that *defined*
+  `Pi_star` at line 39 (an X−X comparison), plus a `slope = -S_star` vs
+  `-0.658075937605428` that merely restated Check 3 with a sign flip. In its place is a
+  no-assertion provenance comment: the intercept is the imported literal Π_* (owned by
+  stage 131), the slope is −S_q(Π_*) already validated in Check 3, re-asserting them
+  would be an X−X tautology so it is intentionally omitted, and the substantive
+  deliverable (outlet consistency of the gain pair) is verified downstream at Stage 135
+  (susceptibility closure at Stage 137). There is NO `assert` anywhere in this block.
+- The symbolic `print("Canonical gain line: ...")` + `sp.pprint(...)` at lines 42-43
+  remains (a print, not an assertion) — correct per directive.
+- Mathematica `mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:66-77`:
+  the `.wl` block (which never had an `expectZero`/`pass`/`fail`, so was not a hard
+  runtime tautology) is relabeled `"Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q
+  (printed only; not asserted)"` (line 71); the prior "matches the Stage 134 note" claim
+  in the RESULT block is replaced with the downstream-Stage-135 outlet-consistency
+  statement (line 84). A no-assertion provenance comment was added at lines 74-77.
 
 **Assessment:**
-All four checks are non-tautological: the literal targets are sourced independently (per the in-script comment, computed via mpmath outside `sKernel`), so if `S(Pi, kappa)` had a typo the checks could fail. Check 1 (shell limit) is the only one previously exercised on the mathematica side; checks 2-4 are new substantive coverage on the sympy side. The exec log shows all four "OK:" lines passing with tiny rounding diffs (~3e-31 to 5e-31), well under the 1e-12 tolerance. The S_q value at Pi_* prints to 0.658075937605428494269581645208 (full 30-digit precision), which matches the notes' 15-digit literal.
+The fix REMOVES the tautological check rather than dressing it up as a fake
+"independent" gain-line check — exactly what the codex_review prescribed once
+outlet/gain-line consistency was downgraded to a Stage-135 carry-forward. The gain line
+is not "moved" to another self-referential assert; it is dropped entirely and the
+deliverable is explicitly deferred downstream. No new numeric literal was fabricated;
+the two deleted targets (`1.50882951349316`, `-0.658075937605428`) are gone and nothing
+replaces them.
 
-### F2 — tautological_check
-
-**Classification:** resolved
-
-**What changed:**
-`mathematica/moving_throat_pde_stage134_family1_mouth_fixedpoint_mathematica_audit.wl:26-72` updates the banner to `STAGE 134` (line 26), keeps the substantive `expectZero["static shell channel", sShell - 1]` (line 44), and replaces the tautological `sQExpected` block + its `expectZero` call with:
-- `expectClose[name, got, want, tol]` helper (lines 51-55) that prints the diff and PASSes/FAILs.
-- Three `expectClose` calls at p = 1/2, 1, 2 against the same independently-verified high-precision targets used in F1 (lines 57-62).
-
-The previous `sQExpected = FullSimplify[...]` line and the `expectZero["specialized D/N kernel", sQ - sQExpected]` call are deleted as required.
-
-**Assessment:**
-The three new checks compare `N[sQ /. p -> <value>, 30]` against `SetPrecision[<literal>, 30]` where the literal is pasted from the same external mpmath source as F1. Because the targets are not derived from `sKernel` at runtime, a typo in `sKernel` would surface. The exec log confirms all three PASS lines (`PASS: S_q at p=1/2`, `PASS: S_q at p=1`, `PASS: S_q at p=2`) plus the retained `PASS: static shell channel`, with diff values ~0 to 30 digits.
-
-### F3 — paper_misalignment
-
-**Classification:** resolved
-
-**What changed:**
-`paper/stages/stage_134.tex:21-25` — the `\stagefield{Checks}` items 1 and 2 were rewritten from prescriptive checks into carry-forward citations:
-- Item 1: "Outlet consistency of the gain pair (M_s, M_q) is verified at Stage~\ref{stage:135} ...; carried forward here."
-- Item 2: "Self-matched susceptibility closure is verified at Stage~\ref{stage:137} ...; carried forward here."
-- Item 3 (numerical fixed points) unchanged.
-
-This corresponds to direction (b) from the directive's user-resolution menu: the outlet-consistency and susceptibility-closure checks belong downstream (stages 135 and 137, respectively), and the stage 134 card now points to where those checks actually live.
-
-**Assessment:**
-The edit is exactly at lines 21-25 of `paper/stages/stage_134.tex` as the orchestrator noted. The card's `Checks` block no longer claims stage 134 itself performs the outlet-consistency or susceptibility-closure checks, so the script-side absence of those checks is no longer a misalignment. The third checklist item (numerically-located fixed points) is honored by the scripts' use of `Pi_* = 1.50882951349316` as a literal (sourced from stage 131/233 per the notes), with no closed-form derivation here. Cross-references to stages 135 and 137 are reasonable carry-forward targets for outlet-consistent gains and susceptibility closure respectively.
-
-### F4 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-No additional code change beyond F1+F2. Both scripts now compare `S_q(p)` at three independent numeric points against pasted high-precision literals that come from a separate mpmath computation, not from `sKernel`. A typo in the kernel formula would surface in both engines' numeric checks (since the literals are external).
-
-**Assessment:**
-The directive explicitly states F4 is subsumed by F1+F2 once both engines have non-tautological numeric checks against externally-sourced literals. That condition is now met: sympy's three `S_q(1/2|1|2)` assertions and mathematica's three `expectClose` checks all anchor against the same external literal targets. The kernel formula is still typed identically in both engines, but a typo would no longer be invisible — it would break the comparison to the external literal in both engines. The operational concern (silent shared error) is neutralized.
+The three KEPT substantive checks are intact and non-tautological — each compares the
+script kernel against an *external* source of truth (so none is X−X):
+- Check 1 (py:47-51 / wl:44): shell limit `S_shell - 1 == 0` (external truth = exact `1`).
+  Exec: `S_shell - 1 = 0` → `OK: S_shell = 1` / `PASS: static shell channel`.
+- Check 2 (py:53-72 / wl:57-62): S_q(1/2), S_q(1), S_q(2) vs independent mpmath literals
+  `0.608336…`, `0.633127…`, `0.681366…`. Exec: SymPy diffs ~3.9e-31 / 0 / 4.9e-31;
+  Mathematica PASS×3.
+- Check 3 (py:74-79): S_q(Π_*) vs notes value `0.658075937605428`. Exec:
+  `OK: S_q(Pi_star) matches notes value 0.658075937605428`.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- `S_shell = 1`
-- `S_q(Pi_star) = 0.658075937605428494269581645208`
-- `OK: S_shell = 1`
-- `S_q(1/2) = 0.608336415687717065435990381419  (target 0.608336415687717065435990381419, diff 3.94...E-31)`
-- `S_q(1) = 0.633127670034487546375729566676  (target ..., diff 0)`
-- `S_q(2) = 0.681366857005321783286541952613  (target ..., diff 4.93...E-31)`
-- `OK: S_q matches independent numeric targets at Pi=1/2, 1, 2`
+- `S_shell - 1 = 0` / `OK: S_shell = 1`
+- `S_q(1/2) = 0.608... (target 0.608..., diff 3.94...E-31)` … `OK: S_q matches independent numeric targets at Pi=1/2, 1, 2`
 - `OK: S_q(Pi_star) matches notes value 0.658075937605428`
-- `OK: gain line coefficients match notes (intercept 1.50882951349316, slope -0.658075937605428)`
+- The former `OK: gain line coefficients match notes ...` line is ABSENT, as the directive requires.
 
 **Mathematica:** exit=0. Notable lines:
-- `static shell channel = 0` / `PASS: static shell channel`
-- `S_q at p=1/2 = 0.6083364156877170654359903814193976...` / `PASS: S_q at p=1/2`
-- `S_q at p=1 = 0.6331276700344875463757295666760496...` / `PASS: S_q at p=1`
-- `S_q at p=2 = 0.6813668570053217832865419526134255...` / `PASS: S_q at p=2`
-- `S_q(Pi_star) = 0.65807593760542948674050367268...`
+- `PASS: static shell channel`
+- `PASS: S_q at p=1/2` / `PASS: S_q at p=1` / `PASS: S_q at p=2` (diffs ~0)
+- `Canonical gain line Ms = Pi_star - S_q(Pi_star) M_q (printed only; not asserted)`
+- RESULT now reads `Outlet consistency of the gain pair (Ms, Mq) is verified downstream at Stage 135.`
 
-**Output freshness:** Confirmed. Script mtimes: sympy 17:42, mathematica 17:42. Output mtimes: sympy 17:45, mathematica 17:47. Both outputs are newer than their scripts and were regenerated post-fix.
+**Output freshness:** confirmed. Saved outputs
+`scripts/output/...sympy_audit.txt` and `mathematica/output/...mathematica_audit.txt`
+both have mtime 2026-05-29 16:49:02, newer than the edited scripts (.py 16:41:15,
+.wl 16:41:55). The saved `.txt` tails match the exec logs (no gain-line `OK`/assert
+line; downstream-Stage-135 RESULT line present).
+
+## Literal provenance (confirmed against owner files, not recomputed)
+
+| literal | owner confirmed |
+|---|---|
+| `1.50882951349316` (Π_*) | `notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md:8` (carried at stage 134 notes:72) |
+| `0.658075937605428` (S_q(Π_*)) | `notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md:86` |
+| `0.608336415687717…` (S_q(1/2)) | M3 mpmath run, `redteam/resolutions/batch_IV4_paper_alignment.md:75-80` |
+| `0.633127670034487…` (S_q(1)) | same M3 run |
+| `0.681366857005321…` (S_q(2)) | same M3 run |
+
+The two deleted Check-4 targets are NOT retained anywhere. No new literal was introduced.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-Rationale: F1 and F2 only add assertions and update banners; they do not alter any derived result. F3 is a paper-card edit that re-routes verification responsibility for two checklist items to downstream stages 135 and 137, without changing any quoted numeric or symbolic claim. F4 is a no-op (subsumed by F1+F2). All printed numeric values (S_q(Pi_*), gain line, S_q evaluations) agree with the pre-fix prints to all digits shown. No downstream re-audit narrow-vs-broad concern.
+A redundant, self-referential (X−X) assertion was removed and replaced with a
+non-executing provenance comment; the `.wl` print was relabeled and its RESULT prose
+re-pointed downstream. No derived result, no kernel, no retained numeric value, and no
+emitted symbolic expression changed (the gain line was already only printed, not
+asserted). The three substantive checks and their values are byte-identical to the prior
+state. Downstream units therefore have no derived-result dependency on this edit.
 
 ## Side observations (non-blocking)
 
-- The H1 of `notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md` already reads "Stage 134" (orchestrator's claim of `Stage 236 → Stage 134` either refers to a pre-batch state already fixed, or was a no-op for this notes file). Body references to "Stage 235" (kernel source) and "Stage 233" (Pi_* fixing) are upstream-citation references and are correct in context.
-- The independently-verified targets in F1/F2 (`0.6083...`, `0.6331...`, `0.6814...`) differ from the auditor's originally proposed values (`0.2271...`, `0.4484...`, `0.8732...`). The orchestrator note flags this: the auditor's literals were fabricated, and the applied ones are mpmath-derived from the closed form `S(Pi, pi/2)`. This is correct per the orchestrator's recompute; nothing further to flag.
-- The notes' boxed result has a slight typo (last line: `0.658075937605429` with a `9` at the 15th digit vs. the canonical `0.658075937605428` with an `8` used elsewhere in the notes and in the scripts). Cosmetic only; the scripts use the correct trailing-8 value.
+- Codex's one recorded deviation — the Mathematica comment uses `PiStar`/`piStar`
+  instead of `Pi_*` — is benign and in fact necessary: the token `Pi_*)` would close a
+  `(* ... *)` block comment prematurely. This is the documented `Pi_*)` comment-terminator
+  pitfall; the substitution is correct and changes no logic.
+- The previous (stale) verification file on disk recorded findings 4/4 resolved and cited
+  the now-removed gain-line `OK:` line as a PASS. That artifact is overwritten by this
+  remediation verdict; the 4-finding framing was the tainted 2026-05-27 directive's, not
+  the authoritative codex_review's.
+- `notes/` was read only to confirm literal provenance (explicitly required by the
+  remediation directive's literal-ownership table); no prose-derivation re-audit was done.
 
 ## Verdict justification
 
-All four findings resolved. F1's SymPy script now has four substantive assertion blocks (shell limit, three independent numeric checks, Pi_* value, gain-line coefficients) with literals sourced externally via mpmath. F2's Mathematica script replaces the tautological `sQ - sQExpected` check with three `expectClose` calls against the same external literals. F3 is resolved at the paper-card level by re-routing items 1 and 2 to stages 135/137 as carry-forward citations. F4 is operationally neutralized by F1+F2. Both exec logs exit 0, outputs are fresh, and the new "OK:" / `PASS:` lines confirm the substantive checks. No regressions; no material change to downstream numerics.
+R1 is fully resolved: the tautological gain-line assertion was removed — not moved, not
+replaced with another self-referential check — a no-assertion provenance comment was put
+in its place, and the gain-line/outlet deliverable was correctly deferred to Stage 135 in
+line with the F3 paper-card downgrade. No new numeric literal was fabricated; all retained
+literals trace to their owners (Π_*←stage 131, S_q(Π_*)←stage 134 notes, the three S_q
+targets←the M3 mpmath run). The three retained checks (shell limit, three S_q mpmath
+spot-checks, S_q(Π_*) vs notes) are intact, non-tautological, and pass in both engines
+(sympy_exit=0, mathematica_exit=0). Saved outputs were refreshed post-fix. material_change
+is false. Verdict: verified.

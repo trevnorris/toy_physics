@@ -72,10 +72,27 @@ print("That(Pi_*)   =", That_star)
 if abs(float(g_star - sp.N(gminus,30))) > 1e-12:
     raise AssertionError("Pi_* does not solve the compensation equation accurately enough.")
 
+# (R1, solver-consistency) R_q(Pi_*) = 1/4 holds IDENTICALLY at the solved
+# point because Pi_* was found from gPi(Pi_*) = g_-, and R_q(g_-) = 1/4 for any
+# r. So this is ONLY a redundant solver-residual check, NOT a paper-claim test.
 Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))
-print(f"R_q(Pi_*) - 1/4 = {Rq_star - sp.Rational(1,4)}")
+print(f"R_q(Pi_*) - 1/4 (solver-consistency) = {Rq_star - sp.Rational(1,4)}")
+# 1e-15 tracks nsolve's actual precision here (residual ~1.945e-18); do NOT
+# tighten to 1e-20 (that was too tight and was already loosened in a prior batch).
 if Rq_star_residual > 1e-15:
     raise AssertionError(f"R_q(Pi_*) does not equal 1/4 at nsolve'd Pi_* (residual {Rq_star_residual}).")
+
+# (R1, NON-tautological anchor) Evaluate R_q at STAGE 131's INDEPENDENTLY-DERIVED Pi_*
+# (NOT 142's own nsolve output, NOT the self-solved point). Stage 131 found this parent
+# mouth-threshold bias by a structurally different route (cleared-denominator FindRoot,
+# batch-4-verified); 142's gPi crosses g_- there ONLY IF the hardcoded gPi closed form is
+# right, so R_q lands on 1/4. A typo in gPi or a wrong r breaks this.
+Pi_ext = sp.Float("1.50882951349315558300555075595", 30)  # Stage 131 Pi_* (independent)
+Rq_at_ext = sp.N(Rq.subs(Pi, Pi_ext), 30)
+Rq_ext_residual = abs(float(Rq_at_ext - sp.Rational(1,4)))
+print(f"R_q(Pi_ext) - 1/4 (independent anchor) = {Rq_at_ext - sp.Rational(1,4)}")
+if Rq_ext_residual > 1e-12:
+    raise AssertionError(f"R_q at external Pi_*={Pi_ext} is not 1/4 (residual {Rq_ext_residual}); gPi or r is off.")
 
 expect_close("g_-^{F1} value", gminus, sp.Float("0.7580350789446628269196808904", 30), 1e-25)
 expect_close("Pi_* value",      Pi_star, sp.Float("1.5088295134931555274704351177", 30), 1e-12)

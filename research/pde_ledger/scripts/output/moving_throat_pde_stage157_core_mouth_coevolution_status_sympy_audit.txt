@@ -9,7 +9,7 @@ STAGE 157 — CORE-MOUTH COEVOLUTION STATUS
 R(g_*) - 1/4 = 0
 
 ========================================================================================
-2. Carry-forward numerical basepoint from Stages 138-139
+2. Carry-forward numerical basepoint from Stages 155-156
 ========================================================================================
 r_F1 radical check diff = 1.8814843650771253e-15
 g_* lower-branch check diff = 1.7308031911431281e-16
@@ -29,7 +29,7 @@ Pi_can      = 3.87156437747900200000000000000
 ========================================================================================
 tangent motion keeps delta R = 0 = 0
 canonical-even preservation solutions = [{deltaC: 0, delta_kappa: 0}]
-delta C from canonical-even Solve = 0
+canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27*sigma_star) = 0
 
 ========================================================================================
 4. Stage 158 expansion point

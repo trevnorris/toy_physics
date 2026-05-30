@@ -42,8 +42,8 @@ matrix dcs = 0
 PASS: matrix dcs
 matrix dZ = 0
 PASS: matrix dZ
-matrix round-trip = 0
-PASS: matrix round-trip
+matrix forward-transcription = 0
+PASS: matrix forward-transcription
 
 ========================================================================================
 Equivalent full-bundle form with P_0 = N_0 / D_0

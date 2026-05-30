@@ -36,8 +36,8 @@ Pi_can      = 3.8715643774790020614773311535827815532684326171875`30.
 tangent motion keeps delta R = 0 = 0
 PASS: tangent motion keeps delta R = 0
 canonical-even preservation solutions = {{deltaC -> 0, dKappa -> 0}}
-delta C from canonical-even Solve = 0
-PASS: delta C from canonical-even Solve
+canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27 sigmaStar) = 0
+PASS: canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27 sigmaStar)
 
 ========================================================================================
 4. Stage 158 expansion point

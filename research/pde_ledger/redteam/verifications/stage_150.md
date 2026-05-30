@@ -1,8 +1,8 @@
 ---
 unit_id: 150
 batch: IV.5
-verifier_model: claude-opus-4-7-1m
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8-1m
+verify_date: 2026-05-29T22:55:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
@@ -15,52 +15,107 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — insufficient_verification (DISPLAY corroboration of the compact slope)
 
 **Classification:** resolved
 
 **What changed:**
-- `scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py:37` — replaced
-  `Sq = sp.simplify(sp.diff(Tq, x).subs(x, 0))` with two comment lines plus
-  `Sq = Aq*k - Cq*Pi` (the hand-derived closed form for `T_q'(0)`). Now appears at line 39 with comments at lines 37–38.
-- `mathematica/moving_throat_pde_stage150_full_profile_residual_mathematica_audit.wl:37` — replaced
-  `sQ = FullSimplify[D[tq, x] /. x -> 0, Assumptions -> $Assumptions];` with a two-line
-  comment plus `sQ = aq*k - cq*p;` (the hand-derived analogue). Now appears at line 39 with comments at lines 37–38.
-
-Both edits exactly match the directive's "After" blocks; no collateral edits anywhere else in the diff.
+- SymPy `scripts/...stage150...sympy_audit.py:41-47`: the slope assignment was
+  restructured to build the printed form from FREE coefficient placeholders, then
+  substitute the concrete definitions:
+  ```python
+  Aq_s, Cq_s = sp.symbols("Aq Cq")
+  Sq_symbolic = Aq_s*k - Cq_s*Pi
+  Sq = Sq_symbolic.subs({Aq_s: Aq, Cq_s: Cq})
+  print("S_q(Pi) =", Sq_symbolic)        # compact: Aq*k - Cq*Pi  (k=pi/2)
+  print("S_q(Pi) [expanded] =")
+  sp.pprint(Sq)
+  ```
+- Mathematica `mathematica/...stage150...mathematica_audit.wl:41-45`: mirrored with free
+  placeholders `aqS,cqS`:
+  ```mathematica
+  sQsymbolic = aqS*k - cqS*p;
+  sQ = sQsymbolic /. {aqS -> aq, cqS -> cq};
+  Print["S_q(Pi) = ", fmt[sQsymbolic]];
+  Print["S_q(Pi) [expanded] = ", fmt[sQ]];
+  ```
+The diff (`stage_150_diff.patch`) shows ONLY these two display/assignment blocks changed;
+no collateral edits to BCs, the residual, or the curvature logic. Matches the directive's
+consult-Q6 approach (b) exactly. Directive carries an `## Applied: F1` block
+(deviation: none).
 
 **Assessment:**
-The edit is correct and addresses the finding. The previous form `X - simplify(X) == 0` was a definitional tautology; the new form compares the symbolic derivative
-`diff(Tq,x).subs(x,0)` against an independently-written closed-form combination of the constants `Aq`, `Cq`, `Pi`. Any transcription error in `Sq` (e.g. swapping `Aq*Pi - Cq*k`) would now fail the assertion. The exec logs confirm both engines still simplify `T_q'(0) - S_q` to 0 (sympy line 19, mathematica lines 12–13 `PASS: T_q'(0)-S_q`), as expected since the derivative of the closed-form `Tq` at `x=0` does equal `Aq*k - Cq*Pi`. The load-bearing `R''(0) - target = 0` check is unaffected and passes in both engines (sympy line 28, mathematica lines 19–20 `PASS: R''(0) - target`).
-
-Note: Codex did not append the `## Applied: F1` block to the directive file as requested by the directive header, but the actual file edits are present and correct. Flagged as a procedural side observation, not a verification failure.
+Correct and addresses the finding. The printed compact form is **provably the asserted
+slope**, not a decoupled display string:
+- The SAME symbolic object is reused — `Sq = Sq_symbolic.subs(...)` (py:43) /
+  `sQ = sQsymbolic /. {...}` (wl:42) — so the printed `Sq_symbolic`/`sQsymbolic` and the
+  asserted `Sq`/`sQ` differ only by substituting the concrete `Aq/Cq` (`aq/cq`)
+  definitions. The fabricated-display anti-pattern (hardcoded text) is avoided.
+- The directive's can-fail self-test holds: deleting the `.subs`/`/.` step would leave
+  `Sq`/`sQ` as the free-symbol form, making `T_q'(0)-S_q == 0` FAIL — i.e. the printed
+  form and the asserted object are linked, not decoupled.
+- Refreshed output line 5: SymPy prints `S_q(Pi) = pi*Aq/2 - Cq*Pi` (k=pi/2 substituted,
+  `Aq`/`Cq` preserved as symbols); Mathematica prints
+  `S_q(Pi) = -(cqS*p) + (aqS*Pi)/2` (`aqS`/`cqS` preserved as symbols). Both are followed
+  by an expanded-value line. Neither shows the bare fully-substituted rational at line 5.
+  Both forms are explicitly listed as acceptable in the directive verification (b).
+- Load-bearing assertion `T_q'(0)-S_q == 0` (py:52 / wl:50) is UNCHANGED and passes in
+  both engines. Curvature checks R(0), R'(0) (py:56-57 / wl:53-54) and R''(0)-target
+  (py:60-64 / wl:56-59) are untouched and pass. SymPy reports
+  `R''(0) = 3·Π·Σ·exp(Π)/(1-exp(Π))` and Mathematica `(-3*E^p*p*sigmaM)/(-1+E^p)` —
+  equivalent forms of `-3 Σ Π/(1-e^{-Π})`, both with `R''(0) - target = 0`.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- `S_q(Pi) =` block (lines 5–15) now displays the compact closed form `-Π^2/((1-e^(-Π))(-Π^2 + π^2/4)) + Π·(Π·e^(-Π) + π·sinh(π/2)/2)/((1-e^(-Π))(-Π^2 + π^2/4)·cosh(π/2))` rather than the prior expanded derivative.
-- `T_q'(0)-S_q = 0` (line 19) — non-tautological check passes.
-- `R''(0) - target = 0` (line 28) — load-bearing assertion passes.
+```
+S_q(Pi) = pi*Aq/2 - Cq*Pi
+T_q'(0)-S_q = 0
+R''(0) - target = 0
+```
 
 **Mathematica:** exit=0. Notable lines:
-- `S_q(Pi) = -(p^2/((1 - E^(-p))*(-p^2 + Pi^2/4))) + (p*Sech[Pi/2]*(p/E^p + (Pi*Sinh[Pi/2])/2))/((1 - E^(-p))*(-p^2 + Pi^2/4))` (line 5) — compact closed form mirrors the SymPy display.
-- `T_q'(0)-S_q = 0` / `PASS: T_q'(0)-S_q` (lines 12–13).
-- `R''(0) - target = 0` / `PASS: R''(0) - target` (lines 19–20).
-- `Stage 150 Mathematica audit passed.` (line 26).
+```
+S_q(Pi) = -(cqS*p) + (aqS*Pi)/2
+T_q'(0)-S_q = 0   /  PASS: T_q'(0)-S_q
+R''(0) - target = 0   /  PASS: R''(0) - target
+```
+All in-file checks pass; both logs report `# exit_code: 0`.
 
-**Output freshness:** confirmed. SymPy `.py` mtime 2026-05-27 19:50:15; `.txt` mtime 2026-05-27 19:51:36 (re-generated after edit). Mathematica `.wl` mtime 2026-05-27 19:50:20; `.txt` mtime 2026-05-27 19:54:50 (re-generated after edit).
+**Output freshness:** confirmed. `stat` shows both `.txt` outputs at mtime
+2026-05-29 22:49:24 vs both scripts at 22:46:09 — outputs are ~3 min newer, regenerated
+post-fix. Committed `.txt` contents match the exec logs on the relevant lines, including
+the compact line-5 slope.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-The fix is to a check-assertion construction only. No derived numerical/symbolic results that downstream stages would consume have changed — the residual `R(x)`, the constants `Aq`, `Cq`, and the curvature `R''(0)` are all algebraically identical before and after the edit. The change only affects whether the `T_q'(0) - S_q` check can fail on a transcription error; it does not alter any output that other stages depend on.
+This is a display/corroboration-only change. The slope VALUE (`Aq*k - Cq*Pi`), the
+load-bearing `T_q'(0)-S_q` assertion, the residual identity, and all three curvature
+checks are mathematically identical to the pre-fix committed state (the source slope was
+already correct at 3e2b5c0). No derived result that a downstream unit could depend on has
+changed. No specific downstream re-audit concern.
 
 ## Side observations (non-blocking)
 
-- Codex did not append the `## Applied: F1` block to `redteam/directives/stage_150.md` as the directive's apply-protocol header requested. The file edits themselves are exactly as specified, so this is a paperwork omission rather than a functional defect. Orchestrator may want to flag this for codex iteration discipline but verification of the underlying finding stands.
-- The auditor's documented Mathematica-transliteration observation (lines 119–140 of the report) was intentionally not raised as a directive finding by the auditor and remains an open structural note for future work, not a defect of this iteration.
+- The directive's own "Orchestrator note" records that
+  `notes/stages/review/stage_150_review.md` is mislabeled (it contains Stage 031
+  content). This is a prose/notes issue outside the scripts-only loop and is correctly
+  excluded from this fix; flagged here only for orchestrator awareness, not blocking.
+- The original auditor's documented (non-finding) observation stands: neither engine
+  independently re-derives `T_s`/`T_q` from the lane ODEs — both plug in the notes'
+  closed forms. This was intentionally not raised as a directive finding (needs upstream
+  ODE/BCs the auditor could not read) and is unaffected by F1. Not blocking.
 
 ## Verdict justification
 
-The single finding (F1) is fully resolved: both engines now define `S_q` from the hand-derived closed form `Aq*k - Cq*Pi` (sympy) / `aq*k - cq*p` (mathematica), matching the directive verbatim. Both exec logs exit 0 with all assertions passing, including the (now non-tautological) `T_q'(0) - S_q = 0` check and the load-bearing `R''(0) - target = 0` check. Output files are fresh. No regressions in the diff. Verdict: **verified**.
+The single finding F1 is fully resolved. Both transcripts now display the compact
+coefficient-symbol slope (`pi*Aq/2 - Cq*Pi` / `-(cqS*p) + (aqS*Pi)/2`) at line 5,
+followed by the expanded value, and that printed form is provably the same symbolic
+object entering the load-bearing `T_q'(0)-S_q == 0` assertion (built from free
+placeholders, then `.subs`/`/.` to the concrete coefficients — confirmed by the
+can-fail self-test). The load-bearing slope assertion and all curvature checks are
+unchanged and still pass; both engines exit 0; saved outputs are fresh and match the
+logs. No regressions in the diff and no fabricated-display anti-pattern. Verdict:
+**verified**.

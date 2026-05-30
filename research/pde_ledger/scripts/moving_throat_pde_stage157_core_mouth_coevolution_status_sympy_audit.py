@@ -9,8 +9,9 @@ Checks:
    branch identities.
 4. The renormalized point is genuinely above the original canonical point.
 5. Tangent motion on the lower compensated family keeps delta R = 0.
-6. Tangent motion kills delta C and forces delta kappa_W = 0 under
-   canonical-even preservation.
+6. Canonical-even preservation pins delta C = delta kappa_W = 0 (non-degenerate
+   kernel); the tangent/family deviation-to-normalization map is deferred to
+   Stage 158.
 7. The Stage 158 expansion point is the renormalized canonical tuple.
 """
 
@@ -60,7 +61,7 @@ R = sp.simplify((g - r) ** 2 / (1 + r**2))
 g_star = sp.simplify(r - sp.sqrt(1 + r**2) / 2)
 expect_zero("R(g_*) - 1/4", R.subs(g, g_star) - sp.Rational(1, 4))
 
-banner("2. Carry-forward numerical basepoint from Stages 138-139")
+banner("2. Carry-forward numerical basepoint from Stages 155-156")
 rF1_exact = sp.sqrt(4107 - 100 * sp.pi**2) / (10 * sp.pi)
 g_star_exact = sp.simplify(rF1_exact - sp.sqrt(1 + rF1_exact**2) / 2)
 rF1 = sp.Float(str(constants["rF1"]), 30)
@@ -109,9 +110,25 @@ print("canonical-even preservation solutions =", even_preservation)
 if even_preservation != [{deltaC: 0, dkappa: 0}]:
     raise AssertionError("Canonical-even preservation should pin deltaC = delta kappa_W = 0.")
 
-sol_deltaC = sp.solve([sp.Eq(dE2, 0), sp.Eq(dE4, 0)], [deltaC, dkappa], dict=True)[0]
-deltaC_from_pair = sp.simplify(sol_deltaC[deltaC])
-expect_zero("delta C from canonical-even Solve", deltaC_from_pair)
+# --- Audit assertion: canonical-even non-degeneracy (carried-coefficient consistency) ---
+# CONSULT Q3 (batch 7), option (ii): py:107-110 already imposes the canonical-even
+# constraint pair {dE2=0, dE4=0} and asserts the trivial kernel {deltaC:0, dkappa:0}.
+# Do NOT re-solve that homogeneous pair (tautological) and do NOT re-expect_zero a
+# quantity already asserted zero. Instead assert the LOAD-BEARING reason the kernel is
+# trivial: the carried canonical-even projection coefficients [[1, -9*sigma_star],
+# [5, -72*sigma_star]] give a NON-ZERO determinant (-27*sigma_star) for sigma_star != 0,
+# so the imposed constraint pins deltaC = delta_kappa_W = 0. (The 9/72/5/27/243
+# coefficients are CARRIED canonical-even projection coefficients; the stage notes do not
+# re-derive them in-stage, so this is a carried-coefficient consistency check, not an
+# independent derivation from family motion. The genuine tangent/family
+# deviation-to-normalization map is deferred to Stage 158 per the card.) This FAILS if the
+# carried coefficients were degenerate (e.g. row 2 == 5x row 1, det -> 0) or mistyped so
+# the matrix lost full rank.
+even_det = sp.simplify(sp.Matrix([[1, -9 * sigma_star], [5, -72 * sigma_star]]).det())
+expect_zero(
+    "canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27*sigma_star)",
+    sp.simplify(even_det + 27 * sigma_star),
+)
 
 banner("4. Stage 158 expansion point")
 Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 delta_Sigma0 Sstar delta_S", real=True)

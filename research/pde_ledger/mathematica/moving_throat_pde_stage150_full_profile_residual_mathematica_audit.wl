@@ -36,9 +36,13 @@ tq = aq*Sinh[k*x] - cq*Cosh[k*x] + cq*Exp[-p*x];
 
 (* Hand-derived closed form: T_q'(0) = aq*k - cq*p
    (differentiate tq = aq*Sinh[k*x] - cq*Cosh[k*x] + cq*Exp[-p*x] at x=0). *)
-sQ = aq*k - cq*p;
+(* Build the slope compactly from FREE coefficient symbols so the PRINTED form is provably
+   the real slope; then substitute the concrete aq, cq definitions for the load-bearing checks. *)
+sQsymbolic = aqS*k - cqS*p;
+sQ = sQsymbolic /. {aqS -> aq, cqS -> cq};
 
-Print["S_q(Pi) = ", fmt[sQ]];
+Print["S_q(Pi) = ", fmt[sQsymbolic]];
+Print["S_q(Pi) [expanded] = ", fmt[sQ]];
 
 expectZero["T_s(0)", ts /. x -> 0];
 expectZero["T_q(0)", tq /. x -> 0];

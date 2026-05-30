@@ -70,10 +70,13 @@ expectZero["matrix drho", solVec[[1]] - dTheta/2];
 expectZero["matrix da", solVec[[2]] - (dKs/2 - dTheta/4)];
 expectZero["matrix dcs", solVec[[3]] - (dKs/2 - dTheta/4 + dP/5)];
 expectZero["matrix dZ", solVec[[4]] - (dKq - 2*dP/5)];
-(* Round-trip: forward map of the matrix solution recovers the observables.   *)
-(* Sum-of-squares scalarization (zero iff every component residual is zero;    *)
-(* expectZero tests res === 0, which is False for a length-4 list).            *)
-expectZero["matrix round-trip", Total[(Mmat . solVec - {dTheta, dKs, dKq, dP})^2]];
+(* Forward-transcription check: confirm Mmat encodes eq1..eq4 by mapping the symbolic *)
+(* drift vector forward and comparing to the HAND-TYPED boxed branch laws (notes      *)
+(* section 1). fwdLaws is typed from the boxed laws, NOT built from Mmat/Solve/Inverse, *)
+(* so a wrong Mmat coefficient yields a nonzero residual and FAILS. Total[(...)^2]      *)
+(* scalarizes the length-4 residual (expectZero tests res === 0, False for a list).     *)
+fwdLaws = {2*drho, drho + 2*da, dZ + 2*dcs - 2*da, 5*(dcs - da)};
+expectZero["matrix forward-transcription", Total[(Mmat . {drho, da, dcs, dZ} - fwdLaws)^2]];
 
 banner["Equivalent full-bundle form with P_0 = N_0 / D_0"];
 dcsBundle = FullSimplify[dcsSol /. dP -> dN0 - dD0, Assumptions -> $Assumptions];

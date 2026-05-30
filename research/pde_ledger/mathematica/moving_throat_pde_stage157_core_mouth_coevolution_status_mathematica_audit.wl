@@ -90,7 +90,7 @@ dR = FullSimplify[(D[rFun, g] /. g -> gminus) dg + (D[rFun, r] /. g -> gminus) d
 expectZero["tangent motion keeps delta R = 0", dR /. dg -> gp dr];
 
 Clear[sigmaStar, deltaC, dKappa];
-$Assumptions = Element[{sigmaStar, deltaC, dKappa}, Reals];
+$Assumptions = Element[{sigmaStar, deltaC, dKappa}, Reals] && 0 < sigmaStar < 1;
 dE2 = (deltaC - 9 sigmaStar dKappa)/(27 (1 - sigmaStar));
 dE4 = (5 deltaC - 72 sigmaStar dKappa)/(243 (1 - sigmaStar));
 evenPreservation = Solve[{dE2 == 0, dE4 == 0}, {deltaC, dKappa}, Reals];
@@ -99,10 +99,19 @@ If[evenPreservation =!= {{deltaC -> 0, dKappa -> 0}},
   fail["canonical-even preservation", evenPreservation]
 ];
 
-Clear[dCsym, dKsym];
-solDeltaC = Solve[{dCsym - 9 sigmaStar dKsym == 0, 5 dCsym - 72 sigmaStar dKsym == 0}, {dCsym, dKsym}];
-deltaCIndep = FullSimplify[dCsym /. First[solDeltaC]];
-expectZero["delta C from canonical-even Solve", deltaCIndep];
+(* --- Audit assertion: canonical-even non-degeneracy (carried-coefficient consistency) --- *)
+(* CONSULT Q3 (batch 7), option (ii): wl:94-100 already imposes the canonical-even pair    *)
+(* and asserts the trivial kernel. Do NOT re-state the same literal 9/72/5 numerator       *)
+(* system as an independent expectZero (that mirrors SymPy and pretends independence).      *)
+(* Instead assert the load-bearing reason the kernel is trivial: the carried canonical-even *)
+(* projection coefficient matrix has a NON-ZERO determinant (-27 sigmaStar), so the imposed *)
+(* constraint pins deltaC = dKappa = 0. Carried-coefficient consistency check, not an       *)
+(* independent derivation from family motion; the tangent/family deviation-to-normalization *)
+(* map is deferred to Stage 158. Fails if the carried coefficients lose full rank.          *)
+Clear[evenDet];
+evenDet = FullSimplify[Det[{{1, -9 sigmaStar}, {5, -72 sigmaStar}}]];
+expectZero["canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27 sigmaStar)",
+  FullSimplify[evenDet + 27 sigmaStar]];
 
 banner["4. Stage 158 expansion point"];
 Clear[sigma0, dSigma0, sStar, dS];

@@ -1,8 +1,8 @@
 ---
 unit_id: 157
 batch: IV.6
-verifier_model: claude-opus-4-7
-verify_date: 2026-05-28T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T23:10:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
@@ -15,65 +15,94 @@ material_change: false
 
 ## Per-finding outcomes
 
-### F1 — mathematica_transliteration
+### F1 — insufficient_verification (SymPy: canonical-even check re-solves the same pair)
 
 **Classification:** resolved
 
 **What changed:**
-`.wl` lines 102-105 replace the old `deltaCFromTangent = -16 sigmaStar (dR /. dg -> gp dr)` projector with an independent Solve on a fresh symbol set (`dCsym, dKsym`): `solDeltaC = Solve[{dCsym - 9 sigmaStar dKsym == 0, 5 dCsym - 72 sigmaStar dKsym == 0}, {dCsym, dKsym}]; deltaCIndep = FullSimplify[dCsym /. First[solDeltaC]]; expectZero["delta C from canonical-even Solve", deltaCIndep]`. The literal `-16 sigmaStar` multiplier no longer appears as an `expectZero` target.
+- `scripts/...stage157...sympy_audit.py:113-130` — the old duplicate re-solve
+  (`sol_deltaC = sp.solve([...dE2,dE4...]); expect_zero("delta C from canonical-even Solve", ...)`)
+  is REMOVED and replaced by `even_det = sp.Matrix([[1, -9*sigma_star], [5, -72*sigma_star]]).det()`
+  with `expect_zero("canonical-even non-degeneracy: ... (det = -27*sigma_star)", even_det + 27*sigma_star)`.
+- py:12-14 — docstring item 6 corrected from "Tangent motion kills delta C and forces delta kappa_W = 0"
+  to the deferral wording ("Canonical-even preservation pins delta C = delta kappa_W = 0 (non-degenerate
+  kernel); ... deferred to Stage 158").
+- py:64 — banner corrected from "Stages 138-139" to "Stages 155-156" (housekeeping item).
 
 **Assessment:**
-Directive option A applied. The new check routes the `delta C = 0` claim through a fresh 2×2 homogeneous Solve (not through the closed-form `-16 sigmaStar` projector shared with Python), so it genuinely exercises whether the system's determinant is nonzero rather than re-evaluating an already-proven zero. Non-tautological. The dE2/dE4 coefficient literals (27, 243, 9, 72, 5) remain shared between engines, but the directive explicitly accepted option A over option B for that reason.
+Correct and matches the directive's consult-Q3 option (ii). The new assertion is GENUINELY
+non-tautological: it operates on the coefficient-matrix determinant (an independent quantity),
+NOT a re-solve of the homogeneous pair already asserted at py:108-111, and does NOT re-`expect_zero`
+the already-asserted-zero `deltaC`. A mistyped coefficient (e.g. -72 → -71) gives det = -36*sigma_star,
+so `even_det + 27*sigma_star = -9*sigma_star ≠ 0` and the check FAILS — a real fail mode. The
+constraint-imposition solve+assert at py:108-111 is still present and passing. No collateral edits
+beyond the three named changes.
 
-### F2 — insufficient_verification
+### F2 — transliteration (Mathematica: mirror of the same literal 2×2 system)
 
 **Classification:** resolved
 
 **What changed:**
-`.py` lines 112-114 now read `sol_deltaC = sp.solve([sp.Eq(dE2,0), sp.Eq(dE4,0)], [deltaC, dkappa], dict=True)[0]; deltaC_from_pair = sp.simplify(sol_deltaC[deltaC]); expect_zero("delta C from canonical-even Solve", deltaC_from_pair)`. The trivial `-16 sigma_star * dR.subs(dg, gp*dr)` assertion is removed. The `.wl` mirrors with the F1 Solve-based check carrying the same banner string.
+`mathematica/...stage157...audit.wl:102-114` — the mirrored
+`Clear[dCsym,dKsym]; solDeltaC = Solve[{dCsym - 9 sigmaStar dKsym == 0, 5 dCsym - 72 sigmaStar dKsym == 0}, ...];
+deltaCIndep = ...; expectZero["delta C from canonical-even Solve", deltaCIndep]` block is GONE,
+replaced by the parallel `evenDet = Det[{{1, -9 sigmaStar}, {5, -72 sigmaStar}}]` with
+`expectZero["canonical-even non-degeneracy: ... (det = -27 sigmaStar)", evenDet + 27 sigmaStar]`.
 
 **Assessment:**
-Directive option B applied in both engines, with mirrored wording. The new assertion is no longer a literal multiplication of a known-zero quantity; it now exercises the rank of the canonical-even pair. Output transcripts confirm the new banner `delta C from canonical-even Solve = 0` in both `.txt` files. Note: sympy invokes `sp.solve` on the same system twice (line 107 for `even_preservation`, line 112 for `sol_deltaC`) — mildly redundant but harmless and consistent with the directive.
+Correct and parallels F1. The `.wl` no longer presents the literal 9/72/5 numerator system as
+an "independent" `expectZero`; it asserts the determinant with the same genuine loss-of-full-rank
+fail mode. The even-preservation constraint solve+assert at wl:96-100 is still present and passing.
 
-### F3 — stale_output
+### F3 — symbol_assumption_error (Mathematica: missing physical branch domain)
 
 **Classification:** resolved
 
 **What changed:**
-No source edit required; refreshed outputs supersede the old mtimes.
+`wl:93` — `$Assumptions = Element[{sigmaStar, deltaC, dKappa}, Reals]` → `... && 0 < sigmaStar < 1`.
+Scoped to the Section-3 even-preservation block only (Sections 1/2/4 `$Assumptions` untouched).
 
 **Assessment:**
-sympy output mtime 11:30 > script mtime 10:03; mathematica output mtime 11:31 > script mtime 10:03. Both fresh.
+Correct (consult Q4). No bare `ConditionalExpression` appears in the printed residuals (the
+Section-3 `expectZero` lines print "= 0" / "PASS" cleanly), and the script still exits 0.
 
 ## Exec log assessment
 
 **SymPy:** exit=0. Notable lines:
-- `R(g_*) - 1/4 = 0`
-- `tangent motion keeps delta R = 0 = 0`
-- `canonical-even preservation solutions = [{deltaC: 0, delta_kappa: 0}]`
-- `delta C from canonical-even Solve = 0`
-- `Stage 158 tangent expansion packet = 0`
+`canonical-even preservation solutions = [{deltaC: 0, delta_kappa: 0}]`
+`canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27*sigma_star) = 0`
+`2. Carry-forward numerical basepoint from Stages 155-156`
 
 **Mathematica:** exit=0. Notable lines:
-- `PASS: R(g_*) - 1/4`
-- `PASS: tangent motion keeps delta R = 0`
-- `canonical-even preservation solutions = {{deltaC -> 0, dKappa -> 0}}`
-- `delta C from canonical-even Solve = 0` followed by `PASS: delta C from canonical-even Solve`
-- `Stage 157 Mathematica audit passed.`
+`canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27 sigmaStar) = 0`
+`PASS: canonical-even non-degeneracy: ...`  /  `Stage 157 Mathematica audit passed.`
+No `ConditionalExpression` in any residual.
 
-**Output freshness:** Confirmed. Both `.txt` mtimes (11:30, 11:31 2026-05-28) are newer than their respective script mtimes (10:03 2026-05-28).
+**Output freshness:** confirmed. Both saved `.txt` outputs (mtime 1780117330) are newer than the
+edited scripts (mtime 1780116781). The committed outputs contain the new non-degeneracy line and
+the "Stages 155-156" banner; the old "delta C from canonical-even Solve" string is absent from both.
 
 ## Material-change assessment
 
-`material_change`: false.
-
-The edits replace a trivial assertion with a substantive equivalent that asserts the same outcome (delta C = 0 under canonical-even preservation). No constants, no derived numerical results, no symbolic identities downstream of this stage are altered. The carry-forward tuple (`r_F1`, `g_*`, `Sigma_0^can`, `T_hat_can`, `Pi_can`, `S_can`) is unchanged. Downstream units do not depend on the wording of the assertion.
+`material_change`: false. All three edits are how-it's-checked / labeling fixes: a tautological
+re-solve and its Mathematica mirror were collapsed to an independent determinant non-degeneracy
+assertion, a docstring/banner were aligned to the already-deferring published card, and a physical
+branch domain was scoped onto an assumption. No derived numeric or symbolic result that downstream
+units consume was changed. Per the directive's `## RESOLVED (consult batch 7)` block, the published
+card (Open/Numerical, deviation-to-normalization map already deferred to Stage 158) is unchanged and
+already correct — escalation was resolved against; this is not a conceptual change.
 
 ## Side observations (non-blocking)
 
-- The Stage 2 banner in the sympy output still reads "Carry-forward numerical basepoint from Stages 138-139" while the .wl banner reads "Stages 155-156". The directive didn't ask for either; the auditor noted the 138-139 phrasing as pre-existing. Not a verification blocker.
-- The new sympy block re-Solves the same 2×2 system already Solved one line earlier for `even_preservation`. Functionally fine; cosmetically could reuse `even_preservation[0][deltaC]`. Not blocking.
+- The directive notes `notes/stages/review/stage_157_review.md` is orphaned (contains a Stage 038
+  review body). That is an orchestrator/notes repair, out of scripts-only scope — not blocking.
 
 ## Verdict justification
 
-All three findings are resolved. Both engines exit 0 with the new substantive `delta C from canonical-even Solve` check appearing in both transcripts. The literal `-16 sigmaStar` projector is gone from the `.wl`, satisfying F1's verification criterion. The replacement assertion is non-tautological (a homogeneous 2×2 Solve outcome rather than a multiplication-by-zero), satisfying F2. Output mtimes are post-fix, satisfying F3. No regressions in either log; numerical residuals unchanged.
+All three findings are resolved with edits matching the directive exactly and no collateral changes
+(the diff shows only the four named edits). The replacement assertions are genuinely non-tautological
+in both engines — they operate on the carried coefficient-matrix determinant with a real fail mode on
+coefficient mistype/rank-loss, not a re-solve of the previously-asserted homogeneous kernel. The
+docstring item 6, the SymPy banner, the Mathematica mirror removal, and the physical-branch
+assumption are all confirmed; both engines exit 0 and the refreshed committed outputs reflect the
+post-fix state. Verdict: verified.

@@ -36,9 +36,14 @@ Tq = Aq * sp.sinh(k*x) - Cq * sp.cosh(k*x) + Cq * sp.exp(-Pi*x)
 
 # Hand-derived closed form: T_q'(0) = Aq*k - Cq*Pi
 # (differentiate Tq = Aq*sinh(k*x) - Cq*cosh(k*x) + Cq*exp(-Pi*x) at x=0).
-Sq = Aq*k - Cq*Pi
+# Build the slope compactly from FREE coefficient symbols so the PRINTED form is provably
+# the real slope; then .subs the concrete Aq, Cq definitions for the load-bearing checks.
+Aq_s, Cq_s = sp.symbols("Aq Cq")
+Sq_symbolic = Aq_s*k - Cq_s*Pi
+Sq = Sq_symbolic.subs({Aq_s: Aq, Cq_s: Cq})
 
-print("S_q(Pi) =")
+print("S_q(Pi) =", Sq_symbolic)
+print("S_q(Pi) [expanded] =")
 sp.pprint(Sq)
 
 expect_zero("T_s(0)", Ts.subs(x, 0))

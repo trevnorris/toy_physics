@@ -39,6 +39,10 @@ BT = sp.N(
     (sp.Rational(9,1)/(40*T_star)) * Pi_star/(4*(1-S_star/4)**2),
     30
 )
+# Paper-literal anchor (EXTERNAL, appendix part04:846/848): AT/BT reproduce the published
+# A_T/B_T. A wrong AT formula (e.g. a dropped chain term) FAILS here.
+assert abs(sp.N(AT, 30) - sp.Float("-4.27263956256927")) < sp.Float("1e-11"), f"AT vs paper A_T: {AT}"
+assert abs(sp.N(BT, 30) - sp.Float("0.134875005736706")) < sp.Float("1e-11"), f"BT vs paper B_T: {BT}"
 
 banner("Stage 148 audit: representative non-exponential families")
 
@@ -83,12 +87,25 @@ print("lambda_(Pi,0) =", lam_Pi_zero)
 print("lambda_(T,0) =", lam_T_zero)
 print("1 - lambda_(Pi,0) =", sp.N(1-lam_Pi_zero, 30))
 
-# Stage 126 positive-family compensation closed form (see notes section 3)
+# Stage 126 positive-family compensation closed form (see notes section 3).
+# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so
+# rF1^2 = (4107 - 100*pi^2)/(100*pi^2)); do NOT substitute any other constant.
 xi_star_closed = (-37*sp.sqrt(3) - 5*sp.pi**2 + 2*sp.sqrt(4107 - 100*sp.pi**2)) / (5*(8 - sp.pi**2))
 xi_star = sp.N(xi_star_closed, 30)
 print("xi_* (Stage 126 closed form) =", xi_star)
-residual = sp.N((1 - lam_Pi_zero) - xi_star, 30)
+# Preferred (EXACT, no Pi_star / no nsolve): 1 - lambda_(Pi,0) has the closed form
+# (pi/4 - gminus)/(pi/4 - 2/pi), since the convex family is g_lam = (1-lam)*(2/pi)+lam*(pi/4)
+# and lambda_(Pi,0) solves g_lam = g_* = gminus. Build it from the EXACT gminus (NOT the
+# sp.N-numericized g_star/lam_Pi_zero, which would defeat the symbolic reduction). Note
+# 1 + rF1^2 = 4107/(100 pi^2) so sqrt(1+rF1^2) = 37*sqrt(3)/(10 pi), and sqrt(4107)=37*sqrt(3),
+# so SymPy collapses the nested radicals and reduces the difference to exact 0.
+rF1_exact = sp.sqrt(12*sp.Rational(37, 20)**2/sp.pi**2 - 1)
+gminus_exact = rF1_exact - sp.sqrt(1 + rF1_exact**2)/2
+one_minus_lam_exact = (sp.pi/4 - gminus_exact) / (sp.pi/4 - 2/sp.pi)
+exact_resid = sp.simplify(one_minus_lam_exact - xi_star_closed)
+print("exact (1-lambda_(Pi,0)) - xi_* =", exact_resid)
+residual = sp.N((1 - lam_Pi_zero) - xi_star, 30)   # numeric, for transcript display
 print("(1-lambda_(Pi,0)) - xi_* =", residual)
-assert abs(residual) < sp.Float("1e-15"), f"Stage 148 D4 consistency failed: residual = {residual}"
+assert exact_resid == 0, f"Stage 148 D4 consistency (exact) failed: residual = {exact_resid}"
 
 print("\nStage 148 complete.")

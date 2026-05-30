@@ -40,12 +40,24 @@ gPrimeStar = N[D[gFormula, p] /. p -> pStar, 40];
 sPrimeStar = N[D[sFormula, p] /. p -> pStar, 40];
 sigmaStar = N[pStar/(1 - sStar/4), 40];
 tStar = N[Sqrt[9*sigmaStar/20], 40];
-(* dSigma in terms of dPi (= -(g_target - gStar)/gPrimeStar) and dS = (s_target - sStar) *)
-dSigmaOfDeltas[dPi_, dS_] := dPi/(1 - sStar/4) + pStar*dS/(4*(1 - sStar/4)^2);
-dTOfDeltas[dG_, dS_] := Module[{dPi},
-  dPi = -dG/gPrimeStar;
-  N[(9/(40*tStar))*dSigmaOfDeltas[dPi, dS], 30]
-];
+(* aT, bT derived by Mathematica's OWN symbolic differentiation (NOT a port of SymPy AT). *)
+(* T_m as a function of p with S = sFormula(p): the total p-derivative of T_m along the   *)
+(* S-follows-Pi curve gives aT; bT is the explicit S-sensitivity at fixed p. Per consult  *)
+(* Q1 this restores the sPrimeStar chain term the dSigmaOfDeltas route dropped.            *)
+Tm[pp_] := Sqrt[(9/20)*(pp/(1 - sFormula/4))] /. p -> pp;
+(* total dT_m/dPi along S = sFormula(Pi), projected onto dg via dPi = -dg/g'_*:           *)
+aT = N[-(D[Tm[p], p] /. p -> pStar)/gPrimeStar, 30];
+(* explicit S-sensitivity bT = dT_m/dS at fixed Pi, evaluated at the starred point *)
+bT = N[(9/(40*tStar))*pStar/(4*(1 - sStar/4)^2), 30];
+(* first-order correction in the paper's two-moment form: *)
+dTOfDeltas[dG_, dS_] := N[aT*dG + bT*dS, 30];
+
+(* --- Independence anchor 1: aT, bT vs the published appendix literals (EXTERNAL). --- *)
+(* part04:846/848 -- these are paper values, NOT a SymPy mirror. *)
+expectZero["aT vs paper literal A_T",
+  If[Abs[aT - (-4.27263956256927)] < 10^-11, 0, aT - (-4.27263956256927)]];
+expectZero["bT vs paper literal B_T",
+  If[Abs[bT - 0.134875005736706] < 10^-11, 0, bT - 0.134875005736706]];
 
 gU = N[2/Pi, 30];
 sU = N[2*Tanh[Pi/2]/Pi, 30];

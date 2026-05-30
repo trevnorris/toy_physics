@@ -2,89 +2,146 @@
 unit_id: 175
 batch: V.1
 verifier_model: claude-opus-4-8[1m]
-verify_date: 2026-05-28T16:30:00-06:00
+verify_date: 2026-05-29
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
+findings_resolved: 1
+findings_total: 1
 material_change: false
 ---
 
 # Verification — unit 175
 
+This pass verifies the SINGLE re-review finding F1 = R1 (`codex_reviews/stage_175.md`):
+the Mathematica `Sigma_N` differential block was a line-by-line transliteration of the
+SymPy block (both extracting the first-order log-slope via the same `dlog =
+D[Log[.],eps]/.eps->0` primitive), so the differential SLOPE identity was singly-routed
+across engines. The stale V.1 F1/F2 were already resolved + PASS in prior work and were
+intentionally NOT re-prescribed (per the batch-8 consult); they are not re-evaluated here.
+
 ## Per-finding outcomes
 
-### F1 — tautological_check
+### F1 — mathematica_transliteration (R1)
 
 **Classification:** resolved
 
 **What changed:**
-- sympy `scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py:127-142`
-- mathematica `mathematica/moving_throat_pde_stage175_wall_normalized_load_shape_mathematica_audit.wl:91-105`
+Codex applied F1 as the directive's PRIMARY edit (option B SUPPLEMENT), Mathematica-only,
+`.py` untouched. Two additions to
+`mathematica/moving_throat_pde_stage175_wall_normalized_load_shape_mathematica_audit.wl`
+(confirmed against the diff patch and the live file):
 
-The old `X - X` tautology line — `expect_zero("Sigma_N - (2 dln Lambda - dK)", Sigma_N_direct - (2 * dlog(expr_L) - kappa))` / `expectZero["Sigma_N - (2 dln Lambda - dK)", sigmaNDirect - (2*dlog[exprL] - kappa)]` — has been removed from both engines. The cached `expr_L`/`exprL` and `expr_ratio`/`exprRatio` variables are gone entirely (grep confirms no surviving references outside explanatory comments). `Sigma_N_direct` is now built from a freshly-named `expr_PoverDelta_phys = (P/Delta).subs(subs_hat).subs(subs_eps)` (sympy:132 / wl:95), and the surviving assertion is `Sigma_N - dln(Lambda^2/K)` (sympy:135 / wl:98), comparing `2*dlog(P/Delta) - kappa` against `dlog(Lambda^2/K)`.
+1. New slope extractor at line 31, immediately after the existing `dlog` helper (lines 26-29):
+   `dlogSeries[expr_] := Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps];`
+   The load-bearing operation is `Series` + `Coefficient` (Mathematica-native), NOT
+   `D[Log[...]]` and NOT a port of SymPy's `sp.diff(sp.log(...))`.
 
-This matches the orchestrator note: on run, the applier's cross-check variant (`2 dln(P/Delta) - 2 dln Lambda` plus the relabeled line) reduced to a simplify-commutes identity, so the orchestrator switched to the directive's explicitly-blessed MINIMAL resolution — keep only the `Sigma_N - dln(Lambda^2/K)` check and drop the two near-trivial lines in both engines.
-
-**Assessment:**
-Correct and complete. The X-X tautology is genuinely gone — there is no `expect_zero`/`expectZero` of the form `Sigma_N_direct - (2*dlog(<same arg>) - kappa)` anywhere; the only remaining mentions of those phrases are inside comments documenting the removal. The surviving `Sigma_N - dln(Lambda^2/K)` check is non-tautological: the LHS subtracts `kappa` explicitly while the RHS derives the matching `-kappa` from differentiating `log(Lambda^2/K) = 2 log(Lambda) - log(K)` (with `dlog(K) = kappa`); a wrong `kappa` coefficient or sign would break the identity, so the `kappa = delta_K` content is load-bearing. The substantive scale-invariance content additionally sits in the genuine homogeneity check `N0 - Lambda^2` (line 83/61) and is propagated into the common-shape branch `Sigma_N + dK` and the new F2 aggregate. This is the intended fix. Resolved.
-
-### F2 — insufficient_verification
-
-**Classification:** resolved
-
-**What changed:**
-- sympy `scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py:157-165`
-- mathematica `mathematica/moving_throat_pde_stage175_wall_normalized_load_shape_mathematica_audit.wl:114-118`
-
-A new weighted-aggregate no-go assertion `Xi_load (all shapes frozen) + dK` was added immediately after the common-shape-branch check in both engines, exactly as the directive specified: introduce non-negative weights `rho1, rho2`, form `Xi_load_frozen = (rho1 + rho2) * Sigma_N_common`, substitute `rho1 + rho2 -> 1`, and assert the residual `+ kappa == 0`. The sympy version uses `.subs(rho1 + rho2, 1)`; the `.wl` uses the primary `/. (rho1 + rho2) -> 1` replacement (not the `rho2 -> 1 - rho1` fallback).
-
-**Assessment:**
-Correct, matches the directive verbatim, and non-tautological in a meaningful sense. The check depends on two facts holding simultaneously: (a) `Sigma_N_common` actually equals `-kappa` (the per-port no-go from line 156/113), and (b) the `sum rho = 1` substitution firing on the `(rho1+rho2)*(-kappa)` form to yield `-kappa`. Both exec logs show the line landing `= 0` / `PASS`, confirming the replacement fired in both engines. This anchors the `sum_r rho_r^(N) = 1` aggregation step that the headline no-go theorem (`Xi_load = -delta_K`) relies on, which previously existed only as printed prose. Resolved.
-
-### F3 — mathematica_transliteration
-
-**Classification:** resolved
-
-**What changed:**
-- banner (step 1): `mathematica/...mathematica_audit.wl:31` now reads `banner["STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION"]`; the SymPy banner (`...sympy_audit.py:39`) likewise corrected. grep for `STAGE 158`/`Stage 158` returns no matches in either file.
-- F1 fix (step 2): applied independently in the `.wl` differential block (see F1 above) so the `Sigma_N` check is no longer a transliterated tautology.
-- step 3 (dlogSeries series-coefficient route): intentionally NOT applied — accepted as a policy mirror.
+2. Exactly ONE new `expectZero` check at lines 106-108, placed immediately after the
+   existing `dlog`-based `Sigma_N - dln(Lambda^2/K)` line (line 100), which is left
+   untouched:
+   ```
+   sigmaNDirectSeries = FullSimplify[2*dlogSeries[exprPoverDeltaPhys] - kappa, Assumptions -> $Assumptions];
+   sigmaNShapeSeries  = FullSimplify[dlogSeries[(lambda^2/k) /. subsEps], Assumptions -> $Assumptions];
+   expectZero["Sigma_N - dln(Lambda^2/K) [series route]", sigmaNDirectSeries - sigmaNShapeSeries];
+   ```
+   It reuses the exact live names (`exprPoverDeltaPhys`, `lambda`, `k`, `subsEps`, `kappa`,
+   `$Assumptions`); none renamed or redefined. The diff patch contains only these two hunks
+   (the helper insertion and the supplemental block + its explanatory comment). No collateral
+   edit: `sigmaNDirect`/`sigmaNShape` (lines 98-100), the downstream `sigmaNCommon` (line 120)
+   and the `Xi_load` weighted aggregate (lines 124-128) are byte-for-byte unchanged, and the
+   `.py` is not in the diff at all. The directive's `## Applied: F1` block records
+   `deviation: none`, consistent with the diff.
 
 **Assessment:**
-Resolved, policy-accepted for step 3. Steps 1 and 2 are correct and verified: the wrong "STAGE 158" banner is fixed in both engines, and the F1 tautology is removed from the `.wl` as well as the `.py`. Step 3 (replacing `dlog` with `dlogSeries[expr_] := Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) was left as a policy mirror rather than forced — the `.wl` Sigma_N block keeps `dlog`, consistent with the project's MATHEMATICA_MIRROR_POLICY default and the unit-169 F2 disposition this batch. The directive itself made step 3 conditional ("If a full re-derivation is out of scope ... at minimum apply (c) the banner correction and the F1 fix independently in each engine"), so applying steps 1+2 and policy-accepting step 3 satisfies the directive's stated minimum. This is not a `partial` outcome: the directive's required mechanical change (banner + independent F1 fix in each engine) is fully in place, and the residual transliteration of the structurally-identical algebra is a known, accepted mirror policy rather than an unaddressed finding. Resolved.
+Correct and complete; it addresses the finding on its own merits, not by rubber-stamp.
+
+- Independence (anti-guard 2): the slope is extracted via `Series`/`Coefficient`, a
+  structurally distinct route from the mirrored `dlog = D[Log[.],eps]/.eps->0` primitive
+  that R1 flagged as a transliteration of the SymPy `sp.diff(sp.log(...))` route. The new
+  check is NOT the degenerate `dlogSeries[e] - dlog[e]` on the SAME argument (which would
+  only validate two differentiation methods against each other — a method tautology). It
+  compares series-route DIRECT (`2*dlogSeries[exprPoverDeltaPhys] - kappa`) against the
+  SHAPE target (`dlogSeries[(lambda^2/k)/.subsEps]`), exactly as the directive requires.
+
+- Non-tautological (anti-guard 3): the check can fail. The SHAPE target carries the `1/k`
+  factor whose first-order log-slope is `-kappa`; a wrong shape (e.g. `lambda^2*k`) would
+  flip that term to `+kappa` and break the identity, and an omitted/wrong `-kappa` on the
+  DIRECT side would not cancel. As the directive notes honestly, the `2 dln(P/Delta)` vs
+  `2 dln(Lambda)` portion is value-equal — `lambda` is the FullSimplify of `(p/delta)/.subsHat`
+  and `exprPoverDeltaPhys` is the same `(p/delta)/.subsHat` then `/.subsEps`. So the
+  load-bearing degrees of freedom are the symbolic `-kappa` (= `-delta_K`) term against the
+  `/k` in the SHAPE target, PLUS the independent extraction-method coverage. That is exactly
+  the intended R1 fix — a structurally independent slope ROUTE, not new physics — and it is
+  reported as such (the comment says "the differential identity no longer relies on a
+  transliteration of the SymPy dlog route"), not over-claimed.
+
+- `-kappa` (= `-delta_K`) is kept symbolic; no numeric substitution (anti-guard).
+
+- The escape clause (Block + sanctioned MIRROR_POLICY mirror / `## Blocked: F1`) was
+  correctly NOT used: the series route reduced to `=== 0` robustly under `FullSimplify`, so
+  no waiver applies and the directive's primary independent-route resolution was achieved.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines:
-- `N0 - Lambda^2 = 0` (genuine homogeneity check, anchors Sigma_N content)
-- `Sigma_N - dln(Lambda^2/K) = 0` (the surviving, non-tautological differential check post-F1)
-- `Common-shape branch Sigma_N + dK = 0`
-- `Xi_load (all shapes frozen) + dK = 0` (the new F2 weighted-aggregate check)
-No traceback / no `AssertionError`; `expect_zero` raises on any non-zero residual, so a clean transcript with every line `= 0` implies exit 0.
+**SymPy:** exit=0. Transcript UNCHANGED (the `.py` was not edited), as required — no
+`[series route]` line:
+```
+Sigma_N - dln(Lambda^2/K) = 0
+Common-shape branch Sigma_N + dK = 0
+Xi_load (all shapes frozen) + dK = 0
+```
 
-**Mathematica:** exit=0. Notable lines:
-- `PASS: N0 - Lambda^2`
-- `Sigma_N - dln(Lambda^2/K) = 0` / `PASS: Sigma_N - dln(Lambda^2/K)`
-- `PASS: Common-shape branch Sigma_N + dK`
-- `Xi_load (all shapes frozen) + dK = 0` / `PASS: Xi_load (all shapes frozen) + dK`
-- closing `Stage 175 Mathematica audit passed.` (script ends with `Exit[0]`; `expectZero` failure path calls `fail` -> `Exit[1]`, and no `FAIL` appears)
-Both banners now print `STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION`.
+**Mathematica:** exit=0. The new line appears at log lines 32-33, immediately after the
+existing `dlog` line, both PASS:
+```
+Sigma_N - dln(Lambda^2/K) = 0
+PASS: Sigma_N - dln(Lambda^2/K)
+Sigma_N - dln(Lambda^2/K) [series route] = 0
+PASS: Sigma_N - dln(Lambda^2/K) [series route]
+```
+Closing line `Stage 175 Mathematica audit passed.` with `# exit_code: 0`. Every prior
+check (B0/Delta/Q/P/Z0/N0, Sigma_B/Sigma_Z, conservative branches, Xi_load) still PASSes —
+inserting the `dlogSeries` helper and the one supplemental check introduced no regression.
 
-**Output freshness:** confirmed. sympy script mtime 16:16:28 < sympy output mtime 16:16:57; mathematica script mtime 16:16:36 < mathematica output mtime 16:17:13. Both saved `.txt` outputs were re-generated after the post-fix script edits. (The MANIFEST mtimes are stale start-of-session snapshot values and are not used for the exit determination.)
+**Output freshness:** confirmed. The `.wl` was edited at 2026-05-29 23:44:10; both saved
+`.txt` outputs were regenerated at 2026-05-29 23:50:24 (newer than the `.wl`). The saved
+Mathematica `.txt` contains the `Sigma_N - dln(Lambda^2/K) [series route] = 0` / PASS lines
+and `Stage 175 Mathematica audit passed.`; the saved SymPy `.txt` has no `[series route]`
+line, consistent with the untouched `.py` (mtime 2026-05-28, well before the edit). Outputs
+are fresh and match the captured exec logs.
 
 ## Material-change assessment
 
 `material_change`: false.
 
-No derived result that downstream units depend on was altered. F1 removed two near-trivial / tautological assertions and renamed an intermediate variable (`expr_ratio`/`exprL` -> `expr_PoverDelta_phys`) without changing any computed value — the surviving `Sigma_N - dln(Lambda^2/K)` identity already passed and still passes. F2 added a new internal self-consistency assertion (`Xi_load (all shapes frozen) + dK`) that only confirms the already-established per-port `Sigma_N = -kappa` aggregates correctly under `sum rho = 1`; it introduces no new constant or result. F3 is a cosmetic banner correction plus the F1 fix mirror. All edits are local to the unit-175 audit scripts and produce no new numeric/symbolic output consumed elsewhere. Downstream units > 175 do not need re-audit on account of unit 175.
+The edit ADDS a corroborating independent slope check; it does not alter any derived result,
+constant, identity target, or printed value that downstream units could consume.
+`sigmaNDirect`/`sigmaNShape`/`sigmaNCommon`/`Xi_load` are unchanged, and the SymPy reference
+engine is untouched. Nothing moved, so no downstream unit > 175 can depend on a value that
+changed; no specific re-audit concern.
 
 ## Side observations (non-blocking)
 
-- The printed "Conclusions" block (sympy:172 / wl:126) still echoes `Sigma_N = d ln(Lambda^2/K) = 2 d ln Lambda - dK` as prose. This is fine — it is descriptive output, not an assertion, and the `= 2 d ln Lambda - dK` equality is the log-algebra identity, not a claim that an independent check exists. No action needed.
-- The `dlog` helper applies `simplify`/`FullSimplify` to its argument before differentiating, which is why the engines remain structurally similar even after F1. This is the accepted mirror-policy posture for this batch (F3 step 3), not a defect.
+- Line-number drift: the directive/consult cite older line ranges (`dlog` at 26-29, Sigma_N
+  block at 95-98, `wl:113`/`wl:118`); the live file now has the `dlog` Sigma_N line at 100
+  and the downstream checks at 120-128, due to the V.1 F1/F2 edits and the new 3-line
+  supplement. The references still resolve to the correct constructs — purely cosmetic, not
+  a finding.
+- `dlogSeries` deliberately omits the inner `FullSimplify[..., Assumptions]` wrapping that
+  `dlog` applies before differentiating. The directive permitted that wrapping only "if
+  needed to land `=== 0`"; it was not needed (the outer `FullSimplify` on
+  `sigmaNDirectSeries - sigmaNShapeSeries` reduced the residual to 0), so the simpler form
+  matches the directive's prescription verbatim. Not a defect.
 
 ## Verdict justification
 
-All three findings are resolved. F1: the `X - X` tautology is genuinely removed from both engines (no surviving `expr_L`/`exprL` references; the remaining `Sigma_N - dln(Lambda^2/K)` check is load-bearing on `kappa = delta_K`), matching the orchestrator's blessed minimal resolution. F2: the weighted-aggregate `Xi_load (all shapes frozen) + dK` check exercising `sum rho = 1` is present in both engines and is non-tautological, landing `= 0` in both logs. F3: banner corrected to STAGE 175 in both engines and the F1 fix mirrored in the `.wl`; step 3 is a sanctioned policy mirror (not a gap). The git diff shows no collateral edits, both exec logs pass with all assertions `= 0`/`PASS`, and both outputs are fresh relative to the post-fix scripts. Verdict: verified.
+The single finding F1 (R1 transliteration) is resolved. Codex added the prescribed
+Mathematica-native `dlogSeries` (Series+Coefficient) extractor and exactly one supplemental
+series-route `expectZero` comparing series-route DIRECT vs the SHAPE target, leaving the
+existing `dlog` route, the downstream checks, and the entire SymPy reference engine
+untouched — exactly the consult-chosen smaller-blast-radius option B. The new check is
+genuinely independent of the SymPy route, is non-tautological (the `/k` SHAPE factor and the
+symbolic `-kappa` are load-bearing), and passes `=== 0`; both engines exit 0, the SymPy
+transcript is unchanged, and the saved outputs are fresh and contain the new PASS line. No
+regression. Verdict: verified, material_change false.

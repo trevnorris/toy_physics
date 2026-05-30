@@ -28,6 +28,8 @@ dlog[expr_] := FullSimplify[
   Assumptions -> $Assumptions
 ];
 
+dlogSeries[expr_] := Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps];
+
 banner["STAGE 175 — WALL-NORMALIZED LOAD/SHAPE FACTORIZATION"];
 
 Clear[k, chi, varpi];
@@ -96,6 +98,14 @@ exprPoverDeltaPhys = ((p/delta) /. subsHat) /. subsEps;
 sigmaNDirect = FullSimplify[2*dlog[exprPoverDeltaPhys] - kappa, Assumptions -> $Assumptions];
 sigmaNShape = FullSimplify[dlog[(lambda^2/k) /. subsEps], Assumptions -> $Assumptions];
 expectZero["Sigma_N - dln(Lambda^2/K)", sigmaNDirect - sigmaNShape];
+(* Independent second-engine slope route (red-team R1): extract the Sigma_N
+   first-order log-slope via Series-coefficient (Series+Coefficient) instead of
+   D[Log[.]], so the differential identity no longer relies on a transliteration
+   of the SymPy dlog route. Series-route DIRECT (2 dln(P/Delta) - dK) vs the SHAPE
+   target dln(Lambda^2/K); -kappa (= -delta_K) kept symbolic. *)
+sigmaNDirectSeries = FullSimplify[2*dlogSeries[exprPoverDeltaPhys] - kappa, Assumptions -> $Assumptions];
+sigmaNShapeSeries  = FullSimplify[dlogSeries[(lambda^2/k) /. subsEps], Assumptions -> $Assumptions];
+expectZero["Sigma_N - dln(Lambda^2/K) [series route]", sigmaNDirectSeries - sigmaNShapeSeries];
 (* Note (red-team F1 resolution): the differential Sigma_N claim is fully and
    non-trivially exercised by the check above — 2 dln(P/Delta) - dK = dln(Lambda^2/K)
    is load-bearing on kappa = delta_K, and the genuine homogeneity coverage is

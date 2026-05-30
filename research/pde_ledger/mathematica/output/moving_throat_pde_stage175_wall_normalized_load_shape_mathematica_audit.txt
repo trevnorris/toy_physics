@@ -24,6 +24,8 @@ Sigma_Z - dln(Upsilon) = 0
 PASS: Sigma_Z - dln(Upsilon)
 Sigma_N - dln(Lambda^2/K) = 0
 PASS: Sigma_N - dln(Lambda^2/K)
+Sigma_N - dln(Lambda^2/K) [series route] = 0
+PASS: Sigma_N - dln(Lambda^2/K) [series route]
 
 ========================================================================================
 Conservative-shape-preserving reductions

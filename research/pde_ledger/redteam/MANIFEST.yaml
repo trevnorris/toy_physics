@@ -6073,11 +6073,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage175_wall_normalized_load_shape_mathematica_audit.txt
         exists: true
         mtime: 1780006633
-    last_status_change: 2026-05-28 16:30:00-06:00
-    last_sympy_run: 2026-05-28 16:00:00-06:00
+    last_status_change: 2026-05-29 23:54:35-06:00
+    last_sympy_run: 2026-05-29 23:47:02-06:00
     last_sympy_exit: 0
-    last_mathematica_run: 2026-05-28 16:25:00-06:00
+    last_mathematica_run: 2026-05-29 23:47:14-06:00
     last_mathematica_exit: 0
+    codex_session: 019e7768-e661-7201-8e13-5c7f667e7076
+    codex_log_paths:
+    - redteam/codex_logs/175_iter1.txt
+    last_codex_run: 2026-05-29 23:45:16-06:00
+    last_codex_exit: 0
   '176':
     stage: 176
     stage_str: '176'

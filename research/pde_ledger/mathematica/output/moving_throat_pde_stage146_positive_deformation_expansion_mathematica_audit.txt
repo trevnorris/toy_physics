@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS
+STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS
 ========================================================================================
 g(Pi) = (2*p*(2*E^p*p + Pi))/((-1 + E^p)*(4*p^2 + Pi^2))
 S_q(Pi) = (p*(p*(-1 + Sech[Pi/2]/E^p) + (Pi*Tanh[Pi/2])/2))/((1 - E^(-p))*(-p^2 + Pi^2/4))
@@ -30,11 +30,11 @@ FIRST-ORDER CANONICAL RETUNING LAW
 ========================================================================================
 delta Pi = eps*(10.6099979539382841749632785238349395291598864566014336875697`39.328729130303785 - 13.996711034414836883861287207869633620514744270241070856019`39.69897000433602*gBar)
 delta S = eps*(-0.1448602123807183535415864145352667747139475744077603266206`38.60720965403542 - 0.6770342685713309628725696856150390727819192617413840622353`39.52287874528034*gBar + sBar)
-g_eps affine law (integral form) at eps=1/10: 0
-g_eps affine law (integral form) at eps=1/2:  0
+g_eps affine law (integral form) at eps=1/10: 8.02942250125594868481624587419569957188`22.297232723855384*^-58
+g_eps affine law (integral form) at eps=1/2:  4.46079027847552704712013659677538865104`22.297232723855384*^-58
 PASS: g_eps affine law (integral form)
-S_eps affine law (integral form) at eps=1/10: 0
-S_eps affine law (integral form) at eps=1/2:  0
+S_eps affine law (integral form) at eps=1/10: 0``40.14033130362883
+S_eps affine law (integral form) at eps=1/2:  0``40.00563272973137
 PASS: S_eps affine law (integral form)
 
 Stage 146 Mathematica audit passed.

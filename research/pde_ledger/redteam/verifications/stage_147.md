@@ -1,78 +1,199 @@
 ---
 unit_id: 147
 batch: IV.5
-verifier_model: claude-opus-4-7[1m]
-verify_date: 2026-05-27T00:00:00Z
+verifier_model: claude-opus-4-8[1m]
+verify_date: 2026-05-29T22:05:00-06:00
 verdict: verified
 sympy_exit: 0
 mathematica_exit: 0
-findings_resolved: 3
-findings_total: 3
+findings_resolved: 5
+findings_total: 5
 material_change: false
 ---
 
 # Verification — unit 147
 
+Source of findings: Codex review `redteam/codex_reviews/stage_147.md` (5 findings R1-R5),
+refined by the batch-6 Claude+Codex consult (`_consult_batch6.md` Q4/Q5/Q6 — added the
+source-centering assertion and the ratio-label fix). Verified against the live `.py`/`.wl`,
+the exec logs, the diff patch, and (per consult Q4 authorization) the owning prose
+`paper/appendices/stage_appendix_part04.tex:798-848`.
+
 ## Per-finding outcomes
 
-### F1 — missing_verification_script (sympy)
+### R1 — tautological_check (SymPy A_T chain route rebuilt the same algebra)
 
 **Classification:** resolved
 
-**What changed:**
-`scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py:52-75` adds the paper-literal anchors and chain-rule cross-check exactly as the directive prescribes (`AT_paper = sp.Float("-4.27263956256927", 30)`, `BT_paper`, `ratio_paper`, three numerical assertions, and the chain-rule reconstruction `AT_chain = sp.N(-dTm_dSigma * dSigma_dPi_at_star / gp_star, 30)`). The orchestrator's post-hoc fix is visible at line 72: `AT_30 = sp.N(AT, 30)` is now defined and compared against `AT_chain` at full 30-digit precision (line 73), replacing the prior `sp.N(AT)` default-15-digit truncation that produced the ~5e-16 residual. The centered-kernel structural assertion (`Wcenter_const == Wcenter_const_expected`) is present at lines 88-99.
+**What changed:** `scripts/...sympy_audit.py:66-80`. The old hand-typed
+`dSigma_dPi_at_star = 1/(1-S_star/4) + Pi_star*Sp_star/(4*(1-S_star/4)**2)` chain factor is
+gone. Live code builds `Tm_of_Pi = sp.sqrt(sp.Rational(9,20)*(Pi/(1-Sformula/4)))` and lets
+SymPy autodifferentiate: `dTm_dPi = sp.diff(Tm_of_Pi, Pi)`, `dg_dPi = sp.diff(gPi, Pi)`,
+then `AT_autodiff = -(dTm_dPi.subs(Pi,Pi_star))/(dg_dPi.subs(Pi,Pi_star))`, asserted equal to
+the closed-form `AT` to 1e-20.
 
-**Assessment:**
-The edits match the directive verbatim plus the documented orchestrator fix. The numerical anchors are non-tautological (independently computed left-hand sides compared against paper-quoted literals); the chain-rule check pairs an independently assembled `dTmDSigma` with `dSigma_dPi_at_star` and divides by `gp_star`, exercising a different evaluation path than the closed-form `AT` line; the centered-kernel constant-offset extraction is symbolic and not algebraically trivial. SymPy exec log shows all five `PASS:` lines for F1 contents (transcript lines 11-14 and 126). No collateral edits beyond what the directive named.
+**Assessment:** Genuinely independent of the target's primitive. The closed-form `AT`
+(py:33-38) is a hand-expanded chain rule with literal factors `1/(1-S/4)`,
+`Pi S'/(4(1-S/4)^2)`, `9/(40 T_*)`; `sp.diff` regenerates those factors symbolically from
+`Sformula` and the sqrt structure — it never types them. A sign/power error localized to the
+hand-written `AT` would NOT be reproduced by autodiff, so the assertion can fail. The only
+shared inputs (`gPi`, `Sformula`, `Pi_star`) are upstream primitives audited elsewhere.
+Matches the appendix retuning identity `A_T=-(dT_m/dPi)/(dg/dPi)` (appendix:827-831). Output:
+`PASS: A_T closed form agrees with autodiff of T_m(Pi) (residual < 1e-20)`. Non-tautological.
 
-### F2 — tautological_check (mathematica)
+### R2 — tautological_check (SymPy centered kernel checked against its own typed form) + CONSULT-ADDED source-centering
 
 **Classification:** resolved
 
-**What changed:**
-`mathematica/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.wl:63-91` replaces the `R_q(g_minus) - 1/4` tautology with the three numerical anchors (`A_T vs paper`, `B_T vs paper`, `|A_T|/B_T vs paper`), the chain-rule cross-check (`aTChain` independently assembled from `dTmDSigma`, `dSigmaDPi`, `gPrimeStar`), and the centered-form constant-offset check. The Cluster-A F2(b) banner fix is in place at line 26 (`banner["STAGE 147 — FIRST-ORDER RIGIDITY KERNEL"]`). The F2(a) `Chop[wCenterConst - wCenterConstExpected, 10^-25]` wrap at line 91 is documented in the prior orchestrator notes and is the mechanism that lets `expectZero` see `0 === 0`.
+**What changed:** `scripts/...sympy_audit.py:93-128`. The old `Wcenter_const` extract-and-
+compare-to-typed-constant tautology is replaced by TWO checks:
+(a) Projection identity — for non-canonical normalized deformation `smallsigma=2x`:
+`lhs_proj = ∫ W_*·(smallsigma - Sigma_*) dx` (full-kernel quadrature) compared to
+`rhs_moment = A_T(ḡ_s - g_*) + B_T(S̄_s - S_*)` (algebraic moment formula), with a
+normalization sanity guard, asserted to 1e-22.
+(b) CONSULT Q5 source-centering — `center_resid = ∫ Sigma_*·W_* dx` asserted `< 1e-22`.
 
-**Assessment:**
-The tautology is gone — there is no more `expectZero["R_q(g_minus)-1/4", ...]` line. The replacement assertions are anchored to externally-quoted literals and an independently assembled differential identity. The Mathematica exec log (lines 15-26) shows the corresponding `... = 0` / `PASS:` pairs for all six assertions (three paper anchors, chain-rule, centered form, moment stability for `g_*` and `S_*`). Banner at log line 3 correctly reads `STAGE 147 — FIRST-ORDER RIGIDITY KERNEL`.
+**Assessment:** Both routes use a different primitive than the target. The projection LHS
+integrates the full typed kernel `W_*` numerically; the RHS assembles A_T/B_T against
+moment integrals of the test profile only (it never integrates `W_*`), so a wrong sign,
+dropped term, or c↔Kq swap breaks the equality. The consult correctly identified that the
+projection alone is BLIND to the centering constants `-A_T g_*, -B_T S_*` (they cancel against
+`(smallsigma - Sigma_*)` since both integrate to 1). The source-centering assertion
+`∫ Sigma_* W_* dx = 0` genuinely tests those constants: dropping them leaves
+`∫ Sigma_*(A_T c + B_T Kq) = A_T g_* + B_T S_* ≠ 0`, which would fail. This is the check that
+actually exercises the `-A_T g_* - B_T S_*` constants. Both present and passing (see log).
+Non-tautological. Appendix defs (Σ_*, ḡ/S̄, c/Kq, normalization) faithfully implemented.
 
-### F3 — insufficient_verification (centering / kernel structure)
+### R3 — insufficient_verification (Mathematica kernel checked only at x=1/2) + CONSULT-ADDED source-centering
 
 **Classification:** resolved
 
-**What changed:**
-SymPy script lines 101-113 add `g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)`, `S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)`, and the two drift assertions (`< 1e-30`). Mathematica script lines 93-99 add the matching `gStarResub`, `sStarResub` with `expectZero[..., If[Abs[...] < 10^-30, 0, ...]]` wrappers. Both engines now exercise the moment-stability identity.
+**What changed:** `mathematica/...mathematica_audit.wl:91-129`. The old single-sample
+`(wCenter - (aT*c+bT*kq)) /. x -> 1/2` is replaced by THREE checks:
+(a) Full-symbolic x-independence: `expectZero[..., Chop[FullSimplify[D[wStar-(aT*c+bT*kq), x]], 10^-25]]`
+— a symbolic derivative over all x, not a sample.
+(b) NIntegrate projection identity mirroring R2 (LHS `NIntegrate[wStar*(smallSigmaX-sigmaStarX)]`
+vs algebraic `rhsMoment`).
+(c) CONSULT Q5 source-centering `NIntegrate[sigmaStarX*wStar, ...] == 0`.
 
-**Assessment:**
-The resubstitution check is non-tautological: the cached `g_star`/`S_star` (from lines 25-26 in SymPy / 41-42 in Mathematica) are compared against fresh `.subs`/`/. p -> pStar` evaluations performed after the kernel-assembly block, so any precision drift between the family-1 anchor block and the kernel-assembly block would surface as a nonzero residual. Both exec logs show `PASS:` for both stability checks (sympy line 127; mathematica lines 27-30). The centered-kernel structural assertion under F1/F2 supplies the kernel-shape verification the auditor identified as the load-bearing half of the stage's claim.
+**Assessment:** The single-point blindness is closed — `D[..., x]` proves the offset is
+constant for ALL x, so a residue that merely happens to vanish at x=1/2 now fails. The
+projection and centering checks use Wolfram's NIntegrate, an implementation independent of
+SymPy's integrator and of the typed kernel. The centering assertion is present and passing.
+SANCTIONED deviation verified: `Chop[..., 10^-25]` is applied to the symbolic zero-derivative
+residual (cleaning FullSimplify near-zero noise, NOT loosening — the comparison is still
+`=== 0` via expectZero); the centering NIntegrate uses higher WorkingPrecision -> 60 with
+AccuracyGoal/PrecisionGoal -> 30 and MaxRecursion -> 30; comparison tolerances are unchanged
+(projection 10^-20, centering 10^-20, x-independence exact). No threshold was loosened — the
+higher precision tightens, not loosens. The `NIntegrate::precw` warnings in the log are
+precision-tracking advisories; both integrals still return exact-zero residuals (`= 0`) and PASS.
+
+### R4 — tautological_check (SymPy g_*/S_* resubstitution repeated own definitions)
+
+**Classification:** resolved
+
+**What changed:** `scripts/...sympy_audit.py:130-143`. The old
+`g_star_resub = gPi.subs(Pi,Pi_star)` / `S_star_resub = Sformula.subs(Pi,Pi_star)`
+(byte-for-byte repeats of py:25-26) is replaced by quadrature of the source-moment integrals:
+`g_star_moment = ∫ Sigma_*·c dx`, `S_star_moment = ∫ Sigma_*·Kq dx`, compared to the closed
+forms `g_star`/`S_star` to 1e-25.
+
+**Assessment:** Independent integrator route. `Sigma_star_x` is built directly from `Pi_star`
+and the appendix kernels `c`/`Kq`; the integral never references `gPi`/`Sformula`, so a
+transcription error in either closed form (e.g. wrong `4Pi^2+pi^2` denominator) would be
+caught. The old resub could only catch mutation between blocks. Matches appendix
+`eq:app-part04-gbar-Sbar`. Output: `PASS: g_*, S_* equal their source-moment integrals
+(residual < 1e-25)`. Non-tautological.
+
+### R5 — transliteration (Mathematica block a verbatim port of SymPy)
+
+**Classification:** resolved
+
+**What changed:** `mathematica/...mathematica_audit.wl:74-83` (A_T) and `:131-141`
+(g_*/S_*). The verbatim chain-rule port (`dTmDSigma`/`dSigmaDPi`) is replaced by Wolfram
+`D[]` autodiff: `tmOfP = Sqrt[(9/20)*(p/(1-sFormula/4))]`, `dTmDp = D[tmOfP, p]`,
+`dgDp = D[gFormula, p]`. The resub port is replaced by `NIntegrate` moment checks
+(`gStarMoment = NIntegrate[sigmaStarXm*c, ...]`, `sStarMoment = NIntegrate[sigmaStarXm*kq, ...]`).
+
+**Assessment:** The Mathematica engine now uses independent IMPLEMENTATIONS (Wolfram
+`D[]`/`NIntegrate` vs SymPy `sp.diff`/`sp.integrate`) and both are independent of the typed
+closed forms `aT`/`gFormula`/`sFormula`. The shared cross-engine STRATEGY (CAS-diff +
+quadrature) is by design (consult LOW item 3) — the anti-tautology requirement is independence
+from the TARGET's primitive, which is met in both engines. Outputs:
+`PASS: A_T closed form vs autodiff of T_m(p)`, `PASS: g_* equals source-moment integral`,
+`PASS: S_* equals source-moment integral`. Non-transliteration.
+
+### R6 / ratio label (consult Q6)
+
+**Classification:** resolved
+
+**What changed:** SymPy py:55,62-64 renamed `ratio_paper -> ratio_crosscheck`; print/assert
+text now reads `|A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to
+1e-3`. Mathematica wl:66,71-72 renamed `ratioPaper -> ratioCrosscheck` with the matching
+relabel. Confirmed in the diff (py:119-132, wl:9-25).
+
+**Assessment:** The misleading paper-quoted claim is removed; it now describes the script's
+own computed ratio cross-check. The check still can-fail (a corrupted A_T or B_T moves the
+ratio out of 1e-3). The genuine paper literals A_T `-4.27263956256927` and B_T
+`0.134875005736706` are KEPT (py:53-54 / wl:64-65) and confirmed verbatim against
+`stage_appendix_part04.tex:846,848`. I independently confirmed `31.6785` does NOT appear in
+that appendix, corroborating the honesty flag.
 
 ## Exec log assessment
 
-**SymPy:** exit=0. Notable lines:
-- `PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12` (line 11)
-- `PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)` (line 14)
-- `PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)` (line 126)
-- `PASS: g_*, S_* moment values stable across audit (drift < 1e-30)` (line 127)
+**SymPy:** exit=0. PASS lines:
+- `PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12`
+- `PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12`
+- `PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to 1e-3`
+- `PASS: A_T closed form agrees with autodiff of T_m(Pi) (residual < 1e-20)`  [R1]
+- `PASS: kernel projection of W_* reproduces two-moment traction shift (residual < 1e-22)`  [R2 projection]
+- `PASS: rigidity kernel W_* is source-centered (integral Sigma_* W_* = 0, residual < 1e-22)`  [R2 CONSULT centering]
+- `PASS: g_*, S_* equal their source-moment integrals (residual < 1e-25)`  [R4]
+The autodiff, projection, source-centering, and moment PASS lines are all present. (The
+implicit normalization assert is inside the projection block, no separate print.)
 
-**Mathematica:** exit=0. Notable lines:
-- `A_T vs paper -4.27263956256927 = 0` / `PASS:` (lines 15-16)
-- `A_T closed form vs chain-rule route = 0` / `PASS:` (lines 21-22)
-- `W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*) = 0` / `PASS:` (lines 25-26)
-- `g_* resubstitution drift = 0` / `PASS:` (lines 27-28)
-- `Stage 147 Mathematica audit passed.` (line 32)
-
-**Output freshness:** Confirmed. SymPy output (2026-05-27 20:09:55) is newer than the script (2026-05-27 20:08:13); Mathematica output (2026-05-27 19:59:45) is newer than the script (2026-05-27 19:57:07). Both transcripts contain the new `PASS:` lines named in the directive, including the orchestrator's chain-rule fix.
+**Mathematica:** exit=0. PASS lines:
+- `PASS: A_T vs paper -4.27263956256927`
+- `PASS: B_T vs paper 0.134875005736706`
+- `PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) vs 31.6785`
+- `PASS: A_T closed form vs autodiff of T_m(p)`  [R5a autodiff]
+- `PASS: W_* centering offset is x-independent`  [R3 x-independence — replaces x=1/2 sample]
+- `PASS: deformation normalized`
+- `PASS: kernel projection reproduces two-moment traction shift`  [R3 projection]
+- `PASS: rigidity kernel W_* is source-centered (integral Sigma_* W_* = 0)`  [R3 CONSULT centering]
+- `PASS: g_* equals source-moment integral`  [R5b]
+- `PASS: S_* equals source-moment integral`  [R5b]
+Autodiff, x-independence, projection, source-centering, and both moment PASS lines present.
+Two `NIntegrate::precw` precision-tracking warnings appear; both affected integrals still
+return exact-zero residuals (`= 0`) and PASS — advisory only, not failures.
 
 ## Material-change assessment
 
-`material_change`: false.
-
-No numerical result changed. The edits added assertions and renamed a banner; no closed-form expression, no derived constant, no symbolic identity was altered. `A_T = -4.27263956256927...`, `B_T = 0.134875005736706...`, `|A_T|/B_T = 31.67851...` printed in the post-fix transcripts match the pre-fix values to all stated digits and match the paper-quoted literals from the appendix.
+`material_change`: false. No derived numeric result changed: A_T = -4.27263956256927...,
+B_T = 0.134875005736706..., |A_T|/B_T = 31.6785..., Pi_*, Sigma_*, T_*, g_*, S_* are all
+identical to pre-fix values (this is verification-surface strengthening — the tautological
+checks were replaced by independent ones, and one centering assertion + one label fix were
+added). No downstream unit's inputs are affected.
 
 ## Side observations (non-blocking)
 
-- The directive's `## Applied: Fn` / `## Blocked: Fn` blocks were not appended to `redteam/directives/stage_147.md` by Codex; the edits are nevertheless verifiable directly against the file state. The orchestrator may want to backfill these blocks for audit-trail symmetry across stages.
-- The Mathematica `Chop[..., 10^-25]` wrap on `wCenterConst - wCenterConstExpected` (line 91) is a precision-cushion against the residual `~10^-29` from finite-precision `N[...,40]` arithmetic; this is what makes `expectZero` see exact `0`. The pattern is documented from earlier batches and is not a tautology, since the unchecked residual would visibly exceed `10^-25` if either coefficient or the canonical-branch offset were perturbed.
+- The two `NIntegrate::precw` warnings (SymPy log clean of warnings) arise because the
+  high-WorkingPrecision integrands lose interior precision; harmless here since the residuals
+  evaluate to exact 0. If a future pass wants a cleaner transcript, wrapping the integrand in
+  `SetPrecision` (already done for the centering integral) on the projection integral would
+  suppress them. Non-blocking.
+- The print-only `Wcenter`/`wCenter` `simplify`/`FullSimplify` dumps (py:89-91, wl:88-89)
+  were correctly left intact per the directive — they are output, not assertions.
 
 ## Verdict justification
 
-All three findings are resolved with edits matching the directive (plus the documented `AT_30 = sp.N(AT, 30)` orchestrator fix and the F2(a) `Chop` wrap and F2(b) banner correction). Both engines exit 0; both transcripts contain every `PASS:` line named in the directive; no result downstream of stage 147 changes since no derived numerical or symbolic quantity was altered. Verdict: `verified`.
+All five Codex findings (R1-R5) are resolved with genuinely independent primitives: A_T via
+CAS autodiff of T_m(Pi)/T_m(p) (not the hand-typed chain rule); the kernel via numerical
+projection against a non-canonical 2x deformation plus full-symbolic x-independence (not a
+single x=1/2 sample); g_*/S_* via quadrature of the source moments (not resubstitution). The
+consult-added source-centering assertion `∫ Σ_* W_* dx == 0` is present AND passing in BOTH
+engines, and it is correctly reasoned to catch dropped centering constants. The ratio
+mislabel (R6/Q6) is corrected to a non-paper-sourced computed cross-check while the genuine
+A_T/B_T paper literals are kept and confirmed against appendix:846-848. The sanctioned R3
+deviation (Chop + higher-precision NIntegrate) loosens no threshold. Both engines exit 0 with
+the full expected PASS-line sets and freshly regenerated outputs. No regressions in the diff.

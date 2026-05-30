@@ -19,8 +19,18 @@ Pi^2 - 2*Pi > 0: (-2 + Pi)*Pi
 PASS: Pi^2 - 2*Pi > 0
 Pi^2/2 - 4 > 0: (-8 + Pi^2)/2
 PASS: Pi^2/2 - 4 > 0
-exp remainder leading term is piM^3/6: lhs - rhs = 0
-PASS: exp remainder leading term is piM^3/6
+Reduce[exp remainder > 0, piM, Reals] = True
+PASS: exp remainder > 0 for piM > 0 via Reduce
+exp remainder R(0) == 0: lhs - rhs = 0
+PASS: exp remainder R(0) == 0
+exp remainder R'(0) == 0: lhs - rhs = 0
+PASS: exp remainder R'(0) == 0
+exp remainder R''(0) == 0: lhs - rhs = 0
+PASS: exp remainder R''(0) == 0
+exp remainder R'''(piM) - Exp[piM] == 0: lhs - rhs = 0
+PASS: exp remainder R'''(piM) - Exp[piM] == 0
+exp remainder R'''(piM) = Exp[piM] > 0 for piM>0: E^piM
+PASS: exp remainder R'''(piM) = Exp[piM] > 0 for piM>0
 
 ----------------------------------------------------------------------------------------
 Endpoint limits

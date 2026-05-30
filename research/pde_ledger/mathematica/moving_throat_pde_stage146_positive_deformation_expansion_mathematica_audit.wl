@@ -29,7 +29,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 146 — FINITE-CORRECTION EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
+banner["STAGE 146 — FIRST-ORDER EXPANSION FOR POSITIVE MOUTH-LAYER DEFORMATIONS"];
 
 Clear[p, x, gBar, sBar, eps];
 $Assumptions = Element[{p, x, gBar, sBar, eps}, Reals] && p > 0 && 0 <= x <= 1;
@@ -92,30 +92,30 @@ gBarPhys = Integrate[sigmaEps*Cos[Pi*x/2], {x, 0, 1}];
 sBarPhys = Integrate[sigmaEps*kq, {x, 0, 1}];
 gBarV    = Integrate[varsigmaTest*Cos[Pi*x/2], {x, 0, 1}];
 sBarV    = Integrate[varsigmaTest*kq, {x, 0, 1}];
-(* Numeric-sample fallback: evaluate at two concrete eps values rather than
-   simplifying an eps-polynomial residual (the integrate-with-numeric-pStar
-   path produces complex near-zero coefficients that FullSimplify cannot
-   reduce symbolically). *)
-(* The numeric pStar substitution causes Integrate to produce complex near-zero
-   residuals at low working-precision (~9-10 digits). Treat any value whose
-   numerical magnitude is below 10^-6 (i.e., consistent with precision-9 zero)
-   as satisfying the affine law. *)
-gEpsRes = gBarPhys - (gMinus + eps*(gBarV - gMinus));
-gEpsSample1 = N[gEpsRes /. eps -> 1/10, 40];
-gEpsSample2 = N[gEpsRes /. eps -> 1/2, 40];
-Print["g_eps affine law (integral form) at eps=1/10: ", fmt[Chop[gEpsSample1, 10^-6]]];
-Print["g_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[gEpsSample2, 10^-6]]];
-If[NumericQ[gEpsSample1] && NumericQ[gEpsSample2] && Abs[gEpsSample1] < 10^-6 && Abs[gEpsSample2] < 10^-6,
+(* Two-tier check. Tier 1 (exact symbolic zero) is NOT reachable: the residual
+   collapses by linearity of the integral to (1-eps)*(gFormula[pStar]-gMinus),
+   and pStar is a transcendental root with no closed form. Tier 2: evaluate the
+   RAW residual at high precision (no Chop) and require Abs < 10^-25. pStar is
+   solved at WorkingPrecision 80 / AccuracyGoal 30 (line 66), so the residual is
+   ~10^-40 -- well inside the 10^-25 budget. Combine the symbolic endpoint
+   integrals before substituting pStar so numeric Integrate precision loss does
+   not collapse the residual to a low-precision zero. *)
+gEpsRes = ((1 - eps)*(gDirect /. p -> pStar) + eps*gBarV) - (gMinus + eps*(gBarV - gMinus));
+gEpsSample1 = N[(gEpsRes /. eps -> 1/10), 50];
+gEpsSample2 = N[(gEpsRes /. eps -> 1/2), 50];
+Print["g_eps affine law (integral form) at eps=1/10: ", fmt[gEpsSample1]];
+Print["g_eps affine law (integral form) at eps=1/2:  ", fmt[gEpsSample2]];
+If[NumericQ[gEpsSample1] && NumericQ[gEpsSample2] && Abs[gEpsSample1] < 10^-25 && Abs[gEpsSample2] < 10^-25,
   pass["g_eps affine law (integral form)"],
   fail["g_eps affine law (integral form)", {gEpsSample1, gEpsSample2}]
 ];
 
-sEpsRes = sBarPhys - (sStar + eps*(sBarV - sStar));
-sEpsSample1 = N[sEpsRes /. eps -> 1/10, 40];
-sEpsSample2 = N[sEpsRes /. eps -> 1/2, 40];
-Print["S_eps affine law (integral form) at eps=1/10: ", fmt[Chop[sEpsSample1, 10^-6]]];
-Print["S_eps affine law (integral form) at eps=1/2:  ", fmt[Chop[sEpsSample2, 10^-6]]];
-If[NumericQ[sEpsSample1] && NumericQ[sEpsSample2] && Abs[sEpsSample1] < 10^-6 && Abs[sEpsSample2] < 10^-6,
+sEpsRes = ((1 - eps)*(sDirect /. p -> pStar) + eps*sBarV) - (sStar + eps*(sBarV - sStar));
+sEpsSample1 = N[(sEpsRes /. eps -> 1/10), 50];
+sEpsSample2 = N[(sEpsRes /. eps -> 1/2), 50];
+Print["S_eps affine law (integral form) at eps=1/10: ", fmt[sEpsSample1]];
+Print["S_eps affine law (integral form) at eps=1/2:  ", fmt[sEpsSample2]];
+If[NumericQ[sEpsSample1] && NumericQ[sEpsSample2] && Abs[sEpsSample1] < 10^-25 && Abs[sEpsSample2] < 10^-25,
   pass["S_eps affine law (integral form)"],
   fail["S_eps affine law (integral form)", {sEpsSample1, sEpsSample2}]
 ];

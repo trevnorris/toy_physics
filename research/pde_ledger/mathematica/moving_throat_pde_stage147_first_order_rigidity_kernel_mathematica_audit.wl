@@ -63,20 +63,24 @@ Print["|A_T|/B_T = ", fmt[N[Abs[aT]/bT, 20]]];
 (* --- Audit assertions: numerical anchor against paper-quoted literals --- *)
 aTPaper = -4.27263956256927`30;
 bTPaper = 0.134875005736706`30;
-ratioPaper = 31.6785`20;
+ratioCrosscheck = 31.6785`20;
 expectZero["A_T vs paper -4.27263956256927",
   If[Abs[aT - aTPaper] < 10^-12, 0, aT - aTPaper]];
 expectZero["B_T vs paper 0.134875005736706",
   If[Abs[bT - bTPaper] < 10^-12, 0, bT - bTPaper]];
-expectZero["|A_T|/B_T vs paper 31.6785",
-  If[Abs[Abs[aT]/bT - ratioPaper] < 10^-3, 0, Abs[aT]/bT - ratioPaper]];
+expectZero["|A_T|/B_T computed ratio cross-check (not a paper literal) vs 31.6785",
+  If[Abs[Abs[aT]/bT - ratioCrosscheck] < 10^-3, 0, Abs[aT]/bT - ratioCrosscheck]];
 
-(* --- Audit assertion: chain-rule consistency for A_T (independent route) --- *)
-dTmDSigma = 9/(40*tStar);
-dSigmaDPi = 1/(1 - sStar/4) + pStar*sPrimeStar/(4*(1 - sStar/4)^2);
-aTChain = N[-dTmDSigma*dSigmaDPi/gPrimeStar, 30];
-expectZero["A_T closed form vs chain-rule route",
-  If[Abs[aTChain - aT] < 10^-20, 0, aTChain - aT]];
+(* --- Audit assertion: A_T from symbolic differentiation of T_m(p) (independent) --- *)
+(* Build T_m as a symbolic function of p from sFormula and let D[] derive dT_m/dp. *)
+(* Retuning identity: A_T = -(dT_m/dp)/(dg/dp) at pStar. Independent of the hand-  *)
+(* written closed-form aT (wl:49-52). *)
+tmOfP = Sqrt[(9/20)*(p/(1 - sFormula/4))];
+dTmDp = D[tmOfP, p];
+dgDp = D[gFormula, p];
+aTAutodiff = N[-(dTmDp /. p -> pStar)/(dgDp /. p -> pStar), 30];
+expectZero["A_T closed form vs autodiff of T_m(p)",
+  If[Abs[aTAutodiff - aT] < 10^-20, 0, aTAutodiff - aT]];
 
 dT = FullSimplify[eps*(aT*(gBar - gMinus) + bT*(sBar - sStar))];
 Print["delta T_m = ", fmt[dT]];
@@ -84,19 +88,57 @@ Print["delta T_m = ", fmt[dT]];
 wCenter = FullSimplify[aT*(c - gMinus) + bT*(kq - sStar)];
 Print["Centered rigidity kernel W_*(x) = ", fmt[wCenter]];
 
-(* --- Audit assertion: centered kernel structure --- *)
-wCenterConst = FullSimplify[(wCenter - (aT*c + bT*kq)) /. x -> 1/2];
-wCenterConstExpected = FullSimplify[-aT*gMinus - bT*sStar];
-expectZero["W_*(x) centered form A_T(c-g_*) + B_T(K_q-S_*)",
-  Chop[wCenterConst - wCenterConstExpected, 10^-25]];
+(* --- Audit assertion: full symbolic x-independence of the centering offset --- *)
+(* W_*(x) - (aT c(x) + bT Kq(x)) must be CONSTANT in x (the centering shift). Check the *)
+(* symbolic derivative in x is identically zero -- holds for all x, not one sample. *)
+wStar = aT*(c - gMinus) + bT*(kq - sStar);
+expectZero["W_* centering offset is x-independent",
+  Chop[FullSimplify[D[wStar - (aT*c + bT*kq), x]], 10^-25]];
 
-(* --- Audit assertion: source-moment values g_*, S_* stable under resubstitution --- *)
-gStarResub = N[gFormula /. p -> pStar, 40];
-sStarResub = N[sFormula /. p -> pStar, 40];
-expectZero["g_* resubstitution drift",
-  If[Abs[gStarResub - gStar] < 10^-30, 0, gStarResub - gStar]];
-expectZero["S_* resubstitution drift",
-  If[Abs[sStarResub - sStar] < 10^-30, 0, sStarResub - sStar]];
+(* --- Audit assertion: rigidity-kernel projection identity (independent quadrature) --- *)
+(* Mirror of the SymPy R2 check but via NIntegrate (independent engine + numerical    *)
+(* primitive). smallsigma(x) = 2 x is normalized and non-canonical. LHS integrates the *)
+(* kernel against (smallSigma - sigmaStar); RHS is the algebraic two-moment formula.   *)
+sigmaStarX = pStar*Exp[-pStar*x]/(1 - Exp[-pStar]);
+smallSigmaX = 2*x;
+normS = NIntegrate[smallSigmaX, {x, 0, 1}, WorkingPrecision -> 40];
+normSigma = NIntegrate[sigmaStarX, {x, 0, 1}, WorkingPrecision -> 40];
+expectZero["deformation normalized", Chop[(normS - 1) + (normSigma - 1), 10^-30]];
+lhsProj = NIntegrate[wStar*(smallSigmaX - sigmaStarX), {x, 0, 1}, WorkingPrecision -> 40];
+gBarS = NIntegrate[smallSigmaX*c, {x, 0, 1}, WorkingPrecision -> 40];
+sBarS = NIntegrate[smallSigmaX*kq, {x, 0, 1}, WorkingPrecision -> 40];
+rhsMoment = aT*(gBarS - gStar) + bT*(sBarS - sStar);
+expectZero["kernel projection reproduces two-moment traction shift",
+  If[Abs[lhsProj - rhsMoment] < 10^-20, 0, lhsProj - rhsMoment]];
+
+(* --- Audit assertion: source-centering of the rigidity kernel (independent) --- *)
+(* CONSULT Q5 (batch 6): the projection identity is blind to the centering constants *)
+(* (they vanish against (smallSigma - sigmaStar)); the D[...,x] check only proves the *)
+(* offset is constant in x. The kernel's centering condition is orthogonality to the  *)
+(* canonical source: integral Sigma_* W_* == 0. Dropping the constants leaves          *)
+(* A_T g_* + B_T S_* != 0, so this assertion DOES test them.                           *)
+centerResid = NIntegrate[
+  Evaluate[SetPrecision[sigmaStarX*wStar, 60]],
+  {x, 0, 1},
+  WorkingPrecision -> 60,
+  AccuracyGoal -> 30,
+  PrecisionGoal -> 30,
+  MaxRecursion -> 30
+];
+expectZero["rigidity kernel W_* is source-centered (integral Sigma_* W_* = 0)",
+  If[Abs[centerResid] < 10^-20, 0, centerResid]];
+
+(* --- Audit assertion: g_*, S_* equal their source-moment integrals (NIntegrate) --- *)
+(* Appendix eq:app-part04-gbar-Sbar: g_* = integral Sigma_*(x) c(x) dx, S_* = integral *)
+(* Sigma_*(x) Kq(x) dx, Sigma_*(x) = pStar e^(-pStar x)/(1-e^(-pStar)). Compare to the  *)
+(* closed forms gFormula, sFormula at pStar via an independent numerical integrator.    *)
+sigmaStarXm = pStar*Exp[-pStar*x]/(1 - Exp[-pStar]);
+gStarMoment = NIntegrate[sigmaStarXm*c, {x, 0, 1}, WorkingPrecision -> 40];
+sStarMoment = NIntegrate[sigmaStarXm*kq, {x, 0, 1}, WorkingPrecision -> 40];
+expectZero["g_* equals source-moment integral",
+  If[Abs[gStarMoment - gStar] < 10^-20, 0, gStarMoment - gStar]];
+expectZero["S_* equals source-moment integral",
+  If[Abs[sStarMoment - sStar] < 10^-20, 0, sStarMoment - sStar]];
 
 Print[""];
 Print["Stage 147 Mathematica audit passed."];

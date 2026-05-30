@@ -49,9 +49,16 @@ print("  linear coeff  =", sp.simplify(pi**2-2*pi))
 print("  quadratic coeff =", sp.simplify(pi**2/2-4))
 expect_positive("pi**2 - 2*pi > 0", pi**2 - 2*pi)
 expect_positive("pi**2/2 - 4 > 0", pi**2/2 - 4)
-# exp-remainder positivity via Taylor coefficient
-exp_rem_series = sp.series(sp.exp(Pi) - 1 - Pi - Pi**2/2, Pi, 0, 5).removeO()
-expect_equal("exp remainder leading term is Pi**3/6", exp_rem_series.coeff(Pi, 3), sp.Rational(1, 6))
+# exp-remainder positivity: prove R(Pi) = exp(Pi) - 1 - Pi - Pi**2/2 > 0 for all Pi > 0.
+# Rigorous argument (each line is an independent, can-fail assertion):
+#   R(0) = 0, R'(0) = 0, R''(0) = 0, and R'''(Pi) = exp(Pi) > 0 for all Pi,
+# so R is strictly increasing from 0 on Pi > 0, hence R(Pi) > 0 there.
+R_rem = sp.exp(Pi) - 1 - Pi - Pi**2/2
+expect_equal("exp remainder R(0) == 0", R_rem.subs(Pi, 0), sp.Integer(0))
+expect_equal("exp remainder R'(0) == 0", sp.diff(R_rem, Pi).subs(Pi, 0), sp.Integer(0))
+expect_equal("exp remainder R''(0) == 0", sp.diff(R_rem, Pi, 2).subs(Pi, 0), sp.Integer(0))
+expect_zero("exp remainder R'''(Pi) - exp(Pi) == 0", sp.diff(R_rem, Pi, 3) - sp.exp(Pi))
+expect_positive("exp remainder R'''(Pi) = exp(Pi) > 0 for Pi>0", sp.exp(Pi))
 
 subbanner("Endpoint limits")
 g0 = sp.limit(gPi, Pi, 0, dir='+')

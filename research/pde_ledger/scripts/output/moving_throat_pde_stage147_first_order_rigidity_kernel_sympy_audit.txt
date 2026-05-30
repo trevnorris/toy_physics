@@ -10,8 +10,8 @@ B_T = 0.134875005736705540316968999027
 |A_T|/B_T = 31.678512554876561144
 PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12
 PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12
-PASS: |A_T|/B_T matches paper-quoted 31.6785 to 1e-3
-PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)
+PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to 1e-3
+PASS: A_T closed form agrees with autodiff of T_m(Pi) (residual < 1e-20)
 delta T_m =
     ⎛                                                                          ↪
     ⎜  ⎛                                             2⎞                        ↪
@@ -123,7 +123,8 @@ Centered rigidity kernel W_*(x) =
 ↪                                                         
 ↪                                                         
 ↪                                                         
-PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)
-PASS: g_*, S_* moment values stable across audit (drift < 1e-30)
+PASS: kernel projection of W_* reproduces two-moment traction shift (residual < 1e-22)
+PASS: rigidity kernel W_* is source-centered (integral Sigma_* W_* = 0, residual < 1e-22)
+PASS: g_*, S_* equal their source-moment integrals (residual < 1e-25)
 
 Stage 147 complete.

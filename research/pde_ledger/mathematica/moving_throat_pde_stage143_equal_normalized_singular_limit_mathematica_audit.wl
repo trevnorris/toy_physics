@@ -70,8 +70,22 @@ Print["  linear coeff  = ", fmt[FullSimplify[Pi^2 - 2*Pi]]];
 Print["  quadratic coeff = ", fmt[FullSimplify[Pi^2/2 - 4]]];
 expectPositive["Pi^2 - 2*Pi > 0", Pi^2 - 2*Pi];
 expectPositive["Pi^2/2 - 4 > 0", Pi^2/2 - 4];
-expRemSeries = Normal[Series[Exp[piM] - 1 - piM - piM^2/2, {piM, 0, 4}]];
-expectEqual["exp remainder leading term is piM^3/6", Coefficient[expRemSeries, piM, 3], 1/6];
+(* exp-remainder positivity: prove R(piM) = Exp[piM] - 1 - piM - piM^2/2 > 0 for piM > 0. *)
+(* Primary route: Reduce over the reals must reduce the inequality to piM > 0. *)
+expRemReduce = Reduce[Exp[piM] - 1 - piM - piM^2/2 > 0, piM, Reals] /.
+  {(Element[piM, Reals] && piM > 0) -> True, (piM > 0) -> True};
+Print["Reduce[exp remainder > 0, piM, Reals] = ", fmt[expRemReduce]];
+If[TrueQ[Simplify[expRemReduce === True || expRemReduce === (piM > 0)]],
+  pass["exp remainder > 0 for piM > 0 via Reduce"],
+  fail["exp remainder > 0 for piM > 0 via Reduce", expRemReduce]];
+(* Independent backing route: Taylor-remainder monotonicity. *)
+(* R(0)=0, R'(0)=0, R''(0)=0, R'''(piM)=Exp[piM]>0 => R strictly increasing from 0 => R>0. *)
+rRem = Exp[piM] - 1 - piM - piM^2/2;
+expectEqual["exp remainder R(0) == 0", (rRem /. piM -> 0), 0];
+expectEqual["exp remainder R'(0) == 0", (D[rRem, piM] /. piM -> 0), 0];
+expectEqual["exp remainder R''(0) == 0", (D[rRem, {piM, 2}] /. piM -> 0), 0];
+expectEqual["exp remainder R'''(piM) - Exp[piM] == 0", D[rRem, {piM, 3}], Exp[piM]];
+expectPositive["exp remainder R'''(piM) = Exp[piM] > 0 for piM>0", Exp[piM]];
 
 subbanner["Endpoint limits"];
 Clear[pi0, piInf, piInf2, piInf3];

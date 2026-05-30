@@ -70,7 +70,7 @@ for val in [sp.Integer(1), sp.Rational(3,2), sp.Rational(5,2)]:
 # Family-1 canonical point
 rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
 gminus = sp.simplify(rF1 - sp.sqrt(1+rF1**2)/2)
-Pi_star = sp.N(sp.nsolve(gPi - gminus, 1.5), 30)
+Pi_star = sp.nsolve(gPi - gminus, 1.5, prec=50)
 print("Pi_* =", Pi_star)
 
 g_star = sp.N(gPi.subs(Pi, Pi_star), 30)
@@ -103,20 +103,26 @@ gbar_phys = sp.integrate(Sigma_eps*sp.cos(sp.pi*x/2), (x, 0, 1))
 Sbar_phys = sp.integrate(Sigma_eps*Kq, (x, 0, 1))
 gbar_v    = sp.integrate(varsigma_test*sp.cos(sp.pi*x/2), (x, 0, 1))
 Sbar_v    = sp.integrate(varsigma_test*Kq, (x, 0, 1))
-# Symbolic simplify cannot reduce the residual (it contains both sqrt(3) and
-# sqrt(4107 - 100*pi^2) factors that sp.simplify keeps). Fall back to numeric
-# evaluation at two concrete eps samples, matching the Mathematica path.
+# Two-tier check. Tier 1 (exact symbolic zero) is NOT reachable here: the
+# residual collapses by linearity of the integral to (1-eps)*(gPi(Pi_*) -
+# gminus), and Pi_* is a transcendental root with no closed form, so simplify
+# cannot drive it to literal 0. Tier 2: evaluate the RAW residual at high
+# precision (50 digits) and require it below the directive standard 1e-25.
+# With Pi_star solved at prec=50 (line 73) the residual is ~1e-50 -- well
+# inside the 1e-25 budget -- so the assertion has genuine headroom and is not
+# tuned to the old 15-digit root floor.
 g_eps_residual_expr = gbar_phys - (gminus + eps*(gbar_v - gminus))
 S_eps_residual_expr = Sbar_phys - (Sformula.subs(Pi, Pi_star) + eps*(Sbar_v - Sformula.subs(Pi, Pi_star)))
+TOL = sp.Float("1e-25", 50)
 for eps_val, label in [(sp.Rational(1, 10), "eps=1/10"), (sp.Rational(1, 2), "eps=1/2")]:
-    g_res = sp.N(g_eps_residual_expr.subs(eps, eps_val), 30)
-    S_res = sp.N(S_eps_residual_expr.subs(eps, eps_val), 30)
+    g_res = sp.N(g_eps_residual_expr.subs(eps, eps_val), 50)
+    S_res = sp.N(S_eps_residual_expr.subs(eps, eps_val), 50)
     print(f"g_eps affine law (integral form) at {label}: residual = {g_res}")
     print(f"S_eps affine law (integral form) at {label}: residual = {S_res}")
-    if abs(float(g_res)) > 1e-15:
-        raise AssertionError(f"g_eps affine law fails at {label}: {g_res}")
-    if abs(float(S_res)) > 1e-15:
-        raise AssertionError(f"S_eps affine law fails at {label}: {S_res}")
+    if sp.Abs(g_res) >= TOL:
+        raise AssertionError(f"g_eps affine law fails at {label}: residual={g_res} >= 1e-25")
+    if sp.Abs(S_res) >= TOL:
+        raise AssertionError(f"S_eps affine law fails at {label}: residual={S_res} >= 1e-25")
 print("PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2")
 print("PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2")
 

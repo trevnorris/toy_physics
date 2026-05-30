@@ -52,27 +52,32 @@ print("|A_T|/B_T =", sp.N(abs(AT)/BT, 20))
 # --- Audit assertions: numerical anchor against paper-quoted literals ---
 AT_paper = sp.Float("-4.27263956256927", 30)
 BT_paper = sp.Float("0.134875005736706", 30)
-ratio_paper = sp.Float("31.6785", 20)
+ratio_crosscheck = sp.Float("31.6785", 20)
 assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
     f"A_T deviates from paper-quoted value: {sp.N(AT)} vs {AT_paper}"
 print("PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12")
 assert abs(sp.N(BT) - BT_paper) < sp.Float("1e-12", 30), \
     f"B_T deviates from paper-quoted value: {sp.N(BT)} vs {BT_paper}"
 print("PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12")
-assert abs(sp.N(sp.Abs(AT)/BT) - ratio_paper) < sp.Float("1e-3", 30), \
-    f"|A_T|/B_T deviates from paper-quoted 31.6785: {sp.N(sp.Abs(AT)/BT)}"
-print("PASS: |A_T|/B_T matches paper-quoted 31.6785 to 1e-3")
+assert abs(sp.N(sp.Abs(AT)/BT) - ratio_crosscheck) < sp.Float("1e-3", 30), \
+    f"|A_T|/B_T computed ratio cross-check deviates from 31.6785: {sp.N(sp.Abs(AT)/BT)}"
+print("PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to 1e-3")
 
-# --- Audit assertion: chain-rule consistency for A_T (independent derivation route) ---
-# d T_m / d Sigma_0 = (1/2) * sqrt(9/(20 Sigma_*)) = 9/(40 T_*); cross-check the
-# closed-form A_T against this differential identity assembled from scratch.
-dTm_dSigma = sp.Rational(9, 40) / T_star
-dSigma_dPi_at_star = 1/(1 - S_star/4) + Pi_star * Sp_star / (4*(1-S_star/4)**2)
-AT_chain = sp.N(-dTm_dSigma * dSigma_dPi_at_star / gp_star, 30)
+# --- Audit assertion: A_T from automatic differentiation of T_m(Pi) (independent) ---
+# Independent primitive: build T_m as a SYMBOLIC function of the free symbol Pi from
+# Sformula (NOT from the cached numeric S_star/Sp_star/T_star), and let SymPy derive
+# dT_m/dPi automatically. The retuning identity (appendix eq:app-part04-deltaPi-firstorder)
+# gives A_T = -(dT_m/dPi)/(dg/dPi) at Pi_*. sp.diff regenerates the (1-S/4)^2 factor and
+# the S' factor on its own, so a hand-written sign/power error in the closed-form AT
+# (py:33-38) cannot be reproduced here.
+Tm_of_Pi = sp.sqrt(sp.Rational(9, 20) * (Pi / (1 - Sformula/4)))
+dTm_dPi = sp.diff(Tm_of_Pi, Pi)
+dg_dPi = sp.diff(gPi, Pi)
+AT_autodiff = sp.N(-(dTm_dPi.subs(Pi, Pi_star)) / (dg_dPi.subs(Pi, Pi_star)), 30)
 AT_30 = sp.N(AT, 30)
-assert abs(AT_chain - AT_30) < sp.Float("1e-20", 30), \
-    f"A_T chain-rule route disagrees with closed form: {AT_chain} vs {AT_30}"
-print("PASS: A_T closed form agrees with chain-rule decomposition (residual < 1e-20)")
+assert abs(AT_autodiff - AT_30) < sp.Float("1e-20", 30), \
+    f"A_T autodiff route disagrees with closed form: {AT_autodiff} vs {AT_30}"
+print("PASS: A_T closed form agrees with autodiff of T_m(Pi) (residual < 1e-20)")
 
 # Weight kernel representation
 gbar, Sbar = sp.symbols("gbar Sbar", real=True)
@@ -85,31 +90,56 @@ Wcenter = sp.simplify(AT*(c-gminus) + BT*(Kq-Sformula.subs(Pi, Pi_star)))
 print("Centered rigidity kernel W_*(x) =")
 sp.pprint(Wcenter)
 
-# --- Audit assertion: centered kernel structure matches the notes' boxed form ---
-# Notes (section 2): W_*(x) = A_T (c(x) - g_*) + B_T (K_q(x) - S_*).
-# g_* is the value of gFormula at Pi_*; S_* is Sformula(Pi_*). Verify the
-# constant offsets in Wcenter equal A_T*(-gminus) + B_T*(-S_*) by extracting
-# the constant term.
-Wcenter_const = sp.simplify(Wcenter.subs([(x, sp.Symbol("__dummy"))]) -
-                            (AT*c.subs(x, sp.Symbol("__dummy")) +
-                             BT*Kq.subs(x, sp.Symbol("__dummy"))))
-Wcenter_const_expected = sp.simplify(-AT*gminus - BT*Sformula.subs(Pi, Pi_star))
-assert sp.simplify(Wcenter_const - Wcenter_const_expected) == 0, \
-    f"Centered kernel constant offset mismatch: {Wcenter_const} vs {Wcenter_const_expected}"
-print("PASS: Centered kernel W_*(x) has form A_T(c - g_*) + B_T(K_q - S_*)")
+# --- Audit assertion: rigidity-kernel projection identity (independent quadrature) ---
+# Notes sec.2 / appendix eq:app-part04-deltaT-firstorder: the traction shift equals the
+# projection of W_*(x) against (smallsigma - Sigma_*). Test it for a concrete, normalized,
+# NON-canonical deformation smallsigma(x) = 2x (integral_0^1 2x dx = 1, positive, and a
+# different shape from Sigma_*). LHS by numerical quadrature of the kernel projection;
+# RHS by the two-moment coefficient formula. The two sides share NO derivation step:
+# LHS integrates W_* numerically, RHS uses the algebraic A_T, B_T and the moment
+# integrals. This also exercises the "integrates to zero" centering claim, since the
+# -g_*, -S_* constants inside W_* drop out only because integral(smallsigma-Sigma_*)=0.
+Sigma_star_x = Pi_star * sp.exp(-Pi_star * x) / (1 - sp.exp(-Pi_star))
+smallsigma_x = 2*x
+# normalization sanity (must integrate to 1 each):
+norm_s = sp.N(sp.integrate(smallsigma_x, (x, 0, 1)), 40)
+norm_Sigma = sp.N(sp.integrate(Sigma_star_x, (x, 0, 1)), 40)
+assert abs(norm_s - 1) < sp.Float("1e-30", 40) and abs(norm_Sigma - 1) < sp.Float("1e-30", 40), \
+    f"deformation/source not normalized: {norm_s}, {norm_Sigma}"
+Wstar_x = AT*(c - g_star) + BT*(Kq - S_star)
+lhs_proj = sp.N(sp.integrate(Wstar_x * (smallsigma_x - Sigma_star_x), (x, 0, 1)), 30)
+gbar_s = sp.N(sp.integrate(smallsigma_x * c, (x, 0, 1)), 40)
+Sbar_s = sp.N(sp.integrate(smallsigma_x * Kq, (x, 0, 1)), 40)
+rhs_moment = sp.N(AT*(gbar_s - g_star) + BT*(Sbar_s - S_star), 30)
+assert abs(lhs_proj - rhs_moment) < sp.Float("1e-22", 30), \
+    f"kernel projection != two-moment formula: {lhs_proj} vs {rhs_moment}"
+print("PASS: kernel projection of W_* reproduces two-moment traction shift (residual < 1e-22)")
+# --- Audit assertion: source-centering of the rigidity kernel (independent) ---
+# CONSULT Q5 (batch 6): the projection identity above is BLIND to the centering
+# constants -A_T*g_*, -B_T*S_* -- they vanish against (smallsigma - Sigma_*) because
+# both integrate to 1. The x-independence check (R3) only proves the offset is CONSTANT,
+# not that it equals -A_T*g_*-B_T*S_*. The kernel's defining centering condition is
+# orthogonality to the canonical source: integral_0^1 Sigma_*(x) W_*(x) dx == 0. This
+# DOES test the constants: dropping them leaves integral Sigma_*(A_T c + B_T Kq) =
+# A_T*g_* + B_T*S_* != 0, so a missing-centering bug now fails here.
+center_resid = sp.N(sp.integrate(Sigma_star_x * Wstar_x, (x, 0, 1)), 30)
+assert abs(center_resid) < sp.Float("1e-22", 30), \
+    f"kernel not centered against Sigma_*: integral Sigma_* W_* = {center_resid}"
+print("PASS: rigidity kernel W_* is source-centered (integral Sigma_* W_* = 0, residual < 1e-22)")
 
-# --- Audit assertion: source-moment definitions of g_*, S_* reproduce gFormula(Pi_*), Sformula(Pi_*) ---
-# In the notes' inner product (lines 96-105), g_* is identified with the value
-# gFormula takes at the canonical Pi_*, and S_* with Sformula at Pi_*.
-# Verify the script's evaluation of g_*, S_* matches the symbolic substitution
-# to high precision (this guards against an accidental redefinition of either
-# moment between the family-1 anchor block and the kernel-assembly block).
-g_star_resub = sp.N(gPi.subs(Pi, Pi_star), 40)
-S_star_resub = sp.N(Sformula.subs(Pi, Pi_star), 40)
-assert abs(g_star_resub - g_star) < sp.Float("1e-30", 40), \
-    f"g_* resubstitution drift: {g_star_resub} vs {g_star}"
-assert abs(S_star_resub - S_star) < sp.Float("1e-30", 40), \
-    f"S_* resubstitution drift: {S_star_resub} vs {S_star}"
-print("PASS: g_*, S_* moment values stable across audit (drift < 1e-30)")
+# --- Audit assertion: g_*, S_* equal their source-moment integrals (independent quadrature) ---
+# Appendix eq:app-part04-gbar-Sbar/c-Kq define g_* = integral_0^1 Sigma_*(x) c(x) dx and
+# S_* = integral_0^1 Sigma_*(x) Kq(x) dx, with Sigma_*(x) = Pi_* e^(-Pi_* x)/(1-e^(-Pi_*)).
+# The closed forms gPi, Sformula are the ANALYTIC evaluations of those integrals. Compute
+# the integrals directly by quadrature and compare to gPi(Pi_*), Sformula(Pi_*): a
+# transcription error in gPi/Sformula would be caught (the old resub check could not).
+Sigma_star_x = Pi_star * sp.exp(-Pi_star * x) / (1 - sp.exp(-Pi_star))
+g_star_moment = sp.N(sp.integrate(Sigma_star_x * c, (x, 0, 1)), 40)
+S_star_moment = sp.N(sp.integrate(Sigma_star_x * Kq, (x, 0, 1)), 40)
+assert abs(g_star_moment - g_star) < sp.Float("1e-25", 40), \
+    f"g_* moment integral != gPi(Pi_*): {g_star_moment} vs {g_star}"
+assert abs(S_star_moment - S_star) < sp.Float("1e-25", 40), \
+    f"S_* moment integral != Sformula(Pi_*): {S_star_moment} vs {S_star}"
+print("PASS: g_*, S_* equal their source-moment integrals (residual < 1e-25)")
 
 print("\nStage 147 complete.")

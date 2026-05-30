@@ -1,178 +1,256 @@
 ---
 unit_id: 143
 batch: IV.5
-created_at: 2026-05-27T00:00:00Z
-findings_count: 3
+created_at: 2026-05-29T00:00:00Z
+supersedes: 2026-05-27T00:00:00Z
+findings_count: 2
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-05-30T03:30:36Z
+findings_applied: 2
+findings_blocked: 0
 verification_status: pending
 needs_user_resolution: false
 ---
 
-# Codex directive — unit 143
+# Codex directive — unit 143 (rewrite encoding codex_review)
 
-Apply each finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+## What this rewrite does + why
 
-If a finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+The 2026-05-27 original directive (3 findings) predates the Codex read-only review
+(`redteam/codex_reviews/stage_143.md`, verdict FINDINGS, 2 findings). That review found
+that the exponential-remainder positivity is **not actually gated**: both engines only
+check the cubic Taylor coefficient `coeff == 1/6`, which PASSES for a wrong remainder such
+as `Pi^3/6 - Pi^4` that goes negative at large `Pi`. It does NOT prove
+`exp(Pi) - 1 - Pi - Pi^2/2 > 0` for all finite `Pi > 0` — the inequality the paper claim
+(`g_Pi < 1` decomposition lemma) actually rests on.
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+This rewrite encodes exactly the 2 review findings (R1 SymPy, R2 Mathematica). Every other
+edit the original directive ordered (F1 endpoint/constant gates, F2 hardcoded-`sInf`
+rework, F3 independent `Reduce[num>0]` proof) was already applied and the Codex review
+graded all of those PASS — they are listed under "Reconcile (tainted-applied, do not
+touch)" below and MUST NOT be re-edited. Only the leading-coefficient-only remainder check
+is replaced, in each engine, with a genuine global positivity proof on `Pi > 0`.
 
-After editing, RUN the affected scripts (`python3 <path>` for SymPy, `math -script <path>` for Mathematica) and iterate until they exit 0 with all in-file checks passing. Getting the scripts to run cleanly is your job; the orchestrator independently re-runs afterward.
+Apply each finding below in order. After applying, append an `## Applied: R<n>` block under
+that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+
+If a finding's required change is ambiguous or unsafe to apply mechanically, append
+`## Blocked: R<n>` with a question instead — skip that finding, continue with the rest.
+
+Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line
+ranges named.
+
+After editing, RUN the affected scripts (`python3 <path>` for SymPy, `math -script <path>`
+for Mathematica, each under `timeout 600`) and iterate until they exit 0 with all in-file
+checks passing. Getting the scripts to run cleanly is your job; the orchestrator
+independently re-runs afterward. If the Mathematica `Reduce` cannot resolve the
+transcendental within the cap, do NOT raise the cap — reformulate the math using the
+Taylor-remainder fallback documented in R2 below (the same argument R1 uses).
 
 Do NOT touch paper.tex, notes/, or any prose documents.
 
-## F1 — insufficient_verification
+---
 
-**Target:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage143_equal_normalized_singular_limit_sympy_audit.py:39-57`
-- `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl:53-69`
+## R1 — insufficient_verification (SymPy)
 
-**Issue:** Neither script asserts the paper's bottom-line deliverables. The endpoint limits ($g_0=2/\pi$, $g_\infty=1$), the constants ($R_\infty\approx 0.1454544523$, $S_\infty=1$, $\widehat T_m/\sqrt\Pi\approx 0.7256691307$), and the positivity of the three decomposition pieces ($e^\Pi-1-\Pi-\Pi^2/2>0$, $\pi^2-2\pi>0$, $\pi^2/2-4>0$) are all printed but never gated by an assertion. A regression that broke any would still PASS.
+**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage143_equal_normalized_singular_limit_sympy_audit.py:52-54`
 
-**Required change:**
-
-In `scripts/moving_throat_pde_stage143_equal_normalized_singular_limit_sympy_audit.py`:
-
-1. Add a helper near the top of the script (after the existing `expect_zero` definition, around line 17):
-   ```python
-   def expect_equal(name, lhs, rhs):
-       diff = sp.simplify(lhs - rhs)
-       print(f"{name}: lhs - rhs = {diff}")
-       if diff != 0:
-           raise AssertionError(f"{name} mismatch: {lhs} vs {rhs}")
-
-   def expect_positive(name, expr):
-       val = sp.simplify(expr)
-       print(f"{name}: {val}")
-       if not (val.is_positive is True or (val.is_number and float(val) > 0)):
-           raise AssertionError(f"{name} not positive: {val}")
-   ```
-
-2. After the existing `print("  quadratic coeff =", sp.simplify(pi**2/2-4))` line (currently line 37), add three positivity assertions for the pieces that don't depend on Π:
-   ```python
-   expect_positive("pi**2 - 2*pi > 0", pi**2 - 2*pi)
-   expect_positive("pi**2/2 - 4 > 0", pi**2/2 - 4)
-   # exp-remainder positivity via Taylor coefficient
-   exp_rem_series = sp.series(sp.exp(Pi) - 1 - Pi - Pi**2/2, Pi, 0, 5).removeO()
-   expect_equal("exp remainder leading term is Pi**3/6", exp_rem_series.coeff(Pi, 3), sp.Rational(1, 6))
-   ```
-
-3. After the existing `print("lim_{Pi->oo} g_Pi =", ginf)` line (currently line 43), add:
-   ```python
-   expect_equal("lim_{Pi->0+} g_Pi == 2/pi", g0, 2/pi)
-   expect_equal("lim_{Pi->oo} g_Pi == 1", ginf, sp.Integer(1))
-   ```
-
-4. After the existing `print("lim That/sqrt(Pi) =", that_ratio)` line (currently line 57), add:
-   ```python
-   expect_equal("R_infty == (1-r)**2/(1+r**2)", Rinf, (1-r)**2/(1+r**2))
-   expect_equal("S_infty == 1", Sinf, sp.Integer(1))
-   expect_equal("lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty))", that_ratio, sp.sqrt(sp.Rational(9,20)/(1-Rinf)))
-   ```
-
-In `mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl`:
-
-5. Add a helper after the existing `expectZero` definition (around line 31):
-   ```mathematica
-   expectEqual[name_String, lhs_, rhs_] := Module[{res},
-     res = FullSimplify[lhs - rhs, Assumptions -> $Assumptions];
-     Print[name, ": lhs - rhs = ", fmt[res]];
-     If[TrueQ[res === 0], pass[name], fail[name, res]];
-   ];
-
-   expectPositive[name_String, expr_] := Module[{val},
-     val = FullSimplify[expr, Assumptions -> $Assumptions];
-     Print[name, ": ", fmt[val]];
-     If[TrueQ[Simplify[val > 0]], pass[name], fail[name, val]];
-   ];
-   ```
-
-6. After the existing `Print["  quadratic coeff = ", fmt[FullSimplify[Pi^2/2 - 4]]];` line (currently line 51), add:
-   ```mathematica
-   expectPositive["Pi^2 - 2*Pi > 0", Pi^2 - 2*Pi];
-   expectPositive["Pi^2/2 - 4 > 0", Pi^2/2 - 4];
-   expRemSeries = Normal[Series[Exp[piM] - 1 - piM - piM^2/2, {piM, 0, 4}]];
-   expectEqual["exp remainder leading term is piM^3/6", Coefficient[expRemSeries, piM, 3], 1/6];
-   ```
-
-7. After the existing `Print["lim_{Pi->oo} g_Pi = ", fmt[gInf]];` line (currently line 58), add:
-   ```mathematica
-   expectEqual["lim_{piM->0+} g_Pi == 2/Pi", g0, 2/Pi];
-   expectEqual["lim_{piM->oo} g_Pi == 1", gInf, 1];
-   ```
-
-8. After the existing `Print["lim That/sqrt(Pi) = ", fmt[tHatRatio]];` line (currently line 69), add:
-   ```mathematica
-   expectEqual["R_infty == (1-r)^2/(1+r^2)", rInf, (1 - r)^2/(1 + r^2)];
-   expectEqual["S_infty == 1", sInf, 1];
-   expectEqual["lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty))", tHatRatio, Sqrt[(9/20)/(1 - rInf)]];
-   ```
-   (Note: the assertion on `sInf` here uses the variable `sInf` as it stands; F2 below will replace its hardcoded definition with an actual limit, after which this assertion gates that limit.)
-
-**Verification command:**
-After Codex applies, the verifier will run `redteam exec-sympy 143` and `redteam exec-mathematica 143` and confirm:
-- sympy transcript shows new lines for `pi**2 - 2*pi > 0`, `pi**2/2 - 4 > 0`, `exp remainder leading term is Pi**3/6`, `lim_{Pi->0+} g_Pi == 2/pi`, `lim_{Pi->oo} g_Pi == 1`, `R_infty == (1-r)**2/(1+r**2)`, `S_infty == 1`, `lim That/sqrt(Pi) == sqrt((9/20)/(1-R_infty))` and exits 0.
-- mathematica transcript shows matching `PASS:` lines and exits 0.
-
-## F2 — hardcoded_result
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl:60-64`
-
-**Issue:** Line 62 reads `sInf = 1;` — hardcoded. The full $S_q$ formula is defined on line 60 but its limit is never taken. `Sigma0` (the dynamical $\Pi/(1-R_qS_q)$) and `That` (the dynamical $\widehat T_m=\sqrt{9\Pi/(20[1-R_qS_q])}$) are never defined; `sigmaRatio` and `tHatRatio` are computed by algebraic substitution into the limiting form rather than as limits of dynamical objects. The corresponding SymPy lines 45-57 actually take limits via `sp.limit`.
-
-**Required change:**
-
-Replace the block on lines 60-69 of `mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl` with:
-
-```mathematica
-sQ = piM*(((Pi/2)*Tanh[Pi/2]) + piM*(Exp[-piM]*Sech[Pi/2] - 1))/((1 - Exp[-piM])*((Pi/2)^2 - piM^2));
-rQ = (gPi - r)^2/(1 + r^2);
-sigma0 = piM/(1 - rQ*sQ);
-that = Sqrt[(9/20)*sigma0];
-
-Clear[piInf2, piInf3, piInf4, piInf5];
-rInf = FullSimplify[Limit[rQ /. piM -> piInf2, piInf2 -> Infinity], Assumptions -> piInf2 > 0];
-sInf = FullSimplify[Limit[sQ /. piM -> piInf3, piInf3 -> Infinity], Assumptions -> piInf3 > 0];
-sigmaRatio = FullSimplify[Limit[sigma0/piM /. piM -> piInf4, piInf4 -> Infinity], Assumptions -> piInf4 > 0];
-tHatRatio = FullSimplify[Limit[that/Sqrt[piM] /. piM -> piInf5, piInf5 -> Infinity], Assumptions -> piInf5 > 0];
-
-Print["R_infty = ", fmt[rInf]];
-Print["S_infty = ", fmt[sInf]];
-Print["lim Sigma0/Pi = ", fmt[sigmaRatio]];
-Print["lim That/sqrt(Pi) = ", fmt[tHatRatio]];
+**Current code (confirmed live, lines 52-54):**
+```python
+# exp-remainder positivity via Taylor coefficient
+exp_rem_series = sp.series(sp.exp(Pi) - 1 - Pi - Pi**2/2, Pi, 0, 5).removeO()
+expect_equal("exp remainder leading term is Pi**3/6", exp_rem_series.coeff(Pi, 3), sp.Rational(1, 6))
 ```
 
-Concretely: (a) replace the hardcoded `sInf = 1;` with a `Limit[sQ /. piM -> piInf3, piInf3 -> Infinity]`; (b) define `rQ`, `sigma0`, `that` as dynamical objects (in `piM`) before the limits; (c) compute `rInf` and `sigmaRatio` and `tHatRatio` as limits of those dynamical objects rather than as algebraic substitutions.
+**Issue:** `expect_equal(..., exp_rem_series.coeff(Pi, 3), sp.Rational(1, 6))` gates only the
+cubic Taylor coefficient. As the review demonstrated, a wrong remainder like
+`Pi**3/6 - Pi**4` has the same cubic coefficient and still PASSES, yet is negative for large
+`Pi`. This does not prove `exp(Pi) - 1 - Pi - Pi^2/2 > 0` on `Pi > 0`, which is the positive
+piece the `g_Pi < 1` decomposition lemma depends on.
 
-**Verification command:**
-After Codex applies, `redteam exec-mathematica 143` should still print:
-- `R_infty = 0.1454544522604201261...` (same numeric value as before, but now via a `Limit` of `rQ`).
-- `S_infty = 1` (now derived as a limit of the full `sQ` formula).
-- `lim Sigma0/Pi = 4107/(20*Pi*Sqrt[4107 - 100*Pi^2])` (now a limit of `sigma0/piM`).
-- `lim That/sqrt(Pi) = (111*Sqrt[3/Pi])/(20*(4107 - 100*Pi^2)^(1/4))` (now a limit of `that/Sqrt[piM]`).
+**Required change — replace the 3 lines (52-54) with a genuine global positivity proof via
+the Taylor-remainder / monotonicity argument:**
 
-The F1 assertions on `R_infty`, `S_infty`, and `tHatRatio` should still pass after this refactor.
-
-## F3 — mathematica_transliteration
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl:42-47`
-
-**Issue:** The Mathematica block defining `num`, `decomp`, and calling `expectZero["numerator - exact positive decomposition", num - decomp]` is a token-for-token transliteration of the SymPy block at lines 28-32 of the `.py`. Both scripts subtract the same hand-rolled three-piece decomposition from the same intermediate `num`. Second-engine policy requires independent derivation.
-
-**Required change:**
-
-After the existing line 46 (`expectZero["numerator - exact positive decomposition", num - decomp];`), add an independent positivity check that does NOT mirror the SymPy choreography. Use Mathematica's `Reduce`:
-
-```mathematica
-(* Independent positivity verification: prove num > 0 for piM > 0 directly *)
-numPositiveCheck = Reduce[num > 0, piM, Reals] /. {(Element[piM, Reals] && piM > 0) -> True, (piM > 0) -> True};
-Print["Reduce[num > 0, piM, Reals] = ", fmt[numPositiveCheck]];
-If[TrueQ[Simplify[numPositiveCheck === True || numPositiveCheck === (piM > 0)]],
-  pass["num > 0 for piM > 0 via Reduce"],
-  fail["num > 0 for piM > 0 via Reduce", numPositiveCheck]];
+```python
+# exp-remainder positivity: prove R(Pi) = exp(Pi) - 1 - Pi - Pi^2/2 > 0 for all Pi > 0.
+# Rigorous argument (each line is an independent, can-fail assertion):
+#   R(0) = 0, R'(0) = 0, R''(0) = 0, and R'''(Pi) = exp(Pi) > 0 for all Pi,
+# so R is strictly increasing from 0 on Pi > 0, hence R(Pi) > 0 there.
+R_rem = sp.exp(Pi) - 1 - Pi - Pi**2/2
+expect_equal("exp remainder R(0) == 0", R_rem.subs(Pi, 0), sp.Integer(0))
+expect_equal("exp remainder R'(0) == 0", sp.diff(R_rem, Pi).subs(Pi, 0), sp.Integer(0))
+expect_equal("exp remainder R''(0) == 0", sp.diff(R_rem, Pi, 2).subs(Pi, 0), sp.Integer(0))
+expect_zero("exp remainder R'''(Pi) - exp(Pi) == 0", sp.diff(R_rem, Pi, 3) - sp.exp(Pi))
+expect_positive("exp remainder R'''(Pi) = exp(Pi) > 0 for Pi>0", sp.exp(Pi))
 ```
 
-This proves $1-\mathfrak g_\Pi>0$ (equivalently $\mathfrak g_\Pi<1$) by a structurally different mechanism: Mathematica's `Reduce` over the reals, rather than subtraction against a hand-built decomposition. The two checks together (decomposition identity + Reduce positivity) cover the paper claim by independent paths.
+**Why this is a genuine global proof and CAN fail:**
+- It establishes `R > 0` on `Pi > 0` rigorously: the three zero-derivative-at-0 facts plus
+  `R''' = exp(Pi) > 0` everywhere force `R'' > 0`, then `R' > 0`, then `R > 0` for `Pi > 0`
+  (repeated FTC from 0). This is the standard Taylor-with-positive-third-derivative argument,
+  not a single-coefficient corroboration.
+- It CAN FAIL for the review's counterexample: substitute the wrong remainder
+  `Pi**3/6 - Pi**4` and `R'''` becomes `1 - 24*Pi`, so `expect_zero("... R'''(Pi) - exp(Pi) == 0", ...)`
+  yields a nonzero residual and `expect_positive` on `1 - 24*Pi` (which is negative for
+  `Pi > 1/24`) cannot conclude `is_positive is True` → AssertionError. The check is wrong-input
+  sensitive precisely where the old coefficient check was blind.
+- `R_rem` is built directly from `exp(Pi) - 1 - Pi - Pi^2/2`; the comparison targets
+  (`0`, `0`, `0`, `exp(Pi)`) are independent closed forms, not reuses of the decomposition
+  primitive `num`/`decomp`. (`expect_positive` here is the existing helper at lines 25-29;
+  `expect_positive(sp.exp(Pi))` succeeds because `Pi` is declared `positive=True`, so
+  `sp.exp(Pi).is_positive is True`.)
 
-**Verification command:**
-After Codex applies, `redteam exec-mathematica 143` should print a new line `Reduce[num > 0, piM, Reals] = ...` followed by `PASS: num > 0 for piM > 0 via Reduce` (or, if Mathematica's `Reduce` returns `piM > 0` instead of `True`, the conditional accepts that form). Script must still exit 0.
+**Expected new PASS lines (replacing the single `exp remainder leading term is Pi**3/6` line):**
+```
+exp remainder R(0) == 0: lhs - rhs = 0
+exp remainder R'(0) == 0: lhs - rhs = 0
+exp remainder R''(0) == 0: lhs - rhs = 0
+exp remainder R'''(Pi) - exp(Pi) == 0 = 0
+exp remainder R'''(Pi) = exp(Pi) > 0 for Pi>0: exp(Pi)
+```
+(no AssertionError; script exits 0).
+
+## Applied: R1
+
+- files_changed:
+  - `scripts/moving_throat_pde_stage143_equal_normalized_singular_limit_sympy_audit.py`
+- summary: Replaced the cubic-coefficient exp-remainder check with derivative and positivity assertions proving the remainder positive on `Pi > 0`.
+- deviation: none
+
+---
+
+## R2 — insufficient_verification (Mathematica)
+
+**Target:** `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl:73-74`
+
+**Current code (confirmed live, lines 73-74):**
+```mathematica
+expRemSeries = Normal[Series[Exp[piM] - 1 - piM - piM^2/2, {piM, 0, 4}]];
+expectEqual["exp remainder leading term is piM^3/6", Coefficient[expRemSeries, piM, 3], 1/6];
+```
+
+**Issue:** Identical defect to R1. `Coefficient[expRemSeries, piM, 3] == 1/6` gates only the
+cubic coefficient and PASSES for a wrong finite-`piM` remainder; it does not prove
+`Exp[piM] - 1 - piM - piM^2/2 > 0` on `piM > 0`.
+
+**Required change — replace the 2 lines (73-74) with a direct global positivity proof.**
+Primary route is Mathematica `Reduce` over the reals (this stage already runs a successful
+`Reduce[num > 0, piM, Reals]` at lines 60-65, so a transcendental `Reduce` is feasible here);
+back it with the same Taylor-remainder derivative argument used in R1 so the gate is
+rigorous even if `Reduce` returns a form needing normalization:
+
+```mathematica
+(* exp-remainder positivity: prove R(piM) = Exp[piM] - 1 - piM - piM^2/2 > 0 for piM > 0. *)
+(* Primary route: Reduce over the reals must reduce the inequality to piM > 0. *)
+expRemReduce = Reduce[Exp[piM] - 1 - piM - piM^2/2 > 0, piM, Reals] /.
+  {(Element[piM, Reals] && piM > 0) -> True, (piM > 0) -> True};
+Print["Reduce[exp remainder > 0, piM, Reals] = ", fmt[expRemReduce]];
+If[TrueQ[Simplify[expRemReduce === True || expRemReduce === (piM > 0)]],
+  pass["exp remainder > 0 for piM > 0 via Reduce"],
+  fail["exp remainder > 0 for piM > 0 via Reduce", expRemReduce]];
+(* Independent backing route: Taylor-remainder monotonicity. *)
+(* R(0)=0, R'(0)=0, R''(0)=0, R'''(piM)=Exp[piM]>0 => R strictly increasing from 0 => R>0. *)
+rRem = Exp[piM] - 1 - piM - piM^2/2;
+expectEqual["exp remainder R(0) == 0", (rRem /. piM -> 0), 0];
+expectEqual["exp remainder R'(0) == 0", (D[rRem, piM] /. piM -> 0), 0];
+expectEqual["exp remainder R''(0) == 0", (D[rRem, {piM, 2}] /. piM -> 0), 0];
+expectEqual["exp remainder R'''(piM) - Exp[piM] == 0", D[rRem, {piM, 3}], Exp[piM]];
+expectPositive["exp remainder R'''(piM) = Exp[piM] > 0 for piM>0", Exp[piM]];
+```
+
+**Why this is a genuine global proof and CAN fail:**
+- `Reduce[Exp[piM] - 1 - piM - piM^2/2 > 0, piM, Reals]` resolves the inequality globally
+  over the reals; under `$Assumptions = piM > 0` it should reduce to `piM > 0` (or `True`
+  after the rule rewrite). For the wrong remainder `piM^3/6 - piM^4`, `Reduce` returns a
+  bounded interval (roughly `0 < piM < 1/6`), so the `TrueQ[... === True || ... === (piM > 0)]`
+  test is FALSE → `fail` → `Exit[1]`. The Taylor-remainder block then fails independently:
+  `D[piM^3/6 - piM^4, {piM,3}] = 1 - 24*piM ≠ Exp[piM]`, so `expectEqual["... R'''(piM) - Exp[piM] == 0", ...]`
+  has a nonzero residual and fails. Both routes are wrong-input sensitive.
+- The Taylor-remainder block reuses the existing `expectEqual`/`expectPositive` helpers
+  (lines 33-43) and compares `rRem` derivatives against independent closed forms
+  (`0`, `0`, `0`, `Exp[piM]`), not against the decomposition primitive `num`/`decomp` —
+  so it does not reuse the quantity it proves. `expectPositive[Exp[piM]]` succeeds because
+  `$Assumptions` carries `piM > 0`, so `Simplify[Exp[piM] > 0]` is `True`.
+- Mathematica idioms baked in: the Rule substitutions are parenthesized
+  (`(rRem /. piM -> 0)`, `(D[rRem, piM] /. piM -> 0)`); the `Reduce` output is normalized
+  by the same `/. {(...) -> True, (piM > 0) -> True}` rewrite the script already uses at
+  line 61 (strips the `Element`/`ConditionalExpression`-style wrapper); no `*)` substrings
+  appear inside any comment body (ASCII names `R`, `rRem` only).
+
+**Expected new PASS lines (replacing the single `exp remainder leading term is piM^3/6` line):**
+```
+Reduce[exp remainder > 0, piM, Reals] = True            (* or piM > 0 *)
+PASS: exp remainder > 0 for piM > 0 via Reduce
+exp remainder R(0) == 0: lhs - rhs = 0
+PASS: exp remainder R(0) == 0
+exp remainder R'(0) == 0: lhs - rhs = 0
+PASS: exp remainder R'(0) == 0
+exp remainder R''(0) == 0: lhs - rhs = 0
+PASS: exp remainder R''(0) == 0
+exp remainder R'''(piM) - Exp[piM] == 0: lhs - rhs = 0
+PASS: exp remainder R'''(piM) - Exp[piM] == 0
+exp remainder R'''(piM) = Exp[piM] > 0 for piM>0: E^piM
+PASS: exp remainder R'''(piM) = Exp[piM] > 0 for piM>0
+```
+(script must still exit 0).
+
+## Applied: R2
+
+- files_changed:
+  - `mathematica/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.wl`
+- summary: Replaced the cubic-coefficient exp-remainder check with a real-domain `Reduce` proof and independent Taylor-remainder derivative checks.
+- deviation: none
+
+---
+
+## Reconcile (tainted-applied, do NOT touch)
+
+These items were applied orchestrator-direct under the 2026-05-27 directive and graded PASS
+by the Codex review. They are tainted-applied (carried forward as accepted) and MUST NOT be
+re-edited by this directive:
+
+- SymPy `pi**2 - 2*pi > 0` (`...sympy_audit.py:50`) — review row 1, PASS.
+- SymPy `pi**2/2 - 4 > 0` (`...sympy_audit.py:51`) — review row 2, PASS.
+- SymPy endpoint limits `g_0`, `g_infty` (`...sympy_audit.py:61-62`) — review row 4, PASS.
+- SymPy constants `R_infty`, `S_infty`, `That/sqrt(Pi)` (`...sympy_audit.py:77-79`) — review row 5, PASS.
+- Mathematica independent `Reduce[num > 0, piM, Reals]` proof of `g_Pi < 1`
+  (`...mathematica_audit.wl:60-65`) — review row 6, PASS. **Do NOT modify this `Reduce` block;
+  R2 adds a SEPARATE `Reduce` for the exp-remainder.**
+- Mathematica constant positivity pieces `Pi^2 - 2*Pi`, `Pi^2/2 - 4`
+  (`...mathematica_audit.wl:71-72`) — review row 7, PASS.
+- Mathematica endpoint limits `g_0`, `g_infty` (`...mathematica_audit.wl:82-83`) — review row 9, PASS.
+- Mathematica dynamic limits / limiting constants `rInf`, `sInf`, `sigmaRatio`, `tHatRatio`
+  (`...mathematica_audit.wl:91-102`, the hardcoded-`sInf` rework) — review row 10, PASS.
+
+Edit ONLY the exp-remainder lines named in R1 (py:52-54) and R2 (wl:73-74). Leave the
+helper definitions, banners, and every reconciled block byte-for-byte unchanged.
+
+## Anti-tautology guard
+
+Neither R1 nor R2 may compare the exp-remainder against any expression derived from the
+same `num`/`decomp`/`gPi` primitive it is meant to certify. The positivity targets are the
+independent closed forms `0, 0, 0, exp(Pi)` (derivative-at-0 and third-derivative identities)
+and the standalone `Reduce` over the reals. A check is only valid if it FAILS for the
+review's counterexample remainder `Pi^3/6 - Pi^4` (it does, via the `R'''` mismatch and the
+bounded-interval `Reduce` result) and PASSES for the true `exp(Pi) - 1 - Pi - Pi^2/2`. Do
+NOT fabricate any numeric literal; the only constants introduced (`0` and `1/6`-free) are the
+exact derivative values of `R` at `0`, which the engine itself computes.
+
+## For orchestrator/Codex consult
+
+- **Feasibility of the Mathematica `Reduce` (R2 primary route):** the stage already runs
+  `Reduce[num > 0, piM, Reals]` successfully at wl:60-65, and `num` contains `Exp[piM]`, so a
+  transcendental `Reduce` is known-feasible on this machine within `timeout 600`. The new
+  `Reduce[Exp[piM] - 1 - piM - piM^2/2 > 0, piM, Reals]` is a strictly simpler transcendental
+  expression than `num`, so it should resolve at least as quickly. **Risk (low):** if `Reduce`
+  returns an `Inactive`/interval form that the `/. {... -> True, (piM > 0) -> True}` rewrite
+  does not normalize to `True`/`piM > 0`, the primary route's `If` will `fail`. **Mitigation
+  already in the directive:** the Taylor-remainder backing block is fully self-contained and
+  rigorous on its own; if `Reduce` proves troublesome, Codex may keep ONLY the Taylor-remainder
+  block (drop the `Reduce` lines) — that still constitutes a genuine global positivity proof and
+  satisfies R2. Codex must NOT raise the `timeout 600` cap; reformulate (i.e., drop to the
+  Taylor route) instead.
+- **SymPy `expect_positive(sp.exp(Pi))`:** relies on `Pi` being declared `positive=True`
+  (live at `...sympy_audit.py:31`), which makes `sp.exp(Pi).is_positive is True`. Confirmed
+  against the live declaration; no risk.

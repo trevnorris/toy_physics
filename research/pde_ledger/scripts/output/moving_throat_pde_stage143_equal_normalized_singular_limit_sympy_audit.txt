@@ -14,7 +14,11 @@ positive pieces:
   quadratic coeff = -4 + pi**2/2
 pi**2 - 2*pi > 0: pi*(-2 + pi)
 pi**2/2 - 4 > 0: -4 + pi**2/2
-exp remainder leading term is Pi**3/6: lhs - rhs = 0
+exp remainder R(0) == 0: lhs - rhs = 0
+exp remainder R'(0) == 0: lhs - rhs = 0
+exp remainder R''(0) == 0: lhs - rhs = 0
+exp remainder R'''(Pi) - exp(Pi) == 0 = 0
+exp remainder R'''(Pi) = exp(Pi) > 0 for Pi>0: exp(Pi)
 
 ----------------------------------------------------------------------------------------
 Endpoint limits

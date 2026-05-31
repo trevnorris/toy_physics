@@ -23,6 +23,12 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
+expectNonzero[name_String, expr_] := Module[{res},
+  res = FullSimplify[expr, Assumptions -> $Assumptions];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res === 0], fail[name, res], pass[name]];
+];
+
 banner["STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT"];
 
 Clear[chi0, epsW, epsEta, deltaU, sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel, sigmaTr, sigmaNT];
@@ -77,12 +83,13 @@ sigmaEtaInv = FullSimplify[-(1 - epsEta)*(r1 + xi1)/epsEta, Assumptions -> $Assu
 expectZero["Sigma_eta inverse", sigmaEtaInv - sigmaEta];
 
 banner["Triple-rigidity theorem"];
-thetaZero = FullSimplify[theta1 /. sigmaTr -> 0, Assumptions -> $Assumptions];
-xiZero = FullSimplify[(aTr*sigmaTr + sigmaNT) /. {sigmaTr -> 0, sigmaNT -> 0}, Assumptions -> $Assumptions];
-rsumZero = FullSimplify[(-epsEta*sigmaEta/(1 - epsEta)) /. sigmaEta -> 0, Assumptions -> $Assumptions];
-expectZero["Theta_1|(Sigma_tr=0)", thetaZero];
-expectZero["Xi_1|(Sigma_tr=Sigma_nt=0)", xiZero];
-expectZero["(R_1+Xi_1)|(Sigma_eta=0)", rsumZero];
+(* Rigidity holds iff the triangular map is invertible on the branch, i.e. iff
+   each diagonal prefactor is nonzero there. We test that non-trivial content;
+   the inverse round-trips above confirm full invertibility. *)
+dressingPref = FullSimplify[epsEta/(1 - epsEta), Assumptions -> $Assumptions];
+expectNonzero["C_tr (Theta_1 <- Sigma_tr prefactor) nonzero on branch", cTr];
+expectNonzero["A_tr (Xi_1 <- Sigma_tr feed-through) nonzero on branch", aTr];
+expectNonzero["eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch", dressingPref];
 
 Print[""];
 Print["Carry-forward formulas:"];

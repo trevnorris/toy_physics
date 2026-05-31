@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 159 — OUTGOING LOAD-FACTOR FACTORIZATION"];
+banner["STAGE 176 — OUTGOING LOAD-FACTOR FACTORIZATION"];
 
 Clear[k, ou2, ow2, r, gu, gw];
 $Assumptions = Element[{k, ou2, ow2, r, gu, gw}, Reals] &&
@@ -57,6 +57,8 @@ guP = gu*Exp[eps*dGU];
 gwP = gw*Exp[eps*dGW];
 
 lambdaP = (ou2P*gwP + rP*guP)/(ou2P*ow2P - rP^2);
+(* Independent first-order extraction: Mathematica uses symbolic D[Log,eps]
+   at eps->0; the SymPy audit instead Taylor-expands and reads the eps^1 term. *)
 sigmaExact = FullSimplify[
   D[Log[((lambdaP^2/kP)/(lambda^2/k))], eps] /. eps -> 0,
   Assumptions -> $Assumptions
@@ -90,8 +92,12 @@ Print["  d ln H = 2 d ln R - d ln Omega_U^2 - d ln Omega_W^2"];
 Print["  Sigma^(N) = 2 d ln M + 2 I/(1+I) d ln I + 2 H/(1-H) d ln H"];
 
 banner["Rigidity corollary"];
-sigmaRigid = FullSimplify[sigmaFactoredForm /. {dlnI -> 0, dlnH -> 0}, Assumptions -> $Assumptions];
-expectZero["rigidity reduction to 2 d ln M", sigmaRigid - 2*dlnM];
+(* Rigidity: dlnI = dR + dGU - dOU - dGW = 0 -> dGU -> dOU + dGW - dR;
+            dlnH = 2 dR - dOU - dOW = 0     -> dOW -> 2 dR - dOU.        *)
+rigid = {dGU -> dOU + dGW - dR, dOW -> 2*dR - dOU};
+sigmaExactRigid = FullSimplify[sigmaExact /. rigid, Assumptions -> $Assumptions];
+dlnMRigid = FullSimplify[(2*dlnMExpr) /. rigid, Assumptions -> $Assumptions];
+expectZero["rigidity reduction of Sigma_exact to 2 d ln M", sigmaExactRigid - dlnMRigid];
 
 Print[""];
 Print["Conclusion:"];

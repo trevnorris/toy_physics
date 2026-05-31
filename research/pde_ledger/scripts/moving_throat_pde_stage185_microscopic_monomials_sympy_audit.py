@@ -38,7 +38,7 @@ def first_ratio_drift(ratio: sp.Expr, eps: sp.Symbol, lam: sp.Symbol) -> sp.Expr
     return sp.simplify(sp.diff(ratio, eps).subs(eps, 0) / lam)
 
 
-banner("STAGE 168 — DIRECT MICROSCOPIC MONOMIALS")
+banner("STAGE 185 — DIRECT MICROSCOPIC MONOMIALS")
 
 chi0s, deltaUs, epsWs, epss = sp.symbols("chi0s deltaUs epsWs epss", positive=True, real=True)
 lam1, c1, gam1, kU, keta, kW, mu1, tau1 = sp.symbols(
@@ -196,11 +196,21 @@ expect_zero("d ln epsilon_eta - Sigma_eta", Sigma_eta_direct - Sigma_eta)
 banner("Observable triangular law in microscopic monomials")
 C_tr_star = chi0s * deltaUs / ((1 + chi0s) * (1 + deltaUs) * (1 + chi0s + deltaUs))
 A_tr_star = 2 * chi0s / ((1 + chi0s) * (1 + deltaUs))
-Theta1 = sp.simplify(-C_tr_star * Sigma_tr)
-Xi1 = sp.simplify(A_tr_star * Sigma_tr + Sigma_nt)
+chi1_indep = sp.simplify(chi0s * Sigma_chi)
+deltaU1_indep = sp.simplify(deltaUs * Sigma_delta)
+Theta1 = sp.simplify(
+    -(chi0s * (1 + chi0s) * deltaU1_indep + deltaUs * (1 + deltaUs) * chi1_indep)
+    / ((1 + chi0s) * (1 + deltaUs) * (1 + chi0s + deltaUs))
+)
+Xi1 = sp.simplify(
+    Sigma_Z + 2 * chi0s / (1 + chi0s) * Sigma_chi + E_star * Sigma_eps
+    - 4 * epsWs * deltaUs / (11 * (1 - epss) * (1 + deltaUs) ** 2) * Sigma_delta
+)
 Rcombo = sp.simplify(-epseta0 / (1 - epseta0) * Sigma_eta)
-expect_zero("Theta_1 monomial law", Theta1 - (-C_tr_star * Sigma_tr_direct))
-expect_zero("Xi_1 monomial law", Xi1 - (A_tr_star * Sigma_tr_direct + Sigma_nt_direct))
+expect_zero("Theta_1 independent slippage law", Theta1 - (-C_tr_star * Sigma_tr))
+expect_zero("Xi_1 independent slippage law", Xi1 - (A_tr_star * Sigma_tr + Sigma_nt))
+expect_zero("Theta_1 monomial law", Theta1 - (-C_tr_star * Sigma_tr_compiled))
+expect_zero("Xi_1 monomial law", Xi1 - (A_tr_star * Sigma_tr_compiled + Sigma_nt_compiled))
 Rcombo_ratio = sp.simplify((1 - epseta0 * epseta_ratio) / (1 - epseta0))
 Rcombo_direct = first_ratio_drift(Rcombo_ratio, eps, lam)
 expect_zero("R_1 + Xi_1 complement law", Rcombo_direct - Rcombo)
@@ -209,6 +219,14 @@ print("Xi1 =", sp.simplify(Xi1))
 print("R1 + Xi1 =", sp.simplify(Rcombo))
 
 banner("Exact zero-defect compatibility solve")
+Mstar_minor = sp.Matrix(
+    [
+        [sp.diff(Sigma_tr, tau1), sp.diff(Sigma_tr, keta), sp.diff(Sigma_tr, mu1)],
+        [sp.diff(Sigma_nt, tau1), sp.diff(Sigma_nt, keta), sp.diff(Sigma_nt, mu1)],
+        [sp.diff(Sigma_eta, tau1), sp.diff(Sigma_eta, keta), sp.diff(Sigma_eta, mu1)],
+    ]
+)
+expect_zero("det M_*^(tau,keta,mu) - (1+chi0s)", Mstar_minor.det() - (1 + chi0s))
 tau_sol = sp.solve(sp.Eq(Sigma_tr, 0), tau1)[0]
 keta_sol = sp.solve(sp.Eq(Sigma_eta, 0), keta)[0]
 mu_sol = sp.simplify(keta + 2 * kW - 2 * lam1 - E_star * Sigma_eps + F_star * Sigma_delta)

@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 165 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION")
+banner("STAGE 182 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION")
 
 # Microscopic logarithmic drift coefficients.
 lam1, c1, gam1 = sp.symbols('lam1 c1 gam1', real=True)
@@ -71,12 +71,11 @@ slip_subs = {
 }
 
 banner("Physical branch drifts from microscopic logs")
-expect_zero("zeta_Z formula", zetaZ - (2 * lam1 - keta - kW))
-expect_zero("omega_W formula", omegaW - (kW - mu1))
-expect_zero("chi_1 formula", chi1 - chi0 * (gam1 + c1 - kU))
-expect_zero("eta_1 formula", eta1 - eps_eta * (2 * c1 - kU - keta))
-expect_zero("varepsilon_W formula", varepsW - epsW * (2 * gam1 + 2 * lam1 - kU - kW))
-expect_zero("delta_U,1 formula", deltaU1 - deltaU * (tau1 - kU))
+expect_zero("Sigma_chi = chi_1/chi_0", SigmaChi.subs(slip_subs) - chi1 / chi0)
+expect_zero("Sigma_eta = eta_1/eps_eta", SigmaEta.subs(slip_subs) - eta1 / eps_eta)
+expect_zero("Sigma_del = delta_U,1/delta_U", SigmaDel.subs(slip_subs) - deltaU1 / deltaU)
+expect_zero("Sigma_eps = varepsilon_W/eps_W", SigmaEps.subs(slip_subs) - varepsW / epsW)
+expect_zero("Sigma_Z = zeta_Z - omega_W", SigmaZ.subs(slip_subs) - (zetaZ - omegaW))
 
 banner("Four-slippage grouped-defect law")
 Xi1_direct = sp.simplify(
@@ -136,12 +135,15 @@ sp.pprint(Xi1_split)
 
 banner("Support-blindness at the microscopic level")
 print("free symbols of Xi_1:", Xi1_slip.free_symbols)
-expect_zero("dXi_1/dlamphi1", sp.diff(Xi1_slip, lamphi1))
-expect_zero("dXi_1/dkphi", sp.diff(Xi1_slip, kphi))
-expect_zero("dR_1/dlamphi1", sp.diff(R1_slip, lamphi1))
-expect_zero("dR_1/dkphi", sp.diff(R1_slip, kphi))
-expect_zero("dTheta_1/dlamphi1", sp.diff(Theta1_fact, lamphi1))
-expect_zero("dTheta_1/dkphi", sp.diff(Theta1_fact, kphi))
+# Support-blindness: the support-lane drifts never enter the microscopic-log
+# defect construction. (The zeta-cancellation mechanism itself lives upstream in
+# Stage 249; here we verify only that no support log was wired into Xi_1/R_1/Theta_1.)
+support_syms = {lamphi1, kphi}
+for label, form in [("Xi_1 direct", Xi1_direct), ("R_1 direct", R1_direct), ("Theta_1 direct", Theta1_direct)]:
+    leaked = support_syms & form.free_symbols
+    print(f"{label} support-symbol leakage = {leaked}")
+    if leaked:
+        raise AssertionError(f"{label} unexpectedly depends on support drifts {leaked}")
 
 print("\nCarry-forward formulas:")
 print("  Sigma_Z   = 2 lam_1 + mu_1 - kappa_eta - 2 kappa_W")

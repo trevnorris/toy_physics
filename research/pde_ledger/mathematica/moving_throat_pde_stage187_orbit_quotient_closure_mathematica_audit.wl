@@ -35,24 +35,28 @@ rowTr = (1 + deltaStar)*(dg + dc - du) + (1 + chiStar)*(dt - du);
 rowNt = 2*(1 + eStar)*dl + 2*eStar*dg + (fStar - eStar)*du - deta - (2 + eStar)*dw + dm - fStar*dt;
 rowEta = 2*dc - du - deta;
 
-ctrRatio = FullSimplify[
-  Exp[(1 + deltaStar)*(dg + dc - du) + (1 + chiStar)*(dt - du)],
-  Assumptions -> $Assumptions
-];
-cntRatio = FullSimplify[
-  Exp[2*(1 + eStar)*dl + 2*eStar*dg + (fStar - eStar)*du - deta - (2 + eStar)*dw + dm - fStar*dt],
-  Assumptions -> $Assumptions
-];
-epsEtaRatio = FullSimplify[Exp[2*dc - du - deta], Assumptions -> $Assumptions];
+(* Positive primitive ratios (xtilde/x); declare positivity for Log expansion. *)
+$Assumptions =
+  $Assumptions &&
+  Element[{rL, rC, rG, rU, rEta, rW, rM, rT}, Reals] &&
+  rL > 0 && rC > 0 && rG > 0 && rU > 0 &&
+  rEta > 0 && rW > 0 && rM > 0 && rT > 0;
+logSubs = {
+  dl -> Log[rL], dc -> Log[rC], dg -> Log[rG], du -> Log[rU],
+  deta -> Log[rEta], dw -> Log[rW], dm -> Log[rM], dt -> Log[rT]
+};
+ctrRatio = (rG*rC/rU)^(1 + deltaStar) * (rT/rU)^(1 + chiStar);
+cntRatio = (rL^2*rM/(rEta*rW^2)) * (rG^2*rL^2/(rU*rW))^eStar * (rT/rU)^(-fStar);
+epsEtaRatio = rC^2/(rU*rEta);
 
 Print["Exact finite log-ratio equations:"];
 Print["row_tr  = ", fmt[rowTr]];
 Print["row_nt  = ", fmt[rowNt]];
 Print["row_eta = ", fmt[rowEta]];
 
-expectZero["log C_tr ratio - row_tr", Log[ctrRatio] - rowTr];
-expectZero["log C_nt ratio - row_nt", Log[cntRatio] - rowNt];
-expectZero["log epsilon_eta ratio - row_eta", Log[epsEtaRatio] - rowEta];
+expectZero["log C_tr ratio - row_tr", PowerExpand[Log[ctrRatio]] - (rowTr /. logSubs)];
+expectZero["log C_nt ratio - row_nt", PowerExpand[Log[cntRatio]] - (rowNt /. logSubs)];
+expectZero["log epsilon_eta ratio - row_eta", PowerExpand[Log[epsEtaRatio]] - (rowEta /. logSubs)];
 
 m = {
   {0, 1 + deltaStar, 1 + deltaStar, -(2 + chiStar + deltaStar), 0, 0, 0, 1 + chiStar},
@@ -98,9 +102,6 @@ expectZero["Delta_mu finite law", (dm /. sol) - dmExpected];
 expectZero["row_tr after solve", rowTr /. sol];
 expectZero["row_nt after solve", rowNt /. sol];
 expectZero["row_eta after solve", rowEta /. sol];
-expectZero["C_tr ratio after solve - 1", (ctrRatio /. sol) - 1];
-expectZero["C_nt ratio after solve - 1", (cntRatio /. sol) - 1];
-expectZero["epsilon_eta ratio after solve - 1", (epsEtaRatio /. sol) - 1];
 
 banner["Finite orbit interpretation"];
 Print["The three monomial equalities reduce exactly to the same rank-3 matrix condition"];

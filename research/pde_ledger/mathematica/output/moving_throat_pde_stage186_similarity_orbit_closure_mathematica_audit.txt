@@ -1,20 +1,18 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage186_similarity_orbit_closure_mathematica_audit.wl
-# Date: 2026-05-11T13:24:49-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 169 — EXACT MICROSCOPIC SIMILARITY ORBIT
+STAGE 186 — EXACT MICROSCOPIC SIMILARITY ORBIT
 ========================================================================================
 delta log C_tr = c1 + c1*delta + gam1 + delta*gam1 - 2*kU - chi*kU - delta*kU + tau1 + chi*tau1
 delta log C_nt = 2*eParam*gam1 - kEta - eParam*kU + fParam*kU - 2*kW - eParam*kW + 2*lam1 + 2*eParam*lam1 + mu1 - fParam*tau1
 delta log eps_eta = 2*c1 - kEta - kU
 
 M_* = MatrixForm[{{0, 1 + delta, 1 + delta, -2 - chi - delta, 0, 0, 0, 1 + chi}, {2 + 2*eParam, 0, 2*eParam, -eParam + fParam, -1, -2 - eParam, 1, -fParam}, {0, 2, 0, -1, -1, 0, 0, 0}}]
+M_* row 1 matches paper = 0
+PASS: M_* row 1 matches paper
+M_* row 2 matches paper = 0
+PASS: M_* row 2 matches paper
+M_* row 3 matches paper = 0
+PASS: M_* row 3 matches paper
 
 minor det(tau1,kEta,mu1) = 1 + chi
 
@@ -34,15 +32,25 @@ PASS: mu1 - Stage 185 form
 ========================================================================================
 Finite five-parameter similarity orbit
 ========================================================================================
+solved K_eta scaling matches paper = 0
+PASS: solved K_eta scaling matches paper
+solved T_U scaling matches paper = 0
+PASS: solved T_U scaling matches paper
+solved mu_W scaling matches paper = 0
+PASS: solved mu_W scaling matches paper
 K_eta exponent = 2*cSym - uSym
-T_U exponent   = -(((1 + delta)*(cSym + gamSym - uSym))/(1 + chi)) + uSym
-mu_W exponent  = 2*cSym - 2*lamSym - ((1 + delta)*fParam*(cSym + gamSym - uSym))/(1 + chi) - uSym + 2*wSym + eParam*(-2*gamSym - 2*lamSym + uSym + wSym)
+T_U exponent   = (-((1 + delta)*(cSym + gamSym)) + (2 + chi + delta)*uSym)/(1 + chi)
+mu_W exponent  = cSym*(2 - ((1 + delta)*fParam)/(1 + chi)) - 2*lamSym - uSym + ((1 + delta)*fParam*(-gamSym + uSym))/(1 + chi) + 2*wSym + eParam*(-2*gamSym - 2*lamSym + uSym + wSym)
 finite orbit preserves C_tr = 0
 PASS: finite orbit preserves C_tr
 finite orbit preserves C_nt = 0
 PASS: finite orbit preserves C_nt
 finite orbit preserves eps_eta = 0
 PASS: finite orbit preserves eps_eta
+K_eta preserving scaling matches paper 2C-U = 0
+PASS: K_eta preserving scaling matches paper 2C-U
+chosen Eta_exp solves eps_eta preservation = 0
+PASS: chosen Eta_exp solves eps_eta preservation
 
 ========================================================================================
 Linearization reproduces compatibility ledger
@@ -61,5 +69,3 @@ Conclusion:
   not an isolated fine-tuning point.
 
 Stage 186 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage178_outgoing_port_coloading_mathematica_audit.wl
-# Date: 2026-05-11T13:22:33-06:00
-# Elapsed: 6s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 161 — OUTGOING-PORT CO-LOADING THEOREM
+STAGE 178 — OUTGOING-PORT CO-LOADING THEOREM
 ========================================================================================
 
 ========================================================================================
@@ -50,6 +42,9 @@ d_r     = (ou2*(oU + oW)*ow2 - 2*r^2*rr)/(ou2*ow2 - r^2)
 ========================================================================================
 nu_r - [kappa1 + sigma_r] = 0
 PASS: nu_r - [kappa1 + sigma_r]
+nu via log-data vs slippage = 0
+PASS: nu via log-data vs slippage
+nuFromData = (-2*ou2*(oU + oW)*ow2 + 4*r^2*rr)/(ou2*ow2 - r^2) + (2*(gw*(gW + oU)*ou2 + gu*r*(gU + rr)))/(gw*ou2 + gu*r)
 Ir = (gu*r)/(gw*ou2)
 Hr = r^2/(ou2*ow2)
 nu_r = (-2*(gw*ou2*(ou2*oW*ow2 + gW*(-(ou2*ow2) + r^2) + r^2*(oU - 2*rr)) + gu*r*(ou2*(oU + oW)*ow2 + gU*(-(ou2*ow2) + r^2) - (ou2*ow2 + r^2)*rr)))/((gw*ou2 + gu*r)*(ou2*ow2 - r^2))
@@ -57,5 +52,3 @@ sigma_r = -kappa1 - (2*(gw*ou2*(ou2*oW*ow2 + gW*(-(ou2*ow2) + r^2) + r^2*(oU - 2
 Hence Xi_1 = sum_r rho_r^(N) sigma_r = sum_r rho_r^(N)(nu_r-kappa1).
 
 Stage 178 Mathematica audit passed.
-
-EXIT_CODE: 0

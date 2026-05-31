@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 159 — OUTGOING LOAD-FACTOR FACTORIZATION")
+banner("STAGE 176 — OUTGOING LOAD-FACTOR FACTORIZATION")
 
 K, OU2, OW2, R, GU, GW = sp.symbols("K OU2 OW2 R GU GW", positive=True, real=True)
 
@@ -99,8 +99,17 @@ print("  Sigma^(N) = 2 d ln M + 2 I/(1+I) d ln I + 2 H/(1-H) d ln H")
 
 banner("Rigidity corollary")
 
-Sigma_rigid = sp.simplify(Sigma_factored.subs({dlnI: 0, dlnH: 0}))
-expect_zero("rigidity reduction to 2 d ln M", Sigma_rigid - 2 * dlnM)
+# Rigidity conditions delta ln I = 0 and delta ln H = 0 expressed on the
+# primitive log-drifts (solve dlnI, dlnH for two of them):
+#   dlnI = dR + dGU - dOU - dGW = 0  ->  dGU = dOU + dGW - dR
+#   dlnH = 2 dR - dOU - dOW   = 0  ->  dOW = 2 dR - dOU
+rigid = {dGU: dOU + dGW - dR, dOW: 2 * dR - dOU}
+
+# Reduce the INDEPENDENT exact drift (not the constructed factored form)
+# under rigidity and confirm it equals 2 d ln M reduced the same way.
+Sigma_exact_rigid = sp.simplify(Sigma_exact.subs(rigid))
+dlnM_rigid = sp.simplify((2 * dlnM).subs(rigid))
+expect_zero("rigidity reduction of Sigma_exact to 2 d ln M", Sigma_exact_rigid - dlnM_rigid)
 
 print("\nConclusion:")
 print("  If the interference and hybridization ratios are rigid, then")

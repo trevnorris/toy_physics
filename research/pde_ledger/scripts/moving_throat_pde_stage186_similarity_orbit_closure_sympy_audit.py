@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 169 — EXACT MICROSCOPIC SIMILARITY ORBIT")
+banner("STAGE 186 — EXACT MICROSCOPIC SIMILARITY ORBIT")
 
 chi, delta = sp.symbols("chi delta", positive=True, real=True)
 E, F = sp.symbols("E F", real=True)
@@ -114,6 +114,14 @@ Eta_orbit = 2*C - U - Eta_exp
 expect_zero("finite orbit preserves C_tr", Ctr_orbit)
 expect_zero("finite orbit preserves C_nt", Cnt_orbit)
 expect_zero("finite orbit preserves eps_eta", Eta_orbit)
+# Non-tautological ground check: solve for the K_eta^eff scaling that preserves
+# eps_eta = c_etaU^2 / (K_U K_eta^eff), then confirm it equals the paper's 2C - U.
+eta_scaling = sp.symbols("eta_scaling", real=True)
+eps_eta_logdrift = 2*C - U - eta_scaling   # log-drift of c^2 K_U^{-1} K_eta^{-1}
+solved_eta = sp.solve(sp.Eq(eps_eta_logdrift, 0), eta_scaling)[0]
+expect_zero("K_eta preserving scaling matches paper 2C-U", solved_eta - (2*C - U))
+expect_zero("chosen Eta_exp solves eps_eta preservation",
+            eps_eta_logdrift.subs(eta_scaling, Eta_exp))
 
 banner("Linearization reproduces compatibility ledger")
 subs_basis = {Lam: lam1, C: c1, Gam: gam1, U: kU, W: kW}

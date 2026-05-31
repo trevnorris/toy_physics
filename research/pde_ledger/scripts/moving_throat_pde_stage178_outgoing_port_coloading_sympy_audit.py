@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 161 — OUTGOING-PORT CO-LOADING THEOREM")
+banner("STAGE 178 — OUTGOING-PORT CO-LOADING THEOREM")
 
 # ---------------------------------------------------------------------------
 # 1. Static outgoing-transfer slope

@@ -1,37 +1,40 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage182_microscopic_coherent_slippage_mathematica_audit.wl
-# Date: 2026-05-11T13:23:41-06:00
-# Elapsed: 11s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 165 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION
+STAGE 182 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION
 ========================================================================================
 
 ========================================================================================
 Physical branch drifts from microscopic logs
 ========================================================================================
-zeta_Z formula = 0
-PASS: zeta_Z formula
-omega_W formula = 0
-PASS: omega_W formula
-chi_1 formula = 0
-PASS: chi_1 formula
-eta_1 formula = 0
-PASS: eta_1 formula
-varepsilon_W formula = 0
-PASS: varepsilon_W formula
-delta_U,1 formula = 0
-PASS: delta_U,1 formula
+Sigma_chi = chi_1/chi_0 = 0
+PASS: Sigma_chi = chi_1/chi_0
+Sigma_eta = eta_1/eps_eta = 0
+PASS: Sigma_eta = eta_1/eps_eta
+Sigma_del = delta_U,1/delta_U = 0
+PASS: Sigma_del = delta_U,1/delta_U
+Sigma_eps = varepsilon_W/eps_W = 0
+PASS: Sigma_eps = varepsilon_W/eps_W
+Sigma_Z = zeta_Z - omega_W = 0
+PASS: Sigma_Z = zeta_Z - omega_W
 
 ========================================================================================
 Four-slippage grouped-defect law
 ========================================================================================
-Xi_1 direct - slippage form = 0
-PASS: Xi_1 direct - slippage form
+PASS: Xi_1 microscopic gauges eliminated
+Xi_1 coeff sigma_Z = 0
+PASS: Xi_1 coeff sigma_Z
+Xi_1 coeff sigma_chi = 0
+PASS: Xi_1 coeff sigma_chi
+Xi_1 coeff sigma_eta = 0
+PASS: Xi_1 coeff sigma_eta
+Xi_1 coeff sigma_eps = 0
+PASS: Xi_1 coeff sigma_eps
+Xi_1 coeff sigma_del = 0
+PASS: Xi_1 coeff sigma_del
+Xi_1 constant term = 0
+PASS: Xi_1 constant term
+Xi_1 direct - derived slippage form = 0
+PASS: Xi_1 direct - derived slippage form
 Xi_1 = (2*chi0*sigmaChi)/(1 + chi0) + (4*deltaU*epsW*sigmaDel - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + sigmaZ
 
 ========================================================================================
@@ -52,6 +55,14 @@ Theta_1 = -((chi0*deltaU*sigmaTr)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)))
 ========================================================================================
 Tracking/nontracking split of Xi_1
 ========================================================================================
+Xi_1 split coeff sigma_Z = 0
+PASS: Xi_1 split coeff sigma_Z
+Xi_1 split coeff sigma_tr = 0
+PASS: Xi_1 split coeff sigma_tr
+Xi_1 split coeff sigma_eps = 0
+PASS: Xi_1 split coeff sigma_eps
+Xi_1 split coeff sigma_del = 0
+PASS: Xi_1 split coeff sigma_del
 Xi_1 split - slippage form = 0
 PASS: Xi_1 split - slippage form
 Xi_1 split = (2*((2*deltaU*epsW*sigmaDel - (1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW) + chi0*(-sigmaDel + sigmaTr/(1 + chi0))))/(1 + deltaU) + sigmaZ
@@ -60,18 +71,9 @@ Xi_1 split = (2*((2*deltaU*epsW*sigmaDel - (1 + deltaU)*(11 + 9*deltaU)*epsW*sig
 Support-blindness at the microscopic level
 ========================================================================================
 free symbols of Xi_1: {"{{2, chi0, sigmaChi}, {2, sigmaChi}}", "     4                                4                              1\n{{{-(--), deltaU, epsW, sigmaDel}, {-(--), epsW, sigmaDel}}, {{-2, ------, sigmaEps}, {-2, sigmaEps}}}\n     11                               11                           deltaU", "sigmaZ"}
-dXi_1/dlamphi1 = 0
-PASS: dXi_1/dlamphi1
-dXi_1/dkphi = 0
-PASS: dXi_1/dkphi
-dR_1/dlamphi1 = 0
-PASS: dR_1/dlamphi1
-dR_1/dkphi = 0
-PASS: dR_1/dkphi
-dTheta_1/dlamphi1 = 0
-PASS: dTheta_1/dlamphi1
-dTheta_1/dkphi = 0
-PASS: dTheta_1/dkphi
+PASS: Xi_1 direct support-blind
+PASS: R_1 direct support-blind
+PASS: Theta_1 direct support-blind
 
 Carry-forward formulas:
   Sigma_Z   = 2 lam_1 + mu_1 - kappa_eta - 2 kappa_W
@@ -84,5 +86,3 @@ Carry-forward formulas:
   Theta_1 is carried by Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi
 
 Stage 182 Mathematica audit passed.
-
-EXIT_CODE: 0

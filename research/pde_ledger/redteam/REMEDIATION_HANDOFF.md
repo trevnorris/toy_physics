@@ -7,12 +7,16 @@
 > finished.** All 29 FINDINGS stages remediated + `verified` across batches 1–8 (batch 8 =
 > {175} verified + committed, see git log); the IV.x/V.1 orchestrator-direct integrity
 > recovery (a DETOUR within the first pass) is closed. **The first full pass has only
-> reached stage 175 (V.1). Stages 176–253 are still PENDING / un-audited** (batches V.2
-> 176–187, V.3 188–200, VI.1 201–218, VII.1 219–230, VII.2 231–242, VIII.1 243–253 = 78
-> stages). **Next = RESUME the first pass at V.2 = {176–187}** — exactly where we were
-> headed when the integrity issue surfaced. The planned full end-to-end **second pass**
-> (`[[project-full-second-pass]]`) is a LATER cross-check, only after the first pass
-> reaches stage 253 — it is NOT the next step.
+> reached stage 175 (V.1) — and the first pass has now **RESUMED**. **V.2 = {176–187} is DONE
+> — 12/12 verified (2026-05-30; batch `redteam/batches/batch_V2_v2.md`; consult
+> `redteam/codex_reviews/_consult_V2.md`).** Stages 188–253 remain PENDING / un-audited
+> (V.3 188–200, VI.1 201–218, VII.1 219–230, VII.2 231–242, VIII.1 243–253 = 66 stages).
+> **Next = V.3 = {188–200}** (13 stages, checkpoint 200) — awaits explicit user go. The planned
+> full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check, only
+> after the first pass reaches stage 253 — it is NOT the next step.
+> **⚠️ V.2 is verified ON DISK but NOT yet committed** (commit on user ask): 12 scripts + 12
+> outputs + reports/directives/verifications/batch file + 6 synced trackers + this handoff +
+> memory are all staged-but-uncommitted.
 
 ## ⚠️ SESSION 2 (2026-05-28 cont.) — PIPELINE CHANGES (do NOT undo) + PROGRESS
 

@@ -3,7 +3,11 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-29` (IV.x/V.1 orchestrator-direct integrity remediation, batch 8 (FINAL) — last of the 29 findings stages closed; all 29 now remediated/verified)
+Snapshot date: `2026-05-30` (V.2 close — first batch of the RESUMED FIRST PASS after the IV.x/V.1 orchestrator-direct integrity remediation (batches 1–8) closed; stages 176–187, run under the RESTORED Codex-as-fix-applier contract)
+
+V.2 audit (2026-05-30) flagged `mathematica_transliteration` on 7 stages (177, 178, 181-F3, 182-F2, 186-F2, 187-F2, plus 176-F2 as a documented comment-only near-mirror). **ALL 7 received genuine independent routes — ZERO accepted as a sanctioned policy mirror this batch** (the converse of V.1, which accepted 2). Per-stage routes: **177** — independent factored-`(M,I,H)` load-factor route (+banner); **178** — Mathematica-native `Coefficient[Series[Log[pA²/dA²]]]` ν_r route (consult Q1 CONCUR: apply, do NOT sanction as a mirror); **181** — independent `sSupport` grouping + ported spoiled negative-control (and the iter-2 ζ-bearing rebuild, see below); **182** — gauge-`Solve` linear Σ-coefficient extraction (consult Q3 DISPUTED the `## Blocked` default — a concrete `Solve`/`CoefficientArrays` route exists, so NOT blocked); **184** — `SeriesCoefficient[Log[composite/ref]]` drifts, de-tautologizing the hardcoded `expr−expr==0` equals (SymPy correctly LEFT UNTOUCHED — already correct, the defect was Mathematica-only); **186** — M_* rows from `Coefficient[Log[monomial]]` + re-solve; **187** — monomial-primitive log-ratios replacing the `Exp[row]`/`Log` X−X block (implemented natively, deletes the `Exp[row]` block). **176-F2 is comment-only** — the existing `D[Log,eps]` vs `series` extraction divergence is genuine and was DOCUMENTED, not rewritten. The mirror-policy default (transliteration is expected; rewrite unless sanctioned) held — no sanctioned-mirror acceptances were needed, and the mandatory escape clause was AVAILABLE but NOT triggered on any of the 7. **One verify-wave catch drove an iteration-2 rework here**: 181 F1's first Mathematica deviation set `t2LoadedPert = t2DirectPert` (ζ-free), so `D[xi1Loaded, zeta]` was identically 0 and the support-loaded ζ-cancellation was never exercised on the Mathematica side (SymPy's was genuine); iter-2 rebuilt `t2LoadedPert` from the ζ-bearing `rTargetLoaded` perturbation and added a `FreeQ[t2LoadedPert, zeta]` guard that fails if ζ is lost. Settled by the consult `redteam/codex_reviews/_consult_V2.md` (session 019e77af; iter-2 185 F1 settled at session 019e77e6). All 12 of 176–187 verified, 2 clean (179, 180), `material_change: false` on all 12, 0 paper_misalignment, 0 blocked. Transliteration share for V.2 = 7/12 = 58% dirty. Previous batch-8 entry below.
+
+Snapshot date prior: `2026-05-29` (IV.x/V.1 orchestrator-direct integrity remediation, batch 8 (FINAL) — last of the 29 findings stages closed; all 29 now remediated/verified)
 
 IV.x/V.1 integrity remediation, batch 8 (2026-05-29, FINAL) re-verified ONE stage (175 V.1-range wall_normalized_load_shape) — the **LAST of the 29 FINDINGS stages**, so with this close **ALL 29 findings stages are now remediated/`verified`** and the only remaining work is the planned full end-to-end second pass. REMEDIATION-`verified`, both engines exit 0/0, `material_change: false` (the edit only ADDS a corroborating independent check; no derived value, constant, identity target, or paper number moved). One direction settled by ONE Claude+Codex read-only consult (4/4 CONCUR; none conceptual; none escalated to the user), recorded at `redteam/codex_reviews/_consult_batch8.md`. One disposition: **175 R1 mathematica_transliteration** — the Mathematica `Sigma_N` differential block was a line-by-line transliteration of the SymPy block (both extracted the first-order log-slope via the SAME `dlog = D[Log[.],eps]/.eps->0` primitive), so the differential SLOPE identity was singly-routed across engines. In V.1 this had been ACCEPTED as a policy mirror (the old "175 F3-step3" `dlogSeries` step was waived); batch 8 REJECTED that waiver and UPGRADED it to a genuine INDEPENDENT ROUTE (option B SUPPLEMENT). A Mathematica-native extractor `dlogSeries[expr_] := Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]` was added with exactly ONE new check `expectZero["Sigma_N - dln(Lambda^2/K) [series route]", 2*dlogSeries[exprPoverDeltaPhys] - kappa - dlogSeries[(lambda^2/k)/.subsEps]]` — the series route compares series-route DIRECT vs the SHAPE target (NOT `dlogSeries` vs `dlog` on the same arg), `-kappa` kept symbolic; the existing `dlog` line was LEFT UNTOUCHED as corroboration, and the SymPy `.py` was LEFT UNTOUCHED as the reference engine. The series route is structurally distinct from SymPy's `sp.diff(sp.log(...))` (`Series`+`Coefficient` vs symbolic differentiation), and it landed `=== 0`, so the mandatory escape clause (accept the sanctioned mirror with written justification) was AVAILABLE but NOT triggered — R1's structural independence was ACHIEVED, NOT waived (the converse of the V.1 F3-step3 disposition). SymPy 13 PASS (UNCHANGED — `.py` untouched); Mathematica 13→14 PASS (+1 = the new `[series route]` line). Codex applied iter=1, deviation: none; the directive rewrite + orchestrator-review found no flaws (clean draft). This CLOSES the last of the 29 findings stages. Previous batch-7 entry below.
 
@@ -569,6 +573,34 @@ different verification structure from the SymPy side:
   line remains as corroboration (converse of the V.1 F3-step3 mirror acceptance,
   which had waived this step; the new `[series route]` check landed `=== 0`, so
   independence was achieved, not waived)
+- `177`
+  red-team batch V.2 (2026-05-30) replaced the transliterated load-factor
+  extraction with an independent factored-`(M,I,H)` route, structurally
+  distinct from the SymPy companion
+- `178`
+  red-team batch V.2 (2026-05-30) derives `ν_r` via a Mathematica-native
+  `Coefficient[Series[Log[pA²/dA²]]]` route (consult Q1: apply as an
+  independent route, not a sanctioned mirror), distinct from the SymPy path
+- `181`
+  red-team batch V.2 (2026-05-30) added an independent `sSupport`-grouping
+  route plus a ported spoiled negative-control; iter-2 rebuilt the perturbed
+  `t2LoadedPert` from the ζ-bearing `rTargetLoaded` with a `FreeQ[..., zeta]`
+  guard so the support-loaded ζ-cancellation is genuinely exercised
+- `182`
+  red-team batch V.2 (2026-05-30) extracts the linear Σ-coefficient via a
+  gauge-`Solve`/`CoefficientArrays` route (consult Q3 disputed the Blocked
+  default — a concrete route exists), independent of the SymPy companion
+- `184`
+  red-team batch V.2 (2026-05-30) replaced the hardcoded `expr−expr==0`
+  drifts with a `SeriesCoefficient[Log[composite/ref]]` route; the SymPy
+  side was already correct and left untouched (the defect was Mathematica-only)
+- `186`
+  red-team batch V.2 (2026-05-30) rebuilds the M_* rows from
+  `Coefficient[Log[monomial]]` + a re-solve, structurally distinct from the
+  SymPy route
+- `187`
+  red-team batch V.2 (2026-05-30) builds the log-ratios from §1 monomial
+  primitives implemented natively, deleting the `Exp[row]`/`Log` X−X block
 - `185`
   reconstructs primitive microscopic ratios before assembling the carried
   packet

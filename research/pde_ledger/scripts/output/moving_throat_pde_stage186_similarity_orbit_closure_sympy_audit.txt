@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
-# Date: 2026-05-11T12:48:32-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 169 — EXACT MICROSCOPIC SIMILARITY ORBIT
+STAGE 186 — EXACT MICROSCOPIC SIMILARITY ORBIT
 ========================================================================================
 delta log C_tr = c1*delta + c1 - chi*kU + chi*tau1 + delta*gam1 - delta*kU + gam1 - 2*kU + tau1
 delta log C_nt = 2*E*gam1 - E*kU - E*kW + 2*E*lam1 + F*kU - F*tau1 - kEta - 2*kW + 2*lam1 + mu1
@@ -42,6 +34,8 @@ mu_W exponent  = (-F*(delta + 1)*(C + Gam - U) + (chi + 1)*(2*C - E*(2*Gam + 2*L
 finite orbit preserves C_tr = 0
 finite orbit preserves C_nt = 0
 finite orbit preserves eps_eta = 0
+K_eta preserving scaling matches paper 2C-U = 0
+chosen Eta_exp solves eps_eta preservation = 0
 
 ========================================================================================
 Linearization reproduces compatibility ledger
@@ -55,5 +49,3 @@ Conclusion:
   equations of a finite five-parameter multiplicative similarity orbit.
   The coherent weak-axisymmetric zero-defect branch is therefore codimension 3,
   not an isolated fine-tuning point.
-
-EXIT_CODE: 0

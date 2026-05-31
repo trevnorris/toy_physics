@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 165 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION"];
+banner["STAGE 182 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION"];
 
 Clear[lam1, c1, gam1, kU, kEta, kW, mu1, tau1, lamphi1, kphi, chi0, epsW, epsEta, deltaU];
 $Assumptions = Element[{lam1, c1, gam1, kU, kEta, kW, mu1, tau1, lamphi1, kphi, chi0, epsW, epsEta, deltaU}, Reals] &&
@@ -51,22 +51,42 @@ slipSubs = {
 };
 
 banner["Physical branch drifts from microscopic logs"];
-expectZero["zeta_Z formula", zetaZ - (2*lam1 - kEta - kW)];
-expectZero["omega_W formula", omegaW - (kW - mu1)];
-expectZero["chi_1 formula", chi1 - chi0*(gam1 + c1 - kU)];
-expectZero["eta_1 formula", eta1 - epsEta*(2*c1 - kU - kEta)];
-expectZero["varepsilon_W formula", varepsW - epsW*(2*gam1 + 2*lam1 - kU - kW)];
-expectZero["delta_U,1 formula", deltaU1 - deltaU*(tau1 - kU)];
+expectZero["Sigma_chi = chi_1/chi_0", (sigmaChi /. slipSubs) - chi1/chi0];
+expectZero["Sigma_eta = eta_1/eps_eta", (sigmaEta /. slipSubs) - eta1/epsEta];
+expectZero["Sigma_del = delta_U,1/delta_U", (sigmaDel /. slipSubs) - deltaU1/deltaU];
+expectZero["Sigma_eps = varepsilon_W/eps_W", (sigmaEps /. slipSubs) - varepsW/epsW];
+expectZero["Sigma_Z = zeta_Z - omega_W", (sigmaZ /. slipSubs) - (zetaZ - omegaW)];
 
 banner["Four-slippage grouped-defect law"];
 xi1Direct = FullSimplify[zetaZ - omegaW + 2*chi1/(1 + chi0) + 2*eps1/(1 - eps), Assumptions -> $Assumptions];
-xi1Slip = FullSimplify[
-  sigmaZ +
-  2*chi0*sigmaChi/(1 + chi0) +
-  2*epsW*((11 + 9*deltaU)*sigmaEps/(11*(1 + deltaU)) - 2*deltaU*sigmaDel/(11*(1 + deltaU)^2))/(1 - eps),
-  Assumptions -> $Assumptions
+sigmaEqns = {
+  sigmaZ == 2*lam1 + mu1 - kEta - 2*kW,
+  sigmaChi == gam1 + c1 - kU,
+  sigmaEta == 2*c1 - kU - kEta,
+  sigmaEps == 2*gam1 + 2*lam1 - kU - kW,
+  sigmaDel == tau1 - kU
+};
+sigmaSolve = First[Solve[sigmaEqns, {mu1, gam1, kEta, kW, tau1}]];
+logSyms = {lam1, c1, gam1, kU, kEta, kW, mu1, tau1};
+xi1DirectInSigmas = Collect[
+  FullSimplify[xi1Direct /. sigmaSolve, Assumptions -> $Assumptions],
+  {sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel},
+  FullSimplify[#, Assumptions -> $Assumptions]&
 ];
-expectZero["Xi_1 direct - slippage form", xi1Direct - (xi1Slip /. slipSubs)];
+xi1DirectInSigmas = xi1DirectInSigmas /. ConditionalExpression[e_, _] :> e;
+xi1DirectInSigmas = FullSimplify[xi1DirectInSigmas, Assumptions -> $Assumptions];
+If[FreeQ[xi1DirectInSigmas, Alternatives @@ logSyms],
+  pass["Xi_1 microscopic gauges eliminated"],
+  fail["Xi_1 microscopic gauges eliminated", xi1DirectInSigmas]
+];
+expectZero["Xi_1 coeff sigma_Z", Coefficient[Expand[xi1DirectInSigmas], sigmaZ] - 1];
+expectZero["Xi_1 coeff sigma_chi", Coefficient[Expand[xi1DirectInSigmas], sigmaChi] - 2*chi0/(1 + chi0)];
+expectZero["Xi_1 coeff sigma_eta", Coefficient[Expand[xi1DirectInSigmas], sigmaEta]];
+expectZero["Xi_1 coeff sigma_eps", Coefficient[Expand[xi1DirectInSigmas], sigmaEps] - 2*epsW*(11 + 9*deltaU)/(11*(1 - eps)*(1 + deltaU))];
+expectZero["Xi_1 coeff sigma_del", Coefficient[Expand[xi1DirectInSigmas], sigmaDel] + 4*epsW*deltaU/(11*(1 - eps)*(1 + deltaU)^2)];
+expectZero["Xi_1 constant term", xi1DirectInSigmas /. {sigmaZ -> 0, sigmaChi -> 0, sigmaEta -> 0, sigmaEps -> 0, sigmaDel -> 0}];
+xi1Slip = xi1DirectInSigmas;
+expectZero["Xi_1 direct - derived slippage form", xi1Direct - (xi1Slip /. slipSubs)];
 Print["Xi_1 = ", fmt[xi1Slip]];
 
 banner["Selected-branch demand slippage"];
@@ -92,24 +112,38 @@ Print["Sigma_tr = ", fmt[sigmaTrDef]];
 Print["Theta_1 = ", fmt[theta1Fact]];
 
 banner["Tracking/nontracking split of Xi_1"];
-xi1Split = FullSimplify[
-  sigmaZ +
-  2*chi0*sigmaTr/((1 + chi0)*(1 + deltaU)) +
-  2*epsW*(11 + 9*deltaU)*sigmaEps/(11*(1 - eps)*(1 + deltaU)) -
-  (2*chi0/(1 + deltaU) + 4*epsW*deltaU/(11*(1 - eps)*(1 + deltaU)^2))*sigmaDel,
-  Assumptions -> $Assumptions
+xi1Split = Collect[
+  FullSimplify[
+    xi1Slip /. sigmaChi -> (sigmaTr - (1 + chi0)*sigmaDel)/(1 + deltaU),
+    Assumptions -> $Assumptions
+  ],
+  {sigmaZ, sigmaTr, sigmaEps, sigmaDel},
+  FullSimplify[#, Assumptions -> $Assumptions]&
 ];
+xi1Split = xi1Split /. ConditionalExpression[e_, _] :> e;
+xi1Split = FullSimplify[xi1Split, Assumptions -> $Assumptions];
+expectZero["Xi_1 split coeff sigma_Z", Coefficient[Expand[xi1Split], sigmaZ] - 1];
+expectZero["Xi_1 split coeff sigma_tr", Coefficient[Expand[xi1Split], sigmaTr] - 2*chi0/((1 + chi0)*(1 + deltaU))];
+expectZero["Xi_1 split coeff sigma_eps", Coefficient[Expand[xi1Split], sigmaEps] - 2*epsW*(11 + 9*deltaU)/(11*(1 - eps)*(1 + deltaU))];
+expectZero["Xi_1 split coeff sigma_del", Coefficient[Expand[xi1Split], sigmaDel] + 2*chi0/(1 + deltaU) + 4*epsW*deltaU/(11*(1 - eps)*(1 + deltaU)^2)];
 expectZero["Xi_1 split - slippage form", (xi1Split /. sigmaTr -> sigmaTrDef) - xi1Slip];
 Print["Xi_1 split = ", fmt[xi1Split]];
 
 banner["Support-blindness at the microscopic level"];
 Print["free symbols of Xi_1: ", fmt[Sort[ToString /@ (List @@ xi1Slip /. Plus -> List /. Times -> List)]]];
-expectZero["dXi_1/dlamphi1", D[xi1Slip, lamphi1]];
-expectZero["dXi_1/dkphi", D[xi1Slip, kphi]];
-expectZero["dR_1/dlamphi1", D[r1Slip, lamphi1]];
-expectZero["dR_1/dkphi", D[r1Slip, kphi]];
-expectZero["dTheta_1/dlamphi1", D[theta1Fact, lamphi1]];
-expectZero["dTheta_1/dkphi", D[theta1Fact, kphi]];
+(* Support-blindness: no support-lane drift enters the microscopic-log defect
+   construction. The zeta-cancellation mechanism lives upstream in Stage 249. *)
+Module[{forms = {{"Xi_1 direct", xi1Direct}, {"R_1 direct", r1Direct}, {"Theta_1 direct", theta1Direct}}},
+  Do[
+    With[{label = forms[[i, 1]], form = forms[[i, 2]]},
+      If[FreeQ[form, lamphi1] && FreeQ[form, kphi],
+        pass[label <> " support-blind"],
+        fail[label <> " support-blind", form]
+      ]
+    ],
+    {i, Length[forms]}
+  ]
+];
 
 Print[""];
 Print["Carry-forward formulas:"];

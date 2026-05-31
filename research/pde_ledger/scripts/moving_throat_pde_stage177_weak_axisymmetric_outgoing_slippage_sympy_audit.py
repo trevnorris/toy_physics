@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 160 — WEAK-AXISYMMETRIC OUTGOING-SLIPPAGE COLLAPSE")
+banner("STAGE 177 — WEAK-AXISYMMETRIC OUTGOING-SLIPPAGE COLLAPSE")
 
 eps, lam = sp.symbols("eps lam", real=True)
 K, OU2, OW2, R, GU, GW = sp.symbols("K OU2 OW2 R GU GW", positive=True, real=True)

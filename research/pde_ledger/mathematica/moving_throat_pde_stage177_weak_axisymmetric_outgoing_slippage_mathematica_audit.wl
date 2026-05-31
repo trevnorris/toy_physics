@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 160 — WEAK-AXISYMMETRIC OUTGOING-SLIPPAGE COLLAPSE"];
+banner["STAGE 177 — WEAK-AXISYMMETRIC OUTGOING-SLIPPAGE COLLAPSE"];
 
 Clear[eps, lam, k, ou2, ow2, r, gu, gw, kappa1, gW1, gU1, r1, oU1, oW1];
 $Assumptions = Element[{eps, lam, k, ou2, ow2, r, gu, gw, kappa1, gW1, gU1, r1, oU1, oW1}, Reals] &&
@@ -58,8 +58,14 @@ expectZero["weak-axisymmetric d ln M", dlnMExact - lam*mR];
 expectZero["weak-axisymmetric d ln I", dlnIExact - lam*iR];
 expectZero["weak-axisymmetric d ln H", dlnHExact - lam*hR];
 
+banner["Load-factor factorization (independent check)"];
+expectZero["load-factor factorization lambda0^2/k = M^2 (1+I)^2/(1-H)^2",
+  lambda0^2/k - mCal^2*(1 + iCal)^2/(1 - hCal)^2];
+
 banner["Portwise outgoing-defect amplitude"];
-sigmaExact = FullSimplify[D[Log[(lambdaP^2/kP)/(lambda0^2/k)], eps] /. eps -> 0, Assumptions -> $Assumptions];
+lambdaSqOverKP = mCalP^2*(1 + iCalP)^2/(1 - hCalP)^2;
+lambdaSqOverK0 = mCal^2*(1 + iCal)^2/(1 - hCal)^2;
+sigmaExact = FullSimplify[D[Log[lambdaSqOverKP/lambdaSqOverK0], eps] /. eps -> 0, Assumptions -> $Assumptions];
 sigmaR = FullSimplify[2*mR + 2*iCal*iR/(1 + iCal) + 2*hCal*hR/(1 - hCal), Assumptions -> $Assumptions];
 expectZero["Sigma_{A,r} = lambda_A sigma_r", sigmaExact - lam*sigmaR];
 

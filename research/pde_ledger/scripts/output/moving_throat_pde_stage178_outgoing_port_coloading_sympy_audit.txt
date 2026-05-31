@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
-# Date: 2026-05-11T12:47:51-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 161 — OUTGOING-PORT CO-LOADING THEOREM
+STAGE 178 — OUTGOING-PORT CO-LOADING THEOREM
 ========================================================================================
 
 ========================================================================================
@@ -53,5 +45,3 @@ Hr = R**2/(OU2*OW2)
 nu_r = 2*(GU*R*(OU2*OW2 - R**2)*(gU - gW - oU + rr) - R**2*(GU*R + GW*OU2)*(oU + oW - 2*rr) + (gW - oW)*(GU*R + GW*OU2)*(OU2*OW2 - R**2))/((GU*R + GW*OU2)*(OU2*OW2 - R**2))
 sigma_r = (2*GU*R*(OU2*OW2 - R**2)*(gU - gW - oU + rr) - 2*R**2*(GU*R + GW*OU2)*(oU + oW - 2*rr) - kappa1*(GU*R + GW*OU2)*(OU2*OW2 - R**2) + 2*(gW - oW)*(GU*R + GW*OU2)*(OU2*OW2 - R**2))/((GU*R + GW*OU2)*(OU2*OW2 - R**2))
 Hence Xi_1 = sum_r rho_r^(N) sigma_r = sum_r rho_r^(N)(nu_r-kappa1).
-
-EXIT_CODE: 0

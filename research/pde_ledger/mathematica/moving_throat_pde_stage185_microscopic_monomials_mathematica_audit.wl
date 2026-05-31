@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 168 — DIRECT MICROSCOPIC MONOMIALS"];
+banner["STAGE 185 — DIRECT MICROSCOPIC MONOMIALS"];
 
 Clear[
   chi0s, deltaUs, epsWs, epss, lam1, c1, gam1, kU, keta, kW, mu1, tau1,
@@ -188,20 +188,38 @@ expectZero["d ln epsilon_eta - Sigma_eta", sigmaEtaDirect - sigmaEta];
 banner["Observable triangular law in microscopic monomials"];
 cTrStar = chi0s*deltaUs/((1 + chi0s)*(1 + deltaUs)*(1 + chi0s + deltaUs));
 aTrStar = 2*chi0s/((1 + chi0s)*(1 + deltaUs));
-theta1 = FullSimplify[-cTrStar*sigmaTr, Assumptions -> $Assumptions];
-xi1 = FullSimplify[aTrStar*sigmaTr + sigmaNt, Assumptions -> $Assumptions];
+chi1Indep = FullSimplify[chi0s*sigmaChi, Assumptions -> $Assumptions];
+deltaU1Indep = FullSimplify[deltaUs*sigmaDelta, Assumptions -> $Assumptions];
+theta1 = FullSimplify[
+  -(chi0s*(1 + chi0s)*deltaU1Indep + deltaUs*(1 + deltaUs)*chi1Indep)/
+    ((1 + chi0s)*(1 + deltaUs)*(1 + chi0s + deltaUs)),
+  Assumptions -> $Assumptions
+];
+xi1 = FullSimplify[
+  sigmaZ + 2*chi0s/(1 + chi0s)*sigmaChi + eStar*sigmaEps -
+    4*epsWs*deltaUs/(11*(1 - epss)*(1 + deltaUs)^2)*sigmaDelta,
+  Assumptions -> $Assumptions
+];
 rcombo = FullSimplify[-epseta0/(1 - epseta0)*sigmaEta, Assumptions -> $Assumptions];
 rcomboRatio = FullSimplify[(1 - epseta0*epsetaRatio)/(1 - epseta0), Assumptions -> $Assumptions];
 rcomboDirect = firstRatioDrift[rcomboRatio];
 
-expectZero["Theta_1 monomial law", theta1 - (-cTrStar*sigmaTrDirect)];
-expectZero["Xi_1 monomial law", xi1 - (aTrStar*sigmaTrDirect + sigmaNtDirect)];
+expectZero["Theta_1 independent slippage law", theta1 - (-cTrStar*sigmaTr)];
+expectZero["Xi_1 independent slippage law", xi1 - (aTrStar*sigmaTr + sigmaNt)];
+expectZero["Theta_1 monomial law", theta1 - (-cTrStar*sigmaTrCompiled)];
+expectZero["Xi_1 monomial law", xi1 - (aTrStar*sigmaTrCompiled + sigmaNtCompiled)];
 expectZero["R_1 + Xi_1 complement law", rcomboDirect - rcombo];
 Print["Theta1 = ", fmt[theta1]];
 Print["Xi1 = ", fmt[xi1]];
 Print["R1 + Xi1 = ", fmt[rcombo]];
 
 banner["Exact zero-defect compatibility solve"];
+mStarMinor = {
+  {D[sigmaTr, tau1], D[sigmaTr, keta], D[sigmaTr, mu1]},
+  {D[sigmaNt, tau1], D[sigmaNt, keta], D[sigmaNt, mu1]},
+  {D[sigmaEta, tau1], D[sigmaEta, keta], D[sigmaEta, mu1]}
+};
+expectZero["det M_*^(tau,keta,mu) - (1+chi0s)", Det[mStarMinor] - (1 + chi0s)];
 tauSol = FullSimplify[tau1 /. First[Solve[sigmaTr == 0, tau1, Reals]], Assumptions -> $Assumptions];
 ketaSol = FullSimplify[keta /. First[Solve[sigmaEta == 0, keta, Reals]], Assumptions -> $Assumptions];
 muSol = FullSimplify[mu1 /. First[Solve[sigmaNt == 0, mu1, Reals]], Assumptions -> $Assumptions];

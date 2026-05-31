@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage181_coherent_tracking_defect_mathematica_audit.wl
-# Date: 2026-05-11T13:23:20-06:00
-# Elapsed: 6s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 164 — COHERENT TRACKING-BRANCH DEFECT LAW
+STAGE 181 — COHERENT TRACKING-BRANCH DEFECT LAW
 ========================================================================================
 direct-selected transfer-shape identity = 0
 PASS: direct-selected transfer-shape identity
@@ -22,16 +14,23 @@ d/dzeta ln T^2 (support-loaded route) = 0
 PASS: d/dzeta ln T^2 (support-loaded route)
 d/dzeta ln R_target (support-loaded route) = 0
 PASS: d/dzeta ln R_target (support-loaded route)
+spoiled d/dzeta ln R_target = (-121*(1 + deltaU)^2 + 22*(1 + deltaU)*(11 + 9*deltaU)*epsW*zeta - (11 + 9*deltaU)*epsW*(-11*(1 + deltaU) + 2*(11 + 9*deltaU)*epsW)*zeta^2)/((-11*(1 + deltaU) - 11*(1 + deltaU)*zeta + 2*(11 + 9*deltaU)*epsW*zeta)*(-11 - 11*deltaU + 11*zeta*(-2 + epsW*(2 + zeta)) + deltaU*zeta*(-22 + 9*epsW*(2 + zeta))))
 
 ========================================================================================
 Weak-axisymmetric drift transport
 ========================================================================================
 split-blocking drift eps_1 = 0
 PASS: split-blocking drift eps_1
+R_1 derived from R_target matches closed form = 0
+PASS: R_1 derived from R_target matches closed form
 selected-branch identity = 0
 PASS: selected-branch identity
 Xi_1 = (2*chi1)/(1 + chi0) + (4*deltaU1*epsW - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) - omegaW + zetaZ
 R_1  = (-2*chi1)/(1 + chi0) + (-4*deltaU1*epsW + 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + eta1/(-1 + epsEta) + omegaW - zetaZ
+Xi_1 derived from T^2 matches defect law = 0
+PASS: Xi_1 derived from T^2 matches defect law
+d/dzeta Xi_1 (support-loaded route) = 0
+PASS: d/dzeta Xi_1 (support-loaded route)
 
 ========================================================================================
 Tracking-factor drift
@@ -53,5 +52,3 @@ Conclusion:
   Exact tracking-factor rigidity is not sufficient to kill Xi_1.
 
 Stage 181 Mathematica audit passed.
-
-EXIT_CODE: 0

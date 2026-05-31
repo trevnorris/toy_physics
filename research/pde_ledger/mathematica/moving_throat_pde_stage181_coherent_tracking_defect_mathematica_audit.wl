@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 164 — COHERENT TRACKING-BRANCH DEFECT LAW"];
+banner["STAGE 181 — COHERENT TRACKING-BRANCH DEFECT LAW"];
 
 Clear[gConst, cSpeed, cs, a, epsEta, epsW, deltaU, chi0, zeta, zW, omegaW2];
 $Assumptions = Element[{gConst, cSpeed, cs, a, epsEta, epsW, deltaU, chi0, zeta, zW, omegaW2}, Reals] &&
@@ -38,21 +38,38 @@ t2Selected = FullSimplify[27*Pi^2*gConst*cs^5*(1 - epsEta)/(20*a^5*cSpeed^5*rTar
 mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
 mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)), Assumptions -> $Assumptions];
 sSupport = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
-mTr = FullSimplify[mMix + mSupp, Assumptions -> $Assumptions];
 productLoaded = FullSimplify[8*lamNorm*(1 - eps)/Pi^2*sSupport, Assumptions -> $Assumptions];
-rTargetLoaded = FullSimplify[productLoaded/mTr, Assumptions -> $Assumptions];
+loadMassFromSupport = FullSimplify[mMix*sSupport, Assumptions -> $Assumptions];
+rTargetLoaded = FullSimplify[productLoaded/loadMassFromSupport, Assumptions -> $Assumptions];
 t2Loaded = FullSimplify[(lamNorm/omegaW2)*(1 - epsEta)/rTargetLoaded, Assumptions -> $Assumptions];
 
 expectZero["direct-selected transfer-shape identity", t2Direct - t2Selected];
 expectZero["support-loaded R_target reconstruction", rTargetLoaded - rTarget];
 expectZero["support-loaded T^2 reconstruction", t2Loaded - t2Direct];
-expectZero["support-loaded branch product law", rTargetLoaded*mTr - productLoaded];
+expectZero["support-loaded branch product law", rTargetLoaded*loadMassFromSupport - productLoaded];
 expectZero["d/dzeta ln T^2 (support-loaded route)", D[Log[t2Loaded], zeta]];
 expectZero["d/dzeta ln R_target (support-loaded route)", D[Log[rTargetLoaded], zeta]];
 
+Clear[bad];
+mSuppSpoiled = FullSimplify[
+  mSupp + bad*zeta*mMix,
+  Assumptions -> $Assumptions && Element[bad, Reals] && bad != 0
+];
+rTargetSpoiled = FullSimplify[
+  productLoaded/(mMix + mSuppSpoiled),
+  Assumptions -> $Assumptions && Element[bad, Reals] && bad != 0
+];
+spoiledDrift = FullSimplify[D[Log[rTargetSpoiled], zeta] /. bad -> 1, Assumptions -> $Assumptions];
+Print["spoiled d/dzeta ln R_target = ", fmt[spoiledDrift]];
+If[TrueQ[spoiledDrift === 0], fail["Expected a spoiled support packet to break R_target blindness."]];
+
 banner["Weak-axisymmetric drift transport"];
-Clear[zetaZ, omegaW, chi1, epsW1, deltaU1, eta1];
-$Assumptions = Element[{zetaZ, omegaW, chi1, epsW1, deltaU1, eta1, epsEta, epsW, deltaU, chi0}, Reals];
+Clear[zetaZ, omegaW, chi1, epsW1, deltaU1, eta1, s];
+$Assumptions = Element[
+  {zetaZ, omegaW, chi1, epsW1, deltaU1, eta1, s, epsEta, epsW, deltaU, chi0, zeta,
+   zW, omegaW2, gConst, cSpeed, cs, a},
+  Reals
+] && gConst > 0 && cSpeed > 0 && cs > 0 && a > 0 && zW > 0 && omegaW2 > 0;
 
 eps1 = FullSimplify[D[eps, epsW]*epsW1 + D[eps, deltaU]*deltaU1, Assumptions -> $Assumptions];
 eps1Expected = FullSimplify[
@@ -66,10 +83,30 @@ r1 = FullSimplify[
   omegaW - eta1/(1 - epsEta) - zetaZ - 2*chi1/(1 + chi0) - 2*eps1/(1 - eps),
   Assumptions -> $Assumptions
 ];
+lamNormPert = lamNorm /. omegaW2 -> omegaW2*(1 + s*omegaW);
+epsPert = (epsW + s*epsW1)*(1 - (2/11)*(deltaU + s*deltaU1)/(1 + deltaU + s*deltaU1));
+rTargetPert = lamNormPert*(1 - (epsEta + s*eta1))*(1 - epsPert)^2/((zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2);
+r1Derived = FullSimplify[(D[Log[rTargetPert], s] /. s -> 0), Assumptions -> $Assumptions];
+expectZero["R_1 derived from R_target matches closed form", r1Derived - r1];
 expectZero["selected-branch identity", xi1 + eta1/(1 - epsEta) + r1];
 
 Print["Xi_1 = ", fmt[xi1]];
 Print["R_1  = ", fmt[r1]];
+
+epsPert = (epsW + s*epsW1)*(1 - (2/11)*(deltaU + s*deltaU1)/(1 + deltaU + s*deltaU1));
+t2DirectPert = (zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/((omegaW2*(1 + s*omegaW))*(1 - epsPert)^2);
+xi1Derived = FullSimplify[(D[Log[t2DirectPert], s] /. s -> 0), Assumptions -> $Assumptions];
+expectZero["Xi_1 derived from T^2 matches defect law", xi1Derived - xi1];
+mMixPert = 8*(zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/(Pi^2*(1 - epsEta)*(1 - epsPert));
+mSuppPert = 8*zeta*(zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/
+  (Pi^2*(1 - epsEta)*(1 - zeta*epsPert));
+sSupportPert = 1 + zeta*(1 - epsPert)/(1 - zeta*epsPert);
+productLoadedPert = 8*lamNormPert*(1 - epsPert)/Pi^2*sSupportPert;
+rTargetLoadedPert = productLoadedPert/(mMixPert + mSuppPert);
+t2LoadedPert = lamNormPert/(omegaW2*(1 + s*omegaW))*(1 - epsEta)/rTargetLoadedPert;
+If[TrueQ[FreeQ[t2LoadedPert, zeta]], fail["t2LoadedPert lost zeta before support-loaded Xi_1 drift"]];
+xi1Loaded = FullSimplify[(D[Log[t2LoadedPert], s] /. s -> 0), Assumptions -> $Assumptions];
+expectZero["d/dzeta Xi_1 (support-loaded route)", D[xi1Loaded, zeta]];
 
 banner["Tracking-factor drift"];
 rTr = FullSimplify[(1 + chi0/(1 + deltaU))/(1 + chi0), Assumptions -> $Assumptions];

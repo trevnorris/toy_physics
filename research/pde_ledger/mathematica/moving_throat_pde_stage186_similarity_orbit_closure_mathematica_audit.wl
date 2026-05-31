@@ -23,15 +23,33 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 169 — EXACT MICROSCOPIC SIMILARITY ORBIT"];
+banner["STAGE 186 — EXACT MICROSCOPIC SIMILARITY ORBIT"];
 
 Clear[chi, delta, eParam, fParam, lam1, c1, gam1, kU, kEta, kW, mu1, tau1];
 $Assumptions = Element[{chi, delta, eParam, fParam, lam1, c1, gam1, kU, kEta, kW, mu1, tau1}, Reals] &&
   chi > 0 && delta > 0;
 
-dlogCtr = (1 + delta)*(gam1 + c1 - kU) + (1 + chi)*(tau1 - kU);
-dlogCnt = (2 + 2*eParam)*lam1 + 2*eParam*gam1 + mu1 + (fParam - eParam)*kU - kEta - (2 + eParam)*kW - fParam*tau1;
-dlogEta = 2*c1 - kU - kEta;
+driftVars = {lam1, c1, gam1, kU, kEta, kW, mu1, tau1};
+logDriftFromExponents[exponents_List] := exponents . driftVars;
+
+ctrCoreExponents = {0, 1, 1, -1, 0, 0, 0, 0};
+thermalExponents = {0, 0, 0, -1, 0, 0, 0, 1};
+cntPrefactorExponents = {2, 0, 0, 0, -1, -2, 1, 0};
+cntEExponents = {2, 0, 2, -1, 0, -1, 0, 0};
+etaExponents = {0, 2, 0, -1, -1, 0, 0, 0};
+
+monomialLogDrifts = {
+  (1 + delta)*logDriftFromExponents[ctrCoreExponents] +
+    (1 + chi)*logDriftFromExponents[thermalExponents],
+  logDriftFromExponents[cntPrefactorExponents] +
+    eParam*logDriftFromExponents[cntEExponents] -
+    fParam*logDriftFromExponents[thermalExponents],
+  logDriftFromExponents[etaExponents]
+};
+
+dlogCtr = monomialLogDrifts[[1]];
+dlogCnt = monomialLogDrifts[[2]];
+dlogEta = monomialLogDrifts[[3]];
 
 Print["delta log C_tr = ", fmt[Expand[dlogCtr]]];
 Print["delta log C_nt = ", fmt[Expand[dlogCnt]]];
@@ -42,8 +60,15 @@ mMat = {
   {2 + 2*eParam, 0, 2*eParam, fParam - eParam, -1, -(2 + eParam), 1, -fParam},
   {0, 2, 0, -1, -1, 0, 0, 0}
 };
+mMatDerived = Table[
+  Coefficient[Expand[monomialLogDrifts[[row]]], driftVars[[col]]],
+  {row, Length[monomialLogDrifts]}, {col, Length[driftVars]}
+];
 Print[""];
 Print["M_* = ", fmt[MatrixForm[mMat]]];
+expectZero["M_* row 1 matches paper", Total[Abs[mMatDerived[[1]] - mMat[[1]]]]];
+expectZero["M_* row 2 matches paper", Total[Abs[mMatDerived[[2]] - mMat[[2]]]]];
+expectZero["M_* row 3 matches paper", Total[Abs[mMatDerived[[3]] - mMat[[3]]]]];
 
 minor = mMat[[All, {8, 5, 7}]];
 detMinor = FullSimplify[Det[minor], Assumptions -> $Assumptions];
@@ -76,13 +101,29 @@ expectZero[
 ];
 
 banner["Finite five-parameter similarity orbit"];
-Clear[lamSym, cSym, gamSym, uSym, wSym];
-$Assumptions = Element[{chi, delta, eParam, fParam, lamSym, cSym, gamSym, uSym, wSym}, Reals] &&
+Clear[lamSym, cSym, gamSym, uSym, wSym, kEtaScale, muScale, tauScale];
+$Assumptions = Element[{chi, delta, eParam, fParam, lamSym, cSym, gamSym, uSym, wSym, kEtaScale, muScale, tauScale}, Reals] &&
   chi > 0 && delta > 0;
 
-etaExp = 2*cSym - uSym;
-tauExp = uSym - (1 + delta)*(gamSym + cSym - uSym)/(1 + chi);
-muExp = etaExp + 2*wSym - 2*lamSym - eParam*(2*gamSym + 2*lamSym - uSym - wSym) + fParam*(tauExp - uSym);
+orbitLogVector = {lamSym, cSym, gamSym, uSym, kEtaScale, wSym, muScale, tauScale};
+scaleSol = First[Solve[Thread[mMat . orbitLogVector == {0, 0, 0}], {kEtaScale, muScale, tauScale}]];
+etaExp = FullSimplify[kEtaScale /. scaleSol, Assumptions -> $Assumptions];
+tauExp = FullSimplify[tauScale /. scaleSol, Assumptions -> $Assumptions];
+muExp = FullSimplify[muScale /. scaleSol, Assumptions -> $Assumptions];
+
+expectZero["solved K_eta scaling matches paper", etaExp - (2*cSym - uSym)];
+expectZero[
+  "solved T_U scaling matches paper",
+  tauExp - (uSym - (1 + delta)*(gamSym + cSym - uSym)/(1 + chi))
+];
+expectZero[
+  "solved mu_W scaling matches paper",
+  muExp - (
+    (2*cSym - uSym) + 2*wSym - 2*lamSym -
+    eParam*(2*gamSym + 2*lamSym - uSym - wSym) -
+    fParam*(1 + delta)*(gamSym + cSym - uSym)/(1 + chi)
+  )
+];
 
 Print["K_eta exponent = ", fmt[etaExp]];
 Print["T_U exponent   = ", fmt[tauExp]];
@@ -95,6 +136,16 @@ etaOrbit = 2*cSym - uSym - etaExp;
 expectZero["finite orbit preserves C_tr", ctrOrbit];
 expectZero["finite orbit preserves C_nt", cntOrbit];
 expectZero["finite orbit preserves eps_eta", etaOrbit];
+(* Non-tautological ground check: solve for the K_eta^eff scaling that preserves
+   eps_eta = c_etaU^2 / (K_U K_eta^eff), then confirm it equals the paper 2C - U. *)
+Clear[etaScaling];
+$Assumptions = Element[{chi, delta, eParam, fParam, lamSym, cSym, gamSym, uSym, wSym, etaScaling}, Reals] &&
+  chi > 0 && delta > 0;
+epsEtaLogDrift = 2*cSym - uSym - etaScaling;
+solvedEta = etaScaling /. First[Solve[epsEtaLogDrift == 0, etaScaling]];
+expectZero["K_eta preserving scaling matches paper 2C-U", solvedEta - (2*cSym - uSym)];
+expectZero["chosen Eta_exp solves eps_eta preservation",
+  epsEtaLogDrift /. etaScaling -> etaExp];
 
 banner["Linearization reproduces compatibility ledger"];
 basisSubs = {lamSym -> lam1, cSym -> c1, gamSym -> gam1, uSym -> kU, wSym -> kW};

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 161 — OUTGOING-PORT CO-LOADING THEOREM"];
+banner["STAGE 178 — OUTGOING-PORT CO-LOADING THEOREM"];
 
 banner["1. Exact weak-axisymmetric slope of N_{A,0}^{(r)}"];
 Clear[eps, lam, p0r, d0r, pR, dR];
@@ -99,6 +99,15 @@ nuExpected = FullSimplify[
   Assumptions -> $Assumptions
 ];
 expectZero["nu_r - [kappa1 + sigma_r]", nuDirect - nuExpected];
+
+(* Independent route: nu_r as the eps*lam log-slope of N = P^2/Delta^2,
+   built straight from the component drifts, not from pExpected/dExpected. *)
+nuFromData = FullSimplify[
+  Coefficient[Normal[Series[Log[pA^2/dA^2], {eps, 0, 1}]], eps*lam],
+  Assumptions -> $Assumptions
+];
+expectZero["nu via log-data vs slippage", nuFromData - nuExpected];
+Print["nuFromData = ", fmt[nuFromData]];
 
 sigmaR = FullSimplify[nuExpected - kappa1, Assumptions -> $Assumptions];
 Print["Ir = ", fmt[iRExpr]];

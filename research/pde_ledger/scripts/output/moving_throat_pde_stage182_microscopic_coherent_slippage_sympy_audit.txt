@@ -1,25 +1,16 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage182_microscopic_coherent_slippage_sympy_audit.py
-# Date: 2026-05-11T12:48:13-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 165 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION
+STAGE 182 — MICROSCOPIC COHERENT-KERNEL SLIPPAGE DECOMPOSITION
 ========================================================================================
 
 ========================================================================================
 Physical branch drifts from microscopic logs
 ========================================================================================
-zeta_Z formula = 0
-omega_W formula = 0
-chi_1 formula = 0
-eta_1 formula = 0
-varepsilon_W formula = 0
-delta_U,1 formula = 0
+Sigma_chi = chi_1/chi_0 = 0
+Sigma_eta = eta_1/eps_eta = 0
+Sigma_del = delta_U,1/delta_U = 0
+Sigma_eps = varepsilon_W/eps_W = 0
+Sigma_Z = zeta_Z - omega_W = 0
 
 ========================================================================================
 Four-slippage grouped-defect law
@@ -94,13 +85,10 @@ Xi_1 split =
 ========================================================================================
 Support-blindness at the microscopic level
 ========================================================================================
-free symbols of Xi_1: {epsW, chi0, Sigma_eps, Sigma_chi, deltaU, Sigma_Z, Sigma_del}
-dXi_1/dlamphi1 = 0
-dXi_1/dkphi = 0
-dR_1/dlamphi1 = 0
-dR_1/dkphi = 0
-dTheta_1/dlamphi1 = 0
-dTheta_1/dkphi = 0
+free symbols of Xi_1: {Sigma_Z, Sigma_eps, deltaU, chi0, epsW, Sigma_chi, Sigma_del}
+Xi_1 direct support-symbol leakage = set()
+R_1 direct support-symbol leakage = set()
+Theta_1 direct support-symbol leakage = set()
 
 Carry-forward formulas:
   Sigma_Z   = 2 lam_1 + mu_1 - kappa_eta - 2 kappa_W
@@ -111,5 +99,3 @@ Carry-forward formulas:
   Xi_1 depends only on (Sigma_Z, Sigma_chi, Sigma_eps, Sigma_del)
   R_1 adds only Sigma_eta
   Theta_1 is carried by Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi
-
-EXIT_CODE: 0

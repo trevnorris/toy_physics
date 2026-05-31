@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
-# Date: 2026-05-11T12:48:31-06:00
-# Elapsed: 12s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 168 — DIRECT MICROSCOPIC MONOMIALS
+STAGE 185 — DIRECT MICROSCOPIC MONOMIALS
 ========================================================================================
 Sigma_tr = -(chi0s + 1)*(kU - tau1) + (deltaUs + 1)*(c1 + gam1 - kU)
 Sigma_nt = (-2*epsWs*(deltaUs + 1)*(9*deltaUs + 11)*(2*gam1 - kU - kW + 2*lam1) + 11*(deltaUs + 1)**2*(epss - 1)*(-2*kW - keta + 2*lam1 + mu1) + 2*(kU - tau1)*(11*chi0s*(deltaUs + 1)*(epss - 1) - 2*deltaUs*epsWs))/(11*(deltaUs + 1)**2*(epss - 1))
@@ -64,16 +56,19 @@ d ln epsilon_eta - Sigma_eta = 0
 ========================================================================================
 Observable triangular law in microscopic monomials
 ========================================================================================
+Theta_1 independent slippage law = 0
+Xi_1 independent slippage law = 0
 Theta_1 monomial law = 0
 Xi_1 monomial law = 0
 R_1 + Xi_1 complement law = 0
 Theta1 = chi0s*deltaUs*((chi0s + 1)*(kU - tau1) - (deltaUs + 1)*(c1 + gam1 - kU))/((chi0s + 1)*(deltaUs + 1)*(chi0s + deltaUs + 1))
-Xi1 = (-22*chi0s*(deltaUs + 1)*(epss - 1)*((chi0s + 1)*(kU - tau1) - (deltaUs + 1)*(c1 + gam1 - kU)) - 2*epsWs*(chi0s + 1)*(deltaUs + 1)*(9*deltaUs + 11)*(2*gam1 - kU - kW + 2*lam1) - 11*(chi0s + 1)*(deltaUs + 1)**2*(epss - 1)*(2*kW + keta - 2*lam1 - mu1) + 2*(chi0s + 1)*(kU - tau1)*(11*chi0s*(deltaUs + 1)*(epss - 1) - 2*deltaUs*epsWs))/(11*(chi0s + 1)*(deltaUs + 1)**2*(epss - 1))
+Xi1 = (22*chi0s*(deltaUs + 1)**2*(epss - 1)*(c1 + gam1 - kU) - 4*deltaUs*epsWs*(chi0s + 1)*(kU - tau1) - 2*epsWs*(chi0s + 1)*(deltaUs + 1)*(9*deltaUs + 11)*(2*gam1 - kU - kW + 2*lam1) - 11*(chi0s + 1)*(deltaUs + 1)**2*(epss - 1)*(2*kW + keta - 2*lam1 - mu1))/(11*(chi0s + 1)*(deltaUs + 1)**2*(epss - 1))
 R1 + Xi1 = c_etaU**2*(-2*c1 + kU + keta)/(K_U*K_eta_eff - c_etaU**2)
 
 ========================================================================================
 Exact zero-defect compatibility solve
 ========================================================================================
+det M_*^(tau,keta,mu) - (1+chi0s) = 0
 tau1 = (-c1*deltaUs - c1 + chi0s*kU - deltaUs*gam1 + deltaUs*kU - gam1 + 2*kU)/(chi0s + 1)
 kappa_eta = 2*c1 - kU
 mu1 = (2*epsWs*(deltaUs + 1)*(9*deltaUs + 11)*(2*gam1 - kU - kW + 2*lam1) + 11*(deltaUs + 1)**2*(epss - 1)*(2*kW + keta - 2*lam1) - 2*(kU - tau1)*(11*chi0s*(deltaUs + 1)*(epss - 1) - 2*deltaUs*epsWs))/(11*(deltaUs + 1)**2*(epss - 1))
@@ -87,5 +82,3 @@ Carry-forward formulas:
   C_nt,*  = (Z_W/Omega_W^2) eps_W^(E_*) delta_U^(-F_*)
   epsilon_eta = c_{etaU}^2 / (K_U K_eta^(eff))
   Zero defect iff these three microscopic monomials are invariant at first grouped order.
-
-EXIT_CODE: 0

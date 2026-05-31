@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
-# Date: 2026-05-11T12:47:37-06:00
-# Elapsed: 11s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 159 — OUTGOING LOAD-FACTOR FACTORIZATION
+STAGE 176 — OUTGOING LOAD-FACTOR FACTORIZATION
 ========================================================================================
 exact factorization of Lambda^2/K = 0
 
@@ -30,12 +22,10 @@ First-order formulas:
 ========================================================================================
 Rigidity corollary
 ========================================================================================
-rigidity reduction to 2 d ln M = 0
+rigidity reduction of Sigma_exact to 2 d ln M = 0
 
 Conclusion:
   If the interference and hybridization ratios are rigid, then
       Sigma^(N) = 2 d ln[ G_W / (Omega_W^2 sqrt(K)) ].
   So the remaining linear grouped defect vanishes when the raw mixed leg
   obeys the square-root wall-loading law G_W / Omega_W^2 ∝ sqrt(K).
-
-EXIT_CODE: 0

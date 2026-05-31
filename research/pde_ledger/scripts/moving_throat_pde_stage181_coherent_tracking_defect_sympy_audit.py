@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 164 — COHERENT TRACKING-BRANCH DEFECT LAW")
+banner("STAGE 181 — COHERENT TRACKING-BRANCH DEFECT LAW")
 
 # Core coherent-branch variables
 G, c, c_s, a = sp.symbols("G c c_s a", positive=True, real=True)
@@ -71,6 +71,7 @@ banner("Weak-axisymmetric drift transport")
 # Weak-axisymmetric drift coefficients
 zetaZ, omegaW, chi1 = sp.symbols("zeta_Z omega_W chi_1", real=True)
 epsW1, deltaU1, eta1 = sp.symbols("varepsilon_W deltaU_1 eta_1", real=True)
+s = sp.symbols("s", real=True)
 
 eps1 = sp.simplify(sp.diff(eps, epsW) * epsW1 + sp.diff(eps, deltaU) * deltaU1)
 eps1_expected = sp.simplify(
@@ -94,10 +95,32 @@ R1 = sp.simplify(
     - 2 * eps1 / (1 - eps)
 )
 
+Lam_pert = Lam.subs(OmegaW2, OmegaW2*(1 + s*omegaW))
+eps_pert = (epsW + s*epsW1) * (1 - sp.Rational(2, 11) * (deltaU + s*deltaU1) / (1 + deltaU + s*deltaU1))
+R_target_pert = Lam_pert * (1 - (eps_eta + s*eta1)) * (1 - eps_pert)**2 \
+                / ((ZW*(1 + s*zetaZ)) * (1 + (chi0 + s*chi1))**2)
+R1_derived = sp.simplify(sp.diff(sp.log(R_target_pert), s).subs(s, 0))
+expect_zero("R_1 derived from R_target matches closed form", R1_derived - R1)
+
 expect_zero("selected-branch identity", Xi1 + eta1 / (1 - eps_eta) + R1)
 
 print("Xi_1 =", Xi1)
 print("R_1  =", R1)
+
+eps_pert = (epsW + s*epsW1) * (1 - sp.Rational(2, 11) * (deltaU + s*deltaU1) / (1 + deltaU + s*deltaU1))
+T2_direct_pert = (ZW*(1 + s*zetaZ)) * (1 + (chi0 + s*chi1))**2 \
+                 / ((OmegaW2*(1 + s*omegaW)) * (1 - eps_pert)**2)
+Xi1_derived = sp.simplify(sp.diff(sp.log(T2_direct_pert), s).subs(s, 0))
+expect_zero("Xi_1 derived from T^2 matches defect law", Xi1_derived - Xi1)
+
+# Support-blindness of the defect itself: derive Xi_1 through the zeta-bearing
+# support-loaded shape (line 56 proves T2_loaded == T2_direct) and confirm no zeta.
+T2_loaded_pert = T2_loaded.subs({
+    ZW: ZW*(1 + s*zetaZ), OmegaW2: OmegaW2*(1 + s*omegaW),
+    chi0: chi0 + s*chi1, epsW: epsW + s*epsW1, deltaU: deltaU + s*deltaU1,
+})
+Xi1_loaded = sp.simplify(sp.diff(sp.log(T2_loaded_pert), s).subs(s, 0))
+expect_zero("d/dzeta Xi_1 (support-loaded route)", sp.diff(Xi1_loaded, zeta))
 
 banner("Tracking-factor drift")
 

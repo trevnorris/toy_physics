@@ -32,6 +32,13 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
+def expect_nonzero(name: str, expr: sp.Expr) -> None:
+    expr = sp.simplify(expr)
+    print(f"{name} = {expr}")
+    if expr == 0:
+        raise AssertionError(f"{name} is unexpectedly zero")
+
+
 banner("STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT")
 
 # Physical branch variables.
@@ -104,14 +111,15 @@ SigmaEta_inv = sp.simplify(-(1 - eps_eta) / eps_eta * (R1 + Xi1))
 expect_zero("Sigma_eta inverse", SigmaEta_inv - SigmaEta)
 
 banner("Triple-rigidity theorem")
-# The map is triangular, so vanishing observables imply vanishing adapted slippages.
-# We verify the forward zero map directly.
-Theta_zero = sp.simplify(Theta1.subs({SigmaTr: 0}))
-Xi_zero = sp.simplify((A_tr * SigmaTr + SigmaNT).subs({SigmaTr: 0, SigmaNT: 0}))
-Rsum_zero = sp.simplify((-eps_eta / (1 - eps_eta) * SigmaEta).subs({SigmaEta: 0}))
-expect_zero("Theta_1|(Sigma_tr=0)", Theta_zero)
-expect_zero("Xi_1|(Sigma_tr=Sigma_nt=0)", Xi_zero)
-expect_zero("(R_1+Xi_1)|(Sigma_eta=0)", Rsum_zero)
+# Rigidity (Theta_1=Xi_1=R_1=0 <=> Sigma_tr=Sigma_nt=Sigma_eta=0) holds iff the
+# triangular map is invertible on the branch chi0>0, deltaU>0, 0<eps_eta<1, i.e.
+# iff each diagonal prefactor is nonzero there. We test that non-trivial content;
+# the trivial forward direction is already implied, and the inverse round-trips
+# above (Sigma_tr/Sigma_nt/Sigma_eta inverse) confirm full invertibility.
+dressing_pref = sp.simplify(eps_eta / (1 - eps_eta))
+expect_nonzero("C_tr (Theta_1 <- Sigma_tr prefactor) nonzero on branch", C_tr)
+expect_nonzero("A_tr (Xi_1 <- Sigma_tr feed-through) nonzero on branch", A_tr)
+expect_nonzero("eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch", dressing_pref)
 
 print("\nCarry-forward formulas:")
 print("  Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi")

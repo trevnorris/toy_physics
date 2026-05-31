@@ -1,11 +1,3 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage184_branch_invariant_coordinates_mathematica_audit.wl
-# Date: 2026-05-11T13:24:12-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES
@@ -71,5 +63,3 @@ Carry-forward formulas:
   Full zero-defect theorem: invariance of (R_tr, N_*, eps_eta) at first grouped order.
 
 Stage 184 Mathematica audit passed.
-
-EXIT_CODE: 0

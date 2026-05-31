@@ -52,6 +52,39 @@ print("row_tr  =", row_tr)
 print("row_nt  =", row_nt)
 print("row_eta =", row_eta)
 
+# Derive the rows from the actual Stage-187 monomials at finite level.
+# Positive primitive ratios (xtilde/x) for the eight microscopic variables.
+rL, rC, rG, rU, rEta, rW, rM, rT = sp.symbols(
+    "r_lambda r_c r_gamma r_U r_eta r_W r_mu r_T", positive=True
+)
+log_subs = {
+    DL: sp.log(rL),
+    DC: sp.log(rC),
+    DG: sp.log(rG),
+    DU: sp.log(rU),
+    DEta: sp.log(rEta),
+    DW: sp.log(rW),
+    DM: sp.log(rM),
+    DT: sp.log(rT),
+}
+Ctr_ratio = (rG * rC / rU) ** (1 + deltaU) * (rT / rU) ** (1 + chi)
+Cnt_ratio = (rL ** 2 * rM / (rEta * rW ** 2)) * (
+    rG ** 2 * rL ** 2 / (rU * rW)
+) ** E * (rT / rU) ** (-F)
+eps_ratio = rC ** 2 / (rU * rEta)
+expect_zero(
+    "log C_tr ratio - row_tr",
+    sp.expand_log(sp.log(Ctr_ratio), force=True) - row_tr.subs(log_subs),
+)
+expect_zero(
+    "log C_nt ratio - row_nt",
+    sp.expand_log(sp.log(Cnt_ratio), force=True) - row_nt.subs(log_subs),
+)
+expect_zero(
+    "log epsilon_eta ratio - row_eta",
+    sp.expand_log(sp.log(eps_ratio), force=True) - row_eta.subs(log_subs),
+)
+
 # Same matrix as Stage 186, but now acting on finite log-ratios.
 M = sp.Matrix([
     [0, 1 + deltaU, 1 + deltaU, -(2 + chi + deltaU), 0, 0, 0, 1 + chi],

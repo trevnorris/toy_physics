@@ -50,25 +50,25 @@ expectZero["R_target * T^2 - Lambda0 * (1 - eps_eta)", rTarget*t2 - lam0*(1 - ep
 banner["Tracking invariant"];
 tTr = rTr^(-cStar);
 tTr0 = rTr0^(-cStar);
-dlnTtr = FullSimplify[-cStar*theta1, Assumptions -> $Assumptions];
+dlnTtr = FullSimplify[SeriesCoefficient[Log[tTr/tTr0], {small, 0, 1}], Assumptions -> $Assumptions];
 Print["delta ln T_* = ", fmt[dlnTtr]];
 expectZero["delta ln T_* - Sigma_tr", dlnTtr - sigmaTr];
 
 banner["Corrected nontracking composite"];
 nTr = t2*rTr^bStar;
 nTr0 = t20*rTr0^bStar;
-dlnNtr = FullSimplify[xi1 + bStar*theta1, Assumptions -> $Assumptions];
+dlnNtr = FullSimplify[SeriesCoefficient[Log[nTr/nTr0], {small, 0, 1}], Assumptions -> $Assumptions];
 Print["delta ln N_* = ", fmt[dlnNtr]];
 expectZero["delta ln N_* - Sigma_nt", dlnNtr - sigmaNT];
 
 banner["Dressing coordinate and selected-branch complement"];
-dlnEpsEta = FullSimplify[sigmaEta, Assumptions -> $Assumptions];
+dlnEpsEta = FullSimplify[SeriesCoefficient[Log[epsEtaVar/epsEta], {small, 0, 1}], Assumptions -> $Assumptions];
 Print["delta ln eps_eta = ", fmt[dlnEpsEta]];
 expectZero["delta ln eps_eta - Sigma_eta", dlnEpsEta - sigmaEta];
 
 eComp = (rTarget*t2)/lam0;
 eComp0 = 1 - epsEta;
-dlnEcomp = FullSimplify[-epsEta*sigmaEta/(1 - epsEta), Assumptions -> $Assumptions];
+dlnEcomp = FullSimplify[SeriesCoefficient[Log[eComp/eComp0], {small, 0, 1}], Assumptions -> $Assumptions];
 Print["delta ln[(R_target T^2)/Lambda0] = ", fmt[dlnEcomp]];
 expectZero["selected-branch complement identity", dlnEcomp + epsEta*sigmaEta/(1 - epsEta)];
 

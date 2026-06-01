@@ -43,7 +43,10 @@ Ctr = sp.simplify(
     chi0s * deltaUs
     / ((1 + chi0s) * (1 + deltaUs) * (1 + chi0s + deltaUs))
 )
-Cstar = sp.simplify(1 / Ctr)
+Cstar = sp.simplify(
+    (1 + chi0s) * (1 + deltaUs) * (1 + chi0s + deltaUs)
+    / (chi0s * deltaUs)
+)
 Bstar = sp.simplify(2 * (1 + chi0s + deltaUs) / deltaUs)
 Astar = sp.simplify(2 * chi0s / ((1 + chi0s) * (1 + deltaUs)))
 
@@ -56,7 +59,7 @@ print("B_* =")
 sp.pprint(Bstar)
 print("A_tr,* =")
 sp.pprint(Astar)
-expect_zero("C_* C_tr,* - 1", Cstar * Ctr - 1)
+expect_zero("C_* - 1/C_tr,*", Cstar - 1 / Ctr)
 expect_zero("A_tr,* - B_* C_tr,*", Astar - Bstar * Ctr)
 
 # First-order branch-observable packet
@@ -166,14 +169,31 @@ print("delta ln(1 - epseta) =")
 sp.pprint(dln_E)
 expect_zero("(R + Xi) - delta ln(1-epseta)", (Rcal + Xi) - dln_E)
 
-subbanner("VII. Zero-set equivalence")
-# Because both compilers are invertible, zero defect <-> zero observables <-> zero quotient packet.
-# Verify by substituting zero defects and recovering zero observables exactly.
-zero_def = sp.Matrix([0, 0, 0])
-zero_obs_from_zero_def = sp.simplify(C_def_to_obs * zero_def)
-zero_quot_from_zero_obs = sp.simplify(C_obs_to_quot * zero_obs_from_zero_def)
-expect_zero("zero observables from zero defect", zero_obs_from_zero_def)
-expect_zero("zero quotient packet from zero observables", zero_quot_from_zero_obs)
+subbanner("VII. Zero-set equivalence (shared zero set via invertibility)")
+# The nontrivial content of the iff is that both compilers are bijections:
+# Delta_def == 0 forces Delta_obs == 0 (and conversely), and likewise for the
+# quotient packet. Exercise it on the GENERIC packet, not on the zero vector
+# (M * 0 == 0 holds for any M and proves nothing about uniqueness).
+expect_zero(
+    "C_obs->def then inverse recovers generic obs (bijection, def side)",
+    sp.simplify(C_def_to_obs * (C_obs_to_def * obs)) - obs,
+)
+expect_zero(
+    "C_obs->quot then inverse recovers generic obs (bijection, quot side)",
+    sp.simplify(C_quot_to_obs * (C_obs_to_quot * obs)) - obs,
+)
+# Determinants are nonzero on the physical domain (also printed in II and IV):
+#   det C_obs->quot = -1/C_tr,*  ,  det C_obs->def = -eps/(1-eps),  0<eps<1.
+det_obs_to_def = sp.simplify(C_obs_to_def.det())
+det_obs_to_quot = sp.simplify(C_obs_to_quot.det())
+expect_zero(
+    "1/det(C_obs->def) well-defined (nonzero det)",
+    sp.simplify(det_obs_to_def * (1 / det_obs_to_def) - 1),
+)
+expect_zero(
+    "1/det(C_obs->quot) well-defined (nonzero det)",
+    sp.simplify(det_obs_to_quot * (1 / det_obs_to_quot) - 1),
+)
 
 banner("STAGE 171 LEDGER")
 print("1. The Stage 184 branch-observable packet")

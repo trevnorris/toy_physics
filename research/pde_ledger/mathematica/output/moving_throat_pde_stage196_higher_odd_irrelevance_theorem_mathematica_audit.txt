@@ -1,0 +1,78 @@
+
+========================================================================================
+STAGE 196 - HIGHER-ODD IRRELEVANCE THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Response-side higher-odd difference identity
+----------------------------------------------------------------------------------------
+sigma_Q^can = 9/(8*pole^5)
+retarded response through w^5 with explicit w^7 tail = 1 + w^2/(4*pole^2) + w^4/(4*pole^4) + (((9*I)/32)*chi*w^5)/pole^5
+retarded tail difference through w^7 = (I/4)*tau7*w^7
+exact response-side difference identity - SymPy target = 0
+PASS: exact response-side difference identity - SymPy target
+response-side tail absent through w^6 = {0, 0, 0, 0, 0, 0, 0}
+PASS: response-side tail absent through w^6
+Yhat_Q^(ret,>=7) through O(w^5) - SymPy one-pole form = 0
+PASS: Yhat_Q^(ret,>=7) through O(w^5) - SymPy one-pole form
+first response-side higher-odd correction - I tau7 w^7/4 = 0
+PASS: first response-side higher-odd correction - I tau7 w^7/4
+
+----------------------------------------------------------------------------------------
+II. DtN-side higher-odd difference identity
+----------------------------------------------------------------------------------------
+generic DtN response through z^7 = 1 - (l2*z^2)/l0 + (l2^2*z^4)/l0^2 - (l4*z^4)/l0 - (I*l5*z^5)/l0 - (l2^3*z^6)/l0^3 + (2*l2*l4*z^6)/l0^2 + ((2*I)*l2*l5*z^7)/l0^2 - (I*l7*z^7)/l0
+exact DtN-side difference identity - SymPy target = 0
+PASS: exact DtN-side difference identity - SymPy target
+DtN tail absent through z^6 = {0, 0, 0, 0, 0, 0, 0}
+PASS: DtN tail absent through z^6
+DtN normalized response through O(z^5) - SymPy target = 0
+PASS: DtN normalized response through O(z^5) - SymPy target
+L7 coefficient in z^7 DtN response - SymPy target = 0
+PASS: L7 coefficient in z^7 DtN response - SymPy target
+
+----------------------------------------------------------------------------------------
+III. Canonical-even matching with an explicit z^7 DtN tail
+----------------------------------------------------------------------------------------
+outgoing l=2 DtN window through z^5 = -3 + x^2/3 + x^4/9 + (I/9)*x^5
+Sigma_2 matching law = (-sig0 - 3*scale*(-1 + stretch^2))/9
+Sigma_4 matching law = (-sig0 - 3*scale*(-1 + stretch^4))/27
+matched normalized DtN response through z^5 = 1 + z^2/9 + (4*z^4)/81 + (I*sig5*z^5)/(3*scale - sig0) + ((I/9)*scale*stretch^5*z^5)/(3*scale - sig0)
+chi_Q extracted from z^5 slot = (3*(9*sig5 + scale*stretch^5))/(3*scale - sig0)
+Sigma_2 matching law - SymPy target = 0
+PASS: Sigma_2 matching law - SymPy target
+Sigma_4 matching law - SymPy target = 0
+PASS: Sigma_4 matching law - SymPy target
+z^5 coefficient - deformation slot target = 0
+PASS: z^5 coefficient - deformation slot target
+canonical-even plus chi_Q matching through O(z^5) = 0
+PASS: canonical-even plus chi_Q matching through O(z^5)
+chi_Q extractor - SymPy deformation formula = 0
+PASS: chi_Q extractor - SymPy deformation formula
+d chi_Q^(series extractor) / dL7 = 0
+PASS: d chi_Q^(series extractor) / dL7
+matched coefficients z^0..z^5 independent of L7 = {0, 0, 0, 0, 0, 0}
+PASS: matched coefficients z^0..z^5 independent of L7
+
+----------------------------------------------------------------------------------------
+IV. Source-map reduction is unchanged
+----------------------------------------------------------------------------------------
+N_Q on the natural point-particle source-map branch = (3*scale - sig0)/(27*sig5 + 3*scale*stretch^5)
+Delta_norm on the natural point-particle source-map branch = (54*bigG*soundSpeed^5*(-1 + (3*scale - sig0)/(27*sig5 + 3*scale*stretch^5)))/(5*lightSpeed^5*radius^5)
+N_Q natural branch - SymPy target = 0
+PASS: N_Q natural branch - SymPy target
+d N_Q / dL7 = 0
+PASS: d N_Q / dL7
+d Delta_norm / dL7 = 0
+PASS: d Delta_norm / dL7
+Delta_norm - P0_target*(1/chi_Q - 1) = 0
+PASS: Delta_norm - P0_target*(1/chi_Q - 1)
+
+========================================================================================
+STAGE 196 MATHEMATICA LEDGER
+========================================================================================
+1. An explicit I tau7 w^7 retarded tail changes the grouped one-pole response first at w^7.
+2. An explicit I L7 z^7 DtN tail changes the normalized DtN response first at z^7.
+3. Native outgoing l=2 coefficient extraction gives the same canonical-even laws.
+4. The extracted chi_Q and the natural source-map residual are independent of L7.
+5. Therefore no higher odd datum beginning at order seven re-enters the 2.5PN finish line.

@@ -1,0 +1,77 @@
+
+========================================================================================
+STAGE 193 -- MATHEMATICA ISOTROPIC GROUPED-P2 TARGET SURFACE AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Grouped trace/anomaly projector
+----------------------------------------------------------------------------------------
+projector lanes -> {xbar, ax, bx} = {(x20 + 2*(x21 + x22))/5, (2*x20 - x21 - x22)/10, (x21 - x22)/2}
+inverse projector = {{1, 4, 0}, {1, -1, 1}, {1, -1, -1}}
+inverse projector - SymPy grouped inverse target = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: inverse projector - SymPy grouped inverse target
+projector inverse reconstructs lanes = {0, 0, 0}
+PASS: projector inverse reconstructs lanes
+a2,b2 vanish on common-lane p2 branch = {0, 0}
+PASS: a2,b2 vanish on common-lane p2 branch
+a4,b4 vanish on common-lane p4 branch = {0, 0}
+PASS: a4,b4 vanish on common-lane p4 branch
+
+----------------------------------------------------------------------------------------
+II. One-pole conservative identity from response derivatives
+----------------------------------------------------------------------------------------
+nu2 from d^2 Y/dw^2 = -(d2/d0)
+nu4 from d^4 Y/dw^4 = (d2^2 - d0*d4)/d0^2
+Delta_pole = -((3*d2^2 + d0*d4)/d0^2)
+nu2 + d2/d0 = 0
+PASS: nu2 + d2/d0
+nu4 - (d2^2 - d0 d4)/d0^2 = 0
+PASS: nu4 - (d2^2 - d0 d4)/d0^2
+Delta_pole + (3 d2^2 + d0 d4)/d0^2 = 0
+PASS: Delta_pole + (3 d2^2 + d0 d4)/d0^2
+Solve[Delta_pole==0] gives d0 d4 + 3 d2^2 = 0 = 0
+PASS: Solve[Delta_pole==0] gives d0 d4 + 3 d2^2 = 0
+Delta_pole on one-pole surface = 0
+PASS: Delta_pole on one-pole surface
+
+----------------------------------------------------------------------------------------
+III. One-parameter conservative carrier through O(w^4)
+----------------------------------------------------------------------------------------
+Omega_Q^2 = -1/4*d0/d2
+carrier series through w^4 = (d0^2 - d0*d2*w^2 + 4*d2^2*w^4)/d0^2
+carrier w^2 coefficient - nu2 = 0
+PASS: carrier w^2 coefficient - nu2
+carrier w^4 coefficient - one-pole nu4 = 0
+PASS: carrier w^4 coefficient - one-pole nu4
+carrier series - SymPy one-pole target series = 0
+PASS: carrier series - SymPy one-pole target series
+
+----------------------------------------------------------------------------------------
+IV. Scalar/geometry firewall by native block Schur complement
+----------------------------------------------------------------------------------------
+D_block(chi) = {{d0geom, c20*chi, c21*chi, c22*chi}, {c20*chi, d2iso, 0, 0}, {c21*chi, 0, d2iso, 0}, {c22*chi, 0, 0, d2iso}}
+D_eff,l=2(chi) from Schur complement = {{-((c20^2*chi^2)/d0geom) + d2iso, -((c20*c21*chi^2)/d0geom), -((c20*c22*chi^2)/d0geom)}, {-((c20*c21*chi^2)/d0geom), -((c21^2*chi^2)/d0geom) + d2iso, -((c21*c22*chi^2)/d0geom)}, {-((c20*c22*chi^2)/d0geom), -((c21*c22*chi^2)/d0geom), -((c22^2*chi^2)/d0geom) + d2iso}}
+upper off-diagonal derivative is C = {0, 0, 0}
+PASS: upper off-diagonal derivative is C
+upper off-diagonal second derivative vanishes = {0, 0, 0}
+PASS: upper off-diagonal second derivative vanishes
+Schur complement - (D2 I - chi^2 C^T C / D0scalar) = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: Schur complement - (D2 I - chi^2 C^T C / D0scalar)
+det block - det scalar det Schur = 0
+PASS: det block - det scalar det Schur
+d/dchi D_eff at chi=0 (linear-order firewall) = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: d/dchi D_eff at chi=0 (linear-order firewall)
+D_eff at chi=0 - D2 I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: D_eff at chi=0 - D2 I
+
+========================================================================================
+STAGE 193 MATHEMATICA LEDGER
+========================================================================================
+1. The grouped projector has the exact inverse used by the SymPy witness, and
+   common grouped lanes force a2=b2=a4=b4=0.
+2. Native response derivatives give Delta_pole = -(3 d2^2 + d0 d4)/d0^2,
+   hence the one-pole surface d0 d4 + 3 d2^2 = 0.
+3. The one-parameter carrier 3/4 + 1/4 (1 - w^2/Omega_Q^2)^(-1) matches
+   the one-pole conservative series through O(w^4).
+4. A block operator with linear chi mixing gives a Schur correction
+   D_eff,l=2 = D2 I - chi^2 C^T C / D0scalar, with no O(chi) term.

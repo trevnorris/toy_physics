@@ -1,0 +1,79 @@
+
+========================================================================================
+STAGE 189 — TRANSFER-SHAPE / OUTGOING-PREFACTOR COMPILER
+========================================================================================
+
+========================================================================================
+I. Observable packet -> transfer-shape packet
+========================================================================================
+C_obs->trf from finite-log Jacobian = {{-bStar, 1, 0}, {0, 0, etaStar/(-1 + etaStar)}, {bStar, -1, etaStar/(-1 + etaStar)}}
+C_obs->trf * Delta_obs^(1) - Delta_trf^(1) = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: C_obs->trf * Delta_obs^(1) - Delta_trf^(1)
+rank(C_obs->trf) - 2 = 0
+PASS: rank(C_obs->trf) - 2
+dln T^2 - Xi_1 = 0
+PASS: dln T^2 - Xi_1
+dln(1-epseta) - (R_1 + Xi_1) = 0
+PASS: dln(1-epseta) - (R_1 + Xi_1)
+compatibility: dln R_target + dln T^2 - dln(1-epseta) = 0
+PASS: compatibility: dln R_target + dln T^2 - dln(1-epseta)
+
+========================================================================================
+II. One-port continuum transfer-shape identity
+========================================================================================
+T_A^2 (direct continuum form) = ((1 + rho)^2*zW)/((1 - epsW)^2*omegaW2)
+R_target selected-branch definition := Lambda_0 (1-epseta) / T_A^2 = -(((-1 + epsEta)*(-1 + epsW)^2*lambdaFront*omegaW2)/((1 + rho)^2*zW))
+Lambda_0 value = (27*csII^5*gravII*Pi^2)/(20*aII^5*cLightII^5)
+coherent local D/N specialization = 0
+PASS: coherent local D/N specialization
+direct-slope bridge dln T_A^2 - epsilon lambda_A Xi_1 = 0
+PASS: direct-slope bridge dln T_A^2 - epsilon lambda_A Xi_1
+
+========================================================================================
+III. Exact isotropic grouped response / prefactor compiler
+========================================================================================
+Y(omega) - (1 + u2 w^2 + u4 w^4) = {0, 0}
+PASS: Y(omega) - (1 + u2 w^2 + u4 w^4)
+Pref(omega) - (P0 + P2 w^2 + P4 w^4) = {0, 0, 0}
+PASS: Pref(omega) - (P0 + P2 w^2 + P4 w^4)
+P0 - (K_bl/D0) T_eff^2 = 0
+PASS: P0 - (K_bl/D0) T_eff^2
+
+========================================================================================
+IV. Weak-axisymmetric prefactor slope
+========================================================================================
+P_A - (P0 + eps lambda P1) = 0
+PASS: P_A - (P0 + eps lambda P1)
+log(P_A/P0) - eps lambda (P1/P0) = 0
+PASS: log(P_A/P0) - eps lambda (P1/P0)
+P1/P0 - (N1/N0 - D1/D0) = 0
+PASS: P1/P0 - (N1/N0 - D1/D0)
+
+========================================================================================
+V. Compact outgoing l=2 fingerprint compiler
+========================================================================================
+outgoing branch expansion - (K0 + K2 w^2 + K4 w^4 + i Gamma5 w^5) = 0
+PASS: outgoing branch expansion - (K0 + K2 w^2 + K4 w^4 + i Gamma5 w^5)
+
+========================================================================================
+VI. Normalization equivalence and constant-prefactor branch
+========================================================================================
+mhat0^2 Gamma5 - 2G/(5c^5) at P0_target = 0
+PASS: mhat0^2 Gamma5 - 2G/(5c^5) at P0_target
+Gamma5 - a^5 P0/(27 c_s^5) = 0
+PASS: Gamma5 - a^5 P0/(27 c_s^5)
+P2 on constant-prefactor branch = 0
+PASS: P2 on constant-prefactor branch
+P4 on constant-prefactor branch = 0
+PASS: P4 on constant-prefactor branch
+K2 on constant-prefactor branch - A P0 = 0
+PASS: K2 on constant-prefactor branch - A P0
+K4 on constant-prefactor branch - B P0 = 0
+PASS: K4 on constant-prefactor branch - B P0
+
+========================================================================================
+STAGE 189 MATHEMATICA LEDGER
+========================================================================================
+The transfer packet is recovered from finite log perturbations and the
+prefactor/outgoing compilers are recovered by derivative, coefficient, and
+Solve routes independent of the SymPy script choreography.

@@ -1,0 +1,99 @@
+
+========================================================================================
+STAGE 188 -- BRANCH-OBSERVABLE COMPILER (MATHEMATICA AUDIT)
+========================================================================================
+
+========================================================================================
+I. Coherent-branch coefficient identities
+========================================================================================
+C_tr,* = (chi*del)/((1 + chi)*(1 + del)*(1 + chi + del))
+C_* = ((1 + chi)*(1 + del)*(1 + chi + del))/(chi*del)
+B_* = (2*(1 + chi + del))/del
+A_tr,* = (2*chi)/(1 + chi + del + chi*del)
+C_* - 1/C_tr,* = 0
+PASS: C_* - 1/C_tr,*
+A_tr,* - B_* C_tr,* = 0
+PASS: A_tr,* - B_* C_tr,*
+
+========================================================================================
+II. Observable packet to tangent quotient packet
+========================================================================================
+Delta_quot^(1) from finite branch drifts = {-(((1 + chi)*(1 + del)*(1 + chi + del)*rObs)/(chi*del)), nObs, etaObs}
+C_obs->quot = {{-(((1 + chi)*(1 + del)*(1 + chi + del))/(chi*del)), 0, 0}, {0, 1, 0}, {0, 0, 1}}
+det(C_obs->quot) = -(((1 + chi)*(1 + del)*(1 + chi + del))/(chi*del))
+observable-to-quotient compiler agrees with SymPy = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: observable-to-quotient compiler agrees with SymPy
+det(C_obs->quot) + C_* = 0
+PASS: det(C_obs->quot) + C_*
+C_quot->obs * C_obs->quot - I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: C_quot->obs * C_obs->quot - I
+C_obs->quot * C_quot->obs - I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: C_obs->quot * C_quot->obs - I
+
+========================================================================================
+III. Tangent quotient packet to defect packet
+========================================================================================
+C_quot->def = {{-((chi*del)/((1 + chi)*(1 + del)*(1 + chi + del))), 0, 0}, {(2*chi)/(1 + chi + del + chi*del), 1, 0}, {(-2*chi)/(1 + chi + del + chi*del), -1, eta/(-1 + eta)}}
+quotient-to-defect compiler agrees with SymPy = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: quotient-to-defect compiler agrees with SymPy
+Theta_from_quot - dln(R_tr) = 0
+PASS: Theta_from_quot - dln(R_tr)
+Xi_from_quot - (dln(N_*) - B_* dln(R_tr)) = 0
+PASS: Xi_from_quot - (dln(N_*) - B_* dln(R_tr))
+R_from_quot - (-(epseta_*/(1-epseta_*)) dln(epseta) - Xi) = 0
+PASS: R_from_quot - (-(epseta_*/(1-epseta_*)) dln(epseta) - Xi)
+
+========================================================================================
+IV. Direct observable packet to defect packet
+========================================================================================
+Direct defect packet from branch drift equations = {rObs, nObs - (2*(1 + chi + del)*rObs)/del, (eta*etaObs)/(-1 + eta) - nObs + (2*(1 + chi + del)*rObs)/del}
+C_obs->def (direct) = {{1, 0, 0}, {(-2*(1 + chi + del))/del, 1, 0}, {(2*(1 + chi + del))/del, -1, eta/(-1 + eta)}}
+det(C_obs->def) = eta/(-1 + eta)
+factorized compiler - direct compiler = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: factorized compiler - direct compiler
+direct compiler agrees with SymPy expected compiler = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: direct compiler agrees with SymPy expected compiler
+det(C_obs->def) + epseta_*/(1-epseta_*) = 0
+PASS: det(C_obs->def) + epseta_*/(1-epseta_*)
+Theta - dln(R_tr) = 0
+PASS: Theta - dln(R_tr)
+Xi - (dln(N_*) - B_* dln(R_tr)) = 0
+PASS: Xi - (dln(N_*) - B_* dln(R_tr))
+R - (B_* dln(R_tr) - dln(N_*) - epseta_*/(1-epseta_*) dln(epseta)) = 0
+PASS: R - (B_* dln(R_tr) - dln(N_*) - epseta_*/(1-epseta_*) dln(epseta))
+
+========================================================================================
+V. Exact inverse observable compiler
+========================================================================================
+C_def->obs from solving branch equations = {{1, 0, 0}, {(2*(1 + chi + del))/del, 1, 0}, {0, (-1 + eta)/eta, (-1 + eta)/eta}}
+inverse compiler - expected inverse = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: inverse compiler - expected inverse
+solved inverse - matrix inverse = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: solved inverse - matrix inverse
+C_def->obs * C_obs->def - I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: C_def->obs * C_obs->def - I
+C_obs->def * C_def->obs - I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: C_obs->def * C_def->obs - I
+observable roundtrip - Delta_obs^(1) = {0, 0, 0}
+PASS: observable roundtrip - Delta_obs^(1)
+
+========================================================================================
+VI. Complementary selected-branch observable
+========================================================================================
+delta ln(1 - epseta) = (eta*etaObs)/(-1 + eta)
+(R + Xi) - delta ln(1-epseta) = 0
+PASS: (R + Xi) - delta ln(1-epseta)
+
+========================================================================================
+VII. Zero-set equivalence (shared zero set via invertibility)
+========================================================================================
+C_obs->def then inverse recovers generic obs (bijection, def side) = {0, 0, 0}
+PASS: C_obs->def then inverse recovers generic obs (bijection, def side)
+C_obs->quot then inverse recovers generic obs (bijection, quot side) = {0, 0, 0}
+PASS: C_obs->quot then inverse recovers generic obs (bijection, quot side)
+1/det(C_obs->def) well-defined (nonzero det) = 0
+PASS: 1/det(C_obs->def) well-defined (nonzero det)
+1/det(C_obs->quot) well-defined (nonzero det) = 0
+PASS: 1/det(C_obs->quot) well-defined (nonzero det)
+
+Stage 188 Mathematica audit passed.

@@ -60,7 +60,6 @@ sp.pprint(Gamma5_target)
 print("Gamma5 =")
 sp.pprint(Gamma5)
 expect_zero("Gamma5 - chi_Q*9*P0/(32 Omega_Q^5)", Gamma5 - Gamma5_alt)
-expect_zero("N_Q definition", N_Q_def - P0 / P0_target)
 expect_zero(
     "Gamma5/Gamma5_target - chi_Q*N_Q",
     sp.simplify(Gamma5 / Gamma5_target).subs(P0, N_Q * P0_target) - chi_Q * N_Q,
@@ -85,8 +84,13 @@ print("N_Q from odd closure =")
 sp.pprint(NQ_from_odd)
 print("Delta_norm after imposing odd closure =")
 sp.pprint(Delta_norm_from_odd)
-expect_zero("Delta_norm - P0_target*(mhat0^2 N_Q - 1)", Delta_norm_NQ - P0_target * (mhat0**2 * N_Q - 1))
-expect_zero("odd closure factorization", odd_closure - (mhat0**2 * chi_Q * N_Q - 1))
+odd_condition_residual = sp.simplify(
+    (mhat0**2 * Gamma5 - Gamma5_target).subs(P0, N_Q * P0_target)
+)
+expect_zero(
+    "observable odd condition factorizes as Gamma5_target*(mhat0^2 chi_Q N_Q - 1)",
+    odd_condition_residual - Gamma5_target * (mhat0**2 * chi_Q * N_Q - 1),
+)
 expect_zero("Delta_norm from odd closure - P0_target*(1/chi_Q - 1)", Delta_norm_from_odd - P0_target * (1 / chi_Q - 1))
 
 Delta_Q = sp.symbols("Delta_Q", real=True)

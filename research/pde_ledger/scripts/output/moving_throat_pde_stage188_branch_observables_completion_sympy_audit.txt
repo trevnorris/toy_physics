@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage188_branch_observables_completion_sympy_audit.py
-# Date: 2026-05-11T12:48:34-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 171 — BRANCH-OBSERVABLE COMPLETION AND THE EXACT FIRST-ORDER OBSERVABLE COMPILER
@@ -30,7 +22,7 @@ A_tr,* =
           2⋅χ₀ ₛₜₐᵣ           
 ──────────────────────────────
 (χ₀ ₛₜₐᵣ + 1)⋅(deltaUₛₜₐᵣ + 1)
-C_* C_tr,* - 1 = 0
+C_* - 1/C_tr,* = 0
 A_tr,* - B_* C_tr,* = 0
 
 ----------------------------------------------------------------------------------------
@@ -259,20 +251,22 @@ dlnₑₚₛₑₜₐ⋅epsilonetaₛₜₐᵣ
 (R + Xi) - delta ln(1-epseta) = 0
 
 ----------------------------------------------------------------------------------------
-VII. Zero-set equivalence
+VII. Zero-set equivalence (shared zero set via invertibility)
 ----------------------------------------------------------------------------------------
-zero observables from zero defect =
+C_obs->def then inverse recovers generic obs (bijection, def side) =
 ⎡0⎤
 ⎢ ⎥
 ⎢0⎥
 ⎢ ⎥
 ⎣0⎦
-zero quotient packet from zero observables =
+C_obs->quot then inverse recovers generic obs (bijection, quot side) =
 ⎡0⎤
 ⎢ ⎥
 ⎢0⎥
 ⎢ ⎥
 ⎣0⎦
+1/det(C_obs->def) well-defined (nonzero det) = 0
+1/det(C_obs->quot) well-defined (nonzero det) = 0
 
 ========================================================================================
 STAGE 171 LEDGER
@@ -286,5 +280,3 @@ STAGE 171 LEDGER
    the nontracking composite subtract the universal tracking feed-through exactly.
 4. Therefore the first-order zero-defect test is equivalently the zero-set of
       delta ln R_tr, delta ln N_*, delta ln epseta.
-
-EXIT_CODE: 0

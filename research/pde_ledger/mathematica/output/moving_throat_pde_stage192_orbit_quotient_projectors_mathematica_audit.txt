@@ -1,0 +1,107 @@
+
+========================================================================================
+STAGE 192 -- MATHEMATICA ORBIT/QUOTIENT PROJECTOR AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Pivot block and native constrained section
+----------------------------------------------------------------------------------------
+P_(T,K_eta,mu) = {{1 + chi, 0, 0}, {-ff, -1, 1}, {0, -1, 0}}
+pivot block - SymPy target block = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: pivot block - SymPy target block
+det(P_(T,K_eta,mu)) = 1 + chi
+det(P) - (1+chi) = 0
+PASS: det(P) - (1+chi)
+pivot inverse - SymPy target inverse = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: pivot inverse - SymPy target inverse
+P^(-1) P - I_3 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P^(-1) P - I_3
+P P^(-1) - I_3 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P P^(-1) - I_3
+S from constrained LinearSolve = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, -1}, {0, 0, 0}, {ff/(1 + chi), 1, -1}, {(1 + chi)^(-1), 0, 0}}
+section - SymPy target section = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: section - SymPy target section
+free rows of S vanish = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: free rows of S vanish
+M S - I_3 = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: M S - I_3
+
+----------------------------------------------------------------------------------------
+II. Complementary projectors
+----------------------------------------------------------------------------------------
+Q^2 - Q = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: Q^2 - Q
+O^2 - O = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: O^2 - O
+Q O = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: Q O
+O Q = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: O Q
+M O = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: M O
+M Q - M = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: M Q - M
+Q free-coordinate rows = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: Q free-coordinate rows
+
+----------------------------------------------------------------------------------------
+III. Quotient failure from a constrained solve
+----------------------------------------------------------------------------------------
+q = M Delta x = {dc + dc*delU + dg + delU*dg + dt + chi*dt - (2 + chi + delU)*du, -dk + dm - 2*dw + 2*dg*ee - (du + dw)*ee + 2*dl*(1 + ee) - dt*ff + du*ff, 2*dc - dk - du}
+Delta x_fail = {0, 0, 0, 0, -2*dc + dk + du, 0, -2*dc + dm + du - 2*dw - (-2*dg + du + dw)*ee + 2*dl*(1 + ee) + ((1 + delU)*(dc + dg - du)*ff)/(1 + chi), (dc + dc*delU + dg + delU*dg + dt + chi*dt - (2 + chi + delU)*du)/(1 + chi)}
+Q Delta x - constrained failure solve = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q Delta x - constrained failure solve
+Q Delta x - SymPy dependent-triple support = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q Delta x - SymPy dependent-triple support
+M Delta x_fail - q = {0, 0, 0}
+PASS: M Delta x_fail - q
+
+----------------------------------------------------------------------------------------
+IV. Orbit representative from the kernel constraints
+----------------------------------------------------------------------------------------
+Delta x_orbit = {dl, dc, dg, du, 2*dc - du, dw, 2*dc - du + 2*dw + (-2*dg + du + dw)*ee - 2*dl*(1 + ee) - ((1 + delU)*(dc + dg - du)*ff)/(1 + chi), (-((1 + delU)*(dc + dg)) + (2 + chi + delU)*du)/(1 + chi)}
+O Delta x - constrained kernel solve = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: O Delta x - constrained kernel solve
+O Delta x - SymPy orbit law = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: O Delta x - SymPy orbit law
+M Delta x_orbit = {0, 0, 0}
+PASS: M Delta x_orbit
+Delta x - (orbit + fail) = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Delta x - (orbit + fail)
+
+----------------------------------------------------------------------------------------
+V. Orbit-lock equivalence
+----------------------------------------------------------------------------------------
+Canonical representative S q = {0, 0, 0, 0, -qE, 0, -qE + qN + (ff*qT)/(1 + chi), qT/(1 + chi)}
+S q - SymPy representative = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: S q - SymPy representative
+M (S q) - q = {0, 0, 0}
+PASS: M (S q) - q
+Q (S q) - S q = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q (S q) - S q
+O (S q) = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: O (S q)
+S * 0 = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: S * 0
+orbit-law branch lies in ker(M) = {0, 0, 0}
+PASS: orbit-law branch lies in ker(M)
+Q Delta x - S (M Delta x) = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q Delta x - S (M Delta x)
+M (Q Delta x) - M Delta x = {0, 0, 0}
+PASS: M (Q Delta x) - M Delta x
+Solve laws for Q Delta x == 0 and M Delta x == 0 agree = {0, 0, 0}
+PASS: Solve laws for Q Delta x == 0 and M Delta x == 0 agree
+Q Delta x vanishes on the M-kernel law = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q Delta x vanishes on the M-kernel law
+M Delta x vanishes on the Q-kernel law = {0, 0, 0}
+PASS: M Delta x vanishes on the Q-kernel law
+
+========================================================================================
+STAGE 192 MATHEMATICA LEDGER
+========================================================================================
+1. The dependent triple (Delta_T, Delta_Keta, Delta_mu) has determinant 1+chi > 0.
+2. A constrained LinearSolve constructs the canonical quotient section S independently.
+3. The native projectors Q = S M and O = I - Q are complementary and exact.
+4. Q Delta x is supported only on (Delta_T, Delta_Keta, Delta_mu).
+5. O Delta x is the unique kernel representative with unchanged free coordinates.
+6. Solve confirms Q Delta x = 0 iff M Delta x = 0.

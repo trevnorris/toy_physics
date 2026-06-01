@@ -1,0 +1,141 @@
+
+========================================================================================
+STAGE 199 -- MATHEMATICA PAIRWISE ORBIT-TRANSPORT AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Pairwise monomial compiler
+----------------------------------------------------------------------------------------
+derived M_* rows - SymPy compiler rows = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: derived M_* rows - SymPy compiler rows
+log C_tr ratio from exponent ledger = delU*Log[rC*rGam] + chi*Log[rT] + Log[rC*rGam*rT] - (2 + chi + delU)*Log[rU]
+log C_nt ratio from exponent ledger = 2*eStar*Log[rGam*rLam] + fStar*Log[rU/rT] + Log[(rLam^2*rMu)/(rK*rW^2)] - eStar*Log[rU*rW]
+log eps_eta ratio from exponent ledger = 2*Log[rC] - Log[rK*rU]
+ln C_tr ratio - ln SymPy closed form = 0
+PASS: ln C_tr ratio - ln SymPy closed form
+ln C_nt ratio - ln SymPy closed form = 0
+PASS: ln C_nt ratio - ln SymPy closed form
+ln eps_eta ratio - ln SymPy closed form = 0
+PASS: ln eps_eta ratio - ln SymPy closed form
+
+----------------------------------------------------------------------------------------
+II. Transport factors from the native same-orbit solve
+----------------------------------------------------------------------------------------
+ln Phi_T from Solve = (-((1 + delU)*Log[rC*rGam]) + (2 + chi + delU)*Log[rU])/(1 + chi)
+ln Phi_K from Solve = Log[rC^2/rU]
+ln Phi_mu from Solve = -2*eStar*Log[rGam*rLam] - ((1 + delU)*fStar*Log[(rC*rGam)/rU])/(1 + chi) - Log[rU] + 2*Log[(rC*rW)/rLam] + eStar*Log[rU*rW]
+ln Phi_T solve - ln SymPy transport = 0
+PASS: ln Phi_T solve - ln SymPy transport
+ln Phi_K solve - ln SymPy transport = 0
+PASS: ln Phi_K solve - ln SymPy transport
+ln Phi_mu solve - ln SymPy factorized transport = 0
+PASS: ln Phi_mu solve - ln SymPy factorized transport
+ln Phi_mu solve - ln expanded monomial form = 0
+PASS: ln Phi_mu solve - ln expanded monomial form
+same-orbit compiler packet = {0, 0, 0}
+PASS: same-orbit compiler packet
+
+----------------------------------------------------------------------------------------
+III. Reference-independent mismatch collapse
+----------------------------------------------------------------------------------------
+ln m_T = (delU*Log[rC*rGam] + chi*Log[rT] + Log[rC*rGam*rT] - (2 + chi + delU)*Log[rU])/(1 + chi)
+ln m_K = Log[(rK*rU)/rC^2]
+ln m_mu = (2*chi*Log[rLam/rC] + 2*(1 + chi)*eStar*Log[rGam*rLam] + (1 + delU)*fStar*Log[(rC*rGam)/rU] - eStar*Log[rU] - chi*eStar*Log[rU] + chi*Log[rMu*rU] + Log[(rLam^2*rMu*rU)/rC^2] - (1 + chi)*(2 + eStar)*Log[rW])/(1 + chi)
+ln C_tr ratio - (1+chi) ln m_T = 0
+PASS: ln C_tr ratio - (1+chi) ln m_T
+ln eps_eta ratio + ln m_K = 0
+PASS: ln eps_eta ratio + ln m_K
+ln C_nt ratio - [ln m_mu - ln m_K - F ln m_T] = 0
+PASS: ln C_nt ratio - [ln m_mu - ln m_K - F ln m_T]
+
+----------------------------------------------------------------------------------------
+IV. q-chart and finite projector split
+----------------------------------------------------------------------------------------
+q_tr - (1+chi) ln m_T = 0
+PASS: q_tr - (1+chi) ln m_T
+q_eta + ln m_K = 0
+PASS: q_eta + ln m_K
+q_nt - [ln m_mu - ln m_K - F ln m_T] = 0
+PASS: q_nt - [ln m_mu - ln m_K - F ln m_T]
+Q_quot Delta x = {0, 0, 0, 0, Log[(rK*rU)/rC^2], 0, (2*chi*Log[rLam/rC] + 2*(1 + chi)*eStar*Log[rGam*rLam] + (1 + delU)*fStar*Log[(rC*rGam)/rU] - eStar*Log[rU] - chi*eStar*Log[rU] + chi*Log[rMu*rU] + Log[(rLam^2*rMu*rU)/rC^2] - (1 + chi)*(2 + eStar)*Log[rW])/(1 + chi), (delU*Log[rC*rGam] + chi*Log[rT] + Log[rC*rGam*rT] - (2 + chi + delU)*Log[rU])/(1 + chi)}
+O_orb Delta x = {Log[rLam], Log[rC], Log[rGam], Log[rU], Log[rC^2/rU], Log[rW], -2*eStar*Log[rGam*rLam] - ((1 + delU)*fStar*Log[(rC*rGam)/rU])/(1 + chi) - Log[rU] + 2*Log[(rC*rW)/rLam] + eStar*Log[rU*rW], (-((1 + delU)*Log[rC*rGam]) + (2 + chi + delU)*Log[rU])/(1 + chi)}
+Q_quot Delta x - SymPy mismatch support = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q_quot Delta x - SymPy mismatch support
+O_orb Delta x - SymPy transported orbit part = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: O_orb Delta x - SymPy transported orbit part
+Q + O - Delta x = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q + O - Delta x
+M_* O_orb Delta x = {0, 0, 0}
+PASS: M_* O_orb Delta x
+M_* Q_quot Delta x - q = {0, 0, 0}
+PASS: M_* Q_quot Delta x - q
+Q^2 - Q = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: Q^2 - Q
+O^2 - O = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: O^2 - O
+Q O = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: Q O
+O Q = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: O Q
+
+----------------------------------------------------------------------------------------
+V. Pairwise restoration map
+----------------------------------------------------------------------------------------
+ln T_restore - ln(Phi_T T_1) = 0
+PASS: ln T_restore - ln(Phi_T T_1)
+ln K_restore - ln(Phi_K K_1) = 0
+PASS: ln K_restore - ln(Phi_K K_1)
+ln mu_restore - ln(Phi_mu mu_1) = 0
+PASS: ln mu_restore - ln(Phi_mu mu_1)
+
+----------------------------------------------------------------------------------------
+VI. Cocycle and composition laws
+----------------------------------------------------------------------------------------
+ln Phi^31 - ln Phi^32 - ln Phi^21 = {0, 0, 0}
+PASS: ln Phi^31 - ln Phi^32 - ln Phi^21
+ln m^31 - ln m^32 - ln m^21 = {0, 0, 0}
+PASS: ln m^31 - ln m^32 - ln m^21
+Delta x^31 - Delta x^32 - Delta x^21 = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Delta x^31 - Delta x^32 - Delta x^21
+q^31 - q^32 - q^21 = {0, 0, 0}
+PASS: q^31 - q^32 - q^21
+
+----------------------------------------------------------------------------------------
+VII. Two-point orbit lock
+----------------------------------------------------------------------------------------
+Q Delta x == 0 and M Delta x == 0 solve laws agree = {0, 0, 0}
+PASS: Q Delta x == 0 and M Delta x == 0 solve laws agree
+Q Delta x vanishes on same-orbit law = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Q Delta x vanishes on same-orbit law
+M Delta x vanishes on Q-kernel law = {0, 0, 0}
+PASS: M Delta x vanishes on Q-kernel law
+det(mismatch-to-q chart) = 1 + chi
+det mismatch-to-q chart - (1+chi) = 0
+PASS: det mismatch-to-q chart - (1+chi)
+q == 0 forces zero logarithmic mismatch = {0, 0, 0}
+PASS: q == 0 forces zero logarithmic mismatch
+
+----------------------------------------------------------------------------------------
+VIII. Fixed-free-coordinate reduction
+----------------------------------------------------------------------------------------
+ln Phi_T at equal free coordinates = 0
+PASS: ln Phi_T at equal free coordinates
+ln Phi_K at equal free coordinates = 0
+PASS: ln Phi_K at equal free coordinates
+ln Phi_mu at equal free coordinates = 0
+PASS: ln Phi_mu at equal free coordinates
+ln m_T at equal free coordinates - ln r_T = 0
+PASS: ln m_T at equal free coordinates - ln r_T
+ln m_K at equal free coordinates - ln r_K = 0
+PASS: ln m_K at equal free coordinates - ln r_K
+ln m_mu at equal free coordinates - ln r_mu = 0
+PASS: ln m_mu at equal free coordinates - ln r_mu
+
+========================================================================================
+STAGE 199 MATHEMATICA LEDGER
+========================================================================================
+1. Primitive monomial exponent vectors reproduce the SymPy pairwise ratios.
+2. A native same-orbit Solve derives Phi_T, Phi_K, and Phi_mu.
+3. Dividing raw dependent ratios by those transport laws gives the mismatch triple.
+4. LinearSolve constructs the Stage 192 quotient section and finite pairwise projectors.
+5. The restoration, cocycle, orbit-lock, and fixed-base reduction laws all match the SymPy conclusions.

@@ -57,10 +57,11 @@ expectZero[name_String, expr_] := Module[{res},
 ctrMonomial[gamma_, cEtaU_, kU_, tU_, chi0s_, deltaUs_, L_] :=
   (gamma cEtaU/kU)^(1 + deltaUs) (Pi^2 tU/(L^2 kU))^(1 + chi0s);
 
-cntMonomial[lambdaW_, gamma_, kU_, kEta_, kW_, muW_, tU_, eStar_, fStar_, L_, sigma_] :=
+cntMonomial[lambdaW_, gamma_, kU_, kEta_, kW_, muW_, tU_, eStar_, fStar_, L_, sigma_] := (
   (lambdaW^2 muW/(kEta kW^2))
     (gamma^2 lambdaW^2 sigma/(kU kW))^eStar
-    (Pi^2 tU/(L^2 kU))^(-fStar);
+    (Pi^2 tU/(L^2 kU))^(-fStar)
+);
 
 epsEtaMonomial[cEtaU_, kU_, kEta_] := cEtaU^2/(kU kEta);
 
@@ -115,19 +116,19 @@ $Assumptions =
 
 subbanner["I. Exact four-scalar Packet-B compiler from primitive monomial ratios"];
 
-CtrRatio = FullSimplify[
-  PowerExpand[(rg rc/rU)^(1 + deltaUs) (rT/rU)^(1 + chi0s)],
-  Assumptions -> $Assumptions
-];
-CntRatio = FullSimplify[
-  PowerExpand[
-    (rla^2 rmu/(rK rW^2))
-      (rg^2 rla^2/(rU rW))^eStar
-      (rT/rU)^(-fStar)
-  ],
-  Assumptions -> $Assumptions
-];
-epsRatio = FullSimplify[PowerExpand[rc^2/(rK rU)], Assumptions -> $Assumptions];
+ratioSubs = {
+  lam2 -> rla lam1, c2 -> rc c1, gam2 -> rg gam1, KU2 -> rU KU1,
+  Keta2 -> rK Keta1, KW2 -> rW KW1, mu2 -> rmu mu1, T2 -> rT T1
+};
+Ctr1 = ctrMonomial[gam1, c1, KU1, T1, chi0s, deltaUs, L];
+Ctr2 = ctrMonomial[gam2, c2, KU2, T2, chi0s, deltaUs, L];
+Cnt1 = cntMonomial[lam1, gam1, KU1, Keta1, KW1, mu1, T1, eStar, fStar, L, sigma];
+Cnt2 = cntMonomial[lam2, gam2, KU2, Keta2, KW2, mu2, T2, eStar, fStar, L, sigma];
+eps1 = epsEtaMonomial[c1, KU1, Keta1];
+eps2 = epsEtaMonomial[c2, KU2, Keta2];
+CtrRatio = FullSimplify[PowerExpand[(Ctr2/Ctr1) /. ratioSubs], Assumptions -> $Assumptions];
+CntRatio = FullSimplify[PowerExpand[(Cnt2/Cnt1) /. ratioSubs], Assumptions -> $Assumptions];
+epsRatio = FullSimplify[PowerExpand[(eps2/eps1) /. ratioSubs], Assumptions -> $Assumptions];
 
 Print["Ctr_2 / Ctr_1 ="];
 Print[CtrRatio // TraditionalForm];
@@ -233,9 +234,9 @@ TActual = normalizeExpr[mT TOrbit];
 KetaActual = normalizeExpr[mK KetaOrbit];
 muActual = normalizeExpr[mMu muOrbit];
 
-CtrActualRatio = normalizeExpr[(TActual/TOrbit)^(1 + chi0s)];
-CntActualRatio = normalizeExpr[(muActual/muOrbit) (KetaOrbit/KetaActual) (TActual/TOrbit)^(-fStar)];
-epsEtaActualRatio = normalizeExpr[KetaOrbit/KetaActual];
+CtrActualRatio = normalizeExpr[ctrMonomial[gf, cf, KUf, TActual, chi0s, deltaUs, L]/CtrTarget];
+CntActualRatio = normalizeExpr[cntMonomial[lamf, gf, KUf, KetaActual, KWf, muActual, TActual, eStar, fStar, L, sigma]/CntTarget];
+epsEtaActualRatio = normalizeExpr[epsEtaMonomial[cf, KUf, KetaActual]/epsEtaTarget];
 
 expectZero["Log[Ctr(actual) / Ctr_*] - (1+chi0_*) Log[m_T]", Log[CtrActualRatio] - (1 + chi0s) Log[mT]];
 expectZero[

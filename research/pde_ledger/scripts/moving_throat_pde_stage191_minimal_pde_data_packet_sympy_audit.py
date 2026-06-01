@@ -62,7 +62,7 @@ def prefactor_moments(D0, D2, D4, N0, N2, N4):
     return P0, P2, P4
 
 
-banner("STAGE 174 — MINIMAL PDE DATA PACKET AND THE EXACT HOME-STRETCH THEOREM")
+banner("STAGE 191 — MINIMAL PDE DATA PACKET AND THE EXACT HOME-STRETCH THEOREM")
 
 # ---------------------------------------------------------------------------
 # I. Exact single-lane compiler from (D0,D2,D4,N0,N2,N4)
@@ -281,7 +281,7 @@ print("The reduced verdict is exactly the pair of zero-set tests:")
 print("  Delta_branch = 0")
 print("  Delta_orbit  = 0")
 
-banner("STAGE 174 LEDGER")
+banner("STAGE 191 LEDGER")
 print("1. Packet A compiles exactly to the grouped response moments, the outgoing")
 print("   prefactor moments, and the final branch residual packet Delta_branch.")
 print("2. Packet B can be provided in any of three exact forms and compiles exactly")

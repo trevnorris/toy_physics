@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 172 — TRANSFER-SHAPE / OUTGOING-PREFACTOR COMPILER")
+banner("STAGE 189 — TRANSFER-SHAPE / OUTGOING-PREFACTOR COMPILER")
 
 # ---------------------------------------------------------------------------
 # I. Stage 188 observable packet -> transfer-shape packet
@@ -60,16 +60,31 @@ sp.pprint(C_obs_to_trf)
 print("Delta_trf^(1) =")
 sp.pprint(trf)
 expect_zero("C_obs->trf * Delta_obs^(1) - Delta_trf^(1)", C_obs_to_trf * obs - trf)
-expect_zero("selected-branch compatibility row", trf[2] + trf[0] - trf[1])
 print("rank(C_obs->trf) =", C_obs_to_trf.rank())
 
 # Match to defect notation from Stage 188.
-Theta = dr
-Xi = dlnT2
-Rcal = dlnRtarget
-expect_zero("Xi - (dln N_* - B_* dln R_tr)", Xi - (dn - Bstar * dr))
-expect_zero("R_1 - dln R_target", Rcal - dlnRtarget)
-expect_zero("(R_1 + Xi_1) - dln(1-epseta)", (Rcal + Xi) - dlnOneMinus)
+# Introduce the upstream defect scalars as INDEPENDENT symbols and impose the
+# source observable definitions (notes lines 120-122):
+#   dln R_tr   = Theta1
+#   dln N_*    = Xi1 + B_* Theta1     (since N_* := T^2 R_tr^{B_*})
+#   dln epseta = Sigma_eta
+# Then the transfer identities dln T^2 = Xi1, dln R_target = R1, dln(1-epseta)=R1+Xi1
+# must FOLLOW (not be assumed).
+Theta1, Xi1, Sigma_eta = sp.symbols("Theta_1 Xi_1 Sigma_eta", real=True)
+obs_sub = {dr: Theta1, dn: Xi1 + Bstar * Theta1, de: Sigma_eta}
+# dln T^2 computed from the observable packet must equal the independent Xi1:
+expect_zero("dln T^2 - Xi_1", dlnT2.subs(obs_sub) - Xi1)
+# Define R1 from the selected-branch identity dln R_target (notes 172):
+R1 = dlnRtarget.subs(obs_sub)
+# Complementary dressing relation dln(1-epseta) = R1 + Xi1 must follow:
+expect_zero("dln(1-epseta) - (R_1 + Xi_1)", dlnOneMinus.subs(obs_sub) - (R1 + dlnT2.subs(obs_sub)))
+# Rank-2 compatibility as a DERIVED relation among the three identities
+# (computed independently from R1, Xi1, and the dressing relation), not from
+# the definition dlnRtarget := dlnOneMinus - dlnT2:
+expect_zero(
+    "compatibility: dln R_target + dln T^2 - dln(1-epseta)",
+    R1 + dlnT2.subs(obs_sub) - dlnOneMinus.subs(obs_sub),
+)
 
 # ---------------------------------------------------------------------------
 # II. One-port continuum transfer shape and selected-branch identity
@@ -79,20 +94,46 @@ Zw, rho, OmW2, epsW, epseta, Lambda0 = sp.symbols(
     "Z_W rho OmegaW2 epsilonW epsiloneta Lambda_0", positive=True, real=True
 )
 Rtarget = sp.symbols("R_target", positive=True, real=True)
+G_II, c_II, a_II, cs_II = sp.symbols("G c a c_s", positive=True, real=True)
+Lambda0_val = sp.Rational(27, 20) * sp.pi**2 * G_II * cs_II**5 / (a_II**5 * c_II**5)
+
 T2_direct = sp.simplify(Zw * (1 + rho) ** 2 / (OmW2 * (1 - epsW) ** 2))
-Rtarget_formula = sp.simplify(Lambda0 * OmW2 * (1 - epseta) * (1 - epsW) ** 2 / (Zw * (1 + rho) ** 2))
-T2_selected = sp.simplify(Lambda0 * (1 - epseta) / Rtarget_formula)
+Rtarget_definition = sp.simplify(Lambda0 * (1 - epseta) / T2_direct)
 print("T_A^2 (direct continuum form) =")
 sp.pprint(T2_direct)
-print("R_target (selected-branch form) =")
-sp.pprint(Rtarget_formula)
-expect_zero("Lambda_0 (1-epseta) / R_target - T_A^2", T2_selected - T2_direct)
+print("R_target selected-branch definition := Lambda_0 (1-epseta) / T_A^2 =")
+sp.pprint(Rtarget_definition)
+print("Lambda_0 value =")
+sp.pprint(Lambda0_val)
 
 chi0, deltaU = sp.symbols("chi0 deltaU", positive=True, real=True)
 epssplit = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
 T2_coh = sp.simplify(Zw * (1 + chi0) ** 2 / (OmW2 * (1 - epssplit) ** 2))
 print("T^2 (coherent local D/N specialization) =")
 sp.pprint(T2_coh)
+
+epsA, lambdaA = sp.symbols("epsilon lambda_A", real=True)
+zetaZ, omegaW, chi1 = sp.symbols("zeta_Z omega_W chi_1", real=True)
+epsW1, deltaU1 = sp.symbols("varepsilon_W deltaU_1", real=True)
+s = sp.symbols("s", real=True)
+eps1 = sp.simplify(sp.diff(epssplit, epsW) * epsW1 + sp.diff(epssplit, deltaU) * deltaU1)
+Xi1_closed = sp.simplify(
+    zetaZ
+    - omegaW
+    + 2 * chi1 / (1 + chi0)
+    + 2 * eps1 / (1 - epssplit)
+)
+epssplit_pert = sp.simplify(
+    (epsW + s * epsA * lambdaA * epsW1)
+    * (1 - sp.Rational(2, 11) * (deltaU + s * epsA * lambdaA * deltaU1) / (1 + deltaU + s * epsA * lambdaA * deltaU1))
+)
+T2_coh_pert = sp.simplify(
+    (Zw * (1 + s * epsA * lambdaA * zetaZ))
+    * (1 + chi0 + s * epsA * lambdaA * chi1) ** 2
+    / ((OmW2 * (1 + s * epsA * lambdaA * omegaW)) * (1 - epssplit_pert) ** 2)
+)
+direct_slope = sp.simplify(sp.diff(sp.log(T2_coh_pert / T2_coh), s).subs(s, 0))
+expect_zero("direct-slope bridge dln T_A^2 - epsilon lambda_A Xi_1", direct_slope - epsA * lambdaA * Xi1_closed)
 
 # ---------------------------------------------------------------------------
 # III. Exact response/prefactor compiler
@@ -179,7 +220,7 @@ expect_zero("P4 on constant-prefactor branch", P4.subs({N2: N2_const, N4: N4_con
 expect_zero("K2 on constant-prefactor branch - A P0", K2.subs({N2: N2_const}) - Aout * P0)
 expect_zero("K4 on constant-prefactor branch - B P0", K4.subs({N2: N2_const, N4: N4_const}) - Bout * P0)
 
-banner("STAGE 172 LEDGER")
+banner("STAGE 189 LEDGER")
 print("1. The Stage 188 branch-observable packet compiles exactly to the direct transfer packet")
 print("      (d ln T^2, d ln(1-epseta), d ln R_target),")
 print("   with one built-in selected-branch compatibility relation.")

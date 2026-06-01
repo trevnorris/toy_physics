@@ -124,25 +124,42 @@ expect_zero("pole carrier series - expected one-pole series", Y_pole_series - Y_
 # ---------------------------------------------------------------------------
 subbanner("IV. Exact scalar/geometry firewall")
 
-K0 = sp.symbols("K0", nonzero=True, real=True)
+D0scalar = sp.symbols("D0scalar", nonzero=True, real=True)  # eliminated l=0 scalar/geometry block D_0(omega)
+D2blk = sp.symbols("D2blk", nonzero=True, real=True)         # leading isotropic grouped l=2 block D_2(omega)
 chi = sp.symbols("chi", real=True)
 c20, c21, c22 = sp.symbols("c20 c21 c22", real=True)
-Cvec = sp.Matrix([[c20, c21, c22]])
+Cvec = sp.Matrix([[c20, c21, c22]])                          # 1x3 anisotropy-induced mixing vector C(omega)
 I3 = sp.eye(3)
 
-Deff = sp.simplify(D0 * I3 - chi**2 * Cvec.T * Cvec / K0)
-Delta_geom = sp.simplify(Deff - D0 * I3)
+# Full reduced block operator with LINEAR chi coupling (paper eq. app-part05-geometry-firewall-schur premise):
+#   D(omega,chi) = [[ D0scalar ,  chi C   ],
+#                   [ chi C^T  ,  D2 I3   ]]
+Dblock = sp.Matrix(sp.BlockMatrix([
+    [sp.Matrix([[D0scalar]]), chi * Cvec],
+    [chi * Cvec.T,            D2blk * I3]]))
 
-print("D_eff,l=2(chi) =")
+# Exact Schur complement eliminating the scalar/geometry block:
+Deff = sp.simplify(D2blk * I3 - (chi * Cvec.T) * (sp.Matrix([[D0scalar]]).inv()) * (chi * Cvec))
+Delta_geom = sp.simplify(Deff - D2blk * I3)
+
+print("D_block(chi) =")
+sp.pprint(Dblock)
+print("D_eff,l=2(chi)  [Schur complement] =")
 sp.pprint(Deff)
-print("Delta_geom = D_eff - D0 I =")
+print("Delta_geom = D_eff - D2 I =")
 sp.pprint(Delta_geom)
-expect_zero("Delta_geom / chi^2 - expected coefficient", sp.simplify(Delta_geom / chi**2 + (Cvec.T * Cvec) / K0))
+
+# Non-trivial: the Schur complement of a LINEARLY coupled block is EXACTLY the chi^2 quadratic form.
 expect_zero(
-    "d/dchi D_eff at chi=0",
+    "Schur complement - (D2 I - chi^2 C^T C / D0scalar)",
+    sp.Matrix(Deff - (D2blk * I3 - chi**2 * Cvec.T * Cvec / D0scalar)),
+)
+# Firewall: the chi-LINEAR part of the Schur complement vanishes (no O(chi) contamination).
+expect_zero(
+    "d/dchi D_eff at chi=0 (linear-order firewall)",
     sp.Matrix(Deff.diff(chi).subs(chi, 0)),
 )
-expect_zero("D_eff at chi=0 - D0 I", sp.simplify(Deff.subs(chi, 0) - D0 * I3))
+expect_zero("D_eff at chi=0 - D2 I", sp.simplify(Deff.subs(chi, 0) - D2blk * I3))
 
 banner("STAGE 176 LEDGER")
 print("1. The exact grouped trace/anomaly map shows that the isotropic common-lane branch")
@@ -155,7 +172,7 @@ print("      3/4 + 1/4 * (1 - omega^2/Omega_Q^2)^(-1)"
       " module through O(omega^4), with Omega_Q^2 = -D0/(4 D2).")
 print("4. The scalar/geometry firewall is exact: if l=0 <-> l=2 mixing enters as chi C,")
 print("   then the Schur-complement correction to the grouped l=2 block is quadratic,")
-print("      D_eff,l=2 = D0 I - chi^2 C^T C / K0,"
+print("      D_eff,l=2 = D2 I - chi^2 C^T C / D0scalar,"
       " so there is no O(chi) contamination from the l=0 geometry lane.")
 print("5. Stage 193 therefore freezes the first new audited theorem target after Stage 192:")
 print("      a2 = b2 = a4 = b4 = 0,   Delta_pole = 0,"

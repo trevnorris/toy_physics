@@ -1,0 +1,120 @@
+
+========================================================================================
+STAGE 191 -- MINIMAL PDE DATA PACKET MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Native Taylor coefficient compilers
+----------------------------------------------------------------------------------------
+response coefficients from Series/Coefficient = {-(d2/d0), (d2^2 - d0*d4)/d0^2}
+prefactor coefficients from Series/Coefficient = {n0/d0, (-2*d2*n0 + d0*n2)/d0^2, (3*d2^2*n0 - 2*d0*d4*n0 - 2*d0*d2*n2 + d0^2*n4)/d0^3}
+response Series/Coefficient - derivative route = {0, 0}
+PASS: response Series/Coefficient - derivative route
+prefactor Series/Coefficient - derivative route = {0, 0, 0}
+PASS: prefactor Series/Coefficient - derivative route
+response coefficients - SymPy compiler = {0, 0}
+PASS: response coefficients - SymPy compiler
+prefactor coefficients - SymPy compiler = {0, 0, 0}
+PASS: prefactor coefficients - SymPy compiler
+one-lane pole defect + (3 d2^2 + d0 d4)/d0^2 = 0
+PASS: one-lane pole defect + (3 d2^2 + d0 d4)/d0^2
+
+----------------------------------------------------------------------------------------
+II. Weighted grouped trace/anomaly basis and projectors
+----------------------------------------------------------------------------------------
+basis coordinates from Solve = {(x20 + 2*(x21 + x22))/5, (2*x20 - x21 - x22)/10, (x21 - x22)/2}
+group coordinates - SymPy formulas = {0, 0, 0}
+PASS: group coordinates - SymPy formulas
+basis reconstruction - original grouped triple = {0, 0, 0}
+PASS: basis reconstruction - original grouped triple
+trace basis G-orthogonal to anomaly basis = 0
+PASS: trace basis G-orthogonal to anomaly basis
+trace basis G-orthogonal to split basis = 0
+PASS: trace basis G-orthogonal to split basis
+anomaly basis G-orthogonal to split basis = 0
+PASS: anomaly basis G-orthogonal to split basis
+P_trace - SymPy projector = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_trace - SymPy projector
+P_anomaly - SymPy projector = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_anomaly - SymPy projector
+P_split - SymPy projector = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_split - SymPy projector
+P_trace + P_anomaly + P_split - I = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_trace + P_anomaly + P_split - I
+P_trace^2 - P_trace = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_trace^2 - P_trace
+P_anomaly^2 - P_anomaly = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_anomaly^2 - P_anomaly
+P_split^2 - P_split = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_split^2 - P_split
+P_trace P_anomaly = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_trace P_anomaly
+P_trace P_split = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_trace P_split
+P_anomaly P_split = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: P_anomaly P_split
+
+----------------------------------------------------------------------------------------
+III. Packet A to Delta_branch
+----------------------------------------------------------------------------------------
+Delta_branch from native coefficient and basis compilers = {((-2*d202)/d200 + d212/d210 + d222/d220)/10, (-(d212/d210) + d222/d220)/2, ((2*(d202^2 - d200*d204))/d200^2 + (-d212^2 + d210*d214)/d210^2 + (-d222^2 + d220*d224)/d220^2)/10, ((d212^2 - d210*d214)/d210^2 + (-d222^2 + d220*d224)/d220^2)/2, ((2*n200)/d200 - n210/d210 - n220/d220)/10, (n210/d210 - n220/d220)/2, (d202^2*d210^2*d220^2 - 16*d200*d202*d210*d220*(d212*d220 + d210*d222) - d200*(5*d204*d210^2*d220^2 + 2*d200*(3*d212^2*d220^2 + 16*d210*d212*d220*d222 + d210*(3*d210*d222^2 + 5*d220*(d214*d220 + d210*d224)))))/(25*d200^2*d210^2*d220^2), (mhat^2*(n200/d200 + (2*n210)/d210 + (2*n220)/d220) - (54*cSound^5*grav)/(cLight^5*scaleA^5))/5}
+native lane response coefficients - SymPy lane targets = {{0, 0}, {0, 0}, {0, 0}}
+PASS: native lane response coefficients - SymPy lane targets
+native lane prefactor coefficients - SymPy lane targets = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: native lane prefactor coefficients - SymPy lane targets
+Delta_branch native route - SymPy packet = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Delta_branch native route - SymPy packet
+anisotropy coordinates vanish on isotropic Packet A = {0, 0, 0, 0, 0, 0}
+PASS: anisotropy coordinates vanish on isotropic Packet A
+mean nu2 on isotropic Packet A - one-lane nu2 = 0
+PASS: mean nu2 on isotropic Packet A - one-lane nu2
+mean nu4 on isotropic Packet A - one-lane nu4 = 0
+PASS: mean nu4 on isotropic Packet A - one-lane nu4
+mean P0 on isotropic Packet A - one-lane P0 = 0
+PASS: mean P0 on isotropic Packet A - one-lane P0
+Delta_branch on isotropic one-pole normalized Packet A = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: Delta_branch on isotropic one-pole normalized Packet A
+
+----------------------------------------------------------------------------------------
+IV. Packet B interconversion and Delta_orbit
+----------------------------------------------------------------------------------------
+q from residual mismatches through invariant ratios = {(1 + chi0Star)*Log[mT], -Log[mK] + Log[mMu] - fStar*Log[mT], -Log[mK]}
+m from quotient coordinates by solved log equations = {E^(qTr/(1 + chi0Star)), E^(-qEta), E^(-qEta + qNt + (fStar*qTr)/(1 + chi0Star))}
+q_from_m - SymPy quotient formulas = {0, 0, 0}
+PASS: q_from_m - SymPy quotient formulas
+m_from_q - SymPy mismatch formulas = {0, 0, 0}
+PASS: m_from_q - SymPy mismatch formulas
+R_from_m after m_from_q - R_from_q = {0, 0, 0}
+PASS: R_from_m after m_from_q - R_from_q
+q_from_m after m_from_q - q = {0, 0, 0}
+PASS: q_from_m after m_from_q - q
+q_from_R after R_from_q - q = {0, 0, 0}
+PASS: q_from_R after R_from_q - q
+m_from_q at orbit lock = {0, 0, 0}
+PASS: m_from_q at orbit lock
+R_from_q at orbit lock = {0, 0, 0}
+PASS: R_from_q at orbit lock
+q_from_m at mismatch lock = {0, 0, 0}
+PASS: q_from_m at mismatch lock
+Delta_orbit solve zero-set - quotient lock = {0, 0, 0}
+PASS: Delta_orbit solve zero-set - quotient lock
+
+----------------------------------------------------------------------------------------
+V. Two-packet home-stretch ledger
+----------------------------------------------------------------------------------------
+reduced closure packet branch head - Delta_branch = {0, 0, 0, 0, 0, 0, 0, 0}
+PASS: reduced closure packet branch head - Delta_branch
+reduced closure packet orbit tail - Delta_orbit = {0, 0, 0}
+PASS: reduced closure packet orbit tail - Delta_orbit
+formal closure zero-set iff both packet zero-sets vanish = True
+PASS: formal closure zero-set iff both packet zero-sets vanish
+
+========================================================================================
+STAGE 191 MATHEMATICA LEDGER
+========================================================================================
+1. Taylor coefficients are recovered with SeriesCoefficient and match the SymPy compiler formulas.
+2. Grouped coordinates are recovered by solving the weighted basis decomposition.
+3. The weighted projectors are built from the diag(1,2,2) inner product and satisfy the projector algebra.
+4. Packet A compiles to Delta_branch and vanishes on the isotropic one-pole normalized branch.
+5. Packet B interconverts through solved log coordinates and Delta_orbit is the quotient-coordinate zero test.
+6. The final reduced closure packet is exactly the branch packet followed by the orbit packet.

@@ -1,0 +1,117 @@
+
+========================================================================================
+STAGE 190 -- DIRECT DEFECT VS DRESSING SPLIT
+========================================================================================
+
+========================================================================================
+I. Support-blind transfer and selected-branch identities
+========================================================================================
+M_tr - M_mix S(zeta;eps) = 0
+PASS: M_tr - M_mix S(zeta;eps)
+support-loaded T^2 reconstruction = 0
+PASS: support-loaded T^2 reconstruction
+support-loaded R_target reconstruction = 0
+PASS: support-loaded R_target reconstruction
+support-loaded N_* reconstruction = 0
+PASS: support-loaded N_* reconstruction
+E - (1 - epsilon_eta) = 0
+PASS: E - (1 - epsilon_eta)
+dln(T^2_loaded)/dzeta = 0
+PASS: dln(T^2_loaded)/dzeta
+dln(R_target_loaded)/dzeta = 0
+PASS: dln(R_target_loaded)/dzeta
+dln(N_* loaded)/dzeta = 0
+PASS: dln(N_* loaded)/dzeta
+spoiled dln(R_target)/dzeta is not identically zero = (-1 + eps*zeta*(2 + zeta - 2*eps*zeta))/((-1 + (-1 + 2*eps)*zeta)*(-1 + zeta*(-2 + eps*(2 + zeta))))
+PASS: spoiled dln(R_target)/dzeta is not identically zero
+spoiled exact witness at eps=1/3,zeta=1/2 = 0
+PASS: spoiled exact witness at eps=1/3,zeta=1/2
+
+========================================================================================
+II. Microscopic slippage ledger
+========================================================================================
+Sigma_chi - (gamma1 + c1 - kappaU) = 0
+PASS: Sigma_chi - (gamma1 + c1 - kappaU)
+Sigma_delta - (tau1 - kappaU) = 0
+PASS: Sigma_delta - (tau1 - kappaU)
+Sigma_eta - (2 c1 - kappaU - kappaEta) = 0
+PASS: Sigma_eta - (2 c1 - kappaU - kappaEta)
+Sigma_epsilon - (2 gamma1 + 2 lambda1 - kappaU - kappaW) = 0
+PASS: Sigma_epsilon - (2 gamma1 + 2 lambda1 - kappaU - kappaW)
+Sigma_Z - (2 lambda1 + mu1 - kappaEta - 2 kappaW) = 0
+PASS: Sigma_Z - (2 lambda1 + mu1 - kappaEta - 2 kappaW)
+
+========================================================================================
+III. Direct-defect projection
+========================================================================================
+projected A_tr = 0
+PASS: projected A_tr
+nontracking residual has no Sigma_chi = 0
+PASS: nontracking residual has no Sigma_chi
+projected Sigma_nt = 0
+PASS: projected Sigma_nt
+Xi_direct - (A_tr Sigma_tr + Sigma_nt) = 0
+PASS: Xi_direct - (A_tr Sigma_tr + Sigma_nt)
+
+========================================================================================
+IV. Triangular direct-defect / dressing compiler
+========================================================================================
+compiler = {{-((chi*deltaU)/((1 + chi)*(1 + deltaU)*(1 + chi + deltaU))), 0, 0}, {(2*chi)/((1 + chi)*(1 + deltaU)), 1, 0}, {0, 0, -(epsEta/(1 - epsEta))}}
+det(compiler) = -((chi*deltaU*epsEta)/((1 + chi)*(1 + deltaU)*(1 + chi + deltaU)*(-1 + epsEta)))
+determinant formula = 0
+PASS: determinant formula
+dXi/dSigma_eta = 0
+PASS: dXi/dSigma_eta
+d(R+Xi)/dSigma_tr = 0
+PASS: d(R+Xi)/dSigma_tr
+d(R+Xi)/dSigma_nt = 0
+PASS: d(R+Xi)/dSigma_nt
+Sigma_tr inverse by LinearSolve = 0
+PASS: Sigma_tr inverse by LinearSolve
+A_tr/C_tr - 2(1+chi+delta)/delta = 0
+PASS: A_tr/C_tr - 2(1+chi+delta)/delta
+Sigma_nt inverse by LinearSolve = 0
+PASS: Sigma_nt inverse by LinearSolve
+Sigma_eta inverse by LinearSolve = 0
+PASS: Sigma_eta inverse by LinearSolve
+inverse reconstructs Sigma_tr = 0
+PASS: inverse reconstructs Sigma_tr
+inverse reconstructs Sigma_nt = 0
+PASS: inverse reconstructs Sigma_nt
+inverse reconstructs Sigma_eta = 0
+PASS: inverse reconstructs Sigma_eta
+tracking-rigid Xi - Sigma_nt = 0
+PASS: tracking-rigid Xi - Sigma_nt
+grouped-defect cancellation theorem = 0
+PASS: grouped-defect cancellation theorem
+selected-branch rigidity theorem = 0
+PASS: selected-branch rigidity theorem
+
+========================================================================================
+V. Grouped real P2 scalar no-go filter
+========================================================================================
+xbar - x0 = 0
+PASS: xbar - x0
+ybar - y0 = 0
+PASS: ybar - y0
+b_x - 3 a_x = 0
+PASS: b_x - 3 a_x
+b_y - 3 a_y = 0
+PASS: b_y - 3 a_y
+I[x,y] - 7/10 eps^2 x1 y1 = 0
+PASS: I[x,y] - 7/10 eps^2 x1 y1
+I[x,x] - 7/10 eps^2 x1^2 = 0
+PASS: I[x,x] - 7/10 eps^2 x1^2
+linear term in xbar = 0
+PASS: linear term in xbar
+linear term in I[x,x] at eps=0 = 0
+PASS: linear term in I[x,x] at eps=0
+
+========================================================================================
+STAGE 190 LEDGER
+========================================================================================
+1. The support-loaded branch algebra cancels exactly back to T^2, R_target, and N_*.
+2. Logarithmic Euler operators reproduce the five microscopic slippage laws.
+3. Projection along the tracking coordinate leaves the corrected nontracking defect.
+4. The direct-defect/dressing compiler is triangular and exactly invertible.
+5. Pure grouped real P2 anisotropy has no linear scalar feed-down.

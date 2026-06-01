@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
-# Date: 2026-05-11T12:48:43-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 176 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL
@@ -74,49 +66,57 @@ pole carrier series - expected one-pole series = 0
 ----------------------------------------------------------------------------------------
 IV. Exact scalar/geometry firewall
 ----------------------------------------------------------------------------------------
-D_eff,l=2(chi) =
-⎡        2  2            2             2 ⎤
-⎢     c₂₀ ⋅χ   -c₂₀⋅c₂₁⋅χ    -c₂₀⋅c₂₂⋅χ  ⎥
-⎢D₀ - ───────  ────────────  ────────────⎥
-⎢       K₀          K₀            K₀     ⎥
-⎢                                        ⎥
-⎢          2           2  2            2 ⎥
-⎢-c₂₀⋅c₂₁⋅χ         c₂₁ ⋅χ   -c₂₁⋅c₂₂⋅χ  ⎥
-⎢────────────  D₀ - ───────  ────────────⎥
-⎢     K₀              K₀          K₀     ⎥
-⎢                                        ⎥
-⎢          2             2           2  2⎥
-⎢-c₂₀⋅c₂₂⋅χ    -c₂₁⋅c₂₂⋅χ         c₂₂ ⋅χ ⎥
-⎢────────────  ────────────  D₀ - ───────⎥
-⎣     K₀            K₀              K₀   ⎦
-Delta_geom = D_eff - D0 I =
+D_block(chi) =
+⎡D0scalar  c₂₀⋅χ  c₂₁⋅χ  c₂₂⋅χ⎤
+⎢                             ⎥
+⎢ c₂₀⋅χ    D2blk    0      0  ⎥
+⎢                             ⎥
+⎢ c₂₁⋅χ      0    D2blk    0  ⎥
+⎢                             ⎥
+⎣ c₂₂⋅χ      0      0    D2blk⎦
+D_eff,l=2(chi)  [Schur complement] =
+⎡           2  2               2                 2   ⎤
+⎢        c₂₀ ⋅χ      -c₂₀⋅c₂₁⋅χ        -c₂₀⋅c₂₂⋅χ    ⎥
+⎢D2blk - ────────    ────────────      ────────────  ⎥
+⎢        D0scalar      D0scalar          D0scalar    ⎥
+⎢                                                    ⎥
+⎢            2                2  2               2   ⎥
+⎢  -c₂₀⋅c₂₁⋅χ              c₂₁ ⋅χ      -c₂₁⋅c₂₂⋅χ    ⎥
+⎢  ────────────    D2blk - ────────    ────────────  ⎥
+⎢    D0scalar              D0scalar      D0scalar    ⎥
+⎢                                                    ⎥
+⎢            2                 2                2  2 ⎥
+⎢  -c₂₀⋅c₂₂⋅χ        -c₂₁⋅c₂₂⋅χ              c₂₂ ⋅χ  ⎥
+⎢  ────────────      ────────────    D2blk - ────────⎥
+⎣    D0scalar          D0scalar              D0scalar⎦
+Delta_geom = D_eff - D2 I =
 ⎡     2  2               2             2 ⎤
 ⎢ -c₂₀ ⋅χ      -c₂₀⋅c₂₁⋅χ    -c₂₀⋅c₂₂⋅χ  ⎥
 ⎢ ─────────    ────────────  ────────────⎥
-⎢    K₀             K₀            K₀     ⎥
+⎢ D0scalar       D0scalar      D0scalar  ⎥
 ⎢                                        ⎥
 ⎢          2        2  2               2 ⎥
 ⎢-c₂₀⋅c₂₁⋅χ     -c₂₁ ⋅χ      -c₂₁⋅c₂₂⋅χ  ⎥
 ⎢────────────   ─────────    ────────────⎥
-⎢     K₀           K₀             K₀     ⎥
+⎢  D0scalar     D0scalar       D0scalar  ⎥
 ⎢                                        ⎥
 ⎢          2             2        2  2   ⎥
 ⎢-c₂₀⋅c₂₂⋅χ    -c₂₁⋅c₂₂⋅χ     -c₂₂ ⋅χ    ⎥
 ⎢────────────  ────────────   ─────────  ⎥
-⎣     K₀            K₀           K₀      ⎦
-Delta_geom / chi^2 - expected coefficient =
+⎣  D0scalar      D0scalar     D0scalar   ⎦
+Schur complement - (D2 I - chi^2 C^T C / D0scalar) =
 ⎡0  0  0⎤
 ⎢       ⎥
 ⎢0  0  0⎥
 ⎢       ⎥
 ⎣0  0  0⎦
-d/dchi D_eff at chi=0 =
+d/dchi D_eff at chi=0 (linear-order firewall) =
 ⎡0  0  0⎤
 ⎢       ⎥
 ⎢0  0  0⎥
 ⎢       ⎥
 ⎣0  0  0⎦
-D_eff at chi=0 - D0 I =
+D_eff at chi=0 - D2 I =
 ⎡0  0  0⎤
 ⎢       ⎥
 ⎢0  0  0⎥
@@ -134,8 +134,6 @@ STAGE 176 LEDGER
       3/4 + 1/4 * (1 - omega^2/Omega_Q^2)^(-1) module through O(omega^4), with Omega_Q^2 = -D0/(4 D2).
 4. The scalar/geometry firewall is exact: if l=0 <-> l=2 mixing enters as chi C,
    then the Schur-complement correction to the grouped l=2 block is quadratic,
-      D_eff,l=2 = D0 I - chi^2 C^T C / K0, so there is no O(chi) contamination from the l=0 geometry lane.
+      D_eff,l=2 = D2 I - chi^2 C^T C / D0scalar, so there is no O(chi) contamination from the l=0 geometry lane.
 5. Stage 193 therefore freezes the first new audited theorem target after Stage 192:
       a2 = b2 = a4 = b4 = 0,   Delta_pole = 0, together with the exact scalar/geometry firewall.
-
-EXIT_CODE: 0

@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
-# Date: 2026-05-11T12:48:39-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 173 — DIRECT DEFECT VS DRESSING SPLIT, SUPPORT-BLINDNESS, AND THE SCALAR NO-GO FILTERS
@@ -169,5 +161,3 @@ STAGE 173 LEDGER
    invariant is quadratic, I ~ (7/10) epsilon^2.
 5. So the remaining first-order gate is already sharply classified as tracking,
    direct transfer-shape, or dressing mismatch.
-
-EXIT_CODE: 0

@@ -3,20 +3,33 @@
 > Resume doc. Read this + the files it points to, then continue. Written before a
 > planned compaction so a fresh context picks up exactly here.
 
-> **STATUS (2026-05-29): ✅ INTEGRITY REMEDIATION COMPLETE — but the FIRST PASS is NOT
-> finished.** All 29 FINDINGS stages remediated + `verified` across batches 1–8 (batch 8 =
-> {175} verified + committed, see git log); the IV.x/V.1 orchestrator-direct integrity
-> recovery (a DETOUR within the first pass) is closed. **The first full pass has only
-> reached stage 175 (V.1) — and the first pass has now **RESUMED**. **V.2 = {176–187} is DONE
-> — 12/12 verified (2026-05-30; batch `redteam/batches/batch_V2_v2.md`; consult
-> `redteam/codex_reviews/_consult_V2.md`).** Stages 188–253 remain PENDING / un-audited
-> (V.3 188–200, VI.1 201–218, VII.1 219–230, VII.2 231–242, VIII.1 243–253 = 66 stages).
-> **Next = V.3 = {188–200}** (13 stages, checkpoint 200) — awaits explicit user go. The planned
-> full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check, only
-> after the first pass reaches stage 253 — it is NOT the next step.
-> **⚠️ V.2 is verified ON DISK but NOT yet committed** (commit on user ask): 12 scripts + 12
-> outputs + reports/directives/verifications/batch file + 6 synced trackers + this handoff +
-> memory are all staged-but-uncommitted.
+> **STATUS (2026-06-01): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 200.**
+> All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
+> **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
+> (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
+> Cumulative **200/253 verified (79.1%)**.
+>
+> **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
+> a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
+> result; single-engine only where genuinely impossible (test = "is it possible," NOT "is it
+> necessary"). See memory [[feedback-dual-engine-required]] and [[feedback-claude-reviews-codex-codes]]
+> (Claude reviews only; Codex writes ALL script code incl. new `.wl`). V.3 retrofitted 12 new
+> independent-route `.wl` (188–199) + de-transliterated 200's `.wl`.
+>
+> **NEXT (gated, awaits explicit user go), in order:**
+> 1. **RETRO-SWEEP {121, 122, 123}** — the only 3 already-`verified` non-status-only stages that
+>    are still SymPy-only; create an independent-route `.wl` for each (dual-engine rule). These are
+>    the "past 3 that are missing." (The 11 status-only single-engine stages compute nothing and are
+>    legitimately single-engine — no action.)
+> 2. **VI.1 = {201–218}**, then VII.1 {219–230}, VII.2 {231–242}, VIII.1 {243–253} = 53 stages —
+>    normal forward first-pass audit, now WITH the dual-engine rule (each SymPy-only stage that CAN
+>    be dual-engine gets a `.wl` in its batch).
+> The planned full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check,
+> only after the first pass reaches stage 253 — NOT the next step.
+> **✅ V.3 COMMITTED 2026-06-01** (this commit; see git log): 12 new `.wl` + 1 edited `.wl` (200) +
+> 4 edited `.py` (188/189/193/195) + 2 relabeled `.py` (189/191) + refreshed outputs +
+> reports/directives/verifications/`_consult_V3.md`/`batch_V3_v2.md` + 6 synced trackers + this handoff.
+> (The memory file `[[project-moving-throat-verification]]` lives OUTSIDE the repo and is updated separately.)
 
 ## ⚠️ SESSION 2 (2026-05-28 cont.) — PIPELINE CHANGES (do NOT undo) + PROGRESS
 

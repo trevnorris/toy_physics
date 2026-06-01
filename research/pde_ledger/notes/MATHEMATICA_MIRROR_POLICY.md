@@ -3,7 +3,11 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-05-30` (V.2 close — first batch of the RESUMED FIRST PASS after the IV.x/V.1 orchestrator-direct integrity remediation (batches 1–8) closed; stages 176–187, run under the RESTORED Codex-as-fix-applier contract)
+Snapshot date: `2026-06-01` (**batch V.3 close — second batch of the resumed first pass; THE DUAL-ENGINE RULE CORRECTION batch**; stages 188–200, `Part V.3 — Branch observables, isotropic target, home stretch`; checkpoint 200)
+
+**The policy itself changed this batch (user-clarified 2026-06-01).** A Mathematica `.wl` is **REQUIRED on every stage where Mathematica CAN independently verify the result** — the test for omitting a `.wl` is "**is it possible**," NOT "is it necessary." A standing drift had let single-engine acceptance accrete on the late SymPy-only frontier via orchestrator/Claude+Codex discretion without user sign-off (the auditor prompt's line 118 had required it all along). Before V.3, stages 188–199 were **SymPy-ONLY (no `.wl`)**. Consequence for V.3: **12 NEW independent-route Mathematica `.wl` scripts were created (188–199)** by Codex, ALL verified as **GENUINE INDEPENDENT routes (0 transliterations accepted)**, and the checkpoint **200's pre-existing `.wl` (caught by the audit as a transliteration) was DE-TRANSLITERATED**. So all 13 V.3 stages are now genuine dual-engine. **0 sanctioned mirrors this batch.** Labor split strictly enforced: **Claude reviews (audit + verify); Codex writes ALL script code (designs + writes the new `.wl`)**; the directives stated only the requirement + acceptance criteria. Representative independent routes (all 12 of 188–199 added to the Independent-Mirror Set below): **188** compilers as Jacobians via `Solve` of the log-drift relations; **189** independent observable defect symbols (`Theta1`/`Xi1`/`Sigma_eta`), no `Rtarget*T2-...` assertion (the back-definition was demoted; see iter-2 below); **190** logarithmic Euler operator for the slippage laws; **191** `Coefficient` + `D[]` Taylor cross-check, metric-built projectors; **192** constrained `LinearSolve` on the augmented 8×8 + `Solve` equivalence; **193** `ArrayFlatten` block Schur via `Inverse`, `Solve[deltaPole==0]` (linear→quadratic firewall); **194** native `SphericalHankelH1`, `Solve` for the pole/σ from coefficient matches; **195** derives `χ_Q` from the Hankel operator; **196** the tail wired in as a free symbol `l7`, `D[coeff,l7]=0` through z⁵; **197** `χ_Q` two ways + `Reduce`/`Equivalent`; **198** `M_*` reconstructed as a Jacobian `Table[D[...]]` + `LinearSolve` orbit; **199** `M_*` from additive exponent-weight vectors + `LinearSolve` projectors. **200 de-transliteration** (the row is updated below): Section I hand-collapsed ratios → a `ratioSubs` helper-monomial-quotient route feeding the `Mderived` Jacobian (F1 transliteration); Section III `Log[a^b]` collapse → full `ctrMonomial[...TActual...]/CtrTarget` exercising the exponents (F2 HIGH tautological). **One iteration-2 rework (189 Section II, orchestrator-review catch):** the iter-1 F1 fix left a residual tautology — `Rtarget_oneport=Lambda0*(1-epseta)/T2_direct` is a back-definition, so `Rtarget_oneport*T2_direct-Lambda0*(1-epseta)` ≡ 0 for any input; the verify agent flagged the smell but passed it, the orchestrator REJECTED it (no-rubber-stamp, same class as the V.2 checkpoint-185 catch). A read-only Claude+Codex consult (`redteam/codex_reviews/_consult_V3.md`, session 019e843e, CONCUR full) confirmed: the selected-branch identity `R_target·T²=Λ₀(1-ε_η)` is DEFINITIONAL (rank-2 compatibility) and must be DEMOTED to a printed definition; the genuine content is the direct-slope bridge `δln T_A²=ε·λ_A·Ξ₁` perturbing the concrete continuum `T2_coh`, with `Ξ₁` supplied INDEPENDENTLY (not back-derived). Iter-2 applied this in BOTH engines; re-verified — `Xi1_closed` confirmed independent (built from the input perturbation amplitudes before the perturbation path exists, touches neither `direct_slope` nor the T2 perturbation). All 13 of 188–200 verified, 7 clean (190, 192, 194, 196, 197, 198, 199), `material_change: false` on all 13, 0 blocked. Previous V.2 entry below.
+
+Snapshot date prior: `2026-05-30` (V.2 close — first batch of the RESUMED FIRST PASS after the IV.x/V.1 orchestrator-direct integrity remediation (batches 1–8) closed; stages 176–187, run under the RESTORED Codex-as-fix-applier contract)
 
 V.2 audit (2026-05-30) flagged `mathematica_transliteration` on 7 stages (177, 178, 181-F3, 182-F2, 186-F2, 187-F2, plus 176-F2 as a documented comment-only near-mirror). **ALL 7 received genuine independent routes — ZERO accepted as a sanctioned policy mirror this batch** (the converse of V.1, which accepted 2). Per-stage routes: **177** — independent factored-`(M,I,H)` load-factor route (+banner); **178** — Mathematica-native `Coefficient[Series[Log[pA²/dA²]]]` ν_r route (consult Q1 CONCUR: apply, do NOT sanction as a mirror); **181** — independent `sSupport` grouping + ported spoiled negative-control (and the iter-2 ζ-bearing rebuild, see below); **182** — gauge-`Solve` linear Σ-coefficient extraction (consult Q3 DISPUTED the `## Blocked` default — a concrete `Solve`/`CoefficientArrays` route exists, so NOT blocked); **184** — `SeriesCoefficient[Log[composite/ref]]` drifts, de-tautologizing the hardcoded `expr−expr==0` equals (SymPy correctly LEFT UNTOUCHED — already correct, the defect was Mathematica-only); **186** — M_* rows from `Coefficient[Log[monomial]]` + re-solve; **187** — monomial-primitive log-ratios replacing the `Exp[row]`/`Log` X−X block (implemented natively, deletes the `Exp[row]` block). **176-F2 is comment-only** — the existing `D[Log,eps]` vs `series` extraction divergence is genuine and was DOCUMENTED, not rewritten. The mirror-policy default (transliteration is expected; rewrite unless sanctioned) held — no sanctioned-mirror acceptances were needed, and the mandatory escape clause was AVAILABLE but NOT triggered on any of the 7. **One verify-wave catch drove an iteration-2 rework here**: 181 F1's first Mathematica deviation set `t2LoadedPert = t2DirectPert` (ζ-free), so `D[xi1Loaded, zeta]` was identically 0 and the support-loaded ζ-cancellation was never exercised on the Mathematica side (SymPy's was genuine); iter-2 rebuilt `t2LoadedPert` from the ζ-bearing `rTargetLoaded` perturbation and added a `FreeQ[t2LoadedPert, zeta]` guard that fails if ζ is lost. Settled by the consult `redteam/codex_reviews/_consult_V2.md` (session 019e77af; iter-2 185 F1 settled at session 019e77e6). All 12 of 176–187 verified, 2 clean (179, 180), `material_change: false` on all 12, 0 paper_misalignment, 0 blocked. Transliteration share for V.2 = 7/12 = 58% dirty. Previous batch-8 entry below.
 
@@ -604,8 +608,51 @@ different verification structure from the SymPy side:
 - `185`
   reconstructs primitive microscopic ratios before assembling the carried
   packet
+- `188`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  building the compilers as Jacobians via `Solve` of the log-drift relations
+- `189`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  from independent observable defect symbols (`Theta1`/`Xi1`/`Sigma_eta`); the
+  selected-branch product was DEMOTED to a printed definition and the genuine
+  content is the independent direct-slope bridge `δln T_A²=ε·λ_A·Ξ₁` (iter-2)
+- `190`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  via the logarithmic Euler operator for the slippage laws
+- `191`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  via `Coefficient` + `D[]` Taylor cross-check with metric-built projectors
+- `192`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  via a constrained `LinearSolve` on the augmented 8×8 + `Solve` equivalence
+- `193`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  via an `ArrayFlatten` block Schur (`Inverse`, `Solve[deltaPole==0]`) proving the
+  linear→quadratic scalar/geometry firewall
+- `194`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  via native `SphericalHankelH1` and `Solve` for the pole/σ from coefficient matches
+- `195`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  deriving `χ_Q` from the Hankel operator
+- `196`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  wiring the tail in as a free symbol `l7` and checking `D[coeff,l7]=0` through z⁵
+- `197`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  deriving `χ_Q` two ways + `Reduce`/`Equivalent`
+- `198`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  reconstructing `M_*` as a Jacobian `Table[D[...]]` + `LinearSolve` orbit
+- `199`
+  red-team batch V.3 (2026-06-01) created the native mirror (previously SymPy-only)
+  building `M_*` from additive exponent-weight vectors + `LinearSolve` projectors
 - `200`
-  derives the Packet-B compiler from primitive monomials/orbit data
+  derives the Packet-B compiler from primitive monomials/orbit data; red-team
+  batch V.3 (2026-06-01) DE-TRANSLITERATED the `.wl` (Section I hand-collapsed
+  ratios → `ratioSubs` helper-monomial quotients feeding the `Mderived` Jacobian;
+  Section III `Log[a^b]` collapse → full `ctrMonomial[...]/CtrTarget` exercising
+  the exponents)
 - `203`
   verifies the graph-composed scalar-closure / crossing route
 - `218`

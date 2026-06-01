@@ -1,0 +1,89 @@
+
+========================================================================================
+STAGE 198 -- EXACT FINITE ORBIT LAW MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Orbit solve from log-linear invariant equations
+----------------------------------------------------------------------------------------
+log invariant residuals = {-zK + 2*Log[cEtaU] - Log[epsS*kU], zT + chiS*zT - 2*(1 + chiS)*Log[ell] + deltaS*Log[(cEtaU*gammaC)/kU] - chiS*Log[kU] + 2*chiS*Log[Pi] + Log[(cEtaU*gammaC*Pi^2)/(cTrS*kU^2)], -zK + zM - fS*zT + Log[lambdaW^2/(cNtS*kW^2)] + fS*Log[(ell^2*kU)/Pi^2] + eS*(-Log[kU*kW] + 2*Log[gammaC*lambdaW] + Log[sigmaP])}
+dependent log coefficient matrix = {{-1, 0, 0}, {0, 1 + chiS, 0}, {-1, -fS, 1}}
+log orbit solution = {2*Log[cEtaU] - Log[epsS*kU], (Log[cTrS] - (1 + deltaS)*Log[cEtaU*gammaC] + (chiS + deltaS)*Log[kU] + 2*chiS*Log[ell/Pi] + 2*Log[(ell*kU)/Pi])/(1 + chiS), Log[cNtS] + (fS*Log[cTrS])/(1 + chiS) - ((1 + deltaS)*fS*Log[(cEtaU*gammaC)/kU])/(1 + chiS) - Log[epsS*kU] + 2*Log[(cEtaU*kW)/lambdaW] + eS*(-2*Log[gammaC*lambdaW] + Log[(kU*kW)/sigmaP])}
+det(dependent log matrix) + (1+chiS) = 0
+PASS: det(dependent log matrix) + (1+chiS)
+K_eta orbit agrees with SymPy target = 0
+PASS: K_eta orbit agrees with SymPy target
+T_U orbit agrees with SymPy target = 0
+PASS: T_U orbit agrees with SymPy target
+mu_W orbit agrees with SymPy target = 0
+PASS: mu_W orbit agrees with SymPy target
+epsilon_eta at log-solved orbit = 0
+PASS: epsilon_eta at log-solved orbit
+C_tr at log-solved orbit = 0
+PASS: C_tr at log-solved orbit
+C_nt at log-solved orbit = 0
+PASS: C_nt at log-solved orbit
+
+----------------------------------------------------------------------------------------
+II. Multiplicative mismatch ratios
+----------------------------------------------------------------------------------------
+C_tr(actual)/C_tr_star agrees with sT^(1+chiS) = 0
+PASS: C_tr(actual)/C_tr_star agrees with sT^(1+chiS)
+epsilon_eta(actual)/epsilon_eta_star agrees with 1/sK = 0
+PASS: epsilon_eta(actual)/epsilon_eta_star agrees with 1/sK
+C_nt(actual)/C_nt_star agrees with sM/(sK sT^fS) = 0
+PASS: C_nt(actual)/C_nt_star agrees with sM/(sK sT^fS)
+
+----------------------------------------------------------------------------------------
+III. Log chart and Stage 192 drift rows from finite ratios
+----------------------------------------------------------------------------------------
+Packet-B log chart agrees with SymPy q chart = {0, 0, 0}
+PASS: Packet-B log chart agrees with SymPy q chart
+finite log packet = {dC + dC*deltaS + dG + deltaS*dG + dT + chiS*dT - (2 + chiS + deltaS)*dU, -dK + dMu - 2*dW + 2*dG*eS - (dU + dW)*eS + 2*dLam*(1 + eS) - dT*fS + dU*fS, 2*dC - dK - dU}
+Jacobian compiler = {{0, 1 + deltaS, 1 + deltaS, -2 - chiS - deltaS, 0, 0, 0, 1 + chiS}, {2*(1 + eS), 0, 2*eS, -eS + fS, -1, -2 - eS, 1, -fS}, {0, 2, 0, -1, -1, 0, 0, 0}}
+finite-ratio Jacobian agrees with SymPy M_* = {{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}
+PASS: finite-ratio Jacobian agrees with SymPy M_*
+M_* pure dependent mismatch agrees with q chart = {0, 0, 0}
+PASS: M_* pure dependent mismatch agrees with q chart
+
+----------------------------------------------------------------------------------------
+IV. Restoration as a dependent-column linear solve
+----------------------------------------------------------------------------------------
+dependent correction exponents {K_eta, mu_W, T_U} = {-kappa, -rho, -tau}
+restoration exponents agree with SymPy restoration map = {0, 0, 0}
+PASS: restoration exponents agree with SymPy restoration map
+restoration kills the Packet-B coordinates = {0, 0, 0}
+PASS: restoration kills the Packet-B coordinates
+T_U restoration returns orbit = 0
+PASS: T_U restoration returns orbit
+K_eta restoration returns orbit = 0
+PASS: K_eta restoration returns orbit
+mu_W restoration returns orbit = 0
+PASS: mu_W restoration returns orbit
+
+----------------------------------------------------------------------------------------
+V. Inverse chart and finite orbit-lock criterion
+----------------------------------------------------------------------------------------
+inverse chart = {tau -> -((-qEta + qNt - (-qEta - chiS*qEta + qNt + chiS*qNt + fS*qTr)/(1 + chiS))/fS), kappa -> -qEta, rho -> (-qEta - chiS*qEta + qNt + chiS*qNt + fS*qTr)/(1 + chiS)}
+inverse chart agrees with SymPy target = {0, 0, 0}
+PASS: inverse chart agrees with SymPy target
+direct chart after inverse returns q = {0, 0, 0}
+PASS: direct chart after inverse returns q
+m_T at q=0 - 1 = 0
+PASS: m_T at q=0 - 1
+m_K at q=0 - 1 = 0
+PASS: m_K at q=0 - 1
+m_mu at q=0 - 1 = 0
+PASS: m_mu at q=0 - 1
+finite orbit-lock equivalence in log coordinates = True
+PASS: finite orbit-lock equivalence in log coordinates
+
+========================================================================================
+STAGE 198 MATHEMATICA LEDGER
+========================================================================================
+1. The dependent triple is solved by a log-linear invariant system with determinant -(1+chiS).
+2. The solved orbit agrees with the SymPy formulas for K_eta, T_U, and mu_W.
+3. Positive mismatch scalings give the exact C_tr, epsilon_eta, and C_nt ratios.
+4. The Packet-B chart and the Stage 192 drift compiler are recovered from finite log-ratio Jacobians.
+5. A dependent-column linear solve gives the restoration exponents and returns the orbit point.
+6. Solve confirms the inverse chart and the finite orbit-lock condition q=0 iff all log mismatches vanish.

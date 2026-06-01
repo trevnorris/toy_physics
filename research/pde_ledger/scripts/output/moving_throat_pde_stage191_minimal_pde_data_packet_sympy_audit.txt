@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
-# Date: 2026-05-11T12:48:41-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 174 — MINIMAL PDE DATA PACKET AND THE EXACT HOME-STRETCH THEOREM
+STAGE 191 — MINIMAL PDE DATA PACKET AND THE EXACT HOME-STRETCH THEOREM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -338,7 +330,7 @@ The reduced verdict is exactly the pair of zero-set tests:
   Delta_orbit  = 0
 
 ========================================================================================
-STAGE 174 LEDGER
+STAGE 191 LEDGER
 ========================================================================================
 1. Packet A compiles exactly to the grouped response moments, the outgoing
    prefactor moments, and the final branch residual packet Delta_branch.
@@ -348,5 +340,3 @@ STAGE 174 LEDGER
 4. On orbit lock, Delta_orbit vanishes exactly.
 5. So the completed moving-throat PDE only has to supply the finite data needed
    to evaluate Delta_branch and Delta_orbit on the actual branch.
-
-EXIT_CODE: 0

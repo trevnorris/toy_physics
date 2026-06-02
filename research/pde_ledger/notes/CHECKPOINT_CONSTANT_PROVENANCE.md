@@ -6,7 +6,9 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-06-01` (**retro-sweep {121, 122, 123} — dual-engine retrofit of already-`verified` SymPy-only stages.** Each gained a NEW independent-route `.wl` (Codex wrote, Claude reviewed); all 3 re-verified, `material_change: false`. **The retro-sweep introduced NO new postulated or derived constant/literal** — the new `.wl` REUSE the existing source-anchored values (121's `r_geom`/`r_F1`/`r_c` from the Stage-99 length law; 122's `g_±` solved from the compensation quadratic with `cStage` a free positive symbol; 123's `Xi_v`/`Xi_T` from `Reduce`-based inversions, `Xi_v(F1) ≈ −1.01675633282526`). **NO checkpoints in the retro-sweep range {121/122/123}** — IV.3 has no checkpoints — so there is no checkpoint-constant provenance to log this sweep. **Cumulative checkpoint-constant provenance is unchanged (105 retained at the higher-bar standard); no checkpoint constant moved.** Previous V.3 entry retained below.)
+Snapshot date: `2026-06-02` (**batch VI.1 close {201–218} — first batch of Part VI under the v2 paper-grounded auditor WITH the dual-engine rule, theme "Explicit realization, scalar slice, ray ranking".** First-pass paper-grounded audit on stages 201–218. **Checkpoints `203` and `218` BOTH returned `verified` at the higher bar with `material_change: false`** (and on all 18 stages). **The load-bearing checkpoint constant recorded this batch is the per-envelope lifted Bézout bound `162 = 3⁴·2` (stages 217/218).** It is **arithmetically forced** — the only value consistent with the downstream budgets `2 × 162 = 324`, `1140 + 324 = 1464`, the fallback `2 × 750 = 1500 → 2640`, and the projected-chart per-envelope bound `750 = 5·5·5·6`. **The SCRIPT was always correct (162); the WRONG typos `179` and `230` lived only in the PUBLISHED card (`stage_217.tex`), the Part-VI appendix (`stage_appendix_part06.tex`, `eq:app-part06-five-bezout` + the part06 stage-table row), and the 217/218 notes — all corrected to 162 this batch (Codex-applied, Claude-reviewed). No derived or carried constant MOVED** — this is a paper/notes typo correction aligning the prose to the already-correct script, so **cumulative checkpoint-constant provenance is otherwise unchanged from the V.3 close (200 retained, 105 retained at the higher-bar standard).** Provenance now anchored at the 203/218 checkpoints: `162 = 3⁴·2` (lifted per-envelope Bézout bound), `324 = 2×162` (per-envelope support-5 budget), `1464 = 1140 + 324` (total support-≤5 ledger), `2640 = ... + 2×750` (projected/fallback total), `750 = 5·5·5·6` (projected-chart per-envelope bound); `1140` is the carried Stage-215 support-`≤4` global ledger budget. The Stage 218 provenance entry below is updated (the stale `179` corrected to `162`). The other 16 stages (201, 202, 204–217) are NOT checkpoints. Previous retro-sweep entry retained below.)
+
+Snapshot date prior: `2026-06-01` (**retro-sweep {121, 122, 123} — dual-engine retrofit of already-`verified` SymPy-only stages.** Each gained a NEW independent-route `.wl` (Codex wrote, Claude reviewed); all 3 re-verified, `material_change: false`. **The retro-sweep introduced NO new postulated or derived constant/literal** — the new `.wl` REUSE the existing source-anchored values (121's `r_geom`/`r_F1`/`r_c` from the Stage-99 length law; 122's `g_±` solved from the compensation quadratic with `cStage` a free positive symbol; 123's `Xi_v`/`Xi_T` from `Reduce`-based inversions, `Xi_v(F1) ≈ −1.01675633282526`). **NO checkpoints in the retro-sweep range {121/122/123}** — IV.3 has no checkpoints — so there is no checkpoint-constant provenance to log this sweep. **Cumulative checkpoint-constant provenance is unchanged (105 retained at the higher-bar standard); no checkpoint constant moved.** Previous V.3 entry retained below.)
 
 Snapshot date prior: `2026-06-01` (**batch V.3 close — second batch of the resumed first pass; THE DUAL-ENGINE RULE CORRECTION batch.** First-pass paper-grounded audit on stages 188–200. **Checkpoint stage `200` (reference-free home-stretch theorem) is the only checkpoint in this batch** and returned `verified` at the higher bar with **`material_change: false`**. **V.3 introduced NO new postulated or derived constant/literal in the checkpoint range — 200 is ROUTE-ONLY.** The two 200 findings are both route/structure changes: F1 DE-TRANSLITERATED the `.wl` Section I to a `ratioSubs` helper-monomial-quotient route feeding the `Mderived` Jacobian, and F2 de-tautologized Section III's `Log[a^b]` collapse to the full `ctrMonomial[...]/CtrTarget`. Neither introduces a literal; both REUSE the existing source-anchored Stage 200 constants (`chi_Q=1`; the packet-length/pairing coefficient `2`; the `3`/`5`/`9` carried from `chi_Q = 3(S β^5 + 9 Σ_5)/(3 S − Σ_0)`) already logged in the Stage 200 entry below. **Cumulative checkpoint-constant provenance is unchanged from the IV.2 close (105 retained at the higher-bar standard); no checkpoint constant moved.** The other 12 stages (188–199) are NOT checkpoints (the batch-wide event was the creation of 12 new independent-route `.wl`, all genuine, 0 sanctioned mirrors — a coverage/independence change, not a constant change). Consult `redteam/codex_reviews/_consult_V3.md` (session 019e843e, covering 189 Section II only — not a checkpoint). Previous V.2 entry retained below.)
 
@@ -617,19 +619,31 @@ Constants reviewed:
   `Sum[Binomial[5,k], {k,1,4}] = 2^5 - 2`
 - `1140`
   carried forward as the Stage 215 support-`<=4` global ledger budget
-- `179`
+- `162`
   carried forward as the Stage 217 lifted support-5 per-envelope Bezout bound
+  `162 = 3^4 * 2`; arithmetically forced (red-team batch VI.1, 2026-06-02,
+  corrected the WRONG `179`/`230` typos that had appeared in the published card,
+  the Part-VI appendix, and the 217/218 notes — the SCRIPT always carried `162`,
+  so no derived constant moved)
 - `750`
   carried forward as the Stage 217 projected-chart fallback per-envelope bound
+  `750 = 5 * 5 * 5 * 6`
 - `324`, `1500`, `1464`, `2640`
   derived in the audit from the carried Stage 215 and Stage 217 budget packets
+  (`324 = 2 * 162`, `1464 = 1140 + 324`, fallback `1500 = 2 * 750`, projected
+  total `2640`)
 
 Audit note:
 
 - The Stage 218 audits are symbolic / combinatorial and contain no free decimal
   literals.
-- The added Mathematica mirror checks the boundary-identification counts,
-  splice theorems, and carried budget arithmetic in a second CAS.
+- The added Mathematica mirror (RE-AUTHORED from a transliteration in red-team
+  batch VI.1, 2026-06-02, to a genuinely independent route — native
+  `Subsets`/`SubsetQ`/`Boole`/`Tally` set-combinatorics, `Reduce`/`Resolve`/`ForAll`
+  for the splice, and independently-generated regime witnesses whose counts DIFFER
+  across engines, 256/192/65+63 vs 192/192/64+64) checks the
+  boundary-identification counts, splice theorems, and carried budget arithmetic
+  in a second CAS.
 
 ### Stage 221
 

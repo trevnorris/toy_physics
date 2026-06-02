@@ -432,7 +432,7 @@ If one works on a nondegenerate chart where the chosen `r`-stationary relation i
 \]
 Because the two cross-consistency polynomials are quintic and the square condition is sextic, Bézout gives the projected one-chart bound
 \[
-\boxed{5\cdot 5\cdot 6 = 218.}
+\boxed{5\cdot 5\cdot 6 = 150.}
 \]
 This is a useful projected algebraic upper bound, but the lifted `54`-point system above is the preferred exact candidate compiler because it avoids the chart-dependent square-root degeneracy.
 

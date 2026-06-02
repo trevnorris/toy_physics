@@ -1,0 +1,116 @@
+
+========================================================================================
+STAGE 201 -- EXPLICIT REALIZATION COMPILER AND CANONICAL ORBIT PROJECTION
+========================================================================================
+M_* =
+MatrixForm[{{0, 1 + deltaUs, 1 + deltaUs, -2 - chi0s - deltaUs, 0, 0, 0, 1 + chi0s}, {2*(1 + Estar), 0, 2*Estar, -Estar + Fstar, -1, -2 - Estar, 1, -Fstar}, {0, 2, 0, -1, -1, 0, 0, 0}}]
+
+----------------------------------------------------------------------------------------
+M1. Right-section identity and repair cancellation
+----------------------------------------------------------------------------------------
+S from constrained LinearSolve =
+MatrixForm[{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, -1}, {0, 0, 0}, {Fstar/(1 + chi0s), 1, -1}, {(1 + chi0s)^(-1), 0, 0}}]
+Delta x_rep from constrained repair solve =
+MatrixForm[{{0, 0, 0, 0, Log[Reta], 0, Log[Reta] - Log[Rnt] - (Fstar*Log[Rtr])/(1 + chi0s), -(Log[Rtr]/(1 + chi0s))}}]
+M1 residual: M_* . S - I_3 =
+MatrixForm[{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}]
+PASS: M1 residual: M_* . S - I_3
+M1 residual: M_* . Delta x_rep + q =
+MatrixForm[{{0, 0, 0}}]
+PASS: M1 residual: M_* . Delta x_rep + q
+
+----------------------------------------------------------------------------------------
+M2. Mismatch chart by exponent arithmetic
+----------------------------------------------------------------------------------------
+M2 residual: m_T - R_tr^(1/(1+chi0_star)) = 0
+PASS: M2 residual: m_T - R_tr^(1/(1+chi0_star))
+M2 residual: m_K - R_eta^(-1) = 0
+PASS: M2 residual: m_K - R_eta^(-1)
+M2 residual: m_mu - R_nt R_eta^(-1) R_tr^(F_star/(1+chi0_star)) = 0
+PASS: M2 residual: m_mu - R_nt R_eta^(-1) R_tr^(F_star/(1+chi0_star))
+
+----------------------------------------------------------------------------------------
+M3. Repair vector closed form and support
+----------------------------------------------------------------------------------------
+M3 residual: Delta x_rep - closed form =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M3 residual: Delta x_rep - closed form
+M3 residual: free-coordinate support rows vanish =
+MatrixForm[{{0, 0, 0, 0, 0}}]
+PASS: M3 residual: free-coordinate support rows vanish
+M3 residual: dependent entries match (Keta, mu, T) =
+MatrixForm[{{0, 0, 0}}]
+PASS: M3 residual: dependent entries match (Keta, mu, T)
+
+----------------------------------------------------------------------------------------
+M4. Repair vanishes exactly on the target ratios
+----------------------------------------------------------------------------------------
+M4 residual: Delta x_rep at R_tr=R_nt=R_eta=1 =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M4 residual: Delta x_rep at R_tr=R_nt=R_eta=1
+M4 check: eta-only perturbation has nonzero Keta repair = True
+PASS: M4 check: eta-only perturbation has nonzero Keta repair
+
+----------------------------------------------------------------------------------------
+M5. Canonical orbit projection
+----------------------------------------------------------------------------------------
+Pi_O^can(x) =
+MatrixForm[{{lambda, c, gamma, KU, Keta*Reta, KW, (mu*Reta)/(Rnt*Rtr^(Fstar/(1 + chi0s))), Tstate/Rtr^(1 + chi0s)^(-1)}}]
+M5 residual: Log[x_proj[[i]]/x[[i]]] - Delta x_rep[[i]] =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M5 residual: Log[x_proj[[i]]/x[[i]]] - Delta x_rep[[i]]
+M5 residual: fixed-point reduction x_proj - x at target ratios =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M5 residual: fixed-point reduction x_proj - x at target ratios
+
+----------------------------------------------------------------------------------------
+M6. Same-free-quintuple uniqueness by direct dependent solve
+----------------------------------------------------------------------------------------
+dependent block columns (T, Keta, mu) =
+MatrixForm[{{1 + chi0s, 0, 0}, {-Fstar, -1, 1}, {0, -1, 0}}]
+dependent solution = {dT -> -(Log[Rtr]/(1 + chi0s)), dKeta -> Log[Reta], dmu -> Log[Reta] - Log[Rnt] - (Fstar*Log[Rtr])/(1 + chi0s)}
+M6 residual: Det[dependent block] - (1+chi0_star) = 0
+PASS: M6 residual: Det[dependent block] - (1+chi0_star)
+M6 check: dependent block determinant is nonzero = True
+PASS: M6 check: dependent block determinant is nonzero
+M6 check: Solve returns a unique dependent triple = True
+PASS: M6 check: Solve returns a unique dependent triple
+M6 residual: dT solution + q_tr/(1+chi0_star) = 0
+PASS: M6 residual: dT solution + q_tr/(1+chi0_star)
+M6 residual: dKeta solution - q_eta = 0
+PASS: M6 residual: dKeta solution - q_eta
+M6 residual: dmu solution - closed form = 0
+PASS: M6 residual: dmu solution - closed form
+M6 residual: direct dependent solve satisfies M_* . Delta x_dep + q =
+MatrixForm[{{0, 0, 0}}]
+PASS: M6 residual: direct dependent solve satisfies M_* . Delta x_dep + q
+
+----------------------------------------------------------------------------------------
+M7. Intrinsic packet equals pairwise-witness packet
+----------------------------------------------------------------------------------------
+M7 residual: pairwise witness packet - intrinsic packet =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M7 residual: pairwise witness packet - intrinsic packet
+
+----------------------------------------------------------------------------------------
+M8. First-order linearized compiler
+----------------------------------------------------------------------------------------
+q^lin = M_* . Delta x =
+MatrixForm[{{Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - (2 + chi0s + deltaUs)*DU, -DKeta + Dmu - 2*DW + 2*Dg*Estar - (DU + DW)*Estar + 2*Dl*(1 + Estar) - DT*Fstar + DU*Fstar, 2*Dc - DKeta - DU}}]
+Delta x_rep^lin = -S . q^lin =
+MatrixForm[{{0, 0, 0, 0, 2*Dc - DKeta - DU, 0, 2*Dc - Dmu - DU + 2*DW + (-2*Dg + DU + DW)*Estar - 2*Dl*(1 + Estar) - ((1 + deltaUs)*(Dc + Dg - DU)*Fstar)/(1 + chi0s), -((Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - (2 + chi0s + deltaUs)*DU)/(1 + chi0s))}}]
+M8 residual: M_* . (Delta x + Delta x_rep^lin) =
+MatrixForm[{{0, 0, 0}}]
+PASS: M8 residual: M_* . (Delta x + Delta x_rep^lin)
+M8 residual: q^lin - M_* . Delta x =
+MatrixForm[{{0, 0, 0}}]
+PASS: M8 residual: q^lin - M_* . Delta x
+
+========================================================================================
+STAGE 201 MATHEMATICA LEDGER
+========================================================================================
+1. The Stage-192 quotient map has a constrained right section on (T, Keta, mu).
+2. The canonical repair vector cancels the quotient packet and is supported only on the dependent triple.
+3. The mismatch chart and orbit projection follow by exact exponent arithmetic.
+4. Direct Solve gives the unique same-free-quintuple dependent repair.
+5. The linearized compiler projects any first-order drift back into ker(M_*).

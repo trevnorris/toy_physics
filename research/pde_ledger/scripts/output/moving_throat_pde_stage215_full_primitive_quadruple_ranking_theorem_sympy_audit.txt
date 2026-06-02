@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
-# Date: 2026-05-11T12:49:34-06:00
-# Elapsed: 0s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 198 — FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE
+STAGE 215 — FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -63,6 +55,7 @@ verified local full-simplex interval theorem on 3136 ordered integer samples
 verified interior-certified local order on 924 samples
 verified boundary-certified local order on 462 samples
 verified certified interval ordering on 896 samples
+verified unique certified winner theorem on 542760 min-over-others samples
 verified global splice theorem on 3136 samples
 verified global four-coordinate improvement theorem on 924 samples
 verified global four-coordinate no-improvement theorem on 462 samples
@@ -77,5 +70,3 @@ quadruple interior budget - 540 = 0
 full support<=4 budget - 1140 = 0
 
 All Stage 215 identities and interval theorems verified.
-
-EXIT_CODE: 0

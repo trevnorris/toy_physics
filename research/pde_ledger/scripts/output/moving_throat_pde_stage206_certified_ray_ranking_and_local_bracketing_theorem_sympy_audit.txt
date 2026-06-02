@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem_sympy_audit.py
-# Date: 2026-05-11T12:49:15-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 189 — CERTIFIED RAY RANKING AND LOCAL BRACKETING
@@ -91,24 +83,34 @@ turning root (b) = 0
 turning derivative identity = 0
 
 ----------------------------------------------------------------------------------------
-V. Collapse to the Stage 205 quadratic predictor
+V. Collapse to the Stage 239 quadratic log predictor
 ----------------------------------------------------------------------------------------
-TauStage189 =
-           2⋅log(Φ₀)           
-───────────────────────────────
-         ______________________
-        ╱                    2 
-|L| + ╲╱  -2⋅L₁⋅log(Φ₀) + |L|  
-TauStage188 =
-           2⋅log(Φ₀)           
-───────────────────────────────
-         ______________________
-        ╱                    2 
-|L| + ╲╱  -2⋅L₁⋅log(Φ₀) + |L|  
-Stage 206/188 collapse = 0
+T_bracket(H0=log(Phi0), K0=L0; c=L1) =
+        -2⋅log(Φ₀)          
+────────────────────────────
+        ____________________
+       ╱   2                
+L₀ - ╲╱  L₀  - 2⋅L₁⋅log(Φ₀) 
+Stage-239 tau_log2 =
+             -2⋅log(Φ₀)              
+─────────────────────────────────────
+        ____________________         
+       ╱   2                         
+L₀ + ╲╱  L₀  - 2⋅L₁⋅log(Φ₀) ⋅sign(L₀)
+Stage 206/239 log-predictor collapse = 0
+
+----------------------------------------------------------------------------------------
+VI. Pairwise ray ordering and local search-sieve admissibility
+----------------------------------------------------------------------------------------
+pairwise ordering gap = slack_a_hi + slack_b_lo + strict_sep
+pairwise ordering theorem = True
+pairwise ordering negation satisfiable = False
+pairwise theorem without separation counterexample hypotheses = True
+pairwise theorem without separation counterexample conclusion = False
+local sieve monotone admissible case = True
+local sieve turning admissible case = True
+local sieve single-clause violation case = False
 
 ========================================================================================
 STAGE 189 SYMPY AUDIT PASSED
 ========================================================================================
-
-EXIT_CODE: 0

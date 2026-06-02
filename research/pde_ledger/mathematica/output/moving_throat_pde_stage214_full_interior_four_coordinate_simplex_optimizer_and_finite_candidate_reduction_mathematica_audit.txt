@@ -1,0 +1,105 @@
+
+========================================================================================
+STAGE 214 -- FOUR-COORDINATE SIMPLEX OPTIMIZER MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Exact derivative laws and stationary numerators
+----------------------------------------------------------------------------------------
+M1 direct derivative numerator list = {2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2]*((1 + r^2 + s^2 + t^2)*(kj + (bb + 2*ee*r + ff*s + gg*t)/(2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2])) - r*(ki + kj*r + kk*s + kl*t + Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2])), 2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2]*((1 + r^2 + s^2 + t^2)*(kk + (cc + ff*r + 2*hh*s + ii*t)/(2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2])) - s*(ki + kj*r + kk*s + kl*t + Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2])), 2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2]*((1 + r^2 + s^2 + t^2)*(kl + (dd + gg*r + ii*s + 2*jj*t)/(2*Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2])) - t*(ki + kj*r + kk*s + kl*t + Sqrt[aa + bb*r + ee*r^2 + s*(cc + ff*r + hh*s) + (dd + gg*r + ii*s)*t + jj*t^2]))}
+M1 direct numerator r minus N_r = 0
+PASS: M1 direct numerator r minus N_r
+M1 direct numerator s minus N_s = 0
+PASS: M1 direct numerator s minus N_s
+M1 direct numerator t minus N_t = 0
+PASS: M1 direct numerator t minus N_t
+M1 derivative law r residual = 0
+PASS: M1 derivative law r residual
+M1 derivative law s residual = 0
+PASS: M1 derivative law s residual
+M1 derivative law t residual = 0
+PASS: M1 derivative law t residual
+
+----------------------------------------------------------------------------------------
+M2. Lifted polynomial degree ledger
+----------------------------------------------------------------------------------------
+M2 lifted degrees {F_r,F_s,F_t,F_Delta} = {3, 3, 3, 2}
+M2 degree F_r minus 3 = 0
+PASS: M2 degree F_r minus 3
+M2 degree F_s minus 3 = 0
+PASS: M2 degree F_s minus 3
+M2 degree F_t minus 3 = 0
+PASS: M2 degree F_t minus 3
+M2 degree F_Delta minus 2 = 0
+PASS: M2 degree F_Delta minus 2
+
+----------------------------------------------------------------------------------------
+M3. Preferred lifted Bezout bound
+----------------------------------------------------------------------------------------
+M3 lifted degree product = 54
+M3 lifted Bezout product minus 3*3*3*2 = 0
+PASS: M3 lifted Bezout product minus 3*3*3*2
+
+----------------------------------------------------------------------------------------
+M4. Projected square-root-free eliminant degrees
+----------------------------------------------------------------------------------------
+M4 C_rs resultant minus definition = 0
+PASS: M4 C_rs resultant minus definition
+M4 C_rt resultant minus definition = 0
+PASS: M4 C_rt resultant minus definition
+M4 C_st resultant minus definition = 0
+PASS: M4 C_st resultant minus definition
+M4 S_r resultant minus definition = 0
+PASS: M4 S_r resultant minus definition
+M4 S_s resultant minus definition = 0
+PASS: M4 S_s resultant minus definition
+M4 S_t resultant minus definition = 0
+PASS: M4 S_t resultant minus definition
+M4 cross degrees {C_rs,C_rt,C_st} = {5, 5, 5}
+M4 square degrees {S_r,S_s,S_t} = {6, 6, 6}
+M4 C_rs degree minus 5 = 0
+PASS: M4 C_rs degree minus 5
+M4 C_rt degree minus 5 = 0
+PASS: M4 C_rt degree minus 5
+M4 C_st degree minus 5 = 0
+PASS: M4 C_st degree minus 5
+M4 S_r degree minus 6 = 0
+PASS: M4 S_r degree minus 6
+M4 S_s degree minus 6 = 0
+PASS: M4 S_s degree minus 6
+M4 S_t degree minus 6 = 0
+PASS: M4 S_t degree minus 6
+
+----------------------------------------------------------------------------------------
+M5. Projected one-chart Bezout product
+----------------------------------------------------------------------------------------
+M5 projected one-chart degree product = 150
+M5 projected product minus 5*5*6 = 0
+PASS: M5 projected product minus 5*5*6
+
+----------------------------------------------------------------------------------------
+M6. Diagonal-isotropic reduction and gradient ray
+----------------------------------------------------------------------------------------
+M6 diagonal-isotropic Delta residual = 0
+PASS: M6 diagonal-isotropic Delta residual
+M6 diagonal-isotropic tau residual = 0
+PASS: M6 diagonal-isotropic tau residual
+M6 gradient ray = {ki/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kj/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kk/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kl/Sqrt[ki^2 + kj^2 + kk^2 + kl^2]}
+M6 gradient ray unit norm = 0
+PASS: M6 gradient ray unit norm
+M6 gradient ray slope residual = 0
+PASS: M6 gradient ray slope residual
+
+----------------------------------------------------------------------------------------
+M7. Full-symmetry equal-mix stationary point
+----------------------------------------------------------------------------------------
+M7 symmetric N_r(1,1,1) = 0
+PASS: M7 symmetric N_r(1,1,1)
+M7 symmetric N_s(1,1,1) = 0
+PASS: M7 symmetric N_s(1,1,1)
+M7 symmetric N_t(1,1,1) = 0
+PASS: M7 symmetric N_t(1,1,1)
+M7 equal-mix unit norm = 0
+PASS: M7 equal-mix unit norm
+
+All Stage 214 Mathematica audit checks passed.

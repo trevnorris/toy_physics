@@ -1,0 +1,90 @@
+
+========================================================================================
+STAGE 206 -- CERTIFIED RAY RANKING AND LOCAL BRACKETING
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Solve-selected oriented root map
+----------------------------------------------------------------------------------------
+M1 solve roots = {(k - Sqrt[-2*c*H0 + k^2])/c, (k + Sqrt[-2*c*H0 + k^2])/c}
+M1 selected root = (k - Sqrt[-2*c*H0 + k^2])/c
+M1 oriented root map = (-2*H0)/(-k - Sqrt[-2*c*H0 + k^2]*Sign[k])
+M1 closed root solves quadratic = 0
+PASS: M1 closed root solves quadratic
+M1 closed root - Solve-selected branch = 0
+PASS: M1 closed root - Solve-selected branch
+
+----------------------------------------------------------------------------------------
+M2. Zero-curvature limit
+----------------------------------------------------------------------------------------
+M2 zero-curvature limit = 0
+PASS: M2 zero-curvature limit
+
+----------------------------------------------------------------------------------------
+M3. Curvature monotonicity
+----------------------------------------------------------------------------------------
+M3 curvature derivative identity = 0
+PASS: M3 curvature derivative identity
+M3 curvature derivative sign = True
+PASS: M3 curvature derivative sign
+
+----------------------------------------------------------------------------------------
+M4. Descent sign at the bracket endpoint
+----------------------------------------------------------------------------------------
+M4 endpoint slope identity = 0
+PASS: M4 endpoint slope identity
+M4 strict endpoint descent on simple-root branch = True
+PASS: M4 strict endpoint descent on simple-root branch
+
+----------------------------------------------------------------------------------------
+M5. Bracket endpoints
+----------------------------------------------------------------------------------------
+M5 tau_lo solves lower quadratic = 0
+PASS: M5 tau_lo solves lower quadratic
+M5 tau_hi solves upper quadratic = 0
+PASS: M5 tau_hi solves upper quadratic
+M5 degenerate-envelope collapse = 0
+PASS: M5 degenerate-envelope collapse
+
+----------------------------------------------------------------------------------------
+M6. Small-envelope width law
+----------------------------------------------------------------------------------------
+M6 leading width coefficient = 0
+PASS: M6 leading width coefficient
+M6 eta^2 coefficient cancellation = 0
+PASS: M6 eta^2 coefficient cancellation
+M6 zero-mean width leading term = 0
+PASS: M6 zero-mean width leading term
+
+----------------------------------------------------------------------------------------
+M7. Turning-ray roots
+----------------------------------------------------------------------------------------
+M7 turning roots = {-((Sqrt[2]*Sqrt[H0])/Sqrt[a]), (Sqrt[2]*Sqrt[H0])/Sqrt[a]}
+M7 turning root solves quadratic = 0
+PASS: M7 turning root solves quadratic
+M7 Solve-selected turning root = 0
+PASS: M7 Solve-selected turning root
+M7 turning derivative identity = 0
+PASS: M7 turning derivative identity
+
+----------------------------------------------------------------------------------------
+F3a. Pairwise ray-ordering theorem
+----------------------------------------------------------------------------------------
+F3a pairwise certified interval ordering = True
+PASS: F3a pairwise certified interval ordering
+F3a ordering without separation is not tautological = False
+PASS: F3a ordering without separation is not tautological
+
+----------------------------------------------------------------------------------------
+F3b. Local search-sieve admissibility test
+----------------------------------------------------------------------------------------
+F3b monotone admissible bracket = True
+PASS: F3b monotone admissible bracket
+F3b turning admissible bracket = True
+PASS: F3b turning admissible bracket
+F3b single-clause tau_hi violation = False
+PASS: F3b single-clause tau_hi violation
+
+========================================================================================
+STAGE 206 MATHEMATICA AUDIT PASSED
+========================================================================================

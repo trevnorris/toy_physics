@@ -1,0 +1,62 @@
+
+========================================================================================
+STAGE 212 -- FULL PRIMITIVE-TRIPLE RANKING AND THE UP-TO-THREE-COORDINATE SIEVE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Combinatorial ledger
+----------------------------------------------------------------------------------------
+M1 axes = {lambdaAxis, cAxis, gammaAxis, UAxis, WAxis}
+M1 primitive pairs = {{lambdaAxis, cAxis}, {lambdaAxis, gammaAxis}, {lambdaAxis, UAxis}, {lambdaAxis, WAxis}, {cAxis, gammaAxis}, {cAxis, UAxis}, {cAxis, WAxis}, {gammaAxis, UAxis}, {gammaAxis, WAxis}, {UAxis, WAxis}}
+M1 primitive triples = {{lambdaAxis, cAxis, gammaAxis}, {lambdaAxis, cAxis, UAxis}, {lambdaAxis, cAxis, WAxis}, {lambdaAxis, gammaAxis, UAxis}, {lambdaAxis, gammaAxis, WAxis}, {lambdaAxis, UAxis, WAxis}, {cAxis, gammaAxis, UAxis}, {cAxis, gammaAxis, WAxis}, {cAxis, UAxis, WAxis}, {gammaAxis, UAxis, WAxis}}
+M1 pair incidence counts = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
+M1 axis incidence counts = {6, 6, 6, 6, 6}
+M1 #pairs = 10
+PASS: M1 #pairs
+M1 #triples = 10
+PASS: M1 #triples
+M1 every primitive pair lies in three triples = True
+PASS: M1 every primitive pair lies in three triples
+M1 every primitive axis lies in six triples = True
+PASS: M1 every primitive axis lies in six triples
+
+----------------------------------------------------------------------------------------
+M2. Boundary-splice nested Min identity
+----------------------------------------------------------------------------------------
+M2 lo nested Min identity = True
+PASS: M2 lo nested Min identity
+M2 hi nested Min identity = True
+PASS: M2 hi nested Min identity
+
+----------------------------------------------------------------------------------------
+M3. Symbolic interval and order theorems
+----------------------------------------------------------------------------------------
+M3a local full-simplex sandwich = True
+PASS: M3a local full-simplex sandwich
+M3b interior-certified order = True
+PASS: M3b interior-certified order
+M3b boundary-certified order = True
+PASS: M3b boundary-certified order
+M3c primitive-triple ranking = True
+PASS: M3c primitive-triple ranking
+M3d support<=3 splice sandwich = True
+PASS: M3d support<=3 splice sandwich
+M3d three-coordinate improvement = True
+PASS: M3d three-coordinate improvement
+M3d no-improvement order = True
+PASS: M3d no-improvement order
+
+----------------------------------------------------------------------------------------
+M4. Finite evaluation budget
+----------------------------------------------------------------------------------------
+M4 pairwise total = 120
+M4 triple interior total = 480
+M4 full support<=3 total = 600
+M4 10*12 = 120
+PASS: M4 10*12
+M4 10*48 = 480
+PASS: M4 10*48
+M4 120+480 = 600
+PASS: M4 120+480
+
+Stage 212 Mathematica audit passed.

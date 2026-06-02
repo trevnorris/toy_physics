@@ -279,19 +279,48 @@ lam_bar, cetaU_bar, gamma_bar, KU_bar, KW_bar = sp.symbols(
     "lambda_bar cetaU_bar gamma_bar KU_bar KW_bar", positive=True, real=True
 )
 
-beta_path = sp.simplify(1 + rho * (2 * tau - 1) / (1 + rho))
+beta_path = sp.simplify(sp.Integer(2) ** (2 * tau - 1))
 gamma_path = sp.simplify(gamma_bar * beta_path)
-y_graph_path = sp.Matrix([lam_bar, cetaU_bar, gamma_path, KU_bar, KW_bar])
+cetaU_path = sp.simplify(cetaU_bar * sp.exp(rho * tau))
+y_graph_path = sp.Matrix([lam_bar, cetaU_path, gamma_path, KU_bar, KW_bar])
+graph_path_subs = {
+    lam: lam_bar,
+    cetaU: cetaU_path,
+    gamma: gamma_path,
+    KU: KU_bar,
+    KW: KW_bar,
+}
+
+T_graph_lift = sp.simplify(T_graph.subs(graph_path_subs))
+Keta_graph_lift = sp.simplify(Keta_graph.subs(graph_path_subs))
+mu_graph_lift = sp.simplify(mu_graph.subs(graph_path_subs))
+Ctr_graph_lift = sp.simplify(
+    (gamma_path * cetaU_path / KU_bar) ** (1 + deltaUs)
+    * (sp.pi**2 * T_graph_lift / (L**2 * KU_bar)) ** (1 + chi0s)
+)
+Cnt_graph_lift = sp.simplify(
+    (lam_bar**2 * mu_graph_lift / (Keta_graph_lift * KW_bar**2))
+    * ((gamma_path**2 * lam_bar**2 * sigma) / (KU_bar * KW_bar)) ** Estar
+    * (sp.pi**2 * T_graph_lift / (L**2 * KU_bar)) ** (-Fstar)
+)
+epsEta_graph_lift = sp.simplify(cetaU_path**2 / (KU_bar * Keta_graph_lift))
+
+qtr_graph_lift = normalize(sp.log(Ctr_graph_lift / Ctr_tgt))
+qnt_graph_lift = normalize(sp.log(Cnt_graph_lift / Cnt_tgt))
+qeta_graph_lift = normalize(sp.log(epsEta_graph_lift / epsEta_tgt))
 
 chi_from_stage197 = sp.simplify(3 * (Siso * beta**5 + 9 * Sigma5) / (3 * Siso - Sigma0))
 closure_num_stage197 = sp.simplify(3 * Siso * (beta**5 - 1) + Sigma0 + 27 * Sigma5)
 
+beta_lift = normalize(y_graph_path[2] / gamma_bar)
+# Verified q_tr=q_nt=q_eta=0 puts this lift on the target graph slice, so the
+# carried closure perturbations Sigma_0 and Sigma_5 vanish on the composition.
 hat_chi_graph = sp.simplify(
-    chi_from_stage197.subs({beta: beta_path, Sigma0: 0, Sigma5: 0})
+    chi_from_stage197.subs({beta: beta_lift, Sigma0: 0, Sigma5: 0})
 )
 hat_delta_graph = sp.simplify(hat_chi_graph - 1)
 closure_num_graph = sp.simplify(
-    closure_num_stage197.subs({beta: beta_path, Sigma0: 0, Sigma5: 0})
+    closure_num_stage197.subs({beta: beta_lift, Sigma0: 0, Sigma5: 0})
 )
 hat_delta_den = sp.denom(sp.together(hat_delta_graph))
 
@@ -304,7 +333,10 @@ sp.pprint(hat_chi_graph)
 print("widehat Delta_Q(tau) =")
 sp.pprint(hat_delta_graph)
 
-expect_zero("beta_path - gamma(tau)/gamma_bar", y_graph_path[2] / gamma_bar - beta_path)
+expect_zero("beta_path - gamma(tau)/gamma_bar", beta_lift - beta_path)
+expect_zero("graph-lift target monomial q_tr", qtr_graph_lift)
+expect_zero("graph-lift target monomial q_nt", qnt_graph_lift)
+expect_zero("graph-lift target monomial q_eta", qeta_graph_lift)
 expect_zero(
     "Stage 197 closure numerator identity on the graph path",
     sp.simplify(3 * Siso * hat_delta_graph - closure_num_graph),

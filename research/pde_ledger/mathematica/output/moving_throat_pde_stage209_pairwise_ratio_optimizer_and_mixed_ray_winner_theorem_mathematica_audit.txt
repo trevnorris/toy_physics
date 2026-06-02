@@ -1,0 +1,71 @@
+
+========================================================================================
+STAGE 209 -- PAIRWISE RATIO OPTIMIZER AND MIXED-RAY WINNER THEOREM
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Algebraic form of the certified root
+----------------------------------------------------------------------------------------
+M1 closure root minus coefficient-discriminant form = 0
+PASS: M1 closure root minus coefficient-discriminant form
+
+----------------------------------------------------------------------------------------
+M2. Discriminant numerator reduction
+----------------------------------------------------------------------------------------
+M2 discriminant coefficient extraction residuals = {0, 0, 0}
+PASS: M2 discriminant coefficient extraction residuals
+M2 discriminant numerator polynomial residual = 0
+PASS: M2 discriminant numerator polynomial residual
+
+----------------------------------------------------------------------------------------
+M3. Denominator-functional identity
+----------------------------------------------------------------------------------------
+M3 closure root minus 2H0/Phi = 0
+PASS: M3 closure root minus 2H0/Phi
+
+----------------------------------------------------------------------------------------
+M4. Stationary numerator and derivative law
+----------------------------------------------------------------------------------------
+M4 Phi derivative is not identically zero before reductions = True
+PASS: M4 Phi derivative is not identically zero before reductions
+M4 scaled derivative numerator minus manifest N = 0
+PASS: M4 scaled derivative numerator minus manifest N
+M4 Phi derivative law residual = 0
+PASS: M4 Phi derivative law residual
+
+----------------------------------------------------------------------------------------
+M5. Quartic elimination degree and factorization
+----------------------------------------------------------------------------------------
+M5 resultant quartic = 8*H0*(kj^2*u - ki^2*r^2*u + 2*kj^2*r^2*u - 2*ki*kj*r^3*u + 2*H0*r^2*u^2 - 2*ki*kj*v + 2*ki^2*r*v + 2*kj^2*r^3*v - 2*ki*kj*r^4*v - 4*H0*r*u*v + 4*H0*r^3*u*v + 2*H0*v^2 - 4*H0*r^2*v^2 + 2*H0*r^4*v^2 - 2*ki*kj*r*w + 2*ki^2*r^2*w - kj^2*r^2*w + ki^2*r^4*w - 4*H0*r^2*u*w + 4*H0*r*v*w - 4*H0*r^3*v*w + 2*H0*r^2*w^2)
+M5 resultant quartic degree is 4 = True
+PASS: M5 resultant quartic degree is 4
+M5 resultant factorization identity = 0
+PASS: M5 resultant factorization identity
+M5 plus radical factor equals derivative numerator = 0
+PASS: M5 plus radical factor equals derivative numerator
+
+----------------------------------------------------------------------------------------
+M6. Diagonal-neutral reduction
+----------------------------------------------------------------------------------------
+M6 raw tau derivative is not identically zero before diagonal-neutral reduction = True
+PASS: M6 raw tau derivative is not identically zero before diagonal-neutral reduction
+M6 gradient ratio recovered from slope stationarity = True
+PASS: M6 gradient ratio recovered from slope stationarity
+M6 diagonal-neutral curvature is constant = 0
+PASS: M6 diagonal-neutral curvature is constant
+M6 gradient-optimal stationarity = 0
+PASS: M6 gradient-optimal stationarity
+
+----------------------------------------------------------------------------------------
+M7. Pair-symmetry reduction
+----------------------------------------------------------------------------------------
+M7 reciprocal ray invariance = 0
+PASS: M7 reciprocal ray invariance
+M7 differentiated reciprocal identity at equal mix = 0
+PASS: M7 differentiated reciprocal identity at equal mix
+M7 equal-mix stationarity = 0
+PASS: M7 equal-mix stationarity
+
+========================================================================================
+STAGE 209 MATHEMATICA AUDIT PASSED
+========================================================================================

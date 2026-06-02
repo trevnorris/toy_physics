@@ -1,0 +1,99 @@
+
+========================================================================================
+STAGE 217 -- FIVE-COORDINATE SIMPLEX OPTIMIZER MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Exact stationary-numerator identities
+----------------------------------------------------------------------------------------
+M1 cleared derivative numerators = {-2*A*r + G*s - 2*Global`C*r*s - G*r^2*s - 2*J*r*s^2 + G*s^3 + H*t - 2*Global`D*r*t - H*r^2*t - 2*Global`K*r*s*t + H*s^2*t - 2*M*r*t^2 + G*s*t^2 + H*t^3 + Global`I*u - 2*Global`E*r*u - Global`I*r^2*u - 2*L*r*s*u + Global`I*s^2*u - 2*Global`N*r*t*u + Global`I*t^2*u - 2*Global`O*r*u^2 + G*s*u^2 + H*t*u^2 + Global`I*u^3 + 2*F*r*(1 + s^2 + t^2 + u^2) + B*(1 - r^2 + s^2 + t^2 + u^2) + 2*kc*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kL*r*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kg*r*s*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kc*s^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kU*r*t*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kc*t^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kW*r*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kc*u^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2], -2*A*s + 2*J*s - 2*B*r*s - 2*F*r^2*s + 2*J*r^2*s + Global`K*t + Global`K*r^2*t - 2*Global`D*s*t - 2*H*r*s*t - Global`K*s^2*t + 2*J*s*t^2 - 2*M*s*t^2 + Global`K*t^3 + L*u + L*r^2*u - 2*Global`E*s*u - 2*Global`I*r*s*u - L*s^2*u - 2*Global`N*s*t*u + L*t^2*u + 2*J*s*u^2 - 2*Global`O*s*u^2 + Global`K*t*u^2 + L*u^3 + Global`C*(1 + r^2 - s^2 + t^2 + u^2) + G*r*(1 + r^2 - s^2 + t^2 + u^2) + 2*kg*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kg*r^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kL*s*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kc*r*s*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kU*s*t*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kg*t^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kW*s*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kg*u^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2], -2*A*t + 2*M*t - 2*B*r*t - 2*F*r^2*t + 2*M*r^2*t - 2*Global`C*s*t - 2*G*r*s*t - 2*J*s^2*t + 2*M*s^2*t + Global`N*u + Global`N*r^2*u + Global`N*s^2*u - 2*Global`E*t*u - 2*Global`I*r*t*u - 2*L*s*t*u - Global`N*t^2*u + 2*M*t*u^2 - 2*Global`O*t*u^2 + Global`N*u^3 + Global`D*(1 + r^2 + s^2 - t^2 + u^2) + H*r*(1 + r^2 + s^2 - t^2 + u^2) + Global`K*s*(1 + r^2 + s^2 - t^2 + u^2) + 2*kU*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kU*r^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kU*s^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kL*t*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kc*r*t*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kg*s*t*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kW*t*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kU*u^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2], Global`N*t + Global`N*r^2*t + Global`N*s^2*t + Global`N*t^3 - 2*A*u + 2*Global`O*u - 2*B*r*u - 2*F*r^2*u + 2*Global`O*r^2*u - 2*Global`C*s*u - 2*G*r*s*u - 2*J*s^2*u + 2*Global`O*s^2*u - 2*Global`D*t*u - 2*H*r*t*u - 2*Global`K*s*t*u - 2*M*t^2*u + 2*Global`O*t^2*u - Global`N*t*u^2 + Global`E*(1 + r^2 + s^2 + t^2 - u^2) + Global`I*r*(1 + r^2 + s^2 + t^2 - u^2) + L*s*(1 + r^2 + s^2 + t^2 - u^2) + 2*kW*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kW*r^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kW*s^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] + 2*kW*t^2*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kL*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kc*r*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kg*s*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2] - 2*kU*t*u*Sqrt[A + B*r + F*r^2 + Global`C*s + G*r*s + J*s^2 + Global`D*t + H*r*t + Global`K*s*t + M*t^2 + (Global`E + Global`I*r + L*s + Global`N*t)*u + Global`O*u^2]}
+M1 stationary numerator identity r = 0
+PASS: M1 stationary numerator identity r
+M1 stationary numerator identity s = 0
+PASS: M1 stationary numerator identity s
+M1 stationary numerator identity t = 0
+PASS: M1 stationary numerator identity t
+M1 stationary numerator identity u = 0
+PASS: M1 stationary numerator identity u
+
+----------------------------------------------------------------------------------------
+M2. Five codimension-one quadruple faces
+----------------------------------------------------------------------------------------
+M2 primitive axes = {"lambda", "c", "gamma", "U", "W"}
+M2 generated faces = {{"c", "gamma", "U", "W"}, {"lambda", "gamma", "U", "W"}, {"lambda", "c", "U", "W"}, {"lambda", "c", "gamma", "W"}, {"lambda", "c", "gamma", "U"}}
+M2 face count equals five = True
+PASS: M2 face count equals five
+M2 every face has cardinality four = True
+PASS: M2 every face has cardinality four
+
+----------------------------------------------------------------------------------------
+M3. Lifted degree pattern and Bezout product
+----------------------------------------------------------------------------------------
+M3 lifted degrees {F_r,F_s,F_t,F_u,F_delta} = {3, 3, 3, 3, 2}
+M3 lifted Bezout product = 162
+M3 literal 3^4*2 evaluates to 162
+M3 lifted degree tuple is {3,3,3,3,2} = True
+PASS: M3 lifted degree tuple is {3,3,3,3,2}
+M3 lifted product equals 3^4*2 = True
+PASS: M3 lifted product equals 3^4*2
+
+----------------------------------------------------------------------------------------
+M4. Projected square-root-free degree pattern and bound
+----------------------------------------------------------------------------------------
+M4 projected degrees {C_rs,C_rt,C_ru,S_r} = {5, 5, 5, 6}
+M4 projected one-chart Bezout product = 750
+M4 literal 5*5*5*6 evaluates to 750
+M4 projected degree tuple is {5,5,5,6} = True
+PASS: M4 projected degree tuple is {5,5,5,6}
+M4 projected product equals 5*5*5*6 = True
+PASS: M4 projected product equals 5*5*5*6
+
+----------------------------------------------------------------------------------------
+M5. Diagonal-isotropic gradient-optimal reduction
+----------------------------------------------------------------------------------------
+M5 L_r(diag) - 2 Klin M_r = 0
+PASS: M5 L_r(diag) - 2 Klin M_r
+M5 L_s(diag) - 2 Klin M_s = 0
+PASS: M5 L_s(diag) - 2 Klin M_s
+M5 L_t(diag) - 2 Klin M_t = 0
+PASS: M5 L_t(diag) - 2 Klin M_t
+M5 L_u(diag) - 2 Klin M_u = 0
+PASS: M5 L_u(diag) - 2 Klin M_u
+M5 M_r at gradient ratios = 0
+PASS: M5 M_r at gradient ratios
+M5 L_r at gradient ratios = 0
+PASS: M5 L_r at gradient ratios
+M5 M_s at gradient ratios = 0
+PASS: M5 M_s at gradient ratios
+M5 L_s at gradient ratios = 0
+PASS: M5 L_s at gradient ratios
+M5 M_t at gradient ratios = 0
+PASS: M5 M_t at gradient ratios
+M5 L_t at gradient ratios = 0
+PASS: M5 L_t at gradient ratios
+M5 M_u at gradient ratios = 0
+PASS: M5 M_u at gradient ratios
+M5 L_u at gradient ratios = 0
+PASS: M5 L_u at gradient ratios
+
+----------------------------------------------------------------------------------------
+M6. Fivefold-symmetric equal-mix reduction
+----------------------------------------------------------------------------------------
+M6 M_r at equal mix = 0
+PASS: M6 M_r at equal mix
+M6 L_r at equal mix = 0
+PASS: M6 L_r at equal mix
+M6 M_s at equal mix = 0
+PASS: M6 M_s at equal mix
+M6 L_s at equal mix = 0
+PASS: M6 L_s at equal mix
+M6 M_t at equal mix = 0
+PASS: M6 M_t at equal mix
+M6 L_t at equal mix = 0
+PASS: M6 L_t at equal mix
+M6 M_u at equal mix = 0
+PASS: M6 M_u at equal mix
+M6 L_u at equal mix = 0
+PASS: M6 L_u at equal mix
+
+All Stage 217 Mathematica audit checks passed.

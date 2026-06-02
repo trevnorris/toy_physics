@@ -1,0 +1,59 @@
+
+========================================================================================
+STAGE 202 - FREE-QUINTUPLE TARGET GRAPH MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+I. Linear log-system target graph
+----------------------------------------------------------------------------------------
+log(deltaU_graph) = (-(deltaUs*Log[cetaU]) - deltaUs*Log[gamma] + deltaUs*Log[KU] + Log[(Ctrtgt*KU)/(cetaU*gamma)])/(1 + chi0s)
+log(T_graph) = (-(deltaUs*Log[cetaU]) + Log[Ctrtgt/(cetaU*gamma)] - deltaUs*Log[gamma] + 2*Log[KU] + chi0s*Log[KU] + deltaUs*Log[KU] + 2*Log[L] + 2*chi0s*Log[L] - 2*Log[Pi] - 2*chi0s*Log[Pi])/(1 + chi0s)
+log(Keta_graph) = 2*Log[cetaU] + Log[1/(epsEtatgt*KU)]
+log(mu_graph) = ((2 + 2*chi0s - (1 + deltaUs)*Fstar)*Log[cetaU] + chi0s*Log[Cnttgt] + Fstar*Log[Ctrtgt] - chi0s*Log[epsEtatgt] - 2*Estar*Log[gamma] - 2*chi0s*Estar*Log[gamma] - Fstar*Log[gamma] - deltaUs*Fstar*Log[gamma] + Log[Cnttgt/(epsEtatgt*KU)] - chi0s*Log[KU] + Estar*Log[KU] + chi0s*Estar*Log[KU] + Fstar*Log[KU] + deltaUs*Fstar*Log[KU] + 2*Log[KW] + 2*chi0s*Log[KW] + Estar*Log[KW] + chi0s*Estar*Log[KW] - 2*Log[lamW] - 2*chi0s*Log[lamW] - 2*Estar*Log[lamW] - 2*chi0s*Estar*Log[lamW] - Estar*Log[sigma] - chi0s*Estar*Log[sigma])/(1 + chi0s)
+graph log-system residual =
+MatrixForm[{{0, 0, 0}}]
+PASS: graph log-system residual
+
+----------------------------------------------------------------------------------------
+II. M1-M4 direct graph reconstruction checks
+----------------------------------------------------------------------------------------
+M1 tracking monomial log residual = 0
+PASS: M1 tracking monomial log residual
+M2 eta dressing log residual = 0
+PASS: M2 eta dressing log residual
+M3 nontracking monomial log residual = 0
+PASS: M3 nontracking monomial log residual
+M4 mu_graph is free of L and Pi = True
+PASS: M4 mu_graph is free of L and Pi
+M4 d log(mu_graph)/dL = 0
+PASS: M4 d log(mu_graph)/dL
+
+----------------------------------------------------------------------------------------
+III. M5 graph-error identities
+----------------------------------------------------------------------------------------
+M5 graph-error quotient packet =
+MatrixForm[{{0, 0, 0}}]
+PASS: M5 graph-error quotient packet
+
+----------------------------------------------------------------------------------------
+IV. M6 canonical same-free-quintuple projection equals graph
+----------------------------------------------------------------------------------------
+M6 projection component log residuals =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M6 projection component log residuals
+M6 threaded component equations = True
+PASS: M6 threaded component equations
+
+----------------------------------------------------------------------------------------
+V. M7 repair vector and reduced-family packet
+----------------------------------------------------------------------------------------
+M7 repair-vector rewrite residuals =
+MatrixForm[{{0, 0, 0, 0, 0, 0, 0, 0}}]
+PASS: M7 repair-vector rewrite residuals
+M7 reduced-family packet on the target graph =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M7 reduced-family packet on the target graph
+
+========================================================================================
+STAGE 202 MATHEMATICA AUDIT PASSED
+========================================================================================

@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 243 pairwise certified optimizer and the Stage 245 finite interior triple-candidate reduction, once the local pairwise ledger and the admissible interior triple packets are supplied on the chosen free-quintuple patch.**
+**Exact within the carried Stage 209 pairwise certified optimizer and the Stage 211 finite interior triple-candidate reduction, once the local pairwise ledger and the admissible interior triple packets are supplied on the chosen free-quintuple patch.**
 
 This stage does **not** introduce a new constitutive law or a new optimizer.
-It upgrades the Stage 245 interior algebraic reduction into a **global certified ranking ledger** for all primitive three-coordinate simplices, and it splices that ledger to the already-finished pairwise cones.
+It upgrades the Stage 211 interior algebraic reduction into a **global certified ranking ledger** for all primitive three-coordinate simplices, and it splices that ledger to the already-finished pairwise cones.
 
 ---
 
 ## Purpose
 
-Stage 245 solved the genuinely new algebraic problem on a fixed primitive triple: every interior optimizer on a three-coordinate mixed simplex is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
+Stage 211 solved the genuinely new algebraic problem on a fixed primitive triple: every interior optimizer on a three-coordinate mixed simplex is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
 
 That leaves one exact continuation point:
 
@@ -28,7 +28,7 @@ The main outputs are:
 5. the exact **global three-coordinate improvement / non-improvement theorems** against the pairwise ledger,
 6. and the exact **finite evaluation budget theorem** for the whole up-to-three-coordinate local sieve.
 
-So Stage 246 is the global ranking complement of Stage 245: the interior candidate problem is no longer a continuum search, and the full search up through three active free coordinates is now reduced to a finite certified ledger.
+So Stage 212 is the global ranking complement of Stage 211: the interior candidate problem is no longer a continuum search, and the full search up through three active free coordinates is now reduced to a finite certified ledger.
 
 ---
 
@@ -61,7 +61,7 @@ Then the primitive pair set and primitive triple set are
 \]
 Every primitive pair belongs to exactly three primitive triples, because after fixing `\((i,j)\)` there are exactly three remaining primitive directions from which the third coordinate can be chosen.
 
-### 1.1 Imported Stage 243 pairwise packets
+### 1.1 Imported Stage 209 pairwise packets
 
 For each primitive pair `\((i,j)\in\mathfrak P_2\)`, carry forward the exact optimized certified interval
 \[
@@ -73,10 +73,10 @@ For each primitive pair `\((i,j)\in\mathfrak P_2\)`, carry forward the exact opt
 \tau_{ij,\min}^{\rm hi}.
 }
 \]
-Because the Stage 243 admissible pairwise candidate set already contains the admissible ratio endpoints, this pairwise packet already subsumes the primitive one-axis rays on that edge.
-So Stage 246 does **not** need a separate primitive-ray ledger.
+Because the Stage 209 admissible pairwise candidate set already contains the admissible ratio endpoints, this pairwise packet already subsumes the primitive one-axis rays on that edge.
+So Stage 212 does **not** need a separate primitive-ray ledger.
 
-### 1.2 Imported Stage 245 interior triple packets
+### 1.2 Imported Stage 211 interior triple packets
 
 For each primitive triple `\((i,j,k)\in\mathfrak T_3\)`, carry forward the exact interior certified interval
 \[
@@ -88,7 +88,7 @@ For each primitive triple `\((i,j,k)\in\mathfrak T_3\)`, carry forward the exact
 \tau_{ijk,\min}^{\rm hi,int}.
 }
 \]
-Here `\(\tau_{ijk,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive three-coordinate simplex, while the simplex boundaries themselves are already the Stage 243 pairwise cones.
+Here `\(\tau_{ijk,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive three-coordinate simplex, while the simplex boundaries themselves are already the Stage 209 pairwise cones.
 
 ---
 
@@ -98,7 +98,7 @@ Fix one primitive triple
 \[
 T=(i,j,k)\in\mathfrak T_3.
 \]
-Its three simplex edges are the Stage 243 pairwise cones
+Its three simplex edges are the Stage 209 pairwise cones
 \[
 (i,j),\qquad (i,k),\qquad (j,k).
 \]
@@ -166,7 +166,7 @@ The proof is immediate: the true simplex winner is the minimum of
 
 Each of those pieces already has an exact certified interval, so the best over their union is bounded by the minima of the lower and upper certified bounds.
 
-So after Stage 246, every primitive triple has been reduced to **one finite certified interval** on its full closed simplex.
+So after Stage 212, every primitive triple has been reduced to **one finite certified interval** on its full closed simplex.
 
 ---
 
@@ -194,7 +194,7 @@ If the interior lower bound already lies above the boundary upper bound,
 }
 \]
 then no admissible interior stationary candidate beats the boundary winner.
-So the triple is **boundary-certified**, and the three-coordinate simplex contributes nothing beyond its already-imported Stage 243 edges.
+So the triple is **boundary-certified**, and the three-coordinate simplex contributes nothing beyond its already-imported Stage 209 edges.
 
 ### 3.3 Ambiguous triples
 
@@ -326,7 +326,7 @@ Define the global pairwise best interval
 \tau_{ij,\min}^{\rm hi}.
 }
 \]
-Because the primitive one-axis rays are already embedded in the Stage 243 pairwise edges, this interval is the full certified ledger for all searches with at most two active primitive coordinates.
+Because the primitive one-axis rays are already embedded in the Stage 209 pairwise edges, this interval is the full certified ledger for all searches with at most two active primitive coordinates.
 
 Now define the global **interior** triple interval
 \[
@@ -364,7 +364,7 @@ If
 \]
 then no admissible three-coordinate interior stationary ray can beat the global pairwise winner.
 
-So after Stage 246 the full question “do genuinely interior three-coordinate rays matter?” has become a single certified interval comparison.
+So after Stage 212 the full question “do genuinely interior three-coordinate rays matter?” has become a single certified interval comparison.
 
 ---
 
@@ -412,32 +412,32 @@ So the local search up through three active primitive coordinates is now complet
 
 The combinatorics are now explicit.
 
-### 7.1 Imported Stage 243 pairwise budget
+### 7.1 Imported Stage 209 pairwise budget
 
 There are
 \[
 \#\mathfrak P_2=10
 \]
 primitive pairs.
-Each Stage 243 pair needs at most
+Each Stage 209 pair needs at most
 \[
 12
 \]
 exact candidate evaluations (six for the lower envelope and six for the upper envelope) on a compact admissible ratio interval.
 So the full pairwise ledger costs at most
 \[
-\boxed{10\times 12 = 188}
+\boxed{10\times 12 = 120}
 \]
 exact candidate evaluations.
 
-### 7.2 New Stage 245 interior triple budget
+### 7.2 New Stage 211 interior triple budget
 
 There are
 \[
 \#\mathfrak T_3=10
 \]
 primitive triples.
-Each Stage 245 interior simplex needs at most
+Each Stage 211 interior simplex needs at most
 \[
 24
 \]
@@ -457,12 +457,12 @@ exact candidate evaluations.
 Therefore the entire local search up through three active primitive coordinates has the exact finite budget
 \[
 \boxed{
-188+480=600
+120+480=600
 }
 \]
 exact candidate evaluations once the local slope data, envelope blocks, and admissible validity maps are supplied.
 
-If the Stage 243 pairwise ledger is already imported, then Stage 246 itself adds only the triple-interior work:
+If the Stage 209 pairwise ledger is already imported, then Stage 212 itself adds only the triple-interior work:
 \[
 \boxed{480}
 \]
@@ -474,7 +474,7 @@ This is the first exact global cost theorem for the primitive local sieve.
 
 ## 8. Minimal packet for the next stage
 
-After Stage 246, the full search up through three active free coordinates is already finite and certified.
+After Stage 212, the full search up through three active free coordinates is already finite and certified.
 What remains beyond it is the first genuinely four-coordinate interior search.
 
 The natural next packet is therefore the positive four-coordinate simplex ledger
@@ -491,19 +491,19 @@ T_{ijkl}(\cdot)
 \Bigr),
 }
 \]
-with the exact boundary reduction now taken against the Stage 246 triple ledger rather than against the pairwise ledger directly.
+with the exact boundary reduction now taken against the Stage 212 triple ledger rather than against the pairwise ledger directly.
 
 So the natural continuation is completely sharp:
 
-> Stage 247 should build the exact four-coordinate positive simplex, reduce its full boundary to the Stage 246 triple packets, and isolate the first canonical interior four-way screens before solving the full three-parameter interior optimizer.
+> Stage 213 should build the exact four-coordinate positive simplex, reduce its full boundary to the Stage 212 triple packets, and isolate the first canonical interior four-way screens before solving the full three-parameter interior optimizer.
 
 ---
 
-## 9. Best current reading after Stage 246
+## 9. Best current reading after Stage 212
 
-Stage 243 turned every pairwise cone into a finite certified candidate problem.
-Stage 245 did the same for the genuinely new interior of each three-coordinate simplex.
-Stage 246 now closes the global ranking step.
+Stage 209 turned every pairwise cone into a finite certified candidate problem.
+Stage 211 did the same for the genuinely new interior of each three-coordinate simplex.
+Stage 212 now closes the global ranking step.
 
 1. There are exactly ten primitive pairs and ten primitive triples.
 2. Every primitive triple now carries one exact closed-simplex certified interval obtained by splicing its finite interior packet to the imported pairwise boundary ledger.

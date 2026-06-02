@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_sympy_audit.py
-# Date: 2026-05-11T12:49:14-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 188 — DIRECTIONAL HESSIAN AND QUADRATIC ROOT REFINEMENT
+STAGE 205 — DIRECTIONAL HESSIAN AND QUADRATIC ROOT REFINEMENT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -97,6 +89,8 @@ tau_quad =
 Phi1a + ╲╱  Phi1a  - 2⋅Phi2a⋅(Phi0a - 1) 
 quadratic affine residual = 0
 limit Phi2 -> 0 gives tau_aff = 0
+quadratic affine residual (negative slope) = 0
+limit Phi2 -> 0 gives tau_aff (negative slope) = 0
 
 ----------------------------------------------------------------------------------------
 III. Exact quadratic logarithmic predictor
@@ -116,22 +110,28 @@ tau_log2 =
 L0l + ╲╱  L0l  - 2⋅L1l⋅log(Phi0l) 
 quadratic log residual = 0
 limit L1 -> 0 gives tau_log = 0
+quadratic log residual (negative slope) = 0
+limit L1 -> 0 gives tau_log (negative slope) = 0
 
 ----------------------------------------------------------------------------------------
 IV. Turning-point and tangency formulas
 ----------------------------------------------------------------------------------------
-tau_tp =
-    _____________
-   ╱ 2 - 2⋅Phi0t 
-  ╱  ─────────── 
-╲╱      Phi2t    
-turning-point root (+) = 0
-turning-point root (-) = 0
+turning-point radicand/product sign bridge = 0
+turning-point radicand on (1-Phi0)*Phi2 > 0 cases =
+⎡2⋅apos  2⋅apos⎤
+⎢──────, ──────⎥
+⎣ bpos    bpos ⎦
+turning-point radicand on (1-Phi0)*Phi2 < 0 cases =
+⎡-2⋅apos   -2⋅apos ⎤
+⎢────────, ────────⎥
+⎣  bpos      bpos  ⎦
+turning-point root residual on real-root branch = 0
 tangency model Delta(tau) at Phi0=1, Phi1=0 =
        2
 Phi2g⋅τ 
 ────────
    2    
+tangency model from quadratic closure = 0
 
 ----------------------------------------------------------------------------------------
 V. Curvature-corrected local expansions
@@ -151,7 +151,5 @@ eps ⋅⎝L0e  + 3⋅L1e⎠
 quadratic predictors agree through O(eps^2) = 0
 
 ========================================================================================
-STAGE 188 SYMPY AUDIT PASSED
+STAGE 205 SYMPY AUDIT PASSED
 ========================================================================================
-
-EXIT_CODE: 0

@@ -1,0 +1,173 @@
+
+========================================================================================
+STAGE 213 -- FOUR-COORDINATE MIXED SIMPLEX AND SUPPORT-CARDINALITY-4 GATE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Combinatorial ledger
+----------------------------------------------------------------------------------------
+M1 primitive axes = {lambda, c, gamma, U, W}
+M1 primitive quadruples = {{lambda, c, gamma, U}, {lambda, c, gamma, W}, {lambda, c, U, W}, {lambda, gamma, U, W}, {c, gamma, U, W}}
+M1 triple incidences = <|{lambda, c, gamma} -> 2, {lambda, c, U} -> 2, {lambda, c, W} -> 2, {lambda, gamma, U} -> 2, {lambda, gamma, W} -> 2, {lambda, U, W} -> 2, {c, gamma, U} -> 2, {c, gamma, W} -> 2, {c, U, W} -> 2, {gamma, U, W} -> 2|>
+M1 axis incidences = <|lambda -> 4, c -> 4, gamma -> 4, U -> 4, W -> 4|>
+M1 Binomial[5,4] quadruple count = 0
+PASS: M1 Binomial[5,4] quadruple count
+M1 every triple is contained in exactly two quadruples = True
+PASS: M1 every triple is contained in exactly two quadruples
+M1 every axis appears in exactly four quadruples = True
+PASS: M1 every axis appears in exactly four quadruples
+
+----------------------------------------------------------------------------------------
+M2. Face slope reductions
+----------------------------------------------------------------------------------------
+M2 face ijk unit normalization = 0
+PASS: M2 face ijk unit normalization
+M2 face ijk slope reduction = 0
+PASS: M2 face ijk slope reduction
+M2 face ijl unit normalization = 0
+PASS: M2 face ijl unit normalization
+M2 face ijl slope reduction = 0
+PASS: M2 face ijl slope reduction
+M2 face ikl unit normalization = 0
+PASS: M2 face ikl unit normalization
+M2 face ikl slope reduction = 0
+PASS: M2 face ikl slope reduction
+M2 face jkl unit normalization = 0
+PASS: M2 face jkl unit normalization
+M2 face jkl slope reduction = 0
+PASS: M2 face jkl slope reduction
+
+----------------------------------------------------------------------------------------
+M3. Gradient-optimal ray by Lagrange equations
+----------------------------------------------------------------------------------------
+M3 positive Lagrange point = {ki/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kj/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kk/Sqrt[ki^2 + kj^2 + kk^2 + kl^2], kl/Sqrt[ki^2 + kj^2 + kk^2 + kl^2]}
+M3 active-support Lagrange values = <|{1} -> Sqrt[ki^2], {2} -> Sqrt[kj^2], {3} -> Sqrt[kk^2], {4} -> Sqrt[kl^2], {1, 2} -> Sqrt[ki^2 + kj^2], {1, 3} -> Sqrt[ki^2 + kk^2], {1, 4} -> Sqrt[ki^2 + kl^2], {2, 3} -> Sqrt[kj^2 + kk^2], {2, 4} -> Sqrt[kj^2 + kl^2], {3, 4} -> Sqrt[kk^2 + kl^2], {1, 2, 3} -> Sqrt[ki^2 + kj^2 + kk^2], {1, 2, 4} -> Sqrt[ki^2 + kj^2 + kl^2], {1, 3, 4} -> Sqrt[ki^2 + kk^2 + kl^2], {2, 3, 4} -> Sqrt[kj^2 + kk^2 + kl^2], {1, 2, 3, 4} -> Sqrt[ki^2 + kj^2 + kk^2 + kl^2]|>
+M3 positive Lagrange normalization = 0
+PASS: M3 positive Lagrange normalization
+M3 maximum value from positive branch minus ||k|| = 0
+PASS: M3 maximum value from positive branch minus ||k||
+M3 ratio a_j/a_i - k_j/k_i = 0
+PASS: M3 ratio a_j/a_i - k_j/k_i
+M3 ratio a_k/a_i - k_k/k_i = 0
+PASS: M3 ratio a_k/a_i - k_k/k_i
+M3 ratio a_l/a_i - k_l/k_i = 0
+PASS: M3 ratio a_l/a_i - k_l/k_i
+M3 full-support value dominates active support {1} = True
+PASS: M3 full-support value dominates active support {1}
+M3 full-support value dominates active support {2} = True
+PASS: M3 full-support value dominates active support {2}
+M3 full-support value dominates active support {3} = True
+PASS: M3 full-support value dominates active support {3}
+M3 full-support value dominates active support {4} = True
+PASS: M3 full-support value dominates active support {4}
+M3 full-support value dominates active support {1, 2} = True
+PASS: M3 full-support value dominates active support {1, 2}
+M3 full-support value dominates active support {1, 3} = True
+PASS: M3 full-support value dominates active support {1, 3}
+M3 full-support value dominates active support {1, 4} = True
+PASS: M3 full-support value dominates active support {1, 4}
+M3 full-support value dominates active support {2, 3} = True
+PASS: M3 full-support value dominates active support {2, 3}
+M3 full-support value dominates active support {2, 4} = True
+PASS: M3 full-support value dominates active support {2, 4}
+M3 full-support value dominates active support {3, 4} = True
+PASS: M3 full-support value dominates active support {3, 4}
+M3 full-support value dominates active support {1, 2, 3} = True
+PASS: M3 full-support value dominates active support {1, 2, 3}
+M3 full-support value dominates active support {1, 2, 4} = True
+PASS: M3 full-support value dominates active support {1, 2, 4}
+M3 full-support value dominates active support {1, 3, 4} = True
+PASS: M3 full-support value dominates active support {1, 3, 4}
+M3 full-support value dominates active support {2, 3, 4} = True
+PASS: M3 full-support value dominates active support {2, 3, 4}
+M3 full-support value dominates active support {1, 2, 3, 4} = True
+PASS: M3 full-support value dominates active support {1, 2, 3, 4}
+
+----------------------------------------------------------------------------------------
+M4. Synergy gaps
+----------------------------------------------------------------------------------------
+M4 ||k||^2 - ||k_ijk||^2 - k_l^2 = 0
+PASS: M4 ||k||^2 - ||k_ijk||^2 - k_l^2
+M4 ||k||^2 - ||k_ijl||^2 - k_k^2 = 0
+PASS: M4 ||k||^2 - ||k_ijl||^2 - k_k^2
+M4 ||k||^2 - ||k_ikl||^2 - k_j^2 = 0
+PASS: M4 ||k||^2 - ||k_ikl||^2 - k_j^2
+M4 ||k||^2 - ||k_jkl||^2 - k_i^2 = 0
+PASS: M4 ||k||^2 - ||k_jkl||^2 - k_i^2
+
+----------------------------------------------------------------------------------------
+M5. Cross-leverage identity and bound
+----------------------------------------------------------------------------------------
+M5 Maximize result = {3, {x1 -> 1/2, x2 -> 1/2, x3 -> 1/2, x4 -> 1/2}}
+M5 wSigma identity = 0
+PASS: M5 wSigma identity
+M5 Cauchy slack identity = 0
+PASS: M5 Cauchy slack identity
+M5 constrained maximum value - 3 = 0
+PASS: M5 constrained maximum value - 3
+M5 maximizer equals four-way equal mix = {0, 0, 0, 0}
+PASS: M5 maximizer equals four-way equal mix
+M5 wSigma triple-equal point - 2 = 0
+PASS: M5 wSigma triple-equal point - 2
+M5 wSigma pair-equal edge - 1 = 0
+PASS: M5 wSigma pair-equal edge - 1
+
+----------------------------------------------------------------------------------------
+M6. Curvature quadratic form and diagonal-neutral reduction
+----------------------------------------------------------------------------------------
+M6 diagonal-neutral curvature reduction = 0
+PASS: M6 diagonal-neutral curvature reduction
+
+----------------------------------------------------------------------------------------
+M7. Discriminant numerator by coefficient extraction
+----------------------------------------------------------------------------------------
+M7 extracted coefficient set = <|"A" -> ki^2 - 2*H0*uii, "B" -> 2*ki*kj - 4*H0*uij, "C" -> 2*ki*kk - 4*H0*uik, "D" -> 2*ki*kl - 4*H0*uil, "E" -> kj^2 - 2*H0*ujj, "F" -> 2*kj*kk - 4*H0*ujk, "G" -> 2*kj*kl - 4*H0*ujl, "Hhat" -> kk^2 - 2*H0*ukk, "I" -> 2*kk*kl - 4*H0*ukl, "J" -> kl^2 - 2*H0*ull|>
+M7 coefficient A matches boxed set = 0
+PASS: M7 coefficient A matches boxed set
+M7 coefficient B matches boxed set = 0
+PASS: M7 coefficient B matches boxed set
+M7 coefficient C matches boxed set = 0
+PASS: M7 coefficient C matches boxed set
+M7 coefficient D matches boxed set = 0
+PASS: M7 coefficient D matches boxed set
+M7 coefficient E matches boxed set = 0
+PASS: M7 coefficient E matches boxed set
+M7 coefficient F matches boxed set = 0
+PASS: M7 coefficient F matches boxed set
+M7 coefficient G matches boxed set = 0
+PASS: M7 coefficient G matches boxed set
+M7 coefficient Hhat matches boxed set = 0
+PASS: M7 coefficient Hhat matches boxed set
+M7 coefficient I matches boxed set = 0
+PASS: M7 coefficient I matches boxed set
+M7 coefficient J matches boxed set = 0
+PASS: M7 coefficient J matches boxed set
+M7 reconstructed extracted Delta sharp equals numerator = 0
+PASS: M7 reconstructed extracted Delta sharp equals numerator
+
+----------------------------------------------------------------------------------------
+M8. Certified tau bracket and ratio form
+----------------------------------------------------------------------------------------
+M8 tau ratio-form residual = 0
+PASS: M8 tau ratio-form residual
+
+----------------------------------------------------------------------------------------
+M9. Face collapses of the bracket
+----------------------------------------------------------------------------------------
+M9 t=0 Delta sharp face polynomial = 0
+PASS: M9 t=0 Delta sharp face polynomial
+M9 s=0 Delta sharp face polynomial = 0
+PASS: M9 s=0 Delta sharp face polynomial
+M9 r=0 Delta sharp face polynomial = 0
+PASS: M9 r=0 Delta sharp face polynomial
+M9 tau t=0 ijk face collapse = 0
+PASS: M9 tau t=0 ijk face collapse
+M9 tau s=0 ijl face collapse = 0
+PASS: M9 tau s=0 ijl face collapse
+M9 tau r=0 ikl face collapse = 0
+PASS: M9 tau r=0 ikl face collapse
+M9 jkl Delta sharp face polynomial = 0
+PASS: M9 jkl Delta sharp face polynomial
+M9 direct jkl tau face collapse = 0
+PASS: M9 direct jkl tau face collapse
+All Stage 213 Mathematica audit checks passed.

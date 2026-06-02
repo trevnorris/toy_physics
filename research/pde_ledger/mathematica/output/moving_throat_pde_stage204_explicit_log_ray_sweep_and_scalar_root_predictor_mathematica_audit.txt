@@ -1,0 +1,97 @@
+
+========================================================================================
+STAGE 204 -- EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Constant free log-slopes
+----------------------------------------------------------------------------------------
+M1 d log lambda_W/dtau - s_lambda = 0
+PASS: M1 d log lambda_W/dtau - s_lambda
+M1 d log c_etaU/dtau - s_c = 0
+PASS: M1 d log c_etaU/dtau - s_c
+M1 d log gamma/dtau - s_gamma = 0
+PASS: M1 d log gamma/dtau - s_gamma
+M1 d log K_U/dtau - s_U = 0
+PASS: M1 d log K_U/dtau - s_U
+M1 d log K_W/dtau - s_W = 0
+PASS: M1 d log K_W/dtau - s_W
+
+----------------------------------------------------------------------------------------
+M2. Dependent delta exponent from graph log derivative
+----------------------------------------------------------------------------------------
+M2 d sigma_delta/dtau = 0
+PASS: M2 d sigma_delta/dtau
+M2 sigma_delta recovered - formula = 0
+PASS: M2 sigma_delta recovered - formula
+
+----------------------------------------------------------------------------------------
+M3. Dependent T, K_eta, and mu exponents from graph log derivatives
+----------------------------------------------------------------------------------------
+M3 d sigma_T/dtau = 0
+PASS: M3 d sigma_T/dtau
+M3 sigma_T recovered - formula = 0
+PASS: M3 sigma_T recovered - formula
+M3 d sigma_Keta/dtau = 0
+PASS: M3 d sigma_Keta/dtau
+M3 sigma_Keta recovered - formula = 0
+PASS: M3 sigma_Keta recovered - formula
+M3 d sigma_mu/dtau = 0
+PASS: M3 d sigma_mu/dtau
+M3 sigma_mu recovered - formula = 0
+PASS: M3 sigma_mu recovered - formula
+
+----------------------------------------------------------------------------------------
+M4. Finite target monomial invariance on the lifted ray
+----------------------------------------------------------------------------------------
+M4 Ctr(tau) - Ctr_target = 0
+PASS: M4 Ctr(tau) - Ctr_target
+M4 Cnt(tau) - Cnt_target = 0
+PASS: M4 Cnt(tau) - Cnt_target
+M4 eps_eta(tau) - epsEta_target = 0
+PASS: M4 eps_eta(tau) - epsEta_target
+
+----------------------------------------------------------------------------------------
+M5. Quotient-map kernel
+----------------------------------------------------------------------------------------
+M5 Mstar.dxRay =
+MatrixForm[{{0, 0, 0}}]
+PASS: M5 Mstar.dxRay
+
+----------------------------------------------------------------------------------------
+M6. Primitive free-direction table
+----------------------------------------------------------------------------------------
+M6 e_lambda exponents =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M6 e_lambda exponents
+M6 e_c exponents =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M6 e_c exponents
+M6 e_gamma exponents =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M6 e_gamma exponents
+M6 e_U exponents =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M6 e_U exponents
+M6 e_W exponents =
+MatrixForm[{{0, 0, 0, 0}}]
+PASS: M6 e_W exponents
+
+----------------------------------------------------------------------------------------
+M7. First-order root predictors and log-ray completeness
+----------------------------------------------------------------------------------------
+M7 series tau_log - tau_aff = -1/2*eps^2/L0 + (2*eps^3)/(3*L0) - (3*eps^4)/(4*L0)
+M7 predictor constant coefficient = 0
+PASS: M7 predictor constant coefficient
+M7 predictor linear coefficient = 0
+PASS: M7 predictor linear coefficient
+M7 predictor quadratic coefficient = 0
+PASS: M7 predictor quadratic coefficient
+M7 predictor cubic coefficient = 0
+PASS: M7 predictor cubic coefficient
+M7 first-order log-ray completeness = 0
+PASS: M7 first-order log-ray completeness
+
+========================================================================================
+STAGE 204 MATHEMATICA AUDIT PASSED
+========================================================================================

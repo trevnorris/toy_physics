@@ -32,7 +32,7 @@ def expect_true(name: str, condition: bool) -> None:
         raise AssertionError(f"{name} failed")
 
 
-banner("STAGE 198 — FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE")
+banner("STAGE 215 — FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE")
 
 subbanner("I. Exact combinatorial ledger")
 axes = ("lambda", "c", "gamma", "U", "W")
@@ -142,6 +142,22 @@ for L1 in range(0, 6):
                             count_rank += 1
 print(f"verified certified interval ordering on {count_rank} samples")
 
+count_unique = 0
+interval_samples = [(L, U) for L in range(0, 5) for U in range(L, 5)]
+for intervals in itertools.product(interval_samples, repeat=5):
+    for star in range(5):
+        other_lows = [intervals[p][0] for p in range(5) if p != star]
+        if intervals[star][1] < min(other_lows):
+            for x_star in range(intervals[star][0], intervals[star][1] + 1):
+                for p in range(5):
+                    if p == star:
+                        continue
+                    for x_p in range(intervals[p][0], intervals[p][1] + 1):
+                        if not (x_star < x_p):
+                            raise AssertionError("unique primitive-quadruple certified winner theorem failed")
+                        count_unique += 1
+print(f"verified unique certified winner theorem on {count_unique} min-over-others samples")
+
 count_global = 0
 for le3_lo in range(0, 6):
     for le3_hi in range(le3_lo, 6):
@@ -179,8 +195,8 @@ print(f"verified global four-coordinate improvement theorem on {count_improve} s
 print(f"verified global four-coordinate no-improvement theorem on {count_noimprove} samples")
 
 subbanner("IV. Exact finite evaluation budget theorem")
-support_le3_budget = 600
-quad_eval_per_envelope = 54
+support_le3_budget = 10 * 12 + 10 * 48
+quad_eval_per_envelope = (3 * 3 * 3) * 2
 quad_eval_total = len(quadruples) * 2 * quad_eval_per_envelope
 full_eval_total = support_le3_budget + quad_eval_total
 

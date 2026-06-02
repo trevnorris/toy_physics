@@ -325,7 +325,7 @@ The next honest move is no longer “rank larger support families.” It is to i
 
 The preferred lifted candidate compiler from Stage 251 contributes at most
 \[
-230
+162
 \]
 interior five-coordinate stationary candidates **per** envelope, hence
 \[

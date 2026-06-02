@@ -28,7 +28,7 @@ The main outputs are:
 2. the exact four-ratio interior chart and certified root functional,
 3. the exact four-component stationary numerator system,
 4. the exact lifted polynomial stationary system with degree pattern `(3,3,3,3,2)`,
-5. the exact finite algebraic candidate-set theorem with lifted Bézout bound `230`,
+5. the exact finite algebraic candidate-set theorem with lifted Bézout bound `162`,
 6. the direct square-root-free elimination into three quintic cross-consistency polynomials plus one sextic square condition on a chosen interior chart, giving the projected bound `750`,
 7. two exact special reductions explaining why the gradient-optimal and equal-mix interior screens are the right canonical screens,
 8. and the exact local improvement / non-improvement theorems against the imported Stage 249 five-face boundary ledger.
@@ -406,7 +406,7 @@ Each stationary equation `\(\mathcal F_{r,\star},\mathcal F_{s,\star},\mathcal F
 
 Hence the lifted Bézout candidate bound is
 \[
-\boxed{3\cdot 3\cdot 3\cdot 3\cdot 2 = 230.}
+\boxed{3\cdot 3\cdot 3\cdot 3\cdot 2 = 162.}
 \]
 
 Define the lifted admissible stationary set
@@ -503,7 +503,7 @@ Because the three cross-consistency polynomials are quintic and the square condi
 }
 \]
 
-This projected bound is useful, but the lifted `230`-point system above remains the preferred exact compiler because it avoids chart-dependent square-root degeneracies.
+This projected bound is useful, but the lifted `162`-point system above remains the preferred exact compiler because it avoids chart-dependent square-root degeneracies.
 
 ---
 
@@ -613,7 +613,7 @@ So the support-cardinality-`5` question is now reduced to a finite local interva
 
 The lifted interior candidate compiler contributes at most
 \[
-\boxed{230}
+\boxed{162}
 \]
 stationary candidates per envelope on the chosen window, hence at most
 \[
@@ -631,7 +631,7 @@ The support-cardinality-`5` problem is no longer a continuum search.
 
 - Its entire codimension-one boundary is already closed by Stage 249.
 - Its genuinely new interior optimizer is governed by an exact lifted polynomial system with degree pattern `(3,3,3,3,2)`.
-- Every interior optimizer lies in a finite admissible candidate set with lifted Bézout bound `230`.
+- Every interior optimizer lies in a finite admissible candidate set with lifted Bézout bound `162`.
 - And the local improvement/non-improvement verdict against the full support-`<=4` ledger is now an exact interval comparison.
 
 That means the natural next move is Stage 252 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.

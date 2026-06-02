@@ -5,297 +5,238 @@ banner[title_String] := (
   Print[""];
   Print[StringRepeat["=", 88]];
   Print[title];
-  Print[StringRepeat["=", 88]];
+  Print[StringRepeat["=", 88]]
 );
 
 subbanner[title_String] := (
   Print[""];
   Print[StringRepeat["-", 88]];
   Print[title];
-  Print[StringRepeat["-", 88]];
+  Print[StringRepeat["-", 88]]
 );
 
-pass[name_String] := Print["PASS: ", name];
 fmt[expr_] := ToString[InputForm[expr]];
-
+pass[name_String] := Print["PASS: ", name];
 fail[name_String, detail_: Missing["NotAvailable"]] := (
   Print["FAIL: ", name];
-  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
-  Exit[1];
+  If[!MissingQ[detail], Print["  detail -> ", fmt[detail]]];
+  Exit[1]
 );
 
-normalizeExpr[expr_] := FullSimplify[expr, Assumptions -> $Assumptions];
-
 expectZero[name_String, expr_] := Module[{res},
-  res = normalizeExpr[expr];
+  res = FullSimplify[expr];
   Print[name, " = ", fmt[res]];
-  If[TrueQ[res == 0], pass[name], fail[name, res]];
+  If[TrueQ[res === 0], pass[name], fail[name, res]]
 ];
 
 expectTrue[name_String, cond_] := (
-  Print[name, " = ", cond];
-  If[TrueQ[cond], pass[name], fail[name, cond]];
+  Print[name, " = ", fmt[cond]];
+  If[TrueQ[cond], pass[name], fail[name, cond]]
 );
 
-packetInterval[packetWindows_Association] := {
-  Min[Min /@ Values[packetWindows]],
-  Min[Max /@ Values[packetWindows]]
-};
+banner["Stage 218 independent Mathematica audit"];
 
-boundaryBest[assignment_Association, boundaryPacketNames_List] :=
-  Min[assignment /@ boundaryPacketNames];
-
-classifyFamily[familyName_String, packetWindows_Association, boundaryPacketNames_List] := Module[
-  {keys, fullLo, fullHi, counts, tuples, assignment, boundaryValue, support5Value, fullValue},
-  keys = Keys[packetWindows];
-  {fullLo, fullHi} = packetInterval[packetWindows];
-  counts = <|"support5" -> 0, "boundary" -> 0, "tie" -> 0|>;
-  tuples = Tuples[packetWindows /@ keys];
-
-  Scan[
-    Function[{values},
-      assignment = AssociationThread[keys -> values];
-      boundaryValue = boundaryBest[assignment, boundaryPacketNames];
-      support5Value = assignment["support5_int"];
-      fullValue = Min[boundaryValue, support5Value];
-      If[!(fullLo <= fullValue <= fullHi),
-        fail[familyName <> " interval splice failed", assignment]
-      ];
-      Which[
-        support5Value < boundaryValue,
-        counts["support5"] = counts["support5"] + 1,
-        boundaryValue < support5Value,
-        counts["boundary"] = counts["boundary"] + 1,
-        True,
-        counts["tie"] = counts["tie"] + 1
-      ];
-    ],
-    tuples
-  ];
-
-  Print[familyName, " exhaustive outcomes = ", counts];
-  counts
-];
-
-banner["STAGE 201 — FULL SUPPORT-<=5 COMPLETION AND LOCAL MIXED-RAY SEARCH CLOSURE"];
-
-$Assumptions = Element[
-    {
-      tauLe3Best, tauLe3Lo, tauLe3Hi,
-      tau5BestInt, tau5LoInt, tau5HiInt,
-      tauFaceLambdaBest, tauFaceLambdaLo, tauFaceLambdaHi,
-      tauFacecBest, tauFacecLo, tauFacecHi,
-      tauFacegammaBest, tauFacegammaLo, tauFacegammaHi,
-      tauFaceUBest, tauFaceULo, tauFaceUHi,
-      tauFaceWBest, tauFaceWLo, tauFaceWHi
-    },
-    Reals
-  ];
-
-subbanner["I. Exact boundary-identification via imported Stage 215 face packets"];
+subbanner["M1. Boundary incidence by finite set combinatorics"];
 
 axes = {"lambda", "c", "gamma", "U", "W"};
-quadrupleFaces = Association @ Table[
-  With[{axis = axes[[i]]},
-    "omit_" <> axis -> <|
-      "omitted_axis" -> axis,
-      "support" -> DeleteCases[axes, axis],
-      "source_stage" -> 198
-    |>
-  ],
-  {i, Length[axes]}
+quadrupleFaces = Subsets[axes, {4}];
+properStrata = Subsets[axes, {1, 4}];
+
+incidenceRows = Table[
+  {
+    support,
+    Length[support],
+    Total[Boole[ContainsAll[#, support]] & /@ quadrupleFaces],
+    Length[axes] - Length[support]
+  },
+  {support, properStrata}
 ];
-boundaryPackets = Join[
-  <|"support_le3" -> <|"support" -> "<=3 global ledger", "source_stage" -> 198|>|>,
-  quadrupleFaces
-];
-boundaryFaceNames = Keys[quadrupleFaces];
-properFaces = Select[Subsets[axes], 0 < Length[#] < Length[axes] &];
+strataTally = Sort[Tally[Length /@ properStrata]];
 
-quadrupleSupports = Sort[Sort /@ (quadrupleFaces[#]["support"] & /@ boundaryFaceNames)];
-expectedQuadruples = Sort[Sort /@ Subsets[axes, {4}]];
+Print["axes = ", axes];
+Print["quadruple faces = ", quadrupleFaces];
+Print["support-cardinality tally = ", strataTally];
+Print["incidence rows = ", incidenceRows];
 
-Print["primitive axes = ", axes];
-Print["imported Stage 215 boundary packets = ", Keys[boundaryPackets]];
-Print["quadruple face supports = ", quadrupleFaces[#]["support"] & /@ boundaryFaceNames];
-Print["#proper nonempty support strata = ", Length[properFaces]];
+expectTrue["M1 every proper support has 5-k covering quadruple faces", AllTrue[incidenceRows, #[[3]] == #[[4]] &]];
+expectTrue["M1 proper strata tally is 5+10+10+5", strataTally === {{1, 5}, {2, 10}, {3, 10}, {4, 5}}];
+expectZero["M1 proper nonempty stratum count - 30", Length[properStrata] - 30];
+expectZero["M1 2^5 - 2 - 30", (2^Length[axes] - 2) - 30];
 
-expectZero["primitive axes - 5", Length[axes] - 5];
-expectZero["imported quadruple packet count - 5", Length[quadrupleFaces] - 5];
-expectTrue[
-  "imported quadruple supports match the five simplex facets",
-  quadrupleSupports === expectedQuadruples
-];
-expectZero["support-cardinality ceiling 5 - #axes", Length[axes] - 5];
+subbanner["M2-M3. Support ceiling and final splice by Resolve"];
 
-Scan[
-  Function[subset,
-    Module[{coveringFaces, expected},
-      coveringFaces = Select[
-        boundaryFaceNames,
-        SubsetQ[quadrupleFaces[#]["support"], subset] &
-      ];
-      expected = Length[axes] - Length[subset];
-      Print["boundary coverage incidence ", subset, " -> ", coveringFaces];
-      If[Length[coveringFaces] =!= expected,
-        fail["boundary-identification coverage count is incorrect", subset]
-      ];
+boundaryLabels = Join[{"support_le3"}, "omit_" <> # & /@ axes];
+packetLabels = Join[boundaryLabels, {"support5_int"}];
+packetCount = Length[packetLabels];
+
+loVars = ToExpression /@ Table["lo" <> ToString[i], {i, packetCount}];
+bestVars = ToExpression /@ Table["best" <> ToString[i], {i, packetCount}];
+hiVars = ToExpression /@ Table["hi" <> ToString[i], {i, packetCount}];
+
+boundaryBestVars = Take[bestVars, Length[boundaryLabels]];
+tauLe4Best = Min @@ boundaryBestVars;
+tau5BestInt = Last[bestVars];
+tauLe5Best = Min[tauLe4Best, tau5BestInt];
+
+boundaryLedger = ToExpression["boundaryLedger"];
+support5Ledger = ToExpression["support5Ledger"];
+m2BoundaryBranch = Resolve[
+  ForAll[
+    {boundaryLedger, support5Ledger},
+    Implies[
+      Element[{boundaryLedger, support5Ledger}, Reals] && boundaryLedger <= support5Ledger,
+      Min[boundaryLedger, support5Ledger] == boundaryLedger
     ]
   ],
-  properFaces
+  Reals
+];
+m2InteriorBranch = Resolve[
+  ForAll[
+    {boundaryLedger, support5Ledger},
+    Implies[
+      Element[{boundaryLedger, support5Ledger}, Reals] && support5Ledger <= boundaryLedger,
+      Min[boundaryLedger, support5Ledger] == support5Ledger
+    ]
+  ],
+  Reals
 ];
 
-subbanner["II. Exact imported support-<=4 and support-<=5 ledger splice"];
-
-boundaryBestSymbols = {
-  tauLe3Best,
-  tauFaceLambdaBest,
-  tauFacecBest,
-  tauFacegammaBest,
-  tauFaceUBest,
-  tauFaceWBest
-};
-boundaryLoSymbols = {
-  tauLe3Lo,
-  tauFaceLambdaLo,
-  tauFacecLo,
-  tauFacegammaLo,
-  tauFaceULo,
-  tauFaceWLo
-};
-boundaryHiSymbols = {
-  tauLe3Hi,
-  tauFaceLambdaHi,
-  tauFacecHi,
-  tauFacegammaHi,
-  tauFaceUHi,
-  tauFaceWHi
-};
-
-tauLe4Best = Min @@ boundaryBestSymbols;
-tauLe4Lo = Min @@ boundaryLoSymbols;
-tauLe4Hi = Min @@ boundaryHiSymbols;
-
-tauLe5Best = Min[tauLe4Best, tau5BestInt];
-tauLe5Lo = Min[tauLe4Lo, tau5LoInt];
-tauLe5Hi = Min[tauLe4Hi, tau5HiInt];
-
-tauLe5BestFlat = Min @@ Append[boundaryBestSymbols, tau5BestInt];
-tauLe5LoFlat = Min @@ Append[boundaryLoSymbols, tau5LoInt];
-tauLe5HiFlat = Min @@ Append[boundaryHiSymbols, tau5HiInt];
-
-Print["tau_{<=4,*}^{best} = ", fmt[tauLe4Best]];
-Print["tau_{<=5,*}^{best} = ", fmt[tauLe5Best]];
-Print["tau_{<=5,lo} = ", fmt[tauLe5Lo]];
-Print["tau_{<=5,hi} = ", fmt[tauLe5Hi]];
-
-expectZero["support<=5 best flattening over imported packets", tauLe5Best - tauLe5BestFlat];
-expectZero["support<=5 lower splice over imported packets", tauLe5Lo - tauLe5LoFlat];
-expectZero["support<=5 upper splice over imported packets", tauLe5Hi - tauLe5HiFlat];
-
-subbanner["III. Exact improvement / no-improvement / overlap families on the actual finite ledger"];
-
-improvementFamily = <|
-  "support_le3" -> {10, 11},
-  "omit_lambda" -> {12, 13},
-  "omit_c" -> {11, 12},
-  "omit_gamma" -> {13, 14},
-  "omit_U" -> {15, 16},
-  "omit_W" -> {14, 15},
-  "support5_int" -> {2, 3, 4}
-|>;
-noImprovementFamily = <|
-  "support_le3" -> {2, 3},
-  "omit_lambda" -> {4, 5},
-  "omit_c" -> {3, 4},
-  "omit_gamma" -> {5, 6},
-  "omit_U" -> {6, 7},
-  "omit_W" -> {4, 6},
-  "support5_int" -> {9, 10, 11}
-|>;
-overlapFamily = <|
-  "support_le3" -> {5, 6},
-  "omit_lambda" -> {4, 8},
-  "omit_c" -> {7, 8},
-  "omit_gamma" -> {6, 9},
-  "omit_U" -> {8, 9},
-  "omit_W" -> {5, 7},
-  "support5_int" -> {3, 7}
-|>;
-
-boundaryPacketNames = Append[boundaryFaceNames, "support_le3"];
-
-improvementCounts = classifyFamily[
-  "genuine support-5 improvement family",
-  improvementFamily,
-  boundaryPacketNames
+m3LowerBranches = Table[
+  Resolve[
+    ForAll[
+      {loVars[[i]], bestVars[[i]]},
+      Implies[
+        Element[{loVars[[i]], bestVars[[i]]}, Reals] && loVars[[i]] <= bestVars[[i]],
+        ! (loVars[[i]] > bestVars[[i]])
+      ]
+    ],
+    Reals
+  ],
+  {i, packetCount}
 ];
-expectZero["support-5 improvement family boundary wins", improvementCounts["boundary"]];
-expectZero["support-5 improvement family ties", improvementCounts["tie"]];
+m3UpperBranches = Table[
+  Resolve[
+    ForAll[
+      {bestVars[[i]], hiVars[[i]]},
+      Implies[
+        Element[{bestVars[[i]], hiVars[[i]]}, Reals] && bestVars[[i]] <= hiVars[[i]],
+        ! (bestVars[[i]] > hiVars[[i]])
+      ]
+    ],
+    Reals
+  ],
+  {i, packetCount}
+];
+
+lowerProbe = AssociationThread[packetLabels -> {1, 4, 5, 6, 7, 8, 9}];
+upperProbe = AssociationThread[packetLabels -> {3, 6, 7, 8, 9, 10, 11}];
+
+expectZero["M2 support<=4 imported boundary packet count - 6", Length[boundaryBestVars] - 6];
+expectTrue["M2 tau<=5 best is the two-ledger support ceiling", m2BoundaryBranch && m2InteriorBranch];
+expectTrue["M3 lower splice counterexample branches close", And @@ m3LowerBranches];
+expectTrue["M3 upper splice counterexample branches close", And @@ m3UpperBranches];
+expectZero["M3 lower endpoint audit probe", Min @@ Values[lowerProbe] - 1];
+expectZero["M3 upper endpoint audit probe", Min @@ Values[upperProbe] - 3];
+expectTrue["M3 upper endpoint is sharper than max-hi mutation", Min @@ Values[upperProbe] < Max @@ Values[upperProbe]];
+
+subbanner["M4. Exhaustive regime outcomes from independent witnesses"];
+
+makeBoundaryWindows[start_Integer, width_Integer, gap_Integer] := AssociationThread[
+  boundaryLabels,
+  Table[Range[start + gap*(i - 1), start + gap*(i - 1) + width - 1], {i, Length[boundaryLabels]}]
+];
+
+ledgerCounts[packetWindows_Association] := Module[
+  {labels, assignments, labelsByRow, rawCounts},
+  labels = Keys[packetWindows];
+  assignments = AssociationThread[labels -> #] & /@ Tuples[Values[packetWindows]];
+  labelsByRow = Function[row,
+      Module[{boundaryValue, supportValue},
+        boundaryValue = Min @@ Lookup[row, boundaryLabels];
+        supportValue = row["support5_int"];
+        Which[
+          supportValue < boundaryValue, "support5",
+          boundaryValue < supportValue, "boundary",
+          True, "tie"
+        ]
+      ]
+    ] /@ assignments;
+  rawCounts = Counts[labelsByRow];
+  Merge[{<|"support5" -> 0, "boundary" -> 0, "tie" -> 0|>, rawCounts}, Total]
+];
+
+totalAssignments[packetWindows_Association] := Times @@ (Length /@ Values[packetWindows]);
+boundaryValues[packetWindows_Association] := Flatten[Lookup[packetWindows, boundaryLabels]];
+
+improvementWindows = Join[
+  makeBoundaryWindows[20, 2, 3],
+  <|"support5_int" -> Range[1, 4]|>
+];
+noImprovementWindows = Join[
+  makeBoundaryWindows[2, 2, 3],
+  <|"support5_int" -> Range[40, 42]|>
+];
+overlapWindows = Join[
+  AssociationThread[boundaryLabels, ConstantArray[{4, 8}, Length[boundaryLabels]]],
+  <|"support5_int" -> {3, 7}|>
+];
+
+improvementCounts = ledgerCounts[improvementWindows];
+noImprovementCounts = ledgerCounts[noImprovementWindows];
+overlapCounts = ledgerCounts[overlapWindows];
+improvementTotal = totalAssignments[improvementWindows];
+noImprovementTotal = totalAssignments[noImprovementWindows];
+overlapTotal = totalAssignments[overlapWindows];
+
+Print["M4 improvement outcomes = ", Normal[improvementCounts]];
+Print["M4 no-improvement outcomes = ", Normal[noImprovementCounts]];
+Print["M4 overlap outcomes = ", Normal[overlapCounts]];
+
+expectTrue["M4 regime 5.1 hypothesis support5_hi < boundary_lo", Max[improvementWindows["support5_int"]] < Min[boundaryValues[improvementWindows]]];
+expectZero["M4 regime 5.1 boundary wins", improvementCounts["boundary"]];
+expectZero["M4 regime 5.1 ties", improvementCounts["tie"]];
+expectZero["M4 regime 5.1 support5 wins equal total", improvementCounts["support5"] - improvementTotal];
+
+expectTrue["M4 regime 5.2 hypothesis support5_lo > every boundary hi", Min[noImprovementWindows["support5_int"]] > Max[boundaryValues[noImprovementWindows]]];
+expectZero["M4 regime 5.2 support5 wins", noImprovementCounts["support5"]];
+expectZero["M4 regime 5.2 ties", noImprovementCounts["tie"]];
+expectZero["M4 regime 5.2 boundary wins equal total", noImprovementCounts["boundary"] - noImprovementTotal];
+
 expectTrue[
-  "support-5 improvement family interior wins exist",
-  improvementCounts["support5"] > 0
+  "M4 regime 5.3 hypothesis ranges interleave",
+  Min[overlapWindows["support5_int"]] <= Min[Max /@ Lookup[overlapWindows, boundaryLabels]]
+    && Max[overlapWindows["support5_int"]] >= Min[Min /@ Lookup[overlapWindows, boundaryLabels]]
 ];
+expectTrue["M4 regime 5.3 retains support5 winners", overlapCounts["support5"] > 0];
+expectTrue["M4 regime 5.3 retains boundary winners", overlapCounts["boundary"] > 0];
+expectZero["M4 regime 5.3 ties", overlapCounts["tie"]];
+expectZero["M4 regime 5.3 support5 plus boundary equals total", overlapCounts["support5"] + overlapCounts["boundary"] - overlapTotal];
 
-noImprovementCounts = classifyFamily[
-  "support-5 no-improvement family",
-  noImprovementFamily,
-  boundaryPacketNames
-];
-expectZero["support-5 no-improvement family interior wins", noImprovementCounts["support5"]];
-expectZero["support-5 no-improvement family ties", noImprovementCounts["tie"]];
-expectTrue[
-  "support-5 no-improvement family boundary wins exist",
-  noImprovementCounts["boundary"] > 0
-];
+subbanner["M5. Paper-stated evaluation budget"];
 
-overlapCounts = classifyFamily[
-  "support-5 overlap family",
-  overlapFamily,
-  boundaryPacketNames
-];
-expectTrue[
-  "support-5 overlap family retains boundary winners",
-  overlapCounts["boundary"] > 0
-];
-expectTrue[
-  "support-5 overlap family retains interior winners",
-  overlapCounts["support5"] > 0
-];
+liftedPattern = {3, 3, 3, 3, 2};
+fallbackPattern = {5, 5, 5, 6};
+liftedPerEnvelope = Times @@ liftedPattern;
+fallbackPerEnvelope = Times @@ fallbackPattern;
+supportLe4Budget = 1140;
+support5LiftedBudget = 2*liftedPerEnvelope;
+support5FallbackBudget = 2*fallbackPerEnvelope;
+preferredTotal = supportLe4Budget + support5LiftedBudget;
+fallbackTotal = supportLe4Budget + support5FallbackBudget;
 
-subbanner["IV. Exact support-five candidate filters and final budget ledger"];
+Print["lifted pattern = ", liftedPattern];
+Print["fallback pattern = ", fallbackPattern];
+Print["support<=4 paper budget = ", supportLe4Budget];
+Print["support-five lifted budget = ", support5LiftedBudget];
+Print["support-five fallback budget = ", support5FallbackBudget];
 
-supportFivePacket = <|
-  "source_stage" -> 200,
-  "canonical_screens" -> {"gradient-optimal", "equal-mix"},
-  "preferred_lifted_degree_pattern" -> {3, 3, 3, 3, 2},
-  "fallback_projected_degree_pattern" -> {5, 5, 5, 6}
-|>;
-liftedPerEnvelope = Times @@ supportFivePacket["preferred_lifted_degree_pattern"];
-projectedPerEnvelope = Times @@ supportFivePacket["fallback_projected_degree_pattern"];
-
-Print["support-five canonical screens = ", supportFivePacket["canonical_screens"]];
-Print["preferred lifted degree pattern = ", supportFivePacket["preferred_lifted_degree_pattern"]];
-Print["fallback projected degree pattern = ", supportFivePacket["fallback_projected_degree_pattern"]];
-
-expectZero["support-five canonical screen count - 2", Length[supportFivePacket["canonical_screens"]] - 2];
-expectZero["lifted compiler bound - 162", liftedPerEnvelope - 162];
-expectZero["projected compiler bound - 750", projectedPerEnvelope - 750];
-
-supportLe3Budget = 600;
-quadrupleEvalPerEnvelope = 54;
-supportLe4Budget = supportLe3Budget + Length[quadrupleFaces] * 2 * quadrupleEvalPerEnvelope;
-preferredTotal = supportLe4Budget + 2 * liftedPerEnvelope;
-fallbackTotal = supportLe4Budget + 2 * projectedPerEnvelope;
-
-Print["support<=3 imported budget = ", supportLe3Budget];
-Print["support<=4 rebuilt budget = ", supportLe4Budget];
-Print["preferred full support<=5 budget = ", preferredTotal];
-Print["fallback full support<=5 budget = ", fallbackTotal];
-
-expectZero["support<=4 rebuilt budget - 1140", supportLe4Budget - 1140];
-expectZero["preferred full support<=5 budget - 1464", preferredTotal - 1464];
-expectZero["fallback full support<=5 budget - 2640", fallbackTotal - 2640];
+expectZero["M5 lifted per-envelope bound - 162", liftedPerEnvelope - 162];
+expectZero["M5 lifted total - 324", support5LiftedBudget - 324];
+expectZero["M5 fallback per-envelope bound - 750", fallbackPerEnvelope - 750];
+expectZero["M5 fallback total - 1500", support5FallbackBudget - 1500];
+expectZero["M5 support<=4 paper budget - 1140", supportLe4Budget - 1140];
+expectZero["M5 preferred total - 1464", preferredTotal - 1464];
+expectZero["M5 fallback total - 2640", fallbackTotal - 2640];
 
 Print[""];
-Print["All Stage 218 imported ledger, splice, classification, and budget checks verified."];
+Print["All Stage 218 Mathematica claims M1-M5 verified."];

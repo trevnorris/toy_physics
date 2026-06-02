@@ -1,0 +1,74 @@
+
+========================================================================================
+STAGE 216 -- UNIQUE FIVE-COORDINATE POSITIVE SIMPLEX AND SUPPORT-CARDINALITY-5 GATE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M2. Lagrange-derived five-coordinate optimum
+----------------------------------------------------------------------------------------
+positive Lagrange point = {kLam/Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2], kC/Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2], kGam/Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2], kU/Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2], kW/Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2]}
+stationary slope values = {-Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2], Sqrt[kC^2 + kGam^2 + kLam^2 + kU^2 + kW^2]}
+M1 gradient-optimal unit norm = 0
+PASS: M1 gradient-optimal unit norm
+M2 positive Lagrange value minus Sqrt[S] = 0
+PASS: M2 positive Lagrange value minus Sqrt[S]
+M2 positive branch dominates the other stationary branch = True
+PASS: M2 positive branch dominates the other stationary branch
+
+----------------------------------------------------------------------------------------
+M3. Per-face first-order gaps
+----------------------------------------------------------------------------------------
+M3 face gap for lambda = 0
+PASS: M3 face gap for lambda
+M3 strict positive improvement for lambda = True
+PASS: M3 strict positive improvement for lambda
+M3 face gap for c = 0
+PASS: M3 face gap for c
+M3 strict positive improvement for c = True
+PASS: M3 strict positive improvement for c
+M3 face gap for gamma = 0
+PASS: M3 face gap for gamma
+M3 strict positive improvement for gamma = True
+PASS: M3 strict positive improvement for gamma
+M3 face gap for U = 0
+PASS: M3 face gap for U
+M3 strict positive improvement for U = True
+PASS: M3 strict positive improvement for U
+M3 face gap for W = 0
+PASS: M3 face gap for W
+M3 strict positive improvement for W = True
+PASS: M3 strict positive improvement for W
+
+----------------------------------------------------------------------------------------
+M4. Cross-leverage and Cauchy slack as quadratic forms
+----------------------------------------------------------------------------------------
+M4 off-diagonal quadratic identity = 0
+PASS: M4 off-diagonal quadratic identity
+M4 complete-graph Laplacian slack identity = 0
+PASS: M4 complete-graph Laplacian slack identity
+
+----------------------------------------------------------------------------------------
+M5. Equal-mix barycenter leverage
+----------------------------------------------------------------------------------------
+off-diagonal leverage eigenvalues = {4, -1, -1, -1, -1}
+M5 barycenter unit norm = 0
+PASS: M5 barycenter unit norm
+M5 wSigma at barycenter minus 4 = 0
+PASS: M5 wSigma at barycenter minus 4
+M5 top quadratic-form eigenvalue minus 4 = 0
+PASS: M5 top quadratic-form eigenvalue minus 4
+
+----------------------------------------------------------------------------------------
+M6. Quadratic-solve certified bracket
+----------------------------------------------------------------------------------------
+quadratic roots from Solve = {(k - Sqrt[k^2 - 2*H0*kappa])/kappa, (k + Sqrt[k^2 - 2*H0*kappa])/kappa}
+M6 solved smaller root minus stated bracket form = 0
+PASS: M6 solved smaller root minus stated bracket form
+M6 stated bracket quadratic residual = 0
+PASS: M6 stated bracket quadratic residual
+M6 stated bracket root is positive = True
+PASS: M6 stated bracket root is positive
+M6 stated bracket root is the smaller positive root = True
+PASS: M6 stated bracket root is the smaller positive root
+
+All Stage 216 Mathematica audit checks passed.

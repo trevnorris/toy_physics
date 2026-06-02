@@ -1,0 +1,89 @@
+
+========================================================================================
+STAGE 215 -- FULL PRIMITIVE-QUADRUPLE RANKING AND THE UP-TO-FOUR-COORDINATE SIEVE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Combinatorial ledger
+----------------------------------------------------------------------------------------
+M1 axes = {lambda, c, gamma, U, W}
+M1 triples = {{lambda, c, gamma}, {lambda, c, U}, {lambda, c, W}, {lambda, gamma, U}, {lambda, gamma, W}, {lambda, U, W}, {c, gamma, U}, {c, gamma, W}, {c, U, W}, {gamma, U, W}}
+M1 quadruples = {{lambda, c, gamma, U}, {lambda, c, gamma, W}, {lambda, c, U, W}, {lambda, gamma, U, W}, {c, gamma, U, W}}
+M1 quadruple face counts = {4, 4, 4, 4, 4}
+M1 triple incidence counts = {2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
+M1 axis incidence counts = {4, 4, 4, 4, 4}
+M1 #triples - Binomial[5,3] = 0
+PASS: M1 #triples - Binomial[5,3]
+M1 #quadruples - Binomial[5,4] = 0
+PASS: M1 #quadruples - Binomial[5,4]
+M1 every quadruple has four triple faces = True
+PASS: M1 every quadruple has four triple faces
+M1 every triple lies in two quadruples = True
+PASS: M1 every triple lies in two quadruples
+M1 every axis lies in four quadruples = True
+PASS: M1 every axis lies in four quadruples
+
+----------------------------------------------------------------------------------------
+M2. Min flattening
+----------------------------------------------------------------------------------------
+M2 lo nested Min = Min[aLo, bLo, cLo, dLo, iotaLo]
+M2 lo flat Min = Min[aLo, bLo, cLo, dLo, iotaLo]
+M2 hi nested Min = Min[aHi, bHi, cHi, dHi, iotaHi]
+M2 hi flat Min = Min[aHi, bHi, cHi, dHi, iotaHi]
+M2 lo envelope nested Min collapse = True
+PASS: M2 lo envelope nested Min collapse
+M2 hi envelope nested Min collapse = True
+PASS: M2 hi envelope nested Min collapse
+
+----------------------------------------------------------------------------------------
+M3. Boundary-splice / full-simplex interval
+----------------------------------------------------------------------------------------
+M3 continuous quantified splice theorem = True
+PASS: M3 continuous quantified splice theorem
+
+----------------------------------------------------------------------------------------
+M4. Local classification orderings
+----------------------------------------------------------------------------------------
+M4 interior-certified order = True
+PASS: M4 interior-certified order
+M4 boundary-certified order = True
+PASS: M4 boundary-certified order
+
+----------------------------------------------------------------------------------------
+M5. Primitive-quadruple ranking and unique winner
+----------------------------------------------------------------------------------------
+M5 pairwise certified interval ranking = True
+PASS: M5 pairwise certified interval ranking
+M5 unique-winner quantified results = {True, True, True, True, True}
+M5 unique certified winner over five quadruple intervals = True
+PASS: M5 unique certified winner over five quadruple intervals
+
+----------------------------------------------------------------------------------------
+M6. Global support<=4 splice and improvement tests
+----------------------------------------------------------------------------------------
+M6 support<=4 splice theorem = True
+PASS: M6 support<=4 splice theorem
+M6 certified four-coordinate improvement = True
+PASS: M6 certified four-coordinate improvement
+M6 certified no-improvement = True
+PASS: M6 certified no-improvement
+
+----------------------------------------------------------------------------------------
+M7. Finite budget reconstructed from factors
+----------------------------------------------------------------------------------------
+M7 degree pattern = {3, 3, 3, 2}
+M7 support<=3 factor products = {{10, 12}, {10, 48}}
+M7 per-envelope candidate bound = 54
+M7 support<=3 budget = 600
+M7 interior quadruple budget = 540
+M7 full support<=4 budget = 1140
+M7 per-envelope 3*3*3*2 factor product = 0
+PASS: M7 per-envelope 3*3*3*2 factor product
+M7 support<=3 10*12+10*48 factor sum = 0
+PASS: M7 support<=3 10*12+10*48 factor sum
+M7 interior quadruple budget - 540 = 0
+PASS: M7 interior quadruple budget - 540
+M7 full support<=4 budget - 1140 = 0
+PASS: M7 full support<=4 budget - 1140
+
+Stage 215 Mathematica audit passed.

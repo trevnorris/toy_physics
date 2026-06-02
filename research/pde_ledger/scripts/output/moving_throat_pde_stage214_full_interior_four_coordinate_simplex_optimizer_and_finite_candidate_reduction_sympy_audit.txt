@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
-# Date: 2026-05-11T12:49:34-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
 STAGE 197 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER
@@ -1143,12 +1135,22 @@ S_t(r,s,t) =
 
 ↪          2  2
 ↪  - 4⋅J⋅kₗ ⋅t 
-cross-elimination identity rs = 0
-cross-elimination identity rt = 0
-cross-elimination identity st = 0
-square elimination identity r = 0
-square elimination identity s = 0
-square elimination identity t = 0
+C_rs non-vacuous polynomial = True
+C_rt non-vacuous polynomial = True
+C_st non-vacuous polynomial = True
+S_r non-vacuous polynomial = True
+S_s non-vacuous polynomial = True
+S_t non-vacuous polynomial = True
+F_r at diagonal-isotropic stationary point = 0
+F_s at diagonal-isotropic stationary point = 0
+F_t at diagonal-isotropic stationary point = 0
+F_Delta at diagonal-isotropic stationary point = 0
+C_rs at diagonal-isotropic stationary point = 0
+C_rt at diagonal-isotropic stationary point = 0
+C_st at diagonal-isotropic stationary point = 0
+S_r at diagonal-isotropic stationary point = 0
+S_s at diagonal-isotropic stationary point = 0
+S_t at diagonal-isotropic stationary point = 0
 deg C_rs = 5
 deg C_rt = 5
 deg C_st = 5
@@ -1206,5 +1208,3 @@ verified interior non-improvement theorem on 924 ordered integer samples
 ========================================================================================
 STAGE 197 SYMPY AUDIT COMPLETED SUCCESSFULLY
 ========================================================================================
-
-EXIT_CODE: 0

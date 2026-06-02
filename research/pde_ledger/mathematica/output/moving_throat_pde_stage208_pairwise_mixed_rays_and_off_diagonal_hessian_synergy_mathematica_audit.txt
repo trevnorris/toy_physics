@@ -1,0 +1,94 @@
+
+========================================================================================
+STAGE 208 -- MATHEMATICA PAIRWISE MIXED-RAY AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M3. Pairwise slope law and gradient optimizer
+----------------------------------------------------------------------------------------
+s(r) = {1/Sqrt[1 + r^2], r/Sqrt[1 + r^2]}
+K_ij(r) = -((ki + kj*r)/Sqrt[1 + r^2])
+k_ij(r) = (ki + kj*r)/Sqrt[1 + r^2]
+M1 oriented slope law = 0
+PASS: M1 oriented slope law
+M1 positive slope magnitude = 0
+PASS: M1 positive slope magnitude
+M2 slope derivative law = 0
+PASS: M2 slope derivative law
+Solve stationarity roots = {{r -> kj/ki}}
+Reduce stationarity region = (kj < 0 && ki < 0 && r == kj/ki) || (kj == 0 && ((ki < 0 && r == 0) || (ki == 0 && r >= 0) || (ki > 0 && r == 0))) || (kj > 0 && ki > 0 && r == kj/ki)
+domain-reduced stationarity region = kj == ki*r
+M3 unique stationary root count = 0
+PASS: M3 unique stationary root count
+M3 stationarity region equals r == kj/ki = True
+PASS: M3 stationarity region equals r == kj/ki
+M3 gradient-optimal ratio = 0
+PASS: M3 gradient-optimal ratio
+M3 gradient-optimal slope square = 0
+PASS: M3 gradient-optimal slope square
+
+----------------------------------------------------------------------------------------
+M4-M5. Mixed curvature weights and cross-weight extremum
+----------------------------------------------------------------------------------------
+H1(r) = (hii + 2*hij*r + hjj*r^2)/(1 + r^2)
+coefficient weights {w_i, w_x, w_j} = {(1 + r^2)^(-1), (2*r)/(1 + r^2), r^2/(1 + r^2)}
+M4 mixed curvature decomposition = 0
+PASS: M4 mixed curvature decomposition
+M4 diagonal neutrality = 0
+PASS: M4 diagonal neutrality
+M4 coefficient-recovered cross weight = 0
+PASS: M4 coefficient-recovered cross weight
+M5 cross-weight derivative = 0
+PASS: M5 cross-weight derivative
+M5 cross-weight derivative at r=1 = 0
+PASS: M5 cross-weight derivative at r=1
+M5 cross-weight value at r=1 = 0
+PASS: M5 cross-weight value at r=1
+
+----------------------------------------------------------------------------------------
+M6-M7. Canonical screen rays and coincidence condition
+----------------------------------------------------------------------------------------
+s(r_grad) = {ki/Sqrt[ki^2 + kj^2], kj/Sqrt[ki^2 + kj^2]}
+s(1) = {1/Sqrt[2], 1/Sqrt[2]}
+M6 gradient-optimal direction = {0, 0}
+PASS: M6 gradient-optimal direction
+M6 gradient-optimal slope = 0
+PASS: M6 gradient-optimal slope
+M6 gradient-optimal curvature = 0
+PASS: M6 gradient-optimal curvature
+M6 equal-mix direction = {0, 0}
+PASS: M6 equal-mix direction
+M6 equal-mix slope = 0
+PASS: M6 equal-mix slope
+M6 equal-mix curvature = 0
+PASS: M6 equal-mix curvature
+M7 ratio coincidence difference = 0
+PASS: M7 ratio coincidence difference
+M7 coincident directions when ki == kj = {0, 0}
+PASS: M7 coincident directions when ki == kj
+
+----------------------------------------------------------------------------------------
+M8. Entrywise curvature envelopes
+----------------------------------------------------------------------------------------
+M8 lower envelope Rayleigh form = 0
+PASS: M8 lower envelope Rayleigh form
+M8 upper envelope Rayleigh form = 0
+PASS: M8 upper envelope Rayleigh form
+M8 lower envelope weighted form = 0
+PASS: M8 lower envelope weighted form
+M8 upper envelope weighted form = 0
+PASS: M8 upper envelope weighted form
+
+----------------------------------------------------------------------------------------
+M9. Certified bracket root closure
+----------------------------------------------------------------------------------------
+tau_lo(r) = (2*H0)/((ki + kj*r)/Sqrt[1 + r^2] + Sqrt[(ki + kj*r)^2/(1 + r^2) - (2*H0*(hiiLo + 2*hijLo*r + hjjLo*r^2))/(1 + r^2)])
+tau_hi(r) = (2*H0)/((ki + kj*r)/Sqrt[1 + r^2] + Sqrt[(ki + kj*r)^2/(1 + r^2) - (2*H0*(hiiHi + 2*hijHi*r + hjjHi*r^2))/(1 + r^2)])
+M9 lower bracket closure quadratic = 0
+PASS: M9 lower bracket closure quadratic
+M9 upper bracket closure quadratic = 0
+PASS: M9 upper bracket closure quadratic
+
+========================================================================================
+STAGE 208 MATHEMATICA AUDIT COMPLETED SUCCESSFULLY
+========================================================================================

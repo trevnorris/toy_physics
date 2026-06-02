@@ -1,0 +1,76 @@
+
+========================================================================================
+STAGE 205 -- DIRECTIONAL HESSIAN AND QUADRATIC ROOT REFINEMENT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M2. Log-Hessian identities from second derivatives
+----------------------------------------------------------------------------------------
+M1 log-curvature identity = 0
+PASS: M1 log-curvature identity
+M2 ordinary/log bridge = 0
+PASS: M2 ordinary/log bridge
+
+----------------------------------------------------------------------------------------
+M3-M4. Affine quadratic predictor branches from Solve
+----------------------------------------------------------------------------------------
+M3 affine residual positive slope = 0
+PASS: M3 affine residual positive slope
+M4 affine zero-curvature limit positive slope = 0
+PASS: M4 affine zero-curvature limit positive slope
+M3 affine residual negative slope = 0
+PASS: M3 affine residual negative slope
+M4 affine zero-curvature limit negative slope = 0
+PASS: M4 affine zero-curvature limit negative slope
+
+----------------------------------------------------------------------------------------
+M5-M6. Logarithmic quadratic predictor branches from Solve
+----------------------------------------------------------------------------------------
+M5 log residual positive slope = 0
+PASS: M5 log residual positive slope
+M6 log zero-curvature limit positive slope = 0
+PASS: M6 log zero-curvature limit positive slope
+M5 log residual negative slope = 0
+PASS: M5 log residual negative slope
+M6 log zero-curvature limit negative slope = 0
+PASS: M6 log zero-curvature limit negative slope
+
+----------------------------------------------------------------------------------------
+M7. Turning-point reality criterion
+----------------------------------------------------------------------------------------
+M7 radicand criterion via Reduce = True
+PASS: M7 radicand criterion via Reduce
+M7 no real root on negative product = True
+PASS: M7 no real root on negative product
+M7 real-root existence region = True
+PASS: M7 real-root existence region
+M7 tau-plus residual on criterion region = 0
+PASS: M7 tau-plus residual on criterion region
+M7 tau-minus residual on criterion region = 0
+PASS: M7 tau-minus residual on criterion region
+
+----------------------------------------------------------------------------------------
+M8. Tangency model
+----------------------------------------------------------------------------------------
+M8 tangency model from quadratic closure = 0
+PASS: M8 tangency model from quadratic closure
+
+----------------------------------------------------------------------------------------
+M9-M11. Local curvature expansions
+----------------------------------------------------------------------------------------
+M9 ordinary curvature correction = 0
+PASS: M9 ordinary curvature correction
+M10 logarithmic curvature correction = 0
+PASS: M10 logarithmic curvature correction
+M11 gap coefficient eps^0 = 0
+PASS: M11 gap coefficient eps^0
+M11 gap coefficient eps^1 = 0
+PASS: M11 gap coefficient eps^1
+M11 gap coefficient eps^2 = 0
+PASS: M11 gap coefficient eps^2
+M11 gap coefficient eps^3 = 0
+PASS: M11 gap coefficient eps^3
+
+========================================================================================
+STAGE 205 MATHEMATICA AUDIT PASSED
+========================================================================================

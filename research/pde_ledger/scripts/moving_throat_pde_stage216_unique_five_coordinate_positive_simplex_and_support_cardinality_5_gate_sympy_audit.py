@@ -2,6 +2,15 @@ import sympy as sp
 from pathlib import Path
 
 
+def expect_zero(name, expr) -> None:
+    residual = sp.simplify(expr)
+    assert residual == 0, f"{name}: residual = {residual}"
+
+
+def require(name, condition) -> None:
+    assert condition, name
+
+
 def main() -> str:
     out = []
     out.append("Stage 216 SymPy audit — unique five-coordinate positive simplex and support-cardinality-5 gate")
@@ -27,6 +36,8 @@ def main() -> str:
     a_grad = [sp.simplify(k / k_norm) for k in ks]
     grad_norm_sq = sp.simplify(sum(a**2 for a in a_grad))
     k_grad = sp.simplify(sum(a * k for a, k in zip(a_grad, ks)))
+    expect_zero("M1 gradient-optimal unit norm", grad_norm_sq - 1)
+    expect_zero("M2 gradient-optimal max slope", k_grad - k_norm)
 
     out.append("2. Gradient-optimal interior ray")
     out.append(f"   ||a_grad||^2 = {grad_norm_sq}")
@@ -41,6 +52,9 @@ def main() -> str:
         k_lam**2 + k_c**2 + k_gam**2 + k_U**2,
     ]
     diffs = [sp.simplify(k_norm_sq - s) for s in face_max_sq]
+    for label, diff, k_axis in zip(face_labels, diffs, ks):
+        expect_zero(f"M3 {label} face gap", diff - k_axis**2)
+        require(f"M3 {label} strict positive gap", (k_axis**2).is_positive is True)
     for label, diff in zip(face_labels, diffs):
         out.append(f"   (k_5^grad)^2 - (k_{label}^grad)^2 = {diff}")
     out.append("")
@@ -70,6 +84,8 @@ def main() -> str:
     slack = sp.expand(5 * norm_sq - asum**2)
     pair_sum = sum((x - y)**2 for i, x in enumerate([a1, a2, a3, a4, a5]) for y in [a1, a2, a3, a4, a5][i+1:])
     slack_check = sp.expand(slack - pair_sum)
+    expect_zero("M4 cross-leverage identity", identity_check)
+    expect_zero("M4 Cauchy slack identity", slack_check)
 
     out.append("3. Total ten-way off-diagonal leverage")
     out.append(f"   w_sigma - ((sum a_i)^2 - sum a_i^2) = {identity_check}")
@@ -77,6 +93,7 @@ def main() -> str:
 
     a_eq = [sp.Integer(1) / sp.sqrt(5)] * 5
     w_eq = sp.simplify(w_sigma.subs({a1: a_eq[0], a2: a_eq[1], a3: a_eq[2], a4: a_eq[3], a5: a_eq[4]}))
+    expect_zero("M5 barycenter leverage", w_eq - 4)
     w_quad_eq = sp.Integer(3)  # imported from Stage 213
     w_triple_eq = sp.Integer(2)  # imported from Stage 210/194 chain
     w_pair_eq = sp.Integer(1)
@@ -93,6 +110,7 @@ def main() -> str:
     H0, kappa = sp.symbols("H0 kappa", positive=True)
     k = sp.symbols("k", positive=True)
     tau = sp.simplify(2 * H0 / (k + sp.sqrt(k**2 - 2 * H0 * kappa)))
+    expect_zero("M6 certified bracket quadratic residual", sp.Rational(1, 2) * kappa * tau**2 - k * tau + H0)
     out.append("4. Fixed-point certified bracket")
     out.append(f"   tau(H0,k,kappa) = {tau}")
     out.append("   with k = k_5(a) and kappa = a^T H_(5,star) a")

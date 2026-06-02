@@ -32,7 +32,7 @@ def expect_true(name: str, condition: bool) -> None:
         raise AssertionError(f"{name} failed")
 
 
-banner("STAGE 195 — FULL PRIMITIVE-TRIPLE RANKING AND THE UP-TO-THREE-COORDINATE SIEVE")
+banner("STAGE 212 — FULL PRIMITIVE-TRIPLE RANKING AND THE UP-TO-THREE-COORDINATE SIEVE")
 
 # ---------------------------------------------------------------------------
 # I. Exact combinatorial ledger for the five primitive free directions

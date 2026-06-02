@@ -176,13 +176,51 @@ sp.pprint(Ss)
 print("S_t(r,s,t) =")
 sp.pprint(St)
 
-expect_zero("cross-elimination identity rs", Ms * Fr - Mr * Fs - Crs)
-expect_zero("cross-elimination identity rt", Mt * Fr - Mr * Ft - Crt)
-expect_zero("cross-elimination identity st", Mt * Fs - Ms * Ft - Cst)
+for label, eliminant in [
+    ("C_rs", Crs),
+    ("C_rt", Crt),
+    ("C_st", Cst),
+    ("S_r", Sr),
+    ("S_s", Ss),
+    ("S_t", St),
+]:
+    expect_true(f"{label} non-vacuous polynomial", not sp.Poly(eliminant, r, s, t).is_zero)
 
-expect_zero("square elimination identity r", Fr * (Fr - 4 * Mr * y) + 4 * Mr**2 * FDelta - Sr)
-expect_zero("square elimination identity s", Fs * (Fs - 4 * Ms * y) + 4 * Ms**2 * FDelta - Ss)
-expect_zero("square elimination identity t", Ft * (Ft - 4 * Mt * y) + 4 * Mt**2 * FDelta - St)
+stationary_subs = {
+    ki: sp.Rational(2),
+    kj: sp.Rational(3),
+    kk: sp.Rational(5),
+    kl: sp.Rational(7),
+    H0: sp.Rational(1),
+    A: -sp.Rational(220, 3),
+    B: sp.Rational(12),
+    C: sp.Rational(20),
+    D: sp.Rational(28),
+    E: -sp.Rational(205, 3),
+    F: sp.Rational(30),
+    G: sp.Rational(42),
+    H: -sp.Rational(157, 3),
+    I: sp.Rational(70),
+    J: -sp.Rational(85, 3),
+    r: sp.Rational(3, 2),
+    s: sp.Rational(5, 2),
+    t: sp.Rational(7, 2),
+    y: sp.Rational(29, 2),
+}
+
+for label, stationary_poly in [
+    ("F_r", Fr),
+    ("F_s", Fs),
+    ("F_t", Ft),
+    ("F_Delta", FDelta),
+    ("C_rs", Crs),
+    ("C_rt", Crt),
+    ("C_st", Cst),
+    ("S_r", Sr),
+    ("S_s", Ss),
+    ("S_t", St),
+]:
+    expect_zero(f"{label} at diagonal-isotropic stationary point", stationary_poly.subs(stationary_subs))
 
 deg_Crs = sp.Poly(Crs, r, s, t).total_degree()
 deg_Crt = sp.Poly(Crt, r, s, t).total_degree()

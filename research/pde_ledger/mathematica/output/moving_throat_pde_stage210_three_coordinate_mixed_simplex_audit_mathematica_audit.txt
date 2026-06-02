@@ -1,0 +1,119 @@
+
+========================================================================================
+STAGE 210 -- THREE-COORDINATE MIXED-SIMPLEX MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Edge normalization
+----------------------------------------------------------------------------------------
+M1 edge ij normalization = 0
+PASS: M1 edge ij normalization
+M1 edge ik normalization = 0
+PASS: M1 edge ik normalization
+M1 edge jk normalization = 0
+PASS: M1 edge jk normalization
+
+----------------------------------------------------------------------------------------
+M2. Boundary slope reductions from limiting edge patches
+----------------------------------------------------------------------------------------
+M2 ij slope boundary residual = 0
+PASS: M2 ij slope boundary residual
+M2 ik slope boundary residual = 0
+PASS: M2 ik slope boundary residual
+M2 jk slope boundary residual = 0
+PASS: M2 jk slope boundary residual
+
+----------------------------------------------------------------------------------------
+M3. Gradient-optimal point from Lagrange stationarity
+----------------------------------------------------------------------------------------
+M3 positive Lagrange branch = {ki/Sqrt[ki^2 + kj^2 + kk^2], kj/Sqrt[ki^2 + kj^2 + kk^2], kk/Sqrt[ki^2 + kj^2 + kk^2]}
+M3 Lagrange stationarity residuals = {0, 0, 0, 0}
+PASS: M3 Lagrange stationarity residuals
+M3 stationary branch minus gradient vector = {0, 0, 0}
+PASS: M3 stationary branch minus gradient vector
+M3 gradient normalization = 0
+PASS: M3 gradient normalization
+M3 Cauchy identity residual = 0
+PASS: M3 Cauchy identity residual
+
+----------------------------------------------------------------------------------------
+M4. Maximum slope value and interior ratios
+----------------------------------------------------------------------------------------
+M4 maximum slope residual = 0
+PASS: M4 maximum slope residual
+M4 ratio aj/ai residual = 0
+PASS: M4 ratio aj/ai residual
+M4 ratio ak/ai residual = 0
+PASS: M4 ratio ak/ai residual
+
+----------------------------------------------------------------------------------------
+M5. Strict interior gain via Pythagorean decompositions
+----------------------------------------------------------------------------------------
+M5 Kijk^2 - Kij^2 - kk^2 = 0
+PASS: M5 Kijk^2 - Kij^2 - kk^2
+M5 Kijk^2 - Kik^2 - kj^2 = 0
+PASS: M5 Kijk^2 - Kik^2 - kj^2
+M5 Kijk^2 - Kjk^2 - ki^2 = 0
+PASS: M5 Kijk^2 - Kjk^2 - ki^2
+
+----------------------------------------------------------------------------------------
+M6. Cross-leverage identity, Cauchy slack, and screen values
+----------------------------------------------------------------------------------------
+M6 wSigma sum-square identity = 0
+PASS: M6 wSigma sum-square identity
+M6 Cauchy slack identity = 0
+PASS: M6 Cauchy slack identity
+M6 slack bound identity on unit sphere = 0
+PASS: M6 slack bound identity on unit sphere
+M6 equal-mix screen value = 0
+PASS: M6 equal-mix screen value
+M6 pairwise equal-edge screen value = 0
+PASS: M6 pairwise equal-edge screen value
+M6 wSigma == 2 unit-simplex condition = ai == 1/Sqrt[3] && aj == 1/Sqrt[3] && ak == 1/Sqrt[3]
+M6 equal-mix uniqueness condition = True
+PASS: M6 equal-mix uniqueness condition
+
+----------------------------------------------------------------------------------------
+M7. Curvature law and discriminant numerator by coefficient extraction
+----------------------------------------------------------------------------------------
+M7 CoefficientList in {r,s} = {{ki^2 - 2*H0*uii, 2*ki*kk - 4*H0*uik, kk^2 - 2*H0*ukk}, {2*ki*kj - 4*H0*uij, 2*kj*kk - 4*H0*ujk, 0}, {kj^2 - 2*H0*ujj, 0, 0}}
+M7 coefficient A residual = 0
+PASS: M7 coefficient A residual
+M7 coefficient B residual = 0
+PASS: M7 coefficient B residual
+M7 coefficient C residual = 0
+PASS: M7 coefficient C residual
+M7 coefficient D residual = 0
+PASS: M7 coefficient D residual
+M7 coefficient E residual = 0
+PASS: M7 coefficient E residual
+M7 coefficient F residual = 0
+PASS: M7 coefficient F residual
+
+----------------------------------------------------------------------------------------
+M8. Curvature edge reductions and diagonal-neutral case
+----------------------------------------------------------------------------------------
+M8 ij curvature edge residual = 0
+PASS: M8 ij curvature edge residual
+M8 ik curvature edge residual = 0
+PASS: M8 ik curvature edge residual
+M8 jk curvature edge residual = 0
+PASS: M8 jk curvature edge residual
+M8 diagonal-neutral curvature residual = 0
+PASS: M8 diagonal-neutral curvature residual
+
+----------------------------------------------------------------------------------------
+M9. Fixed-simplex root map and boundary reductions
+----------------------------------------------------------------------------------------
+M9 ratio-coordinate tau residual = 0
+PASS: M9 ratio-coordinate tau residual
+M9 ij boundary tau residual = 0
+PASS: M9 ij boundary tau residual
+M9 ik boundary tau residual = 0
+PASS: M9 ik boundary tau residual
+M9 jk boundary tau residual = 0
+PASS: M9 jk boundary tau residual
+
+========================================================================================
+STAGE 210 MATHEMATICA AUDIT PASSED
+========================================================================================

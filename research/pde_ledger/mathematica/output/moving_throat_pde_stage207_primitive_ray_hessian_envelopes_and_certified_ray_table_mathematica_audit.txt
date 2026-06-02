@@ -1,0 +1,129 @@
+
+========================================================================================
+STAGE 207 -- PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Diagonal Hessian reduction on primitive axes
+----------------------------------------------------------------------------------------
+M1 +e_lambda diagonal residual = 0
+PASS: M1 +e_lambda diagonal residual
+M1 -e_lambda diagonal residual = 0
+PASS: M1 -e_lambda diagonal residual
+M1 +e_c diagonal residual = 0
+PASS: M1 +e_c diagonal residual
+M1 -e_c diagonal residual = 0
+PASS: M1 -e_c diagonal residual
+M1 +e_gamma diagonal residual = 0
+PASS: M1 +e_gamma diagonal residual
+M1 -e_gamma diagonal residual = 0
+PASS: M1 -e_gamma diagonal residual
+M1 +e_U diagonal residual = 0
+PASS: M1 +e_U diagonal residual
+M1 -e_U diagonal residual = 0
+PASS: M1 -e_U diagonal residual
+M1 +e_W diagonal residual = 0
+PASS: M1 +e_W diagonal residual
+M1 -e_W diagonal residual = 0
+PASS: M1 -e_W diagonal residual
+
+----------------------------------------------------------------------------------------
+M2. Mixed-ray quadratic form and off-diagonal coefficient
+----------------------------------------------------------------------------------------
+M2 quadratic form residual (lambda,c) = 0
+PASS: M2 quadratic form residual (lambda,c)
+M2 cross coefficient residual (lambda,c) = 0
+PASS: M2 cross coefficient residual (lambda,c)
+M2 quadratic form residual (lambda,gamma) = 0
+PASS: M2 quadratic form residual (lambda,gamma)
+M2 cross coefficient residual (lambda,gamma) = 0
+PASS: M2 cross coefficient residual (lambda,gamma)
+M2 quadratic form residual (lambda,U) = 0
+PASS: M2 quadratic form residual (lambda,U)
+M2 cross coefficient residual (lambda,U) = 0
+PASS: M2 cross coefficient residual (lambda,U)
+M2 quadratic form residual (lambda,W) = 0
+PASS: M2 quadratic form residual (lambda,W)
+M2 cross coefficient residual (lambda,W) = 0
+PASS: M2 cross coefficient residual (lambda,W)
+M2 quadratic form residual (c,gamma) = 0
+PASS: M2 quadratic form residual (c,gamma)
+M2 cross coefficient residual (c,gamma) = 0
+PASS: M2 cross coefficient residual (c,gamma)
+M2 quadratic form residual (c,U) = 0
+PASS: M2 quadratic form residual (c,U)
+M2 cross coefficient residual (c,U) = 0
+PASS: M2 cross coefficient residual (c,U)
+M2 quadratic form residual (c,W) = 0
+PASS: M2 quadratic form residual (c,W)
+M2 cross coefficient residual (c,W) = 0
+PASS: M2 cross coefficient residual (c,W)
+M2 quadratic form residual (gamma,U) = 0
+PASS: M2 quadratic form residual (gamma,U)
+M2 cross coefficient residual (gamma,U) = 0
+PASS: M2 cross coefficient residual (gamma,U)
+M2 quadratic form residual (gamma,W) = 0
+PASS: M2 quadratic form residual (gamma,W)
+M2 cross coefficient residual (gamma,W) = 0
+PASS: M2 cross coefficient residual (gamma,W)
+M2 quadratic form residual (U,W) = 0
+PASS: M2 quadratic form residual (U,W)
+M2 cross coefficient residual (U,W) = 0
+PASS: M2 cross coefficient residual (U,W)
+
+----------------------------------------------------------------------------------------
+M3. Canonical orientation law
+----------------------------------------------------------------------------------------
+M3 K + Abs[Gamma] = 0
+PASS: M3 K + Abs[Gamma]
+
+----------------------------------------------------------------------------------------
+M4. Certified monotone bracket root map
+----------------------------------------------------------------------------------------
+M4 slope convention coefficient for tau is -k = 0
+PASS: M4 slope convention coefficient for tau is -k
+M4 positive root set (lower envelope) = (kappaLo == 0 && H0 == k*tau) || (kappaLo > 0 && Sqrt[k^2 - 2*H0*kappaLo]/kappaLo + tau == k/kappaLo) || (kappaLo != 0 && (k + Sqrt[k^2 - 2*H0*kappaLo]*Sign[kappaLo])/kappaLo == tau)
+M4 positive root set (upper envelope) = (kappaHi == 0 && H0 == k*tau) || (kappaHi > 0 && Sqrt[k^2 - 2*H0*kappaHi]/kappaHi + tau == k/kappaHi) || (kappaHi != 0 && (k + Sqrt[k^2 - 2*H0*kappaHi]*Sign[kappaHi])/kappaHi == tau)
+M4 tau_lo selected root - closed form = 0
+PASS: M4 tau_lo selected root - closed form
+M4 tau_lo quadratic residual = 0
+PASS: M4 tau_lo quadratic residual
+M4 tau_hi selected root - closed form = 0
+PASS: M4 tau_hi selected root - closed form
+M4 tau_hi quadratic residual = 0
+PASS: M4 tau_hi quadratic residual
+
+----------------------------------------------------------------------------------------
+M5. Certified turning bracket
+----------------------------------------------------------------------------------------
+M5 tau_lo^(tp) - Sqrt[-2H0/kappa_lo] = 0
+PASS: M5 tau_lo^(tp) - Sqrt[-2H0/kappa_lo]
+M5 tau_lo^(tp) turning residual = 0
+PASS: M5 tau_lo^(tp) turning residual
+M5 tau_hi^(tp) - Sqrt[-2H0/kappa_hi] = 0
+PASS: M5 tau_hi^(tp) - Sqrt[-2H0/kappa_hi]
+M5 tau_hi^(tp) turning residual = 0
+PASS: M5 tau_hi^(tp) turning residual
+
+----------------------------------------------------------------------------------------
+M6. Sign-adapted primitive drift table
+----------------------------------------------------------------------------------------
+M6 primitive exponent row (lambda) =
+MatrixForm[{0, 0, 0, 0}]
+PASS: M6 primitive exponent row (lambda)
+M6 primitive exponent row (c) =
+MatrixForm[{0, 0, 0, 0}]
+PASS: M6 primitive exponent row (c)
+M6 primitive exponent row (gamma) =
+MatrixForm[{0, 0, 0, 0}]
+PASS: M6 primitive exponent row (gamma)
+M6 primitive exponent row (U) =
+MatrixForm[{0, 0, 0, 0}]
+PASS: M6 primitive exponent row (U)
+M6 primitive exponent row (W) =
+MatrixForm[{0, 0, 0, 0}]
+PASS: M6 primitive exponent row (W)
+
+========================================================================================
+STAGE 207 MATHEMATICA AUDIT PASSED
+========================================================================================

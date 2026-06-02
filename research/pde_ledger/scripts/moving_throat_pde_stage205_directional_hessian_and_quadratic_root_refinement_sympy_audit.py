@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 188 — DIRECTIONAL HESSIAN AND QUADRATIC ROOT REFINEMENT")
+banner("STAGE 205 — DIRECTIONAL HESSIAN AND QUADRATIC ROOT REFINEMENT")
 
 # ---------------------------------------------------------------------------
 # I. Exact directional Hessian identities in free log space
@@ -97,6 +97,20 @@ sp.pprint(tau_quad)
 expect_zero("quadratic affine residual", res_aff)
 expect_zero("limit Phi2 -> 0 gives tau_aff", sp.simplify(sp.limit(tau_quad, Phi2a, 0) - tau_aff))
 
+Phi0a_n, Phi1a_abs, Phi2a_n = sp.symbols("Phi0a_n Phi1a_abs Phi2a_n", positive=True, real=True)
+Phi1a_n = -Phi1a_abs
+Delta_aff_n = sp.simplify(Phi1a_n**2 - 2 * Phi2a_n * (Phi0a_n - 1))
+tau_aff_n = sp.simplify((1 - Phi0a_n) / Phi1a_n)
+tau_quad_n = sp.simplify(2 * (1 - Phi0a_n) / (Phi1a_n - sp.sqrt(Delta_aff_n)))
+res_aff_n = sp.simplify(
+    (Phi0a_n - 1) + Phi1a_n * tau_quad_n + sp.Rational(1, 2) * Phi2a_n * tau_quad_n**2
+)
+expect_zero("quadratic affine residual (negative slope)", res_aff_n)
+expect_zero(
+    "limit Phi2 -> 0 gives tau_aff (negative slope)",
+    sp.simplify(sp.limit(tau_quad_n, Phi2a_n, 0) - tau_aff_n),
+)
+
 # ---------------------------------------------------------------------------
 # III. Exact quadratic logarithmic predictor (positive-slope continuation branch)
 # ---------------------------------------------------------------------------
@@ -116,23 +130,63 @@ sp.pprint(tau_log2)
 expect_zero("quadratic log residual", res_log)
 expect_zero("limit L1 -> 0 gives tau_log", sp.simplify(sp.limit(tau_log2, L1l, 0) - tau_log))
 
+Phi0l_n, L0l_abs, L1l_n = sp.symbols("Phi0l_n L0l_abs L1l_n", positive=True, real=True)
+L0l_n = -L0l_abs
+Delta_log_n = sp.simplify(L0l_n**2 - 2 * L1l_n * sp.log(Phi0l_n))
+tau_log_n = sp.simplify(-sp.log(Phi0l_n) / L0l_n)
+tau_log2_n = sp.simplify(-2 * sp.log(Phi0l_n) / (L0l_n - sp.sqrt(Delta_log_n)))
+res_log_n = sp.simplify(
+    sp.log(Phi0l_n) + L0l_n * tau_log2_n + sp.Rational(1, 2) * L1l_n * tau_log2_n**2
+)
+expect_zero("quadratic log residual (negative slope)", res_log_n)
+expect_zero(
+    "limit L1 -> 0 gives tau_log (negative slope)",
+    sp.simplify(sp.limit(tau_log2_n, L1l_n, 0) - tau_log_n),
+)
+
 # ---------------------------------------------------------------------------
 # IV. Turning-point / tangency formulas
 # ---------------------------------------------------------------------------
 subbanner("IV. Turning-point and tangency formulas")
 Phi0t, Phi2t = sp.symbols("Phi0t Phi2t", real=True)
-tau_tp = sp.sqrt(2 * (1 - Phi0t) / Phi2t)
-res_tp_plus = sp.simplify((Phi0t - 1) + sp.Rational(1, 2) * Phi2t * tau_tp**2)
-res_tp_minus = sp.simplify((Phi0t - 1) + sp.Rational(1, 2) * Phi2t * (-tau_tp)**2)
-print("tau_tp =")
-sp.pprint(tau_tp)
-expect_zero("turning-point root (+)", res_tp_plus)
-expect_zero("turning-point root (-)", res_tp_minus)
+radicand_tp = sp.simplify(2 * (1 - Phi0t) / Phi2t)
+criterion_tp = sp.simplify((1 - Phi0t) * Phi2t)
+expect_zero(
+    "turning-point radicand/product sign bridge",
+    sp.simplify(radicand_tp * Phi2t**2 / 2 - criterion_tp),
+)
 
-Phi2g = sp.symbols("Phi2g", real=True)
+apos, bpos = sp.symbols("apos bpos", positive=True, real=True)
+positive_product_cases = [
+    radicand_tp.subs({1 - Phi0t: apos, Phi2t: bpos}),
+    radicand_tp.subs({1 - Phi0t: -apos, Phi2t: -bpos}),
+]
+negative_product_cases = [
+    radicand_tp.subs({1 - Phi0t: apos, Phi2t: -bpos}),
+    radicand_tp.subs({1 - Phi0t: -apos, Phi2t: bpos}),
+]
+print("turning-point radicand on (1-Phi0)*Phi2 > 0 cases =")
+sp.pprint([sp.simplify(case) for case in positive_product_cases])
+if not all(sp.ask(sp.Q.positive(sp.simplify(case))) for case in positive_product_cases):
+    raise AssertionError("turning-point positive criterion did not imply a real radicand")
+print("turning-point radicand on (1-Phi0)*Phi2 < 0 cases =")
+sp.pprint([sp.simplify(case) for case in negative_product_cases])
+if not all(sp.ask(sp.Q.negative(sp.simplify(case))) for case in negative_product_cases):
+    raise AssertionError("turning-point negative criterion did not imply no real root")
+
+tau_tp = sp.sqrt(radicand_tp)
+res_tp_plus = sp.simplify((Phi0t - 1) + sp.Rational(1, 2) * Phi2t * tau_tp**2)
+expect_zero("turning-point root residual on real-root branch", res_tp_plus)
+
+Phi0g, Phi1g, Phi2g = sp.symbols("Phi0g Phi1g Phi2g", real=True)
+quad_model_g = sp.simplify((Phi0g - 1) + Phi1g * tau + sp.Rational(1, 2) * Phi2g * tau**2)
 Delta_tangent = sp.simplify(sp.Rational(1, 2) * Phi2g * tau**2)
 print("tangency model Delta(tau) at Phi0=1, Phi1=0 =")
 sp.pprint(Delta_tangent)
+expect_zero(
+    "tangency model from quadratic closure",
+    sp.simplify(quad_model_g.subs({Phi0g: 1, Phi1g: 0}) - Delta_tangent),
+)
 
 # ---------------------------------------------------------------------------
 # V. Small-defect expansions around the closure slice
@@ -171,4 +225,4 @@ expect_zero(
     - (L0e**2 + 3 * L1e) / (6 * L0e**3),
 )
 
-banner("STAGE 188 SYMPY AUDIT PASSED")
+banner("STAGE 205 SYMPY AUDIT PASSED")

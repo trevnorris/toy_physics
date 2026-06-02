@@ -1,0 +1,66 @@
+
+========================================================================================
+STAGE 211 -- FULL INTERIOR SIMPLEX OPTIMIZER AND FINITE ALGEBRAIC CANDIDATE REDUCTION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Exact stationary numerator law
+----------------------------------------------------------------------------------------
+M1 direct numerator from D[Phi, r] = -2*A*r - 2*r*s*(Ccoef + Fcoef*s) + 2*Dcoef*r*(1 + s^2) + B*(1 - r^2 + s^2) + Ecoef*s*(1 - r^2 + s^2) + 2*kj*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - 2*ki*r*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - 2*kk*r*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + 2*kj*s^2*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)]
+M1 direct numerator from D[Phi, s] = Ccoef*(1 + r^2 - s^2) + Ecoef*(r + r^3 - r*s^2) - 2*(A*s + r*(B + Dcoef*r)*s - Fcoef*(1 + r^2)*s - kk*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - kk*r^2*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + ki*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + kj*r*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)])
+M1 D[Phi,r] numerator minus paper N_r = 0
+PASS: M1 D[Phi,r] numerator minus paper N_r
+M1 D[Phi,s] numerator minus paper N_s = 0
+PASS: M1 D[Phi,s] numerator minus paper N_s
+M1 derivative law r = 0
+PASS: M1 derivative law r
+M1 derivative law s = 0
+PASS: M1 derivative law s
+
+----------------------------------------------------------------------------------------
+M2. Quartic cross-consistency
+----------------------------------------------------------------------------------------
+M2 square-root-free cross identity = 0
+PASS: M2 square-root-free cross identity
+M2 total degree C_cross = 4
+M2 C_cross has total degree 4 = True
+PASS: M2 C_cross has total degree 4
+
+----------------------------------------------------------------------------------------
+M3. Sextic square eliminants
+----------------------------------------------------------------------------------------
+M3 square eliminant identity r = 0
+PASS: M3 square eliminant identity r
+M3 square eliminant identity s = 0
+PASS: M3 square eliminant identity s
+M3 total degree S_r = 6
+M3 total degree S_s = 6
+M3 S_r has total degree 6 = True
+PASS: M3 S_r has total degree 6
+M3 S_s has total degree 6 = True
+PASS: M3 S_s has total degree 6
+
+----------------------------------------------------------------------------------------
+M4. Bezout bound
+----------------------------------------------------------------------------------------
+M4 computed Bezout product = 24
+M4 Bezout product equals 24 = True
+PASS: M4 Bezout product equals 24
+
+----------------------------------------------------------------------------------------
+M5. Diagonal-isotropic reduction
+----------------------------------------------------------------------------------------
+M5 Delta_iso reduction = 0
+PASS: M5 Delta_iso reduction
+M5 tau_iso reduction = 0
+PASS: M5 tau_iso reduction
+
+----------------------------------------------------------------------------------------
+M6. Full-symmetry equal-mix stationarity
+----------------------------------------------------------------------------------------
+M6 symmetric N_r(1,1) = 0
+PASS: M6 symmetric N_r(1,1)
+M6 symmetric N_s(1,1) = 0
+PASS: M6 symmetric N_s(1,1)
+
+All Stage 211 identities verified.

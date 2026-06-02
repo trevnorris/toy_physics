@@ -3,12 +3,13 @@
 > Resume doc. Read this + the files it points to, then continue. Written before a
 > planned compaction so a fresh context picks up exactly here.
 
-> **STATUS (2026-06-01): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 200.**
+> **STATUS (2026-06-02): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 218.**
 > All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
 > **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
 > (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
 > **RETRO-SWEEP {121, 122, 123} DONE — 3/3 dual-engine `.wl` verified (2026-06-01; batch `redteam/batches/batch_retro_v2.md`).**
-> Cumulative **200/253 verified (79.1%)** (retro adds 2nd engines to already-verified stages — count unchanged).
+> **VI.1 = {201–218} DONE — 18/18 verified (2026-06-02; batch `redteam/batches/batch_VI1_v2.md`; checkpoints 203 & 218 both cleared the higher bar; 16 new independent `.wl` + 218 re-authored + 203 strengthened; 5 paper_misalignment user-resolved; `material_change: false` on all 18).**
+> Cumulative **218/253 verified (86.2%)**.
 >
 > **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
 > a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
@@ -18,23 +19,43 @@
 > independent-route `.wl` (188–199) + de-transliterated 200's `.wl`.
 >
 > **NEXT (gated, awaits explicit user go):**
-> 1. ✅ **RETRO-SWEEP {121, 122, 123} DONE — 3/3 verified 2026-06-01** (each got a new
->    independent-route `.wl`; `material_change: false`; `.py`/paper/notes untouched; batch
->    `redteam/batches/batch_retro_v2.md`). The dual-engine gap for already-`verified`
->    non-status-only stages is now CLOSED (these were the only 3). ✅ COMMITTED 2026-06-01
->    (retro-sweep commit; see git log).
-> 2. **VI.1 = {201–218}** — NEXT forward batch (18 stages; "Part VI.1 — Explicit realization,
->    scalar slice, ray ranking"; **checkpoints 203 and 218** → higher verify bar, no rubber-stamp;
->    no status-only units in range). Then VII.1 {219–230}, VII.2 {231–242}, VIII.1 {243–253} =
->    53 stages total. Normal forward first-pass audit under the v2 paper-grounded prompt, now WITH
->    the dual-engine rule: audit agents must flag `missing_mathematica` (auditor line 118) on every
->    SymPy-only-but-dual-engine-capable stage; Codex writes BOTH the `.py` fixes AND any new `.wl`;
->    Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).
->    Per-stage loop: `render-audit-prompt` → audit agent → directive → `set-status fixing` →
->    `codex-invoke` (≤2 parallel; 2 Mathematica seats OK per user) → `scan` (register any new `.wl`)
->    → `exec-sympy`+`exec-mathematica` (sequential) + refresh `output/*.txt` → `capture-diff` →
->    `render-verify-prompt` → verify agent → `set-status verified`. (The 11 status-only single-engine
->    stages elsewhere compute nothing → legitimately single-engine.)
+> 1. ✅ **RETRO-SWEEP {121,122,123} DONE + COMMITTED 2026-06-01 `251639c`** (dual-engine gap for
+>    already-verified non-status-only stages CLOSED).
+> 2. ✅ **VI.1 = {201–218} DONE + COMMITTED 2026-06-02** (this commit; see git log). 18/18 verified,
+>    `material_change: false` on all 18, 0 stop-cold, 0 blocked. Checkpoints 203 & 218 cleared the
+>    higher bar (203: crossing theorem now composed through the real Stage-202 graph map over a
+>    2-free-coord path + falsifiable target-monomial-invariance; 218: `.wl` RE-AUTHORED from a
+>    transliteration to an independent route [native set-combinatorics M1, Reduce/Resolve splice,
+>    independently-generated regime witnesses — M4 counts even differ cross-engine] + Min-flatten
+>    tautology→falsifiable splice bracket + hardcoded→paper-anchored budgets + ">0"→exhaustive counts).
+>    16 new independent `.wl` (201,202,204–217 non-ckpt) + 218 re-authored + 203 strengthened → 0
+>    sanctioned mirrors in VI.1. 5 paper_misalignment USER-RESOLVED: 217 PUBLISHED card+appendix+notes
+>    `179/230→162` (value_mismatch, arithmetically forced, only value consistent with 324/1464/2640);
+>    212/214/218 notes typos (188→120 + 246/243/245/247→212/209/211/213 renumber; 218→150; 230→162);
+>    206 scope → ADDITIVE both-engine checks (pairwise-ordering tautology-over-region + non-vacuity,
+>    discriminating admissibility predicate), NO paper edit. 1 iter-2 timeout rework (202: symbolic
+>    `Solve` of a transcendental log eqn → `LinearSolve` of the log-LINEARIZED system) + 1 iter-2
+>    forward-ref renumber (212: 247→213). 4 orchestrator catches: 3 directive `.wl` targets dropped the
+>    `_mathematica_audit` suffix (201/210 already built → files renamed; 212/216 directives fixed
+>    pre-build); + the 202/212 iter-2s. PAPER_CLEANUP **P4-52** logs the applied paper/notes edits AND
+>    out-of-scope residuals to clean later (217/218 notes stale "Stage 249/251/252" forward labels;
+>    stale `.py` STAGE-NNN banners on 203/208/209/210/216/218; a 218 `.py` "Stage 249" provenance
+>    comment + dead helpers). **INFRA LESSON: a single Codex build can hold BOTH Mathematica seats
+>    during a hang → DEFER the orchestrator's `exec-*` re-run until a wave's Codex builds finish; never
+>    exec concurrently with an active build.**
+> 3. **VII.1 = {219–230}** — NEXT forward batch (12 stages). Then VII.2 {231–242} (12), VIII.1
+>    {243–253} (11) = **35 stages to reach 253**. Same forward first-pass loop under the v2
+>    paper-grounded prompt WITH the dual-engine rule: audit agents flag `missing_mathematica` (auditor
+>    line 118) on every SymPy-only-but-dual-engine-capable stage; Codex writes BOTH `.py` fixes AND new
+>    `.wl`; Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).
+>    Per-stage loop: `render-audit-prompt` → audit agent (writes report+directive) → resolve any
+>    paper_misalignment at the user gate → `set-status fixing` → `codex-invoke` (≤2 parallel; **DEFER
+>    exec until BOTH wave builds finish** — seat contention) → `scan` (register any new `.wl`) →
+>    `exec-sympy`+`exec-mathematica` (sequential) + refresh `output/*.txt` → `capture-diff` →
+>    `render-verify-prompt` → clean verify agent → `set-status verified`. ⚠️ **Before each `codex-invoke`,
+>    GREP the directive's `.wl` target for the `_mathematica_audit.wl` suffix** — VI.1 audit agents
+>    dropped it on 4 of 18. (The 11 status-only single-engine stages elsewhere compute nothing →
+>    legitimately single-engine.)
 > The planned full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check,
 > only after the first pass reaches stage 253 — NOT the next step.
 > **✅ V.3 COMMITTED 2026-06-01** (this commit; see git log): 12 new `.wl` + 1 edited `.wl` (200) +

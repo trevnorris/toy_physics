@@ -7065,8 +7065,8 @@ stages:
     stage: 201
     stage_str: '201'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7079,8 +7079,9 @@ stages:
         exists: true
         mtime: 1778522333
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_mathematica_audit.wl
+        exists: true
+        mtime: 1780382168
       sympy_output:
         path: scripts/output/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.txt
         exists: true
@@ -7088,12 +7089,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 09:50:29-06:00
+    codex_session: 019e8709-9f07-75d1-84f4-6d5ce10f9533
+    codex_log_paths:
+    - redteam/codex_logs/201_iter1.txt
+    last_codex_run: 2026-06-02 00:37:12-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 01:01:02-06:00
   '202':
     stage: 202
     stage_str: '202'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 2
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7106,8 +7115,9 @@ stages:
         exists: true
         mtime: 1778522333
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage202_free_quintuple_target_graph_mathematica_audit.wl
+        exists: true
+        mtime: 1780382516
       sympy_output:
         path: scripts/output/moving_throat_pde_stage202_free_quintuple_target_graph_sympy_audit.txt
         exists: true
@@ -7115,12 +7125,21 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:01:36-06:00
+    codex_session: 019e8709-af05-7e03-aeae-9866486efcfb
+    codex_log_paths:
+    - redteam/codex_logs/202_iter1.txt
+    - redteam/codex_logs/202_iter2.txt
+    last_codex_run: 2026-06-02 09:53:39-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 09:56:59-06:00
   '203':
     stage: 203
     stage_str: '203'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -7131,11 +7150,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780424387
       mathematica:
         path: mathematica/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl
         exists: true
-        mtime: 1778522333
+        mtime: 1780424411
       sympy_output:
         path: scripts/output/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.txt
         exists: true
@@ -7144,12 +7163,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.txt
         exists: true
         mtime: 1778527540
+    last_status_change: 2026-06-02 12:41:00-06:00
+    codex_session: 019e898c-fcf6-79c3-8e68-ec4e21f8ad4d
+    codex_log_paths:
+    - redteam/codex_logs/203_iter1.txt
+    last_codex_run: 2026-06-02 12:21:23-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 12:32:49-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 12:32:57-06:00
   '204':
     stage: 204
     stage_str: '204'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7162,8 +7191,9 @@ stages:
         exists: true
         mtime: 1778522333
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_mathematica_audit.wl
+        exists: true
+        mtime: 1780415780
       sympy_output:
         path: scripts/output/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.txt
         exists: true
@@ -7171,12 +7201,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:01:40-06:00
+    codex_session: 019e8908-498b-76a1-8e10-e6bc35c7a6e9
+    codex_log_paths:
+    - redteam/codex_logs/204_iter1.txt
+    last_codex_run: 2026-06-02 09:56:42-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 09:57:07-06:00
   '205':
     stage: 205
     stage_str: '205'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7187,10 +7225,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_sympy_audit.py
         exists: true
-        mtime: 1776173035
+        mtime: 1780419922
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_mathematica_audit.wl
+        exists: true
+        mtime: 1780420181
       sympy_output:
         path: scripts/output/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_sympy_audit.txt
         exists: true
@@ -7198,12 +7237,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:19:03-06:00
+    codex_session: 019e8948-e5da-72a1-b3b6-780ea384d82a
+    codex_log_paths:
+    - redteam/codex_logs/205_iter1.txt
+    last_codex_run: 2026-06-02 11:11:12-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:11:28-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:11:39-06:00
   '206':
     stage: 206
     stage_str: '206'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7214,10 +7263,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522333
+        mtime: 1780421077
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780421194
       sympy_output:
         path: scripts/output/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem_sympy_audit.txt
         exists: true
@@ -7225,12 +7275,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:36:35-06:00
+    codex_session: 019e8958-55d8-74e1-bd9e-481af969c6fa
+    codex_log_paths:
+    - redteam/codex_logs/206_iter1.txt
+    last_codex_run: 2026-06-02 11:27:57-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:28:27-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:28:36-06:00
   '207':
     stage: 207
     stage_str: '207'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7243,8 +7303,9 @@ stages:
         exists: true
         mtime: 1778522211
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_mathematica_audit.wl
+        exists: true
+        mtime: 1780416404
       sympy_output:
         path: scripts/output/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.txt
         exists: true
@@ -7252,12 +7313,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:34:30-06:00
+    codex_session: 019e8911-5350-70a2-b296-5ac589cdef17
+    codex_log_paths:
+    - redteam/codex_logs/207_iter1.txt
+    last_codex_run: 2026-06-02 10:07:20-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:07:47-06:00
   '208':
     stage: 208
     stage_str: '208'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7270,8 +7339,9 @@ stages:
         exists: true
         mtime: 1776173067
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy_mathematica_audit.wl
+        exists: true
+        mtime: 1780416258
       sympy_output:
         path: scripts/output/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy_sympy_audit.txt
         exists: true
@@ -7279,12 +7349,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:34:34-06:00
+    codex_session: 019e8911-582a-7af1-9546-ae545bbd8063
+    codex_log_paths:
+    - redteam/codex_logs/208_iter1.txt
+    last_codex_run: 2026-06-02 10:05:09-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:07:58-06:00
   '209':
     stage: 209
     stage_str: '209'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7295,10 +7373,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
         exists: true
-        mtime: 1776175443
+        mtime: 1780418777
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780418859
       sympy_output:
         path: scripts/output/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.txt
         exists: true
@@ -7306,12 +7385,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:02:00-06:00
+    codex_session: 019e8937-3bb1-7a41-a439-8fd7dcae615c
+    codex_log_paths:
+    - redteam/codex_logs/209_iter1.txt
+    last_codex_run: 2026-06-02 10:48:17-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 10:54:23-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:54:32-06:00
   '210':
     stage: 210
     stage_str: '210'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7324,8 +7413,9 @@ stages:
         exists: true
         mtime: 1776177739
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_mathematica_audit.wl
+        exists: true
+        mtime: 1780416942
       sympy_output:
         path: scripts/output/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_sympy_audit.txt
         exists: true
@@ -7333,12 +7423,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:53:39-06:00
+    codex_session: 019e8919-5fa0-7e91-a3f0-99d0269f8b42
+    codex_log_paths:
+    - redteam/codex_logs/210_iter1.txt
+    last_codex_run: 2026-06-02 10:16:20-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:41:39-06:00
   '211':
     stage: 211
     stage_str: '211'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7349,10 +7447,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780418678
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.wl
+        exists: true
+        mtime: 1780418769
       sympy_output:
         path: scripts/output/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.txt
         exists: true
@@ -7360,12 +7459,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:02:03-06:00
+    codex_session: 019e8937-4409-7e72-83ec-ac50bedfb5b8
+    codex_log_paths:
+    - redteam/codex_logs/211_iter1.txt
+    last_codex_run: 2026-06-02 10:46:59-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 10:54:39-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:54:49-06:00
   '212':
     stage: 212
     stage_str: '212'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 2
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7376,10 +7485,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522333
+        mtime: 1780421931
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780421931
       sympy_output:
         path: scripts/output/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.txt
         exists: true
@@ -7387,12 +7497,23 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 12:16:43-06:00
+    codex_session: 019e8968-2ee6-72b0-8902-8cd19f0d3039
+    codex_log_paths:
+    - redteam/codex_logs/212_iter1.txt
+    - redteam/codex_logs/212_iter2.txt
+    last_codex_run: 2026-06-02 12:10:56-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:43:12-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:43:21-06:00
   '213':
     stage: 213
     stage_str: '213'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7405,8 +7526,9 @@ stages:
         exists: true
         mtime: 1778522332
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_mathematica_audit.wl
+        exists: true
+        mtime: 1780417154
       sympy_output:
         path: scripts/output/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_sympy_audit.txt
         exists: true
@@ -7414,12 +7536,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 10:46:11-06:00
+    codex_session: 019e8919-68f3-73e3-9f6f-9d61e83cd63c
+    codex_log_paths:
+    - redteam/codex_logs/213_iter1.txt
+    last_codex_run: 2026-06-02 10:20:10-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 10:28:48-06:00
   '214':
     stage: 214
     stage_str: '214'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7430,10 +7560,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780421936
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.wl
+        exists: true
+        mtime: 1780422080
       sympy_output:
         path: scripts/output/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.txt
         exists: true
@@ -7441,12 +7572,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 12:13:07-06:00
+    codex_session: 019e8968-3707-73d2-b281-08319de34649
+    codex_log_paths:
+    - redteam/codex_logs/214_iter1.txt
+    last_codex_run: 2026-06-02 11:42:56-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:43:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:44:12-06:00
   '215':
     stage: 215
     stage_str: '215'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7457,10 +7598,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780419930
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780420043
       sympy_output:
         path: scripts/output/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.txt
         exists: true
@@ -7468,12 +7610,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:19:07-06:00
+    codex_session: 019e8948-ecac-7881-9d7f-e567c8dd7f1c
+    codex_log_paths:
+    - redteam/codex_logs/215_iter1.txt
+    last_codex_run: 2026-06-02 11:08:11-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:11:46-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:11:54-06:00
   '216':
     stage: 216
     stage_str: '216'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7484,10 +7636,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_sympy_audit.py
         exists: true
-        mtime: 1778524510
+        mtime: 1780420993
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_mathematica_audit.wl
+        exists: true
+        mtime: 1780420993
       sympy_output:
         path: scripts/output/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_sympy_audit.txt
         exists: true
@@ -7495,12 +7648,22 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 11:36:31-06:00
+    codex_session: 019e8958-4a3e-7211-a947-3296e7774f37
+    codex_log_paths:
+    - redteam/codex_logs/216_iter1.txt
+    last_codex_run: 2026-06-02 11:24:35-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 11:28:13-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 11:28:22-06:00
   '217':
     stage: 217
     stage_str: '217'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7513,8 +7676,9 @@ stages:
         exists: true
         mtime: 1778522332
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.wl
+        exists: true
+        mtime: 1780424218
       sympy_output:
         path: scripts/output/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.txt
         exists: true
@@ -7522,12 +7686,20 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-02 12:40:57-06:00
+    codex_session: 019e8987-854d-7ed1-86de-091516986cae
+    codex_log_paths:
+    - redteam/codex_logs/217_iter1.txt
+    last_codex_run: 2026-06-02 12:18:22-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 12:32:40-06:00
   '218':
     stage: 218
     stage_str: '218'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -7538,11 +7710,11 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780424862
       mathematica:
         path: mathematica/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl
         exists: true
-        mtime: 1778522333
+        mtime: 1780425019
       sympy_output:
         path: scripts/output/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.txt
         exists: true
@@ -7551,6 +7723,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.txt
         exists: true
         mtime: 1778527554
+    last_status_change: 2026-06-02 12:41:04-06:00
+    codex_session: 019e8990-2706-7093-916a-1125e1490baf
+    codex_log_paths:
+    - redteam/codex_logs/218_iter1.txt
+    last_codex_run: 2026-06-02 12:31:58-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 12:33:04-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 12:33:12-06:00
   '219':
     stage: 219
     stage_str: '219'

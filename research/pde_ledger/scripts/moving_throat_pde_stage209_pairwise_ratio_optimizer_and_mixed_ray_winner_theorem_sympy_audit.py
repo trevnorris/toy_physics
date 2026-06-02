@@ -50,6 +50,9 @@ tau = sp.simplify(2 * H0 / (kij + sp.sqrt(kij**2 - 2 * H0 * kappa)))
 A = sp.simplify(ki**2 - 2 * H0 * u)
 B = sp.simplify(2 * ki * kj - 4 * H0 * v)
 C = sp.simplify(kj**2 - 2 * H0 * w)
+# Radicand A + B r + C r^2 = Delta^sharp; admissible window requires
+# Delta^sharp >= 0 (notes sec. 3). Identities below are branch-independent,
+# so u, v, w are left unsigned.
 S = sp.sqrt(A + B * r + C * r**2)
 
 tau_expected = sp.simplify(2 * H0 * sp.sqrt(1 + r**2) / (ki + kj * r + S))

@@ -262,16 +262,38 @@ expectZero["M_* Delta x_rep + q(E)", Mstar . dxRep + qFromErrors];
 
 subbanner["VI. Stage 197 scalar closure composed with an explicit Stage 202 graph path"];
 
-betaPath = normalizeExpr[1 + rho (2 tau - 1)/(1 + rho)];
+betaPath = normalizeExpr[2^(2 tau - 1)];
 gammaPath = normalizeExpr[gammaBar betaPath];
-yGraphPath = {lamBar, cetaUBar, gammaPath, KUBar, KWBar};
+cetaUPath = normalizeExpr[cetaUBar Exp[rho tau]];
+yGraphPath = {lamBar, cetaUPath, gammaPath, KUBar, KWBar};
+graphPathRules = {lam -> lamBar, cetaU -> cetaUPath, gamma -> gammaPath, KU -> KUBar, KW -> KWBar};
+
+logTGraphLift = normalizeExpr[logTGraph /. graphPathRules];
+logKetaGraphLift = normalizeExpr[logKetaGraph /. graphPathRules];
+logMuGraphLift = normalizeExpr[logMuGraph /. graphPathRules];
+qtrGraphLift = normalizeExpr[
+  (1 + deltaUs) (Log[gammaPath] + Log[cetaUPath] - Log[KUBar])
+  + (1 + chi0s) (2 Log[Pi] + logTGraphLift - 2 Log[L] - Log[KUBar])
+  - Log[CtrTgt]
+];
+qntGraphLift = normalizeExpr[
+  2 Log[lamBar] + logMuGraphLift - logKetaGraphLift - 2 Log[KWBar]
+  + Estar (2 Log[gammaPath] + 2 Log[lamBar] + Log[sigma] - Log[KUBar] - Log[KWBar])
+  - Fstar (2 Log[Pi] + logTGraphLift - 2 Log[L] - Log[KUBar])
+  - Log[CntTgt]
+];
+qetaGraphLift = normalizeExpr[
+  2 Log[cetaUPath] - Log[KUBar] - logKetaGraphLift - Log[epsEtaTgt]
+];
 
 chiFromStage180 = normalizeExpr[3 (Siso beta^5 + 9 Sigma5)/(3 Siso - Sigma0)];
 closureNumStage180 = normalizeExpr[3 Siso (beta^5 - 1) + Sigma0 + 27 Sigma5];
 
-hatChiGraph = normalizeExpr[chiFromStage180 /. {beta -> betaPath, Sigma0 -> 0, Sigma5 -> 0}];
+betaLift = normalizeExpr[yGraphPath[[3]]/gammaBar];
+(* Verified q_tr=q_nt=q_eta=0 puts this lift on the target graph slice, so the carried closure perturbations Sigma0 and Sigma5 vanish on the composition. *)
+hatChiGraph = normalizeExpr[chiFromStage180 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
 hatDeltaGraph = normalizeExpr[hatChiGraph - 1];
-closureNumGraph = normalizeExpr[closureNumStage180 /. {beta -> betaPath, Sigma0 -> 0, Sigma5 -> 0}];
+closureNumGraph = normalizeExpr[closureNumStage180 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
 hatDeltaDen = Denominator[Together[hatDeltaGraph]];
 
 Print["Explicit free-quintuple graph path y(tau) ="];
@@ -280,7 +302,10 @@ Print["beta_path(tau) = ", fmt[betaPath]];
 Print["widehat chi_Q(y(tau)) from the carried Stage 197 closure algebra = ", fmt[hatChiGraph]];
 Print["widehat Delta_Q(tau) = ", fmt[hatDeltaGraph]];
 
-expectZero["beta_path - gamma(tau)/gamma_bar", yGraphPath[[3]]/gammaBar - betaPath];
+expectZero["beta_path - gamma(tau)/gamma_bar", betaLift - betaPath];
+expectZero["graph-lift target monomial q_tr", qtrGraphLift];
+expectZero["graph-lift target monomial q_nt", qntGraphLift];
+expectZero["graph-lift target monomial q_eta", qetaGraphLift];
 expectZero[
   "Stage 197 closure numerator identity on the graph path",
   3 Siso hatDeltaGraph - closureNumGraph

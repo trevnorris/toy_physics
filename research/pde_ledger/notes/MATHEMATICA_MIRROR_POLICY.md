@@ -3,7 +3,9 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-06-01` (**retro-sweep {121, 122, 123} — DUAL-ENGINE GAP NOW CLOSED for already-verified non-status-only stages**; these 3 stages were already `verified` in batch IV.3 but were SymPy-ONLY. Under the dual-engine rule (a `.wl` is REQUIRED wherever Mathematica CAN independently verify — test is "is it possible," not "is it necessary"), each was retrofitted with a NEW independent-route `.wl`: Codex designed + wrote the `.wl`, Claude reviewed (audit + verify). Outcome **3/3 verified, `material_change: false` on all 3** — the SymPy `.py` reference engines were UNCHANGED, paper/notes UNTOUCHED; 0 transliterations accepted, 0 iteration-2 reworks, 0 blocked, 0 stop-cold. **121** (geometric_r_selection) 6 PASS; **122** (mouth_source_compensation_test) 9 PASS — the free-positive-symbol `cStage` traction-ratio de-tautology preserved cross-engine; **123** (parent_normalized_branch_values) 6 PASS — the un-squared λ NEGATIVE sign preserved so `Xi_v(F1) ≈ −1.01675633282526`. All 3 added to the Independent-Mirror Set below. **Cumulative coverage UNCHANGED at 200/253 verified (79.1%)** — a retro-sweep adds 2nd engines to already-verified stages, it does NOT add new verified stages; 121/122/123 were the only 3 already-`verified` non-status-only stages still missing a `.wl`, so that dual-engine gap is now CLOSED (the 11 status-only single-engine stages compute nothing a `.wl` could check and legitimately remain single-engine). No checkpoints in range, no new constants, no EM-projection change. Previous batch V.3 entry below.
+Snapshot date: `2026-06-02` (**batch VI.1 close {201–218} — first batch of Part VI, theme "Explicit realization, scalar slice, ray ranking"; forward first-pass under the v2 paper-grounded auditor WITH the dual-engine rule.** ALL 18 stages verified; `material_change: false` on all 18; 0 stop-cold, 0 blocked, 0 needs_rework left open. **Checkpoints 203 and 218 BOTH cleared the higher checkpoint bar (no rubber-stamp).** **Dual-engine outcome — every stage has an INDEPENDENT second engine; 0 sanctioned mirrors in VI.1.** 16 stages had NO Mathematica `.wl` and got a NEW independent-route `.wl`: **201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217** (all added to the Independent-Mirror Set below). The checkpoint **218's pre-existing `.wl` was a transliteration of the `.py` and was RE-AUTHORED to a genuinely independent route** (native `Subsets`/`SubsetQ`/`Boole`/`Tally` set-combinatorics for M1, `Reduce`/`Resolve`/`ForAll` for the M2/M3 splice, independently-generated regime witnesses for M4 — the M4 witness counts even DIFFER between engines, 256/192/65+63 in the `.wl` vs 192/192/64+64 in the `.py`, proving independence). Checkpoint **203** already had both engines; its `.wl` got a strengthened, independent composition check (χ_Q composed through the real Stage-202 graph map over a 2-free-coordinate path + 3 falsifiable target-monomial-invariance checks, independently log-space-derived on the `.wl`). **One iter-2 timeout rework:** stage **202**'s first `.wl` symbolic-`Solve`d a transcendental log equation and TIMED OUT at the 600s cap on the orchestrator's independent re-run; reformulated (Codex) to a `LinearSolve` of the log-LINEARIZED monomial-match system (fast + independent). **206** the user-resolved scope finding (F3) was implemented as ADDITIVE script-side checks in BOTH engines (pairwise ray-ordering implication proven a tautology over the constrained region AND shown non-vacuous — false when the separation hypothesis is dropped — plus a discriminating admissibility predicate); no paper edit for 206. Four orchestrator catches in the loop (three directive `.wl` target paths dropped the required `_mathematica_audit` suffix — 201 + 210 were renamed post-build, 212 + 216 directives fixed pre-build; plus the 202 timeout and a 212 forward-ref). Infrastructure: discovered a single Codex build can hold BOTH Mathematica seats during a hang → refined the loop to defer the orchestrator's `exec-*` re-run until a wave's Codex builds finish. Previous retro-sweep entry below.
+
+Snapshot date prior: `2026-06-01` (**retro-sweep {121, 122, 123} — DUAL-ENGINE GAP NOW CLOSED for already-verified non-status-only stages**; these 3 stages were already `verified` in batch IV.3 but were SymPy-ONLY. Under the dual-engine rule (a `.wl` is REQUIRED wherever Mathematica CAN independently verify — test is "is it possible," not "is it necessary"), each was retrofitted with a NEW independent-route `.wl`: Codex designed + wrote the `.wl`, Claude reviewed (audit + verify). Outcome **3/3 verified, `material_change: false` on all 3** — the SymPy `.py` reference engines were UNCHANGED, paper/notes UNTOUCHED; 0 transliterations accepted, 0 iteration-2 reworks, 0 blocked, 0 stop-cold. **121** (geometric_r_selection) 6 PASS; **122** (mouth_source_compensation_test) 9 PASS — the free-positive-symbol `cStage` traction-ratio de-tautology preserved cross-engine; **123** (parent_normalized_branch_values) 6 PASS — the un-squared λ NEGATIVE sign preserved so `Xi_v(F1) ≈ −1.01675633282526`. All 3 added to the Independent-Mirror Set below. **Cumulative coverage UNCHANGED at 200/253 verified (79.1%)** — a retro-sweep adds 2nd engines to already-verified stages, it does NOT add new verified stages; 121/122/123 were the only 3 already-`verified` non-status-only stages still missing a `.wl`, so that dual-engine gap is now CLOSED (the 11 status-only single-engine stages compute nothing a `.wl` could check and legitimately remain single-engine). No checkpoints in range, no new constants, no EM-projection change. Previous batch V.3 entry below.
 
 Snapshot date prior: `2026-06-01` (**batch V.3 close — second batch of the resumed first pass; THE DUAL-ENGINE RULE CORRECTION batch**; stages 188–200, `Part V.3 — Branch observables, isotropic target, home stretch`; checkpoint 200)
 
@@ -677,10 +679,72 @@ different verification structure from the SymPy side:
   ratios → `ratioSubs` helper-monomial quotients feeding the `Mderived` Jacobian;
   Section III `Log[a^b]` collapse → full `ctrMonomial[...]/CtrTarget` exercising
   the exponents)
+- `201`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  for the explicit-realization slice; genuine independent route
+- `202`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via a `LinearSolve` of the log-LINEARIZED monomial-match system (reformulated in
+  iter-2 after the first `.wl`'s symbolic `Solve` of the transcendental log equation
+  TIMED OUT at the 600s cap on the independent re-run); genuine independent route
 - `203`
-  verifies the graph-composed scalar-closure / crossing route
+  verifies the graph-composed scalar-closure / crossing route; red-team batch
+  VI.1 (2026-06-02) STRENGTHENED the `.wl` to compose χ_Q through the real
+  Stage-202 graph map over a 2-free-coordinate path + 3 falsifiable
+  target-monomial-invariance checks (independently log-space-derived), replacing
+  the prior hand-reduced β⁵ with the four free coords held inert
+- `204`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `205`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `206`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  the user-resolved scope finding (F3) added ADDITIVE pairwise ray-ordering
+  implication checks in BOTH engines (proven tautological over the constrained
+  region AND non-vacuous — false when the separation hypothesis is dropped — plus
+  a discriminating admissibility predicate); genuine independent route
+- `207`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `208`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `209`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `210`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `211`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `212`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `213`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `214`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `215`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `216`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  genuine independent route
+- `217`
+  red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  for the lifted per-envelope Bézout bound `162 = 3⁴·2`; genuine independent route
 - `218`
-  rebuilds the actual support-five splice/budget ledger
+  rebuilds the actual support-five splice/budget ledger; red-team batch VI.1
+  (2026-06-02) RE-AUTHORED the pre-existing transliteration `.wl` to a genuinely
+  independent route (native `Subsets`/`SubsetQ`/`Boole`/`Tally` set-combinatorics
+  for M1, `Reduce`/`Resolve`/`ForAll` for the M2/M3 splice, independently-generated
+  regime witnesses for M4 — the M4 witness counts even DIFFER between engines,
+  256/192/65+63 in the `.wl` vs 192/192/64+64 in the `.py`, proving independence)
 - `239`
   uses the carried Stage 236/238 formulas for blind directions and orbit-lock
 - `242`

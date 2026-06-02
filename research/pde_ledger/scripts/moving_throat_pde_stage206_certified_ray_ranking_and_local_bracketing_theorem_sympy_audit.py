@@ -128,23 +128,101 @@ expect_zero(
 )
 
 # ---------------------------------------------------------------------------
-# V. Collapse to the Stage 205 quadratic predictor under exact curvature
+# V. Collapse to the Stage 239 quadratic log predictor under exact curvature
 # ---------------------------------------------------------------------------
-subbanner("V. Collapse to the Stage 205 quadratic predictor")
-Phi0, Labs, L1 = sp.symbols("Phi0 Labs L1", positive=True, real=True)
-# Use the oriented negative-slope branch L0 = -Labs < 0.
-Lneg = -Labs
-H0_stage205 = sp.log(Phi0)
-TauStage189 = sp.simplify(
-    -2 * H0_stage205 / (Lneg + sp.sign(Lneg) * sp.sqrt(Lneg**2 - 2 * L1 * H0_stage205))
+subbanner("V. Collapse to the Stage 239 quadratic log predictor")
+Phi0, L1 = sp.symbols("Phi0 L1", positive=True, real=True)
+L0 = sp.symbols("L0", real=True)
+TauBracketLog = sp.simplify(Tau.subs({H0: sp.log(Phi0), k: -L0, c: L1}))
+TauLog2 = -2 * sp.log(Phi0) / (
+    L0 + sp.sign(L0) * sp.sqrt(L0**2 - 2 * L1 * sp.log(Phi0))
 )
-TauStage188 = sp.simplify(
-    -2 * sp.log(Phi0) / (Lneg + sp.sign(Lneg) * sp.sqrt(Lneg**2 - 2 * L1 * sp.log(Phi0)))
+print("T_bracket(H0=log(Phi0), K0=L0; c=L1) =")
+sp.pprint(TauBracketLog)
+print("Stage-239 tau_log2 =")
+sp.pprint(TauLog2)
+expect_zero(
+    "Stage 206/239 log-predictor collapse",
+    sp.simplify(TauBracketLog - sp.refine(TauLog2, sp.Q.negative(L0))),
 )
-print("TauStage189 =")
-sp.pprint(TauStage189)
-print("TauStage188 =")
-sp.pprint(TauStage188)
-expect_zero("Stage 206/188 collapse", sp.simplify(TauStage189 - TauStage188))
+
+# ---------------------------------------------------------------------------
+# VI. Pairwise ray ordering and local search-sieve admissibility
+# ---------------------------------------------------------------------------
+subbanner("VI. Pairwise ray ordering and local search-sieve admissibility")
+
+slack_a_hi, slack_sep, slack_b_lo = sp.symbols(
+    "slack_a_hi slack_sep slack_b_lo", nonnegative=True, real=True
+)
+strict_sep = sp.symbols("strict_sep", positive=True, real=True)
+tau_star_a = sp.symbols("tau_star_a", real=True)
+tau_hi_a = tau_star_a + slack_a_hi
+tau_lo_b = tau_hi_a + strict_sep
+tau_star_b = tau_lo_b + slack_b_lo
+ordering_gap = sp.simplify(tau_star_b - tau_star_a)
+ordering_proven = sp.ask(sp.Q.positive(ordering_gap))
+negation_unsat = sp.ask(sp.Q.nonpositive(ordering_gap))
+print(f"pairwise ordering gap = {ordering_gap}")
+print(f"pairwise ordering theorem = {ordering_proven}")
+print(f"pairwise ordering negation satisfiable = {negation_unsat}")
+if ordering_proven is not True or negation_unsat is not False:
+    raise AssertionError("pairwise ordering implication was not discharged")
+
+relaxed_counterexample = {
+    "tau_lo_a": sp.Integer(0),
+    "tau_star_a": sp.Integer(1),
+    "tau_hi_a": sp.Integer(2),
+    "tau_lo_b": sp.Integer(0),
+    "tau_star_b": sp.Rational(1, 2),
+    "tau_hi_b": sp.Integer(2),
+}
+relaxed_hypotheses_hold = (
+    relaxed_counterexample["tau_lo_a"]
+    <= relaxed_counterexample["tau_star_a"]
+    <= relaxed_counterexample["tau_hi_a"]
+    and relaxed_counterexample["tau_lo_b"]
+    <= relaxed_counterexample["tau_star_b"]
+    <= relaxed_counterexample["tau_hi_b"]
+)
+relaxed_conclusion = (
+    relaxed_counterexample["tau_star_a"] < relaxed_counterexample["tau_star_b"]
+)
+print(f"pairwise theorem without separation counterexample hypotheses = {relaxed_hypotheses_hold}")
+print(f"pairwise theorem without separation counterexample conclusion = {relaxed_conclusion}")
+if not relaxed_hypotheses_hold or relaxed_conclusion:
+    raise AssertionError("dropping separation did not produce the required counterexample")
+
+
+def local_sieve_admissible(H, K, c_lo, c_hi, T_valid, tau_hi, tau_hi_tp):
+    monotone = sp.And(
+        H > 0,
+        K < 0,
+        c_lo <= c_hi,
+        K**2 - 2 * c_lo * H >= 0,
+        K**2 - 2 * c_hi * H >= 0,
+        tau_hi <= T_valid,
+    )
+    turning = sp.And(
+        H > 0,
+        sp.Eq(K, 0),
+        c_lo <= c_hi,
+        c_hi < 0,
+        tau_hi_tp <= T_valid,
+    )
+    return sp.simplify_logic(sp.Or(monotone, turning))
+
+
+monotone_good_tau = sp.simplify(TauU.subs({H0: 1, k: 3, cU: 1}))
+turning_good_tau = sp.sqrt(sp.Rational(2) * 2 / 1)
+monotone_good = local_sieve_admissible(1, -3, 0, 1, 1, monotone_good_tau, 0)
+turning_good = local_sieve_admissible(2, 0, -3, -1, 3, 0, turning_good_tau)
+monotone_bad = local_sieve_admissible(1, -3, 0, 1, 1, 2, 0)
+print(f"local sieve monotone admissible case = {monotone_good}")
+print(f"local sieve turning admissible case = {turning_good}")
+print(f"local sieve single-clause violation case = {monotone_bad}")
+if monotone_good is not sp.S.true or turning_good is not sp.S.true:
+    raise AssertionError("local sieve rejected an admissible bracket")
+if monotone_bad is not sp.S.false:
+    raise AssertionError("local sieve accepted a bracket with tau_hi > T")
 
 banner("STAGE 189 SYMPY AUDIT PASSED")

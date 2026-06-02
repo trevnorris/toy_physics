@@ -1,0 +1,28 @@
+
+========================================================================================
+STAGE 123 - PARENT-NORMALIZED BRANCH VALUES
+========================================================================================
+Stage 118 anchors: K_s, K_q, J_s, negative lambda, and the Xi_T healing lock.
+Stage 121 and 122 anchors: r_F1 and g branches.
+v_w0(r) = (-3*Sqrt[3/10]*cs*hbar*Pi^(3/2)*rr*Zq)/(16*a*q*Sqrt[ell^3*L^3*m*mu0*rho*Zq])
+Xi_v(r) derived = (-3*Sqrt[3/10]*Pi^(3/2)*rr)/16
+Xi_v law = 0
+PASS: Xi_v law
+T_m(g) = (3*m*Sqrt[3/(10*Pi)]*Zq)/(a*gg*Sqrt[ell*L*m*mu0*rho*Zq])
+Xi_T(g) derived = (3*Sqrt[3/(10*Pi)])/gg
+Xi_T law = 0
+PASS: Xi_T law
+Xi_v(F1) numeric = -1.01675633282525946441973678979837042557`20.
+Xi_v(F1) = 0
+PASS: Xi_v(F1)
+Xi_T(nat) numeric = 0.92705808485565499282126256474757339116`20.
+Xi_T(nat) = 0
+PASS: Xi_T(nat)
+Xi_T(-) numeric = 1.2229751770146391627143360114746526363`20.
+Xi_T(-) = 0
+PASS: Xi_T(-)
+Xi_T(+) numeric = 0.33133452164460908424123901424332098173`20.
+Xi_T(+) = 0
+PASS: Xi_T(+)
+
+Stage 123 Mathematica audit passed.

@@ -7,7 +7,8 @@
 > All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
 > **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
 > (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
-> Cumulative **200/253 verified (79.1%)**.
+> **RETRO-SWEEP {121, 122, 123} DONE — 3/3 dual-engine `.wl` verified (2026-06-01; batch `redteam/batches/batch_retro_v2.md`).**
+> Cumulative **200/253 verified (79.1%)** (retro adds 2nd engines to already-verified stages — count unchanged).
 >
 > **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
 > a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
@@ -16,14 +17,24 @@
 > (Claude reviews only; Codex writes ALL script code incl. new `.wl`). V.3 retrofitted 12 new
 > independent-route `.wl` (188–199) + de-transliterated 200's `.wl`.
 >
-> **NEXT (gated, awaits explicit user go), in order:**
-> 1. **RETRO-SWEEP {121, 122, 123}** — the only 3 already-`verified` non-status-only stages that
->    are still SymPy-only; create an independent-route `.wl` for each (dual-engine rule). These are
->    the "past 3 that are missing." (The 11 status-only single-engine stages compute nothing and are
->    legitimately single-engine — no action.)
-> 2. **VI.1 = {201–218}**, then VII.1 {219–230}, VII.2 {231–242}, VIII.1 {243–253} = 53 stages —
->    normal forward first-pass audit, now WITH the dual-engine rule (each SymPy-only stage that CAN
->    be dual-engine gets a `.wl` in its batch).
+> **NEXT (gated, awaits explicit user go):**
+> 1. ✅ **RETRO-SWEEP {121, 122, 123} DONE — 3/3 verified 2026-06-01** (each got a new
+>    independent-route `.wl`; `material_change: false`; `.py`/paper/notes untouched; batch
+>    `redteam/batches/batch_retro_v2.md`). The dual-engine gap for already-`verified`
+>    non-status-only stages is now CLOSED (these were the only 3). ✅ COMMITTED 2026-06-01
+>    (retro-sweep commit; see git log).
+> 2. **VI.1 = {201–218}** — NEXT forward batch (18 stages; "Part VI.1 — Explicit realization,
+>    scalar slice, ray ranking"; **checkpoints 203 and 218** → higher verify bar, no rubber-stamp;
+>    no status-only units in range). Then VII.1 {219–230}, VII.2 {231–242}, VIII.1 {243–253} =
+>    53 stages total. Normal forward first-pass audit under the v2 paper-grounded prompt, now WITH
+>    the dual-engine rule: audit agents must flag `missing_mathematica` (auditor line 118) on every
+>    SymPy-only-but-dual-engine-capable stage; Codex writes BOTH the `.py` fixes AND any new `.wl`;
+>    Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).
+>    Per-stage loop: `render-audit-prompt` → audit agent → directive → `set-status fixing` →
+>    `codex-invoke` (≤2 parallel; 2 Mathematica seats OK per user) → `scan` (register any new `.wl`)
+>    → `exec-sympy`+`exec-mathematica` (sequential) + refresh `output/*.txt` → `capture-diff` →
+>    `render-verify-prompt` → verify agent → `set-status verified`. (The 11 status-only single-engine
+>    stages elsewhere compute nothing → legitimately single-engine.)
 > The planned full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check,
 > only after the first pass reaches stage 253 — NOT the next step.
 > **✅ V.3 COMMITTED 2026-06-01** (this commit; see git log): 12 new `.wl` + 1 edited `.wl` (200) +

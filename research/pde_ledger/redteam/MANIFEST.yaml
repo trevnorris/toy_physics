@@ -4216,8 +4216,9 @@ stages:
         exists: true
         mtime: 1779921098
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage121_geometric_r_selection_mathematica_audit.wl
+        exists: true
+        mtime: 1780350506
       sympy_output:
         path: scripts/output/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.txt
         exists: true
@@ -4225,6 +4226,14 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-01 16:51:04-06:00
+    codex_session: 019e8526-d06c-7072-8c5e-f877df61150b
+    codex_log_paths:
+    - redteam/codex_logs/121_iter1.txt
+    last_codex_run: 2026-06-01 15:49:14-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-01 16:05:37-06:00
   '122':
     stage: 122
     stage_str: '122'
@@ -4241,25 +4250,29 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
         exists: true
-        mtime: 1779921108
+        mtime: 1780080896
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage122_mouth_source_compensation_test_mathematica_audit.wl
+        exists: true
+        mtime: 1780350566
       sympy_output:
         path: scripts/output/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.txt
         exists: true
-        mtime: 1779921495
+        mtime: 1780082079
       mathematica_output:
         path: null
         exists: false
-    last_status_change: 2026-05-29 13:18:43-06:00
-    codex_session: 019e7516-9048-7de3-a237-42f09eac567b
+    last_status_change: 2026-06-01 16:51:08-06:00
+    codex_session: 019e8527-dd3d-7f22-8e6f-ad226d1bf463
     codex_log_paths:
     - redteam/codex_logs/122_iter1.txt
-    last_codex_run: 2026-05-29 12:55:44-06:00
+    - redteam/codex_logs/122_iter1.txt
+    last_codex_run: 2026-06-01 15:50:39-06:00
     last_codex_exit: 0
     last_sympy_exit: 0
     last_sympy_run: 2026-05-29 13:14:37-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-01 16:05:45-06:00
   '123':
     stage: 123
     stage_str: '123'
@@ -4278,8 +4291,9 @@ stages:
         exists: true
         mtime: 1779920997
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage123_parent_normalized_branch_values_mathematica_audit.wl
+        exists: true
+        mtime: 1780350797
       sympy_output:
         path: scripts/output/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.txt
         exists: true
@@ -4287,6 +4301,14 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-01 16:51:12-06:00
+    codex_session: 019e852a-f2ca-7412-85b9-165f0d144016
+    codex_log_paths:
+    - redteam/codex_logs/123_iter1.txt
+    last_codex_run: 2026-06-01 15:54:50-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-01 16:06:05-06:00
   '124':
     stage: 124
     stage_str: '124'

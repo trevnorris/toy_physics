@@ -1,0 +1,38 @@
+
+========================================================================================
+STAGE 122 - MOUTH SOURCE COMPENSATION TEST
+========================================================================================
+r_F1 = Sqrt[4107 - 100*Pi^2]/(10*Pi)
+r_F1 geometric relation = 0
+PASS: r_F1 geometric relation
+derived g_minus = (-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])/(20*Pi)
+derived g_plus  = (37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])/(20*Pi)
+numeric g_minus = 0.75803507894466282691968089041411045706`20.
+numeric g_plus  = 2.79795199200529341011158893417209738917`20.
+gminus exact form = 0
+PASS: gminus exact form
+gplus exact form = 0
+PASS: gplus exact form
+compensation quadratic at gminus = 0
+PASS: compensation quadratic at gminus
+compensation quadratic at gplus = 0
+PASS: compensation quadratic at gplus
+natural branch defect = (-12321 + 80*Pi*Sqrt[4107 - 100*Pi^2])/(100*Pi^2)
+natural branch defect numeric = 1.74016524722738812852469063627428900852`20.
+defect closed form = 0
+PASS: defect closed form
+natural off compensation = (-12321 + 80*Pi*Sqrt[4107 - 100*Pi^2])/(100*Pi^2)
+natural off compensation numeric = 1.74016524722738812852469063627428900852`20.
+PASS: natural off compensation
+T_m(-)/T_m(nat), before natural ansatz = (20*gNat*Pi)/(-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])
+T_m(+)/T_m(nat), before natural ansatz = (20*gNat*Pi)/(37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])
+traction residual (-), before natural ansatz = (20*(-1 + gNat)*Pi)/(-37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])
+traction residual (+), before natural ansatz = (20*(-1 + gNat)*Pi)/(37*Sqrt[3] + 2*Sqrt[4107 - 100*Pi^2])
+numeric T ratio (-) = 1.31920016339112033068480156034052990808`20.
+numeric T ratio (+) = 0.35740427386078899977166591745868698027`20.
+traction ratio (-) identity = 0
+PASS: traction ratio (-) identity
+traction ratio (+) identity = 0
+PASS: traction ratio (+) identity
+
+Stage 122 Mathematica audit passed.

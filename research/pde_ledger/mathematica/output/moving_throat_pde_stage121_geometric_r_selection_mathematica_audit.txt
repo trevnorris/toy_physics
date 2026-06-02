@@ -1,0 +1,25 @@
+
+========================================================================================
+STAGE 121 - GEOMETRIC SELECTION OF r
+========================================================================================
+r_geom(L/a) = Sqrt[12*ell^2 - Pi^2*throatScale^2]/(Pi*throatScale)
+r_geom closed-form (explicit) = 0
+PASS: r_geom closed-form (explicit)
+tube-length relation = 0
+PASS: tube-length relation
+r_F1 = Sqrt[4107 - 100*Pi^2]/(10*Pi)
+r_F1 numeric = 1.77799353547497811851563491229310392439`20.
+r_F1 symbolic value at L/a = 37/20 = 0
+PASS: r_F1 symbolic value at L/a = 37/20
+r_c(F1) = -1 + 4107/(100*Pi^2)
+r_c(F1) numeric = 3.16126101219081227320012955402351412974`20.
+r_c(F1) symbolic value = 0
+PASS: r_c(F1) symbolic value
+Omega_W(L_W = L) = (Pi*soundSpeed)/(2*ell)
+Omega_W identification at L_W = L = 0
+PASS: Omega_W identification at L_W = L
+existence threshold L/a >= Pi/(2*Sqrt[3]) ~= 0.90689968211710892529703912882107786615`20.
+r_geom vanishes at existence threshold = 0
+PASS: r_geom vanishes at existence threshold
+
+STAGE 121 MATHEMATICA AUDIT PASSED

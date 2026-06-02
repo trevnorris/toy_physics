@@ -1,89 +1,68 @@
 ---
 unit_id: 123
-batch: IV.3
-created_at: 2026-05-27T00:00:00Z
-findings_count: 2
+batch: retro
+created_at: 2026-06-01T00:00:00Z
+findings_count: 1
 stop_cold: null
-applied: false
+applied: true
+applied_at: 2026-06-01T21:53:51Z
+findings_applied: 1
+findings_blocked: 0
 verification_status: pending
-needs_user_resolution: true
+needs_user_resolution: false
 ---
 
-# Codex directive — unit 123
+# Codex directive — unit 123 (retro-sweep: dual-engine .wl)
 
-Apply each non-`paper_misalignment` finding below in order. After applying, append an `## Applied: F<n>` block under that finding with: `files_changed`, `summary` (one sentence), and `deviation` (or "none").
+> This is a RETRO-SWEEP directive. Stage 123 was audited + verified in batch IV.3 (SymPy-only;
+> its IV.3 notes-side `228 → 160` typo fix and banner relabel are already done). Under the
+> dual-engine rule (a Mathematica `.wl` is REQUIRED on every stage Mathematica CAN independently
+> verify), it is missing its second engine. The ONLY change is to ADD the `.wl`.
+> (The prior IV.3 directive content for this unit is preserved in git history. The IV.3
+> paper_misalignment is resolved — do NOT reopen it, do NOT touch notes/paper.)
 
-For `paper_misalignment` findings, do nothing — the orchestrator is holding for user resolution. Do not edit paper, notes, or scripts to "fix" a `paper_misalignment` unless the user has explicitly chosen a direction in a follow-up directive.
+The SymPy audit script for this stage is correct and is the REFERENCE engine. Do NOT modify it. Do NOT touch `paper.tex` or `notes/`. The only required change is the dual-engine gap below.
 
-If a non-`paper_misalignment` finding's required change is ambiguous or unsafe to apply mechanically, append `## Blocked: F<n>` with a question instead — skip that finding, continue with the rest.
+After creating the script, RUN it (`timeout 600 math -script <path>`) and iterate until it exits 0 with all checks passing. A timeout (exit 124) is a FAILURE — reformulate the math, never raise the cap. The orchestrator independently re-runs afterward.
 
-Do NOT introduce new features, refactors, or stylistic changes. Edit exactly the file:line ranges named.
+## F1 — missing_mathematica
 
-After editing, RUN the affected scripts (`python3 <path>` for SymPy, `math -script <path>` for Mathematica) and iterate until they exit 0 with all in-file checks passing. Getting the scripts to run cleanly is your job; the orchestrator independently re-runs afterward.
+**Issue:** Stage 123 ("parent-normalized branch values") is dual-engine-capable — every load-bearing claim is a closed-form algebraic identity (two single-variable `Solve` inversions, radical simplification, and exact-numeric evaluation at explicit branch points); no integral, no BVP, no transcendental root — but it has no Mathematica `.wl`. Under the dual-engine rule an independent second-engine verification is required wherever Mathematica can do the math.
 
-Do NOT touch paper.tex, notes/, or any prose documents. The red-team only modifies scripts (except when a follow-up directive explicitly authorizes a paper-side edit after user resolution).
+**Required change (you design the route and write the script):**
+Create `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage123_parent_normalized_branch_values_mathematica_audit.wl`.
+- Independently re-verify EVERY load-bearing assertion in the SymPy script `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py`. Read that script to enumerate the claims and their target conclusions; the paper card `paper/stages/stage_123.tex` and the stage notes file are the source of truth for the math. (The card / notes use older "Stage 140 / 221" numbering — anchor to the live `scripts/` owners listed below. Do NOT edit the card or notes.)
+- Use Mathematica-NATIVE primitives (`Solve`/`Reduce` with reality/branch filtering, `FullSimplify`/`RootReduce`/`PowerExpand` under `$Assumptions`, exact `N[...]`) via a DIFFERENT derivation route than the SymPy script (which uses `sp.solve(...)[0]`) — NOT a line-by-line port. Reference an existing verified `.wl` ONLY for house idioms (the `expectZero` helper that `Exit[1]`s on failure, `$Assumptions`, `stripCE`, the `math -script` convention).
+- Assert cross-engine agreement: each conclusion the `.wl` derives must match the SymPy result.
 
-## F1 — paper_misalignment
+**Upstream-owned anchors (import as given; cite, do NOT re-derive here):**
+- `K_s = 3π a²ℏ²/(5 m ρ ℓ)`, `K_q = (Z_q/μ₀)π²c_s²/(4 L²)`, `J_s = 4π a²ℓ/3` — owned by stage 118.
+- `λ = −(8 Sqrt(2)/3) q v_w0 a² ℓ Sqrt(L)` — sign owned by stage 118 (λ < 0).
+- `r_F1 = Sqrt(12 R²/π² − 1)`, `R = 37/20` — owned by stage 121.
+- `g_± = (2 Sqrt(4107−100π²) ± 37 Sqrt(3))/(20π)` — owned by stage 122.
+- healing lock `c_s → ℏ/(2 m ℓ)` (applied only inside the `Ξ_T` inversion) — owned by stage 118.
 
-**Subtype:** value_mismatch
+**Claim manifest** (match the SymPy PASS-label so the verifier can pair them):
+- **M1** — `Xi_v law`: inverting `𝔯 = λ/Sqrt(K_s K_q)` for `v_w0`, substituting into the `Ξ_v` definition, and simplifying yields `Ξ_v(𝔯) = −(3 Sqrt(30) π^(3/2)/160)·𝔯`. **The leading minus sign carries the un-squared λ-sign — it must survive.**
+- **M2** — `Xi_T law`: inverting `𝔤 = Sqrt(2 Z_q K_s)/(𝒯_m J_s c_s Sqrt(μ₀ L))` for `𝒯_m`, applying the healing lock `c_s → ℏ/(2 m ℓ)`, substituting into the `Ξ_T` definition, and simplifying yields `Ξ_T(𝔤) = (3 Sqrt(30)/(10 Sqrt(π)))·(1/𝔤)`.
+- **M3** — `Xi_v(F1)` numeric: evaluating M1 at `𝔯 = r_F1` gives `Ξ_v^{F1} ≈ −1.01675633282526`. (Printed in the `.py`; the `.wl` must ASSERT it against the derived law AND reproduce the ≥15-digit decimal via `RootReduce` then exact `N[..., 20]`, making it a real PASS check.)
+- **M4** — `Xi_T(nat/-/+)` numerics: `Ξ_T^{nat} = 3 Sqrt(30)/(10 Sqrt(π)) ≈ 0.927058084855655`, `Ξ_T^{(−)} = Ξ_T^{nat}/g_− ≈ 1.22297517701464`, `Ξ_T^{(+)} = Ξ_T^{nat}/g_+ ≈ 0.331334521644609`. (Same: assert against derived forms + reproduce decimals.)
 
-**Paper side (notes):**
-- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md:25-31` quote:
-  > `\Xi_v = -\frac{3\sqrt{30}\,\pi^{3/2}}{228}\,\mathfrak r.`
-- `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md:37-41` quote:
-  > `\Xi_v^{F1} = -\frac{3\sqrt{30}\,\pi^{3/2}}{228}\,\mathfrak r_{F1} \approx -1.01675633282526.`
+**Route / correctness requirements (acceptance criteria — CRITICAL, you choose how to satisfy them):**
+- **λ-sign (load-bearing).** `𝔯 = λ/Sqrt(K_s K_q)` is LINEAR in λ (un-squared), so the negative λ-sign propagates into M1's leading `−`. Use the SAME negative-λ convention as stage 118. Do NOT use λ² and do NOT drop the minus — either would silently flip `Ξ_v^{F1}` to `+1.0168` and mis-pass. (Contrast: `r_c = λ²/(K_s K_q)` upstream IS squared — do not confuse the two.)
+- **`v_w0` is REAL, not positive** (λ < 0 forces a sign relationship). Mirror the SymPy declaration: `v_w0` real-only; all other symbols (`a, L, ℓ, μ₀, Z_q, m, ρ, q, ℏ, c_s, 𝒯_m, 𝔯, 𝔤`) positive. Do NOT assume `v_w0 > 0` or the inversion branch / radical simplification can pick the wrong sign.
+- **Branch selection.** Both laws come from a single picked `Solve` root in the `.py`; the Mathematica route must pick the corresponding real branch deterministically (reality/positivity filtering), and anchor the expected closed form so a wrong-branch pick FAILS the identity.
+- The healing lock `c_s → ℏ/(2 m ℓ)` is applied ONLY inside the `Ξ_T` inversion (it gives `Ξ_T` its `Sqrt(π)` instead of `c_s`) — cite the stage-118 relation, do not improvise a different `c_s` substitution.
 
-**Script side:**
-- `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py:46` quote:
-  > `expect_zero("Xi_v law", Xi_v_expr + 3*sp.sqrt(30)*sp.pi**sp.Rational(3,2)*r/160)`
-- `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.txt:13` quote:
-  > `Xi_v(r) = -3*sqrt(30)*pi**(3/2)*r/160`
+**Anti-transliteration:** the `.wl` must NOT re-type `Ξ_v = −(3 Sqrt(30) π^(3/2)/160)·𝔯`, `Ξ_T = (3 Sqrt(30)/(10 Sqrt(π)))·(1/𝔤)`, or the four numeric targets and check them against themselves. The laws must EMERGE from the `v_w0` / `𝒯_m` inversions + simplification, and the numerics must be COMPUTED from the derived laws at the upstream-anchored `r_F1`/`g_±`. Importing the upstream building blocks (`K_s, K_q, J_s, λ, r_F1, g_±`) as givens is expected (stages 118/121/122 own + verify them); the independent work is the two inversions + exact evaluation via a route distinct from `sp.solve(...)[0]`.
 
-## Resolve before fix_loop
+**Comment hygiene:** avoid any `*)` substring inside Mathematica comments (premature comment close).
 
-The notes' boxed symbolic constant is `228` but the same notes' boxed numeric `Xi_v^{F1} ≈ -1.01675633282526` is only consistent with denominator `160`. The script's independent re-derivation from `Ks`, `Kq`, `lam` yields `160` and the numeric `-1.01675633282526...` to 20 digits. Which is correct?
+**Verification command:** the verifier runs `redteam exec-mathematica 123`, confirms exit 0 with all PASS lines (≥ 6 substantive checks: M1, M2, M3, M4×3), and reviews that the `.wl` is a genuinely independent route (native primitives, different decomposition; M1 retains the leading minus from un-squared λ) whose conclusions agree with the SymPy engine.
 
-- Manual check: with `r_{F1} = sqrt(12*(37/20)^2/pi^2 - 1) ≈ 1.7779`,
-  - `-3*sqrt(30)*pi^(3/2)*r_{F1}/160 ≈ -1.0168` (matches the boxed numeric)
-  - `-3*sqrt(30)*pi^(3/2)*r_{F1}/228 ≈ -0.713`  (does NOT match the boxed numeric)
+## Applied: F1
 
-So the notes are internally inconsistent. Almost certainly the `228` is a typo for `160`.
-
-Possible directions (the user picks one):
-- (a) `160` is correct (recommended; matches both the derivation and the notes' own numeric). Update the notes file (lines 25-31 and 37-41) replacing `228` with `160`. No script change. Re-render the paper if needed.
-- (b) `228` is correct. Then BOTH the script (line 46) AND the notes' numerical box `-1.01675633282526` are wrong; the upstream `lam` definition or one of `Ks`, `Kq` would need to be re-derived from stages 220-221 to produce `228`. This would also cascade into the numeric Xi_v^F1 quoted by the notes and likely into downstream stages 125-139.
-- (c) Both are derived from a third source that contradicts both → flag for deeper review.
-
-The orchestrator will not invoke Codex on this unit (for F1) until the user has chosen a direction. F2 below is independent and can be applied immediately.
-
-## F2 — paper_misalignment (low; cosmetic banner)
-
-**Target:** `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py:16`
-
-**Issue:** The script banner reads `"STAGE 106 — PARENT-NORMALIZED BRANCH VALUES"`, but the file name, the paper-card `\label{stage:123}`, and the script's role in the ledger all identify this unit as stage 123 (paper section header "Stage~140"). The `106` label is dead — it does not match any current convention. Cosmetic, but the captured output file mirrors the wrong banner, which will confuse later searches.
-
-**Required change:**
-
-Edit line 16 of `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py`.
-
-Before:
-
-```python
-banner("STAGE 106 — PARENT-NORMALIZED BRANCH VALUES")
-```
-
-After:
-
-```python
-banner("STAGE 123 — PARENT-NORMALIZED BRANCH VALUES")
-```
-
-No other lines change. Do not adjust assertions, do not alter symbolic content. This is a string-only edit.
-
-**Verification command:**
-
-After Codex applies, the verifier will run `redteam exec-sympy 123` and confirm:
-- the new sympy output's banner line reads `STAGE 123 — PARENT-NORMALIZED BRANCH VALUES`,
-- exit code remains 0,
-- the four printed numeric values (`Xi_v(F1)`, `Xi_T(nat)`, `Xi_T(-)`, `Xi_T(+)`) are bit-identical to the previous output,
-- both assertions (`Xi_v law = 0`, `Xi_T law = 0`) still hold.
+- files_changed:
+  - `mathematica/moving_throat_pde_stage123_parent_normalized_branch_values_mathematica_audit.wl`
+- summary: Added a Mathematica dual-engine audit that derives the Xi_v and Xi_T laws via Reduce-based inversions and checks the F1, natural, minus, and plus branch values exactly with high-precision prints.
+- deviation: none

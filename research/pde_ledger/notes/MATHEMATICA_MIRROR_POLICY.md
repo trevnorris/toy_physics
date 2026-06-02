@@ -3,7 +3,9 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-06-01` (**batch V.3 close — second batch of the resumed first pass; THE DUAL-ENGINE RULE CORRECTION batch**; stages 188–200, `Part V.3 — Branch observables, isotropic target, home stretch`; checkpoint 200)
+Snapshot date: `2026-06-01` (**retro-sweep {121, 122, 123} — DUAL-ENGINE GAP NOW CLOSED for already-verified non-status-only stages**; these 3 stages were already `verified` in batch IV.3 but were SymPy-ONLY. Under the dual-engine rule (a `.wl` is REQUIRED wherever Mathematica CAN independently verify — test is "is it possible," not "is it necessary"), each was retrofitted with a NEW independent-route `.wl`: Codex designed + wrote the `.wl`, Claude reviewed (audit + verify). Outcome **3/3 verified, `material_change: false` on all 3** — the SymPy `.py` reference engines were UNCHANGED, paper/notes UNTOUCHED; 0 transliterations accepted, 0 iteration-2 reworks, 0 blocked, 0 stop-cold. **121** (geometric_r_selection) 6 PASS; **122** (mouth_source_compensation_test) 9 PASS — the free-positive-symbol `cStage` traction-ratio de-tautology preserved cross-engine; **123** (parent_normalized_branch_values) 6 PASS — the un-squared λ NEGATIVE sign preserved so `Xi_v(F1) ≈ −1.01675633282526`. All 3 added to the Independent-Mirror Set below. **Cumulative coverage UNCHANGED at 200/253 verified (79.1%)** — a retro-sweep adds 2nd engines to already-verified stages, it does NOT add new verified stages; 121/122/123 were the only 3 already-`verified` non-status-only stages still missing a `.wl`, so that dual-engine gap is now CLOSED (the 11 status-only single-engine stages compute nothing a `.wl` could check and legitimately remain single-engine). No checkpoints in range, no new constants, no EM-projection change. Previous batch V.3 entry below.
+
+Snapshot date prior: `2026-06-01` (**batch V.3 close — second batch of the resumed first pass; THE DUAL-ENGINE RULE CORRECTION batch**; stages 188–200, `Part V.3 — Branch observables, isotropic target, home stretch`; checkpoint 200)
 
 **The policy itself changed this batch (user-clarified 2026-06-01).** A Mathematica `.wl` is **REQUIRED on every stage where Mathematica CAN independently verify the result** — the test for omitting a `.wl` is "**is it possible**," NOT "is it necessary." A standing drift had let single-engine acceptance accrete on the late SymPy-only frontier via orchestrator/Claude+Codex discretion without user sign-off (the auditor prompt's line 118 had required it all along). Before V.3, stages 188–199 were **SymPy-ONLY (no `.wl`)**. Consequence for V.3: **12 NEW independent-route Mathematica `.wl` scripts were created (188–199)** by Codex, ALL verified as **GENUINE INDEPENDENT routes (0 transliterations accepted)**, and the checkpoint **200's pre-existing `.wl` (caught by the audit as a transliteration) was DE-TRANSLITERATED**. So all 13 V.3 stages are now genuine dual-engine. **0 sanctioned mirrors this batch.** Labor split strictly enforced: **Claude reviews (audit + verify); Codex writes ALL script code (designs + writes the new `.wl`)**; the directives stated only the requirement + acceptance criteria. Representative independent routes (all 12 of 188–199 added to the Independent-Mirror Set below): **188** compilers as Jacobians via `Solve` of the log-drift relations; **189** independent observable defect symbols (`Theta1`/`Xi1`/`Sigma_eta`), no `Rtarget*T2-...` assertion (the back-definition was demoted; see iter-2 below); **190** logarithmic Euler operator for the slippage laws; **191** `Coefficient` + `D[]` Taylor cross-check, metric-built projectors; **192** constrained `LinearSolve` on the augmented 8×8 + `Solve` equivalence; **193** `ArrayFlatten` block Schur via `Inverse`, `Solve[deltaPole==0]` (linear→quadratic firewall); **194** native `SphericalHankelH1`, `Solve` for the pole/σ from coefficient matches; **195** derives `χ_Q` from the Hankel operator; **196** the tail wired in as a free symbol `l7`, `D[coeff,l7]=0` through z⁵; **197** `χ_Q` two ways + `Reduce`/`Equivalent`; **198** `M_*` reconstructed as a Jacobian `Table[D[...]]` + `LinearSolve` orbit; **199** `M_*` from additive exponent-weight vectors + `LinearSolve` projectors. **200 de-transliteration** (the row is updated below): Section I hand-collapsed ratios → a `ratioSubs` helper-monomial-quotient route feeding the `Mderived` Jacobian (F1 transliteration); Section III `Log[a^b]` collapse → full `ctrMonomial[...TActual...]/CtrTarget` exercising the exponents (F2 HIGH tautological). **One iteration-2 rework (189 Section II, orchestrator-review catch):** the iter-1 F1 fix left a residual tautology — `Rtarget_oneport=Lambda0*(1-epseta)/T2_direct` is a back-definition, so `Rtarget_oneport*T2_direct-Lambda0*(1-epseta)` ≡ 0 for any input; the verify agent flagged the smell but passed it, the orchestrator REJECTED it (no-rubber-stamp, same class as the V.2 checkpoint-185 catch). A read-only Claude+Codex consult (`redteam/codex_reviews/_consult_V3.md`, session 019e843e, CONCUR full) confirmed: the selected-branch identity `R_target·T²=Λ₀(1-ε_η)` is DEFINITIONAL (rank-2 compatibility) and must be DEMOTED to a printed definition; the genuine content is the direct-slope bridge `δln T_A²=ε·λ_A·Ξ₁` perturbing the concrete continuum `T2_coh`, with `Ξ₁` supplied INDEPENDENTLY (not back-derived). Iter-2 applied this in BOTH engines; re-verified — `Xi1_closed` confirmed independent (built from the input perturbation amplitudes before the perturbation path exists, touches neither `direct_slope` nor the T2 perturbation). All 13 of 188–200 verified, 7 clean (190, 192, 194, 196, 197, 198, 199), `material_change: false` on all 13, 0 blocked. Previous V.2 entry below.
 
@@ -569,6 +571,28 @@ different verification structure from the SymPy side:
 - `090`
   acceptable as a narrow status-boundary replay because the checkpoint claim is
   itself an explicit carried-data verdict
+- `121`
+  red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
+  for geometric_r_selection: `r_geom` derived by `Solve`-ing the Stage-99 length law
+  with explicit positive-branch `Select`; tube-length round-trip; `r_F1` surd certified
+  via `FullSimplify`/`RootReduce`; `r_c`; `Omega_W` definitional-parity (acknowledged
+  low-information); threshold exact-0 (6 PASS, genuine independent route)
+- `122`
+  red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
+  for mouth_source_compensation_test: `g_±` DERIVED by `Solve`-ing the compensation
+  quadratic at `r_F1` + sign-based branch selection (not hard-typed); the
+  traction-ratio de-tautology is preserved cross-engine — the constant `C` (`cStage`)
+  is carried as a FREE POSITIVE SYMBOL, the cancellation is COMPUTED, and the residual
+  stays symbolic as (g_nat−1)/g_±, collapsing to 0 only when g_nat→1 is substituted
+  last (NOT an X−X self-check) (9 PASS)
+- `123`
+  red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
+  for parent_normalized_branch_values: the `Xi_v`/`Xi_T` LAWS emerge from `Reduce`-based
+  inversions (for `v_w0` and `T_m`), numerics computed from the derived laws at
+  upstream-anchored `r_F1`/`g_±`; the un-squared λ NEGATIVE sign (stage-118 convention)
+  is preserved, so `Xi_v(F1) ≈ −1.01675633282526` (negative, not the +1.0168 mis-pass);
+  `v_w0` declared REAL (not positive); healing lock `c_s→ℏ/(2 m ℓ)` applied only in the
+  `Xi_T` inversion (6 PASS)
 - `175`
   red-team batch 8 added a Series+Coefficient (`dlogSeries[expr_] :=
   Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) independent route

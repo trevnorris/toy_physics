@@ -6,13 +6,13 @@
 
 The quartic pole polynomial, the wall-like residue/linewidth cancellation, and the low-loss survival gate are exact inside that reduced closure. The explicit pole census and the outgoing-leg scan below are illustrative evaluations on one admissible sample slice of the same exact formulas.
 
-This stage is the first post-Stage-238 insertion of an actual primitive finite-throat branch into the local mixed-port resonance ledger. It does **not** solve the full driven two-throat PDE. It computes the first concrete pole census and turns the linear same-charge dynamic question into one explicit branch inequality.
+This stage is the first post-Stage-221 insertion of an actual primitive finite-throat branch into the local mixed-port resonance ledger. It does **not** solve the full driven two-throat PDE. It computes the first concrete pole census and turns the linear same-charge dynamic question into one explicit branch inequality.
 
 ---
 
 ## Purpose
 
-Stage 238 reduced the linear dynamic corridor to one exact question:
+Stage 221 reduced the linear dynamic corridor to one exact question:
 
 > can an admissible pole of the mixed one-port bundle produce a large enough residue-to-linewidth ratio to matter in the tunneling region before the same pole is dominated by absorptive loading?
 
@@ -33,7 +33,7 @@ The main outputs are:
 5. one explicit numerical pole census,
 6. and the first clean evidence of a **static/dynamic tension**: strengthening the static outgoing prefactor makes the linear dynamic residue/linewidth corridor worse on the same branch family.
 
-So Stage 239 keeps the dynamic same-charge idea alive, but only in a much narrower and more branch-specific form.
+So Stage 222 keeps the dynamic same-charge idea alive, but only in a much narrower and more branch-specific form.
 
 ---
 
@@ -45,7 +45,7 @@ A_w,\qquad F_{\mu w},\qquad J^w
 \]
 alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live in the mixed sector rather than in pure brane Maxwell shaping.
 
-Stage 238 already showed that the only linear corridor left is a **resonant dispersive** one. Near a wall-like pole of the dynamic one-port bundle, the local susceptibility takes the normal form
+Stage 221 already showed that the only linear corridor left is a **resonant dispersive** one. Near a wall-like pole of the dynamic one-port bundle, the local susceptibility takes the normal form
 \[
 \chi_{qq}(\omega)
 \approx
@@ -186,7 +186,7 @@ For the wall susceptibility
 \[
 \chi_{qq}(\omega)=\frac1{D_\Pi(\omega)},
 \]
-Stage 238 gives the local normal form
+Stage 221 gives the local normal form
 \[
 \chi_{qq}(\omega)
 \approx
@@ -241,7 +241,7 @@ Everything else cancels out.
 
 ## 5. Exact low-loss survival inequality
 
-Let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\), and impose the same low-loss condition as in Stage 238,
+Let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\), and impose the same low-loss condition as in Stage 221,
 \[
 |\Im\chi|\le \eta|\Re\chi|,
 \qquad 0<\eta\le 1.
@@ -407,7 +407,7 @@ That is the first clean evidence that the **static outgoing-normalization corrid
 
 ---
 
-## 9. What Stage 239 achieves physically
+## 9. What Stage 222 achieves physically
 
 This stage does **not** prove that the same-charge dynamic idea works. But it changes the status materially.
 
@@ -468,4 +468,4 @@ The next clean move is now even sharper than before.
 3. Recompute the pole census and the survival inequality on that compatible branch.
 4. Then ask whether the resulting compatible branch still has a non-empty dynamic survival window.
 
-That is exactly the Stage-240 theorem gate.
+That is exactly the Stage-223 theorem gate.

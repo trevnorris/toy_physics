@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 253 reduced the first-order off-bundle defect to three scalar slippages
+Stage 168 reduced the first-order off-bundle defect to three scalar slippages
 \[
 \varepsilon_L,
 \qquad
@@ -19,7 +19,7 @@ and showed that they matter only through the weighted combination
 +\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_L.
 \]
 
-But Stage 253 deliberately left open the microscopic source of these slippages.
+But Stage 168 deliberately left open the microscopic source of these slippages.
 One of the first candidate sources was the weak grouped-lane anisotropy of the real
 `P2` bundle already isolated much earlier.
 
@@ -176,7 +176,7 @@ Then on a pure grouped real `P2` anisotropy,
 }
 \]
 
-Therefore the three Stage 253 slippages obey
+Therefore the three Stage 168 slippages obey
 \[
 \boxed{
 \varepsilon_L^{(1,P_2)}=0,
@@ -255,9 +255,9 @@ So the scalar feed-down is automatically quadratic in the weak axisymmetric anis
 
 ---
 
-## 5. Exact consequence for the Stage 253 normal defect ledger
+## 5. Exact consequence for the Stage 168 normal defect ledger
 
-Using the Stage 253 weighting,
+Using the Stage 168 weighting,
 \[
 \varepsilon_\perp
 =
@@ -312,7 +312,7 @@ So the grouped-anisotropy contribution to the scalar off-family defect is necess
 
 ## 6. Mouth-bias and conservative-even consequences
 
-The Stage 253 mouth-bias law becomes
+The Stage 168 mouth-bias law becomes
 \[
 \delta\Pi
 =
@@ -346,9 +346,9 @@ This is the key narrowing achieved by the stage.
 
 ---
 
-## 7. What Stage 237 changes
+## 7. What Stage 169 changes
 
-Before this step, Stage 253 still allowed the possibility that grouped real `P2` anisotropy might directly generate the scalar slippages
+Before this step, Stage 168 still allowed the possibility that grouped real `P2` anisotropy might directly generate the scalar slippages
 \((\varepsilon_L,\varepsilon_v,\varepsilon_T)\) at first order.
 
 After this step, that possibility is gone.

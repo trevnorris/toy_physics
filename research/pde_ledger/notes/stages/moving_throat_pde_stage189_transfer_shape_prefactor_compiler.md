@@ -5,7 +5,7 @@
 **Exact within the carried coherent local D/N reference-branch closure together with the exact grouped-outgoing compiler used by the reduced `P_2` normalization bridge.**
 
 This stage does **not** yet solve the full grouped-bundle isotropy or the final branch-selection problem.
-It fixes the exact algebra that converts the Stage 239 branch-observable packet into:
+It fixes the exact algebra that converts the Stage 188 branch-observable packet into:
 
 1. the direct **transfer-shape / selected-branch** packet,
 2. the isotropic grouped **response / prefactor** packet,
@@ -16,7 +16,7 @@ It fixes the exact algebra that converts the Stage 239 branch-observable packet 
 
 ## Purpose
 
-Stage 239 completed the coherent weak-axisymmetric front end in the most natural direct branch observables:
+Stage 188 completed the coherent weak-axisymmetric front end in the most natural direct branch observables:
 \[
 R_{\rm tr},
 \qquad
@@ -39,10 +39,10 @@ was shown to be an exact invertible compiler for the defect triple
 (\Theta_1,\Xi_1,\mathcal R_1).
 \]
 
-But Stage 239 still stopped one step short of the actual outgoing normalization bridge.
+But Stage 188 still stopped one step short of the actual outgoing normalization bridge.
 The remaining missing algebra is:
 
-> take the Stage 239 observable packet, rewrite it in the **direct transfer-shape language**, then compile the isotropic grouped operator moments into the outgoing prefactor moments
+> take the Stage 188 observable packet, rewrite it in the **direct transfer-shape language**, then compile the isotropic grouped operator moments into the outgoing prefactor moments
 > \[
 > P_0,\qquad P_2,\qquad P_4,
 > \]
@@ -93,7 +93,7 @@ The main outputs are:
    \]
    on the conservative-shape-preserving grouped branch.
 
-So Stage 240 is the exact compiler that turns the Stage 239 direct branch observables into the language actually consumed by the `2.5`PN / `4`PN outgoing-normalization bridge.
+So Stage 189 is the exact compiler that turns the Stage 188 direct branch observables into the language actually consumed by the `2.5`PN / `4`PN outgoing-normalization bridge.
 
 ---
 
@@ -101,7 +101,7 @@ So Stage 240 is the exact compiler that turns the Stage 239 direct branch observ
 
 ### 1.1 Direct coherent transfer shape
 
-Stage 239 already fixed the corrected nontracking branch observable
+Stage 188 already fixed the corrected nontracking branch observable
 \[
 \mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
 \qquad
@@ -162,7 +162,7 @@ Since
 =
 -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta,
 \]
-this reproduces the exact Stage 239 complementary dressing relation
+this reproduces the exact Stage 188 complementary dressing relation
 \[
 \boxed{
 \delta\ln(1-\epsilon_\eta)
@@ -188,7 +188,7 @@ Define the direct first-order transfer packet
 \end{pmatrix}.
 }
 \]
-From the Stage 239 observable packet
+From the Stage 188 observable packet
 \[
 \Delta_{\rm obs}^{(1)}
 =
@@ -223,7 +223,7 @@ But this packet is **not** independent. Its components satisfy the exact linear 
 =0.
 }
 \]
-So the Stage 239 branch-observable packet has now been turned into the physical transfer-shape/selected-branch packet, with the exact selected-branch identity built in as a rank-2 compatibility condition.
+So the Stage 188 branch-observable packet has now been turned into the physical transfer-shape/selected-branch packet, with the exact selected-branch identity built in as a rank-2 compatibility condition.
 
 ---
 
@@ -242,7 +242,7 @@ Earlier continuum-kernel stages already fixed the actual one-port transfer shape
 \frac{1-\epsilon_{\eta,A}}{R_{{\rm target},A}}.
 }
 \]
-This is the direct one-port realization of the abstract Stage 239 transfer shape.
+This is the direct one-port realization of the abstract Stage 188 transfer shape.
 
 So at the actual continuum-kernel level the grouped weak-axisymmetric direct defect is the slope of
 \[
@@ -282,7 +282,7 @@ so the direct coherent transfer shape becomes
 \Lambda_0\,\frac{1-\epsilon_\eta}{R_{\rm target}}.
 }
 \]
-This is exactly the transfer-shape observable used implicitly in Stage 239.
+This is exactly the transfer-shape observable used implicitly in Stage 188.
 
 ### 2.3 Weak-axisymmetric direct-slope bridge
 
@@ -346,7 +346,7 @@ To avoid collision with the later outgoing branch coefficients `\(K_0,K_2,K_4\)`
 \[
 K_A^{\rm(bl)}.
 \]
-Stage 248 gave the effective transfer shape as
+Stage 180 gave the effective transfer shape as
 \[
 \mathcal T_{\rm eff,A}^2=\frac{N_{A,0}}{K_A^{\rm(bl)}}.
 \]
@@ -569,13 +569,13 @@ This is the exact constant-prefactor branch already isolated as the cleanest can
 
 ---
 
-## 6. Best current theorem statement after Stage 240
+## 6. Best current theorem statement after Stage 189
 
-Stage 239 fixed the exact direct branch-observable packet
+Stage 188 fixed the exact direct branch-observable packet
 \[
 (\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta).
 \]
-Stage 240 now shows that this packet feeds the actual outgoing normalization chain in two exact steps.
+Stage 189 now shows that this packet feeds the actual outgoing normalization chain in two exact steps.
 
 ### 6.1 First exact step — direct transfer-shape / selected-branch compiler
 
@@ -632,9 +632,9 @@ On the carried weak-axisymmetric outgoing branch,
 \]
 So the direct transfer-shape language and the outgoing-prefactor language are already the same scalar language at first grouped weak-axisymmetric order.
 
-That is the Stage 240 completion:
+That is the Stage 189 completion:
 
-> the Stage 239 branch observables now compile all the way to the isotropic outgoing prefactor packet and to the exact odd normalization product.
+> the Stage 188 branch observables now compile all the way to the isotropic outgoing prefactor packet and to the exact odd normalization product.
 
 So the next honest theorem gate is smaller than before.
 It is no longer “derive the outgoing bridge somehow.”
@@ -642,7 +642,7 @@ It is now:
 
 > compute the direct transfer shape and the grouped isotropic operator/transfer moments on the actual moving-throat branch, then evaluate the exact compiler above.
 
-That is the precise hinge point before Stage 241, where the direct transfer-shape defect and the selected-branch dressing residual will be separated even more sharply.
+That is the precise hinge point before Stage 190, where the direct transfer-shape defect and the selected-branch dressing residual will be separated even more sharply.
 
 ---
 
@@ -657,4 +657,4 @@ It is to separate, inside the transfer-shape language just compiled here,
 
 so that the microscopic slippages split into the exact direct-defect variables versus the exact dressing variable.
 
-That is the natural Stage 241 continuation.
+That is the natural Stage 190 continuation.

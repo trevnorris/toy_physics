@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 251 compressed the coherent weak-axisymmetric defect to the three branch-adapted scalars
+Stage 183 compressed the coherent weak-axisymmetric defect to the three branch-adapted scalars
 \[
 (\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta),
 \]
@@ -52,7 +52,7 @@ we obtain the exact logarithmic defect coordinates
 \boxed{\delta\ln \epsilon_\eta = \Sigma_\eta.}
 \]
 
-So the whole continuation point is now smaller than Stage 251 left it:
+So the whole continuation point is now smaller than Stage 183 left it:
 
 the actual moving-throat branch no longer needs to supply five microscopic slippages, or even three reconstructed slippages. It only needs the first grouped drifts of three exact branch composites.
 
@@ -130,7 +130,7 @@ Since
 \[
 \delta\ln \epsilon_{\eta,A}=\epsilon\lambda_A\,\Sigma_\eta,
 \]
-this immediately reproduces the Stage 251 dressing relation
+this immediately reproduces the Stage 183 dressing relation
 \[
 \boxed{
 \mathcal R_1+\Xi_1
@@ -148,7 +148,7 @@ So the coherent branch already contains one exact direct dressing coordinate:
 
 ## 2. Direct branch-invariant tracking coordinate
 
-Stage 251 showed that
+Stage 183 showed that
 \[
 \Sigma_{\rm tr}
 =
@@ -185,7 +185,7 @@ So the tracking coordinate is now a direct branch-invariant logarithmic drift:
 
 ### Interpretation
 
-Nothing essentially new had to be added. Stage 251 already showed that \(\Sigma_{\rm tr}\) is just a positively normalized version of the tracking-factor drift. This stage only packages that fact into an exact branch-invariant coordinate.
+Nothing essentially new had to be added. Stage 183 already showed that \(\Sigma_{\rm tr}\) is just a positively normalized version of the tracking-factor drift. This stage only packages that fact into an exact branch-invariant coordinate.
 
 Because \(C_*>0\), the equivalent zero-tracking statements are
 \[
@@ -206,7 +206,7 @@ So the first branch equation the actual moving-throat solution must preserve is 
 
 ## 3. Direct branch-invariant nontracking coordinate
 
-Stage 251 also showed that
+Stage 183 also showed that
 \[
 \Sigma_{\rm nt}
 =
@@ -331,7 +331,7 @@ We now have three exact branch-invariant coordinates:
 \delta\ln \mathfrak D = \Sigma_\eta.
 }
 \]
-Since Stage 251 already proved
+Since Stage 183 already proved
 \[
 \Theta_1=\Xi_1=\mathcal R_1=0
 \iff
@@ -372,9 +372,9 @@ If the answer to all three is yes, then the coherent weak-axisymmetric defect va
 
 ---
 
-## 6. Best current theorem statement after Stage 252
+## 6. Best current theorem statement after Stage 184
 
-On the coherent local D/N tracking branch, the exact branch equations already contain three direct composite quantities whose first grouped weak-axisymmetric drifts are exactly the three Stage 251 branch-adapted defect coordinates:
+On the coherent local D/N tracking branch, the exact branch equations already contain three direct composite quantities whose first grouped weak-axisymmetric drifts are exactly the three Stage 183 branch-adapted defect coordinates:
 \[
 \delta\ln \mathfrak T_* = \Sigma_{\rm tr},
 \qquad
@@ -413,7 +413,7 @@ Therefore the full coherent weak-axisymmetric zero-defect theorem is now equival
 }
 \]
 
-So the direct next theorem gate is now even smaller than Stage 251 suggested.
+So the direct next theorem gate is now even smaller than Stage 183 suggested.
 
 It is no longer
 

@@ -151,7 +151,7 @@ d0Compat = FullSimplify[
   Assumptions -> $Assumptions
 ];
 kCompat = FullSimplify[(b0 + z0 /. sampleRules) + d0Compat, Assumptions -> $Assumptions];
-Print["Stage-242 K compatibility value = ", fmt[N[kCompat, 20]]];
+Print["Stage-225 K compatibility value = ", fmt[N[kCompat, 20]]];
 
 p01Mixed = Expand[FullSimplify[deltaMixed[pPort] /. sampleRules, Assumptions -> $Assumptions]];
 delta01Mixed = Expand[FullSimplify[deltaMixed[delta] /. sampleRules, Assumptions -> $Assumptions]];
@@ -240,8 +240,8 @@ expectedT1 = {-4.359222794718, 3.107402039105, 18.703510605854, 1.0, 0.0};
 expectedT2 = {1.909256655687, -1.163651238154, -0.482414494705, 0.0, 1.0};
 Print["t1 = ", fmt[N[t1, 16]]];
 Print["t2 = ", fmt[N[t2, 16]]];
-expectVectorClose["M4 Stage-243 transfer basis t1", t1, expectedT1, 10^-11];
-expectVectorClose["M4 Stage-243 transfer basis t2", t2, expectedT2, 10^-11];
+expectVectorClose["M4 Stage-226 transfer basis t1", t1, expectedT1, 10^-11];
+expectVectorClose["M4 Stage-226 transfer basis t2", t2, expectedT2, 10^-11];
 
 iRow = coeffRow[iForm, mixedVars];
 hRow = coeffRow[hForm, mixedVars];

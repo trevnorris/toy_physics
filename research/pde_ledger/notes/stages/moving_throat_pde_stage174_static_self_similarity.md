@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 241 reduced the remaining linear grouped `2.5`PN defect to one scalar,
+Stage 173 reduced the remaining linear grouped `2.5`PN defect to one scalar,
 \[
 \Xi_{\rm load}
 :=
@@ -53,7 +53,7 @@ D_0=K-B_0-Z_0.
 So the last linear grouped normalization defect is not a generic mismatch of many coefficients.
 It is exactly the weighted failure of the three support/transfer sectors to co-load with the static wall baseline.
 
-That makes the next theorem gate much sharper than Stage 241:
+That makes the next theorem gate much sharper than Stage 173:
 
 > compute the **self-similarity defect fields** of the actual moving-throat branch.
 
@@ -111,7 +111,7 @@ one also has the exact weight identity
 \omega_K-\omega_B-\omega_Z=1.
 }
 \]
-Therefore the Stage 241 defect becomes
+Therefore the Stage 173 defect becomes
 \[
 \Xi_{\rm load}
 =
@@ -358,13 +358,13 @@ Then the exact formula above gives
 
 So the remaining linear grouped normalization defect vanishes automatically under static self-similarity.
 
-This is the grouped weak-axisymmetric analog of the Stage 252 tangent-compensation theorem: isotropic bundle drift did not push the system off the compensated Family-1 branch, and now weak grouped loading does not generate a linear grouped `2.5`PN defect if the full static support/transfer bundle co-loads self-similarly with the wall baseline.
+This is the grouped weak-axisymmetric analog of the Stage 167 tangent-compensation theorem: isotropic bundle drift did not push the system off the compensated Family-1 branch, and now weak grouped loading does not generate a linear grouped `2.5`PN defect if the full static support/transfer bundle co-loads self-similarly with the wall baseline.
 
 ---
 
 ## 5. Combined consequence on the even-preserving branch
 
-Stage 241 already proved that on the even-preserving branch
+Stage 173 already proved that on the even-preserving branch
 \[
 u_2^{(1)}=0
 \quad\Longrightarrow\quad
@@ -400,7 +400,7 @@ It is to determine whether the actual moving-throat branch breaks static self-si
 
 ---
 
-## 6. What Stage 242 changes
+## 6. What Stage 174 changes
 
 Before this stage, the live theorem gate was:
 

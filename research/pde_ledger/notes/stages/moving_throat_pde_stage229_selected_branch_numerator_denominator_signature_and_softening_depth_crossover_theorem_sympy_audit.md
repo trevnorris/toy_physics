@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the explicit finite-throat D/N selected-branch closure built on the Stage 143/093 selected-mode normalization product and compared against the Stage-245 pure-transfer numerator/denominator split.**
+**Exact within the explicit finite-throat D/N selected-branch closure built on the Stage 143/093 selected-mode normalization product and compared against the Stage-228 pure-transfer numerator/denominator split.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the two exact rigid same-charge survivors from Stage 245,
+It takes the two exact rigid same-charge survivors from Stage 228,
 
 - **numerator-rigid** \((\pi_1=0)\),
 - **denominator-rigid** \((\delta_1=0)\),
@@ -18,7 +18,7 @@ and asks the next natural microscopic question:
 
 ## Purpose
 
-Stage 245 already reduced the surviving same-charge pure-transfer corridor to the exact static split
+Stage 228 already reduced the surviving same-charge pure-transfer corridor to the exact static split
 \[
 \Xi_1 = 2(\pi_1-\delta_1),
 \qquad
@@ -45,12 +45,12 @@ s_-(x)=
 
 So the next honest question is now sharper:
 
-> when the actual selected branch is written in its exact softening-depth language, is it numerator-like, denominator-like, or something genuinely different from both rigid Stage-245 subcorridors?
+> when the actual selected branch is written in its exact softening-depth language, is it numerator-like, denominator-like, or something genuinely different from both rigid Stage-228 subcorridors?
 
 The main outputs of this stage are:
 
 1. the exact factorization of the selected-branch normalization product into a **numerator-like** and a **denominator-like** piece;
-2. the exact log-slope classifier that decides which rigid Stage-245 signature the selected branch most closely resembles at any point on the stable branch;
+2. the exact log-slope classifier that decides which rigid Stage-228 signature the selected branch most closely resembles at any point on the stable branch;
 3. the universal crossover theorem in the dimensionless variables
    \[
    \xi=\frac{x}{A},
@@ -62,9 +62,9 @@ The main outputs of this stage are:
    \delta=\frac89
    \]
    separating always-denominator branches from branches that begin numerator-dominant;
-5. and the sharp conclusion that the actual selected branch is **never** literally one of the rigid Stage-245 subcorridors — it is an exact co-loading product — but it becomes unambiguously **denominator-like** near softening, and for all \(\delta\ge 8/9\) it is denominator-like on the entire stable branch.
+5. and the sharp conclusion that the actual selected branch is **never** literally one of the rigid Stage-228 subcorridors — it is an exact co-loading product — but it becomes unambiguously **denominator-like** near softening, and for all \(\delta\ge 8/9\) it is denominator-like on the entire stable branch.
 
-So after Stage 246 the continuation point is no longer “numerator-rigid or denominator-rigid?” in the abstract.
+So after Stage 229 the continuation point is no longer “numerator-rigid or denominator-rigid?” in the abstract.
 It is:
 
 > what are the actual selected-branch ratios \((\xi,\delta)\) on the physical moving-throat branch, and where do they land on this universal classifier map?
@@ -73,9 +73,9 @@ It is:
 
 ## 1. Frozen input carried forward
 
-### 1.1 Stage-245 static split
+### 1.1 Stage-228 static split
 
-Stage 245 isolated the exact static pure-transfer identity
+Stage 228 isolated the exact static pure-transfer identity
 \[
 \Xi_1 = 2(\pi_1-\delta_1),
 \qquad
@@ -103,7 +103,7 @@ with exact D/N constants
 \kappa_1^2=\frac{16}{9\pi^2}.
 \]
 
-The point of Stage 246 is to compare the Stage-245 numerator/denominator split against **this** actual selected-branch object rather than against a free one-port static factor.
+The point of Stage 229 is to compare the Stage-228 numerator/denominator split against **this** actual selected-branch object rather than against a free one-port static factor.
 
 ---
 
@@ -170,13 +170,13 @@ It says:
 - the selected-branch **denominator-like** gain is the explicit softening factor \((1-\xi)^{-1}\).
 
 So the actual PDE-selected branch already comes with a built-in numerator/denominator split.
-But unlike Stage 245, the split is not “either/or.” It is an exact product.
+But unlike Stage 228, the split is not “either/or.” It is an exact product.
 
 ---
 
 ## 3. Exact log-slope classifier
 
-To decide which rigid Stage-245 branch the selected branch most closely resembles, the right invariant is the log-slope split of \(F\) along the physical softening coordinate \(\xi\).
+To decide which rigid Stage-228 branch the selected branch most closely resembles, the right invariant is the log-slope split of \(F\) along the physical softening coordinate \(\xi\).
 
 Define
 \[
@@ -219,7 +219,7 @@ Interpretation:
 - \(\mathcal R_{ND}<1\): it is **denominator-like**;
 - \(\mathcal R_{ND}=1\): exact crossover.
 
-This is the Stage-246 replacement for the rigid Stage-245 subcorridors.
+This is the Stage-229 replacement for the rigid Stage-228 subcorridors.
 It is no longer a statement about a free primitive mixed slope.
 It is a statement about the actual selected normalization product.
 
@@ -267,7 +267,7 @@ Therefore
 \]
 
 So the actual selected branch is always denominator-like sufficiently close to the softening edge.
-This is already a strong answer to the Stage-245 continuation question:
+This is already a strong answer to the Stage-228 continuation question:
 
 > whatever the selected branch does near onset, it becomes denominator-like before softening.
 
@@ -403,10 +403,10 @@ It happens deeper on the stable branch, where denominator dominance is the natur
 
 ---
 
-## 7. What this says about the Stage-245 rigid subcorridors
+## 7. What this says about the Stage-228 rigid subcorridors
 
-Stage 245 asked which rigid static signature the real PDE-selected mixed branch most closely resembles.
-Stage 246 gives the precise answer.
+Stage 228 asked which rigid static signature the real PDE-selected mixed branch most closely resembles.
+Stage 229 gives the precise answer.
 
 ### 7.1 It is not literally either rigid subcorridor
 
@@ -423,7 +423,7 @@ It is an exact co-loading branch.
 
 Because the denominator factor diverges and the numerator factor stays finite as \(\xi\to1^-\), the selected branch always becomes denominator-like sufficiently near softening.
 
-So if the physical branch hits the universal target at appreciable softening depth, the right Stage-245 proxy is the denominator-rigid one, not the numerator-rigid one.
+So if the physical branch hits the universal target at appreciable softening depth, the right Stage-228 proxy is the denominator-rigid one, not the numerator-rigid one.
 
 ### 7.3 Only very early on can it look numerator-like
 
@@ -434,15 +434,15 @@ Numerator-like behavior is confined to the small-softening regime
 0<\delta<\frac89.
 \]
 
-So the numerator-rigid Stage-245 branch is best read as an **onset-side local proxy**, not as the global selected-branch signature.
+So the numerator-rigid Stage-228 branch is best read as an **onset-side local proxy**, not as the global selected-branch signature.
 
 ---
 
-## 8. Best current verdict after Stage 246
+## 8. Best current verdict after Stage 229
 
-The continuation question from Stage 245 now has a clean answer.
+The continuation question from Stage 228 now has a clean answer.
 
-1. The real selected PDE branch is not one of the rigid Stage-245 subcorridors.
+1. The real selected PDE branch is not one of the rigid Stage-228 subcorridors.
    It is an exact numerator/denominator **co-loading** product.
 2. The exact classifier is
    \[
@@ -457,7 +457,7 @@ The continuation question from Stage 245 now has a clean answer.
 
 So the next honest stage is now very specific:
 
-> feed the actual moving-throat selected-branch data into \((\xi,\delta)\), place the physical branch on this universal classifier map, and then compare the resulting denominator-vs-numerator signature against the concrete Stage-245 dynamic ceilings.
+> feed the actual moving-throat selected-branch data into \((\xi,\delta)\), place the physical branch on this universal classifier map, and then compare the resulting denominator-vs-numerator signature against the concrete Stage-228 dynamic ceilings.
 
 That is the clean continuation point.
 
@@ -485,9 +485,9 @@ Supporting file:
 
 The next clean move is now well defined.
 
-1. Keep the exact Stage-246 classifier map.
+1. Keep the exact Stage-229 classifier map.
 2. Insert the actual selected-branch moving-throat ratios \((\xi,\delta)\).
 3. Decide whether the physical branch sits in the numerator-like onset window or the denominator-like deeper-softening window.
-4. Then compile that placement into the carried Stage-245 wall-like dynamic ceilings.
+4. Then compile that placement into the carried Stage-228 wall-like dynamic ceilings.
 
 That is the smallest next theorem gate that directly connects the selected-branch normalization geometry to the already-audited same-charge dynamic windows.

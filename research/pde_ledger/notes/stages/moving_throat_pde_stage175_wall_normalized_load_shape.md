@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 242 reduced the remaining linear grouped `2.5`PN defect to the wall-referenced microscopic self-similarity fields
+Stage 174 reduced the remaining linear grouped `2.5`PN defect to the wall-referenced microscopic self-similarity fields
 \[
 \Sigma_\alpha^{(B)}
 =
@@ -24,7 +24,7 @@ The next honest step is now smaller than “solve the whole branch.” It is:
 
 This stage performs that factorization exactly.
 
-The main result is that the three Stage 242 defect families collapse to **wall-normalized shape/load variables**:
+The main result is that the three Stage 174 defect families collapse to **wall-normalized shape/load variables**:
 \[
 B_{0,\alpha}=K\,\chi_\alpha^2,
 \qquad
@@ -63,7 +63,7 @@ The outgoing transfer sector must actively load with the wall baseline.
 
 ## 1. Carry-forward microscopic static bundles
 
-From Stage 242, the static grouped bundles were
+From Stage 174, the static grouped bundles were
 \[
 B_{0,\alpha}=\frac{c_\alpha^2}{\varpi_\alpha^2},
 \qquad
@@ -86,7 +86,7 @@ The wall baseline slope is
 \[
 \delta_K:=\frac{K_1}{K},
 \]
-and the Stage 242 grouped defect was
+and the Stage 174 grouped defect was
 \[
 \Xi_{\rm load}
 =
@@ -118,7 +118,7 @@ B_{0,\alpha}=K\,\chi_\alpha^2.
 }
 \]
 
-So the Stage 242 BdG self-similarity defect is simply
+So the Stage 174 BdG self-similarity defect is simply
 \[
 \boxed{
 \Sigma_\alpha^{(B)}
@@ -199,7 +199,7 @@ This is the central factorization of the stage.
 - \(\Upsilon_r\) is the **wall-normalized conservative port shape**.
 - \(\Lambda_r\) is the **dimensionless outgoing load factor**.
 
-### 2.3 Exact rewrite of the Stage 242 port defects
+### 2.3 Exact rewrite of the Stage 174 port defects
 
 Using the factorization above,
 \[
@@ -249,7 +249,7 @@ Define the weighted aggregate defect measures
 :=
 \sum_r \rho_r^{(N)}\,\delta\ln\!\left(\frac{\Lambda_r^2}{K}\right).
 \]
-Then the exact Stage 242 formula becomes
+Then the exact Stage 174 formula becomes
 \[
 \boxed{
 \Xi_{\rm load}
@@ -344,7 +344,7 @@ This is a genuine no-go theorem.
 It says that on any nontrivial weak-axisymmetric wall-loading branch, simply preserving all wall-normalized microscopic shapes is not enough.
 The outgoing transfer sector must carry an **additional wall-loading law**.
 
-That is a sharper statement than Stage 242.
+That is a sharper statement than Stage 174.
 
 ---
 
@@ -379,7 +379,7 @@ The true requirement is not mere shape preservation of \(\Lambda_r\), but a very
 
 ## 7. Direct consequence for the grouped weak-axisymmetric defect pattern
 
-Stage 241 already proved that, on the even-preserving branch,
+Stage 173 already proved that, on the even-preserving branch,
 \[
 \Delta_Q^{(20)}=\epsilon\,\Xi_{\rm load},
 \qquad
@@ -425,9 +425,9 @@ That is the cleanest live theorem gate so far.
 
 ---
 
-## 8. What Stage 243 changes
+## 8. What Stage 175 changes
 
-Before this step, Stage 242 said that the remaining linear grouped defect was the weighted failure of static self-similarity relative to the wall baseline.
+Before this step, Stage 174 said that the remaining linear grouped defect was the weighted failure of static self-similarity relative to the wall baseline.
 
 After this step, the theorem status is much sharper:
 

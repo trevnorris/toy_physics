@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 244 factored the remaining linear grouped weak-axisymmetric defect into three microscopic port slippages,
+Stage 176 factored the remaining linear grouped weak-axisymmetric defect into three microscopic port slippages,
 \[
 \mathcal M_r=\frac{G_{W,r}}{\Omega_{W,r}^2\sqrt K},
 \qquad
@@ -56,7 +56,7 @@ Equivalently,
 \right].
 }
 \]
-So the whole Stage 244 port bundle has now collapsed one step further:
+So the whole Stage 176 port bundle has now collapsed one step further:
 
 - not to every microscopic grouped drift separately,
 - but to one weighted scalar combination \(\Xi_1\).
@@ -102,7 +102,7 @@ and the portwise logarithmic microscopic slopes
 \mathfrak g_{W,r},\mathfrak g_{U,r},\mathfrak r_r,\mathfrak o_{U,r},\mathfrak o_{W,r}
 \).
 
-This is the natural Stage 244 continuation because the outgoing-load theorem is already logarithmic.
+This is the natural Stage 176 continuation because the outgoing-load theorem is already logarithmic.
 
 ---
 
@@ -139,14 +139,14 @@ Therefore the weak-axisymmetric grouped slopes are
 }
 \]
 
-So the three Stage 244 microscopic outgoing slippages automatically inherit the same grouped signature.
+So the three Stage 176 microscopic outgoing slippages automatically inherit the same grouped signature.
 That is the first exact collapse of the stage.
 
 ---
 
 ## 3. Exact portwise outgoing-defect amplitude
 
-Stage 244 already gave the first-order defect field
+Stage 176 already gave the first-order defect field
 \[
 \Sigma_r^{(N)}
 =
@@ -170,7 +170,7 @@ with the exact port amplitude
 +\frac{2\mathcal H_r}{1-\mathcal H_r}\,\mathfrak h_r.
 }
 \]
-So at the level of each outgoing port, the whole Stage 244 defect bundle collapses to one weak-axisymmetric amplitude \(\sigma_r\).
+So at the level of each outgoing port, the whole Stage 176 defect bundle collapses to one weak-axisymmetric amplitude \(\sigma_r\).
 
 ---
 
@@ -249,20 +249,20 @@ It says the first anisotropy of the full remaining grouped defect is never arbit
 
 ## 6. Identification with the physical outgoing-prefactor slope
 
-Stage 241 already showed that on the weak-axisymmetric branch
+Stage 173 already showed that on the weak-axisymmetric branch
 \[
 \frac{P_1}{P_0}
 =
 \frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}
 =\Xi_{\rm load}.
 \]
-Combining that with the present Stage 245 collapse gives the exact identification
+Combining that with the present Stage 177 collapse gives the exact identification
 \[
 \boxed{
 \frac{P_1}{P_0}=\Xi_1.
 }
 \]
-So the Stage 244 outgoing-slippage factorization and the Stage 241 physical prefactor slope are now the **same object**.
+So the Stage 176 outgoing-slippage factorization and the Stage 173 physical prefactor slope are now the **same object**.
 
 This is the cleanest interpretation reached so far:
 
@@ -274,7 +274,7 @@ That is the second main theorem of the stage.
 
 ## 7. Quadrupole-normalization defect on the even-preserving branch
 
-Stage 241 also showed that on the even-preserving branch the remaining linear grouped normalization defect is
+Stage 173 also showed that on the even-preserving branch the remaining linear grouped normalization defect is
 \[
 \Delta_Q^{(20)}=\epsilon\,\Xi_{\rm load},
 \qquad
@@ -282,7 +282,7 @@ Stage 241 also showed that on the even-preserving branch the remaining linear gr
 \qquad
 \Delta_Q^{(22)}=-\epsilon\,\Xi_{\rm load}.
 \]
-So the present Stage 245 result immediately gives
+So the present Stage 177 result immediately gives
 \[
 \boxed{
 \Delta_Q^{(20)}=\epsilon\,\Xi_1,
@@ -359,15 +359,15 @@ So in the dominant-port rigid branch, zero defect is exactly the square-root mix
 
 ---
 
-## 9. What Stage 245 changes
+## 9. What Stage 177 changes
 
-Stage 244 reduced the remaining grouped weak-axisymmetric defect to three microscopic slippages per outgoing port:
+Stage 176 reduced the remaining grouped weak-axisymmetric defect to three microscopic slippages per outgoing port:
 \(
 \mathcal M_r,\mathcal I_r,\mathcal H_r
 \).
 That was already a big collapse, but it still left the grouped theorem problem looking like a port-by-port vector problem.
 
-Stage 245 sharpens the problem one more step.
+Stage 177 sharpens the problem one more step.
 
 It shows that on the weak-axisymmetric grouped branch:
 

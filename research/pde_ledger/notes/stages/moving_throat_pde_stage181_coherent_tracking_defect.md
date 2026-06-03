@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Stage 248 reduced the remaining grouped weak-axisymmetric `2.5`PN defect to the logarithmic slope of a single effective transfer shape,
+Stage 180 reduced the remaining grouped weak-axisymmetric `2.5`PN defect to the logarithmic slope of a single effective transfer shape,
 \[
 \Xi_1=\frac{\delta\ln \mathcal T_{\mathrm{eff},A}^2}{\epsilon\lambda_A},
 \qquad
@@ -44,7 +44,7 @@ R_{\mathrm{target}}
 
 So the next honest step is now very sharp:
 
-1. substitute the actual coherent tracking-branch map into the Stage 248 transfer-shape formula,
+1. substitute the actual coherent tracking-branch map into the Stage 180 transfer-shape formula,
 2. compute the exact weak-axisymmetric defect law in the **physical** branch variables,
 3. and determine whether coherent support can help cancel the grouped defect.
 
@@ -116,7 +116,7 @@ R_{\mathrm{target}}
 \frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
 \]
 
-Substituting this directly into the Stage 248 selected-branch transfer-shape law gives
+Substituting this directly into the Stage 180 selected-branch transfer-shape law gives
 \[
 \mathcal T^2
 =
@@ -182,7 +182,7 @@ we also have
 }
 \]
 
-Hence the Stage 248 defect scalar is exactly support-blind:
+Hence the Stage 180 defect scalar is exactly support-blind:
 \[
 \boxed{
 \partial_\zeta \Xi_1 = 0.
@@ -259,7 +259,7 @@ So the final exact coherent-branch defect law is
 }
 \]
 
-This formula is the direct physical continuation of Stage 248.
+This formula is the direct physical continuation of Stage 180.
 
 ### Interpretation
 
@@ -277,7 +277,7 @@ The coherent support amplitude ratio \(\zeta\) is absent.
 
 ## 4. Selected-branch reformulation
 
-The Stage 248 selected-branch identity remains exact:
+The Stage 180 selected-branch identity remains exact:
 \[
 \Xi_1
 =
@@ -372,7 +372,7 @@ It is controlled by the transfer-shape variables themselves.
 
 ---
 
-## 6. Best current theorem statement after Stage 249
+## 6. Best current theorem statement after Stage 181
 
 On the actual coherent local D/N tracking branch:
 

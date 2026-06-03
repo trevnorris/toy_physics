@@ -2,9 +2,9 @@
 
 ## Status
 
-**Exact within the carried Stage 249 support-`<=4` certified ledger, once a compact interior ratio window and the corresponding validity map are supplied on the chosen five-coordinate patch.**
+**Exact within the carried Stage 215 support-`<=4` certified ledger, once a compact interior ratio window and the corresponding validity map are supplied on the chosen five-coordinate patch.**
 
-Stage 250 now supplies the support-cardinality-`5` gate and the exact five-face boundary splice. Because there is only **one** primitive five-coordinate simplex,
+Stage 216 now supplies the support-cardinality-`5` gate and the exact five-face boundary splice. Because there is only **one** primitive five-coordinate simplex,
 \[
 \{\lambda,c,\gamma,U,W\},
 \]
@@ -14,7 +14,7 @@ this note can focus entirely on the only genuinely new remaining content: the **
 
 ## Purpose
 
-Stage 249 finished the full support-`<=4` search, and Stage 250 then built the unique positive spherical five-simplex, reduced its full codimension-one boundary back to the Stage 249 quadruple packets, and isolated the two canonical five-way interior screens.
+Stage 215 finished the full support-`<=4` search, and Stage 216 then built the unique positive spherical five-simplex, reduced its full codimension-one boundary back to the Stage 215 quadruple packets, and isolated the two canonical five-way interior screens.
 
 That leaves one exact continuation point:
 
@@ -24,16 +24,16 @@ This stage answers that.
 
 The main outputs are:
 
-1. the exact positive spherical five-simplex and its five-face reduction back to the Stage 249 quadruple packets,
+1. the exact positive spherical five-simplex and its five-face reduction back to the Stage 215 quadruple packets,
 2. the exact four-ratio interior chart and certified root functional,
 3. the exact four-component stationary numerator system,
 4. the exact lifted polynomial stationary system with degree pattern `(3,3,3,3,2)`,
 5. the exact finite algebraic candidate-set theorem with lifted Bézout bound `162`,
 6. the direct square-root-free elimination into three quintic cross-consistency polynomials plus one sextic square condition on a chosen interior chart, giving the projected bound `750`,
 7. two exact special reductions explaining why the gradient-optimal and equal-mix interior screens are the right canonical screens,
-8. and the exact local improvement / non-improvement theorems against the imported Stage 249 five-face boundary ledger.
+8. and the exact local improvement / non-improvement theorems against the imported Stage 215 five-face boundary ledger.
 
-So Stage 251 turns the last genuinely new local mixed-simplex problem into a finite candidate problem.
+So Stage 217 turns the last genuinely new local mixed-simplex problem into a finite candidate problem.
 
 ---
 
@@ -76,7 +76,7 @@ a_\lambda\widehat{\mathbf e}_\lambda
 }
 \]
 
-Its five codimension-one faces are exactly the five Stage 249 primitive quadruple simplices:
+Its five codimension-one faces are exactly the five Stage 215 primitive quadruple simplices:
 \[
 Q_{\widehat\lambda}=\{c,\gamma,U,W\},
 \qquad
@@ -90,9 +90,9 @@ Q_{\widehat U}=\{\lambda,c,\gamma,W\},
 Q_{\widehat W}=\{\lambda,c,\gamma,U\}.
 \]
 
-So the entire codimension-one boundary is already closed by the Stage 249 ledger.
+So the entire codimension-one boundary is already closed by the Stage 215 ledger.
 
-Let the imported Stage 249 closed-simplex intervals be
+Let the imported Stage 215 closed-simplex intervals be
 \[
 \mathcal I_{\widehat\lambda}^{\square},
 \quad
@@ -583,7 +583,7 @@ Let
 \]
 be the exact interior certified interval supplied by the lifted finite candidate compiler.
 
-Because the whole codimension-one boundary is already closed by the imported Stage 249 five-face ledger, the local five-coordinate comparison is now exact.
+Because the whole codimension-one boundary is already closed by the imported Stage 215 five-face ledger, the local five-coordinate comparison is now exact.
 
 ### Genuine five-coordinate interior improvement theorem
 
@@ -625,13 +625,13 @@ This is the only genuinely new finite search work beyond the already-finished su
 
 ---
 
-## 9. Best current summary after Stage 251
+## 9. Best current summary after Stage 217
 
 The support-cardinality-`5` problem is no longer a continuum search.
 
-- Its entire codimension-one boundary is already closed by Stage 249.
+- Its entire codimension-one boundary is already closed by Stage 215.
 - Its genuinely new interior optimizer is governed by an exact lifted polynomial system with degree pattern `(3,3,3,3,2)`.
 - Every interior optimizer lies in a finite admissible candidate set with lifted Bézout bound `162`.
 - And the local improvement/non-improvement verdict against the full support-`<=4` ledger is now an exact interval comparison.
 
-That means the natural next move is Stage 252 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.
+That means the natural next move is Stage 218 = the full support-`<=5` completion theorem, i.e. splice the unique five-coordinate interior packet to the already-finished support-`<=4` ledger and close the entire local mixed-ray search.

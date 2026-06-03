@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 240 reduced the linear grouped outlet problem to the weak-axisymmetric physical slope pair
+Stage 172 reduced the linear grouped outlet problem to the weak-axisymmetric physical slope pair
 \[
 u_2^{(1)},
 \qquad
@@ -18,7 +18,7 @@ The next honest step is therefore:
 
 This stage does exactly that.
 
-Using the exact Stage-7 axisymmetric grouped signature
+Using the exact Stage-024 axisymmetric grouped signature
 \[
 \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1,
 \]
@@ -103,7 +103,7 @@ Then
 }
 \]
 
-So the remaining linear grouped normalization problem is now smaller than Stage 240 suggested.
+So the remaining linear grouped normalization problem is now smaller than Stage 172 suggested.
 It is no longer “compute \(u_2^{(1)}\) and \(P_1/P_0\) separately.”
 On the even-preserving branch it is just:
 
@@ -167,7 +167,7 @@ P_1
 }
 \]
 
-So the Stage 240 physical slope pair is now computed directly from the actual grouped moving-throat response coefficients.
+So the Stage 172 physical slope pair is now computed directly from the actual grouped moving-throat response coefficients.
 
 ---
 
@@ -188,7 +188,7 @@ u_4^{(1)}=
 }
 \]
 
-Stage 240 already translated the one-parameter hidden-even relation into
+Stage 172 already translated the one-parameter hidden-even relation into
 \[
 u_4^{(1)}=\frac89\,u_2^{(1)}.
 \]
@@ -345,7 +345,7 @@ u_2^{(1)}
 }
 \]
 
-So the Stage 239 obstruction pair has now been rewritten in the sharpest static form yet:
+So the Stage 171 obstruction pair has now been rewritten in the sharpest static form yet:
 
 - one weak-axisymmetric conservative static slope,
 - one weak-axisymmetric outgoing-transfer static slope.
@@ -413,7 +413,7 @@ the whole linear grouped defect is controlled by weighted logarithmic slopes of 
 
 ---
 
-## 7. What Stage 241 changes
+## 7. What Stage 173 changes
 
 Before this stage, the next theorem gate was still phrased as:
 
@@ -441,7 +441,7 @@ The new theorem status is:
    \Xi_{\rm load}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
    \]
 
-So the next honest theorem gate is now smaller than Stage 240 suggested:
+So the next honest theorem gate is now smaller than Stage 172 suggested:
 
 > compute the weak-axisymmetric static operator slope \(D_{01}/D_0\) and the weak-axisymmetric static outgoing-transfer slope \(N_{01}/N_0\) on the actual moving-throat branch — and, on the even-preserving branch, only their difference \(\Xi_{\rm load}\).
 

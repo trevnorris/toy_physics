@@ -2,17 +2,17 @@
 
 ## Status
 
-**Exact within the carried Stage-251 direct branch-observable compiler and the later `5`PN orbit/quotient projector calculus.**
+**Exact within the carried Stage-234 direct branch-observable compiler and the later `5`PN orbit/quotient projector calculus.**
 
 This stage does **not** add a new physical mechanism.
-It upgrades the Stage-251 rigid-mouth strip picture into an exact **two-coordinate projector calculus** on the direct observable plane
+It upgrades the Stage-234 rigid-mouth strip picture into an exact **two-coordinate projector calculus** on the direct observable plane
 \[
 (R_1,E_1)
 :=
 (\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta).
 \]
 
-The main new result is sharper than the Stage-251 wording:
+The main new result is sharper than the Stage-234 wording:
 
 > on the rigid-mouth branch, the first static same-charge scalar sees only one quotient coordinate, `q_nt = Xi_1`, while a second exact dressing coordinate `q_eta` survives completely invisible to that static gate. So the static strip is a codimension-one test inside a codimension-two orbit-lock problem.
 
@@ -22,7 +22,7 @@ In other words, clearing the first static ceiling is necessary but not sufficien
 
 ## Purpose
 
-Stage 251 already proved that on the direct coherent branch
+Stage 234 already proved that on the direct coherent branch
 \[
 \Theta_1=\delta\ln R_{\rm tr},
 \qquad
@@ -85,7 +85,7 @@ E_1
 \end{pmatrix}.
 }
 \]
-Using the Stage-251 direct compiler,
+Using the Stage-234 direct compiler,
 \[
 q_{\rm nt}=-R_1-c_\eta E_1,
 \qquad
@@ -256,7 +256,7 @@ This is the sharpest version yet of “the static gate is not the whole orbit-lo
 
 ## 4. The static-blind dressing line
 
-The compensated strip from Stage 251 is now simply the direct-space image of the packet projector `Q_eta`:
+The compensated strip from Stage 234 is now simply the direct-space image of the packet projector `Q_eta`:
 \[
 \Xi_1=0
 \iff
@@ -351,15 +351,15 @@ So the extra step beyond the static gate is not mysterious. It is the exact remo
 
 ---
 
-## 6. What changes physically after Stage 252
+## 6. What changes physically after Stage 235
 
-Stage 251 already showed that first-order same-charge survival on the rigid-mouth branch is governed by the strip
+Stage 234 already showed that first-order same-charge survival on the rigid-mouth branch is governed by the strip
 \[
 |\varepsilon\Xi_1|\le B,
 \qquad
 \Xi_1=-R_1-c_\eta E_1.
 \]
-Stage 252 now sharpens that into an exact orbit-packet statement:
+Stage 235 now sharpens that into an exact orbit-packet statement:
 
 1. the static gate constrains only `q_nt = Xi_1`,
 2. the dressing coordinate `q_eta = E_1` survives completely outside that gate,
@@ -372,11 +372,11 @@ It is:
 
 ---
 
-## 7. Best current verdict after Stage 252
+## 7. Best current verdict after Stage 235
 
 The same-charge corridor is still alive, but the rigid-mouth bottleneck has narrowed again.
 
-It is no longer enough to know that the branch lies inside the Stage-251 static strip.
+It is no longer enough to know that the branch lies inside the Stage-234 static strip.
 On the rigid-mouth slice that strip only kills the `q_nt` packet component.
 The surviving dressing coordinate
 \[
@@ -388,7 +388,7 @@ So the sharp rigid-mouth statement is now:
 
 > the first static same-charge ceiling is a necessary codimension-one condition, but the true rigid-mouth orbit-lock problem is codimension two, and the entire post-static obstruction is the single dressing coordinate `q_eta`.
 
-That is the cleanest continuation point into Stage 253.
+That is the cleanest continuation point into Stage 236.
 
 ---
 

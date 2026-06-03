@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the carried universal selected-branch D/N geometry, the exact continuum placement map, and the Stage-247 selected-branch classifier-to-dynamic-window compiler.**
+**Exact within the carried universal selected-branch D/N geometry, the exact continuum placement map, and the Stage-230 selected-branch classifier-to-dynamic-window compiler.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the exact Stage-247 dynamic classifier
+It takes the exact Stage-230 dynamic classifier
 \[
 \mathcal R_{ND}(\xi,\delta),
 \]
@@ -15,12 +15,12 @@ and pulls it all the way back through the actual continuum selected-branch place
 
 ## Purpose
 
-Stage 247 solved the exact dynamic-sign problem on the full selected-branch classifier half-line:
+Stage 230 solved the exact dynamic-sign problem on the full selected-branch classifier half-line:
 
 - the wall-like dynamic window never became the first kill condition,
 - the only live global kill still came from the transported static \(\Xi_1\) budget.
 
-But Stage 247 still spoke in the abstract classifier coordinate
+But Stage 230 still spoke in the abstract classifier coordinate
 \[
 \mathcal R_{ND}.
 \]
@@ -65,7 +65,7 @@ The main outputs of this stage are:
    and on the mixed-baseline coordinate \(M_{\rm mix}\);
 5. and the refined verdict that even on the **actual continuum-selected branch** the dynamic window is still not the first kill condition.
 
-So after Stage 248, the same-charge corridor is still alive.
+So after Stage 231, the same-charge corridor is still alive.
 What changes is that the classifier map is no longer a sample-branch statement.
 It is now a physical continuum-kernel statement.
 
@@ -127,9 +127,9 @@ together with the support-feasibility frontier
 M_{\rm mix}\le G(\xi,\delta).
 \]
 
-### 1.2 Exact selected-branch classifier and Stage-247 dynamic thresholds
+### 1.2 Exact selected-branch classifier and Stage-230 dynamic thresholds
 
-From Stages 246–247, the exact selected-branch numerator/denominator classifier is
+From Stages 229–230, the exact selected-branch numerator/denominator classifier is
 \[
 \mathcal R_{ND}(\xi,\delta)
 =
@@ -146,7 +146,7 @@ with strict monotonicity
 <0.
 \]
 
-The carried Stage-247 sign threshold is
+The carried Stage-230 sign threshold is
 \[
 \mathcal R_*\approx 1.229255438463336,
 \]
@@ -162,7 +162,7 @@ The associated onset thresholds are
 \delta_{\rm den}=\frac89.
 \]
 
-So Stage 247 already gave two exact global statements:
+So Stage 230 already gave two exact global statements:
 
 - if \(\delta\ge \delta_*^{(\rm dyn)}\), the nonempty dynamic ceiling is infinite on the whole selected branch;
 - if \(\delta\ge 8/9\), the whole selected branch is denominator-like.
@@ -235,7 +235,7 @@ Then the actual physical classifier is
 }
 \]
 
-This is the exact continuum pullback of the Stage-247 classifier.
+This is the exact continuum pullback of the Stage-230 classifier.
 
 Because
 \[
@@ -281,7 +281,7 @@ the same statement can be rewritten as
 
 So larger mixed baseline drives the physical selected branch in the numerator-like direction, while smaller mixed baseline drives it in the denominator-like direction.
 
-This is the first real physical reading of the Stage-247 classifier map.
+This is the first real physical reading of the Stage-230 classifier map.
 
 ---
 
@@ -451,7 +451,7 @@ The exact pulled-back thresholds on a few representative \(\delta\)-slices are:
 So the physical selected branch becomes dynamically sign-safe quite early.
 For \(\delta=0.75\), the nonempty dynamic ceiling is already infinite from onset, even though the branch is not yet denominator-like from onset because \(0.75<8/9\).
 
-This is a strong continuation of the Stage-247 picture.
+This is a strong continuation of the Stage-230 picture.
 
 ---
 
@@ -526,7 +526,7 @@ This is the first exact continuum-kernel dynamic-class map.
 
 ## 7. The static-first theorem survives the pullback
 
-Stage 247 already proved the global inequalities
+Stage 230 already proved the global inequalities
 \[
 \inf B_{\rm dyn}^{(\rm both)}
 \approx 0.967282389363822
@@ -568,13 +568,13 @@ Therefore:
 
 > even on the actual continuum-selected branch, the first kill condition remains the transported static \(\Xi_1\) budget, not the wall-like dynamic window.
 
-This is the central Stage-248 theorem.
+This is the central Stage-231 theorem.
 
 ---
 
-## 8. Best current verdict after Stage 248
+## 8. Best current verdict after Stage 231
 
-Stage 248 does not kill the same-charge corridor.
+Stage 231 does not kill the same-charge corridor.
 It sharpens the physical classification instead.
 
 The exact selected-branch classifier is now pulled all the way back to the continuum kernel ratios:
@@ -590,7 +590,7 @@ The exact selected-branch classifier is now pulled all the way back to the conti
    or on \(M_{\rm mix}\) through the exact product law;
 6. but nowhere on the continuum placement map does the dynamic window become the first kill condition.
 
-So after Stage 248, the same-charge idea is still alive.
+So after Stage 231, the same-charge idea is still alive.
 The remaining first kill condition is still the **static placement of \(\Xi_1\) on the actual moving-throat branch**, not the wall-like dynamic window.
 
 ---
@@ -622,6 +622,6 @@ The accompanying audit script verifies:
   =
   \frac{8\Lambda(1-\epsilon_W)}{\pi^2};
   \]
-- and the Stage-247 static-first inequalities after pullback.
+- and the Stage-230 static-first inequalities after pullback.
 
 The note and script are therefore aligned: the stage is a clean compiler from the abstract selected-branch classifier to the actual continuum placement coordinates of the moving-throat branch.

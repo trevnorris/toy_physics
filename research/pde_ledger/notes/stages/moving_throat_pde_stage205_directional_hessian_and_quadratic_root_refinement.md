@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 237 scalar graph-slice theorem and the Stage 238 explicit free-quintuple log-ray family compiler.**
+**Exact within the carried Stage 203 scalar graph-slice theorem and the Stage 204 explicit free-quintuple log-ray family compiler.**
 
 This stage does **not** introduce a new constitutive law.
-It upgrades the Stage 238 first-order scalarized ray search to the exact **second-order** level, so the reduced branch search remains controlled even when the directional slope is small, vanishes, or is strongly curvature-corrected.
+It upgrades the Stage 204 first-order scalarized ray search to the exact **second-order** level, so the reduced branch search remains controlled even when the directional slope is small, vanishes, or is strongly curvature-corrected.
 
 ---
 
 ## Purpose
 
-Stage 238 reduced the graph-lifted home-stretch problem to the scalar root equation
+Stage 204 reduced the graph-lifted home-stretch problem to the scalar root equation
 \[
 \Phi_{\mathbf s}(\tau)=1,
 \qquad
@@ -44,16 +44,16 @@ The main outputs are:
 3. the exact **quadratic affine predictor** and **quadratic log predictor** for the closure point,
 4. the exact discriminant conditions under which those predictors are real,
 5. the exact **turning-point / tangency theorem** for rays with `\(\Phi_1=0\)`,
-6. the curvature-corrected local expansions of the Stage 238 predictors,
+6. the curvature-corrected local expansions of the Stage 204 predictors,
 7. and the exact theorem that the ordinary and logarithmic quadratic predictors agree through second order in the closure defect.
 
-So Stage 239 turns the Stage 238 scalarized ray sweep into a true second-order spectral-placement tool.
+So Stage 205 turns the Stage 204 scalarized ray sweep into a true second-order spectral-placement tool.
 
 ---
 
 ## 1. Carry-forward scalarized graph-ray data
 
-Keep the Stage 238 positive free quintuple
+Keep the Stage 204 positive free quintuple
 \[
 \mathbf y=(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}),
 \]
@@ -67,7 +67,7 @@ The graph-lifted microscopic state remains
 \[
 \mathbf x_{\mathbf s}^{\rm graph}(\tau)=\mathbf x_*^{\rm graph}(\mathbf y_{\mathbf s}(\tau)),
 \]
-and Stage 238 already proved that this graph lift lies on the target orbit `\(\mathcal O_*\)` for **all** `\(\tau\)`.
+and Stage 204 already proved that this graph lift lies on the target orbit `\(\mathcal O_*\)` for **all** `\(\tau\)`.
 
 So Packet B still vanishes identically:
 \[
@@ -91,7 +91,7 @@ Introduce free log coordinates
 (\ln\lambda_W,\ \ln c_{\eta U},\ \ln\gamma,\ \ln K_U,\ \ln K_W^{(\mathrm{eff})}).
 }
 \]
-The Stage 238 directional derivative operator is
+The Stage 204 directional derivative operator is
 \[
 \boxed{
 \mathcal D_{\mathbf s}
@@ -153,7 +153,7 @@ Define the base scalar values
 \Phi_2:=\Phi_{\mathbf s}''(0)=(\mathcal H_{\mathbf s}\widehat\chi_Q)(\mathbf y_\circ).
 }
 \]
-Assume `\(\Phi_0>0\)`. Then the Stage 238 logarithmic slope is
+Assume `\(\Phi_0>0\)`. Then the Stage 204 logarithmic slope is
 \[
 \boxed{
 L_0:=\left.\frac{d}{d\tau}\ln\Phi_{\mathbf s}(\tau)\right|_{\tau=0}
@@ -221,7 +221,7 @@ Whenever these are nonnegative, the corresponding quadratic predictor is real.
 
 ## 5. Exact quadratic affine predictor
 
-Assume `\(\Phi_1\neq0\)` and choose the square-root branch continuously from the Stage 238 affine predictor. Then the exact quadratic predictor for the scalar slice is
+Assume `\(\Phi_1\neq0\)` and choose the square-root branch continuously from the Stage 204 affine predictor. Then the exact quadratic predictor for the scalar slice is
 \[
 \boxed{
 \tau_{\rm quad}
@@ -233,7 +233,7 @@ Equivalently, this is the root of
 \[
 (\Phi_0-1)+\Phi_1\tau+\frac12\Phi_2\tau^2=0
 \]
-that reduces continuously to the Stage 238 affine predictor when `\(\Phi_2\to0\)`.
+that reduces continuously to the Stage 204 affine predictor when `\(\Phi_2\to0\)`.
 
 ### 5.1 Exact zero-curvature limit
 
@@ -243,13 +243,13 @@ As `\(\Phi_2\to0\)`,
 \tau_{\rm quad}\to\tau_{\rm aff}:=\frac{1-\Phi_0}{\Phi_1}.
 }
 \]
-So Stage 238 is recovered exactly as the zero-curvature limit of the present construction.
+So Stage 204 is recovered exactly as the zero-curvature limit of the present construction.
 
 ---
 
 ## 6. Exact quadratic logarithmic predictor
 
-Assume `\(L_0\neq0\)` and again choose the square-root branch continuously from the Stage 238 log-linear predictor. Then the exact logarithmic quadratic predictor is
+Assume `\(L_0\neq0\)` and again choose the square-root branch continuously from the Stage 204 log-linear predictor. Then the exact logarithmic quadratic predictor is
 \[
 \boxed{
 \tau_{\log,2}
@@ -261,7 +261,7 @@ Equivalently, this is the root of
 \[
 \ln\Phi_0+L_0\tau+\frac12L_1\tau^2=0
 \]
-that reduces continuously to the Stage 238 log-linear predictor when `\(L_1\to0\)`.
+that reduces continuously to the Stage 204 log-linear predictor when `\(L_1\to0\)`.
 
 ### 6.1 Exact zero-curvature limit
 
@@ -271,13 +271,13 @@ As `\(L_1\to0\)`,
 \tau_{\log,2}\to\tau_{\log}:=-\frac{\ln\Phi_0}{L_0}.
 }
 \]
-So the Stage 238 log-linear predictor is exactly the zero-log-curvature limit of the present construction.
+So the Stage 204 log-linear predictor is exactly the zero-log-curvature limit of the present construction.
 
 ---
 
 ## 7. Turning-point and tangency theorem
 
-The new content of Stage 239 appears most sharply when the first directional slope vanishes.
+The new content of Stage 205 appears most sharply when the first directional slope vanishes.
 
 ### 7.1 Turning-point case: `\(\Phi_1=0\)` but `\(\Phi_0\neq1\)`
 
@@ -288,7 +288,7 @@ Then the quadratic scalar model becomes
 So:
 
 \[
-\boxed{\textbf{Theorem (Stage 239 turning-point closure theorem).}}
+\boxed{\textbf{Theorem (Stage 205 turning-point closure theorem).}}
 \]
 
 If `\(\Phi_1=0\)` and `\(\Phi_0\neq1\)`, then the quadratic model predicts real nearby closure points iff
@@ -311,7 +311,7 @@ If instead
 \]
 then the quadratic model predicts **no nearby closure point** on that turning ray.
 
-So Stage 239 provides the exact local replacement for the Stage 238 monotone theorem when the first slope vanishes.
+So Stage 205 provides the exact local replacement for the Stage 204 monotone theorem when the first slope vanishes.
 
 ### 7.2 Tangency case: `\(\Phi_0=1\)` and `\(\Phi_1=0\)`
 
@@ -334,7 +334,7 @@ Write the local closure defect as
 \Phi_0=1+\varepsilon,
 \qquad |\varepsilon|\ll1.
 \]
-Then the Stage 238 and Stage 239 predictors are related by exact second-order expansions.
+Then the Stage 204 and Stage 205 predictors are related by exact second-order expansions.
 
 ### 8.1 Ordinary quadratic correction
 
@@ -354,7 +354,7 @@ So the ordinary second-order correction is controlled by the dimensionless ratio
 
 ### 8.2 Logarithmic quadratic correction
 
-The Stage 238 log-linear predictor is
+The Stage 204 log-linear predictor is
 \[
 \tau_{\log}=-\frac{\ln\Phi_0}{L_0}.
 \]
@@ -370,7 +370,7 @@ So the logarithmic second-order correction is controlled by the dimensionless ra
 
 ### 8.3 Agreement theorem for the two quadratic predictors
 
-The ordinary and logarithmic quadratic predictors agree more strongly than the Stage 238 first-order pair. In fact,
+The ordinary and logarithmic quadratic predictors agree more strongly than the Stage 204 first-order pair. In fact,
 \[
 \boxed{
 \tau_{\log,2}-\tau_{\rm quad}=O((\Phi_0-1)^3).
@@ -390,17 +390,17 @@ This is the sharpest local predictor-equivalence statement reached so far in the
 
 ---
 
-## 9. Best current reading after Stage 239
+## 9. Best current reading after Stage 205
 
-Stage 238 reduced the reduced closure search to a scalarized free-quintuple log-ray root problem.
-Stage 239 now gives the exact second-order refinement of that problem.
+Stage 204 reduced the reduced closure search to a scalarized free-quintuple log-ray root problem.
+Stage 205 now gives the exact second-order refinement of that problem.
 
 The Packet-B orbit defect still vanishes identically on every graph-lifted ray, so the only remaining reduced question is the scalar Packet-A slice. But that scalar search is now controlled by:
 
-1. the Stage 238 first derivative `\(L_0\)` or `\(\Phi_1\)`,
-2. the Stage 239 directional Hessian `\(L_1\)` or `\(\Phi_2\)`,
+1. the Stage 204 first derivative `\(L_0\)` or `\(\Phi_1\)`,
+2. the Stage 205 directional Hessian `\(L_1\)` or `\(\Phi_2\)`,
 3. the quadratic discriminants `\(\Delta_{\rm aff},\Delta_{\log}\)`,
 4. and, when needed, the exact turning-point criterion.
 
-So after Stage 239 the next honest continuation is no longer to invent a better local predictor by hand.
+So after Stage 205 the next honest continuation is no longer to invent a better local predictor by hand.
 It is to evaluate the actual Hessian data of `\(\widehat\chi_Q\)` on candidate base points and free directions, and then use the quadratic crossing / tangency theorem to rank which free-quintuple rays are genuinely promising for the final branch search.

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 248 reduced the first off-family defect of the co-evolving Family-1 branch to the single scalar
+Stage 163 reduced the first off-family defect of the co-evolving Family-1 branch to the single scalar
 \[
 \delta_\perp
 =
@@ -25,14 +25,14 @@ So the next real question is no longer broad:
 
 This note computes them.
 
-The main result is that, inside the explicit throat-core closure already fixed at Stages 169–170,
+The main result is that, inside the explicit throat-core closure already fixed at Stages 118–119,
 the two channels collapse to concrete logarithmic drifts of the microscopic variables
 \[
 (a,L_W,\rho_w,c_{s,w},c_s,\mathcal Z_q,\mathcal T_m,v_{w0}),
 \]
 and the full off-family scalar becomes an explicit linear co-transport law on that branch.
 
-So the remaining PDE-facing task is now much narrower than Stage 248 made it sound:
+So the remaining PDE-facing task is now much narrower than Stage 163 made it sound:
 it is no longer “compute the channels somehow,” but only to determine the actual linearized
 values of these specific branch-variable drifts on the true moving-throat solution.
 
@@ -40,7 +40,7 @@ values of these specific branch-variable drifts on the true moving-throat soluti
 
 ## 1. Two exact identities before any further closure
 
-The Stage 221 parent ratios are
+The Stage 119 parent ratios are
 \[
 \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
 \qquad
@@ -49,7 +49,7 @@ The Stage 221 parent ratios are
 r_c=\frac{\lambda^2}{K_sK_q}=\mathfrak r^2.
 \]
 
-So the two Stage 248 logarithmic channels already have an exact microscopic meaning:
+So the two Stage 163 logarithmic channels already have an exact microscopic meaning:
 \[
 \boxed{
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
@@ -72,7 +72,7 @@ This is a very strong simplification.
 - The second channel is exactly the negative logarithmic drift of the
   **static/mixed hybridization ratio** \(r_c\).
 
-So Stage 248’s microscopic normal coordinate can already be rewritten as
+So Stage 163’s microscopic normal coordinate can already be rewritten as
 \[
 \boxed{
 \delta_\perp
@@ -89,7 +89,7 @@ So Stage 248’s microscopic normal coordinate can already be rewritten as
 
 ## 2. Exact parent-action formulas on the explicit throat-core branch
 
-Stage 220 fixed
+Stage 118 fixed
 \[
 g_s=\mathcal T_m J_s,
 \qquad
@@ -144,7 +144,7 @@ At this level the two channels are controlled by four microscopic sectors:
 
 ## 3. Uniform-overlap + D/N simplification
 
-Now impose the same explicit overlap closure already used at Stage 220:
+Now impose the same explicit overlap closure already used at Stage 118:
 \[
 \mathcal I_{sq}=J_s I_q,
 \qquad
@@ -194,7 +194,7 @@ Substituting into the exact general formulas gives
 }
 \]
 
-So under the first explicit throat-core closure, the Stage 248 channels are already
+So under the first explicit throat-core closure, the Stage 163 channels are already
 concrete logarithmic drifts of the actual branch variables
 \[
 (K_s,a,\ell,L_W,\mathcal Z_q,\mathcal T_m,v_{w0},c_s).
@@ -204,7 +204,7 @@ concrete logarithmic drifts of the actual branch variables
 
 ## 4. Healing-locked shell simplification
 
-Stage 220 also recorded the carried healing-lock shell branch
+Stage 118 also recorded the carried healing-lock shell branch
 \[
 \ell=\frac{\hbar}{2m_\psi c_{s,w}},
 \qquad
@@ -238,7 +238,7 @@ and the two products themselves become
 }
 \]
 
-Therefore the Stage 248 logarithmic channels become
+Therefore the Stage 163 logarithmic channels become
 \[
 \boxed{
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
@@ -266,7 +266,7 @@ Therefore the Stage 248 logarithmic channels become
 }
 \]
 
-This is the first point where the two Stage 248 channels have become a literal
+This is the first point where the two Stage 163 channels have become a literal
 linearized moving-throat wall/BdG/Maxwell/mixed-branch formula.
 
 Interpretation:
@@ -282,7 +282,7 @@ Interpretation:
 
 ## 5. Explicit off-family scalar on the actual branch variables
 
-Now insert these Stage 249 formulas into the exact Stage 248 identity
+Now insert these Stage 164 formulas into the exact Stage 163 identity
 \[
 \delta_\perp
 =
@@ -356,7 +356,7 @@ Therefore
 }
 \]
 
-This is the explicit microscopic normal-coordinate formula that Stage 248 was asking for.
+This is the explicit microscopic normal-coordinate formula that Stage 163 was asking for.
 
 So the first true off-family defect is now a weighted sum of exactly seven logarithmic branch drifts.
 
@@ -427,9 +427,9 @@ So the “stay on the parent family” condition is now an explicit co-transport
 
 ---
 
-## 7. Best current theorem statement after Stage 249
+## 7. Best current theorem statement after Stage 164
 
-The two Stage 248 microscopic logarithmic imbalance channels are no longer abstract.
+The two Stage 163 microscopic logarithmic imbalance channels are no longer abstract.
 
 Inside the explicit first throat-core closure:
 

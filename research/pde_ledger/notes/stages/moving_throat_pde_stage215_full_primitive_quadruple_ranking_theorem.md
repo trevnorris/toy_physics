@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 246 up-to-three-coordinate certified ledger and the Stage 248 finite interior four-coordinate candidate reduction, once the admissible interior quadruple packets are supplied on the chosen four-coordinate patches.**
+**Exact within the carried Stage 212 up-to-three-coordinate certified ledger and the Stage 214 finite interior four-coordinate candidate reduction, once the admissible interior quadruple packets are supplied on the chosen four-coordinate patches.**
 
 This stage does **not** introduce a new constitutive law or a new optimizer.
-It upgrades the Stage 248 interior four-coordinate candidate problem into a **global certified ranking ledger** for all primitive four-coordinate simplices, and it splices that ledger to the already-finished support-`<=3` search.
+It upgrades the Stage 214 interior four-coordinate candidate problem into a **global certified ranking ledger** for all primitive four-coordinate simplices, and it splices that ledger to the already-finished support-`<=3` search.
 
 ---
 
 ## Purpose
 
-Stage 248 solved the genuinely new interior problem on a fixed primitive four-coordinate simplex: every admissible interior optimizer is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
+Stage 214 solved the genuinely new interior problem on a fixed primitive four-coordinate simplex: every admissible interior optimizer is contained in a finite algebraic candidate set, and the interior-versus-boundary comparison is again a certified interval problem.
 
 That leaves one exact continuation point:
 
@@ -29,7 +29,7 @@ The main outputs are:
 6. the exact **up-to-four-coordinate search sieve theorem**,
 7. and the exact **finite evaluation budget theorem** for the whole support-`<=4` local search.
 
-So Stage 249 is the global ranking complement of Stage 248: the four-coordinate interior candidate problem is no longer a deferred continuum search, and the full search up through four active primitive coordinates is now reduced to one finite certified ledger.
+So Stage 215 is the global ranking complement of Stage 214: the four-coordinate interior candidate problem is no longer a deferred continuum search, and the full search up through four active primitive coordinates is now reduced to one finite certified ledger.
 
 ---
 
@@ -62,7 +62,7 @@ The primitive triple set and primitive quadruple set are
 \]
 Every primitive quadruple has exactly four codimension-one faces, and each face is one of the primitive triples. Dually, every primitive triple belongs to exactly two primitive quadruples, because after fixing three primitive directions there are exactly two remaining choices for the fourth.
 
-### 1.1 Imported Stage 246 boundary packets
+### 1.1 Imported Stage 212 boundary packets
 
 For each primitive triple
 \[
@@ -83,9 +83,9 @@ These packets already include
 - the full pairwise boundary splice, and
 - the exact best certified closure time on the **closed** primitive triple simplex.
 
-So by the time Stage 249 starts, every codimension-one face of a primitive quadruple is already solved.
+So by the time Stage 215 starts, every codimension-one face of a primitive quadruple is already solved.
 
-### 1.2 Imported Stage 248 interior quadruple packets
+### 1.2 Imported Stage 214 interior quadruple packets
 
 For each primitive quadruple
 \[
@@ -101,7 +101,7 @@ carry forward the exact interior certified interval
 \tau_{Q,\min}^{\rm hi,int}.
 }
 \]
-Here `\(\tau_{Q,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive four-coordinate simplex, while the entire codimension-one boundary is already the Stage 246 triple ledger.
+Here `\(\tau_{Q,*}^{\rm best,int}\)` is the unknown true best closure time over the **interior** of the positive four-coordinate simplex, while the entire codimension-one boundary is already the Stage 212 triple ledger.
 
 ---
 
@@ -174,14 +174,14 @@ For every primitive quadruple `\(Q=(i,j,k,l)\)`, the best closure time on the cl
 }
 \]
 
-The proof is the same as in Stage 246: the true closed-simplex winner is the minimum of
+The proof is the same as in Stage 212: the true closed-simplex winner is the minimum of
 
 - the true best boundary winner on the union of the four triple faces, and
 - the true best interior winner.
 
 Each of those pieces already has an exact certified interval, so the best over their union is bounded by the minima of the lower and upper certified bounds.
 
-So after Stage 249, every primitive quadruple carries **one exact closed-simplex certified interval**.
+So after Stage 215, every primitive quadruple carries **one exact closed-simplex certified interval**.
 
 ---
 
@@ -242,7 +242,7 @@ Define the three exact quadruple classes
 }
 \]
 
-So Stage 249 gives the exact local answer to the question
+So Stage 215 gives the exact local answer to the question
 
 > is a given primitive quadruple truly a new support-cardinality-`4` simplex, or is it already exhausted by its triple-face boundary?
 
@@ -308,7 +308,7 @@ Then the best closure time over **all** primitive quadruple simplices obeys
 
 ## 5. Exact global support-cardinality-4 improvement theorem against the support-`<=3` ledger
 
-Carry forward the exact Stage 246 certified interval for the whole support-`<=3` search,
+Carry forward the exact Stage 212 certified interval for the whole support-`<=3` search,
 \[
 \boxed{
 \tau_{\le 3,\min}^{\rm lo}
@@ -355,7 +355,7 @@ If
 \]
 then no admissible four-coordinate interior stationary ray can beat the current support-`<=3` winner.
 
-So after Stage 249, the full question
+So after Stage 215, the full question
 
 > do genuinely interior support-cardinality-`4` rays matter?
 
@@ -404,7 +404,7 @@ Then the exact global support-`<=4` sieve theorem is
 }
 \]
 
-So after Stage 249, the full local search up through four active primitive coordinates has been reduced to one finite certified interval comparison between
+So after Stage 215, the full local search up through four active primitive coordinates has been reduced to one finite certified interval comparison between
 
 - the already-closed support-`<=3` ledger, and
 - the finite interior quadruple ledger.
@@ -413,7 +413,7 @@ So after Stage 249, the full local search up through four active primitive coord
 
 ## 7. Exact finite evaluation budget theorem
 
-Stage 248 already reduced every primitive quadruple interior to a finite algebraic candidate set with at most
+Stage 214 already reduced every primitive quadruple interior to a finite algebraic candidate set with at most
 \[
 \boxed{54}
 \]
@@ -430,7 +430,7 @@ Across the `\({\rm lo}/{\rm hi}\)` envelopes, the full support-cardinality-`4` i
 \]
 exact candidate evaluations.
 
-Stage 246 already closed the support-`<=3` search with the exact finite budget
+Stage 212 already closed the support-`<=3` search with the exact finite budget
 \[
 \boxed{600}
 \]
@@ -441,7 +441,7 @@ Therefore the entire local search up through four active primitive coordinates h
 \]
 exact candidate evaluations once the local slope data, envelope blocks, and admissible validity maps are supplied.
 
-If the Stage 246 support-`<=3` ledger is already imported, then Stage 249 itself adds only the four-coordinate interior work:
+If the Stage 212 support-`<=3` ledger is already imported, then Stage 215 itself adds only the four-coordinate interior work:
 \[
 \boxed{540}
 \]
@@ -453,7 +453,7 @@ This is the exact support-`<=4` cost theorem.
 
 ## 8. Minimal packet for the next stage
 
-After Stage 249, the full search up through four active free coordinates is already finite and certified.
+After Stage 215, the full search up through four active free coordinates is already finite and certified.
 What remains beyond it is the unique five-coordinate positive simplex.
 
 The natural next packet is therefore the five-coordinate simplex ledger
@@ -470,19 +470,19 @@ T_{\lambda c\gamma UW}(\cdot)
 \Bigr),
 }
 \]
-with the exact boundary reduction now taken against the Stage 249 primitive-quadruple packets rather than against the Stage 246 triple ledger directly.
+with the exact boundary reduction now taken against the Stage 215 primitive-quadruple packets rather than against the Stage 212 triple ledger directly.
 
 So the natural continuation is completely sharp:
 
-> Stage 250 should build the exact five-coordinate positive simplex, reduce its full codimension-one boundary to the Stage 249 quadruple packets, and isolate the first canonical five-way interior screens before solving the full four-parameter interior optimizer.
+> Stage 216 should build the exact five-coordinate positive simplex, reduce its full codimension-one boundary to the Stage 215 quadruple packets, and isolate the first canonical five-way interior screens before solving the full four-parameter interior optimizer.
 
 ---
 
-## 9. Best current reading after Stage 249
+## 9. Best current reading after Stage 215
 
-Stage 246 turned every support-`<=3` search into a finite certified ledger.
-Stage 248 did the same for the genuinely new interior of each four-coordinate simplex.
-Stage 249 now closes the global support-cardinality-`4` ranking step.
+Stage 212 turned every support-`<=3` search into a finite certified ledger.
+Stage 214 did the same for the genuinely new interior of each four-coordinate simplex.
+Stage 215 now closes the global support-cardinality-`4` ranking step.
 
 1. There are exactly five primitive quadruples.
 2. Every primitive quadruple now carries one exact closed-simplex certified interval obtained by splicing its finite interior packet to the imported triple-face boundary ledger.

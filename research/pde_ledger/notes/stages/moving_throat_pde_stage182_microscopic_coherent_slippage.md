@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 249 reduced the weak-axisymmetric grouped defect on the actual coherent local D/N tracking branch to the physical placement variables
+Stage 181 reduced the weak-axisymmetric grouped defect on the actual coherent local D/N tracking branch to the physical placement variables
 \[
 \Xi_1
 =
@@ -25,7 +25,7 @@ It also showed that the coherent support ratio \(\zeta\) drops out identically, 
 
 So the next honest step is now very small:
 
-> push the Stage 249 physical variables one layer deeper, down to the actual microscopic coherent-kernel couplings, and identify which microscopic slippages really carry the grouped defect.
+> push the Stage 181 physical variables one layer deeper, down to the actual microscopic coherent-kernel couplings, and identify which microscopic slippages really carry the grouped defect.
 
 That is what this stage does.
 
@@ -99,7 +99,7 @@ The support lane enters through
 \[
 \zeta=\frac{\lambda_\phi^2 K_W^{(\mathrm{eff})}}{\lambda_W^2 K_\phi^{(\mathrm{eff})}},
 \]
-but Stage 249 already showed that \(\zeta\) drops out of the grouped defect.
+but Stage 181 already showed that \(\zeta\) drops out of the grouped defect.
 
 So the natural microscopic weak-axisymmetric logarithmic drifts are
 \[
@@ -135,7 +135,7 @@ At the present level we keep \(\ell_{L,1}=0\).
 
 ## 2. Exact physical-branch drifts from the microscopic variables
 
-Differentiating the Stage-30 coherent ratios gives the physical Stage 249 drift variables directly.
+Differentiating the Stage-30 coherent ratios gives the physical Stage 181 drift variables directly.
 
 ### 2.1 Direct port variables
 
@@ -213,7 +213,7 @@ The microscopic support quantities
 \qquad
 K_\phi^{(\mathrm{eff})}
 \]
-enter the coherent branch only through \(\zeta\), and Stage 249 already proved that \(\zeta\) drops out of
+enter the coherent branch only through \(\zeta\), and Stage 181 already proved that \(\zeta\) drops out of
 \[
 \mathcal T^2,
 \qquad
@@ -235,7 +235,7 @@ This is the microscopic version of the support-blindness theorem.
 
 ## 3. Exact microscopic slippage variables
 
-The Stage 249 physical drifts naturally reorganize into the following microscopic slippages:
+The Stage 181 physical drifts naturally reorganize into the following microscopic slippages:
 \[
 \boxed{
 \Sigma_Z:=2\lambda_1+\mu_1-\kappa_\eta-2\kappa_W=\zeta_Z-\omega_W,
@@ -268,7 +268,7 @@ These are the only microscopic slippages that survive into the grouped defect.
 
 ## 4. Exact microscopic form of the grouped defect
 
-Stage 249 gave
+Stage 181 gave
 \[
 \Xi_1
 =
@@ -310,7 +310,7 @@ No support-lane microscopic variable appears.
 
 ## 5. Exact selected-branch demand slippage law
 
-The Stage 248/232 selected-branch identity is
+The Stage 180/181 selected-branch identity is
 \[
 \Xi_1=-\frac{\eta_1}{1-\epsilon_\eta}-\mathcal R_1.
 \]
@@ -344,7 +344,7 @@ So the selected-branch demand ratio is controlled by one additional dressing sli
 
 ## 6. Exact tracking-factor slippage and the tracking/nontracking split
 
-Stage 249 already showed that the tracking factor is
+Stage 181 already showed that the tracking factor is
 \[
 R_{\mathrm{tr}}=
 \frac{1+\chi_0/(1+\delta_U)}{1+\chi_0}
@@ -430,7 +430,7 @@ If \(\Sigma_{\rm tr}=0\), the grouped defect reduces to
 \]
 So exact tracking rigidity is necessary but still not sufficient. The grouped defect survives unless the nontracking microscopic slippages also vanish or cancel.
 
-This is the sharpest exact version of the Stage 249 conclusion.
+This is the sharpest exact version of the Stage 181 conclusion.
 
 ---
 
@@ -489,7 +489,7 @@ So the selected-branch rigidity problem is now reduced to a finite microscopic s
 
 ---
 
-## 8. Best current theorem statement after Stage 250
+## 8. Best current theorem statement after Stage 182
 
 On the actual coherent local D/N tracking branch:
 
@@ -503,7 +503,7 @@ On the actual coherent local D/N tracking branch:
    \(\Sigma_Z,\Sigma_\epsilon,\Sigma_\delta\)
    also vanish or cancel.
 
-So the remaining theorem gap is now smaller than Stage 249 left it.
+So the remaining theorem gap is now smaller than Stage 181 left it.
 
 It is no longer merely
 

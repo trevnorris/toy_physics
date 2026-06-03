@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 252 proved that arbitrary **first-order isotropic bundle drift**
+Stage 167 proved that arbitrary **first-order isotropic bundle drift**
 does not move the co-evolving Family-1 system off the exact parent compensation family.
 So the next live question is no longer
 
@@ -30,7 +30,7 @@ It is a three-parameter defect ledger.
 
 ## 1. Carry-forward formulas
 
-From Stage 249, the off-family normal coordinate is
+From Stage 164, the off-family normal coordinate is
 \[
 \delta_\perp
 =
@@ -52,7 +52,7 @@ B_*=\frac{1}{2\sqrt{1+\mathfrak r_*^2}},
 C_*=2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}.
 \]
 
-From Stage 250, the exact lower-branch transport laws are
+From Stage 165, the exact lower-branch transport laws are
 \[
 \delta\ln L_W=\delta\ln a,
 \]
@@ -73,7 +73,7 @@ From Stage 250, the exact lower-branch transport laws are
 -\frac32\,\delta\ln a.
 \]
 
-Stage 252 then showed that substituting those laws into the Stage 249 normal coordinate gives
+Stage 167 then showed that substituting those laws into the Stage 164 normal coordinate gives
 \[
 \delta_\perp=0.
 \]
@@ -148,7 +148,7 @@ Substituting
 \left(\delta\ln\mathcal T_m\right)_{\rm br}
 +\varepsilon_T,
 \]
-into the Stage 249 formula gives the exact identity
+into the Stage 164 formula gives the exact identity
 \[
 \boxed{
 \delta_\perp
@@ -213,7 +213,7 @@ and least by mouth-traction slippage.
 
 ## 5. Mouth-bias transport with off-bundle slippage
 
-Stage 248 already split the mouth-bias variation as
+Stage 163 already split the mouth-bias variation as
 \[
 \delta\Pi
 =
@@ -283,7 +283,7 @@ So the same scalar off-bundle combination \(\varepsilon_\perp\) that drives the 
 
 ## 6. Outlet defects in terms of the slippage scalar
 
-Stage 248 already gave
+Stage 163 already gave
 \[
 \delta\mathcal C
 =
@@ -378,7 +378,7 @@ Requiring preservation of the canonical conservative even \(l=2\) fingerprint me
 \delta E_4=0.
 \]
 
-Using the formulas above, the same determinant argument as in Stage 244 gives
+Using the formulas above, the same determinant argument as in Stage 159 gives
 \[
 \boxed{
 \varepsilon_\perp=0,
@@ -400,20 +400,20 @@ When that happens, the remaining quadrupole-normalization defect again collapses
 }
 \]
 
-So the Stage 244 result survives intact, but we now know exactly what off-bundle microscopic scalar defect must vanish for it to hold.
+So the Stage 159 result survives intact, but we now know exactly what off-bundle microscopic scalar defect must vanish for it to hold.
 
 ---
 
 ## 8. Interpretation
 
-This stage sharpens the Stage 252 conclusion in the cleanest possible way.
+This stage sharpens the Stage 167 conclusion in the cleanest possible way.
 
-Stage 252 said:
+Stage 167 said:
 
 - first-order isotropic bundle drift is tangent to the exact lower compensated branch,
 - so the first genuine defect must come from off-bundle structure.
 
-Stage 253 shows that, at first order, this off-bundle structure is not arbitrary.
+Stage 168 shows that, at first order, this off-bundle structure is not arbitrary.
 It collapses to three slippages
 \[
 (\varepsilon_L,\varepsilon_v,\varepsilon_T),

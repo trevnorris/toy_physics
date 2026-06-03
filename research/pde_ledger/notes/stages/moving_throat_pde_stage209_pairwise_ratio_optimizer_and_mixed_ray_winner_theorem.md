@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 242 mixed-ray cone / curvature-envelope framework, once a compact pairwise ratio window and the corresponding entrywise Hessian envelopes are supplied on that window.**
+**Exact within the carried Stage 208 mixed-ray cone / curvature-envelope framework, once a compact pairwise ratio window and the corresponding entrywise Hessian envelopes are supplied on that window.**
 
 This stage does **not** introduce a new constitutive law.
-It closes the Stage 242 deferral step: the full one-parameter ratio search on each monotone pairwise cone is reduced to a finite algebraic candidate set.
+It closes the Stage 208 deferral step: the full one-parameter ratio search on each monotone pairwise cone is reduced to a finite algebraic candidate set.
 
 ---
 
 ## Purpose
 
-Stage 242 proved that every monotone primitive pair `\((i,j)\)` generates a genuine one-parameter mixed-ray cone
+Stage 208 proved that every monotone primitive pair `\((i,j)\)` generates a genuine one-parameter mixed-ray cone
 \[
 \widehat{\mathbf s}_{ij}(r)=\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
 \qquad r\ge 0,
@@ -39,7 +39,7 @@ The main outputs are:
    - the **pair-symmetry reduction** forcing the equal-mix ray to be critical,
 7. and the exact **mixed-ray winner theorem** that promotes one pair above all primitive and competing mixed rows.
 
-So Stage 243 is the first place where the pairwise mixed-ray search becomes a finite certified optimization problem rather than a one-parameter continuum deferment.
+So Stage 209 is the first place where the pairwise mixed-ray search becomes a finite certified optimization problem rather than a one-parameter continuum deferment.
 
 ---
 
@@ -51,7 +51,7 @@ k_i>0,
 \qquad
 k_j>0,
 \]
-and keep the Stage 242 pairwise cone
+and keep the Stage 208 pairwise cone
 \[
 \widehat{\mathbf s}_{ij}(r)=\frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}},
 \qquad r\ge0.
@@ -63,7 +63,7 @@ k_{ij}(r)=\frac{k_i+r k_j}{\sqrt{1+r^2}}.
 }
 \]
 
-Stage 242 allowed arbitrary `\(r\ge0\)`. For the certified optimizer, the natural local object is a **compact pairwise ratio window**
+Stage 208 allowed arbitrary `\(r\ge0\)`. For the certified optimizer, the natural local object is a **compact pairwise ratio window**
 \[
 \boxed{
 \mathcal R_{ij}:=[0,R_{ij}],
@@ -73,7 +73,7 @@ Stage 242 allowed arbitrary `\(r\ge0\)`. For the certified optimizer, the natura
 on which the pairwise curvature-envelope data and the local validity radius
 \(T_{ij}(r)\) are available.
 
-This does not weaken the search theorem. It is the natural local replacement of the infinite cone for the Stage 240/242 certified program, and it has one major technical payoff:
+This does not weaken the search theorem. It is the natural local replacement of the infinite cone for the Stage 206/208 certified program, and it has one major technical payoff:
 
 > every optimized pairwise certified bracket will now come from a **finite** candidate set.
 
@@ -104,7 +104,7 @@ B_\star:=2k_i k_j-4H_0 v_\star,
 C_\star:=k_j^2-2H_0 w_\star.
 }
 \]
-Then the Stage 242 discriminant numerator becomes
+Then the Stage 208 discriminant numerator becomes
 \[
 \boxed{
 \Delta_{ij,\star}^{\sharp}(r)
@@ -145,7 +145,7 @@ For each envelope label `\(\star\)`, define the admissible ratio set
 \Bigr\}.
 }
 \]
-So the admissible set keeps exactly the two Stage 242 conditions:
+So the admissible set keeps exactly the two Stage 208 conditions:
 
 1. the quadratic comparison discriminant is real,
 2. the certified upper/lower root stays inside the available local validity interval.
@@ -198,7 +198,7 @@ Therefore every interior optimizer satisfies
 }
 \]
 
-This is the first exact optimizer theorem of Stage 243:
+This is the first exact optimizer theorem of Stage 209:
 
 ### Exact stationary numerator theorem
 
@@ -316,14 +316,14 @@ one gets the exact optimized bracket
 \tau_{ij,\min}^{\rm hi}.
 }
 \]
-So Stage 243 turns each mixed pair into one finite certified interval for the **best** ray in that pairwise cone.
+So Stage 209 turns each mixed pair into one finite certified interval for the **best** ray in that pairwise cone.
 
 ---
 
 ## 8. Two exact special reductions
 
 The full quartic optimizer is the generic case.
-But two important exact reductions show how Stage 243 collapses back to the canonical Stage 242 rays when symmetry removes the true one-parameter competition.
+But two important exact reductions show how Stage 209 collapses back to the canonical Stage 208 rays when symmetry removes the true one-parameter competition.
 
 ### 8.1 Diagonal-neutral curvature reduction
 
@@ -339,13 +339,13 @@ Then
 \kappa_{ij,\star}(r)=\kappa_\star
 \]
 is constant in `\(r\)`, so minimizing `\(\tau_{ij,\star}(r)\)` is equivalent to maximizing `\(k_{ij}(r)\)`.
-By Stage 242, that gives the exact optimizer
+By Stage 208, that gives the exact optimizer
 \[
 \boxed{
 r_{ij,\star}^{\rm opt}=r_{ij}^{\rm grad}=\frac{k_j}{k_i}.
 }
 \]
-So when the upper/lower curvature data contain no pairwise directional preference, the full Stage 243 optimizer collapses back to the gradient-optimal ray.
+So when the upper/lower curvature data contain no pairwise directional preference, the full Stage 209 optimizer collapses back to the gradient-optimal ray.
 
 ### 8.2 Pair-symmetry reduction
 
@@ -374,19 +374,19 @@ Therefore
 }
 \]
 So in a pair-symmetric mixed cone the equal-mix ray `\(r=1\)` is an exact critical ray for both the lower and upper certified searches.
-If the admissible set is logarithmically symmetric and the optimizer is unique, then the Stage 243 optimizer collapses to the Stage 242 equal-mix screen.
+If the admissible set is logarithmically symmetric and the optimizer is unique, then the Stage 209 optimizer collapses to the Stage 208 equal-mix screen.
 
-These two reductions show that the Stage 242 canonical rays were not arbitrary screens. They are the exact optimizer whenever the pairwise data lose the asymmetry needed to create a true interior mixed-ratio competition.
+These two reductions show that the Stage 208 canonical rays were not arbitrary screens. They are the exact optimizer whenever the pairwise data lose the asymmetry needed to create a true interior mixed-ratio competition.
 
 ---
 
 ## 9. Exact pairwise promotion and mixed-ray winner theorems
 
-Let `\(\mathfrak P_{\rm mix}\)` be the set of monotone primitive pairs carried into Stage 243, and let the primitive sieve from Stage 241 still carry its certified rows
+Let `\(\mathfrak P_{\rm mix}\)` be the set of monotone primitive pairs carried into Stage 209, and let the primitive sieve from Stage 207 still carry its certified rows
 \[
 [\tau_{m,\rm lo}^{\rm prim},\tau_{m,\rm hi}^{\rm prim}].
 \]
-For each mixed pair, Stage 243 now provides the optimized bracket
+For each mixed pair, Stage 209 now provides the optimized bracket
 \[
 [\tau_{ij,\min}^{\rm lo},\tau_{ij,\min}^{\rm hi}].
 \]
@@ -416,13 +416,13 @@ If one pair `\((i,j)\)` satisfies
 \Bigr),
 }
 \]
-then `\((i,j)\)` is the unique certified mixed-ray winner at the Stage 243 level.
+then `\((i,j)\)` is the unique certified mixed-ray winner at the Stage 209 level.
 
 So the full mixed-ray screen is now finite and ordered:
 
-1. primitive certified rows from Stage 241,
-2. canonical mixed-ray screens from Stage 242,
-3. full pairwise optimized brackets from Stage 243.
+1. primitive certified rows from Stage 207,
+2. canonical mixed-ray screens from Stage 208,
+3. full pairwise optimized brackets from Stage 209.
 
 No continuum search survives beyond the exact quartic candidate reduction.
 
@@ -430,7 +430,7 @@ No continuum search survives beyond the exact quartic candidate reduction.
 
 ## 10. Minimal packet for the next stage
 
-After Stage 243, each monotone pair needs only the exact finite packet
+After Stage 209, each monotone pair needs only the exact finite packet
 \[
 \boxed{
 \mathcal P_{ij}^{\rm opt}
@@ -444,14 +444,14 @@ R_{ij},T_{ij}(r)\bigr),
 from which the entire optimized bracket is downstream algebra.
 
 So the next honest continuation is no longer to optimize over `\(r\)` again.
-The natural continuation is to go **beyond pairwise cones** and ask whether any genuine three-coordinate mixed simplex can beat the Stage 243 pairwise winner.
+The natural continuation is to go **beyond pairwise cones** and ask whether any genuine three-coordinate mixed simplex can beat the Stage 209 pairwise winner.
 
 ---
 
-## 11. Best current reading after Stage 243
+## 11. Best current reading after Stage 209
 
-Stage 242 reduced the first honest mixed-ray search to a one-parameter family plus two exact screen rays.
-Stage 243 now finishes the pairwise part of that search:
+Stage 208 reduced the first honest mixed-ray search to a one-parameter family plus two exact screen rays.
+Stage 209 now finishes the pairwise part of that search:
 
 1. every certified pairwise objective is an explicit square-root rational function of `\(r\)`,
 2. every interior optimizer satisfies one exact stationary numerator equation,
@@ -462,4 +462,4 @@ Stage 243 now finishes the pairwise part of that search:
 
 So the next theorem gate is no longer “what is the best pairwise mixed ray?”
 That question is now finite and exact.
-The next real question is whether any **three-coordinate** mixed branch can still beat the Stage 243 pairwise winner.
+The next real question is whether any **three-coordinate** mixed branch can still beat the Stage 209 pairwise winner.

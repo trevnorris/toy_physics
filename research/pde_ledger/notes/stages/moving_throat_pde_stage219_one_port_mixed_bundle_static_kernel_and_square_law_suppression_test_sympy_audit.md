@@ -11,7 +11,7 @@
 D_0>0.
 \]
 
-This is the first post-Stage 252 insertion of actual reduced bundle data into the now-closed local mixed-ray ledger.
+This is the first post-Stage 218 insertion of actual reduced bundle data into the now-closed local mixed-ray ledger.
 It does **not** solve the full two-throat moving PDE.
 It computes the first honest same-charge kernel already implied by the one-port mixed bundle.
 
@@ -19,7 +19,7 @@ It computes the first honest same-charge kernel already implied by the one-port 
 
 ## Purpose
 
-Stage 252 closed the local mixed-ray search sieve.
+Stage 218 closed the local mixed-ray search sieve.
 The natural continuation is no longer another support-cardinality theorem, but the insertion of actual PDE-derived branch data into the completed ledger.
 
 The first such insertion is the static same-charge audit of the isotropic one-port wall/BdG/Maxwell/mixed bundle.
@@ -38,7 +38,7 @@ The main outputs are:
 5. the exact product-kernel theorem for the first primitive same-charge source families,
 6. and the square-law suppression verdict: **the static one-port mixed bundle creates no new long-range attractive law.**
 
-So Stage 253 keeps the same-charge mixed corridor alive, but in a sharply narrowed form.
+So Stage 219 keeps the same-charge mixed corridor alive, but in a sharply narrowed form.
 
 ---
 
@@ -371,7 +371,7 @@ So the static mixed bundle is already much less exotic than the generic placehol
 
 ## 6. Updated reduced barrier audit potential
 
-The natural Stage 253 replacement for the generic static mixed term is therefore
+The natural Stage 219 replacement for the generic static mixed term is therefore
 \[
 \widetilde V_{\rm audit}^{(2)}(x)
 =
@@ -442,9 +442,9 @@ That is a much sharper kill test.
 
 ---
 
-## 8. Best current summary after Stage 253
+## 8. Best current summary after Stage 219
 
-Stage 253 gives the first honest static same-charge kernel implied by the one-port moving-throat mixed bundle.
+Stage 219 gives the first honest static same-charge kernel implied by the one-port moving-throat mixed bundle.
 
 - The reduced static bundle is an exact `3 x 3` quadratic system with determinant `\Delta D_0`.
 - On the admissible branch, the induced same-charge static correction is always attractive or neutral at quadratic order.
@@ -491,7 +491,7 @@ Supporting file:
 
 The next honest continuation is now narrower.
 
-1. Keep the Stage 253 static susceptibility kernel.
+1. Keep the Stage 219 static susceptibility kernel.
 2. Test whether the actual branch data can make its coefficients large while keeping
    \[
    \Delta>0,

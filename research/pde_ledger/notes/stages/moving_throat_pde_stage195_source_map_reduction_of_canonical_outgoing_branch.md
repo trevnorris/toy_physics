@@ -2,22 +2,22 @@
 
 ## Status
 
-**Exact within the carried Stage 242 Packet-A branch-residual hierarchy, the Stage 244 isotropic grouped-real `P2` conservative surface, the Stage 245 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced natural point-particle source-map branch already isolated by the 2.5PN package.**
+**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced natural point-particle source-map branch already isolated by the 2.5PN package.**
 
 This stage does **not** introduce a new constitutive law.
-It upgrades Stage 245 from the canonical outgoing DtN fixing `\chi_Q=1` to the exact **source-map reduction** of the last isotropic retarded normalization defect.
+It upgrades Stage 194 from the canonical outgoing DtN fixing `\chi_Q=1` to the exact **source-map reduction** of the last isotropic retarded normalization defect.
 
 ---
 
 ## Purpose
 
-Stage 244 froze the exact isotropic grouped-real `P2` conservative one-pole carrier
+Stage 193 froze the exact isotropic grouped-real `P2` conservative one-pole carrier
 \[
 \widehat Y_Q^{\rm cons}(\omega)
 =
 \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2},
 \]
-and Stage 245 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical outgoing scalar
+and Stage 194 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical outgoing scalar
 \[
 \chi_Q=1.
 \]
@@ -26,7 +26,7 @@ But one reduced factor still sits between that retarded branch and the actual ob
 \[
  m_{\hat 0}.
 \]
-In the Packet-A language of Stage 242, the remaining observable normalization defect is
+In the Packet-A language of Stage 191, the remaining observable normalization defect is
 \[
 \Delta_{\rm norm}
 :=
@@ -57,9 +57,9 @@ The main outputs are:
    N_Q=\frac{1}{\chi_Q}
    \]
    in the strict point-particle limit,
-5. and the explicit source-map-reduced defect formulas obtained by inserting the Stage 245 DtN deformation algebra.
+5. and the explicit source-map-reduced defect formulas obtained by inserting the Stage 194 DtN deformation algebra.
 
-So Stage 246 is the natural source-map successor to Stage 245.
+So Stage 195 is the natural source-map successor to Stage 194.
 
 ---
 
@@ -71,7 +71,7 @@ Define the exact Packet-A target scale
 P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
 }
 \]
-Using the Stage 245 carrier,
+Using the Stage 194 carrier,
 \[
 \widehat Y_Q^{\rm ret}(\omega)
 =
@@ -121,7 +121,7 @@ where
 \bar\Gamma_5^{\rm target}:=\frac{2G}{5c^5}.
 }
 \]
-So Stage 245's outgoing scalar `\chi_Q` multiplies the same isotropic conservative normalization ratio `N_Q` that already carries the even packet.
+So Stage 194's outgoing scalar `\chi_Q` multiplies the same isotropic conservative normalization ratio `N_Q` that already carries the even packet.
 
 ---
 
@@ -155,7 +155,7 @@ No further reduced ambiguity survives beyond these three scalars.
 
 ## 3. Exact Packet-A normalization collapse
 
-Stage 242 defined the observable Packet-A normalization residual
+Stage 191 defined the observable Packet-A normalization residual
 \[
 \boxed{
 \Delta_{\rm norm}
@@ -245,7 +245,7 @@ So on the natural source-map branch the last reduced isotropic theorem gap is li
 
 ## 5. Explicit source-map-reduced DtN deformation algebra
 
-Stage 245 already showed that the most general first isotropic DtN deformation preserving the canonical even moments is
+Stage 194 already showed that the most general first isotropic DtN deformation preserving the canonical even moments is
 \[
 \Lambda_2^{\rm def}(z)
 =
@@ -268,7 +268,7 @@ and outgoing normalization
 
 ### 5.1 Exact conservative ratio on the natural source-map branch
 
-Insert this into the Stage 246 source-map reduction:
+Insert this into the Stage 195 source-map reduction:
 \[
 N_Q=\frac{1}{\chi_Q}.
 \]
@@ -313,7 +313,7 @@ Equivalently,
      {3(S\beta^5+9\Sigma_5)}.
 }
 \]
-So the entire source-map-reduced Packet-A defect is already localized on the same three isotropic DtN deformation coordinates isolated in Stage 245:
+So the entire source-map-reduced Packet-A defect is already localized on the same three isotropic DtN deformation coordinates isolated in Stage 194:
 \[
 (\beta,\Sigma_0,\Sigma_5).
 \]
@@ -359,13 +359,13 @@ So at first order the source-map-reduced normalization defect is carried only by
 2. static isotropic core shift `\Sigma_0`,
 3. odd isotropic core outlet `\Sigma_5`.
 
-This is the exact linearized finish-line map for the Stage 245 deformation algebra.
+This is the exact linearized finish-line map for the Stage 194 deformation algebra.
 
 ---
 
 ## 6. Canonical compact outgoing branch
 
-On the canonical compact passive/outgoing branch from Stage 245,
+On the canonical compact passive/outgoing branch from Stage 194,
 \[
 \chi_Q=1.
 \]
@@ -377,7 +377,7 @@ Equivalently, in the first isotropic DtN deformation family,
 \qquad
 \Sigma_5=0.
 \]
-Then the Stage 246 formulas reduce exactly to
+Then the Stage 195 formulas reduce exactly to
 \[
 \boxed{N_Q=1,}
 \qquad
@@ -385,21 +385,21 @@ Then the Stage 246 formulas reduce exactly to
 \qquad
 \boxed{\Delta_{\rm norm}^{\rm pt}=0.}
 \]
-So once the canonical outgoing DtN fingerprint of Stage 245 is carried through the exact source-map reduction, the Packet-A normalization residual of Stage 242 closes automatically.
+So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction, the Packet-A normalization residual of Stage 191 closes automatically.
 
 This is the exact bridge from:
 
-- Stage 242's observable branch residual `\Delta_{\rm norm}`,
-- through Stage 244's isotropic one-pole conservative carrier,
-- through Stage 245's fixing `\chi_Q=1`,
+- Stage 191's observable branch residual `\Delta_{\rm norm}`,
+- through Stage 193's isotropic one-pole conservative carrier,
+- through Stage 194's fixing `\chi_Q=1`,
 - to the strict point-particle natural source-map branch.
 
 ---
 
-## 7. What Stage 246 changes in the theorem problem
+## 7. What Stage 195 changes in the theorem problem
 
-Stage 245 left the hierarchy with one exact outgoing scalar `\chi_Q`, but the observable point-particle branch still carried the source-map factor `m_{\hat 0}`.
-Stage 246 changes that in four precise ways.
+Stage 194 left the hierarchy with one exact outgoing scalar `\chi_Q`, but the observable point-particle branch still carried the source-map factor `m_{\hat 0}`.
+Stage 195 changes that in four precise ways.
 
 ### 7.1 The observable odd closure is now fully factorized
 
@@ -428,7 +428,7 @@ It is purely the outgoing scalar `\chi_Q-1`.
 
 ### 7.4 The remaining isotropic PDE-facing freedom is now completely explicit
 
-Combining Stage 245 with Stage 246 shows that the full source-map-reduced Packet-A defect is carried only by
+Combining Stage 194 with Stage 195 shows that the full source-map-reduced Packet-A defect is carried only by
 \[
 (\beta,\Sigma_0,\Sigma_5),
 \]
@@ -444,11 +444,11 @@ The next clean continuation is now very sharp.
 Do **not** reopen the source-map branch or the conservative grouped bundle.
 Instead:
 
-1. keep the Stage 245 exact outgoing `l=2` fingerprint,
-2. keep the Stage 246 exact factorization
+1. keep the Stage 194 exact outgoing `l=2` fingerprint,
+2. keep the Stage 195 exact factorization
    \[
    m_{\hat 0}^{\,2}\chi_Q N_Q=1,
    \]
 3. and prove that any extra retarded structure first entering at `O(\omega^7)` or higher is irrelevant to the 2.5PN theorem.
 
-That is the natural next theorem gate after Stage 246.
+That is the natural next theorem gate after Stage 195.

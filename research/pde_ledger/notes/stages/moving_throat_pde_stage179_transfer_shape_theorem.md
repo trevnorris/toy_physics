@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 246 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to
+Stage 178 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to
 
 a single scalar,
 \[
@@ -46,7 +46,7 @@ So the remaining grouped defect collapses one step further:
 }
 \]
 
-Equivalently, the Stage 246 co-loading gate is now exactly this:
+Equivalently, the Stage 178 co-loading gate is now exactly this:
 
 > does the wall-normalized transfer shape of the actual moving-throat outgoing ports stay weak-axisymmetrically rigid?
 
@@ -56,7 +56,7 @@ That is the direct continuation point.
 
 ## 1. Exact wall-normalized factorization of the actual static outgoing-transfer coefficient
 
-Recall the actual static outgoing-port data from Stage 246:
+Recall the actual static outgoing-port data from Stage 178:
 \[
 P_r=\Omega_{U,r}^2 G_{W,r}+R_r G_{U,r},
 \qquad
@@ -227,7 +227,7 @@ Taking the weak-axisymmetric logarithmic slope gives
 \kappa_1+2\tau_r.
 }
 \]
-So the Stage 246 port slope is just the wall-baseline slope plus twice the transfer-shape slope.
+So the Stage 178 port slope is just the wall-baseline slope plus twice the transfer-shape slope.
 
 This is the central identity of the stage.
 
@@ -235,7 +235,7 @@ This is the central identity of the stage.
 
 ## 4. Exact collapse of the remaining grouped defect
 
-Stage 246 already gave
+Stage 178 already gave
 \[
 \Xi_1
 =
@@ -263,9 +263,9 @@ This is the sharpest reduced theorem gate reached so far.
 
 ---
 
-## 5. Exact equivalence to the Stage 244/228/229 slippage languages
+## 5. Exact equivalence to the Stage 176/177/178 slippage languages
 
-Stage 244 used
+Stage 176 used
 \[
 \mathcal M_r=\frac{G_{W,r}}{\Omega_{W,r}^2\sqrt K},
 \qquad
@@ -283,7 +283,7 @@ These are related to the present variables by
 \mathcal H_r=\widehat R_r^2.
 }
 \]
-Likewise the Stage 245/229 microscopic slopes satisfy
+Likewise the Stage 177/178 microscopic slopes satisfy
 \[
 \boxed{
 \mathfrak m_r=\mathfrak w_r,
@@ -305,7 +305,7 @@ With these substitutions, the present transfer-shape slope becomes exactly
 \frac{\mathcal H_r}{1-\mathcal H_r}\,\mathfrak h_r.
 }
 \]
-So Stage 245’s port amplitude
+So Stage 177’s port amplitude
 \(
 \sigma_r
 \)
@@ -316,7 +316,7 @@ is simply
 }
 \]
 This proves that the present theorem is not a different branch of the algebra.
-It is the exact compressed form of the Stage 244/228/229 slippage theorems.
+It is the exact compressed form of the Stage 176/177/178 slippage theorems.
 
 ---
 
@@ -377,7 +377,7 @@ then
 \]
 So in the dominant-port regime the last linear grouped defect is just twice the dominant port’s transfer-shape slope.
 
-### 7.2 Recovery of the Stage 244 square-root mixed-leg law
+### 7.2 Recovery of the Stage 176 square-root mixed-leg law
 
 If the wall-normalized upper-leg shape and the normalized coupling shape are rigid,
 \[
@@ -392,11 +392,11 @@ then
 \mathfrak g_{W,r}-\mathfrak o_{W,r}-\frac12\kappa_1.
 }
 \]
-So the present theorem collapses exactly to the Stage 244 square-root mixed-leg law,
+So the present theorem collapses exactly to the Stage 176 square-root mixed-leg law,
 \[
 \frac{G_{W,r}}{\Omega_{W,r}^2}\propto \sqrt K.
 \]
-Thus Stage 247 is a strict generalization of Stage 244 rather than a competing condition.
+Thus Stage 179 is a strict generalization of Stage 176 rather than a competing condition.
 
 ### 7.3 Common normalized-leg co-scaling
 
@@ -420,14 +420,14 @@ Therefore the square-root mixed-leg law is recovered whenever the normalized upp
 
 ---
 
-## 8. What Stage 247 changes
+## 8. What Stage 179 changes
 
-Stage 246 already reduced the remaining grouped weak-axisymmetric defect to the mismatch
+Stage 178 already reduced the remaining grouped weak-axisymmetric defect to the mismatch
 between the outgoing-weighted static port slope and the wall-baseline slope,
 \[
 \Xi_1=\bar\nu_N-\kappa_1.
 \]
-Stage 247 sharpens that result one more step.
+Stage 179 sharpens that result one more step.
 
 It shows that each actual static outgoing-transfer coefficient factors exactly as
 \[

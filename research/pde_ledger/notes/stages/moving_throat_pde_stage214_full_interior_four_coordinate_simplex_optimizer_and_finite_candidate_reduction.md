@@ -2,17 +2,17 @@
 
 ## Status
 
-**Exact within the carried Stage 247 four-coordinate mixed-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer does not sit on an artificial outer boundary of that chosen window.**
+**Exact within the carried Stage 213 four-coordinate mixed-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer does not sit on an artificial outer boundary of that chosen window.**
 
-The whole codimension-one boundary of the four-coordinate simplex is already closed by the Stage 246 / Stage 247 ledger, so this stage addresses only the genuinely new content: the **three-parameter interior** optimizer on a primitive four-coordinate simplex.
+The whole codimension-one boundary of the four-coordinate simplex is already closed by the Stage 212 / Stage 213 ledger, so this stage addresses only the genuinely new content: the **three-parameter interior** optimizer on a primitive four-coordinate simplex.
 
 ---
 
 ## Purpose
 
-Stage 247 did three things at once.
+Stage 213 did three things at once.
 
-1. It proved that every codimension-one face of a primitive four-coordinate simplex is already one of the finished Stage 246 primitive triples.
+1. It proved that every codimension-one face of a primitive four-coordinate simplex is already one of the finished Stage 212 primitive triples.
 2. It showed that the first honest support-cardinality-`4` audit is the four imported triple faces plus two canonical interior screens.
 3. It isolated the exact next theorem gate:
 
@@ -27,10 +27,10 @@ The main outputs are:
 3. the exact degree ledger `(3,3,3,2)` and the corresponding Bézout candidate bound `54`,
 4. the direct square-root-free elimination into three quintic cross-consistency polynomials and three sextic square conditions,
 5. the exact finite candidate-set theorem on a compact interior window,
-6. two exact special reductions explaining why the Stage 247 canonical screens were the right first interior screens,
-7. and the exact interior winner / non-improvement theorems against the already-closed Stage 247 four-face boundary ledger.
+6. two exact special reductions explaining why the Stage 213 canonical screens were the right first interior screens,
+7. and the exact interior winner / non-improvement theorems against the already-closed Stage 213 four-face boundary ledger.
 
-So Stage 248 is the four-coordinate analogue of Stage 245: the full interior optimizer is no longer a deferred continuum search. It is a finite algebraic candidate problem.
+So Stage 214 is the four-coordinate analogue of Stage 211: the full interior optimizer is no longer a deferred continuum search. It is a finite algebraic candidate problem.
 
 ---
 
@@ -267,7 +267,7 @@ Every interior stationary point of the certified four-coordinate simplex objecti
 \mathcal N_{t,Q,\star}(r,s,t)=0.
 }
 \]
-This is the exact three-parameter analogue of the Stage 245 two-numerator interior theorem.
+This is the exact three-parameter analogue of the Stage 211 two-numerator interior theorem.
 
 ---
 
@@ -440,7 +440,7 @@ This is a useful projected algebraic upper bound, but the lifted `54`-point syst
 
 ## 5. Two exact special reductions
 
-These two reductions justify the Stage 247 canonical interior screens.
+These two reductions justify the Stage 213 canonical interior screens.
 
 ### 5.1 Diagonal-isotropic curvature reduction
 
@@ -466,7 +466,7 @@ so
 \]
 The right-hand side depends only on the first-order slope magnitude `\(k_{ijkl}(r,s,t)\)` and is strictly decreasing in that quantity on the admissible branch.
 
-Therefore the exact optimizer is the Stage 247 gradient-optimal interior ray
+Therefore the exact optimizer is the Stage 213 gradient-optimal interior ray
 \[
 \boxed{
 \mathbf a_{Q}^{\rm grad}
@@ -474,7 +474,7 @@ Therefore the exact optimizer is the Stage 247 gradient-optimal interior ray
 \frac{(k_i,k_j,k_k,k_l)}{\sqrt{k_i^2+k_j^2+k_k^2+k_l^2}}.
 }
 \]
-So the Stage 247 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
+So the Stage 213 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
 
 ### 5.2 Full quadruple-symmetry reduction
 
@@ -507,13 +507,13 @@ So the equal-mix barycenter
 \]
 is an exact interior stationary ray. On a symmetric admissible window it is therefore the exact optimizer.
 
-So the Stage 247 equal-mix screen also has an exact theorem regime behind it.
+So the Stage 213 equal-mix screen also has an exact theorem regime behind it.
 
 ---
 
-## 6. Exact interior winner theorem against the Stage 247 boundary ledger
+## 6. Exact interior winner theorem against the Stage 213 boundary ledger
 
-Keep the imported Stage 247 four-face boundary bracket
+Keep the imported Stage 213 four-face boundary bracket
 \[
 \boxed{
 \beta_Q^{\rm lo}
@@ -547,20 +547,20 @@ If
 \]
 then no admissible interior stationary candidate beats the best boundary winner on that primitive four-coordinate simplex.
 
-So after Stage 248 the full question on a primitive quadruple is no longer a continuum search. It is a finite comparison between:
+So after Stage 214 the full question on a primitive quadruple is no longer a continuum search. It is a finite comparison between:
 
-- one imported exact boundary interval from Stage 247, and
+- one imported exact boundary interval from Stage 213, and
 - one finite admissible interior candidate set from the lifted algebraic system above.
 
 The global support-cardinality-`4` ranking across the five primitive quadruples is deferred to the next stage.
 
 ---
 
-## 7. What Stage 248 changes in the theorem problem
+## 7. What Stage 214 changes in the theorem problem
 
-Stage 247 reduced the first support-cardinality-`4` audit to four imported triple faces plus two canonical interior screens.
+Stage 213 reduced the first support-cardinality-`4` audit to four imported triple faces plus two canonical interior screens.
 
-Stage 248 now proves that the **full** interior search is still finite and algebraic.
+Stage 214 now proves that the **full** interior search is still finite and algebraic.
 
 The problem is therefore no longer
 
@@ -571,21 +571,21 @@ It is now
 1. enumerate the finite lifted stationary candidate set,
 2. filter it by admissibility,
 3. evaluate its lower and upper certified interior minima,
-4. compare those against the already-closed Stage 247 boundary ledger.
+4. compare those against the already-closed Stage 213 boundary ledger.
 
 That is a major reduction in complexity.
 
 ---
 
-## 8. Best current summary after Stage 248
+## 8. Best current summary after Stage 214
 
 The support-cardinality-`4` program is now organized in the same way as the support-`<=3` program.
 
-- Stage 247 closed the boundary and canonical-screen audit.
-- Stage 248 closes the **full interior optimizer** as a finite algebraic candidate problem.
+- Stage 213 closed the boundary and canonical-screen audit.
+- Stage 214 closes the **full interior optimizer** as a finite algebraic candidate problem.
 
 So the next theorem gate is now completely sharp:
 
 > rank the five primitive four-coordinate simplices by their full certified interior minima and compare the winning support-cardinality-`4` candidate against the already-finished support-`<=3` ledger.
 
-That is the natural continuation point for Stage 249.
+That is the natural continuation point for Stage 215.

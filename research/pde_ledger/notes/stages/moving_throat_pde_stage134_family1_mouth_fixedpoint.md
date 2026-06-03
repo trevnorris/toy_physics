@@ -3,7 +3,7 @@
 
 ## Goal
 
-Specialize the general Stage 235 fixed-point law to the first explicit
+Specialize the general Stage 133 fixed-point law to the first explicit
 moving-throat mouth-layer branch compatible with the carried Family-1 geometry:
 
 - one **static shell-compliance** lane,
@@ -46,7 +46,7 @@ Then the coupled mouth-layer law collapses to
 }
 \]
 
-Using the exact Stage 235 kernel,
+Using the exact Stage 133 kernel,
 \[
 \boxed{
 \mathcal S_q(\Pi)
@@ -67,7 +67,7 @@ problem in the two gains \(M_s\) and \(M_q\).
 
 ## 2. Canonical compensation line
 
-Stage 233 already fixed the exact source-shape compensation point
+Stage 130 already fixed the exact source-shape compensation point
 \[
 \Pi_* \approx 1.50882951349316.
 \]
@@ -98,13 +98,13 @@ Interpretation:
 - if the mixed localized-Maxwell lane is mouth-localizing (\(M_q>0\)),
   the shell traction demand is reduced;
 - if the mixed lane is de-localizing (\(M_q<0\)),
-  the shell traction must be larger than the Stage 233 pure-mechanical threshold.
+  the shell traction must be larger than the Stage 130 pure-mechanical threshold.
 
 ---
 
 ## 3. What has improved
 
-Compared to Stage 233, the threshold is no longer written in terms of the effective
+Compared to Stage 130, the threshold is no longer written in terms of the effective
 combination
 \[
 \left.\partial_z\delta V_{\rm conf}\right|_{\rm m}

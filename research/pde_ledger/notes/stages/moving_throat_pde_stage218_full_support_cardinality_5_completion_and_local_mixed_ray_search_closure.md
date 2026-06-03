@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 249 support-`<=4` certified ledger and the Stage 251 unique five-coordinate interior candidate reduction, once the admissible interior five-coordinate packets are supplied on the chosen free-quintuple patch.**
+**Exact within the carried Stage 215 support-`<=4` certified ledger and the Stage 217 unique five-coordinate interior candidate reduction, once the admissible interior five-coordinate packets are supplied on the chosen free-quintuple patch.**
 
 This stage does **not** introduce a new constitutive law or a new optimizer.
 It splices the unique support-cardinality-`5` interior packet back into the already-finished support-`<=4` ledger and closes the **entire local mixed-ray search** on the positive free-quintuple simplex.
@@ -11,9 +11,9 @@ It splices the unique support-cardinality-`5` interior packet back into the alre
 
 ## Purpose
 
-Stage 249 already finished the global support-`<=4` search: every primitive quadruple carries a closed-simplex certified interval, and the whole local search through four active primitive coordinates is finite and certified.
+Stage 215 already finished the global support-`<=4` search: every primitive quadruple carries a closed-simplex certified interval, and the whole local search through four active primitive coordinates is finite and certified.
 
-Stage 251 then solved the only genuinely new support-cardinality-`5` problem: the unique interior five-coordinate mixed simplex is reduced to a finite algebraic candidate set, with an exact certified interval for the best admissible interior winner.
+Stage 217 then solved the only genuinely new support-cardinality-`5` problem: the unique interior five-coordinate mixed simplex is reduced to a finite algebraic candidate set, with an exact certified interval for the best admissible interior winner.
 
 That leaves one last exact continuation point:
 
@@ -30,7 +30,7 @@ The main outputs are:
 5. the exact statement that any remaining ambiguity is **finite-candidate ambiguity**, not a new continuum scan,
 6. and the exact **final evaluation-budget theorem** for the full local mixed-ray search.
 
-So Stage 252 is the closure of the whole local mixed-ray sieve: after this note there are no more combinatorial support-cardinality stages left to build.
+So Stage 218 is the closure of the whole local mixed-ray sieve: after this note there are no more combinatorial support-cardinality stages left to build.
 
 Script-backed status:
 - `scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py`
@@ -38,7 +38,7 @@ Script-backed status:
   interval theorems, and carried budget formulas.
 - `mathematica/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl`
   mirrors the same closure algebra in the second CAS and keeps the carried
-  Stage 249 and Stage 251 budget constants explicit rather than hidden.
+  Stage 215 and Stage 217 budget constants explicit rather than hidden.
 
 ---
 
@@ -62,7 +62,7 @@ There is only one positive spherical five-simplex on this free quintuple,
 }
 \]
 
-### 1.1 Imported Stage 249 support-`<=4` global ledger
+### 1.1 Imported Stage 215 support-`<=4` global ledger
 
 Carry forward the already-closed support-`<=4` certified interval
 \[
@@ -81,7 +81,7 @@ This packet already includes
 - every closed primitive triple simplex,
 - and every closed primitive quadruple simplex.
 
-Equivalently, using the Stage 251 notation for the five quadruple-face splice,
+Equivalently, using the Stage 217 notation for the five quadruple-face splice,
 \[
 \boxed{
 \tau_{\le 4,\min}^{\rm lo}=\beta_5^{\rm lo},
@@ -90,7 +90,7 @@ Equivalently, using the Stage 251 notation for the five quadruple-face splice,
 }
 \]
 
-### 1.2 Imported Stage 251 support-`5` interior packet
+### 1.2 Imported Stage 217 support-`5` interior packet
 
 Carry forward the exact interior five-coordinate certified interval
 \[
@@ -157,7 +157,7 @@ Let `\(\mathcal S_{\le 4}^{\rm loc}\)` denote the already-solved local search se
 \]
 Equivalently, the whole boundary of the unique support-`5` simplex is exactly the already-closed support-`<=4` search domain.
 
-This theorem is stronger than a mere combinatorial count: because every quadruple face is carried as a **closed** simplex from Stage 249, all of its triple, pair, and ray subfaces are already included automatically.
+This theorem is stronger than a mere combinatorial count: because every quadruple face is carried as a **closed** simplex from Stage 215, all of its triple, pair, and ray subfaces are already included automatically.
 
 ---
 
@@ -182,7 +182,7 @@ Let `\(\tau_{\le 5,*}^{\rm best}\)` be the true best local closure time on the f
 \bigr).
 }
 \]
-So after Stage 251 there is literally no further support-cardinality family left to add: the full local search is the support-`<=4` boundary winner versus the unique support-`5` interior winner.
+So after Stage 217 there is literally no further support-cardinality family left to add: the full local search is the support-`<=4` boundary winner versus the unique support-`5` interior winner.
 
 ---
 
@@ -284,9 +284,9 @@ If instead the intervals overlap,
 \]
 then the support-`5` interior remains **certifiedly ambiguous at the interval level**.
 
-But this is no longer a continuum ambiguity. Stage 251 already reduced the support-`5` interior to a finite admissible algebraic candidate set. So even in the ambiguous case, the only unresolved work is finite candidate comparison, not a new free multi-parameter scan.
+But this is no longer a continuum ambiguity. Stage 217 already reduced the support-`5` interior to a finite admissible algebraic candidate set. So even in the ambiguous case, the only unresolved work is finite candidate comparison, not a new free multi-parameter scan.
 
-This is the exact sense in which Stage 252 closes the search sieve even before the actual PDE data are inserted.
+This is the exact sense in which Stage 218 closes the search sieve even before the actual PDE data are inserted.
 
 ---
 
@@ -294,10 +294,10 @@ This is the exact sense in which Stage 252 closes the search sieve even before t
 
 Collect the carried finite ledgers:
 
-- Stage 243: optimized primitive pair cones,
-- Stage 246: full primitive triple closed-simplex packets,
-- Stage 249: full primitive quadruple closed-simplex packets and support-`<=4` global ledger,
-- Stage 251: unique support-`5` interior candidate packet.
+- Stage 209: optimized primitive pair cones,
+- Stage 212: full primitive triple closed-simplex packets,
+- Stage 215: full primitive quadruple closed-simplex packets and support-`<=4` global ledger,
+- Stage 217: unique support-`5` interior candidate packet.
 
 Then the full local mixed-ray search on the free quintuple is completely exhausted.
 
@@ -316,14 +316,14 @@ and there are no additional support-cardinality families beyond this stage.
 
 Equivalently, the full local search on `\(\Delta_5^+\)` is no longer a continuum optimization problem. It is a finite certified ledger with one final splice.
 
-So after Stage 252 there is no more generic local mixed-ray ranking work left to do.
+So after Stage 218 there is no more generic local mixed-ray ranking work left to do.
 The next honest move is no longer “rank larger support families.” It is to insert the actual PDE-derived branch data into this completed ledger.
 
 ---
 
 ## 7. Exact evaluation-budget theorem
 
-The preferred lifted candidate compiler from Stage 251 contributes at most
+The preferred lifted candidate compiler from Stage 217 contributes at most
 \[
 162
 \]
@@ -333,7 +333,7 @@ interior five-coordinate stationary candidates **per** envelope, hence
 \]
 across the `{lo,hi}` envelopes.
 
-The already-finished support-`<=4` search budget from Stage 249 is
+The already-finished support-`<=4` search budget from Stage 215 is
 \[
 \boxed{1140}.
 \]
@@ -344,7 +344,7 @@ So the exact preferred total budget for the full support-`<=5` local search is
 }
 \]
 
-If one instead falls back to the projected one-chart quintuple elimination bound from Stage 251, then the support-`5` interior contributes at most
+If one instead falls back to the projected one-chart quintuple elimination bound from Stage 217, then the support-`5` interior contributes at most
 \[
 2\times 750 = 1500
 \]
@@ -359,15 +359,15 @@ So even the fallback full local search is finite and explicit.
 
 ---
 
-## 8. Best current summary after Stage 252
+## 8. Best current summary after Stage 218
 
 The local mixed-ray sieve is now finished.
 
-- The whole support-`<=4` boundary is already closed by Stage 249.
-- The only new support-`5` content was the unique interior five-coordinate optimizer, and Stage 251 reduced that to a finite algebraic candidate set.
-- Stage 252 proves that the boundary of the unique five-simplex is exactly the already-solved support-`<=4` search set.
+- The whole support-`<=4` boundary is already closed by Stage 215.
+- The only new support-`5` content was the unique interior five-coordinate optimizer, and Stage 217 reduced that to a finite algebraic candidate set.
+- Stage 218 proves that the boundary of the unique five-simplex is exactly the already-solved support-`<=4` search set.
 - Therefore the full local search over the positive free-quintuple simplex is reduced to one exact splice between the support-`<=4` global ledger and the unique support-`5` interior packet.
 - The preferred exact total evaluation budget is `1464`, with fallback chart budget `2640`.
 
-So the natural continuation after Stage 252 is **not** another support-cardinality theorem.
+So the natural continuation after Stage 218 is **not** another support-cardinality theorem.
 It is to begin inserting the actual PDE-derived Hessian-envelope and branch data into the completed search ledger — or, equivalently, to port this whole audited completion back into the compact PDE program master.

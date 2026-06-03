@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Stage 239 reduced the weak grouped-lane outlet problem to the two microscopic amplitudes
+Stage 171 reduced the weak grouped-lane outlet problem to the two microscopic amplitudes
 \[
 \mathfrak K_1,\qquad \mathfrak G_1,
 \]
@@ -21,7 +21,7 @@ The next honest step is therefore:
 
 This stage does exactly that.
 
-The main result is that, on the canonical compensated branch, the two Stage 239 microscopic amplitudes are **nothing but** the physical first-order slopes of
+The main result is that, on the canonical compensated branch, the two Stage 171 microscopic amplitudes are **nothing but** the physical first-order slopes of
 
 1. the grouped conservative even response coefficient \(u_2\), and
 2. the grouped outgoing prefactor \(P_0=N_0/D_0\).
@@ -115,9 +115,9 @@ So the weak-axisymmetric grouped-response problem is already one-dimensional in 
 
 ---
 
-## 2. Exact collapse of the Stage 239 obstruction pair
+## 2. Exact collapse of the Stage 171 obstruction pair
 
-Stage 239 reduced the direct grouped outlet obstructions to
+Stage 171 reduced the direct grouped outlet obstructions to
 \[
 \mathcal K_A=\delta D_{A,2}+\frac19\,\delta D_{A,0},
 \qquad
@@ -163,7 +163,7 @@ the first formula collapses exactly to
 }
 \]
 
-So the Stage 239 outlet-obstruction pair has now been rewritten directly in the physical grouped response variables:
+So the Stage 171 outlet-obstruction pair has now been rewritten directly in the physical grouped response variables:
 \[
 \boxed{
 \mathcal K_A=-D_0\,\delta u_2^{(A)},
@@ -200,7 +200,7 @@ we get
 }
 \]
 
-So the Stage 239 microscopic amplitudes are not independent new physical data.
+So the Stage 171 microscopic amplitudes are not independent new physical data.
 They are just the weak-axisymmetric slopes of the conservative grouped response and the outgoing prefactor.
 
 Equivalently, in grouped-defect language,
@@ -223,7 +223,7 @@ This is the first exact statement that the linear grouped outlet problem can be 
 
 ## 4. Exact physical form of the hidden-even consistency relation
 
-Stage 238 found that a genuine one-parameter hidden-even outlet deformation must satisfy the microscopic relation
+Stage 170 found that a genuine one-parameter hidden-even outlet deformation must satisfy the microscopic relation
 \[
 \delta D_{A,4}
 =
@@ -262,7 +262,7 @@ This is much cleaner than the raw operator statement and is the form that should
 
 ## 5. Direct outlet coefficients in physical grouped variables
 
-Stage 238 already gave the direct outlet map
+Stage 170 already gave the direct outlet map
 \[
 \delta\kappa_W^{(A)}
 =
@@ -367,9 +367,9 @@ So the direct grouped outlet problem has now collapsed one stage further:
 
 ---
 
-## 7. What Stage 240 changes
+## 7. What Stage 172 changes
 
-Before this stage, the next theorem gate after Stage 239 still looked like:
+Before this stage, the next theorem gate after Stage 171 still looked like:
 
 > compute the primitive grouped perturbations of the wall/BdG/Maxwell/mixed bundle and then form \(\mathfrak K_1,\mathfrak G_1\).
 
@@ -398,7 +398,7 @@ The new theorem status is:
    \Delta_Q^{(A)}=\delta P_0^{(A)}/P_0.
    \]
 
-So the next honest theorem gate is now much narrower than Stage 239 suggested:
+So the next honest theorem gate is now much narrower than Stage 171 suggested:
 
 > compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) — and, on the even-preserving branch, just \(P_1/P_0\) — directly from the actual grouped moving-throat response.
 

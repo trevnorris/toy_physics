@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the carried Stage 242 Packet-A branch-residual hierarchy, the Stage 244 isotropic grouped-real `P2` conservative one-pole surface, the Stage 245 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage 246 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**
+**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage 195 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**
 
 This stage does **not** introduce a new constitutive law.
-It answers the last natural objection left by Stage 246:
+It answers the last natural objection left by Stage 195:
 
 > what if the actual moving-throat quadrupole branch carries additional isotropic retarded structure beginning at `O(\omega^7)` or higher?
 
@@ -19,12 +19,12 @@ So the only live retarded obstruction that survives the full carried hierarchy i
 
 ## Purpose
 
-Stage 244 froze the exact isotropic grouped-real `P2` conservative one-pole carrier,
-Stage 245 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
+Stage 193 froze the exact isotropic grouped-real `P2` conservative one-pole carrier,
+Stage 194 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
 \[
 \chi_Q,
 \]
-and Stage 246 then reduced the last observable normalization defect to the source/outgoing factorization
+and Stage 195 then reduced the last observable normalization defect to the source/outgoing factorization
 \[
  m_{\hat 0}^{\,2}\chi_Q N_Q=1,
 \qquad
@@ -32,7 +32,7 @@ and Stage 246 then reduced the last observable normalization defect to the sourc
 \]
 once the odd observable condition is imposed.
 
-So after Stage 246 the last reduced `2.5`PN question is already sharp:
+So after Stage 195 the last reduced `2.5`PN question is already sharp:
 
 > does anything beyond the leading `\omega^5` outgoing slot survive into the reduced theorem, or is the whole retarded finish line really measured by `\chi_Q-1` alone?
 
@@ -42,25 +42,25 @@ The main outputs are:
 
 1. an exact **response-side higher-odd difference identity** showing that any extra retarded tail `O(\omega^7)` or higher changes the isotropic grouped response only at `O(\omega^7)`,
 2. an exact **DtN-side higher-odd difference identity** showing the same at the operator level,
-3. the exact theorem that the Stage 245 outgoing-normalization compiler
+3. the exact theorem that the Stage 194 outgoing-normalization compiler
    \[
    \chi_Q=
    \frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}
    \]
    is unchanged by all higher odd DtN data beginning at `O(z^7)`,
-4. the exact Packet-A consequence that the source-map-reduced normalization residual of Stage 246 is likewise unchanged,
+4. the exact Packet-A consequence that the source-map-reduced normalization residual of Stage 195 is likewise unchanged,
 5. and the final reduced statement that the only live retarded obstruction at `2.5`PN is
    \[
    \boxed{\Delta_Q:=\chi_Q-1.}
    \]
 
-So Stage 247 is the rigorous Stage 242–246 reformulation of the older higher-odd irrelevance result.
+So Stage 196 is the rigorous Stage 191–195 reformulation of the older higher-odd irrelevance result.
 
 ---
 
 ## 1. Generalized isotropic grouped-`P2` retarded module with a higher odd tail
 
-Keep the Stage 245 isotropic retarded grouped module,
+Keep the Stage 194 isotropic retarded grouped module,
 \[
 \widehat Y_Q^{\rm ret,5}(\omega)
 =
@@ -83,7 +83,7 @@ with
 \boxed{\mathcal T_{\ge7}(\omega)=O(\omega^7).}
 \]
 
-The Stage 245 canonical outgoing scale is still
+The Stage 194 canonical outgoing scale is still
 \[
 \Omega_Q=\frac{3c_s}{2a},
 \qquad
@@ -183,7 +183,7 @@ It does not modify the leading odd Burke–Thorne slot.
 ## 3. Exact DtN-side higher-odd difference identity
 
 Work now at the isotropic DtN level.
-Let the Stage 245 truncated isotropic DtN denominator be
+Let the Stage 194 truncated isotropic DtN denominator be
 \[
 D_5(z):=L_0+L_2 z^2+L_4 z^4+iL_5 z^5,
 \]
@@ -235,9 +235,9 @@ with no dependence on `\mathcal L_{\ge7}` before `O(z^7)`.
 
 ---
 
-## 4. Stability of the Stage 245 isotropic deformation algebra
+## 4. Stability of the Stage 194 isotropic deformation algebra
 
-Parameterize the Stage 245 isotropic DtN front end by
+Parameterize the Stage 194 isotropic DtN front end by
 \[
 L_0=-3S+\Sigma_0,
 \qquad
@@ -257,7 +257,7 @@ Then the exact canonical-even matching conditions are still
 \qquad
 \frac{L_2^2}{L_0^2}-\frac{L_4}{L_0}=\frac{4}{81},
 \]
-so the same Stage 245 solution follows:
+so the same Stage 194 solution follows:
 \[
 \boxed{
 \Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
@@ -274,14 +274,14 @@ Likewise the outgoing-normalization factor is still compiled only from the `z^5`
 =\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
 }
 \]
-So all higher odd DtN data beginning at `O(z^7)` are invisible to the Stage 245 isotropic outgoing-normalization compiler.
+So all higher odd DtN data beginning at `O(z^7)` are invisible to the Stage 194 isotropic outgoing-normalization compiler.
 They can change the response only at `z^7` and higher, but they cannot change `\chi_Q`.
 
 ---
 
-## 5. Exact Packet-A consequence after Stage 246
+## 5. Exact Packet-A consequence after Stage 195
 
-Stage 246 already reduced the odd observable closure to
+Stage 195 already reduced the odd observable closure to
 \[
 \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
 \]
@@ -300,7 +300,7 @@ On the natural point-particle source-map branch,
 \boxed{m_{\hat 0}\to 1,\qquad N_Q=\chi_Q^{-1}.}
 \]
 
-Now combine this with Stage 247.
+Now combine this with Stage 196.
 Since all higher odd retarded data beginning at `O(\omega^7)` or `O(z^7)` leave `\chi_Q` unchanged, they also leave unchanged:
 \[
 \boxed{N_Q,}
@@ -315,7 +315,7 @@ The remaining Packet-A entries are already conservative:
 \]
 so they are manifestly untouched by any extra higher odd retarded tail.
 
-Therefore the entire Stage 242 branch residual packet
+Therefore the entire Stage 191 branch residual packet
 \[
 \boxed{
 \Delta_{\rm branch}
@@ -341,7 +341,7 @@ Any new isotropic retarded structure that first appears as
 contains two extra powers of `\omega` relative to the `\omega^5` reaction term.
 So in the standard small-velocity bookkeeping it sits **above** the universal point-particle `2.5`PN slot.
 
-Stage 247 does not need to decide the full higher-PN interpretation of those terms.
+Stage 196 does not need to decide the full higher-PN interpretation of those terms.
 It only needs the exact reduced statement:
 
 > they cannot alter the `\omega^5` coefficient and therefore cannot alter the reduced point-particle `2.5`PN closure.
@@ -352,8 +352,8 @@ So the completed moving-throat PDE may well carry additional higher odd retarded
 
 ## 7. Exact higher-odd irrelevance theorem
 
-Let the isotropic grouped-real `P2` branch satisfy the carried Stage 244 conservative one-pole surface, the Stage 245 outgoing `l=2` compiler, and the Stage 246 source-map reduction.
-Let the exact retarded grouped response differ from the Stage 245 one-pole model only by additional isotropic retarded structure whose first nonzero term is `O(\omega^7)` (equivalently `O(z^7)`).
+Let the isotropic grouped-real `P2` branch satisfy the carried Stage 193 conservative one-pole surface, the Stage 194 outgoing `l=2` compiler, and the Stage 195 source-map reduction.
+Let the exact retarded grouped response differ from the Stage 194 one-pole model only by additional isotropic retarded structure whose first nonzero term is `O(\omega^7)` (equivalently `O(z^7)`).
 
 Then:
 
@@ -374,11 +374,11 @@ then the reduced point-particle `2.5`PN theorem is closed regardless of all high
 
 ---
 
-## 8. What Stage 247 changes in the theorem problem
+## 8. What Stage 196 changes in the theorem problem
 
-Stage 246 had already reduced the finish line to the outgoing scalar `\chi_Q-1`, but one natural loophole remained: perhaps uncomputed higher odd retarded structure could re-enter the Packet-A compiler indirectly.
+Stage 195 had already reduced the finish line to the outgoing scalar `\chi_Q-1`, but one natural loophole remained: perhaps uncomputed higher odd retarded structure could re-enter the Packet-A compiler indirectly.
 
-Stage 247 closes that loophole exactly.
+Stage 196 closes that loophole exactly.
 
 ### 8.1 The retarded finish line is now unique at `2.5`PN
 
@@ -389,7 +389,7 @@ It is one number only:
 \chi_Q.
 \]
 
-### 8.2 The Stage 245 deformation algebra is complete at theorem order
+### 8.2 The Stage 194 deformation algebra is complete at theorem order
 
 The only isotropic DtN-side data that can move the reduced `2.5`PN verdict are still
 \[
@@ -399,7 +399,7 @@ All higher odd DtN data are outside the theorem order.
 
 ### 8.3 The Packet-A home-stretch theorem is stable
 
-The Stage 242 minimal branch-residual packet and the Stage 246 source-map reduction already contain the whole reduced `2.5`PN theorem.
+The Stage 191 minimal branch-residual packet and the Stage 195 source-map reduction already contain the whole reduced `2.5`PN theorem.
 There is no hidden higher-odd loophole left inside that packet language.
 
 ---
@@ -408,9 +408,9 @@ There is no hidden higher-odd loophole left inside that packet language.
 
 The next clean continuation is now the exact conditional closure statement in the modern Packet-A language:
 
-1. keep the Stage 244 isotropic conservative one-pole surface,
-2. keep the Stage 246 exact source-map reduction,
-3. keep the Stage 247 higher-odd irrelevance theorem,
+1. keep the Stage 193 isotropic conservative one-pole surface,
+2. keep the Stage 195 exact source-map reduction,
+3. keep the Stage 196 higher-odd irrelevance theorem,
 4. and state the finish-line equivalence
    \[
    \Delta_{\rm branch}=0
@@ -419,4 +419,4 @@ The next clean continuation is now the exact conditional closure statement in th
    \]
    on the natural point-particle source-map branch.
 
-That is the natural successor to Stage 247.
+That is the natural successor to Stage 196.

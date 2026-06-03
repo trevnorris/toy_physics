@@ -2,20 +2,20 @@
 
 ## Status
 
-**Exact within the carried Stage 243 orbit/quotient projector calculus and the Stage 253 exact free-quintuple target graph.**
+**Exact within the carried Stage 192 orbit/quotient projector calculus and the Stage 202 exact free-quintuple target graph.**
 
 This stage does **not** introduce a new constitutive law.
-It takes the Stage 253 target-orbit graph and proves that, once a candidate family is aligned with that graph, the full reduced home-stretch test collapses to a **single scalar closure function** on the five free microscopic coordinates.
+It takes the Stage 202 target-orbit graph and proves that, once a candidate family is aligned with that graph, the full reduced home-stretch test collapses to a **single scalar closure function** on the five free microscopic coordinates.
 
 ---
 
 ## Purpose
 
-Stage 253 solved the target orbit `\(\mathcal O_*\)` explicitly as a graph over the free quintuple
+Stage 202 solved the target orbit `\(\mathcal O_*\)` explicitly as a graph over the free quintuple
 \[
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
 \]
-That already removed the abstractness from the Stage 252 canonical projection. But one practical question was still left open:
+That already removed the abstractness from the Stage 201 canonical projection. But one practical question was still left open:
 
 > once the target orbit is written as an explicit graph, what is the actual reduced closure problem for a one-parameter branch family in that free-quintuple space?
 
@@ -33,13 +33,13 @@ The main outputs are:
    \{\mathbf x_*^{\rm graph}(\mathbf y):\widehat\chi_Q(\mathbf y)=1\},
    \]
 3. the exact formulas for the dependent-triple log tangents of any graph-lifted free family,
-4. the exact theorem that those graph tangents lie in the Stage 243 similarity-orbit kernel,
+4. the exact theorem that those graph tangents lie in the Stage 192 similarity-orbit kernel,
 5. the exact same-free-quintuple decomposition of an arbitrary candidate family into
    - the graph-lifted orbit piece, and
    - the three dependent graph errors \((E_T,E_K,E_\mu)\),
 6. and the exact **one-parameter crossing theorem** reducing the graph-aligned closure search to a single scalar sign-change problem.
 
-So Stage 237 is the first point where a reduced moving-throat branch search becomes a genuine **one-scalar spectral-placement problem** on the free-quintuple target graph.
+So Stage 203 is the first point where a reduced moving-throat branch search becomes a genuine **one-scalar spectral-placement problem** on the free-quintuple target graph.
 
 Script-backed status:
 - `scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py`
@@ -63,7 +63,7 @@ Let the positive microscopic state be
 }
 \]
 
-Carry forward the Stage 253 free-quintuple projection
+Carry forward the Stage 202 free-quintuple projection
 \[
 \boxed{
 \mathbf y:=
@@ -76,7 +76,7 @@ The dependent triple is
 (T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W).
 \]
 
-The exact Stage 253 target-graph map is
+The exact Stage 202 target-graph map is
 \[
 \boxed{
 \mathbf x_*^{\rm graph}(\mathbf y)
@@ -128,7 +128,7 @@ K_{\eta,*}^{\rm graph}(\mathbf y)
 }
 \]
 
-By Stage 253,
+By Stage 202,
 \[
 \boxed{
 \mathcal O_*=
@@ -158,7 +158,7 @@ Equivalently, define the graph residual
 Since every graph state already lies on `\(\mathcal O_*\)`, the full reduced closure set is obtained by imposing only the Packet-A scalar target on the graph.
 
 \[
-\boxed{\textbf{Theorem (Stage 237 scalar graph-slice theorem).}}
+\boxed{\textbf{Theorem (Stage 203 scalar graph-slice theorem).}}
 \]
 
 The fully reduced closure set is exactly
@@ -180,7 +180,7 @@ The fully reduced closure set is exactly
 
 ### Proof
 
-By Stage 253, `\(\mathbf x_*^{\rm graph}(\mathbf y)\in\mathcal O_*\)` for every positive free quintuple `\(\mathbf y\)`.
+By Stage 202, `\(\mathbf x_*^{\rm graph}(\mathbf y)\in\mathcal O_*\)` for every positive free quintuple `\(\mathbf y\)`.
 Therefore the only remaining reduced closure condition is the Packet-A scalar condition
 \[
 \chi_Q=1.
@@ -281,9 +281,9 @@ c_1\\
 
 ---
 
-## 4. Exact graph-family tangency to the Stage 243 orbit kernel
+## 4. Exact graph-family tangency to the Stage 192 orbit kernel
 
-Carry forward the exact Stage 243 monomial-drift map
+Carry forward the exact Stage 192 monomial-drift map
 \[
 \boxed{
 \mathbf q=M_*\,\Delta\mathbf x,
@@ -312,7 +312,7 @@ M_*\,\dot{\Delta\mathbf x}_{\rm graph}=0.
 \boxed{\textbf{Corollary (graph-family orbit tangency).}}
 \]
 
-Every graph-lifted free-quintuple family lies identically in the Stage 243 similarity-orbit tangent:
+Every graph-lifted free-quintuple family lies identically in the Stage 192 similarity-orbit tangent:
 \[
 \boxed{
 \dot{\Delta\mathbf x}_{\rm graph}(\tau)\in\ker M_*.
@@ -360,7 +360,7 @@ E_T
 \end{pmatrix}.
 }
 \]
-Applying the Stage 243 monomial map gives the exact quotient packet carried by those graph errors:
+Applying the Stage 192 monomial map gives the exact quotient packet carried by those graph errors:
 \[
 \boxed{
 q_{\rm tr}=(1+\chi_{0,*})E_T,
@@ -388,7 +388,7 @@ E_\mu=q_{\rm nt}-q_\eta+\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}.
 }
 \]
 
-This is exactly the Stage 253 graph-error packet, now written as the unique same-free-quintuple decomposition of any candidate family into
+This is exactly the Stage 202 graph-error packet, now written as the unique same-free-quintuple decomposition of any candidate family into
 
 - the graph-lifted orbit piece, and
 - the genuine quotient-failure piece.
@@ -466,7 +466,7 @@ Define the graph scalar residual
 \]
 
 \[
-\boxed{\textbf{Theorem (Stage 237 one-parameter graph crossing theorem).}}
+\boxed{\textbf{Theorem (Stage 203 one-parameter graph crossing theorem).}}
 \]
 
 If
@@ -530,8 +530,8 @@ So the first-order family audit on the graph is reduced completely to the deriva
 
 ## 9. Operational meaning for the PDE program
 
-Stage 253 reduced the target orbit from an abstract similarity set to an explicit graph over five free coordinates.
-Stage 237 goes one decisive step further.
+Stage 202 reduced the target orbit from an abstract similarity set to an explicit graph over five free coordinates.
+Stage 203 goes one decisive step further.
 
 ### 9.1 Graph-aligned PDE searches are one-scalar searches
 

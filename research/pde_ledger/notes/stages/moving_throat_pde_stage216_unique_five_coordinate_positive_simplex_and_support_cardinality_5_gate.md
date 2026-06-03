@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 249 support-`<=4` certified ledger, once a local oriented `5 x 5` Hessian-envelope block and the corresponding validity map are supplied on the chosen free-quintuple patch.**
+**Exact within the carried Stage 215 support-`<=4` certified ledger, once a local oriented `5 x 5` Hessian-envelope block and the corresponding validity map are supplied on the chosen free-quintuple patch.**
 
 This stage does **not** yet solve the full four-parameter interior optimizer on the unique five-coordinate simplex.
-It is the exact continuation *between* the Stage 249 global support-`<=4` splice and the Stage 251 interior five-coordinate candidate reduction: the first place where a genuinely interior support-cardinality-`5` mixed ray can appear and be audited without reopening the already-finished quadruple boundary problem.
+It is the exact continuation *between* the Stage 215 global support-`<=4` splice and the Stage 217 interior five-coordinate candidate reduction: the first place where a genuinely interior support-cardinality-`5` mixed ray can appear and be audited without reopening the already-finished quadruple boundary problem.
 
 ---
 
 ## Purpose
 
-Stage 249 closed the full support-`<=4` local search.
+Stage 215 closed the full support-`<=4` local search.
 Every primitive quadruple already carries a closed-simplex certified interval, and the whole local sieve through four active primitive coordinates has been reduced to one finite certified ledger.
 
 That makes the next theorem gate completely sharp:
@@ -22,7 +22,7 @@ This stage answers that.
 
 The main outputs are:
 
-1. the exact **unique positive spherical five-simplex** and its full face reduction back to the Stage 249 primitive-quadruple packets,
+1. the exact **unique positive spherical five-simplex** and its full face reduction back to the Stage 215 primitive-quadruple packets,
 2. the exact **five-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
 3. the exact **five-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes the total ten-way off-diagonal leverage,
 4. the exact **fixed-simplex certified bracket** for any admissible interior point,
@@ -30,7 +30,7 @@ The main outputs are:
 6. the exact **support-cardinality-`5` theorem gate** that certifies a genuine five-coordinate improvement over the entire support-`<=4` ledger whenever one canonical interior screen already wins,
 7. and the exact statement that there are **no higher-support local mixed rays** beyond this stage because the free-quintuple has only five primitive axes.
 
-So Stage 250 is the five-coordinate analogue of Stage 247, but now the whole codimension-one boundary is already fully optimized and imported from Stage 249, and the only genuinely new local content is the interior of the unique five-coordinate simplex.
+So Stage 216 is the five-coordinate analogue of Stage 213, but now the whole codimension-one boundary is already fully optimized and imported from Stage 215, and the only genuinely new local content is the interior of the unique five-coordinate simplex.
 
 ---
 
@@ -73,7 +73,7 @@ a_\lambda\widehat{\mathbf e}_\lambda
 }
 \]
 
-Its five codimension-one faces are exactly the five Stage 249 primitive quadruple simplices:
+Its five codimension-one faces are exactly the five Stage 215 primitive quadruple simplices:
 \[
 Q_{\widehat\lambda}=\{c,\gamma,U,W\},
 \qquad
@@ -86,9 +86,9 @@ Q_{\widehat U}=\{\lambda,c,\gamma,W\},
 \qquad
 Q_{\widehat W}=\{\lambda,c,\gamma,U\}.
 \]
-So the entire codimension-one boundary is already closed by the Stage 249 ledger.
+So the entire codimension-one boundary is already closed by the Stage 215 ledger.
 
-Let the imported Stage 249 closed-simplex intervals be
+Let the imported Stage 215 closed-simplex intervals be
 \[
 \mathcal I_{\widehat\lambda}^{\square},\quad
 \mathcal I_{\widehat c}^{\square},\quad
@@ -323,17 +323,17 @@ Then the exact certified local comparison root at that simplex point is
 \]
 So the five-coordinate simplex introduces **no new root algebra** at a fixed interior point. The only new difficulty is the genuine four-parameter interior search over `\(\mathbf a\)`.
 
-That full four-parameter interior optimizer is deferred deliberately to Stage 251.
-Stage 250 keeps only the first exact gate needed before that solve: the full boundary splice plus the two canonical interior screen points.
+That full four-parameter interior optimizer is deferred deliberately to Stage 217.
+Stage 216 keeps only the first exact gate needed before that solve: the full boundary splice plus the two canonical interior screen points.
 
 ---
 
 ## 5. The canonical five-way screen audit
 
-Stage 250 does **not** yet solve the full four-parameter interior optimizer.
+Stage 216 does **not** yet solve the full four-parameter interior optimizer.
 The smallest exact screen set is instead:
 
-1. the five exact imported full-face intervals from Stage 249,
+1. the five exact imported full-face intervals from Stage 215,
    \[
    \mathcal I_{\widehat\lambda}^{\square},\quad
    \mathcal I_{\widehat c}^{\square},\quad
@@ -350,7 +350,7 @@ The smallest exact screen set is instead:
    \mathbf a_5^{\rm eq}.
    \]
 
-So the exact Stage 250 five-way screen packet is
+So the exact Stage 216 five-way screen packet is
 \[
 \boxed{
 \mathcal S_5^{\rm can}
@@ -366,7 +366,7 @@ So the exact Stage 250 five-way screen packet is
 \Bigr).
 }
 \]
-This is the exact five-coordinate analogue of the Stage 247 canonical quadruple-screen packet, but now there is only **one** support-cardinality-`5` simplex, and its whole codimension-one boundary is already fully optimized and imported rather than re-audited.
+This is the exact five-coordinate analogue of the Stage 213 canonical quadruple-screen packet, but now there is only **one** support-cardinality-`5` simplex, and its whole codimension-one boundary is already fully optimized and imported rather than re-audited.
 
 ---
 
@@ -395,7 +395,7 @@ If either canonical interior screen satisfies
 \]
 then there exists a **genuine interior five-coordinate mixed ray** whose certified closure time lies strictly below every already-solved four-coordinate boundary winner on the unique five-simplex.
 
-The proof is the same as in Stage 247:
+The proof is the same as in Stage 213:
 
 - the actual root at the chosen interior screen point is bounded above by its certified upper bracket,
 - the actual face winners are bounded below by the imported certified lower face brackets,
@@ -416,13 +416,13 @@ Conversely, if
 \]
 then neither canonical five-coordinate screen beats the best support-`<=4` boundary winner on the closed five-simplex.
 
-That is **not** a full no-go theorem for the five-simplex interior, because the genuine four-parameter interior optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical five-way interior mechanisms before the full Stage 251 interior search is attempted.
+That is **not** a full no-go theorem for the five-simplex interior, because the genuine four-parameter interior optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical five-way interior mechanisms before the full Stage 217 interior search is attempted.
 
 ---
 
-## 7. Global support-cardinality-`5` gate against the Stage 249 support-`<=4` ledger
+## 7. Global support-cardinality-`5` gate against the Stage 215 support-`<=4` ledger
 
-Carry forward the exact Stage 249 certified interval for the whole local support-`<=4` search,
+Carry forward the exact Stage 215 certified interval for the whole local support-`<=4` search,
 \[
 \boxed{
 \tau_{\le 4,\min}^{\rm lo}
@@ -461,7 +461,7 @@ If
 \]
 then neither canonical five-coordinate screen beats the already-finished global support-`<=4` winner.
 
-Again, that is not yet a complete no-go theorem for the five-coordinate interior, because the full four-parameter interior optimizer has not yet been solved. But it is the exact final **support-cardinality gate** before the unique interior optimizer of Stage 251.
+Again, that is not yet a complete no-go theorem for the five-coordinate interior, because the full four-parameter interior optimizer has not yet been solved. But it is the exact final **support-cardinality gate** before the unique interior optimizer of Stage 217.
 
 ---
 
@@ -480,25 +480,25 @@ Therefore:
 }
 \]
 
-So Stage 250 is the **last combinatorial support-cardinality gate** in the local mixed-ray ladder.
+So Stage 216 is the **last combinatorial support-cardinality gate** in the local mixed-ray ladder.
 What remains after it is not another support class, but only the unique four-parameter interior optimizer on `\(\Delta_5^+\)`.
 
 ---
 
-## 9. What Stage 250 changes in the program
+## 9. What Stage 216 changes in the program
 
 This stage does three things.
 
-### 9.1 It identifies the exact missing bridge between Stage 249 and Stage 251
+### 9.1 It identifies the exact missing bridge between Stage 215 and Stage 217
 
-Stage 249 closed the support-`<=4` ledger.
-Stage 251 solves the unique interior five-coordinate optimizer.
-Stage 250 is the missing exact bridge between them: it defines the unique five-coordinate simplex, proves that its full codimension-one boundary is already closed, and isolates the two canonical five-way interior screens before the interior algebra is attacked.
+Stage 215 closed the support-`<=4` ledger.
+Stage 217 solves the unique interior five-coordinate optimizer.
+Stage 216 is the missing exact bridge between them: it defines the unique five-coordinate simplex, proves that its full codimension-one boundary is already closed, and isolates the two canonical five-way interior screens before the interior algebra is attacked.
 
 ### 9.2 It shows that the last genuinely new local content is interior
 
 Nothing on the codimension-one boundary is new anymore.
-Every boundary face is already a Stage 249 quadruple packet.
+Every boundary face is already a Stage 215 quadruple packet.
 So the only new support-cardinality-`5` question is whether the unique four-parameter interior optimizer can beat the imported support-`<=4` ledger.
 
 ### 9.3 It makes the final search ladder conceptually complete
@@ -506,10 +506,10 @@ So the only new support-cardinality-`5` question is whether the unique four-para
 After this note there is no higher-support combinatorial stage left to build.
 The whole local mixed-ray ladder is now:
 
-- support-`<=3` closed by Stage 246,
-- support-`4` globally ranked by Stage 249,
-- support-`5` gated here at Stage 250,
-- and the unique support-`5` interior optimizer solved next in Stage 251.
+- support-`<=3` closed by Stage 212,
+- support-`4` globally ranked by Stage 215,
+- support-`5` gated here at Stage 216,
+- and the unique support-`5` interior optimizer solved next in Stage 217.
 
 ---
 
@@ -517,9 +517,9 @@ The whole local mixed-ray ladder is now:
 
 The next exact move is now completely sharp:
 
-1. keep the imported Stage 249 five-face boundary ledger from this note,
+1. keep the imported Stage 215 five-face boundary ledger from this note,
 2. move to the interior ratio chart on `\(\Delta_5^+\)`,
 3. derive the full four-parameter stationary equations,
 4. and reduce the unique interior five-coordinate optimizer to a finite algebraic candidate set.
 
-That is exactly the Stage 251 task.
+That is exactly the Stage 217 task.

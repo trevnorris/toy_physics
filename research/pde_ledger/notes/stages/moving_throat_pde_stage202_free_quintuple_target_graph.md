@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 253 direct microscopic monomial formulas, the Stage 243 orbit/quotient projector calculus, and the Stage 252 canonical orbit projection theorem.**
+**Exact within the carried Stage 202 direct microscopic monomial formulas, the Stage 192 orbit/quotient projector calculus, and the Stage 201 canonical orbit projection theorem.**
 
 This stage does **not** introduce a new constitutive law.
-It removes the last abstractness from the Stage 252 realization compiler by solving the target orbit explicitly as a graph over the five free microscopic coordinates.
+It removes the last abstractness from the Stage 201 realization compiler by solving the target orbit explicitly as a graph over the five free microscopic coordinates.
 
 ---
 
 ## Purpose
 
-Stage 252 already gave an exact realization compiler:
+Stage 201 already gave an exact realization compiler:
 
 \[
 \mathbf x\in\mathcal Z_*
@@ -82,7 +82,7 @@ The main outputs are:
    }
    \]
 
-So Stage 253 is the first place where the target branch becomes an explicit five-variable closure surface rather than an abstract quotient orbit.
+So Stage 202 is the first place where the target branch becomes an explicit five-variable closure surface rather than an abstract quotient orbit.
 
 ---
 
@@ -166,7 +166,7 @@ Define the five free microscopic coordinates
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
 }
 \]
-These are exactly the five similarity coordinates left untouched by the Stage 243 orbit projector.
+These are exactly the five similarity coordinates left untouched by the Stage 192 orbit projector.
 
 The first direct target quantity solved from `\(\mathfrak C_{{\rm tr},*}\)` is the split-`U` ratio
 \[
@@ -279,7 +279,7 @@ Define the exact microscopic target-graph map
 \]
 
 \[
-\boxed{\textbf{Theorem (Stage 253 exact target graph).}}
+\boxed{\textbf{Theorem (Stage 202 exact target graph).}}
 \]
 
 For every positive free quintuple `\(\mathbf y\)`,
@@ -316,9 +316,9 @@ with the free quintuple fixed. Direct substitution gives
 \qquad
 \epsilon_\eta=\epsilon_{\eta,*}^{\rm target}.
 \]
-Uniqueness follows from the exact Stage 243 pivot block on the dependent triple, equivalently from the explicit algebraic solve above.
+Uniqueness follows from the exact Stage 192 pivot block on the dependent triple, equivalently from the explicit algebraic solve above.
 
-So the same-free-quintuple uniqueness theorem of Stage 252 has now been turned into an explicit graph formula.
+So the same-free-quintuple uniqueness theorem of Stage 201 has now been turned into an explicit graph formula.
 
 ---
 
@@ -351,7 +351,7 @@ By direct substitution,
 }
 \]
 
-So Stage 253 removes the last abstractness from the Stage 252 source/orbit map:
+So Stage 202 removes the last abstractness from the Stage 201 source/orbit map:
 the canonical orbit projection is not merely a quotient-theoretic object; it is the explicit graph replacement of the dependent triple.
 
 ---
@@ -386,7 +386,7 @@ M_\mu=e^{E_\mu}=\frac{\mu_W}{\mu_W^{\rm graph}}.
 }
 \]
 
-These graph errors are exactly the Stage 252 mismatch logs:
+These graph errors are exactly the Stage 201 mismatch logs:
 \[
 \boxed{
 E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}}=\ln m_T,
@@ -416,7 +416,7 @@ So the four-scalar realization packet can be rewritten as
 
 ### 6.1 Exact repair law in graph-error coordinates
 
-The Stage 252 canonical repair vector becomes
+The Stage 201 canonical repair vector becomes
 \[
 \boxed{
 \Delta\mathbf x_{\rm rep}
@@ -470,7 +470,7 @@ E_\mu(\mathbf x_{\rm cand}(\mathbf y))
 \]
 
 \[
-\boxed{\textbf{Theorem (Stage 253 first reduced-family test).}}
+\boxed{\textbf{Theorem (Stage 202 first reduced-family test).}}
 \]
 
 For any positive candidate family in the carried hierarchy,
@@ -494,8 +494,8 @@ This is the first exact reduced-family closure surface in directly usable coordi
 
 ## 8. What this stage changes operationally
 
-Stage 252 already told us how to project any state onto the target orbit.
-Stage 253 improves that in three ways.
+Stage 201 already told us how to project any state onto the target orbit.
+Stage 202 improves that in three ways.
 
 ### 8.1 The target orbit is now an explicit graph
 
@@ -533,7 +533,7 @@ The accompanying SymPy audit verifies:
   \delta_{U,*}^{\rm graph},\ T_U^{\rm graph},\ K_{\eta,*}^{\rm graph},\ \mu_W^{\rm graph},
   \]
 - direct substitution of the graph solve back into the target monomials,
-- the exact equality of the graph projection and the Stage 252 canonical orbit projection,
+- the exact equality of the graph projection and the Stage 201 canonical orbit projection,
 - the exact identities
   \[
   E_T=\frac{q_{\rm tr}}{1+\chi_{0,*}},\quad
@@ -565,4 +565,4 @@ The next clean continuation is now sharply defined:
    \]
 4. and then ask whether their vanishing reduces to a simpler one-parameter or low-rank crossing problem on that family.
 
-So Stage 237 should be the first exact **family crossing theorem** built on the Stage 253 target graph.
+So Stage 203 should be the first exact **family crossing theorem** built on the Stage 202 target graph.

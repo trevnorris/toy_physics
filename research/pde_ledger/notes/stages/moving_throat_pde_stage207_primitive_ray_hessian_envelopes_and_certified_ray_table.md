@@ -2,24 +2,24 @@
 
 ## Status
 
-**Exact within the carried Stage 238 primitive free-ray family and the Stage 240 certified local bracket / ranking framework, once a local diagonal Hessian envelope of `\(\ln\widehat\chi_Q\)` is supplied on the chosen primitive intervals.**
+**Exact within the carried Stage 204 primitive free-ray family and the Stage 206 certified local bracket / ranking framework, once a local diagonal Hessian envelope of `\(\ln\widehat\chi_Q\)` is supplied on the chosen primitive intervals.**
 
 This stage does **not** introduce a new constitutive law.
-It specializes the generic Stage 240 search sieve to the five primitive free-quintuple rays and isolates the smallest actual differential data the completed PDE must return before the primitive local search is fully decided.
+It specializes the generic Stage 206 search sieve to the five primitive free-quintuple rays and isolates the smallest actual differential data the completed PDE must return before the primitive local search is fully decided.
 
 ---
 
 ## Purpose
 
-Stage 238 already gave the exact primitive free-direction table
+Stage 204 already gave the exact primitive free-direction table
 \[
 \mathbf e_\lambda,\ \mathbf e_c,\ \mathbf e_\gamma,\ \mathbf e_U,\ \mathbf e_W,
 \]
-and Stage 240 upgraded the scalarized branch search to a certified local bracket theorem on an arbitrary oriented ray.
+and Stage 206 upgraded the scalarized branch search to a certified local bracket theorem on an arbitrary oriented ray.
 
 That left one sharp continuation point:
 
-> what does the Stage 240 sieve become when we apply it to the **actual primitive candidate rays**, and how much Hessian data does the PDE really need at that level?
+> what does the Stage 206 sieve become when we apply it to the **actual primitive candidate rays**, and how much Hessian data does the PDE really need at that level?
 
 This stage answers that exactly.
 
@@ -31,12 +31,12 @@ The main outputs are:
    \partial_{\ell_i\ell_i}\ln\widehat\chi_Q,
    \]
    with no off-diagonal entry,
-3. the exact **primitive certified ray table** carrying both the Stage 238 microscopic drift data and the Stage 240 bracket data,
+3. the exact **primitive certified ray table** carrying both the Stage 204 microscopic drift data and the Stage 206 bracket data,
 4. the exact **primitive elimination theorem**,
 5. the exact **primitive winner theorem** when one certified bracket sits strictly to the left of all others,
 6. and the exact statement that off-diagonal Hessian entries first appear only for genuine two-coordinate mixed rays.
 
-So Stage 241 is the first point where the final scalar branch search becomes a concrete five-row primitive audit table rather than a generic ray library.
+So Stage 207 is the first point where the final scalar branch search becomes a concrete five-row primitive audit table rather than a generic ray library.
 
 ---
 
@@ -65,7 +65,7 @@ h_0:=h(\boldsymbol\ell_\circ),
 H_0:=|h_0|>0.
 }
 \]
-The oriented logarithmic residual of Stage 240 is therefore
+The oriented logarithmic residual of Stage 206 is therefore
 \[
 H_{\mathbf s}(\tau)=\sigma_0\,h(\boldsymbol\ell_\circ+\tau\mathbf s).
 \]
@@ -77,7 +77,7 @@ H_1(\mathbf s;\tau)=\sigma_0\,\mathbf s^T H_h(\boldsymbol\ell_\circ+\tau\mathbf 
 \]
 where `\(H_h\)` is the Hessian of `\(h\)` in the log coordinates.
 
-So the Stage 240 data for any candidate ray are still:
+So the Stage 206 data for any candidate ray are still:
 
 1. the positive initial defect `\(H_0\)`,
 2. the oriented initial slope `\(K_0\)`,
@@ -109,7 +109,7 @@ Define the five oriented gradient components at the base point
 i\in\{\lambda,c,\gamma,U,W\}.
 }
 \]
-These are the Stage 240 initial slopes on the **positive** primitive axes.
+These are the Stage 206 initial slopes on the **positive** primitive axes.
 
 ### 2.1 Monotone primitive rays
 
@@ -131,7 +131,7 @@ So every nonflat primitive axis admits a unique canonical forward orientation th
 
 ### 2.2 Turning primitive rays
 
-If `\(\Gamma_i=0\)`, the primitive axis is a turning candidate. Its sign is irrelevant at first order, and Stage 240 says the forward root question is decided entirely by the sign and envelope of the second derivative.
+If `\(\Gamma_i=0\)`, the primitive axis is a turning candidate. Its sign is irrelevant at first order, and Stage 206 says the forward root question is decided entirely by the sign and envelope of the second derivative.
 
 So the primitive search problem splits cleanly:
 
@@ -182,7 +182,7 @@ If, on an interval `\([0,T_i]\)`, the oriented diagonal Hessian restriction obey
 0\le\tau\le T_i,
 }
 \]
-then that interval is the **full** Stage 240 curvature envelope for the primitive ray.
+then that interval is the **full** Stage 206 curvature envelope for the primitive ray.
 
 So no off-diagonal Hessian entry is needed to certify any primitive ray.
 The completed PDE must provide only the five diagonal restrictions
@@ -203,14 +203,14 @@ along the corresponding oriented primitive intervals.
 
 ## 4. Sign-adapted primitive microscopic drift table
 
-Stage 238 already fixed the dependent graph exponents in terms of the free log-ray direction.
+Stage 204 already fixed the dependent graph exponents in terms of the free log-ray direction.
 Write
 \[
 \boxed{
 \mathfrak a_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.
 }
 \]
-For a primitive ray `\(\widehat{\mathbf s}_i=\varepsilon_i\mathbf e_i\)`, the dependent graph exponents are just the Stage 238 primitive values multiplied by the orientation sign `\(\varepsilon_i\)`.
+For a primitive ray `\(\widehat{\mathbf s}_i=\varepsilon_i\mathbf e_i\)`, the dependent graph exponents are just the Stage 204 primitive values multiplied by the orientation sign `\(\varepsilon_i\)`.
 
 | Primitive ray | `\(\sigma_\delta\)` | `\(\sigma_T\)` | `\(\sigma_{K_\eta}\)` | `\(\sigma_\mu\)` |
 |---|---:|---:|---:|---:|
@@ -220,7 +220,7 @@ For a primitive ray `\(\widehat{\mathbf s}_i=\varepsilon_i\mathbf e_i\)`, the de
 | `\(\widehat{\mathbf s}_U=\varepsilon_U\mathbf e_U\)` | `\(+\varepsilon_U\mathfrak a_*\)` | `\(\varepsilon_U(1+\mathfrak a_*)\)` | `\(-\varepsilon_U\)` | `\(\varepsilon_U(-1+E_*+F_*\mathfrak a_*)\)` |
 | `\(\widehat{\mathbf s}_W=\varepsilon_W\mathbf e_W\)` | `\(0\)` | `\(0\)` | `\(0\)` | `\(\varepsilon_W(2+E_*)\)` |
 
-So Stage 241 does not replace the Stage 238 primitive family compiler.
+So Stage 207 does not replace the Stage 204 primitive family compiler.
 It adds the exact certified search data to it.
 
 ---
@@ -235,7 +235,7 @@ For each primitive index `\(i\in\{\lambda,c,\gamma,U,W\}\)`, define the primitiv
 (H_0,\Gamma_i,\underline\kappa_i,\overline\kappa_i,T_i).
 }
 \]
-The Stage 240 root map is
+The Stage 206 root map is
 \[
 \mathcal T(H_0,k;c)= -\frac{2H_0}{-k-\sqrt{k^2-2cH_0}} = \frac{2H_0}{k+\sqrt{k^2-2cH_0}},
 \qquad k>0.
@@ -267,7 +267,7 @@ with width
 \[
 \boxed{W_i:=\tau_{i,\rm hi}-\tau_{i,\rm lo}.}
 \]
-If also `\(\tau_{i,\rm hi}\le T_i\)`, then the primitive ray is locally admissible and Stage 240 guarantees one unique true primitive closure point
+If also `\(\tau_{i,\rm hi}\le T_i\)`, then the primitive ray is locally admissible and Stage 206 guarantees one unique true primitive closure point
 \[
 \boxed{\tau_*^{(i)}\in[\tau_{i,\rm lo},\tau_{i,\rm hi}].}
 \]
@@ -290,7 +290,7 @@ with turning width
 \[
 \boxed{W_i^{\rm(tp)}:=\tau_{i,\rm hi}^{\rm(tp)}-\tau_{i,\rm lo}^{\rm(tp)}.}
 \]
-If `\(\tau_{i,\rm hi}^{\rm(tp)}\le T_i\)`, then Stage 240 again gives one unique primitive closure point on that axis.
+If `\(\tau_{i,\rm hi}^{\rm(tp)}\le T_i\)`, then Stage 206 again gives one unique primitive closure point on that axis.
 
 ### 5.3 Compact certified primitive-ray table
 
@@ -334,10 +334,10 @@ For `\(\Gamma_i=0\)`, the primitive row is eliminated if
 
 Therefore:
 \[
-\boxed{\textbf{A primitive ray survives the certified local sieve iff it satisfies the corresponding Stage 240 admissibility test on its own primitive row.}}
+\boxed{\textbf{A primitive ray survives the certified local sieve iff it satisfies the corresponding Stage 206 admissibility test on its own primitive row.}}
 \]
 
-So after Stage 241 the primitive local search is no longer heuristic at all.
+So after Stage 207 the primitive local search is no longer heuristic at all.
 It is a finite exact elimination problem on five rows.
 
 ---
@@ -345,7 +345,7 @@ It is a finite exact elimination problem on five rows.
 ## 7. Exact primitive winner theorem and the local priority pair
 
 Suppose primitive rows `\(i\)` and `\(j\)` are both admissible.
-Then Stage 240 gives the exact pairwise ordering theorem:
+Then Stage 206 gives the exact pairwise ordering theorem:
 \[
 \boxed{
 \tau_{i,\rm hi}<\tau_{j,\rm lo}
@@ -361,7 +361,7 @@ So if there exists one primitive row `\(i\)` with
 \]
 then `\(i\)` is the unique earliest primitive closure direction.
 
-When certified brackets overlap, the exact theorem-level winner is no longer fixed, but the Stage 240 local priority pair remains
+When certified brackets overlap, the exact theorem-level winner is no longer fixed, but the Stage 206 local priority pair remains
 \[
 \boxed{
 \mathcal Q_i:=(\tau_{i,\rm hi},W_i)
@@ -374,7 +374,7 @@ So the primitive local ranking rule is:
 2. certify strict winner status whenever one upper bracket lies below all other lower brackets,
 3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
 
-This is the exact Stage 241 primitive winner theorem.
+This is the exact Stage 207 primitive winner theorem.
 
 ---
 
@@ -407,7 +407,7 @@ So the off-diagonal Hessian entries `\(\partial_{\ell_i\ell_j}h\)` first appear 
 This gives the exact sufficiency theorem:
 \[
 \boxed{
-\textbf{Stage 241 exhausts all certified primitive-ray information using only the diagonal Hessian envelopes.}
+\textbf{Stage 207 exhausts all certified primitive-ray information using only the diagonal Hessian envelopes.}
 }
 \]
 No cross-Hessian datum can change any primitive certified bracket or primitive winner ordering.
@@ -415,11 +415,11 @@ It can only matter when the search is enlarged beyond the primitive family.
 
 ---
 
-## 9. Best current reading after Stage 241
+## 9. Best current reading after Stage 207
 
-Stage 238 gave the exact primitive free-direction family.
-Stage 240 turned the scalarized branch search into a certified local bracket / ranking theorem.
-Stage 241 now compresses the primitive local search to the smallest exact data packet the completed PDE still has to provide:
+Stage 204 gave the exact primitive free-direction family.
+Stage 206 turned the scalarized branch search into a certified local bracket / ranking theorem.
+Stage 207 now compresses the primitive local search to the smallest exact data packet the completed PDE still has to provide:
 
 1. the base defect magnitude `\(H_0=|\ln\widehat\chi_Q(\boldsymbol\ell_\circ)|\)`,
 2. the five oriented primitive gradient components `\(\Gamma_i\)`,
@@ -433,4 +433,4 @@ It is to move one step beyond them:
 
 > evaluate the first genuine two-coordinate mixed rays, where the off-diagonal Hessian entries of `\(\ln\widehat\chi_Q\)` can finally enter and possibly beat the primitive certified brackets.
 
-That is the natural Stage 242 gate.
+That is the natural Stage 208 gate.

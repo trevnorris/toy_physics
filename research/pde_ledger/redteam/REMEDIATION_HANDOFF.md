@@ -111,9 +111,21 @@
 >    **WHO APPLIES (user-clarified 2026-06-03):** doc-only label/banner/title/citation edits are
 >    ORCHESTRATOR-applied directly (here via a fresh-context agent to save context), NOT Codex — Codex is
 >    for script CODE/MATH. Scan = `redteam/NUMBERING_RECON_SCAN.md`; applier = `redteam/recon_phase1.py`.
->    **⏳ PHASE 2 (open, gated, NEXT): the ~121 Class-D content-dependent body cross-refs** (`Stage NNN`/
->    `\ref{stage:NNN}` in running prose) — NOT stem-keyable; map per-reference by described-deliverable→
->    owning-stage, careful separate pass. See memory `[[numbering-drift-root-cause]]`.
+>    **✅ PHASE 2 (Class D) MAPPED + APPLIED + VERIFIED + COMMITTED 2026-06-03 (this commit, see git log):**
+>    the ~121 Class-D content-dependent body cross-refs (`Stage NNN` in prose) were mapped per-reference by
+>    described-deliverable→owning-stage (NOT stem-keyed, NEVER offset-swept — offsets run 0/+17/+34/+51/+68/+69/
+>    +85/+102/+103 and the SAME stale number splits by content) and applied. **899 label-token line-edits / 58 files**
+>    (57 citing notes + the stage227 `.wl`) = 124 content-confirmed rows (121 body + 3 `.wl`, incl. 3 self-refs) +
+>    ~775 adjacent residuals (same-target repeats, `## k.` section self-titles, "what remains for Stage N" next-stage
+>    transitions) the apply-agents enumerated. **Mechanically verified label-only: 0 violations / 899 line-pairs**
+>    (no math/value/prose/section-number byte changed; every unusual-offset class content-checked). Full record +
+>    deferred tail = **`redteam/NUMBERING_RECON_CLASSD_MAP.md`** (§APPLICATION / §DEFERRED TAIL / §OUT-OF-SCOPE).
+>    **⏳ NEXT (gated, FRESH SESSION) = the DEFERRED TAIL** the agents correctly LEFT (never-sweep): 2 range refs
+>    (`stage164:28 "Stages 169–170"`; `stage187:364 "Stages 234–236"→184–186?`), 5 compound-secondary numbers in the
+>    176–182 chain (`228/229/232`→likely 177/178/181 at +51), 2 low-band (`stage171:69 "Stage 6"→023?`,
+>    `stage173:21 "Stage-7"→024?`) — each has a documented LEAD in the map doc; verify-then-apply. PLUS a separately
+>    scoped **broader pass over ALL ~243 notes** (out-of-scope stale refs in NON-citing files, e.g.
+>    `stage121 "before Stage 223"→121`, `stage193 \mathcal S_{244}`). See memory `[[numbering-drift-root-cause]]`.
 > 2. **The planned full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — a comprehensive re-run as a
 >    cross-check, now that the first pass has reached 253. The user planned this as the ultimate cross-check
 >    AFTER the first pass completes (intermediate retrofit cross-checks were skipped in favor of this single run).

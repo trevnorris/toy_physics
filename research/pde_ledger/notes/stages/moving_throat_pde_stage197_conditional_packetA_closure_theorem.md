@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 242 Packet-A branch-residual hierarchy, the Stage 244 isotropic grouped-real `P2` conservative one-pole surface, the Stage 245 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage 246 exact source-map reduction, and the Stage 247 higher-odd irrelevance theorem.**
+**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra, the Stage 195 exact source-map reduction, and the Stage 196 higher-odd irrelevance theorem.**
 
 This stage does **not** introduce a new constitutive law.
 It is the exact finish-line theorem in the modern Packet-A language.
@@ -11,29 +11,29 @@ It is the exact finish-line theorem in the modern Packet-A language.
 
 ## Purpose
 
-Stage 242 compressed the branch-side verdict to the exact Packet-A residual
+Stage 191 compressed the branch-side verdict to the exact Packet-A residual
 \[
 \Delta_{\rm branch}
 =
 (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
 \]
-and Stage 244 then fixed the conservative front-end theorem target:
+and Stage 193 then fixed the conservative front-end theorem target:
 \[
 a_2=b_2=a_4=b_4=0,
 \qquad
 \Delta_{\rm pole}=0.
 \]
-Stage 245 identified the only remaining isotropic outgoing scalar
+Stage 194 identified the only remaining isotropic outgoing scalar
 \[
 \chi_Q,
 \]
-Stage 246 reduced the observable normalization finish line to the exact factorization
+Stage 195 reduced the observable normalization finish line to the exact factorization
 \[
 m_{\hat 0}^{\,2}\chi_Q N_Q=1,
 \]
-and Stage 247 proved that every extra isotropic odd retarded tail beginning at `O(\omega^7)` leaves the reduced `2.5`PN theorem unchanged.
+and Stage 196 proved that every extra isotropic odd retarded tail beginning at `O(\omega^7)` leaves the reduced `2.5`PN theorem unchanged.
 
-So after Stage 247 the natural next question is already forced:
+So after Stage 196 the natural next question is already forced:
 
 > in the modern Packet-A language, what is the exact final finish-line criterion on the natural point-particle source-map branch?
 
@@ -63,7 +63,7 @@ The main outputs are:
    \]
 5. and the sharp statement that the full reduced **Packet-A retarded finish line** is one scalar only.
 
-So Stage 248 is the Packet-A home-stretch theorem promised at the end of Stage 247.
+So Stage 197 is the Packet-A home-stretch theorem promised at the end of Stage 196.
 
 ---
 
@@ -73,7 +73,7 @@ Work throughout on the carried isotropic grouped-real `P2` retarded branch with 
 
 ### 1.1 Conservative isotropy and one-pole surface
 
-From Stage 244,
+From Stage 193,
 \[
 \boxed{a_2=b_2=a_4=b_4=0,}
 \qquad
@@ -101,7 +101,7 @@ So after the isotropic front end is imposed, the only Packet-A entry that can st
 
 ### 1.3 Exact source/outgoing factorization
 
-From Stage 246, the observable odd normalization condition factorizes exactly as
+From Stage 195, the observable odd normalization condition factorizes exactly as
 \[
 \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1.}
 \]
@@ -115,13 +115,13 @@ So the isotropic conservative normalization ratio is already a pure function of 
 
 ### 1.4 Higher-odd irrelevance
 
-From Stage 247, every extra isotropic retarded contribution whose first nonzero term is `O(\omega^7)` or `O(z^7)` leaves `\chi_Q` unchanged. So the finish-line theorem below is already stable against all higher odd isotropic retarded tails beyond theorem order.
+From Stage 196, every extra isotropic retarded contribution whose first nonzero term is `O(\omega^7)` or `O(z^7)` leaves `\chi_Q` unchanged. So the finish-line theorem below is already stable against all higher odd isotropic retarded tails beyond theorem order.
 
 ---
 
 ## 2. Exact collapse of the Packet-A residual
 
-Start from the Stage 242 Packet-A residual vector
+Start from the Stage 191 Packet-A residual vector
 \[
 \boxed{
 \Delta_{\rm branch}
@@ -143,7 +143,7 @@ So the exact Packet-A residual collapses to
 (0,0,0,0,0,0,0,\Delta_{\rm norm}).
 }
 \]
-Next use the exact Stage 246 source-map reduction of the normalization slot:
+Next use the exact Stage 195 source-map reduction of the normalization slot:
 \[
 \Delta_{\rm norm}
 =
@@ -195,10 +195,10 @@ on the physical branch, the last scalar slot vanishes iff its bracket vanishes. 
 \]
 So we have the exact finish-line theorem:
 \[
-\boxed{\textbf{Theorem (Stage 248 conditional Packet-A closure theorem).}}
+\boxed{\textbf{Theorem (Stage 197 conditional Packet-A closure theorem).}}
 \]
 
-**Within the carried isotropic grouped-real `P2` conservative one-pole surface, the Stage 246 source-map reduction, and the Stage 247 higher-odd irrelevance theorem, the Packet-A branch residual closes exactly iff the outgoing-normalization scalar is canonical:**
+**Within the carried isotropic grouped-real `P2` conservative one-pole surface, the Stage 195 source-map reduction, and the Stage 196 higher-odd irrelevance theorem, the Packet-A branch residual closes exactly iff the outgoing-normalization scalar is canonical:**
 \[
 \boxed{
 \Delta_{\rm branch}=0
@@ -224,7 +224,7 @@ This is the precise modern Packet-A version of the older statement that the last
 
 ## 4. Exact deformation-algebra form of the finish-line condition
 
-Stage 245 already gave the exact isotropic DtN deformation algebra preserving the canonical even moments:
+Stage 194 already gave the exact isotropic DtN deformation algebra preserving the canonical even moments:
 \[
 \chi_Q
 =
@@ -236,7 +236,7 @@ Therefore
 =
 \frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
 \]
-So the Stage 248 closure condition is exactly
+So the Stage 197 closure condition is exactly
 \[
 \boxed{
 \chi_Q=1
@@ -254,7 +254,7 @@ On the natural point-particle source-map branch the Packet-A normalization slot 
      {3(S\beta^5+9\Sigma_5)}.
 }
 \]
-So the exact vanishing of the final Packet-A defect is the exact vanishing of the Stage 245 isotropic DtN deformation numerator.
+So the exact vanishing of the final Packet-A defect is the exact vanishing of the Stage 194 isotropic DtN deformation numerator.
 
 ---
 
@@ -301,30 +301,30 @@ No other isotropic retarded datum survives into the reduced theorem order.
 
 ---
 
-## 6. What remains separate from Stage 248
+## 6. What remains separate from Stage 197
 
-Stage 248 is deliberately only the **Packet-A retarded finish-line theorem**.
-It does **not** erase the orbit/quotient side of Stage 242.
+Stage 197 is deliberately only the **Packet-A retarded finish-line theorem**.
+It does **not** erase the orbit/quotient side of Stage 191.
 
 So the full reduced home-stretch statement remains:
 
-- Stage 248 says the Packet-A retarded finish line is exactly
+- Stage 197 says the Packet-A retarded finish line is exactly
   \[
   \chi_Q=1.
   \]
-- Stage 242 still requires the separate orbit packet
+- Stage 191 still requires the separate orbit packet
   \[
   \Delta_{\rm orbit}=0
   \]
   for full reduced closure.
 
-This separation is a feature, not a bug. Stage 248 isolates the last branch-side retarded scalar without mixing it with the microscopic similarity-orbit realization problem.
+This separation is a feature, not a bug. Stage 197 isolates the last branch-side retarded scalar without mixing it with the microscopic similarity-orbit realization problem.
 
 ---
 
 ## 7. Exact higher-odd stability of the finish-line theorem
 
-Because Stage 247 already proved that every extra isotropic odd retarded datum beginning at `O(\omega^7)` leaves `\chi_Q` unchanged, the Stage 248 theorem is automatically stable under the replacement
+Because Stage 196 already proved that every extra isotropic odd retarded datum beginning at `O(\omega^7)` leaves `\chi_Q` unchanged, the Stage 197 theorem is automatically stable under the replacement
 \[
 \widehat Y_Q^{\rm ret,5}(\omega)
 \longrightarrow
@@ -342,10 +342,10 @@ There is no remaining higher-odd loophole inside the present hierarchy.
 
 ---
 
-## 8. What Stage 248 changes in the theorem problem
+## 8. What Stage 197 changes in the theorem problem
 
-Stage 247 had already reduced the retarded uncertainty to one scalar `\chi_Q`, but the result was still phrased as a carried finish-line recommendation.
-Stage 248 upgrades that to an exact theorem.
+Stage 196 had already reduced the retarded uncertainty to one scalar `\chi_Q`, but the result was still phrased as a carried finish-line recommendation.
+Stage 197 upgrades that to an exact theorem.
 
 ### 8.1 The Packet-A finish line is now one scalar equation
 
@@ -354,7 +354,7 @@ After the isotropic one-pole front end is imposed, the entire Packet-A retarded 
 \chi_Q=1.
 \]
 
-### 8.2 The Stage 245 deformation algebra is now the final isotropic realization gate
+### 8.2 The Stage 194 deformation algebra is now the final isotropic realization gate
 
 The actual moving-throat PDE does not have to supply a large retarded coefficient family at theorem order.
 It only has to land the isotropic DtN deformation data on
@@ -390,4 +390,4 @@ It is the actual realization question:
    \chi_Q=1.
    \]
 
-That is the sharpest next theorem gate after Stage 248.
+That is the sharpest next theorem gate after Stage 197.

@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Stage 253 reduced the coherent weak-axisymmetric problem to the logarithmic drift of three direct microscopic monomials,
+Stage 185 reduced the coherent weak-axisymmetric problem to the logarithmic drift of three direct microscopic monomials,
 \[
 \mathfrak C_{{\rm tr},*},
 \qquad
@@ -31,7 +31,7 @@ The main result is that, within the coherent reduced hierarchy, the full weak-ax
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
 \]
 
-Equivalently, the Stage 253 compatibility equations are not an isolated fine-tuning ledger. They are the tangent-space equations of an exact codimension-3 similarity family that preserves the three direct monomials
+Equivalently, the Stage 185 compatibility equations are not an isolated fine-tuning ledger. They are the tangent-space equations of an exact codimension-3 similarity family that preserves the three direct monomials
 \[
 \mathfrak C_{{\rm tr},*},
 \qquad
@@ -55,9 +55,9 @@ This is the cleanest “bring-it-home” closure reached so far.
 
 ---
 
-## 1. Direct microscopic monomials from Stage 253
+## 1. Direct microscopic monomials from Stage 185
 
-Stage 253 already reduced the three branch-adapted coordinates to the logarithmic drifts
+Stage 185 already reduced the three branch-adapted coordinates to the logarithmic drifts
 \[
 \delta\ln \mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
 \qquad
@@ -302,7 +302,7 @@ So \(\mathcal G_*\) is an exact monomial-preserving similarity orbit, not merely
 
 ---
 
-## 5. Tangent-space equivalence to the Stage 253 compatibility ledger
+## 5. Tangent-space equivalence to the Stage 185 compatibility ledger
 
 Linearizing the finite orbit at the identity,
 \[
@@ -335,26 +335,26 @@ F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U).
 }
 \]
 
-These are exactly the Stage 253 microscopic compatibility formulas. Therefore
+These are exactly the Stage 185 microscopic compatibility formulas. Therefore
 \[
 \boxed{
 \ker M_* = T_{\mathrm{id}}\mathcal G_*.
 }
 \]
 
-So the Stage 253 linear zero-defect ledger is not an isolated set of three equations. It is the tangent-space equation of the exact five-parameter similarity orbit \(\mathcal G_*\).
+So the Stage 185 linear zero-defect ledger is not an isolated set of three equations. It is the tangent-space equation of the exact five-parameter similarity orbit \(\mathcal G_*\).
 
 ---
 
 ## 6. Final weak-axisymmetric closure theorem
 
-Stage 251 already proved
+Stage 183 already proved
 \[
 \Theta_1=\Xi_1=\mathcal R_1=0
 \iff
 \Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0,
 \]
-and Stage 253 proved
+and Stage 185 proved
 \[
 \Sigma_{\rm tr}
 =
@@ -414,7 +414,7 @@ So the reduced defect geometry is completely transparent.
 
 ---
 
-## 8. Best current theorem statement after Stage 237
+## 8. Best current theorem statement after Stage 186
 
 On the coherent local D/N tracking branch, the entire first grouped weak-axisymmetric normalization problem is equivalent to the action of an exact five-parameter multiplicative similarity orbit \(\mathcal G_*\) on the microscopic kernel couplings
 \[
@@ -428,7 +428,7 @@ This orbit preserves the three direct branch monomials
 \qquad
 \epsilon_\eta
 \]
-exactly, and its tangent space is precisely the Stage 253 compatibility ledger. Therefore the full coherent weak-axisymmetric zero-defect theorem can be written in the compact geometric form
+exactly, and its tangent space is precisely the Stage 185 compatibility ledger. Therefore the full coherent weak-axisymmetric zero-defect theorem can be written in the compact geometric form
 \[
 \boxed{
 \Theta_1=\Xi_1=\mathcal R_1=0

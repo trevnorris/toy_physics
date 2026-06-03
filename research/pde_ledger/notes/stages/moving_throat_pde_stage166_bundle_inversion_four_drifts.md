@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 250 reduced the explicit lower compensated Family-1 branch to four irreducible microscopic drifts,
+Stage 165 reduced the explicit lower compensated Family-1 branch to four irreducible microscopic drifts,
 \[
 \delta\ln \mathcal Z_q,
 \qquad
@@ -176,7 +176,7 @@ So the true grouped wall/BdG/Maxwell normalization data appear only through the 
 
 ## 4. Frozen-wall corollary on the explicit Family-1 branch
 
-Stage 60 already extracted the natural explicit wall datum
+Stage 77 already extracted the natural explicit wall datum
 \[
 \Theta_w^{(\chi)} \approx 4.06863235008162\,\lambda_\mu^2.
 \]
@@ -213,7 +213,7 @@ So even this explicit wall branch already removes one of the four would-be free 
 
 ---
 
-## 5. What Stage 251 changes
+## 5. What Stage 166 changes
 
 Before this step, the remaining unresolved statement was:
 
@@ -232,4 +232,4 @@ So the remaining PDE-facing bottleneck is no longer the direct computation of fo
 3. the mixed-channel stiffness drift \(\delta\ln K_q\),
 4. and the isotropic outgoing normalization drift \(\delta\ln P_0\).
 
-Once those are known, the Stage 250 lower-branch transport is fully closed at first order.
+Once those are known, the Stage 165 lower-branch transport is fully closed at first order.

@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 251 reduced the unresolved first-order branch transport to the four bundle observables
+Stage 166 reduced the unresolved first-order branch transport to the four bundle observables
 \[
 (\Theta_w,\;K_s,\;K_q,\;P_0),
 \qquad
@@ -33,14 +33,14 @@ The result is sharper than I expected:
    \]
    are all **first-order invariants** under arbitrary bundle drifts.
 
-So the Stage 251 bundle motion is not merely “close” to the compensated Family-1 branch.
+So the Stage 166 bundle motion is not merely “close” to the compensated Family-1 branch.
 It is tangent to it exactly at first order.
 
 ---
 
 ## 1. Carry-forward identities
 
-From Stage 251,
+From Stage 166,
 \[
 \delta\ln \rho_w
 =
@@ -111,7 +111,7 @@ So
 
 ## 2. Exact bundle transport of \(\mathcal T_m\) and \(v_{w0}\)
 
-Stage 250 already fixed the lower-branch transport laws
+Stage 165 already fixed the lower-branch transport laws
 \[
 \delta\ln v_{w0}
 =
@@ -129,7 +129,7 @@ Stage 250 already fixed the lower-branch transport laws
 -\frac32\,\delta\ln a.
 \]
 
-Substituting the Stage 251 inversion formulas gives
+Substituting the Stage 166 inversion formulas gives
 \[
 \boxed{
 \delta\ln v_{w0}
@@ -329,7 +329,7 @@ So both parent compensation coordinates \((\mathfrak r,\mathfrak g)\) are exact 
 
 ## 5. Exact vanishing of the off-family channels
 
-The two Stage 248 logarithmic channels are
+The two Stage 163 logarithmic channels are
 \[
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
 =
@@ -349,7 +349,7 @@ Therefore
 }
 \]
 
-And since Stage 248 defined the off-family normal coordinate by
+And since Stage 163 defined the off-family normal coordinate by
 \[
 \delta_\perp
 =
@@ -378,11 +378,11 @@ No first-order normal/off-family departure is generated inside this reduced bund
 
 This stage changes the status of the remaining first-order moving-throat problem.
 
-Before Stage 251, the unresolved statement looked like:
+Before Stage 166, the unresolved statement looked like:
 
 > compute the last four microscopic drifts.
 
-After Stage 251, it became:
+After Stage 166, it became:
 
 > compute the four bundle observables \((\Theta_w,K_s,K_q,P_0)\).
 
@@ -407,7 +407,7 @@ So the live PDE-facing bottleneck is now narrower again:
 
 ## 7. What is now fully explicit
 
-Collecting Stages 217–218, the actual first-order branch transport of the moving-throat variables is now completely explicit in terms of the four bundle observables:
+Collecting Stages 166–167, the actual first-order branch transport of the moving-throat variables is now completely explicit in terms of the four bundle observables:
 \[
 (\Theta_w,\;K_s,\;K_q,\;P_0)
 \longrightarrow

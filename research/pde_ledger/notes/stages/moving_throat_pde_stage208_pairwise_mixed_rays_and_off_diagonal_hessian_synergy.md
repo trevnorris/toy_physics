@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 240 scalarized search framework and the Stage 241 primitive certified sieve, once local pairwise diagonal/off-diagonal Hessian envelopes are supplied on the chosen mixed-ray intervals.**
+**Exact within the carried Stage 206 scalarized search framework and the Stage 207 primitive certified sieve, once local pairwise diagonal/off-diagonal Hessian envelopes are supplied on the chosen mixed-ray intervals.**
 
 This stage does **not** introduce a new constitutive law.
 It is the first exact continuation beyond the primitive-ray table: the first place where the off-diagonal Hessian entries of
@@ -15,7 +15,7 @@ can actually enter the certified local search.
 
 ## Purpose
 
-Stage 241 proved that every primitive ray uses only one diagonal Hessian restriction
+Stage 207 proved that every primitive ray uses only one diagonal Hessian restriction
 \[
 \partial_{\ell_i\ell_i}\ln\widehat\chi_Q,
 \]
@@ -37,7 +37,7 @@ The main outputs are:
    - the **equal-mix synergy** ray,
 6. and the exact rule that the full one-parameter pairwise optimizer is now the only missing step beyond this first mixed-ray screen.
 
-So Stage 242 is the first theorem-level audit of genuine two-coordinate mixed rays.
+So Stage 208 is the first theorem-level audit of genuine two-coordinate mixed rays.
 It does **not** yet solve the full pairwise optimization problem, but it reduces that problem to a one-parameter family with two exact canonical screening rays.
 
 ---
@@ -52,7 +52,7 @@ and the scalar closure function
 \[
 h(\boldsymbol\ell)=\ln\widehat\chi_Q(\boldsymbol\ell).
 \]
-At the base point `\(\boldsymbol\ell_\circ\)`, Stage 241 already defined
+At the base point `\(\boldsymbol\ell_\circ\)`, Stage 207 already defined
 \[
 H_0=|h(\boldsymbol\ell_\circ)|>0,
 \qquad
@@ -112,7 +112,7 @@ K_{ij}(r)
 -\frac{k_i+r k_j}{\sqrt{1+r^2}}.
 }
 \]
-So the positive slope magnitude carried into the Stage 240 root map is
+So the positive slope magnitude carried into the Stage 206 root map is
 \[
 \boxed{
 k_{ij}(r):=\frac{k_i+r k_j}{\sqrt{1+r^2}}>0.
@@ -223,7 +223,7 @@ The **equal-mix ray**
 \]
 maximizes the absolute leverage of the off-diagonal Hessian entry inside the pairwise cone.
 
-So there are two exact but different canonical ratios already at Stage 242:
+So there are two exact but different canonical ratios already at Stage 208:
 
 - `\(r_{ij}^{\rm grad}=k_j/k_i\)` maximizes first-order descent,
 - `\(r_{ij}^{\rm eq}=1\)` maximizes cross-Hessian leverage.
@@ -274,7 +274,7 @@ Because the weights are nonnegative for `\(r\ge0\)`, the exact mixed curvature b
 \frac{\overline h_{ii}+2r\overline h_{ij}+r^2\overline h_{jj}}{1+r^2}.
 }
 \]
-So the pairwise mixed ray is again inside the exact Stage 240 certified framework, now with slope magnitude `\(k_{ij}(r)\)` and curvature envelope `\([\underline\kappa_{ij}(r),\overline\kappa_{ij}(r)]\)`.
+So the pairwise mixed ray is again inside the exact Stage 206 certified framework, now with slope magnitude `\(k_{ij}(r)\)` and curvature envelope `\([\underline\kappa_{ij}(r),\overline\kappa_{ij}(r)]\)`.
 
 Using the carried monotone-ray root map
 \[
@@ -312,7 +312,7 @@ then there exists one unique true mixed-ray closure point on that ray, lying in
 \tau_*^{(ij)}(r)\in[\tau_{ij,\rm lo}(r),\tau_{ij,\rm hi}(r)].
 }
 \]
-So Stage 242 reduces every fixed pairwise ratio to the same certified bracket theorem already used for primitive rows.
+So Stage 208 reduces every fixed pairwise ratio to the same certified bracket theorem already used for primitive rows.
 
 ---
 
@@ -384,7 +384,7 @@ The gradient-optimal and equal-mix rays coincide iff
 \boxed{k_i=k_j.}
 \]
 Otherwise they are distinct.
-So Stage 242 exposes the first genuine tradeoff in the mixed-ray search:
+So Stage 208 exposes the first genuine tradeoff in the mixed-ray search:
 
 - one ray optimizes **descent magnitude**,
 - the other optimizes **off-diagonal curvature leverage**.
@@ -410,7 +410,7 @@ For every monotone primitive pair `\((i,j)\)`, define the two canonical mixed-ra
 (H_0,k_{ij}^{\rm eq},\underline\kappa_{ij}^{\rm eq},\overline\kappa_{ij}^{\rm eq},T_{ij}^{\rm eq}).
 }
 \]
-Here the envelope data are obtained by evaluating the Stage 242 mixed curvature-envelope formulas at the corresponding canonical ratio.
+Here the envelope data are obtained by evaluating the Stage 208 mixed curvature-envelope formulas at the corresponding canonical ratio.
 
 This gives the first exact pairwise promotion rule.
 
@@ -432,7 +432,7 @@ This theorem is exact because the corresponding canonical mixed ray is itself a 
 
 If both canonical rows fail admissibility or fail to beat the primitive table, the pair is **not eliminated**. It is merely deferred to the full one-parameter pairwise optimizer.
 
-So Stage 242 is a true first mixed-ray audit, but it is not yet the final pairwise search theorem.
+So Stage 208 is a true first mixed-ray audit, but it is not yet the final pairwise search theorem.
 
 ---
 
@@ -460,14 +460,14 @@ Everything else is downstream algebra:
 4. certified brackets,
 5. and the pairwise winner comparison.
 
-So Stage 242 turns the mixed-ray problem into a one-parameter certified search family, no longer an unconstrained five-dimensional speculation.
+So Stage 208 turns the mixed-ray problem into a one-parameter certified search family, no longer an unconstrained five-dimensional speculation.
 
 ---
 
-## 8. Best current reading after Stage 242
+## 8. Best current reading after Stage 208
 
-Stage 241 closed the primitive certified ray table and proved that off-diagonal Hessian data are invisible there.
-Stage 242 now gives the first exact mixed-ray continuation:
+Stage 207 closed the primitive certified ray table and proved that off-diagonal Hessian data are invisible there.
+Stage 208 now gives the first exact mixed-ray continuation:
 
 1. a monotone–monotone primitive pair generates a one-parameter mixed-ray cone,
 2. the first-order descent rate is optimized at
@@ -478,7 +478,7 @@ Stage 242 now gives the first exact mixed-ray continuation:
    \[
    r_{ij}^{\rm eq}=1,
    \]
-4. every fixed ratio still lies inside the exact Stage 240 certified bracket framework,
+4. every fixed ratio still lies inside the exact Stage 206 certified bracket framework,
 5. and the first honest mixed-ray audit is therefore the two-row canonical screen
    \[
    \mathcal R_{ij}^{\rm grad},\qquad \mathcal R_{ij}^{\rm eq}.
@@ -488,4 +488,4 @@ So the next honest continuation is now very sharply defined:
 
 > carry out the full one-parameter optimization over `\(r\)` on each surviving pairwise cone, and decide whether any mixed ray can beat both the primitive and canonical-screen rows.
 
-That is the natural Stage 243 theorem gate.
+That is the natural Stage 209 theorem gate.

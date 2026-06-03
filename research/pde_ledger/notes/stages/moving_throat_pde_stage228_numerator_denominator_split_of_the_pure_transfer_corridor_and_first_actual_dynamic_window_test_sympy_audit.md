@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-240 compatibility branch and the Stage-244 pure-transfer corridor.**
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223 compatibility branch and the Stage-227 pure-transfer corridor.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the strict same-charge survivor from Stage 244,
+It takes the strict same-charge survivor from Stage 227,
 \[
 D_{01}=D_{21}=D_{41}=0,
 \qquad
@@ -21,7 +21,7 @@ and asks the next natural microscopic question:
 
 ## Purpose
 
-Stage 244 already reduced the live same-charge corridor to the exact pure-transfer subcorridor
+Stage 227 already reduced the live same-charge corridor to the exact pure-transfer subcorridor
 \[
 D_{01}=D_{21}=D_{41}=0,
 \qquad
@@ -52,7 +52,7 @@ The main outputs of this stage are:
 4. the first actual wall-like dynamic-window audit on those two 1D survivors;
 5. and the sharp verdict that **neither** rigid split is killed by the dynamic window on the concrete compatibility point — the first ceiling is still the transported static one.
 
-So after Stage 245 the live question is not whether the pure-transfer corridor can survive either rigidity split at all.
+So after Stage 228 the live question is not whether the pure-transfer corridor can survive either rigidity split at all.
 It is which split the real PDE-selected mixed branch actually resembles.
 
 ---
@@ -61,7 +61,7 @@ It is which split the real PDE-selected mixed branch actually resembles.
 
 ### 1.1 Concrete compatibility branch
 
-Keep the same explicit finite-throat one-port branch used in Stages 240–244:
+Keep the same explicit finite-throat one-port branch used in Stages 223–227:
 
 - lowest N/N zero mode for the wall and brane-like internal coordinate,
 - lowest D/N half-wave for the trapped support and mixed coordinate,
@@ -95,9 +95,9 @@ P=\Omega_U^2G_W+RG_U,
 N_0=\frac{P^2}{\Delta^2}.
 \]
 
-### 1.2 Stage-244 pure-transfer corridor
+### 1.2 Stage-227 pure-transfer corridor
 
-Stage 244 already reduced the strict same-charge survivor to
+Stage 227 already reduced the strict same-charge survivor to
 \[
 D_{01}=D_{21}=D_{41}=0,
 \qquad
@@ -214,7 +214,7 @@ So the split theorem is exact:
 }
 \]
 
-This is the Stage-245 analogue of the Stage-244 co-loading no-go.
+This is the Stage-228 analogue of the Stage-227 co-loading no-go.
 
 ---
 
@@ -283,7 +283,7 @@ The numerator-rigid survivor produces a larger same-charge scalar per unit mixed
 So at fixed ambient microscopic amplitude it is the **stronger static lever**. The denominator-rigid branch is the **gentler** one.
 
 At this point alone one might be tempted to prefer the numerator-rigid branch.
-Stage 245 shows why the dynamic test is needed before making that judgment.
+Stage 228 shows why the dynamic test is needed before making that judgment.
 
 ---
 
@@ -391,7 +391,7 @@ The nonempty dynamic ceiling is infinite at first order because one wall-like po
 \]
 So the denominator-rigid branch is the **only** one with a genuinely finite nonempty dynamic ceiling on the concrete branch.
 
-### 5.2 Static ceilings from the carried Stage-241 transport
+### 5.2 Static ceilings from the carried Stage-224 transport
 
 But the transported static ceilings are still much tighter:
 
@@ -427,15 +427,15 @@ So on the actual sample compatibility point,
 \]
 for both rigid splits.
 
-That is the decisive Stage-245 result.
+That is the decisive Stage-228 result.
 
 ---
 
-## 6. What Stage 245 changes
+## 6. What Stage 228 changes
 
 Before this stage, the best statement was only:
 
-> the Stage-244 pure-transfer corridor survives unless both the interference and hybridization pieces are rigid simultaneously.
+> the Stage-227 pure-transfer corridor survives unless both the interference and hybridization pieces are rigid simultaneously.
 
 After this stage, the picture is much sharper.
 
@@ -459,13 +459,13 @@ The sharper next question is:
 
 > which of those two structural load splits does the real PDE-selected mixed branch most closely realize?
 
-That is the right continuation point after Stage 245.
+That is the right continuation point after Stage 228.
 
 ---
 
 ## 7. Script-backed status
 
-The paired SymPy audit verifies all of the following directly on the Stage-240 compatibility branch:
+The paired SymPy audit verifies all of the following directly on the Stage-223 compatibility branch:
 
 1. the exact split
    \[
@@ -489,9 +489,9 @@ Supporting file:
 
 The next honest continuation is now very specific:
 
-1. keep the exact Stage-245 rigid split as the local proxy family,
+1. keep the exact Stage-228 rigid split as the local proxy family,
 2. place the actual PDE-selected mixed branch on the selected-branch numerator/denominator classifier,
 3. determine whether the real branch looks locally more numerator-like or denominator-like,
-4. and then compare that selected-branch signature against the concrete Stage-245 dynamic ceilings.
+4. and then compare that selected-branch signature against the concrete Stage-228 dynamic ceilings.
 
-That is the cleanest bridge into Stage 246.
+That is the cleanest bridge into Stage 229.

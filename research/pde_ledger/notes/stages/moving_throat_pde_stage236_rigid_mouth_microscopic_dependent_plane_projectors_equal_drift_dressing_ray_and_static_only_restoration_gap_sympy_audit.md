@@ -2,14 +2,14 @@
 
 ## Status
 
-**Exact within the carried Stage-252 rigid-mouth packet split and the later microscopic quotient section on the dependent triple.**
+**Exact within the carried Stage-235 rigid-mouth packet split and the later microscopic quotient section on the dependent triple.**
 
 This stage does **not** yet compute the actual magnitude of the rigid-mouth dressing coordinate on the completed PDE branch.
 It does something narrower and sharper:
 
 > it identifies the exact **microscopic carrier** of the static-blind residue `q_eta` once the first static same-charge strip has already been cleared.
 
-The main new result is stricter than the Stage-252 direct-space wording:
+The main new result is stricter than the Stage-235 direct-space wording:
 
 > on the rigid-mouth slice the surviving dressing residue is not a generic three-coordinate failure.
 > It lives on the exact diagonal ray
@@ -21,14 +21,14 @@ The main new result is stricter than the Stage-252 direct-space wording:
 > inside the dependent triple.
 > So after the static gate is cleared, the unresolved same-charge orbit defect is exactly an **equal-drift `K_\eta`–`\mu` dressing shift at fixed `T_U`**.
 
-In other words, Stage 252 identified the static-blind direct-space line.
-Stage 253 identifies its exact microscopic image.
+In other words, Stage 235 identified the static-blind direct-space line.
+Stage 236 identifies its exact microscopic image.
 
 ---
 
 ## Purpose
 
-Stage 252 showed that on the rigid-mouth direct-observable plane
+Stage 235 showed that on the rigid-mouth direct-observable plane
 \[
 (R_1,E_1):=
 (\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta),
@@ -62,7 +62,7 @@ This stage answers that exactly.
 
 ## 1. Carry-forward rigid-mouth packet and dependent section
 
-From Stage 252 the rigid-mouth packet map is
+From Stage 235 the rigid-mouth packet map is
 \[
 \boxed{
 \mathbf q_{\rm rm}:=
@@ -314,7 +314,7 @@ So the rigid-mouth dependent plane contains two exact, complementary, physically
 
 ## 4. The equal-drift dressing ray and the microscopic meaning of the static strip
 
-Stage 252 showed that the static strip is
+Stage 235 showed that the static strip is
 \[
 q_{\rm nt}=\Xi_1=0.
 \]
@@ -357,7 +357,7 @@ and then
 \end{pmatrix}.
 }
 \]
-So the Stage-252 static-blind line in the direct observable plane maps exactly to an **equal-drift `K_\eta`–`\mu` ray** in the dependent microscopic plane.
+So the Stage-235 static-blind line in the direct observable plane maps exactly to an **equal-drift `K_\eta`–`\mu` ray** in the dependent microscopic plane.
 
 Its microscopic norm is exact:
 \[
@@ -437,27 +437,27 @@ This is the exact rigid-mouth meaning of the static-only restoration gap.
 
 ---
 
-## 6. What changes physically after Stage 253
+## 6. What changes physically after Stage 236
 
-Stage 252 already said that the first static same-charge strip is not the whole rigid-mouth orbit-lock problem.
-Stage 253 now says something more microscopic and more useful:
+Stage 235 already said that the first static same-charge strip is not the whole rigid-mouth orbit-lock problem.
+Stage 236 now says something more microscopic and more useful:
 
 1. on the rigid-mouth slice, the quotient-failure image is the full plane `\Delta_T=0`,
 2. the first static gate tests only the `\mu-K_\eta` difference,
 3. the static-blind residue is exactly the diagonal equal-drift ray `\Delta_\mu=\Delta_{K_\eta}`,
 4. and the surviving same-charge obstruction after the static strip is cleared is therefore not generic throat motion but one scalar `K_\eta`–`\mu` dressing amplitude.
 
-So the next honest theorem gate is now even sharper than at Stage 252:
+So the next honest theorem gate is now even sharper than at Stage 235:
 
 > compute the actual dressing coordinate `q_\eta=\delta\ln\epsilon_\eta`, because after the first static gate is cleared that single scalar is exactly the amplitude of the remaining equal-drift microscopic obstruction.
 
 ---
 
-## 7. Best current verdict after Stage 253
+## 7. Best current verdict after Stage 236
 
 The same-charge corridor is still alive, but the rigid-mouth bottleneck has narrowed again.
 
-It is no longer enough to know that the branch lies inside the Stage-252 static strip.
+It is no longer enough to know that the branch lies inside the Stage-235 static strip.
 On the rigid-mouth slice that strip only kills the `q_{\rm nt}` packet component.
 The surviving dressing coordinate
 \[

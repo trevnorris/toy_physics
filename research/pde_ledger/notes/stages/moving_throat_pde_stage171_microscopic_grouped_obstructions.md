@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 238 proved that the entire **linear** grouped real `P2` outlet problem collapses to the pair
+Stage 170 proved that the entire **linear** grouped real `P2` outlet problem collapses to the pair
 \[
 \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},
 \qquad
@@ -60,13 +60,13 @@ So the linear grouped-even and grouped-odd outlet defects are not sourced by the
 3. a conservative Maxwell/mixed anisotropy \(\mathcal Z_A\),
 4. and an outgoing-transfer bundle \(\mathcal N_A\).
 
-That is a much sharper microscopic theorem gate than the raw grouped variables of Stage 238.
+That is a much sharper microscopic theorem gate than the raw grouped variables of Stage 170.
 
 ---
 
 ## 1. Carry-forward full-bundle coefficients
 
-From the full grouped real `P2` bundle of Stage 6, each lane has low-frequency data
+From the full grouped real `P2` bundle of Stage 023, each lane has low-frequency data
 \[
 D_A^{\rm(cons)}(\omega)=D_{A,0}+D_{A,2}\,\omega^2+D_{A,4}\,\omega^4+O(\omega^6),
 \]
@@ -97,7 +97,7 @@ D_{A,n}=D_n+\delta D_{A,n},
 \qquad
 N_{A,0}=N_0+\delta N_{A,0},
 \]
-Stage 238 already gave
+Stage 170 already gave
 \[
 \mathcal K_A=\delta D_{A,2}+\frac19\,\delta D_{A,0},
 \qquad
@@ -421,7 +421,7 @@ On the weak axisymmetric branch write, for every microscopic grouped quantity,
 \qquad
 (\lambda_{20},\lambda_{21},\lambda_{22})=\left(1,\frac12,-1\right).
 \]
-Then the two Stage 238 outlet obstructions collapse to two scalar microscopic amplitudes:
+Then the two Stage 170 outlet obstructions collapse to two scalar microscopic amplitudes:
 \[
 \boxed{
 \mathfrak K_1
@@ -471,9 +471,9 @@ It is just the pair
 
 ---
 
-## 7. What Stage 239 changes
+## 7. What Stage 171 changes
 
-Stage 238 already reduced the linear grouped-anisotropy outlet problem to
+Stage 170 already reduced the linear grouped-anisotropy outlet problem to
 \[
 (\mathcal K_A,\mathcal G_A).
 \]
@@ -482,7 +482,7 @@ But at that point those quantities were still phrased in terms of the grouped op
 (\delta D_{A,0},\delta D_{A,2},\delta D_{A,4},\delta N_{A,0}).
 \]
 
-Stage 239 now makes the microscopic meaning of those obstructions completely explicit.
+Stage 171 now makes the microscopic meaning of those obstructions completely explicit.
 
 The new theorem status is:
 

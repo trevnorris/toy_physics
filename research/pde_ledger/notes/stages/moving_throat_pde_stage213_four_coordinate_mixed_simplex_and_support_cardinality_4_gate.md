@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 246 up-to-three-coordinate certified sieve, once a local oriented `4 x 4` Hessian-envelope block and the corresponding validity map are supplied on the chosen four-coordinate patch.**
+**Exact within the carried Stage 212 up-to-three-coordinate certified sieve, once a local oriented `4 x 4` Hessian-envelope block and the corresponding validity map are supplied on the chosen four-coordinate patch.**
 
 This stage does **not** yet solve the full three-parameter interior optimizer on a primitive four-coordinate simplex.
 It is the first exact continuation *beyond* the fully ranked support-`<=3` ledger: the first place where a genuinely interior support-cardinality-`4` mixed ray can appear and be audited without reopening the solved pairwise and triple boundary problems.
@@ -11,7 +11,7 @@ It is the first exact continuation *beyond* the fully ranked support-`<=3` ledge
 
 ## Purpose
 
-Stage 246 closed the full support-`<=3` local search.
+Stage 212 closed the full support-`<=3` local search.
 Every primitive pair is already a finite certified candidate problem, every primitive triple carries a closed-simplex certified interval, and the full local sieve through three active primitive coordinates has been reduced to one finite certified ledger.
 
 That makes the next theorem gate completely sharp:
@@ -23,14 +23,14 @@ This stage answers that.
 The main outputs are:
 
 1. the exact combinatorial ledger for the five primitive four-coordinate simplices,
-2. the exact **positive spherical four-simplex** and its full face reduction back to the Stage 246 triple packets,
+2. the exact **positive spherical four-simplex** and its full face reduction back to the Stage 212 triple packets,
 3. the exact **four-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
 4. the exact **four-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes the total six-way off-diagonal leverage,
 5. the exact **fixed-simplex certified bracket** for any admissible interior point,
 6. the exact **canonical quadruple-screen audit** consisting of four imported triple faces plus two interior canonical rows,
 7. and the exact **support-cardinality-4 theorem gate** that certifies a genuine four-coordinate improvement over the entire up-to-three-coordinate ledger whenever one canonical interior screen already wins.
 
-So Stage 247 is the four-coordinate analogue of Stage 244, but now with the whole support-`<=3` boundary ledger already finished and imported from Stage 246.
+So Stage 213 is the four-coordinate analogue of Stage 210, but now with the whole support-`<=3` boundary ledger already finished and imported from Stage 212.
 
 ---
 
@@ -114,7 +114,7 @@ F_{ikl}:=\{a_j=0\},
 \qquad
 F_{jkl}:=\{a_i=0\}.
 \]
-Each face is exactly one of the Stage 246 primitive triple **closed** simplices.
+Each face is exactly one of the Stage 212 primitive triple **closed** simplices.
 
 ### 2.1 Face `\(F_{ijk}\)`
 With positive ratio coordinates
@@ -133,7 +133,7 @@ we have
 \frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j+s\widehat{\mathbf e}_k}{\sqrt{1+r^2+s^2}}.
 }
 \]
-So `\(F_{ijk}\)` is exactly the Stage 246 closed simplex attached to the primitive triple `\((i,j,k)\)`.
+So `\(F_{ijk}\)` is exactly the Stage 212 closed simplex attached to the primitive triple `\((i,j,k)\)`.
 
 ### 2.2 Face `\(F_{ijl}\)`
 With positive ratio coordinates
@@ -152,7 +152,7 @@ we have
 \frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j+t\widehat{\mathbf e}_l}{\sqrt{1+r^2+t^2}}.
 }
 \]
-So `\(F_{ijl}\)` is exactly the Stage 246 closed simplex for the primitive triple `\((i,j,l)\)`.
+So `\(F_{ijl}\)` is exactly the Stage 212 closed simplex for the primitive triple `\((i,j,l)\)`.
 
 ### 2.3 Face `\(F_{ikl}\)`
 With positive ratio coordinates
@@ -171,7 +171,7 @@ we have
 \frac{\widehat{\mathbf e}_i+s\widehat{\mathbf e}_k+t\widehat{\mathbf e}_l}{\sqrt{1+s^2+t^2}}.
 }
 \]
-So `\(F_{ikl}\)` is exactly the Stage 246 closed simplex for the primitive triple `\((i,k,l)\)`.
+So `\(F_{ikl}\)` is exactly the Stage 212 closed simplex for the primitive triple `\((i,k,l)\)`.
 
 ### 2.4 Face `\(F_{jkl}\)`
 With positive ratio coordinates
@@ -190,13 +190,13 @@ we have
 \frac{\widehat{\mathbf e}_j+\nu\widehat{\mathbf e}_k+w\widehat{\mathbf e}_l}{\sqrt{1+\nu^2+w^2}}.
 }
 \]
-So `\(F_{jkl}\)` is exactly the Stage 246 closed simplex for the primitive triple `\((j,k,l)\)`.
+So `\(F_{jkl}\)` is exactly the Stage 212 closed simplex for the primitive triple `\((j,k,l)\)`.
 
 This gives the first exact four-coordinate simplification:
 
-> nothing on the boundary of the four-coordinate simplex is new. The entire codimension-one boundary is already closed by the Stage 246 primitive-triple ledger.
+> nothing on the boundary of the four-coordinate simplex is new. The entire codimension-one boundary is already closed by the Stage 212 primitive-triple ledger.
 
-Define the imported Stage 246 full-face certified intervals
+Define the imported Stage 212 full-face certified intervals
 \[
 \mathcal I_{ijk}^{\triangle},
 \qquad
@@ -262,7 +262,7 @@ So the oriented forward slope is
 K_{ijkl}(\mathbf a)=-k_{ijkl}(\mathbf a)<0.
 \]
 
-By the same exact Lagrange-multiplier argument as in Stage 244, the unique gradient-optimal interior point is
+By the same exact Lagrange-multiplier argument as in Stage 210, the unique gradient-optimal interior point is
 \[
 \boxed{
 \mathbf a_{ijkl}^{\rm grad}
@@ -507,16 +507,16 @@ The certified interior bracket becomes
 {k_i+r k_j+s k_k+t k_l+\sqrt{\Delta^{\sharp}_{ijkl,\star}(r,s,t)}}.
 }
 \]
-Restricting to any face recovers the exact Stage 245 triple formulas.
+Restricting to any face recovers the exact Stage 211 triple formulas.
 
 ---
 
 ## 6. The canonical quadruple-screen audit
 
-Stage 247 does **not** yet solve the full three-parameter interior optimizer.
+Stage 213 does **not** yet solve the full three-parameter interior optimizer.
 The smallest exact screen set is instead:
 
-1. the four exact imported full-face intervals from Stage 246,
+1. the four exact imported full-face intervals from Stage 212,
    \[
    \mathcal I_{ijk}^{\triangle},
    \qquad
@@ -535,7 +535,7 @@ The smallest exact screen set is instead:
    \mathbf a_{ijkl}^{\rm eq}.
    \]
 
-So the exact Stage 247 quadruple-screen packet is
+So the exact Stage 213 quadruple-screen packet is
 \[
 \boxed{
 \mathcal S_{ijkl}^{\rm quad}
@@ -550,7 +550,7 @@ So the exact Stage 247 quadruple-screen packet is
 \Bigr).
 }
 \]
-This is the exact four-coordinate analogue of the Stage 244 canonical triple-screen packet, but now the whole codimension-one boundary is already fully optimized and imported rather than re-audited.
+This is the exact four-coordinate analogue of the Stage 210 canonical triple-screen packet, but now the whole codimension-one boundary is already fully optimized and imported rather than re-audited.
 
 ---
 
@@ -579,11 +579,11 @@ If either canonical interior screen satisfies
 \]
 then there exists a **genuine interior four-coordinate mixed ray** whose certified closure time lies strictly below every already-solved triple-face boundary winner.
 
-The proof is the same as in Stage 244:
+The proof is the same as in Stage 210:
 
 - the actual root at the chosen interior screen point is bounded above by its certified upper bracket,
 - the actual face winners are bounded below by the imported certified lower face brackets,
-- so the interior screen point already certifies a strict interior four-coordinate improvement over the full Stage 246 boundary ledger.
+- so the interior screen point already certifies a strict interior four-coordinate improvement over the full Stage 212 boundary ledger.
 
 ### Exact canonical non-improvement filter
 
@@ -598,15 +598,15 @@ Conversely, if
 \beta_Q^{\rm hi},
 }
 \]
-then neither canonical four-coordinate screen beats the best Stage 246 boundary winner on that simplex.
+then neither canonical four-coordinate screen beats the best Stage 212 boundary winner on that simplex.
 
 That is **not** a full no-go theorem for the four-simplex interior, because the genuine three-parameter interior optimizer has not yet been solved. But it is the first exact filter that can rule out the two canonical four-way interior mechanisms before the full interior search is attempted.
 
 ---
 
-## 8. Global support-cardinality-4 gate against the Stage 246 up-to-three-coordinate ledger
+## 8. Global support-cardinality-4 gate against the Stage 212 up-to-three-coordinate ledger
 
-Carry forward the exact Stage 246 certified interval for the whole local support-`<=3` search,
+Carry forward the exact Stage 212 certified interval for the whole local support-`<=3` search,
 \[
 \boxed{
 \tau_{\le 3,\min}^{\rm lo}
@@ -647,14 +647,14 @@ then no canonical four-way screen beats the current support-`<=3` winner.
 
 Again, this is a filter on the canonical four-way screens, not yet a full no-go theorem for the entire four-coordinate interior.
 
-So after Stage 247 the support-cardinality-`4` question is no longer opaque.
-The first honest gate is now a direct interval comparison against the already-finished Stage 246 sieve.
+So after Stage 213 the support-cardinality-`4` question is no longer opaque.
+The first honest gate is now a direct interval comparison against the already-finished Stage 212 sieve.
 
 ---
 
 ## 9. Minimal packet for the next stage
 
-After Stage 247, the full boundary of every primitive four-coordinate simplex is already solved, and the only unresolved part is the genuinely new three-parameter interior optimizer.
+After Stage 213, the full boundary of every primitive four-coordinate simplex is already solved, and the only unresolved part is the genuinely new three-parameter interior optimizer.
 
 The smallest exact packet for that next stage is
 \[
@@ -679,16 +679,16 @@ where
 
 The natural continuation is now completely sharp:
 
-> Stage 248 should solve the full interior four-simplex optimizer by reducing the three-parameter stationary system to a finite algebraic candidate set, just as Stage 245 did for the three-coordinate simplex interior.
+> Stage 214 should solve the full interior four-simplex optimizer by reducing the three-parameter stationary system to a finite algebraic candidate set, just as Stage 211 did for the three-coordinate simplex interior.
 
 ---
 
-## 10. Best current reading after Stage 247
+## 10. Best current reading after Stage 213
 
-Stage 246 already proved that the support-`<=3` search is finite and exact.
-Stage 247 now shows what is genuinely new at the first four-coordinate level:
+Stage 212 already proved that the support-`<=3` search is finite and exact.
+Stage 213 now shows what is genuinely new at the first four-coordinate level:
 
-1. every codimension-one face of the four-coordinate simplex is already one of the Stage 246 primitive triples,
+1. every codimension-one face of the four-coordinate simplex is already one of the Stage 212 primitive triples,
 2. a genuine interior four-coordinate ray always beats every triple face at the first-order gradient level,
 3. the equal-mix four-way barycenter uniquely maximizes the total six-way off-diagonal Hessian leverage,
 4. every fixed interior four-simplex point already carries an exact certified local bracket,

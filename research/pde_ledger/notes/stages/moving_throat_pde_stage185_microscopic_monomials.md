@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Stage 252 reduced the coherent weak-axisymmetric continuation point to the first grouped drifts of three exact branch composites,
+Stage 184 reduced the coherent weak-axisymmetric continuation point to the first grouped drifts of three exact branch composites,
 \[
 R_{\rm tr},
 \qquad
@@ -15,7 +15,7 @@ That was already a sharp compression, but the branch variables still mixed direc
 
 The next honest step is even smaller:
 
-> push the Stage 252 branch coordinates all the way down to direct **microscopic monomials** of the coherent-kernel couplings, and rewrite the zero-defect condition as an explicit linear compatibility ledger for the grouped weak-axisymmetric microscopic drifts.
+> push the Stage 184 branch coordinates all the way down to direct **microscopic monomials** of the coherent-kernel couplings, and rewrite the zero-defect condition as an explicit linear compatibility ledger for the grouped weak-axisymmetric microscopic drifts.
 
 That is what this stage does.
 
@@ -74,7 +74,7 @@ So the coherent weak-axisymmetric zero-defect theorem at this same linearized re
 }
 \]
 
-This is a genuine sharpening of Stage 252:
+This is a genuine sharpening of Stage 184:
 
 - the **tracking** coordinate becomes a monomial in \((\chi_0,\delta_U)\),
 - the **nontracking** coordinate becomes a monomial in \((Z_W/\Omega_W^2,\epsilon_W,\delta_U)\),
@@ -89,7 +89,7 @@ The continuation point is therefore no longer “compute drifts of three branch 
 
 ## 1. Reference-branch microscopic log coordinates
 
-Stage 250 already gave the microscopic drift variables
+Stage 182 already gave the microscopic drift variables
 \[
 \Sigma_\chi=\delta\ln\chi_0,
 \qquad
@@ -133,13 +133,13 @@ these are explicitly
 \Sigma_\eta=2c_1-\kappa_U-\kappa_\eta.
 \]
 
-So the Stage 251 branch-adapted coordinates already sit inside a five-dimensional logarithmic microscopic ledger.
+So the Stage 183 branch-adapted coordinates already sit inside a five-dimensional logarithmic microscopic ledger.
 
 ---
 
 ## 2. Direct microscopic tracking monomial
 
-Stage 251 defined the tracking coordinate by
+Stage 183 defined the tracking coordinate by
 \[
 \Sigma_{\rm tr}
 =
@@ -197,7 +197,7 @@ So the first zero-defect condition can be read directly as invariance of one mon
 
 ## 3. Direct microscopic nontracking monomial
 
-Stage 251 defined the genuine nontracking transfer-shape slippage by
+Stage 183 defined the genuine nontracking transfer-shape slippage by
 \[
 \Sigma_{\rm nt}
 =
@@ -277,7 +277,7 @@ Using the coherent-kernel definitions,
 }
 \]
 
-This is a sharper result than Stage 252 gave:
+This is a sharper result than Stage 184 gave:
 the nontracking coordinate has now lost all explicit dependence on the support variables
 \(\lambda_\phi, K_\phi^{(\mathrm{eff})}\),
 and it also carries no direct \(\Sigma_\chi\) term.
@@ -319,7 +319,7 @@ This is the simplest of the three branch-adapted coordinates.
 
 ## 5. Observable triangular law in microscopic monomials
 
-Stage 251 already proved the exact triangular observable structure
+Stage 183 already proved the exact triangular observable structure
 \[
 \Theta_1=-C_{{\rm tr},*}\Sigma_{\rm tr},
 \qquad
@@ -381,7 +381,7 @@ Because
 \iff
 \Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0,
 \]
-Stage 253 turns the first-order zero-defect theorem on the coherent reference branch into the explicit microscopic compatibility system
+Stage 185 turns the first-order zero-defect theorem on the coherent reference branch into the explicit microscopic compatibility system
 \[
 \boxed{
 (1+\chi_{0,*})(\tau_1-\kappa_U)
@@ -457,11 +457,11 @@ So the zero-defect branch is now a three-equation microscopic rigidity ledger ra
 
 ---
 
-## 7. What Stage 253 changes
+## 7. What Stage 185 changes
 
-Stage 252 reduced the continuation point to the drifts of three exact branch composites. That was already a major simplification.
+Stage 184 reduced the continuation point to the drifts of three exact branch composites. That was already a major simplification.
 
-Stage 253 sharpens the target one more time:
+Stage 185 sharpens the target one more time:
 
 1. the tracking coordinate becomes a single monomial in \((\chi_0,\delta_U)\);
 2. the nontracking coordinate becomes a single monomial in \((Z_W/\Omega_W^2,\epsilon_W,\delta_U)\);
@@ -493,7 +493,7 @@ That is the clean continuation point.
 
 ---
 
-## 8. Best current theorem statement after Stage 253
+## 8. Best current theorem statement after Stage 185
 
 On the coherent local D/N tracking branch, the first grouped weak-axisymmetric defect is no longer most naturally described by the observable composites \((R_{\rm tr},\mathcal T^2R_{\rm tr}^{B_*},\epsilon_\eta)\). At the same linearized reference-branch order it is exactly equivalent to the logarithmic drift of three direct microscopic monomials:
 \[
@@ -539,7 +539,7 @@ Equivalently, the grouped weak-axisymmetric branch at this same linearized refer
 (\lambda_W,c_{\eta U},\gamma,K_U,K_\eta^{(\mathrm{eff})},K_W^{(\mathrm{eff})},\mu_W,T_U).
 \]
 
-So the continuation point is now smaller than Stage 252 left it:
+So the continuation point is now smaller than Stage 184 left it:
 
 > determine whether the true grouped weak-axisymmetric branch is microscopically monomial-rigid, at this same first-order reference-branch level, in the three direct coordinates
 > \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).

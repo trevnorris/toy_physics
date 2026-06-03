@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage-253 rigid-mouth dependent-plane projector calculus and the Stage-238 physical-branch transfer-shape compiler.**
+**Exact within the carried Stage-236 rigid-mouth dependent-plane projector calculus and the Stage-238 physical-branch transfer-shape compiler.**
 
 This stage does **not** solve the full moving-throat PDE branch.
 It does the next sharp reduction after Stage 238:
@@ -37,7 +37,7 @@ q_\eta
 =
 \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
 \]
-and Stage 253 already gave their exact microscopic dependent-plane carriers.
+and Stage 236 already gave their exact microscopic dependent-plane carriers.
 
 The next obvious question is therefore:
 
@@ -58,7 +58,7 @@ Script-backed status:
 
 ## 0. Why this stage is needed
 
-Stage 253 already proved that on the rigid-mouth slice the quotient-failure image in the dependent microscopic plane is
+Stage 236 already proved that on the rigid-mouth slice the quotient-failure image in the dependent microscopic plane is
 \[
 \mathbf y_{\rm rm}
 =
@@ -228,7 +228,7 @@ This is the physical normal-form version of the earlier packet projector calculu
 
 ## 3. Exact physical-to-microscopic dependent-plane compiler
 
-Stage 253 gives the dependent-plane packet carriers
+Stage 236 gives the dependent-plane packet carriers
 \[
 \mathbf y_{\rm nt}=\begin{pmatrix}0\\0\\q_{\rm nt}\end{pmatrix},
 \qquad
@@ -334,7 +334,7 @@ C_{\rm phys}^{\rm dep}
 \]
 So a pure dressing defect is carried microscopically by the exact equal-drift `K_\eta^{(\mathrm{eff})}`–`\mu_W` ray.
 
-This is the physical version of the Stage-253 dependent-plane theorem.
+This is the physical version of the Stage-236 dependent-plane theorem.
 The difference is that the two microscopic pieces are now the direct images of the actual physical axes, not only of abstract quotient coordinates.
 
 ---

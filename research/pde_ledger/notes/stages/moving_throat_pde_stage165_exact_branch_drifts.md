@@ -2,7 +2,7 @@
 
 ## Goal
 
-Stage 249 reduced the first off-family defect to the explicit microscopic logarithmic channels
+Stage 164 reduced the first off-family defect to the explicit microscopic logarithmic channels
 \[
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right),
 \qquad
@@ -29,7 +29,7 @@ The result is that on the exact lower compensated Family-1 branch:
    (\delta\ln\mathcal Z_q,\ \delta\ln\rho_w,\ \delta\ln c_s,\ \delta\ln a).
    \]
 
-So this really does compute the “actual drifts” that Stage 249 asked for, up to the irreducible microscopic data that only the full PDE can still choose.
+So this really does compute the “actual drifts” that Stage 164 asked for, up to the irreducible microscopic data that only the full PDE can still choose.
 
 ---
 
@@ -48,7 +48,7 @@ are pinned at first order on the exact lower branch:
 \delta\mathfrak r=0.
 \]
 
-Equivalently, the two Stage 249 logarithmic imbalance channels vanish on the true lower branch:
+Equivalently, the two Stage 164 logarithmic imbalance channels vanish on the true lower branch:
 \[
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)=0,
 \qquad
@@ -383,9 +383,9 @@ Everything else is co-transported.
 
 ---
 
-## 8. Collapse of the Stage 249 off-family defect
+## 8. Collapse of the Stage 164 off-family defect
 
-Stage 249 expressed the microscopic off-family normal coordinate in terms of the two imbalance channels
+Stage 164 expressed the microscopic off-family normal coordinate in terms of the two imbalance channels
 \[
 \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right),
 \qquad
@@ -401,12 +401,12 @@ So after substituting the branch drift laws derived here,
 \]
 identically.
 
-That is the honest reason the Stage 249 normal coordinate disappears on the exact lower compensated branch:
+That is the honest reason the Stage 164 normal coordinate disappears on the exact lower compensated branch:
 the branch drift constraints themselves already compute the cancellation.
 
 ---
 
-## 9. Best current theorem statement after Stage 250
+## 9. Best current theorem statement after Stage 165
 
 The explicit lower compensated Family-1 branch now determines the linearized drifts of
 
@@ -431,4 +431,4 @@ So the next PDE-facing question is now as small as it has ever been:
 > given that the exact compensated branch already co-transports
 > `L_W`, `v_{w0}`, `\mathcal T_m`, and `c_{s,w}` for us?
 
-That is a much sharper continuation target than Stage 249 left us with.
+That is a much sharper continuation target than Stage 164 left us with.

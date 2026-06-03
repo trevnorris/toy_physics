@@ -2,12 +2,12 @@
 
 ## Status
 
-**Exact within the carried Stage-241 / Stage-249 same-charge reduction plus the Stage 239 coherent branch-observable compiler.**
+**Exact within the carried Stage-224 / Stage-232 same-charge reduction plus the Stage 188 coherent branch-observable compiler.**
 
 This stage does **not** claim that hydrodynamic turbulence or cavitation has already been derived from the full PDE.
 It shows something narrower and more useful:
 
-> if one adopts the physical reading that the brane mouth is rigid while the internal branch can still repackage loading, then the unresolved same-charge kill test is exactly a bound on the internal orbit/transfer packet, and the Stage-241 static ceiling can be read as a first reduced “choke / turbulence” gate.
+> if one adopts the physical reading that the brane mouth is rigid while the internal branch can still repackage loading, then the unresolved same-charge kill test is exactly a bound on the internal orbit/transfer packet, and the Stage-224 static ceiling can be read as a first reduced “choke / turbulence” gate.
 
 The theorem content is exact inside the reduced branch language.
 The words “turbulence”, “choked flow”, and “collapse” are **interpretive labels** for leaving that surviving static branch window.
@@ -16,7 +16,7 @@ The words “turbulence”, “choked flow”, and “collapse” are **interpre
 
 ## Purpose
 
-Stage 249 already showed that the explicit `5`PN support/source branch is numerically safe and that the first unresolved same-charge bottleneck is still the **PDE-selected orbit-lock / coherent placement point**. The same notes are explicit that the numerically missing object is the actual point satisfying the coherent placement conditions
+Stage 232 already showed that the explicit `5`PN support/source branch is numerically safe and that the first unresolved same-charge bottleneck is still the **PDE-selected orbit-lock / coherent placement point**. The same notes are explicit that the numerically missing object is the actual point satisfying the coherent placement conditions
 \[
 d\ln R_{\rm tr}=0,\qquad
 d\ln R_{\rm target}=0,\qquad
@@ -77,9 +77,9 @@ That is strong enough for the present reduced audit, but it is not yet a finishe
 
 ---
 
-## 2. Exact branch-observable compiler from Stage 239
+## 2. Exact branch-observable compiler from Stage 188
 
-Stage 239 already gives the first-order observable compiler
+Stage 188 already gives the first-order observable compiler
 \[
 \Theta_1=\delta\ln R_{\rm tr},
 \]
@@ -118,7 +118,7 @@ If the mouth-side branch is rigid at the first observable level, impose
 \boxed{\delta\ln R_{\rm tr}=0.}
 \]
 
-Then the exact Stage 239 compiler collapses to
+Then the exact Stage 188 compiler collapses to
 \[
 \boxed{\Theta_1=0,}
 \]
@@ -180,7 +180,7 @@ This is the closest exact reduced analogue of the “internal choke opens while 
 
 ## 5. Transported static ceiling as an internal choke / turbulence gate
 
-Stage 241 already transported the primitive-family same-charge window onto the actual branch packet:
+Stage 224 already transported the primitive-family same-charge window onto the actual branch packet:
 \[
 \bar P_0(1+|\epsilon\Xi_1|)\le P_{\rm crit},
 \]
@@ -243,13 +243,13 @@ This is the exact reduced formula behind the proposed “choked-flow / turbulenc
 
 ---
 
-## 6. The Stage-241 numerical budgets in this language
+## 6. The Stage-224 numerical budgets in this language
 
-At the Stage-240 compatibility point
+At the Stage-223 compatibility point
 \[
 \bar P_0 \approx 0.002069792318062885,
 \]
-Stage 241 gave the strict `10%` robust budget
+Stage 224 gave the strict `10%` robust budget
 \[
 |\epsilon\Xi_1|\lesssim 0.367930328492646
 \]
@@ -294,25 +294,25 @@ Under the additional operator-rigidity closure \(D_{01}=0\), the same become
 }
 \]
 
-So the Stage-241 `36.8%` figure really is the first exact reduced scalar at which the surviving static same-charge branch stops being robust.
+So the Stage-224 `36.8%` figure really is the first exact reduced scalar at which the surviving static same-charge branch stops being robust.
 
 ---
 
 ## 7. Why this is compatible with the support/source verdict
 
-Stage 249 already showed that the explicit `5`PN support/source branch overshoots the canonical isotropic demand by a large margin and is not the active bottleneck. What is still missing is the actual PDE-selected orbit-lock / coherent placement point.
+Stage 232 already showed that the explicit `5`PN support/source branch overshoots the canonical isotropic demand by a large margin and is not the active bottleneck. What is still missing is the actual PDE-selected orbit-lock / coherent placement point.
 
 So if one adopts the rigid-mouth reading, the situation is:
 
 - support/source can feed the branch,
 - the dynamic wall-window is not the first failure,
-- the first unresolved gate is whether the **internal transfer / placement observable** \(\mathfrak N_*\) remains inside the Stage-241 static ceiling.
+- the first unresolved gate is whether the **internal transfer / placement observable** \(\mathfrak N_*\) remains inside the Stage-224 static ceiling.
 
 That is exactly the mathematical form of the “internal choke versus rigid entrance” picture.
 
 ---
 
-## 8. Best current verdict after Stage 250
+## 8. Best current verdict after Stage 233
 
 The rigid-mouth physical interpretation is **mostly compatible** with the reduced math, but with two important corrections:
 
@@ -332,7 +332,7 @@ The rigid-mouth physical interpretation is **mostly compatible** with the reduce
    It is a stronger effective-static-operator rigidity condition.
    It is useful for the reduced thought experiment, but it should not be confused with the geometric mouth lock itself.
 
-3. **Interpretive caution:** the Stage-241 `36.8%` ceiling is an exact reduced static branch bound. Calling it a “turbulence threshold” is a plausible physical interpretation, but not yet a derivation of literal hydrodynamic turbulence from the full PDE.
+3. **Interpretive caution:** the Stage-224 `36.8%` ceiling is an exact reduced static branch bound. Calling it a “turbulence threshold” is a plausible physical interpretation, but not yet a derivation of literal hydrodynamic turbulence from the full PDE.
 
 So the next real falsification step is:
 
@@ -350,7 +350,7 @@ That is where the present stack now says the answer lives.
 
 The accompanying audit script verifies all of the following:
 
-1. the exact Stage 239 observable compiler
+1. the exact Stage 188 observable compiler
    \[
    \Theta_1=\delta\ln R_{\rm tr},
    \qquad
@@ -401,13 +401,13 @@ The accompanying audit script verifies all of the following:
    \le
    \frac{P_{\rm crit}}{\bar P_0}-1;
    \]
-8. and the numerical recovery of the two carried Stage-241 budgets
+8. and the numerical recovery of the two carried Stage-224 budgets
    \[
    0.367930328492646,
    \qquad
    0.737619063660757
    \]
-   from the Stage-240 compatibility-point value
+   from the Stage-223 compatibility-point value
    \[
    \bar P_0 \approx 0.002069792318062885.
    \]

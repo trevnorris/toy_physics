@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Stage 250 reduced the coherent weak-axisymmetric grouped defect to five microscopic slippages
+Stage 182 reduced the coherent weak-axisymmetric grouped defect to five microscopic slippages
 \[
 (\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta,\Sigma_\eta),
 \]
@@ -15,7 +15,7 @@ with the tracking factor already carried by the single combination
 That was already a strong narrowing, but the bookkeeping was still not in its smallest useful form.
 The next honest step is now very sharp:
 
-> reorganize the Stage 250 slippages into the smallest branch-adapted coordinates that directly control the three reduced observable drifts
+> reorganize the Stage 182 slippages into the smallest branch-adapted coordinates that directly control the three reduced observable drifts
 > \[
 > \Theta_1,\qquad \Xi_1,\qquad \mathcal R_1,
 > \]
@@ -82,7 +82,7 @@ That is the strongest exact compression reached so far.
 
 ## 1. Branch-adapted defect coordinates
 
-Stage 250 already gave the exact tracking/nontracking split
+Stage 182 already gave the exact tracking/nontracking split
 \[
 \Xi_1
 =
@@ -121,7 +121,7 @@ A_{\rm tr}:=\frac{2\chi_0}{(1+\chi_0)(1+\delta_U)}.
 
 So \(\Sigma_{\rm nt}\) is the first branch-adapted scalar beyond \(\Sigma_{\rm tr}\).
 
-The third and final branch-adapted scalar is simply the selected-branch dressing slippage already identified in Stage 250:
+The third and final branch-adapted scalar is simply the selected-branch dressing slippage already identified in Stage 182:
 \[
 \boxed{
 \Sigma_\eta:=2c_1-\kappa_U-\kappa_\eta=\frac{\eta_1}{\epsilon_\eta}.
@@ -139,7 +139,7 @@ These are therefore the natural branch-adapted coordinates:
 
 ## 2. Exact triangular normal form
 
-Stage 250 already gave
+Stage 182 already gave
 \[
 \Theta_1
 =
@@ -166,7 +166,7 @@ Likewise, by construction of \(\Sigma_{\rm nt}\),
 }
 \]
 
-Finally, the exact selected-branch identity from Stage 250 is
+Finally, the exact selected-branch identity from Stage 182 is
 \[
 \mathcal R_1
 =
@@ -346,11 +346,11 @@ So the full weak-axisymmetric normalization problem has collapsed to the vanishi
 
 ---
 
-## 5. Best current theorem statement after Stage 251
+## 5. Best current theorem statement after Stage 183
 
 On the actual coherent local D/N tracking branch:
 
-1. the five Stage 250 microscopic slippages compress exactly to the three branch-adapted defect coordinates
+1. the five Stage 182 microscopic slippages compress exactly to the three branch-adapted defect coordinates
    \[
    (\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta);
    \]
@@ -380,7 +380,7 @@ On the actual coherent local D/N tracking branch:
    \Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0.
    \]
 
-So the continuation point is now smaller than Stage 250 left it.
+So the continuation point is now smaller than Stage 182 left it.
 
 It is no longer
 

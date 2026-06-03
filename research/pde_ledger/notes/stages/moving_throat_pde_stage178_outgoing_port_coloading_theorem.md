@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 245 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to one scalar,
+Stage 177 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to one scalar,
 \[
 \Xi_1=\frac{P_1}{P_0},
 \]
@@ -50,7 +50,7 @@ It is just:
 
 > does the weighted static outgoing-port load slope co-load with the wall baseline?
 
-That is the direct port-level version of the Stage 245 result.
+That is the direct port-level version of the Stage 177 result.
 
 ---
 
@@ -100,7 +100,7 @@ It says the static outgoing-transfer slope is simply the doubled numerator slope
 
 ## 2. Exact portwise rewrite of the remaining grouped defect
 
-Stage 243 already showed that on conservative-shape-preserving branches the remaining grouped defect is carried only by the outgoing load factor:
+Stage 175 already showed that on conservative-shape-preserving branches the remaining grouped defect is carried only by the outgoing load factor:
 \[
 \Xi_{\rm load}^{(A)}
 =
@@ -152,7 +152,7 @@ this can be rewritten as
 }
 \]
 
-And since Stage 241/228 already identified the same scalar with the physical outgoing-prefactor slope,
+And since Stage 173/177 already identified the same scalar with the physical outgoing-prefactor slope,
 \[
 \boxed{
 \frac{P_1}{P_0}=\Xi_1=\bar\nu_N-\kappa_1.
@@ -254,9 +254,9 @@ This is the direct expression of the static outgoing-transfer slope in the real 
 
 ---
 
-## 4. Exact link back to the Stage 245 slippage formula
+## 4. Exact link back to the Stage 177 slippage formula
 
-Stage 245 used the port slippages
+Stage 177 used the port slippages
 \[
 \mathfrak m_r:=\mathfrak g_{W,r}-\mathfrak o_{W,r}-\frac12\kappa_1,
 \]
@@ -295,7 +295,7 @@ the port-slope formula above is exactly equivalent to
 +\frac{2\mathcal H_r}{1-\mathcal H_r}\,\mathfrak h_r.
 }
 \]
-So the Stage 245 port amplitude \(\sigma_r\) is simply
+So the Stage 177 port amplitude \(\sigma_r\) is simply
 \[
 \boxed{
 \sigma_r=\nu_r-\kappa_1.
@@ -315,7 +315,7 @@ Therefore
 }
 \]
 
-This is the exact equivalence between the Stage 245 slippage language and the present direct outgoing-port language.
+This is the exact equivalence between the Stage 177 slippage language and the present direct outgoing-port language.
 
 ---
 
@@ -405,9 +405,9 @@ This is the direct outgoing-port restatement of the earlier “naive common self
 
 ---
 
-## 6. What Stage 246 changes
+## 6. What Stage 178 changes
 
-Stage 245 already showed that the remaining weak-axisymmetric grouped defect is one scalar,
+Stage 177 already showed that the remaining weak-axisymmetric grouped defect is one scalar,
 \[
 \Xi_1=\frac{P_1}{P_0},
 \]
@@ -421,7 +421,7 @@ and that its microscopic content is the weighted slippage combination
 \right].
 \]
 
-Stage 246 sharpens that result in a more physical language.
+Stage 178 sharpens that result in a more physical language.
 
 It shows that the same scalar is exactly the mismatch between
 

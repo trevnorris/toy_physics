@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 243 reduced the remaining linear grouped weak-axisymmetric defect to the outgoing-load theorem
+Stage 175 reduced the remaining linear grouped weak-axisymmetric defect to the outgoing-load theorem
 \[
 2\sum_r \rho_r^{(N)}\,\delta\ln\Lambda_r=\delta_K,
 \qquad
@@ -34,10 +34,10 @@ P_r=\Omega_{U,r}^2 G_{W,r}+R_r G_{U,r},
 \qquad
 \Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2.
 \]
-For consistency with Stage 243, the outgoing-leg couplings are written here as
+For consistency with Stage 175, the outgoing-leg couplings are written here as
 \(G_{W,r}\) and \(G_{U,r}\); these are the same quantities previously denoted
 \(g_{W,r}\) and \(g_{U,r}\).
-The Stage 243 defect field was
+The Stage 175 defect field was
 \[
 \Sigma_r^{(N)}:=\delta\ln\!\left(\frac{\Lambda_r^2}{K}\right),
 \]
@@ -90,7 +90,7 @@ Taking the logarithmic variation gives
 -2\,\delta\ln(1-\mathcal H_r).
 }
 \]
-So the Stage 243 grouped defect becomes
+So the Stage 175 grouped defect becomes
 \[
 \boxed{
 \Xi_{\rm load}
@@ -175,7 +175,7 @@ So the remaining linear grouped defect has now been reduced to a concrete weight
 
 ## 6. Conservative-shape theorem in the new variables
 
-Stage 243 already showed that if the conservative shapes are preserved, then
+Stage 175 already showed that if the conservative shapes are preserved, then
 \[
 \Xi_{\rm load}=\sum_r \rho_r^{(N)}\Sigma_r^{(N)}.
 \]
@@ -201,7 +201,7 @@ So on conservative-shape-preserving, interference-rigid, hybridization-rigid bra
 =2\sum_r \rho_r^{(N)}\,\delta\ln\!\left(\frac{G_{W,r}}{\Omega_{W,r}^2\sqrt K}\right).
 }
 \]
-This is a much sharper theorem than Stage 243.
+This is a much sharper theorem than Stage 175.
 
 ---
 
@@ -269,13 +269,13 @@ So in the dominant-port limit the whole remaining linear grouped defect is just 
 
 ---
 
-## 9. What Stage 244 changes
+## 9. What Stage 176 changes
 
-Stage 243 reduced the remaining linear grouped defect to the outgoing-load theorem
+Stage 175 reduced the remaining linear grouped defect to the outgoing-load theorem
 \[
 2\sum_r \rho_r^{(N)}\delta\ln\Lambda_r=\delta_K.
 \]
-Stage 244 sharpens that result substantially.
+Stage 176 sharpens that result substantially.
 
 It shows that the remaining outgoing-load theorem is not one indivisible condition. It splits into:
 

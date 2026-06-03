@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 239 scalarized log-ray / directional-Hessian framework, once a local curvature envelope is supplied on the chosen oriented ray.**
+**Exact within the carried Stage 205 scalarized log-ray / directional-Hessian framework, once a local curvature envelope is supplied on the chosen oriented ray.**
 
 This stage does **not** introduce a new constitutive law.
-It upgrades the Stage 239 quadratic predictor from a local approximation into a **certified local search tool** by adding exact curvature majorants/minorants for the oriented logarithmic closure residual.
+It upgrades the Stage 205 quadratic predictor from a local approximation into a **certified local search tool** by adding exact curvature majorants/minorants for the oriented logarithmic closure residual.
 
 ---
 
 ## Purpose
 
-Stage 239 gave the exact first/second derivative data
+Stage 205 gave the exact first/second derivative data
 \[
 \Phi_0,\ \Phi_1,\ \Phi_2,
 \qquad
@@ -39,21 +39,21 @@ The main outputs are:
 5. the exact **turning-ray bracket theorem** when the first slope vanishes,
 6. the exact bracket-width law and its small-envelope expansion,
 7. the exact **pairwise ray-ordering theorem** for disjoint certified brackets,
-8. and the final Stage 240 conclusion that the free-quintuple search has become a true **search sieve** rather than only a local predictor library.
+8. and the final Stage 206 conclusion that the free-quintuple search has become a true **search sieve** rather than only a local predictor library.
 
-So Stage 240 is the first place where the Stage 238/239 scalarized ray program becomes a rigorous branch-ranking tool.
+So Stage 206 is the first place where the Stage 204/205 scalarized ray program becomes a rigorous branch-ranking tool.
 
 ---
 
 ## 1. Carry-forward scalarized ray and the oriented logarithmic residual
 
-Keep the Stage 238 graph-lifted free-quintuple log ray
+Keep the Stage 204 graph-lifted free-quintuple log ray
 \[
 \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
 \qquad
 \Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)).
 \]
-Stage 239 already defined the logarithmic scalar
+Stage 205 already defined the logarithmic scalar
 \[
 h_{\mathbf s}(\tau):=\ln \Phi_{\mathbf s}(\tau).
 \]
@@ -85,7 +85,7 @@ So every admissible local branch search can be normalized to the same canonical 
 - negative initial oriented slope `\(K_0<0\)`,
 - and forward search parameter `\(\tau\ge0\)`.
 
-This is the natural Stage 239 continuation because it removes the sign bookkeeping while keeping the exact logarithmic scalarization.
+This is the natural Stage 205 continuation because it removes the sign bookkeeping while keeping the exact logarithmic scalarization.
 
 ---
 
@@ -127,7 +127,7 @@ H_+(\tau)
 (0\le\tau\le T).
 }
 \]
-So the Stage 239 second-order data become rigorous as soon as the directional Hessian of `\(\ln\widehat\chi_Q\)` is bounded on the local interval.
+So the Stage 205 second-order data become rigorous as soon as the directional Hessian of `\(\ln\widehat\chi_Q\)` is bounded on the local interval.
 
 ### 2.1 Exact discriminants
 
@@ -167,7 +167,7 @@ It is the exact forward root of
 \[
 H_0+K_0\tau+\frac12 c\tau^2=0
 \]
-that reduces continuously to the Stage 238/239 zero-curvature predictor.
+that reduces continuously to the Stage 204/205 zero-curvature predictor.
 
 ### 3.1 Zero-curvature limit
 
@@ -177,7 +177,7 @@ As `\(c\to0\)`,
 \mathcal T(H_0,K_0;0)=-\frac{H_0}{K_0}.
 }
 \]
-So the Stage 238 log-linear predictor is the zero-curvature limit of the Stage 240 certified bracket map.
+So the Stage 204 log-linear predictor is the zero-curvature limit of the Stage 206 certified bracket map.
 
 ### 3.2 Exact monotonicity in the curvature parameter
 
@@ -193,7 +193,7 @@ Differentiate the defining quadratic relation implicitly. One gets
 So the forward root grows strictly with the curvature parameter.
 This is the key exact ordering fact behind the certified bracket theorem below.
 
-### 3.3 Collapse to the Stage 239 quadratic predictor
+### 3.3 Collapse to the Stage 205 quadratic predictor
 
 If the curvature envelope collapses to a point,
 \[
@@ -205,9 +205,9 @@ then
 \tau_{\rm lo}=\tau_{\rm hi}=\mathcal T(H_0,K_0;L_1),
 }
 \]
-which is exactly the Stage 239 quadratic logarithmic predictor written in the oriented variables.
+which is exactly the Stage 205 quadratic logarithmic predictor written in the oriented variables.
 
-So Stage 239 is recovered as the zero-width Stage 240 bracket.
+So Stage 205 is recovered as the zero-width Stage 206 bracket.
 
 ---
 
@@ -261,7 +261,7 @@ Thus the true oriented residual is strictly decreasing throughout the certified 
 ### 4.2 Certified local bracket theorem
 
 \[
-\boxed{\textbf{Theorem (Stage 240 certified monotone bracket theorem).}}
+\boxed{\textbf{Theorem (Stage 206 certified monotone bracket theorem).}}
 \]
 
 Assume:
@@ -292,14 +292,14 @@ Therefore there exists a unique actual closure point
 }
 \]
 
-So Stage 240 upgrades the Stage 239 quadratic predictor into a rigorous local bracket.
+So Stage 206 upgrades the Stage 205 quadratic predictor into a rigorous local bracket.
 
 ---
 
 ## 5. Exact turning-ray bracket theorem
 
-Stage 239 already identified the turning-point criterion for rays with vanishing first slope.
-Stage 240 promotes that criterion to a certified local bracket.
+Stage 205 already identified the turning-point criterion for rays with vanishing first slope.
+Stage 206 promotes that criterion to a certified local bracket.
 
 Assume the oriented initial slope vanishes,
 \[
@@ -347,7 +347,7 @@ so the turning ray becomes strictly decreasing immediately after the base point.
 
 Hence:
 \[
-\boxed{\textbf{Theorem (Stage 240 certified turning-ray bracket theorem).}}
+\boxed{\textbf{Theorem (Stage 206 certified turning-ray bracket theorem).}}
 \]
 
 If `\(\tau_{\rm hi}^{\rm(tp)}\le T\)`, then the true turning-ray closure point exists uniquely and obeys
@@ -357,7 +357,7 @@ If `\(\tau_{\rm hi}^{\rm(tp)}\le T\)`, then the true turning-ray closure point e
 }
 \]
 
-So even the Stage 239 tangency/turning case can be turned into a certified bracket whenever the oriented curvature is strictly negative on a controlled interval.
+So even the Stage 205 tangency/turning case can be turned into a certified bracket whenever the oriented curvature is strictly negative on a controlled interval.
 
 ---
 
@@ -405,7 +405,7 @@ At `\(\bar K_1=0\)`, write
 \[
 \tau_0:=-\frac{H_0}{K_0},
 \]
-which is the oriented Stage 238 log-linear predictor. Then
+which is the oriented Stage 204 log-linear predictor. Then
 \[
 \boxed{
 W_{\mathbf s}
@@ -415,9 +415,9 @@ W_{\mathbf s}
 +O\!\bigl((\overline K_1-\underline K_1)^3\bigr).
 }
 \]
-So, near the Stage 238 limit, rays with larger initial descent `\(|K_0|\)` and smaller curvature-envelope size are exactly the rays with the tightest certified brackets.
+So, near the Stage 204 limit, rays with larger initial descent `\(|K_0|\)` and smaller curvature-envelope size are exactly the rays with the tightest certified brackets.
 
-This is the first exact Stage 238/239 search-quality law.
+This is the first exact Stage 204/205 search-quality law.
 
 ---
 
@@ -431,7 +431,7 @@ Let two admissible rays `\(\mathbf s_a\)` and `\(\mathbf s_b\)` have certified b
 \]
 Then:
 \[
-\boxed{\textbf{Theorem (Stage 240 certified pairwise ray-ordering theorem).}}
+\boxed{\textbf{Theorem (Stage 206 certified pairwise ray-ordering theorem).}}
 \]
 
 If
@@ -460,7 +460,7 @@ When certified brackets overlap, strict theorem-level ordering is not yet availa
 \]
 Smaller `\(\tau_{\rm hi}\)` means the ray reaches closure no later than a smaller guaranteed time, while smaller `\(W_{\mathbf s}\)` means the local placement is more sharply certified.
 
-So the Stage 240 search sieve is:
+So the Stage 206 search sieve is:
 
 1. reject rays with no admissible local bracket,
 2. certify strict pairwise order whenever brackets are disjoint,
@@ -472,7 +472,7 @@ This last step is an audit convention rather than a theorem, but it is now backe
 
 ## 8. Exact admissibility test for the local search sieve
 
-A free-quintuple ray enters the Stage 240 search sieve only if one of the following exact local conditions is met.
+A free-quintuple ray enters the Stage 206 search sieve only if one of the following exact local conditions is met.
 
 ### 8.1 Monotone admissible ray
 
@@ -495,11 +495,11 @@ Every other local ray is uncertified at this stage and should be deprioritized i
 
 ---
 
-## 9. Best current reading after Stage 240
+## 9. Best current reading after Stage 206
 
-Stage 238 turned the reduced home stretch into an explicit one-parameter free-quintuple log-ray search.
-Stage 239 turned that search into an exact second-order predictor problem.
-Stage 240 now turns it into a **certified search sieve**.
+Stage 204 turned the reduced home stretch into an explicit one-parameter free-quintuple log-ray search.
+Stage 205 turned that search into an exact second-order predictor problem.
+Stage 206 now turns it into a **certified search sieve**.
 
 The final reduced search is no longer organized by vague statements like
 “follow a promising ray.”
@@ -516,5 +516,5 @@ Those three ingredients determine:
 - the bracket width,
 - and, when brackets separate, an exact pairwise ray ordering.
 
-So after Stage 240 the next honest continuation is no longer to invent another predictor.
+So after Stage 206 the next honest continuation is no longer to invent another predictor.
 It is to evaluate the actual directional Hessian envelope of `\(\ln\widehat\chi_Q\)` on candidate free-quintuple rays and let the certified bracket/ranking theorem decide which rays are genuinely worth following in the final scalar branch search.

@@ -515,8 +515,8 @@ So after Stage 221, the dynamic same-charge route lives or dies on a **residue-t
 
 The idea is still alive, but it has narrowed again.
 
-- Stage 252 closed the local mixed-ray search sieve.
-- Stage 253 killed the hope for a brand-new static mixed-sector spatial law.
+- Stage 218 closed the local mixed-ray search sieve.
+- Stage 219 killed the hope for a brand-new static mixed-sector spatial law.
 - Stage 220 killed the linear outgoing-phase shortcut.
 - Stage 221 now kills the naive “resonance fixes it” shortcut.
 

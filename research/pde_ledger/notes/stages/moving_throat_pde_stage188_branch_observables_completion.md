@@ -4,14 +4,14 @@
 
 **Exact within the coherent local D/N weak-axisymmetric reference-branch closure.**
 
-This stage does **not** replace the exact finite quotient closure of Stage 238.
+This stage does **not** replace the exact finite quotient closure of Stage 187.
 It identifies the exact **first-order PDE-facing observable packet** whose vanishing is equivalent to vanishing first grouped weak-axisymmetric defect on the selected coherent branch.
 
 ---
 
 ## Purpose
 
-Stage 238 finished the coherent weak-axisymmetric problem at the exact finite quotient level:
+Stage 187 finished the coherent weak-axisymmetric problem at the exact finite quotient level:
 
 a) the similarity orbit `\(\mathcal G_*\)` is exact,
 
@@ -33,7 +33,7 @@ The actual moving-throat solve will not first return abstract quotient coordinat
 
 The missing bridge is therefore:
 
-> convert the Stage 238 tangent quotient packet into a direct observable packet built from the exact branch quantities
+> convert the Stage 187 tangent quotient packet into a direct observable packet built from the exact branch quantities
 > \[
 > R_{\rm tr},
 > \qquad
@@ -63,7 +63,7 @@ The main outputs are:
    \delta\ln \epsilon_\eta
    \end{pmatrix}
    \]
-   to the Stage 238 tangent quotient packet,
+   to the Stage 187 tangent quotient packet,
 3. an exact first-order compiler from `\(\Delta_{\rm obs}^{(1)}\)` to the defect packet
    \[
    \Delta_{\rm def}^{(1)}:=(\Theta_1,\Xi_1,\mathcal R_1)^T,
@@ -79,7 +79,7 @@ The main outputs are:
    \delta\ln\epsilon_\eta=0.
    \]
 
-So this stage is the clean PDE-facing completion of the Stage 238 quotient theorem.
+So this stage is the clean PDE-facing completion of the Stage 187 quotient theorem.
 
 ---
 
@@ -213,7 +213,7 @@ Define the first-order branch-observable packet
 }
 \]
 
-Stage 238 already fixed the tangent quotient packet as
+Stage 187 already fixed the tangent quotient packet as
 \[
 \Delta_{\rm quot}^{(1)}:=
 \begin{pmatrix}
@@ -229,7 +229,7 @@ Stage 238 already fixed the tangent quotient packet as
 \end{pmatrix}.
 \]
 
-Using the Stage 252/236 identities,
+Using the Stage 184/185 identities,
 \[
 \delta\ln \mathfrak C_{{\rm tr},*}=-\frac{1}{C_{{\rm tr},*}}\,\delta\ln R_{\rm tr},
 \qquad
@@ -259,11 +259,11 @@ So the observable packet and the tangent quotient packet have exactly the same z
 
 ### Interpretation
 
-Stage 238 still remains the exact **finite** quotient closure.
-Stage 239 does not replace it by a new finite quotient statement.
+Stage 187 still remains the exact **finite** quotient closure.
+Stage 188 does not replace it by a new finite quotient statement.
 It shows something narrower and more useful for the actual PDE solve:
 
-> at first grouped weak-axisymmetric/reference-branch order, the direct branch-observable packet is an exact invertible compiler for the tangent packet of the Stage 238 quotient.
+> at first grouped weak-axisymmetric/reference-branch order, the direct branch-observable packet is an exact invertible compiler for the tangent packet of the Stage 187 quotient.
 
 That is the precise sense in which `\(R_{\rm tr}\)`, `\(\mathfrak N_*\)`, and `\(\epsilon_\eta\)` become first-class PDE outputs.
 
@@ -355,9 +355,9 @@ Therefore the defect packet and the observable packet also have exactly the same
 
 ---
 
-## 5. Factorization through the Stage 238 tangent packet
+## 5. Factorization through the Stage 187 tangent packet
 
-The Stage 251/236 triangular normal form already gives
+The Stage 183/185 triangular normal form already gives
 \[
 \Theta_1=-C_{{\rm tr},*}\Sigma_{\rm tr},
 \qquad
@@ -383,7 +383,7 @@ A_{{\rm tr},*} & 1 & 0\\[2pt]
 \Delta_{\rm quot}^{(1)}.
 \]
 
-Stage 239 then shows that this factorizes exactly as
+Stage 188 then shows that this factorizes exactly as
 \[
 \boxed{
 \mathcal C_{\rm obs\to def}=
@@ -395,7 +395,7 @@ The first-column entries match because of the identity
 A_{{\rm tr},*}=B_* C_{{\rm tr},*}.
 \]
 
-So the Stage 239 observable compiler is not a new independent rule. It is exactly the Stage 238 tangent quotient compiler rewritten in the natural direct branch observables.
+So the Stage 188 observable compiler is not a new independent rule. It is exactly the Stage 187 tangent quotient compiler rewritten in the natural direct branch observables.
 
 ---
 
@@ -437,7 +437,7 @@ And because the tangent quotient packet is an exact compiler image of the same o
 \delta\ln\epsilon_\eta=0.
 }
 \]
-So the Stage 252 branch-composite theorem and the Stage 238 tangent quotient theorem are now joined cleanly.
+So the Stage 184 branch-composite theorem and the Stage 187 tangent quotient theorem are now joined cleanly.
 
 ### Interpretation
 
@@ -452,10 +452,10 @@ If yes, then the full coherent first grouped weak-axisymmetric defect vanishes.
 
 ---
 
-## 7. Best current theorem statement after Stage 239
+## 7. Best current theorem statement after Stage 188
 
-Stage 238 already reduced the coherent weak-axisymmetric problem to an exact finite quotient.
-Stage 239 now adds the direct PDE-facing front end.
+Stage 187 already reduced the coherent weak-axisymmetric problem to an exact finite quotient.
+Stage 188 now adds the direct PDE-facing front end.
 
 At the first grouped weak-axisymmetric/reference-branch order:
 
@@ -498,10 +498,10 @@ That is the smallest branch-specific front end of the coherent defect theorem re
 
 The right next stage after this one is the first one that uses these exact branch observables as the PDE-facing inputs of the later grouped-bundle/outgoing compiler.
 
-In particular, the next clean move is to keep the present Stage 239 observable packet fixed and then ask how the completed grouped real `P2` bundle packages those observables into the finite branch packet that controls:
+In particular, the next clean move is to keep the present Stage 188 observable packet fixed and then ask how the completed grouped real `P2` bundle packages those observables into the finite branch packet that controls:
 
 - grouped isotropy,
 - one-pole conservative closure,
 - and outgoing quadrupole normalization.
 
-So Stage 239 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.
+So Stage 188 is the natural hinge between the exact orbit–quotient closure and the later endgame packet compiler.

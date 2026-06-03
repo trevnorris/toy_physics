@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 238 coherent quotient closure and the finite-packet hierarchy isolated in Stage 242.**
+**Exact within the carried Stage 187 coherent quotient closure and the finite-packet hierarchy isolated in Stage 191.**
 
 This stage does **not** introduce any new constitutive law or new physical closure.
-It upgrades the finite quotient packet of Stage 242 into an exact **microscopic projector calculus** on the full eight-dimensional drift space.
+It upgrades the finite quotient packet of Stage 191 into an exact **microscopic projector calculus** on the full eight-dimensional drift space.
 
 ---
 
 ## Purpose
 
-Stage 242 showed that the reduced home-stretch verdict depends only on two exact finite packets:
+Stage 191 showed that the reduced home-stretch verdict depends only on two exact finite packets:
 
 - the grouped bundle packet `\(\mathcal P_A\)`, and
 - the quotient / orbit-lock packet
@@ -54,7 +54,7 @@ The main outputs of this stage are:
    M_*\Delta\mathbf x=0.
    \]
 
-So Stage 243 turns the abstract finite quotient packet of Stage 242 into a direct microscopic orbit/failure decomposition.
+So Stage 192 turns the abstract finite quotient packet of Stage 191 into a direct microscopic orbit/failure decomposition.
 
 ---
 
@@ -105,7 +105,7 @@ M_*=
 }
 \]
 
-So the finite Packet B of Stage 242 is not abstract. It is literally the quotient projection of the microscopic drift under `\(M_*\)`.
+So the finite Packet B of Stage 191 is not abstract. It is literally the quotient projection of the microscopic drift under `\(M_*\)`.
 
 The five free similarity coordinates are
 \[
@@ -303,7 +303,7 @@ the orbit projector leaves the five free coordinates unchanged:
 =
 (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W).
 \]
-It rewrites only the dependent triple, forcing it onto the exact Stage 238 single-orbit law.
+It rewrites only the dependent triple, forcing it onto the exact Stage 187 single-orbit law.
 
 Define
 \[
@@ -327,7 +327,7 @@ E_*(2\Delta_\gamma+2\Delta_\lambda-\Delta_U-\Delta_W)
 F_*\alpha_*(\Delta_\gamma+\Delta_c-\Delta_U).
 }
 \]
-These are exactly the Stage 238 finite orbit formulas recovered by projection.
+These are exactly the Stage 187 finite orbit formulas recovered by projection.
 
 So the projector calculus does not invent a new orbit law.
 It isolates the exact same law as the unique orbit representative with the same five free coordinates as the original microscopic drift.
@@ -348,18 +348,18 @@ The exact orbit-lock condition now has several equivalent forms:
 \qquad
 \boxed{\Delta\mathbf x\in\ker M_*.}
 \]
-So the Packet-B zero-set of Stage 242 is now a literal microscopic projector statement.
+So the Packet-B zero-set of Stage 191 is now a literal microscopic projector statement.
 
 In words:
 
-- Stage 242 said the reduced orbit packet must vanish.
-- Stage 243 shows that this is exactly the statement that the candidate microscopic drift has no quotient-supported dependent-triple correction.
+- Stage 191 said the reduced orbit packet must vanish.
+- Stage 192 shows that this is exactly the statement that the candidate microscopic drift has no quotient-supported dependent-triple correction.
 
 That is the clean bridge from the finite-packet theorem back to the actual moving-throat PDE branch.
 
 ---
 
-## 8. What this stage fixes, and what remains for Stage 244
+## 8. What this stage fixes, and what remains for Stage 193
 
 ### Fixed here
 
@@ -369,7 +369,7 @@ In particular:
 1. Packet B is exactly the quotient projection `\(M_*\Delta\mathbf x\)`.
 2. The orbit/failure split is exact and complementary.
 3. The quotient failure lives only on the dependent triple.
-4. The orbit projector leaves the five similarity coordinates untouched and restores the exact Stage 238 single-orbit dependent law.
+4. The orbit projector leaves the five similarity coordinates untouched and restores the exact Stage 187 single-orbit dependent law.
 
 ### Still missing
 
@@ -379,7 +379,7 @@ What this stage does **not** yet do is compose the microscopic projector with th
 \]
 That is the next step.
 
-Stage 244 will take the exact observable inversion from the earlier compiler stages and feed it through the canonical quotient section
+Stage 193 will take the exact observable inversion from the earlier compiler stages and feed it through the canonical quotient section
 \[
 S_{(T,K_\eta,\mu)}
 \]
@@ -391,7 +391,7 @@ to obtain the exact observable-to-microscopic correction compiler.
 
 The accompanying SymPy audit verifies:
 
-- the exact Stage 238 monomial-drift matrix `\(M_*\)`,
+- the exact Stage 187 monomial-drift matrix `\(M_*\)`,
 - the dependent pivot block `\(P_{(T,K_\eta,\mu)}\)` and its inverse,
 - the exact right-inverse section `\(S_{(T,K_\eta,\mu)}\)`,
 - the complementary projector identities for `\(Q_{\rm quot}\)` and `\(O_{\rm orb}\)`,

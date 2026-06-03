@@ -31,7 +31,7 @@ This should be read as a concrete branch ansatz, not as a theorem of the full PD
 
 ## 2. Exact compensation family
 
-Stage 221 already showed that the compensated canonical outgoing branch requires
+Stage 119 already showed that the compensated canonical outgoing branch requires
 \[
 1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
 \]
@@ -44,7 +44,7 @@ equivalently
 }
 \]
 
-Inserting the Stage 223 geometric value
+Inserting the Stage 121 geometric value
 \[
 \mathfrak r=\mathfrak r_{F1}=\frac{\sqrt{4107-100\pi^2}}{10\pi}
 \]
@@ -115,7 +115,7 @@ So the natural equal-normalized mouth source is **not** automatically compensate
 
 ## 5. Exact traction renormalization factors
 
-Since Stage 221 gave
+Since Stage 119 gave
 \[
 \mathfrak g \propto \frac{1}{\mathcal T_m},
 \]

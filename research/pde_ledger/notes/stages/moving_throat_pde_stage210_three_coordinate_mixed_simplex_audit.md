@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 240 scalarized search framework and the fully optimized Stage 243 pairwise certified sieve, once a local oriented `3 x 3` Hessian-envelope block and a triple-simplex validity map are supplied on the chosen three-coordinate patch.**
+**Exact within the carried Stage 206 scalarized search framework and the fully optimized Stage 209 pairwise certified sieve, once a local oriented `3 x 3` Hessian-envelope block and a triple-simplex validity map are supplied on the chosen three-coordinate patch.**
 
 This stage does **not** yet solve the full two-parameter interior optimizer on a three-coordinate branch.
 It is the first exact continuation *beyond* the optimized pairwise cones: the first place where a genuinely interior three-coordinate mixed ray can appear and be audited without redoing the pairwise boundary problem.
@@ -11,7 +11,7 @@ It is the first exact continuation *beyond* the optimized pairwise cones: the fi
 
 ## Purpose
 
-Stage 243 closed the pairwise problem exactly. Every monotone pair now carries a finite optimized certified bracket, and every boundary pairwise winner can be ranked without a free-form continuum search.
+Stage 209 closed the pairwise problem exactly. Every monotone pair now carries a finite optimized certified bracket, and every boundary pairwise winner can be ranked without a free-form continuum search.
 
 That immediately makes the next theorem gate sharp:
 
@@ -22,14 +22,14 @@ This stage answers that.
 The main outputs are:
 
 1. the exact **positive spherical simplex** for a monotone primitive triple,
-2. the exact **boundary-reduction theorem** showing that all three boundary edges are already Stage 243 pairwise cones,
+2. the exact **boundary-reduction theorem** showing that all three boundary edges are already Stage 209 pairwise cones,
 3. the exact **three-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
 4. the exact **three-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes total off-diagonal leverage,
 5. the exact **fixed-simplex certified bracket** for any admissible interior point,
 6. the exact **canonical triple-screen audit** consisting of three optimized boundary rows plus two interior canonical rows,
 7. and the exact **interior-screen dominance criterion** that certifies a genuine three-coordinate improvement over all pairwise winners.
 
-So Stage 244 is the three-coordinate analogue of Stage 242, but now with the Stage 243 boundary optimizer already finished and imported.
+So Stage 210 is the three-coordinate analogue of Stage 208, but now with the Stage 209 boundary optimizer already finished and imported.
 
 ---
 
@@ -39,7 +39,7 @@ Keep the free log coordinates
 \[
 \boldsymbol\ell=(\ell_\lambda,\ell_c,\ell_\gamma,\ell_U,\ell_W)
 \]
-and the oriented scalar closure residual from Stages 240–243,
+and the oriented scalar closure residual from Stages 206–209,
 \[
 H_0>0,
 \qquad
@@ -101,7 +101,7 @@ E_{ik}:=\{a_j=0\},
 \qquad
 E_{jk}:=\{a_i=0\}.
 \]
-Each edge is exactly one of the Stage 243 pairwise cones.
+Each edge is exactly one of the Stage 209 pairwise cones.
 
 ### 2.1 Edge `\(E_{ij}\)`
 With the ratio coordinate
@@ -118,7 +118,7 @@ we have
 \frac{\widehat{\mathbf e}_i+r\widehat{\mathbf e}_j}{\sqrt{1+r^2}}.
 }
 \]
-So `\(E_{ij}\)` is exactly the Stage 243 pairwise cone for `\((i,j)\)`.
+So `\(E_{ij}\)` is exactly the Stage 209 pairwise cone for `\((i,j)\)`.
 
 ### 2.2 Edge `\(E_{ik}\)`
 With the ratio coordinate
@@ -135,7 +135,7 @@ we have
 \frac{\widehat{\mathbf e}_i+s\widehat{\mathbf e}_k}{\sqrt{1+s^2}}.
 }
 \]
-So `\(E_{ik}\)` is exactly the Stage 243 pairwise cone for `\((i,k)\)`.
+So `\(E_{ik}\)` is exactly the Stage 209 pairwise cone for `\((i,k)\)`.
 
 ### 2.3 Edge `\(E_{jk}\)`
 With the ratio coordinate
@@ -152,9 +152,9 @@ we have
 \frac{\widehat{\mathbf e}_j+\nu\widehat{\mathbf e}_k}{\sqrt{1+\nu^2}}.
 }
 \]
-So `\(E_{jk}\)` is exactly the Stage 243 pairwise cone for `\((j,k)\)`.
+So `\(E_{jk}\)` is exactly the Stage 209 pairwise cone for `\((j,k)\)`.
 
-This is the first theorem-level simplification of Stage 244:
+This is the first theorem-level simplification of Stage 210:
 
 > nothing on the boundary of the three-coordinate simplex is new. The only new content is the **interior** of `\(\Delta_{ijk}^{+}\)`.
 
@@ -208,7 +208,7 @@ Because all three primitive slopes are positive, the interior gradient-optimal v
 >
 \max\!\bigl(\sqrt{k_i^2+k_j^2},\sqrt{k_i^2+k_k^2},\sqrt{k_j^2+k_k^2}\bigr).
 \]
-So Stage 244 yields the exact first-order theorem:
+So Stage 210 yields the exact first-order theorem:
 
 ### Exact three-coordinate gradient-synergy theorem
 
@@ -230,7 +230,7 @@ H_{ijk}(\mathbf a;\tau)
  h_{ik} & h_{jk} & h_{kk}
 \end{pmatrix}_{(ijk)}
 \]
-where, exactly as in Stage 242, each entry is evaluated on the oriented ray
+where, exactly as in Stage 208, each entry is evaluated on the oriented ray
 \(
 \boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_{ijk}(\mathbf a)
 \)
@@ -403,16 +403,16 @@ The certified bracket becomes
 \sqrt{A_\star+B_\star r+C_\star s+D_\star r^2+E_\star rs+F_\star s^2}}.
 }
 \]
-Restricting to any edge recovers the exact Stage 243 pairwise formulas.
+Restricting to any edge recovers the exact Stage 209 pairwise formulas.
 
 ---
 
 ## 6. The canonical triple-screen audit
 
-Stage 244 does **not** yet solve the full interior optimizer.
+Stage 210 does **not** yet solve the full interior optimizer.
 The smallest exact screen set is instead:
 
-1. the three exact optimized boundary brackets imported from Stage 243,
+1. the three exact optimized boundary brackets imported from Stage 209,
    \[
    \mathcal B_{ij}^{\rm opt},
    \qquad
@@ -429,7 +429,7 @@ The smallest exact screen set is instead:
    \mathbf a_{ijk}^{\rm eq}.
    \]
 
-So the exact Stage 244 triple-screen packet is
+So the exact Stage 210 triple-screen packet is
 \[
 \boxed{
 \mathcal S_{ijk}^{\rm tri}
@@ -443,7 +443,7 @@ So the exact Stage 244 triple-screen packet is
 \Bigr).
 }
 \]
-This is the exact three-coordinate analogue of the Stage 242 canonical pairwise screen, but with the three pairwise boundaries already fully optimized and imported rather than re-audited.
+This is the exact three-coordinate analogue of the Stage 208 canonical pairwise screen, but with the three pairwise boundaries already fully optimized and imported rather than re-audited.
 
 ---
 
@@ -455,7 +455,7 @@ Let
 \qquad
 \tau_{ijk,\rm hi}^{\rm eq}:=\tau_{ijk,\rm hi}(\mathbf a_{ijk}^{\rm eq}),
 \]
-and keep the three Stage 243 optimized boundary lower brackets
+and keep the three Stage 209 optimized boundary lower brackets
 \[
 \tau_{ij,\min}^{\rm lo},
 \qquad
@@ -514,7 +514,7 @@ That is **not** a full no-go theorem for the interior simplex, because the full 
 
 ## 8. Minimal packet for the next stage
 
-After Stage 244, the boundary problem is already solved and the interior problem has only one unresolved part: the genuine two-parameter optimizer on the simplex interior.
+After Stage 210, the boundary problem is already solved and the interior problem has only one unresolved part: the genuine two-parameter optimizer on the simplex interior.
 
 The smallest exact packet for that next stage is
 \[
@@ -539,18 +539,18 @@ where
 
 The natural continuation is now completely sharp:
 
-> solve the full interior simplex optimizer by reducing the two-parameter stationary system to a finite algebraic candidate set, just as Stage 243 did for the one-parameter pairwise cones.
+> solve the full interior simplex optimizer by reducing the two-parameter stationary system to a finite algebraic candidate set, just as Stage 209 did for the one-parameter pairwise cones.
 
-That is the natural content of Stage 245.
+That is the natural content of Stage 211.
 
 ---
 
-## 9. Best current reading after Stage 244
+## 9. Best current reading after Stage 210
 
-Stage 243 already proved that the pairwise boundary problem is finite and exact.
-Stage 244 now shows what is genuinely new at the first three-coordinate level:
+Stage 209 already proved that the pairwise boundary problem is finite and exact.
+Stage 210 now shows what is genuinely new at the first three-coordinate level:
 
-1. every boundary edge of the three-coordinate simplex is already one of the Stage 243 pairwise cones,
+1. every boundary edge of the three-coordinate simplex is already one of the Stage 209 pairwise cones,
 2. a genuine interior triple ray always beats the pairwise edges at the first-order gradient level,
 3. the equal-mix barycenter uniquely maximizes the total three-way off-diagonal Hessian leverage,
 4. every fixed interior simplex point already carries an exact certified local bracket,

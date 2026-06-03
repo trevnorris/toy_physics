@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 247 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to the outgoing-weighted average of the wall-normalized transfer-shape slopes,
+Stage 179 reduced the remaining weak-axisymmetric grouped `2.5`PN defect to the outgoing-weighted average of the wall-normalized transfer-shape slopes,
 \[
 \Xi_1 = 2\sum_r \rho_r^{(N)}\,\tau_r.
 \]
@@ -58,7 +58,7 @@ It is:
 
 ## 1. Exact collapse from many ports to one effective transfer shape
 
-Stage 247 already gave the exact portwise factorization
+Stage 179 already gave the exact portwise factorization
 \[
 N_{A,0}^{(r)}=K_A\,\mathcal T_{A,r}^2.
 \]
@@ -95,7 +95,7 @@ Then
 =
 2\sum_r \rho_r^{(N)}\tau_r,
 \]
-because the Stage 247 weights are exactly
+because the Stage 179 weights are exactly
 \[
 \rho_r^{(N)}=\frac{N_{0}^{(r)}}{N_0}=\frac{\mathcal T_r^2}{\sum_s \mathcal T_s^2}.
 \]
@@ -173,7 +173,7 @@ this is equivalently
 }
 \]
 
-This is the first exact actual-port formula for the Stage 247 transfer shape.
+This is the first exact actual-port formula for the Stage 179 transfer shape.
 
 A useful physical consequence is immediate:
 
@@ -241,7 +241,7 @@ So on the actual minimal continuum port, the remaining weak-axisymmetric grouped
 3. interference-ratio drift \( \rho_1 \),
 4. mixed blocking drift \( \varepsilon_W \).
 
-This is the first exact actual-port answer to the Stage 247 “compute \(\tau_r\)” question.
+This is the first exact actual-port answer to the Stage 179 “compute \(\tau_r\)” question.
 
 ---
 
@@ -359,7 +359,7 @@ Thus the one-port continuum theorem is now genuinely bidirectional.
 
 ## 6. Consequence for the grouped weak-axisymmetric quadrupole defect
 
-Stage 241 already fixed the grouped lane pattern of the remaining weak-axisymmetric normalization defect:
+Stage 172 already fixed the grouped lane pattern of the remaining weak-axisymmetric normalization defect:
 \[
 \Delta_Q^{(20)}=\epsilon\,\Xi_1,
 \qquad
@@ -379,14 +379,14 @@ Because \(\Xi_1=2\tau\) on the one-port branch, this becomes
 \]
 So once the actual one-port transfer-shape slope is known, the full weak-axisymmetric grouped normalization pattern is fixed immediately.
 
-This is the cleanest explicit continuation of the Stage 247 theorem chain.
+This is the cleanest explicit continuation of the Stage 179 theorem chain.
 
 ---
 
-## 7. What Stage 248 changes
+## 7. What Stage 180 changes
 
-Stage 247 already reduced the last grouped defect to the outgoing-weighted average transfer-shape slope.
-Stage 248 sharpens that result in two decisive ways.
+Stage 179 already reduced the last grouped defect to the outgoing-weighted average transfer-shape slope.
+Stage 180 sharpens that result in two decisive ways.
 
 First, it shows that the many-port weighted average is itself exactly the slope of a single effective transfer shape,
 \[

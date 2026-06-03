@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-240 compatibility branch and the Stage-243 pure-transfer subcorridor.**
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223 compatibility branch and the Stage-226 pure-transfer subcorridor.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the strict same-charge survivor from Stage 243,
+It takes the strict same-charge survivor from Stage 226,
 \[
 D_{01}=D_{21}=D_{41}=0,
 \qquad
@@ -19,7 +19,7 @@ and asks the next natural microscopic question:
 
 ## Purpose
 
-Stage 243 already reduced the live same-charge corridor to a very specific mechanism:
+Stage 226 already reduced the live same-charge corridor to a very specific mechanism:
 \[
 D_{01}=D_{21}=D_{41}=0,
 \qquad
@@ -65,7 +65,7 @@ The main outputs of this stage are:
    \]
 6. and the transported dynamic ceilings on the remaining one-dimensional rigid survivors.
 
-So after Stage 244, the question is no longer
+So after Stage 227, the question is no longer
 
 > does some pure-transfer effect survive?
 
@@ -79,7 +79,7 @@ It is now
 
 ### 1.1 Concrete finite-throat one-port sample branch
 
-Keep the same explicit finite-throat branch from Stages 240–243:
+Keep the same explicit finite-throat branch from Stages 223–226:
 
 - wall and brane-like internal coordinate on the lowest N/N zero mode,
 - trapped support and mixed coordinate on the lowest D/N half-wave,
@@ -111,11 +111,11 @@ P=\Omega_U^2G_W+RG_U,
 N_0=\frac{P^2}{\Delta^2}.
 \]
 
-### 1.2 Stage-243 pure-transfer corridor
+### 1.2 Stage-226 pure-transfer corridor
 
-Stage 243 showed that on this noncanonical compatibility branch, the full intersection of
+Stage 226 showed that on this noncanonical compatibility branch, the full intersection of
 
-1. Stage-242 conservative-shape preservation, and
+1. Stage-225 conservative-shape preservation, and
 2. the stricter imported `5`PN even-gate package,
 
 is equivalent to
@@ -173,7 +173,7 @@ Equivalently,
 }
 \]
 
-This is already a major sharpening of the Stage-243 verdict.
+This is already a major sharpening of the Stage-226 verdict.
 The mechanism is no longer “mixed-sector enhancement” in general.
 It is one exact load-factor slope.
 
@@ -236,7 +236,7 @@ i=x_{\lambda_R}+x_{\lambda_U}-x_{\lambda_W}-2x_{\Omega_U},
 h=2x_{\lambda_R}-2x_{\Omega_U}-2x_{\Omega_W}.
 \]
 
-Then on the Stage-243 pure-transfer corridor,
+Then on the Stage-226 pure-transfer corridor,
 \[
 \boxed{
 \Xi_1
@@ -261,7 +261,7 @@ I=\frac{3}{16},
 \qquad
 H=\frac{25}{98\pi^2}.
 \]
-So the exact Stage-244 load law is
+So the exact Stage-227 load law is
 \[
 \boxed{
 \Xi_1
@@ -287,7 +287,7 @@ i=0,
 \qquad
 h=0,
 \]
-are imposed on the pure-transfer corridor, the exact reduced `2 x 2` rigidity matrix on the Stage-243 basis has nonzero determinant:
+are imposed on the pure-transfer corridor, the exact reduced `2 x 2` rigidity matrix on the Stage-226 basis has nonzero determinant:
 \[
 \det[(i,h)|_{\rm pure\ transfer}]
 =
@@ -379,7 +379,7 @@ Interpret the ambient microscopic mixed-sector drift amplitude as
 \[
 \|x_{\rm mixed}\|_2=t.
 \]
-If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-241 ceiling law becomes
+If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-224 ceiling law becomes
 \[
 |\epsilon|t \le \frac{\text{budget}}{\sigma}.
 \]
@@ -439,7 +439,7 @@ That does **not** make it automatically the physically best mechanism, but it do
 
 ---
 
-## 7. What Stage 244 changes
+## 7. What Stage 227 changes
 
 Before this stage, the strongest statement was only
 
@@ -461,7 +461,7 @@ After this stage, the picture is much sharper.
 
 So the best current summary is:
 
-> the idea survives Stage 244, but only as a very structured outgoing co-loading effect. Pure transfer is real, but it is not generically “just the mixed leg.” And the first exact no-go now says that simultaneous interference and hybridization rigidity kills the mechanism on this concrete branch.
+> the idea survives Stage 227, but only as a very structured outgoing co-loading effect. Pure transfer is real, but it is not generically “just the mixed leg.” And the first exact no-go now says that simultaneous interference and hybridization rigidity kills the mechanism on this concrete branch.
 
 That is a real narrowing, and it is the right kind of narrowing.
 
@@ -471,7 +471,7 @@ That is a real narrowing, and it is the right kind of narrowing.
 
 The accompanying SymPy audit verifies:
 
-- the exact Stage-243 pure-transfer corridor on the explicit finite-throat compatibility branch;
+- the exact Stage-226 pure-transfer corridor on the explicit finite-throat compatibility branch;
 - the exact pure-transfer theorem
   \[
   \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta};

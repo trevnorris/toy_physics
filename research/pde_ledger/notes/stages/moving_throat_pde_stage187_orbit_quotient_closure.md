@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 237 already showed that the coherent weak-axisymmetric zero-defect ledger
+Stage 186 already showed that the coherent weak-axisymmetric zero-defect ledger
 
 a) is cut out by the three direct monomial drifts
 \[
@@ -26,7 +26,7 @@ There is one natural final step after that:
 
 That is what this stage does.
 
-The main result is stronger than Stage 237:
+The main result is stronger than Stage 186:
 
 \[
 \boxed{
@@ -105,7 +105,7 @@ They define the exact invariant map
 }
 \]
 
-Stage 237 already constructed a five-parameter multiplicative similarity family
+Stage 186 already constructed a five-parameter multiplicative similarity family
 \(\mathcal G_*\) preserving these three monomials exactly. What remained to prove was that these three monomials are not just preserved by the orbit, but are also **complete** orbit invariants.
 
 ---
@@ -194,7 +194,7 @@ So the exact finite invariant-fibre equations are
 M_*\,\Delta\mathbf x=0,
 }
 \]
-with the same matrix already found in Stage 237:
+with the same matrix already found in Stage 186:
 \[
 \boxed{
 M_*=
@@ -206,7 +206,7 @@ M_*=
 }
 \]
 
-This is the key finite upgrade of Stage 237:
+This is the key finite upgrade of Stage 186:
 
 > the same rank-3 matrix governs not only the infinitesimal weak-axisymmetric drift, but the **exact finite equality of branch invariants between any two positive microscopic states**.
 
@@ -256,7 +256,7 @@ F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U).
 }
 \]
 
-Exponentiating immediately gives the finite multiplicative orbit law of Stage 237:
+Exponentiating immediately gives the finite multiplicative orbit law of Stage 186:
 \[
 \frac{\widetilde K_\eta^{(\mathrm{eff})}}{K_\eta^{(\mathrm{eff})}}
 =
@@ -282,7 +282,7 @@ F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U)
 \Bigg).
 \]
 
-So the Stage 237 multiplicative similarity orbit is not merely compatible with the finite invariant equations — it is exactly their unique solution.
+So the Stage 186 multiplicative similarity orbit is not merely compatible with the finite invariant equations — it is exactly their unique solution.
 
 ---
 
@@ -319,7 +319,7 @@ are equivalent to the exact solved formulas above for
 \widetilde\mu_W
 \).
 
-But those are exactly the Stage 237 similarity-orbit transformations.
+But those are exactly the Stage 186 similarity-orbit transformations.
 Therefore
 \[
 \boxed{
@@ -331,7 +331,7 @@ Therefore
 
 So the fibres of the invariant map and the similarity orbits coincide **exactly**.
 
-This is the finite closure theorem that Stage 237 was still one step short of proving.
+This is the finite closure theorem that Stage 186 was still one step short of proving.
 
 ---
 
@@ -354,14 +354,14 @@ with quotient coordinates
 
 So the entire coherent grouped weak-axisymmetric normalization problem is now reduced to motion in an exact three-dimensional quotient space.
 
-This is a much stronger statement than the Stage 237 tangent theorem alone.
+This is a much stronger statement than the Stage 186 tangent theorem alone.
 It says that the five free microscopic co-scalings are **pure gauge/similarity directions** inside the reduced coherent hierarchy, while the three branch monomials are the complete finite orbit invariants.
 
 ---
 
 ## 7. Linearized observable map from the exact quotient coordinates
 
-Stages 234–236 already identified the first-order observable bridge from the quotient coordinates:
+Stages 183–185 already identified the first-order observable bridge from the quotient coordinates:
 \[
 \delta\ln\mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
 \qquad
@@ -370,7 +370,7 @@ Stages 234–236 already identified the first-order observable bridge from the q
 \delta\ln\epsilon_\eta=\Sigma_\eta.
 \]
 
-Using the exact triangular normal form from Stage 251, the weak-axisymmetric observables are therefore
+Using the exact triangular normal form from Stage 183, the weak-axisymmetric observables are therefore
 \[
 \boxed{
 \Theta_1
@@ -404,7 +404,7 @@ So the first coherent grouped weak-axisymmetric defect is literally the infinite
 
 ## 8. Final finite closure theorem
 
-Combining the exact orbit–fibre theorem with the Stage 251 triangular normal form gives the cleanest final statement reached in the moving-throat notes:
+Combining the exact orbit–fibre theorem with the Stage 183 triangular normal form gives the cleanest final statement reached in the moving-throat notes:
 
 \[
 \boxed{
@@ -469,18 +469,18 @@ So the reduced defect geometry is now completely explicit at finite as well as i
 
 ### 9.3 This is the cleanest reduced finish available without the completed PDE
 
-The only thing Stage 238 does **not** provide is the actual dynamical branch theorem proving that the moving-throat PDE respects those quotient invariants.
+The only thing Stage 187 does **not** provide is the actual dynamical branch theorem proving that the moving-throat PDE respects those quotient invariants.
 That is now the sole remaining microscopic task.
 
 ---
 
-## 10. Best current theorem statement after Stage 238
+## 10. Best current theorem statement after Stage 187
 
 On the coherent local D/N tracking branch, let
 \[
 \mathcal I=(\mathfrak C_{{\rm tr},*},\mathfrak C_{{\rm nt},*},\epsilon_\eta)
 \]
-be the exact invariant map and let \(\mathcal G_*\) be the five-parameter multiplicative similarity family of Stage 237.
+be the exact invariant map and let \(\mathcal G_*\) be the five-parameter multiplicative similarity family of Stage 186.
 Then:
 
 1. \(\mathcal G_*\) preserves \(\mathcal I\) exactly.

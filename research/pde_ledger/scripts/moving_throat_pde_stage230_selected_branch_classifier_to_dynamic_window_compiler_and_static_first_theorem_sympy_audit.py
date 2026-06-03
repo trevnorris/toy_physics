@@ -116,7 +116,9 @@ def main() -> None:
 
     # Exact relations:
     assert sp.simplify(S_minus.subs(R, R_star)) == 0
-    assert sp.simplify(onset.subs(delta, delta_dyn_star) - R_star) == 0
+    delta_solutions = sp.solve(sp.Eq(onset, R_star), delta)
+    assert len(delta_solutions) == 1
+    assert sp.simplify(delta_solutions[0] - delta_dyn_star) == 0
 
     # Representative sign checks.
     if not float(sp.N(S_plus.subs(R, sp.Rational(0)), 30)) < 0:

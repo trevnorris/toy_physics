@@ -1,0 +1,160 @@
+
+========================================================================================
+STAGE 225 -- MICROSCOPIC XI1 COMPILER MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Arbitrary-base first-order slopes from Series coefficients
+----------------------------------------------------------------------------------------
+M1 u2^(1) residual = 0
+PASS: M1 u2^(1)
+M1 u4^(1) residual = 0
+PASS: M1 u4^(1)
+M1 Xi1 residual = 0
+PASS: M1 Xi1
+
+----------------------------------------------------------------------------------------
+M2. Conservative compensation surface and one-pole reduction
+----------------------------------------------------------------------------------------
+M2 D21 compensation residual = 0
+PASS: M2 D21 compensation
+M2 D41 compensation residual = 0
+PASS: M2 D41 compensation
+M2 D41 as (u2^2-u4)D01 residual = 0
+PASS: M2 D41 as (u2^2-u4)D01
+M2 one-pole D41 reduction residual = 0
+PASS: M2 one-pole D41 reduction
+M2 wrong -2 coefficient is not an identity residual = -((D01*D2^2)/D0^2)
+PASS: M2 wrong -2 coefficient is not an identity
+
+----------------------------------------------------------------------------------------
+M3. Primitive logarithmic-slope compiler
+----------------------------------------------------------------------------------------
+M3 B0 drift residual = 0
+PASS: M3 B0 drift
+M3 B2 drift residual = 0
+PASS: M3 B2 drift
+M3 B4 drift residual = 0
+PASS: M3 B4 drift
+M3 Delta drift residual = 0
+PASS: M3 Delta drift
+M3 S2 drift residual = 0
+PASS: M3 S2 drift
+M3 H drift residual = 0
+PASS: M3 H drift
+M3 Q drift residual = 0
+PASS: M3 Q drift
+M3 P raw drift residual = 0
+PASS: M3 P raw drift
+M3 Z0 drift residual = 0
+PASS: M3 Z0 drift
+M3 Z2 drift residual = 0
+PASS: M3 Z2 drift
+M3 Z4 drift residual = 0
+PASS: M3 Z4 drift
+M3 N0 drift residual = 0
+PASS: M3 N0 drift
+M3 D01 compiler residual = 0
+PASS: M3 D01 compiler
+M3 D21 compiler residual = 0
+PASS: M3 D21 compiler
+M3 D41 compiler residual = 0
+PASS: M3 D41 compiler
+M3 N01 compiler residual = 0
+PASS: M3 N01 compiler
+
+----------------------------------------------------------------------------------------
+M4. Concrete Stage 223 compatibility sample
+----------------------------------------------------------------------------------------
+M4 D0 actual = 24.23730998862225050219572666932425639298`16., residual = 4.949780427333067574360702`1.0090715209629275*^-14
+PASS: M4 D0
+M4 D2 actual = -1.18562046858189501922529020005703317758`16., residual = 4.98077470979994296682242`1.3223212141512872*^-15
+PASS: M4 D2
+M4 D4 actual = -0.17399157284949070147433107444739709927`16., residual = 2.9852566892555260290073`0.9334234704364786*^-16
+PASS: M4 D4
+M4 u2 actual = 0.04891716403918018368400131011682606947`16., residual = 1.631599868988317393053`0.22212239513283605*^-17
+PASS: M4 u2
+M4 u4 actual = 0.00957155575054425177270367727966786452`16., residual = 0``17.71798747105619
+PASS: M4 u4
+M4 D4/D0 actual = -0.00717866681290818882952775795975112313`16., residual = 1.117047224204024887687`0.8909977413689005*^-17
+PASS: M4 D4/D0
+M4 P0 target actual = 0.00206979231806288269711224604705516179`16., residual = 7.30288775395294483821`1.2465378591336171*^-18
+PASS: M4 P0 target
+M4 exact one-pole identity residual = 0
+PASS: M4 exact one-pole identity
+
+----------------------------------------------------------------------------------------
+M5. Concrete Xi1 coefficients at the sample
+----------------------------------------------------------------------------------------
+M5 coeff xK actual = -1.00975540977029715614772732850246959041`16., residual = 2.84385227267149753040959`1.1486608484468093*^-15
+PASS: M5 coeff xK
+M5 coeff xM residual = 0
+PASS: M5 coeff xM
+M5 coeff xLB actual = 0.0041803807307783370433485955601928668`16., residual = 2.9566514044398071332`0.5485542904101594*^-18
+PASS: M5 coeff xLB
+M5 coeff xV actual = -0.0041803807307783370433485955601928668`16., residual = 2.9566514044398071332`0.5485542904101594*^-18
+PASS: M5 coeff xV
+M5 coeff xLU actual = 0.32446402021676624822517369289991968224`16., residual = 2.4822517369289991968224`0.5826492826626813*^-16
+PASS: M5 coeff xLU
+M5 coeff xLW actual = 1.69086641859304972702693236854482650521`16., residual = 0``15.470860705407384
+PASS: M5 coeff xLW
+M5 coeff xLR actual = 0.42337935438246311257406891560414287999`16., residual = 1.1257406891560414287999`0.12367869167856657*^-16
+PASS: M5 coeff xLR
+M5 coeff xOU actual = -0.74784337459922936079924260850406256223`16., residual = 3.6079924260850406256223`0.38242497108897383*^-16
+PASS: M5 coeff xOU
+M5 coeff xOW actual = -4.11424577297551283960100128415736432141`16., residual = 2.83960100128415736432141`0.5379370933644456*^-15
+PASS: M5 coeff xOW
+
+----------------------------------------------------------------------------------------
+M6. Wall-only and pure-BdG no-go checks
+----------------------------------------------------------------------------------------
+M6 wall matrix rank two = True
+PASS: M6 wall matrix rank two
+M6 wall-only nullspace trivial = True
+PASS: M6 wall-only nullspace trivial
+M6 pure-BdG determinant formula residual = 0
+PASS: M6 pure-BdG determinant formula
+M6 pure-BdG sample determinant actual = -0.00005118869961200108511953459828323805`16., residual = 1.488046540171676195`0.1624124218048287*^-20
+PASS: M6 pure-BdG sample determinant
+M6 pure-BdG determinant nonzero at sample residual = (-5*(-78125 - 193750*Pi^2 + 27521250*Pi^4 + 50983880*Pi^6 + 27294568*Pi^8)*(-390625 - 12093750*Pi^2 - 106046250*Pi^4 - 235535000*Pi^6 + 273886872*Pi^8))/(192*Pi^4*(25 - 98*Pi^2)^2*(15625 + 322500*Pi^2 + 633000*Pi^4 + 2093672*Pi^6)^2)
+PASS: M6 pure-BdG determinant nonzero at sample
+
+----------------------------------------------------------------------------------------
+M7. Mixed/U survivor from direct NullSpace
+----------------------------------------------------------------------------------------
+M7 mixed matrix rank two = True
+PASS: M7 mixed matrix rank two
+M7 mixed nullity three = True
+PASS: M7 mixed nullity three
+M7 normalized basis v1 lies in nullspace residual = {0, 0}
+PASS: M7 normalized basis v1 lies in nullspace
+M7 normalized basis v2 lies in nullspace residual = {0, 0}
+PASS: M7 normalized basis v2 lies in nullspace
+M7 normalized basis v3 lies in nullspace residual = {0, 0}
+PASS: M7 normalized basis v3 lies in nullspace
+M7 null vector v1 residuals = {0``15.913458263929202, 0``15.87212645761439, 0``15.698970004336017, 0., 0.}
+PASS: M7 null vector v1
+M7 null vector v2 residuals = {2.87655934996245027238894`0.3093648900547487*^-15, 4.87111931208590431592384`0.4113438677584754*^-15, 0., 0``15.698970004336017, 0.}
+PASS: M7 null vector v2
+M7 null vector v3 residuals = {3.41094326837045175618492`1.0237094804541786*^-15, 0``15.774762645025511, 0., 0., 0``15.698970004336017}
+PASS: M7 null vector v3
+M7 Xi1(v1) actual = 1.36026097049401850978169430515743324233`16., residual = 1.49021830569484256675767`0.7385976610873335*^-15
+PASS: M7 Xi1(v1)
+M7 Xi1(v2) actual = -14.43102781397545563916840765050601590289`16., residual = 4.436083159234949398409711`1.1866724194782163*^-14
+PASS: M7 Xi1(v2)
+M7 Xi1(v3) actual = -5.01037421295998077730109617929470660916`16., residual = 0``14.999099840833173
+PASS: M7 Xi1(v3)
+
+----------------------------------------------------------------------------------------
+M8. Transported Stage 224 amplitude windows
+----------------------------------------------------------------------------------------
+M8 both_10 window actual = 0.27048510283950950198565611702366654324`16., residual = 4.9801434388297633345676`0.964068504867894*^-16
+PASS: M8 both_10 window
+M8 one_10 window actual = 0.54226290370800558977309411335995036755`16., residual = 4.1022690588664004963245`0.5777842504322381*^-16
+PASS: M8 one_10 window
+M8 both_30 window actual = 2.16788978070903489242518116390865202977`16., residual = 5.10757481883609134797023`1.0711475433545534*^-15
+PASS: M8 both_30 window
+M8 one_30 window actual = 3.4074746127837214882322073170882238437`16., residual = 8.5117677926829117761563`1.0965571427442953*^-15
+PASS: M8 one_30 window
+
+All Stage 225 Mathematica checks passed.

@@ -3,13 +3,14 @@
 > Resume doc. Read this + the files it points to, then continue. Written before a
 > planned compaction so a fresh context picks up exactly here.
 
-> **STATUS (2026-06-02): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 218.**
+> **STATUS (2026-06-02): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 230.**
 > All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
 > **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
 > (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
 > **RETRO-SWEEP {121, 122, 123} DONE — 3/3 dual-engine `.wl` verified (2026-06-01; batch `redteam/batches/batch_retro_v2.md`).**
 > **VI.1 = {201–218} DONE — 18/18 verified (2026-06-02; batch `redteam/batches/batch_VI1_v2.md`; checkpoints 203 & 218 both cleared the higher bar; 16 new independent `.wl` + 218 re-authored + 203 strengthened; 5 paper_misalignment user-resolved; `material_change: false` on all 18).**
-> Cumulative **218/253 verified (86.2%)**.
+> **VII.1 = {219–230} DONE + COMMITTED — 12/12 verified (2026-06-02; this commit, see git log; batch `redteam/batches/batch_VII1_v2.md`; checkpoint 221 cleared the higher bar [existing `.wl` re-authored from a transliteration to an independent route]; 11 new independent `.wl` + 221 re-authored = 12 independent, 0 sanctioned mirrors; 7 notes-only paper_misalignment user-resolved [5 numerical typos, each CROSS-ENGINE-CORROBORATED by the new `.wl`, + 2 renumbers], published cards/appendices UNAFFECTED; 6 script-side de-taut/insufficient/hardcoded fixes; `material_change: false` on all 12; all 12 codex iter-1 exit 0, 0 stop-cold, 0 blocked, 0 iter-2; residuals → PAPER_CLEANUP P4-53).**
+> Cumulative **230/253 verified (90.9%)**.
 >
 > **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
 > a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
@@ -43,8 +44,21 @@
 >    comment + dead helpers). **INFRA LESSON: a single Codex build can hold BOTH Mathematica seats
 >    during a hang → DEFER the orchestrator's `exec-*` re-run until a wave's Codex builds finish; never
 >    exec concurrently with an active build.**
-> 3. **VII.1 = {219–230}** — NEXT forward batch (12 stages). Then VII.2 {231–242} (12), VIII.1
->    {243–253} (11) = **35 stages to reach 253**. Same forward first-pass loop under the v2
+> 3. ✅ **VII.1 = {219–230} DONE + COMMITTED — 12/12 verified 2026-06-02 (this commit, see git log)**; batch
+>    `batch_VII1_v2.md`; checkpoint 221 cleared the higher bar; 12 independent `.wl` (11 new + 221
+>    re-authored from a transliteration), 0 sanctioned mirrors; 6 script-side de-taut/insufficient/
+>    hardcoded fixes; 7 notes-only paper_misalignment user-resolved (5 numerical typos cross-engine-
+>    corroborated + 2 renumbers); residual multi-epoch notes-renumber drift (219/221/222/223-title/
+>    227/228/229 — INCONSISTENT offsets across files, NOT a safe blind sweep, needs a careful
+>    per-reference pass; ROOT CAUSE = EM-derivation extension + block realignment with an incomplete
+>    number-bump → canonical numbering [cards/scripts/MANIFEST] is GROUND TRUTH and the drift is
+>    PROJECT-WIDE [V.2/V.3/VI.1/VII.1+]; RESOLUTION user-decided 2026-06-02 = ONE project-wide
+>    stem-keyed reconciliation in the post-253 cleanup pass, NOT per-batch, NEVER offset-sweep) +
+>    221/227 stale `.wl` banner/tag labels → PAPER_CLEANUP **P4-53** (+ memory `numbering-drift-root-cause`). The VI.1
+>    `.wl`-naming bug did NOT recur (pre-invoke grep guard worked, 0/12). 230's codex log captured
+>    empty once (logging anomaly, not a stall — artifacts + Applied blocks + verify all confirmed).
+> 4. **VII.2 = {231–242}** — NEXT forward batch (12 stages). Then VIII.1 {243–253} (11) = **23 stages
+>    to reach 253**. Same forward first-pass loop under the v2
 >    paper-grounded prompt WITH the dual-engine rule: audit agents flag `missing_mathematica` (auditor
 >    line 118) on every SymPy-only-but-dual-engine-capable stage; Codex writes BOTH `.py` fixes AND new
 >    `.wl`; Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).

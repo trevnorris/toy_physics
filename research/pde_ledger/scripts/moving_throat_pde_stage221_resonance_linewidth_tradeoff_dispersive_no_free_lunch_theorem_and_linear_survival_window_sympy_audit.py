@@ -140,6 +140,11 @@ def main() -> None:
     residue_requirement = sp.simplify(
         2 * DeltaV_req / Sfam**2 * (1 + eta**2) / eta
     )
+    assert sp.simplify((-U_disp).subs(r, 1 / eta) - Udisp_lowloss_max) == 0
+    assert sp.simplify(
+        (Aabs / gamma * eta / (1 + eta**2) * Sfam**2).subs(Aabs, residue_requirement * gamma)
+        - 2 * DeltaV_req
+    ) == 0
 
     print('\nLinear survival-window formulas:')
     print('|U_disp|_max in the low-loss window =', Udisp_lowloss_max)

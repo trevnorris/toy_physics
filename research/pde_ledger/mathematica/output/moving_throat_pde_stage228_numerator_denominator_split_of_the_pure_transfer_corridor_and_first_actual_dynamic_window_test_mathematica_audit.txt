@@ -1,0 +1,127 @@
+=== Stage 228 Mathematica audit: numerator/denominator split and dynamic-window test ===
+k_compat = 2977/75 + 2/Pi^2 + 361/(-25 + 98*Pi^2) - (5*(26562500 + 1126582125*Pi^2 + 12952098300*Pi^4 + 21346681732*Pi^6))/(6*(-390625 + 4593750*Pi^2 + 259432500*Pi^4 + 500146600*Pi^6 + 67765824*Pi^8))
+Xi_1 = (1750*xLR)/(19*(-25 + 98*Pi^2)) + (588*Pi^2*xLR)/(19*(-25 + 98*Pi^2)) - (150*xLU)/(19*(-25 + 98*Pi^2)) + (588*Pi^2*xLU)/(19*(-25 + 98*Pi^2)) - (800*xLW)/(19*(-25 + 98*Pi^2)) + (3136*Pi^2*xLW)/(19*(-25 + 98*Pi^2)) - (1600*xOU)/(19*(-25 + 98*Pi^2)) - (1176*Pi^2*xOU)/(19*(-25 + 98*Pi^2)) - (392*Pi^2*xOW)/(-25 + 98*Pi^2)
+pi_1 = (3*xLR)/19 + (3*xLU)/19 + (16*xLW)/19 + (32*xOU)/19
+delta_1 = (-50*xLR)/(-25 + 98*Pi^2) + (196*Pi^2*xOU)/(-25 + 98*Pi^2) + (196*Pi^2*xOW)/(-25 + 98*Pi^2)
+M1 split identity = 0
+PASS: M1 split identity
+pi_1 row = {3/19, 16/19, 3/19, 32/19, 0}
+delta_1 row = {0, 0, 50/(25 - 98*Pi^2), 2 + 50/(-25 + 98*Pi^2), 2 + 50/(-25 + 98*Pi^2)}
+M2 exact pi_1 row = 0
+PASS: M2 exact pi_1 row
+M3 exact delta_1 row = 0
+PASS: M3 exact delta_1 row
+transfer matrix = {{-9/50 + 57/(50 - 196*Pi^2), 152/(25 - 98*Pi^2), (-19*(200 + 147*Pi^2))/(25 - 98*Pi^2)^2, (2*(200 + 147*Pi^2)^2)/(25*(25 - 98*Pi^2)^2), (17689*Pi^2)/(25 - 98*Pi^2)^2}, {(-3*Pi^2*(31475 + 14406*Pi^2))/(25*(25 - 98*Pi^2)^2), (-32*(100 + 311*Pi^2))/(25 - 98*Pi^2)^2, -((80000 + 905625*Pi^2 + 456582*Pi^4)/(-25 + 98*Pi^2)^3), (4*Pi^2*(200 + 147*Pi^2)*(31475 + 14406*Pi^2))/(25*(-25 + 98*Pi^2)^3), (7448*Pi^2*(100 + 311*Pi^2))/(-25 + 98*Pi^2)^3}, {(-6*Pi^2*(125000 + 1931025*Pi^2 + 705894*Pi^4))/(25*(-25 + 98*Pi^2)^3), (-16*Pi^2*(41475 + 45506*Pi^2))/(-25 + 98*Pi^2)^3, (-300*Pi^2*(113100 + 495641*Pi^2 + 193746*Pi^4))/(25 - 98*Pi^2)^4, (2*Pi^2*(100000000 + 2608995625*Pi^2 + 2607015600*Pi^4 + 622598508*Pi^6))/(25*(25 - 98*Pi^2)^4), (196*Pi^2*(40000 + 1036825*Pi^2 + 1251498*Pi^4))/(25 - 98*Pi^2)^4}}
+M4 pure-transfer rank = 0
+PASS: M4 pure-transfer rank
+M4 pure-transfer nullity = 0
+PASS: M4 pure-transfer nullity
+M4 numerator-rigid rank = 0
+PASS: M4 numerator-rigid rank
+M4 numerator-rigid nullity = 0
+PASS: M4 numerator-rigid nullity
+M4 denominator-rigid rank = 0
+PASS: M4 denominator-rigid rank
+M4 denominator-rigid nullity = 0
+PASS: M4 denominator-rigid nullity
+M4 both-rigid rank = 0
+PASS: M4 both-rigid rank
+M4 both-rigid nullity = 0
+PASS: M4 both-rigid nullity
+det[(pi_1, delta_1)|_pure transfer] = (196*(200 + 147*Pi^2)*(80000 + 343225*Pi^2 + 43218*Pi^4))/(475*(8670000 + 14894275*Pi^2 + 2117682*Pi^4))
+M5 reduced determinant = 0
+PASS: M5 reduced determinant
+M5 reduced determinant nonzero = True
+PASS: M5 reduced determinant nonzero
+M6 v_num actual = {-0.55551149391366294218871229694363821802`14., 0.31814575602683628119209142609557239734`14., -0.65766800911637903661599848637136332159`14., -0.04533729960435170508310407711200480433`14., -0.39447126270668541199320663873666097603`14.} expected = {-0.55551149, 0.31814576, -0.65766801, -0.0453373, -0.39447126} maxdiff = 3.9731637424544886*^-9
+PASS: M6 v_num
+M6 v_den actual = {-0.26583993414536686051806836131411061062`14., 0.18448136606435751771152081238671308183`14., 0.94454459424951049068298655941997097896`14., 0.04984498765225628634713781774639573949`14., -0.02543111614911035017711113150326313239`14.} expected = {-0.26583993, 0.18448137, 0.94454459, 0.04984499, -0.02543112} maxdiff = 4.249510521248112*^-9
+PASS: M6 v_den
+M6 pi_1(v_num) = 0
+PASS: M6 pi_1(v_num)
+M6 delta_1(v_num) actual = -0.86805617483838092653286840132497649516`18. expected = -0.86805617 diff = 4.838380918137375*^-9
+PASS: M6 delta_1(v_num)
+M6 Xi_1(v_num) actual = 1.73611234967676185306573680264995299033`18. expected = 1.73611235 diff = 3.2323810295054045*^-10
+PASS: M6 Xi_1(v_num)
+M6 delta_1(v_den) = 0
+PASS: M6 delta_1(v_den)
+M6 pi_1(v_den) actual = 0.34646607590601854405197356633629758305`18. expected = 0.34646608 diff = 4.093981487152121*^-9
+PASS: M6 pi_1(v_den)
+M6 Xi_1(v_den) actual = 0.69293215181203708810394713267259516611`18. expected = 0.69293215 diff = 1.8120370759433513*^-9
+PASS: M6 Xi_1(v_den)
+M6 Xi_1(v_num) + 2 delta_1(v_num) actual = 0``49.459392177927654 expected = 0 diff = 0``49.459392177927654
+PASS: M6 Xi_1(v_num) + 2 delta_1(v_num)
+M6 Xi_1(v_den) - 2 pi_1(v_den) actual = 0``49.858279291421425 expected = 0 diff = 0``49.858279291421425
+PASS: M6 Xi_1(v_den) - 2 pi_1(v_den)
+positive omega roots = {0.9715753151294664526694474015400206206`18., 1.41651290122561267420539006044776624562`18., 1.99753567893361038816217007260368523012`18., 4.94905432364312330575498401564496693222`18.}
+wall omega roots = {1.99753567893361038816217007260368523012`18., 4.94905432364312330575498401564496693222`18.}
+wall R_Q values = {30.19990756024991682514125974176706093273`18., 36.17118648326952306445784208770288155511`18.}
+P_0 = 0.00206979231806288269711224604704645444`18.
+M7 omega_- actual = 1.99753567893361038816217007260368523012`18. expected = 1.99753568 diff = 1.066389643256116*^-9
+PASS: M7 omega_-
+M7 omega_+ actual = 4.94905432364312330575498401564496693222`18. expected = 4.94905432 diff = 3.643123136498616*^-9
+PASS: M7 omega_+
+M7 R_Q,- actual = 30.19990756024991682514125974176706093273`18. expected = 30.19990756 diff = 2.4991564373522124*^-10
+PASS: M7 R_Q,-
+M7 R_Q,+ actual = 36.17118648326952306445784208770288155511`18. expected = 36.17118648 diff = 3.2695197660359554*^-9
+PASS: M7 R_Q,+
+M7 P_0 actual = 0.00206979231806288269711224604704645444`18. expected = 0.00206979232 diff = 1.937117133365973*^-12
+PASS: M7 P_0
+numerator-rigid omega slopes = {-1.83708948400978314959781958649393`18.*^-6, -0.00001868699509035503581515804761316795`18.}
+numerator-rigid R_Q slopes = {0.71358483642759108412659455189790268374`18., -0.52346582165767206620751904731818974903`18.}
+numerator-rigid dln P_0 = 1.73611234967676185306573680264995299033`18.
+denominator-rigid omega slopes = {0``58.213586732635584, 0``59.91031367493503}
+denominator-rigid R_Q slopes = {-0.23169484203950822036874626765248758558`18., -0.35245540998006950448863949308970627889`18.}
+denominator-rigid dln P_0 = 0.69293215181203708810394713267259516611`18.
+M8 numerator dln P_0 actual = 1.73611234967676185306573680264995299033`18. expected = 1.73611235 diff = 3.2323810295054045*^-10
+PASS: M8 numerator dln P_0
+M8 numerator dln P_0 equals Xi_1 actual = 1.73611234967676185306573680264995299033`18. expected = 1.73611234967676185306573680264995299033`18. diff = 0``49.459392177927654
+PASS: M8 numerator dln P_0 equals Xi_1
+M8 numerator dln R_Q,+ actual = -0.52346582165767206620751904731818974903`18. expected = -0.52346582 diff = 1.6576721106886794*^-9
+PASS: M8 numerator dln R_Q,+
+M8 numerator dln R_Q,- actual = 0.71358483642759108412659455189790268374`18. expected = 0.71358484 diff = 3.5724089242350487*^-9
+PASS: M8 numerator dln R_Q,-
+M8 numerator omega_- slope magnitude = 1.8370894840097831495978195864939266840008469043567837`40.*^-6
+PASS: M8 numerator omega_- slope
+M8 numerator omega_+ slope magnitude = 0.0000186869950903550358151580476131679542777569357059441623`40.
+PASS: M8 numerator omega_+ slope
+M8 denominator dln P_0 actual = 0.69293215181203708810394713267259516611`18. expected = 0.69293215 diff = 1.8120370759433513*^-9
+PASS: M8 denominator dln P_0
+M8 denominator dln P_0 equals Xi_1 actual = 0.69293215181203708810394713267259516611`18. expected = 0.69293215181203708810394713267259516611`18. diff = 0``49.858279291421425
+PASS: M8 denominator dln P_0 equals Xi_1
+M8 denominator dln R_Q,+ actual = -0.35245540998006950448863949308970627889`18. expected = -0.35245541 diff = 1.9930501693465885*^-11
+PASS: M8 denominator dln R_Q,+
+M8 denominator dln R_Q,- actual = -0.23169484203950822036874626765248758558`18. expected = -0.23169484 diff = 2.03950820121257*^-9
+PASS: M8 denominator dln R_Q,-
+M8 denominator omega_- slope magnitude = 0``58.213586732635584
+PASS: M8 denominator omega_- slope
+M8 denominator omega_+ slope magnitude = 0``59.91031367493503
+PASS: M8 denominator omega_+ slope
+numerator-rigid dynamic ceilings = {0.9625326889033338, Infinity}
+denominator-rigid dynamic ceilings = {1.3959265432398302, 1.4295509463101836}
+numerator-rigid static ceilings = {0.2119277180196023, 0.4248682775616973}
+denominator-rigid static ceilings = {0.5309759801598148, 1.0644895921366362}
+M9 numerator both dynamic actual = 0.9625326889033338 expected = 0.96253269 diff = 1.0966662022937612*^-9
+PASS: M9 numerator both dynamic
+M9 numerator nonempty dynamic is Infinity = True
+PASS: M9 numerator nonempty dynamic is Infinity
+M9 denominator both dynamic actual = 1.3959265432398302 expected = 1.39592653 diff = 1.323983012113672*^-8
+PASS: M9 denominator both dynamic
+M9 denominator nonempty dynamic actual = 1.4295509463101836 expected = 1.42955095 diff = 3.689816452379091*^-9
+PASS: M9 denominator nonempty dynamic
+M9 numerator both static actual = 0.2119277180196023 expected = 0.21192772 diff = 1.9803977069354772*^-9
+PASS: M9 numerator both static
+M9 numerator nonempty static actual = 0.4248682775616973 expected = 0.42486828 diff = 2.4383026708818534*^-9
+PASS: M9 numerator nonempty static
+M9 denominator both static actual = 0.5309759801598148 expected = 0.53097598 diff = 1.5981482803795188*^-10
+PASS: M9 denominator both static
+M9 denominator nonempty static actual = 1.0644895921366362 expected = 1.06448959 diff = 2.1366362012997797*^-9
+PASS: M9 denominator nonempty static
+M9 numerator both dynamic exceeds transported static = True
+PASS: M9 numerator both dynamic exceeds transported static
+M9 denominator both dynamic exceeds transported static = True
+PASS: M9 denominator both dynamic exceeds transported static
+M9 denominator nonempty dynamic exceeds transported static = True
+PASS: M9 denominator nonempty dynamic exceeds transported static
+
+Stage 228 Mathematica audit completed successfully.

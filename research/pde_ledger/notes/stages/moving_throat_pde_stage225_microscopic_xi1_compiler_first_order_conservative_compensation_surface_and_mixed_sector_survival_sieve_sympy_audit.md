@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-240 compatibility branch and the transported Stage-241 same-charge ceiling test.**
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223 compatibility branch and the transported Stage-224 same-charge ceiling test.**
 
 This stage does **not** solve the full moving-throat PDE.
 It takes the first actual finite-throat base branch that already satisfies the isotropic `5`PN compatibility surface, perturbs it by weak-axisymmetric primitive microscopic drifts, and determines exactly which first-order mechanism families can preserve the conservative grouped response while still carrying a nonzero same-charge scalar
@@ -14,7 +14,7 @@ It takes the first actual finite-throat base branch that already satisfies the i
 
 ## Purpose
 
-Stage 241 converted the actual-branch same-charge test into one explicit transported inequality in
+Stage 224 converted the actual-branch same-charge test into one explicit transported inequality in
 \[
 \Delta_{\rm norm},
 \qquad
@@ -31,7 +31,7 @@ The main outputs are:
    u_2^{(1)},\qquad u_4^{(1)},\qquad \Xi_1,
    \]
    together with the exact compensation surface that preserves the conservative grouped response on a one-pole base branch;
-2. the specialization of those formulas to the explicit Stage-240 compatibility point;
+2. the specialization of those formulas to the explicit Stage-223 compatibility point;
 3. the exact primitive compiler from microscopic logarithmic slopes
    \[
    (x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
@@ -45,9 +45,9 @@ The main outputs are:
    - pure BdG-only,
    - mixed-sector-only;
 5. one explicit mixed-sector compensated family that survives and carries nonzero `\Xi_1`;
-6. the direct translation of that surviving family into the transported Stage-241 same-charge headroom budgets.
+6. the direct translation of that surviving family into the transported Stage-224 same-charge headroom budgets.
 
-So after Stage 242, the question is no longer
+So after Stage 225, the question is no longer
 
 > can some microscopic anisotropy produce a useful `\Xi_1`?
 
@@ -59,9 +59,9 @@ It is now
 
 ## 1. Frozen input carried forward
 
-### 1.1 Explicit isotropic one-port base branch from Stage 240
+### 1.1 Explicit isotropic one-port base branch from Stage 223
 
-Keep the same explicit finite-throat branch used in Stages 239–241:
+Keep the same explicit finite-throat branch used in Stages 222–224:
 
 - lowest N/N zero mode for the wall and the brane-like internal coordinate,
 - lowest D/N half-wave for the trapped support and mixed coordinate,
@@ -112,7 +112,7 @@ Z_4=\frac{Q(S_2^2-\Delta)-S_2H\Delta}{\Delta^3},
 N_0=\frac{P^2}{\Delta^2}.
 \]
 
-For the concrete Stage-240 compatibility sample
+For the concrete Stage-223 compatibility sample
 \[
 (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
 =
@@ -149,9 +149,9 @@ P_{0,\mathrm{target,compat}}
 \approx 0.00206979231806289.
 \]
 
-### 1.2 Stage-241 transported same-charge ceilings at that point
+### 1.2 Stage-224 transported same-charge ceilings at that point
 
-At the same compatibility point, the stricter weak-axisymmetric budgets carried from Stage 241 are
+At the same compatibility point, the stricter weak-axisymmetric budgets carried from Stage 224 are
 \[
 |\epsilon\Xi_1| \lesssim 0.367930328492646
 \]
@@ -263,7 +263,7 @@ so the second equation reduces to
 This is the exact arbitrary-base continuation of the canonical `5`PN even-preserving surface.
 Once it is imposed, the only remaining first-order outlet is `\Xi_1`.
 
-For the concrete Stage-240 compatibility point, the compensation surface becomes
+For the concrete Stage-223 compatibility point, the compensation surface becomes
 \[
 D_{21}\approx -0.0489171640391802\,D_{01},
 \qquad
@@ -354,7 +354,7 @@ N_{0,1}=\frac{2PP_1^{\rm raw}}{\Delta^2}-\frac{2P^2\Delta_1}{\Delta^3}.
 
 ### 4.4 Concrete microscopic `\Xi_1` compiler at the compatibility point
 
-On the concrete Stage-240 compatibility point, the same-charge scalar compiles numerically to
+On the concrete Stage-223 compatibility point, the same-charge scalar compiles numerically to
 \[
 \boxed{
 \begin{aligned}
@@ -414,7 +414,7 @@ Therefore
 \boxed{\text{wall-only compensated deformations are generically trivial.}}
 \]
 
-This already kills the naive pure-wall route on the Stage-240 compatibility point, since there
+This already kills the naive pure-wall route on the Stage-223 compatibility point, since there
 \[
 \frac{D_4}{D_0}\approx -0.00717866681290820\neq 0.
 \]
@@ -441,7 +441,7 @@ Its exact determinant is
 -B_0B_2\frac{D_4}{D_0}-2B_0B_4u_2-B_2B_4.
 }
 \]
-On the Stage-240 compatibility point,
+On the Stage-223 compatibility point,
 \[
 \Delta_{\rm BdG}\approx -5.11886996120011\times 10^{-5}\neq 0.
 \]
@@ -458,7 +458,7 @@ Now activate only the mixed/U family
 \[
 (x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}).
 \]
-On the Stage-240 compatibility point, the compensation matrix is
+On the Stage-223 compatibility point, the compensation matrix is
 \[
 \begin{pmatrix}
 -0.241952861865934 & -0.122133861432532 & -0.0656784156312263 & 0.553209522700447 & 0.288144673113677 \\
@@ -503,7 +503,7 @@ Then
 \qquad
 \sigma_1\approx 1.36026097049402.
 \]
-The transported Stage-241 ceiling law is
+The transported Stage-224 ceiling law is
 \[
 |\epsilon\Xi_1| \le \text{budget},
 \]
@@ -539,11 +539,11 @@ That is exactly what we would expect if the corridor is real but narrow.
 
 ---
 
-## 7. What Stage 242 changes
+## 7. What Stage 225 changes
 
 Before this stage, the same-charge continuation was still phrased as
 
-> compute `\Xi_1` somehow from the branch and compare it against the Stage-241 ceiling.
+> compute `\Xi_1` somehow from the branch and compare it against the Stage-224 ceiling.
 
 After this stage, the problem is materially sharper.
 
@@ -577,14 +577,14 @@ The paired audit script verifies all of the following:
    \]
 2. the exact first-order conservative compensation surface;
 3. the full primitive logarithmic-slope compiler;
-4. the Stage-240 compatibility-point values
+4. the Stage-223 compatibility-point values
    \[
    D_0,\qquad D_2,\qquad D_4,\qquad u_2,\qquad u_4,\qquad P_{0,\mathrm{target,compat}};
    \]
 5. the concrete compatibility-point `\Xi_1` linear form;
 6. the wall-only and pure-BdG no-go results;
 7. the mixed/U compensation matrix, its rank-`2` / nullity-`3` structure, the convenient null basis above, and the corresponding `\Xi_1` values;
-8. the transported Stage-241 amplitude windows on the first surviving mixed family.
+8. the transported Stage-224 amplitude windows on the first surviving mixed family.
 
 Supporting file:
-- `moving_throat_pde_stage242_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py`
+- `moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py`

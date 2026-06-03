@@ -1,0 +1,22 @@
+Stage 219 Mathematica audit: one-port mixed-bundle static kernel
+M1 residual = 0
+PASS M1
+M2 residual = 0
+PASS M2
+M3 residuals = {0, 0, 0, 0, 0, 0}
+PASS M3
+M4 residual = 0
+PASS M4
+M5 residuals = {0, 0}
+PASS M5
+M6 residual = 0
+M6 scaled family = ((betaW^2*(GU^2 - Kstar*OmegaU^2) + betaU^2*(GW^2 - Kstar*OmegaW^2) - 2*betaU*betaW*(GU*GW + Kstar*R))*x^4)/(GW^2*OmegaU^2 + GU^2*OmegaW^2 + 2*GU*GW*R + Kstar*(-(OmegaU^2*OmegaW^2) + R^2)) - (2*betaQ*(betaW*GW*OmegaU^2 + betaU*GU*OmegaW^2 + betaW*GU*R + betaU*GW*R)*x^2*z)/(GW^2*OmegaU^2 + GU^2*OmegaW^2 + 2*GU*GW*R + Kstar*(-(OmegaU^2*OmegaW^2) + R^2)) + (betaQ^2*(-(OmegaU^2*OmegaW^2) + R^2)*z^2)/(GW^2*OmegaU^2 + GU^2*OmegaW^2 + 2*GU*GW*R + Kstar*(-(OmegaU^2*OmegaW^2) + R^2))
+M6 x-degrees by {1, Exp[2 kappa x], Exp[4 kappa x]} = {4, 2, 0}
+M6 coefficient-list lengths = {5, 3, 1}
+PASS M6
+M7 residuals = {0, 0, 0, 0, 0, 0}
+M7 leading principal minors = {11, 98, 1480}
+M7 eigenvalues = {17.01876810868923, 11.253844519437855, 7.727387371872917}
+M7 PositiveDefiniteMatrixQ = True
+PASS M7
+Stage 219 Mathematica audit passed.

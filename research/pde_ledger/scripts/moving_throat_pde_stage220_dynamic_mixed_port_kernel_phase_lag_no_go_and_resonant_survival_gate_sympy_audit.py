@@ -193,6 +193,9 @@ def main() -> None:
     real_part, imag_part = sp.expand_complex(deltaV_linear_expected).as_real_imag()
     assert real_part == 0
     P_abs = sp.factor(-omega * imag_part)
+    # General (not sample-only) non-negativity: P_abs = (omega*Gamma/2) * T_J0^2,
+    # i.e. omega*Gamma times a perfect square, hence >= 0 for omega, Gamma >= 0.
+    assert sp.simplify(P_abs - omega * Gamma / 2 * T_J0**2) == 0
 
     print('\nPhase-lag / pumping theorem:')
     print('deltaV_linear =', deltaV_linear_expected)

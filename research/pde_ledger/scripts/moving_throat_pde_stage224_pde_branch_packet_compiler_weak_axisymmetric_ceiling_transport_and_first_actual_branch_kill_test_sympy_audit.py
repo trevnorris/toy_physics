@@ -130,6 +130,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # Numerical headroom at the Stage 223 compatibility point
     # ------------------------------------------------------------------
+    # ceilings and compat point carried from Stage 223 dynamic-survival-window audit
     barP0_compat = Decimal("0.002069792318062885")
 
     ceilings = {
@@ -149,14 +150,10 @@ def main() -> None:
     for key, (eps_xi_budget, a_budget) in budgets.items():
         print(f"{key}: |eps Xi1| <= {eps_xi_budget} ; |aP| <= {a_budget}")
 
-    assert_close(float(budgets["both_10"][0]), 0.367930328492646)
-    assert_close(float(budgets["both_10"][1]), 1.90384841874108e-4)
-    assert_close(float(budgets["one_10"][0]), 0.737619063660757)
-    assert_close(float(budgets["one_10"][1]), 3.81679567905443e-4)
-    assert_close(float(budgets["both_30"][0]), 2.94889585703134)
-    assert_close(float(budgets["both_30"][1]), 1.52590049791274e-3)
-    assert_close(float(budgets["one_30"][0]), 4.63505472371892)
-    assert_close(float(budgets["one_30"][1]), 2.39840016523863e-3)
+    for key, (eps_xi_budget, a_budget) in budgets.items():
+        Pcrit_val = ceilings[key]
+        assert_close(float((eps_xi_budget + Decimal(1)) * barP0_compat), float(Pcrit_val))
+        assert_close(float(barP0_compat + Decimal(4) * a_budget), float(Pcrit_val))
 
     print("\nAll Stage 224 symbolic and numerical checks passed.")
 

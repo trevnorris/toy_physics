@@ -148,8 +148,8 @@ are
 \delta_1
 =
 \frac{50}{25-98\pi^2}x_{\lambda_R}
-+\frac{247\pi^2}{98\pi^2-25}x_{\Omega_U}
-+\frac{247\pi^2}{98\pi^2-25}x_{\Omega_W}.
++\frac{196\pi^2}{98\pi^2-25}x_{\Omega_U}
++\frac{196\pi^2}{98\pi^2-25}x_{\Omega_W}.
 \]
 
 So the numerator and denominator are not sampling the same microscopic slots:
@@ -193,7 +193,7 @@ Equivalently, on a basis of the pure-transfer nullspace, the exact reduced deter
 \[
 \det[(\pi_1,\delta_1)|_{\rm pure\ transfer}]
 =
-\frac{247(251+215\pi^2)(80000+343225\pi^2+43218\pi^4)}{475(8670000+14894275\pi^2+2117682\pi^4)}
+\frac{196(200+147\pi^2)(80000+343225\pi^2+43218\pi^4)}{475(8670000+14894275\pi^2+2117682\pi^4)}
 \neq 0.
 \]
 

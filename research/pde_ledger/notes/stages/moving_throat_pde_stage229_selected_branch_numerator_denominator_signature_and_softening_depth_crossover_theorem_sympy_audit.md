@@ -289,7 +289,7 @@ Clearing denominators gives the exact cubic
 \boxed{
 \mathcal P(\xi,\delta)
 =
-189\xi^3+297\delta\xi^2+333\delta^2\xi+81\delta^3-72\delta^2
+121\xi^3+297\delta\xi^2+333\delta^2\xi+81\delta^3-72\delta^2
 =0.
 }
 \]

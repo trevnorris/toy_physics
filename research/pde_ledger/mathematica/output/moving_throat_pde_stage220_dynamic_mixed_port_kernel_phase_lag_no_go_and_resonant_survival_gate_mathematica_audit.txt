@@ -1,0 +1,91 @@
+
+========================================================================================
+STAGE 220 -- DYNAMIC MIXED-PORT KERNEL MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+Symbol setup
+----------------------------------------------------------------------------------------
+KB = K - M*omega^2 - C^2/(-omega^2 + varpi^2)
+Aw = -omega^2 + OmegaU^2
+Ww = -omega^2 + OmegaW^2 - Pi
+DeltaPi = (-omega^2 + OmegaU^2)*(-omega^2 + OmegaW^2 - Pi) - R^2
+QPi = GW^2*(-omega^2 + OmegaU^2) + GU^2*(-omega^2 + OmegaW^2 - Pi) + 2*GU*GW*R
+DPi = K - M*omega^2 - (GW^2*(-omega^2 + OmegaU^2) + GU^2*(-omega^2 + OmegaW^2 - Pi) + 2*GU*GW*R)/((-omega^2 + OmegaU^2)*(-omega^2 + OmegaW^2 - Pi) - R^2) - C^2/(-omega^2 + varpi^2)
+
+----------------------------------------------------------------------------------------
+M1. Determinant identity
+----------------------------------------------------------------------------------------
+M1 Det[Kdyn] - DeltaPi DPi = 0
+PASS: M1 Det[Kdyn] - DeltaPi DPi
+
+----------------------------------------------------------------------------------------
+M2. Static reduction
+----------------------------------------------------------------------------------------
+M2 static Stage 219 bundle residuals = {0, 0, 0, 0, 0, 0}
+PASS: M2 static Stage 219 bundle residuals
+
+----------------------------------------------------------------------------------------
+M3. Native inverse entries
+----------------------------------------------------------------------------------------
+M3 chi_qq native inverse entry = 0
+PASS: M3 chi_qq native inverse entry
+M3 chi_qU native inverse entry = 0
+PASS: M3 chi_qU native inverse entry
+M3 chi_qW native inverse entry = 0
+PASS: M3 chi_qW native inverse entry
+M3 chi_UU native inverse entry = 0
+PASS: M3 chi_UU native inverse entry
+M3 chi_UW native inverse entry = 0
+PASS: M3 chi_UW native inverse entry
+M3 chi_WW native inverse entry = 0
+PASS: M3 chi_WW native inverse entry
+
+----------------------------------------------------------------------------------------
+M4. Susceptibility quadratic law
+----------------------------------------------------------------------------------------
+M4 Vmix native matrix form - susceptibility form = 0
+PASS: M4 Vmix native matrix form - susceptibility form
+
+----------------------------------------------------------------------------------------
+M5. Collinear-source factorization
+----------------------------------------------------------------------------------------
+M5 collinear source response = 0
+PASS: M5 collinear source response
+
+----------------------------------------------------------------------------------------
+M6. Primitive product-family theorem
+----------------------------------------------------------------------------------------
+M6 primitive product-family formula = 0
+PASS: M6 primitive product-family formula
+M6 extracted family coefficients = {0, 0, 0}
+PASS: M6 extracted family coefficients
+M6 Laurent support = {{-6, 0}, {-4, 1}, {-2, 2}}
+M6 no additional x-y monomial families = True
+PASS: M6 no additional x-y monomial families
+
+----------------------------------------------------------------------------------------
+M7. Outgoing-port derivative identity
+----------------------------------------------------------------------------------------
+M7 self-test VmixExpected depends on Pi = True
+PASS: M7 self-test VmixExpected depends on Pi
+M7 dVmix/dPi + 1/2 TJ^2 = 0
+PASS: M7 dVmix/dPi + 1/2 TJ^2
+
+----------------------------------------------------------------------------------------
+M8. Linear outgoing correction
+----------------------------------------------------------------------------------------
+M8 linear outgoing correction = 0
+PASS: M8 linear outgoing correction
+
+----------------------------------------------------------------------------------------
+M9. Phase-lag no-go and absorbed power
+----------------------------------------------------------------------------------------
+M9 Re[dV1] is identically zero = True
+PASS: M9 Re[dV1] is identically zero
+M9 Pabs perfect-square form = 0
+PASS: M9 Pabs perfect-square form
+M9 off-pole sample is dissipative = True
+PASS: M9 off-pole sample is dissipative
+
+All Stage 220 Mathematica checks passed.

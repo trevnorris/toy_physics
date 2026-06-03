@@ -65,8 +65,11 @@ def main() -> None:
     assert sp.simplify(D41_comp - D4 * D01 / D0) == 0
     assert sp.simplify(D41_comp - (u2**2 - u4) * D01) == 0
 
-    one_pole_D41 = sp.simplify((-3 * u2**2) * D01)
-    assert sp.simplify(one_pole_D41 + 3 * u2**2 * D01) == 0
+    # One-pole reduction: on a one-pole branch D4/D0 = u2^2 - u4 with u4 = 4 u2^2,
+    # so D4 = -3 D0 u2^2. Substitute into the general surface D41 = (D4/D0) D01.
+    D4_one_pole = -3 * D0 * u2**2
+    one_pole_D41 = sp.simplify((D41_comp).subs(D4, D4_one_pole))
+    assert sp.simplify(one_pole_D41 - (-3 * u2**2) * D01) == 0
 
     print("\nVerified exact first-order conservative compensation surface:")
     print("D21 =", D21_comp)

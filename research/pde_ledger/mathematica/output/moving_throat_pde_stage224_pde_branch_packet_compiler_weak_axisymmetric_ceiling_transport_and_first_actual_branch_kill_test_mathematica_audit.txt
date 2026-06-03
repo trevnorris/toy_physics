@@ -1,0 +1,87 @@
+
+========================================================================================
+STAGE 224 -- BRANCH PACKET COMPILER MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Grouped inverse map from solved forward system
+----------------------------------------------------------------------------------------
+solved inverse rule = {pbarUnknown -> ConditionalExpression[p20Lane/5 + (2*p21Lane)/5 + (2*p22Lane)/5, Element[aSeed, Reals] && Element[bSeed, Reals] && Element[deltaNorm, Reals] && Element[eps, Reals] && Element[mhat0, Reals] && Element[pcrit, Reals] && Element[tQuad, Reals] && Element[xi1, Reals] && Element[p22Lane | p21Lane | p20Lane, Reals]], aUnknown -> ConditionalExpression[p20Lane/5 - p21Lane/10 - p22Lane/10, Element[aSeed, Reals] && Element[bSeed, Reals] && Element[deltaNorm, Reals] && Element[eps, Reals] && Element[mhat0, Reals] && Element[pcrit, Reals] && Element[tQuad, Reals] && Element[xi1, Reals] && Element[p22Lane | p21Lane | p20Lane, Reals]], bUnknown -> ConditionalExpression[p21Lane/2 - p22Lane/2, Element[aSeed, Reals] && Element[bSeed, Reals] && Element[deltaNorm, Reals] && Element[eps, Reals] && Element[mhat0, Reals] && Element[pcrit, Reals] && Element[tQuad, Reals] && Element[xi1, Reals] && Element[p22Lane | p21Lane | p20Lane, Reals]]}
+M1 solved Pbar recovers input residual = 0
+PASS: M1 solved Pbar recovers input
+M1 solved aP recovers input residual = 0
+PASS: M1 solved aP recovers input
+M1 solved bP recovers input residual = 0
+PASS: M1 solved bP recovers input
+
+----------------------------------------------------------------------------------------
+M2. Isotropic ceiling rearrangement
+----------------------------------------------------------------------------------------
+M2 ceiling residual residual = 0
+PASS: M2 ceiling residual
+
+----------------------------------------------------------------------------------------
+M3. Weak-axisymmetric compiler via LinearSolve
+----------------------------------------------------------------------------------------
+WA lanes = {((deltaNorm + tQuad)*(1 + eps*xi1))/mhat0^2, ((deltaNorm + tQuad)*(2 + eps*xi1))/(2*mhat0^2), ((deltaNorm + tQuad)*(1 - eps*xi1))/mhat0^2}
+LinearSolve recovered {Pbar, aP, bP} = {(deltaNorm + tQuad)/mhat0^2, (eps*(deltaNorm + tQuad)*xi1)/(4*mhat0^2), (3*eps*(deltaNorm + tQuad)*xi1)/(4*mhat0^2)}
+M3 aP weak-axisymmetric value residual = 0
+PASS: M3 aP weak-axisymmetric value
+M3 bP weak-axisymmetric value residual = 0
+PASS: M3 bP weak-axisymmetric value
+M3 bP = 3 aP residual = 0
+PASS: M3 bP = 3 aP
+
+----------------------------------------------------------------------------------------
+M4. Weak-axisymmetric lanes re-expand
+----------------------------------------------------------------------------------------
+M4 P20 re-expansion residual = 0
+PASS: M4 P20 re-expansion
+M4 P21 re-expansion residual = 0
+PASS: M4 P21 re-expansion
+M4 P22 re-expansion residual = 0
+PASS: M4 P22 re-expansion
+
+----------------------------------------------------------------------------------------
+M5. Robust max-lane collapse by sign cases
+----------------------------------------------------------------------------------------
+Refined Abs[eps xi1] for eps xi1 > 0: eps*xi1
+Refined Abs[eps xi1] for eps xi1 < 0: -(eps*xi1)
+M5 positive sign P20 dominates = True
+PASS: M5 positive sign P20 dominates
+M5 positive sign max lane equals Pbar(1+Abs[eps xi1]) residual = 0
+PASS: M5 positive sign max lane equals Pbar(1+Abs[eps xi1])
+M5 negative sign P22 dominates = True
+PASS: M5 negative sign P22 dominates
+M5 negative sign max lane equals Pbar(1+Abs[eps xi1]) residual = 0
+PASS: M5 negative sign max lane equals Pbar(1+Abs[eps xi1])
+M5 positive sign robust aP form residual = 0
+PASS: M5 positive sign robust aP form
+M5 negative sign robust aP form residual = 0
+PASS: M5 negative sign robust aP form
+
+----------------------------------------------------------------------------------------
+M6. Stage 223 carried headroom budget relations
+----------------------------------------------------------------------------------------
+both_10: |eps xi1| <= 0.36793032849264599565140523270772975298`24. ; |aP| <= 0.000190384841874108125`24.
+M6 both_10 epsXi defining relation residual = 0
+PASS: M6 both_10 epsXi defining relation
+M6 both_10 aP defining relation residual = 0
+PASS: M6 both_10 aP defining relation
+one_10: |eps xi1| <= 0.73761906366075667557951257042793911462`24. ; |aP| <= 0.000381679567905443075`24.
+M6 one_10 epsXi defining relation residual = 0
+PASS: M6 one_10 epsXi defining relation
+M6 one_10 aP defining relation residual = 0
+PASS: M6 one_10 aP defining relation
+both_30: |eps xi1| <= 2.94889585703134476704081761130811105103`24. ; |aP| <= 0.00152590049791273625`24.
+M6 both_30 epsXi defining relation residual = 0
+PASS: M6 both_30 epsXi defining relation
+M6 both_30 aP defining relation residual = 0
+PASS: M6 both_30 aP defining relation
+one_30: |eps xi1| <= 4.63505472371892317734408342508531685149`24. ; |aP| <= 0.00239840016523862875`24.
+M6 one_30 epsXi defining relation residual = 0
+PASS: M6 one_30 epsXi defining relation
+M6 one_30 aP defining relation residual = 0
+PASS: M6 one_30 aP defining relation
+
+All Stage 224 Mathematica checks passed.

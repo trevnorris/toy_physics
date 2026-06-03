@@ -12,7 +12,7 @@ D_\Pi(\omega)\neq 0,
 \]
 and exact to first order in the outgoing-port dressing when the phase-lag result is invoked.
 
-This is the first post-Stage 253 dynamic insertion of actual mixed-port bundle data into the now-closed local mixed-ray ledger.
+This is the first post-Stage 219 dynamic insertion of actual mixed-port bundle data into the now-closed local mixed-ray ledger.
 It does **not** solve the full driven two-throat moving PDE.
 It computes the first honest frequency-dependent same-charge kernel already implied by the one-port mixed bundle and identifies the only linear dynamic corridor left alive after the static audit.
 
@@ -20,7 +20,7 @@ It computes the first honest frequency-dependent same-charge kernel already impl
 
 ## Purpose
 
-Stage 253 closed the first honest static same-charge mixed-bundle audit.
+Stage 219 closed the first honest static same-charge mixed-bundle audit.
 It showed that the minimal one-port wall/BdG/Maxwell/mixed bundle does **not** create a new long-range attractive law.
 It only generates short-range product families built from the primitive source profiles.
 
@@ -28,10 +28,10 @@ That leaves one clean escape hatch:
 
 > perhaps a genuinely time-dependent / non-adiabatic mixed-port drive can do something qualitatively stronger than the static bundle.
 
-The job of Stage 237 is narrower than solving the full driven PDE.
+The job of Stage 220 is narrower than solving the full driven PDE.
 It is to:
 
-1. promote the Stage 253 one-port bundle to a frequency-dependent mixed-port kernel,
+1. promote the Stage 219 one-port bundle to a frequency-dependent mixed-port kernel,
 2. derive its exact complex susceptibility,
 3. test whether linear monochromatic driving creates a genuinely new spatial attractive family,
 4. separate the in-phase barrier reshaping from the out-of-phase pumping / leakage channel,
@@ -46,13 +46,13 @@ The main outputs are:
 5. the exact linear phase-lag theorem,
 6. and the resulting survival gate: **the only linear dynamic corridor left is resonant dispersive enhancement of the already-known short-range families, and that corridor must beat its own absorptive load to count as real barrier engineering.**
 
-So Stage 237 keeps the dynamic same-charge idea alive, but only in a much narrower form than the raw mixed-port intuition suggested.
+So Stage 220 keeps the dynamic same-charge idea alive, but only in a much narrower form than the raw mixed-port intuition suggested.
 
 ---
 
 ## 1. Frozen input carried forward
 
-### 1.1 Static one-port bundle from Stage 253
+### 1.1 Static one-port bundle from Stage 219
 
 After the stable BdG support mode is integrated into the static wall stiffness,
 \[
@@ -78,7 +78,7 @@ N_0 = \frac{P^2}{\Delta^2},
 P_0 = \frac{N_0}{D_0}.
 \]
 
-Stage 253 proved that the static mixed correction is always attractive or neutral on the admissible branch and that, for the primitive reduced source families,
+Stage 219 proved that the static mixed correction is always attractive or neutral on the admissible branch and that, for the primitive reduced source families,
 \[
 \mathcal S_Q(x)=\frac1{x^3},
 \qquad
@@ -120,7 +120,7 @@ That is exactly why the dynamic barrier audit has to distinguish **real in-phase
 
 ## 2. Minimal dynamic one-port mixed bundle
 
-Keep the same reduced coordinates as in Stage 253:
+Keep the same reduced coordinates as in Stage 219:
 
 - wall/worldtube amplitude `q`,
 - brane-like internal gauge coordinate `U`,
@@ -198,9 +198,9 @@ A(0)=\Omega_U^2,
 \qquad
 W(0)=\Omega_W^2,
 \]
-so the dynamic bundle reduces exactly to the Stage 253 static one-port bundle.
+so the dynamic bundle reduces exactly to the Stage 219 static one-port bundle.
 
-So Stage 237 is a genuine continuation, not a different reduced model.
+So Stage 220 is a genuine continuation, not a different reduced model.
 
 ---
 
@@ -213,14 +213,14 @@ Define the complex reduced quadratic response functional
 -\frac12 J(x,\omega)^T\mathcal K_{\rm dyn}(\omega)^{-1}J(x,\omega).
 \]
 
-This is the direct dynamic analogue of the Stage 253 static on-shell shift.
+This is the direct dynamic analogue of the Stage 219 static on-shell shift.
 
 - `\Re\,\mathfrak V_{\rm mix}` is the in-phase conservative barrier reshaping.
 - `\Im\,\mathfrak V_{\rm mix}` is the quadrature / pumping / leakage channel.
 
 ### 3.1 Exact inverse entries
 
-The inverse entries are the direct dynamic lifts of the Stage 253 formulas:
+The inverse entries are the direct dynamic lifts of the Stage 219 formulas:
 \[
 \chi_{qq}(\omega)=\frac1{D_\Pi(\omega)},
 \]
@@ -283,7 +283,7 @@ So the dynamic bundle still acts by a scalar susceptibility on each collinear re
 
 ## 4. Dynamic product-family theorem for the primitive same-charge loads
 
-Return to the same primitive reduced source profiles used in Stage 253:
+Return to the same primitive reduced source profiles used in Stage 219:
 \[
 \mathcal S_Q(x)=\frac1{x^3},
 \qquad
@@ -446,7 +446,7 @@ Then at first outgoing order,
 So the first passive/outgoing mixed-port correction is not barrier softening.
 It is dissipative loading in exactly the sense the 4D/plasma ontology suggested.
 
-This is the Stage-237 phase-lag no-go theorem.
+This is the Stage-220 phase-lag no-go theorem.
 
 ---
 
@@ -484,12 +484,12 @@ It is the following resonance test:
 
 > can the real dispersive enhancement of the already-known short-range attractive families become large enough **before** the absorptive / leakage channel simply turns the mechanism into disguised heating or branch loss?
 
-That is the correct Stage-237 meaning of “resonant survival.”
+That is the correct Stage-220 meaning of “resonant survival.”
 The full residue/linewidth tradeoff is deferred to the next stage.
 
 ---
 
-## 8. Updated reduced barrier audit after Stage 237
+## 8. Updated reduced barrier audit after Stage 220
 
 At linear monochromatic order the same-charge audit potential is best written as the **real** part of the driven response correction:
 \[
@@ -533,12 +533,12 @@ That is the first honest dynamic kill test.
 
 ---
 
-## 9. Best current summary after Stage 237
+## 9. Best current summary after Stage 220
 
-Stage 237 closes the first honest **linear dynamic** same-charge audit of the one-port moving-throat mixed bundle.
+Stage 220 closes the first honest **linear dynamic** same-charge audit of the one-port moving-throat mixed bundle.
 
 - The dynamic reduced bundle is an exact `3 x 3` frequency-domain system with determinant `\Delta_\Pi D_\Pi`.
-- At zero frequency with `\Pi(0)=0`, it reduces exactly to the Stage 253 static bundle.
+- At zero frequency with `\Pi(0)=0`, it reduces exactly to the Stage 219 static bundle.
 - For the first primitive same-charge source families, the linear dynamic bundle still produces only
   \[
   x^{-6},\qquad e^{-2\kappa x}/x^4,\qquad e^{-4\kappa x}/x^2.
@@ -564,7 +564,7 @@ The accompanying SymPy audit verifies:
    \[
    \det \mathcal K_{\rm dyn}=\Delta_\Pi D_\Pi,
    \]
-2. the exact static reduction back to the Stage 253 one-port bundle,
+2. the exact static reduction back to the Stage 219 one-port bundle,
 3. the exact inverse-entry formulas,
 4. the exact dynamic susceptibility formula
    \[
@@ -589,7 +589,7 @@ The accompanying SymPy audit verifies:
    on a constructive off-pole slice.
 
 Supporting file:
-- `moving_throat_pde_stage237_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py`
+- `moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py`
 
 ---
 
@@ -597,7 +597,7 @@ Supporting file:
 
 The next theorem gate is now very sharp.
 
-1. Keep the exact Stage-237 dynamic one-port kernel.
+1. Keep the exact Stage-220 dynamic one-port kernel.
 2. Move to the local simple-pole / linewidth normal form near the first admissible internal resonances.
 3. Quantify the residue-to-linewidth tradeoff between
    \[

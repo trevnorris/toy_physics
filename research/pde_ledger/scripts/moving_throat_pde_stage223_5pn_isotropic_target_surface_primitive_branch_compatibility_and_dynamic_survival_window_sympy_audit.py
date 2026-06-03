@@ -153,10 +153,11 @@ def main() -> None:
 
     K_pole = sp.simplify(3 * (M + B2 + Z2)**2 / (B4 + Z4) + B0 + Z0)
     K_norm = sp.simplify(N0 / P0_target + B0 + Z0)
+    P0_target_compat_solved = sp.solve(sp.Eq(K_norm, K_pole), P0_target)[0]
     P0_target_compat = sp.simplify(N0 * (B4 + Z4) / (3 * (M + B2 + Z2)**2))
     D0_compat = sp.simplify(K_pole - B0 - Z0)
 
-    compatibility_identity = sp.cancel(N0 / P0_target_compat - 3 * (M + B2 + Z2)**2 / (B4 + Z4))
+    compatibility_identity = sp.cancel(P0_target_compat_solved - P0_target_compat)
     assert compatibility_identity == 0
     assert sp.cancel(D0_compat - N0 / P0_target_compat) == 0
 

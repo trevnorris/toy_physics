@@ -1,0 +1,71 @@
+Stage 229 Mathematica audit: selected-branch numerator/denominator signature
+M1 sMinus = (8*(9*DeltaKax + 11*x)^2)/(9*Pi^2*(9*DeltaKax^2 + 18*DeltaKax*x + 11*x^2))
+M1 derived F = -1/81*(9*delta + 11*xi)^4/((-1 + xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)^2)
+M1 selected N_- reduction residual = 0
+PASS M1 selected N_- reduction
+M1 dimensionless F from constants residual = 0
+PASS M1 dimensionless F from constants
+M2 F factorization residual = 0
+PASS M2 F factorization
+M3 L_num = (72*delta^2)/((9*delta + 11*xi)*(9*delta^2 + 18*delta*xi + 11*xi^2))
+M3 L_den = -(-1 + xi)^(-1)
+M3 numerator log derivative residual = 0
+PASS M3 numerator log derivative
+M3 denominator log derivative residual = 0
+PASS M3 denominator log derivative
+M4 R_ND = (-72*delta^2*(-1 + xi))/((9*delta + 11*xi)*(9*delta^2 + 18*delta*xi + 11*xi^2))
+M4 classifier reduction residual = 0
+PASS M4 classifier reduction
+M5 onset value residual = 0
+PASS M5 onset value
+M6 R_ND softening limit residual = 0
+PASS M6 R_ND softening limit
+M6 L_num softening limit residual = 0
+PASS M6 L_num softening limit
+M6 L_den pole reciprocal = True
+PASS M6 L_den pole reciprocal
+M7 raw numerator = 72*delta^2 - 81*delta^3 - 333*delta^2*xi - 297*delta*xi^2 - 121*xi^3
+M7 crossover denominator = (9*delta + 11*xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)
+M7 sign-normalized P = -72*delta^2 + 81*delta^3 + 333*delta^2*xi + 297*delta*xi^2 + 121*xi^3
+M7 coefficient list = {-72*delta^2 + 81*delta^3, 333*delta^2, 297*delta, 121}
+M7 coefficient 0 residual = 0
+PASS M7 coefficient 0
+M7 coefficient 1 residual = 0
+PASS M7 coefficient 1
+M7 coefficient 2 residual = 0
+PASS M7 coefficient 2
+M7 coefficient 3 residual = 0
+PASS M7 coefficient 3
+M8 dP/dxi = 3*(111*delta^2 + 198*delta*xi + 121*xi^2)
+M8 derivative coefficient 0 residual = 0
+PASS M8 derivative coefficient 0
+M8 derivative coefficient 1 residual = 0
+PASS M8 derivative coefficient 1
+M8 derivative coefficient 2 residual = 0
+PASS M8 derivative coefficient 2
+M8 derivative positivity = True
+PASS M8 derivative positivity
+M9 P(0,delta) = 9*delta^2*(-8 + 9*delta)
+M9 onset polynomial factor residual = 0
+PASS M9 onset polynomial factor
+M9 threshold root residual = 0
+PASS M9 threshold root
+M10 roots for delta = 1/4 -> {0.10722305110569706}
+M10 crossover root delta = 1/4 error = 5.551115123125783*^-17
+PASS M10 crossover root delta = 1/4
+M10 side values delta = 1/4: left 1.795260829366497, right 0.037488159916091904
+PASS M10 side classification delta = 1/4
+M10 roots for delta = 1/2 -> {0.08184793786007429}
+M10 crossover root delta = 1/2 error = 2.914335439641036*^-16
+PASS M10 crossover root delta = 1/2
+M10 side values delta = 1/2: left 1.3226318396766317, right 0.07649686519951264
+PASS M10 side classification delta = 1/2
+M10 roots for delta = 3/4 -> {0.03250512108282537}
+M10 crossover root delta = 3/4 error = 3.677613769070831*^-16
+PASS M10 crossover root delta = 3/4
+M10 side values delta = 3/4: left 1.0880583298530644, right 0.10534389425994216
+PASS M10 side classification delta = 3/4
+M10 delta=1 probe values = {0.8522256402246484960793973961278563711895079258957285429867`30., 0.3943908851884312007011393514460999123575810692375109553023`30., 0.0777000777000777000777000777000777000777000777000777000777`30., 0.0111683488992196116206670296380058913040443383451299018581`30.}
+M10 delta=1 always denominator slice = True
+PASS M10 delta=1 always denominator slice
+Stage 229 Mathematica audit passed.

@@ -23,7 +23,7 @@ D_0'(\omega_*)>0,
 \]
 and the absolute-value forms quoted below follow immediately by restoring magnitudes at the end.
 
-This stage is the first post-Stage-237 resonance/linewidth insertion of actual mixed-port pole logic into the now-closed local mixed-ray ledger.
+This stage is the first post-Stage-220 resonance/linewidth insertion of actual mixed-port pole logic into the now-closed local mixed-ray ledger.
 It does **not** solve the full driven two-throat moving PDE.
 It computes the exact local resonance theorem implied by the one-port mixed bundle and reduces the linear dynamic survival question to one residue-to-linewidth inequality.
 
@@ -31,16 +31,16 @@ It computes the exact local resonance theorem implied by the one-port mixed bund
 
 ## Purpose
 
-Stage 237 killed the naive dynamic story but left one narrow escape hatch alive:
+Stage 220 killed the naive dynamic story but left one narrow escape hatch alive:
 
 > perhaps a **resonant dispersive** mixed-sector window can amplify the already-known short-range attractive families enough to matter before the same pole simply turns into absorptive pumping / leakage.
 
-The job of Stage 238 is not to solve the full driven PDE.
+The job of Stage 221 is not to solve the full driven PDE.
 It is much sharper:
 
 1. isolate the local simple-pole normal form of the dynamic one-port mixed bundle,
 2. derive the exact relation between conservative dispersive gain and absorptive load,
-3. specialize that relation to the wall-like pole of the Stage-237 bundle,
+3. specialize that relation to the wall-like pole of the Stage-220 bundle,
 4. and state the first honest **linear survival window**.
 
 The main outputs are:
@@ -70,14 +70,14 @@ The main outputs are:
    \]
    as the first honest low-loss gate for any linear resonant same-charge claim.
 
-So Stage 238 keeps the dynamic same-charge idea alive, but only as a **residue-to-linewidth** question on one of the already-known short-range families.
+So Stage 221 keeps the dynamic same-charge idea alive, but only as a **residue-to-linewidth** question on one of the already-known short-range families.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage238_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py`
-  checks the simple-pole normal form, Stage-237 derivative identity, wall-like
+- `scripts/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py`
+  checks the simple-pole normal form, Stage-220 derivative identity, wall-like
   specialization, exact tradeoff identities, and linear survival-window algebra;
   its constructive numeric slice is probe-only and not part of the proof path.
-- `mathematica/moving_throat_pde_stage238_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.wl`
+- `mathematica/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.wl`
   mirrors the same symbolic theorem path in the second CAS and keeps the same
   numeric slice explicitly probe-only.
 
@@ -85,9 +85,9 @@ Script-backed status:
 
 ## 1. Frozen input carried forward
 
-### 1.1 Dynamic one-port bundle from Stage 237
+### 1.1 Dynamic one-port bundle from Stage 220
 
-The Stage-237 dynamic reduced correction has the exact collinear-source form
+The Stage-220 dynamic reduced correction has the exact collinear-source form
 \[
 \mathfrak V_{\rm mix}(x,\omega)
 =
@@ -115,7 +115,7 @@ the spatial kernel class is already frozen:
 \right].
 \]
 
-So Stage 238 is **not** about inventing a new spatial family.
+So Stage 221 is **not** about inventing a new spatial family.
 It is about what the local pole structure can do to the coefficients of the existing short-range families.
 
 ### 1.2 Why the pole analysis is the right next move
@@ -196,14 +196,14 @@ So the whole linear resonance problem collapses to two real scalars:
 
 ## 3. Specialization to the wall-like pole
 
-The Stage-237 one-port bundle is controlled by the reduced wall denominator
+The Stage-220 one-port bundle is controlled by the reduced wall denominator
 \[
 D_\Pi(\omega)
 =
 K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)}.
 \]
 
-The exact Stage-237 derivative identity is
+The exact Stage-220 derivative identity is
 \[
 \partial_\Pi D_\Pi(\omega)=-N(\omega),
 \qquad
@@ -369,13 +369,13 @@ For small \(\eta\),
 \]
 So in a genuinely low-loss window, the best linear conservative enhancement scales only **linearly** with the allowed loss fraction.
 
-This is the central Stage-238 theorem.
+This is the central Stage-221 theorem.
 
 ---
 
 ## 5. Barrier language and absorbed-power language
 
-Take one of the already-frozen spatial families \(S_j(x)\) from Stage 237.
+Take one of the already-frozen spatial families \(S_j(x)\) from Stage 220.
 Near a simple pole its coefficient has the local form
 \[
 \chi_j(\omega)\approx \frac{A_j}{\delta-i\gamma_*}.
@@ -443,7 +443,7 @@ the exact detuning requirement becomes
 This says the clean dispersive corridor is only parametrically easy when the actual branch provides a large enough quality factor.
 
 Now let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\) for one spatial family \(S_j(x)\) to matter.
-Inside the same low-loss window, the exact Stage-238 bound implies
+Inside the same low-loss window, the exact Stage-221 bound implies
 \[
 |U_j^{\rm disp}(x,\omega)|
 \le
@@ -476,10 +476,10 @@ So the linear resonant corridor is now completely explicit: it lives or dies on 
 
 ---
 
-## 7. What survives after Stage 238
+## 7. What survives after Stage 221
 
-Stage 237 already proved that linear monochromatic driving never creates a new spatial family.
-Stage 238 now adds the exact resonance theorem.
+Stage 220 already proved that linear monochromatic driving never creates a new spatial family.
+Stage 221 now adds the exact resonance theorem.
 
 ### 7.1 What is dead
 
@@ -507,18 +507,18 @@ A linear dynamic corridor still survives, but only in the narrow form:
 3. the detuning must remain inside an admissible low-loss window set by the same quality-factor bound above,
 4. and that branch must remain admissible under the same outgoing / grouped / branch constraints already frozen earlier.
 
-So after Stage 238, the dynamic same-charge route lives or dies on a **residue-to-linewidth** question, not on a generic resonance slogan.
+So after Stage 221, the dynamic same-charge route lives or dies on a **residue-to-linewidth** question, not on a generic resonance slogan.
 
 ---
 
-## 8. Best current verdict after Stage 238
+## 8. Best current verdict after Stage 221
 
 The idea is still alive, but it has narrowed again.
 
 - Stage 252 closed the local mixed-ray search sieve.
 - Stage 253 killed the hope for a brand-new static mixed-sector spatial law.
-- Stage 237 killed the linear outgoing-phase shortcut.
-- Stage 238 now kills the naive “resonance fixes it” shortcut.
+- Stage 220 killed the linear outgoing-phase shortcut.
+- Stage 221 now kills the naive “resonance fixes it” shortcut.
 
 What survives is only this:
 
@@ -541,7 +541,7 @@ The accompanying SymPy audit verifies:
    F_\Pi(\omega)=F_0'(\omega_*)\,\delta-\Pi(\omega_*)Z_*,
    \]
    on a sign-fixed slice,
-2. the exact Stage-237 derivative identity
+2. the exact Stage-220 derivative identity
    \[
    \partial_\Pi D_\Pi(\omega)=-N(\omega),
    \]
@@ -572,7 +572,7 @@ The accompanying SymPy audit verifies:
 9. and the linear survival-window inequality in its residue-to-linewidth form.
 
 Supporting file:
-- `moving_throat_pde_stage238_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py`
+- `moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.py`
 
 ---
 
@@ -580,7 +580,7 @@ Supporting file:
 
 The continuation point is now very sharp.
 
-1. Keep the exact Stage-237 dynamic one-port bundle.
+1. Keep the exact Stage-220 dynamic one-port bundle.
 2. Choose an explicit primitive branch family for
    \[
    K,\ M,\ C,\ \varpi,\ \Omega_U,\ \Omega_W,\ G_U,\ G_W,\ R.

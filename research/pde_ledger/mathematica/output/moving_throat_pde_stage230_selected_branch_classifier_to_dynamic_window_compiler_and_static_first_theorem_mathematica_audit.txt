@@ -1,0 +1,109 @@
+=== Stage 230 Mathematica audit: selected-branch classifier -> dynamic window ===
+M1 Reduce domain = Inequality[0, LessEqual, xi, Less, 1] && delta > 0
+M1 R_ND(0,delta) - 8/(9 delta) = 0
+PASS: M1 R_ND(0,delta) - 8/(9 delta)
+M1 limit xi -> 1- = 0
+PASS: M1 limit xi -> 1-
+M1 D[R_ND,xi] < 0 on stable strip by Reduce = True
+PASS: M1 D[R_ND,xi] < 0 on stable strip by Reduce
+M1 Reduce recovers stable strip = True
+PASS: M1 Reduce recovers stable strip
+M2 S_plus(R) = (-3*(100505365719371 + 169547821769659*R))/(1000000000000000*(1 + R))
+M2 S_minus(R) = (411024574532864 - 334368725711457*R)/(1000000000000000*(1 + R))
+M2 Reduce S_plus' = R >= 0
+M2 Reduce S_minus' = R >= 0
+M2 S_plus affine share form = 0
+PASS: M2 S_plus affine share form
+M2 S_minus affine share form = 0
+PASS: M2 S_minus affine share form
+M2 D[S_plus,R] < 0 for R >= 0 by Reduce = True
+PASS: M2 D[S_plus,R] < 0 for R >= 0 by Reduce
+M2 D[S_minus,R] < 0 for R >= 0 by Reduce = True
+PASS: M2 D[S_minus,R] < 0 for R >= 0 by Reduce
+M3 R roots = {411024574532864/334368725711457}
+M3 Reduce S_minus positive side = Inequality[0, LessEqual, R, Less, 411024574532864/334368725711457]
+M3 Reduce S_minus negative side = R > 411024574532864/334368725711457
+M3 unique nonnegative root count = 0
+PASS: M3 unique nonnegative root count
+M3 solved root equals R_star = 0
+PASS: M3 solved root equals R_star
+M3 N[R_star,30] actual = 1.22925543846333598788938878199263141411`18. expected = 1.229255438463336`18. diff = 1.21106112180073685858931081786618857207227`12.993523924006778*^-17
+PASS: M3 N[R_star,30]
+M3 S_plus(R_star) < 0 = True
+PASS: M3 S_plus(R_star) < 0
+M3 S_minus positive for 0 <= R < R_star = True
+PASS: M3 S_minus positive for 0 <= R < R_star
+M3 S_minus negative for R > R_star = True
+PASS: M3 S_minus negative for R > R_star
+M4 delta roots = {111456241903819/154134215449824}
+M4 unique positive onset root count = 0
+PASS: M4 unique positive onset root count
+M4 solved onset root equals delta_dyn_star = 0
+PASS: M4 solved onset root equals delta_dyn_star
+M4 N[delta_dyn_star,30] actual = 0.72311161787501911630060464530342478489`18. expected = 0.723111617875019`18. diff = 1.16300604645303424784893037860284779323885`14.206376633442025*^-16
+PASS: M4 N[delta_dyn_star,30]
+M5 endpoint ordering B_minus(inf) < B_plus(inf) = True
+PASS: M5 endpoint ordering B_minus(inf) < B_plus(inf)
+M5 ell_minus actual = 0.32342897993471446731680960836840448213`18. expected = 0.323428979934714`18. diff = 4.673168096083684044821270802262520059656128`15.159832472047928*^-16
+PASS: M5 ell_minus
+M5 ell_plus actual = 0.50385296486915115100248948960235315195`18. expected = 0.503852964869151`18. diff = 1.510024894896023531519526002455591621259551`14.476680288846426*^-16
+PASS: M5 ell_plus
+M5 B_both(0) actual = 1.67106489377558527979005503729012577342`18. expected = 1.671064893775584`18. diff = 1.2797900550372901257734227920479680532839833754530940285094204`34.88414541552114*^-15
+PASS: M5 B_both(0)
+M5 B_nonempty(0) = Infinity
+PASS: M5 B_nonempty(0)
+M5 Limit B_both at infinity actual = 0.96728238936382175225028320450028555842`18. expected = 0.967282389363822`18. diff = 2.477497167954997144415856460148322636263688`14.408459885763989*^-16
+PASS: M5 Limit B_both at infinity
+M5 Limit B_nonempty at infinity actual = 0.99058181070523368441629049828146511754`18. expected = 0.990581810705233`18. diff = 6.84416290498281465117545721339278855737798`14.839429988980282*^-16
+PASS: M5 Limit B_nonempty at infinity
+M5 sample R = 0 S_plus = -0.301516097158113`18. S_minus = 0.411024574532864`18. B_both = 1.67106489377558527979005503729012577342`18. B_nonempty = +inf
+M5 sample S_plus actual = -0.301516097158113`18. expected = -0.301516097158113`18. diff = 0``50.52068949705508
+PASS: M5 sample S_plus
+M5 sample S_minus actual = 0.411024574532864`18. expected = 0.411024574532864`18. diff = 0``50.38613221154251
+PASS: M5 sample S_minus
+M5 sample B_both actual = 1.67106489377558527979005503729012577342`18. expected = 1.671064893775584`18. diff = 1.2797900550372901257734227920479680532839833754530940285094204`34.88414541552114*^-15
+PASS: M5 sample B_both
+M5 sample B_nonempty = Infinity
+PASS: M5 sample B_nonempty
+M5 sample R = 1.`18. S_plus = -0.405079781233545`18. S_minus = 0.0383279244107035`18. B_both = 1.24383637054118824519767300080983950907`18. B_nonempty = +inf
+M5 sample S_plus actual = -0.405079781233545`18. expected = -0.405079781233545`18. diff = 0``50.392459433236645
+PASS: M5 sample S_plus
+M5 sample S_minus actual = 0.0383279244107035`18. expected = 0.0383279244107035`18. diff = 0``51.4164846986529
+PASS: M5 sample S_minus
+M5 sample B_both actual = 1.24383637054118824519767300080983950907`18. expected = 1.243836370541187`18. diff = 1.24519767300080983950906813163655246797641679048612086160652172`35.000475048709674*^-15
+PASS: M5 sample B_both
+M5 sample B_nonempty = Infinity
+PASS: M5 sample B_nonempty
+M5 sample R = 1.22925543846333598788938878199263141411`18. S_plus = -0.41573021518200166884712203749966936472`18. S_minus = 0 B_both = 1.21197100058885642050578713757537555672`18. B_nonempty = +inf
+M5 sample S_plus actual = -0.41573021518200166884712203749966936472`18. expected = -0.415730215182002`18. diff = 3.311528779625003306352820138292861809989638637376431339639829`34.90121694365613*^-16
+PASS: M5 sample S_plus
+M5 sample S_minus actual = 0 expected = 0 diff = 0
+PASS: M5 sample S_minus
+M5 sample B_both actual = 1.21197100058885642050578713757537555672`18. expected = 1.211971000588856`18. diff = 4.2050578713757537555671937272441966814279600248596515125354181`34.540279748694815*^-16
+PASS: M5 sample B_both
+M5 sample B_nonempty = Infinity
+PASS: M5 sample B_nonempty
+M5 sample R = 10.`18. S_plus = -0.48981370456798936363636363636363636364`18. S_minus = -0.26660569841651872727272727272727272727`18. B_both = 1.02866244894790003921153735122876005469`18. B_nonempty = 1.21313603518489162198219806248950413632`18.
+M5 sample S_plus actual = -0.48981370456798936363636363636363636364`18. expected = -0.48981370456799`18. diff = 6.3636363636363636363636363636363636363636363636363636363636365`35.11367442270966*^-16
+PASS: M5 sample S_plus
+M5 sample S_minus actual = -0.26660569841651872727272727272727272727`18. expected = -0.266605698416519`18. diff = 2.7272727272727272727272727272727272727272727272727272727272728`35.00985914179642*^-16
+PASS: M5 sample S_minus
+M5 sample B_both actual = 1.02866244894790003921153735122876005469`18. expected = 1.028662448947899`18. diff = 1.03921153735122876005469128758693901256328161452127209217208006`35.00443107332126*^-15
+PASS: M5 sample B_both
+M5 sample B_nonempty actual = 1.21313603518489162198219806248950413632`18. expected = 1.213136035184892`18. diff = 3.7801780193751049586368373101709074291116620477260945939585615`34.49360274921402*^-16
+PASS: M5 sample B_nonempty
+M6 Reduce B_plus' = R >= 0
+M6 Reduce B_minus' = R > 411024574532864/334368725711457
+M6 B_plus decreases on R >= 0 by Reduce = True
+PASS: M6 B_plus decreases on R >= 0 by Reduce
+M6 B_minus decreases on finite nonempty region by Reduce = True
+PASS: M6 B_minus decreases on finite nonempty region by Reduce
+M6 inf B_both exceeds static both budget = True
+PASS: M6 inf B_both exceeds static both budget
+M6 inf B_nonempty exceeds static nonempty budget = True
+PASS: M6 inf B_nonempty exceeds static nonempty budget
+R_star = 1.2292554384633359878893887819926314141068918213381142792773`30.
+delta_dyn_star = 0.723111617875019116300604645303424784893037860284779323885`30.
+inf B_dyn^(both) = 0.9672823893638217522502832045002855584143539851677363736311`30.
+inf B_dyn^(nonempty) = 0.990581810705233684416290498281465117545721339278855737798`30.
+All Stage 230 Mathematica audits passed.

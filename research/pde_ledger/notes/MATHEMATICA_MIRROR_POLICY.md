@@ -3,7 +3,9 @@
 This document defines how the PDE ledger should talk about Mathematica
 coverage.
 
-Snapshot date: `2026-06-02` (**batch VI.1 close {201–218} — first batch of Part VI, theme "Explicit realization, scalar slice, ray ranking"; forward first-pass under the v2 paper-grounded auditor WITH the dual-engine rule.** ALL 18 stages verified; `material_change: false` on all 18; 0 stop-cold, 0 blocked, 0 needs_rework left open. **Checkpoints 203 and 218 BOTH cleared the higher checkpoint bar (no rubber-stamp).** **Dual-engine outcome — every stage has an INDEPENDENT second engine; 0 sanctioned mirrors in VI.1.** 16 stages had NO Mathematica `.wl` and got a NEW independent-route `.wl`: **201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217** (all added to the Independent-Mirror Set below). The checkpoint **218's pre-existing `.wl` was a transliteration of the `.py` and was RE-AUTHORED to a genuinely independent route** (native `Subsets`/`SubsetQ`/`Boole`/`Tally` set-combinatorics for M1, `Reduce`/`Resolve`/`ForAll` for the M2/M3 splice, independently-generated regime witnesses for M4 — the M4 witness counts even DIFFER between engines, 256/192/65+63 in the `.wl` vs 192/192/64+64 in the `.py`, proving independence). Checkpoint **203** already had both engines; its `.wl` got a strengthened, independent composition check (χ_Q composed through the real Stage-202 graph map over a 2-free-coordinate path + 3 falsifiable target-monomial-invariance checks, independently log-space-derived on the `.wl`). **One iter-2 timeout rework:** stage **202**'s first `.wl` symbolic-`Solve`d a transcendental log equation and TIMED OUT at the 600s cap on the orchestrator's independent re-run; reformulated (Codex) to a `LinearSolve` of the log-LINEARIZED monomial-match system (fast + independent). **206** the user-resolved scope finding (F3) was implemented as ADDITIVE script-side checks in BOTH engines (pairwise ray-ordering implication proven a tautology over the constrained region AND shown non-vacuous — false when the separation hypothesis is dropped — plus a discriminating admissibility predicate); no paper edit for 206. Four orchestrator catches in the loop (three directive `.wl` target paths dropped the required `_mathematica_audit` suffix — 201 + 210 were renamed post-build, 212 + 216 directives fixed pre-build; plus the 202 timeout and a 212 forward-ref). Infrastructure: discovered a single Codex build can hold BOTH Mathematica seats during a hang → refined the loop to defer the orchestrator's `exec-*` re-run until a wave's Codex builds finish. Previous retro-sweep entry below.
+Snapshot date: `2026-06-02` (**batch VII.1 close {219–230} — second batch of Part VII, theme "Mixed-bundle / resonance / branch-packet"; forward first-pass under the v2 paper-grounded auditor WITH the dual-engine rule.** ALL 12 stages verified; `material_change: false` on all 12; 0 stop-cold, 0 blocked; all 12 codex-invoke exited 0 on iteration 1 (no iter-2 reworks). **Checkpoint 221 cleared the higher checkpoint bar (no rubber-stamp).** **Dual-engine outcome — every stage has an INDEPENDENT second engine; 0 sanctioned mirrors in VII.1.** **11 stages had NO Mathematica `.wl` and got a NEW independent-route `.wl`: 219, 220, 222, 223, 224, 225, 226, 227, 228, 229, 230** (all added to the Independent-Mirror Set below). The checkpoint **221's pre-existing `.wl` was a line-by-line transliteration of the `.py` and was RE-AUTHORED to a genuinely independent route** (native `D[QPi/DeltaPi,portPi]` derivative, `Residue`, `ComplexExpand`, an uncollapsed Breit–Wigner form), so all 12 VII.1 stages are now genuine dual-engine. Every new `.wl` was confirmed independent by a clean verify agent — native primitives via a DIFFERENT decomposition than the SymPy `.py`: e.g. **219** structural family extraction via `Collect`/`CoefficientList`; **220** Laurent-support `CoefficientRules`; **226** `Orthogonalize` projector (not QR); **228** `NSolve`+`Series`+implicit-function slopes; **229/230** `Resolve[ForAll]` universal-quantifier proofs. **One sanctioned Codex deviation (221-F3):** Codex used the native `D[QPi/DeltaPi,portPi]` instead of the directive's leading-minus form, reconciling the Stage-220 identity `∂_Π D_Π = −N` — verified correct (a route choice, the identity holds). **The 221 checkpoint detail:** F1 tautological survival round-trips were de-tautologized; F2 deliverable #9 (the linear survival window) had been print-only/tautological → now genuinely covered in BOTH engines; F4 was a notes renumber. **Script-side findings fixed besides the missing/transliterated `.wl`:** 220 F2 insufficient → symbolic P_abs perfect-square assert; 223 F2 tautological circular compat-surface → `sp.solve(Eq(K_norm,K_pole),P0_target)`; 224 F2 hardcoded budgets-vs-themselves → defining-relation checks tied to the ceiling; 225 F2 tautological `0==0` one-pole → tied to the one-pole constraint `D4=−3·D0·u2²` (+ an `expectNonZero` negative control); 230 F2 tautological onset round-trip → `sp.solve(Eq(onset,R_star),delta)`. **Orchestrator note:** the `.wl` naming bug from VI.1 did NOT recur — all 12 directive `.wl` targets carried the required `_mathematica_audit.wl` suffix (an explicit pre-invoke guard worked); 230's codex log was captured EMPTY (a logging anomaly, NOT a stall — exit 0, all `## Applied` blocks present, all artifacts built, independently re-confirmed + verified). Previous VI.1 entry below.
+
+Snapshot date prior: `2026-06-02` (**batch VI.1 close {201–218} — first batch of Part VI, theme "Explicit realization, scalar slice, ray ranking"; forward first-pass under the v2 paper-grounded auditor WITH the dual-engine rule.** ALL 18 stages verified; `material_change: false` on all 18; 0 stop-cold, 0 blocked, 0 needs_rework left open. **Checkpoints 203 and 218 BOTH cleared the higher checkpoint bar (no rubber-stamp).** **Dual-engine outcome — every stage has an INDEPENDENT second engine; 0 sanctioned mirrors in VI.1.** 16 stages had NO Mathematica `.wl` and got a NEW independent-route `.wl`: **201, 202, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217** (all added to the Independent-Mirror Set below). The checkpoint **218's pre-existing `.wl` was a transliteration of the `.py` and was RE-AUTHORED to a genuinely independent route** (native `Subsets`/`SubsetQ`/`Boole`/`Tally` set-combinatorics for M1, `Reduce`/`Resolve`/`ForAll` for the M2/M3 splice, independently-generated regime witnesses for M4 — the M4 witness counts even DIFFER between engines, 256/192/65+63 in the `.wl` vs 192/192/64+64 in the `.py`, proving independence). Checkpoint **203** already had both engines; its `.wl` got a strengthened, independent composition check (χ_Q composed through the real Stage-202 graph map over a 2-free-coordinate path + 3 falsifiable target-monomial-invariance checks, independently log-space-derived on the `.wl`). **One iter-2 timeout rework:** stage **202**'s first `.wl` symbolic-`Solve`d a transcendental log equation and TIMED OUT at the 600s cap on the orchestrator's independent re-run; reformulated (Codex) to a `LinearSolve` of the log-LINEARIZED monomial-match system (fast + independent). **206** the user-resolved scope finding (F3) was implemented as ADDITIVE script-side checks in BOTH engines (pairwise ray-ordering implication proven a tautology over the constrained region AND shown non-vacuous — false when the separation hypothesis is dropped — plus a discriminating admissibility predicate); no paper edit for 206. Four orchestrator catches in the loop (three directive `.wl` target paths dropped the required `_mathematica_audit` suffix — 201 + 210 were renamed post-build, 212 + 216 directives fixed pre-build; plus the 202 timeout and a 212 forward-ref). Infrastructure: discovered a single Codex build can hold BOTH Mathematica seats during a hang → refined the loop to defer the orchestrator's `exec-*` re-run until a wave's Codex builds finish. Previous retro-sweep entry below.
 
 Snapshot date prior: `2026-06-01` (**retro-sweep {121, 122, 123} — DUAL-ENGINE GAP NOW CLOSED for already-verified non-status-only stages**; these 3 stages were already `verified` in batch IV.3 but were SymPy-ONLY. Under the dual-engine rule (a `.wl` is REQUIRED wherever Mathematica CAN independently verify — test is "is it possible," not "is it necessary"), each was retrofitted with a NEW independent-route `.wl`: Codex designed + wrote the `.wl`, Claude reviewed (audit + verify). Outcome **3/3 verified, `material_change: false` on all 3** — the SymPy `.py` reference engines were UNCHANGED, paper/notes UNTOUCHED; 0 transliterations accepted, 0 iteration-2 reworks, 0 blocked, 0 stop-cold. **121** (geometric_r_selection) 6 PASS; **122** (mouth_source_compensation_test) 9 PASS — the free-positive-symbol `cStage` traction-ratio de-tautology preserved cross-engine; **123** (parent_normalized_branch_values) 6 PASS — the un-squared λ NEGATIVE sign preserved so `Xi_v(F1) ≈ −1.01675633282526`. All 3 added to the Independent-Mirror Set below. **Cumulative coverage UNCHANGED at 200/253 verified (79.1%)** — a retro-sweep adds 2nd engines to already-verified stages, it does NOT add new verified stages; 121/122/123 were the only 3 already-`verified` non-status-only stages still missing a `.wl`, so that dual-engine gap is now CLOSED (the 11 status-only single-engine stages compute nothing a `.wl` could check and legitimately remain single-engine). No checkpoints in range, no new constants, no EM-projection change. Previous batch V.3 entry below.
 
@@ -745,6 +747,71 @@ different verification structure from the SymPy side:
   for M1, `Reduce`/`Resolve`/`ForAll` for the M2/M3 splice, independently-generated
   regime witnesses for M4 — the M4 witness counts even DIFFER between engines,
   256/192/65+63 in the `.wl` vs 192/192/64+64 in the `.py`, proving independence)
+- `219`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via structural family extraction using `Collect`/`CoefficientList`; genuine
+  independent route
+- `220`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via a Laurent-support `CoefficientRules` route; the insufficient-verification F2
+  was strengthened to a symbolic P_abs perfect-square assert; genuine independent
+  route
+- `221`
+  verifies the resonance line-shape tradeoff / dispersive no-free-lunch theorem and
+  the linear survival window; red-team batch VII.1 (2026-06-02) RE-AUTHORED the
+  pre-existing line-by-line transliteration `.wl` to a genuinely independent route
+  (native `D[QPi/DeltaPi,portPi]` derivative, `Residue`, `ComplexExpand`, an
+  uncollapsed Breit–Wigner form), de-tautologized the F1 survival round-trips, and
+  brought deliverable #9 (the linear survival window) into genuine dual-engine
+  coverage (was print-only/tautological); one sanctioned Codex deviation (F3) used
+  the native `D[QPi/DeltaPi,portPi]` instead of the directive's leading-minus form,
+  reconciling the Stage-220 identity `∂_Π D_Π = −N` — verified correct (checkpoint)
+- `222`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  independently recomputes the corrected upper-wall `R_Q = 145.483858657863` at
+  λ_W=0.2, corroborating the SymPy script (notes-only typo `213.483858657863`→`145…`
+  corrected this batch); genuine independent route
+- `223`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  the F2 tautological circular compat-surface was replaced by
+  `sp.solve(Eq(K_norm,K_pole),P0_target)`; independently corroborates the corrected
+  wall `R_Q` figures `138.814136942081`/`137.502546600713` (notes-only typos
+  `206.814136942081`/`205.502546600713` corrected this batch); genuine independent
+  route
+- `224`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  the F2 hardcoded budgets-vs-themselves check was replaced by defining-relation
+  checks tied to the ceiling; genuine independent route
+- `225`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  the F2 tautological `0==0` one-pole check was tied to the one-pole constraint
+  `D4=−3·D0·u2²` (+ an `expectNonZero` negative control); genuine independent route
+- `226`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via an `Orthogonalize` projector (not QR); genuine independent route
+- `227`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only);
+  independently recomputes the corrected `i=h` rigidity determinant factor
+  `200+147π²` (notes-only typo `251+215π²` corrected this batch); genuine independent
+  route
+- `228`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via `NSolve`+`Series`+implicit-function slopes; independently recomputes the
+  corrected δ_1 coefficient `196π²/(98π²−25)` and reduced-det `196(200+147π²)`
+  (notes-only typos `247π²/(98π²−25)` / `247(251+215π²)` corrected this batch);
+  genuine independent route
+- `229`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via a `Resolve[ForAll]` universal-quantifier proof; independently recomputes the
+  corrected crossover-cubic leading coeff `121ξ³` (notes-only typo `189ξ³` corrected
+  this batch); genuine independent route
+- `230`
+  red-team batch VII.1 (2026-06-02) created the native mirror (previously SymPy-only)
+  via a `Resolve[ForAll]` universal-quantifier proof; the F2 tautological onset
+  round-trip was replaced by `sp.solve(Eq(onset,R_star),delta)`; independently
+  corroborates the thresholds `R_*≈1.229255438463336` / `δ_*≈0.723111617875019`;
+  genuine independent route (230's codex log was captured EMPTY — a logging anomaly,
+  not a stall; exit 0, all `## Applied` blocks present, independently re-confirmed)
 - `239`
   uses the carried Stage 236/238 formulas for blind directions and orbit-lock
 - `242`

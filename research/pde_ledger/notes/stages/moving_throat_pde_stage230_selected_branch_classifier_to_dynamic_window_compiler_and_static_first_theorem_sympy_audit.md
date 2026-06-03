@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the explicit finite-throat D/N selected-branch classifier closure built on the Stage-245 rigid dynamic data and the Stage-246 selected-branch numerator/denominator classifier.**
+**Exact within the explicit finite-throat D/N selected-branch classifier closure built on the Stage-228 rigid dynamic data and the Stage-229 selected-branch numerator/denominator classifier.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the exact Stage-246 selected-branch classifier
+It takes the exact Stage-229 selected-branch classifier
 \[
 \mathcal R_{ND}(\xi,\delta)
 =
 \frac{72\delta^2(1-\xi)}{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},
 \]
-together with the two exact Stage-245 rigid same-charge survivors,
+together with the two exact Stage-228 rigid same-charge survivors,
 
 - **numerator-rigid** \((\pi_1=0)\), which is dynamically **denominator-carried**,
 - **denominator-rigid** \((\delta_1=0)\), which is dynamically **numerator-carried**,
@@ -24,12 +24,12 @@ and asks the next natural physical question:
 
 ## Purpose
 
-Stage 245 already produced the first actual wall-like dynamic responses of the two rigid pure-transfer survivors.
-Stage 246 then showed that the actual selected branch is not literally either rigid split: it is an exact co-loading product with classifier \(\mathcal R_{ND}\).
+Stage 228 already produced the first actual wall-like dynamic responses of the two rigid pure-transfer survivors.
+Stage 229 then showed that the actual selected branch is not literally either rigid split: it is an exact co-loading product with classifier \(\mathcal R_{ND}\).
 
 So the next honest question is now completely sharp:
 
-> if the actual selected branch is sampled through the exact rigid-split compiler built from the Stage-245 rigid dynamic data, does its wall-like dynamic window ever beat the universal static budget?
+> if the actual selected branch is sampled through the exact rigid-split compiler built from the Stage-228 rigid dynamic data, does its wall-like dynamic window ever beat the universal static budget?
 
 The main outputs of this stage are:
 
@@ -40,7 +40,7 @@ The main outputs of this stage are:
    w_{\rm den}=\frac{1}{1+\mathcal R_{ND}},
    \]
    which split the selected branch into its numerator-carried and denominator-carried pieces;
-2. the exact selected-branch wall-like dynamic slopes per unit \(\Xi_1\) as affine mixtures of the carried Stage-245 rigid-branch slopes;
+2. the exact selected-branch wall-like dynamic slopes per unit \(\Xi_1\) as affine mixtures of the carried Stage-228 rigid-branch slopes;
 3. the exact sign theorem that the upper wall-like pole always worsens, while the lower wall-like pole flips sign only at one finite classifier threshold
    \[
    \mathcal R_*\approx 1.229255438463336;
@@ -51,7 +51,7 @@ The main outputs of this stage are:
    \]
 5. and the central **static-first theorem**: the dynamic ceilings are everywhere weaker than the universal transported static ceilings, so the first kill condition on the selected branch is still the static \(|\epsilon\Xi_1|\) budget, not the wall-like dynamic window.
 
-So after Stage 247 the continuation point is no longer to wonder whether the selected-branch dynamic window kills the same-charge corridor.
+So after Stage 230 the continuation point is no longer to wonder whether the selected-branch dynamic window kills the same-charge corridor.
 Inside this exact rigid-split compiler on the concrete compatibility branch, it does not.
 The remaining question is still the static placement of \(\Xi_1\) on the actual moving-throat branch.
 
@@ -59,9 +59,9 @@ The remaining question is still the static placement of \(\Xi_1\) on the actual 
 
 ## 1. Frozen input carried forward
 
-### 1.1 Stage-245 rigid dynamic data
+### 1.1 Stage-228 rigid dynamic data
 
-Stage 245 isolated two exact one-dimensional pure-transfer survivors on the explicit compatibility branch.
+Stage 228 isolated two exact one-dimensional pure-transfer survivors on the explicit compatibility branch.
 
 The first is the **numerator-rigid** branch
 \[
@@ -71,7 +71,7 @@ so the same-charge signal is carried entirely by the denominator:
 \[
 \Xi_1=-2\delta_1.
 \]
-Its carried Stage-245 unit direction has
+Its carried Stage-228 unit direction has
 \[
 \Xi_1\approx 1.73611234967676,
 \]
@@ -98,7 +98,7 @@ so the same-charge signal is carried entirely by the numerator:
 \[
 \Xi_1=2\pi_1.
 \]
-Its carried Stage-245 unit direction has
+Its carried Stage-228 unit direction has
 \[
 \Xi_1\approx 0.692932151812037,
 \]
@@ -117,11 +117,11 @@ So per unit \(\Xi_1\), the **numerator-carried** dynamic slopes are
 }
 \]
 
-These four numbers are the only dynamic inputs needed in Stage 247.
+These four numbers are the only dynamic inputs needed in Stage 230.
 
-### 1.2 Stage-246 selected-branch classifier
+### 1.2 Stage-229 selected-branch classifier
 
-Stage 246 showed that the actual selected branch is not rigid.
+Stage 229 showed that the actual selected branch is not rigid.
 It is an exact co-loading product with classifier
 \[
 \mathcal R_{ND}(\xi,\delta)
@@ -142,7 +142,7 @@ Its derivative is
 which is strictly negative on the stable interval.
 So the classifier decreases monotonically along the selected branch.
 
-That monotonicity is the key Stage-246 input that lets us convert onset information into whole-branch dynamic statements below.
+That monotonicity is the key Stage-229 input that lets us convert onset information into whole-branch dynamic statements below.
 
 ---
 
@@ -167,7 +167,7 @@ So its exact contribution shares are
 }
 \]
 
-Inside the exact rigid-split compiler, these are the weights with which the selected branch samples the carried Stage-245 dynamic responses.
+Inside the exact rigid-split compiler, these are the weights with which the selected branch samples the carried Stage-228 dynamic responses.
 So the selected-branch wall-like dynamic slopes **per unit \(\Xi_1\)** are
 \[
 \boxed{
@@ -184,9 +184,9 @@ S_-(\mathcal R_{ND})
 }
 \]
 
-This is the first Stage-247 compression:
+This is the first Stage-230 compression:
 
-> once the Stage-246 classifier is known, the selected-branch dynamic response is completely determined inside the rigid-split compiler.
+> once the Stage-229 classifier is known, the selected-branch dynamic response is completely determined inside the rigid-split compiler.
 
 Because the compiler is affine in the rigid data, every later dynamic conclusion is now a statement about the single scalar classifier \(\mathcal R_{ND}\).
 
@@ -262,11 +262,11 @@ That is already enough to show that the denominator-like part of the classifier 
 
 ---
 
-## 4. Immediate consequences for the Stage-246 classifier map
+## 4. Immediate consequences for the Stage-229 classifier map
 
 ### 4.1 Every denominator-like point has infinite nonempty dynamic ceiling
 
-Stage 246 already proved that denominator-like means
+Stage 229 already proved that denominator-like means
 \[
 \mathcal R_{ND}\le 1.
 \]
@@ -283,14 +283,14 @@ S_-(\mathcal R_{ND})>0.
 }
 \]
 
-So every denominator-like selected-branch point has the same split-sign dynamic response as the Stage-245 denominator-carried rigid branch:
+So every denominator-like selected-branch point has the same split-sign dynamic response as the Stage-228 denominator-carried rigid branch:
 
 - upper wall-like pole worsens,
 - lower wall-like pole improves.
 
 That means its **nonempty** dynamic ceiling is infinite.
 
-In particular, the whole always-denominator regime from Stage 246,
+In particular, the whole always-denominator regime from Stage 229,
 \[
 \delta\ge \frac89,
 \]
@@ -328,14 +328,14 @@ Therefore
 }
 \]
 
-This is stronger than the Stage-246 denominator-like theorem.
+This is stronger than the Stage-229 denominator-like theorem.
 It says even a substantial subset of the onset-side numerator-like branches still never lose their nonempty dynamic window.
 
 ---
 
 ## 5. Exact dynamic ceilings in \(|\epsilon\Xi_1|\)
 
-Use the carried Stage-245 wall-like dynamic figures
+Use the carried Stage-228 wall-like dynamic figures
 \[
 \mathcal R_{Q,-}\approx 30.199907560250075,
 \qquad
@@ -421,7 +421,7 @@ That is already much looser than the transported static budgets below.
 
 ## 6. Universal transported static ceilings in \(|\epsilon\Xi_1|\)
 
-Stage 245 gave the transported static ceilings in the rigid branch parameter \(t\).
+Stage 228 gave the transported static ceilings in the rigid branch parameter \(t\).
 Converting them to \(|\epsilon\Xi_1|\) yields the same universal numbers from both rigid splits:
 \[
 \boxed{
@@ -438,7 +438,7 @@ This universality is expected: on the pure-transfer corridor,
 \[
 \delta\ln P_0=\Xi_1,
 \]
-so the transported Stage-241/245 static budgets naturally live in the branch-invariant variable \(|\epsilon\Xi_1|\).
+so the transported Stage-227/228 static budgets naturally live in the branch-invariant variable \(|\epsilon\Xi_1|\).
 
 Now compare the worst selected-branch dynamic ceilings with these universal static budgets:
 \[
@@ -465,7 +465,7 @@ B_{\rm stat}^{(\rm nonempty)}.
 
 So the selected-branch dynamic window is **everywhere weaker** than the universal transported static ceiling.
 
-This is the central Stage-247 theorem.
+This is the central Stage-230 theorem.
 
 ---
 
@@ -526,12 +526,12 @@ Even here, the robust dynamic ceiling is still far above the universal static ro
 
 ---
 
-## 8. Best current verdict after Stage 247
+## 8. Best current verdict after Stage 230
 
-Stage 247 does not kill the same-charge corridor.
+Stage 230 does not kill the same-charge corridor.
 It sharpens the verdict instead.
 
-Inside the exact rigid-split compiler built from Stages 245 and 246 on the concrete compatibility branch:
+Inside the exact rigid-split compiler built from Stages 228 and 229 on the concrete compatibility branch:
 
 1. the selected-branch wall-like dynamic response is completely controlled by the single classifier \(\mathcal R_{ND}\);
 2. the upper wall-like pole always worsens, but the lower one improves whenever
@@ -558,7 +558,7 @@ Inside the exact rigid-split compiler built from Stages 245 and 246 on the concr
 
 So the first kill condition on the selected same-charge branch is still the transported static \(\Xi_1\) budget, not the wall-like dynamic window.
 
-That is the right continuation point after Stage 247.
+That is the right continuation point after Stage 230.
 
 ---
 
@@ -566,7 +566,7 @@ That is the right continuation point after Stage 247.
 
 The accompanying SymPy audit verifies:
 
-1. the exact Stage-246 classifier formula and its strict monotonicity in \(\xi\);
+1. the exact Stage-229 classifier formula and its strict monotonicity in \(\xi\);
 2. the exact rigid-split share weights and the selected-branch affine compiler
    \[
    S_\pm(\mathcal R_{ND});
@@ -590,4 +590,4 @@ The accompanying SymPy audit verifies:
    on the entire selected-branch classifier half-line.
 
 Supporting file:
-- `moving_throat_pde_stage247_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py`
+- `moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py`

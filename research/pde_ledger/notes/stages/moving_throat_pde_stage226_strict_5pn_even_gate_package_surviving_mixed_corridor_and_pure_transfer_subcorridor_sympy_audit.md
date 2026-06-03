@@ -2,10 +2,10 @@
 
 ## Status
 
-**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-240 compatibility branch, the Stage-242 primitive compiler, and the imported strict `5`PN even-gate package.**
+**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223 compatibility branch, the Stage-225 primitive compiler, and the imported strict `5`PN even-gate package.**
 
 This stage does **not** solve the full moving-throat PDE.
-It takes the explicit mixed-sector survivor from Stage 242 and carries it into the stricter imported `5`PN first-order package
+It takes the explicit mixed-sector survivor from Stage 225 and carries it into the stricter imported `5`PN first-order package
 \[
 \Xi_{\rm load},\qquad K_1,\qquad H_{\rm even},
 \]
@@ -15,9 +15,9 @@ then determines exactly whether the corridor dies or survives on the concrete no
 
 ## Purpose
 
-Stage 242 showed that the explicit finite-throat one-port branch still supports a nontrivial mixed-sector corridor after imposing the **first-order conservative compensation surface** that keeps the actual grouped response fixed on that branch.
+Stage 225 showed that the explicit finite-throat one-port branch still supports a nontrivial mixed-sector corridor after imposing the **first-order conservative compensation surface** that keeps the actual grouped response fixed on that branch.
 
-But the later `5`PN notes impose a stricter first-order package than Stage 242 used. In that later language, the surviving weak-axisymmetric grouped problem is organized by three scalars:
+But the later `5`PN notes impose a stricter first-order package than Stage 225 used. In that later language, the surviving weak-axisymmetric grouped problem is organized by three scalars:
 
 \[
 \Xi_{\rm load}=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0},
@@ -31,7 +31,7 @@ H_{\rm even}=D_{41}-\frac{2}{3}D_{21}-\frac{D_{01}}{27}.
 
 So the next honest step is not another loose mechanism scan. It is:
 
-> carry the Stage-242 mixed-sector survivor into the stricter imported `5`PN even-gate package and see whether the corridor collapses or survives.
+> carry the Stage-225 mixed-sector survivor into the stricter imported `5`PN even-gate package and see whether the corridor collapses or survives.
 
 The main outputs are:
 
@@ -39,13 +39,13 @@ The main outputs are:
    \[
    \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0},
    \]
-   so the same-charge scalar from Stage 242 is already the imported `5`PN load defect;
-2. the exact comparison between the Stage-242 compensation surface and the stricter `5`PN even-gate package;
-3. the explicit mixed-sector-only strict-even-gate solve on the concrete Stage-240 compatibility point;
-4. the sharper **pure-transfer** subcorridor that survives once one also enforces the Stage-242 conservative-shape preservation on this noncanonical sample branch;
+   so the same-charge scalar from Stage 225 is already the imported `5`PN load defect;
+2. the exact comparison between the Stage-225 compensation surface and the stricter `5`PN even-gate package;
+3. the explicit mixed-sector-only strict-even-gate solve on the concrete Stage-223 compatibility point;
+4. the sharper **pure-transfer** subcorridor that survives once one also enforces the Stage-225 conservative-shape preservation on this noncanonical sample branch;
 5. the transported same-charge ceiling budgets on both the strict mixed corridor and the pure-transfer subcorridor.
 
-So after Stage 243, the question is no longer
+So after Stage 226, the question is no longer
 
 > does some mixed anisotropy survive?
 
@@ -57,7 +57,7 @@ It is now
 
 ## 1. Frozen input carried forward
 
-### 1.1 Explicit one-port compatibility branch from Stages 240–242
+### 1.1 Explicit one-port compatibility branch from Stages 223–225
 
 Keep the same finite-throat branch:
 
@@ -74,7 +74,7 @@ With primitive parameters
 =
 \left(\frac12,\frac3{10},\frac25,\frac14,1,\frac75,2,1\right),
 \]
-Stage 242 fixed the isotropic one-pole base data
+Stage 223 fixed the isotropic one-pole base data
 \[
 D_0\approx 24.2373099886223,
 \qquad
@@ -98,9 +98,9 @@ The same branch also carries
 P_{0,\rm compat}=\frac{N_0}{D_0}\approx 0.002069792318062885.
 \]
 
-### 1.2 Stage-242 first-order primitive compiler
+### 1.2 Stage-225 first-order primitive compiler
 
-Stage 242 already compiled the primitive weak-axisymmetric slopes
+Stage 225 already compiled the primitive weak-axisymmetric slopes
 \[
 (x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
 \]
@@ -108,7 +108,7 @@ into
 \[
 D_{01},\qquad D_{21},\qquad D_{41},\qquad N_{01},\qquad \Xi_1.
 \]
-On the mixed-only sector, the Stage-242 conservative compensation surface was
+On the mixed-only sector, the Stage-225 conservative compensation surface was
 \[
 D_{21}=-u_2D_{01},
 \qquad
@@ -119,7 +119,7 @@ and the transported same-charge scalar was already
 \Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
 \]
 
-### 1.3 Stage-241 transported same-charge ceilings
+### 1.3 Stage-224 transported same-charge ceilings
 
 At this same compatibility point the robust carried budgets were
 \[
@@ -145,7 +145,7 @@ The imported weak-axisymmetric `5`PN load defect is
 \[
 \Xi_{\rm load}:=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
 \]
-But Stage 242 already gave
+But Stage 225 already gave
 \[
 \Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
 \]
@@ -154,15 +154,15 @@ So coefficientwise,
 \boxed{\Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.}
 \]
 
-That matters because we are not introducing a new scalar here. We are simply re-reading the Stage-242 same-charge scalar in the stricter imported `5`PN language.
+That matters because we are not introducing a new scalar here. We are simply re-reading the Stage-225 same-charge scalar in the stricter imported `5`PN language.
 
 So the same-charge scalar already is the `5`PN loading defect.
 
 ---
 
-## 3. Exact comparison: Stage-242 compensation is weaker than the strict `5`PN package
+## 3. Exact comparison: Stage-225 compensation is weaker than the strict `5`PN package
 
-The Stage-242 first-order conservative compensation surface on an arbitrary one-pole base branch is
+The Stage-225 first-order conservative compensation surface on an arbitrary one-pole base branch is
 \[
 D_{21}=-u_2D_{01},
 \qquad
@@ -194,9 +194,9 @@ one also gets
 \boxed{H_{\rm even}=\left(-3u_2^2+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
 \]
 
-So the Stage-242 conservative-shape preservation and the stricter imported `5`PN even gates are **not** the same condition. They agree only on the canonical branch for which the coefficients above vanish.
+So the Stage-225 conservative-shape preservation and the stricter imported `5`PN even gates are **not** the same condition. They agree only on the canonical branch for which the coefficients above vanish.
 
-On the explicit Stage-240 compatibility branch the coefficients are numerically
+On the explicit Stage-223 compatibility branch the coefficients are numerically
 \[
 K_1\approx 0.0621939470719309\,D_{01},
 \qquad
@@ -204,12 +204,12 @@ H_{\rm even}\approx -0.0116042611571584\,D_{01}.
 \]
 Both are nonzero. Therefore, on this noncanonical sample branch,
 \[
-\boxed{\text{Stage-242 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+\boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
 \]
 
 This is the first real sharpening of the corridor.
 
-It means that once the stricter imported `5`PN gates are imposed on top of the Stage-242 compensation surface, the surviving same-charge corridor can no longer use first-order conservative static loading. It must pass through a branch with
+It means that once the stricter imported `5`PN gates are imposed on top of the Stage-225 compensation surface, the surviving same-charge corridor can no longer use first-order conservative static loading. It must pass through a branch with
 \[
 D_{01}=0.
 \]
@@ -265,7 +265,7 @@ The corresponding same-charge scalars are
 \[
 \Xi_1(w_3)\approx -5.02163500066813.
 \]
-So the strict even-gate package does **not** kill the mixed-sector corridor. It only deforms it relative to the weaker Stage-242 compensation surface.
+So the strict even-gate package does **not** kill the mixed-sector corridor. It only deforms it relative to the weaker Stage-225 compensation surface.
 
 Let `\Pi_{\rm even}` denote the ambient-Euclidean orthogonal projector onto this nullspace. Then the induced operator norm of the same-charge functional on the strict corridor is
 \[
@@ -283,7 +283,7 @@ That gives a canonical same-charge gain scale for unit microscopic mixed-sector 
 
 Now impose the full intersection of
 
-1. Stage-242 conservative-shape preservation, and
+1. Stage-225 conservative-shape preservation, and
 2. the stricter imported `5`PN even-gate package.
 
 On this noncanonical sample branch, Section 3 showed that this is equivalent to solving
@@ -304,7 +304,7 @@ D_{01}=0.
 \]
 The intersection matrix has rank `3`, hence nullity `2`.
 
-So a **two-dimensional** mixed-sector corridor still survives even after imposing both the Stage-242 compensation surface and the imported strict `5`PN even gates.
+So a **two-dimensional** mixed-sector corridor still survives even after imposing both the Stage-225 compensation surface and the imported strict `5`PN even gates.
 
 A convenient raw basis is
 \[
@@ -365,7 +365,7 @@ Interpret the ambient microscopic mixed-sector drift amplitude as
 \[
 \|x_{\rm mixed}\|_2=t.
 \]
-If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-241 ceiling law becomes
+If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-224 ceiling law becomes
 \[
 |\epsilon|t \le \frac{\text{budget}}{\sigma}.
 \]
@@ -426,19 +426,19 @@ And in fact the pure-transfer subcorridor leaves slightly **more** same-charge h
 
 ---
 
-## 7. What Stage 243 changes
+## 7. What Stage 226 changes
 
 Before this stage, the strongest positive statement was only
 
-> a mixed-sector corridor survives the first-order conservative compensation surface from Stage 242.
+> a mixed-sector corridor survives the first-order conservative compensation surface from Stage 225.
 
 After this stage, the picture is much sharper.
 
-1. The imported strict `5`PN loading defect is **exactly** the same scalar already isolated in Stage 242:
+1. The imported strict `5`PN loading defect is **exactly** the same scalar already isolated in Stage 225:
    \[
    \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.
    \]
-2. The Stage-242 compensation surface is weaker than the stricter imported `5`PN even-gate package.
+2. The Stage-225 compensation surface is weaker than the stricter imported `5`PN even-gate package.
 3. On the concrete noncanonical sample branch, imposing both structures together forces
    \[
    D_{01}=0.
@@ -453,7 +453,7 @@ After this stage, the picture is much sharper.
 
 So the best current summary is:
 
-> the idea survives Stage 243, but no longer as generic mixed anisotropy. The sharpest surviving mechanism is mixed-sector outgoing-transfer enhancement with the conservative one-pole bundle frozen at first order.
+> the idea survives Stage 226, but no longer as generic mixed anisotropy. The sharpest surviving mechanism is mixed-sector outgoing-transfer enhancement with the conservative one-pole bundle frozen at first order.
 
 That is a real narrowing, and it is the kind of narrowing we want.
 
@@ -467,11 +467,11 @@ The accompanying SymPy audit verifies:
   \[
   \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0};
   \]
-- the exact formulas obtained by inserting the Stage-242 compensation surface into the imported strict `5`PN even gates;
+- the exact formulas obtained by inserting the Stage-225 compensation surface into the imported strict `5`PN even gates;
 - the concrete noncanonical compatibility-point coefficients in front of `D_{01}`;
 - the strict mixed-only even-gate matrix, its rank-`2` nullity-`3` solve, the displayed raw null basis, the corresponding `\Xi_1` values, and the induced corridor norm `\sigma_{\rm even}`;
 - the pure-transfer `3 x 5` intersection system, its rank-`3` nullity-`2` solve, the displayed raw basis, the corresponding `\Xi_1` and `N_{01}` values, and the induced norm `\sigma_{\rm transfer}`;
 - and the transported same-charge ceiling budgets on both surviving strict corridors.
 
 Supporting file:
-- `moving_throat_pde_stage243_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py`
+- `moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py`

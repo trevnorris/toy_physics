@@ -2,13 +2,13 @@
 
 ## Status
 
-**Exact within the carried final `5`PN branch-packet / grouped-prefactor compiler and the transported primitive-family same-charge window closure** once the Stage-240 survival ceilings are taken as frozen inputs.
+**Exact within the carried final `5`PN branch-packet / grouped-prefactor compiler and the transported primitive-family same-charge window closure** once the Stage-223 survival ceilings are taken as frozen inputs.
 
 The compiler from the final branch packet to the actual grouped prefactors, the isotropic and weak-axisymmetric ceiling inequalities, the exact one-scalar reduction
 \[
 \Xi_1=\frac{P_1}{P_0},
 \]
-and the explicit headroom numbers below are exact consequences of that reduced closure. The numerical values are exact evaluations at the Stage-240 compatibility point
+and the explicit headroom numbers below are exact consequences of that reduced closure. The numerical values are exact evaluations at the Stage-223 compatibility point
 \[
 \bar P_0=P_{0,\mathrm{target,compat}}\approx 0.002069792318062885.
 \]
@@ -19,13 +19,13 @@ This stage does **not** solve the full moving-throat PDE. It performs the first 
 
 ## Purpose
 
-Stage 240 forced the primitive finite-throat one-port branch onto the exact isotropic `5`PN target surface and found that the wall-like same-charge corridor survives only inside a **finite normalization window**.
+Stage 223 forced the primitive finite-throat one-port branch onto the exact isotropic `5`PN target surface and found that the wall-like same-charge corridor survives only inside a **finite normalization window**.
 
 But that still left one gap:
 
 > how do we test the **actual** moving-throat / `5`PN branch, rather than the primitive family, against that finite window?
 
-The next honest step is therefore not another primitive scan. It is to compile the real PDE-selected branch data into the same prefactor variables the Stage-240 window uses.
+The next honest step is therefore not another primitive scan. It is to compile the real PDE-selected branch data into the same prefactor variables the Stage-223 window uses.
 
 The main outputs are:
 
@@ -41,9 +41,9 @@ The main outputs are:
    \qquad
    \Xi_1=\frac{P_1}{P_0},
    \]
-5. and the explicit anisotropy headroom left at the Stage-240 compatibility point.
+5. and the explicit anisotropy headroom left at the Stage-223 compatibility point.
 
-So after Stage 241, the problem is no longer
+So after Stage 224, the problem is no longer
 
 > “extract the normalization target from the PDE somehow.”
 
@@ -94,7 +94,7 @@ The grouped prefactor anomalies compile back to the three actual lane prefactors
 \]
 So the actual branch packet already determines the three lane-wise static prefactors that must be compared against the transported same-charge window.
 
-### 1.3 Finite survival ceilings carried from Stage 240
+### 1.3 Finite survival ceilings carried from Stage 223
 
 The carried primitive-family dynamic ceilings are:
 
@@ -144,7 +144,7 @@ Equivalently, in packet variables,
 }
 \]
 
-So the Stage-240 window has now been converted into a direct inequality on the actual branch packet.
+So the Stage-223 window has now been converted into a direct inequality on the actual branch packet.
 
 ---
 
@@ -293,9 +293,9 @@ So weak-axisymmetric prefactor loading raises the lower bound on the source-map 
 
 ---
 
-## 6. Explicit headroom at the Stage-240 compatibility point
+## 6. Explicit headroom at the Stage-223 compatibility point
 
-Stage 240 found the concrete compatibility point
+Stage 223 found the concrete compatibility point
 \[
 \bar P_0=P_{0,\rm target,compat}
 \approx 0.002069792318062885.
@@ -346,13 +346,13 @@ For a **nonempty wall-like corridor** to remain alive,
 \lesssim 2.39840016523863\times 10^{-3}.
 \]
 
-So the Stage-240 compatibility point still has finite weak-axisymmetric headroom. But the stricter `10%` robust budget is not large. That is exactly the sort of narrow corridor one would expect if the idea is real but difficult.
+So the Stage-223 compatibility point still has finite weak-axisymmetric headroom. But the stricter `10%` robust budget is not large. That is exactly the sort of narrow corridor one would expect if the idea is real but difficult.
 
 ---
 
-## 7. What Stage 241 changes
+## 7. What Stage 224 changes
 
-Stage 241 does not yet prove success or failure. But it converts the remaining ambiguity into an actual-branch compiler.
+Stage 224 does not yet prove success or failure. But it converts the remaining ambiguity into an actual-branch compiler.
 
 Before this stage, the next step was still phrased loosely as
 
@@ -373,13 +373,13 @@ That is the first genuine PDE-selected same-charge kill test.
 
 ---
 
-## 8. Best current verdict after Stage 241
+## 8. Best current verdict after Stage 224
 
 The same-charge idea is still alive.
 
 But it is now alive in a much narrower form:
 
-> once the Stage-240 primitive dynamic window is transported onto the actual branch packet, the remaining survival question reduces to a finite corridor in the normalization defect and weak-axisymmetric prefactor loading.
+> once the Stage-223 primitive dynamic window is transported onto the actual branch packet, the remaining survival question reduces to a finite corridor in the normalization defect and weak-axisymmetric prefactor loading.
 
 So the next honest move is no longer another generic primitive scan. It is:
 
@@ -430,7 +430,7 @@ The accompanying audit script verifies:
    \max\{P_{20},P_{21},P_{22}\}=\bar P_0(1+|\epsilon\Xi_1|)=\bar P_0+4|a_{P_0}|,
    \]
 7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
-8. and the four explicit Stage-240 compatibility-point headroom budgets.
+8. and the four explicit Stage-223 compatibility-point headroom budgets.
 
 Supporting file:
-- `moving_throat_pde_stage241_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py`
+- `moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py`

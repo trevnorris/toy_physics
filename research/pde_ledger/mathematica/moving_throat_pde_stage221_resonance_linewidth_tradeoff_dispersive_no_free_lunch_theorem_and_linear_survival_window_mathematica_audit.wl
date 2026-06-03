@@ -66,7 +66,8 @@ chiLin = Together[Numstar/Flin];
 
 Astar = normalizeExpr[Numstar/Fprime];
 gammaStar = normalizeExpr[GammaOut Zstar/Fprime];
-chiBW = Together[Astar/(delta - portPi Zstar/Fprime)];
+poleLocation = normalizeExpr[portPi Zstar/Fprime];
+chiBW = Together[Astar/(delta - poleLocation)];
 
 expectZero["chi_lin - chi_BW", chiLin - chiBW];
 
@@ -74,6 +75,10 @@ chiPassive = Together[chiLin /. portPi -> I GammaOut];
 chiPassiveExpected = Together[Astar/(delta - I gammaStar)];
 
 expectZero["passive simple-pole normal form", chiPassive - chiPassiveExpected];
+expectZero[
+  "A_* is the residue at delta=I gamma_*",
+  Residue[chiPassive, {delta, I gammaStar}] - Astar
+];
 
 Print["chi(omega) = ", fmt[chiPassiveExpected]];
 Print["A_* = ", fmt[Astar]];
@@ -88,9 +93,13 @@ Wfun = OmegaW^2 - omega^2 - portPi;
 DeltaPi = Afun Wfun - R^2;
 QPi = GU^2 Wfun + 2 GU GW R + GW^2 Afun;
 DPi = Together[KB - QPi/DeltaPi];
-Nfun = Together[(Afun GW + R GU)^2/DeltaPi^2];
+NfunDerived = Together[D[QPi/DeltaPi, portPi]];
 
-expectZero["dD_Pi/dPi + N(omega)", D[DPi, portPi] + Nfun];
+expectZero[
+  "N is a perfect square",
+  NfunDerived - (Afun GW + R GU)^2/DeltaPi^2
+];
+expectZero["dD_Pi/dPi + N(omega)", D[DPi, portPi] + NfunDerived];
 
 subbanner["III. Wall-like pole specialization"];
 
@@ -109,13 +118,17 @@ Print["gamma_wall = ", fmt[gammaWall]];
 
 subbanner["IV. Exact line-shape algebra"];
 
-chiR = Together[Aabs/(r gamma - I gamma)];
-reR = normalizeExpr[ComplexExpand[Re[chiR]]];
-imR = normalizeExpr[ComplexExpand[Im[chiR]]];
+chiBWgeneric = Together[Aabs/(delta - I gamma)];
+reGeneric = normalizeExpr[ComplexExpand[Re[chiBWgeneric]]];
+imGeneric = normalizeExpr[ComplexExpand[Im[chiBWgeneric]]];
+reR = normalizeExpr[reGeneric /. delta -> r gamma];
+imR = normalizeExpr[imGeneric /. delta -> r gamma];
 
 reExpected = normalizeExpr[Aabs r/(gamma (1 + r^2))];
 imExpected = normalizeExpr[Aabs/(gamma (1 + r^2))];
 
+expectZero["Re chi(delta) - generic expected", reGeneric - Aabs delta/(delta^2 + gamma^2)];
+expectZero["Im chi(delta) - generic expected", imGeneric - Aabs gamma/(delta^2 + gamma^2)];
 expectZero["Re chi - expected", reR - reExpected];
 expectZero["Im chi - expected", imR - imExpected];
 expectZero["|Re|/|Im| - r", reExpected/imExpected - r];
@@ -157,10 +170,13 @@ residueRequirement = normalizeExpr[
   2 DeltaVreq/Sfam^2 * (1 + eta^2)/eta
 ];
 
-expectZero["survival left side - 2 |U_disp|_max", survivalLeft - 2 UdispLowLossMax];
 expectZero[
-  "residue requirement saturates the survival window",
-  residueRequirement * eta/(1 + eta^2) * Sfam^2 - 2 DeltaVreq
+  "low-loss |U_disp|_max recovered from line shape at r=1/eta",
+  ((-Udisp) /. r -> 1/eta) - UdispLowLossMax
+];
+expectZero[
+  "residue requirement saturates survival window via line shape",
+  (survivalLeft /. Aabs -> residueRequirement gamma) - 2 DeltaVreq
 ];
 
 Print["|U_disp|_max in the low-loss window = ", fmt[UdispLowLossMax]];

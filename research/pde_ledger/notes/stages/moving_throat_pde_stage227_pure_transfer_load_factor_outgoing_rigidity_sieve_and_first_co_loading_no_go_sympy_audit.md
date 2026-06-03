@@ -291,7 +291,7 @@ are imposed on the pure-transfer corridor, the exact reduced `2 x 2` rigidity ma
 \[
 \det[(i,h)|_{\rm pure\ transfer}]
 =
--\frac{19(-25+98\pi^2)(251+215\pi^2)(441\pi^2+4400)}
+-\frac{19(-25+98\pi^2)(200+147\pi^2)(441\pi^2+4400)}
 {6(8670000+14894275\pi^2+2117682\pi^4)}
 \neq 0.
 \]

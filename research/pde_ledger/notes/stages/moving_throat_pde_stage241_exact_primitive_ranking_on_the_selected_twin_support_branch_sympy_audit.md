@@ -574,7 +574,7 @@ Therefore
 
 \[
 \boxed{
-\frac13 < \varrho_{W\Lambda} < \frac{193}{369}\approx 0.338753.
+\frac13 < \varrho_{W\Lambda} < \frac{125}{369}\approx 0.338753.
 }
 \]
 

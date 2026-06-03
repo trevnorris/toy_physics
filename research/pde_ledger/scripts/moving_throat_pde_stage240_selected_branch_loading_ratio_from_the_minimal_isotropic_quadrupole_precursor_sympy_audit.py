@@ -110,9 +110,26 @@ def main() -> None:
         "symbolic zeta_req specialization",
     )
 
-    # Omega_Q does not affect the static loading-ratio extraction.
-    assert_zero(sp.diff(c0_expr, Omega_Q), "Omega_Q independence of c0")
-    assert_zero(sp.diff(c1_expr, Omega_Q), "Omega_Q independence of c1")
+    # Omega_Q does not affect weights extracted from the Omega_Q-bearing precursor.
+    pole_denominator = 1 - omega**2 / Omega_Q**2
+    if not Y_support.has(Omega_Q):
+        raise AssertionError("Y_support must carry Omega_Q for the extraction check")
+
+    c1_probe = pole_denominator * Y_support
+    if not c1_probe.has(Omega_Q):
+        raise AssertionError("pole-weight extraction path must see Omega_Q before the limit")
+    c1_static = sp.simplify(sp.limit(c1_probe, omega, Omega_Q))
+
+    static_sum_probe = Y_support
+    if not static_sum_probe.has(Omega_Q):
+        raise AssertionError("static-sum extraction path must see Omega_Q before the limit")
+    static_sum = sp.simplify(sp.limit(static_sum_probe, omega, 0))
+    c0_static = sp.simplify(static_sum - c1_static)
+
+    assert_zero(sp.diff(c0_static, Omega_Q), "Omega_Q independence of extracted c0")
+    assert_zero(sp.diff(c1_static, Omega_Q), "Omega_Q independence of extracted c1")
+    assert_zero(sp.simplify(c0_static - c0_expr), "extracted c0 matches compiler c0")
+    assert_zero(sp.simplify(c1_static - c1_expr), "extracted c1 matches compiler c1")
 
     # ------------------------------------------------------------------
     # 3. Minimal isotropic conservative module

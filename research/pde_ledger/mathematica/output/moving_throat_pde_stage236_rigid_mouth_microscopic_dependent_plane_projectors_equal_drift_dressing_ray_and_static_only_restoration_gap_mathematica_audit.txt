@@ -1,0 +1,130 @@
+
+========================================================================================
+Stage 236 Mathematica audit: rigid-mouth dependent-plane projectors and restoration gap
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Rigid-mouth packet map
+----------------------------------------------------------------------------------------
+M1 packet action = {0, 0}
+PASS: M1 packet action
+M_rm . {R1, E1} = {(E1*epsEtaStar)/(-1 + epsEtaStar) - R1, E1}
+
+----------------------------------------------------------------------------------------
+M2. Dependent section on q_tr = 0
+----------------------------------------------------------------------------------------
+M2 rigid-mouth section = {0, 0, 0}
+PASS: M2 rigid-mouth section
+M2 section matrix action = {0, 0, 0}
+PASS: M2 section matrix action
+y_rm = {0, -qEta, -qEta + qNt}
+
+----------------------------------------------------------------------------------------
+M3. Direct-observable-to-dependent compiler by basis actions
+----------------------------------------------------------------------------------------
+M3 basis-action compiler entries = {{0, 0}, {0, 0}, {0, 0}}
+PASS: M3 basis-action compiler entries
+M3 product and basis-action compiler agree on generic input = {0, 0, 0}
+PASS: M3 product and basis-action compiler agree on generic input
+M3 compiler action = {0, 0, 0}
+PASS: M3 compiler action
+C_rm_dep = {{0, 0}, {0, -1}, {-1, (-1 + epsEtaStar)^(-1)}}
+C_rm_dep . {R1, E1} = {0, -E1, E1/(-1 + epsEtaStar) - R1}
+
+----------------------------------------------------------------------------------------
+M4. Recovery map from the Delta_T = 0 plane
+----------------------------------------------------------------------------------------
+M4 LinearSolve and Solve recovery agree = {0, 0}
+PASS: M4 LinearSolve and Solve recovery agree
+M4 recovered left-inverse matrix = {{0, 0, 0}, {0, 0, 0}}
+PASS: M4 recovered left-inverse matrix
+M4 L_rm_dep . S_rm_dep = {{0, 0}, {0, 0}}
+PASS: M4 L_rm_dep . S_rm_dep
+M4 recovery on y_rm = {0, 0}
+PASS: M4 recovery on y_rm
+Recovered {q_nt, q_eta} from {0, Delta_Keta, Delta_mu} = {-dK + dMu, -dK}
+L_rm_dep = {{0, -1, 1}, {0, -1, 0}}
+
+----------------------------------------------------------------------------------------
+M5. Dependent-plane projectors from recovered coordinates
+----------------------------------------------------------------------------------------
+M5 P_nt entries from recovered action = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: M5 P_nt entries from recovered action
+M5 P_eta entries from recovered action = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: M5 P_eta entries from recovered action
+M5 P_nt idempotent on generic vector = {0, 0, 0}
+PASS: M5 P_nt idempotent on generic vector
+M5 P_eta idempotent on generic vector = {0, 0, 0}
+PASS: M5 P_eta idempotent on generic vector
+M5 P_nt after P_eta annihilates generic vector = {0, 0, 0}
+PASS: M5 P_nt after P_eta annihilates generic vector
+M5 P_eta after P_nt annihilates generic vector = {0, 0, 0}
+PASS: M5 P_eta after P_nt annihilates generic vector
+M5 P_nt eigenvalues = {0, 0, 0}
+PASS: M5 P_nt eigenvalues
+M5 P_eta eigenvalues = {0, 0, 0}
+PASS: M5 P_eta eigenvalues
+M5 P_nt rank = 0
+PASS: M5 P_nt rank
+M5 P_eta rank = 0
+PASS: M5 P_eta rank
+P_nt_dep = {{0, 0, 0}, {0, 0, 0}, {0, -1, 1}}
+P_eta_dep = {{0, 0, 0}, {0, 1, 0}, {0, 1, 0}}
+
+----------------------------------------------------------------------------------------
+M6. Plane completeness
+----------------------------------------------------------------------------------------
+M6 projector sum = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: M6 projector sum
+M6 projector sum acts as identity on Delta_T = 0 = {0, 0, 0}
+PASS: M6 projector sum acts as identity on Delta_T = 0
+
+----------------------------------------------------------------------------------------
+M7. Packet decomposition
+----------------------------------------------------------------------------------------
+M7 y_nt = {0, 0, 0}
+PASS: M7 y_nt
+M7 y_eta = {0, 0, 0}
+PASS: M7 y_eta
+M7 y_rm decomposition = {0, 0, 0}
+PASS: M7 y_rm decomposition
+y_nt = {0, 0, qNt}
+y_eta = {0, -qEta, -qEta}
+
+----------------------------------------------------------------------------------------
+M8. Static strip and equal-drift ray
+----------------------------------------------------------------------------------------
+M8 Delta_mu - Delta_Keta residual = 0
+PASS: M8 Delta_mu - Delta_Keta residual
+M8 Delta_mu equals Delta_Keta iff q_nt is zero = True
+PASS: M8 Delta_mu equals Delta_Keta iff q_nt is zero
+M8 equal-drift strip vector by E1 = {0, 0, 0}
+PASS: M8 equal-drift strip vector by E1
+M8 equal-drift ray by E1 = {0, 0, 0}
+PASS: M8 equal-drift ray by E1
+M8 equal-drift ray by R1 = {0, 0, 0}
+PASS: M8 equal-drift ray by R1
+M8 eta norm = 0
+PASS: M8 eta norm
+M8 strip norm by E1 = 0
+PASS: M8 strip norm by E1
+M8 strip norm by R1 = 0
+PASS: M8 strip norm by R1
+Equal-drift strip vector = {0, -E1, -E1}
+||y_eta||^2 = 2*qEta^2
+
+----------------------------------------------------------------------------------------
+M9. Microscopic correction compilers
+----------------------------------------------------------------------------------------
+M9 static correction = {0, 0, 0}
+PASS: M9 static correction
+M9 static correction leaves eta packet = {0, 0, 0}
+PASS: M9 static correction leaves eta packet
+M9 orbit correction decomposition = {0, 0, 0}
+PASS: M9 orbit correction decomposition
+M9 orbit correction closes y_rm = {0, 0, 0}
+PASS: M9 orbit correction closes y_rm
+Delta_y_static = {0, 0, -qNt}
+Delta_y_orbit = {0, qEta, qEta - qNt}
+
+All Stage 236 Mathematica checks passed.

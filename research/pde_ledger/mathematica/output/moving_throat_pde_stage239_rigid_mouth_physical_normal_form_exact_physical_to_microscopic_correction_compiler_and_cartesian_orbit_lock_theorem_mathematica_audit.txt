@@ -1,176 +1,142 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_mathematica_audit.wl
-# Date: 2026-05-11T13:26:23-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 222 — RIGID-MOUTH PHYSICAL NORMAL FORM
+STAGE 239 — RIGID-MOUTH PHYSICAL NORMAL FORM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-I. Exact rigid-mouth physical logarithmic chart
+I. Chart, target ratio, and physical projectors
 ----------------------------------------------------------------------------------------
-physical log coordinate U = 0
-PASS: physical log coordinate U
-physical log coordinate V = 0
-PASS: physical log coordinate V
-diagonal rigid-mouth packet compiler =
+M1 transfer chart exponent = 0
+PASS: M1 transfer chart exponent
+M1 eta chart exponent = 0
+PASS: M1 eta chart exponent
+M1 diagonal packet map =
 MatrixForm[{{0, 0}}]
-PASS: diagonal rigid-mouth packet compiler
-target-ratio reconstruction in physical chart = 0
-PASS: target-ratio reconstruction in physical chart
+PASS: M1 diagonal packet map
+M2 selected branch product identity = 0
+PASS: M2 selected branch product identity
+M2 target quotient in UV chart = 0
+PASS: M2 target quotient in UV chart
+M3 transfer projector squares =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: M3 transfer projector squares
+M3 eta projector squares =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: M3 eta projector squares
+M3 projector cross term TE =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: M3 projector cross term TE
+M3 projector cross term ET =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: M3 projector cross term ET
+M3 projectors complete chart =
+MatrixForm[{{0, 0}, {0, 0}}]
+PASS: M3 projectors complete chart
+M3 finite-leg product = 0
+PASS: M3 finite-leg product
 
 ----------------------------------------------------------------------------------------
-II. Exact physical projectors and commuting finite legs
+II. Dependent correction and native left inverse
 ----------------------------------------------------------------------------------------
-P_T idempotence =
-MatrixForm[{{0, 0}, {0, 0}}]
-PASS: P_T idempotence
-P_eta idempotence =
-MatrixForm[{{0, 0}, {0, 0}}]
-PASS: P_eta idempotence
-P_T P_eta = 0 =
-MatrixForm[{{0, 0}, {0, 0}}]
-PASS: P_T P_eta = 0
-P_eta P_T = 0 =
-MatrixForm[{{0, 0}, {0, 0}}]
-PASS: P_eta P_T = 0
-P_T + P_eta = I =
-MatrixForm[{{0, 0}, {0, 0}}]
-PASS: P_T + P_eta = I
-physical packet decomposition =
-MatrixForm[{{0, 0}}]
-PASS: physical packet decomposition
-pure transfer-shape leg = 0
-PASS: pure transfer-shape leg
-pure dressing leg = 0
-PASS: pure dressing leg
-exact commutativity / factorization of transfer and dressing legs = 0
-PASS: exact commutativity / factorization of transfer and dressing legs
-
-----------------------------------------------------------------------------------------
-III. Stage 236/221 dependent-plane compiler in the physical chart
-----------------------------------------------------------------------------------------
-Stage 238 transfer-shape identity = 0
-PASS: Stage 238 transfer-shape identity
-Stage 238 rigid-mouth packet factorization for q_nt = 0
-PASS: Stage 238 rigid-mouth packet factorization for q_nt
-Stage 238 rigid-mouth identification q_nt = U = 0
-PASS: Stage 238 rigid-mouth identification q_nt = U
-Stage 238 rigid-mouth identification q_eta = V = 0
-PASS: Stage 238 rigid-mouth identification q_eta = V
-physical-to-microscopic compiler inherited from Stage 236 =
+M4 Jacobian rebuilds dependent vector =
+MatrixForm[{{0, 0, 0}}]
+PASS: M4 Jacobian rebuilds dependent vector
+M4 compiler passes through physical identity =
 MatrixForm[{{0, 0}, {0, 0}, {0, 0}}]
-PASS: physical-to-microscopic compiler inherited from Stage 236
-physical-to-microscopic dependent compiler =
-MatrixForm[{{0, 0, 0}}]
-PASS: physical-to-microscopic dependent compiler
-Stage 236/221 dependent compiler propagated into the physical chart =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 236/221 dependent compiler propagated into the physical chart
-left inverse reconstructed from Stage 236 dependent-plane equations =
-MatrixForm[{{0, 0}}]
-PASS: left inverse reconstructed from Stage 236 dependent-plane equations
-left inverse of physical compiler =
+PASS: M4 compiler passes through physical identity
+M5 native left inverse matrix =
 MatrixForm[{{0, 0}, {0, 0}}]
-PASS: left inverse of physical compiler
-recovery of U,V from dependent correction =
+PASS: M5 native left inverse matrix
+M5 native inverse coordinate formulas =
 MatrixForm[{{0, 0}}]
-PASS: recovery of U,V from dependent correction
+PASS: M5 native inverse coordinate formulas
+M5 dependent vector returns UV =
+MatrixForm[{{0, 0}}]
+PASS: M5 dependent vector returns UV
 
 ----------------------------------------------------------------------------------------
-IV. Exact microscopic images of the two physical axes
+III. Stage 238 branch carried into the chart
 ----------------------------------------------------------------------------------------
-pure transfer-shape microscopic image =
+M1 carried q_nt exponential = 0
+PASS: M1 carried q_nt exponential
+M1 carried q_nt equals U = 0
+PASS: M1 carried q_nt equals U
+M1 carried q_eta equals V = 0
+PASS: M1 carried q_eta equals V
+M2 carried target identity = 0
+PASS: M2 carried target identity
+M4 carried dependent map =
 MatrixForm[{{0, 0, 0}}]
-PASS: pure transfer-shape microscopic image
-pure dressing microscopic image =
-MatrixForm[{{0, 0, 0}}]
-PASS: pure dressing microscopic image
-dependent correction splits into the two physical axes =
-MatrixForm[{{0, 0, 0}}]
-PASS: dependent correction splits into the two physical axes
+PASS: M4 carried dependent map
 
 ----------------------------------------------------------------------------------------
-V. Exact correction compilers
+IV. Axis images and correction packets
 ----------------------------------------------------------------------------------------
-static-only correction =
+M6 transfer axis image =
 MatrixForm[{{0, 0, 0}}]
-PASS: static-only correction
-post-static dressing correction =
+PASS: M6 transfer axis image
+M6 eta axis image =
 MatrixForm[{{0, 0, 0}}]
-PASS: post-static dressing correction
-full orbit-lock correction =
+PASS: M6 eta axis image
+M6 axis sum reconstructs dependent vector =
 MatrixForm[{{0, 0, 0}}]
-PASS: full orbit-lock correction
-full correction splits into static + dressing parts =
+PASS: M6 axis sum reconstructs dependent vector
+M7 static correction packet =
 MatrixForm[{{0, 0, 0}}]
-PASS: full correction splits into static + dressing parts
-full orbit-lock correction cancels the dependent defect =
+PASS: M7 static correction packet
+M7 eta-rest correction packet =
 MatrixForm[{{0, 0, 0}}]
-PASS: full orbit-lock correction cancels the dependent defect
+PASS: M7 eta-rest correction packet
+M7 orbit correction packet =
+MatrixForm[{{0, 0, 0}}]
+PASS: M7 orbit correction packet
+M7 correction packet split =
+MatrixForm[{{0, 0, 0}}]
+PASS: M7 correction packet split
+M7 orbit correction cancels defect =
+MatrixForm[{{0, 0, 0}}]
+PASS: M7 orbit correction cancels defect
 
 ----------------------------------------------------------------------------------------
-VI. Propagation of Stage 238 support-blindness
+V. Support-blind propagation
 ----------------------------------------------------------------------------------------
-Stage 238 branch formula for T^2 is support-blind w.r.t. zeta = 0
-PASS: Stage 238 branch formula for T^2 is support-blind w.r.t. zeta
-Stage 238 branch formula for T^2 is support-blind w.r.t. M_mix = 0
-PASS: Stage 238 branch formula for T^2 is support-blind w.r.t. M_mix
-Stage 238 support-blind T^2 propagates to U w.r.t. zeta = 0
-PASS: Stage 238 support-blind T^2 propagates to U w.r.t. zeta
-Stage 238 support-blind eps_eta propagates to V w.r.t. zeta = 0
-PASS: Stage 238 support-blind eps_eta propagates to V w.r.t. zeta
-Stage 238 support-blind T^2 propagates to U w.r.t. M_mix = 0
-PASS: Stage 238 support-blind T^2 propagates to U w.r.t. M_mix
-Stage 238 support-blind eps_eta propagates to V w.r.t. M_mix = 0
-PASS: Stage 238 support-blind eps_eta propagates to V w.r.t. M_mix
-Stage 238 support-blindness propagates to the dependent correction w.r.t. zeta =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the dependent correction w.r.t. zeta
-Stage 238 support-blindness propagates to the dependent correction w.r.t. M_mix =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the dependent correction w.r.t. M_mix
-Stage 238 support-blindness propagates to the static correction w.r.t. zeta =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the static correction w.r.t. zeta
-Stage 238 support-blindness propagates to the orbit correction w.r.t. zeta =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the orbit correction w.r.t. zeta
-Stage 238 support-blindness propagates to the static correction w.r.t. M_mix =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the static correction w.r.t. M_mix
-Stage 238 support-blindness propagates to the orbit correction w.r.t. M_mix =
-MatrixForm[{{0, 0, 0}}]
-PASS: Stage 238 support-blindness propagates to the orbit correction w.r.t. M_mix
+M8 Stage238 T2 zeta derivative = 0
+PASS: M8 Stage238 T2 zeta derivative
+M8 Stage238 T2 Mmix derivative = 0
+PASS: M8 Stage238 T2 Mmix derivative
+M8 chain rule for U support variables =
+MatrixForm[{{0, 0}}]
+PASS: M8 chain rule for U support variables
+M8 chain rule for V support variables =
+MatrixForm[{{0, 0}}]
+PASS: M8 chain rule for V support variables
+M8 dependent correction support gradient =
+MatrixForm[{{0, 0, 0, 0, 0, 0}}]
+PASS: M8 dependent correction support gradient
+M8 static correction support gradient =
+MatrixForm[{{0, 0, 0, 0, 0, 0}}]
+PASS: M8 static correction support gradient
+M8 orbit correction support gradient =
+MatrixForm[{{0, 0, 0, 0, 0, 0}}]
+PASS: M8 orbit correction support gradient
 
 ----------------------------------------------------------------------------------------
-VII. Cartesian orbit-lock equivalence and first-order form
+VI. Cartesian orbit lock and infinitesimal packet
 ----------------------------------------------------------------------------------------
-U = V = 0 cancels the dependent defect =
+M9 Reduce orbit-lock set = U == 0 && V == 0
+M9 lock set is chart origin = True
+PASS: M9 lock set is chart origin
+M9 origin removes dependent vector =
 MatrixForm[{{0, 0, 0}}]
-PASS: U = V = 0 cancels the dependent defect
-T^2 = T_ref^2 implies U = 0 = 0
-PASS: T^2 = T_ref^2 implies U = 0
-eps_eta = eps_eta_ref implies V = 0 = 0
-PASS: eps_eta = eps_eta_ref implies V = 0
-U = V = 0 restores the target ratio = 0
-PASS: U = V = 0 restores the target ratio
-first-order U compiler = 0
-PASS: first-order U compiler
-first-order V compiler = 0
-PASS: first-order V compiler
-first-order dependent correction =
+PASS: M9 origin removes dependent vector
+M9 transfer equality fixes U = 0
+PASS: M9 transfer equality fixes U
+M9 eta equality fixes V = 0
+PASS: M9 eta equality fixes V
+M9 target quotient at origin = 0
+PASS: M9 target quotient at origin
+M9 first-order dependent vector =
 MatrixForm[{{0, 0, 0}}]
-PASS: first-order dependent correction
-static-blind line maps to equal-drift dressing ray =
-MatrixForm[{{0, 0, 0}}]
-PASS: static-blind line maps to equal-drift dressing ray
+PASS: M9 first-order dependent vector
 
 All Stage 239 symbolic checks passed.
-
-EXIT_CODE: 0

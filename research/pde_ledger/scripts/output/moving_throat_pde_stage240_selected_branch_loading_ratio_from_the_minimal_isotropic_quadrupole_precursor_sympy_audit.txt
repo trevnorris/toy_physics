@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
-# Date: 2026-05-11T12:52:00-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 [ok] Pi_tr / C_mix = alpha_req / alpha_mix
 [ok] spectral selected-branch ratio identity
 [ok] contact-plus-pole support/source compiler
@@ -16,8 +8,10 @@
 [ok] symbolic rho_alpha = 1/c0 specialization
 [ok] symbolic rho_alpha = 1/(1-c1) specialization
 [ok] symbolic zeta_req specialization
-[ok] Omega_Q independence of c0
-[ok] Omega_Q independence of c1
+[ok] Omega_Q independence of extracted c0
+[ok] Omega_Q independence of extracted c1
+[ok] extracted c0 matches compiler c0
+[ok] extracted c1 matches compiler c1
 [ok] minimal isotropic rho_alpha from c0 = 3/4
 [ok] minimal isotropic rho_alpha from c1 = 1/4
 [ok] minimal isotropic zeta_req = 1/3
@@ -29,5 +23,3 @@
 [ok] selected branch lies strictly in the symmetric-lowest-twin sector
 
 All Stage 240 symbolic checks passed.
-
-EXIT_CODE: 0

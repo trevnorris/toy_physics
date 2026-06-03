@@ -1,0 +1,50 @@
+
+========================================================================================
+STAGE 233 -- RIGID-MOUTH ORBIT-LOCK COMPILER MATHEMATICA AUDIT
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M2. Coefficient compiler and track lock
+----------------------------------------------------------------------------------------
+M1 Theta1 dlnRtr coefficient residual = 0
+PASS: M1 Theta1 dlnRtr coefficient
+M1 Xi1 dlnRtr coefficient residual = 0
+PASS: M1 Xi1 dlnRtr coefficient
+M2 Theta1 constant term residual = 0
+PASS: M2 Theta1 constant term
+M2 Theta1 track lock from coefficient data residual = 0
+PASS: M2 Theta1 track lock from coefficient data
+M2 Xi1 track lock from coefficient data residual = 0
+PASS: M2 Xi1 track lock from coefficient data
+M2 R1 track lock from coefficient data residual = 0
+PASS: M2 R1 track lock from coefficient data
+
+----------------------------------------------------------------------------------------
+M3-M4. Prefactor quotient and operator rigidity
+----------------------------------------------------------------------------------------
+M3 prefactor identity residual = 0
+PASS: M3 prefactor identity
+M4 operator-rigid load scalar residual = 0
+PASS: M4 operator-rigid load scalar
+
+----------------------------------------------------------------------------------------
+M5-M7. Transported ceiling and Pbar forms
+----------------------------------------------------------------------------------------
+M5 transported ceiling equivalence residual = 0
+PASS: M5 transported ceiling equivalence
+M6 calibrated branch through Pbar form residual = 0
+PASS: M6 calibrated branch through Pbar form
+M7 abstract Pbar form specializes to gate RHS residual = 0
+PASS: M7 abstract Pbar form specializes to gate RHS
+
+----------------------------------------------------------------------------------------
+M8. Carried budget recovery from independent critical pressures
+----------------------------------------------------------------------------------------
+M8 symbolic budget form residual = 0
+PASS: M8 symbolic budget form
+M8 robust numeric budget residual = -900068804371/206979231806288500000000000000
+PASS: M8 robust numeric budget
+M8 nonempty numeric budget residual = -134296606540789/413958463612577000000000000000
+PASS: M8 nonempty numeric budget
+
+All Stage 233 Mathematica checks passed.

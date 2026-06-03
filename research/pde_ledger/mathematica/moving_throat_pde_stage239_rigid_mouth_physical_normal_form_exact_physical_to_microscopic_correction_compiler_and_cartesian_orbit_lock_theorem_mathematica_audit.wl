@@ -56,318 +56,201 @@ expectZero[name_String, expr_] := Module[{res},
   ];
 ];
 
-banner["STAGE 222 — RIGID-MOUTH PHYSICAL NORMAL FORM"];
+expectTrue[name_String, test_] := Module[{res},
+  res = FullSimplify[test, Assumptions -> $Assumptions];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res], pass[name], fail[name, res]];
+];
+
+banner["STAGE 239 — RIGID-MOUTH PHYSICAL NORMAL FORM"];
 
 Clear[
   U, V, T2, T2ref, epsEta, epsEtaRef, Rtarget, RtargetRef, Lambda0,
-  chi0, deltaU, ZW, OmegaW2, eps, Bcoeff, Ccoeff, Rtr, RtrRef,
-  zeta, Mmix, h, dlnT2, dlnepsEta
+  chi0, deltaU, ZW, OmegaW2, eps, Rtr, RtrRef, zeta, Mmix,
+  h, dlnT2, dlnEps, DeltaT, DeltaKeta, DeltaMu,
+  T2sbFn, epsEtaSbFn
 ];
 
-$Assumptions =
-  Element[{U, V, zeta, Mmix, h, dlnT2, dlnepsEta}, Reals] &&
+$Assumptions = (
+  Element[{U, V, zeta, Mmix, h, dlnT2, dlnEps}, Reals] &&
   Element[
     {
       T2, T2ref, epsEta, epsEtaRef, Rtarget, RtargetRef, Lambda0,
-      chi0, deltaU, ZW, OmegaW2, eps, Rtr, RtrRef
+      chi0, deltaU, ZW, OmegaW2, eps, Rtr, RtrRef,
+      DeltaT, DeltaKeta, DeltaMu
     },
     Reals
   ] &&
-  Element[{Bcoeff, Ccoeff}, Reals] &&
-  T2 > 0 && T2ref > 0 && 0 < epsEta < 1 && 0 < epsEtaRef < 1 &&
+  T2 > 0 && T2ref > 0 &&
+  0 < epsEta < 1 && 0 < epsEtaRef < 1 &&
   Rtarget > 0 && RtargetRef > 0 && Lambda0 > 0 &&
-  chi0 > 0 && deltaU > 0 && ZW > 0 && OmegaW2 > 0 && eps > 0 &&
-  Rtr > 0 && RtrRef > 0 && Bcoeff != 0 && Ccoeff != 0;
+  chi0 > 0 && deltaU > 0 && ZW > 0 && OmegaW2 > 0 &&
+  eps > 0 && eps != 1 && Rtr > 0 && RtrRef > 0
+);
 
-subbanner["I. Exact rigid-mouth physical logarithmic chart"];
-
-Udef = Log[T2/T2ref];
-Vdef = Log[epsEta/epsEtaRef];
-
-expectZero["physical log coordinate U", Exp[Udef] - T2/T2ref];
-expectZero["physical log coordinate V", Exp[Vdef] - epsEta/epsEtaRef];
-
+physicalCoordinates = {U, V};
+uLog = Log[T2/T2ref];
+vLog = Log[epsEta/epsEtaRef];
 Mphys = IdentityMatrix[2];
-xPhys = {U, V};
-qPhys = Mphys . xPhys;
-expectZero["diagonal rigid-mouth packet compiler", qPhys - {U, V}];
 
-RtargetFromIdentity = FullSimplify[Lambda0 (1 - epsEta)/T2, Assumptions -> $Assumptions];
-RtargetRefFromIdentity = FullSimplify[Lambda0 (1 - epsEtaRef)/T2ref, Assumptions -> $Assumptions];
-ratioFromIdentity = FullSimplify[RtargetFromIdentity/RtargetRefFromIdentity, Assumptions -> $Assumptions];
-ratioFromUV = FullSimplify[
-  ((1 - epsEtaRef Exp[V])/(1 - epsEtaRef)) Exp[-U],
+subbanner["I. Chart, target ratio, and physical projectors"];
+
+expectZero["M1 transfer chart exponent", Exp[uLog] - T2/T2ref];
+expectZero["M1 eta chart exponent", Exp[vLog] - epsEta/epsEtaRef];
+expectZero["M1 diagonal packet map", Mphys . physicalCoordinates - {U, V}];
+
+targetFromBranch = Lambda0 (1 - epsEta)/T2;
+targetRefFromBranch = Lambda0 (1 - epsEtaRef)/T2ref;
+ratioFromPremise = FullSimplify[
+  targetFromBranch/targetRefFromBranch,
+  Assumptions -> $Assumptions
+];
+ratioUV = ((1 - epsEtaRef Exp[V])/(1 - epsEtaRef)) Exp[-U];
+ratioPremiseInChart = FullSimplify[
+  ratioFromPremise /. {T2 -> T2ref Exp[U], epsEta -> epsEtaRef Exp[V]},
   Assumptions -> $Assumptions
 ];
 
-expectZero[
-  "target-ratio reconstruction in physical chart",
-  FullSimplify[
-    ratioFromUV /. {U -> Udef, V -> Vdef},
-    Assumptions -> $Assumptions
-  ] - ratioFromIdentity
+expectZero["M2 selected branch product identity", targetFromBranch T2 - Lambda0 (1 - epsEta)];
+expectZero["M2 target quotient in UV chart", ratioPremiseInChart - ratioUV];
+
+projectorT = DiagonalMatrix[{1, 0}];
+projectorEta = DiagonalMatrix[{0, 1}];
+ratioAlong[coords_] := FullSimplify[
+  ratioUV /. Thread[physicalCoordinates -> coords],
+  Assumptions -> $Assumptions
+];
+ratioTransfer = ratioAlong[projectorT . physicalCoordinates];
+ratioDressing = ratioAlong[projectorEta . physicalCoordinates];
+
+expectZero["M3 transfer projector squares", projectorT . projectorT - projectorT];
+expectZero["M3 eta projector squares", projectorEta . projectorEta - projectorEta];
+expectZero["M3 projector cross term TE", projectorT . projectorEta];
+expectZero["M3 projector cross term ET", projectorEta . projectorT];
+expectZero["M3 projectors complete chart", projectorT + projectorEta - IdentityMatrix[2]];
+expectZero["M3 finite-leg product", ratioUV - ratioTransfer ratioDressing];
+
+subbanner["II. Dependent correction and native left inverse"];
+
+dependentDelta = {
+  0,
+  -physicalCoordinates[[2]],
+  physicalCoordinates[[1]] - physicalCoordinates[[2]]
+};
+compilerJacobian = Table[
+  D[dependentDelta[[row]], physicalCoordinates[[col]]],
+  {row, Length[dependentDelta]},
+  {col, Length[physicalCoordinates]}
 ];
 
-subbanner["II. Exact physical projectors and commuting finite legs"];
+expectZero["M4 Jacobian rebuilds dependent vector", compilerJacobian . physicalCoordinates - dependentDelta];
+expectZero["M4 compiler passes through physical identity", compilerJacobian . Mphys - compilerJacobian];
 
-PT = {{1, 0}, {0, 0}};
-Peta = {{0, 0}, {0, 1}};
+deltaSymbols = {DeltaT, DeltaKeta, DeltaMu};
+leftNative = PseudoInverse[compilerJacobian];
 
-expectZero["P_T idempotence", PT . PT - PT];
-expectZero["P_eta idempotence", Peta . Peta - Peta];
-expectZero["P_T P_eta = 0", PT . Peta];
-expectZero["P_eta P_T = 0", Peta . PT];
-expectZero["P_T + P_eta = I", PT + Peta - IdentityMatrix[2]];
+expectZero["M5 native left inverse matrix", leftNative . compilerJacobian - IdentityMatrix[2]];
+expectZero["M5 native inverse coordinate formulas", leftNative . deltaSymbols - {DeltaMu - DeltaKeta, -DeltaKeta}];
+expectZero["M5 dependent vector returns UV", leftNative . dependentDelta - physicalCoordinates];
 
-xT = PT . xPhys;
-xEta = Peta . xPhys;
-expectZero["physical packet decomposition", xPhys - xT - xEta];
+subbanner["III. Stage 238 branch carried into the chart"];
 
-ratioTransfer = FullSimplify[ratioFromUV /. V -> 0, Assumptions -> $Assumptions];
-ratioDressing = FullSimplify[ratioFromUV /. U -> 0, Assumptions -> $Assumptions];
-
-expectZero["pure transfer-shape leg", ratioTransfer - Exp[-U]];
-expectZero[
-  "pure dressing leg",
-  ratioDressing - (1 - epsEtaRef Exp[V])/(1 - epsEtaRef)
-];
-expectZero[
-  "exact commutativity / factorization of transfer and dressing legs",
-  ratioFromUV - ratioTransfer ratioDressing
-];
-
-subbanner["III. Stage 236/221 dependent-plane compiler in the physical chart"];
-
-T2Stage221 = ZW (1 + chi0)^2/(OmegaW2 (1 - eps)^2);
-RtargetStage221 =
-  Lambda0 OmegaW2 (1 - epsEta) (1 - eps)^2/(ZW (1 + chi0)^2);
-expectZero[
-  "Stage 238 transfer-shape identity",
-  RtargetStage221 T2Stage221 - Lambda0 (1 - epsEta)
-];
-
-qNtGeneral =
-  Bcoeff Log[Rtr/RtrRef] +
-  Log[(1 - epsEta)/(1 - epsEtaRef)] -
-  Log[Rtarget/RtargetRef];
-qNtRigidStage221 = FullSimplify[
-  ExpandAll @ PowerExpand[
-    qNtGeneral /. {
-      Rtr -> RtrRef,
-      Rtarget -> RtargetStage221,
-      RtargetRef -> Lambda0 (1 - epsEtaRef)/T2ref
-    }
+T2Stage238 = ZW (1 + chi0)^2/(OmegaW2 (1 - eps)^2);
+RtargetStage238 = Lambda0 (1 - epsEta)/T2Stage238;
+qNtRigidStage238 = FullSimplify[
+  PowerExpand[
+    Log[(1 - epsEta)/(1 - epsEtaRef)] -
+    Log[RtargetStage238/targetRefFromBranch]
   ],
   Assumptions -> $Assumptions
 ];
-UStage221 = Log[T2Stage221/T2ref];
-VStage221 = Log[epsEta/epsEtaRef];
+UStage238 = Log[T2Stage238/T2ref];
+VStage238 = Log[epsEta/epsEtaRef];
+xPhysStage238 = {UStage238, VStage238};
+yDepStage238 = compilerJacobian . {qNtRigidStage238, VStage238};
 
-expectZero[
-  "Stage 238 rigid-mouth packet factorization for q_nt",
-  Exp[qNtRigidStage221] - T2Stage221/T2ref
-];
-expectZero[
-  "Stage 238 rigid-mouth identification q_nt = U",
-  FullSimplify[
-    ExpandAll @ PowerExpand[qNtRigidStage221 - UStage221],
-    Assumptions -> $Assumptions
-  ]
-];
-expectZero[
-  "Stage 238 rigid-mouth identification q_eta = V",
-  FullSimplify[
-    ExpandAll @ PowerExpand[VStage221 - Vdef],
-    Assumptions -> $Assumptions
-  ]
-];
+expectZero["M1 carried q_nt exponential", Exp[qNtRigidStage238] - T2Stage238/T2ref];
+expectZero["M1 carried q_nt equals U", PowerExpand[qNtRigidStage238 - UStage238]];
+expectZero["M1 carried q_eta equals V", PowerExpand[VStage238 - vLog]];
+expectZero["M2 carried target identity", RtargetStage238 T2Stage238 - Lambda0 (1 - epsEta)];
+expectZero["M4 carried dependent map", PowerExpand[yDepStage238 - compilerJacobian . xPhysStage238]];
 
-SrmDep = {{0, 0}, {0, -1}, {1, -1}};
-CphysDep = SrmDep . Mphys;
-yDep = CphysDep . xPhys;
+subbanner["IV. Axis images and correction packets"];
 
-expectZero[
-  "physical-to-microscopic compiler inherited from Stage 236",
-  CphysDep - {{0, 0}, {0, -1}, {1, -1}}
-];
-expectZero[
-  "physical-to-microscopic dependent compiler",
-  yDep - {0, -V, U - V}
-];
+transferAxisImage = compilerJacobian . (projectorT . physicalCoordinates);
+etaAxisImage = compilerJacobian . (projectorEta . physicalCoordinates);
 
-xPhysStage221 = {UStage221, VStage221};
-yDepStage221 = SrmDep . {qNtRigidStage221, VStage221};
-expectZero[
-  "Stage 236/221 dependent compiler propagated into the physical chart",
-  FullSimplify[
-    ExpandAll @ PowerExpand[yDepStage221 - CphysDep . xPhysStage221],
-    Assumptions -> $Assumptions
-  ]
-];
+expectZero["M6 transfer axis image", transferAxisImage - {0, 0, U}];
+expectZero["M6 eta axis image", etaAxisImage + V {0, 1, 1}];
+expectZero["M6 axis sum reconstructs dependent vector", dependentDelta - transferAxisImage - etaAxisImage];
 
-inverseSolution = Solve[
-  {
-    yK == -qEtaVar,
-    yMu == qNtVar - qEtaVar
-  },
-  {qNtVar, qEtaVar},
-  Reals
-];
-expectedInverse = {{qNtVar -> yMu - yK, qEtaVar -> -yK}};
-If[inverseSolution =!= expectedInverse,
-  Print["FAIL: unexpected dependent-plane inverse"];
-  Print["  actual -> ", fmt[inverseSolution]];
-  Exit[1];
-];
+deltaStatic = -transferAxisImage;
+deltaEtaRest = -etaAxisImage;
+deltaOrbit = -dependentDelta;
 
-LphysDep = {{0, -1, 1}, {0, -1, 0}};
-expectZero[
-  "left inverse reconstructed from Stage 236 dependent-plane equations",
-  LphysDep . {0, yK, yMu} - {qNtVar, qEtaVar} /. expectedInverse[[1]]
-];
-expectZero["left inverse of physical compiler", LphysDep . CphysDep - IdentityMatrix[2]];
-expectZero["recovery of U,V from dependent correction", LphysDep . yDep - xPhys];
+expectZero["M7 static correction packet", deltaStatic - {0, 0, -U}];
+expectZero["M7 eta-rest correction packet", deltaEtaRest - {0, V, V}];
+expectZero["M7 orbit correction packet", deltaOrbit - {0, V, V - U}];
+expectZero["M7 correction packet split", deltaOrbit - deltaStatic - deltaEtaRest];
+expectZero["M7 orbit correction cancels defect", dependentDelta + deltaOrbit];
 
-subbanner["IV. Exact microscopic images of the two physical axes"];
+subbanner["V. Support-blind propagation"];
 
-yT = CphysDep . xT;
-yEta = CphysDep . xEta;
-
-expectZero["pure transfer-shape microscopic image", yT - {0, 0, U}];
-expectZero["pure dressing microscopic image", yEta + V {0, 1, 1}];
-expectZero["dependent correction splits into the two physical axes", yDep - yT - yEta];
-
-subbanner["V. Exact correction compilers"];
-
-deltaYStatic = -yT;
-deltaYEtaRest = V {0, 1, 1};
-deltaYOrbit = -yDep;
-
-expectZero["static-only correction", deltaYStatic - {0, 0, -U}];
-expectZero["post-static dressing correction", deltaYEtaRest - {0, V, V}];
-expectZero["full orbit-lock correction", deltaYOrbit - {0, V, V - U}];
-expectZero["full correction splits into static + dressing parts", deltaYOrbit - deltaYStatic - deltaYEtaRest];
-expectZero["full orbit-lock correction cancels the dependent defect", yDep + deltaYOrbit];
-
-subbanner["VI. Propagation of Stage 238 support-blindness"];
-
-T2sb = T2sbFn[zeta, Mmix];
-epsEtaSb = epsEtaSbFn[zeta, Mmix];
-Ublind = Log[T2sb/T2ref];
-Vblind = Log[epsEtaSb/epsEtaRef];
-supportBlindRules = {
+supportVars = {zeta, Mmix};
+T2Support = T2sbFn[zeta, Mmix];
+epsSupport = epsEtaSbFn[zeta, Mmix];
+uSupport = Log[T2Support/T2ref];
+vSupport = Log[epsSupport/epsEtaRef];
+supportRules = {
   Derivative[1, 0][T2sbFn][zeta, Mmix] -> 0,
   Derivative[0, 1][T2sbFn][zeta, Mmix] -> 0,
   Derivative[1, 0][epsEtaSbFn][zeta, Mmix] -> 0,
   Derivative[0, 1][epsEtaSbFn][zeta, Mmix] -> 0
 };
-
-expectZero[
-  "Stage 238 branch formula for T^2 is support-blind w.r.t. zeta",
-  D[T2Stage221, zeta]
-];
-expectZero[
-  "Stage 238 branch formula for T^2 is support-blind w.r.t. M_mix",
-  D[T2Stage221, Mmix]
-];
-expectZero[
-  "Stage 238 support-blind T^2 propagates to U w.r.t. zeta",
-  (D[Ublind, zeta] /. supportBlindRules)
-];
-expectZero[
-  "Stage 238 support-blind eps_eta propagates to V w.r.t. zeta",
-  (D[Vblind, zeta] /. supportBlindRules)
-];
-expectZero[
-  "Stage 238 support-blind T^2 propagates to U w.r.t. M_mix",
-  (D[Ublind, Mmix] /. supportBlindRules)
-];
-expectZero[
-  "Stage 238 support-blind eps_eta propagates to V w.r.t. M_mix",
-  (D[Vblind, Mmix] /. supportBlindRules)
+supportResiduals[vec_] := FullSimplify[
+  Flatten[Outer[D, vec, supportVars]] /. supportRules,
+  Assumptions -> $Assumptions
 ];
 
-yDepBlind = CphysDep . {Ublind, Vblind};
-deltaYStaticBlind = -(CphysDep . {Ublind, 0});
-deltaYOrbitBlind = -yDepBlind;
+dependentSupport = compilerJacobian . {uSupport, vSupport};
+staticSupport = -(compilerJacobian . {uSupport, 0});
+orbitSupport = -dependentSupport;
 
-expectZero[
-  "Stage 238 support-blindness propagates to the dependent correction w.r.t. zeta",
-  (D[#, zeta] & /@ yDepBlind) /. supportBlindRules
-];
-expectZero[
-  "Stage 238 support-blindness propagates to the dependent correction w.r.t. M_mix",
-  (D[#, Mmix] & /@ yDepBlind) /. supportBlindRules
-];
-expectZero[
-  "Stage 238 support-blindness propagates to the static correction w.r.t. zeta",
-  (D[#, zeta] & /@ deltaYStaticBlind) /. supportBlindRules
-];
-expectZero[
-  "Stage 238 support-blindness propagates to the orbit correction w.r.t. zeta",
-  (D[#, zeta] & /@ deltaYOrbitBlind) /. supportBlindRules
-];
-expectZero[
-  "Stage 238 support-blindness propagates to the static correction w.r.t. M_mix",
-  (D[#, Mmix] & /@ deltaYStaticBlind) /. supportBlindRules
-];
-expectZero[
-  "Stage 238 support-blindness propagates to the orbit correction w.r.t. M_mix",
-  (D[#, Mmix] & /@ deltaYOrbitBlind) /. supportBlindRules
-];
+expectZero["M8 Stage238 T2 zeta derivative", D[T2Stage238, zeta]];
+expectZero["M8 Stage238 T2 Mmix derivative", D[T2Stage238, Mmix]];
+expectZero["M8 chain rule for U support variables", supportResiduals[{uSupport}]];
+expectZero["M8 chain rule for V support variables", supportResiduals[{vSupport}]];
+expectZero["M8 dependent correction support gradient", supportResiduals[dependentSupport]];
+expectZero["M8 static correction support gradient", supportResiduals[staticSupport]];
+expectZero["M8 orbit correction support gradient", supportResiduals[orbitSupport]];
 
-subbanner["VII. Cartesian orbit-lock equivalence and first-order form"];
+subbanner["VI. Cartesian orbit lock and infinitesimal packet"];
 
-orbitLockSolution = Solve[
-  {
-    yDep[[2]] == 0,
-    yDep[[3]] == 0
-  },
-  {U, V},
+orbitLockReduced = Reduce[
+  dependentDelta[[2]] == 0 && dependentDelta[[3]] == 0,
+  physicalCoordinates,
   Reals
 ];
-If[orbitLockSolution =!= {{U -> 0, V -> 0}},
-  Print["FAIL: unexpected orbit-lock solution set"];
-  Print["  actual -> ", fmt[orbitLockSolution]];
-  Exit[1];
+Print["M9 Reduce orbit-lock set = ", fmt[orbitLockReduced]];
+expectTrue["M9 lock set is chart origin", Equivalent[orbitLockReduced, U == 0 && V == 0]];
+
+expectZero["M9 origin removes dependent vector", dependentDelta /. {U -> 0, V -> 0}];
+expectZero["M9 transfer equality fixes U", uLog /. T2 -> T2ref];
+expectZero["M9 eta equality fixes V", vLog /. epsEta -> epsEtaRef];
+expectZero["M9 target quotient at origin", (ratioUV /. {U -> 0, V -> 0}) - 1];
+
+perturbedDependent = dependentDelta /. Thread[
+  physicalCoordinates -> {
+    Log[(T2 Exp[h dlnT2])/T2],
+    Log[(epsEta Exp[h dlnEps])/epsEta]
+  }
+];
+firstOrderDependent = FullSimplify[
+  PowerExpand[D[perturbedDependent, h] /. h -> 0],
+  Assumptions -> $Assumptions
 ];
 
-expectZero["U = V = 0 cancels the dependent defect", yDep /. {U -> 0, V -> 0}];
-expectZero["T^2 = T_ref^2 implies U = 0", Udef /. T2 -> T2ref];
-expectZero["eps_eta = eps_eta_ref implies V = 0", Vdef /. epsEta -> epsEtaRef];
-
-transferEquilibriumSolution = Solve[T2/T2ref == 1, T2, Reals];
-dressingEquilibriumSolution = Solve[epsEta/epsEtaRef == 1, epsEta, Reals];
-If[transferEquilibriumSolution =!= {{T2 -> T2ref}},
-  Print["FAIL: unexpected transfer-equilibrium solve"];
-  Print["  actual -> ", fmt[transferEquilibriumSolution]];
-  Exit[1];
-];
-If[dressingEquilibriumSolution =!= {{epsEta -> epsEtaRef}},
-  Print["FAIL: unexpected dressing-equilibrium solve"];
-  Print["  actual -> ", fmt[dressingEquilibriumSolution]];
-  Exit[1];
-];
-
-expectZero["U = V = 0 restores the target ratio", (ratioFromUV /. {U -> 0, V -> 0}) - 1];
-
-T2pert = T2 Exp[h dlnT2];
-epsPert = epsEta Exp[h dlnepsEta];
-
-Ufirst = FullSimplify[D[Log[T2pert/T2], h] /. h -> 0, Assumptions -> $Assumptions];
-Vfirst = FullSimplify[D[Log[epsPert/epsEta], h] /. h -> 0, Assumptions -> $Assumptions];
-
-expectZero["first-order U compiler", Ufirst - dlnT2];
-expectZero["first-order V compiler", Vfirst - dlnepsEta];
-
-yFirst = CphysDep . {Ufirst, Vfirst};
-expectZero[
-  "first-order dependent correction",
-  yFirst - {0, -dlnepsEta, dlnT2 - dlnepsEta}
-];
-
-yStaticBlind = yDep /. U -> 0;
-expectZero["static-blind line maps to equal-drift dressing ray", yStaticBlind + V {0, 1, 1}];
+expectZero["M9 first-order dependent vector", firstOrderDependent - {0, -dlnEps, dlnT2 - dlnEps}];
 
 Print[""];
 Print["All Stage 239 symbolic checks passed."];

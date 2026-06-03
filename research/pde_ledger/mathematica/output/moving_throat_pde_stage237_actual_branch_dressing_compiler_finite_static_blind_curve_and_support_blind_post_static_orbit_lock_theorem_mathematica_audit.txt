@@ -1,0 +1,87 @@
+
+========================================================================================
+STAGE 237 — ACTUAL-BRANCH DRESSING COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Rigid-mouth reduction
+----------------------------------------------------------------------------------------
+M1 q_tr on R_tr = R_tr_ref = 0
+PASS: M1 q_tr on R_tr = R_tr_ref
+M1 q_nt rigid-mouth reduction = 0
+PASS: M1 q_nt rigid-mouth reduction
+
+----------------------------------------------------------------------------------------
+M2. Finite static-blind curve and inverse
+----------------------------------------------------------------------------------------
+M2 q_nt = 0 equivalent to static curve = 0
+PASS: M2 q_nt = 0 equivalent to static curve
+M2 parameterized static-blind curve = 0
+PASS: M2 parameterized static-blind curve
+M2 inverse round-trip q_eta -> Rratio -> q_eta = 0
+PASS: M2 inverse round-trip q_eta -> Rratio -> q_eta
+M2 inverse round-trip Rratio -> q_eta -> Rratio = 0
+PASS: M2 inverse round-trip Rratio -> q_eta -> Rratio
+M2 endpoint Rratio(q_eta = 0) = 0
+PASS: M2 endpoint Rratio(q_eta = 0)
+
+----------------------------------------------------------------------------------------
+M3. First-order packet compiler and tangent
+----------------------------------------------------------------------------------------
+M3 q_eta first-order term = 0
+PASS: M3 q_eta first-order term
+M3 q_nt first-order term = 0
+PASS: M3 q_nt first-order term
+M3 tangent slope of finite curve = 0
+PASS: M3 tangent slope of finite curve
+M3 packet matrix determinant = 0
+PASS: M3 packet matrix determinant
+
+----------------------------------------------------------------------------------------
+M4. Microscopic coherent compiler
+----------------------------------------------------------------------------------------
+M4 microscopic log expansion = 0
+PASS: M4 microscopic log expansion
+
+----------------------------------------------------------------------------------------
+M5. Microscopic first-order drift extractor
+----------------------------------------------------------------------------------------
+M5 microscopic drift coefficient = 0
+PASS: M5 microscopic drift coefficient
+
+----------------------------------------------------------------------------------------
+M6. Support-blindness through sector independence
+----------------------------------------------------------------------------------------
+M6 D[q_eta, zeta] = 0
+PASS: M6 D[q_eta, zeta]
+M6 D[q_eta, M_tr] = 0
+PASS: M6 D[q_eta, M_tr]
+M6 D[q_eta, lambda_phi] = 0
+PASS: M6 D[q_eta, lambda_phi]
+M6 D[q_eta, K_phi_eff] = 0
+PASS: M6 D[q_eta, K_phi_eff]
+zeta = (KWEff*lambdaPhi^2)/(KPhiEff*lambdaW^2)
+M_tr = Mmix*(1 + ((1 - eps)*zeta)/(1 - eps*zeta))
+
+----------------------------------------------------------------------------------------
+M7. Dependent-plane ray and orbit-lock
+----------------------------------------------------------------------------------------
+M7 dependent-plane ray from eps_eta =
+MatrixForm[{{0, 0, 0}}]
+PASS: M7 dependent-plane ray from eps_eta
+M7 dependent-plane ray on static-blind curve =
+MatrixForm[{{0, 0, 0}}]
+PASS: M7 dependent-plane ray on static-blind curve
+M7 finite endpoint from Rratio = 1 = 0
+PASS: M7 finite endpoint from Rratio = 1
+M7 finite endpoint from eps_eta = eps_eta_ref = 0
+PASS: M7 finite endpoint from eps_eta = eps_eta_ref
+M7 codim-two solution R1 = 0
+PASS: M7 codim-two solution R1
+M7 codim-two solution E1 = 0
+PASS: M7 codim-two solution E1
+M7 R1 = E1 = 0 satisfies first-order packet =
+MatrixForm[{{0, 0}}]
+PASS: M7 R1 = E1 = 0 satisfies first-order packet
+
+All Stage 237 Mathematica symbolic checks passed.

@@ -1,0 +1,46 @@
+
+========================================================================================
+STAGE 240 - SELECTED-BRANCH LOADING RATIO FROM THE QUADRUPOLE PRECURSOR
+========================================================================================
+M1 Pi_tr/C_mix = alpha_req/alpha_mix = 0
+PASS: M1 Pi_tr/C_mix = alpha_req/alpha_mix
+M1 spectral substitution leaves Pi_tr/C_mix unchanged = 0
+PASS: M1 spectral substitution leaves Pi_tr/C_mix unchanged
+M2 ySupport = (alphaMix*omega^2 - alphaReq*omegaQ^2)/(alphaReq*(omega^2 - omegaQ^2))
+M2 yApart = alphaMix/alphaReq + ((alphaMix - alphaReq)*omegaQ)/(2*alphaReq*(omega - omegaQ)) - ((alphaMix - alphaReq)*omegaQ)/(2*alphaReq*(omega + omegaQ))
+M2 c0Extracted = alphaMix/alphaReq
+M2 c1Extracted = 1 - alphaMix/alphaReq
+M2 extracted c0 = 1/rho_alpha = 0
+PASS: M2 extracted c0 = 1/rho_alpha
+M2 extracted c1 = (rho_alpha - 1)/rho_alpha = 0
+PASS: M2 extracted c1 = (rho_alpha - 1)/rho_alpha
+M2 c0 + c1 = 1 = 0
+PASS: M2 c0 + c1 = 1
+M2 inverse rho_alpha = 1/c0 = 0
+PASS: M2 inverse rho_alpha = 1/c0
+M2 inverse rho_alpha = 1/(1-c1) = 0
+PASS: M2 inverse rho_alpha = 1/(1-c1)
+M2 zeta_req = c1/c0 = rho_alpha - 1 = 0
+PASS: M2 zeta_req = c1/c0 = rho_alpha - 1
+M2 Omega_Q independence of extracted c0 = 0
+PASS: M2 Omega_Q independence of extracted c0
+M2 Omega_Q independence of extracted c1 = 0
+PASS: M2 Omega_Q independence of extracted c1
+M3 rho_alpha from c0 = 3/4 is 4/3 = 0
+PASS: M3 rho_alpha from c0 = 3/4 is 4/3
+M3 rho_alpha from c1 = 1/4 is 4/3 = 0
+PASS: M3 rho_alpha from c1 = 1/4 is 4/3
+M3 zeta_req = 1/3 = 0
+PASS: M3 zeta_req = 1/3
+M4 Pi_tr = (4/3) C_mix on the minimal-isotropic branch = 0
+PASS: M4 Pi_tr = (4/3) C_mix on the minimal-isotropic branch
+M4 S_req = Pi_tr/C_mix = 4/3 = 0
+PASS: M4 S_req = Pi_tr/C_mix = 4/3
+M5 varrho = 2(1-eps_star)/3 = 0
+PASS: M5 varrho = 2(1-eps_star)/3
+M6 regime ratio 1 < 4/3 < 2 = True
+PASS: M6 regime ratio 1 < 4/3 < 2
+M6 C_mix < Pi_tr < 2 C_mix = True
+PASS: M6 C_mix < Pi_tr < 2 C_mix
+
+Stage 240 Mathematica audit passed.

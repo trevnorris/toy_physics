@@ -1,0 +1,104 @@
+=== Stage 231 Mathematica audit: continuum pullback of selected-branch dynamic-class map ===
+M1 Mathematica Factor[D[F,x]] = ((9*d + 11*x)^3*(72*d^2 + 81*d^3 + 189*d^2*x + 297*d*x^2 + 121*x^3))/(81*(-1 + x)^2*(9*d^2 + 18*d*x + 11*x^2)^3)
+M1 Mathematica D[F,x] numerator polynomial factor = 72*d^2 + 81*d^3 + 189*d^2*x + 297*d*x^2 + 121*x^3
+M1 Mathematica Factor[D[G,x]] = (9*(9*d^2 + 18*d*x + 11*x^2))/(9*d + 11*x)^2
+M1 Mathematica Factor[D[RND,x]] = (-72*d^2*(261*d^2 + 81*d^3 + 594*d*x + 363*x^2 - 297*d*x^2 - 242*x^3))/((9*d + 11*x)^2*(9*d^2 + 18*d*x + 11*x^2)^2)
+M1 D[G,x] closed form residual = 0
+PASS: M1 D[G,x] closed form
+M1 D[F,x] numerator polynomial factor residual = 0
+PASS: M1 D[F,x] numerator polynomial factor
+M1 D[F,x] > 0 on stable strip = True
+PASS: M1 D[F,x] > 0 on stable strip
+M1 D[G,x] > 0 on stable strip = True
+PASS: M1 D[G,x] > 0 on stable strip
+M1 D[RND,x] < 0 on stable strip = True
+PASS: M1 D[RND,x] < 0 on stable strip
+M2 F(0,d) - 1 residual = 0
+PASS: M2 F(0,d) - 1
+M2 G(0,d) residual = 0
+PASS: M2 G(0,d)
+M2 RND(0,d) - 8/(9 d) residual = 0
+PASS: M2 RND(0,d) - 8/(9 d)
+M2 Limit F as x -> 1 from below = Infinity; reciprocal = 0
+PASS: M2 Limit F as x -> 1 from below
+M3 dRphys/dRtarget at {x,d} = {1/100, 1/5} -> -12.17686817766723553964734209158451637254919274127825687220022939391238804717492`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M3 dRphys/dRtarget at {x,d} = {1/20, 1/4} -> -6.1045184142263225157726162578558417641530601492063332762238338730061556393958`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M3 dRphys/dRtarget at {x,d} = {1/10, 1/2} -> -2.17044918975814966416140388617416463661551348972047742498526926151550865326673`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M3 dRphys/dRtarget at {x,d} = {1/5, 3/4} -> -0.77585762101084057569212822442573132646547063266544916028407534738993930728019`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M3 dRphys/dRtarget at {x,d} = {2/5, 5/4} -> -0.16097279790848165307654019567067734084792266316193241918097275893934544533164`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M3 dRphys/dRtarget at {x,d} = {4/5, 2} -> -0.00579688853475397464478683422116438639165520341693181162101195498527394275101`50.
+M3 sampled pullback slope is negative = True
+PASS: M3 sampled pullback slope is negative
+M4 P_c = -72*d^2 + 81*c*d^3 + 72*d^2*x + 261*c*d^2*x + 297*c*d*x^2 + 121*c*x^3
+M4 Factor[D[P_c,x]] = 3*(24*d^2 + 87*c*d^2 + 198*c*d*x + 121*c*x^2)
+M4 D[P_c,x] closed form residual = 0
+PASS: M4 D[P_c,x] closed form
+M4 D[P_c,x] > 0 on stable strip = True
+PASS: M4 D[P_c,x] > 0 on stable strip
+M4 P_c(0,d) closed form residual = 0
+PASS: M4 P_c(0,d) closed form
+M4 onset law P_c(0,delta_c) residual = 0
+PASS: M4 onset law P_c(0,delta_c)
+M5 delta = 0.25`18. x_flip = 0.08744210580615957448896572733015156273`18. R_flip = 1.33086853932996250364025783956545928159`18. x_den = 0.10722305110569706172854647089048761219`18. R_den = 1.39383256578151164373477521061902498807`18.
+M5 R_flip sample actual = 1.33086853932996250364025783956545928159`18. expected = 1.330868539`18. diff = 3.299625036402578395654592815887509176902688071927489380804216303674`40.01888370758852*^-10
+PASS: M5 R_flip sample
+M5 R_den sample actual = 1.39383256578151164373477521061902498807`18. expected = 1.393832566`18. diff = 2.1848835626522478938097501193272031934959110336878445370471560465235`39.75567178328949*^-10
+PASS: M5 R_den sample
+M5 R_flip <= R_den = True
+PASS: M5 R_flip <= R_den
+M5 delta = 0.5`18. x_flip = 0.05142857879350268523471425787381601477`18. R_flip = 1.13995663026409703038338054591678242152`18. x_den = 0.08184793786007428718271149971733310163`18. R_den = 1.22108706150597898434971963396392947164`18.
+M5 R_flip sample actual = 1.13995663026409703038338054591678242152`18. expected = 1.13995663`18. diff = 2.6409703038338054591678242152363116898189972944288137248190820823116`40.36487518896249*^-10
+PASS: M5 R_flip sample
+M5 R_den sample actual = 1.22108706150597898434971963396392947164`18. expected = 1.221087062`18. diff = 4.9402101565028036603607052835677045806005636387976899625791799952966`40.48192846400064*^-10
+PASS: M5 R_den sample
+M5 R_flip <= R_den = True
+PASS: M5 R_flip <= R_den
+M5 delta = 0.75`18. x_flip = 0 R_flip = 1.`18. x_den = 0.03250512108282537149820332403540368697`18. R_den = 1.07147186711091465525390778881719180154`18.
+M5 R_flip sample actual = 1.`18. expected = 1.`18. diff = 0``50.
+PASS: M5 R_flip sample
+M5 R_den sample actual = 1.07147186711091465525390778881719180154`18. expected = 1.071471867`18. diff = 1.1091465525390778881719180153472594631949564545140902057062511475519`40.01500816110361*^-10
+PASS: M5 R_den sample
+M5 R_flip <= R_den = True
+PASS: M5 R_flip <= R_den
+M5 R_flip(0.80) collapse actual = 1.`18. expected = 1.`18. diff = 0``50.
+PASS: M5 R_flip(0.80) collapse
+M5 R_den(1.00) collapse actual = 1.`18. expected = 1.`18. diff = 0``50.
+PASS: M5 R_den(1.00) collapse
+M6 delta placement = delta0/(1 - epsEta)
+M6 M_mix = (8*(1 + rho)^2*zW)/((1 - epsEta)*(1 - epsW)*Pi^2)
+M6 R_target = ((1 - epsEta)*(1 - epsW)^2*lam)/((1 + rho)^2*zW)
+M6 continuum placement product law residual = 0
+PASS: M6 continuum placement product law
+M7 dynamic both ceiling exceeds static both budget = True
+PASS: M7 dynamic both ceiling exceeds static both budget
+M7 dynamic nonempty ceiling exceeds static nonempty budget = True
+PASS: M7 dynamic nonempty ceiling exceeds static nonempty budget
+M7 RND subset sample {x,d} = {1/100, 1/5} sample = 3.75919130977070673376745804991950805644588185813113660425519571869878609447288`50. onset = 4.44444444444444444444444444444444444444444444444444444444444444444444444444444`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+M7 RND subset sample {x,d} = {1/20, 1/4} sample = 1.87335670464504820333041191936897458369851007887817703768624014022787028921998`50. onset = 3.55555555555555555555555555555555555555555555555555555555555555555555555555556`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+M7 RND subset sample {x,d} = {1/10, 1/2} sample = 0.88737949167397020157756354075372480280455740578439964943032427695004382120946`50. onset = 1.77777777777777777777777777777777777777777777777777777777777777777777777777777`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+M7 RND subset sample {x,d} = {1/5, 3/4} sample = 0.44134248483310885937146155535766279186581281425645199463986827833863159991758`50. onset = 1.18518518518518518518518518518518518518518518518518518518518518518518518518519`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+M7 RND subset sample {x,d} = {2/5, 5/4} sample = 0.17375764091181574482338983781654861336575951234596304689815260232635739308193`50. onset = 0.71111111111111111111111111111111111111111111111111111111111111111111111111111`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+M7 RND subset sample {x,d} = {4/5, 2} sample = 0.02991722899976731044111292091879134394840940065817903799488082970448426021341`50. onset = 0.44444444444444444444444444444444444444444444444444444444444444444444444444444`50.
+M7 sampled RND lies in [0,RND(0,d)] = True
+PASS: M7 sampled RND lies in [0,RND(0,d)]
+All Stage 231 Mathematica audits passed.

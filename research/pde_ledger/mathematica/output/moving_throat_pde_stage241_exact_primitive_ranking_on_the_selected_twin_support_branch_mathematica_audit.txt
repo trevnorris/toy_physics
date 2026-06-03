@@ -1,0 +1,79 @@
+Stage 241 - exact primitive ranking on the selected twin-support branch
+M1 support law solved for epsStar residual = 0
+[ok] M1 support law solved for epsStar
+M1 selected sigma reduction residual = 0
+[ok] M1 selected sigma reduction
+M2 lower twin-window residual residual = 0
+[ok] M2 lower twin-window residual
+M2 upper twin-window residual residual = 0
+[ok] M2 upper twin-window residual
+M2 lower twin-window margin value = 1/(3*varrho)
+[ok] M2 lower twin-window margin
+M2 upper twin-window margin value = 2/(3*varrho)
+[ok] M2 upper twin-window margin
+M3 wChi = 2 wZ residual = 0
+[ok] M3 wChi = 2 wZ
+M3 wZ - wLambda exact form residual = 0
+[ok] M3 wZ - wLambda exact form
+M3 wZ - wW exact form residual = 0
+[ok] M3 wZ - wW exact form
+M3 wW - wUmag exact form residual = 0
+[ok] M3 wW - wUmag exact form
+M4 Solve[wW - wLambda == 0] nonzero root residual = 0
+[ok] M4 Solve[wW - wLambda == 0] nonzero root
+M4 Solve[wUmag - wLambda == 0] nonzero root residual = 0
+[ok] M4 Solve[wUmag - wLambda == 0] nonzero root
+M4 support law gives varrhoWLambda residual = 0
+[ok] M4 support law gives varrhoWLambda
+M4 support law gives varrhoULambda residual = 0
+[ok] M4 support law gives varrhoULambda
+M5 factorized sign law for wLambda - wW residual = 0
+[ok] M5 factorized sign law for wLambda - wW
+M5 factorized sign law for wLambda - wUmag residual = 0
+[ok] M5 factorized sign law for wLambda - wUmag
+M6 varrhoULambda - varrhoWLambda exact form residual = 0
+[ok] M6 varrhoULambda - varrhoWLambda exact form
+M6 varrhoULambda - varrhoWLambda positive value = (2*((2 + beta^2)^(-1) - beta/(1 + beta + beta^2)))/3
+[ok] M6 varrhoULambda - varrhoWLambda positive
+M6 two-thirds minus varrhoULambda exact form residual = 0
+[ok] M6 two-thirds minus varrhoULambda exact form
+M6 two-thirds minus varrhoULambda positive value = (2*beta)/(3*(1 + beta + beta^2))
+[ok] M6 two-thirds minus varrhoULambda positive
+M7 varrhoWLambda(beta=0) residual = 0
+[ok] M7 varrhoWLambda(beta=0)
+M7 varrhoWLambda(beta=2/11) residual = 0
+[ok] M7 varrhoWLambda(beta=2/11)
+M7 varrhoULambda(beta=0) residual = 0
+[ok] M7 varrhoULambda(beta=0)
+M7 varrhoULambda(beta=2/11) residual = 0
+[ok] M7 varrhoULambda(beta=2/11)
+M7 d varrhoWLambda / d beta residual = 0
+[ok] M7 d varrhoWLambda / d beta
+M7 d varrhoULambda / d beta residual = 0
+[ok] M7 d varrhoULambda / d beta
+M8 Region I wChi > wZ value = 100701/594106
+[ok] M8 Region I wChi > wZ
+M8 Region I wZ > wLambda value = 5050/297053
+[ok] M8 Region I wZ > wLambda
+M8 Region I wLambda > wW value = 60501/594106
+[ok] M8 Region I wLambda > wW
+M8 Region I wW > wUmag value = 13545/297053
+[ok] M8 Region I wW > wUmag
+M8 Region II wChi > wZ value = 1283385/6607894
+[ok] M8 Region II wChi > wZ
+M8 Region II wZ > wW value = 828905/6607894
+[ok] M8 Region II wZ > wW
+M8 Region II wW > wLambda value = 263511/6607894
+[ok] M8 Region II wW > wLambda
+M8 Region II wLambda > wUmag value = 145521/6607894
+[ok] M8 Region II wLambda > wUmag
+M8 Region III wChi > wZ value = 45045/225326
+[ok] M8 Region III wChi > wZ
+M8 Region III wZ > wW value = 42925/225326
+[ok] M8 Region III wZ > wW
+M8 Region III wW > wUmag value = 954/112663
+[ok] M8 Region III wW > wUmag
+M8 Region III wUmag > wLambda value = 111/225326
+[ok] M8 Region III wUmag > wLambda
+
+Stage 241 Mathematica audit passed.

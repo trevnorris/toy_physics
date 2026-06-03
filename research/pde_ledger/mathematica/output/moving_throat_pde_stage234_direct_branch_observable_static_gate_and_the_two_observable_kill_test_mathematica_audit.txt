@@ -1,0 +1,98 @@
+
+========================================================================================
+Stage 234 Mathematica audit: direct branch-observable static gate
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Exact finite quotient chart and inverse roundtrip
+----------------------------------------------------------------------------------------
+M1 q_tr roundtrip = 0
+PASS: M1 q_tr roundtrip
+M1 q_nt roundtrip = 0
+PASS: M1 q_nt roundtrip
+M1 q_eta roundtrip = 0
+PASS: M1 q_eta roundtrip
+q_tr chart = -(cStar*Log[rtr/rtrRef])
+q_nt chart = Log[(1 - epsEta)/(1 - epsEtaRef)] - Log[rtarget/rtargetRef] + bStar*Log[rtr/rtrRef]
+q_eta chart = Log[epsEta/epsEtaRef]
+
+----------------------------------------------------------------------------------------
+M2. First-order linearization by Series coefficients
+----------------------------------------------------------------------------------------
+M2 q_tr^(1) + C_star r1 = 0
+PASS: M2 q_tr^(1) + C_star r1
+M2 q_nt^(1) - expected = 0
+PASS: M2 q_nt^(1) - expected
+M2 q_eta^(1) - E1 = 0
+PASS: M2 q_eta^(1) - E1
+q_tr^(1) = -(cStar*r1)
+q_nt^(1) = (E1*epsEtaStar)/(-1 + epsEtaStar) + bStar*r1 - R1
+q_eta^(1) = E1
+
+----------------------------------------------------------------------------------------
+M3. Triangular compiler and inverse drift map
+----------------------------------------------------------------------------------------
+M3 Theta1 - r1 = 0
+PASS: M3 Theta1 - r1
+M3 Xi1 + R1 + c_eta E1 = 0
+PASS: M3 Xi1 + R1 + c_eta E1
+M3 Rcal1 - R1 = 0
+PASS: M3 Rcal1 - R1
+M3 inverse E1 map = 0
+PASS: M3 inverse E1 map
+Theta1 = r1
+Xi1 = (E1*epsEtaStar)/(-1 + epsEtaStar) - R1
+Rcal1 = R1
+
+----------------------------------------------------------------------------------------
+M4. Exact R_tr cancellation
+----------------------------------------------------------------------------------------
+M4 D[Xi1, r1] = 0
+PASS: M4 D[Xi1, r1]
+M4 simplified Xi1 contains no r1 = True
+PASS: M4 simplified Xi1 contains no r1
+
+----------------------------------------------------------------------------------------
+M5. Rigid-mouth reduction
+----------------------------------------------------------------------------------------
+M5 Theta1 rigid = 0
+PASS: M5 Theta1 rigid
+M5 Xi1 rigid equals q_nt^(1) rigid = 0
+PASS: M5 Xi1 rigid equals q_nt^(1) rigid
+M5 finite rigid-mouth q_nt = 0
+PASS: M5 finite rigid-mouth q_nt
+Rigid-mouth finite q_nt = Log[(1 - epsEta)/(1 - epsEtaRef)] - Log[rtarget/rtargetRef]
+
+----------------------------------------------------------------------------------------
+M6. Two-observable strip form and ceiling ordering
+----------------------------------------------------------------------------------------
+M6 robust lower edge = 0
+PASS: M6 robust lower edge
+M6 robust upper edge = 0
+PASS: M6 robust upper edge
+M6 nonempty lower edge = 0
+PASS: M6 nonempty lower edge
+M6 nonempty upper edge = 0
+PASS: M6 nonempty upper edge
+M6 0 < robust < nonempty = True
+PASS: M6 0 < robust < nonempty
+Robust strip = {-((E1*epsEtaStar)/(1 - epsEtaStar)) - 183965164246323/(500000000000000*Abs[vareps]), -((E1*epsEtaStar)/(1 - epsEtaStar)) + 183965164246323/(500000000000000*Abs[vareps])}
+Nonempty strip = {-((E1*epsEtaStar)/(1 - epsEtaStar)) - 737619063660757/(1000000000000000*Abs[vareps]), -((E1*epsEtaStar)/(1 - epsEtaStar)) + 737619063660757/(1000000000000000*Abs[vareps])}
+
+----------------------------------------------------------------------------------------
+M7. Canonical direct-branch families
+----------------------------------------------------------------------------------------
+M7 pure-target Xi1 - xi = 0
+PASS: M7 pure-target Xi1 - xi
+M7 pure-dressing Xi1 - xi = 0
+PASS: M7 pure-dressing Xi1 - xi
+M7 balanced R1 minimizer = 0
+PASS: M7 balanced R1 minimizer
+M7 balanced E1 minimizer = 0
+PASS: M7 balanced E1 minimizer
+M7 balanced Xi1 - xi = 0
+PASS: M7 balanced Xi1 - xi
+Balanced Minimize result = {Piecewise[{{((-1 + epsEtaStar)^2*xi^2)/(1 + 2*(-1 + epsEtaStar)*epsEtaStar), epsEtaStar != 1}}, Infinity], {R1 -> Piecewise[{{-(((-1 + epsEtaStar)^2*xi)/(1 + 2*(-1 + epsEtaStar)*epsEtaStar)), epsEtaStar != 1}}, Indeterminate], E1 -> Piecewise[{{((-1 + epsEtaStar)*epsEtaStar*xi)/(1 + 2*(-1 + epsEtaStar)*epsEtaStar), epsEtaStar != 1}}, Indeterminate]}}
+Balanced expected family = {-(xi/(1 + epsEtaStar^2/(1 - epsEtaStar)^2)), -((epsEtaStar*xi)/((1 - epsEtaStar)*(1 + epsEtaStar^2/(1 - epsEtaStar)^2)))}
+
+All Stage 234 Mathematica checks passed.

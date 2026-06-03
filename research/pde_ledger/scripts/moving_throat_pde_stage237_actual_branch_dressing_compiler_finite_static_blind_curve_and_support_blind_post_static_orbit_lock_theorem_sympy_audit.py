@@ -171,7 +171,10 @@ def main() -> None:
     assert_zero(M_packet.det() + 1)
 
     q_lin_vec = sp.simplify(M_packet * sp.Matrix([R1, E1]))
-    assert_matrix_zero(q_lin_vec - sp.Matrix([-R1 - c_eta * E1, E1]))
+    assert_matrix_zero(
+        q_lin_vec
+        - sp.Matrix([q_nt_linear.subs(t, 1), q_eta_linear.subs(t, 1)])
+    )
 
     print("\nFirst-order packet compiler:")
     print("c_eta =", c_eta)
@@ -235,18 +238,60 @@ def main() -> None:
     zeta_expr = lambda_phi**2 * K_W_eff / (lambda_W**2 * K_phi_eff)
     M_tr_expr = M_mix * (1 + zeta_expr * (1 - eps) / (1 - zeta_expr * eps))
 
-    assert_zero(sp.diff(q_eta_micro, zeta))
-    assert_zero(sp.diff(q_eta_micro, M_tr))
-    assert_zero(sp.diff(q_eta_micro, lambda_phi))
-    assert_zero(sp.diff(q_eta_micro, K_phi_eff))
+    support_args = (zeta, M_tr, lambda_phi, K_phi_eff)
+    c_etaU_support_fn = sp.Function("c_etaU_support")
+    K_U_support_fn = sp.Function("K_U_support")
+    K_eta_eff_support_fn = sp.Function("K_eta_eff_support")
+    c_etaU_support = c_etaU_support_fn(*support_args)
+    K_U_support = K_U_support_fn(*support_args)
+    K_eta_eff_support = K_eta_eff_support_fn(*support_args)
+    q_eta_support_frame = sp.log(
+        (c_etaU_support**2 / (K_U_support * K_eta_eff_support))
+        * (K_U_ref * K_eta_eff_ref / c_etaU_ref**2)
+    )
+    if not set(support_args).issubset(q_eta_support_frame.free_symbols):
+        raise AssertionError("Support variables are not in the q_eta frame")
+
+    support_functions = {
+        c_etaU_support_fn,
+        K_U_support_fn,
+        K_eta_eff_support_fn,
+    }
+
+    def impose_support_independence(expr: sp.Expr) -> sp.Expr:
+        derivative_rules = {
+            atom: sp.Integer(0)
+            for atom in expr.atoms(sp.Derivative)
+            if atom.expr.func in support_functions
+        }
+        return sp.simplify(expr.xreplace(derivative_rules))
+
+    q_eta_support_composite = q_eta_support_frame.subs(
+        {zeta: zeta_expr, M_tr: M_tr_expr}
+    )
+    # Negative control: if K_eta_eff_support leaked a factor of K_phi_eff,
+    # d(q_eta)/dK_phi_eff below would leave a nonzero -1/K_phi_eff term.
+    dq_eta_dzeta = impose_support_independence(sp.diff(q_eta_support_frame, zeta))
+    dq_eta_dM_tr = impose_support_independence(sp.diff(q_eta_support_frame, M_tr))
+    dq_eta_dlambda_phi = impose_support_independence(
+        sp.diff(q_eta_support_composite, lambda_phi)
+    )
+    dq_eta_dK_phi_eff = impose_support_independence(
+        sp.diff(q_eta_support_composite, K_phi_eff)
+    )
+
+    assert_zero(dq_eta_dzeta)
+    assert_zero(dq_eta_dM_tr)
+    assert_zero(dq_eta_dlambda_phi)
+    assert_zero(dq_eta_dK_phi_eff)
 
     print("\nSupport-blindness checks:")
     print("zeta =", zeta_expr)
     print("M_tr =", M_tr_expr)
-    print("dq_eta/dzeta =", sp.diff(q_eta_micro, zeta))
-    print("dq_eta/dM_tr =", sp.diff(q_eta_micro, M_tr))
-    print("dq_eta/dlambda_phi =", sp.diff(q_eta_micro, lambda_phi))
-    print("dq_eta/dK_phi_eff =", sp.diff(q_eta_micro, K_phi_eff))
+    print("dq_eta/dzeta =", dq_eta_dzeta)
+    print("dq_eta/dM_tr =", dq_eta_dM_tr)
+    print("dq_eta/dlambda_phi =", dq_eta_dlambda_phi)
+    print("dq_eta/dK_phi_eff =", dq_eta_dK_phi_eff)
 
     # ------------------------------------------------------------------
     # 6. Post-static orbit-lock theorem on the actual rigid-mouth branch
@@ -262,7 +307,7 @@ def main() -> None:
 
     # Finite orbit-lock point on the static-blind curve.
     assert_zero(sp.simplify(qeta_from_Rratio.subs(Rratio, 1)))
-    assert_zero(sp.simplify(qeta_param.subs(qeta_param, 0)))
+    assert_zero(q_eta.subs(eps_eta, eps_eta_ref))
 
     # First-order codimension-two point.
     zero_from_packet = sp.simplify(M_packet.LUsolve(sp.Matrix([0, 0])))

@@ -150,11 +150,11 @@ for the benchmark \(\lambda_\mu=1\).
 
 The exact wall/source figures of merit are then
 \[
-\Xi_\chi = 168\,\Theta_w^{(\chi)}\Lambda_\ell^2
+\Xi_\chi = 100\,\Theta_w^{(\chi)}\Lambda_\ell^2
 \approx 5.5548332017764099\times 10^5,
 \]
 \[
-\Xi_J = 168\,\Theta_w^{(J)}\Lambda_\ell^2
+\Xi_J = 100\,\Theta_w^{(J)}\Lambda_\ell^2
 \approx 1.2663707072528143\times 10^5.
 \]
 

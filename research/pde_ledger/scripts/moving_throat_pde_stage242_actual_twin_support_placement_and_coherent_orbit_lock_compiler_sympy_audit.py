@@ -90,6 +90,11 @@ def main() -> None:
         "selected branch lies below non-twin bound",
         (2 / varrho - 2) - sigma_sel - 2 / (3 * varrho),
     )
+    # Strict lowest-symmetric-twin window inclusion: C_mix < Pi_tr < 2 C_mix.
+    ratio = sp.nsimplify(Pi_tr / C_mix)
+    assert ratio == sp.Rational(4, 3), f"demand ratio not 4/3: {ratio}"
+    assert ratio > 1 and ratio < 2, f"selected branch outside twin window: {ratio}"
+    print("[ok] selected branch strictly inside lowest symmetric twin window")
 
     # ------------------------------------------------------------------
     # 3. Reduced-state bridge and direct coherent observables
@@ -205,7 +210,12 @@ def main() -> None:
     )
     assert_zero("dln R_target compiler", dln_Rtarget - dln_Rtarget_formula)
 
-    Theta_1 = dln_Rtr
+    # Theta_1 from the packet form (notes section 5.1): Theta_1 = -C_tr,* Sigma_tr.
+    Sigma_tr = (1 + deltaU) * dchi0 + (1 + chi0) * ddeltaU
+    C_tr_star = chi0 * deltaU / (
+        (1 + chi0) * (1 + deltaU) * (1 + chi0 + deltaU)
+    )
+    Theta_1 = sp.simplify(-C_tr_star * Sigma_tr)
     Xi_1 = sp.simplify(-dln_Rtarget - epsEta / (1 - epsEta) * depsEta)
     Xi_1_formula = sp.simplify(
         -dLambda
@@ -216,7 +226,7 @@ def main() -> None:
     R_1 = sp.simplify(-Xi_1 - epsEta / (1 - epsEta) * depsEta)
     c_eta = sp.simplify(epsEta / (1 - epsEta))
 
-    assert_zero("Theta_1 direct-observable identity", Theta_1 - dln_Rtr)
+    assert_zero("Theta_1 packet form matches dln R_tr", Theta_1 - dln_Rtr)
     assert_zero("Xi_1 direct-observable identity", Xi_1 - Xi_1_formula)
     assert_zero("R_1 direct-observable identity", R_1 - dln_Rtarget)
 

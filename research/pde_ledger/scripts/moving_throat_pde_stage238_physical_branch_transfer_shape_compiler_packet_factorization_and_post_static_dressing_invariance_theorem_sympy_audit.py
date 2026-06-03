@@ -139,21 +139,53 @@ def main() -> None:
     # First-order packet relation.
     q_tr_first = -C * dlnRtr_calc
     q_nt_first_direct = B * dlnRtr_calc - dlnRtarget_calc - eps_eta / (1 - eps_eta) * dlnepseta
-    q_eta_first = dlnepseta
+    eps_eta_pert = eps_eta * sp.exp(h * dlnepseta)
+    q_eta_first = sp.simplify(sp.diff(sp.log(eps_eta_pert), h).subs(h, 0))
     assert_zero(q_nt_first_direct + (B / C) * q_tr_first - dlnT2_calc, "first-order packet factorization")
 
     # Rigid-mouth first-order slice: q_tr = 0 -> q_nt = delta ln T^2, q_eta = d ln eps_eta.
     q_nt_first_rigid = sp.simplify(q_nt_first_direct.subs(dlnRtr_calc, 0))
     assert_zero(q_eta_first - dlnepseta, "rigid-mouth first-order dressing compiler")
 
-    # The clean rigid-mouth statement is easiest to check from the exact factorized relation.
-    q_nt_factorized_rigid = dlnT2_calc
-    assert_zero(q_nt_factorized_rigid - dlnT2_expected, "rigid-mouth first-order transfer-shape compiler")
+    assert_zero(q_nt_first_rigid - dlnT2_calc, "rigid-mouth first-order transfer-shape compiler")
 
     # ------------------------------------------------------------------
     # Support-blindness
     # ------------------------------------------------------------------
-    # The physical observables do not depend on zeta or M_mix in this reduced packet.
+    M_tr = M_mix * (1 + zeta * (1 - eps) / (1 - zeta * eps))
+    dMtr_dzeta = sp.simplify(sp.diff(M_tr, zeta))
+    dMtr_dMmix = sp.simplify(sp.diff(M_tr, M_mix))
+    assert_zero(
+        dMtr_dzeta - M_mix * (1 - eps) / (1 - zeta * eps) ** 2,
+        "live support channel derivative with respect to zeta",
+    )
+    assert_zero(
+        dMtr_dMmix - (1 + zeta * (1 - eps) / (1 - zeta * eps)),
+        "live support channel derivative with respect to M_mix",
+    )
+    if dMtr_dzeta == 0 or dMtr_dMmix == 0:
+        raise AssertionError("support channel negative control failed")
+    print("[ok] live support channel depends on zeta and M_mix")
+
+    Rtr_leak = Rtr * M_tr / M_mix
+    if sp.simplify(sp.diff(Rtr_leak, zeta)) == 0:
+        raise AssertionError("support leak detector failed")
+    print("[ok] support leak detector for R_tr")
+
+    q_nt_factored = sp.log(T2 / T2_ref) - (B / C) * q_tr
+    support_observables = (
+        ("R_tr", Rtr),
+        ("T^2", T2),
+        ("eps_eta", eps_eta),
+        ("q_tr", q_tr),
+        ("q_nt", q_nt_factored),
+        ("q_eta", q_eta),
+    )
+    for label, observable in support_observables:
+        if zeta in observable.free_symbols or M_mix in observable.free_symbols:
+            raise AssertionError(f"structural support exclusion failed for {label}")
+    print("[ok] structural support exclusion for reduced observables and packet")
+
     assert_zero(sp.diff(Rtr, zeta), "support-blindness of R_tr with respect to zeta")
     assert_zero(sp.diff(T2, zeta), "support-blindness of T^2 with respect to zeta")
     assert_zero(sp.diff(eps_eta, zeta), "support-blindness of eps_eta with respect to zeta")
@@ -162,7 +194,6 @@ def main() -> None:
     assert_zero(sp.diff(eps_eta, M_mix), "support-blindness of eps_eta with respect to M_mix")
 
     # Use the factorized finite packet to verify support-blindness of q_tr, q_nt, q_eta.
-    q_nt_factored = sp.log(T2 / T2_ref) - (B / C) * q_tr
     assert_zero(sp.diff(q_tr, zeta), "support-blindness of q_tr with respect to zeta")
     assert_zero(sp.diff(q_nt_factored, zeta), "support-blindness of q_nt with respect to zeta")
     assert_zero(sp.diff(q_eta, zeta), "support-blindness of q_eta with respect to zeta")
@@ -177,10 +208,14 @@ def main() -> None:
     tracking_condition = (1 + deltaU) * dlnchi + (1 + chi0) * dlndelta
     assert_zero(
         sp.simplify(
-            dlnRtr_expected
+            dlnRtr_calc
             + chi0 * deltaU / ((1 + chi0) * (1 + deltaU) * (1 + chi0 + deltaU)) * tracking_condition
         ),
-        "tracking gate compiler",
+        "tracking gate factorization",
+    )
+    assert_zero(
+        sp.simplify(dlnRtr_calc.subs(dlndelta, -(1 + deltaU) / (1 + chi0) * dlnchi)),
+        "tracking gate drift vanishes on gate locus",
     )
 
     # Static-blind transfer-shape gate and post-static dressing gate are direct.

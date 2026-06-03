@@ -145,6 +145,13 @@ def main() -> None:
     vareps = sp.symbols("vareps", real=True, nonzero=True)
     robust = sp.Float("0.367930328492646")
     nonempty = sp.Float("0.737619063660757")
+    assert 0 < float(robust) < float(nonempty), (
+        "Expected 0 < robust < nonempty for the two-observable strip ceilings"
+    )
+    assert sp.simplify(nonempty - robust) != 0, "Two-observable strip ceilings must be distinct"
+    assert abs(float(nonempty) - float(robust) - 0.369688735168111) < 1e-12, (
+        "Unexpected documented gap between nonempty and robust ceilings"
+    )
 
     Xi1_twoobs = -R1 - c_eta * E1
     robust_lower = -c_eta * E1 - robust / sp.Abs(vareps)
@@ -152,15 +159,8 @@ def main() -> None:
     nonempty_lower = -c_eta * E1 - nonempty / sp.Abs(vareps)
     nonempty_upper = -c_eta * E1 + nonempty / sp.Abs(vareps)
 
-    robust_low_val = sp.simplify(Xi1_twoobs.subs(R1, robust_lower))
-    robust_up_val = sp.simplify(Xi1_twoobs.subs(R1, robust_upper))
-    nonempty_low_val = sp.simplify(Xi1_twoobs.subs(R1, nonempty_lower))
-    nonempty_up_val = sp.simplify(Xi1_twoobs.subs(R1, nonempty_upper))
-
-    assert_zero(robust_low_val - robust / sp.Abs(vareps))
-    assert_zero(robust_up_val + robust / sp.Abs(vareps))
-    assert_zero(nonempty_low_val - nonempty / sp.Abs(vareps))
-    assert_zero(nonempty_up_val + nonempty / sp.Abs(vareps))
+    assert_zero(sp.simplify(robust_upper - robust_lower) - 2 * robust / sp.Abs(vareps))
+    assert_zero(sp.simplify(nonempty_upper - nonempty_lower) - 2 * nonempty / sp.Abs(vareps))
 
     print("\nTwo-observable static strip:")
     print("Xi1 =", Xi1_pretty)

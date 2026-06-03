@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
-# Date: 2026-05-11T12:51:55-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 === Stage 234 SymPy audit: direct branch-observable static gate and the two-observable kill test ===
 
 Exact finite quotient chart:
@@ -41,5 +33,3 @@ Pure dressing drift:  (R1, E1) = (0, -xi*(1 - eps_eta_star)/eps_eta_star)
 Balanced minimal norm: (R1, E1) = (-xi/(eps_eta_star**2/(1 - eps_eta_star)**2 + 1), -eps_eta_star*xi/((1 - eps_eta_star)*(eps_eta_star**2/(1 - eps_eta_star)**2 + 1)))
 
 All Stage 234 symbolic checks passed.
-
-EXIT_CODE: 0

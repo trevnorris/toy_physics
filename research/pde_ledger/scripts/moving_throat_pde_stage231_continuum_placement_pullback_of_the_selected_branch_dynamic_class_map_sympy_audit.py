@@ -177,6 +177,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # 4. Carry the Stage 230 sign-flip and denominator thresholds
     # ------------------------------------------------------------------
+    # Carried from Stage 230 selected-branch sign-flip data: s_minus_den/s_minus_num in scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py.
     s_minus_den = sp.Rational("0.411024574532864")
     s_minus_num = sp.Rational("-0.334368725711457")
     R_star = sp.simplify(s_minus_den / (-s_minus_num))
@@ -267,6 +268,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     # 7. Static-first theorem survives the pullback
     # ------------------------------------------------------------------
+    # Carried from upstream Stage 247 in the old notes numbering (canonical Stage 230): dynamic infima/static budgets in scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py.
     B_dyn_both_inf = 0.967282389363822
     B_dyn_nonempty_inf = 0.990581810705233
     B_stat_both = 0.367930328492646
@@ -276,6 +278,12 @@ def main() -> None:
         raise AssertionError("Expected pulled-back robust dynamic ceiling to exceed static robust budget.")
     if not B_dyn_nonempty_inf > B_stat_nonempty:
         raise AssertionError("Expected pulled-back nonempty dynamic ceiling to exceed static nonempty budget.")
+
+    for xi_val, delta_val in probe_grid:
+        R_phys_sample = R_num(xi_val, delta_val)
+        R_onset_sample = R_num(0.0, delta_val)
+        if not (0 <= R_phys_sample <= R_onset_sample):
+            raise AssertionError("Expected sampled physical classifier to lie in [0, R_ND(0, delta)].")
 
     print("\nStatic-first theorem after pullback:")
     print(f"inf B_dyn^(both)     = {B_dyn_both_inf:.15f} > B_stat^(both)     = {B_stat_both:.15f}")

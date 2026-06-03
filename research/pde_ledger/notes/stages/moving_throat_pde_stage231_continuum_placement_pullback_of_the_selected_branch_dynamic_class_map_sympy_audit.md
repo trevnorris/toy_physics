@@ -95,7 +95,7 @@ Their exact monotonicities are
 \[
 \partial_\xi F
 =
-\frac{(9\delta+11\xi)^3\bigl(81\delta^3+240\delta^2\xi+72\delta^2+297\delta\xi^2+189\xi^3\bigr)}
+\frac{(9\delta+11\xi)^3\bigl(81\delta^3+189\delta^2\xi+72\delta^2+297\delta\xi^2+121\xi^3\bigr)}
 {81(1-\xi)^2(9\delta^2+18\delta\xi+11\xi^2)^3}
 >0,
 \]

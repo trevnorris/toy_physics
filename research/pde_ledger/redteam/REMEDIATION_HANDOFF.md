@@ -3,14 +3,14 @@
 > Resume doc. Read this + the files it points to, then continue. Written before a
 > planned compaction so a fresh context picks up exactly here.
 
-> **STATUS (2026-06-02): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 230.**
+> **STATUS (2026-06-03): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 242.**
 > All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
 > **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
 > (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
 > **RETRO-SWEEP {121, 122, 123} DONE — 3/3 dual-engine `.wl` verified (2026-06-01; batch `redteam/batches/batch_retro_v2.md`).**
 > **VI.1 = {201–218} DONE — 18/18 verified (2026-06-02; batch `redteam/batches/batch_VI1_v2.md`; checkpoints 203 & 218 both cleared the higher bar; 16 new independent `.wl` + 218 re-authored + 203 strengthened; 5 paper_misalignment user-resolved; `material_change: false` on all 18).**
 > **VII.1 = {219–230} DONE + COMMITTED — 12/12 verified (2026-06-02; this commit, see git log; batch `redteam/batches/batch_VII1_v2.md`; checkpoint 221 cleared the higher bar [existing `.wl` re-authored from a transliteration to an independent route]; 11 new independent `.wl` + 221 re-authored = 12 independent, 0 sanctioned mirrors; 7 notes-only paper_misalignment user-resolved [5 numerical typos, each CROSS-ENGINE-CORROBORATED by the new `.wl`, + 2 renumbers], published cards/appendices UNAFFECTED; 6 script-side de-taut/insufficient/hardcoded fixes; `material_change: false` on all 12; all 12 codex iter-1 exit 0, 0 stop-cold, 0 blocked, 0 iter-2; residuals → PAPER_CLEANUP P4-53).**
-> Cumulative **230/253 verified (90.9%)**.
+> Cumulative **242/253 verified (95.7%)** — VII.2 {231–242} closed + COMMITTED 2026-06-03 (this commit, see git log).
 >
 > **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
 > a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
@@ -57,8 +57,24 @@
 >    221/227 stale `.wl` banner/tag labels → PAPER_CLEANUP **P4-53** (+ memory `numbering-drift-root-cause`). The VI.1
 >    `.wl`-naming bug did NOT recur (pre-invoke grep guard worked, 0/12). 230's codex log captured
 >    empty once (logging anomaly, not a stall — artifacts + Applied blocks + verify all confirmed).
-> 4. **VII.2 = {231–242}** — NEXT forward batch (12 stages). Then VIII.1 {243–253} (11) = **23 stages
->    to reach 253**. Same forward first-pass loop under the v2
+> 4. ✅ **VII.2 = {231–242} DONE — 12/12 verified 2026-06-03** (batch `batch_VII2_v2.md`; `material_change: false`
+>    on all 12; 0 stop-cold; 12 independent `.wl` = 10 NEW + 2 RE-AUTHORED checkpoints [239 & 242 BOTH cleared
+>    the higher bar — both were transliterations]; 0 sanctioned mirrors; 6+ script-side de-taut/insufficient fixes;
+>    3 notes-only paper_misalignment USER-RESOLVED [231 dF/dξ coeffs 240→189 & 189→121; 232 figure-of-merit
+>    prefactor 168→100 (recurs the stage-148 stale "168"); 241 varrho_WΛ bound 193/369→125/369 — ALL corrected-to-
+>    script, each CROSS-ENGINE-CORROBORATED by the new `.wl`, published cards/appendices UNAFFECTED]; **1 iter-2 =
+>    stage 238**: F1[support-blindness] + F4[its `.wl`] correctly BLOCKED on iter-1 (notes define `M_tr` but give NO
+>    pre-reduction observable form where it cancels → Codex refused to fabricate) → orchestrator REFRAMED to
+>    negative-control + leak-detector + exclusion [Claude math-coverage resolution, NON-conceptual, no paper edit]
+>    → Codex iter-2 applied → verified. Dominant defect theme = the **variable-independence self-test trap**
+>    [237-F2/238-F1/240-F1: differentiating w.r.t. an absent variable; fixed via a live-channel negative control or
+>    extract-from-the-variable-bearing-object]. In-file single-file stale-label fixes rode the loop: 233 `.wl`
+>    comments, 239 `.wl` banner STAGE 222→239 + Stage221→238, 242 `.wl` banner STAGE 225→242. Residual notes-TITLE
+>    drift [232 "Stage 249", 234 "251", 235 "251/252/253", 236 "253" — known EM-extension renumber] → PAPER_CLEANUP
+>    (post-253 stem-keyed pass, NEVER offset-sweep, per memory `numbering-drift-root-cause`). The `.wl`-naming grep
+>    guard held 0/12. **COMMITTED 2026-06-03 (this commit, see git log).**
+> 5. **VIII.1 = {243–253}** — NEXT + FINAL forward batch (11 stages) → reaches stage **253 = first pass complete**.
+>    Same forward first-pass loop under the v2
 >    paper-grounded prompt WITH the dual-engine rule: audit agents flag `missing_mathematica` (auditor
 >    line 118) on every SymPy-only-but-dual-engine-capable stage; Codex writes BOTH `.py` fixes AND new
 >    `.wl`; Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).

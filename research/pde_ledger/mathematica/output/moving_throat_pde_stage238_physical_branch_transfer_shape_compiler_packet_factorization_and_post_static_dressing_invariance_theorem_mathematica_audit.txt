@@ -1,0 +1,74 @@
+Stage 238 Mathematica audit
+M1 coherent transfer-shape identity residual = 0
+[ok] M1 coherent transfer-shape identity
+M2 support channel derivative in zeta residual = 0
+[ok] M2 support channel derivative in zeta
+M2 negative control zeta live witness = -(((-1 + eps)*Mmix)/(-1 + eps*zeta)^2)
+[ok] M2 negative control zeta live
+M2 negative control Mmix live witness = (1 + zeta - 2*eps*zeta)/(1 - eps*zeta)
+[ok] M2 negative control Mmix live
+M2 leak detector catches Rtr support contamination witness = -(((1 + chi0 + deltaU)*(-1 + eps))/((1 + chi0)*(1 + deltaU)*(-1 + eps*zeta)^2))
+[ok] M2 leak detector catches Rtr support contamination
+M2 structural exclusion R_tr support-free = True
+[ok] M2 structural exclusion R_tr
+M2 structural exclusion T^2 support-free = True
+[ok] M2 structural exclusion T^2
+M2 structural exclusion eps_eta support-free = True
+[ok] M2 structural exclusion eps_eta
+M2 structural exclusion q_tr support-free = True
+[ok] M2 structural exclusion q_tr
+M2 structural exclusion q_nt support-free = True
+[ok] M2 structural exclusion q_nt
+M2 structural exclusion q_eta support-free = True
+[ok] M2 structural exclusion q_eta
+M2 support-blind R_tr zeta derivative residual = 0
+[ok] M2 support-blind R_tr zeta derivative
+M2 support-blind T^2 zeta derivative residual = 0
+[ok] M2 support-blind T^2 zeta derivative
+M2 support-blind eps_eta zeta derivative residual = 0
+[ok] M2 support-blind eps_eta zeta derivative
+M2 support-blind q_tr zeta derivative residual = 0
+[ok] M2 support-blind q_tr zeta derivative
+M2 support-blind q_nt zeta derivative residual = 0
+[ok] M2 support-blind q_nt zeta derivative
+M2 support-blind q_eta zeta derivative residual = 0
+[ok] M2 support-blind q_eta zeta derivative
+M2 support-blind R_tr Mmix derivative residual = 0
+[ok] M2 support-blind R_tr Mmix derivative
+M2 support-blind T^2 Mmix derivative residual = 0
+[ok] M2 support-blind T^2 Mmix derivative
+M2 support-blind eps_eta Mmix derivative residual = 0
+[ok] M2 support-blind eps_eta Mmix derivative
+M2 support-blind q_tr Mmix derivative residual = 0
+[ok] M2 support-blind q_tr Mmix derivative
+M2 support-blind q_nt Mmix derivative residual = 0
+[ok] M2 support-blind q_nt Mmix derivative
+M2 support-blind q_eta Mmix derivative residual = 0
+[ok] M2 support-blind q_eta Mmix derivative
+M3 finite packet log factorization residual = 0
+[ok] M3 finite packet log factorization
+M3 rigid-mouth q_nt transfer-shape reduction residual = 0
+[ok] M3 rigid-mouth q_nt transfer-shape reduction
+M3 rigid-mouth q_eta dressing reduction residual = 0
+[ok] M3 rigid-mouth q_eta dressing reduction
+M4 first-order delta ln R_tr compiler residual = 0
+[ok] M4 first-order delta ln R_tr compiler
+M4 first-order delta ln T^2 compiler residual = 0
+[ok] M4 first-order delta ln T^2 compiler
+M4 first-order delta ln R_target compiler residual = 0
+[ok] M4 first-order delta ln R_target compiler
+M5 first-order packet relation residual = 0
+[ok] M5 first-order packet relation
+M5 rigid first-order q_nt transfer-shape reduction residual = 0
+[ok] M5 rigid first-order q_nt transfer-shape reduction
+M5 rigid first-order q_eta dressing compiler residual = 0
+[ok] M5 rigid first-order q_eta dressing compiler
+M6 tracking gate factorization from derived drift residual = 0
+[ok] M6 tracking gate factorization from derived drift
+M6 tracking gate locus kills derived drift residual = 0
+[ok] M6 tracking gate locus kills derived drift
+M7 finite transfer-shape gate residual = 0
+[ok] M7 finite transfer-shape gate
+M7 finite dressing gate residual = 0
+[ok] M7 finite dressing gate
+All Stage 238 Mathematica checks passed.

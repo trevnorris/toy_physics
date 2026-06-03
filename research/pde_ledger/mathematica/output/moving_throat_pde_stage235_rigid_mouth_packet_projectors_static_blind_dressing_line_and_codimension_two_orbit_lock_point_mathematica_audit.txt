@@ -1,0 +1,106 @@
+
+========================================================================================
+Stage 235 Mathematica audit: rigid-mouth packet projectors and orbit lock
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Involutive rigid-mouth compiler
+----------------------------------------------------------------------------------------
+M1 M_rm.{R1,E1} - {Xi1,E1} residual = {0, 0}
+PASS: M1 M_rm.{R1,E1} - {Xi1,E1}
+M1 explicit vector target residual = {0, 0}
+PASS: M1 explicit vector target
+M1 MatrixPower[M_rm,2] - I residual = {{0, 0}, {0, 0}}
+PASS: M1 MatrixPower[M_rm,2] - I
+M1 inverse packet map residual = {0, 0}
+PASS: M1 inverse packet map
+M1 Det[M_rm] + 1 residual = 0
+PASS: M1 Det[M_rm] + 1
+M_rm = {{-1, -cEta}, {0, 1}}
+M_rm . {R1,E1} = {-(cEta*E1) - R1, E1}
+M_rm . {q_nt,q_eta} = {-(cEta*qEta) - qNt, qEta}
+
+----------------------------------------------------------------------------------------
+M2. Direct-space projectors from similarity
+----------------------------------------------------------------------------------------
+M2 P_nt closed form residual = {{0, 0}, {0, 0}}
+PASS: M2 P_nt closed form
+M2 P_eta closed form residual = {{0, 0}, {0, 0}}
+PASS: M2 P_eta closed form
+M2 P_nt idempotent residual = {{0, 0}, {0, 0}}
+PASS: M2 P_nt idempotent
+M2 P_eta idempotent residual = {{0, 0}, {0, 0}}
+PASS: M2 P_eta idempotent
+M2 P_nt.P_eta zero residual = {{0, 0}, {0, 0}}
+PASS: M2 P_nt.P_eta zero
+M2 P_eta.P_nt zero residual = {{0, 0}, {0, 0}}
+PASS: M2 P_eta.P_nt zero
+M2 projector sum identity residual = {{0, 0}, {0, 0}}
+PASS: M2 projector sum identity
+P_nt = {{1, cEta}, {0, 0}}
+P_eta = {{0, -cEta}, {0, 1}}
+
+----------------------------------------------------------------------------------------
+M3. Direct-space packet decomposition
+----------------------------------------------------------------------------------------
+M3 P_nt.x_rm closed form residual = {0, 0}
+PASS: M3 P_nt.x_rm closed form
+M3 P_nt.x_rm equals {-Xi1,0} residual = {0, 0}
+PASS: M3 P_nt.x_rm equals {-Xi1,0}
+M3 P_eta.x_rm closed form residual = {0, 0}
+PASS: M3 P_eta.x_rm closed form
+M3 x_rm recomposes residual = {0, 0}
+PASS: M3 x_rm recomposes
+P_nt . x_rm = {cEta*E1 + R1, 0}
+P_eta . x_rm = {-(cEta*E1), E1}
+
+----------------------------------------------------------------------------------------
+M4. Codimension-two orbit lock
+----------------------------------------------------------------------------------------
+M4 Det[M_rm] != 0 = True
+PASS: M4 Det[M_rm] != 0
+M4 q_nt=q_eta=0 implies R1=E1=0 = True
+PASS: M4 q_nt=q_eta=0 implies R1=E1=0
+M4 R1=E1=0 implies q_nt=q_eta=0 residual = {0, 0}
+PASS: M4 R1=E1=0 implies q_nt=q_eta=0
+M4 Solve[{Xi1==0,E1==0}] unique origin = True
+PASS: M4 Solve[{Xi1==0,E1==0}] unique origin
+M4 Solve[{Xi1==0,R1==0}] unique origin = True
+PASS: M4 Solve[{Xi1==0,R1==0}] unique origin
+M4 static strip Xi1==0 has one free direct coordinate = True
+PASS: M4 static strip Xi1==0 has one free direct coordinate
+Solve[q_rm==0] = {{R1 -> 0, E1 -> 0}}
+Solve[Xi1==0,E1==0] = {{R1 -> 0, E1 -> 0}}
+Solve[Xi1==0,R1==0] = {{R1 -> 0, E1 -> 0}}
+
+----------------------------------------------------------------------------------------
+M5. Static-blind dressing line and exact norm
+----------------------------------------------------------------------------------------
+M5 Xi1 on blind line residual = 0
+PASS: M5 Xi1 on blind line
+M5 blind-line norm squared residual = 0
+PASS: M5 blind-line norm squared
+M5 norm with q_eta = L/Sqrt[1+c_eta^2] residual = 0
+PASS: M5 norm with q_eta = L/Sqrt[1+c_eta^2]
+M5 Xi1 remains zero at arbitrary size L residual = 0
+PASS: M5 Xi1 remains zero at arbitrary size L
+x_blind = {-(cEta*qEta), qEta}
+x_blind.x_blind = (1 + cEta^2)*qEta^2
+
+----------------------------------------------------------------------------------------
+M6. Correction compilers
+----------------------------------------------------------------------------------------
+M6 x_q direct compiler residual = {0, 0}
+PASS: M6 x_q direct compiler
+M6 Delta_x_static residual = {0, 0}
+PASS: M6 Delta_x_static
+M6 Delta_x_orbit residual = {0, 0}
+PASS: M6 Delta_x_orbit
+M6 additive static-to-orbit relation residual = {0, 0}
+PASS: M6 additive static-to-orbit relation
+M6 full-lock identity residual = {0, 0}
+PASS: M6 full-lock identity
+Delta_x_static = {qNt, 0}
+Delta_x_orbit = {cEta*qEta + qNt, -qEta}
+
+All Stage 235 Mathematica checks passed.

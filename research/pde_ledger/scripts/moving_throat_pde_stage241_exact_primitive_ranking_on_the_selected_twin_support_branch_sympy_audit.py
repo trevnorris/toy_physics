@@ -58,7 +58,10 @@ def main() -> None:
     eps_sel = sp.simplify(1 - sp.Rational(3, 2) * varrho)
     sigma_sel = sp.simplify(2 * eps_sel / (1 - eps_sel))
 
-    assert_zero(eps_sel - (1 - sp.Rational(3, 2) * varrho), "eps_* = 1 - 3 varrho / 2")
+    assert_zero(
+        (2 * (1 - eps_star) / 3 - varrho).subs(eps_star, eps_sel),
+        "eps_* = 1 - 3 varrho / 2 solves Stage-240 support law",
+    )
     assert_zero(sigma_sel - (4 / (3 * varrho) - 2), "sigma = 4/(3 varrho) - 2")
 
     # ------------------------------------------------------------------

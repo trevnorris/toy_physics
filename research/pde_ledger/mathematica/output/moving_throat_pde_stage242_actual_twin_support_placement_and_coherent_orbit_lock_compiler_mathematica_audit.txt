@@ -1,109 +1,89 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_mathematica_audit.wl
-# Date: 2026-05-11T13:26:40-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 225 — ACTUAL TWIN-SUPPORT PLACEMENT AND COHERENT ORBIT-LOCK COMPILER
+STAGE 242 — ACTUAL TWIN-SUPPORT PLACEMENT AND COHERENT ORBIT-LOCK COMPILER
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-I. Actual selected-twin placement
+M1-M2. Placement coordinate and sigma consistency
 ----------------------------------------------------------------------------------------
-selected-branch coordinate varrhoPhys = 0
-PASS: selected-branch coordinate varrhoPhys
-selected-branch sigmaPhys = 0
-PASS: selected-branch sigmaPhys
+M1 selected coordinate rho = 0
+PASS: M1 selected coordinate rho
+M2 sigma from placement epsilon = 0
+PASS: M2 sigma from placement epsilon
+M2 independent sigma-rho consistency = 0
+PASS: M2 independent sigma-rho consistency
 
 ----------------------------------------------------------------------------------------
-II. Threshold rewrite and selected-branch twin-window inclusion
+M3. Threshold rewrites and strict selected window
 ----------------------------------------------------------------------------------------
-epsilon_WLambda rewrite = 0
-PASS: epsilon_WLambda rewrite
-epsilon_ULambda rewrite = 0
-PASS: epsilon_ULambda rewrite
-selected branch lies above mixed-only bound = 0
-PASS: selected branch lies above mixed-only bound
-selected branch lies below non-twin bound = 0
-PASS: selected branch lies below non-twin bound
+M3 epsilon_WLambda threshold rewrite = 0
+PASS: M3 epsilon_WLambda threshold rewrite
+M3 epsilon_ULambda threshold rewrite = 0
+PASS: M3 epsilon_ULambda threshold rewrite
+M3 selected demand ratio = 0
+PASS: M3 selected demand ratio
+M3 strict twin-window inclusion by Resolve = True
+PASS: M3 strict twin-window inclusion by Resolve
 
 ----------------------------------------------------------------------------------------
-III. Reduced-state bridge and direct coherent observables
+M4-M5. Reduced bridge and support-blind closed packet
 ----------------------------------------------------------------------------------------
-reduced-state bridge for R_target = 0
-PASS: reduced-state bridge for R_target
-zeta-absence of epsilon in the coherent placement map = 0
-PASS: zeta-absence of epsilon in the coherent placement map
-zeta-absence of R_tr in the coherent placement map = 0
-PASS: zeta-absence of R_tr in the coherent placement map
-zeta-absence of R_target in the coherent placement map = 0
-PASS: zeta-absence of R_target in the coherent placement map
-
-----------------------------------------------------------------------------------------
-IV. Finite orbit packet and support-blind propagation
-----------------------------------------------------------------------------------------
-support-blind direct observables propagate to q_tr = 0
-PASS: support-blind direct observables propagate to q_tr
-support-blind direct observables propagate to q_nt = 0
-PASS: support-blind direct observables propagate to q_nt
-support-blind direct observables propagate to q_eta = 0
-PASS: support-blind direct observables propagate to q_eta
-finite q_eta matches the direct observable chart = 0
-PASS: finite q_eta matches the direct observable chart
-
-----------------------------------------------------------------------------------------
-V. Infinitesimal coherent packet and direct observable compiler
-----------------------------------------------------------------------------------------
-dln epsilon compiler = 0
-PASS: dln epsilon compiler
-dln R_tr compiler = 0
-PASS: dln R_tr compiler
-dln R_target compiler = 0
-PASS: dln R_target compiler
-Theta_1 direct-observable identity = 0
-PASS: Theta_1 direct-observable identity
-Xi_1 direct-observable identity = 0
-PASS: Xi_1 direct-observable identity
-R_1 direct-observable identity = 0
-PASS: R_1 direct-observable identity
-direct-observable orbit packet compiler =
+M4 reduced-state bridge for target observable = 0
+PASS: M4 reduced-state bridge for target observable
+M5 zeta derivative of epsilon = 0
+PASS: M5 zeta derivative of epsilon
+M5 zeta derivative of throat ratio = 0
+PASS: M5 zeta derivative of throat ratio
+M5 zeta derivative of target ratio = 0
+PASS: M5 zeta derivative of target ratio
+M5 closed-form q-packet zeta derivatives =
 MatrixForm[{{0, 0, 0}}]
-PASS: direct-observable orbit packet compiler
-orbit packet compiler determinant = 0
-PASS: orbit packet compiler determinant
-inverse direct-observable orbit packet compiler =
-MatrixForm[{{0, 0, 0}}]
-PASS: inverse direct-observable orbit packet compiler
-formal orbit packet recovers the direct drifts =
-MatrixForm[{{0, 0, 0}}]
-PASS: formal orbit packet recovers the direct drifts
-zero orbit packet forces zero direct drifts =
-MatrixForm[{{0, 0, 0}}]
-PASS: zero orbit packet forces zero direct drifts
+PASS: M5 closed-form q-packet zeta derivatives
 
 ----------------------------------------------------------------------------------------
-VI. Exact two-packet split
+M6. Total logarithmic differentials and orbit compiler
 ----------------------------------------------------------------------------------------
-mixed-only product law = 0
-PASS: mixed-only product law
-support-packet sensitivity = 0
-PASS: support-packet sensitivity
+M6 dln epsilon by total log differential = 0
+PASS: M6 dln epsilon by total log differential
+M6 dln R_tr by total log differential = 0
+PASS: M6 dln R_tr by total log differential
+M6 dln R_target by total log differential = 0
+PASS: M6 dln R_target by total log differential
+M6 Theta_1 packet form equals dln R_tr = 0
+PASS: M6 Theta_1 packet form equals dln R_tr
+M6 Xi_1 definition = 0
+PASS: M6 Xi_1 definition
+M6 R_1 definition = 0
+PASS: M6 R_1 definition
+M6 orbit compiler maps direct packet =
+MatrixForm[{{0, 0, 0}}]
+PASS: M6 orbit compiler maps direct packet
+M6 orbit compiler determinant = 0
+PASS: M6 orbit compiler determinant
+M6 LinearSolve recovers direct packet =
+MatrixForm[{{0, 0, 0}}]
+PASS: M6 LinearSolve recovers direct packet
+M6 formal inverse map =
+MatrixForm[{{0, 0, 0}}]
+PASS: M6 formal inverse map
 
 ----------------------------------------------------------------------------------------
-VII. Probe-only rational sample point
+M7. Two-packet split
+----------------------------------------------------------------------------------------
+M7 target times mixed packet equals C_mix = 0
+PASS: M7 target times mixed packet equals C_mix
+M7 support-packet zeta derivative = 0
+PASS: M7 support-packet zeta derivative
+
+----------------------------------------------------------------------------------------
+Probe-only rational sample point
 ----------------------------------------------------------------------------------------
 epsilon = 17/55
-varrhoPhys = 76/165
-sigmaPhys = 17/19
-Rtr = 19/25
-Rtarget = 2749376/54071875
-Mmix = 89375/(1292*Pi^2)
-Mtr = 89375/(646*Pi^2)
+rhoSelected = 76/165
+sigmaFromRho = 17/19
+trailObservable = 19/25
+targetObservable = 2749376/54071875
+mixedPacket = 89375/(1292*Pi^2)
+throatPacket = 89375/(646*Pi^2)
 
 All Stage 242 symbolic checks passed.
-
-EXIT_CODE: 0

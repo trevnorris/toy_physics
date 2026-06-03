@@ -8195,8 +8195,8 @@ stages:
     stage: 231
     stage_str: '231'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8207,23 +8207,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780458714
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_mathematica_audit.wl
+        exists: true
+        mtime: 1780458700
       sympy_output:
         path: scripts/output/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.txt
         exists: true
-        mtime: 1778525513
+        mtime: 1780459295
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_mathematica_audit.txt
+        exists: true
+        mtime: 1780459295
+    last_status_change: 2026-06-02 22:07:57-06:00
+    codex_session: 019e8b98-5801-7103-a749-0c2897e6f92f
+    codex_log_paths:
+    - redteam/codex_logs/231_iter1.txt
+    last_codex_run: 2026-06-02 21:53:39-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:00:03-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:01:01-06:00
   '232':
     stage: 232
     stage_str: '232'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8236,21 +8248,33 @@ stages:
         exists: true
         mtime: 1778522211
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_mathematica_audit.wl
+        exists: true
+        mtime: 1780458813
       sympy_output:
         path: scripts/output/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.txt
         exists: true
-        mtime: 1778525514
+        mtime: 1780459307
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_mathematica_audit.txt
+        exists: true
+        mtime: 1780459307
+    last_status_change: 2026-06-02 22:08:00-06:00
+    codex_session: 019e8b98-58ee-7843-95d5-b74793649a7b
+    codex_log_paths:
+    - redteam/codex_logs/232_iter1.txt
+    last_codex_run: 2026-06-02 21:55:08-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:00:07-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:01:19-06:00
   '233':
     stage: 233
     stage_str: '233'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8261,23 +8285,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780459706
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_mathematica_audit.wl
+        exists: true
+        mtime: 1780459588
       sympy_output:
         path: scripts/output/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.txt
         exists: true
-        mtime: 1778525514
+        mtime: 1780459824
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_mathematica_audit.txt
+        exists: true
+        mtime: 1780459824
+    last_status_change: 2026-06-02 22:15:35-06:00
+    codex_session: 019e8ba6-210a-7b93-840e-09a5b1ffb64c
+    codex_log_paths:
+    - redteam/codex_logs/233_iter1.txt
+    last_codex_run: 2026-06-02 22:08:57-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:09:36-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:10:12-06:00
   '234':
     stage: 234
     stage_str: '234'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8288,23 +8324,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
         exists: true
-        mtime: 1778522211
+        mtime: 1780459542
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_mathematica_audit.wl
+        exists: true
+        mtime: 1780459642
       sympy_output:
         path: scripts/output/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.txt
         exists: true
-        mtime: 1778525515
+        mtime: 1780459848
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_mathematica_audit.txt
+        exists: true
+        mtime: 1780459848
+    last_status_change: 2026-06-02 22:15:42-06:00
+    codex_session: 019e8ba6-24fa-7571-b7c0-ea2b01e31bbc
+    codex_log_paths:
+    - redteam/codex_logs/234_iter1.txt
+    last_codex_run: 2026-06-02 22:07:52-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:09:40-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:10:35-06:00
   '235':
     stage: 235
     stage_str: '235'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8317,21 +8365,33 @@ stages:
         exists: true
         mtime: 1778522211
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_mathematica_audit.wl
+        exists: true
+        mtime: 1780460064
       sympy_output:
         path: scripts/output/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.txt
         exists: true
-        mtime: 1778525515
+        mtime: 1780460208
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_mathematica_audit.txt
+        exists: true
+        mtime: 1780460208
+    last_status_change: 2026-06-02 22:21:45-06:00
+    codex_session: 019e8bad-d430-7b72-b399-6d6da4885075
+    codex_log_paths:
+    - redteam/codex_logs/235_iter1.txt
+    last_codex_run: 2026-06-02 22:14:46-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:16:09-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:16:37-06:00
   '236':
     stage: 236
     stage_str: '236'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8344,21 +8404,33 @@ stages:
         exists: true
         mtime: 1778522211
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_mathematica_audit.wl
+        exists: true
+        mtime: 1780460063
       sympy_output:
         path: scripts/output/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.txt
         exists: true
-        mtime: 1778525516
+        mtime: 1780460233
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_mathematica_audit.txt
+        exists: true
+        mtime: 1780460233
+    last_status_change: 2026-06-02 22:21:49-06:00
+    codex_session: 019e8bad-d8c8-7563-900c-c7f20aed480a
+    codex_log_paths:
+    - redteam/codex_logs/236_iter1.txt
+    last_codex_run: 2026-06-02 22:15:39-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:16:13-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:16:58-06:00
   '237':
     stage: 237
     stage_str: '237'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8369,23 +8441,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522212
+        mtime: 1780460555
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780460661
       sympy_output:
         path: scripts/output/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.txt
         exists: true
-        mtime: 1778525517
+        mtime: 1780496198
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_mathematica_audit.txt
+        exists: true
+        mtime: 1780496198
+    last_status_change: 2026-06-03 08:24:48-06:00
+    codex_session: 019e8bb3-9de2-79f0-a1a5-5d6d47999c9a
+    codex_log_paths:
+    - redteam/codex_logs/237_iter1.txt
+    last_codex_run: 2026-06-02 22:26:09-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-02 22:31:19-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-02 22:44:42-06:00
   '238':
     stage: 238
     stage_str: '238'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 2
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8396,23 +8480,36 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.py
         exists: true
-        mtime: 1778522333
+        mtime: 1780496558
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_mathematica_audit.wl
+        exists: true
+        mtime: 1780496686
       sympy_output:
         path: scripts/output/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.txt
         exists: true
-        mtime: 1778525519
+        mtime: 1780497075
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_mathematica_audit.txt
+        exists: true
+        mtime: 1780497075
+    last_status_change: 2026-06-03 08:35:34-06:00
+    codex_session: 019e8bb3-a358-7d61-b134-82b91c2a7a92
+    codex_log_paths:
+    - redteam/codex_logs/238_iter1.txt
+    - redteam/codex_logs/238_iter2.txt
+    last_codex_run: 2026-06-03 08:26:06-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-03 08:28:58-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-03 08:30:05-06:00
   '239':
     stage: 239
     stage_str: '239'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -8427,21 +8524,31 @@ stages:
       mathematica:
         path: mathematica/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_mathematica_audit.wl
         exists: true
-        mtime: 1778522333
+        mtime: 1780497370
       sympy_output:
         path: scripts/output/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.txt
         exists: true
-        mtime: 1778525519
+        mtime: 1780497728
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_mathematica_audit.txt
         exists: true
-        mtime: 1778527583
+        mtime: 1780497728
+    last_status_change: 2026-06-03 08:46:26-06:00
+    codex_session: 019e8de6-4c97-7a30-9d16-6741dde48b18
+    codex_log_paths:
+    - redteam/codex_logs/239_iter1.txt
+    last_codex_run: 2026-06-03 08:39:13-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-03 08:39:49-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-03 08:41:53-06:00
   '240':
     stage: 240
     stage_str: '240'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8452,23 +8559,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
         exists: true
-        mtime: 1778522332
+        mtime: 1780497341
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_mathematica_audit.wl
+        exists: true
+        mtime: 1780497392
       sympy_output:
         path: scripts/output/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.txt
         exists: true
-        mtime: 1778525520
+        mtime: 1780497758
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_mathematica_audit.txt
+        exists: true
+        mtime: 1780497758
+    last_status_change: 2026-06-03 08:46:36-06:00
+    codex_session: 019e8de6-4fbb-7a51-857e-6bbaec1a764a
+    codex_log_paths:
+    - redteam/codex_logs/240_iter1.txt
+    last_codex_run: 2026-06-03 08:37:15-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-03 08:39:54-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-03 08:42:24-06:00
   '241':
     stage: 241
     stage_str: '241'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -8479,23 +8598,35 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
         exists: true
-        mtime: 1778522333
+        mtime: 1780497976
       mathematica:
-        path: null
-        exists: false
+        path: mathematica/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_mathematica_audit.wl
+        exists: true
+        mtime: 1780497977
       sympy_output:
         path: scripts/output/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.txt
         exists: true
-        mtime: 1778525521
+        mtime: 1780498583
       mathematica_output:
-        path: null
-        exists: false
+        path: mathematica/output/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_mathematica_audit.txt
+        exists: true
+        mtime: 1780498583
+    last_status_change: 2026-06-03 09:01:54-06:00
+    codex_session: 019e8df0-c28a-7dd1-96d0-5cad3874315e
+    codex_log_paths:
+    - redteam/codex_logs/241_iter1.txt
+    last_codex_run: 2026-06-03 08:48:16-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-03 08:54:26-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-03 08:55:38-06:00
   '242':
     stage: 242
     stage_str: '242'
     batch_id: VII.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -8506,19 +8637,29 @@ stages:
       sympy:
         path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
         exists: true
-        mtime: 1778522333
+        mtime: 1780497979
       mathematica:
         path: mathematica/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_mathematica_audit.wl
         exists: true
-        mtime: 1778522333
+        mtime: 1780498108
       sympy_output:
         path: scripts/output/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.txt
         exists: true
-        mtime: 1778525529
+        mtime: 1780498657
       mathematica_output:
         path: mathematica/output/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_mathematica_audit.txt
         exists: true
-        mtime: 1778527600
+        mtime: 1780498657
+    last_status_change: 2026-06-03 09:01:59-06:00
+    codex_session: 019e8df0-c56f-7911-8ff3-5a6777cad5fa
+    codex_log_paths:
+    - redteam/codex_logs/242_iter1.txt
+    last_codex_run: 2026-06-03 08:52:40-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-03 08:54:44-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-03 08:57:04-06:00
   '243':
     stage: 243
     stage_str: '243'

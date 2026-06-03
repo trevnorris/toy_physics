@@ -56,248 +56,268 @@ expectZero[name_String, expr_] := Module[{res},
   ];
 ];
 
-banner["STAGE 225 — ACTUAL TWIN-SUPPORT PLACEMENT AND COHERENT ORBIT-LOCK COMPILER"];
+banner["STAGE 242 — ACTUAL TWIN-SUPPORT PLACEMENT AND COHERENT ORBIT-LOCK COMPILER"];
+
+expectTrue[name_String, statement_] := Module[{res},
+  res = FullSimplify[statement, Assumptions -> $Assumptions];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res], pass[name], fail[name, res]];
+];
 
 Clear[
-  chi0, deltaU, ZW, epsW, epsEta, Lambda, Lambda0, zeta, beta, varrho,
-  Bstar, Cstar,
-  chi0Ref, deltaURef, ZWRef, epsWRef, epsEtaRef, LambdaRef, EStar, FStar,
-  dchi0, ddeltaU, dZW, depsW, depsEta, dLambda, t
+  chi0, deltaU, ZW, epsW, epsEta, Lambda, Lambda0, zeta, beta,
+  chi0Ref, deltaURef, ZWRef, epsWRef, epsEtaRef, LambdaRef,
+  Bstar, Cstar, dchi0, ddeltaU, dZW, depsW, depsEta, dLambda,
+  lambdaWin, epsilonWin, thetaVar, xiVar, rVar
 ];
 
 $Assumptions =
   Element[
     {
-      chi0, deltaU, ZW, epsW, epsEta, Lambda, Lambda0, zeta, beta, varrho,
-      chi0Ref, deltaURef, ZWRef, epsWRef, epsEtaRef, LambdaRef
+      chi0, deltaU, ZW, epsW, epsEta, Lambda, Lambda0, zeta, beta,
+      chi0Ref, deltaURef, ZWRef, epsWRef, epsEtaRef, LambdaRef,
+      Bstar, Cstar, dchi0, ddeltaU, dZW, depsW, depsEta, dLambda,
+      thetaVar, xiVar, rVar
     },
     Reals
   ] &&
-  Element[{Bstar, Cstar}, Reals] &&
-  chi0 > 0 && deltaU > 0 && ZW > 0 && epsW > 0 && epsEta > 0 &&
-  Lambda > 0 && Lambda0 > 0 && beta > 0 && varrho > 0 &&
-  chi0Ref > 0 && deltaURef > 0 && ZWRef > 0 && epsWRef > 0 &&
-  epsEtaRef > 0 && LambdaRef > 0 && Bstar != 0 && Cstar != 0 &&
-  Element[{EStar, FStar, dchi0, ddeltaU, dZW, depsW, depsEta, dLambda, t}, Reals];
+  chi0 > 0 && deltaU > 0 && ZW > 0 && 0 < epsW < 1 &&
+  0 < epsEta < 1 && Lambda > 0 && Lambda0 > 0 && beta > 0 &&
+  chi0Ref > 0 && deltaURef > 0 && ZWRef > 0 && 0 < epsWRef < 1 &&
+  0 < epsEtaRef < 1 && LambdaRef > 0 && Bstar != 0 && Cstar != 0;
 
-subbanner["I. Actual selected-twin placement"];
-
-eps = FullSimplify[epsW (1 - (2/11) deltaU/(1 + deltaU)), Assumptions -> $Assumptions];
-Cmix = FullSimplify[8 Lambda (1 - eps)/Pi^2, Assumptions -> $Assumptions];
-PiTr = (4/3) Cmix;
-varrhoPhys = FullSimplify[Pi^2 PiTr/(16 Lambda), Assumptions -> $Assumptions];
-sigmaPhys = FullSimplify[4/(3 varrhoPhys) - 2, Assumptions -> $Assumptions];
-
-expectZero[
-  "selected-branch coordinate varrhoPhys",
-  varrhoPhys - (2/3) (1 - eps)
-];
-expectZero[
-  "selected-branch sigmaPhys",
-  sigmaPhys - 2 eps/(1 - eps)
+logDrift[expr_, variables_List, driftSymbols_List] := Module[{terms},
+  terms = MapThread[#1 D[Log[expr], #1] #2 &, {variables, driftSymbols}];
+  FullSimplify[Together[Plus @@ terms], Assumptions -> $Assumptions]
 ];
 
-subbanner["II. Threshold rewrite and selected-branch twin-window inclusion"];
+subbanner["M1-M2. Placement coordinate and sigma consistency"];
 
-varrhoWL = FullSimplify[2 (1 + beta^2)/(3 (2 + beta^2)), Assumptions -> $Assumptions];
-varrhoUL = FullSimplify[2 (1 + beta^2)/(3 (1 + beta + beta^2)), Assumptions -> $Assumptions];
-epsWL = FullSimplify[1 - (3/2) varrhoWL, Assumptions -> $Assumptions];
-epsUL = FullSimplify[1 - (3/2) varrhoUL, Assumptions -> $Assumptions];
-
-expectZero["epsilon_WLambda rewrite", epsWL - 1/(2 + beta^2)];
-expectZero["epsilon_ULambda rewrite", epsUL - beta/(1 + beta + beta^2)];
-
-sigmaSel = FullSimplify[4/(3 varrho) - 2, Assumptions -> $Assumptions];
-expectZero[
-  "selected branch lies above mixed-only bound",
-  sigmaSel - (1/varrho - 2) - 1/(3 varrho)
-];
-expectZero[
-  "selected branch lies below non-twin bound",
-  (2/varrho - 2) - sigmaSel - 2/(3 varrho)
-];
-
-subbanner["III. Reduced-state bridge and direct coherent observables"];
-
-ZhatW = FullSimplify[ZW Lambda0/Lambda, Assumptions -> $Assumptions];
-Rtr = FullSimplify[(1 + chi0/(1 + deltaU))/(1 + chi0), Assumptions -> $Assumptions];
-Rtarget = FullSimplify[
-  Lambda (1 - epsEta) (1 - eps)^2/(ZW (1 + chi0)^2),
+epsilonSelected = FullSimplify[
+  epsW (1 - (2/11) deltaU/(1 + deltaU)),
   Assumptions -> $Assumptions
 ];
-RtargetHat = FullSimplify[
-  Lambda0 (1 - epsEta) (1 - eps)^2/(ZhatW (1 + chi0)^2),
+mixedCapacity = FullSimplify[
+  8 Lambda (1 - epsilonSelected)/Pi^2,
+  Assumptions -> $Assumptions
+];
+traceLoad = FullSimplify[(4/3) mixedCapacity, Assumptions -> $Assumptions];
+rhoSelected = FullSimplify[
+  Pi^2 traceLoad/(16 Lambda),
+  Assumptions -> $Assumptions
+];
+sigmaFromRho = FullSimplify[
+  4/(3 rhoSelected) - 2,
+  Assumptions -> $Assumptions
+];
+sigmaFromEpsilon = FullSimplify[
+  2 epsilonSelected/(1 - epsilonSelected),
   Assumptions -> $Assumptions
 ];
 
-expectZero["reduced-state bridge for R_target", Rtarget - RtargetHat];
-expectZero["zeta-absence of epsilon in the coherent placement map", D[eps, zeta]];
-expectZero["zeta-absence of R_tr in the coherent placement map", D[Rtr, zeta]];
-expectZero["zeta-absence of R_target in the coherent placement map", D[Rtarget, zeta]];
+expectZero[
+  "M1 selected coordinate rho",
+  rhoSelected - (2/3) (1 - epsilonSelected)
+];
+expectZero[
+  "M2 sigma from placement epsilon",
+  sigmaFromRho - sigmaFromEpsilon
+];
+expectZero[
+  "M2 independent sigma-rho consistency",
+  sigmaFromEpsilon - (4/(3 rhoSelected) - 2)
+];
 
-subbanner["IV. Finite orbit packet and support-blind propagation"];
+subbanner["M3. Threshold rewrites and strict selected window"];
 
-qtr = (1 + deltaURef) Log[chi0/chi0Ref] + (1 + chi0Ref) Log[deltaU/deltaURef];
-qnt =
-  Log[ZW/ZWRef] - Log[Lambda/LambdaRef] +
-  EStar Log[epsW/epsWRef] - FStar Log[deltaU/deltaURef];
-qeta = Log[epsEta/epsEtaRef];
+rhoWallLambda = FullSimplify[
+  2 (1 + beta^2)/(3 (2 + beta^2)),
+  Assumptions -> $Assumptions
+];
+rhoUnitLambda = FullSimplify[
+  2 (1 + beta^2)/(3 (1 + beta + beta^2)),
+  Assumptions -> $Assumptions
+];
+epsilonFromRho[r_] := FullSimplify[1 - (3/2) r, Assumptions -> $Assumptions];
 
-RtrSb = RtrSbFn[zeta];
-RtargetSb = RtargetSbFn[zeta];
-epsEtaSb = epsEtaSbFn[zeta];
-supportBlindRules = {
-  Derivative[1][RtrSbFn][zeta] -> 0,
-  Derivative[1][RtargetSbFn][zeta] -> 0,
-  Derivative[1][epsEtaSbFn][zeta] -> 0
+expectZero[
+  "M3 epsilon_WLambda threshold rewrite",
+  epsilonFromRho[rhoWallLambda] - 1/(2 + beta^2)
+];
+expectZero[
+  "M3 epsilon_ULambda threshold rewrite",
+  epsilonFromRho[rhoUnitLambda] - beta/(1 + beta + beta^2)
+];
+
+demandRatio = FullSimplify[traceLoad/mixedCapacity, Assumptions -> $Assumptions];
+expectZero["M3 selected demand ratio", demandRatio - 4/3];
+windowCertificate = Resolve[
+  ForAll[
+    {lambdaWin, epsilonWin},
+    Implies[
+      lambdaWin > 0 && 0 < epsilonWin < 1,
+      1 < ((4/3) (8 lambdaWin (1 - epsilonWin)/Pi^2))/
+        (8 lambdaWin (1 - epsilonWin)/Pi^2) < 2
+    ]
+  ],
+  Reals
+];
+expectTrue["M3 strict twin-window inclusion by Resolve", windowCertificate];
+
+subbanner["M4-M5. Reduced bridge and support-blind closed packet"];
+
+rescaledWallCharge = FullSimplify[ZW Lambda0/Lambda, Assumptions -> $Assumptions];
+trailObservable = FullSimplify[
+  (1 + chi0/(1 + deltaU))/(1 + chi0),
+  Assumptions -> $Assumptions
+];
+targetObservable = FullSimplify[
+  Lambda (1 - epsEta) (1 - epsilonSelected)^2/(ZW (1 + chi0)^2),
+  Assumptions -> $Assumptions
+];
+targetWithRescaledCharge = FullSimplify[
+  Lambda0 (1 - epsEta) (1 - epsilonSelected)^2/
+    (rescaledWallCharge (1 + chi0)^2),
+  Assumptions -> $Assumptions
+];
+
+expectZero["M4 reduced-state bridge for target observable", targetObservable - targetWithRescaledCharge];
+expectZero["M5 zeta derivative of epsilon", D[epsilonSelected, zeta]];
+expectZero["M5 zeta derivative of throat ratio", D[trailObservable, zeta]];
+expectZero["M5 zeta derivative of target ratio", D[targetObservable, zeta]];
+
+epsilonRef = FullSimplify[
+  epsWRef (1 - (2/11) deltaURef/(1 + deltaURef)),
+  Assumptions -> $Assumptions
+];
+trailRef = FullSimplify[
+  (1 + chi0Ref/(1 + deltaURef))/(1 + chi0Ref),
+  Assumptions -> $Assumptions
+];
+targetRef = FullSimplify[
+  LambdaRef (1 - epsEtaRef) (1 - epsilonRef)^2/
+    (ZWRef (1 + chi0Ref)^2),
+  Assumptions -> $Assumptions
+];
+closedObservablePacket = {
+  -Cstar Log[trailObservable/trailRef],
+  Bstar Log[trailObservable/trailRef] +
+    Log[(1 - epsEta)/(1 - epsEtaRef)] -
+    Log[targetObservable/targetRef],
+  Log[epsEta/epsEtaRef]
 };
-
-qtrFromObservables = -Cstar Log[RtrSb/Rtr];
-qntFromObservables =
-  Bstar Log[RtrSb/Rtr] +
-  Log[(1 - epsEtaSb)/(1 - epsEtaRef)] -
-  Log[RtargetSb/Rtarget];
-qetaFromObservables = Log[epsEtaSb/epsEtaRef];
-
 expectZero[
-  "support-blind direct observables propagate to q_tr",
-  D[qtrFromObservables, zeta] /. supportBlindRules
-];
-expectZero[
-  "support-blind direct observables propagate to q_nt",
-  D[qntFromObservables, zeta] /. supportBlindRules
-];
-expectZero[
-  "support-blind direct observables propagate to q_eta",
-  D[qetaFromObservables, zeta] /. supportBlindRules
-];
-expectZero[
-  "finite q_eta matches the direct observable chart",
-  (qetaFromObservables /. epsEtaSb -> epsEta) - qeta
+  "M5 closed-form q-packet zeta derivatives",
+  D[closedObservablePacket, zeta]
 ];
 
-subbanner["V. Infinitesimal coherent packet and direct observable compiler"];
+subbanner["M6. Total logarithmic differentials and orbit compiler"];
 
-chi0T = chi0 Exp[t dchi0];
-deltaUT = deltaU Exp[t ddeltaU];
-ZWT = ZW Exp[t dZW];
-epsWT = epsW Exp[t depsW];
-epsEtaT = epsEta Exp[t depsEta];
-LambdaT = Lambda Exp[t dLambda];
-
-epsT = FullSimplify[
-  epsWT (1 - (2/11) deltaUT/(1 + deltaUT)),
-  Assumptions -> $Assumptions
+epsilonLogDrift = logDrift[
+  epsilonSelected,
+  {epsW, deltaU},
+  {depsW, ddeltaU}
 ];
-dlnEps = FullSimplify[D[Log[epsT], t] /. t -> 0, Assumptions -> $Assumptions];
-dlnEpsFormula = FullSimplify[
+epsilonLogFormula = FullSimplify[
   depsW - (2 deltaU/((1 + deltaU) (11 + 9 deltaU))) ddeltaU,
   Assumptions -> $Assumptions
 ];
-expectZero["dln epsilon compiler", dlnEps - dlnEpsFormula];
+expectZero["M6 dln epsilon by total log differential", epsilonLogDrift - epsilonLogFormula];
 
-RtrT = FullSimplify[
-  (1 + chi0T/(1 + deltaUT))/(1 + chi0T),
-  Assumptions -> $Assumptions
+trailLogDrift = logDrift[
+  trailObservable,
+  {chi0, deltaU},
+  {dchi0, ddeltaU}
 ];
-dlnRtr = FullSimplify[D[Log[RtrT], t] /. t -> 0, Assumptions -> $Assumptions];
-dlnRtrFormula = FullSimplify[
+trailLogFormula = FullSimplify[
   -(
     chi0 deltaU/((1 + chi0) (1 + deltaU) (1 + chi0 + deltaU))
   ) ((1 + deltaU) dchi0 + (1 + chi0) ddeltaU),
   Assumptions -> $Assumptions
 ];
-expectZero["dln R_tr compiler", dlnRtr - dlnRtrFormula];
+expectZero["M6 dln R_tr by total log differential", trailLogDrift - trailLogFormula];
 
-RtargetT = FullSimplify[
-  LambdaT (1 - epsEtaT) (1 - epsT)^2/(ZWT (1 + chi0T)^2),
-  Assumptions -> $Assumptions
+targetLogDrift = logDrift[
+  targetObservable,
+  {Lambda, ZW, epsEta, chi0, epsW, deltaU},
+  {dLambda, dZW, depsEta, dchi0, depsW, ddeltaU}
 ];
-dlnRtarget = FullSimplify[
-  D[Log[RtargetT], t] /. t -> 0,
-  Assumptions -> $Assumptions
-];
-dlnRtargetFormula = FullSimplify[
+targetLogFormula = FullSimplify[
   dLambda - dZW - 2 chi0/(1 + chi0) dchi0 -
-  epsEta/(1 - epsEta) depsEta - 2 eps/(1 - eps) dlnEps,
+    epsEta/(1 - epsEta) depsEta -
+    2 epsilonSelected/(1 - epsilonSelected) epsilonLogDrift,
   Assumptions -> $Assumptions
 ];
-expectZero["dln R_target compiler", dlnRtarget - dlnRtargetFormula];
+expectZero["M6 dln R_target by total log differential", targetLogDrift - targetLogFormula];
 
-Xi1 = FullSimplify[
-  -dlnRtarget - epsEta/(1 - epsEta) depsEta,
+trailSigma = (1 + deltaU) dchi0 + (1 + chi0) ddeltaU;
+trailCoefficient = FullSimplify[
+  chi0 deltaU/((1 + chi0) (1 + deltaU) (1 + chi0 + deltaU)),
   Assumptions -> $Assumptions
 ];
-Xi1Formula = FullSimplify[
-  -dLambda + dZW + 2 chi0/(1 + chi0) dchi0 + 2 eps/(1 - eps) dlnEps,
-  Assumptions -> $Assumptions
-];
-Theta1 = dlnRtr;
-R1 = FullSimplify[
-  -Xi1 - epsEta/(1 - epsEta) depsEta,
-  Assumptions -> $Assumptions
-];
+thetaFromPacket = FullSimplify[-trailCoefficient trailSigma, Assumptions -> $Assumptions];
 cEta = FullSimplify[epsEta/(1 - epsEta), Assumptions -> $Assumptions];
+xiFromDefinition = FullSimplify[-targetLogDrift - cEta depsEta, Assumptions -> $Assumptions];
+xiFormula = FullSimplify[
+  -dLambda + dZW + 2 chi0/(1 + chi0) dchi0 +
+    2 epsilonSelected/(1 - epsilonSelected) epsilonLogDrift,
+  Assumptions -> $Assumptions
+];
+rFromDefinition = FullSimplify[-xiFromDefinition - cEta depsEta, Assumptions -> $Assumptions];
 
-expectZero["Theta_1 direct-observable identity", Theta1 - dlnRtr];
-expectZero["Xi_1 direct-observable identity", Xi1 - Xi1Formula];
-expectZero["R_1 direct-observable identity", R1 - dlnRtarget];
+expectZero["M6 Theta_1 packet form equals dln R_tr", thetaFromPacket - trailLogDrift];
+expectZero["M6 Xi_1 definition", xiFromDefinition - xiFormula];
+expectZero["M6 R_1 definition", rFromDefinition - targetLogDrift];
 
-directPacket = {dlnRtr, dlnRtarget, depsEta};
-orbitPacket = {Theta1, Xi1, R1};
+directLogPacket = {trailLogDrift, targetLogDrift, depsEta};
 orbitCompiler = {
   {1, 0, 0},
   {0, -1, -cEta},
   {0, 1, 0}
 };
+orbitLogPacket = {thetaFromPacket, xiFromDefinition, rFromDefinition};
 expectZero[
-  "direct-observable orbit packet compiler",
-  orbitPacket - orbitCompiler . directPacket
+  "M6 orbit compiler maps direct packet",
+  orbitLogPacket - orbitCompiler . directLogPacket
 ];
+expectZero["M6 orbit compiler determinant", Det[orbitCompiler] - cEta];
 expectZero[
-  "orbit packet compiler determinant",
-  Det[orbitCompiler] - cEta
+  "M6 LinearSolve recovers direct packet",
+  LinearSolve[orbitCompiler, orbitLogPacket] - directLogPacket
 ];
-expectZero[
-  "inverse direct-observable orbit packet compiler",
-  FullSimplify[Inverse[orbitCompiler].orbitPacket - directPacket, Assumptions -> $Assumptions]
-];
-recoveredDirectPacket = FullSimplify[
-  Inverse[orbitCompiler].{ThetaVar, XiVar, RVar},
+formalRecovered = FullSimplify[
+  LinearSolve[orbitCompiler, {thetaVar, xiVar, rVar}],
   Assumptions -> $Assumptions
 ];
 expectZero[
-  "formal orbit packet recovers the direct drifts",
-  recoveredDirectPacket - {
-    ThetaVar,
-    RVar,
-    -((1 - epsEta) (XiVar + RVar))/epsEta
+  "M6 formal inverse map",
+  formalRecovered - {
+    thetaVar,
+    rVar,
+    -((1 - epsEta) (xiVar + rVar))/epsEta
   }
 ];
-expectZero[
-  "zero orbit packet forces zero direct drifts",
-  recoveredDirectPacket /. {ThetaVar -> 0, XiVar -> 0, RVar -> 0}
-];
 
-subbanner["VI. Exact two-packet split"];
+subbanner["M7. Two-packet split"];
 
-Mmix = FullSimplify[
-  8 ZW (1 + chi0)^2/(Pi^2 (1 - epsEta) (1 - eps)),
+mixedPacket = FullSimplify[
+  8 ZW (1 + chi0)^2/(Pi^2 (1 - epsEta) (1 - epsilonSelected)),
   Assumptions -> $Assumptions
 ];
-Sfactor = FullSimplify[
-  1 + zeta (1 - eps)/(1 - zeta eps),
+supportFactor = FullSimplify[
+  1 + zeta (1 - epsilonSelected)/(1 - zeta epsilonSelected),
   Assumptions -> $Assumptions
 ];
-Mtr = FullSimplify[Mmix Sfactor, Assumptions -> $Assumptions];
+throatPacket = FullSimplify[mixedPacket supportFactor, Assumptions -> $Assumptions];
 
-expectZero["mixed-only product law", FullSimplify[Rtarget Mmix - Cmix, Assumptions -> $Assumptions]];
+expectZero["M7 target times mixed packet equals C_mix", targetObservable mixedPacket - mixedCapacity];
 expectZero[
-  "support-packet sensitivity",
-  D[Mtr, zeta] - Mmix (1 - eps)/(1 - zeta eps)^2
+  "M7 support-packet zeta derivative",
+  D[throatPacket, zeta] -
+    mixedPacket (1 - epsilonSelected)/(1 - zeta epsilonSelected)^2
 ];
 
-subbanner["VII. Probe-only rational sample point"];
+subbanner["Probe-only rational sample point"];
 
 sampleRules = {
   chi0 -> 3/2,
@@ -306,16 +326,17 @@ sampleRules = {
   epsW -> 1/3,
   epsEta -> 1/5,
   Lambda -> 7/11,
+  Lambda0 -> 5/7,
   zeta -> 1
 };
 
-Print["epsilon = ", fmt[FullSimplify[eps /. sampleRules]]];
-Print["varrhoPhys = ", fmt[FullSimplify[varrhoPhys /. sampleRules]]];
-Print["sigmaPhys = ", fmt[FullSimplify[sigmaPhys /. sampleRules]]];
-Print["Rtr = ", fmt[FullSimplify[Rtr /. sampleRules]]];
-Print["Rtarget = ", fmt[FullSimplify[Rtarget /. sampleRules]]];
-Print["Mmix = ", fmt[FullSimplify[Mmix /. sampleRules]]];
-Print["Mtr = ", fmt[FullSimplify[Mtr /. sampleRules]]];
+Print["epsilon = ", fmt[FullSimplify[epsilonSelected /. sampleRules]]];
+Print["rhoSelected = ", fmt[FullSimplify[rhoSelected /. sampleRules]]];
+Print["sigmaFromRho = ", fmt[FullSimplify[sigmaFromRho /. sampleRules]]];
+Print["trailObservable = ", fmt[FullSimplify[trailObservable /. sampleRules]]];
+Print["targetObservable = ", fmt[FullSimplify[targetObservable /. sampleRules]]];
+Print["mixedPacket = ", fmt[FullSimplify[mixedPacket /. sampleRules]]];
+Print["throatPacket = ", fmt[FullSimplify[throatPacket /. sampleRules]]];
 
 Print[""];
 Print["All Stage 242 symbolic checks passed."];

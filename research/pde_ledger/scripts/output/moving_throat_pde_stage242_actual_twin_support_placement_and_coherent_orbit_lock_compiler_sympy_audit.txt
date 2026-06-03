@@ -1,17 +1,10 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
-# Date: 2026-05-11T12:52:09-06:00
-# Elapsed: 8s
-# Exit code: 0
-# Status: PASS
-#
-
 [ok] selected-branch coordinate varrho_phys
 [ok] selected-branch sigma_phys
 [ok] epsilon_WLambda rewrite
 [ok] epsilon_ULambda rewrite
 [ok] selected branch lies above mixed-only bound
 [ok] selected branch lies below non-twin bound
+[ok] selected branch strictly inside lowest symmetric twin window
 [ok] reduced-state bridge for R_target
 [ok] zeta-absence of epsilon in the coherent placement map
 [ok] zeta-absence of R_tr in the coherent placement map
@@ -23,7 +16,7 @@
 [ok] dln epsilon compiler
 [ok] dln R_tr compiler
 [ok] dln R_target compiler
-[ok] Theta_1 direct-observable identity
+[ok] Theta_1 packet form matches dln R_tr
 [ok] Xi_1 direct-observable identity
 [ok] R_1 direct-observable identity
 [ok] direct-observable orbit packet compiler[0]
@@ -52,5 +45,3 @@ Sample branch values:
   M_tr         = 89375/(646*pi**2)
 
 All Stage 242 symbolic checks passed.
-
-EXIT_CODE: 0

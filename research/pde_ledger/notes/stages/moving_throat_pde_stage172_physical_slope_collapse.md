@@ -1,6 +1,6 @@
 
 
-# Moving-Throat PDE — Stage 240: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}` and `P_1`
+# Moving-Throat PDE — Stage 172: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}` and `P_1`
 
 ## Purpose
 

@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 171 — BRANCH-OBSERVABLE COMPLETION AND THE EXACT FIRST-ORDER OBSERVABLE COMPILER")
+banner("STAGE 188 — BRANCH-OBSERVABLE COMPLETION AND THE EXACT FIRST-ORDER OBSERVABLE COMPILER")
 
 chi0s, deltaUs, epsetas = sp.symbols(
     "chi0_star deltaU_star epsiloneta_star", positive=True, real=True
@@ -195,7 +195,7 @@ expect_zero(
     sp.simplify(det_obs_to_quot * (1 / det_obs_to_quot) - 1),
 )
 
-banner("STAGE 171 LEDGER")
+banner("STAGE 188 LEDGER")
 print("1. The Stage 184 branch-observable packet")
 print("      (delta ln R_tr, delta ln N_*, delta ln epseta)")
 print("   is an exact first-order compiler image of the Stage 187 tangent quotient packet.")

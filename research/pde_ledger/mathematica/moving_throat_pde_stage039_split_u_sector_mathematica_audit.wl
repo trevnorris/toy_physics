@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 022 — SPLIT-U SECTOR"];
+banner["STAGE 039 — SPLIT-U SECTOR"];
 
 Clear[kEtaEff, kU, kWEff, muEta, muW, cEtaU, cEtaW, cUW, tw, ell, gNewton, cLight, cS, aScale, delta0, deltaU, epsEta, epsW, rho0, zW, lambda];
 $Assumptions =

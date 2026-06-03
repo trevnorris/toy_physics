@@ -35,7 +35,7 @@ beta0 = sp.symbols("beta0", positive=True, real=True)
 lam = sp.symbols("lambda", positive=True, real=True)
 x = sp.symbols("x", nonnegative=True, real=True)
 
-banner("STAGE 17.1 — EXACT SOFTENING-DEPTH SECULAR REDUCTION")
+banner("STAGE 34.1 — EXACT SOFTENING-DEPTH SECULAR REDUCTION")
 
 # Selected eigenvalue lambda_- lies below the flat branch A.
 alpha_lam = sp.simplify(1 / (ks0 / (A - lam) + ks1 / (A + DeltaK - lam)))
@@ -62,7 +62,7 @@ expect_zero("alpha(lambda=A-x) - alpha(x)", alpha_lam.subs(lam, A - x) - alpha_x
 expect_zero("s(lambda=A-x) - s(x)", s_lam.subs(lam, A - x) - s_x)
 expect_zero("N(lambda=A-x) - N(x)", N_lam.subs(lam, A - x) - N_x)
 
-banner("STAGE 17.2 — EXACT MONOTONICITY OF THE SOFTENING MAP")
+banner("STAGE 34.2 — EXACT MONOTONICITY OF THE SOFTENING MAP")
 dalpha_dx = sp.simplify(sp.diff(alpha_x, x))
 dalpha_target = sp.simplify((ks0 * (x + DeltaK) ** 2 + ks1 * x**2) / (ks0 * (x + DeltaK) + ks1 * x) ** 2)
 print("d alpha / dx =")
@@ -70,7 +70,7 @@ sp.pprint(dalpha_dx)
 expect_zero("dalpha/dx - manifestly positive form", dalpha_dx - dalpha_target)
 expect_zero("s_x * d alpha / dx - 1", sp.simplify(s_x * dalpha_dx - 1))
 
-banner("STAGE 17.3 — REQUIRED SUPPORT LOADING IN SOFTENING-DEPTH FORM")
+banner("STAGE 34.3 — REQUIRED SUPPORT LOADING IN SOFTENING-DEPTH FORM")
 gB_sq_over_varpi2 = sp.symbols("gB_sq_over_varpi2", real=True)
 Chi, OmegaU, Delta0 = sp.symbols("Chi Omega_U Delta_0", positive=True, real=True)
 alpha_mix = sp.simplify(Chi**2 / (OmegaU**2 * Delta0))

@@ -58,7 +58,7 @@ tripleOverlap[aMat_, qMat_, bMat_] := FullSimplify[
   Assumptions -> $Assumptions
 ];
 
-banner["STAGE 007 — OVERLAP ISOTROPY"];
+banner["STAGE 024 — OVERLAP ISOTROPY"];
 
 $Assumptions = True;
 s5 = Sqrt[5];

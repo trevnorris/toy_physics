@@ -21,7 +21,7 @@ def expect_zero(name: str, expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 54 — CANONICAL TANH-WALL BRANCH")
+banner("STAGE 71 — CANONICAL TANH-WALL BRANCH")
 
 xi = sp.symbols("xi", real=True)
 a, L, ell = sp.symbols("a L ell", positive=True, real=True)
@@ -88,7 +88,7 @@ W_red = sp.simplify(Wwall.subs({
 print("W_wall reduced =", W_red)
 expect_zero("W_wall_reduced - Upsilon_w Lambda_ell^2", W_red - Upsilon_w * Lambda_ell**2)
 
-banner("STAGE 54 THEOREM LEDGER")
+banner("STAGE 71 THEOREM LEDGER")
 print("I_f = 1/3")
 print("I_g = 4/15")
 print("I_g/I_f = 4/5")

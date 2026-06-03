@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 240: `5`PN Isotropic Target Surface, Primitive-Branch Compatibility, and the Dynamic Survival Window
+# Moving-Throat PDE — Stage 223: `5`PN Isotropic Target Surface, Primitive-Branch Compatibility, and the Dynamic Survival Window
 
 ## Status
 
@@ -475,4 +475,4 @@ The accompanying audit script verifies:
 9. and the four finite survival-window thresholds in \(P_{0,\mathrm{target,compat}}\).
 
 Supporting file:
-- `moving_throat_pde_stage240_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py`
+- `moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py`

@@ -42,7 +42,7 @@ def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: str = "1e-40")
         raise AssertionError(f"{name} is not within tolerance")
 
 
-banner("STAGE 42 — OPERATOR-SELECTED RESIDUAL BOUNDS")
+banner("STAGE 59 — OPERATOR-SELECTED RESIDUAL BOUNDS")
 
 Xi, Delta0, DeltaInf = sp.symbols("Xi Delta0 DeltaInf", positive=True, real=True)
 kappa, y, zeta_req = sp.symbols("kappa y zeta_req", positive=True, real=True)

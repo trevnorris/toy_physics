@@ -245,7 +245,7 @@ So this slice currently passes the effective-model legitimacy test:
 The next physics red-team target should be the remaining foundational realization bridges:
 
 - [stage125_positive_source_theorem.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage125_positive_source_theorem.md)
-- [stage170_outgoing_load_factorization.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage170_outgoing_load_factorization.md)
+- [stage176_outgoing_load_factorization.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage176_outgoing_load_factorization.md)
 - [stage185_microscopic_monomials.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage185_microscopic_monomials.md)
 - [stage187_orbit_quotient_closure.md](/var/projects/toy_physics/notes/moving_throat/moving_throat_pde_stage187_orbit_quotient_closure.md)
 

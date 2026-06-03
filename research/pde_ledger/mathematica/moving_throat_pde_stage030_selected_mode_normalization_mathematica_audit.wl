@@ -145,7 +145,7 @@ lambdaReq = FullSimplify[mhat^2*beta0*sMinusClosed/nQTarget, Assumptions -> $Ass
    physical content of lamMinus required. Not verified separately. *)
 Print["lambda_req = ", fmt[lambdaReq]];
 
-banner["STAGE 13 AUDIT COMPLETE"];
+banner["STAGE 30 AUDIT COMPLETE"];
 Print["Verified:"];
 Print["  generic normalized selected-response expansion"];
 Print["  exact selected lower eigenvalue and Hellmann–Feynman overlap"];

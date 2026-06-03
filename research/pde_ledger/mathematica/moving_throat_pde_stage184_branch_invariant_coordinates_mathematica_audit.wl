@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES"];
+banner["STAGE 184 — EXACT BRANCH-INVARIANT COORDINATES"];
 
 Clear[chi0, deltaU, epsEta];
 $Assumptions = Element[{chi0, deltaU, epsEta}, Reals] && chi0 > 0 && deltaU > 0 && epsEta > 0;

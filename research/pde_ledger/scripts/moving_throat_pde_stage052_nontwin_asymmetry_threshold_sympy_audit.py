@@ -3,7 +3,7 @@
 """
 moving_throat_pde_stage35_nontwin_asymmetry_threshold_sympy_audit.py
 
-SymPy audit for Stage 35 of the moving-throat PDE program.
+SymPy audit for Stage 52 of the moving-throat PDE program.
 
 Checks
 ------
@@ -39,7 +39,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 Pi_tr, Cmix, eps = sp.symbols("Pi_tr C_mix eps", positive=True, real=True)
 KW, Kphi0, Omega0 = sp.symbols("K_W K_phi0 Omega0", positive=True, real=True)
 
-banner("STAGE 35 — EXACT BRANCH-PRODUCT REGIME CLASSIFICATION")
+banner("STAGE 52 — EXACT BRANCH-PRODUCT REGIME CLASSIFICATION")
 
 Sreq = sp.simplify(Pi_tr / Cmix)
 zeta_req = sp.simplify((Sreq - 1) / (1 + eps * (Sreq - 2)))
@@ -121,7 +121,7 @@ sp.pprint(soft_frac)
 soft_expected = sp.simplify((1 - eps) * (Pi_tr - 2 * Cmix) / (Pi_tr - Cmix))
 expect_zero("softening fraction - expected", soft_frac - soft_expected)
 
-banner("STAGE 35 THEOREM LEDGER")
+banner("STAGE 52 THEOREM LEDGER")
 print("Exact regime split:")
 print("  Pi_tr <= C_mix            : mixed-only branch already enough")
 print("  C_mix < Pi_tr <= 2 C_mix  : symmetric lowest twin branch is enough")

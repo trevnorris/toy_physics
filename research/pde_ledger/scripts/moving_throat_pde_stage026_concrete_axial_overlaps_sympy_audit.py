@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage9_concrete_axial_overlaps_sympy_audit.py
 
-SymPy audit for Stage 9 of the moving-throat PDE program.
+SymPy audit for Stage 26 of the moving-throat PDE program.
 
 Scope
 -----

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 054 — CANONICAL TANH-WALL BRANCH"];
+banner["STAGE 071 — CANONICAL TANH-WALL BRANCH"];
 
 Clear[xi, t, a, L, ell, rhoW, cSw, V0, m, hbar, chiS, lambdaEll, upsilonW];
 $Assumptions =
@@ -93,7 +93,7 @@ expectZero["kappa reduced law", kappa - kappaExpected];
 Print["W_wall reduced = ", fmt[upsilonW*lambdaEll^2]];
 expectZero["W_wall reduced law", wwall - wExpected];
 
-banner["STAGE 054 THEOREM LEDGER"];
+banner["STAGE 071 THEOREM LEDGER"];
 Print["I_f = 1/3"];
 Print["I_g = 4/15"];
 Print["I_g/I_f = 4/5"];

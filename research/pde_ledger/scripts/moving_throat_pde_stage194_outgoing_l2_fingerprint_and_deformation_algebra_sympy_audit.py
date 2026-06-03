@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 177 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA")
+banner("STAGE 194 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA")
 
 # ---------------------------------------------------------------------------
 # I. Exact outgoing spherical l=2 DtN fingerprint
@@ -205,7 +205,7 @@ expect_zero("Kbar_2 - 6 G c_s^3/(5 a^3 c^5)", Kbar2 - 6 * G * c_s**3 / (5 * a**3
 expect_zero("Kbar_4 - 8 G c_s/(15 a c^5)", Kbar4 - 8 * G * c_s / (15 * a * c**5))
 expect_zero("Gammabar_5 - 2 G/(5 c^5)", Gammabar5 - 2 * G / (5 * c**5))
 
-banner("STAGE 177 LEDGER")
+banner("STAGE 194 LEDGER")
 print("1. The exact outgoing spherical l=2 DtN operator has the small-z fingerprint")
 print("      Lambda_2^out = -3 + z^2/3 + z^4/9 + i z^5/9 - 2 z^6/27 - i z^7/27 + ...")
 print("   and the normalized outgoing branch therefore has")

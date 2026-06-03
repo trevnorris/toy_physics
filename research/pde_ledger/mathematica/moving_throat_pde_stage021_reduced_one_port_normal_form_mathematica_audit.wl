@@ -32,7 +32,7 @@ expectZero[name_String, expr_] := Module[{res},
 
 Needs["VariationalMethods`"];
 
-banner["STAGE 004 — MAXWELL + MIXED-SECTOR REDUCTION"];
+banner["STAGE 021 — MAXWELL + MIXED-SECTOR REDUCTION"];
 
 subbanner["I. Mixed 4+1 Maxwell fields are gauge invariant"];
 

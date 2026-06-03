@@ -39,7 +39,7 @@ def grouped_trace_anomaly(x20, x21, x22):
     return xbar, ax, bx
 
 
-banner("STAGE 180 — EXACT CONDITIONAL PACKET-A CLOSURE THEOREM")
+banner("STAGE 197 — EXACT CONDITIONAL PACKET-A CLOSURE THEOREM")
 
 # ---------------------------------------------------------------------------
 # I. Isotropic outgoing lane implies a_{P0}=b_{P0}=0
@@ -209,7 +209,7 @@ subbanner("VII. Higher-odd irrelevance survives to the final Packet-A theorem")
 expect_zero("d chi_Q^(series extractor) / dL7", sp.diff(chi_from_series, L7))
 expect_zero("d Delta_norm / dL7", sp.diff(Delta_norm_pt, L7))
 
-banner("STAGE 180 LEDGER")
+banner("STAGE 197 LEDGER")
 print("1. Once the carried isotropic grouped-real P2 conservative one-pole front end is imposed,")
 print("      a2 = b2 = a4 = b4 = a_{P0} = b_{P0} = Delta_pole = 0,")
 print("   so the full Packet-A residual collapses exactly to")

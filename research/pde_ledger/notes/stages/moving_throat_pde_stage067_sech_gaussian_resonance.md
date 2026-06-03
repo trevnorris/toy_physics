@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 50: Exact Sech–Gaussian Coherence Resonance Benchmark
+# Moving-Throat PDE — Stage 67: Exact Sech–Gaussian Coherence Resonance Benchmark
 
 ## Purpose
 

@@ -133,7 +133,7 @@ def certify_splice_bracket(
     )
 
 
-banner("STAGE 201 — FULL SUPPORT-<=5 COMPLETION AND LOCAL MIXED-RAY SEARCH CLOSURE")
+banner("STAGE 218 — FULL SUPPORT-<=5 COMPLETION AND LOCAL MIXED-RAY SEARCH CLOSURE")
 
 subbanner("I. Exact boundary-identification via imported Stage 215 face packets")
 

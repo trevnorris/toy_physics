@@ -38,7 +38,7 @@ def simplify_log(expr):
     return sp.simplify(sp.expand_log(expr, force=True))
 
 
-banner("STAGE 184 — EXPLICIT REALIZATION COMPILER AND CANONICAL ORBIT PROJECTION")
+banner("STAGE 201 — EXPLICIT REALIZATION COMPILER AND CANONICAL ORBIT PROJECTION")
 
 # ---------------------------------------------------------------------------
 # I. Carry-forward quotient map and canonical section
@@ -260,7 +260,7 @@ sp.pprint(dx_rep_lin)
 
 expect_zero("M_*(Delta x + Delta x_rep^lin)", sp.simplify(Mstar * (Dx + dx_rep_lin)))
 
-banner("STAGE 184 LEDGER")
+banner("STAGE 201 LEDGER")
 print("1. The intrinsic target packet requires only four quantities from a candidate branch:")
 print("      chi_Q(x), C_tr(x)/C_tr,*, C_nt(x)/C_nt,*, eps_eta(x)/eps_eta,*.")
 print("2. The exact additive realization packet is")

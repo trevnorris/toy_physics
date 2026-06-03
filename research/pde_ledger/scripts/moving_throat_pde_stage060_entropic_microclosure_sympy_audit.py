@@ -19,7 +19,7 @@ def expect_zero(name: str, expr):
         raise AssertionError(f"{name} != 0")
 
 
-banner("STAGE 43 — ENTROPIC SOURCE MICROCLOSURE")
+banner("STAGE 60 — ENTROPIC SOURCE MICROCLOSURE")
 
 # Symbols / functions
 s, L = sp.symbols('s L', positive=True, real=True)
@@ -153,7 +153,7 @@ print("Euler-Lagrange support bulk equation =", EL_phi)
 expect_zero("support bulk equation form", EL_phi - (-Lam*sigma_fun + K_X*phi_fun - T_X*sp.diff(phi_fun, s, 2)))
 print("Boundary term from support variation: T_X phi_s(0) = K_m phi(0), phi_s(L)=0.")
 
-banner("STAGE 43 THEOREM LEDGER")
+banner("STAGE 60 THEOREM LEDGER")
 print("1. The positive-density free energy yields mu = Theta log(sigma/sigma_*) - Lambda phi.")
 print("2. The Onsager current is J = -D_sigma sigma_s + M_sigma Lambda sigma phi_s with D_sigma = M_sigma Theta.")
 print("3. Under affine support drop, the zero-flux branch is exactly the Stage-39 exponential family.")

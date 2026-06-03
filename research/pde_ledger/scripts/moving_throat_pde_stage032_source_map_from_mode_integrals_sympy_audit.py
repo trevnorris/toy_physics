@@ -36,7 +36,7 @@ def expect_zero(name: str, expr):
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 15.1 — EXACT FINITE-THROAT AXIAL INTEGRALS")
+banner("STAGE 32.1 — EXACT FINITE-THROAT AXIAL INTEGRALS")
 
 L, s = sp.symbols("L s", positive=True, real=True)
 u0 = 1 / sp.sqrt(L)
@@ -64,7 +64,7 @@ expect_zero("kappa1 + 4/(3 pi)", kappa1 + sp.Rational(4, 3) / sp.pi)
 expect_zero("sigma - 88/(9 pi^2)", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)
 expect_zero("sigma/kappa0^2 - 11/9", (kappa0**2 + kappa1**2) / kappa0**2 - sp.Rational(11, 9))
 
-banner("STAGE 15.2 — LOCAL-KERNEL MODE REDUCTION")
+banner("STAGE 32.2 — LOCAL-KERNEL MODE REDUCTION")
 
 q0, q1 = sp.symbols("q0 q1", real=True)
 U0, U1 = sp.symbols("U0 U1", real=True)
@@ -109,7 +109,7 @@ expect_zero(
     L_src - gQ * Qstf * (kappa0 * q0 + kappa1 * q1),
 )
 
-banner("STAGE 15.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION")
+banner("STAGE 32.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION")
 
 D0, D1 = sp.symbols("D0 D1", real=True)
 Aphi, AU, AW = sp.symbols("A_phi A_U A_W", real=True)
@@ -142,7 +142,7 @@ print("Xi =", Xi)
 print("alpha =", alpha)
 expect_zero("Sigma - [Xi I + alpha vv^T]", Sigma - Sigma_target)
 
-banner("STAGE 15.4 — NATURAL D/N SOURCE MAP")
+banner("STAGE 32.4 — NATURAL D/N SOURCE MAP")
 
 A, DK, alpha0 = sp.symbols("A DeltaK alpha0", positive=True, real=True)
 B = A + DK
@@ -195,7 +195,7 @@ expect_zero(
 expect_zero("mhat_-^2(alpha=0) - 1", sp.simplify(mhat_sq.subs(alpha0, 0) - 1))
 expect_zero("limit_{alpha->oo} mhat_-^2 - 11/9", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11, 9)))
 
-banner("STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR")
+banner("STAGE 32.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR")
 
 beta0 = sp.symbols("beta0", positive=True, real=True)
 

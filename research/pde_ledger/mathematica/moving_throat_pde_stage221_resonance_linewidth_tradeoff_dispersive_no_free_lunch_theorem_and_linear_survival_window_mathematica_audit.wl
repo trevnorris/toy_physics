@@ -32,7 +32,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res == 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 204 — RESONANCE / LINEWIDTH TRADEOFF"];
+banner["STAGE 221 — RESONANCE / LINEWIDTH TRADEOFF"];
 
 Clear[
   delta, GammaOut, Zstar, Fprime, Numstar, portPi,

@@ -28,7 +28,7 @@ expectZero[name_String, expr_] := Module[{res},
   ]
 ];
 
-banner["STAGE 15.1 — EXACT FINITE-THROAT AXIAL INTEGRALS"];
+banner["STAGE 32.1 — EXACT FINITE-THROAT AXIAL INTEGRALS"];
 
 Clear[l, s];
 $Assumptions = Element[{l, s}, Reals] && l > 0;
@@ -57,7 +57,7 @@ expectZero["kappa1 + 4/(3 pi)", kappa1 + 4/(3*Pi)];
 expectZero["sigma - 88/(9 pi^2)", kappa0^2 + kappa1^2 - 88/(9*Pi^2)];
 expectZero["sigma/kappa0^2 - 11/9", (kappa0^2 + kappa1^2)/kappa0^2 - 11/9];
 
-banner["STAGE 15.2 — LOCAL-KERNEL MODE REDUCTION"];
+banner["STAGE 32.2 — LOCAL-KERNEL MODE REDUCTION"];
 Clear[q0, q1, u0c, u1c, phi, wField, qStf, gU, gB, gW, gR, gQ];
 $Assumptions = Element[{q0, q1, u0c, u1c, phi, wField, qStf, gU, gB, gW, gR, gQ}, Reals] && l > 0;
 
@@ -84,7 +84,7 @@ expectZero["L_etaW - gW (v.q) W", lEtaW - gW*(kappa0*q0 + kappa1*q1)*wField];
 expectZero["L_UW + gR (v.U) W", lUW + gR*(kappa0*u0c + kappa1*u1c)*wField];
 expectZero["L_src - gQ Q (v.q)", lSrc - gQ*qStf*(kappa0*q0 + kappa1*q1)];
 
-banner["STAGE 15.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION"];
+banner["STAGE 32.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION"];
 Clear[d0, d1, aPhi, aU, aW];
 $Assumptions = Element[{d0, d1, aPhi, aU, aW, gU, gB, gW, gR}, Reals] && aU != 0 && aPhi != 0;
 
@@ -134,7 +134,7 @@ Print["alpha = ", fmt[alphaCoeff]];
 expectZero["Sigma - [Xi I + alpha vv^T]", sigmaMat - sigmaTarget];
 expectZero["sigmaMatViaSolve - [Xi I + alpha vv^T]", sigmaMatViaSolve - sigmaTarget];
 
-banner["STAGE 15.4 — NATURAL D/N SOURCE MAP"];
+banner["STAGE 32.4 — NATURAL D/N SOURCE MAP"];
 Clear[a, dK, alpha0, sigmaSym, deltaKappa, kappaProd, beta0, gConst, cs, radius, cSpeed, mhat];
 $Assumptions = Element[{a, dK, alpha0, sigmaSym, deltaKappa, kappaProd, beta0, gConst, cs, radius, cSpeed, mhat}, Reals] &&
   a > 0 && dK > 0 && alpha0 >= 0 && sigmaSym > 0 && kappaProd > 0 && beta0 > 0 &&
@@ -175,7 +175,7 @@ expectZero[
 expectZero["mhat_-^2(alpha=0) - 1", (mhatSq /. alpha0 -> 0) - 1];
 expectZero["limit_{alpha->oo} mhat_-^2 - 11/9", Limit[mhatSq, alpha0 -> Infinity] - 11/9];
 
-banner["STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR"];
+banner["STAGE 32.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR"];
 p0MinusNat = FullSimplify[(beta0*sMinus/lamMinus) /. subsNat, Assumptions -> $Assumptions];
 nProdNat = FullSimplify[((sMinus/kappa0^2) /. subsNat)*p0MinusNat, Assumptions -> $Assumptions];
 nProdIndep = FullSimplify[

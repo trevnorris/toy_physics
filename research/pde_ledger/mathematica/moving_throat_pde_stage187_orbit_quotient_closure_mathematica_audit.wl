@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 170 — EXACT ORBIT-QUOTIENT CLOSURE"];
+banner["STAGE 187 — EXACT ORBIT-QUOTIENT CLOSURE"];
 
 Clear[dl, dc, dg, du, deta, dw, dm, dt, chiStar, deltaStar, eStar, fStar];
 

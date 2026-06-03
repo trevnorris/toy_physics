@@ -73,7 +73,7 @@ def eps_eta_monomial(c_eta_u, k_u, k_eta):
     return sp.simplify(c_eta_u**2 / (k_u * k_eta))
 
 
-banner("STAGE 183 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM")
+banner("STAGE 200 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM")
 
 chi0s, deltaUs, Estar, Fstar = sp.symbols(
     "chi0_star deltaU_star E_star F_star", positive=True, real=True
@@ -436,7 +436,7 @@ Delta_H_linear = simplify_expr(
 print("Delta_H^lin =")
 sp.pprint(Delta_H_linear)
 
-banner("STAGE 183 LEDGER")
+banner("STAGE 200 LEDGER")
 print("1. The Packet-B quotient coordinates are derived from the primitive coherent monomials")
 print("      (C_tr, C_nt, eps_eta)")
 print("   and their logarithmic Jacobian reproduces the carried Stage 192 matrix M_*.")

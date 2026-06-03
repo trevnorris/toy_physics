@@ -7,7 +7,7 @@ Stages 71–72 complete the explicit Family-1 support/source side under the natu
 This note records the clean status update.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage141_updated_reduced_status_sympy_audit.py`
+- `scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py`
   rechecks the reduced-status verdict using the carried minimal-module and
   Family-1 threshold data without introducing new free constants.
 

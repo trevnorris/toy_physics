@@ -28,7 +28,7 @@ expectTrue[name_String, cond_, detail_String] := (
   If[TrueQ[cond], pass[name], fail[name, detail]]
 );
 
-banner["STAGE 019 — SUPPORT-FEASIBILITY FRONTIER"];
+banner["STAGE 036 — SUPPORT-FEASIBILITY FRONTIER"];
 
 Clear[A, delta, xi, Chi, OmegaU, Delta0, beta0, NQ];
 $Assumptions =
@@ -95,7 +95,7 @@ gMaxTarget = FullSimplify[gMax, Assumptions -> delta > 0];
 Print["G_max(delta) = ", fmt[gMax]];
 expectZero["G_max - 9(1+delta)/(9delta+11)", gMax - 9*(1 + delta)/(9*delta + 11)];
 
-banner["STAGE 019.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST"];
+banner["STAGE 036.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST"];
 Clear[xiReq];
 $Assumptions =
   Element[{A, delta, xiReq, Chi, OmegaU, Delta0, beta0, NQ}, Reals] &&
@@ -153,7 +153,7 @@ expectTrue[
   "M_mix=" <> fmt[mMixInadmissible] <> ", G=" <> fmt[gSampleN]
 ];
 
-banner["STAGE 019.4 — NEAR-ONSET ASYMPTOTICS"];
+banner["STAGE 036.4 — NEAR-ONSET ASYMPTOTICS"];
 (* Read the series coefficients directly out of gSeries; do not declare a target. *)
 gSeries = FullSimplify[Normal[Series[gTarget, {xi, 0, 2}]], Assumptions -> delta > 0];
 c0 = FullSimplify[Coefficient[gSeries, xi, 0], Assumptions -> delta > 0];

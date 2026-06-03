@@ -48,7 +48,7 @@ q, r, t = sp.symbols("q r t", real=True)
 lam0 = sp.Rational(2, 9)
 R_U, eps = sp.symbols("R_U eps", positive=True, real=True)
 
-banner("STAGE 25 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION")
+banner("STAGE 42 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION")
 
 subbanner("25.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading")
 
@@ -177,7 +177,7 @@ expect_zero(
     sp.expand(sp.series(F_ratio.subs(R_U, R_series), eps, 0, 2).removeO() - F_linear),
 )
 
-banner("STAGE 25 THEOREM LEDGER")
+banner("STAGE 42 THEOREM LEDGER")
 print("1. With two loading directions, the selected-mode normalization remains exact and is")
 print("   governed by the three-direction function F_(q,r,t)(xi,delta;m).")
 print("2. If the support tracks the mixed direction, the entire rank-2 normalization law")

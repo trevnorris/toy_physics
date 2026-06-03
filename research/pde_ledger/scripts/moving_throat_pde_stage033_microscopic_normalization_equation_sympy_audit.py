@@ -43,7 +43,7 @@ lambda_minus = sp.simplify((2 * A + DeltaK - alpha0 * sigma - R) / 2)
 s_minus = sp.simplify(sp.Rational(1, 2) * (sigma + ((DeltaK + alpha0 * delta_kappa) * delta_kappa + 4 * alpha0 * Kprod) / R))
 Nminus = sp.simplify(beta0 * s_minus**2 / (kappa0_sq * lambda_minus))
 
-banner("STAGE 16.1 — EXACT MICROSCOPIC NORMALIZATION PRODUCT")
+banner("STAGE 33.1 — EXACT MICROSCOPIC NORMALIZATION PRODUCT")
 print("N_-(alpha0) =")
 sp.pprint(Nminus)
 
@@ -53,18 +53,18 @@ dN = sp.simplify(sp.diff(Nminus, alpha0))
 dN_formula = sp.simplify(beta0 * (2 * s_minus * ds * lambda_minus + s_minus**3) / (kappa0_sq * lambda_minus**2))
 expect_zero("dN/dalpha - monotonicity formula", dN - dN_formula)
 
-banner("STAGE 16.2 — EXACT STABILITY THRESHOLD")
+banner("STAGE 33.2 — EXACT STABILITY THRESHOLD")
 alpha_crit = sp.simplify(A * (A + DeltaK) / ((A + DeltaK) * kappa0_sq + A * kappa1_sq))
 alpha_crit_target = sp.simplify(9 * sp.pi**2 * A * (A + DeltaK) / (8 * (11 * A + 9 * DeltaK)))
 print("alpha_crit =", alpha_crit)
 expect_zero("alpha_crit - closed finite-throat form", alpha_crit - alpha_crit_target)
 
-banner("STAGE 16.3 — ZERO-LOADING ONSET VALUE")
+banner("STAGE 33.3 — ZERO-LOADING ONSET VALUE")
 N0 = sp.simplify(Nminus.subs(alpha0, 0))
 print("N_-(0) =", N0)
 expect_zero("N_-(0) - beta0 kappa0^2 / A", N0 - beta0 * kappa0_sq / A)
 
-banner("STAGE 16.4 — EXACT WEAK-LOADING EXPANSION")
+banner("STAGE 33.4 — EXACT WEAK-LOADING EXPANSION")
 series_N = sp.series(Nminus, alpha0, 0, 2).removeO()
 coef1 = sp.simplify(sp.diff(Nminus, alpha0).subs(alpha0, 0))
 coef1_target = sp.simplify(beta0 * kappa0_sq * (4 * A * kappa1_sq + DeltaK * kappa0_sq) / (A**2 * DeltaK))
@@ -73,7 +73,7 @@ print("N_-(alpha0) to O(alpha0) =", series_N)
 expect_zero("first derivative coefficient - generic formula", coef1 - coef1_target)
 expect_zero("first derivative coefficient - finite-throat closed form", coef1 - coef1_target_closed)
 
-banner("STAGE 16.5 — MICROSCOPIC COUPLING REWRITE")
+banner("STAGE 33.5 — MICROSCOPIC COUPLING REWRITE")
 gB, gU, gW, gR = sp.symbols("g_B g_U g_W g_R", real=True)
 varpi, OmegaU, OmegaW = sp.symbols("varpi Omega_U Omega_W", positive=True, real=True)
 K0, NQ = sp.symbols("K_0 NQ", positive=True, real=True)
@@ -99,7 +99,7 @@ expect_zero(
     K0_onset - (gU**2 / OmegaU**2 + kappa0_sq * Chi**2 / (NQ * Delta0**2)),
 )
 
-banner("STAGE 16.6 — FULLY SUBSTITUTED MICROSCOPIC STABILITY GATE")
+banner("STAGE 33.6 — FULLY SUBSTITUTED MICROSCOPIC STABILITY GATE")
 alpha_crit_mic = sp.simplify(alpha_crit_target.subs(A, A_mic))
 gate_den_claim = sp.simplify(8 * varpi**2 * OmegaU**2 * Delta0 * (11 * A_mic + 9 * DeltaK))
 gate_diff = sp.cancel(sp.together(alpha_crit_mic - alpha0_mic))

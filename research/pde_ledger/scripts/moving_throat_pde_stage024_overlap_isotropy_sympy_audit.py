@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage7_overlap_isotropy_sympy_audit.py
 
-SymPy audit for Stage 7 of the moving-throat PDE program.
+SymPy audit for Stage 24 of the moving-throat PDE program.
 
 Scope
 -----

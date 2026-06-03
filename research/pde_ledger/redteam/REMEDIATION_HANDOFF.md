@@ -98,13 +98,22 @@
 >
 > ## ✅ FIRST END-TO-END PASS COMPLETE — POST-253 WORK (gated, awaits explicit user go)
 > The first full red-team pass over all 253 stages is DONE. Two follow-ups remain, BOTH gated on the user:
-> 1. **Project-wide stem-keyed numbering reconciliation** (the deferred cleanup the user flagged). Resolve the
->    accumulated stale stage-number drift in ONE pass over the whole project, NOT per-batch, NEVER an
->    offset-sweep: build a `stem→canonical` lookup from `scripts/`, map every `stageNNN_<stem>` citation and
->    bare-prose `Stage NNN` ref deterministically. Known residuals logged: **P4-53** (VII.1 — 219/221/222/
->    223-title/227/228/229 notes + `.wl` banners 221/227), **P4-54** (VII.2 — notes-title drift 232/234/235/236).
->    VIII.1 added NO new residual. Codex applies (notes + `.wl` are Codex-owned), Claude reviews (grep no stale
->    label remains + spot-check each ref's target matches its description). See memory `[[numbering-drift-root-cause]]`.
+> 1. **Project-wide stem-keyed numbering reconciliation** (the deferred cleanup the user flagged).
+>    **✅ PHASE 1 (deterministic) DONE + COMMITTED 2026-06-03 (this commit, see git log):** 273 doc-only stale-label
+>    corrections across 198 files — C2=34 published-card `\section` titles (`stage_091..124.tex`, +17
+>    drift→canonical), B=19 notes H1 self-titles, C1=195 `.py`/`.wl` self-banners+docstrings (scan
+>    under-counted by 40: closing LEDGER/completion + sub-stage `STAGE n.k` in 032–036), A=25
+>    `stageNNN_<stem>` citations (2 FPs in `STAGE_PROVENANCE_INDEX.md` excluded — prefix-match on
+>    scriptless tex-only stems 093/132). Keyed to each file's OWN canonical (filename/label) or the
+>    stem's canonical — NEVER an offset-sweep. Label-only (273+/273−, byte-identical except the token);
+>    0 `.tex` body/math, 0 Class-D, 0 `\label`; 3 `.py`+2 `.wl` spot-runs exit 0; 0 residual self-labels.
+>    Resolves the deterministic residuals at **P4-53/P4-54/P4-55** + the 091–124 card band → **P4-56**.
+>    **WHO APPLIES (user-clarified 2026-06-03):** doc-only label/banner/title/citation edits are
+>    ORCHESTRATOR-applied directly (here via a fresh-context agent to save context), NOT Codex — Codex is
+>    for script CODE/MATH. Scan = `redteam/NUMBERING_RECON_SCAN.md`; applier = `redteam/recon_phase1.py`.
+>    **⏳ PHASE 2 (open, gated, NEXT): the ~121 Class-D content-dependent body cross-refs** (`Stage NNN`/
+>    `\ref{stage:NNN}` in running prose) — NOT stem-keyable; map per-reference by described-deliverable→
+>    owning-stage, careful separate pass. See memory `[[numbering-drift-root-cause]]`.
 > 2. **The planned full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — a comprehensive re-run as a
 >    cross-check, now that the first pass has reached 253. The user planned this as the ultimate cross-check
 >    AFTER the first pass completes (intermediate retrofit cross-checks were skipped in favor of this single run).

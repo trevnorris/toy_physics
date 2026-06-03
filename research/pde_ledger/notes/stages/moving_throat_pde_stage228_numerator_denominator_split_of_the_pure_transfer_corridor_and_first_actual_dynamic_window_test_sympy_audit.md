@@ -481,7 +481,7 @@ The paired SymPy audit verifies all of the following directly on the Stage-240 c
 9. the comparison showing that the transported static ceilings still bind earlier than the dynamic window on both rigid splits.
 
 Supporting file:
-- `moving_throat_pde_stage245_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py`
+- `moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py`
 
 ---
 

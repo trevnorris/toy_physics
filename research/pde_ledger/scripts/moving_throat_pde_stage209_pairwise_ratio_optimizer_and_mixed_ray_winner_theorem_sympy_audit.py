@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 192 — EXACT PAIRWISE RATIO OPTIMIZER AND MIXED-RAY WINNER THEOREM")
+banner("STAGE 209 — EXACT PAIRWISE RATIO OPTIMIZER AND MIXED-RAY WINNER THEOREM")
 
 # ---------------------------------------------------------------------------
 # I. Exact algebraic form of the pairwise certified objective
@@ -145,4 +145,4 @@ print("coefficients highest -> constant =")
 for coeff in Qorig_poly.all_coeffs():
     sp.pprint(sp.factor(coeff))
 
-banner("STAGE 192 SYMPY AUDIT COMPLETED SUCCESSFULLY")
+banner("STAGE 209 SYMPY AUDIT COMPLETED SUCCESSFULLY")

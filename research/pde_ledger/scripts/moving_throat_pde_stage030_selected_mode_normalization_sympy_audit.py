@@ -179,7 +179,7 @@ print("lambda_req =")
 sp.pprint(lambda_req)
 
 
-banner("STAGE 13 AUDIT COMPLETE")
+banner("STAGE 30 AUDIT COMPLETE")
 print("Verified:")
 print("  • generic normalized selected-response expansion")
 print("  • exact selected lower eigenvalue and Hellmann–Feynman overlap")

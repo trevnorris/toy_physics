@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 97: Concrete Two-Channel Core Outlet Model
+# Moving-Throat PDE — Stage 114: Concrete Two-Channel Core Outlet Model
 
 ## Goal
 

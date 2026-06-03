@@ -32,7 +32,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES")
+banner("STAGE 184 — EXACT BRANCH-INVARIANT COORDINATES")
 
 # Background coherent-branch variables.
 chi0, deltaU, eps_eta = sp.symbols('chi0 deltaU eps_eta', positive=True, real=True)

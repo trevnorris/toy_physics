@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 179 — EXACT HIGHER-ODD IRRELEVANCE THEOREM")
+banner("STAGE 196 — EXACT HIGHER-ODD IRRELEVANCE THEOREM")
 
 # ---------------------------------------------------------------------------
 # I. Response-side higher-odd difference identity
@@ -186,7 +186,7 @@ print("coefficient multiplying L7 at z^7 in the normalized DtN response =")
 sp.pprint(L7_coeff_in_Y)
 expect_zero("L7 enters normalized response first at z^7", L7_coeff_in_Y + sp.I / L0)
 
-banner("STAGE 179 LEDGER")
+banner("STAGE 196 LEDGER")
 print("1. For the generalized isotropic grouped-P2 retarded module")
 print("      Yhat_Q^(ret,>=7) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2 - i chi_Q sigma_Q^can omega^5 - i T_{>=7}(omega))")
 print("   with T_{>=7}(omega)=O(omega^7), one has the exact difference identity")

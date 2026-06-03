@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage8_minimal_isotropic_normalization_sympy_audit.py
 
-SymPy audit for Stage 8 of the moving-throat PDE program.
+SymPy audit for Stage 25 of the moving-throat PDE program.
 
 Scope
 -----

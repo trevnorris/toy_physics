@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 200 — UNIQUE FIVE-COORDINATE SIMPLEX INTERIOR OPTIMIZER")
+banner("STAGE 217 — UNIQUE FIVE-COORDINATE SIMPLEX INTERIOR OPTIMIZER")
 
 # ---------------------------------------------------------------------------
 # I. Unique five-coordinate simplex combinatorics

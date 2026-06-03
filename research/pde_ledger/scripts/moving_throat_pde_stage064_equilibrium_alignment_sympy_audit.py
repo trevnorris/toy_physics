@@ -46,7 +46,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 47 — PARENT EQUILIBRIUM SOURCE/SUPPORT ALIGNMENT")
+banner("STAGE 64 — PARENT EQUILIBRIUM SOURCE/SUPPORT ALIGNMENT")
 
 # Exact symbolic parent overlap variables.
 g_phi, KX, Npp = sp.symbols("g_phi K_X N_pp", positive=True, real=True)
@@ -173,7 +173,7 @@ expect_zero(
     F_eff - sp.Rational(1, 2) * (KX - Lambda**2 / Theta) * phi**2,
 )
 
-banner("STAGE 47 AUDIT PASSED")
+banner("STAGE 64 AUDIT PASSED")
 print("1. The equilibrium-induced source channel is aligned with the support loading through 1/H.")
 print("2. The coherence factor is exactly C^2 = I1^2/(N_pp I2) and reaches 1 when H is constant on the active layer.")
 print("3. The exact eliminated-source gain is G_eq = g_phi^2 I1/K_X.")

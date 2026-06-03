@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 220: Parent-Action Extraction of Core Parameters
+# Moving-Throat PDE — Stage 118: Parent-Action Extraction of Core Parameters
 
 ## Goal
 

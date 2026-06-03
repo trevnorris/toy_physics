@@ -70,7 +70,7 @@ expectNegative[name_String, expr_] := Module[{shown, res},
   If[TrueQ[res], pass[name], fail[name, shown]];
 ];
 
-banner["STAGE 186 — FREE-QUINTUPLE SCALAR CLOSURE SLICE AND CROSSING THEOREM"];
+banner["STAGE 203 — FREE-QUINTUPLE SCALAR CLOSURE SLICE AND CROSSING THEOREM"];
 
 Clear[
   chi0s, deltaUs, Estar, Fstar,
@@ -330,5 +330,5 @@ If[
   pass["real crossing set"]
 ];
 
-banner["STAGE 186 MATHEMATICA AUDIT PASSED"];
+banner["STAGE 203 MATHEMATICA AUDIT PASSED"];
 Exit[0];

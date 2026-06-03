@@ -33,10 +33,10 @@ The main outputs are:
 So Stage 252 is the closure of the whole local mixed-ray sieve: after this note there are no more combinatorial support-cardinality stages left to build.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage252_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py`
+- `scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py`
   checks the boundary-stratification counts, support-ceiling logic, final splice
   interval theorems, and carried budget formulas.
-- `mathematica/moving_throat_pde_stage252_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl`
+- `mathematica/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.wl`
   mirrors the same closure algebra in the second CAS and keeps the carried
   Stage 249 and Stage 251 budget constants explicit rather than hidden.
 

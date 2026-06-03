@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 193 — THREE-COORDINATE MIXED-SIMPLEX AND THE CANONICAL TRIPLE-SCREEN AUDIT")
+banner("STAGE 210 — THREE-COORDINATE MIXED-SIMPLEX AND THE CANONICAL TRIPLE-SCREEN AUDIT")
 
 # ---------------------------------------------------------------------------
 # I. Positive spherical simplex and exact boundary reductions
@@ -253,4 +253,4 @@ expect_zero("equal-mix slope value", (aeq.T * kvec)[0] - k_eq)
 expect_zero("gradient slope value", (avec_grad.T * kvec)[0] - k_grad)
 expect_zero("k_grad^2 - ||k||^2", k_grad**2 - (ki**2 + kj**2 + kk**2))
 
-banner("STAGE 193 SYMPY AUDIT COMPLETED SUCCESSFULLY")
+banner("STAGE 210 SYMPY AUDIT COMPLETED SUCCESSFULLY")

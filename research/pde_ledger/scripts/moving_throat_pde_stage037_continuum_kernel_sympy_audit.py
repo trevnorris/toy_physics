@@ -48,7 +48,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 20 — CONTINUUM-KERNEL EXTRACTION AUDIT")
+banner("STAGE 37 — CONTINUUM-KERNEL EXTRACTION AUDIT")
 
 # ---------------------------------------------------------------------------
 # 1. Exact finite-throat mode system
@@ -219,6 +219,6 @@ print("  K_U K_eta^(eff) > c_(etaU)^2")
 print("  K_U K_W^(eff)   > c_(UW)^2 sigma")
 print("with sigma =", sigma)
 
-banner("STAGE 20 AUDIT COMPLETE")
+banner("STAGE 37 AUDIT COMPLETE")
 print("The first explicit finite-throat continuum kernel reproduces the full reduced")
 print("Stage-17/19 branch data exactly.")

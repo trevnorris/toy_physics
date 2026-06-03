@@ -405,4 +405,4 @@ The accompanying SymPy audit verifies:
 - and the static-only and full orbit-lock correction compilers.
 
 Supporting file:
-- `moving_throat_pde_stage252_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py`
+- `moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.py`

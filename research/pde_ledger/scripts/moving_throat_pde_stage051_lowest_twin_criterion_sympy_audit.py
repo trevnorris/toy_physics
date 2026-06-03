@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage34_lowest_twin_criterion_sympy_audit.py
 
-SymPy audit for Stage 34 of the moving-throat PDE program.
+SymPy audit for Stage 51 of the moving-throat PDE program.
 
 Checks
 ------
@@ -60,7 +60,7 @@ Ftr = sp.simplify(
 )
 Pi_tr = sp.simplify(sp.factor(Ftr * Gtr))
 
-banner("STAGE 34 — EXACT TRACKING-BRANCH PRODUCT")
+banner("STAGE 51 — EXACT TRACKING-BRANCH PRODUCT")
 print("G_tr(xi,delta;R) =")
 sp.pprint(Gtr)
 print("\nF_tr(xi,delta;R) =")
@@ -146,7 +146,7 @@ sp.pprint(xi_2x)
 
 expect_zero("G_tr(xi_(2x)) - 2 M_mix", sp.simplify(Gtr.subs(xi, xi_2x) - 2 * Mmix))
 
-banner("STAGE 34 THEOREM LEDGER")
+banner("STAGE 51 THEOREM LEDGER")
 print("Exact lowest-twin sufficiency criterion:")
 print("  Pi_tr(xi_req,delta;R_tr) <= 16 Lambda (1-eps) / pi^2")
 print()

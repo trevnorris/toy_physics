@@ -33,7 +33,7 @@ def expect_zero(name: str, expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 21 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT")
+banner("STAGE 38 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT")
 
 # ---------------------------------------------------------------------------
 # 1. Stage-20 continuum formulas
@@ -221,6 +221,6 @@ print("  delta increases with eps_eta")
 print("  M_mix increases with eps_eta, eps_W, Z_W, rho")
 print("  R_target decreases with eps_eta, eps_W, Z_W, rho")
 
-banner("STAGE 21 AUDIT COMPLETE")
+banner("STAGE 38 AUDIT COMPLETE")
 print("The Stage-20 continuum operator collapses to an exact five-ratio placement map")
 print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")

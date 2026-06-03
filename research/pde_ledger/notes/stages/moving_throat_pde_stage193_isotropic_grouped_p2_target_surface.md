@@ -399,4 +399,4 @@ The accompanying SymPy audit verifies:
 - and the exact Schur-complement firewall showing that scalar/geometry contamination of the grouped `l=2` carrier starts only at `O(\chi^2)`.
 
 Supporting file:
-- `moving_throat_pde_stage244_isotropic_grouped_p2_target_surface_sympy_audit.py`
+- `moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py`

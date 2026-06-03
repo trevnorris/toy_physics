@@ -33,7 +33,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 170 — EXACT ORBIT–QUOTIENT CLOSURE")
+banner("STAGE 187 — EXACT ORBIT–QUOTIENT CLOSURE")
 
 # Finite log-ratio variables between two positive microscopic states.
 DL, DC, DG, DU, DEta, DW, DM, DT = sp.symbols(

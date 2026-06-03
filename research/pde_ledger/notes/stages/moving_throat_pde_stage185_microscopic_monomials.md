@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 253: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
+# Moving-Throat PDE — Stage 185: Direct Microscopic Monomial Coordinates and the First-Order Zero-Defect Compatibility Ledger
 
 ## Purpose
 

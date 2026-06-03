@@ -60,7 +60,7 @@ R_target = sp.simplify(NQ * A / (beta0 * (sp.Rational(8) / sp.pi**2)))
 a_req = sp.simplify(9 * sp.pi**2 * A * xi * (xi + delta) / (8 * (9 * delta + 11 * xi)))
 gBreq_sq_over_varpi2 = sp.simplify(a_req - alpha_mix)
 
-banner("STAGE 19.1 — EXACT SUPPORT-FEASIBILITY FUNCTION")
+banner("STAGE 36.1 — EXACT SUPPORT-FEASIBILITY FUNCTION")
 print("G(xi,delta) =", G)
 print("F(xi,delta) =", F)
 print("M_mix =", Mmix_expr)
@@ -74,7 +74,7 @@ expect_zero(
     gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
 )
 
-banner("STAGE 19.2 — EXACT MONOTONICITY AND ENDPOINTS OF G")
+banner("STAGE 36.2 — EXACT MONOTONICITY AND ENDPOINTS OF G")
 dG = sp.simplify(sp.diff(G, xi))
 dG_target = sp.simplify(9 * (9 * delta**2 + 18 * delta * xi + 11 * xi**2) / (9 * delta + 11 * xi) ** 2)
 print("dG/dxi =", dG)
@@ -85,7 +85,7 @@ Gmax_target = sp.simplify(9 * (1 + delta) / (9 * delta + 11))
 print("G_max(delta) =", Gmax)
 expect_zero("G_max - closed form", Gmax - Gmax_target)
 
-banner("STAGE 19.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST")
+banner("STAGE 36.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST")
 xi_req = sp.symbols("xi_req", nonnegative=True, real=True)
 print("Parametric frontier: xi -> (F(xi,delta), G(xi,delta))")
 # Same definitional identity as above, with xi -> xi_req. Definitional, not load-bearing.
@@ -154,7 +154,7 @@ expect_true(
     f"M_mix={Mmix_inadmissible}, G={G_sample_n}",
 )
 
-banner("STAGE 19.4 — NEAR-ONSET ASYMPTOTICS")
+banner("STAGE 36.4 — NEAR-ONSET ASYMPTOTICS")
 G_series = sp.series(G, xi, 0, 3).removeO()
 G_series_target = sp.simplify(xi - 2 * xi**2 / (9 * delta))
 print("G(xi,delta) near xi=0 =", G_series)

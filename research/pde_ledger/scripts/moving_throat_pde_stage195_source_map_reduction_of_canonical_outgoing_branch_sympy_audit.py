@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 178 — EXACT SOURCE-MAP REDUCTION OF THE CANONICAL OUTGOING BRANCH")
+banner("STAGE 195 — EXACT SOURCE-MAP REDUCTION OF THE CANONICAL OUTGOING BRANCH")
 
 # ---------------------------------------------------------------------------
 # I. Carry-forward isotropic retarded invariant tuple
@@ -186,7 +186,7 @@ expect_zero(
     sp.simplify((NQ_from_def * P0_target).subs({beta: 1, Sigma0: 0, Sigma5: 0}) - P0_target),
 )
 
-banner("STAGE 178 LEDGER")
+banner("STAGE 195 LEDGER")
 print("1. The isotropic retarded grouped-P2 one-pole branch carries the exact odd ratio")
 print("      Gammabar_5 / Gammabar_5^target = chi_Q N_Q,")
 print("   where N_Q := Pbar_0 / P0^target and P0^target = 54 G c_s^5/(5 a^5 c^5).")

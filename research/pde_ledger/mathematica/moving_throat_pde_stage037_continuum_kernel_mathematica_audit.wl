@@ -37,7 +37,7 @@ expectMatrixZero[name_String, expr_] := Module[{res, target},
   If[TrueQ[res === target], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 020 — CONTINUUM-KERNEL EXTRACTION"];
+banner["STAGE 037 — CONTINUUM-KERNEL EXTRACTION"];
 
 subbanner["1. Exact N/N and D/N modes"];
 

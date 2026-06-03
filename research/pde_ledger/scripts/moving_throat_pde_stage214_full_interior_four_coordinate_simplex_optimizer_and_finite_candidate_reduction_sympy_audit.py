@@ -38,7 +38,7 @@ def expect_true(name: str, condition: bool) -> None:
         raise AssertionError(f"{name} failed")
 
 
-banner("STAGE 197 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER")
+banner("STAGE 214 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER")
 banner("EXACT LIFTED STATIONARY SYSTEM AND FINITE ALGEBRAIC CANDIDATE REDUCTION")
 
 # ---------------------------------------------------------------------------
@@ -353,4 +353,4 @@ for blo in range(0, 8):
                             count_filter += 1
 print(f"verified interior non-improvement theorem on {count_filter} ordered integer samples")
 
-banner("STAGE 197 SYMPY AUDIT COMPLETED SUCCESSFULLY")
+banner("STAGE 214 SYMPY AUDIT COMPLETED SUCCESSFULLY")

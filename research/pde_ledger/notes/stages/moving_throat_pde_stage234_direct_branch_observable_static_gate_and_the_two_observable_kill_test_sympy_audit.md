@@ -434,4 +434,4 @@ The accompanying SymPy audit verifies:
 - and the canonical direct-branch families, including the balanced minimal-norm solution.
 
 Supporting file:
-- `moving_throat_pde_stage251_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py`
+- `moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py`

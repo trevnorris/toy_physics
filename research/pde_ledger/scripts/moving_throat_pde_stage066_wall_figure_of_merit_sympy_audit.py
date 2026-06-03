@@ -42,7 +42,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 49 — DIMENSIONLESS WALL FIGURE OF MERIT")
+banner("STAGE 66 — DIMENSIONLESS WALL FIGURE OF MERIT")
 
 V0, ell, a, L, J1, TX = sp.symbols("V0 ell a L J1 T_X", positive=True, real=True)
 Pe_req, Delta0, Deltainf = sp.symbols("Pe_req Delta_0 Delta_inf", positive=True, real=True)
@@ -98,7 +98,7 @@ expect_zero("J1 = I_f/H_w reduction", sp.simplify(W_wall.subs(J1, If / Hw) - W_H
 expect_zero("W_H(V0_fail)^2 - W_fail", sp.simplify(W_H.subs(V0**2, Hw * TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * If * Deltainf)) - W_fail))
 expect_zero("W_H(V0_suff)^2 - W_suff", sp.simplify(W_H.subs(V0**2, Hw * TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * If * Delta0)) - W_suff))
 
-banner("STAGE 49 AUDIT PASSED")
+banner("STAGE 66 AUDIT PASSED")
 print("1. The explicit thin-wall parent branch is controlled by one dimensionless wall figure of merit W_wall.")
 print("2. Fail/succeed are equivalent to comparing W_wall against the exact bounds Pe_req/Delta_inf and Pe_req/Delta_0.")
 print("3. In the constant-compressibility wall layer, the same statement holds for W_H.")

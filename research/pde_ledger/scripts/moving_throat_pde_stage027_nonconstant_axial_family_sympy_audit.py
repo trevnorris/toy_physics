@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage10_nonconstant_axial_family_sympy_audit.py
 
-SymPy audit for Stage 10 of the moving-throat PDE program.
+SymPy audit for Stage 27 of the moving-throat PDE program.
 
 Scope
 -----

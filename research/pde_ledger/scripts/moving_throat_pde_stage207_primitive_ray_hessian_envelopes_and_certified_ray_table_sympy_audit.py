@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 190 — PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE")
+banner("STAGE 207 — PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE")
 
 # ---------------------------------------------------------------------------
 # I. Exact primitive directional Hessian reduction
@@ -241,4 +241,4 @@ for label, (k_i, c_lo_i, c_hi_i) in primitive_row_data.items():
     print(f"primitive certified row ({label}) -> tau_lo, tau_hi =")
     sp.pprint((tau_lo_i, tau_hi_i))
 
-banner("STAGE 190 SYMPY AUDIT PASSED")
+banner("STAGE 207 SYMPY AUDIT PASSED")

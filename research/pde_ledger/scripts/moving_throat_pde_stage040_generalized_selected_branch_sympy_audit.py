@@ -50,7 +50,7 @@ R_U, eps = sp.symbols("R_U eps", positive=True, real=True)
 pi = sp.pi
 lam0 = sp.Rational(2, 9)
 
-banner("STAGE 23 — GENERALIZED SELECTED-BRANCH NORMALIZATION WITH SOURCE/LOADING MISMATCH")
+banner("STAGE 40 — GENERALIZED SELECTED-BRANCH NORMALIZATION WITH SOURCE/LOADING MISMATCH")
 
 subbanner("23.1 — Exact 2x2 selected-branch solve with a generic loading ratio q = z1/z0")
 
@@ -148,7 +148,7 @@ print("H_G (via G_general)  =", sp.factor(HG_direct))
 expect_zero("H_F cross-check (F_U vs F_general)", sp.simplify(HF - HF_direct))
 expect_zero("H_G cross-check (G_U vs G_general)", sp.simplify(HG - HG_direct))
 
-banner("STAGE 23 THEOREM LEDGER")
+banner("STAGE 40 THEOREM LEDGER")
 print("1. Once source and loading vectors differ, the Stage-18 normalization function deforms")
 print("   from the single-vector form F(xi,delta) to the exact two-vector function")
 print("      F_(q,eta)(xi,delta).")

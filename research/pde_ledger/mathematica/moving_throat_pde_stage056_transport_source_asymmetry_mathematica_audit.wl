@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 039 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY"];
+banner["STAGE 056 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY"];
 
 Clear[s, ell, dSigma, vSigma, pe];
 $Assumptions =

@@ -49,7 +49,7 @@ N_x = sp.simplify(
     / (kappa0_sq * (A - x) * (kappa0_sq * (x + DeltaK_sub) ** 2 + kappa1_sq * x**2) ** 2)
 )
 
-banner("STAGE 18.1 — EXACT D/N DIMENSIONLESS SHAPE FUNCTION")
+banner("STAGE 35.1 — EXACT D/N DIMENSIONLESS SHAPE FUNCTION")
 F = sp.simplify(N_x / (beta0 * kappa0_sq / A))
 F_target = sp.simplify((9 * delta + 11 * xi) ** 4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2) ** 2))
 print("eta =", eta)
@@ -61,7 +61,7 @@ R_target = sp.simplify(NQ * A / (beta0 * kappa0_sq))
 print("R_target =", R_target)
 print("Normalization locus: F(xi,delta) = R_target")
 
-banner("STAGE 18.2 — EXACT MONOTONICITY, ONSET, AND SOFTENING LIMITS")
+banner("STAGE 35.2 — EXACT MONOTONICITY, ONSET, AND SOFTENING LIMITS")
 dF = sp.simplify(sp.diff(F_target, xi))
 dF_target = sp.simplify(
     (9 * delta + 11 * xi) ** 3
@@ -81,7 +81,7 @@ soft_scaled_series = sp.series(eps_soft * F_target.subs(xi, 1 - eps_soft), eps_s
 print("eps_soft * F(1-eps_soft, delta) near eps_soft=0 =", soft_scaled_series)
 expect_zero("near-softening asymptotic coefficient", soft_scaled_series - soft_const_target)
 
-banner("STAGE 18.3 — EXACT REQUIRED TOTAL LOADING AND SUPPORT COUPLING")
+banner("STAGE 35.3 — EXACT REQUIRED TOTAL LOADING AND SUPPORT COUPLING")
 alpha_req = sp.simplify(alpha_x)
 alpha_req_target = sp.simplify(9 * sp.pi**2 * A * xi * (xi + delta) / (8 * (9 * delta + 11 * xi)))
 print("alpha_req(xi,delta) =")
@@ -98,7 +98,7 @@ gBreq_sq_over_varpi2 = sp.simplify(alpha_req_target - alpha_mix)
 print("g_B,req^2 / varpi^2 =")
 sp.pprint(gBreq_sq_over_varpi2)
 
-banner("STAGE 18.4 — EXACT ASYMPTOTICS OF THE NORMALIZATION LOCUS")
+banner("STAGE 35.4 — EXACT ASYMPTOTICS OF THE NORMALIZATION LOCUS")
 F_series = sp.series(F_target, xi, 0, 3).removeO()
 F_series_target = sp.simplify(1 + xi * (1 + sp.Rational(8, 9) / delta) + xi**2 * (1 + sp.Rational(8, 9) / delta - sp.Rational(28, 27) / delta**2))
 print("F(xi,delta) near xi=0 =", F_series)

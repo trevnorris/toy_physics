@@ -30,7 +30,7 @@ expectPositive[name_String, expr_] := Module[{shown, res},
   If[TrueQ[res], pass[name], fail[name, shown]];
 ];
 
-banner["STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT"];
+banner["STAGE 069 — FINAL REDUCED SUPPORT/SOURCE VERDICT"];
 
 Clear[PeReq, Delta0, DeltaGap, PresGap, Cres2Prim, Deltainf, Pres, Cres2, uFail, uSucc, vFail, vSucc, presGapFree];
 $Assumptions =

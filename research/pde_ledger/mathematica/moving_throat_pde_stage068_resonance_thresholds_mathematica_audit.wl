@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 051 — RESONANCE-CORRECTED THRESHOLDS"];
+banner["STAGE 068 — RESONANCE-CORRECTED THRESHOLDS"];
 
 Clear[C2, Cres, Wwall, Wres, Pres, PeReq, Delta0, Deltainf, Ain, Atrans, Wmatch, Wprof, DeltaSym];
 $Assumptions =

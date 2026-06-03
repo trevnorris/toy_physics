@@ -22,7 +22,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 38 — EXPLICIT LOWEST-LANE REACHABILITY")
+banner("STAGE 55 — EXPLICIT LOWEST-LANE REACHABILITY")
 
 # Paper-stated domain: alpha > 0, 0 < x < 4 (Stage 054 softening), 0 < y < pi/2
 # (principal branch of y tan y = eta), zeta_req > 0.  SymPy lacks compound

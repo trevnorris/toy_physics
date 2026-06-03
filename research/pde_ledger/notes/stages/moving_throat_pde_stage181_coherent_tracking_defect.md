@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 249: Coherent Tracking-Branch Weak-Axisymmetric Defect Law and the Support-Blindness Theorem
+# Moving-Throat PDE — Stage 181: Coherent Tracking-Branch Weak-Axisymmetric Defect Law and the Support-Blindness Theorem
 
 ## Purpose
 

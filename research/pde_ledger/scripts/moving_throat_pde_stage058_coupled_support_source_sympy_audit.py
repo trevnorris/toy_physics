@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 41 — COUPLED SUPPORT/SOURCE OPERATOR")
+banner("STAGE 58 — COUPLED SUPPORT/SOURCE OPERATOR")
 
 x, s = sp.symbols("x s", real=True)
 Pe, alpha, eta, Xi = sp.symbols("Pe alpha eta Xi", positive=True, real=True)

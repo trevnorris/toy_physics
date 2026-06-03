@@ -25,7 +25,7 @@ def expect_zero(name: str, expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 189 — CERTIFIED RAY RANKING AND LOCAL BRACKETING")
+banner("STAGE 206 — CERTIFIED RAY RANKING AND LOCAL BRACKETING")
 
 # ---------------------------------------------------------------------------
 # I. Exact monotone-branch quadratic root map
@@ -225,4 +225,4 @@ if monotone_good is not sp.S.true or turning_good is not sp.S.true:
 if monotone_bad is not sp.S.false:
     raise AssertionError("local sieve accepted a bracket with tau_hi > T")
 
-banner("STAGE 189 SYMPY AUDIT PASSED")
+banner("STAGE 206 SYMPY AUDIT PASSED")

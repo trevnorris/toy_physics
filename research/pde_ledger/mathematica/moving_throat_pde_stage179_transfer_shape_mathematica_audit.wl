@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 162 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM"];
+banner["STAGE 179 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM"];
 
 Clear[k, ou2, ow2, gw, gu, r];
 $Assumptions = Element[{k, ou2, ow2, gw, gu, r}, Reals] &&

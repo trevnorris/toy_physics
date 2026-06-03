@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 30 — COHERENT KERNEL MAP AUDIT")
+banner("STAGE 47 — COHERENT KERNEL MAP AUDIT")
 
 # Microscopic coherent-kernel symbols.
 Keta_eff, KU, KW_eff, Kphi_eff = sp.symbols("Keta_eff KU KW_eff Kphi_eff", positive=True, real=True)

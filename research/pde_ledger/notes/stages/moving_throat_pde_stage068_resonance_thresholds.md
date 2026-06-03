@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 51: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family
+# Moving-Throat PDE — Stage 68: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family
 
 ## Purpose
 

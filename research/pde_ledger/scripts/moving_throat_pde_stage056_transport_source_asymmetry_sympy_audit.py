@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 39 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY")
+banner("STAGE 56 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY")
 
 s, L = sp.symbols("s L", positive=True, real=True)
 Dsig, vsig = sp.symbols("D_sigma v_sigma", positive=True, real=True)

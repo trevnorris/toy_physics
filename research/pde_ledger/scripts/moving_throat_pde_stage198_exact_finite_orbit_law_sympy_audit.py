@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 181 — EXACT FINITE ORBIT LAW FOR THE DEPENDENT TRIPLE")
+banner("STAGE 198 — EXACT FINITE ORBIT LAW FOR THE DEPENDENT TRIPLE")
 
 # ---------------------------------------------------------------------------
 # Symbols
@@ -237,7 +237,7 @@ expect_zero("m_T at q=0 - 1", mT_from_q.subs({qtr: 0}) - 1)
 expect_zero("m_K at q=0 - 1", mK_from_q.subs({qeta: 0}) - 1)
 expect_zero("m_mu at q=0 - 1", mMu_from_q.subs({qtr: 0, qnt: 0, qeta: 0}) - 1)
 
-banner("STAGE 181 LEDGER")
+banner("STAGE 198 LEDGER")
 print("1. The exact coherent monomials are triangular in the dependent microscopic triple")
 print("      (T_U, K_eta^(eff), mu_W),")
 print("   so for fixed free microscopic coordinates and fixed invariant triple")

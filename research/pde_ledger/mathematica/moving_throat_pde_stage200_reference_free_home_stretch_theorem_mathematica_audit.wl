@@ -65,7 +65,7 @@ cntMonomial[lambdaW_, gamma_, kU_, kEta_, kW_, muW_, tU_, eStar_, fStar_, L_, si
 
 epsEtaMonomial[cEtaU_, kU_, kEta_] := cEtaU^2/(kU kEta);
 
-banner["STAGE 183 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM"];
+banner["STAGE 200 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM"];
 
 Clear[
   chi0s, deltaUs, eStar, fStar, L, sigma,
@@ -301,7 +301,7 @@ DeltaHLinear = normalizeExpr[Join[{DeltaQLinearExpected}, Mderived . Dvec]];
 Print["Delta_H^lin ="];
 Print[DeltaHLinear // MatrixForm];
 
-banner["STAGE 183 LEDGER"];
+banner["STAGE 200 LEDGER"];
 Print["1. The Packet-B quotient coordinates are derived from the primitive coherent monomials"];
 Print["      (C_tr, C_nt, eps_eta)"];
 Print["   and their logarithmic Jacobian reproduces the carried Stage 192 matrix M_*."];

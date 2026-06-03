@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 040 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP"];
+banner["STAGE 057 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP"];
 
 Clear[pe, kappa, y, zetaReq, x];
 $Assumptions =

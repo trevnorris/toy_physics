@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 053 — EXPLICIT GNLS WALL-SHELL REDUCTION"];
+banner["STAGE 070 — EXPLICIT GNLS WALL-SHELL REDUCTION"];
 
 Clear[a, L, ell, rhoW, cSw, V0, m, hbar, IfMoment, Ig, Hw];
 $Assumptions =
@@ -119,7 +119,7 @@ Module[{xi, fProf, fp, fpp, IfNum, IgNum, ruleNum, TxNum, KxNum, kappaNum,
     fail["Xi = W_wall numeric profile check", XiNum - XiCmp]];
 ];
 
-banner["STAGE 053 THEOREM LEDGER"];
+banner["STAGE 070 THEOREM LEDGER"];
 Print["T_X = pi a^2 ell I_f hbar^2 / (m rho_w)"];
 Print["K_X = 4 pi a^2 ell I_f H_w + pi a^2 I_g hbar^2 / (m rho_w ell)"];
 Print["kappa = 4 (m c_(s,w) L / hbar)^2 + (I_g/I_f)(L/ell)^2"];

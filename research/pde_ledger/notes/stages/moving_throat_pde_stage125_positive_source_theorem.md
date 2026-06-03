@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 227: Positive Local Mouth-Source Theorem
+# Moving-Throat PDE — Stage 125: Positive Local Mouth-Source Theorem
 
 ## Goal
 

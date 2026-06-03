@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage6_full_grouped_bundle_sympy_audit.py
 
-SymPy audit for Stage 6 of the moving-throat PDE program.
+SymPy audit for Stage 23 of the moving-throat PDE program.
 
 Scope
 -----

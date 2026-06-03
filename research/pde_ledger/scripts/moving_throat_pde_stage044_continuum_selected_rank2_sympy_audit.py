@@ -48,7 +48,7 @@ RU, Rphi = sp.symbols("R_U R_phi", positive=True, real=True)
 lambda0 = sp.Rational(2, 9)
 t = sp.symbols("t", real=True)
 
-banner("STAGE 27 — CONTINUUM-SELECTED RANK-2 CLOSURE")
+banner("STAGE 44 — CONTINUUM-SELECTED RANK-2 CLOSURE")
 
 subbanner("27.1 — Exact continuum-selected branch equation and quadratic theorem")
 
@@ -153,7 +153,7 @@ C_from_branch_eq = sp.simplify(sp.Poly(branch_eq, xi).nth(0) / 9)
 C_expected = sp.simplify(-delta * (Mmix + Msupp) + lambda0 * Mmix * Msupp * (RU - Rphi)**2)
 expect_zero("mismatch penalty in C coefficient", C_from_branch_eq - C_expected)
 
-banner("STAGE 27 THEOREM LEDGER")
+banner("STAGE 44 THEOREM LEDGER")
 print("1. The continuum-selected selected branch is fixed by the exact quadratic equation")
 print("      xi^2 + B_cont xi + C_cont = 0,")
 print("   with B_cont and C_cont determined by M_mix, M_supp, R_U, and R_phi.")

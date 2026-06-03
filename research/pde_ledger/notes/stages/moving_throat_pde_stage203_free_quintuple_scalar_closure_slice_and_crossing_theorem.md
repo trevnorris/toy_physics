@@ -42,10 +42,10 @@ The main outputs are:
 So Stage 237 is the first point where a reduced moving-throat branch search becomes a genuine **one-scalar spectral-placement problem** on the free-quintuple target graph.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage237_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py`
+- `scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py`
   checks the graph tangent formulas, graph-error packet compiler, inverse
   compiler, repair vector, and same-free-quintuple decomposition.
-- `mathematica/moving_throat_pde_stage237_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl`
+- `mathematica/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.wl`
   mirrors the same compiler algebra in the second CAS with no free decimal
   literals.
 

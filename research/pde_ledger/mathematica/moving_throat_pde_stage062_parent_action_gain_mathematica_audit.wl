@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 045 — PARENT ACTION GAIN"];
+banner["STAGE 062 — PARENT ACTION GAIN"];
 
 Clear[rho, capitalK, m, nPoly];
 $Assumptions =

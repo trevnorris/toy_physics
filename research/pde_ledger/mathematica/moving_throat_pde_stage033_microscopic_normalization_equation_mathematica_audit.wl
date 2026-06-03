@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 016 — MICROSCOPIC NORMALIZATION EQUATION"];
+banner["STAGE 033 — MICROSCOPIC NORMALIZATION EQUATION"];
 
 Clear[A, DeltaK, alpha0, beta0];
 $Assumptions =

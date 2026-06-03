@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 044 — MICROSCOPIC GAIN THRESHOLDS"];
+banner["STAGE 061 — MICROSCOPIC GAIN THRESHOLDS"];
 
 Clear[chiSigma, lambdaPhi, kX, tX, ell, kappa, eta, peReq, alpha];
 $Assumptions =

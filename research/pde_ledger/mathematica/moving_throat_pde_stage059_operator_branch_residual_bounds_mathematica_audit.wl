@@ -41,7 +41,7 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[TrueQ[diff <= tol], pass[name], fail[name, diff]];
 ];
 
-banner["STAGE 042 — OPERATOR BRANCH RESIDUAL BOUNDS"];
+banner["STAGE 059 — OPERATOR BRANCH RESIDUAL BOUNDS"];
 
 Clear[capitalXi, delta0, deltaInf, kappa, y, zetaReq, peReq, pe];
 $Assumptions =

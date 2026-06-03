@@ -29,7 +29,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 162 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM")
+banner("STAGE 179 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM")
 
 # Primitive static port data.
 K = sp.symbols("K", positive=True, real=True)

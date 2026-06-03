@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 030 — COHERENT KERNEL MAP"];
+banner["STAGE 047 — COHERENT KERNEL MAP"];
 
 Clear[kEtaEff, kU, kWEff, kPhiEff, lamW, lamPhi, gamma, cEtaU, tw, ell, tU, gConst, cs, a, c, muW, zeta];
 $Assumptions =

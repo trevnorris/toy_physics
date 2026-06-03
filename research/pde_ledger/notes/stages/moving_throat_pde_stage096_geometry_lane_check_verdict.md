@@ -9,7 +9,7 @@ Stages 77–78 were the direct answer to the open question left at Stage 76:
 This note records the verdict.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage147_geometry_lane_check_verdict_sympy_audit.py`
+- `scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py`
   rechecks the isotropic `l=0 <-> l=2` decoupling verdict and collapses the
   obstruction formula to the clean `3/4 + 1/4` conservative module.
 

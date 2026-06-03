@@ -46,7 +46,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 185 — EXACT FREE-QUINTUPLE TARGET GRAPH AND THE FIRST REDUCED-FAMILY TEST")
+banner("STAGE 202 — EXACT FREE-QUINTUPLE TARGET GRAPH AND THE FIRST REDUCED-FAMILY TEST")
 
 # ---------------------------------------------------------------------------
 # I. Carry-forward direct microscopic monomials
@@ -252,7 +252,7 @@ expect_zero(
     M_family.subs({TU: T_graph, Keta: Keta_graph, muW: mu_graph, chiQ: 1}) - sp.Matrix([1, 1, 1, 1]),
 )
 
-banner("STAGE 185 AUDIT COMPLETE")
+banner("STAGE 202 AUDIT COMPLETE")
 print("Result: the target orbit is an exact graph over the five free microscopic coordinates.")
 print("Result: the four-scalar reduced-family packet is (chi_Q-1, E_T, E_K, E_mu).")
 print("Result: the canonical repair vector is exactly minus the graph-error triple on the dependent coordinates.")

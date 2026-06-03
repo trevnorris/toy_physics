@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 025 — RANK-2 SELECTED-MODE NORMALIZATION"];
+banner["STAGE 042 — RANK-2 SELECTED-MODE NORMALIZATION"];
 
 Clear[a0, delta, xi, m, q, r, t, rU, eps];
 $Assumptions =

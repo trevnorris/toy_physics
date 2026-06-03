@@ -62,7 +62,7 @@ def expect_positive(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not provably positive")
 
 
-banner("STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT")
+banner("STAGE 069 — FINAL REDUCED SUPPORT/SOURCE VERDICT")
 
 Pe_req, Delta0, Delta_gap = sp.symbols("Pe_req Delta_0 Delta_gap", positive=True, real=True)
 Pres_gap, v_fail, v_succ = sp.symbols("Pres_gap v_fail v_succ", positive=True, real=True)

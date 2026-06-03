@@ -105,7 +105,7 @@ expect_zero("P0_- factorization", sp.simplify(P0_sel - P0_factored))
 print("P0_- =")
 sp.pprint(P0_factored)
 
-banner("STAGE 14 AUDIT COMPLETE")
+banner("STAGE 31 AUDIT COMPLETE")
 print("Verified:")
 print("  • exact overlap derivative ds_-/dalpha = 2 DK^2 kappa0^2 kappa1^2 / R^3")
 print("  • exact monotonicity identity for dP0_-/dalpha")

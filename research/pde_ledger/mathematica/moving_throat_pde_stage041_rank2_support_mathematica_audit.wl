@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 024 — RANK-2 SUPPORT COMPLETION"];
+banner["STAGE 041 — RANK-2 SUPPORT COMPLETION"];
 
 Clear[a0, delta, xi, m, n, q, r, rU, t];
 $Assumptions =

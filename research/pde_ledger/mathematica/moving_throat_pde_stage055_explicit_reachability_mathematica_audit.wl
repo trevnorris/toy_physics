@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 038 — EXPLICIT LOWEST-LANE REACHABILITY"];
+banner["STAGE 055 — EXPLICIT LOWEST-LANE REACHABILITY"];
 
 Clear[alpha, x, y, zetaReq];
 $Assumptions =

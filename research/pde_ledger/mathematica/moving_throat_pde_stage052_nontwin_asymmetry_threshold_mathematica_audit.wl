@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 035 — NON-TWIN ASYMMETRY THRESHOLD"];
+banner["STAGE 052 — NON-TWIN ASYMMETRY THRESHOLD"];
 
 Clear[piTr, cMix, eps, kW, kPhi0, omega0];
 $Assumptions =

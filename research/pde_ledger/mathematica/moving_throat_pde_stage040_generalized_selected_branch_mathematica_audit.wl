@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 023 — GENERALIZED SELECTED-BRANCH NORMALIZATION"];
+banner["STAGE 040 — GENERALIZED SELECTED-BRANCH NORMALIZATION"];
 
 Clear[a0, delta, z0, q, eta, xi, rU, eps, alpha];
 $Assumptions =

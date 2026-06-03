@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 46 — PARENT-OVERLAP THRESHOLD THEOREM")
+banner("STAGE 63 — PARENT-OVERLAP THRESHOLD THEOREM")
 
 rho_star, cs_star_sq = sp.symbols("rho_star cs_star_sq", positive=True, real=True)
 g_phi, KX, TX, L = sp.symbols("g_phi K_X T_X L", positive=True, real=True)

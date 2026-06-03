@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 005 — GROUPED P2 NORMALIZATION BRIDGE"];
+banner["STAGE 022 — GROUPED P2 NORMALIZATION BRIDGE"];
 
 Clear[omega, d0, d2, d4, n0, n2, n4, aa, bb, g5];
 $Assumptions =

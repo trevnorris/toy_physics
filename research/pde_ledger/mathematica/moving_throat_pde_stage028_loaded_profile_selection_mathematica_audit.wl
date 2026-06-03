@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 011 — LOADED PROFILE SELECTION"];
+banner["STAGE 028 — LOADED PROFILE SELECTION"];
 
 Clear[alpha, theta, Keta, TOmega, Tw, L, xvar, eps];
 $Assumptions =

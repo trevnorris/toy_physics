@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 31 — SUPPORT COMPENSATION THEOREM AUDIT")
+banner("STAGE 48 — SUPPORT COMPENSATION THEOREM AUDIT")
 
 xi, delta, R = sp.symbols("xi delta R", positive=True, real=True)
 eps, zeta = sp.symbols("eps zeta", positive=True, real=True)

@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 98: Exact Core-Balance Compensation Theorem
+# Moving-Throat PDE — Stage 115: Exact Core-Balance Compensation Theorem
 
 ## Goal
 

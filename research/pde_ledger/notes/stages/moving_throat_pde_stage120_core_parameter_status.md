@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 222: Core-Parameter Extraction Status
+# Moving-Throat PDE — Stage 120: Core-Parameter Extraction Status
 
 ## Result
 

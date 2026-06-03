@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 041 — COUPLED SUPPORT/SOURCE OPERATOR"];
+banner["STAGE 058 — COUPLED SUPPORT/SOURCE OPERATOR"];
 
 Clear[x, Pe, alpha, eta, Xi, pe0];
 $Assumptions = alpha > 0 && eta > 0 && Pe > 0 && Xi > 0 && 0 <= x <= 1;

@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 033 — PHYSICAL ZETA VS ZETA_REQ"];
+banner["STAGE 050 — PHYSICAL ZETA VS ZETA_REQ"];
 
 Clear[sReq, eps, zeta, n, x];
 $Assumptions =

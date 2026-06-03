@@ -29,7 +29,7 @@ expectPositiveCoefficients[name_String, expr_, vars_List] := Module[{coeffs},
   If[AllTrue[coeffs, Positive], pass[name], fail[name, coeffs]];
 ];
 
-banner["STAGE 029 — TRACKING-BRANCH BOUNDS"];
+banner["STAGE 046 — TRACKING-BRANCH BOUNDS"];
 
 Clear[xi, delta, r];
 $Assumptions =

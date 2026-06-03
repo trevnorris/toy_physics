@@ -48,7 +48,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 48 — THIN-WALL CONFINEMENT BRANCH")
+banner("STAGE 65 — THIN-WALL CONFINEMENT BRANCH")
 
 # Symbols
 V0, ell, a, KX = sp.symbols("V0 ell a K_X", positive=True, real=True)
@@ -182,7 +182,7 @@ Hw_num = sp.Integer(1)
 expect_zero("concrete profile: J1 equals I_f / H_w under constant compressibility",
             J1_num - If_num/Hw_num)
 
-banner("STAGE 48 AUDIT PASSED")
+banner("STAGE 65 AUDIT PASSED")
 print("1. The first explicit parent wall family gives g_phi = V0/ell.")
 print("2. The exact equilibrium gain scales like V0^2 times a shell integral of chi_phi^2/h'.")
 print("3. In the thin-wall limit the gain is controlled by a^2/ell, so thinner and wider active walls couple more strongly.")

@@ -33,7 +33,7 @@ dnHalfwaveMomentum[n_, l_] := FullSimplify[(n + 1/2) Pi/l];
 overlapRatio[n_] := FullSimplify[1/(2 n + 1)];
 twinSupportRatio[n_, x_] := FullSimplify[1/((2 n + 1)^2 (1 + x n (n + 1)))];
 
-banner["STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO"];
+banner["STAGE 49 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO"];
 
 Clear[n, s, l, lambdaStar, kWeff, kPhiEff, kX, tX];
 $Assumptions =

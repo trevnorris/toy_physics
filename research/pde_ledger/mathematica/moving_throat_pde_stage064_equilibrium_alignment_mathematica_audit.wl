@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 047 — EQUILIBRIUM ALIGNMENT"];
+banner["STAGE 064 — EQUILIBRIUM ALIGNMENT"];
 
 Needs["VariationalMethods`"];
 

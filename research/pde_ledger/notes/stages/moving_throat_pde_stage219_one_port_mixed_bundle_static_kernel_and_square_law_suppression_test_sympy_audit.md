@@ -483,7 +483,7 @@ The accompanying SymPy audit verifies:
 7. and the primitive-source product-kernel decomposition into the `x^{-6}`, `e^{-2\kappa x}/x^4`, and `e^{-4\kappa x}/x^2` families.
 
 Supporting file:
-- `moving_throat_pde_stage253_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py`
+- `moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py`
 
 ---
 

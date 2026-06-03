@@ -39,7 +39,7 @@ def expect_nonzero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is unexpectedly zero")
 
 
-banner("STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT")
+banner("STAGE 183 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT")
 
 # Physical branch variables.
 chi0, epsW, eps_eta, deltaU = sp.symbols('chi0 epsW eps_eta deltaU', positive=True, real=True)

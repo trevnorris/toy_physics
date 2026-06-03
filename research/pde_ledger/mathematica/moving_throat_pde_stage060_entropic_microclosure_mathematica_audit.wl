@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 043 — ENTROPIC MICROCLOSURE"];
+banner["STAGE 060 — ENTROPIC MICROCLOSURE"];
 
 Clear[s, ell, theta, sigmaStar, lambdaPhi, tX, kX, kM, mSigma, dSigma, chiSigma, kappa, eta, deltaDrop, phi0, pe];
 $Assumptions =

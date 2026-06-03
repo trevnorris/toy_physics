@@ -22,7 +22,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 37 — ROBIN-COMPLIANCE SOFTENING")
+banner("STAGE 54 — ROBIN-COMPLIANCE SOFTENING")
 
 s, L, k, h, y, eta = sp.symbols("s L k h y eta", positive=True, real=True)
 A, B = sp.symbols("A B", real=True)

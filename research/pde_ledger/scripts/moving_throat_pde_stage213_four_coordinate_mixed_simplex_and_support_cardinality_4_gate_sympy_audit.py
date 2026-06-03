@@ -39,7 +39,7 @@ def expect_true(name: str, condition: bool) -> None:
         raise AssertionError(f"{name} failed")
 
 
-banner("STAGE 196 — FOUR-COORDINATE MIXED SIMPLEX AND THE SUPPORT-CARDINALITY-4 GATE")
+banner("STAGE 213 — FOUR-COORDINATE MIXED SIMPLEX AND THE SUPPORT-CARDINALITY-4 GATE")
 
 # ---------------------------------------------------------------------------
 # I. Exact combinatorial ledger for primitive quadruples
@@ -399,4 +399,4 @@ for up3_lo in range(0, 8):
                             count_support4_filter += 1
 print(f"verified support-cardinality-4 non-improvement filter on {count_support4_filter} samples")
 
-banner("STAGE 196 SYMPY AUDIT COMPLETED SUCCESSFULLY")
+banner("STAGE 213 SYMPY AUDIT COMPLETED SUCCESSFULLY")

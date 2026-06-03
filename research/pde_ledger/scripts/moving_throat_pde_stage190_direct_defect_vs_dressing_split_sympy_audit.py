@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 173 — DIRECT DEFECT VS DRESSING SPLIT, SUPPORT-BLINDNESS, AND THE SCALAR NO-GO FILTERS")
+banner("STAGE 190 — DIRECT DEFECT VS DRESSING SPLIT, SUPPORT-BLINDNESS, AND THE SCALAR NO-GO FILTERS")
 
 # ---------------------------------------------------------------------------
 # I. Support-blindness of the direct transfer shape and corrected composite
@@ -266,7 +266,7 @@ expect_zero("I[x,x] - 7/10 eps^2 x1^2", Ixx - sp.Rational(7, 10) * epsax**2 * x1
 expect_zero("linear term in xbar", sp.diff(xbar, epsax).subs(epsax, 0))
 expect_zero("linear term in I[x,x] at eps=0", sp.diff(Ixx, epsax).subs(epsax, 0))
 
-banner("STAGE 173 LEDGER")
+banner("STAGE 190 LEDGER")
 print("1. The coherent first-order problem splits exactly into:")
 print("      direct packet   (Sigma_tr, Sigma_nt)")
 print("      dressing packet Sigma_eta")

@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 021 — DIMENSIONLESS CONTINUUM PLACEMENT"];
+banner["STAGE 038 — DIMENSIONLESS CONTINUUM PLACEMENT"];
 
 subbanner["1. Stage-20 continuum formulas"];
 

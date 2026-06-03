@@ -46,7 +46,7 @@ def grouped_inverse(xbar, ax, bx):
     return x20, x21, x22
 
 
-banner("STAGE 176 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL")
+banner("STAGE 193 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL")
 
 # ---------------------------------------------------------------------------
 # I. Exact grouped conservative trace/anomaly map and isotropic collapse
@@ -161,7 +161,7 @@ expect_zero(
 )
 expect_zero("D_eff at chi=0 - D2 I", sp.simplify(Deff.subs(chi, 0) - D2blk * I3))
 
-banner("STAGE 176 LEDGER")
+banner("STAGE 193 LEDGER")
 print("1. The exact grouped trace/anomaly map shows that the isotropic common-lane branch")
 print("   is equivalent to a2 = b2 = a4 = b4 = 0 on the conservative grouped bundle.")
 print("2. On that isotropic branch the one-pole defect is exactly")

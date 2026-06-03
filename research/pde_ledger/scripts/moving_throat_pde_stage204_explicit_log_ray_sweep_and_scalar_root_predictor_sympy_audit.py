@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 187 — EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR")
+banner("STAGE 204 — EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR")
 
 # ---------------------------------------------------------------------------
 # Symbols
@@ -222,4 +222,4 @@ expect_zero(
     diff_series + eps**2 / (2 * L0) - 2 * eps**3 / (3 * L0),
 )
 
-banner("STAGE 187 SYMPY AUDIT PASSED")
+banner("STAGE 204 SYMPY AUDIT PASSED")

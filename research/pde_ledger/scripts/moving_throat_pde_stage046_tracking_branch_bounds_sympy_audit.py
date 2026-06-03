@@ -36,7 +36,7 @@ def expect_positive_coefficients(name: str, expr: sp.Expr, *gens: sp.Symbol) -> 
         raise AssertionError(f"{name} has a non-positive coefficient")
 
 
-banner("STAGE 29 — TRACKING-BRANCH BOUNDS AUDIT")
+banner("STAGE 46 — TRACKING-BRANCH BOUNDS AUDIT")
 
 xi, delta, R = sp.symbols("xi delta R", positive=True, real=True)
 

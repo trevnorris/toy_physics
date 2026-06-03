@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 027 — CONTINUUM-SELECTED RANK-2 CLOSURE"];
+banner["STAGE 044 — CONTINUUM-SELECTED RANK-2 CLOSURE"];
 
 Clear[xi, delta, mMix, mSupp, rU, rPhi];
 $Assumptions =

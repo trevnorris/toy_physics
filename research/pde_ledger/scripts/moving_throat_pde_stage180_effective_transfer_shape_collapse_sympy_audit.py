@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 163 — EFFECTIVE TRANSFER-SHAPE COLLAPSE")
+banner("STAGE 180 — EFFECTIVE TRANSFER-SHAPE COLLAPSE")
 
 # ---------------------------------------------------------------------------
 # 1. Multi-port collapse to one effective transfer shape

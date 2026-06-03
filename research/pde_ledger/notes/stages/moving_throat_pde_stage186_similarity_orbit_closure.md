@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 237: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
+# Moving-Throat PDE — Stage 186: Exact Microscopic Similarity Orbit and the Final Tangent-Space Weak-Axisymmetric Closure Theorem
 
 ## Purpose
 

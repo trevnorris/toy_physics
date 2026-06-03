@@ -494,4 +494,4 @@ The accompanying SymPy audit verifies:
 - and the transported stricter `10%`-loss dynamic ceilings on the reference pure-transfer corridor and on each rigid survivor.
 
 Supporting file:
-- `moving_throat_pde_stage244_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py`
+- `moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py`

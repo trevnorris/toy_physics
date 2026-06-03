@@ -55,7 +55,7 @@ hwSym = 1;  (* hConst above; documented numerically here *)
 expectZero["independent: J1 = I_f / H_w under constant compressibility",
            j1Num - ifMomDirect/hwSym];
 
-banner["STAGE 048 — THIN-WALL CONFINEMENT BRANCH"];
+banner["STAGE 065 — THIN-WALL CONFINEMENT BRANCH"];
 
 Clear[v0, ell, a, kx, j1, j2, j3, peReq, delta0, deltaInf, tx, len, kappa, hw, ifMom];
 $Assumptions =

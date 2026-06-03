@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 219: Concrete Outlet-Core Status
+# Moving-Throat PDE — Stage 117: Concrete Outlet-Core Status
 
 The outlet-deformation problem is now much narrower.
 

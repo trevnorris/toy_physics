@@ -493,4 +493,4 @@ The accompanying SymPy audit verifies:
 - and the static-only and full orbit-lock correction compilers.
 
 Supporting file:
-- `moving_throat_pde_stage253_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py`
+- `moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.py`

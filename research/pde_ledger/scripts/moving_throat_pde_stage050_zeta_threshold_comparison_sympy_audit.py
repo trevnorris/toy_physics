@@ -31,7 +31,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 33 — PHYSICAL ZETA VS ZETA_REQ")
+banner("STAGE 50 — PHYSICAL ZETA VS ZETA_REQ")
 
 Sreq, eps = sp.symbols("S_req eps", positive=True, real=True)
 zeta = sp.symbols("zeta", real=True)

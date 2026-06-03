@@ -19,7 +19,7 @@ def expect_zero(name: str, expr):
         raise AssertionError(f"{name} != 0")
 
 
-banner("STAGE 44 — MICROSCOPIC GAIN THRESHOLDS")
+banner("STAGE 61 — MICROSCOPIC GAIN THRESHOLDS")
 
 # symbols
 chi, Lam, KX, TX, L = sp.symbols('chi_sigma Lambda_phi K_X T_X L', positive=True, real=True)
@@ -106,7 +106,7 @@ suff_stiff = sp.simplify(sp.limit(G_suff_inf_z, z, sp.oo) - Pe_req)
 expect_zero("stiff-support compliant-mouth limit: sqrt(kappa)*G_fail -> Pe_req", fail_stiff)
 expect_zero("stiff-support compliant-mouth limit: G_suff -> Pe_req", suff_stiff)
 
-banner("STAGE 44 THEOREM LEDGER")
+banner("STAGE 61 THEOREM LEDGER")
 print("1. The microscopic coupling is Xi_micro = kappa * G_micro with G_micro = chi_sigma Lambda_phi^2 / K_X.")
 print("2. The exact operator phase diagram is set by G_fail = Pe_req/[kappa Delta_inf] and G_suff = Pe_req/[kappa Delta_0].")
 print("3. Soft support is strongly disfavored: G_fail ~ Pe_req/kappa, G_suff ~ 2 Pe_req/kappa as kappa -> 0+.")

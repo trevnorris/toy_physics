@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 175 — EXACT ORBIT/QUOTIENT PROJECTORS AND THE MICROSCOPIC ORBIT-LOCK SPLIT")
+banner("STAGE 192 — EXACT ORBIT/QUOTIENT PROJECTORS AND THE MICROSCOPIC ORBIT-LOCK SPLIT")
 
 chi0s, deltaUs, Estar, Fstar = sp.symbols(
     "chi0_star deltaU_star E_star F_star", positive=True, real=True
@@ -193,7 +193,7 @@ zero_q = sp.Matrix([0, 0, 0])
 expect_zero("S * 0", sp.simplify(Sdep * zero_q))
 expect_zero("orbit-lock packet on orbit-law branch", sp.simplify(Mstar * Dx_orbit_expected))
 
-banner("STAGE 175 LEDGER")
+banner("STAGE 192 LEDGER")
 print("1. The finite Packet-B quotient coordinates are exactly q = M_* Delta x.")
 print("2. The dependent triple (Delta_T, Delta_Keta, Delta_mu) forms an exact pivot block")
 print("   with determinant 1 + chi0_* > 0.")

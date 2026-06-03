@@ -21,7 +21,7 @@ def expect_zero(name: str, expr) -> None:
     if expr != 0:
         raise AssertionError(f"{name} is not zero")
 
-banner("STAGE 53 — EXPLICIT GNLS WALL-SHELL REDUCTION")
+banner("STAGE 70 — EXPLICIT GNLS WALL-SHELL REDUCTION")
 
 a, L, ell = sp.symbols("a L ell", positive=True, real=True)
 rho_w, c_sw, V0 = sp.symbols("rho_w c_sw V0", positive=True, real=True)
@@ -75,7 +75,7 @@ print("g_phi =", gphi)
 print("Xi =", Xi)
 expect_zero("Xi - W_wall", Xi - Wwall)
 
-banner("STAGE 53 THEOREM LEDGER")
+banner("STAGE 70 THEOREM LEDGER")
 print("T_X = pi a^2 ell I_f hbar^2 / (m rho_w)")
 print("K_X = 4 pi a^2 ell I_f H_w + pi a^2 I_g hbar^2 / (m rho_w ell)")
 print("kappa = 4 (m c_(s,w) L / hbar)^2 + (I_g/I_f)(L/ell)^2")

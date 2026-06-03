@@ -62,7 +62,7 @@ def expect_negative(name: str, expr) -> None:
         raise AssertionError(f"{name} is not provably negative")
 
 
-banner("STAGE 186 — FREE-QUINTUPLE SCALAR CLOSURE SLICE AND CROSSING THEOREM")
+banner("STAGE 203 — FREE-QUINTUPLE SCALAR CLOSURE SLICE AND CROSSING THEOREM")
 
 chi0s, deltaUs, Estar, Fstar = sp.symbols(
     "chi0_star deltaU_star E_star F_star", positive=True, real=True
@@ -361,4 +361,4 @@ expect_zero("graph residual at tau_* = 1/2", hat_delta_root)
 if real_crossings != sp.FiniteSet(sp.Rational(1, 2)):
     raise AssertionError(f"unexpected real crossing set: {real_crossings}")
 
-banner("STAGE 186 SYMPY AUDIT PASSED")
+banner("STAGE 203 SYMPY AUDIT PASSED")

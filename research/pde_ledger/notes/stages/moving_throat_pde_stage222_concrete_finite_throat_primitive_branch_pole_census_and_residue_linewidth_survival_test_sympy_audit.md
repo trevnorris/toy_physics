@@ -455,7 +455,7 @@ The accompanying SymPy audit verifies all of the concrete algebra used here:
 
 Supporting file:
 
-- `moving_throat_pde_stage239_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py`
+- `moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py`
 
 ---
 

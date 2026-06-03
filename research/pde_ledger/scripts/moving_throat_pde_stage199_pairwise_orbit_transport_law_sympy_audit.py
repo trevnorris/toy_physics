@@ -37,7 +37,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 182 — EXACT PAIRWISE ORBIT-TRANSPORT LAW AND THE TWO-POINT ORBIT-LOCK THEOREM")
+banner("STAGE 199 — EXACT PAIRWISE ORBIT-TRANSPORT LAW AND THE TWO-POINT ORBIT-LOCK THEOREM")
 
 # ---------------------------------------------------------------------------
 # Symbols
@@ -400,7 +400,7 @@ expect_zero("m_T at equal free coordinates - r_T", mT.subs(special_free_equal) -
 expect_zero("m_K at equal free coordinates - r_K", mK.subs(special_free_equal) - rK)
 expect_zero("m_mu at equal free coordinates - r_mu", mMu.subs(special_free_equal) - rmu)
 
-banner("STAGE 182 LEDGER")
+banner("STAGE 199 LEDGER")
 print("1. For two positive microscopic states x^(1), x^(2), the exact finite pairwise log-ratio vector")
 print("      Delta x^(2<-1) = ln(x^(2)/x^(1))")
 print("   is acted on by the same Stage 192 map M_*.")

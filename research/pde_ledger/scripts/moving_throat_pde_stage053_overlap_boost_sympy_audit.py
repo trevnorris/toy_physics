@@ -22,7 +22,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 36 — EXACT OVERLAP-BOOST WINDOW")
+banner("STAGE 53 — EXACT OVERLAP-BOOST WINDOW")
 
 s, L, alpha = sp.symbols("s L alpha", positive=True, real=True)
 pi = sp.pi

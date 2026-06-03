@@ -30,7 +30,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 026 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT DIRECTION"];
+banner["STAGE 043 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT DIRECTION"];
 
 Clear[kU, kEtaEff, kPhiEff, deltaU, gU, gB, gS, gW, gR, kappa0, kappa1, muEta, muPhi, cEtaU, cB, cUphi, cW, cUW, epsEta, zPhi, sigma];
 $Assumptions =

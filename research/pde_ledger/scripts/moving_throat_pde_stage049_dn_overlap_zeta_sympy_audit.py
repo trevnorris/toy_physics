@@ -48,7 +48,7 @@ def twin_support_ratio(n: sp.Expr, x: sp.Expr) -> sp.Expr:
 
 
 def main() -> None:
-    banner("STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO")
+    banner("STAGE 49 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO")
 
     n = sp.symbols("n", integer=True, nonnegative=True)
     s = sp.symbols("s", real=True)

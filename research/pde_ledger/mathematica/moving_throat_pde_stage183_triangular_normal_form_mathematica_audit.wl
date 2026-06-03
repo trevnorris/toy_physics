@@ -29,7 +29,7 @@ expectNonzero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], fail[name, res], pass[name]];
 ];
 
-banner["STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT"];
+banner["STAGE 183 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT"];
 
 Clear[chi0, epsW, epsEta, deltaU, sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel, sigmaTr, sigmaNT];
 $Assumptions = Element[{chi0, epsW, epsEta, deltaU, sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel, sigmaTr, sigmaNT}, Reals] &&

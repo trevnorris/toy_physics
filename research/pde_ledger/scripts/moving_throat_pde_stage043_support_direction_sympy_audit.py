@@ -52,7 +52,7 @@ mu_eta, mu_phi = sp.symbols("mu_eta mu_phi", positive=True, real=True)
 ceU, cB, cUphi, cW, cUW = sp.symbols("c_etaU c_etaphi c_Uphi c_etaW c_UW", real=True, nonzero=True)
 eps_eta, Zphi = sp.symbols("eps_eta Z_phi", real=True)
 
-banner("STAGE 26 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION")
+banner("STAGE 43 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION")
 
 subbanner("26.1 — Exact effective support vector after eliminating the split U doublet")
 
@@ -169,7 +169,7 @@ print("R_phi - R_U =")
 sp.pprint(sp.factor(mismatch))
 expect_zero("mismatch formula", mismatch - mismatch_expected)
 
-banner("STAGE 26 THEOREM LEDGER")
+banner("STAGE 43 THEOREM LEDGER")
 print("1. The first symmetry-allowed U/phi continuum extension keeps the support loading rank-1,")
 print("   but rotates the support direction to the exact vector y.")
 print("2. The exact support-direction factor is")

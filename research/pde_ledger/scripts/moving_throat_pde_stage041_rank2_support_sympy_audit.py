@@ -48,7 +48,7 @@ q, r = sp.symbols("q r", real=True)
 lam0 = sp.Rational(2, 9)
 R_U = sp.symbols("R_U", positive=True, real=True)
 
-banner("STAGE 24 — RANK-2 SUPPORT COMPLETION")
+banner("STAGE 41 — RANK-2 SUPPORT COMPLETION")
 
 subbanner("24.1 — Exact rank-2 determinant and support-loading theorem")
 
@@ -139,7 +139,7 @@ dn_dm_src_expected = sp.simplify(
 )
 expect_zero("source-tied dn/dm", dn_dm_src - dn_dm_src_expected)
 
-banner("STAGE 24 THEOREM LEDGER")
+banner("STAGE 41 THEOREM LEDGER")
 print("1. The selected rank-2 wall problem remains analytically solvable because the")
 print("   determinant is linear in the support loading n.")
 print("2. The exact support-loading theorem is")

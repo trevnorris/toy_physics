@@ -2,7 +2,7 @@
 """
 moving_throat_pde_stage11_loaded_profile_selection_sympy_audit.py
 
-SymPy audit for Stage 11 of the moving-throat PDE program.
+SymPy audit for Stage 28 of the moving-throat PDE program.
 
 Scope
 -----

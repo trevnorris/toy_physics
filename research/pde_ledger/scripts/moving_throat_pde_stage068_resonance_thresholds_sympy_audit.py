@@ -34,7 +34,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 51 — RESONANCE-CORRECTED THRESHOLDS")
+banner("STAGE 68 — RESONANCE-CORRECTED THRESHOLDS")
 
 C2, W_wall, Pe_req, Delta0, Deltainf = sp.symbols(
     "C2 W_wall Pe_req Delta_0 Delta_inf", positive=True, real=True

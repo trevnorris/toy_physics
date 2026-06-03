@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 163 — EFFECTIVE TRANSFER-SHAPE COLLAPSE"];
+banner["STAGE 180 — EFFECTIVE TRANSFER-SHAPE COLLAPSE"];
 
 Clear[t1, t2, tau1, tau2, eps, lam];
 $Assumptions = Element[{t1, t2, tau1, tau2, eps, lam}, Reals] && t1 > 0 && t2 > 0;

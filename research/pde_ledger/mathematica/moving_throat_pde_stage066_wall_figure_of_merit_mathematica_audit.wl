@@ -29,7 +29,7 @@ expectTrue[name_String, cond_] := Module[{res},
   If[TrueQ[res], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 049 — DIMENSIONLESS WALL FIGURE OF MERIT"];
+banner["STAGE 066 — DIMENSIONLESS WALL FIGURE OF MERIT"];
 
 Clear[v0, ell, a, len, j1, tx, peReq, delta0, deltaInf, hw, ifMom, v0Sq, kx, kappa];
 $Assumptions =

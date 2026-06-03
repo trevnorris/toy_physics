@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 45 — PARENT-ACTION PROJECTION OF THE MICROSCOPIC GAIN")
+banner("STAGE 62 — PARENT-ACTION PROJECTION OF THE MICROSCOPIC GAIN")
 
 # EOS identities
 rho, K, m = sp.symbols("rho K m", positive=True, real=True)

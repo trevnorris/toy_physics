@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 018 — DIMENSIONLESS NORMALIZATION LOCUS"];
+banner["STAGE 035 — DIMENSIONLESS NORMALIZATION LOCUS"];
 
 Clear[A, beta0, NQ, xi, delta, Chi, OmegaU, Delta0];
 $Assumptions =

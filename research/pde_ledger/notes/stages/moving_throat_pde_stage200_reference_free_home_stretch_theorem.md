@@ -56,10 +56,10 @@ The main outputs are:
 So Stage 251 is the exact reference-free upgrade of the Stage 242 home-stretch theorem.
 
 Script-backed status:
-- `scripts/moving_throat_pde_stage251_reference_free_home_stretch_theorem_sympy_audit.py`
+- `scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py`
   checks the exact orbit-relative packet identities, chart conversions, and the
   final linearized four-scalar compiler.
-- `mathematica/moving_throat_pde_stage251_reference_free_home_stretch_theorem_mathematica_audit.wl`
+- `mathematica/moving_throat_pde_stage200_reference_free_home_stretch_theorem_mathematica_audit.wl`
   mirrors the same checkpoint algebra in the second CAS without introducing
   extra numeric literals.
 

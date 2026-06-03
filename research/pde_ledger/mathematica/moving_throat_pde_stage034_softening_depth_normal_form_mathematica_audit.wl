@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 017 — SOFTENING-DEPTH NORMAL FORM"];
+banner["STAGE 034 — SOFTENING-DEPTH NORMAL FORM"];
 
 Clear[kappa0Sq, kappa1Sq, A, DeltaK, beta0, lambda, x];
 $Assumptions =

@@ -34,7 +34,7 @@ groupedParts[x20_, x21_, x22_] := {
   FullSimplify[(x21 - x22)/2, Assumptions -> $Assumptions]
 };
 
-banner["STAGE 006 — FULL GROUPED BUNDLE"];
+banner["STAGE 023 — FULL GROUPED BUNDLE"];
 
 banner["SECTION I — WEIGHTED PROJECTOR CALCULUS"];
 Clear[x20, x21, x22];

@@ -32,7 +32,7 @@ def expect_zero(name: str, expr) -> None:
             raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 191 — PAIRWISE MIXED RAYS AND OFF-DIAGONAL HESSIAN SYNERGY")
+banner("STAGE 208 — PAIRWISE MIXED RAYS AND OFF-DIAGONAL HESSIAN SYNERGY")
 
 # ---------------------------------------------------------------------------
 # I. Exact pairwise mixed-ray family and oriented slope law
@@ -216,4 +216,4 @@ expect_zero(
     w_x_grad - 2 * ki * kj / (ki**2 + kj**2),
 )
 
-banner("STAGE 191 SYMPY AUDIT COMPLETED SUCCESSFULLY")
+banner("STAGE 208 SYMPY AUDIT COMPLETED SUCCESSFULLY")

@@ -23,7 +23,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 031 — SUPPORT COMPENSATION THEOREM"];
+banner["STAGE 048 — SUPPORT COMPENSATION THEOREM"];
 
 Clear[xi, delta, r, eps, zeta, mMix, sReq, sCrit];
 $Assumptions =

@@ -407,5 +407,5 @@ The accompanying SymPy audit verifies:
 
 Supporting files:
 
-- `moving_throat_pde_stage243_orbit_quotient_projectors_sympy_audit.py`
-- `moving_throat_pde_stage243_orbit_quotient_projectors_sympy_audit_output.txt`
+- `moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py`
+- `moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit_output.txt`

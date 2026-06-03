@@ -477,7 +477,7 @@ The accompanying audit verifies:
 - and the sample crossover depths for \(\delta=1/4,1/2,3/4\).
 
 Supporting file:
-- `moving_throat_pde_stage246_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.py`
+- `moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.py`
 
 ---
 

@@ -1,5 +1,5 @@
 
-# Moving-Throat PDE — Stage 228: Explicit Positive Source Families and the Family-1 Compensation Point
+# Moving-Throat PDE — Stage 126: Explicit Positive Source Families and the Family-1 Compensation Point
 
 ## Goal
 

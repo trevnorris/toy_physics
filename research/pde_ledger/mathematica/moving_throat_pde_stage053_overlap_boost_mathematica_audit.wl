@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 036 — EXACT OVERLAP-BOOST WINDOW"];
+banner["STAGE 053 — EXACT OVERLAP-BOOST WINDOW"];
 
 Clear[s, ell, alpha];
 $Assumptions = Element[{s, ell, alpha}, Reals] && ell > 0 && alpha > 0;

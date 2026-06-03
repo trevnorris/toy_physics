@@ -29,7 +29,7 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 034 — LOWEST TWIN CRITERION"];
+banner["STAGE 051 — LOWEST TWIN CRITERION"];
 
 Clear[xi, delta, r, lambda, eps, epsEta, chi0, mMix, zW, pBranch];
 $Assumptions =

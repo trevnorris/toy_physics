@@ -30,7 +30,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
-banner("STAGE 40 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP")
+banner("STAGE 57 — PHYSICAL (Pe, kappa, eta) PLACEMENT MAP")
 
 Pe, kappa, y, zeta_req = sp.symbols("Pe kappa y zeta_req", positive=True, real=True)
 

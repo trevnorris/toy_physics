@@ -178,6 +178,27 @@ def main() -> None:
     assert sp.simplify(transport_plus - 1 / sp.diff(V(r_plus_E), r_plus_E)) == 0
     assert sp.simplify(transport_minus - 1 / sp.diff(V(r_minus_E), r_minus_E)) == 0
 
+    # Dynamic diagnostics: lambda_th(E) = |V(r_+)/V'(r_+)| = |E/V'(r_+)|,
+    # the second equality holding because V(r_+(E)) = E at the outer turning point.
+    Vp_rp = sp.diff(V(r_plus_E), r_plus_E)             # V'(r_+(E_turn)), nonzero symbol
+    lambda_th_def = V(r_plus_E) / Vp_rp                # |V/V'| form (drop abs for the identity)
+    lambda_th_E = E_turn / Vp_rp                        # |E/V'| form
+    # Pre-substitution: the two forms are NOT identically equal (non-vacuous guard).
+    lambda_th_gap_raw = sp.simplify(lambda_th_def - lambda_th_E)
+    # Post turning-condition V(r_+(E)) = E: they coincide.
+    lambda_th_gap = sp.simplify(lambda_th_gap_raw.subs(V(r_plus_E), E_turn))
+    # Xi_turn is the front-end barrier scalar sampled at the outer turning point.
+    Xi1 = sp.Function("Xi1")
+    Xi_turn_sym = Xi1(r_plus_E)
+
+    print("lambda_th gap (raw)   =", lambda_th_gap_raw)
+    print("lambda_th gap (V=E)   =", lambda_th_gap)
+    print("Xi_turn symbolic      =", Xi_turn_sym)
+
+    assert lambda_th_gap_raw != 0          # non-vacuous: identity is not free
+    assert lambda_th_gap == 0              # identity holds under the turning condition
+    assert Xi_turn_sym == Xi1(r_plus_E)    # carried tag sampled at r_+(E)
+
     # ------------------------------------------------------------------
     # 4. Near-top parabolic normal form.
     # ------------------------------------------------------------------

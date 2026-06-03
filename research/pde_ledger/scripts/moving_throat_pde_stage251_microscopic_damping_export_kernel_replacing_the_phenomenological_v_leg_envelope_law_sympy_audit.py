@@ -78,7 +78,18 @@ def main() -> None:
     print("Gamma_3               =", Gamma3)
     print("Gamma_5               =", Gamma5)
 
-    assert sp.simplify(Gamma5 - PiVm**2 * a**5 * beta0 * sminus / (27 * cs**5 * lamminus)) == 0
+    s_kernel = sp.symbols("s_kernel", positive=True)
+    K_exp = sp.expand(Gamma3 * s_kernel**3 + Gamma5 * s_kernel**5)
+    coeff_s5 = sp.Poly(K_exp, s_kernel).coeff_monomial(s_kernel**5)
+    coeff_s3 = sp.Poly(K_exp, s_kernel).coeff_monomial(s_kernel**3)
+    assert sp.simplify(coeff_s5 - Gamma5) == 0
+    assert sp.simplify(coeff_s3 - Gamma3) == 0
+
+    k = sp.symbols("k", positive=True)
+    assert sp.simplify(Gamma5.subs(PiVm, k * PiVm) - k**2 * Gamma5) == 0
+    assert sp.simplify(P0_minus.subs(beta0, k * beta0) - k * P0_minus) == 0
+    assert sp.simplify(P0_minus.subs(sminus, k * sminus) - k * P0_minus) == 0
+    assert sp.simplify(P0_minus.subs(lamminus, k * lamminus) - P0_minus / k) == 0
 
     # ------------------------------------------------------------------
     # 3. Projected active-leg export kernel.
@@ -124,6 +135,13 @@ def main() -> None:
     safe_gamma3_hat = sp.simplify((mu_eta * (s0**2 - sc**2) / sc**3) / mu_eta)
     safe_gamma5_hat = sp.simplify((mu_eta * (s0**2 - sc**2) / sc**5) / mu_eta)
     root_shift = sp.simplify(-(G3 * s0**2 + G5 * s0**4) / (2 * mu_eta))
+    g = sp.symbols("g", positive=True)
+    eps1 = sp.symbols("eps1")
+    F_weak = sp.expand(
+        F.subs({kappaV: mu_eta * s0**2, G3: g * G3, G5: g * G5, s: s0 + g * eps1})
+    )
+    balance = sp.series(F_weak, g, 0, 2).removeO().coeff(g, 1)
+    eps1_sol = sp.solve(balance, eps1)[0]
 
     print("F(s)                  =", F)
     print("F'(s)                 =", Fprime)
@@ -133,10 +151,12 @@ def main() -> None:
     print("G3hat_safe (G5=0)     =", safe_gamma3_hat)
     print("G5hat_safe (G3=0)     =", safe_gamma5_hat)
     print("delta s (weak export) =", root_shift)
+    print("delta s (derived)     =", eps1_sol)
 
     assert sp.simplify(Fprime - (5 * G5 * s**4 + 3 * G3 * s**2 + 2 * mu_eta * s)) == 0
     assert sp.simplify(safe_eq - mu_eta * (s0**2 - sc**2 - G5 * sc**5 / mu_eta) / sc**3) == 0
     assert sp.simplify(safe_eq_hat - ((s0**2 - sc**2) / sc**3 - (G5 / mu_eta) * sc**2)) == 0
+    assert sp.simplify(eps1_sol - root_shift) == 0
 
     # ------------------------------------------------------------------
     # 6. Dimensionless half-plane rewrite.

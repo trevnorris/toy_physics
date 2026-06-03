@@ -58,6 +58,18 @@ def main() -> None:
 
     assert sp.simplify(eq_sub - eq_sub_expected) == 0
 
+    S_full, S_res = sp.symbols("S_full S_res", real=True)
+    S_cov = S_full - S_res
+    rhs_proj = -2 * S_full
+    rhs_res = -2 * S_res
+    rhs_sub = sp.simplify(rhs_proj - rhs_res)
+
+    print("S_cov                 =", S_cov)
+    print("subtracted RHS        =", rhs_sub)
+    print("matched -2*S_cov      =", -2 * S_cov)
+
+    assert sp.simplify(rhs_sub - (-2 * S_cov)) == 0
+
     # ------------------------------------------------------------------
     # 2. Volume-integrated aligned/anti-aligned closure.
     # ------------------------------------------------------------------
@@ -91,6 +103,21 @@ def main() -> None:
     assert sp.simplify(Hdot_sigma - Hdot_expected) == 0
     assert sp.simplify(Hdot_factored - Gamma0 * (1 + sigma * alpha_h)) == 0
     assert sp.simplify(Hdot_scale - eta_h * G0 * (1 + sigma * alpha_h)) == 0
+
+    Gplus2 = Gamma0 * (1 + alpha_h)
+    Gminus2 = Gamma0 * (1 - alpha_h)
+    branch_gap = sp.simplify(Gplus2 - Gminus2)
+
+    print("G_plus branch         =", Gplus2)
+    print("G_minus branch        =", Gminus2)
+    print("aligned-minus-anti gap=", branch_gap)
+
+    assert sp.simplify((Gplus2 - Gminus2) - 2 * Gamma0 * alpha_h) == 0
+    assert (Gplus2 - Gminus2).subs({Gamma0: 1, alpha_h: sp.Rational(1, 2)}) == 1 > 0
+    assert (Gplus2 - Gminus2).subs({Gamma0: 1, alpha_h: -sp.Rational(1, 2)}) == -1 < 0
+    assert Gplus2.subs({Gamma0: 1, alpha_h: sp.Rational(1, 2)}) > 0
+    assert Gminus2.subs({Gamma0: 1, alpha_h: sp.Rational(1, 2)}) > 0
+    assert Gminus2.subs({Gamma0: 1, alpha_h: sp.Rational(3, 2)}) < 0
 
     # ------------------------------------------------------------------
     # 3. Peak-ratio Möbius compiler and inverse.
@@ -149,7 +176,7 @@ def main() -> None:
     ratio_peak = peak_aligned / peak_antialigned
     alpha_peak_num = (ratio_peak - 1.0) / (ratio_peak + 1.0)
     ratio_final = hint_aligned / hint_antialigned
-    alpha_int_num = (ratio_integrated_report - 1.0) / (ratio_integrated_report + 1.0)
+    alpha_int_num = (ratio_final - 1.0) / (ratio_final + 1.0)
     alpha_final_num = (ratio_final - 1.0) / (ratio_final + 1.0)
 
     peak_difference = peak_aligned - peak_antialigned
@@ -184,7 +211,7 @@ def main() -> None:
     assert abs(ratio_peak - 4.94653917) < 5e-8
     assert abs(alpha_peak_num - 0.663669919237628) < 5e-13
     assert abs(ratio_final - ratio_integrated_report) < 5e-9
-    assert abs(alpha_int_num - 0.6085499908172678) < 5e-13
+    assert abs(alpha_int_num - 0.6085499908172678) < 5e-9
     assert abs(alpha_final_num - alpha_int_num) < 1e-10
     assert alpha_peak_num > alpha_int_num
     assert Xi_turn > 0.0

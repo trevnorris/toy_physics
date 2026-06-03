@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
-# Date: 2026-05-11T12:52:13-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ================================================================================
 1. Exact stationary non-rigid packet
@@ -28,12 +20,14 @@ det(H)                = a_U*a_V - chi_UV**2
 ================================================================================
 D_UV                  = a_V*chi_UV**2*f_U**2/(a_U*a_V - chi_UV**2)**2
 Expected D_UV         = a_V*chi_UV**2*f_U**2/(a_U*a_V - chi_UV**2)**2
+D_UV at opposite-sign point = 0.003937884170811954
 
 ================================================================================
 3. Exact finite physical compiler
 ================================================================================
 T^2 / T^2_ref         = exp(a_V*f_U/(a_U*a_V - chi_UV**2))
 epsilon_eta / eps_ref = exp(chi_UV*f_U/(a_U*a_V - chi_UV**2))
+R_target/R_ref (from identity) = (eps_eta_ref*exp(chi_UV*f_U/(a_U*a_V - chi_UV**2)) - 1)*exp(-a_V*f_U/(a_U*a_V - chi_UV**2))/(eps_eta_ref - 1)
 R_target / R_ref      = (eps_eta_ref*exp(chi_UV*f_U/(a_U*a_V - chi_UV**2)) - 1)*exp(-a_V*f_U/(a_U*a_V - chi_UV**2))/(eps_eta_ref - 1)
 Exact multiplicative check = 0
 
@@ -77,6 +71,7 @@ d/dLam    Delta_Keta = 0
 d/dvarrho Delta_Keta = 0
 d/dLam    Delta_mu = 0
 d/dvarrho Delta_mu = 0
+control d/dLam U_bad  = a_V/(a_U*a_V - chi_UV**2)
 
 ================================================================================
 7. Session-I readback
@@ -110,5 +105,3 @@ Verified objects:
 - exact dependent microscopic correction,
 - orbit-side / support-blind separation from the selected-support packet,
 - and a consistent Session-I readback of the reported U/V point.
-
-EXIT_CODE: 0

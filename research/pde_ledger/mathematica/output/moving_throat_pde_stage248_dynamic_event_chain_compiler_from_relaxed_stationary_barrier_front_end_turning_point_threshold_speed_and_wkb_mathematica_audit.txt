@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl
-# Date: 2026-05-11T13:27:27-06:00
-# Elapsed: 19s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 231 — DYNAMIC EVENT-CHAIN COMPILER FROM THE RELAXED STATIONARY BARRIER FRONT END
+STAGE 248 — DYNAMIC EVENT-CHAIN COMPILER FROM THE RELAXED STATIONARY BARRIER FRONT END
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -20,16 +12,22 @@ PASS: dE/dt on-shell
 ----------------------------------------------------------------------------------------
 II. Barrier-peak and threshold-speed compiler
 ----------------------------------------------------------------------------------------
-E(v_crit,new) - V_peak = 0
-PASS: E(v_crit,new) - V_peak
-solve(v_crit,new) - compiler = 0
-PASS: solve(v_crit,new) - compiler
+delta_new pre-substitution = (ms*v0^2)/2 + V0 - Vpeak
+PASS: delta_new non-vacuous gap
+delta_coul pre-substitution = r0^(-1) - rContact^(-1) + (ms*v0^2)/2
+PASS: delta_coul non-vacuous gap
+v_crit,new satisfies defining energy = 0
+PASS: v_crit,new satisfies defining energy
 delta_new vanishes at v_crit,new = 0
 PASS: delta_new vanishes at v_crit,new
-solve(v_contact,coul) - compiler = 0
-PASS: solve(v_contact,coul) - compiler
+v_contact,coul satisfies defining energy = 0
+PASS: v_contact,coul satisfies defining energy
 delta_coul vanishes at v_contact,coul = 0
 PASS: delta_coul vanishes at v_contact,coul
+v_crit,new positive branch = True
+PASS: v_crit,new positive branch
+v_contact,coul positive branch = True
+PASS: v_contact,coul positive branch
 
 ----------------------------------------------------------------------------------------
 III. Turning-point and WKB compiler
@@ -44,6 +42,12 @@ dr_+/dE transport law = 0
 PASS: dr_+/dE transport law
 dr_-/dE transport law = 0
 PASS: dr_-/dE transport law
+lambda_th gap (raw) = (-Eturn + Vfun[rpFun[Eturn]])/Derivative[1][Vfun][rpFun[Eturn]]
+PASS: lambda_th identity non-vacuous guard
+lambda_th identity under V(r_+)=E = 0
+PASS: lambda_th identity under V(r_+)=E
+Xi_turn sampled at r_+ = 0
+PASS: Xi_turn sampled at r_+
 
 ----------------------------------------------------------------------------------------
 IV. Near-top parabolic normal form
@@ -89,5 +93,3 @@ r_-(top) = -(Sqrt[2]*Sqrt[DeltaE/Kpeak]) + rPeak
 |V'(r_turn)| from lambda_th(session) = 5.8374628518457765
 
 All Stage 248 symbolic and benchmark-specialization checks passed.
-
-EXIT_CODE: 0

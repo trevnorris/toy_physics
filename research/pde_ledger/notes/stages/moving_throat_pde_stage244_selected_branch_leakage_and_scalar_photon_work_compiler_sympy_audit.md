@@ -363,7 +363,7 @@ Equivalently,
 \boxed{
 \mathcal W_w^{\rm bulk}(r)
 =
-\frac{196\sqrt2\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^{9/2}\lambda^3}
+\frac{128\sqrt2\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^{9/2}\lambda^3}
 \,\Lambda(r)^2\varrho(r)^2.
 }
 \]

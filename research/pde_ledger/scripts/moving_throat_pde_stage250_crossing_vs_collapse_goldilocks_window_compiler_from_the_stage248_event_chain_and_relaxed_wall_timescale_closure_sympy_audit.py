@@ -60,6 +60,15 @@ def main() -> None:
     print("t_cross(E)            =", tcross)
     print("dt_cross/dE           =", dtcross_dE)
 
+    x = sp.symbols("x", positive=True, real=True)  # x = E - Vpeak > 0
+    dtcross_dE_gap = sp.simplify(dtcross_dE.subs(E, Vpeak + x))
+    print("dt_cross/dE (x=E-Vpeak) =", dtcross_dE_gap)
+
+    assert sp.simplify(dtcross_dE_gap) == sp.simplify(
+        -sp.sqrt(2) * lam_eff * sp.sqrt(m_s) / (4 * x**sp.Rational(3, 2))
+    )
+    assert (dtcross_dE_gap < 0) == True
+
     # ------------------------------------------------------------------
     # 3. Collapse-time compiler from the unstable V-leg.
     # ------------------------------------------------------------------
@@ -81,15 +90,26 @@ def main() -> None:
     Sedge_eq = sp.Eq(S, 1)
     E_edge = sp.simplify(sp.solve(sp.Eq(S**2, 1), E)[0])
     dS_dE = sp.simplify(sp.diff(S, E))
+    dS_dE_gap = sp.simplify(dS_dE.subs(E, Vpeak + x))
     S_inf = sp.simplify(sp.limit(S, E, sp.oo))
 
     print("S(E)                  =", S)
     print("S(E)=1                =", Sedge_eq)
     print("E_edge                =", E_edge)
     print("dS/dE                 =", dS_dE)
+    print("dS/dE (x=E-Vpeak)     =", dS_dE_gap)
     print("limit_{E->oo} S(E)    =", S_inf)
 
     assert sp.simplify(E_edge - (Vpeak + lam_eff**2 * gUV * chi_peak * m_s / (2 * mu_eta))) == 0
+    assert sp.simplify(dS_dE_gap) == sp.simplify(
+        -sp.sqrt(2)
+        * sp.sqrt(chi_peak)
+        * sp.sqrt(gUV)
+        * lam_eff
+        * sp.sqrt(m_s)
+        / (4 * sp.sqrt(mu_eta) * x**sp.Rational(3, 2))
+    )
+    assert (dS_dE_gap < 0) == True
     assert S_inf == 0
 
     # ------------------------------------------------------------------

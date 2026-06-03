@@ -1,0 +1,62 @@
+
+========================================================================================
+STAGE 249 - CONDITIONAL HELICITY EXPORT DIAGNOSTIC
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Subscale transfer-law source
+----------------------------------------------------------------------------------------
+Scov = Sfull - Sres
+subtracted RHS = -2*Sfull + 2*Sres
+matched -2 Scov = -2*(Sfull - Sres)
+M1 projected-minus-resolved source = 0
+PASS: M1 projected-minus-resolved source
+
+----------------------------------------------------------------------------------------
+M2-M3. Closure reduction and peak inverse
+----------------------------------------------------------------------------------------
+M2 closure reduction = 0
+PASS: M2 closure reduction
+Rpk expression = (1 + ah)/(1 - ah)
+ah solved from Rpk = (-1 + Rpksym)/(1 + Rpksym)
+M3 peak Mobius inverse = 0
+PASS: M3 peak Mobius inverse
+
+----------------------------------------------------------------------------------------
+M4. Integrated ratio and scale cancellation
+----------------------------------------------------------------------------------------
+Hplus = etah*(I0 + I1)
+Hminus = etah*(I0 - I1)
+Rint = (I0 + I1)/(I0 - I1)
+M4 eta_h cancels = True
+PASS: M4 eta_h cancels
+M4 integrated ratio = 0
+PASS: M4 integrated ratio
+abar solved from Rint = (-1 + Rintsym)/(1 + Rintsym)
+M4 integrated Mobius inverse = 0
+PASS: M4 integrated Mobius inverse
+
+----------------------------------------------------------------------------------------
+M5. Session-II benchmark packet
+----------------------------------------------------------------------------------------
+Rpk benchmark = 4.9465391720732335
+alpha_pk benchmark = 0.6636699192376279
+Rfinal benchmark = 4.109209231260703
+abar benchmark = 0.6085499908172678
+M5 R_pk benchmark diff = 2.0732331407202764*^-9
+PASS: M5 R_pk benchmark
+M5 alpha_pk benchmark diff = 7.623721653970961*^-10
+PASS: M5 alpha_pk benchmark
+M5 final-load ratio diff = 1.2607026533828503*^-9
+PASS: M5 final-load ratio
+M5 abar_h benchmark diff = 8.172678089835017*^-10
+PASS: M5 abar_h benchmark
+M5 asymmetry ordering = True
+PASS: M5 asymmetry ordering
+M5 positive event-chain packet = True
+PASS: M5 positive event-chain packet
+
+========================================================================================
+Stage 249 Mathematica audit result
+========================================================================================
+All Mathematica checks passed.

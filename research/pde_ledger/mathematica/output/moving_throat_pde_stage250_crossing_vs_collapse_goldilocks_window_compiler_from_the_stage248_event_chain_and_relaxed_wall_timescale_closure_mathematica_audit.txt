@@ -1,0 +1,75 @@
+
+========================================================================================
+STAGE 250 - CROSSING VS COLLAPSE GOLDILOCKS WINDOW COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Crossing-time form and global monotonicity
+----------------------------------------------------------------------------------------
+M1 t_cross form = 0
+PASS: M1 t_cross form
+M1 dt_cross/dE = -1/2*(lambdaEff*Sqrt[ms/(En - Vpeak)^3])/Sqrt[2]
+M1 global dt_cross/dE < 0 = True
+PASS: M1 global dt_cross/dE < 0
+M1 global dt_cross/dE < 0 for x>0 = True
+PASS: M1 global dt_cross/dE < 0 for x>0
+
+----------------------------------------------------------------------------------------
+M2. Collapse-time compiler
+----------------------------------------------------------------------------------------
+M2 t_collapse = Sqrt[muEta/(chiPeak*gUV)]
+M2 Gamma_coll identity = 0
+PASS: M2 Gamma_coll identity
+
+----------------------------------------------------------------------------------------
+M3. Survival ratio and edge from Solve/Reduce
+----------------------------------------------------------------------------------------
+M3 S(E) = (lambdaEff*Sqrt[(chiPeak*gUV*ms)/(En*muEta - muEta*Vpeak)])/Sqrt[2]
+M3 Reduce edge = muEta > 0 && ms > 0 && lambdaEff > 0 && gUV > 0 && chiPeak > 0 && En == -1/2*(-(chiPeak*gUV*lambdaEff^2*ms) - 2*muEta*Vpeak)/muEta
+M3 E_edge from Solve = 0
+PASS: M3 E_edge from Solve
+M3 unique positive-domain edge = True
+PASS: M3 unique positive-domain edge
+
+----------------------------------------------------------------------------------------
+M4. Global one-sided Goldilocks window
+----------------------------------------------------------------------------------------
+M4 S(E)<1 iff E>E_edge globally = True
+PASS: M4 S(E)<1 iff E>E_edge globally
+
+----------------------------------------------------------------------------------------
+M5. Heavy-throat cancellation
+----------------------------------------------------------------------------------------
+M5 dE_edge/dm_s after mu_eta=alpha m_s = 0
+PASS: M5 dE_edge/dm_s after mu_eta=alpha m_s
+M5 heavy-throat edge value = 0
+PASS: M5 heavy-throat edge value
+
+----------------------------------------------------------------------------------------
+M6. Speed-space identity
+----------------------------------------------------------------------------------------
+M6 E_launch = (ms*v0^2)/2 + V0
+M6 v_safe,min^2 identity = 0
+PASS: M6 v_safe,min^2 identity
+
+----------------------------------------------------------------------------------------
+M7. Session-III benchmark numerics
+----------------------------------------------------------------------------------------
+M7 t_collapse diff = 2.121755215966914*^-9 (tol = 1/200000000)
+PASS: M7 t_collapse
+M7 E_safe,min diff = 3.757307442953106*^-8 (tol = 1/20000000)
+PASS: M7 E_safe,min
+M7 v_safe,min diff = 2.8909499932838756*^-9 (tol = 1/200000000)
+PASS: M7 v_safe,min
+M7 v_safe/v_crit diff = 7.627209974714333*^-10 (tol = 1/200000000)
+PASS: M7 v_safe/v_crit
+M7 t_collapse_raw diff = 2.877178495452881*^-9 (tol = 1/200000000)
+PASS: M7 t_collapse_raw
+M7 E_safe,min_raw diff = 1.0000036354540498*^-9 (tol = 1/20000000)
+PASS: M7 E_safe,min_raw
+M7 S(E_edge) diff = 2.220446049250313*^-16 (tol = 1/200000000000)
+PASS: M7 S(E_edge)
+M7 raw edge above relaxed edge = True
+PASS: M7 raw edge above relaxed edge
+
+All Stage 250 Mathematica checks passed.

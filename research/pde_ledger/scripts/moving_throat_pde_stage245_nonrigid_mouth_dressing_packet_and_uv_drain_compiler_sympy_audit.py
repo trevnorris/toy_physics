@@ -87,6 +87,13 @@ def main() -> None:
 
     assert sp.simplify(D_UV - D_expected) == 0
 
+    # Nonnegativity: the drain stays > 0 even on an opposite-sign branch (chi_UV < 0),
+    # which is the Session-I branch (U > 0, V < 0).  This is the stated physical claim.
+    drain_neg_chi = D_expected.subs({a_U: sp.Float("2.5"), a_V: sp.Float("3.0"),
+                                     chi_UV: sp.Float("-0.76"), f_U: sp.Float("0.33")})
+    print("D_UV at opposite-sign point =", sp.N(drain_neg_chi, 16))
+    assert float(drain_neg_chi) > 0
+
     # ------------------------------------------------------------------
     # 3. Exact finite physical compiler.
     # ------------------------------------------------------------------
@@ -96,16 +103,24 @@ def main() -> None:
 
     T2 = sp.simplify(T2_ref * sp.exp(U_sol))
     eps_eta = sp.simplify(eps_eta_ref * sp.exp(V_sol))
+    Lambda_0 = sp.symbols("Lambda_0", positive=True, real=True)
+    # Selected-branch identity: R_target * T^2 = Lambda_0 * (1 - eps_eta).
+    R_target_from_id     = Lambda_0 * (1 - eps_eta) / T2
+    R_target_ref_from_id = Lambda_0 * (1 - eps_eta_ref) / T2_ref
+    R_ratio_derived = sp.simplify(R_target_from_id / R_target_ref_from_id)
+    R_ratio_paper = sp.simplify(((1 - eps_eta_ref * sp.exp(V_sol)) / (1 - eps_eta_ref)) * sp.exp(-U_sol))
     R_ratio = sp.simplify(((1 - eps_eta_ref * sp.exp(V_sol)) / (1 - eps_eta_ref)) * sp.exp(-U_sol))
     R_exact_check = sp.simplify(R_ratio * sp.exp(U_sol) * (1 - eps_eta_ref) / (1 - eps_eta_ref * sp.exp(V_sol)) - 1)
 
     print("T^2 / T^2_ref         =", sp.simplify(T2 / T2_ref))
     print("epsilon_eta / eps_ref =", sp.simplify(eps_eta / eps_eta_ref))
+    print("R_target/R_ref (from identity) =", R_ratio_derived)
     print("R_target / R_ref      =", R_ratio)
     print("Exact multiplicative check =", R_exact_check)
 
     assert sp.simplify(T2 / T2_ref - sp.exp(U_sol)) == 0
     assert sp.simplify(eps_eta / eps_eta_ref - sp.exp(V_sol)) == 0
+    assert sp.simplify(R_ratio_derived - R_ratio_paper) == 0
     assert sp.simplify(R_exact_check) == 0
 
     # ------------------------------------------------------------------
@@ -177,6 +192,16 @@ def main() -> None:
         assert dLam == 0
         assert dvarrho == 0
 
+    # Positive control: a support-contaminated forcing must NOT be support-blind.
+    # If f_U secretly carried a support coordinate, U would depend on Lam, so the
+    # support-blindness check above must be capable of detecting it.
+    f_U_bad = f_U + Lam            # orbit forcing contaminated by support coordinate Lam
+    U_bad = sp.simplify(a_V * f_U_bad / Delta_UV)
+    dU_bad_dLam = sp.simplify(sp.diff(U_bad, Lam))
+    print("control d/dLam U_bad  =", dU_bad_dLam)
+    assert dU_bad_dLam != 0
+    assert sp.simplify(dU_bad_dLam - a_V / Delta_UV) == 0
+
     # ------------------------------------------------------------------
     # 7. Session-I readback.
     # ------------------------------------------------------------------
@@ -214,8 +239,10 @@ def main() -> None:
     print("R1_obs                =", R1_obs)
 
     assert abs(float(eps_eta_obs) - 0.28933482) < 5e-9
-    assert abs(float(U_rebuilt - U_obs)) < 1e-12
-    assert abs(float(V_rebuilt - V_obs)) < 1e-12
+    # Round-trip through the inverses is identically exact and is not a physics check;
+    # assert instead against the independently-recorded Session-I numbers.
+    assert abs(float(R_ratio_obs) - 0.87984149) < 5e-9
+    assert abs(float(R1_obs) - (-0.12762119)) < 5e-9
 
     # ------------------------------------------------------------------
     # 8. Final success banner.

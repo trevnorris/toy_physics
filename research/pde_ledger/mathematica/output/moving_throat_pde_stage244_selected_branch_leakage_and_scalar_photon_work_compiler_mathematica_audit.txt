@@ -1,0 +1,76 @@
+
+========================================================================================
+STAGE 244 - SELECTED-BRANCH LEAKAGE AND SCALAR-PHOTON WORK COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M4. Gaussian leakage and one-mode work
+----------------------------------------------------------------------------------------
+M1 boundary term = 0
+PASS: M1 boundary term
+M2 leakage compiler = 0
+PASS: M2 leakage compiler
+M3 bulk work = 0
+PASS: M3 bulk work
+M4 work-leak relation = 0
+PASS: M4 work-leak relation
+
+----------------------------------------------------------------------------------------
+M5. Session scalar and quadratic law
+----------------------------------------------------------------------------------------
+M5 session scalar = 0
+PASS: M5 session scalar
+M5 quadratic law = 0
+PASS: M5 quadratic law
+
+----------------------------------------------------------------------------------------
+M6. Selected-support pullback
+----------------------------------------------------------------------------------------
+M6 Pi_tr = 0
+PASS: M6 Pi_tr
+M6 Pi_tr varrho = 0
+PASS: M6 Pi_tr varrho
+M6 S pullback epsilon = 0
+PASS: M6 S pullback epsilon
+M6 Wbulk pullback epsilon = 0
+PASS: M6 Wbulk pullback epsilon
+M6 Wsess pullback epsilon = 0
+PASS: M6 Wsess pullback epsilon
+
+----------------------------------------------------------------------------------------
+M7. Support/orbit split
+----------------------------------------------------------------------------------------
+Spull orbit-free = True
+PASS: Spull orbit-free
+Spull support-dependent = True
+PASS: Spull support-dependent
+Wbulkpull orbit-free = True
+PASS: Wbulkpull orbit-free
+Wbulkpull support-dependent = True
+PASS: Wbulkpull support-dependent
+Wsesspull orbit-free = True
+PASS: Wsesspull orbit-free
+Wsesspull support-dependent = True
+PASS: Wsesspull support-dependent
+
+----------------------------------------------------------------------------------------
+M8. Transport-orientation parity
+----------------------------------------------------------------------------------------
+M8 Spull odd in etaleak = 0
+PASS: M8 Spull odd in etaleak
+M8 Wbulkpull even in etaleak = 0
+PASS: M8 Wbulkpull even in etaleak
+M8 Wsesspull even in etaleak = 0
+PASS: M8 Wsesspull even in etaleak
+
+----------------------------------------------------------------------------------------
+M9. Recovery slice
+----------------------------------------------------------------------------------------
+M9 Spull eta=0 = 0
+PASS: M9 Spull eta=0
+M9 Wbulkpull eta=0 = 0
+PASS: M9 Wbulkpull eta=0
+M9 Wsesspull eta=0 = 0
+PASS: M9 Wsesspull eta=0
+
+All Stage 244 Mathematica checks passed.

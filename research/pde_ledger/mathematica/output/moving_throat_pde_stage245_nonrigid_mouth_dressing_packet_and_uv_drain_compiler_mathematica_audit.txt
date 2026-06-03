@@ -1,0 +1,132 @@
+
+========================================================================================
+STAGE 245 -- NON-RIGID MOUTH/DRESSING PACKET AND U/V DRAIN COMPILER
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Stationary packet
+----------------------------------------------------------------------------------------
+F_nr(U,V) = -(fU*uVar) + (aU*uVar^2)/2 - chiUV*uVar*vVar + (aV*vVar^2)/2
+stationary solution = {uVar -> ConditionalExpression[(fU - (chiUV^2*fU)/(-(aU*aV) + chiUV^2))/aU, Element[eps, Reals] && Element[Lam, Reals] && Element[u1, Reals] && Element[v1, Reals] && Element[varrho, Reals] && Element[chiUV | fU, Reals]], vVar -> ConditionalExpression[-((chiUV*fU)/(-(aU*aV) + chiUV^2)), Element[eps, Reals] && Element[Lam, Reals] && Element[u1, Reals] && Element[v1, Reals] && Element[varrho, Reals] && Element[chiUV | fU, Reals]]}
+Delta_UV = aU*aV - chiUV^2
+U_sol = (aV*fU)/(aU*aV - chiUV^2)
+V_sol = (chiUV*fU)/(aU*aV - chiUV^2)
+Hessian = MatrixForm[{{aU, -chiUV}, {-chiUV, aV}}]
+M1 U_sol closed form = 0
+PASS: M1 U_sol closed form
+M1 V_sol closed form = 0
+PASS: M1 V_sol closed form
+M1 V_sol/U_sol ratio = 0
+PASS: M1 V_sol/U_sol ratio
+M1 Hessian determinant = 0
+PASS: M1 Hessian determinant
+M1 U_sol at f_U=0 = 0
+PASS: M1 U_sol at f_U=0
+M1 V_sol at f_U=0 = 0
+PASS: M1 V_sol at f_U=0
+M1 V_sol at chi_UV=0 = 0
+PASS: M1 V_sol at chi_UV=0
+M1 U_sol at chi_UV=0 = 0
+PASS: M1 U_sol at chi_UV=0
+
+----------------------------------------------------------------------------------------
+M2. Drain form
+----------------------------------------------------------------------------------------
+D_UV = (aV*chiUV^2*fU^2)/(-(aU*aV) + chiUV^2)^2
+M2 drain closed form = 0
+PASS: M2 drain closed form
+
+----------------------------------------------------------------------------------------
+M3. Drain nonnegativity on opposite-sign branch
+----------------------------------------------------------------------------------------
+D_UV at opposite-sign point = 0.003937884170811952585829425378168928184795421891076295507`30.
+M3 opposite-sign drain > 0 = True
+PASS: M3 opposite-sign drain > 0
+
+----------------------------------------------------------------------------------------
+M4. Finite physical compiler from selected-branch identity
+----------------------------------------------------------------------------------------
+T^2/T^2_ref = E^((aV*fU)/(aU*aV - chiUV^2))
+epsilon_eta/eps_ref = E^((chiUV*fU)/(aU*aV - chiUV^2))
+R_target/R_ref from identity = (-1 + E^((chiUV*fU)/(aU*aV - chiUV^2))*epsref)/(E^((aV*fU)/(aU*aV - chiUV^2))*(-1 + epsref))
+M4 R_target ratio from identity = 0
+PASS: M4 R_target ratio from identity
+M4 T^2 compiler = 0
+PASS: M4 T^2 compiler
+M4 epsilon_eta compiler = 0
+PASS: M4 epsilon_eta compiler
+
+----------------------------------------------------------------------------------------
+M5. Dependent microscopic correction
+----------------------------------------------------------------------------------------
+dependent correction = {0, -((chiUV*fU)/(aU*aV - chiUV^2)), (aV*fU)/(aU*aV - chiUV^2) - (chiUV*fU)/(aU*aV - chiUV^2)}
+M5 dependent microscopic correction =
+MatrixForm[{{0, 0, 0}}]
+PASS: M5 dependent microscopic correction
+
+----------------------------------------------------------------------------------------
+M6. First-order packet
+----------------------------------------------------------------------------------------
+Xi1 = u1
+R1 + Xi1 = (epsref*v1)/(-1 + epsref)
+R1 = -u1 + (epsref*v1)/(-1 + epsref)
+M6 Xi1 coefficient = 0
+PASS: M6 Xi1 coefficient
+M6 R1+Xi1 coefficient = 0
+PASS: M6 R1+Xi1 coefficient
+M6 R1 coefficient = 0
+PASS: M6 R1 coefficient
+M6 packet consistency = 0
+PASS: M6 packet consistency
+
+----------------------------------------------------------------------------------------
+M7. Orbit-side support-blindness with positive control
+----------------------------------------------------------------------------------------
+M7 d/dLam U_sol = 0
+PASS: M7 d/dLam U_sol
+M7 d/dvarrho U_sol = 0
+PASS: M7 d/dvarrho U_sol
+M7 d/dLam V_sol = 0
+PASS: M7 d/dLam V_sol
+M7 d/dvarrho V_sol = 0
+PASS: M7 d/dvarrho V_sol
+M7 d/dLam epseta = 0
+PASS: M7 d/dLam epseta
+M7 d/dvarrho epseta = 0
+PASS: M7 d/dvarrho epseta
+M7 d/dLam Rtarget/Rtargetref = 0
+PASS: M7 d/dLam Rtarget/Rtargetref
+M7 d/dvarrho Rtarget/Rtargetref = 0
+PASS: M7 d/dvarrho Rtarget/Rtargetref
+M7 d/dLam drain = 0
+PASS: M7 d/dLam drain
+M7 d/dvarrho drain = 0
+PASS: M7 d/dvarrho drain
+M7 d/dLam Delta_Keta = 0
+PASS: M7 d/dLam Delta_Keta
+M7 d/dvarrho Delta_Keta = 0
+PASS: M7 d/dvarrho Delta_Keta
+M7 d/dLam Delta_mu = 0
+PASS: M7 d/dLam Delta_mu
+M7 d/dvarrho Delta_mu = 0
+PASS: M7 d/dvarrho Delta_mu
+control d/dLam U_bad = aV/(aU*aV - chiUV^2)
+M7 positive control detects support contamination = True
+PASS: M7 positive control detects support contamination
+M7 positive control exact derivative = 0
+PASS: M7 positive control exact derivative
+
+----------------------------------------------------------------------------------------
+M8. Session-I readback
+----------------------------------------------------------------------------------------
+epsilon_eta(obs) = 0.2893348201239259834363923923913937364`20.
+R_target/R_ref(obs) = 0.8798414919352427452091015447734448352`20.
+R1_obs = -0.12762119`20.
+M8 epsilon_eta Session-I diff = 1.2392598343639239239139373639508944851579498371532963445797556372203`40.33073167628974*^-10
+PASS: M8 epsilon_eta Session-I
+M8 R_target/R_ref Session-I diff = 1.93524274520910154477344483520950910455788262466064400027727563274534`41.04130101410716*^-9
+PASS: M8 R_target/R_ref Session-I
+M8 R1 Session-I diff = 0``50.59304721446475
+PASS: M8 R1 Session-I
+
+Stage 245 Mathematica audit passed.

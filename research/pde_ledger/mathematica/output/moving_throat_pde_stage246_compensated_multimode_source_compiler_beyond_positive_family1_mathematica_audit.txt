@@ -1,0 +1,71 @@
+
+========================================================================================
+STAGE 246 - COMPENSATED MULTIMODE SOURCE COMPILER BEYOND POSITIVE FAMILY-1
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1-M3. Direct moment integrals
+----------------------------------------------------------------------------------------
+M1 mean preservation = 0
+PASS: M1 mean preservation
+M2 mouth-bias functional = True
+PASS: M2 mouth-bias functional
+M3 shell-loading functional = True
+PASS: M3 shell-loading functional
+
+----------------------------------------------------------------------------------------
+M4. Exact minimum via MinValue
+----------------------------------------------------------------------------------------
+M4 minimum at a=1/2,b=-1/5 delta = 0
+PASS: M4 minimum at a=1/2,b=-1/5
+M4 minimum at a=5/2,b=1/4 delta = 0
+PASS: M4 minimum at a=5/2,b=1/4
+M4 minimum at a=1/2,b=1/2 delta = 0
+PASS: M4 minimum at a=1/2,b=1/2
+
+----------------------------------------------------------------------------------------
+M5. Two-moment map
+----------------------------------------------------------------------------------------
+M5 det(Msrc) = 0
+PASS: M5 det(Msrc)
+M5 inverse coefficients = True
+PASS: M5 inverse coefficients
+
+----------------------------------------------------------------------------------------
+M6-M7. Quarter-ratio and compensation line
+----------------------------------------------------------------------------------------
+M6 quarter-ratio lower branch = 0
+PASS: M6 quarter-ratio lower branch
+M6 quarter-ratio upper branch = 0
+PASS: M6 quarter-ratio upper branch
+M7 compensation line = 0
+PASS: M7 compensation line
+
+----------------------------------------------------------------------------------------
+M8. Transported sign-change threshold
+----------------------------------------------------------------------------------------
+M8 transported boundary minimum = 0
+PASS: M8 transported boundary minimum
+M8 threshold solves to r bound = True
+PASS: M8 threshold solves to r bound
+
+----------------------------------------------------------------------------------------
+M9. Session-I numeric readback
+----------------------------------------------------------------------------------------
+M9 g(r_eval) delta = 4.0792916822240954*^-9
+PASS: M9 g(r_eval)
+M9 S(r_eval) delta = 1.46563250424947*^-9
+PASS: M9 S(r_eval)
+M9 R(r_eval) delta = 1.5593850377637608*^-9
+PASS: M9 R(r_eval)
+M9 sigmaMin(r_eval) delta = 3.891730493421619*^-9
+PASS: M9 sigmaMin(r_eval)
+M9 g(0) > 1 = True
+PASS: M9 g(0) > 1
+M9 rThr > r_eval = True
+PASS: M9 rThr > r_eval
+
+========================================================================================
+Stage 246 Mathematica audit result
+========================================================================================
+All Mathematica checks passed.

@@ -3,14 +3,14 @@
 > Resume doc. Read this + the files it points to, then continue. Written before a
 > planned compaction so a fresh context picks up exactly here.
 
-> **STATUS (2026-06-03): ✅ INTEGRITY REMEDIATION COMPLETE; FIRST PASS through stage 242.**
+> **STATUS (2026-06-03): ✅ INTEGRITY REMEDIATION COMPLETE; ✅ FIRST END-TO-END PASS COMPLETE — 253/253 (100%).**
 > All 29 FINDINGS stages remediated across batches 1–8 (closed). First pass RESUMED:
 > **V.2 = {176–187} DONE (12/12, committed 96eb26b).** **V.3 = {188–200} DONE — 13/13 verified
 > (2026-06-01; batch `redteam/batches/batch_V3_v2.md`; consult `redteam/codex_reviews/_consult_V3.md`).**
 > **RETRO-SWEEP {121, 122, 123} DONE — 3/3 dual-engine `.wl` verified (2026-06-01; batch `redteam/batches/batch_retro_v2.md`).**
 > **VI.1 = {201–218} DONE — 18/18 verified (2026-06-02; batch `redteam/batches/batch_VI1_v2.md`; checkpoints 203 & 218 both cleared the higher bar; 16 new independent `.wl` + 218 re-authored + 203 strengthened; 5 paper_misalignment user-resolved; `material_change: false` on all 18).**
 > **VII.1 = {219–230} DONE + COMMITTED — 12/12 verified (2026-06-02; this commit, see git log; batch `redteam/batches/batch_VII1_v2.md`; checkpoint 221 cleared the higher bar [existing `.wl` re-authored from a transliteration to an independent route]; 11 new independent `.wl` + 221 re-authored = 12 independent, 0 sanctioned mirrors; 7 notes-only paper_misalignment user-resolved [5 numerical typos, each CROSS-ENGINE-CORROBORATED by the new `.wl`, + 2 renumbers], published cards/appendices UNAFFECTED; 6 script-side de-taut/insufficient/hardcoded fixes; `material_change: false` on all 12; all 12 codex iter-1 exit 0, 0 stop-cold, 0 blocked, 0 iter-2; residuals → PAPER_CLEANUP P4-53).**
-> Cumulative **242/253 verified (95.7%)** — VII.2 {231–242} closed + COMMITTED 2026-06-03 (this commit, see git log).
+> Cumulative **253/253 verified (100%)** — VII.2 {231–242} COMMITTED 2026-06-03 (`5860b3a`); **VIII.1 {243–253} closed + COMMITTED 2026-06-03 (this commit, see git log) → the first end-to-end red-team pass is COMPLETE.** Every stage 001–253 is paper-aligned at v2 depth with an independent dual-engine audit (except the legitimately single-engine status-only stages).
 >
 > **⚠️ DUAL-ENGINE RULE CORRECTION (user-clarified 2026-06-01 — governs ALL remaining work):**
 > a Mathematica `.wl` is REQUIRED on every stage where Mathematica CAN independently verify the
@@ -73,21 +73,42 @@
 >    drift [232 "Stage 249", 234 "251", 235 "251/252/253", 236 "253" — known EM-extension renumber] → PAPER_CLEANUP
 >    (post-253 stem-keyed pass, NEVER offset-sweep, per memory `numbering-drift-root-cause`). The `.wl`-naming grep
 >    guard held 0/12. **COMMITTED 2026-06-03 (this commit, see git log).**
-> 5. **VIII.1 = {243–253}** — NEXT + FINAL forward batch (11 stages) → reaches stage **253 = first pass complete**.
->    Same forward first-pass loop under the v2
->    paper-grounded prompt WITH the dual-engine rule: audit agents flag `missing_mathematica` (auditor
->    line 118) on every SymPy-only-but-dual-engine-capable stage; Codex writes BOTH `.py` fixes AND new
->    `.wl`; Claude reviews only ([[feedback-claude-reviews-codex-codes]], [[feedback-dual-engine-required]]).
->    Per-stage loop: `render-audit-prompt` → audit agent (writes report+directive) → resolve any
->    paper_misalignment at the user gate → `set-status fixing` → `codex-invoke` (≤2 parallel; **DEFER
->    exec until BOTH wave builds finish** — seat contention) → `scan` (register any new `.wl`) →
->    `exec-sympy`+`exec-mathematica` (sequential) + refresh `output/*.txt` → `capture-diff` →
->    `render-verify-prompt` → clean verify agent → `set-status verified`. ⚠️ **Before each `codex-invoke`,
->    GREP the directive's `.wl` target for the `_mathematica_audit.wl` suffix** — VI.1 audit agents
->    dropped it on 4 of 18. (The 11 status-only single-engine stages elsewhere compute nothing →
->    legitimately single-engine.)
-> The planned full end-to-end **second pass** (`[[project-full-second-pass]]`) is a LATER cross-check,
-> only after the first pass reaches stage 253 — NOT the next step.
+> 5. ✅ **VIII.1 = {243–253} DONE — 11/11 verified 2026-06-03** (batch `batch_VIII1_v2.md`; `material_change: false`
+>    on all 11; 0 stop-cold; 0 ultimately-blocked). **Reaching stage 253 COMPLETES the first end-to-end pass.**
+>    Dual-engine: **8 NEW independent-route `.wl` (244,245,246,247,249,250,251,252) + 3 RE-AUTHORED checkpoint
+>    `.wl` (243,248,253 — all three were line-by-line transliterations; ALL THREE cleared the higher bar)** =
+>    11 independent Mathematica audits, 0 sanctioned mirrors. **5 NOTES-ONLY paper_misalignment USER-RESOLVED**
+>    (correct-to-script; published cards UNAFFECTED; each cross-engine/internally corroborated): 247 notes:406
+>    Δ `210.17750000→142.17750000`; 253 notes:274 benchmark `187.23361317→119.23361317` + notes:419 a_int
+>    `10.95423247→10.95423248`; 244 notes:366 `196√2→128√2`; 248 notes:506 `×168%→×100%` (recurs the stale "168"
+>    at 148/232). **NOTE: the audit agents MISATTRIBUTED 247/253 to the published cards (`stage_NNN.tex:407/274`)
+>    but the orchestrator verified the cards are clean (247=93 lines, 253=140 lines) — all 5 are NOTES-ONLY.**
+>    **1 iter-2 (stage 248 F2):** the `Reduce`/`ToRules` re-derivation was a Wolfram-version dead end Codex
+>    correctly BLOCKED on iter-1 → orchestrator REFRAMED to a native SATISFACTION route (compiler closed forms
+>    verified to satisfy their defining energy equalities + non-vacuity + positive-branch guards; Claude
+>    math-coverage resolution, NON-conceptual, no paper edit) → Codex iter-2 applied → verified. Dominant defect
+>    theme (continuing from VII.2) = the **variable-independence self-test trap** (244-F1/245-F1) + tautological/
+>    round-trip checks (246/247/249/251/252/253); 250 = a global claim tested at one sample point → fixed to
+>    global strict monotonicity via `Resolve[ForAll]`. In-loop stale-`.wl`-banner fixes: 243 `STAGE 226→243`,
+>    248 `STAGE 231→248`, 253 banner→253. **Stale-value catch:** `CHECKPOINT_CONSTANT_PROVENANCE.md` carried a
+>    pre-existing stale `136.23361317476524` in the stage-253 outputs list (since `5860b3a`) — the verified
+>    engines compute `119.23361317476524`; corrected this close. **NO new numbering residual** (notes titles
+>    243–253 all canonical; `.wl` banners fixed in-loop). The `.wl`-naming grep guard held 0/11. 6 trackers
+>    synced (PAPER_CLEANUP **P4-55**). **COMMITTED 2026-06-03 (this commit, see git log).**
+>
+> ## ✅ FIRST END-TO-END PASS COMPLETE — POST-253 WORK (gated, awaits explicit user go)
+> The first full red-team pass over all 253 stages is DONE. Two follow-ups remain, BOTH gated on the user:
+> 1. **Project-wide stem-keyed numbering reconciliation** (the deferred cleanup the user flagged). Resolve the
+>    accumulated stale stage-number drift in ONE pass over the whole project, NOT per-batch, NEVER an
+>    offset-sweep: build a `stem→canonical` lookup from `scripts/`, map every `stageNNN_<stem>` citation and
+>    bare-prose `Stage NNN` ref deterministically. Known residuals logged: **P4-53** (VII.1 — 219/221/222/
+>    223-title/227/228/229 notes + `.wl` banners 221/227), **P4-54** (VII.2 — notes-title drift 232/234/235/236).
+>    VIII.1 added NO new residual. Codex applies (notes + `.wl` are Codex-owned), Claude reviews (grep no stale
+>    label remains + spot-check each ref's target matches its description). See memory `[[numbering-drift-root-cause]]`.
+> 2. **The planned full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — a comprehensive re-run as a
+>    cross-check, now that the first pass has reached 253. The user planned this as the ultimate cross-check
+>    AFTER the first pass completes (intermediate retrofit cross-checks were skipped in favor of this single run).
+> Sequence between (1) and (2) is the user's call.
 > **✅ V.3 COMMITTED 2026-06-01** (this commit; see git log): 12 new `.wl` + 1 edited `.wl` (200) +
 > 4 edited `.py` (188/189/193/195) + 2 relabeled `.py` (189/191) + refreshed outputs +
 > reports/directives/verifications/`_consult_V3.md`/`batch_V3_v2.md` + 6 synced trackers + this handoff.

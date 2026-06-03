@@ -271,7 +271,7 @@ On the raw microscopic slice \(\Upsilon_{\rm lat}=1\), this implies the much str
 \boxed{
 (\lambda_{\rm ep}\omega_D\,t_{\rm cross}^{\rm phys})_{\min}^{\rm(micro)}
 \approx
-\frac{187.23361317}{\zeta_{\rm ep}}.
+\frac{119.23361317}{\zeta_{\rm ep}}.
 }
 \]
 The legacy Session-V slice is recovered by the benchmark factor
@@ -416,7 +416,7 @@ then the stiffness formulas become
 \boxed{
  k_{\rm eff,req}
  =
- 10.95423247\,
+ 10.95423248\,
  \frac{E_*[\mathrm{eV}]}{a_{\rm int}^2[\mathrm{\AA}^2]}
  \quad \mathrm{eV/\AA^2},
 }

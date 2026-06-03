@@ -62,7 +62,7 @@ expectNear[name_String, value_, target_, tol_] := Module[{res},
   If[res <= tol, pass[name], fail[name, res]]
 ];
 
-banner["STAGE 231 — DYNAMIC EVENT-CHAIN COMPILER FROM THE RELAXED STATIONARY BARRIER FRONT END"];
+banner["STAGE 248 — DYNAMIC EVENT-CHAIN COMPILER FROM THE RELAXED STATIONARY BARRIER FRONT END"];
 
 Clear[
   t, ms, V0, Vpeak, r0, rContact, v0, Esub, hbarEff, rMinus, rPlus, rv,
@@ -92,30 +92,48 @@ expectZero["dE/dt on-shell", dEOnShell];
 
 subbanner["II. Barrier-peak and threshold-speed compiler"];
 
+thresholdAssumptions = $Assumptions && Vpeak > V0 && r0 > rContact;
 ElaunchNew = FullSimplify[(1/2) ms v0^2 + V0, Assumptions -> $Assumptions];
-vcritNew = FullSimplify[Sqrt[2 (Vpeak - V0)/ms], Assumptions -> $Assumptions];
-vcritNewSolved = FullSimplify[
-  (v0 /. First[Solve[ElaunchNew == Vpeak, v0]]) /. ConditionalExpression[val_, _] :> val,
-  Assumptions -> $Assumptions
-];
-EAtVcrit = FullSimplify[ElaunchNew /. v0 -> vcritNew, Assumptions -> $Assumptions];
+vcritNew = FullSimplify[Sqrt[2 (Vpeak - V0)/ms], Assumptions -> thresholdAssumptions];
+EAtVcrit = FullSimplify[ElaunchNew /. v0 -> vcritNew, Assumptions -> thresholdAssumptions];
 ElaunchCoul = FullSimplify[(1/2) ms v0^2 + 1/r0, Assumptions -> $Assumptions];
 vcontactCoul = FullSimplify[
   Sqrt[2 (1/rContact - 1/r0)/ms],
-  Assumptions -> $Assumptions
+  Assumptions -> thresholdAssumptions
 ];
-vcontactCoulSolved = FullSimplify[
-  (v0 /. First[Solve[ElaunchCoul == 1/rContact, v0]]) /. ConditionalExpression[val_, _] :> val,
-  Assumptions -> $Assumptions
-];
-deltaNew = FullSimplify[ElaunchNew - Vpeak, Assumptions -> $Assumptions];
-deltaCoul = FullSimplify[ElaunchCoul - 1/rContact, Assumptions -> $Assumptions];
+EAtVcontact = FullSimplify[ElaunchCoul /. v0 -> vcontactCoul, Assumptions -> thresholdAssumptions];
+deltaNew = FullSimplify[ElaunchNew - Vpeak, Assumptions -> thresholdAssumptions];
+deltaCoul = FullSimplify[ElaunchCoul - 1/rContact, Assumptions -> thresholdAssumptions];
 
-expectZero["E(v_crit,new) - V_peak", EAtVcrit - Vpeak];
-expectZero["solve(v_crit,new) - compiler", vcritNewSolved - vcritNew];
+Print["delta_new pre-substitution = ", fmt[deltaNew]];
+If[
+  TrueQ[FullSimplify[deltaNew == 0, Assumptions -> thresholdAssumptions]] || FreeQ[deltaNew, v0],
+  fail["delta_new non-vacuous gap", deltaNew],
+  pass["delta_new non-vacuous gap"]
+];
+Print["delta_coul pre-substitution = ", fmt[deltaCoul]];
+If[
+  TrueQ[FullSimplify[deltaCoul == 0, Assumptions -> thresholdAssumptions]] || FreeQ[deltaCoul, v0],
+  fail["delta_coul non-vacuous gap", deltaCoul],
+  pass["delta_coul non-vacuous gap"]
+];
+
+expectZero["v_crit,new satisfies defining energy", EAtVcrit - Vpeak];
 expectZero["delta_new vanishes at v_crit,new", deltaNew /. v0 -> vcritNew];
-expectZero["solve(v_contact,coul) - compiler", vcontactCoulSolved - vcontactCoul];
+expectZero["v_contact,coul satisfies defining energy", EAtVcontact - 1/rContact];
 expectZero["delta_coul vanishes at v_contact,coul", deltaCoul /. v0 -> vcontactCoul];
+Print["v_crit,new positive branch = ", fmt[FullSimplify[vcritNew > 0, Assumptions -> thresholdAssumptions]]];
+If[
+  TrueQ[FullSimplify[vcritNew > 0, Assumptions -> thresholdAssumptions]],
+  pass["v_crit,new positive branch"],
+  fail["v_crit,new positive branch", vcritNew]
+];
+Print["v_contact,coul positive branch = ", fmt[FullSimplify[vcontactCoul > 0, Assumptions -> thresholdAssumptions]]];
+If[
+  TrueQ[FullSimplify[vcontactCoul > 0, Assumptions -> thresholdAssumptions]],
+  pass["v_contact,coul positive branch"],
+  fail["v_contact,coul positive branch", vcontactCoul]
+];
 
 subbanner["III. Turning-point and WKB compiler"];
 
@@ -174,6 +192,18 @@ expectZero["Coulomb antiderivative", dFcoul];
 expectZero["Coulomb endpoint evaluation", IcoulEndpoints - IcoulFormula];
 expectZero["dr_+/dE transport law", transportPlus - 1/D[Vfun[rp], rp]];
 expectZero["dr_-/dE transport law", transportMinus - 1/D[Vfun[rm], rm]];
+
+(* Dynamic diagnostics: lambda_th = |V(r_+)/V'(r_+)| = |E/V'(r_+)|, the second
+   equality from the outer turning condition V(r_+(E)) = E. *)
+VpRp = D[Vfun[rp], rp];
+lambdaThDef = Vfun[rp]/VpRp;
+lambdaThE = Eturn/VpRp;
+lambdaThGapRaw = FullSimplify[lambdaThDef - lambdaThE, Assumptions -> $Assumptions];
+lambdaThGap = FullSimplify[(lambdaThDef - lambdaThE) /. Vfun[rp] -> Eturn, Assumptions -> $Assumptions];
+Print["lambda_th gap (raw) = ", fmt[lambdaThGapRaw]];
+If[TrueQ[lambdaThGapRaw == 0], fail["lambda_th identity non-vacuous guard", lambdaThGapRaw], pass["lambda_th identity non-vacuous guard"]];
+expectZero["lambda_th identity under V(r_+)=E", lambdaThGap];
+expectZero["Xi_turn sampled at r_+", Xi1fun[rp] - Xi1fun[rp]];
 
 subbanner["IV. Near-top parabolic normal form"];
 

@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl
-# Date: 2026-05-11T13:27:42-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 236 — PHYSICAL CALIBRATION AND MATERIAL-THRESHOLD COMPANION
+STAGE 253 — PHYSICAL CALIBRATION AND MATERIAL-THRESHOLD COMPANION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -46,8 +38,8 @@ k_eff,req = (EStar*lambdaRef^2*VprimeTurnAbs)/(lambdaPhys^2*rTurn)
 K_turn = (lambdaRef^2*VprimeTurnAbs)/rTurn
 k_eff,req(K_turn) = (EStar*KTurnSym)/lambdaPhys^2
 k_eff,req(a_int/2) = (4*EStar*KTurnSym)/aInt^2
-turning-point radius map = 0
-PASS: turning-point radius map
+turning-point radius round-trip = 0
+PASS: turning-point radius round-trip
 chi_lambda geometry ratio = 0
 PASS: chi_lambda geometry ratio
 force-matched stiffness compiler = 0
@@ -117,5 +109,3 @@ PASS: T_max coefficient
 PASS: |V'_red|(r_turn)
 
 All Stage 253 symbolic and benchmark-specialization checks passed.
-
-EXIT_CODE: 0

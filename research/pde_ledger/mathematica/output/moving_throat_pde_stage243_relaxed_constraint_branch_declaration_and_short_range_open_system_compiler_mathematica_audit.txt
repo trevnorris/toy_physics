@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_mathematica_audit.wl
-# Date: 2026-05-11T13:26:58-06:00
-# Elapsed: 7s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 226 — RELAXED-CONSTRAINT BRANCH DECLARATION AND SHORT-RANGE OPEN-SYSTEM COMPILER
+STAGE 243 — RELAXED-CONSTRAINT BRANCH DECLARATION AND SHORT-RANGE OPEN-SYSTEM COMPILER
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -16,8 +8,12 @@ I. Exact open-system leakage/work lane
 ----------------------------------------------------------------------------------------
 boundary term = 0
 PASS: boundary term
+IBP closure = 0
+PASS: IBP closure
 exact leakage scalar = 0
 PASS: exact leakage scalar
+work half-line symmetry = 0
+PASS: work half-line symmetry
 exact work scalar = 0
 PASS: exact work scalar
 S_leak vanishes on ell_w = 0 = 0
@@ -28,10 +24,12 @@ PASS: W_work vanishes on ell_w = 0
 ----------------------------------------------------------------------------------------
 II. Exact non-rigid U/V response and drain
 ----------------------------------------------------------------------------------------
-U solution = 0
-PASS: U solution
-V solution = 0
-PASS: V solution
+U/V satisfy stationarity =
+MatrixForm[{{0, 0}}]
+PASS: U/V satisfy stationarity
+U/V equal LinearSolve =
+MatrixForm[{{0, 0}}]
+PASS: U/V equal LinearSolve
 det Hessian = 0
 PASS: det Hessian
 V/U ratio = 0
@@ -54,10 +52,12 @@ unit-mean source normalization = 0
 PASS: unit-mean source normalization
 trivial source slice = 0
 PASS: trivial source slice
-quadratic source rewrite = 0
-PASS: quadratic source rewrite
+quadratic rewrite (functional) = 0
+PASS: quadratic rewrite (functional)
 interior stationary point = 0
 PASS: interior stationary point
+vertex is stationary = 0
+PASS: vertex is stationary
 vertex value = 0
 PASS: vertex value
 left boundary value = 0
@@ -100,7 +100,15 @@ lim x deltaV_stat = 0
 PASS: lim x deltaV_stat
 lim x Re V_dyn = 0
 PASS: lim x Re V_dyn
+x QQ -> 0 (series) = 0
+PASS: x QQ -> 0 (series)
+x QY -> 0 (series) = 0
+PASS: x QY -> 0 (series)
+x YY -> 0 (series) = 0
+PASS: x YY -> 0 (series)
+x deltaV_stat -> 0 (series) = 0
+PASS: x deltaV_stat -> 0 (series)
+x Re V_dyn -> 0 (series) = 0
+PASS: x Re V_dyn -> 0 (series)
 
 All Stage 243 symbolic checks passed.
-
-EXIT_CODE: 0

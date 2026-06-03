@@ -1,11 +1,3 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
-# Date: 2026-05-11T12:52:12-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ================================================================================
 1. Exact Gaussian leakage compiler
@@ -42,15 +34,15 @@ W_sess pullback       = 2048*Lam**2*eta_leak**2*mu_w*q*rho0*(eps - 1)**2/(9*pi**
 ================================================================================
 4. Support-versus-orbit split and recovery slice
 ================================================================================
-d/dR_tr    S_leak = 0
-d/dR_targetS_leak = 0
-d/deps_eta S_leak = 0
-d/dR_tr    W_bulk = 0
-d/dR_targetW_bulk = 0
-d/deps_eta W_bulk = 0
-d/dR_tr    W_sess = 0
-d/dR_targetW_sess = 0
-d/deps_eta W_sess = 0
+S_leak free symbols      = [Lam, eta_leak, lam, mu_w, rho0, varrho]
+S_leak orbit overlap     = []
+S_leak support coverage  = [Lam, eta_leak, varrho]
+W_bulk free symbols      = [Lam, eta_leak, lam, mu_w, q, rho0, varrho]
+W_bulk orbit overlap     = []
+W_bulk support coverage  = [Lam, eta_leak, varrho]
+W_sess free symbols      = [Lam, eta_leak, lam, mu_w, q, rho0, varrho]
+W_sess orbit overlap     = []
+W_sess support coverage  = [Lam, eta_leak, varrho]
 Recovery eta_leak=0: S_leak = 0
 Recovery eta_leak=0: W_bulk = 0
 Recovery eta_leak=0: W_sess = 0
@@ -74,5 +66,3 @@ Verified objects:
 - exact support-versus-orbit separation of the compiled leakage/work lane,
 - exact orientation parity,
 - and exact recovery of the closed standard slice at eta_leak = 0.
-
-EXIT_CODE: 0

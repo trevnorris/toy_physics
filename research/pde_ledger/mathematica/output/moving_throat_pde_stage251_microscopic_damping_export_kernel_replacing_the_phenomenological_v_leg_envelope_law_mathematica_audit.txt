@@ -1,0 +1,115 @@
+
+========================================================================================
+STAGE 251 - MICROSCOPIC DAMPING/EXPORT KERNEL
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Cubic scalar outlet from a Series coefficient
+----------------------------------------------------------------------------------------
+N0 series = (2*eta0^2*omega^4*omu0^2*(omu0^4 + r0^2))/(omu0^2*omw0^2 - r0^2)^3 + (eta0^2*omega^2*omu0^4)/(-(omu0^2*omw0^2) + r0^2)^2
+omega^2 coefficient = (eta0^2*omu0^4)/(-(omu0^2*omw0^2) + r0^2)^2
+M1 omega^2 coefficient = 0
+PASS: M1 omega^2 coefficient
+M1 Gamma_{3,0} = 0
+PASS: M1 Gamma_{3,0}
+M1 projected Gamma3 = 0
+PASS: M1 projected Gamma3
+
+----------------------------------------------------------------------------------------
+M2. Quintic projection structure
+----------------------------------------------------------------------------------------
+P0_minus = (beta0*sMinus)/lamMinus
+Gamma_{5,-} = (a^5*beta0*sMinus)/(27*cs^5*lamMinus)
+Gamma5 = (a^5*beta0*piVm^2*sMinus)/(27*cs^5*lamMinus)
+M2 projection homogeneity = 0
+PASS: M2 projection homogeneity
+M2 projected kernel s^5 coefficient = 0
+PASS: M2 projected kernel s^5 coefficient
+M2 projected kernel s^3 coefficient = 0
+PASS: M2 projected kernel s^3 coefficient
+
+----------------------------------------------------------------------------------------
+M3. Odd export kernel
+----------------------------------------------------------------------------------------
+K_exp(s) = g3*s^3 + g5*s^5
+Sigma_exp(omega) = (-I)*g3*omega^3 - I*g5*omega^5
+M3 K s^3 coefficient = 0
+PASS: M3 K s^3 coefficient
+M3 K s^5 coefficient = 0
+PASS: M3 K s^5 coefficient
+M3 K s^2 coefficient absent = 0
+PASS: M3 K s^2 coefficient absent
+M3 K s^4 coefficient absent = 0
+PASS: M3 K s^4 coefficient absent
+M3 Sigma omega^3 coefficient = 0
+PASS: M3 Sigma omega^3 coefficient
+M3 Sigma omega^5 coefficient = 0
+PASS: M3 Sigma omega^5 coefficient
+M3 Sigma omega^2 coefficient absent = 0
+PASS: M3 Sigma omega^2 coefficient absent
+M3 Sigma omega^4 coefficient absent = 0
+PASS: M3 Sigma omega^4 coefficient absent
+
+----------------------------------------------------------------------------------------
+M4. Schott identity
+----------------------------------------------------------------------------------------
+F_odd = g3*Derivative[3][v][t] - g5*Derivative[5][v][t]
+S_odd = g3*Derivative[1][v][t]*Derivative[2][v][t] - g5*(-(Derivative[2][v][t]*Derivative[3][v][t]) + Derivative[1][v][t]*Derivative[4][v][t])
+M4 Schott residual = 0
+PASS: M4 Schott residual
+M4 P_exp nonnegative for real derivative data = True
+PASS: M4 P_exp nonnegative for real derivative data
+
+----------------------------------------------------------------------------------------
+M5. Characteristic polynomial and positive-root certificate
+----------------------------------------------------------------------------------------
+F(s) = -kappaV + muEta*s^2 + g3*s^3 + g5*s^5
+F'(s) = 2*muEta*s + 3*g3*s^2 + 5*g5*s^4
+M5 derivative form = 0
+PASS: M5 derivative form
+M5 F(0) is negative = True
+PASS: M5 F(0) is negative
+M5 F(s) tends to +Infinity = True
+PASS: M5 F(s) tends to +Infinity
+M5 derivative positive for all s>0 = True
+PASS: M5 derivative positive for all s>0
+M5 difference quotient identity = 0
+PASS: M5 difference quotient identity
+M5 positive-root uniqueness quotient = True
+PASS: M5 positive-root uniqueness quotient
+
+----------------------------------------------------------------------------------------
+M6. Small-kernel slowdown from a bookkeeping Series
+----------------------------------------------------------------------------------------
+weak balance = 2*eps1*muEta*s0 + g3*s0^3 + g5*s0^5
+delta s derived = -1/2*(s0^2*(g3 + g5*s0^2))/muEta
+M6 root-shift coefficient = 0
+PASS: M6 root-shift coefficient
+
+----------------------------------------------------------------------------------------
+M7. Event-safe surface and Session-IV benchmark
+----------------------------------------------------------------------------------------
+M7 safe half-plane = 0
+PASS: M7 safe half-plane
+s_c = 0.54893865510622352722750550670556563083662455908286579221690401914109566772233`50.
+s_c^2 = 0.30133364706982942534252894144874596053149983966208137414853110720690453488121`49.69897000433602
+safe rhs = 289.6100491755742205257878190155338768884247999999999999999999`49.29885004619758
+Gamma5hat safe = 961.0942952828017847811298231811705280071689234235354869795211`49.15334373746418
+M7 weight sc^2 diff = 3.017057465747105855125403947`10.000535954270285*^-11
+PASS: M7 weight sc^2
+M7 safe rhs diff = 4.42577947421218098446612311158`9.184176142924292*^-9
+PASS: M7 safe rhs
+M7 Gamma5hat safe diff = 2.80178478112982318117052800717`8.464668772497324*^-9
+PASS: M7 Gamma5hat safe
+positive cubic roots = {0.54893865510622352722750550670556563083662455908286592711653442494181840171466`49.69806415654573}
+positive quintic roots = {0.54893865510622352722750550670556563083662455908286572586022324582757789594789`49.697338115455956}
+M7 cubic polynomial has one positive real root = True
+PASS: M7 cubic polynomial has one positive real root
+M7 quintic polynomial has one positive real root = True
+PASS: M7 quintic polynomial has one positive real root
+M7 cubic positive root equals sc diff = 0``39.959446190373065
+PASS: M7 cubic positive root equals sc
+M7 quintic positive root equals sc diff = 0``39.959446190373065
+PASS: M7 quintic positive root equals sc
+
+STAGE 251 MATHEMATICA AUDIT PASSED

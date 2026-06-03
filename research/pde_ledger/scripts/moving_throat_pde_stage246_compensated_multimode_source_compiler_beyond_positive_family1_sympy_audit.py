@@ -52,6 +52,8 @@ def main() -> None:
 
     assert sigma_mean == 1
     assert sp.simplify(sigma_y - (1 - b + a * y + 2 * b * y**2)) == 0
+    # Non-tautological: the actual substitution y = cos(pi*x) must turn sigma into the quadratic.
+    assert sp.simplify(sigma - (1 - b + a * sp.cos(sp.pi * x) + 2 * b * sp.cos(sp.pi * x) ** 2)) == 0
     assert sp.simplify(sigma_vertex - (1 - b - a**2 / (8 * b))) == 0
     assert sp.simplify(sigma.subs({a: 0, b: 0}) - 1) == 0
 
@@ -80,6 +82,17 @@ def main() -> None:
             sigma_min_expected = sp.simplify(1 - bval - aval**2 / (8 * bval))
         sigma_min_test = sp.simplify(sigma_min_piece.subs({a: aval, b: bval}))
         print(f"Test point (a,b)=({aval},{bval}) -> sigma_min =", sigma_min_test)
+        # True minimum of the quadratic sigma_y on y in [-1,1], computed independently
+        # of the piecewise branch logic (boundary candidates always; vertex only when
+        # the parabola opens upward, 2b>0, and the vertex lies in [-1,1]).
+        cand = [sp.simplify(sigma_y.subs({a: aval, b: bval, y: 1})),
+                sp.simplify(sigma_y.subs({a: aval, b: bval, y: -1}))]
+        if bval > 0:
+            ystar_val = sp.Rational(-aval, 4 * bval)
+            if -1 <= ystar_val <= 1:
+                cand.append(sp.simplify(sigma_y.subs({a: aval, b: bval, y: ystar_val})))
+        sigma_min_true = sp.simplify(sp.Min(*cand))
+        assert sp.simplify(sigma_min_test - sigma_min_true) == 0
         assert sp.simplify(sigma_min_test - sigma_min_expected) == 0
 
     # ------------------------------------------------------------------
@@ -194,6 +207,17 @@ def main() -> None:
     print("r_signchange          =", r_thr)
 
     assert sp.simplify(sigma_min_transport - (1 - (a0 - b0) * s_r)) == 0
+    # Verify the Session-I orientation (a0>0, b0<0) selects the boundary-minimum branch
+    # of the Section-2 piecewise, rather than asserting the boundary form by hand.
+    a0p = sp.symbols("a0p", positive=True)   # stands in for a0 > 0
+    b0n = sp.symbols("b0n", negative=True)   # stands in for b0 < 0
+    a_r_or = a0p * s_r
+    b_r_or = b0n * s_r
+    sigma_min_branch = sp.piecewise_fold(
+        sigma_min_piece.subs({a: a_r_or, b: b_r_or})
+    )
+    sigma_min_branch = sp.simplify(sigma_min_branch)
+    assert sp.simplify(sigma_min_branch - (1 - (a0p - b0n) * s_r)) == 0
 
     # ------------------------------------------------------------------
     # 9. Session-I readback.
@@ -230,6 +254,7 @@ def main() -> None:
     assert abs(float(g_eval) - 0.82823667) < 5e-9
     assert abs(float(R_eval) - 0.21677037) < 5e-9
     assert abs(float(sigma_min_eval) - (-0.08979545)) < 5e-9
+    assert abs(float(S_eval) - 0.67584771) < 5e-9
     assert float(r_thr_eval) > float(subs_num[r])
     assert float(g_zero_eval) > 1.0
 

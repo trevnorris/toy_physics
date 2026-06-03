@@ -503,7 +503,7 @@ So
 That is a transmission increase of
 \[
 \boxed{
-\left(\frac{T_{\rm new}}{T_{\rm Coul}}-1\right)\times 168\%
+\left(\frac{T_{\rm new}}{T_{\rm Coul}}-1\right)\times 100\%
 \approx 23.3128\%.
 }
 \]

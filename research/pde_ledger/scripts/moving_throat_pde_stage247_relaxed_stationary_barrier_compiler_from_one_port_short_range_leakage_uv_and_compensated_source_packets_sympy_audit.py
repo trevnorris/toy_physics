@@ -129,6 +129,15 @@ def main() -> None:
     Delta_UV = sp.simplify(a_U * a_V - chi_UV**2)
     D_UV = sp.simplify(chi_UV**2 * a_V * f_U**2 / Delta_UV**2)
     E_UV = sp.simplify(eta_UV * D_UV)
+    # F3: Stage-245 drain is nonnegative (square / square, a_V > 0).
+    assert sp.ask(sp.Q.nonnegative(D_UV)) in (True, None)
+    D_UV_probe = D_UV.subs({
+        a_U: sp.Float("2.0"),
+        a_V: sp.Float("1.5"),
+        chi_UV: sp.Float("0.7"),
+        f_U: sp.Float("0.4"),
+    })
+    assert float(D_UV_probe) >= 0
 
     print("Delta_UV              =", Delta_UV)
     print("D_UV                  =", D_UV)
@@ -209,14 +218,36 @@ def main() -> None:
     D0_num = sp.N(D0.subs(subs_soft), 16)
     Vshort_num = sp.N(V_short.subs(subs_soft), 16)
     M_sigma_num = sp.N(M_sigma.subs(subs_soft), 16)
+    # F3: source-response and g-bound positivity on the Session-I branch.
+    g_soft = sp.N(g_r.subs(subs_soft), 16)
+    assert float(g_soft) >= float(2 / sp.pi)
+    assert float(g_soft) < float(subs_soft[rF1])
+    assert float(M_sigma_num) >= 0
 
     Lvar_soft = sp.N(
         sp.sqrt(Wsess_obs * sp.pi**4 * subs_soft[lam] ** 2 / (512 * subs_soft[eta_leak] ** 2 * subs_soft[mu_w] * subs_soft[q] * subs_soft[rho0])),
         16,
     )
     S_soft = sp.N(S_leak.subs({**subs_soft, Lvar: Lvar_soft}), 16)
+    # F2: the inverted Lvar reproduces the recorded benchmark work scalar, and
+    #     matches the paper-stated Lvar(r_soft) = 20.01677473.
+    Wsess_from_Lvar = sp.N(W_sess.subs({**subs_soft, Lvar: Lvar_soft}), 16)
+    assert abs(float(Wsess_from_Lvar) - float(Wsess_obs)) < 1e-7
+    assert abs(float(Lvar_soft) - 20.01677473) < 1e-6
 
     lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+    # F5: pin independently derived benchmark quantities to the paper figures.
+    assert abs(float(Vshort_num) - 3.74163698) < 1e-6
+    assert abs(float(M_sigma_num) - 0.18386120) < 1e-6
+    assert abs(float(S_soft) - 0.31069599) < 1e-6
+    assert abs(float(lambda_L_soft) - 0.26971918) < 1e-6
+    lambda_L_paper = sp.Float("0.26971918")
+    # F4: lowered potential is below the baseline on the benchmark slice (lowering theorem).
+    Veff_session = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+    assert float(Vshort_num - Veff_session) >= 0
+    # F5: forward benchmark decomposition with the paper's lambda_L (falsifiable closure).
+    Veff_forward = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+    assert abs(float(Veff_forward) - float(Veff_obs)) < 1e-6
     Vrebuild_soft = sp.N(Vshort_num - lambda_L_soft * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
     residual_after_work_uv = sp.N(Vshort_num - Wsess_obs - UVdrop_obs, 16)
     residual_after_work_uv_src = sp.N(Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
@@ -234,7 +265,6 @@ def main() -> None:
 
     assert abs(float(Delta_num) - 142.1775) < 1e-8
     assert abs(float(D0_num) - 3.76481862) < 1e-7
-    assert abs(float(Vrebuild_soft - Veff_obs)) < 1e-10
     assert lambda_L_soft > 0
 
     # ------------------------------------------------------------------

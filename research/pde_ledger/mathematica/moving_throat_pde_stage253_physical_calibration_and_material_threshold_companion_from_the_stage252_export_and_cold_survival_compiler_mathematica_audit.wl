@@ -62,12 +62,12 @@ expectNear[name_String, value_, target_, tol_] := Module[{res},
   If[res <= tol, pass[name], fail[name, res]]
 ];
 
-banner["STAGE 236 — PHYSICAL CALIBRATION AND MATERIAL-THRESHOLD COMPANION"];
+banner["STAGE 253 — PHYSICAL CALIBRATION AND MATERIAL-THRESHOLD COMPANION"];
 
 Clear[
   sc, s0, muEta, fLat, zetaEp, tStar, UpsilonLat, lambdaEpOmegaD,
   gammaLatticeLegacy, lambdaPhys, lambdaRef, rTurn, EStar, VprimeTurnAbs,
-  aInt, KTurnSym, KCorr, T, kEff
+  aInt, KTurnSym, KCorr, T, kEff, TCeiling, r, V
 ];
 
 $Assumptions =
@@ -75,7 +75,7 @@ $Assumptions =
     {
       sc, s0, muEta, fLat, zetaEp, tStar, UpsilonLat, lambdaEpOmegaD,
       gammaLatticeLegacy, lambdaPhys, lambdaRef, rTurn, EStar,
-      VprimeTurnAbs, aInt, KTurnSym, KCorr, T, kEff
+      VprimeTurnAbs, aInt, KTurnSym, KCorr, T, kEff, TCeiling
     },
     Reals
   ] &&
@@ -83,7 +83,7 @@ $Assumptions =
   UpsilonLat > 0 && lambdaEpOmegaD > 0 && gammaLatticeLegacy > 0 &&
   lambdaPhys > 0 && lambdaRef > 0 && rTurn > 0 && EStar > 0 &&
   VprimeTurnAbs > 0 && aInt > 0 && KTurnSym > 0 && KCorr > 0 && T > 0 &&
-  kEff > 0;
+  kEff > 0 && TCeiling > 0;
 
 subbanner["I. Exact lattice-turnover compiler"];
 
@@ -93,7 +93,12 @@ gammaLatTurnPhys = FullSimplify[
   gammaLatSafeEq/(UpsilonLat tStar),
   Assumptions -> $Assumptions
 ];
-thresholdLambda = FullSimplify[gammaLatTurnPhys/zetaEp, Assumptions -> $Assumptions];
+lambdaBalance = gammaLatTurnPhys == zetaEp lambdaEpOmegaD;
+thresholdLambdaRaw = lambdaEpOmegaD /. First[Solve[lambdaBalance, lambdaEpOmegaD]];
+thresholdLambda = FullSimplify[
+  thresholdLambdaRaw /. ConditionalExpression[e_, _] :> e,
+  Assumptions -> $Assumptions
+];
 thresholdProduct = FullSimplify[thresholdLambda tCrossPhys, Assumptions -> $Assumptions];
 thresholdLambdaExpected = FullSimplify[
   fLat muEta (s0^2 - sc^2)/(UpsilonLat zetaEp sc tStar),
@@ -147,22 +152,40 @@ expectZero[
 
 subbanner["III. Harmonic trigger and force-matched stiffness compiler"];
 
-rTurnPhys = FullSimplify[lambdaPhys rTurn/lambdaRef, Assumptions -> $Assumptions];
-chiLambdaLattice = FullSimplify[2 lambdaPhys/rTurnPhys, Assumptions -> $Assumptions];
+lengthMap[rlat_] := lambdaPhys rlat/lambdaRef;
+rTurnPhys = FullSimplify[lengthMap[rTurn], Assumptions -> $Assumptions];
+V[rad_] := (1/2) kEff rad^2;
+radialLogSlope = FullSimplify[
+  D[Log[V[r]], r],
+  Assumptions -> $Assumptions && r > 0
+];
+chiLambdaLattice = FullSimplify[
+  lambdaPhys (radialLogSlope /. r -> rTurnPhys),
+  Assumptions -> $Assumptions
+];
+forceMatch = EStar (lambdaRef/lambdaPhys) VprimeTurnAbs == kEff rTurnPhys;
 kEffReq = FullSimplify[
-  EStar lambdaRef VprimeTurnAbs/(lambdaPhys rTurnPhys),
+  kEff /. First[Solve[forceMatch, kEff]],
   Assumptions -> $Assumptions
 ];
 KTurn = FullSimplify[
   lambdaRef^2 VprimeTurnAbs/rTurn,
   Assumptions -> $Assumptions
 ];
+vPrimeFromKTurn = FullSimplify[
+  VprimeTurnAbs /. First[Solve[KTurnSym == KTurn, VprimeTurnAbs]],
+  Assumptions -> $Assumptions
+];
 kEffReqKTurn = FullSimplify[
-  kEffReq /. VprimeTurnAbs -> KTurnSym rTurn/lambdaRef^2,
+  kEffReq /. VprimeTurnAbs -> vPrimeFromKTurn,
+  Assumptions -> $Assumptions
+];
+lambdaFromAInt = FullSimplify[
+  lambdaPhys /. First[Solve[aInt == 2 lambdaPhys, lambdaPhys]],
   Assumptions -> $Assumptions
 ];
 kEffReqAInt = FullSimplify[
-  kEffReqKTurn /. lambdaPhys -> aInt/2,
+  kEffReqKTurn /. lambdaPhys -> lambdaFromAInt,
   Assumptions -> $Assumptions
 ];
 
@@ -173,7 +196,7 @@ Print["K_turn = ", fmt[KTurn]];
 Print["k_eff,req(K_turn) = ", fmt[kEffReqKTurn]];
 Print["k_eff,req(a_int/2) = ", fmt[kEffReqAInt]];
 
-expectZero["turning-point radius map", rTurnPhys - lambdaPhys rTurn/lambdaRef];
+expectZero["turning-point radius round-trip", (lambdaRef/lambdaPhys) rTurnPhys - rTurn];
 expectZero["chi_lambda geometry ratio", chiLambdaLattice - 2 lambdaRef/rTurn];
 expectZero[
   "force-matched stiffness compiler",
@@ -185,7 +208,10 @@ expectZero["a_int stiffness rewrite", kEffReqAInt - 4 KTurnSym EStar/aInt^2];
 
 subbanner["IV. Korringa-limited temperature ceiling"];
 
-TMax = FullSimplify[KCorr/tCrossPhys, Assumptions -> $Assumptions];
+TMax = FullSimplify[
+  TCeiling /. First[Solve[KCorr == TCeiling tCrossPhys, TCeiling]],
+  Assumptions -> $Assumptions
+];
 TMaxExpected = FullSimplify[sc KCorr/tStar, Assumptions -> $Assumptions];
 PiT = FullSimplify[TMax/T, Assumptions -> $Assumptions];
 
@@ -198,7 +224,7 @@ expectZero["thermal screening ratio", PiT - KCorr/(T tCrossPhys)];
 subbanner["V. Exact screening ratios"];
 
 PiEp = FullSimplify[
-  UpsilonLat zetaEp lambdaEpOmegaD tStar/gammaLatSafeEq,
+  zetaEp lambdaEpOmegaD/gammaLatTurnPhys,
   Assumptions -> $Assumptions
 ];
 PiChi = FullSimplify[chiLambdaLattice, Assumptions -> $Assumptions];

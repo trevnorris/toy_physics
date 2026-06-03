@@ -138,7 +138,14 @@ def main() -> None:
     assert sp.simplify(Et_safe_expected - Et_safe) == 0
     assert sp.simplify(Et_safe_reduced - Vin**2 * (sp.E**2 - 1) * mu_eta * (s0**2 - sc**2) / 2) == 0
     assert sp.simplify(gamma_safe_eq_expected - gamma_eq.subs(s, sc)) == 0
-    assert sp.simplify(gamma_safe_eq - mu_eta * (s0**2 - sc**2) / sc) == 0
+    # carry the Stage-251 safe equality through the rate, so the bridge identity
+    # gamma_eff,safe^eq = mu_eta (s0^2 - s_c^2)/s_c is actually exercised (not X-X).
+    gamma_safe_eq_bridged = sp.simplify(
+        ((G3 * sc**3 + G5 * sc**5) / sc).subs(
+            G3 * sc**3 + G5 * sc**5, mu_eta * (s0**2 - sc**2)
+        )
+    )
+    assert sp.simplify(gamma_safe_eq_bridged - mu_eta * (s0**2 - sc**2) / sc) == 0
     assert sp.simplify(Ev_safe + El_safe - Et_safe_reduced) == 0
 
     # ------------------------------------------------------------------
@@ -161,8 +168,27 @@ def main() -> None:
     print("split surface         =", split_surface)
     print("speed-independent phi =", fl_phi)
 
-    assert sp.simplify(split_surface) == G3l + G5l * sc**2 - 3 * G3v - 3 * G5v * sc**2
+    # the 3:1 split is the iff f_lat(s_c)=3/4  <=>  surface = 0; tie the fraction to it.
+    surface = sp.expand((G3l + G5l * sc**2) - 3 * (G3v + G5v * sc**2))
+    resid = sp.together(fl_sc - sp.Rational(3, 4))
+    num = sp.numer(sp.cancel(resid))
+    # numerator of f_lat(s_c) - 3/4 over common denom 4*(Gamma3 + Gamma5 sc^2):
+    #   4*(Gamma3lat + Gamma5lat sc^2) - 3*(Gamma3 + Gamma5 sc^2)
+    #   = (Gamma3lat + Gamma5lat sc^2) - 3*(Gamma3vac + Gamma5vac sc^2) = surface
+    assert sp.simplify(num - surface) == 0
     assert sp.simplify(fl_phi - phi) == 0
+    fv_phi = sp.simplify(
+        fv.subs(
+            {
+                G3l: phi * G3T,
+                G3v: (1 - phi) * G3T,
+                G5l: phi * G5T,
+                G5v: (1 - phi) * G5T,
+            }
+        )
+    )
+    assert sp.simplify(fv_phi - (1 - phi)) == 0  # vacuum fraction on the phi-family
+    phi_val = sp.Rational(3, 4)  # the speed-independent 3:1 microscopic family
 
     # ------------------------------------------------------------------
     # 6. Session-IV benchmark specialization.
@@ -171,8 +197,8 @@ def main() -> None:
     t_cross_num = 1.82169718
     s0_num = 6.94311167
     E_diss_num = 0.01033460
-    frac_v_num = 0.25
-    frac_l_num = 0.75
+    frac_v_num = float(1 - phi_val)  # = f_vac on the phi=3/4 family
+    frac_l_num = float(phi_val)      # = f_lat on the phi=3/4 family
 
     sc_num = 1.0 / t_cross_num
     sc2_num = sc_num**2

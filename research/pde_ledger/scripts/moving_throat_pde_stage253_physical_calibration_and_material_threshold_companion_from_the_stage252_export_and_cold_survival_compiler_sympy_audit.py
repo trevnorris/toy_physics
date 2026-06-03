@@ -111,7 +111,7 @@ def main() -> None:
     print("k_eff,req via K_turn  =", k_eff_req_Kturn)
     print("a_int version         =", k_eff_req_aint)
 
-    assert sp.simplify(r_turn_phys - lambda_phys * r_turn / lambda_ref) == 0
+    assert sp.simplify((lambda_ref / lambda_phys) * r_turn_phys - r_turn) == 0
     assert sp.simplify(chi_lambda_lattice - 2 * lambda_ref / r_turn) == 0
     assert sp.simplify(k_eff_req - E_star * lambda_ref**2 * Vprime_turn_abs / (lambda_phys**2 * r_turn)) == 0
     assert sp.simplify(k_eff_req_Kturn - K_turn_sym * E_star / lambda_phys**2) == 0

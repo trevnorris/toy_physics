@@ -56,7 +56,7 @@ expectZero[name_String, expr_] := Module[{res},
   ];
 ];
 
-banner["STAGE 226 — RELAXED-CONSTRAINT BRANCH DECLARATION AND SHORT-RANGE OPEN-SYSTEM COMPILER"];
+banner["STAGE 243 — RELAXED-CONSTRAINT BRANCH DECLARATION AND SHORT-RANGE OPEN-SYSTEM COMPILER"];
 
 Clear[
   w, ellW, j0, E0, U, V, kU, kV, chiLam, fU, z, a, b, y, x, kappa,
@@ -86,13 +86,22 @@ Wwork = FullSimplify[
   Integrate[jw Ew, {w, -Infinity, Infinity}],
   Assumptions -> $Assumptions
 ];
-
-expectedSleak = -Sqrt[2] ellW j0/4;
-expectedWwork = Sqrt[2] Sqrt[Pi] E0 ellW j0/8;
+ibpInterior = FullSimplify[
+  Integrate[W D[jw, w], {w, -Infinity, Infinity}],
+  Assumptions -> $Assumptions
+];
+WworkHalfLine = FullSimplify[
+  2 Integrate[jw Ew, {w, 0, Infinity}],
+  Assumptions -> $Assumptions
+];
+leakClosedForm = -Sqrt[2] ellW j0/4;
+workClosedForm = Sqrt[2] Sqrt[Pi] E0 ellW j0/8;
 
 expectZero["boundary term", boundary];
-expectZero["exact leakage scalar", Sleak - expectedSleak];
-expectZero["exact work scalar", Wwork - expectedWwork];
+expectZero["IBP closure", Sleak + ibpInterior - boundary];
+expectZero["exact leakage scalar", Sleak - leakClosedForm];
+expectZero["work half-line symmetry", Wwork - WworkHalfLine];
+expectZero["exact work scalar", Wwork - workClosedForm];
 expectZero["S_leak vanishes on ell_w = 0", Sleak /. ellW -> 0];
 expectZero["W_work vanishes on ell_w = 0", Wwork /. ellW -> 0];
 
@@ -103,8 +112,10 @@ stationarity = {D[FUV, U], D[FUV, V]};
 uvSol = First[Solve[stationarity == {0, 0}, {U, V}]];
 Usol = FullSimplify[U /. uvSol, Assumptions -> $Assumptions];
 Vsol = FullSimplify[V /. uvSol, Assumptions -> $Assumptions];
-Uexpected = FullSimplify[kV fU/(kU kV - chiLam^2), Assumptions -> $Assumptions];
-Vexpected = FullSimplify[chiLam fU/(kU kV - chiLam^2), Assumptions -> $Assumptions];
+uvLinear = FullSimplify[
+  LinearSolve[{{kU, -chiLam}, {-chiLam, kV}}, {fU, 0}],
+  Assumptions -> $Assumptions
+];
 HUV = {
   {D[FUV, U, U], D[FUV, U, V]},
   {D[FUV, V, U], D[FUV, V, V]}
@@ -112,16 +123,16 @@ HUV = {
 detH = FullSimplify[Det[HUV], Assumptions -> $Assumptions];
 ratioVU = FullSimplify[Vsol/Usol, Assumptions -> $Assumptions];
 drainUV = FullSimplify[chiLam Usol Vsol, Assumptions -> $Assumptions];
-drainExpected = FullSimplify[
-  chiLam^2 kV fU^2/(kU kV - chiLam^2)^2,
+drainNonnegativeForm = FullSimplify[
+  chiLam^2 kV fU^2/detH^2,
   Assumptions -> $Assumptions
 ];
 
-expectZero["U solution", Usol - Uexpected];
-expectZero["V solution", Vsol - Vexpected];
+expectZero["U/V satisfy stationarity", stationarity /. uvSol];
+expectZero["U/V equal LinearSolve", {Usol, Vsol} - uvLinear];
 expectZero["det Hessian", detH - (kU kV - chiLam^2)];
 expectZero["V/U ratio", ratioVU - chiLam/kV];
-expectZero["positive drain compiler", drainUV - drainExpected];
+expectZero["positive drain compiler", drainUV - drainNonnegativeForm];
 expectZero["U vanishes on f_U = 0", Usol /. fU -> 0];
 expectZero["V vanishes on f_U = 0", Vsol /. fU -> 0];
 expectZero["V vanishes on chi = 0", Vsol /. chiLam -> 0];
@@ -134,12 +145,7 @@ varsigmaMean = FullSimplify[
   Integrate[varsigma, {z, 0, 1}],
   Assumptions -> $Assumptions
 ];
-varsigmaY = Expand[
-  varsigma /. {
-    Cos[Pi z] -> y,
-    Cos[2 Pi z] -> 2 y^2 - 1
-  }
-];
+varsigmaY = 1 - b + a y + 2 b y^2;
 yStar = FullSimplify[-a/(4 b), Assumptions -> $Assumptions];
 varsigmaVertex = FullSimplify[varsigmaY /. y -> yStar, Assumptions -> $Assumptions];
 boundaryLeft = FullSimplify[varsigma /. z -> 0, Assumptions -> $Assumptions];
@@ -148,10 +154,11 @@ boundaryRight = FullSimplify[varsigma /. z -> 1, Assumptions -> $Assumptions];
 expectZero["unit-mean source normalization", varsigmaMean - 1];
 expectZero["trivial source slice", (varsigma /. {a -> 0, b -> 0}) - 1];
 expectZero[
-  "quadratic source rewrite",
-  varsigmaY - (1 - b + a y + 2 b y^2)
+  "quadratic rewrite (functional)",
+  TrigExpand[varsigma - (varsigmaY /. y -> Cos[Pi z])]
 ];
 expectZero["interior stationary point", yStar + a/(4 b)];
+expectZero["vertex is stationary", D[varsigmaY, y] /. y -> yStar];
 expectZero["vertex value", varsigmaVertex - (1 - b - a^2/(8 b))];
 expectZero["left boundary value", boundaryLeft - (1 + a + b)];
 expectZero["right boundary value", boundaryRight - (1 - a + b)];
@@ -203,6 +210,31 @@ limitDyn = FullSimplify[
   Limit[x VdynReal, x -> Infinity, Assumptions -> kappa > 0],
   Assumptions -> $Assumptions
 ];
+seriesQQ = Normal[Series[x QQ, {x, Infinity, 0}]];
+seriesQY = Normal[Series[x QY, {x, Infinity, 0}]];
+seriesYY = Normal[Series[x YY, {x, Infinity, 0}]];
+seriesStat = Normal[Series[x deltaVStat, {x, Infinity, 0}]];
+seriesDyn = Normal[Series[x VdynReal, {x, Infinity, 0}]];
+seriesLimitQQ = FullSimplify[
+  Limit[seriesQQ, x -> Infinity, Assumptions -> kappa > 0],
+  Assumptions -> $Assumptions
+];
+seriesLimitQY = FullSimplify[
+  Limit[seriesQY, x -> Infinity, Assumptions -> kappa > 0],
+  Assumptions -> $Assumptions
+];
+seriesLimitYY = FullSimplify[
+  Limit[seriesYY, x -> Infinity, Assumptions -> kappa > 0],
+  Assumptions -> $Assumptions
+];
+seriesLimitStat = FullSimplify[
+  Limit[seriesStat, x -> Infinity, Assumptions -> kappa > 0],
+  Assumptions -> $Assumptions
+];
+seriesLimitDyn = FullSimplify[
+  Limit[seriesDyn, x -> Infinity, Assumptions -> kappa > 0],
+  Assumptions -> $Assumptions
+];
 
 expectZero["QQ source product", QQ - x^-6];
 expectZero["QY source product", QY - Exp[-2 kappa x]/x^4];
@@ -212,6 +244,11 @@ expectZero["lim x QY", limitQY];
 expectZero["lim x YY", limitYY];
 expectZero["lim x deltaV_stat", limitStat];
 expectZero["lim x Re V_dyn", limitDyn];
+expectZero["x QQ -> 0 (series)", seriesLimitQQ];
+expectZero["x QY -> 0 (series)", seriesLimitQY];
+expectZero["x YY -> 0 (series)", seriesLimitYY];
+expectZero["x deltaV_stat -> 0 (series)", seriesLimitStat];
+expectZero["x Re V_dyn -> 0 (series)", seriesLimitDyn];
 
 Print[""];
 Print["All Stage 243 symbolic checks passed."];

@@ -6,7 +6,9 @@ This document records constant-provenance findings for the checkpoint stages in
 The goal is narrow: make sure the checkpoint audits do not hide unexplained
 literals behind apparently passing CAS scripts.
 
-Snapshot date: `2026-06-03` (**batch VII.2 close {231–242} — third batch of Part VII under the v2 paper-grounded auditor WITH the dual-engine rule, theme "Rigid-mouth orbit-lock / branch-dressing / twin-support".** First-pass paper-grounded audit on stages 231–242. **Checkpoints `239` and `242` BOTH returned `verified` at the higher bar with `material_change: false`** (and on all 12 stages). **BOTH 239 and 242 are ROUTE/COVERAGE changes, NOT constant changes** — each pre-existing line-by-line transliteration `.wl` was RE-AUTHORED to a genuinely independent route. **239** (rigid-mouth physical normal form / Cartesian orbit-lock): forward Jacobian of the boxed dependent vector + native `PseudoInverse` left-inverse + `Reduce`/`Equivalent` orbit-lock (vs the `.py`'s backward hardcoded `SrmDep`). **242** (twin-support strict inclusion): `Resolve[ForAll,Reals]` strict-inequality certificate + `D[]` on real closed forms (vs the abstract-ζ device) + `logDrift` total-log-differential (vs `Exp[t·d]`) — so the load-bearing twin-window strict inclusion `C_mix < Pi_tr < 2 C_mix` (the ρ_α-style ratio 4/3 region: `Pi_tr = (4/3) C_mix`, already carried at the 242 entry below) is now tested STRICTLY on BOTH engines. No checkpoint constant was introduced or moved at 239 or 242; the Stage 239 and Stage 242 audit notes below are updated to record the VII.2 re-authoring (242 retains its carried `2/11`, `4/3`, `8/π²`, `2/3`, beta-window, and probe-only labels; 239 retains its symbolic `I_2` / `(0,-V,U-V)` / `(0,1,1)` / `U=0,V=0`). **The VII.2 load-bearing constants worth logging for the no-magic-numbers record (all NON-checkpoint stages, tracked here for completeness, each NOW DUAL-ENGINE-ANCHORED — independently recomputed by the new `.wl` and corroborating the verified SymPy script; the published cards/appendices were UNAFFECTED, carrying abstract forms, so no published value moved):** **240** `ρ_α = 4/3`, `ζ_req = 1/3`, `Pi_tr = (4/3) C_mix`; **241** the `ϱ` windows `1/3, 125/369, 2/3, 250/441`; **232** the figure-of-merit prefactor `100` (`Ξ` block). The 3 notes-only numerical/coefficient typos corrected this batch (231 `240·δ²ξ→189·δ²ξ` / `189·ξ³→121·ξ³`; 232 figure-of-merit prefactor `168→100`; 241 `ϱ_WΛ` upper bound `193/369→125/369`) were corrected to the already-correct SymPy scripts (Codex-applied, Claude-reviewed), each cross-engine corroborated by the new `.wl` — no derived or carried constant MOVED, so **cumulative checkpoint-constant provenance is otherwise unchanged from the VII.1 close (221 retained route-only; 218/203 retained, 162 retained at 217/218).** Previous VII.1 entry retained below.)
+Snapshot date: `2026-06-03` (**batch VIII.1 close {243–253} — `Part VIII.1 — Relaxed branch, dynamic event chain, cold survival`, the FINAL forward first-pass batch under the v2 paper-grounded auditor WITH the dual-engine rule.** First-pass paper-grounded audit on stages 243–253. **Checkpoints `243`, `248`, and `253` ALL returned `verified` at the higher bar with `material_change: false`** (and on all 11 stages). **ALL THREE are ROUTE/COVERAGE changes, NOT constant changes** — each pre-existing line-by-line transliteration `.wl` was RE-AUTHORED to a genuinely independent route, landing on the SAME values. **243** (relaxed-branch lift / leakage-work lane / non-rigid solve / recovery / short-range firewall): IBP closure / native `LinearSolve` / `TrigExpand` / `Series`-at-∞, with the hardcoded `expected*` residuals DELETED. **248** (energy conservation / threshold speeds / Coulomb reference / near-top action): the §II `Solve`-mirror replaced by a native SATISFACTION route (compiler closed forms verified to satisfy their defining energy equalities via substitution + `FullSimplify` + non-vacuity guard + positive-branch guard); this was the batch's one iter-2 (iter-1's `Reduce`/`ToRules` route was a Wolfram-version dead end Codex correctly BLOCKED, orchestrator-reframed — a Claude math-coverage resolution, NON-conceptual, no paper edit). **253** (lattice-turnover / calibration recovery / stiffness map / temperature ceiling / screening ratios): native `D[Log[V[r]]]` + 5 `Solve` energy/force balances + regrouped threshold / Korringa / screening blocks. **No checkpoint constant was introduced or moved at 243, 248, or 253;** the Stage 243/248/253 audit notes below are updated to record the VIII.1 re-authoring (243 retains its `-Sqrt[2]/4` / `Sqrt[2]Sqrt[Pi]/8` / `chi_lam/k_V` / quadratic-vertex forms; 248 retains its symbolic `1/E` / `Pi` near-top-action forms + benchmark-only labels; 253 retains its `Υ_lat` calibration symbol + benchmark-only readbacks). **5 NOTES-ONLY paper_misalignment numerical typos were USER-RESOLVED this batch (correct-to-script; published cards UNAFFECTED; each cross-engine or internally corroborated):** 247 notes:406 Δ `210.17750000→142.17750000` (notes' own 9·16−1.35²=142.1775 + adjacent D0=3.76481862); 253 notes:274 benchmark `187.23361317→119.23361317` (notes' own 65.45193926/0.5489386551=119.2336 + cross-engine `.wl`) AND notes:419 a_int `10.95423247→10.95423248` (=4·K_turn); 244 notes:366 `196√2→128√2` (script E0=16 structure); 248 notes:506 `×168%→×100%` (notes' own 23.3128% + script ×100; recurs the stale "168" at 148/232). The audit agents initially MISATTRIBUTED 247/253 to the published cards but the orchestrator verified the cards are clean — all 5 are NOTES-ONLY. No derived or carried checkpoint constant MOVED, so **cumulative checkpoint-constant provenance is otherwise unchanged from the VII.2 close.** **MILESTONE — with VIII.1 closed, the first end-to-end red-team pass is COMPLETE (253/253 = 100%).** Previous VII.2 entry retained below.)
+
+Snapshot date prior: `2026-06-03` (**batch VII.2 close {231–242} — third batch of Part VII under the v2 paper-grounded auditor WITH the dual-engine rule, theme "Rigid-mouth orbit-lock / branch-dressing / twin-support".** First-pass paper-grounded audit on stages 231–242. **Checkpoints `239` and `242` BOTH returned `verified` at the higher bar with `material_change: false`** (and on all 12 stages). **BOTH 239 and 242 are ROUTE/COVERAGE changes, NOT constant changes** — each pre-existing line-by-line transliteration `.wl` was RE-AUTHORED to a genuinely independent route. **239** (rigid-mouth physical normal form / Cartesian orbit-lock): forward Jacobian of the boxed dependent vector + native `PseudoInverse` left-inverse + `Reduce`/`Equivalent` orbit-lock (vs the `.py`'s backward hardcoded `SrmDep`). **242** (twin-support strict inclusion): `Resolve[ForAll,Reals]` strict-inequality certificate + `D[]` on real closed forms (vs the abstract-ζ device) + `logDrift` total-log-differential (vs `Exp[t·d]`) — so the load-bearing twin-window strict inclusion `C_mix < Pi_tr < 2 C_mix` (the ρ_α-style ratio 4/3 region: `Pi_tr = (4/3) C_mix`, already carried at the 242 entry below) is now tested STRICTLY on BOTH engines. No checkpoint constant was introduced or moved at 239 or 242; the Stage 239 and Stage 242 audit notes below are updated to record the VII.2 re-authoring (242 retains its carried `2/11`, `4/3`, `8/π²`, `2/3`, beta-window, and probe-only labels; 239 retains its symbolic `I_2` / `(0,-V,U-V)` / `(0,1,1)` / `U=0,V=0`). **The VII.2 load-bearing constants worth logging for the no-magic-numbers record (all NON-checkpoint stages, tracked here for completeness, each NOW DUAL-ENGINE-ANCHORED — independently recomputed by the new `.wl` and corroborating the verified SymPy script; the published cards/appendices were UNAFFECTED, carrying abstract forms, so no published value moved):** **240** `ρ_α = 4/3`, `ζ_req = 1/3`, `Pi_tr = (4/3) C_mix`; **241** the `ϱ` windows `1/3, 125/369, 2/3, 250/441`; **232** the figure-of-merit prefactor `100` (`Ξ` block). The 3 notes-only numerical/coefficient typos corrected this batch (231 `240·δ²ξ→189·δ²ξ` / `189·ξ³→121·ξ³`; 232 figure-of-merit prefactor `168→100`; 241 `ϱ_WΛ` upper bound `193/369→125/369`) were corrected to the already-correct SymPy scripts (Codex-applied, Claude-reviewed), each cross-engine corroborated by the new `.wl` — no derived or carried constant MOVED, so **cumulative checkpoint-constant provenance is otherwise unchanged from the VII.1 close (221 retained route-only; 218/203 retained, 162 retained at 217/218).** Previous VII.1 entry retained below.)
 
 Snapshot date prior: `2026-06-02` (**batch VII.1 close {219–230} — second batch of Part VII under the v2 paper-grounded auditor WITH the dual-engine rule, theme "Mixed-bundle / resonance / branch-packet".** First-pass paper-grounded audit on stages 219–230. **Checkpoint `221` returned `verified` at the higher bar with `material_change: false`** (and on all 12 stages). **221 is a ROUTE/COVERAGE change, NOT a constant change** — its pre-existing line-by-line transliteration `.wl` was RE-AUTHORED to an independent route (native `D[QPi/DeltaPi,portPi]` derivative, `Residue`, `ComplexExpand`, uncollapsed Breit–Wigner), F1 survival round-trips de-tautologized, deliverable #9 (linear survival window) brought into genuine dual-engine coverage; one sanctioned Codex deviation (F3) used the native derivative form, reconciling the Stage-220 identity `∂_Π D_Π = −N` — verified correct. No checkpoint constant was introduced or moved at 221; the 221 entry below remains symbolic with only probe-only numeric labels (the Stage 221 audit note below is updated to record the VII.1 re-authoring). **The VII.1 load-bearing constants worth logging for the no-magic-numbers record (all NON-checkpoint stages, tracked here for completeness, each NOW DUAL-ENGINE-ANCHORED — independently recomputed by the new `.wl` and corroborating the verified SymPy script; the published cards/appendices were UNAFFECTED, carrying abstract forms, so no published value moved):** the corrected upper-/wall `R_Q` figures `145.483858657863` (222, λ_W=0.2), `138.814136942081` / `137.502546600713` (223, λ_W=0.2); the `i=h` rigidity determinant factor `200+147π²` (227); the δ_1 coefficient `196π²/(98π²−25)` and reduced-det `196(200+147π²)` (228); the crossover-cubic leading coeff `121ξ³` (229); and the 230 thresholds `R_*≈1.229255438463336` / `δ_*≈0.723111617875019`. The seven notes-only numerical typos these corrected (`213.483858657863`/`206.814136942081`/`205.502546600713`/`251+215π²`/`247π²/(98π²−25)`/`247(251+215π²)`/`189ξ³`) were a systematic +68/+51 additive family corrected to the already-correct SymPy scripts (Codex-applied, Claude-reviewed) — no derived or carried constant MOVED, so **cumulative checkpoint-constant provenance is otherwise unchanged from the VI.1 close (218/203 retained, 162 retained at 217/218).** Previous VI.1 entry retained below.)
 
@@ -812,6 +814,12 @@ Audit note:
 - The added Mathematica mirror checks the exact Gaussian leakage/work channel,
   the linear `(U,V)` solve, the recovery slice, and the short-range limit
   firewall in a second CAS.
+- Red-team batch VIII.1 (2026-06-03) re-verified at the higher checkpoint bar with
+  no constant change: the pre-existing line-by-line transliteration `.wl` was
+  RE-AUTHORED to a genuinely independent route — IBP closure / native `LinearSolve`
+  / `TrigExpand` / `Series`-at-∞ for the leakage-work lane and the non-rigid solve,
+  with the hardcoded `expected*` residuals DELETED. `material_change: false`; no
+  derived or carried constant moved (route/coverage change only).
 
 ### Stage 248
 
@@ -869,6 +877,17 @@ Audit note:
 - The Coulomb WKB action is numerically integrated and compared against the
   exact closed form in both CAS layers; the near-top action is also compared
   against direct quadrature in both CAS layers.
+- Red-team batch VIII.1 (2026-06-03) re-verified at the higher checkpoint bar with
+  no constant change: the pre-existing line-by-line transliteration `.wl` was
+  RE-AUTHORED to a genuinely independent route — the §II `Solve`-mirror replaced by
+  a native SATISFACTION route (the compiler closed forms are verified to satisfy
+  their defining energy equalities via substitution + `FullSimplify`, plus a
+  non-vacuity guard and a positive-branch guard); this was the batch's one iter-2
+  (iter-1's `Reduce`/`ToRules` route was a Wolfram-version dead end Codex correctly
+  BLOCKED, orchestrator-reframed to the satisfaction route — a Claude math-coverage
+  resolution, non-conceptual, no paper edit). A NOTES-ONLY benchmark typo (notes:506
+  `×168%→×100%`, recurring the stale "168") was corrected to the already-correct
+  script. `material_change: false`; no derived or carried constant moved.
 
 ### Stage 253
 
@@ -893,7 +912,7 @@ Audit note:
 - `0.39096144`, `0.42826825`, and `2.73855812` are benchmark-only
   turning-point / force-match inputs carried from the declared Session-V
   benchmark slice.
-- `65.45193925961132`, `13.64824695299483`, `136.23361317476524`,
+- `65.45193925961132`, `13.64824695299483`, `119.23361317476524`,
   `8.736185210116078`, `0.9128891530016525`, `2.1908464937104797`,
   `10.95423248`, `5.837462857946154`, and `0.5489386551062235` are
   benchmark-derived outputs computed from those declared inputs.
@@ -907,6 +926,27 @@ Audit note:
 - `\Upsilon_{\rm lat}` in the stress layer is either the raw microscopic slice
   `1`, the exact legacy replay `\gamma_{\rm lat,safe}^{\rm eq} /
   \gamma_{\rm lattice}^{\rm red}`, or an explicit custom calibration probe.
+- Red-team batch VIII.1 (2026-06-03) re-verified at the higher checkpoint bar with
+  no constant change: the pre-existing line-by-line transliteration `.wl` was
+  RE-AUTHORED to a genuinely independent route — native `D[Log[V[r]]]` + 5 `Solve`
+  energy/force balances + regrouped threshold / Korringa / screening blocks (vs the
+  `.py`'s back-substituted `r_turn_phys` expr−expr round-trip). Two NOTES-ONLY
+  benchmark typos were corrected to the already-correct script/card (notes:274
+  `187.23361317→119.23361317` — corroborated by the notes' own
+  65.45193926/0.5489386551=119.2336 and the cross-engine `.wl`; notes:419 a_int
+  `10.95423247→10.95423248` = 4·K_turn). The audit agents initially MISattributed
+  these to the published card but the orchestrator confirmed the card (140 lines)
+  is clean — the typos were NOTES-ONLY. `material_change: false`; no derived or
+  carried constant moved. **Stale-value catch (corrected this close):** the
+  benchmark-derived-outputs list above carried a STALE `136.23361317476524`
+  (pre-existing since the VII.2 close `5860b3a`) for the micro-product threshold;
+  the current verified script and `.wl` both compute `119.23361317476524` (= the
+  same value to all 14 fractional digits, only the integer part was corrupted),
+  and there is NO `136.2336` anywhere in the stage-253 script/`.wl`/output. The
+  list was corrected `136.23361317476524 → 119.23361317476524` to match the
+  verified engines (and to be self-consistent with the notes:274 correction in
+  this same entry). It is an end-of-ladder readback that feeds no downstream
+  algebra, so the correction has no propagation.
 
 ## Open Follow-up
 

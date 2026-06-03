@@ -129,17 +129,18 @@ def main() -> None:
     # ------------------------------------------------------------------
     section("4. Support-versus-orbit split and recovery slice")
     R_tr, R_target, eps_eta = sp.symbols("R_tr R_target eps_eta", real=True)
+    orbit_syms = {R_tr, R_target, eps_eta}
+    support_syms = {Lam, varrho, eta_leak}
 
     for expr, name in [(S_pull_varrho, "S_leak"), (W_bulk_pull_varrho, "W_bulk"), (W_sess_pull_varrho, "W_sess")]:
-        d_Rtr = sp.simplify(sp.diff(expr, R_tr))
-        d_Rtarget = sp.simplify(sp.diff(expr, R_target))
-        d_epseta = sp.simplify(sp.diff(expr, eps_eta))
-        print(f"d/dR_tr    {name} =", d_Rtr)
-        print(f"d/dR_target{name} =", d_Rtarget)
-        print(f"d/deps_eta {name} =", d_epseta)
-        assert d_Rtr == 0
-        assert d_Rtarget == 0
-        assert d_epseta == 0
+        free = expr.free_symbols
+        print(f"{name} free symbols      =", sorted(free, key=str))
+        print(f"{name} orbit overlap     =", sorted(free & orbit_syms, key=str))
+        print(f"{name} support coverage  =", sorted(free & support_syms, key=str))
+        # Support-blindness: no orbit variable appears in the compiled observable.
+        assert orbit_syms.isdisjoint(free)
+        # Positive control so the disjointness is not vacuously true for a constant:
+        assert support_syms.issubset(free)
 
     S_rec = sp.simplify(S_pull_varrho.subs(eta_leak, 0))
     W_bulk_rec = sp.simplify(W_bulk_pull_varrho.subs(eta_leak, 0))

@@ -1,0 +1,130 @@
+
+========================================================================================
+STAGE 252 -- VACUUM/LATTICE HEAT PARTITION
+========================================================================================
+
+----------------------------------------------------------------------------------------
+M1. Energy ledger and partition fractions
+----------------------------------------------------------------------------------------
+E_vac = Gamma3vac*I2 + Gamma5vac*I3
+E_lat = Gamma3lat*I2 + Gamma5lat*I3
+E_exp = Gamma3lat*I2 + Gamma3vac*I2 + Gamma5lat*I3 + Gamma5vac*I3
+f_vac(rV) = (Gamma3vac + Gamma5vac*rV)/(Gamma3lat + Gamma3vac + (Gamma5lat + Gamma5vac)*rV)
+f_lat(rV) = (Gamma3lat + Gamma5lat*rV)/(Gamma3lat + Gamma3vac + (Gamma5lat + Gamma5vac)*rV)
+M1 vacuum fraction = 0
+PASS: M1 vacuum fraction
+M1 lattice fraction = 0
+PASS: M1 lattice fraction
+M1 partition sum = 0
+PASS: M1 partition sum
+
+----------------------------------------------------------------------------------------
+M2. Drift law
+----------------------------------------------------------------------------------------
+D[f_lat, rV] = (Gamma3vac*Gamma5lat - Gamma3lat*Gamma5vac)/(Gamma3lat + Gamma3vac + (Gamma5lat + Gamma5vac)*rV)^2
+M2 lattice drift law = 0
+PASS: M2 lattice drift law
+
+----------------------------------------------------------------------------------------
+M3. Endpoint limits
+----------------------------------------------------------------------------------------
+f_lat(0) = Gamma3lat/(Gamma3lat + Gamma3vac)
+f_lat(infinity) = Gamma5lat/(Gamma5lat + Gamma5vac)
+M3 lattice slow endpoint = 0
+PASS: M3 lattice slow endpoint
+M3 lattice fast endpoint = 0
+PASS: M3 lattice fast endpoint
+
+----------------------------------------------------------------------------------------
+M4. Exponential shape integrals
+----------------------------------------------------------------------------------------
+I1exp = ((-1 + E^(2*s*T))*s*Vin^2)/2
+I2exp = ((-1 + E^(2*s*T))*s^3*Vin^2)/2
+I3exp = ((-1 + E^(2*s*T))*s^5*Vin^2)/2
+M4 I2 exponential integral = 0
+PASS: M4 I2 exponential integral
+M4 I3 = s^2 I2 = 0
+PASS: M4 I3 = s^2 I2
+M4 shape quotient = 0
+PASS: M4 shape quotient
+
+----------------------------------------------------------------------------------------
+M5. Event-equivalent rates
+----------------------------------------------------------------------------------------
+gamma_vac^eq(s) = Gamma3vac*s^2 + Gamma5vac*s^4
+gamma_lat^eq(s) = Gamma3lat*s^2 + Gamma5lat*s^4
+M5 vacuum event-equivalent rate = 0
+PASS: M5 vacuum event-equivalent rate
+M5 lattice event-equivalent rate = 0
+PASS: M5 lattice event-equivalent rate
+
+----------------------------------------------------------------------------------------
+M6. Safe-edge exported-energy theorem
+----------------------------------------------------------------------------------------
+EexpSafe = ((-1 + E^2)*sc^3*(Gamma3lat + Gamma3vac + (Gamma5lat + Gamma5vac)*sc^2)*Vin^2)/2
+safeCombo = (Gamma3lat + Gamma3vac)*sc^3 + (Gamma5lat + Gamma5vac)*sc^5
+safeEnergyReduced = ((-1 + E^2)*mueta*(s0 - sc)*(s0 + sc)*Vin^2)/2
+M6 safe-edge energy before rule = 0
+PASS: M6 safe-edge energy before rule
+M6 safe-edge energy after safe rule = 0
+PASS: M6 safe-edge energy after safe rule
+
+----------------------------------------------------------------------------------------
+M7. Safe-edge rate identity
+----------------------------------------------------------------------------------------
+safeRateRaw = ((Gamma3lat + Gamma3vac)*sc^3 + (Gamma5lat + Gamma5vac)*sc^5)/sc
+safeRateReduced = mueta*(s0^2/sc - sc)
+M7 safe rate raw quotient = 0
+PASS: M7 safe rate raw quotient
+M7 safe rate after safe rule = 0
+PASS: M7 safe rate after safe rule
+
+----------------------------------------------------------------------------------------
+M8. Three-to-one surface and phi-family
+----------------------------------------------------------------------------------------
+f_lat(sc) - 3/4 numerator = Gamma3lat - 3*Gamma3vac + Gamma5lat*sc^2 - 3*Gamma5vac*sc^2
+3:1 surface = Gamma3lat - 3*Gamma3vac + Gamma5lat*sc^2 - 3*Gamma5vac*sc^2
+f_lat(phi family) = phi
+f_vac(phi family) = 1 - phi
+M8 three-to-one numerator is exact positive factor times surface = 0
+PASS: M8 three-to-one numerator is exact positive factor times surface
+M8 phi-family lattice fraction = 0
+PASS: M8 phi-family lattice fraction
+M8 phi-family vacuum fraction = 0
+PASS: M8 phi-family vacuum fraction
+
+----------------------------------------------------------------------------------------
+M9. Session-IV benchmark reproduction
+----------------------------------------------------------------------------------------
+phiVal = 3/4
+fracVacNum = 0.25`20.
+fracLatNum = 0.75`20.
+scNum = 0.5489386551062235
+gammaEffSafeNum = 87.26925234614843
+safePrefactorNum = 153.03535490769045
+VinMatchNum = 0.008217712598897912
+EvacBenchNum = 0.00258365
+ElatBenchNum = 0.0077509499999999995
+M9 sc benchmark diff = 0. (tol = 1/1000000000000)
+PASS: M9 sc benchmark
+M9 gamma_eff safe benchmark diff = 0. (tol = 1/1000000000)
+PASS: M9 gamma_eff safe benchmark
+M9 gamma_vac safe benchmark diff = 0. (tol = 1/1000000000)
+PASS: M9 gamma_vac safe benchmark
+M9 gamma_lat safe benchmark diff = 0. (tol = 1/1000000000)
+PASS: M9 gamma_lat safe benchmark
+M9 safe prefactor benchmark diff = 2.842170943040401*^-14 (tol = 1/1000000000)
+PASS: M9 safe prefactor benchmark
+M9 Vin match benchmark diff = 0. (tol = 1/1000000000000000)
+PASS: M9 Vin match benchmark
+M9 vacuum energy benchmark diff = 0. (tol = 1/1000000000000)
+PASS: M9 vacuum energy benchmark
+M9 lattice energy benchmark diff = 8.673617379884035*^-19 (tol = 1/1000000000000)
+PASS: M9 lattice energy benchmark
+M9 total energy benchmark diff = 0. (tol = 1/1000000000000)
+PASS: M9 total energy benchmark
+
+========================================================================================
+Stage 252 Mathematica audit result
+========================================================================================
+All Mathematica checks passed for M1-M9.

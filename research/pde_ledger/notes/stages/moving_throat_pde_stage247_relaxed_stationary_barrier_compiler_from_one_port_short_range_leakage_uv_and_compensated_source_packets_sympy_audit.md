@@ -403,7 +403,7 @@ R_{\rm mix}=1.35,
 \]
 and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline gives
 \[
-\Delta=210.17750000,
+\Delta=142.17750000,
 \qquad
 D_0=3.76481862,
 \]

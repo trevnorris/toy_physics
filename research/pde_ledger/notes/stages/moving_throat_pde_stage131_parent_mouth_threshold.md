@@ -14,7 +14,7 @@ mouth data.
 
 ## 1. The parent bias parameter
 
-From Stage 231,
+From Stage 129,
 \[
 \Pi_m=\frac{V_1L}{\Theta_\sigma},
 \qquad

@@ -41,7 +41,7 @@ This already lies much closer to the physical lower compensated branch than the 
 
 ## 2. Family-1 comparison
 
-On the explicit geometric branch from Stages 172–173,
+On the explicit geometric branch from Stages 121–122,
 \[
 \mathfrak g_-^{F1}\approx 0.758035078944663.
 \]

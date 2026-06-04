@@ -3,7 +3,7 @@
 
 ## Goal
 
-Use the concrete two-channel throat-core compensation law from Stages 97–99 as a
+Use the concrete two-channel throat-core compensation law from Stages 114–116 as a
 first explicit closure for the Family-1 mouth-layer gains.
 
 The point is to see what the coupled mouth-layer solve predicts when the
@@ -14,7 +14,7 @@ the canonical outgoing quadrupole branch.
 
 ## 1. Nontrivial compensated outlet ratio
 
-The exact compensated core outlet found in Stage 98 was
+The exact compensated core outlet found in Stage 115 was
 \[
 \delta\Lambda_{\rm core}(z)
 =
@@ -106,9 +106,9 @@ gain rather than a delicate large-cancellation limit.
 
 ---
 
-## 4. Direct comparison with the Stage 233 pure-mechanical threshold
+## 4. Direct comparison with the Stage 131 pure-mechanical threshold
 
-At Stage 233 the pure-mechanical threshold was
+At Stage 131 the pure-mechanical threshold was
 \[
 \Pi_* \approx 1.5088
 \]

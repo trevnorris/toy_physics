@@ -89,6 +89,26 @@ mechanical label-only verify. **8 of 10 PRIMARY mapped+applied; 2 were false pos
   content check every time (cf. the genuinely-stale stage193 `\mathcal S_{244}`).
 - Diff: 2 files / 8 lines, byte-identical except number tokens; en-dash preserved. Uncommitted.
 
+### Batch 2 (band 091–135) — ✅ DONE 2026-06-03
+Two parallel read-only classifiers (119–126 / 127–135) + orchestrator spot-verify of the
+load-bearing/repeated maps, then applier + robust multiset label-only verify. **24 edits / 9
+notes** (17 forward = all the PRIMARY worklist candidates, MAP with 0 LEAVE/0 false-positive
+among forward; + 7 backward stale refs found in-note). Multi-epoch, all content-confirmed:
+- **+102 forward:** `Stage 220`→118 (parent-action core params, ×4 across 119/123),
+  `Stage 221`→119 (𝔯/𝔤 defs, ×2), `Stage 231`→129 (mouth boundary layer: σ_Π + Π_m — NOT 130,
+  which is the bias-map; content-distinguished, ×3 across 131/133), `Stage 233`→131 (parent
+  micro-threshold, ×2 stage135), `Stage 223`→121 (self/geometric-r, ×2 stage121/124).
+- **+51 ranges:** `Stages 172–173`→121–122 (123/126), `Stages 172–174`→121–123 (124),
+  `Stages 176–177`→125–126 (127, positive-source theorem/families).
+- **+17 backward:** `Stage-98`→115 (×3 stage119, core-balance), `Stage 99`→116 (×2 stage121,
+  D/N tube), `Stages 97–99`→114–116 + `Stage 98`→115 (stage135, two-channel core/core-balance).
+- **False positives LEFT:** `\mathcal S(Π,κ)` / `\mathcal S_q(Π)` (D/N mouth-response KERNEL,
+  not "Stage n") in stage133/135. Confirmed canonical 220/221/231/233 stems are unrelated
+  (dynamic-port / survival-window / continuum-pullback / orbit-lock) → genuinely stale, not forward.
+- Verify: removed-multiset ≡ added-multiset (strictly label-only); 24/24 balanced. Committed.
+- FYI (out of these 9 notes, for a later batch): canonical stage115 itself carries internal
+  stale "Stage 97"/"Stage 95" self-labels.
+
 ### Calibration finding — SECONDARY is NOT "mostly genuine"
 While in the 4 notes the classifier found content-confirmed STALE **backward-number** refs
 at the dominant **+17** epoch (canonical = cited+17), which the forward-only PRIMARY filter

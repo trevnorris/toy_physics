@@ -2,17 +2,17 @@
 
 ## Goal
 
-Translate the explicit branch data from Stages 172–173 into actual parent-level flow and traction requirements.
+Translate the explicit branch data from Stages 121–122 into actual parent-level flow and traction requirements.
 
 ## 1. Parent-normalized background-flow number
 
-Stage 221 gives
+Stage 119 gives
 \[
 \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
 \qquad
 \lambda=-q_*v_{w0}\mathcal I_{sq}.
 \]
-Using the healing-locked shell formulas from Stage 220 and identifying the mixed D/N tube with the actual throat length \(L_W=L\), define the parent-normalized mixed-flow number
+Using the healing-locked shell formulas from Stage 118 and identifying the mixed D/N tube with the actual throat length \(L_W=L\), define the parent-normalized mixed-flow number
 \[
 \boxed{
 \Xi_v
@@ -45,7 +45,7 @@ So the actual mixed background flow required by the compensated throat-core bran
 
 ## 2. Parent-normalized traction number
 
-Stage 221 also gives
+Stage 119 also gives
 \[
 \mathfrak g
 =

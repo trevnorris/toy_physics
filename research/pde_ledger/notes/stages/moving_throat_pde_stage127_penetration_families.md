@@ -90,7 +90,7 @@ x_*^{\exp}\approx 0.66,
 x_*^{\rm slab}\approx 0.80.
 \]
 
-Combined with Stages 176–177, this means:
+Combined with Stages 125–126, this means:
 
 - the upper compensated branch is excluded by positivity,
 - the lower compensated branch is the unique physical candidate,

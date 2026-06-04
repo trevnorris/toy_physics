@@ -29,7 +29,7 @@ x:=\frac{z}{L}\in[0,1],
 \qquad
 \Sigma_\Pi(x)=\frac{\Pi e^{-\Pi x}}{1-e^{-\Pi}}
 \]
-be the normalized mouth-source law from Stage 231.
+be the normalized mouth-source law from Stage 129.
 
 Introduce the two-component boundary-layer field
 \[
@@ -186,7 +186,7 @@ M_\alpha:=\frac{L\,H_\alpha G_\alpha}{\Theta_\sigma}.
 }
 \]
 
-This is the first honest coupled replacement for the Stage 231 effective parent
+This is the first honest coupled replacement for the Stage 129 effective parent
 datum.
 
 The open mouth-source problem has now shrunk to:

@@ -21,7 +21,7 @@ L/a \approx 1.85.
 \]
 fileciteturn35file0
 
-So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 99 with the **actual throat axial span**:
+So the first concrete branch test is to identify the auxiliary mixed D/N tube of Stage 116 with the **actual throat axial span**:
 \[
 \boxed{L_W=L.}
 \]
@@ -30,7 +30,7 @@ This is the simplest honest moving-throat core identification: the mixed side-ch
 
 ## 1. Exact geometric branch law
 
-Stage 99 already fixed the compensation-selected D/N tube length to
+Stage 116 already fixed the compensation-selected D/N tube length to
 \[
 L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
 \]
@@ -94,7 +94,7 @@ the first D/N half-wave of the actual throat corridor. So the mixed side-channel
 
 The surviving outlet-core problem has already shrunk:
 
-- before Stage 223, the normalized hybridization \(\mathfrak r\) was free;
+- before Stage 121, the normalized hybridization \(\mathfrak r\) was free;
 - after identifying the mixed D/N tube with the actual throat length, it is fixed to
   \[
   \mathfrak r_{F1}\approx 1.778

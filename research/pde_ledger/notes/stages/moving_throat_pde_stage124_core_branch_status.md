@@ -2,7 +2,7 @@
 
 ## What is now fixed
 
-After Stages 172–174, the explicit outlet-core branch is no longer described by a free \((\mathfrak r,\mathfrak g)\) pair.
+After Stages 121–123, the explicit outlet-core branch is no longer described by a free \((\mathfrak r,\mathfrak g)\) pair.
 
 The first concrete moving-throat branch now gives:
 
@@ -38,4 +38,4 @@ The remaining microscopic question is now simply:
 
 > does the actual GNLS + localized-Maxwell throat core pick the naive equal-normalized mouth branch, or does it shift by a modest amount onto the lower compensated branch that preserves the canonical outgoing quadrupole fingerprint?
 
-That is a much smaller and more concrete target than the one we had before Stage 223.
+That is a much smaller and more concrete target than the one we had before Stage 121.

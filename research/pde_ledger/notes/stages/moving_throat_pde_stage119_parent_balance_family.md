@@ -3,7 +3,7 @@
 
 ## Goal
 
-Use the explicit parent-action formulas from Stage 220 to rewrite the compensated canonical outlet branch as a small set of dimensionless microscopic balance conditions.
+Use the explicit parent-action formulas from Stage 118 to rewrite the compensated canonical outlet branch as a small set of dimensionless microscopic balance conditions.
 
 ## 1. Dimensionless parent ratios
 
@@ -16,7 +16,7 @@ Define the two dimensionless parent ratios
 }
 \]
 
-Then the exact Stage-98 core-balance theorem
+Then the exact Stage-115 core-balance theorem
 \[
 g_s^2(K_sK_q+\lambda^2)=4(K_sg_q-\lambda g_s)^2
 \]
@@ -42,7 +42,7 @@ Solving for \(\mathfrak g\) gives the exact two-branch law
 }
 \]
 
-This is the parent-action version of the Stage-98 coupling-balance surface.
+This is the parent-action version of the Stage-115 coupling-balance surface.
 
 Interpretation:
 
@@ -53,7 +53,7 @@ Once \(\mathfrak r\) is fixed by the core background, the required mouth-couplin
 
 ## 3. D/N tube selection in parent variables
 
-The Stage-98 D/N-tube condition
+The Stage-115 D/N-tube condition
 \[
 \kappa_c=\frac13,
 \qquad
@@ -76,7 +76,7 @@ This is a strong reduction of the geometric freedom: the D/N mixed-tube length i
 
 ## 4. Parent formulas for \(\mathfrak r\) and \(\mathfrak g\)
 
-From Stage 220,
+From Stage 118,
 \[
 \mathfrak r
 =
@@ -148,7 +148,7 @@ If the shell is on the carried healing-locked GNLS branch,
 \[
 \ell=\frac{\hbar}{2m_\psi c_{s,w}},
 \]
-then Stage 220 gave
+then Stage 118 gave
 \[
 K_s=\frac{3\pi a^2\hbar^2}{5m_\psi\rho_w\,\ell}.
 \]

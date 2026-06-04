@@ -254,4 +254,4 @@ The next theorem problem is:
 
 > how does the selected-branch normalization law deform when the source vector and the loading vector are no longer the same?
 
-That is the target of Stage 23.
+That is the target of Stage 40.

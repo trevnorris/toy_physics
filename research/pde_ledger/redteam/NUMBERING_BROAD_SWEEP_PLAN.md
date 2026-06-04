@@ -271,3 +271,24 @@ Remaining items (each small + gated):
 5. **(Optional, cosmetic) padding normalization:** ~49 genuine canonical 2-digit neighbor refs in the 070–089 explicit-branch band (e.g. stage070 `Stage 58` / `Stage 65`) are CORRECT but unpadded vs the 3-digit canonical convention. This is NOT staleness — only run if the user wants cosmetic consistency.
 
 After Cluster 3, the planned full end-to-end SECOND PASS ([[project-full-second-pass]]) remains.
+
+---
+
+## SECONDARY pass — Cluster 3 (compound/forward tail) — ✅ LABEL-ONLY DONE 2026-06-04
+Read-only classifier + independent ADVERSARIAL verifier (both confirmed the same 4 maps; the
+verifier broke the +17 alternative for the 99-half and confirmed the +20 content map). Applied via
+`redteam/apply_cluster3.py` (sibling of the c2 applier — same per-edit uniqueness + strip-digits
+guard; consumes `redteam/secondary_maps/c3_*.md`). **4 label-only edits / 4 notes.** Strip-all-digits
+proof PASS (removed-multiset ≡ added-multiset), numstat 1/1 balanced per file, titles/prose untouched.
+- **stage159:16** `Stages 95–98`→**112–115** (compensated Robin–mixed outlet block; clean +17, contiguous: 95→112 Robin–Mixed Compensation Law, 98→115 Core-Balance Theorem).
+- **stage161:61** `Stages 98–99`→**115–116** (compensated canonical branch κ₀=(1+r_c)/3, γ₀=(1+r_c)/9; 98→115, 99→116 D/N tube).
+- **stage162:58** `Stages 98–99`→**115–116** (same owner pair; bare odd normalization γ₀=(1+𝔯²)/9).
+- **stage039:257** `Stage 23`→**40** (FORWARD ref; stage040 "Generalized Selected-Branch …" owns the deferred source≠loading problem; clean +17).
+
+### Tail items NOT applied (escalated — content/garble/cannot-confirm, NEVER label-only)
+- **`Stages 99 and 170` ×3** (stage162:19, stage162:221, stage163:45): the **99**-half is content-confirmed → **119** (the *parent compensation family* `𝓕=0 ⟺ 1+𝔯²=4(𝔤−𝔯)²` / `𝔤=𝔯±½√(1+𝔯²)` / `L_W/a=(π/2)√((1+𝔯²)/3)` is owned uniquely by stage119 — a content-forced **+20**, NOT the +17 epoch; triple-corroborated by stage162:40, stage122:34, stage123:9/48). But **170 is a genuine author garble** — stage170 is the grouped-`P2`→δκ_W/δγ_W outlet map, owns no parent formula. The compound CANNOT be made digit-only (correcting it = removing/replacing "and 170" = a wording change). The plausible content-correct intent is a single `Stage 119` or the pair `Stages 116 and 119` (116 = L_W/γ₀ D/N realization, 119 = balance-law family) — but that is author-intent, not a mechanical swap. → **route to Codex content-fix (Claude+Codex resolve exact target) OR defer to the second pass.**
+- **stage062:234 `Stage 43`** (AUTHOR MIS-CITATION): cited `Ξ_micro=κ·G_micro, κ=K_X L²/T_X` is owned by canonical **061**, while the +17 label-target **060** owns a *different* relation (`Ξ_micro=χ_σ Λ_φ² L²/T_X`). A pure label swap to 060 would be WRONG. → content fix, **Codex / paper-edit** per [[feedback-codex-is-fix-applier]].
+- **stage229:5 `Stage 143/093`**: CANNOT-CONFIRM. The cited "selected-mode normalization product" is owned by the rank-2 family (~stage042/085, tracing to 030); neither current 143/093 nor +17 candidates 160/110 own it. No defensible label-only remap. → leave/flag for the second pass.
+- **(Optional cosmetic) 3-digit padding** of ~49 genuine 2-digit neighbor refs in 070–089: NOT staleness; only if the user wants cosmetic consistency.
+
+**Disposition of escalations is the user's call** (content fixes → Codex; cosmetic padding → optional). The mechanical label-only SECONDARY tail is now exhausted.

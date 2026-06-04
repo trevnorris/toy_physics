@@ -58,7 +58,7 @@ So the remaining theorem gap narrows once again: it is no longer a generic DtN s
 
 ## 1. Exact similarity-defect parametrization of the bare mixed side-channel
 
-On the compensated canonical branch of Stages 98–99,
+On the compensated canonical branch of Stages 115–116,
 \[
 \kappa_0=\frac{1+r_c}{3},
 \qquad

@@ -13,7 +13,7 @@ defect ledger
 
 The clean next pass was to test the only explicit isotropic outlet class already known
 to preserve the canonical even `l=2` fingerprint while still allowing a nontrivial odd
-renormalization: the **compensated Robin–mixed outlet** of Stages 95–98.
+renormalization: the **compensated Robin–mixed outlet** of Stages 112–115.
 
 This note carries out that projection.
 

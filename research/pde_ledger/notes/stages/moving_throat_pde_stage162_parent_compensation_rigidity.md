@@ -55,7 +55,7 @@ On the same parent family, the D/N mixed-tube selection law is
 \frac{L_W}{a}=\frac{\pi}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
 }
 \]
-And Stages 98–99 fix the bare odd normalization by
+And Stages 115–116 fix the bare odd normalization by
 \[
 \boxed{
 \gamma_0=\frac{1+\mathfrak r^2}{9}.

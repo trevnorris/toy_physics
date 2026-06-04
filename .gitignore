@@ -27,6 +27,7 @@ atlas/.obsidian/plugins/*/data.json
 
 # Red-team rendered prompt files (regenerated on demand from prompts/ templates)
 research/*/redteam/tmp_prompts/
+research/*/redteam/pass2/tmp_prompts/
 
 # Red-team runtime artifacts (captured per fix/verify cycle; reproducible)
 research/*/redteam/exec_logs/
@@ -34,4 +35,10 @@ research/*/redteam/codex_logs/
 research/*/redteam/.manifest.lock
 research/*/redteam/fix_batch_*.log
 research/*/redteam/fix_batch_*.marker
+# Second-pass runtime artifacts (same as above, under the pass2/ subtree)
+research/*/redteam/pass2/exec_logs/
+research/*/redteam/pass2/codex_logs/
+research/*/redteam/pass2/.manifest.lock
+research/*/redteam/pass2/fix_batch_*.log
+research/*/redteam/pass2/fix_batch_*.marker
 research/*/redteam/MORNING_SUMMARY.md

@@ -43,15 +43,20 @@ def atomic_write(path, data):
         yaml.safe_dump(data, f, default_flow_style=False, sort_keys=False, width=120)
     tmp.replace(p)
 
+def redteam_dir_name(cfg):
+    # RT_REDTEAM_DIR overrides the artifact root (kept in sync with redteam.sh) so a
+    # second pass can be isolated, e.g. RT_REDTEAM_DIR=redteam/pass2. Unset → config value.
+    return os.environ.get("RT_REDTEAM_DIR") or cfg.get("project", {}).get("redteam_dir", "redteam")
+
+def _redteam_dir(cfg, cfg_path):
+    rd_path = Path(redteam_dir_name(cfg))
+    return rd_path if rd_path.is_absolute() else Path(cfg_path).parent / rd_path
+
 def manifest_path(cfg, cfg_path):
-    project_root = Path(cfg_path).parent
-    rd = cfg.get("project", {}).get("redteam_dir", "redteam")
-    return project_root / rd / "MANIFEST.yaml"
+    return _redteam_dir(cfg, cfg_path) / "MANIFEST.yaml"
 
 def batches_md_path(cfg, cfg_path):
-    project_root = Path(cfg_path).parent
-    rd = cfg.get("project", {}).get("redteam_dir", "redteam")
-    return project_root / rd / "BATCHES.md"
+    return _redteam_dir(cfg, cfg_path) / "BATCHES.md"
 
 def iter_batches(cfg):
     """Yield (id, start, end, label) tuples preserving config order."""
@@ -136,7 +141,7 @@ def cmd_state_list(cfg, cfg_path, args):
 
 def cmd_blocked(cfg, cfg_path, args):
     m = load_yaml(manifest_path(cfg, cfg_path))
-    rd = cfg.get("project", {}).get("redteam_dir", "redteam")
+    rd = redteam_dir_name(cfg)
     for key, e in (m.get("stages", {}) or {}).items():
         s = e.get("status", "")
         if s.startswith("blocked_"):

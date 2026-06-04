@@ -81,8 +81,16 @@ ensure_config_loaded() {
     exit 1
   }
   PROJECT_ROOT="$(dirname "$CONFIG")"
-  REDTEAM_DIR_REL="$($YAML get "$CONFIG" project.redteam_dir)"
-  REDTEAM_DIR="$PROJECT_ROOT/$REDTEAM_DIR_REL"
+  # RT_REDTEAM_DIR overrides the artifact root (manifest + reports/directives/verifications/
+  # exec_logs/codex_logs/batches/BATCHES.md all hang off REDTEAM_DIR). Used to isolate a
+  # second pass, e.g. `RT_REDTEAM_DIR=redteam/pass2 $RT ...`. Unset → config value (pass 1).
+  # manifest.py honors the same env var; keep the two in sync. Absolute path used as-is.
+  REDTEAM_DIR_REL="${RT_REDTEAM_DIR:-$($YAML get "$CONFIG" project.redteam_dir)}"
+  if [[ "$REDTEAM_DIR_REL" == /* ]]; then
+    REDTEAM_DIR="$REDTEAM_DIR_REL"
+  else
+    REDTEAM_DIR="$PROJECT_ROOT/$REDTEAM_DIR_REL"
+  fi
   MANIFEST="$REDTEAM_DIR/MANIFEST.yaml"
   # Serializes every MANIFEST read-modify-write so parallel `$RT` calls (e.g. two
   # codex-invoke instances on different stages) can't corrupt the file. All MANIFEST

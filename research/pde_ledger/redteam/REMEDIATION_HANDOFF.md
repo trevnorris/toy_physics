@@ -126,19 +126,79 @@
 >    fixes, `e177262`) + Cluster 2 (band **001–090** + 164–178, **591 fixes / 68 notes**, `b96e573`). Cluster 2's
 >    headline: the authoritative `notes/LINEAR_STAGE_RENUMBERING_MANIFEST.json` (+17 linear renumber) proved band
 >    001–090 is the PRE-renumber chain (NOT "clean"); applied via deterministic `redteam/apply_secondary_maps.py`,
->    audit trail `redteam/secondary_maps/c2_*.md`, strip-digits-verified label-only. **⏳ NEXT (gated, FRESH SESSION) =
->    CLUSTER 3 TAIL only** — see the **`## Cluster 3 — NEXT SESSION worklist`** section at the END of
->    `redteam/NUMBERING_BROAD_SWEEP_PLAN.md`: the 6 136–163 CANNOT-CONFIRM compounds; `stage062:233 "Stage 43"` =
->    author MIS-CITATION (CONTENT fix for Codex/paper-edit, NOT label-only); `stage039:256 "Stage 23"` forward ref;
->    optional 3-digit padding of ~49 genuine 2-digit neighbor refs. See memory `[[numbering-drift-root-cause]]`.
-> 2. **The planned full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — a comprehensive re-run as a
->    cross-check, now that the first pass has reached 253. The user planned this as the ultimate cross-check
->    AFTER the first pass completes (intermediate retrofit cross-checks were skipped in favor of this single run).
-> Sequence between (1) and (2) is the user's call.
+>    audit trail `redteam/secondary_maps/c2_*.md`, strip-digits-verified label-only. **✅ CLUSTER 3 + cosmetic padding
+>    DONE + COMMITTED 2026-06-04** (`9263349` = 4 label-only compound/forward fixes via `apply_cluster3.py`; `4852ccf` =
+>    66-line/18-note cosmetic 3-digit padding of the genuine 070–089 neighbor refs via `pad_neighbor_refs.py`). **The
+>    mechanical label-only numbering reconciliation is now FULLY EXHAUSTED (001–253).** Only two DEFERRED CONTENT edits
+>    remain (`stage062 "Stage 43"`→061 mis-citation; the `Stages 99 and 170` garble, 99→stage119 / 170 garbled) — both
+>    NOT label-only → Codex/paper-edit, folded into the second pass as **Step 0**. See `[[numbering-drift-root-cause]]`.
+> 2. **The full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — NOW THE ACTIVE NEXT TASK (user-confirmed
+>    2026-06-04). An *identical per-stage re-audit* of all 253 (reuse the v2 auditor) as the ultimate cross-check.
+>    **▶ See the dedicated `## ⏩ SECOND PASS — START HERE` section below** — it carries the decisions, the already-built
+>    + TESTED `redteam/pass2/` infrastructure, Step 0, and the exact run commands. (Everything under the old
+>    `## IMMEDIATE NEXT ACTION` header is FIRST-PASS history — superseded.)
 > **✅ V.3 COMMITTED 2026-06-01** (this commit; see git log): 12 new `.wl` + 1 edited `.wl` (200) +
 > 4 edited `.py` (188/189/193/195) + 2 relabeled `.py` (189/191) + refreshed outputs +
 > reports/directives/verifications/`_consult_V3.md`/`batch_V3_v2.md` + 6 synced trackers + this handoff.
 > (The memory file `[[project-moving-throat-verification]]` lives OUTSIDE the repo and is updated separately.)
+
+## ⏩ SECOND PASS — START HERE (fresh session; prepared 2026-06-04)
+
+**The first end-to-end pass is COMPLETE (253/253) and the entire numbering reconciliation is DONE.** The
+ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the old `## IMMEDIATE NEXT ACTION`
+header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
+
+### Decisions (user, 2026-06-04)
+- **Scope = identical per-stage RE-AUDIT of all 253** stages, batch by batch (I.1…VIII.1), reusing the SAME v2
+  auditor `prompts/auditor.md` and the SAME pipeline. NOT a new higher-level/cross-stage audit.
+- **Status isolation:** a separate pass-2 manifest (pass-1 record stays pristine).
+- **Artifact isolation:** all pass-2 artifacts under `redteam/pass2/`.
+- **Apply the 2 deferred numbering CONTENT edits FIRST (Step 0), before batch I.1.**
+
+### Infrastructure already built + TESTED this session (committed)
+- **Backward-compatible skill switch `RT_REDTEAM_DIR`** (in `lib/redteam.sh` REDTEAM_DIR resolution + `lib/manifest.py`
+  `redteam_dir_name`/`_redteam_dir`). UNSET = pass-1 behavior (verified unchanged). `RT_REDTEAM_DIR=redteam/pass2`
+  redirects the manifest AND every artifact dir (reports/directives/verifications/exec_logs/codex_logs/batches/
+  BATCHES.md) under `redteam/pass2/`. **Isolation proven:** pass-1 `MANIFEST.yaml` stayed byte-identical through
+  pass-2 `init` + `set-status` + `mark-stale-downstream` (both the bash and the manifest.py write paths covered).
+- **`redteam/pass2/` scaffold seeded + committed:** `MANIFEST.yaml` = all **253 stages `pending`** (the clone-and-reset),
+  `BATCHES.md`, and the empty reports/directives/verifications/batches/exec_logs/codex_logs dirs. pass2 runtime log
+  dirs are gitignored. pass-1 `BATCHES.md` refreshed to the true all-`verified` state.
+
+### Step 0 — the 2 deferred numbering CONTENT edits (Codex-applied, Claude-reviewed; NOT label-only) BEFORE batch I.1
+Per [[feedback-codex-is-fix-applier]] (notes are Codex-applied). Evidence in `redteam/NUMBERING_BROAD_SWEEP_PLAN.md`
+(the Cluster 3 + escalations sections). Commit Step 0 as its own content commit, then start the re-audit.
+1. **stage062 `Stage 43` → `Stage 61`** — mis-citation: the cited `Ξ_micro = κ·G_micro, κ=K_X L²/T_X` is owned by
+   canonical **061**, not the +17 label-target 060. (Find it: grep `Stage 43 used` in
+   `notes/stages/moving_throat_pde_stage062_*.md`.)
+2. **`Stages 99 and 170` ×3 (stage162:19, stage162:221, stage163:45)** — garble: the "99"-half is content-confirmed
+   = **stage119** (which alone owns the cited parent formulas — `𝓕=0 ⟺ 1+𝔯²=4(𝔤−𝔯)²`, the family `𝔤=𝔯±½√(1+𝔯²)`,
+   and `L_W/a=(π/2)√((1+𝔯²)/3)`, all three boxed in 119); "170" is a genuine garble (stage170 is unrelated).
+   Claude+Codex settle the exact wording (recommend `Stage 119`; alt `Stages 116 and 119`) per
+   [[feedback-claude-codex-resolve-math]], then Codex applies. (`stage229:5 "Stage 143/093"` stays flagged → LEAVE.)
+
+### Run the second pass
+```
+cd /var/projects/toy_physics/research/pde_ledger
+RT=/var/projects/toy_physics/.claude/skills/redteam-audit/lib/redteam.sh
+export RT_REDTEAM_DIR=redteam/pass2     # EVERY $RT call this session targets pass-2 (set it once, in the env)
+$RT status        # must show Manifest: …/redteam/pass2/MANIFEST.yaml  + 253 pending
+$RT next-batch    # → I.1 (stages 1–12)
+```
+Then run the PROVEN per-stage loop (unchanged — see the boilerplate later in this doc / SKILL.md), with all paths now
+under `redteam/pass2/`: render-audit-prompt → clean audit Agent writes `redteam/pass2/reports/stage_NNN.md` →
+(findings) directive → `set-status fixing` → `codex-invoke` → `exec-sympy`+`exec-mathematica` (SEQUENTIAL; ≤2
+Mathematica seats; refresh `output/*.txt`) → `capture-diff` → render-verify-prompt → clean verify Agent writes
+`redteam/pass2/verifications/stage_NNN.md` → `set-status verified`; `material_change: true` → `mark-stale-downstream`.
+**Standing rules (unchanged):** render prompts to `redteam/pass2/tmp_prompts/` (mkdir it; sub-agents can't read /tmp);
+clean agent per audit and per verify; Codex is the sole code-applier (resumes its per-stage session); 600s script cap
+(a 124 timeout is a FAILURE → reformulate, never raise the cap); fix sequential per batch; **HALT at every batch
+boundary for the user gate** ([[feedback-sequential-audit-chunks]]); sync the 6 trackers after each batch
+([[feedback-post-batch-tracker-updates]]); offload reads to agents to save orchestrator context ([[feedback-offload-to-agents]]).
+**Expectation** ([[project-full-second-pass]]): if the first pass did its job the second finds little; anything it
+surfaces is signal about where pass 1 was weak. To revert to pass-1 commands, just `unset RT_REDTEAM_DIR`.
+
+---
 
 ## ⚠️ SESSION 2 (2026-05-28 cont.) — PIPELINE CHANGES (do NOT undo) + PROGRESS
 
@@ -150,6 +210,11 @@
 **Per-stage loop now:** Claude audit agent (`render-audit-prompt`) → directive → `codex-invoke` (Codex applies + RUNS + iterates under 600s cap) → orchestrator `exec-sympy`+`exec-mathematica` (re-run + refresh `output/*.txt`) → `capture-diff` → `render-verify-prompt` → clean Claude verify agent → `set-status NNN verified`. Mathematica single-seat → fix/verify run SEQUENTIALLY.
 
 ## IMMEDIATE NEXT ACTION
+> ⛔ **SUPERSEDED — this entire section is FIRST-PASS history (the integrity-remediation batches 1–8 and the
+> V.2→VIII.1 resume). The first pass is COMPLETE (253/253) and the ACTIVE next task is the second pass — see
+> `## ⏩ SECOND PASS — START HERE` above. The per-stage-loop boilerplate below is still accurate and reused by
+> the second pass; only the "next batch = …" pointers here are stale.**
+
 **BATCH 1 = {116, 108, 151, 170} — ✅ VERIFIED & COMMITTED** (116/151 `e1cdfec`; 170/108 `bda2107`).
 **BATCH 2 = {105, 106, 109, 112} — ✅ VERIFIED & COMMITTED** (2026-05-29 — batch-2 close commit, see git log). Paper_misalignments resolved via Claude+Codex consult `019e748e` (record: `redteam/codex_reviews/_consult_batch2.md`), all non-conceptual: 105/112 = canonical "Stage NNN" labels (rode the fix loops); 109 → card cross-ref 108/110/111/112; 106 → card cross-ref 102/104+**105** (Codex refined R4: chi_Q=1 is *fixed at 105*, not 104) + a docstring citation correction. Trackers synced (PAPER_CLEANUP **P4-43**, STAGE_VERIFICATION_COVERAGE + MATHEMATICA_MIRROR_POLICY + CHECKPOINT_TRUST_AUDIT + CHECKPOINT_CONSTANT_PROVENANCE batch-2 snapshots; 105 is a checkpoint). All four `material_change: false`. **AT THE USER GATE — do not start the next batch without an explicit go.**
 

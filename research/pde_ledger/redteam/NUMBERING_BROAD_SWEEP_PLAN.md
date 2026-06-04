@@ -179,6 +179,33 @@ content classification, not a blanket defer. RECOMMEND revising the plan so clas
 ALSO classify backward refs in each note they already read (near-zero marginal cost, avoids a
 second pass over the same files). HELD pending user decision (the original gate deferred SECONDARY).
 
+## SECONDARY pass — execution plan (next session)
+Worklist = `redteam/NUMBERING_SECONDARY_WORKLIST.md` (row-level, regenerate with `broad_sweep_scan.py`
+against the then-current tree first). **2600 backward bare refs, MOSTLY GENUINE — default verdict LEAVE.**
+
+**Honest expectation (low yield):** there is NO clean mechanical staleness signal — the `dist=self−cited`
+column is citation distance, not staleness (a genuine stage022→"Stage 3" has dist +19; a stale
+stage119→"Stage 98" also has large dist). Staleness is `cited→canonical` and needs content. From the
+PRIMARY pass, stale backward refs cluster in the **+17 renumber zone, self∈[100,180]**; band 001–090 was
+not renumbered (≈all genuine), and the 219–253 endgame cites neighbors genuinely. The worklist count is
+inflated by self-refs and line-2 H1 titles (all → LEAVE). Realistic yield: a few dozen stale refs at most.
+
+**Known stale classes already confirmed (fast-path when content matches):** `97→114` (two-channel core),
+`98→115` (core-balance), `99→116` (D/N tube). Expect a few more to surface; log each new (cited→canonical).
+
+**Recommended fan-out (agents):**
+1. **Triage low band + endgame cheaply.** One agent confirms a SAMPLE of band 001–090 (and 219–253) is
+   genuine, then LEAVE the whole band (don't per-ref-classify 1000+ genuine refs). Document the sample.
+2. **Focus the real work on self∈[091,218].** Partition those notes into ~6–8 clusters; one read-only
+   classifier per cluster content-classifies every backward ref (default LEAVE; MAP only on content
+   mismatch + matching upstream). Same per-row evidence format as PRIMARY.
+3. **Apply + verify per cluster** exactly like PRIMARY: orchestrator reviews every MAP, applier agent
+   applies label-only, strip-all-digits proof (removed==added after `sed 's/[0-9]//g'`) + per-file
+   residual-0, titles intact, commit per cluster, gate between clusters ([[feedback-sequential-audit-chunks]]).
+
+The verified methodology, agent-prompt shapes, and the label-only proof are all in the PRIMARY batch
+sections above — reuse them verbatim.
+
 ## Definition of done
 All 300 PRIMARY candidates classified + applied-or-documented; mechanical label-only
 verification clean per band; a final tail doc lists any CANNOT-CONFIRM rows with leads.

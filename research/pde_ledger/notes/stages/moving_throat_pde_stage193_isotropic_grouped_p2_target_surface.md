@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 242, the microscopic orbit/quotient split of Stage 243, and the reduced 5PN isotropic grouped-real `P2` closure.**
+**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 191, the microscopic orbit/quotient split of Stage 192, and the reduced 5PN isotropic grouped-real `P2` closure.**
 
 This stage does **not** introduce a new constitutive law or a new physical closure.
 Its job is to freeze the first new audited theorem target that the 5PN derivation made unavoidable:
@@ -14,7 +14,7 @@ Its job is to freeze the first new audited theorem target that the 5PN derivatio
 
 ## Purpose
 
-Stage 242 compressed the reduced endgame to the finite grouped bundle packet
+Stage 191 compressed the reduced endgame to the finite grouped bundle packet
 \[
 \mathcal P_A
 =
@@ -26,7 +26,7 @@ and the exact branch residual packet
 =
 (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
 \]
-Stage 243 then separated the microscopic quotient-failure packet from pure similarity-orbit motion, so the remaining PDE problem became a clean finite-packet realization problem.
+Stage 192 then separated the microscopic quotient-failure packet from pure similarity-orbit motion, so the remaining PDE problem became a clean finite-packet realization problem.
 
 But the 5PN compression sharpened something further:
 
@@ -52,7 +52,7 @@ The main outputs of this stage are:
    \]
 4. and the exact reduced theorem that the `l=0` scalar/geometry lane can re-enter the grouped `l=2` carrier only at **quadratic** order in anisotropy-induced mixing.
 
-So this stage is the correct audited start of the new post-243 extension.
+So this stage is the correct audited start of the new post-192 extension.
 
 ---
 
@@ -67,7 +67,7 @@ D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6),
 A\in\{20,21,22\}.
 \]
 
-As in Stage 242, define the normalized conservative grouped response moments
+As in Stage 191, define the normalized conservative grouped response moments
 \[
 \nu_2^{(A)}:=-\frac{D_{A2}}{D_{A0}},
 \qquad
@@ -98,7 +98,7 @@ Apply this to the conservative response moments:
 (\bar\nu_4,a_4,b_4).
 \]
 
-No outgoing data are needed yet. Stage 244 is deliberately only the conservative front end.
+No outgoing data are needed yet. Stage 193 is deliberately only the conservative front end.
 
 ---
 
@@ -247,7 +247,7 @@ Indeed,
 1+\bar\nu_2\omega^2+\bar\nu_4\omega^4+O(\omega^6).
 \]
 
-So Stage 244 freezes the exact conservative theorem target in the cleanest possible form:
+So Stage 193 freezes the exact conservative theorem target in the cleanest possible form:
 
 > the grouped `20/21/22` conservative carrier must be isotropic and one-pole, and therefore must reduce to the
 > \(\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}\)
@@ -320,16 +320,16 @@ This is precisely the firewall the 5PN derivation was implicitly using and which
 
 ---
 
-## 6. Exact Stage 244 theorem target
+## 6. Exact Stage 193 theorem target
 
-The conservative front-end theorem target after Stage 243 is now explicit.
+The conservative front-end theorem target after Stage 192 is now explicit.
 
 ### 6.1 Conservative grouped-real `P2` target surface
 
 The completed moving-throat PDE must supply Packet-A data whose conservative part lands on
 \[
 \boxed{
-\mathcal S_{244}
+\mathcal S_{193}
 :
 \quad
 a_2=b_2=a_4=b_4=0,
@@ -361,19 +361,19 @@ O(\chi^2).
 }
 \]
 
-So Stage 244 turns a previously implicit design rule into an explicit audited theorem surface.
+So Stage 193 turns a previously implicit design rule into an explicit audited theorem surface.
 
 ---
 
 ## 7. Why this is the correct next audited stage after 243
 
-Stage 242 said the home-stretch problem depends only on Packet A and Packet B.
-Stage 243 said Packet B is an exact microscopic orbit/failure split.
+Stage 191 said the home-stretch problem depends only on Packet A and Packet B.
+Stage 192 said Packet B is an exact microscopic orbit/failure split.
 
 The next audited extension therefore should not jump immediately to outgoing normalization or the final four-condition verdict.
 It should first freeze the **conservative front-end surface** that Packet A must land on before those later stages even make sense.
 
-That is exactly what Stage 244 does.
+That is exactly what Stage 193 does.
 
 It does three useful things for every later stage:
 
@@ -381,7 +381,7 @@ It does three useful things for every later stage:
 2. it gives one exact one-parameter carrier that later outgoing stages can attach to,
 3. and it removes the temptation to blame linear grouped-lane failures on the scalar/geometry lane when the exact isotropic block structure forbids that.
 
-So this is the right starting point for the new post-243 audited sequence.
+So this is the right starting point for the new post-192 audited sequence.
 
 ---
 

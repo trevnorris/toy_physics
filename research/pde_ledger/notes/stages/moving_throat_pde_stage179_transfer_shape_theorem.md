@@ -150,7 +150,7 @@ Now define the weak-axisymmetric slopes of the three wall-normalized port variab
 \delta\ln\widehat R_{A,r}=\epsilon\lambda_A\,\mathfrak c_r.
 }
 \]
-In terms of the primitive port slopes already used in Stages 228–229,
+In terms of the primitive port slopes already used in Stages 177–178,
 \[
 \boxed{
 \mathfrak w_r

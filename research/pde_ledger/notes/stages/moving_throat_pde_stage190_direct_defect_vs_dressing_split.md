@@ -4,7 +4,7 @@
 
 **Exact within the carried coherent local D/N weak-axisymmetric reference-branch closure, together with the exact reduced grouped-lane symmetry theorem for pure real `P2` anisotropy.**
 
-This stage does **not** enlarge the endgame packet from Stage 240.
+This stage does **not** enlarge the endgame packet from Stage 189.
 It sharpens the internal logic of that packet by separating:
 
 1. the **direct transfer-shape defect**,
@@ -16,7 +16,7 @@ It sharpens the internal logic of that packet by separating:
 
 ## Purpose
 
-Stage 239 completed the first-order branch-observable compiler in the direct observables
+Stage 188 completed the first-order branch-observable compiler in the direct observables
 \[
 R_{\rm tr},
 \qquad
@@ -24,7 +24,7 @@ R_{\rm tr},
 \qquad
 \epsilon_\eta,
 \]
-and Stage 240 carried that packet all the way to the isotropic grouped outgoing-prefactor compiler.
+and Stage 189 carried that packet all the way to the isotropic grouped outgoing-prefactor compiler.
 
 At that point the remaining algebra was no longer the issue.
 The actual missing clarification was structural:
@@ -52,7 +52,7 @@ The main outputs are:
 4. exact inverse reconstruction formulas,
 5. and the exact no-go filter saying that a **pure grouped real `P2` anisotropy cannot linearly feed the scalar off-bundle slippages**.
 
-So this stage is the clean separation layer between the Stage 240 transfer compiler and the later finite packet theorem gate.
+So this stage is the clean separation layer between the Stage 189 transfer compiler and the later finite packet theorem gate.
 
 ---
 
@@ -68,7 +68,7 @@ Carry forward the exact coherent transfer shape
 \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}.
 }
 \]
-The corrected nontracking branch observable from Stage 239 is
+The corrected nontracking branch observable from Stage 188 is
 \[
 \boxed{
 \mathfrak N_*:=\mathcal T^2 R_{\rm tr}^{B_*},
@@ -78,7 +78,7 @@ R_{\rm tr}:=\frac{1+\chi_0+\delta_U}{(1+\chi_0)(1+\delta_U)},
 B_*:=\frac{2(1+\chi_{0,*}+\delta_{U,*})}{\delta_{U,*}}.
 }
 \]
-By Stage 240,
+By Stage 189,
 \[
 \boxed{
 \delta\ln\mathcal T^2=\Xi_1,
@@ -585,7 +585,7 @@ The representation-theoretic consequence is the exact no-go statement:
 }
 \]
 for every rotational scalar observable `\(\mathcal S\)` extracted from the isotropic branch.
-In particular, for the scalar off-bundle slippages of Stage 253,
+In particular, for the scalar off-bundle slippages of Stage 168,
 \[
 \boxed{
 \varepsilon_L^{(1,P_2)}=0,
@@ -615,9 +615,9 @@ That is the second obstruction theorem packaged explicitly by this stage.
 
 ---
 
-## 8. Best current theorem statement after Stage 241
+## 8. Best current theorem statement after Stage 190
 
-After Stages 239–241, the coherent weak-axisymmetric first-order problem is now split as sharply as it can be before the final finite packet compiler.
+After Stages 188–190, the coherent weak-axisymmetric first-order problem is now split as sharply as it can be before the final finite packet compiler.
 
 ### 8.1 Direct defect vs dressing
 
@@ -670,12 +670,12 @@ That is the cleanest microscopic separation reached so far.
 
 ## 9. Immediate next stage
 
-The next clean move is now exactly the Stage 242 compiler step.
+The next clean move is now exactly the Stage 191 compiler step.
 
 The purpose of that next stage should be:
 
 1. take the direct/dressing split fixed here,
-2. take the grouped operator / transfer data from Stage 240,
+2. take the grouped operator / transfer data from Stage 189,
 3. and compile the **smallest exact finite PDE data packet** that still has to be computed on the actual moving-throat branch.
 
-So Stage 241 is the last structural-cleanup stage before the minimal PDE packet theorem gate.
+So Stage 190 is the last structural-cleanup stage before the minimal PDE packet theorem gate.

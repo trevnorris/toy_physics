@@ -126,6 +126,26 @@ mismatches = stale) was decisive.
 - Verify: strictly label-only (6/6). Committed. **Lesson: the endgame band's default is GENUINE;
   bands 4/5 (164–234) are mid-derivation and expected to be mostly STALE like batches 1/2.**
 
+### Batch 4 (band 164–200) — ✅ DONE 2026-06-03
+4 parallel read-only classifiers (198 / 199 / 190-191-193-194 / 170-177-178-179-187-189-192) +
+orchestrator anchor-verify (188/189/191/192/193/197/198 H1s + 159/168/169) + 5 parallel appliers
+(distinct files). **119 label-only edits / 11 notes.** Strip-all-digits proof: only numbers changed;
+every per-file stale source-number fully gone (0 residual).
+- **Uniform +51 ladder** (the 188–194 cluster, all content-anchored): 238→187, 239→188, 240→189,
+  241→190, 242→191, 243→192, 244→193, 245→194. stage198 (242/243/248/249→191/192/197/198, 27 lines)
+  & stage199 (243/248/249/250→192/197/198/199-SELF, 27 lines) were the dense ones; self-refs include
+  boxed theorems ("Theorem (Stage 250 …)"→199, "(Stage 242 home-stretch)"→191).
+- **Off-epoch (content-anchored):** stage190:588 `Stage 253`→**168** (−85, off-bundle slippage decomp);
+  stage170 `Stage 237`→**169** (−68, no-go feed-down, ×4), `Stage 244`→**159** (−85, hybrid-outlet δE₂/δE₄, ×2),
+  `Stage 238`→**170** (SELF).
+- **Range refs (−51):** stage177 225–227→174–176, stage178 226–228→175–177, stage179 228–229→177–178,
+  stage187 235–237→184–186 (corroborates the deferred-tail A2 fix: same monomials, same +51), plus
+  239–241→188–190 / 238–239→187–188 in 190/191.
+- **User's `\mathcal S_{244}` example RESOLVED:** stage193:332 `\mathcal S_{244}`→`\mathcal S_{193}` (SELF object-subscript);
+  also 2 inventory-missed `post-243`→`post-192`. Inventory regex also missed multi-token lines (line 5 with
+  3 refs, etc.) — the classifiers' full in-note grep caught them (lesson: the worklist undercounts dense lines).
+- **GENUINE-left:** stage189 (2× "Stage 190") and stage192 (2× "Stage 193") are real next-stage refs → 0 edits.
+
 ### Calibration finding — SECONDARY is NOT "mostly genuine"
 While in the 4 notes the classifier found content-confirmed STALE **backward-number** refs
 at the dominant **+17** epoch (canonical = cited+17), which the forward-only PRIMARY filter

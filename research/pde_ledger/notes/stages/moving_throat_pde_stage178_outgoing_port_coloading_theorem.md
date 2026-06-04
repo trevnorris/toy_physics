@@ -22,7 +22,7 @@ The next honest step is therefore:
 
 This stage does exactly that.
 
-The main result is that on the same conservative-shape-preserving branch used in Stages 226–228, the full remaining grouped defect is
+The main result is that on the same conservative-shape-preserving branch used in Stages 175–177, the full remaining grouped defect is
 \[
 \boxed{
 \Xi_1

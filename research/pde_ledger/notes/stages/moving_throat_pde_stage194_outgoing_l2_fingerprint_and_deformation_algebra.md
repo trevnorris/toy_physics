@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 244 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing compiler, and the canonical compact passive/outgoing `l=2` DtN closure already isolated in the 5PN notes.**
+**Exact within the carried Stage 193 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing compiler, and the canonical compact passive/outgoing `l=2` DtN closure already isolated in the 5PN notes.**
 
 This stage does **not** introduce a new constitutive law.
-It upgrades Stage 244 from the exact conservative isotropic one-pole front end to the first exact **retarded** isotropic branch test.
+It upgrades Stage 193 from the exact conservative isotropic one-pole front end to the first exact **retarded** isotropic branch test.
 
 ---
 
 ## Purpose
 
-Stage 244 froze the conservative grouped-real `P2` target surface
+Stage 193 froze the conservative grouped-real `P2` target surface
 \[
  a_2=b_2=a_4=b_4=0,
  \qquad
@@ -41,13 +41,13 @@ which multiplies the leading odd `\omega^5` term in the isotropic retarded group
    on the canonical compact passive/outgoing branch,
 3. and the exact first isotropic deformation algebra showing which DtN-side branch data can move `\chi_Q` while preserving the canonical even moments.
 
-So Stage 245 is the first precise retarded continuation of the Stage 244 conservative surface.
+So Stage 194 is the first precise retarded continuation of the Stage 193 conservative surface.
 
 ---
 
 ## 1. Carry-forward retarded grouped-`P2` module
 
-From Stage 244, the isotropic one-pole conservative carrier is already fixed through `O(\omega^4)`.
+From Stage 193, the isotropic one-pole conservative carrier is already fixed through `O(\omega^4)`.
 The corresponding retarded grouped-`P2` one-pole-plus-contact module is written as
 \[
 \boxed{
@@ -62,11 +62,11 @@ The corresponding retarded grouped-`P2` one-pole-plus-contact module is written 
 \]
 Here:
 
-- `\Omega_Q` is the Stage 244 conservative pole scale,
+- `\Omega_Q` is the Stage 193 conservative pole scale,
 - `\sigma_Q^{\rm can}` is the canonical compact outgoing normalization,
 - `\chi_Q` is the only reduced outgoing-normalization scalar that remains open before the explicit DtN model is inserted.
 
-Matching the even coefficients of Stage 244 to the canonical compact outgoing `l=2` branch fixes
+Matching the even coefficients of Stage 193 to the canonical compact outgoing `l=2` branch fixes
 \[
 \boxed{
 \Omega_Q=\frac{3c_s}{2a},
@@ -161,7 +161,7 @@ This is the exact canonical compact outgoing `l=2` fingerprint.
 
 ## 3. Exact fixing of `\chi_Q` on the canonical compact branch
 
-Compare the Stage 245 retarded grouped-`P2` module
+Compare the Stage 194 retarded grouped-`P2` module
 \[
 \widehat Y_Q^{\rm ret}(\omega)
 =
@@ -315,18 +315,18 @@ from the reduced 2.5PN package, then the exact fixing `\chi_Q=1` immediately ret
 \overline\Gamma_5=\frac{2G}{5c^5}.
 }
 \]
-This is not a new theorem input in Stage 245. It is the immediate reduced corollary of:
+This is not a new theorem input in Stage 194. It is the immediate reduced corollary of:
 
-- the Stage 244 isotropic one-pole conservative surface,
+- the Stage 193 isotropic one-pole conservative surface,
 - the exact outgoing `l=2` fingerprint,
 - and the already-carried natural point-particle source-map branch.
 
 ---
 
-## 6. What Stage 245 changes in the theorem problem
+## 6. What Stage 194 changes in the theorem problem
 
-Stage 244 left the reduced hierarchy with one isotropic conservative carrier but one unfixed retarded normalization scalar.
-Stage 245 changes that in three precise ways.
+Stage 193 left the reduced hierarchy with one isotropic conservative carrier but one unfixed retarded normalization scalar.
+Stage 194 changes that in three precise ways.
 
 ### 6.1 The canonical outgoing coefficient is no longer symbolic
 
@@ -357,8 +357,8 @@ The next clean stage is now much narrower than before.
 Do **not** reopen the conservative grouped bundle.
 Instead:
 
-1. keep the Stage 244 isotropic conservative one-pole surface,
-2. keep the Stage 245 exact outgoing `l=2` fingerprint,
+1. keep the Stage 193 isotropic conservative one-pole surface,
+2. keep the Stage 194 exact outgoing `l=2` fingerprint,
 3. compute the actual moving-throat isotropic DtN data that feed
    \[
    (\beta,\Sigma_0,\Sigma_5),

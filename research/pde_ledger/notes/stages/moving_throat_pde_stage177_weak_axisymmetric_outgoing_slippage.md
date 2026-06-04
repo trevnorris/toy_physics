@@ -61,7 +61,7 @@ So the whole Stage 176 port bundle has now collapsed one step further:
 - not to every microscopic grouped drift separately,
 - but to one weighted scalar combination \(\Xi_1\).
 
-On the same conservative-shape-preserving branch already used in Stages 225–227, this scalar is exactly the logarithmic outgoing-prefactor slope:
+On the same conservative-shape-preserving branch already used in Stages 174–176, this scalar is exactly the logarithmic outgoing-prefactor slope:
 \[
 \boxed{
 \Xi_1=\frac{P_1}{P_0}.

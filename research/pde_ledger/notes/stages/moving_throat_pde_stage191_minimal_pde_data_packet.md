@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried grouped real `P2` / coherent-branch / outgoing-compiler hierarchy already fixed in Stages 239–241.**
+**Exact within the carried grouped real `P2` / coherent-branch / outgoing-compiler hierarchy already fixed in Stages 188–190.**
 
 This stage does **not** add a new microscopic closure law.
 It packages the existing reduced theorem chain into the smallest exact finite data packet that the completed moving-throat PDE still has to supply.
@@ -11,7 +11,7 @@ It packages the existing reduced theorem chain into the smallest exact finite da
 
 ## Purpose
 
-Stage 239 completed the first-order **branch-observable** front end in the direct observables
+Stage 188 completed the first-order **branch-observable** front end in the direct observables
 \[
 R_{\rm tr},
 \qquad
@@ -24,7 +24,7 @@ and showed that their logarithmic drifts are an exact first-order compiler for
 (\Theta_1,\Xi_1,\mathcal R_1).
 \]
 
-Stage 240 carried the same branch-observable data into the exact **transfer-shape / grouped-response / outgoing-prefactor** compiler,
+Stage 189 carried the same branch-observable data into the exact **transfer-shape / grouped-response / outgoing-prefactor** compiler,
 so that the isotropic grouped bundle is described by the low-frequency coefficients
 \[
 (D_{A0},D_{A2},D_{A4},N_{A0},N_{A2},N_{A4}),
@@ -33,7 +33,7 @@ A\in\{20,21,22\},
 \]
 together with the source-map factor `\(m_{\hat 0}\)`.
 
-Stage 241 then separated the **direct transfer-shape defect** from the **selected-branch dressing residual**, proved the support-blindness theorem for the direct transfer shape, and promoted the main weak-axisymmetric no-go filters. After that stage, the remaining gap was no longer “what microscopic channel is missing?” but rather:
+Stage 190 then separated the **direct transfer-shape defect** from the **selected-branch dressing residual**, proved the support-blindness theorem for the direct transfer shape, and promoted the main weak-axisymmetric no-go filters. After that stage, the remaining gap was no longer “what microscopic channel is missing?” but rather:
 
 > what is the smallest exact finite packet of branch data the completed PDE must return so that the final reduced verdict is automatic?
 
@@ -232,7 +232,7 @@ The orbit side is already known to be exactly representable by any one of three 
 \]
 
 #### (ii) Invariant ratios
-To avoid collision with the exact Stage 239 tracking factor `\(R_{\rm tr}\)`, this note writes the finite orbit/invariant ratios as
+To avoid collision with the exact Stage 188 tracking factor `\(R_{\rm tr}\)`, this note writes the finite orbit/invariant ratios as
 \[
 \boxed{(\mathfrak R_{\rm tr},\mathfrak R_{\rm nt},\mathfrak R_\eta).}
 \]
@@ -296,9 +296,9 @@ m_T=m_K=m_\mu=1
 }
 \]
 
-### 2.4 Relation to the Stage 239 quotient directions
+### 2.4 Relation to the Stage 188 quotient directions
 
-At the infinitesimal level, `\(\Delta_{\rm orbit}\)` is just the finite upgrade of the same three quotient directions whose tangent compiler was fixed in Stages 238–239.
+At the infinitesimal level, `\(\Delta_{\rm orbit}\)` is just the finite upgrade of the same three quotient directions whose tangent compiler was fixed in Stages 187–188.
 So Packet B is not a new object. It is the exact finite orbit-lock version of the already-frozen three-coordinate quotient structure.
 
 ---
@@ -308,10 +308,10 @@ So Packet B is not a new object. It is the exact finite orbit-lock version of th
 ### 3.1 Statement
 
 \[
-\boxed{\textbf{Theorem (Stage 242 home-stretch theorem).}}
+\boxed{\textbf{Theorem (Stage 191 home-stretch theorem).}}
 \]
 
-Within the carried grouped real `P_2` / coherent-branch / outgoing-prefactor hierarchy of Stages 239–241,
+Within the carried grouped real `P_2` / coherent-branch / outgoing-prefactor hierarchy of Stages 188–190,
 all reduced endgame diagnostics needed for the final GR-compatible test are exact compiler outputs of the two finite packets
 \[
 \mathcal P_A
@@ -374,9 +374,9 @@ The reduced verdict is now immediate.
 
 The following are no longer active algebraic bottlenecks.
 
-1. The first-order branch-observable front end is fixed exactly by Stage 239.
-2. The transfer-shape / outgoing-prefactor compiler is fixed exactly by Stage 240.
-3. The direct-defect / dressing split and the main weak-axisymmetric no-go filters are fixed exactly by Stage 241.
+1. The first-order branch-observable front end is fixed exactly by Stage 188.
+2. The transfer-shape / outgoing-prefactor compiler is fixed exactly by Stage 189.
+3. The direct-defect / dressing split and the main weak-axisymmetric no-go filters are fixed exactly by Stage 190.
 4. The final finite residual packets `\(\Delta_{\rm branch}\)` and `\(\Delta_{\rm orbit}\)` are now explicit.
 
 So the remaining gap is no longer compression, notation, or algebra.

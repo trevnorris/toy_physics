@@ -2,28 +2,28 @@
 
 ## Status
 
-**Exact within the carried Stage 242 Packet-B hierarchy, the Stage 243 orbit/quotient projector calculus, and the exact coherent-branch monomial definitions already frozen before Stage 248.**
+**Exact within the carried Stage 191 Packet-B hierarchy, the Stage 192 orbit/quotient projector calculus, and the exact coherent-branch monomial definitions already frozen before Stage 197.**
 
 This stage does **not** introduce a new constitutive law.
-It is the finite orbit-side complement to the Packet-A retarded finish-line theorem of Stage 248.
+It is the finite orbit-side complement to the Packet-A retarded finish-line theorem of Stage 197.
 
 ---
 
 ## Purpose
 
-Stage 248 completed the exact Packet-A retarded statement:
+Stage 197 completed the exact Packet-A retarded statement:
 \[
 \Delta_{\rm branch}=0
 \iff
 \chi_Q=1.
 \]
-But Stage 248 also left the second home-stretch packet untouched:
+But Stage 197 also left the second home-stretch packet untouched:
 \[
 \Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta),
 \]
 which must still vanish for full reduced closure.
 
-Stage 242 had already shown that Packet B can be represented equivalently by
+Stage 191 had already shown that Packet B can be represented equivalently by
 \[
 (m_T,m_K,m_\mu),
 \qquad
@@ -31,7 +31,7 @@ Stage 242 had already shown that Packet B can be represented equivalently by
 \qquad
 (q_{\rm tr},q_{\rm nt},q_\eta),
 \]
-and Stage 243 then upgraded the infinitesimal quotient side into an exact projector calculus on the full eight-dimensional microscopic drift space. What was still missing was the **finite microscopic orbit law itself**:
+and Stage 192 then upgraded the infinitesimal quotient side into an exact projector calculus on the full eight-dimensional microscopic drift space. What was still missing was the **finite microscopic orbit law itself**:
 
 > given the five free microscopic coordinates and the invariant triple, what are the exact dependent microscopic coordinates on the same similarity orbit, and how does a general candidate branch fail to follow them?
 
@@ -63,7 +63,7 @@ The main outputs are:
    m_T=m_K=m_\mu=1.
    \]
 
-So Stage 249 turns the orbit side of the home stretch into a direct finite comparison problem.
+So Stage 198 turns the orbit side of the home stretch into a direct finite comparison problem.
 
 ---
 
@@ -76,7 +76,7 @@ Work on the positive microscopic state
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
 }
 \]
-Keep the same five free microscopic coordinates used throughout the Stage 242/243 orbit package:
+Keep the same five free microscopic coordinates used throughout the Stage 191/192 orbit package:
 \[
 \boxed{(\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})})}
 \]
@@ -124,7 +124,7 @@ The exact coherent monomials are
 }
 \]
 
-These are the same exact monomials whose infinitesimal drift compiler was encoded by `\(M_*\)` in Stage 243.
+These are the same exact monomials whose infinitesimal drift compiler was encoded by `\(M_*\)` in Stage 192.
 
 ---
 
@@ -188,7 +188,7 @@ is the unique microscopic point on the same exact similarity orbit.
 ### 2.4 Exact finite orbit theorem
 
 \[
-\boxed{\textbf{Theorem (Stage 249 finite orbit law).}}
+\boxed{\textbf{Theorem (Stage 198 finite orbit law).}}
 \]
 
 **Given the five free microscopic coordinates and the invariant triple**
@@ -197,7 +197,7 @@ is the unique microscopic point on the same exact similarity orbit.
 \]
 **the dependent microscopic triple is determined uniquely and exactly by the formulas above.**
 
-This is the finite microscopic orbit law promised by Stage 243.
+This is the finite microscopic orbit law promised by Stage 192.
 
 ---
 
@@ -213,7 +213,7 @@ K_\eta^{(\mathrm{eff})}=m_K\,K_\eta^{(\mathrm{orbit})},
 \mu_W=m_\mu\,\mu_W^{(\mathrm{orbit})}.
 }
 \]
-These are the Stage 242 residual mismatch ratios, now written as direct ratios to the explicit orbit point.
+These are the Stage 191 residual mismatch ratios, now written as direct ratios to the explicit orbit point.
 
 Then the invariant ratios collapse exactly to
 \[
@@ -240,7 +240,7 @@ So the entire finite orbit-side branch-selection problem is exactly three-dimens
 \boxed{(m_T,m_K,m_\mu).}
 \]
 
-If desired, the invariant-ratio packet of Stage 242 is therefore
+If desired, the invariant-ratio packet of Stage 191 is therefore
 \[
 \boxed{
 \mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},
@@ -253,7 +253,7 @@ If desired, the invariant-ratio packet of Stage 242 is therefore
 
 ---
 
-## 4. Exact logarithmic chart and agreement with Stage 243
+## 4. Exact logarithmic chart and agreement with Stage 192
 
 Define the logarithmic mismatch coordinates
 \[
@@ -274,18 +274,18 @@ Then the quotient coordinates are exactly
 \boxed{q_{\rm nt}=\mu-\kappa-F_*\tau.}
 \]
 
-So the Stage 242 Packet-B logarithmic chart is not merely a finite reparameterization by analogy. It is the exact logarithmic chart of the finite mismatch triple.
+So the Stage 191 Packet-B logarithmic chart is not merely a finite reparameterization by analogy. It is the exact logarithmic chart of the finite mismatch triple.
 
-### 4.1 Direct connection to the Stage 243 drift compiler
+### 4.1 Direct connection to the Stage 192 drift compiler
 
-Take the pure dependent mismatch drift vector in the ordered Stage 243 microscopic basis
+Take the pure dependent mismatch drift vector in the ordered Stage 192 microscopic basis
 \[
 \Delta\mathbf x_{\rm mis}=
 \begin{pmatrix}
 0\\0\\0\\0\\ \kappa \\0\\ \mu \\ \tau
 \end{pmatrix}.
 \]
-Then the Stage 243 quotient map gives
+Then the Stage 192 quotient map gives
 \[
 M_*\Delta\mathbf x_{\rm mis}
 =
@@ -299,7 +299,7 @@ M_*\Delta\mathbf x_{\rm mis}
 q_{\rm tr}\\ q_{\rm nt}\\ q_\eta
 \end{pmatrix}.
 \]
-So the Stage 243 first-order formulas are not just infinitesimal approximations of the finite mismatch language. They are the exact logarithmic chart of the finite mismatch ratios.
+So the Stage 192 first-order formulas are not just infinitesimal approximations of the finite mismatch language. They are the exact logarithmic chart of the finite mismatch ratios.
 
 ---
 
@@ -350,7 +350,7 @@ So orbit restoration is exact and algebraic.
 The orbit-side criterion is now completely explicit.
 
 \[
-\boxed{\textbf{Theorem (Stage 249 finite orbit-lock theorem).}}
+\boxed{\textbf{Theorem (Stage 198 finite orbit-lock theorem).}}
 \]
 
 **Within the carried coherent-branch hierarchy, a candidate branch with fixed free microscopic coordinates lies on the exact similarity orbit determined by the invariant triple if and only if any one of the following equivalent conditions holds:**
@@ -368,13 +368,13 @@ Equivalently,
 \boxed{\Delta_{\rm orbit}=0.}
 \]
 
-So Stage 249 is the exact Packet-B complement of Stage 248:
+So Stage 198 is the exact Packet-B complement of Stage 197:
 
-- Stage 248 says the Packet-A retarded finish line is
+- Stage 197 says the Packet-A retarded finish line is
   \[
   \chi_Q=1.
   \]
-- Stage 249 says the Packet-B orbit-side finish line is
+- Stage 198 says the Packet-B orbit-side finish line is
   \[
   \Delta_{\rm orbit}=0.
   \]
@@ -392,9 +392,9 @@ Together they sharpen the full reduced home stretch to
 
 ---
 
-## 7. What Stage 249 changes in the theorem problem
+## 7. What Stage 198 changes in the theorem problem
 
-Stage 243 gave the exact infinitesimal orbit/failure split, but the actual finite orbit point was still implicit. Stage 249 removes that last ambiguity.
+Stage 192 gave the exact infinitesimal orbit/failure split, but the actual finite orbit point was still implicit. Stage 198 removes that last ambiguity.
 
 ### 7.1 The finite similarity orbit is now explicit
 
@@ -431,7 +431,7 @@ The free microscopic coordinates carry the similarity-orbit transport only; they
 The next clean continuation is now fully finite and microscopic:
 
 1. choose the actual free microscopic point returned by the moving-throat PDE,
-2. compute the exact orbit-predicted dependent triple from the Stage 249 formulas,
+2. compute the exact orbit-predicted dependent triple from the Stage 198 formulas,
 3. compare the actual dependent triple to that orbit prediction,
 4. and read off
    \[
@@ -440,4 +440,4 @@ The next clean continuation is now fully finite and microscopic:
    (q_{\rm tr},q_{\rm nt},q_\eta).
    \]
 
-That is the sharpest direct orbit-lock test available after Stage 249.
+That is the sharpest direct orbit-lock test available after Stage 198.

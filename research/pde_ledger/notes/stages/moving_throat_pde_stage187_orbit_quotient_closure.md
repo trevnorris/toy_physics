@@ -78,7 +78,7 @@ Work on the positive microscopic state space
 )>0\bigr\}.
 \]
 
-The three exact branch monomials carried from Stages 235–237 are
+The three exact branch monomials carried from Stages 184–186 are
 \[
 \mathfrak C_{{\rm tr},*}
 =

@@ -2,14 +2,14 @@
 
 ## Purpose
 
-Stage 237 proved that a pure weak grouped real `P2` anisotropy cannot linearly feed the scalar
+Stage 169 proved that a pure weak grouped real `P2` anisotropy cannot linearly feed the scalar
 off-bundle slippages
 \[
 \varepsilon_L,\qquad \varepsilon_v,\qquad \varepsilon_T,
 \]
 and therefore cannot linearly source the scalar normal defect `\delta_\perp`.
 
-So the remaining **linear** grouped-anisotropy problem is now exactly what Stage 237 said it had to be:
+So the remaining **linear** grouped-anisotropy problem is now exactly what Stage 169 said it had to be:
 
 > the direct outlet coefficients
 > \[
@@ -123,7 +123,7 @@ For later use, the exact first-order `u_4` transport is
 
 ## 2. Direct hybrid-outlet defects on the pure grouped-anisotropy branch
 
-Stage 244 gave the exact compensated-hybrid outlet formulas
+Stage 159 gave the exact compensated-hybrid outlet formulas
 \[
 \delta E_2
 =
@@ -140,7 +140,7 @@ Stage 244 gave the exact compensated-hybrid outlet formulas
 \frac{\delta\mathcal C-27\sigma_*\,\delta\gamma_W}{3(1-\sigma_*)}.
 \]
 
-Stage 237 then proved that for a **pure linear grouped real `P2` anisotropy**
+Stage 169 then proved that for a **pure linear grouped real `P2` anisotropy**
 \[
 \delta\mathcal C^{(1,P_2)}=0.
 \]
@@ -246,7 +246,7 @@ These are the two main formulas of the stage.
 A direct hidden even pole deformation is a **one-parameter** object: once
 `\delta\kappa_W^{(A)}` is fixed, both even grouped defects are fixed.
 
-Indeed the Stage 244 ratio gives
+Indeed the Stage 159 ratio gives
 \[
 \delta E_4^{(A)}=\frac89\,\delta E_2^{(A)}.
 \]
@@ -432,9 +432,9 @@ That is much smaller than the original grouped bundle.
 
 ---
 
-## 6. What Stage 238 changes
+## 6. What Stage 170 changes
 
-Before this step, Stage 237 had shown only that the remaining **linear**
+Before this step, Stage 169 had shown only that the remaining **linear**
 grouped-anisotropy problem sits in the direct outlet coefficients
 \[
 \delta\kappa_W,\qquad \delta\gamma_W,

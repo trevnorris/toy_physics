@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 243 orbit/quotient projector calculus, the Stage 249 finite orbit law for the dependent triple, and the exact coherent-branch monomial definitions frozen before Stage 248.**
+**Exact within the carried Stage 192 orbit/quotient projector calculus, the Stage 198 finite orbit law for the dependent triple, and the exact coherent-branch monomial definitions frozen before Stage 197.**
 
 This stage does **not** introduce a new constitutive law.
 It removes the last orbit-side reference-point privilege from the reduced home stretch.
@@ -11,11 +11,11 @@ It removes the last orbit-side reference-point privilege from the reduced home s
 
 ## Purpose
 
-Stage 249 solved the dependent microscopic triple
+Stage 198 solved the dependent microscopic triple
 \[
 (T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W)
 \]
-exactly once a free microscopic point and an invariant triple were fixed. That was the right finite complement to the Packet-A finish line of Stage 248, but it still privileged one orbit base point.
+exactly once a free microscopic point and an invariant triple were fixed. That was the right finite complement to the Packet-A finish line of Stage 197, but it still privileged one orbit base point.
 
 So the natural next question is already forced:
 
@@ -31,7 +31,7 @@ The main outputs are:
    =
    \bigl(q_{\rm tr}^{(2\leftarrow1)},q_{\rm nt}^{(2\leftarrow1)},q_\eta^{(2\leftarrow1)}\bigr),
    \]
-   obtained by applying the Stage 243 drift compiler to the logarithmic pairwise ratio vector,
+   obtained by applying the Stage 192 drift compiler to the logarithmic pairwise ratio vector,
 2. the exact **pairwise orbit-transport factors**
    \[
    \Phi_T^{(2\leftarrow1)},\qquad
@@ -61,7 +61,7 @@ The main outputs are:
    q_{\rm tr}^{(2\leftarrow1)}=q_{\rm nt}^{(2\leftarrow1)}=q_\eta^{(2\leftarrow1)}=0.
    \]
 
-So Stage 250 is the exact pairwise/reference-independent completion of the Packet-B side of the home stretch.
+So Stage 199 is the exact pairwise/reference-independent completion of the Packet-B side of the home stretch.
 
 ---
 
@@ -71,7 +71,7 @@ Work with two positive microscopic states
 \[
 \mathbf x^{(1)},\qquad \mathbf x^{(2)},
 \]
-in the same ordered microscopic coordinates as Stages 243 and 249:
+in the same ordered microscopic coordinates as Stages 192 and 198:
 \[
 \boxed{
 \mathbf x
@@ -119,7 +119,7 @@ where the raw pairwise ratios are
 \mathfrak r_\mu:=\frac{\mu_{W,2}}{\mu_{W,1}}.
 \]
 
-Because the coherent monomials are multiplicative, the Stage 243 linear compiler becomes an **exact finite two-point compiler**:
+Because the coherent monomials are multiplicative, the Stage 192 linear compiler becomes an **exact finite two-point compiler**:
 \[
 \boxed{
 \mathbf q^{(2\leftarrow1)}
@@ -260,7 +260,7 @@ So on the same exact orbit,
 ### 2.4 Exact pairwise transport theorem
 
 \[
-\boxed{\textbf{Theorem (Stage 250 exact pairwise orbit-transport law).}}
+\boxed{\textbf{Theorem (Stage 199 exact pairwise orbit-transport law).}}
 \]
 
 **For any two positive microscopic states, once the five free pairwise ratios**
@@ -274,7 +274,7 @@ So on the same exact orbit,
 \Phi_\mu^{(2\leftarrow1)}.
 \]
 
-So Stage 249 no longer requires a privileged orbit point. Any microscopic state can serve as the transport source.
+So Stage 198 no longer requires a privileged orbit point. Any microscopic state can serve as the transport source.
 
 ---
 
@@ -291,7 +291,7 @@ m_\mu^{(2\leftarrow1)}:=\frac{\mathfrak r_\mu}{\Phi_\mu^{(2\leftarrow1)}}.
 }
 \]
 
-Then the pairwise invariant-ratio packet collapses **exactly** to the same functional form found in Stage 249:
+Then the pairwise invariant-ratio packet collapses **exactly** to the same functional form found in Stage 198:
 \[
 \boxed{
 \frac{\mathfrak C_{{\rm tr},*}^{(2)}}{\mathfrak C_{{\rm tr},*}^{(1)}}
@@ -341,7 +341,7 @@ Write the finite pairwise logarithmic mismatch coordinates as
 \qquad
 \mu^{(2\leftarrow1)}:=\ln m_\mu^{(2\leftarrow1)}.
 \]
-Then exactly as in Stage 249,
+Then exactly as in Stage 198,
 \[
 \boxed{q_{\rm tr}^{(2\leftarrow1)}=(1+\chi_{0,*})\tau^{(2\leftarrow1)},}
 \]
@@ -352,11 +352,11 @@ Then exactly as in Stage 249,
 \boxed{q_{\rm nt}^{(2\leftarrow1)}=\mu^{(2\leftarrow1)}-\kappa^{(2\leftarrow1)}-F_*\tau^{(2\leftarrow1)}.}
 \]
 
-So the Packet-B chart of Stage 249 is already the exact pairwise chart as well.
+So the Packet-B chart of Stage 198 is already the exact pairwise chart as well.
 
-### 4.1 Exact finite use of the Stage 243 projectors
+### 4.1 Exact finite use of the Stage 192 projectors
 
-Because `\(\Delta\mathbf x^{(2\leftarrow1)}\)` is a logarithmic pairwise ratio vector, the Stage 243 projectors apply **exactly** to it:
+Because `\(\Delta\mathbf x^{(2\leftarrow1)}\)` is a logarithmic pairwise ratio vector, the Stage 192 projectors apply **exactly** to it:
 \[
 \boxed{
 \Delta\mathbf x^{(2\leftarrow1)}
@@ -398,7 +398,7 @@ Q_{\rm quot}\,\Delta\mathbf x^{(2\leftarrow1)}
 }
 \]
 
-So Stage 243 is now recognized as an exact finite two-point orbit/failure decomposition.
+So Stage 192 is now recognized as an exact finite two-point orbit/failure decomposition.
 
 ### 4.2 Exact pairwise restoration map
 
@@ -491,7 +491,7 @@ This is the precise sense in which the orbit verdict is now **reference independ
 We can now remove the last orbit-side reference-point privilege completely.
 
 \[
-\boxed{\textbf{Theorem (Stage 250 two-point orbit-lock theorem).}}
+\boxed{\textbf{Theorem (Stage 199 two-point orbit-lock theorem).}}
 \]
 
 For any two positive microscopic states `\(\mathbf x^{(1)},\mathbf x^{(2)}\)`, the following are equivalent:
@@ -547,7 +547,7 @@ So the orbit-lock test is now an exact **two-point** statement.
 
 ---
 
-## 7. Reduction to Stage 249
+## 7. Reduction to Stage 198
 
 If the two states share the same free microscopic coordinates, then
 \[
@@ -569,32 +569,32 @@ m_K^{(2\leftarrow1)}=\mathfrak r_K,
 m_\mu^{(2\leftarrow1)}=\mathfrak r_\mu.
 }
 \]
-So if state `1` is chosen to be the explicit orbit point of Stage 249, Stage 250 reduces **exactly** to Stage 249.
+So if state `1` is chosen to be the explicit orbit point of Stage 198, Stage 199 reduces **exactly** to Stage 198.
 
-This shows that Stage 249 is the fixed-base specialization of the present pairwise law.
+This shows that Stage 198 is the fixed-base specialization of the present pairwise law.
 
 ---
 
-## 8. What Stage 250 changes in the theorem problem
+## 8. What Stage 199 changes in the theorem problem
 
-Stage 249 solved the dependent triple exactly but still privileged one orbit base point.
-Stage 250 removes that remaining asymmetry.
+Stage 198 solved the dependent triple exactly but still privileged one orbit base point.
+Stage 199 removes that remaining asymmetry.
 
 ### 8.1 The orbit side is now a direct two-point test
 
 The completed moving-throat PDE no longer needs a distinguished orbit representative before the microscopic orbit-lock verdict can be read off. Any two positive microscopic states can be compared directly.
 
-### 8.2 The Stage 243 projectors are now exact finite two-point objects
+### 8.2 The Stage 192 projectors are now exact finite two-point objects
 
 The orbit/quotient split is no longer merely infinitesimal language. It is the exact decomposition of the finite logarithmic pairwise ratio vector.
 
 ### 8.3 The full reduced home stretch is now cleanly split into one Packet-A scalar and one two-point Packet-B test
 
-- Packet A (Stage 248):
+- Packet A (Stage 197):
   \[
   \chi_Q=1.
   \]
-- Packet B (Stage 250):
+- Packet B (Stage 199):
   \[
   \Delta_{\rm orbit}^{(2\leftarrow1)}=0.
   \]
@@ -612,8 +612,8 @@ Nothing else survives in the reduced endgame algebra.
 
 The natural continuation is now the fully reference-free home-stretch theorem:
 
-1. combine the Stage 248 Packet-A scalar finish line with the Stage 250 two-point Packet-B orbit-lock theorem,
+1. combine the Stage 197 Packet-A scalar finish line with the Stage 199 two-point Packet-B orbit-lock theorem,
 2. state the exact reduced closure criterion without privileging any orbit base point,
 3. and then feed the actual PDE-selected branch directly into that two-packet compiler.
 
-That is the sharpest next theorem gate after Stage 250.
+That is the sharpest next theorem gate after Stage 199.

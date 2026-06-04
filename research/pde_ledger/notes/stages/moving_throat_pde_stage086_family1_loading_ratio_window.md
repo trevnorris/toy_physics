@@ -92,7 +92,7 @@ Therefore the explicit Family-1 branch reduces to the exact unblocked loading-ra
 
 `rho_max^(F1) = 1 + zeta_max^(F1).`
 
-Using the Stage-80/81 values at `lambda_mu = 1`,
+Using the Stage-080/081 values at `lambda_mu = 1`,
 
 `zeta_suff^(chi)(1) ≈ 2.46622291347846,`
 

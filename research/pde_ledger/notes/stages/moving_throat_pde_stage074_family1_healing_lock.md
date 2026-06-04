@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 73 fixed the first explicit Family-1 support-geometry ratio to
+Stage 073 fixed the first explicit Family-1 support-geometry ratio to
 
 `Lambda_ell = 37,`
 
@@ -70,7 +70,7 @@ one gets
 
 `chi_s = L / (2 ell) = Lambda_ell / 2.`
 
-Since Stage 73 fixed `Lambda_ell = 37`, the same branch now fixes
+Since Stage 073 fixed `Lambda_ell = 37`, the same branch now fixes
 
 `chi_s = 37/2 = 18.5.`
 
@@ -80,7 +80,7 @@ So the first explicit throat-support branch no longer has an independent support
 
 ## 4. Exact `kappa` on the reference branch
 
-Stage 71 gave
+Stage 071 gave
 
 `kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.`
 
@@ -116,19 +116,19 @@ Then on the same branch
 
 `alpha = sqrt(12321/5) = 111/sqrt(5) ≈ 49.6407091.`
 
-This is the support-decay scale entering the exact Stage-58/59 kernel formulas.
+This is the support-decay scale entering the exact Stage-058/059 kernel formulas.
 
 ---
 
 ## 6. What Stage 074 changes
 
-After Stages 56–57, the explicit Family-1 throat-support branch has fixed
+After Stages 056–057, the explicit Family-1 throat-support branch has fixed
 
 `Lambda_ell = 37,`
 `eta = 37,`
 `chi_s = 37/2,`
 `kappa = 12321/5.`
 
-So the only remaining explicit-branch unknown from the Stage-72 triplet is the wall-loading amplitude `Upsilon_w`.
+So the only remaining explicit-branch unknown from the Stage-072 triplet is the wall-loading amplitude `Upsilon_w`.
 
 That is a much sharper endpoint than the earlier symbolic branch map.

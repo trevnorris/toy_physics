@@ -2,14 +2,14 @@
 
 ## Purpose
 
-After Stages 56–57, the first explicit Family-1 throat-support branch is no longer symbolic in its geometry/support coordinates. It now has
+After Stages 056–057, the first explicit Family-1 throat-support branch is no longer symbolic in its geometry/support coordinates. It now has
 
 `Lambda_ell = 37,`
 `eta = 37,`
 `chi_s = 37/2,`
 `kappa = 12321/5.`
 
-So the exact Stage-58/59 threshold machinery can now be evaluated numerically on a concrete branch.
+So the exact Stage-058/059 threshold machinery can now be evaluated numerically on a concrete branch.
 
 This stage does two things:
 
@@ -20,7 +20,7 @@ This stage does two things:
 
 ## 1. Exact threshold functions on the explicit branch
 
-Stage 72 gave
+Stage 072 gave
 
 `Upsilon_fail = Pe_req / [ Lambda_ell^2 Delta_inf(kappa,eta) ],`
 
@@ -46,7 +46,7 @@ So the explicit branch thresholds become
 
 `Upsilon_suff ≈ 4.21495341569977 * Pe_req.`
 
-Equivalently, the Stage-58 fixed-point coupling thresholds are
+Equivalently, the Stage-058 fixed-point coupling thresholds are
 
 `Xi_fail = Pe_req / Delta_inf ≈ 49.6407091004953 * Pe_req,`
 
@@ -137,7 +137,7 @@ It is one explicit microscopic question:
 
 ## 5. What Stage 075 changes
 
-Before this stage, the explicit branch still looked as if it required solving for all three Stage-72 controls.
+Before this stage, the explicit branch still looked as if it required solving for all three Stage-072 controls.
 
 After this stage:
 

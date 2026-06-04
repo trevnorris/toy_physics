@@ -8,7 +8,7 @@ Stage 088 extracted the exact loading ratio selected by the natural contact-plus
 `zeta_req = 1/3,`
 `Pi_tr = (4/3) C_mix.`
 
-The next honest step is to compare that branch directly against the explicit Family-1 support/source windows already frozen in Stages 79–87.
+The next honest step is to compare that branch directly against the explicit Family-1 support/source windows already frozen in Stages 079–087.
 
 This stage shows that the match is not merely possible.
 It is **strongly inside** the explicit Family-1 success region.
@@ -62,7 +62,7 @@ so the same branch gives
 
 `zeta_req^(min) = 1/3.`
 
-The explicit Family-1 support ceiling from Stage 80/81 is
+The explicit Family-1 support ceiling from Stage 080/081 is
 
 `zeta_max^(F1) ≈ 2.46752922945601.`
 

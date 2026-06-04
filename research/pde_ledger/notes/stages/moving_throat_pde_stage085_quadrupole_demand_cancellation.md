@@ -47,7 +47,7 @@ That is the cleanest bridge yet between the Stage-030 selected quadrupole normal
 
 ## 1. Exact product identities
 
-From Stages 35–36, the selected-branch target ratio is
+From Stages 035–036, the selected-branch target ratio is
 
 `R_target = N_Q^(target) A / ( beta_0 kappa_0^2 ),`
 

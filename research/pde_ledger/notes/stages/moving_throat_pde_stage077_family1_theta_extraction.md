@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 76 reduced the explicit Family-1 wall-depth datum to
+Stage 076 reduced the explicit Family-1 wall-depth datum to
 
 `Theta_w = 25 lambda_mu^2 rho_w^2`
 
@@ -10,7 +10,7 @@ in normalized Family-1 wall variables.
 
 So the only remaining question on this branch is what effective wall density `rho_w` should actually be used on the active shell.
 
-This stage answers that by using the concrete Family-1 radial Thomas–Fermi wall profile already frozen in the coupled-wall appendix together with the canonical wall-support weight used throughout Stages 70–75.
+This stage answers that by using the concrete Family-1 radial Thomas–Fermi wall profile already frozen in the coupled-wall appendix together with the canonical wall-support weight used throughout Stages 070–075.
 
 ---
 
@@ -50,7 +50,7 @@ So the active support weight lies mostly on the inner edge of the wall, not at t
 
 ## 2. Canonical support weight carried from the explicit branch
 
-To stay on the same branch as Stages 70–75, keep the canonical support profile
+To stay on the same branch as Stages 070–075, keep the canonical support profile
 
 `chi_phi(xi) = S'(xi) = (1/2) sech^2 xi.`
 
@@ -66,7 +66,7 @@ So the natural shell-weighted average of any wall quantity `Q(xi)` is
 
 ## 3. Why the correct effective wall datum uses `<rho^2>_chi`
 
-Stage 76 showed that the local wall-depth datum scales as
+Stage 076 showed that the local wall-depth datum scales as
 
 `Theta(xi) = 25 lambda_mu^2 rho_r(xi)^2.`
 
@@ -131,4 +131,4 @@ with the conservative lower envelope
 So the final branch-level question is no longer “what is `Theta_w`?”
 It is now only:
 
-> where do these explicit branch values sit relative to the exact Stage-75 threshold window?
+> where do these explicit branch values sit relative to the exact Stage-075 threshold window?

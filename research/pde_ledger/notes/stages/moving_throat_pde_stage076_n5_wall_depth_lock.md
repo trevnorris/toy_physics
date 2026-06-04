@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 75 reduced the explicit Family-1 reference branch to one remaining microscopic datum,
+Stage 075 reduced the explicit Family-1 reference branch to one remaining microscopic datum,
 
 `Theta_w := 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2),`
 
@@ -17,7 +17,7 @@ The next honest step is to stop treating `Theta_w` as an opaque constant.
 The present stage does that by combining two already-carried exact identities:
 
 1. the frozen `n=5` GNLS thermodynamic relation,
-2. the Stage-74 healing-width lock.
+2. the Stage-074 healing-width lock.
 
 The result is that on the reference branch the wall-depth datum is not an arbitrary amplitude. It is directly proportional to the square of the effective wall density on the active shell.
 
@@ -49,7 +49,7 @@ So on the `n=5` branch, enthalpy and sound speed are not independent.
 
 ## 2. Local enthalpy lock for the Family-1 wall amplitude
 
-Stage 75 wrote the radial wall depth as
+Stage 075 wrote the radial wall depth as
 
 `V0 = alpha_r mu_*`
 
@@ -76,7 +76,7 @@ So the only remaining microscopic input is now the effective wall density on the
 
 ## 3. Exact healing-lock reduction
 
-Stage 74 already fixed the local healing-width closure
+Stage 074 already fixed the local healing-width closure
 
 `ell = hbar / (2 m c_(s,w)).`
 
@@ -126,4 +126,4 @@ After this step, that datum is no longer opaque:
 
 in the normalized Family-1 wall variables.
 
-So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the active shell and compare the resulting `Theta_w` to the explicit Stage-75 threshold window.
+So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the active shell and compare the resulting `Theta_w` to the explicit Stage-075 threshold window.

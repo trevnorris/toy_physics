@@ -18,7 +18,7 @@ where
 `zeta_req(Pi_tr,C_mix,eps_blk)`
 `= (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ]`
 
-is the exact selected-branch demand from Stages 51–52,
+is the exact selected-branch demand from Stages 051–052,
 
 and
 
@@ -27,7 +27,7 @@ and
 
 `y tan y = eta,`
 
-is the exact explicit lowest-lane support ratio from Stages 56–57,
+is the exact explicit lowest-lane support ratio from Stages 056–057,
 with `Pe_*` the operator-selected transport bias solving the Stage-058 fixed-point equation
 
 `Pe_* = Xi Delta(Pe_*;kappa,eta).`

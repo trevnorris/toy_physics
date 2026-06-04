@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 72 reduced the first explicit moving-throat support theorem to the branch variables
+Stage 072 reduced the first explicit moving-throat support theorem to the branch variables
 
 `chi_s = m c_(s,w) L / hbar,`
 
@@ -73,13 +73,13 @@ So the first explicit moving-throat branch fixes
 
 `Lambda_ell = 37.`
 
-This is the first truly explicit branch value beyond the symbolic Stage-72 map.
+This is the first truly explicit branch value beyond the symbolic Stage-072 map.
 
 ---
 
 ## 4. Immediate consequence for the Robin mouth variable
 
-Stage 71 adopted the first natural local mouth closure
+Stage 071 adopted the first natural local mouth closure
 
 `K_m = T_X / ell.`
 

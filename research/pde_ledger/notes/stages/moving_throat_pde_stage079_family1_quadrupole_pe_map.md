@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Stage 78 closed the explicit Family-1 wall-depth subprogram and showed that the natural branch is not wall-depth starved. The remaining serious bottleneck was therefore no longer the supply side `Theta_w`, but the demand side `Pe_req` coming from the quadrupole-normalization branch.
+Stage 078 closed the explicit Family-1 wall-depth subprogram and showed that the natural branch is not wall-depth starved. The remaining serious bottleneck was therefore no longer the supply side `Theta_w`, but the demand side `Pe_req` coming from the quadrupole-normalization branch.
 
-The next honest step is to eliminate the abstract `Pe_req` in favor of the explicit support-ratio demand `zeta_req` carried from Stages 52 and 59.
+The next honest step is to eliminate the abstract `Pe_req` in favor of the explicit support-ratio demand `zeta_req` carried from Stages 052 and 059.
 
 This stage does that for the concrete Family-1 branch.
 
@@ -40,7 +40,7 @@ So even before the final moving-throat quadrupole normalization is solved, the e
 
 ## 1. Fixed Family-1 support-compliance factor
 
-Stages 73–75 fixed the explicit Family-1 branch to
+Stages 073–075 fixed the explicit Family-1 branch to
 
 `kappa_F1 = 12321/5,`
 
@@ -52,7 +52,7 @@ Let `y_F1` denote the unique Robin root on the constructive branch,
 
 `0 < y_F1 < pi/2.`
 
-Then the exact Robin support factor carried from Stage 57 is
+Then the exact Robin support factor carried from Stage 057 is
 
 `A_F1 := (kappa_F1 + pi^2/4) / (kappa_F1 + y_F1^2).`
 
@@ -68,7 +68,7 @@ So the explicit Family-1 branch is already slightly above the symmetric-twin bas
 
 ## 2. Exact Family-1 support-ratio map
 
-Stage 56 gave the exact constructive transport overlap factor
+Stage 056 gave the exact constructive transport overlap factor
 
 `Omega_Pe`
 `= pi Pe (2 Pe exp(Pe) + pi)`
@@ -80,7 +80,7 @@ Therefore the explicit Family-1 lowest-lane support ratio is
 
 `zeta_F1(Pe) = A_F1 Omega_Pe^2.`
 
-This is the exact demand-side bridge that Stage 78 was still missing.
+This is the exact demand-side bridge that Stage 078 was still missing.
 
 Its endpoint values are
 
@@ -117,13 +117,13 @@ So for the explicit Family-1 branch:
 - if `A_F1 <= zeta_req <= zeta_max^(F1)`, there is a unique constructive `Pe_req`;
 - if `zeta_req > zeta_max^(F1)`, the Family-1 branch fails irrespective of wall depth.
 
-This is a theorem-level sharpening of Stage 78: the wall-depth supply may be generous, but the branch still has a hard support-ratio ceiling.
+This is a theorem-level sharpening of Stage 078: the wall-depth supply may be generous, but the branch still has a hard support-ratio ceiling.
 
 ---
 
 ## 4. Small-demand expansion
 
-Using the carried Stage-56 expansion
+Using the carried Stage-056 expansion
 
 `Omega_Pe = 1 + ((4-pi)/(2pi)) Pe + O(Pe^2),`
 

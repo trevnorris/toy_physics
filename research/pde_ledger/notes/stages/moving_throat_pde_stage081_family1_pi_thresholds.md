@@ -4,7 +4,7 @@
 
 Stage 080 translated the explicit Family-1 wall-depth verdict into the support-ratio demand variable `zeta_req`.
 
-The last honest step in this explicit-branch phase is to put the result back into the exact quadrupole branch-product language used by Stages 51–52.
+The last honest step in this explicit-branch phase is to put the result back into the exact quadrupole branch-product language used by Stages 051–052.
 
 This stage does that.
 

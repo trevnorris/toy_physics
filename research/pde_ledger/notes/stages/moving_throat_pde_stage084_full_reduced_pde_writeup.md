@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 1–83 have now done two different kinds of work:
+Stages 001–083 have now done two different kinds of work:
 
 1. they built the reduced moving-throat PDE hierarchy layer by layer, and
 2. they compressed the remaining support/source branch question to one explicit quadrupole residual.
@@ -45,8 +45,8 @@ reassembled into the master residual form at Stage 082.
 
 ### 1.3 Exact explicit lowest-lane support family
 
-The explicit lowest support lane from Stages 56-57, specialized in Stage 079 and
-used operationally in Stages 82-83, is now fully reduced to physical variables
+The explicit lowest support lane from Stages 056-057, specialized in Stage 079 and
+used operationally in Stages 082-083, is now fully reduced to physical variables
 
 `(Pe, eta, kappa)`
 
@@ -67,7 +67,7 @@ This family is no longer heuristic. Its monotonicity, closure window, overlap ce
 
 ### 1.4 Exact selected-branch quadrupole demand map
 
-On the outgoing quadrupole side, the selected-branch demand from Stages 52 and 82
+On the outgoing quadrupole side, the selected-branch demand from Stages 052 and 082
 is now compressed to
 
 `zeta_req(Pi_tr,C_mix,eps_blk)`
@@ -119,7 +119,7 @@ On Family-1 we have
 `Xi_F1 = 1369 Upsilon_w = 136900 Theta_w.`
 
 Using the exact Stage-077 wall-depth extraction from the frozen `n=5` branch, the
-Stage-73-75 Family-1 data, and the Stage-083 direct operator evaluation, the
+Stage-073-075 Family-1 data, and the Stage-083 direct operator evaluation, the
 natural shell-weighted and conservative-floor branches produce direct
 operator-selected windows in:
 

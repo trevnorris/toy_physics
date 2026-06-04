@@ -16,7 +16,7 @@ The main results are:
 
 1. the operator-selected transport bias is monotone in the wall/source strength `Xi`,
 2. therefore the explicit Family-1 support ratio and the corresponding branch-product thresholds are also monotone in `Xi`,
-3. inserting the natural Family-1 shell-weighted and Jensen wall data reproduces the Stage-78/80/81 windows directly from the coupled operator,
+3. inserting the natural Family-1 shell-weighted and Jensen wall data reproduces the Stage-078/080/081 windows directly from the coupled operator,
 4. and the natural branch already lies extremely close to the hard Family-1 ceiling.
 
 So the explicit Family-1 branch is now fully closed at the operator-selected level.

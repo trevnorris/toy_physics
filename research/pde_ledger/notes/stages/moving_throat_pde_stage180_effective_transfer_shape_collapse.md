@@ -138,7 +138,7 @@ N_{A,0}=\beta_{0,A},
 \qquad
 K_A=K_{0,A}.
 \]
-Using the Stage-21 continuum formulas,
+Using the Stage-038 continuum formulas,
 \[
 K_{0,A}=\frac{K_{\eta,A}^{(\mathrm{eff})}}{\mu_{\eta,A}},
 \]
@@ -249,7 +249,7 @@ This is the first exact actual-port answer to the Stage 179 “compute \(\tau_r\
 
 The same transfer shape can be rewritten in terms of the selected-branch continuum placement variables.
 
-Stage 21 gave
+Stage 038 gave
 \[
 R_{\mathrm{target},A}
 =

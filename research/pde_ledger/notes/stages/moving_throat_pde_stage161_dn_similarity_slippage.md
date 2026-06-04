@@ -13,7 +13,7 @@ Stage 160 reduced the whole first-order co-evolving Family-1 normalization probl
 
 That is already a sharp theorem gate, but it still treats `\Upsilon_\Pi` as a black box.
 
-The next honest step is to translate that black box into the actual geometric language of the concrete D/N mixed-tube realization of Stage 99.
+The next honest step is to translate that black box into the actual geometric language of the concrete D/N mixed-tube realization of Stage 116.
 
 This note does exactly that.
 
@@ -107,7 +107,7 @@ That is the first exact sharpening.
 
 ## 2. Exact D/N-tube meaning of the even similarity defect
 
-Stage 99 gave the concrete mixed-tube realization
+Stage 116 gave the concrete mixed-tube realization
 \[
 \boxed{
 \kappa_0
@@ -402,7 +402,7 @@ So the entire first-order normalization problem has now collapsed one step furth
 
 ## 6. Exact D/N similarity-preservation theorem
 
-Stage 99 fixed the compensated D/N-tube realization by
+Stage 116 fixed the compensated D/N-tube realization by
 \[
 \kappa_0=\frac{1+r_c}{3},
 \qquad

@@ -12,7 +12,7 @@
    s_0:=\sqrt{\kappa_V/\mu_\eta}=1/t_{\rm collapse,0},
    \]
 3. the moving-throat scalar derivative-coupled outgoing lane,
-4. the Stage-12/13 selected mixed outgoing quadrupole coefficient,
+4. the Stage-029/030 selected mixed outgoing quadrupole coefficient,
 5. linear projection of the active `V` leg onto those outgoing lanes,
 6. and the causal Laplace-domain growth test.
 

@@ -3,11 +3,11 @@
 
 ## Goal
 
-Determine when the concrete two-channel core model of Stage 97 lands exactly on the nontrivial compensated canonical branch found algebraically in Stage 95.
+Determine when the concrete two-channel core model of Stage 114 lands exactly on the nontrivial compensated canonical branch found algebraically in Stage 112.
 
 ## Canonical branch conditions
 
-The Stage-95 nontrivial compensated outlet is
+The Stage-112 nontrivial compensated outlet is
 \[
 \delta\Lambda_{\rm can}(z)
 =
@@ -28,7 +28,7 @@ For the concrete core model, this requires
 
 ## Exact coupling-balance law
 
-Using the Stage-97 identifications,
+Using the Stage-114 identifications,
 \[
 \rho_c=\frac{g_s^2}{K_s},
 \qquad
@@ -71,7 +71,7 @@ The even/odd preservation conditions become
 \]
 So the bare mixed side-channel must itself be a scale-deformed copy of the canonical compact outgoing branch.
 
-## Exact collapse to the Stage-95 branch
+## Exact collapse to the Stage-112 branch
 
 On the coupling-balance surface together with the bare-channel conditions above, the concrete core outlet reduces identically to
 \[
@@ -100,6 +100,6 @@ So the concrete core model does not merely mimic the reduced algebra. It reprodu
 
 This is the first explicit throat-core theorem in the outlet program:
 
-- the Stage-95 compensation law is not just an algebraic accident,
+- the Stage-112 compensation law is not just an algebraic accident,
 - it is realized by a concrete two-channel core model,
 - and the surviving free data are sharply reduced to one coupling-balance surface plus one scale-deformed bare mixed outlet.

@@ -23,7 +23,7 @@ The exact eliminated outlet is
 =
 \rho_c-\frac{\sigma_c}{1-\kappa_c z^2-i\gamma_c z^5},
 \]
-with explicit formulas derived in Stages 97–99.
+with explicit formulas derived in Stages 114–116.
 
 ## What preserves the canonical outgoing branch
 

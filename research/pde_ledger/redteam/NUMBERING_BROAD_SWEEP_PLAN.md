@@ -210,3 +210,22 @@ sections above — reuse them verbatim.
 All 300 PRIMARY candidates classified + applied-or-documented; mechanical label-only
 verification clean per band; a final tail doc lists any CANNOT-CONFIRM rows with leads.
 SECONDARY (2354 backward) explicitly deferred to a separate decision.
+
+---
+## SECONDARY pass — Cluster 1 (focus 091–218 + 2 targeted 219–253) — ✅ DONE 2026-06-03
+Worklist regenerated against current tree (2600 backward refs). 8 read-only classifiers over focus self∈[091,218] + 2 sampling agents (001–090, 219–253). **25 label-only edits / 12 notes**, every one content-mapped (never offset-swept), strip-all-digits verified.
+- **091–135 (13):** stage114:59/103 `Stage-95`→112, stage115:6 `Stage 97`→114 & `Stage 95`→112, :10/:74/:103 `Stage-95`→112, :31 `Stage-97`→114, stage116:40 `Stage 98`→115, :70 `Stage-97`→114, stage117:26 `Stages 97–99`→114–116, stage118:201/240 `Stage-97`→114.
+- **136–163 (6):** stage158:344 `Stage 95`→112, stage160:64 `Stage 97`→114, :73 `Stage 98`→115, stage161:16/110/405 `Stage 99`→116.
+- **179–189 (4):** stage180:141/252 `Stage-21`→38, stage182:83/138 `Stage-30`→47.
+- **219–253 targeted (2):** stage220:396 `Stage-004`→021 (transfer factor; old-004=projected_maxwell), stage251:15 `Stage-12/13`→29/30 (selected quadrupole coeff; old-012/013=projected_maxwell).
+- **NEW stale classes confirmed (verified vs target H1 + old-canonical H1):** `95→112` (Robin–mixed compensation law; old-095=geometry contamination), `21→038` (continuum placement map R_target/β₀; old-021=Maxwell one-port), `30→047` (coherent D/N kernel couplings; old-030=selected-mode response), `004→021`, `012/013→029/030`. (All +17.)
+- Padding rule: preserve source token width (Stage-004→021 stays 3-digit; Stage-21→38, Stage-30→47 stay 2-digit; expand only when forced, e.g. 95→112).
+
+### ⚠️ SCOPE FINDING — band 001–090 is NOT leave-able (deferred to Cluster 2)
+The "001–090 was never renumbered → leave wholesale" premise is **FALSE for backward refs**. Note files jump 003→021; canonical 004–020 are the inserted projected-Maxwell / parent-throat-action scripts; the original wall/BdG chain was pushed +17 but bare `Stage N` prose refs were never renumbered. Sample: ~12/16 stale at +17 (e.g. stage024:5 `Stage 6`→023 grouped bundle; stage085:31 `Stage 13`→030; stage089:78 `Stage 35`→052). GENUINE survivors = refs to Stage 1/2/3 (never moved) and zero-padded `Stage 021+` forms. ~662 backward refs / 72 notes need full per-ref content classification — same methodology, NEVER offset-sweep (offsets split by content).
+Also: the **164–178 classifier (C3a) was UNRELIABLE** — it waved through `Stage 6`/sub-21 refs as "genuine no-note-file canonical refs"; those are the same +17 stale class → re-run 164–178 in Cluster 2.
+
+### Deferred tail (Cluster 2+)
+- 136–163: 6 CANNOT-CONFIRM compounds — `Stages 99 and 170` (×3: 162:19/221, 163:45; "99"-half→119, "170" garbled), `Stages 95–98` (159:16; lead→112), `Stages 98–99` (161:61, 162:58; →115/116/119) — need range-aware handling.
+- 219–253: in-band (cited ≥219) refs genuine → LEFT wholesale; uncertain `stage229:5 "Stage 143/093"` flagged.
+- Focus zero-MAP bands 190–200, 201–218 verified genuine.

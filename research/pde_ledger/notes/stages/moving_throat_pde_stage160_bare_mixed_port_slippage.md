@@ -61,7 +61,7 @@ That is the sharpest narrowing reached so far.
 
 ## 1. Exact core identities on the compensated branch
 
-Stage 97 gave the concrete core-level outlet coefficients
+Stage 114 gave the concrete core-level outlet coefficients
 \[
 \kappa_W=\frac{\kappa_0}{1+r_c},
 \qquad
@@ -70,7 +70,7 @@ Stage 97 gave the concrete core-level outlet coefficients
 r_c=\frac{\lambda^2}{K_sK_q}.
 \]
 
-Stage 98 showed that the compensated canonical branch is characterized by
+Stage 115 showed that the compensated canonical branch is characterized by
 \[
 \kappa_W=\frac13,
 \qquad

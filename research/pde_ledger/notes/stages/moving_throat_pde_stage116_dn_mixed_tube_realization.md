@@ -37,7 +37,7 @@ the bare even coefficient is
 
 ## Compensation-selected tube length
 
-Stage 98 requires
+Stage 115 requires
 \[
 \kappa_0=\frac{1+r_c}{3},
 \qquad
@@ -67,7 +67,7 @@ D_W^{\rm bare}(z)
 (1+r_c)\left(1-\frac{z^2}{3}-i\frac{z^5}{9}\right)+O(z^6).
 }
 \]
-Then the hybridization factor `(1+r_c)` is removed exactly by the Stage-97 denominator renormalization, leaving the canonical final coefficients
+Then the hybridization factor `(1+r_c)` is removed exactly by the Stage-114 denominator renormalization, leaving the canonical final coefficients
 \[
 \kappa_c=\frac13,
 \qquad

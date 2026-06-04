@@ -80,7 +80,7 @@ The strongest sharpened conclusion is therefore:
 
 ## 1. Microscopic coherent-kernel variables
 
-Stage 30 already expressed the coherent local D/N branch in terms of the microscopic couplings
+Stage 047 already expressed the coherent local D/N branch in terms of the microscopic couplings
 \[
 \epsilon_\eta=\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
 \qquad
@@ -135,7 +135,7 @@ At the present level we keep \(\ell_{L,1}=0\).
 
 ## 2. Exact physical-branch drifts from the microscopic variables
 
-Differentiating the Stage-30 coherent ratios gives the physical Stage 181 drift variables directly.
+Differentiating the Stage-047 coherent ratios gives the physical Stage 181 drift variables directly.
 
 ### 2.1 Direct port variables
 

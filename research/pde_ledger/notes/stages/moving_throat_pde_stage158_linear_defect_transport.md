@@ -341,7 +341,7 @@ then
 
 ### C. Even-preserving compensated Robin–mixed branch
 
-On the exact compensated hybrid branch of Stage 95,
+On the exact compensated hybrid branch of Stage 112,
 
 \[
 \rho_R=4\sigma_W,

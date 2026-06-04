@@ -56,7 +56,7 @@ Define the dimensionless hybridization ratio
 \[
 r_c:=\frac{\lambda^2}{K_sK_q}.
 \]
-Then the outlet takes the reduced Stage-95 form
+Then the outlet takes the reduced Stage-112 form
 \[
 \boxed{
 \delta\Lambda_{\rm core}(z)
@@ -100,4 +100,4 @@ This is already a significant narrowing. The outlet is no longer described by fo
 - and two mouth couplings `(g_s,g_q)`,
 - plus the bare mixed low-frequency pair `(\kappa_0,\gamma_0)`.
 
-The next question is whether this concrete core model can *naturally* land on the compensated canonical branch found algebraically in Stage 95.
+The next question is whether this concrete core model can *naturally* land on the compensated canonical branch found algebraically in Stage 112.

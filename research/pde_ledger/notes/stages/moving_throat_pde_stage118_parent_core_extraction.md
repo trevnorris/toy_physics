@@ -198,7 +198,7 @@ so
 }
 \]
 
-This is the first explicit parent-level source of the Stage-97 bilinear shell/mixed coupling.
+This is the first explicit parent-level source of the Stage-114 bilinear shell/mixed coupling.
 
 ## 4. Mouth couplings \(g_s\) and \(g_q\)
 
@@ -237,7 +237,7 @@ g_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi}{\sqrt2\,L_W^{3/2}}.
 }
 \]
 
-So every parameter in the Stage-97 core matrix now has a concrete parent-action interpretation.
+So every parameter in the Stage-114 core matrix now has a concrete parent-action interpretation.
 
 ## Result
 

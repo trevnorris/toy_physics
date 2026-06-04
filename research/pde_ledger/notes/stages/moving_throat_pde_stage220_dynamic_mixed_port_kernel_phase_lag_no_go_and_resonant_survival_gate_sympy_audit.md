@@ -393,7 +393,7 @@ with exact transfer amplitude
 \mathcal K_{\rm cons}:=\mathcal K_{\rm dyn}\big|_{\Pi=0}.
 \]
 
-This is the exact dynamic lift of the Stage-004 outgoing-transfer factor, now written directly for the driven same-charge source vector.
+This is the exact dynamic lift of the Stage-021 outgoing-transfer factor, now written directly for the driven same-charge source vector.
 
 ---
 

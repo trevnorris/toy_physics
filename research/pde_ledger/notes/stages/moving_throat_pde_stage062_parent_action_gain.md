@@ -231,7 +231,7 @@ So the unresolved PDE-side question is no longer a single opaque parameter. It i
 
 ## 6. Microscopic fixed-point strength `Xi_micro`
 
-Stage 43 used
+Stage 61 used
 
 `Xi_micro = kappa G_micro,`
 

@@ -16,7 +16,7 @@ So the remaining question was whether the actual tangential co-evolving mouth de
 \]
 at first order, or produces a nonzero similarity-slippage defect.
 
-The exact parent formulas from Stages 99 and 170 sharpen that question further.
+The exact parent formulas from Stage 119 sharpen that question further.
 They imply two stronger statements.
 
 1. **If the actual branch stays on the exact parent compensation family, then D/N similarity preservation is automatic:**
@@ -218,7 +218,7 @@ The first-order reduced 2.5PN obstruction disappears automatically.
 
 ## 5. Best current theorem statement after Stage 162
 
-Inside the explicit co-evolving Family-1 closure, together with the exact parent compensation family of Stages 99 and 170:
+Inside the explicit co-evolving Family-1 closure, together with the exact parent compensation family of Stage 119:
 
 1. the D/N mixed-tube scale ratio and the bare odd normalization are both exact functions of the single parent variable \(\mathfrak r\),
 2. therefore the D/N similarity-slippage scalar vanishes identically along the full parent compensation family,

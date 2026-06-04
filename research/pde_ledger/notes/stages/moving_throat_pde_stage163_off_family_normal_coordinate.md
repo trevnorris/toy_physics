@@ -42,7 +42,7 @@ Then
 \[
 \mathcal F=0
 \]
-is exactly the parent compensation family of Stages 99 and 170.
+is exactly the parent compensation family of Stage 119.
 
 On the lower branch,
 \[

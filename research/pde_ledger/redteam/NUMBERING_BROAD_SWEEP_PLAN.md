@@ -244,3 +244,30 @@ The "001–090 never renumbered" premise was FALSE: per notes/LINEAR_STAGE_RENUM
 - 136–163: 6 CANNOT-CONFIRM compounds (`Stages 99 and 170`, `95–98`, `98–99`) — range-aware handling.
 - 219–253 in-band refs LEFT genuine; uncertain stage229:5 `Stage 143/093` flagged.
 - stage062:233 author mis-citation.
+
+---
+
+## Cluster 3 — NEXT SESSION worklist (numbering SECONDARY tail)
+
+**State:** SECONDARY Cluster 1 (`e177262`) + Cluster 2 (`b96e573`) committed; working tree clean.
+**Tooling/ground-truth (reuse):** `redteam/apply_secondary_maps.py` (deterministic, idempotent label-only applier — per-edit uniqueness + strip-digits guard; consumes `redteam/secondary_maps/c2_*.md`); the renumber policy is `notes/LINEAR_STAGE_RENUMBERING_MANIFEST.json` (**+17 linear**: 001–003 unchanged, 004–020 inserted projected-Maxwell, 021 = former Stage 4, 022–253 = former 005–236 at +17).
+**Method (unchanged, do not relax):** read-only classify → ADVERSARIAL verify (manifest +17 arithmetic AND the old-form-vs-new-form trap: a genuine current-canonical 2-digit ref must NOT be swept) → apply via the script → strip-all-digits proof + numstat-balanced → commit per cluster, gate between. NEVER blind-sweep; content decides every row.
+
+Remaining items (each small + gated):
+
+1. **136–163 — 6 CANNOT-CONFIRM compound/garbled tokens** (need per-endpoint range-aware mapping; leads from the Cluster-1 136–163 classifier):
+   - `stage162:19`, `stage162:221`, `stage163:45` — `"Stages 99 and 170"`: the **99**-half → **119** (parent compensation family — stage119 owns the balance law `1+𝔯²=4(𝔤−𝔯)²`); the **170** partner is garbled (stage170 = grouped-P2 map, unrelated) — confirm what "170" should resolve to before applying.
+   - `stage159:16` — `"Stages 95–98"`: lead **95→112** (compensated Robin–mixed outlet); resolve the other endpoint.
+   - `stage161:61` — `"Stages 98–99"` → likely **115–116** (compensated branch + D/N tube).
+   - `stage162:58` — `"Stages 98–99"` (parent-variable form, `γ₀=(1+𝔯²)/9`) → likely **115/116/119**.
+   Compounds → confirm BOTH numbers per ref against the cited deliverable.
+
+2. **`stage062:233 "Stage 43"` — NOT a label fix (author MIS-CITATION).** The cited relation `Ξ_micro = κ·G_micro` is defined at canonical **061** (old-44), and is absent from the +17 target **060** (old-43). Correcting it changes the author's apparent intent → a CONTENT edit, route to **Codex / paper-edit** per [[feedback-codex-is-fix-applier]], NOT the orchestrator label-only flow. Left untouched.
+
+3. **`stage039:256 "Stage 23"` — forward ref** (cited > self; →canonical 040). Belongs to a FORWARD-direction pass, not this backward pass. Left untouched.
+
+4. **219–253 in-band refs** confirmed genuine (neighbor citations) and LEFT wholesale; one uncertain: `stage229:5 "Stage 143/093"` — eyeball-confirm (low-confidence stale).
+
+5. **(Optional, cosmetic) padding normalization:** ~49 genuine canonical 2-digit neighbor refs in the 070–089 explicit-branch band (e.g. stage070 `Stage 58` / `Stage 65`) are CORRECT but unpadded vs the 3-digit canonical convention. This is NOT staleness — only run if the user wants cosmetic consistency.
+
+After Cluster 3, the planned full end-to-end SECOND PASS ([[project-full-second-pass]]) remains.

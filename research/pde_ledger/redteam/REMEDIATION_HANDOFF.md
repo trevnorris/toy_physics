@@ -120,12 +120,17 @@
 >    transitions) the apply-agents enumerated. **Mechanically verified label-only: 0 violations / 899 line-pairs**
 >    (no math/value/prose/section-number byte changed; every unusual-offset class content-checked). Full record +
 >    deferred tail = **`redteam/NUMBERING_RECON_CLASSD_MAP.md`** (§APPLICATION / §DEFERRED TAIL / §OUT-OF-SCOPE).
->    **⏳ NEXT (gated, FRESH SESSION) = the DEFERRED TAIL** the agents correctly LEFT (never-sweep): 2 range refs
->    (`stage164:28 "Stages 169–170"`; `stage187:364 "Stages 234–236"→184–186?`), 5 compound-secondary numbers in the
->    176–182 chain (`228/229/232`→likely 177/178/181 at +51), 2 low-band (`stage171:69 "Stage 6"→023?`,
->    `stage173:21 "Stage-7"→024?`) — each has a documented LEAD in the map doc; verify-then-apply. PLUS a separately
->    scoped **broader pass over ALL ~243 notes** (out-of-scope stale refs in NON-citing files, e.g.
->    `stage121 "before Stage 223"→121`, `stage193 \mathcal S_{244}`). See memory `[[numbering-drift-root-cause]]`.
+>    **✅ DEFERRED TAIL DONE** (9 leads verified+applied, amended into `28784b7`). **✅ BROAD SWEEP PHASE 3 (PRIMARY)
+>    DONE** — 5 gated batches, ~240 content-mapped label-only edits / ~31 notes (`7f14506`/`172b657`/`9f6bb7b`/
+>    `506fcbb`/`0a8868f`). **✅ SECONDARY PASS DONE 2026-06-04** — Cluster 1 (focus 091–218 + 2 targeted 219–253, 25
+>    fixes, `e177262`) + Cluster 2 (band **001–090** + 164–178, **591 fixes / 68 notes**, `b96e573`). Cluster 2's
+>    headline: the authoritative `notes/LINEAR_STAGE_RENUMBERING_MANIFEST.json` (+17 linear renumber) proved band
+>    001–090 is the PRE-renumber chain (NOT "clean"); applied via deterministic `redteam/apply_secondary_maps.py`,
+>    audit trail `redteam/secondary_maps/c2_*.md`, strip-digits-verified label-only. **⏳ NEXT (gated, FRESH SESSION) =
+>    CLUSTER 3 TAIL only** — see the **`## Cluster 3 — NEXT SESSION worklist`** section at the END of
+>    `redteam/NUMBERING_BROAD_SWEEP_PLAN.md`: the 6 136–163 CANNOT-CONFIRM compounds; `stage062:233 "Stage 43"` =
+>    author MIS-CITATION (CONTENT fix for Codex/paper-edit, NOT label-only); `stage039:256 "Stage 23"` forward ref;
+>    optional 3-digit padding of ~49 genuine 2-digit neighbor refs. See memory `[[numbering-drift-root-cause]]`.
 > 2. **The planned full end-to-end SECOND PASS** (`[[project-full-second-pass]]`) — a comprehensive re-run as a
 >    cross-check, now that the first pass has reached 253. The user planned this as the ultimate cross-check
 >    AFTER the first pass completes (intermediate retrofit cross-checks were skipped in favor of this single run).

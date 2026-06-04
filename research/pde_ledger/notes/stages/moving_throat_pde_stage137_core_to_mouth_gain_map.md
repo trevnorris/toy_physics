@@ -7,7 +7,7 @@ GNLS + localized-Maxwell throat-core ansatz instead of leaving them as abstract
 fixed-point coefficients.
 
 The key idea is to use the already derived concrete two-channel core response from
-Stages 97–99 and embed it directly into the mouth electrochemical free energy.
+Stages 114–116 and embed it directly into the mouth electrochemical free energy.
 
 ---
 
@@ -55,7 +55,7 @@ the explicit throat-core outlet.
 
 ## 2. Core coefficients from the exact Schur complement
 
-Stage 97 already gave the concrete two-channel core outlet in the form
+Stage 114 already gave the concrete two-channel core outlet in the form
 \[
 \delta\Lambda_{\rm core}(z)
 =
@@ -91,7 +91,7 @@ M_q=
 This is the first direct derivation of `(M_s,M_q)` from the explicit parent throat-core
 ansatz.
 
-The Stage 236 Family-1 fixed-point law therefore becomes
+The Stage 134 Family-1 fixed-point law therefore becomes
 \[
 \boxed{
 \Pi=M_s+M_q\,\mathcal S_q(\Pi),
@@ -104,7 +104,7 @@ The Stage 236 Family-1 fixed-point law therefore becomes
 
 ## 3. Immediate consequence
 
-The abstract outlet-consistent closure of Stage 237 is no longer an extra guess.
+The abstract outlet-consistent closure of Stage 135 is no longer an extra guess.
 It is the direct consequence of using the same Schur-complement core weights in the
 mouth electrochemical source law.
 

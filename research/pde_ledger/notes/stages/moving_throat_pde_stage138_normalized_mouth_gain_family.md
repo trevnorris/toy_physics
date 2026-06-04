@@ -2,7 +2,7 @@
 
 ## Goal
 
-Rewrite the explicit gain map of Stage 239 in the normalized parent variables already
+Rewrite the explicit gain map of Stage 137 in the normalized parent variables already
 used for the throat-core compensation family.
 
 This turns the actual mouth gains into one overall amplitude times one exact ratio.
@@ -11,7 +11,7 @@ This turns the actual mouth gains into one overall amplitude times one exact rat
 
 ## 1. Normalized parent variables
 
-Use the same core-normalized quantities as in Stages 170–174:
+Use the same core-normalized quantities as in Stages 119–123:
 \[
 \mathfrak r:=\frac{\lambda}{\sqrt{K_sK_q}},
 \qquad
@@ -20,7 +20,7 @@ Use the same core-normalized quantities as in Stages 170–174:
 \Sigma_0:=\frac{L g_s^2}{K_s\Theta_\sigma}.
 \]
 
-Then Stage 239 gives immediately
+Then Stage 137 gives immediately
 \[
 \boxed{M_s=\Sigma_0.}
 \]
@@ -57,7 +57,7 @@ So the full coupled Family-1 mouth law is
 
 ## 2. Exact compensation family
 
-Stage 98 already fixed the core-balance family
+Stage 115 already fixed the core-balance family
 \[
 \mathfrak g_c
 =
@@ -81,13 +81,13 @@ If one defines
 \[
 \Sigma_m:=\frac{\Sigma_0}{4},
 \]
-then this is exactly the Stage 237 one-parameter closure
+then this is exactly the Stage 135 one-parameter closure
 \[
 \boxed{M_s=4\Sigma_m,\qquad M_q=-\Sigma_m.}
 \]
 
-So the Stage 237 closure is not independent bookkeeping. It is the normalized image of
-Stage 239 plus the exact core-balance compensation surface.
+So the Stage 135 closure is not independent bookkeeping. It is the normalized image of
+Stage 137 plus the exact core-balance compensation surface.
 
 ---
 

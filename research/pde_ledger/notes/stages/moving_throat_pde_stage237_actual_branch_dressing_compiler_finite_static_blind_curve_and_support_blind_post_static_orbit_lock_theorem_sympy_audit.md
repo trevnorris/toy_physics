@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage-253 rigid-mouth dependent-plane split and the later direct-branch / microscopic packet compilers on the actual coherent branch.**
+**Exact within the carried Stage-236 rigid-mouth dependent-plane split and the later direct-branch / microscopic packet compilers on the actual coherent branch.**
 
 This stage does **not** solve the full moving-throat PDE branch.
 It does something narrower and more useful:
@@ -20,7 +20,7 @@ which may also be read directly from the target observable `R_{\rm target}` on t
 
 ## Purpose
 
-Stage 253 proved that on the rigid-mouth slice the remaining quotient failure is carried microscopically by the equal-drift dependent-plane ray
+Stage 236 proved that on the rigid-mouth slice the remaining quotient failure is carried microscopically by the equal-drift dependent-plane ray
 \[
 (\Delta_T,\Delta_{K_\eta},\Delta_\mu)
 =
@@ -28,7 +28,7 @@ Stage 253 proved that on the rigid-mouth slice the remaining quotient failure is
 \]
 So after the first static gate is cleared, the entire unresolved same-charge obstruction is one scalar: the dressing coordinate `q_eta`.
 
-But Stage 253 still left one obvious unfinished task:
+But Stage 236 still left one obvious unfinished task:
 
 > how do we compute `q_eta` on the actual coherent branch, rather than only locating its microscopic carrier?
 
@@ -320,7 +320,7 @@ So if the static gate has been cleared and `q_eta` is still nonzero, no adjustme
 
 ## 6. Post-static orbit-lock theorem on the actual rigid-mouth branch
 
-Stage 253 showed that after the static gate is cleared, the remaining microscopic correction is the equal-drift dependent-plane ray
+Stage 236 showed that after the static gate is cleared, the remaining microscopic correction is the equal-drift dependent-plane ray
 \[
 \mathbf y_\eta = -q_\eta(0,1,1)^T.
 \]
@@ -388,7 +388,7 @@ If no, the same-charge obstruction remains, and its exact amplitude is `q_eta`.
 
 ## 7. Best current summary after Stage 237
 
-The continuation from Stage 253 is now complete.
+The continuation from Stage 236 is now complete.
 
 1. The static-blind microscopic carrier is still the equal-drift dependent-plane ray
    \[

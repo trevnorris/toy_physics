@@ -109,6 +109,23 @@ among forward; + 7 backward stale refs found in-note). Multi-epoch, all content-
 - FYI (out of these 9 notes, for a later batch): canonical stage115 itself carries internal
   stale "Stage 97"/"Stage 95" self-labels.
 
+### Batch 3 (band 235–253) — ✅ DONE 2026-06-03
+Two parallel read-only classifiers (235–243 / 244–252) + orchestrator verify of every MAP.
+**Only 6 of 31 candidates were stale; 25 were GENUINE and correctly LEFT** — this endgame band
+is a sequential pipeline where most "Stage N" mentions are real next-stage/upstream continuation
+refs (future-tense "Stage 245 should…", "Stage 253 must map…"). The genuine-vs-stale test
+(future-looking + content-matches-cited-stage = genuine; "already proved" + cited content
+mismatches = stale) was decisive.
+- **6 stale (MAP), all +17 old-epoch:** stage237 L5/23/31/323/391 `Stage 253`→**236** (the
+  equal-drift dependent-plane ray `-q_η(0,1,1)` / rigid-mouth quotient-failure carrier = stage236's
+  deliverable; canonical 253 = physical calibration, unrelated); stage239 L499 range
+  `Stages 252–237`→**235–237** (static-blind LINE-owner 235 → CURVE-owner 237; 252→235 at +17, 237 canonical).
+- **25 LEFT:** 4 genuine next-stage continuation (235→236, 236→237, 243→244) + all 21 of band
+  244–252 (genuine pipeline refs, 0 stale) + 3 false-positive `\mathcal S_{242}`/`\mathcal P_{242}`
+  math-object subscripts in stage243 (242 correctly owns the packet/source pair).
+- Verify: strictly label-only (6/6). Committed. **Lesson: the endgame band's default is GENUINE;
+  bands 4/5 (164–234) are mid-derivation and expected to be mostly STALE like batches 1/2.**
+
 ### Calibration finding — SECONDARY is NOT "mostly genuine"
 While in the 4 notes the classifier found content-confirmed STALE **backward-number** refs
 at the dominant **+17** epoch (canonical = cited+17), which the forward-only PRIMARY filter

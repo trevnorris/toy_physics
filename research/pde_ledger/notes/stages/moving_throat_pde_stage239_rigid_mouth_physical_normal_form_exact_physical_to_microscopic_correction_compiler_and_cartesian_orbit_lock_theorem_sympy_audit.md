@@ -496,7 +496,7 @@ so
 \end{pmatrix}.
 }
 \]
-The static-blind line from Stages 252–237 is just the axis
+The static-blind line from Stages 235–237 is just the axis
 \[
 U=0,
 \]

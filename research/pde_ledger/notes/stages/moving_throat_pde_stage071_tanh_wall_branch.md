@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 53 reduced the first explicit moving-throat support branch to generic wall-shape moments `I_f`, `I_g`.
+Stage 70 reduced the first explicit moving-throat support branch to generic wall-shape moments `I_f`, `I_g`.
 
 The next honest step is to choose the first canonical wall profile and the first natural local mouth closure.
 
@@ -58,7 +58,7 @@ Therefore
 
 `I_g / I_f = 4/5.`
 
-So the Stage-53 branch formulas become completely explicit.
+So the Stage-70 branch formulas become completely explicit.
 
 ---
 
@@ -94,7 +94,7 @@ To close the mouth compliance on the same local scale, take
 
 This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell support scale.
 
-Then the Stage-40/41 Robin variable becomes
+Then the Stage-57/58 Robin variable becomes
 
 `eta := K_m L / T_X = L / ell.`
 
@@ -130,12 +130,12 @@ The first explicit moving-throat branch is no longer described by the seven symb
 
 ---
 
-## 5. What Stage 54 changes
+## 5. What Stage 071 changes
 
-Stage 53 showed that the explicit branch data were derivable.
-Stage 54 shows that, on the first canonical `tanh` wall with the first natural local mouth closure, those data collapse much further than expected.
+Stage 70 showed that the explicit branch data were derivable.
+Stage 071 shows that, on the first canonical `tanh` wall with the first natural local mouth closure, those data collapse much further than expected.
 
 What remains now is not a symbolic branch ledger.
 What remains is an explicit three-parameter branch-placement problem.
 
-That is exactly the right form for the next step, because it means we can now compare the explicit branch directly to the exact Stage-49 / Stage-52 success window instead of still talking in abstract support/source language.
+That is exactly the right form for the next step, because it means we can now compare the explicit branch directly to the exact Stage-66 / Stage-69 success window instead of still talking in abstract support/source language.

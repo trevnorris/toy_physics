@@ -22,7 +22,7 @@ The useful theorem is:
 3. the corresponding maximal coherence is
    `C_res^2 = 0.994418836451529...`,
 4. so the best independent sech–Gaussian mismatch branch gets within about `0.56%` of the exact matched-layer ideal,
-5. but this does **not** by itself prove threshold survival, because the survival theorem still depends on the wall/source figure of merit from Stages 44–49, not on coherence alone.
+5. but this does **not** by itself prove threshold survival, because the survival theorem still depends on the wall/source figure of merit from Stages 061–066, not on coherence alone.
 
 So the memo is genuinely helpful as an explicit benchmark family, but it is not itself the final theorem.
 
@@ -131,11 +131,11 @@ That is the exact multiplicative penalty by which the explicit independent-profi
 
 ---
 
-## 5. Why this does not supersede Stage 47
+## 5. Why this does not supersede Stage 064
 
 This benchmark is important, but it does **not** supersede the earlier parent equilibrium result.
 
-Stage 47 already showed that on the parent equilibrium-aligned source/support branch,
+Stage 064 already showed that on the parent equilibrium-aligned source/support branch,
 
 `chi_sigma(y) = g_phi chi_phi(y) / H(y),`
 
@@ -146,13 +146,13 @@ and in the thin active layer where `H(y)` is nearly constant across the support 
 So:
 
 - the present sech–Gaussian family is a strong **independent-profile benchmark**,
-- the Stage-47 branch is the **equilibrium-matched** benchmark.
+- the Stage-064 branch is the **equilibrium-matched** benchmark.
 
 The new resonance result therefore tells us that even a fairly natural profile mismatch can get extremely close to the exact matched limit. But it does not replace the matched-limit theorem.
 
 ---
 
-## 6. What Stage 50 changes
+## 6. What Stage 067 changes
 
 Before this stage, the mismatch between an ideal matched source/support branch and a concrete profile family was still diffuse.
 
@@ -167,4 +167,4 @@ So the user memo is mathematically useful — but the strongest justified conclu
 
 > the first explicit independent-profile family almost saturates the ideal matched source/support branch.
 
-The actual survival theorem still has to be stated in terms of the Stage-44/49 gain and wall-figure thresholds.
+The actual survival theorem still has to be stated in terms of the Stage-061/066 gain and wall-figure thresholds.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 53–54 reduced the first explicit moving-throat support branch to three parent dimensionless variables:
+Stages 70–71 reduced the first explicit moving-throat support branch to three parent dimensionless variables:
 
 `chi_s = m c_(s,w) L / hbar,`
 
@@ -18,7 +18,7 @@ with
 
 `W_wall = Upsilon_w Lambda_ell^2.`
 
-So the exact Stage-49 / Stage-52 support/source theorem can now be written directly on the first explicit branch.
+So the exact Stage-66 / Stage-69 support/source theorem can now be written directly on the first explicit branch.
 
 This stage does that.
 
@@ -128,11 +128,11 @@ So compression-dominated branches are much harder to push across the universal s
 
 ---
 
-## 4. What Stage 55 changes
+## 4. What Stage 072 changes
 
 At the end of the reduced support/source phase, the theorem window still involved the symbolic branch data `(kappa, eta, W_wall)`.
 
-After Stages 53–55, the first explicit moving-throat branch is no longer expressed in those symbols.
+After Stages 70–72, the first explicit moving-throat branch is no longer expressed in those symbols.
 
 It is expressed directly in the parent variables
 

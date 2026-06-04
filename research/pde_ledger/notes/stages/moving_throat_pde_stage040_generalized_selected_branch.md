@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Stage 22 showed that the first axial structure of the internal `U` sector does **not** destroy the scalar continuum placement map, but it **does** generically rotate the mixed loading vector away from the source/support direction.
+Stage 039 showed that the first axial structure of the internal `U` sector does **not** destroy the scalar continuum placement map, but it **does** generically rotate the mixed loading vector away from the source/support direction.
 
-That means the old Stage-18/19 branch functions cannot be assumed blindly once `delta_U != 0`.
+That means the old Stage-035/036 branch functions cannot be assumed blindly once `delta_U != 0`.
 
 The right next question is therefore:
 
@@ -20,7 +20,7 @@ More concretely:
 2. the old normalization function `F(xi,delta)` is replaced by a two-vector function `F_(q,eta)(xi,delta)`,
 3. the required baseline loading remains one-dimensional through a deformed function `G_q(xi,delta)`,
 4. for the split-`U` continuum the whole deformation collapses to one exact ratio `R_U`,
-5. and setting `R_U = 1` reproduces the Stage-18/19 flat-`U` branch exactly.
+5. and setting `R_U = 1` reproduces the Stage-035/036 flat-`U` branch exactly.
 
 So the first non-flat `U` structure does not kill the theorem geometry — it deforms it in a controlled way.
 
@@ -28,7 +28,7 @@ So the first non-flat `U` structure does not kill the theorem geometry — it de
 
 ## 1. Exact rank-1 loaded 2x2 branch solve
 
-Consider the selected wall basis after the Stage-22 direct `U` softening has already been absorbed into the diagonal baseline matrix
+Consider the selected wall basis after the Stage-039 direct `U` softening has already been absorbed into the diagonal baseline matrix
 
 `K_base = diag(A_0, A_0(1 + delta)).`
 
@@ -98,13 +98,13 @@ At the same time, the required baseline loading stays one-dimensional:
 
 `G_q(xi,delta) = xi (xi + delta) / [ delta + (1 + q^2) xi ].`
 
-This is the exact generalization of the Stage-18/19 pair `(F,G)`.
+This is the exact generalization of the Stage-035/036 pair `(F,G)`.
 
 ---
 
 ## 3. Specialization to the split-`U` continuum
 
-For the split-`U` continuum of Stage 22, the source vector is still the original D/N overlap direction
+For the split-`U` continuum of Stage 039, the source vector is still the original D/N overlap direction
 
 `s = v = (kappa_0, kappa_1)^T,`
 
@@ -139,10 +139,10 @@ This is the exact one-parameter deformation of the old flat-`U` selected-branch 
 
 ---
 
-## 4. Exact recovery of the Stage-18/19 flat-`U` branch
+## 4. Exact recovery of the Stage-035/036 flat-`U` branch
 
 If `R_U = 1`, then `q = kappa_1/kappa_0` and the source/loading mismatch disappears.
-The exact branch functions collapse back to the Stage-18/19 formulas:
+The exact branch functions collapse back to the Stage-035/036 formulas:
 
 `F_U(xi,delta;1)`
 `= (9 delta + 11 xi)^4 / [ 81 (1 - xi) (9 delta^2 + 18 delta xi + 11 xi^2)^2 ],`
@@ -178,7 +178,7 @@ with
 
 So the deformation is smooth and exact.
 
-Now combine this with the Stage-22 result
+Now combine this with the Stage-039 result
 
 `R_U = 1 - [ rho_0 / (1 + rho_0) ] delta_U + O(delta_U^2).`
 
@@ -191,21 +191,21 @@ That is the first exact robustness statement for the selected branch once source
 
 ---
 
-## 6. Best current theorem statement after Stage 23
+## 6. Best current theorem statement after Stage 040
 
 The exact theorem picture is now much sharper.
 
 ### What survives intact
 
-- the Stage-22 scalar continuum placement map,
+- the Stage-039 scalar continuum placement map,
 - the existence of a one-parameter selected branch `xi`,
 - the exact lower-eigenvalue softening law,
-- and the exact recovery of the Stage-18/19 functions when the split-`U` deformation is removed.
+- and the exact recovery of the Stage-035/036 functions when the split-`U` deformation is removed.
 
 ### What changes structurally
 
 - the selected-branch normalization no longer depends on one vector only,
-- the Stage-18 function `F(xi,delta)` is replaced by `F_(q,eta)(xi,delta)`,
+- the Stage-035 function `F(xi,delta)` is replaced by `F_(q,eta)(xi,delta)`,
 - and in the physical split-`U` continuum this becomes a one-parameter deformation `F_U(xi,delta;R_U)`.
 
 ### The new bottleneck
@@ -225,4 +225,4 @@ The next step is:
 
 > determine how the additional support/BdG loading enters the now noncollinear selected-branch geometry, and whether the physical support direction tracks the deformed loading vector or remains tied to the original source vector.
 
-That is the first place where the old Stage-19 support-feasibility theorem may need a true rank-2 extension.
+That is the first place where the old Stage-036 support-feasibility theorem may need a true rank-2 extension.

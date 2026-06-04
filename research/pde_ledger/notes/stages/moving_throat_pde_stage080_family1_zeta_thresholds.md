@@ -1,8 +1,8 @@
-# Moving-Throat PDE — Stage 080: Explicit Family-1 Conversion of the Stage-61 `Pe_req` Window into Quadrupole-Demand Thresholds `zeta_req`
+# Moving-Throat PDE — Stage 080: Explicit Family-1 Conversion of the Stage-078 `Pe_req` Window into Quadrupole-Demand Thresholds `zeta_req`
 
 ## Purpose
 
-Stage 61 reduced the explicit Family-1 branch to a wall-depth comparison window in the transport-bias variable `Pe_req`:
+Stage 078 reduced the explicit Family-1 branch to a wall-depth comparison window in the transport-bias variable `Pe_req`:
 
 `Pe_req <= Pe_suff^(chi)`  -> guaranteed success on the natural shell-weighted branch,
 
@@ -10,7 +10,7 @@ Stage 61 reduced the explicit Family-1 branch to a wall-depth comparison window 
 
 with the conservative lower-envelope pair `Pe_suff^(J)`, `Pe_fail^(J)` defined analogously.
 
-Stage 62 then replaced the abstract `Pe_req` by the exact Family-1 support-ratio map
+Stage 079 then replaced the abstract `Pe_req` by the exact Family-1 support-ratio map
 
 `zeta_F1(Pe) = A_F1 Omega_Pe^2.`
 
@@ -38,9 +38,9 @@ So on the explicit branch the wall-depth supply is indeed not the dominant unres
 
 ---
 
-## 1. Exact Stage-61 transport thresholds
+## 1. Exact Stage-078 transport thresholds
 
-Stage 61 gave the explicit Family-1 transport-bias windows
+Stage 078 gave the explicit Family-1 transport-bias windows
 
 `Pe_suff^(chi) = 96.5285247264386 lambda_mu^2,`
 
@@ -58,7 +58,7 @@ for the conservative lower envelope.
 
 ## 2. Exact conversion to `zeta_req` thresholds
 
-Using the explicit Family-1 demand map from Stage 62,
+Using the explicit Family-1 demand map from Stage 079,
 
 `zeta_F1(Pe) = A_F1 Omega_Pe^2,`
 
@@ -82,7 +82,7 @@ Then the explicit Family-1 branch theorem becomes
 
 with the conservative version obtained by replacing `(chi)` with `(J)`.
 
-So the Stage-61 wall-depth result is now written entirely in the quadrupole-demand language.
+So the Stage-078 wall-depth result is now written entirely in the quadrupole-demand language.
 
 ---
 
@@ -106,13 +106,13 @@ Compare these to the exact Family-1 ceiling
 
 So on the natural explicit branch with `lambda_mu = 1`, the guaranteed-success threshold already lies less than `0.00131` below the hard ceiling, and the guaranteed-failure threshold is essentially saturated.
 
-This is the sharpest numerical statement yet of the Stage-61 verdict.
+This is the sharpest numerical statement yet of the Stage-078 verdict.
 
 ---
 
 ## 4. Large-`lambda_mu` limit
 
-Because all four Stage-61 transport thresholds scale as `lambda_mu^2` and `Omega_Pe` approaches `pi/2`, the corresponding quadrupole-demand thresholds satisfy
+Because all four Stage-078 transport thresholds scale as `lambda_mu^2` and `Omega_Pe` approaches `pi/2`, the corresponding quadrupole-demand thresholds satisfy
 
 `lim_(lambda_mu -> +infinity) zeta_suff^(chi) = zeta_max^(F1),`
 
@@ -121,13 +121,13 @@ Because all four Stage-61 transport thresholds scale as `lambda_mu^2` and `Omega
 and likewise for the `(J)` branch.
 
 So increasing the wall-depth normalization beyond `O(1)` does not open an unlimited quadrupole-demand window.
-It only drives the branch toward the same hard Family-1 ceiling found in Stage 62.
+It only drives the branch toward the same hard Family-1 ceiling found in Stage 079.
 
 This is another precise sense in which wall-depth supply is no longer the dominant open issue.
 
 ---
 
-## 5. What Stage 63 changes
+## 5. What Stage 080 changes
 
 Before this step, the explicit Family-1 result still spoke in the transport-bias variable `Pe_req`.
 

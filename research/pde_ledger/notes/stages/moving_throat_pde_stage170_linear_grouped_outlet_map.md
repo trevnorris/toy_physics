@@ -94,7 +94,7 @@ u_4=\frac{4}{81},
 P_0=\frac{N_0}{D_0}.
 \]
 
-Stage 6 already implies the first-order grouped formulas
+Stage 023 already implies the first-order grouped formulas
 \[
 \boxed{
 \delta u_2^{(A)}
@@ -212,7 +212,7 @@ Solving gives the exact linear map
 }
 \]
 
-Substituting the Stage-6 grouped-bundle transport laws then yields
+Substituting the Stage-023 grouped-bundle transport laws then yields
 \[
 \boxed{
 \delta\kappa_W^{(A)}
@@ -308,7 +308,7 @@ a_{N,0},\ b_{N,0}
 \]
 be the grouped anisotropy defects of the lane families `D_0,D_2,D_4,N_0`.
 
-Then the exact Stage-6 projector formulas immediately give
+Then the exact Stage-023 projector formulas immediately give
 \[
 \boxed{
 a_\kappa

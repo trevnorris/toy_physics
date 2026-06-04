@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 31 proved that the support-compensation problem is exactly
+Stage 048 proved that the support-compensation problem is exactly
 
 `zeta_phys >= zeta_req`,
 
-while Stage 32 derived the physical coherent D/N support ratio on the first explicit finite-throat kernel,
+while Stage 049 derived the physical coherent D/N support ratio on the first explicit finite-throat kernel,
 
 `zeta_n^(phys)`
 `= (K_W^(eff) / K_(phi,n)^(eff)) / (2n+1)^2,`
@@ -16,7 +16,7 @@ and, on the same-operator twin family,
 `zeta_n^(twin)`
 `= 1 / [ (2n+1)^2 ( 1 + x n(n+1) ) ].`
 
-So the comparison that was still abstract at Stage 31 can now be carried out exactly.
+So the comparison that was still abstract at Stage 048 can now be carried out exactly.
 
 The main results are:
 
@@ -56,7 +56,7 @@ So the exact support-threshold comparison is now sharp enough to distinguish the
 
 ## 1. Exact support-threshold inequality in Stage-048 variables
 
-Stage 31 defines the required enhancement factor
+Stage 048 defines the required enhancement factor
 
 `S_req := M_req / M_mix`
 
@@ -80,7 +80,7 @@ This is the comparison formula every explicit kernel has to meet.
 
 ## 2. Lowest symmetric twin lane: exact doubling theorem
 
-For the same-operator twin branch, Stage 32 gave
+For the same-operator twin branch, Stage 049 gave
 
 `zeta_0^(twin) = 1.`
 
@@ -109,7 +109,7 @@ The first explicit finite-throat twin lane is not just “supportive.” It is a
 
 ## 3. Higher D/N support harmonics: exact impossibility bound
 
-For `n>=1`, Stage 32 gives
+For `n>=1`, Stage 049 gives
 
 `zeta_n^(twin)`
 `= 1 / [ (2n+1)^2 ( 1 + x n(n+1) ) ],`
@@ -188,7 +188,7 @@ So the lowest twin lane is not just the strongest support branch. It is qualitat
 
 ---
 
-## 6. Best current theorem statement after Stage 33
+## 6. Best current theorem statement after Stage 050
 
 The support-compensation problem is now resolved down to an explicit harmonic-selection test on the first finite-throat coherent kernel.
 

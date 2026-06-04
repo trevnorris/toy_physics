@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Stage 38 left one sharp operator-level question open:
+Stage 055 left one sharp operator-level question open:
 
 > what is the **physical** origin of the source-shape asymmetry parameter that had previously been written as the abstract exponential-bias variable `alpha`?
 
 This stage answers that with the simplest conservative axial source-transport law on the finite throat.
 
-The main result is that the Stage-36 exponential family is not ad hoc. It is the exact stationary zero-flux branch of a drift-diffusion transport operator,
+The main result is that the Stage-053 exponential family is not ad hoc. It is the exact stationary zero-flux branch of a drift-diffusion transport operator,
 
 `partial_t sigma + partial_s J = 0,`
 
@@ -70,7 +70,7 @@ hence
 
 `sigma(s) = C exp(v_sigma s / D_sigma).`
 
-Normalizing to the same total source strength used in Stage 36,
+Normalizing to the same total source strength used in Stage 053,
 
 `int_0^L ds sigma(s) = L,`
 
@@ -83,7 +83,7 @@ with
 
 `Pe := v_sigma L / D_sigma.`
 
-So the Stage-36 constructive family is exactly the stationary zero-flux branch of the minimal transport operator.
+So the Stage-053 constructive family is exactly the stationary zero-flux branch of the minimal transport operator.
 
 ### Physical interpretation of the sign
 
@@ -120,7 +120,7 @@ Therefore the physical overlap boost is
 `= pi Pe (2 Pe exp(Pe) + pi)`
 `  / [ (4 Pe^2 + pi^2) (exp(Pe)-1) ].`
 
-So the abstract Stage-36 factor `Omega_exp(alpha)` is now identified exactly as `Omega_Pe` on a concrete operator branch.
+So the abstract Stage-053 factor `Omega_exp(alpha)` is now identified exactly as `Omega_Pe` on a concrete operator branch.
 
 ---
 
@@ -164,7 +164,7 @@ The exact endpoint values are
 
 `lim_(Pe -> +infinity) Omega_Pe = pi/2.`
 
-So the constructive transport branch reproduces the full Stage-36 overlap window
+So the constructive transport branch reproduces the full Stage-053 overlap window
 
 `1 <= Omega_Pe <= pi/2.`
 
@@ -186,11 +186,11 @@ So the approach to the sharp finite-throat ceiling is algebraic, not exponential
 
 ---
 
-## 6. Best current theorem statement after Stage 39
+## 6. Best current theorem statement after Stage 056
 
 ### What is exact now
 
-- the Stage-36 exponential source family is the exact stationary zero-flux solution of
+- the Stage-053 exponential source family is the exact stationary zero-flux solution of
 
   `partial_t sigma + partial_s(-D_sigma sigma' + v_sigma sigma) = 0`,
 
@@ -216,6 +216,6 @@ So the approach to the sharp finite-throat ceiling is algebraic, not exponential
 The source-shape asymmetry is no longer an abstract deformation parameter.
 It is the axial transport Peclet number of the lowest support-source channel.
 
-So one of the two Stage-38 “unknown physical inputs” has now been converted into a concrete moving-throat operator datum.
+So one of the two Stage-055 “unknown physical inputs” has now been converted into a concrete moving-throat operator datum.
 
 The remaining operator-level task is to combine that transport bias with the physical support-compliance ratios, so that the whole lowest-lane reachability problem is written directly in terms of real throat operator parameters rather than the old abstract pair `(alpha,x)`.

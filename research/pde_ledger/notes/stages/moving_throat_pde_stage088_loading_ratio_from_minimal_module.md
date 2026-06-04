@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 70 left the explicit Family-1 support/source theorem in its cleanest reduced form:
+Stage 087 left the explicit Family-1 support/source theorem in its cleanest reduced form:
 
 `rho_alpha = alpha_req / alpha_mix`
 
@@ -94,7 +94,7 @@ So the natural contact-plus-pole interpretation of the minimal isotropic quadrup
 `alpha_req / alpha_mix = 4/3,`
 `(alpha_req - alpha_mix)/alpha_mix = 1/3.`
 
-In product language, since Stage 68 proved
+In product language, since Stage 085 proved
 
 `Pi_tr / C_mix = alpha_req / alpha_mix,`
 
@@ -106,7 +106,7 @@ the same result is
 
 ## 3. Regime classification
 
-Stage 35 split the support regimes into:
+Stage 052 split the support regimes into:
 
 - `Pi_tr <= C_mix`              : mixed-only already enough,
 - `C_mix < Pi_tr <= 2 C_mix`    : symmetric lowest twin enough,
@@ -151,7 +151,7 @@ On the natural minimal isotropic branch, it only has to accommodate a support ra
 
 ---
 
-## 5. Best current theorem statement after Stage 71
+## 5. Best current theorem statement after Stage 088
 
 Under the natural unblocked contact-plus-pole identification of the passive/outgoing isotropic quadrupole branch,
 

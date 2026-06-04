@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 34 compressed the lowest-twin question to one exact product test:
+Stage 051 compressed the lowest-twin question to one exact product test:
 
 `Pi_tr(xi_req,delta;R_tr) <= 16 Lambda (1-eps) / pi^2.`
 
@@ -182,7 +182,7 @@ So the size of the required non-twin softening is also explicit.
 
 ---
 
-## 5. Best current theorem statement after Stage 35
+## 5. Best current theorem statement after Stage 052
 
 The support bottleneck is no longer vague and no longer merely qualitative.
 
@@ -208,7 +208,7 @@ The support bottleneck is no longer vague and no longer merely qualitative.
 
 ### What this means physically
 
-The first explicit coherent kernel has now answered the question posed at the end of Stage 33.
+The first explicit coherent kernel has now answered the question posed at the end of Stage 050.
 
 If the physical branch lands in the window `Pi_tr <= 2 C_mix`, then the symmetric lowest twin lane is enough.
 

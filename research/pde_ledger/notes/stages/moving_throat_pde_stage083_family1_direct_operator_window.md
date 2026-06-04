@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 65 compressed the whole remaining reduced moving-throat PDE into one master residual
+Stage 082 compressed the whole remaining reduced moving-throat PDE into one master residual
 
 `R_quad = zeta_req - zeta_phys(Pe_*),`
 
@@ -16,7 +16,7 @@ The main results are:
 
 1. the operator-selected transport bias is monotone in the wall/source strength `Xi`,
 2. therefore the explicit Family-1 support ratio and the corresponding branch-product thresholds are also monotone in `Xi`,
-3. inserting the natural Family-1 shell-weighted and Jensen wall data reproduces the Stage-61/63/64 windows directly from the coupled operator,
+3. inserting the natural Family-1 shell-weighted and Jensen wall data reproduces the Stage-78/80/81 windows directly from the coupled operator,
 4. and the natural branch already lies extremely close to the hard Family-1 ceiling.
 
 So the explicit Family-1 branch is now fully closed at the operator-selected level.
@@ -70,7 +70,7 @@ and the exact support/source strength reduces to
 
 `Xi_F1 = W_wall = 1369 Upsilon_w = 136900 Theta_w.`
 
-Using the exact Stage-41 support/source brackets,
+Using the exact Stage-058 support/source brackets,
 
 `Pe_-^(F1) = Xi_F1 Delta_0(kappa_F1,eta_F1),`
 
@@ -94,7 +94,7 @@ and
 
 ## 3. Natural shell-weighted and conservative floor windows
 
-Stage 60 gave the exact wall-depth data
+Stage 077 gave the exact wall-depth data
 
 `Theta_w^(chi) ≈ 4.06863235008162 lambda_mu^2,`
 
@@ -116,7 +116,7 @@ At `lambda_mu = 1`, the exact bracketed transport windows become
 
 `Pe_+^(J)   ≈ 2558.01892349205.`
 
-These are exactly the Stage-61 transport windows, now derived directly from the master support/source operator.
+These are exactly the Stage-078 transport windows, now derived directly from the master support/source operator.
 
 ---
 
@@ -182,7 +182,7 @@ So the explicit operator-selected Family-1 window in the actual quadrupole branc
 
 ---
 
-## 6. What Stage 66 changes
+## 6. What Stage 083 changes
 
 This stage removes the last remaining ambiguity in the explicit Family-1 branch phase.
 

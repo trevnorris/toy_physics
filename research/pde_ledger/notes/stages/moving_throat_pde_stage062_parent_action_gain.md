@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 44 reduced the support/source theorem gap to one microscopic gain,
+Stage 061 reduced the support/source theorem gap to one microscopic gain,
 
 `G_micro = chi_sigma Lambda_phi^2 / K_X,`
 
@@ -38,7 +38,7 @@ The main results are:
 
    `delta rho(s,y) = sigma(s) chi_sigma(y),`
 
-   then the parent 4D energy reduces exactly to the Stage-43 form
+   then the parent 4D energy reduces exactly to the Stage-060 form
 
    `F_red[sigma,phi]`
    `= int_0^L ds [ (Theta_sigma/2) sigma^2 - Lambda_phi sigma phi`
@@ -79,7 +79,7 @@ The main results are:
    `Xi_micro = kappa G_micro`
    `        = rho_* g_phi^2 O_(sigma phi)^2 L^2 / [ m c_(s*)^2 T_X N_(sigma sigma) ].`
 
-So the Stage-44 gain is no longer a free microscopic placeholder. It is the compressional susceptibility of the `n=5` GNLS medium times the square of one parent confinement/support overlap, divided by the baseline support stiffness.
+So the Stage-061 gain is no longer a free microscopic placeholder. It is the compressional susceptibility of the `n=5` GNLS medium times the square of one parent confinement/support overlap, divided by the baseline support stiffness.
 
 ---
 
@@ -103,7 +103,7 @@ Linearizing about a static throat branch `rho = rho_* + delta rho` and subtracti
 
 `delta H_comp = (1/2) int d^4X h'(rho_*) (delta rho)^2.`
 
-So the parent matter sector already provides the exact local scalar stiffness needed by the Stage-43 source entropy term.
+So the parent matter sector already provides the exact local scalar stiffness needed by the Stage-060 source entropy term.
 
 ---
 
@@ -154,7 +154,7 @@ with
 
 `Lambda_phi = g_phi O_(sigma phi).`
 
-This is precisely the Stage-43 reduced support/source free energy, now derived as a one-channel projection of the parent 4D action.
+This is precisely the Stage-060 reduced support/source free energy, now derived as a one-channel projection of the parent 4D action.
 
 ---
 
@@ -179,7 +179,7 @@ So the source compliance is no longer a free “entropy constant.” It is fixed
 
 ## 4. Exact parent formula for the microscopic gain
 
-Stage 44 defined the microscopic gain by
+Stage 061 defined the microscopic gain by
 
 `G_micro = chi_sigma Lambda_phi^2 / K_X.`
 

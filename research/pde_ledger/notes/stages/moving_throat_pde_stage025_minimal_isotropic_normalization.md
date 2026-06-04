@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 7 removed the angular ambiguity.
+Stage 024 removed the angular ambiguity.
 On the natural isotropic grouped basis,
 
 `mhat_ang = 1`
@@ -25,14 +25,14 @@ The main output is an explicit isotropic normalization law:
 
 `mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.
 
-So after Stage 8, the minimal isotropic branch is no longer “some unknown PDE normalization.”
+So after Stage 025, the minimal isotropic branch is no longer “some unknown PDE normalization.”
 It is one exact scalar equation in the radial/axial overlap amplitudes.
 
 ---
 
 ## 1. Minimal isotropic radial/axial data
 
-Keep the Stage-7 isotropic grouped collapse and truncate the common lane to
+Keep the Stage-024 isotropic grouped collapse and truncate the common lane to
 
 - one BdG support mode with frequency `varpi`,
 - one brane-like internal gauge coordinate `U`,
@@ -92,7 +92,7 @@ Equivalently,
 
 `P_0 = P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ]`.
 
-Because Stage 7 already proved `mhat_ang = 1`, the remaining source normalization is purely radial/axial:
+Because Stage 024 already proved `mhat_ang = 1`, the remaining source normalization is purely radial/axial:
 
 `mhat_0 = mhat_rad`.
 
@@ -189,7 +189,7 @@ It is asking for the right balance between
 
 ## 5. What this means for the actual PDE task
 
-After Stage 8, the minimal isotropic theorem gate is no longer vague.
+After Stage 025, the minimal isotropic theorem gate is no longer vague.
 The completed moving-throat PDE does not need to output an unlimited family of unknown coefficients before the normalization question can even be asked.
 
 On the minimal isotropic branch it needs only to determine the radial/axial amplitudes entering
@@ -217,7 +217,7 @@ It means the next PDE computation can be judged immediately:
 
 ---
 
-## 6. Best current summary after Stage 8
+## 6. Best current summary after Stage 025
 
 The road to the moving-throat PDE is now split cleanly into two layers.
 

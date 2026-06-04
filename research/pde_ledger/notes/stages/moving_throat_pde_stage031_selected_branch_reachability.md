@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 13 translated the selected lower quadrupole mode into the same normalized-response language used by the earlier grouped-real `P2` work and reduced the remaining theorem gap to one exact spectral ratio,
+Stage 030 translated the selected lower quadrupole mode into the same normalized-response language used by the earlier grouped-real `P2` work and reduced the remaining theorem gap to one exact spectral ratio,
 
 `P_{0,-} = beta_0 (v.e_-)^2 / lambda_-`.
 
@@ -21,7 +21,7 @@ It is a stable-side spectral crossing theorem.
 
 ## 1. Exact selected overlap derivative
 
-Keep the Stage-13 notation
+Keep the Stage-030 notation
 
 `A = K_0 - Xi_0`,
 
@@ -161,9 +161,9 @@ The only remaining question is whether the physical moving-throat branch puts th
 
 ---
 
-## 6. Best current theorem gate after Stage 14
+## 6. Best current theorem gate after Stage 031
 
-After Stage 14, the normalization bottleneck can be stated in its sharpest current form.
+After Stage 031, the normalization bottleneck can be stated in its sharpest current form.
 
 The selected-branch 2.5PN problem is no longer:
 

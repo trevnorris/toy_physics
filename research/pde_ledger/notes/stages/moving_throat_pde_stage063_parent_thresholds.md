@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 45 expressed the Stage-44 microscopic gain directly in parent 4D variables:
+Stage 062 expressed the Stage-061 microscopic gain directly in parent 4D variables:
 
 `G_micro = rho_* g_phi^2 O_(sigma phi)^2 / [ m c_(s*)^2 K_X N_(sigma sigma) ]`
 
@@ -10,7 +10,7 @@ or, equivalently,
 
 `G_micro = [ rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) ] C_(sigma phi)^2.`
 
-The next honest step is to combine that exact parent formula with the Stage-44 operator phase diagram and turn the support/source theorem gap into explicit thresholds on:
+The next honest step is to combine that exact parent formula with the Stage-061 operator phase diagram and turn the support/source theorem gap into explicit thresholds on:
 
 - the parent confinement-loading amplitude `g_phi`,
 - and the source/support coherence factor `C_(sigma phi)^2`.
@@ -19,7 +19,7 @@ This stage does that.
 
 The main results are:
 
-1. inserting the parent gain into the Stage-44 thresholds gives the exact parent fail/succeed conditions
+1. inserting the parent gain into the Stage-061 thresholds gives the exact parent fail/succeed conditions
 
    `g_phi^2 <= g_(phi,fail)^2`  -> fail,
 
@@ -60,7 +60,7 @@ The main results are:
    `G_max(g_phi) = rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X),`
 
    attained only at perfect alignment `C_(sigma phi)^2 = 1`;
-6. inserting `kappa = K_X L^2 / T_X` and the Stage-44 formulas
+6. inserting `kappa = K_X L^2 / T_X` and the Stage-061 formulas
 
    `G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`
 
@@ -89,13 +89,13 @@ So the remaining PDE-side theorem gap is no longer “find some support/source g
 
 ## 1. Exact parent thresholds on the confinement-loading amplitude `g_phi`
 
-Stage 44 proved the microscopic operator phase diagram
+Stage 061 proved the microscopic operator phase diagram
 
 `G_micro <= G_fail(kappa,eta)`  -> fail,
 
 `G_micro >= G_suff(kappa,eta)`  -> succeed.
 
-Insert the parent formula from Stage 45,
+Insert the parent formula from Stage 062,
 
 `G_micro = rho_* g_phi^2 O_(sigma phi)^2 / [ m c_(s*)^2 K_X N_(sigma sigma) ].`
 
@@ -179,7 +179,7 @@ This is the first exact parent-overlap no-go theorem in the program.
 
 ## 4. Exact amplitude thresholds in terms of `Pe_req`, `Delta_0`, and `Delta_inf`
 
-Stage 44 already gave
+Stage 061 already gave
 
 `G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`
 
@@ -239,9 +239,9 @@ So in the best possible aligned lowest-lane closure, the theorem gap reduces to 
 
 ---
 
-## 6. What Stage 46 changes
+## 6. What Stage 063 changes
 
-After Stage 46, the remaining theorem gap is no longer phrased in terms of the abstract microscopic gain `G_micro`.
+After Stage 063, the remaining theorem gap is no longer phrased in terms of the abstract microscopic gain `G_micro`.
 
 It is now:
 
@@ -249,7 +249,7 @@ It is now:
 2. compute the profile coherence `C_(sigma phi)^2` on the true moving-throat branch,
 3. compare them against the exact thresholds above.
 
-That is stronger than the Stage-44 statement because it pushes the support/source theorem gap all the way back to parent-action overlap data.
+That is stronger than the Stage-061 statement because it pushes the support/source theorem gap all the way back to parent-action overlap data.
 
 In other words, the unresolved PDE question is now no longer “is the microscopic gain big enough?” It is
 

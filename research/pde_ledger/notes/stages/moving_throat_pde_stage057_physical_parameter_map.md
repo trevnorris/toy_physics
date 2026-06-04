@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 39 converted the old abstract overlap-bias variable `alpha` into the physical transport Peclet number
+Stage 056 converted the old abstract overlap-bias variable `alpha` into the physical transport Peclet number
 
 `Pe = v_sigma L / D_sigma.`
 
-The last remaining Stage-38 unknown is therefore the support-compliance variable previously written as `x`.
+The last remaining Stage-055 unknown is therefore the support-compliance variable previously written as `x`.
 
 This stage converts the whole explicit non-twin family into a directly physical parameter map.
 
@@ -40,7 +40,7 @@ The main results are:
 5. its exact closure ceiling is
 
    `zeta_max(kappa) = (pi^2/4)(kappa + pi^2/4)/kappa;`
-6. therefore the Stage-35 demand is reachable on this first physical family **iff**
+6. therefore the Stage-052 demand is reachable on this first physical family **iff**
 
    `zeta_req <= zeta_max(kappa),`
 
@@ -48,7 +48,7 @@ The main results are:
 
    `kappa <= pi^4 / [4(4 zeta_req - pi^2)].`
 
-So the Stage-38 reachability problem is now fully rewritten in terms of three physical throat-operator ratios:
+So the Stage-055 reachability problem is now fully rewritten in terms of three physical throat-operator ratios:
 
 - `Pe` — axial support-source transport bias,
 - `eta` — mouth Robin compliance,
@@ -73,7 +73,7 @@ The mixed D/N lane has
 `K_W^(eff) = K_X + pi^2 T_X/(4L^2)`
 `          = (T_X/L^2) (kappa + pi^2/4),`
 
-so the Stage-37 support parameter becomes
+so the Stage-054 support parameter becomes
 
 `x = pi^2 T_X / (L^2 K_W^(eff))`
 `  = pi^2 / (kappa + pi^2/4).`
@@ -101,13 +101,13 @@ So the exact softening factor simplifies to
 `= K_W^(eff)/K_(phi,0)^(eff)`
 `= (kappa + pi^2/4)/(kappa + y(eta)^2).`
 
-This is algebraically cleaner than the Stage-37 `x`-form and makes the physical support meaning explicit.
+This is algebraically cleaner than the Stage-054 `x`-form and makes the physical support meaning explicit.
 
 ---
 
 ## 3. Exact physical explicit lowest-lane family
 
-Combining Stage 39 with the Robin support branch gives the first fully physical explicit family:
+Combining Stage 056 with the Robin support branch gives the first fully physical explicit family:
 
 `zeta_0^(Pe+R)(Pe,eta;kappa)`
 `= Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2),`
@@ -120,7 +120,7 @@ where
 
 and `y tan y = eta`.
 
-This is the direct physical replacement for the Stage-38 abstract family
+This is the direct physical replacement for the Stage-055 abstract family
 
 `zeta_0^(exp+R)(alpha,eta)`
 `= Omega_exp(alpha)^2 / [1 - x/4 + x y(eta)^2/pi^2].`
@@ -139,7 +139,7 @@ The physical family has a clean monotone structure.
 
 ### Increasing in transport bias `Pe`
 
-From Stage 39,
+From Stage 056,
 
 `dOmega_Pe/dPe > 0`
 
@@ -213,7 +213,7 @@ This is the first explicit reachability ceiling written entirely in physical ope
 
 ## 6. Exact reachability criterion and stiffness ceiling
 
-The Stage-35 support demand is reachable on this physical family exactly when
+The Stage-052 support demand is reachable on this physical family exactly when
 
 `zeta_req <= zeta_max(kappa)`
 
@@ -284,7 +284,7 @@ So all three physical threshold surfaces are now explicit.
 
 ---
 
-## 8. Best current theorem statement after Stage 40
+## 8. Best current theorem statement after Stage 057
 
 ### What is exact now
 

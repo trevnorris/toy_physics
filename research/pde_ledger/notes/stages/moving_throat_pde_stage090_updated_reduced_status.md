@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 71–72 complete the explicit Family-1 support/source side under the natural minimal isotropic passive/outgoing quadrupole branch.
+Stages 88–89 complete the explicit Family-1 support/source side under the natural minimal isotropic passive/outgoing quadrupole branch.
 
 This note records the clean status update.
 
@@ -55,9 +55,9 @@ That is exactly the point where the reduced program now reconnects to the alread
 
 ---
 
-## 3. Best current expert verdict after Stage 73
+## 3. Best current expert verdict after Stage 090
 
-For the explicit Family-1 branch, the reduced moving-throat PDE program has advanced one step further than Stage 70:
+For the explicit Family-1 branch, the reduced moving-throat PDE program has advanced one step further than Stage 087:
 
 - the explicit support/source side is finished,
 - the outgoing branch no longer leaves a free loading-ratio datum under the natural minimal isotropic contact-plus-pole identification,

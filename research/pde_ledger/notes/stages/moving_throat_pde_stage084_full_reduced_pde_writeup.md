@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 1–66 have now done two different kinds of work:
+Stages 1–83 have now done two different kinds of work:
 
 1. they built the reduced moving-throat PDE hierarchy layer by layer, and
 2. they compressed the remaining support/source branch question to one explicit quadrupole residual.
@@ -40,13 +40,13 @@ with Robin/Neumann boundaries and the operator-selected fixed-point law
 
 `Pe_* = Xi Delta(Pe_*;kappa,eta).`
 
-This is the exact reduced support/source operator carried from Stage 41 and
-reassembled into the master residual form at Stage 65.
+This is the exact reduced support/source operator carried from Stage 058 and
+reassembled into the master residual form at Stage 082.
 
 ### 1.3 Exact explicit lowest-lane support family
 
-The explicit lowest support lane from Stages 39-40, specialized in Stage 62 and
-used operationally in Stages 65-66, is now fully reduced to physical variables
+The explicit lowest support lane from Stages 56-57, specialized in Stage 079 and
+used operationally in Stages 82-83, is now fully reduced to physical variables
 
 `(Pe, eta, kappa)`
 
@@ -67,7 +67,7 @@ This family is no longer heuristic. Its monotonicity, closure window, overlap ce
 
 ### 1.4 Exact selected-branch quadrupole demand map
 
-On the outgoing quadrupole side, the selected-branch demand from Stages 35 and 65
+On the outgoing quadrupole side, the selected-branch demand from Stages 52 and 82
 is now compressed to
 
 `zeta_req(Pi_tr,C_mix,eps_blk)`
@@ -92,13 +92,13 @@ Putting those two sides together, the reduced moving-throat PDE is now governed 
 ` - zeta_phys(Pe_*(Xi,eta,kappa),eta;kappa).`
 
 This is the current write-up version of the full reduced theorem gate from
-Stage 65.
+Stage 082.
 
 - `R_quad < 0`  ->  explicit support/source supply exceeds selected quadrupole demand;
 - `R_quad = 0`  ->  exact saturation of the explicit branch;
 - `R_quad > 0`  ->  the explicit branch fails.
 
-And because the support/source fixed-point already obeys the exact Stage-41
+And because the support/source fixed-point already obeys the exact Stage-058
 brackets,
 
 `Xi Delta_0 <= Pe_* <= Xi Delta_inf,`
@@ -118,8 +118,8 @@ On Family-1 we have
 
 `Xi_F1 = 1369 Upsilon_w = 136900 Theta_w.`
 
-Using the exact Stage-60 wall-depth extraction from the frozen `n=5` branch, the
-Stage-56-58 Family-1 data, and the Stage-66 direct operator evaluation, the
+Using the exact Stage-077 wall-depth extraction from the frozen `n=5` branch, the
+Stage-73-75 Family-1 data, and the Stage-083 direct operator evaluation, the
 natural shell-weighted and conservative-floor branches produce direct
 operator-selected windows in:
 
@@ -139,7 +139,7 @@ while the conservative floor gives
 
 `zeta_+^(J) ≈ 2.46752736855058,`
 
-against the hard Stage-62 ceiling
+against the hard Stage-079 ceiling
 
 `zeta_max^(F1) ≈ 2.46752922945601.`
 

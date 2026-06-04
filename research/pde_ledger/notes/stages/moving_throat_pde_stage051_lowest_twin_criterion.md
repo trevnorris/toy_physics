@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Stage 33 reduced the explicit D/N support comparison to one sharp question:
+Stage 050 reduced the explicit D/N support comparison to one sharp question:
 
 > does the physical moving-throat branch lie in the regime `zeta_req <= 1`, so that the symmetric lowest twin support lane is already sufficient?
 
 That statement is still useful, but it is written in terms of the reduced support ratio `zeta_req`.
-The next honest step is to eliminate `zeta_req` and translate the test into the continuum variables already frozen in Stages 30–33.
+The next honest step is to eliminate `zeta_req` and translate the test into the continuum variables already frozen in Stages 047–050.
 
 This stage does that exactly.
 
@@ -66,13 +66,13 @@ So for every finite microscopic support scale there is at least one stable-side 
 
 ## 2. Elimination of `zeta_req`
 
-Stage 31 gave the exact support-demand map
+Stage 048 gave the exact support-demand map
 
 `S_req := M_req / M_mix,`
 
 `zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ],`
 
-with the mixed-only product law from Stage 30
+with the mixed-only product law from Stage 047
 
 `R_target M_mix = 8 Lambda (1 - eps) / pi^2.`
 
@@ -88,7 +88,7 @@ it follows that
 `     = [ R_target M_req ] / [ R_target M_mix ]`
 `     = Pi_tr(xi_req,delta;R_tr) / [ 8 Lambda (1 - eps) / pi^2 ].`
 
-Now impose the exact Stage-33 twin threshold
+Now impose the exact Stage-050 twin threshold
 
 `zeta_req <= 1 <=> S_req <= 2.`
 
@@ -128,7 +128,7 @@ So the lowest twin succeeds exactly when the mixed branch already supplies at le
 
 ### Wall-to-mixed overlap threshold
 
-Using the Stage-30 coherent map
+Using the Stage-047 coherent map
 
 `M_mix = 8 Z_W (1 + chi_0)^2 / [ pi^2 (1 - eps_eta) (1 - eps) ],`
 
@@ -169,7 +169,7 @@ It lives on an exact algebraic branch of the same selected-mode family.
 
 ---
 
-## 5. Best current theorem statement after Stage 34
+## 5. Best current theorem statement after Stage 051
 
 The lowest-twin question is no longer phrased in terms of an abstract support ratio.
 

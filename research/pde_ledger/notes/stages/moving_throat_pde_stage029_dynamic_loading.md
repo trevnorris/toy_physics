@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 11 deliberately introduced a reduced loading parameter `alpha` to turn the free profile angle `theta` into a real eigenproblem. That was the right move at the time, but it also left the central spectral question unfinished:
+Stage 028 deliberately introduced a reduced loading parameter `alpha` to turn the free profile angle `theta` into a real eigenproblem. That was the right move at the time, but it also left the central spectral question unfinished:
 
 > what does `alpha` actually come from in the coupled wall/BdG/Maxwell/mixed operator, and how does the same operator feed the outgoing `l=2` odd term into the *selected* wall quadrupole mode?
 
@@ -14,7 +14,7 @@ Using the first two N/N wall modes, the lowest D/N support/mixed half-wave, and 
 - an isotropic shift `Xi(omega) I_2`,
 - and a rank-1 directional load `alpha(omega) v v^T`.
 
-So Stage 11 was not just a plausible toy model. Its rank-1 loading structure is the exact Schur complement of the first coupled wall/BdG/Maxwell/mixed block.
+So Stage 028 was not just a plausible toy model. Its rank-1 loading structure is the exact Schur complement of the first coupled wall/BdG/Maxwell/mixed block.
 
 Even better, once the mixed channel is dressed by the passive/outgoing port, the same exact decomposition survives and the first odd coefficient of the selected wall mode becomes explicit.
 So the bottleneck narrows again:
@@ -37,7 +37,7 @@ and write the wall quadrupole shape as the coefficient vector
 
 `q = (q_0, q_1)^T`.
 
-The D/N overlap vector from Stages 10–11 is
+The D/N overlap vector from Stages 027–028 is
 
 `v = (kappa_0, kappa_1)^T`,
 
@@ -49,7 +49,7 @@ with
 
 `sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`.
 
-So `sigma` is exactly the Stage-10 max-coupling value `|kappa|_max^2`.
+So `sigma` is exactly the Stage-027 max-coupling value `|kappa|_max^2`.
 
 Let the bare wall operator in this basis be
 
@@ -86,7 +86,7 @@ The exact reduced couplings are taken to be
 
 The last sign is the one compatible with the earlier conservative self-energy convention in which the mixed-sector cross term enters with the *positive* `+ 2 G_U G_W R` numerator after elimination.
 
-This reduced operator is the minimal dynamic refinement of Stage 11:
+This reduced operator is the minimal dynamic refinement of Stage 028:
 
 - `q` is the wall profile we want to select,
 - `phi` is the BdG support lane already turned on at Stage 3,
@@ -120,11 +120,11 @@ Here
 
 `Delta_UW(omega) = A_U(omega) A_W(omega) - lambda_R^2 sigma`.
 
-So the full coupled wall/BdG/Maxwell/mixed operator really does reduce to exactly the Stage-11 geometry:
+So the full coupled wall/BdG/Maxwell/mixed operator really does reduce to exactly the Stage-028 geometry:
 
 `D_wall(omega) = [ D_eta^(bare)(omega) - Xi(omega) I_2 ] - alpha(omega) v v^T`.
 
-This is a stronger result than the old Stage-11 ansatz because it identifies the two physically distinct effects:
+This is a stronger result than the old Stage-028 ansatz because it identifies the two physically distinct effects:
 
 1. `Xi(omega)` is an **isotropic internal zero-mode shift** coming from the brane-like `U` doublet,
 2. `alpha(omega)` is the **directional loading strength** along the D/N overlap vector `v`.
@@ -134,7 +134,7 @@ It is the exact first Schur complement of the reduced wall/BdG/Maxwell/mixed ope
 
 ---
 
-## 3. Conservative static loading and the refined Stage-11 profile-selection law
+## 3. Conservative static loading and the refined Stage-028 profile-selection law
 
 On the conservative static branch set
 
@@ -154,7 +154,7 @@ So the conservative loaded wall matrix is
 `K_eff^(0) = [[K_0 - Xi_0, 0], [0, K_1 - Xi_0]] - alpha_0 v v^T`.
 
 The isotropic shift moves both wall levels equally,
-so the profile-angle equation keeps the same Stage-11 structure with
+so the profile-angle equation keeps the same Stage-028 structure with
 
 `K_0 -> K_0 - Xi_0`,
 
@@ -168,7 +168,7 @@ In particular, the exact conservative angle law remains
 `= 2 alpha_0 kappa_0 kappa_1 / ( Delta K_ax + alpha_0 (kappa_0^2 - kappa_1^2) )`.
 
 So the same sign theorem survives:
-for positive `alpha_0`, the selected lower eigenvector still rotates in the negative `u_1` direction, i.e. toward the Stage-10 max-coupling branch and away from the blind-angle branch.
+for positive `alpha_0`, the selected lower eigenvector still rotates in the negative `u_1` direction, i.e. toward the Stage-027 max-coupling branch and away from the blind-angle branch.
 
 ### 3.1 Refined conservative softening threshold
 
@@ -183,7 +183,7 @@ So the internal zero-mode sector makes quadrupole softening easier in a very con
 - it does **not** change the direction-selection formula,
 - but it lowers the stability margin by shifting both bare wall levels downward before the directional rank-1 loading is applied.
 
-This is the first exact place where the BdG/Maxwell/mixed operator changes the Stage-11 theorem content rather than merely justifying it.
+This is the first exact place where the BdG/Maxwell/mixed operator changes the Stage-028 theorem content rather than merely justifying it.
 
 ---
 
@@ -262,7 +262,7 @@ So the selected-mode damping strength is controlled by exactly two ingredients:
 1. the dynamic transfer coefficient `beta_5`,
 2. the selected profile overlap factor `(v.e_-)^2`.
 
-The second factor is just the Stage-10 overlap evaluated on the Stage-11 selected eigenmode. In angle language,
+The second factor is just the Stage-027 overlap evaluated on the Stage-028 selected eigenmode. In angle language,
 
 `(v.e_-)^2 = kappa(theta_-)^2`.
 
@@ -275,32 +275,32 @@ This is the first exact formula in the moving-throat PDE program that feeds the 
 
 ---
 
-## 6. Relation to the earlier Stage-021/5 transfer factors
+## 6. Relation to the earlier Stage-021/022 transfer factors
 
 The conservative combination
 
 `P_0 = Omega_U^2 lambda_W + lambda_R lambda_U`
 
 is the same `P`-type numerator that already appeared in the earlier isotropic normalization work.
-So the Stage-12 directional-loading transfer factor
+So the Stage-029 directional-loading transfer factor
 
 `beta_0 = P_0^2 / Delta_0^2`
 
 is not a new unrelated object.
-It is the same mixed-sector transfer numerator that the Stage-021/5 bridge had already isolated, now appearing on the first real wall-profile selection operator.
+It is the same mixed-sector transfer numerator that the Stage-021/022 bridge had already isolated, now appearing on the first real wall-profile selection operator.
 
 That is an important unification point:
 
 - Stage 021 first isolated the outgoing mixed-sector transfer factor on one lane,
-- Stage 8 reduced the normalization problem to the radial/axial quantities `P`, `Delta`, `Q`, `X`,
-- Stage 11 turned the wall profile into a real eigenproblem,
-- and Stage 12 shows that the same mixed-sector numerator controls the directional loading and the selected-mode odd term.
+- Stage 025 reduced the normalization problem to the radial/axial quantities `P`, `Delta`, `Q`, `X`,
+- Stage 028 turned the wall profile into a real eigenproblem,
+- and Stage 029 shows that the same mixed-sector numerator controls the directional loading and the selected-mode odd term.
 
 So the different branches of the roadmap are starting to meet.
 
 ---
 
-## 7. Best current summary after Stage 12
+## 7. Best current summary after Stage 029
 
 The bottleneck has narrowed again.
 
@@ -318,7 +318,7 @@ The outgoing odd term of the selected lower quadrupole mode is then
 `    * [ ( Omega_U^2 lambda_W + lambda_R lambda_U )^2 / Delta_0^2 ]`
 `    * kappa(theta_-)^2 omega^5 + O(omega^7)`.
 
-So the Stage-11 “free parameter” bottleneck is gone.
+So the Stage-028 “free parameter” bottleneck is gone.
 What remains is now much sharper:
 
 1. compute the conservative branch data `(Xi_0, alpha_0)` on the true moving-throat branch,

@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 6 reduced the entire grouped real `20/21/22` bundle to one exact question:
+Stage 023 reduced the entire grouped real `20/21/22` bundle to one exact question:
 
 `mhat_0^2 N_0 / (K - B_0 - Z_0) = 54 G c_s^5 / (5 a^5 c^5)`.
 
-But Stage 6 still treated the microscopic inputs
+But Stage 023 still treated the microscopic inputs
 
 - `B_(A,n)`,
 - `Z_(A,n)`,
@@ -27,7 +27,7 @@ The main outputs are:
 5. the first exact symmetry-breaking law for a weak **axisymmetric quadrupole** perturbation,
 6. and the resulting first-order transport law for the normalization ratio `P_A = N_A / D_A`.
 
-So Stage 7 is the first point where the words “actual overlap integrals on the moving-throat branch” become mathematically concrete.
+So Stage 024 is the first point where the words “actual overlap integrals on the moving-throat branch” become mathematically concrete.
 
 ---
 
@@ -123,11 +123,11 @@ The radial/axial overlap integrals are
 
 `I_(u,w,r)    = int ds mu_s(s) u_r(s) w_r(s)`.
 
-These are exactly the Stage-6 radial/axial overlap objects specialized to an
+These are exactly the Stage-023 radial/axial overlap objects specialized to an
 `O(3)`-invariant kernel. This stage adds the angular closure and the symmetry
 consequences; it does not introduce a different radial/axial model.
 
-So on the isotropic branch the full Stage-6 coefficients become true scalar lane-independent objects:
+So on the isotropic branch the full Stage-023 coefficients become true scalar lane-independent objects:
 
 `B_(A,0) = B_0 = sum_alpha C_alpha^2 / varpi_alpha^2`,
 
@@ -145,7 +145,7 @@ For each conservative Maxwell/mixed pair `r`, define
 
 `H_r = G_(U,r)^2 + G_(W,r)^2`,
 
-where `H_r` is just the Stage-6 combined gauge/mixed coupling strength written
+where `H_r` is just the Stage-023 combined gauge/mixed coupling strength written
 with a new letter to avoid collisions with Newton's `G`.
 
 `P_r = Omega_(U,r)^2 G_(W,r) + R_r G_(U,r)`.
@@ -268,7 +268,7 @@ If that relation fails, the symmetry breaking is not a pure axisymmetric quadrup
 
 ## 5. First-order normalization transport on the weak axisymmetric branch
 
-Now apply the same axisymmetric law to the Stage-6 normalization ratio.
+Now apply the same axisymmetric law to the Stage-023 normalization ratio.
 
 Suppose
 
@@ -306,13 +306,13 @@ So the first normalization anisotropies obey the same exact defect law:
 
 This is the first actual transport law for the grouped normalization test once symmetry is weakly broken.
 
-It says that the isotropic normalization target from Stage 6 is stable in the expected way: weak axisymmetric anisotropy does not create an arbitrary three-parameter deformation of the normalization stack. It creates one universal first-order lane pattern.
+It says that the isotropic normalization target from Stage 023 is stable in the expected way: weak axisymmetric anisotropy does not create an arbitrary three-parameter deformation of the normalization stack. It creates one universal first-order lane pattern.
 
 ---
 
-## 6. What Stage 7 changes in the theorem problem
+## 6. What Stage 024 changes in the theorem problem
 
-Stage 7 narrows the remaining gap in three important ways.
+Stage 024 narrows the remaining gap in three important ways.
 
 ### 6.1 The angular part of the source map is no longer open
 
@@ -353,9 +353,9 @@ So future PDE data can be classified immediately:
 
 ---
 
-## 7. Best current summary after Stage 7
+## 7. Best current summary after Stage 024
 
-The moving-throat PDE problem is now narrower than it was at the end of Stage 6.
+The moving-throat PDE problem is now narrower than it was at the end of Stage 023.
 
 The remaining higher-order bridge is no longer:
 
@@ -368,6 +368,6 @@ It is now:
    `B_n`, `Z_n`, `N_n`,
 3. test the single isotropic ratio
    `mhat_rad^2 N_0 / (K - B_0 - Z_0)`,
-4. and then, only after that, study symmetry breaking around that branch using the exact Stage-7 angular fingerprints.
+4. and then, only after that, study symmetry breaking around that branch using the exact Stage-024 angular fingerprints.
 
 That is a real tightening of the theorem target.

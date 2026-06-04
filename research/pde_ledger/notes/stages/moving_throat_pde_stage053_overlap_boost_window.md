@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 35 reduced the non-twin rescue problem to two concrete lowest-lane resources:
+Stage 052 reduced the non-twin rescue problem to two concrete lowest-lane resources:
 
 - overlap boost,
 - support softening.
@@ -25,7 +25,7 @@ The main results are:
 
 2. the symmetric uniform source is the baseline point `Omega_0 = 1`;
 3. an explicit exponentially bottom-biased source family continuously deforms the overlap from `1` up to the sharp upper limit `pi/2`;
-4. therefore **pure overlap asymmetry alone** can beat the Stage-35 support threshold only if
+4. therefore **pure overlap asymmetry alone** can beat the Stage-052 support threshold only if
 
    `zeta_req <= pi^2/4.`
 
@@ -39,7 +39,7 @@ Keep the same D/N lowest mode on the finite throat interval `s in [0,L]`:
 
 `chi_0(s) = sqrt(2/L) sin(pi s / (2L)).`
 
-The mixed lane in Stage 32 used the uniform source density
+The mixed lane in Stage 049 used the uniform source density
 
 `sigma_W(s) = 1,`
 
@@ -61,7 +61,7 @@ and the overlap boost
 
 `Omega_0 := I_(phi,0) / I_W.`
 
-Then the lowest-lane coherent asymmetry factor from Stage 35 is
+Then the lowest-lane coherent asymmetry factor from Stage 052 is
 
 `A_I := Omega_0^2.`
 
@@ -141,13 +141,13 @@ and since `2/pi - 1/2 = (4-pi)/(2pi) > 0`, the constructive branch immediately m
 
 ## 4. Exact pure-overlap rescue criterion
 
-Stage 35 showed that, at equal stiffness,
+Stage 052 showed that, at equal stiffness,
 
 `A_I = Omega_0^2 >= zeta_req`
 
 is the exact rescue condition.
 
-Stage 36 now bounds the left-hand side by
+Stage 053 now bounds the left-hand side by
 
 `A_I <= pi^2/4.`
 
@@ -164,7 +164,7 @@ This is the first exact no-go/sufficiency split for the overlap resource by itse
 
 ---
 
-## 5. Best current theorem statement after Stage 36
+## 5. Best current theorem statement after Stage 053
 
 ### What is exact now
 
@@ -189,7 +189,7 @@ This is the first exact no-go/sufficiency split for the overlap resource by itse
 
 ### What this means physically
 
-The overlap side of the Stage-35 non-twin budget is no longer vague.
+The overlap side of the Stage-052 non-twin budget is no longer vague.
 
 The moving-throat operator may indeed produce `Omega_0 > 1`, but even the most favorable finite-throat concentration can supply only a finite factor `pi^2/4` in `A_I`.
 

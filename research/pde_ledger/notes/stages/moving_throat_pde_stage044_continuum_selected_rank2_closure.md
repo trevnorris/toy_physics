@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Stage 26 extracted the actual support/BdG loading data from the continuum operator:
+Stage 043 extracted the actual support/BdG loading data from the continuum operator:
 
 - the support direction factor `R_phi`,
 - and the physical support baseline `M_supp`.
 
-That means the Stage-24/25 rank-2 problem is no longer a family of possible closures. The continuum kernel now supplies the data needed to write the **actual physical selected-branch equations**.
+That means the Stage-041/042 rank-2 problem is no longer a family of possible closures. The continuum kernel now supplies the data needed to write the **actual physical selected-branch equations**.
 
 This stage does that.
 
@@ -60,13 +60,13 @@ So the actual mixed and support direction ratios entering the selected-branch pr
 
 `r = t R_phi.`
 
-The anisotropy ratio is still the Stage-22 shifted wall value `delta = delta_split`.
+The anisotropy ratio is still the Stage-039 shifted wall value `delta = delta_split`.
 
 ---
 
 ## 2. Exact physical selected-branch equation
 
-Stage 24 gave the exact support-loading theorem
+Stage 041 gave the exact support-loading theorem
 
 `n_req(xi,delta;m,q,r)`
 `= [ xi(delta + xi) - m( delta + (1 + q^2) xi ) ]`
@@ -130,7 +130,7 @@ So the physical branch is now no longer a search over a continuous family. It is
 
 ## 4. Exact continuum-selected normalization test
 
-Stage 25 gave the exact rank-2 normalization law
+Stage 042 gave the exact rank-2 normalization law
 
 `F_(q,r,t)(xi,delta;m)`
 `= [ delta + (1 + q r) xi ]^2`
@@ -179,9 +179,9 @@ then
 
 `R_phi = 1,`
 
-and Stage 26 shows that the support direction is exactly source-tied.
+and Stage 043 shows that the support direction is exactly source-tied.
 
-So the **minimal** continuum kernel lands on the source-tied Stage-24/25 closure.
+So the **minimal** continuum kernel lands on the source-tied Stage-041/042 closure.
 
 ### 5.2 Interference-matched tracking surface
 
@@ -237,11 +237,11 @@ This yields the structural conclusion:
 - tracking is another exact special surface,
 - and the generic extended continuum kernel sits between them with a genuine positive rank-2 mismatch penalty.
 
-So the physical kernel does not generically choose one of the two Stage-24 extremes. It defines a continuum-selected intermediate closure.
+So the physical kernel does not generically choose one of the two Stage-041 extremes. It defines a continuum-selected intermediate closure.
 
 ---
 
-## 7. Best current theorem statement after Stage 27
+## 7. Best current theorem statement after Stage 044
 
 The support-direction bottleneck is now resolved at the reduced-theorem level.
 
@@ -257,7 +257,7 @@ The support-direction bottleneck is now resolved at the reduced-theorem level.
 
 ### The sharp current conclusion
 
-> The minimal Stage-20 continuum kernel lands on the source-tied closure.
+> The minimal Stage-037 continuum kernel lands on the source-tied closure.
 > The first symmetry-allowed extended continuum kernel lands generically on an exact intermediate closure.
 > Exact tracking is a special interference-match surface, not the generic outcome.
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 67 left the reduced moving-throat PDE in the form of one master residual
+Stage 084 left the reduced moving-throat PDE in the form of one master residual
 
 `R_quad = zeta_req(Pi_tr,C_mix,eps_blk) - zeta_phys(Pe_*),`
 
@@ -28,7 +28,7 @@ and therefore
 
 `Pi_tr / C_mix = alpha_req / alpha_mix.`
 
-Using the selected-mode normalization relation from Stage 13,
+Using the selected-mode normalization relation from Stage 030,
 
 `N_Q^(target) = mhat_-^2 beta_0 s_- / lambda_-,`
 
@@ -41,13 +41,13 @@ the same identities become
 So once the outgoing quadrupole branch is required to hit the `2G/(5 c^5)` normalization target, the explicit support theorem no longer depends separately on `(mhat_-, beta_0, s_-, lambda_-)`.
 It depends only on the **loading ratio** `alpha_req / alpha_mix`.
 
-That is the cleanest bridge yet between the Stage-13 selected quadrupole normalization stack and the explicit Family-1 support/source branch.
+That is the cleanest bridge yet between the Stage-030 selected quadrupole normalization stack and the explicit Family-1 support/source branch.
 
 ---
 
 ## 1. Exact product identities
 
-From Stages 18–19, the selected-branch target ratio is
+From Stages 35–36, the selected-branch target ratio is
 
 `R_target = N_Q^(target) A / ( beta_0 kappa_0^2 ),`
 
@@ -83,7 +83,7 @@ This identity is exact.
 
 ## 2. Spectral form using the selected-mode normalization stack
 
-Stage 13 gave the selected-mode outgoing normalization relation
+Stage 030 gave the selected-mode outgoing normalization relation
 
 `mhat_-^2 P_{0,-} = N_Q^(target),`
 
@@ -109,7 +109,7 @@ That is why the explicit support test loses all separate dependence on the outgo
 
 ## 3. Exact selected-demand law in pure loading-ratio form
 
-Stage 35 gave the exact selected support demand
+Stage 052 gave the exact selected support demand
 
 `zeta_req = (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ].`
 
@@ -162,7 +162,7 @@ That is the right direct bridge between the selected quadrupole branch and the e
 
 ---
 
-## 5. Best current theorem statement after Stage 68
+## 5. Best current theorem statement after Stage 085
 
 Once the outgoing quadrupole branch satisfies the selected-mode normalization target,
 

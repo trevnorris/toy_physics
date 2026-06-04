@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 47–48 turned the parent support/source theorem gap into an explicit wall-amplitude test on the first thin-wall confinement branch.
+Stages 064–065 turned the parent support/source theorem gap into an explicit wall-amplitude test on the first thin-wall confinement branch.
 
 The next useful simplification is to compress that explicit branch into the smallest possible control parameter.
 
@@ -12,7 +12,7 @@ For the first explicit thin-wall wall family,
 
 `V_conf(r;a) = V0 f((r-a)/ell),`
 
-with the equilibrium-aligned source/support branch from Stage 47, define the dimensionless wall figure of merit
+with the equilibrium-aligned source/support branch from Stage 064, define the dimensionless wall figure of merit
 
 `W_wall := 4 pi a^2 L^2 J_1 V0^2 / (T_X ell).`
 
@@ -30,7 +30,7 @@ So the first explicit parent branch is no longer controlled by a diffuse set of 
 
 ## 1. Definition of the wall figure of merit
 
-Stage 48 showed that the thin-wall gain of the first explicit parent confinement family is
+Stage 065 showed that the thin-wall gain of the first explicit parent confinement family is
 
 `G_eq^(tw) = 4 pi a^2 V0^2 J_1 / (K_X ell),`
 
@@ -43,7 +43,7 @@ with
 - `J_1 = int dxi f'(xi)^2 / H(xi)` the weighted wall-profile moment,
 - and `K_X` the axial support stiffness.
 
-Using the Stage-44 geometry parameter
+Using the Stage-061 geometry parameter
 
 `kappa = K_X L^2 / T_X,`
 
@@ -58,7 +58,7 @@ This is the smallest parent quantity that still carries all of the support/sourc
 
 ## 2. Exact fail/succeed thresholds in wall form
 
-The Stage-44 operator theorem gave
+The Stage-061 operator theorem gave
 
 `G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`
 
@@ -76,7 +76,7 @@ Therefore the first explicit parent branch satisfies the exact theorem:
 - if `W_wall >= W_suff`, it succeeds,
 - only if `W_fail < W_wall < W_suff` does one still need the full fixed-point solve.
 
-So the wall-amplitude thresholds from Stage 48 are equivalent to one dimensionless wall figure-of-merit comparison.
+So the wall-amplitude thresholds from Stage 065 are equivalent to one dimensionless wall figure-of-merit comparison.
 
 ---
 
@@ -105,7 +105,7 @@ If the active wall layer is also nearly constant in compressional stiffness,
 
 `H(xi) ~ H_w,`
 
-then Stage 48 gave
+then Stage 065 gave
 
 `J_1 = I_f / H_w,`
 
@@ -127,7 +127,7 @@ So in the matched, constant-compressibility wall layer, the entire parent branch
 
 ---
 
-## 5. What Stage 49 changes
+## 5. What Stage 066 changes
 
 Before this stage, the explicit branch comparison still looked like a threshold on the wall amplitude `V0`.
 

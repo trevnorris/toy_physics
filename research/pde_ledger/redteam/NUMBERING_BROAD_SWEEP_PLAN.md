@@ -229,3 +229,18 @@ Also: the **164–178 classifier (C3a) was UNRELIABLE** — it waved through `St
 - 136–163: 6 CANNOT-CONFIRM compounds — `Stages 99 and 170` (×3: 162:19/221, 163:45; "99"-half→119, "170" garbled), `Stages 95–98` (159:16; lead→112), `Stages 98–99` (161:61, 162:58; →115/116/119) — need range-aware handling.
 - 219–253: in-band (cited ≥219) refs genuine → LEFT wholesale; uncertain `stage229:5 "Stage 143/093"` flagged.
 - Focus zero-MAP bands 190–200, 201–218 verified genuine.
+
+---
+## SECONDARY pass — Cluster 2 (band 001–090 + 164–178) — ✅ DONE 2026-06-04
+The "001–090 never renumbered" premise was FALSE: per notes/LINEAR_STAGE_RENUMBERING_MANIFEST.json the original chain was shifted +17 (001–003 unchanged; 004–020 = inserted projected-Maxwell scripts, no notes; 021 = former Stage 4; 022–253 = former 005–236 at +17). Band 001–090's bare prose `Stage N` refs were never updated → overwhelmingly stale.
+- **8 read-only classifiers** (001-029/030-039/040-049/050-059/060-069/070-079/080-090 + a 164-178 re-run of the C3a `Stage 6` blind spot) → ~549 maps to redteam/secondary_maps/c2_*.md.
+- **7 adversarial verifiers** (one per 001-090 cluster) re-checked every map vs the manifest +17 rule AND the old-form-vs-new-form trap (a genuine current-canonical ref mistaken for an old number). **0 wrong maps**; surfaced coverage gaps + 1 CANNOT.
+- **Final cleanup classifier** over the remaining bare refs: +33 maps (21 stale SELF-refs the cluster agents missed in body prose; 12 genuine missed cross-refs incl. stage080 title `Stage-61`→078, stage084 `Stage 65`→082, stage045 `Stage-27`→044, stage081 `Stage-35`→052, stage170 `Stage-6`→023) and **49 genuine canonical 2-digit neighbor-refs LEFT** (the 070-089 explicit-branch band cites neighbors by their real canonical numbers).
+- **Applied via redteam/apply_secondary_maps.py** (deterministic; per-edit uniqueness + label-only guard): **591 changed lines / 68 notes**. Strip-all-digits proof PASS (removed≡added after marker+digit strip → strictly label-only); numstat balanced 591/591.
+- **NEW stale classes (all +17):** 5→022, 6→023, 7→024, 8→025 … 22→039; cross classes 16→033, 18→035, 27→044, 35→052, 61→078, 65→082; SELF-refs map to own canonical.
+- **LEFT (documented):** stage062:233 `Stage 43` = author mis-citation (content home 061, NOT +17 060 → separate content fix, not label-only); stage039:256 `Stage 23` = forward ref (→040, forward pass); ~49 genuine canonical 2-digit neighbor refs in 070-089 (correct as-is; 3-digit padding is a separate cosmetic concern).
+- Cluster 1 padding normalized to 3-digit and amended into its commit (e177262).
+### Still deferred (Cluster 3+)
+- 136–163: 6 CANNOT-CONFIRM compounds (`Stages 99 and 170`, `95–98`, `98–99`) — range-aware handling.
+- 219–253 in-band refs LEFT genuine; uncertain stage229:5 `Stage 143/093` flagged.
+- stage062:233 author mis-citation.

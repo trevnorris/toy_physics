@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 36 put an exact ceiling on the overlap resource:
+Stage 053 put an exact ceiling on the overlap resource:
 
 `A_I <= pi^2/4.`
 
-So the next honest step is to make the second Stage-35 resource explicit:
+So the next honest step is to make the second Stage-052 resource explicit:
 
 > can the lowest support lane become softer than the mixed D/N lane by a concrete finite-throat mechanism, and by how much?
 
@@ -40,7 +40,7 @@ The main results are:
    `A_K,max = 4/(4-x)`
 
    in the soft-mouth limit `eta -> 0^+`;
-5. therefore **pure support softening alone** can rescue the Stage-35 threshold only if
+5. therefore **pure support softening alone** can rescue the Stage-052 threshold only if
 
    `zeta_req <= 4/(4-x)`.
 
@@ -152,13 +152,13 @@ So weaker mouth pinning means stronger support softening.
 
 ## 4. Exact pure-softening rescue criterion
 
-Stage 35 showed that, at equal overlap,
+Stage 052 showed that, at equal overlap,
 
 `A_K >= zeta_req`
 
 is the exact rescue condition.
 
-Stage 37 now bounds the left-hand side by
+Stage 054 now bounds the left-hand side by
 
 `A_K <= 4/(4-x)`
 
@@ -206,7 +206,7 @@ So the support-softening question is no longer qualitative either. It is an exac
 
 ---
 
-## 6. Best current theorem statement after Stage 37
+## 6. Best current theorem statement after Stage 054
 
 ### What is exact now
 
@@ -229,10 +229,10 @@ So the support-softening question is no longer qualitative either. It is an exac
 
 ### What this means physically
 
-The second Stage-35 resource is now explicit.
+The second Stage-052 resource is now explicit.
 
 The lowest support lane can indeed become softer than the mixed D/N lane, but only within a finite operator-controlled window set by `x`.
 
 So the remaining question is already narrower:
 
-> if the physical branch needs more than the Stage-36 overlap ceiling `pi^2/4`, does the moving-throat operator also supply enough Robin-type support softening to bridge the remaining gap?
+> if the physical branch needs more than the Stage-053 overlap ceiling `pi^2/4`, does the moving-throat operator also supply enough Robin-type support softening to bridge the remaining gap?

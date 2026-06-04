@@ -2,7 +2,7 @@
 
 ## Purpose
 
-After Stage 14 the normalization bottleneck had been reduced to the selected-branch quantity
+After Stage 031 the normalization bottleneck had been reduced to the selected-branch quantity
 
 `mhat_-^2 P_{0,-}`,
 
@@ -47,7 +47,7 @@ It is being carried mainly by the selected stiffness `lambda_-` and the mixed-se
 
 ## 1. Exact finite-throat axial basis and the overlap vector `v`
 
-Keep the same finite-throat axial interval `s in [0,L]` and the same wall basis used from Stage 10 onward.
+Keep the same finite-throat axial interval `s in [0,L]` and the same wall basis used from Stage 027 onward.
 The first two exact N/N wall modes are
 
 `u_0(s) = 1 / sqrt(L)`,
@@ -127,7 +127,7 @@ So in the first explicit finite-throat kernel model,
 
 and the entire directional structure is carried by the same overlap vector `v`.
 
-This is exactly the pattern that had been assumed abstractly in Stage 12; now it is derived from the explicit finite-throat basis and local isotropic kernels.
+This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit finite-throat basis and local isotropic kernels.
 
 ---
 
@@ -141,7 +141,7 @@ Let the reduced frequency-domain kernels be
 
 `A_W(omega)   = Omega_W^2 - omega^2 - Pi_out(omega)`.
 
-With the local couplings above, elimination of the internal block `(u, phi, W)` gives the same exact wall self-energy structure found in Stage 12,
+With the local couplings above, elimination of the internal block `(u, phi, W)` gives the same exact wall self-energy structure found in Stage 029,
 
 `Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,
 
@@ -166,7 +166,7 @@ They are
 
 `beta_0 = ( Omega_U^2 g_W + g_R g_U )^2 / Delta_0^2`.
 
-This is the first point where the Stage-12/14 selected-branch spectral data have been written directly in terms of explicit finite-throat mode integrals and local bilinear kernel strengths.
+This is the first point where the Stage-029/031 selected-branch spectral data have been written directly in terms of explicit finite-throat mode integrals and local bilinear kernel strengths.
 
 ---
 
@@ -235,7 +235,7 @@ The source factor is real, positive, monotone, and modest.
 
 ## 6. Elimination of the abstract source-map factor from the quadrupole target
 
-Stage 13 wrote the selected-branch normalization quantity as
+Stage 030 wrote the selected-branch normalization quantity as
 
 `mhat_-^2 P_{0,-}`
 
@@ -251,7 +251,7 @@ So the invariant 2.5PN target becomes
 
 `beta_0 s_-^2 / ( kappa_0^2 lambda_- ) = 54 G c_s^5 / (5 a^5 c^5)`.
 
-This is sharper than the Stage-13 formulation because there is no longer an independent `mhat_-` datum on the natural D/N source branch.
+This is sharper than the Stage-030 formulation because there is no longer an independent `mhat_-` datum on the natural D/N source branch.
 Everything is now carried by:
 
 - the explicit mixed-sector transfer factor `beta_0`,
@@ -261,13 +261,13 @@ Everything is now carried by:
 
 ---
 
-## 7. Best current summary after Stage 15
+## 7. Best current summary after Stage 032
 
 The selected-branch theorem gap has narrowed again.
 
 The first explicit finite-throat mode-integral model now does three things at once:
 
-1. it derives the Stage-12 loading structure from explicit local isotropic kernels,
+1. it derives the Stage-029 loading structure from explicit local isotropic kernels,
 2. it writes `Xi_0`, `alpha_0`, and `beta_0` directly in terms of those kernel strengths,
 3. and it removes the abstract selected-branch source-map factor by showing that on the natural D/N source branch
    `mhat_-^2 = s_- / kappa_0^2`.

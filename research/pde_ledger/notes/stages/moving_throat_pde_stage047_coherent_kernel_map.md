@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 29 left the reduced theorem gap in its sharpest form so far:
+Stage 046 left the reduced theorem gap in its sharpest form so far:
 
 > the first coherent local D/N kernel lands on the physical tracking branch, but the constructive split-`U` deformation lowers `R_tr` below `1` and therefore worsens the normalization target relative to the old flat branch.
 
@@ -12,7 +12,7 @@ The next honest move is therefore to compress the coherent local kernel to the s
 
 This stage does that.
 
-The main result is that, on the coherent tracking branch identified in Stage 28, the first coherent local D/N kernel collapses to a very small parameter set:
+The main result is that, on the coherent tracking branch identified in Stage 045, the first coherent local D/N kernel collapses to a very small parameter set:
 
 - one wall/internal dressing ratio `eps_eta`,
 - one split-`U` axial ratio `delta_U`,
@@ -50,7 +50,7 @@ That turns the support problem into a one-parameter enhancement problem rather t
 
 ## 1. Coherent local interaction data
 
-On the coherent local D/N branch from Stage 28 the mixed and support lanes couple through the same local source density,
+On the coherent local D/N branch from Stage 045 the mixed and support lanes couple through the same local source density,
 
 `L_int^(coh)`
 `= - int_0^L ds [ lambda_W W + lambda_phi phi ] [ eta - gamma U ].`
@@ -125,7 +125,7 @@ The coherent tracking factor is
 
 `R_tr = [ 1 + chi_0/(1+delta_U) ] / (1 + chi_0),`
 
-with the same exact range as Stage 28:
+with the same exact range as Stage 045:
 
 `1/(1+delta_U) < R_tr < 1`
 
@@ -203,11 +203,11 @@ Equivalently,
 
 So the mixed lane still sets the bare product scale, while the support lane simply multiplies that scale by the one enhancement factor `S`.
 
-This is the exact coherent-kernel replacement of the Stage-21 product law.
+This is the exact coherent-kernel replacement of the Stage-038 product law.
 
 ---
 
-## 6. Best current theorem statement after Stage 30
+## 6. Best current theorem statement after Stage 047
 
 The first coherent local D/N kernel is now compressed to an exact dimensionless placement map.
 

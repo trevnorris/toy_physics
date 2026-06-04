@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 43 replaced the phenomenological support/source strength by the explicit microscopic gain
+Stage 060 replaced the phenomenological support/source strength by the explicit microscopic gain
 
 `Xi_micro = chi_sigma Lambda_phi^2 L^2 / T_X.`
 
-The next honest step is to compare that gain directly with the exact Stage-42 thresholds
+The next honest step is to compare that gain directly with the exact Stage-059 thresholds
 
 `Xi_fail = Pe_req / Delta_inf(kappa,eta),`
 
@@ -87,11 +87,11 @@ So the explicit microscopic closure now has a very sharp interpretation:
 
 ## 1. Exact microscopic gain `G_micro`
 
-Stage 43 gave
+Stage 060 gave
 
 `Xi_micro = chi_sigma Lambda_phi^2 L^2 / T_X.`
 
-But Stage 40 already uses the support stiffness ratio
+But Stage 057 already uses the support stiffness ratio
 
 `kappa = K_X L^2 / T_X.`
 
@@ -113,7 +113,7 @@ This is the cleanest microscopic control parameter so far because it removes the
 
 ## 2. Exact operator phase diagram in microscopic variables
 
-Stage 42 already proved that the operator-selected branch succeeds or fails according to the comparison of `Xi` with the exact thresholds
+Stage 059 already proved that the operator-selected branch succeeds or fails according to the comparison of `Xi` with the exact thresholds
 
 `Xi_fail = Pe_req / Delta_inf(kappa,eta),`
 
@@ -157,7 +157,7 @@ So the microscopic theorem gap is no longer â€œsomehow get a large enough `Xi`.â
 
 ## 4. Exact soft-support limit `kappa -> 0^+`
 
-Using the exact endpoint formulas from Stage 41,
+Using the exact endpoint formulas from Stage 058,
 
 `Delta_0(kappa,eta)`
 `= eta (cosh(sqrt(kappa))-1)`
@@ -237,15 +237,15 @@ That means sufficiently strong baseline support stiffness is not itself the main
 
 ---
 
-## 6. What Stage 44 changes
+## 6. What Stage 061 changes
 
 The theorem gap has narrowed again.
 
-Before Stage 44, the support question was:
+Before Stage 061, the support question was:
 
 > what is the physical `Xi`, and is it above or below the exact interval `[Xi_fail, Xi_suff]`?
 
-After Stage 44, it is:
+After Stage 061, it is:
 
 > what is the physical dimensionless gain `G_micro = chi_sigma Lambda_phi^2/K_X`, and does it lie above or below the exact geometry-controlled thresholds `G_fail(kappa,eta)` and `G_suff(kappa,eta)`?
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 40 rewrote the explicit lowest-lane reachability problem in terms of the physical variables
+Stage 057 rewrote the explicit lowest-lane reachability problem in terms of the physical variables
 
 `Pe, eta, kappa.`
 
@@ -65,7 +65,7 @@ The main results are:
    `= [ alpha sinh(alpha x) + eta cosh(alpha x) + alpha sinh(alpha(1-x)) ]`
    `  / [ alpha sinh(alpha) + eta cosh(alpha) ] > 0,`
 
-   so `Delta(Pe;kappa,eta)` is strictly increasing on the constructive branch by the same covariance identity used in Stage 39;
+   so `Delta(Pe;kappa,eta)` is strictly increasing on the constructive branch by the same covariance identity used in Stage 056;
 7. therefore every constructive branch point `Pe_*` obeys the exact bracket
 
    `Xi Delta_0(kappa,eta) <= Pe_* <= Xi Delta_inf(kappa,eta),`
@@ -93,7 +93,7 @@ Take the coherent source density `sigma(s,t)` to obey the conservative transport
 
 `J = -D_sigma partial_s sigma + v_sigma sigma.`
 
-This is exactly the Stage-39 drift-diffusion operator.
+This is exactly the Stage-056 drift-diffusion operator.
 
 Now add the lowest support field `phi(s,t)` through the minimal static axial support law
 
@@ -156,7 +156,7 @@ The closure is therefore
 
 `Pe = Xi [ Phi(1)-Phi(0) ].`
 
-So the three Stage-40 variables are no longer peers. `eta` and `kappa` remain support-shape data, but `Pe` is now an output of the same coupled operator through the single coupling strength `Xi`.
+So the three Stage-057 variables are no longer peers. `eta` and `kappa` remain support-shape data, but `Pe` is now an output of the same coupled operator through the single coupling strength `Xi`.
 
 ---
 
@@ -214,7 +214,7 @@ for `alpha>0`, `eta>0`, and `x in [0,1]`.
 
 So the support-drop kernel is strictly increasing toward the D/N bottom end.
 
-Because `Sigma_Pe` is the same exponential family as in Stage 39,
+Because `Sigma_Pe` is the same exponential family as in Stage 056,
 
 `dDelta/dPe = Cov_Pe(K_(kappa,eta), x) > 0`
 
@@ -302,7 +302,7 @@ The lowest transport bias is not arbitrary. It is proportional to the uniform-so
 
 ---
 
-## 7. Best current theorem statement after Stage 41
+## 7. Best current theorem statement after Stage 058
 
 ### What is exact now
 
@@ -318,7 +318,7 @@ The lowest transport bias is not arbitrary. It is proportional to the uniform-so
 
 ### What this means physically
 
-The Stage-40 map has now been upgraded from a placement map on three external variables to a partially self-consistent branch law.
+The Stage-057 map has now been upgraded from a placement map on three external variables to a partially self-consistent branch law.
 
 The open problem is no longer “what abstract `Pe` should we try?”
 It is:

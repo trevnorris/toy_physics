@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 47 showed that the parent equilibrium branch already aligns the source and support channels and turns the exact gain into
+Stage 064 showed that the parent equilibrium branch already aligns the source and support channels and turns the exact gain into
 
 `G_eq = g_phi^2 I_1 / K_X,`
 
@@ -44,7 +44,7 @@ The main results are:
 5. in the thin-wall limit `ell << a`, the leading gain is
 
    `G_eq^(tw) = 4 pi a^2 V0^2 J_1 / (K_X ell);`
-6. comparing this with the Stage-44 fail/succeed surfaces gives the explicit wall-amplitude thresholds
+6. comparing this with the Stage-061 fail/succeed surfaces gives the explicit wall-amplitude thresholds
 
    `V0_fail^2 = K_X ell G_fail / (4 pi a^2 J_1),`
 
@@ -78,7 +78,7 @@ The main results are:
 
    `V0_suff^2 = H_w T_X ell Pe_req / [ 4 pi a^2 L^2 I_f Delta_0 ].`
 
-So the Stage-46 parent-overlap theorem has now been converted into an explicit wall-amplitude test on the first concrete parent confinement branch.
+So the Stage-063 parent-overlap theorem has now been converted into an explicit wall-amplitude test on the first concrete parent confinement branch.
 
 ---
 
@@ -97,7 +97,7 @@ A support displacement `a -> a + phi(s)` gives
 `delta V_conf = - (partial_a V_conf) phi(s)`
 `            = + (V0/ell) f'(xi) phi(s).`
 
-Comparing with the Stage-45/47 loading form
+Comparing with the Stage-062/064 loading form
 
 `delta V_conf = - g_phi chi_phi(y) phi(s),`
 
@@ -115,7 +115,7 @@ So the wall amplitude and wall thickness directly determine the parent loading s
 
 ## 2. Exact shell integral for the equilibrium gain
 
-Stage 47 showed that the exact equilibrium gain is
+Stage 064 showed that the exact equilibrium gain is
 
 `G_eq = g_phi^2 I_1 / K_X,`
 
@@ -177,7 +177,7 @@ This is the first explicit parent scaling law for the support/source gain. It sa
 
 ## 4. Exact wall-amplitude fail/succeed thresholds
 
-The Stage-44 phase diagram is
+The Stage-061 phase diagram is
 
 `G_eq <= G_fail`  -> fail,
 
@@ -195,7 +195,7 @@ So the first explicit parent wall family no longer speaks in terms of abstract g
 
 ## 5. Cancellation of `K_X` after inserting the operator geometry law
 
-Now insert the Stage-44 operator formulas
+Now insert the Stage-061 operator formulas
 
 `G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`
 
@@ -243,7 +243,7 @@ So the wall-amplitude thresholds become
 
 `V0_suff^2 = H_w T_X ell Pe_req / [ 4 pi a^2 L^2 I_f Delta_0 ].`
 
-Using the Stage-45 identity
+Using the Stage-062 identity
 
 `H_w = h'(rho_w) = m c_(s,w)^2 / rho_w,`
 
@@ -259,7 +259,7 @@ So the explicit wall family now ties the theorem gap to a very concrete question
 
 ---
 
-## 7. What Stage 48 changes
+## 7. What Stage 065 changes
 
 Before this stage, the theorem gap was still phrased in terms of a parent loading amplitude `g_phi` and an overlap/coherence structure.
 

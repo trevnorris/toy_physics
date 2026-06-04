@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 10 replaced the constant axial wall/brane branch by the first nonconstant N/N family and showed that the whole normalization problem depends on one profile angle `theta` through
+Stage 027 replaced the constant axial wall/brane branch by the first nonconstant N/N family and showed that the whole normalization problem depends on one profile angle `theta` through
 
 `kappa(theta) = kappa_0 cos(theta) + kappa_1 sin(theta)`.
 
@@ -19,7 +19,7 @@ Using the first two N/N wall modes,
 - the bare wall geometry is diagonal,
 - the support/mixed branch enters as a rank-1 attractive load proportional to the overlap vector `(kappa_0, kappa_1)`,
 - the profile angle satisfies one exact formula,
-- and for positive loading it is driven toward the **max-coupling angle**, not toward the Stage-10 blind-angle no-go branch.
+- and for positive loading it is driven toward the **max-coupling angle**, not toward the Stage-027 blind-angle no-go branch.
 
 So after this stage the theorem gap narrows again:
 
@@ -69,7 +69,7 @@ with
 
 `Delta K_ax = T_w pi^2 / L^2`.
 
-The D/N half-wave coupling vector from Stage 10 is
+The D/N half-wave coupling vector from Stage 027 is
 
 `v = (kappa_0, kappa_1)^T`,
 
@@ -79,7 +79,7 @@ with
 
 `kappa_1 = -4 / (3 pi)`.
 
-So the Stage-10 profile overlap is simply
+So the Stage-027 profile overlap is simply
 
 `kappa(theta) = v . q`.
 
@@ -148,9 +148,9 @@ For any positive loading `alpha > 0`, the denominator is positive and the numera
 
 This already proves an important selection statement:
 
-> the first loaded wall eigenprofile is driven away from the flat Stage-9 branch in the **negative** `u_1` direction.
+> the first loaded wall eigenprofile is driven away from the flat Stage-026 branch in the **negative** `u_1` direction.
 
-That is exactly the direction of the Stage-10 max-coupling angle, not the positive blind-angle branch.
+That is exactly the direction of the Stage-027 max-coupling angle, not the positive blind-angle branch.
 
 ---
 
@@ -164,7 +164,7 @@ For small loading,
 
 Because `kappa_0 kappa_1 < 0`, the first correction to the constant branch is a small negative angle.
 
-So the Stage-9 flat branch is perturbatively stable, but it is not the exact loaded eigenprofile once the support/mixed load is turned on.
+So the Stage-026 flat branch is perturbatively stable, but it is not the exact loaded eigenprofile once the support/mixed load is turned on.
 
 ### 4.2 Strong loading
 
@@ -188,7 +188,7 @@ with
 
 This is a major simplification.
 
-The Stage-10 max-coupling angle is **not** an arbitrary hand-picked member of the family. It is the exact strong-loading eigenvector of the first reduced loaded wall operator.
+The Stage-027 max-coupling angle is **not** an arbitrary hand-picked member of the family. It is the exact strong-loading eigenvector of the first reduced loaded wall operator.
 
 So the minimal loaded model already explains why the physically preferred profile should move toward the max-coupling branch rather than stay flat forever.
 
@@ -196,7 +196,7 @@ So the minimal loaded model already explains why the physically preferred profil
 
 ## 5. Why the blind-angle no-go branch is dynamically disfavored
 
-Stage 10 showed that the blind angle
+Stage 027 showed that the blind angle
 
 `tan(theta_blind) = 3 sqrt(2) / 2`
 
@@ -206,7 +206,7 @@ forces
 
 and therefore kills the outgoing quadrupole normalization bridge.
 
-Stage 11 sharpens that conclusion.
+Stage 028 sharpens that conclusion.
 
 Because the loaded wall angle satisfies
 
@@ -254,12 +254,12 @@ It must also place the physical branch on the stable or near-softened side of th
 
 ## 7. What this means for the normalization bridge
 
-The outgoing-normalization equation from Stage 10 depends on
+The outgoing-normalization equation from Stage 027 depends on
 
 - the geometry-side wall stiffness,
 - and the profile-dressed overlap `kappa(theta)`.
 
-Stage 11 shows that these are not independent in the minimal loaded model.
+Stage 028 shows that these are not independent in the minimal loaded model.
 They are linked because the same support/mixed loading that wants a larger `|kappa|` also rotates the wall toward `theta_max` and softens the lower wall eigenvalue.
 
 So the next theorem question is no longer
@@ -274,13 +274,13 @@ That is a much more physical and much more falsifiable question.
 
 ---
 
-## 8. Best current summary after Stage 11
+## 8. Best current summary after Stage 028
 
 The first reduced loaded wall eigenproblem already resolves a major ambiguity.
 
 It shows that:
 
-- the Stage-10 profile angle is not a free nuisance parameter,
+- the Stage-027 profile angle is not a free nuisance parameter,
 - the support/mixed load selects a definite direction in the N/N wall basis,
 - the selected profile rotates away from the constant branch toward the max-coupling branch,
 - the blind-angle no-go branch is dynamically disfavored rather than merely algebraically bad,
@@ -288,7 +288,7 @@ It shows that:
 
 So the next honest derivation step is now very sharply defined:
 
-> derive the actual effective loading strength `alpha` and the associated loaded wall eigenmode from the coupled wall/BdG/Maxwell/mixed operator, then insert that eigenpair into the Stage-10 normalization equation.
+> derive the actual effective loading strength `alpha` and the associated loaded wall eigenmode from the coupled wall/BdG/Maxwell/mixed operator, then insert that eigenpair into the Stage-027 normalization equation.
 
 At this point the roadmap is no longer “invent a PDE.”
 It is starting to look like a specific spectral problem.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 24 closed the rank-2 *existence* problem for the selected wall branch: with mixed loading `z` and support loading `y`, the exact support load needed to reach a chosen softening depth is known.
+Stage 041 closed the rank-2 *existence* problem for the selected wall branch: with mixed loading `z` and support loading `y`, the exact support load needed to reach a chosen softening depth is known.
 
 But the 2.5PN bridge does not depend only on branch existence. It depends on the **selected-mode normalization product** that combines
 
@@ -22,7 +22,7 @@ The main result is that the selected-mode geometry remains closed-form, but the 
 - the support direction `y`,
 - the source direction `s`.
 
-That gives an exact generalized normalization function `F_(q,r,t)(xi,delta;m)`. The old Stage-23 law is recovered as the special case `r=q`.
+That gives an exact generalized normalization function `F_(q,r,t)(xi,delta;m)`. The old Stage-040 law is recovered as the special case `r=q`.
 
 So the rank-2 bottleneck is no longer conceptual. It is now a sharply defined source/support/outgoing alignment problem.
 
@@ -30,7 +30,7 @@ So the rank-2 bottleneck is no longer conceptual. It is now a sharply defined so
 
 ## 1. Exact selected-mode geometry with two loading directions
 
-Carry forward the Stage-24 wall operator
+Carry forward the Stage-041 wall operator
 
 `K_loaded / A_0 = diag(1,1+delta) - m (1,q)^T(1,q) - n (1,r)^T(1,r),`
 
@@ -38,7 +38,7 @@ with the lower selected eigenvalue parameterized by
 
 `lambda_- = A_0 (1 - xi),`
 
-and with the support loading fixed to the exact Stage-24 value
+and with the support loading fixed to the exact Stage-041 value
 
 `n = n_req(xi,delta;m,q,r).`
 
@@ -49,7 +49,7 @@ Then the lower selected eigenvector ratio is still exact:
 
 So the two-direction selected branch is still described by one scalar deformation variable `xi`, but the eigenvector now depends explicitly on the baseline mixed loading `m` whenever the support direction differs from the mixed direction.
 
-That dependence was absent in the Stage-23 one-direction problem.
+That dependence was absent in the Stage-040 one-direction problem.
 
 ---
 
@@ -87,13 +87,13 @@ The selected-branch normalization product is therefore
 `  [ delta + (1 + r t) xi - m(q-r)(q-t) ]^2`
 `  / [ (1 - xi) D_(q,r)(xi,delta;m)^2 ].`
 
-This is the exact rank-2 generalization of the Stage-23 selected-mode normalization law.
+This is the exact rank-2 generalization of the Stage-040 selected-mode normalization law.
 
 It is the object that the outgoing quadrupole bridge now depends on whenever the support direction and the mixed direction differ.
 
 ---
 
-## 4. Exact collapse to Stage 23 when support tracks the mixed vector
+## 4. Exact collapse to Stage 040 when support tracks the mixed vector
 
 If the support tracks the mixed direction,
 
@@ -111,7 +111,7 @@ and the exact rank-2 normalization function collapses to
 
 So the second sharp theorem is:
 
-> **If the support/BdG loading follows the deformed mixed direction, the entire rank-2 normalization law collapses exactly to the Stage-23 two-vector function.**
+> **If the support/BdG loading follows the deformed mixed direction, the entire rank-2 normalization law collapses exactly to the Stage-040 two-vector function.**
 
 In that case the rank-2 completion adds no new normalization geometry.
 
@@ -132,7 +132,7 @@ so that
 
 `t^2 = lambda_0 = 2/9.`
 
-From Stage 22 the mixed direction obeys
+From Stage 039 the mixed direction obeys
 
 `q = t R_U,`
 
@@ -153,7 +153,7 @@ with
 `= [ delta + xi - m lambda_0 R_U (R_U - 1) ]^2`
 `  + lambda_0 [ xi + m (R_U - 1) ]^2.`
 
-This is the first exact selected-mode normalization law beyond Stage 23 that depends explicitly on the mixed baseline loading `m`.
+This is the first exact selected-mode normalization law beyond Stage 040 that depends explicitly on the mixed baseline loading `m`.
 
 That dependence is the clean reduced signature of the source/support/outgoing mismatch.
 
@@ -171,7 +171,7 @@ where
 `= [ delta + (1 + lambda_0) xi ]^4`
 `  / [ (1 - xi) ( (delta + xi)^2 + lambda_0 xi^2 )^2 ].`
 
-So the source-tied rank-2 branch is a genuine deformation of Stage 23, not a different disconnected object.
+So the source-tied rank-2 branch is a genuine deformation of Stage 040, not a different disconnected object.
 
 Write
 
@@ -198,7 +198,7 @@ with
 `    + 2 m delta ( delta + (1 + lambda_0) xi ) ]`
 `  / [ ( delta + (1 + lambda_0) xi ) ( (delta + xi)^2 + lambda_0 xi^2 ) ].`
 
-On the constructive split-`U` branch of Stage 22, one has `R_U < 1`, i.e. `eps < 0`, so:
+On the constructive split-`U` branch of Stage 039, one has `R_U < 1`, i.e. `eps < 0`, so:
 
 - the source-tied support requirement is **raised** above the simple flat subtraction `G_flat - m`,
 - the selected-mode normalization function is **lowered** below the flat-`U` value.
@@ -207,25 +207,25 @@ So the source-tied hypothesis makes the selected-branch normalization test stric
 
 ---
 
-## 7. Best current theorem statement after Stage 25
+## 7. Best current theorem statement after Stage 042
 
 The rank-2 support bottleneck is now completely explicit.
 
 ### If support tracks the mixed vector
 
-- Stage 24 gives `n_req = G_q - m`,
-- Stage 25 gives exact collapse back to the Stage-23 normalization law.
+- Stage 041 gives `n_req = G_q - m`,
+- Stage 042 gives exact collapse back to the Stage-040 normalization law.
 
 So the old one-parameter deformation survives intact.
 
 ### If support remains tied to the original source direction
 
-- Stage 24 gives the new exact source-tied support-feasibility formula,
-- Stage 25 gives the new exact source-tied normalization function `F_src`.
+- Stage 041 gives the new exact source-tied support-feasibility formula,
+- Stage 042 gives the new exact source-tied normalization function `F_src`.
 
 So the selected branch becomes a true two-layer deformation:
 
-1. Stage 22 deforms the mixed direction through `R_U`,
+1. Stage 039 deforms the mixed direction through `R_U`,
 2. Stages 24–25 decide whether the support kernel follows that deformation or resists it.
 
 The open PDE-side theorem question is therefore no longer diffuse:

@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Stage 24 and Stage 25 reduced the next bottleneck to one sharp question:
+Stage 041 and Stage 042 reduced the next bottleneck to one sharp question:
 
 > does the physical support/BdG kernel follow the deformed mixed direction `z`, or does it stay tied to the original source direction `v`?
 
-The minimal Stage-20 continuum operator implicitly answered that only in the most degenerate case: because the support mode `phi` coupled directly to the wall through the same overlap vector `v`, the support direction was exactly source-tied.
+The minimal Stage-037 continuum operator implicitly answered that only in the most degenerate case: because the support mode `phi` coupled directly to the wall through the same overlap vector `v`, the support direction was exactly source-tied.
 
 But that was still not the first genuinely nontrivial support operator.
 
@@ -21,7 +21,7 @@ The main result is:
 5. the tracking closure is an exact codimension-one interference-match condition,
 6. and the generic first extended continuum kernel lands on an **intermediate support direction**, neither source-tied nor tracking.
 
-So the Stage-24 binary fork is now resolved more sharply:
+So the Stage-041 binary fork is now resolved more sharply:
 
 - the **minimal** continuum kernel is source-tied,
 - the **first extended** continuum kernel is generically intermediate,
@@ -31,7 +31,7 @@ So the Stage-24 binary fork is now resolved more sharply:
 
 ## 1. First symmetry-allowed support extension of the continuum kernel
 
-Keep the Stage-22 split-`U` continuum operator, but add the first local bilinear support coupling
+Keep the Stage-039 split-`U` continuum operator, but add the first local bilinear support coupling
 
 `L_(Uphi) = + c_(Uphi) int_0^L U phi ds.`
 
@@ -102,7 +102,7 @@ with the exact support-direction factor
 
 `R_phi := [ 1 + sigma_0/(1+delta_U) ] / (1 + sigma_0).`
 
-This is the exact support analogue of the mixed-direction factor from Stage 22,
+This is the exact support analogue of the mixed-direction factor from Stage 039,
 
 `R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`
 
@@ -128,7 +128,7 @@ So the exact theorem is:
 
 > **The support/BdG loading remains source-tied only in the minimal kernel limit `sigma_0 = 0` (or in the unsplit limit `delta_U = 0`).**
 
-That identifies the precise structural role of the minimal Stage-20 operator: it was not just simple; it was exactly the source-tied special case.
+That identifies the precise structural role of the minimal Stage-037 operator: it was not just simple; it was exactly the source-tied special case.
 
 ---
 
@@ -170,13 +170,13 @@ with
 
 `Z_phi := c_(etaphi)^2 / ( K_eta^(eff) K_phi^(eff) ).`
 
-So the support sector is now no longer just a direction question. Its actual baseline strength is an exact continuum output, parallel to the mixed baseline `M_mix` of Stage 22.
+So the support sector is now no longer just a direction question. Its actual baseline strength is an exact continuum output, parallel to the mixed baseline `M_mix` of Stage 039.
 
 ---
 
 ## 5. Exact tracking theorem relative to the mixed vector
 
-Stage 22 already gave the mixed loading vector
+Stage 039 already gave the mixed loading vector
 
 `z_0 = kappa_0 g_W (1 + rho_0),`
 
@@ -221,11 +221,11 @@ This yields the clean continuum interpretation:
 - `sigma_0 = rho_0`  ->  exact tracking closure,
 - generic `sigma_0`  ->  intermediate support direction.
 
-So the physical kernel does **not** generically choose between the two Stage-24 extremes. It generically interpolates between them.
+So the physical kernel does **not** generically choose between the two Stage-041 extremes. It generically interpolates between them.
 
 ---
 
-## 7. Best current theorem statement after Stage 26
+## 7. Best current theorem statement after Stage 043
 
 The support-direction bottleneck is no longer open in principle.
 
@@ -248,4 +248,4 @@ The support-direction bottleneck is no longer open in principle.
 So the next theorem step is no longer “guess the support direction.”
 It is:
 
-> insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-24/25 selected-branch formulas and determine the physical selected branch.
+> insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-041/042 selected-branch formulas and determine the physical selected branch.

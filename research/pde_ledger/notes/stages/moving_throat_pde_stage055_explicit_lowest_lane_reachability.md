@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 36 and 37 isolated the two exact lowest-lane resources:
+Stages 053 and 054 isolated the two exact lowest-lane resources:
 
 - overlap boost, with ceiling `A_I <= pi^2/4`,
 - Robin-compliance softening, with ceiling `A_K <= 4/(4-x)`.
@@ -13,7 +13,7 @@ The next honest question is therefore the combined one:
 
 This stage answers that.
 
-Using the explicit exponential source asymmetry from Stage 36 and the explicit Robin-compliance softening from Stage 37, the lowest support ratio is
+Using the explicit exponential source asymmetry from Stage 053 and the explicit Robin-compliance softening from Stage 054, the lowest support ratio is
 
 `zeta_0^(exp+R)(alpha,eta)`
 `= Omega_exp(alpha)^2 / [ 1 - x/4 + x y(eta)^2 / pi^2 ],`
@@ -24,7 +24,7 @@ The main result is that this family has the exact closure range
 
 `1 <= zeta_0^(exp+R) <= pi^2 / (4 - x),`
 
-so the explicit family reaches a Stage-35 demand `zeta_req` **iff**
+so the explicit family reaches a Stage-052 demand `zeta_req` **iff**
 
 `zeta_req <= pi^2 / (4 - x)`
 
@@ -40,7 +40,7 @@ Carry forward the explicit constructive pieces.
 
 ### Overlap branch
 
-From Stage 36,
+From Stage 053,
 
 `Omega_exp(alpha)`
 `= pi alpha (2 alpha exp(alpha) + pi)`
@@ -54,7 +54,7 @@ with
 
 ### Softening branch
 
-From Stage 37,
+From Stage 054,
 
 `A_K(eta)`
 `= 1 / [ 1 - x/4 + x y(eta)^2 / pi^2 ],`
@@ -107,9 +107,9 @@ For finite `alpha` and finite positive `eta`, the inequality is strict at the to
 
 ---
 
-## 3. Exact reachability criterion for the Stage-35 threshold
+## 3. Exact reachability criterion for the Stage-052 threshold
 
-Stage 35 demands
+Stage 052 demands
 
 `zeta_0^(phys) >= zeta_req.`
 
@@ -131,7 +131,7 @@ If
 
 `zeta_req <= pi^2/4,`
 
-then Stage 36 already shows that overlap enhancement alone can meet the target, so no compliance floor is required.
+then Stage 053 already shows that overlap enhancement alone can meet the target, so no compliance floor is required.
 
 ### Regime B — overlap ceiling exceeded but explicit combined family still works
 
@@ -171,7 +171,7 @@ That is the cleanest mechanical interpretation of the combined theorem.
 
 ---
 
-## 5. Best current theorem statement after Stage 38
+## 5. Best current theorem statement after Stage 055
 
 ### What is exact now
 
@@ -185,7 +185,7 @@ That is the cleanest mechanical interpretation of the combined theorem.
 
   `1 <= zeta_0^(exp+R) <= pi^2/(4-x)`,
 
-- and it reaches the Stage-35 threshold exactly when
+- and it reaches the Stage-052 threshold exactly when
 
   `zeta_req <= pi^2/(4-x)`
 
@@ -199,4 +199,4 @@ For the first explicit constructive moving-throat family, the non-twin lowest su
 
 So the remaining gap is now extremely narrow:
 
-> does the completed moving-throat PDE generate a physical lowest-lane deformation whose effective `x` and source-shape asymmetry place it inside the exact Stage-38 reachability window, or does the real branch require an even stronger non-twin mechanism than exponential overlap bias plus Robin-compliance softening?
+> does the completed moving-throat PDE generate a physical lowest-lane deformation whose effective `x` and source-shape asymmetry place it inside the exact Stage-055 reachability window, or does the real branch require an even stronger non-twin mechanism than exponential overlap bias plus Robin-compliance softening?

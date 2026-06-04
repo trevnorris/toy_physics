@@ -3,7 +3,7 @@
 
 ## Purpose
 
-Stage 50 verified that the explicit independent sech–Gaussian profile family has an exact self-dual stationary point at
+Stage 067 verified that the explicit independent sech–Gaussian profile family has an exact self-dual stationary point at
 
 `w_g / w_f = sqrt(pi),`
 
@@ -19,9 +19,9 @@ The next question is how that benchmark changes the actual support/source surviv
 
 This stage gives the exact answer:
 
-- on the Stage-47 equilibrium-matched branch, the ideal coherence remains `C^2 = 1`,
+- on the Stage-064 equilibrium-matched branch, the ideal coherence remains `C^2 = 1`,
 - on the independent sech–Gaussian benchmark family, the best possible coherence is `C_res^2`,
-- so the explicit independent-profile family modifies the Stage-49 thresholds only by the tiny factor `P_res`.
+- so the explicit independent-profile family modifies the Stage-066 thresholds only by the tiny factor `P_res`.
 
 That means the resonance benchmark is useful, but it does **not** rewrite the theorem structure. It only sharpens it.
 
@@ -29,11 +29,11 @@ That means the resonance benchmark is useful, but it does **not** rewrite the th
 
 ## 1. Resonance-corrected gain
 
-The general parent gain from Stages 45–46 has the form
+The general parent gain from Stages 062–063 has the form
 
 `G_micro = [ rho_* g_phi^2 N_(phi phi) / (m c_(s,*)^2 K_X) ] C_(sigma phi)^2.`
 
-On the Stage-47 matched equilibrium branch,
+On the Stage-064 matched equilibrium branch,
 
 `C_(sigma phi)^2 = 1,`
 
@@ -41,7 +41,7 @@ so the matched-branch gain is
 
 `G_match = rho_* g_phi^2 N_(phi phi) / (m c_(s,*)^2 K_X).`
 
-Stage 49 repackaged this on the first explicit thin-wall branch into the dimensionless wall figure of merit
+Stage 066 repackaged this on the first explicit thin-wall branch into the dimensionless wall figure of merit
 
 `W_wall = kappa G_match`
 `       = 4 pi a^2 L^2 J_1 V0^2 / (T_X ell).`
@@ -64,7 +64,7 @@ So the memo’s profile family simply inserts one multiplicative coherence facto
 
 ## 2. Exact resonance-family thresholds
 
-Stage 49 gave the universal matched-branch window
+Stage 066 gave the universal matched-branch window
 
 `W_wall <= Pe_req / Delta_inf`  -> matched-branch fail,
 
@@ -144,7 +144,7 @@ That is the sharpest practical consequence of the memo.
 
 ---
 
-## 5. What Stage 51 changes
+## 5. What Stage 068 changes
 
 Before this stage, the independent-profile benchmark from the memo could have been interpreted as potentially introducing a qualitatively new source/support theorem.
 
@@ -156,7 +156,7 @@ The memo’s explicit sech–Gaussian resonance family:
 - provides a strong benchmark,
 - and nearly saturates the matched branch,
 
-but it changes the Stage-49 theorem window only by the small factor
+but it changes the Stage-066 theorem window only by the small factor
 
 `P_res = 1.005612487760576...`
 

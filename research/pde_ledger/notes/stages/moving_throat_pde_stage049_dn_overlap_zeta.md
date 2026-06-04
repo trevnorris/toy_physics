@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 31 reduced the whole support-compensation problem to one exact inequality:
+Stage 048 reduced the whole support-compensation problem to one exact inequality:
 
 `zeta_phys >= zeta_req`.
 
@@ -73,7 +73,7 @@ with the exact overlap integrals
 
 `I_n := int_0^L ds sigma(s) chi_n(s).`
 
-So the Stage-30 definition of the coherent support ratio,
+So the Stage-047 definition of the coherent support ratio,
 
 `zeta = lambda_phi^2 K_W^(eff) / [ lambda_W^2 K_phi^(eff) ],`
 
@@ -162,11 +162,11 @@ This is the first explicit microscopic reason the lowest coherent twin lane shou
 
 ## 4. Direct comparison with the Stage-048 support threshold
 
-Stage 31 says the support lane succeeds exactly when
+Stage 048 says the support lane succeeds exactly when
 
 `zeta_phys >= zeta_req`.
 
-Stage 32 now turns that into an explicit microscopic inequality.
+Stage 049 now turns that into an explicit microscopic inequality.
 
 ### General coherent D/N branch
 
@@ -191,7 +191,7 @@ For `n>=1`, this is equivalent to
 `x <= x_max(n; zeta_req)`
 `   := [ 1 / ( (2n+1)^2 zeta_req ) - 1 ] / [ n(n+1) ].`
 
-So the comparison with Stage 31 is now exact.
+So the comparison with Stage 048 is now exact.
 
 If `x_max < 0`, that harmonic is impossible even before stiffness details are examined. Equivalently,
 
@@ -201,7 +201,7 @@ already rules out the `n`th D/N support harmonic on the first coherent local bra
 
 ---
 
-## 5. Best current theorem statement after Stage 32
+## 5. Best current theorem statement after Stage 049
 
 The support-threshold problem is no longer phenomenological at the level of the first explicit finite-throat kernel.
 

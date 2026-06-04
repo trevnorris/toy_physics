@@ -7,13 +7,13 @@ This stage closes the present reduced support/source program.
 
 The three crucial ingredients are now all in hand:
 
-1. **Stage 49:** the universal thin-wall matched branch is controlled by one dimensionless wall figure of merit,
+1. **Stage 066:** the universal thin-wall matched branch is controlled by one dimensionless wall figure of merit,
    `W_wall`,
    with exact fail/succeed window
    `Pe_req / Delta_inf` to `Pe_req / Delta_0`.
-2. **Stage 47:** the parent equilibrium-aligned source/support branch reaches the ideal thin-layer limit
+2. **Stage 064:** the parent equilibrium-aligned source/support branch reaches the ideal thin-layer limit
    `C_(sigma phi)^2 = 1`.
-3. **Stages 50–51:** the first explicit independent-profile benchmark family has an exact self-dual resonance at
+3. **Stages 067–068:** the first explicit independent-profile benchmark family has an exact self-dual resonance at
    `w_g / w_f = sqrt(pi)`,
    but even there only reaches
    `C_res^2 = 0.994418836451529...`,
@@ -26,7 +26,7 @@ That is enough to give the finish-line verdict for the reduced theorem program.
 
 ## 1. Universal reduced theorem envelope
 
-The universal matched-branch theorem from Stages 44 and 49 is still the main result:
+The universal matched-branch theorem from Stages 061 and 066 is still the main result:
 
 - if `W_wall <= Pe_req / Delta_inf`, the branch fails;
 - if `W_wall >= Pe_req / Delta_0`, the branch succeeds;

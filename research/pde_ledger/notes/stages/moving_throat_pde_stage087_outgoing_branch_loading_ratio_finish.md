@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 65–69 compressed the full reduced moving-throat PDE to one surviving quadrupole residual, then to one explicit product window, and finally to one pure loading-ratio criterion.
+Stages 82–86 compressed the full reduced moving-throat PDE to one surviving quadrupole residual, then to one explicit product window, and finally to one pure loading-ratio criterion.
 
 This stage states the cleanest final verdict of that reduction chain.
 
@@ -24,7 +24,7 @@ Once the selected outgoing quadrupole branch is required to satisfy
 
 `mhat_-^2 Gamma_{5,-} = 2 G / (5 c^5),`
 
-Stages 68–69 show that the explicit Family-1 support theorem no longer depends separately on
+Stages 85–86 show that the explicit Family-1 support theorem no longer depends separately on
 
 - the selected conservative overlap `s_-`,
 - the selected conservative stiffness `lambda_-`,

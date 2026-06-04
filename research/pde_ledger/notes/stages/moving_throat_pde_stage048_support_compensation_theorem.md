@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 30 compressed the coherent local D/N kernel to one exact support-enhancement factor,
+Stage 047 compressed the coherent local D/N kernel to one exact support-enhancement factor,
 
 `M_tr = M_mix S(zeta;eps),`
 
@@ -68,7 +68,7 @@ So every stable selected-branch point lies strictly below the critical load.
 
 ## 2. Exact support-enhancement factor and its inverse
 
-From Stage 30,
+From Stage 047,
 
 `M_tr = M_mix S(zeta;eps),`
 
@@ -221,7 +221,7 @@ This is the exact reduced statement behind the compensation theorem:
 
 ---
 
-## 6. Best current theorem statement after Stage 31
+## 6. Best current theorem statement after Stage 048
 
 The coherent local D/N branch now has an exact reduced support-feasibility theorem.
 

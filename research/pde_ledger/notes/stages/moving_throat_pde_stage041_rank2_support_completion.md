@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 23 showed that once the first axial structure of the internal `U` sector is turned on, the mixed loading vector `z` is no longer generically collinear with the source/support direction `v`.
+Stage 040 showed that once the first axial structure of the internal `U` sector is turned on, the mixed loading vector `z` is no longer generically collinear with the source/support direction `v`.
 
 That leaves one honest reduced-theorem bottleneck:
 
@@ -17,7 +17,7 @@ More concretely:
 1. the selected lower branch with mixed loading `z` and support loading `y` is still solvable in closed form,
 2. the exact required support loading is a rational function `n_req(xi,delta;m,q,r)`,
 3. increasing the mixed baseline always lowers the support needed to hit a given selected branch,
-4. if the support tracks the deformed mixed direction, the whole rank-2 problem collapses back to Stage 23,
+4. if the support tracks the deformed mixed direction, the whole rank-2 problem collapses back to Stage 040,
 5. if the support stays tied to the original source direction, the branch geometry becomes genuinely new, with an exact support-feasibility window.
 
 So the flat-`U` simplification did not just hide a numerical correction. It hid the first place where the support direction itself becomes a real theorem variable.
@@ -89,7 +89,7 @@ The denominator shows the first genuinely new effect of noncollinearity:
 
 `delta + (1 + r^2) xi - m (q - r)^2.`
 
-If the two directions differ, the mixed baseline modifies the *support* denominator directly. That effect was absent in the collinear Stage-18/19/23 branch.
+If the two directions differ, the mixed baseline modifies the *support* denominator directly. That effect was absent in the collinear Stage-035/036/040 branch.
 
 A second exact theorem follows immediately by differentiation:
 
@@ -119,7 +119,7 @@ Then the exact support theorem collapses immediately to
 `n_req = xi (delta + xi) / [ delta + (1 + q^2) xi ] - m`
 `      = G_q(xi,delta) - m.`
 
-This is exactly the old Stage-19/23 geometry with a split between
+This is exactly the old Stage-036/040 geometry with a split between
 
 - mixed baseline loading `m`,
 - and additional support loading `n`.
@@ -128,7 +128,7 @@ So the first sharp theorem is:
 
 > **If the physical support/BdG loading follows the deformed mixed direction, the rank-2 completion introduces no new selected-branch geometry.**
 
-The whole problem collapses back to the Stage-23 one-parameter deformation.
+The whole problem collapses back to the Stage-040 one-parameter deformation.
 
 That makes `y || z` a very strong closure hypothesis.
 
@@ -150,7 +150,7 @@ so that
 
 `t^2 = lambda_0 = 2/9.`
 
-From Stage 22, the mixed vector obeys
+From Stage 039, the mixed vector obeys
 
 `q = t R_U,`
 
@@ -164,7 +164,7 @@ The exact required support loading becomes
 `= [ xi(delta + xi) - m( delta + (1 + lambda_0 R_U^2) xi ) ]`
 `  / [ delta + (1 + lambda_0) xi - m lambda_0 (R_U - 1)^2 ].`
 
-This is the first genuinely new branch formula beyond Stage 23.
+This is the first genuinely new branch formula beyond Stage 040.
 
 Two exact support-feasibility conditions follow.
 
@@ -188,7 +188,7 @@ Assuming the regularity denominator is positive, nonnegative support loading req
 
 So the source-tied rank-2 branch has a sharp mixed-loading ceiling before the support channel can even remain physical.
 
-That ceiling disappears in the collinear flat-`U` limit `R_U = 1`, where the denominator correction vanishes and the branch collapses back to Stage 19.
+That ceiling disappears in the collinear flat-`U` limit `R_U = 1`, where the denominator correction vanishes and the branch collapses back to Stage 036.
 
 ---
 
@@ -218,18 +218,18 @@ with the exact denominator correction
 
 `- m lambda_0 (R_U - 1)^2`.
 
-This is the first place where the noncollinearity of Stage 22 becomes a true structural effect instead of just a deformation of Stage-23 constants.
+This is the first place where the noncollinearity of Stage 039 becomes a true structural effect instead of just a deformation of Stage-040 constants.
 
 So the exact theorem picture is now:
 
-- **tracking support** preserves the Stage-23 geometry,
+- **tracking support** preserves the Stage-040 geometry,
 - **source-tied support** creates a new rank-2 support-feasibility problem.
 
 That is the sharpest reduced statement yet of the support-direction bottleneck.
 
 ---
 
-## 6. Best current theorem statement after Stage 24
+## 6. Best current theorem statement after Stage 041
 
 The rank-2 support completion is no longer vague.
 
@@ -238,7 +238,7 @@ The rank-2 support completion is no longer vague.
 - the selected-branch determinant with two loading directions,
 - the exact required support loading `n_req`,
 - the exact monotonicity theorem `d n_req / d m < 0`,
-- the exact collapse to Stage 23 when `y || z`,
+- the exact collapse to Stage 040 when `y || z`,
 - and the exact source-tied branch formula when `y || v`.
 
 ### What remains open
@@ -247,7 +247,7 @@ The unresolved PDE-side question is now very specific:
 
 > does the physical support/BdG kernel align with the deformed mixed vector `z`, or does it remain tied to the original source direction `v`?
 
-If it aligns with `z`, the Stage-23 one-parameter deformation is already the whole selected-branch geometry.
+If it aligns with `z`, the Stage-040 one-parameter deformation is already the whole selected-branch geometry.
 If it stays tied to `v`, the branch acquires a new exact rank-2 support-feasibility window.
 
 That is the next theorem gate the completed moving-throat operator has to decide.

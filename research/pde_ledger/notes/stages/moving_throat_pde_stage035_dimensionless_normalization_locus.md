@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 17 rewrote the selected-branch normalization problem as one scalar equation in the softening depth `x`.
+Stage 034 rewrote the selected-branch normalization problem as one scalar equation in the softening depth `x`.
 That was already a real simplification, but the formulas still carried the dimensional parameters `(A, DeltaK_ax, beta_0)` in a way that partly obscured the geometry of the branch.
 
 The next step is therefore to pass to the exact D/N finite-throat constants and reduce the entire problem to a **dimensionless shape function**.
@@ -16,7 +16,7 @@ This is worthwhile because it gives the strongest selected-branch result so far:
 4. so the normalization locus is unique whenever the onset condition is satisfied,
 5. and the exact required total loading and required support loading then follow immediately.
 
-So Stage 18 turns the microscopic normalization problem into a one-dimensional universal branch-geometry problem plus a final support-coupling feasibility check.
+So Stage 035 turns the microscopic normalization problem into a one-dimensional universal branch-geometry problem plus a final support-coupling feasibility check.
 
 ---
 
@@ -48,7 +48,7 @@ while `delta > 0` is the axial anisotropy of the bare wall block in units of the
 
 ## 2. Exact dimensionless shape function
 
-Using the Stage-17 softening-depth normal form, the exact normalization product may be written as
+Using the Stage-034 softening-depth normal form, the exact normalization product may be written as
 
 `N_-(x) = N_-(0) F(xi,delta)`,
 
@@ -103,19 +103,19 @@ as `xi -> 1^-`, with
 
 `C(delta) = (9 delta + 11)^4 / [ 81 (9 delta^2 + 18 delta + 11)^2 ]`.
 
-This is a theorem-level improvement over Stage 16:
+This is a theorem-level improvement over Stage 033:
 
 - if `R_target < 1`, the target is impossible on the stable branch,
 - if `R_target = 1`, the only hit is the unloaded onset point `xi = 0`,
 - if `R_target > 1`, there is one and only one stable selected-branch softening depth `xi_req` that hits the target.
 
-So the Stage-16 onset inequality is now upgraded to a full uniqueness theorem for the selected normalization locus.
+So the Stage-033 onset inequality is now upgraded to a full uniqueness theorem for the selected normalization locus.
 
 ---
 
 ## 4. Exact required total loading
 
-The Stage-17 total loading law becomes, in D/N dimensionless form,
+The Stage-034 total loading law becomes, in D/N dimensionless form,
 
 `alpha_req(xi,delta)`
 `= 9 pi^2 A xi (xi + delta) / [ 8 (9 delta + 11 xi) ]`.
@@ -124,7 +124,7 @@ As `xi -> 1^-`, this tends to the exact stable-branch softening threshold
 
 `alpha_crit = 9 pi^2 A (1 + delta) / [ 8 (11 + 9 delta) ]`,
 
-which is the same refined threshold already found in Stage 16.
+which is the same refined threshold already found in Stage 033.
 
 So once the unique `xi_req` solving `F(xi,delta)=R_target` is known, the unique required total directional loading follows immediately from the formula above.
 
@@ -194,7 +194,7 @@ So large normalization demand pushes the selected branch into the thin neighborh
 
 ---
 
-## 7. Best current theorem gate after Stage 18
+## 7. Best current theorem gate after Stage 035
 
 The selected-branch quadrupole normalization bottleneck has now been reduced to the smallest exact reduced form reached so far.
 

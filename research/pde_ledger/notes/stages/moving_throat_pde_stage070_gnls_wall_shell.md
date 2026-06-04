@@ -17,7 +17,7 @@ The main result is that, once the support field is taken to be a linearized dens
 - the axial support tension is fixed by the GNLS gradient term,
 - the axial support stiffness is fixed by compressibility plus transverse curvature,
 - the reduced wall figure of merit simplifies enormously,
-- and on the matched thin-wall branch it is exactly the same object as the Stage-41/42 fixed-point coupling.
+- and on the matched thin-wall branch it is exactly the same object as the Stage-58/59 fixed-point coupling.
 
 So the explicit moving-throat branch is now much more concrete.
 
@@ -66,7 +66,7 @@ So the support tension and stiffness are no longer abstract branch data; they ar
 
 ## 2. Thin-shell wall profile
 
-Take the explicit wall family already introduced in Stage 48,
+Take the explicit wall family already introduced in Stage 65,
 
 `V_conf(r;a) = V0 f((r-a)/ell),`
 
@@ -115,7 +115,7 @@ This is the first explicit parent formula for the geometry/support parameter `ka
 
 ## 3. Wall overlap moment and exact collapse of the wall figure of merit
 
-Stage 48 already showed that, for an almost constant-compressibility active layer,
+Stage 65 already showed that, for an almost constant-compressibility active layer,
 
 `J_1 = I_f / H_w.`
 
@@ -135,11 +135,11 @@ It depends only on the wall-layer density, sound speed, amplitude, axial length,
 
 ---
 
-## 4. Identification with the Stage-41/42 fixed-point coupling
+## 4. Identification with the Stage-58/59 fixed-point coupling
 
-Stage 41 introduced the coupled support/source fixed-point strength `Xi`.
+Stage 58 introduced the coupled support/source fixed-point strength `Xi`.
 
-On the matched thin-wall branch, the exact Stage-47 gain is
+On the matched thin-wall branch, the exact Stage-64 gain is
 
 `G_eq = g_phi^2 I_1 / K_X,`
 
@@ -163,14 +163,14 @@ exactly on the explicit matched thin-wall branch.
 
 So the explicit branch solve has now tied together two quantities that had previously appeared in different parts of the program:
 
-- the Stage-49 wall figure of merit,
-- and the Stage-41/42 support/source fixed-point coupling.
+- the Stage-66 wall figure of merit,
+- and the Stage-58/59 support/source fixed-point coupling.
 
 They are the same object on this branch.
 
 ---
 
-## 5. What Stage 53 changes
+## 5. What Stage 070 changes
 
 Before this stage, the explicit branch still looked as if it depended on a large set of independent support quantities.
 

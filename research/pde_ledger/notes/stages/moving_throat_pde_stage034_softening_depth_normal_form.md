@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 16 reduced the selected-branch 2.5PN normalization problem to one explicit microscopic equation,
+Stage 033 reduced the selected-branch 2.5PN normalization problem to one explicit microscopic equation,
 
 `N_-(alpha_0) = N_Q^(target)`,
 
@@ -29,13 +29,13 @@ The main outputs are:
 4. a manifestly monotone loading map `d alpha_0 / dx > 0`,
 5. and an exact required support-loading formula `g_B^2/varpi^2` once `x` is known.
 
-So Stage 17 replaces the spectral unknowns `(lambda_-, e_-)` by a single scalar deformation coordinate `x`.
+So Stage 034 replaces the spectral unknowns `(lambda_-, e_-)` by a single scalar deformation coordinate `x`.
 
 ---
 
 ## 1. Exact softening-depth variable
 
-Recall the selected lower wall mode of the Stage-12/16 rank-1 reduced operator,
+Recall the selected lower wall mode of the Stage-029/033 rank-1 reduced operator,
 
 `D_wall = diag(A, A + DeltaK_ax) - alpha_0 v v^T`,
 
@@ -105,7 +105,7 @@ No explicit eigenvector is needed anymore.
 
 ## 4. Exact selected-branch normalization product in softening-depth form
 
-Stage 15/16 gave the invariant selected-branch normalization quantity as
+Stage 032/033 gave the invariant selected-branch normalization quantity as
 
 `N_-(alpha_0) = beta_0 s_-^2 / ( kappa_0^2 lambda_- )`.
 
@@ -142,13 +142,13 @@ This means:
 - every stable selected-branch loading corresponds to exactly one softening depth,
 - and vice versa.
 
-This is useful because it turns the Stage-14 monotonicity statement into a direct scalar branch parameterization.
+This is useful because it turns the Stage-031 monotonicity statement into a direct scalar branch parameterization.
 
 ---
 
 ## 6. Exact required support loading once the softening depth is known
 
-Stage 16 already split the total directional loading into
+Stage 033 already split the total directional loading into
 
 `alpha_0 = g_B^2 / varpi^2 + alpha_mix`,
 
@@ -174,9 +174,9 @@ So the support/BdG loading needed to hit the universal 2.5PN target is now an ex
 
 ---
 
-## 7. Best current theorem gate after Stage 17
+## 7. Best current theorem gate after Stage 034
 
-The selected-branch theorem bottleneck is now even narrower than at Stage 16.
+The selected-branch theorem bottleneck is now even narrower than at Stage 033.
 Instead of solving for a loaded eigenvector and its overlap, the reduced program only needs to determine the physical softening depth `x` of the selected lower wall mode.
 Once that is known,
 

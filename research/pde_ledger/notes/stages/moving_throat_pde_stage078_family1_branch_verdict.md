@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Stage 58 reduced the explicit Family-1 reference branch to the threshold window
+Stage 75 reduced the explicit Family-1 reference branch to the threshold window
 
 `Theta_fail ≈ 3.62605617972939e-4 * Pe_req,`
 
 `Theta_suff ≈ 4.21495341569977e-2 * Pe_req.`
 
-Stage 60 then extracted the actual explicit branch datum
+Stage 77 then extracted the actual explicit branch datum
 
 `Theta_w^(chi) ≈ 4.06863235008162 lambda_mu^2,`
 
@@ -74,7 +74,7 @@ Within the natural `n=5` enthalpy lock and the explicit shell-weighted extractio
 
 `Theta_w^(chi) ≈ 4.069 lambda_mu^2,`
 
-while the Stage-58 success window only demands
+while the Stage-75 success window only demands
 
 `Theta_w >= 4.2149534e-2 Pe_req.`
 
@@ -90,7 +90,7 @@ That means the explicit-branch phase has reached its natural finish line:
 
 ---
 
-## 4. What remains open after Stage 61
+## 4. What remains open after Stage 078
 
 This closes the Family-1 explicit-branch placement subprogram.
 

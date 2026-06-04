@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 15 removed the abstract selected-branch source-map factor on the natural D/N source branch and rewrote the invariant quadrupole target as
+Stage 032 removed the abstract selected-branch source-map factor on the natural D/N source branch and rewrote the invariant quadrupole target as
 
 `beta_0 s_-^2 / (kappa_0^2 lambda_-) = 54 G c_s^5 / (5 a^5 c^5)`.
 
@@ -47,7 +47,7 @@ For the first explicit finite-throat kernel model, define
 
 `Chi = Omega_U^2 g_W + g_R g_U`.
 
-Then the Stage-15 data are
+Then the Stage-032 data are
 
 `Xi_0 = g_U^2 / Omega_U^2`,
 
@@ -151,8 +151,8 @@ This is the first fully explicit stability window for the selected moving-throat
 
 ## 4. Exact monotonicity and the branch-onset criterion
 
-From Stage 14, the selected normalization product is strictly monotone increasing on the stable branch.
-With the Stage-15 source-map reduction, that exact statement becomes
+From Stage 031, the selected normalization product is strictly monotone increasing on the stable branch.
+With the Stage-032 source-map reduction, that exact statement becomes
 
 `d N_- / d alpha_0`
 `= beta_0 [ 2 s_- (d s_- / d alpha_0) lambda_- + s_-^3 ]`
@@ -232,7 +232,7 @@ This is not yet the final theorem, but it is the first concrete approximation th
 
 ---
 
-## 6. Best current theorem gate after Stage 16
+## 6. Best current theorem gate after Stage 033
 
 The selected-branch normalization bottleneck is now sharply microscopic.
 The first explicit finite-throat kernel model has reduced the theorem gap to:

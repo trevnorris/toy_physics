@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 8 reduced the remaining theorem gap to one scalar expression in the radial/axial overlap data,
+Stage 025 reduced the remaining theorem gap to one scalar expression in the radial/axial overlap data,
 
 `mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`.
 
@@ -15,13 +15,13 @@ But the quantities
 
 were still formal integrals.
 
-The next honest step is therefore to pick a **concrete finite-throat axial mode problem**, compute those overlaps exactly, and substitute them into the Stage-8 formula.
+The next honest step is therefore to pick a **concrete finite-throat axial mode problem**, compute those overlaps exactly, and substitute them into the Stage-025 formula.
 
 The main result of this stage is that on the first natural mixed axial branch the whole overlap problem collapses to a single geometric constant
 
 `kappa = 2 sqrt(2) / pi`.
 
-That turns the Stage-8 normalization target into one explicit algebraic relation among
+That turns the Stage-025 normalization target into one explicit algebraic relation among
 
 - the constant wall quadrupole stiffness,
 - the BdG support coupling,
@@ -153,7 +153,7 @@ That is the first real finite-throat hierarchy statement for the overlap problem
 
 ## 3. Explicit minimal-branch coefficients
 
-Define the reduced couplings exactly as in Stage 8,
+Define the reduced couplings exactly as in Stage 025,
 
 `C   = lambda_B I_(eta,phi)`,
 
@@ -173,7 +173,7 @@ On the concrete branch this becomes
 
 `R   = kappa lambda_R`.
 
-So the minimal-branch Stage-8 quantities are
+So the minimal-branch Stage-025 quantities are
 
 `Delta = Omega_U^2 Omega_W^2 - kappa^2 lambda_R^2`,
 
@@ -201,7 +201,7 @@ The conservative wall coefficient is
 
 ## 4. First branch-level normalization test
 
-Substituting the concrete overlaps into the Stage-8 target gives
+Substituting the concrete overlaps into the Stage-025 target gives
 
 `mhat_rad^2 kappa^2 ( Omega_U^2 lambda_W + lambda_R lambda_U )^2`
 `/ [ Delta ( K Delta - Delta kappa^2 lambda_B^2 / varpi^2 - Q ) ]`
@@ -229,7 +229,7 @@ On the constant wall profile `chi_eta = u_0`, the axial gradient term vanishes. 
 
 `K = K_eta + 6 T_Omega`.
 
-This is not a new wall-side derivation in Stage 9. It is the `l=2`
+This is not a new wall-side derivation in Stage 026. It is the `l=2`
 specialization of the Stage-1 modal operator, equivalently the one-mode grouped
 `P2` reduction written explicitly in Stage 2.
 
@@ -237,7 +237,7 @@ So the normalization test can be rewritten directly as
 
 `K_eta + 6 T_Omega = K_req`.
 
-This is important for the roadmap because the conservative 3PN program already isolated a separate geometry lane, and the Stage-8 gap still involved the unsolved wall stiffness. On the present branch, the higher-order quadrupole normalization target directly constrains that same geometry-side combination.
+This is important for the roadmap because the conservative 3PN program already isolated a separate geometry lane, and the Stage-025 gap still involved the unsolved wall stiffness. On the present branch, the higher-order quadrupole normalization target directly constrains that same geometry-side combination.
 
 So the moving-throat PDE job has tightened again.
 It is not to produce an arbitrary number called `K`.
@@ -255,7 +255,7 @@ The following are exact on the chosen finite-throat branch:
 - the D/N ladder `f_n`,
 - the overlap law `kappa_n = sqrt(2) / ( (n+1/2) pi )`,
 - the minimal-branch value `kappa = 2 sqrt(2) / pi`,
-- and the fully substituted Stage-8 normalization equation.
+- and the fully substituted Stage-025 normalization equation.
 
 ### Still conditional
 
@@ -276,7 +276,7 @@ It is one explicit finite-throat branch equation in a short list of reduced para
 
 ---
 
-## 7. Best current summary after Stage 9
+## 7. Best current summary after Stage 026
 
 The overlap problem is now materially tighter.
 
@@ -293,4 +293,4 @@ After this stage, the first concrete finite-throat branch shows that
 So the next honest step is no longer to “invent more overlap algebra.”
 It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether a different wall-profile family is forced by the full PDE.
 
-Either way, the theorem target is now much sharper than it was at the end of Stage 8.
+Either way, the theorem target is now much sharper than it was at the end of Stage 025.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 18 reduced the selected-branch normalization problem to the unique D/N locus
+Stage 035 reduced the selected-branch normalization problem to the unique D/N locus
 
 `F(xi,delta) = R_target`,
 
@@ -39,7 +39,7 @@ This turns the final support check into an exact geometric inequality in the sam
 
 ## 1. Exact support-feasibility function
 
-From Stage 18 the required total loading is
+From Stage 035 the required total loading is
 
 `alpha_req(xi,delta) = 9 pi^2 A xi (xi + delta) / [ 8 (9 delta + 11 xi) ]`.
 
@@ -97,7 +97,7 @@ That is of course equivalent to the refined stability bound `alpha_mix < alpha_c
 
 ## 3. The exact admissible region in `(R_target, M_mix)` space
 
-Stages 18 and 19 together now give two exact branch functions driven by the same parameter `xi`:
+Stages 035 and 036 together now give two exact branch functions driven by the same parameter `xi`:
 
 `R_target = F(xi,delta)`,
 
@@ -127,7 +127,7 @@ For `xi << 1`, the support-feasibility function expands as
 
 `G(xi,delta) = xi - 2 xi^2 / (9 delta) + O(xi^3)`.
 
-Combined with the Stage-18 onset relation
+Combined with the Stage-035 onset relation
 
 `xi_req ~= (R_target - 1) / (1 + 8/(9 delta))`,
 
@@ -141,7 +141,7 @@ So just above onset, the admissible mixed baseline grows linearly with the exces
 
 ---
 
-## 5. Best current theorem gate after Stage 19
+## 5. Best current theorem gate after Stage 036
 
 The selected moving-throat quadrupole problem has now split cleanly into two exact scalar branch functions:
 

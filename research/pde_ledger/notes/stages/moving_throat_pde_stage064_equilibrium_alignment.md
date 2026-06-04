@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stages 45–46 reduced the support/source theorem gap to two parent quantities:
+Stages 062–063 reduced the support/source theorem gap to two parent quantities:
 
 - the confinement-loading amplitude `g_phi`,
 - and the source/support coherence `C_(sigma phi)^2`.
@@ -13,7 +13,7 @@ The next honest step is to ask whether the **parent equilibrium equations themse
 
 This stage shows that they do.
 
-Within the same local compressional linearization already used in Stages 43–46, a quasi-static wall/support displacement does not excite an arbitrary source profile. It excites a very specific one:
+Within the same local compressional linearization already used in Stages 060–063, a quasi-static wall/support displacement does not excite an arbitrary source profile. It excites a very specific one:
 
 `chi_sigma(y) = g_phi chi_phi(y) / H(y),`
 
@@ -52,7 +52,7 @@ That gives four useful results immediately:
 
    `G_eq = g_phi^2 N_(phi phi) / [ K_X H_w ],`
 
-   reproducing the Stage-45/46 best-alignment formulas.
+   reproducing the Stage-062/063 best-alignment formulas.
 
 So the parent equilibrium problem has already removed one large ambiguity: the support-induced source channel is not a free profile choice.
 
@@ -60,7 +60,7 @@ So the parent equilibrium problem has already removed one large ambiguity: the s
 
 ## 1. Local static response law from the parent equilibrium branch
 
-Stage 45 projected the parent GNLS/confinement energy onto one source channel `sigma(s)` and one support channel `phi(s)` using the local compressional quadratic term
+Stage 062 projected the parent GNLS/confinement energy onto one source channel `sigma(s)` and one support channel `phi(s)` using the local compressional quadratic term
 
 `(1/2) h'(rho_*) (delta rho)^2`
 
@@ -90,7 +90,7 @@ So the source channel is fixed pointwise by the support loading and the local co
 
 ## 2. Exact overlap invariants on the equilibrium-aligned branch
 
-Using the Stage-45 overlap definitions,
+Using the Stage-062 overlap definitions,
 
 `N_(phi phi) = int d^3y chi_phi^2,`
 
@@ -175,11 +175,11 @@ So the exact equilibrium gain is
 
 `G_eq = Delta K_X^(eq) / K_X = g_phi^2 I_1 / K_X.`
 
-This is slightly stronger than the Stage-45/46 formula because it no longer requires the source/support branch data to be treated as independent objects.
+This is slightly stronger than the Stage-062/063 formula because it no longer requires the source/support branch data to be treated as independent objects.
 
 ---
 
-## 5. Constant-compressibility reduction and contact with Stages 45–46
+## 5. Constant-compressibility reduction and contact with Stages 062–063
 
 In the matched-layer limit `H(y) ~ H_w`,
 
@@ -189,7 +189,7 @@ so
 
 `G_eq = g_phi^2 N_(phi phi) / [ K_X H_w ].`
 
-Using the Stage-45 `n=5` identity
+Using the Stage-062 `n=5` identity
 
 `H_w = h'(rho_w) = m c_(s,w)^2 / rho_w,`
 
@@ -197,7 +197,7 @@ this becomes
 
 `G_eq = rho_w g_phi^2 N_(phi phi) / [ m c_(s,w)^2 K_X ].`
 
-That is exactly the Stage-45/46 best-alignment gain with
+That is exactly the Stage-062/063 best-alignment gain with
 
 `C_(sigma phi)^2 = 1.`
 
@@ -205,7 +205,7 @@ So the earlier best-case branch is not arbitrary. It is the natural thin-layer l
 
 ---
 
-## 6. What Stage 47 changes
+## 6. What Stage 064 changes
 
 Before this stage, the unresolved microscopic support/source data were:
 

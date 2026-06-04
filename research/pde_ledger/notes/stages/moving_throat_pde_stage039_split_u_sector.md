@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 21 compressed the selected quadrupole placement problem to the dimensionless continuum ratios
+Stage 038 compressed the selected quadrupole placement problem to the dimensionless continuum ratios
 
 `eps_eta, eps_W, rho, Z_W, delta_0, Lambda`,
 
@@ -26,7 +26,7 @@ More concretely:
 2. the bare anisotropy ratio shifts to a new exact value `delta_split`,
 3. the mixed-sector blocking ratio becomes an exact split quantity `eps_W_split`,
 4. the mixed loading vector rotates away from the source/support direction,
-5. and the old Stage-21 one-direction picture survives **iff** the new direction-splitting invariant vanishes.
+5. and the old Stage-038 one-direction picture survives **iff** the new direction-splitting invariant vanishes.
 
 So the flat-`U` assumption was not harmless bookkeeping. It was precisely what made source, support, and mixed loading all point in the same wall-basis direction.
 
@@ -34,7 +34,7 @@ So the flat-`U` assumption was not harmless bookkeeping. It was precisely what m
 
 ## 1. Turning on the first axial `U` structure
 
-Keep the wall, `phi`, and `W` sectors exactly as in Stage 20, but replace the flat internal `U` block by the first nontrivial N/N continuum operator
+Keep the wall, `phi`, and `W` sectors exactly as in Stage 037, but replace the flat internal `U` block by the first nontrivial N/N continuum operator
 
 `L_U = (mu_U/2) dot(U)^2 - (T_U/2) (U')^2 - (K_U/2) U^2.`
 
@@ -48,7 +48,7 @@ where the new internal axial-splitting ratio is
 
 `delta_U := pi^2 T_U / (L^2 K_U).`
 
-So the flat-doublet Stage-20 limit is exactly the special case
+So the flat-doublet Stage-037 limit is exactly the special case
 
 `delta_U = 0.`
 
@@ -110,7 +110,7 @@ The `U/W` block also feels the split directly through the overlap-weighted inver
 
 `S_U = kappa_0^2 / K_U + kappa_1^2 / K_(U1).`
 
-Using the Stage-21 flat-doublet ratio
+Using the Stage-038 flat-doublet ratio
 
 `eps_W := c_(UW)^2 sigma / (K_U K_W^(eff)),`
 
@@ -158,7 +158,7 @@ with the exact direction-ratio factor
 
 This isolates the first real failure mode of the flat-`U` simplification.
 
-In Stage 20–21 the mixed loading direction was proportional to the source/support vector `v = (kappa_0,kappa_1)^T`.
+In Stage 037–038 the mixed loading direction was proportional to the source/support vector `v = (kappa_0,kappa_1)^T`.
 Once `delta_U != 0`, the mixed loading vector is instead proportional to
 
 `z = ( z_0, z_1 )^T,`
@@ -180,7 +180,7 @@ which means:
 - flat internal `U` doublet, or
 - zero `U/W` interference,
 
-are the only ways to keep the old one-direction Stage-21 geometry exactly intact.
+are the only ways to keep the old one-direction Stage-038 geometry exactly intact.
 
 For small `delta_U`,
 
@@ -194,7 +194,7 @@ So on the natural constructive branch `rho_0 > 0`, the first axial `U` structure
 
 Even though the directions split, the scalar placement data themselves still factorize cleanly.
 
-Using the Stage-21 dimensionless overlap ratio
+Using the Stage-038 dimensionless overlap ratio
 
 `Z_W := c_(etaW)^2 / ( K_eta^(eff) K_W^(eff) ),`
 
@@ -217,7 +217,7 @@ And the exact product law survives:
 `R_target^(split U) M_mix^(split U)`
 `= 8 Lambda (1 - eps_W_split) / pi^2.`
 
-So the Stage-21 factorization survives at the scalar-placement level.
+So the Stage-038 factorization survives at the scalar-placement level.
 What changes is the **directional geometry** seen by the selected branch.
 
 For small `delta_U`,
@@ -230,12 +230,12 @@ So positive internal axial splitting lowers the mixed baseline and raises the no
 
 ---
 
-## 6. Best current theorem statement after Stage 22
+## 6. Best current theorem statement after Stage 039
 
 The first non-flat `U` doublet does **not** destroy the continuum placement map.
 It does something subtler and more important.
 
-It separates two statements that were accidentally fused in Stages 20–21:
+It separates two statements that were accidentally fused in Stages 037–038:
 
 1. **scalar placement factorization**, which survives, and
 2. **source/loading collinearity**, which does not survive generically.

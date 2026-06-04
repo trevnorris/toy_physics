@@ -18,7 +18,7 @@ where
 `zeta_req(Pi_tr,C_mix,eps_blk)`
 `= (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ]`
 
-is the exact selected-branch demand from Stages 34–35,
+is the exact selected-branch demand from Stages 51–52,
 
 and
 
@@ -27,8 +27,8 @@ and
 
 `y tan y = eta,`
 
-is the exact explicit lowest-lane support ratio from Stages 39–40,
-with `Pe_*` the operator-selected transport bias solving the Stage-41 fixed-point equation
+is the exact explicit lowest-lane support ratio from Stages 56–57,
+with `Pe_*` the operator-selected transport bias solving the Stage-058 fixed-point equation
 
 `Pe_* = Xi Delta(Pe_*;kappa,eta).`
 
@@ -111,7 +111,7 @@ On the outgoing quadrupole side, the selected-branch support demand remains
 `zeta_req(Pi_tr,C_mix,eps_blk)`
 `= (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ],`
 
-which is just Stage 35 rewritten as the exact demand variable of the branch-product formulation.
+which is just Stage 052 rewritten as the exact demand variable of the branch-product formulation.
 
 So the reduced moving-throat PDE closes to one scalar comparison:
 
@@ -141,7 +141,7 @@ It absorbs all of the earlier stage variables into one exact scalar diagnostic.
 
 ## 3. Exact bounded version using the support/source operator brackets
 
-Stage 41 already proved the exact operator-selected bracket
+Stage 058 already proved the exact operator-selected bracket
 
 `Xi Delta_0(kappa,eta) <= Pe_* <= Xi Delta_inf(kappa,eta),`
 
@@ -227,7 +227,7 @@ That is exactly the residual the later explicit branch stages had been approachi
 
 ---
 
-## 6. Why Stage 65 matters
+## 6. Why Stage 082 matters
 
 This stage is the first place where the whole reduced moving-throat PDE can be written in one line without hiding the actual theorem gap.
 

@@ -2,10 +2,10 @@
 
 ## Purpose
 
-Stage 20 derived the reduced branch data directly from one explicit finite-throat continuum kernel.
+Stage 037 derived the reduced branch data directly from one explicit finite-throat continuum kernel.
 That was already a meaningful advance, but it still left the placement problem written in a somewhat redundant microscopic language.
 
-The next step is therefore to compress the Stage-20 continuum operator into the smallest useful **dimensionless kernel ledger**.
+The next step is therefore to compress the Stage-037 continuum operator into the smallest useful **dimensionless kernel ledger**.
 
 The main result is that the continuum placement problem collapses to five exact kernel ratios:
 
@@ -40,13 +40,13 @@ Even better, these variables satisfy an exact product law,
 
 That means three apparently independent microscopic lanes only redistribute the defect **along** a fixed product curve, while the mixed-sector stability ratio `eps_W` and the radiative demand scale `Lambda` set the product itself.
 
-So Stage 21 turns the Stage-18/19 admissibility problem into a very small continuum-kernel map.
+So Stage 038 turns the Stage-035/036 admissibility problem into a very small continuum-kernel map.
 
 ---
 
 ## 1. Exact dimensionless kernel ratios
 
-Keep the Stage-20 continuum effective stiffnesses
+Keep the Stage-037 continuum effective stiffnesses
 
 `K_eta^(eff) = K_eta + 6 T_Omega,`
 
@@ -82,7 +82,7 @@ together with the natural nonvanishing transfer branch
 
 ## 2. Exact continuum placement formulas
 
-Substituting the Stage-20 continuum formulas into the Stage-18/19 branch variables gives
+Substituting the Stage-037 continuum formulas into the Stage-035/036 branch variables gives
 
 `delta = delta_0 / (1 - eps_eta),`
 
@@ -194,13 +194,13 @@ This is the sharpest structural decomposition reached so far.
 
 ---
 
-## 6. Best current theorem gate after Stage 21
+## 6. Best current theorem gate after Stage 038
 
 The moving-throat selected quadrupole branch is now described by two exact layers.
 
 ### Layer 1 — universal branch geometry
 
-From Stages 18–19, the stable selected branch is controlled by the universal functions
+From Stages 035–036, the stable selected branch is controlled by the universal functions
 
 `R_target = F(xi,delta),`
 
@@ -208,7 +208,7 @@ From Stages 18–19, the stable selected branch is controlled by the universal f
 
 ### Layer 2 — continuum placement map
 
-From Stages 20–21, the continuum operator places the actual defect at
+From Stages 037–038, the continuum operator places the actual defect at
 
 `delta = delta_0 / (1 - eps_eta),`
 
@@ -225,4 +225,4 @@ It is no longer:
 
 It is:
 
-> compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat PDE and check whether the resulting point lies inside the exact Stage-18/19 admissible region.
+> compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat PDE and check whether the resulting point lies inside the exact Stage-035/036 admissible region.

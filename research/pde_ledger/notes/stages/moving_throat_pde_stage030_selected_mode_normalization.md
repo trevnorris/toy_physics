@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 12 reached the first exact operator-selected odd quadrupole coefficient,
+Stage 029 reached the first exact operator-selected odd quadrupole coefficient,
 
 `delta D_-^(odd)(omega) = - i beta_5 (v.e_-)^2 omega^5 + O(omega^7)`.
 
@@ -10,7 +10,7 @@ That was the right operator-level result, but it still stopped one step short of
 
 The next missing step is therefore very specific:
 
-> translate the selected lower wall mode into the same normalized-response convention used in Stages 5 and 8, identify the exact selected-branch static prefactor, and write the surviving `2G/(5 c^5)` test as a single spectral condition on the selected conservative eigenvalue.
+> translate the selected lower wall mode into the same normalized-response convention used in Stages 022 and 025, identify the exact selected-branch static prefactor, and write the surviving `2G/(5 c^5)` test as a single spectral condition on the selected conservative eigenvalue.
 
 This stage does exactly that.
 
@@ -38,7 +38,7 @@ It is one exact ratio of a conservative overlap factor to the conservative selec
 
 ## 1. Selected conservative eigenvalue and notation
 
-Keep the Stage-12 conservative wall matrix
+Keep the Stage-029 conservative wall matrix
 
 `K_eff^(0) = [[A, 0], [0, B]] - alpha_0 v v^T`,
 
@@ -79,7 +79,7 @@ is the selected conservative wall stiffness at zero frequency.
 
 ## 2. Exact selected overlap from Hellmann–Feynman
 
-Stage 12 already established the exact Hellmann–Feynman identity
+Stage 029 already established the exact Hellmann–Feynman identity
 
 `(v.e_-)^2 = - d lambda_- / d alpha_0`.
 
@@ -100,7 +100,7 @@ This formula immediately passes the expected checks:
 - strong loading `alpha_0 -> +infinity`:
   `s_- -> sigma = |v|^2`.
 
-So the selected overlap interpolates smoothly from the flat branch to the Stage-10 max-coupling branch.
+So the selected overlap interpolates smoothly from the flat branch to the Stage-027 max-coupling branch.
 
 ---
 
@@ -111,7 +111,7 @@ Write the selected wall operator in the same low-frequency form used in Stage 02
 `D_-(omega)`
 `= D_{-0} + D_{-2} omega^2 + D_{-4} omega^4 - i C_{5,-} omega^5 + O(omega^6)`.
 
-Here the Stage-12 odd coefficient is
+Here the Stage-029 odd coefficient is
 
 `C_{5,-} = beta_5 s_-`.
 
@@ -131,7 +131,7 @@ The selected odd coefficient is
 `Gamma_{5,-} = C_{5,-} / D_{-0}`
 `           = beta_5 s_- / lambda_-`.
 
-So the Stage-12 operator-level result is now fully translated into the Stage-022 normalized-response language.
+So the Stage-029 operator-level result is now fully translated into the Stage-022 normalized-response language.
 
 ---
 
@@ -180,7 +180,7 @@ this is equivalent to
 
 `mhat_-^2 P_{0,-} = 54 G c_s^5 / (5 a^5 c^5)`.
 
-So the selected branch is required to hit exactly the same normalization stack as the isotropic Stage-022/8 branch, but now with the selected-mode prefactor in place of the old isotropic lane prefactor.
+So the selected branch is required to hit exactly the same normalization stack as the isotropic Stage-022/025 branch, but now with the selected-mode prefactor in place of the old isotropic lane prefactor.
 
 Equivalently, the target becomes a direct conservative spectral condition:
 
@@ -198,7 +198,7 @@ so at leading point-particle order,
 
 `lambda_- = beta_0 s_- * 5 a^5 c^5 / (54 G c_s^5)`.
 
-This is the selected-mode generalization of the Stage-9 stiffness test.
+This is the selected-mode generalization of the Stage-026 stiffness test.
 The difference is that the “stiffness” is no longer a hand-picked wall constant.
 It is the exact selected conservative eigenvalue of the loaded wall/BdG/Maxwell/mixed operator.
 
@@ -214,7 +214,7 @@ So the exact softening threshold is
 
 `alpha_crit = A B / ( B kappa_0^2 + A kappa_1^2 )`,
 
-which is just the Stage-12 refined threshold written in the compact `A,B` notation.
+which is just the Stage-029 refined threshold written in the compact `A,B` notation.
 
 This means the selected-branch quadrupole target can also be read as a condition on **how close** the physical branch sits to the softening surface.
 If `lambda_-` is too large, the selected outgoing coefficient is too small.
@@ -226,7 +226,7 @@ So the remaining PDE question is now sharply spectral:
 
 ---
 
-## 7. Best current summary after Stage 13
+## 7. Best current summary after Stage 030
 
 The theorem gap has narrowed again.
 

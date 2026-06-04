@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 68 showed that, once the selected outgoing quadrupole branch is normalized, the explicit support-demand problem depends only on the loading ratio
+Stage 085 showed that, once the selected outgoing quadrupole branch is normalized, the explicit support-demand problem depends only on the loading ratio
 
 `rho_alpha := alpha_req / alpha_mix`.
 
@@ -35,9 +35,9 @@ So the whole explicit Family-1 support theorem has collapsed to a very narrow pu
 
 ---
 
-## 1. Exact ratio form of the Stage-64 product map
+## 1. Exact ratio form of the Stage-081 product map
 
-Stage 64 gave the exact product inversion
+Stage 081 gave the exact product inversion
 
 `Pi_tr = C_mix Q(zeta;eps_blk),`
 
@@ -46,7 +46,7 @@ with
 `Q(zeta;eps_blk)`
 `= [ 1 + (1 - 2 eps_blk) zeta ] / [ 1 - eps_blk zeta ].`
 
-By Stage 68,
+By Stage 085,
 
 `Pi_tr / C_mix = rho_alpha = alpha_req / alpha_mix.`
 
@@ -92,7 +92,7 @@ Therefore the explicit Family-1 branch reduces to the exact unblocked loading-ra
 
 `rho_max^(F1) = 1 + zeta_max^(F1).`
 
-Using the Stage-63/64 values at `lambda_mu = 1`,
+Using the Stage-80/81 values at `lambda_mu = 1`,
 
 `zeta_suff^(chi)(1) ≈ 2.46622291347846,`
 
@@ -122,7 +122,7 @@ below the hard constructive ceiling, and the guaranteed-failure threshold differ
 
 ## 3. Exact blocking condition in ratio form
 
-The same denominator condition from Stage 64 remains necessary:
+The same denominator condition from Stage 081 remains necessary:
 
 `eps_blk < 1 / zeta_max^(F1) ≈ 0.405263689711371.`
 

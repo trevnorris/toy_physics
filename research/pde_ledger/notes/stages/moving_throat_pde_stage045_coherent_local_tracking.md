@@ -2,19 +2,19 @@
 
 ## Purpose
 
-Stage 27 showed that the first extended continuum kernel generically lands on an exact **intermediate** rank-2 closure, with the source-tied and tracking laws appearing only as special surfaces.
+Stage 044 showed that the first extended continuum kernel generically lands on an exact **intermediate** rank-2 closure, with the source-tied and tracking laws appearing only as special surfaces.
 
 That was the correct generic reduced statement, but it still left one obvious question open:
 
 > what happens if the support field `phi` and the mixed field `W` really are two D/N channels of the **same local throat-support density** rather than two unrelated reduced couplings?
 
-That is the first honest “concrete kernel” question after Stage 27.
+That is the first honest “concrete kernel” question after Stage 044.
 
 This stage answers it.
 
-The main result is that, **within this coherent local-kernel hypothesis**, the first coherent local D/N kernel does **not** land on the generic intermediate closure. It lands exactly on the tracking surface of the reduced Stage-27 branch problem.
+The main result is that, **within this coherent local-kernel hypothesis**, the first coherent local D/N kernel does **not** land on the generic intermediate closure. It lands exactly on the tracking surface of the reduced Stage-044 branch problem.
 
-So the Stage-27 continuum-selected problem collapses back to a one-parameter selected branch, now with a physically identified total loading
+So the Stage-044 continuum-selected problem collapses back to a one-parameter selected branch, now with a physically identified total loading
 
 `M_tr = M_mix + M_supp`
 
@@ -22,13 +22,13 @@ and a single common direction factor
 
 `R_tr = R_U = R_phi`.
 
-This is the first explicit evaluation of the Stage-27 residual on a concrete moving-throat kernel family.
+This is the first explicit evaluation of the Stage-044 residual on a concrete moving-throat kernel family.
 
 ---
 
 ## 1. Coherent local D/N support kernel
 
-Keep the Stage-22/26 split-`U` continuum operator on the finite throat interval `s in [0,L]`, with
+Keep the Stage-039/043 split-`U` continuum operator on the finite throat interval `s in [0,L]`, with
 
 - wall basis `(u_0,u_1)`,
 - split internal doublet `U`,
@@ -66,13 +66,13 @@ with the exact amplitude pattern
 
 `g_S = gamma lambda_phi / sqrt(mu_U mu_phi).`
 
-This is more specific than the Stage-26 generic extension: the same local support density forces the wall/U ratio to be identical in the mixed and support lanes.
+This is more specific than the Stage-043 generic extension: the same local support density forces the wall/U ratio to be identical in the mixed and support lanes.
 
 ---
 
 ## 2. Exact tracking theorem
 
-Stage 26 proved that support and mixed directions coincide iff
+Stage 043 proved that support and mixed directions coincide iff
 
 `g_B g_R = g_W g_S`.
 
@@ -90,23 +90,23 @@ so
 
 exactly.
 
-Therefore the Stage-26 codimension-one interference-match surface is now automatic.
+Therefore the Stage-043 codimension-one interference-match surface is now automatic.
 
 ### Exact conclusion
 
-> **For the first coherent local D/N support kernel, the reduced Stage-27 branch lands exactly on the tracking surface.**
+> **For the first coherent local D/N support kernel, the reduced Stage-044 branch lands exactly on the tracking surface.**
 
 Equivalently,
 
 `R_phi = R_U`.
 
-So the generic Stage-27 intermediate closure is not the first coherent local-kernel outcome. For this coherent local-kernel model, the outcome is the exact tracking reduction.
+So the generic Stage-044 intermediate closure is not the first coherent local-kernel outcome. For this coherent local-kernel model, the outcome is the exact tracking reduction.
 
 ---
 
 ## 3. Exact common interference ratio and direction factor
 
-Stage 26 defines
+Stage 043 defines
 
 `rho_0 = g_R g_U / (K_U g_W),`
 
@@ -143,7 +143,7 @@ That gives the exact physical range of the tracking factor on this branch.
 
 ## 4. Exact total loading on the coherent branch
 
-Stage 22 and Stage 26 give the mixed and support baselines
+Stage 039 and Stage 043 give the mixed and support baselines
 
 `M_mix`
 `= 8 Z_W (1 + chi_0)^2`
@@ -163,16 +163,16 @@ so
 `= 8 (1 + chi_0)^2 / [ pi^2 (1 - eps_eta) ]`
 `  * [ Z_W / (1 - eps_W^(split)) + Z_phi / (1 - eps_phi^(split)) ].`
 
-So the first concrete local-kernel evaluation of the Stage-27 residual is already much simpler than the generic intermediate closure:
+So the first concrete local-kernel evaluation of the Stage-044 residual is already much simpler than the generic intermediate closure:
 
 - one common direction factor `R_tr`,
 - one total baseline `M_tr`.
 
 ---
 
-## 5. Exact collapse of the Stage-27 quadratic branch equation
+## 5. Exact collapse of the Stage-044 quadratic branch equation
 
-Stage 27 gave the continuum-selected quadratic branch equation
+Stage 044 gave the continuum-selected quadratic branch equation
 
 `xi^2 + B_cont xi + C_cont = 0,`
 
@@ -203,13 +203,13 @@ where
 `G_tr(xi,delta;R)`
 `= 9 xi (xi + delta) / [ 9 delta + (9 + 2 R^2) xi ].`
 
-This is exactly the Stage-23 tracking/source-loading branch, now derived from a concrete local kernel rather than postulated as a special surface.
+This is exactly the Stage-040 tracking/source-loading branch, now derived from a concrete local kernel rather than postulated as a special surface.
 
 ---
 
 ## 6. Exact normalization law on the coherent branch
 
-Because the coherent local kernel lands on the tracking surface, the Stage-27 normalization residual also collapses to the Stage-23 tracking form:
+Because the coherent local kernel lands on the tracking surface, the Stage-044 normalization residual also collapses to the Stage-040 tracking form:
 
 `R_target = F_tr(xi,delta;R_tr)`,
 
@@ -219,7 +219,7 @@ with
 `= [ 9 delta + (9 + 2 R^2) xi ]^2 [ 9 delta + (9 + 2 R) xi ]^2`
 `  / [ 81 (1 - xi) ( 9 delta^2 + 18 delta xi + (9 + 2 R^2) xi^2 )^2 ].`
 
-So the full Stage-27 continuum-selected residual now becomes
+So the full Stage-044 continuum-selected residual now becomes
 
 `R_target - F_tr( xi_phys, delta; R_tr ),`
 
@@ -238,11 +238,11 @@ This is the first exact “concrete-kernel” form of the normalization test.
 - the common interference ratio `chi_0`,
 - the exact tracking factor `R_tr`,
 - the exact total baseline `M_tr`,
-- the exact collapse of the Stage-27 quadratic branch equation to the one-parameter tracking law,
+- the exact collapse of the Stage-044 quadratic branch equation to the one-parameter tracking law,
 - and the exact collapse of the normalization residual to the tracking function `F_tr`.
 
 ### What this means physically
 
-The generic Stage-27 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
+The generic Stage-044 intermediate closure is still the correct reduced theorem for the first unrestricted continuum extension. But the first **coherent local D/N kernel** is more special than that: within this reduced coherent model it lands exactly on the tracking surface.
 
 So the next theorem step is no longer to resolve the rank-2 closure ambiguity. That is now done for the first concrete local kernel. The next step is to evaluate how this physical tracking branch compares with the old flat branch and whether the split-`U` deformation helps or hurts the normalization test.

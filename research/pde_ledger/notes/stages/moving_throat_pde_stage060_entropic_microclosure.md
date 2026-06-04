@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 41 introduced the coupled support/source branch equation
+Stage 058 introduced the coupled support/source branch equation
 
 `Pe = Xi Delta(Pe;kappa,eta),`
 
@@ -43,11 +43,11 @@ The main results are:
    where the exact Einstein relation is
 
    `D_sigma = M_sigma Theta_sigma;`
-4. under the same affine-drop reduction already implicit in the Stage-41 average-drift closure,
+4. under the same affine-drop reduction already implicit in the Stage-058 average-drift closure,
 
    `phi(s) ~= phi(0) + [Delta phi] s/L,`
 
-   the stationary zero-flux branch is exactly the Stage-39 exponential family,
+   the stationary zero-flux branch is exactly the Stage-056 exponential family,
 
    `sigma(s) = C exp[(Lambda_phi Delta phi)/(Theta_sigma L) s],`
 
@@ -57,7 +57,7 @@ The main results are:
 5. the transport bias is therefore no longer phenomenological:
 
    `Pe = (Lambda_phi/Theta_sigma) Delta phi;`
-6. using the Stage-41 support normalization
+6. using the Stage-058 support normalization
 
    `Phi = T_X phi/(Lambda_phi L^2),`
    `Delta phi = (Lambda_phi L^2 / T_X) Delta(Pe;kappa,eta),`
@@ -72,7 +72,7 @@ The main results are:
    `        = chi_sigma Lambda_phi^2 L^2 / T_X,`
 
    where `chi_sigma := 1/Theta_sigma;`
-7. equivalently, the phenomenological Stage-41 coupling is now explained as
+7. equivalently, the phenomenological Stage-058 coupling is now explained as
 
    `Xi = mu_sigma Lambda_phi^2 L^2/(D_sigma T_X)`
    `  = Lambda_phi^2 L^2/(Theta_sigma T_X)`
@@ -94,7 +94,7 @@ So the operator strength is no longer an arbitrary ratio of mobility and diffusi
 
 Take the throat-axis source density `sigma(s,t) > 0` on `s in [0,L]` and the support field `phi(s,t)`.
 
-The first explicit free-energy functional that preserves positivity of `sigma` and reproduces the Stage-41 support operator is
+The first explicit free-energy functional that preserves positivity of `sigma` and reproduces the Stage-058 support operator is
 
 `F[sigma,phi]`
 `= int_0^L ds [ Theta_sigma sigma (log(sigma/sigma_*) - 1) - Lambda_phi sigma phi`
@@ -123,7 +123,7 @@ with boundary conditions
 
 `phi_s(L)=0.`
 
-So the Stage-41 support law is now embedded directly into one explicit free-energy closure.
+So the Stage-058 support law is now embedded directly into one explicit free-energy closure.
 
 ---
 
@@ -148,13 +148,13 @@ with exact Einstein relation
 
 `D_sigma = M_sigma Theta_sigma.`
 
-This is the microscopic origin of the Stage-41 phenomenological pair `(D_sigma,mu_sigma)`.
+This is the microscopic origin of the Stage-058 phenomenological pair `(D_sigma,mu_sigma)`.
 
 ---
 
-## 3. Recovery of the Stage-39 exponential family
+## 3. Recovery of the Stage-056 exponential family
 
-Stage 41 already used an average-drift closure in which the support field enters only through the end-to-end drop.
+Stage 058 already used an average-drift closure in which the support field enters only through the end-to-end drop.
 
 Within that same lowest-lane closure, replace the support profile by its affine-drop reduction
 
@@ -179,13 +179,13 @@ with the exact Peclet number
 
 `Pe = (Lambda_phi/Theta_sigma) Delta phi.`
 
-So the Stage-39 exponential branch is not just a convenient guess. It is the exact stationary branch of the first positive-density Onsager closure after the same affine-drop reduction already used implicitly in Stage 41.
+So the Stage-056 exponential branch is not just a convenient guess. It is the exact stationary branch of the first positive-density Onsager closure after the same affine-drop reduction already used implicitly in Stage 058.
 
 ---
 
 ## 4. Exact microscopic coupling `Xi_micro`
 
-Stage 41 defined the dimensionless support field by
+Stage 058 defined the dimensionless support field by
 
 `Phi = T_X phi/(Lambda_phi L^2),`
 
@@ -198,7 +198,7 @@ Insert this into the exact Peclet law above:
 `Pe = (Lambda_phi/Theta_sigma) Delta phi`
 `   = (Lambda_phi^2 L^2/(Theta_sigma T_X)) Delta(Pe;kappa,eta).`
 
-Therefore the Stage-41 branch equation is recovered with the exact microscopic coupling
+Therefore the Stage-058 branch equation is recovered with the exact microscopic coupling
 
 `Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X).`
 
@@ -210,7 +210,7 @@ one has
 
 `Xi_micro = chi_sigma Lambda_phi^2 L^2/T_X.`
 
-And because `D_sigma = M_sigma Theta_sigma`, this also reproduces the Stage-41 phenomenological form:
+And because `D_sigma = M_sigma Theta_sigma`, this also reproduces the Stage-058 phenomenological form:
 
 `Xi_micro = mu_sigma Lambda_phi^2 L^2/(D_sigma T_X).`
 
@@ -253,15 +253,15 @@ So this microscopic closure is automatically passive.
 
 ---
 
-## 6. What Stage 43 changes
+## 6. What Stage 060 changes
 
 The operator problem has now advanced in a concrete way.
 
-Before Stage 43, the support/source strength was the phenomenological ratio
+Before Stage 060, the support/source strength was the phenomenological ratio
 
 `Xi = mu_sigma Lambda_phi^2 L^2/(D_sigma T_X).`
 
-After Stage 43, the same quantity is an explicit microscopic gain:
+After Stage 060, the same quantity is an explicit microscopic gain:
 
 `Xi_micro = chi_sigma Lambda_phi^2 L^2/T_X.`
 
@@ -270,9 +270,9 @@ That is a much tighter result because:
 - it is independent of the separate values of mobility and diffusion,
 - it is tied to one explicit free-energy closure,
 - it preserves positivity of the source density,
-- it reproduces the Stage-39 exponential family exactly in the same lowest-lane reduction already used earlier,
+- it reproduces the Stage-056 exponential family exactly in the same lowest-lane reduction already used earlier,
 - and it is automatically passive.
 
 So the remaining theorem gap is now sharper again:
 
-> compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare it directly to the exact support thresholds from Stage 42.
+> compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare it directly to the exact support thresholds from Stage 059.

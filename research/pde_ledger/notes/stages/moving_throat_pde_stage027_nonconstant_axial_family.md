@@ -2,17 +2,17 @@
 
 ## Purpose
 
-Stage 9 showed that on the simplest finite-throat branch — constant N/N wall and brane-like zero modes coupled to the lowest D/N half-wave — the whole radial/axial overlap problem collapses to one exact geometric constant,
+Stage 026 showed that on the simplest finite-throat branch — constant N/N wall and brane-like zero modes coupled to the lowest D/N half-wave — the whole radial/axial overlap problem collapses to one exact geometric constant,
 
 `kappa_0 = 2 sqrt(2) / pi`.
 
 That was useful, but it still left one obvious concern:
 
-> was the Stage-9 normalization equation an artifact of choosing the completely flat axial zero mode for the wall and brane-like internal coordinate?
+> was the Stage-026 normalization equation an artifact of choosing the completely flat axial zero mode for the wall and brane-like internal coordinate?
 
 So the next honest step is to replace the constant profile by the **first nontrivial finite-throat profile family** and see what survives.
 
-The cleanest way to do that is to stay in the exact N/N and D/N finite-throat bases and turn on the first N/N axial excitation. The main result is that the Stage-9 branch does survive, but it deforms in a very specific way:
+The cleanest way to do that is to stay in the exact N/N and D/N finite-throat bases and turn on the first N/N axial excitation. The main result is that the Stage-026 branch does survive, but it deforms in a very specific way:
 
 - the whole branch is controlled by a single profile-dependent overlap
   `kappa(theta)`,
@@ -23,7 +23,7 @@ The cleanest way to do that is to stay in the exact N/N and D/N finite-throat ba
 So after this stage the next theorem gate is no longer “does any nonconstant profile destroy the branch?”
 It is:
 
-> which axial profile is selected by the real moving-throat eigenproblem, and does it lie near the Stage-9 branch, the max-coupling branch, or the blind-angle no-go branch?
+> which axial profile is selected by the real moving-throat eigenproblem, and does it lie near the Stage-026 branch, the max-coupling branch, or the blind-angle no-go branch?
 
 ---
 
@@ -118,7 +118,7 @@ This is larger than the constant-branch value
 
 `kappa_0 = 2 sqrt(2) / pi ~= 0.900316`.
 
-So the flat Stage-9 branch is not the strongest-coupled member of the first nonconstant family.
+So the flat Stage-026 branch is not the strongest-coupled member of the first nonconstant family.
 
 ### 2.1 Exact blind angle
 
@@ -134,7 +134,7 @@ At this angle the coherent N/N profile is orthogonal to the lowest D/N half-wave
 
 That is the first exact profile-selection no-go theorem of the moving-throat PDE program:
 
-> if the actual wall/brane profile is driven onto the blind angle, the Stage-9 support/mixed quadrupole branch cannot realize the outgoing quadrupole normalization target.
+> if the actual wall/brane profile is driven onto the blind angle, the Stage-026 support/mixed quadrupole branch cannot realize the outgoing quadrupole normalization target.
 
 ### 2.2 Exact max-coupling angle
 
@@ -171,7 +171,7 @@ Evaluating it on the coherent family gives
 `K_geo(theta) = int_0^L ds chi_theta G_eta chi_theta`
 `             = K_eta + 6 T_Omega + T_w (pi^2 / L^2) sin^2(theta)`.
 
-So the first nonconstant family changes the Stage-9 wall branch in exactly the way one would expect physically:
+So the first nonconstant family changes the Stage-026 wall branch in exactly the way one would expect physically:
 
 - the constant branch is recovered at `theta=0`,
 - the first excited N/N admixture adds an axial-gradient penalty,
@@ -188,7 +188,7 @@ So the first nonconstant family makes the trade-off completely explicit:
 
 ---
 
-## 4. Exact substitution into the Stage-8/9 minimal isotropic module
+## 4. Exact substitution into the Stage-025/026 minimal isotropic module
 
 Using the same reduced couplings as before,
 
@@ -210,7 +210,7 @@ the coherent nonconstant family gives
 
 `R   = lambda_R kappa(theta)`.
 
-So the Stage-8/9 quantities become
+So the Stage-025/026 quantities become
 
 `Delta(theta) = Omega_U^2 Omega_W^2 - lambda_R^2 kappa(theta)^2`,
 
@@ -230,7 +230,7 @@ Therefore
 
 `D_0(theta) = K_geo(theta) - B_0(theta) - Z_0(theta)`.
 
-This is the cleanest possible outcome: the whole Stage-9 branch survives with the single replacement
+This is the cleanest possible outcome: the whole Stage-026 branch survives with the single replacement
 
 `kappa_0  ->  kappa(theta)`
 
@@ -238,13 +238,13 @@ and the single geometry lift
 
 `K_eta + 6 T_Omega  ->  K_eta + 6 T_Omega + T_w pi^2 sin^2(theta) / L^2`.
 
-So the Stage-9 branch was not an algebraic accident of the constant profile. It is the `theta=0` member of a whole exact finite-throat family.
+So the Stage-026 branch was not an algebraic accident of the constant profile. It is the `theta=0` member of a whole exact finite-throat family.
 
 ---
 
 ## 5. Exact branch-level normalization condition
 
-Substituting the nonconstant family into the Stage-8 target gives
+Substituting the nonconstant family into the Stage-025 target gives
 
 `mhat_rad^2 kappa(theta)^2 ( Omega_U^2 lambda_W + lambda_R lambda_U )^2`
 `/ [ Delta(theta) ( K_geo(theta) Delta(theta)`
@@ -264,16 +264,16 @@ So the full theorem gate on this family is now
 
 `K_eta + 6 T_Omega + T_w pi^2 sin^2(theta) / L^2 = K_req(theta)`.
 
-This is sharper than the Stage-9 gate, not weaker.
+This is sharper than the Stage-026 gate, not weaker.
 
-Stage 9 asked whether the constant wall stiffness matched one algebraic target.
-Stage 10 asks whether the actual wall eigenprofile chosen by the PDE lands on an angle `theta` for which the geometry-side stiffness exactly equals the profile-dressed support/mixed normalization load.
+Stage 026 asked whether the constant wall stiffness matched one algebraic target.
+Stage 027 asks whether the actual wall eigenprofile chosen by the PDE lands on an angle `theta` for which the geometry-side stiffness exactly equals the profile-dressed support/mixed normalization load.
 
 ---
 
 ## 6. Exact consequences of the first nonconstant family
 
-### 6.1 Stage 9 is recovered exactly
+### 6.1 Stage 026 is recovered exactly
 
 At `theta=0`,
 
@@ -283,7 +283,7 @@ At `theta=0`,
 
 `K_geo(theta) -> K_eta + 6 T_Omega`.
 
-So the entire Stage-9 branch is recovered exactly.
+So the entire Stage-026 branch is recovered exactly.
 
 ### 6.2 Blind-angle no-go theorem
 
@@ -324,10 +324,10 @@ That is the first place where profile selection becomes a real dynamical competi
 
 ---
 
-## 7. Best current summary after Stage 10
+## 7. Best current summary after Stage 027
 
-The first nonconstant finite-throat family does **not** destroy the Stage-9 route.
-Instead it does something better: it turns Stage 9 into one member of a whole exact finite-throat profile family and isolates the first genuine profile-selection theorem gate.
+The first nonconstant finite-throat family does **not** destroy the Stage-026 route.
+Instead it does something better: it turns Stage 026 into one member of a whole exact finite-throat profile family and isolates the first genuine profile-selection theorem gate.
 
 The remaining question is no longer
 

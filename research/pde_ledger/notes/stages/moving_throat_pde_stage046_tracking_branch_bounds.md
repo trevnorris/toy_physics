@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Stage 28 reduced the first coherent local D/N kernel to an exact one-parameter tracking branch:
+Stage 045 reduced the first coherent local D/N kernel to an exact one-parameter tracking branch:
 
 `M_tr = G_tr(xi,delta;R_tr),`
 
@@ -28,13 +28,13 @@ Because the constructive split-`U` branch satisfies `R_tr < 1`, the physical loc
 - requires **more** total loading than the flat branch,
 - but delivers **less** normalized response than the flat branch.
 
-So the split-`U` deformation makes the Stage-18/19 normalization target harder, not easier.
+So the split-`U` deformation makes the Stage-035/036 normalization target harder, not easier.
 
 ---
 
 ## 1. Tracking-branch functions
 
-On the coherent local D/N branch from Stage 28,
+On the coherent local D/N branch from Stage 045,
 
 `G_tr(xi,delta;R)`
 `= 9 xi (xi + delta) / [ 9 delta + (9 + 2 R^2) xi ],`
@@ -162,7 +162,7 @@ So for `0 <= R <= 1` the exact bounds are
 
 `1/(1 - xi) <= F_tr(xi,delta;R) <= F_flat(xi,delta).`
 
-These are absolute tracking-branch bounds. The actual constructive branch has the tighter Stage-28 range
+These are absolute tracking-branch bounds. The actual constructive branch has the tighter Stage-045 range
 
 `1/(1+delta_U) < R_tr < 1,`
 
@@ -190,11 +190,11 @@ So the local split-`U` deformation worsens the normalization residual relative t
 
 Likewise the exact loading excess theorem says that the local split-`U` branch requires a larger total baseline to reach the same `xi`.
 
-This is the sharpest exact comparison yet between the abstract Stage-18/19 branch and the first coherent concrete local kernel.
+This is the sharpest exact comparison yet between the abstract Stage-035/036 branch and the first coherent concrete local kernel.
 
 ---
 
-## 6. Best current theorem statement after Stage 29
+## 6. Best current theorem statement after Stage 046
 
 ### What is now exact
 
@@ -207,7 +207,7 @@ This is the sharpest exact comparison yet between the abstract Stage-18/19 branc
 
 ### What this means physically
 
-The first coherent local D/N kernel does not rescue the Stage-18/19 normalization target by hidden split-`U` assistance. It does the opposite.
+The first coherent local D/N kernel does not rescue the Stage-035/036 normalization target by hidden split-`U` assistance. It does the opposite.
 
 The constructive split-`U` deformation
 

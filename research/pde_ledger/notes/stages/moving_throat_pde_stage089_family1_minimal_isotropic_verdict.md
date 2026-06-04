@@ -2,13 +2,13 @@
 
 ## Purpose
 
-Stage 71 extracted the exact loading ratio selected by the natural contact-plus-pole realization of the minimal isotropic quadrupole precursor:
+Stage 088 extracted the exact loading ratio selected by the natural contact-plus-pole realization of the minimal isotropic quadrupole precursor:
 
 `rho_alpha = 4/3,`
 `zeta_req = 1/3,`
 `Pi_tr = (4/3) C_mix.`
 
-The next honest step is to compare that branch directly against the explicit Family-1 support/source windows already frozen in Stages 62–70.
+The next honest step is to compare that branch directly against the explicit Family-1 support/source windows already frozen in Stages 79–87.
 
 This stage shows that the match is not merely possible.
 It is **strongly inside** the explicit Family-1 success region.
@@ -25,7 +25,7 @@ So under the natural contact-plus-pole identification, the explicit Family-1 sup
 
 ## 1. Exact comparison to the Family-1 loading-ratio window
 
-From Stage 69, at the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+From Stage 086, at the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
 
 `rho_suff^(chi) ≈ 3.46622291347846,`
 
@@ -33,7 +33,7 @@ From Stage 69, at the natural shell-weighted normalization `lambda_mu = 1` and i
 
 `rho_max^(F1)   ≈ 3.46752922945601.`
 
-From Stage 71, the minimal isotropic passive/outgoing quadrupole branch selects
+From Stage 088, the minimal isotropic passive/outgoing quadrupole branch selects
 
 `rho_alpha^(min) = 4/3 ≈ 1.33333333333333.`
 
@@ -62,7 +62,7 @@ so the same branch gives
 
 `zeta_req^(min) = 1/3.`
 
-The explicit Family-1 support ceiling from Stage 63/64 is
+The explicit Family-1 support ceiling from Stage 80/81 is
 
 `zeta_max^(F1) ≈ 2.46752922945601.`
 
@@ -75,7 +75,7 @@ And since
 
 `0 < zeta_req^(min) = 1/3 < 1,`
 
-the branch lies in the exact Stage-35 symmetric-lowest-twin window:
+the branch lies in the exact Stage-052 symmetric-lowest-twin window:
 
 `C_mix < Pi_tr < 2 C_mix.`
 
@@ -85,7 +85,7 @@ So the minimal isotropic passive/outgoing branch does not need non-twin asymmetr
 
 ## 3. Zero-transport-bias result on the explicit Family-1 branch
 
-Stage 62 proved that the explicit Family-1 transport map obeys
+Stage 079 proved that the explicit Family-1 transport map obeys
 
 `zeta_F1(Pe) = A_F1 Omega_Pe^2,`
 
@@ -118,8 +118,8 @@ That is a very strong statement: the explicit Family-1 support/source branch alr
 
 Before this step, the explicit Family-1 reduction had one unresolved outgoing-branch datum left: the loading ratio `rho_alpha`.
 
-Stage 71 fixed that datum on the natural minimal isotropic passive/outgoing branch.
-Stage 72 shows what that means numerically:
+Stage 088 fixed that datum on the natural minimal isotropic passive/outgoing branch.
+Stage 089 shows what that means numerically:
 
 > **the explicit Family-1 support/source branch passes the minimal isotropic passive/outgoing quadrupole test with large margin.**
 
@@ -128,7 +128,7 @@ It is now the deeper question of whether the actual moving-throat grouped-`P2` /
 
 ---
 
-## 5. Best current theorem statement after Stage 72
+## 5. Best current theorem statement after Stage 089
 
 Under the natural unblocked contact-plus-pole realization of the minimal isotropic passive/outgoing quadrupole branch,
 

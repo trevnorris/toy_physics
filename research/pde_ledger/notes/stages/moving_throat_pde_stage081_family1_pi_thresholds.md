@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Stage 63 translated the explicit Family-1 wall-depth verdict into the support-ratio demand variable `zeta_req`.
+Stage 080 translated the explicit Family-1 wall-depth verdict into the support-ratio demand variable `zeta_req`.
 
-The last honest step in this explicit-branch phase is to put the result back into the exact quadrupole branch-product language used by Stages 34–35.
+The last honest step in this explicit-branch phase is to put the result back into the exact quadrupole branch-product language used by Stages 51–52.
 
 This stage does that.
 
@@ -32,9 +32,9 @@ So the entire remaining explicit Family-1 theorem gap is now compressed to a ver
 
 ---
 
-## 1. Exact inversion of the Stage-35 support-demand law
+## 1. Exact inversion of the Stage-052 support-demand law
 
-Stage 35 gave
+Stage 052 gave
 
 `zeta_req = (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ],`
 
@@ -69,7 +69,7 @@ So the product demand grows strictly with the support-ratio demand.
 
 ## 2. Explicit Family-1 success and failure thresholds in `Pi_tr`
 
-Insert the Stage-63 Family-1 thresholds.
+Insert the Stage-080 Family-1 thresholds.
 
 Define
 
@@ -99,7 +99,7 @@ So the Family-1 explicit-branch result is now written directly in the same branc
 
 ## 3. Hard explicit Family-1 ceiling in product form
 
-Stage 62 gave the hard support-ratio ceiling
+Stage 079 gave the hard support-ratio ceiling
 
 `zeta_req <= zeta_max^(F1) ≈ 2.46752922945601.`
 
@@ -154,9 +154,9 @@ So the natural shell-weighted Family-1 branch at `lambda_mu = 1` already pushes 
 
 The explicit Family-1 branch now has a completely closed reduced theorem statement.
 
-- Stage 61 showed that wall-depth supply is not the dominant open issue.
-- Stage 62 converted the remaining bottleneck into a hard support-ratio ceiling `zeta_max^(F1)`.
-- Stage 63 translated the Stage-61 wall verdict into the demanded support-ratio variable `zeta_req`.
+- Stage 078 showed that wall-depth supply is not the dominant open issue.
+- Stage 079 converted the remaining bottleneck into a hard support-ratio ceiling `zeta_max^(F1)`.
+- Stage 080 translated the Stage-078 wall verdict into the demanded support-ratio variable `zeta_req`.
 - This stage finally expresses the result directly in the selected-branch product variable `Pi_tr`.
 
 So the remaining explicit theorem gap is now as narrow as it can be without solving the final outgoing quadrupole normalization branch itself:

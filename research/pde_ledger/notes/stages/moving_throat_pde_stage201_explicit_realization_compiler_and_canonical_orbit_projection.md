@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage 243 orbit/quotient projector calculus, the Stage 249 finite restoration law, and the Stage 251 exact reference-free full home-stretch theorem.**
+**Exact within the carried Stage 192 orbit/quotient projector calculus, the Stage 198 finite restoration law, and the Stage 200 exact reference-free full home-stretch theorem.**
 
 This stage does **not** introduce a new constitutive law.
 It turns the already-carried home-stretch theorem into an explicit realizability compiler that can be applied directly to any candidate moving-throat branch.
@@ -11,7 +11,7 @@ It turns the already-carried home-stretch theorem into an explicit realizability
 
 ## Purpose
 
-Stage 251 completed the reduced home stretch in theorem form:
+Stage 200 completed the reduced home stretch in theorem form:
 \[
 \Delta_{\rm full}=0
 \iff
@@ -52,7 +52,7 @@ The main outputs are:
    \]
    where `\(\mathcal Z_*:=\{\mathbf x\in\mathcal O_*:\chi_Q(\mathbf x)=1\}\)` is the fully closed target set.
 
-So Stage 252 is the first exact **operational** realization test of the completed branch.
+So Stage 201 is the first exact **operational** realization test of the completed branch.
 
 ---
 
@@ -68,7 +68,7 @@ Let the positive microscopic state be
 }
 \]
 
-Carry forward the three exact coherent monomials from the Stage 238 / Stage 243 quotient hierarchy:
+Carry forward the three exact coherent monomials from the Stage 187 / Stage 192 quotient hierarchy:
 \[
 \mathfrak C_{{\rm tr},*}(\mathbf x),
 \qquad
@@ -186,7 +186,7 @@ Equivalently, the exact multiplicative chart is
 }
 \]
 
-By Stage 249/250, the exact mismatch chart is
+By Stage 198/199, the exact mismatch chart is
 \[
 \boxed{
 \mathcal M_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
@@ -233,13 +233,13 @@ So the exact closure criterion is already
 }
 \]
 
-This is the intrinsic version of Stage 251.
+This is the intrinsic version of Stage 200.
 
 ---
 
 ## 3. Exact canonical dependent-triple repair vector
 
-Carry forward the Stage 243 exact quotient map
+Carry forward the Stage 192 exact quotient map
 \[
 \boxed{
 \mathbf q=
@@ -275,7 +275,7 @@ and the exact canonical **repair** vector is
 }
 \]
 
-Using the explicit Stage 243 section, this becomes
+Using the explicit Stage 192 section, this becomes
 \[
 \boxed{
 \Delta\mathbf x_{\rm rep}
@@ -375,14 +375,14 @@ K_\eta^{(\mathrm{eff})}\,e^{q_\eta},
 }
 \]
 
-So Stage 249’s restoration law is exactly the canonical target-orbit projection of the Stage 251 intrinsic packet.
+So Stage 198’s restoration law is exactly the canonical target-orbit projection of the Stage 200 intrinsic packet.
 
 ---
 
 ## 5. Exact target-orbit projection theorem
 
 \[
-\boxed{\textbf{Theorem (Stage 252 canonical orbit projection).}}
+\boxed{\textbf{Theorem (Stage 201 canonical orbit projection).}}
 \]
 
 For any positive microscopic state `\(\mathbf x\)` and any target orbit `\(\mathcal O_*\)` in the carried coherent quotient hierarchy:
@@ -434,7 +434,7 @@ q_{\rm tr}=q_{\rm nt}=q_\eta=0
 }
 \]
 
-Therefore the Stage 251 full closure theorem can be rewritten in the most explicit audit form so far:
+Therefore the Stage 200 full closure theorem can be rewritten in the most explicit audit form so far:
 \[
 \boxed{
 \mathbf x\in\mathcal Z_*
@@ -519,10 +519,10 @@ So the fully nonlinear intrinsic packet and the exact projector calculus already
 
 ---
 
-## 9. What Stage 252 changes in the theorem problem
+## 9. What Stage 201 changes in the theorem problem
 
-Stage 251 completed the reduced theorem logically.
-Stage 252 makes it executable.
+Stage 200 completed the reduced theorem logically.
+Stage 201 makes it executable.
 
 ### 9.1 Packet B is now directly computable from target monomial values
 
@@ -534,7 +534,7 @@ The exact repair vector is carried only by
 \[
 (T_U,\ K_\eta^{(\mathrm{eff})},\ \mu_W),
 \]
-and it is given algebraically by the Stage 249 restoration law.
+and it is given algebraically by the Stage 198 restoration law.
 
 ### 9.3 The realization audit has become fully procedural
 
@@ -565,4 +565,4 @@ That means:
    \]
    to locate the unique same-free-quintuple point on the target orbit.
 
-That is the first truly explicit realization audit after Stage 252.
+That is the first truly explicit realization audit after Stage 201.

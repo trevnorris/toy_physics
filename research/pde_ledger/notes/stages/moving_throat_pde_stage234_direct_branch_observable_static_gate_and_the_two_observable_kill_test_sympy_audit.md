@@ -2,7 +2,7 @@
 
 ## Status
 
-**Exact within the carried Stage-250 same-charge reduction and the later `5`PN direct-branch observable compiler.**
+**Exact within the carried Stage-233 same-charge reduction and the later `5`PN direct-branch observable compiler.**
 
 This stage does **not** introduce a new physical mechanism.
 It rewrites the unresolved rigid-mouth orbit-lock problem in the sharpest actual-branch variables currently available:
@@ -11,7 +11,7 @@ It rewrites the unresolved rigid-mouth orbit-lock problem in the sharpest actual
 R_{\rm tr},\qquad R_{\rm target},\qquad \epsilon_\eta.
 \]
 
-The main new result is stronger than the Stage-250 wording:
+The main new result is stronger than the Stage-233 wording:
 
 > at first weak-axisymmetric order, the surviving static same-charge gate is already independent of the tracking observable \(R_{\rm tr}\). Once the coherent branch is written in direct observables, the remaining static bottleneck lives entirely on the two-observable plane \((R_{\rm target},\epsilon_\eta)\).
 
@@ -21,7 +21,7 @@ So the “rigid mouth” picture remains useful as an interpretation, but the ex
 
 ## Purpose
 
-Stage 250 used the carried Stage 239 observable compiler to show that on a track-locked branch
+Stage 233 used the carried Stage 188 observable compiler to show that on a track-locked branch
 \[
 \delta\ln R_{\rm tr}=0
 \quad\Longrightarrow\quad
@@ -211,13 +211,13 @@ So the tracking contribution cancels exactly, and
 \boxed{\partial_{\delta\ln R_{\rm tr}}\Xi_1=0.}
 \]
 
-This is stronger than the Stage-250 wording. It means the surviving first-order static same-charge gate is already **mouth-blind** in the direct observable chart.
+This is stronger than the Stage-233 wording. It means the surviving first-order static same-charge gate is already **mouth-blind** in the direct observable chart.
 
 ### 3.2 Support/source rescaling decouples from the direct static gate
 
 The later `5`PN direct-branch notes further show that, once the branch is charted by \((R_{\rm tr},R_{\rm target},\epsilon_\eta)\), the first-order defect packet is blind to the total support-compensation baseline and to the coherent support-enhancement ratio. This stage takes that carried result as input rather than rederiving it.
 
-So the Stage-249 support/source verdict and the Stage-250 static gate are genuinely distinct theorem pieces.
+So the Stage-232 support/source verdict and the Stage-233 static gate are genuinely distinct theorem pieces.
 
 ---
 
@@ -246,7 +246,7 @@ And at first order,
 \boxed{q_{\rm nt}=\Xi_1.}
 \]
 
-So the Stage-250 statement
+So the Stage-233 statement
 \[
 \Xi_1 = \delta\ln \mathfrak N_*
 \]
@@ -273,7 +273,7 @@ Then the entire first-order same-charge placement scalar is
 \boxed{\Xi_1 = -R_1 - c_\eta E_1.}
 \]
 
-So the Stage-241 / Stage-250 static ceilings become exact two-observable band conditions.
+So the Stage-224 / Stage-233 static ceilings become exact two-observable band conditions.
 
 ### 5.1 Robust static gate
 
@@ -375,10 +375,10 @@ So even before the full PDE branch is known, the direct observable chart already
 
 ## 7. What changes in the physical interpretation
 
-Stage 250 suggested:
+Stage 233 suggested:
 - rigid mouth \(\Rightarrow\) the corrected internal transfer observable \(\mathfrak N_*\) carries the first unresolved scalar.
 
-Stage 251 sharpens that statement:
+Stage 234 sharpens that statement:
 - at first order, the same unresolved scalar is already
   \[
   \Xi_1=-\delta\ln R_{\rm target}-c_\eta\,\delta\ln\epsilon_\eta,
@@ -392,7 +392,7 @@ A “hyper-trumpet choke” or “internal repackaging” reading is still consi
 
 ---
 
-## 8. Best current verdict after Stage 251
+## 8. Best current verdict after Stage 234
 
 The same-charge corridor is still alive, but the unresolved static bottleneck has narrowed again.
 

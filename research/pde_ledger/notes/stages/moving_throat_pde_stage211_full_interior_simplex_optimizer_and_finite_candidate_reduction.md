@@ -2,17 +2,17 @@
 
 ## Status
 
-**Exact within the carried Stage 244 interior-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer is not sitting on an artificial chart boundary of that window.**
+**Exact within the carried Stage 210 interior-simplex framework, once a compact interior ratio window and the corresponding validity map are supplied, and provided the optimizer is not sitting on an artificial chart boundary of that window.**
 
-The true simplex boundaries are already closed by Stage 243 and imported into Stage 244, so this stage addresses only the genuinely new content: the **interior** optimizer on a three-coordinate mixed simplex.
+The true simplex boundaries are already closed by Stage 209 and imported into Stage 210, so this stage addresses only the genuinely new content: the **interior** optimizer on a three-coordinate mixed simplex.
 
 ---
 
 ## Purpose
 
-Stage 244 proved three things at once.
+Stage 210 proved three things at once.
 
-1. Every boundary face of the positive three-coordinate simplex is already one of the Stage 243 pairwise cones.
+1. Every boundary face of the positive three-coordinate simplex is already one of the Stage 209 pairwise cones.
 2. A genuine interior triple ray always beats the pairwise edges at the purely first-order gradient level.
 3. The smallest honest interior audit is the five-row screen made from three optimized pairwise boundary rows plus two canonical interior rows.
 
@@ -27,10 +27,10 @@ The main outputs are:
 1. the exact two-component stationary system for the interior ratio patch,
 2. the exact elimination of the square root into one **quartic** and one **sextic** polynomial condition,
 3. the exact finite algebraic pre-candidate set for all interior stationary rays,
-4. two exact special reductions explaining why the Stage 244 canonical interior screens were the right first screens,
+4. two exact special reductions explaining why the Stage 210 canonical interior screens were the right first screens,
 5. and the exact full interior winner theorem against the already-optimized pairwise boundaries.
 
-So Stage 245 is the three-coordinate analogue of Stage 243: the interior optimizer is no longer a deferred continuum search; it is a finite algebraic candidate problem.
+So Stage 211 is the three-coordinate analogue of Stage 209: the interior optimizer is no longer a deferred continuum search; it is a finite algebraic candidate problem.
 
 ---
 
@@ -101,7 +101,7 @@ The exact interior discriminant numerator is then
 A_\star+B_\star r+C_\star s+D_\star r^2+E_\star r s+F_\star s^2.
 }
 \]
-The Stage 244 fixed-point comparison root becomes
+The Stage 210 fixed-point comparison root becomes
 \[
 \boxed{
 \tau_{ijk,\star}(r,s)
@@ -215,7 +215,7 @@ So every interior stationary point satisfies
 
 For either the upper or lower certified interior objective, every interior stationary mixed ray is a common zero of the two explicit square-root numerators `\(\mathcal N_{r,\star}\)` and `\(\mathcal N_{s,\star}\)`.
 
-This is the exact two-parameter analogue of the Stage 243 pairwise stationary-numerator theorem.
+This is the exact two-parameter analogue of the Stage 209 pairwise stationary-numerator theorem.
 
 ---
 
@@ -352,13 +352,13 @@ So the interior optimized bracket is obtained by finite evaluation:
 }
 \]
 
-The true simplex boundaries are already solved by Stage 243 and imported in Stage 244, so this is the only genuinely new interior algebraic candidate problem.
+The true simplex boundaries are already solved by Stage 209 and imported in Stage 210, so this is the only genuinely new interior algebraic candidate problem.
 
 ---
 
 ## 5. Two exact special reductions
 
-These two reductions justify the Stage 244 canonical interior screens.
+These two reductions justify the Stage 210 canonical interior screens.
 
 ### 5.1 Diagonal-isotropic curvature reduction
 
@@ -383,7 +383,7 @@ so
 \]
 The right-hand side depends only on the first-order slope magnitude `\(k_{ijk}(r,s)\)`, and is strictly decreasing in that quantity on the admissible branch.
 
-Therefore the exact optimizer is the Stage 244 gradient-optimal interior ray
+Therefore the exact optimizer is the Stage 210 gradient-optimal interior ray
 \[
 \boxed{
 \mathbf a_{ijk}^{\rm grad}
@@ -391,7 +391,7 @@ Therefore the exact optimizer is the Stage 244 gradient-optimal interior ray
 \frac{(k_i,k_j,k_k)}{\sqrt{k_i^2+k_j^2+k_k^2}}.
 }
 \]
-So the Stage 244 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
+So the Stage 210 gradient screen is not merely heuristic: it becomes the exact interior optimizer whenever the curvature envelope is diagonal-isotropic.
 
 ### 5.2 Full triple-symmetry reduction
 
@@ -421,13 +421,13 @@ So the equal-mix barycenter
 \]
 is an exact interior stationary ray. On a symmetric admissible window it is therefore the exact optimizer.
 
-So the Stage 244 equal-mix screen also has an exact theorem regime behind it.
+So the Stage 210 equal-mix screen also has an exact theorem regime behind it.
 
 ---
 
 ## 6. Exact interior winner theorem against the optimized pairwise boundaries
 
-Keep the Stage 243 optimized pairwise boundary brackets
+Keep the Stage 209 optimized pairwise boundary brackets
 \[
 \tau_{ij,\min}^{\rm lo},\qquad \tau_{ik,\min}^{\rm lo},\qquad \tau_{jk,\min}^{\rm lo},
 \]
@@ -469,13 +469,13 @@ If
 \]
 then no admissible interior stationary candidate beats the best pairwise boundary winner.
 
-So after Stage 245 the three-coordinate simplex no longer needs a free-form interior search to be compared with the already-optimized pairwise cones. The comparison is again finite and certified.
+So after Stage 211 the three-coordinate simplex no longer needs a free-form interior search to be compared with the already-optimized pairwise cones. The comparison is again finite and certified.
 
 ---
 
 ## 7. Minimal packet for the next stage
 
-After Stage 245, the genuinely new three-coordinate content is compressed to the finite interior candidate problem plus the already-imported pairwise boundaries.
+After Stage 211, the genuinely new three-coordinate content is compressed to the finite interior candidate problem plus the already-imported pairwise boundaries.
 
 The smallest exact packet for the next stage is
 \[
@@ -497,15 +497,15 @@ The natural continuation is now completely sharp:
 
 > rank the full set of primitive triples by their finite certified interior winners, splice those winners together with the optimized boundary ledger, and determine whether any three-coordinate simplex truly beats all pairwise branches in the carried local search.
 
-That is the natural content of Stage 246.
+That is the natural content of Stage 212.
 
 ---
 
-## 8. Best current reading after Stage 245
+## 8. Best current reading after Stage 211
 
-Stage 243 turned every pairwise cone into a finite certified candidate problem.
-Stage 244 proved that the three-coordinate simplex has genuinely new interior content and isolated the first canonical interior screens.
-Stage 245 now closes the missing algebraic step:
+Stage 209 turned every pairwise cone into a finite certified candidate problem.
+Stage 210 proved that the three-coordinate simplex has genuinely new interior content and isolated the first canonical interior screens.
+Stage 211 now closes the missing algebraic step:
 
 1. the interior stationary system is explicit,
 2. the square root is eliminated exactly into one quartic and one sextic condition,

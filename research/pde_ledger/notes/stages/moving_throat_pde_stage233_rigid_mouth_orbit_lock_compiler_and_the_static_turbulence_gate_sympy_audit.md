@@ -143,7 +143,7 @@ That is the precise reduced sense in which “the entrance is rigid but the insi
 
 ## 4. Stronger operator-rigidity specialization
 
-Stages 241 and 242 already showed that the weak-axisymmetric static load scalar is
+Stages 226 and 227 already showed that the weak-axisymmetric static load scalar is
 \[
 \Xi_{\rm load}
 =

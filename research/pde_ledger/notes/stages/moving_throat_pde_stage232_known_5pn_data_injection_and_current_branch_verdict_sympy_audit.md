@@ -331,7 +331,7 @@ More precisely:
 3. **Support/source enhancement** is now numerically located and strongly non-bottlenecked.
 4. The first unresolved gate is still the **actual PDE-selected static orbit-lock / placement point**.
 
-So after Stage 249 the question is no longer:
+So after Stage 232 the question is no longer:
 
 > can the reduced support/source side possibly be large enough?
 

@@ -13,7 +13,7 @@ This stage does **not** solve the full driven two-throat PDE. It asks a narrower
 
 ## Purpose
 
-Stage 239 showed that the linear same-charge corridor does **not** immediately die on the explicit primitive finite-throat branch. But that result was still too loose, because the primitive slice had not yet been forced onto the exact isotropic target surface already isolated by the `5`PN / `2.5`PN / `4`PN moving-throat endgame.
+Stage 222 showed that the linear same-charge corridor does **not** immediately die on the explicit primitive finite-throat branch. But that result was still too loose, because the primitive slice had not yet been forced onto the exact isotropic target surface already isolated by the `5`PN / `2.5`PN / `4`PN moving-throat endgame.
 
 So the next honest question is:
 
@@ -23,11 +23,11 @@ The main outputs are:
 
 1. the exact symbolic compatibility equation between the isotropic one-pole condition and the isotropic outgoing-normalization condition,
 2. its specialization to the explicit primitive finite-throat one-port family,
-3. one concrete compatibility branch on the Stage-239 sample slice,
+3. one concrete compatibility branch on the Stage-222 sample slice,
 4. the resulting compatibility-branch pole census,
 5. and a finite **dynamic survival window** in the branch-compatible target parameter.
 
-So after Stage 240, the problem is no longer merely “find a good pole.” It is:
+So after Stage 223, the problem is no longer merely “find a good pole.” It is:
 
 > can the same branch support a good pole **while also lying on the `5`PN-compatible isotropic target surface**?
 
@@ -35,7 +35,7 @@ So after Stage 240, the problem is no longer merely “find a good pole.” It i
 
 ## 1. Frozen input carried forward
 
-### 1.1 Primitive finite-throat one-port branch from Stage 239
+### 1.1 Primitive finite-throat one-port branch from Stage 222
 
 Keep the same explicit finite-throat branch:
 
@@ -196,13 +196,13 @@ or equivalently
 
 So on the primitive family the isotropic `5`PN-compatible surface is already a single explicit algebraic relation in the radial/axial couplings and frequencies.
 
-That is a substantial tightening compared with Stage 239.
+That is a substantial tightening compared with Stage 222.
 
 ---
 
 ## 4. Concrete sample compatibility branch
 
-Now specialize to the same Stage-239 sample values
+Now specialize to the same Stage-222 sample values
 \[
 (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
 =
@@ -260,7 +260,7 @@ K_{\mathrm{compat}}
 \approx 24.4737548792910.
 }
 \]
-So the compatibility branch is much stiffer than the loose Stage-239 sample branch. Its compatible static denominator is
+So the compatibility branch is much stiffer than the loose Stage-222 sample branch. Its compatible static denominator is
 \[
 D_{0,\mathrm{compat}}
 =
@@ -270,7 +270,7 @@ K_{\mathrm{compat}}-B_0-Z_0
 
 This is already informative.
 
-The Stage-239 sample branch had
+The Stage-222 sample branch had
 \[
 P_0\approx 0.0181527764203329,
 \]
@@ -326,7 +326,7 @@ That is already a nontrivial structural simplification.
 
 ## 6. Dynamic survival window on the compatibility surface
 
-Carry forward the same illustrative local barrier benchmark from Stage 239 at \(x=1\):
+Carry forward the same illustrative local barrier benchmark from Stage 222 at \(x=1\):
 \[
 V_{\mathrm{known}}(1)\approx 1.181909222592,
 \qquad
@@ -360,7 +360,7 @@ This scan shows a clean monotonic tradeoff on the explicit compatibility family:
 - the same move lowers the required wall stiffness \(K_{\mathrm{compat}}\),
 - and both wall-like dynamic figures \(\mathcal R_Q\) fall monotonically.
 
-So the static/dynamic tension from Stage 239 survives **even after** the branch is forced onto the exact `5`PN isotropic target surface.
+So the static/dynamic tension from Stage 222 survives **even after** the branch is forced onto the exact `5`PN isotropic target surface.
 
 ### 6.1 Finite survival windows
 
@@ -396,9 +396,9 @@ That is the sharpest same-charge compatibility statement reached so far.
 
 ---
 
-## 7. What Stage 240 changes
+## 7. What Stage 223 changes
 
-Stage 240 does **not** prove the same-charge idea works. But it materially tightens the status.
+Stage 223 does **not** prove the same-charge idea works. But it materially tightens the status.
 
 Before this stage, the dynamic corridor lived on a primitive branch that had not yet been forced to satisfy the exact isotropic `5`PN surface.
 
@@ -422,7 +422,7 @@ The internal poles are dynamically irrelevant on the compatibility branch. So th
 
 ---
 
-## 8. Best current verdict after Stage 240
+## 8. Best current verdict after Stage 223
 
 The idea is still alive.
 

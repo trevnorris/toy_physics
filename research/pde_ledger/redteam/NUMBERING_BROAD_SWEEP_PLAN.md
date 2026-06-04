@@ -146,6 +146,28 @@ every per-file stale source-number fully gone (0 residual).
   3 refs, etc.) — the classifiers' full in-note grep caught them (lesson: the worklist undercounts dense lines).
 - **GENUINE-left:** stage189 (2× "Stage 190") and stage192 (2× "Stage 193") are real next-stage refs → 0 edits.
 
+### Batch 5 (band 201–234) — ✅ DONE 2026-06-03
+5 parallel read-only classifiers (211 / 201 / 204+202 / 234+223 / 216+12-singletons) + orchestrator
+anchor-verify (incl. the mixed/unusual offsets) + 5 parallel appliers. **80 label-only edits / 7 notes.**
+Strip-all-digits proof: only numbers changed; per-file residuals 0; titles intact.
+- **stage211** (21 lines, uniform −34): 243→209, 244→210, 245→211(SELF), 246→212 (cross-confirmed by stage212's canonical convention).
+- **stage201** (16, +51): 238→187, 243→192, 249→198, 250→199, 251→200, 252→201(SELF); compound "249/250"→"198/199".
+- **stage204** (18, MIXED, content-mapped not swept): 237→203 (×10), 253→202 (×4), 238→204 (×4 SELF), 243→192.
+- **stage223** (13, −17): 239→222 (×9), 240→223 (×4 SELF).
+- **stage234** (10, MIXED): 250→233 (×8), 251→234 (×2 SELF), 241→224, 249→232, 239→188 — three distinct offsets in one note, content-mapped.
+- **stage232** 249→232 (SELF, +17); **stage233** "Stages 241 and 242"→"226 and 227" (+15, unusual — corroborated by stage233's own status line citing canonical "Stage-226").
+- **GENUINE-left (batch-5E):** stage202 (0 edits) + the simplex-ladder notes 207/208/210/212/213/214/215/216/217/222/228 — all forward refs are real next-stage "should build…" pipeline refs; backward ranges (210→206–209, 228→223–227, 216→215/213/212) content-match; stage216 `\mathcal S_5^{can}` = math object (support cardinality), not a stage. **Lesson reaffirmed: the simplex/ray ladder (207–218) cites neighbors genuinely; only 2 of those 13 notes had any stale ref.**
+
+## ✅ BROAD SWEEP (PRIMARY) COMPLETE — 2026-06-03
+All 5 gated batches done. **~240 label-only line-edits across ~31 notes**, every one content-mapped
+(never offset-swept) and mechanically verified label-only. Commits: batch1 `7f14506`, batch2 `172b657`,
+batch3 `9f6bb7b`, batch4 `506fcbb`, batch5 `<this>`. Multi-epoch throughout (−17/−34/−51/−68/−85 forward
++ +15/+17 backward + self-refs), often several epochs in ONE note. Confirmed GENUINE-left where the cited
+stage is the real next/neighbor (the 235–253 endgame pipeline + the 207–218 simplex ladder) — never swept.
+Inventory lesson: `broad_sweep_scan.py`'s regex undercounts multi-token lines / `post-NNN` / compound
+"N/M" tokens; the classifiers' full per-note grep caught the remainder. **REMAINING = SECONDARY only**
+(2354 backward bare refs, a MIX of stale-+17 and genuine) — held for a separate decision.
+
 ### Calibration finding — SECONDARY is NOT "mostly genuine"
 While in the 4 notes the classifier found content-confirmed STALE **backward-number** refs
 at the dominant **+17** epoch (canonical = cited+17), which the forward-only PRIMARY filter

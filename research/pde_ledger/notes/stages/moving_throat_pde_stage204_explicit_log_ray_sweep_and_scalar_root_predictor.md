@@ -2,16 +2,16 @@
 
 ## Status
 
-**Exact within the carried Stage 253 free-quintuple target graph and the Stage 237 scalar graph-slice theorem.**
+**Exact within the carried Stage 202 free-quintuple target graph and the Stage 203 scalar graph-slice theorem.**
 
 This stage does **not** introduce a new constitutive law.
-It turns the abstract one-parameter family of Stage 237 into an explicit, audit-ready family generator on the five free microscopic coordinates and reduces the local branch search to a scalar root problem on a logarithmic ray.
+It turns the abstract one-parameter family of Stage 203 into an explicit, audit-ready family generator on the five free microscopic coordinates and reduces the local branch search to a scalar root problem on a logarithmic ray.
 
 ---
 
 ## Purpose
 
-Stage 237 proved that once the target orbit is written as the exact free-quintuple graph
+Stage 203 proved that once the target orbit is written as the exact free-quintuple graph
 \[
 \mathbf x_*^{\rm graph}(\mathbf y),
 \]
@@ -39,9 +39,9 @@ The main outputs are:
    \Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)),
    \]
 6. the monotone-ray uniqueness theorem,
-7. and the exact affine and log-linear root predictors that turn the Stage 237 crossing test into a concrete local branch-audit tool.
+7. and the exact affine and log-linear root predictors that turn the Stage 203 crossing test into a concrete local branch-audit tool.
 
-So Stage 238 is the first fully explicit **family compiler** for the reduced home stretch.
+So Stage 204 is the first fully explicit **family compiler** for the reduced home stretch.
 
 ---
 
@@ -54,7 +54,7 @@ The free quintuple is
 (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
 }
 \]
-The exact Stage 253 target graph gives the dependent triple
+The exact Stage 202 target graph gives the dependent triple
 \[
 (T_U^{\rm graph}(\mathbf y),\ K_{\eta,*}^{\rm graph}(\mathbf y),\ \mu_W^{\rm graph}(\mathbf y))
 \]
@@ -70,7 +70,7 @@ K_W^{(\mathrm{eff})},
 T_U^{\rm graph}(\mathbf y)).
 }
 \]
-By Stage 237,
+By Stage 203,
 \[
 \boxed{
 \mathcal Z_*
@@ -155,7 +155,7 @@ Then
 }
 \]
 So every smooth free-quintuple path is locally represented, to first order, by a unique log-ray.
-This is why the log-ray family is the natural Stage 237 continuation for local branch auditing.
+This is why the log-ray family is the natural Stage 203 continuation for local branch auditing.
 
 ---
 
@@ -192,7 +192,7 @@ Define the four dependent exponents
 +F_*\sigma_\delta(\mathbf s).
 }
 \]
-Then the exact Stage 253 target graph along the ray is
+Then the exact Stage 202 target graph along the ray is
 \[
 \boxed{
 \delta_{U,*}^{\rm graph}(\tau)
@@ -256,7 +256,7 @@ The corresponding constant microscopic log-tangent is
 
 ## 4. Exact finite monomial invariance theorem on the graph ray
 
-The three Stage 253 target monomials are
+The three Stage 202 target monomials are
 \[
 \mathfrak C_{{\rm tr},*},
 \qquad
@@ -295,8 +295,8 @@ Therefore
 }
 \]
 
-This is the finite version of the Stage 237 kernel theorem.
-Equivalently, the exact Stage 243 quotient map annihilates the constant ray tangent:
+This is the finite version of the Stage 203 kernel theorem.
+Equivalently, the exact Stage 192 quotient map annihilates the constant ray tangent:
 \[
 \boxed{
 M_*\dot{\Delta\mathbf x}_{\mathbf s}^{\rm graph}=0.
@@ -365,7 +365,7 @@ and the scalar residual
 \Delta_{\mathbf s}(\tau):=\Phi_{\mathbf s}(\tau)-1.
 }
 \]
-Then Stage 237 immediately becomes
+Then Stage 203 immediately becomes
 \[
 \boxed{
 \mathbf x_{\mathbf s}^{\rm graph}(\tau)\in\mathcal Z_*
@@ -421,7 +421,7 @@ has a fixed sign on that interval, then `\(\Phi_{\mathbf s}(\tau)\)` is monotone
 So:
 
 \[
-\boxed{\textbf{Theorem (Stage 238 monotone-ray uniqueness theorem).}}
+\boxed{\textbf{Theorem (Stage 204 monotone-ray uniqueness theorem).}}
 \]
 
 If
@@ -439,7 +439,7 @@ with
 \boxed{\Phi_{\mathbf s}(\tau_*)=1.}
 \]
 
-So the scalar graph-slice theorem of Stage 237 becomes a practical uniqueness test as soon as one can certify monotonicity along the chosen free-quintuple ray.
+So the scalar graph-slice theorem of Stage 203 becomes a practical uniqueness test as soon as one can certify monotonicity along the chosen free-quintuple ray.
 
 ---
 
@@ -495,9 +495,9 @@ Near the scalar slice, they are equivalent to first order.
 
 ---
 
-## 9. Best current reading after Stage 238
+## 9. Best current reading after Stage 204
 
-The Stage 237 scalar graph-slice theorem is now fully operational.
+The Stage 203 scalar graph-slice theorem is now fully operational.
 
 The reduced closure search no longer needs a vague “family” in the free quintuple.
 It now has an explicit audit-ready one-parameter generator:
@@ -509,7 +509,7 @@ Its graph lift is exact, its monomial invariants are exact, its Packet-B quotien
 \widehat\chi_Q(\mathbf y_{\mathbf s}(\tau))=1.
 \]
 
-So after Stage 238 the next honest step is no longer to invent a family parameterization.
+So after Stage 204 the next honest step is no longer to invent a family parameterization.
 It is to compute, on candidate free-quintuple rays,
 
 1. the scalar `\(\Phi_{\mathbf s}(0)=\widehat\chi_Q(\mathbf y_\circ)\)`,

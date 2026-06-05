@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 20 — CONTINUUM-KERNEL EXTRACTION AUDIT
+STAGE 37 — CONTINUUM-KERNEL EXTRACTION AUDIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ Stable selected branch requires:
 with sigma = 88/(9*pi**2)
 
 ========================================================================================
-STAGE 20 AUDIT COMPLETE
+STAGE 37 AUDIT COMPLETE
 ========================================================================================
 The first explicit finite-throat continuum kernel reproduces the full reduced
 Stage-17/19 branch data exactly.

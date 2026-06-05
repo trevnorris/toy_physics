@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 23 SymPy audit.
+Moving-throat PDE — Stage 40 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -52,7 +52,7 @@ lam0 = sp.Rational(2, 9)
 
 banner("STAGE 40 — GENERALIZED SELECTED-BRANCH NORMALIZATION WITH SOURCE/LOADING MISMATCH")
 
-subbanner("23.1 — Exact 2x2 selected-branch solve with a generic loading ratio q = z1/z0")
+subbanner("40.1 — Exact 2x2 selected-branch solve with a generic loading ratio q = z1/z0")
 
 # Baseline wall matrix diag(A0, A1) with A1 = A0 (1 + delta), rank-1 loading alpha z z^T.
 lam_minus = A0 * (1 - xi)
@@ -78,7 +78,7 @@ eig_residual = sp.simplify(M_perturbed * e_minus - lam_minus * e_minus)
 expect_zero("eigenvector residual row 0", eig_residual[0])
 expect_zero("eigenvector residual row 1", eig_residual[1])
 
-subbanner("23.2 — Exact overlap formulas and generalized F,G functions")
+subbanner("40.2 — Exact overlap formulas and generalized F,G functions")
 
 z_overlap_sq = sp.simplify((1 + q * r)**2 / (1 + r**2))
 s_overlap_sq = sp.simplify((1 + eta * xi / (delta + xi))**2 / (1 + r**2))
@@ -98,7 +98,7 @@ G_expected = sp.simplify(xi * (delta + xi) / (delta + (1 + q**2) * xi))
 expect_zero("F_general - expected", F_general - F_expected)
 expect_zero("G_general - expected", G_general - G_expected)
 
-subbanner("23.3 — Specialization to the split-U continuum of Stage 22")
+subbanner("40.3 — Specialization to the split-U continuum of Stage 22")
 
 # For the physical split-U case, the source vector is the original v direction,
 # while the loading vector obeys z1/z0 = (kappa1/kappa0) R_U = -sqrt(lambda0) R_U.
@@ -121,7 +121,7 @@ G_stage19 = sp.simplify(9 * xi * (delta + xi) / (9 * delta + 11 * xi))
 expect_zero("F_U(R_U=1) - Stage18 F", sp.simplify(F_U.subs(R_U, 1) - F_stage18))
 expect_zero("G_U(R_U=1) - Stage19 G", sp.simplify(G_U.subs(R_U, 1) - G_stage19))
 
-subbanner("23.4 — Independent cross-check of first-order deformation about flat-U limit")
+subbanner("40.4 — Independent cross-check of first-order deformation about flat-U limit")
 
 # Define R_U-dependent q and eta substitutions parametrized by eps,
 # so that R_U = 1 + eps.
@@ -133,7 +133,7 @@ HF = sp.simplify(sp.diff(F_U.subs(R_U, 1 + eps), eps).subs(eps, 0) / F_stage18)
 HG = sp.simplify(sp.diff(G_U.subs(R_U, 1 + eps), eps).subs(eps, 0) / G_stage19)
 
 # Path 2 (independent): substitute the eps-parametrized (q, eta) into
-# the general two-vector functions F_general, G_general (section 23.2),
+# the general two-vector functions F_general, G_general (section 40.2),
 # then expand to first order in eps and read off the coefficient.
 F_general_eps = F_general.subs({q: q_U_eps, eta: eta_U_eps})
 G_general_eps = G_general.subs({q: q_U_eps})

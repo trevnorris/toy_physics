@@ -394,3 +394,45 @@ STAGE-007 LEDGER` + `.py "Stage-6"`; cross-refs 033 `Stage-15`=032, 036
 `Stage-18`=035). The MATH is verified clean regardless. Recommendation: a
 dedicated careful numbering pass over the script/output band, separate from the
 red-team loop. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch III.1 (2026-06-05)
+
+Pass-2 Batch III.1 (037-048, `Part III.1 — Continuum kernel, generalized branch,
+rank-2`, 12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive
+value-reconciliation augmentation; 12/12 verified, `material_change: false` on
+all 12, 0 stop-cold, 0 blocked, 0 Codex deviations, all iter-1 exit 0. Every
+emitted deliverable value reconciles — 143 values checked batch-wide, 0
+MISALIGNED, 0 MISSING-DELIVERABLE. All 12 are genuine dual-engine (both
+independent engines from pass 1; e.g. 039's `.wl` derives δ_split via
+`a1Direct/a0Expected−1`, 043's `.wl` uses `Det`/`Limit`/`Series` + numeric sign
+points); no new `.wl`, 0 sanctioned mirrors. NO checkpoints and NO EM-projected
+stages in range. **2 real script-side math findings→fixed→verified** (039, 043);
+**9 label-only self-label fixes→verified** (037,038,040,041,042,044,046,047,048);
+**1 deferred-clean→verified** (045). **039 — TWO findings:** (F1)
+`tautological_check` — the only `R_U` direction-factor check was identically true
+by construction (κ0 cancelled, `R_U` never referenced); replaced (both engines)
+with the falsifiable `z1/z0 − (κ1/κ0)·R_U == 0` (`R_U` defined independently from
+ρ0,δU). (F2) `insufficient_verification` — the surviving exact product law
+`R_target·M_mix = 8Λ(1−ε_W,split)/π²` was only `print`ed; added an `expect_zero`
+in both engines. (+ F3 label-only docstring/subbanner.) **043 — ONE finding:**
+(F2) `insufficient_verification` — the `M_supp` baseline check re-substituted the
+SAME literal `B=8/π²` into both sides of a `B`-symbolic identity (could not
+fail, never derived the number); replaced (both engines) with a check that
+DERIVES `B=κ0²=(9/11)·σ`, `σ=88/(9π²) ⇒ 8/π²`. (+ F1 label-only docstring/
+subbanner.) Both new-check sets PASS in both engines, engines agree, no
+regression; `material_change=false` (assertions added/strengthened over
+already-correct values, no verified RESULT value moved). The 9 label-only fixes
+canonicalized unambiguous SymPy self-labels (docstring filenames/headers,
+`.py` sub-stage `NN.k` indices, closing pass-lines, + 3 inline-comment self-refs
+the arbiter grep caught — 040:136 `(section 23.2)`→`40.2`, 041:107 `section
+24.1`→`41.1`) — every `.py` diff strip-the-number identical to HEAD; the `.wl`
+source was already canonical on all 12 (stale `.txt` outputs cured by the
+orchestrator re-run alone); same class as the I.2 stage-021 / II.1 032-036 fixes.
+045 deferred-clean (source self-labels already canonical + outputs fresh; only
+finding = 4 `Stage-27` CROSS-refs to upstream 044, deferred). No coverage count
+moved (all 12 already verified+dual-engine from pass 1).
+
+Numbering cross-refs (to OTHER stages) and one ambiguous self-vs-cross ref
+(047:121 `the exact Stage-30 support-loading coefficient`) left UNTOUCHED and
+deferred to `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING —
+content-keyed, never offset-sweep). Reference memory `numbering-drift-root-cause`.

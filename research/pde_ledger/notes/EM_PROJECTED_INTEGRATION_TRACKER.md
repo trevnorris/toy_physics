@@ -313,3 +313,17 @@ EM-projected identity — 024's NOTES-ONLY sixth-moment prefactor typo
 `stale_output` fixes (`Stage {15..19}`→`Stage {32..36}`). With I.1 + I.2 + II.1
 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-036) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch III.1 (2026-06-05)
+
+Pass-2 Batch III.1 (037-048, `Part III.1 — Continuum kernel, generalized branch,
+rank-2`) re-verified at v2 depth + value-reconciliation augmentation; 12/12
+verified, `material_change: false` on all 12. NO EM-projected stages in range —
+III.1 is the continuum-kernel / generalized-branch / rank-2 band, downstream of
+and outside the projected-Maxwell core (004-021). No projected-EM identity was
+touched: no EM result moved. (The two script-side math fixes — 039's
+de-tautologized `R_U` direction-factor check + 043's σ-derived `B=8/π²` baseline
+— and the 9 label-only self-label fixes are all confined to the III.1 band and
+touch no EM-projected identity.) With I.1 + I.2 + II.1 + III.1 pass-2 closed, the
+projected-EM core 004-021 (plus bookends 022-048) remains paper-aligned under the
+second pass.

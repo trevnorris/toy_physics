@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 21 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT
+STAGE 38 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ On the natural nonvanishing transfer branch 1+rho > 0:
   R_target decreases with eps_eta, eps_W, Z_W, rho
 
 ========================================================================================
-STAGE 21 AUDIT COMPLETE
+STAGE 38 AUDIT COMPLETE
 ========================================================================================
 The Stage-20 continuum operator collapses to an exact five-ratio placement map
 together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.

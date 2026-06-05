@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 27 SymPy audit.
+Moving-throat PDE — Stage 44 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -50,7 +50,7 @@ t = sp.symbols("t", real=True)
 
 banner("STAGE 44 — CONTINUUM-SELECTED RANK-2 CLOSURE")
 
-subbanner("27.1 — Exact continuum-selected branch equation and quadratic theorem")
+subbanner("44.1 — Exact continuum-selected branch equation and quadratic theorem")
 
 # Stage-24 support theorem with q=t RU and r=t Rphi, t^2=lambda0.
 q = sp.sqrt(lambda0) * RU
@@ -77,7 +77,7 @@ print("xi_phys =")
 sp.pprint(sp.factor(xi_phys))
 expect_zero("zero-load root", sp.simplify(xi_phys.subs({Mmix: 0, Msupp: 0})))
 
-subbanner("27.2 — Exact continuum-selected normalization function")
+subbanner("44.2 — Exact continuum-selected normalization function")
 
 # Stage-25 general normalization with q=t RU, r=t Rphi, source t=sqrt(lambda0).
 D_cont = sp.simplify(
@@ -108,7 +108,7 @@ F_lit_expected = sp.simplify(
 )
 expect_zero("third-slice F at Rphi=2", F_lit - F_lit_expected)
 
-subbanner("27.3 — Minimal-kernel source-tied surface")
+subbanner("44.3 — Minimal-kernel source-tied surface")
 
 Rphi_source = sp.Integer(1)
 n_source = sp.simplify(n_req.subs(Rphi, Rphi_source))
@@ -131,7 +131,7 @@ F_source_expected = sp.simplify(
 expect_zero("source-tied n", n_source - n_source_expected)
 expect_zero("source-tied F", F_source - F_source_expected)
 
-subbanner("27.4 — Interference-matched tracking surface")
+subbanner("44.4 — Interference-matched tracking surface")
 
 n_track = sp.simplify(n_req.subs(Rphi, RU))
 G_q = sp.simplify(xi * (delta + xi) / (delta + (1 + lambda0 * RU**2) * xi))
@@ -145,7 +145,7 @@ F_track_expected = sp.simplify(
 )
 expect_zero("tracking F collapse", F_track - F_track_expected)
 
-subbanner("27.5 — Exact mismatch penalty")
+subbanner("44.5 — Exact mismatch penalty")
 
 # Extract the xi-constant coefficient of branch_eq (the numerator of n_req - M_supp).
 # branch_eq = 9*(xi^2 + B_cont*xi + C_cont), so the constant-in-xi term is 9*C_cont.

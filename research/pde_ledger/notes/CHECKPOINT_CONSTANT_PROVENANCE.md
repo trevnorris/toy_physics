@@ -993,3 +993,18 @@ UNAFFECTED, and no derived or carried checkpoint constant MOVED (the 024
 to the verified `4 pi / 105`; the in-script value was always `4 pi / 105`). The
 032-036 fixes were script-label-only `stale_output` (no constant). NO checkpoint
 constant introduced or moved.
+
+## Pass 2 — Batch III.1 (2026-06-05)
+
+Pass-2 Batch III.1 (037-048): no checkpoints in range and no new checkpoint
+constants. (143 deliverable values checked batch-wide, 0 misaligned, 0
+MISSING-DELIVERABLE; `material_change: false` on all 12.) One PROVENANCE
+STRENGTHENING worth recording though no value moved: stage 043's `M_supp`
+baseline `B=κ0²=8/π²` is now DERIVED in-script from the stage's frozen overlap
+constant — `B=κ0²=(9/11)·σ` with `σ=88/(9π²) ⇒ 8/π²`, asserted via
+`expect_zero("baseline B = 8/pi^2 from frozen sigma", …)` in both engines —
+replacing the prior check that re-substituted the SAME literal `8/π²` into both
+sides of an already-`B`-symbolic identity (so it could never fail and never
+derived the number). The value `8/π²` is unchanged and matches notes:149+151
+exactly; the check now actually exercises it (fails if κ0² were mis-stated). No
+other provenance items; no carried checkpoint constant changed.

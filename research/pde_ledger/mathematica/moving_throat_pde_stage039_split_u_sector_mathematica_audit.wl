@@ -93,8 +93,8 @@ Print["z0 = ", fmt[z0]];
 Print["z1 = ", fmt[z1]];
 Print["R_U = ", fmt[rU]];
 expectZero[
-  "z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))",
-  z1*(1 + rho0) - (kappa1/kappa0)*z0*(1 + rho0/(1 + deltaU))
+  "z1/z0 - (kappa1/kappa0)*R_U",
+  z1/z0 - (kappa1/kappa0)*rU
 ];
 
 dDir = FullSimplify[kappa0 z1 - kappa1 z0, Assumptions -> $Assumptions];
@@ -129,6 +129,7 @@ product = FullSimplify[mMixSplit rTargetSplit, Assumptions -> $Assumptions];
 Print["M_mix^(split U) = ", fmt[mMixSplit]];
 Print["R_target^(split U) = ", fmt[rTargetSplit]];
 Print["product = ", fmt[product]];
+expectZero["product law survives", product - 8 lambda (1 - epsWSplit)/Pi^2];
 
 subbanner["5. Small-splitting expansions"];
 

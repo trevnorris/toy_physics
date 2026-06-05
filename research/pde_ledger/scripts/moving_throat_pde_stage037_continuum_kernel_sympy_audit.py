@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage20_continuum_kernel_sympy_audit.py
+moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
 
-Stage 20 SymPy audit:
+Stage 37 SymPy audit:
 derive the Stage-17/19 reduced branch data from the first explicit finite-throat
 continuum kernel and verify the exact closed formulas for
 

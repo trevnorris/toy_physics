@@ -885,3 +885,21 @@ self-labels (SymPy docstring + closing `All Stage NN checks passed.` print, + a
 `.wl` Print on 032 + a `.wl` sub-stage comment on 033) `Stage {15,16,17,18,19}`→
 `Stage {32,33,34,35,36}`, label-only, both engines re-run, ZERO math change (same
 class as the I.2 stage-021 `.wl:195` fix).
+
+## Pass 2 — Batch III.1 (2026-06-05)
+
+Pass-2 Batch III.1 (037-048, `Part III.1 — Continuum kernel, generalized branch,
+rank-2`): all 12 already had both independent engines from pass 1, and the
+re-audit re-confirmed genuine independence on every stage (e.g. 039's `.wl`
+derives δ_split via `a1Direct/a0Expected−1` vs SymPy's postulate-and-confirm;
+043's `.wl` uses `Det[…]`, `Limit[…, δU→∞]`, `Series`, and three numeric
+sign-test points with no SymPy counterpart). No new `.wl` built, 0 mirror
+reclassification, 0 sanctioned mirrors, no additions to the Independent-Mirror
+Set. The two `.wl`-touching stages (039, 043) were EDITED only to add the
+F-fix assertions (039: falsifiable `z1/z0 − (κ1/κ0)·R_U` direction-factor check
++ the surviving product-law `expect_zero`; 043: a σ-derived
+`B=κ0²=8/π²` baseline check) — the verify agents confirmed these remain
+independent routes, NOT transliterations of the SymPy paths. The 9 label-only
+self-label fixes (037,038,040,041,042,044,046,047,048) touched no `.wl` source
+(all 12 `.wl` were already canonical; their stale `.txt` outputs were cured by
+the orchestrator re-run alone).

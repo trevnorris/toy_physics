@@ -1,10 +1,10 @@
 
 ========================================================================================
-STAGE 24 — RANK-2 SUPPORT COMPLETION
+STAGE 41 — RANK-2 SUPPORT COMPLETION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-24.1 — Exact rank-2 determinant and support-loading theorem
+41.1 — Exact rank-2 determinant and support-loading theorem
 ----------------------------------------------------------------------------------------
 det(M - (1-xi)I) =
                         2                    2      2              2           ↪
@@ -22,7 +22,7 @@ n_req =
 n_req - expected = 0
 
 ----------------------------------------------------------------------------------------
-24.2 — Exact monotonicity with respect to mixed baseline loading
+41.2 — Exact monotonicity with respect to mixed baseline loading
 ----------------------------------------------------------------------------------------
 d n_req / d m =
                            2            
@@ -34,7 +34,7 @@ d n_req / d m =
 dn/dm - expected = 0
 
 ----------------------------------------------------------------------------------------
-24.3 — Tracking theorem: support follows the mixed direction
+41.3 — Tracking theorem: support follows the mixed direction
 ----------------------------------------------------------------------------------------
 n_req(r=q) =
  ⎛               2            2⎞ 
@@ -45,7 +45,7 @@ n_req(r=q) =
 tracking collapse = 0
 
 ----------------------------------------------------------------------------------------
-24.4 — Source-tied theorem: support remains aligned with the original source vector
+41.4 — Source-tied theorem: support remains aligned with the original source vector
 ----------------------------------------------------------------------------------------
 n_req^(src) =
      2                                  2
@@ -74,7 +74,7 @@ d n_req^(src) / d m =
 source-tied dn/dm = 0
 
 ========================================================================================
-STAGE 24 THEOREM LEDGER
+STAGE 41 THEOREM LEDGER
 ========================================================================================
 1. The selected rank-2 wall problem remains analytically solvable because the
    determinant is linear in the support loading n.

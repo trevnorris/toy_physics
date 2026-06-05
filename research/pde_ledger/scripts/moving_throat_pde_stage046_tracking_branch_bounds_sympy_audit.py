@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 29 SymPy audit.
+Stage 46 SymPy audit.
 
 Checks:
 1. Exact tracking-branch formulas G_tr and F_tr.
@@ -190,4 +190,4 @@ print("For 0 <= R <= 1:")
 print("  G_flat <= G_tr <= xi")
 print("  1/(1-xi) <= F_tr <= F_flat")
 
-print("\nAll Stage-29 symbolic checks passed.")
+print("\nAll Stage-46 symbolic checks passed.")

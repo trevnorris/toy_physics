@@ -1,10 +1,10 @@
 
 ========================================================================================
-STAGE 27 — CONTINUUM-SELECTED RANK-2 CLOSURE
+STAGE 44 — CONTINUUM-SELECTED RANK-2 CLOSURE
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-27.1 — Exact continuum-selected branch equation and quadratic theorem
+44.1 — Exact continuum-selected branch equation and quadratic theorem
 ----------------------------------------------------------------------------------------
 n_req^(cont) =
                 2                                      2      
@@ -52,7 +52,7 @@ xi_phys =
 zero-load root = 0
 
 ----------------------------------------------------------------------------------------
-27.2 — Exact continuum-selected normalization function
+44.2 — Exact continuum-selected normalization function
 ----------------------------------------------------------------------------------------
 F_cont(xi) =
                                                                                ↪
@@ -90,7 +90,7 @@ F_cont built successfully.
 third-slice F at Rphi=2 = 0
 
 ----------------------------------------------------------------------------------------
-27.3 — Minimal-kernel source-tied surface
+44.3 — Minimal-kernel source-tied surface
 ----------------------------------------------------------------------------------------
 n_source =
           2                                      2
@@ -126,18 +126,18 @@ source-tied n = 0
 source-tied F = 0
 
 ----------------------------------------------------------------------------------------
-27.4 — Interference-matched tracking surface
+44.4 — Interference-matched tracking surface
 ----------------------------------------------------------------------------------------
 tracking collapse of n_req = 0
 tracking F collapse = 0
 
 ----------------------------------------------------------------------------------------
-27.5 — Exact mismatch penalty
+44.5 — Exact mismatch penalty
 ----------------------------------------------------------------------------------------
 mismatch penalty in C coefficient = 0
 
 ========================================================================================
-STAGE 27 THEOREM LEDGER
+STAGE 44 THEOREM LEDGER
 ========================================================================================
 1. The continuum-selected selected branch is fixed by the exact quadratic equation
       xi^2 + B_cont xi + C_cont = 0,

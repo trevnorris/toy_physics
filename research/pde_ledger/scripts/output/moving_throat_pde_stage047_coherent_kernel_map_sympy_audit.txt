@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 30 — COHERENT KERNEL MAP AUDIT
+STAGE 47 — COHERENT KERNEL MAP AUDIT
 ========================================================================================
 
 ========================================================================================
@@ -50,4 +50,4 @@ dS/dzeta - (1-eps)/(1-zeta eps)^2 = 0
 S(zeta=0)-1 = 0
 spoiled dR_target/dzeta at a probe point = -44.8664510213650197722046979701
 
-All Stage-30 symbolic checks passed.
+All Stage-47 symbolic checks passed.

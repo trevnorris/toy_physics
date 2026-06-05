@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 25 SymPy audit.
+Moving-throat PDE — Stage 42 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -50,7 +50,7 @@ R_U, eps = sp.symbols("R_U eps", positive=True, real=True)
 
 banner("STAGE 42 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION")
 
-subbanner("25.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading")
+subbanner("42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading")
 
 n_req = sp.simplify(
     (xi * (delta + xi) - m * (delta + (1 + q**2) * xi))
@@ -72,7 +72,7 @@ sp.pprint(sp.factor(ratio_expected))
 expect_zero("row1 - expected", ratio_row1 - ratio_expected)
 expect_zero("row2 - expected", ratio_row2 - ratio_expected)
 
-subbanner("25.2 — Exact overlap formulas and generalized rank-2 normalization function")
+subbanner("42.2 — Exact overlap formulas and generalized rank-2 normalization function")
 
 D_qr = sp.simplify((delta + xi - m * q * (q - r))**2 + (m * (q - r) + r * xi)**2)
 Z_overlap = sp.simplify((1 + q * ratio_expected)**2 / (1 + ratio_expected**2))
@@ -100,7 +100,7 @@ F_expected = sp.simplify(
 )
 expect_zero("F_general - expected", F_general - F_expected)
 
-subbanner("25.3 — Tracking-support collapse back to Stage 23")
+subbanner("42.3 — Tracking-support collapse back to Stage 23")
 
 F_track = sp.simplify(F_expected.subs(r, q))
 F_stage23 = sp.simplify(
@@ -111,7 +111,7 @@ print("F_track =")
 sp.pprint(sp.factor(F_track))
 expect_zero("tracking collapse", F_track - F_stage23)
 
-subbanner("25.4 — Source-tied split-U specialization")
+subbanner("42.4 — Source-tied split-U specialization")
 
 # Source-tied support: r = t, q = t R_U, with t^2 = lam0.
 q_tied_qr = lam0 * R_U
@@ -129,7 +129,7 @@ F_src_direct = sp.simplify(
 )
 expect_zero("source-tied specialization", sp.simplify(F_src_direct - F_src))
 
-subbanner("25.5 — Exact flat-U recovery")
+subbanner("42.5 — Exact flat-U recovery")
 
 F_flat = sp.simplify(
     (delta + (1 + lam0) * xi)**4
@@ -137,7 +137,7 @@ F_flat = sp.simplify(
 )
 expect_zero("F_src(R_U=1) - F_flat", sp.simplify(F_src.subs(R_U, 1) - F_flat))
 
-subbanner("25.6 — First-order source-tied deformation about R_U = 1")
+subbanner("42.6 — First-order source-tied deformation about R_U = 1")
 
 n_src = sp.simplify(
     (xi * (delta + xi) - m * (delta + (1 + lam0 * R_U**2) * xi))

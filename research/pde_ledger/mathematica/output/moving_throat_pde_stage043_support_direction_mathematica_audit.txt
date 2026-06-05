@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 026 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT DIRECTION
+STAGE 043 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT DIRECTION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -50,6 +50,9 @@ PASS: M_supp independent of muPhi
 M_supp structural form (free baseline) = (-11*bBaseline*(1 + deltaU)*(cEtaU*cUphi + cB*kU)^2)/((-1 + epsEta)*kEtaEff*kU*(11*(1 + deltaU)*kPhiEff*kU - cUphi^2*(11 + 9*deltaU)*sigma))
 M_supp structural form (free baseline) = 0
 PASS: M_supp structural form (free baseline)
+baseline B = kappa0^2 = (9/11) sigma = 8/Pi^2
+baseline B = 8/Pi^2 from frozen sigma = 0
+PASS: baseline B = 8/Pi^2 from frozen sigma
 M_supp at baseline B = 8/Pi^2 = (-88*(1 + deltaU)*(cEtaU*cUphi + cB*kU)^2)/((-1 + epsEta)*kEtaEff*kU*Pi^2*(11*(1 + deltaU)*kPhiEff*kU - cUphi^2*(11 + 9*deltaU)*sigma))
 M_supp at baseline B = 8/Pi^2 = 0
 PASS: M_supp at baseline B = 8/Pi^2

@@ -1,10 +1,10 @@
 
 ========================================================================================
-STAGE 23 — GENERALIZED SELECTED-BRANCH NORMALIZATION WITH SOURCE/LOADING MISMATCH
+STAGE 40 — GENERALIZED SELECTED-BRANCH NORMALIZATION WITH SOURCE/LOADING MISMATCH
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-23.1 — Exact 2x2 selected-branch solve with a generic loading ratio q = z1/z0
+40.1 — Exact 2x2 selected-branch solve with a generic loading ratio q = z1/z0
 ----------------------------------------------------------------------------------------
 alpha_req = A0*xi*(delta + xi)/(z0**2*(delta + q**2*xi + xi))
 e1/e0 = q*xi/(delta + xi)
@@ -13,7 +13,7 @@ eigenvector residual row 0 = 0
 eigenvector residual row 1 = 0
 
 ----------------------------------------------------------------------------------------
-23.2 — Exact overlap formulas and generalized F,G functions
+40.2 — Exact overlap formulas and generalized F,G functions
 ----------------------------------------------------------------------------------------
 (z.e_-)^2 / z0^2 = (delta + q**2*xi + xi)**2/(delta**2 + 2*delta*xi + q**2*xi**2 + xi**2)
 (s.e_-)^2 / s0^2 = (delta + eta*xi + xi)**2/(delta**2 + 2*delta*xi + q**2*xi**2 + xi**2)
@@ -23,7 +23,7 @@ F_general - expected = 0
 G_general - expected = 0
 
 ----------------------------------------------------------------------------------------
-23.3 — Specialization to the split-U continuum of Stage 22
+40.3 — Specialization to the split-U continuum of Stage 22
 ----------------------------------------------------------------------------------------
 F_U(xi,delta;R_U) = -(2*R_U*xi + 9*delta + 9*xi)**2*(2*R_U**2*xi + 9*delta + 9*xi)**2/(81*(xi - 1)*(2*R_U**2*xi**2 + 9*delta**2 + 18*delta*xi + 9*xi**2)**2)
 G_U(xi,delta;R_U) = 9*xi*(delta + xi)/(2*R_U**2*xi + 9*delta + 9*xi)
@@ -31,7 +31,7 @@ F_U(R_U=1) - Stage18 F = 0
 G_U(R_U=1) - Stage19 G = 0
 
 ----------------------------------------------------------------------------------------
-23.4 — Independent cross-check of first-order deformation about flat-U limit
+40.4 — Independent cross-check of first-order deformation about flat-U limit
 ----------------------------------------------------------------------------------------
 H_F (via F_U)        = 4*xi*(27*delta**2 + 36*delta*xi + 11*xi**2)/((9*delta + 11*xi)*(9*delta**2 + 18*delta*xi + 11*xi**2))
 H_F (via F_general)  = 4*xi*(27*delta**2 + 36*delta*xi + 11*xi**2)/((9*delta + 11*xi)*(9*delta**2 + 18*delta*xi + 11*xi**2))
@@ -41,7 +41,7 @@ H_F cross-check (F_U vs F_general) = 0
 H_G cross-check (G_U vs G_general) = 0
 
 ========================================================================================
-STAGE 23 THEOREM LEDGER
+STAGE 40 THEOREM LEDGER
 ========================================================================================
 1. Once source and loading vectors differ, the Stage-18 normalization function deforms
    from the single-vector form F(xi,delta) to the exact two-vector function

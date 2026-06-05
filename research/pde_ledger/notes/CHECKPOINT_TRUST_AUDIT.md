@@ -375,3 +375,15 @@ each a single `stale_output` — residual stale self-labels `Stage {15,16,17,18,
 Print on 032 + a `.wl` sub-stage comment on 033), LABEL-ONLY + both-engine
 re-run, ZERO math/assertion change (same class as the I.2 stage-021 fix). The
 clean stages 025-031 carry no trust-relevant findings.
+
+## Pass 2 — Batch III.1 (2026-06-05)
+
+Pass-2 Batch III.1 (037-048): NO checkpoints in range — stages 037-048 are the
+continuum-kernel / generalized-branch / rank-2 band, none of which is a
+checkpoint. No checkpoint constant changed or introduced; no trust impact.
+(For completeness: 12/12 re-verified at v2 depth + value-reconciliation
+augmentation, 143 deliverable values checked batch-wide, 0 misaligned,
+`material_change: false` on all 12; the two script-side math fixes — 039's
+de-tautologized `R_U` direction-factor check + 043's σ-derived `B=8/π²`
+baseline — added/strengthened assertions over already-correct values, no result
+value moved.)

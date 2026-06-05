@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 22 SymPy audit.
+Moving-throat PDE — Stage 39 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -65,7 +65,7 @@ print("kappa1 =", sp.simplify(kappa1))
 print("sigma  =", sigma)
 print("lambda0 = kappa1^2/kappa0^2 =", lam0)
 
-subbanner("22.1 — Exact U-mode split and direct wall softening")
+subbanner("39.1 — Exact U-mode split and direct wall softening")
 
 # First nontrivial U-sector axial structure.
 K_U1 = sp.simplify(K_U * (1 + deltaU))
@@ -86,7 +86,7 @@ print("delta_split =", delta_split)
 expect_zero("A0 direct - expected", A0.subs({c_etaU**2: eps_eta * K_U * K_eta_eff}) - A0_expected)
 expect_zero("A1 direct - expected", A1.subs({c_etaU**2: eps_eta * K_U * K_eta_eff}) - A1_expected)
 
-subbanner("22.2 — Exact mixed blocking ratio with split U sector")
+subbanner("39.2 — Exact mixed blocking ratio with split U sector")
 
 # Split-U mixed blocking.
 S_U = sp.simplify(kappa0**2 / K_U + kappa1**2 / K_U1)
@@ -100,7 +100,7 @@ expect_zero(
     eps_W_direct.subs({c_UW**2: eps_W * K_U * K_W_eff / sigma}) - eps_W_split,
 )
 
-subbanner("22.3 — Mixed loading vector and exact direction-splitting invariant")
+subbanner("39.3 — Mixed loading vector and exact direction-splitting invariant")
 
 g_W = sp.simplify(c_etaW / sp.sqrt(mu_eta * mu_W))
 
@@ -112,8 +112,8 @@ print("z0 =", z0)
 print("z1 =", z1)
 print("R_U =", R_U)
 expect_zero(
-    "z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))",
-    sp.simplify(z1 * (1 + rho0) - (kappa1 / kappa0) * z0 * (1 + rho0 / (1 + deltaU))),
+    "z1/z0 - (kappa1/kappa0)*R_U",
+    sp.simplify(z1 / z0 - (kappa1 / kappa0) * R_U),
 )
 
 D_dir = sp.simplify(kappa0 * z1 - kappa1 * z0)
@@ -137,7 +137,7 @@ if sp.simplify(num_reduced) == 0:
 
 print("Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently g_R g_U = 0).")
 
-subbanner("22.4 — Split-U continuum placement map")
+subbanner("39.4 — Split-U continuum placement map")
 
 # Stage-21 dimensionless kernel ratios, now with split effective blocking.
 M_mix_flat = sp.simplify(8 * Z_W * (1 + rho0)**2 / (pi**2 * (1 - eps_eta) * (1 - eps_W)))
@@ -149,8 +149,12 @@ product = sp.simplify(M_mix_split * R_target_split)
 print("M_mix^(split U) =", M_mix_split)
 print("R_target^(split U) =", R_target_split)
 print("product =", product)
+expect_zero(
+    "product law survives",
+    product - 8 * Lambda * (1 - eps_W_split) / pi**2,
+)
 
-subbanner("22.5 — Small-splitting expansions")
+subbanner("39.5 — Small-splitting expansions")
 
 delta_split_series = sp.simplify(sp.series(delta_split, deltaU, 0, 2).removeO())
 eps_W_series = sp.simplify(sp.series(eps_W_split, deltaU, 0, 2).removeO())

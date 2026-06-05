@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 26 SymPy audit.
+Moving-throat PDE — Stage 43 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -54,7 +54,7 @@ eps_eta, Zphi = sp.symbols("eps_eta Z_phi", real=True)
 
 banner("STAGE 43 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION")
 
-subbanner("26.1 — Exact effective support vector after eliminating the split U doublet")
+subbanner("43.1 — Exact effective support vector after eliminating the split U doublet")
 
 DU = sp.diag(1 / KU, 1 / (KU * (1 + delta_U)))
 v = sp.Matrix([kappa0, kappa1])
@@ -80,7 +80,7 @@ print("D_phi =")
 sp.pprint(Dphi)
 expect_zero("D_phi - expected", Dphi - Dphi_expected)
 
-subbanner("26.2 — Exact support pole shift and split support-blocking ratio")
+subbanner("43.2 — Exact support pole shift and split support-blocking ratio")
 
 sigma = sp.symbols("sigma", positive=True, real=True)
 lam0 = sp.Rational(2, 9)
@@ -114,7 +114,7 @@ print("split-vs-minimal overlap ratio =")
 sp.pprint(sp.factor(overlap_ratio))
 expect_zero("split-vs-minimal overlap ratio", overlap_ratio - overlap_ratio_expected)
 
-subbanner("26.3 — Exact physical support baseline")
+subbanner("43.3 — Exact physical support baseline")
 
 # Continuum expression from y0^2 / [A0 * Aphi_eff], with A0 = Keta_eff(1-eps_eta)/mu_eta,
 # and y0 = kappa0 c_etaphi (1+sigma0)/sqrt(mu_eta mu_phi).
@@ -140,14 +140,19 @@ print("M_supp structural form (free baseline B) =")
 sp.pprint(sp.factor(Msupp_cont_in_B))
 expect_zero("M_supp structural form (free baseline)", Msupp_cont_in_B - Msupp_struct_expected)
 
-# F3: baseline value identification, isolated from the structural check.
-Msupp_cont_eval = sp.simplify(Msupp_cont_in_B.subs(B, sp.Rational(8, 1) / sp.pi**2))
-Msupp_expected = sp.simplify(Msupp_struct_expected.subs(B, sp.Rational(8, 1) / sp.pi**2))
+# F2: baseline value identification — derive B = kappa0^2 = (9/11) sigma from
+# the frozen overlap sigma = 88/(9 pi^2), so the literal 8/pi^2 is PRODUCED, not assumed.
+sigma_value = sp.Rational(88, 1) / (sp.Integer(9) * sp.pi**2)
+B_value = sp.simplify(sp.Rational(9, 11) * sigma_value)
+print(f"baseline B = kappa0^2 = (9/11) sigma = {B_value}")
+expect_zero("baseline B = 8/pi^2 from frozen sigma", B_value - sp.Rational(8, 1) / sp.pi**2)
+Msupp_cont_eval = sp.simplify(Msupp_cont_in_B.subs(B, B_value))
+Msupp_expected = sp.simplify(Msupp_struct_expected.subs(B, B_value))
 print("M_supp at baseline B = 8/pi^2 =")
 sp.pprint(sp.factor(Msupp_cont_eval))
 expect_zero("M_supp at baseline B = 8/pi^2", Msupp_cont_eval - Msupp_expected)
 
-subbanner("26.4 — Exact tracking condition relative to the mixed vector")
+subbanner("43.4 — Exact tracking condition relative to the mixed vector")
 
 z0 = kappa0 * (gW + gU * gR / KU)
 z1 = kappa1 * (gW + gU * gR / (KU * (1 + delta_U)))
@@ -161,7 +166,7 @@ rho0 = sp.simplify(gU * gR / (KU * gW))
 RU = sp.simplify((1 + rho0 / (1 + delta_U)) / (1 + rho0))
 expect_zero("tracking condition via g_B g_R = g_W g_S", sp.simplify(Rphi_expected - RU).subs(gS, gB * gR / gW))
 
-subbanner("26.5 — Exact mismatch formula")
+subbanner("43.5 — Exact mismatch formula")
 
 mismatch = sp.simplify(Rphi_expected - RU)
 mismatch_expected = sp.simplify(delta_U * (rho0 - sigma0) / ((1 + delta_U) * (1 + rho0) * (1 + sigma0)))

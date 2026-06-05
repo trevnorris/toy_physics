@@ -1,10 +1,10 @@
 
 ========================================================================================
-STAGE 25 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION
+STAGE 42 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-25.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading
+42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading
 ----------------------------------------------------------------------------------------
 e1/e0 from row 1 =
  -(m⋅q - m⋅r + r⋅ξ)  
@@ -25,7 +25,7 @@ row1 - expected = 0
 row2 - expected = 0
 
 ----------------------------------------------------------------------------------------
-25.2 — Exact overlap formulas and generalized rank-2 normalization function
+42.2 — Exact overlap formulas and generalized rank-2 normalization function
 ----------------------------------------------------------------------------------------
 (z.e_-)^2 / z0^2 =
                                                                             2  ↪
@@ -74,7 +74,7 @@ F_(q,r,t) =
 F_general - expected = 0
 
 ----------------------------------------------------------------------------------------
-25.3 — Tracking-support collapse back to Stage 23
+42.3 — Tracking-support collapse back to Stage 23
 ----------------------------------------------------------------------------------------
 F_track =
                2                  
@@ -87,7 +87,7 @@ F_track =
 tracking collapse = 0
 
 ----------------------------------------------------------------------------------------
-25.4 — Source-tied split-U specialization
+42.4 — Source-tied split-U specialization
 ----------------------------------------------------------------------------------------
 F_src =
                                                                                ↪
@@ -108,12 +108,12 @@ F_src =
 source-tied specialization = 0
 
 ----------------------------------------------------------------------------------------
-25.5 — Exact flat-U recovery
+42.5 — Exact flat-U recovery
 ----------------------------------------------------------------------------------------
 F_src(R_U=1) - F_flat = 0
 
 ----------------------------------------------------------------------------------------
-25.6 — First-order source-tied deformation about R_U = 1
+42.6 — First-order source-tied deformation about R_U = 1
 ----------------------------------------------------------------------------------------
 H_n^(src) =
  -4⋅m⋅ξ   
@@ -131,7 +131,7 @@ n_src - linear expansion = 0
 F_src/F_flat - linear expansion = 0
 
 ========================================================================================
-STAGE 25 THEOREM LEDGER
+STAGE 42 THEOREM LEDGER
 ========================================================================================
 1. With two loading directions, the selected-mode normalization remains exact and is
    governed by the three-direction function F_(q,r,t)(xi,delta;m).

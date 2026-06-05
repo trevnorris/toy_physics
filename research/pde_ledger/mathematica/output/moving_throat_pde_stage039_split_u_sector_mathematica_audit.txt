@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 022 — SPLIT-U SECTOR
+STAGE 039 — SPLIT-U SECTOR
 ========================================================================================
 kappa0 = (2*Sqrt[2])/Pi
 kappa1 = -4/(3*Pi)
@@ -34,8 +34,8 @@ PASS: eps_W_split derived matches postulated
 z0 = (2*Sqrt[2]*cEtaW*(1 + rho0))/(Sqrt[muEta*muW]*Pi)
 z1 = (-4*cEtaW*(1 + deltaU + rho0))/(3*(1 + deltaU)*Sqrt[muEta*muW]*Pi)
 R_U = (1 + deltaU + rho0)/(1 + deltaU + rho0 + deltaU*rho0)
-z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU)) = 0
-PASS: z1*(1+rho0) - (kappa1/kappa0)*z0*(1+rho0/(1+deltaU))
+z1/z0 - (kappa1/kappa0)*R_U = 0
+PASS: z1/z0 - (kappa1/kappa0)*R_U
 D_dir = (8*Sqrt[2]*cEtaW*deltaU*rho0)/(3*(1 + deltaU)*Sqrt[muEta*muW]*Pi^2)
 direction-splitting invariant derived matches postulated = 0
 PASS: direction-splitting invariant derived matches postulated
@@ -52,6 +52,8 @@ PASS: collinearity only-if: residual factor is nonzero and independent of rho0, 
 M_mix^(split U) = (88*(1 + deltaU)*(1 + rho0)^2*zW)/((-1 + epsEta)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)*Pi^2)
 R_target^(split U) = ((1 - epsEta)*(1 - ((11 + 9*deltaU)*epsW)/(11*(1 + deltaU)))^2*lambda)/((1 + rho0)^2*zW)
 product = (8*(11 + 11*deltaU - 11*epsW - 9*deltaU*epsW)*lambda)/(11*(1 + deltaU)*Pi^2)
+product law survives = 0
+PASS: product law survives
 
 ----------------------------------------------------------------------------------------
 5. Small-splitting expansions

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage21_dimensionless_continuum_placement_sympy_audit.py
+moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
 
-Stage 21 SymPy audit:
+Stage 38 SymPy audit:
 compress the Stage-20 continuum formulas into the exact dimensionless kernel map,
 verify the product relation, and factor the one-way parameter tendencies.
 """

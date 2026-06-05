@@ -1,10 +1,10 @@
 
 ========================================================================================
-STAGE 26 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION
+STAGE 43 — CONTINUUM EXTRACTION OF THE ACTUAL SUPPORT/BdG DIRECTION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-26.1 — Exact effective support vector after eliminating the split U doublet
+43.1 — Exact effective support vector after eliminating the split U doublet
 ----------------------------------------------------------------------------------------
 y =
 ⎡     κ₀⋅(K_U⋅g_B + g_S⋅g_U)     ⎤
@@ -26,7 +26,7 @@ D_phi =
 D_phi - expected = 0
 
 ----------------------------------------------------------------------------------------
-26.2 — Exact support pole shift and split support-blocking ratio
+43.2 — Exact support pole shift and split support-blocking ratio
 ----------------------------------------------------------------------------------------
 v.D_U.v =
  σ⋅(9⋅δ_U + 11) 
@@ -52,7 +52,7 @@ split-vs-minimal overlap ratio =
 split-vs-minimal overlap ratio = 0
 
 ----------------------------------------------------------------------------------------
-26.3 — Exact physical support baseline
+43.3 — Exact physical support baseline
 ----------------------------------------------------------------------------------------
 M_supp independent of mu_eta = 0
 M_supp independent of mu_phi = 0
@@ -69,6 +69,8 @@ K_U⋅K_η_eff⋅(epsₑₜₐ - 1)⋅⎝11⋅K_U⋅K_φ_eff⋅δ_U + 11⋅K_U�
 ↪              2  ⎞
 ↪ σ - 11⋅c_Uphi ⋅σ⎠
 M_supp structural form (free baseline) = 0
+baseline B = kappa0^2 = (9/11) sigma = 8/pi**2
+baseline B = 8/pi^2 from frozen sigma = 0
 M_supp at baseline B = 8/pi^2 =
                                                                      2         ↪
                           -88⋅(δ_U + 1)⋅(K_U⋅cₑₜₐₚₕᵢ + c_Uphi⋅c_etaU)          ↪
@@ -84,7 +86,7 @@ M_supp at baseline B = 8/pi^2 =
 M_supp at baseline B = 8/pi^2 = 0
 
 ----------------------------------------------------------------------------------------
-26.4 — Exact tracking condition relative to the mixed vector
+43.4 — Exact tracking condition relative to the mixed vector
 ----------------------------------------------------------------------------------------
 D_(phi z) =
 -δ_U⋅g_U⋅κ₀⋅κ₁⋅(g_B⋅g_R - g_S⋅g_W) 
@@ -94,7 +96,7 @@ D_(phi z) - expected = 0
 tracking condition via g_B g_R = g_W g_S = 0
 
 ----------------------------------------------------------------------------------------
-26.5 — Exact mismatch formula
+43.5 — Exact mismatch formula
 ----------------------------------------------------------------------------------------
 R_phi - R_U =
          K_U⋅δ_U⋅g_U⋅(g_B⋅g_R - g_S⋅g_W)         
@@ -103,7 +105,7 @@ R_phi - R_U =
 mismatch formula = 0
 
 ========================================================================================
-STAGE 26 THEOREM LEDGER
+STAGE 43 THEOREM LEDGER
 ========================================================================================
 1. The first symmetry-allowed U/phi continuum extension keeps the support loading rank-1,
    but rotates the support direction to the exact vector y.

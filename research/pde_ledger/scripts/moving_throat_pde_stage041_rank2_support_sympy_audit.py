@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE — Stage 24 SymPy audit.
+Moving-throat PDE — Stage 41 SymPy audit.
 
 What this audit verifies
 ------------------------
@@ -50,7 +50,7 @@ R_U = sp.symbols("R_U", positive=True, real=True)
 
 banner("STAGE 41 — RANK-2 SUPPORT COMPLETION")
 
-subbanner("24.1 — Exact rank-2 determinant and support-loading theorem")
+subbanner("41.1 — Exact rank-2 determinant and support-loading theorem")
 
 # Reduced dimensionless loaded matrix after dividing by A0.
 M = sp.Matrix([
@@ -81,7 +81,7 @@ n_expected = sp.simplify(
 )
 expect_zero("n_req - expected", n_req - n_expected)
 
-subbanner("24.2 — Exact monotonicity with respect to mixed baseline loading")
+subbanner("41.2 — Exact monotonicity with respect to mixed baseline loading")
 
 dn_dm = sp.simplify(sp.diff(n_expected, m))
 print("d n_req / d m =")
@@ -93,7 +93,7 @@ monotone_expected = sp.simplify(
 )
 expect_zero("dn/dm - expected", dn_dm - monotone_expected)
 
-subbanner("24.3 — Tracking theorem: support follows the mixed direction")
+subbanner("41.3 — Tracking theorem: support follows the mixed direction")
 
 n_track = sp.simplify(n_expected.subs(r, q))
 G_q = sp.simplify(xi * (delta + xi) / (delta + (1 + q**2) * xi))
@@ -101,10 +101,10 @@ print("n_req(r=q) =")
 sp.pprint(sp.factor(n_track))
 expect_zero("tracking collapse", n_track - (G_q - m))
 
-subbanner("24.4 — Source-tied theorem: support remains aligned with the original source vector")
+subbanner("41.4 — Source-tied theorem: support remains aligned with the original source vector")
 
 # The physical source-tied specialization uses q = t R_U, r = t with t^2 = lam0.
-# Derive n_src by substituting into the general n_expected from section 24.1,
+# Derive n_src by substituting into the general n_expected from section 41.1,
 # not by re-stating the substituted formula.
 t = sp.symbols("t", real=True)
 n_src = sp.simplify(

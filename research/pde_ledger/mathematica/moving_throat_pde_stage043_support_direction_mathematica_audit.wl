@@ -122,9 +122,14 @@ mSuppStructExpected = FullSimplify[
 Print["M_supp structural form (free baseline) = ", fmt[mSuppContInB]];
 expectZero["M_supp structural form (free baseline)", mSuppContInB - mSuppStructExpected];
 
-(* F3: baseline value identification, isolated from the structural check. *)
-mSuppContEval = FullSimplify[mSuppContInB /. bBaseline -> 8/Pi^2, Assumptions -> $Assumptions];
-mSuppExpected = FullSimplify[mSuppStructExpected /. bBaseline -> 8/Pi^2, Assumptions -> $Assumptions];
+(* F2: baseline value identification — derive B = kappa0^2 = (9/11) sigma from
+   the frozen overlap sigma = 88/(9 Pi^2), so the literal 8/Pi^2 is PRODUCED, not assumed. *)
+sigmaValue = 88/(9 Pi^2);
+bValue = FullSimplify[(9/11) sigmaValue, Assumptions -> $Assumptions];
+Print["baseline B = kappa0^2 = (9/11) sigma = ", fmt[bValue]];
+expectZero["baseline B = 8/Pi^2 from frozen sigma", bValue - 8/Pi^2];
+mSuppContEval = FullSimplify[mSuppContInB /. bBaseline -> bValue, Assumptions -> $Assumptions];
+mSuppExpected = FullSimplify[mSuppStructExpected /. bBaseline -> bValue, Assumptions -> $Assumptions];
 Print["M_supp at baseline B = 8/Pi^2 = ", fmt[mSuppContEval]];
 expectZero["M_supp at baseline B = 8/Pi^2", mSuppContEval - mSuppExpected];
 

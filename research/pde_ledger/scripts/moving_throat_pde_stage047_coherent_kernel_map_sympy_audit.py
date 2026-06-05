@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 30 SymPy audit.
+Stage 47 SymPy audit.
 
 Checks:
 1. Coherent-kernel identities rho_0 = sigma_0 = chi_0.
@@ -155,4 +155,4 @@ print("spoiled dR_target/dzeta at a probe point =", dRtarget_spoiled_num)
 if abs(complex(dRtarget_spoiled_num)) < 1e-12:
     raise AssertionError("Expected the spoiled support-loading map to break zeta-blindness.")
 
-print("\nAll Stage-30 symbolic checks passed.")
+print("\nAll Stage-47 symbolic checks passed.")

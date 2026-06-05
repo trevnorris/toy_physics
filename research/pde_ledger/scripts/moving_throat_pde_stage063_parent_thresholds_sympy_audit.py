@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 46 SymPy audit.
+Stage 63 SymPy audit.
 
 Checks:
 1. Parent fail/succeed thresholds from G_micro.
@@ -121,4 +121,4 @@ expect_zero(
     sp.simplify(G_micro.subs(Osp**2, Nss * Npp) - G_max),
 )
 
-print("\nAll Stage 46 symbolic checks passed.")
+print("\nAll Stage 63 symbolic checks passed.")

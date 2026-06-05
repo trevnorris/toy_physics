@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 48 — THIN-WALL CONFINEMENT BRANCH
+STAGE 65 — THIN-WALL CONFINEMENT BRANCH
 ========================================================================================
 g_phi = V0/ell
 I1 = 4*pi*ell*(J1*a**2 + 2*J2*a*ell + J3*ell**2)
@@ -45,7 +45,7 @@ constant-H suff threshold = 0
 concrete profile: J1 equals I_f / H_w under constant compressibility = 0
 
 ========================================================================================
-STAGE 48 AUDIT PASSED
+STAGE 65 AUDIT PASSED
 ========================================================================================
 1. The first explicit parent wall family gives g_phi = V0/ell.
 2. The exact equilibrium gain scales like V0^2 times a shell integral of chi_phi^2/h'.

@@ -1024,3 +1024,26 @@ xiMicroFromDM]` — replacing the prior `wl:140` check that subtracted `xiMicro`
 from a verbatim copy of its own `wl:132` definition (identically 0, could never
 fail). The value `Xi_micro = Λφ²L²/(Θ T_X)` is unchanged; the check now actually
 exercises it. No other provenance items; no carried checkpoint constant changed.
+
+## Pass 2 — Batch III.3 (2026-06-05)
+
+Pass-2 Batch III.3 (061-072): reviewed — NO checkpoint constant changed. ONE
+checkpoint in range (069, `final_reduced_verdict`), re-verified clean at the
+higher bar with NO constant pinned: `C_res² = 0.994418…` / `P_res = 1.005612…`
+are upstream Stages 067/068 deliverables carried as the FREE symbols `Cres2Prim`
+(Mathematica) / `Pres_gap` (SymPy) — never re-asserted against themselves — and
+the substantive verdict (three-zone classification, matched-window width, exact
+side-band widths, `P_res-1=(1-C²)/C²`, strict interior-point ordering) is a set
+of genuine symbolic identities verified by two independent engine routes. No new
+checkpoint constant introduced. (116 deliverable values checked batch-wide, 0
+misaligned, 0 MISSING-DELIVERABLE; `material_change: false` on all 12.) One
+PROVENANCE STRENGTHENING worth recording though no value moved: stage 070's
+internal sech-profile moments (non-checkpoint anchor) are now ASSERTED rather than
+print-only — `I_f = 2/3` (SymPy + Mathematica) and `I_g = 14/15` (Mathematica,
+against the 30-digit NIntegrate value ≈0.9333) — replacing the prior `I_1/J_1 =
+4πa²ℓ` ratio check whose `I_f/H_w` factor cancelled (independent of the moment
+value, could never fail), plus a corrected `wl:86` print annotation `8/15`→`14/15`
+(the orchestrator false-positive guard caught that the audit's proposed `8/15`
+was WRONG; correct = 14/15). The moments are an internal anchor (not a deliverable,
+not consumed downstream); the symbolic `kappa`/`W_wall`/`Xi` deliverables are
+unchanged. No other provenance items; no carried checkpoint constant changed.

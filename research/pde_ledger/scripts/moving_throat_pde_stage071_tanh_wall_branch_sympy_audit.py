@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage54_tanh_wall_branch_sympy_audit.py
+moving_throat_pde_stage071_tanh_wall_branch_sympy_audit.py
 
-SymPy audit for Stage 54:
+SymPy audit for Stage 71:
 canonical tanh-wall branch and natural local mouth closure.
 """
 

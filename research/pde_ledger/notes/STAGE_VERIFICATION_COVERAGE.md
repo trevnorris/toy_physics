@@ -475,3 +475,47 @@ Numbering cross-refs (to OTHER stages) and compound dual-epoch refs (050 `py:61`
 `Stage-39`→stage056) left UNTOUCHED and deferred to
 `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
 offset-sweep). Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch III.3 (2026-06-05)
+
+Pass-2 Batch III.3 (061-072, `Part III.3 — Microclosure, gain thresholds,
+equilibrium, walls`, 12 stages): all 12 pass-2 re-verified at v2 depth (dual-engine)
++ exhaustive value-reconciliation augmentation; 12/12 verified, `material_change:
+false` on all 12, 0 stop-cold, 0 blocked, 0 Codex deviations, all iter-1 exit 0.
+Every emitted deliverable value reconciles — 116 values checked batch-wide, 0
+MISALIGNED, 0 MISSING-DELIVERABLE (per stage: 061=12, 062=9, 063=8, 064=7, 065=11,
+066=9, 067=8, 068=7, 069=9, 070=10, 071=13, 072=13). All 12 are genuine dual-engine
+(both independent engines from pass 1, re-confirmed; 072.wl transliteration-leaning
+but accepted per policy — a pure substitution+limit-identity stage); no new `.wl`,
+0 sanctioned mirrors. **One checkpoint in range — 069 (`final_reduced_verdict`) —
+re-verified clean at the higher bar (no certified constant moved; pins no numeric
+constant — `Cres2Prim`/`Pres_gap` carried as FREE symbols, never re-asserted).**
+NO EM-projected stages in range. **1 real script-side math finding→fixed→verified**
+(070); **8 label-only self-label fixes→verified** (061,062,063,064,065,066,068,071);
+**3 refresh-only→verified** (067,069,072). **070 — F1 `tautological_check`:** the
+`I_1/J_1 = 4πa²ℓ` anchoring check self-cancelled in both engines (the `I_f/H_w`
+factor cancels, independent of the sech moment value); made the moments load-bearing
+— SymPy asserts `I_f=2/3`, Mathematica asserts `I_f≈2/3`/`I_g≈14/15` against the
+already-computed NIntegrate values (`tol=10^-10`) — plus a corrected `wl:86` print
+annotation `8/15`→`14/15`. (⚠️ The orchestrator false-positive guard caught the
+audit's proposed `I_g=8/15` was WRONG — correct = 14/15 ≈ 0.9333, confirmed by the
+30-digit NIntegrate; the script would have FAILED on `8/15`.) 070.wl remains an
+INDEPENDENT engine (verify-confirmed); the symbolic `kappa`/`W_wall`/`Xi`
+deliverables are UNCHANGED; `material_change=false`. The 8 label-only fixes
+canonicalized unambiguous self-labels (NUMBER only, FORMAT preserved — 2-digit
+prose docstrings/closing-prints kept 2-digit, 3-digit filename-docstrings on
+068/070/071 kept 3-digit, correct 2-digit `STAGE NN` banners LEFT UNPADDED); all
+`.py`/`.wl` diffs strip-the-number identical to HEAD except 070's three added math
+lines; same class as the I.2 stage-021 / II.1 032-036 / III.1 / III.2 fixes. No
+coverage count moved (all 12 already verified+dual-engine from pass 1). INFRA NOTE
+(III.2 lesson re-confirmed): `exec-*` refreshes `exec_logs/` not the committed
+`output/*.txt` — all 12 committed transcripts predated June-3 content additions;
+the orchestrator re-ran all 24 engines (exit 0) and sed-refreshed every output, the
+arbiter grep confirming no stale self-banner remains.
+
+Numbering cross-refs (to OTHER stages), variable names, and ambiguous self-vs-cross
+refs in `.py`/`.wl` source (063 `Stage-44`; 064 `Stage-45/46`; 065 `Stage-44`; 066
+`Stage-48`; 069 `Stage-49/51` family + a 3-digit `Stage 049`; 070 `Stage-47/48` +
+the `J1_stage48`/`J1Stage48` variable names) left UNTOUCHED and deferred to
+`redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
+offset-sweep). Reference memory `numbering-drift-root-cause`.

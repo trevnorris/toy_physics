@@ -83,7 +83,11 @@ Module[{xi, fProf, fp, fpp, IfNum, IgNum, ruleNum, TxNum, KxNum, kappaNum,
   IfNum = NIntegrate[fp[xi]^2,  {xi, -Infinity, Infinity}, WorkingPrecision -> 30];
   IgNum = NIntegrate[fpp[xi]^2, {xi, -Infinity, Infinity}, WorkingPrecision -> 30];
   Print["I_f (sech profile) = ", fmt[IfNum], "   (analytic 2/3 = ", N[2/3, 30], ")"];
-  Print["I_g (sech profile) = ", fmt[IgNum], "   (analytic 8/15 = ", N[8/15, 30], ")"];
+  Print["I_g (sech profile) = ", fmt[IgNum], "   (analytic 14/15 = ", N[14/15, 30], ")"];
+  If[Abs[IfNum - 2/3] < tol, pass["sech-profile moment I_f = 2/3"],
+     fail["sech-profile moment I_f = 2/3", IfNum - 2/3]];
+  If[Abs[IgNum - 14/15] < tol, pass["sech-profile moment I_g = 14/15"],
+     fail["sech-profile moment I_g = 14/15", IgNum - 14/15]];
   Print["Stage-48 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)"];
   Print["Stage-47 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w"];
   Print["Structural ratio I_1/J_1 should equal 4 pi a^2 ell."];

@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 053 — EXPLICIT GNLS WALL-SHELL REDUCTION
+STAGE 070 — EXPLICIT GNLS WALL-SHELL REDUCTION
 ========================================================================================
 H_w = (cSw^2*m)/rhoW
 N_(phi phi) = 4*a^2*ell*IfMoment*Pi
@@ -18,7 +18,28 @@ Xi - W_wall = 0
 PASS: Xi - W_wall
 
 ========================================================================================
-STAGE 053 THEOREM LEDGER
+STAGE 070 — INDEPENDENT NUMERIC PROFILE CROSS-CHECK
+========================================================================================
+I_f (sech profile) = 0.6666666666666666666666666666666604048770917880372263326441`30.   (analytic 2/3 = 0.6666666666666666666666666666666666666666666666666666666667`30.)
+I_g (sech profile) = 0.9333333333333333333333333333333272284011717433253418641542`30.   (analytic 14/15 = 0.9333333333333333333333333333333333333333333333333333333333`30.)
+PASS: sech-profile moment I_f = 2/3
+PASS: sech-profile moment I_g = 14/15
+Stage-48 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)
+Stage-47 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w
+Structural ratio I_1/J_1 should equal 4 pi a^2 ell.
+I_1 / J_1 - 4 pi a^2 ell (independent of profile, symbolic check) = 0
+PASS: I_1 / J_1 - 4 pi a^2 ell (independent of profile, symbolic check)
+kappa_num     = 144.00000000000000000000000000000039923598`29.69897000433602
+kappa_closed  = 144.00000000000000000000000000000039923599`29.71120446075303
+PASS: kappa numeric profile check
+W_wall_num    = 400.`29.69897000433602
+W_wall_closed = 400.`30.
+PASS: W_wall numeric profile check
+Xi_num        = 400.`29.69897000433602
+PASS: Xi = W_wall numeric profile check
+
+========================================================================================
+STAGE 070 THEOREM LEDGER
 ========================================================================================
 T_X = pi a^2 ell I_f hbar^2 / (m rho_w)
 K_X = 4 pi a^2 ell I_f H_w + pi a^2 I_g hbar^2 / (m rho_w ell)

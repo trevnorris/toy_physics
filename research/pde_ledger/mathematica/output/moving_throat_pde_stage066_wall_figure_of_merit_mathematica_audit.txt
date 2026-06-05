@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage066_wall_figure_of_merit_mathematica_audit.wl
-# Date: 2026-05-11T12:55:47-06:00
-# Elapsed: 4s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 049 — DIMENSIONLESS WALL FIGURE OF MERIT
+STAGE 066 — DIMENSIONLESS WALL FIGURE OF MERIT
 ========================================================================================
 W_wall = (4*a^2*j1*len^2*Pi*v0^2)/(ell*tx)
 W_fail = peReq/deltaInf
@@ -54,5 +46,3 @@ W_H(V0_suff)^2 - W_suff = 0
 PASS: W_H(V0_suff)^2 - W_suff
 
 Stage 066 Mathematica audit passed.
-
-EXIT_CODE: 0

@@ -925,3 +925,33 @@ cured by the orchestrator re-run alone). INFRA NOTE for the mirror layer: the
 Mathematica committed outputs for 050–059 were stale (Codex only re-ran the `.wl`
 for 049/060) until the arbiter grep caught them and the orchestrator sed-refresh
 restored them; all 12 Mathematica reliability-gate runs exit 0.
+
+## Pass 2 — Batch III.3 (2026-06-05)
+
+Pass-2 Batch III.3 (061-072, `Part III.3 — Microclosure, gain thresholds,
+equilibrium, walls`): all 12 already had both independent engines from pass 1,
+and the re-audit re-confirmed genuine independence on every stage. **No new
+`.wl` built, 0 mirror reclassification, 0 sanctioned mirrors, no additions to
+the Independent-Mirror Set.** The one `.wl`-touching stage (070) was EDITED only
+to de-tautologize its F1 anchoring cross-check — the `I_1/J_1 = 4πa²ℓ` ratio
+self-cancels in both engines (the `I_f/H_w` factor cancels, so the result is
+independent of the sech moment value); the genuinely informative sech moments
+were PRINT-only. Fix made them load-bearing: SymPy now asserts `I_f = 2/3`;
+Mathematica now asserts `I_f ≈ 2/3` and `I_g ≈ 14/15` against the already-computed
+NIntegrate values (`tol=10^-10`), plus corrected a wrong `wl:86` print annotation
+`8/15`→`14/15`. (⚠️ The orchestrator false-positive guard caught that the audit's
+proposed `I_g = 8/15` was WRONG — the correct second moment is `14/15` ≈ 0.9333,
+confirmed by the 30-digit NIntegrate; had `8/15` been asserted the script would
+have FAILED.) The verify agent confirmed **070.wl remains an independent engine,
+NOT a transliteration** of the SymPy path — its concrete numeric profile
+cross-check is a route the SymPy script does not perform; the symbolic
+`kappa`/`W_wall`/`Xi` deliverables are UNCHANGED. 072.wl is transliteration-leaning
+but accepted per the established mirror policy (a pure substitution+limit-identity
+stage whose algebra/limits are independently re-executed). The 8 label-only
+self-label fixes (061,062,063,064,065,066,068,071) plus 070's two F2 self-labels
+canonicalized unambiguous self-labels (NUMBER only, FORMAT preserved); 067/069/072
+were refresh-only (canonical source). `material_change=false` on all 12. INFRA
+NOTE (III.2 lesson re-confirmed): `exec-*` refreshes `exec_logs/` not the committed
+`output/*.txt` — all 12 committed transcripts predated the scripts; the
+orchestrator re-ran all 24 engines (exit 0) and sed-refreshed every output; an
+arbiter grep on the refreshed outputs confirmed no stale self-banner remains.

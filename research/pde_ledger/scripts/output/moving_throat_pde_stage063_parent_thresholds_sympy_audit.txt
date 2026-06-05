@@ -1,6 +1,6 @@
 
 ================================================================================
-STAGE 46 — PARENT-OVERLAP THRESHOLD THEOREM
+STAGE 63 — PARENT-OVERLAP THRESHOLD THEOREM
 ================================================================================
 g_(phi,fail)^2 = G_fail*K_X*N_ss*cs_star_sq*m/(O_sp**2*rho_star)
 g_(phi,suff)^2 = G_suff*K_X*N_ss*cs_star_sq*m/(O_sp**2*rho_star)
@@ -18,4 +18,4 @@ g_fail^2 from solve(G_micro=G_fail) matches hand-rearranged form = 0
 g_suff^2 from solve(G_micro=G_suff) matches hand-rearranged form = 0
 G_max = G_micro at Cauchy saturation (O_sp^2 = N_ss N_pp) = 0
 
-All Stage 46 symbolic checks passed.
+All Stage 63 symbolic checks passed.

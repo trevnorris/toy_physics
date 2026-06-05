@@ -1,11 +1,14 @@
 
 ========================================================================================
-STAGE 051 — RESONANCE-CORRECTED THRESHOLDS
+STAGE 068 — RESONANCE-CORRECTED THRESHOLDS
 ========================================================================================
-W_res - C2 * W_wall = 0
-PASS: W_res - C2 * W_wall
-P_res - 1/C_res^2 = 0
-PASS: P_res - 1/C_res^2
+W_res - C2 * W_wall (from gain decomposition) = 0
+PASS: W_res - C2 * W_wall (from gain decomposition)
+W_res(C2->1) - W_wall (matched limit) = 0
+PASS: W_res(C2->1) - W_wall (matched limit)
+P_res - 1/C_res^2 (from required-wall-figure ratio) = 0
+PASS: P_res - 1/C_res^2 (from required-wall-figure ratio)
+P_res numeric residual = 5.1512360584381274304121`4.408450798665825*^-16
 Matched fail threshold     = PeReq/Deltainf
 Matched succeed threshold  = PeReq/Delta0
 Profile-family fail thresh = PeReq/(C2*Deltainf)
@@ -22,14 +25,14 @@ PASS: Wsuff_res(C2->1/Pres) - Pres*Wsuff_match
 ========================================================================================
 PROFILE-SENSITIVE BANDS
 ========================================================================================
-Success-side band width (A) = (PeReq*(-1 + Pres))/Delta0
-Failure-side band width (A) = (PeReq*(-1 + Pres))/Deltainf
-Success-side band width (B) = (-PeReq + PeReq*Pres)/Delta0
-Failure-side band width (B) = (-PeReq + PeReq*Pres)/Deltainf
-success band A vs B = 0
-PASS: success band A vs B
-failure band A vs B = 0
-PASS: failure band A vs B
+Success-side band width (C-form) = (PeReq - Cres^2*PeReq)/(Cres^2*Delta0)
+Failure-side band width (C-form) = (PeReq - Cres^2*PeReq)/(Cres^2*Deltainf)
+Success-side band width (P-form) = (PeReq*(-1 + Pres))/Delta0
+Failure-side band width (P-form) = (PeReq*(-1 + Pres))/Deltainf
+success band C-form vs P-form (under Pres = 1/Cres^2) = 0
+PASS: success band C-form vs P-form (under Pres = 1/Cres^2)
+failure band C-form vs P-form (under Pres = 1/Cres^2) = 0
+PASS: failure band C-form vs P-form (under Pres = 1/Cres^2)
 
 ========================================================================================
 FINAL LEDGER

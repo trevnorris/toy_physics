@@ -342,3 +342,19 @@ fixes are all confined to the III.2 band and touch no EM-projected identity;
 checkpoint 051 in range re-verified clean.) With I.1 + I.2 + II.1 + III.1 + III.2
 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-060) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch III.3 (2026-06-05)
+
+Pass-2 Batch III.3 (061-072, `Part III.3 — Microclosure, gain thresholds,
+equilibrium, walls`) re-verified at v2 depth + value-reconciliation augmentation;
+12/12 verified, `material_change: false` on all 12. NO EM-projected stages in
+range — III.3 is the microclosure / gain-thresholds / equilibrium / thin-wall
+band, downstream of and outside the projected-Maxwell core (004-021). No
+projected-EM identity was touched: no EM result moved. (The one script-side math
+fix — 070's F1 de-tautologization of the `I_1/J_1` sech-anchor check into
+load-bearing moment asserts `I_f=2/3`/`I_g=14/15` plus a `8/15`→`14/15` annotation
+correction — and the 8 label-only self-label fixes + 3 output refreshes are all
+confined to the III.3 band and touch no EM-projected identity; checkpoint 069 in
+range re-verified clean at the higher bar with no constant moved.) With I.1 + I.2
++ II.1 + III.1 + III.2 + III.3 pass-2 closed, the projected-EM core 004-021 (plus
+bookends 022-072) remains paper-aligned under the second pass.

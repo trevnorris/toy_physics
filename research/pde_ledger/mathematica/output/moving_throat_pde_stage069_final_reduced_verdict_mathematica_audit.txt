@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 052 — FINAL REDUCED SUPPORT/SOURCE VERDICT
+STAGE 069 — FINAL REDUCED SUPPORT/SOURCE VERDICT
 ========================================================================================
 Matched-branch fail threshold       = PeReq/(Delta0 + DeltaGap)
 Matched-branch success threshold    = PeReq/Delta0

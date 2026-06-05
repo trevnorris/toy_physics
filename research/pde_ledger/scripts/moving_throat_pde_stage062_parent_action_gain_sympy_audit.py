@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 45 SymPy audit.
+Stage 62 SymPy audit.
 
 Checks:
 1. n=5 EOS identities h'(rho)=m c_s^2/rho.
@@ -109,4 +109,4 @@ kappa_solved = sp.solve(Xi_micro - Xi_target, kappa)
 assert kappa_solved == [KX * L**2 / TX], f"Unexpected kappa solution: {kappa_solved}"
 print("kappa solved from Xi_micro = Xi_target:", kappa_solved[0])
 
-print("\nAll Stage 45 symbolic checks passed.")
+print("\nAll Stage 62 symbolic checks passed.")

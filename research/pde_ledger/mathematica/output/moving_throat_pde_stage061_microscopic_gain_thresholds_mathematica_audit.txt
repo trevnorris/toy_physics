@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.wl
-# Date: 2026-05-11T12:54:35-06:00
-# Elapsed: 6s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 044 — MICROSCOPIC GAIN THRESHOLDS
+STAGE 061 — MICROSCOPIC GAIN THRESHOLDS
 ========================================================================================
 Delta_0 = (eta*(-1 + Cosh[Sqrt[kappa]]))/(eta*kappa*Cosh[Sqrt[kappa]] + kappa^(3/2)*Sinh[Sqrt[kappa]])
 Delta_inf = (-1 + Cosh[Sqrt[kappa]] + (eta*Sinh[Sqrt[kappa]])/Sqrt[kappa])/(eta*Cosh[Sqrt[kappa]] + Sqrt[kappa]*Sinh[Sqrt[kappa]])
@@ -62,5 +54,3 @@ stiff-support compliant-mouth limit: G_suff -> Pe_req = 0
 PASS: stiff-support compliant-mouth limit: G_suff -> Pe_req
 
 Stage 061 Mathematica audit passed.
-
-EXIT_CODE: 0

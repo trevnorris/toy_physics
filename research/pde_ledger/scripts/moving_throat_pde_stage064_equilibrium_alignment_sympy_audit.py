@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 47 SymPy audit
+Moving-Throat PDE — Stage 64 SymPy audit
 
 Purpose
 -------

@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage51_resonance_thresholds_sympy_audit.py
+moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
 
 SymPy-backed audit for the resonance-corrected threshold window.
 

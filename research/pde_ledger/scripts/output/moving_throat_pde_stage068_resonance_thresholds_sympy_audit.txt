@@ -1,10 +1,11 @@
 
 ========================================================================================
-STAGE 51 — RESONANCE-CORRECTED THRESHOLDS
+STAGE 68 — RESONANCE-CORRECTED THRESHOLDS
 ========================================================================================
-W_res - C2 * W_wall = 0
-P_res - 1/C_res^2 = 0
-P_res*C_res^2 - 1 = 0
+W_res - C2 * W_wall (from gain decomposition) = 0
+W_res(C2->1) - W_wall (matched limit) = 0
+P_res - 1/C_res^2 (from required-wall-figure ratio) = 0
+P_res numeric residual = 5.6958391724936524581E-16
 Matched fail threshold     = Pe_req/Delta_inf
 Matched succeed threshold  = Pe_req/Delta_0
 Profile-family fail thresh = Pe_req/(C2*Delta_inf)
@@ -13,12 +14,12 @@ Wfail_res * C2 - Wfail_match = 0
 Wsuff_res * C2 - Wsuff_match = 0
 Wfail_res(C2->1/Pres) - Pres*Wfail_match = 0
 Wsuff_res(C2->1/Pres) - Pres*Wsuff_match = 0
-Success-side band width (A) = Pe_req*(P_res - 1)/Delta_0
-Failure-side band width (A) = Pe_req*(P_res - 1)/Delta_inf
-Success-side band width (B) = Pe_req*(P_res - 1)/Delta_0
-Failure-side band width (B) = Pe_req*(P_res - 1)/Delta_inf
-success band A vs B = 0
-failure band A vs B = 0
+Success-side band width (C-form) = -Pe_req/Delta_0 + Pe_req/(C_res**2*Delta_0)
+Failure-side band width (C-form) = -Pe_req/Delta_inf + Pe_req/(C_res**2*Delta_inf)
+Success-side band width (P-form) = Pe_req*(P_res - 1)/Delta_0
+Failure-side band width (P-form) = Pe_req*(P_res - 1)/Delta_inf
+success band C-form vs P-form (under Pres = 1/Cres^2) = 0
+failure band C-form vs P-form (under Pres = 1/Cres^2) = 0
 
 ========================================================================================
 FINAL LEDGER

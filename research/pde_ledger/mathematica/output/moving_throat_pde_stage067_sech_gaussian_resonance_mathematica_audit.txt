@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 050 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK
+STAGE 067 — EXACT SECH-GAUSSIAN COHERENCE BENCHMARK
 ========================================================================================
 N_(sigma sigma) = 2*wf
 N_(phi phi) = Sqrt[Pi/2]*wg

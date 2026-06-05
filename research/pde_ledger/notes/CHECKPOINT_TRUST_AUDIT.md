@@ -399,3 +399,25 @@ misaligned, `material_change: false` on all 12; the only script-side math fix �
 into a genuine chi-route vs D/M-route cross-check — added a real assertion over
 an already-correct value (`Xi_micro = Λφ²L²/(Θ T_X)` unchanged), no result value
 moved; the other 11 stages were label-only self-banner fixes.)
+
+## Pass 2 — Batch III.3 (2026-06-05)
+
+Pass-2 Batch III.3 (061-072): ONE checkpoint in range — **069**
+(`final_reduced_verdict`) — re-verified clean at v2 depth + value-reconciliation
+augmentation, clearing the higher checkpoint bar; **no certified checkpoint
+constant moved**, no trust impact. 069 pins NO numeric constant: `C_res² =
+0.994418…` / `P_res = 1.005612…` are upstream Stages 067/068 deliverables carried
+as the FREE symbols `Cres2Prim` (Mathematica) / `Pres_gap` (SymPy), never
+re-asserted against themselves; the substantive deliverables (three-zone verdict,
+matched-window width, exact side-band widths, `P_res-1=(1-C²)/C²`, strict
+interior-point ordering) are genuine symbolic identities built by two independent
+engine routes (SymPy `Pres`-first/multiplication; Mathematica `Cres2`-first with
+`PresGap` recovered via `Solve`). 069 stays `strong`. No new checkpoint constant
+introduced. (For completeness: 12/12 re-verified, 116 deliverable values checked
+batch-wide, 0 misaligned, `material_change: false` on all 12; the only script-side
+math fix — 070's F1 de-tautologization of the `I_1/J_1 = 4πa²ℓ` anchoring check
+into load-bearing sech-moment asserts (`I_f=2/3`, `I_g=14/15`) plus a corrected
+`8/15`→`14/15` print annotation — added real assertions over already-correct
+values (the symbolic `kappa`/`W_wall`/`Xi` deliverables unchanged), no result
+value moved, 070.wl remains an independent engine; the other 11 stages were
+label-only self-banner fixes / output refreshes.)

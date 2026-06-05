@@ -1,47 +1,65 @@
 
 ========================================================================================
-STAGE 047 — EQUILIBRIUM ALIGNMENT
+STAGE 064 — EQUILIBRIUM ALIGNMENT
 ========================================================================================
 closure chi_sigma = (gPhi*chiPhiLoc[yLoc])/hLoc[yLoc]
 closure law chi_sigma = g_phi chi_phi/H = 0
 PASS: closure law chi_sigma = g_phi chi_phi/H
-Npp_int = lInt*Sqrt[Pi]  I1_int = (lInt*Sqrt[Pi])/hw  I2_int = (lInt*Sqrt[Pi])/hw^2
-overlap O = g_phi * I1 (integral form) = 0
-PASS: overlap O = g_phi * I1 (integral form)
-overlap N_ss = g_phi^2 * I2 (integral form) = 0
-PASS: overlap N_ss = g_phi^2 * I2 (integral form)
+Npp_int = (L*Pi)/2
+I1_int  = (L*Pi)/(2*hw)
+I2_int  = (L*Pi)/(2*hw^2)
+overlap O = g_phi * I1 (Lorentzian integral form) = 0
+PASS: overlap O = g_phi * I1 (Lorentzian integral form)
+overlap N_ss = g_phi^2 * I2 (Lorentzian integral form) = 0
+PASS: overlap N_ss = g_phi^2 * I2 (Lorentzian integral form)
 O_(sigma phi) = gPhi*i1
 N_(sigma sigma) = gPhi^2*i2
 C_(sigma phi)^2 = i1^2/(i2*npp)
 G_eq = (gPhi^2*i1)/kX
+coherence formula C^2 = I1^2/(Npp I2) = 0
+PASS: coherence formula C^2 = I1^2/(Npp I2)
 
 ========================================================================================
-MATCHED-LAYER INTEGRAL REDUCTION (concrete Gaussian profile)
+MATCHED-LAYER INTEGRAL REDUCTION (Lorentzian profile)
 ========================================================================================
-Npp_int = L*Sqrt[Pi]
-I1_int  = (L*Sqrt[Pi])/hw
-I2_int  = (L*Sqrt[Pi])/hw^2
 matched-layer I1 reduction = 0
 PASS: matched-layer I1 reduction
 matched-layer I2 reduction = 0
 PASS: matched-layer I2 reduction
 C^2 | H=const = 1
-G_eq | H=const = (gPhi^2*L*Sqrt[Pi])/(hw*kX)
+G_eq | H=const = (gPhi^2*L*Pi)/(2*hw*kX)
 matched-layer coherence = 0
 PASS: matched-layer coherence
 matched-layer gain vs Stage-45 best-alignment formula = 0
 PASS: matched-layer gain vs Stage-45 best-alignment formula
-N_pp I2 - I1^2 = ((h1 - h2)^2*w1*w2)/(h1^2*h2^2)
-expected gap = ((h1 - h2)^2*w1*w2)/(h1^2*h2^2)
-two-point Cauchy gap identity = 0
-PASS: two-point Cauchy gap identity
-sigma_stat = (lambda*phi)/theta
-F_eff = (phi^2*(-lambda^2 + kX*theta))/(2*theta)
+
+========================================================================================
+CONTINUOUS CAUCHY BOUND CHECK
+========================================================================================
+continuous pair Cauchy gap = (L^2*(-32768 + 3375*Pi^2))/(28800*hw^3)
+continuous f-g Cauchy-Schwarz residual = 0
+PASS: continuous f-g Cauchy-Schwarz residual
+N_pp I2 - I1^2 = (L^2*Pi^2)/(64*hw^2)
+expected continuous gap = (L^2*Pi^2)/(64*hw^2)
+continuous Cauchy bound C^2 <= 1 = 0
+PASS: continuous Cauchy bound C^2 <= 1
+
+========================================================================================
+GENERAL-H EQUILIBRIUM SOFTENING CHECK
+========================================================================================
+general Theta integrand equals gPhi^2 chiPhi^2/hFun = 0
+PASS: general Theta integrand equals gPhi^2 chiPhi^2/hFun
+general Lambda integrand equals gPhi^2 chiPhi^2/hFun = 0
+PASS: general Lambda integrand equals gPhi^2 chiPhi^2/hFun
+general equilibrium softening equals gPhi^2 I_1 = 0
+PASS: general equilibrium softening equals gPhi^2 I_1
+
+========================================================================================
+ELIMINATED-SOURCE SOFTENING CHECK
+========================================================================================
+source_stat = (mixCoeff*supportAmp)/sourceCoeff
+F_eff = ((-mixCoeff^2 + kX*sourceCoeff)*supportAmp^2)/(2*sourceCoeff)
 effective support softening = 0
 PASS: effective support softening
-Lambda^2/Theta (closure form) = (gPhi^2*i1^2)/(hw*i2)
-Lambda^2/Theta (matched layer) = gPhi^2*i1
-equilibrium softening equals g_phi^2 I1 = 0
-PASS: equilibrium softening equals g_phi^2 I1
 
 Stage 064 Mathematica audit passed.

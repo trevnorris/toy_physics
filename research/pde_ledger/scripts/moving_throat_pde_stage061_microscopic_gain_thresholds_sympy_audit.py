@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 44 SymPy audit — microscopic gain thresholds and operator phase diagram.
+Stage 61 SymPy audit — microscopic gain thresholds and operator phase diagram.
 """
 from __future__ import annotations
 import sympy as sp

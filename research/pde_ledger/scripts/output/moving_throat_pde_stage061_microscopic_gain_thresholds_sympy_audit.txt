@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
-# Date: 2026-05-11T12:44:14-06:00
-# Elapsed: 5s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 44 — MICROSCOPIC GAIN THRESHOLDS
+STAGE 61 — MICROSCOPIC GAIN THRESHOLDS
 ========================================================================================
 Delta_0 = eta*(cosh(sqrt(kappa)) - 1)/(kappa*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa))))
 Delta_inf = (eta*sinh(sqrt(kappa)) + sqrt(kappa)*(cosh(sqrt(kappa)) - 1))/(sqrt(kappa)*(eta*cosh(sqrt(kappa)) + sqrt(kappa)*sinh(sqrt(kappa))))
@@ -43,12 +35,10 @@ stiff-support compliant-mouth limit: sqrt(kappa)*G_fail -> Pe_req = 0
 stiff-support compliant-mouth limit: G_suff -> Pe_req = 0
 
 ========================================================================================
-STAGE 44 THEOREM LEDGER
+STAGE 61 THEOREM LEDGER
 ========================================================================================
 1. The microscopic coupling is Xi_micro = kappa * G_micro with G_micro = chi_sigma Lambda_phi^2 / K_X.
 2. The exact operator phase diagram is set by G_fail = Pe_req/[kappa Delta_inf] and G_suff = Pe_req/[kappa Delta_0].
 3. Soft support is strongly disfavored: G_fail ~ Pe_req/kappa, G_suff ~ 2 Pe_req/kappa as kappa -> 0+.
 4. In the highly compliant-mouth branch, G_fail^(inf) = Pe_req/[sqrt(kappa) tanh(sqrt(kappa))] and G_suff^(inf) = Pe_req/[1-sech(sqrt(kappa))].
 5. For stiff support with a compliant mouth, G_fail ~ Pe_req/sqrt(kappa) while G_suff -> Pe_req.
-
-EXIT_CODE: 0

@@ -148,7 +148,23 @@
 ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the old `## IMMEDIATE NEXT ACTION`
 header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
 
-### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = I.2 (013–023)**
+### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = II.1 (024–036)**
+- **✅ Batch I.2 (013–023) DONE + COMMITTED (`fc50517`) — 11/11 verified, all `material_change: false`, no stop-cold/blocked.**
+  10 clean (013–020, 022, 023). 1 finding, resolved:
+  - **021** `stale_output` (low-severity, NOT paper_misalignment, no user gate): the committed Mathematica output `.txt`
+    was a stale pre-numbering-reconciliation capture (banner `STAGE 004`) AND the live `.wl:195` carried a leftover bare
+    `Print["Stage 004 Mathematica audit passed."]` literal. The numbering-recon Phase-1 scan keyed on the `banner[...]`
+    call (already fixed at `.wl:35`→`STAGE 021`) + docstrings, so this bare `Print` summary literal slipped through →
+    **label-only `.wl:195` `Stage 004`→`Stage 021` + output refresh.** ZERO math/equation/assertion change, no result
+    value moved, no `.tex`/notes prose touched. Codex iter-1 exit 0 → orchestrator re-run exit 0 → Claude-verified.
+  - Value-reconciliation augmentation applied on all 11: **86 deliverable values checked batch-wide, 0 misaligned**
+    (013=6/014=5/015=4/016=9/017=6/018=2/019=5/020=11/021=11/022=14/023=13). No MISMATCH, no MISSING-DELIVERABLE.
+  - No new `.wl` (all 11 already dual-engine from pass 1; independence re-confirmed). Checkpoints 022/023 re-verified
+    clean (no constant changed). 6 trackers synced (PAPER_CLEANUP **P5-03** = no paper items); summary
+    `redteam/pass2/batches/batch_I2.md`. Pass-1 `MANIFEST.yaml` untouched (isolation held).
+  - **LESSON:** the dedicated numbering reconciliation was declared mechanically EXHAUSTED, but its scan key
+    (`banner[...]`/docstrings/self-titles) could not catch a bare `Print["Stage NNN ..."]` summary literal — the pass-2
+    re-audit did. Cheap to fix; confirms pass 2 earns its keep on residual label drift.
 - **✅ Step 0 DONE + COMMITTED (`da3f528`).** The 2 deferred numbering CONTENT edits applied (Codex, session 019e94df):
   stage062 `Stage 43`→`Stage 61`; `Stages 99 and 170`→`Stage 119` (×3, stage162:19/221, stage163:45). Settled to
   singular **Stage 119** (116 is a different deliverable; 119 owns the parent compensation family). Label/wording only.

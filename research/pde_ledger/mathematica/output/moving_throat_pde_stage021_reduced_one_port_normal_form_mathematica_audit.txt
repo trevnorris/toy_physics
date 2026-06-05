@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 004 — MAXWELL + MIXED-SECTOR REDUCTION
+STAGE 021 — MAXWELL + MIXED-SECTOR REDUCTION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -79,4 +79,4 @@ PASS: N_scalar leading term
 scalar odd order = 0
 PASS: scalar odd order
 
-Stage 004 Mathematica audit passed.
+Stage 021 Mathematica audit passed.

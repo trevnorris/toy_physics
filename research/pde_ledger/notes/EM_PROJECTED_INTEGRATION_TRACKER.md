@@ -283,3 +283,17 @@ projected Ampère law sign reconciled card→engine
 covariant in F^{μν}; 010/011/012/023 are sign-agnostic P2/bundle moments;
 EM-extension endgame 243/244/247 ride the scalar continuity-leakage/Poynting-work
 branch and do not consume the vector Ampère sign).
+
+## Pass 2 — Batch I.2 (2026-06-04)
+
+Pass-2 Batch I.2: the back half of the projected-EM core plus the grouped
+bookends (013-023, `Part I.2 — Maxwell bridge, parent throat action, reduced
+one-port`) re-verified at v2 depth + value-reconciliation augmentation; 11/11
+verified, `material_change: false` on all 11. I.2 IS in the projected-EM range
+(013 projected Maxwell mouth-Taylor master, 021 reduced one-port normal form) —
+the projected-EM identities were re-checked and UNCHANGED; no projected-EM
+result moved. The one finding (021, low-severity `stale_output`) was a label-only
+`.wl:195` edit (`Stage 004`→`Stage 021`) + output refresh — ZERO
+math/equation/assertion change, no EM-projected identity touched. With I.1 + I.2
+pass-2 closed, the entire projected-EM core 004-021 (plus bookends 022-023)
+remains paper-aligned under the second pass.

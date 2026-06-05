@@ -336,3 +336,21 @@ kernel w(u)=u·e^{-u}, μ₁=2; O(ℓ) leading term asserted = q0+ℓ·μ₁·q1
 card's general μ₁ formula is now exercised, not just the exponential special
 case (μ₁=1). Stage 003 .wl `lRed` consolidated to one parenthesized assignment
 (robustness; math no-op, output byte-identical).
+
+## Pass 2 — Batch I.2 (2026-06-04)
+
+Pass-2 Batch I.2 (013-023, `Part I.2 — Maxwell bridge, parent throat action,
+reduced one-port`): all 11 re-verified at v2 depth + exhaustive
+value-reconciliation augmentation; 11/11 verified, `material_change: false` on
+all 11, 0 stop-cold, 0 blocked. Every emitted deliverable value reconciles —
+86 values checked batch-wide (013=6, 014=5, 015=4, 016=9, 017=6, 018=2, 019=5,
+020=11, 021=11, 022=14, 023=13), 0 MISMATCH, 0 MISSING-DELIVERABLE. All 11 are
+genuine dual-engine (both independent engines from pass 1; re-audit confirmed
+independence). 10 clean (013-020, 022, 023); one finding at 021 — a low-severity
+`stale_output`: the committed Mathematica output `.txt` was a stale
+pre-numbering-reconciliation capture (banner "STAGE 004") and the live `.wl:195`
+carried a leftover bare `Print["Stage 004 Mathematica audit passed."]` label
+that the numbering-recon scan (keyed on the `banner[...]` call + docstrings)
+missed; fix = one label-only `.wl:195` edit `Stage 004`→`Stage 021` + output
+refresh (math no-op, no assertion/result changed). No coverage count moved (all
+11 were already verified+dual-engine from pass 1).

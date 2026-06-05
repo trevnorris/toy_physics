@@ -963,3 +963,13 @@ Audit note:
 Pass-2 Batch I.1: no carried paper constant changed. (Stage-009 μ₁=2 is the
 Gamma-kernel verification first moment, not a carried paper constant.) No new
 provenance items.
+
+## Pass 2 — Batch I.2 (2026-06-04)
+
+Pass-2 Batch I.2: no carried paper constant changed; no new provenance items.
+Checkpoints 022 and 023 are in range and were re-verified clean with the
+value-reconciliation augmentation (all emitted deliverable values reconcile —
+0 misaligned); the 022/023 constant-provenance entries above stand unchanged.
+The one finding (021, a NON-checkpoint stage) was a label-only `.wl:195` edit
+(`Stage 004`→`Stage 021`) + output refresh — no constant or literal introduced
+or moved.

@@ -342,3 +342,18 @@ was an exec-DISPROVEN false positive; genuine items were a notes index garble
 (fixed) + a latent lRed-construction fragility (consolidated) — no trust impact
 on the carried results. 001/002 clean (foundational geometry-lift + P2
 degeneracy).
+
+## Pass 2 — Batch I.2 (2026-06-04)
+
+Pass-2 Batch I.2: checkpoints 022 and 023 re-verified clean at v2 depth (with
+the value-reconciliation augmentation; every emitted deliverable value
+reconciles — 0 misaligned). NO checkpoint constant changed or introduced; no
+trust impact. Both stay `strong`. The batch's one finding (021, a low-severity
+`stale_output`) is at a NON-checkpoint stage: the committed Mathematica output
+`.txt` was a stale pre-numbering-reconciliation capture (banner "STAGE 004") and
+the live `.wl:195` carried a leftover bare `Print["Stage 004 ..."]` label;
+fix = one label-only `.wl:195` edit `Stage 004`→`Stage 021` + output refresh,
+ZERO math/assertion change, no result value moved. (003's `lRed`-construction
+defect class noted at the 003 Strong-tier row remains the same latent fragility
+flagged across pass 1 / pass 2; 021 here is the non-checkpoint instance of that
+continuation-defect class.)

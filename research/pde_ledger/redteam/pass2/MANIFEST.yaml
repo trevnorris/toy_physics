@@ -381,7 +381,7 @@ stages:
     stage: 13
     stage_str: '013'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -406,11 +406,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage013_projected_maxwell_mouth_taylor_master_mathematica_audit.txt
         exists: true
         mtime: 1779767686
+    last_status_change: 2026-06-04 21:10:19-06:00
   '014':
     stage: 14
     stage_str: '014'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -435,11 +436,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_mathematica_audit.txt
         exists: true
         mtime: 1779767420
+    last_status_change: 2026-06-04 21:10:22-06:00
   '015':
     stage: 15
     stage_str: '015'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -464,11 +466,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.txt
         exists: true
         mtime: 1779768371
+    last_status_change: 2026-06-04 21:10:24-06:00
   '016':
     stage: 16
     stage_str: '016'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -493,11 +496,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage016_parent_throat_action_candidate_mathematica_audit.txt
         exists: true
         mtime: 1779397336
+    last_status_change: 2026-06-04 21:10:27-06:00
   '017':
     stage: 17
     stage_str: '017'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -522,11 +526,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage017_parent_throat_action_weak_axisym_mathematica_audit.txt
         exists: true
         mtime: 1779397342
+    last_status_change: 2026-06-04 21:10:29-06:00
   018:
     stage: 18
     stage_str: 018
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -551,11 +556,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage018_parent_throat_action_bundle_master_mathematica_audit.txt
         exists: true
         mtime: 1779767429
+    last_status_change: 2026-06-04 21:10:31-06:00
   019:
     stage: 19
     stage_str: 019
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -580,11 +586,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_mathematica_audit.txt
         exists: true
         mtime: 1779397353
+    last_status_change: 2026-06-04 21:10:34-06:00
   '020':
     stage: 20
     stage_str: '020'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -609,12 +616,13 @@ stages:
         path: mathematica/output/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_mathematica_audit.txt
         exists: true
         mtime: 1779767434
+    last_status_change: 2026-06-04 21:10:36-06:00
   '021':
     stage: 21
     stage_str: '021'
     batch_id: I.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -638,11 +646,19 @@ stages:
         path: mathematica/output/moving_throat_pde_stage021_reduced_one_port_normal_form_mathematica_audit.txt
         exists: true
         mtime: 1779769478
+    last_status_change: 2026-06-04 21:18:48-06:00
+    codex_session: 019e95c6-c956-7820-b1af-95b2fbef6304
+    codex_log_paths:
+    - redteam/pass2/codex_logs/021_iter1.txt
+    last_codex_run: 2026-06-04 21:16:24-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 21:16:54-06:00
   '022':
     stage: 22
     stage_str: '022'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -667,11 +683,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage022_grouped_p2_normalization_bridge_mathematica_audit.txt
         exists: true
         mtime: 1779397366
+    last_status_change: 2026-06-04 21:10:39-06:00
   '023':
     stage: 23
     stage_str: '023'
     batch_id: I.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -696,6 +713,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage023_full_grouped_bundle_mathematica_audit.txt
         exists: true
         mtime: 1779769484
+    last_status_change: 2026-06-04 21:10:41-06:00
   '024':
     stage: 24
     stage_str: '024'

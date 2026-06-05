@@ -854,3 +854,15 @@ If a stage is not in the list above:
 Pass-2 Batch I.1 (001-012): all engines independent; no
 `mathematica_transliteration`/mirror findings; no additions to the
 Independent-Mirror Set.
+
+## Pass 2 — Batch I.2 (2026-06-04)
+
+Pass-2 Batch I.2 (013-023, `Part I.2 — Maxwell bridge, parent throat action,
+reduced one-port`): all 11 already had both independent engines from pass 1, and
+the re-audit confirmed independence (e.g. 021's `.wl` uses
+`LinearSolve`/`SphericalHankelH1`/`VariationalMethods` vs the SymPy hand-built
+routes). No new `.wl` built, no mirror reclassification, 0 sanctioned mirrors,
+no additions to the Independent-Mirror Set. The single finding (021,
+low-severity `stale_output`) was a label-only `.wl:195` edit `Stage 004`→`Stage
+021` + output refresh — ZERO math/equation/assertion change, NOT a
+`mathematica_transliteration`/mirror item.

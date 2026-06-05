@@ -519,3 +519,71 @@ refs in `.py`/`.wl` source (063 `Stage-44`; 064 `Stage-45/46`; 065 `Stage-44`; 0
 the `J1_stage48`/`J1Stage48` variable names) left UNTOUCHED and deferred to
 `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
 offset-sweep). Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch III.4 (2026-06-05)
+
+Pass-2 Batch III.4 (073-084, `Part III.4 — Family-1 geometry, thresholds,
+quadrupole`, 12 stages): all 12 pass-2 re-verified at v2 depth (dual-engine where
+applicable) + exhaustive value-reconciliation augmentation; 12/12 verified,
+`material_change: false` on all 12, 0 stop-cold, 0 blocked, 0 Codex deviations, all
+iter-1 exit 0. Every emitted deliverable value reconciles — **119 values checked
+batch-wide, 0 MISALIGNED, 0 MISSING-DELIVERABLE** (per stage: 073=5, 074=6, 075=11,
+076=8, 077=9, 078=8, 079=6, 080=5, 081=11, 082=15, 083=21, 084=14). 11 stages are
+genuine dual-engine; **084 is single-engine by design** (Mathematica-only
+write-up/consolidation skeleton — card says "SymPy audit: none yet",
+`is_status_only_candidate: true`; the absent SymPy is not a finding). No new `.wl`,
+0 sanctioned mirrors. **NO checkpoints in range; NO EM-projected stages in range; NO
+genuine `paper_misalignment` anywhere → ZERO paper/notes edits.**
+
+**4 real script-side findings → fixed → verified:**
+- **075 — F1 `tautological_check` (both engines):** `Theta_fail := Upsilon_fail/alpha_r²`
+  made the round-trip `Upsilon_fail − alpha_r²·Theta_fail ≡ 0` (could never fail; the
+  SymPy comment falsely claimed "not the trivial identity"). Removed both round-trips;
+  added SymPy `expect_close` anchors of all 8 deliverables (Delta_0/Delta_inf,
+  Upsilon/Xi/Theta fail+suff) against fixed EXTERNAL literals; the reduction lock
+  `alpha_r² == 100` retained; the `.wl`'s pre-existing independent `expectApprox`
+  battery stays.
+- **083 — F1 `tautological_check` + F2 `insufficient_verification` (both engines):**
+  `Delta := numer/denom` made `denom·Delta − numer ≡ 0` (could not catch a Cosh↔Sinh
+  paste error), the `.wl` `A_F1 independent` check compared `(Pi/2)² ≡ Pi²/4`
+  (identical operands), and the SymPy script only PRINTED the deliverable Pe/zeta
+  windows. Replaced the SymPy Delta residuals with external-literal anchors, deleted
+  the tautological `.wl` `A_F1` check, corrected the misleading "Independent BVP
+  derivation" comments, and added the 4 Pe + 5 zeta window numeric asserts (F2).
+- **081 — F1 `insufficient_verification` (SymPy):** the inversion `Q` was pinned only
+  at `Q(0)`, `Q(1)` (two points don't pin a rational function). Added
+  `expect_zero("Q-closedform", Q − (1 + zeta − 2·eps_blk·zeta)/(1 − eps_blk·zeta))`,
+  matching the full identity the Mathematica engine already asserts.
+- **077 — F1 `symbol_assumption_error` (SymPy):** the symmetric full-line integration
+  variable `xi` (cut point `xi_* ≈ −0.3856 < 0`) was declared `positive=True`. Split
+  the declaration so `xi` is `real=True` only (`alpha_r`/`lambda_mu` stay positive).
+  Dormant latent trap; explicit `(-oo,oo)` bounds set the domain, so `I_f = 1/3` and
+  all numeric values are byte-identical — no result moved.
+
+**1 self-label fix → verified:** 074 — SymPy module docstring filename `stage57` →
+`stage074` (matches the actual 3-digit filename; banner already canonical) + output
+refresh. **1 refresh-only → verified:** 076 — `stale_output` (committed banners
+`STAGE 59`/`STAGE 059` → `STAGE 076`; source canonical, no edit). **1 deferred-clean
+→ verified:** 080 — the audit flagged five comment/docstring labels, but ALL are
+CROSS-references (`Stage-61/62` → stages 078/079), not stage-080 self-labels (its own
+self-labels are canonical); orchestrator deferred per Reading-2 (the auditor
+over-flagged — the same class was correctly marked CLEAN on sibling 078). **5 clean →
+verified:** 073, 078, 079, 082, 084.
+
+All `.py`/`.wl` source diffs are strip-the-number identical to HEAD except the genuine
+math additions on 075/077/081/083 (de-taut removals + anchor/assert insertions); no
+deliverable result value moved on any stage (confirmed by the committed-output diff:
+only banner refreshes, removed tautological-check lines, and new passing-anchor lines).
+No coverage count moved (all 12 already verified+dual-engine-or-single-by-design from
+pass 1). INFRA NOTE (III.2/III.3 lesson re-confirmed): `exec-*` refreshes `exec_logs/`
+not committed `output/*.txt`; the orchestrator re-ran all 23 engines (exit 0) and
+sed-refreshed every output, the arbiter grep confirming no stale self-epoch (NNN−17)
+banner remains. (073's SymPy engine is the `..._sympy_audit_refresh.py` variant; its
+committed output is `..._sympy_audit_refresh.txt` — present, git-tracked, fresh; the
+MANIFEST `sympy_output` glob keys on the non-refresh name so it shows `None`, harmless.)
+
+Numbering cross-refs (to OTHER stages) in `.py`/`.wl` source — 078 docstring
+`Stage-60`/`Stage-58`; 080 docstring+comments `Stage-61/62` (×5); 081 comments
+`Stage-35`→052 / `Stage 63`→080 — left UNTOUCHED and deferred to
+`redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
+offset-sweep). Reference memory `numbering-drift-root-cause`.

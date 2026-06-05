@@ -2544,7 +2544,7 @@ stages:
     stage: 73
     stage_str: '073'
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2568,12 +2568,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage073_family1_geometry_map_mathematica_audit.txt
         exists: true
         mtime: 1779871474
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:44:23-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:44:31-06:00
+    last_status_change: 2026-06-05 16:11:33-06:00
   '074':
     stage: 74
     stage_str: '074'
     batch_id: III.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2597,12 +2602,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage074_family1_healing_lock_mathematica_audit.txt
         exists: true
         mtime: 1779869887
+    last_status_change: 2026-06-05 16:11:36-06:00
+    codex_session: 019e99b8-36ff-7c41-965e-72e4c64359a0
+    codex_log_paths:
+    - redteam/pass2/codex_logs/074_iter1.txt
+    last_codex_run: 2026-06-05 15:39:00-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:44:36-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:44:44-06:00
   '075':
     stage: 75
     stage_str: '075'
     batch_id: III.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2626,11 +2641,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage075_family1_threshold_window_mathematica_audit.txt
         exists: true
         mtime: 1779869944
+    last_status_change: 2026-06-05 16:11:39-06:00
+    codex_session: 019e99b8-4ec5-7f83-af4d-010dbf76feec
+    codex_log_paths:
+    - redteam/pass2/codex_logs/075_iter1.txt
+    last_codex_run: 2026-06-05 15:39:40-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:44:58-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:45:22-06:00
   '076':
     stage: 76
     stage_str: '076'
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2655,12 +2680,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage076_n5_wall_depth_lock_mathematica_audit.txt
         exists: true
         mtime: 1779869954
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:45:27-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:45:35-06:00
+    last_status_change: 2026-06-05 16:11:43-06:00
   '077':
     stage: 77
     stage_str: '077'
     batch_id: III.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2684,11 +2714,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.txt
         exists: true
         mtime: 1779871486
+    last_status_change: 2026-06-05 16:11:46-06:00
+    codex_session: 019e99b8-376c-7d42-9135-3ef9f019f5e7
+    codex_log_paths:
+    - redteam/pass2/codex_logs/077_iter1.txt
+    last_codex_run: 2026-06-05 15:38:45-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:45:42-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:45:50-06:00
   078:
     stage: 78
     stage_str: 078
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2713,11 +2753,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage078_family1_branch_verdict_mathematica_audit.txt
         exists: true
         mtime: 1779870257
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:45:54-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:46:02-06:00
+    last_status_change: 2026-06-05 16:11:49-06:00
   079:
     stage: 79
     stage_str: 079
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2742,11 +2787,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage079_family1_quadrupole_pe_map_mathematica_audit.txt
         exists: true
         mtime: 1779871497
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:46:08-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:46:16-06:00
+    last_status_change: 2026-06-05 16:11:52-06:00
   080:
     stage: 80
     stage_str: 080
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2771,12 +2821,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage080_family1_zeta_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1779871509
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:46:22-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:46:30-06:00
+    last_status_change: 2026-06-05 16:11:56-06:00
   081:
     stage: 81
     stage_str: 081
     batch_id: III.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2800,11 +2855,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage081_family1_pi_thresholds_mathematica_audit.txt
         exists: true
         mtime: 1779690094
+    last_status_change: 2026-06-05 16:11:59-06:00
+    codex_session: 019e99b8-4aeb-74f2-bd74-796f23d5b99d
+    codex_log_paths:
+    - redteam/pass2/codex_logs/081_iter1.txt
+    last_codex_run: 2026-06-05 15:38:39-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:46:35-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:46:43-06:00
   082:
     stage: 82
     stage_str: 082
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2829,12 +2894,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage082_master_quadrupole_residual_mathematica_audit.txt
         exists: true
         mtime: 1779869975
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:46:49-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:46:57-06:00
+    last_status_change: 2026-06-05 16:12:02-06:00
   083:
     stage: 83
     stage_str: 083
     batch_id: III.4
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -2858,11 +2928,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage083_family1_direct_operator_window_mathematica_audit.txt
         exists: true
         mtime: 1779871553
+    last_status_change: 2026-06-05 16:12:06-06:00
+    codex_session: 019e99b8-5fa3-7c62-84ab-7dbe6e272a8b
+    codex_log_paths:
+    - redteam/pass2/codex_logs/083_iter1.txt
+    last_codex_run: 2026-06-05 15:39:57-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 15:47:03-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:47:23-06:00
   084:
     stage: 84
     stage_str: 084
     batch_id: III.4
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2885,6 +2965,9 @@ stages:
         path: mathematica/output/moving_throat_pde_stage084_full_reduced_pde_writeup_mathematica_audit.txt
         exists: true
         mtime: 1779869990
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 15:47:34-06:00
+    last_status_change: 2026-06-05 16:12:09-06:00
   085:
     stage: 85
     stage_str: 085

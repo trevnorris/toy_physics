@@ -114,15 +114,26 @@ print("Xi_suff / Pe_req =", sp.N(sp.simplify(Xi_suff / Pe_req), 20))
 print("Theta_fail / Pe_req =", sp.N(sp.simplify(Theta_fail / Pe_req), 20))
 print("Theta_suff / Pe_req =", sp.N(sp.simplify(Theta_suff / Pe_req), 20))
 
-# Exact reduction Upsilon_w = alpha_r^2 Theta_w on the reference branch.
-# Test the round-trip on the actually-constructed fail and suff branches,
-# not the trivial identity 100*Theta == 100*Theta.
-Upsilon_fail_from_Theta = sp.simplify(alpha_r**2 * Theta_fail)
-Upsilon_suff_from_Theta = sp.simplify(alpha_r**2 * Theta_suff)
-print("\nUpsilon_fail - alpha_r^2 * Theta_fail =", sp.simplify(Upsilon_fail - Upsilon_fail_from_Theta))
-print("Upsilon_suff - alpha_r^2 * Theta_suff =", sp.simplify(Upsilon_suff - Upsilon_suff_from_Theta))
-assert sp.simplify(Upsilon_fail - Upsilon_fail_from_Theta) == 0
-assert sp.simplify(Upsilon_suff - Upsilon_suff_from_Theta) == 0
+# Independent numeric anchors: the boxed window endpoints and kernel scales
+# must match the paper's stated literals. These are NOT tautological -- the
+# literals are fixed externally, so a wrong closed form / factor would fail.
+def expect_close(name: str, value, target: str, rel_tol: str) -> None:
+    value_num = sp.N(value, 30)
+    target_num = sp.Float(target, 30)
+    diff = abs(value_num - target_num)
+    limit = sp.Float(rel_tol, 30) * max(sp.Integer(1), abs(target_num))
+    print(f"{name} diff = {diff}")
+    assert diff < limit, f"{name}: {value_num} != {target}"
+    print(f"{name} PASS")
+
+expect_close("Delta_0", Delta0, "1.73302079021525e-4", "1e-14")
+expect_close("Delta_inf", Deltainf, "2.01447565540522e-2", "1e-14")
+expect_close("Upsilon_fail / Pe_req", sp.simplify(Upsilon_fail / Pe_req), "0.0362605617972939", "1e-14")
+expect_close("Upsilon_suff / Pe_req", sp.simplify(Upsilon_suff / Pe_req), "4.21495341569977", "1e-14")
+expect_close("Xi_fail / Pe_req", sp.simplify(Xi_fail / Pe_req), "49.6407091004953", "1e-14")
+expect_close("Xi_suff / Pe_req", sp.simplify(Xi_suff / Pe_req), "5770.27122609299", "1e-14")
+expect_close("Theta_fail / Pe_req", sp.simplify(Theta_fail / Pe_req), "3.62605617972939e-4", "1e-14")
+expect_close("Theta_suff / Pe_req", sp.simplify(Theta_suff / Pe_req), "4.21495341569977e-2", "1e-14")
 
 print("\nFinal ledger:")
 print("  Delta_0   ~", sp.N(Delta0, 16))

@@ -59,16 +59,9 @@ deltaInfF1 = FullSimplify[
   (Cosh[alphaF1] + (etaF1/alphaF1)*Sinh[alphaF1] - 1)/(alphaF1*Sinh[alphaF1] + etaF1*Cosh[alphaF1])
 ];
 
-(* Independent BVP derivation: Delta_0 and Delta_inf are the two boundary
-   values of the linear two-point BVP
-     u''(s) - alphaF1^2 * u(s) == 0,  0 < s < 1,
-     u(0) - (1/etaF1) * u'(0) == 0,   (Robin at the wall)
-     u(1) == 1.                       (unit value at outer edge)
-   Then Delta_0 = u(0) / (alphaF1^2 + etaF1 * something)  -- BUT the
-   cleanest invariant is: Delta_0 and Delta_inf each satisfy a single
-   algebraic equation that does NOT use the closed-form Cosh/Sinh
-   shortcut.  Concretely we verify they each satisfy the defining
-   identity below. *)
+(* Redundant structural checks for Delta_0 and Delta_inf.  These residuals
+   restate the closed-form definitions below; the independent numeric
+   anchors later in the script pin the reported values. *)
 
 (* Defining identity for Delta_0(F1):
      (alphaF1^2 * (alphaF1 * Sinh[alphaF1] + etaF1 * Cosh[alphaF1])) * Delta_0
@@ -93,14 +86,9 @@ expectZero["Delta_inf(F1) defining-equation residual", deltaInfResidual];
 yRoot = y /. FindRoot[y*Tan[y] == etaF1, {y, 1.53}, WorkingPrecision -> 50, AccuracyGoal -> 25, PrecisionGoal -> 25];
 aF1 = N[(kappaF1 + Pi^2/4)/(kappaF1 + yRoot^2), 40];
 
-(* Independent check on A_F1: y*Tan[y] == eta must hold at yRoot, and
-   A_F1 must be derivable directly from kappa and that eigenvalue.
-   Re-derive A_F1 via a separate symbolic substitution and verify it
-   matches the closed form numerically. *)
+(* Check the eigenvalue root used by A_F1. *)
 yRootResidual = N[yRoot*Tan[yRoot] - etaF1, 40];
 expectApprox["y_F1 satisfies y Tan[y] = eta", yRootResidual, 0, 10^-20];
-aF1Indep = N[(kappaF1 + (Pi/2)^2)/(kappaF1 + yRoot^2), 40];
-expectApprox["A_F1 independent vs closed-form", aF1 - aF1Indep, 0, 10^-30];
 
 Print["Delta_0(F1) = ", N[delta0F1, 30]];
 Print["Delta_inf(F1) = ", N[deltaInfF1, 30]];
@@ -136,14 +124,11 @@ Print["Pe_+^(J)   = ", pePlusJ];
 
 omega[pp_] := Pi*pp*(2*pp*Exp[pp] + Pi)/((4*pp^2 + Pi^2)*(Exp[pp] - 1));
 ClearAll[pTest];
-(* Independent identity for Omega(Pe):
+(* Structural sanity print for Omega(Pe):
      Omega(Pe) * (4 Pe^2 + Pi^2) (Exp[Pe] - 1)
        == Pi * Pe * (2 Pe Exp[Pe] + Pi).
-   This is a structural identity the closed form must satisfy.  It is
-   mathematically the definition we typed in, but verifying it as an
-   identity (rather than as the function body) catches paste errors of
-   the form "exp(Pe) -> exp(2 Pe)" or "4 Pe^2 -> 4 Pe" that would
-   otherwise pass silently. *)
+   This is tautological for the typed definition and is retained only as
+   a structural residual print, not as independent verification. *)
 With[{pp = pTest},
   omegaResidual = FullSimplify[
     omega[pp]*(4*pp^2 + Pi^2)*(Exp[pp] - 1)

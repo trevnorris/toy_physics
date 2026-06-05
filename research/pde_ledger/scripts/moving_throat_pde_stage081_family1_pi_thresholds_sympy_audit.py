@@ -37,6 +37,8 @@ Q = sp.simplify(Pi_of_zeta / Cmix)
 
 print("Pi_of_zeta =", Pi_of_zeta)
 print("Q(zeta;eps_blk) =", Q)
+expect_zero("Q-closedform",
+    Q - (1 + zeta - 2*eps_blk*zeta)/(1 - eps_blk*zeta))
 expect_zero("Q(0)-1", sp.simplify(Q.subs(zeta, 0) - 1))
 expect_zero("Q(1)-2", sp.simplify(Q.subs(zeta, 1) - 2))
 print("dQ/dzeta =", sp.simplify(sp.diff(Q, zeta)))

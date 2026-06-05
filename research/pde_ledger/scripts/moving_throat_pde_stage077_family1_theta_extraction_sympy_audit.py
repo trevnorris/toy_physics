@@ -30,7 +30,8 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 
 banner("STAGE 077 — SHELL-WEIGHTED THETA EXTRACTION")
 
-xi, alpha_r, lambda_mu = sp.symbols("xi alpha_r lambda_mu", positive=True, real=True)
+xi = sp.symbols("xi", real=True)
+alpha_r, lambda_mu = sp.symbols("alpha_r lambda_mu", positive=True, real=True)
 S = (1 + sp.tanh(xi)) / 2
 chi = sp.diff(S, xi)
 If = sp.integrate(sp.simplify(chi**2), (xi, -sp.oo, sp.oo))

@@ -11,8 +11,6 @@ Delta_inf(F1) defining-equation residual = 0
 PASS: Delta_inf(F1) defining-equation residual
 y_F1 satisfies y Tan[y] = eta diff = 0``46.851292696328365
 PASS: y_F1 satisfies y Tan[y] = eta
-A_F1 independent vs closed-form diff = 0``39.69894745252931
-PASS: A_F1 independent vs closed-form
 Delta_0(F1) = 0.0001733020790215251490571561965499240307128269537269643639`30.
 Delta_inf(F1) = 0.0201447565540521594271032956099177756319537877435562045469`30.
 y_F1 = 1.5294824837146996499271076224024730256136350231989369098177`30.

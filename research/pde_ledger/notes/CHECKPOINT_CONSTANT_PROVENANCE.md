@@ -1047,3 +1047,21 @@ value, could never fail), plus a corrected `wl:86` print annotation `8/15`→`14
 was WRONG; correct = 14/15). The moments are an internal anchor (not a deliverable,
 not consumed downstream); the symbolic `kappa`/`W_wall`/`Xi` deliverables are
 unchanged. No other provenance items; no carried checkpoint constant changed.
+
+## Pass 2 — Batch III.4 (2026-06-05)
+
+Pass-2 Batch III.4 (073-084): reviewed — NO checkpoint constant changed, NO
+checkpoint in range. III.4 is the Family-1 geometry / thresholds / quadrupole band
+(no `is_checkpoint` stage). 119 deliverable values checked batch-wide, 0 misaligned,
+0 MISSING-DELIVERABLE; `material_change: false` on all 12; no new postulated constant
+introduced. The script-side math fixes (075, 083) DE-TAUTOLOGIZED checks and added
+numeric anchors against fixed EXTERNAL paper/notes literals — they do not pin any NEW
+constant; the anchored values were already present and correct. Worth recording (no
+value moved): the Family-1 healing-window endpoints `Delta_0 = 1.73302079021525e-4`
+and `Delta_inf = 2.01447565540522e-2` are now ANCHORED on the SymPy side in BOTH
+stage 075 (threshold-window route) and stage 083 (direct-operator route) — two
+independent derivations of the same window, mutually cross-corroborating the literals
+(previously the SymPy side of each only PRINTED them; the Mathematica side of 075
+already pinned them). All carried Family-1 constants (`kappa_F1 = 12321/5`,
+`eta_F1 = 37`, `alpha_r² = 100`) are unchanged and still locked. No carried checkpoint
+constant changed.

@@ -26,10 +26,6 @@ alpha * Delta_inf large-alpha limit = 1
 PASS: alpha * Delta_inf -> 1 (large alpha)
 Delta_0 small-alpha limit = 1/2
 PASS: Delta_0 -> 1/2 (small alpha)
-Upsilon_fail - alphaR^2 * Theta_fail = 0
-PASS: Upsilon_fail - alphaR^2 * Theta_fail
-Upsilon_suff - alphaR^2 * Theta_suff = 0
-PASS: Upsilon_suff - alphaR^2 * Theta_suff
 Delta_0 numeric check diff = 0``23.
 PASS: Delta_0 numeric check
 Delta_inf numeric check diff = 0``21.

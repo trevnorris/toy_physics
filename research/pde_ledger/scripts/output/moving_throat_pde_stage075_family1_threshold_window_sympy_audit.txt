@@ -31,9 +31,22 @@ Xi_fail / Pe_req = 49.640709100495331260
 Xi_suff / Pe_req = 5770.2712260929890619
 Theta_fail / Pe_req = 0.00036260561797293886969
 Theta_suff / Pe_req = 0.042149534156997728721
-
-Upsilon_fail - alpha_r^2 * Theta_fail = 0
-Upsilon_suff - alpha_r^2 * Theta_suff = 0
+Delta_0 diff = 1.49057156196549917030167505859E-19
+Delta_0 PASS
+Delta_inf diff = 4.05728967043900828277677535761E-17
+Delta_inf PASS
+Upsilon_fail / Pe_req diff = 1.30311911104092698548654756143E-17
+Upsilon_fail / Pe_req PASS
+Upsilon_suff / Pe_req diff = 2.87212423638658697002574174378E-15
+Upsilon_suff / Pe_req PASS
+Xi_fail / Pe_req diff = 3.12602993698497051034499833363E-14
+Xi_fail / Pe_req PASS
+Xi_suff / Pe_req diff = 9.38061920386763281099130127283E-13
+Xi_suff / Pe_req PASS
+Theta_fail / Pe_req diff = 1.30311911104092700474584700530E-19
+Theta_fail / Pe_req PASS
+Theta_suff / Pe_req diff = 2.87212423638658662489909570959E-17
+Theta_suff / Pe_req PASS
 
 Final ledger:
   Delta_0   ~ 0.0001733020790215251

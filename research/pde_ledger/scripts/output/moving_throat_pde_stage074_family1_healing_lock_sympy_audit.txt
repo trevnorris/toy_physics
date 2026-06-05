@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 57 — HEALING-LENGTH LOCK AND SUPPORT SCALE
+STAGE 074 — HEALING-LENGTH LOCK AND SUPPORT SCALE
 ========================================================================================
 chi (after healing-length substitution) = L/(2*ell)
 chi_s (locked) = Lambda_ell/2

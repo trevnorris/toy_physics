@@ -358,3 +358,18 @@ confined to the III.3 band and touch no EM-projected identity; checkpoint 069 in
 range re-verified clean at the higher bar with no constant moved.) With I.1 + I.2
 + II.1 + III.1 + III.2 + III.3 pass-2 closed, the projected-EM core 004-021 (plus
 bookends 022-072) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch III.4 (2026-06-05)
+
+Pass-2 Batch III.4 (073-084, `Part III.4 — Family-1 geometry, thresholds,
+quadrupole`) re-verified at v2 depth + value-reconciliation augmentation; 12/12
+verified, `material_change: false` on all 12. **NO EM-projected stages in range** —
+III.4 is the Family-1 geometry / healing-lock / threshold-window / quadrupole band,
+downstream of and outside the projected-Maxwell core (004-021). No projected-EM
+identity was touched: no EM result moved. The script-side fixes (075 + 083
+de-tautologizations + external-literal anchors, 081 closed-form-identity assert, 077
+latent-symbol-trap removal, 074 docstring self-label + output refresh, 076 output
+refresh) are all confined to the III.4 Family-1 band and touch no EM-projected
+identity; no checkpoint in range. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 +
+III.4 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-084) remains
+paper-aligned under the second pass.

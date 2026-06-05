@@ -29,6 +29,13 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
         raise AssertionError(f"{name} is not zero")
 
 
+def expect_close(name: str, value, target, atol: float) -> None:
+    diff = abs(sp.N(value, 40) - sp.N(target, 40))
+    print(f"{name} diff = {diff}")
+    if diff > sp.Float(atol):
+        raise AssertionError(f"{name}: diff {diff} exceeds {atol}")
+
+
 banner("STAGE 083 — DIRECT FAMILY-1 OPERATOR WINDOW")
 
 # ------------------------------------------------------------------
@@ -63,22 +70,10 @@ DeltaInf_F1 = sp.simplify(
     / (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1))
 )
 
-# Defining-equation residuals for Delta_0 and Delta_inf (Family-1):
-#   (alpha^2 * (alpha sinh(alpha) + eta cosh(alpha))) * Delta_0 == eta (cosh(alpha) - 1)
-#   (alpha sinh(alpha) + eta cosh(alpha))           * Delta_inf == cosh(alpha) + (eta/alpha) sinh(alpha) - 1
-# These are non-tautological because they express Delta_* as the unique
-# solution of a linear equation, not as a chosen closed form.
-delta0_residual = sp.simplify(
-    (alpha_F1**2 * (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1))) * Delta0_F1
-    - eta_F1 * (sp.cosh(alpha_F1) - 1)
-)
-expect_zero("Delta_0(F1) defining-equation residual", delta0_residual)
+# Numeric anchors for the Family-1 closed forms reported in the stage notes.
+expect_close("Delta_0(F1) numeric anchor", Delta0_F1, sp.Float("1.73302079021525e-4"), 1e-16)
+expect_close("Delta_inf(F1) numeric anchor", DeltaInf_F1, sp.Float("2.01447565540522e-2"), 1e-15)
 
-deltaInf_residual = sp.simplify(
-    (alpha_F1 * sp.sinh(alpha_F1) + eta_F1 * sp.cosh(alpha_F1)) * DeltaInf_F1
-    - (sp.cosh(alpha_F1) + (eta_F1 / alpha_F1) * sp.sinh(alpha_F1) - 1)
-)
-expect_zero("Delta_inf(F1) defining-equation residual", deltaInf_residual)
 
 yy = sp.symbols("yy")
 y_F1 = sp.nsolve(yy * sp.tan(yy) - eta_F1, sp.Float("1.53", 80), tol=1e-30, maxsteps=100, prec=80)
@@ -120,6 +115,10 @@ print("Pe_-^(chi) =", Pe_minus_chi)
 print("Pe_+^(chi) =", Pe_plus_chi)
 print("Pe_-^(J)   =", Pe_minus_J)
 print("Pe_+^(J)   =", Pe_plus_J)
+expect_close("Pe_-^(chi) numeric check", Pe_minus_chi, sp.Float("96.5285247264385"), 1e-10)
+expect_close("Pe_+^(chi) numeric check", Pe_plus_chi, sp.Float("11220.5441626259"), 1e-7)
+expect_close("Pe_-^(J) numeric check", Pe_minus_J, sp.Float("22.0062226330754"), 1e-10)
+expect_close("Pe_+^(J) numeric check", Pe_plus_J, sp.Float("2558.01892349205"), 1e-8)
 
 # ------------------------------------------------------------------
 # 3. Direct zeta and Pi/C_mix windows
@@ -154,6 +153,11 @@ print("zeta_+^(chi) =", zeta_plus_chi)
 print("zeta_-^(J)   =", zeta_minus_J)
 print("zeta_+^(J)   =", zeta_plus_J)
 print("zeta_max^(F1)=", zeta_max_F1)
+expect_close("zeta_-^(chi) numeric check", zeta_minus_chi, sp.Float("2.46622291347846"), 1e-12)
+expect_close("zeta_+^(chi) numeric check", zeta_plus_chi, sp.Float("2.46752913273870"), 1e-12)
+expect_close("zeta_-^(J) numeric check", zeta_minus_J, sp.Float("2.44257571477179"), 1e-12)
+expect_close("zeta_+^(J) numeric check", zeta_plus_J, sp.Float("2.46752736855058"), 1e-12)
+expect_close("zeta_max^(F1) numeric check", zeta_max_F1, sp.Float("2.46752922945601"), 1e-12)
 
 print("Pi_suff^(chi)/C_mix at eps_blk=0 =", sp.N(1 + zeta_minus_chi, 30))
 print("Pi_fail^(chi)/C_mix at eps_blk=0 =", sp.N(1 + zeta_plus_chi, 30))

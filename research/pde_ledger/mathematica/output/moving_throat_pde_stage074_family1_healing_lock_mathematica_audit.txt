@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 057 — HEALING-LENGTH LOCK AND SUPPORT SCALE
+STAGE 074 — HEALING-LENGTH LOCK AND SUPPORT SCALE
 ========================================================================================
 chi_s (locked) = lambdaEll/2
 kappa(Lambda_ell) = (9*lambdaEll^2)/5

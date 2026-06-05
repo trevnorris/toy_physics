@@ -4,6 +4,7 @@ STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS
 ========================================================================================
 Pi_of_zeta = Cmix*(2*eps_blk*zeta - zeta - 1)/(eps_blk*zeta - 1)
 Q(zeta;eps_blk) = (2*eps_blk*zeta - zeta - 1)/(eps_blk*zeta - 1)
+Q-closedform = 0
 Q(0)-1 = 0
 Q(1)-2 = 0
 dQ/dzeta = (1 - eps_blk)/(eps_blk**2*zeta**2 - 2*eps_blk*zeta + 1)

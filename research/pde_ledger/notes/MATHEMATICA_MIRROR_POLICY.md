@@ -955,3 +955,35 @@ NOTE (III.2 lesson re-confirmed): `exec-*` refreshes `exec_logs/` not the commit
 `output/*.txt` — all 12 committed transcripts predated the scripts; the
 orchestrator re-ran all 24 engines (exit 0) and sed-refreshed every output; an
 arbiter grep on the refreshed outputs confirmed no stale self-banner remains.
+
+## Pass 2 — Batch III.4 (2026-06-05)
+
+Pass-2 Batch III.4 (073-084, `Part III.4 — Family-1 geometry, thresholds,
+quadrupole`): all stages already had their pass-1 engines, and the re-audit
+re-confirmed genuine independence on every dual-engine stage. **No new `.wl`
+built, 0 mirror reclassification, 0 sanctioned mirrors, no additions to the
+Independent-Mirror Set.** Two `.wl`-touching stages (075, 083) were EDITED only to
+DE-TAUTOLOGIZE / correct comments — neither became a mirror; both verify agents
+re-confirmed the `.wl` remains an independent engine:
+- **075** — removed two tautological round-trip `expectZero` checks
+  (`Upsilon_fail − alphaR²·Theta_fail`, where `Theta_fail := Upsilon_fail/alphaR²`,
+  so the residual is identically 0). The `.wl`'s pre-existing independent
+  `expectApprox` numeric battery (Delta_0/Delta_inf/Upsilon/Xi/Theta against fixed
+  literals) provides the real coverage and stays; the SymPy side gained matching
+  `expect_close` external-literal anchors it previously lacked.
+- **083** — deleted the tautological `A_F1 independent vs closed-form` check
+  (`(Pi/2)² ≡ Pi²/4`, byte-identical operands) and rewrote two misleading comments
+  ("Independent BVP derivation", "Independent identity for Omega") to honestly
+  describe the `Delta`/`Omega` residuals as redundant structural checks. The `.wl`
+  numeric battery (the genuine coverage) is untouched. SymPy gained external-literal
+  `expect_close` anchors for `Delta_0`/`Delta_inf` + the four Pe + five zeta window
+  deliverables (previously print-only).
+
+084 is **Mathematica-only by design** (a write-up/consolidation skeleton; the card
+states "SymPy audit: none yet", manifest `is_status_only_candidate: true`) — a
+legitimate single-engine status-only stage, not a mirror gap. `material_change=false`
+on all 12. INFRA NOTE (III.2/III.3 lesson re-confirmed): `exec-*` refreshes
+`exec_logs/` not the committed `output/*.txt`; the orchestrator re-ran all 23 engines
+(11 SymPy + 12 Mathematica; 084 has no SymPy) all exit 0, and sed-refreshed every
+committed transcript; the arbiter grep confirmed no stale self-epoch (NNN−17) banner
+remains on any of the 12.

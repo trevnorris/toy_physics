@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage57_family1_healing_lock_sympy_audit.py
+moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
 
 SymPy audit for Stage 074:
 - use the exact GNLS healing/compliance width ell = hbar/(2 m c_s),

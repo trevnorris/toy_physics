@@ -421,3 +421,20 @@ into load-bearing sech-moment asserts (`I_f=2/3`, `I_g=14/15`) plus a corrected
 values (the symbolic `kappa`/`W_wall`/`Xi` deliverables unchanged), no result
 value moved, 070.wl remains an independent engine; the other 11 stages were
 label-only self-banner fixes / output refreshes.)
+
+## Pass 2 — Batch III.4 (2026-06-05)
+
+Pass-2 Batch III.4 (073-084): **NO checkpoints in range** (`is_checkpoint: false`
+on all 12; III.4 is the Family-1 geometry / thresholds / quadrupole band, between
+the III.3 checkpoint 069 and the III.5 checkpoints 089/090). The 25 checkpoint
+trust tiers are therefore **unaffected** by III.4; cumulative checkpoint trust is
+unchanged (105 retained at `strong`; the nearest checkpoints to this range, 069 and
+089/090, were re-verified clean in III.3 / first-pass III.5 respectively). No
+certified checkpoint constant moved; no new checkpoint constant introduced. (For
+completeness: 12/12 re-verified at v2 depth + value-reconciliation augmentation, 119
+deliverable values checked batch-wide, 0 misaligned, `material_change: false` on all
+12; the script-side changes — 075 + 083 de-tautologized defining-equation/round-trip
+checks and added external-literal numeric anchors, 081 added a full closed-form
+identity assert, 077 dropped a latent `positive=True` symbol trap, 074 fixed a
+docstring self-label + output refresh, 076 was an output-banner refresh — all add or
+strengthen assertions over already-correct values and move no result.)

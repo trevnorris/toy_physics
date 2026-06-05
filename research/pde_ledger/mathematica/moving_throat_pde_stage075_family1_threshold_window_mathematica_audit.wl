@@ -113,9 +113,6 @@ Module[{aSym, eSym, delta0Sym, deltaInfSym, largeAlphaLimit, smallAlphaLimit},
     fail["Delta_0 -> 1/2 (small alpha)", smallAlphaLimit]];
 ];
 
-expectZero["Upsilon_fail - alphaR^2 * Theta_fail", upsilonFail - alphaR^2*thetaFail];
-expectZero["Upsilon_suff - alphaR^2 * Theta_suff", upsilonSuff - alphaR^2*thetaSuff];
-
 expectApprox["Delta_0 numeric check", delta0, 0.00017330207902152514906, 10^-18];
 expectApprox["Delta_inf numeric check", deltaInf, 0.020144756554052159427, 10^-17];
 expectApprox["Upsilon_fail / Pe_req numeric check", upsilonFail/peReq, 0.036260561797293886969, 10^-16];

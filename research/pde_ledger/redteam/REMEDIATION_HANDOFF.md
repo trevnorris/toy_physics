@@ -148,6 +148,36 @@
 ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the old `## IMMEDIATE NEXT ACTION`
 header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
 
+### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = I.2 (013–023)**
+- **✅ Step 0 DONE + COMMITTED (`da3f528`).** The 2 deferred numbering CONTENT edits applied (Codex, session 019e94df):
+  stage062 `Stage 43`→`Stage 61`; `Stages 99 and 170`→`Stage 119` (×3, stage162:19/221, stage163:45). Settled to
+  singular **Stage 119** (116 is a different deliverable; 119 owns the parent compensation family). Label/wording only.
+- **✅ Batch I.1 (001–012) DONE + COMMITTED (`ddce867`) — 12/12 verified, all `material_change: false`, no stop-cold.**
+  9 clean (001,002,004,005,007,008,010,011,012; checkpoints 001/002/003 re-verified). 3 findings, all resolved:
+  - **006** paper_misalignment: published card's projected Ampère law was sign-flipped vs BOTH engines. Cross-stage
+    investigation (008/005/010-012/023 + EM endgame 243/244/247) proved nothing downstream consumes the vector
+    Ampère sign and the card's `+∇×H` contradicts the card's OWN Gauss law under the scripts' map → **card corrected**
+    to engine form `−∇×H − ∂_tD + L_mix = μ₀J` (Codex, paper edit). No script change. `material_change: false`.
+  - **003** (checkpoint): the audit agent's F1 "Mathematica Lagrangian doubling" + F2 "stale output" were **exec-DISPROVEN
+    false positives** — the multi-line `lRed` (lines 54-59) silently drops lines 56-59 (WL newline-before-`-` statement
+    splitting → captures only the kinetic terms), and the parenthesized re-add supplies the rest exactly once; net `lRed`
+    is correct & output byte-identical. Genuine fixes: notes garble `d_{237/238/239}`→`d_{2,20/21/22}` (F3); and `lRed`
+    consolidated to ONE parenthesized assignment for robustness (F4; math no-op, output byte-identical).
+  - **009** paper_misalignment: scripts only tested the exponential kernel (μ₁=1) while the card states the generic μ₁
+    formula → **added a generic-kernel first-moment check** in both engines (Gamma kernel `w(u)=u e^{-u}`, μ₁=2; O(ℓ)
+    coeff asserted `=q0+ℓ·μ₁·q1`, non-tautological). Outputs refreshed.
+  - 6 trackers synced (PAPER_CLEANUP **P5-02**); batch summary `redteam/pass2/batches/batch_I1.md`.
+  - **KEY LESSON (reinforced):** the exec re-run is the ARBITER — an audit agent's structural "bug" claim can be a false
+    positive (003). ALWAYS confirm a script-side finding by running the script before sending it to Codex.
+
+### ⭐ AUGMENTATION — user-added 2026-06-04 (APPLIES TO EVERY PASS-2 BATCH)
+On top of the standard v2 audit, every pass-2 stage gets an **exhaustive script→doc value reconciliation**: account for
+EVERY result value the `.py`/`.wl` emit and confirm each is correctly reflected in the stage `.tex` card + `.md` notes
+(MISMATCH/MISSING-DELIVERABLE → `paper_misalignment`; terse-card omissions & internal scaffolding are NOT findings).
+Spec = **`redteam/pass2/RECONCILIATION_AUGMENTATION.md`**. **Each audit agent reads BOTH its rendered
+`audit_prompt_NNN.md` AND that augmentation doc.** (Validated on I.1: caught 003's notes garble, supported 006/009;
+no false-positive flooding on terse cards.) Done this way — NOT by editing the locked `prompts/auditor.md`.
+
 ### Decisions (user, 2026-06-04)
 - **Scope = identical per-stage RE-AUDIT of all 253** stages, batch by batch (I.1…VIII.1), reusing the SAME v2
   auditor `prompts/auditor.md` and the SAME pipeline. NOT a new higher-level/cross-stage audit.
@@ -165,9 +195,9 @@ header is FIRST-PASS history — ignore it except for the reusable per-stage-loo
   `BATCHES.md`, and the empty reports/directives/verifications/batches/exec_logs/codex_logs dirs. pass2 runtime log
   dirs are gitignored. pass-1 `BATCHES.md` refreshed to the true all-`verified` state.
 
-### Step 0 — the 2 deferred numbering CONTENT edits (Codex-applied, Claude-reviewed; NOT label-only) BEFORE batch I.1
+### Step 0 — ✅ DONE + COMMITTED (`da3f528`) — the 2 deferred numbering CONTENT edits (Codex-applied, Claude-reviewed)
 Per [[feedback-codex-is-fix-applier]] (notes are Codex-applied). Evidence in `redteam/NUMBERING_BROAD_SWEEP_PLAN.md`
-(the Cluster 3 + escalations sections). Commit Step 0 as its own content commit, then start the re-audit.
+(the Cluster 3 + escalations sections). **Both edits applied + committed; this step is closed.** (Recorded for history:)
 1. **stage062 `Stage 43` → `Stage 61`** — mis-citation: the cited `Ξ_micro = κ·G_micro, κ=K_X L²/T_X` is owned by
    canonical **061**, not the +17 label-target 060. (Find it: grep `Stage 43 used` in
    `notes/stages/moving_throat_pde_stage062_*.md`.)
@@ -182,11 +212,13 @@ Per [[feedback-codex-is-fix-applier]] (notes are Codex-applied). Evidence in `re
 cd /var/projects/toy_physics/research/pde_ledger
 RT=/var/projects/toy_physics/.claude/skills/redteam-audit/lib/redteam.sh
 export RT_REDTEAM_DIR=redteam/pass2     # EVERY $RT call this session targets pass-2 (set it once, in the env)
-$RT status        # must show Manifest: …/redteam/pass2/MANIFEST.yaml  + 253 pending
-$RT next-batch    # → I.1 (stages 1–12)
+$RT status        # Manifest: …/redteam/pass2/MANIFEST.yaml  — I.1 verified=12; NEXT = I.2 pending=11
+$RT next-batch    # → I.2 (stages 013–023)   [I.1 is DONE]
 ```
 Then run the PROVEN per-stage loop (unchanged — see the boilerplate later in this doc / SKILL.md), with all paths now
-under `redteam/pass2/`: render-audit-prompt → clean audit Agent writes `redteam/pass2/reports/stage_NNN.md` →
+under `redteam/pass2/`. **Each audit Agent must read BOTH `redteam/pass2/tmp_prompts/audit_prompt_NNN.md` AND
+`redteam/pass2/RECONCILIATION_AUGMENTATION.md` (the value-reconciliation augmentation — see ⭐ above).**
+Loop: render-audit-prompt → clean audit Agent (reads prompt + augmentation) writes `redteam/pass2/reports/stage_NNN.md` →
 (findings) directive → `set-status fixing` → `codex-invoke` → `exec-sympy`+`exec-mathematica` (SEQUENTIAL; ≤2
 Mathematica seats; refresh `output/*.txt`) → `capture-diff` → render-verify-prompt → clean verify Agent writes
 `redteam/pass2/verifications/stage_NNN.md` → `set-status verified`; `material_change: true` → `mark-stale-downstream`.

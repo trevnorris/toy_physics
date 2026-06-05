@@ -326,3 +326,13 @@ be treated as targeted spot-checking, not broad numerical validation.
    cleared as status-only consolidation cards under IV.2/IV.3.)
 6. Use the new `248` / `253` harnesses as the template if numerical-stress
    coverage is widened beyond the current spot-check set.
+
+## Pass 2 — Batch I.1 (2026-06-04)
+
+Pass-2 Batch I.1 (001-012): all 12 re-verified at v2 depth + exhaustive
+value-reconciliation augmentation; 12/12 verified. Coverage EXTENDED at stage
+009: added a generic-kernel first-moment (μ₁) check in BOTH engines (Gamma
+kernel w(u)=u·e^{-u}, μ₁=2; O(ℓ) leading term asserted = q0+ℓ·μ₁·q1) — the
+card's general μ₁ formula is now exercised, not just the exponential special
+case (μ₁=1). Stage 003 .wl `lRed` consolidated to one parenthesized assignment
+(robustness; math no-op, output byte-identical).

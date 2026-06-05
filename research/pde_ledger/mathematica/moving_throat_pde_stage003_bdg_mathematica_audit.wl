@@ -51,20 +51,15 @@ qL = qLFun[t];
 xa = xaFun[t];
 xb = xbFun[t];
 
-lRed =
+lRed = (
   1/2 maa D[qa, t]^2 + maL D[qa, t] D[qL, t] + 1/2 mLL D[qL, t]^2
   - 1/2 kaa qa^2 - kaL qa qL - 1/2 kLL qL^2
   + 1/2 D[xa, t]^2 - 1/2 wa^2 xa^2
   + 1/2 D[xb, t]^2 - 1/2 wb^2 xb^2
-  + c1a qa xa + c1b qa xb + c2a qL xa + c2b qL xb;
+  + c1a qa xa + c1b qa xb + c2a qL xa + c2b qL xb
+);
 
 	Clear[qa0, qL0, xa0, xb0, vqa, vqL, vxa, vxb, aqa, aqL, axa, axb];
-	lRed = lRed + (
-	  -1/2 kaa qa^2 - kaL qa qL - 1/2 kLL qL^2
-	  + 1/2 D[xa, t]^2 - 1/2 wa^2 xa^2
-	  + 1/2 D[xb, t]^2 - 1/2 wb^2 xb^2
-	  + c1a qa xa + c1b qa xb + c2a qL xa + c2b qL xb
-	);
 	lAlg = lRed /. {qaFun[t] -> qa0, qLFun[t] -> qL0, xaFun[t] -> xa0, xbFun[t] -> xb0,
 	                Derivative[1][qaFun][t] -> vqa, Derivative[1][qLFun][t] -> vqL,
 	                Derivative[1][xaFun][t] -> vxa, Derivative[1][xbFun][t] -> vxb};

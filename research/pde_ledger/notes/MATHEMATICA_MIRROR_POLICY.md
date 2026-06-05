@@ -848,3 +848,9 @@ If a stage is not in the list above:
   mirror quality is appropriate for the stated claim.
 - Future widening work should upgrade only the load-bearing subset instead of
   trying to make every Mathematica file fully independent.
+
+## Pass 2 — Batch I.1 (2026-06-04)
+
+Pass-2 Batch I.1 (001-012): all engines independent; no
+`mathematica_transliteration`/mirror findings; no additions to the
+Independent-Mirror Set.

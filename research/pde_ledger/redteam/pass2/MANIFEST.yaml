@@ -6,12 +6,12 @@ stages:
     stage: 1
     stage_str: '001'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:21:58-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -31,16 +31,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage001_geometry_lift_mathematica_audit.txt
         exists: true
         mtime: 1779751726
+    last_status_change: 2026-06-04 17:21:52-06:00
   '002':
     stage: 2
     stage_str: '002'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:21:58-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -60,18 +61,19 @@ stages:
         path: mathematica/output/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.txt
         exists: true
         mtime: 1779385807
+    last_status_change: 2026-06-04 17:21:54-06:00
   '003':
     stage: 3
     stage_str: '003'
     batch_id: I.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-06-04T17:21:58-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-06-04T20:34:55-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage003_bdg_sympy_audit.py
@@ -89,16 +91,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage003_bdg_mathematica_audit.txt
         exists: true
         mtime: 1779385823
+    last_status_change: 2026-06-04 20:34:55-06:00
+    codex_session: 019e9528-83e1-7e03-be6b-9c605bc65d88
+    codex_log_paths:
+    - redteam/pass2/codex_logs/003_iter1.txt
+    last_codex_run: 2026-06-04 18:24:56-06:00
+    last_codex_exit: 0
   '004':
     stage: 4
     stage_str: '004'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -118,16 +126,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage004_projected_maxwell_bundle_index_mathematica_audit.txt
         exists: true
         mtime: 1779750568
+    last_status_change: 2026-06-04 17:33:29-06:00
   '005':
     stage: 5
     stage_str: '005'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -147,18 +156,19 @@ stages:
         path: mathematica/output/moving_throat_pde_stage005_projected_maxwell_covariant_mathematica_audit.txt
         exists: true
         mtime: 1779385845
+    last_status_change: 2026-06-04 17:33:32-06:00
   '006':
     stage: 6
     stage_str: '006'
     batch_id: I.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-06-04T20:34:55-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
@@ -176,16 +186,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage006_projected_maxwell_vector_mathematica_audit.txt
         exists: true
         mtime: 1779751747
+    last_status_change: 2026-06-04 20:34:59-06:00
+    codex_session: 019e9526-c393-7620-94fb-6a36506105b2
+    codex_log_paths:
+    - redteam/pass2/codex_logs/006_iter1.txt
+    last_codex_run: 2026-06-04 18:21:34-06:00
+    last_codex_exit: 0
   '007':
     stage: 7
     stage_str: '007'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -205,16 +221,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage007_projection_reduction_comparison_mathematica_audit.txt
         exists: true
         mtime: 1779751771
+    last_status_change: 2026-06-04 17:33:35-06:00
   008:
     stage: 8
     stage_str: 008
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -234,18 +251,19 @@ stages:
         path: mathematica/output/moving_throat_pde_stage008_projected_maxwell_extension_mathematica_audit.txt
         exists: true
         mtime: 1779750808
+    last_status_change: 2026-06-04 17:33:38-06:00
   009:
     stage: 9
     stage_str: 009
     batch_id: I.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
-    last_audit_findings: 0
-    last_verify_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
+    last_audit_findings: 1
+    last_verify_date: '2026-06-04T20:34:55-06:00'
     files:
       sympy:
         path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
@@ -263,16 +281,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage009_projected_maxwell_near_throat_mathematica_audit.txt
         exists: true
         mtime: 1779385890
+    last_status_change: 2026-06-04 20:35:02-06:00
+    codex_session: 019e9558-6883-78c1-8cf6-f5dd9f185c0d
+    codex_log_paths:
+    - redteam/pass2/codex_logs/009_iter1.txt
+    last_codex_run: 2026-06-04 19:17:01-06:00
+    last_codex_exit: 0
   '010':
     stage: 10
     stage_str: '010'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -292,16 +316,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_mathematica_audit.txt
         exists: true
         mtime: 1779751779
+    last_status_change: 2026-06-04 17:33:41-06:00
   '011':
     stage: 11
     stage_str: '011'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -321,16 +346,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage011_projected_maxwell_p2_bridge_mathematica_audit.txt
         exists: true
         mtime: 1779751788
+    last_status_change: 2026-06-04 17:33:44-06:00
   '012':
     stage: 12
     stage_str: '012'
     batch_id: I.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
-    last_audit_date: null
+    last_audit_date: '2026-06-04T17:33:28-06:00'
     last_audit_findings: 0
     last_verify_date: null
     files:
@@ -350,6 +376,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_mathematica_audit.txt
         exists: true
         mtime: 1779750923
+    last_status_change: 2026-06-04 17:33:48-06:00
   '013':
     stage: 13
     stage_str: '013'

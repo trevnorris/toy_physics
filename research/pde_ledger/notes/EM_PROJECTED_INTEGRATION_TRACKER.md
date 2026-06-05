@@ -274,3 +274,12 @@ Former post-EM ledger stages start at Stage `022`.
   recommendations with rationales, plus user-revised Q1/Q2), and
   `redteam/resolutions/codex_remediation_batch_I2.md` (the math-decision
   remediation pass for 021 and 023).
+
+## Pass 2 — Batch I.1 (2026-06-04)
+
+Pass-2 Batch I.1: projected-Maxwell block (004-012) re-verified. Stage-006
+projected Ampère law sign reconciled card→engine
+(`−∇×H − ∂_tD + L_mix = μ₀J`); convention is LOCAL to stage 006 (005/008 stay
+covariant in F^{μν}; 010/011/012/023 are sign-agnostic P2/bundle moments;
+EM-extension endgame 243/244/247 ride the scalar continuity-leakage/Poynting-work
+branch and do not consume the vector Ampère sign).

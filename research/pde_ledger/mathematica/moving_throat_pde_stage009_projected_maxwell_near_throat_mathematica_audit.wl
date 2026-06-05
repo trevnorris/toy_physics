@@ -15,7 +15,7 @@ assertZero[label_String, expr_] := Module[{res},
 ];
 
 (* --- M1: half-line integration-by-parts recombination --- *)
-ClearAll[w, ell, q0, q1, q2, q3, q4];
+ClearAll[w, u, ell, q0, q1, q2, q3, q4];
 $Assumptions = ell > 0 && Element[{q0, q1, q2, q3, q4}, Reals];
 Qw = q0 + q1 w + q2 w^2/2 + q3 w^3/6 + q4 w^4/24;
 Wel = Exp[-w/ell]/ell;
@@ -28,6 +28,18 @@ assertZero["M1b half-line dQ expansion",
   avgDQ - (q1 + ell q2 + ell^2 q3 + ell^3 q4)];
 assertZero["M1c half-line Q expansion",
   avgQ - (q0 + ell q1 + ell^2 q2 + ell^3 q3 + ell^4 q4)];
+unitGammaKernel = u Exp[-u];
+gammaNorm = Assuming[$Assumptions, Integrate[unitGammaKernel, {u, 0, Infinity}]];
+gammaMu1 = Assuming[$Assumptions, Integrate[u unitGammaKernel, {u, 0, Infinity}]];
+gammaMouthKernel = (w/ell) Exp[-w/ell]/ell;
+avgQGamma = Assuming[$Assumptions,
+  Integrate[gammaMouthKernel Qw, {w, 0, Infinity}]];
+avgQGammaLeading = Assuming[$Assumptions,
+  Normal[Series[avgQGamma, {ell, 0, 1}]]];
+assertZero["M1d Gamma one-sided kernel normalization", gammaNorm - 1];
+assertZero["M1e Gamma one-sided first moment", gammaMu1 - 2];
+assertZero["M1f Gamma mouth first-moment leading term",
+  avgQGammaLeading - (q0 + ell gammaMu1 q1)];
 
 (* --- M2: even-kernel Taylor moments (unit Gaussian) --- *)
 ClearAll[u, sigma, q0, q1, q2, q3, q4, q5];

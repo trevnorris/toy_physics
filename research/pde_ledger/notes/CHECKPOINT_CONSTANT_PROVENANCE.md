@@ -957,3 +957,9 @@ Audit note:
 - The next checkpoint pass should decide whether to widen numerical stress
   beyond the current four stress-backed checkpoints (`003`, `185`, `248`,
   `253`) and how to expose that verification surface compactly in the paper.
+
+## Pass 2 — Batch I.1 (2026-06-04)
+
+Pass-2 Batch I.1: no carried paper constant changed. (Stage-009 μ₁=2 is the
+Gamma-kernel verification first moment, not a carried paper constant.) No new
+provenance items.

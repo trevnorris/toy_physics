@@ -42,6 +42,10 @@ Important consequence: for a symmetric observer kernel, the first projection-wid
 ================================================================================================
 Choose the normalized mouth-anchored kernel on the half-line w ≥ 0
   W_ell(w) = exp(-w/ell)/ell.
+A second normalized one-sided kernel, w(u)=u exp(-u), has
+  μ1 = 2
+  <Q>_ell = 5*ell**4*q4 + 4*ell**3*q3 + 3*ell**2*q2 + 2*ell*q1 + q0
+so its O(ell) term is ell*μ1*Q'(0), not the exponential value ell*Q'(0).
 
 For a smooth Q(w) at the mouth, SymPy gives
   <Q>_ell = ell**4*q4 + ell**3*q3 + ell**2*q2 + ell*q1 + q0

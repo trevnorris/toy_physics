@@ -333,3 +333,12 @@ The checkpoint support set now has a conservative trust baseline:
 - `strong` checkpoints can support downstream citation routing now,
 - `moderate` checkpoints should be cited with caution or hardened first,
 - there is currently no checkpoint blocked on a known weak symbolic audit.
+
+## Pass 2 — Batch I.1 (2026-06-04)
+
+Pass-2 Batch I.1: checkpoints 001, 002, 003 re-verified clean (with
+value-reconciliation augmentation). 003: original 'Lagrangian doubling' alarm
+was an exec-DISPROVEN false positive; genuine items were a notes index garble
+(fixed) + a latent lRed-construction fragility (consolidated) — no trust impact
+on the carried results. 001/002 clean (foundational geometry-lift + P2
+degeneracy).

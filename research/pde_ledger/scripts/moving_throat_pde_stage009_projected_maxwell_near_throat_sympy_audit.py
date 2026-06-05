@@ -116,8 +116,23 @@ recombined_half = sp.simplify(boundary_half + minus_Wp_half)
 assert_zero("half-line boundary recombination", recombined_half - avg_dQ_half)
 assert_zero("half-line derivative expansion", avg_dQ_half - (q1 + ell*q2 + ell**2*q3 + ell**3*q4))
 
+Wgamma_unit = u * sp.exp(-u)
+gamma_norm = sp.integrate(Wgamma_unit, (u, 0, sp.oo))
+gamma_mu1 = sp.integrate(u * Wgamma_unit, (u, 0, sp.oo))
+Wgamma = (w / ell) * sp.exp(-w / ell) / ell
+avg_Q_gamma = sp.simplify(sp.integrate(Wgamma * Qw, (w, 0, sp.oo)))
+avg_Q_gamma_leading = sp.series(avg_Q_gamma, ell, 0, 2).removeO()
+assert_zero("Gamma one-sided kernel normalization", gamma_norm - 1)
+assert_zero("Gamma one-sided first moment", gamma_mu1 - 2)
+assert_zero("Gamma mouth first-moment leading term",
+            avg_Q_gamma_leading - (q0 + ell * gamma_mu1 * q1))
+
 print("Choose the normalized mouth-anchored kernel on the half-line w ≥ 0")
 print("  W_ell(w) = exp(-w/ell)/ell.")
+print("A second normalized one-sided kernel, w(u)=u exp(-u), has")
+print("  μ1 =", sp.sstr(gamma_mu1))
+print("  <Q>_ell =", sp.sstr(sp.expand(avg_Q_gamma)))
+print("so its O(ell) term is ell*μ1*Q'(0), not the exponential value ell*Q'(0).")
 print()
 print("For a smooth Q(w) at the mouth, SymPy gives")
 print("  <Q>_ell =", sp.sstr(sp.expand(avg_Q_half)))

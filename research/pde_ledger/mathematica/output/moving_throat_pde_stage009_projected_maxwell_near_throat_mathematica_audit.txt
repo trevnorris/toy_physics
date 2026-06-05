@@ -1,6 +1,9 @@
 OK: M1a half-line IBP recombination residual = 0
 OK: M1b half-line dQ expansion residual = 0
 OK: M1c half-line Q expansion residual = 0
+OK: M1d Gamma one-sided kernel normalization residual = 0
+OK: M1e Gamma one-sided first moment residual = 0
+OK: M1f Gamma mouth first-moment leading term residual = 0
 OK: M2a Gaussian even-kernel Q residual = 0
 OK: M2b Gaussian even-kernel dQ residual = 0
 OK: M3a mouth mu_eff to O(ell) residual = 0

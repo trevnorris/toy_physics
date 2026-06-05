@@ -364,12 +364,12 @@ b_2=\frac{u_2^{(21)}-u_2^{(22)}}{2}.
 
 At the present reduced level, the same algebra applies to any fixed normalization of the channelwise low-frequency coefficients. Using the `d_{2A}^{eff}` defined above,
 \[
-\bar d_2=\frac{d_{237}^{\rm eff}+2d_{238}^{\rm eff}+2d_{239}^{\rm eff}}{5},
+\bar d_2=\frac{d_{2,20}^{\rm eff}+2d_{2,21}^{\rm eff}+2d_{2,22}^{\rm eff}}{5},
 \]
 \[
-a_2=\frac{2d_{237}^{\rm eff}-d_{238}^{\rm eff}-d_{239}^{\rm eff}}{10},
+a_2=\frac{2d_{2,20}^{\rm eff}-d_{2,21}^{\rm eff}-d_{2,22}^{\rm eff}}{10},
 \qquad
-b_2=\frac{d_{238}^{\rm eff}-d_{239}^{\rm eff}}{2}.
+b_2=\frac{d_{2,21}^{\rm eff}-d_{2,22}^{\rm eff}}{2}.
 \]
 
 So the first conservative isotropy theorem on the matter-coupled branch is immediate:

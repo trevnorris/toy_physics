@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 37 — ROBIN-COMPLIANCE SOFTENING
+STAGE 54 — ROBIN-COMPLIANCE SOFTENING
 ========================================================================================
 B from Neumann bottom = A*tan(L*k)
 Robin characteristic equation factor = -h + k*tan(L*k)

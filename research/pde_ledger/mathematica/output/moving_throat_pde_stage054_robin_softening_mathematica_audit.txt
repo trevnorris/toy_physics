@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 037 — ROBIN-COMPLIANCE SOFTENING
+STAGE 054 — ROBIN-COMPLIANCE SOFTENING
 ========================================================================================
 B from Neumann bottom = ConditionalExpression[a*Tan[ell*k], (Element[C[1], Integers] && ((C[1] >= 1 && Inequality[(Pi*(-1 + 4*C[1]))/(2*ell), Less, k, Less, (Pi + 4*Pi*C[1])/(2*ell)]) || (C[1] >= 0 && Inequality[(Pi + 4*Pi*C[1])/(2*ell), Less, k, Less, (Pi*(3 + 4*C[1]))/(2*ell)]))) || 2*ell*k < Pi]
 Robin characteristic equation factor = ConditionalExpression[(-(a*h) + a*k*Tan[ell*k])/a, (Element[C[1], Integers] && ((C[1] >= 1 && Inequality[(Pi*(-1 + 4*C[1]))/(2*ell), Less, k, Less, (Pi + 4*Pi*C[1])/(2*ell)]) || (C[1] >= 0 && Inequality[(Pi + 4*Pi*C[1])/(2*ell), Less, k, Less, (Pi*(3 + 4*C[1]))/(2*ell)]))) || 2*ell*k < Pi]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 33 SymPy audit.
+Stage 50 SymPy audit.
 
 Checks:
 1. Exact equivalence zeta_req <= 1  <=>  S_req <= 2.
@@ -115,4 +115,4 @@ expect_zero(
 print("S_1^(max) =", sp.simplify(S_n_max.subs(n, 1)))
 print("S_2^(max) =", sp.simplify(S_n_max.subs(n, 2)))
 
-print("\nAll Stage-33 symbolic checks passed.")
+print("\nAll Stage-50 symbolic checks passed.")

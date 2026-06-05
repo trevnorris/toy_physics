@@ -1,14 +1,6 @@
-# Mathematica Audit Output
-# Script: moving_throat_pde_stage056_transport_source_asymmetry_mathematica_audit.wl
-# Date: 2026-05-11T12:53:14-06:00
-# Elapsed: 11s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 039 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY
+STAGE 056 — TRANSPORT ORIGIN OF THE SOURCE-SHAPE ASYMMETRY
 ========================================================================================
 zero-flux transport residual = 0
 PASS: zero-flux transport residual
@@ -44,5 +36,3 @@ large-Pe second-order coefficient + Pi^3/8 = 0
 PASS: large-Pe second-order coefficient + Pi^3/8
 
 Stage 056 Mathematica audit passed.
-
-EXIT_CODE: 0

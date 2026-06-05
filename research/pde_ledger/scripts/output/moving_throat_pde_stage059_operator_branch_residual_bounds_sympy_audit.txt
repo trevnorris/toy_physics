@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 42 — OPERATOR-SELECTED RESIDUAL BOUNDS
+STAGE 59 — OPERATOR-SELECTED RESIDUAL BOUNDS
 ========================================================================================
 zeta_- = (kappa + pi**2/4)*Omega(Delta0*Xi)**2/(kappa + y**2)
 zeta_+ = (kappa + pi**2/4)*Omega(DeltaInf*Xi)**2/(kappa + y**2)
@@ -15,4 +15,4 @@ Xi_fail*DeltaInf saturates at Pe_star diff = 0
 Xi_suff*Delta0 saturates at Pe_star diff = 7.2445432630613698940072954327102334245460249585113105516660919119484010548742761E-71
 weak-coupling zeta_phys = 4*Delta0*Xi*kappa/(pi*kappa + pi*y**2) - Delta0*Xi*kappa/(kappa + y**2) - pi**2*Delta0*Xi/(4*kappa + 4*y**2) + pi*Delta0*Xi/(kappa + y**2) + kappa/(kappa + y**2) + pi**2/(4*kappa + 4*y**2)
 
-Stage 42 audit passed.
+Stage 59 audit passed.

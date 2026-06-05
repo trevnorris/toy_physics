@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 41 — COUPLED SUPPORT/SOURCE OPERATOR
+STAGE 58 — COUPLED SUPPORT/SOURCE OPERATOR
 ========================================================================================
 K_(alpha,eta)(x) = (alpha*(cosh(alpha*x) - cosh(alpha*(x - 1))) + eta*sinh(alpha*x))/(alpha*(alpha*sinh(alpha) + eta*cosh(alpha)))
 dK/dx = (alpha*(sinh(alpha*x) - sinh(alpha*(x - 1))) + eta*cosh(alpha*x))/(alpha*sinh(alpha) + eta*cosh(alpha))
@@ -33,4 +33,4 @@ Delta(Pe) first-order coefficient = (alpha**2*sinh(alpha) + alpha*eta*(cosh(alph
 weak-coupling first-order coefficient nonvanishing at alpha=eta=1: PASS
 weak-coupling branch slope = Delta_0 = 0
 
-Stage 41 audit passed.
+Stage 58 audit passed.

@@ -903,3 +903,25 @@ independent routes, NOT transliterations of the SymPy paths. The 9 label-only
 self-label fixes (037,038,040,041,042,044,046,047,048) touched no `.wl` source
 (all 12 `.wl` were already canonical; their stale `.txt` outputs were cured by
 the orchestrator re-run alone).
+
+## Pass 2 — Batch III.2 (2026-06-05)
+
+Pass-2 Batch III.2 (049-060, `Part III.2 — Tracking, zeta thresholds, asymmetry,
+boost`): all 12 already had both independent engines from pass 1, and the
+re-audit re-confirmed genuine independence on every stage. **No new `.wl` built,
+0 mirror reclassification, 0 sanctioned mirrors, no additions to the
+Independent-Mirror Set.** The one `.wl`-touching stage (060) was EDITED only to
+de-tautologize its F2 baseline check — the `wl:140` `Xi_micro` assertion
+subtracted `xiMicro` from a verbatim copy of its own `wl:132` definition
+(identically 0); replaced with `expectZero["Xi_micro chi-route equals D/M-route",
+xiMicroFromChi - xiMicroFromDM]`, a genuine cross-check between the susceptibility
+route (`chiSigma→1/theta`, `wl:133`) and the Einstein/diffusion route
+(`dSigma→mSigma*theta`, `wl:136`, `mSigma` cancels). The verify agent confirmed
+060.wl **remains an independent route, NOT a transliteration** of the SymPy path.
+The 11 label-only self-label fixes (049-059) touched only `.py` source except
+049's `.wl:93` closing-print number (`Stage 32`→`Stage 49`); the `.wl` math/
+assertion bodies were unchanged on those 11 (their stale `.txt` outputs were
+cured by the orchestrator re-run alone). INFRA NOTE for the mirror layer: the
+Mathematica committed outputs for 050–059 were stale (Codex only re-ran the `.wl`
+for 049/060) until the arbiter grep caught them and the orchestrator sed-refresh
+restored them; all 12 Mathematica reliability-gate runs exit 0.

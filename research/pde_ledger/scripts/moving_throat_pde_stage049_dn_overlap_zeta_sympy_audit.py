@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 32 SymPy audit.
+Stage 49 SymPy audit.
 
 Checks:
 1. Exact D/N half-wave momentum and stiffness data.

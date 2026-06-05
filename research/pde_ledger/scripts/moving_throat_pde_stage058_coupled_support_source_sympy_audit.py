@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 41 SymPy audit.
+Moving-Throat PDE — Stage 58 SymPy audit.
 
 Checks:
 1. exact support-drop kernel and its positive derivative identity,
@@ -226,4 +226,4 @@ dF_dXi_at_origin = sp.limit(dF_dXi.subs(Xi, 0), Pe, 0)
 dPe_star_dXi_at_zero = sp.simplify(-dF_dXi_at_origin / dF_dPe_at_origin)
 expect_zero("weak-coupling branch slope = Delta_0", dPe_star_dXi_at_zero - Delta0_expected)
 
-print("\nStage 41 audit passed.")
+print("\nStage 58 audit passed.")

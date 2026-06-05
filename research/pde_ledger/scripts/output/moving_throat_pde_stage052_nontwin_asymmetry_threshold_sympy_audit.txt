@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 35 — EXACT BRANCH-PRODUCT REGIME CLASSIFICATION
+STAGE 52 — EXACT BRANCH-PRODUCT REGIME CLASSIFICATION
 ========================================================================================
 S_req = Pi_tr / C_mix =
 Πₜᵣ 
@@ -74,7 +74,7 @@ Exact softening fraction at equal overlap =
 softening fraction - expected = 0
 
 ========================================================================================
-STAGE 35 THEOREM LEDGER
+STAGE 52 THEOREM LEDGER
 ========================================================================================
 Exact regime split:
   Pi_tr <= C_mix            : mixed-only branch already enough

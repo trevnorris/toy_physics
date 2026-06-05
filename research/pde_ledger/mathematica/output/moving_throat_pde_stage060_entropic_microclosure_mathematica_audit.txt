@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 043 — ENTROPIC MICROCLOSURE
+STAGE 060 — ENTROPIC MICROCLOSURE
 ========================================================================================
 f_sigma = -(lambdaPhi*phi*sigma) + sigma*theta*(-1 + Log[sigma/sigmaStar])
 mu_sigma^(chem) = -(lambdaPhi*phi) + theta*Log[sigma/sigmaStar]
@@ -30,8 +30,8 @@ PASS: xiMicro consistency via chi substitution
 xiMicro consistency via D/M substitution = 0
 PASS: xiMicro consistency via D/M substitution
 Xi_micro = (ell^2*lambdaPhi^2)/(theta*tX)
-Xi_micro - Lambda^2 L^2/(Theta T_X) = 0
-PASS: Xi_micro - Lambda^2 L^2/(Theta T_X)
+Xi_micro chi-route equals D/M-route = 0
+PASS: Xi_micro chi-route equals D/M-route
 Xi_micro susceptibility form = 0
 PASS: Xi_micro susceptibility form
 Xi_micro phenomenological form = 0

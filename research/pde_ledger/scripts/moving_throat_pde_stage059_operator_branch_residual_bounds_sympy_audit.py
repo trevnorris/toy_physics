@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 42 SymPy audit.
+Moving-Throat PDE — Stage 59 SymPy audit.
 
 Checks:
 1. exact lower/upper support-ratio brackets on the Stage-41 branch interval,
@@ -121,4 +121,4 @@ expect_close("Xi_suff*Delta0 saturates at Pe_star", Xi_suff_solved * Delta0_prob
 zeta_weak = sp.expand(A_K * (1 + (4 - sp.pi) / sp.pi * Xi * Delta0))
 print("weak-coupling zeta_phys =", zeta_weak)
 
-print("\nStage 42 audit passed.")
+print("\nStage 59 audit passed.")

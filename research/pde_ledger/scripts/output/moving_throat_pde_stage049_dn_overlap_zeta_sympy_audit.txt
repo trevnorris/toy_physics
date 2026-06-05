@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
+STAGE 49 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
 ========================================================================================
 chi_n(s) = sqrt(2)*sin(pi*s*(2*n + 1)/(2*L))/sqrt(L)
 k_n = pi*(2*n + 1)/(2*L)

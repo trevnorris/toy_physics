@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 40 SymPy audit.
+Moving-Throat PDE — Stage 57 SymPy audit.
 
 Checks:
 1. x -> kappa substitution,
@@ -131,4 +131,4 @@ expect_zero(
     y_req_sq - y_req_sq_solved,
 )
 
-print("\nStage 40 audit passed.")
+print("\nStage 57 audit passed.")

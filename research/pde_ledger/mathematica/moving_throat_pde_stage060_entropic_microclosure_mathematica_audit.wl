@@ -137,7 +137,7 @@ xiMicroFromDM = mSigma*lambdaPhi^2*ell^2/(dSigma*tX) /. dSigma -> mSigma*theta;
 expectZero["xiMicro consistency via D/M substitution",
   FullSimplify[xiMicro - xiMicroFromDM, Assumptions -> $Assumptions]];
 Print["Xi_micro = ", fmt[xiMicro]];
-expectZero["Xi_micro - Lambda^2 L^2/(Theta T_X)", xiMicro - lambdaPhi^2*ell^2/(theta*tX)];
+expectZero["Xi_micro chi-route equals D/M-route", xiMicroFromChi - xiMicroFromDM];
 expectZero["Xi_micro susceptibility form", FullSimplify[xiMicro /. theta -> 1/chiSigma, Assumptions -> $Assumptions] - chiSigma*lambdaPhi^2*ell^2/tX];
 expectZero["Xi_micro phenomenological form", FullSimplify[xiMicro /. theta -> dSigma/mSigma, Assumptions -> $Assumptions] - mSigma*lambdaPhi^2*ell^2/(dSigma*tX)];
 

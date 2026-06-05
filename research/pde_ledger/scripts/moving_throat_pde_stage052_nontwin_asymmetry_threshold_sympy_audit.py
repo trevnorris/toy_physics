@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-moving_throat_pde_stage35_nontwin_asymmetry_threshold_sympy_audit.py
+moving_throat_pde_stage052_nontwin_asymmetry_threshold_sympy_audit.py
 
 SymPy audit for Stage 52 of the moving-throat PDE program.
 

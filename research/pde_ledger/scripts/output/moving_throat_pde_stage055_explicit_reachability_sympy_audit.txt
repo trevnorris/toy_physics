@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 38 — EXPLICIT LOWEST-LANE REACHABILITY
+STAGE 55 — EXPLICIT LOWEST-LANE REACHABILITY
 ========================================================================================
 Omega_exp(alpha) = pi*alpha*(2*alpha*exp(alpha) + pi)/((4*alpha**2 + pi**2)*(exp(alpha) - 1))
 A_K(y,x) = 4*pi**2/(4*x*y**2 + pi**2*(4 - x))

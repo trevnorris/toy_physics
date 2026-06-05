@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 43 — ENTROPIC SOURCE MICROCLOSURE
+STAGE 60 — ENTROPIC SOURCE MICROCLOSURE
 ========================================================================================
 f_sigma = -Lambda_phi*phi(s)*sigma(s) + Theta*(log(sigma(s)/sigma_*) - 1)*sigma(s)
 mu_sigma^(chem) = -Lambda_phi*phi(s) + Theta*log(sigma(s)/sigma_*)
@@ -34,7 +34,7 @@ support bulk equation form = 0
 Boundary term from support variation: T_X phi_s(0) = K_m phi(0), phi_s(L)=0.
 
 ========================================================================================
-STAGE 43 THEOREM LEDGER
+STAGE 60 THEOREM LEDGER
 ========================================================================================
 1. The positive-density free energy yields mu = Theta log(sigma/sigma_*) - Lambda phi.
 2. The Onsager current is J = -D_sigma sigma_s + M_sigma Lambda sigma phi_s with D_sigma = M_sigma Theta.

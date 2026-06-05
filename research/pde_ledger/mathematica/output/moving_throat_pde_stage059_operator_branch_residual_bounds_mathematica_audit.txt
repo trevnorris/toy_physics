@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 042 — OPERATOR BRANCH RESIDUAL BOUNDS
+STAGE 059 — OPERATOR BRANCH RESIDUAL BOUNDS
 ========================================================================================
 zeta_- = ((kappa + Pi^2/4)*Omega[capitalXi*delta0]^2)/(kappa + y^2)
 zeta_+ = ((kappa + Pi^2/4)*Omega[capitalXi*deltaInf]^2)/(kappa + y^2)

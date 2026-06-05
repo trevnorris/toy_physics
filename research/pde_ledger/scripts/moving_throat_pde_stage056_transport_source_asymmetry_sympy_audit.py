@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-Throat PDE — Stage 39 SymPy audit.
+Moving-Throat PDE — Stage 56 SymPy audit.
 
 Checks:
 1. stationary zero-flux drift-diffusion branch gives the normalized exponential source family,
@@ -94,4 +94,4 @@ expect_zero(
     sp.expand(Omega_large - (sp.pi / 2 - sp.pi**3 / (8 * Pe**2))),
 )
 
-print("\nStage 39 audit passed.")
+print("\nStage 56 audit passed.")

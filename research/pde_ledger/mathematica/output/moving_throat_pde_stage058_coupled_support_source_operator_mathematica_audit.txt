@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 041 — COUPLED SUPPORT/SOURCE OPERATOR
+STAGE 058 — COUPLED SUPPORT/SOURCE OPERATOR
 ========================================================================================
 K_(alpha,eta)(x) = (Cosh[alpha*x] - Cosh[alpha - alpha*x] + (eta*Sinh[alpha*x])/alpha)/(eta*Cosh[alpha] + alpha*Sinh[alpha])
 dK/dx = (eta*Cosh[alpha*x] + alpha*(Sinh[alpha*x] + Sinh[alpha - alpha*x]))/(eta*Cosh[alpha] + alpha*Sinh[alpha])

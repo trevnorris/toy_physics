@@ -148,7 +148,15 @@
 ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the old `## IMMEDIATE NEXT ACTION`
 header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
 
-### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = III.2 (049–060)**
+### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = III.3 (061–072)**
+- **✅ Batch III.2 (049–060) DONE + COMMITTED (this batch commit; see git log) — 12/12 verified, all `material_change: false`, 0 stop-cold/blocked, 0 Codex deviations, all iter-1 exit 0. One checkpoint (051) re-verified clean.**
+  - **NO genuine `paper_misalignment` anywhere.** Value reconciliation: **126 deliverable values batch-wide, 0 misaligned** (049=10,050=11,051=9,052=12,053=11,054=14,055=9,056=12,057=7,058=11,059=10,060=10).
+  - **1 real script-side math fix:** **060** F2 `tautological_check` — the Mathematica `wl:140` `Xi_micro` baseline assertion subtracted `xiMicro` from a verbatim copy of its own `wl:132` definition (`xiMicro − lambdaPhi^2*ell^2/(theta*tX)` ≡ 0, could not fail) → replaced with `expectZero["Xi_micro chi-route equals D/M-route", xiMicroFromChi − xiMicroFromDM]`, a genuine cross-check between two INDEPENDENTLY constructed routes (susceptibility `chiSigma→1/theta` wl:133 vs Einstein/diffusion `dSigma→mSigma*theta` wl:136, `mSigma` cancels). Value `Xi_micro = Λφ²L²/(Θ T_X)` UNCHANGED; deliverable still covered (also wl:134–138/141–142); 060.wl stays independent (verify confirmed not a transliteration). `material_change: false`.
+  - **11 label-only self-label fixes (049–059) + 060 F1** — every one of the 12 stages was `verdict:findings` and got ≥1 stale self-label canonicalized, NUMBER-only / FORMAT-preserved (2-digit docstrings/closing-prints kept 2-digit; 3-digit filename-docstrings on 051/052 kept 3-digit; already-correct 2-digit `STAGE NN` banners LEFT UNPADDED — padding belongs to the dedicated plan; 049 also fixed `.wl:93` closing). All `.py`/`.wl` source diffs **strip-the-number identical to HEAD** except 060.wl's one math line.
+  - **All numbering CROSS-refs DEFERRED** to `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (content-keyed, never offset-sweep): 050 py:61 `Stage 32`→049; 051 py:20-21 `Stage 050/034` + py:126/wl:87 `Stage 047/030` (compound dual-epoch); 055 py:73 `Stage-35`→052; 056 py:7 `Stage-36`→053; 059 py:6 `Stage-41`→058 + py:9/75 `Stage-39`→056; 060 py:159 `Stage-39`→056. Codex held this scope perfectly (0 cross-ref touched).
+  - **⚠️ INFRA NOTE (re-confirmed):** `$RT exec-*` writes the fresh transcript to `exec_logs/` but does NOT auto-overwrite committed `output/*.txt`; the orchestrator must `sed '1,/^---$/d;/^# exit_code:/d'` the log into the committed `.txt`. The Mathematica committed outputs for 050–059 were stale (Codex only re-ran the `.wl` on 049/060) — caught by the **arbiter grep**, fixed by the refresh. 24/24 exec (12 SymPy + 12 MMA) exit 0.
+  - **SEAT POLICY refined (user-clarified):** the ≤2-concurrent cap applies only to Codex sessions that RUN `math -script`; `.py`-only label sessions consume 0 seats → unlimited concurrency. Ran the 10 `.py`-only stages in `&`/`wait` waves; the 2 `.wl`-touching stages (049 label, 060 math) ran solo/sequential. (Memory `[[feedback-mathematica-single-seat]]` updated.)
+  - 6 trackers synced (PAPER_CLEANUP **P5-06** = ZERO paper/notes edits). Summary `redteam/pass2/batches/batch_III2.md`. Pass-1 `MANIFEST.yaml` untouched (isolation held).
 - **✅ Batch III.1 (037–048) DONE + COMMITTED (this batch commit; see git log) — 12/12 verified, all `material_change: false`, 0 stop-cold/blocked, 0 Codex deviations, all iter-1 exit 0. No checkpoints in range.**
   - **NO genuine `paper_misalignment` anywhere** (037's audit mislabeled a script self-label as one — label-only, no value dispute, no user value-gate). Value reconciliation: **143 deliverable values batch-wide, 0 misaligned.**
   - **2 real script-side math fixes:** **039** — F1 `tautological_check`: the boxed `R_U` direction-factor check was identically true by construction (z0,z1 carry κ0/κ1 prefactors; R_U never referenced) → replaced (both engines) with `z1/z0 − (κ1/κ0)·R_U`, R_U independently defined from ρ0,δU; + F2 `insufficient_verification`: the surviving product law `R_target·M_mix = 8Λ(1−ε_W,split)/π²` (notes §5 headline) was print-only → added `expect_zero("product law survives", …)`. **043** — F2 `insufficient_verification`: the `M_supp` baseline check re-substituted the SAME `B=8/π²` into both sides of an already-proven identity → replaced with a σ-derived derivation `B=κ0²=(9/11)·σ=8/π²` from frozen `σ=88/(9π²)`, so the value is exercised. Both `.wl` edited only to ADD assertions (still independent routes — verify agents confirmed not transliterations); both engines exit 0, no regression. `material_change: false`.
@@ -264,16 +272,23 @@ Per [[feedback-codex-is-fix-applier]] (notes are Codex-applied). Evidence in `re
 cd /var/projects/toy_physics/research/pde_ledger
 RT=/var/projects/toy_physics/.claude/skills/redteam-audit/lib/redteam.sh
 export RT_REDTEAM_DIR=redteam/pass2     # EVERY $RT call this session targets pass-2 (set it once, in the env)
-$RT status        # Manifest: …/redteam/pass2/MANIFEST.yaml  — I.1 verified=12; NEXT = I.2 pending=11
-$RT next-batch    # → I.2 (stages 013–023)   [I.1 is DONE]
+$RT status        # Manifest: …/redteam/pass2/MANIFEST.yaml  — I.1/I.2/II.1/III.1/III.2 verified; NEXT = III.3 pending=12
+$RT next-batch    # → III.3 (stages 061–072)   [I.1…III.2 DONE]
 ```
 Then run the PROVEN per-stage loop (unchanged — see the boilerplate later in this doc / SKILL.md), with all paths now
 under `redteam/pass2/`. **Each audit Agent must read BOTH `redteam/pass2/tmp_prompts/audit_prompt_NNN.md` AND
 `redteam/pass2/RECONCILIATION_AUGMENTATION.md` (the value-reconciliation augmentation — see ⭐ above).**
 Loop: render-audit-prompt → clean audit Agent (reads prompt + augmentation) writes `redteam/pass2/reports/stage_NNN.md` →
-(findings) directive → `set-status fixing` → `codex-invoke` → `exec-sympy`+`exec-mathematica` (SEQUENTIAL; ≤2
-Mathematica seats; refresh `output/*.txt`) → `capture-diff` → render-verify-prompt → clean verify Agent writes
+(findings) directive → `set-status fixing` → `codex-invoke` → orchestrator `exec-sympy`+`exec-mathematica` (SEQUENTIAL;
+exec-* writes MANIFEST so never parallel) → **refresh committed `output/*.txt` from the fresh `exec_logs/` via
+`sed '1,/^---$/d;/^# exit_code:/d' <log> > <out>`** (⚠️ III.2 lesson: `$RT exec-*` writes `exec_logs/` only and does NOT
+overwrite committed `output/*.txt`; Codex refreshes a stage's output only for engines it itself re-ran, so `.wl`-untouched
+stages keep STALE committed Mathematica outputs unless the orchestrator seds them — run the arbiter grep on the committed
+outputs to confirm clean) → `capture-diff` → render-verify-prompt → clean verify Agent writes
 `redteam/pass2/verifications/stage_NNN.md` → `set-status verified`; `material_change: true` → `mark-stale-downstream`.
+**Seat nuance (user 2026-06-05):** the ≤2-concurrent `math -script` cap applies only to Codex sessions that RUN `.wl`;
+`.py`-only label sessions are 0-seat → run them at any concurrency; run `.wl`-touching Codex sessions solo/≤2 and never
+overlap them with the orchestrator's `exec-mathematica`.
 **Standing rules (unchanged):** render prompts to `redteam/pass2/tmp_prompts/` (mkdir it; sub-agents can't read /tmp);
 clean agent per audit and per verify; Codex is the sole code-applier (resumes its per-stage session); 600s script cap
 (a 124 timeout is a FAILURE → reformulate, never raise the cap); fix sequential per batch; **HALT at every batch

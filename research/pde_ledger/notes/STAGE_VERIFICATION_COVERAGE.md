@@ -436,3 +436,42 @@ Numbering cross-refs (to OTHER stages) and one ambiguous self-vs-cross ref
 (047:121 `the exact Stage-30 support-loading coefficient`) left UNTOUCHED and
 deferred to `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING —
 content-keyed, never offset-sweep). Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch III.2 (2026-06-05)
+
+Pass-2 Batch III.2 (049-060, `Part III.2 — Tracking, zeta thresholds, asymmetry,
+boost`, 12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive
+value-reconciliation augmentation; 12/12 verified, `material_change: false` on
+all 12, 0 stop-cold, 0 blocked, 0 Codex deviations, all iter-1 exit 0. Every
+emitted deliverable value reconciles — 126 values checked batch-wide, 0
+MISALIGNED, 0 MISSING-DELIVERABLE (per stage: 049=10, 050=11, 051=9, 052=12,
+053=11, 054=14, 055=9, 056=12, 057=7, 058=11, 059=10, 060=10). All 12 are
+genuine dual-engine (both independent engines from pass 1, re-confirmed); no
+new `.wl`, 0 sanctioned mirrors. **One checkpoint in range — 051 — re-verified
+clean (no certified constant moved).** NO EM-projected stages in range.
+**1 real script-side math finding→fixed→verified** (060); **11 label-only
+self-label fixes→verified** (049-059, plus 060's F1 self-banner — every one of
+the 12 was `verdict:findings`). **060 — ONE finding:** (F2) `tautological_check`
+— the `wl:140` `Xi_micro` baseline assertion subtracted `xiMicro` from a verbatim
+copy of its own `wl:132` definition (identically 0, could not fail); replaced
+with `expectZero["Xi_micro chi-route equals D/M-route", xiMicroFromChi -
+xiMicroFromDM]`, a genuine cross-check between two INDEPENDENTLY constructed
+routes (susceptibility `chiSigma→1/theta` at `wl:133` vs Einstein/diffusion
+`dSigma→mSigma*theta` at `wl:136`, where `mSigma` cancels). The value
+`Xi_micro = Λφ²L²/(Θ T_X)` is UNCHANGED, deliverable still covered, 060.wl remains
+an independent engine (not a transliteration); `material_change=false`. The 11
+label-only fixes canonicalized unambiguous self-labels (NUMBER only, FORMAT
+preserved — 2-digit docstrings/closing-prints kept 2-digit, 3-digit
+filename-docstrings on 051/052 kept 3-digit, correct 2-digit `STAGE NN` banners
+LEFT UNPADDED; 049 also fixed `.wl:93` closing `Stage 32`→`Stage 49`); all
+`.py`/`.wl` diffs strip-the-number identical to HEAD except 060.wl's one math
+line; same class as the I.2 stage-021 / II.1 032-036 / III.1 9-stage fixes. No
+coverage count moved (all 12 already verified+dual-engine from pass 1).
+
+Numbering cross-refs (to OTHER stages) and compound dual-epoch refs (050 `py:61`
+`Stage 32`→stage049; 051 `py:20-21` `Stage 050/034` + `py:126`/`wl:87`
+`Stage 047/030`; 055 `py:73` `Stage-35`→stage052; 056 `py:7` `Stage-36`→stage053;
+059 `py:6` `Stage-41`→stage058 + `py:9`/`75` `Stage-39`→stage056; 060 `py:159`
+`Stage-39`→stage056) left UNTOUCHED and deferred to
+`redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
+offset-sweep). Reference memory `numbering-drift-root-cause`.

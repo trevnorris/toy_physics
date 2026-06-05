@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 36 SymPy audit: exact overlap-boost window for the lowest support lane.
+Stage 53 SymPy audit: exact overlap-boost window for the lowest support lane.
 """
 
 from __future__ import annotations

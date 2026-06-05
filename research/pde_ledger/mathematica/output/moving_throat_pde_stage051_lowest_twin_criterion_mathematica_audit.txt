@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 034 — LOWEST TWIN CRITERION
+STAGE 051 — LOWEST TWIN CRITERION
 ========================================================================================
 G_tr = (9*xi*(delta + xi))/(9*delta + (9 + 2*r^2)*xi)
 F_tr = -1/81*((9*delta + (9 + 2*r)*xi)^2*(9*delta + (9 + 2*r^2)*xi)^2)/((-1 + xi)*(9*delta^2 + 18*delta*xi + (9 + 2*r^2)*xi^2)^2)
@@ -14,7 +14,7 @@ Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 
 Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 Pi_tr(xi->0+) = 0
-Pi_tr(xi->1-) = Infinity
+Pi_tr(xi->1-) = Infinity/(9 + 18*delta + 9*delta^2 + 2*r^2)^2
 C_mix = (-8*(-1 + eps)*lambda)/Pi^2
 S_req = (pBranch*Pi^2)/(8*lambda - 8*eps*lambda)
 zeta_req(Pi,C_mix,eps) = (8*(-1 + eps)*lambda + pBranch*Pi^2)/(8*(-1 + eps)*(-1 + 2*eps)*lambda + eps*pBranch*Pi^2)

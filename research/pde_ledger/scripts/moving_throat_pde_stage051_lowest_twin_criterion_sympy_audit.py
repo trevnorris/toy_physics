@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage34_lowest_twin_criterion_sympy_audit.py
+moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
 
 SymPy audit for Stage 51 of the moving-throat PDE program.
 

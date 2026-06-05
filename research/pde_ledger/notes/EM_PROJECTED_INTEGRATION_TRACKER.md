@@ -327,3 +327,18 @@ de-tautologized `R_U` direction-factor check + 043's σ-derived `B=8/π²` basel
 touch no EM-projected identity.) With I.1 + I.2 + II.1 + III.1 pass-2 closed, the
 projected-EM core 004-021 (plus bookends 022-048) remains paper-aligned under the
 second pass.
+
+## Pass 2 — Batch III.2 (2026-06-05)
+
+Pass-2 Batch III.2 (049-060, `Part III.2 — Tracking, zeta thresholds, asymmetry,
+boost`) re-verified at v2 depth + value-reconciliation augmentation; 12/12
+verified, `material_change: false` on all 12. NO EM-projected stages in range —
+III.2 is the tracking / zeta-threshold / asymmetry / boost / transport /
+reachability / microclosure band, downstream of and outside the projected-Maxwell
+core (004-021). No projected-EM identity was touched: no EM result moved. (The one
+script-side math fix — 060's F2 de-tautologization of the `Xi_micro` baseline into
+a genuine chi-route vs D/M-route cross-check — and the 11 label-only self-label
+fixes are all confined to the III.2 band and touch no EM-projected identity;
+checkpoint 051 in range re-verified clean.) With I.1 + I.2 + II.1 + III.1 + III.2
+pass-2 closed, the projected-EM core 004-021 (plus bookends 022-060) remains
+paper-aligned under the second pass.

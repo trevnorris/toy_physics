@@ -1008,3 +1008,19 @@ sides of an already-`B`-symbolic identity (so it could never fail and never
 derived the number). The value `8/π²` is unchanged and matches notes:149+151
 exactly; the check now actually exercises it (fails if κ0² were mis-stated). No
 other provenance items; no carried checkpoint constant changed.
+
+## Pass 2 — Batch III.2 (2026-06-05)
+
+Pass-2 Batch III.2 (049-060): reviewed — NO checkpoint constant changed. ONE
+checkpoint in range (051), re-verified clean with its constants unchanged; no new
+checkpoint constant introduced. (126 deliverable values checked batch-wide, 0
+misaligned, 0 MISSING-DELIVERABLE; `material_change: false` on all 12.) One
+PROVENANCE STRENGTHENING worth recording though no value moved: stage 060's
+`Xi_micro` baseline (non-checkpoint) is now cross-checked via two INDEPENDENT
+routes — the susceptibility route `chiSigma→1/theta` (`wl:133`) vs the
+Einstein/diffusion route `dSigma→mSigma*theta` (`wl:136`, `mSigma` cancels),
+asserted via `expectZero["Xi_micro chi-route equals D/M-route", xiMicroFromChi -
+xiMicroFromDM]` — replacing the prior `wl:140` check that subtracted `xiMicro`
+from a verbatim copy of its own `wl:132` definition (identically 0, could never
+fail). The value `Xi_micro = Λφ²L²/(Θ T_X)` is unchanged; the check now actually
+exercises it. No other provenance items; no carried checkpoint constant changed.

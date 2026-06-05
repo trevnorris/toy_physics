@@ -387,3 +387,15 @@ augmentation, 143 deliverable values checked batch-wide, 0 misaligned,
 de-tautologized `R_U` direction-factor check + 043's σ-derived `B=8/π²`
 baseline — added/strengthened assertions over already-correct values, no result
 value moved.)
+
+## Pass 2 — Batch III.2 (2026-06-05)
+
+Pass-2 Batch III.2 (049-060): ONE checkpoint in range — **051** — re-verified
+clean at v2 depth + value-reconciliation augmentation; **no certified checkpoint
+constant moved**, no trust impact. No new checkpoint constant introduced. (For
+completeness: 12/12 re-verified, 126 deliverable values checked batch-wide, 0
+misaligned, `material_change: false` on all 12; the only script-side math fix —
+060's F2 de-tautologization of the `Xi_micro` baseline check from a self-identity
+into a genuine chi-route vs D/M-route cross-check — added a real assertion over
+an already-correct value (`Xi_micro = Λφ²L²/(Θ T_X)` unchanged), no result value
+moved; the other 11 stages were label-only self-banner fixes.)

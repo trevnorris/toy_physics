@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 32 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
+STAGE 49 — EXPLICIT D/N OVERLAP EXTRACTION OF THE PHYSICAL SUPPORT RATIO
 ========================================================================================
 chi_n(s) = Sqrt[2]*Sqrt[l^(-1)]*Sin[((1/2 + n)*Pi*s)/l]
 k_n = ((1/2 + n)*Pi)/l
@@ -33,4 +33,4 @@ Carry-forward formulas:
   zeta_n^(twin) = 1 / ((2n+1)^2 (1 + x n(n+1)))
   zeta_0^(twin) = 1
 
-Stage 32 Mathematica audit passed.
+Stage 49 Mathematica audit passed.

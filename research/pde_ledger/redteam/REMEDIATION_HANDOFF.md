@@ -171,8 +171,12 @@ header is FIRST-PASS history — ignore it except for the reusable per-stage-loo
     030/031 out `STAGE 13/14 AUDIT COMPLETE`, 025 out `Stage 8 … passed`, 026/027 cross-refs; (b) **ambiguous
     self-vs-cross multi-epoch refs** — 024 `.wl:293 FINAL STAGE-007 LEDGER` + `.py "Stage-6 … bundle/stack"` (024 carries
     self-labels from TWO epochs, and "Stage-6 grouped bundle" may be a cross-ref to 023), 033 `.py:50 Stage-15`(=032),
-    036 `.py:106/127 Stage-18`(=035). The MATH is verified clean regardless. **Recommend a dedicated careful numbering
-    pass over the script/output band, separate from the red-team loop — user decision.** (The pass-2 audit agents also
+    036 `.py:106/127 Stage-18`(=035). The MATH is verified clean regardless. **✅ USER-DECIDED 2026-06-04: defer the entire
+    script/output-band numbering drift to a DEDICATED separate pass (option 1 — proceed to III.1 now); the red-team loop
+    keeps fixing ONLY audit-flagged unambiguous self-labels + refreshing outputs, deferring the rest. Plan written:**
+    `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING; content-keyed, never offset-sweep; Phase A inventory → B
+    refresh stale outputs → C fix unambiguous self-labels → D content-map ambiguous/cross refs; orchestrator/agent-applied
+    doc-only). (The pass-2 audit agents also
     apply an INCONSISTENT threshold to numbering labels — flagged on 6 stages, missed the same class on the 7 clean ones
     — itself signal that label-drift is not what the auditor reliably catches; the arbiter grep is the backstop.)
 - **✅ Batch I.2 (013–023) DONE + COMMITTED (`fc50517`) — 11/11 verified, all `material_change: false`, no stop-cold/blocked.**

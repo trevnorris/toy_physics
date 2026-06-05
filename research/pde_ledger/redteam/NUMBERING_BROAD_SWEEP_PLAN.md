@@ -297,3 +297,16 @@ proof PASS (removed-multiset ≡ added-multiset), numstat 1/1 balanced per file,
 User opted in. **Two parallel read-only classifiers** (070–079 / 080–089) content-verified, via the old-form-vs-new-form / +17 trap, that **EVERY** 2-digit `Stage NN` ref in stage070–089 is a genuine current-canonical neighbor ref — **0 stale survivors, 0 non-refs** (the far-from-neighbor ones — stage085→35=R_target, stage084→52=ζ_req, stage087→85 — all individually confirmed against the target's boxed formula; the +17 stale reading fails the content test every time). With the band proven all-genuine, applied via `redteam/pad_neighbor_refs.py` (deterministic tokenizer: matches whole Stage-citation tokens incl. compounds `/`,`–`,`-`,` and `, zero-pads every 1–2-digit run to width 3; 3-digit runs untouched/idempotent). **66 lines / 18 notes (68 token-instances).** Compounds padded whole (`Stage-58/59`→`Stage-058/059`, `Stages 56–57`→`Stages 056–057`, `Stages 52 and 82`→`Stages 052 and 082`, `Stage-73-75`→`Stage-073-075`); the lone program-span range `Stages 1–83`→`Stages 001–083`. **Verification:** numstat balanced N/N per file; strip-all-digits proof PASS (66≡66, strictly label-only); 0 residual 2-digit Stage refs in band; full eyeball confirmed only Stage-token digits moved (non-stage numbers `Lambda_ell=37`, `lambda_mu=1` untouched). NOT staleness — pure cosmetic consistency with the 3-digit canonical convention.
 
 **The mechanical label-only SECONDARY tail is now exhausted.** Only the deferred content edits (a)/(b)/(c) remain, folded into the planned full second pass.
+
+---
+
+## ⚠️ SCOPE CORRECTION — this plan covered the NOTES band; the SCRIPT/OUTPUT band is NOT done
+
+This document and the "EXHAUSTED" claims above pertain to the **notes** band (+ a few `.wl`
+strings touched in-loop). The full SECOND PASS (batches I.2 / II.1, 2026-06-04) discovered the
+deterministic Phase-1 `.py`/`.wl` self-banner fix (`e2a4780`) was INCOMPLETE and the committed
+`.txt` outputs were never regenerated band-wide — so stale numbering labels persist in the
+**script (`.py`/`.wl`) + committed-output (`.txt`) layer**, including on stages the auditor
+marked clean (e.g. stage028 out `STAGE 011`, stage024 `.wl FINAL STAGE-007 LEDGER`). **User
+approved (2026-06-04) a dedicated, separate pass to finish that band.** It has its own plan:
+**`redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`** (PENDING; content-keyed, never offset-sweep).

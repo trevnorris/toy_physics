@@ -51,6 +51,19 @@ numbering (filenames / MANIFEST / paper cards) is ground truth; NEVER offset-swe
   I.2 stage021 `.wl:195`; II.1 stage032/033/034/035/036 docstring + closing pass-line (and
   032 `.wl` Print, 033 `.wl` sub-stage comment), all `Stage {15..19}`→`{32..36}`; II.1 stage024
   notes typo `4π/122`→`4π/105` (a value typo, not a label — already done).
+  **III.1 (037–048):** docstring/closing self-labels canonicalized (incl. 040:136/041:107
+  inline-comment self-labels the arbiter grep caught); 047:121 `Stage-30` left AMBIGUOUS →
+  this plan. **III.2 (049–060):** the 11 self-label stages + 049 `.wl:93` closing. **III.3
+  (061–072):** 061–066 docstrings, 062/063 closing pass-lines, 068/070/071 filename-style
+  docstrings (`stage51/53/54`→`stage068/070/071`), 070 `py:5` prose. The committed OUTPUTS
+  for ALL of 061–072 were also refreshed in-loop (their self-banners are now canonical — the
+  only remnants are deferred CROSS-refs, below).
+- **Per-batch DEFERRED inventories (cross-refs / variable-names / ambiguous, LEFT untouched):**
+  the exhaustive list for each pass-2 batch lives in its summary `redteam/pass2/batches/batch_<ID>.md`
+  (§"Deferred to the dedicated SCRIPT/OUTPUT-band numbering pass") + the handoff PASS-2 PROGRESS
+  LOG. III.3 examples: 063 `py:76`, 064 `py:25/122/180`+`wl:104`, 065 `py:22`, 066 `py:14/59`,
+  069 `py:9/11/26/94/112/120/176/179`+`wl:99/116/164/167` (`py:26` "Stage 049" is the same ref
+  in 3-digit form — ambiguous), 070 `py:57/59`+`wl:87/88` + the variable names `J1_stage48`/`J1Stage48`.
 
 ## Scope
 

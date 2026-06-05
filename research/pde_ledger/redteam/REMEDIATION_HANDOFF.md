@@ -149,7 +149,7 @@ ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the ol
 header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
 
 ### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = III.4 (073–084)**
-- **✅ Batch III.3 (061–072) DONE + COMMITTED (`24babe6`) — 12/12 verified, all `material_change: false`, 0 stop-cold/blocked, 0 Codex deviations, all iter-1 exit 0. One checkpoint (069) cleared the higher bar.**
+- **✅ Batch III.3 (061–072) DONE + COMMITTED (`1bf53e9`) — 12/12 verified, all `material_change: false`, 0 stop-cold/blocked, 0 Codex deviations, all iter-1 exit 0. One checkpoint (069) cleared the higher bar.**
   - **NO genuine `paper_misalignment` anywhere.** Value reconciliation: **116 deliverable values batch-wide, 0 misaligned** (061=12,062=9,063=8,064=7,065=11,066=9,067=8,068=7,069=9,070=10,071=13,072=13).
   - **1 real script-side math fix:** **070** F1 `tautological_check` — the "anchoring cross-check" `I_1/J_1 = 4πa²ℓ` self-cancels in BOTH engines (the `If/Hw` factor cancels → independent of the sech moment), and the informative quantity (sech `I_f=2/3`, `I_g=14/15`) was only PRINTED. De-tautologized: SymPy asserts `I_f=2/3`; Mathematica asserts `IfNum≈2/3` + `IgNum≈14/15` against the computed NIntegrate values + corrected the wrong `wl:86` print annotation. **⚠️ ORCHESTRATOR FALSE-POSITIVE GUARD caught a WRONG constant in the audit's proposed fix: the audit (and the script's stale print) claimed `I_g=8/15`; the orchestrator computed `I_g=∫(f'')²=2−16/3+64/15=14/15` (≈0.9333, NOT 8/15≈0.5333) and directed `14/15` — the arbiter exec NIntegrate confirmed 0.9333 PASS; `8/15` would have FAILED.** Symbolic kappa/W_wall/Xi deliverables UNCHANGED; 070.wl edited but stays independent (verify-confirmed). `material_change: false`.
   - **8 label-only self-label fixes (061,062,063,064,065,066,068,071) + 070 F2** — every `verdict:findings` stage with an unambiguous stale self-label got it canonicalized, NUMBER-only / FORMAT-preserved (2-digit prose docstrings/closing-prints kept 2-digit; 3-digit filename-style docstrings `stage51/53/54`→`stage068/070/071`; already-correct `STAGE NN` banners LEFT UNPADDED — padding belongs to the dedicated plan; the audit agents' directives proposed padding + cross-ref fixes, which the ORCHESTRATOR STRIPPED before applying). All `.py`/`.wl` source diffs **strip-the-number identical to HEAD** except 070's three added math lines.
@@ -281,8 +281,8 @@ Per [[feedback-codex-is-fix-applier]] (notes are Codex-applied). Evidence in `re
 cd /var/projects/toy_physics/research/pde_ledger
 RT=/var/projects/toy_physics/.claude/skills/redteam-audit/lib/redteam.sh
 export RT_REDTEAM_DIR=redteam/pass2     # EVERY $RT call this session targets pass-2 (set it once, in the env)
-$RT status        # Manifest: …/redteam/pass2/MANIFEST.yaml  — I.1/I.2/II.1/III.1/III.2 verified; NEXT = III.3 pending=12
-$RT next-batch    # → III.3 (stages 061–072)   [I.1…III.2 DONE]
+$RT status        # Manifest: …/redteam/pass2/MANIFEST.yaml  — I.1…III.3 verified; NEXT = III.4 pending=12
+$RT next-batch    # → III.4 (stages 073–084)   [I.1…III.3 DONE]
 ```
 Then run the PROVEN per-stage loop (unchanged — see the boilerplate later in this doc / SKILL.md), with all paths now
 under `redteam/pass2/`. **Each audit Agent must read BOTH `redteam/pass2/tmp_prompts/audit_prompt_NNN.md` AND

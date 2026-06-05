@@ -357,3 +357,21 @@ ZERO math/assertion change, no result value moved. (003's `lRed`-construction
 defect class noted at the 003 Strong-tier row remains the same latent fragility
 flagged across pass 1 / pass 2; 021 here is the non-checkpoint instance of that
 continuation-defect class.)
+
+## Pass 2 — Batch II.1 (2026-06-04)
+
+Pass-2 Batch II.1 (024-036): checkpoints 024 and 036 re-verified at v2 depth
+(with the value-reconciliation augmentation; 177 deliverable values checked
+batch-wide, 1 misaligned — 024's NOTES-ONLY sixth-moment prefactor typo, below).
+NO checkpoint constant changed or introduced (κ_*=√5/(7√π) and the M^(20)
+overlap matrix unchanged); no trust impact. Both stay `strong`. 024's one
+value-mismatch finding was a NOTES-ONLY `paper_misalignment` (notes:213
+sixth-moment prefactor `4π/122`→`4π/105`; textbook 1/(3·5·7)=1/105 in d=3 —
+both engines already use 105, and the notes' own κ_*=√5/(7√π) requires 105; the
+published `.tex` card was UNAFFECTED, no script value moved), plus a banner
+`stale_output`. The other batch findings (032-036) are at NON-checkpoint stages:
+each a single `stale_output` — residual stale self-labels `Stage {15,16,17,18,
+19}`→`Stage {32,33,34,35,36}` (SymPy docstrings + closing pass-prints + a `.wl`
+Print on 032 + a `.wl` sub-stage comment on 033), LABEL-ONLY + both-engine
+re-run, ZERO math/assertion change (same class as the I.2 stage-021 fix). The
+clean stages 025-031 carry no trust-relevant findings.

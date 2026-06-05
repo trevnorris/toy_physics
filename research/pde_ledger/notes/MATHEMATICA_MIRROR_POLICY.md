@@ -866,3 +866,22 @@ no additions to the Independent-Mirror Set. The single finding (021,
 low-severity `stale_output`) was a label-only `.wl:195` edit `Stage 004`→`Stage
 021` + output refresh — ZERO math/equation/assertion change, NOT a
 `mathematica_transliteration`/mirror item.
+
+## Pass 2 — Batch II.1 (2026-06-04)
+
+Pass-2 Batch II.1 (024-036, `Part II.1 — Overlap isotropy through continuum
+kernel`): all 13 already had both independent engines from pass 1, and the
+re-audit confirmed independence (e.g. 024's `.wl` integrates the sphere moments
+directly via `Integrate[..., {theta, 0, Pi}, {phi, 0, 2 Pi}]` vs the SymPy
+pairing-sum route). No new `.wl` built, no mirror reclassification, 0 sanctioned
+mirrors, no additions to the Independent-Mirror Set. The findings were NOT
+`mathematica_transliteration`/mirror items: 024's two findings were a
+`paper_misalignment` (NOTES-ONLY sixth-moment prefactor `4π/122`→`4π/105`, the
+textbook 1/(3·5·7)=1/105 in d=3 — both engines already use 105, and the notes'
+own κ_*=√5/(7√π) requires 105; the published `.tex` card was UNAFFECTED) plus a
+`stale_output` (Mathematica banner refreshed stale `STAGE 007`→`STAGE 024`); and
+032/033/034/035/036 each carried a single `stale_output` — residual stale
+self-labels (SymPy docstring + closing `All Stage NN checks passed.` print, + a
+`.wl` Print on 032 + a `.wl` sub-stage comment on 033) `Stage {15,16,17,18,19}`→
+`Stage {32,33,34,35,36}`, label-only, both engines re-run, ZERO math change (same
+class as the I.2 stage-021 `.wl:195` fix).

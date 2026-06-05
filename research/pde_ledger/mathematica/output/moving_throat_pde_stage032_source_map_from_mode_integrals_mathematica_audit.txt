@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 15.1 — EXACT FINITE-THROAT AXIAL INTEGRALS
+STAGE 32.1 — EXACT FINITE-THROAT AXIAL INTEGRALS
 ========================================================================================
 u0 . u0 = 1
 u1 . u1 = 1
@@ -28,7 +28,7 @@ sigma/kappa0^2 - 11/9 = 0
 PASS: sigma/kappa0^2 - 11/9
 
 ========================================================================================
-STAGE 15.2 — LOCAL-KERNEL MODE REDUCTION
+STAGE 32.2 — LOCAL-KERNEL MODE REDUCTION
 ========================================================================================
 L_etaU = gU*(q0*u0c + q1*u1c)
 L_etaphi = (2*gB*phi*(3*Sqrt[2]*q0 - 2*q1))/(3*Pi)
@@ -47,7 +47,7 @@ L_src - gQ Q (v.q) = 0
 PASS: L_src - gQ Q (v.q)
 
 ========================================================================================
-STAGE 15.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION
+STAGE 32.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION
 ========================================================================================
 Schur via Inverse vs LinearSolve = {{0, 0}, {0, 0}}
 PASS: Schur via Inverse vs LinearSolve
@@ -60,7 +60,7 @@ sigmaMatViaSolve - [Xi I + alpha vv^T] = {{0, 0}, {0, 0}}
 PASS: sigmaMatViaSolve - [Xi I + alpha vv^T]
 
 ========================================================================================
-STAGE 15.4 — NATURAL D/N SOURCE MAP
+STAGE 32.4 — NATURAL D/N SOURCE MAP
 ========================================================================================
 mhat_-^2 = (11 + (968*alpha0 + 63*dK*Pi^2)/Sqrt[7744*alpha0^2 + 1008*alpha0*dK*Pi^2 + 81*dK^2*Pi^4])/18
 s_check - s_minus_nat (independent (v.e_-)^2 construction) = 0
@@ -75,7 +75,7 @@ limit_{alpha->oo} mhat_-^2 - 11/9 = 0
 PASS: limit_{alpha->oo} mhat_-^2 - 11/9
 
 ========================================================================================
-STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR
+STAGE 32.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR
 ========================================================================================
 nProdNat - nProdIndep (independent eigenvector path) = 0
 PASS: nProdNat - nProdIndep (independent eigenvector path)
@@ -85,4 +85,4 @@ PASS: Nprod(alpha=0) - beta0 * kappa0^2 / a
 Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.
 limit_{alpha->oo} Nprod_nat = 0
 PASS: limit_{alpha->oo} Nprod_nat
-All Stage 15 checks passed.
+All Stage 32 checks passed.

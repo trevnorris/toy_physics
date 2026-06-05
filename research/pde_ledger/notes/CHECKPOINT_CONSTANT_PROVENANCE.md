@@ -327,9 +327,11 @@ Constants reviewed:
 
 - `sqrt(15/(8 pi))`
   derived as the normalization factor for the real STF `\ell = 2` harmonics
-- `4 pi / 15`, `4 pi / 122`
+- `4 pi / 15`, `4 pi / 105`
   derived unit-sphere fourth and sixth moments used in the exact overlap
-  contractions
+  contractions (sixth-moment prefactor corrected from the stale `4 pi / 122`
+  notes typo to the verified `4 pi / 105` in pass-2 batch II.1; see the II.1 entry
+  below and PAPER_CLEANUP P5-04)
 - `sqrt(5)/(7 sqrt(pi))`
   derived from the exact `Y_20` triple-overlap matrix
 - `1`, `1/2`, `-1`
@@ -973,3 +975,21 @@ value-reconciliation augmentation (all emitted deliverable values reconcile —
 The one finding (021, a NON-checkpoint stage) was a label-only `.wl:195` edit
 (`Stage 004`→`Stage 021`) + output refresh — no constant or literal introduced
 or moved.
+
+## Pass 2 — Batch II.1 (2026-06-04)
+
+Pass-2 Batch II.1: no carried checkpoint constant changed; no new provenance
+items. Checkpoints 024 and 036 are in range and were re-verified with the
+value-reconciliation augmentation (177 deliverable values checked batch-wide,
+1 misaligned — 024's NOTES-ONLY sixth-moment prefactor typo, below — 0
+MISSING-DELIVERABLE); the 024/036 constant-provenance entries above stand
+unchanged (κ_*=√5/(7√π) and the M^(20) overlap matrix unchanged). The one
+value correction was 024's `paper_misalignment`: the notes' (line 213)
+sixth-moment prefactor `4π/122`→`4π/105` — a NOTES-ONLY value typo (textbook
+unit-sphere sixth moment 1/(3·5·7)=1/105 in d=3; BOTH engines already use 105,
+and the notes' own κ_*=√5/(7√π) requires 105), the published `.tex` card was
+UNAFFECTED, and no derived or carried checkpoint constant MOVED (the 024
+"Constants reviewed" list above has been corrected from the stale `4 pi / 122`
+to the verified `4 pi / 105`; the in-script value was always `4 pi / 105`). The
+032-036 fixes were script-label-only `stale_output` (no constant). NO checkpoint
+constant introduced or moved.

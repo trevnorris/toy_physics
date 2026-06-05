@@ -297,3 +297,19 @@ result moved. The one finding (021, low-severity `stale_output`) was a label-onl
 math/equation/assertion change, no EM-projected identity touched. With I.1 + I.2
 pass-2 closed, the entire projected-EM core 004-021 (plus bookends 022-023)
 remains paper-aligned under the second pass.
+
+## Pass 2 — Batch II.1 (2026-06-04)
+
+Pass-2 Batch II.1 (024-036, `Part II.1 — Overlap isotropy through continuum
+kernel`) re-verified at v2 depth + value-reconciliation augmentation; 13/13
+verified, `material_change: false` on all 13. II.1 is the post-EM bookend
+(overlap isotropy / source map / continuum kernel) — **projected-EM-adjacent
+core content** rather than the projected-Maxwell core proper (004-021, closed at
+I.2 pass-2). It was re-verified and **no EM identity changed**: no projected-EM
+result moved. The batch's findings were all confined to II.1 and touched no
+EM-projected identity — 024's NOTES-ONLY sixth-moment prefactor typo
+`4π/122`→`4π/105` (published `.tex` card UNAFFECTED; both engines already use
+105) plus a banner `stale_output`, and the 032-036 script-label-only
+`stale_output` fixes (`Stage {15..19}`→`Stage {32..36}`). With I.1 + I.2 + II.1
+pass-2 closed, the projected-EM core 004-021 (plus bookends 022-036) remains
+paper-aligned under the second pass.

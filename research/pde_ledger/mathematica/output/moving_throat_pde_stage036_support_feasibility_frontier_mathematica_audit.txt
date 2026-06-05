@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 019 — SUPPORT-FEASIBILITY FRONTIER
+STAGE 036 — SUPPORT-FEASIBILITY FRONTIER
 ========================================================================================
 G(xi,delta) = (9*xi*(delta + xi))/(9*delta + 11*xi)
 F(xi,delta) = -1/81*(9*delta + 11*xi)^4/((-1 + xi)*(9*delta^2 + 18*delta*xi + 11*xi^2)^2)
@@ -26,7 +26,7 @@ G_max - 9(1+delta)/(9delta+11) = 0
 PASS: G_max - 9(1+delta)/(9delta+11)
 
 ========================================================================================
-STAGE 019.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST
+STAGE 036.3 — PARAMETRIC FRONTIER AND FINAL ADMISSIBILITY TEST
 ========================================================================================
 final-test support inequality <-> nonnegative required support loading = 0
 PASS: final-test support inequality <-> nonnegative required support loading
@@ -42,7 +42,7 @@ inadmissible sample: support deficit blocks the branch = M_mix=0.810569469138702
 PASS: inadmissible sample: support deficit blocks the branch
 
 ========================================================================================
-STAGE 019.4 — NEAR-ONSET ASYMPTOTICS
+STAGE 036.4 — NEAR-ONSET ASYMPTOTICS
 ========================================================================================
 G(xi,delta) near xi=0 = xi - (2*xi^2)/(9*delta)
 near-onset coefficients: c0=0, c1=1, c2=-2/(9*delta)

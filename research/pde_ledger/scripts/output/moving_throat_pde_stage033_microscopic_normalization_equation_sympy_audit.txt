@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 16.1 — EXACT MICROSCOPIC NORMALIZATION PRODUCT
+STAGE 33.1 — EXACT MICROSCOPIC NORMALIZATION PRODUCT
 ========================================================================================
 N_-(alpha0) =
                                                                                ↪
@@ -27,26 +27,26 @@ N_-(alpha0) =
 dN/dalpha - monotonicity formula = 0
 
 ========================================================================================
-STAGE 16.2 — EXACT STABILITY THRESHOLD
+STAGE 33.2 — EXACT STABILITY THRESHOLD
 ========================================================================================
 alpha_crit = 9*pi**2*A*(A + DeltaK)/(8*(11*A + 9*DeltaK))
 alpha_crit - closed finite-throat form = 0
 
 ========================================================================================
-STAGE 16.3 — ZERO-LOADING ONSET VALUE
+STAGE 33.3 — ZERO-LOADING ONSET VALUE
 ========================================================================================
 N_-(0) = 8*beta0/(pi**2*A)
 N_-(0) - beta0 kappa0^2 / A = 0
 
 ========================================================================================
-STAGE 16.4 — EXACT WEAK-LOADING EXPANSION
+STAGE 33.4 — EXACT WEAK-LOADING EXPANSION
 ========================================================================================
 N_-(alpha0) to O(alpha0) = alpha0*(512*beta0/(9*pi**4*A*DeltaK) + 64*beta0/(pi**4*A**2)) + 8*beta0/(pi**2*A)
 first derivative coefficient - generic formula = 0
 first derivative coefficient - finite-throat closed form = 0
 
 ========================================================================================
-STAGE 16.5 — MICROSCOPIC COUPLING REWRITE
+STAGE 33.5 — MICROSCOPIC COUPLING REWRITE
 ========================================================================================
 A = K_0 - g_U**2/Omega_U**2
 Delta0 = Omega_U**2*Omega_W**2 - 88*g_R**2/(9*pi**2)
@@ -58,7 +58,7 @@ K0_onset = g_U**2/Omega_U**2 + 648*pi**2*(Omega_U**2*g_W + g_R*g_U)**2/(NQ*(9*pi
 K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)] = 0
 
 ========================================================================================
-STAGE 16.6 — FULLY SUBSTITUTED MICROSCOPIC STABILITY GATE
+STAGE 33.6 — FULLY SUBSTITUTED MICROSCOPIC STABILITY GATE
 ========================================================================================
 alpha_crit(mic) - alpha_0(mic) =
     4              4    2      2        2              2    2      2        2  ↪
@@ -179,4 +179,4 @@ gate numerator =
 ↪ U ⋅varpi  - ─────────────────── + 176⋅g_R⋅g_U ⋅g_W⋅varpi 
 ↪                       2                                  
 ↪                    9⋅π                                   
-All Stage 16 checks passed.
+All Stage 33 checks passed.

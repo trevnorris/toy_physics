@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE Stage 19 SymPy audit.
+Moving-throat PDE Stage 36 SymPy audit.
 
 Checks:
 1. Exact dimensionless support-feasibility function G(xi,delta).
@@ -160,4 +160,4 @@ G_series_target = sp.simplify(xi - 2 * xi**2 / (9 * delta))
 print("G(xi,delta) near xi=0 =", G_series)
 expect_zero("G near-onset series through O(xi^2)", G_series - G_series_target)
 
-print("All Stage 19 checks passed.")
+print("All Stage 36 checks passed.")

@@ -718,8 +718,8 @@ stages:
     stage: 24
     stage_str: '024'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -743,11 +743,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.txt
         exists: true
         mtime: 1779777549
+    last_status_change: 2026-06-04 23:21:26-06:00
+    codex_session: 019e95fd-5597-7043-aaff-2525b0f489d7
+    codex_log_paths:
+    - redteam/pass2/codex_logs/024_iter1.txt
+    last_codex_run: 2026-06-04 22:17:18-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:11:41-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:11:59-06:00
   '025':
     stage: 25
     stage_str: '025'
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -772,11 +782,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage025_minimal_isotropic_normalization_mathematica_audit.txt
         exists: true
         mtime: 1779777567
+    last_status_change: 2026-06-04 23:21:40-06:00
   '026':
     stage: 26
     stage_str: '026'
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -801,11 +812,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage026_concrete_axial_overlaps_mathematica_audit.txt
         exists: true
         mtime: 1779777584
+    last_status_change: 2026-06-04 23:21:42-06:00
   '027':
     stage: 27
     stage_str: '027'
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -830,11 +842,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage027_nonconstant_axial_family_mathematica_audit.txt
         exists: true
         mtime: 1779404655
+    last_status_change: 2026-06-04 23:21:45-06:00
   028:
     stage: 28
     stage_str: 028
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -859,11 +872,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage028_loaded_profile_selection_mathematica_audit.txt
         exists: true
         mtime: 1779404839
+    last_status_change: 2026-06-04 23:21:47-06:00
   029:
     stage: 29
     stage_str: 029
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -888,11 +902,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage029_dynamic_loading_mathematica_audit.txt
         exists: true
         mtime: 1779777751
+    last_status_change: 2026-06-04 23:21:50-06:00
   '030':
     stage: 30
     stage_str: '030'
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -917,11 +932,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage030_selected_mode_normalization_mathematica_audit.txt
         exists: true
         mtime: 1779777794
+    last_status_change: 2026-06-04 23:21:52-06:00
   '031':
     stage: 31
     stage_str: '031'
     batch_id: II.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -946,12 +962,13 @@ stages:
         path: mathematica/output/moving_throat_pde_stage031_selected_branch_reachability_mathematica_audit.txt
         exists: true
         mtime: 1779777833
+    last_status_change: 2026-06-04 23:21:55-06:00
   '032':
     stage: 32
     stage_str: '032'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -975,12 +992,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage032_source_map_from_mode_integrals_mathematica_audit.txt
         exists: true
         mtime: 1779777860
+    last_status_change: 2026-06-04 23:21:28-06:00
+    codex_session: 019e961f-4bf7-71f0-8d2e-bf1c66f94630
+    codex_log_paths:
+    - redteam/pass2/codex_logs/032_iter1.txt
+    last_codex_run: 2026-06-04 22:53:17-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:12:05-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:12:18-06:00
   '033':
     stage: 33
     stage_str: '033'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -1004,12 +1031,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage033_microscopic_normalization_equation_mathematica_audit.txt
         exists: true
         mtime: 1779777886
+    last_status_change: 2026-06-04 23:21:30-06:00
+    codex_session: 019e9629-7e5a-7921-80d0-c2dcc703f4b9
+    codex_log_paths:
+    - redteam/pass2/codex_logs/033_iter1.txt
+    last_codex_run: 2026-06-04 23:05:10-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:12:31-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:12:41-06:00
   '034':
     stage: 34
     stage_str: '034'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -1033,12 +1070,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage034_softening_depth_normal_form_mathematica_audit.txt
         exists: true
         mtime: 1779406430
+    last_status_change: 2026-06-04 23:21:33-06:00
+    codex_session: 019e962d-b835-7ac2-91be-bdd57c2360a4
+    codex_log_paths:
+    - redteam/pass2/codex_logs/034_iter1.txt
+    last_codex_run: 2026-06-04 23:09:00-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:12:46-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:12:54-06:00
   '035':
     stage: 35
     stage_str: '035'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -1062,12 +1109,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.txt
         exists: true
         mtime: 1779406560
+    last_status_change: 2026-06-04 23:21:35-06:00
+    codex_session: 019e962f-5680-7d61-be80-dfcdbee5d6ce
+    codex_log_paths:
+    - redteam/pass2/codex_logs/035_iter1.txt
+    last_codex_run: 2026-06-04 23:10:11-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:12:58-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:13:04-06:00
   '036':
     stage: 36
     stage_str: '036'
     batch_id: II.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -1091,6 +1148,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.txt
         exists: true
         mtime: 1779777894
+    last_status_change: 2026-06-04 23:21:38-06:00
+    codex_session: 019e962b-ed23-77a3-993d-403a94c7772e
+    codex_log_paths:
+    - redteam/pass2/codex_logs/036_iter1.txt
+    last_codex_run: 2026-06-04 23:07:01-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-04 23:13:08-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-04 23:13:15-06:00
   '037':
     stage: 37
     stage_str: '037'

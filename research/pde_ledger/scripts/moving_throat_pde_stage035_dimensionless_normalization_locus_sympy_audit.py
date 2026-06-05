@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE Stage 18 SymPy audit.
+Moving-throat PDE Stage 35 SymPy audit.
 
 Checks:
 1. Exact D/N dimensionless shape function F(xi, delta).
@@ -109,4 +109,4 @@ alpha_series_target = sp.simplify(sp.pi**2 * A * xi / 8 - sp.pi**2 * A * xi**2 /
 print("alpha_req near xi=0 =", alpha_series)
 expect_zero("alpha_req near-onset series through O(xi^2)", alpha_series - alpha_series_target)
 
-print("All Stage 18 checks passed.")
+print("All Stage 35 checks passed.")

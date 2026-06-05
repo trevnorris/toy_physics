@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE Stage 16 SymPy audit.
+Moving-throat PDE Stage 33 SymPy audit.
 
 Checks:
 1. Exact microscopic selected-branch normalization product.
@@ -130,4 +130,4 @@ expect_zero(
 print("gate numerator =")
 sp.pprint(gate_num_target)
 
-print("All Stage 16 checks passed.")
+print("All Stage 33 checks passed.")

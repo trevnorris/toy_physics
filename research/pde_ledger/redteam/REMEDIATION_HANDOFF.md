@@ -148,7 +148,33 @@
 ACTIVE next task is the **full end-to-end SECOND PASS**. Everything below the old `## IMMEDIATE NEXT ACTION`
 header is FIRST-PASS history — ignore it except for the reusable per-stage-loop boilerplate (which is unchanged).
 
-### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = II.1 (024–036)**
+### ▶ PASS-2 PROGRESS LOG (newest first) — **NEXT BATCH = III.1 (037–048)**
+- **✅ Batch II.1 (024–036) DONE + COMMITTED (`9bcac06`) — 13/13 verified, all `material_change: false`, no stop-cold/blocked. Checkpoints 024 & 036 re-verified.**
+  7 clean (025–031). 6 findings, all resolved:
+  - **024** — TWO findings. **F1 `paper_misalignment` (value_mismatch) RESOLVED via Claude+Codex** (non-conceptual,
+    NOTES-ONLY, published `.tex` card UNAFFECTED): notes:213 sixth-moment prefactor `4π/122`→`4π/105` (textbook
+    `1/(3·5·7)=1/105` in d=3; BOTH engines use 105 and the notes' own `κ_*=√5/(7√π)` requires 105). Codex applied the
+    single notes hunk; no script change. **F2 `stale_output`** refreshed (Mathematica banner `STAGE 007`→`STAGE 024`).
+  - **032/033/034/035/036** — each a single `stale_output` (NOT paper_misalignment): residual stale self-labels (SymPy
+    docstring + closing `All Stage NN checks passed.` print that prints INTO the transcript; + a `.wl` Print on 032, a
+    `.wl` sub-stage comment on 033) that the June-3 numbering commit's banner fix missed. **Label-only** `Stage
+    {15,16,17,18,19}`→`{32,33,34,35,36}` (matching each file's canonical banner) + both-engine re-run. Same class as I.2
+    stage-021. (Audit agents for 032/033/034 under-called these "no directive"; arbiter grep + authored directives caught
+    them; 036's directive augmented.) Zero math change.
+  - Value reconciliation: **177 deliverable values batch-wide, 1 misaligned** (= 024's typo, resolved). 0 new `.wl`, 0
+    mirror reclass. 6 trackers synced (PAPER_CLEANUP **P5-04**; `CHECKPOINT_CONSTANT_PROVENANCE` 024 record corrected
+    `4π/122`→`4π/105`). Summary `redteam/pass2/batches/batch_II1.md`.
+  - **⚠️ DISCOVERY (open gate item):** the "mechanically EXHAUSTED (001–253)" numbering reconciliation did NOT clear the
+    **script/output band**. Stale labels REMAIN, deliberately LEFT UNTOUCHED (content-dependent, partly AMBIGUOUS,
+    NEVER offset-sweep → a careful gated per-reference pass, NOT the red-team loop; per [[numbering-drift-root-cause]]):
+    (a) **clean-stage committed OUTPUTS are themselves stale** with unflagged stale self-banners — 028 out `STAGE 011`,
+    030/031 out `STAGE 13/14 AUDIT COMPLETE`, 025 out `Stage 8 … passed`, 026/027 cross-refs; (b) **ambiguous
+    self-vs-cross multi-epoch refs** — 024 `.wl:293 FINAL STAGE-007 LEDGER` + `.py "Stage-6 … bundle/stack"` (024 carries
+    self-labels from TWO epochs, and "Stage-6 grouped bundle" may be a cross-ref to 023), 033 `.py:50 Stage-15`(=032),
+    036 `.py:106/127 Stage-18`(=035). The MATH is verified clean regardless. **Recommend a dedicated careful numbering
+    pass over the script/output band, separate from the red-team loop — user decision.** (The pass-2 audit agents also
+    apply an INCONSISTENT threshold to numbering labels — flagged on 6 stages, missed the same class on the 7 clean ones
+    — itself signal that label-drift is not what the auditor reliably catches; the arbiter grep is the backstop.)
 - **✅ Batch I.2 (013–023) DONE + COMMITTED (`fc50517`) — 11/11 verified, all `material_change: false`, no stop-cold/blocked.**
   10 clean (013–020, 022, 023). 1 finding, resolved:
   - **021** `stale_output` (low-severity, NOT paper_misalignment, no user gate): the committed Mathematica output `.txt`

@@ -354,3 +354,43 @@ that the numbering-recon scan (keyed on the `banner[...]` call + docstrings)
 missed; fix = one label-only `.wl:195` edit `Stage 004`→`Stage 021` + output
 refresh (math no-op, no assertion/result changed). No coverage count moved (all
 11 were already verified+dual-engine from pass 1).
+
+## Pass 2 — Batch II.1 (2026-06-04)
+
+Pass-2 Batch II.1 (024-036, `Part II.1 — Overlap isotropy through continuum
+kernel`, 13 stages): all 13 re-verified at v2 depth + exhaustive
+value-reconciliation augmentation; 13/13 verified, `material_change: false` on
+all 13, 0 stop-cold, 0 blocked. Every emitted deliverable value reconciles —
+177 values checked batch-wide, 1 MISALIGNED (024's `4π/122` sixth-moment typo,
+resolved below), 0 MISSING-DELIVERABLE. All 13 are genuine dual-engine (both
+independent engines from pass 1; e.g. 024's `.wl` integrates sphere moments
+directly vs SymPy's pairing-sum); no new `.wl`, 0 sanctioned mirrors. Checkpoints
+024 and 036 are in range (both re-verified; no checkpoint constant changed —
+κ_*=√5/(7√π) and M^(20) unchanged). **7 clean** (025-031); **6 with
+findings→resolved→verified** (024, 032-036). **024 — TWO findings:** (F1)
+`paper_misalignment` value_mismatch RESOLVED via Claude+Codex (non-conceptual,
+NOTES-ONLY, published `.tex` card UNAFFECTED): notes:213 sixth-moment prefactor
+`4π/122`→`4π/105` (textbook 1/(3·5·7)=1/105 in d=3; both engines use 105; the
+notes' own κ_*=√5/(7√π) requires 105); Codex applied the single notes hunk, no
+script change; (F2) `stale_output` — transcripts refreshed (Mathematica banner
+stale `STAGE 007`→`STAGE 024`). **032/033/034/035/036 — each a single
+`stale_output`** (NOT `paper_misalignment`): committed transcripts predated the
+June-3 numbering commit, leaving residual stale self-labels (SymPy docstring +
+closing `All Stage NN checks passed.` print, + a `.wl` Print on 032 + a `.wl`
+sub-stage comment on 033); LABEL-ONLY fixes `Stage {15,16,17,18,19}`→`Stage
+{32,33,34,35,36}` (matching each file's own canonical banner) + both-engine
+re-run; same class as the I.2 stage-021 `.wl:195` fix; zero math change. No
+coverage count moved (all 13 were already verified+dual-engine from pass 1).
+
+**⚠️ DISCOVERY (deferred cleanup — see also `PAPER_CLEANUP_TRACKER.md`):** the
+"mechanically exhausted (001-253)" numbering reconciliation did NOT clear the
+II.1 script/output band. Stale labels REMAIN (left UNTOUCHED — content-dependent,
+partly ambiguous, NEVER offset-sweep, reserved for a careful gated per-reference
+pass): clean-stage committed OUTPUTS are themselves stale with unflagged stale
+self-banners (028 out `STAGE 011`; 030 `STAGE 13 AUDIT COMPLETE`; 031 `STAGE 14
+AUDIT COMPLETE`; 025 `Stage 8 … passed`; 026/027 `STAGE-8/9` cross-refs + self
+pass-lines); ambiguous self-vs-cross multi-epoch refs (024 `.wl:293 FINAL
+STAGE-007 LEDGER` + `.py "Stage-6"`; cross-refs 033 `Stage-15`=032, 036
+`Stage-18`=035). The MATH is verified clean regardless. Recommendation: a
+dedicated careful numbering pass over the script/output band, separate from the
+red-team loop. Reference memory `numbering-drift-root-cause`.

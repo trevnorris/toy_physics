@@ -195,6 +195,6 @@ expectZero["Nprod(alpha=0) - beta0 * kappa0^2 / a", nProdAt0 - beta0*kappa0^2/a]
 nProdInf = Limit[nProdNat, alpha0 -> Infinity, Assumptions -> $Assumptions];
 expectZero["limit_{alpha->oo} Nprod_nat", nProdInf];
 
-Print["All Stage 15 checks passed."];
+Print["All Stage 32 checks passed."];
 
 Exit[0];

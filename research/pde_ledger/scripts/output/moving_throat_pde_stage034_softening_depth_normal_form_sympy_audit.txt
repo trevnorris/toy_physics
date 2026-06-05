@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 17.1 — EXACT SOFTENING-DEPTH SECULAR REDUCTION
+STAGE 34.1 — EXACT SOFTENING-DEPTH SECULAR REDUCTION
 ========================================================================================
 alpha(lambda) =
         (A - λ)⋅(A + DeltaK - λ)        
@@ -28,7 +28,7 @@ s(lambda=A-x) - s(x) = 0
 N(lambda=A-x) - N(x) = 0
 
 ========================================================================================
-STAGE 17.2 — EXACT MONOTONICITY OF THE SOFTENING MAP
+STAGE 34.2 — EXACT MONOTONICITY OF THE SOFTENING MAP
 ========================================================================================
 d alpha / dx =
 -x⋅(DeltaK + x)⋅(κ_0_sq + κ_1_sq) + (DeltaK + 2⋅x)⋅(κ_0_sq⋅(DeltaK + x) + κ_1_ ↪
@@ -44,7 +44,7 @@ dalpha/dx - manifestly positive form = 0
 s_x * d alpha / dx - 1 = 0
 
 ========================================================================================
-STAGE 17.3 — REQUIRED SUPPORT LOADING IN SOFTENING-DEPTH FORM
+STAGE 34.3 — REQUIRED SUPPORT LOADING IN SOFTENING-DEPTH FORM
 ========================================================================================
 alpha_mix = Chi**2/(Delta_0*Omega_U**2)
 g_B,req^2 / varpi^2 =
@@ -54,4 +54,4 @@ g_B,req^2 / varpi^2 =
                       2                                                       
                 Δ₀⋅Ω_U ⋅(DeltaK⋅κ_0_sq + κ_0_sq⋅x + κ_1_sq⋅x)                 
 lambda-form vs x-form support loading = 0
-All Stage 17 checks passed.
+All Stage 34 checks passed.

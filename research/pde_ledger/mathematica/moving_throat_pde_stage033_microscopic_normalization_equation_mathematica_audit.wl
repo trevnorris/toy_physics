@@ -131,7 +131,7 @@ expectZero[
 ];
 
 (* Independent numerical cross-check: substitute rational test values and verify
-   the Stage 16.1 monotonicity identity and the Stage 16.6 gate identity at
+   the Stage 33.1 monotonicity identity and the Stage 33.6 gate identity at
    floating-point precision. This is structurally distinct from the analytic
    FullSimplify approach used above and would catch algebra errors that the
    line-by-line transliteration cannot. *)

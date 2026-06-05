@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 15.1 — EXACT FINITE-THROAT AXIAL INTEGRALS
+STAGE 32.1 — EXACT FINITE-THROAT AXIAL INTEGRALS
 ========================================================================================
 u0 . u0 = 1
 u1 . u1 = 1
@@ -20,7 +20,7 @@ sigma - 88/(9 pi^2) = 0
 sigma/kappa0^2 - 11/9 = 0
 
 ========================================================================================
-STAGE 15.2 — LOCAL-KERNEL MODE REDUCTION
+STAGE 32.2 — LOCAL-KERNEL MODE REDUCTION
 ========================================================================================
 L_etaU = g_U*(U0*q0 + U1*q1)
 L_etaphi = 2*g_B*phi*(3*sqrt(2)*q0 - 2*q1)/(3*pi)
@@ -34,7 +34,7 @@ L_UW + gR (v.U) W = 0
 L_src - gQ Q (v.q) = 0
 
 ========================================================================================
-STAGE 15.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION
+STAGE 32.3 — EXACT SCHUR-COMPLEMENT DECOMPOSITION
 ========================================================================================
 Sigma =
 ⎡    2                                           2 ⎛   2                 2⎞    ↪
@@ -100,7 +100,7 @@ Sigma - [Xi I + alpha vv^T] =
 ⎣0  0⎦
 
 ========================================================================================
-STAGE 15.4 — NATURAL D/N SOURCE MAP
+STAGE 32.4 — NATURAL D/N SOURCE MAP
 ========================================================================================
 mhat_-^2 = (63*pi**2*DeltaK + 968*alpha0 + 11*sqrt(4608*alpha0**2 + (9*pi**2*DeltaK + 56*alpha0)**2))/(18*sqrt(4608*alpha0**2 + (9*pi**2*DeltaK + 56*alpha0)**2))
 s_check - s_minus_nat (independent (v.e_-)^2 construction) = 0
@@ -109,8 +109,8 @@ mhat_-^2(alpha=0) - 1 = 0
 limit_{alpha->oo} mhat_-^2 - 11/9 = 0
 
 ========================================================================================
-STAGE 15.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR
+STAGE 32.5 — ELIMINATION OF THE ABSTRACT SOURCE-MAP FACTOR
 ========================================================================================
 Nprod(alpha=0) - beta0 * kappa0^2 / A = 0
 limit_{alpha->oo} Nprod_nat = 0
-All Stage 15 checks passed.
+All Stage 32 checks passed.

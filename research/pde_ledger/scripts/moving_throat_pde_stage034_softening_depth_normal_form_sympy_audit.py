@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE Stage 17 SymPy audit.
+Moving-throat PDE Stage 34 SymPy audit.
 
 Checks:
 1. Exact secular elimination from selected eigenvalue lambda_- to softening depth x = A - lambda_-.
@@ -91,4 +91,4 @@ expect_zero(
     gBreq_lambda.subs(lam, A - x) - gBreq_sq_over_varpi2,
 )
 
-print("All Stage 17 checks passed.")
+print("All Stage 34 checks passed.")

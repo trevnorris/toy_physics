@@ -210,7 +210,7 @@ The angular matrix that perturbs any `l=2` overlap is then
 
 Using the exact sixth moment of the unit sphere,
 
-`int dOmega n_i n_j n_k n_l n_m n_n = (4 pi / 122) sum_pairings delta delta delta`,
+`int dOmega n_i n_j n_k n_l n_m n_n = (4 pi / 105) sum_pairings delta delta delta`,
 
 one finds the exact five-mode result
 

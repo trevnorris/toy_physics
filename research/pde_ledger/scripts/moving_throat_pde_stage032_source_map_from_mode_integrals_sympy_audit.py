@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Moving-throat PDE Stage 15 SymPy audit.
+Moving-throat PDE Stage 32 SymPy audit.
 
 Checks:
 1. Exact finite-throat axial integrals for the N/N wall basis and D/N half-wave.
@@ -214,4 +214,4 @@ expect_zero(
 Nprod_inf = sp.limit(Nprod_nat, alpha0, sp.oo)
 expect_zero("limit_{alpha->oo} Nprod_nat", Nprod_inf)
 
-print("All Stage 15 checks passed.")
+print("All Stage 32 checks passed.")

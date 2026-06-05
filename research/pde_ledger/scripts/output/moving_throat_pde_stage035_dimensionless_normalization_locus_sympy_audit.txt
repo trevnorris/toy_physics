@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 18.1 — EXACT D/N DIMENSIONLESS SHAPE FUNCTION
+STAGE 35.1 — EXACT D/N DIMENSIONLESS SHAPE FUNCTION
 ========================================================================================
 eta = 2/9
 F(xi,delta) =
@@ -15,7 +15,7 @@ R_target = pi**2*A*NQ/(8*beta0)
 Normalization locus: F(xi,delta) = R_target
 
 ========================================================================================
-STAGE 18.2 — EXACT MONOTONICITY, ONSET, AND SOFTENING LIMITS
+STAGE 35.2 — EXACT MONOTONICITY, ONSET, AND SOFTENING LIMITS
 ========================================================================================
 dF/dxi =
             3 ⎛              2                        ⎛   2                2⎞  ↪
@@ -39,7 +39,7 @@ eps_soft * F(1-eps_soft, delta) near eps_soft=0 = (9*delta + 11)**4/(81*(9*delta
 near-softening asymptotic coefficient = 0
 
 ========================================================================================
-STAGE 18.3 — EXACT REQUIRED TOTAL LOADING AND SUPPORT COUPLING
+STAGE 35.3 — EXACT REQUIRED TOTAL LOADING AND SUPPORT COUPLING
 ========================================================================================
 alpha_req(xi,delta) =
    2            
@@ -57,10 +57,10 @@ g_B,req^2 / varpi^2 =
            8⋅Δ₀⋅Ω_U ⋅(9⋅δ + 11⋅ξ)           
 
 ========================================================================================
-STAGE 18.4 — EXACT ASYMPTOTICS OF THE NORMALIZATION LOCUS
+STAGE 35.4 — EXACT ASYMPTOTICS OF THE NORMALIZATION LOCUS
 ========================================================================================
 F(xi,delta) near xi=0 = xi**2*(1 + 8/(9*delta) - 28/(27*delta**2)) + xi*(1 + 8/(9*delta)) + 1
 near-onset series through O(xi^2) = 0
 alpha_req near xi=0 = pi**2*A*xi/8 - pi**2*A*xi**2/(36*delta)
 alpha_req near-onset series through O(xi^2) = 0
-All Stage 18 checks passed.
+All Stage 35 checks passed.

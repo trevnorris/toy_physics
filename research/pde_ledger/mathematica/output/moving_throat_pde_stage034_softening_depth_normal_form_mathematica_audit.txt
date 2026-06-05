@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 017 — SOFTENING-DEPTH NORMAL FORM
+STAGE 034 — SOFTENING-DEPTH NORMAL FORM
 ========================================================================================
 alpha(lambda) = (kappa0Sq/(A - lambda) + kappa1Sq/(A + DeltaK - lambda))^(-1)
 alpha(x) = (x*(DeltaK + x))/(DeltaK*kappa0Sq + (kappa0Sq + kappa1Sq)*x)

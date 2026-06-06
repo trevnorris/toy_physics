@@ -1,6 +1,6 @@
 # Red-Team Batch Status
 
-Generated: 2026-06-06T00:04:04-06:00
+Generated: 2026-06-06T09:44:06-06:00
 Project: pde_ledger
 
 | Batch | Range | Stages | States | Label |
@@ -14,7 +14,7 @@ Project: pde_ledger
 | III.4 | 73–84 | 12 | verified=12 | Part III.4 — Family-1 geometry, thresholds, quadrupole |
 | III.5 | 85–90 | 6 | verified=6 | Part III.5 — Quadrupole cancellation, loading ratio, verdict |
 | IV.1 | 91–102 | 12 | verified=12 | Part IV.1 — Grouped p2 geometry, decoupling, contamination |
-| IV.2 | 103–114 | 12 | pending=12 | Part IV.2 — Outgoing DtN, deformation, robustness, robin |
+| IV.2 | 103–114 | 12 | verified=12 | Part IV.2 — Outgoing DtN, deformation, robustness, robin |
 | IV.3 | 115–126 | 12 | pending=12 | Part IV.3 — Core balance, DtN mixed, outlet, positive source |
 | IV.4 | 127–138 | 12 | pending=12 | Part IV.4 — Penetration, mouth boundary, fixedpoint |
 | IV.5 | 139–150 | 12 | pending=12 | Part IV.5 — Susceptibility, branch, defect transport |

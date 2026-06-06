@@ -87,7 +87,7 @@ $Assumptions =
   Element[{a, ell, lW, mu0, zQ, cSound, tM, qStar, v0}, Reals] &&
   a > 0 && ell > 0 && lW > 0 && mu0 > 0 && zQ > 0 && cSound > 0 && tM > 0;
 
-kQ = FullSimplify[(zQ/mu0)*(Pi^2*cSound^2/(4*lW^2)), Assumptions -> $Assumptions];
+kQ = FullSimplify[(zQ/mu0)*cSound^2*chiGrad, Assumptions -> $Assumptions];
 gQ = FullSimplify[(zQ/mu0)*chiPrime0, Assumptions -> $Assumptions];
 jS = FullSimplify[4*Pi*a^2*ell*iF, Assumptions -> $Assumptions];
 gS = FullSimplify[tM*jS, Assumptions -> $Assumptions];

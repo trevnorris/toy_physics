@@ -79,7 +79,7 @@ expect_zero("bilinear sq coefficient", sq_coeff + qstar*varrho_s*v0*A_q)
 banner("V. Effective mixed stiffness and mouth couplings")
 
 mu0, Zq, c_s, Tm = sp.symbols("mu0 Zq c_s Tm", positive=True, real=True)
-K_q = sp.simplify((Zq/mu0) * (sp.pi**2*c_s**2/(4*L_W**2)))
+K_q = sp.simplify((Zq/mu0) * c_s**2 * chi_grad)
 g_q = sp.simplify((Zq/mu0) * chi_prime_0)
 J_s = sp.simplify(4*sp.pi*a**2*ell*I_f)
 g_s = sp.simplify(Tm * J_s)

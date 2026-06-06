@@ -627,6 +627,20 @@ different verification structure from the SymPy side:
   via explicit scalar `Solve`-elimination of the 2×2 core system (`Solve` eq.1 for s, back-sub,
   `Solve` for q, form `g_s*s+g_q*q`); `Inverse[m]` removed, matrix object gone. Verify-confirmed
   independent; MMA byte-identical
+- `117`
+  red-team pass-2 batch IV.3 (2026-06-06) RE-AUTHORED from a FULL line-by-line `Series[]`-based
+  transliteration of the `.py` across ALL SIX sections (the audit agent flagged it but scoped the
+  directive to §5; the orchestrator ground-truth `.wl`-vs-`.py` read broadened it to a full
+  re-author). USER-AUTHORIZED independent route: **§1–§4** now derive the class checks via an
+  undetermined-coefficient `jetFromBalance[tag,den,num]` solve (posit `Y=Σc_k z^k`, impose
+  `den·Y−num==0` order-by-order via `Coefficient`/`Solve`, read the canonical-even / odd-norm
+  conditions off the derived `c_k`; §3/§4 additionally clear the pole denominator) — NO
+  `Series[ratio]` survives; **§5** now reduces the shell/mixed core via an explicit 2×2
+  `coreMatrix={{ks,lam},{lam,−kq dW}}` `Solve`-elimination (Schur complement `gs·sCore+gq·qCore`,
+  `rhoC/sigmaC` DERIVED + a hard `coreSchurResidual===0` guard tying the named forms to the raw
+  elimination; the re-typed `sigmaC` literal is GONE). Only the permitted final §5 residual
+  `Series` (`deltaCore − deltaCoreExpected`) remains. Verify-confirmed independent; committed MMA
+  output byte-identical to HEAD (method-only). Same defect class as IV.2's 107/110/114, IV.1's 100
 - `121`
   red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
   for geometric_r_selection: `r_geom` derived by `Solve`-ing the Stage-99 length law
@@ -1174,3 +1188,51 @@ change). Arbiter grep on all 10 committed outputs CLEAN — no stale self-epoch 
 banner; the only stage-label hit is 106's correct upstream cross-ref "Carry-in chi_Q = 1 from
 stage 105". Seat policy held: the 4 `.wl`-touching Codex sessions ran in 2 waves of 2 (105∥114,
 then 107∥110) under the flock; orchestrator exec sequential after all Codex done (no overlap).
+
+## Pass 2 — Batch IV.3 (2026-06-06)
+
+Pass-2 Batch IV.3 (115-126, `Part IV.3 — Core balance, DtN mixed, outlet, positive source`): 10
+dual-engine stages (120/124 are status-only, both engines null, no scripts). **ONE newly-independent
+`.wl` this batch (117 re-authored), 0 sanctioned mirrors.** ADD **117** to the Current
+Independent-Mirror Set above.
+
+- **117** RE-AUTHORED from a FULL line-by-line `Series[]`-based transliteration of the `.py`. The
+  orchestrator ground-truth `.wl`-vs-`.py` read found the `.wl` was a full transliteration across ALL
+  SIX sections — every §1–§4 class check `Series`-expanded the same rational generating function and
+  matched the same canonical-even coefficients, and §5 re-typed the reduced shell/mixed core closed
+  forms `rC/rhoC/sigmaC/kappaC/gammaC` (the audit agent flagged it but scoped the directive to §5
+  only; the orchestrator broadened it to a full re-author). Same defect class as IV.2's 107/110/114
+  and IV.1's 100. **USER-AUTHORIZED** re-author (re-author-vs-accept = USER-LEVEL; surfaced, not
+  reversed unilaterally; directive stated requirement + acceptance only, Codex designed the route per
+  [[feedback-claude-reviews-codex-codes]]). Codex (session 019e9de7): **§1–§4** → an
+  undetermined-coefficient solve (`jetFromBalance[tag,den,num]`: posit `Y=Σc_k z^k`, impose
+  `den·Y−num==0` order-by-order via `Coefficient`/`Solve`, read the canonical-even / odd-norm
+  conditions off the derived `c_k`; §3/§4 additionally clear the pole denominator — a different
+  normalization than the `.py`'s raw-Λ `−L2/L0` scheme), NO `Series[ratio]` survives; **§5** → an
+  explicit 2×2 `coreMatrix={{ks,lam},{lam,−kq dW}}` `Solve`-elimination (`Solve` the linear system
+  `coreMatrix·{sCore,qCore}==coreSource`, form the Schur complement `gs·sCore+gq·qCore`), with
+  `rhoC/sigmaC` DERIVED from the elimination + a hard `coreSchurResidual===0` guard tying the named
+  forms back to the raw elimination (the re-typed `sigmaC` literal is GONE). Only remaining `Series` =
+  the permitted final §5 residual check (`deltaCore − deltaCoreExpected`). Verify-confirmed
+  independent; committed `.wl` output BYTE-IDENTICAL to HEAD (method-only; all 12 `expectZero` PASS,
+  every deliverable unchanged); the SymPy `.py` reference engine UNTOUCHED. `material_change: false`.
+
+**121/122/123 retro-sweep `.wl` re-confirmed genuinely INDEPENDENT** on the pass-2 re-read
+(Reduce/Solve-with-branch-guard routes distinct from the `.py`, all using the correct `100π²`; 123's
+negative `Xi_v(F1) ≈ −1.01675633282526` preserved). 119 also checked (algebraic-`Solve`, distinct
+from 117's former Series-port) — independent-enough, no re-author. The 7 other dual-engine `.wl`
+(115, 116, 118, 121, 122, 123, 125, 126) confirmed independent, unchanged (118 was EDITED only to
+de-tautologize its `K_q` closed-form check — tied to the independently-computed gradient integral
+`chiGrad = ∫(χ')²dz`; stays independent, value unchanged). `material_change: false` on all 12; all
+Codex iter-1 exit 0; NO checkpoints in range. INFRA: 20 exec runs exit 0 (10 dual-engine × 2 engines);
+`exec-*` refreshes `exec_logs/` not committed `output/*.txt` → orchestrator sed-refreshed every
+committed `.txt`; 117 + 118 + the 7 clean dual-engine MMA outputs byte-identical post-refresh; **116
+NORMALIZED** (refresh stripped a stray `# exit_code: 0` trailer a prior commit had baked into BOTH
+committed `.txt` — deliverables identical, NOT a math change, same class as IV.2's 108; the
+historically-flaky 116 ran clean/deterministic). Arbiter grep on all 10 committed outputs CLEAN of
+stale self-epoch (−17 band 098–109) self-banners — the only hit is 116's `gamma0_bare
+(upstream-carried input, Stage 98)`, a script-embedded numbering CROSS-ref (γ₀ provenance), NOT a
+self-banner → DEFERRED (content-keyed, never offset-sweep). Seat policy held: 117 + 118 = 2
+`.wl`-touching Codex sessions (concurrent, at the 2-seat cap, flock-safe); the r_F1 paper fix = a
+separate out-of-band 0-seat Codex session (no `math -script`); orchestrator exec sequential after all
+Codex done (no overlap).

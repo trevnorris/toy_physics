@@ -542,3 +542,18 @@ independent routes: 107 [`Series` port → undetermined-coefficient `Solve` of `
 port → scalar `Solve`-elimination Schur complement] — all USER-AUTHORIZED, verify-confirmed
 independent, MMA byte-identical. NO genuine `paper_misalignment` anywhere → ZERO paper/notes
 edits. 8 clean: 103 [status-only], 104, 106, 108, 109, 111, 112 [checkpoint], 113 [status-only].)
+
+## Pass 2 — Batch IV.3 (2026-06-06)
+
+Pass-2 Batch IV.3 (115-126): **NO checkpoints in range** (all `is_checkpoint: false`). 12/12
+re-verified at v2 depth + value-reconciliation augmentation, `material_change: false` on all 12 (NO
+downstream staling). The 25 checkpoint trust tiers are therefore unaffected by IV.3; **cumulative
+checkpoint trust is unchanged from the IV.2 close (105 retained at `strong`)**. (For completeness:
+108 deliverable values checked batch-wide, 1 misaligned [the r_F1 appendix surd, a published-paper
+`117π²`→`100π²` typo Codex-applied out-of-band, Claude-reviewed; the SCRIPTS were always correct —
+no derived constant moved]; 120 & 124 are status-only by design [notes-only, both engines null]; the
+two script-side fixes are at NON-checkpoint stages — 117 F1 `mathematica_transliteration` FULL
+re-author to an independent route [§1–§4 undetermined-coefficient solve + §5 2×2 `coreMatrix`
+Solve-elimination; committed `.wl` byte-identical; added to the Independent-Mirror Set] and 118 F1
+`tautological_check` de-taut [`K_q` tied to the independently-computed gradient integral `chiGrad`].
+γ₀=(1+r_c)/9 re-confirmed a POSTULATED pure-scale ANSATZ, not a derived checkpoint constant.)

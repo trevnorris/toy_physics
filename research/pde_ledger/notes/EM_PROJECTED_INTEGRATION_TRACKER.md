@@ -418,3 +418,19 @@ to the IV.2 band and touch no EM-projected identity; the two checkpoints in rang
 both cleared the higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 +
 III.3 + III.4 + III.5 + IV.1 + IV.2 pass-2 closed, the projected-EM core 004-021 (plus bookends
 022-114) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.3 (2026-06-06)
+
+Pass-2 Batch IV.3 (115-126, `Part IV.3 — Core balance, DtN mixed, outlet, positive source`)
+re-verified at v2 depth + value-reconciliation augmentation; 12/12 verified, `material_change: false`
+on all 12. **NO EM-projected stages in range → no EM-projection change** — IV.3 is the core-balance /
+DtN-mixed / outlet / positive-source band, downstream of and outside the projected-Maxwell core
+(004-021). No projected-EM identity was touched: no EM result moved. The script-side fixes (117's
+`mathematica_transliteration` FULL re-author to an independent route, 118's `tautological_check`
+de-taut tying `K_q` to the gradient integral `chiGrad`) are confined to the IV.3 band and touch no
+EM-projected identity; NO checkpoints in range. **One published-paper value typo was corrected
+out-of-band this batch** (Family-1 radius surd `r_F1` `117π²`→`100π²` in `stage_appendix_part04.tex:562`
++ `part04_geometry_retarded_mouth.tex:576`; the scripts were always correct, no EM identity involved).
+With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 pass-2 closed, the
+range 001-126 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends
+022-126) remains paper-aligned under the second pass.

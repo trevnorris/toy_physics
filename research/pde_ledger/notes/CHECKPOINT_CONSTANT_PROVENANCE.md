@@ -1152,3 +1152,29 @@ constant `gamma_W = 1/9` is unchanged. (For completeness: the non-checkpoint fix
 introduced no new constant — 107/110/114's `.wl` were RE-AUTHORED from `Series`/`Inverse[m]`
 ports to undetermined-coefficient/Schur `Solve` routes, USER-AUTHORIZED, all MMA outputs
 byte-identical, no emitted value moved.) No carried checkpoint constant changed.
+
+## Pass 2 — Batch IV.3 (2026-06-06)
+
+Pass-2 Batch IV.3 (115-126): reviewed — **NO checkpoints in range**, NO checkpoint constant moved.
+108 deliverable values checked batch-wide, 1 misaligned (resolved — see below); `material_change:
+false` on all 12; no new postulated constant introduced. **Cumulative checkpoint-constant provenance
+is unchanged from the IV.2 close (105 retained at the higher-bar standard); no checkpoint constant
+moved.** Provenance worth recording (NON-checkpoint, tracked here for the no-magic-numbers log): the
+canonical Family-1 geometric radius `r_F1 = √(4107−100π²)/(10π) ≈ 1.77799353547498` — the PUBLISHED
+PAPER (`paper/appendices/stage_appendix_part04.tex:562` + `paper/parts/part04_geometry_retarded_mouth.tex:576`)
+was CORRECTED to this script-derived form this batch (it had carried a `117π²` typo). `100π²` is
+arithmetically forced (`r_geom=√((12/π²)(L/a)²−1)`, `L/a=37/20` ⟹ `12·(37/20)²=4107/100`), is
+corroborated by the paper's OWN adjacent numeric `≈1.77799353547498` (the `117π²` form gives ≈1.7295)
+and downstream `g_-^{F1}≈0.758035`, and matches EVERY script and note (stages 121/122/123/126/127/142/143/148).
+**The SCRIPTS were always correct (`100π²`); the WRONG `117π²` typo lived only in the published paper —
+a paper/notes typo correction aligning the prose to the already-correct script (Codex-applied
+out-of-band, Claude-reviewed); no derived or carried constant MOVED.** Flagged by 122 F1 / 123 F1 as
+`paper_misalignment` (value_mismatch); pass-2 caught a published-paper arithmetic typo the first pass
+MISSED. **Re-confirmed (ANSATZ catalog, NON-checkpoint):** `γ₀ = (1+r_c)/9` is a POSTULATED pure-scale
+ANSATZ, NOT derived (117 §5 / 116 "Bare outgoing normalization" note) — already the ansatz catalog's
+first entry. (For completeness: the two script-side fixes introduced no new constant — 117 F1
+`mathematica_transliteration` FULL re-author to an independent route [§1–§4 undetermined-coefficient
+solve + §5 2×2 `coreMatrix` Solve-elimination; committed `.wl` byte-identical, no emitted value moved],
+118 F1 `tautological_check` de-taut [`K_q`/`kQ` tied to the independently-computed gradient integral
+`chiGrad = ∫(χ')²dz`, asserted `=π²/(4 L_W²)`; printed `K_q` value unchanged]. 120 & 124 are status-only
+by design.)

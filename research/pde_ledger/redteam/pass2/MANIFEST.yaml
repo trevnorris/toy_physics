@@ -3996,7 +3996,7 @@ stages:
     stage: 115
     stage_str: '115'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4021,11 +4021,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage115_core_balance_compensation_mathematica_audit.txt
         exists: true
         mtime: 1779921812
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:25:43-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:25:51-06:00
+    last_status_change: 2026-06-06 12:14:10-06:00
   '116':
     stage: 116
     stage_str: '116'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4050,12 +4055,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage116_dn_mixed_tube_realization_mathematica_audit.txt
         exists: true
         mtime: 1780033391
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:25:55-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:26:03-06:00
+    last_status_change: 2026-06-06 12:14:13-06:00
   '117':
     stage: 117
     stage_str: '117'
     batch_id: IV.3
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -4079,12 +4089,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage117_outlet_core_status_mathematica_audit.txt
         exists: true
         mtime: 1780082744
+    last_status_change: 2026-06-06 12:14:17-06:00
+    codex_session: 019e9de7-8d8b-7851-acc6-35e5e0926650
+    codex_log_paths:
+    - redteam/pass2/codex_logs/117_iter1.txt
+    last_codex_run: 2026-06-06 11:14:46-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:26:11-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:26:19-06:00
   '118':
     stage: 118
     stage_str: '118'
     batch_id: IV.3
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -4108,11 +4128,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage118_parent_core_mathematica_audit.txt
         exists: true
         mtime: 1780080483
+    last_status_change: 2026-06-06 12:14:20-06:00
+    codex_session: 019e9de7-8d7a-7991-b132-b1ff261303d6
+    codex_log_paths:
+    - redteam/pass2/codex_logs/118_iter1.txt
+    last_codex_run: 2026-06-06 11:08:55-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:26:23-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:26:32-06:00
   '119':
     stage: 119
     stage_str: '119'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4137,11 +4167,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage119_parent_balance_mathematica_audit.txt
         exists: true
         mtime: 1780079773
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:26:36-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:26:43-06:00
+    last_status_change: 2026-06-06 12:14:23-06:00
   '120':
     stage: 120
     stage_str: '120'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4162,11 +4197,12 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-06 12:14:27-06:00
   '121':
     stage: 121
     stage_str: '121'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4191,11 +4227,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage121_geometric_r_selection_mathematica_audit.txt
         exists: true
         mtime: 1780351539
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:26:47-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:26:55-06:00
+    last_status_change: 2026-06-06 12:14:30-06:00
   '122':
     stage: 122
     stage_str: '122'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4220,11 +4261,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage122_mouth_source_compensation_test_mathematica_audit.txt
         exists: true
         mtime: 1780351546
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:26:59-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:27:08-06:00
+    last_status_change: 2026-06-06 12:14:34-06:00
   '123':
     stage: 123
     stage_str: '123'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4249,11 +4295,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage123_parent_normalized_branch_values_mathematica_audit.txt
         exists: true
         mtime: 1780351566
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:27:11-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:27:32-06:00
+    last_status_change: 2026-06-06 12:14:37-06:00
   '124':
     stage: 124
     stage_str: '124'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4274,11 +4325,12 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-06 12:14:40-06:00
   '125':
     stage: 125
     stage_str: '125'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4303,11 +4355,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage125_positive_source_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780090018
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:27:42-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:28:55-06:00
+    last_status_change: 2026-06-06 12:14:44-06:00
   '126':
     stage: 126
     stage_str: '126'
     batch_id: IV.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4332,6 +4389,11 @@ stages:
         path: mathematica/output/moving_throat_pde_stage126_positive_source_families_mathematica_audit.txt
         exists: true
         mtime: 1780090033
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 11:28:59-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 11:29:08-06:00
+    last_status_change: 2026-06-06 12:14:47-06:00
   '127':
     stage: 127
     stage_str: '127'

@@ -792,3 +792,62 @@ stale first-pass review artifact whose body reviews **Stage 035, not 103** (flag
 audit agent; not a script-audit item) — logged as a residual in `PAPER_CLEANUP_TRACKER.md` (P5-11)
 to clean later. Numbering CROSS-refs: none new beyond the correct 106→105 carry-in. Reference
 memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.3 (2026-06-06)
+
+Pass-2 Batch IV.3 (115-126, `Part IV.3 — Core balance, DtN mixed, outlet, positive source`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+12/12 verified, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0 blocked,
+0 Codex deviations, all iter-1 exit 0. **108 deliverable values checked batch-wide, 1 MISALIGNED
+(resolved — the r_F1 appendix surd below), 0 MISSING-DELIVERABLE** (per stage: 115=9, 116=9, 117=16,
+118=15, 119=6, 120=6, 121=7, 122=12, 123=6, 124=7, 125=6, 126=9). **NO checkpoints in range; NO
+EM-projected stages in range; no new postulated constant.** **120 & 124 are legitimately status-only
+by design** (notes-only, both engines null, like 103/113) — no coverage count moved (the 10
+dual-engine stages stay verified+dual-engine; 120/124 stay status-only). No downstream staling.
+
+**Published-paper value typo RESOLVED (Codex-applied out-of-band, Claude-reviewed):** the Family-1
+radius surd `r_F1` was published with a `117π²` typo (`√(4107−117π²)`→`√(4107−100π²)` in
+`paper/appendices/stage_appendix_part04.tex:562` + `paper/parts/part04_geometry_retarded_mouth.tex:576`);
+`100π²` is arithmetically forced and matches every script/note; flagged by 122 F1 / 123 F1; the
+SCRIPTS were always correct → 121/122/123 are script-clean. Pass-2 caught a published-paper arithmetic
+typo the first pass MISSED.
+
+**2 script-side findings → fixed → verified (both `material_change: false`):**
+- **117 — F1 `mathematica_transliteration` → FULL re-author:** the orchestrator ground-truth
+  `.wl`-vs-`.py` read found the `.wl` was a full line-by-line `Series[]`-based transliteration across
+  ALL SIX sections (the audit agent scoped the directive to §5; the orchestrator broadened it).
+  USER-AUTHORIZED re-author to an independent route — §1–§4 via an undetermined-coefficient
+  `jetFromBalance` solve (`den·Y−num==0` order-by-order, NO `Series[ratio]` survives), §5 via an
+  explicit 2×2 `coreMatrix` `Solve`-elimination + Schur complement with a `coreSchurResidual===0`
+  guard (re-typed `sigmaC` literal GONE); only the permitted final §5 residual `Series` remains.
+  **117 GAINED a re-authored independent dual-engine `.wl`** (committed output byte-identical to HEAD,
+  method-only); added to the Independent-Mirror Set (see `MATHEMATICA_MIRROR_POLICY.md`).
+- **118 — F1 `tautological_check` → de-taut:** the "K_q closed form" check was X−X; `K_q`/`kQ` now
+  tied to the independently-computed gradient integral `chiGrad = ∫(χ')²dz` (asserted `=π²/(4 L_W²)`)
+  so the closed-form check is load-bearing; printed `K_q` value unchanged; both engines exit 0; `.wl`
+  stays independent.
+
+**121/122/123 retro-sweep `.wl` re-confirmed genuinely INDEPENDENT** (Reduce/Solve-with-branch-guard,
+all using the correct `100π²`; 123's negative `Xi_v(F1)≈−1.01675633282526` preserved). **8 script-side
+clean → verified:** 115, 116, 119, 121, 122, 123, 125, 126 (all dual-engine, independence confirmed).
+
+**Dual-engine / independence outcome:** 1 newly-independent `.wl` this batch (117 re-authored), 0
+sanctioned mirrors. All `.py`/`.wl` source diffs are strip-the-number identical to HEAD except the
+genuine re-author/de-taut additions on 117/118; no deliverable result value moved on any stage — so
+NO downstream staling. INFRA: 20 exec runs exit 0 (10 dual-engine × 2 engines; 120/124 have no
+scripts); `exec-*` refreshes `exec_logs/` not committed `output/*.txt` → the orchestrator
+sed-refreshed every committed `.txt` (117 + 118 + the 7 clean dual-engine MMA outputs byte-identical;
+**116 NORMALIZED** — refresh stripped a stray `# exit_code: 0` trailer a prior commit had baked into
+BOTH committed `.txt`, deliverables identical, NOT a math change; the historically-flaky 116 ran
+clean/deterministic). Arbiter grep on all 10 committed outputs = CLEAN of stale self-epoch (−17 band
+098–109) self-banners (only hit = 116's `gamma0_bare (upstream-carried input, Stage 98)` γ₀-provenance
+CROSS-ref → DEFERRED, content-keyed). Seat policy held: 117 + 118 = 2 `.wl`-touching Codex sessions
+(concurrent, at the 2-seat cap, flock-safe); the r_F1 paper fix = a separate out-of-band 0-seat Codex
+session.
+
+**Deferred (numbering pass; content-keyed, NEVER offset-sweep):** **⚠️ DISCOVERY** — `\stagefield{Purpose}`
+card self-labels drift +17 (117 "Stage 134", 119 "Stage 136", 120 "Stage 137", 124 "Stage 141"), a
+class the numbering reconciliation MISSED (its scan keyed on `\section`/`\label`, NOT
+`\stagefield{Purpose}`); 122/123 cards "Mathematica audit: none yet" status understatement; 121 `.wl`
+`stage99TubeLength`; 116 source "Stage 98" γ₀ cross-ref. **Ansatz catalog:** γ₀=(1+r_c)/9 re-confirmed
+a POSTULATED pure-scale ANSATZ (not derived). Reference memory `numbering-drift-root-cause`.

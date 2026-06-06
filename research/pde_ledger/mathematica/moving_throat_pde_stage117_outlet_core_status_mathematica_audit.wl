@@ -25,19 +25,29 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 117 — CONCRETE OUTLET-CORE STATUS"];
 
-Clear[z, s, beta, rho, sigma, kappa, gamma, ks, kq, lam, gs, gq, kappa0, gamma0, a, lW];
+Clear[z, s, beta, rho, sigma, kappa, gamma, ks, kq, lam, gs, gq, kappa0, gamma0, a, lW,
+  sCore, qCore, dSym, kappaSlot, gammaSlot, sigmaSlot];
 $Assumptions =
   Element[{z, s, beta, rho, sigma, kappa, gamma, gs, gq}, Reals] &&
-  Element[{ks, kq, lam, kappa0, gamma0, a, lW}, Reals] &&
+  Element[{ks, kq, lam, kappa0, gamma0, a, lW, dSym}, Reals] &&
   ks > 0 && kq > 0 && lam > 0 && kappa0 > 0 && gamma0 > 0 && a > 0 && lW > 0;
 
 lambdaOut = -3 + z^2/3 + z^4/9 + I z^5/9;
 
+jetFromBalance[tag_String, den_, num_] := Module[{jetVars, trial, equations, sol},
+  jetVars = Table[Unique["j"], {6}];
+  trial = Sum[jetVars[[k + 1]] z^k, {k, 0, 5}];
+  equations = Table[Coefficient[Expand[den trial - num], z, k] == 0, {k, 0, 5}];
+  sol = Solve[equations, jetVars];
+  If[Length[sol] =!= 1, fail[tag <> " coefficient solve", sol]];
+  FullSimplify[Table[jetVars[[k + 1]] /. First[sol], {k, 0, 5}], Assumptions -> $Assumptions]
+];
+
 banner["1. Harmless scale/argument class"];
-yArg = Normal[Series[(-3 s)/(s (lambdaOut /. z -> beta z)), {z, 0, 5}]];
-m2Arg = FullSimplify[Coefficient[yArg, z, 2]];
-m4Arg = FullSimplify[Coefficient[yArg, z, 4]];
-chiArg = FullSimplify[Coefficient[yArg, z, 5]/I/(1/27)];
+argJet = jetFromBalance["scale/argument", lambdaOut /. z -> beta z, -3];
+m2Arg = FullSimplify[argJet[[3]]];
+m4Arg = FullSimplify[argJet[[5]]];
+chiArg = FullSimplify[argJet[[6]]/I/(1/27)];
 betaSolutions = Solve[{m2Arg == 1/9, m4Arg == 4/81}, beta, Reals];
 Print["scale/argument solutions = ", fmt[betaSolutions]];
 If[Sort[beta /. betaSolutions] =!= {-1, 1}, fail["scale/argument branch roots", betaSolutions]];
@@ -45,26 +55,27 @@ expectZero["positive harmless branch has beta = 1 and chi_Q = 1", (chiArg /. bet
 
 banner["2. Pure Robin class"];
 lambdaR = lambdaOut + rho;
-yR = Normal[Series[(-3 + rho)/lambdaR, {z, 0, 5}]];
-c2R = FullSimplify[Coefficient[yR, z, 2]];
-c4R = FullSimplify[Coefficient[yR, z, 4]];
-chiR = FullSimplify[Coefficient[yR, z, 5]/I/(1/27)];
+robinJet = jetFromBalance["pure Robin", lambdaR, -3 + rho];
+c2R = FullSimplify[robinJet[[3]]];
+c4R = FullSimplify[robinJet[[5]]];
+chiR = FullSimplify[robinJet[[6]]/I/(1/27)];
 robinSolutions = Solve[{c2R == 1/9, c4R == 4/81}, rho, Reals];
 Print["pure Robin canonical-even solutions = ", fmt[robinSolutions]];
 If[robinSolutions =!= {{rho -> 0}}, fail["pure Robin branch", robinSolutions]];
 expectZero["pure Robin odd norm is trivial on rho = 0", (chiR /. rho -> 0) - 1];
 
 banner["3. Standalone mixed-pole class"];
-lambdaMix = Normal[Series[lambdaOut - sigma/(1 - kappa z^2 - I gamma z^5), {z, 0, 5}]];
-l0Mix = FullSimplify[Coefficient[lambdaMix, z, 0]];
-l2Mix = FullSimplify[Coefficient[lambdaMix, z, 2]];
-l4Mix = FullSimplify[Coefficient[lambdaMix, z, 4]];
-l5Mix = FullSimplify[Coefficient[lambdaMix, z, 5]/I];
-kappaMatch = FullSimplify[kappa /. First[Solve[-l2Mix/l0Mix == 1/9, kappa, Reals]]];
+poleDen = 1 - kappa z^2 - I gamma z^5;
+mixDenCleared = Expand[poleDen lambdaOut - sigma];
+mixNumCleared = Expand[(-3 - sigma) poleDen];
+mixJet = jetFromBalance["standalone mixed-pole", mixDenCleared, mixNumCleared];
+c2Mix = FullSimplify[mixJet[[3]]];
+c4Mix = FullSimplify[mixJet[[5]]];
+chiMix = FullSimplify[mixJet[[6]]/I/(1/27)];
+kappaMatch = FullSimplify[kappa /. First[Solve[c2Mix == 1/9, kappa, Reals]]];
 sigmaMatch = FullSimplify[
-  sigma /. First[Solve[((l2Mix^2/l0Mix^2 - l4Mix/l0Mix) /. kappa -> kappaMatch) == 4/81, sigma, Reals]]
+  sigma /. First[Solve[(c4Mix /. kappa -> kappaMatch) == 4/81, sigma, Reals]]
 ];
-chiMix = FullSimplify[(-l5Mix/l0Mix)/(1/27)];
 Print["standalone mixed-pole kappa match = ", fmt[kappaMatch]];
 Print["standalone mixed-pole sigma match = ", fmt[sigmaMatch]];
 expectZero["formal even-match forces kappa = -1/9", kappaMatch + 1/9];
@@ -72,26 +83,33 @@ expectZero["standalone mixed pole disappears on the canonical branch", sigmaMatc
 expectZero["odd norm is then trivial", (chiMix /. sigma -> 0) - 1];
 
 banner["4. Hybrid outlet class split"];
-lambdaHyb = Normal[Series[lambdaOut + rho - sigma/(1 - kappa z^2 - I gamma z^5), {z, 0, 5}]];
-l0Hyb = FullSimplify[Coefficient[lambdaHyb, z, 0]];
-l2Hyb = FullSimplify[Coefficient[lambdaHyb, z, 2]];
-l4Hyb = FullSimplify[Coefficient[lambdaHyb, z, 4]];
-l5Hyb = FullSimplify[Coefficient[lambdaHyb, z, 5]/I];
-hybridSolutions = Solve[{-l2Hyb/l0Hyb == 1/9, l2Hyb^2/l0Hyb^2 - l4Hyb/l0Hyb == 4/81}, {rho, kappa}, Reals];
+hybDenCleared = Expand[poleDen (lambdaOut + rho) - sigma];
+hybNumCleared = Expand[(-3 + rho - sigma) poleDen];
+hybJet = jetFromBalance["hybrid outlet", hybDenCleared, hybNumCleared];
+c2Hyb = FullSimplify[hybJet[[3]]];
+c4Hyb = FullSimplify[hybJet[[5]]];
+chiHyb = FullSimplify[hybJet[[6]]/I/(1/27)];
+hybridSolutions = Solve[{c2Hyb == 1/9, c4Hyb == 4/81}, {rho, kappa}, Reals];
 Print["hybrid canonical-even branches = ", fmt[hybridSolutions]];
 branchCancel = SelectFirst[hybridSolutions, (kappa /. #) === 0 &];
 branchComp = SelectFirst[hybridSolutions, FullSimplify[(kappa /. #) - 1/3] === 0 &];
-chiCancel = FullSimplify[((-l5Hyb/l0Hyb)/(1/27)) /. branchCancel];
-chiComp = FullSimplify[((-l5Hyb/l0Hyb)/(1/27)) /. branchComp];
+chiCancel = FullSimplify[chiHyb /. branchCancel];
+chiComp = FullSimplify[chiHyb /. branchComp];
+lambdaHybExact = lambdaOut + rho - sigma/poleDen;
 expectZero["hybrid cancellation branch odd norm", chiCancel - (1 - 9 sigma gamma)];
 expectZero[
   "hybrid cancellation branch is trivial when gamma = 0",
-  Normal[Series[(lambdaHyb /. branchCancel /. gamma -> 0) - lambdaOut, {z, 0, 5}]]
+  (lambdaHybExact /. branchCancel /. gamma -> 0) - lambdaOut
 ];
 expectZero["compensated branch odd norm", (chiComp /. gamma -> 1/9) - 1];
+compDen = 1 - z^2/3 - I z^5/9;
+compCollapseNumerator = Expand[
+  compDen ((lambdaHybExact /. branchComp /. gamma -> 1/9) - (1 - sigma) lambdaOut)
+];
+compCollapseJet = Sum[Coefficient[compCollapseNumerator, z, k] z^k, {k, 0, 5}];
 expectZero[
   "compensated branch collapses to a pure scale deformation",
-  Normal[Series[(lambdaHyb /. branchComp /. gamma -> 1/9) - (1 - sigma) lambdaOut, {z, 0, 5}]]
+  compCollapseJet
 ];
 
 banner["5. Concrete core realization of the compensated class"];
@@ -106,11 +124,40 @@ banner["5. Concrete core realization of the compensated class"];
      ("Bare outgoing normalization") and carried as a hardcoded input at
      Stages 115/116. gamma_c = 1/9 is thus a consistency-of-assumption check.
    The load-bearing check is the residual deltaCore - deltaCoreExpected at z^5. *)
-rC = FullSimplify[lam^2/(ks kq)];
-rhoC = FullSimplify[gs^2/ks];
-sigmaC = FullSimplify[(ks gq - lam gs)^2/(ks^2 kq (1 + rC))];
-kappaC = FullSimplify[kappa0/(1 + rC)];
-gammaC = FullSimplify[gamma0/(1 + rC)];
+dW = 1 - kappa0 z^2 - I gamma0 z^5;
+coreMatrix = {{ks, lam}, {lam, -kq dW}};
+coreSource = {gs, gq};
+coreSolution = First[Solve[Thread[coreMatrix . {sCore, qCore} == coreSource], {sCore, qCore}]];
+deltaCoreEliminated = FullSimplify[
+  Together[gs (sCore /. coreSolution) + gq (qCore /. coreSolution)],
+  Assumptions -> $Assumptions
+];
+
+coreMatrixD = {{ks, lam}, {lam, -kq dSym}};
+coreSolutionD = First[Solve[Thread[coreMatrixD . {sCore, qCore} == coreSource], {sCore, qCore}]];
+deltaCoreD = FullSimplify[
+  Together[gs (sCore /. coreSolutionD) + gq (qCore /. coreSolutionD)],
+  Assumptions -> $Assumptions
+];
+deltaDNum = Numerator[Together[deltaCoreD]];
+deltaDDen = Denominator[Together[deltaCoreD]];
+deltaDLead = Coefficient[deltaDDen, dSym, 1];
+rhoC = FullSimplify[Coefficient[deltaDNum, dSym, 1]/deltaDLead, Assumptions -> $Assumptions];
+rC = FullSimplify[deltaDDen/deltaDLead - dSym, Assumptions -> $Assumptions];
+sigmaTilde = FullSimplify[(rhoC - deltaCoreD) (dSym + rC), Assumptions -> $Assumptions];
+coreShape = FullSimplify[(dW + rC)/(1 + rC), Assumptions -> $Assumptions];
+shapeResidual = Expand[coreShape - (1 - kappaSlot z^2 - I gammaSlot z^5)];
+shapeSolution = First[Solve[
+  {Coefficient[shapeResidual, z, 2] == 0, Coefficient[shapeResidual, z, 5]/I == 0},
+  {kappaSlot, gammaSlot}
+]];
+kappaC = FullSimplify[kappaSlot /. shapeSolution, Assumptions -> $Assumptions];
+gammaC = FullSimplify[gammaSlot /. shapeSolution, Assumptions -> $Assumptions];
+sigmaSolution = First[Solve[sigmaSlot (1 + rC) == sigmaTilde, sigmaSlot]];
+sigmaC = FullSimplify[sigmaSlot /. sigmaSolution, Assumptions -> $Assumptions];
+coreSchurTarget = FullSimplify[rhoC - sigmaC/(1 - kappaC z^2 - I gammaC z^5), Assumptions -> $Assumptions];
+coreSchurResidual = FullSimplify[Together[deltaCoreEliminated - coreSchurTarget], Assumptions -> $Assumptions];
+If[!TrueQ[coreSchurResidual === 0], fail["core normalized Schur identity", coreSchurResidual]];
 gqSolutions = Solve[rhoC - 4 sigmaC == 0, gq, Reals];
 Print["core-balance surface branches = ", fmt[gqSolutions]];
 sigmaStar = FullSimplify[gs^2/(4 ks)];
@@ -131,12 +178,14 @@ Print["carrying forward (Stage 116): L_W = Pi a Sqrt[(1+r_c)/3]/2 -> kappa_0_bar
 Print["gamma_0_bare = (1+r_c)/9 is a pure-scale ANSATZ of the canonical l=2 branch (stage-116 note), not derived; gamma_c = 1/9 is a consistency-of-assumption check"];
 
 deltaCore = FullSimplify[
-  rhoC - sigmaC/(1 - kappaC z^2 - I gammaC z^5)
-] /. First[gqSolutions] /. {kappa0 -> kappa0FromTube, gamma0 -> (1 + rC)/9};
+  deltaCoreEliminated /. First[gqSolutions] /. {kappa0 -> kappa0FromTube, gamma0 -> (1 + rC)/9},
+  Assumptions -> $Assumptions
+];
 deltaCoreExpected = FullSimplify[4 sigmaStar - sigmaStar/(1 - z^2/3 - I z^5/9)];
+deltaCoreResidual = Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]];
 expectZero[
   "concrete core collapses to the compensated hybrid class",
-  Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]]
+  deltaCoreResidual
 ];
 
 banner["6. Classification capstone"];
@@ -161,7 +210,7 @@ nontrivialHybCancel = False;
 evenOkCompensated = TrueQ[FullSimplify[(kappa /. branchComp) - 1/3] === 0];
 oddOkCompensated = TrueQ[FullSimplify[(chiComp /. gamma -> 1/9) - 1] === 0];
 nontrivialCompensated = TrueQ[
-  Normal[Series[deltaCore - deltaCoreExpected, {z, 0, 5}]] === 0
+  deltaCoreResidual === 0
 ];
 
 classificationRows = {

@@ -467,7 +467,11 @@ Constants reviewed:
   derived in the audit as the Laplace-sphere eigenvalue `ell(ell+1)` at
   `ell = 2`
 - `1/4`
-  derived from the obstruction formula once `eps_2 = eps_4 = 0`
+  derived from the obstruction formula's general free-symbol form, then taken at
+  the static limit `eps_2 = eps_4 = 0` (red-team pass-2 batch IV.1, 2026-06-05,
+  de-tautologized SECTION II — the formula is now exercised with `eps_2`/`eps_4`
+  free + two can-fail off-static probes `1/2` and `1/16`, not only at the static
+  point; the value `1/4` did not move)
 - `3/4`
   derived as `1 - c_pole`
 - `4/3`
@@ -479,6 +483,14 @@ Audit note:
 
 - The script rechecks the isotropic `l=0 <-> l=2` decoupling directly instead
   of treating `eps_2 = eps_4 = 0` as a free status assertion.
+- Red-team pass-2 batch IV.1 (2026-06-05) re-verified at the higher checkpoint
+  bar with no tier shift: SECTION II's obstruction formula
+  `c_pole=(1+eps_4)/(4(1+eps_2)^2)` had been evaluated only at the degenerate
+  static point, so its eps-structure was never exercised; the fix adds the
+  free-symbol general formula + two can-fail off-static probes + the static limit
+  taken FROM the general formula. SECTION I (orthogonality / `ell(ell+1)=6`) was
+  already substantive and unchanged. `material_change: false`, no constant moved,
+  no new pinned constant.
 
 ### Stage 163
 
@@ -1085,3 +1097,28 @@ Family-1 threshold decimals as labeled CARRY-FORWARDS (source-anchored), matchin
 in-script derivation; its own substantive assertion `zeta_req = rho_alpha − 1` plus the
 branch-ordering inequalities introduce no new constant. No other provenance items; no
 carried checkpoint constant changed.
+
+## Pass 2 — Batch IV.1 (2026-06-05)
+
+Pass-2 Batch IV.1 (091-102): reviewed — NO checkpoint constant changed, and the ONE
+checkpoint in range (**096**, `geometry_lane_check_verdict`) pins **NO new numeric
+constant**. 99 deliverable values checked batch-wide, 0 misaligned; `material_change: false`
+on all 12; no new postulated constant introduced. **096** cleared the higher bar after
+de-tautologizing its SECTION II: the obstruction formula `c_pole=(1+eps_4)/(4(1+eps_2)^2)`
+(carried from Stage 092) had been evaluated only at the degenerate static point
+`eps_2=eps_4=0`, collapsing to literal `1/4`, so its eps-structure was never exercised. The
+fix makes `eps_2`/`eps_4` free symbols + adds the general formula + two CAN-FAIL off-static
+probes (`eps_4=1,eps_2=0 → 1/2`; `eps_2=1,eps_4=0 → 1/16`) + takes the static limit FROM the
+general formula. **The obstruction-formula deliverable values are PRESERVED, NOT moved or
+re-pinned** — `c_pole = 1/4` (now derived from the general formula at the static limit, not
+hardcoded at the static point), `c_geom = 3/4`, `rho_alpha = 4/3`, `zeta_req = 1/3`, and the
+`Yhat_Q^cons` closed form remain the same source-anchored constants logged in the Stage 096
+entry above; they are now exercised via off-static probes rather than only the static point.
+SECTION I (l=0⊥l=2 orthogonality, Laplace eigenvalue `6 = ell(ell+1)` at `ell=2`) was
+already substantive and unchanged. **Zero unexplained literals remain in checkpoint 096's
+scripts.** (For completeness: the non-checkpoint provenance-adjacent fixes this batch
+introduced no new constant either — 093 [status-only] and 094 got the same obstruction-formula
+de-taut [094's `K_g2`/`K_g4` now DERIVED from the proven-zero l=0↔l=2 overlap moments rather
+than bare literal 0]; 100's `.wl` de-transliteration [orchestrator override, user-authorized
+independent geometric-series route] moved no emitted value — committed Mathematica output
+byte-identical to HEAD, `chiQ` stays a free symbol.) No carried checkpoint constant changed.

@@ -42,6 +42,14 @@ expectZero["c_geom - 3/4", cGeom - 3/4];
 expectZero["rho_alpha - 4/3", rhoAlpha - 4/3];
 expectZero["zeta_req - 1/3", zetaReq - 1/3];
 
+ClearAll[e2, e4];
+cPoleGen = (1 + e4)/(4*(1 + e2)^2);
+expectZero["c_pole static-limit (symbolic)", (cPoleGen /. {e2 -> 0, e4 -> 0}) - 1/4];
+If[TrueQ[FullSimplify[cPoleGen - 1/4] === 0],
+  fail["c_pole spurious eps-independence", FullSimplify[cPoleGen - 1/4]],
+  pass["c_pole eps-dependent"]];
+expectZero["c_pole off-static probe (e2=1,e4=0)", (cPoleGen /. {e2 -> 1, e4 -> 0}) - 1/16];
+
 Print[""];
 Print["Stage 093 Mathematica audit passed."];
 

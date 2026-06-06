@@ -38,12 +38,21 @@ $Assumptions =
   gNewton > 0 && cLight > 0 && omegaQ > 0 && k0 > 0 && mHat0 > 0;
 
 sigmaCan = FullSimplify[(9/8)/omegaQ^5, Assumptions -> $Assumptions];
-yRet = 3/4 + (1/4)/(1 - omega^2/omegaQ^2 - I*chiQ*sigmaCan*omega^5);
-ySeries = Expand[Normal[Series[yRet, {omega, 0, 5}]]];
+u2Coeff = FullSimplify[1/omegaQ^2, Assumptions -> $Assumptions];
+u5Coeff = FullSimplify[I*chiQ*sigmaCan, Assumptions -> $Assumptions];
+uSquared4Coeff = FullSimplify[u2Coeff^2, Assumptions -> $Assumptions];
 
-k2 = FullSimplify[k0*Coefficient[ySeries, omega, 2], Assumptions -> $Assumptions];
-k4 = FullSimplify[k0*Coefficient[ySeries, omega, 4], Assumptions -> $Assumptions];
-gamma5 = FullSimplify[(Coefficient[ySeries, omega, 5]/I)*k0, Assumptions -> $Assumptions];
+(* Independent route: expand the pole as 1 + u + u^2 through omega^5, with
+   u = omega^2/omegaQ^2 + I chiQ sigmaCan omega^5. Higher powers start at
+   omega^6 or omega^7 and cannot affect K2, K4, or Gamma5. *)
+y2Coeff = FullSimplify[u2Coeff/4, Assumptions -> $Assumptions];
+y4Coeff = FullSimplify[uSquared4Coeff/4, Assumptions -> $Assumptions];
+y5Coeff = FullSimplify[u5Coeff/4, Assumptions -> $Assumptions];
+ySeries = Expand[1 + y2Coeff*omega^2 + y4Coeff*omega^4 + y5Coeff*omega^5];
+
+k2 = FullSimplify[k0*y2Coeff, Assumptions -> $Assumptions];
+k4 = FullSimplify[k0*y4Coeff, Assumptions -> $Assumptions];
+gamma5 = FullSimplify[(y5Coeff/I)*k0, Assumptions -> $Assumptions];
 
 k0Target = FullSimplify[64*gNewton*omegaQ^5/(45*cLight^5), Assumptions -> $Assumptions];
 k2Target = FullSimplify[k0Target/(4*omegaQ^2), Assumptions -> $Assumptions];

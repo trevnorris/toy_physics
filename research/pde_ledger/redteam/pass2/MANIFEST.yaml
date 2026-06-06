@@ -3192,7 +3192,7 @@ stages:
     stage: 91
     stage_str: 091
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3217,11 +3217,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_mathematica_audit.txt
         exists: true
         mtime: 1779913742
+    last_status_change: 2026-06-05 23:29:40-06:00
   092:
     stage: 92
     stage_str: 092
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3246,12 +3247,13 @@ stages:
         path: mathematica/output/moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.txt
         exists: true
         mtime: 1779913748
+    last_status_change: 2026-06-05 23:29:44-06:00
   093:
     stage: 93
     stage_str: 093
     batch_id: IV.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: true
@@ -3273,12 +3275,20 @@ stages:
         path: mathematica/output/moving_throat_pde_stage093_grouped_p2_status_update_mathematica_audit.txt
         exists: true
         mtime: 1779913753
+    last_status_change: 2026-06-05 23:29:31-06:00
+    codex_session: 019e9b56-8d78-7043-845d-9d92c6c2b132
+    codex_log_paths:
+    - redteam/pass2/codex_logs/093_iter1.txt
+    last_codex_run: 2026-06-05 23:11:35-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 23:18:42-06:00
   094:
     stage: 94
     stage_str: 094
     batch_id: IV.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3302,11 +3312,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage094_isotropic_geometry_decoupling_mathematica_audit.txt
         exists: true
         mtime: 1779913764
+    last_status_change: 2026-06-05 23:29:34-06:00
+    codex_session: 019e9b58-8145-71a1-8957-2a8dae8b8ca2
+    codex_log_paths:
+    - redteam/pass2/codex_logs/094_iter1.txt
+    last_codex_run: 2026-06-05 23:14:17-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 23:18:28-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 23:18:53-06:00
   095:
     stage: 95
     stage_str: 095
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3331,12 +3351,13 @@ stages:
         path: mathematica/output/moving_throat_pde_stage095_second_order_geometry_contamination_mathematica_audit.txt
         exists: true
         mtime: 1779913770
+    last_status_change: 2026-06-05 23:29:47-06:00
   096:
     stage: 96
     stage_str: 096
     batch_id: IV.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -3360,11 +3381,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage096_geometry_lane_check_verdict_mathematica_audit.txt
         exists: true
         mtime: 1779913825
+    last_status_change: 2026-06-05 23:29:37-06:00
+    codex_session: 019e9b5b-8d2c-78d0-876d-fc5da7347cd0
+    codex_log_paths:
+    - redteam/pass2/codex_logs/096_iter1.txt
+    last_codex_run: 2026-06-05 23:17:45-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 23:18:34-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 23:19:48-06:00
   097:
     stage: 97
     stage_str: 097
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3389,11 +3420,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage097_single_normalization_defect_mathematica_audit.txt
         exists: true
         mtime: 1779913831
+    last_status_change: 2026-06-05 23:29:50-06:00
   098:
     stage: 98
     stage_str: 098
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3418,11 +3450,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage098_family1_support_is_automatic_mathematica_audit.txt
         exists: true
         mtime: 1779913837
+    last_status_change: 2026-06-05 23:29:53-06:00
   099:
     stage: 99
     stage_str: 099
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3447,12 +3480,13 @@ stages:
         path: mathematica/output/moving_throat_pde_stage099_reduced_finish_line_mathematica_audit.txt
         exists: true
         mtime: 1779913844
+    last_status_change: 2026-06-05 23:29:57-06:00
   '100':
     stage: 100
     stage_str: '100'
     batch_id: IV.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3476,11 +3510,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage100_outgoing_normalization_factorization_mathematica_audit.txt
         exists: true
         mtime: 1779913849
+    last_status_change: 2026-06-05 23:45:40-06:00
+    codex_session: 019e9b6f-feb6-7da1-bbcc-483ec09eb26e
+    codex_log_paths:
+    - redteam/pass2/codex_logs/100_iter1.txt
+    last_codex_run: 2026-06-05 23:40:07-06:00
+    last_codex_exit: 0
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 23:41:08-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 23:41:11-06:00
   '101':
     stage: 101
     stage_str: '101'
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3505,11 +3549,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage101_natural_source_map_reduction_mathematica_audit.txt
         exists: true
         mtime: 1779913855
+    last_status_change: 2026-06-05 23:30:00-06:00
   '102':
     stage: 102
     stage_str: '102'
     batch_id: IV.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3534,6 +3579,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage102_higher_odd_irrelevance_mathematica_audit.txt
         exists: true
         mtime: 1779913861
+    last_status_change: 2026-06-05 23:30:03-06:00
   '103':
     stage: 103
     stage_str: '103'

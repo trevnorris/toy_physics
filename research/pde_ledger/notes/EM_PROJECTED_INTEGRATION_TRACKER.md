@@ -388,3 +388,18 @@ touch no EM-projected identity; the two checkpoints in range (089, 090) cleared 
 higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4
 + III.5 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-090) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.1 (2026-06-05)
+
+Pass-2 Batch IV.1 (091-102, `Part IV.1 — Grouped P_2 geometry, decoupling,
+contamination`) re-verified at v2 depth + value-reconciliation augmentation; 12/12
+verified, `material_change: false` on all 12. **NO EM-projected stages in range → no
+change** — IV.1 is the grouped-P_2 geometry / isotropic-decoupling / contamination band,
+downstream of and outside the projected-Maxwell core (004-021). No projected-EM identity
+was touched: no EM result moved. The script-side fixes (093/094/096 obstruction-formula
+de-tautologizations + can-fail off-static probes, 100's `.wl` de-transliteration to an
+independent geometric-series route via the orchestrator override) are all confined to the
+IV.1 band and touch no EM-projected identity; the one checkpoint in range (096) cleared the
+higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 +
+III.5 + IV.1 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-102) remains
+paper-aligned under the second pass.

@@ -85,12 +85,23 @@ for name, Y2m in grouped_real_p2.items():
 
 # On the isotropic branch, the exact l=0 / l=2 block diagonal structure kills
 # the geometry contamination numbers.
-eps_2 = sp.Integer(0)
-eps_4 = sp.Integer(0)
-print("eps_2 =", eps_2)
-print("eps_4 =", eps_4)
+eps_2, eps_4 = sp.symbols("eps_2 eps_4", real=True)
+c_pole_gen = (1 + eps_4) / (4 * (1 + eps_2) ** 2)
+expect_zero(
+    "c_pole|eps_4=1,eps_2=0 - 1/2",
+    c_pole_gen.subs({eps_2: 0, eps_4: 1}) - sp.Rational(1, 2),
+)
+expect_zero(
+    "c_pole|eps_2=1,eps_4=0 - 1/16",
+    c_pole_gen.subs({eps_2: 1, eps_4: 0}) - sp.Rational(1, 16),
+)
 
-c_pole = sp.simplify((1 + eps_4) / (4 * (1 + eps_2) ** 2))
+eps_2_val = sp.Integer(0)
+eps_4_val = sp.Integer(0)
+print("eps_2 =", eps_2_val)
+print("eps_4 =", eps_4_val)
+
+c_pole = sp.simplify(c_pole_gen.subs({eps_2: eps_2_val, eps_4: eps_4_val}))
 c_geom = sp.simplify(1 - c_pole)
 Yhat_cons = sp.simplify(c_geom + c_pole / (1 - omega**2 / Omega_Q**2))
 Yhat_expected = sp.simplify(

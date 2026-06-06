@@ -70,10 +70,18 @@ PASS: <grad Y00 . grad Y22s>
 PASS: <Y00|(-Delta)Y22s>
 Generic isotropic cross coefficient C_0,22s = 0
 PASS: Generic isotropic cross coefficient C_0,22s
+K_(g,2) overlap moment = 0
+PASS: K_(g,2) overlap moment
+K_(g,4) overlap moment = 0
+PASS: K_(g,4) overlap moment
 eps_2 (static limit) = 0
 PASS: eps_2 (static limit)
 eps_4 (static limit) = 0
 PASS: eps_4 (static limit)
+c_pole - 1/4 = 0
+PASS: c_pole - 1/4
+c_geom - 3/4 = 0
+PASS: c_geom - 3/4
 c_pole + c_geom - 1 = 0
 PASS: c_pole + c_geom - 1
 eps_2 = 0; eps_4 = 0; c_pole = 1/4; c_geom = 3/4

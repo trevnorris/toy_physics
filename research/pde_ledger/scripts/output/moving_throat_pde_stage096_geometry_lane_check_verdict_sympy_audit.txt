@@ -32,6 +32,8 @@ STAGE 096 — GEOMETRY-LANE CHECK VERDICT
 <Y00|Y22s> = 0
 (-Delta)Y22s - 6Y22s = 0
 <Y00|(-Delta)Y22s> = 0
+c_pole|eps_4=1,eps_2=0 - 1/2 = 0
+c_pole|eps_2=1,eps_4=0 - 1/16 = 0
 eps_2 = 0
 eps_4 = 0
 c_pole = 1/4

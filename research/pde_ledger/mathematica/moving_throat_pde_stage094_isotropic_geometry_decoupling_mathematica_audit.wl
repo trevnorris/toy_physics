@@ -45,6 +45,8 @@ y21s = Sqrt[15/(4*Pi)]*Sin[th]*Cos[th]*Sin[ph];
 y22c = Sqrt[15/(16*Pi)]*Sin[th]^2*Cos[2*ph];
 y22s = Sqrt[15/(16*Pi)]*Sin[th]^2*Sin[2*ph];
 y2List = {"20" -> y20, "21c" -> y21c, "21s" -> y21s, "22c" -> y22c, "22s" -> y22s};
+kg2Overlap = 0;
+kg4Overlap = 0;
 
 Print["Y00 normalization = ", fmt[dOmega[y00^2]]];
 expectZero["Y00 normalization - 1", dOmega[y00^2] - 1];
@@ -57,6 +59,8 @@ Do[
   lapResidual = FullSimplify[-lapS2[y] - 6*y, Assumptions -> $Assumptions];
   gradCross = FullSimplify[D[y00, th] D[y, th] + (1/Sin[th]^2) D[y00, ph] D[y, ph], Assumptions -> $Assumptions];
   lapCross = dOmega[y00*(-lapS2[y])];
+  kg2Overlap = kg2Overlap + overlap;
+  kg4Overlap = kg4Overlap + lapCross;
   cCross = FullSimplify[mu*overlap - tw*overlap - tOm*lapCross - kPot*overlap, Assumptions -> $Assumptions];
   Print["Y" <> label <> " normalization = ", fmt[norm]];
   expectZero["Y" <> label <> " normalization - 1", norm - 1];
@@ -70,8 +74,12 @@ Do[
 
 (* Static-limit check (paper Check #1): with K_(g,2) = K_(g,4) = 0 from
    orthogonality, the contamination numbers vanish and 3/4 + 1/4 split holds. *)
-Kg2 = 0;
-Kg4 = 0;
+(* K_(g,2), K_(g,4) carry the accumulated l=0 <-> l=2 overlap moments from the
+   explicit S^2 integrals above; 0 BECAUSE those integrals vanished. *)
+Kg2 = FullSimplify[kg2Overlap, Assumptions -> $Assumptions];
+Kg4 = FullSimplify[kg4Overlap, Assumptions -> $Assumptions];
+expectZero["K_(g,2) overlap moment", Kg2];
+expectZero["K_(g,4) overlap moment", Kg4];
 OmegaQ = Symbol["OmegaQ"];
 Kpole = Symbol["Kpole"];
 eps2 = OmegaQ^2 * Kg2 / Kpole;
@@ -80,6 +88,8 @@ cPoleStatic = 1/4;
 cGeomStatic = 3/4;
 expectZero["eps_2 (static limit)", eps2];
 expectZero["eps_4 (static limit)", eps4];
+expectZero["c_pole - 1/4", cPoleStatic - 1/4];
+expectZero["c_geom - 3/4", cGeomStatic - 3/4];
 expectZero["c_pole + c_geom - 1", cPoleStatic + cGeomStatic - 1];
 Print["eps_2 = ", fmt[eps2], "; eps_4 = ", fmt[eps4],
       "; c_pole = ", fmt[cPoleStatic], "; c_geom = ", fmt[cGeomStatic]];

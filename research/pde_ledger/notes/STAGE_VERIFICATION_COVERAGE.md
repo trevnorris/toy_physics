@@ -664,3 +664,61 @@ provenance-tracker `Stage 73` (out of audit scope) — left UNTOUCHED and deferr
 `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
 offset-sweep). (088's `stage085` refs are correct — no defer.) Reference memory
 `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.1 (2026-06-05)
+
+Pass-2 Batch IV.1 (091-102, `Part IV.1 — Grouped P_2 geometry, decoupling, contamination`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation
+augmentation; 12/12 verified, `material_change: false` on all 12, 0 stop-cold, 0 blocked,
+all iter-1 exit 0. Every emitted deliverable value reconciles — **99 values checked
+batch-wide, 0 MISALIGNED, 0 MISSING-DELIVERABLE** (per stage: 091=8, 092=13, 093=5, 094=10,
+095=6, 096=6, 097=11, 098=8, 099=7, 100=12, 101=6, 102=5). **ONE checkpoint in range (096)
+— cleared the higher bar; NO EM-projected stages in range; NO genuine `paper_misalignment`
+anywhere → ZERO paper/notes edits; NO new postulated constant.** **093 is status-only /
+Mathematica-only by design** (`is_status_only_candidate`; the absent SymPy is not a finding).
+No coverage count moved (all 12 already verified+dual-engine from pass 1).
+
+**4 real script-side findings → fixed → verified:**
+- **096 — F1 `insufficient_verification` (CHECKPOINT, higher bar):** SECTION II evaluated
+  the carried Stage-092 obstruction formula `c_pole=(1+eps_4)/(4(1+eps_2)^2)` ONLY at the
+  degenerate static point `eps_2=eps_4=0`, so its eps-structure was never exercised. Fix
+  (both engines): `eps_2`/`eps_4` free symbols + general formula + two CAN-FAIL off-static
+  probes (`eps_4=1,eps_2=0 → 1/2`; `eps_2=1,eps_4=0 → 1/16`, both ≠ 1/4) + the static limit
+  taken FROM the general formula. SECTION I (l=0⊥l=2 orthogonality, Laplace eigenvalue
+  ℓ(ℓ+1)=6) was already substantive, unchanged. All deliverables (1/4, 3/4, 4/3, 1/3, Yhat)
+  preserved. Cleared the checkpoint higher bar.
+- **093 — F1 `insufficient_verification` (status-only, Mathematica-only):** the SAME
+  obstruction-formula de-taut — a symbolic-eps anchor block added to the `.wl`; original four
+  deliverable checks byte-identical; stays single-engine by design.
+- **094 — F1 `tautological_check` (both engines):** `K_g2`/`K_g4` were bare literal 0 (the
+  comment falsely claimed "established by orthogonality"); now the ACCUMULATED (proven-zero)
+  l=0↔l=2 overlap moments with can-fail asserts + `c_pole`/`c_geom` pinned individually.
+- **100 — F1 `mathematica_transliteration` ⭐ ORCHESTRATOR OVERRIDE (clean→findings):** the
+  audit agent called 100 clean on `sp.im(...)` vs `.../I`; the orchestrator's ground-truth
+  read OVERTURNED that (the `.wl` was a line-by-line port of the `.py` — same `Series[]`/
+  `series()` black box on the same rational `Y`, same coefficient extraction). Per the
+  dual-engine rule (user-level call) the **user AUTHORIZED the independent-route rewrite
+  2026-06-05** (pass-1 had declined it → `blocked_legitimate`). Codex re-derived `K2`/`K4`/
+  `Gamma5` via an INDEPENDENT analytic geometric-series expansion (`1+u+u²` through ω⁵,
+  hand-collected order coefficients, NO `Series[yRet,…]` on the full rational); verifier
+  confirmed genuine independence, all 4 deliverables still pass via can-fail checks, `chiQ`
+  stays a free symbol. **Committed Mathematica output BYTE-IDENTICAL to HEAD** (method
+  changed, no emitted value did); `material_change: false`; reference SymPy `.py` untouched.
+  **100's `.wl` is now an INDEPENDENT engine** (see `MATHEMATICA_MIRROR_POLICY.md`).
+
+**8 clean → verified:** 091, 092, 095, 097, 098, 099, 101, 102.
+
+The recurring de-taut theme this batch — the obstruction-formula-evaluated-only-at-the-
+degenerate-point trap — hit 093/094/096 (sibling 092 was correctly CLEAN, already exercising
+the eps-dependence via the first-order expansion). All `.py`/`.wl` source diffs are
+strip-the-number identical to HEAD except the genuine math additions on 093/094/096 (de-taut
+removals + free-symbol general formula + can-fail off-static probes) and 100's `.wl`
+de-transliteration; no deliverable result value moved on any stage. INFRA: `exec-*` refreshes
+`exec_logs/` not committed `output/*.txt`; the orchestrator re-ran the 094/096/100 SymPy +
+093/094/096/100 Mathematica engines (all exit 0; 094 SymPy and BOTH 100 outputs
+byte-identical post-refresh), arbiter grep on all 12 committed outputs = CLEAN.
+
+Numbering CROSS-refs (to OTHER stages) deferred to `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`
+(PENDING — content-keyed, never offset-sweep): 095 notes legacy "Stage 74/75/77/78" narrative;
+096 docstring "Stage 092" vs notes "Stage-75" (source cross-ref, not a 096 self-label).
+Reference memory `numbering-drift-root-cause`.

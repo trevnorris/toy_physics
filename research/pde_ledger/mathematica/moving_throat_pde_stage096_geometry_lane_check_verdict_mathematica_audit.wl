@@ -54,9 +54,11 @@ Do[
   {pair, {{"20", y20}, {"21c", y21c}, {"21s", y21s}, {"22c", y22c}, {"22s", y22s}}}
 ];
 
-eps2 = 0;
-eps4 = 0;
-cPole = FullSimplify[(1 + eps4)/(4*(1 + eps2)^2)];
+cPoleGen = (1 + eps4)/(4*(1 + eps2)^2);
+expectZero["c_pole|eps4=1,eps2=0 - 1/2", (cPoleGen /. {eps2 -> 0, eps4 -> 1}) - 1/2];
+expectZero["c_pole|eps2=1,eps4=0 - 1/16", (cPoleGen /. {eps2 -> 1, eps4 -> 0}) - 1/16];
+
+cPole = FullSimplify[cPoleGen /. {eps2 -> 0, eps4 -> 0}];
 cGeom = FullSimplify[1 - cPole];
 rhoAlpha = FullSimplify[1/cGeom];
 zetaReq = FullSimplify[cPole/cGeom];
@@ -71,8 +73,8 @@ Print["Yhat_Q^cons(omega) = ", fmt[yhatCons]];
 Print["rho_alpha = ", fmt[rhoAlpha]];
 Print["zeta_req = ", fmt[zetaReq]];
 
-Print["eps2 = ", fmt[eps2]];
-Print["eps4 = ", fmt[eps4]];
+Print["eps2 = ", fmt[0]];
+Print["eps4 = ", fmt[0]];
 expectZero["c_pole - 1/4", cPole - 1/4];
 expectZero["c_geom - 3/4", cGeom - 3/4];
 expectZero["Yhat_Q^cons - [3/4 + (1/4)/(1 - omega^2/Omega_Q^2)]", yhatCons - yhatExpected];

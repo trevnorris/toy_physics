@@ -36,6 +36,10 @@ PASS: <Y00|Y22s>
 PASS: (-Delta)Y22s - 6 Y22s
 <Y00|(-Delta)Y22s> = 0
 PASS: <Y00|(-Delta)Y22s>
+c_pole|eps4=1,eps2=0 - 1/2 = 0
+PASS: c_pole|eps4=1,eps2=0 - 1/2
+c_pole|eps2=1,eps4=0 - 1/16 = 0
+PASS: c_pole|eps2=1,eps4=0 - 1/16
 
 ========================================================================================
 SECTION II — ISOTROPIC CONSERVATIVE CARRIER

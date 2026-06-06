@@ -257,7 +257,7 @@ Disposition: `ready for citation support`
 |---|---|---|
 | `051` | Exact symbolic product law, endpoint limits, threshold rewrite, and closed root solve; no open review findings. | None urgent. Add numerical stress only if this threshold is later used numerically. |
 | `069` | Exact reduced threshold-window and profile-penalty algebra; no open review findings. Red-team batch III.3 (2026-05-22) reverified end-to-end with no tier shift after replacing the `Cres2`/`Wfail_res`/`delta_fail` definitional identities with a parameterized `W_match` generator + monotonicity check (SymPy) and a `Cres2Prim` primitive + `Pres = 1/Cres2` derivation + `PresGap` via `Solve` (Mathematica); upstream `Pres`/`Wfail_match` carry-forward now carries an explicit provenance comment. | None urgent. |
-| `096` | Re-derives the isotropic `l=0 <-> l=2` decoupling and then evaluates the carried Stage 092 obstruction formula on the isotropic branch to recover the `3/4 + 1/4` conservative module. | None urgent. |
+| `096` | Re-derives the isotropic `l=0 <-> l=2` decoupling and then evaluates the carried Stage 092 obstruction formula on the isotropic branch to recover the `3/4 + 1/4` conservative module. Red-team pass-2 batch IV.1 (2026-06-05) re-verified end-to-end at the higher checkpoint bar with no tier shift after de-tautologizing SECTION II (the obstruction formula `c_pole=(1+eps_4)/(4(1+eps_2)^2)` had been evaluated only at the degenerate static point `eps_2=eps_4=0`, collapsing to literal `1/4`, so its eps-structure was never exercised) — fix adds the free-symbol general formula + two CAN-FAIL off-static probes (`eps_4=1,eps_2=0 → 1/2`; `eps_2=1,eps_4=0 → 1/16`, both ≠ 1/4) + the static limit taken FROM the general formula; SECTION I (l=0⊥l=2 orthogonality, Laplace eigenvalue ℓ(ℓ+1)=6, firewall decoupling) was already substantive and unchanged. `material_change: false`, NO new pinned numeric constant — the obstruction-formula deliverable values (1/4, 3/4, 4/3, 1/3, Yhat closed form) are PRESERVED, now exercised via off-static probes rather than only the static point. | None urgent. |
 | `003` | Exact Schur-complement replay, exact one-mode pole split, grouped real `P_2` isotropy/anomaly bookkeeping, independent Mathematica mirror (red-team batch I.1 patched a multi-line `lRed = ...` continuation defect that had captured only kinetic terms -- downstream results unaffected, flowed through `mMat/kMat/cMat/oMat`; red-team batch I.2 caught the same continuation-defect class at non-checkpoint stage 021 and patched it in iter 2), and now-runnable shared numerical stress. | None urgent. |
 | `022` | Exact grouped-`P_2` normalization bridge, explicit Stage-021 dictionary round-trip for `N0/N2/N4`, and independent Mathematica replay of the normalization-product solve; red-team batch I.2 (2026-05-21) reverified end-to-end with no material change after rewriting the Mathematica mirror Sections I/II/IV/V to `LinearSolve` + `SphericalHankelH1` (F1) and removing a tautological round-trip block (F2). | None urgent. |
 | `023` | Exact weighted-projector calculus, representative one-port reconstruction of `Z_n/N_n`, full grouped-bundle assembly, and isotropic prefactor laws. Matching Mathematica execution coverage exists, but the trust grade rests on the symbolic theorem path rather than mirror independence. Red-team batch I.2 (2026-05-21) reverified end-to-end with no material change after replacing a tautological additivity check on `grouped_parts` (F1), swapping two tautological substitutions for closed-form comparisons (F2/F3), and adding a numerical-substitution route plus direct small-z Bessel expansion to the Mathematica mirror (F4). | None urgent. Add numerical stress later only if the grouped-bundle checkpoint starts carrying quantitative downstream claims. |
@@ -474,3 +474,31 @@ is FORCED by the positive zero-bias margin, not pinned. Both 089 and 090 stay `s
 (For completeness: 6/6 re-verified, 59 deliverable values checked batch-wide, 0
 misaligned, `material_change: false` on all 6; the only `.wl` deviation was a sanctioned
 minimal `expectZero` helper-add on 089, verify-confirmed STILL INDEPENDENT.)
+
+## Pass 2 — Batch IV.1 (2026-06-05)
+
+Pass-2 Batch IV.1 (091-102): ONE checkpoint in range — **096**
+(`geometry_lane_check_verdict`) — re-verified at v2 depth + value-reconciliation
+augmentation, **clearing the higher checkpoint bar**; **no certified checkpoint constant
+moved**, no trust impact, NO new pinned numeric constant introduced. 096 had ONE finding —
+F1 `insufficient_verification` — de-tautologized (not deleted): its SECTION II evaluated
+the carried Stage-092 obstruction formula `c_pole=(1+eps_4)/(4(1+eps_2)^2)` ONLY at the
+degenerate static point `eps_2=eps_4=0` (collapsing to literal `1/4`), so the formula's
+eps-structure — the load-bearing object — was never exercised. Fix (both engines): `eps_2`/
+`eps_4` made free symbols + the general formula + two CAN-FAIL off-static probes (`eps_4=1,
+eps_2=0 → 1/2`; `eps_2=1,eps_4=0 → 1/16`; both ≠ 1/4, so a wrong power/factor/swap now
+FAILS) + the static limit taken FROM the general formula. SECTION I (l=0⊥l=2 orthogonality,
+Laplace eigenvalue ℓ(ℓ+1)=6, firewall decoupling) was already substantive and UNTOUCHED.
+All obstruction-formula deliverable values (1/4, 3/4, 4/3, 1/3, Yhat closed form) are
+PRESERVED — now exercised via off-static probes rather than only the static point. 096
+stays `strong`. (For completeness: 12/12 re-verified, 99 deliverable values checked
+batch-wide, 0 misaligned, `material_change: false` on all 12. The other findings are at
+NON-checkpoint stages: 093 [status-only, Mathematica-only by design] F1
+`insufficient_verification` got the SAME obstruction-formula de-taut [symbolic-eps anchor
+block added to the `.wl`]; 094 F1 `tautological_check` [`K_g2`/`K_g4` were bare literal 0,
+now DERIVED from the accumulated proven-zero l=0↔l=2 overlap moments + `c_pole`/`c_geom`
+asserted individually]; 100 F1 `mathematica_transliteration` — ⭐ ORCHESTRATOR OVERRIDE of
+the audit's clean verdict — the user-authorized independent geometric-series rewrite of the
+`.wl` [no constant moved, committed Mathematica output byte-identical to HEAD], NOT a
+checkpoint. 8 clean: 091, 092, 095, 097, 098, 099, 101, 102. The recurring de-taut theme —
+the obstruction-formula-evaluated-only-at-the-degenerate-point trap — hit 093/094/096.)

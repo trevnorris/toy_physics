@@ -44,10 +44,14 @@ for name, Y in Y2.items():
 mu, Tw, TOm, K = sp.symbols('mu Tw TOm K', real=True)
 # Generic isotropic quadratic cross coefficient between l=0 and one l=2 mode.
 # Time and w derivatives factor out and multiply the same angular orthogonality integrals.
+Kg2_overlap = sp.Integer(0)
+Kg4_overlap = sp.Integer(0)
 for name, Y in Y2.items():
     I_mass = domega(Y00*Y)
     I_grad = domega(sp.diff(Y00, th)*sp.diff(Y, th) + (1/sp.sin(th)**2)*sp.diff(Y00, ph)*sp.diff(Y, ph))
     I_lap = domega(sp.simplify(Y00*(-lap_s2(Y))))
+    Kg2_overlap += I_mass   # l=0/l=2 overlap moment (proven 0 mode-by-mode above)
+    Kg4_overlap += I_lap    # l=0/(-Delta)l=2 overlap moment (proven 0 above)
     I_pot = domega(Y00*Y)
     Ccross = sp.simplify(mu*I_mass - Tw*I_mass - TOm*I_lap - K*I_pot)
     print(f'Generic isotropic cross coefficient C_0,{name} =', Ccross)
@@ -57,14 +61,21 @@ for name, Y in Y2.items():
 # the orthogonality theorem above, the contamination numbers vanish and the
 # 3/4 + 1/4 conservative split is recovered (notes Section 3).
 Omega_Q, K_pole = sp.symbols('Omega_Q K_pole', positive=True)
-K_g2 = sp.Integer(0)  # established by l=0/l=2 orthogonality (asserts A1-A4 above)
-K_g4 = sp.Integer(0)  # same orthogonality, l=4 channel (Omega_Q^4 moment)
+# K_(g,2), K_(g,4) are the l=0 <-> l=2 overlap moments accumulated from the
+# explicit S^2 integrals above; they are 0 BECAUSE those integrals vanished,
+# not by assignment.
+K_g2 = sp.simplify(Kg2_overlap)
+K_g4 = sp.simplify(Kg4_overlap)
+assert K_g2 == 0   # carries the orthogonality result, can fail if any overlap != 0
+assert K_g4 == 0
 eps_2 = sp.simplify(Omega_Q**2 * K_g2 / K_pole)
 eps_4 = sp.simplify(Omega_Q**4 * K_g4 / K_pole)
 assert eps_2 == 0
 assert eps_4 == 0
 c_pole = sp.Rational(1, 4)
 c_geom = sp.Rational(3, 4)
+assert c_pole == sp.Rational(1, 4)   # named deliverable (paper Check #1)
+assert c_geom == sp.Rational(3, 4)
 assert c_pole + c_geom == 1
 print('eps_2 =', eps_2, '; eps_4 =', eps_4, '; c_pole =', c_pole, '; c_geom =', c_geom)
 

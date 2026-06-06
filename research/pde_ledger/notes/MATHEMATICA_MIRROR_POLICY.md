@@ -579,6 +579,19 @@ different verification structure from the SymPy side:
 - `090`
   acceptable as a narrow status-boundary replay because the checkpoint claim is
   itself an explicit carried-data verdict
+- `100`
+  red-team pass-2 batch IV.1 (2026-06-05) DE-TRANSLITERATED (the pass-1 `.wl` was a
+  line-by-line port of the `.py` — same `Series[]`/`series()` black box on the same
+  rational `Y`, same coefficient extraction, `sp.im` vs `/I` the same operation; the
+  orchestrator OVERRODE the audit agent's clean verdict, corroborating the first-pass
+  IV.1 dual-engine heads-up). USER-AUTHORIZED the independent-route rewrite 2026-06-05
+  (pass-1 had declined → `blocked_legitimate`): Codex re-derived `K2`/`K4`/`Gamma5` via
+  an INDEPENDENT analytic geometric-series expansion (`1+u+u²` through ω⁵, `u =
+  ω²/Ω² + i χ_Q σ_can ω⁵`, hand-collected order coefficients) with NO `Series[yRet,…]`
+  on the full rational; all four deliverables (M1–M4) still pass via can-fail checks,
+  `chiQ` stays a free symbol. Committed Mathematica output BYTE-IDENTICAL to HEAD
+  (method changed, no emitted value did); `material_change: false`; reference SymPy `.py`
+  untouched
 - `121`
   red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
   for geometric_r_selection: `r_geom` derived by `Solve`-ing the Stage-99 length law
@@ -1021,3 +1034,54 @@ byte-identical (docstring-only, non-printing change) — and sed-refreshed every
 transcript; the arbiter grep confirmed no stale self-epoch (NNN−17, 068-073 band) banner
 remains on any of the 6 (findings + clean), only canonical `STAGE 0{85..90}` banners +
 the canonical self paper-eq ref `app-stage089-Pe-zero`.
+
+## Pass 2 — Batch IV.1 (2026-06-05)
+
+Pass-2 Batch IV.1 (091-102, `Part IV.1 — Grouped P_2 geometry, decoupling,
+contamination`): all 12 already had both independent engines from pass 1. **Headline —
+100's `.wl` was DE-TRANSLITERATED to an INDEPENDENT geometric-expansion route
+(ORCHESTRATOR OVERRIDE of the audit agent's clean verdict).** The audit called 100 clean
+on the strength of `sp.im(...)` vs `.../I`; the orchestrator's ground-truth read of both
+files (corroborating the first-pass IV.1 heads-up that flagged 100 as the standout
+dual-engine gap) OVERTURNED that — the `.wl` was a line-by-line port of the `.py`
+(identical `sigma_can`, identical rational `Y`, the same `Series[]`/`series()` black box
+on the same expression, the same coefficient extraction; `sp.im` vs `/I` is the same
+operation). Per [[feedback-dual-engine-required]] (user-level call) the **user AUTHORIZED
+the independent-route rewrite 2026-06-05** (pass-1 had declined it → `blocked_legitimate`).
+Orchestrator authored the directive (requirement + acceptance criteria; Codex designs the
+route per [[feedback-claude-reviews-codex-codes]]); Codex re-derived `K2`/`K4`/`Gamma5`
+via an INDEPENDENT analytic geometric-series expansion (`1+u+u²` through ω⁵, `u =
+ω²/Ω² + i χ_Q σ_can ω⁵`, hand-collected order coefficients), with NO `Series[yRet,…]` on
+the full rational. Verifier confirmed genuine independence + all four deliverables
+(`K2/K2_t=NQ`, `K4/K4_t=NQ`, `Gamma5/Gamma5_t=chiQ·NQ`, closure `mhat0²·chiQ·NQ=1`) still
+pass via can-fail checks; `chiQ` stays a free symbol. **Committed Mathematica output
+BYTE-IDENTICAL to HEAD** — method changed, no emitted value did; `material_change: false`;
+reference SymPy `.py` untouched. **100 is ADDED to the Current Independent-Mirror Set
+above.**
+
+Three more `.wl`-touching stages were STRENGTHENED (de-taut additions) and re-confirmed
+INDEPENDENT — neither became a mirror; no new `.wl` built besides 100's rewrite, 0
+sanctioned mirrors:
+- **093** (status-only, Mathematica-only by design) — F1 `insufficient_verification`: the
+  same obstruction-formula de-taut, a symbolic-eps anchor block added to the `.wl`
+  (fresh `e2/e4` symbols, symbolic static-limit, can-fail eps-dependence guard, off-static
+  probe). Original four deliverable checks (1/4, 3/4, 4/3, 1/3) byte-identical; stays
+  independent (no SymPy by design — absent SymPy not a finding).
+- **094** — F1 `tautological_check`: `K_g2`/`K_g4` were bare literal 0 in both engines;
+  now DERIVED from the accumulated (proven-zero) l=0↔l=2 overlap moments + `c_pole`/`c_geom`
+  asserted individually (both engines). `.wl` strengthened, stays independent.
+- **096** (CHECKPOINT — higher bar) — F1 `insufficient_verification`: SECTION II hardcoded
+  `eps_2=eps_4=0`; fix adds free-symbol general formula + two CAN-FAIL off-static probes
+  (1/2 and 1/16) + the static limit taken FROM the general formula (both engines). SECTION I
+  (l=0⊥l=2 orthogonality, Laplace eigenvalue ℓ(ℓ+1)=6) was already substantive, unchanged.
+  `.wl` strengthened, stays independent.
+
+8 clean (091, 092, 095, 097, 098, 099, 101, 102 — each adversarially attacked, genuinely
+independent `.wl` routes held up). `material_change: false` on all 12. NO sanctioned
+mirrors anywhere in IV.1. The orchestrator override earned its keep — 100's transliteration
+would have slipped through on the audit agent's clean verdict (the audit agents continue to
+under-call independence, as in prior batches; orchestrator ground-truth read + arbiter grep
+are the backstop). INFRA: `exec-*` refreshes `exec_logs/` not committed `output/*.txt`; the
+orchestrator re-ran the 094/096/100 SymPy + 093/094/096/100 Mathematica engines (all exit 0;
+094 SymPy and BOTH 100 outputs byte-identical post-refresh), arbiter grep on all 12 committed
+outputs = CLEAN.

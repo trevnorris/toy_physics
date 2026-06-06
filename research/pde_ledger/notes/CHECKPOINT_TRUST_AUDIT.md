@@ -438,3 +438,39 @@ checks and added external-literal numeric anchors, 081 added a full closed-form
 identity assert, 077 dropped a latent `positive=True` symbol trap, 074 fixed a
 docstring self-label + output refresh, 076 was an output-banner refresh — all add or
 strengthen assertions over already-correct values and move no result.)
+
+## Pass 2 — Batch III.5 (2026-06-05)
+
+Pass-2 Batch III.5 (085-090): TWO checkpoints in range — **089** and **090** —
+**BOTH cleared the higher checkpoint bar** at v2 depth + value-reconciliation
+augmentation; **no certified checkpoint constant moved**, no trust impact, no new
+checkpoint constant introduced. **090** (updated reduced status) = **clean** — cleared
+the higher bar via a substantive own-assertion `zeta_req = rho_alpha − 1` plus
+branch-ordering inequalities; no findings. **089** (final verdict / `Pe_req = 0`) had
+**two `tautological_check` findings, BOTH de-tautologized (not deleted)**:
+- **F1** — `Q` was baked with `eps_blk = 0` so `Q ≡ 1 + zeta` and
+  `expect_zero(Q − (1 + zeta))` was a pure X−X self-cancel. Fix: made `eps_blk`
+  symbolic, introduced the general `Q_gen = (1+(1−2 eps_blk) zeta)/(1 − eps_blk zeta)`,
+  and asserted the `eps→0` reduction on the GENERAL form in BOTH engines (the SymPy
+  `Q_gen.subs(eps_blk,0) − (1+zeta)` + a parallel `.wl` `expectZero` reduction assert);
+  a structural transcription error in `Q` now FAILS. Downstream `rho_*` byte-identical.
+- **F2** — the boxed `Pe_req = 0` Output was verified by a literal checked against
+  itself (`0==0`). Fix: removed the self-check, replaced with a CAN-FAIL positivity
+  assertion on the zero-bias success margin `zeta_F1(0) − zeta_min` (= A_F1 − 1/3 ≈
+  0.6667, the quantity that FORCES `Pe_req=0`), then constructed/printed `Pe_req = 0`
+  as the consequence. ⭐ ORCHESTRATOR FALSE-POSITIVE/SAFETY GUARD: the audit's drafted
+  `sp.Piecewise((0,cond),(sp.nan,True)) → expect_zero` gate was FRAGILE (a failed
+  precondition passes SILENTLY since `abs(complex(sp.nan)) > tol` is False) → the
+  orchestrator rewrote the directive to the explicit-raise margin form; Codex applied
+  it correctly (explicit `raise`/`fail`, not the silent-nan gate).
+
+After the fixes 089 carries no remaining named tautology, both engines carry
+substantive non-tautological assertions that agree to displayed precision, and paper
+alignment is exact (the boxed `Pe_req = 0` Output line retained). 089's `A_F1`
+(=1.000051928802195…) and the `rho_suff/fail/max` thresholds are derived/carried with
+provenance (the Mathematica side independently re-derives the upstream `Pe` via
+`FindRoot` — a robust route, NOT the latent `nsolve`-near-`tan` pitfall #10); `Pe_req=0`
+is FORCED by the positive zero-bias margin, not pinned. Both 089 and 090 stay `strong`.
+(For completeness: 6/6 re-verified, 59 deliverable values checked batch-wide, 0
+misaligned, `material_change: false` on all 6; the only `.wl` deviation was a sanctioned
+minimal `expectZero` helper-add on 089, verify-confirmed STILL INDEPENDENT.)

@@ -373,3 +373,18 @@ refresh) are all confined to the III.4 Family-1 band and touch no EM-projected
 identity; no checkpoint in range. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 +
 III.4 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-084) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch III.5 (2026-06-05)
+
+Pass-2 Batch III.5 (085-090, `Part III.5 — Quadrupole cancellation, loading ratio,
+verdict`) re-verified at v2 depth + value-reconciliation augmentation; 6/6 verified,
+`material_change: false` on all 6. **NO EM-projected stages in range** — III.5 is the
+quadrupole-cancellation / loading-ratio / verdict band, downstream of and outside the
+projected-Maxwell core (004-021). **No change** to the EM-projected ledger: nothing to
+integrate. No projected-EM identity was touched: no EM result moved. The script-side
+fixes (087 + 089 de-tautologizations + can-fail anchors, 088 docstring self-label, the
+sanctioned 089 `.wl` `expectZero` helper-add) are all confined to the III.5 band and
+touch no EM-projected identity; the two checkpoints in range (089, 090) cleared the
+higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4
++ III.5 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-090) remains
+paper-aligned under the second pass.

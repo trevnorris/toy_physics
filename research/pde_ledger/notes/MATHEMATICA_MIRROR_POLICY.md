@@ -987,3 +987,37 @@ on all 12. INFRA NOTE (III.2/III.3 lesson re-confirmed): `exec-*` refreshes
 (11 SymPy + 12 Mathematica; 084 has no SymPy) all exit 0, and sed-refreshed every
 committed transcript; the arbiter grep confirmed no stale self-epoch (NNN−17) banner
 remains on any of the 12.
+
+## Pass 2 — Batch III.5 (2026-06-05)
+
+Pass-2 Batch III.5 (085-090, `Part III.5 — Quadrupole cancellation, loading ratio,
+verdict`): all 6 already had both independent engines from pass 1, and the re-audit
+re-confirmed genuine independence on every stage. **No new `.wl` built, 0 mirror
+reclassification, 0 sanctioned mirrors, no additions to the Independent-Mirror Set.**
+Two `.wl`-touching stages (087, 089) were EDITED only to de-tautologize / strengthen
+checks — neither became a mirror; both verify agents re-confirmed the `.wl` remains an
+independent engine:
+- **087** — the `.wl`'s rho self-comparisons (each `rho_suff/rho_fail/rho_max`
+  literal checked against the SAME re-typed literal, both sides moving together) were
+  REPLACED with can-fail ordering/gap checks (`rho_suff < rho_fail`, `rho_fail < rho_max`,
+  `0 < rho_max − rho_fail < 1e-6`), and the `zeta_*` numeric checks (wl:73-75) were
+  re-anchored to `rho_X − 1` so they genuinely test the `epsBlk→0` substitution of
+  `zetaReq` (previously self-referential against re-typed targets). Verify-confirmed
+  STILL INDEPENDENT, not a transliteration. The three literal VALUES unchanged.
+- **089** — its `.wl` GAINED an additive reduction assert
+  `expectZero["Q(zeta;0)=1+zeta reduction", q[zetaRed,0] − (1+zetaRed)]` to mirror the
+  SymPy general-form `eps→0` reduction for engine symmetry. **Sanctioned Codex helper-add
+  (NOT a transliteration):** the file lacked an `expectZero` helper (only
+  `expectTrue`/`expectApprox`), so Codex added a minimal one
+  (`FullSimplify[Together[Expand[expr]]]`, pass iff `=== 0`); verify-confirmed correct
+  and the `.wl` STILL INDEPENDENT. (089's F2 fix — the `Pe_req=0` self-check replaced by
+  the can-fail zero-bias-margin positivity assert — landed in both engines; see
+  CHECKPOINT_TRUST_AUDIT for the checkpoint detail.)
+
+`material_change=false` on all 6. INFRA NOTE (III.2/III.3/III.4 lesson re-confirmed):
+`exec-*` refreshes `exec_logs/` not the committed `output/*.txt`; the orchestrator re-ran
+all 12 engines (6 SymPy + 6 Mathematica) all exit 0 — 088's sympy + mma outputs
+byte-identical (docstring-only, non-printing change) — and sed-refreshed every committed
+transcript; the arbiter grep confirmed no stale self-epoch (NNN−17, 068-073 band) banner
+remains on any of the 6 (findings + clean), only canonical `STAGE 0{85..90}` banners +
+the canonical self paper-eq ref `app-stage089-Pe-zero`.

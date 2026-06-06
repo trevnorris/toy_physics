@@ -15,9 +15,9 @@ is performed and verified upstream in stages 081-086 (post-renumber):
 - scripts/moving_throat_pde_stage086_family1_loading_ratio_window_*  (Family-1 window)
 
 This script restates the unblocked one-ratio criterion `zeta_req(rho_alpha; 0) = rho_alpha - 1`
-as a downstream-consistency probe and cross-checks the Family-1 window
-literals against the upstream stage-086 quoted values to catch renumber
-or transcription drift.
+as a downstream-consistency probe and sanity-checks the Family-1 window
+literals carried from the Stage-086 notes via their ordering and
+constructive-ceiling gap.
 """
 
 from __future__ import annotations
@@ -66,13 +66,25 @@ print("zeta at success ratio =", zeta_suff)
 print("zeta at failure ratio =", zeta_fail)
 print("zeta at max ratio     =", zeta_max)
 
-# Cross-check the Family-1 ratio-window literals against the upstream
-# stage 086 quoted values to catch renumber/transcription drift. The rho_X
-# literals carried into this script ARE the upstream stage-086 values; if a
-# renumber or copy-edit shifts them, the upstream-anchored check below fails.
-expect_close("rho_suff^(chi) vs stage-086", rho_suff, sp.Float("3.46622291347846", 30), sp.Float("1e-13", 30))
-expect_close("rho_fail^(chi) vs stage-086", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-13", 30))
-expect_close("rho_max^(F1)   vs stage-086", rho_max,  sp.Float("3.46752922945601", 30), sp.Float("1e-13", 30))
+# The Family-1 ratio-window literals below are carried from the notes.
+# Their strict ordering and tight constructive-ceiling gap sanity-check
+# transcription of the three carried values.
+print("rho_suff^(chi) =", rho_suff)
+print("rho_fail^(chi) =", rho_fail)
+print("rho_max^(F1)   =", rho_max)
+rho_suff_before_fail = bool(rho_suff < rho_fail)
+rho_fail_before_max = bool(rho_fail < rho_max)
+rho_gap = sp.N(rho_max - rho_fail, 40)
+rho_gap_ok = bool(rho_gap > 0) and bool(rho_gap < sp.Float("1e-6"))
+print("rho_suff < rho_fail =", rho_suff_before_fail)
+if not rho_suff_before_fail:
+    raise AssertionError("rho_suff is not strictly below rho_fail")
+print("rho_fail < rho_max =", rho_fail_before_max)
+if not rho_fail_before_max:
+    raise AssertionError("rho_fail is not strictly below rho_max")
+print("0 < rho_max - rho_fail < 1e-6 =", rho_gap_ok, "; gap =", rho_gap)
+if not rho_gap_ok:
+    raise AssertionError("rho_max - rho_fail is not in the tight constructive-ceiling gap")
 
 print("\nFINAL LEDGER")
 print("The reduced explicit Family-1 theorem is completely equivalent to a one-number test:")

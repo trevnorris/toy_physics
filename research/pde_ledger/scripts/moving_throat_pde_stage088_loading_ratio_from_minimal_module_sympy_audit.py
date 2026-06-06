@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage71_loading_ratio_from_minimal_module_sympy_audit.py
+moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
 
-SymPy audit for Stage 71.
+SymPy audit for Stage 088.
 
 Checks:
 1. exact contact-plus-pole decomposition in terms of rho_alpha = alpha_req/alpha_mix;

@@ -2972,7 +2972,7 @@ stages:
     stage: 85
     stage_str: 085
     batch_id: III.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -2997,11 +2997,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage085_quadrupole_demand_cancellation_mathematica_audit.txt
         exists: true
         mtime: 1779899168
+    last_status_change: 2026-06-05 18:28:28-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 19:06:50-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 19:06:58-06:00
   086:
     stage: 86
     stage_str: 086
     batch_id: III.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3026,12 +3031,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage086_family1_loading_ratio_window_mathematica_audit.txt
         exists: true
         mtime: 1779899174
+    last_status_change: 2026-06-05 18:28:31-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 19:07:02-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 19:07:09-06:00
   087:
     stage: 87
     stage_str: 087
     batch_id: III.5
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 2
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3055,12 +3065,23 @@ stages:
         path: mathematica/output/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_mathematica_audit.txt
         exists: true
         mtime: 1779899180
+    last_status_change: 2026-06-05 18:24:42-06:00
+    codex_session: 019e9a40-98bf-70e0-8467-604c24960fe9
+    codex_log_paths:
+    - redteam/pass2/codex_logs/087_iter1.txt
+    - redteam/pass2/codex_logs/087_iter2.txt
+    last_codex_run: 2026-06-05 18:23:43-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 18:24:09-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 18:13:31-06:00
   088:
     stage: 88
     stage_str: 088
     batch_id: III.5
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3084,12 +3105,22 @@ stages:
         path: mathematica/output/moving_throat_pde_stage088_loading_ratio_from_minimal_module_mathematica_audit.txt
         exists: true
         mtime: 1779899619
+    last_status_change: 2026-06-05 18:24:45-06:00
+    codex_session: 019e9a40-997b-7f53-8b25-ca3b723f047e
+    codex_log_paths:
+    - redteam/pass2/codex_logs/088_iter1.txt
+    last_codex_run: 2026-06-05 18:07:40-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 18:12:27-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 18:13:39-06:00
   089:
     stage: 89
     stage_str: 089
     batch_id: III.5
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -3113,11 +3144,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_mathematica_audit.txt
         exists: true
         mtime: 1779899191
+    last_status_change: 2026-06-05 18:24:49-06:00
+    codex_session: 019e9a40-9b9a-7261-acf1-15a96026a0a6
+    codex_log_paths:
+    - redteam/pass2/codex_logs/089_iter1.txt
+    last_codex_run: 2026-06-05 18:09:07-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 18:12:31-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 18:13:48-06:00
   090:
     stage: 90
     stage_str: 090
     batch_id: III.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -3142,6 +3183,11 @@ stages:
         path: mathematica/output/moving_throat_pde_stage090_updated_reduced_status_mathematica_audit.txt
         exists: true
         mtime: 1779899197
+    last_status_change: 2026-06-05 18:28:35-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-05 19:07:13-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-05 19:07:21-06:00
   091:
     stage: 91
     stage_str: 091

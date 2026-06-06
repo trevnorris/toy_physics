@@ -8,20 +8,23 @@ d zeta_req exact formula = 0
 PASS: d zeta_req exact formula
 unblocked zeta_req = 0
 PASS: unblocked zeta_req
-rho_suff^(chi) vs stage-086 diff = 0.
-PASS: rho_suff^(chi) vs stage-086
-rho_fail^(chi) vs stage-086 diff = 0.
-PASS: rho_fail^(chi) vs stage-086
-rho_max^(F1)   vs stage-086 diff = 0.
-PASS: rho_max^(F1)   vs stage-086
+rho_suff^(chi) = 3.46622291347846`20.
+rho_fail^(chi) = 3.4675291327387`20.
+rho_max^(F1) = 3.46752922945601`20.
+rho_suff < rho_fail = True
+PASS: rho_suff < rho_fail
+rho_fail < rho_max = True
+PASS: rho_fail < rho_max
+0 < rho_max - rho_fail < 10^-6 = True; gap = 9.671731`12.144454088738614*^-8
+PASS: 0 < rho_max - rho_fail < 10^-6
 zeta at success ratio = 2.46622291347846`19.852175839591272
 zeta at failure ratio = 2.4675291327387`19.852242170322
 zeta at max ratio = 2.46752922945601`19.852242175231154
-zeta_suff numeric check diff = 1.21439184`3.5444898223690946*^-16
-PASS: zeta_suff numeric check
-zeta_fail numeric check diff = 1.0703173`3.4894799022210043*^-16
-PASS: zeta_fail numeric check
-zeta_max numeric check diff = 5.3667114`3.189675586252565*^-17
-PASS: zeta_max numeric check
+zeta_suff = rho_suff - 1 diff = 0``19.159113515496312
+PASS: zeta_suff = rho_suff - 1
+zeta_fail = rho_fail - 1 diff = 0``19.158949885813623
+PASS: zeta_fail = rho_fail - 1
+zeta_max = rho_max - 1 diff = 0``19.15894987370016
+PASS: zeta_max = rho_max - 1
 
 Stage 087 Mathematica audit passed.

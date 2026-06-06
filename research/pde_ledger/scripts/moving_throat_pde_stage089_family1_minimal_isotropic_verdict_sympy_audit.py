@@ -64,9 +64,10 @@ expect_zero("zeta_F1(Pe -> 0) - A_F1", zeta_F1_at_zero - A_F1, tol=1e-30)
 # closed form (see notes/STAGE_VERIFICATION_COVERAGE.md pitfall #10).
 Pe_suff_chi = sp.Float("96.5285247264386")
 Pe_fail_chi = sp.Float("11220.5441626259")
-eps_blk = sp.Integer(0)
+eps_blk = sp.symbols("eps_blk", positive=True, real=True)
 zeta = sp.symbols("zeta", positive=True, real=True)
-Q = sp.simplify((1 + (1 - 2 * eps_blk) * zeta) / (1 - eps_blk * zeta))
+Q_gen = (1 + (1 - 2 * eps_blk) * zeta) / (1 - eps_blk * zeta)   # general blocked-module loading ratio Q(zeta;eps_blk)
+Q = sp.simplify(Q_gen.subs(eps_blk, 0))                          # unblocked specialization used downstream
 zeta_suff = sp.simplify(zeta_F1.subs(Pe, Pe_suff_chi))
 zeta_fail = sp.simplify(zeta_F1.subs(Pe, Pe_fail_chi))
 rho_suff = sp.simplify(Q.subs(zeta, zeta_suff))
@@ -74,7 +75,7 @@ rho_fail = sp.simplify(Q.subs(zeta, zeta_fail))
 rho_max = sp.simplify(Q.subs(zeta, zeta_max))
 
 expect_zero("Stage-075 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
-expect_zero("Stage-082 Q(zeta;0) = 1 + zeta", Q - (1 + zeta), tol=1e-30)
+expect_zero("Stage-082 Q(zeta;0)=1+zeta reduction", Q_gen.subs(eps_blk, 0) - (1 + zeta), tol=1e-30)
 
 
 def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: sp.Expr) -> None:
@@ -121,12 +122,17 @@ if not (zeta_min < A_F1):
 if not (zeta_min < zeta_max):
     raise AssertionError("Minimal isotropic branch exceeded the Family-1 support ceiling.")
 
-# Chain closure: zeta_min < A_F1 + Omega(Pe -> 0) = 1 + zeta_F1(0) = A_F1
-# together imply Pe_req = 0 on the explicit Family-1 transport map.
-# Construct the carry-forward Pe_req and confirm it exits zero, locking the
-# paper-side boxed Output (paper/stages/stage_089.tex eq app-stage089-Pe-zero).
-Pe_req = sp.Integer(0)
-expect_zero("Pe_req (zero-bias bound from chain closure)", Pe_req)
+# Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 already exceeds the
+# minimal isotropic demand zeta_min, so the demand is met at zero transport
+# bias and the minimal required Peclet number is 0. The positive zero-bias
+# success margin below is the can-fail assertion establishing the boxed Output
+# Pe_req = 0 (paper/stages/stage_089.tex eq app-stage089-Pe-zero); if the
+# margin were <= 0 the branch would need Pe_req > 0 and this check would raise.
+zero_bias_margin = sp.N(zeta_F1_at_zero - zeta_min, 40)
+print("zero-bias success margin zeta_F1(0) - zeta_min =", zero_bias_margin)
+if not (zero_bias_margin > 0):
+    raise AssertionError("zeta_F1(0) <= zeta_min: demand unmet at zero bias -> Pe_req != 0")
+Pe_req = sp.Integer(0)   # forced by the positive zero-bias margin above
 
 print("\nRegime checks:")
 print("  rho_min < rho_suff   -> guaranteed success")

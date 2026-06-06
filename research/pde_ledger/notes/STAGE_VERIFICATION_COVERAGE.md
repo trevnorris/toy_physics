@@ -587,3 +587,80 @@ Numbering cross-refs (to OTHER stages) in `.py`/`.wl` source — 078 docstring
 `Stage-35`→052 / `Stage 63`→080 — left UNTOUCHED and deferred to
 `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
 offset-sweep). Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch III.5 (2026-06-05)
+
+Pass-2 Batch III.5 (085-090, `Part III.5 — Quadrupole cancellation, loading ratio,
+verdict`, 6 stages): all 6 pass-2 re-verified at v2 depth (both engines present on all
+6) + exhaustive value-reconciliation augmentation; 6/6 verified, `material_change: false`
+on all 6, 0 stop-cold, 0 blocked, 0 Codex deviations beyond one sanctioned helper-add,
+all iter-1 exit 0. Every emitted deliverable value reconciles — **59 values checked
+batch-wide, 0 MISALIGNED, 0 MISSING-DELIVERABLE** (per stage: 085=13, 086=13, 087=5,
+088=8, 089=14, 090=6). All 6 are genuine dual-engine. No new `.wl`, 0 sanctioned mirrors.
+**TWO checkpoints in range (089 & 090) — BOTH cleared the higher bar; NO EM-projected
+stages in range; NO genuine `paper_misalignment` anywhere → ZERO paper/notes edits; NO
+new postulated constant.**
+
+**3 real script-side findings → fixed → verified:**
+- **087 — F1 `insufficient_verification` (both engines):** the "upstream stage-086
+  cross-check" asserts compared each window literal (`rho_suff/rho_fail/rho_max`)
+  against the SAME literal re-typed in the same file (py:58 vs py:73; wl:57 vs wl:61) —
+  a hollow self-comparison (both sides move together, can't detect a mistyped literal).
+  Replaced the three self-comparisons with can-fail structural relations
+  (`rho_suff < rho_fail`, `rho_fail < rho_max`, `0 < rho_max − rho_fail < 1e-6`; gap =
+  9.671731e-8) + reworded the overclaiming comments; re-anchored the `.wl` `zeta_*`
+  numeric checks (wl:73-75) to `rho_X − 1` so they genuinely test the `epsBlk→0`
+  substitution of `zetaReq`. iter-2 reworded the same overclaim surviving in the SymPy
+  top docstring (non-printing; transcript byte-identical). The three literal VALUES
+  unchanged; `.wl` verify-confirmed STILL INDEPENDENT (not a transliteration).
+- **088 — F1 `stale_output`/stale self-label (`.py` docstring only, 0-seat):** the
+  pre-renumber OWN-number self-label py:3 `...stage71_...` + py:5 `Stage 71.` (088−17 =
+  071 EM-extension drift) → `stage088`/`Stage 088`. Banner/filename/card/`.wl` banner
+  all already canonical; `stage085` cross-refs (py:112, wl) correct → untouched.
+  Committed outputs byte-identical (docstrings not printed). (Both first-pass
+  fragilities re-confirmed ALREADY FIXED, no new finding: the `omega**2 → u` subs lands
+  on atomic `omega**2`; the `stage 085` upstream ref carries no `*)` to close the
+  comment early — assertion count = PASS-line count, no silent partial run.)
+- **089 — F1 + F2 `tautological_check` (CHECKPOINT, higher bar; de-tautologized BOTH,
+  not deleted):** F1 — `Q` baked with `eps_blk = 0` made `expect_zero(Q − (1 + zeta))`
+  a pure X−X self-cancel; fix made `eps_blk` symbolic, introduced general
+  `Q_gen = (1+(1−2 eps_blk) zeta)/(1 − eps_blk zeta)`, and asserted the `eps→0`
+  reduction on the GENERAL form (a structural transcription error in `Q` now fails),
+  plus a parallel `.wl` reduction assert for engine symmetry. F2 — the boxed `Pe_req=0`
+  was verified `0==0`; fix removed the self-check, replaced with a CAN-FAIL positivity
+  assertion on the zero-bias success margin `zeta_F1(0) − zeta_min` (= A_F1 − 1/3 ≈
+  0.6667, the quantity that FORCES `Pe_req=0`), then printed `Pe_req=0` as the
+  consequence. ⭐ ORCHESTRATOR FALSE-POSITIVE/SAFETY GUARD: the audit's drafted
+  `sp.Piecewise((0,cond),(sp.nan,True)) → expect_zero` gate was FRAGILE (a failed
+  precondition passes SILENTLY since `abs(complex(sp.nan)) > tol` is False) → the
+  orchestrator rewrote the directive to the explicit-raise margin form; Codex applied
+  it correctly. **SANCTIONED Codex deviation:** the `.wl` had no `expectZero` helper
+  (only `expectTrue`/`expectApprox`) → Codex added a minimal one
+  (`FullSimplify[Together[Expand[expr]]]`, pass iff `=== 0`); verify-confirmed correct,
+  `.wl` STILL INDEPENDENT. After the fixes 089 carries no remaining named tautology,
+  both engines substantive, paper alignment exact (boxed `Pe_req = 0` Output retained);
+  the Mathematica side independently re-derives the upstream `Pe` via `FindRoot` — a
+  robust route, NOT the latent `nsolve`-near-`tan` **pitfall #10** (explicitly avoided).
+
+**3 clean → verified:** 085, 086, 090 (090 = checkpoint, clean, cleared the higher bar
+via a substantive own-assertion `zeta_req = rho_alpha − 1` + branch-ordering
+inequalities).
+
+All `.py`/`.wl` source diffs are strip-the-number identical to HEAD except the genuine
+math additions on 087/089 (de-taut removals + can-fail anchor/assert insertions + the
+sanctioned 089 `.wl` helper-add); no deliverable result value moved on any stage
+(confirmed by the committed-output diff: only removed tautological-check lines and new
+passing-anchor lines; 088's outputs byte-identical). No coverage count moved (all 6
+already verified+dual-engine from pass 1). INFRA NOTE (III.2/III.3/III.4 lesson
+re-confirmed): `exec-*` refreshes `exec_logs/` not committed `output/*.txt`; the
+orchestrator re-ran all 12 engines (exit 0) and sed-refreshed every output, the arbiter
+grep confirming no stale self-epoch (NNN−17, 068-073 band) banner remains on any of the
+6 (only canonical `STAGE 0{85..90}` banners + the canonical self paper-eq ref
+`app-stage089-Pe-zero`).
+
+Numbering cross-refs (to OTHER stages) in `.py`/`.wl`/notes source — 086 `py:37`
+`Stages 63-64`→080/081; 089 comments cross-ref `Stage-62`/082/075/074; 090 notes
+provenance-tracker `Stage 73` (out of audit scope) — left UNTOUCHED and deferred to
+`redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md` (PENDING — content-keyed, never
+offset-sweep). (088's `stage085` refs are correct — no defer.) Reference memory
+`numbering-drift-root-cause`.

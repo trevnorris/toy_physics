@@ -29,6 +29,12 @@ expectApprox[name_String, value_, target_, tol_] := Module[{diff},
   If[diff <= tol, pass[name], fail[name, diff]];
 ];
 
+expectZero[name_String, expr_] := Module[{res},
+  res = FullSimplify[Together[Expand[expr]]];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res === 0], pass[name], fail[name, res]];
+];
+
 banner["STAGE 089 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH"];
 
 rhoMin = 4/3;
@@ -65,6 +71,8 @@ zetaFailTarget = SetPrecision[3.46752913273870 - 1, 40];
 peSuffChi = pe /. FindRoot[zetaF1[pe] == zetaSuffTarget, {pe, 100}, WorkingPrecision -> 40];
 peFailChi = pe /. FindRoot[zetaF1[pe] == zetaFailTarget, {pe, 10000}, WorkingPrecision -> 40];
 q[zeta_, eps_] := (1 + (1 - 2 eps) zeta)/(1 - eps zeta);
+Clear[zetaRed];
+expectZero["Q(zeta;0)=1+zeta reduction", q[zetaRed, 0] - (1 + zetaRed)];
 zetaSuff = N[zetaF1[peSuffChi], 50];
 zetaFail = N[zetaF1[peFailChi], 50];
 rhoSuff = N[q[zetaSuff, 0], 50];
@@ -105,12 +113,14 @@ expectTrue["minimal isotropic branch stays in the symmetric-lowest-twin regime",
 expectTrue["minimal isotropic branch succeeds at zero transport bias", zetaMin < aF1];
 expectTrue["minimal isotropic branch stays below the Family-1 ceiling", zetaMin < zetaMax];
 
-(* Chain closure: zeta_min < A_F1 + Omega(Pe -> 0) = 1 + zeta_F1(0) = A_F1
-   together imply Pe_req = 0 on the explicit Family-1 transport map. Construct
-   the carry-forward Pe_req and confirm it exits zero, locking the paper-side
-   boxed Output (paper/stages/stage_089.tex eq app-stage089-Pe-zero). *)
-peReq = 0;
-expectApprox["Pe_req (zero-bias bound from chain closure)", peReq, 0, 10^-30];
+(* Pe_req = 0 is FORCED (not assumed): zeta_F1(0) = A_F1 > zeta_min, so the
+   minimal isotropic demand is met at zero transport bias. The positive
+   zero-bias success margin below is the can-fail assertion establishing the
+   boxed Output Pe_req = 0 (paper eq app-stage089-Pe-zero). *)
+zeroBiasMargin = N[zetaF1AtZero - zetaMin, 40];
+Print["zero-bias success margin zeta_F1(0) - zeta_min = ", fmt[zeroBiasMargin]];
+If[TrueQ[zeroBiasMargin > 0], pass["zero-bias success margin positive (=> Pe_req = 0)"], fail["zero-bias success margin positive", zeroBiasMargin]];
+peReq = 0;   (* forced by the positive zero-bias margin above *)
 
 Print[""];
 Print["Stage 089 Mathematica audit passed."];

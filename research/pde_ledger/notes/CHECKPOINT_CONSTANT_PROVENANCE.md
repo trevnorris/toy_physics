@@ -1065,3 +1065,23 @@ independent derivations of the same window, mutually cross-corroborating the lit
 already pinned them). All carried Family-1 constants (`kappa_F1 = 12321/5`,
 `eta_F1 = 37`, `alpha_r² = 100`) are unchanged and still locked. No carried checkpoint
 constant changed.
+
+## Pass 2 — Batch III.5 (2026-06-05)
+
+Pass-2 Batch III.5 (085-090): reviewed — NO checkpoint constant changed, and the TWO
+checkpoints in range (**089** and **090**) pin **NO new numeric constant**. 59
+deliverable values checked batch-wide, 0 misaligned, 0 MISSING-DELIVERABLE;
+`material_change: false` on all 6; no new postulated constant introduced. **089** —
+`A_F1` (=1.000051928802195328659334) and the `rho_suff/rho_fail/rho_max` thresholds are
+DERIVED/carried with provenance, NOT pinned: the Mathematica side independently re-derives
+the upstream `Pe` via `FindRoot` (a robust route — NOT the latent `nsolve`-near-`tan`
+pitfall #10), and the boxed `Pe_req = 0` is FORCED by the positive zero-bias success
+margin `zeta_F1(0) − zeta_min` (= A_F1 − 1/3 ≈ 0.6667185954688619953260008), not asserted
+against itself (the de-tautologized F2 replaced the old `0==0` self-check with this
+can-fail positivity assert). The de-tautologized F1 made `eps_blk` symbolic and asserts the
+`eps→0` reduction of the general `Q_gen` form, so `Q` is now structurally guarded rather
+than baked — no value moved (downstream `rho_*` byte-identical). **090** carries the
+Family-1 threshold decimals as labeled CARRY-FORWARDS (source-anchored), matching 089's
+in-script derivation; its own substantive assertion `zeta_req = rho_alpha − 1` plus the
+branch-ordering inequalities introduce no new constant. No other provenance items; no
+carried checkpoint constant changed.

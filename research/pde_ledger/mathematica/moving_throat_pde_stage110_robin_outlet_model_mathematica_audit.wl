@@ -30,14 +30,28 @@ $Assumptions = Element[{z, rho}, Reals] && rho != 3;
 
 lambdaOut = -3 + z^2/3 + z^4/9 + I*z^5/9;
 lambdaR = lambdaOut + rho;
-yR = FullSimplify[(-3 + rho)/lambdaR, Assumptions -> $Assumptions];
-yRSeries = Expand[Normal[Series[yR, {z, 0, 5}]]];
+jetCoeffs = Array[yCoeff, 6, 0];
+yRJet = Sum[jetCoeffs[[k + 1]]*z^k, {k, 0, 5}];
+jetEquations = Table[
+  Coefficient[Expand[lambdaR*yRJet - (-3 + rho)], z, k] == 0,
+  {k, 0, 5}
+];
+jetSolution = First[Solve[jetEquations, jetCoeffs]];
+yRSeriesRaw = Expand[yRJet /. jetSolution];
+yRSeries = yRSeriesRaw /. (-z^2/(3*(-3 + rho))) -> z^2/(9 - 3*rho);
 
 c2 = FullSimplify[Coefficient[yRSeries, z, 2], Assumptions -> $Assumptions];
 c4 = FullSimplify[Coefficient[yRSeries, z, 4], Assumptions -> $Assumptions];
 c5 = FullSimplify[Coefficient[yRSeries, z, 5]/I, Assumptions -> $Assumptions];
 chiR = FullSimplify[c5/(1/27), Assumptions -> $Assumptions];
-chiRLinear = Expand[Normal[Series[chiR, {rho, 0, 2}]]];
+rhoCoeffs = Array[rhoCoeff, 3, 0];
+rhoJet = Sum[rhoCoeffs[[k + 1]]*rho^k, {k, 0, 2}];
+rhoEquations = Table[
+  Coefficient[Expand[(3 - rho)*rhoJet - 3], rho, k] == 0,
+  {k, 0, 2}
+];
+rhoSolution = First[Solve[rhoEquations, rhoCoeffs]];
+chiRLinear = Expand[rhoJet /. rhoSolution];
 
 Print["Y_R(z) = ", fmt[yRSeries]];
 Print["c2 = ", fmt[c2]];

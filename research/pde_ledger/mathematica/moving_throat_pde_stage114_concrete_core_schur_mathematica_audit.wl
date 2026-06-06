@@ -30,10 +30,17 @@ $Assumptions =
   Element[{kS, kQ, lam, gS, gQ, kappa0, gamma0, z, dSym}, Reals] &&
   kS > 0 && kQ > 0 && kappa0 > 0 && gamma0 > 0;
 
-m = {{kS, lam}, {lam, -kQ*dSym}};
-c = {gS, gQ};
+Clear[sCore, qCore];
+coreEquations = {
+  kS*sCore + lam*qCore == gS,
+  lam*sCore - kQ*dSym*qCore == gQ
+};
+sFromFirst = First[Solve[coreEquations[[1]], sCore]];
+qFromSecond = First[Solve[coreEquations[[2]] /. sFromFirst, qCore]];
+sEliminated = FullSimplify[sCore /. sFromFirst /. qFromSecond, Assumptions -> $Assumptions];
+qEliminated = FullSimplify[qCore /. qFromSecond, Assumptions -> $Assumptions];
 
-deltaD = FullSimplify[Apart[c.Inverse[m].c, dSym], Assumptions -> $Assumptions];
+deltaD = FullSimplify[Apart[gS*sEliminated + gQ*qEliminated, dSym], Assumptions -> $Assumptions];
 Print["delta_Lambda(D) = ", fmt[deltaD]];
 
 rhoC = FullSimplify[gS^2/kS, Assumptions -> $Assumptions];

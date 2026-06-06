@@ -46,10 +46,26 @@ expect_zero("omega^2 coefficient", Yret_series.coeff(omega, 2) - a**2/(9*c_s**2)
 expect_zero("omega^4 coefficient", Yret_series.coeff(omega, 4) - 4*a**4/(81*c_s**4))
 expect_zero("imag omega^5 coefficient", Yret_series.coeff(omega, 5)/sp.I - chi_Q*a**5/(27*c_s**5))
 
-chi_sol = sp.solve(
-    sp.Eq(Yret_series.coeff(omega, 5)/sp.I, a**5/(27*c_s**5)),
-    chi_Q
-)[0]
+z_out = sp.symbols("z", real=True)
+j2_out = (sp.Integer(3)/z_out**3 - 1/z_out)*sp.sin(z_out) - 3*sp.cos(z_out)/z_out**2
+y2_out = -((sp.Integer(3)/z_out**3 - 1/z_out)*sp.cos(z_out) + 3*sp.sin(z_out)/z_out**2)
+h2_out = sp.simplify(j2_out + sp.I*y2_out)
+Lambda_out = sp.simplify(z_out * sp.diff(h2_out, z_out) / h2_out)
+Lambda_out_series = sp.expand(sp.series(Lambda_out, z_out, 0, 6).removeO())
+Lambda_out_expected = sp.expand(
+    -3 + z_out**2/sp.Integer(3) + z_out**4/sp.Integer(9) + sp.I*z_out**5/sp.Integer(9)
+)
+print("\nLambda_2^out(z) from exact h_2^(1) =")
+sp.pprint(Lambda_out_series)
+expect_zero("Lambda_2^out series fingerprint", Lambda_out_series - Lambda_out_expected)
+
+Y_out = sp.simplify(sp.Integer(-3) / Lambda_out)
+Y_out_series = sp.expand(sp.series(Y_out, z_out, 0, 6).removeO())
+outgoing_z5_coeff = sp.simplify(Y_out_series.coeff(z_out, 5) / sp.I)
+expect_zero("Y_2^out imag z^5 coefficient - 1/27", outgoing_z5_coeff - sp.Rational(1, 27))
+outgoing_omega5_coeff = sp.simplify(outgoing_z5_coeff * (a/c_s)**5)
+
+chi_sol = sp.solve(sp.Eq(Yret_series.coeff(omega, 5)/sp.I, outgoing_omega5_coeff), chi_Q)[0]
 print("\nchi_Q from exact outgoing match =", chi_sol)
 if sp.simplify(chi_sol - 1) != 0:
     raise AssertionError("chi_Q did not match to 1.")

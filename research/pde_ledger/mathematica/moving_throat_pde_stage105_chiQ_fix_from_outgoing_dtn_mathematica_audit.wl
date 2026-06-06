@@ -49,8 +49,22 @@ expectZero["omega^2 coefficient", Coefficient[realPart, omega, 2] - aThroat^2/(9
 expectZero["omega^4 coefficient", Coefficient[realPart, omega, 4] - 4*aThroat^4/(81*cSound^4)];
 expectZero["imag omega^5 coefficient", imagPart5 - chiQ*aThroat^5/(27*cSound^5)];
 
+Clear[zOut];
+hankelOut = FullSimplify[SphericalHankelH1[2, zOut], Assumptions -> Element[zOut, Reals]];
+lambdaOut = FullSimplify[zOut*D[hankelOut, zOut]/hankelOut, Assumptions -> Element[zOut, Reals]];
+lambdaOutSeries = Expand[Normal[Series[lambdaOut, {zOut, 0, 5}]]];
+lambdaOutExpected = -3 + zOut^2/3 + zOut^4/9 + I*zOut^5/9;
+Print["Lambda_2^out(z) from SphericalHankelH1 = ", fmt[lambdaOutSeries]];
+expectZero["Lambda_2^out series fingerprint", lambdaOutSeries - lambdaOutExpected];
+
+yOut = FullSimplify[-3/lambdaOut, Assumptions -> Element[zOut, Reals]];
+yOutSeries = Expand[Normal[Series[yOut, {zOut, 0, 5}]]];
+outgoingZ5Coeff = FullSimplify[Coefficient[yOutSeries, zOut, 5]/I, Assumptions -> Element[zOut, Reals]];
+expectZero["Y_2^out imag z^5 coefficient - 1/27", outgoingZ5Coeff - 1/27];
+outgoingOmega5Coeff = FullSimplify[outgoingZ5Coeff*(aThroat/cSound)^5, Assumptions -> $Assumptions];
+
 chiBranch = FullSimplify[
-  Reduce[imagPart5 - aThroat^5/(27*cSound^5) == 0, chiQ, Reals],
+  Reduce[imagPart5 - outgoingOmega5Coeff == 0, chiQ, Reals],
   Assumptions -> $Assumptions
 ];
 chiWitness = chiQ /. ToRules[chiBranch];

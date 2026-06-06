@@ -1122,3 +1122,33 @@ de-taut [094's `K_g2`/`K_g4` now DERIVED from the proven-zero l=0↔l=2 overlap 
 than bare literal 0]; 100's `.wl` de-transliteration [orchestrator override, user-authorized
 independent geometric-series route] moved no emitted value — committed Mathematica output
 byte-identical to HEAD, `chiQ` stays a free symbol.) No carried checkpoint constant changed.
+
+## Pass 2 — Batch IV.2 (2026-06-06)
+
+Pass-2 Batch IV.2 (103-114): reviewed — NO checkpoint constant changed, and neither of the TWO
+checkpoints in range pins a new numeric constant. 86 deliverable values checked batch-wide, 0
+misaligned; `material_change: false` on all 12; no new postulated constant introduced. **105**
+(`chi_Q_from_outgoing_DtN`) owns **`chi_Q = 1`**; **112** (`hybrid_robin_branch`) owns
+**`gamma_W = 1/9`** (chi_B=1 ⟺ sigma_W(1−9·gamma_W)=0).
+
+**105** cleared the higher bar after DE-TAUTOLOGIZING its retarded-half DtN match. Previously
+BOTH engines matched the canonical ω⁵ coefficient to a HARDCODED fingerprint target
+`a^5/(27 c_s^5)` (= `sigma_can/4` retyped), never evaluating the actual outgoing l=2 Hankel DtN
+fingerprint. Now both engines DERIVE the fingerprint from the spherical Hankel function via
+visibly distinct constructions (SymPy `j_2 + i*y_2` closed form, Mathematica native
+`SphericalHankelH1[2,z]`), assert the can-fail series `-3 + z²/3 + z⁴/9 + i z⁵/9`, read the
+DERIVED imag z⁵ coefficient `1/27`, and force `chi_Q=1` by matching the retarded ω⁵ coefficient
+to that DERIVED target — **`chi_Q = 1` is now DERIVED from the Hankel fingerprint, NOT typed on
+the RHS; the value is UNCHANGED.** The in-script `sigma_Q^can = 4 a^5/(27 c_s^5)` remains
+pole-scale-derived; zero unexplained literals remain in checkpoint 105's scripts. (Provenance:
+the 2026-05-29 integrity-remediation batch-2 re-authored 105's `.wl` to a residue/`Reduce`
+path, but the hardcoded-RHS verification-strength tautology survived in BOTH engines until
+pass-2 caught it.)
+
+**112** cleared the higher bar with NO re-author — its pre-existing `.wl` is genuinely
+independent (native `Reduce[presCond==0 && sigma!=0, gamma]` reconstructing the Stage-92
+`(b,a0,a5)` from branch-B coefficients to force `gamma_W = 1/9`, a route the `.py` lacks); the
+constant `gamma_W = 1/9` is unchanged. (For completeness: the non-checkpoint fixes this batch
+introduced no new constant — 107/110/114's `.wl` were RE-AUTHORED from `Series`/`Inverse[m]`
+ports to undetermined-coefficient/Schur `Solve` routes, USER-AUTHORIZED, all MMA outputs
+byte-identical, no emitted value moved.) No carried checkpoint constant changed.

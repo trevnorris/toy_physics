@@ -16,6 +16,14 @@ omega^2 coefficient = 0
 omega^4 coefficient = 0
 imag omega^5 coefficient = 0
 
+Lambda_2^out(z) from exact h_2^(1) =
+   5    4    2    
+ⅈ⋅z    z    z     
+──── + ── + ── - 3
+ 9     9    3     
+Lambda_2^out series fingerprint = 0
+Y_2^out imag z^5 coefficient - 1/27 = 0
+
 chi_Q from exact outgoing match = 1
 
 Deformed DtN normalized branch =

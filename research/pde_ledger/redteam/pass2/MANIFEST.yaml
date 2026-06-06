@@ -3584,7 +3584,7 @@ stages:
     stage: 103
     stage_str: '103'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3605,11 +3605,12 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-06 02:12:52-06:00
   '104':
     stage: 104
     stage_str: '104'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3634,12 +3635,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage104_outgoing_dtn_fingerprint_mathematica_audit.txt
         exists: true
         mtime: 1779917040
+    last_status_change: 2026-06-06 02:12:56-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:58:06-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:58:14-06:00
   '105':
     stage: 105
     stage_str: '105'
     batch_id: IV.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -3663,11 +3669,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt
         exists: true
         mtime: 1780072852
+    last_status_change: 2026-06-06 02:12:59-06:00
+    codex_session: 019e9be3-b2c0-7a70-aaf6-d2be87d1490e
+    codex_log_paths:
+    - redteam/pass2/codex_logs/105_iter1.txt
+    last_codex_run: 2026-06-06 01:47:57-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:55:23-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:55:32-06:00
   '106':
     stage: 106
     stage_str: '106'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3692,12 +3708,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_mathematica_audit.txt
         exists: true
         mtime: 1780073508
+    last_status_change: 2026-06-06 02:13:03-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:58:18-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:58:25-06:00
   '107':
     stage: 107
     stage_str: '107'
     batch_id: IV.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3721,11 +3742,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt
         exists: true
         mtime: 1779917056
+    last_status_change: 2026-06-06 02:13:06-06:00
+    codex_session: 019e9be9-d0a8-7dc3-ace8-bb7db9b94b7d
+    codex_log_paths:
+    - redteam/pass2/codex_logs/107_iter1.txt
+    last_codex_run: 2026-06-06 01:54:25-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:55:37-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:55:45-06:00
   '108':
     stage: 108
     stage_str: '108'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3750,11 +3781,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage108_robustness_classes_mathematica_audit.txt
         exists: true
         mtime: 1780035711
+    last_status_change: 2026-06-06 02:13:10-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:58:29-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:58:38-06:00
   '109':
     stage: 109
     stage_str: '109'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3779,12 +3815,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage109_linearized_branch_selection_mathematica_audit.txt
         exists: true
         mtime: 1780075412
+    last_status_change: 2026-06-06 02:13:14-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:58:42-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:58:51-06:00
   '110':
     stage: 110
     stage_str: '110'
     batch_id: IV.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3808,11 +3849,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage110_robin_outlet_model_mathematica_audit.txt
         exists: true
         mtime: 1779917071
+    last_status_change: 2026-06-06 02:13:17-06:00
+    codex_session: 019e9be9-d09c-7123-bacf-947e57d085a6
+    codex_log_paths:
+    - redteam/pass2/codex_logs/110_iter1.txt
+    last_codex_run: 2026-06-06 01:54:11-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:55:49-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:55:56-06:00
   '111':
     stage: 111
     stage_str: '111'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3837,11 +3888,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage111_mixed_sidechannel_pole_mathematica_audit.txt
         exists: true
         mtime: 1779917076
+    last_status_change: 2026-06-06 02:13:20-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:58:54-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:59:03-06:00
   '112':
     stage: 112
     stage_str: '112'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -3866,11 +3922,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_mathematica_audit.txt
         exists: true
         mtime: 1780076137
+    last_status_change: 2026-06-06 02:13:24-06:00
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:59:07-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:59:16-06:00
   '113':
     stage: 113
     stage_str: '113'
     batch_id: IV.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -3891,12 +3952,13 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-06 02:13:27-06:00
   '114':
     stage: 114
     stage_str: '114'
     batch_id: IV.2
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -3920,6 +3982,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage114_concrete_core_schur_mathematica_audit.txt
         exists: true
         mtime: 1779917085
+    last_status_change: 2026-06-06 02:13:31-06:00
+    codex_session: 019e9be3-b2cc-7d22-ac89-e7c2bffc2f92
+    codex_log_paths:
+    - redteam/pass2/codex_logs/114_iter1.txt
+    last_codex_run: 2026-06-06 01:46:12-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-06 01:56:00-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-06 01:56:08-06:00
   '115':
     stage: 115
     stage_str: '115'

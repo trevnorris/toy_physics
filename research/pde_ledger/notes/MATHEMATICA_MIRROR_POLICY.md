@@ -592,6 +592,41 @@ different verification structure from the SymPy side:
   `chiQ` stays a free symbol. Committed Mathematica output BYTE-IDENTICAL to HEAD
   (method changed, no emitted value did); `material_change: false`; reference SymPy `.py`
   untouched
+- `105`
+  red-team pass-2 batch IV.2 (2026-06-06) RE-GROUNDED the retarded-half DtN match (CHECKPOINT,
+  higher bar). The pass-1 `.wl` retarded half already used `Im[]`-projection + `Reduce`/`ToRules`
+  + a factored form, but BOTH engines matched the canonical ω⁵ coefficient to a HARDCODED
+  fingerprint target `a^5/(27 c_s^5)` (= `sigma_can/4` retyped), never evaluating the actual
+  outgoing l=2 Hankel DtN fingerprint → a verification-strength tautology. DE-TAUTOLOGIZED
+  (Claude+Codex math-coverage, user-informed): both engines now DERIVE the outgoing l=2 DtN
+  `Lambda_2^out = z d/dz ln h_2^(1)(z)` from the spherical Hankel function via VISIBLY DISTINCT
+  constructions — SymPy from an explicit `j_2 + i*y_2` (spherical Bessel) closed form, Mathematica
+  from native `SphericalHankelH1[2,z]` — assert the can-fail fingerprint series
+  `= -3 + z²/3 + z⁴/9 + i z⁵/9`, read the DERIVED `Y_2^out` imag z⁵ coefficient (`= 1/27`), and
+  force `chi_Q=1` by matching the retarded ω⁵ coefficient to that DERIVED target (no typed literal
+  on the canonical-match RHS). `chi_Q=1` UNCHANGED; output only ADDED the fingerprint lines; the
+  distinct per-engine Hankel constructions dissolve the F2 transliteration over-call
+- `107`
+  red-team pass-2 batch IV.2 (2026-06-06) RE-AUTHORED (pass-1 had MISSED this; never a sanctioned
+  mirror). The pass-1 `.wl` was a full line-by-line port of the `.py` — `Series[l0/lambdaDef,{z,0,5}]`
+  on the same normalized ratio, identical `lambdaDef`/`l0/l2/l4/l5`/`yFormula`/`Solve` order.
+  USER-AUTHORIZED independent route: the `.wl` now reaches the deformed branch / `chi_Q` via an
+  order-by-order undetermined-coefficient solve of the operator identity `Lambda_def*Y = L0`
+  (`CoefficientList` + `Solve`, unique-solution guard); all `Series`/`series` removed.
+  Verify-confirmed independent; MMA output byte-identical
+- `110`
+  red-team pass-2 batch IV.2 (2026-06-06) RE-AUTHORED (pass-1 had MISSED this). The pass-1 `.wl`
+  was a full port — `Series[(-3+rho)/lambdaR,…]` on the same ratio, same `c2/c4/c5`/`chiR`/
+  linearization/5 asserts. USER-AUTHORIZED independent route: the `.wl` now uses an
+  undetermined-coefficient linear `Solve` of `lambdaR*Y_R = (-3+rho)` + a separate rho-jet solve
+  for the linearization; all `Series` removed. Verify-confirmed independent; MMA byte-identical
+- `114`
+  red-team pass-2 batch IV.2 (2026-06-06) RE-AUTHORED (pass-1 had MISSED this). The pass-1 `.wl`
+  was a full port — both engines did `Inverse[m]`/`M.inv()` + `apart` on the same matrix.
+  USER-AUTHORIZED independent route: the `.wl` now reaches the Schur complement `delta_Lambda(D)`
+  via explicit scalar `Solve`-elimination of the 2×2 core system (`Solve` eq.1 for s, back-sub,
+  `Solve` for q, form `g_s*s+g_q*q`); `Inverse[m]` removed, matrix object gone. Verify-confirmed
+  independent; MMA byte-identical
 - `121`
   red-team retro-sweep (2026-06-01) created the native mirror (previously SymPy-only)
   for geometric_r_selection: `r_geom` derived by `Solve`-ing the Stage-99 length law
@@ -1085,3 +1120,57 @@ are the backstop). INFRA: `exec-*` refreshes `exec_logs/` not committed `output/
 orchestrator re-ran the 094/096/100 SymPy + 093/094/096/100 Mathematica engines (all exit 0;
 094 SymPy and BOTH 100 outputs byte-identical post-refresh), arbiter grep on all 12 committed
 outputs = CLEAN.
+
+## Pass 2 — Batch IV.2 (2026-06-06)
+
+Pass-2 Batch IV.2 (103-114, `Part IV.2 — Outgoing DtN, deformation, robustness, robin`): all
+10 dual-engine stages already had both engines from pass 1 (103/113 are status-only with no
+scripts). **FOUR newly-independent `.wl` this batch — the highest pass-2 count so far — and 0
+sanctioned mirrors.** ADD **105, 107, 110, 114** to the Current Independent-Mirror Set above.
+
+- **105** (CHECKPOINT — higher bar) RE-GROUNDED. The pass-1 retarded half already used
+  `Im[]`-projection + `Reduce`/`ToRules` + a factored form (so the audit's F2
+  `mathematica_transliteration` was an OVER-CALL — the deformed branch was independent and the
+  retarded half non-trivial), but BOTH engines matched the canonical ω⁵ coefficient to a
+  HARDCODED fingerprint target `a^5/(27 c_s^5)` (= `sigma_can/4` retyped), never evaluating the
+  actual outgoing l=2 Hankel DtN fingerprint — a verification-strength tautology shared across
+  both engines (F1 `insufficient_verification`). DE-TAUTOLOGIZED (Claude+Codex math-coverage,
+  non-conceptual, user-informed): both engines now DERIVE `Lambda_2^out = z d/dz ln h_2^(1)(z)`
+  from the spherical Hankel function via VISIBLY DISTINCT constructions — SymPy from an explicit
+  `j_2 + i*y_2` (spherical Bessel) closed form, Mathematica from native `SphericalHankelH1[2,z]`
+  — assert the can-fail fingerprint series `= -3 + z²/3 + z⁴/9 + i z⁵/9`, read the DERIVED
+  `Y_2^out` imag z⁵ coefficient (`= 1/27`), and force `chi_Q=1` by matching the retarded ω⁵
+  coefficient to that DERIVED target (no typed literal on the canonical-match RHS). `chi_Q=1`
+  UNCHANGED; output only ADDED the fingerprint lines; the F2 over-call dissolves under the
+  distinct per-engine constructions. **Cleared the checkpoint higher bar.** (Provenance: the
+  2026-05-29 integrity-remediation batch-2 had re-authored 105's `.wl` to a residue/`Reduce`
+  path, but the hardcoded-RHS verification-strength tautology survived in BOTH engines until
+  pass-2 caught it.)
+- **107 / 110 / 114** RE-AUTHORED — each a pass-1 full line-by-line port that **pass-1 MISSED**
+  (the 2026-05-27 IV.2 audit fixed 105/106/109/111/112's `.wl` but not these three; none was
+  ever a sanctioned mirror, so the re-author reverses no pass-1 disposition). **USER-AUTHORIZED**
+  the re-author-vs-accept call (user-level per the dual-engine rule; IV.1-100 / V.3 / VI.1
+  precedent). **107**: pass-1 `Series[l0/lambdaDef,{z,0,5}]` on the same normalized ratio →
+  order-by-order undetermined-coefficient `Solve` of `Lambda_def*Y = L0` (`CoefficientList` +
+  `Solve`, unique-solution guard); all `Series` removed. **110**: pass-1
+  `Series[(-3+rho)/lambdaR,…]` → undetermined-coefficient linear `Solve` of `lambdaR*Y_R =
+  (-3+rho)` + separate rho-jet solve for the linearization; all `Series` removed. **114**:
+  pass-1 `Inverse[m]`/`apart` → Schur complement `delta_Lambda(D)` via explicit scalar
+  `Solve`-elimination of the 2×2 core system (`Solve` for s, back-sub, `Solve` for q, form
+  `g_s*s+g_q*q`); `Inverse[m]` removed, matrix object gone. All three verify-confirmed
+  independent; all three MMA outputs byte-identical (method changed, no emitted value moved).
+
+**Checkpoint 112's pre-existing `.wl` confirmed INDEPENDENT with NO re-author** — its native
+`Reduce[presCond==0 && sigma!=0, gamma]` reconstructs the Stage-92 `(b,a0,a5)` from branch-B
+coefficients and forces `gamma_W=1/9`, a route the `.py` has no analogue for; cleared the
+checkpoint as-is. The five other dual-engine `.wl` (104, 106, 108, 109, 111) confirmed
+independent, unchanged. `material_change: false` on all 12; all Codex iter-1 exit 0; 2
+checkpoints (105, 112) BOTH cleared the higher bar. INFRA: 20 exec runs exit 0 (10 dual-engine
+× 2 engines); `exec-*` refreshes `exec_logs/` not committed `output/*.txt` → orchestrator
+sed-refreshed every committed `.txt`; 107/110/114 MMA + the 5 clean dual-engine MMA outputs
+byte-identical, 105 additive (fingerprint lines), 108 output NORMALIZED (refresh stripped a
+stray `# exit_code: 0` trailer a prior commit had baked in — deliverables identical, NOT a math
+change). Arbiter grep on all 10 committed outputs CLEAN — no stale self-epoch (NNN−17 = 086–097)
+banner; the only stage-label hit is 106's correct upstream cross-ref "Carry-in chi_Q = 1 from
+stage 105". Seat policy held: the 4 `.wl`-touching Codex sessions ran in 2 waves of 2 (105∥114,
+then 107∥110) under the flock; orchestrator exec sequential after all Codex done (no overlap).

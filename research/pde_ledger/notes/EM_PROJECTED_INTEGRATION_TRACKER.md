@@ -403,3 +403,18 @@ IV.1 band and touch no EM-projected identity; the one checkpoint in range (096) 
 higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 +
 III.5 + IV.1 pass-2 closed, the projected-EM core 004-021 (plus bookends 022-102) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.2 (2026-06-06)
+
+Pass-2 Batch IV.2 (103-114, `Part IV.2 — Outgoing DtN, deformation, robustness, robin`)
+re-verified at v2 depth + value-reconciliation augmentation; 12/12 verified,
+`material_change: false` on all 12. **NO EM-projected stages in range → no change** — IV.2 is
+the outgoing-DtN / deformation / robustness / Robin-branch band, downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched: no EM result moved. The
+script-side fixes (105's checkpoint DtN-fingerprint de-tautologization via distinct per-engine
+spherical-Hankel constructions, and 107/110/114's user-authorized `.wl` re-authors from
+`Series`/`Inverse[m]` ports to undetermined-coefficient/Schur `Solve` routes) are all confined
+to the IV.2 band and touch no EM-projected identity; the two checkpoints in range (105, 112)
+both cleared the higher bar with no constant moved. With I.1 + I.2 + II.1 + III.1 + III.2 +
+III.3 + III.4 + III.5 + IV.1 + IV.2 pass-2 closed, the projected-EM core 004-021 (plus bookends
+022-114) remains paper-aligned under the second pass.

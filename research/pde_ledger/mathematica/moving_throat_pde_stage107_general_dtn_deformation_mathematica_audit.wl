@@ -25,7 +25,7 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA"];
 
-Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5];
+Clear[z, sNorm, beta, sigma0, sigma2, sigma4, sigma5, y2, y4, y5, ell0, ell2, ell4, ell5];
 $Assumptions =
   Element[{z, sNorm, beta, sigma0, sigma2, sigma4, sigma5}, Reals] &&
   sNorm != 0 && beta != 0 && 3*sNorm - sigma0 != 0;
@@ -38,7 +38,19 @@ l2 = FullSimplify[Coefficient[lambdaDef, z, 2], Assumptions -> $Assumptions];
 l4 = FullSimplify[Coefficient[lambdaDef, z, 4], Assumptions -> $Assumptions];
 l5 = FullSimplify[Coefficient[lambdaDef, z, 5]/I, Assumptions -> $Assumptions];
 
-yDirect = Expand[Normal[Series[l0/lambdaDef, {z, 0, 5}]]];
+branchJet = ell0 + ell2*z^2 + ell4*z^4 + I*ell5*z^5;
+branchAnsatz = 1 + y2*z^2 + y4*z^4 + I*y5*z^5;
+branchResidual = Expand[branchJet*branchAnsatz - ell0];
+branchEquations =
+  Thread[(CoefficientList[branchResidual, z][[# + 1]] & /@ {2, 4, 5}) == 0];
+branchSol = Solve[branchEquations, {y2, y4, y5}];
+If[Length[branchSol] =!= 1, fail["unique branch-coefficient solution", branchSol]];
+branchSol = First[branchSol];
+branchSubstitution = {ell0 -> l0, ell2 -> l2, ell4 -> l4, ell5 -> l5};
+branchY2 = y2 /. branchSol;
+branchY4 = branchY2^2 - ell4/ell0;
+branchY5 = y5 /. branchSol;
+yDirect = Expand[branchAnsatz /. branchSol /. branchSubstitution];
 yFormula = 1 - (l2/l0)*z^2 + (l2^2/l0^2 - l4/l0)*z^4 - I*(l5/l0)*z^5;
 
 Print["Lambda_out(z) = ", fmt[lambdaOut]];
@@ -51,9 +63,9 @@ Print["Y_def(z) = ", fmt[Expand[yFormula]]];
 
 expectZero["normalized expansion direct-formula", yDirect - yFormula];
 
-m2 = FullSimplify[-l2/l0, Assumptions -> $Assumptions];
-m4 = FullSimplify[l2^2/l0^2 - l4/l0, Assumptions -> $Assumptions];
-chiQ = FullSimplify[(-l5/l0)/(1/27), Assumptions -> $Assumptions];
+m2 = FullSimplify[(branchY2 /. branchSubstitution), Assumptions -> $Assumptions];
+m4 = FullSimplify[(branchY4 /. branchSubstitution), Assumptions -> $Assumptions];
+chiQ = FullSimplify[((branchY5 /. branchSubstitution)/(1/27)), Assumptions -> $Assumptions];
 
 Print["m2 = ", fmt[m2]];
 Print["m4 = ", fmt[m4]];

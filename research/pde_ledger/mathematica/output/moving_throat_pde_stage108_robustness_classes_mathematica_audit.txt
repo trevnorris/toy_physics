@@ -42,4 +42,3 @@ general locus reduces to beta=1 (Class C) = 0
 PASS: general locus reduces to beta=1 (Class C)
 
 Stage 108 Mathematica audit passed.
-# exit_code: 0

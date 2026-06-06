@@ -14,6 +14,11 @@ omega^4 coefficient = 0
 PASS: omega^4 coefficient
 imag omega^5 coefficient = 0
 PASS: imag omega^5 coefficient
+Lambda_2^out(z) from SphericalHankelH1 = -3 + zOut^2/3 + zOut^4/9 + (I/9)*zOut^5
+Lambda_2^out series fingerprint = 0
+PASS: Lambda_2^out series fingerprint
+Y_2^out imag z^5 coefficient - 1/27 = 0
+PASS: Y_2^out imag z^5 coefficient - 1/27
 chi_Q condition from outgoing match (Reduce) = chiQ == 1
 chi_Q from exact outgoing match = 1
 chi_Q - 1 = 0

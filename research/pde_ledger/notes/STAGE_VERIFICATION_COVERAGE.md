@@ -722,3 +722,73 @@ Numbering CROSS-refs (to OTHER stages) deferred to `redteam/NUMBERING_SCRIPT_OUT
 (PENDING — content-keyed, never offset-sweep): 095 notes legacy "Stage 74/75/77/78" narrative;
 096 docstring "Stage 092" vs notes "Stage-75" (source cross-ref, not a 096 self-label).
 Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.2 (2026-06-06)
+
+Pass-2 Batch IV.2 (103-114, `Part IV.2 — Outgoing DtN, deformation, robustness, robin`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation
+augmentation; 12/12 verified, `material_change: false` on all 12 (NO downstream staling), 0
+stop-cold, 0 blocked, 0 Codex deviations, all iter-1 exit 0. Every emitted deliverable value
+reconciles — **86 values checked batch-wide, 0 MISALIGNED, 0 MISSING-DELIVERABLE** (per stage:
+104=11, 105=8, 106=11, 107=9, 108=14, 109=4, 110=6, 111=9, 112=7, 114=7; plus status-only 103
+[symbolic carry-forward] and 113 [8 notes-stated] reconciled). **TWO checkpoints in range (105,
+112) — BOTH cleared the higher bar; NO EM-projected stages in range; NO genuine
+`paper_misalignment` anywhere → ZERO paper/notes edits; NO new postulated constant.** **103 and
+113 are status-only by design** (no scripts). No coverage count moved (all 10 dual-engine stages
+already verified+dual-engine from pass 1; 103/113 stay status-only single-engine).
+
+**4 real script-side findings (5 findings) → fixed → verified:**
+- **105 — F1 `insufficient_verification` + F2 `mathematica_transliteration` (CHECKPOINT, higher
+  bar):** F2 was an OVER-CALL — the `.wl` retarded half already used `Im[]`-projection +
+  `Reduce`/`ToRules` + a factored form and the deformed branch was independent — but BOTH engines
+  shared the F1 tautology: they matched the canonical ω⁵ coefficient to a HARDCODED fingerprint
+  target `a^5/(27 c_s^5)` (= `sigma_can/4` retyped), never evaluating the actual outgoing l=2
+  Hankel DtN fingerprint. DE-TAUTOLOGIZED (both engines): each now DERIVES
+  `Lambda_2^out = z d/dz ln h_2^(1)(z)` from the spherical Hankel function via VISIBLY DISTINCT
+  constructions — SymPy from `j_2 + i*y_2` (spherical Bessel) closed form, Mathematica from native
+  `SphericalHankelH1[2,z]` — asserts the can-fail series `-3 + z²/3 + z⁴/9 + i z⁵/9`, reads the
+  DERIVED `Y_2^out` imag z⁵ coefficient (`= 1/27`), and forces `chi_Q=1` by matching the retarded
+  ω⁵ coefficient to that DERIVED target (no typed literal on the RHS). `chi_Q=1` UNCHANGED; F2
+  dissolves under the distinct per-engine constructions. Cleared the checkpoint higher bar.
+- **107 — F1 `mathematica_transliteration` (pass-1 MISSED):** the `.wl` was a full line-by-line
+  port (`Series[l0/lambdaDef,{z,0,5}]` on the same normalized ratio). USER-AUTHORIZED re-author:
+  the `.wl` now reaches the deformed branch / `chi_Q` via an order-by-order undetermined-coefficient
+  `Solve` of `Lambda_def*Y = L0` (`CoefficientList` + `Solve`, unique-solution guard); all `Series`
+  removed; verify-confirmed independent; MMA byte-identical.
+- **110 — F1 `mathematica_transliteration` (pass-1 MISSED):** full port (`Series[(-3+rho)/lambdaR]`).
+  USER-AUTHORIZED re-author to an undetermined-coefficient linear `Solve` of `lambdaR*Y_R = (-3+rho)`
+  + a separate rho-jet solve for the linearization; all `Series` removed; verify-confirmed
+  independent; MMA byte-identical.
+- **114 — F1 `mathematica_transliteration` (pass-1 MISSED):** full port (`Inverse[m]`/`apart` on the
+  same matrix). USER-AUTHORIZED re-author to the Schur complement `delta_Lambda(D)` via explicit
+  scalar `Solve`-elimination of the 2×2 core system (`Solve` for s, back-sub, `Solve` for q, form
+  `g_s*s+g_q*q`); `Inverse[m]` removed, matrix object gone; verify-confirmed independent; MMA
+  byte-identical.
+
+**Checkpoint 112's pre-existing `.wl` confirmed INDEPENDENT with NO re-author** (native
+`Reduce[presCond==0 && sigma!=0, gamma]` reconstructing the Stage-92 `(b,a0,a5)` to force
+`gamma_W=1/9`, a route the `.py` lacks); cleared the checkpoint as-is. 104/106/108/109/111 `.wl`
+confirmed independent, unchanged.
+
+**8 clean → verified:** 103 [status-only], 104, 106, 108, 109, 111, 112 [checkpoint], 113
+[status-only].
+
+**Dual-engine / independence outcome:** 4 newly-independent `.wl` this batch (105 re-grounded +
+107/110/114 re-authored), 0 sanctioned mirrors — added to the Independent-Mirror Set (see
+`MATHEMATICA_MIRROR_POLICY.md`). All `.py`/`.wl` source diffs are strip-the-number identical to
+HEAD except the genuine de-taut/re-author additions on 105/107/110/114; no deliverable result
+value moved on any stage. INFRA: 20 exec runs exit 0 (10 dual-engine × 2 engines; 103/113 have no
+scripts); `exec-*` refreshes `exec_logs/` not committed `output/*.txt` → the orchestrator
+sed-refreshed every committed `.txt` (107/110/114 + the 5 clean dual-engine MMA outputs
+byte-identical; 105 additive [fingerprint lines]; **108 output NORMALIZED** — refresh stripped a
+stray `# exit_code: 0` trailer a prior commit had baked in, deliverables identical, NOT a math
+change); arbiter grep on all 10 committed outputs = CLEAN (no stale self-epoch NNN−17 = 086–097
+banner; the only stage-label hit is 106's correct upstream cross-ref "Carry-in chi_Q = 1 from
+stage 105"). Seat policy held: the 4 `.wl`-touching Codex sessions ran in 2 waves of 2 (105∥114,
+then 107∥110) under the flock; orchestrator exec sequential after all Codex done.
+
+**Side note (OUT OF SCOPE, awareness only):** `notes/stages/review/stage_103_review.md` is a
+stale first-pass review artifact whose body reviews **Stage 035, not 103** (flagged by the 103
+audit agent; not a script-audit item) — logged as a residual in `PAPER_CLEANUP_TRACKER.md` (P5-11)
+to clean later. Numbering CROSS-refs: none new beyond the correct 106→105 carry-in. Reference
+memory `numbering-drift-root-cause`.

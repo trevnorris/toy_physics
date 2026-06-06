@@ -502,3 +502,43 @@ the audit's clean verdict — the user-authorized independent geometric-series r
 `.wl` [no constant moved, committed Mathematica output byte-identical to HEAD], NOT a
 checkpoint. 8 clean: 091, 092, 095, 097, 098, 099, 101, 102. The recurring de-taut theme —
 the obstruction-formula-evaluated-only-at-the-degenerate-point trap — hit 093/094/096.)
+
+## Pass 2 — Batch IV.2 (2026-06-06)
+
+Pass-2 Batch IV.2 (103-114): TWO checkpoints in range — **105**
+(`chi_Q_from_outgoing_DtN`) and **112** (`hybrid_robin_branch`) — both re-verified at v2 depth
++ value-reconciliation augmentation, and **BOTH cleared the higher checkpoint bar**; **no
+certified checkpoint constant moved**, no trust impact, NO new pinned constant. 105 owns
+`chi_Q=1`; 112 owns `gamma_W=1/9` (chi_B=1 ⟺ sigma_W(1−9·gamma_W)=0).
+
+**105** — cleared the higher bar after DE-TAUTOLOGIZING its retarded-half DtN match. The
+pass-1 `.wl` retarded half already used `Im[]`-projection + `Reduce`/`ToRules` + a factored
+form (so the audit's F2 `mathematica_transliteration` was an OVER-CALL and the deformed branch
+was already independent), but BOTH engines matched the canonical ω⁵ coefficient to a HARDCODED
+fingerprint target `a^5/(27 c_s^5)` (= `sigma_can/4` retyped), NEVER evaluating the actual
+outgoing l=2 Hankel DtN fingerprint — a verification-strength tautology shared across both
+engines (F1 `insufficient_verification`). Fix (Claude+Codex math-coverage, non-conceptual,
+user-informed): both engines now DERIVE `Lambda_2^out = z d/dz ln h_2^(1)(z)` from the
+spherical Hankel function via VISIBLY DISTINCT constructions — SymPy from an explicit
+`j_2 + i*y_2` (spherical Bessel) closed form, Mathematica from native `SphericalHankelH1[2,z]`
+— assert the can-fail fingerprint series `= -3 + z²/3 + z⁴/9 + i z⁵/9`, read the DERIVED
+`Y_2^out` imag z⁵ coefficient (`= 1/27`), and force `chi_Q=1` by matching the retarded ω⁵
+coefficient to that DERIVED target (no typed literal on the canonical-match RHS). `chi_Q=1`
+UNCHANGED; the F2 over-call dissolves under the distinct per-engine constructions. (Provenance:
+the 2026-05-29 integrity-remediation batch-2 re-authored 105's `.wl` to a residue/`Reduce`
+path, but the hardcoded-RHS tautology survived in BOTH engines until pass-2 caught it.) 105
+stays `strong`.
+
+**112** — cleared the higher bar with NO re-author: its pre-existing `.wl` was confirmed
+genuinely INDEPENDENT — a native `Reduce[presCond==0 && sigma!=0, gamma]` that reconstructs the
+Stage-92 `(b,a0,a5)` from branch-B coefficients and forces `gamma_W=1/9`, a route the `.py` has
+no analogue for. 112 stays `strong`.
+
+(For completeness: 12/12 re-verified, 86 deliverable values checked batch-wide, 0 misaligned,
+`material_change: false` on all 12 — NO downstream staling. The other findings are at
+NON-checkpoint stages, all `mathematica_transliteration` pass-1 MISSES re-authored to
+independent routes: 107 [`Series` port → undetermined-coefficient `Solve` of `Lambda_def*Y=L0`],
+110 [`Series` port → linear `Solve` of `lambdaR*Y_R=(-3+rho)` + rho-jet], 114 [`Inverse[m]`/`apart`
+port → scalar `Solve`-elimination Schur complement] — all USER-AUTHORIZED, verify-confirmed
+independent, MMA byte-identical. NO genuine `paper_misalignment` anywhere → ZERO paper/notes
+edits. 8 clean: 103 [status-only], 104, 106, 108, 109, 111, 112 [checkpoint], 113 [status-only].)

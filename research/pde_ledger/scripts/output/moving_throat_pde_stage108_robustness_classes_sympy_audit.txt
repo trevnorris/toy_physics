@@ -22,4 +22,3 @@ Sigma5 general preservation locus = -S*beta**5/9 + S/9 - Sigma0/27
 general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27 = 0
 general preservation locus check = 0
 general locus reduces to beta=1 (Class C) = 0
-# exit_code: 0

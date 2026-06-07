@@ -18,26 +18,50 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 );
 
 expectZero[name_String, expr_] := Module[{res},
-  res = FullSimplify[Expand[expr], Assumptions -> $Assumptions];
+  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
 banner["STAGE 134 — FAMILY-1 FIXED-POINT REDUCTION"];
 
-Clear[p, k, kk, k0, Ms, Mq];
-$Assumptions = p > 0 && Element[{k, kk, Ms, Mq}, Reals];
+Clear[x, p, k, kk, G, Ms, Mq, uFun];
+$Assumptions =
+  Element[{x, p, k, G, Ms, Mq}, Reals] &&
+  0 <= x <= 1 && p > 0 && k > 0 && G > 0 && k != p;
 
-sKernel[p_, k_] := FullSimplify[
-  p*(k*Tanh[k] + p*(Exp[-p]/Cosh[k] - 1))/((1 - Exp[-p])*(k^2 - p^2)),
+sigma = p*Exp[-p*x]/(1 - Exp[-p]);
+
+(* Independent derivation: solve the scalar mixed D/N mouth problem directly. *)
+uSol = DSolveValue[
+  {-uFun''[x] + k^2*uFun[x] == G*sigma, uFun[0] == 0, uFun'[1] == 0},
+  uFun[x],
+  x
+];
+u = FullSimplify[uSol, Assumptions -> $Assumptions];
+
+odeResidual = FullSimplify[-D[u, {x, 2}] + k^2*u - G*sigma, Assumptions -> $Assumptions];
+bcDirichlet = FullSimplify[u /. x -> 0, Assumptions -> $Assumptions];
+bcNeumann = FullSimplify[D[u, x] /. x -> 1, Assumptions -> $Assumptions];
+derivedKernel = FullSimplify[(D[u, x] /. x -> 0)/G, Assumptions -> $Assumptions];
+
+(* Paper closed form, checked against the derived kernel; not used as the source. *)
+paperKernel = FullSimplify[
+  p*(k*Tanh[k] + p*(Exp[-p]*Sech[k] - 1))/((1 - Exp[-p])*(k^2 - p^2)),
   Assumptions -> $Assumptions
 ];
 
+expectZero["BVP ODE residual", odeResidual];
+expectZero["BVP u(0)", bcDirichlet];
+expectZero["BVP u'(1)", bcNeumann];
+expectZero["derived mouth kernel equals boxed paper closed form", derivedKernel - paperKernel];
+
+$Assumptions = Element[{p, kk, Ms, Mq}, Reals] && p > 0 && kk > 0;
 sShell = Quiet[
-  FullSimplify[Limit[sKernel[p, k0], k0 -> 0], Assumptions -> p > 0],
+  FullSimplify[Limit[derivedKernel /. k -> kk, kk -> 0], Assumptions -> p > 0],
   Limit::alimv
 ];
-sQ = FullSimplify[sKernel[p, Pi/2], Assumptions -> p > 0];
+sQ = FullSimplify[derivedKernel /. k -> Pi/2, Assumptions -> p > 0];
 fixedPointLaw = FullSimplify[Ms + Mq*sQ, Assumptions -> p > 0];
 
 Print["S_shell = ", fmt[sShell]];
@@ -47,7 +71,7 @@ Print["S_q(p) = ", fmt[sQ]];
 
 (* Non-tautological numeric check: evaluate sQ at three independent Pi values
    against high-precision targets verified independently via mpmath. The targets
-   must NOT be derived from sKernel at runtime. *)
+   must NOT be derived from the boxed closed form at runtime. *)
 expectClose[name_String, got_, want_, tol_] := Module[{d},
   d = Abs[N[got - want, 30]];
   Print[name, " = ", got, "  (target ", want, ", diff ", d, ")"];

@@ -2,6 +2,9 @@
 ========================================================================================
 STAGE 129 — EXPLICIT GNLS + LOCALIZED-MAXWELL MOUTH BOUNDARY LAYER
 ========================================================================================
+Independently derived sigma = (E^(piM - (piM*z)/lM)*piM)/((-1 + E^piM)*lM)
+derived profile matches boxed sigma_Pi = 0
+PASS: derived profile matches boxed sigma_Pi
 sigma_Pi(z) = piM/(E^((piM*z)/lM)*(1 - E^(-piM))*lM)
 Normalization = 1
 profile normalization = 0
@@ -12,6 +15,8 @@ PASS: zero-flux current
 Stationary zero-flux ODE residual = 0
 boundary-layer ODE residual = 0
 PASS: boundary-layer ODE residual
+Onsager current from mu identity = 0
+PASS: Onsager current from mu identity
 
 Derived electrochemical bias:
 Pi_m = V1*L/Theta_sigma

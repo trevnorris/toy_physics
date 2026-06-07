@@ -1178,3 +1178,21 @@ solve + §5 2×2 `coreMatrix` Solve-elimination; committed `.wl` byte-identical,
 118 F1 `tautological_check` de-taut [`K_q`/`kQ` tied to the independently-computed gradient integral
 `chiGrad = ∫(χ')²dz`, asserted `=π²/(4 L_W²)`; printed `K_q` value unchanged]. 120 & 124 are status-only
 by design.)
+
+## Pass 2 — Batch IV.4 (2026-06-06)
+
+Pass-2 Batch IV.4 (127-138): reviewed — **NO checkpoints in range**, NO checkpoint constant moved, no
+new checkpoint constant introduced. 1 value misaligned (resolved — 127's notes digit below), all other
+emitted deliverable values reconciled; `material_change: false` on all 12. **Cumulative
+checkpoint-constant provenance is unchanged from the IV.2 close (105 retained at the higher-bar
+standard); no checkpoint constant moved.** The pass-2 re-confirmed carry-forwards
+`Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605428`, and `Σ_m*≈0.451485277739090` are owned UPSTREAM
+(at 130/131/133/135) and are **NOT checkpoint constants** — they are carried, not pinned, in the IV.4
+range. The ONE value-mismatch is NOTES-ONLY and NON-checkpoint: 127 x*_exp `0.662765402623160`→
+`0.662765402623161` (15th sig-fig transcription typo; both engines compute …161; user-resolved
+correct-to-script; published cards UNAFFECTED — the SCRIPTS were always correct). (For completeness:
+the three script-side fixes introduced no new constant — 129's `.wl` RE-AUTHORED from a transliterated
+profile port to an independent `DSolve` zero-flux-ODE route + Onsager-current assertion, 134's `.wl`
+RE-AUTHORED from a postulated-kernel port to an independent `DSolveValue` mixed-D/N BVP route, 135's
+X−X closure residual removed; all committed outputs additive/byte-identical, no emitted value moved.)
+No carried checkpoint constant changed.

@@ -22,6 +22,11 @@ print("Zero-flux current J_sigma =", J_sub)
 mu = Theta*sp.log(sigma/sigma_star) + V1*z
 res = sp.simplify(Theta*sp.diff(sigma, z) + V1*sigma)
 print("Stationary zero-flux ODE residual =", res.subs({V1: Pi*Theta/L}))
+J_from_mu = -M*sigma*sp.diff(mu, z)
+mu_link_res = sp.simplify(J_from_mu - J)
+print("Onsager current from mu identity residual =", mu_link_res)
+if mu_link_res != 0:
+    raise AssertionError("Onsager current does not match -M*sigma*d(mu)/dz.")
 
 if sp.simplify(sp.integrate(sigma, (z, 0, L)) - 1) != 0:
     raise AssertionError("Profile not normalized.")

@@ -557,3 +557,22 @@ re-author to an independent route [§1–§4 undetermined-coefficient solve + §
 Solve-elimination; committed `.wl` byte-identical; added to the Independent-Mirror Set] and 118 F1
 `tautological_check` de-taut [`K_q` tied to the independently-computed gradient integral `chiGrad`].
 γ₀=(1+r_c)/9 re-confirmed a POSTULATED pure-scale ANSATZ, not a derived checkpoint constant.)
+
+## Pass 2 — Batch IV.4 (2026-06-06)
+
+Pass-2 Batch IV.4 (127-138): **NO checkpoints in range** (all `is_checkpoint: false`). 12/12
+re-verified at v2 depth + value-reconciliation augmentation, `material_change: false` on all 12 (NO
+downstream staling). The 25 checkpoint trust tiers are therefore unaffected by IV.4; **cumulative
+checkpoint trust is unchanged from the IV.2 close (105 retained at `strong`)**. (For completeness: 1
+value misaligned [127's NOTES-ONLY x*_exp 15th-sig-fig digit typo `…160`→`…161`, user-resolved
+correct-to-script; published cards UNAFFECTED], all other emitted deliverable values reconciled; 128 &
+132 & 136 are status-only consolidation cards by design [no scripts, upstream-verified carry-forwards
+in both engines]; the three script-side fixes are at NON-checkpoint stages — 129 F1
+`mathematica_transliteration`+`insufficient_verification` FULL re-author to an independent `DSolve`
+zero-flux-ODE boundary-layer route + Onsager-current assertion [added to the Independent-Mirror Set],
+134 F1 `mathematica_transliteration` FULL re-author to an independent `DSolveValue` mixed-D/N BVP
+mouth-response-kernel route [added to the Independent-Mirror Set], 135 F1 `tautological_check` X−X
+closure-residual removal. No certified checkpoint constant moved; no new checkpoint constant
+introduced. The carry-forwards `Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605428`,
+`Σ_m*≈0.451485277739090` are pass-2 re-confirmed but are owned upstream (130/131/133/135) and are NOT
+checkpoint constants.)

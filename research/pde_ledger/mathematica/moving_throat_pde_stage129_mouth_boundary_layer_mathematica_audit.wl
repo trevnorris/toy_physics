@@ -32,6 +32,16 @@ $Assumptions =
 
 sigma = piM*Exp[-piM*z/lM]/(lM*(1 - Exp[-piM]));
 jSigma = -mobility*(thetaSigma*D[sigma, z] + v1*sigma);
+mu = thetaSigma*Log[sigma/sigmaStar] + v1*z;
+
+(* Independent re-derivation: solve the stationary zero-flux ODE and normalize *)
+sol = DSolve[thetaSigma*sigmaFn'[z] + v1*sigmaFn[z] == 0, sigmaFn, z];
+sigmaGen = sigmaFn[z] /. First[sol];
+cVal = C[1] /. First[Solve[Integrate[sigmaGen, {z, 0, lM}] == 1, C[1]]];
+sigmaDerived = FullSimplify[(sigmaGen /. C[1] -> cVal) /. v1 -> piM*thetaSigma/lM,
+  Assumptions -> $Assumptions];
+Print["Independently derived sigma = ", fmt[sigmaDerived]];
+expectZero["derived profile matches boxed sigma_Pi", sigmaDerived - sigma];
 
 Print["sigma_Pi(z) = ", fmt[sigma]];
 Print["Normalization = ", fmt[FullSimplify[Integrate[sigma, {z, 0, lM}], Assumptions -> $Assumptions]]];
@@ -44,6 +54,7 @@ expectZero["zero-flux current", jSub];
 residual = FullSimplify[(thetaSigma*D[sigma, z] + v1*sigma) /. v1 -> piM*thetaSigma/lM, Assumptions -> $Assumptions];
 Print["Stationary zero-flux ODE residual = ", fmt[residual]];
 expectZero["boundary-layer ODE residual", residual];
+expectZero["Onsager current from mu identity", (-mobility*sigma*D[mu, z]) - jSigma];
 
 Print[""];
 Print["Derived electrochemical bias:"];

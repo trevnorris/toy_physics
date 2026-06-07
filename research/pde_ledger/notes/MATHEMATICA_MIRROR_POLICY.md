@@ -663,6 +663,23 @@ different verification structure from the SymPy side:
   is preserved, so `Xi_v(F1) ≈ −1.01675633282526` (negative, not the +1.0168 mis-pass);
   `v_w0` declared REAL (not positive); healing lock `c_s→ℏ/(2 m ℓ)` applied only in the
   `Xi_T` inversion (6 PASS)
+- `129`
+  red-team pass-2 batch IV.4 (2026-06-06) RE-AUTHORED from a line-by-line port that POSTULATED the
+  mouth boundary-layer profile. USER-AUTHORIZED independent route: the `.wl` now DERIVES the profile
+  via `DSolve` of the zero-flux ODE `Θσ'+V₁σ=0` + normalization, cross-checked against the boxed
+  closed form via `expectZero`; AND the Onsager-current link `−Mσ∂_zμ = jSigma` is now asserted in
+  BOTH engines (was dead code). Committed output additive (new PASS lines); deliverable values
+  unchanged. Verify-confirmed independent. One of the two genuine IV.4 transliterations
+- `134`
+  red-team pass-2 batch IV.4 (2026-06-06) RE-AUTHORED from a line-by-line port that POSTULATED the
+  mouth-response kernel. USER-AUTHORIZED independent route: the `.wl` now DERIVES S(Π,κ) from the
+  scalar mixed Dirichlet/Neumann BVP via `DSolveValue` (`−u''+κ²u=G·σ, u(0)=0, u'(1)=0`,
+  `kernel=u'(0)/G`, mirroring stage 133's independent route), feeding `S_shell`/`S_q`; the boxed
+  closed form survives only as an `expectZero` RHS check; `.py` UNCHANGED. (The audit agent's drafted
+  directive only added a cosmetic Limit-vs-substitution cross-check on the SAME postulated kernel —
+  the ORCHESTRATOR rewrote the directive to require a genuine DSolveValue BVP derivation.) Committed
+  output additive; deliverable values unchanged. Verify-confirmed independent. One of the two genuine
+  IV.4 transliterations
 - `175`
   red-team batch 8 added a Series+Coefficient (`dlogSeries[expr_] :=
   Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) independent route
@@ -1236,3 +1253,48 @@ self-banner → DEFERRED (content-keyed, never offset-sweep). Seat policy held: 
 `.wl`-touching Codex sessions (concurrent, at the 2-seat cap, flock-safe); the r_F1 paper fix = a
 separate out-of-band 0-seat Codex session (no `math -script`); orchestrator exec sequential after all
 Codex done (no overlap).
+
+## Pass 2 — Batch IV.4 (2026-06-06)
+
+Pass-2 Batch IV.4 (127-138, `Part IV.4 — Penetration, mouth-boundary, fixedpoint`): the
+orchestrator ground-truth `.wl`-vs-`.py` read was run on ALL 9 dual-engine stages (127, 129, 130,
+131, 133, 134, 135, 137, 138) — the backstop CONFIRMED every audit-agent call (no under-calls).
+**The two genuine transliterations (129 and 134) were both RE-AUTHORED to independent routes; 0
+sanctioned mirrors remain in IV.4 — all 9 dual-engine stages are now genuinely independent.**
+
+- **129** (`mathematica_transliteration` + `insufficient_verification`) — USER-AUTHORIZED FULL
+  re-author: the `.wl` now independently DERIVES the mouth boundary-layer profile via `DSolve` of the
+  zero-flux ODE `Θσ'+V₁σ=0` + normalization (was a line-by-line port that POSTULATED the profile),
+  checked against the boxed form via `expectZero`; AND the Onsager-current link `−Mσ∂_zμ = jSigma` is
+  now asserted in BOTH engines (was dead code). Committed output additive (new PASS lines);
+  deliverable values unchanged. **129 ADDED to the Independent-Mirror Set above.**
+- **134** (`mathematica_transliteration`) — USER-AUTHORIZED FULL re-author: the `.wl` now DERIVES the
+  mouth-response kernel S(Π,κ) from the scalar mixed Dirichlet/Neumann BVP via `DSolveValue`
+  (mirroring stage 133's independent route: `−u''+κ²u=G·σ, u(0)=0, u'(1)=0, kernel=u'(0)/G`), feeding
+  `S_shell`/`S_q`; the boxed closed form survives only as an `expectZero` RHS check; `.py` UNCHANGED.
+  (Note: the audit agent's drafted directive only added a cosmetic Limit-vs-substitution cross-check
+  on the SAME postulated kernel — the ORCHESTRATOR rewrote the directive to require a genuine
+  DSolveValue BVP derivation.) Committed output additive; deliverable values unchanged. **134 ADDED
+  to the Independent-Mirror Set above.**
+- **135** (`tautological_check`) — removed the `.wl:78` X−X "closure residual" assertion
+  (`piStar − sigmaStar*(4−sStar) ≡ 0` by construction; sigmaStar was solved from that very equation),
+  kept the residual PRINT (matching the SymPy parity, which already demoted it). 135's `.wl` confirmed
+  still independent (carry-forward kernel + independent outlet-reduction identity); NOT a mirror change.
+
+The other dual-engine stages were confirmed independent, unchanged: **127** (Integrate-derived bias
+factors), **130** (Integrate-derived gPi + native `Reduce` monotonicity), **131** (cleared-denominator
+bracketed `FindRoot`, correct `(e^p−1)` sign), **133** (`DSolveValue` BVP), **137**
+(matrix-`Inverse[M_core]` Schur reconstruction, mirrors stage-114), **138** (independent algebra +
+extra R_q-formula check). 128/132/136 are status-only consolidation cards (no scripts). The ONLY
+paper/notes edit was the 127 notes digit fix (x*_exp `…160`→`…161`, value_mismatch user-resolved
+correct-to-script; published cards UNAFFECTED). `material_change: false` on all 12; all Codex iter-1
+exit 0 (no iter-2); NO checkpoints in range. INFRA: 6 orchestrator exec runs exit 0 (reliability
+gate); committed outputs refreshed (129 sympy stripped a stale pre-pass-2 `# SymPy Audit Output/#
+Status: PASS` wrapper header; 129 mma gained the DSolve-derivation + Onsager PASS lines; 135 mma
+dropped the stale `PASS: closure residual` line; 134 sympy/mma + 135 sympy byte-identical to Codex's
+run). Arbiter grep CLEAN — no stale self-epoch (110–121) self-banners; only legit upstream cross-refs
+(097/114 in 137's Schur route, 121 r_F1 owner). Seat policy held: 129∥134 = 2 `.wl` Codex sessions at
+the cap, then 135 solo; 127 notes-edit = 0-seat (ran concurrent); orchestrator exec sequential after
+all Codex done. NO new deferred numbering residual — IV.4 cards clean of the +17 `\stagefield{Purpose}`
+class that IV.3 surfaced; 132 "180–182"→129–131 and 136 "184–186"→133–135 attribution corrections
+confirmed holding.

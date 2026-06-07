@@ -851,3 +851,55 @@ class the numbering reconciliation MISSED (its scan keyed on `\section`/`\label`
 `\stagefield{Purpose}`); 122/123 cards "Mathematica audit: none yet" status understatement; 121 `.wl`
 `stage99TubeLength`; 116 source "Stage 98" γ₀ cross-ref. **Ansatz catalog:** γ₀=(1+r_c)/9 re-confirmed
 a POSTULATED pure-scale ANSATZ (not derived). Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.4 (2026-06-06)
+
+Pass-2 Batch IV.4 (127-138, `Part IV.4 — Penetration, mouth-boundary, fixedpoint`, 12 stages):
+all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation; **12/12
+verified**, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0 blocked,
+all Codex iter-1 exit 0 (no iter-2). **1 value MISALIGNED (resolved — 127's notes digit below),
+all other emitted deliverable values reconciled.** **NO checkpoints in range; NO EM-projected
+stages in range; no new postulated constant.** **128/132/136 are legitimately status-only
+consolidation cards by design** (no scripts; all carry-forwards upstream-verified in both engines).
+
+**The ONE value-mismatch (notes-only, USER-RESOLVED correct-to-script; published cards
+UNAFFECTED):** 127 notes x*_exp `0.662765402623160`→`0.662765402623161` (15th sig-fig
+transcription typo; both engines compute …161); Codex-applied the single notes hunk, Claude-reviewed;
+the scripts were always correct.
+
+**4 findings stages, all resolved (127, 129, 134, 135); 3 are script-side `.wl`/`.py` (no prose):**
+- **129 — `mathematica_transliteration` + `insufficient_verification` → USER-AUTHORIZED FULL
+  re-author:** the `.wl` now independently DERIVES the mouth boundary-layer profile via `DSolve` of
+  the zero-flux ODE `Θσ'+V₁σ=0` + normalization (was a line-by-line port that postulated the
+  profile), checked against the boxed form via `expectZero`; AND the Onsager-current link
+  `−Mσ∂_zμ = jSigma` is now asserted in BOTH engines (was dead code). Committed output additive,
+  deliverable values unchanged. **129 now independent dual-engine** (added to the Independent-Mirror Set).
+- **134 — `mathematica_transliteration` → USER-AUTHORIZED FULL re-author:** the `.wl` now DERIVES the
+  mouth-response kernel S(Π,κ) from the scalar mixed Dirichlet/Neumann BVP via `DSolveValue`
+  (mirroring stage 133's independent route: `−u''+κ²u=G·σ, u(0)=0, u'(1)=0, kernel=u'(0)/G`),
+  feeding `S_shell`/`S_q`; the boxed closed form survives only as an `expectZero` RHS check; `.py`
+  UNCHANGED. (The audit agent's drafted directive only added a cosmetic Limit-vs-substitution
+  cross-check on the SAME postulated kernel — the ORCHESTRATOR rewrote it to require a genuine
+  DSolveValue BVP derivation.) Committed output additive, deliverable values unchanged. **134 now
+  independent dual-engine** (added to the Independent-Mirror Set).
+- **135 — `tautological_check`:** removed the `.wl:78` X−X "closure residual" assertion
+  (`piStar − sigmaStar*(4−sStar) ≡ 0` by construction; sigmaStar was solved from that very equation),
+  kept the residual PRINT (matching the SymPy parity, which already demoted it); 135's `.wl` confirmed
+  still independent (carry-forward kernel + independent outlet-reduction identity), NOT a mirror change.
+
+**8 script-side clean → verified:** 128, 130, 131, 132, 133, 136, 137, 138. The 9 dual-engine stages
+(127, 129, 130, 131, 133, 134, 135, 137, 138) are now ALL genuinely independent (orchestrator
+ground-truth `.wl`-vs-`.py` read on all 9 confirmed it — 0 sanctioned mirrors remain in IV.4); 129 &
+134 were the two genuine transliterations, now re-authored. So the Coverage-Totals "Mathematica audits
+present" raw count does NOT move (129/134 already counted; this is an independence upgrade, not a new
+`.wl`). **Dominant defect theme — transliteration `.wl` line-by-line ports** (129/134) on the two
+stages that derive a boundary-layer profile / mouth-response kernel, plus one X−X closure residual (135).
+INFRA: 6 orchestrator exec runs exit 0 (reliability gate); committed outputs refreshed (129 sympy
+stripped a stale pre-pass-2 `# SymPy Audit Output/# Status: PASS` wrapper header; 129 mma gained the
+DSolve-derivation + Onsager PASS lines; 135 mma dropped the stale `PASS: closure residual` line; 134
+sympy/mma + 135 sympy byte-identical to Codex's run). Arbiter grep CLEAN — no stale self-epoch
+(110–121) self-banners; only legit upstream cross-refs (097/114 in 137's Schur route, 121 r_F1 owner).
+**NO new deferred numbering residual from IV.4** — the cards are clean of the +17
+`\stagefield{Purpose}` class that IV.3 surfaced; 132 "180–182"→129–131 and 136 "184–186"→133–135
+attribution corrections confirmed holding. See `PAPER_CLEANUP_TRACKER.md` P5-13,
+`MATHEMATICA_MIRROR_POLICY.md`. Reference memory `numbering-drift-root-cause`.

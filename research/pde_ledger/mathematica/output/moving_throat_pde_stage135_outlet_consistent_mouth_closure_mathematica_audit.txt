@@ -21,8 +21,6 @@ M_q^* numeric check diff = 1.124622808555747000591818502074253708581495`13.77030
 PASS: M_q^* numeric check
 mixed-lane correction numeric check diff = 1.08162512384143646836332`13.789654206224501*^-15
 PASS: mixed-lane correction numeric check
-closure residual diff = 0``28.68818091139617
-PASS: closure residual
 3 Sigma_m^* < Pi_* < 4 Sigma_m^* = True
 PASS: 3 Sigma_m^* < Pi_* < 4 Sigma_m^*
 

@@ -434,3 +434,20 @@ out-of-band this batch** (Family-1 radius surd `r_F1` `117π²`→`100π²` in `
 With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 pass-2 closed, the
 range 001-126 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends
 022-126) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.4 (2026-06-06)
+
+Pass-2 Batch IV.4 (127-138, `Part IV.4 — Penetration, mouth-boundary, fixedpoint`) re-verified at v2
+depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12.
+**NO EM-projected stages in range → no EM-projection change** — IV.4 is the penetration /
+mouth-boundary-layer / mouth-response-kernel / fixed-point band, downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched: no EM result moved. The
+script-side fixes (129's `mathematica_transliteration`+`insufficient_verification` FULL re-author to
+an independent `DSolve` zero-flux-ODE route + Onsager-current assertion, 134's
+`mathematica_transliteration` FULL re-author to an independent `DSolveValue` mixed-D/N BVP kernel
+route, 135's X−X closure-residual `tautological_check` removal) and the 127 notes digit fix
+(x*_exp …160→…161, value_mismatch user-resolved correct-to-script) are confined entirely to the IV.4
+band and touch no EM-projected identity; NO checkpoints in range. With I.1 + I.2 + II.1 + III.1 +
+III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 pass-2 closed, the range 001-138 is
+paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-138) remains
+paper-aligned under the second pass.

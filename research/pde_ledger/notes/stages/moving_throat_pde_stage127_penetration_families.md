@@ -75,7 +75,7 @@ Solving
 gives
 \[
 \boxed{
-x_*^{\exp}\approx 0.662765402623160.
+x_*^{\exp}\approx 0.662765402623161.
 }
 \]
 

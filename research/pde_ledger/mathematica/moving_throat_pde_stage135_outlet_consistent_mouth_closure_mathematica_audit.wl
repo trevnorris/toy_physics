@@ -75,7 +75,6 @@ expectApprox["Sigma_m^* numeric check", sigmaStar, 0.451485277739089696513730132
 expectApprox["M_s^* numeric check", msStar, 1.80594111095635878605492052884, 10^-14];
 expectApprox["M_q^* numeric check", mqStar, -0.451485277739089696513730132210, 10^-15];
 expectApprox["mixed-lane correction numeric check", mixedCorrection, -0.297111597463198185916386491356, 10^-14];
-expectApprox["closure residual", residual, 0, 10^-14];
 expectTrue["3 Sigma_m^* < Pi_* < 4 Sigma_m^*", 3*sigmaStar < piStar < 4*sigmaStar];
 
 Print[""];

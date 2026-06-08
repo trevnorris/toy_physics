@@ -1,6 +1,6 @@
 # Red-Team Batch Status
 
-Generated: 2026-06-06T23:03:08-06:00
+Generated: 2026-06-08T11:21:35-06:00
 Project: pde_ledger
 
 | Batch | Range | Stages | States | Label |
@@ -17,7 +17,7 @@ Project: pde_ledger
 | IV.2 | 103–114 | 12 | verified=12 | Part IV.2 — Outgoing DtN, deformation, robustness, robin |
 | IV.3 | 115–126 | 12 | verified=12 | Part IV.3 — Core balance, DtN mixed, outlet, positive source |
 | IV.4 | 127–138 | 12 | verified=12 | Part IV.4 — Penetration, mouth boundary, fixedpoint |
-| IV.5 | 139–150 | 12 | pending=12 | Part IV.5 — Susceptibility, branch, defect transport |
+| IV.5 | 139–150 | 12 | verified=12 | Part IV.5 — Susceptibility, branch, defect transport |
 | IV.6 | 151–163 | 13 | pending=13 | Part IV.6 — Correction, coevolution, traction, off-family |
 | V.1 | 164–175 | 12 | pending=12 | Part V.1 — Microscopic logs, drifts, bundle inversion |
 | V.2 | 176–187 | 12 | pending=12 | Part V.2 — Load shape, transfer shape, coherent slippage |

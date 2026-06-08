@@ -691,6 +691,34 @@ different verification structure from the SymPy side:
   `expectApprox` cross-check targets); "sanctioned mirror" comment removed. `.py` UNCHANGED (reference
   engine). Output gained precision (1e-12 deliverables) + 4 new independence checks. Verify/orchestrator
   ground-truth-confirmed independent (the audit agent had called it CLEAN — orchestrator OVERTURNED)
+- `158`
+  red-team pass-2 batch IV.6 (2026-06-08) RE-AUTHORED from a `Series`-on-shifted-closed-form mirror
+  (⭐ ORCHESTRATOR OVERTURN — the audit agent called 158 CLEAN under "no independent route exists for a
+  pure-Taylor stage"; the orchestrator ground-truth `.wl`-vs-`.py` read OVERTURNED that — for the two
+  load-bearing checks both engines ran the IDENTICAL Taylor choreography on the IDENTICAL shifted closed
+  forms: `rLin = Normal[Series[rFun /. g->gStar+dg, {dg,0,1}]]` mirrored `R_lin = sp.series(...)`,
+  `chiLin = Normal[Series[chi,{eps,0,1}]]` mirrored `chi_lin = sp.series(...)`; the IV.5-139 lesson exactly).
+  USER-AUTHORIZED independent route: every linear law now derived via analytic base-point differentiation
+  (`rSlope = D[rFun,g]/.g→gStar`; `D[mQBase,…]`/`D[piBase,…]` partials; `D[chi,eps]/.eps→0`; `dRFromDg`
+  from `D[(g−r)²/(1+r²),g]/.g→gStar`) — genuinely independent of `Series`-on-shifted-form, can-fail (each
+  compared to a separately hand-typed closed form). All 6 `expectZero` identities/targets UNCHANGED; all 8
+  printed numeric coefficients byte-identical; committed `.wl` output BYTE-IDENTICAL to HEAD (method-only);
+  `.py` UNCHANGED. One of the two genuine IV.6 transliterations
+- `161`
+  red-team pass-2 batch IV.6 (2026-06-08) RE-AUTHORED from a near-line-by-line port (audit-flagged
+  correctly: same `eps->0` derivative trick `dBW = D[bWPert,eps]/.eps->0`, same `epsKExact`/`epsGExact`
+  closed forms + the same `12 lW^2 -> Pi^2 a^2 (1+rc)` branch substitution, same re-typed Stage-159 transport
+  literals, and even a verbatim-ported inline comment; only `PolynomialRemainder` vs `.subs(poly,0)` differed
+  in 2/9 checks). USER-AUTHORIZED route-only re-author: `dB_W` via `Normal[Series[…,{eps,0,1}]]`+`Coefficient`
+  (vs the `.py`'s `diff`); the D/N even/odd defects via logarithmic derivatives `D[Log[kappaRatio],…]` and
+  `D[Log[gamma0Sym/(1+rc)],…]` (no `PolynomialRemainder` survives — the `dln` target emerges directly); the
+  Stage-160 prefactor made an explicit named factor; the ported comment deleted. All 9 `expectZero`
+  identities/targets UNCHANGED; prefactor `(1+r_F1²)/9 = 0.46236233468786880105…` and the `Δ_Q` coeffs
+  (5.352238871696225 / 10.70447774339245 / −1.16275838754222) preserved. Committed `.wl` output form-only
+  change (the `d eps_kappa` intermediate now prints the reduced form `(-2 da)/a + (2 dLW)/lW − drc/(1+rc)`;
+  the `d eps_kappa identity = 0` check passes either way — same value); `.py` UNCHANGED. One of the two
+  genuine IV.6 transliterations. **0 sanctioned mirrors remain in IV.6** — all 12 IV.6 dual-engine stages
+  now genuinely independent
 - `175`
   red-team batch 8 added a Series+Coefficient (`dlogSeries[expr_] :=
   Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) independent route

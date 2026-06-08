@@ -36,7 +36,7 @@ banner("STAGE 162 — PARENT COMPENSATION-SURFACE RIGIDITY")
 r, dr = sp.symbols("r dr", real=True)
 pi = sp.pi
 
-# Exact parent family formulas from Stages 99 and 102.
+# Exact parent family formulas from Stage 119 (with gamma0 from Stages 115-116).
 gamma0 = (1 + r**2) / 9
 Lratio = pi / 2 * sp.sqrt((1 + r**2) / 3)
 g_lower = r - sp.sqrt(1 + r**2) / 2

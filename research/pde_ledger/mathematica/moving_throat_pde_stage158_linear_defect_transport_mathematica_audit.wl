@@ -30,31 +30,44 @@ $Assumptions = Element[{g, r, dg}, Reals];
 
 gStar = r - Sqrt[1 + r^2]/2;
 rFun = (g - r)^2/(1 + r^2);
-rShift = Expand[rFun /. g -> gStar + dg];
-rLin = Normal[Series[rShift, {dg, 0, 1}]];
+rBase = FullSimplify[rFun /. g -> gStar, Assumptions -> $Assumptions];
+rSlope = FullSimplify[D[rFun, g] /. g -> gStar, Assumptions -> $Assumptions];
+rLin = Expand[rBase + rSlope*dg];
 rExpected = Expand[1/4 - dg/Sqrt[1 + r^2]];
 expectZero["linear delta R law", rLin - rExpected];
 
-Clear[sigma0, dSigma0, rStar, dR];
+Clear[sigma0, dSigma0, rStar, dR, sigmaVar, rVar];
 $Assumptions = Element[{sigma0, dSigma0, rStar, dR}, Reals];
 
-mQ = -(sigma0 + dSigma0)*(rStar + dR);
-mQLin = Expand[mQ] /. dSigma0*dR -> 0;
-mQ0 = -sigma0*rStar;
+mQBase = -sigmaVar*rVar;
+mQ0 = mQBase /. {sigmaVar -> sigma0, rVar -> rStar};
+mQLin = Expand[
+  mQ0
+  + (D[mQBase, sigmaVar] /. {sigmaVar -> sigma0, rVar -> rStar})*dSigma0
+  + (D[mQBase, rVar] /. {sigmaVar -> sigma0, rVar -> rStar})*dR
+];
 expectZero["delta Mq law", (mQLin - mQ0) - (-rStar*dSigma0 - sigma0*dR)];
 
-Clear[sStar, dS];
+Clear[sStar, dS, piSigmaVar, piRVar, piSVar];
 $Assumptions = Element[{sigma0, dSigma0, rStar, dR, sStar, dS}, Reals];
 
-piExpr = (sigma0 + dSigma0)*(1 - (rStar + dR)*(sStar + dS));
-piLin = Expand[piExpr] /. {dSigma0*dR -> 0, dSigma0*dS -> 0, dR*dS -> 0};
-pi0 = sigma0*(1 - rStar*sStar);
+piBase = piSigmaVar*(1 - piRVar*piSVar);
+pi0 = piBase /. {piSigmaVar -> sigma0, piRVar -> rStar, piSVar -> sStar};
+piLin = Expand[
+  pi0
+  + (D[piBase, piSigmaVar] /. {piSigmaVar -> sigma0, piRVar -> rStar, piSVar -> sStar})*dSigma0
+  + (D[piBase, piRVar] /. {piSigmaVar -> sigma0, piRVar -> rStar, piSVar -> sStar})*dR
+  + (D[piBase, piSVar] /. {piSigmaVar -> sigma0, piRVar -> rStar, piSVar -> sStar})*dS
+];
 dPiExpected = (1 - rStar*sStar)*dSigma0 - sigma0*(rStar*dS + sStar*dR);
 expectZero["delta Pi law", (piLin - pi0) - dPiExpected];
 
-Clear[dgSym, rSym];
+Clear[dgSym, rSym, gSym];
 $Assumptions = Element[{sigma0, dSigma0, sStar, dS, dgSym, rSym}, Reals] && rSym > 0;
-dRFromDg = -dgSym/Sqrt[1 + rSym^2];
+dRFromDg = FullSimplify[
+  (D[(gSym - rSym)^2/(1 + rSym^2), gSym] /. gSym -> rSym - Sqrt[1 + rSym^2]/2)*dgSym,
+  Assumptions -> $Assumptions
+];
 
 dMqComposed = -(1/4)*dSigma0 - sigma0*dRFromDg;
 dMqBoxed = -(1/4)*dSigma0 + (sigma0/Sqrt[1 + rSym^2])*dgSym;
@@ -72,7 +85,9 @@ beta = 1 + eps*b;
 sigmaZero = eps*a0;
 sigmaFive = eps*a5;
 chi = FullSimplify[3*(sNorm*beta^5 + 9*sigmaFive)/(3*sNorm - sigmaZero)];
-chiLin = Expand[Normal[Series[chi, {eps, 0, 1}]]];
+chiBase = FullSimplify[chi /. eps -> 0, Assumptions -> $Assumptions];
+chiSlope = FullSimplify[D[chi, eps] /. eps -> 0, Assumptions -> $Assumptions];
+chiLin = Expand[chiBase + chiSlope*eps];
 chiExpected = 1 + eps*(5*b + a0/3 + 9*a5);
 expectZero["linear Delta_Q law", chiLin - chiExpected];
 
@@ -82,15 +97,37 @@ rF1 = SetPrecision[1.77799353547498, 30];
 sigma0Can = SetPrecision[4.651033550168876, 30];
 sCan = SetPrecision[0.6703621156734617, 30];
 tCan = SetPrecision[1.4467083664567624, 30];
-sqrt1 = Sqrt[1 + rF1^2];
 
-coefDRDG = N[-1/sqrt1, 20];
-coefDMQDSigma = -1/4;
-coefDMQDg = N[sigma0Can/sqrt1, 20];
-coefDPiDSigma = N[1 - sCan/4, 20];
-coefDPiDS = N[-sigma0Can/4, 20];
-coefDPiDG = N[sigma0Can*sCan/sqrt1, 20];
-coefDSigmaDT = N[(40/9)*tCan, 20];
+Clear[gNum, rNum, sigmaNum, rTransportNum, sNum, tNum];
+rNumFun = (gNum - rNum)^2/(1 + rNum^2);
+gNumStar = rNum - Sqrt[1 + rNum^2]/2;
+rTransportValue = 1/4;
+mQNum = -sigmaNum*rTransportNum;
+piNum = sigmaNum*(1 - rTransportNum*sNum);
+sigmaThatNum = (20/9)*tNum^2;
+dRdGCan = FullSimplify[D[rNumFun, gNum] /. gNum -> gNumStar, Assumptions -> Element[rNum, Reals]];
+
+coefDRDG = N[dRdGCan /. rNum -> rF1, 20];
+coefDMQDSigma = D[mQNum, sigmaNum] /. {sigmaNum -> sigma0Can, rTransportNum -> rTransportValue};
+coefDMQDg = N[
+  (D[mQNum, rTransportNum] /. {sigmaNum -> sigma0Can, rTransportNum -> rTransportValue})*
+    (dRdGCan /. rNum -> rF1),
+  20
+];
+coefDPiDSigma = N[
+  D[piNum, sigmaNum] /. {sigmaNum -> sigma0Can, rTransportNum -> rTransportValue, sNum -> sCan},
+  20
+];
+coefDPiDS = N[
+  D[piNum, sNum] /. {sigmaNum -> sigma0Can, rTransportNum -> rTransportValue, sNum -> sCan},
+  20
+];
+coefDPiDG = N[
+  (D[piNum, rTransportNum] /. {sigmaNum -> sigma0Can, rTransportNum -> rTransportValue, sNum -> sCan})*
+    (dRdGCan /. rNum -> rF1),
+  20
+];
+coefDSigmaDT = N[D[sigmaThatNum, tNum] /. tNum -> tCan, 20];
 coefDPiDT = N[coefDPiDSigma*coefDSigmaDT, 20];
 
 Print["dR/dg        = ", fmt[coefDRDG]];

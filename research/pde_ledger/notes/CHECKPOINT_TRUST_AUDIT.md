@@ -265,7 +265,7 @@ Disposition: `ready for citation support`
 | `036` | Exact support-feasibility function, exact loading split, onset boundary, and near-onset / endpoint structure under the explicit `0 <= xi < 1` boundary. Matching Mathematica execution coverage exists, but the trust grade rests on the symbolic theorem path rather than mirror independence. Red-team batch II.1 (2026-05-22) reverified end-to-end with no material change after adding a substantive symbolic kappa-based `F`-`R_target` identity, deleting tautological `R_target - X = X - X` and `gMaxTarget - alphaCrit` checks, re-deriving `dGTarget`/`gMaxTarget`/`gSeriesTarget` natively via polynomial form / `Limit` form / coefficient extraction, and adding a `disc + 72*delta^2 == 0` discriminant check (6 findings closed: tautologies, transliteration, insufficient_verification). | None urgent. Add numerical stress only if future papers start using this frontier quantitatively rather than as a symbolic admissibility gate. |
 | `089` | Exact minimal-isotropic demand versus explicit Family-1 window/ceiling comparisons in both CAS layers; a closed arithmetic theorem once the upstream minimal module is accepted. | None urgent. |
 | `090` | Narrow but explicit theorem-status boundary: the carried minimal module and carried Family-1 thresholds are all source-anchored, and both CAS layers replay the exact status verdict claimed in the note. | None urgent. |
-| `163` | Exact off-family normal-coordinate transport packet in both CAS layers; the Family-1 numbers are explanatory readbacks only and do not enter the symbolic theorem checks. | None urgent. Add numerical stress later only if downstream work starts relying on the canonical-point coefficient readbacks quantitatively. |
+| `163` | Exact off-family normal-coordinate transport packet in both CAS layers; the Family-1 numbers are explanatory readbacks only and do not enter the symbolic theorem checks. Red-team pass-2 batch IV.6 (2026-06-08) re-verified end-to-end at the higher checkpoint bar with no tier shift — BOTH engines confirmed genuinely independent (the `.wl` adds an implicit-function-theorem slope `−F_r/F_g` + a full `Series` perturbation route the `.py` lacks → strictly stronger), the load-bearing constant `4√(1+r*²)` (printed `8.15966765224253`) re-derived from `∂F/∂g` rather than trusted as a literal, substantive non-tautological assertions, exact paper alignment; `material_change: false`, NO checkpoint constant changed, no new pinned constant. | None urgent. Add numerical stress later only if downstream work starts relying on the canonical-point coefficient readbacks quantitatively. |
 | `105` | Exact outgoing-DtN fixing of `chi_Q`; symbolic theorem path is clean. Red-team IV.x/V.1 integrity remediation batch 2 (2026-05-29) re-verified end-to-end with no tier shift after rewriting the `.wl` chi_Q derivation along an independent residue/`Reduce`-witness route (single-ratio retarded module, `Im[]` projection, operator-product polynomial inversion); `material_change: false`, no derived constant moved. | None urgent. |
 | `112` | Exact hybrid / Robin branch solve with no open review issues. | None urgent. |
 | `001--002` | The foundational harmonic bookkeeping, confinement sign, densitized-versus-weighted convention, monopole bridge, `4\pi` overlap factor, and conservative `(a,L)` / grouped-`P_2` reductions are now explicit in the human-facing stage material and checked in both CAS layers; red-team batch I.1 (2026-05-21) reverified end-to-end with no material change. | None urgent. Add numerical stress only if later downstream papers need quantitative sensitivity tests at this foundation layer. |
@@ -593,3 +593,26 @@ genuinely exercised; core moment integrals were already independent per engine].
 constant moved; no new checkpoint constant introduced. The carry-forwards `Π_*=1.50882951349316`,
 `S_q(Π_*)≈0.658075937605429` are pass-2 re-confirmed but are owned upstream (131/133/134/135) and are
 NOT checkpoint constants.)
+
+## Pass 2 — Batch IV.6 (2026-06-08)
+
+Pass-2 Batch IV.6 (151-163): ONE checkpoint in range — **163**
+(`off_family_normal_coordinate`) — re-verified at v2 depth + value-reconciliation augmentation,
+**clearing the higher checkpoint bar**; **no checkpoint constant changed**, no trust impact, NO new
+pinned constant introduced. 163 cleared the bar with BOTH engines confirmed genuinely independent —
+the `.wl` adds an implicit-function-theorem slope `−F_r/F_g` + a full `Series` perturbation route the
+`.py` lacks (strictly stronger, not a port) — and its load-bearing constant `4√(1+r*²)` (printed
+`8.15966765224253`) is re-derived from `∂F/∂g`, NOT trusted as a literal; substantive non-tautological
+assertions, exact paper alignment. 163 stays `strong`. 13/13 re-verified, `material_change: false` on
+all 13 (NO downstream staling). (For completeness: 0 values misaligned batch-wide [no
+`paper_misalignment` anywhere → ZERO paper/notes edits]; 153 is a status-only consolidation/carry-forward
+card by design [no scripts, no engines; values trace to upstream Stage 152→147]; the three findings are
+at NON-checkpoint stages — 158 F1 `mathematica_transliteration` USER-AUTHORIZED FULL re-author [⭐
+ORCHESTRATOR OVERTURN of a CLEAN verdict] from a `Series`-on-shifted-form mirror to independent analytic
+base-point differentiation [added to the Independent-Mirror Set; committed `.wl` byte-identical], 161 F1
+`mathematica_transliteration` USER-AUTHORIZED route-only re-author from a near-line-by-line port to a
+Series+Coefficient/logarithmic-derivative route [added to the Independent-Mirror Set], and 162 F1
+stale-numbering COMMENT only [`.py:39` `Stages 99 and 102`→`Stage 119 (with gamma0 from Stages
+115-116)`; non-load-bearing, output byte-identical]. The 9 dual-engine clean stages 151/152/154/155/156/
+157/159/160/163 were all transliteration-watch-backstopped by the orchestrator. No certified checkpoint
+constant moved; no new checkpoint constant introduced. **0 sanctioned mirrors remain in IV.6.**)

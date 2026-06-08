@@ -466,3 +466,21 @@ to the IV.5 band and touch no EM-projected identity; NO checkpoints in range; ZE
 With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 pass-2
 closed, the range 001-150 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus
 bookends 022-150) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.6 (2026-06-08)
+
+Pass-2 Batch IV.6 (151-163, `Part IV.6 — Correction, coevolution, traction, off-family`) re-verified at
+v2 depth + value-reconciliation augmentation; 13/13 verified, `material_change: false` on all 13.
+**NO EM-projected stages in range → no EM-projection change** — IV.6 is the correction / coevolution /
+traction / off-family band, downstream of and outside the projected-Maxwell core (004-021). No
+projected-EM identity was touched: no EM result moved. The three script-side findings (158's
+`mathematica_transliteration` USER-AUTHORIZED FULL re-author [⭐ ORCHESTRATOR OVERTURN of a CLEAN verdict]
+from a `Series`-on-shifted-form mirror to independent analytic base-point differentiation, 161's
+`mathematica_transliteration` USER-AUTHORIZED route-only re-author from a near-line-by-line port to a
+Series+Coefficient/logarithmic-derivative route, 162's stale-numbering COMMENT fix) are confined entirely
+to the IV.6 band and touch no EM-projected identity. The ONE checkpoint in range (**163**,
+`off_family_normal_coordinate`) cleared the higher bar with both engines independent and its load-bearing
+constant `4√(1+r*²)` re-derived from `∂F/∂g` — NOT an EM-projected stage, NO checkpoint constant changed;
+ZERO paper/notes edits. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 +
+IV.3 + IV.4 + IV.5 + IV.6 pass-2 closed, the range 001-163 is paper-aligned at pass-2 depth and the
+projected-EM core 004-021 (plus bookends 022-163) remains paper-aligned under the second pass.

@@ -13,7 +13,7 @@ PASS: linearized slippage law
 D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION
 ========================================================================================
 eps_kappa = -1 + (12*lW^2)/(a^2*Pi^2*(1 + rc))
-d eps_kappa = (-12*lW*(a*drc*lW - 2*a*dLW*(1 + rc) + 2*da*lW*(1 + rc)))/(a^3*Pi^2*(1 + rc)^2)
+d eps_kappa = (-2*da)/a + (2*dLW)/lW - drc/(1 + rc)
 d eps_kappa identity = 0
 PASS: d eps_kappa identity
 eps_gamma = -1 + (9*gamma0Sym)/(1 + rc)

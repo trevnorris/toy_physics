@@ -37,8 +37,13 @@ expectZero["exact similarity-defect decomposition", bW - (1 + rc)*(epsGamma - ep
 Clear[eps, rcStar, drc, depsK, depsG];
 $Assumptions = Element[{eps, rcStar, drc, depsK, depsG}, Reals];
 
-bWPert = bW /. {epsKappa -> eps*depsK, epsGamma -> eps*depsG, rc -> rcStar + eps*drc};
-dBW = FullSimplify[D[bWPert, eps] /. eps -> 0];
+bWPertSeries = Normal[
+  Series[
+    bW /. {epsKappa -> eps*depsK, epsGamma -> eps*depsG, rc -> rcStar + eps*drc},
+    {eps, 0, 1}
+  ]
+];
+dBW = FullSimplify[Coefficient[bWPertSeries, eps]];
 Print["dB_W = ", fmt[dBW]];
 expectZero["linearized slippage law", dBW - (1 + rcStar)*(depsG - depsK)/9];
 
@@ -47,45 +52,34 @@ banner["D/N-TUBE EVEN DEFECT AND THE EXACT HYBRIDIZATION CANCELLATION"];
 Clear[lW, a, dLW, da, dgamma0];
 $Assumptions = Element[{lW, a, dLW, da, dgamma0, rc, drc}, Reals] && lW > 0 && a > 0;
 
-epsKExact = FullSimplify[12*lW^2/(Pi^2*a^2*(1 + rc)) - 1];
-Print["eps_kappa = ", fmt[epsKExact]];
+kappaRatio = 12*lW^2/(Pi^2*a^2*(1 + rc));
+Print["eps_kappa = ", fmt[FullSimplify[kappaRatio - 1]]];
 
-depsKDirect = D[epsKExact, lW]*dLW + D[epsKExact, a]*da + D[epsKExact, rc]*drc;
-depsKBranch = FullSimplify[depsKDirect /. 12*lW^2 -> Pi^2*a^2*(1 + rc)];
+depsKBranch = FullSimplify[
+  D[Log[kappaRatio], lW]*dLW + D[Log[kappaRatio], a]*da + D[Log[kappaRatio], rc]*drc
+];
 Print["d eps_kappa = ", fmt[depsKBranch]];
 depsKTarget = 2*dLW/lW - 2*da/a - drc/(1 + rc);
-depsKDiff = PolynomialRemainder[
-  Expand[Numerator[Together[depsKBranch - depsKTarget]]],
-  -12*lW^2 + a^2*Pi^2*(1 + rc),
-  lW
-];
-depsKDiff = FullSimplify[depsKDiff];
+depsKDiff = FullSimplify[depsKBranch - depsKTarget];
 expectZero["d eps_kappa identity", depsKDiff];
 
 Clear[gamma0Sym, dgamma0, dlnGamma0];
 $Assumptions = $Assumptions && Element[{gamma0Sym, dgamma0, dlnGamma0}, Reals] && gamma0Sym > 0;
-epsGExact = FullSimplify[9*gamma0Sym/(1 + rc) - 1];
-Print["eps_gamma = ", fmt[epsGExact]];
-depsGDirect = D[epsGExact, gamma0Sym]*dgamma0 + D[epsGExact, rc]*drc;
-depsGBranch = FullSimplify[depsGDirect /. gamma0Sym -> (1 + rc)/9];
+gammaRatio = 9*gamma0Sym/(1 + rc);
+Print["eps_gamma = ", fmt[FullSimplify[gammaRatio - 1]]];
+depsGLog = FullSimplify[
+  D[Log[gamma0Sym/(1 + rc)], gamma0Sym]*dgamma0
+    + D[Log[gamma0Sym/(1 + rc)], rc]*drc
+];
+depsGBranch = FullSimplify[depsGLog /. gamma0Sym -> (1 + rc)/9];
 Print["d eps_gamma = ", fmt[depsGBranch]];
-(* On the branch d gamma_0 = (1+r_c)/9 * d ln gamma_0. *)
 expectZero[
   "d eps_gamma = d ln gamma0 - d ln(1+r_c)",
   (depsGBranch /. dgamma0 -> (1 + rc)*dlnGamma0/9) - (dlnGamma0 - drc/(1 + rc))
 ];
-diffIdentity = PolynomialRemainder[
-  Expand[
-    Numerator[
-      Together[
-        (depsGBranch - depsKBranch) - (9*dgamma0/(1 + rc) - 2*(dLW/lW - da/a))
-      ]
-    ]
-  ],
-  -12*lW^2 + a^2*Pi^2*(1 + rc),
-  lW
+diffIdentity = FullSimplify[
+  (depsGBranch - depsKBranch) - (9*dgamma0/(1 + rc) - 2*(dLW/lW - da/a))
 ];
-diffIdentity = FullSimplify[diffIdentity];
 expectZero["difference identity", diffIdentity];
 
 banner["TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW"];
@@ -96,8 +90,9 @@ $Assumptions = Element[{xiGamma, xiL, sigmaStar, dPiTan, dSigma0, dS, dThat, rcS
 upsilonPi = FullSimplify[(1 + rcStar)*(xiGamma - 2*xiL)/9];
 Print["Upsilon_Pi = ", fmt[upsilonPi]];
 
-deltaQ = FullSimplify[-9*sigmaStar*upsilonPi*dPiTan/((1 - sigmaStar)*(1 + rcStar))];
-nQm1 = FullSimplify[9*sigmaStar*upsilonPi*dPiTan/((1 - sigmaStar)*(1 + rcStar))];
+stage160Prefactor = FullSimplify[9*sigmaStar/((1 - sigmaStar)*(1 + rcStar))];
+deltaQ = FullSimplify[-stage160Prefactor*upsilonPi*dPiTan];
+nQm1 = FullSimplify[stage160Prefactor*upsilonPi*dPiTan];
 Print["Delta_Q = ", fmt[deltaQ]];
 Print["N_Q - 1 = ", fmt[nQm1]];
 expectZero[

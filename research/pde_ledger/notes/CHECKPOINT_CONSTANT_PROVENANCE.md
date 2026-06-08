@@ -1214,3 +1214,28 @@ symbolic Integrate route; the two literals survive ONLY as `expectApprox` cross-
 UNCHANGED, deliverables preserved at 1e-12 + gained precision; 146's ε-slope checks de-taut'd in BOTH
 engines, no emitted value moved.)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch IV.6 (2026-06-08)
+
+Pass-2 Batch IV.6 (151-163): reviewed — NO checkpoint constant changed, and the ONE checkpoint in range
+(**163**, `off_family_normal_coordinate`) pins **NO new numeric constant**. 0 values misaligned
+batch-wide (no `paper_misalignment` anywhere → ZERO paper/notes edits); `material_change: false` on all
+13; no new postulated constant introduced. **163** cleared the higher bar with BOTH engines confirmed
+genuinely independent (the `.wl` adds an implicit-function-theorem slope `−F_r/F_g` + a full `Series`
+perturbation route the `.py` lacks → strictly stronger). Its load-bearing constant `4√(1+r*²)` (printed
+`8.15966765224253`) is **re-derived from `∂F/∂g` — NOT trusted as a literal, NOT moved or re-pinned**;
+the value is UNCHANGED. **Zero unexplained literals remain in checkpoint 163's scripts.** **Cumulative
+checkpoint-constant provenance is unchanged from the IV.2 close (105 retained at the higher-bar
+standard); no checkpoint constant moved.** (For completeness: the three script-side findings introduced
+no new constant — 158's `.wl` RE-AUTHORED [⭐ ORCHESTRATOR OVERTURN of a CLEAN verdict, USER-AUTHORIZED]
+from a `Series`-on-shifted-form mirror to independent analytic base-point differentiation [`D[rFun,g]/.
+g→gStar`, `D[chi,eps]/.eps→0`, `dRFromDg` from `D[(g−r)²/(1+r²),g]/.g→gStar`]; all `expectZero`
+identities/targets unchanged, all 8 printed coefficients byte-identical, committed `.wl` output
+byte-identical to HEAD, `.py` unchanged; 161's `.wl` RE-AUTHORED [USER-AUTHORIZED route-only] from a
+near-line-by-line port to a Series+Coefficient/logarithmic-derivative route [`D[Log[kappaRatio],…]`], the
+prefactor `(1+r_F1²)/9=0.46236233468786880105…` and the `Δ_Q` coeffs `5.352238871696225`/
+`10.70447774339245`/`−1.16275838754222` preserved, form-only output change, `.py` unchanged; 162's `.py`
+stale-numbering COMMENT fixed [`Stages 99 and 102`→`Stage 119 (with gamma0 from Stages 115-116)`;
+non-load-bearing, output byte-identical]. 153 is status-only by design. **0 sanctioned mirrors remain in
+IV.6.**)
+No carried checkpoint constant changed.

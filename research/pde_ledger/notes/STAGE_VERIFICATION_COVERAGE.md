@@ -961,3 +961,61 @@ stale self-epoch (122–133) self-banners; deferred cross-refs are all legit ups
 residual from IV.5** — the cards are numbering-clean of the +17 `\stagefield{Purpose}` class that IV.3
 surfaced. See `PAPER_CLEANUP_TRACKER.md` P5-14, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
 `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.6 (2026-06-08)
+
+Pass-2 Batch IV.6 (151-163, `Part IV.6 — Correction, coevolution, traction, off-family`,
+13 stages): all 13 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**13/13 verified**, `material_change: false` on all 13 (NO downstream staling), 0 stop-cold, 0
+blocked, all Codex iter-1 exit 0 (no iter-2), 0 Codex deviations. **0 values misaligned batch-wide**
+(no `paper_misalignment` anywhere → ZERO paper/notes edits). **ONE checkpoint in range — 163 — cleared
+the higher bar; NO EM-projected stages in range; no new postulated constant.** **153 is legitimately a
+status-only consolidation/carry-forward card by design** (no scripts, no engines — like 103/113/120/124;
+values trace to upstream Stage 152→147).
+
+**163 — CHECKPOINT (`off_family_normal_coordinate`) cleared the HIGHER bar:** both engines confirmed
+genuinely independent (the `.wl` adds an implicit-function-theorem slope `−F_r/F_g` + a full `Series`
+perturbation route the `.py` lacks → strictly stronger); its load-bearing constant `4√(1+r*²)` (printed
+`8.15966765224253`) is re-derived from `∂F/∂g`, NOT trusted as a literal; substantive non-tautological
+assertions, exact paper alignment; NO checkpoint constant changed.
+
+**3 findings stages, all resolved (158, 161, 162):**
+- **158 — `mathematica_transliteration` → USER-AUTHORIZED FULL re-author (⭐ ORCHESTRATOR OVERTURN):**
+  the audit agent called 158 CLEAN under "no independent route exists for a pure-Taylor stage"; the
+  orchestrator ground-truth `.wl`-vs-`.py` read OVERTURNED that — both engines were `Series`-expanding the
+  IDENTICAL shifted closed forms for the load-bearing δR + χ checks (the IV.5-139 lesson exactly). Codex
+  re-authored the `.wl` to analytic base-point differentiation (`D[rFun,g]/.g→gStar`, `D[chi,eps]/.
+  eps→0`, `dRFromDg` from `D[(g−r)²/(1+r²),g]/.g→gStar`) — genuinely independent, can-fail; all 6
+  `expectZero` identities/targets UNCHANGED, all 8 printed coefficients byte-identical; committed `.wl`
+  output BYTE-IDENTICAL to HEAD (method-only); `.py` UNCHANGED. **158 now independent dual-engine** (added
+  to the Independent-Mirror Set).
+- **161 — `mathematica_transliteration` → USER-AUTHORIZED route-only re-author:** audit-flagged correctly
+  (near-line-by-line port incl. a verbatim-ported comment; only `PolynomialRemainder` vs `.subs` differed
+  in 2/9 checks). Codex re-authored: `dB_W` via `Normal[Series[…,{eps,0,1}]]`+`Coefficient`, the D/N
+  even/odd defects via logarithmic derivatives `D[Log[kappaRatio],…]`/`D[Log[gamma0Sym/(1+rc)],…]` (no
+  `PolynomialRemainder` survives), the ported comment deleted; all 9 `expectZero` identities/targets
+  UNCHANGED, prefactor `(1+r_F1²)/9=0.46236233468786880105…` and the `Δ_Q` coeffs preserved; committed
+  `.wl` output form-only change; `.py` UNCHANGED. **161 now independent dual-engine** (added to the
+  Independent-Mirror Set).
+- **162 — stale-numbering COMMENT only (NOT user-level; Codex-applied, 0-seat):** `…stage162…
+  _sympy_audit.py:39` `# … Stages 99 and 102.`→`# … Stage 119 (with gamma0 from Stages 115-116).` (+17-era
+  residue, sibling of the Step-0 `Stages 99 and 170`→`Stage 119` fix; non-load-bearing, committed output
+  byte-identical; `.wl` untouched).
+
+**10 script-side clean → verified:** 151, 152, 154, 155, 156, 157, 159, 160, 163 (dual-engine,
+re-confirmed independent) + 153 (status-only). The 12 dual-engine stages (151, 152, 154–163) are now ALL
+genuinely independent (orchestrator transliteration-watch backstop ran on all 12 — 0 sanctioned mirrors
+remain in IV.6); 158 and 161 were the two genuine transliterations, now re-authored (154 borderline but
+accepted; 155/156 numerical-independence confirmed via last-digit output divergence; 152 re-derives
+`Π_*`/`g_*`/`A_T`/`B_T` via `FindRoot`/`D[`, MORE independent than the `.py`'s `mp.mpf` literals; 151
+sampled recursive-IBP integrator at 5 rational `Π_*` vs symbolic `Integrate`; 163 strictly stronger via
+the IFT slope). So the Coverage-Totals "Mathematica audits present" raw count does NOT move (158/161
+already counted; this is an independence upgrade, not a new `.wl`). **Dominant defect theme — the
+orchestrator ground-truth backstop** (the audit agent UNDER-called 158 as CLEAN; the orchestrator
+overturned — the 100/129/134/139 lesson reconfirmed). INFRA: 6 orchestrator exec runs exit 0 (158 sympy +
+158 mma + 161 sympy + 162 both byte-identical; 161 mma form-only). Arbiter grep CLEAN — no stale
+self-epoch (134–146) self-banners, no `168π²`/`168%` class, canonical Family-1 radius
+`√(4107−100π²)/(10π)` correct at 157. Seat policy held (158∥161 = 2 `.wl` Codex sessions at the cap, 162 =
+0-seat `.py`-only). **NO new deferred numbering residual from IV.6** — the cards are numbering-clean of the
++17 `\stagefield{Purpose}` class. See `PAPER_CLEANUP_TRACKER.md` P5-15, `MATHEMATICA_MIRROR_POLICY.md`.
+Reference memory `numbering-drift-root-cause`.

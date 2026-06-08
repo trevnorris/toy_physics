@@ -1195,4 +1195,22 @@ the three script-side fixes introduced no new constant — 129's `.wl` RE-AUTHOR
 profile port to an independent `DSolve` zero-flux-ODE route + Onsager-current assertion, 134's `.wl`
 RE-AUTHORED from a postulated-kernel port to an independent `DSolveValue` mixed-D/N BVP route, 135's
 X−X closure residual removed; all committed outputs additive/byte-identical, no emitted value moved.)
+
+## Pass 2 — Batch IV.5 (2026-06-08)
+
+Pass-2 Batch IV.5 (139-150): reviewed — **NO checkpoints in range**, NO checkpoint constant moved, no
+new checkpoint constant introduced. 0 values misaligned batch-wide (no `paper_misalignment` anywhere →
+ZERO paper/notes edits); `material_change: false` on all 12; no new postulated constant. **Cumulative
+checkpoint-constant provenance is unchanged from the IV.2 close (105 retained at the higher-bar
+standard); no checkpoint constant moved.** The pass-2 re-confirmed carry-forwards
+`Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605429` are owned UPSTREAM (at 131/133/134/135) and are
+**NOT checkpoint constants** — they are carried, not pinned, in the IV.5 range. No stale `168π²`/`168%`
+anywhere (only interior mantissa digits); the canonical Family-1 radius `√(4107−100π²)/(10π)` is used
+throughout. (For completeness: the two script-side findings introduced no new constant — 139's `.wl`
+RE-AUTHORED from a NUMERICAL mirror [imported `Π_*`/`S_q` literals + a hardcoded Stage-134 kernel closed
+form, "sanctioned mirror" comment] to an independent route [`FindRoot` Π_* on `g(Π)=g_minus`, correct
+sign `(e^p−1)`; `S_q(Π_*)` via independent source-moment quadrature `∫Σ·K_q` cross-checked against a
+symbolic Integrate route; the two literals survive ONLY as `expectApprox` cross-check targets], `.py`
+UNCHANGED, deliverables preserved at 1e-12 + gained precision; 146's ε-slope checks de-taut'd in BOTH
+engines, no emitted value moved.)
 No carried checkpoint constant changed.

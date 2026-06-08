@@ -451,3 +451,18 @@ band and touch no EM-projected identity; NO checkpoints in range. With I.1 + I.2
 III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 pass-2 closed, the range 001-138 is
 paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-138) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch IV.5 (2026-06-08)
+
+Pass-2 Batch IV.5 (139-150, `Part IV.5 — Family-1 actual mouth gains, susceptibility, profile`)
+re-verified at v2 depth + value-reconciliation augmentation; 12/12 verified, `material_change: false`
+on all 12. **NO EM-projected stages in range → no EM-projection change** — IV.5 is the Family-1
+actual-mouth-gains / mouth-gain-susceptibility / full-profile band, downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched: no EM result moved. The two
+script-side findings (139's `mathematica_transliteration` USER-AUTHORIZED FULL re-author from a
+NUMERICAL mirror to an independent `FindRoot` Π_* + source-moment quadrature S_q route, 146's
+`tautological_check`/`insufficient_verification` ε-slope de-taut in BOTH engines) are confined entirely
+to the IV.5 band and touch no EM-projected identity; NO checkpoints in range; ZERO paper/notes edits.
+With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 pass-2
+closed, the range 001-150 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus
+bookends 022-150) remains paper-aligned under the second pass.

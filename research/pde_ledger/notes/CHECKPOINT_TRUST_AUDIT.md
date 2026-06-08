@@ -576,3 +576,20 @@ closure-residual removal. No certified checkpoint constant moved; no new checkpo
 introduced. The carry-forwards `Π_*=1.50882951349316`, `S_q(Π_*)≈0.658075937605428`,
 `Σ_m*≈0.451485277739090` are pass-2 re-confirmed but are owned upstream (130/131/133/135) and are NOT
 checkpoint constants.)
+
+## Pass 2 — Batch IV.5 (2026-06-08)
+
+Pass-2 Batch IV.5 (139-150): **NO checkpoints in range** (all `is_checkpoint: false`). 12/12
+re-verified at v2 depth + value-reconciliation augmentation, `material_change: false` on all 12 (NO
+downstream staling). The 25 checkpoint trust tiers are therefore unaffected by IV.5; **cumulative
+checkpoint trust is unchanged from the IV.2 close (105 retained at `strong`)**. (For completeness: 0
+values misaligned batch-wide [no `paper_misalignment` anywhere → ZERO paper/notes edits]; 141 & 145 &
+149 are status-only consolidation/carry-forward cards by design [no scripts, no engines; values trace
+to upstream dual-engine stages 137–148]; the two findings stages are at NON-checkpoint stages — 139 F1
+`mathematica_transliteration` USER-AUTHORIZED FULL re-author from a NUMERICAL mirror to an independent
+`FindRoot` Π_* + source-moment quadrature S_q route [added to the Independent-Mirror Set], and 146
+`tautological_check`/`insufficient_verification` de-taut in BOTH engines [the ε-slope deliverable now
+genuinely exercised; core moment integrals were already independent per engine]. No certified checkpoint
+constant moved; no new checkpoint constant introduced. The carry-forwards `Π_*=1.50882951349316`,
+`S_q(Π_*)≈0.658075937605429` are pass-2 re-confirmed but are owned upstream (131/133/134/135) and are
+NOT checkpoint constants.)

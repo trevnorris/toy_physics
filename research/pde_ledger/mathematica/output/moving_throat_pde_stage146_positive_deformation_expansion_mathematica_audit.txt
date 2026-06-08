@@ -30,11 +30,13 @@ FIRST-ORDER CANONICAL RETUNING LAW
 ========================================================================================
 delta Pi = eps*(10.6099979539382841749632785238349395291598864566014336875697`39.328729130303785 - 13.996711034414836883861287207869633620514744270241070856019`39.69897000433602*gBar)
 delta S = eps*(-0.1448602123807183535415864145352667747139475744077603266206`38.60720965403542 - 0.6770342685713309628725696856150390727819192617413840622353`39.52287874528034*gBar + sBar)
-g_eps affine law (integral form) at eps=1/10: 8.02942250125594868481624587419569957188`22.297232723855384*^-58
-g_eps affine law (integral form) at eps=1/2:  4.46079027847552704712013659677538865104`22.297232723855384*^-58
-PASS: g_eps affine law (integral form)
-S_eps affine law (integral form) at eps=1/10: 0``40.14033130362883
-S_eps affine law (integral form) at eps=1/2:  0``40.00563272973137
-PASS: S_eps affine law (integral form)
+g_eps convex affine moment law nonzero slope |gbar_v - g_*| = 0.09359618077361837986827094934545968652105994545359112721097536267739983109089`49.091568823981056
+S_eps convex affine moment law nonzero slope |Sbar_v - S_*| = 0.09688093855532127428009969786256544297221914342683212736823692455341226362042`49.167962326265375
+g_eps convex affine moment law via direct quadrature at eps=1/10: 0``50.07891801126831
+S_eps convex affine moment law via direct quadrature at eps=1/10: 0``50.14033130362882
+g_eps convex affine moment law via direct quadrature at eps=1/2: 0``49.94421943737085
+S_eps convex affine moment law via direct quadrature at eps=1/2: 0``50.00563272973136
+PASS: g_eps convex affine moment law via direct quadrature with closed-form g_* intercept and nonzero slope
+PASS: S_eps convex affine moment law via direct quadrature with closed-form S_* intercept and nonzero slope
 
 Stage 146 Mathematica audit passed.

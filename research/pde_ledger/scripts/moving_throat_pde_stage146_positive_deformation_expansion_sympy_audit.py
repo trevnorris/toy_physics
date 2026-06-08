@@ -93,37 +93,42 @@ sp.pprint(dPi)
 print("delta S =")
 sp.pprint(sp.simplify(dS))
 
-# Exact affine law for convex family moments — tested via integration,
-# not via redefining the affine form. Use a concrete positive normalized
-# test profile varsigma_test(x) = 6 x (1 - x) (a polynomial bump,
-# positive on (0,1), with integral 1 on [0,1]).
+# Convex-family affine moment laws tested by direct quadrature of the
+# assembled profile against closed-form intercepts g_* and S_*.
+# Use a concrete positive normalized test profile varsigma_test(x) =
+# 6 x (1 - x), positive on (0,1), with integral 1 on [0,1].
 varsigma_test = 6*x*(1-x)
 Sigma_eps = (1-eps)*Sigma.subs(Pi, Pi_star) + eps*varsigma_test
-gbar_phys = sp.integrate(Sigma_eps*sp.cos(sp.pi*x/2), (x, 0, 1))
-Sbar_phys = sp.integrate(Sigma_eps*Kq, (x, 0, 1))
-gbar_v    = sp.integrate(varsigma_test*sp.cos(sp.pi*x/2), (x, 0, 1))
-Sbar_v    = sp.integrate(varsigma_test*Kq, (x, 0, 1))
-# Two-tier check. Tier 1 (exact symbolic zero) is NOT reachable here: the
-# residual collapses by linearity of the integral to (1-eps)*(gPi(Pi_*) -
-# gminus), and Pi_* is a transcendental root with no closed form, so simplify
-# cannot drive it to literal 0. Tier 2: evaluate the RAW residual at high
-# precision (50 digits) and require it below the directive standard 1e-25.
-# With Pi_star solved at prec=50 (line 73) the residual is ~1e-50 -- well
-# inside the 1e-25 budget -- so the assertion has genuine headroom and is not
-# tuned to the old 15-digit root floor.
-g_eps_residual_expr = gbar_phys - (gminus + eps*(gbar_v - gminus))
-S_eps_residual_expr = Sbar_phys - (Sformula.subs(Pi, Pi_star) + eps*(Sbar_v - Sformula.subs(Pi, Pi_star)))
+def quad_moment(expr):
+    return sp.N(sp.Integral(expr, (x, 0, 1)).evalf(50), 50)
+
+g_star_closed = sp.N(gPi.subs(Pi, Pi_star), 50)
+S_star_closed = sp.N(Sformula.subs(Pi, Pi_star), 50)
+gbar_v = quad_moment(varsigma_test*sp.cos(sp.pi*x/2))
+Sbar_v = quad_moment(varsigma_test*Kq)
+g_slope = sp.N(gbar_v - g_star_closed, 50)
+S_slope = sp.N(Sbar_v - S_star_closed, 50)
 TOL = sp.Float("1e-25", 50)
+SLOPE_TOL = sp.Float("1e-3", 50)
+print(f"g_eps convex affine moment law nonzero slope |gbar_v - g_*| = {sp.Abs(g_slope)}")
+print(f"S_eps convex affine moment law nonzero slope |Sbar_v - S_*| = {sp.Abs(S_slope)}")
+if sp.Abs(g_slope) <= SLOPE_TOL:
+    raise AssertionError(f"g_eps affine slope is vacuous: |gbar_v - g_*|={sp.Abs(g_slope)} <= 1e-3")
+if sp.Abs(S_slope) <= SLOPE_TOL:
+    raise AssertionError(f"S_eps affine slope is vacuous: |Sbar_v - S_*|={sp.Abs(S_slope)} <= 1e-3")
 for eps_val, label in [(sp.Rational(1, 10), "eps=1/10"), (sp.Rational(1, 2), "eps=1/2")]:
-    g_res = sp.N(g_eps_residual_expr.subs(eps, eps_val), 50)
-    S_res = sp.N(S_eps_residual_expr.subs(eps, eps_val), 50)
-    print(f"g_eps affine law (integral form) at {label}: residual = {g_res}")
-    print(f"S_eps affine law (integral form) at {label}: residual = {S_res}")
+    Sigma_eps_sample = Sigma_eps.subs(eps, eps_val)
+    gbar_eps = quad_moment(Sigma_eps_sample*sp.cos(sp.pi*x/2))
+    Sbar_eps = quad_moment(Sigma_eps_sample*Kq)
+    g_res = sp.N(gbar_eps - (g_star_closed + eps_val*(gbar_v - g_star_closed)), 50)
+    S_res = sp.N(Sbar_eps - (S_star_closed + eps_val*(Sbar_v - S_star_closed)), 50)
+    print(f"g_eps convex affine moment law via direct quadrature at {label}: residual = {g_res}")
+    print(f"S_eps convex affine moment law via direct quadrature at {label}: residual = {S_res}")
     if sp.Abs(g_res) >= TOL:
-        raise AssertionError(f"g_eps affine law fails at {label}: residual={g_res} >= 1e-25")
+        raise AssertionError(f"g_eps convex affine moment law via direct quadrature fails at {label}: residual={g_res} >= 1e-25")
     if sp.Abs(S_res) >= TOL:
-        raise AssertionError(f"S_eps affine law fails at {label}: residual={S_res} >= 1e-25")
-print("PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2")
-print("PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2")
+        raise AssertionError(f"S_eps convex affine moment law via direct quadrature fails at {label}: residual={S_res} >= 1e-25")
+print("PASS: g_eps convex affine moment law via direct quadrature with closed-form g_* intercept and nonzero slope")
+print("PASS: S_eps convex affine moment law via direct quadrature with closed-form S_* intercept and nonzero slope")
 
 print("\nStage 146 complete.")

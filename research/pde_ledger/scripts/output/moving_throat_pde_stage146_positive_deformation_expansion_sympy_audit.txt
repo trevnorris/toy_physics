@@ -196,11 +196,13 @@ delta S =
 ↪                                                           
 ↪                                                           
 ↪                                                           
-g_eps affine law (integral form) at eps=1/10: residual = -1.4301616406440507707328701328164554509756302617396E-51
-S_eps affine law (integral form) at eps=1/10: residual = 2.1828702739120471704838778248618347031558377881410E-50
-g_eps affine law (integral form) at eps=1/2: residual = -5.9194676321330495697599648375391609703542562502459E-52
-S_eps affine law (integral form) at eps=1/2: residual = 5.8705726615889150939773776459158208344914304346206E-51
-PASS: g_eps affine law (integral form) at eps=1/10 and eps=1/2
-PASS: S_eps affine law (integral form) at eps=1/10 and eps=1/2
+g_eps convex affine moment law nonzero slope |gbar_v - g_*| = 0.093596180773618379868270949345459686521059945453591
+S_eps convex affine moment law nonzero slope |Sbar_v - S_*| = 0.096880938555321274280099697862565442972219143426838
+g_eps convex affine moment law via direct quadrature at eps=1/10: residual = 0
+S_eps convex affine moment law via direct quadrature at eps=1/10: residual = -5.3455294201843912922810729343029637576303937602101E-51
+g_eps convex affine moment law via direct quadrature at eps=1/2: residual = 1.3363823550460978230702682335757409394075984400525E-51
+S_eps convex affine moment law via direct quadrature at eps=1/2: residual = -2.6727647100921956461405364671514818788151968801050E-51
+PASS: g_eps convex affine moment law via direct quadrature with closed-form g_* intercept and nonzero slope
+PASS: S_eps convex affine moment law via direct quadrature with closed-form S_* intercept and nonzero slope
 
 Stage 146 complete.

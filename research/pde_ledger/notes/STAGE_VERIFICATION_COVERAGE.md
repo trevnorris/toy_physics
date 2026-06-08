@@ -903,3 +903,61 @@ sympy/mma + 135 sympy byte-identical to Codex's run). Arbiter grep CLEAN — no 
 `\stagefield{Purpose}` class that IV.3 surfaced; 132 "180–182"→129–131 and 136 "184–186"→133–135
 attribution corrections confirmed holding. See `PAPER_CLEANUP_TRACKER.md` P5-13,
 `MATHEMATICA_MIRROR_POLICY.md`. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch IV.5 (2026-06-08)
+
+Pass-2 Batch IV.5 (139-150, `Part IV.5 — Family-1 actual mouth gains, susceptibility, profile`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**12/12 verified**, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0
+blocked, all Codex iter-1 exit 0 (no iter-2), 0 Codex deviations. **0 values misaligned batch-wide**
+(no `paper_misalignment` anywhere → ZERO paper/notes edits). **NO checkpoints in range; NO
+EM-projected stages in range; no new postulated constant.** **141/145/149 are legitimately
+status-only consolidation/carry-forward cards by design** (no scripts, no engines — like 103/113/120/
+124; values trace to upstream dual-engine stages 137–148).
+
+**2 findings stages, both resolved (139, 146); both are script-side `.wl`-touching (no prose):**
+- **139 — `mathematica_transliteration` → USER-AUTHORIZED FULL re-author:** ⭐ the audit agent called
+  139 CLEAN (claiming "no meaningful independent route exists"); the ORCHESTRATOR OVERTURNED that (an
+  independent route IS feasible) and surfaced the user-level re-author-vs-accept call → user AUTHORIZED
+  re-author (same class as IV.1-100 / IV.3-117). The pass-1 `.wl` was a NUMERICAL mirror (imported
+  `Π_*=1.50882951349316`/`S_q=0.658075937605429` literals + a hardcoded Stage-134 kernel closed form +
+  a self-described "sanctioned mirror" comment; pass-1/BATCH-5 had ACCEPTED it). Re-authored to
+  independence: `Π_*` via a cleared-denominator bracketed `FindRoot` on `g(Π)=g_minus` (correct sign
+  `(e^p−1)`; residual self-check ~1.6e-58); `S_q(Π_*)` via an independent source-moment quadrature
+  `∫Σ·K_q` (`NIntegrate`) cross-checked against a symbolic `Integrate` route (residual 0); the
+  hardcoded kernel closed form GONE (the two literals survive ONLY as `expectApprox` cross-check
+  targets); "sanctioned mirror" comment removed; `.py` UNCHANGED. All deliverables preserved at 1e-12
+  (output gained precision + 4 new independence checks). **139 now independent dual-engine** (added to
+  the Independent-Mirror Set).
+- **146 — `tautological_check` + `insufficient_verification` (BOTH engines) → de-taut:** the
+  audit-agent "transliteration" headline was DOWNGRADED by the orchestrator (146's core moment-formula
+  verifications, py:33-53 / wl:44-51, are each engine's OWN `Integrate` of Σ·cos and Σ·K_q vs the
+  closed forms — independently integrated per engine, LEFT INTACT, so the `.wl` is NOT a
+  transliteration). The real defect: the convex-family affine moment-law checks did not exercise the
+  ε-slope deliverable (g-side subtracted `g_minus` → collapsed to `(1−ε)(g(Π_*)−g_minus)` =
+  root-closure, mislabeled "affine law"; S-side subtracted `Sformula(Π_*)` → ε-slope cancelled →
+  effectively x−x). Fixed symmetrically in BOTH engines: closed-form intercepts `g_*`/`S_*`, deformed
+  moment by ONE direct quadrature of the assembled profile `Σ_ε`, own-quadrature `gbar_v`/`Sbar_v`,
+  non-vacuity slope guards `|gbar_v−g_*|>1e-3` (~0.0936) & `|Sbar_v−S_*|>1e-3` (~0.0969), residuals
+  `<1e-25` at ε=1/10 and 1/2, honest relabeling; the residual now reduces to `(1−ε)(quadrature −
+  closed_form at Π_*)`, a falsifiable kernel identity (a wrong gFormula/sFormula/K_q now FAILS); no
+  deliverable value moved. 146's `.wl` confirmed STILL independent (core integrals per engine).
+
+**10 script-side clean → verified:** 140, 142, 143, 144, 147, 148, 150 (dual-engine, re-confirmed
+independent) + 141, 145, 149 (status-only). The 9 dual-engine stages (139, 140, 142, 143, 144, 146,
+147, 148, 150) are now ALL genuinely independent (orchestrator ground-truth `.wl`-vs-`.py` read on all
+9 confirmed it — 0 sanctioned mirrors remain in IV.5); 139 was the one genuine transliteration, now
+re-authored (144 Π_* sign `(e^p−1)` correct + residual self-check; 142 anchors at Stage-131's Π_* via
+its own projection integral; 147 A_T cross-checked vs in-engine `D[]` autodiff + per-engine quadrature;
+148 cross-engine dT AGREE ~16 figs [first-pass live bug stays fixed]; 143 global `Reduce` positivity;
+150 per-engine symbolic identity check). So the Coverage-Totals "Mathematica audits present" raw count
+does NOT move (139 already counted; this is an independence upgrade from a numerical mirror, not a new
+`.wl`). **Dominant defect theme — the orchestrator ground-truth backstop** (the audit agent UNDER-called
+139 as CLEAN and OVER-called 146 as a transliteration; the orchestrator overturned both — the 100/129/
+134 lesson reconfirmed). INFRA: 4 orchestrator exec runs exit 0 (139 sympy byte-identical since `.py`
+unchanged; 139 mma + 146 sympy + 146 mma refreshed from `exec_logs` via sed). Arbiter grep CLEAN — no
+stale self-epoch (122–133) self-banners; deferred cross-refs are all legit upstream citations (148
+"Stage 126" ξ_*, 144 "stage-131" Π_*, 142 "Stage 130 §1" mouth-source law). **NO new deferred numbering
+residual from IV.5** — the cards are numbering-clean of the +17 `\stagefield{Purpose}` class that IV.3
+surfaced. See `PAPER_CLEANUP_TRACKER.md` P5-14, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
+`numbering-drift-root-cause`.

@@ -4778,8 +4778,8 @@ stages:
     stage: 139
     stage_str: '139'
     batch_id: IV.5
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -4803,11 +4803,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage139_family1_actual_mouth_gains_mathematica_audit.txt
         exists: true
         mtime: 1780099335
+    last_status_change: 2026-06-08 11:05:38-06:00
+    codex_session: 019ea813-1200-7d21-95d7-fa45adacb095
+    codex_log_paths:
+    - redteam/pass2/codex_logs/139_iter1.txt
+    last_codex_run: 2026-06-08 10:36:25-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-08 10:46:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-08 10:46:48-06:00
   '140':
     stage: 140
     stage_str: '140'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4832,11 +4842,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_mathematica_audit.txt
         exists: true
         mtime: 1779933149
+    last_status_change: 2026-06-08 11:05:50-06:00
   '141':
     stage: 141
     stage_str: '141'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4857,11 +4868,12 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-08 11:05:56-06:00
   '142':
     stage: 142
     stage_str: '142'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4886,11 +4898,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage142_selfconsistent_mouth_branch_mathematica_audit.txt
         exists: true
         mtime: 1780099335
+    last_status_change: 2026-06-08 11:06:02-06:00
   '143':
     stage: 143
     stage_str: '143'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4915,11 +4928,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage143_equal_normalized_singular_limit_mathematica_audit.txt
         exists: true
         mtime: 1780112038
+    last_status_change: 2026-06-08 11:06:08-06:00
   '144':
     stage: 144
     stage_str: '144'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4944,11 +4958,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage144_unique_regular_canonical_branch_mathematica_audit.txt
         exists: true
         mtime: 1780112049
+    last_status_change: 2026-06-08 11:06:15-06:00
   '145':
     stage: 145
     stage_str: '145'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -4969,12 +4984,13 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-08 11:06:21-06:00
   '146':
     stage: 146
     stage_str: '146'
     batch_id: IV.5
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -4998,11 +5014,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.txt
         exists: true
         mtime: 1780112812
+    last_status_change: 2026-06-08 11:05:44-06:00
+    codex_session: 019ea813-1276-7642-965f-9aeeee747cc2
+    codex_log_paths:
+    - redteam/pass2/codex_logs/146_iter1.txt
+    last_codex_run: 2026-06-08 10:44:17-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-08 10:52:31-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-08 10:53:06-06:00
   '147':
     stage: 147
     stage_str: '147'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -5027,11 +5053,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage147_first_order_rigidity_kernel_mathematica_audit.txt
         exists: true
         mtime: 1780112859
+    last_status_change: 2026-06-08 11:06:27-06:00
   '148':
     stage: 148
     stage_str: '148'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -5056,11 +5083,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage148_representative_positive_families_mathematica_audit.txt
         exists: true
         mtime: 1780117328
+    last_status_change: 2026-06-08 11:06:33-06:00
   '149':
     stage: 149
     stage_str: '149'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -5081,11 +5109,12 @@ stages:
       mathematica_output:
         path: null
         exists: false
+    last_status_change: 2026-06-08 11:06:39-06:00
   '150':
     stage: 150
     stage_str: '150'
     batch_id: IV.5
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -5110,6 +5139,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage150_full_profile_residual_mathematica_audit.txt
         exists: true
         mtime: 1780116564
+    last_status_change: 2026-06-08 11:06:45-06:00
   '151':
     stage: 151
     stage_str: '151'

@@ -680,6 +680,17 @@ different verification structure from the SymPy side:
   the ORCHESTRATOR rewrote the directive to require a genuine DSolveValue BVP derivation.) Committed
   output additive; deliverable values unchanged. Verify-confirmed independent. One of the two genuine
   IV.4 transliterations
+- `139`
+  red-team pass-2 batch IV.5 (2026-06-08) RE-AUTHORED from a NUMERICAL mirror of the `.py` (it had
+  imported the `Π_*=1.50882951349316` / `S_q=0.658075937605429` literals + a hardcoded Stage-134 kernel
+  closed form, and carried a self-described "sanctioned mirror" comment; pass-1/BATCH-5 had ACCEPTED it).
+  USER-AUTHORIZED independent route: `Π_*` now derived via a cleared-denominator bracketed `FindRoot` on
+  `g(Π)=g_minus` (correct sign `(e^p−1)`; residual self-check ~1.6e-58); `S_q(Π_*)` via an independent
+  source-moment quadrature `∫Σ·K_q` (`NIntegrate`) cross-checked against a symbolic `Integrate` route
+  (residual 0); the hardcoded Stage-134 kernel closed form is GONE (the two literals survive ONLY as
+  `expectApprox` cross-check targets); "sanctioned mirror" comment removed. `.py` UNCHANGED (reference
+  engine). Output gained precision (1e-12 deliverables) + 4 new independence checks. Verify/orchestrator
+  ground-truth-confirmed independent (the audit agent had called it CLEAN — orchestrator OVERTURNED)
 - `175`
   red-team batch 8 added a Series+Coefficient (`dlogSeries[expr_] :=
   Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) independent route
@@ -1298,3 +1309,57 @@ the cap, then 135 solo; 127 notes-edit = 0-seat (ran concurrent); orchestrator e
 all Codex done. NO new deferred numbering residual — IV.4 cards clean of the +17 `\stagefield{Purpose}`
 class that IV.3 surfaced; 132 "180–182"→129–131 and 136 "184–186"→133–135 attribution corrections
 confirmed holding.
+
+## Pass 2 — Batch IV.5 (2026-06-08)
+
+Pass-2 Batch IV.5 (139-150, `Part IV.5 — Family-1 actual mouth gains, susceptibility, profile`): the
+orchestrator ground-truth `.wl`-vs-`.py` read was run on ALL 9 dual-engine stages (139, 140, 142, 143,
+144, 146, 147, 148, 150). **ONE genuine transliteration (139) was RE-AUTHORED to an independent route;
+146's audit-agent "transliteration" headline was DOWNGRADED by the orchestrator (its core moment
+formulas ARE independently integrated per engine — the real defect was a shared verification-strength
+flaw, de-taut'd in both); 0 sanctioned mirrors remain in IV.5 — all 9 dual-engine stages are now
+genuinely independent.** ADD **139** to the Current Independent-Mirror Set above.
+
+- **139** (`mathematica_transliteration`) — USER-AUTHORIZED FULL re-author. The standout: the audit agent
+  called 139 CLEAN (claiming "no meaningful independent route exists"); the orchestrator OVERTURNED that
+  (an independent route IS feasible) and surfaced the user-level re-author-vs-accept call → user
+  AUTHORIZED re-author (same class as IV.1-100, IV.3-117). The pass-1 `.wl` was a NUMERICAL mirror —
+  it imported the `Π_*=1.50882951349316` / `S_q=0.658075937605429` literals + a hardcoded Stage-134
+  kernel closed form and carried a self-described "sanctioned mirror" comment (pass-1/BATCH-5 had
+  ACCEPTED it). Re-authored to independence: `Π_*` via a cleared-denominator bracketed `FindRoot` on
+  `g(Π)=g_minus` (correct sign `(e^p−1)`; residual self-check ~1.6e-58); `S_q(Π_*)` via an independent
+  source-moment quadrature `∫Σ·K_q` (`NIntegrate`) cross-checked against a symbolic `Integrate` route
+  (residual 0); the hardcoded kernel closed form GONE (the two literals survive ONLY as `expectApprox`
+  cross-check targets); "sanctioned mirror" comment removed. `.py` UNCHANGED. All deliverables preserved
+  at 1e-12 (output gained precision + 4 new independence checks). `material_change: false`. **139 ADDED
+  to the Independent-Mirror Set above.**
+- **146** (`tautological_check` / `insufficient_verification`, BOTH engines) — DE-TAUT, NOT a mirror
+  change. The audit agent's "transliteration" headline was DOWNGRADED by the orchestrator: 146's core
+  moment-formula verifications (py:33-53 / wl:44-51 — each engine's OWN `Integrate` of Σ·cos and Σ·K_q
+  vs the closed forms) are independently integrated per engine and were LEFT INTACT, so the `.wl` is NOT
+  a transliteration. The real defect was a shared verification-strength flaw: the convex-family affine
+  moment-law checks did not exercise the ε-slope deliverable (g-side subtracted `g_minus` → collapsed to
+  `(1−ε)(g(Π_*)−g_minus)` = root-closure, mislabeled "affine law"; S-side subtracted `Sformula(Π_*)` →
+  ε-slope cancelled → effectively x−x). Fixed symmetrically in BOTH engines: closed-form intercepts
+  `g_*=gPi(Π_*)`/`S_*=Sformula(Π_*)`; deformed moment by ONE direct quadrature of the assembled profile
+  `Σ_ε`; own-quadrature `gbar_v`/`Sbar_v`; non-vacuity slope guards `|gbar_v−g_*|>1e-3` (~0.0936) &
+  `|Sbar_v−S_*|>1e-3` (~0.0969); residuals `<1e-25` at ε=1/10 and 1/2; honest relabeling. The residual
+  now reduces to `(1−ε)(quadrature − closed_form at Π_*)` — a falsifiable kernel identity (a wrong
+  gFormula/sFormula/K_q now FAILS). ZERO paper/notes edits; no deliverable value moved.
+
+The other dual-engine stages were re-confirmed genuinely independent, unchanged: **140/142/143/144/147/
+148/150** — **144** Π_* sign `(e^p−1)` correct + residual self-check; **142** anchors at Stage-131's Π_*
+via its own projection integral; **147** A_T cross-checked vs in-engine `D[]` autodiff + per-engine
+quadrature; **148** cross-engine dT AGREE ~16 figs (the first-pass live bug stays fixed); **143** global
+`Reduce` positivity; **150** per-engine symbolic identity check. **141/145/149 are status-only
+consolidation/carry-forward cards** (no engines, by design — like 103/113/120/124; values trace to
+upstream dual-engine stages 137–148). `material_change: false` on all 12 (NO downstream staling); all
+Codex iter-1 exit 0 (no iter-2); NO checkpoints in range; NO EM-projected stages. INFRA: 4 orchestrator
+exec runs exit 0 (139 sympy byte-identical since `.py` unchanged; 139 mma + 146 sympy + 146 mma refreshed
+from `exec_logs` via sed). Arbiter grep on committed outputs CLEAN of stale self-epoch (NNN−17 = 122–133
+band) banners. Seat policy held: 139∥146 = 2 `.wl`-touching Codex sessions at the 2-seat cap; orchestrator
+exec sequential AFTER both Codex done (no 3rd seat). Pass-1 `MANIFEST.yaml` untouched. The 100/129/134
+lesson reconfirmed: audit agents UNDER-call transliteration; the orchestrator ground-truth read is the
+backstop; re-author-vs-accept is USER-LEVEL. Deferred cross-refs are all LEGIT upstream citations (148
+"Stage 126 closed form" ξ_*, 144 "stage-131 owning value" Π_*, 142 "Stage 130 §1" mouth-source law) —
+no action.

@@ -85,40 +85,49 @@ banner["FIRST-ORDER CANONICAL RETUNING LAW"];
 Print["delta Pi = ", fmt[dPi]];
 Print["delta S = ", fmt[dS]];
 
-(* Affine laws tested via integral form, not via algebraic restatement. *)
+(* Convex-family affine moment laws tested by direct quadrature of the
+   assembled profile against closed-form intercepts g_* and S_*. *)
 varsigmaTest = 6*x*(1 - x);
 sigmaEps = (1 - eps)*(sigma /. p -> pStar) + eps*varsigmaTest;
-gBarPhys = Integrate[sigmaEps*Cos[Pi*x/2], {x, 0, 1}];
-sBarPhys = Integrate[sigmaEps*kq, {x, 0, 1}];
-gBarV    = Integrate[varsigmaTest*Cos[Pi*x/2], {x, 0, 1}];
-sBarV    = Integrate[varsigmaTest*kq, {x, 0, 1}];
-(* Two-tier check. Tier 1 (exact symbolic zero) is NOT reachable: the residual
-   collapses by linearity of the integral to (1-eps)*(gFormula[pStar]-gMinus),
-   and pStar is a transcendental root with no closed form. Tier 2: evaluate the
-   RAW residual at high precision (no Chop) and require Abs < 10^-25. pStar is
-   solved at WorkingPrecision 80 / AccuracyGoal 30 (line 66), so the residual is
-   ~10^-40 -- well inside the 10^-25 budget. Combine the symbolic endpoint
-   integrals before substituting pStar so numeric Integrate precision loss does
-   not collapse the residual to a low-precision zero. *)
-gEpsRes = ((1 - eps)*(gDirect /. p -> pStar) + eps*gBarV) - (gMinus + eps*(gBarV - gMinus));
-gEpsSample1 = N[(gEpsRes /. eps -> 1/10), 50];
-gEpsSample2 = N[(gEpsRes /. eps -> 1/2), 50];
-Print["g_eps affine law (integral form) at eps=1/10: ", fmt[gEpsSample1]];
-Print["g_eps affine law (integral form) at eps=1/2:  ", fmt[gEpsSample2]];
-If[NumericQ[gEpsSample1] && NumericQ[gEpsSample2] && Abs[gEpsSample1] < 10^-25 && Abs[gEpsSample2] < 10^-25,
-  pass["g_eps affine law (integral form)"],
-  fail["g_eps affine law (integral form)", {gEpsSample1, gEpsSample2}]
+momentQuad[expr_] := NIntegrate[
+  Evaluate[expr], {x, 0, 1},
+  WorkingPrecision -> 80, AccuracyGoal -> 35, PrecisionGoal -> 35
+];
+gStarClosed = N[gFormula /. p -> pStar, 50];
+sStarClosed = N[sFormula /. p -> pStar, 50];
+gBarV = momentQuad[varsigmaTest*Cos[Pi*x/2]];
+sBarV = momentQuad[varsigmaTest*kq];
+gSlope = N[gBarV - gStarClosed, 50];
+sSlope = N[sBarV - sStarClosed, 50];
+Print["g_eps convex affine moment law nonzero slope |gbar_v - g_*| = ", fmt[Abs[gSlope]]];
+Print["S_eps convex affine moment law nonzero slope |Sbar_v - S_*| = ", fmt[Abs[sSlope]]];
+If[!TrueQ[Abs[gSlope] > 10^-3],
+  fail["g_eps convex affine moment law nonzero slope guard", gSlope]
+];
+If[!TrueQ[Abs[sSlope] > 10^-3],
+  fail["S_eps convex affine moment law nonzero slope guard", sSlope]
 ];
 
-sEpsRes = ((1 - eps)*(sDirect /. p -> pStar) + eps*sBarV) - (sStar + eps*(sBarV - sStar));
-sEpsSample1 = N[(sEpsRes /. eps -> 1/10), 50];
-sEpsSample2 = N[(sEpsRes /. eps -> 1/2), 50];
-Print["S_eps affine law (integral form) at eps=1/10: ", fmt[sEpsSample1]];
-Print["S_eps affine law (integral form) at eps=1/2:  ", fmt[sEpsSample2]];
-If[NumericQ[sEpsSample1] && NumericQ[sEpsSample2] && Abs[sEpsSample1] < 10^-25 && Abs[sEpsSample2] < 10^-25,
-  pass["S_eps affine law (integral form)"],
-  fail["S_eps affine law (integral form)", {sEpsSample1, sEpsSample2}]
+Do[
+  Module[{epsVal = sample[[1]], label = sample[[2]], sigmaEpsSample, gBarEps, sBarEps, gRes, sRes},
+    sigmaEpsSample = sigmaEps /. eps -> epsVal;
+    gBarEps = momentQuad[sigmaEpsSample*Cos[Pi*x/2]];
+    sBarEps = momentQuad[sigmaEpsSample*kq];
+    gRes = N[gBarEps - (gStarClosed + epsVal*(gBarV - gStarClosed)), 50];
+    sRes = N[sBarEps - (sStarClosed + epsVal*(sBarV - sStarClosed)), 50];
+    Print["g_eps convex affine moment law via direct quadrature at ", label, ": ", fmt[gRes]];
+    Print["S_eps convex affine moment law via direct quadrature at ", label, ": ", fmt[sRes]];
+    If[!TrueQ[NumericQ[gRes] && Abs[gRes] < 10^-25],
+      fail["g_eps convex affine moment law via direct quadrature " <> label, gRes]
+    ];
+    If[!TrueQ[NumericQ[sRes] && Abs[sRes] < 10^-25],
+      fail["S_eps convex affine moment law via direct quadrature " <> label, sRes]
+    ];
+  ],
+  {sample, {{1/10, "eps=1/10"}, {1/2, "eps=1/2"}}}
 ];
+pass["g_eps convex affine moment law via direct quadrature with closed-form g_* intercept and nonzero slope"];
+pass["S_eps convex affine moment law via direct quadrature with closed-form S_* intercept and nonzero slope"];
 
 Print[""];
 Print["Stage 146 Mathematica audit passed."];

@@ -23,68 +23,92 @@ expectZero[name_String, expr_] := Module[{res},
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 187 — EXACT ORBIT-QUOTIENT CLOSURE"];
+banner["STAGE 187 - EXACT ORBIT-QUOTIENT CLOSURE"];
 
-Clear[dl, dc, dg, du, deta, dw, dm, dt, chiStar, deltaStar, eStar, fStar];
+Clear[
+  dl, dc, dg, du, deta, dw, dm, dt,
+  chiStar, deltaStar, eStar, fStar,
+  lambdaW, cEtaU, gamma, kU, kEtaEff, kWEff, muW, tU,
+  ell, sigma
+];
 
-$Assumptions =
-  Element[{dl, dc, dg, du, deta, dw, dm, dt, chiStar, deltaStar, eStar, fStar}, Reals] &&
-  chiStar > 0 && deltaStar > 0 && eStar > 0 && fStar > 0;
+deltaVector = {dl, dc, dg, du, deta, dw, dm, dt};
+primitiveSymbols = {lambdaW, cEtaU, gamma, kU, kEtaEff, kWEff, muW, tU};
+primitiveNames = {"lambda", "c", "gamma", "KU", "Keta", "KW", "mu", "T"};
 
-rowTr = (1 + deltaStar)*(dg + dc - du) + (1 + chiStar)*(dt - du);
-rowNt = 2*(1 + eStar)*dl + 2*eStar*dg + (fStar - eStar)*du - deta - (2 + eStar)*dw + dm - fStar*dt;
-rowEta = 2*dc - du - deta;
+$Assumptions = (
+  Element[Join[deltaVector, {chiStar, deltaStar, eStar, fStar}], Reals] &&
+  chiStar > 0 && deltaStar > 0 && eStar > 0 && fStar > 0 &&
+  Element[Join[primitiveSymbols, {ell, sigma}], Reals] &&
+  And @@ Thread[Join[primitiveSymbols, {ell, sigma}] > 0]
+);
 
-(* Positive primitive ratios (xtilde/x); declare positivity for Log expansion. *)
-$Assumptions =
-  $Assumptions &&
-  Element[{rL, rC, rG, rU, rEta, rW, rM, rT}, Reals] &&
-  rL > 0 && rC > 0 && rG > 0 && rU > 0 &&
-  rEta > 0 && rW > 0 && rM > 0 && rT > 0;
-logSubs = {
-  dl -> Log[rL], dc -> Log[rC], dg -> Log[rG], du -> Log[rU],
-  deta -> Log[rEta], dw -> Log[rW], dm -> Log[rM], dt -> Log[rT]
-};
-ctrRatio = (rG*rC/rU)^(1 + deltaStar) * (rT/rU)^(1 + chiStar);
-cntRatio = (rL^2*rM/(rEta*rW^2)) * (rG^2*rL^2/(rU*rW))^eStar * (rT/rU)^(-fStar);
-epsEtaRatio = rC^2/(rU*rEta);
+baseState = AssociationThread[primitiveNames -> primitiveSymbols];
+targetState = AssociationThread[
+  primitiveNames -> MapThread[#1 Exp[#2] &, {primitiveSymbols, deltaVector}]
+];
 
-Print["Exact finite log-ratio equations:"];
-Print["row_tr  = ", fmt[rowTr]];
-Print["row_nt  = ", fmt[rowNt]];
-Print["row_eta = ", fmt[rowEta]];
+cTrInvariant[state_Association] := (
+  ((state["gamma"] state["c"])/state["KU"])^(1 + deltaStar) *
+  ((Pi^2 state["T"])/(ell^2 state["KU"]))^(1 + chiStar)
+);
 
-expectZero["log C_tr ratio - row_tr", PowerExpand[Log[ctrRatio]] - (rowTr /. logSubs)];
-expectZero["log C_nt ratio - row_nt", PowerExpand[Log[cntRatio]] - (rowNt /. logSubs)];
-expectZero["log epsilon_eta ratio - row_eta", PowerExpand[Log[epsEtaRatio]] - (rowEta /. logSubs)];
+cNtInvariant[state_Association] := (
+  (state["lambda"]^2 state["mu"]/(state["Keta"] state["KW"]^2)) *
+  ((state["gamma"]^2 state["lambda"]^2 sigma)/(state["KU"] state["KW"]))^eStar *
+  ((Pi^2 state["T"])/(ell^2 state["KU"]))^(-fStar)
+);
 
-m = {
-  {0, 1 + deltaStar, 1 + deltaStar, -(2 + chiStar + deltaStar), 0, 0, 0, 1 + chiStar},
-  {2*(1 + eStar), 0, 2*eStar, fStar - eStar, -1, -(2 + eStar), 1, -fStar},
-  {0, 2, 0, -1, -1, 0, 0, 0}
-};
-dx = {dl, dc, dg, du, deta, dw, dm, dt};
-mx = Expand[m.dx];
+epsEtaInvariant[state_Association] := (
+  state["c"]^2/(state["KU"] state["Keta"])
+);
 
-expectZero["matrix row 1 - exact row_tr", mx[[1]] - rowTr];
-expectZero["matrix row 2 - exact row_nt", mx[[2]] - rowNt];
-expectZero["matrix row 3 - exact row_eta", mx[[3]] - rowEta];
+finiteLogRatio[invariant_] := Module[{ratio, logRatio},
+  ratio = FullSimplify[invariant[targetState]/invariant[baseState], Assumptions -> $Assumptions];
+  logRatio = PowerExpand[Log[ratio]];
+  FullSimplify[Together[Expand[logRatio]], Assumptions -> $Assumptions]
+];
 
-minor = {
-  {0, 0, 1 + chiStar},
-  {-1, 1, -fStar},
-  {-1, 0, 0}
-};
+rowLabels = {"C_tr", "C_nt", "epsilon_eta"};
+derivedRows = finiteLogRatio /@ {cTrInvariant, cNtInvariant, epsEtaInvariant};
+
+coefficientRow[expr_] := Coefficient[Expand[expr], #] & /@ deltaVector;
+mStar = coefficientRow /@ derivedRows;
+matrixRows = Expand[mStar.deltaVector];
+
+Print["Exact finite log-ratio equations derived from physical monomials:"];
+Do[
+  Print["row_", rowLabels[[i]], " = ", fmt[derivedRows[[i]]]],
+  {i, Length[rowLabels]}
+];
+
+Do[
+  expectZero[
+    "D1 " <> rowLabels[[i]] <> " log ratio - M_* Delta x",
+    derivedRows[[i]] - matrixRows[[i]]
+  ],
+  {i, Length[rowLabels]}
+];
+
+minor = mStar[[All, {5, 7, 8}]];
 Print["det selected minor (Delta_eta, Delta_mu, Delta_T) = ", fmt[Det[minor]]];
 expectZero["selected minor determinant", Det[minor] - (1 + chiStar)];
 
-sol = First[Solve[{rowTr == 0, rowNt == 0, rowEta == 0}, {deta, dt, dm}, Reals]];
+solveLinearFor[expr_, var_] := FullSimplify[
+  -((expr /. var -> 0)/Coefficient[expr, var]),
+  Assumptions -> $Assumptions
+];
+
+detaSolved = solveLinearFor[derivedRows[[3]], deta];
+dtSolved = solveLinearFor[derivedRows[[1]], dt];
+dmSolved = solveLinearFor[derivedRows[[2]] /. {deta -> detaSolved, dt -> dtSolved}, dm];
+finiteFiberRules = {deta -> detaSolved, dt -> dtSolved, dm -> dmSolved};
 
 Print[""];
 Print["Exact finite fibre solution:"];
-Print["Delta_eta = ", fmt[FullSimplify[deta /. sol, Assumptions -> $Assumptions]]];
-Print["Delta_T = ", fmt[FullSimplify[dt /. sol, Assumptions -> $Assumptions]]];
-Print["Delta_mu = ", fmt[FullSimplify[dm /. sol, Assumptions -> $Assumptions]]];
+Print["Delta_eta = ", fmt[detaSolved]];
+Print["Delta_T = ", fmt[dtSolved]];
+Print["Delta_mu = ", fmt[dmSolved]];
 
 detaExpected = 2*dc - du;
 dtExpected = du - (1 + deltaStar)*(dg + dc - du)/(1 + chiStar);
@@ -95,19 +119,22 @@ dmExpected = FullSimplify[
   Assumptions -> $Assumptions
 ];
 
-expectZero["Delta_eta finite law", (deta /. sol) - detaExpected];
-expectZero["Delta_T finite law", (dt /. sol) - dtExpected];
-expectZero["Delta_mu finite law", (dm /. sol) - dmExpected];
+expectZero["Delta_eta finite law", detaSolved - detaExpected];
+expectZero["Delta_T finite law", dtSolved - dtExpected];
+expectZero["Delta_mu finite law", dmSolved - dmExpected];
 
-expectZero["row_tr after solve", rowTr /. sol];
-expectZero["row_nt after solve", rowNt /. sol];
-expectZero["row_eta after solve", rowEta /. sol];
+Do[
+  expectZero[
+    "D4 " <> rowLabels[[i]] <> " row after finite fibre solve",
+    derivedRows[[i]] /. finiteFiberRules
+  ],
+  {i, Length[rowLabels]}
+];
 
 banner["Finite orbit interpretation"];
-Print["The three monomial equalities reduce exactly to the same rank-3 matrix condition"];
-Print["M_* Delta x = 0, but now Delta x is a finite log-ratio vector rather than an"];
-Print["infinitesimal drift. Therefore the Stage 186 similarity orbit integrates exactly:"];
-Print["its fibres are the full level sets of (C_tr, C_nt, epsilon_eta)."];
+Print["The three physical monomial equalities derive the rank-3 matrix condition"];
+Print["M_* Delta x = 0, with Delta x an exact finite log-ratio vector."];
+Print["The selected minor is positive, so the finite similarity fibre is unique."];
 
 banner["Carry-forward formulas"];
 Print["  Delta_eta = 2 Delta_c - Delta_U"];

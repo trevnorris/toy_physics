@@ -1087,3 +1087,82 @@ seat overlap). **NO new deferred numbering residual from V.1** — all 12 cards 
 `\stagefield{Purpose}` self-label class (181–192 absent; correct self-numbers). See
 `PAPER_CLEANUP_TRACKER.md` P5-16, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
 `numbering-drift-root-cause`.
+
+## Pass 2 — Batch V.2 (2026-06-09)
+
+Pass-2 Batch V.2 (176-187, `Part V.2 — Load shape, transfer shape, coherent slippage`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**12/12 verified**, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0
+blocked, all Codex iter-1 exit 0 (no iter-2), 0 Codex deviations. **0 values misaligned batch-wide**
+(~122 deliverable values: 176=11, 177=12, 178=13, 179=6, 180=7, 181=8, 182=8, 183=10, 184=12, 185=17,
+186=9, 187=9 checked; no `paper_misalignment` anywhere → ZERO paper/notes edits). **ONE checkpoint in
+range — 185 (`microscopic_monomials`) — CLEARED the higher checkpoint bar** (its `.wl` re-authored so
+the load-bearing monomial-exponent compilation is now DERIVED via `monomialExponentVector` instead of
+hand-coded identically to the `.py`; the checkpoint quantity `det
+∂(Σ_tr,Σ_nt,Σ_eta)/∂(τ₁,κ_η,μ₁)=1+χ₀*` re-derived; `firstRatioDrift` kept; NO checkpoint constant
+changed; 185 stays `strong`). **NO status-only stages** (every stage is dual-engine `.py`+`.wl` —
+confirmed; a missing engine would have been a finding); **NO EM-projected stages; no new postulated
+constant.**
+
+**The USER DECIDED "re-author all 8":** the orchestrator ground-truth `.wl`-vs-`.py` read split the 12
+into **4 confirmed genuinely independent (no re-author): 176, 177, 178, 182** and **8 confirmed `.wl`
+ports: 179, 180, 181, 183, 184, 185, 186, 187.** For strict dual-engine hygiene (mirroring the V.1
+close-of-watch precedent) the **user decided to re-author all 8 ports.** Codex designed + wrote the new
+routes; the verifier confirmed all 8 are genuinely independent (NOT relabels). All `material_change:
+false`. So all 12 V.2 dual-engine stages are now genuinely independent (**0 sanctioned mirrors remain in
+V.2**); the Coverage-Totals "Mathematica audits present" raw count does NOT move (these are independence
+upgrades on pre-existing `.wl`, not new `.wl`).
+
+**8 re-authored `.wl` transliterations (USER-DECIDED, all verify-confirmed independent):**
+- **179 — F1 + F2:** directional log-slope operator `logSlope` on the closed-form shape (vs the `.py`'s
+  series-of-log on a perturbed-primitive `n0A`); F2 strengthened the weighted-defect check to be
+  load-bearing (per-port `ν_i=κ₁+2τ_i` from the validated τ) in BOTH engines. **179 added to the
+  Independent-Mirror Set.**
+- **180 — F1:** equation-system `Solve` for the continuum/selected T² + `scaledFirstVariation` (vs the
+  `.py`'s perturb-and-diff-log); `.py` untouched. **180 added to the Independent-Mirror Set.**
+- **181 — F1 + F2:** ε₁/Θ₁ DERIVED via directional differentials + product/factor ledgers, cross-checked
+  two ways (vs `.py` hand-literal `eps1Expected`/`theta1Expected` + `D[Log,s]/.s->0`); F2 removed the
+  support-loaded branch-product-law X−X round-trip from BOTH engines (spoiled-packet negative control
+  still fails-on-purpose). **181 added to the Independent-Mirror Set.**
+- **183 — F1:** raw-slope row extraction + matrix factorization + `Coefficient`-extracted prefactors +
+  `Reduce` branch zero-sets + symbolic-inverse `Solve` (vs `.py` hand-coded `theta1`/`xi1`/`r1` + nine
+  1:1 asserts); the inverse reconstructions now genuinely test the prefactors; `.py` untouched. **183
+  added to the Independent-Mirror Set.**
+- **184 — F1 + F2:** first-variation construct `firstVariation`/`logDrift` (vs `.py`/old-`.wl`
+  `SeriesCoefficient[Log[...]]`); F2 de-tautologized in BOTH engines — `R_target` is now an INDEPENDENT
+  perturbed object so `δln(R_target·T²)=δln(1-ε_η)` is falsifiable (residual symbolic in
+  `R1`/`Ξ₁`/`Σ_η`), the complement law routed through a separately-named `(1-ε_η)` identity object.
+  **184 added to the Independent-Mirror Set.**
+- **185 (CHECKPOINT) — F1 + F2:** the load-bearing monomial-exponent compilation now DERIVED via
+  `monomialExponentVector` (substitutes each primitive var→`Exp[logVar]`, `Log`/`PowerExpand`, exponents
+  via `Coefficient`) instead of hand-coded identically to the `.py`; the checkpoint quantity `det
+  ∂(Σ_tr,Σ_nt,Σ_eta)/∂(τ₁,κ_η,μ₁)=1+χ₀*` re-derived; `firstRatioDrift` kept (acceptable since the
+  exponent provenance is now independent); NO checkpoint constant changed. **185 added to the
+  Independent-Mirror Set.**
+- **186 — F1 + F2:** `M_*` rows DERIVED via `logDriftFromMonomial` from the physical micro-monomials (vs
+  the old-`.wl`'s hand-coded-vs-hand-coded `Coefficient` round-trip); F2 replaced the eta-scaling
+  round-trip with a derivation from the physical `ε_η=c_η U²/(K_U K_η)` monomial in BOTH engines;
+  misleading "Non-tautological ground check" comment corrected. **186 added to the Independent-Mirror
+  Set.**
+- **187 — F1:** finite rows/matrix DERIVED via state-association `Exp[delta]`/`Coefficient` + fibre
+  solved by triangular elimination (vs `.py` hand-coded rows + the same simultaneous `Solve`); F1 added
+  the missing SymPy selected-minor-determinant assertion for engine parity. **187 added to the
+  Independent-Mirror Set.**
+
+**4 confirmed genuinely independent (no re-author):** **176** (`D[Log,eps]`-vs-`series` extraction
+divergence — the V.2 first-pass 176-F2 disposition, genuine + documented), **177** (factored `(M,I,H)`
+load-factor route), **178** (Mathematica-native `Coefficient[Series[Log[pA²/dA²]]]` ν_r route), **182**
+(gauge-`Solve` linear Σ-coefficient extraction). **Dominant theme — the orchestrator ground-truth
+backstop + USER close-of-watch escalation, recurring after V.1:** the read confirmed 8 ports and the
+user escalated to "re-author all 8" (audit agents UNDER-call transliteration; re-author-vs-accept is
+USER-LEVEL). INFRA: 24 orchestrator independent exec runs (`.py`+`.wl`, reliability gate) exit 0, all
+FAIL=0; committed `output/*.txt` refreshed from fresh `exec_logs`; banners `STAGE 176`–`187` canonical.
+Arbiter grep on committed outputs CLEAN — no stale self-epoch 159–170 banner, no `168π²`/`168%` class,
+no FAIL. Seat policy held (8 `.wl`-touching Codex sessions in 4 waves of 2 — 179∥180, 181∥183, 184∥185,
+186∥187 — under the flock; orchestrator `exec-*` sequential after all Codex done, no seat overlap).
+Pass-1 `MANIFEST.yaml` untouched. **DEFERRED numbering residual (content-keyed, NEVER offset-sweep):**
+179 `.py` docstring/section-banner cross-ref "Stage 176/160/161" looks pre-renumber → leave for the
+dedicated numbering pass; cosmetic 181/187 ASCII-hyphen `.wl` banners (number correct); cards otherwise
+clean of the +17 `\stagefield{Purpose}` self-label class (193–204 absent; correct self-numbers). See
+`PAPER_CLEANUP_TRACKER.md` P5-17, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
+`numbering-drift-root-cause`.

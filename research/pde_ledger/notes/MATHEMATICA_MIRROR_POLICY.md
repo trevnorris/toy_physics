@@ -1479,3 +1479,76 @@ self-epoch band (147–158 = NNN−17), no `168π²`/`100π²` class; canonical 
 transliteration; the orchestrator ground-truth read is the backstop; re-author-vs-accept is USER-LEVEL
 (here the user escalated to "re-author all 6" of the confirmed ports). With V.1 closed, the 105–175
 transliteration watch is CLOSED at 175.
+
+## Pass 2 — Batch V.2 (2026-06-09)
+
+Pass-2 Batch V.2 (176-187, `Part V.2 — Load shape, transfer shape, coherent slippage`): the
+orchestrator ground-truth `.wl`-vs-`.py` read was run on ALL 12 dual-engine stages. The read split the
+12 into **4 confirmed genuinely independent (no re-author): 176, 177, 178, 182** and **8 confirmed
+`.wl` ports: 179, 180, 181, 183, 184, 185, 186, 187.** The re-author-vs-accept call was surfaced as
+USER-LEVEL; the **USER DECIDED to "re-author all 8" ports** (mirrors the V.1 close-of-watch precedent).
+Codex designed + wrote the new routes; the verifier confirmed all 8 are genuinely independent routes
+(NOT relabels). **0 sanctioned mirrors remain in V.2 — all 12 dual-engine stages are now genuinely
+independent.** ADD **179, 180, 181, 183, 184, 185, 186, 187** to the Current Independent-Mirror Set
+above; 176/177/178/182 confirmed already independent (no re-author).
+
+- **179** (`F1` + `F2`) — USER-DECIDED re-author: a directional log-slope operator `logSlope` applied
+  to the closed-form shape (vs the `.py`'s series-of-log on a perturbed-primitive `n0A`). F2
+  strengthened the weighted-defect check to be load-bearing (per-port `ν_i=κ₁+2τ_i` from the validated
+  τ) in BOTH engines. **179 ADDED to the Independent-Mirror Set above.**
+- **180** (`F1`) — USER-DECIDED re-author: an equation-system `Solve` for the continuum/selected T² +
+  `scaledFirstVariation` (vs the `.py`'s perturb-and-diff-log). `.py` untouched. **180 ADDED to the
+  Independent-Mirror Set above.**
+- **181** (`F1` + `F2`) — USER-DECIDED re-author: ε₁/Θ₁ DERIVED via directional differentials +
+  product/factor ledgers, cross-checked two ways (vs the `.py`'s hand-literal
+  `eps1Expected`/`theta1Expected` + `D[Log,s]/.s->0`). F2 removed the support-loaded branch-product-law
+  X−X round-trip from BOTH engines; the spoiled-packet negative control still fails-on-purpose. `.wl`
+  banner uses an ASCII hyphen vs em-dash (cosmetic; number correct). **181 ADDED to the
+  Independent-Mirror Set above.**
+- **183** (`F1`) — USER-DECIDED re-author: raw-slope row extraction + matrix factorization +
+  `Coefficient`-extracted prefactors + `Reduce` branch zero-sets + symbolic-inverse `Solve` (vs the
+  `.py`'s hand-coded `theta1`/`xi1`/`r1` + nine 1:1 asserts); the inverse reconstructions now genuinely
+  test the prefactors (not round-trips). `.py` untouched. **183 ADDED to the Independent-Mirror Set
+  above.**
+- **184** (`F1` + `F2`) — USER-DECIDED re-author: a first-variation construct `firstVariation`/
+  `logDrift` (vs the `.py`/old-`.wl` `SeriesCoefficient[Log[...]]`). F2 de-tautologized in BOTH engines:
+  `R_target` is now an INDEPENDENT perturbed object so `δln(R_target·T²)=δln(1-ε_η)` is falsifiable
+  (residual symbolic in `R1`/`Ξ₁`/`Σ_η`); the complement law is routed through a separately-named
+  `(1-ε_η)` identity object. **184 ADDED to the Independent-Mirror Set above.**
+- **185 (CHECKPOINT)** (`F1` + `F2`) — USER-DECIDED re-author: the load-bearing monomial-exponent
+  compilation is now DERIVED via `monomialExponentVector` (substitutes each primitive var→`Exp[logVar]`,
+  takes `Log`/`PowerExpand`, reads exponents via `Coefficient`) instead of hand-coded identically to the
+  `.py`; the checkpoint quantity `det ∂(Σ_tr,Σ_nt,Σ_eta)/∂(τ₁,κ_η,μ₁)=1+χ₀*` was re-derived;
+  `firstRatioDrift` (a `D[]`-slope) was kept but is acceptable now that the exponent provenance is
+  independent. NO checkpoint constant changed. **185 ADDED to the Independent-Mirror Set above.**
+- **186** (`F1` + `F2`) — USER-DECIDED re-author: `M_*` rows DERIVED via `logDriftFromMonomial` from
+  the physical micro-monomials (vs the old-`.wl`'s hand-coded-vs-hand-coded `Coefficient` round-trip).
+  F2 replaced the eta-scaling round-trip with a derivation from the physical `ε_η=c_η U²/(K_U K_η)`
+  monomial in BOTH engines; the misleading "Non-tautological ground check" comment was corrected. **186
+  ADDED to the Independent-Mirror Set above.**
+- **187** (`F1`) — USER-DECIDED re-author: finite rows/matrix DERIVED via state-association
+  `Exp[delta]`/`Coefficient` + fibre solved by triangular elimination (vs the `.py`'s hand-coded rows +
+  the same simultaneous `Solve`). F1 added the missing SymPy selected-minor-determinant assertion for
+  engine parity. `.wl` banner uses an ASCII hyphen vs em-dash (cosmetic; number correct). **187 ADDED
+  to the Independent-Mirror Set above.**
+
+The 4 confirmed genuinely independent (no re-author): **176** (`D[Log,eps]`-vs-`series` extraction
+divergence — the V.2 first-pass 176-F2 disposition, genuine + documented), **177** (factored `(M,I,H)`
+load-factor route), **178** (Mathematica-native `Coefficient[Series[Log[pA²/dA²]]]` ν_r route), **182**
+(gauge-`Solve` linear Σ-coefficient extraction). **ONE checkpoint in range — 185 — cleared the higher
+bar** (see above; NO checkpoint constant changed). **NO status-only stages** (every stage dual-engine
+`.py`+`.wl`); **NO EM-projected stages.** Value reconciliation: **0 misaligned batch-wide** (~122
+deliverable values: 176=11, 177=12, 178=13, 179=6, 180=7, 181=8, 182=8, 183=10, 184=12, 185=17, 186=9,
+187=9) → ZERO paper/notes edits. `material_change: false` on all 12 (NO downstream staling); all Codex
+iter-1 exit 0 (no iter-2); 0 Codex deviations. INFRA: 24 orchestrator exec runs (`.py`+`.wl`) exit 0,
+all FAIL=0; committed outputs refreshed from fresh `exec_logs`; banners `STAGE 176`–`187` canonical.
+Arbiter grep on committed outputs CLEAN — no stale self-epoch 159–170 banner, no `168π²`/`168%` class,
+no FAIL. Seat policy held: 8 `.wl`-touching Codex sessions in 4 waves of 2 (179∥180, 181∥183, 184∥185,
+186∥187) under the flock; orchestrator `exec-*` sequential AFTER all Codex done (no seat overlap).
+Pass-1 `MANIFEST.yaml` untouched. **DEFERRED (numbering script/output band, content-keyed, NEVER
+offset-sweep):** 179 docstring/section-banner cross-ref "Stage 176/160/161" looks pre-renumber → leave
+for the dedicated numbering pass; cosmetic 181 & 187 ASCII-hyphen `.wl` banners (number correct); cards
+clean of the +17 `\stagefield{Purpose}` drift (193–204 absent). The 100/129/134/139/158-and-V.1 lesson
+reconfirmed: audit agents UNDER-call transliteration; the orchestrator ground-truth read is the backstop;
+re-author-vs-accept is USER-LEVEL (here the user escalated to "re-author all 8" of the confirmed ports).
+See `PAPER_CLEANUP_TRACKER.md` P5-17. Reference memory `numbering-drift-root-cause`.

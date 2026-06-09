@@ -1,23 +1,17 @@
 
 ========================================================================================
-STAGE 170 — EXACT ORBIT-QUOTIENT CLOSURE
+STAGE 187 - EXACT ORBIT-QUOTIENT CLOSURE
 ========================================================================================
-Exact finite log-ratio equations:
-row_tr  = (1 + deltaStar)*(dc + dg - du) + (1 + chiStar)*(dt - du)
-row_nt  = -deta + dm + 2*dg*eStar + 2*dl*(1 + eStar) - dw*(2 + eStar) - dt*fStar + du*(-eStar + fStar)
-row_eta = 2*dc - deta - du
-log C_tr ratio - row_tr = 0
-PASS: log C_tr ratio - row_tr
-log C_nt ratio - row_nt = 0
-PASS: log C_nt ratio - row_nt
-log epsilon_eta ratio - row_eta = 0
-PASS: log epsilon_eta ratio - row_eta
-matrix row 1 - exact row_tr = 0
-PASS: matrix row 1 - exact row_tr
-matrix row 2 - exact row_nt = 0
-PASS: matrix row 2 - exact row_nt
-matrix row 3 - exact row_eta = 0
-PASS: matrix row 3 - exact row_eta
+Exact finite log-ratio equations derived from physical monomials:
+row_C_tr = dc + dc*deltaStar + dg + deltaStar*dg + dt + chiStar*dt - (2 + chiStar + deltaStar)*du
+row_C_nt = -deta + dm - 2*dw + 2*dg*eStar - (du + dw)*eStar + 2*dl*(1 + eStar) - dt*fStar + du*fStar
+row_epsilon_eta = 2*dc - deta - du
+D1 C_tr log ratio - M_* Delta x = 0
+PASS: D1 C_tr log ratio - M_* Delta x
+D1 C_nt log ratio - M_* Delta x = 0
+PASS: D1 C_nt log ratio - M_* Delta x
+D1 epsilon_eta log ratio - M_* Delta x = 0
+PASS: D1 epsilon_eta log ratio - M_* Delta x
 det selected minor (Delta_eta, Delta_mu, Delta_T) = 1 + chiStar
 selected minor determinant = 0
 PASS: selected minor determinant
@@ -32,20 +26,19 @@ Delta_T finite law = 0
 PASS: Delta_T finite law
 Delta_mu finite law = 0
 PASS: Delta_mu finite law
-row_tr after solve = 0
-PASS: row_tr after solve
-row_nt after solve = 0
-PASS: row_nt after solve
-row_eta after solve = 0
-PASS: row_eta after solve
+D4 C_tr row after finite fibre solve = 0
+PASS: D4 C_tr row after finite fibre solve
+D4 C_nt row after finite fibre solve = 0
+PASS: D4 C_nt row after finite fibre solve
+D4 epsilon_eta row after finite fibre solve = 0
+PASS: D4 epsilon_eta row after finite fibre solve
 
 ========================================================================================
 Finite orbit interpretation
 ========================================================================================
-The three monomial equalities reduce exactly to the same rank-3 matrix condition
-M_* Delta x = 0, but now Delta x is a finite log-ratio vector rather than an
-infinitesimal drift. Therefore the Stage 186 similarity orbit integrates exactly:
-its fibres are the full level sets of (C_tr, C_nt, epsilon_eta).
+The three physical monomial equalities derive the rank-3 matrix condition
+M_* Delta x = 0, with Delta x an exact finite log-ratio vector.
+The selected minor is positive, so the finite similarity fibre is unique.
 
 ========================================================================================
 Carry-forward formulas

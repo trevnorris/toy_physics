@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 167 — EXACT BRANCH-INVARIANT COORDINATES
+STAGE 184 — EXACT BRANCH-INVARIANT COORDINATES
 ========================================================================================
 B_* = 2*(chi0 + deltaU + 1)/deltaU
 C_* = (chi0 + 1)*(deltaU + 1)*(chi0 + deltaU + 1)/(chi0*deltaU)
@@ -8,7 +8,8 @@ C_* = (chi0 + 1)*(deltaU + 1)*(chi0 + deltaU + 1)/(chi0*deltaU)
 ========================================================================================
 Exact branch identities
 ========================================================================================
-R_target * T^2 - Lambda0 * (1 - eps_eta) = 0
+product-drift residual before branch law = (-Sigma_eta*eps_eta + (R_1 + Xi_1)*(eps_eta - 1))/(eps_eta - 1)
+R_target T^2 drift - delta ln(1 - eps_eta) = 0
 
 ========================================================================================
 Tracking invariant

@@ -25,50 +25,68 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 184 — EXACT BRANCH-INVARIANT COORDINATES"];
 
-Clear[chi0, deltaU, epsEta];
-$Assumptions = Element[{chi0, deltaU, epsEta}, Reals] && chi0 > 0 && deltaU > 0 && epsEta > 0;
+Clear[
+  chi0, deltaU, epsEta, theta1, xi1, sigmaEta, r1,
+  rTr, tShape, rTarget, lam0
+];
+$Assumptions = (
+  Element[{chi0, deltaU, epsEta, theta1, xi1, sigmaEta, r1, rTr, tShape, rTarget, lam0}, Reals]
+  && chi0 > 0 && deltaU > 0 && epsEta > 0
+  && rTr > 0 && tShape > 0 && rTarget > 0 && lam0 > 0
+);
 
 bStar = FullSimplify[2*(1 + chi0 + deltaU)/deltaU, Assumptions -> $Assumptions];
 cStar = FullSimplify[(1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)/(chi0*deltaU), Assumptions -> $Assumptions];
 Print["B_* = ", fmt[bStar]];
 Print["C_* = ", fmt[cStar]];
 
-Clear[small, theta1, xi1, sigmaEta, rTr0, t20, lam0];
-$Assumptions = Element[{small, theta1, xi1, sigmaEta, rTr0, t20, lam0, chi0, deltaU, epsEta}, Reals] &&
-  rTr0 > 0 && t20 > 0 && lam0 > 0 && chi0 > 0 && deltaU > 0 && epsEta > 0;
-
 sigmaTr = FullSimplify[-cStar*theta1, Assumptions -> $Assumptions];
 sigmaNT = FullSimplify[xi1 + bStar*theta1, Assumptions -> $Assumptions];
 
+branchVars = {rTr, tShape, epsEta, rTarget};
+branchVelocities = {theta1*rTr, xi1*tShape, sigmaEta*epsEta, r1*rTarget};
+
+firstVariation[expr_] := FullSimplify[
+  (D[expr, #] & /@ branchVars).branchVelocities,
+  Assumptions -> $Assumptions
+];
+
+logDrift[expr_] := FullSimplify[
+  firstVariation[expr]/expr,
+  Assumptions -> $Assumptions
+];
+
 banner["Exact branch identities"];
-rTr = rTr0*Exp[small*theta1];
-t2 = t20*Exp[small*xi1];
-epsEtaVar = epsEta*(1 + small*sigmaEta);
-rTarget = lam0*(1 - epsEtaVar)/t2;
-expectZero["R_target * T^2 - Lambda0 * (1 - eps_eta)", rTarget*t2 - lam0*(1 - epsEtaVar)];
+selectedBranchClosedForm = 1 - epsEta;
+productDriftResidual = FullSimplify[
+  logDrift[rTarget*tShape] - logDrift[selectedBranchClosedForm],
+  Assumptions -> $Assumptions
+];
+Print["product-drift residual before branch law = ", fmt[productDriftResidual]];
+targetDriftLaw = r1 -> FullSimplify[-xi1 - epsEta*sigmaEta/(1 - epsEta), Assumptions -> $Assumptions];
+expectZero[
+  "R_target T^2 drift - delta ln(1 - eps_eta)",
+  productDriftResidual /. targetDriftLaw
+];
 
 banner["Tracking invariant"];
 tTr = rTr^(-cStar);
-tTr0 = rTr0^(-cStar);
-dlnTtr = FullSimplify[SeriesCoefficient[Log[tTr/tTr0], {small, 0, 1}], Assumptions -> $Assumptions];
+dlnTtr = logDrift[tTr];
 Print["delta ln T_* = ", fmt[dlnTtr]];
 expectZero["delta ln T_* - Sigma_tr", dlnTtr - sigmaTr];
 
 banner["Corrected nontracking composite"];
-nTr = t2*rTr^bStar;
-nTr0 = t20*rTr0^bStar;
-dlnNtr = FullSimplify[SeriesCoefficient[Log[nTr/nTr0], {small, 0, 1}], Assumptions -> $Assumptions];
+nTr = tShape*rTr^bStar;
+dlnNtr = logDrift[nTr];
 Print["delta ln N_* = ", fmt[dlnNtr]];
 expectZero["delta ln N_* - Sigma_nt", dlnNtr - sigmaNT];
 
 banner["Dressing coordinate and selected-branch complement"];
-dlnEpsEta = FullSimplify[SeriesCoefficient[Log[epsEtaVar/epsEta], {small, 0, 1}], Assumptions -> $Assumptions];
+dlnEpsEta = logDrift[epsEta];
 Print["delta ln eps_eta = ", fmt[dlnEpsEta]];
 expectZero["delta ln eps_eta - Sigma_eta", dlnEpsEta - sigmaEta];
 
-eComp = (rTarget*t2)/lam0;
-eComp0 = 1 - epsEta;
-dlnEcomp = FullSimplify[SeriesCoefficient[Log[eComp/eComp0], {small, 0, 1}], Assumptions -> $Assumptions];
+dlnEcomp = logDrift[selectedBranchClosedForm];
 Print["delta ln[(R_target T^2)/Lambda0] = ", fmt[dlnEcomp]];
 expectZero["selected-branch complement identity", dlnEcomp + epsEta*sigmaEta/(1 - epsEta)];
 

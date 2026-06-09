@@ -17,111 +17,219 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
   Exit[1];
 );
 
+reduceExpr[expr_] := FullSimplify[Together[Cancel[expr]], Assumptions -> $Assumptions];
+
 expectZero[name_String, expr_] := Module[{res},
-  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  res = reduceExpr[expr];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
-banner["STAGE 181 — COHERENT TRACKING-BRANCH DEFECT LAW"];
-
-Clear[gConst, cSpeed, cs, a, epsEta, epsW, deltaU, chi0, zeta, zW, omegaW2];
-$Assumptions = Element[{gConst, cSpeed, cs, a, epsEta, epsW, deltaU, chi0, zeta, zW, omegaW2}, Reals] &&
-  gConst > 0 && cSpeed > 0 && cs > 0 && a > 0 && zW > 0 && omegaW2 > 0;
-
-lamNorm = FullSimplify[27*Pi^2*gConst*cs^5*omegaW2/(20*a^5*cSpeed^5), Assumptions -> $Assumptions];
-eps = FullSimplify[epsW*(1 - (2/11)*deltaU/(1 + deltaU)), Assumptions -> $Assumptions];
-rTarget = FullSimplify[lamNorm*(1 - epsEta)*(1 - eps)^2/(zW*(1 + chi0)^2), Assumptions -> $Assumptions];
-
-t2Direct = FullSimplify[zW*(1 + chi0)^2/(omegaW2*(1 - eps)^2), Assumptions -> $Assumptions];
-t2Selected = FullSimplify[27*Pi^2*gConst*cs^5*(1 - epsEta)/(20*a^5*cSpeed^5*rTarget), Assumptions -> $Assumptions];
-mMix = FullSimplify[8*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - eps)), Assumptions -> $Assumptions];
-mSupp = FullSimplify[8*zeta*zW*(1 + chi0)^2/(Pi^2*(1 - epsEta)*(1 - zeta*eps)), Assumptions -> $Assumptions];
-sSupport = FullSimplify[1 + zeta*(1 - eps)/(1 - zeta*eps), Assumptions -> $Assumptions];
-productLoaded = FullSimplify[8*lamNorm*(1 - eps)/Pi^2*sSupport, Assumptions -> $Assumptions];
-loadMassFromSupport = FullSimplify[mMix*sSupport, Assumptions -> $Assumptions];
-rTargetLoaded = FullSimplify[productLoaded/loadMassFromSupport, Assumptions -> $Assumptions];
-t2Loaded = FullSimplify[(lamNorm/omegaW2)*(1 - epsEta)/rTargetLoaded, Assumptions -> $Assumptions];
-
-expectZero["direct-selected transfer-shape identity", t2Direct - t2Selected];
-expectZero["support-loaded R_target reconstruction", rTargetLoaded - rTarget];
-expectZero["support-loaded T^2 reconstruction", t2Loaded - t2Direct];
-expectZero["support-loaded branch product law", rTargetLoaded*loadMassFromSupport - productLoaded];
-expectZero["d/dzeta ln T^2 (support-loaded route)", D[Log[t2Loaded], zeta]];
-expectZero["d/dzeta ln R_target (support-loaded route)", D[Log[rTargetLoaded], zeta]];
-
-Clear[bad];
-mSuppSpoiled = FullSimplify[
-  mSupp + bad*zeta*mMix,
-  Assumptions -> $Assumptions && Element[bad, Reals] && bad != 0
+expectNonZero[name_String, expr_] := Module[{res},
+  res = reduceExpr[expr];
+  Print[name, " = ", fmt[res]];
+  If[TrueQ[res === 0], fail[name, res], pass[name]];
 ];
-rTargetSpoiled = FullSimplify[
-  productLoaded/(mMix + mSuppSpoiled),
-  Assumptions -> $Assumptions && Element[bad, Reals] && bad != 0
+
+directional[expr_, pairs_List] := reduceExpr[
+  Total[(D[expr, #[[1]]]*#[[2]]) & /@ pairs]
 ];
-spoiledDrift = FullSimplify[D[Log[rTargetSpoiled], zeta] /. bad -> 1, Assumptions -> $Assumptions];
-Print["spoiled d/dzeta ln R_target = ", fmt[spoiledDrift]];
-If[TrueQ[spoiledDrift === 0], fail["Expected a spoiled support packet to break R_target blindness."]];
+
+logDirectional[expr_, pairs_List] := reduceExpr[directional[expr, pairs]/expr];
+
+banner["STAGE 181 - COHERENT TRACKING-BRANCH DEFECT LAW"];
+
+Clear[
+  grav, light, sound, radius, etaSlack, wallBlock, uSplit, joint, supportShare,
+  wallOverlap, freqSq
+];
+
+$Assumptions = Element[
+    {grav, light, sound, radius, etaSlack, wallBlock, uSplit, joint, supportShare,
+     wallOverlap, freqSq},
+    Reals
+  ] && grav > 0 && light > 0 && sound > 0 && radius > 0 &&
+  wallOverlap > 0 && freqSq > 0;
+
+shapeConstant = reduceExpr[27*Pi^2*grav*sound^5/(20*radius^5*light^5)];
+lambdaBranch = reduceExpr[shapeConstant*freqSq];
+splitMultiplier = reduceExpr[1 - 2*uSplit/(11*(1 + uSplit))];
+splitBlock = reduceExpr[wallBlock*splitMultiplier];
+
+targetFromSelectedBranch = reduceExpr[
+  lambdaBranch*(1 - etaSlack)*(1 - splitBlock)^2/(wallOverlap*(1 + joint)^2)
+];
+
+shapeFromDirectPort = reduceExpr[
+  wallOverlap*(1 + joint)^2/(freqSq*(1 - splitBlock)^2)
+];
+shapeFromSelectedDemand = reduceExpr[
+  shapeConstant*(1 - etaSlack)/targetFromSelectedBranch
+];
+
+expectZero[
+  "direct-selected transfer-shape identity",
+  shapeFromDirectPort - shapeFromSelectedDemand
+];
+
+mixedLegMass = reduceExpr[
+  8*wallOverlap*(1 + joint)^2/(Pi^2*(1 - etaSlack)*(1 - splitBlock))
+];
+coherentSupportMass = reduceExpr[
+  8*supportShare*wallOverlap*(1 + joint)^2/
+    (Pi^2*(1 - etaSlack)*(1 - supportShare*splitBlock))
+];
+supportMultiplier = reduceExpr[
+  1 + supportShare*(1 - splitBlock)/(1 - supportShare*splitBlock)
+];
+
+loadedMassRaw = mixedLegMass + coherentSupportMass;
+loadedProductRaw = 8*lambdaBranch*(1 - splitBlock)*supportMultiplier/Pi^2;
+loadedTargetRaw = loadedProductRaw/loadedMassRaw;
+loadedShapeRaw = shapeConstant*(1 - etaSlack)/loadedTargetRaw;
+
+expectZero[
+  "support-loaded R_target reconstruction",
+  loadedTargetRaw - targetFromSelectedBranch
+];
+expectZero[
+  "support-loaded T^2 reconstruction",
+  loadedShapeRaw - shapeFromDirectPort
+];
+expectZero[
+  "d/dzeta ln T^2 (support-loaded route)",
+  D[Log[loadedShapeRaw], supportShare]
+];
+expectZero[
+  "d/dzeta ln R_target (support-loaded route)",
+  D[Log[loadedTargetRaw], supportShare]
+];
+
+Clear[spoilerAmplitude];
+spoiledMassRaw = loadedMassRaw + spoilerAmplitude*supportShare*mixedLegMass;
+spoiledTargetRaw = loadedProductRaw/spoiledMassRaw;
+spoiledSupportSlope = reduceExpr[
+  D[Log[spoiledTargetRaw], supportShare] /. spoilerAmplitude -> 1
+];
+expectNonZero["spoiled d/dzeta ln R_target", spoiledSupportSlope];
 
 banner["Weak-axisymmetric drift transport"];
-Clear[zetaZ, omegaW, chi1, epsW1, deltaU1, eta1, s];
+
+Clear[
+  overlapDrift, frequencyDrift, jointDrift, bareBlockDrift, uSplitDrift,
+  etaSlackDrift
+];
+
 $Assumptions = Element[
-  {zetaZ, omegaW, chi1, epsW1, deltaU1, eta1, s, epsEta, epsW, deltaU, chi0, zeta,
-   zW, omegaW2, gConst, cSpeed, cs, a},
-  Reals
-] && gConst > 0 && cSpeed > 0 && cs > 0 && a > 0 && zW > 0 && omegaW2 > 0;
+    {grav, light, sound, radius, etaSlack, wallBlock, uSplit, joint, supportShare,
+     wallOverlap, freqSq, overlapDrift, frequencyDrift, jointDrift, bareBlockDrift,
+     uSplitDrift, etaSlackDrift},
+    Reals
+  ] && grav > 0 && light > 0 && sound > 0 && radius > 0 &&
+  wallOverlap > 0 && freqSq > 0;
 
-eps1 = FullSimplify[D[eps, epsW]*epsW1 + D[eps, deltaU]*deltaU1, Assumptions -> $Assumptions];
-eps1Expected = FullSimplify[
-  (1 - (2/11)*deltaU/(1 + deltaU))*epsW1 - (2*epsW*deltaU1)/(11*(1 + deltaU)^2),
-  Assumptions -> $Assumptions
+placementDrifts = {
+  {wallOverlap, wallOverlap*overlapDrift},
+  {freqSq, freqSq*frequencyDrift},
+  {joint, jointDrift},
+  {wallBlock, bareBlockDrift},
+  {uSplit, uSplitDrift},
+  {etaSlack, etaSlackDrift}
+};
+
+splitVariableDrifts = {
+  {wallBlock, bareBlockDrift},
+  {uSplit, uSplitDrift}
+};
+
+splitDriftFromFullExpression = directional[splitBlock, splitVariableDrifts];
+splitDriftFromProductLedger = reduceExpr[
+  bareBlockDrift*splitMultiplier +
+    wallBlock*directional[splitMultiplier, {{uSplit, uSplitDrift}}]
 ];
-expectZero["split-blocking drift eps_1", eps1 - eps1Expected];
 
-xi1 = FullSimplify[zetaZ - omegaW + 2*chi1/(1 + chi0) + 2*eps1/(1 - eps), Assumptions -> $Assumptions];
-r1 = FullSimplify[
-  omegaW - eta1/(1 - epsEta) - zetaZ - 2*chi1/(1 + chi0) - 2*eps1/(1 - eps),
-  Assumptions -> $Assumptions
+expectZero[
+  "split-blocking drift eps_1",
+  splitDriftFromFullExpression - splitDriftFromProductLedger
 ];
-lamNormPert = lamNorm /. omegaW2 -> omegaW2*(1 + s*omegaW);
-epsPert = (epsW + s*epsW1)*(1 - (2/11)*(deltaU + s*deltaU1)/(1 + deltaU + s*deltaU1));
-rTargetPert = lamNormPert*(1 - (epsEta + s*eta1))*(1 - epsPert)^2/((zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2);
-r1Derived = FullSimplify[(D[Log[rTargetPert], s] /. s -> 0), Assumptions -> $Assumptions];
-expectZero["R_1 derived from R_target matches closed form", r1Derived - r1];
-expectZero["selected-branch identity", xi1 + eta1/(1 - epsEta) + r1];
 
-Print["Xi_1 = ", fmt[xi1]];
-Print["R_1  = ", fmt[r1]];
+epsilonOne = reduceExpr[splitDriftFromFullExpression];
+Print["epsilon_1 = ", fmt[epsilonOne]];
 
-epsPert = (epsW + s*epsW1)*(1 - (2/11)*(deltaU + s*deltaU1)/(1 + deltaU + s*deltaU1));
-t2DirectPert = (zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/((omegaW2*(1 + s*omegaW))*(1 - epsPert)^2);
-xi1Derived = FullSimplify[(D[Log[t2DirectPert], s] /. s -> 0), Assumptions -> $Assumptions];
-expectZero["Xi_1 derived from T^2 matches defect law", xi1Derived - xi1];
-mMixPert = 8*(zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/(Pi^2*(1 - epsEta)*(1 - epsPert));
-mSuppPert = 8*zeta*(zW*(1 + s*zetaZ))*(1 + (chi0 + s*chi1))^2/
-  (Pi^2*(1 - epsEta)*(1 - zeta*epsPert));
-sSupportPert = 1 + zeta*(1 - epsPert)/(1 - zeta*epsPert);
-productLoadedPert = 8*lamNormPert*(1 - epsPert)/Pi^2*sSupportPert;
-rTargetLoadedPert = productLoadedPert/(mMixPert + mSuppPert);
-t2LoadedPert = lamNormPert/(omegaW2*(1 + s*omegaW))*(1 - epsEta)/rTargetLoadedPert;
-If[TrueQ[FreeQ[t2LoadedPert, zeta]], fail["t2LoadedPert lost zeta before support-loaded Xi_1 drift"]];
-xi1Loaded = FullSimplify[(D[Log[t2LoadedPert], s] /. s -> 0), Assumptions -> $Assumptions];
-expectZero["d/dzeta Xi_1 (support-loaded route)", D[xi1Loaded, zeta]];
+xiOneFromShape = logDirectional[shapeFromDirectPort, placementDrifts];
+xiOneLaw = reduceExpr[
+  overlapDrift - frequencyDrift + 2*jointDrift/(1 + joint) +
+    2*epsilonOne/(1 - splitBlock)
+];
+
+expectZero[
+  "Xi_1 derived from transfer differential matches defect law",
+  xiOneFromShape - xiOneLaw
+];
+
+rOneFromTarget = logDirectional[targetFromSelectedBranch, placementDrifts];
+rOneLaw = reduceExpr[
+  frequencyDrift - etaSlackDrift/(1 - etaSlack) - overlapDrift -
+    2*jointDrift/(1 + joint) - 2*epsilonOne/(1 - splitBlock)
+];
+
+expectZero[
+  "R_1 derived from selected demand matches defect law",
+  rOneFromTarget - rOneLaw
+];
+expectZero[
+  "selected-branch identity",
+  xiOneFromShape + etaSlackDrift/(1 - etaSlack) + rOneFromTarget
+];
+
+xiOneFromLoadedRoute = logDirectional[loadedShapeRaw, placementDrifts];
+expectZero[
+  "support-loaded Xi_1 matches direct differential",
+  xiOneFromLoadedRoute - xiOneFromShape
+];
+expectZero[
+  "d/dzeta Xi_1 (support-loaded route)",
+  D[xiOneFromLoadedRoute, supportShare]
+];
+
+Print["Xi_1 = ", fmt[xiOneFromShape]];
+Print["R_1  = ", fmt[rOneFromTarget]];
 
 banner["Tracking-factor drift"];
-rTr = FullSimplify[(1 + chi0/(1 + deltaU))/(1 + chi0), Assumptions -> $Assumptions];
-theta1 = FullSimplify[D[Log[rTr], chi0]*chi1 + D[Log[rTr], deltaU]*deltaU1, Assumptions -> $Assumptions];
-theta1Expected = FullSimplify[
-  -(chi0*(1 + chi0)*deltaU1 + deltaU*(1 + deltaU)*chi1)/
-   ((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)),
-  Assumptions -> $Assumptions
+
+trackingFactorDirect = reduceExpr[(1 + joint/(1 + uSplit))/(1 + joint)];
+trackingFactorFactored = reduceExpr[(1 + joint + uSplit)/((1 + joint)*(1 + uSplit))];
+
+expectZero[
+  "tracking-factor quotient form",
+  trackingFactorDirect - trackingFactorFactored
 ];
-expectZero["tracking-factor drift", theta1 - theta1Expected];
-Print["Theta_1 = ", fmt[theta1]];
+
+trackingDrifts = {
+  {joint, jointDrift},
+  {uSplit, uSplitDrift}
+};
+
+thetaFromQuotient = logDirectional[trackingFactorDirect, trackingDrifts];
+thetaFromFactorLedger = reduceExpr[
+  logDirectional[1 + joint + uSplit, trackingDrifts] -
+    logDirectional[1 + joint, trackingDrifts] -
+    logDirectional[1 + uSplit, trackingDrifts]
+];
+
+expectZero[
+  "tracking-factor drift",
+  thetaFromQuotient - thetaFromFactorLedger
+];
+
+thetaOne = reduceExpr[thetaFromQuotient];
+Print["Theta_1 = ", fmt[thetaOne]];
 
 banner["Support-blindness consequence"];
-xiSupportRigid = FullSimplify[xi1 /. {chi1 -> 0, deltaU1 -> 0}, Assumptions -> $Assumptions];
-thetaSupportRigid = FullSimplify[theta1 /. {chi1 -> 0, deltaU1 -> 0}, Assumptions -> $Assumptions];
+
+xiSupportRigid = reduceExpr[xiOneFromShape /. {jointDrift -> 0, uSplitDrift -> 0}];
+thetaSupportRigid = reduceExpr[thetaOne /. {jointDrift -> 0, uSplitDrift -> 0}];
+
 Print["Xi_1 with chi1=deltaU1=0 = ", fmt[xiSupportRigid]];
 Print["Theta_1 with chi1=deltaU1=0 = ", fmt[thetaSupportRigid]];
 

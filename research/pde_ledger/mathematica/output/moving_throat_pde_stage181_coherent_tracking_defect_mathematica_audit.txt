@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 181 — COHERENT TRACKING-BRANCH DEFECT LAW
+STAGE 181 - COHERENT TRACKING-BRANCH DEFECT LAW
 ========================================================================================
 direct-selected transfer-shape identity = 0
 PASS: direct-selected transfer-shape identity
@@ -8,41 +8,45 @@ support-loaded R_target reconstruction = 0
 PASS: support-loaded R_target reconstruction
 support-loaded T^2 reconstruction = 0
 PASS: support-loaded T^2 reconstruction
-support-loaded branch product law = 0
-PASS: support-loaded branch product law
 d/dzeta ln T^2 (support-loaded route) = 0
 PASS: d/dzeta ln T^2 (support-loaded route)
 d/dzeta ln R_target (support-loaded route) = 0
 PASS: d/dzeta ln R_target (support-loaded route)
-spoiled d/dzeta ln R_target = (-121*(1 + deltaU)^2 + 22*(1 + deltaU)*(11 + 9*deltaU)*epsW*zeta - (11 + 9*deltaU)*epsW*(-11*(1 + deltaU) + 2*(11 + 9*deltaU)*epsW)*zeta^2)/((-11*(1 + deltaU) - 11*(1 + deltaU)*zeta + 2*(11 + 9*deltaU)*epsW*zeta)*(-11 - 11*deltaU + 11*zeta*(-2 + epsW*(2 + zeta)) + deltaU*zeta*(-22 + 9*epsW*(2 + zeta))))
+spoiled d/dzeta ln R_target = (-121*(1 + uSplit)^2 + 11*supportShare*(2 + supportShare)*(1 + uSplit)*(11 + 9*uSplit)*wallBlock - 2*supportShare^2*(11 + 9*uSplit)^2*wallBlock^2)/(121*(1 + supportShare)*(1 + 2*supportShare)*(1 + uSplit)^2 - 11*supportShare*(4 + supportShare*(7 + supportShare))*(1 + uSplit)*(11 + 9*uSplit)*wallBlock + 2*supportShare^2*(2 + supportShare)*(11 + 9*uSplit)^2*wallBlock^2)
+PASS: spoiled d/dzeta ln R_target
 
 ========================================================================================
 Weak-axisymmetric drift transport
 ========================================================================================
 split-blocking drift eps_1 = 0
 PASS: split-blocking drift eps_1
-R_1 derived from R_target matches closed form = 0
-PASS: R_1 derived from R_target matches closed form
+epsilon_1 = (bareBlockDrift*(1 + uSplit)*(11 + 9*uSplit) - 2*uSplitDrift*wallBlock)/(11*(1 + uSplit)^2)
+Xi_1 derived from transfer differential matches defect law = 0
+PASS: Xi_1 derived from transfer differential matches defect law
+R_1 derived from selected demand matches defect law = 0
+PASS: R_1 derived from selected demand matches defect law
 selected-branch identity = 0
 PASS: selected-branch identity
-Xi_1 = (2*chi1)/(1 + chi0) + (4*deltaU1*epsW - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) - omegaW + zetaZ
-R_1  = (-2*chi1)/(1 + chi0) + (-4*deltaU1*epsW + 2*(1 + deltaU)*(11 + 9*deltaU)*epsW1)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + eta1/(-1 + epsEta) + omegaW - zetaZ
-Xi_1 derived from T^2 matches defect law = 0
-PASS: Xi_1 derived from T^2 matches defect law
+support-loaded Xi_1 matches direct differential = 0
+PASS: support-loaded Xi_1 matches direct differential
 d/dzeta Xi_1 (support-loaded route) = 0
 PASS: d/dzeta Xi_1 (support-loaded route)
+Xi_1 = (11*(frequencyDrift + frequencyDrift*joint - 2*jointDrift - (1 + joint)*overlapDrift)*(1 + uSplit)^2 - 2*bareBlockDrift*(1 + joint)*(1 + uSplit)*(11 + 9*uSplit) + (-((frequencyDrift + frequencyDrift*joint - 2*jointDrift - (1 + joint)*overlapDrift)*(1 + uSplit)*(11 + 9*uSplit)) + 4*(1 + joint)*uSplitDrift)*wallBlock)/((1 + joint)*(1 + uSplit)*(-11*(1 + uSplit) + (11 + 9*uSplit)*wallBlock))
+R_1  = etaSlackDrift/(-1 + etaSlack) + frequencyDrift - (2*jointDrift)/(1 + joint) - overlapDrift + (2*bareBlockDrift*(1 + uSplit)*(11 + 9*uSplit) - 4*uSplitDrift*wallBlock)/((1 + uSplit)*(-11*(1 + uSplit) + (11 + 9*uSplit)*wallBlock))
 
 ========================================================================================
 Tracking-factor drift
 ========================================================================================
+tracking-factor quotient form = 0
+PASS: tracking-factor quotient form
 tracking-factor drift = 0
 PASS: tracking-factor drift
-Theta_1 = -((chi1*deltaU*(1 + deltaU) + chi0*(1 + chi0)*deltaU1)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)))
+Theta_1 = -((jointDrift*uSplit*(1 + uSplit) + joint*(1 + joint)*uSplitDrift)/((1 + joint)*(1 + uSplit)*(1 + joint + uSplit)))
 
 ========================================================================================
 Support-blindness consequence
 ========================================================================================
-Xi_1 with chi1=deltaU1=0 = (-2*(11 + 9*deltaU)*epsW1)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW) - omegaW + zetaZ
+Xi_1 with chi1=deltaU1=0 = -frequencyDrift + overlapDrift - (2*bareBlockDrift*(11 + 9*uSplit))/(-11*(1 + uSplit) + (11 + 9*uSplit)*wallBlock)
 Theta_1 with chi1=deltaU1=0 = 0
 
 Conclusion:

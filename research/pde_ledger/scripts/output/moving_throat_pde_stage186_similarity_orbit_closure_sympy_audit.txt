@@ -34,6 +34,7 @@ mu_W exponent  = (-F*(delta + 1)*(C + Gam - U) + (chi + 1)*(2*C - E*(2*Gam + 2*L
 finite orbit preserves C_tr = 0
 finite orbit preserves C_nt = 0
 finite orbit preserves eps_eta = 0
+derived eps_eta log drift = 2*C - U - eta_scaling
 K_eta preserving scaling matches paper 2C-U = 0
 chosen Eta_exp solves eps_eta preservation = 0
 

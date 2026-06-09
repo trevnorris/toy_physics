@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 162 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM
+STAGE 179 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM
 ========================================================================================
 P   = GU*R + GW*OU2
 Delta = OU2*OW2 - R**2
@@ -73,6 +73,9 @@ tau - slippage form = 0
 ========================================================================================
 Weighted defect identity
 ========================================================================================
+nu_1 - (kappa1 + 2 tau_1) = 0
+nu_2 - (kappa1 + 2 tau_2) = 0
+nu_3 - (kappa1 + 2 tau_3) = 0
 Xi_1 - 2 weighted tau = 0
 
 Carry-forward formulas:

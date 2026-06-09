@@ -104,6 +104,7 @@ minor = sp.Matrix([
     [-1, 0, 0],
 ])
 print("det selected minor (Delta_eta, Delta_mu, Delta_T) =", sp.simplify(minor.det()))
+expect_zero("selected minor determinant", minor.det() - (1 + chi))
 
 # Exact finite solve.
 sol = sp.solve([row_tr, row_nt, row_eta], [DEta, DT, DM], dict=True)[0]

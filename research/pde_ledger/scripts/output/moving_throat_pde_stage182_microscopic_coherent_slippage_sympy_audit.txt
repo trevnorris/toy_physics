@@ -85,7 +85,7 @@ Xi_1 split =
 ========================================================================================
 Support-blindness at the microscopic level
 ========================================================================================
-free symbols of Xi_1: {Sigma_Z, Sigma_eps, deltaU, chi0, epsW, Sigma_chi, Sigma_del}
+free symbols of Xi_1: {Sigma_eps, Sigma_chi, epsW, chi0, Sigma_del, Sigma_Z, deltaU}
 Xi_1 direct support-symbol leakage = set()
 R_1 direct support-symbol leakage = set()
 Theta_1 direct support-symbol leakage = set()

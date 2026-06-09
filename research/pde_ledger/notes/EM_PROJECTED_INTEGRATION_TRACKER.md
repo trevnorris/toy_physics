@@ -499,3 +499,19 @@ paper/notes edits; NO checkpoints in range; no new postulated constants. With I.
 III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 pass-2 closed, the range
 001-175 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-175) remains
 paper-aligned under the second pass.
+
+## Pass 2 — Batch V.2 (2026-06-09)
+
+Pass-2 Batch V.2 (176-187, `Part V.2 — Load shape, transfer shape, coherent slippage`) re-verified at v2
+depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12. **NO
+EM-projected stages in range → no EM-projection change** — V.2 is the load-shape / transfer-shape /
+coherent-slippage band (checkpoint 185 = microscopic-monomial compiler), far downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched; no EM result moved. The 8
+USER-DECIDED `.wl` re-authors (179/180/181/183/184/185/186/187 — the orchestrator ground-truth
+`.wl`-vs-`.py` read found 8 ports; the user decided "re-author all 8" for strict dual-engine hygiene) and
+the 4 confirmed genuinely independent stages (176/177/178/182) are all confined to the V.2 band and touch
+no EM-projected identity; 0 values misaligned batch-wide → ZERO paper/notes edits; the ONE checkpoint in
+range (185) cleared the higher bar with NO checkpoint constant changed; no new postulated constants. With
+I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 +
+V.2 pass-2 closed, the range 001-187 is paper-aligned at pass-2 depth and the projected-EM core 004-021
+(plus bookends 022-187) remains paper-aligned under the second pass.

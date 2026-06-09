@@ -1,21 +1,22 @@
 
 ========================================================================================
-STAGE 162 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM
+STAGE 179 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM
 ========================================================================================
-P   = gw*ou2 + gu*r
-Delta = ou2*ow2 - r^2
-T   = (gw*ou2 + gu*r)/(Sqrt[k]*(ou2*ow2 - r^2))
+P   = coupling*gMixed + gWall*omegaU^2
+Delta = -coupling^2 + omegaU^2*omegaW^2
+T   = (-(coupling*gMixed) - gWall*omegaU^2)/(Sqrt[k]*(coupling^2 - omegaU^2*omegaW^2))
 N0/K - T^2 = 0
 PASS: N0/K - T^2
 
 ========================================================================================
 Weak-axisymmetric slope identity
 ========================================================================================
-nu_direct = (-2*(gw*ou2*(ou2*oW*ow2 + gW*(-(ou2*ow2) + r^2) + r^2*(oU - 2*rr)) + gu*r*(ou2*(oU + oW)*ow2 + gU*(-(ou2*ow2) + r^2) - (ou2*ow2 + r^2)*rr)))/((gw*ou2 + gu*r)*(ou2*ow2 - r^2))
-tau = (gw*ou2*(gW - kappa1/2 - oW))/(gw*ou2 + gu*r) - (gu*r*(-2*gU + kappa1 + 2*(oU + oW - rr)))/(2*(gw*ou2 + gu*r)) + (r^2*(oU + oW - 2*rr))/(-(ou2*ow2) + r^2)
-nu_expected = kappa1 + (gw*ou2*(2*gW - kappa1 - 2*oW))/(gw*ou2 + gu*r) - (gu*r*(-2*gU + kappa1 + 2*(oU + oW - rr)))/(gw*ou2 + gu*r) + (2*r^2*(oU + oW - 2*rr))/(-(ou2*ow2) + r^2)
-nu_direct - (kappa1 + 2 tau) = 0
-PASS: nu_direct - (kappa1 + 2 tau)
+tau_shape = ((-1 + xCoupling^2)*(uSlope*xCoupling*xMixed + wSlope*xWall) - cSlope*xCoupling*(xMixed + xCoupling^2*xMixed + 2*xCoupling*xWall))/((-1 + xCoupling^2)*(xCoupling*xMixed + xWall))
+nu_from_factor = ((-1 + xCoupling^2)*((kappa1 + 2*uSlope)*xCoupling*xMixed + (kappa1 + 2*wSlope)*xWall) - 2*cSlope*xCoupling*(xMixed + xCoupling^2*xMixed + 2*xCoupling*xWall))/((-1 + xCoupling^2)*(xCoupling*xMixed + xWall))
+tau directional - alpha/beta form = 0
+PASS: tau directional - alpha/beta form
+nu_factor - (kappa1 + 2 tau) = 0
+PASS: nu_factor - (kappa1 + 2 tau)
 
 ========================================================================================
 Exact equivalence to the Stage 176/160/161 slippage formulas
@@ -28,6 +29,12 @@ PASS: (nu-kappa1) - 2*tau_slippage
 ========================================================================================
 Weighted defect identity
 ========================================================================================
+nu_1 - (kappa1 + 2 tau_1) = 0
+PASS: nu_1 - (kappa1 + 2 tau_1)
+nu_2 - (kappa1 + 2 tau_2) = 0
+PASS: nu_2 - (kappa1 + 2 tau_2)
+nu_3 - (kappa1 + 2 tau_3) = 0
+PASS: nu_3 - (kappa1 + 2 tau_3)
 Xi_1 - 2 weighted tau = 0
 PASS: Xi_1 - 2 weighted tau
 

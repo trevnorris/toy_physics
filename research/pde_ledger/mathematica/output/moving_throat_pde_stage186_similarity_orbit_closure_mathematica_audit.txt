@@ -7,12 +7,12 @@ delta log C_nt = 2*eParam*gam1 - kEta - eParam*kU + fParam*kU - 2*kW - eParam*kW
 delta log eps_eta = 2*c1 - kEta - kU
 
 M_* = MatrixForm[{{0, 1 + delta, 1 + delta, -2 - chi - delta, 0, 0, 0, 1 + chi}, {2 + 2*eParam, 0, 2*eParam, -eParam + fParam, -1, -2 - eParam, 1, -fParam}, {0, 2, 0, -1, -1, 0, 0, 0}}]
-M_* row 1 matches paper = 0
-PASS: M_* row 1 matches paper
-M_* row 2 matches paper = 0
-PASS: M_* row 2 matches paper
-M_* row 3 matches paper = 0
-PASS: M_* row 3 matches paper
+M_* row 1 from C_tr monomial matches reference = 0
+PASS: M_* row 1 from C_tr monomial matches reference
+M_* row 2 from C_nt monomial matches reference = 0
+PASS: M_* row 2 from C_nt monomial matches reference
+M_* row 3 from eps_eta monomial matches reference = 0
+PASS: M_* row 3 from eps_eta monomial matches reference
 
 minor det(tau1,kEta,mu1) = 1 + chi
 
@@ -47,6 +47,7 @@ finite orbit preserves C_nt = 0
 PASS: finite orbit preserves C_nt
 finite orbit preserves eps_eta = 0
 PASS: finite orbit preserves eps_eta
+derived eps_eta log drift = 2*cSym - etaScaling - uSym
 K_eta preserving scaling matches paper 2C-U = 0
 PASS: K_eta preserving scaling matches paper 2C-U
 chosen Eta_exp solves eps_eta preservation = 0

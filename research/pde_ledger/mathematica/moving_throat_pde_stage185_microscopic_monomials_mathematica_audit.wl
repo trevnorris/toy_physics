@@ -28,7 +28,9 @@ banner["STAGE 185 — DIRECT MICROSCOPIC MONOMIALS"];
 Clear[
   chi0s, deltaUs, epsWs, epss, lam1, c1, gam1, kU, keta, kW, mu1, tau1,
   epsVar, lamScale, gammaRef, cetaURef, tuRef, kuRef, ketaRef, kweffRef,
-  lamWRef, muWRef
+  lamWRef, muWRef, gammaVar, cetaUVar, tuVar, kuVar, ketaVar, kweffVar,
+  lamWVar, muWVar, logGamma, logCetaU, logTU, logKU, logKeta, logKWeff,
+  logLamW, logMuW
 ];
 
 $Assumptions =
@@ -112,6 +114,39 @@ sigmaKWeffDirect = firstRatioDrift[kweffRatio];
 sigmaLamWDirect = firstRatioDrift[lamWRatio];
 sigmaMuWDirect = firstRatioDrift[muWRatio];
 
+primitiveVars = {gammaVar, cetaUVar, tuVar, kuVar, ketaVar, kweffVar, lamWVar, muWVar};
+primitiveRatios = {gammaRatio, cetaURatio, tuRatio, kuRatio, ketaRatio, kweffRatio, lamWRatio, muWRatio};
+primitiveDrifts = {
+  sigmaGammaDirect, sigmaCetaUDirect, sigmaTUDirect, sigmaKUDirect,
+  sigmaKetaDirect, sigmaKWeffDirect, sigmaLamWDirect, sigmaMuWDirect
+};
+logVars = {logGamma, logCetaU, logTU, logKU, logKeta, logKWeff, logLamW, logMuW};
+
+monomialExponentVector[monomial_] := Module[{logForm},
+  logForm = Expand[
+    PowerExpand[
+      Log[monomial /. Thread[primitiveVars -> (Exp /@ logVars)]]
+    ]
+  ];
+  FullSimplify[Coefficient[logForm, #], Assumptions -> $Assumptions] & /@ logVars
+];
+
+ratioFromExponentVector[vec_] := FullSimplify[
+  Times @@ MapThread[#1^#2 &, {primitiveRatios, vec}],
+  Assumptions -> $Assumptions
+];
+
+driftFromExponentVector[vec_] := FullSimplify[
+  vec.primitiveDrifts,
+  Assumptions -> $Assumptions
+];
+
+chiMonomial = gammaVar*cetaUVar/kuVar;
+deltaUMonomial = tuVar/kuVar;
+epsWMonomial = gammaVar^2*lamWVar^2/(kuVar*kweffVar);
+zMonomial = lamWVar^2*muWVar/(ketaVar*kweffVar^2);
+epsEtaMonomial = cetaUVar^2/(kuVar*ketaVar);
+
 banner["Primitive microscopic ratios"];
 expectZero["d ln gamma - gamma1", sigmaGammaDirect - gam1];
 expectZero["d ln c_etaU - c1", sigmaCetaUDirect - c1];
@@ -145,39 +180,30 @@ expectZero["d ln epsilon_eta - Sigma_eta", sigmaEtaDirect - sigmaEta];
 
 banner["Tracking monomial"];
 ctrRatio = FullSimplify[chiRatio^(1 + deltaUs)*deltaURatio^(1 + chi0s), Assumptions -> $Assumptions];
-ctrRatioPrimitive = FullSimplify[
-  gammaRatio^(1 + deltaUs)*
-  cetaURatio^(1 + deltaUs)*
-  tuRatio^(1 + chi0s)*
-  kuRatio^(-(2 + chi0s + deltaUs)),
-  Assumptions -> $Assumptions
-];
+ctrMonomial = chiMonomial^(1 + deltaUs)*deltaUMonomial^(1 + chi0s);
+ctrExponentVector = monomialExponentVector[ctrMonomial];
+ctrRatioPrimitive = ratioFromExponentVector[ctrExponentVector];
 sigmaTrDirect = firstRatioDrift[ctrRatio];
-sigmaTrCompiled = firstRatioDrift[ctrRatioPrimitive];
+sigmaTrCompiled = driftFromExponentVector[ctrExponentVector];
 expectZero["C_tr,* ratio from primitive coordinates", ctrRatio - ctrRatioPrimitive];
 expectZero["d ln C_tr,* (primitive compiler) - Sigma_tr", sigmaTrCompiled - sigmaTr];
 expectZero["d ln C_tr,* - Sigma_tr", sigmaTrDirect - sigmaTr];
 
 banner["Nontracking monomial"];
 cntRatio = FullSimplify[zratio*epsWRatio^eStar*deltaURatio^(-fStar), Assumptions -> $Assumptions];
-cntRatioPrimitive = FullSimplify[
-  gammaRatio^(2*eStar)*
-  lamWRatio^(2 + 2*eStar)*
-  muWRatio*
-  tuRatio^(-fStar)*
-  kuRatio^(fStar - eStar)/
-  (ketaRatio*kweffRatio^(2 + eStar)),
-  Assumptions -> $Assumptions
-];
+cntMonomial = zMonomial*epsWMonomial^eStar*deltaUMonomial^(-fStar);
+cntExponentVector = monomialExponentVector[cntMonomial];
+cntRatioPrimitive = ratioFromExponentVector[cntExponentVector];
 sigmaNtDirect = firstRatioDrift[cntRatio];
-sigmaNtCompiled = firstRatioDrift[cntRatioPrimitive];
+sigmaNtCompiled = driftFromExponentVector[cntExponentVector];
 expectZero["C_nt,* ratio from primitive coordinates", cntRatio - cntRatioPrimitive];
 expectZero["d ln C_nt,* (primitive compiler) - Sigma_nt", sigmaNtCompiled - sigmaNt];
 expectZero["d ln C_nt,* - Sigma_nt", sigmaNtDirect - sigmaNt];
 
 banner["Dressing monomial"];
-epsetaRatioPrimitive = FullSimplify[cetaURatio^2/(kuRatio*ketaRatio), Assumptions -> $Assumptions];
-sigmaEtaCompiled = firstRatioDrift[epsetaRatioPrimitive];
+epsEtaExponentVector = monomialExponentVector[epsEtaMonomial];
+epsetaRatioPrimitive = ratioFromExponentVector[epsEtaExponentVector];
+sigmaEtaCompiled = driftFromExponentVector[epsEtaExponentVector];
 expectZero[
   "epsilon_eta ratio from primitive coordinates",
   epsetaRatio - epsetaRatioPrimitive
@@ -214,15 +240,18 @@ Print["Xi1 = ", fmt[xi1]];
 Print["R1 + Xi1 = ", fmt[rcombo]];
 
 banner["Exact zero-defect compatibility solve"];
+ledgerSigmaTr = sigmaTrCompiled;
+ledgerSigmaNt = sigmaNtCompiled;
+ledgerSigmaEta = sigmaEtaCompiled;
 mStarMinor = {
-  {D[sigmaTr, tau1], D[sigmaTr, keta], D[sigmaTr, mu1]},
-  {D[sigmaNt, tau1], D[sigmaNt, keta], D[sigmaNt, mu1]},
-  {D[sigmaEta, tau1], D[sigmaEta, keta], D[sigmaEta, mu1]}
+  {D[ledgerSigmaTr, tau1], D[ledgerSigmaTr, keta], D[ledgerSigmaTr, mu1]},
+  {D[ledgerSigmaNt, tau1], D[ledgerSigmaNt, keta], D[ledgerSigmaNt, mu1]},
+  {D[ledgerSigmaEta, tau1], D[ledgerSigmaEta, keta], D[ledgerSigmaEta, mu1]}
 };
 expectZero["det M_*^(tau,keta,mu) - (1+chi0s)", Det[mStarMinor] - (1 + chi0s)];
-tauSol = FullSimplify[tau1 /. First[Solve[sigmaTr == 0, tau1, Reals]], Assumptions -> $Assumptions];
-ketaSol = FullSimplify[keta /. First[Solve[sigmaEta == 0, keta, Reals]], Assumptions -> $Assumptions];
-muSol = FullSimplify[mu1 /. First[Solve[sigmaNt == 0, mu1, Reals]], Assumptions -> $Assumptions];
+tauSol = FullSimplify[tau1 /. First[Solve[ledgerSigmaTr == 0, tau1, Reals]], Assumptions -> $Assumptions];
+ketaSol = FullSimplify[keta /. First[Solve[ledgerSigmaEta == 0, keta, Reals]], Assumptions -> $Assumptions];
+muSol = FullSimplify[mu1 /. First[Solve[ledgerSigmaNt == 0, mu1, Reals]], Assumptions -> $Assumptions];
 muSolFull = FullSimplify[muSol /. {tau1 -> tauSol, keta -> ketaSol}, Assumptions -> $Assumptions];
 
 Print["tau1 = ", fmt[tauSol]];
@@ -230,12 +259,12 @@ Print["kappa_eta = ", fmt[ketaSol]];
 Print["mu1 = ", fmt[muSol]];
 Print["mu1 on full zero-defect branch = ", fmt[muSolFull]];
 
-expectZero["tracking substitution", sigmaTrDirect /. tau1 -> tauSol];
-expectZero["dressing substitution", sigmaEtaDirect /. keta -> ketaSol];
+expectZero["tracking substitution", ledgerSigmaTr /. tau1 -> tauSol];
+expectZero["dressing substitution", ledgerSigmaEta /. keta -> ketaSol];
 expectZero[
   "nontracking substitution",
   FullSimplify[
-    sigmaNtDirect /. {tau1 -> tauSol, keta -> ketaSol, mu1 -> muSolFull},
+    ledgerSigmaNt /. {tau1 -> tauSol, keta -> ketaSol, mu1 -> muSolFull},
     Assumptions -> $Assumptions
   ]
 ];

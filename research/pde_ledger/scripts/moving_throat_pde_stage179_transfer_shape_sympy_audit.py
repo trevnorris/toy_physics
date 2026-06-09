@@ -105,9 +105,34 @@ expect_zero("(nu-kappa1) - 2*tau_slippage", (nu_expected - kappa1) - 2 * tau_sli
 banner("Weighted defect identity")
 
 rho1, rho2 = sp.symbols("rho1 rho2", real=True)
-tau1, tau2, tau3 = sp.symbols("tau1 tau2 tau3", real=True)
+GW1, GW2, GW3 = sp.symbols("GW1 GW2 GW3", positive=True, real=True)
+GU1, GU2, GU3 = sp.symbols("GU1 GU2 GU3", positive=True, real=True)
+OU21, OU22, OU23 = sp.symbols("OU21 OU22 OU23", positive=True, real=True)
+OW21, OW22, OW23 = sp.symbols("OW21 OW22 OW23", positive=True, real=True)
+R1, R2, R3 = sp.symbols("R1 R2 R3", real=True)
+gW1, gW2, gW3 = sp.symbols("gW1 gW2 gW3", real=True)
+gU1, gU2, gU3 = sp.symbols("gU1 gU2 gU3", real=True)
+oU1, oU2, oU3 = sp.symbols("oU1 oU2 oU3", real=True)
+oW1, oW2, oW3 = sp.symbols("oW1 oW2 oW3", real=True)
+rr1, rr2, rr3 = sp.symbols("rr1 rr2 rr3", real=True)
 rho3 = 1 - rho1 - rho2
-Xi = rho1 * (kappa1 + 2 * tau1) + rho2 * (kappa1 + 2 * tau2) + rho3 * (kappa1 + 2 * tau3) - kappa1
+
+port1 = {GW: GW1, GU: GU1, OU2: OU21, OW2: OW21, R: R1, gW: gW1, gU: gU1, oU: oU1, oW: oW1, rr: rr1}
+port2 = {GW: GW2, GU: GU2, OU2: OU22, OW2: OW22, R: R2, gW: gW2, gU: gU2, oU: oU2, oW: oW2, rr: rr2}
+port3 = {GW: GW3, GU: GU3, OU2: OU23, OW2: OW23, R: R3, gW: gW3, gU: gU3, oU: oU3, oW: oW3, rr: rr3}
+
+tau1 = sp.simplify(tau.subs(port1))
+tau2 = sp.simplify(tau.subs(port2))
+tau3 = sp.simplify(tau.subs(port3))
+nu1 = sp.simplify(nu_direct.subs(port1))
+nu2 = sp.simplify(nu_direct.subs(port2))
+nu3 = sp.simplify(nu_direct.subs(port3))
+
+expect_zero("nu_1 - (kappa1 + 2 tau_1)", nu1 - (kappa1 + 2 * tau1))
+expect_zero("nu_2 - (kappa1 + 2 tau_2)", nu2 - (kappa1 + 2 * tau2))
+expect_zero("nu_3 - (kappa1 + 2 tau_3)", nu3 - (kappa1 + 2 * tau3))
+
+Xi = rho1 * (nu1 - kappa1) + rho2 * (nu2 - kappa1) + rho3 * (nu3 - kappa1)
 Xi_expected = 2 * (rho1 * tau1 + rho2 * tau2 + rho3 * tau3)
 expect_zero("Xi_1 - 2 weighted tau", Xi - Xi_expected)
 

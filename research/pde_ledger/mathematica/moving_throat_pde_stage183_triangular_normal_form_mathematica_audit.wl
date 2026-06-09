@@ -5,91 +5,261 @@ banner[title_String] := (
   Print[""];
   Print[StringRepeat["=", 88]];
   Print[title];
-  Print[StringRepeat["=", 88]];
+  Print[StringRepeat["=", 88]]
 );
 
-pass[name_String] := Print["PASS: ", name];
 fmt[expr_] := ToString[InputForm[expr]];
+pass[name_String] := Print["PASS: ", name];
 
 fail[name_String, detail_: Missing["NotAvailable"]] := (
   Print["FAIL: ", name];
-  If[!MissingQ[detail], Print["  residual -> ", fmt[detail]]];
-  Exit[1];
+  If[!MissingQ[detail], Print["  detail -> ", fmt[detail]]];
+  Exit[1]
 );
 
 expectZero[name_String, expr_] := Module[{res},
   res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
-  If[TrueQ[res === 0], pass[name], fail[name, res]];
+  If[TrueQ[res === 0], pass[name], fail[name, res]]
 ];
 
-expectNonzero[name_String, expr_] := Module[{res},
-  res = FullSimplify[expr, Assumptions -> $Assumptions];
+expectVectorZero[name_String, expr_List] := Module[{res},
+  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
-  If[TrueQ[res === 0], fail[name, res], pass[name]];
+  If[TrueQ[res === ConstantArray[0, Length[res]]], pass[name], fail[name, res]]
+];
+
+expectMatrixZero[name_String, expr_List] := Module[{res, dims},
+  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
+  dims = Dimensions[res];
+  Print[name, " = ", fmt[res]];
+  If[Length[dims] == 2 && TrueQ[res === ConstantArray[0, dims]], pass[name], fail[name, res]]
+];
+
+expectNoBranchZero[name_String, expr_] := Module[{zeroSet},
+  zeroSet = FullSimplify[
+    Reduce[branchAssumptions && expr == 0, branchParameters, Reals],
+    Assumptions -> branchAssumptions
+  ];
+  Print[name, " zero-set = ", fmt[zeroSet]];
+  If[TrueQ[zeroSet === False], pass[name], fail[name, zeroSet]]
+];
+
+rowOf[expr_] := FullSimplify[
+  Coefficient[Expand[expr], #] & /@ rawSlippages,
+  Assumptions -> $Assumptions
 ];
 
 banner["STAGE 183 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT"];
 
-Clear[chi0, epsW, epsEta, deltaU, sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel, sigmaTr, sigmaNT];
-$Assumptions = Element[{chi0, epsW, epsEta, deltaU, sigmaZ, sigmaChi, sigmaEta, sigmaEps, sigmaDel, sigmaTr, sigmaNT}, Reals] &&
-  chi0 > 0 && epsW > 0 && epsEta > 0 && deltaU > 0;
+Clear[
+  chi0, epsW, epsEta, deltaU,
+  sigmaZ, sigmaChi, sigmaEps, sigmaDel, sigmaEta,
+  thetaObs, xiObs, rhoObs, coordTr, coordNt, coordEta
+];
 
-eps = FullSimplify[epsW*(1 - (2/11)*deltaU/(1 + deltaU)), Assumptions -> $Assumptions];
-theta1 = FullSimplify[
-  -chi0*deltaU*sigmaTr/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)),
+branchParameters = {chi0, epsW, epsEta, deltaU};
+branchAssumptions = (
+  Element[branchParameters, Reals] &&
+  chi0 > 0 && deltaU > 0 && epsW > 0 && 0 < epsEta < 1
+);
+
+rawSlippages = {sigmaZ, sigmaChi, sigmaEps, sigmaDel, sigmaEta};
+$Assumptions = (
+  branchAssumptions &&
+  Element[rawSlippages, Reals] &&
+  Element[{thetaObs, xiObs, rhoObs, coordTr, coordNt, coordEta}, Reals]
+);
+
+epsBranch = FullSimplify[
+  epsW*(1 - (2 deltaU)/(11 (1 + deltaU))),
   Assumptions -> $Assumptions
 ];
-xi1 = FullSimplify[
-  sigmaZ +
-  2*chi0*sigmaTr/((1 + chi0)*(1 + deltaU)) +
-  2*epsW*(11 + 9*deltaU)*sigmaEps/(11*(1 - eps)*(1 + deltaU)) -
-  (2*chi0/(1 + deltaU) + 4*epsW*deltaU/(11*(1 - eps)*(1 + deltaU)^2))*sigmaDel,
+
+eShapeCoeff = FullSimplify[
+  (2 epsW/(1 - epsBranch))*((11 + 9 deltaU)/(11 (1 + deltaU))),
   Assumptions -> $Assumptions
 ];
-r1 = FullSimplify[-epsEta*sigmaEta/(1 - epsEta) - xi1, Assumptions -> $Assumptions];
 
-banner["Branch-adapted nontracking slippage"];
-sigmaNTDef = FullSimplify[
-  sigmaZ +
-  2*epsW*(11 + 9*deltaU)*sigmaEps/(11*(1 - eps)*(1 + deltaU)) -
-  (2*chi0/(1 + deltaU) + 4*epsW*deltaU/(11*(1 - eps)*(1 + deltaU)^2))*sigmaDel,
+deltaOnlyCoeff = FullSimplify[
+  (4 epsW deltaU)/(11 (1 - epsBranch) (1 + deltaU)^2),
   Assumptions -> $Assumptions
 ];
-Print["Sigma_nt = ", fmt[sigmaNTDef]];
 
-aTr = FullSimplify[2*chi0/((1 + chi0)*(1 + deltaU)), Assumptions -> $Assumptions];
-cTr = FullSimplify[chi0*deltaU/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)), Assumptions -> $Assumptions];
-expectZero["Xi_1 - (A_tr Sigma_tr + Sigma_nt)", xi1 - (aTr*sigmaTr + sigmaNTDef)];
-expectZero["R_1 + Xi_1 + eps_eta/(1-eps_eta) Sigma_eta", r1 + xi1 + epsEta*sigmaEta/(1 - epsEta)];
+trackingRaw = FullSimplify[
+  (1 + chi0) sigmaDel + (1 + deltaU) sigmaChi,
+  Assumptions -> $Assumptions
+];
 
-banner["Triangular observable ledger"];
-Print["Theta_1 = ", fmt[theta1]];
-Print["Xi_1 = ", fmt[FullSimplify[aTr*sigmaTr + sigmaNT, Assumptions -> $Assumptions]]];
-Print["R_1 + Xi_1 = ", fmt[FullSimplify[-epsEta*sigmaEta/(1 - epsEta), Assumptions -> $Assumptions]]];
+thetaRaw = FullSimplify[
+  -(chi0 deltaU/((1 + chi0) (1 + chi0 + deltaU))) sigmaChi
+  -(chi0 deltaU/((1 + deltaU) (1 + chi0 + deltaU))) sigmaDel,
+  Assumptions -> $Assumptions
+];
 
-banner["Exact inverse reconstruction"];
-sigmaTrInv = FullSimplify[-((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU))*theta1/(chi0*deltaU), Assumptions -> $Assumptions];
-expectZero["Sigma_tr inverse", sigmaTrInv - sigmaTr];
+xiRaw = FullSimplify[
+  sigmaZ
+  + (2 chi0/(1 + chi0)) sigmaChi
+  + eShapeCoeff sigmaEps
+  - deltaOnlyCoeff sigmaDel,
+  Assumptions -> $Assumptions
+];
+
+rhoRaw = FullSimplify[
+  -(epsEta/(1 - epsEta)) sigmaEta,
+  Assumptions -> $Assumptions
+];
+
+banner["Raw-slope compiler"];
+
+cFromThetaChi = FullSimplify[
+  -Coefficient[thetaRaw, sigmaChi]/(1 + deltaU),
+  Assumptions -> $Assumptions
+];
+cFromThetaDel = FullSimplify[
+  -Coefficient[thetaRaw, sigmaDel]/(1 + chi0),
+  Assumptions -> $Assumptions
+];
+aFromXiChi = FullSimplify[
+  Coefficient[xiRaw, sigmaChi]/(1 + deltaU),
+  Assumptions -> $Assumptions
+];
+etaDressing = FullSimplify[-Coefficient[rhoRaw, sigmaEta], Assumptions -> $Assumptions];
+
+expectZero["Theta raw row has one tracking prefactor", cFromThetaChi - cFromThetaDel];
+
+cTr = cFromThetaChi;
+aTr = aFromXiChi;
+etaPref = etaDressing;
+
+sigmaNTDerived = FullSimplify[xiRaw - aTr trackingRaw, Assumptions -> $Assumptions];
+sigmaNTCanonical = FullSimplify[
+  sigmaZ
+  + eShapeCoeff sigmaEps
+  - (2 chi0/(1 + deltaU) + deltaOnlyCoeff) sigmaDel,
+  Assumptions -> $Assumptions
+];
+
+Print["Sigma_tr(raw) = ", fmt[trackingRaw]];
+Print["Sigma_nt(raw) = ", fmt[sigmaNTDerived]];
+Print["Sigma_eta(raw) = ", fmt[sigmaEta]];
+expectZero["Canonical branch-adapted Sigma_nt", sigmaNTDerived - sigmaNTCanonical];
+
+branchCompiler = rowOf /@ {trackingRaw, sigmaNTDerived, sigmaEta};
+rawObservableRows = rowOf /@ {thetaRaw, xiRaw, rhoRaw};
+triangularMatrix = FullSimplify[
+  {
+    {-cTr, 0, 0},
+    {aTr, 1, 0},
+    {0, 0, -etaPref}
+  },
+  Assumptions -> $Assumptions
+];
+
+banner["Triangular ledger by matrix factorization"];
+Print["compiler rows = ", fmt[branchCompiler]];
+Print["observable rows = ", fmt[rawObservableRows]];
+Print["normal-form matrix = ", fmt[triangularMatrix]];
+
+expectMatrixZero[
+  "raw observables - triangular matrix.compiler",
+  rawObservableRows - triangularMatrix.branchCompiler
+];
+
+expectVectorZero[
+  "Xi raw - (A_tr Sigma_tr + Sigma_nt) row",
+  rowOf[xiRaw - (aTr trackingRaw + sigmaNTDerived)]
+];
+
+expectVectorZero[
+  "Rho raw + eps_eta/(1-eps_eta) Sigma_eta row",
+  rowOf[rhoRaw + (epsEta/(1 - epsEta)) sigmaEta]
+];
+
+banner["Symbolic inverse from observable variables"];
+
+inverseRules = First @ Solve[
+  Thread[
+    {thetaObs, xiObs, rhoObs} ==
+    triangularMatrix.{coordTr, coordNt, coordEta}
+  ],
+  {coordTr, coordNt, coordEta}
+];
+
+sigmaTrInverse = FullSimplify[coordTr /. inverseRules, Assumptions -> $Assumptions];
+sigmaNtInverse = FullSimplify[coordNt /. inverseRules, Assumptions -> $Assumptions];
+sigmaEtaInverse = FullSimplify[coordEta /. inverseRules, Assumptions -> $Assumptions];
 
 ratio = FullSimplify[aTr/cTr, Assumptions -> $Assumptions];
+expectedRatio = FullSimplify[2 (1 + chi0 + deltaU)/deltaU, Assumptions -> $Assumptions];
+
+Print["solved Sigma_tr = ", fmt[sigmaTrInverse]];
+Print["solved Sigma_nt = ", fmt[sigmaNtInverse]];
+Print["solved Sigma_eta = ", fmt[sigmaEtaInverse]];
 Print["A_tr/C_tr = ", fmt[ratio]];
-expectZero["A_tr/C_tr - 2(1+chi0+deltaU)/deltaU", ratio - 2*(1 + chi0 + deltaU)/deltaU];
 
-sigmaNTInv = FullSimplify[xi1 + ratio*theta1, Assumptions -> $Assumptions];
-expectZero["Sigma_nt inverse", sigmaNTInv - sigmaNTDef];
+expectZero[
+  "inverse Sigma_tr formula",
+  sigmaTrInverse +
+  ((1 + chi0) (1 + deltaU) (1 + chi0 + deltaU)/(chi0 deltaU)) thetaObs
+];
+expectZero["A_tr/C_tr closed form", ratio - expectedRatio];
+expectZero[
+  "inverse Sigma_nt formula",
+  sigmaNtInverse - (xiObs + expectedRatio thetaObs)
+];
+expectZero[
+  "inverse Sigma_eta formula",
+  sigmaEtaInverse + ((1 - epsEta)/epsEta) rhoObs
+];
 
-sigmaEtaInv = FullSimplify[-(1 - epsEta)*(r1 + xi1)/epsEta, Assumptions -> $Assumptions];
-expectZero["Sigma_eta inverse", sigmaEtaInv - sigmaEta];
+inverseMatrix = FullSimplify[
+  Coefficient[#, #2] & @@@ Tuples[{{sigmaTrInverse, sigmaNtInverse, sigmaEtaInverse}, {thetaObs, xiObs, rhoObs}}],
+  Assumptions -> $Assumptions
+];
+inverseMatrix = Partition[inverseMatrix, 3];
 
-banner["Triple-rigidity theorem"];
-(* Rigidity holds iff the triangular map is invertible on the branch, i.e. iff
-   each diagonal prefactor is nonzero there. We test that non-trivial content;
-   the inverse round-trips above confirm full invertibility. *)
-dressingPref = FullSimplify[epsEta/(1 - epsEta), Assumptions -> $Assumptions];
-expectNonzero["C_tr (Theta_1 <- Sigma_tr prefactor) nonzero on branch", cTr];
-expectNonzero["A_tr (Xi_1 <- Sigma_tr feed-through) nonzero on branch", aTr];
-expectNonzero["eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch", dressingPref];
+expectMatrixZero[
+  "inverse matrix.normal-form matrix - identity",
+  inverseMatrix.triangularMatrix - IdentityMatrix[3]
+];
+
+banner["Triple-rigidity on the branch"];
+
+Print["C_tr = ", fmt[cTr]];
+Print["A_tr = ", fmt[aTr]];
+Print["eps_eta/(1-eps_eta) = ", fmt[etaPref]];
+
+expectNoBranchZero["C_tr diagonal prefactor", cTr];
+expectNoBranchZero["A_tr feed-through prefactor", aTr];
+expectNoBranchZero["dressing diagonal prefactor", etaPref];
+
+zeroObservableSet = FullSimplify[
+  Reduce[
+    branchAssumptions &&
+    And @@ Thread[triangularMatrix.{coordTr, coordNt, coordEta} == {0, 0, 0}],
+    {coordTr, coordNt, coordEta},
+    Reals
+  ],
+  Assumptions -> branchAssumptions
+];
+Print["zero-observable branch solution = ", fmt[zeroObservableSet]];
+If[
+  TrueQ[
+    FullSimplify[
+      zeroObservableSet == (coordTr == 0 && coordNt == 0 && coordEta == 0),
+      Assumptions -> branchAssumptions
+    ]
+  ],
+  pass["zero observables imply zero normal-form defect"],
+  fail["zero observables imply zero normal-form defect", zeroObservableSet]
+];
 
 Print[""];
 Print["Carry-forward formulas:"];

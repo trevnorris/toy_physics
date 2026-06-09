@@ -1,46 +1,64 @@
 
 ========================================================================================
-STAGE 166 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT
+STAGE 183 — TRIANGULAR NORMAL FORM OF THE COHERENT DEFECT
 ========================================================================================
 
 ========================================================================================
-Branch-adapted nontracking slippage
+Raw-slope compiler
 ========================================================================================
-Sigma_nt = (-2*chi0*sigmaDel)/(1 + deltaU) + (4*deltaU*epsW*sigmaDel - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + sigmaZ
-Xi_1 - (A_tr Sigma_tr + Sigma_nt) = 0
-PASS: Xi_1 - (A_tr Sigma_tr + Sigma_nt)
-R_1 + Xi_1 + eps_eta/(1-eps_eta) Sigma_eta = 0
-PASS: R_1 + Xi_1 + eps_eta/(1-eps_eta) Sigma_eta
+Theta raw row has one tracking prefactor = 0
+PASS: Theta raw row has one tracking prefactor
+Sigma_tr(raw) = sigmaChi + deltaU*sigmaChi + sigmaDel + chi0*sigmaDel
+Sigma_nt(raw) = (-2*chi0*sigmaDel)/(1 + deltaU) + (4*deltaU*epsW*sigmaDel - 2*(1 + deltaU)*(11 + 9*deltaU)*epsW*sigmaEps)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)) + sigmaZ
+Sigma_eta(raw) = sigmaEta
+Canonical branch-adapted Sigma_nt = 0
+PASS: Canonical branch-adapted Sigma_nt
 
 ========================================================================================
-Triangular observable ledger
+Triangular ledger by matrix factorization
 ========================================================================================
-Theta_1 = -((chi0*deltaU*sigmaTr)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)))
-Xi_1 = sigmaNT + (2*chi0*sigmaTr)/(1 + chi0 + deltaU + chi0*deltaU)
-R_1 + Xi_1 = (epsEta*sigmaEta)/(-1 + epsEta)
+compiler rows = {{0, 1 + deltaU, 0, 1 + chi0, 0}, {1, 0, (-2*(11 + 9*deltaU)*epsW)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW), (2*(-chi0 + (2*deltaU*epsW)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)))/(1 + deltaU), 0}, {0, 0, 0, 0, 1}}
+observable rows = {{0, -((chi0*deltaU)/((1 + chi0)*(1 + chi0 + deltaU))), 0, -((chi0*deltaU)/((1 + deltaU)*(1 + chi0 + deltaU))), 0}, {1, (2*chi0)/(1 + chi0), (-2*(11 + 9*deltaU)*epsW)/(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW), (4*deltaU*epsW)/((1 + deltaU)*(-11*(1 + deltaU) + (11 + 9*deltaU)*epsW)), 0}, {0, 0, 0, 0, epsEta/(-1 + epsEta)}}
+normal-form matrix = {{-((chi0*deltaU)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU))), 0, 0}, {(2*chi0)/(1 + chi0 + deltaU + chi0*deltaU), 1, 0}, {0, 0, epsEta/(-1 + epsEta)}}
+raw observables - triangular matrix.compiler = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+PASS: raw observables - triangular matrix.compiler
+Xi raw - (A_tr Sigma_tr + Sigma_nt) row = {0, 0, 0, 0, 0}
+PASS: Xi raw - (A_tr Sigma_tr + Sigma_nt) row
+Rho raw + eps_eta/(1-eps_eta) Sigma_eta row = {0, 0, 0, 0, 0}
+PASS: Rho raw + eps_eta/(1-eps_eta) Sigma_eta row
 
 ========================================================================================
-Exact inverse reconstruction
+Symbolic inverse from observable variables
 ========================================================================================
-Sigma_tr inverse = 0
-PASS: Sigma_tr inverse
+solved Sigma_tr = -(((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU)*thetaObs)/(chi0*deltaU))
+solved Sigma_nt = (2*(1 + chi0 + deltaU)*thetaObs)/deltaU + xiObs
+solved Sigma_eta = ((-1 + epsEta)*rhoObs)/epsEta
 A_tr/C_tr = (2*(1 + chi0 + deltaU))/deltaU
-A_tr/C_tr - 2(1+chi0+deltaU)/deltaU = 0
-PASS: A_tr/C_tr - 2(1+chi0+deltaU)/deltaU
-Sigma_nt inverse = 0
-PASS: Sigma_nt inverse
-Sigma_eta inverse = 0
-PASS: Sigma_eta inverse
+inverse Sigma_tr formula = 0
+PASS: inverse Sigma_tr formula
+A_tr/C_tr closed form = 0
+PASS: A_tr/C_tr closed form
+inverse Sigma_nt formula = 0
+PASS: inverse Sigma_nt formula
+inverse Sigma_eta formula = 0
+PASS: inverse Sigma_eta formula
+inverse matrix.normal-form matrix - identity = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+PASS: inverse matrix.normal-form matrix - identity
 
 ========================================================================================
-Triple-rigidity theorem
+Triple-rigidity on the branch
 ========================================================================================
-C_tr (Theta_1 <- Sigma_tr prefactor) nonzero on branch = (chi0*deltaU)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU))
-PASS: C_tr (Theta_1 <- Sigma_tr prefactor) nonzero on branch
-A_tr (Xi_1 <- Sigma_tr feed-through) nonzero on branch = (2*chi0)/(1 + chi0 + deltaU + chi0*deltaU)
-PASS: A_tr (Xi_1 <- Sigma_tr feed-through) nonzero on branch
-eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch = epsEta/(1 - epsEta)
-PASS: eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch
+C_tr = (chi0*deltaU)/((1 + chi0)*(1 + deltaU)*(1 + chi0 + deltaU))
+A_tr = (2*chi0)/(1 + chi0 + deltaU + chi0*deltaU)
+eps_eta/(1-eps_eta) = -(epsEta/(-1 + epsEta))
+C_tr diagonal prefactor zero-set = False
+PASS: C_tr diagonal prefactor
+A_tr feed-through prefactor zero-set = False
+PASS: A_tr feed-through prefactor
+dressing diagonal prefactor zero-set = False
+PASS: dressing diagonal prefactor
+zero-observable branch solution = coordTr == 0 && coordNt == 0 && coordEta == 0
+PASS: zero observables imply zero normal-form defect
 
 Carry-forward formulas:
   Sigma_tr = (1+chi_0) Sigma_del + (1+delta_U) Sigma_chi

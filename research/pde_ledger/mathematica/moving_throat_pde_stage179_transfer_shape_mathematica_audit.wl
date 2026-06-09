@@ -18,78 +18,130 @@ fail[name_String, detail_: Missing["NotAvailable"]] := (
 );
 
 expectZero[name_String, expr_] := Module[{res},
-  res = FullSimplify[Together[Expand[expr]], Assumptions -> $Assumptions];
+  res = FullSimplify[Together[Cancel[expr]], Assumptions -> $Assumptions];
+  res = res /. ConditionalExpression[e_, _] :> e;
+  res = FullSimplify[res, Assumptions -> $Assumptions];
   Print[name, " = ", fmt[res]];
   If[TrueQ[res === 0], pass[name], fail[name, res]];
 ];
 
+logSlope[expr_, pairs_List] := Module[{raw},
+  raw = Total[(#[[2]]*#[[1]]*D[expr, #[[1]]]/expr) & /@ pairs];
+  FullSimplify[Together[Cancel[raw]], Assumptions -> $Assumptions]
+];
+
 banner["STAGE 179 — WALL-NORMALIZED TRANSFER-SHAPE THEOREM"];
 
-Clear[k, ou2, ow2, gw, gu, r];
-$Assumptions = Element[{k, ou2, ow2, gw, gu, r}, Reals] &&
-  k > 0 && ou2 > 0 && ow2 > 0 && gw > 0 && gu > 0;
+Clear[k, omegaU, omegaW, gWall, gMixed, coupling];
+$Assumptions = Element[{k, omegaU, omegaW, gWall, gMixed, coupling}, Reals] &&
+  k > 0 && omegaU > 0 && omegaW > 0 && gWall > 0 && gMixed > 0;
 
-p = ou2*gw + r*gu;
-delta = ou2*ow2 - r^2;
-n0 = FullSimplify[p^2/delta^2, Assumptions -> $Assumptions];
+portNumerator = omegaU^2*gWall + coupling*gMixed;
+portDetuning = omegaU^2*omegaW^2 - coupling^2;
+staticTransfer = portNumerator^2/portDetuning^2;
 
-gWh = gw/(Sqrt[k]*ow2);
-gUh = gu/(Sqrt[k]*Sqrt[ou2]*Sqrt[ow2]);
-rHat = r/(Sqrt[ou2]*Sqrt[ow2]);
-t = FullSimplify[(gWh + rHat*gUh)/(1 - rHat^2), Assumptions -> $Assumptions];
+wallLeg = gWall/(omegaW^2*Sqrt[k]);
+mixedLeg = gMixed/(omegaU*omegaW*Sqrt[k]);
+interference = coupling/(omegaU*omegaW);
+shapeFromHats = FullSimplify[
+  (wallLeg + interference*mixedLeg)/(1 - interference^2),
+  Assumptions -> $Assumptions
+];
 
-Print["P   = ", fmt[p]];
-Print["Delta = ", fmt[delta]];
-Print["T   = ", fmt[t]];
-expectZero["N0/K - T^2", n0/k - t^2];
+Print["P   = ", fmt[portNumerator]];
+Print["Delta = ", fmt[portDetuning]];
+Print["T   = ", fmt[shapeFromHats]];
+expectZero["N0/K - T^2", staticTransfer/k - shapeFromHats^2];
 
 banner["Weak-axisymmetric slope identity"];
-Clear[eps, lam, kappa1, gW, gU, oU, oW, rr];
-$Assumptions = Element[{eps, lam, kappa1, gW, gU, oU, oW, rr, k, ou2, ow2, gw, gu, r}, Reals] &&
-  k > 0 && ou2 > 0 && ow2 > 0 && gw > 0 && gu > 0;
 
-kA = k*(1 + eps*lam*kappa1);
-ou2A = ou2*(1 + eps*lam*oU);
-ow2A = ow2*(1 + eps*lam*oW);
-gwA = gw*(1 + eps*lam*gW);
-guA = gu*(1 + eps*lam*gU);
-rA = r*(1 + eps*lam*rr);
+Clear[kk, xWall, xMixed, xCoupling, kappa1, wSlope, uSlope, cSlope];
+$Assumptions = Element[{kk, xWall, xMixed, xCoupling, kappa1, wSlope, uSlope, cSlope}, Reals] &&
+  kk > 0 && xWall > 0 && xMixed > 0;
 
-pA = Expand[ou2A*gwA + rA*guA];
-deltaA = Expand[ou2A*ow2A - rA^2];
-n0A = Expand[pA^2/deltaA^2];
-nuDirect = FullSimplify[(D[Log[n0A], eps] /. eps -> 0)/lam, Assumptions -> $Assumptions];
-Print["nu_direct = ", fmt[nuDirect]];
+shape = (xWall + xCoupling*xMixed)/(1 - xCoupling^2);
+tauFromShape = logSlope[
+  shape,
+  {{xWall, wSlope}, {xMixed, uSlope}, {xCoupling, cSlope}}
+];
 
-w = FullSimplify[gW - oW - kappa1/2, Assumptions -> $Assumptions];
-u = FullSimplify[gU - oU/2 - oW/2 - kappa1/2, Assumptions -> $Assumptions];
-c = FullSimplify[rr - oU/2 - oW/2, Assumptions -> $Assumptions];
+alphaHat = xWall/(xWall + xCoupling*xMixed);
+betaHat = xCoupling*xMixed/(xWall + xCoupling*xMixed);
+tauFormula = FullSimplify[
+  alphaHat*wSlope + betaHat*(uSlope + cSlope) +
+    2*xCoupling^2*cSlope/(1 - xCoupling^2),
+  Assumptions -> $Assumptions
+];
+nuFromFactor = logSlope[
+  kk*shape^2,
+  {{kk, kappa1}, {xWall, wSlope}, {xMixed, uSlope}, {xCoupling, cSlope}}
+];
 
-alpha = FullSimplify[gWh/(gWh + rHat*gUh), Assumptions -> $Assumptions];
-beta = FullSimplify[rHat*gUh/(gWh + rHat*gUh), Assumptions -> $Assumptions];
-tau = FullSimplify[alpha*w + beta*(u + c) + 2*rHat^2*c/(1 - rHat^2), Assumptions -> $Assumptions];
-nuExpected = FullSimplify[kappa1 + 2*tau, Assumptions -> $Assumptions];
-
-Print["tau = ", fmt[tau]];
-Print["nu_expected = ", fmt[nuExpected]];
-expectZero["nu_direct - (kappa1 + 2 tau)", nuDirect - nuExpected];
+Print["tau_shape = ", fmt[tauFromShape]];
+Print["nu_from_factor = ", fmt[nuFromFactor]];
+expectZero["tau directional - alpha/beta form", tauFromShape - tauFormula];
+expectZero["nu_factor - (kappa1 + 2 tau)", nuFromFactor - (kappa1 + 2*tauFromShape)];
 
 banner["Exact equivalence to the Stage 176/160/161 slippage formulas"];
-iHat = FullSimplify[rHat*gUh/gWh, Assumptions -> $Assumptions];
-hHat = FullSimplify[rHat^2, Assumptions -> $Assumptions];
-m = w;
-i = FullSimplify[(u + c) - w, Assumptions -> $Assumptions];
-h = FullSimplify[2*c, Assumptions -> $Assumptions];
-tauSlippage = FullSimplify[m + iHat*i/(1 + iHat) + hHat*h/(1 - hHat), Assumptions -> $Assumptions];
-expectZero["tau - slippage form", tau - tauSlippage];
-expectZero["(nu-kappa1) - 2*tau_slippage", (nuExpected - kappa1) - 2*tauSlippage];
+
+iHat = xCoupling*xMixed/xWall;
+hHat = xCoupling^2;
+mSlip = wSlope;
+iSlip = (uSlope + cSlope) - wSlope;
+hSlip = 2*cSlope;
+tauSlippage = FullSimplify[
+  mSlip + iHat*iSlip/(1 + iHat) + hHat*hSlip/(1 - hHat),
+  Assumptions -> $Assumptions
+];
+expectZero["tau - slippage form", tauFromShape - tauSlippage];
+expectZero["(nu-kappa1) - 2*tau_slippage", (nuFromFactor - kappa1) - 2*tauSlippage];
 
 banner["Weighted defect identity"];
-Clear[rho1, rho2, tau1, tau2, tau3];
-$Assumptions = Element[{rho1, rho2, tau1, tau2, tau3, kappa1}, Reals];
+
+Clear[
+  rho1, rho2,
+  xWall1, xWall2, xWall3, xMixed1, xMixed2, xMixed3,
+  xCoupling1, xCoupling2, xCoupling3,
+  wSlope1, wSlope2, wSlope3, uSlope1, uSlope2, uSlope3,
+  cSlope1, cSlope2, cSlope3
+];
+$Assumptions = Element[
+    {
+      rho1, rho2, kappa1,
+      xWall1, xWall2, xWall3, xMixed1, xMixed2, xMixed3,
+      xCoupling1, xCoupling2, xCoupling3,
+      wSlope1, wSlope2, wSlope3, uSlope1, uSlope2, uSlope3,
+      cSlope1, cSlope2, cSlope3
+    },
+    Reals
+  ] && xWall1 > 0 && xWall2 > 0 && xWall3 > 0 &&
+    xMixed1 > 0 && xMixed2 > 0 && xMixed3 > 0 && kk > 0;
+
 rho3 = 1 - rho1 - rho2;
-xi = rho1*(kappa1 + 2*tau1) + rho2*(kappa1 + 2*tau2) + rho3*(kappa1 + 2*tau3) - kappa1;
-xiExpected = 2*(rho1*tau1 + rho2*tau2 + rho3*tau3);
+portRules = {
+  {xWall -> xWall1, xMixed -> xMixed1, xCoupling -> xCoupling1,
+    wSlope -> wSlope1, uSlope -> uSlope1, cSlope -> cSlope1},
+  {xWall -> xWall2, xMixed -> xMixed2, xCoupling -> xCoupling2,
+    wSlope -> wSlope2, uSlope -> uSlope2, cSlope -> cSlope2},
+  {xWall -> xWall3, xMixed -> xMixed3, xCoupling -> xCoupling3,
+    wSlope -> wSlope3, uSlope -> uSlope3, cSlope -> cSlope3}
+};
+
+tauPorts = FullSimplify[tauFromShape /. portRules, Assumptions -> $Assumptions];
+nuPorts = FullSimplify[nuFromFactor /. portRules, Assumptions -> $Assumptions];
+
+Do[
+  expectZero[
+    "nu_" <> ToString[j] <> " - (kappa1 + 2 tau_" <> ToString[j] <> ")",
+    nuPorts[[j]] - (kappa1 + 2*tauPorts[[j]])
+  ],
+  {j, 1, 3}
+];
+
+xi = rho1*(nuPorts[[1]] - kappa1) +
+  rho2*(nuPorts[[2]] - kappa1) +
+  rho3*(nuPorts[[3]] - kappa1);
+xiExpected = 2*(rho1*tauPorts[[1]] + rho2*tauPorts[[2]] + rho3*tauPorts[[3]]);
 expectZero["Xi_1 - 2 weighted tau", xi - xiExpected];
 
 Print[""];

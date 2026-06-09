@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 163 — EFFECTIVE TRANSFER-SHAPE COLLAPSE
+STAGE 180 — EFFECTIVE TRANSFER-SHAPE COLLAPSE
 ========================================================================================
 multi-port effective-shape identity = 0
 

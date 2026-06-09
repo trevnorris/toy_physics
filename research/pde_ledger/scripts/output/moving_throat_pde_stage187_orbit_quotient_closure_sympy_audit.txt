@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 170 — EXACT ORBIT–QUOTIENT CLOSURE
+STAGE 187 — EXACT ORBIT–QUOTIENT CLOSURE
 ========================================================================================
 Exact finite log-ratio equations:
 row_tr  = (Delta_T - Delta_U)*(chi0_star + 1) + (deltaU_star + 1)*(-Delta_U + Delta_c + Delta_gamma)
@@ -13,6 +13,7 @@ matrix row 1 - exact row_tr = 0
 matrix row 2 - exact row_nt = 0
 matrix row 3 - exact row_eta = 0
 det selected minor (Delta_eta, Delta_mu, Delta_T) = chi0_star + 1
+selected minor determinant = 0
 
 Exact finite fibre solution:
 Delta_eta = -Delta_U + 2*Delta_c

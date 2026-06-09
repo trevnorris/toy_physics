@@ -54,7 +54,6 @@ T2_loaded = sp.simplify((Lam / OmegaW2) * (1 - eps_eta) / R_target_loaded)
 expect_zero("direct-selected transfer-shape identity", T2_direct - T2_selected)
 expect_zero("support-loaded R_target reconstruction", R_target_loaded - R_target)
 expect_zero("support-loaded T^2 reconstruction", T2_loaded - T2_direct)
-expect_zero("support-loaded branch product law", R_target_loaded * Mtr - product_loaded)
 expect_zero("d/dzeta ln T^2 (support-loaded route)", sp.diff(sp.log(T2_loaded), zeta))
 expect_zero("d/dzeta ln R_target (support-loaded route)", sp.diff(sp.log(R_target_loaded), zeta))
 

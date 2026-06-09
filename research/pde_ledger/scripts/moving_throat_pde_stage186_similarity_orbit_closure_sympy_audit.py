@@ -114,11 +114,20 @@ Eta_orbit = 2*C - U - Eta_exp
 expect_zero("finite orbit preserves C_tr", Ctr_orbit)
 expect_zero("finite orbit preserves C_nt", Cnt_orbit)
 expect_zero("finite orbit preserves eps_eta", Eta_orbit)
-# Non-tautological ground check: solve for the K_eta^eff scaling that preserves
-# eps_eta = c_etaU^2 / (K_U K_eta^eff), then confirm it equals the paper's 2C - U.
+# Ground check: derive the K_eta^eff scaling from the physical eps_eta monomial.
+c_etaU0, KU0, KEta0, s = sp.symbols("c_etaU0 KU0 KEta0 s", positive=True, real=True)
 eta_scaling = sp.symbols("eta_scaling", real=True)
-eps_eta_logdrift = 2*C - U - eta_scaling   # log-drift of c^2 K_U^{-1} K_eta^{-1}
+eps_eta_monomial = c_etaU0**2 / (KU0 * KEta0)
+eps_eta_scaled = eps_eta_monomial.subs({
+    c_etaU0: c_etaU0 * sp.exp(s*C),
+    KU0: KU0 * sp.exp(s*U),
+    KEta0: KEta0 * sp.exp(s*eta_scaling),
+})
+eps_eta_logdrift = sp.simplify(
+    sp.diff(sp.expand_log(sp.log(eps_eta_scaled / eps_eta_monomial), force=True), s).subs(s, 0)
+)
 solved_eta = sp.solve(sp.Eq(eps_eta_logdrift, 0), eta_scaling)[0]
+print("derived eps_eta log drift =", eps_eta_logdrift)
 expect_zero("K_eta preserving scaling matches paper 2C-U", solved_eta - (2*C - U))
 expect_zero("chosen Eta_exp solves eps_eta preservation",
             eps_eta_logdrift.subs(eta_scaling, Eta_exp))

@@ -562,6 +562,17 @@ Audit note:
   removing the earlier tautology concern.
 - The existing `185--187` numerical stress layer remains secondary; the main
   theorem path is now symbolic in both CAS layers.
+- Red-team pass-2 batch V.2 (2026-06-09) re-verified at the higher checkpoint
+  bar with no constant moved: the `.wl` was RE-AUTHORED so the load-bearing
+  monomial-exponent compilation is now DERIVED via a `monomialExponentVector`
+  (substitutes each primitive var → `Exp[logVar]`, takes `Log`/`PowerExpand`,
+  reads exponents via `Coefficient`) instead of hand-coded identically to the
+  `.py`, and the checkpoint quantity `det ∂(Σ_tr,Σ_nt,Σ_eta)/∂(τ₁,κ_η,μ₁) =
+  1+χ₀*` was re-derived (`firstRatioDrift` kept, now acceptable since the
+  exponent provenance is independent). `material_change: false`, NO checkpoint
+  constant changed, NO new pinned constant introduced — the carried `2`/`11`/`9`/
+  `4` Stage-183 coefficients and the symbolic exponents/coefficients are
+  preserved; both engines now genuinely independent.
 
 ### Stage 200
 
@@ -1260,4 +1271,29 @@ new carried constants; the 165/168/169 decimal→canonical-radius substitution [
 No checkpoint among the 12 stages, so cumulative checkpoint-constant provenance is unchanged from the IV.2
 close [105 retained at the higher-bar standard]. Arbiter grep CLEAN — no `168π²`/`100π²` class. **0
 sanctioned mirrors remain in V.1.**)
+No carried checkpoint constant changed.
+
+## Pass 2 — Batch V.2 (2026-06-09)
+
+Pass-2 Batch V.2 (176-187): reviewed — ONE checkpoint in range (**185**, `microscopic_monomials`)
+re-verified at the higher bar; **NO checkpoint constant changed, moved, or re-pinned; no new
+postulated constant introduced.** 0 values misaligned batch-wide (~122 deliverable values; no
+`paper_misalignment` anywhere → ZERO paper/notes edits); `material_change: false` on all 12; no new
+postulated constant. **185** cleared the higher bar after its `.wl` was RE-AUTHORED so the load-bearing
+monomial-exponent compilation is now DERIVED — a `monomialExponentVector` substituting each primitive
+var → `Exp[logVar]`, taking `Log`/`PowerExpand`, and reading exponents via `Coefficient` — instead of
+hand-coded identically to the `.py`; the checkpoint quantity `det
+∂(Σ_tr,Σ_nt,Σ_eta)/∂(τ₁,κ_η,μ₁)=1+χ₀*` was **re-derived, NOT trusted as a literal or moved or
+re-pinned** (`firstRatioDrift`, a `D[]`-slope, was kept and is acceptable now that the exponent
+provenance is independent). The carried Stage-183 coefficients `2`/`11`/`9`/`4` and the symbolic
+exponents/coefficients (`1+deltaU_*`, `1+chi0_*`, `E_*`, `F_*`) are PRESERVED. **Zero unexplained
+literals remain in checkpoint 185's scripts.** **Cumulative checkpoint-constant provenance is unchanged
+from the IV.2 close (105 retained at the higher-bar standard); no checkpoint constant moved.** (For
+completeness: the 11 non-checkpoint findings stages introduced no new constant — the orchestrator
+ground-truth `.wl`-vs-`.py` read found 8 ports [179/180/181/183/184/185/186/187] and 4 already
+independent [176/177/178/182], and the **USER DECIDED to "re-author all 8" ports**; Codex wrote the
+routes, verify confirmed all 8 genuinely independent [184 routes `R_target`'s complement law through a
+separately-named `(1-ε_η)` identity object; 186 derives the eta-scaling from the physical
+`ε_η=c_η U²/(K_U K_η)` monomial] — no emitted value moved. Arbiter grep CLEAN — no `168π²`/`100π²`
+class. **0 sanctioned mirrors remain in V.2.**)
 No carried checkpoint constant changed.

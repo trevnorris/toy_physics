@@ -56,10 +56,25 @@ banner("Exact branch identities")
 Rtr = Rtr0 * sp.exp(small * Theta1)
 T2 = T20 * sp.exp(small * Xi1)
 eps_eta_var = eps_eta * (1 + small * SigmaEta)
-Rtarget = Lam0 * (1 - eps_eta_var) / T2
+Rtarget0 = sp.symbols('Rtarget0', positive=True, real=True)
+R1 = sp.symbols('R_1', real=True)
+Rtarget = Rtarget0 * sp.exp(small * R1)
+selected_branch_E = sp.simplify(1 - eps_eta_var)
 
-# 1. Exact product identity.
-expect_zero("R_target * T^2 - Lambda0 * (1 - eps_eta)", sp.simplify(Rtarget * T2 - Lam0 * (1 - eps_eta_var)))
+# 1. Exact product drift identity with R_target varied independently.
+dln_Rtarget_T2 = sp.simplify(
+    sp.series(sp.log((Rtarget * T2) / (Rtarget0 * T20)), small, 0, 2).removeO().coeff(small, 1)
+)
+dln_selected_branch_E = sp.simplify(
+    sp.series(sp.log(selected_branch_E / (1 - eps_eta)), small, 0, 2).removeO().coeff(small, 1)
+)
+product_drift_residual = sp.simplify(dln_Rtarget_T2 - dln_selected_branch_E)
+print("product-drift residual before branch law =", product_drift_residual)
+R1_branch_law = sp.simplify(-Xi1 - eps_eta / (1 - eps_eta) * SigmaEta)
+expect_zero(
+    "R_target T^2 drift - delta ln(1 - eps_eta)",
+    product_drift_residual.subs(R1, R1_branch_law),
+)
 
 banner("Tracking invariant")
 Ttr = sp.simplify(Rtr**(-Cstar))
@@ -80,7 +95,7 @@ dln_eps_eta = sp.simplify(sp.series(sp.log(eps_eta_var / eps_eta), small, 0, 2).
 print("delta ln eps_eta =", dln_eps_eta)
 expect_zero("delta ln eps_eta - Sigma_eta", dln_eps_eta - SigmaEta)
 
-Ecomp = sp.simplify((Rtarget * T2) / Lam0)
+Ecomp = selected_branch_E
 Ecomp0 = sp.simplify(1 - eps_eta)
 dln_Ecomp = sp.simplify(sp.series(sp.log(Ecomp / Ecomp0), small, 0, 2).removeO().coeff(small, 1))
 print("delta ln[(R_target T^2)/Lambda0] =", dln_Ecomp)

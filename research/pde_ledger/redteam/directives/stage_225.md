@@ -110,7 +110,7 @@ After Codex applies, the verifier runs `redteam exec-sympy 225`, confirms the ne
 **Paper side:**
 - `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md:5` quote: "built on the Stage-240 compatibility branch and the transported Stage-241 same-charge ceiling test."
 - same notes `:115` quote: "For the concrete Stage-240 compatibility sample"; `:152` "Stage-241 transported same-charge ceilings"; `:50` "after Stage 242"; `:590` cites supporting file `moving_throat_pde_stage242_..._sympy_audit.py` (which does not exist).
-- `/var/projects/toy_projects/.../paper/stages/stage_225.tex` — the card's Inputs/Verification-note text draws from these notes (numbering inherited).
+- `/var/projects/toy_physics/.../paper/stages/stage_225.tex` — the card's Inputs/Verification-note text draws from these notes (numbering inherited).
 
 **Script side (correct):**
 - `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage225_..._sympy_audit.py:195` quote: "# Concrete Stage 223 compatibility point"

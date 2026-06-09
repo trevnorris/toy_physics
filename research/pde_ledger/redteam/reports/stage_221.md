@@ -155,7 +155,7 @@ Re-derive at least the load-bearing results in the `.wl` via native Mathematica 
 **Severity:** low
 **Files:**
 - paper/notes side: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md` (title + §3 + §9 repeatedly say "Stage 238" and "Stage 237 derivative identity")
-- script side: `/var/projects/toy_projects/.../scripts/...sympy_audit.py:36-37` comment "Exact Stage 220 wall derivative identity"; `.wl:82` "II. Exact Stage 220 derivative identity"; card `paper/stages/stage_221.tex:9` "Imports Stage~220".
+- script side: `/var/projects/toy_physics/.../scripts/...sympy_audit.py:36-37` comment "Exact Stage 220 wall derivative identity"; `.wl:82` "II. Exact Stage 220 derivative identity"; card `paper/stages/stage_221.tex:9` "Imports Stage~220".
 
 **What's wrong:**
 The notes prose names this stage "Stage 238" and attributes the wall derivative identity to "Stage 237," while the card, appendix, and both scripts call it Stage 221 and attribute the identity to Stage 220. This is a renumbering-era inconsistency in the notes prose, not a math discrepancy (the identity `∂_Π D_Π = −N` and all formulas are the same on both sides). Per the auditor contract this is a `paper_misalignment` (notes prose vs. card/scripts) that I do not resolve — but it is low severity and purely a label.

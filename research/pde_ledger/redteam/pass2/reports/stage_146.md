@@ -24,7 +24,7 @@ docs_read:
 
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_146.tex`
 - notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage146_positive_deformation_expansion.md`
-- part appendix: `/var/projects/toy_projects/.../paper/appendices/stage_appendix_part04.tex` → actual: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex`
+- part appendix: `/var/projects/toy_physics/.../paper/appendices/stage_appendix_part04.tex` → actual: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part04.tex`
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage146_positive_deformation_expansion_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage146_positive_deformation_expansion_sympy_audit.txt`

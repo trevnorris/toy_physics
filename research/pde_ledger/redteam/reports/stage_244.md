@@ -25,7 +25,7 @@ docs_read:
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_244.tex`
 - notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md`
 - part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part08.tex` (row at line 86)
-- sympy: `/var/projects/toy_projects/.../scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py` → `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py`
+- sympy: `/var/projects/toy_physics/.../scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py` → `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py`
 - mathematica: (missing)
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.txt`
 - mathematica output: (missing)

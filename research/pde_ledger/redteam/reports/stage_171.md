@@ -26,7 +26,7 @@ docs_read:
 - notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md`
 - part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part05.tex` (rows at lines 73, 417-459, 1463)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage171_microscopic_grouped_obstructions_sympy_audit.py`
-- mathematica: `/var/projects/toy_projects/.../mathematica/moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.wl` — actual path `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.wl`
+- mathematica: `/var/projects/toy_physics/.../mathematica/moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.wl` — actual path `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage171_microscopic_grouped_obstructions_sympy_audit.txt`
 - mathematica output: `/var/projects/toy_physics/research/pde_ledger/mathematica/output/moving_throat_pde_stage171_microscopic_grouped_obstructions_mathematica_audit.txt`
 

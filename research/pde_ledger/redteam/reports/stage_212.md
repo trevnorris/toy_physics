@@ -103,7 +103,7 @@ See directive F1: create the `.wl` against the claim manifest M1–M4, independe
 **Severity:** low
 **Subtype:** notes_contradicts_script
 **Files:**
-- notes `/var/projects/toy_projects/.../moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md` (actual path `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md`), §7.1
+- notes `/var/projects/toy_physics/.../moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md` (actual path `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md`), §7.1
 - sympy `.../moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py:202`
 
 **What's wrong:**

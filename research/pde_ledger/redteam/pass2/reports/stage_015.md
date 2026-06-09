@@ -25,7 +25,7 @@ docs_read:
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_015.tex`
 - notes: `(none)` (no files matching `notes/stages/moving_throat_pde_stage015_*.md`)
 - part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 52)
-- sympy: `/var/projects/toy_projects/.../scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`
+- sympy: `/var/projects/toy_physics/.../scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`
   (full path `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.py`)
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage015_parent_throat_action_master_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage015_parent_throat_action_master_sympy_audit.txt`

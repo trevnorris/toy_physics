@@ -23,7 +23,7 @@ docs_read:
 ## Files reviewed
 
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_061.tex`
-- notes: `/var/projects/toy_projects/../notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md` → actual path `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md`
+- notes: `/var/projects/toy_physics/../notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md` → actual path `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md`
 - part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part03.tex` (row 100)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage061_microscopic_gain_thresholds_mathematica_audit.wl`

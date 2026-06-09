@@ -113,7 +113,7 @@ After user chooses a direction: if paper is wrong, the card line 274 (and notes 
 
 **Severity:** medium
 **Files:**
-- `/var/projects/toy_projects/.../mathematica/moving_throat_pde_stage253_..._mathematica_audit.wl` (whole file)
+- `/var/projects/toy_physics/.../mathematica/moving_throat_pde_stage253_..._mathematica_audit.wl` (whole file)
 
 **What's wrong:**
 The `.wl` is a section-for-section, line-for-line port of the `.py`, not an independent re-derivation. Identical decomposition, identical intermediate variable choreography, identical substitution order. Three corresponding excerpts:

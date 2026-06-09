@@ -24,7 +24,7 @@ docs_read:
 
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_011.tex`
 - notes: `(none)` (no files matching `notes/stages/moving_throat_pde_stage011_*.md` exist)
-- part appendix: `/var/projects/toy_projects/.../stage_appendix_part01.tex` → actual path `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 011 at line 44, plus `\input{stages/stage_011}` at line 101)
+- part appendix: `/var/projects/toy_physics/.../stage_appendix_part01.tex` → actual path `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part01.tex` (row 011 at line 44, plus `\input{stages/stage_011}` at line 101)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage011_projected_maxwell_p2_bridge_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.txt`

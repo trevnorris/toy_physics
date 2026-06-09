@@ -141,7 +141,7 @@ propagation warranted on physics grounds (253 is the last stage regardless).
 - §VI benchmark constants are declared benchmark inputs recombined arithmetically and asserted as
   readback; they are not hand-pasted derived results bypassing the symbolic path.
 - F1 directive's `## Applied: F1` block lists the notes file as files_changed — consistent with the
-  observed diff. Minor: the original report's F2 file path had a `toy_projects` typo in the body; the
+  observed diff. Minor: the original report's F2 file path had a `toy_physics` typo in the body; the
   directive's F2 target path is correct and the right file was edited.
 
 ## Verdict justification

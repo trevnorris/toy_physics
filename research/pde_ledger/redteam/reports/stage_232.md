@@ -77,7 +77,7 @@ Dominant pattern is `match`, with one load-bearing constant `mismatch` between t
 **Severity:** medium
 **Files:**
 - `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md:153,157`
-- `/var/projects/toy_projects/.../scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py:149-150`
+- `/var/projects/toy_physics/.../scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py:149-150`
 
 **What's wrong:**
 The notes write the wall/source figure-of-merit with prefactor **168**:

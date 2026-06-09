@@ -27,7 +27,7 @@ docs_read:
 - part appendix: `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part07.tex` (rows at lines 92, 200-205, 1179-1235, 1378-1400)
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py`
 - mathematica: `(missing)`
-- sympy output: `/var/projects/toy_projects... -> /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.txt`
+- sympy output: `/var/projects/toy_physics... -> /var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.txt`
 - mathematica output: `(missing)`
 
 ## What the paper claims

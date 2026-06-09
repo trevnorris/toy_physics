@@ -70,7 +70,7 @@ material_change: false
 
 ## Side observations (non-blocking)
 
-- The verify prompt's primary input paths carried a spurious `toy_projects/` segment; the real tree is `/var/projects/toy_physics/research/pde_ledger/...`. No impact on the verdict.
+- The verify prompt's primary input paths carried a spurious `toy_physics/` segment; the real tree is `/var/projects/toy_physics/research/pde_ledger/...`. No impact on the verdict.
 - The F1 exclusion/`∂=0` checks use `q_nt_factored` (not the raw `q_nt` containing `Rtarget`); both are support-free, and this matches the original script's design choice — noted only for completeness.
 
 ## Verdict justification

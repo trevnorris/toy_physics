@@ -1019,3 +1019,71 @@ self-epoch (134–146) self-banners, no `168π²`/`168%` class, canonical Family
 0-seat `.py`-only). **NO new deferred numbering residual from IV.6** — the cards are numbering-clean of the
 +17 `\stagefield{Purpose}` class. See `PAPER_CLEANUP_TRACKER.md` P5-15, `MATHEMATICA_MIRROR_POLICY.md`.
 Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch V.1 (2026-06-08)
+
+Pass-2 Batch V.1 (164-175, `Part V.1 — Microscopic logs, drifts, bundle inversion`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**12/12 verified**, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0
+blocked, all Codex iter-1 exit 0 (no iter-2), 0 Codex deviations. **0 values misaligned batch-wide**
+(164=19, 165=7, 166=11, 167=20, 168=11, 169=10, 170=11, 171=18, 172=12, 173=12, 174=9, 175=11 deliverable
+values checked; no `paper_misalignment` anywhere → ZERO paper/notes edits). **NO checkpoints in range; NO
+status-only stages** (every stage is dual-engine `.py`+`.wl` — confirmed; a missing engine would have been
+a finding); **NO EM-projected stages; no new postulated constant.** **THIS BATCH CLOSES the 105–175
+first-pass orchestrator-direct TRANSLITERATION WATCH at 175.**
+
+**The USER DECIDED "re-author all 6":** the orchestrator ground-truth `.wl`-vs-`.py` read split the 12
+into **6 confirmed genuinely independent (no re-author): 164, 166, 170, 172, 174, 175** and **6 confirmed
+`.wl` ports: 165, 167, 168, 169, 171, 173.** For strict close-of-watch dual-engine hygiene the **user
+decided to re-author all 6 ports.** Codex designed + wrote the new routes (the `.py` reference engines
+were left untouched except 165's F2 numeric block); the verifier confirmed all 6 are genuinely independent
+(NOT relabels). All `material_change: false`.
+
+**6 re-authored `.wl` transliterations (USER-DECIDED, all verify-confirmed independent):**
+- **165 — F1 + F2 `insufficient_verification`:** F1 `eqR`/`eqG` now ASSEMBLED from parent-coupling
+  log-drift scalings (`dKs`/`dKq`/`dLam`/`dGs`/`dGq` from primitives → `chanR`/`chanG` emerge via
+  `FullSimplify` + matches-channel guards); F2 added 4 numeric prefactor checks in BOTH engines
+  (`Tm_pref≈1.2715890393387603`, `v_pref≈1.1428896163056477`, `ratio_pref≈0.8987885086678338`,
+  `prod_pref≈1.4532859092683434`), `rstar` from canonical `√(4107−100π²)/(10π)`. `.py` + `.wl` changed.
+  **165 added to the Independent-Mirror Set.**
+- **167 — F1:** additive independent numeric-closure route (`numericClosureResiduals` recomputes the full
+  primitive drift chain for 5 tuples incl. mixed `{2,-3,5,-7}`, asserts all invariants/channels vanish);
+  token algebraic independence (pure-substitution stage, user-accepted) but additive + route-independent —
+  the limited-achievable-independence class. `.wl` only.
+- **168 — F1:** `epsPerp` now DERIVED via `Coefficient[Expand[-deltaPerpSlip], epsT/epsv/epsL]` +
+  boxed-weight `expectZero` guard; decimal `rNum`→canonical `√(4107−100π²)/(10π)`. `.wl` only. **168 added
+  to the Independent-Mirror Set.**
+- **169 — F1:** decimal radius `rNum`→canonical `√(4107−100π²)/(10π)`; the 3 paper-comparison TARGET
+  literals (`0.758035078944663`/`1.00314310113848`/`1.88373219118005`) correctly preserved as paper-side
+  values; sphere-avg + matrix-invariant sections already independent — de-transcription only. `.wl` only.
+- **171 — F1:** additive `bCombSeries` (BdG Series-route in a fresh `eps2`) + `kScalar`/`gScalar`
+  weak-axisymmetric scalar routes (the Z/N bundles ALREADY had independent Series routes from a prior
+  pass). `.wl` only. **171 added to the Independent-Mirror Set.**
+- **173 — F1:** re-authored to direct analytic `D[ratio,eps]/.eps->0` (distinct mechanism from the
+  `.py`'s `series().diff()`); SymPy-mirroring `d0A`/`d2A`/`d4A`/`n0A` names removed; even-preserving
+  collapse via `Numerator`/`Together`/`Coefficient` (not `Solve`/`First`); the byte-identical
+  carry-forward `Print` block replaced with a native one-liner; all 6 `expectZero` targets preserved.
+  `.wl` only. **173 added to the Independent-Mirror Set.**
+
+**6 confirmed genuinely independent (no re-author):** **164** (independent series route via perturbation +
+`Series`/`Coefficient`), **166** (matrix-inverse route, batch-7 remediation), **170** (`D[,eps]` vs
+series, BATCH-1 `bda2107` rework; reliability re-run deterministic 14s < 600s), **172**
+(implicit-differentiation), **174** (perturbed-expr `D[,eps]`), **175** (`dlogSeries` route for the
+load-bearing `Sigma_N`, batch-8 user-accepted — residual-port NOT unilaterally reversed). So all 12 V.1
+dual-engine stages are now genuinely independent (**0 sanctioned mirrors remain in V.1**); the
+Coverage-Totals "Mathematica audits present" raw count does NOT move (these are independence upgrades, not
+new `.wl`). **Dominant theme — the orchestrator ground-truth backstop + USER close-of-watch escalation:**
+the read confirmed 6 ports and the user escalated to "re-author all 6" (the 100/129/134/139/158 lesson
+reconfirmed to the last batch — audit agents UNDER-call transliteration; re-author-vs-accept is
+USER-LEVEL). INFRA: orchestrator independent exec re-run all 12 (reliability gate) exit 0, all FAIL=0;
+committed outputs — 7 mma re-authored (165/167/168/169/171/173) + 165 sympy refreshed; **170 BOTH engines
+NORMALIZED** (refresh stripped a stray `# exit_code: 0` trailer — the IV.2-108 class; deliverables
+byte-identical, NOT a math change); 164/166/172/174/175 byte-identical (deterministic). Arbiter grep on
+committed outputs CLEAN — no stale self-epoch band (147–158 = NNN−17), no `168π²`/`100π²` class; canonical
+Family-1 radius `√(4107−100π²)/(10π)` used correctly (165/168/169 de-transcribe the decimal
+`1.77799353547498` to this closed form). Seat policy held (6 `.wl`-touching Codex sessions in 3 waves of 2
+— 165∥167, 168∥169, 171∥173 — under the flock; orchestrator `exec-*` sequential after all Codex done, no
+seat overlap). **NO new deferred numbering residual from V.1** — all 12 cards clean of the +17
+`\stagefield{Purpose}` self-label class (181–192 absent; correct self-numbers). See
+`PAPER_CLEANUP_TRACKER.md` P5-16, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
+`numbering-drift-root-cause`.

@@ -616,3 +616,20 @@ stale-numbering COMMENT only [`.py:39` `Stages 99 and 102`→`Stage 119 (with ga
 115-116)`; non-load-bearing, output byte-identical]. The 9 dual-engine clean stages 151/152/154/155/156/
 157/159/160/163 were all transliteration-watch-backstopped by the orchestrator. No certified checkpoint
 constant moved; no new checkpoint constant introduced. **0 sanctioned mirrors remain in IV.6.**)
+
+## Pass 2 — Batch V.1 (2026-06-08)
+
+Pass-2 Batch V.1 (164-175): **NO checkpoints in range** — every stage is `is_checkpoint: false`. No
+certified checkpoint constant was touched, moved, or re-pinned; no new checkpoint constant introduced; no
+trust-classification change. 12/12 re-verified at v2 depth + value-reconciliation augmentation,
+`material_change: false` on all 12 (NO downstream staling). **This batch CLOSES the 105–175 first-pass
+orchestrator-direct TRANSLITERATION WATCH at 175.** (For completeness, none of it bears on checkpoint
+trust: 0 values misaligned batch-wide [no `paper_misalignment` → ZERO paper/notes edits]; NO status-only
+stages [every stage dual-engine `.py`+`.wl`]; NO EM-projected stages; no new postulated constants. The
+orchestrator ground-truth `.wl`-vs-`.py` read split the 12 into 6 confirmed genuinely independent
+[164/166/170/172/174/175] and 6 confirmed `.wl` ports, and the **USER DECIDED to "re-author all 6"** ports
+[165/167/168/169/171/173] for strict close-of-watch dual-engine hygiene — Codex wrote the routes, verify
+confirmed all 6 genuinely independent; 165/168/171/173 added to the Independent-Mirror Set, 167 = additive
+numeric-closure, 169 = de-transcription. None of the 12 stages is a checkpoint, so **no checkpoint trust
+status changed.** Arbiter grep CLEAN; canonical Family-1 radius `√(4107−100π²)/(10π)` used correctly. **0
+sanctioned mirrors remain in V.1.**)

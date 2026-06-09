@@ -43,12 +43,6 @@ Delta_Q^(20)/eps = -(d01/d0) + n01/n0
 Delta_Q^(21)/eps = (-(d01/d0) + n01/n0)/2
 Delta_Q^(22)/eps = d01/d0 - n01/n0
 
-Carry-forward formulas:
-  u2^(1) = -(D21 + u2 D01)/D0
-  u4^(1) = -(5 D01 + 18 D21 + 81 D41)/(81 D0) on the canonical branch
-  P1/P0  = N01/N0 - D01/D0
-  hidden-even  <=>  D41 = 2 D21/3 + D01/27
-  if u2^(1)=0, then D21 = -D01/9 and D41 = -D01/27
-  remaining defect Xi_load = N01/N0 - D01/D0
+Mathematica summary: verified slope identities, even-preserving collapse, and Xi_load lanes above.
 
 Stage 173 Mathematica audit passed.

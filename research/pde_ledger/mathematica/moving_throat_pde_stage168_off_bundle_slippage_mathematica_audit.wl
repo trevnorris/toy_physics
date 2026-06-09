@@ -68,7 +68,12 @@ deltaPerpSlip = Expand[
     lW -> lWBr + epsL
   }
 ];
-epsPerp = g*epsT + (g + bCoeff)*epsv + cCoeff*epsL;
+wT = Coefficient[Expand[-deltaPerpSlip], epsT];
+wv = Coefficient[Expand[-deltaPerpSlip], epsv];
+wL = Coefficient[Expand[-deltaPerpSlip], epsL];
+epsPerp = wT*epsT + wv*epsv + wL*epsL;
+expectZero["epsPerp weights match boxed form (g, g+1/(2s), 2g+3/(4s))",
+  (wT - g)^2 + (wv - (g + bCoeff))^2 + (wL - (2*g + 3/(4*s)))^2];
 Print["delta_perp with slippages = ", fmt[deltaPerpSlip]];
 expectZero["delta_perp + eps_perp", deltaPerpSlip + epsPerp];
 
@@ -97,7 +102,8 @@ expectZero[
 ];
 
 banner["Numeric Family-1 coefficients"];
-rNum = SetPrecision[1.77799353547498, 30];
+rExact = Sqrt[4107 - 100*Pi^2]/(10*Pi);   (* canonical Family-1 radius = 1.77799353547498... *)
+rNum = N[rExact, 30];
 gNum = SetPrecision[0.758035078944663, 30];
 sNum = Sqrt[1 + rNum^2];
 bNum = 1/(2*sNum);

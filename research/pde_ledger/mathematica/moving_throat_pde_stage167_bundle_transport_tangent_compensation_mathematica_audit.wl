@@ -86,6 +86,59 @@ expectZero["delta ln(K_s K_q/lambda^2)", chan2];
 deltaPerp = FullSimplify[gstar*chan1 + chan2/(4*Sqrt[1 + rstar^2]), Assumptions -> $Assumptions];
 expectZero["delta_perp", deltaPerp];
 
+banner["Independent numeric closure"];
+
+numericClosureResiduals[thetaN_, ksN_, kqN_, pN_, gN_, radiusN_] := Module[
+  {drhoN, daN, dcsN, dZN, dcswN, dellN, dLWN, dvN, dTN, dgqN, dgsN, dIsqN,
+   dlamN, rcN, rFrakN, gFrakN, chan1N, chan2N, deltaPerpN},
+  drhoN = thetaN/2;
+  daN = ksN/2 - thetaN/4;
+  dcsN = ksN/2 - thetaN/4 + pN/5;
+  dZN = kqN - 2*pN/5;
+  dcswN = 2*drhoN;
+  dellN = -dcswN;
+  dLWN = daN;
+  dvN = FullSimplify[(dZN - drhoN)/2 + 3*dcswN/2 + dcsN - 5*daN/2];
+  dTN = FullSimplify[(dZN - drhoN)/2 + 3*dcswN/2 - dcsN - 3*daN/2];
+  dgqN = FullSimplify[dZN - 3*dLWN/2];
+  dgsN = FullSimplify[dTN + 2*daN + dellN];
+  dIsqN = FullSimplify[2*daN + dellN + dLWN/2];
+  dlamN = FullSimplify[dvN + dIsqN];
+  rcN = FullSimplify[2*dlamN - ksN - kqN];
+  rFrakN = FullSimplify[dlamN - (ksN + kqN)/2];
+  gFrakN = FullSimplify[dgqN + ksN/2 - dgsN - kqN/2];
+  chan1N = FullSimplify[dgqN + ksN - dgsN - dlamN];
+  chan2N = FullSimplify[ksN + kqN - 2*dlamN];
+  deltaPerpN = FullSimplify[gN*chan1N + chan2N/(4*Sqrt[1 + radiusN^2])];
+  {
+    {"delta ln r_c", rcN},
+    {"delta ln frak r", rFrakN},
+    {"delta ln frak g", gFrakN},
+    {"delta ln(g_q K_s/(g_s lambda))", chan1N},
+    {"delta ln(K_s K_q/lambda^2)", chan2N},
+    {"delta_perp", deltaPerpN}
+  }
+];
+
+numericTuples = {
+  {"tuple 1", 1, 0, 0, 0, Rational[1, 3], 2},
+  {"tuple 2", 0, 1, 0, 0, Rational[1, 3], 2},
+  {"tuple 3", 0, 0, 1, 0, Rational[1, 3], 2},
+  {"tuple 4", 0, 0, 0, 1, Rational[1, 3], 2},
+  {"tuple 5", 2, -3, 5, -7, Rational[1, 3], 2}
+};
+
+Scan[
+  Function[entry,
+    Module[{tag, thetaN, ksN, kqN, pN, gN, radiusN, checks},
+      {tag, thetaN, ksN, kqN, pN, gN, radiusN} = entry;
+      checks = numericClosureResiduals[thetaN, ksN, kqN, pN, gN, radiusN];
+      Scan[expectZero[#[[1]] <> " numeric (" <> tag <> ")", #[[2]]] &, checks];
+    ]
+  ],
+  numericTuples
+];
+
 Print[""];
 Print["Carry-forward formulas:"];
 Print["  delta ln v_w0   = -3/4 delta ln K_s + 1/2 delta ln K_q + 13/8 delta ln Theta_w"];

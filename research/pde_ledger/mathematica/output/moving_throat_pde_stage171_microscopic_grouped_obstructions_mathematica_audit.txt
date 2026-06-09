@@ -12,6 +12,8 @@ delta B2 formula = 0
 PASS: delta B2 formula
 BdG obstruction bundle = 0
 PASS: BdG obstruction bundle
+BdG obstruction bundle (series route) = 0
+PASS: BdG obstruction bundle (series route)
 delta Delta formula = 0
 PASS: delta Delta formula
 delta S formula = 0
@@ -40,14 +42,26 @@ weak-axisymmetric K obstruction lambda=1 = 0
 PASS: weak-axisymmetric K obstruction lambda=1
 weak-axisymmetric G obstruction lambda=1 = 0
 PASS: weak-axisymmetric G obstruction lambda=1
+weak-axisymmetric K scalar route lambda=1 = 0
+PASS: weak-axisymmetric K scalar route lambda=1
+weak-axisymmetric G scalar route lambda=1 = 0
+PASS: weak-axisymmetric G scalar route lambda=1
 weak-axisymmetric K obstruction lambda=1/2 = 0
 PASS: weak-axisymmetric K obstruction lambda=1/2
 weak-axisymmetric G obstruction lambda=1/2 = 0
 PASS: weak-axisymmetric G obstruction lambda=1/2
+weak-axisymmetric K scalar route lambda=1/2 = 0
+PASS: weak-axisymmetric K scalar route lambda=1/2
+weak-axisymmetric G scalar route lambda=1/2 = 0
+PASS: weak-axisymmetric G scalar route lambda=1/2
 weak-axisymmetric K obstruction lambda=-1 = 0
 PASS: weak-axisymmetric K obstruction lambda=-1
 weak-axisymmetric G obstruction lambda=-1 = 0
 PASS: weak-axisymmetric G obstruction lambda=-1
+weak-axisymmetric K scalar route lambda=-1 = 0
+PASS: weak-axisymmetric K scalar route lambda=-1
+weak-axisymmetric G scalar route lambda=-1 = 0
+PASS: weak-axisymmetric G scalar route lambda=-1
 
 Carry-forward formulas:
   K_A = (1/9 delta K_A - delta M_A) - (delta B_A2 + 1/9 delta B_A0) - (delta Z_A2 + 1/9 delta Z_A0)

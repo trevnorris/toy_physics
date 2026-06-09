@@ -56,6 +56,11 @@ bCombFormula = Expand[
   - 2*c^2*(2/w^5 + 1/(9*w^3))*dw
 ];
 expectZero["BdG obstruction bundle", bCombExact - bCombFormula];
+Clear[eps2];
+bCombSeries = Coefficient[Normal[Series[
+  (b2 + b0/9) /. {c -> c + eps2*dc, w -> w + eps2*dw},
+  {eps2, 0, 1}]], eps2];
+expectZero["BdG obstruction bundle (series route)", bCombSeries - bCombFormula];
 
 Clear[u, wVar, r, gu, gw, dU, dW, dR, dgu, dgw];
 $Assumptions = Element[{u, wVar, r, gu, gw, dU, dW, dR, dgu, dgw}, Reals] &&
@@ -145,6 +150,9 @@ expectZero["N obstruction bundle (series route)", nCombSeries - nCombFormula];
 Clear[eps, k1, m1, b01, b21, z01, z21, n01];
 $Assumptions = Element[{eps, k1, m1, b01, b21, z01, z21, n01, p0}, Reals] && p0 != 0;
 
+kScalar = (k1 - b01 - z01)/9 + (-m1 - b21 - z21);
+gScalar = n01 - p0*(k1 - b01 - z01);
+
 Do[
   lamVal = lam;
   kMicro = eps*lamVal*(k1/9 - m1 - b21 - b01/9 - z21 - z01/9);
@@ -158,6 +166,14 @@ Do[
   expectZero[
     "weak-axisymmetric G obstruction lambda=" <> ToString[InputForm[lamVal]],
     gMicro - gRebuilt
+  ];
+  expectZero[
+    "weak-axisymmetric K scalar route lambda=" <> ToString[InputForm[lamVal]],
+    eps*lamVal*kScalar - kRebuilt
+  ];
+  expectZero[
+    "weak-axisymmetric G scalar route lambda=" <> ToString[InputForm[lamVal]],
+    eps*lamVal*gScalar - gRebuilt
   ],
   {lam, {1, 1/2, -1}}
 ];

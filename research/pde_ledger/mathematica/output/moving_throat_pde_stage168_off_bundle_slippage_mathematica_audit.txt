@@ -16,6 +16,8 @@ PASS: bundle tangency (delta_perp on exact lower branch)
 ========================================================================================
 Introduce the three off-bundle slippages
 ========================================================================================
+epsPerp weights match boxed form (g, g+1/(2s), 2g+3/(4s)) = 0
+PASS: epsPerp weights match boxed form (g, g+1/(2s), 2g+3/(4s))
 delta_perp with slippages = -2*epsL*g - epsT*g - epsv*g - (3*epsL)/(4*s) - epsv/(2*s)
 delta_perp + eps_perp = 0
 PASS: delta_perp + eps_perp
@@ -42,11 +44,11 @@ PASS: DeltaQ - sigma(-16 eps_perp/s - 27 dGammaW)/(3(1-sigma))
 Numeric Family-1 coefficients
 ========================================================================================
 coeff epsT in delta_perp = -0.75803507894466304328773276210995391011`20.
-coeff epsv in delta_perp = -1.00314310113847606205906701623170262804`20.
-coeff epsL in delta_perp = -1.88373219118004561473246690540253089711`20.
-coeff epsT in deltaPi = -1.15860596492310296159921117548381316755`20.
-coeff epsv in deltaPi = -1.53323719829507072642123158798104454281`20.
-coeff epsL in deltaPi = -2.87915877990415757043145296971347339799`20.
+coeff epsv in delta_perp = -1.00314310113847626634098658071024522529`20.
+coeff epsL in delta_perp = -1.88373219118004592115534625212034479298`20.
+coeff epsT in deltaPi = -1.1586059649231039272234629439380325904`20.
+coeff epsv in deltaPi = -1.53323719829507231650801050717255458336`20.
+coeff epsL in deltaPi = -2.87915877990416043837374723272784817023`20.
 
 Carry-forward formulas:
   eps_L := d ln L_W - d ln a

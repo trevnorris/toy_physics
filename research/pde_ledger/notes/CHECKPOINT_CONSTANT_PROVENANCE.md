@@ -1239,3 +1239,25 @@ stale-numbering COMMENT fixed [`Stages 99 and 102`→`Stage 119 (with gamma0 fro
 non-load-bearing, output byte-identical]. 153 is status-only by design. **0 sanctioned mirrors remain in
 IV.6.**)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch V.1 (2026-06-08)
+
+Pass-2 Batch V.1 (164-175): reviewed — **NO checkpoints in range; no checkpoint constant pinned, moved,
+or re-pinned this batch; no new postulated constant introduced.** 0 values misaligned batch-wide (no
+`paper_misalignment` anywhere → ZERO paper/notes edits); `material_change: false` on all 12. **This batch
+CLOSES the 105–175 first-pass orchestrator-direct TRANSLITERATION WATCH at 175.** (For completeness, no
+new constant entered the provenance ledger: the orchestrator ground-truth `.wl`-vs-`.py` read split the
+12 into 6 confirmed genuinely independent [164/166/170/172/174/175] and 6 confirmed `.wl` ports, and the
+**USER DECIDED to "re-author all 6"** ports [165/167/168/169/171/173] for strict close-of-watch
+dual-engine hygiene — Codex wrote the routes, `.py` untouched except 165's F2 numeric block, verify
+confirmed all 6 genuinely independent. The route changes introduced NO new pinned numeric constant:
+165's F2 prefactor checks [`Tm_pref≈1.2715890393387603`, `v_pref≈1.1428896163056477`,
+`ratio_pref≈0.8987885086678338`, `prod_pref≈1.4532859092683434`] are re-derived cross-check targets, not
+new carried constants; the 165/168/169 decimal→canonical-radius substitution [`1.77799353547498`→
+`√(4107−100π²)/(10π)`] is a SCRIPT-side de-transcription of an EXISTING value, not a new or moved constant
+[the canonical Family-1 radius is owned upstream at 121]; 169's 3 paper-comparison TARGET literals
+[`0.758035078944663`/`1.00314310113848`/`1.88373219118005`] are preserved unchanged as paper-side values.
+No checkpoint among the 12 stages, so cumulative checkpoint-constant provenance is unchanged from the IV.2
+close [105 retained at the higher-bar standard]. Arbiter grep CLEAN — no `168π²`/`100π²` class. **0
+sanctioned mirrors remain in V.1.**)
+No carried checkpoint constant changed.

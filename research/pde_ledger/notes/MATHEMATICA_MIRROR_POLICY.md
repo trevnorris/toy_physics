@@ -719,6 +719,31 @@ different verification structure from the SymPy side:
   the `d eps_kappa identity = 0` check passes either way — same value); `.py` UNCHANGED. One of the two
   genuine IV.6 transliterations. **0 sanctioned mirrors remain in IV.6** — all 12 IV.6 dual-engine stages
   now genuinely independent
+- `165`
+  red-team pass-2 batch V.1 (2026-06-08) RE-AUTHORED from a confirmed `.wl` port (one of the 6 the
+  USER DECIDED to "re-author all 6" at the close of the 105–175 transliteration watch): F1 `eqR`/`eqG`
+  now ASSEMBLED from parent-coupling log-drift scalings (`dKs`/`dKq`/`dLam`/`dGs`/`dGq` from primitives →
+  `chanR`/`chanG` emerge via `FullSimplify` + matches-channel guards); F2 `insufficient_verification` —
+  4 numeric prefactor checks added in BOTH engines (`Tm_pref≈1.2715890393387603`,
+  `v_pref≈1.1428896163056477`, `ratio_pref≈0.8987885086678338`, `prod_pref≈1.4532859092683434`), `rstar`
+  from canonical `√(4107−100π²)/(10π)`. `.py` + `.wl` changed; verify-confirmed genuinely independent
+- `168`
+  red-team pass-2 batch V.1 (2026-06-08) RE-AUTHORED from a confirmed `.wl` port (USER-DECIDED
+  re-author): F1 `epsPerp` now DERIVED via `Coefficient[Expand[-deltaPerpSlip], epsT/epsv/epsL]` +
+  boxed-weight `expectZero` guard; decimal `rNum`→canonical `√(4107−100π²)/(10π)`. `.wl` only;
+  verify-confirmed genuinely independent
+- `171`
+  red-team pass-2 batch V.1 (2026-06-08) RE-AUTHORED from a confirmed `.wl` port (USER-DECIDED
+  re-author): F1 additive `bCombSeries` (BdG Series-route in a fresh `eps2`) + `kScalar`/`gScalar`
+  weak-axisymmetric scalar routes (the Z/N bundles ALREADY had independent Series routes from a prior
+  pass). `.wl` only; verify-confirmed genuinely independent
+- `173`
+  red-team pass-2 batch V.1 (2026-06-08) RE-AUTHORED from a confirmed `.wl` port (USER-DECIDED
+  re-author): F1 re-authored to direct analytic `D[ratio,eps]/.eps->0` (distinct mechanism from the
+  `.py`'s `series().diff()`); SymPy-mirroring `d0A`/`d2A`/`d4A`/`n0A` names removed; even-preserving
+  collapse via `Numerator`/`Together`/`Coefficient` (not `Solve`/`First`); byte-identical carry-forward
+  `Print` block replaced with a native one-liner; all 6 `expectZero` targets preserved. `.wl` only;
+  verify-confirmed genuinely independent
 - `175`
   red-team batch 8 added a Series+Coefficient (`dlogSeries[expr_] :=
   Coefficient[Normal[Series[Log[expr], {eps, 0, 1}]], eps]`) independent route
@@ -1391,3 +1416,66 @@ lesson reconfirmed: audit agents UNDER-call transliteration; the orchestrator gr
 backstop; re-author-vs-accept is USER-LEVEL. Deferred cross-refs are all LEGIT upstream citations (148
 "Stage 126 closed form" ξ_*, 144 "stage-131 owning value" Π_*, 142 "Stage 130 §1" mouth-source law) —
 no action.
+
+## Pass 2 — Batch V.1 (2026-06-08)
+
+Pass-2 Batch V.1 (164-175, `Part V.1 — Microscopic logs, drifts, bundle inversion`): the orchestrator
+ground-truth `.wl`-vs-`.py` read was run on ALL 12 dual-engine stages. **This batch CLOSES the 105–175
+first-pass orchestrator-direct TRANSLITERATION WATCH — the watch ENDED at 175.** The read split the 12
+into **6 confirmed genuinely independent (no re-author): 164, 166, 170, 172, 174, 175** and **6 confirmed
+`.wl` ports: 165, 167, 168, 169, 171, 173.** For strict close-of-watch dual-engine hygiene the **USER
+DECIDED to "re-author all 6" ports.** Codex designed + wrote the new routes (the `.py` reference engines
+were left untouched except 165's F2 numeric block); the verifier confirmed all 6 are genuinely
+independent routes (NOT relabels). **0 sanctioned mirrors remain in V.1 — all 12 dual-engine stages are
+now genuinely independent.** ADD **165, 168, 171, 173** to the Current Independent-Mirror Set above; **167**
+= additive numeric-closure (token but route-independent — note the limited-achievable-independence
+rationale); **169** = de-transcription only (already-independent sphere-avg/matrix routes); **175** stays
+(batch-8 `dlogSeries`); 164/166/170/172/174 confirmed independent (no re-author).
+
+- **165** (`F1` + `F2 insufficient_verification`) — USER-DECIDED re-author. F1: `eqR`/`eqG` now ASSEMBLED
+  from parent-coupling log-drift scalings (`dKs`/`dKq`/`dLam`/`dGs`/`dGq` from primitives → `chanR`/`chanG`
+  emerge via `FullSimplify` + matches-channel guards). F2: 4 numeric prefactor checks added in BOTH
+  engines (`Tm_pref≈1.2715890393387603`, `v_pref≈1.1428896163056477`, `ratio_pref≈0.8987885086678338`,
+  `prod_pref≈1.4532859092683434`), `rstar` from canonical `√(4107−100π²)/(10π)`. `.py` + `.wl` changed.
+  **165 ADDED to the Independent-Mirror Set above.**
+- **167** (`F1`) — USER-DECIDED re-author: additive independent numeric-closure route
+  (`numericClosureResiduals` recomputes the full primitive drift chain for 5 tuples incl. mixed
+  `{2,-3,5,-7}`, asserts all invariants/channels vanish). Token algebraic independence (pure-substitution
+  stage, user-accepted) but additive + route-independent — the limited-achievable-independence class.
+  `.wl` only.
+- **168** (`F1`) — USER-DECIDED re-author: `epsPerp` now DERIVED via
+  `Coefficient[Expand[-deltaPerpSlip], epsT/epsv/epsL]` + boxed-weight `expectZero` guard; decimal
+  `rNum`→canonical `√(4107−100π²)/(10π)`. `.wl` only. **168 ADDED to the Independent-Mirror Set above.**
+- **169** (`F1`) — USER-DECIDED re-author: decimal radius `rNum`→canonical `√(4107−100π²)/(10π)`; the 3
+  paper-comparison TARGET literals (`0.758035078944663`/`1.00314310113848`/`1.88373219118005`) correctly
+  preserved as paper-side values; sphere-avg + matrix-invariant sections already independent — so this is
+  de-transcription only (NOT added to the Set as a new route). `.wl` only.
+- **171** (`F1`) — USER-DECIDED re-author: additive `bCombSeries` (BdG Series-route in a fresh `eps2`) +
+  `kScalar`/`gScalar` weak-axisymmetric scalar routes (the Z/N bundles ALREADY had independent Series
+  routes from a prior pass). `.wl` only. **171 ADDED to the Independent-Mirror Set above.**
+- **173** (`F1`) — USER-DECIDED re-author: direct analytic `D[ratio,eps]/.eps->0` (distinct mechanism
+  from the `.py`'s `series().diff()`); SymPy-mirroring `d0A`/`d2A`/`d4A`/`n0A` names removed;
+  even-preserving collapse via `Numerator`/`Together`/`Coefficient` (not `Solve`/`First`); the
+  byte-identical carry-forward `Print` block replaced with a native one-liner; all 6 `expectZero` targets
+  preserved. `.wl` only. **173 ADDED to the Independent-Mirror Set above.**
+
+The 6 confirmed genuinely independent (no re-author): **164** (independent series route via perturbation +
+`Series`/`Coefficient`), **166** (matrix-inverse route, batch-7 remediation), **170** (`D[,eps]` vs
+series, BATCH-1 `bda2107` rework; reliability re-run deterministic 14s < 600s), **172**
+(implicit-differentiation), **174** (perturbed-expr `D[,eps]`), **175** (`dlogSeries` route for the
+load-bearing `Sigma_N`, batch-8 user-accepted — residual-port NOT unilaterally reversed). **NO checkpoints
+in range; NO status-only stages** (every stage dual-engine `.py`+`.wl` — confirmed; a missing engine would
+have been a finding); **NO EM-projected stages.** Value reconciliation: **0 misaligned batch-wide** → ZERO
+paper/notes edits (the 165/168/169 decimal→canonical-radius changes are SCRIPT-side). `material_change:
+false` on all 12 (NO downstream staling); all Codex iter-1 exit 0 (no iter-2); 0 Codex deviations. INFRA:
+orchestrator independent exec re-run all 12 exit 0, all FAIL=0; committed outputs — 7 mma re-authored
+(165/167/168/169/171/173) + 165 sympy refreshed; **170 BOTH engines NORMALIZED** (refresh stripped a stray
+`# exit_code: 0` trailer — the IV.2-108 class; deliverables byte-identical, NOT a math change);
+164/166/172/174/175 byte-identical (deterministic). Arbiter grep on committed outputs CLEAN — no stale
+self-epoch band (147–158 = NNN−17), no `168π²`/`100π²` class; canonical Family-1 radius `√(4107−100π²)/
+(10π)` used correctly. Seat policy held: 6 `.wl`-touching Codex sessions in 3 waves of 2 (165∥167, 168∥169,
+171∥173) under the flock; orchestrator `exec-*` sequential AFTER all Codex done (no seat overlap). Pass-1
+`MANIFEST.yaml` untouched. The 100/129/134/139 lesson reconfirmed to the last batch: audit agents UNDER-call
+transliteration; the orchestrator ground-truth read is the backstop; re-author-vs-accept is USER-LEVEL
+(here the user escalated to "re-author all 6" of the confirmed ports). With V.1 closed, the 105–175
+transliteration watch is CLOSED at 175.

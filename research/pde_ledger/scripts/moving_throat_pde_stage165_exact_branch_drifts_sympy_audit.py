@@ -95,3 +95,26 @@ print("  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 
 print("  d ln(v_w0/T_m) = 2 d ln c_s - d ln a")
 print("  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a")
 print("  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w")
+
+banner("LOWER-BRANCH NUMERIC PREFACTORS")
+
+def expect_close(name: str, value: sp.Expr, target: sp.Expr, tol: float = 1e-12) -> None:
+    value_num = sp.N(value, 30)
+    diff = abs(float(sp.N(value - target, 30)))
+    print(f"{name} = {value_num}")
+    print(f"{name} diff = {diff}")
+    if not diff < tol:
+        raise AssertionError(f"{name} mismatch: diff={diff}")
+
+rstar = sp.sqrt(4107 - 100*sp.pi**2) / (10*sp.pi)
+gstar = sp.Float("0.758035078944663", 30)
+
+Tm_pref = 3*sp.sqrt(10)*sp.Integer(3)**sp.Rational(3, 4) / (5*sp.pi*gstar*(1 + rstar**2)**sp.Rational(1, 4))
+v_pref = 9*sp.sqrt(10)*sp.Integer(3)**sp.Rational(1, 4)*rstar / (20*(1 + rstar**2)**sp.Rational(3, 4))
+ratio_pref = sp.sqrt(3)*sp.pi*gstar*rstar / (4*sp.sqrt(1 + rstar**2))
+prod_pref = 81*rstar / (10*sp.pi*gstar*(1 + rstar**2))
+
+expect_close("Tm_pref", Tm_pref, sp.Float("1.2715890393387603", 30))
+expect_close("v_pref", v_pref, sp.Float("1.1428896163056477", 30))
+expect_close("ratio_pref", ratio_pref, sp.Float("0.8987885086678338", 30))
+expect_close("prod_pref", prod_pref, sp.Float("1.4532859092683434", 30))

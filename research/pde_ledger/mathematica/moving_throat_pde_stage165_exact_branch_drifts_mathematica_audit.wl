@@ -32,8 +32,19 @@ lwLaw = Pi*a*Sqrt[1 + r^2]/(2*Sqrt[3]);
 Print["D/N law: L_W = ", fmt[lwLaw]];
 expectZero["d ln L_W - d ln a at fixed r_*", a*D[Log[lwLaw], a] - 1];
 
-eqR = dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW == 0;
-eqG = dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW == 0;
+dEll = -dcsw;
+dLam = 2*da + dEll + dLW/2 + dv;
+dKq = dZ + 2*dcs - 2*dLW;
+dKs = 2*da - drho - dEll;
+dJs = 2*da + dEll;
+dGs = dT + dJs;
+dGq = dZ - (3*dLW)/2;
+chanR = FullSimplify[dKs + dKq - 2*dLam, Assumptions -> $Assumptions];
+chanG = FullSimplify[dGq + dKs - dGs - dLam, Assumptions -> $Assumptions];
+expectZero["eqR matches Stage-164 fixed-r channel", chanR - (dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW)];
+expectZero["eqG matches Stage-164 fixed-g channel", chanG - (dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW)];
+eqR = (chanR == 0);
+eqG = (chanG == 0);
 sol = Solve[{eqR, eqG}, {dv, dT}, Reals][[1]];
 dvSol = FullSimplify[dv /. sol, Assumptions -> $Assumptions];
 dTSol = FullSimplify[dT /. sol, Assumptions -> $Assumptions];
@@ -81,6 +92,26 @@ Print["  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 
 Print["  d ln(v_w0/T_m) = 2 d ln c_s - d ln a"];
 Print["  d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a"];
 Print["  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w"];
+
+banner["Lower-branch numeric prefactors"];
+rstar = Sqrt[4107 - 100*Pi^2]/(10*Pi);
+gstar = ToExpression["0.758035078944663`30"];
+tmPref = N[3*Sqrt[10]*3^(3/4)/(5*Pi*gstar*(1 + rstar^2)^(1/4)), 30];
+vPref = N[9*Sqrt[10]*3^(1/4)*rstar/(20*(1 + rstar^2)^(3/4)), 30];
+ratioPref = N[Sqrt[3]*Pi*gstar*rstar/(4*Sqrt[1 + rstar^2]), 30];
+prodPref = N[81*rstar/(10*Pi*gstar*(1 + rstar^2)), 30];
+checkPref[name_String, value_, target_] := Module[{diff},
+  diff = N[value - target, 40];
+  Print[name, " = ", fmt[N[value, 30]]];
+  If[TrueQ[Abs[diff] < 10^-12],
+    pass[name <> " numeric check"],
+    fail[name <> " numeric check", diff]
+  ];
+];
+checkPref["Tm_pref", tmPref, ToExpression["1.2715890393387603`30"]];
+checkPref["v_pref", vPref, ToExpression["1.1428896163056477`30"]];
+checkPref["ratio_pref", ratioPref, ToExpression["0.8987885086678338`30"]];
+checkPref["prod_pref", prodPref, ToExpression["1.4532859092683434`30"]];
 
 Print[""];
 Print["Stage 165 Mathematica audit passed."];

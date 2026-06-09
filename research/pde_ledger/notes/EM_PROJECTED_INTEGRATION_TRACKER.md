@@ -484,3 +484,18 @@ constant `4√(1+r*²)` re-derived from `∂F/∂g` — NOT an EM-projected stag
 ZERO paper/notes edits. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 +
 IV.3 + IV.4 + IV.5 + IV.6 pass-2 closed, the range 001-163 is paper-aligned at pass-2 depth and the
 projected-EM core 004-021 (plus bookends 022-163) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch V.1 (2026-06-08)
+
+Pass-2 Batch V.1 (164-175, `Part V.1 — Microscopic logs, drifts, bundle inversion`) re-verified at v2
+depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12. **NO
+EM-projected stages in range → no EM-projection change** — V.1 is the microscopic-logs / drifts /
+bundle-inversion band, far downstream of and outside the projected-Maxwell core (004-021). No
+projected-EM identity was touched; no EM result moved. **This batch CLOSES the 105–175 first-pass
+orchestrator-direct TRANSLITERATION WATCH at 175.** The 6 USER-DECIDED `.wl` re-authors
+(165/167/168/169/171/173) and the 6 confirmed genuinely independent stages (164/166/170/172/174/175) are
+all confined to the V.1 band and touch no EM-projected identity; 0 values misaligned batch-wide → ZERO
+paper/notes edits; NO checkpoints in range; no new postulated constants. With I.1 + I.2 + II.1 + III.1 +
+III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 pass-2 closed, the range
+001-175 is paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-175) remains
+paper-aligned under the second pass.

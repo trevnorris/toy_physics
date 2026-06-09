@@ -29,14 +29,18 @@ Clear[eps, lam, d0, d01, d2, d21, d4, d41, n0, n01, u2, u4, p0];
 $Assumptions = Element[{eps, lam, d0, d01, d2, d21, d4, d41, n0, n01, u2, u4, p0}, Reals] &&
   d0 != 0 && n0 != 0;
 
-d0A = d0 + eps*lam*d01;
-d2A = d2 + eps*lam*d21;
-d4A = d4 + eps*lam*d41;
-n0A = n0 + eps*lam*n01;
-
-u21 = FullSimplify[Coefficient[Series[-d2A/d0A, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
-u41 = FullSimplify[Coefficient[Series[(d2A^2 - d0A*d4A)/d0A^2, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
-p1 = FullSimplify[Coefficient[Series[n0A/d0A, {eps, 0, 1}] // Normal, eps, 1]/lam, Assumptions -> $Assumptions];
+u21 = FullSimplify[
+  (D[-(d2 + eps*lam*d21)/(d0 + eps*lam*d01), eps] /. eps -> 0)/lam,
+  Assumptions -> $Assumptions];
+u41 = FullSimplify[
+  (D[
+      ((d2 + eps*lam*d21)^2 - (d0 + eps*lam*d01)*(d4 + eps*lam*d41))/
+        (d0 + eps*lam*d01)^2,
+      eps] /. eps -> 0)/lam,
+  Assumptions -> $Assumptions];
+p1 = FullSimplify[
+  (D[(n0 + eps*lam*n01)/(d0 + eps*lam*d01), eps] /. eps -> 0)/lam,
+  Assumptions -> $Assumptions];
 
 Print["u2^(1) general = ", fmt[u21]];
 Print["u4^(1) general = ", fmt[u41]];
@@ -45,27 +49,32 @@ Print["P1 general     = ", fmt[p1]];
 expectZero["u2 slope identity", u21 - (-(d21 + u2*d01)/d0 /. u2 -> -d2/d0)];
 
 banner["Canonical branch formulas"];
-u21Can = FullSimplify[u21 /. d2 -> -(1/9)*d0, Assumptions -> $Assumptions];
-u41Can = FullSimplify[u41 /. {d2 -> -(1/9)*d0, d4 -> -(1/27)*d0}, Assumptions -> $Assumptions];
-p1Ratio = FullSimplify[p1/(n0/d0), Assumptions -> $Assumptions];
+canonicalBranchRules = {d2 -> -d0/9, d4 -> -d0/27};
+branchU2Slope = FullSimplify[u21 /. {d2 -> -d0/9}, Assumptions -> $Assumptions];
+branchU4Slope = FullSimplify[u41 /. canonicalBranchRules, Assumptions -> $Assumptions];
+staticPressureRatio = FullSimplify[p1/(n0/d0), Assumptions -> $Assumptions];
 
-Print["u2^(1) canonical = ", fmt[u21Can]];
-Print["u4^(1) canonical = ", fmt[u41Can]];
-Print["P1/P0            = ", fmt[p1Ratio]];
+Print["u2^(1) canonical = ", fmt[branchU2Slope]];
+Print["u4^(1) canonical = ", fmt[branchU4Slope]];
+Print["P1/P0            = ", fmt[staticPressureRatio]];
 
-expectZero["u4 canonical formula", u41Can + (5*d01 + 18*d21 + 81*d41)/(81*d0)];
-expectZero["P1/P0 formula", p1Ratio - (n01/n0 - d01/d0)];
+expectZero["u4 canonical formula", branchU4Slope + (5*d01 + 18*d21 + 81*d41)/(81*d0)];
+expectZero["P1/P0 formula", staticPressureRatio - (n01/n0 - d01/d0)];
 
 banner["Hidden-even operator identity"];
-hiddenEvenResidual = Expand[u41Can - 8*u21Can/9 - (d01/(27*d0) + 2*d21/(3*d0) - d41/d0)];
+hiddenEvenResidual = Expand[branchU4Slope - 8*branchU2Slope/9 - (d01/(27*d0) + 2*d21/(3*d0) - d41/d0)];
 expectZero["hidden-even residual", hiddenEvenResidual];
 
 banner["Even-preserving collapse"];
-u21ZeroD21 = FullSimplify[d21 /. First[Solve[u21Can == 0, d21]], Assumptions -> $Assumptions];
+u2BalanceNumerator = Numerator[Together[branchU2Slope]];
+u21ZeroD21 = FullSimplify[
+  -(u2BalanceNumerator /. d21 -> 0)/Coefficient[u2BalanceNumerator, d21],
+  Assumptions -> $Assumptions];
 Print["D21 from u2^(1)=0 = ", fmt[u21ZeroD21]];
 
+d41BalanceNumerator = Numerator[Together[(branchU4Slope - 8*branchU2Slope/9) /. d21 -> u21ZeroD21]];
 d41Even = FullSimplify[
-  d41 /. First[Solve[(u41Can == 8 u21Can/9) /. d21 -> u21ZeroD21, d41]],
+  -(d41BalanceNumerator /. d41 -> 0)/Coefficient[d41BalanceNumerator, d41],
   Assumptions -> $Assumptions];
 Print["D41 on even-preserving branch = ", fmt[d41Even]];
 
@@ -84,13 +93,7 @@ Print["Delta_Q^(21)/eps = ", fmt[FullSimplify[lam21*xiLoad, Assumptions -> $Assu
 Print["Delta_Q^(22)/eps = ", fmt[FullSimplify[lam22*xiLoad, Assumptions -> $Assumptions]]];
 
 Print[""];
-Print["Carry-forward formulas:"];
-Print["  u2^(1) = -(D21 + u2 D01)/D0"];
-Print["  u4^(1) = -(5 D01 + 18 D21 + 81 D41)/(81 D0) on the canonical branch"];
-Print["  P1/P0  = N01/N0 - D01/D0"];
-Print["  hidden-even  <=>  D41 = 2 D21/3 + D01/27"];
-Print["  if u2^(1)=0, then D21 = -D01/9 and D41 = -D01/27"];
-Print["  remaining defect Xi_load = N01/N0 - D01/D0"];
+Print["Mathematica summary: verified slope identities, even-preserving collapse, and Xi_load lanes above."];
 
 Print[""];
 Print["Stage 173 Mathematica audit passed."];

@@ -98,7 +98,8 @@ epsPerp = g*xiT*iGrp + (g + 1/(2*s))*xiv*iGrp + (2*g + 3/(4*s))*xiL*iGrp;
 xiPerp = g*xiT + (g + 1/(2*s))*xiv + (2*g + 3/(4*s))*xiL;
 expectZero["eps_perp - Xi_perp Igrp", epsPerp - xiPerp*iGrp];
 
-rNum = SetPrecision[1.77799353547498, 30];
+rExact = Sqrt[4107 - 100*Pi^2]/(10*Pi);   (* canonical Family-1 radius *)
+rNum = N[rExact, 30];
 gNum = SetPrecision[0.758035078944663, 30];
 Print["Numeric Xi_perp combination = ", fmt[N[xiPerp /. {g -> gNum, r -> rNum}, 20]]];
 

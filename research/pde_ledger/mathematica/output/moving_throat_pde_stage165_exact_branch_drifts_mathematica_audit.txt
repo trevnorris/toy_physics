@@ -5,6 +5,10 @@ STAGE 165 — EXACT LOWER-BRANCH DRIFT LAWS
 D/N law: L_W = (a*Pi*Sqrt[1 + r^2])/(2*Sqrt[3])
 d ln L_W - d ln a at fixed r_* = 0
 PASS: d ln L_W - d ln a at fixed r_*
+eqR matches Stage-164 fixed-r channel = 0
+PASS: eqR matches Stage-164 fixed-r channel
+eqG matches Stage-164 fixed-g channel = 0
+PASS: eqG matches Stage-164 fixed-g channel
 
 ========================================================================================
 Exact fixed-r / fixed-g drift laws
@@ -43,5 +47,17 @@ Carry-forward formulas:
   d ln(v_w0/T_m) = 2 d ln c_s - d ln a
   d ln(v_w0 T_m) = d ln Z_q + 3 d ln c_s,w - d ln rho_w - 4 d ln a
   n=5 wall EOS: d ln c_s,w = 2 d ln rho_w
+
+========================================================================================
+Lower-branch numeric prefactors
+========================================================================================
+Tm_pref = 1.2715890393387608816005985094823430355550211487874154818161`30.
+PASS: Tm_pref numeric check
+v_pref = 1.1428896163056479782642363341979111640887320492218778348228`30.
+PASS: v_pref numeric check
+ratio_pref = 0.8987885086678335159001271301022105035467427655020328943574`30.
+PASS: ratio_pref numeric check
+prod_pref = 1.4532859092683439369451842427202853551735981650891247714327`30.
+PASS: prod_pref numeric check
 
 Stage 165 Mathematica audit passed.

@@ -58,6 +58,70 @@ PASS: delta ln(K_s K_q/lambda^2)
 delta_perp = 0
 PASS: delta_perp
 
+========================================================================================
+Independent numeric closure
+========================================================================================
+delta ln r_c numeric (tuple 1) = 0
+PASS: delta ln r_c numeric (tuple 1)
+delta ln frak r numeric (tuple 1) = 0
+PASS: delta ln frak r numeric (tuple 1)
+delta ln frak g numeric (tuple 1) = 0
+PASS: delta ln frak g numeric (tuple 1)
+delta ln(g_q K_s/(g_s lambda)) numeric (tuple 1) = 0
+PASS: delta ln(g_q K_s/(g_s lambda)) numeric (tuple 1)
+delta ln(K_s K_q/lambda^2) numeric (tuple 1) = 0
+PASS: delta ln(K_s K_q/lambda^2) numeric (tuple 1)
+delta_perp numeric (tuple 1) = 0
+PASS: delta_perp numeric (tuple 1)
+delta ln r_c numeric (tuple 2) = 0
+PASS: delta ln r_c numeric (tuple 2)
+delta ln frak r numeric (tuple 2) = 0
+PASS: delta ln frak r numeric (tuple 2)
+delta ln frak g numeric (tuple 2) = 0
+PASS: delta ln frak g numeric (tuple 2)
+delta ln(g_q K_s/(g_s lambda)) numeric (tuple 2) = 0
+PASS: delta ln(g_q K_s/(g_s lambda)) numeric (tuple 2)
+delta ln(K_s K_q/lambda^2) numeric (tuple 2) = 0
+PASS: delta ln(K_s K_q/lambda^2) numeric (tuple 2)
+delta_perp numeric (tuple 2) = 0
+PASS: delta_perp numeric (tuple 2)
+delta ln r_c numeric (tuple 3) = 0
+PASS: delta ln r_c numeric (tuple 3)
+delta ln frak r numeric (tuple 3) = 0
+PASS: delta ln frak r numeric (tuple 3)
+delta ln frak g numeric (tuple 3) = 0
+PASS: delta ln frak g numeric (tuple 3)
+delta ln(g_q K_s/(g_s lambda)) numeric (tuple 3) = 0
+PASS: delta ln(g_q K_s/(g_s lambda)) numeric (tuple 3)
+delta ln(K_s K_q/lambda^2) numeric (tuple 3) = 0
+PASS: delta ln(K_s K_q/lambda^2) numeric (tuple 3)
+delta_perp numeric (tuple 3) = 0
+PASS: delta_perp numeric (tuple 3)
+delta ln r_c numeric (tuple 4) = 0
+PASS: delta ln r_c numeric (tuple 4)
+delta ln frak r numeric (tuple 4) = 0
+PASS: delta ln frak r numeric (tuple 4)
+delta ln frak g numeric (tuple 4) = 0
+PASS: delta ln frak g numeric (tuple 4)
+delta ln(g_q K_s/(g_s lambda)) numeric (tuple 4) = 0
+PASS: delta ln(g_q K_s/(g_s lambda)) numeric (tuple 4)
+delta ln(K_s K_q/lambda^2) numeric (tuple 4) = 0
+PASS: delta ln(K_s K_q/lambda^2) numeric (tuple 4)
+delta_perp numeric (tuple 4) = 0
+PASS: delta_perp numeric (tuple 4)
+delta ln r_c numeric (tuple 5) = 0
+PASS: delta ln r_c numeric (tuple 5)
+delta ln frak r numeric (tuple 5) = 0
+PASS: delta ln frak r numeric (tuple 5)
+delta ln frak g numeric (tuple 5) = 0
+PASS: delta ln frak g numeric (tuple 5)
+delta ln(g_q K_s/(g_s lambda)) numeric (tuple 5) = 0
+PASS: delta ln(g_q K_s/(g_s lambda)) numeric (tuple 5)
+delta ln(K_s K_q/lambda^2) numeric (tuple 5) = 0
+PASS: delta ln(K_s K_q/lambda^2) numeric (tuple 5)
+delta_perp numeric (tuple 5) = 0
+PASS: delta_perp numeric (tuple 5)
+
 Carry-forward formulas:
   delta ln v_w0   = -3/4 delta ln K_s + 1/2 delta ln K_q + 13/8 delta ln Theta_w
   delta ln T_m    = -5/4 delta ln K_s + 1/2 delta ln K_q + 15/8 delta ln Theta_w - 2/5 delta ln P_0

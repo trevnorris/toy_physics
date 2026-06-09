@@ -104,7 +104,7 @@ Claude-reviewed). Non-blocking; V.3 red-team (scripts) is complete.
 ## Numbering / hygiene
 
 Cards CLEAN of the `+17 \stagefield{Purpose}` self-label class (205–217 absent). No
-`toy_projects` path-typo introduced. Seat policy held: 200 = 1 `.wl`-touching Codex
+wrong-root path-typo introduced. Seat policy held: 200 = 1 `.wl`-touching Codex
 session solo; orchestrator exec sequential after Codex done (no seat overlap, no
 MANIFEST race). Pass-1 `MANIFEST.yaml` untouched (isolation held).
 

@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 192 — EXACT PAIRWISE RATIO OPTIMIZER AND MIXED-RAY WINNER THEOREM
+STAGE 209 — EXACT PAIRWISE RATIO OPTIMIZER AND MIXED-RAY WINNER THEOREM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -146,5 +146,5 @@ coefficients highest -> constant =
 8⋅H₀⋅⎝2⋅H₀⋅v  - 2⋅kᵢ⋅k_j⋅v + k_j ⋅u⎠
 
 ========================================================================================
-STAGE 192 SYMPY AUDIT COMPLETED SUCCESSFULLY
+STAGE 209 SYMPY AUDIT COMPLETED SUCCESSFULLY
 ========================================================================================

@@ -532,3 +532,21 @@ checkpoint constant changed; no new postulated constants. With I.1 + I.2 + II.1 
 III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 pass-2 closed, the range 001-200 is
 paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-200) remains paper-aligned
 under the second pass.
+
+## Pass 2 — Batch VI.1 (2026-06-09)
+
+Pass-2 Batch VI.1 (201-218, `Part VI — Explicit realization, scalar slice, ray ranking`) re-verified at v2
+depth + value-reconciliation augmentation; 18/18 verified, `material_change: false` on all 18. **NO
+EM-projected stages in range → no EM-projection change** — VI.1 is the explicit-realization / scalar-slice /
+ray-ranking band (checkpoints 203 = free-quintuple scalar closure slice + crossing theorem, 218 = full
+support-cardinality-5 completion + local mixed-ray search closure), far downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched; no EM result moved (all 18 stages are
+dual-engine native, NOT the projected-Maxwell core). The one source change — the 211 `.wl` re-author (a
+confirmed PORT — same `D[Phi,r]` autodiff vs same posited `Nr`/eliminants on both engines — USER-authorized
+re-author to a `Resultant`-DERIVED-eliminant route, method-only) — and the 17 confirmed genuinely independent
+stages are all confined to the VI.1 band and touch no EM-projected identity; 0 values misaligned batch-wide
+(222 deliverable values) → ZERO substantive paper/notes edits (217's published `162 = 3⁴·2` reconfirmed); the
+TWO checkpoints in range (203, 218) both cleared the higher bar with NO checkpoint constant changed; no new
+postulated constants. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 +
+IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 + VI.1 pass-2 closed, the range 001-218 is paper-aligned at pass-2 depth
+and the projected-EM core 004-021 (plus bookends 022-218) remains paper-aligned under the second pass.

@@ -881,7 +881,18 @@ different verification structure from the SymPy side:
   genuine independent route
 - `211`
   red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
-  genuine independent route
+  red-team pass-2 batch VI.1 (2026-06-09) RE-AUTHORED the `.wl` — the pass-1 mirror was
+  a confirmed PORT (both engines ran the same `D[Phi,r]` autodiff vs the same posited
+  `Nr`, posited the same eliminants `Ccross/Sr/Ss` with the same algebraic identities —
+  no independent extraction). The audit agent flagged it; the orchestrator ground-truth
+  read confirmed; a CALIBRATION agent (211 as the known-port standard) across the
+  ray-ranking family 207/208/209/210/213/214/216 found NO other ports; USER AUTHORIZED
+  re-author. Codex re-authored ONLY the `.wl`: the eliminants are now DERIVED via
+  `Resultant[numRq,numSq,q]` (quartic) and `Resultant[numRq/numSq, q^2-Delta, q]`
+  (sextics) from `Numerator[Together[D[Phi,var]]]` with `Sqrt[Delta]->q` (the SymPy
+  forms are comparison targets only); degrees 4/6 from the derived polys, Bézout 24,
+  iso/sym + `Nr(1,1)=Ns(1,1)=0` preserved; `.py` UNTOUCHED, `material_change: false`.
+  Genuine independent route (Independent-Mirror Set member)
 - `212`
   red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only);
   genuine independent route
@@ -1613,3 +1624,42 @@ Pass-1 `MANIFEST.yaml` untouched. The 100/129/139/158-and-V.1/V.2 lesson reconfi
 re-author/retrofit can itself be insufficient; audit agents UNDER-call transliteration; the orchestrator
 ground-truth read is the backstop; re-author-vs-accept is USER-LEVEL. See `PAPER_CLEANUP_TRACKER.md` P5-18,
 P4-51. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VI.1 (2026-06-09)
+
+Pass-2 Batch VI.1 (201-218, `Part VI — Explicit realization, scalar slice, ray ranking`) re-verified at v2
+depth + value-reconciliation augmentation; 18/18 verified, `material_change: false` on all 18. **ONE
+load-bearing finding — 211's `.wl` was a confirmed PORT and was RE-AUTHORED to an independent route → ADDED
+to the Independent-Mirror Set; the other 17 confirmed genuinely independent (0 sanctioned mirrors remain in
+VI.1), including checkpoints 203 and 218.** **211 (the port):** both engines ran the same `D[Phi,r]`
+autodiff against the same posited `Nr`, posited the same eliminants `Ccross/Sr/Ss` with the same algebraic
+identities — no independent extraction. The audit agent flagged it; the orchestrator ground-truth read
+confirmed; a CALIBRATION agent (211 as the known-port standard) swept the ray-ranking family
+207/208/209/210/213/214/216 and found NO other ports; USER AUTHORIZED the re-author. Codex re-authored ONLY
+the `.wl`: the eliminants are now DERIVED via `Resultant[numRq,numSq,q]` (quartic) and
+`Resultant[numRq/numSq, q^2-Delta, q]` (sextics) from `Numerator[Together[D[Phi,var]]]` with
+`Sqrt[Delta]->q` (the SymPy forms are comparison targets only); degrees 4/6 read from the derived polys,
+Bézout 24, iso/sym + `Nr(1,1)=Ns(1,1)=0` preserved; the `.py` was UNTOUCHED, `material_change: false`. The
+**211 row in the Independent-Mirror Set above is UPDATED** to record this re-author. **The OTHER 17 confirmed
+genuinely independent:** the orchestrator read + the calibration agent (against the 211 known-port standard)
+found 0 other ports across the 207–216 ray-ranking family and the rest of the batch; each `.wl` DERIVES the
+load-bearing object by a DIFFERENT operation than the SymPy `.py`. **TWO checkpoints in range — 203 and 218
+— both cleared the higher bar.** **203:** the crossing theorem is re-derived in-script (`32^(2τ-1)-1`, root
+τ=1/2), independent (log-additive + `Reduce` + target-monomial-invariance on the `.wl` vs power-multiplicative
++ `solveset` on the `.py`). **218** (hardest; a pass-1 re-author from a transliteration): the orchestrator
+ground-truth read confirmed the pass-1 re-author SUFFICIENT (unlike V.3-200) — M1 `Subsets`/`ContainsAll`/
+`Boole`/`Tally`/`2^5-2` vs `itertools`; M2-M3 `Resolve[ForAll,…,Reals]` real-QE vs `simplify_logic` finite
+contradiction; M4 generated witness windows vs hand-listed; M5 benign shared budget arithmetic; NO checkpoint
+constant changed. Value reconciliation: **222 deliverable values, 0 misaligned batch-wide** → ZERO
+substantive paper/notes edits; 217's published `162 = 3⁴·2` reconfirmed (both engines derive 162; zero
+surviving 179/230 across all 7 artifacts; chain 162→324→1464, 750→1500→2640). **NO status-only stages; NO
+EM-projected stages** (all 18 dual-engine native). INFRA: 36 orchestrator exec runs (`.py`+`.wl`) exit 0, all
+FAIL=0 (slowest 217-mma 148s, 214-mma 72s; 202-mma 14s deterministic <600s confirming the first-pass iter-2
+timeout-rework). Seat policy held: 211 = 1 `.wl`-touching Codex session solo; orchestrator exec sequential
+after Codex done. Pass-1 `MANIFEST.yaml` untouched. **Card-text lag (paper-side, DEFERRED → P4-51):** 16
+cards (201–217 except 203; 203 & 218 already cite their `.wl`) still read "Mathematica audit: none yet"
+despite a passing `.wl` — a stale STATUS annotation, USER-DECIDED to defer. **DEFERRED numbering
+(content-keyed, NEVER offset-sweep → NUMBERING_SCRIPT_OUTPUT_BAND_PLAN):** 206 `.py` "Stage 239"→Stage-205
+quad-log predictor collapse target; 218 `.py` dead `source_stage:198/200` + "Stage 249" comment; 203 `.wl`
+`chiFromStage180`/`closureNumStage180` vs Stage-197 attribution. See `PAPER_CLEANUP_TRACKER.md` P5-19, P4-51.
+Reference memory `numbering-drift-root-cause`.

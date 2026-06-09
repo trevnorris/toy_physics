@@ -6880,7 +6880,7 @@ stages:
     stage: 201
     stage_str: '201'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6905,11 +6905,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_mathematica_audit.txt
         exists: true
         mtime: 1780391291
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:39:29-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:39:43-06:00
+    last_status_change: 2026-06-09 17:02:16-06:00
   '202':
     stage: 202
     stage_str: '202'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6934,11 +6939,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage202_free_quintuple_target_graph_mathematica_audit.txt
         exists: true
         mtime: 1780415829
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:39:51-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:40:04-06:00
+    last_status_change: 2026-06-09 17:02:22-06:00
   '203':
     stage: 203
     stage_str: '203'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -6963,11 +6973,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780425178
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:40:16-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:40:30-06:00
+    last_status_change: 2026-06-09 17:02:29-06:00
   '204':
     stage: 204
     stage_str: '204'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6992,11 +7007,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_mathematica_audit.txt
         exists: true
         mtime: 1780415832
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:40:43-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:40:57-06:00
+    last_status_change: 2026-06-09 17:02:35-06:00
   '205':
     stage: 205
     stage_str: '205'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7021,11 +7041,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage205_directional_hessian_and_quadratic_root_refinement_mathematica_audit.txt
         exists: true
         mtime: 1780420371
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:41:09-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:41:27-06:00
+    last_status_change: 2026-06-09 17:02:42-06:00
   '206':
     stage: 206
     stage_str: '206'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7050,11 +7075,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780421531
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:41:36-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:41:52-06:00
+    last_status_change: 2026-06-09 17:02:48-06:00
   '207':
     stage: 207
     stage_str: '207'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7079,11 +7109,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_mathematica_audit.txt
         exists: true
         mtime: 1780416469
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:42:00-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:42:25-06:00
+    last_status_change: 2026-06-09 17:02:55-06:00
   '208':
     stage: 208
     stage_str: '208'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7108,11 +7143,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy_mathematica_audit.txt
         exists: true
         mtime: 1780416480
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:42:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:42:46-06:00
+    last_status_change: 2026-06-09 17:03:01-06:00
   '209':
     stage: 209
     stage_str: '209'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7137,11 +7177,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780419273
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:42:55-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:43:11-06:00
+    last_status_change: 2026-06-09 17:03:08-06:00
   '210':
     stage: 210
     stage_str: '210'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7166,12 +7211,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_mathematica_audit.txt
         exists: true
         mtime: 1780418501
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:43:19-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:43:37-06:00
+    last_status_change: 2026-06-09 17:03:14-06:00
   '211':
     stage: 211
     stage_str: '211'
     batch_id: VI.1
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: false
     is_status_only_candidate: false
@@ -7195,11 +7245,21 @@ stages:
         path: mathematica/output/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.txt
         exists: true
         mtime: 1780419290
+    last_status_change: 2026-06-09 17:03:21-06:00
+    codex_session: 019eae69-dac7-7df0-8a75-452c25ac7a35
+    codex_log_paths:
+    - redteam/pass2/codex_logs/211_iter1.txt
+    last_codex_run: 2026-06-09 16:09:19-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:43:47-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:44:04-06:00
   '212':
     stage: 212
     stage_str: '212'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7224,11 +7284,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780423178
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:44:11-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:44:24-06:00
+    last_status_change: 2026-06-09 17:03:27-06:00
   '213':
     stage: 213
     stage_str: '213'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7253,11 +7318,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_mathematica_audit.txt
         exists: true
         mtime: 1780417730
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:44:36-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:44:52-06:00
+    last_status_change: 2026-06-09 17:03:34-06:00
   '214':
     stage: 214
     stage_str: '214'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7282,11 +7352,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.txt
         exists: true
         mtime: 1780423180
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:45:14-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:46:25-06:00
+    last_status_change: 2026-06-09 17:03:40-06:00
   '215':
     stage: 215
     stage_str: '215'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7311,11 +7386,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780420373
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:46:40-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:46:54-06:00
+    last_status_change: 2026-06-09 17:03:47-06:00
   '216':
     stage: 216
     stage_str: '216'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7340,11 +7420,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage216_unique_five_coordinate_positive_simplex_and_support_cardinality_5_gate_mathematica_audit.txt
         exists: true
         mtime: 1780421529
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:47:01-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:47:16-06:00
+    last_status_change: 2026-06-09 17:03:53-06:00
   '217':
     stage: 217
     stage_str: '217'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7369,11 +7454,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_mathematica_audit.txt
         exists: true
         mtime: 1780425161
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:47:41-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:50:04-06:00
+    last_status_change: 2026-06-09 17:03:59-06:00
   '218':
     stage: 218
     stage_str: '218'
     batch_id: VI.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -7398,6 +7488,11 @@ stages:
         path: mathematica/output/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_mathematica_audit.txt
         exists: true
         mtime: 1780425193
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 16:50:24-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 16:51:00-06:00
+    last_status_change: 2026-06-09 17:04:06-06:00
   '219':
     stage: 219
     stage_str: '219'

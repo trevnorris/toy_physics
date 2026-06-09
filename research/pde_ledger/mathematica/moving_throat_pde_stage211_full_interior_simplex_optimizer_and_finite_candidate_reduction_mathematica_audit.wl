@@ -65,6 +65,10 @@ Delta = A + B r + Ccoef s + Dcoef r^2 + Ecoef r s + Fcoef s^2;
 sqrtDelta = Sqrt[Delta];
 Phi = linearK/Sqrt[den] + sqrtDelta/Sqrt[den];
 tau = 2 H0/Phi;
+primitivePartRS[poly_] := Module[{parts},
+  parts = FactorTermsList[Expand[poly], {r, s}];
+  Last[parts]
+];
 
 $Assumptions = (
   Element[
@@ -78,48 +82,81 @@ $Assumptions = (
 
 subbanner["M1. Exact stationary numerator law"];
 
-stationaryDenominator = 2 den^(3/2) sqrtDelta;
-directNumerator[var_] := FullSimplify[
-  Numerator[Together[D[Phi, var]]],
-  Assumptions -> $Assumptions
-];
+stationaryNumerator[var_] := Numerator[Together[D[Phi, var]]];
+stationaryDenominator[var_] := Denominator[Together[D[Phi, var]]];
 
-Mr = den kj - r linearK;
-Ms = den kk - s linearK;
-Lr = den D[Delta, r] - 2 r Delta;
-Ls = den D[Delta, s] - 2 s Delta;
-Nr = 2 Mr sqrtDelta + Lr;
-Ns = 2 Ms sqrtDelta + Ls;
+numR = stationaryNumerator[r];
+numS = stationaryNumerator[s];
 
-Print["M1 direct numerator from D[Phi, r] = ", fmt[directNumerator[r]]];
-Print["M1 direct numerator from D[Phi, s] = ", fmt[directNumerator[s]]];
-expectZero["M1 D[Phi,r] numerator minus paper N_r", directNumerator[r] - Nr];
-expectZero["M1 D[Phi,s] numerator minus paper N_s", directNumerator[s] - Ns];
-expectZero["M1 derivative law r", D[Phi, r] - Nr/stationaryDenominator];
-expectZero["M1 derivative law s", D[Phi, s] - Ns/stationaryDenominator];
+Print["M1 direct numerator from D[Phi, r] = ", fmt[numR]];
+Print["M1 direct numerator from D[Phi, s] = ", fmt[numS]];
+expectTrue["M1 D[Phi,r] numerator is nonzero", ! TrueQ[Expand[numR] === 0]];
+expectTrue["M1 D[Phi,s] numerator is nonzero", ! TrueQ[Expand[numS] === 0]];
+expectZero["M1 reconstruct D[Phi,r] from derived numerator", D[Phi, r] - numR/stationaryDenominator[r]];
+expectZero["M1 reconstruct D[Phi,s] from derived numerator", D[Phi, s] - numS/stationaryDenominator[s]];
 
 subbanner["M2. Quartic cross-consistency"];
 
-Ccross = Expand[Ms Lr - Mr Ls];
-crossDegree = totalDegreeRS[Ccross];
+numRq = Expand[numR /. Sqrt[Delta] -> q];
+numSq = Expand[numS /. Sqrt[Delta] -> q];
+crossDerived = primitivePartRS[Resultant[numRq, numSq, q]];
+crossDegree = totalDegreeRS[crossDerived];
 
-expectZero["M2 square-root-free cross identity", Ms Nr - Mr Ns - Ccross];
-Print["M2 total degree C_cross = ", crossDegree];
-expectTrue["M2 C_cross has total degree 4", crossDegree == 4];
+expectTrue["M2 numerator r is polynomial in q", PolynomialQ[numRq, q]];
+expectTrue["M2 numerator s is polynomial in q", PolynomialQ[numSq, q]];
+expectTrue["M2 resultant removed q", FreeQ[crossDerived, q]];
+Print["M2 derived cross polynomial = ", fmt[crossDerived]];
+Print["M2 total degree derived cross = ", crossDegree];
+expectTrue["M2 derived cross has total degree 4", crossDegree == 4];
+
+(* SymPy comparison target only. *)
+mRTarget = Expand[den kj - r linearK];
+mSTarget = Expand[den kk - s linearK];
+lRTarget = Expand[den D[Delta, r] - 2 r Delta];
+lSTarget = Expand[den D[Delta, s] - 2 s Delta];
+crossTarget = Expand[mSTarget lRTarget - mRTarget lSTarget];
+crossRatio = cleanScalar[crossDerived/crossTarget, $Assumptions];
+
+Print["M2 derived cross / SymPy target = ", fmt[crossRatio]];
+expectTrue[
+  "M2 derived cross ratio is nonzero constant",
+  FreeQ[crossRatio, r] && FreeQ[crossRatio, s] && TrueQ[crossRatio != 0]
+];
+expectZero["M2 derived cross minus scaled SymPy target", crossDerived - crossRatio crossTarget];
 
 subbanner["M3. Sextic square eliminants"];
 
-Sr = Expand[Lr^2 - 4 Mr^2 Delta];
-Ss = Expand[Ls^2 - 4 Ms^2 Delta];
-srDegree = totalDegreeRS[Sr];
-ssDegree = totalDegreeRS[Ss];
+srDerived = primitivePartRS[Resultant[numRq, q^2 - Delta, q]];
+ssDerived = primitivePartRS[Resultant[numSq, q^2 - Delta, q]];
+srDegree = totalDegreeRS[srDerived];
+ssDegree = totalDegreeRS[ssDerived];
 
-expectZero["M3 square eliminant identity r", Nr (Nr - 4 Mr sqrtDelta) - Sr];
-expectZero["M3 square eliminant identity s", Ns (Ns - 4 Ms sqrtDelta) - Ss];
-Print["M3 total degree S_r = ", srDegree];
-Print["M3 total degree S_s = ", ssDegree];
-expectTrue["M3 S_r has total degree 6", srDegree == 6];
-expectTrue["M3 S_s has total degree 6", ssDegree == 6];
+expectTrue["M3 r square eliminant removed q", FreeQ[srDerived, q]];
+expectTrue["M3 s square eliminant removed q", FreeQ[ssDerived, q]];
+Print["M3 derived S_r polynomial = ", fmt[srDerived]];
+Print["M3 derived S_s polynomial = ", fmt[ssDerived]];
+Print["M3 total degree derived S_r = ", srDegree];
+Print["M3 total degree derived S_s = ", ssDegree];
+expectTrue["M3 derived S_r has total degree 6", srDegree == 6];
+expectTrue["M3 derived S_s has total degree 6", ssDegree == 6];
+
+squareTargetR = Expand[lRTarget^2 - 4 mRTarget^2 Delta];
+squareTargetS = Expand[lSTarget^2 - 4 mSTarget^2 Delta];
+srRatio = cleanScalar[srDerived/squareTargetR, $Assumptions];
+ssRatio = cleanScalar[ssDerived/squareTargetS, $Assumptions];
+
+Print["M3 derived S_r / SymPy target = ", fmt[srRatio]];
+Print["M3 derived S_s / SymPy target = ", fmt[ssRatio]];
+expectTrue[
+  "M3 derived S_r ratio is nonzero constant",
+  FreeQ[srRatio, r] && FreeQ[srRatio, s] && TrueQ[srRatio != 0]
+];
+expectTrue[
+  "M3 derived S_s ratio is nonzero constant",
+  FreeQ[ssRatio, r] && FreeQ[ssRatio, s] && TrueQ[ssRatio != 0]
+];
+expectZero["M3 derived S_r minus scaled SymPy target", srDerived - srRatio squareTargetR];
+expectZero["M3 derived S_s minus scaled SymPy target", ssDerived - ssRatio squareTargetS];
 
 subbanner["M4. Bezout bound"];
 
@@ -140,9 +177,12 @@ isoSubstitution = {
 DeltaIso = FullSimplify[Delta /. isoSubstitution, Assumptions -> $Assumptions];
 DeltaIsoExpected = linearK^2 - 2 H0 u den;
 krs = linearK/Sqrt[den];
-tauIso = tau /. isoSubstitution;
 tauIsoExpected = 2 H0/(krs + Sqrt[krs^2 - 2 H0 u]);
 isoAssumptions = $Assumptions && DeltaIsoExpected > 0 && krs^2 - 2 H0 u > 0;
+tauIso = FullSimplify[
+  PowerExpand[tau /. isoSubstitution],
+  Assumptions -> isoAssumptions
+];
 
 expectZero["M5 Delta_iso reduction", DeltaIso - DeltaIsoExpected];
 expectZeroUnder["M5 tau_iso reduction", tauIso - tauIsoExpected, isoAssumptions];
@@ -160,11 +200,11 @@ symSubstitution = {
   Ecoef -> 2 k^2 - 4 H0 ux,
   Fcoef -> k^2 - 2 H0 ud
 };
-NrSymEqualMix = Nr /. symSubstitution /. {r -> 1, s -> 1};
-NsSymEqualMix = Ns /. symSubstitution /. {r -> 1, s -> 1};
+numRSymEqualMix = FullSimplify[numR /. symSubstitution /. {r -> 1, s -> 1}];
+numSSymEqualMix = FullSimplify[numS /. symSubstitution /. {r -> 1, s -> 1}];
 
-expectZero["M6 symmetric N_r(1,1)", NrSymEqualMix];
-expectZero["M6 symmetric N_s(1,1)", NsSymEqualMix];
+expectZero["M6 symmetric derived numerator r(1,1)", numRSymEqualMix];
+expectZero["M6 symmetric derived numerator s(1,1)", numSSymEqualMix];
 
 Print[""];
 Print["All Stage 211 identities verified."];

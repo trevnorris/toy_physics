@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
-# Date: 2026-05-11T12:49:03-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 184 — EXPLICIT REALIZATION COMPILER AND CANONICAL ORBIT PROJECTION
+STAGE 201 — EXPLICIT REALIZATION COMPILER AND CANONICAL ORBIT PROJECTION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -355,7 +347,7 @@ M_*(Delta x + Delta x_rep^lin) =
 ⎣0⎦
 
 ========================================================================================
-STAGE 184 LEDGER
+STAGE 201 LEDGER
 ========================================================================================
 1. The intrinsic target packet requires only four quantities from a candidate branch:
       chi_Q(x), C_tr(x)/C_tr,*, C_nt(x)/C_nt,*, eps_eta(x)/eps_eta,*.
@@ -377,5 +369,3 @@ STAGE 184 LEDGER
       x in Z_*  <=>  chi_Q(x)=1 and Pi_O^can(x)=x
    equivalently
       Delta_real^int(x|Z_*) = 0.
-
-EXIT_CODE: 0

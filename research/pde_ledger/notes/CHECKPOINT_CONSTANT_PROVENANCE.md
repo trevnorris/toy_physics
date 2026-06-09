@@ -1323,3 +1323,30 @@ new constant — confirmed genuinely INDEPENDENT, 0 ports, by the orchestrator r
 agent against the 200 standard; only 200 had the Jacobian-vs-Jacobian sameness. Arbiter grep CLEAN — no
 stale self-epoch 171–183 banner, no `168π²`/`100π²` class. **0 sanctioned mirrors remain in V.3.**)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch VI.1 (2026-06-09)
+
+Pass-2 Batch VI.1 (201-218): reviewed — TWO checkpoints in range (**203**,
+`free_quintuple_scalar_closure_slice_and_crossing_theorem`; **218**,
+`full_support_cardinality_5_completion_and_local_mixed_ray_search_closure`) re-verified at the higher bar; **NO
+checkpoint constant changed, moved, or re-pinned; no new postulated constant introduced.** 0 values misaligned
+batch-wide (222 deliverable values; no `paper_misalignment` anywhere → ZERO substantive paper/notes edits);
+`material_change: false` on all 18. **203** cleared the higher bar with its crossing theorem re-derived in-script —
+the unique root `τ=1/2` of `32^(2τ-1)-1` (sign change `−31/32 → 31` across the root), confirmed genuinely independent
+(log-additive + `Reduce` + target-monomial-invariance on the `.wl` vs power-multiplicative + `solveset` on the `.py`);
+the carried structural constants (`widehat chi_Q = 1`; the Stage-192 quotient coefficient `2`; the symbolic
+`(1+deltaU_*)/(1+chi0_*)`, `E_*`, `F_*`) are PRESERVED, not moved. **218** cleared the higher bar with its budget
+ledger intact: **162 = 3⁴·2** (the lifted per-envelope Bézout bound), `324 = 2·162`, `750 = 5·5·5·6`,
+`1500 = 2·750`, `1140` (carried Stage-215 support-≤4 global ledger), `1464 = 1140+324`, `2640` (projected/fallback
+total) — every value internally consistent, appendix-exact, and CROSS-CHECKED at 217 (both engines derive 162; zero
+surviving 179/230 across all 7 artifacts). The pass-2 orchestrator ground-truth read confirmed 218's pass-1 re-author
+SUFFICIENT (M1 `Subsets`/`ContainsAll`/`Boole`/`Tally`/`2^5-2` vs `itertools`; M2-M3 `Resolve[ForAll,…,Reals]` real-QE
+vs `simplify_logic`; M4 generated vs hand-listed witnesses; M5 benign shared budget arithmetic). **Zero unexplained
+literals remain in checkpoints 203 and 218's scripts.** The Stage 218 provenance entry above already records
+`162 = 3⁴·2` and the budget chain; nothing moved this batch. **Cumulative checkpoint-constant provenance is unchanged
+from the V.3 close (200/203/218 retained at the higher-bar standard, 162 retained at 217/218); no checkpoint constant
+moved.** (For completeness: the 16 non-checkpoint stages [201, 202, 204–217] introduced no new constant — confirmed
+genuinely INDEPENDENT except 211, whose `.wl` was a confirmed PORT → USER-AUTHORIZED re-author to a `Resultant`-derived
+eliminant route [`material_change: false`, no value moved], a CALIBRATION agent across the 207–216 ray-ranking family
+finding NO other ports. Arbiter grep CLEAN — no `168π²`/`100π²` class. **0 sanctioned mirrors remain in VI.1.**)
+No carried checkpoint constant changed.

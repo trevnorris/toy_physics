@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage202_free_quintuple_target_graph_sympy_audit.py
-# Date: 2026-05-11T12:49:04-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 185 — EXACT FREE-QUINTUPLE TARGET GRAPH AND THE FIRST REDUCED-FAMILY TEST
+STAGE 202 — EXACT FREE-QUINTUPLE TARGET GRAPH AND THE FIRST REDUCED-FAMILY TEST
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -625,10 +617,8 @@ multiplicative family chart on target graph =
 ⎣0⎦
 
 ========================================================================================
-STAGE 185 AUDIT COMPLETE
+STAGE 202 AUDIT COMPLETE
 ========================================================================================
 Result: the target orbit is an exact graph over the five free microscopic coordinates.
 Result: the four-scalar reduced-family packet is (chi_Q-1, E_T, E_K, E_mu).
 Result: the canonical repair vector is exactly minus the graph-error triple on the dependent coordinates.
-
-EXIT_CODE: 0

@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
-# Date: 2026-05-11T12:49:46-06:00
-# Elapsed: 11s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 200 — UNIQUE FIVE-COORDINATE SIMPLEX INTERIOR OPTIMIZER
+STAGE 217 — UNIQUE FIVE-COORDINATE SIMPLEX INTERIOR OPTIMIZER
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -88,5 +80,3 @@ Verified:
 4. The gradient-optimal interior ray is exact under diagonal-isotropic curvature.
 5. The equal-mix barycenter is exact under full fivefold symmetry.
 6. The unique five-coordinate interior problem is therefore a finite algebraic candidate problem.
-
-EXIT_CODE: 0

@@ -6,39 +6,61 @@ STAGE 211 -- FULL INTERIOR SIMPLEX OPTIMIZER AND FINITE ALGEBRAIC CANDIDATE REDU
 ----------------------------------------------------------------------------------------
 M1. Exact stationary numerator law
 ----------------------------------------------------------------------------------------
-M1 direct numerator from D[Phi, r] = -2*A*r - 2*r*s*(Ccoef + Fcoef*s) + 2*Dcoef*r*(1 + s^2) + B*(1 - r^2 + s^2) + Ecoef*s*(1 - r^2 + s^2) + 2*kj*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - 2*ki*r*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - 2*kk*r*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + 2*kj*s^2*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)]
-M1 direct numerator from D[Phi, s] = Ccoef*(1 + r^2 - s^2) + Ecoef*(r + r^3 - r*s^2) - 2*(A*s + r*(B + Dcoef*r)*s - Fcoef*(1 + r^2)*s - kk*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] - kk*r^2*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + ki*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)] + kj*r*s*Sqrt[A + B*r + Dcoef*r^2 + s*(Ccoef + Ecoef*r + Fcoef*s)])
-M1 D[Phi,r] numerator minus paper N_r = 0
-PASS: M1 D[Phi,r] numerator minus paper N_r
-M1 D[Phi,s] numerator minus paper N_s = 0
-PASS: M1 D[Phi,s] numerator minus paper N_s
-M1 derivative law r = 0
-PASS: M1 derivative law r
-M1 derivative law s = 0
-PASS: M1 derivative law s
+M1 direct numerator from D[Phi, r] = B - 2*A*r + 2*Dcoef*r - B*r^2 + Ecoef*s - 2*Ccoef*r*s - Ecoef*r^2*s + B*s^2 + 2*Dcoef*r*s^2 - 2*Fcoef*r*s^2 + Ecoef*s^3 + 2*kj*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] - 2*ki*r*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] - 2*kk*r*s*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] + 2*kj*s^2*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2]
+M1 direct numerator from D[Phi, s] = Ccoef + Ecoef*r + Ccoef*r^2 + Ecoef*r^3 - 2*A*s + 2*Fcoef*s - 2*B*r*s - 2*Dcoef*r^2*s + 2*Fcoef*r^2*s - Ccoef*s^2 - Ecoef*r*s^2 + 2*kk*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] + 2*kk*r^2*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] - 2*ki*s*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2] - 2*kj*r*s*Sqrt[A + B*r + Dcoef*r^2 + Ccoef*s + Ecoef*r*s + Fcoef*s^2]
+M1 D[Phi,r] numerator is nonzero = True
+PASS: M1 D[Phi,r] numerator is nonzero
+M1 D[Phi,s] numerator is nonzero = True
+PASS: M1 D[Phi,s] numerator is nonzero
+M1 reconstruct D[Phi,r] from derived numerator = 0
+PASS: M1 reconstruct D[Phi,r] from derived numerator
+M1 reconstruct D[Phi,s] from derived numerator = 0
+PASS: M1 reconstruct D[Phi,s] from derived numerator
 
 ----------------------------------------------------------------------------------------
 M2. Quartic cross-consistency
 ----------------------------------------------------------------------------------------
-M2 square-root-free cross identity = 0
-PASS: M2 square-root-free cross identity
-M2 total degree C_cross = 4
-M2 C_cross has total degree 4 = True
-PASS: M2 C_cross has total degree 4
+M2 numerator r is polynomial in q = True
+PASS: M2 numerator r is polynomial in q
+M2 numerator s is polynomial in q = True
+PASS: M2 numerator s is polynomial in q
+M2 resultant removed q = True
+PASS: M2 resultant removed q
+M2 derived cross polynomial = Ccoef*kj - B*kk - Ccoef*ki*r + Ecoef*kj*r + 2*A*kk*r - 2*Dcoef*kk*r - Ecoef*ki*r^2 + Ccoef*kj*r^2 - Ccoef*ki*r^3 + Ecoef*kj*r^3 + 2*A*kk*r^3 - 2*Dcoef*kk*r^3 - Ecoef*ki*r^4 + B*kk*r^4 + B*ki*s - 2*A*kj*s + 2*Fcoef*kj*s - Ecoef*kk*s + 2*Dcoef*ki*r*s - 2*Fcoef*ki*r*s - B*kj*r*s + Ccoef*kk*r*s + B*ki*r^2*s - 2*A*kj*r^2*s + 2*Fcoef*kj*r^2*s - Ecoef*kk*r^2*s + 2*Dcoef*ki*r^3*s - 2*Fcoef*ki*r^3*s - B*kj*r^3*s + Ccoef*kk*r^3*s + Ecoef*ki*s^2 - B*kk*s^2 - Ccoef*ki*r*s^2 + Ecoef*kj*r*s^2 + 2*A*kk*r*s^2 - 2*Dcoef*kk*r*s^2 - Ccoef*kj*r^2*s^2 + B*kk*r^2*s^2 + B*ki*s^3 - 2*A*kj*s^3 + 2*Fcoef*kj*s^3 - Ecoef*kk*s^3 + 2*Dcoef*ki*r*s^3 - 2*Fcoef*ki*r*s^3 - B*kj*r*s^3 + Ccoef*kk*r*s^3 + Ecoef*ki*s^4 - Ccoef*kj*s^4
+M2 total degree derived cross = 4
+M2 derived cross has total degree 4 = True
+PASS: M2 derived cross has total degree 4
+M2 derived cross / SymPy target = -1
+M2 derived cross ratio is nonzero constant = True
+PASS: M2 derived cross ratio is nonzero constant
+M2 derived cross minus scaled SymPy target = 0
+PASS: M2 derived cross minus scaled SymPy target
 
 ----------------------------------------------------------------------------------------
 M3. Sextic square eliminants
 ----------------------------------------------------------------------------------------
-M3 square eliminant identity r = 0
-PASS: M3 square eliminant identity r
-M3 square eliminant identity s = 0
-PASS: M3 square eliminant identity s
-M3 total degree S_r = 6
-M3 total degree S_s = 6
-M3 S_r has total degree 6 = True
-PASS: M3 S_r has total degree 6
-M3 S_s has total degree 6 = True
-PASS: M3 S_s has total degree 6
+M3 r square eliminant removed q = True
+PASS: M3 r square eliminant removed q
+M3 s square eliminant removed q = True
+PASS: M3 s square eliminant removed q
+M3 derived S_r polynomial = -B^2 + 4*A*kj^2 + 4*A*B*r - 4*B*Dcoef*r - 8*A*ki*kj*r + 4*B*kj^2*r - 4*A^2*r^2 + 2*B^2*r^2 + 8*A*Dcoef*r^2 - 4*Dcoef^2*r^2 + 4*A*ki^2*r^2 - 8*B*ki*kj*r^2 + 4*Dcoef*kj^2*r^2 - 4*A*B*r^3 + 4*B*Dcoef*r^3 + 4*B*ki^2*r^3 - 8*Dcoef*ki*kj*r^3 - B^2*r^4 + 4*Dcoef*ki^2*r^4 - 2*B*Ecoef*s + 4*Ccoef*kj^2*s + 4*B*Ccoef*r*s + 4*A*Ecoef*r*s - 4*Dcoef*Ecoef*r*s - 8*Ccoef*ki*kj*r*s + 4*Ecoef*kj^2*r*s - 8*A*kj*kk*r*s - 8*A*Ccoef*r^2*s + 8*Ccoef*Dcoef*r^2*s + 4*B*Ecoef*r^2*s + 4*Ccoef*ki^2*r^2*s - 8*Ecoef*ki*kj*r^2*s + 8*A*ki*kk*r^2*s - 8*B*kj*kk*r^2*s - 4*B*Ccoef*r^3*s - 4*A*Ecoef*r^3*s + 4*Dcoef*Ecoef*r^3*s + 4*Ecoef*ki^2*r^3*s + 8*B*ki*kk*r^3*s - 8*Dcoef*kj*kk*r^3*s - 2*B*Ecoef*r^4*s + 8*Dcoef*ki*kk*r^4*s - 2*B^2*s^2 - Ecoef^2*s^2 + 8*A*kj^2*s^2 + 4*Fcoef*kj^2*s^2 + 4*A*B*r*s^2 - 8*B*Dcoef*r*s^2 + 4*Ccoef*Ecoef*r*s^2 + 4*B*Fcoef*r*s^2 - 8*A*ki*kj*r*s^2 - 8*Fcoef*ki*kj*r*s^2 + 8*B*kj^2*r*s^2 - 8*Ccoef*kj*kk*r*s^2 + 2*B^2*r^2*s^2 - 4*Ccoef^2*r^2*s^2 + 8*A*Dcoef*r^2*s^2 - 8*Dcoef^2*r^2*s^2 + 2*Ecoef^2*r^2*s^2 - 8*A*Fcoef*r^2*s^2 + 8*Dcoef*Fcoef*r^2*s^2 + 4*Fcoef*ki^2*r^2*s^2 - 8*B*ki*kj*r^2*s^2 + 8*Dcoef*kj^2*r^2*s^2 + 8*Ccoef*ki*kk*r^2*s^2 - 8*Ecoef*kj*kk*r^2*s^2 + 4*A*kk^2*r^2*s^2 + 4*B*Dcoef*r^3*s^2 - 4*Ccoef*Ecoef*r^3*s^2 - 4*B*Fcoef*r^3*s^2 - 8*Dcoef*ki*kj*r^3*s^2 + 8*Ecoef*ki*kk*r^3*s^2 + 4*B*kk^2*r^3*s^2 - Ecoef^2*r^4*s^2 + 4*Dcoef*kk^2*r^4*s^2 - 4*B*Ecoef*s^3 + 8*Ccoef*kj^2*s^3 + 4*B*Ccoef*r*s^3 + 4*A*Ecoef*r*s^3 - 8*Dcoef*Ecoef*r*s^3 + 4*Ecoef*Fcoef*r*s^3 - 8*Ccoef*ki*kj*r*s^3 + 8*Ecoef*kj^2*r*s^3 - 8*A*kj*kk*r*s^3 - 8*Fcoef*kj*kk*r*s^3 + 8*Ccoef*Dcoef*r^2*s^3 + 4*B*Ecoef*r^2*s^3 - 8*Ccoef*Fcoef*r^2*s^3 - 8*Ecoef*ki*kj*r^2*s^3 + 8*Fcoef*ki*kk*r^2*s^3 - 8*B*kj*kk*r^2*s^3 + 4*Ccoef*kk^2*r^2*s^3 + 4*Dcoef*Ecoef*r^3*s^3 - 4*Ecoef*Fcoef*r^3*s^3 - 8*Dcoef*kj*kk*r^3*s^3 + 4*Ecoef*kk^2*r^3*s^3 - B^2*s^4 - 2*Ecoef^2*s^4 + 4*A*kj^2*s^4 + 8*Fcoef*kj^2*s^4 - 4*B*Dcoef*r*s^4 + 4*Ccoef*Ecoef*r*s^4 + 4*B*Fcoef*r*s^4 - 8*Fcoef*ki*kj*r*s^4 + 4*B*kj^2*r*s^4 - 8*Ccoef*kj*kk*r*s^4 - 4*Dcoef^2*r^2*s^4 + 2*Ecoef^2*r^2*s^4 + 8*Dcoef*Fcoef*r^2*s^4 - 4*Fcoef^2*r^2*s^4 + 4*Dcoef*kj^2*r^2*s^4 - 8*Ecoef*kj*kk*r^2*s^4 + 4*Fcoef*kk^2*r^2*s^4 - 2*B*Ecoef*s^5 + 4*Ccoef*kj^2*s^5 - 4*Dcoef*Ecoef*r*s^5 + 4*Ecoef*Fcoef*r*s^5 + 4*Ecoef*kj^2*r*s^5 - 8*Fcoef*kj*kk*r*s^5 - Ecoef^2*s^6 + 4*Fcoef*kj^2*s^6
+M3 derived S_s polynomial = -Ccoef^2 + 4*A*kk^2 - 2*Ccoef*Ecoef*r + 4*B*kk^2*r - 2*Ccoef^2*r^2 - Ecoef^2*r^2 + 8*A*kk^2*r^2 + 4*Dcoef*kk^2*r^2 - 4*Ccoef*Ecoef*r^3 + 8*B*kk^2*r^3 - Ccoef^2*r^4 - 2*Ecoef^2*r^4 + 4*A*kk^2*r^4 + 8*Dcoef*kk^2*r^4 - 2*Ccoef*Ecoef*r^5 + 4*B*kk^2*r^5 - Ecoef^2*r^6 + 4*Dcoef*kk^2*r^6 + 4*A*Ccoef*s - 4*Ccoef*Fcoef*s - 8*A*ki*kk*s + 4*Ccoef*kk^2*s + 4*B*Ccoef*r*s + 4*A*Ecoef*r*s - 4*Ecoef*Fcoef*r*s - 8*B*ki*kk*r*s - 8*A*kj*kk*r*s + 4*Ecoef*kk^2*r*s + 4*A*Ccoef*r^2*s + 4*Ccoef*Dcoef*r^2*s + 4*B*Ecoef*r^2*s - 8*Ccoef*Fcoef*r^2*s - 8*A*ki*kk*r^2*s - 8*Dcoef*ki*kk*r^2*s - 8*B*kj*kk*r^2*s + 8*Ccoef*kk^2*r^2*s + 4*B*Ccoef*r^3*s + 4*A*Ecoef*r^3*s + 4*Dcoef*Ecoef*r^3*s - 8*Ecoef*Fcoef*r^3*s - 8*B*ki*kk*r^3*s - 8*A*kj*kk*r^3*s - 8*Dcoef*kj*kk*r^3*s + 8*Ecoef*kk^2*r^3*s + 4*Ccoef*Dcoef*r^4*s + 4*B*Ecoef*r^4*s - 4*Ccoef*Fcoef*r^4*s - 8*Dcoef*ki*kk*r^4*s - 8*B*kj*kk*r^4*s + 4*Ccoef*kk^2*r^4*s + 4*Dcoef*Ecoef*r^5*s - 4*Ecoef*Fcoef*r^5*s - 8*Dcoef*kj*kk*r^5*s + 4*Ecoef*kk^2*r^5*s - 4*A^2*s^2 + 2*Ccoef^2*s^2 + 8*A*Fcoef*s^2 - 4*Fcoef^2*s^2 + 4*A*ki^2*s^2 - 8*Ccoef*ki*kk*s^2 + 4*Fcoef*kk^2*s^2 - 8*A*B*r*s^2 + 4*Ccoef*Ecoef*r*s^2 + 8*B*Fcoef*r*s^2 + 4*B*ki^2*r*s^2 + 8*A*ki*kj*r*s^2 - 8*Ecoef*ki*kk*r*s^2 - 8*Ccoef*kj*kk*r*s^2 - 4*B^2*r^2*s^2 + 2*Ccoef^2*r^2*s^2 - 8*A*Dcoef*r^2*s^2 + 2*Ecoef^2*r^2*s^2 + 8*A*Fcoef*r^2*s^2 + 8*Dcoef*Fcoef*r^2*s^2 - 8*Fcoef^2*r^2*s^2 + 4*Dcoef*ki^2*r^2*s^2 + 8*B*ki*kj*r^2*s^2 + 4*A*kj^2*r^2*s^2 - 8*Ccoef*ki*kk*r^2*s^2 - 8*Ecoef*kj*kk*r^2*s^2 + 8*Fcoef*kk^2*r^2*s^2 - 8*B*Dcoef*r^3*s^2 + 4*Ccoef*Ecoef*r^3*s^2 + 8*B*Fcoef*r^3*s^2 + 8*Dcoef*ki*kj*r^3*s^2 + 4*B*kj^2*r^3*s^2 - 8*Ecoef*ki*kk*r^3*s^2 - 8*Ccoef*kj*kk*r^3*s^2 - 4*Dcoef^2*r^4*s^2 + 2*Ecoef^2*r^4*s^2 + 8*Dcoef*Fcoef*r^4*s^2 - 4*Fcoef^2*r^4*s^2 + 4*Dcoef*kj^2*r^4*s^2 - 8*Ecoef*kj*kk*r^4*s^2 + 4*Fcoef*kk^2*r^4*s^2 - 4*A*Ccoef*s^3 + 4*Ccoef*Fcoef*s^3 + 4*Ccoef*ki^2*s^3 - 8*Fcoef*ki*kk*s^3 - 4*B*Ccoef*r*s^3 - 4*A*Ecoef*r*s^3 + 4*Ecoef*Fcoef*r*s^3 + 4*Ecoef*ki^2*r*s^3 + 8*Ccoef*ki*kj*r*s^3 - 8*Fcoef*kj*kk*r*s^3 - 4*Ccoef*Dcoef*r^2*s^3 - 4*B*Ecoef*r^2*s^3 + 4*Ccoef*Fcoef*r^2*s^3 + 8*Ecoef*ki*kj*r^2*s^3 + 4*Ccoef*kj^2*r^2*s^3 - 8*Fcoef*ki*kk*r^2*s^3 - 4*Dcoef*Ecoef*r^3*s^3 + 4*Ecoef*Fcoef*r^3*s^3 + 4*Ecoef*kj^2*r^3*s^3 - 8*Fcoef*kj*kk*r^3*s^3 - Ccoef^2*s^4 + 4*Fcoef*ki^2*s^4 - 2*Ccoef*Ecoef*r*s^4 + 8*Fcoef*ki*kj*r*s^4 - Ecoef^2*r^2*s^4 + 4*Fcoef*kj^2*r^2*s^4
+M3 total degree derived S_r = 6
+M3 total degree derived S_s = 6
+M3 derived S_r has total degree 6 = True
+PASS: M3 derived S_r has total degree 6
+M3 derived S_s has total degree 6 = True
+PASS: M3 derived S_s has total degree 6
+M3 derived S_r / SymPy target = -1
+M3 derived S_s / SymPy target = -1
+M3 derived S_r ratio is nonzero constant = True
+PASS: M3 derived S_r ratio is nonzero constant
+M3 derived S_s ratio is nonzero constant = True
+PASS: M3 derived S_s ratio is nonzero constant
+M3 derived S_r minus scaled SymPy target = 0
+PASS: M3 derived S_r minus scaled SymPy target
+M3 derived S_s minus scaled SymPy target = 0
+PASS: M3 derived S_s minus scaled SymPy target
 
 ----------------------------------------------------------------------------------------
 M4. Bezout bound
@@ -58,9 +80,9 @@ PASS: M5 tau_iso reduction
 ----------------------------------------------------------------------------------------
 M6. Full-symmetry equal-mix stationarity
 ----------------------------------------------------------------------------------------
-M6 symmetric N_r(1,1) = 0
-PASS: M6 symmetric N_r(1,1)
-M6 symmetric N_s(1,1) = 0
-PASS: M6 symmetric N_s(1,1)
+M6 symmetric derived numerator r(1,1) = 0
+PASS: M6 symmetric derived numerator r(1,1)
+M6 symmetric derived numerator s(1,1) = 0
+PASS: M6 symmetric derived numerator s(1,1)
 
 All Stage 211 identities verified.

@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
-# Date: 2026-05-11T12:49:10-06:00
-# Elapsed: 3s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 187 — EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR
+STAGE 204 — EXPLICIT LOG-RAY SWEEP AND SCALAR ROOT PREDICTOR
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -226,7 +218,5 @@ series[tau_log - tau_aff] =
 predictor difference starts at quadratic order = 0
 
 ========================================================================================
-STAGE 187 SYMPY AUDIT PASSED
+STAGE 204 SYMPY AUDIT PASSED
 ========================================================================================
-
-EXIT_CODE: 0

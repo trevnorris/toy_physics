@@ -64,6 +64,14 @@ numbering (filenames / MANIFEST / paper cards) is ground truth; NEVER offset-swe
   LOG. III.3 examples: 063 `py:76`, 064 `py:25/122/180`+`wl:104`, 065 `py:22`, 066 `py:14/59`,
   069 `py:9/11/26/94/112/120/176/179`+`wl:99/116/164/167` (`py:26` "Stage 049" is the same ref
   in 3-digit form — ambiguous), 070 `py:57/59`+`wl:87/88` + the variable names `J1_stage48`/`J1Stage48`.
+- **VI.1 (201–218), pass-2 batch close 2026-06-09 — 3 deferred items (content-keyed, NEVER offset-sweep):**
+  (1) **206 `.py`** collapse-target label "Stage 239" should be the **Stage-205 quad-log predictor** collapse
+  target (`py:131/133/142/145`) — the MATH is correct; only the cross-ref stage number is stale
+  (cross-ref → content-map to the owning Stage 205). (2) **218 `.py`** dead `source_stage:198/200` dict
+  fields + "Stage 249" comment (`py:347`) — NON-asserted (dead metadata + a comment), so label-only/cosmetic.
+  (3) **203 `.wl`** variable names `chiFromStage180`/`closureNumStage180` carry a stale "Stage 180" attribution
+  vs the correct **Stage-197** owner (variable-name self/cross-ref drift — adjudicate by the cited deliverable's
+  owning stage). All three are doc/label-only with math untouched; LEFT for this dedicated pass.
 
 ## Scope
 

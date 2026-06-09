@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_sympy_audit.py
-# Date: 2026-05-11T12:49:27-06:00
-# Elapsed: 3s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 196 — FOUR-COORDINATE MIXED SIMPLEX AND THE SUPPORT-CARDINALITY-4 GATE
+STAGE 213 — FOUR-COORDINATE MIXED SIMPLEX AND THE SUPPORT-CARDINALITY-4 GATE
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -233,7 +225,5 @@ verified support-cardinality-4 improvement gate on 924 samples
 verified support-cardinality-4 non-improvement filter on 924 samples
 
 ========================================================================================
-STAGE 196 SYMPY AUDIT COMPLETED SUCCESSFULLY
+STAGE 213 SYMPY AUDIT COMPLETED SUCCESSFULLY
 ========================================================================================
-
-EXIT_CODE: 0

@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 197 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER
+STAGE 214 — FULL INTERIOR FOUR-COORDINATE SIMPLEX OPTIMIZER
 ========================================================================================
 
 ========================================================================================
@@ -1206,5 +1206,5 @@ verified interior winner theorem on 924 ordered integer samples
 verified interior non-improvement theorem on 924 ordered integer samples
 
 ========================================================================================
-STAGE 197 SYMPY AUDIT COMPLETED SUCCESSFULLY
+STAGE 214 SYMPY AUDIT COMPLETED SUCCESSFULLY
 ========================================================================================

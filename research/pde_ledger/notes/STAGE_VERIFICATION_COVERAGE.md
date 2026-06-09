@@ -1220,3 +1220,49 @@ and passing — a stale STATUS annotation, NOT a value/identity mismatch; USER-D
 paper-cleanup tracker (non-blocking, Codex-applied + Claude-reviewed in the later paper pass). **NO new
 offset-sweepable numbering residual from V.3.** See `PAPER_CLEANUP_TRACKER.md` P5-18 + P4-51 (appended),
 `MATHEMATICA_MIRROR_POLICY.md`. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VI.1 (2026-06-09)
+
+Pass-2 Batch VI.1 (201-218, `Part VI — Explicit realization, scalar slice, ray ranking`,
+18 stages): all 18 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**18/18 verified**, `material_change: false` on all 18 (NO downstream staling), 0 stop-cold, 0
+blocked, 0 Codex deviations. **0 values misaligned batch-wide** (222 deliverable values; no
+`paper_misalignment` anywhere → ZERO substantive paper/notes edits). **With VI.1 pass-2 closed, the running
+pass-2 coverage is I.1…VI.1 verified** (cumulative 001-218 re-verified at pass-2 depth); pass-2 batches VII.1
+onward (219-253) remain to run under the second pass. **TWO checkpoints in range — 203 and 218 — BOTH CLEARED
+the higher checkpoint bar.** **203:** the crossing theorem re-derived in-script (`32^(2τ-1)-1`, unique root
+τ=1/2), confirmed independent (log-additive + `Reduce` + target-monomial-invariance on the `.wl` vs
+power-multiplicative + `solveset` on the `.py`). **218** (the hardest; a pass-1 re-author from a transliteration):
+the orchestrator ground-truth read confirmed the pass-1 re-author was SUFFICIENT (UNLIKE V.3-200) — M1
+`Subsets`/`ContainsAll`/`Boole`/`Tally`/`2^5-2` vs `itertools`; M2-M3 `Resolve[ForAll,…,Reals]` real-QE vs
+`simplify_logic` finite contradiction; M4 generated witness windows vs hand-listed; M5 benign shared budget
+arithmetic; NO checkpoint constant changed (217's published `162 = 3⁴·2` reconfirmed — zero surviving 179/230
+across all 7 artifacts). **NO status-only stages** (every stage is dual-engine `.py`+`.wl` — confirmed; a missing
+engine would have been a finding); **NO EM-projected stages; no new postulated constant.**
+
+**The headline — 211's `.wl` was a confirmed PORT and was RE-AUTHORED; the other 17 confirmed genuinely
+independent:** the orchestrator ground-truth `.wl`-vs-`.py` read split the 18 into **17 confirmed genuinely
+independent (no re-author)** and **1 confirmed port: 211.** 211's `.wl` ran the same `D[Phi,r]` autodiff against the
+same posited `Nr`, posited the same eliminants `Ccross/Sr/Ss` with the same algebraic identities — no independent
+extraction. The audit agent flagged it; the orchestrator ground-truth read confirmed; a CALIBRATION agent (211 as
+the known-port standard) swept the ray-ranking family 207/208/209/210/213/214/216 and found NO other ports; the
+**USER AUTHORIZED the re-author.** Codex re-authored ONLY the `.wl`: the eliminants are now DERIVED via
+`Resultant[numRq,numSq,q]` (quartic) and `Resultant[numRq/numSq, q^2-Delta, q]` (sextics) from
+`Numerator[Together[D[Phi,var]]]` with `Sqrt[Delta]->q` (SymPy forms are comparison targets only); degrees 4/6 from
+the derived polys, Bézout 24, iso/sym + `Nr(1,1)=Ns(1,1)=0` preserved; the `.py` was UNTOUCHED, `material_change:
+false`. **211 added to the Independent-Mirror Set.** So all 18 VI.1 dual-engine stages are now genuinely independent
+(**0 sanctioned mirrors remain in VI.1**); the Coverage-Totals "Mathematica audits present" raw count does NOT move
+(211 is an independence upgrade on a pre-existing `.wl`, not a new `.wl`). **Dominant theme — the calibration-agent
+technique for retrofit families** (211 as the known-port standard isolated the lone port across the 207–216 family,
+reconfirming the lesson: audit agents UNDER-call transliteration; the orchestrator ground-truth read is the backstop;
+re-author-vs-accept is USER-LEVEL). INFRA: 36 orchestrator exec runs (`.py`+`.wl`, reliability gate) exit 0, all
+FAIL=0 (slowest 217-mma 148s, 214-mma 72s; 202-mma 14s — the first-pass iter-2 timeout-rework confirmed deterministic
+<600s). Seat policy held: 211 = 1 `.wl`-touching Codex session solo; orchestrator `exec-*` sequential after Codex
+done, no seat overlap. Pass-1 `MANIFEST.yaml` untouched. **CARD-TEXT LAG (paper-side, DEFERRED):** 16 cards (201–217
+except 203; 203 & 218 already cite their `.wl`) still read "Mathematica audit: none yet" despite a passing `.wl` — a
+stale STATUS annotation, USER-DECIDED to DEFER to the paper-cleanup tracker (non-blocking). **DEFERRED numbering
+residual (content-keyed, NEVER offset-sweep):** 206 `.py` "Stage 239"→Stage-205 quad-log predictor collapse target;
+218 `.py` dead `source_stage:198/200` + "Stage 249" comment; 203 `.wl` `chiFromStage180`/`closureNumStage180` vs
+Stage-197 attribution → all logged to the dedicated SCRIPT/OUTPUT-band numbering pass. See `PAPER_CLEANUP_TRACKER.md`
+P5-19 + P4-51 (appended), `MATHEMATICA_MIRROR_POLICY.md`, `NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`. Reference memory
+`numbering-drift-root-cause`.

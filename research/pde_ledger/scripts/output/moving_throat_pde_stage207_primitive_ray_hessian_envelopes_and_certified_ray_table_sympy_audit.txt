@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
-# Date: 2026-05-11T12:49:16-06:00
-# Elapsed: 1s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 190 — PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE
+STAGE 207 — PRIMITIVE-RAY HESSIAN ENVELOPES AND CERTIFIED RAY TABLE
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -239,7 +231,5 @@ primitive certified row (W) -> tau_lo, tau_hi =
 ⎝k_W + ╲╱  -2⋅H₀⋅κ_lo_W + k_W    k_W + ╲╱  -2⋅H₀⋅κ_hi_W + k_W  ⎠
 
 ========================================================================================
-STAGE 190 SYMPY AUDIT PASSED
+STAGE 207 SYMPY AUDIT PASSED
 ========================================================================================
-
-EXIT_CODE: 0

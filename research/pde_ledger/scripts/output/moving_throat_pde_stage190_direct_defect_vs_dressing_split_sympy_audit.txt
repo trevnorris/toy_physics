@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 173 — DIRECT DEFECT VS DRESSING SPLIT, SUPPORT-BLINDNESS, AND THE SCALAR NO-GO FILTERS
+STAGE 190 — DIRECT DEFECT VS DRESSING SPLIT, SUPPORT-BLINDNESS, AND THE SCALAR NO-GO FILTERS
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -145,7 +145,7 @@ linear term in xbar = 0
 linear term in I[x,x] at eps=0 = 0
 
 ========================================================================================
-STAGE 173 LEDGER
+STAGE 190 LEDGER
 ========================================================================================
 1. The coherent first-order problem splits exactly into:
       direct packet   (Sigma_tr, Sigma_nt)

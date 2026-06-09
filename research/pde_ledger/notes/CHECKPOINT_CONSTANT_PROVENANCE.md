@@ -1297,3 +1297,29 @@ separately-named `(1-ε_η)` identity object; 186 derives the eta-scaling from t
 `ε_η=c_η U²/(K_U K_η)` monomial] — no emitted value moved. Arbiter grep CLEAN — no `168π²`/`100π²`
 class. **0 sanctioned mirrors remain in V.2.**)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch V.3 (2026-06-09)
+
+Pass-2 Batch V.3 (188-200): reviewed — ONE checkpoint in range (**200**,
+`reference_free_home_stretch_theorem`) re-verified at the higher bar; **NO checkpoint constant changed,
+moved, or re-pinned; no new postulated constant introduced — 200 pins NO new numeric constant (its
+deliverables are SYMBOLIC).** 0 values misaligned batch-wide (171 deliverable values; no `paper_misalignment`
+anywhere → ZERO paper/notes edits); `material_change: false` on all 13. **200's `.wl` was RE-AUTHORED but
+the change is METHOD-ONLY** — the first-pass de-transliteration was found INSUFFICIENT (BOTH engines still
+computed the load-bearing compiler matrix M_* by the SAME autodiff-Jacobian of the SAME log-ratios, SymPy
+`q_pair.jacobian(Dvec)` vs Mathematica `Table[D[qPair,Dvec]]`; §III posited the same orbit closed forms; §V
+used the same `Series`), so the USER-AUTHORIZED re-author DERIVES M_* from primitive monomial exponent-weight
+vectors (§I), SOLVES the orbit via `Coefficient`→`LinearSolve` of the log-linear residual system (§III), and
+linearizes Packet-A via a base-point derivative `D[chiPerturbed,eps]/.eps->0` (§V) — all landing on the SAME
+values. 200's deliverables are SYMBOLIC and contain no free decimal literals: the carried Stage-192 M_*
+(`Mexpected`) matrix, the §III mismatch chart law `q=((1+chi0_*)ln m_T, ln m_mu−ln m_K−F_*ln m_T, −ln m_K)`,
+the §IV cocycle, and the §V Packet-A linear coeff `eps(5 eps_beta+dSigma0/(3S)+9 dSigma5/S)` are all
+preserved; the source-anchored Stage-200 constants (`chi_Q=1`; the packet-length/pairing coefficient `2`;
+the `3`/`5`/`9` carried from `chi_Q = 3(S β^5 + 9 Σ_5)/(3 S − Σ_0)`) already logged in the Stage 200 entry
+above are REUSED, not moved. **Zero unexplained literals remain in checkpoint 200's scripts.** **Cumulative
+checkpoint-constant provenance is unchanged from the IV.2 close (105 retained at the higher-bar standard); no
+checkpoint constant moved.** (For completeness: the OTHER 12 non-checkpoint stages [188-199] introduced no
+new constant — confirmed genuinely INDEPENDENT, 0 ports, by the orchestrator read + a dedicated calibration
+agent against the 200 standard; only 200 had the Jacobian-vs-Jacobian sameness. Arbiter grep CLEAN — no
+stale self-epoch 171–183 banner, no `168π²`/`100π²` class. **0 sanctioned mirrors remain in V.3.**)
+No carried checkpoint constant changed.

@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 171 — BRANCH-OBSERVABLE COMPLETION AND THE EXACT FIRST-ORDER OBSERVABLE COMPILER
+STAGE 188 — BRANCH-OBSERVABLE COMPLETION AND THE EXACT FIRST-ORDER OBSERVABLE COMPILER
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -269,7 +269,7 @@ C_obs->quot then inverse recovers generic obs (bijection, quot side) =
 1/det(C_obs->quot) well-defined (nonzero det) = 0
 
 ========================================================================================
-STAGE 171 LEDGER
+STAGE 188 LEDGER
 ========================================================================================
 1. The Stage 184 branch-observable packet
       (delta ln R_tr, delta ln N_*, delta ln epseta)

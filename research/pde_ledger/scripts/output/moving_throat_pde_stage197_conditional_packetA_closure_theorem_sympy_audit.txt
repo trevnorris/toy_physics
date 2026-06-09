@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 180 — EXACT CONDITIONAL PACKET-A CLOSURE THEOREM
+STAGE 197 — EXACT CONDITIONAL PACKET-A CLOSURE THEOREM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -148,7 +148,7 @@ d chi_Q^(series extractor) / dL7 = 0
 d Delta_norm / dL7 = 0
 
 ========================================================================================
-STAGE 180 LEDGER
+STAGE 197 LEDGER
 ========================================================================================
 1. Once the carried isotropic grouped-real P2 conservative one-pole front end is imposed,
       a2 = b2 = a4 = b4 = a_{P0} = b_{P0} = Delta_pole = 0,

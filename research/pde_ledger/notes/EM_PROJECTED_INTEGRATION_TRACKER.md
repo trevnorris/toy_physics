@@ -515,3 +515,20 @@ range (185) cleared the higher bar with NO checkpoint constant changed; no new p
 I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 +
 V.2 pass-2 closed, the range 001-187 is paper-aligned at pass-2 depth and the projected-EM core 004-021
 (plus bookends 022-187) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch V.3 (2026-06-09)
+
+Pass-2 Batch V.3 (188-200, `Part V.3 — Branch observables, isotropic target, home stretch`) re-verified at
+v2 depth + value-reconciliation augmentation; 13/13 verified, `material_change: false` on all 13. **NO
+EM-projected stages in range → no EM-projection change** — V.3 is the branch-observable / isotropic-target /
+home-stretch band (checkpoint 200 = reference-free home-stretch theorem), far downstream of and outside the
+projected-Maxwell core (004-021). No projected-EM identity was touched; no EM result moved. The one source
+change — the 200 `.wl` re-author (the pass-1 de-transliteration was found INSUFFICIENT, Jacobian-vs-Jacobian
+sameness across engines; USER-authorized re-author to a weight-vector M_* / `Coefficient`→`LinearSolve`
+orbit / base-point `D[]` Packet-A linearization, method-only) — and the 12 confirmed genuinely independent
+stages (188-199) are all confined to the V.3 band and touch no EM-projected identity; 0 values misaligned
+batch-wide → ZERO paper/notes edits; the ONE checkpoint in range (200) cleared the higher bar with NO
+checkpoint constant changed; no new postulated constants. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 +
+III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 pass-2 closed, the range 001-200 is
+paper-aligned at pass-2 depth and the projected-EM core 004-021 (plus bookends 022-200) remains paper-aligned
+under the second pass.

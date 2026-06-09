@@ -6433,7 +6433,7 @@ stages:
     stage: 188
     stage_str: '188'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6458,11 +6458,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage188_branch_observables_completion_mathematica_audit.txt
         exists: true
         mtime: 1780334582
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:03:28-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:03:43-06:00
+    last_status_change: 2026-06-09 14:41:08-06:00
   '189':
     stage: 189
     stage_str: '189'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6487,11 +6492,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_mathematica_audit.txt
         exists: true
         mtime: 1780336414
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:04:03-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:04:17-06:00
+    last_status_change: 2026-06-09 14:41:14-06:00
   '190':
     stage: 190
     stage_str: '190'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6516,11 +6526,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage190_direct_defect_vs_dressing_split_mathematica_audit.txt
         exists: true
         mtime: 1780335323
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:04:29-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:04:43-06:00
+    last_status_change: 2026-06-09 14:41:21-06:00
   '191':
     stage: 191
     stage_str: '191'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6545,11 +6560,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage191_minimal_pde_data_packet_mathematica_audit.txt
         exists: true
         mtime: 1780335323
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:04:52-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:05:07-06:00
+    last_status_change: 2026-06-09 14:41:28-06:00
   '192':
     stage: 192
     stage_str: '192'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6574,11 +6594,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage192_orbit_quotient_projectors_mathematica_audit.txt
         exists: true
         mtime: 1780333898
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:05:15-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:05:30-06:00
+    last_status_change: 2026-06-09 14:41:34-06:00
   '193':
     stage: 193
     stage_str: '193'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6603,11 +6628,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_mathematica_audit.txt
         exists: true
         mtime: 1780335818
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:05:37-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:05:49-06:00
+    last_status_change: 2026-06-09 14:41:40-06:00
   '194':
     stage: 194
     stage_str: '194'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6632,11 +6662,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_mathematica_audit.txt
         exists: true
         mtime: 1780335818
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:05:59-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:06:13-06:00
+    last_status_change: 2026-06-09 14:41:47-06:00
   '195':
     stage: 195
     stage_str: '195'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6661,11 +6696,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_mathematica_audit.txt
         exists: true
         mtime: 1780336414
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:06:20-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:06:34-06:00
+    last_status_change: 2026-06-09 14:41:53-06:00
   '196':
     stage: 196
     stage_str: '196'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6690,11 +6730,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780336968
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:06:46-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:07:00-06:00
+    last_status_change: 2026-06-09 14:42:00-06:00
   '197':
     stage: 197
     stage_str: '197'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6719,11 +6764,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage197_conditional_packetA_closure_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780337014
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:07:09-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:07:23-06:00
+    last_status_change: 2026-06-09 14:42:06-06:00
   '198':
     stage: 198
     stage_str: '198'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6748,11 +6798,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage198_exact_finite_orbit_law_mathematica_audit.txt
         exists: true
         mtime: 1780337925
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:07:31-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:07:57-06:00
+    last_status_change: 2026-06-09 14:42:13-06:00
   '199':
     stage: 199
     stage_str: '199'
     batch_id: V.3
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -6777,12 +6832,17 @@ stages:
         path: mathematica/output/moving_throat_pde_stage199_pairwise_orbit_transport_law_mathematica_audit.txt
         exists: true
         mtime: 1780337874
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:08:11-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:09:20-06:00
+    last_status_change: 2026-06-09 14:42:19-06:00
   '200':
     stage: 200
     stage_str: '200'
     batch_id: V.3
-    status: pending
-    iteration_count: 0
+    status: verified
+    iteration_count: 1
     upstream_stale: false
     is_checkpoint: true
     is_status_only_candidate: false
@@ -6806,6 +6866,16 @@ stages:
         path: mathematica/output/moving_throat_pde_stage200_reference_free_home_stretch_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780339340
+    last_status_change: 2026-06-09 14:42:26-06:00
+    codex_session: 019eadec-c50d-7f83-a3c7-76d4badd0d62
+    codex_log_paths:
+    - redteam/pass2/codex_logs/200_iter1.txt
+    last_codex_run: 2026-06-09 13:52:22-06:00
+    last_codex_exit: 0
+    last_sympy_exit: 0
+    last_sympy_run: 2026-06-09 14:09:32-06:00
+    last_mathematica_exit: 0
+    last_mathematica_run: 2026-06-09 14:09:48-06:00
   '201':
     stage: 201
     stage_str: '201'

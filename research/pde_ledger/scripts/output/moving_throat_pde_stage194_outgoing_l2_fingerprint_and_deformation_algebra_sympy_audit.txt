@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 177 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA
+STAGE 194 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ Kbar_4 - 8 G c_s/(15 a c^5) = 0
 Gammabar_5 - 2 G/(5 c^5) = 0
 
 ========================================================================================
-STAGE 177 LEDGER
+STAGE 194 LEDGER
 ========================================================================================
 1. The exact outgoing spherical l=2 DtN operator has the small-z fingerprint
       Lambda_2^out = -3 + z^2/3 + z^4/9 + i z^5/9 - 2 z^6/27 - i z^7/27 + ...

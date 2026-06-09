@@ -824,10 +824,23 @@ different verification structure from the SymPy side:
   building `M_*` from additive exponent-weight vectors + `LinearSolve` projectors
 - `200`
   derives the Packet-B compiler from primitive monomials/orbit data; red-team
-  batch V.3 (2026-06-01) DE-TRANSLITERATED the `.wl` (Section I hand-collapsed
-  ratios → `ratioSubs` helper-monomial quotients feeding the `Mderived` Jacobian;
-  Section III `Log[a^b]` collapse → full `ctrMonomial[...]/CtrTarget` exercising
-  the exponents)
+  pass-2 batch V.3 (2026-06-09) RE-AUTHORED the `.wl` (CHECKPOINT) — the pass-1
+  V.3 de-transliteration (Section I `ratioSubs` helper-monomial quotients feeding
+  the `Mderived` Jacobian; Section III `ctrMonomial[...]/CtrTarget`) was SUPERSEDED:
+  the pass-2 orchestrator ground-truth read found it INSUFFICIENT (both engines
+  still computed the load-bearing compiler matrix M_* by the SAME autodiff-Jacobian
+  of the SAME log-ratios — `q_pair.jacobian(Dvec)` vs `Table[D[qPair,Dvec]]` — §III
+  posited the same orbit closed forms, §V used the same `Series`). USER-AUTHORIZED
+  re-author to GENUINE independence: §I M_* now ASSEMBLED from primitive monomial
+  exponent-weight vectors (chiCoreWeights/thermalWeights/etc.; `qPair` survives only
+  as the cross-check `qPair − M_*·Δx == 0`); §III orbit now SOLVED via
+  `Coefficient`→`LinearSolve` of the log-linear residual system (not posited); §V
+  Packet-A linearization now a base-point derivative `D[chiPerturbed,eps]/.eps->0`
+  (not `Series`). Verify-confirmed genuinely independent; ALL checkpoint deliverables
+  PRESERVED (the carried Stage-192 `Mexpected` matrix, the §II witness-invariance
+  zeros, the §III mismatch chart, the §IV cocycle, the §V Packet-A coeff); NO
+  checkpoint constant changed; the SymPy `.py` UNTOUCHED; committed `.wl` output
+  method-only
 - `201`
   red-team batch VI.1 (2026-06-02) created the native mirror (previously SymPy-only)
   for the explicit-realization slice; genuine independent route
@@ -1552,3 +1565,51 @@ clean of the +17 `\stagefield{Purpose}` drift (193–204 absent). The 100/129/13
 reconfirmed: audit agents UNDER-call transliteration; the orchestrator ground-truth read is the backstop;
 re-author-vs-accept is USER-LEVEL (here the user escalated to "re-author all 8" of the confirmed ports).
 See `PAPER_CLEANUP_TRACKER.md` P5-17. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch V.3 (2026-06-09)
+
+Pass-2 Batch V.3 (188-200, `Part V.3 — Branch observables, isotropic target, home stretch`): all 13
+genuine dual-engine confirmed at pass-2 depth — **0 sanctioned mirrors remain in V.3.** The orchestrator
+ground-truth `.wl`-vs-`.py` read + a dedicated calibration agent (against the 200 standard) split the 13
+into **12 confirmed genuinely independent (no re-author): 188-199** and **1 residual port: 200
+(CHECKPOINT).** The headline is **200's `.wl` RE-AUTHORED**: the first-pass DUAL-ENGINE RETROFIT batch had
+"de-transliterated" 200 once (the V.3 first-pass `ratioSubs`+`Mderived` Jacobian / `ctrMonomial` route),
+but the pass-2 ground-truth read found that INSUFFICIENT — BOTH engines still computed the load-bearing
+compiler matrix M_* by the SAME autodiff-Jacobian of the SAME log-ratios (SymPy `q_pair.jacobian(Dvec)`
+vs Mathematica `Table[D[qPair,Dvec]]`), §III posited the same orbit closed forms, §V used the same
+`Series`. The audit agent had called it "borderline→accept"; the **orchestrator OVERTURNED** that (same
+class as 100/129/139/158); re-author-vs-accept is USER-LEVEL → the **USER AUTHORIZED the re-author**. Codex
+(designs+writes per the labor split) re-authored the `.wl`: **§I** M_* now ASSEMBLED from primitive
+monomial exponent-weight vectors (chiCoreWeights/thermalWeights/etc.; `qPair` survives only as the
+cross-check `qPair − M_*·Δx == 0`); **§III** orbit now SOLVED via `Coefficient`→`LinearSolve` of the
+log-linear residual system (not posited); **§V** Packet-A linearization now a base-point derivative
+`D[chiPerturbed,eps]/.eps->0` (not `Series`). Verify-confirmed GENUINELY INDEPENDENT; ALL checkpoint
+deliverables PRESERVED (the carried Stage-192 `Mexpected` matrix, the §II witness-invariance zeros, the
+§III mismatch chart `q=((1+chi0_*)ln m_T, ln m_mu−ln m_K−F_*ln m_T, −ln m_K)`, the §IV cocycle, the §V
+Packet-A coeff `eps(5 eps_beta+dSigma0/(3S)+9 dSigma5/S)`); NO checkpoint constant changed; the SymPy `.py`
+was UNTOUCHED; committed `.wl` output method-only. The Independent-Mirror Set **200 row was UPDATED** to
+the pass-2 weight-vector/`LinearSolve`/`D[]` route (the old row described the first-pass
+`ratioSubs`+`Mderived` Jacobian de-transliteration — note it was SUPERSEDED). The OTHER 12 (188-199): the
+pass-2 ground-truth read + the calibration agent CONFIRMED all 12 genuinely INDEPENDENT, 0 ports — the
+discriminator vs 200 is that their `.py` POSITS/types the load-bearing objects (literal matrices / closed
+forms / matrix-inverse) while the `.wl` DERIVES by a DIFFERENT operation: 188 Series→`Coefficient`
+log-drift + `Solve` + `Outer[D]`; 192 constrained `LinearSolve` on the augmented 8×8; 198
+`Coefficient`+`LinearSolve` orbit + `D[]` Jacobian (where `.py` only types); 199 primitive weight-vector
+M_* + native `Solve` for Φ + `LinearSolve` projectors; 189/190/191/193/194/195/196/197 use logEuler
+operator / native `SphericalHankelH1` vs explicit `j2+i·y2` / `Solve` / `D[]`-Taylor cross-routes (only 200
+had the Jacobian-vs-Jacobian sameness). So all 13 V.3 stages are genuine dual-engine. **ONE checkpoint in
+range — 200 — cleared the higher bar** (see above; NO checkpoint constant changed). **NO status-only
+stages; NO EM-projected stages.** Value reconciliation: **0 misaligned batch-wide** (171 deliverable
+values: 188=16, 189=21, 190=19, 191=11, 192=15, 193=7, 194=14, 195=15, 196=13, 197=6, 198=10, 199=16,
+200=8) → ZERO paper/notes edits. `material_change: false` on all 13 (NO downstream staling); 200's
+codex-invoke exit 0 on iter-1 (no iter-2); 0 Codex deviations. INFRA: 26 orchestrator exec runs (`.py`+`.wl`)
+exit 0, all FAIL=0; 11 stale SymPy outputs (188,190,192,193,194,195,196,197,198,199,200) carried
+pre-renumber `STAGE 171–183` banners (the III.2/III.3 stale-committed-output class; source banners were
+already canonical) → refreshed to canonical `STAGE NNN`; 200's MMA output refreshed (`STAGE 183`→`200`);
+189/191 SymPy + the 188–199 MMA outputs were already fresh (re-run byte-identical). Arbiter grep on
+refreshed outputs CLEAN — no stale self-epoch 171–183 banner, no `168π²`/`168%` class, no FAIL. Seat
+policy held: 200 = 1 `.wl`-touching Codex session solo; orchestrator exec sequential after Codex done.
+Pass-1 `MANIFEST.yaml` untouched. The 100/129/139/158-and-V.1/V.2 lesson reconfirmed: a first-pass
+re-author/retrofit can itself be insufficient; audit agents UNDER-call transliteration; the orchestrator
+ground-truth read is the backstop; re-author-vs-accept is USER-LEVEL. See `PAPER_CLEANUP_TRACKER.md` P5-18,
+P4-51. Reference memory `numbering-drift-root-cause`.

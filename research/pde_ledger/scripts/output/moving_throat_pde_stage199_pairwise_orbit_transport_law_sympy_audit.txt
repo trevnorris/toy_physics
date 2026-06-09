@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 182 — EXACT PAIRWISE ORBIT-TRANSPORT LAW AND THE TWO-POINT ORBIT-LOCK THEOREM
+STAGE 199 — EXACT PAIRWISE ORBIT-TRANSPORT LAW AND THE TWO-POINT ORBIT-LOCK THEOREM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -417,7 +417,7 @@ m_K at equal free coordinates - r_K = 0
 m_mu at equal free coordinates - r_mu = 0
 
 ========================================================================================
-STAGE 182 LEDGER
+STAGE 199 LEDGER
 ========================================================================================
 1. For two positive microscopic states x^(1), x^(2), the exact finite pairwise log-ratio vector
       Delta x^(2<-1) = ln(x^(2)/x^(1))

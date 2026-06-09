@@ -1,14 +1,6 @@
-# SymPy Audit Output
-# Script: moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
-# Date: 2026-05-11T12:48:43-06:00
-# Elapsed: 2s
-# Exit code: 0
-# Status: PASS
-#
-
 
 ========================================================================================
-STAGE 175 — EXACT ORBIT/QUOTIENT PROJECTORS AND THE MICROSCOPIC ORBIT-LOCK SPLIT
+STAGE 192 — EXACT ORBIT/QUOTIENT PROJECTORS AND THE MICROSCOPIC ORBIT-LOCK SPLIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -631,7 +623,7 @@ orbit-lock packet on orbit-law branch =
 ⎣0⎦
 
 ========================================================================================
-STAGE 175 LEDGER
+STAGE 192 LEDGER
 ========================================================================================
 1. The finite Packet-B quotient coordinates are exactly q = M_* Delta x.
 2. The dependent triple (Delta_T, Delta_Keta, Delta_mu) forms an exact pivot block
@@ -646,5 +638,3 @@ STAGE 175 LEDGER
    the exact Stage 187 single-orbit law on the dependent triple.
 6. So orbit lock is exactly the zero-set condition
       Q_quot Delta x = 0  <=>  M_* Delta x = 0.
-
-EXIT_CODE: 0

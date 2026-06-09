@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 183 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM
+STAGE 200 — EXACT REFERENCE-FREE HOME-STRETCH THEOREM
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ epsEta_2 / epsEta_1 =
 TraditionalForm[rc^2/(rK*rU)]
 q^(2<-1) from primitive monomial ratios =
 MatrixForm[{Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - (2 + chi0s + deltaUs)*DU, -DKeta + 2*Dl + Dmu - 2*DW + 2*(Dg + Dl)*eStar - (DU + DW)*eStar + (-DT + DU)*fStar, 2*Dc - DKeta - DU}]
-M_* derived from the monomial log-ratio Jacobian =
+M_* assembled from primitive monomial exponent weights =
 MatrixForm[{{0, 1 + deltaUs, 1 + deltaUs, -2 - chi0s - deltaUs, 0, 0, 0, 1 + chi0s}, {2*(1 + eStar), 0, 2*eStar, -eStar + fStar, -1, -2 - eStar, 1, -fStar}, {0, 2, 0, -1, -1, 0, 0, 0}}]
 derived M_* - carried Stage 192 matrix =
 MatrixForm[{{{0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0}}}]
@@ -40,6 +40,10 @@ MatrixForm[{{0, 0, 0, 0}}]
 ----------------------------------------------------------------------------------------
 III. Exact mismatch chart from the dependent-triple orbit solve
 ----------------------------------------------------------------------------------------
+dependent orbit log coefficient matrix =
+MatrixForm[{{-1, 0, 0}, {0, 1 + chi0s, 0}, {-1, -fStar, 1}}]
+log dependent orbit solution =
+MatrixForm[{2*Log[cf] + Log[1/(epsEtaTarget*KUf)], (Log[CtrTarget/(cf*gf)] - deltaUs*Log[(cf*gf)/KUf] + 2*Log[KUf] + chi0s*Log[KUf] + 2*Log[L] + 2*chi0s*Log[L] - 2*Log[Pi] - 2*chi0s*Log[Pi])/(1 + chi0s), (2*(1 + chi0s)*Log[cf] + chi0s*Log[CntTarget] - 2*eStar*Log[gf] - 2*chi0s*eStar*Log[gf] - fStar*Log[(cf*gf)/CtrTarget] + Log[CntTarget/(epsEtaTarget*KUf)] - deltaUs*fStar*Log[(cf*gf)/KUf] + fStar*Log[KUf] - chi0s*Log[epsEtaTarget*KUf] + 2*Log[KWf] + 2*chi0s*Log[KWf] - 2*Log[lamf] - 2*chi0s*Log[lamf] - 2*eStar*Log[lamf] - 2*chi0s*eStar*Log[lamf] + eStar*Log[(KUf*KWf)/sigma] + chi0s*eStar*Log[(KUf*KWf)/sigma])/(1 + chi0s)}]
 Log[Ctr(actual) / Ctr_*] - (1+chi0_*) Log[m_T] = 0
 PASS: Log[Ctr(actual) / Ctr_*] - (1+chi0_*) Log[m_T]
 Log[Cnt(actual) / Cnt_*] - (Log[m_mu] - Log[m_K] - F_* Log[m_T]) = 0
@@ -70,11 +74,11 @@ Delta_H^lin =
 MatrixForm[{(eps*(dSigma0 + 27*dSigma5 + 15*epsBeta*S))/(3*S), Dc + Dc*deltaUs + Dg + deltaUs*Dg + DT + chi0s*DT - 2*DU - chi0s*DU - deltaUs*DU, -DKeta + Dmu - 2*DW + 2*Dg*eStar - DU*eStar - DW*eStar + 2*Dl*(1 + eStar) - DT*fStar + DU*fStar, 2*Dc - DKeta - DU}]
 
 ========================================================================================
-STAGE 183 LEDGER
+STAGE 200 LEDGER
 ========================================================================================
 1. The Packet-B quotient coordinates are derived from the primitive coherent monomials
       (C_tr, C_nt, eps_eta)
-   and their logarithmic Jacobian reproduces the carried Stage 192 matrix M_*.
+   and a primitive exponent ledger reproduces the carried Stage 192 matrix M_*.
 2. The target-orbit witness packet is genuinely witness-independent because the
    finite similarity-orbit law preserves the three coherent monomials exactly.
 3. The mismatch chart q = ((1+chi0_*) ln m_T, ln m_mu - ln m_K - F_* ln m_T, -ln m_K)
@@ -85,4 +89,4 @@ STAGE 183 LEDGER
 5. The full linearized home-stretch compiler is
       Delta_HS^lin = (Delta_Q^lin, M_* delta x),
    where Delta_Q^lin is carried from the exact Packet-A closure law and the
-   remaining three rows come from the monomial log-ratio Jacobian.
+   remaining three rows come from the primitive monomial exponent ledger.

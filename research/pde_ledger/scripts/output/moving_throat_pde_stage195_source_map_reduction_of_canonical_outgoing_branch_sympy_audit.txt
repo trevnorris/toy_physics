@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 178 — EXACT SOURCE-MAP REDUCTION OF THE CANONICAL OUTGOING BRANCH
+STAGE 195 — EXACT SOURCE-MAP REDUCTION OF THE CANONICAL OUTGOING BRANCH
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ Delta_norm(canonical) = 0
 P0(canonical source-map-reduced) - P0_target = 0
 
 ========================================================================================
-STAGE 178 LEDGER
+STAGE 195 LEDGER
 ========================================================================================
 1. The isotropic retarded grouped-P2 one-pole branch carries the exact odd ratio
       Gammabar_5 / Gammabar_5^target = chi_Q N_Q,

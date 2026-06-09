@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 176 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL
+STAGE 193 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ D_eff at chi=0 - D2 I =
 ⎣0  0  0⎦
 
 ========================================================================================
-STAGE 176 LEDGER
+STAGE 193 LEDGER
 ========================================================================================
 1. The exact grouped trace/anomaly map shows that the isotropic common-lane branch
    is equivalent to a2 = b2 = a4 = b4 = 0 on the conservative grouped bundle.

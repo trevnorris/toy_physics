@@ -1166,3 +1166,57 @@ dedicated numbering pass; cosmetic 181/187 ASCII-hyphen `.wl` banners (number co
 clean of the +17 `\stagefield{Purpose}` self-label class (193–204 absent; correct self-numbers). See
 `PAPER_CLEANUP_TRACKER.md` P5-17, `MATHEMATICA_MIRROR_POLICY.md`. Reference memory
 `numbering-drift-root-cause`.
+
+## Pass 2 — Batch V.3 (2026-06-09)
+
+Pass-2 Batch V.3 (188-200, `Part V.3 — Branch observables, isotropic target, home stretch`,
+13 stages): all 13 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**13/13 verified**, `material_change: false` on all 13 (NO downstream staling), 0 stop-cold, 0
+blocked, 200's codex-invoke exit 0 on iter-1 (no iter-2), 0 Codex deviations. **0 values misaligned
+batch-wide** (171 deliverable values: 188=16, 189=21, 190=19, 191=11, 192=15, 193=7, 194=14, 195=15,
+196=13, 197=6, 198=10, 199=16, 200=8 checked; no `paper_misalignment` anywhere → ZERO paper/notes edits).
+**With V.3 pass-2 closed, the running pass-2 coverage is I.1…V.3 verified** (cumulative 001-200 re-verified
+at pass-2 depth); pass-2 batches V.4 onward (201-253) remain to run under the second pass. **ONE checkpoint
+in range — 200 (`reference_free_home_stretch_theorem`) — CLEARED the higher checkpoint bar** at the higher
+pass-2 standard: its `.wl` was RE-AUTHORED because the pass-1 V.3 de-transliteration was found INSUFFICIENT
+(BOTH engines still computed the load-bearing compiler matrix M_* by the SAME autodiff-Jacobian of the SAME
+log-ratios — SymPy `q_pair.jacobian(Dvec)` vs Mathematica `Table[D[qPair,Dvec]]`; §III posited the same
+orbit closed forms; §V used the same `Series`); the audit's "borderline→accept" was OVERTURNED by the
+orchestrator (same class as 100/129/139/158), and the **USER AUTHORIZED the re-author** (§I M_* ASSEMBLED
+from primitive monomial exponent-weight vectors with `qPair` surviving only as the cross-check
+`qPair − M_*·Δx == 0`; §III orbit SOLVED via `Coefficient`→`LinearSolve` of the log-linear residual system;
+§V Packet-A linearization via a base-point derivative `D[chiPerturbed,eps]/.eps->0`); ALL checkpoint
+deliverables PRESERVED, NO checkpoint constant changed; 200 stays `strong`. **NO status-only stages** (every
+stage is dual-engine `.py`+`.wl` — confirmed; a missing engine would have been a finding); **NO EM-projected
+stages; no new postulated constant.**
+
+**The headline — 200's residual port re-authored; the OTHER 12 confirmed genuinely independent:** the
+orchestrator ground-truth `.wl`-vs-`.py` read + a dedicated calibration agent (against the 200 standard)
+split the 13 into **12 confirmed genuinely independent (no re-author): 188-199** and **1 residual port:
+200 (CHECKPOINT, re-authored — see above).** The discriminator vs 200 is that the 188-199 `.py`
+POSITS/types the load-bearing objects (literal matrices / closed forms / matrix-inverse) while the `.wl`
+DERIVES by a DIFFERENT operation: 188 Series→`Coefficient` log-drift + `Solve` + `Outer[D]`; 192
+constrained `LinearSolve` on the augmented 8×8; 198 `Coefficient`+`LinearSolve` orbit + `D[]` Jacobian
+(where `.py` only types); 199 primitive weight-vector M_* + native `Solve` for Φ + `LinearSolve`
+projectors; 189/190/191/193/194/195/196/197 use logEuler operator / native `SphericalHankelH1` vs explicit
+`j2+i·y2` / `Solve` / `D[]`-Taylor cross-routes — only 200 had the Jacobian-vs-Jacobian sameness. So all 13
+V.3 dual-engine stages are now genuinely independent (**0 sanctioned mirrors remain in V.3**); the
+Coverage-Totals "Mathematica audits present" raw count does NOT move (these are independence upgrades on
+pre-existing `.wl`, not new `.wl`). **The 200 row in the Independent-Mirror Set (MATHEMATICA_MIRROR_POLICY)
+was UPDATED** to the pass-2 weight-vector/`LinearSolve`/`D[]` route (the old row described the first-pass
+`ratioSubs`+`Mderived` Jacobian de-transliteration — SUPERSEDED). **Dominant theme — a first-pass
+re-author/retrofit can itself be insufficient** (the 100/129/139/158-and-V.1/V.2 lesson: audit agents
+UNDER-call transliteration; the orchestrator ground-truth read is the backstop; re-author-vs-accept is
+USER-LEVEL). INFRA: 26 orchestrator exec runs (`.py`+`.wl`, reliability gate) exit 0, all FAIL=0; committed
+outputs refreshed — 11 stale SymPy outputs (188,190,192,193,194,195,196,197,198,199,200) carried
+pre-renumber `STAGE 171–183` banners (the III.2/III.3 stale-committed-output class; source banners already
+canonical) → refreshed to canonical `STAGE NNN`; 200's MMA output refreshed (`STAGE 183`→`200`); 189/191
+SymPy + the 188–199 MMA outputs already fresh (re-run byte-identical). Arbiter grep on committed outputs
+CLEAN — no stale self-epoch 171–183 banner, no `168π²`/`168%` class, no FAIL. Seat policy held: 200 = 1
+`.wl`-touching Codex session solo; orchestrator `exec-*` sequential after Codex done, no seat overlap.
+Pass-1 `MANIFEST.yaml` untouched. **CARD-TEXT LAG (paper-side, DEFERRED):** ~9 V.3 cards'
+`\stagefield{Verification}` still read "Mathematica audit: none yet" despite the retrofit `.wl` now existing
+and passing — a stale STATUS annotation, NOT a value/identity mismatch; USER-DECIDED to DEFER to the
+paper-cleanup tracker (non-blocking, Codex-applied + Claude-reviewed in the later paper pass). **NO new
+offset-sweepable numbering residual from V.3.** See `PAPER_CLEANUP_TRACKER.md` P5-18 + P4-51 (appended),
+`MATHEMATICA_MIRROR_POLICY.md`. Reference memory `numbering-drift-root-cause`.

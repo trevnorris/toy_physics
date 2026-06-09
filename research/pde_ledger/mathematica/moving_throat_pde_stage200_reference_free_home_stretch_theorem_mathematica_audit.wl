@@ -79,6 +79,7 @@ Clear[
   lamf, cf, gf, KUf, KWf, CtrTarget, CntTarget, epsEtaTarget, mT, mK, mMu,
   rla21, rc21, rg21, rU21, rK21, rW21, rmu21, rT21,
   rla32, rc32, rg32, rU32, rK32, rW32, rmu32, rT32,
+  orbitLogKeta, orbitLogT, orbitLogMu,
   S, beta, Sigma0, Sigma5, eps, epsBeta, dSigma0, dSigma5
 ];
 
@@ -96,6 +97,7 @@ $Assumptions =
       lamf, cf, gf, KUf, KWf, CtrTarget, CntTarget, epsEtaTarget, mT, mK, mMu,
       rla21, rc21, rg21, rU21, rK21, rW21, rmu21, rT21,
       rla32, rc32, rg32, rU32, rK32, rW32, rmu32, rT32,
+      orbitLogKeta, orbitLogT, orbitLogMu,
       S, beta, Sigma0, Sigma5, eps, epsBeta, dSigma0, dSigma5
     },
     Reals
@@ -154,7 +156,17 @@ qPair = {
   FullSimplify[PowerExpand[Log[epsRatio /. ratioToLogs]], Assumptions -> $Assumptions]
 };
 Dvec = {Dl, Dc, Dg, DU, DKeta, DW, Dmu, DT};
-Mderived = normalizeExpr[Table[D[qPair[[i]], Dvec[[j]]], {i, 3}, {j, 8}]];
+
+chiCoreWeights = {0, 1, 1, -1, 0, 0, 0, 0};
+thermalWeights = {0, 0, 0, -1, 0, 0, 0, 1};
+nontrackPrefactorWeights = {2, 0, 0, 0, -1, -2, 1, 0};
+epsWWeights = {2, 0, 2, -1, 0, -1, 0, 0};
+epsEtaWeights = {0, 2, 0, -1, -1, 0, 0, 0};
+Mderived = normalizeExpr[{
+  (1 + deltaUs) chiCoreWeights + (1 + chi0s) thermalWeights,
+  nontrackPrefactorWeights + eStar epsWWeights - fStar thermalWeights,
+  epsEtaWeights
+}];
 Mexpected = {
   {0, 1 + deltaUs, 1 + deltaUs, -(2 + chi0s + deltaUs), 0, 0, 0, 1 + chi0s},
   {2 (1 + eStar), 0, 2 eStar, fStar - eStar, -1, -(2 + eStar), 1, -fStar},
@@ -163,7 +175,7 @@ Mexpected = {
 
 Print["q^(2<-1) from primitive monomial ratios ="];
 Print[qPair // MatrixForm];
-Print["M_* derived from the monomial log-ratio Jacobian ="];
+Print["M_* assembled from primitive monomial exponent weights ="];
 Print[Mderived // MatrixForm];
 expectZero["derived M_* - carried Stage 192 matrix", Mderived - Mexpected];
 expectZero["q^(2<-1) - M_* Delta x^(2<-1)", qPair - Mderived . Dvec];
@@ -220,15 +232,33 @@ expectZero["pairwise witness packet - intrinsic orbit packet", DeltaHPairWitness
 
 subbanner["III. Exact mismatch chart from the dependent-triple orbit solve"];
 
-KetaOrbit = normalizeExpr[cf^2/(KUf epsEtaTarget)];
-TOrbit = normalizeExpr[
-  (L^2 KUf/Pi^2) (CtrTarget/(gf cf/KUf)^(1 + deltaUs))^(1/(1 + chi0s))
+depOrbitLogs = {orbitLogKeta, orbitLogT, orbitLogMu};
+orbitLogResiduals = normalizeExpr[{
+  Log[epsEtaMonomial[cf, KUf, Exp[orbitLogKeta]]/epsEtaTarget],
+  Log[ctrMonomial[gf, cf, KUf, Exp[orbitLogT], chi0s, deltaUs, L]/CtrTarget],
+  Log[
+    cntMonomial[
+      lamf, gf, KUf, Exp[orbitLogKeta], KWf, Exp[orbitLogMu],
+      Exp[orbitLogT], eStar, fStar, L, sigma
+    ]/CntTarget
+  ]
+}];
+orbitCoeffMatrix = Table[
+  Coefficient[Expand[orbitLogResiduals[[row]]], depOrbitLogs[[col]]],
+  {row, 3}, {col, 3}
 ];
-muOrbit = normalizeExpr[
-  CntTarget KetaOrbit KWf^2/lamf^2
-    (gf^2 lamf^2 sigma/(KUf KWf))^(-eStar)
-    (Pi^2 TOrbit/(L^2 KUf))^fStar
+orbitOffset = normalizeExpr[
+  orbitLogResiduals /. Thread[depOrbitLogs -> ConstantArray[0, 3]]
 ];
+orbitLogSolution = normalizeExpr[LinearSolve[orbitCoeffMatrix, -orbitOffset]];
+{KetaOrbit, TOrbit, muOrbit} = normalizeExpr[
+  Map[PowerExpand[Exp[#]] &, orbitLogSolution]
+];
+
+Print["dependent orbit log coefficient matrix ="];
+Print[orbitCoeffMatrix // MatrixForm];
+Print["log dependent orbit solution ="];
+Print[orbitLogSolution // MatrixForm];
 
 TActual = normalizeExpr[mT TOrbit];
 KetaActual = normalizeExpr[mK KetaOrbit];
@@ -278,17 +308,15 @@ expectZero["q^(31) - q^(32) - q^(21)", q31 - q32 - q21];
 subbanner["V. Exact Packet-A linearization and assembled full compiler"];
 
 chiFromDef = 3 (S beta^5 + 9 Sigma5)/(3 S - Sigma0);
-DeltaQLinear = Expand[
-  Normal[
-    Series[
-      chiFromDef /. {
-        beta -> 1 + eps epsBeta,
-        Sigma0 -> eps dSigma0,
-        Sigma5 -> eps dSigma5
-      },
-      {eps, 0, 1}
-    ]
-  ] - 1
+chiPerturbed = chiFromDef /. {
+  beta -> 1 + eps epsBeta,
+  Sigma0 -> eps dSigma0,
+  Sigma5 -> eps dSigma5
+};
+chiBase = normalizeExpr[chiPerturbed /. eps -> 0];
+chiSlopeAtBase = normalizeExpr[D[chiPerturbed, eps] /. eps -> 0];
+DeltaQLinear = normalizeExpr[
+  chiBase - 1 + eps chiSlopeAtBase
 ];
 DeltaQLinearExpected = eps (5 epsBeta + dSigma0/(3 S) + 9 dSigma5/S);
 
@@ -304,7 +332,7 @@ Print[DeltaHLinear // MatrixForm];
 banner["STAGE 200 LEDGER"];
 Print["1. The Packet-B quotient coordinates are derived from the primitive coherent monomials"];
 Print["      (C_tr, C_nt, eps_eta)"];
-Print["   and their logarithmic Jacobian reproduces the carried Stage 192 matrix M_*."];
+Print["   and a primitive exponent ledger reproduces the carried Stage 192 matrix M_*."];
 Print["2. The target-orbit witness packet is genuinely witness-independent because the"];
 Print["   finite similarity-orbit law preserves the three coherent monomials exactly."];
 Print["3. The mismatch chart q = ((1+chi0_*) ln m_T, ln m_mu - ln m_K - F_* ln m_T, -ln m_K)"];
@@ -315,6 +343,6 @@ Print["   followed by the monomial compiler q = M_* Delta x."];
 Print["5. The full linearized home-stretch compiler is"];
 Print["      Delta_HS^lin = (Delta_Q^lin, M_* delta x),"];
 Print["   where Delta_Q^lin is carried from the exact Packet-A closure law and the"];
-Print["   remaining three rows come from the monomial log-ratio Jacobian."];
+Print["   remaining three rows come from the primitive monomial exponent ledger."];
 
 Exit[0];

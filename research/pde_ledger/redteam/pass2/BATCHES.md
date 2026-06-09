@@ -1,6 +1,6 @@
 # Red-Team Batch Status
 
-Generated: 2026-06-08T12:18:23-06:00
+Generated: 2026-06-08T20:17:22-06:00
 Project: pde_ledger
 
 | Batch | Range | Stages | States | Label |
@@ -19,7 +19,7 @@ Project: pde_ledger
 | IV.4 | 127–138 | 12 | verified=12 | Part IV.4 — Penetration, mouth boundary, fixedpoint |
 | IV.5 | 139–150 | 12 | verified=12 | Part IV.5 — Susceptibility, branch, defect transport |
 | IV.6 | 151–163 | 13 | verified=13 | Part IV.6 — Correction, coevolution, traction, off-family |
-| V.1 | 164–175 | 12 | pending=12 | Part V.1 — Microscopic logs, drifts, bundle inversion |
+| V.1 | 164–175 | 12 | verified=12 | Part V.1 — Microscopic logs, drifts, bundle inversion |
 | V.2 | 176–187 | 12 | pending=12 | Part V.2 — Load shape, transfer shape, coherent slippage |
 | V.3 | 188–200 | 13 | pending=13 | Part V.3 — Branch observables, isotropic target, home stretch |
 | VI.1 | 201–218 | 18 | pending=18 | Part VI.1 — Explicit realization, scalar slice, ray ranking |

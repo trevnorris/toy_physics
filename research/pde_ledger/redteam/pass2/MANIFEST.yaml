@@ -7497,7 +7497,7 @@ stages:
     stage: 219
     stage_str: '219'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7522,11 +7522,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_mathematica_audit.txt
         exists: true
         mtime: 1780431572
+    last_status_change: 2026-06-09 19:27:51-06:00
   '220':
     stage: 220
     stage_str: '220'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7551,11 +7552,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_mathematica_audit.txt
         exists: true
         mtime: 1780431660
+    last_status_change: 2026-06-09 19:27:58-06:00
   '221':
     stage: 221
     stage_str: '221'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -7580,11 +7582,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_mathematica_audit.txt
         exists: true
         mtime: 1780438533
+    last_status_change: 2026-06-09 19:28:04-06:00
   '222':
     stage: 222
     stage_str: '222'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7609,11 +7612,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_mathematica_audit.txt
         exists: true
         mtime: 1780438550
+    last_status_change: 2026-06-09 19:28:11-06:00
   '223':
     stage: 223
     stage_str: '223'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7638,11 +7642,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_mathematica_audit.txt
         exists: true
         mtime: 1780439867
+    last_status_change: 2026-06-09 19:28:17-06:00
   '224':
     stage: 224
     stage_str: '224'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7667,11 +7672,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_mathematica_audit.txt
         exists: true
         mtime: 1780439886
+    last_status_change: 2026-06-09 19:28:23-06:00
   '225':
     stage: 225
     stage_str: '225'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7696,11 +7702,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_mathematica_audit.txt
         exists: true
         mtime: 1780441550
+    last_status_change: 2026-06-09 19:28:30-06:00
   '226':
     stage: 226
     stage_str: '226'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7725,11 +7732,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_mathematica_audit.txt
         exists: true
         mtime: 1780441583
+    last_status_change: 2026-06-09 19:28:36-06:00
   '227':
     stage: 227
     stage_str: '227'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7754,11 +7762,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_mathematica_audit.txt
         exists: true
         mtime: 1780442719
+    last_status_change: 2026-06-09 19:28:43-06:00
   '228':
     stage: 228
     stage_str: '228'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7783,11 +7792,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_mathematica_audit.txt
         exists: true
         mtime: 1780442802
+    last_status_change: 2026-06-09 19:28:49-06:00
   '229':
     stage: 229
     stage_str: '229'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7812,11 +7822,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780443634
+    last_status_change: 2026-06-09 19:28:56-06:00
   '230':
     stage: 230
     stage_str: '230'
     batch_id: VII.1
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7841,6 +7852,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780443649
+    last_status_change: 2026-06-09 19:29:02-06:00
   '231':
     stage: 231
     stage_str: '231'

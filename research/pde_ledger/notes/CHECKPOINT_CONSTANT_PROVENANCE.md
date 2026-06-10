@@ -1350,3 +1350,27 @@ genuinely INDEPENDENT except 211, whose `.wl` was a confirmed PORT → USER-AUTH
 eliminant route [`material_change: false`, no value moved], a CALIBRATION agent across the 207–216 ray-ranking family
 finding NO other ports. Arbiter grep CLEAN — no `168π²`/`100π²` class. **0 sanctioned mirrors remain in VI.1.**)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch VII.1 (2026-06-09)
+
+Pass-2 Batch VII.1 (219-230): reviewed — ONE checkpoint in range (**221**,
+`resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window`) re-verified at the higher
+bar; **NO checkpoint constant changed, moved, or re-pinned; no new postulated constant introduced.** 0 values
+misaligned batch-wide (no `paper_misalignment` anywhere → ZERO substantive paper/notes edits); `material_change: false`
+on all 12. **221** cleared the higher bar with deliverables that are SYMBOLIC, not pinned numerics — the
+Breit–Wigner normal form, the perfect-square numerator `N = (A·G_W+R·G_U)²/Δ_Π²`, and the dispersive/no-free-lunch
+ratio `|Re χ|/|Im χ| = |δ|/γ_*` — all PRESERVED, not moved. The pass-2 orchestrator ground-truth `.wl`-vs-`.py` read
+confirmed 221's pass-1 re-author SUFFICIENT (the VI.1-218 outcome, UNLIKE V.3-200): §II DERIVES the Stage-220
+derivative identity `dD_Pi/dPi=-N` via native `D[QPi/DeltaPi,portPi]` (an OUTPUT, vs the `.py` POSITING that form as an
+INPUT — opposite information flow), plus `.wl`-only `Residue[]` extraction + generic `ComplexExpand` line-shape checks.
+**Zero unexplained literals remain in checkpoint 221's scripts.** The benchmark numerics re-confirmed present in the
+VII.1 batch — 230's thresholds `R_*≈1.229255438463336` / `δ_*≈0.723111617875019`, the 222/223 R_Q figures, the `i=h`
+rigidity det factor `200+147π²`, the δ_1 coeff `196π²/(98π²−25)`, the crossover-cubic leading coeff `121ξ³` (all logged
+at the VII.1 first-pass entry above) — HOLD, cross-engine-corroborated; none moved this batch. **Cumulative
+checkpoint-constant provenance is unchanged from the VI.1 close (200/203/218/221 retained at the higher-bar standard);
+no checkpoint constant moved.** (For completeness: the 11 non-checkpoint stages [219, 220, 222–230] introduced no new
+constant — confirmed genuinely INDEPENDENT, 0 ports; **⭐ THE FIRST PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS**
+[VII.1's first pass authored the 11 `.wl` FRESH as independent routes, so there was no porting residue], the all-clean
+result EARNED via the orchestrator read of 220/221/226 + a calibrated independence-only sweep on the rest. Arbiter grep
+CLEAN. **0 sanctioned mirrors remain in VII.1.**)
+No carried checkpoint constant changed.

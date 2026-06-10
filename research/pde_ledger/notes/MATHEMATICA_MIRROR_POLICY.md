@@ -1663,3 +1663,44 @@ despite a passing `.wl` — a stale STATUS annotation, USER-DECIDED to defer. **
 quad-log predictor collapse target; 218 `.py` dead `source_stage:198/200` + "Stage 249" comment; 203 `.wl`
 `chiFromStage180`/`closureNumStage180` vs Stage-197 attribution. See `PAPER_CLEANUP_TRACKER.md` P5-19, P4-51.
 Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VII.1 (2026-06-09)
+
+Pass-2 Batch VII.1 (219-230, `Part VII.1 — Mixed bundle, resonance, branch packet, 5PN`) re-verified at v2
+depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12. **⭐ THE FIRST
+PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS — no `.py`/`.wl` edit anywhere, 0 Codex invocations; 12/12
+confirmed genuinely independent, 0 ports, 0 borderline, 0 sanctioned mirrors remain in VII.1.** Every prior
+pass-2 batch (III.4…VI.1) carried at least one re-author or de-taut; VII.1 does NOT — the reason is
+STRUCTURAL: VII.1's FIRST pass authored the 11 non-checkpoint `.wl` FRESH as independent routes (NOT
+de-transliterated from pre-existing ports) + re-authored checkpoint 221, so there was no porting residue to
+catch. **The all-clean result was EARNED, not relayed** — the user explicitly distrusted it, so the
+orchestrator read 220/221/226 IN FULL + ran a calibrated independence-only sweep (V.3-200 port standard,
+operation-level + line refs) on 219/222/223/224/225/227/228/229/230; all confirmed independent. **ONE
+checkpoint — 221** (`resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window`)
+— cleared the higher bar; its pass-1 `.wl` re-author (from a transliteration to an independent route) was
+confirmed SUFFICIENT (the VI.1-218 outcome, NOT the V.3-200 insufficient outcome): the orchestrator
+ground-truth `.wl`-vs-`.py` read confirmed §II DERIVES the Stage-220 derivative identity `dD_Pi/dPi=-N` via
+native `D[QPi/DeltaPi,portPi]` (an OUTPUT) and proves it equals the perfect square `(A·G_W+R·G_U)²/Δ_Π²`,
+whereas the `.py` POSITS that form (an INPUT) — opposite information flow; plus `.wl`-only `Residue[]`
+extraction + generic `ComplexExpand` line-shape checks. NO checkpoint constant changed (221's deliverables are
+symbolic: the Breit–Wigner normal form, the perfect-square N, the dispersive/no-free-lunch ratio
+|Re χ|/|Im χ|=|δ|/γ_*). The 11 non-checkpoint stages each DERIVE the load-bearing object by a DIFFERENT
+operation than the SymPy `.py` (e.g. 219 structural family extraction via `Collect`/`CoefficientList`; 220
+Laurent-support `CoefficientRules`; 226 `Orthogonalize` projector; 228 `NSolve`+`Series`+implicit-function
+slopes; 229/230 `Resolve[ForAll]` universal-quantifier proofs). Value reconciliation: 12/12 `material_change:
+false` → NO downstream staling, and **ZERO substantive paper/notes edits this batch** (no genuine value/identity
+`paper_misalignment`; no source change at all). **NO status-only stages; NO EM-projected stages** (all 12
+dual-engine native). INFRA: 24 orchestrator exec runs (12 `.py` + 12 `.wl`) all exit 0, all FAIL=0,
+DETERMINISTIC; scripts run DIRECTLY (`python3`/`math -script`, ≤2 `math -script` concurrent, NOT via parallel
+`$RT exec-*` — MANIFEST-race avoidance); sympy 12/12 byte-identical to committed, mma 10/12 byte-identical + 2
+label-only refreshes (the reliability-gate refresh fixed ONLY 221's committed MMA `.txt` "STAGE 204"→"STAGE
+221" [the `.wl` SOURCE was already correct] and 227's committed MMA `.txt` stale "Stage-242 K"/"M4 Stage-243"→
+canonical "Stage-225"/"Stage-226" [the `.wl` SOURCE was ALREADY canonical — so NO residual from 227 for
+`NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`]; both label-only, no numeric change; arbiter grep CLEAN). Seat policy
+held (no `.wl`-touching Codex session this batch — zero corrections; orchestrator exec sequential). Pass-1
+`MANIFEST.yaml` untouched. **Card-text lag (paper-side, DEFERRED → P4-51):** 5 cards (219/220/224/226/230)
+FORMALIZED the lag — `\stagefield{Verification}` reads "Mathematica audit: none yet" despite a passing `.wl` —
+present BATCH-WIDE (222/225/227/229 noted it informally); a stale STATUS annotation, USER-DECIDED to defer.
+Card +17 `\stagefield{Purpose}` scan (236–247) CLEAN — no drift on the 219–230 cards; residual project-wide
+notes-renumber drift (219/222/227 etc.) → deferred post-253 stem-keyed cleanup (NEVER offset-sweep). See
+`PAPER_CLEANUP_TRACKER.md` P5-20, P4-51. Reference memory `numbering-drift-root-cause`.

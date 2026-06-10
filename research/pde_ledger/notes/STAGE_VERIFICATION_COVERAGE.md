@@ -1266,3 +1266,51 @@ residual (content-keyed, NEVER offset-sweep):** 206 `.py` "Stage 239"→Stage-20
 Stage-197 attribution → all logged to the dedicated SCRIPT/OUTPUT-band numbering pass. See `PAPER_CLEANUP_TRACKER.md`
 P5-19 + P4-51 (appended), `MATHEMATICA_MIRROR_POLICY.md`, `NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`. Reference memory
 `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VII.1 (2026-06-09)
+
+Pass-2 Batch VII.1 (219-230, `Part VII.1 — Mixed bundle, resonance, branch packet, 5PN`,
+12 stages): all 12 pass-2 re-verified at v2 depth + exhaustive value-reconciliation augmentation;
+**12/12 verified**, `material_change: false` on all 12 (NO downstream staling), 0 stop-cold, 0
+blocked, 0 Codex deviations. **0 values misaligned batch-wide** (no `paper_misalignment` anywhere → ZERO
+substantive paper/notes edits). **With VII.1 pass-2 closed, the running pass-2 coverage is I.1…VII.1 verified —
+cumulative 230/253 re-verified at pass-2 depth** (001-230); pass-2 batches VII.2 (231-242) + VIII.1 (243-253)
+remain to run under the second pass. **ONE checkpoint in range — 221
+(`resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window`) — CLEARED the higher
+checkpoint bar.** **221** (its pass-1 `.wl` was a re-author from a transliteration to an independent route): the
+orchestrator ground-truth `.wl`-vs-`.py` read confirmed the pass-1 re-author was SUFFICIENT (the VI.1-218 outcome,
+UNLIKE V.3-200) — §II DERIVES the Stage-220 derivative identity `dD_Pi/dPi=-N` via native `D[QPi/DeltaPi,portPi]` (an
+OUTPUT) and proves it equals the perfect square `(A·G_W+R·G_U)²/Δ_Π²`, whereas the `.py` POSITS that form (an INPUT) —
+opposite information flow; plus `.wl`-only `Residue[]` extraction + generic `ComplexExpand` line-shape checks; NO
+checkpoint constant changed (221's deliverables are symbolic — Breit–Wigner normal form, perfect-square N, dispersive
+ratio |Re χ|/|Im χ|=|δ|/γ_*). **NO status-only stages** (every stage is dual-engine `.py`+`.wl` — confirmed; a missing
+engine would have been a finding); **NO EM-projected stages; no new postulated constant.**
+
+**⭐ THE HEADLINE — THE FIRST PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS; all 12 confirmed genuinely
+independent:** no `.py`/`.wl` edit anywhere, 0 Codex invocations — the orchestrator ground-truth `.wl`-vs-`.py` read
+split the 12 into **12 confirmed genuinely independent (0 re-author), 0 ports, 0 borderline, 0 sanctioned mirrors.**
+Every prior pass-2 batch (III.4…VI.1) carried at least one re-author or de-taut; VII.1 does NOT — the reason is
+STRUCTURAL: VII.1's FIRST pass authored the 11 non-checkpoint `.wl` FRESH as independent routes (NOT de-transliterated
+from pre-existing ports) + re-authored checkpoint 221, so there was no porting residue to catch. Each non-checkpoint
+`.wl` DERIVES the load-bearing object by a DIFFERENT operation than the SymPy `.py` (219 structural family extraction
+via `Collect`/`CoefficientList`; 220 Laurent-support `CoefficientRules`; 226 `Orthogonalize` projector;
+228 `NSolve`+`Series`+implicit-function slopes; 229/230 `Resolve[ForAll]` universal-quantifier proofs). The
+Coverage-Totals "Mathematica audits present" raw count does NOT move (no new `.wl` — these were all created at first
+pass). **The all-clean result was EARNED, not relayed** — the user explicitly distrusted it, so the orchestrator read
+220/221/226 IN FULL + ran a calibrated independence-only sweep (V.3-200 port standard, operation-level + line refs) on
+219/222/223/224/225/227/228/229/230; all confirmed independent (reconfirming the lesson: audit agents UNDER-call
+transliteration; the orchestrator ground-truth read is the backstop; re-author-vs-accept is USER-LEVEL — but here no
+re-author was needed). INFRA: 24 orchestrator exec runs (12 `.py` + 12 `.wl`, reliability gate) exit 0, all FAIL=0,
+DETERMINISTIC; scripts run DIRECTLY (`python3`/`math -script`, ≤2 `math -script` concurrent, NOT via parallel `$RT
+exec-*` — MANIFEST-race avoidance); sympy 12/12 byte-identical to committed, mma 10/12 byte-identical + 2 label-only
+refreshes (the reliability-gate refresh fixed ONLY 221's committed MMA `.txt` "STAGE 204"→"STAGE 221" and 227's
+committed MMA `.txt` stale "Stage-242 K"/"M4 Stage-243"→canonical "Stage-225"/"Stage-226"; both label-only, no numeric
+change — the `.wl` SOURCES were already correct, so NO residual from 227 for the SCRIPT/OUTPUT-band numbering pass).
+Seat policy held: no `.wl`-touching Codex session this batch (zero corrections); orchestrator `exec-*` sequential.
+Pass-1 `MANIFEST.yaml` untouched. **CARD-TEXT LAG (paper-side, DEFERRED):** 5 cards (219/220/224/226/230) FORMALIZED
+the lag — `\stagefield{Verification}` reads "Mathematica audit: none yet" despite a passing `.wl` — present BATCH-WIDE
+(222/225/227/229 noted it informally); a stale STATUS annotation, USER-DECIDED to DEFER to the paper-cleanup tracker
+(non-blocking). **DEFERRED numbering residual (content-keyed, NEVER offset-sweep):** card +17 `\stagefield{Purpose}`
+scan (236–247) CLEAN — no drift on the 219–230 cards; residual project-wide notes-renumber drift (219/222/227 etc.) →
+deferred post-253 stem-keyed cleanup. See `PAPER_CLEANUP_TRACKER.md` P5-20 + P4-51 (appended),
+`MATHEMATICA_MIRROR_POLICY.md`, `NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`. Reference memory `numbering-drift-root-cause`.

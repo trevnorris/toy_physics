@@ -1,9 +1,13 @@
 # Numbering reconciliation — SCRIPT / OUTPUT band (deferred dedicated pass)
 
-**Status: PENDING — user-approved 2026-06-04 to run as a dedicated pass, SEPARATE from
-the red-team second pass (NOT inside the red-team fix loop).** Discovered during pass-2
-batches I.2 (stage 021) and II.1 (024–036). Companion to `NUMBERING_BROAD_SWEEP_PLAN.md`
-(which covered the **notes** band). See memory `[[numbering-drift-root-cause]]`.
+**Status: READY TO RUN — user-approved 2026-06-04 as a dedicated pass, SEPARATE from
+the red-team second pass (NOT inside the red-team fix loop).** ⭐ **The gating precondition is
+now MET: the red-team SECOND PASS is COMPLETE (253/253, 2026-06-10)** — so the interim
+"defer to this plan" policy (§ below) has ended and this pass is unblocked. Discovered during
+pass-2 batches I.2 (stage 021) and II.1 (024–036); deferred items accumulated across ALL pass-2
+batches I.2→VIII.1 (per-batch inventories live in `redteam/pass2/batches/batch_<ID>.md` +
+the handoff PASS-2 PROGRESS LOG). Companion to `NUMBERING_BROAD_SWEEP_PLAN.md` (which covered
+the **notes** band, DONE). See memory `[[numbering-drift-root-cause]]`.
 
 > **One-line:** the "mechanically EXHAUSTED (001–253)" numbering reconciliation cleared the
 > **notes** band but NOT the **script (`.py`/`.wl`) + committed-output (`.txt`)** band. This
@@ -137,7 +141,7 @@ applies in-loop self-label fixes — that distinction is intentional.)
 - A "cannot-confirm" ref → leave + log (e.g. the notes `stage229:5 "Stage 143/093"` already
   flagged in `NUMBERING_BROAD_SWEEP_PLAN.md`).
 
-## Interim policy WHILE the red-team second pass continues (III.1 onward)
+## Interim policy WHILE the red-team second pass continues (III.1 onward) — ⭐ ENDED 2026-06-10 (second pass COMPLETE; HISTORICAL, retained for context)
 
 Until this dedicated pass runs, the red-team loop keeps the established policy: for a
 findings stage, fix ONLY the audit-flagged UNAMBIGUOUS self-labels (matching the file's

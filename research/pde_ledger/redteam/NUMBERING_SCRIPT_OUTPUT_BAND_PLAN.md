@@ -1,13 +1,32 @@
 # Numbering reconciliation — SCRIPT / OUTPUT band (deferred dedicated pass)
 
-**Status: READY TO RUN — user-approved 2026-06-04 as a dedicated pass, SEPARATE from
-the red-team second pass (NOT inside the red-team fix loop).** ⭐ **The gating precondition is
-now MET: the red-team SECOND PASS is COMPLETE (253/253, 2026-06-10)** — so the interim
-"defer to this plan" policy (§ below) has ended and this pass is unblocked. Discovered during
-pass-2 batches I.2 (stage 021) and II.1 (024–036); deferred items accumulated across ALL pass-2
-batches I.2→VIII.1 (per-batch inventories live in `redteam/pass2/batches/batch_<ID>.md` +
-the handoff PASS-2 PROGRESS LOG). Companion to `NUMBERING_BROAD_SWEEP_PLAN.md` (which covered
-the **notes** band, DONE). See memory `[[numbering-drift-root-cause]]`.
+**Status: ✅ COMPLETE 2026-06-10 — all three bands done, verified, and committed**
+(`b25cb57` 001–090, `7a94cbc` 091–180, `857e255` 181–253). This was a dedicated pass,
+SEPARATE from the red-team second pass (NOT inside the red-team fix loop), user-approved
+2026-06-04 and unblocked once the red-team SECOND PASS completed (253/253, 2026-06-10).
+Content-keyed, never offset-swept; every band's edits were digit-only (strip-digits proof —
+HEAD vs working byte-identical after removing all digits, line counts unchanged), both engines
+re-run exit 0, output diffs intended-only. The interim "defer to this plan" policy (§ below)
+has ended. Discovered during pass-2 batches I.2 (stage 021) and II.1 (024–036); deferred items
+accumulated across ALL pass-2 batches I.2→VIII.1 (per-batch inventories live in
+`redteam/pass2/batches/batch_<ID>.md` + the handoff PASS-2 PROGRESS LOG). Companion to
+`NUMBERING_BROAD_SWEEP_PLAN.md` (which covered the **notes** band, DONE). See memory
+`[[numbering-drift-root-cause]]`.
+
+> **Per-band records** (full evidence, applier, verification): band 001–090 and 091–180 in the
+> commit bodies + `redteam/script_output_maps/` maps; band 181–253 in
+> `redteam/script_output_maps/BAND_181-253_RESULT.md` (+ `apply_band_181_253.py`).
+>
+> **2 escalations LEFT for the user** (out of label-only scope — content/identifier judgment, NOT
+> digit-only fixable):
+> 1. **stage182.py:45** `# Stage-30 coherent branch definitions.` — ambiguous between an
+>    old-epoch→047 (`coherent_kernel_map`, 30+17) reading and a loose concept-pointer; the vars
+>    below it are defined locally at stage182. LEFT. Route to content review, or leave as provenance.
+> 2. **stage203.wl** variable family `chiFromStage180` / `closureNumStage180` — the `.py` twin names
+>    the same expression `chi_from_stage197` / `closure_num_stage197`; canonical owner is **197**
+>    (`conditional_packetA_closure_theorem`; 197−17=180, a stale OLD-epoch number baked into a CODE
+>    IDENTIFIER). A digit rename here changes a *variable* → OUT OF SCOPE for this label-only pass.
+>    Recommend a Codex identifier-rename 180→197 in stage203.wl for cross-engine consistency.
 
 > **One-line:** the "mechanically EXHAUSTED (001–253)" numbering reconciliation cleared the
 > **notes** band but NOT the **script (`.py`/`.wl`) + committed-output (`.txt`)** band. This

@@ -22,6 +22,16 @@ document/product tracker for:
 
 Use this file as the master checklist for paper cleanup decisions and status.
 
+> **Numbering — SCRIPT/OUTPUT band: COMPLETE 2026-06-10.** The dedicated
+> content-keyed, label-only stage-number reconciliation of the script/output
+> layer (`.py`/`.wl`/`.txt`) is finished — 3 bands committed (`b25cb57` 001–090,
+> `7a94cbc` 091–180, `857e255` 181–253). Digit-only label/banner/string edits,
+> **zero verification-substance change** (no value/equation/`\label`/assertion
+> moved; strip-digits proof per band; both engines re-run exit 0); no `paper/`
+> `.tex` touched. The per-batch "deferral → SCRIPT/OUTPUT-band plan" notes below
+> are now satisfied. Plan: `redteam/NUMBERING_SCRIPT_OUTPUT_BAND_PLAN.md`. 2 items
+> escalated for the user (stage182:45 `Stage-30`; stage203.wl `chiFromStage180`→197).
+
 ## Authorial Charter
 
 Clarified on `2026-04-20`:

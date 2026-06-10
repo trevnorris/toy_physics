@@ -1746,3 +1746,47 @@ stale forward-renumber comment/print labels (Stage 239/240/241 where source is c
 compat 223) → NUMBERING_SCRIPT_OUTPUT_BAND_PLAN; and notes-TITLE drift (232 "Stage 249", 234 "251", 235
 "251/252/253", 236 "253") → deferred post-253 stem-keyed cleanup (NEVER offset-sweep). See
 `PAPER_CLEANUP_TRACKER.md` P5-21, P4-51, P4-52. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VIII.1 (2026-06-09)
+
+Pass-2 Batch VIII.1 (243-253, `Part VIII.1 — Relaxed branch, dynamic event chain, cold survival`) re-verified
+at v2 depth + value-reconciliation augmentation; 11/11 verified, `material_change: false` on all 11. **THE THIRD
+CONSECUTIVE ZERO-SCRIPT-CORRECTION PASS-2 BATCH (after VII.1, VII.2) — no `.py`/`.wl` edit anywhere, 0 Codex
+invocations; 11/11 confirmed genuinely independent, 0 ports, 0 borderline, 0 sanctioned mirrors remain in
+VIII.1. ⭐ THIS BATCH COMPLETES THE FULL SECOND PASS — cumulative pass-2 253/253 (100%).** Like VII.1/VII.2 the
+all-clean result is STRUCTURAL: VIII.1's FIRST pass was a retrofit batch that authored the 8 non-checkpoint `.wl`
+FRESH as independent routes (244, 245, 246, 247, 249, 250, 251, 252 — NOT de-transliterated from pre-existing
+ports) + re-authored the 3 checkpoints (243, 248, 253), so there was no porting residue to catch; pass-2
+re-confirmed all 11 are already in the Independent-Mirror Set — no changes. **The all-clean result was EARNED, not
+relayed** — the user distrusted it, so the orchestrator read the three checkpoints (243, 248, 253) IN FULL + ran a
+calibrated independence-only sweep (V.3-200 port standard, operation-level + line refs) on
+244/245/246/247/249/250/251/252; all confirmed independent. **THREE checkpoints — 243, 248 & 253 (THE FINAL
+STAGE)** — all cleared the higher bar; each pass-1 `.wl` re-author (from a transliteration to an independent
+route) was confirmed SUFFICIENT (the VI.1-218 / VII.1-221 / VII.2-239&242 outcome, NOT the V.3-200 insufficient
+outcome): **243** — the `.wl` adds an IBP-closure cross-check + derives U/V via BOTH `Solve` AND `LinearSolve`
+(asserts agreement) + a `Series` asymptotic route, whereas the `.py` uses `sp.integrate`/`sp.solve`/`sp.limit`
+(structurally different decompositions); **248** — the `.wl` POSITS the threshold closed form and verifies it
+SATISFIES the defining energy equality with a non-vacuity guard (`FreeQ[deltaNew,v0]`→fail), whereas the `.py`
+uses `sp.solve` — a satisfaction route, non-vacuous; **253** — the `.wl` `Solve`s the physical lattice balance +
+derives `chi_lambda` via `D[Log[V[r]],r]=2/r`, whereas the `.py` uses division/hardcoded `2/r`. NO checkpoint
+constant changed (the route-only checkpoint rewrites land on the SAME values; the 253 benchmark
+`119.23361317476524` is the engines' value, the stale `136.23361317476524`/`187.23361317` fully purged). The 8
+non-checkpoint stages each DERIVE the load-bearing object by a DIFFERENT operation than the SymPy `.py` (the
+"variable-independence self-test trap" guards from the first pass — free-symbol containment + positive control at
+244/245, the tautological/round-trip de-tautologizations at 246/247/249/251/252, global `Resolve[ForAll]`
+monotonicity at 250 — all HOLD). Value reconciliation: 11/11 `material_change: false` → NO downstream staling,
+and **ZERO substantive paper/notes edits this batch** (no genuine value/identity `paper_misalignment`; no source
+change at all). The 5 first-pass notes-only `paper_misalignment` fixes HOLD (cross-engine corroborated; published
+cards UNAFFECTED): 244 `196√2→128√2`; 247 Δ `210.17750000→142.17750000`; 248 `×168%→×100%` (ZERO surviving 168 —
+the recurring stale-168 family 148/232/248 is purged here); 253 benchmark `187.23361317→119.23361317` + a_int
+`10.95423247→10.95423248`. (247/253 pass-1 misattributions to published cards were re-overruled — the cards are
+clean/abstract.) **NO status-only stages; NO EM-projected stages** (all 11 dual-engine native). INFRA: 22
+orchestrator exec runs (11 `.py` + 11 `.wl`) all exit 0, all FAIL=0, DETERMINISTIC; scripts run DIRECTLY
+(`python3`/`math -script`, ≤2 `math -script` concurrent, NOT via parallel `$RT exec-*` — MANIFEST-race avoidance);
+all 22 BYTE-IDENTICAL to committed (zero output refresh needed). Seat policy held (no `.wl`-touching Codex session
+this batch — zero corrections; orchestrator exec sequential). Pass-1 `MANIFEST.yaml` untouched. **Card-text lag
+(paper-side, DEFERRED → P4-51):** 5 cards (244/246/249/250/252) carry the lag — `\stagefield{Verification}` reads
+"Mathematica audit: none yet" despite a passing `.wl` — a stale STATUS annotation, USER-DECIDED to defer. The
+250/253 filenames legitimately embed "from_the_stage248…"/"from_the_stage252…" built-from cross-refs (NOT
+numbering errors), and the cards are clean of the +17 `\stagefield{Purpose}` class. See
+`PAPER_CLEANUP_TRACKER.md` P5-22, P4-51. Reference memory `numbering-drift-root-cause`.

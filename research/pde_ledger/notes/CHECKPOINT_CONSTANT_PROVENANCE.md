@@ -845,6 +845,12 @@ Audit note:
   / `TrigExpand` / `Series`-at-∞ for the leakage-work lane and the non-rigid solve,
   with the hardcoded `expected*` residuals DELETED. `material_change: false`; no
   derived or carried constant moved (route/coverage change only).
+- Pass-2 batch VIII.1 (2026-06-09) re-verified at the higher bar: the pass-1 `.wl`
+  re-author was confirmed SUFFICIENT by the orchestrator ground-truth `.wl`-vs-`.py`
+  read (the VI.1-218 / VII.1-221 / VII.2-239&242 outcome, NOT V.3-200) — the `.wl`
+  derives U/V via BOTH `Solve` AND `LinearSolve` (asserts agreement) + a `Series`
+  asymptotic route, vs the `.py`'s `sp.integrate`/`sp.solve`/`sp.limit`. No checkpoint
+  constant changed, moved, or re-pinned; `material_change: false`.
 
 ### Stage 248
 
@@ -913,6 +919,11 @@ Audit note:
   resolution, non-conceptual, no paper edit). A NOTES-ONLY benchmark typo (notes:506
   `×168%→×100%`, recurring the stale "168") was corrected to the already-correct
   script. `material_change: false`; no derived or carried constant moved.
+- Pass-2 batch VIII.1 (2026-06-09) re-verified at the higher bar: the pass-1 `.wl`
+  re-author (the SATISFACTION route — closed forms verified to satisfy the defining
+  energy equality + non-vacuity guard `FreeQ[deltaNew,v0]`→fail, vs the `.py`'s
+  `sp.solve`) was confirmed SUFFICIENT by the orchestrator ground-truth read. No
+  checkpoint constant changed, moved, or re-pinned; `material_change: false`.
 
 ### Stage 253
 
@@ -972,6 +983,13 @@ Audit note:
   verified engines (and to be self-consistent with the notes:274 correction in
   this same entry). It is an end-of-ladder readback that feeds no downstream
   algebra, so the correction has no propagation.
+- Pass-2 batch VIII.1 (2026-06-09) re-verified at the higher bar — 253 is THE FINAL
+  STAGE, closing the full second pass 253/253: the pass-1 `.wl` re-author (the
+  lattice-balance `Solve` + `chi_lambda` via `D[Log[V[r]],r]=2/r`, vs the `.py`'s
+  division/hardcoded `2/r`) was confirmed SUFFICIENT by the orchestrator ground-truth
+  read. The benchmark stays the engines' `119.23361317476524` (stale
+  `136.23361317476524`/`187.23361317` confirmed fully purged). No checkpoint constant
+  changed, moved, or re-pinned; `material_change: false`.
 
 ## Open Follow-up
 
@@ -1400,4 +1418,36 @@ CONSECUTIVE PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS** [VII.2's first pass a
 independent routes + re-authored the 2 checkpoints, so there was no porting residue], the all-clean result EARNED via
 the orchestrator read of 239/242 + a calibrated independence-only sweep on the rest. Arbiter grep CLEAN. **0
 sanctioned mirrors remain in VII.2.**)
+No carried checkpoint constant changed.
+
+## Pass 2 — Batch VIII.1 (2026-06-09)
+
+Pass-2 Batch VIII.1 (243-253): reviewed — THREE checkpoints in range (**243**, relaxed-branch lift / leakage-work
+lane / non-rigid solve / short-range firewall; **248**, dynamic event chain / energy conservation / threshold speeds
+/ near-top action; **253**, THE FINAL STAGE — lattice-turnover / calibration recovery / temperature ceiling / cold
+survival) re-verified at the higher bar; **NO checkpoint constant changed, moved, or re-pinned; no new postulated
+constant introduced.** 0 values misaligned batch-wide (no NEW `paper_misalignment` → ZERO substantive paper/notes
+edits); `material_change: false` on all 11. All three checkpoints cleared the higher bar with deliverables that are
+SYMBOLIC, not pinned numerics — 243 the leakage/non-rigid forms, 248 the threshold + near-top action, 253 the
+calibration symbol + benchmark-only readbacks — all PRESERVED, not moved. The pass-2 orchestrator ground-truth
+`.wl`-vs-`.py` read confirmed ALL THREE pass-1 re-authors SUFFICIENT (the VI.1-218 / VII.1-221 / VII.2-239&242
+outcome, UNLIKE V.3-200): **243** derives U/V via BOTH `Solve` AND `LinearSolve` (asserts agreement) + an IBP-closure
+cross-check + a `Series` asymptotic route, vs the `.py`'s `sp.integrate`/`sp.solve`/`sp.limit`; **248** POSITS the
+threshold closed form and verifies it SATISFIES the defining energy equality with a non-vacuity guard
+(`FreeQ[deltaNew,v0]`→fail), vs the `.py`'s `sp.solve` — a non-vacuous satisfaction route; **253** `Solve`s the
+physical lattice balance + derives `chi_lambda` via `D[Log[V[r]],r]=2/r`, vs the `.py`'s division/hardcoded `2/r`.
+**Zero unexplained literals remain in checkpoints 243, 248, and 253's scripts.** The benchmark numerics re-confirmed
+present in the VIII.1 batch — the 5 first-pass notes-only typos HOLD, cross-engine or internally corroborated: 244
+`196√2→128√2`; 247 Δ `210.17750000→142.17750000`; 248 `×168%→×100%` (ZERO surviving 168 — the recurring stale-168
+family 148/232/248 is purged here); 253 benchmark `187.23361317→119.23361317` (the engines' value is
+`119.23361317476524`, the stale `136.23361317476524`/`187.23361317` fully purged) + a_int
+`10.95423247→10.95423248` (=4·K_turn) — none moved this batch; the 247/253 pass-1 misattributions to published cards
+were re-overruled (cards clean/abstract). **Cumulative checkpoint-constant provenance is unchanged from the VII.2
+close (200/203/218/221/239/242/243/248/253 retained at the higher-bar standard); no checkpoint constant moved.** (For
+completeness: the 8 non-checkpoint stages [244/245/246/247/249/250/251/252] introduced no new constant — confirmed
+genuinely INDEPENDENT, 0 ports; **THE THIRD CONSECUTIVE PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS** [VIII.1's
+first pass authored the 8 `.wl` FRESH as independent routes + re-authored the 3 checkpoints, so there was no porting
+residue], the all-clean result EARNED via the orchestrator read of 243/248/253 + a calibrated independence-only sweep
+on the rest. Arbiter grep CLEAN. **0 sanctioned mirrors remain in VIII.1.** ⭐ **VIII.1 COMPLETES THE FULL SECOND
+PASS — cumulative pass-2 253/253 (100%).**)
 No carried checkpoint constant changed.

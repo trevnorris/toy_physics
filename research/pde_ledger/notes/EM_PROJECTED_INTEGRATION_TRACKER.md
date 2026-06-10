@@ -585,3 +585,24 @@ are symbolic — 239 the orbit-lock map, 242 the twin-window 4/3 ratio); no new 
 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 + VI.1 +
 VII.1 + VII.2 pass-2 closed, the range 001-242 is paper-aligned at pass-2 depth and the projected-EM core 004-021
 (plus bookends 022-242) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch VIII.1 (2026-06-09)
+
+Pass-2 Batch VIII.1 (243-253, `Part VIII.1 — Relaxed branch, dynamic event chain, cold survival`) re-verified at
+v2 depth + value-reconciliation augmentation; 11/11 verified, `material_change: false` on all 11. **NO
+EM-projected stages in range → no EM-projection change** — VIII.1 is the relaxed-branch / dynamic-event-chain /
+cold-survival microphysics band (checkpoints 243 = relaxed-branch lift / leakage-work lane / non-rigid solve /
+short-range firewall, 248 = dynamic event chain / energy conservation / threshold speeds / near-top action, 253 =
+THE FINAL STAGE — lattice-turnover / calibration recovery / temperature ceiling / cold survival), far downstream of
+and outside the projected-Maxwell core (004-021, closed at I.2). No projected-EM identity was touched; no EM result
+moved (all 11 stages are dual-engine native, NOT the projected-Maxwell core). **THE THIRD CONSECUTIVE PASS-2 BATCH
+NEEDING ZERO SCRIPT CORRECTIONS** — no `.py`/`.wl` edit anywhere, 0 Codex invocations; the 11/11 confirmed genuinely
+independent (0 ports, 0 sanctioned mirrors) and so touch no EM-projected identity; 0 NEW values misaligned
+batch-wide → ZERO substantive paper/notes edits (the 5 first-pass notes-only typos — 244/247/248/253 — HOLD,
+cross-engine or internally corroborated, published cards UNAFFECTED); the THREE checkpoints in range (243, 248, 253)
+all cleared the higher bar with NO checkpoint constant changed (their deliverables are symbolic; the 253 benchmark
+stays the engines' `119.23361317476524`); no new postulated constants. With I.1 + I.2 + II.1 + III.1 + III.2 +
+III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 + VI.1 + VII.1 + VII.2 + VIII.1
+pass-2 closed, **the FULL SECOND PASS is COMPLETE — the range 001-253 is paper-aligned at pass-2 depth (253/253 =
+100%) and the projected-EM core 004-021 (plus bookends 022-253) remains paper-aligned throughout the entire second
+pass.**

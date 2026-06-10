@@ -42,7 +42,7 @@ lamphi1, kphi = sp.symbols('lamphi1 kphi', real=True)
 # Background branch variables.
 chi0, epsW, eps_eta, deltaU = sp.symbols('chi0 epsW eps_eta deltaU', positive=True, real=True)
 
-# Stage-30 coherent branch definitions.
+# Stage-047 coherent branch definitions.
 zetaZ = 2 * lam1 - keta - kW
 omegaW = kW - mu1
 chi1 = chi0 * (gam1 + c1 - kU)

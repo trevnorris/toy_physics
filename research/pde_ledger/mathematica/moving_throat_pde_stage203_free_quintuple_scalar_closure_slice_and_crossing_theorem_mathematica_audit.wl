@@ -286,14 +286,14 @@ qetaGraphLift = normalizeExpr[
   2 Log[cetaUPath] - Log[KUBar] - logKetaGraphLift - Log[epsEtaTgt]
 ];
 
-chiFromStage180 = normalizeExpr[3 (Siso beta^5 + 9 Sigma5)/(3 Siso - Sigma0)];
-closureNumStage180 = normalizeExpr[3 Siso (beta^5 - 1) + Sigma0 + 27 Sigma5];
+chiFromStage197 = normalizeExpr[3 (Siso beta^5 + 9 Sigma5)/(3 Siso - Sigma0)];
+closureNumStage197 = normalizeExpr[3 Siso (beta^5 - 1) + Sigma0 + 27 Sigma5];
 
 betaLift = normalizeExpr[yGraphPath[[3]]/gammaBar];
 (* Verified q_tr=q_nt=q_eta=0 puts this lift on the target graph slice, so the carried closure perturbations Sigma0 and Sigma5 vanish on the composition. *)
-hatChiGraph = normalizeExpr[chiFromStage180 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
+hatChiGraph = normalizeExpr[chiFromStage197 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
 hatDeltaGraph = normalizeExpr[hatChiGraph - 1];
-closureNumGraph = normalizeExpr[closureNumStage180 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
+closureNumGraph = normalizeExpr[closureNumStage197 /. {beta -> betaLift, Sigma0 -> 0, Sigma5 -> 0}];
 hatDeltaDen = Denominator[Together[hatDeltaGraph]];
 
 Print["Explicit free-quintuple graph path y(tau) ="];

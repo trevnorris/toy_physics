@@ -5,7 +5,7 @@ Stage 105 SymPy audit.
 Provenance notes
 ----------------
 - `Omega_Q = 3 c_s / (2 a)` is the same minimal-isotropic pole scale fixed by
-  the Stage 088/074 conservative quadrupole module.
+  the Stage 088 conservative quadrupole module.
 - `sigma_Q^can = 4 a^5 / (27 c_s^5)` is the canonical outgoing `l=2` DtN odd
   coefficient inherited from the Stage 104 exact fingerprint.
 """
@@ -28,7 +28,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 banner("STAGE 105 — EXACT FIXING OF chi_Q")
 
 a, c_s, omega, chi_Q = sp.symbols("a c_s omega chi_Q", positive=True, real=True)
-# Stage 088/074 minimal isotropic pole scale, carried into the retarded lane.
+# Stage 088 minimal isotropic pole scale, carried into the retarded lane.
 Omega_Q = sp.simplify(3*c_s/(2*a))
 sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
 

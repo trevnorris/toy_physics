@@ -64,16 +64,16 @@ expectZero["tube-length law", lWRequired - (Pi*a*Sqrt[(1 + rC)/3])/2];
 
 (* --- Renormalization to canonical coefficients (REPORTED, not asserted) --- *)
 (* Load-bearing physics verified above; gamma0 is an upstream-carried input    *)
-(* (Stage 98), so kappa_c/gamma_c here are definitional consequences, printed  *)
+(* (Stage 115), so kappa_c/gamma_c here are definitional consequences, printed  *)
 (* not asserted (an expectZero here would be tautological).                    *)
 kappa0Bare = FullSimplify[4*lWRequired^2/(Pi^2*a^2), Assumptions -> $Assumptions];  (* derived tube coeff at required length *)
-gamma0Bare = FullSimplify[(1 + rC)/9, Assumptions -> $Assumptions];                  (* upstream-carried input (Stage 98) *)
+gamma0Bare = FullSimplify[(1 + rC)/9, Assumptions -> $Assumptions];                  (* upstream-carried input (Stage 115) *)
 commonScale = 1 + rC;
 kappaC = FullSimplify[kappa0Bare/commonScale, Assumptions -> $Assumptions];
 gammaC = FullSimplify[gamma0Bare/commonScale, Assumptions -> $Assumptions];
 Print["Renormalization (definitional consequence, not an independent check):"];
 Print["  kappa0_bare (derived tube coeff at lWRequired) = ", kappa0Bare];
-Print["  gamma0_bare (upstream-carried input, Stage 98) = ", gamma0Bare];
+Print["  gamma0_bare (upstream-carried input, Stage 115) = ", gamma0Bare];
 Print["  kappa_c = kappa0Bare/(1+rC) = ", kappaC];
 Print["  gamma_c = gamma0Bare/(1+rC) = ", gammaC];
 

@@ -65,18 +65,18 @@ expect_zero(
 # The load-bearing, falsifiable physics is verified above (eigenvalue, kappa0
 # collapse, tube-length law). The renormalization below carries no independent
 # falsifiable content in this stage: kappa0 is already established above and
-# gamma0 is an upstream-carried input (Stage 98 compensation requirement) with
+# gamma0 is an upstream-carried input (Stage 115 compensation requirement) with
 # no in-stage derivation. Dividing out the common (1+r_c) hybridization factor
 # is therefore a definitional consequence, so these values are PRINTED, not
 # asserted (an expect_zero here would be tautological).
 kappa0_bare = sp.simplify(kappa0_from_tube.subs(L_W, L_W_required))  # derived tube coeff at required length
-gamma0_bare = sp.simplify((1 + r_c) / 9)                            # upstream-carried input (Stage 98), not derived in-stage
+gamma0_bare = sp.simplify((1 + r_c) / 9)                            # upstream-carried input (Stage 115), not derived in-stage
 common_scale = 1 + r_c
 kappa_c = sp.simplify(kappa0_bare / common_scale)
 gamma_c = sp.simplify(gamma0_bare / common_scale)
 print("Renormalization (definitional consequence, not an independent check):")
 print("  kappa0_bare (derived tube coeff at L_W_required) =", kappa0_bare)
-print("  gamma0_bare (upstream-carried input, Stage 98)   =", gamma0_bare)
+print("  gamma0_bare (upstream-carried input, Stage 115)   =", gamma0_bare)
 print("  kappa_c = kappa0_bare/(1+r_c) =", kappa_c)
 print("  gamma_c = gamma0_bare/(1+r_c) =", gamma_c)
 

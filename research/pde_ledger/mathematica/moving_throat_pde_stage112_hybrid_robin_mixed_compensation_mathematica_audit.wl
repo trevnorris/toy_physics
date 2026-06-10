@@ -52,7 +52,7 @@ expectZero["branch A kappa", kappa /. solA];
 expectZero["branch B rho - 4 sigma", (rho /. solB) - 4*sigma];
 expectZero["branch B kappa - 1/3", (kappa /. solB) - 1/3];
 
-(* Independent derivation: Stage-92 linearized (b, a0, a5) cross-check. *)
+(* Independent derivation: Stage-109 linearized (b, a0, a5) cross-check. *)
 (* On the nontrivial compensated branch (solB), the net deformation data are *)
 (*   b   = 0, *)
 (*   a0  = 3 sigma_W, *)

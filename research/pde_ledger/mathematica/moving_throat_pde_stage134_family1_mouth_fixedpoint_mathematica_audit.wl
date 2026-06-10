@@ -98,7 +98,7 @@ Print[gainLine];
 (* No in-stage gain-line assertion: intercept is the imported literal PiStar
    (stage 131) and the slope is -S_q(PiStar); re-asserting them here would be an
    X-X tautology. Outlet consistency of (Ms, Mq) is verified at Stage 135;
-   susceptibility closure at Stage 137. *)
+   susceptibility closure at Stage 140. *)
 
 Print[""];
 Print["RESULT:"];

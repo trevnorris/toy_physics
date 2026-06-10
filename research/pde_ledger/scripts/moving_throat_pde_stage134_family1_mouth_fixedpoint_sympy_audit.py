@@ -87,4 +87,4 @@ print("OK: S_q(Pi_star) matches notes value 0.658075937605428")
 # tautology (it compares constants already inserted into the script), so it is
 # intentionally omitted. The substantive deliverable that uses this gain line --
 # outlet consistency of the gain pair (M_s, M_q) -- is verified downstream at
-# Stage 135 (outlet-consistent mouth closure); susceptibility closure at Stage 137.
+# Stage 135 (outlet-consistent mouth closure); susceptibility closure at Stage 140.

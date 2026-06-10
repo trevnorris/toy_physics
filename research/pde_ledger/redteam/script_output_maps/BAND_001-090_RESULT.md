@@ -41,11 +41,12 @@ old-form-vs-new-form two-epoch case), plus all `.py` 2-digit self-banners (the c
 - **strip-digits label-only proof: 101/101 digit-only** (HEAD vs working byte-identical
   after removing all digits → zero equation/value/variable/punctuation/logic bytes changed).
 - Residual scan: **0** remaining cited≠canon capitalized 1-2-digit refs (excl. the 3 LEAVEs).
-- 0 half-fixed compounds remain. No notes/`.tex` touched. New tooling files clean of `toy_projects`.
+- 0 half-fixed compounds remain. No notes/`.tex` touched. New tooling files clean of the wrong-root path typo.
 - 66/66 script re-runs exit 0.
 
-## Pre-existing issue flagged (NOT this pass, NOT fixed here)
-`git grep toy_projects` finds 6 PRE-EXISTING occurrences in redteam prose artifacts
-(REMEDIATION_HANDOFF.md, pass2/batches/batch_VI1.md, pass2/reports/stage_234|248|251.md,
-pass2/verifications/stage_216.md) — crept in during later pass-2 batches after the d3bbd41
-purge. Outside the script/output band; offer to clean up separately.
+## Pre-existing issue flagged (RESOLVED before the band-1 commit)
+A grep for the wrong-root path typo found 6 PRE-EXISTING occurrences in redteam prose
+artifacts (REMEDIATION_HANDOFF.md, pass2/batches/batch_VI1.md,
+pass2/reports/stage_234|248|251.md, pass2/verifications/stage_216.md) — crept in during
+later pass-2 batches after the d3bbd41 purge. Reworded to clear the grep (commit 14603bb);
+the repo is clean of the typo string.

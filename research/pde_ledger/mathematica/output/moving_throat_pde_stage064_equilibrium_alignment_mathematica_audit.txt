@@ -30,8 +30,8 @@ C^2 | H=const = 1
 G_eq | H=const = (gPhi^2*L*Pi)/(2*hw*kX)
 matched-layer coherence = 0
 PASS: matched-layer coherence
-matched-layer gain vs Stage-45 best-alignment formula = 0
-PASS: matched-layer gain vs Stage-45 best-alignment formula
+matched-layer gain vs Stage-062 best-alignment formula = 0
+PASS: matched-layer gain vs Stage-062 best-alignment formula
 
 ========================================================================================
 CONTINUOUS CAUCHY BOUND CHECK

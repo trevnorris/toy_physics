@@ -7,11 +7,11 @@ What this audit verifies
 1. The selected lower wall branch for a diagonal 2x2 baseline plus a rank-1
    loading vector z has exact closed-form eigenvalue and eigenvector formulas.
 2. If the orbital/worldtube source vector s is not collinear with z, the old
-   Stage-18 normalization function deforms to an exact two-vector shape
+   Stage-035 normalization function deforms to an exact two-vector shape
    function F_{q,eta}.
-3. Specializing to the split-U continuum of Stage 22 yields a one-parameter
+3. Specializing to the split-U continuum of Stage 039 yields a one-parameter
    family F_U(xi,delta;R_U) and G_U(xi,delta;R_U).
-4. Setting R_U = 1 recovers the Stage-18/19 functions exactly.
+4. Setting R_U = 1 recovers the Stage-035/036 functions exactly.
 5. The first-order deformation around the flat-U limit is exact.
 """
 
@@ -98,7 +98,7 @@ G_expected = sp.simplify(xi * (delta + xi) / (delta + (1 + q**2) * xi))
 expect_zero("F_general - expected", F_general - F_expected)
 expect_zero("G_general - expected", G_general - G_expected)
 
-subbanner("40.3 — Specialization to the split-U continuum of Stage 22")
+subbanner("40.3 — Specialization to the split-U continuum of Stage 039")
 
 # For the physical split-U case, the source vector is the original v direction,
 # while the loading vector obeys z1/z0 = (kappa1/kappa0) R_U = -sqrt(lambda0) R_U.
@@ -110,16 +110,16 @@ G_U = sp.simplify(G_expected.subs({q: q_U}))
 print("F_U(xi,delta;R_U) =", sp.factor(F_U))
 print("G_U(xi,delta;R_U) =", sp.factor(G_U))
 
-# F_stage18 reproduces the Stage-18 closed-form normalization F(xi, delta)
+# F_stage18 reproduces the Stage-035 closed-form normalization F(xi, delta)
 # verified in scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py lines 46-58.
-# G_stage19 reproduces the Stage-19 closed-form loading G(xi, delta)
+# G_stage19 reproduces the Stage-036 closed-form loading G(xi, delta)
 # verified in scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py lines 53-70.
 # Keep these literals in sync with the upstream source of truth.
 F_stage18 = sp.simplify((9 * delta + 11 * xi)**4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2)**2))
 G_stage19 = sp.simplify(9 * xi * (delta + xi) / (9 * delta + 11 * xi))
 
-expect_zero("F_U(R_U=1) - Stage18 F", sp.simplify(F_U.subs(R_U, 1) - F_stage18))
-expect_zero("G_U(R_U=1) - Stage19 G", sp.simplify(G_U.subs(R_U, 1) - G_stage19))
+expect_zero("F_U(R_U=1) - Stage035 F", sp.simplify(F_U.subs(R_U, 1) - F_stage18))
+expect_zero("G_U(R_U=1) - Stage036 G", sp.simplify(G_U.subs(R_U, 1) - G_stage19))
 
 subbanner("40.4 — Independent cross-check of first-order deformation about flat-U limit")
 
@@ -149,7 +149,7 @@ expect_zero("H_F cross-check (F_U vs F_general)", sp.simplify(HF - HF_direct))
 expect_zero("H_G cross-check (G_U vs G_general)", sp.simplify(HG - HG_direct))
 
 banner("STAGE 40 THEOREM LEDGER")
-print("1. Once source and loading vectors differ, the Stage-18 normalization function deforms")
+print("1. Once source and loading vectors differ, the Stage-035 normalization function deforms")
 print("   from the single-vector form F(xi,delta) to the exact two-vector function")
 print("      F_(q,eta)(xi,delta).")
 print("2. The required baseline loading is still exact and one-dimensional:")
@@ -157,6 +157,6 @@ print("      G_q(xi,delta) = xi (xi+delta) / [delta + (1+q^2) xi].")
 print("3. For the split-U continuum, the source/loading mismatch collapses to one exact")
 print("   parameter R_U through")
 print("      q = -(sqrt(2)/3) R_U,  eta = (2/9) R_U.")
-print("4. Setting R_U = 1 recovers the Stage-18/19 flat-U branch exactly.")
+print("4. Setting R_U = 1 recovers the Stage-035/036 flat-U branch exactly.")
 print("5. Therefore the first non-flat U structure does not destroy the selected-branch")
 print("   theorem geometry, but it deforms it into a one-parameter family indexed by R_U.")

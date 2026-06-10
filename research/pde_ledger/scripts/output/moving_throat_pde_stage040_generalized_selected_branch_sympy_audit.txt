@@ -23,12 +23,12 @@ F_general - expected = 0
 G_general - expected = 0
 
 ----------------------------------------------------------------------------------------
-40.3 — Specialization to the split-U continuum of Stage 22
+40.3 — Specialization to the split-U continuum of Stage 039
 ----------------------------------------------------------------------------------------
 F_U(xi,delta;R_U) = -(2*R_U*xi + 9*delta + 9*xi)**2*(2*R_U**2*xi + 9*delta + 9*xi)**2/(81*(xi - 1)*(2*R_U**2*xi**2 + 9*delta**2 + 18*delta*xi + 9*xi**2)**2)
 G_U(xi,delta;R_U) = 9*xi*(delta + xi)/(2*R_U**2*xi + 9*delta + 9*xi)
-F_U(R_U=1) - Stage18 F = 0
-G_U(R_U=1) - Stage19 G = 0
+F_U(R_U=1) - Stage035 F = 0
+G_U(R_U=1) - Stage036 G = 0
 
 ----------------------------------------------------------------------------------------
 40.4 — Independent cross-check of first-order deformation about flat-U limit
@@ -43,7 +43,7 @@ H_G cross-check (G_U vs G_general) = 0
 ========================================================================================
 STAGE 40 THEOREM LEDGER
 ========================================================================================
-1. Once source and loading vectors differ, the Stage-18 normalization function deforms
+1. Once source and loading vectors differ, the Stage-035 normalization function deforms
    from the single-vector form F(xi,delta) to the exact two-vector function
       F_(q,eta)(xi,delta).
 2. The required baseline loading is still exact and one-dimensional:
@@ -51,6 +51,6 @@ STAGE 40 THEOREM LEDGER
 3. For the split-U continuum, the source/loading mismatch collapses to one exact
    parameter R_U through
       q = -(sqrt(2)/3) R_U,  eta = (2/9) R_U.
-4. Setting R_U = 1 recovers the Stage-18/19 flat-U branch exactly.
+4. Setting R_U = 1 recovers the Stage-035/036 flat-U branch exactly.
 5. Therefore the first non-flat U structure does not destroy the selected-branch
    theorem geometry, but it deforms it into a one-parameter family indexed by R_U.

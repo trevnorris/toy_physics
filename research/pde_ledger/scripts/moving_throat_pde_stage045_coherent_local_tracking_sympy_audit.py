@@ -6,7 +6,7 @@ Checks:
 1. The coherent local D/N support kernel implies g_B g_R = g_W g_S exactly.
 2. The mixed and support interference ratios coincide: rho_0 = sigma_0.
 3. The common direction factor R_tr has the exact range identities used in the note.
-4. The Stage-27 quadratic branch equation collapses to the one-parameter tracking law.
+4. The Stage-044 quadratic branch equation collapses to the one-parameter tracking law.
 """
 
 from __future__ import annotations
@@ -122,16 +122,16 @@ print("M_tr   =", M_tr)
 # the substantive verification of the prefactor structure lives in those stages.
 
 # ---------------------------------------------------------------------------
-# 4. Stage-27 quadratic branch equation collapses to tracking law
+# 4. Stage-044 quadratic branch equation collapses to tracking law
 # ---------------------------------------------------------------------------
 
-banner("4. Exact collapse of the Stage-27 branch equation")
+banner("4. Exact collapse of the Stage-044 branch equation")
 
 xi, delta, lam0 = sp.symbols("xi delta lambda_0", positive=True, real=True)
 R_U, R_phi = sp.symbols("R_U R_phi", real=True)
 Mmix, Msupp = sp.symbols("Mmix Msupp", real=True)
 
-# Stage-27 continuum-selected branch equation in the reduced notation.
+# Stage-044 continuum-selected branch equation in the reduced notation.
 branch_eq = sp.simplify(
     Msupp - (
         xi * (delta + xi) - Mmix * (delta + (1 + lam0 * R_U ** 2) * xi)

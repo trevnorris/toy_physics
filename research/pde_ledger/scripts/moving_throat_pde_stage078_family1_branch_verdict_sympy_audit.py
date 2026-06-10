@@ -3,7 +3,7 @@
 Stage 078 SymPy audit.
 
 Checks:
-1. Insert the explicit Stage-60 Theta values into the Stage-58 threshold window.
+1. Insert the explicit Stage-077 Theta values into the Stage-075 threshold window.
 2. Compute the exact Pe_req success/failure windows for both the natural quadratic datum
    and the conservative Jensen floor.
 3. Verify the ordering Pe_suff < Pe_fail in both cases.

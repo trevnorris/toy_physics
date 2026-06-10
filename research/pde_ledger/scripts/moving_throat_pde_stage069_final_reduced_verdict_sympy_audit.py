@@ -6,9 +6,9 @@ SymPy-backed audit for the final reduced support/source verdict.
 
 What this script checks
 -----------------------
-1. The matched-branch Stage-49 window is exactly
+1. The matched-branch Stage-066 window is exactly
    [Pe_req / Delta_inf, Pe_req / Delta_0].
-2. The Stage-51 resonance family shifts both thresholds by the exact penalty
+2. The Stage-068 resonance family shifts both thresholds by the exact penalty
    factor P_res = 1 / C_res^2.
 3. The profile-sensitive failure-side and success-side bands have the exact
    widths claimed in the paper.
@@ -91,7 +91,7 @@ print("Matched-branch success threshold    =", Wsuff_match)
 print("Resonance-family fail threshold     =", Wfail_res)
 print("Resonance-family success threshold  =", Wsuff_res)
 
-# Stage-49 matched-window derivation as a generating function.
+# Stage-066 matched-window derivation as a generating function.
 # Encodes the theorem "W_match(Delta_eff) = Pe_req / Delta_eff" with
 # Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.
 Delta_eff = sp.symbols("Delta_eff", positive=True, real=True)
@@ -109,7 +109,7 @@ expect_positive(
     -sp.diff(W_match_generator, Delta_eff) * Delta_eff**2 / Pe_req,
 )
 
-# Stage-49 matched window and Stage-51 penalty factor.
+# Stage-066 matched window and Stage-068 penalty factor.
 expect_zero("P_res - 1/C_res^2", Pres - 1 / Cres2)
 expect_zero(
     "matched window width",
@@ -117,7 +117,7 @@ expect_zero(
 )
 expect_positive("Delta_inf - Delta_0", Deltainf - Delta0)
 expect_positive("matched success threshold - matched fail threshold", Wsuff_match - Wfail_match)
-# Stage-51 / Stage-68 resonance penalty as a band-edge ratio.
+# Stage-068 / Stage-068 resonance penalty as a band-edge ratio.
 # Encodes the theorem "P_res = W_fail_res / W_fail_match" rather than
 # defining P_res and C_res^2 to satisfy it by construction.
 Pres_from_ratio = sp.simplify(Wfail_res / Wfail_match)
@@ -173,10 +173,10 @@ expect_positive("success-band point - matched success edge", W_success_band - Ws
 expect_positive("resonance success edge - success-band point", Wsuff_res - W_success_band)
 
 banner("FINAL LEDGER")
-print("Stage-49 matched branch:")
+print("Stage-066 matched branch:")
 print("  Universal fail   : W_wall <= Pe_req / Delta_inf")
 print("  Universal succeed: W_wall >= Pe_req / Delta_0")
-print("Stage-51 resonance family:")
+print("Stage-068 resonance family:")
 print("  Fail threshold   : W_wall <= Pe_req / (C_res^2 Delta_inf)")
 print("  Success threshold: W_wall >= Pe_req / (C_res^2 Delta_0)")
 print("Therefore the only profile-sensitive regions are the exact side-bands")

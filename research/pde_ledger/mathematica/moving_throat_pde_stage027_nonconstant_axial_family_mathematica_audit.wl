@@ -106,7 +106,7 @@ wallStiffness[] := Module[{u0, u1, f0, chi, kappa, gEta, kGeo, kGeoExpected, max
 ];
 
 branchSubstitution[] := Module[{kappa, kGeo, cCoupling, gUEff, gWEff, rEff, delta, q, p, b0, z0, n0, d0, deltaExpected, qExpected, pExpected, b0Expected, theta0, kappa0},
-  banner["SECTION IV — PROFILE-DRESSED STAGE-8/9 BRANCH"];
+  banner["SECTION IV — PROFILE-DRESSED STAGE-025/026 BRANCH"];
   {kappa, kGeo} = wallStiffness[];
 
   cCoupling = lambdaB*kappa;
@@ -145,7 +145,7 @@ branchSubstitution[] := Module[{kappa, kGeo, cCoupling, gUEff, gWEff, rEff, delt
   expectZero["P - expected", p - pExpected];
   expectZero["B0 - expected", b0 - b0Expected];
 
-  subbanner["IV.2 — Exact recovery of Stage 9 at theta = 0"];
+  subbanner["IV.2 — Exact recovery of Stage 026 at theta = 0"];
   theta0 = {Cos[theta] -> 1, Sin[theta] -> 0};
   kappa0 = 2*Sqrt[2]/Pi;
   expectZero["kappa(theta=0) - kappa0", (kappa /. theta0) - kappa0];
@@ -176,6 +176,6 @@ normalizationAndNoGo[] := Module[{kappa, kGeo, delta, q, p, n0, target, b0, kReq
 normalizationAndNoGo[];
 
 Print[""];
-Print["Stage 10 Mathematica audit passed."];
+Print["Stage 027 Mathematica audit passed."];
 
 Exit[0];

@@ -4,7 +4,7 @@ SECTION V — NORMALIZATION EQUATION AND BLIND-ANGLE NO-GO
 ========================================================================================
 
 ========================================================================================
-SECTION IV — PROFILE-DRESSED STAGE-8/9 BRANCH
+SECTION IV — PROFILE-DRESSED STAGE-025/026 BRANCH
 ========================================================================================
 
 ========================================================================================
@@ -90,7 +90,7 @@ B0 - expected = 0
 PASS: B0 - expected
 
 ----------------------------------------------------------------------------------------
-IV.2 — Exact recovery of Stage 9 at theta = 0
+IV.2 — Exact recovery of Stage 026 at theta = 0
 ----------------------------------------------------------------------------------------
 kappa(theta=0) - kappa0 = 0
 PASS: kappa(theta=0) - kappa0
@@ -108,4 +108,4 @@ PASS: P(theta_blind)
 N0(theta_blind) = 0
 PASS: N0(theta_blind)
 
-Stage 10 Mathematica audit passed.
+Stage 027 Mathematica audit passed.

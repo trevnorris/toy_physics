@@ -4,7 +4,7 @@ STAGE 042 — RANK-2 SELECTED-MODE NORMALIZATION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-1. Exact selected-mode eigenvector ratio after inserting Stage-24 support loading
+1. Exact selected-mode eigenvector ratio after inserting Stage-041 support loading
 ----------------------------------------------------------------------------------------
 e1/e0 from row 1 = (m*(q - r) + r*xi)/(delta + m*q*(-q + r) + xi)
 e1/e0 from row 2 = (m*(q - r) + r*xi)/(delta + m*q*(-q + r) + xi)
@@ -28,7 +28,7 @@ F_general - expected = 0
 PASS: F_general - expected
 
 ----------------------------------------------------------------------------------------
-3. Tracking-support collapse back to Stage 23
+3. Tracking-support collapse back to Stage 040
 ----------------------------------------------------------------------------------------
 F_track = ((delta + xi + q^2*xi)^2*(delta + xi + q*t*xi)^2)/((1 - xi)*(q^2*xi^2 + (delta + xi)^2)^2)
 tracking collapse = 0

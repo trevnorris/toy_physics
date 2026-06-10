@@ -102,7 +102,7 @@ bx_iso = 0
 So any grouped triplet with equal lane coefficients has vanishing anisotropy defects.
 
 ========================================================================================
-SECTION IV — STAGE-4 MIXED-SECTOR PROTOTYPE: EXACT N0/N2/N4
+SECTION IV — STAGE-021 MIXED-SECTOR PROTOTYPE: EXACT N0/N2/N4
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ N4 =
                              Δ₀                               
 
 ----------------------------------------------------------------------------------------
-IV.2 — Dictionary back to the Stage-4 Maxwell/mixed symbols
+IV.2 — Dictionary back to the Stage-021 Maxwell/mixed symbols
 ----------------------------------------------------------------------------------------
 Delta0 =
    2    2    2
@@ -147,11 +147,11 @@ SECTION V — QUADRUPOLE NORMALIZATION PRODUCT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-V.1 — Stage-4 outgoing l=2 fingerprint anchor
+V.1 — Stage-021 outgoing l=2 fingerprint anchor
 ----------------------------------------------------------------------------------------
-Stage-4 A coefficient = 0
-Stage-4 B coefficient = 0
-Stage-4 G5 coefficient = 0
+Stage-021 A coefficient = 0
+Stage-021 B coefficient = 0
+Stage-021 G5 coefficient = 0
 A_stage4 =
   2  
  a   
@@ -219,10 +219,10 @@ mhat=1 K4 target = 0
 So the remaining theorem gap is the moving-throat value of the invariant product mhat^2 * P0.
 
 ========================================================================================
-FINAL STAGE-5 LEDGER
+FINAL STAGE-22 LEDGER
 ========================================================================================
 Verified with SymPy:
-  • the Stage-3/4 conservative operator moments convert to the normalized grouped-response moments via
+  • the Stage-003/021 conservative operator moments convert to the normalized grouped-response moments via
     u2 = -D2/D0 and u4 = (D2^2 - D0 D4)/D0^2;
   • the first-order outgoing bridge is controlled by the internal prefactor
     Pref(ω) = D0 N(ω) / D_cons(ω)^2,
@@ -236,7 +236,7 @@ Verified with SymPy:
     K4 = P4 + A P2 + B P0,
     Gamma5 = G5 P0;
   • the grouped real inverse map and isotropy defects are exact and vanish whenever the three lane coefficients coincide;
-  • for the Stage-4 one-lane Maxwell/mixed prototype, the transfer series coefficients N0, N2, N4 are explicit rational functions of Delta0, S2, P0_proto, and gW;
+  • for the Stage-021 one-lane Maxwell/mixed prototype, the transfer series coefficients N0, N2, N4 are explicit rational functions of Delta0, S2, P0_proto, and gW;
   • the 2.5PN target is now the invariant normalization product
     mhat^2 * P0 = 54 G c_s^5 / (5 a^5 c^5)
     (or P0 itself when mhat = 1 on the natural source-map branch).

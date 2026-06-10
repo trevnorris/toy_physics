@@ -88,8 +88,8 @@ Module[{xi, fProf, fp, fpp, IfNum, IgNum, ruleNum, TxNum, KxNum, kappaNum,
      fail["sech-profile moment I_f = 2/3", IfNum - 2/3]];
   If[Abs[IgNum - 14/15] < tol, pass["sech-profile moment I_g = 14/15"],
      fail["sech-profile moment I_g = 14/15", IgNum - 14/15]];
-  Print["Stage-48 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)"];
-  Print["Stage-47 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w"];
+  Print["Stage-065 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)"];
+  Print["Stage-064 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w"];
   Print["Structural ratio I_1/J_1 should equal 4 pi a^2 ell."];
   (* Verify with the sech-profile I_f computed above:
      I_1/J_1 = (4 pi a^2 ell I_f / H_w) / (I_f / H_w) = 4 pi a^2 ell, independent of I_f's value. *)

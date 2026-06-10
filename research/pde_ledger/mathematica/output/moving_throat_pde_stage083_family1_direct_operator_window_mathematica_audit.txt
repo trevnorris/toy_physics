@@ -61,4 +61,4 @@ Pi_max^(F1)/C_mix at eps_blk=0   = 3.4675292294560122333295845015705354203916262
 Theorem ledger:
   dPe_*/dXi = Delta / (1 - Xi dDelta/dPe)
   zeta_phys(F1) and Pi/C_mix windows are monotone in Xi on the stable branch
-  inserting the natural Family-1 wall data reproduces the Stage-61/63/64 windows directly
+  inserting the natural Family-1 wall data reproduces the Stage-078/080/081 windows directly

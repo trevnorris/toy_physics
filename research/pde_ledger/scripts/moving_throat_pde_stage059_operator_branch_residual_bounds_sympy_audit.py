@@ -3,10 +3,10 @@
 Moving-Throat PDE — Stage 59 SymPy audit.
 
 Checks:
-1. exact lower/upper support-ratio brackets on the Stage-41 branch interval,
+1. exact lower/upper support-ratio brackets on the Stage-058 branch interval,
 2. exact residual-bracket definitions,
 3. exact coupling thresholds Xi_fail and Xi_suff,
-4. weak-coupling expansion of the physical ratio using the Stage-39 Omega_Pe series.
+4. weak-coupling expansion of the physical ratio using the Stage-056 Omega_Pe series.
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ Xi_suff_ordered = sp.simplify(Pe_req / Delta0)
 zeta_req_branch = sp.simplify(A_K * Omega(Pe_req) ** 2)
 expect_positive("Xi_suff - Xi_fail (ordered)", Xi_suff_ordered - Xi_fail_ordered)
 
-# Weak-coupling expansion using the exact Stage-39 Omega_Pe series.
+# Weak-coupling expansion using the exact Stage-056 Omega_Pe series.
 Pe = sp.symbols("Pe", positive=True, real=True)
 Omega_Pe = sp.simplify(
     sp.pi * Pe * (2 * Pe * sp.exp(Pe) + sp.pi)

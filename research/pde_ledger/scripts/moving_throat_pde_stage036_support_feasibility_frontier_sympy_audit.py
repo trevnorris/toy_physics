@@ -9,7 +9,7 @@ Checks:
 4. Near-onset asymptotics of the support-feasibility frontier.
 
 Provenance notes:
-- `xi`, `delta`, and `M_mix` are the same Stage 035/019 dimensionless support
+- `xi`, `delta`, and `M_mix` are the same Stage 035/036 dimensionless support
   variables; this audit keeps the onset boundary `xi >= 0` and the support-gap
   notation unchanged instead of renaming the frontier data.
 """
@@ -103,7 +103,7 @@ Mmix_inadmissible = sp.N(Mmix_expr.subs({Chi: 1, OmegaU: 1, Delta0: 1, A: 1}))
 G_sample_n = sp.N(G_sample)
 expect_true("admissible sample: R_target >= 1", bool(F_sample >= 1), f"R_target={F_sample}")
 
-# Stronger middle-conjunct witness: derive R_target from the Stage-18
+# Stronger middle-conjunct witness: derive R_target from the Stage-034
 # microscopic normalization product N_-(x), not by defining it to equal F.
 A_host = sp.Integer(3)
 beta0_host = sp.Integer(5)
@@ -124,7 +124,7 @@ expect_zero(
     F.subs({delta: delta_sample, xi: xi_sample}) - R_target_host,
 )
 # Symbolic kappa-based cross-check of the support-feasibility content.
-# Builds R_target_sym from the Stage-18 microscopic kappa expansion
+# Builds R_target_sym from the Stage-034 microscopic kappa expansion
 # symbolically in (xi, delta, A_sym, beta0_sym) and confirms it equals F.
 A_sym, beta0_sym = sp.symbols("A_sym beta0_sym", positive=True, real=True)
 x_sym = A_sym * xi

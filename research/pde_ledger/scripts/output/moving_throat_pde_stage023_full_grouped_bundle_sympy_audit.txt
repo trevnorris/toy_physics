@@ -174,7 +174,7 @@ N4_target closed form = 0
 III.3 — Universal normalization product
 ----------------------------------------------------------------------------------------
 normalization abstract == explicit under D0 = K - B0 - Z0 = 0
-Stage-5 Gamma5_port anchor = 0
+Stage-022 Gamma5_port anchor = 0
 Gamma5_port =
    5  
   a   
@@ -249,7 +249,7 @@ dP0/dZ0 - N0/D0^2 = 0
 dP0/dK + N0/D0^2 = 0
 
 ========================================================================================
-FINAL STAGE-6 LEDGER
+FINAL STAGE-23 LEDGER
 ========================================================================================
 Verified with SymPy:
   • the grouped real P2 bundle has a natural weighted metric Ggrp = diag(1,2,2)
@@ -263,7 +263,7 @@ Verified with SymPy:
     with an independent outgoing-transfer bundle N_An;
   • the grouped trace/anomaly parts of D_An and N_An inherit linearly from the
     microscopic wall, BdG, and Maxwell/mixed sectors;
-  • on the isotropic branch the Stage-5 formulas reduce exactly to
+  • on the isotropic branch the Stage-022 formulas reduce exactly to
     u2 = -D2/D0, u4 = (D2^2 - D0 D4)/D0^2, P0 = N0/D0,
     and the universal normalization test is
     mhat_0^2 P0 = 54 G c_s^5 / (5 a^5 c^5);

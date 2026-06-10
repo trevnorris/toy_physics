@@ -26,7 +26,7 @@ chi, Lam, KX, TX, L = sp.symbols('chi_sigma Lambda_phi K_X T_X L', positive=True
 kappa, eta, Pe_req = sp.symbols('kappa eta Pe_req', positive=True, real=True)
 alpha = sp.sqrt(kappa)
 
-# endpoint functions from Stage 41
+# endpoint functions from Stage 058
 Delta0 = sp.simplify(eta * (sp.cosh(alpha) - 1) / (alpha**2 * (alpha*sp.sinh(alpha) + eta*sp.cosh(alpha))))
 Delta_inf = sp.simplify((sp.cosh(alpha) + (eta/alpha)*sp.sinh(alpha) - 1) / (alpha*sp.sinh(alpha) + eta*sp.cosh(alpha)))
 print("Delta_0 =", Delta0)

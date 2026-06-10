@@ -47,7 +47,7 @@ banner("STAGE 33.1 — EXACT MICROSCOPIC NORMALIZATION PRODUCT")
 print("N_-(alpha0) =")
 sp.pprint(Nminus)
 
-# Exact monotonicity identity with the Stage-15 source-map substitution built in.
+# Exact monotonicity identity with the Stage-032 source-map substitution built in.
 ds = sp.simplify(sp.diff(s_minus, alpha0))
 dN = sp.simplify(sp.diff(Nminus, alpha0))
 dN_formula = sp.simplify(beta0 * (2 * s_minus * ds * lambda_minus + s_minus**3) / (kappa0_sq * lambda_minus**2))

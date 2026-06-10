@@ -91,7 +91,7 @@ overlapLaw[] := Module[{u0, fN, f0, indef, kappaN, kappaNViaFundamentalThm, kapp
 ];
 
 branchSubstitution[] := Module[{u0, f0, kappa, iEtaPhi, iEtaU, iEtaW, iUW, cCoupling, gUeff, gWeff, rEff, delta, q, p, b0, z0, n0, d0, p0},
-  banner["SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-8 QUANTITIES"];
+  banner["SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-025 QUANTITIES"];
   {u0, f0, kappa} = overlapLaw[];
 
   overlapU0F0 = FullSimplify[Integrate[u0*f0, {s, 0, l}], Assumptions -> $Assumptions];
@@ -180,6 +180,6 @@ normalizationTest[] := Module[{kappa, delta, q, p, b0, z0, n0, d0, target, resid
 normalizationTest[];
 
 Print[""];
-Print["Stage 9 Mathematica audit passed."];
+Print["Stage 026 Mathematica audit passed."];
 
 Exit[0];

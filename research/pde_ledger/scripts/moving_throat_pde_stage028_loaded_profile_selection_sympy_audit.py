@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage11_loaded_profile_selection_sympy_audit.py
+moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
 
 SymPy audit for Stage 28 of the moving-throat PDE program.
 
@@ -14,11 +14,11 @@ This script verifies the first loaded axial wall-profile selection model in the
   • exact trace/determinant/eigenvalue formulas,
   • exact profile-angle equation tan(2 theta),
   • weak-loading and strong-loading limits,
-  • exact identification of the strong-loading angle with the Stage-10
+  • exact identification of the strong-loading angle with the Stage-027
     max-coupling branch,
   • and the exact softening threshold alpha_crit.
 
-This is the first reduced spectral problem in which the Stage-10 profile angle
+This is the first reduced spectral problem in which the Stage-027 profile angle
 becomes an output rather than a free parameter.
 """
 
@@ -49,7 +49,7 @@ def expect_zero(name: str, expr: sp.Expr) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Symbols and exact overlap constants from Stage 10
+# Symbols and exact overlap constants from Stage 027
 # ---------------------------------------------------------------------------
 
 alpha = sp.symbols("alpha", positive=True, real=True)
@@ -179,7 +179,7 @@ def strong_loading_limit() -> tuple[sp.Expr, sp.Expr]:
     expect_zero("strong-loading limit - tan(2 theta_max)", rhs_inf - tan2_tmax)
     expect_zero("tan(theta_max) + sqrt(2)/3", tmax + sp.sqrt(2) / 3)
 
-    print("Thus the strong-loading eigenvector aligns with v/|v|, i.e. the Stage-10")
+    print("Thus the strong-loading eigenvector aligns with v/|v|, i.e. the Stage-027")
     print("max-coupling branch rather than the blind-angle branch.")
 
     return rhs_inf, det_eff

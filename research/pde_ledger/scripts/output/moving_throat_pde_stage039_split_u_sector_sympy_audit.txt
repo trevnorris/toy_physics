@@ -65,5 +65,5 @@ STAGE 39 THEOREM LEDGER
       eps_W_split = eps_W [1 - 2 deltaU/(11(1+deltaU))].
 4. The mixed loading vector rotates away from the source/support direction by the
    exact invariant D_dir = -kappa0*kappa1*g_W*rho0*deltaU/(1+deltaU).
-5. Therefore the Stage-21 factorization survives at the scalar-placement level, but
+5. Therefore the Stage-038 factorization survives at the scalar-placement level, but
    source/loading collinearity is no longer generic once deltaU != 0 and rho0 != 0.

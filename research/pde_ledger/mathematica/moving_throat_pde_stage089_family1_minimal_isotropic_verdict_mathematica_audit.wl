@@ -40,7 +40,7 @@ banner["STAGE 089 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
 rhoMin = 4/3;
 zetaMin = 1/3;
 
-(* Stage-62 Family-1 demand map data. *)
+(* Stage-079 Family-1 demand map data. *)
 kappaF1 = 12321/5;
 etaF1 = 37;
 yF1 = y /. FindRoot[y Tan[y] == etaF1, {y, 1.53}, WorkingPrecision -> 60, AccuracyGoal -> 40, PrecisionGoal -> 40];
@@ -79,7 +79,7 @@ rhoSuff = N[q[zetaSuff, 0], 50];
 rhoFail = N[q[zetaFail, 0], 50];
 rhoMax = N[q[zetaMax, 0], 50];
 
-expectApprox["Stage-075 zeta_max = A_F1 pi^2/4", zetaMax, aF1 Pi^2/4, 10^-30];
+expectApprox["Stage-080 zeta_max = A_F1 pi^2/4", zetaMax, aF1 Pi^2/4, 10^-30];
 
 (* Cross-check rho_X against upstream Stage-082 quoted values. The previous
    `rho_X - (1 + zeta_X)` form was tautological because Q(zeta; eps=0) =

@@ -29,7 +29,7 @@ banner("STAGE 081 — FAMILY-1 PRODUCT THRESHOLDS")
 
 zeta, Pi, Cmix, eps_blk = sp.symbols('zeta Pi Cmix eps_blk', real=True)
 
-# Exact Stage-35 support-demand law and its inversion.
+# Exact Stage-052 support-demand law and its inversion.
 zeta_expr = (Pi - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi))
 Pi_of_zeta = sp.solve(sp.Eq(zeta, zeta_expr), Pi)[0]
 Pi_of_zeta = sp.simplify(Pi_of_zeta)
@@ -43,7 +43,7 @@ expect_zero("Q(0)-1", sp.simplify(Q.subs(zeta, 0) - 1))
 expect_zero("Q(1)-2", sp.simplify(Q.subs(zeta, 1) - 2))
 print("dQ/dzeta =", sp.simplify(sp.diff(Q, zeta)))
 
-# Numerical zeta thresholds from Stage 63 at lambda_mu = 1.
+# Numerical zeta thresholds from Stage 080 at lambda_mu = 1.
 zeta_suff_chi_1 = sp.Float('2.46622291347846')
 zeta_fail_chi_1 = sp.Float('2.46752913273870')
 zeta_suff_J_1 = sp.Float('2.44257571477179')

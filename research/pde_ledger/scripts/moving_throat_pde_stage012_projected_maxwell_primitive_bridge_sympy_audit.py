@@ -2,7 +2,7 @@
 """
 Projected Maxwell primitive bridge
 
-This script starts one step closer to the Stage-4 / Stage-5 one-port moving-throat
+This script starts one step closer to the Stage-021 / Stage-022 one-port moving-throat
 bundle. Instead of inserting abstract bundle corrections z_n and n_n directly,
 it perturbs the primitive Maxwell/mixed one-port data:
 
@@ -52,7 +52,7 @@ def main() -> None:
     q1, s1, h1, d1, p1, g1 = sp.symbols("q1 s1 h1 d1 p1 g1")
     ell = sp.symbols("ell")
 
-    # Stage-4 / Stage-5 primitive one-port formulas
+    # Stage-021 / Stage-022 primitive one-port formulas
     Z0 = Q / Delta
     Z2 = (Q * S2 - H * Delta) / Delta**2
     Z4 = (Q * (S2**2 - Delta) - S2 * H * Delta) / Delta**3

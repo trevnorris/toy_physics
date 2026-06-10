@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage10_nonconstant_axial_family_sympy_audit.py
+moving_throat_pde_stage027_nonconstant_axial_family_sympy_audit.py
 
 SymPy audit for Stage 27 of the moving-throat PDE program.
 
@@ -15,11 +15,11 @@ on the exact N/N and D/N axial bases:
   • exact one-parameter overlap law kappa(theta),
   • exact blind-angle and max-coupling branch values,
   • exact wall stiffness expectation K_geo(theta),
-  • exact substitution into the Stage-8/9 minimal isotropic module,
-  • exact recovery of Stage 9 at theta=0,
+  • exact substitution into the Stage-025/026 minimal isotropic module,
+  • exact recovery of Stage 026 at theta=0,
   • and the exact blind-angle no-go for the outgoing quadrupole normalization.
 
-This remains a reduced-sector theorem, but it shows that the Stage-9 branch is
+This remains a reduced-sector theorem, but it shows that the Stage-026 branch is
 not an artifact of the constant wall profile: it is the theta=0 member of an
 exact finite-throat nonconstant profile family.
 """
@@ -176,11 +176,11 @@ def wall_stiffness() -> tuple[sp.Expr, sp.Expr]:
 
 
 # ---------------------------------------------------------------------------
-# IV. Substitution into the Stage-8/9 minimal isotropic module
+# IV. Substitution into the Stage-025/026 minimal isotropic module
 # ---------------------------------------------------------------------------
 
 def branch_substitution() -> tuple[sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr]:
-    banner("SECTION IV — PROFILE-DRESSED STAGE-8/9 BRANCH")
+    banner("SECTION IV — PROFILE-DRESSED STAGE-025/026 BRANCH")
 
     _, _, _, _, kappa = overlap_law()
     K_geo = wall_stiffness()[1]
@@ -223,7 +223,7 @@ def branch_substitution() -> tuple[sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr, 
     expect_zero("P - expected", P - P_expected)
     expect_zero("B0 - expected", B0 - B0_expected)
 
-    subbanner("IV.2 — Exact recovery of Stage 9 at theta = 0")
+    subbanner("IV.2 — Exact recovery of Stage 026 at theta = 0")
     theta0 = {sp.cos(theta): 1, sp.sin(theta): 0}
     kappa0 = sp.simplify(2 * sp.sqrt(2) / sp.pi)
 

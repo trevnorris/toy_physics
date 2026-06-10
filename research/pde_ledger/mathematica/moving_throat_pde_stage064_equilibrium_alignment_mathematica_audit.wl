@@ -101,7 +101,7 @@ gEqConst = FullSimplify[gPhi^2*i1Int/kX, Assumptions -> $Assumptions];
 Print["C^2 | H=const = ", fmt[c2Const]];
 Print["G_eq | H=const = ", fmt[gEqConst]];
 expectZero["matched-layer coherence", c2Const - 1];
-expectZero["matched-layer gain vs Stage-45 best-alignment formula", gEqConst - gPhi^2*nppInt/(kX*hw)];
+expectZero["matched-layer gain vs Stage-062 best-alignment formula", gEqConst - gPhi^2*nppInt/(kX*hw)];
 
 banner["CONTINUOUS CAUCHY BOUND CHECK"];
 

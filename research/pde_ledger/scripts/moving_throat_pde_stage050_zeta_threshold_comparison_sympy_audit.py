@@ -58,7 +58,7 @@ expect_zero(
 )
 
 banner("2. Same-operator twin family and stiffness threshold")
-# Imported from Stage 32's explicit D/N overlap extraction rather than
+# Imported from Stage 049's explicit D/N overlap extraction rather than
 # redeclared locally as a primitive formula.
 zeta_n = twin_support_ratio(n, x)
 print("zeta_n^(twin) =", zeta_n)

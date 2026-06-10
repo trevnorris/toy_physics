@@ -6,19 +6,19 @@ SymPy audit for Stage 029 of the moving-throat PDE program.
 
 Scope
 -----
-This script verifies the first exact dynamic-loading lift of the Stage-11 profile
+This script verifies the first exact dynamic-loading lift of the Stage-028 profile
 selection model. It checks:
 
   • the full Schur-complement elimination of the coupled wall/U/W/phi block,
   • the exact decomposition of the wall self-energy into
         Xi(omega) I_2 + alpha(omega) v v^T,
   • the conservative static limits Xi_0 and alpha_0,
-  • the refined Stage-11 angle law with the isotropic shift included,
+  • the refined Stage-028 angle law with the isotropic shift included,
   • the first-order outgoing expansion of alpha(omega),
   • and the selected-mode odd coefficient projected onto the conservative lower
     wall eigenvector.
 
-This is the first point in the program where the Stage-11 loading parameter is
+This is the first point in the program where the Stage-028 loading parameter is
 computed exactly from the coupled wall/BdG/Maxwell/mixed operator instead of
 being inserted by hand.
 """
@@ -131,7 +131,7 @@ def schur_decomposition() -> None:
 
 
 # ---------------------------------------------------------------------------
-# II. Conservative static data and refined Stage-11 profile law
+# II. Conservative static data and refined Stage-028 profile law
 # ---------------------------------------------------------------------------
 
 def conservative_profile_selection() -> tuple[sp.Expr, sp.Expr, sp.Expr]:

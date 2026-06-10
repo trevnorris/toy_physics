@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 006 — FULL GROUPED BUNDLE
+STAGE 023 — FULL GROUPED BUNDLE
 ========================================================================================
 
 ========================================================================================
@@ -114,8 +114,8 @@ N4_target closed form = 0
 PASS: N4_target closed form
 normalization abstract == explicit under D0 = K - B0 - Z0 = 0
 PASS: normalization abstract == explicit under D0 = K - B0 - Z0
-Stage-5 Gamma5_port anchor = 0
-PASS: Stage-5 Gamma5_port anchor
+Stage-022 Gamma5_port anchor = 0
+PASS: Stage-022 Gamma5_port anchor
 Gamma5_port via direct Bessel small-z expansion = 0
 PASS: Gamma5_port via direct Bessel small-z expansion
 ratio target at mhat=1 = 0
@@ -149,7 +149,7 @@ PASS: dP0/dZ0 - N0/D0^2
 dP0/dK + N0/D0^2 = 0
 PASS: dP0/dK + N0/D0^2
 
-FINAL STAGE-006 LEDGER:
+FINAL STAGE-023 LEDGER:
   Verified the weighted projector calculus, the full grouped-bundle coefficient
   assembly, the isotropic prefactor/normalization formulas, the constant-
   prefactor branch conditions, and the first-order anisotropy transport laws.

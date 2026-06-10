@@ -5,10 +5,10 @@ Moving-throat PDE — Stage 44 SymPy audit.
 What this audit verifies
 ------------------------
 1. Inserting the continuum-selected support baseline M_supp and support direction
-   R_phi into the Stage-24 support theorem gives an exact quadratic equation for
+   R_phi into the Stage-041 support theorem gives an exact quadratic equation for
    the physical softening depth xi.
 2. The physical root xi_phys is the branch that reduces to xi=0 when the loads vanish.
-3. Inserting q=t R_U and r=t R_phi into the Stage-25 normalization law yields the
+3. Inserting q=t R_U and r=t R_phi into the Stage-042 normalization law yields the
    exact continuum-selected normalization function F_cont.
 4. The minimal-kernel limit R_phi=1 gives the exact source-tied closure.
 5. The interference-match surface R_phi = R_U collapses the rank-2 branch to the
@@ -52,7 +52,7 @@ banner("STAGE 44 — CONTINUUM-SELECTED RANK-2 CLOSURE")
 
 subbanner("44.1 — Exact continuum-selected branch equation and quadratic theorem")
 
-# Stage-24 support theorem with q=t RU and r=t Rphi, t^2=lambda0.
+# Stage-041 support theorem with q=t RU and r=t Rphi, t^2=lambda0.
 q = sp.sqrt(lambda0) * RU
 r = sp.sqrt(lambda0) * Rphi
 n_req = sp.simplify(
@@ -79,7 +79,7 @@ expect_zero("zero-load root", sp.simplify(xi_phys.subs({Mmix: 0, Msupp: 0})))
 
 subbanner("44.2 — Exact continuum-selected normalization function")
 
-# Stage-25 general normalization with q=t RU, r=t Rphi, source t=sqrt(lambda0).
+# Stage-042 general normalization with q=t RU, r=t Rphi, source t=sqrt(lambda0).
 D_cont = sp.simplify(
     (delta + xi - Mmix * lambda0 * RU * (RU - Rphi))**2
     + lambda0 * (Mmix * (RU - Rphi) + Rphi * xi)**2
@@ -118,7 +118,7 @@ sp.pprint(sp.factor(n_source))
 print("F_source =")
 sp.pprint(sp.factor(F_source))
 
-# Source-tied formulas from Stage 24/25.
+# Source-tied formulas from Stage 041/042.
 n_source_expected = sp.simplify(
     (xi * (delta + xi) - Mmix * (delta + (1 + lambda0 * RU**2) * xi))
     / (delta + (1 + lambda0) * xi - Mmix * lambda0 * (RU - 1)**2)

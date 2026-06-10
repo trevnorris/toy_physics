@@ -12,7 +12,7 @@ What this audit verifies
    eps_W_split.
 4. The mixed loading vector z is no longer generically collinear with the source
    vector v, and the exact direction-splitting invariant factors cleanly.
-5. The Stage-21 continuum placement map survives at the scalar level with
+5. The Stage-038 continuum placement map survives at the scalar level with
    eps_W -> eps_W_split and delta -> delta_split.
 """
 
@@ -139,7 +139,7 @@ print("Collinearity theorem: D_dir = 0 iff deltaU = 0 or rho0 = 0 (equivalently 
 
 subbanner("39.4 — Split-U continuum placement map")
 
-# Stage-21 dimensionless kernel ratios, now with split effective blocking.
+# Stage-038 dimensionless kernel ratios, now with split effective blocking.
 M_mix_flat = sp.simplify(8 * Z_W * (1 + rho0)**2 / (pi**2 * (1 - eps_eta) * (1 - eps_W)))
 R_target_flat = sp.simplify(Lambda * (1 - eps_eta) * (1 - eps_W)**2 / (Z_W * (1 + rho0)**2))
 M_mix_split = sp.simplify(8 * Z_W * (1 + rho0)**2 / (pi**2 * (1 - eps_eta) * (1 - eps_W_split)))
@@ -179,5 +179,5 @@ print("3. The exact mixed blocking ratio becomes")
 print("      eps_W_split = eps_W [1 - 2 deltaU/(11(1+deltaU))].")
 print("4. The mixed loading vector rotates away from the source/support direction by the")
 print("   exact invariant D_dir = -kappa0*kappa1*g_W*rho0*deltaU/(1+deltaU).")
-print("5. Therefore the Stage-21 factorization survives at the scalar-placement level, but")
+print("5. Therefore the Stage-038 factorization survives at the scalar-placement level, but")
 print("   source/loading collinearity is no longer generic once deltaU != 0 and rho0 != 0.")

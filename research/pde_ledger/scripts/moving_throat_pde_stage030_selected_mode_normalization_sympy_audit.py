@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 13 SymPy audit.
+Stage 30 SymPy audit.
 
 Checks:
 1. Generic normalized-response expansion for a selected operator

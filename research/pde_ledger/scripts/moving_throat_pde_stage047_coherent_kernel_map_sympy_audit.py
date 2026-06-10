@@ -41,7 +41,7 @@ sigma = sp.Rational(88, 9) / sp.pi ** 2
 # Coherent interference ratio.
 # On the coherent tracking branch the W-channel and phi-channel
 # polarisation amplitudes saturate to the same bare ratio gamma*c_etaU/KU.
-# That saturation is established upstream at Stage 28 (matching condition
+# That saturation is established upstream at Stage 045 (matching condition
 # for the coherent local D/N kernel); within the scope of Stage 047 the
 # equalities rho_0 = sigma_0 = chi_0 are a notational rename rather than
 # an independent identity, so we do not assert them here. Any attempt to

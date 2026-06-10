@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage8_minimal_isotropic_normalization_sympy_audit.py
+moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
 
 SymPy audit for Stage 25 of the moving-throat PDE program.
 
 Scope
 -----
 This script verifies the minimal isotropic single-support/single-port closure that
-follows after the Stage-7 angular theorem:
+follows after the Stage-024 angular theorem:
 
   • exact zero-frequency coefficients B0, Z0, N0,
   • exact closed formula for P0 = N0 / D0,

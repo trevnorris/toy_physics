@@ -34,7 +34,7 @@ print("dQ/dzeta =", sp.simplify(sp.diff(Q, zeta)))
 # Exact unblocked reduction.
 expect_zero("Q(zeta;0) - (1+zeta)", sp.simplify(Q.subs(eps, 0) - (1 + zeta)))
 
-# Numerical Family-1 data carried from Stages 63-64.
+# Numerical Family-1 data carried from Stages 080-081.
 zeta_suff_chi = sp.Float("2.46622291347846")
 zeta_fail_chi = sp.Float("2.46752913273870")
 zeta_suff_J = sp.Float("2.44257571477179")

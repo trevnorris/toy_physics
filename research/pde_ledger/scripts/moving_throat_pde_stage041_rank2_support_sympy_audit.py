@@ -10,7 +10,7 @@ What this audit verifies
 2. The exact required support loading n_req(xi,delta;m,q,r) is correct.
 3. The mixed-baseline monotonicity theorem dn_req/dm < 0 is exact.
 4. If the support tracks the mixed direction (r=q), the rank-2 completion
-   collapses exactly to the Stage-23 one-direction geometry.
+   collapses exactly to the Stage-040 one-direction geometry.
 5. If the support remains tied to the original source direction, the exact
    split-U source-tied support formula follows.
 """
@@ -148,7 +148,7 @@ print("              / [delta + (1+r^2)xi - m(q-r)^2].")
 print("3. The mixed baseline always lowers the support needed to hit the same branch:")
 print("      d n_req / d m < 0.")
 print("4. If support tracks the mixed direction (r=q), the rank-2 completion collapses")
-print("   exactly to the Stage-23 one-direction geometry:")
+print("   exactly to the Stage-040 one-direction geometry:")
 print("      n_req = G_q - m.")
 print("5. If support stays tied to the original source direction, the selected branch")
 print("   acquires a genuine new source-tied support-feasibility window.")

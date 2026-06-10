@@ -58,7 +58,7 @@ expectTrue["rho_alpha lies inside the exact Family-1 success region", rhoAlpha <
 expectTrue["zeta_req lies below the hard Family-1 ceiling", zetaReq < zetaMaxF1];
 expectTrue["zeta_req lies below the zero-bias Family-1 baseline", zetaReq < aF1];
 
-(* Stage 075 transport map: zeta_req < A_F1 ==> Pe_req = 0. The inequality
+(* Stage 079 transport map: zeta_req < A_F1 ==> Pe_req = 0. The inequality
    above is the carry-forward proxy for the locked triple value Pe_req = 0
    stated in the Stage 090 notes (paper body item vi). *)
 peReq = 0;

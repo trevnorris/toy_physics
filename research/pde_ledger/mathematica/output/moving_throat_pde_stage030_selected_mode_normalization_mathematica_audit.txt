@@ -42,7 +42,7 @@ PASS: normalization equivalence
 lambda_req = (5*beta0*cSpeed^5*mhat^2*radius^5*(x0 + x1 + (dK*(x0 - x1) + alpha*(x0 + x1)^2)/Sqrt[(dK + alpha*(x0 - x1))^2 + 4*alpha^2*x0*x1]))/(108*cs^5*gConst)
 
 ========================================================================================
-STAGE 13 AUDIT COMPLETE
+STAGE 30 AUDIT COMPLETE
 ========================================================================================
 Verified:
   generic normalized selected-response expansion

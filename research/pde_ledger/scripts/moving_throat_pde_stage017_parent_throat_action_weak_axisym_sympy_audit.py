@@ -59,7 +59,7 @@ def main() -> None:
     assert_zero('wall stiffness trace', Kbar)
     assert_zero('wall stiffness b=3a', bK - 3*aK)
 
-    # Wall-only contributions to the Stage-5 weak-axisymmetric gates.
+    # Wall-only contributions to the Stage-022 weak-axisymmetric gates.
     D01_20, D01_21, D01_22 = dK20, dK21, dK22
     D21_20, D21_21, D21_22 = -dM20, -dM21, -dM22
     D41_20, D41_21, D41_22 = sp.Integer(0), sp.Integer(0), sp.Integer(0)

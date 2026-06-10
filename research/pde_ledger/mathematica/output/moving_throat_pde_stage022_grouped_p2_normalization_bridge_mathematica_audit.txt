@@ -1,6 +1,6 @@
 
 ========================================================================================
-STAGE 005 — GROUPED P2 NORMALIZATION BRIDGE
+STAGE 022 — GROUPED P2 NORMALIZATION BRIDGE
 ========================================================================================
 
 ========================================================================================
@@ -48,7 +48,7 @@ bx isotropic = 0
 PASS: bx isotropic
 
 ========================================================================================
-SECTION IV — STAGE-4 ONE-PORT PROTOTYPE
+SECTION IV — STAGE-021 ONE-PORT PROTOTYPE
 ========================================================================================
 N0 prototype = 0
 PASS: N0 prototype
@@ -58,14 +58,14 @@ N4 prototype = 0
 PASS: N4 prototype
 
 ========================================================================================
-SECTION V — STAGE-4 OUTGOING l=2 FINGERPRINT ANCHOR
+SECTION V — STAGE-021 OUTGOING l=2 FINGERPRINT ANCHOR
 ========================================================================================
-Stage-4 A coefficient = 0
-PASS: Stage-4 A coefficient
-Stage-4 B coefficient = 0
-PASS: Stage-4 B coefficient
-Stage-4 G5 coefficient = 0
-PASS: Stage-4 G5 coefficient
+Stage-021 A coefficient = 0
+PASS: Stage-021 A coefficient
+Stage-021 B coefficient = 0
+PASS: Stage-021 B coefficient
+Stage-021 G5 coefficient = 0
+PASS: Stage-021 G5 coefficient
 
 ========================================================================================
 SECTION VI — QUADRUPOLE NORMALIZATION PRODUCT
@@ -79,7 +79,7 @@ PASS: mhat=1 K2 target
 mhat=1 K4 target = 0
 PASS: mhat=1 K4 target
 
-FINAL STAGE-005 LEDGER:
+FINAL STAGE-022 LEDGER:
   Verified the exact grouped P2 bridge from conservative operator moments to
   normalized response moments, outgoing prefactor coefficients, the one-port
   prototype N0/N2/N4 formulas, and the universal quadrupole normalization product.

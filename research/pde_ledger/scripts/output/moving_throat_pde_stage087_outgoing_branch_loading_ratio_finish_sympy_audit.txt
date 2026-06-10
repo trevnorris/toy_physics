@@ -18,4 +18,4 @@ rho_fail < rho_max = True
 FINAL LEDGER
 The reduced explicit Family-1 theorem is completely equivalent to a one-number test:
   rho_alpha = alpha_req/alpha_mix
-with success/failure determined by the Stage-69 ratio window.
+with success/failure determined by the Stage-086 ratio window.

@@ -227,7 +227,7 @@ y2Static = FullSimplify[y2Resp /. omega -> 0, Assumptions -> a > 0 && cS > 0];
 y2Hat = Expand[y2Resp/y2Static];
 g5Stage4 = FullSimplify[Coefficient[y2Hat, omega, 5]/I, Assumptions -> $Assumptions];
 gamma5Port = g5Stage4;
-expectZero["Stage-5 Gamma5_port anchor", gamma5Port - a^5/(27*cS^5)];
+expectZero["Stage-022 Gamma5_port anchor", gamma5Port - a^5/(27*cS^5)];
 (* Independent-path verification: compute the 5th-order coefficient of
    Y2/Y2_static by direct small-z Taylor expansion of j2 + I y2 (and its
    derivative), bypassing the omega*D[h2,z]/h2 ratio path used above. *)
@@ -270,7 +270,7 @@ expectZero["dP0/dZ0 - N0/D0^2", D[p0Mono, z0] - n0mono/(k - b0 - z0)^2];
 expectZero["dP0/dK + N0/D0^2", D[p0Mono, k] + n0mono/(k - b0 - z0)^2];
 
 Print[""];
-Print["FINAL STAGE-006 LEDGER:"];
+Print["FINAL STAGE-023 LEDGER:"];
 Print["  Verified the weighted projector calculus, the full grouped-bundle coefficient"];
 Print["  assembly, the isotropic prefactor/normalization formulas, the constant-"];
 Print["  prefactor branch conditions, and the first-order anisotropy transport laws."];

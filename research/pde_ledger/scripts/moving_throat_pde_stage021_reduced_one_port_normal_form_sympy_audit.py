@@ -361,7 +361,7 @@ def main() -> None:
     out = outgoing_l2_fingerprint_audit()
     scalar_derivative_coupling_audit()
 
-    banner("FINAL STAGE-4 LEDGER")
+    banner("FINAL STAGE-21 LEDGER")
     print("Verified with SymPy:")
     print("  • the mixed 4+1 Maxwell fields E_w = F_w0 and C_a = F_aw are gauge invariant;")
     print("  • a reduced wall + brane-like Maxwell mode + mixed A_w/F_{mu w}/J^w-active mode has the exact conservative self-energy")

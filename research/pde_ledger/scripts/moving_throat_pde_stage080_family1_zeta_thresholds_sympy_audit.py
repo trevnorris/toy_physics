@@ -2,8 +2,8 @@
 """
 SymPy audit for Stage 080.
 
-Converts the Stage-61 Family-1 Pe_req thresholds into explicit quadrupole-demand
-thresholds zeta_req using the Stage-62 Family-1 demand map.
+Converts the Stage-078 Family-1 Pe_req thresholds into explicit quadrupole-demand
+thresholds zeta_req using the Stage-079 Family-1 demand map.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ lam = sp.symbols('lambda_mu', positive=True, real=True)
 Pe = sp.symbols('Pe', positive=True, real=True)
 y = sp.symbols('y', real=True)
 
-# Family-1 constants from Stage 62.
+# Family-1 constants from Stage 079.
 y_F1 = sp.nsolve(y * sp.tan(y) - 37, 1.53, tol=1e-34, maxsteps=100)
 kappa_F1 = sp.Rational(12321, 5)
 A_F1 = (kappa_F1 + sp.pi**2 / 4) / (kappa_F1 + y_F1**2)
@@ -32,7 +32,7 @@ Omega = sp.simplify(sp.pi * Pe * (2 * Pe * sp.exp(Pe) + sp.pi) / ((4 * Pe**2 + s
 zeta = sp.simplify(A_F1 * Omega**2)
 zeta_max = sp.simplify(sp.limit(zeta, Pe, sp.oo))
 
-# Stage-61 explicit Pe thresholds.
+# Stage-078 explicit Pe thresholds.
 Pe_suff_chi = sp.Float('96.5285247264386') * lam**2
 Pe_fail_chi = sp.Float('11220.5441626259') * lam**2
 Pe_suff_J = sp.Float('22.0062226330754') * lam**2
@@ -62,7 +62,7 @@ for k, v in vals.items():
 # Independent recomputation of zeta_*(1) via A_F1 * Omega(Pe)^2 with
 # explicit float Pe values; the four reference targets are the
 # corresponding output values printed above. This anchors the four
-# Stage-61 numerical Pe thresholds (96.5285..., 11220.5..., 22.0062...,
+# Stage-078 numerical Pe thresholds (96.5285..., 11220.5..., 22.0062...,
 # 2558.02...) to the four zeta values, breaking the tautology in the
 # limit-saturation check below.
 def _omega_explicit(p):

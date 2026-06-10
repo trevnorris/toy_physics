@@ -4,7 +4,7 @@ STAGE 42 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading
+42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-041 support loading
 ----------------------------------------------------------------------------------------
 e1/e0 from row 1 =
  -(m⋅q - m⋅r + r⋅ξ)  
@@ -74,7 +74,7 @@ F_(q,r,t) =
 F_general - expected = 0
 
 ----------------------------------------------------------------------------------------
-42.3 — Tracking-support collapse back to Stage 23
+42.3 — Tracking-support collapse back to Stage 040
 ----------------------------------------------------------------------------------------
 F_track =
                2                  
@@ -136,7 +136,7 @@ STAGE 42 THEOREM LEDGER
 1. With two loading directions, the selected-mode normalization remains exact and is
    governed by the three-direction function F_(q,r,t)(xi,delta;m).
 2. If the support tracks the mixed direction, the entire rank-2 normalization law
-   collapses exactly to the Stage-23 two-vector function.
+   collapses exactly to the Stage-040 two-vector function.
 3. If the support stays tied to the original source direction, the split-U continuum
    yields the exact source-tied normalization function F_src(xi,delta;m,R_U).
 4. Setting R_U = 1 recovers the flat-U branch exactly.

@@ -290,7 +290,7 @@ expectZero["b_P - 3 eps*P1/4", bPChk - 3*eps*p1Closed/4];
 expectZero["b_P - 3 a_P", bPChk - 3*aPChk];
 
 Print[""];
-Print["FINAL STAGE-007 LEDGER:"];
+Print["FINAL STAGE-024 LEDGER:"];
 Print["  Verified the normalized real STF harmonic orthonormality, the exact angular"];
 Print["  source-map identity, the O(3) isotropy collapse, representative isotropic"];
 Print["  overlap formulas for C_alpha/B_n/Z_n/N_n/D(omega), the axisymmetric Y20"];

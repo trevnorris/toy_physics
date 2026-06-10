@@ -113,7 +113,7 @@ PASS: b_P - 3 eps*P1/4
 b_P - 3 a_P = 0
 PASS: b_P - 3 a_P
 
-FINAL STAGE-007 LEDGER:
+FINAL STAGE-024 LEDGER:
   Verified the normalized real STF harmonic orthonormality, the exact angular
   source-map identity, the O(3) isotropy collapse, representative isotropic
   overlap formulas for C_alpha/B_n/Z_n/N_n/D(omega), the axisymmetric Y20

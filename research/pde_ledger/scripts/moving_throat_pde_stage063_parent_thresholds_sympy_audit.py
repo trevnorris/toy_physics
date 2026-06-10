@@ -73,7 +73,7 @@ expect_zero(
     G_micro.subs(Osp**2, C2 * Nss * Npp) - sp.simplify(G_max * C2),
 )
 
-# Insert Stage-44 threshold formulas
+# Insert Stage-061 threshold formulas
 G_fail_sub = Pe_req / (kappa * Deltainf)
 G_suff_sub = Pe_req / (kappa * Delta0)
 

@@ -84,7 +84,7 @@ tan(theta_max)               = -sqrt(2)/3
 tan(2 theta_max)            = -6*sqrt(2)/7
 strong-loading limit - tan(2 theta_max) = 0
 tan(theta_max) + sqrt(2)/3 = 0
-Thus the strong-loading eigenvector aligns with v/|v|, i.e. the Stage-10
+Thus the strong-loading eigenvector aligns with v/|v|, i.e. the Stage-027
 max-coupling branch rather than the blind-angle branch.
 alpha_crit = 9*pi**2*(K_eta**2*L**2 + 12*K_eta*L**2*T_Omega + pi**2*K_eta*T_w + 36*L**2*T_Omega**2 + 6*pi**2*T_Omega*T_w)/(8*(11*K_eta*L**2 + 66*L**2*T_Omega + 9*pi**2*T_w))
 alpha_crit - expected = 0

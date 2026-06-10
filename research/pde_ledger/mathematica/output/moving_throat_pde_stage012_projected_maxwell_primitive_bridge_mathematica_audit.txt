@@ -1,5 +1,5 @@
 STAGE 012 PROJECTED MAXWELL PRIMITIVE BRIDGE MATHEMATICA AUDIT
-M1 primitive one-port forms (carried from Stage 4 / Stage 5):
+M1 primitive one-port forms (carried from Stage 021 / Stage 022):
   Z0 = Q/Delta
   Z2 = (-(Delta*H) + Q*S2)/Delta^2
   Z4 = (-(Delta*H*S2) + Q*(-Delta + S2^2))/Delta^3

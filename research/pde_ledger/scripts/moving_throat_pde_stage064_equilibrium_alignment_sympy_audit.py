@@ -22,7 +22,7 @@ Main checks
 4. In the constant-compressibility limit H(y)=H_w, the branch is exactly matched:
       C^2 = 1,
       G_eq = g_phi^2 * I1 / K_X = g_phi^2 N_pp / (K_X H_w),
-   reproducing the Stage-45/46 best-alignment formulas.
+   reproducing the Stage-062/063 best-alignment formulas.
 5. A discrete two-point model verifies the Cauchy gap exactly:
       N_pp I2 - I1^2 = w1*w2*(H1 - H2)^2/(H1^2 H2^2) >= 0.
 """
@@ -119,7 +119,7 @@ Geq_const = sp.simplify(Geq.subs(const_subs))
 print("C^2 | H=const =", C2_const)
 print("G_eq | H=const =", Geq_const)
 expect_zero("matched-layer coherence", C2_const - 1)
-expect_zero("matched-layer gain vs Stage-45 best-alignment formula", Geq_const - g_phi**2 * Npp / (KX * Hw))
+expect_zero("matched-layer gain vs Stage-062 best-alignment formula", Geq_const - g_phi**2 * Npp / (KX * Hw))
 
 banner("DISCRETE TWO-POINT CAUCHY GAP CHECK")
 
@@ -177,4 +177,4 @@ banner("STAGE 64 AUDIT PASSED")
 print("1. The equilibrium-induced source channel is aligned with the support loading through 1/H.")
 print("2. The coherence factor is exactly C^2 = I1^2/(N_pp I2) and reaches 1 when H is constant on the active layer.")
 print("3. The exact eliminated-source gain is G_eq = g_phi^2 I1/K_X.")
-print("4. In the matched-layer limit this reproduces the Stage-45/46 best-alignment formulas.")
+print("4. In the matched-layer limit this reproduces the Stage-062/063 best-alignment formulas.")

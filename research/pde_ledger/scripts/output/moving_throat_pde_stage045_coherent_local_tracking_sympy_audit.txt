@@ -32,7 +32,7 @@ M_supp = 8*Z_phi*(chi_0 + 1)**2/(pi**2*(eps_eta - 1)*(eps_phi_split - 1))
 M_tr   = 8*(chi_0 + 1)**2*(Z_W*(eps_phi_split - 1) + Z_phi*(eps_W_split - 1))/(pi**2*(eps_W_split - 1)*(eps_eta - 1)*(eps_phi_split - 1))
 
 ========================================================================================
-4. Exact collapse of the Stage-27 branch equation
+4. Exact collapse of the Stage-044 branch equation
 ========================================================================================
 tracking numerator = Mmix*R_U**2*lambda_0*xi + Mmix*delta + Mmix*xi + Msupp*R_U**2*lambda_0*xi + Msupp*delta + Msupp*xi - delta*xi - xi**2
 tracking denominator = R_U**2*lambda_0*xi + delta + xi

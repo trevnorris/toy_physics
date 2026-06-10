@@ -71,4 +71,4 @@ with sigma = 88/(9*pi**2)
 STAGE 37 AUDIT COMPLETE
 ========================================================================================
 The first explicit finite-throat continuum kernel reproduces the full reduced
-Stage-17/19 branch data exactly.
+Stage-034/036 branch data exactly.

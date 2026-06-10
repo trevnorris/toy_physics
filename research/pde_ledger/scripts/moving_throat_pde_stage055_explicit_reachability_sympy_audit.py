@@ -70,5 +70,5 @@ print("Regime C: zeta_req > pi^2/(4-x) -> this explicit family fails.")
 
 print("\nFINAL LEDGER")
 print("  The explicit exp+Robin family has closure range 1 <= zeta <= pi^2/(4-x).")
-print("  It reaches the Stage-35 threshold iff zeta_req <= pi^2/(4-x) (strict < for finite parameters).")
+print("  It reaches the Stage-052 threshold iff zeta_req <= pi^2/(4-x) (strict < for finite parameters).")
 print("  If zeta_req > pi^2/4, the compliance floor is x >= 4 - pi^2/zeta_req.")

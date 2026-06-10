@@ -4,12 +4,12 @@ Moving-throat PDE — Stage 42 SymPy audit.
 
 What this audit verifies
 ------------------------
-1. After inserting the exact Stage-24 support loading, the selected lower-mode
+1. After inserting the exact Stage-041 support loading, the selected lower-mode
    eigenvector ratio has a closed-form rank-2 expression.
 2. The outgoing/mixed and source overlaps are exact and lead to a generalized
    normalization function F_(q,r,t)(xi,delta;m).
 3. If the support tracks the mixed direction, the exact rank-2 normalization law
-   collapses back to the Stage-23 two-vector law.
+   collapses back to the Stage-040 two-vector law.
 4. The source-tied split-U specialization yields the exact function F_src.
 5. Setting R_U = 1 recovers the flat-U branch exactly.
 6. The first-order source-tied deformation about R_U = 1 is exact.
@@ -50,7 +50,7 @@ R_U, eps = sp.symbols("R_U eps", positive=True, real=True)
 
 banner("STAGE 42 — SELECTED-MODE NORMALIZATION UNDER RANK-2 SUPPORT COMPLETION")
 
-subbanner("42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-24 support loading")
+subbanner("42.1 — Exact selected-mode eigenvector ratio after inserting the Stage-041 support loading")
 
 n_req = sp.simplify(
     (xi * (delta + xi) - m * (delta + (1 + q**2) * xi))
@@ -100,7 +100,7 @@ F_expected = sp.simplify(
 )
 expect_zero("F_general - expected", F_general - F_expected)
 
-subbanner("42.3 — Tracking-support collapse back to Stage 23")
+subbanner("42.3 — Tracking-support collapse back to Stage 040")
 
 F_track = sp.simplify(F_expected.subs(r, q))
 F_stage23 = sp.simplify(
@@ -181,7 +181,7 @@ banner("STAGE 42 THEOREM LEDGER")
 print("1. With two loading directions, the selected-mode normalization remains exact and is")
 print("   governed by the three-direction function F_(q,r,t)(xi,delta;m).")
 print("2. If the support tracks the mixed direction, the entire rank-2 normalization law")
-print("   collapses exactly to the Stage-23 two-vector function.")
+print("   collapses exactly to the Stage-040 two-vector function.")
 print("3. If the support stays tied to the original source direction, the split-U continuum")
 print("   yields the exact source-tied normalization function F_src(xi,delta;m,R_U).")
 print("4. Setting R_U = 1 recovers the flat-U branch exactly.")

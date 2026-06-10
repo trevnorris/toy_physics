@@ -31,7 +31,7 @@ banner("STAGE 089 — EXPLICIT FAMILY-1 VERDICT FOR THE MINIMAL ISOTROPIC BRANCH
 rho_min = sp.Rational(4,3)
 zeta_min = sp.Rational(1,3)
 
-# Stage-62 Family-1 demand map data.
+# Stage-079 Family-1 demand map data.
 Pe = sp.symbols("Pe", positive=True, real=True)
 y = sp.symbols("y", real=True)
 kappa_F1 = sp.Rational(12321, 5)
@@ -74,7 +74,7 @@ rho_suff = sp.simplify(Q.subs(zeta, zeta_suff))
 rho_fail = sp.simplify(Q.subs(zeta, zeta_fail))
 rho_max = sp.simplify(Q.subs(zeta, zeta_max))
 
-expect_zero("Stage-075 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
+expect_zero("Stage-080 zeta_max = A_F1 pi^2/4", zeta_max - A_F1 * sp.pi**2 / 4, tol=1e-30)
 expect_zero("Stage-082 Q(zeta;0)=1+zeta reduction", Q_gen.subs(eps_blk, 0) - (1 + zeta), tol=1e-30)
 
 

@@ -186,7 +186,7 @@ So a derivative-coupled scalar mixed outlet converts the naive i*omega port law 
 That matches the scalar rescue pattern isolated in the 2.5PN audit.
 
 ========================================================================================
-FINAL STAGE-4 LEDGER
+FINAL STAGE-21 LEDGER
 ========================================================================================
 Verified with SymPy:
   • the mixed 4+1 Maxwell fields E_w = F_w0 and C_a = F_aw are gauge invariant;

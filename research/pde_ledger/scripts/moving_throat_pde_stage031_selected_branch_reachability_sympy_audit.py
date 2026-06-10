@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Stage 14 SymPy audit.
+Stage 31 SymPy audit.
 
 Checks:
 1. Exact derivative of the selected overlap s_-(alpha).

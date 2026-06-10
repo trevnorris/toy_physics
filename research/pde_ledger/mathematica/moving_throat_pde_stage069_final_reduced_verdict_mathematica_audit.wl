@@ -96,7 +96,7 @@ expectZero[
 
 expectZero["Pres-PresGap consistency via Solve", presGapConsistency];
 
-(* Stage-49 matched-window derivation via parameterized effective gap. *)
+(* Stage-066 matched-window derivation via parameterized effective gap. *)
 Clear[DeltaEff];
 $Assumptions = $Assumptions && DeltaEff > 0;
 WMatchGen[de_] := PeReq/de;
@@ -113,7 +113,7 @@ expectPositive[
   -D[WMatchGen[DeltaEff], DeltaEff] * DeltaEff^2 / PeReq
 ];
 
-(* Stage-51 / Stage-68 resonance penalty via band-edge ratio extraction. *)
+(* Stage-068 / Stage-068 resonance penalty via band-edge ratio extraction. *)
 PresFromRatio = FullSimplify[WfailRes/WfailMatch, Assumptions -> $Assumptions];
 expectZero[
   "P_res from band-edge ratio matches (1 + Pres_gap)",
@@ -161,10 +161,10 @@ expectPositive["success-band point - matched success edge", WsuccessBand - Wsuff
 expectPositive["resonance success edge - success-band point", WsuffRes - WsuccessBand];
 
 banner["FINAL LEDGER"];
-Print["Stage-49 matched branch:"];
+Print["Stage-066 matched branch:"];
 Print["  Universal fail   : W_wall <= Pe_req / Delta_inf"];
 Print["  Universal succeed: W_wall >= Pe_req / Delta_0"];
-Print["Stage-51 resonance family:"];
+Print["Stage-068 resonance family:"];
 Print["  Fail threshold   : W_wall <= Pe_req / (C_res^2 Delta_inf)"];
 Print["  Success threshold: W_wall >= Pe_req / (C_res^2 Delta_0)"];
 Print["Therefore the only profile-sensitive regions are the exact side-bands"];

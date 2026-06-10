@@ -32,10 +32,10 @@ PASS: G_general - expected
 ----------------------------------------------------------------------------------------
 F_U(xi,delta;R_U) = ((delta + xi + (2*rU*xi)/9)^2*(delta + xi + (2*rU^2*xi)/9)^2)/((1 - xi)*((2*rU^2*xi^2)/9 + (delta + xi)^2)^2)
 G_U(xi,delta;R_U) = (xi*(delta + xi))/(delta + xi + (2*rU^2*xi)/9)
-F_U(R_U=1) - Stage18 F = 0
-PASS: F_U(R_U=1) - Stage18 F
-G_U(R_U=1) - Stage19 G = 0
-PASS: G_U(R_U=1) - Stage19 G
+F_U(R_U=1) - Stage035 F = 0
+PASS: F_U(R_U=1) - Stage035 F
+G_U(R_U=1) - Stage036 G = 0
+PASS: G_U(R_U=1) - Stage036 G
 
 ----------------------------------------------------------------------------------------
 4. Independent cross-check of first-order deformation about flat-U limit

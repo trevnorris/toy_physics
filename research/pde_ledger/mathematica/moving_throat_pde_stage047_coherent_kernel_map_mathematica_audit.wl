@@ -37,7 +37,7 @@ sigma = 88/(9*Pi^2);
 (* Coherent interference ratio.
    On the coherent tracking branch the W-channel and phi-channel
    polarisation amplitudes saturate to the same bare ratio gamma*cEtaU/kU.
-   That saturation is established upstream at Stage 28 (matching condition
+   That saturation is established upstream at Stage 045 (matching condition
    for the coherent local D/N kernel); within the scope of Stage 047 the
    equalities rho_0 = sigma_0 = chi_0 are a notational rename, so we do
    not assert them here. Any local verification reduces to lamW/lamW

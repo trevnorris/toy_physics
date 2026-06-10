@@ -11,7 +11,7 @@ Main checks
 -----------
 1. Define
       W_wall = 4*pi*a^2*L^2*J1*V0^2 / (T_X*ell).
-2. Then the Stage-48 thin-wall thresholds become
+2. Then the Stage-065 thin-wall thresholds become
       W_fail = Pe_req/Delta_inf,
       W_suff = Pe_req/Delta_0.
 3. Therefore:
@@ -56,7 +56,7 @@ print("W_wall =", W_wall)
 print("W_fail =", W_fail)
 print("W_suff =", W_suff)
 
-# Stage-48 thresholds
+# Stage-065 thresholds
 V0_fail_sq = sp.simplify(TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * J1 * Deltainf))
 V0_suff_sq = sp.simplify(TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * J1 * Delta0))
 

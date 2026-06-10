@@ -89,4 +89,4 @@ if not rho_gap_ok:
 print("\nFINAL LEDGER")
 print("The reduced explicit Family-1 theorem is completely equivalent to a one-number test:")
 print("  rho_alpha = alpha_req/alpha_mix")
-print("with success/failure determined by the Stage-69 ratio window.")
+print("with success/failure determined by the Stage-086 ratio window.")

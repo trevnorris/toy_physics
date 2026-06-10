@@ -188,6 +188,6 @@ Print[""];
 Print["Theorem ledger:"];
 Print["  dPe_*/dXi = Delta / (1 - Xi dDelta/dPe)"];
 Print["  zeta_phys(F1) and Pi/C_mix windows are monotone in Xi on the stable branch"];
-Print["  inserting the natural Family-1 wall data reproduces the Stage-61/63/64 windows directly"];
+Print["  inserting the natural Family-1 wall data reproduces the Stage-078/080/081 windows directly"];
 
 Exit[0];

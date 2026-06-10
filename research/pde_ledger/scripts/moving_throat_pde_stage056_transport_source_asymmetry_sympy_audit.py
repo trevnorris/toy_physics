@@ -4,7 +4,7 @@ Moving-Throat PDE — Stage 56 SymPy audit.
 
 Checks:
 1. stationary zero-flux drift-diffusion branch gives the normalized exponential source family,
-2. exact D/N lowest-mode overlap reproduces the Stage-36 boost formula with alpha = Pe,
+2. exact D/N lowest-mode overlap reproduces the Stage-053 boost formula with alpha = Pe,
 3. derivative of the overlap boost equals the exact covariance expression,
 4. small- and large-Pe asymptotics are correct.
 """

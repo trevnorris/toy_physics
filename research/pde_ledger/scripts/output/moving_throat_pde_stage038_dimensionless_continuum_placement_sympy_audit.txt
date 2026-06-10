@@ -4,7 +4,7 @@ STAGE 38 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT
 ========================================================================================
 
 ----------------------------------------------------------------------------------------
-1. Stage-20 continuum formulas
+1. Stage-037 continuum formulas
 ----------------------------------------------------------------------------------------
 A         = (K_U*(K_eta + 6*T_Omega) - c_etaU**2)/(K_U*mu_eta)
 delta     = pi**2*K_U*T_w/(L**2*(K_U*(K_eta + 6*T_Omega) - c_etaU**2))
@@ -60,5 +60,5 @@ On the natural nonvanishing transfer branch 1+rho > 0:
 ========================================================================================
 STAGE 38 AUDIT COMPLETE
 ========================================================================================
-The Stage-20 continuum operator collapses to an exact five-ratio placement map
+The Stage-037 continuum operator collapses to an exact five-ratio placement map
 together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.

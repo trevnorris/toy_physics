@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage7_overlap_isotropy_sympy_audit.py
+moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
 
 SymPy audit for Stage 24 of the moving-throat PDE program.
 
 Scope
 -----
 This script verifies the first explicit overlap-integral layer beyond the abstract
-Stage-6 grouped bundle:
+Stage-023 grouped bundle:
 
   • orthonormality of the normalized real STF l=2 harmonics,
   • the exact angular source-map identity,
@@ -469,7 +469,7 @@ def first_order_transport() -> None:
     expect_zero("b_P - 3*eps*P1/4", bP - 3 * eps * P1 / 4)
     expect_zero("b_P - 3 a_P", bP - 3 * aP)
 
-    print("So the Stage-6 normalization stack inherits the same exact axisymmetric")
+    print("So the Stage-023 normalization stack inherits the same exact axisymmetric")
     print("defect law as the microscopic grouped overlaps.")
 
 

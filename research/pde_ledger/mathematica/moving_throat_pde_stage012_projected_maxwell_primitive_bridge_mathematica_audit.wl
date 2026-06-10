@@ -47,7 +47,7 @@ N4form =
   (Delta^2 Gw^2 - 2 Delta P^2 - 4 Delta P S2 Gw + 3 P^2 S2^2)/
     Delta^4;
 
-Print["M1 primitive one-port forms (carried from Stage 4 / Stage 5):"];
+Print["M1 primitive one-port forms (carried from Stage 021 / Stage 022):"];
 Print["  Z0 = ", fmt[Z0form]];
 Print["  Z2 = ", fmt[Z2form]];
 Print["  Z4 = ", fmt[Z4form]];

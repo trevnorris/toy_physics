@@ -32,7 +32,7 @@ expectZero[name_String, expr_] := Module[{res},
 
 banner["STAGE 038 — DIMENSIONLESS CONTINUUM PLACEMENT"];
 
-subbanner["1. Stage-20 continuum formulas"];
+subbanner["1. Stage-037 continuum formulas"];
 
 Clear[gNewton, cLight, cS, aScale, ell, muEta, muW, kEta, tOmega, tw, kU, kW, tW, cEtaU, cEtaW, cUW];
 $Assumptions =

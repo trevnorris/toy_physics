@@ -38,6 +38,6 @@ STAGE 60 THEOREM LEDGER
 ========================================================================================
 1. The positive-density free energy yields mu = Theta log(sigma/sigma_*) - Lambda phi.
 2. The Onsager current is J = -D_sigma sigma_s + M_sigma Lambda sigma phi_s with D_sigma = M_sigma Theta.
-3. Under affine support drop, the zero-flux branch is exactly the Stage-39 exponential family.
+3. Under affine support drop, the zero-flux branch is exactly the Stage-056 exponential family.
 4. The microscopic support/source gain is Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X) = chi_sigma Lambda_phi^2 L^2/T_X.
 5. The same closure is passive: dF/dt = - integral J^2/(M_sigma sigma) ds <= 0 under no-flux boundaries.

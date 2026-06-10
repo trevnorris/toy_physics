@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage6_full_grouped_bundle_sympy_audit.py
+moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
 
 SymPy audit for Stage 23 of the moving-throat PDE program.
 
@@ -342,7 +342,7 @@ def isotropic_branch_and_target() -> dict[str, sp.Expr]:
         "normalization abstract == explicit under D0 = K - B0 - Z0",
         sp.simplify(norm_abstract.subs(D0, K_sym - B0_sym - Z0_sym) - norm_explicit),
     )
-    # Carry the outgoing odd coefficient through the same exact Stage-4/5 DtN
+    # Carry the outgoing odd coefficient through the same exact Stage-021/022 DtN
     # route used in Stage 022 instead of retyping a^5/(27 c_s^5).
     z = sp.symbols("z", positive=True, real=True)
     j2 = (sp.Rational(3, 1) / z**3 - sp.Rational(1, 1) / z) * sp.sin(z) - 3 * sp.cos(z) / z**2
@@ -354,7 +354,7 @@ def isotropic_branch_and_target() -> dict[str, sp.Expr]:
     Y2_static = sp.simplify(Y2.subs(omega, 0))
     Y2_hat = sp.expand(sp.simplify(Y2 / Y2_static))
     Gamma5_port = sp.simplify(Y2_hat.coeff(omega, 5) / I)
-    expect_zero("Stage-5 Gamma5_port anchor", Gamma5_port - a**5 / (27 * c_s**5))
+    expect_zero("Stage-022 Gamma5_port anchor", Gamma5_port - a**5 / (27 * c_s**5))
     gamma_GR = sp.simplify(2 * G / (5 * c**5))
     ratio_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0 * Gamma5_port, gamma_GR), P0)[0])
     print("Gamma5_port =")
@@ -462,7 +462,7 @@ def main() -> None:
     first_order_anisotropy_transport()
     monotonicity_derivatives()
 
-    banner("FINAL STAGE-6 LEDGER")
+    banner("FINAL STAGE-23 LEDGER")
     print("Verified with SymPy:")
     print("  • the grouped real P2 bundle has a natural weighted metric Ggrp = diag(1,2,2)")
     print("    with exact orthogonal projectors Pbar, Pa, Pb;")
@@ -475,7 +475,7 @@ def main() -> None:
     print("    with an independent outgoing-transfer bundle N_An;")
     print("  • the grouped trace/anomaly parts of D_An and N_An inherit linearly from the")
     print("    microscopic wall, BdG, and Maxwell/mixed sectors;")
-    print("  • on the isotropic branch the Stage-5 formulas reduce exactly to")
+    print("  • on the isotropic branch the Stage-022 formulas reduce exactly to")
     print("    u2 = -D2/D0, u4 = (D2^2 - D0 D4)/D0^2, P0 = N0/D0,")
     print("    and the universal normalization test is")
     print("    mhat_0^2 P0 = 54 G c_s^5 / (5 a^5 c^5);")

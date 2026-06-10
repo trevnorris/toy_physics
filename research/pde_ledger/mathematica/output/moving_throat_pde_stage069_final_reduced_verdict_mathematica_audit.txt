@@ -58,10 +58,10 @@ PASS: resonance success edge - success-band point
 ========================================================================================
 FINAL LEDGER
 ========================================================================================
-Stage-49 matched branch:
+Stage-066 matched branch:
   Universal fail   : W_wall <= Pe_req / Delta_inf
   Universal succeed: W_wall >= Pe_req / Delta_0
-Stage-51 resonance family:
+Stage-068 resonance family:
   Fail threshold   : W_wall <= Pe_req / (C_res^2 Delta_inf)
   Success threshold: W_wall >= Pe_req / (C_res^2 Delta_0)
 Therefore the only profile-sensitive regions are the exact side-bands

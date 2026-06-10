@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 """
-moving_throat_pde_stage9_concrete_axial_overlaps_sympy_audit.py
+moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
 
 SymPy audit for Stage 26 of the moving-throat PDE program.
 
 Scope
 -----
 This script verifies the first concrete finite-throat axial branch used after the
-Stage-8 minimal isotropic normalization closure:
+Stage-025 minimal isotropic normalization closure:
 
   • exact N/N zero mode and D/N half-wave normalization,
   • exact overlap law kappa_n between the constant mode and the D/N ladder,
   • the minimal-branch value kappa = 2*sqrt(2)/pi,
-  • exact substitution of the concrete overlaps into the Stage-8 quantities
+  • exact substitution of the concrete overlaps into the Stage-025 quantities
     (C, G_U, G_W, R, Delta, Q, P, B0, Z0, N0, D0),
   • and exact solution of the normalization equation for the required wall
     stiffness K_req on the branch.
@@ -113,11 +113,11 @@ def overlap_law() -> tuple[sp.Expr, sp.Expr, sp.Expr]:
 
 
 # ---------------------------------------------------------------------------
-# III. Concrete branch substitution into Stage-8 quantities
+# III. Concrete branch substitution into Stage-025 quantities
 # ---------------------------------------------------------------------------
 
 def branch_substitution() -> tuple[sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr, sp.Expr]:
-    banner("SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-8 QUANTITIES")
+    banner("SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-025 QUANTITIES")
 
     u0, f0, kappa = overlap_law()
 

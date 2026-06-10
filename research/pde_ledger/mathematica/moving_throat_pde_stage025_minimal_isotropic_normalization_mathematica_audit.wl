@@ -168,6 +168,6 @@ stabilityAndPositivity[];
 monotonicDerivatives[];
 
 Print[""];
-Print["Stage 8 Mathematica audit passed."];
+Print["Stage 025 Mathematica audit passed."];
 
 Exit[0];

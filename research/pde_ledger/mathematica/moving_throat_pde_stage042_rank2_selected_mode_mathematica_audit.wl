@@ -39,7 +39,7 @@ $Assumptions =
 
 lambda0 = 2/9;
 
-subbanner["1. Exact selected-mode eigenvector ratio after inserting Stage-24 support loading"];
+subbanner["1. Exact selected-mode eigenvector ratio after inserting Stage-041 support loading"];
 
 nReq = FullSimplify[
   (xi (delta + xi) - m (delta + (1 + q^2) xi))/(delta + (1 + r^2) xi - m (q - r)^2),
@@ -81,7 +81,7 @@ expectZero["Z_overlap - expected", zOverlap - zExpected];
 expectZero["S_overlap - expected", sOverlap - sExpected];
 expectZero["F_general - expected", fGeneral - fExpected];
 
-subbanner["3. Tracking-support collapse back to Stage 23"];
+subbanner["3. Tracking-support collapse back to Stage 040"];
 
 fTrack = FullSimplify[fExpected /. r -> q, Assumptions -> $Assumptions];
 fStage23 = FullSimplify[

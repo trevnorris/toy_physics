@@ -4,7 +4,7 @@ SECTION IV — BRANCH-LEVEL NORMALIZATION TEST
 ========================================================================================
 
 ========================================================================================
-SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-8 QUANTITIES
+SECTION III — CONCRETE BRANCH SUBSTITUTION INTO STAGE-025 QUANTITIES
 ========================================================================================
 
 ========================================================================================
@@ -83,4 +83,4 @@ residual @ K_req = 0
 PASS: residual @ K_req
 On the constant wall branch, bare quadrupole wall stiffness is K = kEta + 6*tOmega
 
-Stage 9 Mathematica audit passed.
+Stage 026 Mathematica audit passed.

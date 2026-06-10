@@ -55,9 +55,9 @@ f_xi    = 1/sp.cosh(xi)
 chi_phi = sp.diff(f_xi, xi)
 If_sym  = sp.integrate(chi_phi**2, (xi, -sp.oo, sp.oo))     # closed form: 2/3
 expect_zero("sech-profile moment I_f = 2/3", sp.simplify(If_sym - sp.Rational(2, 3)))
-# Under d^3y = 4 pi a^2 ell dxi and H(y) -> H_w (constant), the Stage-47 integral
+# Under d^3y = 4 pi a^2 ell dxi and H(y) -> H_w (constant), the Stage-064 integral
 #   I_1 := int d^3y chi_phi(y)^2 / H(y) = (4 pi a^2 ell / H_w) * I_f
-# and Stage-48's J_1 = I_f / H_w absorbs the shell measure 4 pi a^2 ell into J_1's
+# and Stage-065's J_1 = I_f / H_w absorbs the shell measure 4 pi a^2 ell into J_1's
 # normalization. The structural identity I_1 / J_1 = 4 pi a^2 ell is what makes Xi = W_wall.
 I1_constH = sp.simplify(4*pi*a**2*ell * If_sym / Hw)
 J1_stage48 = sp.simplify(If_sym / Hw)

@@ -3,7 +3,7 @@
 moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
 
 Stage 38 SymPy audit:
-compress the Stage-20 continuum formulas into the exact dimensionless kernel map,
+compress the Stage-037 continuum formulas into the exact dimensionless kernel map,
 verify the product relation, and factor the one-way parameter tendencies.
 """
 
@@ -36,10 +36,10 @@ def expect_zero(name: str, expr) -> None:
 banner("STAGE 38 — DIMENSIONLESS CONTINUUM PLACEMENT AUDIT")
 
 # ---------------------------------------------------------------------------
-# 1. Stage-20 continuum formulas
+# 1. Stage-037 continuum formulas
 # ---------------------------------------------------------------------------
 
-subbanner("1. Stage-20 continuum formulas")
+subbanner("1. Stage-037 continuum formulas")
 
 G, c_light, c_s, a, L = sp.symbols("G c_light c_s a L", positive=True, real=True)
 mu_eta, mu_W = sp.symbols("mu_eta mu_W", positive=True, real=True)
@@ -134,7 +134,7 @@ subbanner("3. Exact product relation")
 product = sp.simplify(R_dimless * M_dimless)
 expect_zero("R_target M_mix - 8 Lambda (1-eps_W)/pi^2", product - 8 * Lambda * (1 - eps_W) / sp.pi**2)
 
-# Also verify the Stage-20 equivalent form.
+# Also verify the Stage-037 equivalent form.
 OmegaU2 = sp.symbols("OmegaU2", positive=True, real=True)
 Delta0 = sp.symbols("Delta0", positive=True, real=True)
 NQ = 54 * G * c_s**5 / (5 * a**5 * c_light**5)
@@ -222,5 +222,5 @@ print("  M_mix increases with eps_eta, eps_W, Z_W, rho")
 print("  R_target decreases with eps_eta, eps_W, Z_W, rho")
 
 banner("STAGE 38 AUDIT COMPLETE")
-print("The Stage-20 continuum operator collapses to an exact five-ratio placement map")
+print("The Stage-037 continuum operator collapses to an exact five-ratio placement map")
 print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")

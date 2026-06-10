@@ -19,7 +19,7 @@ Main checks
       G_eq = 4*pi*V0^2*(a^2*J1/ell + 2*a*J2 + ell*J3)/K_X,
    and its thin-wall leading term is
       G_eq^tw = 4*pi*a^2*V0^2*J1/(K_X*ell).
-5. Inserting the Stage-44 thresholds and kappa = K_X L^2/T_X gives
+5. Inserting the Stage-061 thresholds and kappa = K_X L^2/T_X gives
       V0_fail^2 = T_X*ell*Pe_req/(4*pi*a^2*L^2*J1*Delta_inf),
       V0_suff^2 = T_X*ell*Pe_req/(4*pi*a^2*L^2*J1*Delta_0),
    so K_X cancels exactly from the thin-wall prefactor.

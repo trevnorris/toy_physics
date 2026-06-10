@@ -3,7 +3,7 @@
 moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
 
 Stage 37 SymPy audit:
-derive the Stage-17/19 reduced branch data from the first explicit finite-throat
+derive the Stage-034/036 reduced branch data from the first explicit finite-throat
 continuum kernel and verify the exact closed formulas for
 
     A, DeltaK_ax, alpha_mix, beta_0, M_mix, delta.
@@ -221,4 +221,4 @@ print("with sigma =", sigma)
 
 banner("STAGE 37 AUDIT COMPLETE")
 print("The first explicit finite-throat continuum kernel reproduces the full reduced")
-print("Stage-17/19 branch data exactly.")
+print("Stage-034/036 branch data exactly.")

@@ -184,5 +184,5 @@ Pbar - P0 = 0
 a_P - eps*P1/4 = 0
 b_P - 3*eps*P1/4 = 0
 b_P - 3 a_P = 0
-So the Stage-6 normalization stack inherits the same exact axisymmetric
+So the Stage-023 normalization stack inherits the same exact axisymmetric
 defect law as the microscopic grouped overlaps.

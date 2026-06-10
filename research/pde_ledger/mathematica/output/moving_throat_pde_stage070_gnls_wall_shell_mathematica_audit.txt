@@ -24,8 +24,8 @@ I_f (sech profile) = 0.666666666666666666666666666666660404877091788037226332644
 I_g (sech profile) = 0.9333333333333333333333333333333272284011717433253418641542`30.   (analytic 14/15 = 0.9333333333333333333333333333333333333333333333333333333333`30.)
 PASS: sech-profile moment I_f = 2/3
 PASS: sech-profile moment I_g = 14/15
-Stage-48 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)
-Stage-47 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w
+Stage-065 normalization: J_1 := I_f/H_w (shell measure 4 pi a^2 ell absorbed into J_1)
+Stage-064 normalization: I_1 := N_phiphi/H_w = (4 pi a^2 ell I_f)/H_w
 Structural ratio I_1/J_1 should equal 4 pi a^2 ell.
 I_1 / J_1 - 4 pi a^2 ell (independent of profile, symbolic check) = 0
 PASS: I_1 / J_1 - 4 pi a^2 ell (independent of profile, symbolic check)

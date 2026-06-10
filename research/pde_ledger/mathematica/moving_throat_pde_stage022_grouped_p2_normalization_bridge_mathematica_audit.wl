@@ -115,7 +115,7 @@ n0Proto = FullSimplify[n0Cand /. solN, Assumptions -> $Assumptions];
 n2Proto = FullSimplify[n2Cand /. solN, Assumptions -> $Assumptions];
 n4Proto = FullSimplify[n4Cand /. solN, Assumptions -> $Assumptions];
 
-banner["SECTION IV — STAGE-4 ONE-PORT PROTOTYPE"];
+banner["SECTION IV — STAGE-021 ONE-PORT PROTOTYPE"];
 expectZero["N0 prototype", n0Proto - p0proto^2/delta0^2];
 expectZero["N2 prototype", n2Proto - 2*p0proto*(p0proto*s2 - delta0*gW)/delta0^3];
 expectZero[
@@ -150,10 +150,10 @@ aStage4 = FullSimplify[Coefficient[Expand[y2Hat], omega, 2], Assumptions -> $Ass
 bStage4 = FullSimplify[Coefficient[Expand[y2Hat], omega, 4], Assumptions -> $Assumptions];
 g5Stage4 = FullSimplify[Coefficient[Expand[y2Hat], omega, 5]/I, Assumptions -> $Assumptions];
 
-banner["SECTION V — STAGE-4 OUTGOING l=2 FINGERPRINT ANCHOR"];
-expectZero["Stage-4 A coefficient", aStage4 - a^2/(9*cS^2)];
-expectZero["Stage-4 B coefficient", bStage4 - 4*a^4/(81*cS^4)];
-expectZero["Stage-4 G5 coefficient", g5Stage4 - a^5/(27*cS^5)];
+banner["SECTION V — STAGE-021 OUTGOING l=2 FINGERPRINT ANCHOR"];
+expectZero["Stage-021 A coefficient", aStage4 - a^2/(9*cS^2)];
+expectZero["Stage-021 B coefficient", bStage4 - 4*a^4/(81*cS^4)];
+expectZero["Stage-021 G5 coefficient", g5Stage4 - a^5/(27*cS^5)];
 
 gamma5Port = g5Stage4;
 gammaGR = FullSimplify[2*G/(5*c^5), Assumptions -> $Assumptions];
@@ -169,7 +169,7 @@ expectZero["mhat=1 K2 target", (k2Target /. mhat -> 1) - 6*G*cS^3/(5*a^3*c^5)];
 expectZero["mhat=1 K4 target", (k4Target /. mhat -> 1) - 8*G*cS/(15*a*c^5)];
 
 Print[""];
-Print["FINAL STAGE-005 LEDGER:"];
+Print["FINAL STAGE-022 LEDGER:"];
 Print["  Verified the exact grouped P2 bridge from conservative operator moments to"];
 Print["  normalized response moments, outgoing prefactor coefficients, the one-port"];
 Print["  prototype N0/N2/N4 formulas, and the universal quadrupole normalization product."];

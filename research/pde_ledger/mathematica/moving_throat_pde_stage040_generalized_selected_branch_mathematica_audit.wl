@@ -112,9 +112,9 @@ etaU = FullSimplify[lambda0 rU, Assumptions -> $Assumptions];
 fU = FullSimplify[fExpected /. {q -> qU, eta -> etaU}, Assumptions -> $Assumptions];
 gU = FullSimplify[gExpected /. q -> qU, Assumptions -> $Assumptions];
 
-(* fStage18 reproduces the Stage-18 closed-form F(xi, delta) verified  *)
+(* fStage18 reproduces the Stage-035 closed-form F(xi, delta) verified  *)
 (* in mathematica/moving_throat_pde_stage035_dimensionless_normalization_locus_mathematica_audit.wl lines 50-61. *)
-(* gStage19 reproduces the Stage-19 closed-form G(xi, delta) verified  *)
+(* gStage19 reproduces the Stage-036 closed-form G(xi, delta) verified  *)
 (* in mathematica/moving_throat_pde_stage036_support_feasibility_frontier_mathematica_audit.wl lines 41-58. *)
 (* Keep these literals in sync with the upstream source of truth.      *)
 fStage18 = FullSimplify[
@@ -125,8 +125,8 @@ gStage19 = FullSimplify[9 xi (delta + xi)/(9 delta + 11 xi), Assumptions -> $Ass
 
 Print["F_U(xi,delta;R_U) = ", fmt[fU]];
 Print["G_U(xi,delta;R_U) = ", fmt[gU]];
-expectZero["F_U(R_U=1) - Stage18 F", (fU /. rU -> 1) - fStage18];
-expectZero["G_U(R_U=1) - Stage19 G", (gU /. rU -> 1) - gStage19];
+expectZero["F_U(R_U=1) - Stage035 F", (fU /. rU -> 1) - fStage18];
+expectZero["G_U(R_U=1) - Stage036 G", (gU /. rU -> 1) - gStage19];
 
 subbanner["4. Independent cross-check of first-order deformation about flat-U limit"];
 

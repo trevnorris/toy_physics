@@ -14,9 +14,9 @@ inside the exact success region with zero required transport bias.
 Constant provenance:
 - 3/4 and 1/4 are carried from the minimal isotropic conservative module fixed
   upstream in the Part IV / quadrupole packet.
-- rho_suff^(chi) is carried from the Stage 69 support window audit.
-- zeta_max^(F1) is carried from the Stage 63/64 support ceiling.
-- A_F1 is carried from the Stage 62 transport map.
+- rho_suff^(chi) is carried from the Stage 086 support window audit.
+- zeta_max^(F1) is carried from the Stage 080/081 support ceiling.
+- A_F1 is carried from the Stage 079 transport map.
 """
 
 from __future__ import annotations
@@ -65,9 +65,9 @@ expect_zero("zeta_req - 1/3", zeta_req - sp.Rational(1, 3))
 expect_zero("zeta_req - (rho_alpha - 1)", zeta_req - (rho_alpha - 1))
 
 # Carried forward numeric thresholds with explicit source anchors:
-# - rho_suff_chi from Stage 69
-# - zeta_max_f1 from Stages 63/64
-# - A_F1 from Stage 62
+# - rho_suff_chi from Stage 086
+# - zeta_max_f1 from Stages 080/081
+# - A_F1 from Stage 079
 rho_suff_chi = sp.Float("3.46622291347846", 30)
 zeta_max_f1 = sp.Float("2.46752922945601", 30)
 A_F1 = sp.Float("1.00005192880220", 30)

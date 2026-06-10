@@ -344,7 +344,7 @@ expect_zero("support-five canonical screen count - 2", len(support_five_packet["
 expect_zero("lifted compiler bound - 162", lifted_per_envelope - 162)
 expect_zero("projected compiler bound - 750", projected_per_envelope - 750)
 
-# Stage 249's upstream decomposition is 600 + 5 * 2 * 54, but Stage 218's
+# Stage 215's upstream decomposition is 600 + 5 * 2 * 54, but Stage 218's
 # load-bearing imported support-<=4 budget is the paper-stated value 1140.
 support_le4_budget = 1140
 support5_lifted_budget = 2 * lifted_per_envelope

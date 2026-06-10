@@ -83,7 +83,7 @@ turning root (b) = 0
 turning derivative identity = 0
 
 ----------------------------------------------------------------------------------------
-V. Collapse to the Stage 239 quadratic log predictor
+V. Collapse to the Stage 205 quadratic log predictor
 ----------------------------------------------------------------------------------------
 T_bracket(H0=log(Phi0), K0=L0; c=L1) =
         -2⋅log(Φ₀)          
@@ -91,13 +91,13 @@ T_bracket(H0=log(Phi0), K0=L0; c=L1) =
         ____________________
        ╱   2                
 L₀ - ╲╱  L₀  - 2⋅L₁⋅log(Φ₀) 
-Stage-239 tau_log2 =
+Stage-205 tau_log2 =
              -2⋅log(Φ₀)              
 ─────────────────────────────────────
         ____________________         
        ╱   2                         
 L₀ + ╲╱  L₀  - 2⋅L₁⋅log(Φ₀) ⋅sign(L₀)
-Stage 206/239 log-predictor collapse = 0
+Stage 206/205 log-predictor collapse = 0
 
 ----------------------------------------------------------------------------------------
 VI. Pairwise ray ordering and local search-sieve admissibility

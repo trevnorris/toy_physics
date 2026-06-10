@@ -151,7 +151,7 @@ d0Compat = FullSimplify[
   Assumptions -> $Assumptions
 ];
 kCompat = FullSimplify[(b0 + z0 /. sampleRules) + d0Compat, Assumptions -> $Assumptions];
-Print["Stage-225 K compatibility value = ", fmt[N[kCompat, 20]]];
+Print["Stage-223 K compatibility value = ", fmt[N[kCompat, 20]]];
 
 p01Mixed = Expand[FullSimplify[deltaMixed[pPort] /. sampleRules, Assumptions -> $Assumptions]];
 delta01Mixed = Expand[FullSimplify[deltaMixed[delta] /. sampleRules, Assumptions -> $Assumptions]];

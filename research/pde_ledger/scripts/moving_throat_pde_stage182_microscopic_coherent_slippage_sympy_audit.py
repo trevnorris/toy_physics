@@ -137,7 +137,7 @@ banner("Support-blindness at the microscopic level")
 print("free symbols of Xi_1:", Xi1_slip.free_symbols)
 # Support-blindness: the support-lane drifts never enter the microscopic-log
 # defect construction. (The zeta-cancellation mechanism itself lives upstream in
-# Stage 249; here we verify only that no support log was wired into Xi_1/R_1/Theta_1.)
+# Stage 181; here we verify only that no support log was wired into Xi_1/R_1/Theta_1.)
 support_syms = {lamphi1, kphi}
 for label, form in [("Xi_1 direct", Xi1_direct), ("R_1 direct", R1_direct), ("Theta_1 direct", Theta1_direct)]:
     leaked = support_syms & form.free_symbols

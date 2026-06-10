@@ -1,6 +1,6 @@
 === Stage 233 SymPy audit: rigid-mouth orbit-lock compiler and the static turbulence gate ===
 
-Stage 239 observable compiler:
+Stage 188 observable compiler:
 Theta1 = dln_Rtr
 Xi1 = -B_star*dln_Rtr + dln_Nstar
 R1 = B_star*dln_Rtr - dln_Nstar - dln_eps_eta*eps_eta_star/(1 - eps_eta_star)
@@ -29,7 +29,7 @@ Track-locked internal-transfer gate:
 If Xi1 is identified with the static load scalar on the operator-rigid branch:
 |epsilon * (N01 / N0)| <= Pcrit*mhat0**2/(Delta_norm + Tquad) - 1
 
-Stage 240 / Stage 241 carried numbers:
+Stage 223 / Stage 224 carried numbers:
 Pbar compatibility point = 0.002069792318062885
 Robust budget = 0.367930328492646
 Nonempty budget = 0.737619063660757

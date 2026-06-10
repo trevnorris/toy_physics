@@ -17,7 +17,7 @@ def main() -> None:
     print("=== Stage 233 SymPy audit: rigid-mouth orbit-lock compiler and the static turbulence gate ===")
 
     # ------------------------------------------------------------------
-    # 1. Exact Stage 239 branch-observable compiler
+    # 1. Exact Stage 188 branch-observable compiler
     # ------------------------------------------------------------------
     dln_Rtr, dln_Nstar, dln_eps_eta = sp.symbols(
         "dln_Rtr dln_Nstar dln_eps_eta", real=True
@@ -29,7 +29,7 @@ def main() -> None:
     c_eta = eps_eta_star / (1 - eps_eta_star)
     R1 = -c_eta * dln_eps_eta - Xi1
 
-    print("\nStage 239 observable compiler:")
+    print("\nStage 188 observable compiler:")
     print("Theta1 =", Theta1)
     print("Xi1 =", Xi1)
     print("R1 =", R1)
@@ -110,7 +110,7 @@ def main() -> None:
     print("|epsilon * (N01 / N0)| <=", gate_rhs)
 
     # ------------------------------------------------------------------
-    # 5. Numerical recovery of the carried Stage 241 budgets
+    # 5. Numerical recovery of the carried Stage 224 budgets
     # ------------------------------------------------------------------
     Pbar_num = sp.Float("0.002069792318062885")
     robust_budget = sp.Float("0.367930328492646")
@@ -126,7 +126,7 @@ def main() -> None:
     assert_close(float(recovered_robust), float(robust_budget), tol=1e-15)
     assert_close(float(recovered_nonempty), float(nonempty_budget), tol=1e-15)
 
-    print("\nStage 240 / Stage 241 carried numbers:")
+    print("\nStage 223 / Stage 224 carried numbers:")
     print("Pbar compatibility point =", Pbar_num)
     print("Robust budget =", robust_budget)
     print("Nonempty budget =", nonempty_budget)

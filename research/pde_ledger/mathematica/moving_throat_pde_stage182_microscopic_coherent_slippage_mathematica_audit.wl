@@ -132,7 +132,7 @@ Print["Xi_1 split = ", fmt[xi1Split]];
 banner["Support-blindness at the microscopic level"];
 Print["free symbols of Xi_1: ", fmt[Sort[ToString /@ (List @@ xi1Slip /. Plus -> List /. Times -> List)]]];
 (* Support-blindness: no support-lane drift enters the microscopic-log defect
-   construction. The zeta-cancellation mechanism lives upstream in Stage 249. *)
+   construction. The zeta-cancellation mechanism lives upstream in Stage 181. *)
 Module[{forms = {{"Xi_1 direct", xi1Direct}, {"R_1 direct", r1Direct}, {"Theta_1 direct", theta1Direct}}},
   Do[
     With[{label = forms[[i, 1]], form = forms[[i, 2]]},

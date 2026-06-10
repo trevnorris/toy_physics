@@ -128,9 +128,9 @@ expect_zero(
 )
 
 # ---------------------------------------------------------------------------
-# V. Collapse to the Stage 239 quadratic log predictor under exact curvature
+# V. Collapse to the Stage 205 quadratic log predictor under exact curvature
 # ---------------------------------------------------------------------------
-subbanner("V. Collapse to the Stage 239 quadratic log predictor")
+subbanner("V. Collapse to the Stage 205 quadratic log predictor")
 Phi0, L1 = sp.symbols("Phi0 L1", positive=True, real=True)
 L0 = sp.symbols("L0", real=True)
 TauBracketLog = sp.simplify(Tau.subs({H0: sp.log(Phi0), k: -L0, c: L1}))
@@ -139,10 +139,10 @@ TauLog2 = -2 * sp.log(Phi0) / (
 )
 print("T_bracket(H0=log(Phi0), K0=L0; c=L1) =")
 sp.pprint(TauBracketLog)
-print("Stage-239 tau_log2 =")
+print("Stage-205 tau_log2 =")
 sp.pprint(TauLog2)
 expect_zero(
-    "Stage 206/239 log-predictor collapse",
+    "Stage 206/205 log-predictor collapse",
     sp.simplify(TauBracketLog - sp.refine(TauLog2, sp.Q.negative(L0))),
 )
 

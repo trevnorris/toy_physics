@@ -132,8 +132,8 @@ insufficient. Here it was realized on **one non-checkpoint stage, 211**.
 - Seat policy: 211 = 1 `.wl`-touching Codex session solo (held one math seat); the
   orchestrator exec re-run ran sequentially AFTER Codex done (no overlap). 202's exec
   re-confirmed deterministic <600s.
-- A `toy_projects` path-typo an audit agent leaked into `directives/stage_215.md` was
-  purged; `git grep toy_projects` is empty (the only hit is a gitignored prior-batch
+- A wrong-project-root path-typo (`toy_*`, not `toy_physics`) an audit agent leaked into `directives/stage_215.md` was
+  purged; the wrong-root path-typo grep is empty (the only hit is a gitignored prior-batch
   `codex_logs/053_iter1.txt`).
 - 6 trackers synced (PAPER_CLEANUP **P5-19** = ZERO substantive paper/notes edits;
   211 added to the Independent-Mirror Set). Pass-1 `MANIFEST.yaml` untouched.

@@ -24,7 +24,7 @@ docs_read:
 
 - paper stage card: `/var/projects/toy_physics/research/pde_ledger/paper/stages/stage_248.tex`
 - notes: `/var/projects/toy_physics/research/pde_ledger/notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md`
-- part appendix: `/var/projects/toy_projects/.../stage_appendix_part08.tex` → `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part08.tex`
+- part appendix: cited a wrong project root (mis-rooted) → actual `/var/projects/toy_physics/research/pde_ledger/paper/appendices/stage_appendix_part08.tex`
 - sympy: `/var/projects/toy_physics/research/pde_ledger/scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py`
 - mathematica: `/var/projects/toy_physics/research/pde_ledger/mathematica/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl`
 - sympy output: `/var/projects/toy_physics/research/pde_ledger/scripts/output/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.txt`

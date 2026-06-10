@@ -25,4 +25,4 @@ Project: pde_ledger
 | VI.1 | 201–218 | 18 | verified=18 | Part VI.1 — Explicit realization, scalar slice, ray ranking |
 | VII.1 | 219–230 | 12 | verified=12 | Part VII.1 — Mixed bundle, resonance, branch packet, 5PN |
 | VII.2 | 231–242 | 12 | verified=12 | Part VII.2 — Rigid mouth orbit lock, branch dressing, twin support |
-| VIII.1 | 243–253 | 11 | pending=11 | Part VIII.1 — Relaxed branch, dynamic event chain, cold survival |
+| VIII.1 | 243–253 | 11 | verified=11 | Part VIII.1 — Relaxed branch, dynamic event chain, cold survival |

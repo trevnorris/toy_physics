@@ -731,3 +731,29 @@ independent routes, so there was no porting residue]; the all-clean result was E
 220/221/226 in full + a calibrated independence-only sweep on the rest [user distrusted the all-clean result]. No
 certified checkpoint constant moved; no new checkpoint constant introduced. Arbiter grep CLEAN. **0 sanctioned mirrors
 remain in VII.1.**)
+
+## Pass 2 — Batch VII.2 (2026-06-09)
+
+Pass-2 Batch VII.2 (231-242): TWO checkpoints in range — **239** (rigid-mouth physical normal form / Cartesian
+orbit-lock) and **242** (actual twin-support placement / coherent orbit-lock) — both re-verified at v2 depth +
+value-reconciliation augmentation, **BOTH CLEARED the higher checkpoint bar at the higher pass-2 standard**; **no
+checkpoint constant changed**, no trust impact, NO new pinned constant. Both checkpoints' pass-1 `.wl` were themselves
+re-authors from transliterations to independent routes; the pass-2 orchestrator ground-truth `.wl`-vs-`.py` read
+confirmed BOTH re-authors SUFFICIENT (the VI.1-218 / VII.1-221 outcome, NOT the V.3-200 insufficient outcome).
+**239**: the `.wl` DERIVES the compiler via a `D[]`-Jacobian of the boxed dependent vector + native `PseudoInverse`
+left-inverse + a `Reduce`/`Equivalent` orbit-lock (OUTPUTS), whereas the `.py` POSITS the literal `SrmDep` and uses
+`sp.solve` — opposite information flow. **242**: the load-bearing twin-window strict inclusion
+`C_mix < Pi_tr < 2·C_mix` is tested STRICTLY on BOTH engines — the `.wl` via a `Resolve[ForAll,Reals]` QE certificate
++ a `FullSimplify`-derived `4/3` vs the `.py`'s `nsimplify` + scalar compare. NO checkpoint constant changed (239's
+deliverable is the symbolic orbit-lock; 242's is the symbolic 4/3 twin-window ratio). 239 and 242 stay `strong`; the
+trust tier is unchanged. The 239 and 242 rows in the Strong tier above are updated to record the VII.2 pass-2
+re-verification. 12/12 re-verified, `material_change: false` on all 12 (NO downstream staling). (For completeness: 0
+values misaligned batch-wide [no NEW `paper_misalignment` → ZERO substantive paper/notes edits; the 3 first-pass
+notes-only typos — 231 `dF/dξ` `240→189`/`189→121`, 232 prefactor `168→100`, 241 `ϱ_WΛ` `193/369→125/369` — HOLD,
+cross-engine corroborated, published cards UNAFFECTED]; NO status-only stages [every stage dual-engine `.py`+`.wl`]; NO
+EM-projected stages; the 10 non-checkpoint stages [231–238, 240, 241] were confirmed genuinely INDEPENDENT, 0 ports —
+**THE SECOND CONSECUTIVE PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS** [VII.2's first pass authored the 10 `.wl`
+FRESH as independent routes + re-authored the 2 checkpoints, so there was no porting residue]; the all-clean result was
+EARNED — the orchestrator read 239/242 in full + a calibrated independence-only sweep on the rest [user distrusted the
+all-clean result]. No certified checkpoint constant moved; no new checkpoint constant introduced. Arbiter grep CLEAN.
+**0 sanctioned mirrors remain in VII.2.**)

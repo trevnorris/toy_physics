@@ -7857,7 +7857,7 @@ stages:
     stage: 231
     stage_str: '231'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7882,11 +7882,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_mathematica_audit.txt
         exists: true
         mtime: 1780459295
+    last_status_change: 2026-06-09 23:55:10-06:00
   '232':
     stage: 232
     stage_str: '232'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7911,11 +7912,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_mathematica_audit.txt
         exists: true
         mtime: 1780459307
+    last_status_change: 2026-06-09 23:55:16-06:00
   '233':
     stage: 233
     stage_str: '233'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7940,11 +7942,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_mathematica_audit.txt
         exists: true
         mtime: 1780459824
+    last_status_change: 2026-06-09 23:55:23-06:00
   '234':
     stage: 234
     stage_str: '234'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7969,11 +7972,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_mathematica_audit.txt
         exists: true
         mtime: 1780459848
+    last_status_change: 2026-06-09 23:55:30-06:00
   '235':
     stage: 235
     stage_str: '235'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -7998,11 +8002,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_mathematica_audit.txt
         exists: true
         mtime: 1780460208
+    last_status_change: 2026-06-09 23:55:36-06:00
   '236':
     stage: 236
     stage_str: '236'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -8027,11 +8032,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_mathematica_audit.txt
         exists: true
         mtime: 1780460233
+    last_status_change: 2026-06-09 23:55:43-06:00
   '237':
     stage: 237
     stage_str: '237'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -8056,11 +8062,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780496198
+    last_status_change: 2026-06-09 23:55:49-06:00
   '238':
     stage: 238
     stage_str: '238'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -8085,11 +8092,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780497075
+    last_status_change: 2026-06-09 23:55:56-06:00
   '239':
     stage: 239
     stage_str: '239'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -8114,11 +8122,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_mathematica_audit.txt
         exists: true
         mtime: 1780497728
+    last_status_change: 2026-06-09 23:56:02-06:00
   '240':
     stage: 240
     stage_str: '240'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -8143,11 +8152,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_mathematica_audit.txt
         exists: true
         mtime: 1780497758
+    last_status_change: 2026-06-09 23:56:09-06:00
   '241':
     stage: 241
     stage_str: '241'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: false
@@ -8172,11 +8182,12 @@ stages:
         path: mathematica/output/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_mathematica_audit.txt
         exists: true
         mtime: 1780498583
+    last_status_change: 2026-06-09 23:56:15-06:00
   '242':
     stage: 242
     stage_str: '242'
     batch_id: VII.2
-    status: pending
+    status: verified
     iteration_count: 0
     upstream_stale: false
     is_checkpoint: true
@@ -8201,6 +8212,7 @@ stages:
         path: mathematica/output/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_mathematica_audit.txt
         exists: true
         mtime: 1780498657
+    last_status_change: 2026-06-09 23:56:22-06:00
   '243':
     stage: 243
     stage_str: '243'

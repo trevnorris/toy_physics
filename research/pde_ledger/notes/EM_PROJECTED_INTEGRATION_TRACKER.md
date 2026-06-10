@@ -567,3 +567,21 @@ Breit–Wigner normal form, the perfect-square N, the dispersive ratio |Re χ|/|
 constants. With I.1 + I.2 + II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 +
 IV.6 + V.1 + V.2 + V.3 + VI.1 + VII.1 pass-2 closed, the range 001-230 is paper-aligned at pass-2 depth and the
 projected-EM core 004-021 (plus bookends 022-230) remains paper-aligned under the second pass.
+
+## Pass 2 — Batch VII.2 (2026-06-09)
+
+Pass-2 Batch VII.2 (231-242, `Part VII.2 — Rigid-mouth orbit-lock / branch-dressing / twin-support`) re-verified at
+v2 depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12. **NO
+EM-projected stages in range → no EM-projection change** — VII.2 is the rigid-mouth orbit-lock / branch-dressing /
+twin-support band (checkpoints 239 = rigid-mouth physical normal form / Cartesian orbit-lock, 242 = actual
+twin-support placement / coherent orbit-lock), far downstream of and outside the projected-Maxwell core (004-021).
+No projected-EM identity was touched; no EM result moved (all 12 stages are dual-engine native, NOT the
+projected-Maxwell core). **THE SECOND CONSECUTIVE PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS** — no `.py`/`.wl`
+edit anywhere, 0 Codex invocations; the 12/12 confirmed genuinely independent (0 ports, 0 sanctioned mirrors) and so
+touch no EM-projected identity; 0 NEW values misaligned batch-wide → ZERO substantive paper/notes edits (the 3
+first-pass notes-only typos — 231/232/241 — HOLD, cross-engine corroborated, published cards UNAFFECTED); the TWO
+checkpoints in range (239, 242) both cleared the higher bar with NO checkpoint constant changed (their deliverables
+are symbolic — 239 the orbit-lock map, 242 the twin-window 4/3 ratio); no new postulated constants. With I.1 + I.2
++ II.1 + III.1 + III.2 + III.3 + III.4 + III.5 + IV.1 + IV.2 + IV.3 + IV.4 + IV.5 + IV.6 + V.1 + V.2 + V.3 + VI.1 +
+VII.1 + VII.2 pass-2 closed, the range 001-242 is paper-aligned at pass-2 depth and the projected-EM core 004-021
+(plus bookends 022-242) remains paper-aligned under the second pass.

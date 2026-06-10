@@ -1704,3 +1704,45 @@ present BATCH-WIDE (222/225/227/229 noted it informally); a stale STATUS annotat
 Card +17 `\stagefield{Purpose}` scan (236–247) CLEAN — no drift on the 219–230 cards; residual project-wide
 notes-renumber drift (219/222/227 etc.) → deferred post-253 stem-keyed cleanup (NEVER offset-sweep). See
 `PAPER_CLEANUP_TRACKER.md` P5-20, P4-51. Reference memory `numbering-drift-root-cause`.
+
+## Pass 2 — Batch VII.2 (2026-06-09)
+
+Pass-2 Batch VII.2 (231-242, `Part VII.2 — Rigid-mouth orbit-lock / branch-dressing / twin-support`) re-verified
+at v2 depth + value-reconciliation augmentation; 12/12 verified, `material_change: false` on all 12. **THE
+SECOND CONSECUTIVE ZERO-SCRIPT-CORRECTION PASS-2 BATCH (after VII.1) — no `.py`/`.wl` edit anywhere, 0 Codex
+invocations; 12/12 confirmed genuinely independent, 0 ports, 0 borderline, 0 sanctioned mirrors remain in
+VII.2.** Like VII.1 the all-clean result is STRUCTURAL: VII.2's FIRST pass was a retrofit batch that authored
+the 10 non-checkpoint `.wl` FRESH as independent routes (NOT de-transliterated from pre-existing ports) +
+re-authored the 2 checkpoints (239, 242), so there was no porting residue to catch; pass-2 re-confirmed all 12
+are already in the Independent-Mirror Set — no changes. **The all-clean result was EARNED, not relayed** — the
+user distrusted it, so the orchestrator read the two checkpoints (239, 242) IN FULL + ran a calibrated
+independence-only sweep (V.3-200 port standard, operation-level + line refs) on
+231/232/233/234/235/236/237/238/240/241; all confirmed independent. **TWO checkpoints — 239 & 242** — both
+cleared the higher bar; each pass-1 `.wl` re-author (from a transliteration to an independent route) was
+confirmed SUFFICIENT (the VI.1-218 / VII.1-221 outcome, NOT the V.3-200 insufficient outcome): **239** — the
+`.wl` DERIVES the compiler via a `D[]`-Jacobian of the boxed dependent vector + native `PseudoInverse`
+left-inverse + `Reduce`/`Equivalent` orbit-lock, whereas the `.py` POSITS the literal `SrmDep` and uses
+`sp.solve` (opposite information flow); **242** — the load-bearing twin-window strict inclusion
+`C_mix < Pi_tr < 2·C_mix` is tested STRICTLY on BOTH engines, the `.wl` via a `Resolve[ForAll,Reals]` QE
+certificate + a `FullSimplify`-derived `4/3` vs the `.py`'s `nsimplify` + scalar compare. NO checkpoint constant
+changed (239's deliverables are the symbolic orbit-lock; 242's the symbolic 4/3 twin-window ratio). The 10
+non-checkpoint stages each DERIVE the load-bearing object by a DIFFERENT operation than the SymPy `.py` (the
+"variable-independence self-test trap" guards from the first pass — negative-control + leak-detector + structural
+exclusion at 237/238, extract-the-weight-from-the-variable-bearing-object at 240 — all HOLD). Value
+reconciliation: 12/12 `material_change: false` → NO downstream staling, and **ZERO substantive paper/notes edits
+this batch** (no genuine value/identity `paper_misalignment`; no source change at all). The 3 first-pass
+notes-only `paper_misalignment` fixes HOLD (cross-engine corroborated; published cards/appendices UNAFFECTED): 231
+`dF/dξ` coeffs `240→189` & `189→121`; 232 figure-of-merit prefactor `168→100` (ZERO surviving 168 — the
+recurring stale-168 family is purged here); 241 `ϱ_WΛ` bound `193/369→125/369`. **NO status-only stages; NO
+EM-projected stages** (all 12 dual-engine native). INFRA: 24 orchestrator exec runs (12 `.py` + 12 `.wl`) all
+exit 0, all FAIL=0, DETERMINISTIC; scripts run DIRECTLY (`python3`/`math -script`, ≤2 `math -script` concurrent,
+NOT via parallel `$RT exec-*` — MANIFEST-race avoidance); all 24 BYTE-IDENTICAL to committed (zero output
+refresh needed — no label-only refresh, unlike VII.1's 221/227). Seat policy held (no `.wl`-touching Codex
+session this batch — zero corrections; orchestrator exec sequential). Pass-1 `MANIFEST.yaml` untouched.
+**Card-text lag (paper-side, DEFERRED → P4-51):** 5 cards (231/235/237/240/241) carry the lag —
+`\stagefield{Verification}` reads "Mathematica audit: none yet" despite a passing `.wl` — a stale STATUS
+annotation, USER-DECIDED to defer. **Comment/print-label drift (DEFERRED, comment-only):** 233's `.py` carries
+stale forward-renumber comment/print labels (Stage 239/240/241 where source is canonical 188 / budgets 224 /
+compat 223) → NUMBERING_SCRIPT_OUTPUT_BAND_PLAN; and notes-TITLE drift (232 "Stage 249", 234 "251", 235
+"251/252/253", 236 "253") → deferred post-253 stem-keyed cleanup (NEVER offset-sweep). See
+`PAPER_CLEANUP_TRACKER.md` P5-21, P4-51, P4-52. Reference memory `numbering-drift-root-cause`.

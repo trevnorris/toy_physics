@@ -1374,3 +1374,30 @@ constant — confirmed genuinely INDEPENDENT, 0 ports; **⭐ THE FIRST PASS-2 BA
 result EARNED via the orchestrator read of 220/221/226 + a calibrated independence-only sweep on the rest. Arbiter grep
 CLEAN. **0 sanctioned mirrors remain in VII.1.**)
 No carried checkpoint constant changed.
+
+## Pass 2 — Batch VII.2 (2026-06-09)
+
+Pass-2 Batch VII.2 (231-242): reviewed — TWO checkpoints in range (**239**, rigid-mouth physical normal form /
+Cartesian orbit-lock; **242**, actual twin-support placement / coherent orbit-lock) re-verified at the higher bar;
+**NO checkpoint constant changed, moved, or re-pinned; no new postulated constant introduced.** 0 values misaligned
+batch-wide (no NEW `paper_misalignment` → ZERO substantive paper/notes edits); `material_change: false` on all 12.
+Both checkpoints cleared the higher bar with deliverables that are SYMBOLIC, not pinned numerics — 239 the
+orbit-lock map, 242 the twin-window ratio — both PRESERVED, not moved. The pass-2 orchestrator ground-truth
+`.wl`-vs-`.py` read confirmed BOTH pass-1 re-authors SUFFICIENT (the VI.1-218 / VII.1-221 outcome, UNLIKE V.3-200):
+**239** DERIVES the compiler via a `D[]`-Jacobian + native `PseudoInverse` left-inverse + `Reduce`/`Equivalent`
+orbit-lock (OUTPUTS) vs the `.py` POSITING the literal `SrmDep` + `sp.solve` (opposite information flow); **242**
+tests the load-bearing twin-window strict inclusion `C_mix < Pi_tr < 2·C_mix` STRICTLY on BOTH engines — the `.wl`
+via `Resolve[ForAll,Reals]` QE + a `FullSimplify`-derived `4/3` vs the `.py`'s `nsimplify` + scalar compare.
+**Zero unexplained literals remain in checkpoints 239 and 242's scripts.** The benchmark numerics re-confirmed
+present in the VII.2 batch — the 3 first-pass notes-only typos HOLD, cross-engine-corroborated: 231 `dF/dξ` coeffs
+`240→189` & `189→121`; 232 figure-of-merit prefactor `168→100` (ZERO surviving 168 — the recurring stale-168 family
+is purged here); 241 `ϱ_WΛ` upper bound `193/369→125/369` (plus the 240 windows `ρ_α=4/3, ζ_req=1/3,
+Pi_tr=(4/3)C_mix` and 241 `ϱ` windows `1/3, 125/369, 2/3, 250/441` independently corroborated) — none moved this
+batch. **Cumulative checkpoint-constant provenance is unchanged from the VII.1 close (200/203/218/221/239/242
+retained at the higher-bar standard); no checkpoint constant moved.** (For completeness: the 10 non-checkpoint
+stages [231–238, 240, 241] introduced no new constant — confirmed genuinely INDEPENDENT, 0 ports; **THE SECOND
+CONSECUTIVE PASS-2 BATCH NEEDING ZERO SCRIPT CORRECTIONS** [VII.2's first pass authored the 10 `.wl` FRESH as
+independent routes + re-authored the 2 checkpoints, so there was no porting residue], the all-clean result EARNED via
+the orchestrator read of 239/242 + a calibrated independence-only sweep on the rest. Arbiter grep CLEAN. **0
+sanctioned mirrors remain in VII.2.**)
+No carried checkpoint constant changed.

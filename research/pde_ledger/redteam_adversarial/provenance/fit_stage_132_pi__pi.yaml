@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_132_pi
+parameter_name: Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_132_pi__phase_b__pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '132'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_132.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: The source-shape ambiguity is reduced to the selected bias \(\Pi_m\).
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 11
+  role: notes_stage
+  excerpt: \sigma_{\Pi}(z)=\frac{\Pi e^{-\Pi z/L}}{L(1-e^{-\Pi})}.
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 16
+  role: notes_stage
+  excerpt: \mathfrak g_{\Pi}
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 18
+  role: notes_stage
+  excerpt: \frac{2\Pi(2\Pi e^{\Pi}+\pi)}
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 19
+  role: notes_stage
+  excerpt: '{(4\Pi^2+\pi^2)(e^{\Pi}-1)}.'
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 24
+  role: notes_stage
+  excerpt: '\mathfrak g_{\Pi}: \frac{2}{\pi}\to 1'
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 25
+  role: notes_stage
+  excerpt: \qquad(\Pi:0^+\to+\infty).
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 30
+  role: notes_stage
+  excerpt: \Pi_* \approx 1.50882951349316.
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 57
+  role: notes_stage
+  excerpt: \Pi_m=\frac{L}{\Theta_\sigma}\left(
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 67
+  role: notes_stage
+  excerpt: \Pi_m\approx1.51.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

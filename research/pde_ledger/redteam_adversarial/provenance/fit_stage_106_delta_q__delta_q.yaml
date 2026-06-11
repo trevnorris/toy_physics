@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_106_delta_q
+parameter_name: Delta_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_106_delta_q__phase_b__delta_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '106'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: '# F4: Delta_Q first-order sensitivity. On the natural branch (m0hat=1) we have'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '# Gamma5_target / chi_Q. Expanding around chi_Q = 1 + Delta_Q gives a real'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Delta_Q = sp.symbols("Delta_Q", real=True)
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: gamma_eff_off = (m0hat**2 * Gamma5).subs([(m0hat, 1), (chi_Q, 1 + Delta_Q)])
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: gamma_eff_series = sp.series(gamma_eff_off, Delta_Q, 0, 2).removeO()
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: linear_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 1))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: '"Delta_Q first-order sensitivity coefficient",'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: zeroth_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 0))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '"Delta_Q zeroth-order coefficient equals Gamma5_target",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

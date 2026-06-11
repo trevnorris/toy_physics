@@ -1,0 +1,213 @@
+schema_version: 1
+candidate_id: fit_stage222_primitive_sample_slice
+parameter_name: varpi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage222_primitive_sample_slice__phase_b__varpi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_222.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 222]{Stage 222: Concrete finite-throat primitive branch}'
+- path: paper/stages/stage_222.tex
+  line: 2
+  role: paper_stage_tex
+  excerpt: \label{stage:222}
+- path: paper/stages/stage_222.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.2}.}
+- path: paper/stages/stage_222.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: '\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}'
+- path: paper/stages/stage_222.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~222 inserts the lowest concrete finite-throat primitive branch into the resonance/linewidth
+    theorem.}
+- path: paper/stages/stage_222.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the lowest N/N wall--$U$ profile, the lowest D/N half-wave support--$W$ profile, the
+    one-port mixed kernel, and the line-shape survival gate from Stage~221.}
+- path: paper/stages/stage_222.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_222.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation evaluates the exact overlap constants for the primitive branch, forms
+    the quartic pole polynomial, identifies wall-like and internal poles, computes residues and linewidths, and tests the
+    resulting low-loss survival inequality on an illustrative admissible slice.}
+- path: paper/stages/stage_222.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Concrete branch pole census, residue/linewidth cancellation, and first branch-level dynamic
+    survival test.  The pole polynomial and survival gate are exact in the primitive closure; the displayed slice is a numerical
+    placement.}
+- path: paper/stages/stage_222.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: paper/stages/stage_222.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Checks}{\begin{verificationchecklist}
+- path: paper/stages/stage_222.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth
+    closure before citing the output.
+- path: paper/stages/stage_222.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it
+    to another paper.
+- path: paper/stages/stage_222.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel
+    claims inherit the source-product family limits.
+- path: paper/stages/stage_222.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth
+    tracking alone.
+- path: paper/stages/stage_222.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \end{verificationchecklist}}
+- path: paper/stages/stage_222.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 222: Concrete Finite-Throat Primitive Branch, Pole Census, and the Residue/Linewidth
+    Survival Test'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 3
+  role: notes_stage
+  excerpt: '## Status'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried isotropic finite-throat primitive one-port wall/BdG/Maxwell/mixed closure** once the
+    lowest N/N wall/U profile and the lowest D/N half-wave support/W profile are fixed.'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: The quartic pole polynomial, the wall-like residue/linewidth cancellation, and the low-loss survival gate are exact
+    inside that reduced closure. The explicit pole census and the outgoing-leg scan below are illustrative evaluations on
+    one admissible sample slice of the same exact formulas.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: This stage is the first post-Stage-221 insertion of an actual primitive finite-throat branch into the local mixed-port
+    resonance ledger. It does **not** solve the full driven two-throat PDE. It computes the first concrete pole census and
+    turns the linear same-charge dynamic question into one explicit branch inequality.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: 'Stage 221 reduced the linear dynamic corridor to one exact question:'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: '> can an admissible pole of the mixed one-port bundle produce a large enough residue-to-linewidth ratio to matter
+    in the tunneling region before the same pole is dominated by absorptive loading?'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 19
+  role: notes_stage
+  excerpt: The next honest move is therefore not another generic resonance slogan. It is to choose one **explicit primitive
+    branch family**, compute the first actual poles, and write the survival test in direct branch data.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 21
+  role: notes_stage
+  excerpt: 'The main outputs are:'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 23
+  role: notes_stage
+  excerpt: 1. one concrete finite-throat primitive branch built from the lowest N/N wall/U profile and the lowest D/N half-wave
+    support/W profile,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: 2. the exact quartic pole polynomial of the conservative one-port bundle,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: 3. the exact simple-pole cancellation
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: \mathcal R_{Q,*}:=\frac{|A_{Q,*}|}{\gamma_*}
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: \frac{27c_s^5}{a^5\omega_*^5N(\omega_*)},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 31
+  role: notes_stage
+  excerpt: for the pure quadrupolar same-charge family,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: 4. the exact low-loss survival inequality against a required local barrier reduction,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 33
+  role: notes_stage
+  excerpt: 5. one explicit numerical pole census,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: '6. and the first clean evidence of a **static/dynamic tension**: strengthening the static outgoing prefactor makes
+    the linear dynamic residue/linewidth corridor worse on the same branch family.'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 36
+  role: notes_stage
+  excerpt: So Stage 222 keeps the dynamic same-charge idea alive, but only in a much narrower and more branch-specific form.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: '## 1. Frozen input carried forward'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 42
+  role: notes_stage
+  excerpt: The parent `4+1` / plasma ontology keeps the mixed channels
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: A_w,\qquad F_{\mu w},\qquad J^w
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live
+    in the mixed sector rather than in pure brane Maxwell shaping.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

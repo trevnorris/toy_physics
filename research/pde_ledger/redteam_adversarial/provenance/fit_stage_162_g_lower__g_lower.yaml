@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage_162_g_lower
+parameter_name: g_lower
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_162_g_lower__phase_b__g_lower.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '162'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 27
+  role: notes_stage
+  excerpt: 2. **If, in addition, the carried canonical-even gate forces \(\delta\mathfrak g=0\), then the lower compensated
+    parent family is first-order rigid:**
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 113
+  role: notes_stage
+  excerpt: '## 3. Lower compensated branch rigidity under the canonical-even gate'
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 119
+  role: notes_stage
+  excerpt: On the lower compensated parent branch,
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 143
+  role: notes_stage
+  excerpt: 'for every real \(\mathfrak r\). Therefore the lower compensated branch is first-order rigid:'
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 151
+  role: notes_stage
+  excerpt: So on the actual lower branch selected by the positive-source Family-1 throat core, the even-preservation gate
+    does more than kill the mouth-coupling drift. It pins the normalized static/mixed hybridization itself.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 228
+  role: notes_stage
+  excerpt: 3. and on the lower compensated branch the carried canonical-even gate \(\delta\mathfrak g=0\) forces
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Exact lower-branch differential law
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 3. Exact positivity decomposition of the lower-branch slope.
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: g_lower = r - sp.sqrt(1 + r**2) / 2
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: print("g_lower(r) =", g_lower)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: '# 2. Lower-branch differential law.'
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: slope = sp.simplify(sp.diff(g_lower, r))
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: print("dg_lower/dr =", slope)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '"lower-branch differential law",'
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("The lower-branch slope is manifestly positive for all real r.")
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: 'print("  On the lower branch: delta g = (dg/dr) delta r with dg/dr > 0.")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

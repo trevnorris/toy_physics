@@ -1,0 +1,211 @@
+schema_version: 1
+candidate_id: fit_stage_238_q_eta
+parameter_name: q_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_238_q_eta__phase_b__q_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '238'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_238.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports $\mathcal T^2$, $R_{\rm target}$, $\epsilon_\eta$, and the constant $\Lambda_0$.}
+- path: paper/stages/stage_238.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves $R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)$, factorizes
+    the finite packet, and splits the branch gates into tracking, transfer-shape, and dressing conditions.}
+- path: paper/stages/stage_238.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Physical transfer-shape compiler: the finite rigid-mouth packet is completely described by
+    tracking, $\mathcal T^2$, and $\epsilon_\eta$.}'
+- path: paper/stages/stage_238.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: '> \((R_{\rm tr},\,\mathcal T^2,\,\epsilon_\eta)\),'
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 23
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta = 0.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: Stage 237 proved that on the rigid-mouth slice the surviving post-static obstruction is
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 60
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: So after the first static gate is cleared, the same-charge obstruction is indeed the dressing coordinate `q_eta`.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 65
+  role: notes_stage
+  excerpt: \((R_{\rm target},\epsilon_\eta)\).
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: \Lambda_0\,\frac{\Omega_W^2(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: R_{\rm target}\,\mathcal T^2 = \Lambda_0(1-\epsilon_\eta).
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 100
+  role: notes_stage
+  excerpt: (R_{\rm tr},\,\mathcal T^2,\,\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 110
+  role: notes_stage
+  excerpt: (R_{\rm tr,ref},\,\mathcal T_{\rm ref}^2,\,\epsilon_{\eta,\rm ref}),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: R_{\rm target}\,\mathcal T^2=\Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 132
+  role: notes_stage
+  excerpt: R_{\rm target,ref}\,\mathcal T_{\rm ref}^2=\Lambda_0(1-\epsilon_{\eta,\rm ref}),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 155
+  role: notes_stage
+  excerpt: q_\eta=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: '- \frac{\epsilon_\eta}{1-\epsilon_\eta}d\ln\epsilon_\eta,'
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 196
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta=d\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: q_\eta=d\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 217
+  role: notes_stage
+  excerpt: q_\eta=d\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: And once that ceiling has been cleared, the remaining post-static obstruction is exactly
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 231
+  role: notes_stage
+  excerpt: q_\eta=d\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 242
+  role: notes_stage
+  excerpt: \left[1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}\right].
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 246
+  role: notes_stage
+  excerpt: \partial_\zeta R_{\rm tr}=0,
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 248
+  role: notes_stage
+  excerpt: \partial_\zeta \mathcal T^2=0,
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: \partial_\zeta \epsilon_\eta=0,
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 257
+  role: notes_stage
+  excerpt: \partial_{M_{\rm mix}} \epsilon_\eta=0.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 262
+  role: notes_stage
+  excerpt: \partial_\zeta q_{\rm tr}=\partial_\zeta q_{\rm nt}=\partial_\zeta q_\eta=0,
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: \partial_{M_{\rm mix}} q_{\rm tr}=\partial_{M_{\rm mix}} q_{\rm nt}=\partial_{M_{\rm mix}} q_\eta=0.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: After the first two have been cleared, the remaining obstruction is exactly
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 302
+  role: notes_stage
+  excerpt: q_\eta^{(1)}=d\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: q_\eta=0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    - paper/stages/stage_238.tex
+    - research/pde_ledger/paper/stages/stage_238.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage238_physical_branch_transfer_shape_compiler_packet_factorization_and_post_static_dressing_invariance_theorem_sympy_audit.md
+    - paper/stages/stage_238.tex
+    - research/pde_ledger/paper/stages/stage_238.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

@@ -1,0 +1,125 @@
+schema_version: 1
+candidate_id: fit_stage022_mhat0_unity_branch
+parameter_name: mhat_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_mhat0_unity_branch__phase_b__mhat_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+    one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+    \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+    the exact invariant product that must match the universal quadrupole normalization.}
+- path: paper/stages/stage_022.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+    transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\) fingerprint,
+    and the grouped trace/anomaly map.}
+- path: paper/stages/stage_022.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 264
+  role: notes_stage
+  excerpt: Including the source-map factor `mhat_0`, the invariant normalization condition is therefore
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 266
+  role: notes_stage
+  excerpt: '`mhat_0^2 * P_0 * a^5 / (27 c_s^5) = 2 G / (5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 270
+  role: notes_stage
+  excerpt: '`mhat_0^2 * P_0 = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 277
+  role: notes_stage
+  excerpt: '> compute the isotropic moving-throat value of the invariant product `mhat_0^2 P_0`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 279
+  role: notes_stage
+  excerpt: On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 309
+  role: notes_stage
+  excerpt: At the universal point-particle 2.5PN level, the only internal quantity that matters is the isotropic static outgoing
+    prefactor `P_0 = N_0 / D_0` (or `mhat_0^2 P_0` in invariant form).
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 318
+  role: notes_stage
+  excerpt: 2. and land the invariant product `mhat_0^2 P_0` on the target value above.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 334
+  role: notes_stage
+  excerpt: 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 256
+  role: sympy_script
+  excerpt: mhat = sp.symbols("mhat", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 287
+  role: sympy_script
+  excerpt: NQ_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0 * Gamma5_port, gamma_GR), P0)[0])
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 294
+  role: sympy_script
+  excerpt: print("Required invariant product mhat^2 * P0 =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 298
+  role: sympy_script
+  excerpt: '"mhat=1 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 299
+  role: sympy_script
+  excerpt: sp.simplify(NQ_target.subs(mhat, 1) - 54 * G * c_s**5 / (5 * a**5 * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 314
+  role: sympy_script
+  excerpt: '"mhat=1 K2 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 315
+  role: sympy_script
+  excerpt: sp.simplify(K2_target.subs(mhat, 1) - 6 * G * c_s**3 / (5 * a**3 * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 318
+  role: sympy_script
+  excerpt: '"mhat=1 K4 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 319
+  role: sympy_script
+  excerpt: sp.simplify(K4_target.subs(mhat, 1) - 8 * G * c_s / (15 * a * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 322
+  role: sympy_script
+  excerpt: print("So the remaining theorem gap is the moving-throat value of the invariant product mhat^2 * P0.")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 354
+  role: sympy_script
+  excerpt: print("    mhat^2 * P0 = 54 G c_s^5 / (5 a^5 c^5)")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 355
+  role: sympy_script
+  excerpt: print("    (or P0 itself when mhat = 1 on the natural source-map branch).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

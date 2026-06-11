@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage189_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage189_eps_split_2_11_coefficient__phase_b__eps_split_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '189'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 12
+  role: notes_stage
+  excerpt: 3. the compact outgoing `l=2` branch coefficients,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 25
+  role: notes_stage
+  excerpt: \epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 34
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 49
+  role: notes_stage
+  excerpt: '> and finally into the compact outgoing `l=2` branch coefficient that carries the universal odd quadrupole normalization.'
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 59
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 65
+  role: notes_stage
+  excerpt: R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 75
+  role: notes_stage
+  excerpt: 3. the exact outgoing-branch coefficients
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 90
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 142
+  role: notes_stage
+  excerpt: \Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 153
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta).
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 157
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 161
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 163
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 168
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 186
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)\\[2pt]
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 198
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 209
+  role: notes_stage
+  excerpt: 0 & 0 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\\[8pt]
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 210
+  role: notes_stage
+  excerpt: B_* & -1 & -\dfrac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 222
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 239
+  role: notes_stage
+  excerpt: \frac{Z_{W,A}(1+\rho_A)^2}{\Omega_{W,A}^2(1-\epsilon_{W,A})^2}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 242
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,A}}{R_{{\rm target},A}}.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 255
+  role: notes_stage
+  excerpt: \epsilon_W,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 259
+  role: notes_stage
+  excerpt: \epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 269
+  role: notes_stage
+  excerpt: \epsilon_W\mapsto\epsilon,
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 271
+  role: notes_stage
+  excerpt: \epsilon
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 273
+  role: notes_stage
+  excerpt: \epsilon_W\!\left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right),
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 280
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 282
+  role: notes_stage
+  excerpt: \Lambda_0\,\frac{1-\epsilon_\eta}{R_{\rm target}}.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 294
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 341
+  role: notes_stage
+  excerpt: So the even grouped response coefficients are exact rational functions of the conservative operator moments.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 345
+  role: notes_stage
+  excerpt: To avoid collision with the later outgoing branch coefficients `\(K_0,K_2,K_4\)`, denote the static baseline wall
+    coefficient by
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 414
+  role: notes_stage
+  excerpt: P_A=P_0+\epsilon\lambda_A P_1+O(\epsilon^2).
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 427
+  role: notes_stage
+  excerpt: \frac{\delta\ln P_A}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 436
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 452
+  role: notes_stage
+  excerpt: '## 4. Compact outgoing `l=2` fingerprint and outgoing branch coefficients'
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 502
+  role: notes_stage
+  excerpt: So the leading odd branch coefficient depends only on the **static** outgoing prefactor `\(P_0\)`. The higher even
+    prefactor moments `\(P_2,P_4\)` change the even branch bookkeeping, but they do **not** enter the first odd coefficient.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 558
+  role: notes_stage
+  excerpt: On that branch the outgoing coefficients reduce to
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 576
+  role: notes_stage
+  excerpt: (\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta).
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 578
+  role: notes_stage
+  excerpt: Stage 189 now shows that this packet feeds the actual outgoing normalization chain in two exact steps.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 586
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

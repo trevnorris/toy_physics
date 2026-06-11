@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage023_gamma5_port_27_coefficient
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage023_gamma5_port_27_coefficient__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '023'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: This script verifies the first exact full-bundle bookkeeping layer for the grouped
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: '"Schur denominator matches Delta - S omega^2 + omega^4",'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: '"Z rational form matches Schur (g_U,g_W) M^{-1} (g_U,g_W)^T",'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 346
+  role: sympy_script
+  excerpt: '# route used in Stage 022 instead of retyping a^5/(27 c_s^5).'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 356
+  role: sympy_script
+  excerpt: Gamma5_port = sp.simplify(Y2_hat.coeff(omega, 5) / I)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 357
+  role: sympy_script
+  excerpt: expect_zero("Stage-022 Gamma5_port anchor", Gamma5_port - a**5 / (27 * c_s**5))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 358
+  role: sympy_script
+  excerpt: gamma_GR = sp.simplify(2 * G / (5 * c**5))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 359
+  role: sympy_script
+  excerpt: ratio_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0 * Gamma5_port, gamma_GR), P0)[0])
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 360
+  role: sympy_script
+  excerpt: print("Gamma5_port =")
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 361
+  role: sympy_script
+  excerpt: sp.pprint(Gamma5_port)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

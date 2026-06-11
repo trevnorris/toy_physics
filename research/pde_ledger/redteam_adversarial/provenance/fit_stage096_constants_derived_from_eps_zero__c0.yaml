@@ -1,0 +1,35 @@
+schema_version: 1
+candidate_id: fit_stage096_constants_derived_from_eps_zero
+parameter_name: c0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage096_constants_derived_from_eps_zero__phase_b__c0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 096
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. the Stage 092 obstruction formula then collapses to the clean
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: the obstruction / loading-ratio formulas.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

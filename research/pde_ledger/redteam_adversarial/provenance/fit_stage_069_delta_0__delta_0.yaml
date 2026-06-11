@@ -1,0 +1,243 @@
+schema_version: 1
+candidate_id: fit_stage_069_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_069_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 069
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_069.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the reduced verdict; \StatusOpen{} for actual branch placement outside the
+    matched/prototyped families.}
+- path: paper/stages/stage_069.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The matched wall theorem, profile penalty benchmark, and operator-selected support/source thresholds.}
+- path: paper/stages/stage_069.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: W_{\rm wall}<\mathrm{Pe}_{\rm req}/\Delta_\infty &\Rightarrow& \text{universal fail},\\[0.25em]
+- path: paper/stages/stage_069.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
+- path: paper/stages/stage_069.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \mathrm{Pe}_{\rm req}/\Delta_\infty\leq W_{\rm wall}\leq \mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{profile-sensitive
+    band}.
+- path: paper/stages/stage_069.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: The sech--Gaussian benchmark shows that realistic smooth mismatch need not significantly enlarge the middle band,
+    but the actual PDE branch still has to supply its own profiles.
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf` to `Pe_req / Delta_0`.'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 31
+  role: notes_stage
+  excerpt: '- if `W_wall <= Pe_req / Delta_inf`, the branch fails;'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 32
+  role: notes_stage
+  excerpt: '- if `W_wall >= Pe_req / Delta_0`, the branch succeeds;'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 34
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < Pe_req / Delta_0`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 68
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / Delta_inf,`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 78
+  role: notes_stage
+  excerpt: '`W_wall >= Pe_req / Delta_0,`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 88
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < Pe_req / Delta_0`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 96
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < P_res Pe_req / Delta_inf`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 100
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_0 < W_wall < P_res Pe_req / Delta_0`'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: '[Pe_req / Delta_inf, Pe_req / Delta_0].'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: '- The matched window `[Pe_req/Delta_inf, Pe_req/Delta_0]` is the Stage 066'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: '- Source for the matched-window form `Pe_req/Delta_inf`:'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: '`Pe_req/Deltainf` and `Pe_req/Delta_0`; it does not re-derive it.'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: Pe_req, Delta0, Delta_gap = sp.symbols("Pe_req Delta_0 Delta_gap", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: Deltainf = sp.simplify(Delta0 + Delta_gap)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: Wfail_match = sp.simplify(Pe_req / Deltainf)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: Wsuff_match = sp.simplify(Pe_req / Delta0)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# (matched fail edge from W_match(Delta_inf) = 0, P_res from band-edge'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '# Encodes the theorem "W_match(Delta_eff) = Pe_req / Delta_eff" with'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: '# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: Delta_eff = sp.symbols("Delta_eff", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: W_match_generator = Pe_req / Delta_eff
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: '"matched fail edge from W_match(Delta_inf)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: W_match_generator.subs(Delta_eff, Deltainf) - Wfail_match,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '"matched success edge from W_match(Delta_0)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: W_match_generator.subs(Delta_eff, Delta0) - Wsuff_match,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '"W_match decreasing in Delta_eff",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: -sp.diff(W_match_generator, Delta_eff) * Delta_eff**2 / Pe_req,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: Wsuff_match - Wfail_match - Pe_req * (Deltainf - Delta0) / (Delta0 * Deltainf),
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: expect_positive("Delta_inf - Delta_0", Deltainf - Delta0)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: '"resonance fail threshold - Pe_req/(C_res^2 Delta_inf)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: Wfail_res - Pe_req / (Cres2 * Deltainf),
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: '"resonance success threshold - Pe_req/(C_res^2 Delta_0)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: Wsuff_res - Pe_req / (Cres2 * Delta0),
+origin_claims:
+- parameter: Delta_0
+  introduced_at_stage: 49
+  introduced_at_line: 162
+  citation:
+    path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+    line: 162
+    excerpt: '`Delta_0(kappa,eta)`'
+constraints:
+- parameter: Delta_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 29
+    excerpt: 'The universal matched-branch theorem from Stages 061 and 066 is still the main result:'
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_069.tex
+    attempted_sources:
+    - paper/stages/stage_069.tex
+    - research/pde_ledger/paper/stages/stage_069.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_069.tex
+    attempted_sources:
+    - paper/stages/stage_069.tex
+    - research/pde_ledger/paper/stages/stage_069.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: Delta_0 is the symbolic axial support-geometry function Delta_0(kappa,eta) from the Stage-061 operator theorem,
+    carried symbolically into the stage-069 three-zone verdict (the stage-069 sympy script declares it free). It has no scalar
+    value at stage 069; the scanner has no numeric ledger value to attribute here.
+  citations:
+  - path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+    line: 96
+    excerpt: '# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.'
+  - path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 13
+    excerpt: '`Pe_req / Delta_inf` to `Pe_req / Delta_0`.'
+downstream_dependents:
+- '070'
+- '071'
+- '072'
+- '073'
+- '074'
+- '075'
+- '076'
+- '077'
+- 078
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_069_delta_0__delta_0.yaml

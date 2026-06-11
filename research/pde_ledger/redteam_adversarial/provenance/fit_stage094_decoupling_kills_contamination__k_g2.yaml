@@ -1,0 +1,56 @@
+schema_version: 1
+candidate_id: fit_stage094_decoupling_kills_contamination
+parameter_name: K_g2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage094_decoupling_kills_contamination__phase_b__k_g2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 094
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 75 showed that the only remaining reduced obstruction to the `3/4 + 1/4` conservative quadrupole module is
+    dynamic contamination from the geometry lane through the two numbers
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 118
+  role: notes_stage
+  excerpt: And the exact obstruction formula collapses back to
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: Kg2_overlap = sp.Integer(0)
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: 'Kg2_overlap += I_mass   # l=0/l=2 overlap moment (proven 0 mode-by-mode above)'
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: K_g2 = sp.simplify(Kg2_overlap)
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: 'assert K_g2 == 0   # carries the orthogonality result, can fail if any overlap != 0'
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: eps_2 = sp.simplify(Omega_Q**2 * K_g2 / K_pole)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

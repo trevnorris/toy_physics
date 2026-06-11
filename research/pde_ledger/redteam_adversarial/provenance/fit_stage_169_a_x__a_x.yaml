@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage_169_a_x
+parameter_name: a_x
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_169_a_x__phase_b__a_x.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '169'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_169.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Stage~163 off-family scalar, the lower compensated Family--1 branch,
+    the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify
+    the parent action or the charge/notation firewall.}
+- path: paper/stages/stage_169.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+- path: paper/stages/stage_169.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part V weak-axisymmetric/orbit packet and the final four-scalar
+    verdict.  Downstream papers should cite \resultanchor{MTDC-T9.1} for the local result and \resultanchor{MTDC-T9} for the
+    full Part V compiler.}
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 54
+  role: notes_stage
+  excerpt: a_x=\frac{2x_{20}-x_{21}-x_{22}}{10},
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 70
+  role: notes_stage
+  excerpt: 4a_x a_y+\frac{4}{5}b_x b_y.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 76
+  role: notes_stage
+  excerpt: \mathcal A_x^2:=\mathcal I[x,x]=4a_x^2+\frac45 b_x^2.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 80
+  role: notes_stage
+  excerpt: On the weak axisymmetric `Y_20` branch, the grouped signature is
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 90
+  role: notes_stage
+  excerpt: \boxed{b_x=3a_x,}
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 96
+  role: notes_stage
+  excerpt: Thus the first weak axisymmetric grouped anisotropy is already quadratic as a scalar invariant.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 211
+  role: notes_stage
+  excerpt: 4a_x a_y+\frac45 b_x b_y.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 218
+  role: notes_stage
+  excerpt: be the reduced grouped-lane families already isolated by the coupled wall/BdG/Maxwell/mixed bundle.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 246
+  role: notes_stage
+  excerpt: If one wants the more microscopic decomposition, each `D_n` can then be expanded further into the wall, BdG, and
+    conservative Maxwell/mixed families from the full grouped bundle.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 248
+  role: notes_stage
+  excerpt: On a one-parameter weak axisymmetric branch,
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 254
+  role: notes_stage
+  excerpt: So the scalar feed-down is automatically quadratic in the weak axisymmetric anisotropy amplitude.
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. Exact grouped bilinear invariant formula I[x,y] = (1/5) dx^T G dy = 4 a_x a_y + (4/5) b_x b_y.
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. Weak axisymmetric branch law b = 3 a and I[x,y] = (7/10) eps^2 x1 y1.
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: ax = (2*xb20 - xb21 - xb22) / 10
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: Ixy_expected = sp.simplify(4*ax*ay + sp.Rational(4,5)*bx*by)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: expect_zero("I[x,y] - [4 a_x a_y + 4/5 b_x b_y]", Ixy - Ixy_expected)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '# 2. Weak axisymmetric branch law'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: subs_axis = {
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: ax_axis = sp.simplify(ax.subs(subs_axis))
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: bx_axis = sp.simplify(bx.subs(subs_axis))
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: Ixy_axis = sp.simplify(Ixy.subs(subs_axis))
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: banner("Weak axisymmetric grouped law")
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("a_x(axis) =", ax_axis)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("b_x(axis) =", bx_axis)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: expect_zero("b_x - 3 a_x", bx_axis - 3*ax_axis)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: expect_zero("I_axis - (7/10) eps^2 x1 y1", Ixy_axis - sp.Rational(7,10)*eps**2*x1*y1)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: print("  I[x,y] = (1/5) (x-xbar ebar)^T Ggrp (y-ybar ebar) = 4 a_x a_y + (4/5) b_x b_y")
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: 'print("  Weak axisymmetric branch: b = 3 a and I[x,y] = (7/10) eps^2 x^(1) y^(1).")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

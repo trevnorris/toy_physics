@@ -1,0 +1,171 @@
+schema_version: 1
+candidate_id: fit_stage169_xi_perp_paper_targets
+parameter_name: Xi_perp_coeff_XiL
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage169_xi_perp_paper_targets__phase_b__xi_perp_coeff_xil.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '169'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 15
+  role: notes_stage
+  excerpt: \varepsilon_\perp
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 35
+  role: notes_stage
+  excerpt: The linear grouped-anisotropy problem moves entirely into the direct outlet coefficients
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 192
+  role: notes_stage
+  excerpt: \varepsilon_\perp^{(1,P_2)}=0,
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 194
+  role: notes_stage
+  excerpt: \delta_\perp^{(1,P_2)}=0.
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 262
+  role: notes_stage
+  excerpt: \varepsilon_\perp
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 271
+  role: notes_stage
+  excerpt: \varepsilon_\perp
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 273
+  role: notes_stage
+  excerpt: \sum_{X,Y\in\mathcal B}\Xi_\perp^{(XY)}\,\mathcal I[X,Y]
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 280
+  role: notes_stage
+  excerpt: \Xi_\perp^{(XY)}
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 291
+  role: notes_stage
+  excerpt: \Xi_\perp^{(XY)}
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 302
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 304
+  role: notes_stage
+  excerpt: -\sum_{X,Y\in\mathcal B}\Xi_\perp^{(XY)}\,\mathcal I[X,Y]
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 322
+  role: notes_stage
+  excerpt: \sum_{X,Y\in\mathcal B}\Xi_\perp^{(XY)}\,\mathcal I[X,Y]
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 332
+  role: notes_stage
+  excerpt: \sum_{X,Y\in\mathcal B}\Xi_\perp^{(XY)}\,\mathcal I[X,Y]
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 337
+  role: notes_stage
+  excerpt: At linear order, the only grouped-anisotropy dangers that remain are the **direct outlet coefficients**
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 360
+  role: notes_stage
+  excerpt: 3. therefore the remaining **linear** grouped-anisotropy bottleneck is entirely in the direct outlet coefficients
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 362
+  role: notes_stage
+  excerpt: not in \(\varepsilon_\perp\).
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 372
+  role: notes_stage
+  excerpt: '> derive the direct weak grouped-anisotropy contribution to the outlet coefficients'
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 374
+  role: notes_stage
+  excerpt: '> and only after that return to the quadratic scalar feed-down coefficients'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 4. Stage 168 weighted combination transports the quadratic grouped invariants into eps_perp.
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: lin_coeff = sp.simplify(sp.diff(log_avg, e).subs(e, 0))
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: expect_zero("linear coefficient in averaged log-observable", lin_coeff)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: '# 4. Stage 168 transport into eps_perp'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: XiL, Xiv, XiT, Igrp = sp.symbols('XiL Xiv XiT Igrp', real=True)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: '# eps_L = XiL Igrp, eps_v = Xiv Igrp, eps_T = XiT Igrp'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: eps_perp = g*XiT*Igrp + (g + sp.Rational(1,2)/s)*Xiv*Igrp + (2*g + sp.Rational(3,4)/s)*XiL*Igrp
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: Xi_perp = g*XiT + (g + sp.Rational(1,2)/s)*Xiv + (2*g + sp.Rational(3,4)/s)*XiL
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: expect_zero("eps_perp - Xi_perp Igrp", eps_perp - Xi_perp*Igrp)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: 'Xi_perp_num = sp.N(Xi_perp.subs({g: g_num, r: r_num}), 20)'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: print("Numeric Xi_perp combination =", Xi_perp_num)
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: 'coeff_T = sp.N(Xi_perp.coeff(XiT).subs({g: g_num, r: r_num}), 20)'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: 'coeff_v = sp.N(Xi_perp.coeff(Xiv).subs({g: g_num, r: r_num}), 20)'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: 'coeff_L = sp.N(Xi_perp.coeff(XiL).subs({g: g_num, r: r_num}), 20)'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: ("Xi_perp coeff on XiT", coeff_T, sp.Float('0.758035078944663', 20)),
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: ("Xi_perp coeff on Xiv", coeff_v, sp.Float('1.00314310113848', 20)),
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: ("Xi_perp coeff on XiL", coeff_L, sp.Float('1.88373219118005', 20)),
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: print("  Therefore grouped-lane anisotropy enters eps_L, eps_v, eps_T, eps_perp only quadratically.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

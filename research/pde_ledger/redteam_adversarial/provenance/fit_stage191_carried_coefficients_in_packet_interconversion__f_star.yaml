@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage191_carried_coefficients_in_packet_interconversion
+parameter_name: F_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage191_carried_coefficients_in_packet_interconversion__phase_b__f_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '191'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 253
+  role: notes_stage
+  excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 256
+  role: notes_stage
+  excerpt: \boxed{\mathfrak R_{\rm tr}=m_T^{1+\chi_{0,*}},}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 272
+  role: notes_stage
+  excerpt: \boxed{m_T=e^{q_{\rm tr}/(1+\chi_{0,*})},}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 276
+  role: notes_stage
+  excerpt: \boxed{m_\mu=e^{q_{\rm nt}-q_\eta+F_* q_{\rm tr}/(1+\chi_{0,*})}.}
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: chi0s, Fstar = sp.symbols("chi0_star F_star", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: sp.simplify(mT ** (1 + chi0s)),
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 224
+  role: sympy_script
+  excerpt: sp.simplify(mMu / (mK * mT**Fstar)),
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: sp.simplify(sp.exp(qtr / (1 + chi0s))),
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 235
+  role: sympy_script
+  excerpt: sp.simplify(sp.exp(qnt - qeta + Fstar * qtr / (1 + chi0s))),
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: sp.simplify((1 + chi0s) * sp.log(mT)),
+- path: scripts/moving_throat_pde_stage191_minimal_pde_data_packet_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: sp.simplify(sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT)),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

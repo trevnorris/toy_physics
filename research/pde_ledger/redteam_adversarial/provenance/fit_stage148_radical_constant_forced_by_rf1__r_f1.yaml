@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage148_radical_constant_forced_by_rf1
+parameter_name: r_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage148_radical_constant_forced_by_rf1__phase_b__r_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '148'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: rF1 = sp.sqrt(12*sp.Rational(37,20)**2/sp.pi**2 - 1)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: gminus = sp.simplify(rF1 - sp.sqrt(1+rF1**2)/2)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: '# Paper-literal anchor (EXTERNAL, appendix part04:846/848): AT/BT reproduce the published'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: '# Self-matched derivative family'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: '# GUARD: 100 under the radical is FORCED by rF1 (12*(37/20)^2 = 4107/100, so'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: '# rF1^2 = (4107 - 100*pi^2)/(100*pi^2)); do NOT substitute any other constant.'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: '# 1 + rF1^2 = 4107/(100 pi^2) so sqrt(1+rF1^2) = 37*sqrt(3)/(10 pi), and sqrt(4107)=37*sqrt(3),'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: rF1_exact = sp.sqrt(12*sp.Rational(37, 20)**2/sp.pi**2 - 1)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: gminus_exact = rF1_exact - sp.sqrt(1 + rF1_exact**2)/2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

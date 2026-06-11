@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage138_rq_quarter_derived_not_assumed
+parameter_name: R_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage138_rq_quarter_derived_not_assumed__phase_b__r_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '138'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_138.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Gain ratio \(R_q=(\mathfrak g_c-\mathfrak r)^2/(1+\mathfrak r^2)\); exact compensation gives \(R_q=1/4\).
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 45
+  role: notes_stage
+  excerpt: R_q:=-\frac{M_q}{M_s}=\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2}.
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 52
+  role: notes_stage
+  excerpt: \Pi = \Sigma_0\Big[1-R_q\,\mathcal S_q(\Pi)\Big].
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 69
+  role: notes_stage
+  excerpt: \boxed{R_q=\frac14.}
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 89
+  role: notes_stage
+  excerpt: So the Stage 135 closure is not independent bookkeeping. It is the normalized image of
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 99
+  role: notes_stage
+  excerpt: \boxed{R_q=\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2}.}
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 104
+  role: notes_stage
+  excerpt: \boxed{R_q=\frac14,}
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: Rq_raw = sp.simplify(-Mq_norm / Ms_norm)
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: Rq = sp.simplify(Rq_raw.subs(Ms_norm, Sigma0))
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: print('R_q =', Rq)
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: sol_plus = sp.simplify(Rq.subs(gc, r + sp.sqrt(1 + r**2)/2))
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: sol_minus = sp.simplify(Rq.subs(gc, r - sp.sqrt(1 + r**2)/2))
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: print('R_q on + branch =', sol_plus)
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: print('R_q on - branch =', sol_minus)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

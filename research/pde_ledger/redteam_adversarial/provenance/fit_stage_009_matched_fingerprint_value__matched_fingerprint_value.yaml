@@ -1,0 +1,37 @@
+schema_version: 1
+candidate_id: fit_stage_009_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_009_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 009
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_009.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: print("so its O(ell) term is ell*μ1*Q'(0), not the exponential value ell*Q'(0).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

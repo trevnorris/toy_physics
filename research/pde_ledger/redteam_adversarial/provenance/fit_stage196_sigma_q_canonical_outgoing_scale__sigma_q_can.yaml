@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage196_sigma_Q_canonical_outgoing_scale
+parameter_name: sigma_Q_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage196_sigma_q_canonical_outgoing_scale__phase_b__sigma_q_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '196'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 23
+  role: notes_stage
+  excerpt: Stage 194 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 48
+  role: notes_stage
+  excerpt: \frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 69
+  role: notes_stage
+  excerpt: \frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5},
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 78
+  role: notes_stage
+  excerpt: \frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5-i\,\mathcal T_{\ge7}(\omega)},
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 86
+  role: notes_stage
+  excerpt: The Stage 194 canonical outgoing scale is still
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 90
+  role: notes_stage
+  excerpt: \sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 106
+  role: notes_stage
+  excerpt: X_Q(\omega):=\frac{\omega^2}{\Omega_Q^2}+i\chi_Q\sigma_Q^{\rm can}\omega^5,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 178
+  role: notes_stage
+  excerpt: So the first place the extra higher odd tail can appear is exactly `\omega^7`.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 242
+  role: notes_stage
+  excerpt: L_0=-3S+\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 244
+  role: notes_stage
+  excerpt: L_2=\frac{S\beta^2}{3}+\Sigma_2,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 246
+  role: notes_stage
+  excerpt: L_4=\frac{S\beta^4}{9}+\Sigma_4,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 248
+  role: notes_stage
+  excerpt: L_5=\frac{S\beta^5}{9}+\Sigma_5,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 254
+  role: notes_stage
+  excerpt: Then the exact canonical-even matching conditions are still
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 263
+  role: notes_stage
+  excerpt: \Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 265
+  role: notes_stage
+  excerpt: \Sigma_4=-\frac{3S\beta^4-3S+\Sigma_0}{27}.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 274
+  role: notes_stage
+  excerpt: =\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 278
+  role: notes_stage
+  excerpt: They can change the response only at `z^7` and higher, but they cannot change `\chi_Q`.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 347
+  role: notes_stage
+  excerpt: '> they cannot alter the `\omega^5` coefficient and therefore cannot alter the reduced point-particle `2.5`PN closure.'
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 385
+  role: notes_stage
+  excerpt: No extra isotropic retarded datum beginning at `O(\omega^7)` can modify the reduced point-particle `2.5`PN verdict.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 394
+  role: notes_stage
+  excerpt: The only isotropic DtN-side data that can move the reduced `2.5`PN verdict are still
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 396
+  role: notes_stage
+  excerpt: (\beta,\Sigma_0,\Sigma_5).
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: X_Q = sp.simplify(omega**2 / Omega_Q**2 + sp.I * chi_Q * sigma_can * omega**5)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("sigma_Q^can =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: sp.pprint(sigma_can)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '"Yhat_Q^(ret,>=7) through O(omega^5) - canonical one-pole form",'
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: '# III. Stage 194 canonical-even matching and chi_Q stability'
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: subbanner("III. Stage 194 canonical-even matching and chi_Q stability")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: Sigma0, Sigma2, Sigma4, Sigma5 = sp.symbols("Sigma_0 Sigma_2 Sigma_4 Sigma_5", real=True)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: L0_stage194 = -3 * S + Sigma0
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: L2_stage194 = S * beta**2 / 3 + Sigma2
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: L4_stage194 = S * beta**4 / 9 + Sigma4
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: L5_stage194 = S * beta**5 / 9 + Sigma5
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Sigma2_match = sp.simplify(-(3 * S * beta**2 - 3 * S + Sigma0) / 9)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: Sigma4_match = sp.simplify(-(3 * S * beta**4 - 3 * S + Sigma0) / 27)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: 'Y_stage194_matched = sp.simplify(Y_stage194_hi_series.subs({Sigma2: Sigma2_match, Sigma4: Sigma4_match}))'
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: Y_stage194_through5 = sp.series(Y_stage194_matched, z, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: chi_from_def = sp.simplify(3 * (S * beta**5 + 9 * Sigma5) / (3 * S - Sigma0))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("Sigma_2 matching law =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

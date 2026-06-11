@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_043_d_u
+parameter_name: D_U
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_043_d_u__phase_b__d_u.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '043'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 71
+  role: notes_stage
+  excerpt: '`y = g_B v + g_U g_S D_U v,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 75
+  role: notes_stage
+  excerpt: '`D_U = diag( 1/K_U, 1/[K_U(1+delta_U)] ).`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 141
+  role: notes_stage
+  excerpt: '`A_phi^(eff) = K_phi^(eff) - g_S^2 v.D_U.v,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 153
+  role: notes_stage
+  excerpt: '`v.D_U.v = (sigma / K_U) [ 1 - (2/11) delta_U/(1+delta_U) ].`'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: DU = sp.diag(1 / KU, 1 / (KU * (1 + delta_U)))
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: y = sp.simplify(gB * v + gU * gS * DU * v)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: SU = sp.simplify((v.T * DU * v)[0])
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("v.D_U.v =")
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: '# the frozen overlap sigma = 88/(9 pi^2), so the literal 8/pi^2 is PRODUCED, not assumed.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage_178_d_r
+parameter_name: d_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_178_d_r__phase_b__d_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '178'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 79
+  role: notes_stage
+  excerpt: \delta\ln \Delta_{A,r}=\epsilon\lambda_A\,\mathfrak d_r.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 92
+  role: notes_stage
+  excerpt: \nu_r:=2(\mathfrak p_r-\mathfrak d_r).
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 171
+  role: notes_stage
+  excerpt: '## 3. Exact formulas for the actual port slopes `\mathfrak p_r` and `\mathfrak d_r`'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 223
+  role: notes_stage
+  excerpt: \mathfrak d_r
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 231
+  role: notes_stage
+  excerpt: 'So \(\mathfrak d_r\) measures how the static port detuning is changed by:'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 233
+  role: notes_stage
+  excerpt: '- the combined frequency drift of the internal brane-like and mixed legs,'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 234
+  role: notes_stage
+  excerpt: '- and the coupling drift \(R_r\).'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 238
+  role: notes_stage
+  excerpt: Combining the last two formulas with \(\nu_r=2(\mathfrak p_r-\mathfrak d_r)\) gives
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 392
+  role: notes_stage
+  excerpt: \mathfrak p_r=\mathfrak d_r=0
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 3. Exact formulas for the actual port slopes p_r and d_r.
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: P0r, D0r, p_r, d_r = sp.symbols('P0r D0r p_r d_r', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: DAr = D0r * (1 + eps * lam * d_r)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("nu_r - 2(p_r-d_r)", nu_from_series - 2 * (p_r - d_r))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("nu_r =", sp.simplify(2 * (p_r - d_r)))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '# 3. Exact formulas for p_r and d_r from actual port data'
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: banner("3. Exact formulas for p_r and d_r from actual port data")
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: expect_zero("d_r formula", d_from_series - d_expected)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: print("d_r     =", d_expected)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

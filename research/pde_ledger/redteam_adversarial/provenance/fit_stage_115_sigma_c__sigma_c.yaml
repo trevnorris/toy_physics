@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage_115_sigma_c
+parameter_name: sigma_c
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_115_sigma_c__phase_b__sigma_c.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '115'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 14
+  role: notes_stage
+  excerpt: 4\sigma_*-\frac{\sigma_*}{1-z^2/3-i z^5/9},
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 21
+  role: notes_stage
+  excerpt: \rho_c=4\sigma_c,
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 35
+  role: notes_stage
+  excerpt: \sigma_c=
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 81
+  role: notes_stage
+  excerpt: 4\sigma_*-\frac{\sigma_*}{1-z^2/3-i z^5/9},
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 83
+  role: notes_stage
+  excerpt: \sigma_*=\frac{g_s^2}{4K_s}.
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: sigma_c = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q * (1 + r_c))
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: balance_eq = sp.expand(rho_c - 4 * sigma_c)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: print("rho_c - 4 sigma_c =")
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: '# Pick one branch; both give the same sigma_c.'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: sigma_star = sp.simplify((g_s**2) / (4 * K_s))
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: '"sigma_c on balance surface",'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: sigma_c.subs(g_q, gq_branch) - sigma_star,
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '- sigma_c / (1 - (kappa0 / (1 + r_c)) * z**2 - sp.I * (gamma0 / (1 + r_c)) * z**5)'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 4 * sigma_star - sigma_star / (1 - z**2 / 3 - sp.I * z**5 / 9)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: print("sigma_* =", sigma_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

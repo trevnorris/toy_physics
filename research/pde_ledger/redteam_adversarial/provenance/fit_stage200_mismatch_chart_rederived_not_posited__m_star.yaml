@@ -1,0 +1,155 @@
+schema_version: 1
+candidate_id: fit_stage200_mismatch_chart_rederived_not_posited
+parameter_name: M_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage200_mismatch_chart_rederived_not_posited__phase_b__m_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '200'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: '- `chi0s`, `deltaUs`, `Estar`, and `Fstar` are the carried Stage 192 Packet-B'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: 'def cnt_monomial(lambda_w, gamma, k_u, k_eta, k_w, mu_w, t_u, Estar, Fstar, L, sigma):'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: '* (gamma**2 * lambda_w**2 * sigma / (k_u * k_w)) ** Estar'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: '* (sp.pi**2 * t_u / (L**2 * k_u)) ** (-Fstar)'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Cnt1 = cnt_monomial(lam1, gam1, KU1, Keta1, KW1, mu1, T1, Estar, Fstar, L, sigma)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Cnt2 = cnt_monomial(lam2, gam2, KU2, Keta2, KW2, mu2, T2, Estar, Fstar, L, sigma)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: '[2 * (1 + Estar), 0, 2 * Estar, Fstar - Estar, -1, -(2 + Estar), 1, -Fstar],'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: lams, cs, gs = sp.symbols("lambda_star cEtaU_star gamma_star", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: '"KU_star Keta_star KW_star mu_star T_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 188
+  role: sympy_script
+  excerpt: alpha_star = sp.simplify((1 + deltaUs) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: PhiT_w = sp.simplify(rU_w * (rU_w / (rg_w * rc_w)) ** alpha_star)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 195
+  role: sympy_script
+  excerpt: '* (rg_w**2 * rla_w**2 / (rU_w * rW_w)) ** (-Estar)'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: '* (PhiT_w / rU_w) ** Fstar'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: Ctr_star = ctr_monomial(gs, cs, KUs, Ts, chi0s, deltaUs, L)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: Cnt_star = cnt_monomial(lams, gs, KUs, Ketas, KWs, mus, Ts, Estar, Fstar, L, sigma)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: epsEta_star = eps_eta_monomial(cs, KUs, Ketas)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: Estar,
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 221
+  role: sympy_script
+  excerpt: Fstar,
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 229
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(Ctr_witness / Ctr_star), force=True),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(Cnt_witness / Cnt_star), force=True),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 237
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(epsEta_witness / epsEta_star), force=True),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 241
+  role: sympy_script
+  excerpt: Cnt_x = cnt_monomial(lamx, gx, KUx, Ketax, KWx, mux, Tx, Estar, Fstar, L, sigma)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 248
+  role: sympy_script
+  excerpt: sp.log(Ctr_x / Ctr_star),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: sp.log(Cnt_x / Cnt_star),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 250
+  role: sympy_script
+  excerpt: sp.log(epsEta_x / epsEta_star),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 296
+  role: sympy_script
+  excerpt: '* (gf**2 * lamf**2 * sigma / (KUf * KWf)) ** (-Estar)'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 297
+  role: sympy_script
+  excerpt: '* (sp.pi**2 * T_orbit / (L**2 * KUf)) ** Fstar'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 308
+  role: sympy_script
+  excerpt: cnt_monomial(lamf, gf, KUf, Keta_actual, KWf, mu_actual, T_actual, Estar, Fstar, L, sigma)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 314
+  role: sympy_script
+  excerpt: expect_zero("Cnt(actual) / Cnt_* - m_mu/(m_K m_T^F_*)", Cnt_actual_ratio - mMu / (mK * mT**Fstar))
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 331
+  role: sympy_script
+  excerpt: sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

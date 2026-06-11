@@ -1,0 +1,107 @@
+schema_version: 1
+candidate_id: fit_stage_187_chi_0
+parameter_name: chi_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_187_chi_0__phase_b__chi_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '187'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 86
+  role: notes_stage
+  excerpt: \left(\frac{\pi^2 T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 163
+  role: notes_stage
+  excerpt: (1+\chi_{0,*})(\Delta_T-\Delta_U)=0.
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 202
+  role: notes_stage
+  excerpt: 0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 228
+  role: notes_stage
+  excerpt: \det M_*^{(\Delta_T,\Delta_\eta,\Delta_\mu)}=1+\chi_{0,*}>0,
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 244
+  role: notes_stage
+  excerpt: \frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U),
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 255
+  role: notes_stage
+  excerpt: F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U).
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 270
+  role: notes_stage
+  excerpt: \frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 281
+  role: notes_stage
+  excerpt: F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Delta_\gamma+\Delta_c-\Delta_U)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 378
+  role: notes_stage
+  excerpt: -\frac{\chi_{0,*}\delta_{U,*}}{(1+\chi_{0,*})(1+\delta_{U,*})(1+\chi_{0,*}+\delta_{U,*})}
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 386
+  role: notes_stage
+  excerpt: \frac{2\chi_{0,*}}{(1+\chi_{0,*})(1+\delta_{U,*})}
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: chi, deltaU, E, F = sp.symbols("chi0_star deltaU_star E_star F_star", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: row_tr = (1 + deltaU) * (DG + DC - DU) + (1 + chi) * (DT - DU)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: Ctr_ratio = (rG * rC / rU) ** (1 + deltaU) * (rT / rU) ** (1 + chi)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: '[0, 1 + deltaU, 1 + deltaU, -(2 + chi + deltaU), 0, 0, 0, 1 + chi],'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: '[0, 0, 1 + chi],'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: expect_zero("selected minor determinant", minor.det() - (1 + chi))
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: DT_expected = DU - (1 + deltaU) * (DG + DC - DU) / (1 + chi)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: '- F * (1 + deltaU) * (DG + DC - DU) / (1 + chi)'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("  Delta_T   = Delta_U - ((1+deltaU_*)/(1+chi_*))(Delta_gamma + Delta_c - Delta_U)")
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: print("              - F_*((1+deltaU_*)/(1+chi_*))(Delta_gamma + Delta_c - Delta_U)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

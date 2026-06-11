@@ -1,0 +1,77 @@
+schema_version: 1
+candidate_id: fit_stage073_epsilon_r_posited
+parameter_name: epsilon_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage073_epsilon_r_posited__phase_b__epsilon_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '073'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 19
+  role: notes_stage
+  excerpt: '`epsilon_r = 0.05`,'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 20
+  role: notes_stage
+  excerpt: '- and the explicit thin-wall identification `ell = epsilon_r a`.'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 30
+  role: notes_stage
+  excerpt: '`epsilon_r = 0.05 = 1/20.`'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 38
+  role: notes_stage
+  excerpt: '`ell = epsilon_r a.`'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 94
+  role: notes_stage
+  excerpt: So the first explicit throat-support branch is now pinned to one concrete large-`eta` Robin regime.
+origin_claims:
+- parameter: epsilon_r
+  introduced_at_stage: 59
+  introduced_at_line: 30
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+constraints:
+- parameter: epsilon_r
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 18
+    excerpt: '- the balanced thin-layer-consistent Family-1 radial wall branch'
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: epsilon_r = 1/20 (ell/a) is a posited reference-branch value listed among the 'frozen inputs' as 'the balanced
+    thin-layer-consistent Family-1 radial wall branch'. It is neither derived from ledger-internal consistency nor matched
+    to an external published number; it is an ansatz/convention setting the thin-wall scale. Candidate label 'epsilon_r_posited'
+    matches.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 15
+    excerpt: 'The relevant frozen inputs are:'
+  - path: paper/stages/stage_073.tex
+    line: 19
+    excerpt: \frac{\ell}{a}=\frac{1}{20}}.
+downstream_dependents:
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage073_epsilon_r_posited__epsilon_r.yaml

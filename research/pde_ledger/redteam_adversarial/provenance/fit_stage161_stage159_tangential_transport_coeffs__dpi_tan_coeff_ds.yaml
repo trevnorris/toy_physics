@@ -1,0 +1,179 @@
+schema_version: 1
+candidate_id: fit_stage161_stage159_tangential_transport_coeffs
+parameter_name: dPi_tan_coeff_dS
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_stage159_tangential_transport_coeffs__phase_b__dpi_tan_coeff_ds.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '161'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_161.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 161]{Stage 161: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility}'
+- path: paper/stages/stage_161.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+- path: paper/stages/stage_161.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
+- path: paper/stages/stage_161.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 161: D/N Similarity Decomposition of the Tangential Mixed-Port Slippage Susceptibility'
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 9
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 20
+  role: notes_stage
+  excerpt: 'The main result is that the tangential slippage susceptibility is not fundamental. It is the exact image of one
+    still smaller microscopic defect:'
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 31
+  role: notes_stage
+  excerpt: \Xi_\gamma:=\frac{\delta\ln\gamma_0}{\delta\Pi_{\rm tan}},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 33
+  role: notes_stage
+  excerpt: \Xi_L:=\frac{\delta\ln(L_W/a)}{\delta\Pi_{\rm tan}}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 41
+  role: notes_stage
+  excerpt: Equivalently, if the actual tangential deformation preserves the compensated D/N similarity class
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 211
+  role: notes_stage
+  excerpt: '## 4. Tangential susceptibility decomposition'
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 213
+  role: notes_stage
+  excerpt: Now define the tangential microscopic similarity susceptibilities
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 218
+  role: notes_stage
+  excerpt: \frac{\delta\ln\gamma_0}{\delta\Pi_{\rm tan}},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 222
+  role: notes_stage
+  excerpt: \frac{\delta\ln(L_W/a)}{\delta\Pi_{\rm tan}}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 233
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 292
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 297
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 308
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 317
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 321
+  role: notes_stage
+  excerpt: This is a substantial simplification.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 326
+  role: notes_stage
+  excerpt: 2. the tangential mouth deformation `\delta\Pi_{\rm tan}`,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 329
+  role: notes_stage
+  excerpt: Using the Stage 159 tangential transport,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 331
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm tan}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 442
+  role: notes_stage
+  excerpt: So if the actual tangential mouth deformation preserves the compensation-selected D/N similarity class to first
+    order, then
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 459
+  role: notes_stage
+  excerpt: It says that the reduced 2.5PN obstruction survives only if the tangential co-evolving mouth deformation drives
+    the concrete mixed side-channel **out of its compensation-selected D/N similarity class**.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 487
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 492
+  role: notes_stage
+  excerpt: '> compute whether the actual tangential co-evolving mouth deformation preserves the compensated D/N similarity
+    law'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: banner("TANGENTIAL SUSCEPTIBILITY AND FINAL DEFECT LAW")
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: dPi_tan, dSigma0, dS, dThat = sp.symbols("dPi_tan dSigma0 dS dThat", real=True)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: DeltaQ = sp.simplify(-9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: NQm1 = sp.simplify(9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: DeltaQ + sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: NQm1 - sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: '# Insert the Stage 159 tangential mouth transport.'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: DeltaQ_mouth = sp.expand(DeltaQ.subs(dPi_tan, dPi_tan_expr))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

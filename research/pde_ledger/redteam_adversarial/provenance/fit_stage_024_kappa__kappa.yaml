@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_024_kappa
+parameter_name: kappa
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_024_kappa__phase_b__kappa.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '024'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_024.tex
+  line: 153
+  role: paper_stage_tex
+  excerpt: \delta K=\varepsilon\,\kappa(s)Y_{20}(\Omega).
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 205
+  role: notes_stage
+  excerpt: '`delta K = eps kappa(s) Y_20(Omega)`.'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 217
+  role: notes_stage
+  excerpt: '`M^(20) = kappa_* diag(1, 1/2, 1/2, -1, -1)`,'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 221
+  role: notes_stage
+  excerpt: '`kappa_* = sqrt(5) / (7 sqrt(pi))`.'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 402
+  role: sympy_script
+  excerpt: kappa_star = sp.sqrt(5) / (7 * sp.sqrt(sp.pi))
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 403
+  role: sympy_script
+  excerpt: M_target = sp.diag(kappa_star, kappa_star / 2, kappa_star / 2, -kappa_star, -kappa_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

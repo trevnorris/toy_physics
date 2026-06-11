@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_062_xi_micro
+parameter_name: Xi_micro
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_062_xi_micro__phase_b__xi_micro.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '062'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_062.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 062]{Stage 062: Parent-Action Projection of the Microscopic Support/Source Gain}'
+- path: paper/stages/stage_062.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: '\stagefield{Purpose}{Stage~062 projects the microscopic gain back into parent-action variables: confinement loading,
+    compressional stiffness, and source/support overlap.}'
+- path: paper/stages/stage_062.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage062-Gmicro}
+- path: paper/stages/stage_062.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: G_{\rm micro}
+- path: paper/stages/stage_062.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Parent-action gain formula \eqref{eq:app-stage062-Gmicro}.}
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 062: Parent-Action Projection of the Microscopic Support/Source Gain'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 061 reduced the support/source theorem gap to one microscopic gain,
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 7
+  role: notes_stage
+  excerpt: '`G_micro = chi_sigma Lambda_phi^2 / K_X,`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 63
+  role: notes_stage
+  excerpt: 6. and the microscopic gain becomes the explicit parent-action quantity
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 65
+  role: notes_stage
+  excerpt: '`G_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 74
+  role: notes_stage
+  excerpt: '`G_micro = [ rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) ] C_(sigma phi)^2,`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 77
+  role: notes_stage
+  excerpt: 8. finally, inserting `kappa = K_X L^2 / T_X` gives the microscopic fixed-point strength
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 79
+  role: notes_stage
+  excerpt: '`Xi_micro = kappa G_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 82
+  role: notes_stage
+  excerpt: So the Stage-061 gain is no longer a free microscopic placeholder. It is the compressional susceptibility of the
+    `n=5` GNLS medium times the square of one parent confinement/support overlap, divided by the baseline support stiffness.
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 180
+  role: notes_stage
+  excerpt: '## 4. Exact parent formula for the microscopic gain'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 182
+  role: notes_stage
+  excerpt: Stage 061 defined the microscopic gain by
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 184
+  role: notes_stage
+  excerpt: '`G_micro = chi_sigma Lambda_phi^2 / K_X.`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 188
+  role: notes_stage
+  excerpt: '`G_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 213
+  role: notes_stage
+  excerpt: by Cauchy–Schwarz, and the microscopic gain factorizes as
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 215
+  role: notes_stage
+  excerpt: '`G_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 218
+  role: notes_stage
+  excerpt: 'This is useful because it separates the microscopic problem into two independent pieces:'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 232
+  role: notes_stage
+  excerpt: '## 6. Microscopic fixed-point strength `Xi_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 236
+  role: notes_stage
+  excerpt: '`Xi_micro = kappa G_micro,`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 244
+  role: notes_stage
+  excerpt: '`Xi_micro`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 249
+  role: notes_stage
+  excerpt: '`Pe = Xi_micro Delta(Pe;kappa,eta)`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 257
+  role: notes_stage
+  excerpt: That is the cleanest microscopic restatement yet of the support/source theorem gap.
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact parent formula for G_micro.
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 5. Xi_micro = kappa G_micro reduction.
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: banner("STAGE 62 — PARENT-ACTION PROJECTION OF THE MICROSCOPIC GAIN")
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: G_micro_closed = rho_star * g_phi**2 * Osp**2 / (m * cs_star_sq * KX * Nss)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("G_micro from action =", gain_from_action)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: expect_zero("G_micro from parent action vs closed form", gain_from_action - G_micro_closed)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: '# Second equality of boxed eq:app-stage062-Gmicro: G_micro = (rho_* g_phi^2 N_pp/(m c_{s,*}^2 K_X)) * C_{sigma
+    phi}^2'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: G_micro_factored = (rho_star * g_phi**2 * Npp / (m * cs_star_sq * KX)) * C_sp_sq
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: 'expect_zero("Second equality of boxed G_micro: closed vs factored form", G_micro_closed - G_micro_factored)'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '# Xi_micro relation'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: Xi_micro = sp.simplify(kappa * gain_from_action)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: print("Xi_micro =", Xi_micro)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: kappa_solved = sp.solve(Xi_micro - Xi_target, kappa)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: print("kappa solved from Xi_micro = Xi_target:", kappa_solved[0])
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

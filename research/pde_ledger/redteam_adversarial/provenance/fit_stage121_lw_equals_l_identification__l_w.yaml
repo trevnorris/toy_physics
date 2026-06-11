@@ -1,0 +1,96 @@
+schema_version: 1
+candidate_id: fit_stage121_lw_equals_l_identification
+parameter_name: L_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_lw_equals_l_identification__phase_b__l_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '121'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 26
+  role: notes_stage
+  excerpt: \boxed{L_W=L.}
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 35
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 37
+  role: notes_stage
+  excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 85
+  role: notes_stage
+  excerpt: With \(L_W=L\), the auxiliary mixed-tube pole is simply
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 91
+  role: notes_stage
+  excerpt: the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real
+    throat geometry, not to a detached bookkeeping cavity.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 98
+  role: notes_stage
+  excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: L,a,LW,r = sp.symbols('L a L_W r', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: LW_formula = sp.pi*a/2 * sp.sqrt((1+r**2)/3)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: r_geom = sp.solve(sp.Eq(LW, LW_formula), r)[0]
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: r_geom_simplified = sp.simplify(r_geom.subs(LW, L))
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: LW_formula.subs(r, r_geom_simplified) - L
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Notes (boxed): with L_W = L, the mixed-tube pole is Omega_W = pi c_s / (2 L).'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: OmegaW_formula_LW = sp.pi * c_s / (2 * LW)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: OmegaW_at_LW_eq_L = OmegaW_formula_LW.subs(LW, L)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("Omega_W(L_W = L) =", OmegaW_at_LW_eq_L)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '"Omega_W identification at L_W = L",'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

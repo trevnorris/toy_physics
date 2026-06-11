@@ -1,0 +1,179 @@
+schema_version: 1
+candidate_id: fit_stage183_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage183_eps_split_2_11_coefficient__phase_b__eps_split_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '183'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 8
+  role: notes_stage
+  excerpt: (\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta,\Sigma_\eta),
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 40
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 43
+  role: notes_stage
+  excerpt: +\frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 68
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 85
+  role: notes_stage
+  excerpt: Stage 182 already gave the exact tracking/nontracking split
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 91
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 94
+  role: notes_stage
+  excerpt: +\frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 103
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 106
+  role: notes_stage
+  excerpt: +\frac{4\epsilon_W\delta_U}{11(1-\epsilon)(1+\delta_U)^2}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 127
+  role: notes_stage
+  excerpt: \Sigma_\eta:=2c_1-\kappa_U-\kappa_\eta=\frac{\eta_1}{\epsilon_\eta}.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 173
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 181
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 248
+  role: notes_stage
+  excerpt: 0<\epsilon_\eta<1,
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 255
+  role: notes_stage
+  excerpt: -\frac{1-\epsilon_\eta}{\epsilon_\eta}\,(\mathcal R_1+\Xi_1).
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 305
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta,
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 315
+  role: notes_stage
+  excerpt: on the physical branch \(0<\epsilon_\eta<1\).
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 342
+  role: notes_stage
+  excerpt: \chi_0>0,\qquad \delta_U>0,\qquad 0<\epsilon_\eta<1.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 376
+  role: notes_stage
+  excerpt: -\frac{1-\epsilon_\eta}{\epsilon_\eta}(\mathcal R_1+\Xi_1);
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 388
+  role: notes_stage
+  excerpt: '> \((\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta,\Sigma_\eta)\).'
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: chi0, epsW, eps_eta, deltaU = sp.symbols('chi0 epsW eps_eta deltaU', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: SigmaZ, SigmaChi, SigmaEta, SigmaEps, SigmaDel = sp.symbols(
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: '''Sigma_Z Sigma_chi Sigma_eta Sigma_eps Sigma_del'', real=True'
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: + 2 * epsW / (1 - eps) * (11 + 9 * deltaU) / (11 * (1 + deltaU)) * SigmaEps
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: + 4 * epsW * deltaU / (11 * (1 - eps) * (1 + deltaU) ** 2)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: R1 = sp.simplify(-eps_eta / (1 - eps_eta) * SigmaEta - Xi1)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: + 2 * epsW / (1 - eps) * (11 + 9 * deltaU) / (11 * (1 + deltaU)) * SigmaEps
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: + 4 * epsW * deltaU / (11 * (1 - eps) * (1 + deltaU) ** 2)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: expect_zero("R_1 + Xi_1 + eps_eta/(1-eps_eta) Sigma_eta", R1 + Xi1 + eps_eta / (1 - eps_eta) * SigmaEta)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: sp.pprint(sp.simplify(-eps_eta / (1 - eps_eta) * SigmaEta))
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: SigmaEta_inv = sp.simplify(-(1 - eps_eta) / eps_eta * (R1 + Xi1))
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '# triangular map is invertible on the branch chi0>0, deltaU>0, 0<eps_eta<1, i.e.'
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: dressing_pref = sp.simplify(eps_eta / (1 - eps_eta))
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: expect_nonzero("eps_eta/(1-eps_eta) (R_1+Xi_1 <- Sigma_eta prefactor) nonzero on branch", dressing_pref)
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: print("             + [2 eps_W/(1-eps)] * [(11+9 delta_U)/(11(1+delta_U))] Sigma_eps")
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: print("             - [2 chi_0/(1+delta_U) + 4 eps_W delta_U/(11(1-eps)(1+delta_U)^2)] Sigma_del")
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: print("  R_1+Xi_1  = -(eps_eta/(1-eps_eta)) Sigma_eta")
+- path: scripts/moving_throat_pde_stage183_triangular_normal_form_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: print("  Sigma_eta = -((1-eps_eta)/eps_eta) (R_1 + Xi_1)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

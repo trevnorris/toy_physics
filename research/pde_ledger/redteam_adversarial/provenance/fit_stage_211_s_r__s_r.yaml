@@ -1,0 +1,68 @@
+schema_version: 1
+candidate_id: fit_stage_211_s_r
+parameter_name: S_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_211_s_r__phase_b__s_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '211'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 324
+  role: notes_stage
+  excerpt: Because `\(\mathcal C\)` is quartic and `\(\mathcal S_r\)` is sextic, this set is finite whenever the common zeros
+    are isolated.
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: Sr = sp.expand(Lr**2 - 4 * Mr**2 * Delta)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("S_r(r,s) =")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: sp.pprint(Sr)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: expect_zero("square elimination identity (r)", Nr * (Nr - 4 * Mr * sqrtDelta) - Sr)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: poly_Sr = sp.Poly(Sr, r, s)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: print(f"deg S_r = {poly_Sr.total_degree()}")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: 'if poly_Sr.total_degree() != 6:'
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: raise AssertionError("S_r is not sextic")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: bezout_bound = poly_C.total_degree() * poly_Sr.total_degree()
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

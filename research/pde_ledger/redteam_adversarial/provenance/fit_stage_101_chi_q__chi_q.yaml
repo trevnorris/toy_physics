@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage_101_chi_q
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_101_chi_q__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '101'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_101.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~101]{Stage~101: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely Outgoing}'
+- path: paper/stages/stage_101.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_101.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
+    condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+- path: paper/stages/stage_101.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: On the natural point-particle source map, \(\widehat m_0\to1\), so the last obstruction is purely \(\chi_Q\).
+- path: paper/stages/stage_101.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: paper/stages/stage_101.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 101: On the Natural Source-Map Branch the Last Reduced 2.5PN Obstruction is Purely
+    Outgoing'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 7
+  role: notes_stage
+  excerpt: '`mhat_0^2 chi_Q N_Q = 1`.'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 13
+  role: notes_stage
+  excerpt: This stage shows that in the strict point-particle limit the remaining reduced 2.5PN obstruction is no longer a
+    mixed source/outgoing product. It is purely the outgoing-normalization factor `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 29
+  role: notes_stage
+  excerpt: '`N_Q = 1/chi_Q`.'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 33
+  role: notes_stage
+  excerpt: '- if `chi_Q = 1`, then `N_Q = 1`,'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 34
+  role: notes_stage
+  excerpt: '- if `chi_Q != 1`, then the entire reduced 2.5PN mismatch is just the inverse outgoing renormalization.'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 40
+  role: notes_stage
+  excerpt: 'Stage 097 reduced the actual isotropic passive/outgoing grouped-`P2` branch to a single normalization-defect context,
+    and Stage 104 proves the exact compact outgoing `l=2` fingerprint matched by the canonical one-pole completion:'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 49
+  role: notes_stage
+  excerpt: Stage 105 fixes the canonical compact branch by matching the retarded `omega^5` coefficient to that fingerprint,
+    giving
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 51
+  role: notes_stage
+  excerpt: '`chi_Q = 1`.'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 65
+  role: notes_stage
+  excerpt: '`Delta_Q := chi_Q - 1`.'
+- path: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+  line: 89
+  role: notes_stage
+  excerpt: '> does the actual passive/outgoing moving-throat quadrupole branch realize `chi_Q = 1`, or does it carry a nontrivial
+    outgoing-normalization defect `Delta_Q`?'
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: chi_Q = 1 identification by DtN coefficient matching at stage 105
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: (chiQ_fix_from_outgoing_dtn). Stage 097 establishes the single-defect
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: branch context; it does not perform the chi_Q solve.
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: This stage owns Check (1) — the factorization mhat_0^2 chi_Q N_Q = 1 keeping
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: mhat0, chiQ, NQ, DeltaQ = sp.symbols('mhat0 chiQ NQ DeltaQ', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: sol_NQ = sp.solve(sp.Eq(mhat0**2 * chiQ * NQ, 1), NQ)[0]
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: print('canonical compact outgoing branch chiQ=1 gives =', sp.simplify(sol_NQ.subs({mhat0:1, chiQ:1})))
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: '# Anchor the reductions to the INPUT factorization mhat0^2 * chiQ * NQ = 1.'
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: 'assert sp.simplify((mhat0**2 * chiQ * NQ - 1).subs({mhat0: 1, NQ: 1/chiQ})) == 0, \'
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: '''point-particle natural branch reduction NQ = 1/chiQ failed against input factorization'''
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: 'assert sp.simplify((mhat0**2 * chiQ * NQ - 1).subs({mhat0: 1, chiQ: 1, NQ: 1})) == 0, \'
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: print('check exact replacement chiQ=1+DeltaQ:', sp.simplify(sol_NQ.subs({mhat0:1, chiQ:1+DeltaQ}) - 1/(1+DeltaQ)))
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: '# with chiQ = 1 + DeltaQ.'
+- path: scripts/moving_throat_pde_stage101_natural_source_map_reduction_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: 'assert sp.simplify((mhat0**2 * chiQ * NQ - 1).subs({mhat0: 1, chiQ: 1 + DeltaQ, NQ: 1/(1 + DeltaQ)})) == 0, \'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_101.tex
+    attempted_sources:
+    - paper/stages/stage_101.tex
+    - research/pde_ledger/paper/stages/stage_101.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    - paper/stages/stage_101.tex
+    - research/pde_ledger/paper/stages/stage_101.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_101.tex
+    attempted_sources:
+    - paper/stages/stage_101.tex
+    - research/pde_ledger/paper/stages/stage_101.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage101_natural_source_map_reduction.md
+    - paper/stages/stage_101.tex
+    - research/pde_ledger/paper/stages/stage_101.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

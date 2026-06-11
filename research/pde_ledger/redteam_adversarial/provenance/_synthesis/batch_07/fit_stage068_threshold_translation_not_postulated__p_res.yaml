@@ -1,0 +1,25 @@
+candidate_id: fit_stage068_threshold_translation_not_postulated
+parameter_name: P_res
+origin_claims:
+  - parameter: P_res
+    introduced_at_stage: 067
+    introduced_at_line: 127
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 127
+      excerpt: "`P_res := 1 / C_res^2`"
+constraints:
+  - parameter: P_res
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 116
+      excerpt: "`C_res^2 := C^2(sqrt(pi))`"
+downstream_dependents: [069]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "Candidate label 'threshold_translation_not_postulated' is supported: stage 068 multiplicatively translates the stage-066 matched window by P_res rather than postulating new thresholds; P_res itself is the reciprocal of the stage-067 exactly-computed coherence maximum, not a free choice."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md, line: 73, excerpt: "For the explicit independent sech–Gaussian family, replace `W_wall` by `W_res(r)=C^2(r)W_wall`." }
+      - { path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md, line: 88, excerpt: "`P_res = 1 / C_res^2 = 1.005612487760576...`" }

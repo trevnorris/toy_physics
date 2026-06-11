@@ -1,0 +1,214 @@
+schema_version: 1
+candidate_id: fit_stage_035_to
+parameter_name: to
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_035_to__phase_b__to.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '035'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_035.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~035 non-dimensionalizes the softening-depth target.  The selected normalization product
+    factors into an onset value times a universal D/N shape function \(F(\xi,\delta)\).  Strict monotonicity of \(F\) upgrades
+    the Stage~033 onset inequality into a unique stable normalization locus.}
+- path: paper/stages/stage_035.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage035-factorization}
+- path: paper/stages/stage_035.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \paragraph{2. Monotonicity and endpoints.}
+- path: paper/stages/stage_035.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: \lim_{\xi\to1^-}F(\xi,\delta)=+\infty.
+- path: paper/stages/stage_035.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: \paragraph{3. Required total loading.}
+- path: paper/stages/stage_035.tex
+  line: 100
+  role: paper_stage_tex
+  excerpt: The total loading law becomes
+- path: paper/stages/stage_035.tex
+  line: 107
+  role: paper_stage_tex
+  excerpt: As \(\xi\to1^-\), this approaches the refined stable threshold
+- path: paper/stages/stage_035.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Useful asymptotics.}
+- path: paper/stages/stage_035.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~035 outputs the shape function \eqref{eq:app-stage035-F}, the target ratio \eqref{eq:app-stage035-Rtarget},
+    the monotonicity derivative \eqref{eq:app-stage035-F-derivative}, the existence/uniqueness theorem \eqref{eq:app-stage035-existence},
+    and the required total loading \eqref{eq:app-stage035-alpha-req}.}
+- path: paper/stages/stage_035.tex
+  line: 134
+  role: paper_stage_tex
+  excerpt: \item Substitution of the D/N constants into Stage~034 gives \(F\).
+- path: paper/stages/stage_035.tex
+  line: 135
+  role: paper_stage_tex
+  excerpt: \item Every factor in \(\partial_\xi F\) is positive for \(\delta>0\) and \(0\leq\xi<1\).
+- path: paper/stages/stage_035.tex
+  line: 137
+  role: paper_stage_tex
+  excerpt: \item The divergence as \(\xi\to1^-\) matches the selected eigenvalue approaching zero.
+- path: paper/stages/stage_035.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~036 pairs \(F\) with the support-feasibility function \(G\).  Part~III later
+    computes continuum placement data that determine \(R_{\rm target}\), \(M_{\rm mix}\), and \(\delta\).}
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 8
+  role: notes_stage
+  excerpt: The next step is therefore to pass to the exact D/N finite-throat constants and reduce the entire problem to a
+    **dimensionless shape function**.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 12
+  role: notes_stage
+  excerpt: 1. the whole normalization problem collapses to one equation
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 14
+  role: notes_stage
+  excerpt: 2. the shape function `F` is strictly monotone on the stable branch,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 15
+  role: notes_stage
+  excerpt: 3. it maps the stable branch exactly from `1` to `+infinity`,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 17
+  role: notes_stage
+  excerpt: 5. and the exact required total loading and required support loading then follow immediately.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 19
+  role: notes_stage
+  excerpt: So Stage 035 turns the microscopic normalization problem into a one-dimensional universal branch-geometry problem
+    plus a final support-coupling feasibility check.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 75
+  role: notes_stage
+  excerpt: All dependence on the microscopic transfer factor and the overall wall scale has collapsed into the single dimensionless
+    target ratio `R_target`.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 79
+  role: notes_stage
+  excerpt: '## 3. Exact monotonicity, onset, and softening limits'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 90
+  role: notes_stage
+  excerpt: So `F` is strictly monotone increasing on the entire stable branch `0 <= xi < 1`.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 112
+  role: notes_stage
+  excerpt: So the Stage-033 onset inequality is now upgraded to a full uniqueness theorem for the selected normalization locus.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 116
+  role: notes_stage
+  excerpt: '## 4. Exact required total loading'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 118
+  role: notes_stage
+  excerpt: The Stage-034 total loading law becomes, in D/N dimensionless form,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 123
+  role: notes_stage
+  excerpt: As `xi -> 1^-`, this tends to the exact stable-branch softening threshold
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 129
+  role: notes_stage
+  excerpt: So once the unique `xi_req` solving `F(xi,delta)=R_target` is known, the unique required total directional loading
+    follows immediately from the formula above.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 135
+  role: notes_stage
+  excerpt: The physical total loading still splits as
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 143
+  role: notes_stage
+  excerpt: Therefore the exact support/BdG loading needed to realize the selected normalization locus is
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 157
+  role: notes_stage
+  excerpt: So even after the unique normalization locus is found, the completed moving-throat PDE still has to place the physical
+    support coupling on the nonnegative side of this equation.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 161
+  role: notes_stage
+  excerpt: '## 6. Useful asymptotics'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 179
+  role: notes_stage
+  excerpt: The required total loading then begins as
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 185
+  role: notes_stage
+  excerpt: For very large target ratio `R_target`, the unique solution lies close to softening and obeys
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 193
+  role: notes_stage
+  excerpt: So large normalization demand pushes the selected branch into the thin neighborhood just below softening.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 199
+  role: notes_stage
+  excerpt: The selected-branch quadrupole normalization bottleneck has now been reduced to the smallest exact reduced form
+    reached so far.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 201
+  role: notes_stage
+  excerpt: The completed moving-throat PDE has to determine the microscopic quantities entering
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 212
+  role: notes_stage
+  excerpt: 2. the unique required total loading is `alpha_req(xi_req,delta)`,
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact monotonicity of F on the stable branch.
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Exact required total loading alpha_req(xi, delta).
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 5. Exact required support-loading formula and near-onset / near-softening asymptotics.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_035.tex
+    attempted_sources:
+    - paper/stages/stage_035.tex
+    - research/pde_ledger/paper/stages/stage_035.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_035.tex
+    attempted_sources:
+    - paper/stages/stage_035.tex
+    - research/pde_ledger/paper/stages/stage_035.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage195_p0_target_canonical_value
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_p0_target_canonical_value__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_195.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_195.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 46
+  role: notes_stage
+  excerpt: \frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 68
+  role: notes_stage
+  excerpt: Define the exact Packet-A target scale
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 71
+  role: notes_stage
+  excerpt: P_0^{\rm target}:=\frac{54Gc_s^5}{5a^5c^5}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 103
+  role: notes_stage
+  excerpt: N_Q:=\frac{\bar P_0}{P_0^{\rm target}}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{\bar P_2}{\bar P_2^{\rm target}}=N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 110
+  role: notes_stage
+  excerpt: \frac{\bar P_4}{\bar P_4^{\rm target}}=N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 115
+  role: notes_stage
+  excerpt: \frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 121
+  role: notes_stage
+  excerpt: \bar\Gamma_5^{\rm target}:=\frac{2G}{5c^5}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 133
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}\,\bar\Gamma_5=\bar\Gamma_5^{\rm target}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 163
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}\bar P_0-P_0^{\rm target}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 165
+  role: notes_stage
+  excerpt: P_0^{\rm target}(m_{\hat 0}^{\,2}N_Q-1).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 177
+  role: notes_stage
+  excerpt: P_0^{\rm target}\left(\frac{1}{\chi_Q}-1\right).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 192
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}\,\frac{\Delta_Q}{1+\Delta_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 293
+  role: notes_stage
+  excerpt: P_0^{\rm target}(N_Q-1),
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 300
+  role: notes_stage
+  excerpt: P_0^{\rm target}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 311
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 347
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 416
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1).
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: Gamma5_target = sp.simplify(2 * G / (5 * c**5))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: N_Q_def = sp.simplify(P0 / P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("P0_target =")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: sp.pprint(P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("Gamma5_target =")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: sp.pprint(Gamma5_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '"Gamma5/Gamma5_target - chi_Q*N_Q",'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: sp.simplify(Gamma5 / Gamma5_target).subs(P0, N_Q * P0_target) - chi_Q * N_Q,
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: Delta_norm = sp.simplify(mhat0**2 * P0 - P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: Delta_norm_NQ = sp.simplify(Delta_norm.subs(P0, N_Q * P0_target))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: (mhat0**2 * Gamma5 - Gamma5_target).subs(P0, N_Q * P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: '"observable odd condition factorizes as Gamma5_target*(mhat0^2 chi_Q N_Q - 1)",'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: odd_condition_residual - Gamma5_target * (mhat0**2 * chi_Q * N_Q - 1),
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: expect_zero("Delta_norm from odd closure - P0_target*(1/chi_Q - 1)", Delta_norm_from_odd - P0_target * (1 / chi_Q
+    - 1))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: Delta_norm_DeltaQ + P0_target * Delta_Q / (1 + Delta_Q),
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: expect_zero("Delta_norm(point-particle) - P0_target*(1/chi_Q - 1)", Delta_norm_pt - P0_target * (1 / chi_Q - 1))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: Delta_norm_from_def = sp.simplify(P0_target * (NQ_from_def - 1))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: -P0_target * (3 * S * (beta**5 - 1) + Sigma0 + 27 * Sigma5) / (3 * (S * beta**5 + 9 * Sigma5))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: Delta_norm_linear = sp.simplify(P0_target * NQ_minus_1_linear)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

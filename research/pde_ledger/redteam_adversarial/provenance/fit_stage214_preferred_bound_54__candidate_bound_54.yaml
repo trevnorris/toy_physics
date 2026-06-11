@@ -1,0 +1,210 @@
+schema_version: 1
+candidate_id: fit_stage214_preferred_bound_54
+parameter_name: candidate_bound_54
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage214_preferred_bound_54__phase_b__candidate_bound_54.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '214'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_214.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_214.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation forms three stationary numerator equations, introduces one auxiliary
+    square-root variable, obtains a lifted degree pattern \((3,3,3,2)\), proves the \(54\)-candidate preferred bound, and
+    gives a square-root-free projected fallback.}
+- path: paper/stages/stage_214.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Finite quadruple-interior candidate set with preferred bound \(54\) per envelope, projected
+    fallback bound, and interior winner/non-improvement theorem against the Stage~213 boundary ledger.}
+- path: paper/stages/stage_214.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary;
+    it should not be read as a second independent proof.}
+- path: paper/stages/stage_214.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 214: Full Interior Four-Coordinate Simplex Optimizer, Exact Lifted Stationary System,
+    and the Finite Algebraic Candidate Set'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 213 four-coordinate mixed-simplex framework, once a compact interior ratio window
+    and the corresponding validity map are supplied, and provided the optimizer does not sit on an artificial outer boundary
+    of that chosen window.**'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 7
+  role: notes_stage
+  excerpt: 'The whole codimension-one boundary of the four-coordinate simplex is already closed by the Stage 212 / Stage 213
+    ledger, so this stage addresses only the genuinely new content: the **three-parameter interior** optimizer on a primitive
+    four-coordinate simplex.'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 19
+  role: notes_stage
+  excerpt: '> how do we optimize the **full** certified interior objective on the three-parameter simplex interior, and can
+    that search be reduced to a finite algebraic candidate set rather than a free-form continuum scan?'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 27
+  role: notes_stage
+  excerpt: 3. the exact degree ledger `(3,3,3,2)` and the corresponding Bézout candidate bound `54`,
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 29
+  role: notes_stage
+  excerpt: 5. the exact finite candidate-set theorem on a compact interior window,
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 31
+  role: notes_stage
+  excerpt: 7. and the exact interior winner / non-improvement theorems against the already-closed Stage 213 four-face boundary
+    ledger.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 33
+  role: notes_stage
+  excerpt: 'So Stage 214 is the four-coordinate analogue of Stage 211: the full interior optimizer is no longer a deferred
+    continuum search. It is a finite algebraic candidate problem.'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 274
+  role: notes_stage
+  excerpt: '## 3. Exact lifted algebraic stationary system and the `54`-candidate bound'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 315
+  role: notes_stage
+  excerpt: Therefore, whenever the lifted stationary set is zero-dimensional, Bézout gives the exact finite candidate bound
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 320
+  role: notes_stage
+  excerpt: '### Exact lifted pre-candidate set'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 322
+  role: notes_stage
+  excerpt: Define the lifted algebraic pre-candidate set
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 335
+  role: notes_stage
+  excerpt: Now filter by the original admissibility conditions. Define the exact admissible lifted candidate set
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 347
+  role: notes_stage
+  excerpt: '### Exact lifted finite candidate-set theorem'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 349
+  role: notes_stage
+  excerpt: Assume the optimizer does not lie on an artificial outer boundary of the chosen ratio window `\(\mathcal W_Q\)`
+    and that the lifted stationary set is zero-dimensional on that window. Then every interior optimizer of `\(\tau_{Q,\star}\)`
+    belongs to the finite admissible set `\(\mathcal C^{\rm int,lift}_{Q,\star}\)`.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 361
+  role: notes_stage
+  excerpt: This is the preferred candidate compiler for the four-coordinate interior problem.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 365
+  role: notes_stage
+  excerpt: '## 4. Direct square-root-free elimination and the projected algebraic pre-candidate set'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 419
+  role: notes_stage
+  excerpt: '### 4.3 One-chart projected candidate bound'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 421
+  role: notes_stage
+  excerpt: If one works on a nondegenerate chart where the chosen `r`-stationary relation is not sitting on an auxiliary elimination
+    degeneracy, then every interior stationary point lies in the projected algebraic pre-candidate set
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 433
+  role: notes_stage
+  excerpt: Because the two cross-consistency polynomials are quintic and the square condition is sextic, Bézout gives the
+    projected one-chart bound
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 437
+  role: notes_stage
+  excerpt: This is a useful projected algebraic upper bound, but the lifted `54`-point system above is the preferred exact
+    candidate compiler because it avoids the chart-dependent square-root degeneracy.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 514
+  role: notes_stage
+  excerpt: '## 6. Exact interior winner theorem against the Stage 213 boundary ledger'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 516
+  role: notes_stage
+  excerpt: Keep the imported Stage 213 four-face boundary bracket
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 526
+  role: notes_stage
+  excerpt: where `\(\tau_{Q,*}^{\rm best,\partial}\)` is the unknown true best root on the full codimension-one boundary of
+    the four-coordinate simplex.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 528
+  role: notes_stage
+  excerpt: Once the finite interior candidate sets are evaluated, the full four-coordinate comparison is immediate.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 538
+  role: notes_stage
+  excerpt: then there exists a genuine interior four-coordinate mixed ray whose certified root lies strictly below the best
+    full-boundary winner.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 548
+  role: notes_stage
+  excerpt: then no admissible interior stationary candidate beats the best boundary winner on that primitive four-coordinate
+    simplex.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 552
+  role: notes_stage
+  excerpt: '- one imported exact boundary interval from Stage 213, and'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 553
+  role: notes_stage
+  excerpt: '- one finite admissible interior candidate set from the lifted algebraic system above.'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 571
+  role: notes_stage
+  excerpt: 1. enumerate the finite lifted stationary candidate set,
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 574
+  role: notes_stage
+  excerpt: 4. compare those against the already-closed Stage 213 boundary ledger.
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 584
+  role: notes_stage
+  excerpt: '- Stage 213 closed the boundary and canonical-screen audit.'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 585
+  role: notes_stage
+  excerpt: '- Stage 214 closes the **full interior optimizer** as a finite algebraic candidate problem.'
+- path: notes/stages/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 589
+  role: notes_stage
+  excerpt: '> rank the five primitive four-coordinate simplices by their full certified interior minima and compare the winning
+    support-cardinality-`4` candidate against the already-finished support-`<=3` ledger.'
+- path: scripts/moving_throat_pde_stage214_full_interior_four_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: banner("EXACT LIFTED STATIONARY SYSTEM AND FINITE ALGEBRAIC CANDIDATE REDUCTION")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

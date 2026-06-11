@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage_232_a_k
+parameter_name: A_K
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_232_a_k__phase_b__a_k.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 75
+  role: notes_stage
+  excerpt: A_K
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 85
+  role: notes_stage
+  excerpt: A_K\frac{\pi^2}{4}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 170
+  role: notes_stage
+  excerpt: A_K\,\Omega_{Pe_*^{(\chi)}}^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 187
+  role: notes_stage
+  excerpt: A_K\,\Omega_{Pe_*^{(J)}}^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: \zeta_{\max}=A_K\pi^2/4;
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: A_K = (kappa + mp.pi**2 / 4) / (kappa + y**2)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: zeta_max = A_K * mp.pi**2 / 4
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: print("A_K =", A_K)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: assert_close(float(A_K), 1.0000521380385143, tol=5e-15)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: zeta_phys_chi = A_K * Omega_Pe(Pe_chi) ** 2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: zeta_phys_J = A_K * Omega_Pe(Pe_J) ** 2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,152 @@
+schema_version: 1
+candidate_id: fit_stage108_beta_forced_positive_branch
+parameter_name: beta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage108_beta_forced_positive_branch__phase_b__beta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '108'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 21
+  role: notes_stage
+  excerpt: Thus pure mouth normalization is invisible to the normalized outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 27
+  role: notes_stage
+  excerpt: \Lambda_2^{\rm def}(z)=S\Lambda_2^{\rm out}(\beta z).
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 33
+  role: notes_stage
+  excerpt: 1+\frac{\beta^2 z^2}{9}+\frac{4\beta^4 z^4}{81}+i\frac{\beta^5 z^5}{27}+O(z^6).
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 35
+  role: notes_stage
+  excerpt: So if the conservative even fingerprint is kept canonical,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 37
+  role: notes_stage
+  excerpt: \beta^2=1,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 39
+  role: notes_stage
+  excerpt: \beta^4=1,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 43
+  role: notes_stage
+  excerpt: \boxed{\beta=1.}
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 49
+  role: notes_stage
+  excerpt: So a pure effective radius/sound-speed rescaling cannot move the canonical outgoing normalization without simultaneously
+    spoiling the already fixed even moments.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 53
+  role: notes_stage
+  excerpt: Set `beta = 1` but allow a genuine throat-core self-energy,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 91
+  role: notes_stage
+  excerpt: \Sigma_5=\frac{S(1-\beta^5)}{9}-\frac{\Sigma_0}{27}.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 97
+  role: notes_stage
+  excerpt: '- pure scale+argument deformation with `beta = 1`,'
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 105
+  role: notes_stage
+  excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: S, beta = sp.symbols('S beta', nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Y_arg = sp.series((-3*S)/(S*Lambda_out.subs(z, beta*z)), z, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: sol_beta = sp.solve([sp.Eq(m2_arg, sp.Rational(1, 9)), sp.Eq(m4_arg, sp.Rational(4, 81))], [beta], dict=True)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: print('solutions preserving canonical even fingerprint =', sol_beta)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: 'if {sol[beta] for sol in sol_beta} != {sp.Integer(-1), sp.Integer(1)}:'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: raise AssertionError('Expected the two algebraic roots beta=±1.')
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: expect_zero('chi_arg(beta=1) - 1', chi_arg.subs(beta, 1) - 1)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '# Class C: additive core, beta=1'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print('Sigma2(beta=1) =', sp.simplify(sol[Sigma2]))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print('Sigma4(beta=1) =', sp.simplify(sol[Sigma4]))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: '# Anchor the Class C locus value to the notes submanifold reduced to beta=1 (Sigma5 = -Sigma0/27),'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: S*Lambda_out.subs(z, beta*z)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print('Sigma2(beta) =', sp.simplify(sol_g[Sigma2]))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: print('Sigma4(beta) =', sp.simplify(sol_g[Sigma4]))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: print('chi_gen(beta) =', sp.factor(chi_gen))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: '''general preservation submanifold = S(1 - beta^5)/9 - Sigma0/27'','
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: sp.simplify(chi_pres_gen - (S*(1 - beta**5)/sp.Integer(9) - Sigma0/sp.Integer(27))),
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '''general locus reduces to beta=1 (Class C)'','
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

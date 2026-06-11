@@ -1,0 +1,209 @@
+schema_version: 1
+candidate_id: fit_stage213_four_way_canonical_screens
+parameter_name: four_way_screen_directions
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage213_four_way_canonical_screens__phase_b__four_way_screen_directions.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '213'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_213.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 213]{Stage 213: Four-coordinate simplex gate}'
+- path: paper/stages/stage_213.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~213 opens the four-coordinate search by reducing every four-simplex face to a closed
+    triple packet and defining the four-way canonical screens.}
+- path: paper/stages/stage_213.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the support-\(\le3\) ledger, primitive quadruples, the positive four-simplex, and local
+    gradient/Hessian data.}
+- path: paper/stages/stage_213.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_213.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves exact face reduction, derives the four-coordinate gradient-synergy
+    law, computes six-way cross leverage, constructs fixed-simplex brackets, and states the support-cardinality-four improvement
+    gate against the imported boundary ledger.}
+- path: paper/stages/stage_213.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Four-coordinate simplex gate, face-reduction theorem, four-way gradient/equal-mix screens,
+    support-cardinality-four improvement/non-improvement filters.}
+- path: paper/stages/stage_213.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check every proper face of a four- or five-simplex is identified with a previously closed lower-support search.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 213: Four-Coordinate Mixed Simplex, Exact Face Reduction, and the Support-Cardinality-4
+    Theorem Gate'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 212 up-to-three-coordinate certified sieve, once a local oriented `4 x 4` Hessian-envelope
+    block and the corresponding validity map are supplied on the chosen four-coordinate patch.**'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 7
+  role: notes_stage
+  excerpt: This stage does **not** yet solve the full three-parameter interior optimizer on a primitive four-coordinate simplex.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 19
+  role: notes_stage
+  excerpt: '> can a **genuine interior four-coordinate** mixed branch beat the already-finished support-`<=3` ledger, and
+    what is the smallest exact audit that can test that before solving the full three-parameter interior optimizer?'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 25
+  role: notes_stage
+  excerpt: 1. the exact combinatorial ledger for the five primitive four-coordinate simplices,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 26
+  role: notes_stage
+  excerpt: 2. the exact **positive spherical four-simplex** and its full face reduction back to the Stage 212 triple packets,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 27
+  role: notes_stage
+  excerpt: 3. the exact **four-coordinate gradient-synergy theorem** and the unique interior gradient-optimal ray,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 28
+  role: notes_stage
+  excerpt: 4. the exact **four-coordinate curvature law** and the theorem that the equal-mix barycenter maximizes the total
+    six-way off-diagonal leverage,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 30
+  role: notes_stage
+  excerpt: 6. the exact **canonical quadruple-screen audit** consisting of four imported triple faces plus two interior canonical
+    rows,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 31
+  role: notes_stage
+  excerpt: 7. and the exact **support-cardinality-4 theorem gate** that certifies a genuine four-coordinate improvement over
+    the entire up-to-three-coordinate ledger whenever one canonical interior screen already wins.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 33
+  role: notes_stage
+  excerpt: So Stage 213 is the four-coordinate analogue of Stage 210, but now with the whole support-`<=3` boundary ledger
+    already finished and imported from Stage 212.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 37
+  role: notes_stage
+  excerpt: '## 1. Carry-forward primitive quadruple ledger and the positive spherical four-simplex'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 74
+  role: notes_stage
+  excerpt: Every primitive triple belongs to exactly two primitive quadruples, because once three axes are fixed there are
+    exactly two remaining primitive directions that can complete the quadruple.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 82
+  role: notes_stage
+  excerpt: The first genuinely four-coordinate search set is the **positive spherical four-simplex**
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 101
+  role: notes_stage
+  excerpt: Interior points have all four coordinates positive. Boundary points lie on one of the four three-coordinate faces.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 107
+  role: notes_stage
+  excerpt: The four codimension-one faces are
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 195
+  role: notes_stage
+  excerpt: 'This gives the first exact four-coordinate simplification:'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 197
+  role: notes_stage
+  excerpt: '> nothing on the boundary of the four-coordinate simplex is new. The entire codimension-one boundary is already
+    closed by the Stage 212 primitive-triple ledger.'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 234
+  role: notes_stage
+  excerpt: So the entire four-simplex boundary already carries one exact certified interval,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 244
+  role: notes_stage
+  excerpt: where `\(\tau_{Q,*}^{\rm best,\partial}\)` is the unknown true best closure time on the full boundary of the four-coordinate
+    simplex.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 248
+  role: notes_stage
+  excerpt: '## 3. Exact four-coordinate gradient-synergy theorem'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 250
+  role: notes_stage
+  excerpt: The positive oriented initial slope magnitude on the four-simplex ray is
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 292
+  role: notes_stage
+  excerpt: Because all four primitive slopes are positive, the interior four-coordinate gradient winner strictly beats every
+    triple-face first-order maximum. For example,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 298
+  role: notes_stage
+  excerpt: '### Exact four-coordinate gradient-synergy theorem'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 300
+  role: notes_stage
+  excerpt: If all four primitive slopes are nonzero and monotone, a genuine interior four-coordinate mixed ray always beats
+    every three-coordinate face at the **first-order** descent level.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 302
+  role: notes_stage
+  excerpt: That does **not** yet prove a four-coordinate winner after curvature enters, but it proves that the interior four-simplex
+    carries genuinely new descent information already at linear order.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 306
+  role: notes_stage
+  excerpt: '## 4. Exact four-coordinate curvature law and the total six-way cross-leverage theorem'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 375
+  role: notes_stage
+  excerpt: maximizes the total six-way off-diagonal leverage, with
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 386
+  role: notes_stage
+  excerpt: So the four-coordinate interior barycenter adds one full new unit of total cross leverage beyond the triple-simplex
+    barycenter.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 402
+  role: notes_stage
+  excerpt: so there is no genuine four-way curvature synergy. In that case the interior four-simplex carries only the first-order
+    gradient gain from Section 3.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 439
+  role: notes_stage
+  excerpt: So the four-coordinate simplex introduces **no new root algebra** at a fixed interior point. The only new difficulty
+    is the genuine three-parameter interior search over `\(\mathbf a\)`.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 514
+  role: notes_stage
+  excerpt: '## 6. The canonical quadruple-screen audit'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 517
+  role: notes_stage
+  excerpt: 'The smallest exact screen set is instead:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

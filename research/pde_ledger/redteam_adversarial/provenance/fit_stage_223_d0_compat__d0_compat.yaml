@@ -1,0 +1,202 @@
+schema_version: 1
+candidate_id: fit_stage_223_d0_compat
+parameter_name: D0_compat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_223_d0_compat__phase_b__d0_compat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '223'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_223.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 223]{Stage 223: Isotropic target surface and primitive compatibility}'
+- path: paper/stages/stage_223.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_223.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Exact primitive compatibility surface $N_0/P_{0,{\rm target}}=3(M+B_2+Z_2)^2/(B_4+Z_4)$ and
+    finite dynamic survival windows on the compatible branch.}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 223: `5`PN Isotropic Target Surface, Primitive-Branch Compatibility, and the Dynamic
+    Survival Window'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: The compatibility equation, the compatible wall stiffness, the compatibility-branch pole census, and the finite
+    dynamic survival windows below are exact inside that reduced closure. The numerical values are exact evaluations on one
+    explicit admissible primitive slice of the same formulas.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: 1. the exact symbolic compatibility equation between the isotropic one-pole condition and the isotropic outgoing-normalization
+    condition,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 26
+  role: notes_stage
+  excerpt: 3. one concrete compatibility branch on the Stage-222 sample slice,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: 4. the resulting compatibility-branch pole census,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: 5. and a finite **dynamic survival window** in the branch-compatible target parameter.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: '> can the same branch support a good pole **while also lying on the `5`PN-compatible isotropic target surface**?'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive
+    branch is compatibility rather than full calibration.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 134
+  role: notes_stage
+  excerpt: '## 2. Exact compatibility equation'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: which is equivalent to the exact compatibility equation
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 161
+  role: notes_stage
+  excerpt: Equivalently, the primitive branch itself induces the unique branch-compatible target
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: Second, the compatibility equation does **not** determine every coupling. It tells us whether the primitive branch
+    wants a normalization target that is even compatible with its own conservative one-pole structure.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 178
+  role: notes_stage
+  excerpt: '## 3. Primitive specialization of the compatibility equation'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 197
+  role: notes_stage
+  excerpt: So on the primitive family the isotropic `5`PN-compatible surface is already a single explicit algebraic relation
+    in the radial/axial couplings and frequencies.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: '## 4. Concrete sample compatibility branch'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 249
+  role: notes_stage
+  excerpt: The exact compatibility target on this primitive slice is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 252
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 256
+  role: notes_stage
+  excerpt: The corresponding compatibility wall stiffness is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 259
+  role: notes_stage
+  excerpt: K_{\mathrm{compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 263
+  role: notes_stage
+  excerpt: So the compatibility branch is much stiffer than the loose Stage-222 sample branch. Its compatible static denominator
+    is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: D_{0,\mathrm{compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 267
+  role: notes_stage
+  excerpt: K_{\mathrm{compat}}-B_0-Z_0
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 277
+  role: notes_stage
+  excerpt: while the same primitive family, when forced onto the exact isotropic one-pole/normalization compatibility surface,
+    wants
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 279
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}\approx 0.00207.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 281
+  role: notes_stage
+  excerpt: So the `5`PN-compatible branch lives at a much lower static prefactor and a much higher wall stiffness on this
+    primitive slice.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 285
+  role: notes_stage
+  excerpt: '## 5. Pole census on the compatibility branch'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 287
+  role: notes_stage
+  excerpt: Using \(K=K_{\mathrm{compat}}\), the conservative pole census is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: On the compatibility branch the four values are
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 321
+  role: notes_stage
+  excerpt: So on this concrete `5`PN-compatible branch the dynamic same-charge corridor is **not** carried by the internal
+    poles at all. It is carried entirely by the wall-like poles.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 327
+  role: notes_stage
+  excerpt: '## 6. Dynamic survival window on the compatibility surface'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 347
+  role: notes_stage
+  excerpt: 'Now scan \(\lambda_W\) **along the exact compatibility surface**, i.e. always resetting \(K\) to \(K_{\mathrm{compat}}(\lambda_W)\).
+    The resulting branch-compatible target and wall-like residue/linewidth figures are:'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 349
+  role: notes_stage
+  excerpt: '| \(\lambda_W\) | \(P_{0,\mathrm{target,compat}}\) | \(K_{\mathrm{compat}}\) | lower wall \(\mathcal R_Q\) | upper
+    wall \(\mathcal R_Q\) |'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 357
+  role: notes_stage
+  excerpt: 'This scan shows a clean monotonic tradeoff on the explicit compatibility family:'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 359
+  role: notes_stage
+  excerpt: '- increasing \(\lambda_W\) raises the branch-compatible static target \(P_{0,\mathrm{target,compat}}\),'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 360
+  role: notes_stage
+  excerpt: '- the same move lowers the required wall stiffness \(K_{\mathrm{compat}}\),'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

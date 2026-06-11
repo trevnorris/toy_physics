@@ -1,0 +1,25 @@
+candidate_id: fit_stage_069_delta_0
+parameter_name: Delta_0
+origin_claims:
+  - parameter: Delta_0
+    introduced_at_stage: 061
+    introduced_at_line: 162
+    citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 162
+      excerpt: "`Delta_0(kappa,eta)`"
+constraints:
+  - parameter: Delta_0
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+      line: 29
+      excerpt: "The universal matched-branch theorem from Stages 061 and 066 is still the main result:"
+downstream_dependents: [70, 71, 72, 73, 74, 75, 76, 77, 78]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_0 is the symbolic axial support-geometry function Delta_0(kappa,eta) from the Stage-061 operator theorem, carried symbolically into the stage-069 three-zone verdict (the stage-069 sympy script declares it free). It has no scalar value at stage 069; the scanner has no numeric ledger value to attribute here."
+    citations:
+      - { path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py, line: 96, excerpt: "# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch." }
+      - { path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md, line: 13, excerpt: "`Pe_req / Delta_inf` to `Pe_req / Delta_0`." }

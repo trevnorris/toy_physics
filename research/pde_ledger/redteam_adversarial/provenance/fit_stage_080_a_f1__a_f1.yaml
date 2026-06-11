@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage_080_a_f1
+parameter_name: A_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_080_a_f1__phase_b__a_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 080
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+  line: 15
+  role: notes_stage
+  excerpt: '`zeta_F1(Pe) = A_F1 Omega_Pe^2.`'
+- path: notes/stages/moving_throat_pde_stage080_family1_zeta_thresholds.md
+  line: 63
+  role: notes_stage
+  excerpt: '`zeta_F1(Pe) = A_F1 Omega_Pe^2,`'
+- path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: A_F1 = (kappa_F1 + sp.pi**2 / 4) / (kappa_F1 + y_F1**2)
+- path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: zeta = sp.simplify(A_F1 * Omega**2)
+- path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '# Independent recomputation of zeta_*(1) via A_F1 * Omega(Pe)^2 with'
+- path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: A_F1_recomputed = (sp.Rational(12321, 5) + sp.pi**2 / 4) / (sp.Rational(12321, 5) + y_F1**2)
+- path: scripts/moving_throat_pde_stage080_family1_zeta_thresholds_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: _zeta_val = sp.N(A_F1_recomputed * _omega_explicit(_pe_val)**2, 25)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

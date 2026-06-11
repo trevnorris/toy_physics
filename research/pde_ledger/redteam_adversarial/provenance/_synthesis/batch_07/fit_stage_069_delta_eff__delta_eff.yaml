@@ -1,0 +1,13 @@
+candidate_id: fit_stage_069_delta_eff
+parameter_name: Delta_eff
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "Delta_eff is an audit-script-only construct: it is introduced solely in the stage-069 sympy audit as a free interpolation symbol ranging over [Delta_0, Delta_inf] to verify monotonicity of W_match. It does NOT appear anywhere in the stage-069 notes (grep for 'delta_eff'/'effective' returns nothing) and has no numeric ledger value, so no notes-backed origin or constraint can be asserted. Not a ledger parameter value."
+    citations:
+      - { path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py, line: 97, excerpt: "Delta_eff = sp.symbols(\"Delta_eff\", positive=True, real=True)" }
+      - { path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py, line: 96, excerpt: "# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch." }
+      - { path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md, line: 1, excerpt: "# Moving-Throat PDE — Stage 69: Final Reduced Verdict for the Support/Source Program" }

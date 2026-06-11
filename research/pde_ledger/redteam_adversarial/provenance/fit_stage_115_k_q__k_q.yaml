@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_115_k_q
+parameter_name: K_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_115_k_q__phase_b__k_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '115'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_115.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Coupling balance \(g_s^2(K_sK_q+\lambda^2)=4(K_sg_q-\lambda g_s)^2\) realizes the compensated branch.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 37
+  role: notes_stage
+  excerpt: '{K_s^2K_q(1+r_c)},'
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 39
+  role: notes_stage
+  excerpt: r_c=\frac{\lambda^2}{K_sK_q},
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 44
+  role: notes_stage
+  excerpt: g_s^2\bigl(K_sK_q+\lambda^2\bigr)
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 55
+  role: notes_stage
+  excerpt: 2\lambda \pm \sqrt{K_sK_q+\lambda^2}
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: r_c = lam**2 / (K_s * K_q)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: sigma_c = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q * (1 + r_c))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

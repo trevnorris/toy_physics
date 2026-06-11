@@ -1,0 +1,214 @@
+schema_version: 1
+candidate_id: fit_stage_235_q_eta
+parameter_name: q_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_235_q_eta__phase_b__q_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '235'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_235.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the direct packet variables, nontracking coordinate $q_{\rm nt}$, dressing coordinate
+    $q_\eta$, and the static-blind line.}
+- path: paper/stages/stage_235.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation constructs an involutive direct-packet map, derives projectors $P_{\rm
+    nt}$ and $P_\eta$, identifies the static-blind dressing line, and proves the codimension-two orbit-lock statement.}
+- path: paper/stages/stage_235.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 12
+  role: notes_stage
+  excerpt: (\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta).
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: '> on the rigid-mouth branch, the first static same-charge scalar sees only one quotient coordinate, `q_nt = Xi_1`,
+    while a second exact dressing coordinate `q_eta` survives completely invisible to that static gate. So the static strip
+    is a codimension-one test inside a codimension-two orbit-lock problem.'
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: \Theta_1=\delta\ln R_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: \Xi_1=-\delta\ln R_{\rm target}-c_\eta\,\delta\ln\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 35
+  role: notes_stage
+  excerpt: c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 43
+  role: notes_stage
+  excerpt: \Xi_1=-R_1-c_\eta E_1.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: where the finite Packet-B coordinates are `q = (q_tr,q_nt,q_eta)`. So the right next step is to reduce that packet
+    picture onto the rigid-mouth slice and see what the static strip is actually testing.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 79
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: q_{\rm nt}=-R_1-c_\eta E_1,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: q_\eta=E_1,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 101
+  role: notes_stage
+  excerpt: -1 & -c_\eta\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 118
+  role: notes_stage
+  excerpt: \boxed{R_1=-q_{\rm nt}-c_\eta q_\eta,}
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 120
+  role: notes_stage
+  excerpt: \boxed{E_1=q_\eta.}
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: Q_\eta:=
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: Q_{\rm nt}+Q_\eta=I_2.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: \boxed{P_\eta:=S_{\rm rm}Q_\eta M_{\rm rm}}.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: 1 & c_\eta\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: P_\eta=
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 160
+  role: notes_stage
+  excerpt: 0 & -c_\eta\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 169
+  role: notes_stage
+  excerpt: P_\eta^2=P_\eta,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: P_{\rm nt}P_\eta=P_\eta P_{\rm nt}=0,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 173
+  role: notes_stage
+  excerpt: P_{\rm nt}+P_\eta=I_2.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: \mathbf x_{\rm rm}=\mathbf x_{\rm nt}+\mathbf x_\eta,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 183
+  role: notes_stage
+  excerpt: \mathbf x_\eta:=P_\eta\mathbf x_{\rm rm}.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: R_1+c_\eta E_1\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: \mathbf x_\eta=
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: -c_\eta E_1\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 210
+  role: notes_stage
+  excerpt: -c_\eta q_\eta\\
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 211
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 218
+  role: notes_stage
+  excerpt: '- `x_eta`: the pure dressing / selected-target drift that the static scalar cannot see.'
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 226
+  role: notes_stage
+  excerpt: \mathbf q_{\rm rm}=(q_{\rm nt},q_\eta)^T=(\Xi_1,E_1)^T,
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 233
+  role: notes_stage
+  excerpt: q_{\rm nt}=0\ \text{and}\ q_\eta=0.
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 240
+  role: notes_stage
+  excerpt: Since `q_nt = Xi_1` and `q_eta = E_1`, this is also equivalent to
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: and, because `R_1=-q_{\rm nt}-c_\eta q_\eta`, equally to
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 259
+  role: notes_stage
+  excerpt: 'The compensated strip from Stage 234 is now simply the direct-space image of the packet projector `Q_eta`:'
+- path: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: \mathbf x_{\rm rm}=\mathbf x_\eta=
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    - paper/stages/stage_235.tex
+    - research/pde_ledger/paper/stages/stage_235.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage235_rigid_mouth_packet_projectors_static_blind_dressing_line_and_codimension_two_orbit_lock_point_sympy_audit.md
+    - paper/stages/stage_235.tex
+    - research/pde_ledger/paper/stages/stage_235.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

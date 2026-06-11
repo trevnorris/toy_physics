@@ -1,0 +1,25 @@
+candidate_id: fit_stage_068_c_res
+parameter_name: C_res
+origin_claims:
+  - parameter: C_res
+    introduced_at_stage: 067
+    introduced_at_line: 116
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 116
+      excerpt: "`C_res^2 := C^2(sqrt(pi))`"
+constraints:
+  - parameter: C_res
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 106
+      excerpt: "is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian benchmark family."
+downstream_dependents: [068, 069]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate is keyed to stage 068, but C_res first enters the ledger at stage 067 (computed as the exact coherence maximum C^2(sqrt(pi))); stage 068 only carries it. Stage 068 notes correctly attribute it ('Stage 067 verified ... C_res^2 = 0.994418836451529...')."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md, line: 12, excerpt: "`C_res^2 = 0.994418836451529...`" }
+      - { path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md, line: 117, excerpt: "`        = 0.9944188364515293487...`" }

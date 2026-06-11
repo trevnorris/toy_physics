@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_178_d_from_series
+parameter_name: d_from_series
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_178_d_from_series__phase_b__d_from_series.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '178'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: from __future__ import annotations
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: NAr_lin = sp.expand(sp.series(NAr, eps, 0, 2).removeO())
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: nu_from_series = sp.simplify((NAr_lin / N0r - 1) / (eps * lam))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("nu_r - 2(p_r-d_r)", nu_from_series - 2 * (p_r - d_r))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '# 3. Exact formulas for p_r and d_r from actual port data'
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: banner("3. Exact formulas for p_r and d_r from actual port data")
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: p_from_series = sp.simplify((sp.series(P_A / P, eps, 0, 2).removeO() - 1) / (eps * lam))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: d_from_series = sp.simplify((sp.series(D_A / Delta, eps, 0, 2).removeO() - 1) / (eps * lam))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: expect_zero("p_r formula", p_from_series - p_expected)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: expect_zero("d_r formula", d_from_series - d_expected)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

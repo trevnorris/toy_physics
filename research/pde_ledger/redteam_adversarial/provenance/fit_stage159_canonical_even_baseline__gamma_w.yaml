@@ -1,0 +1,143 @@
+schema_version: 1
+candidate_id: fit_stage159_canonical_even_baseline
+parameter_name: gamma_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage159_canonical_even_baseline__phase_b__gamma_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '159'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_159.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Even preservation forces \(\delta\mathfrak g=0\), \(\delta\kappa_W=0\), leaving \(\Delta_Q=-9\sigma_*\delta\gamma_W/(1-\sigma_*)\).
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 39
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 47
+  role: notes_stage
+  excerpt: '`\delta\gamma_W`.'
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 191
+  role: notes_stage
+  excerpt: \frac{\sigma_W}{1-\kappa_W z^2-i\gamma_W z^5},
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 199
+  role: notes_stage
+  excerpt: \gamma_{W,*}=\frac19.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 238
+  role: notes_stage
+  excerpt: \frac{\delta\mathcal C-27\sigma_*\,\delta\gamma_W}
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 247
+  role: notes_stage
+  excerpt: '- one **odd** scalar `\delta\gamma_W`.'
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 285
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 297
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 308
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 394
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 408
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 423
+  role: notes_stage
+  excerpt: renormalization `\delta\gamma_W`.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 445
+  role: notes_stage
+  excerpt: \longrightarrow \delta\gamma_W,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 462
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 469
+  role: notes_stage
+  excerpt: '> compute the odd mixed-channel renormalization `\delta\gamma_W` induced by the'
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 4. On that branch the last linear 2.5PN defect collapses to pure delta gamma_W.
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: rho, sigma, kappa, gamma = sp.symbols("rho sigma kappa gamma", real=True)
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: drho, dsigma, dkappa, dgamma = sp.symbols("drho dsigma dkappa dgamma", real=True)
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: chi = sp.simplify(3 * (1 - 9 * sigma * gamma) / (3 - rho + sigma))
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: 'gamma: sp.Rational(1, 9) + dgamma,'
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: chi_lin = linearize(chi.subs(subs), [drho, dsigma, dkappa, dgamma])
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: E2_lin = linearize(E2.subs(subs), [drho, dsigma, dkappa, dgamma])
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: E4_lin = linearize(E4.subs(subs), [drho, dsigma, dkappa, dgamma])
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: delta_chi_expected = sp.expand((drho - 4 * dsigma - 27 * sigma0 * dgamma) / (3 * (1 - sigma0)))
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: 'final_defect = sp.simplify((deltaC - 27 * sigma0 * dgamma) / (3 * (1 - sigma0))).subs({deltaC: 0})'
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: expect_zero("final Delta_Q + 9 sigma* dgamma /(1-sigma*)", final_defect + 9 * sigma0 * dgamma / (1 - sigma0))
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: print("  Delta_Q  = (delta C - 27 sigma_* delta gamma_W)/(3(1-sigma_*))")
+- path: scripts/moving_throat_pde_stage159_hybrid_outlet_projection_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: print("  Hence Delta_Q = -9 sigma_* delta gamma_W/(1-sigma_*)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

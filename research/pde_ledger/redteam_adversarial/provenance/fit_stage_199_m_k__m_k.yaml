@@ -1,0 +1,167 @@
+schema_version: 1
+candidate_id: fit_stage_199_m_k
+parameter_name: m_K
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_199_m_k__phase_b__m_k.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '199'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 44
+  role: notes_stage
+  excerpt: (m_T^{(2\leftarrow1)},m_K^{(2\leftarrow1)},m_\mu^{(2\leftarrow1)}),
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 59
+  role: notes_stage
+  excerpt: m_T^{(2\leftarrow1)}=m_K^{(2\leftarrow1)}=m_\mu^{(2\leftarrow1)}=1
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 288
+  role: notes_stage
+  excerpt: m_K^{(2\leftarrow1)}:=\frac{\mathfrak r_K}{\Phi_K^{(2\leftarrow1)}},
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 306
+  role: notes_stage
+  excerpt: \frac{1}{m_K^{(2\leftarrow1)}},
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 313
+  role: notes_stage
+  excerpt: \frac{m_\mu^{(2\leftarrow1)}}{m_K^{(2\leftarrow1)}\bigl(m_T^{(2\leftarrow1)}\bigr)^{F_*}}.
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 320
+  role: notes_stage
+  excerpt: (m_T,m_K,m_\mu)
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 340
+  role: notes_stage
+  excerpt: \kappa^{(2\leftarrow1)}:=\ln m_K^{(2\leftarrow1)},
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 393
+  role: notes_stage
+  excerpt: \ln m_K^{(2\leftarrow1)}\\
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 470
+  role: notes_stage
+  excerpt: m_K^{(3\leftarrow1)}=m_K^{(3\leftarrow2)}m_K^{(2\leftarrow1)},
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 516
+  role: notes_stage
+  excerpt: m_T^{(2\leftarrow1)}=m_K^{(2\leftarrow1)}=m_\mu^{(2\leftarrow1)}=1;
+- path: notes/stages/moving_throat_pde_stage199_pairwise_orbit_transport_law.md
+  line: 567
+  role: notes_stage
+  excerpt: m_K^{(2\leftarrow1)}=\mathfrak r_K,
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: mK = sp.simplify(rK / PhiK)
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: print("m_K =")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 188
+  role: sympy_script
+  excerpt: sp.pprint(mK)
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: '"epsEta pairwise ratio - 1/m_K",'
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(eps_ratio_expected) - sp.log(1 / mK), force=True),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: '"Cnt pairwise ratio - m_mu/(m_K m_T^F_*)",'
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(Cnt_ratio_expected) - (sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT)), force=True),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: '"q_eta + ln m_K",'
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: qeta + sp.log(mK),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 236
+  role: sympy_script
+  excerpt: '"q_nt - [ln m_mu - ln m_K - F_* ln m_T]",'
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 237
+  role: sympy_script
+  excerpt: qnt - (sp.log(mMu) - sp.log(mK) - Fstar * sp.log(mT)),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 267
+  role: sympy_script
+  excerpt: sp.log(mK),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 357
+  role: sympy_script
+  excerpt: mK21 = rK21 / PhiK21
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 358
+  role: sympy_script
+  excerpt: mK32 = rK32 / PhiK32
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 359
+  role: sympy_script
+  excerpt: mK31 = (rK32 * rK21) / PhiK31
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 369
+  role: sympy_script
+  excerpt: '"ln m_K^31 - ln m_K^32 - ln m_K^21",'
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 370
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(mK31) - sp.log(mK32) - sp.log(mK21), force=True),
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 400
+  role: sympy_script
+  excerpt: expect_zero("m_K at equal free coordinates - r_K", mK.subs(special_free_equal) - rK)
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 416
+  role: sympy_script
+  excerpt: print("      m_T = r_T/Phi_T,   m_K = r_K/Phi_K,   m_mu = r_mu/Phi_mu.")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 419
+  role: sympy_script
+  excerpt: print("      epsEta_2/epsEta_1 = 1/m_K,")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 420
+  role: sympy_script
+  excerpt: print("      Cnt_2/Cnt_1   = m_mu/(m_K m_T^(F_*)).")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 422
+  role: sympy_script
+  excerpt: print("      q_tr = (1+chi0_*) ln m_T,   q_eta = - ln m_K,   q_nt = ln m_mu - ln m_K - F_* ln m_T.")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 428
+  role: sympy_script
+  excerpt: print("      (ln m_T, ln m_K, ln m_mu).")
+- path: scripts/moving_throat_pde_stage199_pairwise_orbit_transport_law_sympy_audit.py
+  line: 434
+  role: sympy_script
+  excerpt: print("      m_T = m_K = m_mu = 1")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,151 @@
+schema_version: 1
+candidate_id: fit_stage237_branch_sample_point
+parameter_name: Rratio_base
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage237_branch_sample_point__phase_b__rratio_base.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '237'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 283
+  role: notes_stage
+  excerpt: and the total coherent support-enhanced baseline
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: base = {}
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(1, 5)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: 'elif "Rratio" in name:'
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(7, 6)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(7, 5)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(6, 5)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(1, 10)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(1, 10)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: base[sym] = sp.Rational(3, 2)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: samples.append(base)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: alt = dict(base)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: Rratio = sp.symbols("Rratio", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: q_nt_ratio = sp.log((1 - eps_eta) / (1 - eps_eta_ref)) - sp.log(Rratio)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: Rratio_static_blind = (1 - eps_eta) / (1 - eps_eta_ref)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: assert_zero(q_nt_ratio.subs(Rratio, Rratio_static_blind))
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: Rratio_of_qeta = sp.simplify((1 - eps_param) / (1 - eps_eta_ref))
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: qeta_from_Rratio = sp.log((1 - (1 - eps_eta_ref) * Rratio) / eps_eta_ref)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: sp.simplify(qeta_from_Rratio.subs(Rratio, Rratio_of_qeta) - qeta_param)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: Rratio_of_qeta.subs(qeta_param, qeta_from_Rratio) - Rratio
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: assert_zero(sp.simplify(Rratio_of_qeta.subs(qeta_param, 0) - 1))
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("Rratio_static_blind =", Rratio_static_blind)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: print("Rratio(q_eta) =", Rratio_of_qeta)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: print("q_eta(Rratio) =", qeta_from_Rratio)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: Rratio_series = sp.exp(t * R1)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: sp.log((1 - eps_series) / (1 - eps_eta_ref)) - sp.log(Rratio_series),
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: tangent_slope = sp.diff(sp.log(Rratio_of_qeta), qeta_param).subs(qeta_param, 0)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: print("Tangent slope d ln(Rratio)/dq_eta|_0 =", tangent_slope)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 301
+  role: sympy_script
+  excerpt: y_eta_from_R = -qeta_from_Rratio * sp.Matrix([0, 1, 1])
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 305
+  role: sympy_script
+  excerpt: y_eta - y_eta_from_R.subs(Rratio, Rratio_of_qeta)
+- path: scripts/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.py
+  line: 309
+  role: sympy_script
+  excerpt: assert_zero(sp.simplify(qeta_from_Rratio.subs(Rratio, 1)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

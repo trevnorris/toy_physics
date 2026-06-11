@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_081_eps_blk
+parameter_name: eps_blk
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_081_eps_blk__phase_b__eps_blk.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 081
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_081.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The support-ratio threshold formula and blocking parameter \(\epsilon_{\rm blk}\).}
+- path: paper/stages/stage_081.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}=\frac{\Pi_{\rm tr}-C_{\rm mix}}{C_{\rm mix}-\epsilon_{\rm blk}(2C_{\rm mix}-\Pi_{\rm tr})}.
+- path: paper/stages/stage_081.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: Solving for \(\Pi_{\rm tr}\) gives the equivalent product threshold.  In the unblocked limit, \(\epsilon_{\rm blk}=0\),
+    this reduces to
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Pi_tr <= Pi_suff^(chi)(lambda_mu;eps_blk)`  -> guaranteed success,'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 15
+  role: notes_stage
+  excerpt: '`Pi_tr >= Pi_fail^(chi)(lambda_mu;eps_blk)`  -> guaranteed failure,'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 19
+  role: notes_stage
+  excerpt: '`Pi_tr < Pi_max^(F1)(eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 23
+  role: notes_stage
+  excerpt: At vanishing blocking (`eps_blk = 0`) and with the natural wall normalization `lambda_mu = 1`, the explicit branch
+    already gives
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 39
+  role: notes_stage
+  excerpt: '`zeta_req = (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ],`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 41
+  role: notes_stage
+  excerpt: with `eps_blk` the blocking ratio carried from the selected quadrupole branch.
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 45
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 49
+  role: notes_stage
+  excerpt: '`Q(zeta;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 50
+  role: notes_stage
+  excerpt: '`:= [ 1 + (1 - 2 eps_blk) zeta ] / [ 1 - eps_blk zeta ].`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 56
+  role: notes_stage
+  excerpt: '`Q(0;eps_blk) = 1,`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 58
+  role: notes_stage
+  excerpt: '`Q(1;eps_blk) = 2,`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 62
+  role: notes_stage
+  excerpt: '`dQ/dzeta = (1 - eps_blk) / (1 - eps_blk zeta)^2 > 0`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 64
+  role: notes_stage
+  excerpt: whenever `eps_blk zeta < 1`.
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 76
+  role: notes_stage
+  excerpt: '`Pi_suff^(chi)(lambda_mu;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 77
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_suff^(chi)(lambda_mu); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 79
+  role: notes_stage
+  excerpt: '`Pi_fail^(chi)(lambda_mu;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 80
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_fail^(chi)(lambda_mu); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 84
+  role: notes_stage
+  excerpt: '`Pi_suff^(J) := C_mix Q( zeta_suff^(J); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 86
+  role: notes_stage
+  excerpt: '`Pi_fail^(J) := C_mix Q( zeta_fail^(J); eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 108
+  role: notes_stage
+  excerpt: '`Pi_tr < Pi_max^(F1)(eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 112
+  role: notes_stage
+  excerpt: '`Pi_max^(F1)(eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 113
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_max^(F1); eps_blk )`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 114
+  role: notes_stage
+  excerpt: '` = C_mix [ 1 + (1 - 2 eps_blk) zeta_max^(F1) ] / [ 1 - eps_blk zeta_max^(F1) ].`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 118
+  role: notes_stage
+  excerpt: '`eps_blk < 1 / zeta_max^(F1) ≈ 0.405263689711371.`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 124
+  role: notes_stage
+  excerpt: '## 4. Numerical illustration at `eps_blk = 0`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 126
+  role: notes_stage
+  excerpt: If the final quadrupole branch stays close to the unblocked limit `eps_blk = 0`, then
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 164
+  role: notes_stage
+  excerpt: '> does the completed moving-throat quadrupole branch produce a selected product `Pi_tr` that stays below the explicit
+    Family-1 ceiling `Pi_max^(F1)(eps_blk)` and, more sharply, below the natural success threshold `Pi_suff^(chi)(lambda_mu;eps_blk)`?'
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: zeta, Pi, Cmix, eps_blk = sp.symbols('zeta Pi Cmix eps_blk', real=True)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: zeta_expr = (Pi - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: print("Q(zeta;eps_blk) =", Q)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: Q - (1 + zeta - 2*eps_blk*zeta)/(1 - eps_blk*zeta))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: print("At eps_blk = 0:")
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: print("  Pi_suff^(chi)/C_mix =", sp.N(Pi_suff_chi_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("  Pi_fail^(chi)/C_mix =", sp.N(Pi_fail_chi_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: print("  Pi_suff^(J)/C_mix   =", sp.N(Pi_suff_J_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print("  Pi_fail^(J)/C_mix   =", sp.N(Pi_fail_J_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print("  Pi_max^(F1)/C_mix   =", sp.N(Pi_max_over_C.subs(eps_blk, 0), 20))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,205 @@
+schema_version: 1
+candidate_id: fit_stage227_xi1_sample_law_coefficients
+parameter_name: c_h
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage227_xi1_sample_law_coefficients__phase_b__c_h.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '227'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_227.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.3}.}
+- path: paper/stages/stage_227.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation writes $N_0=\Lambda^2$, computes $\Xi_1=2\delta\ln\Lambda$, decomposes
+    the slope into mixed leg, interference, and hybridization components, and applies rigidity assumptions to each ratio.}
+- path: paper/stages/stage_227.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: paper/stages/stage_227.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Checks}{\begin{verificationchecklist}
+- path: paper/stages/stage_227.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth
+    closure before citing the output.
+- path: paper/stages/stage_227.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it
+    to another paper.
+- path: paper/stages/stage_227.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check that same-charge statements are not reinterpreted as a new long-range attraction; all static kernel
+    claims inherit the source-product family limits.
+- path: paper/stages/stage_227.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \end{verificationchecklist}}
+- path: paper/stages/stage_227.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.3} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223
+    compatibility branch and the Stage-226 pure-transfer subcorridor.**'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: It takes the strict same-charge survivor from Stage 226,
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: '> if the conservative one-pole bundle is frozen at first order, what one-port outgoing load factor is actually
+    carrying the same-charge signal, and which rigidity assumptions kill that mechanism?'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: 'Stage 226 already reduced the live same-charge corridor to a very specific mechanism:'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 60
+  role: notes_stage
+  excerpt: 5. the first exact same-charge **co-loading no-go**
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 74
+  role: notes_stage
+  excerpt: '> which outgoing-load channels are allowed to move together, and which rigidity assumptions kill the same-charge
+    corridor outright?'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 80
+  role: notes_stage
+  excerpt: '### 1.1 Concrete finite-throat one-port sample branch'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 82
+  role: notes_stage
+  excerpt: 'Keep the same explicit finite-throat branch from Stages 223–226:'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 116
+  role: notes_stage
+  excerpt: Stage 226 showed that on this noncanonical compatibility branch, the full intersection of
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: So on that two-dimensional mixed-sector subcorridor the same-charge scalar becomes
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 151
+  role: notes_stage
+  excerpt: the surviving same-charge scalar is exactly
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: So the surviving same-charge mechanism is literally the logarithmic slope of the one-port load factor
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 177
+  role: notes_stage
+  excerpt: The mechanism is no longer “mixed-sector enhancement” in general.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 256
+  role: notes_stage
+  excerpt: '### 3.1 Exact sample-branch coefficients'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 258
+  role: notes_stage
+  excerpt: On the concrete sample branch,
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 274
+  role: notes_stage
+  excerpt: This is the first exact microscopic decomposition of the surviving same-charge scalar.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: This is the first exact same-charge co-loading no-go of the audit.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 312
+  role: notes_stage
+  excerpt: '> if both the interference ratio and the hybridization ratio are frozen, the pure-transfer same-charge mechanism
+    dies on this concrete branch.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 327
+  role: notes_stage
+  excerpt: It means the same-charge branch still has room to live if one of the outgoing subchannels is rigid, but not if
+    both \(i\) and \(h\) are rigid simultaneously.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 331
+  role: notes_stage
+  excerpt: '## 5. Concrete unit directions and same-charge gain scales'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: It means the direct mixed-leg factor can be frozen while the same-charge signal is carried entirely by a correlated
+    interference/hybridization deformation.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: The `m = 0` branch leaves the most headroom simply because the same-charge scalar is much smaller per unit ambient
+    microscopic drift there.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 438
+  role: notes_stage
+  excerpt: That does **not** make it automatically the physically best mechanism, but it does make it the least constrained
+    by the transported dynamic ceiling.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 442
+  role: notes_stage
+  excerpt: '## 7. What Stage 227 changes'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 448
+  role: notes_stage
+  excerpt: After this stage, the picture is much sharper.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 450
+  role: notes_stage
+  excerpt: '1. The surviving same-charge scalar is exactly one **outgoing load-factor slope**:'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 454
+  role: notes_stage
+  excerpt: '2. On the concrete branch, that load factor splits into three pieces:'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 459
+  role: notes_stage
+  excerpt: 4. Freezing only one of \(i,h,m\) still leaves a one-dimensional same-charge survivor.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 460
+  role: notes_stage
+  excerpt: 5. Even with \(m=0\), the same-charge effect can survive through correlated interference/hybridization motion.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 464
+  role: notes_stage
+  excerpt: '> the idea survives Stage 227, but only as a very structured outgoing co-loading effect. Pure transfer is real,
+    but it is not generically “just the mixed leg.” And the first exact no-go now says that simultaneous interference and
+    hybridization rigidity kills the mechanism on this concrete branch.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 474
+  role: notes_stage
+  excerpt: '- the exact Stage-226 pure-transfer corridor on the explicit finite-throat compatibility branch;'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

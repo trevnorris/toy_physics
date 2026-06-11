@@ -1,0 +1,84 @@
+schema_version: 1
+candidate_id: fit_stage087_natural_lambda_mu_unblocked
+parameter_name: eps_blk
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage087_natural_lambda_mu_unblocked__phase_b__eps_blk.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 087
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_087.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: Given \(\rho_\alpha\), the Family--1 support/source verdict follows from Stage~086.  No separate dependence on
+    \(N_Q^{\rm target}\), \(\beta_0\), \(s_-\), \(\lambda_-\), or \(\widehat m_-\) remains.
+- path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  line: 30
+  role: notes_stage
+  excerpt: '- the selected conservative stiffness `lambda_-`,'
+- path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  line: 49
+  role: notes_stage
+  excerpt: '`rho_alpha <= rho_suff^(chi)(lambda_mu;eps_blk)`  -> guaranteed success,'
+- path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  line: 51
+  role: notes_stage
+  excerpt: '`rho_alpha >= rho_fail^(chi)(lambda_mu;eps_blk)`  -> guaranteed failure,'
+- path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  line: 55
+  role: notes_stage
+  excerpt: '`rho_alpha < rho_max^(F1)(eps_blk)`.'
+- path: notes/stages/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish.md
+  line: 57
+  role: notes_stage
+  excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit,
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: s_-, lambda_-, beta_0, mhat_-, Pi_tr, C_mix, Pe_req down to rho_alpha alone
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: rho_alpha, eps_blk = sp.symbols("rho_alpha eps_blk", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify((rho_alpha - 1) / (1 - eps_blk * (2 - rho_alpha)))
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("zeta_req(rho_alpha,eps_blk) =", zeta_req)
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: expect_zero("unblocked zeta_req", sp.simplify(zeta_req.subs(eps_blk, 0) - (rho_alpha - 1)))
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: 'zeta_suff = sp.N(zeta_req.subs({rho_alpha: rho_suff, eps_blk: 0}), 25)'
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: 'zeta_fail = sp.N(zeta_req.subs({rho_alpha: rho_fail, eps_blk: 0}), 25)'
+- path: scripts/moving_throat_pde_stage087_outgoing_branch_loading_ratio_finish_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'zeta_max = sp.N(zeta_req.subs({rho_alpha: rho_max, eps_blk: 0}), 25)'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage118_Kq_fixed_not_arbitrary
+parameter_name: K_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage118_kq_fixed_not_arbitrary__phase_b__k_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '118'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_118.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Gives overlap formulas for \(K_s,K_q,\lambda,g_s,g_q\) from a GNLS plus localized-Maxwell throat-core ansatz.
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 8
+  role: notes_stage
+  excerpt: (K_s,\;K_q,\;\lambda,\;g_s,\;g_q)
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 114
+  role: notes_stage
+  excerpt: '## 2. Mixed side-channel stiffness \(K_q\)'
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 118
+  role: notes_stage
+  excerpt: \delta^2 H_q=\frac12 K_q q^2
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 123
+  role: notes_stage
+  excerpt: K_q
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 143
+  role: notes_stage
+  excerpt: K_q
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 149
+  role: notes_stage
+  excerpt: 'So \(K_q\) is not arbitrary: it is fixed by one localization norm and the D/N tube length.'
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 205
+  role: notes_stage
+  excerpt: 'Use one external mouth amplitude \(u\) and let it couple to:'
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 248
+  role: notes_stage
+  excerpt: \lambda & -K_q D_W^{\rm bare}(z)
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 271
+  role: notes_stage
+  excerpt: K_q
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: (K_s, K_q, lambda, g_s, g_q) from an explicit GNLS + localized-Maxwell throat-core ansatz.
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: K_q = sp.simplify((Zq/mu0) * c_s**2 * chi_grad)
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("K_q =", K_q)
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: expect_zero("K_q closed form", K_q - (Zq/mu0) * sp.pi**2 * c_s**2 / (4*L_W**2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

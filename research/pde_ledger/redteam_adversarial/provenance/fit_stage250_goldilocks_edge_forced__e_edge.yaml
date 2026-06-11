@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage250_goldilocks_edge_forced
+parameter_name: E_edge
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_goldilocks_edge_forced__phase_b__e_edge.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '250'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_250.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: The lower safe edge is \cref{eq:app-part08-main-goldilocks-edge}, and the speed-space identity is \cref{eq:app-part08-main-goldilocks-speed}.
+- path: paper/stages/stage_250.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: If \(\mu_\eta=\alpha m_s\), the edge becomes
+- path: paper/stages/stage_250.tex
+  line: 47
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage250-heavy-edge}
+- path: paper/stages/stage_250.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}=V_{\rm peak}+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2\alpha},
+- path: paper/stages/stage_250.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: so simultaneous scaling of particle mass and wall inertia cancels out of the edge.  The real control packet is
+- path: paper/stages/stage_250.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: The benchmark edge and sensitivity statements are therefore direct consequences of the dependence
+- path: paper/stages/stage_250.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage250-edge-sensitivity}
+- path: paper/stages/stage_250.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}-V_{\rm peak}\propto\lambda_{\rm eff}^{2}\chi_{\rm peak}.
+- path: paper/stages/stage_250.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: Within this closure the safe window is one-sided because \(t_{\rm collapse}\) is energy-independent and \(t_{\rm
+    cross}(E)\) decreases monotonically.  Any upper edge requires an additional high-energy failure mechanism outside Stage
+    250.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: 5. and the Session-III proton-proxy / aligned-branch benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: 'It does not modify the Stage-247 stationary lowered branch, and it does not add the Stage-251 damping/export kernel
+    yet.  Its job is narrower: turn the relaxed branch into an explicit survival criterion of the form'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 49
+  role: notes_stage
+  excerpt: 'The output of this stage is the explicit **Goldilocks-window ledger**:'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: 5. the lower safe edge in both energy and speed form,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: '- Stage 249 fixed the aligned branch as the preferred hidden-channel export branch for the benchmark dynamic check,
+    but deliberately left the scalar crossing law unchanged.'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: '- where the lower survival edge sits,'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 91
+  role: notes_stage
+  excerpt: '- or which quantities actually control that edge.'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: '## 3. Stability ratio and lower safe edge'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 216
+  role: notes_stage
+  excerpt: '### 3.1 Exact lower-edge theorem'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 222
+  role: notes_stage
+  excerpt: Because \(\mathcal S(E)\) is monotone decreasing in \(E\), there is at most one lower survival edge and it is fixed
+    by
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 224
+  role: notes_stage
+  excerpt: \mathcal S(E_{\rm edge})=1.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 229
+  role: notes_stage
+  excerpt: E_{\rm edge}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 240
+  role: notes_stage
+  excerpt: E>E_{\rm edge}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: Therefore once \(E\) crosses the lower edge, the reduced timescale inequality stays satisfied for all larger energies
+    on the same branch.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 255
+  role: notes_stage
+  excerpt: A finite upper edge can only appear if one adds extra energy dependence to the collapse law or an additional high-energy
+    failure mechanism.  Those are outside Stage 250 and belong to later damping/export work.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: Substitute this into the Stage-250 safe-edge law.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 275
+  role: notes_stage
+  excerpt: \sqrt{\frac{2(E_{\rm edge}-V(r_0))}{m_s}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 294
+  role: notes_stage
+  excerpt: So Stage 250 turns the Goldilocks edge into a direct shift above the Stage-248 classical threshold speed.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 343
+  role: notes_stage
+  excerpt: The lower edge becomes
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 346
+  role: notes_stage
+  excerpt: E_{\rm edge}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 353
+  role: notes_stage
+  excerpt: Therefore the simultaneous scaling of particle mass and wall inertia cancels out of the survival edge.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 356
+  role: notes_stage
+  excerpt: \frac{\partial E_{\rm edge}}{\partial m_s}=0
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: So heavy-throat scaling by itself does **not** move the Goldilocks edge if mass and wall inertia are scaled together.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 382
+  role: notes_stage
+  excerpt: This is the cleanest front-end specialization because it ties the Stage-250 timescale ledger directly to the Stage-248
+    event-chain diagnostic rather than to an unrelated geometric guess.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 404
+  role: notes_stage
+  excerpt: '## 7. Session-III benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 406
+  role: notes_stage
+  excerpt: Use the Session-II/III reduced benchmark values
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 447
+  role: notes_stage
+  excerpt: '### 7.3 Lower safe edge in energy'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 449
+  role: notes_stage
+  excerpt: The heavy-throat edge is
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 461
+  role: notes_stage
+  excerpt: '### 7.4 Lower safe edge in speed'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 479
+  role: notes_stage
+  excerpt: So the Goldilocks edge sits about \(25.95\%\) above the proton-proxy classical threshold speed on this closure.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 483
+  role: notes_stage
+  excerpt: The Session-III scan did not find an upper collapse edge before the top of the sampled band,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

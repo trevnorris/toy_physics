@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage242_varrho_phys_fixed
+parameter_name: varrho_phys
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage242_varrho_phys_fixed__phase_b__varrho_phys.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '242'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_242.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the selected curve from Stage~241, the coherent local D/N placement map, the physical
+    variable $\epsilon$, and the support-blind orbit-lock packet compiler.}
+- path: paper/stages/stage_242.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation identifies $\varrho_{\rm phys}=2(1-\epsilon)/3$, rewrites the thresholds
+    in the realized variable, classifies the support lane, constructs the finite orbit packet, and separates support placement
+    from orbit lock.}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: It takes the exact Stage-241 selected twin-support curve and shows how an **actual coherent branch state** is placed
+    on that curve, how the Stage-241 ranking region is therefore fixed, and how the separate orbit-lock packet is compiled
+    directly from the physical placement variables.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: \epsilon_* = 1-\frac{3\varrho}{2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: \sigma=\frac{4}{3\varrho}-2,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: 0<\varrho<\frac23.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 61
+  role: notes_stage
+  excerpt: '- and the later coherent placement-map continuation, which rewrote the orbit packet directly in the physical placement
+    variables'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 75
+  role: notes_stage
+  excerpt: But once the actual coherent branch returns the physical placement data
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: \varrho_{\rm phys}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 150
+  role: notes_stage
+  excerpt: \epsilon_{*,\rm phys}=\epsilon,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 152
+  role: notes_stage
+  excerpt: \varrho_{\rm phys}=\frac23(1-\epsilon),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: \sigma_{\rm phys}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \frac{4}{3\varrho_{\rm phys}}-2
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: \varrho_{W\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: \varrho_{U\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: \epsilon_*=1-\frac32\varrho,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 199
+  role: notes_stage
+  excerpt: 0<\varrho<\varrho_{W\Lambda},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: \varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 211
+  role: notes_stage
+  excerpt: \varrho_{U\Lambda}<\varrho<\frac23.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 214
+  role: notes_stage
+  excerpt: So once the coherent branch returns \(\epsilon\), the Stage-241 primitive ranking is fixed with no additional support
+    solve.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: '- the demand-side ratio from Stage 240 is fixed to'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 258
+  role: notes_stage
+  excerpt: '- and the physical coherent support variable \(\zeta\) is a **separate** support quantity, not another name for
+    the Stage-240 demand ratio.'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 263
+  role: notes_stage
+  excerpt: '- the physical coherent local D/N support ratio \(\zeta\) is a separate support variable,'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: '- and on the lowest symmetric twin branch the physical coherent support value is \(\zeta=1\).'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: so the physical placement-map version and the older reduced-state version are exactly equivalent.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 327
+  role: notes_stage
+  excerpt: The finite coherent orbit packet is the exact quotient packet in the physical placement variables.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 375
+  role: notes_stage
+  excerpt: with the constant \(\Lambda_0\) dropping out of the quotient packet.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 420
+  role: notes_stage
+  excerpt: The physical defect packet is the exact triangular normal form
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 575
+  role: notes_stage
+  excerpt: So support compensation cannot rescue orbit-lock failure, and orbit lock does not determine support enhancement.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 633
+  role: notes_stage
+  excerpt: \varrho_{\rm phys},\,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 634
+  role: notes_stage
+  excerpt: \sigma_{\rm phys},\,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 674
+  role: notes_stage
+  excerpt: \varrho_{\rm phys}=\frac23(1-\epsilon),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 676
+  role: notes_stage
+  excerpt: \sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 679
+  role: notes_stage
+  excerpt: '### 8.2 It compiles the orbit packet directly from physical placement variables'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 682
+  role: notes_stage
+  excerpt: It is already determined by
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 708
+  role: notes_stage
+  excerpt: So the completed PDE has to satisfy the orbit-lock packet and the support packet separately on the same physical
+    branch.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 718
+  role: notes_stage
+  excerpt: \varrho_{\rm phys}=\frac23(1-\epsilon),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 722
+  role: notes_stage
+  excerpt: \sigma_{\rm phys}=\frac{2\epsilon}{1-\epsilon}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 723
+  role: notes_stage
+  excerpt: =\frac{4}{3\varrho_{\rm phys}}-2,
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: beta, varrho = sp.symbols("beta varrho", positive=True)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

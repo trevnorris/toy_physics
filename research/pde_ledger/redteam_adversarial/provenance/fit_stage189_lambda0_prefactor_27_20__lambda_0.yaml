@@ -1,0 +1,148 @@
+schema_version: 1
+candidate_id: fit_stage189_lambda0_prefactor_27_20
+parameter_name: Lambda_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage189_lambda0_prefactor_27_20__phase_b__lambda_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '189'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 65
+  role: notes_stage
+  excerpt: R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 67
+  role: notes_stage
+  excerpt: \Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5};
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 90
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 142
+  role: notes_stage
+  excerpt: \Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 144
+  role: notes_stage
+  excerpt: \Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5}.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 147
+  role: notes_stage
+  excerpt: At first grouped weak-axisymmetric order on the isotropic reference branch, the scalar front factor `\(\Lambda_0\)`
+    is inert, so
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 282
+  role: notes_stage
+  excerpt: \Lambda_0\,\frac{1-\epsilon_\eta}{R_{\rm target}}.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 294
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 414
+  role: notes_stage
+  excerpt: P_A=P_0+\epsilon\lambda_A P_1+O(\epsilon^2).
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 427
+  role: notes_stage
+  excerpt: \frac{\delta\ln P_A}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 436
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage189_transfer_shape_prefactor_compiler.md
+  line: 629
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: 'expr = expr.applyfunc(lambda z: sp.simplify(sp.expand(z)))'
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: Zw, rho, OmW2, epsW, epseta, Lambda0 = sp.symbols(
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: '"Z_W rho OmegaW2 epsilonW epsiloneta Lambda_0", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: Lambda0_val = sp.Rational(27, 20) * sp.pi**2 * G_II * cs_II**5 / (a_II**5 * c_II**5)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: Rtarget_definition = sp.simplify(Lambda0 * (1 - epseta) / T2_direct)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: print("R_target selected-branch definition := Lambda_0 (1-epseta) / T_A^2 =")
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("Lambda_0 value =")
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: sp.pprint(Lambda0_val)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: epsA, lambdaA = sp.symbols("epsilon lambda_A", real=True)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: (epsW + s * epsA * lambdaA * epsW1)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: '* (1 - sp.Rational(2, 11) * (deltaU + s * epsA * lambdaA * deltaU1) / (1 + deltaU + s * epsA * lambdaA * deltaU1))'
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: (Zw * (1 + s * epsA * lambdaA * zetaZ))
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: '* (1 + chi0 + s * epsA * lambdaA * chi1) ** 2'
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: / ((OmW2 * (1 + s * epsA * lambdaA * omegaW)) * (1 - epssplit_pert) ** 2)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: expect_zero("direct-slope bridge dln T_A^2 - epsilon lambda_A Xi_1", direct_slope - epsA * lambdaA * Xi1_closed)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: eps, lam, D1, N1 = sp.symbols("eps lambda D_1 N_1", real=True)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: expect_zero("P_A - (P0 + eps lambda P1)", P_A_series - (P0 + eps * lam * P1))
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: expect_zero("log(P_A/P0) - eps lambda (P1/P0)", ln_ratio - eps * lam * (P1 / P0))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

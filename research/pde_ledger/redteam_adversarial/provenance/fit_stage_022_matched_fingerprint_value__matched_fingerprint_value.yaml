@@ -1,0 +1,272 @@
+schema_version: 1
+candidate_id: fit_stage_022_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+    one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+    \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+    the exact invariant product that must match the universal quadrupole normalization.}
+- path: paper/stages/stage_022.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+    transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\) fingerprint,
+    and the grouped trace/anomaly map.}
+- path: paper/stages/stage_022.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 021 gave the matched one-lane bridge from
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 8
+  role: notes_stage
+  excerpt: '- to a passive/outgoing `l=2` fingerprint,'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 69
+  role: notes_stage
+  excerpt: This is the first important bookkeeping bridge of the stage.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 149
+  role: notes_stage
+  excerpt: '## 5. Multiplying by the compact outgoing `l=2` fingerprint'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 151
+  role: notes_stage
+  excerpt: The compact outgoing `l=2` branch already has the normalized fingerprint
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 185
+  role: notes_stage
+  excerpt: The higher prefactor moments `P_{A2}, P_{A4}` matter for the even branch bookkeeping, but not for the leading 2.5PN
+    odd coefficient.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 188
+  role: notes_stage
+  excerpt: It only needs the correct isotropic value of `P_{A0}` on the true moving-throat branch.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 217
+  role: notes_stage
+  excerpt: These are not yet the full coupled moving-throat bundle values, but they are the exact reduced prototype formulas
+    that the true grouped-lane computation must generalize.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 277
+  role: notes_stage
+  excerpt: '> compute the isotropic moving-throat value of the invariant product `mhat_0^2 P_0`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 318
+  role: notes_stage
+  excerpt: 2. and land the invariant product `mhat_0^2 P_0` on the target value above.
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: subbanner("II.2 — Full branch coefficients after multiplying by the outgoing l=2 fingerprint")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 274
+  role: sympy_script
+  excerpt: subbanner("V.1 — Stage-021 outgoing l=2 fingerprint anchor")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 322
+  role: sympy_script
+  excerpt: print("So the remaining theorem gap is the moving-throat value of the invariant product mhat^2 * P0.")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 346
+  role: sympy_script
+  excerpt: print("  • multiplying by the outgoing l=2 fingerprint gives the branch coefficients")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: paper/stages/stage_022.tex
+    source_queries:
+    - paper/stages/stage_022.tex
+    - research/pde_ledger/paper/stages/stage_022.tex
+    nodes:
+    - id: MT_STAGE022_GROUPED_P2_BRIDGE
+      label: Stage 022 grouped P2 normalization bridge
+      layer: derivation
+      type: moving_throat_stage
+      status: exact_within_reduced_bundle
+      meaning: Converts conservative operator moments into normalized grouped response and isolates P0=N0/D0.
+      math:
+      - u2=-D2/D0
+      - P0=N0/D0
+      - mhat0²P0=54Gc_s^5/(5a^5c^5)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    - id: EQ_GROUPED_RESPONSE_MOMENTS
+      label: Grouped response moment conversion
+      layer: equation_anchor
+      type: equation
+      status: exact_within_reduced_bundle
+      meaning: Bridge from conservative operator moments to normalized grouped response moments.
+      expression: u_2^(A)=-D_A2/D_A0,   u_4^(A)=(D_A2²-D_A0D_A4)/D_A0²
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MT_STAGE022_GROUPED_P2_BRIDGE
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_022.tex
+        line: 15
+        heading_level: paragraph
+        heading: 1. Conservative operator and normalized response.
+        nearest_label:
+          name: eq:app-stage022-d-operator
+          line: 18
+        nearby_labels:
+        - name: eq:app-stage022-d-operator
+          line: 18
+        - name: eq:app-stage022-y-response
+          line: 23
+        - name: eq:app-stage022-u2u4
+          line: 29
+        match_basis: semantic_heading_match
+        match_score: 0.589
+        confidence: medium
+    - id: EQ_P0_TARGET
+      label: Invariant quadrupole normalization target
+      layer: equation_anchor
+      type: equation
+      status: open_actual_branch_data
+      meaning: Central remaining 2.5PN/4PN moving-throat normalization target.
+      expression: mhat_0² P_0 = 54 G c_s⁵/(5 a⁵ c⁵)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - research/4d_2_5pn/paper/4d_2_5pn.tex
+      - research/4d_4pn/paper/4d_4pn.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: OPEN_QUAD_NORMALIZATION
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - 4d_2_5pn_summary.md
+      - 4d_4pn_summary.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/4d_2_5pn/paper/4d_2_5pn.tex
+        line: 4995
+        heading_level: section
+        heading: Quadrupole normalization package
+        nearest_label:
+          name: app:quadrupole-normalization-package
+          line: 4996
+        nearby_labels:
+        - name: app:quadrupole-normalization-package
+          line: 4996
+        match_basis: semantic_heading_match
+        match_score: 0.655
+        confidence: medium
+  - source: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    source_queries:
+    - notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    - paper/stages/stage_022.tex
+    - research/pde_ledger/paper/stages/stage_022.tex
+    nodes:
+    - id: MT_STAGE022_GROUPED_P2_BRIDGE
+      label: Stage 022 grouped P2 normalization bridge
+      layer: derivation
+      type: moving_throat_stage
+      status: exact_within_reduced_bundle
+      meaning: Converts conservative operator moments into normalized grouped response and isolates P0=N0/D0.
+      math:
+      - u2=-D2/D0
+      - P0=N0/D0
+      - mhat0²P0=54Gc_s^5/(5a^5c^5)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    - id: EQ_GROUPED_RESPONSE_MOMENTS
+      label: Grouped response moment conversion
+      layer: equation_anchor
+      type: equation
+      status: exact_within_reduced_bundle
+      meaning: Bridge from conservative operator moments to normalized grouped response moments.
+      expression: u_2^(A)=-D_A2/D_A0,   u_4^(A)=(D_A2²-D_A0D_A4)/D_A0²
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MT_STAGE022_GROUPED_P2_BRIDGE
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_022.tex
+        line: 15
+        heading_level: paragraph
+        heading: 1. Conservative operator and normalized response.
+        nearest_label:
+          name: eq:app-stage022-d-operator
+          line: 18
+        nearby_labels:
+        - name: eq:app-stage022-d-operator
+          line: 18
+        - name: eq:app-stage022-y-response
+          line: 23
+        - name: eq:app-stage022-u2u4
+          line: 29
+        match_basis: semantic_heading_match
+        match_score: 0.589
+        confidence: medium
+    - id: EQ_P0_TARGET
+      label: Invariant quadrupole normalization target
+      layer: equation_anchor
+      type: equation
+      status: open_actual_branch_data
+      meaning: Central remaining 2.5PN/4PN moving-throat normalization target.
+      expression: mhat_0² P_0 = 54 G c_s⁵/(5 a⁵ c⁵)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - research/4d_2_5pn/paper/4d_2_5pn.tex
+      - research/4d_4pn/paper/4d_4pn.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: OPEN_QUAD_NORMALIZATION
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - 4d_2_5pn_summary.md
+      - 4d_4pn_summary.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/4d_2_5pn/paper/4d_2_5pn.tex
+        line: 4995
+        heading_level: section
+        heading: Quadrupole normalization package
+        nearest_label:
+          name: app:quadrupole-normalization-package
+          line: 4996
+        nearby_labels:
+        - name: app:quadrupole-normalization-package
+          line: 4996
+        match_basis: semantic_heading_match
+        match_score: 0.655
+        confidence: medium
+  graph_gaps: []
+provenance_findings: []

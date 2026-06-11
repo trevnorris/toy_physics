@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage_248_i_coul
+parameter_name: I_Coul
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_248_i_coul__phase_b__i_coul.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '248'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_248.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: then the finite-radius threshold law is \cref{eq:app-part08-main-vcrit-new}.  The pure-Coulomb contact threshold
+    is \cref{eq:app-part08-main-vcrit-coul}.  The classical comparison window is therefore
+- path: paper/stages/stage_248.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: v_{\rm crit,new}<v_0<v_{\rm contact,Coul}.
+- path: paper/stages/stage_248.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: The WKB action and transmission ratio are \cref{eq:app-part08-main-wkb-action,eq:app-part08-main-transmission-ratio}.  The
+    pure-Coulomb outer turning point is exact,
+- path: paper/stages/stage_248.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage248-coul-turn}
+- path: paper/stages/stage_248.tex
+  line: 49
+  role: paper_stage_tex
+  excerpt: r_{\rm turn,Coul}(E)=\frac1E,
+- path: paper/stages/stage_248.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: and the Coulomb action closes as
+- path: paper/stages/stage_248.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage248-coul-action}
+- path: paper/stages/stage_248.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: I_{\rm Coul}(E)
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 47
+  role: notes_stage
+  excerpt: 6. and the exact window condition that says when the lowered branch reaches contact while the pure Coulomb reference
+    still turns back.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: compilers, the Coulomb reference formulas, the near-top action normal form,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: '- “the WKB exponent is reduced relative to Coulomb,”'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 159
+  role: notes_stage
+  excerpt: '### 2.2 Pure-Coulomb contact threshold at the same launch radius'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 163
+  role: notes_stage
+  excerpt: V_{\rm Coul}(r)=\frac1r,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: E_{\rm Coul}(v_0)=\frac{m_s}{2}v_0^2+\frac1{r_0}.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: v_{\rm contact,Coul}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 183
+  role: notes_stage
+  excerpt: v_{\rm crit,new}<v_0<v_{\rm contact,Coul},
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: E_{\rm Coul}(v_0)<\frac1{r_{\rm contact}}.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 192
+  role: notes_stage
+  excerpt: So the lowered branch reaches the contact scale while the pure Coulomb branch still turns back outside it.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 275
+  role: notes_stage
+  excerpt: '### 3.4 Pure-Coulomb reference action'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 277
+  role: notes_stage
+  excerpt: For the pure Coulomb reference
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 279
+  role: notes_stage
+  excerpt: V_{\rm Coul}(r)=\frac1r,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 284
+  role: notes_stage
+  excerpt: r_{\rm turn,Coul}(E)=\frac1E.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 290
+  role: notes_stage
+  excerpt: I_{\rm Coul}(E)
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: I_{\rm Coul}(E)
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 315
+  role: notes_stage
+  excerpt: The reduced-vs-Coulomb tunneling ratio is therefore
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 318
+  role: notes_stage
+  excerpt: \frac{T_{\rm new}(E)}{T_{\rm Coul}(E)}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: \exp\!\bigl[-2\bigl(I_{\rm new}(E)-I_{\rm Coul}(E)\bigr)\bigr].
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: So once the lowered branch gives \(I_{\rm new}<I_{\rm Coul}\), the enhancement is completely fixed.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 454
+  role: notes_stage
+  excerpt: For the pure Coulomb contact comparison,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: v_{\rm contact,Coul}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: '### 6.2 Subbarrier launch speed and Coulomb turning point'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 477
+  role: notes_stage
+  excerpt: The pure-Coulomb outer turning point is
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 479
+  role: notes_stage
+  excerpt: r_{\rm turn,Coul}=\frac1{2.5}=0.4,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 481
+  role: notes_stage
+  excerpt: which agrees with the reported Coulomb reference value \(0.40000141\) up to the expected numerical rounding of
+    the session scan.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 485
+  role: notes_stage
+  excerpt: The reported Coulomb comparison action was
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 487
+  role: notes_stage
+  excerpt: I_{\rm Coul}\approx 0.30222297.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: T_{\rm Coul}=e^{-2I_{\rm Coul}}=e^{-2(0.30222297)}\approx 0.54637707.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 498
+  role: notes_stage
+  excerpt: \frac{T_{\rm new}}{T_{\rm Coul}}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 500
+  role: notes_stage
+  excerpt: \exp\!\bigl[-2(I_{\rm new}-I_{\rm Coul})\bigr]
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 506
+  role: notes_stage
+  excerpt: \left(\frac{T_{\rm new}}{T_{\rm Coul}}-1\right)\times 100\%
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

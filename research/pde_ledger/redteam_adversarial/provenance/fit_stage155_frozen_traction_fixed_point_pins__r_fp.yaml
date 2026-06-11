@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage155_frozen_traction_fixed_point_pins
+parameter_name: R_fp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_frozen_traction_fixed_point_pins__phase_b__r_fp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '155'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Report g_fp, S_fp, R_fp, Pi_fp.
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: R_fp = R(sig)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Pi_fp = Sigma0_star * (1 - R_fp * S_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("R_fp =", R_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: assert abs(R_fp - 0.2827139049082381) < 1e-12, ("R_fp mismatch", R_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: direct = sp.Float(R_fp - sp.Rational(1, 4), 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage252_e_exp_min_completely_fixed
+parameter_name: E_exp_min_safe
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage252_e_exp_min_completely_fixed__phase_b__e_exp_min_safe.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_252.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_252.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: At the safe edge, with \(T=1/s_c\) and \(\Gamma_3s_c^3+\Gamma_5s_c^5=\mu_\eta(s_0^2-s_c^2)\), the total minimum
+    exported energy is \cref{eq:app-part08-main-safe-energy}, and the channel energies are obtained by multiplying by \(f_{\rm
+    vac}(s_c)\) or \(f_{\rm lat}(s_c)\).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 252: Vacuum-vs-Lattice Heat Partition and Cold-Survival Compiler from the Microscopic
+    Export Kernel'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: 1. the Stage-251 microscopic export kernel
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: K_{\rm exp}(s)=\Gamma_3 s^3+\Gamma_5 s^5,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 19
+  role: notes_stage
+  excerpt: 3. the exact exported-power identities from Stage 251,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: 6. and the Stage-251 event-safe equality on the cold edge
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: by the first microscopic passive/export kernel carried by the moving-throat wall/BdG/localized-Maxwell/mixed stack,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 42
+  role: notes_stage
+  excerpt: \Sigma_{\rm exp}(\omega)=-i\Gamma_3\omega^3-i\Gamma_5\omega^5+O(\omega^7).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: '> for a chosen cold event, what fraction of the exported energy goes into the vacuum outlet, what fraction goes
+    into the lattice outlet, and what total export is minimally required for the cold event to survive?'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: 3. the Stage-251 safe surface implies an exact **safe-edge exported-energy theorem**,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: 5. and the microscopic event-equivalent damping rates that Stage 253 must map into condensed-matter variables are
+    now explicit.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 77
+  role: notes_stage
+  excerpt: '- Stage 251 replaced the phenomenological damping scalar by the microscopic cubic-plus-quintic export kernel and
+    derived exact channel-resolved exported-power formulas.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 78
+  role: notes_stage
+  excerpt: '- Session IV used a by-hand vacuum/lattice split to estimate exported energies and cold-event rescue.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 93
+  role: notes_stage
+  excerpt: '- which microscopic channels export energy from the active `V` leg,'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 94
+  role: notes_stage
+  excerpt: '- that the total safe-event condition is'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: '- or what exact exported energy is minimally required on the cold-survival edge.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: '## 1. Exact channel-resolved exported-energy ledger'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 127
+  role: notes_stage
+  excerpt: Then the integrated exported energies are exactly
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 138
+  role: notes_stage
+  excerpt: so the total exported energy is
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: E_{\rm exp}(T)=\Gamma_3\,\mathcal I_2(T)+\Gamma_5\,\mathcal I_3(T).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: '### 2.1 Event-equivalent damping rates'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 252
+  role: notes_stage
+  excerpt: Then the exported energies can be written as
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 267
+  role: notes_stage
+  excerpt: with total event-equivalent export rate
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 294
+  role: notes_stage
+  excerpt: '## 3. Exact cold-survival compiler on the safe edge'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 302
+  role: notes_stage
+  excerpt: and specialize to the **safe-edge** equality from Stage 251,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: so the safe-edge total exported energy is exactly
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: E_{\rm exp,min}^{\rm safe}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 330
+  role: notes_stage
+  excerpt: It says that once the event is pinned to the cold-survival edge, the **minimum total exported energy** is completely
+    fixed by
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 338
+  role: notes_stage
+  excerpt: '### 3.1 Channel-resolved safe-edge energies'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 340
+  role: notes_stage
+  excerpt: The safe-edge channel energies are therefore
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 343
+  role: notes_stage
+  excerpt: E_{\rm vac,min}^{\rm safe}=f_{\rm vac}(s_c)
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 349
+  role: notes_stage
+  excerpt: E_{\rm lat,min}^{\rm safe}=f_{\rm lat}(s_c)
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 355
+  role: notes_stage
+  excerpt: '### 3.2 Safe-edge event-equivalent rate'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 357
+  role: notes_stage
+  excerpt: At the same edge, the total event-equivalent export rate obeys
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 360
+  role: notes_stage
+  excerpt: \gamma_{\rm eff,safe}^{\rm eq}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: \gamma_{\rm vac,safe}^{\rm eq}=f_{\rm vac}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: \gamma_{\rm lat,safe}^{\rm eq}=f_{\rm lat}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 434
+  role: notes_stage
+  excerpt: '## 5. Session-IV benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 449
+  role: notes_stage
+  excerpt: Then the exact safe-edge event-equivalent export rate is
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

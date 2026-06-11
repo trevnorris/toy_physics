@@ -1,0 +1,159 @@
+schema_version: 1
+candidate_id: fit_stage108_chiQ_robust_claim
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage108_chiq_robust_claim__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '108'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_108.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~108]{Stage~108: Robustness Classes for chi-Q}'
+- path: paper/stages/stage_108.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Pure scale is harmless; pure argument shift is harmless only if even moments remain canonical; additive throat-core
+    data can move \(\chi_Q\).
+- path: paper/stages/stage_108.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When
+    cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an
+    unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 108: Robustness Classes for `chi_Q`'
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 19
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=1.}
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 21
+  role: notes_stage
+  excerpt: Thus pure mouth normalization is invisible to the normalized outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 35
+  role: notes_stage
+  excerpt: So if the conservative even fingerprint is kept canonical,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 47
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=1.}
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 49
+  role: notes_stage
+  excerpt: So a pure effective radius/sound-speed rescaling cannot move the canonical outgoing normalization without simultaneously
+    spoiling the already fixed even moments.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 69
+  role: notes_stage
+  excerpt: \chi_Q=\frac{3(S+9\Sigma_5)}{3S-\Sigma_0}.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 72
+  role: notes_stage
+  excerpt: So an additive throat-core channel can move `chi_Q` even while leaving the lower even moments unchanged.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 77
+  role: notes_stage
+  excerpt: \chi_Q=\frac{3S}{3S-\Sigma_0}.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 86
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 102
+  role: notes_stage
+  excerpt: 'The canonical value `chi_Q = 1` is robust against:'
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 105
+  role: notes_stage
+  excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: banner('STAGE 108 — ROBUSTNESS CLASSES FOR chi_Q')
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: chi_arg = sp.simplify(sp.im(sp.expand(Y_arg).coeff(z, 5)) / sp.Rational(1, 27))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: print('chi_arg =', chi_arg)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: expect_zero('chi_arg(beta=1) - 1', chi_arg.subs(beta, 1) - 1)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: chi_add = sp.simplify((-(L5/L0)).subs(sol) / sp.Rational(1, 27))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: print('chi_add =', sp.factor(chi_add))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: expect_zero('chi_add - 3(S+9Sigma5)/(3S-Sigma0)', chi_add - 3*(S + 9*Sigma5)/(3*S - Sigma0))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: chi_pres = sp.solve(sp.Eq(chi_add, 1), Sigma5)[0]
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print('Sigma5 preservation locus =', sp.simplify(chi_pres))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: expect_zero('Sigma5 locus (Class C) = -Sigma0/27', sp.simplify(chi_pres) - (-Sigma0/sp.Integer(27)))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: chi_gen = sp.simplify((-(L5g/L0g)).subs(sol_g) / sp.Rational(1, 27))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: print('chi_gen(beta) =', sp.factor(chi_gen))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: chi_pres_gen = sp.solve(sp.Eq(chi_gen, 1), Sigma5)[0]
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print('Sigma5 general preservation locus =', sp.simplify(chi_pres_gen))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: sp.simplify(chi_pres_gen - (S*(1 - beta**5)/sp.Integer(9) - Sigma0/sp.Integer(27))),
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print('general preservation locus check =', sp.simplify(chi_gen.subs(Sigma5, chi_pres_gen) - 1))
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: (chi_pres_gen - (-Sigma0/sp.Integer(27))).subs(beta, 1),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

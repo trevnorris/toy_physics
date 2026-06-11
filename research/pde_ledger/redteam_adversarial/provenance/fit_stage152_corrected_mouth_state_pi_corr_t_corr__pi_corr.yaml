@@ -1,0 +1,126 @@
+schema_version: 1
+candidate_id: fit_stage152_corrected_mouth_state_pi_corr_t_corr
+parameter_name: Pi_corr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_corrected_mouth_state_pi_corr_t_corr__phase_b__pi_corr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '152'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_152.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 152]{Stage 152: Actual Family-1 Mouth Correction and One-Step Nonlinear Check}'
+- path: paper/stages/stage_152.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~152 is a finite mouth-profile corrections ledger step.  Its audit target is the verification
+    output quoted below.}
+- path: paper/stages/stage_152.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage152_family1_actual_correction_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage152_family1_actual_correction_mathematica_audit.txt}.}'
+- path: paper/stages/stage_152.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Finite mouth-profile corrections} block.  The
+    computation isolates the finite first-order/nonlinear correction to \((\Pi,\widehat T_m)\) and the decision to co-evolve
+    core and mouth.}
+- path: paper/stages/stage_152.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Full mouth profile broadens the source and shifts the point to \((\Pi_{\rm corr},\widehat T_{m,{\rm corr}})\).
+- path: paper/stages/stage_152.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block
+    narrative above and in the source stage.}
+- path: paper/stages/stage_152.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check that the rigidity kernel, not branch ambiguity, controls non-exponential corrections.
+- path: paper/stages/stage_152.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the one-step nonlinear correction remains within the reduced mouth-layer regime.
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 152: Actual Family-1 Mouth Correction and One-Step Nonlinear Check'
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 10
+  role: notes_stage
+  excerpt: '## 1. Actual first-order Family-1 correction'
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 72
+  role: notes_stage
+  excerpt: So the corrected canonical Family-1 point is
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 75
+  role: notes_stage
+  excerpt: \Pi_{\rm corr}
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 83
+  role: notes_stage
+  excerpt: \widehat T_{m,\rm corr}
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 90
+  role: notes_stage
+  excerpt: This is the first actual non-exponential correction selected by the full explicit
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 127
+  role: notes_stage
+  excerpt: So the one-step nonlinear correction shifts the canonical point slightly more than
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 134
+  role: notes_stage
+  excerpt: Comparing the actual first-order correction to the explicit positive-family
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 142
+  role: notes_stage
+  excerpt: So the full coupled mouth-layer correction is well approximated by a point about
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 151
+  role: notes_stage
+  excerpt: Equivalently, the actual selected correction corresponds to a **broadening fraction**
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: Numerical audit of the actual Family-1 mouth correction induced by the full compensated
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: banner("ACTUAL FAMILY-1 MOUTH CORRECTION")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("Pi_corr           =", Pi_star + deltaPi)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("T_corr            =", Tstar + deltaT)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

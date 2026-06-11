@@ -1,0 +1,61 @@
+schema_version: 1
+candidate_id: fit_stage_084_c_mix
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_084_c_mix__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 084
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 73
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 74
+  role: notes_stage
+  excerpt: '`= (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ]`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 78
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 90
+  role: notes_stage
+  excerpt: '`R_quad(Pi_tr,C_mix,eps_blk ; Xi,eta,kappa)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 91
+  role: notes_stage
+  excerpt: '`= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 128
+  role: notes_stage
+  excerpt: '- and selected branch product `Pi_tr/C_mix`.'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 159
+  role: notes_stage
+  excerpt: 2. the physical mixed baseline `C_mix` and blocking ratio `eps_blk` still have to be fixed on the true moving-throat
+    branch,
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 198
+  role: notes_stage
+  excerpt: '> derive the physical outgoing quadrupole product `Pi_tr` (and its accompanying `C_mix`, `eps_blk`) from the actual
+    passive/outgoing moving-throat branch and evaluate the sign of `R_quad`.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,126 @@
+schema_version: 1
+candidate_id: fit_stage163_family1_canonical_point_block
+parameter_name: S_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage163_family1_canonical_point_block__phase_b__s_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '163'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_163.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point,
+    and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside
+    the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_163.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check deviations are taken about the renormalized co-evolving canonical point.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 191
+  role: notes_stage
+  excerpt: On the renormalized canonical Family-1 point,
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 286
+  role: notes_stage
+  excerpt: Inside the fixed compensated hybrid class (\(\delta\kappa_W=0\)), exact first-order preservation of the canonical
+    even outlet therefore forces
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 318
+  role: notes_stage
+  excerpt: \left(1-\frac14\mathcal S_{\rm can}\right)\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 320
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}}{4}\,\delta\mathcal S
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 324
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_*^2}}
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 337
+  role: notes_stage
+  excerpt: \Sigma_0^{\rm can}\approx 4.651033550168876,
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 339
+  role: notes_stage
+  excerpt: \mathcal S_{\rm can}\approx 0.6703621156734617,
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: sigma_star, dkappaW, dgammaW = sp.symbols("sigma_star dkapW dgamW", real=True)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: deltaC = 16 * sigma_star * delta_perp / s
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: dE2 = (deltaC - 9 * sigma_star * dkappaW) / (27 * (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: dE4 = (5 * deltaC - 72 * sigma_star * dkappaW) / (243 * (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: DeltaQ = (deltaC - 27 * sigma_star * dgammaW) / (3 * (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '"delta C - 4 sigma_star deltaF/(1+r^2)",'
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: deltaC - sigma_star * dF * 4 / (1 + r**2),
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: Sigma0, Sstar, dSigma0, dS = sp.symbols("Sigma0 Sstar dSigma0 dS", real=True)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Rstar = sp.Rational(1, 4)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: dPi = sp.expand((1 - Rstar * Sstar) * dSigma0 - Sigma0 * (Rstar * dS + Sstar * dR_from_perp))
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: dPi_expected = sp.expand((1 - Sstar / 4) * dSigma0 - Sigma0 * dS / 4 + Sigma0 * Sstar * delta_perp / s)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: Sigma0_can = sp.Float("4.651033550168876", 30)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: S_can = sp.Float("0.6703621156734617", 30)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: coeff_Pi = sp.N(Sigma0_can * S_can / sf1, 20)
+- path: scripts/moving_throat_pde_stage163_off_family_normal_coordinate_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("Sigma0_can S_can / sqrt(1+r_*^2) =", coeff_Pi)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

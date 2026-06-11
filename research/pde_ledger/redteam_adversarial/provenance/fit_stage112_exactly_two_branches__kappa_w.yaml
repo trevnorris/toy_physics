@@ -1,0 +1,80 @@
+schema_version: 1
+candidate_id: fit_stage112_exactly_two_branches
+parameter_name: kappa_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage112_exactly_two_branches__phase_b__kappa_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '112'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_112.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Nontrivial compensated branch has \(\rho_R=4\sigma_W\), \(\kappa_W=1/3\), and preserves odd normalization iff \(\gamma_W=1/9\).
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 5
+  role: notes_stage
+  excerpt: Combine the geometric Robin core and the hidden mixed side-channel and determine whether an explicit compensated
+    moving-throat outlet can preserve the canonical outgoing quadrupole branch.
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 18
+  role: notes_stage
+  excerpt: \frac{\sigma_W}{1-\kappa_W z^2-i\gamma_W z^5}
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 26
+  role: notes_stage
+  excerpt: L_2=\frac13-\sigma_W\kappa_W,
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 28
+  role: notes_stage
+  excerpt: L_4=\frac19-\sigma_W\kappa_W^2,
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 35
+  role: notes_stage
+  excerpt: Imposing the canonical conservative even fingerprint,
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 43
+  role: notes_stage
+  excerpt: \boxed{\rho_R=\sigma_W,\qquad \kappa_W=0,}
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 47
+  role: notes_stage
+  excerpt: \boxed{\rho_R=4\sigma_W,\qquad \kappa_W=\frac13.}
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 59
+  role: notes_stage
+  excerpt: \kappa_W=\frac13,
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: z, rho, sigma, kappa, gamma = sp.symbols('z rho sigma kappa gamma', real=True)
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Lambda_hyb = sp.expand(sp.series(Lambda_out + rho - sigma/(1 - kappa*z**2 - I*gamma*z**5), z, 0, 6).removeO())
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: '], [rho, kappa], dict=True)'
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: 'assert sols == [{kappa: 0, rho: sigma}, {kappa: sp.Rational(1, 3), rho: 4*sigma}]'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

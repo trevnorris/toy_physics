@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage_207_tau_lo
+parameter_name: tau_lo
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_207_tau_lo__phase_b__tau_lo.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '207'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 70
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau)=\sigma_0\,h(\boldsymbol\ell_\circ+\tau\mathbf s).
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 76
+  role: notes_stage
+  excerpt: H_1(\mathbf s;\tau)=\sigma_0\,\mathbf s^T H_h(\boldsymbol\ell_\circ+\tau\mathbf s)\mathbf s,
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 164
+  role: notes_stage
+  excerpt: H_1^{(i)}(\tau)
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 166
+  role: notes_stage
+  excerpt: \sigma_0\,\partial_{\ell_i\ell_i}h(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_i).
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 178
+  role: notes_stage
+  excerpt: \sigma_0\,\partial_{\ell_i\ell_i}h(\boldsymbol\ell_\circ+\tau\widehat{\mathbf s}_i)
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 182
+  role: notes_stage
+  excerpt: 0\le\tau\le T_i,
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 261
+  role: notes_stage
+  excerpt: \tau_{i,\rm lo}:=\mathcal T(H_0,k_i;\underline\kappa_i),
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 263
+  role: notes_stage
+  excerpt: \tau_{i,\rm hi}:=\mathcal T(H_0,k_i;\overline\kappa_i),
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 268
+  role: notes_stage
+  excerpt: \boxed{W_i:=\tau_{i,\rm hi}-\tau_{i,\rm lo}.}
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 270
+  role: notes_stage
+  excerpt: If also `\(\tau_{i,\rm hi}\le T_i\)`, then the primitive ray is locally admissible and Stage 206 guarantees one
+    unique true primitive closure point
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 272
+  role: notes_stage
+  excerpt: \boxed{\tau_*^{(i)}\in[\tau_{i,\rm lo},\tau_{i,\rm hi}].}
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 284
+  role: notes_stage
+  excerpt: \tau_{i,\rm lo}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\underline\kappa_i}},
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 286
+  role: notes_stage
+  excerpt: \tau_{i,\rm hi}^{\rm(tp)}:=\sqrt{-\frac{2H_0}{\overline\kappa_i}},
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 291
+  role: notes_stage
+  excerpt: \boxed{W_i^{\rm(tp)}:=\tau_{i,\rm hi}^{\rm(tp)}-\tau_{i,\rm lo}^{\rm(tp)}.}
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 293
+  role: notes_stage
+  excerpt: If `\(\tau_{i,\rm hi}^{\rm(tp)}\le T_i\)`, then Stage 206 again gives one unique primitive closure point on that
+    axis.
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 301
+  role: notes_stage
+  excerpt: '| monotone primitive | `\(H_0,\ k_i,\ \underline\kappa_i,\ \overline\kappa_i,\ T_i\)` | `\([\tau_{i,\rm lo},\tau_{i,\rm
+    hi}],\ W_i\)` |'
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 302
+  role: notes_stage
+  excerpt: '| turning primitive | `\(H_0,\ \underline\kappa_i,\ \overline\kappa_i,\ T_i\)` with `\(\overline\kappa_i<0\)`
+    | `\([\tau_{i,\rm lo}^{\rm(tp)},\tau_{i,\rm hi}^{\rm(tp)}],\ W_i^{\rm(tp)}\)` |'
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 323
+  role: notes_stage
+  excerpt: \tau_{i,\rm hi}>T_i.
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 331
+  role: notes_stage
+  excerpt: 2. `\(\tau_{i,\rm hi}^{\rm(tp)}>T_i\)`.
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 351
+  role: notes_stage
+  excerpt: \tau_{i,\rm hi}<\tau_{j,\rm lo}
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 353
+  role: notes_stage
+  excerpt: \tau_*^{(i)}<\tau_*^{(j)}.
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 359
+  role: notes_stage
+  excerpt: \tau_{i,\rm hi}<\min_{j\neq i}\tau_{j,\rm lo},
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 367
+  role: notes_stage
+  excerpt: \mathcal Q_i:=(\tau_{i,\rm hi},W_i)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: a_star = sp.simplify((1 + deltaUs) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: TauL = sp.simplify(2 * H0 / (k + sp.sqrt(k**2 - 2 * cL * H0)))
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: TauU = sp.simplify(2 * H0 / (k + sp.sqrt(k**2 - 2 * cU * H0)))
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 179
+  role: sympy_script
+  excerpt: print("tau_lo(H0,k;cL) =")
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 180
+  role: sympy_script
+  excerpt: sp.pprint(TauL)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: print("tau_hi(H0,k;cU) =")
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: sp.pprint(TauU)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: sp.simplify(H0 - k * TauL + sp.Rational(1, 2) * cL * TauL**2),
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: sp.simplify(H0 - k * TauU + sp.Rational(1, 2) * cU * TauU**2),
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: Width = sp.simplify(TauU - TauL)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: TauTurnLo = sp.sqrt(2 * H0 / a_turn)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: TauTurnHi = sp.sqrt(2 * H0 / b_turn)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: print("tau_lo^(tp) =")
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: sp.pprint(TauTurnLo)
+- path: scripts/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table_sympy_audit.py
+  line: 205
+  role: sympy_script
+  excerpt: print("tau_hi^(tp) =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

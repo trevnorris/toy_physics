@@ -1,0 +1,85 @@
+schema_version: 1
+candidate_id: fit_stage_099_k0_sym
+parameter_name: K0_sym
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_099_k0_sym__phase_b__k0_sym.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 099
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_099.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.txt}.  Mathematica audit:
+    \StageFile{mathematica/moving_throat_pde_stage099_reduced_finish_line_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage099_reduced_finish_line_mathematica_audit.txt}.}'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: 'Stage 099 SymPy audit: the reduced finish line is a single normalization defect.'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: import sympy as sp
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: G, c, c_s, a, Omega_Q = sp.symbols("G c c_s a Omega_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: omega = sp.symbols("omega", real=True)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: N_Q = sp.symbols("N_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '# K0_sym is a *free* positive symbol — assertions are not forced by an N_Q recipe.'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: K0_sym = sp.symbols("K0_sym", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: K2_struct = K0_sym / (4 * Omega_Q**2)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: K4_struct = K0_sym / (4 * Omega_Q**4)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: Gamma5_struct = 9 * K0_sym / (32 * Omega_Q**5)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: expect_zero("branch identity K0 K4 = 4 K2^2", K0_sym * K4_struct - 4 * K2_struct**2)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: 9 * K2_struct**sp.Rational(5, 2) / K0_sym**sp.Rational(3, 2) - Gamma5_struct)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: Gamma5_struct.subs(K0_sym, N_Q * K0_target) / (2 * G / (5 * c**5)) - N_Q)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

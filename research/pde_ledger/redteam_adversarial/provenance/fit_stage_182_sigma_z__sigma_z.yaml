@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_182_sigma_z
+parameter_name: Sigma_Z
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_182_sigma_z__phase_b__sigma_z.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '182'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_182.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Reduces the defect to \((\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta)\) plus dressing
+    slippage \(\Sigma_\eta\), and isolates \(\Sigma_{\rm tr}\).}
+- path: paper/stages/stage_182.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before
+    interpretation.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 34
+  role: notes_stage
+  excerpt: \Sigma_Z,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 36
+  role: notes_stage
+  excerpt: \Sigma_\chi,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 38
+  role: notes_stage
+  excerpt: \Sigma_\epsilon,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 40
+  role: notes_stage
+  excerpt: \Sigma_\delta,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 42
+  role: notes_stage
+  excerpt: while the selected-branch form introduces one additional dressing slippage \(\Sigma_\eta\).
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 48
+  role: notes_stage
+  excerpt: \Sigma_Z
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 49
+  role: notes_stage
+  excerpt: +\frac{2\chi_0}{1+\chi_0}\,\Sigma_\chi
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 52
+  role: notes_stage
+  excerpt: \frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 53
+  role: notes_stage
+  excerpt: -\frac{2\delta_U}{11(1+\delta_U)^2}\,\Sigma_\delta
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 60
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 68
+  role: notes_stage
+  excerpt: -\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}\,\Sigma_{\rm tr}.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 76
+  role: notes_stage
+  excerpt: '- exact tracking rigidity means \(\Sigma_{\rm tr}=0\),'
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 89
+  role: notes_stage
+  excerpt: \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 126
+  role: notes_stage
+  excerpt: \Sigma_\delta=\tau_1-\kappa_U
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 130
+  role: notes_stage
+  excerpt: \Sigma_\delta=\tau_1-\kappa_U-2\ell_{L,1}.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 188
+  role: notes_stage
+  excerpt: \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 241
+  role: notes_stage
+  excerpt: \Sigma_Z:=2\lambda_1+\mu_1-\kappa_\eta-2\kappa_W=\zeta_Z-\omega_W,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 246
+  role: notes_stage
+  excerpt: \Sigma_\chi:=\gamma_1+c_1-\kappa_U=\frac{\chi_1}{\chi_0},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 251
+  role: notes_stage
+  excerpt: \Sigma_\eta:=2c_1-\kappa_U-\kappa_\eta=\frac{\eta_1}{\epsilon_\eta},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 256
+  role: notes_stage
+  excerpt: \Sigma_\epsilon:=2\gamma_1+2\lambda_1-\kappa_U-\kappa_W=\frac{\varepsilon_W}{\epsilon_W},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 261
+  role: notes_stage
+  excerpt: \Sigma_\delta:=\tau_1-\kappa_U=\frac{\delta_{U,1}}{\delta_U}.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 287
+  role: notes_stage
+  excerpt: \Sigma_Z
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 288
+  role: notes_stage
+  excerpt: +\frac{2\chi_0}{1+\chi_0}\,\Sigma_\chi
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 291
+  role: notes_stage
+  excerpt: \frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 292
+  role: notes_stage
+  excerpt: -\frac{2\delta_U}{11(1+\delta_U)^2}\,\Sigma_\delta
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 302
+  role: notes_stage
+  excerpt: 1. wall-normalized overlap/frequency slippage \(\Sigma_Z\),
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 303
+  role: notes_stage
+  excerpt: 2. interference/co-loading slippage \(\Sigma_\chi\),
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 304
+  role: notes_stage
+  excerpt: 3. mixed-blocking similarity slippage \(\Sigma_\epsilon\),
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 305
+  role: notes_stage
+  excerpt: 4. split-\(U\) axial-ratio slippage \(\Sigma_\delta\).
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 322
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 331
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 332
+  role: notes_stage
+  excerpt: -\Sigma_Z
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 333
+  role: notes_stage
+  excerpt: -\frac{2\chi_0}{1+\chi_0}\,\Sigma_\chi
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 336
+  role: notes_stage
+  excerpt: \frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 337
+  role: notes_stage
+  excerpt: -\frac{2\delta_U}{11(1+\delta_U)^2}\,\Sigma_\delta
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 341
+  role: notes_stage
+  excerpt: So the selected-branch demand ratio is controlled by one additional dressing slippage \(\Sigma_\eta\) beyond the
+    four direct transfer-shape slippages.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 366
+  role: notes_stage
+  excerpt: \Big[(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi\Big].
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 372
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,318 @@
+schema_version: 1
+candidate_id: fit_stage_021_eq_compact_l2_fingerprint
+parameter_name: EQ_COMPACT_L2_FINGERPRINT
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_eq_compact_l2_fingerprint__phase_b__eq_compact_l2_fingerprint.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '021'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_021.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_021.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \paragraph{Compact outgoing fingerprint.}
+- path: paper/stages/stage_021.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: For the compact outgoing \(l=2\) branch,
+- path: paper/stages/stage_021.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage021-outgoing-fingerprint}
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 49
+  role: notes_stage
+  excerpt: '- the compact outgoing `l=2` fingerprint starts at `+ i ω^5`,'
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 76
+  role: notes_stage
+  excerpt: That matters because it means the reduced mixed-sector coordinates are not bookkeeping artifacts; they are reduced
+    representatives of honest parent-theory observables.
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 206
+  role: notes_stage
+  excerpt: That is the correct passive damping sign in the wall-operator convention used here.
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 211
+  role: notes_stage
+  excerpt: '## 6. Compact outgoing `l=2` fingerprint'
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 213
+  role: notes_stage
+  excerpt: The 2.5PN audit already isolated the compact outgoing `l=2` branch as the universal quadrupole route.
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 214
+  role: notes_stage
+  excerpt: The exact reduced fingerprint can be recovered from the outgoing spherical Hankel solution.
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 240
+  role: notes_stage
+  excerpt: 1. the compact outgoing branch supplies the universal `ω^5` fingerprint,
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 284
+  role: notes_stage
+  excerpt: 3. and the **passive/outgoing quadrupole fingerprint** needed by the 2.5PN and 4PN bridges.
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 315
+  role: notes_stage
+  excerpt: The completed PDE must determine its actual multi-mode generalization on the true moving-throat branch.
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: • the compact outgoing l=2 PDE fingerprint,
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: '"N(omega) compact formula",'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 264
+  role: sympy_script
+  excerpt: '# Section IV. Compact outgoing l=2 PDE fingerprint'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 267
+  role: sympy_script
+  excerpt: 'def outgoing_l2_fingerprint_audit() -> dict[str, sp.Expr]:'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 268
+  role: sympy_script
+  excerpt: banner("SECTION IV — COMPACT OUTGOING l=2 FINGERPRINT")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 306
+  role: sympy_script
+  excerpt: print("So the compact outgoing l=2 branch starts at + i omega^5 with coefficient a^5/(27 c_s^5).")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 361
+  role: sympy_script
+  excerpt: out = outgoing_l2_fingerprint_audit()
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 372
+  role: sympy_script
+  excerpt: print("  • the compact outgoing l=2 branch has the normalized fingerprint")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: paper/stages/stage_021.tex
+    source_queries:
+    - paper/stages/stage_021.tex
+    - research/pde_ledger/paper/stages/stage_021.tex
+    nodes:
+    - id: MT_STAGE021_REDUCED_ONE_PORT
+      label: Stage 021 reduced Maxwell/mixed one-port adapter
+      layer: derivation
+      type: moving_throat_stage
+      status: retained_reduced_adapter
+      meaning: Retains the earlier reduced Maxwell/mixed calculation as the one-port normal form used downstream after the
+        projection-first EM packet.
+      math:
+      - N_l(0)=[Ω_A²g_W+Rg_A]²/[Ω_A²Ω_W²-R²]²
+      - Y_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    - id: EQ_COMPACT_L2_FINGERPRINT
+      label: Compact outgoing l=2 fingerprint
+      layer: equation_anchor
+      type: equation
+      status: exact_reduced
+      meaning: Universal outgoing quadrupole low-frequency fingerprint in normalized response language.
+      expression: Ŷ_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_021.tex
+        line: 60
+        heading_level: paragraph
+        heading: Compact outgoing fingerprint.
+        nearest_label:
+          name: eq:app-stage021-outgoing-fingerprint
+          line: 63
+        nearby_labels:
+        - name: eq:app-stage021-outgoing-fingerprint
+          line: 63
+        - name: eq:app-stage021-wall-odd
+          line: 72
+        match_basis: semantic_heading_match
+        match_score: 1.0
+        confidence: high
+    - id: EQ_MAXWELL_MIXED_TRANSFER
+      label: Stage 021 one-port outgoing transfer factor
+      layer: equation_anchor
+      type: equation
+      status: exact_within_reduced_bundle
+      meaning: Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger
+        treats it as the adapter after projection-first EM Stages 004--020.
+      expression: N_l(0)=[Ω_A² g_W + R g_A]²/[Ω_A²Ω_W²-R²]² ≥ 0
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MATH_MAXWELL_MIXED_KERNEL
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_021.tex
+        line: 43
+        heading_level: paragraph
+        heading: Outgoing transfer.
+        nearest_label:
+          name: eq:app-stage021-transfer-factor
+          line: 47
+        nearby_labels:
+        - name: eq:app-stage021-transfer-factor
+          line: 47
+        - name: eq:app-stage021-n0-positive
+          line: 54
+        match_basis: semantic_heading_match
+        match_score: 0.606
+        confidence: medium
+    - id: MATH_MAXWELL_MIXED_KERNEL
+      label: Projected EM packet with reduced one-port adapter
+      layer: math_object
+      type: reduced_kernel
+      status: exact_projection_with_reduced_adapter
+      meaning: Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies
+        conservative self-energy and outgoing transfer data for the grouped bridge.
+      math:
+      - Stages 004--020 projected Maxwell packet
+      - Stage 021 reduced one-port Z_n,N_n adapter
+      - Z_n
+      - N_n
+      - Delta=Omega_U^2 Omega_W^2-R^2
+      sources:
+      - research/pde_ledger/paper/stages/stage_004.tex
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - moving_throat_pde_program_compact.md
+  - source: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    source_queries:
+    - notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    - paper/stages/stage_021.tex
+    - research/pde_ledger/paper/stages/stage_021.tex
+    nodes:
+    - id: MT_STAGE021_REDUCED_ONE_PORT
+      label: Stage 021 reduced Maxwell/mixed one-port adapter
+      layer: derivation
+      type: moving_throat_stage
+      status: retained_reduced_adapter
+      meaning: Retains the earlier reduced Maxwell/mixed calculation as the one-port normal form used downstream after the
+        projection-first EM packet.
+      math:
+      - N_l(0)=[Ω_A²g_W+Rg_A]²/[Ω_A²Ω_W²-R²]²
+      - Y_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+    - id: EQ_COMPACT_L2_FINGERPRINT
+      label: Compact outgoing l=2 fingerprint
+      layer: equation_anchor
+      type: equation
+      status: exact_reduced
+      meaning: Universal outgoing quadrupole low-frequency fingerprint in normalized response language.
+      expression: Ŷ_2^out=1+a²ω²/(9c_s²)+4a⁴ω⁴/(81c_s⁴)+i a⁵ω⁵/(27c_s⁵)+O(ω⁶)
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MATH_COMPACT_L2_OUTGOING_FINGERPRINT
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_021.tex
+        line: 60
+        heading_level: paragraph
+        heading: Compact outgoing fingerprint.
+        nearest_label:
+          name: eq:app-stage021-outgoing-fingerprint
+          line: 63
+        nearby_labels:
+        - name: eq:app-stage021-outgoing-fingerprint
+          line: 63
+        - name: eq:app-stage021-wall-odd
+          line: 72
+        match_basis: semantic_heading_match
+        match_score: 1.0
+        confidence: high
+    - id: EQ_MAXWELL_MIXED_TRANSFER
+      label: Stage 021 one-port outgoing transfer factor
+      layer: equation_anchor
+      type: equation
+      status: exact_within_reduced_bundle
+      meaning: Positive static transfer factor from the retained Stage 021 reduced one-port normal form; the current ledger
+        treats it as the adapter after projection-first EM Stages 004--020.
+      expression: N_l(0)=[Ω_A² g_W + R g_A]²/[Ω_A²Ω_W²-R²]² ≥ 0
+      sources:
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MATH_MAXWELL_MIXED_KERNEL
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_021.tex
+        line: 43
+        heading_level: paragraph
+        heading: Outgoing transfer.
+        nearest_label:
+          name: eq:app-stage021-transfer-factor
+          line: 47
+        nearby_labels:
+        - name: eq:app-stage021-transfer-factor
+          line: 47
+        - name: eq:app-stage021-n0-positive
+          line: 54
+        match_basis: semantic_heading_match
+        match_score: 0.606
+        confidence: medium
+    - id: MATH_MAXWELL_MIXED_KERNEL
+      label: Projected EM packet with reduced one-port adapter
+      layer: math_object
+      type: reduced_kernel
+      status: exact_projection_with_reduced_adapter
+      meaning: Projection-first Maxwell identities supply the EM sector; the retained reduced one-port normal form supplies
+        conservative self-energy and outgoing transfer data for the grouped bridge.
+      math:
+      - Stages 004--020 projected Maxwell packet
+      - Stage 021 reduced one-port Z_n,N_n adapter
+      - Z_n
+      - N_n
+      - Delta=Omega_U^2 Omega_W^2-R^2
+      sources:
+      - research/pde_ledger/paper/stages/stage_004.tex
+      - research/pde_ledger/paper/stages/stage_021.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage021_reduced_one_port_normal_form.md
+      - moving_throat_pde_program_compact.md
+  graph_gaps: []
+provenance_findings: []

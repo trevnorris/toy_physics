@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_247_d_uv
+parameter_name: D_UV
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_d_uv__phase_b__d_uv.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: D_UV = sp.simplify(chi_UV**2 * a_V * f_U**2 / Delta_UV**2)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: E_UV = sp.simplify(eta_UV * D_UV)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: assert sp.ask(sp.Q.nonnegative(D_UV)) in (True, None)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: D_UV_probe = D_UV.subs({
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: assert float(D_UV_probe) >= 0
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: print("D_UV                  =", D_UV)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage093_module_forced_statement
+parameter_name: Y_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage093_module_forced_statement__phase_b__y_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 093
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_093.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 9
+  role: notes_stage
+  excerpt: 1. derive the minimal isotropic `3/4 + 1/4` conservative quadrupole module directly from the grouped-`P2` + geometry
+    split;
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 10
+  role: notes_stage
+  excerpt: 2. isolate the exact obstruction formula if the geometry lane carries dynamic `omega^2` or `omega^4` moments.
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 20
+  role: notes_stage
+  excerpt: '- if the actual isotropic grouped-`P2` conservative branch is one pole,'
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 23
+  role: notes_stage
+  excerpt: then the conservative quadrupole module is forced to be
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 25
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`,'
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 51
+  role: notes_stage
+  excerpt: If not, the exact deviation is still controlled by the Stage-75 obstruction formula
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 55
+  role: notes_stage
+  excerpt: So the next real PDE-side task is no longer broad. It is to determine the two geometry-contamination numbers `eps_2`
+    and `eps_4`, or prove that they vanish on the natural branch.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

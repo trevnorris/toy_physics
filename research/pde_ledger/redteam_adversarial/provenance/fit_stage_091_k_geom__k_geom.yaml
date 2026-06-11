@@ -1,0 +1,203 @@
+schema_version: 1
+candidate_id: fit_stage_091_k_geom
+parameter_name: K_geom
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_091_k_geom__phase_b__k_geom.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 091
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_091.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~091]{Stage~091: Deriving the 3/4 + 1/4 Conservative Quadrupole Module from the Grouped-P2 + Geometry
+    Split}'
+- path: paper/stages/stage_091.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~091 is a geometry-lane firewall ledger step.  Its audit target is the verification output
+    quoted below.}
+- path: paper/stages/stage_091.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier,
+    the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or
+    the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_091.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_mathematica_audit.wl};
+    transcript: \StageFile{mathematica/output/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_mathematica_audit.txt}.}'
+- path: paper/stages/stage_091.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_091.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Static-geometry plus one-pole grouped carrier forces the \(3/4+1/4\) conservative quadrupole module and hence \(\rho_\alpha=4/3\),
+    \(\zeta_{\rm req}=1/3\).
+- path: paper/stages/stage_091.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 091: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2`
+    + Geometry Split'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 15
+  role: notes_stage
+  excerpt: '> derive that same `3/4 + 1/4` split directly from the conservative **grouped real `P2` + geometry** organization
+    already frozen by the 3PN program.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 22
+  role: notes_stage
+  excerpt: '- and if the 3PN geometry completion is genuinely static through `O(omega^4)`,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 28
+  role: notes_stage
+  excerpt: '`K_geom = 3 K0/4`,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 34
+  role: notes_stage
+  excerpt: So the `3/4 + 1/4` conservative module is no longer just a plausible parametrization. Under the minimal grouped-`P2`
+    + static-geometry realization, it is forced.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 42
+  role: notes_stage
+  excerpt: '`free compiler image + grouped real P2 middle block + unique geometry completion`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 48
+  role: notes_stage
+  excerpt: The important structural point is that the geometry lane appears there as a **static** completion, while the grouped-`P2`
+    middle block carries the nontrivial higher-order conservative quadrupole structure.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 62
+  role: notes_stage
+  excerpt: '## 2. Minimal grouped-`P2` + geometry realization'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 66
+  role: notes_stage
+  excerpt: '`K_Q^cons(omega) = K_geom + K_pole /(1 - omega^2/Omega_Q^2)`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 70
+  role: notes_stage
+  excerpt: '- `K_geom` is the static geometry completion,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 74
+  role: notes_stage
+  excerpt: This is the smallest realization compatible with the 3PN conservative split if the grouped-`P2` side is the only
+    dynamic quadrupole lane and geometry contributes only the static completion.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 82
+  role: notes_stage
+  excerpt: '`K0 = K_geom + K_pole`,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 98
+  role: notes_stage
+  excerpt: '`(K_geom + K_pole) * (K_pole / Omega_Q^4)`'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 103
+  role: notes_stage
+  excerpt: '`K_geom + K_pole = 4 K_pole`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 107
+  role: notes_stage
+  excerpt: '`K_geom = 3 K_pole`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 113
+  role: notes_stage
+  excerpt: '`K_geom = 3 K0 / 4`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 123
+  role: notes_stage
+  excerpt: So the earlier `3/4 + 1/4` structure is now recovered directly from the grouped-`P2` + static-geometry split.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 137
+  role: notes_stage
+  excerpt: Using the newly derived grouped-`P2` + geometry split,
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 155
+  role: notes_stage
+  excerpt: So the Stage-71 loading-ratio extraction is now a direct corollary of the grouped-`P2` + static-geometry realization.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 165
+  role: notes_stage
+  excerpt: '> if the actual conservative grouped-`P2` branch is one isotropic pole and the geometry lane contributes only
+    the static completion through `O(omega^4)`, then the `3/4 + 1/4` conservative quadrupole module is forced algebraically.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 169
+  role: notes_stage
+  excerpt: '- either the real moving-throat branch obeys that minimal grouped-`P2` + static-geometry realization,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 170
+  role: notes_stage
+  excerpt: '- or the missing PDE must generate extra dynamic geometry moments or a richer isotropic grouped-`P2` pole structure.'
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: static geometry contact term plus one isotropic grouped-P2 conservative pole.
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: '- "Check `l=0` and `l=2` orthogonality before applying the geometry firewall":'
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: exercised at stage 094 (Isotropic Geometry-Decoupling Theorem) via 15 angular
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: Kgeom, Kpole, OmegaQ = sp.symbols("K_geom K_pole Omega_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: banner("STAGE 091 — GROUPED-P2 + STATIC-GEOMETRY DERIVATION")
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Kcons = sp.simplify(Kgeom + Kpole / (1 - omega**2 / OmegaQ**2))
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: expect_zero("K0 - (Kgeom + Kpole)", K0 - (Kgeom + Kpole))
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: Kgeom_sol = sp.solve(sp.Eq(branch_identity, 0), Kgeom)[0]
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("K_geom forced by branch identity =", Kgeom_sol)
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: expect_zero("K_geom - 3*K_pole", Kgeom_sol - 3 * Kpole)
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: K0_on_branch = sp.simplify(K0.subs(Kgeom, Kgeom_sol))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

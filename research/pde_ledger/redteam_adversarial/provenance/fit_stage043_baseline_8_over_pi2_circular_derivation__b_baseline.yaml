@@ -1,0 +1,96 @@
+schema_version: 1
+candidate_id: fit_stage043_baseline_8_over_pi2_circular_derivation
+parameter_name: B_baseline
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage043_baseline_8_over_pi2_circular_derivation__phase_b__b_baseline.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '043'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 135
+  role: notes_stage
+  excerpt: '## 4. Exact support pole shift and actual support baseline'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 163
+  role: notes_stage
+  excerpt: The physical support loading baseline on the selected wall problem is therefore
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 173
+  role: notes_stage
+  excerpt: So the support sector is now no longer just a direction question. Its actual baseline strength is an exact continuum
+    output, parallel to the mixed baseline `M_mix` of Stage 039.
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 239
+  role: notes_stage
+  excerpt: '- the exact physical support baseline `M_supp`,'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 5. The actual physical support baseline is
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: '# F2: minimal-overlap baseline (delta_U = 0) reduces to the trivial pole shift.'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: subbanner("43.3 — Exact physical support baseline")
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: '# F3: structural form check with a FREE baseline B (no hand-substitution of kappa0^2).'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: B = sp.symbols("B_baseline", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: print("M_supp structural form (free baseline B) =")
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: expect_zero("M_supp structural form (free baseline)", Msupp_cont_in_B - Msupp_struct_expected)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: '# F2: baseline value identification — derive B = kappa0^2 = (9/11) sigma from'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: print(f"baseline B = kappa0^2 = (9/11) sigma = {B_value}")
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: expect_zero("baseline B = 8/pi^2 from frozen sigma", B_value - sp.Rational(8, 1) / sp.pi**2)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: print("M_supp at baseline B = 8/pi^2 =")
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: expect_zero("M_supp at baseline B = 8/pi^2", Msupp_cont_eval - Msupp_expected)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: print("5. The exact physical support baseline is")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

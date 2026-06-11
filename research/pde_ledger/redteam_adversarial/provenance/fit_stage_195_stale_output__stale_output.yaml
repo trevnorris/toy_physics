@@ -1,0 +1,41 @@
+schema_version: 1
+candidate_id: fit_stage_195_stale_output
+parameter_name: stale_output
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_stale_output__phase_b__stale_output.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_195.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~195 is the original-stage audit card for \emph{Source-map reduction}.  Its purpose is
+    to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream citations.}
+- path: paper/stages/stage_195.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Factorizes the observable odd closure as \(\widehat m_0^{2}\chi_QN_Q=1\) and collapses \(\Delta_{\rm
+    norm}\).}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 42
+  role: notes_stage
+  excerpt: 'The main outputs are:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

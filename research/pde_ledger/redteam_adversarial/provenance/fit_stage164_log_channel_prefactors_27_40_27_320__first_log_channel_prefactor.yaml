@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage164_log_channel_prefactors_27_40_27_320
+parameter_name: first_log_channel_prefactor
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage164_log_channel_prefactors_27_40_27_320__phase_b__first_log_channel_prefactor.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '164'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_164.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 164]{Stage 164: Microscopic log-imbalance channels}'
+- path: paper/stages/stage_164.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~164 is the original-stage audit card for \emph{Microscopic log-imbalance channels}.  Its
+    purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_164.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.txt}.}'
+- path: paper/stages/stage_164.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation removes tangent-compensated isotropic motion, proves no linear grouped
+    feed-down into scalar slippages, and reduces the direct grouped outlet map to the physical even-response and prefactor
+    slopes.}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 164: Explicit Microscopic Log-Imbalance Channels on the Linearized Wall/BdG/Maxwell/Mixed
+    Branch'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 163 reduced the first off-family defect of the co-evolving Family-1 branch to the single scalar
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 18
+  role: notes_stage
+  excerpt: '> what do the two logarithmic imbalance channels'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 29
+  role: notes_stage
+  excerpt: the two channels collapse to concrete logarithmic drifts of the microscopic variables
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 36
+  role: notes_stage
+  excerpt: it is no longer “compute the channels somehow,” but only to determine the actual linearized
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 52
+  role: notes_stage
+  excerpt: 'So the two Stage 163 logarithmic channels already have an exact microscopic meaning:'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 70
+  role: notes_stage
+  excerpt: '- The first channel is the logarithmic drift of the **relative mouth-coupling ratio**'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 72
+  role: notes_stage
+  excerpt: '- The second channel is exactly the negative logarithmic drift of the'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 107
+  role: notes_stage
+  excerpt: So before using any overlap simplification, the two logarithmic channels are exactly
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 136
+  role: notes_stage
+  excerpt: 'At this level the two channels are controlled by four microscopic sectors:'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 139
+  role: notes_stage
+  excerpt: 2. the mixed-channel localization norm \(\mathcal Z_q\),
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 197
+  role: notes_stage
+  excerpt: So under the first explicit throat-core closure, the Stage 163 channels are already
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 198
+  role: notes_stage
+  excerpt: concrete logarithmic drifts of the actual branch variables
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 241
+  role: notes_stage
+  excerpt: Therefore the Stage 163 logarithmic channels become
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 269
+  role: notes_stage
+  excerpt: This is the first point where the two Stage 163 channels have become a literal
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 276
+  role: notes_stage
+  excerpt: '- \(\mathcal Z_q\) is the localized-Maxwell mixed-channel norm,'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 361
+  role: notes_stage
+  excerpt: So the first true off-family defect is now a weighted sum of exactly seven logarithmic branch drifts.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 367
+  role: notes_stage
+  excerpt: Setting \(\delta_\perp=0\) gives the exact first-order condition for the true moving-throat
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 432
+  role: notes_stage
+  excerpt: The two Stage 163 microscopic logarithmic imbalance channels are no longer abstract.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 434
+  role: notes_stage
+  excerpt: 'Inside the explicit first throat-core closure:'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 436
+  role: notes_stage
+  excerpt: 1. one channel is exactly the logarithmic drift of the relative mouth-coupling ratio,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 442
+  role: notes_stage
+  excerpt: 2. the other is exactly the negative logarithmic drift of the hybridization ratio,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 452
+  role: notes_stage
+  excerpt: So the remaining PDE-facing task is no longer to discover what the channels are.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 455
+  role: notes_stage
+  excerpt: If they satisfy the tangency law above, then \(\delta_\perp=0\) and the first-order reduced
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 457
+  role: notes_stage
+  excerpt: If they do not, the whole first-order off-family defect is now already explicit.
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. Exact identity of the Stage 163 logarithmic channels with d ln(g/r) and -d ln r_c.
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. Exact general Stage 118 channel products.
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: banner("STAGE 164 — MICROSCOPIC LOG-IMBALANCE CHANNELS")
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: first_prod_general = sp.simplify(gq_gen * Ks / (gs_gen * lam_gen))
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("general first product =", first_prod_general)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: 'first_prod_uniform = sp.simplify(first_prod_general.subs({Js: Js_closure, Isq: Isq_closure}))'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("uniform-overlap first product =", first_prod_uniform)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: 'first_prod_heal = sp.simplify(first_prod_uniform.subs({Ks: Ks_lock, ell: ell_lock}))'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print("healing-locked first product =", first_prod_heal)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: first_expected = -sp.Rational(27,40) * sp.pi * mpsi**2 * Zq * csw**3 / (hbar * mu0 * qstar * rho_w * Tm * vw0 *
+    a**2 * Lw**2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

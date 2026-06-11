@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage241_beta_window_endpoint
+parameter_name: beta_max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage241_beta_window_endpoint__phase_b__beta_max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '241'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_241.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports $\epsilon_*=1-3\varrho/2$, $\sigma=4/(3\varrho)-2$, $0<\varrho<2/3$, and the constructive
+    coherent bound $0<\beta<2/11$.}
+- path: paper/stages/stage_241.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Primitive ranking theorem: the selected branch has a complete phase diagram with thresholds
+    $\varrho_{W\Lambda}=2(1+\beta^2)/[3(2+\beta^2)]$ and $\varrho_{U\Lambda}=2(1+\beta^2)/[3(1+\beta+\beta^2)]$.}'
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: 0<\beta<\frac{2}{11}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 35
+  role: notes_stage
+  excerpt: \frac{2(1+\beta^2)}{3(2+\beta^2)},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 39
+  role: notes_stage
+  excerpt: \frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 273
+  role: notes_stage
+  excerpt: N(\epsilon_*,\beta)
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 275
+  role: notes_stage
+  excerpt: 5(1-\epsilon_*)^2 + 6\epsilon_*^2(1+\beta^2)>0.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 284
+  role: notes_stage
+  excerpt: \frac{\epsilon_*^2(1+\beta^2)}{N},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 292
+  role: notes_stage
+  excerpt: \frac{1-2\epsilon_*+(2+\beta^2)\epsilon_*^2}{N},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: \frac{2\bigl[1-2\epsilon_*+(2+\beta^2)\epsilon_*^2\bigr]}{N},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: \frac{\beta\,\epsilon_*(1-\epsilon_*)}{N}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 351
+  role: notes_stage
+  excerpt: \frac{\beta^2\epsilon_*^2+3(\epsilon_*-1/2)^2+1/4}{N}>0,
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 357
+  role: notes_stage
+  excerpt: \frac{\epsilon_*(1-\epsilon_*)(1-\beta)}{N}>0,
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: 0<\beta<\frac{2}{11}<1.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 397
+  role: notes_stage
+  excerpt: \epsilon_*=\frac{1}{2+\beta^2}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 409
+  role: notes_stage
+  excerpt: 1-\frac{3\varrho}{2}=\frac{1}{2+\beta^2},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 418
+  role: notes_stage
+  excerpt: \frac{2(1+\beta^2)}{3(2+\beta^2)}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 425
+  role: notes_stage
+  excerpt: \epsilon_*-\frac{1}{2+\beta^2}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 449
+  role: notes_stage
+  excerpt: \frac{(2-3\varrho)(2+\beta^2)(\varrho_{W\Lambda}-\varrho)}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 450
+  role: notes_stage
+  excerpt: '{18\beta^2\varrho^2-24\beta^2\varrho+8\beta^2+33\varrho^2-24\varrho+8}.'
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 466
+  role: notes_stage
+  excerpt: \epsilon_*=\frac{\beta}{1+\beta+\beta^2}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 474
+  role: notes_stage
+  excerpt: \frac{\beta}{1+\beta+\beta^2}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 483
+  role: notes_stage
+  excerpt: \frac{2(1+\beta^2)}{3(1+\beta+\beta^2)}.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 490
+  role: notes_stage
+  excerpt: \epsilon_*-\frac{\beta}{1+\beta+\beta^2}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 514
+  role: notes_stage
+  excerpt: \frac{(2-3\varrho)(1+\beta+\beta^2)(\varrho_{U\Lambda}-\varrho)}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 515
+  role: notes_stage
+  excerpt: '{18\beta^2\varrho^2-24\beta^2\varrho+8\beta^2+33\varrho^2-24\varrho+8}.'
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 531
+  role: notes_stage
+  excerpt: \frac{2(1+\beta^2)(1-\beta)}{3(1+\beta+\beta^2)(2+\beta^2)} > 0,
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 534
+  role: notes_stage
+  excerpt: because `0<\beta<2/11<1`.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 541
+  role: notes_stage
+  excerpt: \frac{2\beta}{3(1+\beta+\beta^2)} > 0.
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 559
+  role: notes_stage
+  excerpt: 0<\beta<\frac{2}{11},
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 567
+  role: notes_stage
+  excerpt: \frac{d\varrho_{W\Lambda}}{d\beta}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 569
+  role: notes_stage
+  excerpt: \frac{4\beta}{3(\beta^2+2)^2}>0,
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 584
+  role: notes_stage
+  excerpt: \frac{d\varrho_{U\Lambda}}{d\beta}
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 586
+  role: notes_stage
+  excerpt: -\frac{2(1-\beta^2)}{3(1+\beta+\beta^2)^2}<0
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 587
+  role: notes_stage
+  excerpt: \qquad (0<\beta<1),
+- path: notes/stages/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.md
+  line: 742
+  role: notes_stage
+  excerpt: 7. the numerical threshold windows implied by `0<\beta<2/11`,
+- path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: varrho_WLambda = 2(1+beta^2)/[3(2+beta^2)],
+- path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: varrho_ULambda = 2(1+beta^2)/[3(1+beta+beta^2)]
+- path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: 7.  Numerical threshold windows implied by 0 < beta < 2/11.
+- path: scripts/moving_throat_pde_stage241_exact_primitive_ranking_on_the_selected_twin_support_branch_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: beta, varrho = sp.symbols("beta varrho", positive=True)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

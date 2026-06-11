@@ -1,0 +1,74 @@
+schema_version: 1
+candidate_id: fit_stage097_yhatQcons_forced_carrier
+parameter_name: Yhat_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage097_yhatqcons_forced_carrier__phase_b__yhat_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 097
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_097.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 79 finished the last serious **conservative** ambiguity on the actual isotropic branch:'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 9
+  role: notes_stage
+  excerpt: '- and the conservative module is therefore'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 11
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 13
+  role: notes_stage
+  excerpt: The next honest step is to combine that actual conservative result with the already-frozen 2.5PN outgoing theorem
+    target.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 25
+  role: notes_stage
+  excerpt: '## 1. Actual branch conservative module'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 27
+  role: notes_stage
+  excerpt: Write the actual isotropic conservative quadrupole response in canonical invariant form as
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 29
+  role: notes_stage
+  excerpt: '`Kbar_Q^cons(omega)`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 38
+  role: notes_stage
+  excerpt: So once `Kbar_0` and `Omega_Q` are known, the entire even conservative ledger is fixed.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 48
+  role: notes_stage
+  excerpt: Substituting the actual one-pole conservative relations gives
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# Actual branch conservative module coefficients.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

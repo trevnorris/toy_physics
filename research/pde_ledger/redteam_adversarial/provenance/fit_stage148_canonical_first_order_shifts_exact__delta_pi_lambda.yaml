@@ -1,0 +1,131 @@
+schema_version: 1
+candidate_id: fit_stage148_canonical_first_order_shifts_exact
+parameter_name: delta_Pi_lambda
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage148_canonical_first_order_shifts_exact__phase_b__delta_pi_lambda.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '148'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 43
+  role: notes_stage
+  excerpt: \frac{\delta\Pi_u}{\epsilon}\approx +1.699414961314297,
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 45
+  role: notes_stage
+  excerpt: \frac{\delta\widehat T_{m,u}}{\epsilon}\approx +0.508756302215084.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 54
+  role: notes_stage
+  excerpt: '## 2. Self-matched derivative family'
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 56
+  role: notes_stage
+  excerpt: Take the positive self-matched derivative profile,
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 76
+  role: notes_stage
+  excerpt: \frac{\delta\Pi_d}{\epsilon}\approx -0.382993186095928,
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 78
+  role: notes_stage
+  excerpt: \frac{\delta\widehat T_{m,d}}{\epsilon}\approx -0.116943802151811.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 82
+  role: notes_stage
+  excerpt: So sharpening the source toward the self-matched derivative profile moves the
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 91
+  role: notes_stage
+  excerpt: \varsigma_\lambda(x)=(1-\lambda)\varsigma_u(x)+\lambda \varsigma_d(x),
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 92
+  role: notes_stage
+  excerpt: \qquad 0\le \lambda\le 1.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 99
+  role: notes_stage
+  excerpt: \frac{\delta\Pi_\lambda}{\epsilon}
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 103
+  role: notes_stage
+  excerpt: 2.082408147410224\,\lambda,
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{\delta\widehat T_{m,\lambda}}{\epsilon}
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 112
+  role: notes_stage
+  excerpt: 0.625700104366895\,\lambda.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 119
+  role: notes_stage
+  excerpt: \lambda_{\Pi,0}\approx 0.816081594488460.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 124
+  role: notes_stage
+  excerpt: 1-\lambda_{\Pi,0}\approx 0.183918405511540,
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 140
+  role: notes_stage
+  excerpt: \lambda_{T,0}\approx 0.813099276577333.
+- path: notes/stages/moving_throat_pde_stage148_representative_positive_families.md
+  line: 154
+  role: notes_stage
+  excerpt: '- sharpening toward the self-matched derivative profile changes it downward,'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("dPi_lambda/eps =")
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("dT_lambda/eps =")
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("lambda_(Pi,0) =", lam_Pi_zero)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("lambda_(T,0) =", lam_T_zero)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("1 - lambda_(Pi,0) =", sp.N(1-lam_Pi_zero, 30))
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: '# Preferred (EXACT, no Pi_star / no nsolve): 1 - lambda_(Pi,0) has the closed form'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '# and lambda_(Pi,0) solves g_lam = g_* = gminus. Build it from the EXACT gminus (NOT the'
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("exact (1-lambda_(Pi,0)) - xi_* =", exact_resid)
+- path: scripts/moving_throat_pde_stage148_representative_positive_families_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: print("(1-lambda_(Pi,0)) - xi_* =", residual)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

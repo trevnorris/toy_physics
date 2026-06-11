@@ -1,0 +1,119 @@
+schema_version: 1
+candidate_id: fit_stage098_support_demand_exact
+parameter_name: support_ratio
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_support_demand_exact__phase_b__support_ratio.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 098
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_098.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~098]{Stage~098: The Explicit Family-1 Support Test Is Automatic on the Actual Isotropic Branch}'
+- path: paper/stages/stage_098.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage098_family1_support_is_automatic_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage098_family1_support_is_automatic_mathematica_audit.txt}.}'
+- path: paper/stages/stage_098.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: With \(\rho_\alpha=4/3\), any branch with \(\zeta_{\max}>1\) passes the support test; Family--1 does.
+- path: paper/stages/stage_098.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block
+    narrative above and in the source stage.}
+- path: paper/stages/stage_098.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check that any support/source success statement still carries the minimal-module hypothesis.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 098: The Explicit Family-1 Support Test Is Automatic on the Actual Isotropic Branch'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 7
+  role: notes_stage
+  excerpt: But the explicit branch still has a support/source theorem sitting beside that radiative theorem.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 10
+  role: notes_stage
+  excerpt: '> does the explicit Family-1 support/source side still need to be checked separately once the actual branch loading
+    ratio is fixed?'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 18
+  role: notes_stage
+  excerpt: so even with finite blocking the exact support demand is so small that any explicit branch with support ceiling
+    `zeta_max > 1` already passes it throughout the admissible blocked regime.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 24
+  role: notes_stage
+  excerpt: so its support/source side is automatic.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 30
+  role: notes_stage
+  excerpt: Stage 68 gave the exact support-ratio demand
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 42
+  role: notes_stage
+  excerpt: So the entire blocked support demand is one monotone increasing function of the blocking parameter.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 46
+  role: notes_stage
+  excerpt: '## 2. Automatic support theorem for any branch with `zeta_max > 1`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 48
+  role: notes_stage
+  excerpt: Assume a branch has support ceiling `zeta_max > 1`, and use the same admissible blocking window already frozen
+    earlier,
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 68
+  role: notes_stage
+  excerpt: '> for the actual isotropic branch with `rho_alpha = 4/3`, any explicit support/source family whose constructive
+    ceiling satisfies `zeta_max > 1` already passes the support test throughout the full admissible blocked regime.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 70
+  role: notes_stage
+  excerpt: So the support/source side is automatic once the actual isotropic branch is fixed.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 98
+  role: notes_stage
+  excerpt: So the explicit Family-1 support/source branch no longer carries an independent reduced theorem burden.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 107
+  role: notes_stage
+  excerpt: '- **support/source theorem:** automatic on the actual isotropic branch,'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: 'Stage 098 SymPy audit: actual isotropic branch support demand is automatic for any'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: rho = sp.Rational(4, 3)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: '# Source: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md (Family-1 specialization).'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

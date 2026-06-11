@@ -1,0 +1,25 @@
+candidate_id: fit_stage074_healing_lock_ell
+parameter_name: ell
+origin_claims:
+  - parameter: ell
+    introduced_at_stage: 074
+    introduced_at_line: 53
+    citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 53
+      excerpt: "`ell = ell_h = hbar / (2 m c_(s,w)).`"
+constraints:
+  - parameter: ell
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 55
+      excerpt: "This is a **controlled local closure**, not yet a theorem of the full moving-throat PDE, but it is the first honest way to tie the support scale to the parent GNLS medium instead of leaving it free."
+downstream_dependents: [75]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "The active wall width ell is LOCKED to the GNLS healing width via the identification ell = ell_h = hbar/(2 m c_sw). The healing width ell_h itself is an exact GNLS identity, but the identification ell=ell_h is a posited closure, self-flagged as 'a controlled local closure, not yet a theorem of the full moving-throat PDE'. Hence free_choice (an ansatz), not internal_consistency. The paper card matches (lists it as an Input closure)."
+    citations:
+      - { path: paper/stages/stage_074.tex, line: 7, excerpt: "\\stagefield{Inputs}{The Family--1 geometry \\(L/\\ell=37\\) and closure \\(\\ell=\\hbar/(2mc_{s,w})\\).}" }
+      - { path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md, line: 51, excerpt: "The natural next closure is to identify that active support width with the local GNLS healing width on the wall-support layer:" }

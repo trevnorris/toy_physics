@@ -1,0 +1,144 @@
+schema_version: 1
+candidate_id: fit_stage105_last_scalar_fixed_exactly
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage105_last_scalar_fixed_exactly__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '105'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_105.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~105]{Stage~105: Exact Fixing of chi-Q}'
+- path: paper/stages/stage_105.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_105.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_mathematica_audit.txt}.}'
+- path: paper/stages/stage_105.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: paper/stages/stage_105.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+- path: paper/stages/stage_105.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 105: Exact Fixing of `chi_Q`'
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 5
+  role: notes_stage
+  excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 7
+  role: notes_stage
+  excerpt: \chi_Q
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 22
+  role: notes_stage
+  excerpt: -i\,\chi_Q\,\sigma_Q^{\rm can}\,\omega^5
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 53
+  role: notes_stage
+  excerpt: +i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 67
+  role: notes_stage
+  excerpt: Matching the \(O(\omega^5)\) coefficient yields
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 69
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=1.}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 72
+  role: notes_stage
+  excerpt: So on the canonical compact passive/outgoing grouped-`P2` DtN branch, the last reduced normalization scalar is
+    fixed exactly.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 74
+  role: notes_stage
+  excerpt: '## General deformed DtN obstruction'
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 95
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=\xi_Q.}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 98
+  role: notes_stage
+  excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat
+    DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: banner("STAGE 105 — EXACT FIXING OF chi_Q")
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: a, c_s, omega, chi_Q = sp.symbols("a c_s omega chi_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Yret = sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2/Omega_Q**2 - sp.I*chi_Q*sigma_can*omega**5)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: expect_zero("imag omega^5 coefficient", Yret_series.coeff(omega, 5)/sp.I - chi_Q*a**5/(27*c_s**5))
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: chi_sol = sp.solve(sp.Eq(Yret_series.coeff(omega, 5)/sp.I, outgoing_omega5_coeff), chi_Q)[0]
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: print("\nchi_Q from exact outgoing match =", chi_sol)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: 'if sp.simplify(chi_sol - 1) != 0:'
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: raise AssertionError("chi_Q did not match to 1.")
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("  On the canonical compact passive/outgoing grouped-P2 branch, chi_Q = 1 exactly.")
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("  More generally, chi_Q is just the leading imaginary DtN deformation coefficient xi_Q.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

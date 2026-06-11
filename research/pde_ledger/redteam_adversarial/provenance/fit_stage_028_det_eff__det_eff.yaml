@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage_028_det_eff
+parameter_name: det_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_028_det_eff__phase_b__det_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 028
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_028.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and
+    a positive loading coefficient \(\alpha\).}
+- path: paper/stages/stage_028.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage028-Keff}
+- path: paper/stages/stage_028.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: K_{\rm eff}=K_{\rm bare}-\alpha vv^T,
+- path: paper/stages/stage_028.tex
+  line: 80
+  role: paper_stage_tex
+  excerpt: The lower eigenvalue reaches zero when \(\det K_{\rm eff}=0\).  This gives
+- path: paper/stages/stage_028.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~028 outputs the rank-one wall matrix \eqref{eq:app-stage028-Keff}, exact eigenvalues
+    \eqref{eq:app-stage028-eigenvalues}, the selected angle law \eqref{eq:app-stage028-angle-law}, and the softening threshold
+    \eqref{eq:app-stage028-alpha-crit}.}
+- path: paper/stages/stage_028.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: \item The threshold is checked by \(\det(K_{\rm bare}-\alpha vv^T)=0\).
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 28
+  role: notes_stage
+  excerpt: '- and the real PDE now needs to tell us only how large the effective loading is and whether it stays in the same
+    sign/class as this minimal model.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 44
+  role: notes_stage
+  excerpt: with normalized coefficient vector
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 88
+  role: notes_stage
+  excerpt: '## 2. Minimal effective loading from the support/mixed branch'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 92
+  role: notes_stage
+  excerpt: '`E_eff[q] = (1/2) q^T K_bare q - (alpha/2) (v . q)^2`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 100
+  role: notes_stage
+  excerpt: '`K_eff = K_bare - alpha v v^T`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 104
+  role: notes_stage
+  excerpt: '`K_eff = [[K_0 - alpha kappa_0^2,      -alpha kappa_0 kappa_1],`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 115
+  role: notes_stage
+  excerpt: The effective trace and determinant are
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 117
+  role: notes_stage
+  excerpt: '`tr(K_eff) = K_0 + K_1 - alpha (kappa_0^2 + kappa_1^2)`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 119
+  role: notes_stage
+  excerpt: '`det(K_eff) = K_0 K_1 - alpha ( K_1 kappa_0^2 + K_0 kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 236
+  role: notes_stage
+  excerpt: '`det(K_eff)=0`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 291
+  role: notes_stage
+  excerpt: '> derive the actual effective loading strength `alpha` and the associated loaded wall eigenmode from the coupled
+    wall/BdG/Maxwell/mixed operator, then insert that eigenpair into the Stage-027 normalization equation.'
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: • exact trace/determinant/eigenvalue formulas,
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: K_eff = sp.simplify(K_bare - alpha * (v * v.T))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: print("K_eff =")
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: sp.pprint(K_eff)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: return K_eff, K0, K1
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: '# II. Trace, determinant, eigenvalues'
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: banner("SECTION II — TRACE, DETERMINANT, AND EXACT EIGENVALUES")
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: K_eff, K0_expr, K1_expr = loaded_operator()
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: tr_eff = sp.simplify(sp.trace(K_eff))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: det_eff = sp.simplify(K_eff.det())
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: det_expected = sp.simplify(K0 * K1 - alpha * (K1 * kappa0**2 + K0 * kappa1**2))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: print("trace(K_eff) =", tr_eff)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: print("det(K_eff)   =", det_eff)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: expect_zero("trace - expected", tr_eff - tr_expected)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: expect_zero("det - expected", det_eff - det_expected)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: char = sp.expand((x - lam_minus) * (x - lam_plus) - (x**2 - tr_eff * x + det_eff))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: return K_eff, lam_minus, lam_plus, det_eff
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: K_eff, lam_minus, lam_plus, det_eff = eigenvalue_ledger()
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: E = sp.simplify((q.T * K_eff * q)[0] / 2)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: expect_zero("weak-loading coefficient - k0*k1/DeltaK", weak / alpha - (kappa0 * kappa1 / DeltaK))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: return rhs, det_eff
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: rhs, det_eff = angle_equation()
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: return rhs_inf, det_eff
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

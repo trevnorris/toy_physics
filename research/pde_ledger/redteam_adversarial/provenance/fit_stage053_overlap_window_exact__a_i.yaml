@@ -1,0 +1,84 @@
+schema_version: 1
+candidate_id: fit_stage053_overlap_window_exact
+parameter_name: A_I
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage053_overlap_window_exact__phase_b__a_i.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '053'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 24
+  role: notes_stage
+  excerpt: '`A_I := Omega_0^2 <= pi^2/4;`'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 66
+  role: notes_stage
+  excerpt: '`A_I := Omega_0^2.`'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 90
+  role: notes_stage
+  excerpt: '`0 <= A_I <= pi^2/4.`'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 146
+  role: notes_stage
+  excerpt: '`A_I = Omega_0^2 >= zeta_req`'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 152
+  role: notes_stage
+  excerpt: '`A_I <= pi^2/4.`'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 177
+  role: notes_stage
+  excerpt: '`0 <= A_I <= pi^2/4`,'
+- path: notes/stages/moving_throat_pde_stage053_overlap_boost_window.md
+  line: 194
+  role: notes_stage
+  excerpt: The moving-throat operator may indeed produce `Omega_0 > 1`, but even the most favorable finite-throat concentration
+    can supply only a finite factor `pi^2/4` in `A_I`.
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: A_I_max = sp.simplify(Omega_max**2)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("A_I,max =", A_I_max)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: expect_zero("A_I,max - pi^2/4", A_I_max - pi**2/4)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: criterion = sp.simplify(A_I_max - zeta_req)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: print("Pure-overlap rescue possible only if zeta_req <=", A_I_max)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print("A_I,max - zeta_req =", criterion)
+- path: scripts/moving_throat_pde_stage053_overlap_boost_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("  A_I = Omega_0^2 is therefore bounded by pi^2/4.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,89 @@
+schema_version: 1
+candidate_id: fit_stage_010_dk_norm
+parameter_name: dK_norm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_010_dk_norm__phase_b__dk_norm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '010'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_010.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_010.tex
+  line: 62
+  role: paper_stage_tex
+  excerpt: normalization \(K\)-surfaces under the slot shift are
+- path: paper/stages/stage_010.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: K_{\rm norm}(\varepsilon)
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: K_norm_p = sp.solve(
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: K_norm = K_norm_p.subs(eps, 0)
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: dK_norm = sp.diff(sp.series(K_norm_p, eps, 0, 2).removeO(), eps).subs(eps, 0)
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: compat = K_norm - K_one_pole
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: (sp.series(K_norm_p - K_one_pole_p, eps, 0, 2).removeO() - compat) / eps
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: K_norm_transport_p = sp.solve(
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: compat_transport_p = sp.simplify(K_norm_transport_p - K_one_pole_p)
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: assert_zero("compatibility surface after eliminating K", (K_norm_p - K_one_pole_p) - compat_direct_p)
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: assert_zero("normalization K shift", dK_norm - (z0 + n0 / Ptarget))
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: assert_zero("compatibility first variation from competing K surfaces", dcompat - (dK_norm - dK_one_pole))
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: assert_zero("transported-target normalization K surface", K_norm_transport_p - (B0 + Z0slot + eps * z0 + D0target))
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: assert_nonzero("normalization K surface still carries z0", sp.diff(dK_norm, z0) - 0)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

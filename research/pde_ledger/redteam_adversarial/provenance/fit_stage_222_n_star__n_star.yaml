@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage_222_n_star
+parameter_name: N_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_n_star__phase_b__n_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: D0prime, omega_star, N_star = sp.symbols('D0prime omega_star N_star', positive=True)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: Aqq_star = 1 / D0prime
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: gamma_star = Gamma5 * omega_star**5 * N_star / D0prime
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: RQ_star = sp.simplify(Aqq_star / gamma_star)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: assert sp.simplify(RQ_star - 27 * c_s**5 / (a**5 * omega_star**5 * N_star)) == 0
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: sp.Rational(1, 2) * RQ_star * eta / (1 + eta**2) / x**6
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: print('R_Q,* =', RQ_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

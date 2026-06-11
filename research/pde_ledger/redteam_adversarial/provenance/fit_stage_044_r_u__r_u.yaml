@@ -1,0 +1,205 @@
+schema_version: 1
+candidate_id: fit_stage_044_r_u
+parameter_name: R_U
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_044_r_u__phase_b__r_u.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '044'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_044.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~043 replacements \(q=tR_U\), \(r=tR_\phi\), mixed baseline \(M_{\rm mix}\), and support
+    loading \(M_{\rm supp}\).}
+- path: paper/stages/stage_044.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: =\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
+- path: paper/stages/stage_044.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: +t^2M_{\rm mix}M_{\rm supp}(R_U-R_\phi)^2.
+- path: paper/stages/stage_044.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: 'Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched
+    tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 35
+  role: notes_stage
+  excerpt: '`R_U = [ 1 + rho_0/(1+delta_U) ] / (1 + rho_0).`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 59
+  role: notes_stage
+  excerpt: '`q = t R_U,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 81
+  role: notes_stage
+  excerpt: '`q = t R_U,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 88
+  role: notes_stage
+  excerpt: '`= [ xi(delta + xi) - M_mix( delta + (1 + lambda_0 R_U^2) xi ) ]`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 89
+  role: notes_stage
+  excerpt: '`  / [ delta + (1 + lambda_0 R_phi^2) xi - M_mix lambda_0 (R_U - R_phi)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 107
+  role: notes_stage
+  excerpt: '`  - M_mix (1 + lambda_0 R_U^2)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 112
+  role: notes_stage
+  excerpt: '`  + lambda_0 M_mix M_supp (R_U - R_phi)^2.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 148
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + lambda_0 R_U R_phi) xi ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 150
+  role: notes_stage
+  excerpt: '`    - lambda_0 M_mix (R_U - R_phi)(R_U - 1) ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 156
+  role: notes_stage
+  excerpt: '`= [ delta + xi - lambda_0 M_mix R_U (R_U - R_phi) ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 157
+  role: notes_stage
+  excerpt: '`  + lambda_0 [ M_mix (R_U - R_phi) + R_phi xi ]^2.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 198
+  role: notes_stage
+  excerpt: '`R_phi = R_U,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 208
+  role: notes_stage
+  excerpt: '`q = t R_U,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 222
+  role: notes_stage
+  excerpt: '`Delta_R := R_U - R_phi`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 256
+  role: notes_stage
+  excerpt: '- and the exact mismatch penalty `lambda_0 M_mix M_supp (R_U - R_phi)^2`.'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 3. Inserting q=t R_U and r=t R_phi into the Stage-042 normalization law yields the
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 5. The interference-match surface R_phi = R_U collapses the rank-2 branch to the
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 6. The genuine rank-2 mismatch penalty enters as +lambda0 M_mix M_supp (R_U-R_phi)^2.
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: RU, Rphi = sp.symbols("R_U R_phi", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: '# Stage-041 support theorem with q=t RU and r=t Rphi, t^2=lambda0.'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: q = sp.sqrt(lambda0) * RU
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: (xi * (delta + xi) - Mmix * (delta + (1 + lambda0 * RU**2) * xi))
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: / (delta + (1 + lambda0 * Rphi**2) * xi - Mmix * lambda0 * (RU - Rphi)**2)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: B_cont = sp.simplify(delta - Mmix * (1 + lambda0 * RU**2) - Msupp * (1 + lambda0 * Rphi**2))
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: C_cont = sp.simplify(-delta * (Mmix + Msupp) + lambda0 * Mmix * Msupp * (RU - Rphi)**2)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '# Stage-042 general normalization with q=t RU, r=t Rphi, source t=sqrt(lambda0).'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: (delta + xi - Mmix * lambda0 * RU * (RU - Rphi))**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: + lambda0 * (Mmix * (RU - Rphi) + Rphi * xi)**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: (delta + (1 + lambda0 * RU * Rphi) * xi)**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: '* (delta + (1 + lambda0 * Rphi) * xi - Mmix * lambda0 * (RU - Rphi) * (RU - 1))**2'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '# beyond the R_phi=1 and R_phi=R_U collapsed surfaces.'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: (delta + (1 + lambda0 * RU * Rphi_lit) * xi)**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: '* (delta + (1 + lambda0 * Rphi_lit) * xi - Mmix * lambda0 * (RU - Rphi_lit) * (RU - 1))**2'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: (delta + xi - Mmix * lambda0 * RU * (RU - Rphi_lit))**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: + lambda0 * (Mmix * (RU - Rphi_lit) + Rphi_lit * xi)**2
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: (xi * (delta + xi) - Mmix * (delta + (1 + lambda0 * RU**2) * xi))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_044.tex
+    attempted_sources:
+    - paper/stages/stage_044.tex
+    - research/pde_ledger/paper/stages/stage_044.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_044.tex
+    attempted_sources:
+    - paper/stages/stage_044.tex
+    - research/pde_ledger/paper/stages/stage_044.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

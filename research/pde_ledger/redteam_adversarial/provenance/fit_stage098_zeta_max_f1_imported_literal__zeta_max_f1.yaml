@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage098_zeta_max_f1_imported_literal
+parameter_name: zeta_max_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_zeta_max_f1_imported_literal__phase_b__zeta_max_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 098
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_098.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: With \(\rho_\alpha=4/3\), any branch with \(\zeta_{\max}>1\) passes the support test; Family--1 does.
+- path: paper/stages/stage_098.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~100--106 and any downstream use of \(\rho_\alpha=4/3\), \(\zeta_{\rm
+    req}=1/3\), or \(N_Q\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation
+    ledger entry, not an unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 18
+  role: notes_stage
+  excerpt: so even with finite blocking the exact support demand is so small that any explicit branch with support ceiling
+    `zeta_max > 1` already passes it throughout the admissible blocked regime.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 22
+  role: notes_stage
+  excerpt: '`zeta_max^(F1) ≈ 2.46752922945601 > 1`,'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 32
+  role: notes_stage
+  excerpt: '`zeta_req = (rho_alpha - 1) / (1 - eps_blk (2 - rho_alpha)).`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 40
+  role: notes_stage
+  excerpt: '`zeta_req^(act)(eps_blk) = (1/3)/(1 - (2/3) eps_blk) = 1/(3 - 2 eps_blk).`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 46
+  role: notes_stage
+  excerpt: '## 2. Automatic support theorem for any branch with `zeta_max > 1`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 48
+  role: notes_stage
+  excerpt: Assume a branch has support ceiling `zeta_max > 1`, and use the same admissible blocking window already frozen
+    earlier,
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 50
+  role: notes_stage
+  excerpt: '`0 <= eps_blk < 1/zeta_max`.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 52
+  role: notes_stage
+  excerpt: Because `zeta_req^(act)` increases with `eps_blk`, its worst value on the admissible window is bounded by
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 54
+  role: notes_stage
+  excerpt: '`zeta_req^(act) < 1 / (3 - 2/zeta_max).`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 56
+  role: notes_stage
+  excerpt: Now compare that to `zeta_max` itself. The inequality
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 58
+  role: notes_stage
+  excerpt: '`1 / (3 - 2/zeta_max) < zeta_max`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 62
+  role: notes_stage
+  excerpt: '`3 zeta_max (zeta_max - 1)/(3 zeta_max - 2) > 0,`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 64
+  role: notes_stage
+  excerpt: which is true for every `zeta_max > 1`.
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 68
+  role: notes_stage
+  excerpt: '> for the actual isotropic branch with `rho_alpha = 4/3`, any explicit support/source family whose constructive
+    ceiling satisfies `zeta_max > 1` already passes the support test throughout the full admissible blocked regime.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 78
+  role: notes_stage
+  excerpt: '`zeta_max^(F1) ≈ 2.46752922945601 > 1`.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 84
+  role: notes_stage
+  excerpt: '`zeta_req^(act)(0) = 1/3,`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 88
+  role: notes_stage
+  excerpt: '`eps_blk -> 1 / zeta_max^(F1)`,'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 92
+  role: notes_stage
+  excerpt: '`zeta_req^(act) < zeta_max^(F1)`.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 96
+  role: notes_stage
+  excerpt: '`zeta_req^(act) < 0.456730991107963 < 2.46752922945601`.'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 4
+  role: sympy_script
+  excerpt: explicit family with zeta_max > 1 on the admissible blocked interval.
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: eps, zmax = sp.symbols('eps zmax', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify((rho - 1) / (1 - eps * (2 - rho)))
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: assert sp.simplify(zeta_req - 1 / (3 - 2 * eps)) == 0
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: dz = sp.simplify(sp.diff(zeta_req, eps))
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: '# Worst-case admissible blocked value at eps = 1/zmax.'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: zeta_edge = sp.simplify(zeta_req.subs(eps, 1 / zmax))
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: gap = sp.simplify(zmax - zeta_edge)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: assert sp.simplify(gap_factored - 3 * zmax * (zmax - 1) / (3 * zmax - 2)) == 0
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: '# zeta_max^(F1) is an external carry-forward; not derived in this stage.'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: zmax_F1 = sp.N('2.46752922945601')
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: zeta_edge_F1 = sp.N(zeta_edge.subs(zmax, zmax_F1), 30)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: gap_F1 = sp.N(zmax_F1 - zeta_edge_F1, 30)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: '# Numeric pin (matches Mathematica''s expectApprox targets):'
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: zeta_edge_F1_target = sp.Float('0.456730991107963169017835980412', 30)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: assert abs(zeta_edge_F1 - zeta_edge_F1_target) < sp.Float('1e-15', 30)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: print('zeta_req(eps) =', zeta_req)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: print('d zeta_req / d eps =', dz)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: print('zeta_edge =', zeta_edge)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

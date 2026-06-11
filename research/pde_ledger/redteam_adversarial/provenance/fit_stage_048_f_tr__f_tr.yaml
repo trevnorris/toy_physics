@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_048_f_tr
+parameter_name: F_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_048_f_tr__phase_b__f_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 048
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 114
+  role: notes_stage
+  excerpt: '`F_tr(xi,delta;R)`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 124
+  role: notes_stage
+  excerpt: '`F_tr(0,delta;R) = 1,`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 126
+  role: notes_stage
+  excerpt: '`lim_(xi -> 1^-) F_tr(xi,delta;R) = +infinity.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 138
+  role: notes_stage
+  excerpt: '`F_tr(xi_req,delta;R_tr) = R_target.`'
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: F_tr = sp.simplify(
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: expect_zero("F_tr(xi=0)-1", sp.simplify(F_tr.subs(xi, 0) - 1))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("limit xi->1^- of F_tr =", sp.limit(F_tr, xi, 1, dir="-"))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: soft_coeff = sp.simplify(sp.limit((1 - xi) * F_tr, xi, 1, dir="-"))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("softening coefficient for F_tr =", soft_coeff)
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '"(1-xi) F_tr softening coefficient",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

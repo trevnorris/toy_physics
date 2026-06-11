@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage_249_r_int
+parameter_name: R_int
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_249_r_int__phase_b__r_int.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '249'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_249.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: The minimal orientation closure introduces \(\sigma=+1\) for aligned and \(\sigma=-1\) for anti-aligned, with
+- path: paper/stages/stage_249.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: Over a common interval,
+- path: paper/stages/stage_249.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage249-integrated-ratio}
+- path: paper/stages/stage_249.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: R_{\rm int}
+- path: paper/stages/stage_249.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \bar\alpha_h=\frac{R_{\rm int}-1}{R_{\rm int}+1}.
+- path: paper/stages/stage_249.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: (R_{\rm int},\alpha_{\rm pk},\bar\alpha_h)
+- path: paper/stages/stage_249.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: 'The status is deliberately limited: this proves a hidden-channel unloading preference inside the declared closure,
+    not intrinsic spin or a Pauli-sector theorem.'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: This stage is **diagnostic rather than constitutive**.  It does not change the scalar event chain from Stage 248,
+    and it does not upgrade the aligned-vs-anti-aligned comparison into a theorem about microscopic spin support.  It attaches
+    an unresolved-helicity export ledger to the already-compiled crossing branch.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 43
+  role: notes_stage
+  excerpt: '> on the already-compiled dynamic crossing branch, how much unresolved / transverse-structure helicity is exported
+    into the hidden sector, and how does that export differ between the aligned and anti-aligned reduced orientation closures?'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: 2. Stage 248 already supplied the dynamic event chain and the same turning-point diagnostics used in the Session-II
+    run.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: '- the subbarrier turning points move relative to Coulomb,'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: '- and the turning-point branch carries the diagnostics'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 75
+  role: notes_stage
+  excerpt: Stage 249 turns that statement into an auditable reduced compiler.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: '## 2. Volume-integrated event-chain diagnostic attached to Stage 248'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: Let `\mathcal V_{\rm br}` be the reduced brane control region used to monitor the event chain.  Define the integrated
+    unresolved helicity
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: \int_{\mathcal V_{\rm br}} h_{\rm sub}(\mathbf x,t;E)\,d^3x.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: Integrating the exact local equation gives
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 162
+  role: notes_stage
+  excerpt: \oint_{\partial\mathcal V_{\rm br}} \mathbf F_{h,{\rm sub}}\cdot d\mathbf S,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 166
+  role: notes_stage
+  excerpt: \int_{\mathcal V_{\rm br}}\overline{\mathbf E'\cdot\mathbf B'}\,d^3x.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 173
+  role: notes_stage
+  excerpt: The Stage-248 turning-point tags
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 188
+  role: notes_stage
+  excerpt: Introduce the reduced orientation label
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 207
+  role: notes_stage
+  excerpt: Then the integrated export rate is exactly of the form
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 285
+  role: notes_stage
+  excerpt: '## 4. Exact peak and integrated ratio compilers'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 289
+  role: notes_stage
+  excerpt: At any common reference point on the same dynamic path,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 321
+  role: notes_stage
+  excerpt: '### 4.2 Integrated ratio on a common event interval'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: Define the integrated exported unresolved helicity over a common event interval `I_E` on the same crossing branch,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 328
+  role: notes_stage
+  excerpt: \int_{I_E}\dot H_{{\rm sub},\sigma}(t;E)\,dt.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 336
+  role: notes_stage
+  excerpt: 2\int_{I_E}\Gamma_1(t;E)\,dt,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 341
+  role: notes_stage
+  excerpt: 2\int_{I_E}\Gamma_0(t;E)\,dt.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: \frac{\int_{I_E}\Gamma_1(t;E)\,dt}{\int_{I_E}\Gamma_0(t;E)\,dt}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 354
+  role: notes_stage
+  excerpt: Then the integrated ratio obeys the exact same Möbius form
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 358
+  role: notes_stage
+  excerpt: R_{\rm int}(E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: \frac{R_{\rm int}(E)-1}{R_{\rm int}(E)+1}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: Any common overall export scale, including the Session-II parameter \(\eta_h\), multiplies both \(\mathcal H_+\)
+    and \(\mathcal H_-\) equally and therefore cancels out of \(R_{\rm int}\).  So the aligned-vs-anti-aligned preference
+    is a pure asymmetry diagnostic rather than a statement about the absolute size of the hidden-channel source.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 392
+  role: notes_stage
+  excerpt: R_{\rm int}(E).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: So the benchmark may be checked either by integrated export or by final unresolved-helicity load.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 402
+  role: notes_stage
+  excerpt: The Session-II benchmark used the same reduced path family already compiled in Stage 248, with turning-point tags
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 458
+  role: notes_stage
+  excerpt: '### 5.2 Integrated / final-ratio reconstruction'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 460
+  role: notes_stage
+  excerpt: From the reported integrated ratio,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 463
+  role: notes_stage
+  excerpt: R_{\rm int}\approx 4.10920923,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

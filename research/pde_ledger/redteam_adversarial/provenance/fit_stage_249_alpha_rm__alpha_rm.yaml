@@ -1,0 +1,214 @@
+schema_version: 1
+candidate_id: fit_stage_249_alpha_rm
+parameter_name: alpha_rm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_249_alpha_rm__phase_b__alpha_rm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '249'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_249.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: =\Gamma_0(1+\sigma\alpha_h),
+- path: paper/stages/stage_249.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \alpha_h=\frac{\Gamma_1}{\Gamma_0}.
+- path: paper/stages/stage_249.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: =\frac{1+\alpha_h}{1-\alpha_h},
+- path: paper/stages/stage_249.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: \alpha_h=\frac{R_{\rm inst}-1}{R_{\rm inst}+1}.
+- path: paper/stages/stage_249.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: =\frac{1+\bar\alpha_h}{1-\bar\alpha_h},
+- path: paper/stages/stage_249.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \bar\alpha_h=\frac{R_{\rm int}-1}{R_{\rm int}+1}.
+- path: paper/stages/stage_249.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: (R_{\rm int},\alpha_{\rm pk},\bar\alpha_h)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: 4. and the Session-II benchmark specialization recorded in the barrier-session write-up.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: This stage is **diagnostic rather than constitutive**.  It does not change the scalar event chain from Stage 248,
+    and it does not upgrade the aligned-vs-anti-aligned comparison into a theorem about microscopic spin support.  It attaches
+    an unresolved-helicity export ledger to the already-compiled crossing branch.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 73
+  role: notes_stage
+  excerpt: '> aligned spins export more subscale helicity than anti-aligned ones on the chosen mixed-sector closure.'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: are therefore carried here only as path labels for the benchmark branch.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 229
+  role: notes_stage
+  excerpt: \alpha_h(t;E):=\frac{\Gamma_1(t;E)}{\Gamma_0(t;E)}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 239
+  role: notes_stage
+  excerpt: \Gamma_0(t;E)\bigl[1+\sigma\,\alpha_h(t;E)\bigr].
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 251
+  role: notes_stage
+  excerpt: \bigl|\alpha_h(t;E)\bigr|<1.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 261
+  role: notes_stage
+  excerpt: \alpha_h(t;E)>0.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: So the entire aligned-vs-anti-aligned comparison collapses to the sign and size of one reduced scalar \(\alpha_h\).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 297
+  role: notes_stage
+  excerpt: \frac{1+\alpha_h(t;E)}{1-\alpha_h(t;E)}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 305
+  role: notes_stage
+  excerpt: \alpha_h(t;E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: \frac{1+\alpha_{\rm pk}}{1-\alpha_{\rm pk}},
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 318
+  role: notes_stage
+  excerpt: \alpha_{\rm pk}:=\alpha_h(t_{\rm pk};E).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 348
+  role: notes_stage
+  excerpt: \bar\alpha_h(E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: \frac{1+\bar\alpha_h(E)}{1-\bar\alpha_h(E)}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: \bar\alpha_h(E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: So the benchmark may be checked either by integrated export or by final unresolved-helicity load.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 400
+  role: notes_stage
+  excerpt: '## 5. Session-II benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 402
+  role: notes_stage
+  excerpt: The Session-II benchmark used the same reduced path family already compiled in Stage 248, with turning-point tags
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 449
+  role: notes_stage
+  excerpt: \alpha_{\rm pk}
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: Thus the aligned branch carries about two-thirds of the instantaneous export asymmetry scale at the benchmark peak,
+    while the anti-aligned branch still remains positive because \(|\alpha_{\rm pk}|<1\).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: \bar\alpha_h
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 486
+  role: notes_stage
+  excerpt: which matches the integrated ratio to displayed precision.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 487
+  role: notes_stage
+  excerpt: So the benchmark is consistent with equal-start bookkeeping for the two branches.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 489
+  role: notes_stage
+  excerpt: '### 5.3 Exact interpretation of the benchmark inequalities'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 491
+  role: notes_stage
+  excerpt: The benchmark therefore satisfies
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: 0<\bar\alpha_h\approx 0.60855<\alpha_{\rm pk}\approx 0.66367<1.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 512
+  role: notes_stage
+  excerpt: '## 6. Why this stage is diagnostic rather than a spin theorem'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 521
+  role: notes_stage
+  excerpt: is only the Session-II **orientation closure index** carried by the mixed/vortical diagnostic.  It is not yet a
+    derived microscopic spin quantum number.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 525
+  role: notes_stage
+  excerpt: '> on the Stage-248 event chain and within the declared reduced mixed-sector closure, the aligned orientation label
+    produces a larger unresolved-helicity export than the anti-aligned label whenever the reduced asymmetry scalar satisfies
+    \(0<\alpha_h<1\).'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 527
+  role: notes_stage
+  excerpt: It does **not** yet prove intrinsic spin-`1/2`, a microscopic Pauli sector, or a completed spin-support theorem
+    of the parent defect ontology.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 540
+  role: notes_stage
+  excerpt: 4. the Session-II benchmark lies strictly inside the “both branches export, aligned dominates” regime,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 541
+  role: notes_stage
+  excerpt: 5. and the comparison is a **hidden-channel unloading diagnostic**, not yet a theorem of microscopic spin support.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    - paper/stages/stage_249.tex
+    - research/pde_ledger/paper/stages/stage_249.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+    - paper/stages/stage_249.tex
+    - research/pde_ledger/paper/stages/stage_249.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

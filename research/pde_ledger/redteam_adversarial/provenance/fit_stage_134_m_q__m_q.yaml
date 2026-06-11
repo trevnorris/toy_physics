@@ -1,0 +1,100 @@
+schema_version: 1
+candidate_id: fit_stage_134_m_q
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_134_m_q__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '134'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_134.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: First explicit reduction gives \(\Pi=M_s+M_q\mathcal S_q(\Pi)\).
+- path: paper/stages/stage_134.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Outlet consistency of the gain pair \((M_s,M_q)\) is verified at Stage~\ref{stage:135} (outlet-consistent
+    mouth closure); carried forward here.
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 37
+  role: notes_stage
+  excerpt: M_q:=\frac{L\,H_qG_q}{\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 43
+  role: notes_stage
+  excerpt: \Pi = M_s + M_q\,\mathcal S_q(\Pi),
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 64
+  role: notes_stage
+  excerpt: problem in the two gains \(M_s\) and \(M_q\).
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 79
+  role: notes_stage
+  excerpt: M_s = \Pi_* - M_q\,\mathcal S_q(\Pi_*).
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 92
+  role: notes_stage
+  excerpt: M_s \approx 1.50882951349316 - 0.658075937605428\,M_q.
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 98
+  role: notes_stage
+  excerpt: '- if the mixed localized-Maxwell lane is mouth-localizing (\(M_q>0\)),'
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 100
+  role: notes_stage
+  excerpt: '- if the mixed lane is de-localizing (\(M_q<0\)),'
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 134
+  role: notes_stage
+  excerpt: \Pi = M_s + M_q\,\mathcal S_q(\Pi),
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 140
+  role: notes_stage
+  excerpt: M_s \approx 1.50882951349316 - 0.658075937605428\,M_q.
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 145
+  role: notes_stage
+  excerpt: 'free mouth slope: it is just the signed gain pair \((M_s,M_q)\).'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: M_s, M_q = sp.symbols("M_s M_q", real=True)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: Pi_eq = sp.simplify(M_s + M_q * S_q)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: 'print("Canonical gain line: M_s = Pi_star - S_q(Pi_star) M_q")'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: sp.pprint(sp.N(Pi_star - S_star*M_q, 30))
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '#   M_s = Pi_* - S_q(Pi_*)*M_q'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: '# outlet consistency of the gain pair (M_s, M_q) -- is verified downstream at'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

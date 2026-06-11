@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage_044_b_cont
+parameter_name: B_cont
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_044_b_cont__phase_b__b_cont.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '044'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_044.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 044]{Stage 044: Continuum-Selected Rank--2 Closure and Quadratic Branch Equation}'
+- path: paper/stages/stage_044.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~044 turns the abstract rank--2 branch into a continuum-selected branch point.  The physical
+    softening depth is no longer free; it is selected by an exact quadratic.}
+- path: paper/stages/stage_044.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage044_continuum_selected_rank2_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage044_continuum_selected_rank2_mathematica_audit.txt}.}'
+- path: paper/stages/stage_044.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \xi^2+B_{\rm cont}\xi+C_{\rm cont}=0},
+- path: paper/stages/stage_044.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage044-Bcont}
+- path: paper/stages/stage_044.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: B_{\rm cont}
+- path: paper/stages/stage_044.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage044-Ccont}
+- path: paper/stages/stage_044.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: C_{\rm cont}
+- path: paper/stages/stage_044.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=F_{\rm cont}(\xi_{\rm phys})}.
+- path: paper/stages/stage_044.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The continuum-selected quadratic \eqref{eq:app-stage044-quadratic} and normalization gate \eqref{eq:app-stage044-normalization-gate}.}
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 044: Continuum-Selected Rank-2 Closure and the Exact Quadratic Branch Equation'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 043 extracted the actual support/BdG loading data from the continuum operator:'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 10
+  role: notes_stage
+  excerpt: That means the Stage-041/042 rank-2 problem is no longer a family of possible closures. The continuum kernel now
+    supplies the data needed to write the **actual physical selected-branch equations**.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 14
+  role: notes_stage
+  excerpt: The main result is that the continuum-selected wall branch is pinned by one exact quadratic equation for the softening
+    depth `xi`, and the 2.5PN normalization test then becomes one exact residual equation evaluated on that root.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 16
+  role: notes_stage
+  excerpt: 'So the selected-branch problem is now no longer “support-tied or tracking?” in the abstract. It is an explicit
+    continuum-selected closure with two exact special surfaces:'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 25
+  role: notes_stage
+  excerpt: '## 1. Exact continuum-selected branch data'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 27
+  role: notes_stage
+  excerpt: Collect the actual continuum outputs from Stages 22 and 26.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 85
+  role: notes_stage
+  excerpt: So the exact continuum-selected branch equation is
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 97
+  role: notes_stage
+  excerpt: The key structural simplification is that the continuum-selected branch equation is exactly quadratic in `xi`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 101
+  role: notes_stage
+  excerpt: '`xi^2 + B_cont xi + C_cont = 0,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 105
+  role: notes_stage
+  excerpt: '`B_cont`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 110
+  role: notes_stage
+  excerpt: '`C_cont`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 117
+  role: notes_stage
+  excerpt: '`= [ - B_cont + sqrt( B_cont^2 - 4 C_cont ) ] / 2,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 119
+  role: notes_stage
+  excerpt: where the `+` branch is selected because it reduces continuously to
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 127
+  role: notes_stage
+  excerpt: So the physical branch is now no longer a search over a continuous family. It is an explicit algebraic root of
+    the continuum kernel data.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 131
+  role: notes_stage
+  excerpt: '## 4. Exact continuum-selected normalization test'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 145
+  role: notes_stage
+  excerpt: Substituting the continuum-selected data gives
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 147
+  role: notes_stage
+  excerpt: '`F_cont(xi)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 151
+  role: notes_stage
+  excerpt: '`  / [ (1 - xi) D_cont(xi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 155
+  role: notes_stage
+  excerpt: '`D_cont(xi)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 161
+  role: notes_stage
+  excerpt: '`R_target = F_cont( xi_phys ).`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 166
+  role: notes_stage
+  excerpt: 2. the normalization residual equation `R_target - F_cont(xi_phys) = 0`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 184
+  role: notes_stage
+  excerpt: So the **minimal** continuum kernel lands on the source-tied Stage-041/042 closure.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 202
+  role: notes_stage
+  excerpt: In that case the continuum-selected branch equation collapses to
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 230
+  role: notes_stage
+  excerpt: in `C_cont`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 238
+  role: notes_stage
+  excerpt: '- and the generic extended continuum kernel sits between them with a genuine positive rank-2 mismatch penalty.'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 240
+  role: notes_stage
+  excerpt: So the physical kernel does not generically choose one of the two Stage-041 extremes. It defines a continuum-selected
+    intermediate closure.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 250
+  role: notes_stage
+  excerpt: '- the actual continuum-selected support direction `R_phi`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 251
+  role: notes_stage
+  excerpt: '- the actual continuum-selected support baseline `M_supp`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 253
+  role: notes_stage
+  excerpt: '- the exact continuum-selected normalization function `F_cont`,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,102 @@
+schema_version: 1
+candidate_id: fit_stage_105_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_105_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '105'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_105.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: paper/stages/stage_105.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+- path: paper/stages/stage_105.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 5
+  role: notes_stage
+  excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 67
+  role: notes_stage
+  excerpt: Matching the \(O(\omega^5)\) coefficient yields
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 72
+  role: notes_stage
+  excerpt: So on the canonical compact passive/outgoing grouped-`P2` DtN branch, the last reduced normalization scalar is
+    fixed exactly.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 74
+  role: notes_stage
+  excerpt: '## General deformed DtN obstruction'
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 98
+  role: notes_stage
+  excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat
+    DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: coefficient inherited from the Stage 104 exact fingerprint.
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: expect_zero("Lambda_2^out series fingerprint", Lambda_out_series - Lambda_out_expected)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_105.tex
+    attempted_sources:
+    - paper/stages/stage_105.tex
+    - research/pde_ledger/paper/stages/stage_105.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    - paper/stages/stage_105.tex
+    - research/pde_ledger/paper/stages/stage_105.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_105.tex
+    attempted_sources:
+    - paper/stages/stage_105.tex
+    - research/pde_ledger/paper/stages/stage_105.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+    - paper/stages/stage_105.tex
+    - research/pde_ledger/paper/stages/stage_105.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

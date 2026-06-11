@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage_037_m_mix
+parameter_name: M_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_037_m_mix__phase_b__m_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '037'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_037.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~037 replaces the abstract selected-mode data from Part~II by closed formulas obtained
+    from a concrete continuum kernel.  It extracts the baseline scalar stiffness \(A\), axial gap \(\Delta K_{\rm ax}\), mixed
+    loading \(\alpha_{\rm mix}\), outgoing normalization numerator \(\beta_0\), dimensionless mixed baseline \(M_{\rm mix}\),
+    and anisotropy ratio \(\delta\).}
+- path: paper/stages/stage_037.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The selected D/N finite-throat geometry from Part~II, the lowest two wall amplitudes, a flat
+    internal \(U\) block, a mixed \(W\) lane, and the normalized overlap vector \(v=(\kappa_0,\kappa_1)^T\) with \(\kappa_0=2\sqrt2/\pi\),
+    \(\kappa_1=-4/(3\pi)\), \(\sigma=\kappa_0^2+\kappa_1^2=88/(9\pi^2)\).}
+- path: paper/stages/stage_037.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0},
+- path: paper/stages/stage_037.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}=\frac{8\alpha_{\rm mix}}{\pi^2A},
+- path: paper/stages/stage_037.tex
+  line: 72
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm mix}
+- path: paper/stages/stage_037.tex
+  line: 87
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 037: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 9
+  role: notes_stage
+  excerpt: '- the mixed baseline `M_mix`,'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 27
+  role: notes_stage
+  excerpt: '`alpha_mix = ( K_U c_(eta W) + c_(UW) c_(eta U) )^2`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 30
+  role: notes_stage
+  excerpt: '`M_mix = 8 alpha_mix / (pi^2 A),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 52
+  role: notes_stage
+  excerpt: '- a mixed `W(s,t)` field representing the `A_w/F_(mu w)/J^w` lane on the same D/N branch.'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 209
+  role: notes_stage
+  excerpt: '`alpha_mix = Chi^2 / ( Omega_U^2 Delta_0 ),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 213
+  role: notes_stage
+  excerpt: '`M_mix = 8 alpha_mix / (pi^2 A),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 242
+  role: notes_stage
+  excerpt: So the static mixed loading is
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 244
+  role: notes_stage
+  excerpt: '`alpha_mix`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 255
+  role: notes_stage
+  excerpt: and the dimensionless mixed baseline is
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 257
+  role: notes_stage
+  excerpt: '`M_mix`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 285
+  role: notes_stage
+  excerpt: '### 6.2 Internal mixed-sector positivity'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 292
+  role: notes_stage
+  excerpt: So the internal `U/W` block must stay below its continuum overmixing threshold.
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 307
+  role: notes_stage
+  excerpt: '- `alpha_mix`,'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 309
+  role: notes_stage
+  excerpt: '- `M_mix`,'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: A, DeltaK_ax, alpha_mix, beta_0, M_mix, delta.
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: subbanner("4. Continuum extraction of A, alpha_mix, beta_0, M_mix, delta")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: alpha_mix = sp.simplify(Chi**2 / (OmegaU2 * Delta0))
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: M_mix = sp.simplify(8 * alpha_mix / (sp.pi**2 * A))
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: alpha_mix_expected = sp.simplify(
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: M_mix_expected = sp.simplify(
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: expect_zero("alpha_mix continuum formula", alpha_mix - alpha_mix_expected)
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: expect_zero("M_mix continuum formula", M_mix - M_mix_expected)
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: print(f"alpha_mix = {alpha_mix_expected}")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: print(f"M_mix     = {M_mix_expected}")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

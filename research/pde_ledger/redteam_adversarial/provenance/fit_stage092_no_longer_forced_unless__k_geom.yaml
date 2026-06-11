@@ -1,0 +1,186 @@
+schema_version: 1
+candidate_id: fit_stage092_no_longer_forced_unless
+parameter_name: K_geom
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage092_no_longer_forced_unless__phase_b__k_geom.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 092
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_092.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~092]{Stage~092: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments}'
+- path: paper/stages/stage_092.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~092 is a geometry-lane firewall ledger step.  Its audit target is the verification output
+    quoted below.}
+- path: paper/stages/stage_092.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier,
+    the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or
+    the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_092.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.txt}.}'
+- path: paper/stages/stage_092.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_092.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: If geometry carries dynamic even moments, the pole fraction becomes \((1+\epsilon_4)/[4(1+\epsilon_2)^2]\).
+- path: paper/stages/stage_092.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 092: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 74 showed that the grouped-`P2` + geometry split forces the `3/4 + 1/4` conservative quadrupole module **if**
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 8
+  role: notes_stage
+  excerpt: '- and the geometry lane is static through `O(omega^4)`.'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 12
+  role: notes_stage
+  excerpt: '> what exactly changes if the geometry lane is **not** purely static, but carries its own `omega^2` and `omega^4`
+    moments?'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 16
+  role: notes_stage
+  excerpt: The main result is that the pole fraction is then no longer fixed to `1/4`.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 27
+  role: notes_stage
+  excerpt: So the `3/4 + 1/4` split is recovered **iff** the geometry lane is static at the relevant orders.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 29
+  role: notes_stage
+  excerpt: This is the cleanest reduced obstruction formula for the next phase.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 33
+  role: notes_stage
+  excerpt: '## 1. Generalized isotropic grouped-`P2` + geometry ansatz'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 35
+  role: notes_stage
+  excerpt: 'Allow the geometry lane to carry its own even moments:'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 57
+  role: notes_stage
+  excerpt: '## 2. Exact branch identity with dynamic geometry'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 68
+  role: notes_stage
+  excerpt: So the geometry-contact term is no longer forced to equal `3 K_pole` unless the dynamic geometry moments vanish.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 76
+  role: notes_stage
+  excerpt: That is the exact obstruction formula.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 82
+  role: notes_stage
+  excerpt: Define the dimensionless geometry-contamination parameters
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 97
+  role: notes_stage
+  excerpt: And therefore the geometry contact fraction is
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 99
+  role: notes_stage
+  excerpt: '`c_geom = 1 - c_pole`.'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 101
+  role: notes_stage
+  excerpt: In the strict static-geometry limit
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 109
+  role: notes_stage
+  excerpt: '`c_geom = 3/4`.'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 111
+  role: notes_stage
+  excerpt: So the `3/4 + 1/4` split is not a generic identity of “grouped-`P2` plus geometry” in the abstract.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 112
+  role: notes_stage
+  excerpt: It is the exact consequence of the **static-geometry** realization.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 118
+  role: notes_stage
+  excerpt: For small geometry contamination,
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 140
+  role: notes_stage
+  excerpt: Stage 74 already showed that the minimal isotropic `3/4 + 1/4` module is forced if the geometry lane is static.
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 144
+  role: notes_stage
+  excerpt: '> the real moving-throat derivation now only needs to answer whether the geometry lane is static through `O(omega^4)`
+    on the natural isotropic branch, or else compute the two contamination numbers `(eps_2, eps_4)`.'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 147
+  role: notes_stage
+  excerpt: If they do not, the contact/pole fractions are still fixed — but by the obstruction formula above rather than by
+    the simple `3/4 + 1/4` split.
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: Derive the exact obstruction formula for the grouped-P2 + geometry split when the
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: geometry lane carries O(omega^2) and O(omega^4) moments.
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: banner("STAGE 092 — DYNAMIC-GEOMETRY OBSTRUCTION")
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: '"static-geometry limit gives 3 K_pole",'
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: cgeom_dimless = sp.simplify(1 - cpole_dimless)
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print("c_geom in (eps2, eps4) variables =", sp.factor(cgeom_dimless))
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("With dynamic geometry contamination,")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

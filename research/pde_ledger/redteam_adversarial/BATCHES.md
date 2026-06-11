@@ -1,13 +1,13 @@
 # Adversarial Audit Status
 
-Generated: 2026-06-11T16:01:58Z
+Generated: 2026-06-11T17:55:43Z
 Project: pde_ledger
 
 Authoritative consult record: `BATCHING_DECISIONS.md`.
 
 | Scope | Counts |
 |---|---|
-| all candidates | scanned=922 |
+| all candidates | provenance_built=31 scanned=891 |
 | dry-run candidates | none |
 | binding verdict fields populated | 0 |
 | dedup canonicals / aliases | canonical=915 aliases=7 alias_groups=6 |
@@ -16,7 +16,7 @@ Authoritative consult record: `BATCHING_DECISIONS.md`.
 
 - Dedup state: 915 canonical entries, 7 aliased entries.
 - Family map: `redteam_adversarial/provenance/_family_map.yaml`
-- Families: 563; singletons: 403; unmapped canonicals: 0.
+- Families: 563; singletons: 404; unmapped canonicals: 0.
 
 Non-singleton family groupings:
 
@@ -61,7 +61,7 @@ Non-singleton family groupings:
 | fam_0140_k_turn | 4 | K_turn | 2.73855812 | 243, 253 |
 | fam_0141_kbar_0 | 3 | Kbar_0 | - | 001, 097 |
 | fam_0145_l_w | 10 | L_W | - | 116, 117, 119, 121, 164, 165 |
-| fam_0146_l_over_a | 14 | L_over_a | 20, 37/20, sp.sqrt(12***2/sp.pi**2-1) | 072, 073, 075, 078, 121, 131, 139, 146, 232 |
+| fam_0146_l_over_a | 13 | L_over_a | 20, 37/20, sp.sqrt(12***2/sp.pi**2-1) | 072, 073, 075, 078, 121, 131, 139, 146, 232 |
 | fam_0147_l_r | 2 | L_r | - | 211, 214 |
 | fam_0149_lambda_0 | 3 | Lambda_0 | 27/20 | 184, 189, 242 |
 | fam_0156_m | 3 | M | - | 222, 228 |
@@ -86,7 +86,7 @@ Non-singleton family groupings:
 | fam_0228_s_can | 6 | S_can | 4.651033550168867, 4.651033550168876 | 155, 158, 163, 168 |
 | fam_0229_s_q | 2 | S_q | - | 134, 150 |
 | fam_0233_s_star | 2 | S_star | - | 152, 155 |
-| fam_0237_sigma0_can | 7 | Sigma0_can | 4.651033550168867, 4.651033550168876 | 155, 156, 158, 163, 168 |
+| fam_0237_sigma0_can | 6 | Sigma0_can | 4.651033550168867, 4.651033550168876 | 155, 156, 158, 163, 168 |
 | fam_0238_sigma0_star | 2 | Sigma0_star | - | 155, 156 |
 | fam_0239_sigma_0 | 3 | Sigma_0 | - | 135, 140, 154 |
 | fam_0251_t_x | 2 | T_X | - | 070, 073 |
@@ -96,7 +96,7 @@ Non-singleton family groupings:
 | fam_0266_u_obs | 2 | U_obs | 0.14313458 | 245 |
 | fam_0268_upsilon_lat | 2 | Upsilon_lat | - | 253 |
 | fam_0269_upsilon_lat_sess | 2 | Upsilon_lat_sess | - | 253 |
-| fam_0274_v_known | 3 | V_known | 1.181909222592 | 222, 223 |
+| fam_0274_v_known | 2 | V_known | 1.181909222592 | 222, 223 |
 | fam_0280_w_wall | 2 | W_wall | - | 066, 070 |
 | fam_0283_xi_1 | 9 | Xi_1 | - | 177, 225, 226, 227, 234, 243, 245 |
 | fam_0285_xi_t | 2 | Xi_T | - | 099, 123 |
@@ -116,7 +116,7 @@ Non-singleton family groupings:
 | fam_0337_c_geom | 3 | c_geom | 73 | 094, 096 |
 | fam_0339_c_pole | 3 | c_pole | 1/4 | 093, 095, 098 |
 | fam_0344_chi_0_star | 2 | chi_0_star | - | 186, 191 |
-| fam_0345_chi_q | 32 | chi_Q | 1, 9 | 100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 192, 194, 195, 196, 197 |
+| fam_0345_chi_q | 30 | chi_Q | 1, 9 | 100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 192, 194, 195, 196, 197 |
 | fam_0347_chi_peak | 2 | chi_peak | - | 250 |
 | fam_0348_chi_raw | 2 | chi_raw | - | 250 |
 | fam_0363_delta | 2 | delta | - | 038, 229 |
@@ -128,7 +128,6 @@ Non-singleton family groupings:
 | fam_0390_epsilon | 3 | epsilon | 1 | 047, 241, 242 |
 | fam_0391_epsilon_2 | 9 | epsilon_2 | - | 091, 092, 093, 094, 095, 096, 097, 098, 099 |
 | fam_0393_epsilon_eta | 3 | epsilon_eta | - | 236, 237, 245 |
-| fam_0394_epsilon_r | 2 | epsilon_r | 1/20 | 073 |
 | fam_0399_f_lat | 4 | f_lat | - | 252, 253 |
 | fam_0406_g_uv | 3 | g_UV | 0.14313458 | 245, 250 |
 | fam_0407_g_frak | 2 | g_frak | - | 165, 167 |
@@ -150,7 +149,7 @@ Non-singleton family groupings:
 | fam_0461_mathcal | 2 | mathcal | - | 186, 253 |
 | fam_0462_mathfrak | 4 | mathfrak | - | 119, 123, 126, 144 |
 | fam_0463_mathfrak_g | 2 | mathfrak_g | - | 119, 120 |
-| fam_0469_mhat_0 | 6 | mhat_0 | 1 | 022, 032, 189, 195 |
+| fam_0469_mhat_0 | 5 | mhat_0 | 1 | 022, 032, 189, 195 |
 | fam_0470_mhat_ang | 2 | mhat_ang | - | 024, 025 |
 | fam_0474_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit | 2 | moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit | - | 252, 253 |
 | fam_0475_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit | 2 | moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit | - | 252, 253 |
@@ -175,13 +174,13 @@ Non-singleton family groupings:
 | fam_0552_zeta_max | 3 | zeta_max | 2.46752922945601, 71 | 082, 084, 098 |
 | fam_0553_zeta_max_f1 | 2 | zeta_max_F1 | - | 098 |
 | fam_0555_zeta_req | 4 | zeta_req | - | 048, 085, 240 |
-| chain_aspect_37_20 | 46 | L_over_a, epsilon_r, eta, g_star, r_F1 | 0.758035078944663, 1.77799353547498, 1/20, 1/4, 20, 37/20, 4.651033550168876, Sqrt[4107-100*Pi^2]/(10*Pi), sp.sqrt(12***2/sp.pi**2-1), sp.sqrt(4107-100*sp.pi**2)/(10*sp.pi), sp.sqrt(sp.Rational(12,1)/sp.pi**2 | 072, 073, 075, 078, 121, 122, 123, 124, 126, 128, 130, 131, 139, 146, 148, 152, 154, 155, 156, 158, 161, 162, 163, 164, 165, 168, 169, 230, 232, 246 |
-| chain_barrier_222_224 | 8 | DeltaV_req, T_quad, V_known, barP0_compat, epsilon_barrier, lambda_20, lambda_21, lambda_22 | 1, 1.181909222592 | 173, 222, 223, 224 |
+| chain_aspect_37_20 | 44 | L_over_a, epsilon_r, eta, g_star, r_F1 | 0.758035078944663, 1.77799353547498, 1/20, 1/4, 20, 37/20, 4.651033550168876, Sqrt[4107-100*Pi^2]/(10*Pi), sp.sqrt(12***2/sp.pi**2-1), sp.sqrt(4107-100*sp.pi**2)/(10*sp.pi), sp.sqrt(sp.Rational(12,1)/sp.pi**2 | 072, 073, 075, 078, 121, 122, 123, 124, 126, 128, 130, 131, 139, 146, 148, 152, 154, 155, 156, 158, 161, 162, 163, 164, 165, 168, 169, 230, 232, 246 |
+| chain_barrier_222_224 | 7 | DeltaV_req, T_quad, V_known, barP0_compat, epsilon_barrier, lambda_20, lambda_21, lambda_22 | 1, 1.181909222592 | 173, 222, 223, 224 |
 | chain_calibration_245_253 | 22 | K_turn, Upsilon_lat, epsilon_eta, f_lat, gamma_lattice_legacy, gamma_lattice_red, lambda_L, m_s, mu_eta | 2.73855812 | 001, 236, 237, 243, 245, 247, 250, 252, 253 |
-| chain_chi_Q_norm | 46 | N_Q, chi_Q, mhat_0, sigma_Q_can, xi_Q | 1, 54/5, 9 | 022, 023, 025, 030, 032, 100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 189, 192, 194, 195, 196, 197, 232 |
-| chain_quad_54_5 | 43 | Gamma_5, N_Q, P0_target, mhat_0 | 1, 38, 54, 54/5 | 019, 021, 022, 023, 025, 030, 032, 038, 097, 099, 100, 102, 104, 106, 177, 189, 193, 195, 197, 222, 223, 225, 232, 251 |
-| chain_sigma0_transport | 11 | Pi_can, S_can, Sigma0_can, T_can | 4.651033550168867, 4.651033550168876 | 155, 156, 157, 158, 163, 168 |
-| chain_wall_action | 35 | K_Sigma, K_eta, P0_target, T_Omega, T_w, mhat_0, mu_eta | 1, 38, 54, 54/5 | 001, 019, 022, 025, 032, 038, 177, 189, 193, 195, 197, 222, 223, 225, 236, 250, 252, 253 |
+| chain_chi_Q_norm | 43 | N_Q, chi_Q, mhat_0, sigma_Q_can, xi_Q | 1, 54/5, 9 | 022, 023, 025, 030, 032, 100, 101, 102, 103, 104, 105, 106, 107, 108, 110, 111, 112, 113, 189, 192, 194, 195, 196, 197, 232 |
+| chain_quad_54_5 | 42 | Gamma_5, N_Q, P0_target, mhat_0 | 1, 38, 54, 54/5 | 019, 021, 022, 023, 025, 030, 032, 038, 097, 099, 100, 102, 104, 106, 177, 189, 193, 195, 197, 222, 223, 225, 232, 251 |
+| chain_sigma0_transport | 10 | Pi_can, S_can, Sigma0_can, T_can | 4.651033550168867, 4.651033550168876 | 155, 156, 157, 158, 163, 168 |
+| chain_wall_action | 34 | K_Sigma, K_eta, P0_target, T_Omega, T_w, mhat_0, mu_eta | 1, 38, 54, 54/5 | 001, 019, 022, 025, 032, 038, 177, 189, 193, 195, 197, 222, 223, 225, 236, 250, 252, 253 |
 
 ## Phase C Batch Assignment
 

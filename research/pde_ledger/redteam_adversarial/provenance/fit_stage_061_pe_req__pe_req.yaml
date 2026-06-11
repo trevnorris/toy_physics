@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_061_pe_req
+parameter_name: Pe_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_061_pe_req__phase_b__pe_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '061'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 11
+  role: notes_stage
+  excerpt: '`Xi_fail = Pe_req / Delta_inf(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Xi_suff = Pe_req / Delta_0(kappa,eta).`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 32
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 34
+  role: notes_stage
+  excerpt: '`G_suff = Pe_req / [ kappa Delta_0(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 40
+  role: notes_stage
+  excerpt: '- only the interval `G_fail < G_micro < G_suff` requires the full root solve;'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 43
+  role: notes_stage
+  excerpt: '`chi_sigma <= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_inf ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 45
+  role: notes_stage
+  excerpt: '`chi_sigma >= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_0 ]`    -> succeed,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 49
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 <= T_X Pe_req / [ chi_sigma L^2 Delta_inf ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 51
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 >= T_X Pe_req / [ chi_sigma L^2 Delta_0 ]`    -> succeed;'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 60
+  role: notes_stage
+  excerpt: '`G_fail ~ Pe_req / kappa,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 62
+  role: notes_stage
+  excerpt: '`G_suff ~ 2 Pe_req / kappa;`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 71
+  role: notes_stage
+  excerpt: '`G_fail^(inf) = Pe_req / [ sqrt(kappa) tanh(sqrt(kappa)) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 73
+  role: notes_stage
+  excerpt: '`G_suff^(inf) = Pe_req / [ 1 - sech(sqrt(kappa)) ];`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 76
+  role: notes_stage
+  excerpt: '`G_fail ~ Pe_req / sqrt(kappa),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 78
+  role: notes_stage
+  excerpt: '`G_suff ~ Pe_req.`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 82
+  role: notes_stage
+  excerpt: '- too-soft support (`kappa << 1`) requires unrealistically large gain,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 83
+  role: notes_stage
+  excerpt: '- a sufficiently compliant mouth makes the sufficiency threshold saturate at an `O(Pe_req)` microscopic gain,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 84
+  role: notes_stage
+  excerpt: '- and only the bounded intermediate band between `G_fail` and `G_suff` still requires the full fixed-point solve.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 118
+  role: notes_stage
+  excerpt: '`Xi_fail = Pe_req / Delta_inf(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 120
+  role: notes_stage
+  excerpt: '`Xi_suff = Pe_req / Delta_0(kappa,eta).`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 124
+  role: notes_stage
+  excerpt: '`G_fail(kappa,eta) = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 126
+  role: notes_stage
+  excerpt: '`G_suff(kappa,eta) = Pe_req / [ kappa Delta_0(kappa,eta) ].`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 144
+  role: notes_stage
+  excerpt: '`chi_sigma <= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_inf(kappa,eta) ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 146
+  role: notes_stage
+  excerpt: '`chi_sigma >= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_0(kappa,eta) ]`    -> succeed.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 150
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 <= T_X Pe_req / [ chi_sigma L^2 Delta_inf(kappa,eta) ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 152
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 >= T_X Pe_req / [ chi_sigma L^2 Delta_0(kappa,eta) ]`    -> succeed.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 178
+  role: notes_stage
+  excerpt: '`G_fail ~ Pe_req / kappa,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 180
+  role: notes_stage
+  excerpt: '`G_suff ~ 2 Pe_req / kappa`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 184
+  role: notes_stage
+  excerpt: 'So a very soft baseline support channel is strongly disfavored: the microscopic gain required for success diverges
+    like `1/kappa`.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 200
+  role: notes_stage
+  excerpt: '`G_fail^(inf)(kappa) = Pe_req / [ sqrt(kappa) tanh(sqrt(kappa)) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 202
+  role: notes_stage
+  excerpt: '`G_suff^(inf)(kappa) = Pe_req / [ 1 - sech(sqrt(kappa)) ].`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 218
+  role: notes_stage
+  excerpt: '`G_fail^(inf) ~ Pe_req / kappa,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 220
+  role: notes_stage
+  excerpt: '`G_suff^(inf) ~ 2 Pe_req / kappa.`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 232
+  role: notes_stage
+  excerpt: '`G_fail^(inf) ~ Pe_req / sqrt(kappa),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 234
+  role: notes_stage
+  excerpt: '`G_suff^(inf) ~ Pe_req.`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 236
+  role: notes_stage
+  excerpt: That means sufficiently strong baseline support stiffness is not itself the main obstacle once the mouth is compliant
+    enough; the sufficiency threshold saturates at an `O(Pe_req)` microscopic gain.
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 261
+  role: notes_stage
+  excerpt: '- and on the best-case compliant branch, success is controlled by whether `G_micro` can reach an order-`Pe_req`
+    value.'
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: kappa, eta, Pe_req = sp.symbols('kappa eta Pe_req', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: Xi_fail = sp.simplify(Pe_req / Delta_inf)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Xi_suff = sp.simplify(Pe_req / Delta0)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,151 @@
+schema_version: 1
+candidate_id: fit_stage038_mhat_p0_fitted_scales
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage038_mhat_p0_fitted_scales__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 038
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_038.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~037 formulas for \(A\), \(M_{\rm mix}\), \(\delta\), and the selected outgoing normalization
+    target.}
+- path: paper/stages/stage_038.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage038-Rtarget}
+- path: paper/stages/stage_038.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{Z_W(1+\rho)^2}}.
+- path: paper/stages/stage_038.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: 'Multiplying \eqref{eq:app-stage038-placement-map} and \eqref{eq:app-stage038-Rtarget} cancels the redistribution
+    variables:'
+- path: paper/stages/stage_038.tex
+  line: 47
+  role: paper_stage_tex
+  excerpt: R_{\rm target}M_{\rm mix}
+- path: paper/stages/stage_038.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The placement map \eqref{eq:app-stage038-placement-map}--\eqref{eq:app-stage038-Rtarget} and
+    product law \eqref{eq:app-stage038-product-law}.}
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 28
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 38
+  role: notes_stage
+  excerpt: '`R_target M_mix = 8 Lambda (1 - eps_W) / pi^2`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 91
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 109
+  role: notes_stage
+  excerpt: '`R_target M_mix`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 115
+  role: notes_stage
+  excerpt: '`R_target M_mix = N_Q^(target) Delta_0 / Omega_U^2.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 139
+  role: notes_stage
+  excerpt: '`d R_target / d eps_eta = - Lambda (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 147
+  role: notes_stage
+  excerpt: '`d R_target / d eps_W = - 2 Lambda (1 - eps_eta) (1 - eps_W) / [ Z_W (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 156
+  role: notes_stage
+  excerpt: '`d R_target / d Z_W = - Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W^2 (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 158
+  role: notes_stage
+  excerpt: So increasing the wall-to-mixed overlap pushes the physical point upward in `M_mix` and downward in `R_target`.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 164
+  role: notes_stage
+  excerpt: '`d R_target / d rho = - 2 Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^3 ].`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 166
+  role: notes_stage
+  excerpt: So on the natural nonvanishing transfer branch `1 + rho > 0`, constructive interference increases `M_mix` and decreases
+    `R_target`, while destructive interference does the opposite.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 183
+  role: notes_stage
+  excerpt: '`R_target M_mix = 8 Lambda (1 - eps_W) / pi^2`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 190
+  role: notes_stage
+  excerpt: At fixed product, the trio `(eps_eta, Z_W, rho)` redistributes the point between `R_target` and `M_mix`.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 205
+  role: notes_stage
+  excerpt: '`R_target = F(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 217
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: R_target = sp.simplify(
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: print(f"R_target  = {R_target}")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: R_dimless = apply_dimless(R_target)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '"R_target - Lambda (1-eps_eta)(1-eps_W)^2 / [Z_W (1+rho)^2]",'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: print(f"R_target(dimless) = {sp.simplify(R_dimless)}")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: expect_zero("R_target M_mix - 8 Lambda (1-eps_W)/pi^2", product - 8 * Lambda * (1 - eps_W) / sp.pi**2)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: print(f"R_target M_mix = {product}")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: print("  R_target decreases with eps_eta, eps_W, Z_W, rho")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 226
+  role: sympy_script
+  excerpt: print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

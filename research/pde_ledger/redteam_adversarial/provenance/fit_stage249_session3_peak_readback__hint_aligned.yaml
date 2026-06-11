@@ -1,0 +1,200 @@
+schema_version: 1
+candidate_id: fit_stage249_session3_peak_readback
+parameter_name: hint_aligned
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage249_session3_peak_readback__phase_b__hint_aligned.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '249'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_249.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_249.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: The minimal orientation closure introduces \(\sigma=+1\) for aligned and \(\sigma=-1\) for anti-aligned, with
+- path: paper/stages/stage_249.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \begin{aligned}
+- path: paper/stages/stage_249.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: \end{aligned}
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 249: Conditional Helicity-Export Diagnostic Compiler on the Dynamic Event Chain and
+    the Aligned-vs-Anti-Aligned Mixed-Sector Closure'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: This stage is **diagnostic rather than constitutive**.  It does not change the scalar event chain from Stage 248,
+    and it does not upgrade the aligned-vs-anti-aligned comparison into a theorem about microscopic spin support.  It attaches
+    an unresolved-helicity export ledger to the already-compiled crossing branch.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 43
+  role: notes_stage
+  excerpt: '> on the already-compiled dynamic crossing branch, how much unresolved / transverse-structure helicity is exported
+    into the hidden sector, and how does that export differ between the aligned and anti-aligned reduced orientation closures?'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 55
+  role: notes_stage
+  excerpt: 3. The barrier-session write-up explicitly states that, inside the chosen reduced mixed-sector closure, both aligned
+    and anti-aligned branches reached contact, while the difference between them was the efficiency of unresolved helicity
+    export rather than the existence of scalar crossing itself.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 73
+  role: notes_stage
+  excerpt: '> aligned spins export more subscale helicity than anti-aligned ones on the chosen mixed-sector closure.'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 186
+  role: notes_stage
+  excerpt: '## 3. Minimal aligned-vs-anti-aligned mixed-sector closure'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: \sigma=+1\;\text{(aligned)},
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: \sigma=-1\;\text{(anti-aligned)}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 255
+  role: notes_stage
+  excerpt: For the aligned branch to dominate instantaneously, it is enough that
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: So the entire aligned-vs-anti-aligned comparison collapses to the sign and size of one reduced scalar \(\alpha_h\).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: Any common overall export scale, including the Session-II parameter \(\eta_h\), multiplies both \(\mathcal H_+\)
+    and \(\mathcal H_-\) equally and therefore cancels out of \(R_{\rm int}\).  So the aligned-vs-anti-aligned preference
+    is a pure asymmetry diagnostic rather than a statement about the absolute size of the hidden-channel source.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: Thus the aligned branch carries about two-thirds of the instantaneous export asymmetry scale at the benchmark peak,
+    while the anti-aligned branch still remains positive because \(|\alpha_{\rm pk}|<1\).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 500
+  role: notes_stage
+  excerpt: 2. The aligned branch exports strictly more than the anti-aligned branch.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 503
+  role: notes_stage
+  excerpt: So the reduced comparison is not “aligned crosses, anti-aligned fails.”
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 506
+  role: notes_stage
+  excerpt: '> both branches can share the same scalar crossing corridor, but the aligned label unloads unresolved repulsive
+    structure more efficiently into the hidden transverse sector.'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 525
+  role: notes_stage
+  excerpt: '> on the Stage-248 event chain and within the declared reduced mixed-sector closure, the aligned orientation label
+    produces a larger unresolved-helicity export than the anti-aligned label whenever the reduced asymmetry scalar satisfies
+    \(0<\alpha_h<1\).'
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 538
+  role: notes_stage
+  excerpt: 2. the aligned-vs-anti-aligned diagnostic is a one-scalar mixed/vortical asymmetry problem,
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 540
+  role: notes_stage
+  excerpt: 4. the Session-II benchmark lies strictly inside the “both branches export, aligned dominates” regime,
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. the aligned/anti-aligned two-state closure and its reduction to one
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: '# 2. Volume-integrated aligned/anti-aligned closure.'
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: section("2. Exact aligned/anti-aligned closure")
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: print("aligned-minus-anti gap=", branch_gap)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: peak_aligned = 281.79830789
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 168
+  role: sympy_script
+  excerpt: peak_antialigned = 56.96878122
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: hint_aligned = 20.58070146
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: hint_antialigned = 5.00843357
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: ratio_peak = peak_aligned / peak_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: ratio_final = hint_aligned / hint_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: peak_difference = peak_aligned - peak_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: final_difference = hint_aligned - hint_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: peak_sum = peak_aligned + peak_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: final_sum = hint_aligned + hint_antialigned
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: print("peak aligned          =", peak_aligned)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 188
+  role: sympy_script
+  excerpt: print("peak anti-aligned     =", peak_antialigned)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: print("H_sub,final aligned   =", hint_aligned)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 192
+  role: sympy_script
+  excerpt: print("H_sub,final anti      =", hint_antialigned)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

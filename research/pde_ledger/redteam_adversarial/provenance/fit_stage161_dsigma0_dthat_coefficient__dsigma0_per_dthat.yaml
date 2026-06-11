@@ -1,0 +1,69 @@
+schema_version: 1
+candidate_id: fit_stage161_dsigma0_dthat_coefficient
+parameter_name: dSigma0_per_dThat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_dsigma0_dthat_coefficient__phase_b__dsigma0_per_dthat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '161'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_161.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_161.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: 'BW_pert = BW.subs({eps_kappa: eps * deps_k, eps_gamma: eps * deps_g, rc: rc_star + eps * drc})'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: dBW = sp.simplify(sp.diff(BW_pert, eps).subs(eps, 0))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: dPi_tan, dSigma0, dS, dThat = sp.symbols("dPi_tan dSigma0 dS dThat", real=True)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: print("Delta_Q in (dSigma0,dS) =", DeltaQ_mouth)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: '# Use dSigma0 ≈ 6.42981496203006 dThat.'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: print("Delta_Q in (dThat,dS) =", DeltaQ_T)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

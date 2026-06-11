@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage_011_b_0
+parameter_name: B_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_011_b_0__phase_b__b_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '011'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: K, B0, Z0slot, N0, Ptarget, S, T = sp.symbols("K B0 Z0slot N0 Ptarget S T", nonzero=True)
+- path: scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: sp.Eq((K - B0 - (Z0slot + eps * z0)) * (T + eps * z4), 3 * (S + eps * z2) ** 2),
+- path: scripts/moving_throat_pde_stage011_projected_maxwell_p2_bridge_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: sp.Eq((N0 + eps * n0) / (K - B0 - (Z0slot + eps * z0)), Ptarget),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

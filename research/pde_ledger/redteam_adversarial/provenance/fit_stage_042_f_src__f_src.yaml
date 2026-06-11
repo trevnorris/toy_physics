@@ -1,0 +1,151 @@
+schema_version: 1
+candidate_id: fit_stage_042_f_src
+parameter_name: F_src
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_042_f_src__phase_b__f_src.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '042'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 145
+  role: notes_stage
+  excerpt: '`F_src(xi,delta;m,R_U)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 148
+  role: notes_stage
+  excerpt: '`  / [ (1 - xi) D_src(xi,delta;m,R_U)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 152
+  role: notes_stage
+  excerpt: '`D_src(xi,delta;m,R_U)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 166
+  role: notes_stage
+  excerpt: '`F_src(xi,delta;m,1) = F_flat(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 182
+  role: notes_stage
+  excerpt: '`n_src = G_flat(xi,delta) - m + eps H_n^(src) + O(eps^2),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 186
+  role: notes_stage
+  excerpt: '`H_n^(src)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 191
+  role: notes_stage
+  excerpt: '`F_src / F_flat = 1 + eps H_F^(src) + O(eps^2),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 195
+  role: notes_stage
+  excerpt: '`H_F^(src)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 224
+  role: notes_stage
+  excerpt: '- Stage 042 gives the new exact source-tied normalization function `F_src`.'
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 4. The source-tied split-U specialization yields the exact function F_src.
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: D_src = sp.simplify((delta + xi - m * lam0 * R_U * (R_U - 1))**2 + lam0 * (xi + m * (R_U - 1))**2)
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: F_src = sp.simplify(a1**2 * b1**2 / ((1 - xi) * D_src**2))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: print("F_src =")
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: sp.pprint(sp.factor(F_src))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: F_src_direct = sp.simplify(
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: expect_zero("source-tied specialization", sp.simplify(F_src_direct - F_src))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: expect_zero("F_src(R_U=1) - F_flat", sp.simplify(F_src.subs(R_U, 1) - F_flat))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: n_src = sp.simplify(
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: H_n_src = sp.simplify(sp.diff(n_src, R_U).subs(R_U, 1))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: print("H_n^(src) =")
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: sp.pprint(sp.factor(H_n_src))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: expect_zero("H_n^(src) - expected", H_n_src - H_n_expected)
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: F_ratio = sp.simplify(F_src / F_flat)
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: H_F_src = sp.simplify(sp.diff(F_ratio, R_U).subs(R_U, 1))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: print("H_F^(src) =")
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: sp.pprint(sp.factor(H_F_src))
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: expect_zero("H_F^(src) - expected", H_F_src - H_F_expected)
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 172
+  role: sympy_script
+  excerpt: '"n_src - linear expansion",'
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: sp.expand(sp.series(n_src.subs(R_U, R_series), eps, 0, 2).removeO() - n_linear),
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: '"F_src/F_flat - linear expansion",'
+- path: scripts/moving_throat_pde_stage042_rank2_selected_mode_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: print("   yields the exact source-tied normalization function F_src(xi,delta;m,R_U).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

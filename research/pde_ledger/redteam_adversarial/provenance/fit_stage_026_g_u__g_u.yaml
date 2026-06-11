@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_026_g_u
+parameter_name: G_U
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_026_g_u__phase_b__g_u.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '026'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_026.tex
+  line: 78
+  role: paper_stage_tex
+  excerpt: G_U=\lambda_U,
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 160
+  role: notes_stage
+  excerpt: '`G_U = lambda_U I_(eta,u)`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 170
+  role: notes_stage
+  excerpt: '`G_U = lambda_U`,'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: (C, G_U, G_W, R, Delta, Q, P, B0, Z0, N0, D0),
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: GU = sp.simplify(lambda_U * I_eta_u)
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: Q = sp.simplify(GU**2 * Omega_W**2 + 2 * GU * GW * R + GW**2 * Omega_U**2)
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: P = sp.simplify(Omega_U**2 * GW + R * GU)
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: print("G_U   =", GU)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

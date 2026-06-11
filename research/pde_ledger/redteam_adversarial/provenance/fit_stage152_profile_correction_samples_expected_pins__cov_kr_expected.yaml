@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage152_profile_correction_samples_expected_pins
+parameter_name: cov_KR_expected
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_profile_correction_samples_expected_pins__phase_b__cov_kr_expected.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '152'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_152.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check that first-order profile deformations are centered before covariance formulas are used.
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 22
+  role: notes_stage
+  excerpt: the exact weighted residual covariances are
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 25
+  role: notes_stage
+  excerpt: \operatorname{Cov}_*(c,R_*)\approx 0.0648069687666328,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 30
+  role: notes_stage
+  excerpt: \operatorname{Cov}_*(K_q,R_*)\approx 0.0388718368650403.
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: 'def cov(f, h):'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Cov_cR = cov(c_kernel, R_star)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: Cov_SR = cov(S_q_kernel, R_star)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: delta_g = -Cov_cR
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: delta_S = -Cov_SR
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: deltaPi = Cov_cR / gprime_star
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print("Cov_*(c,R_*)      =", Cov_cR)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("Cov_*(K_q,R_*)    =", Cov_SR)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: expect_close("delta g from sigma1-linearized covariance check",
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage223_barrier_benchmark_and_eta_window
+parameter_name: V_known
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage223_barrier_benchmark_and_eta_window__phase_b__v_known.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '223'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 331
+  role: notes_stage
+  excerpt: V_{\mathrm{known}}(1)\approx 1.181909222592,
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: from typing import Iterable, Sequence
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 294
+  role: sympy_script
+  excerpt: '# Barrier benchmark thresholds'
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 296
+  role: sympy_script
+  excerpt: V_known = sp.Float('1.181909222592')
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 298
+  role: sympy_script
+  excerpt: DeltaV_req = V_known - barrier_floor
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 404
+  role: sympy_script
+  excerpt: print('10% loss benchmark:')
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 409
+  role: sympy_script
+  excerpt: print('30% loss benchmark:')
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,213 @@
+schema_version: 1
+candidate_id: fit_stage_236_epsilon_eta
+parameter_name: epsilon_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_236_epsilon_eta__phase_b__epsilon_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '236'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_236.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the dependent triple $(T_U,K_\eta^{(\rm eff)},\mu_W)$ and the same-free-quintuple graph
+    section.}
+- path: paper/stages/stage_236.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation computes the dependent-plane compiler, projectors $P_{\rm nt}^{\rm
+    dep}$ and $P_\eta^{\rm dep}$, the equal-drift dressing ray, and the static-only restoration direction.}
+- path: paper/stages/stage_236.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 10
+  role: notes_stage
+  excerpt: '> it identifies the exact **microscopic carrier** of the static-blind residue `q_eta` once the first static same-charge
+    strip has already been cleared.'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: '> (\Delta_T,\Delta_{K_\eta},\Delta_\mu)'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 19
+  role: notes_stage
+  excerpt: '> -q_\eta\,(0,1,1),'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: '> So after the static gate is cleared, the unresolved same-charge orbit defect is exactly an **equal-drift `K_\eta`–`\mu`
+    dressing shift at fixed `T_U`**.'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: (\delta\ln R_{\rm target},\,\delta\ln\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 38
+  role: notes_stage
+  excerpt: (q_{\rm nt},q_\eta)=(\Xi_1,E_1),
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: q_\eta=\delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 57
+  role: notes_stage
+  excerpt: '> what is the exact microscopic dependent-coordinate image of the rigid-mouth packet \((q_{\rm nt},q_\eta)\)?'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 71
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 82
+  role: notes_stage
+  excerpt: -1 & -c_\eta\\
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 93
+  role: notes_stage
+  excerpt: q_{\rm nt}=-R_1-c_\eta E_1=\Xi_1,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: q_\eta=E_1.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 102
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}^{(q)}=-q_\eta,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: \Delta_\mu^{(q)}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 116
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}^{(q)}\\
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 123
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}^{(q)}=-q_\eta,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: \Delta_\mu^{(q)}=q_{\rm nt}-q_\eta.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: -1 & -\dfrac{1}{1-\epsilon_{\eta,*}}
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 184
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}^{(q)}=-E_1=-\delta\ln\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: -R_1-\frac{1}{1-\epsilon_{\eta,*}}E_1
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 194
+  role: notes_stage
+  excerpt: -\frac{1}{1-\epsilon_{\eta,*}}\delta\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 201
+  role: notes_stage
+  excerpt: '> The entire failure is carried only by the `(K_\eta,\mu)` plane.'
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 222
+  role: notes_stage
+  excerpt: q_{\rm nt}=\Delta_\mu^{(q)}-\Delta_{K_\eta}^{(q)},
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 224
+  role: notes_stage
+  excerpt: q_\eta=-\Delta_{K_\eta}^{(q)}.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 235
+  role: notes_stage
+  excerpt: P_\eta^{\rm dep}:=
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: P_\eta^{\rm dep}=
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 262
+  role: notes_stage
+  excerpt: (P_\eta^{\rm dep})^2=P_\eta^{\rm dep},
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: P_{\rm nt}^{\rm dep}P_\eta^{\rm dep}=P_\eta^{\rm dep}P_{\rm nt}^{\rm dep}=0,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 268
+  role: notes_stage
+  excerpt: P_{\rm nt}^{\rm dep}+P_\eta^{\rm dep}
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 281
+  role: notes_stage
+  excerpt: \mathbf y_{\rm rm}=\mathbf y_{\rm nt}+\mathbf y_\eta,
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 285
+  role: notes_stage
+  excerpt: \mathbf y_\eta:=P_\eta^{\rm dep}\mathbf y_{\rm rm}.
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: \mathbf y_\eta=
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 299
+  role: notes_stage
+  excerpt: -q_\eta
+- path: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+  line: 311
+  role: notes_stage
+  excerpt: '- `y_eta`: the equal-drift dressing ray that remains after that strip is cleared.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    - paper/stages/stage_236.tex
+    - research/pde_ledger/paper/stages/stage_236.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage236_rigid_mouth_microscopic_dependent_plane_projectors_equal_drift_dressing_ray_and_static_only_restoration_gap_sympy_audit.md
+    - paper/stages/stage_236.tex
+    - research/pde_ledger/paper/stages/stage_236.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

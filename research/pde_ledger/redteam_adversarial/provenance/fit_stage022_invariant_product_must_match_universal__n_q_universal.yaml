@@ -1,0 +1,72 @@
+schema_version: 1
+candidate_id: fit_stage022_invariant_product_must_match_universal
+parameter_name: N_Q_universal
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_invariant_product_must_match_universal__phase_b__n_q_universal.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{The bridge formulas are \StatusExactClosure{} inside the grouped response normalization convention.  The
+    final equality to the universal normalization is a \StatusOpen{} branch-realization test.}
+- path: paper/stages/stage_022.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+    one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+    \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+    the exact invariant product that must match the universal quadrupole normalization.}
+- path: paper/stages/stage_022.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+    transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\) fingerprint,
+    and the grouped trace/anomaly map.}
+- path: paper/stages/stage_022.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- path: paper/stages/stage_022.tex
+  line: 117
+  role: paper_stage_tex
+  excerpt: \paragraph{5. Universal normalization product.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 16
+  role: notes_stage
+  excerpt: '> lift the one-lane Stage-021 result to the grouped real `20/21/22` bundle, convert the Stage-003 and Stages-004--021
+    conservative operator moments into the normalized grouped-response moments used by the 2.5PN package, and isolate the
+    exact normalization product that still has to hit the universal quadrupole target.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 256
+  role: notes_stage
+  excerpt: The universal GR quadrupole target is
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 309
+  role: notes_stage
+  excerpt: At the universal point-particle 2.5PN level, the only internal quantity that matters is the isotropic static outgoing
+    prefactor `P_0 = N_0 / D_0` (or `mhat_0^2 P_0` in invariant form).
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 334
+  role: notes_stage
+  excerpt: 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

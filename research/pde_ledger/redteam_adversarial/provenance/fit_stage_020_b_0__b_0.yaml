@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_020_b_0
+parameter_name: B_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_020_b_0__phase_b__b_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '020'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_020.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: -\frac{27(B_{41}+Z_{41})}{K_\Sigma-B_0-Z_0}.
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: B01, B21, B41 = sp.symbols('B01 B21 B41')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: KSigma, B0, Z0 = sp.symbols('KSigma B0 Z0', nonzero=True)
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: D0 = KSigma - B0 - Z0
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: D01 = dKSigma - B01 - Z01
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: 'Xi1_comp = sp.simplify(Xi1.subs(sol).subs({D0: KSigma - B0 - Z0}))'
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: closed_dK = B01 + Z01 + 27 * (B41 + Z41)
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: assert_zero('dKSigma closed form', sol[dKSigma] - (B01 + Z01 + 27*(B41 + Z41)))
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: assert_zero('compensated Xi1', Xi1_comp - (N01/N0 - 27*(B41 + Z41)/(KSigma - B0 - Z0)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

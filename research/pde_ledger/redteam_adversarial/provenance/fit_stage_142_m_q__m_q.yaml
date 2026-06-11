@@ -1,0 +1,43 @@
+schema_version: 1
+candidate_id: fit_stage_142_m_q
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_142_m_q__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '142'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_142.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 16
+  role: notes_stage
+  excerpt: M_q=-M_s\,\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2},
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 20
+  role: notes_stage
+  excerpt: \Pi=M_s+M_q\,\mathcal S_q(\Pi).
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 36
+  role: notes_stage
+  excerpt: R_q(\Pi):=-\frac{M_q}{M_s}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

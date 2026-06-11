@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage225_stage224_xi_budgets
+parameter_name: B_xi_both_10
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage225_stage224_xi_budgets__phase_b__b_xi_both_10.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '225'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: for the `10%`-loss “both wall-like poles survive” criterion, and
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 517
+  role: notes_stage
+  excerpt: '### `10%`-loss, both wall-like poles survive'
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 527
+  role: notes_stage
+  excerpt: '### `30%`-loss, both wall-like poles survive'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 399
+  role: sympy_script
+  excerpt: '"both_10": 0.367930328492646,'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 401
+  role: sympy_script
+  excerpt: '"both_30": 2.94889585703134,'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 406
+  role: sympy_script
+  excerpt: assert_close(t_budgets["both_10"], 0.270485102839510)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 408
+  role: sympy_script
+  excerpt: assert_close(t_budgets["both_30"], 2.16788978070904)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

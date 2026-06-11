@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage_140_m_s
+parameter_name: M_s
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_140_m_s__phase_b__m_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '140'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_140.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Same-layer susceptibility gives \(\Sigma_0=M_s=(20/9)\widehat T_m^2\).
+- path: paper/stages/stage_140.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 9
+  role: notes_stage
+  excerpt: overall shell gain scale `\Sigma_0=M_s`.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 48
+  role: notes_stage
+  excerpt: \Sigma_0=M_s=\frac{L g_s^2}{K_s\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 81
+  role: notes_stage
+  excerpt: M_s = \frac{20}{9}\widehat T_m^2,
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 94
+  role: notes_stage
+  excerpt: M_s^{\rm nat,*}\approx 1.66854252965624,
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 100
+  role: notes_stage
+  excerpt: M_s^{\rm comp,*}\approx 1.80594111095636,
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 109
+  role: notes_stage
+  excerpt: =\sqrt{\frac{9M_s^{\rm nat,*}}{20}}
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 116
+  role: notes_stage
+  excerpt: =\sqrt{\frac{9M_s^{\rm comp,*}}{20}}
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 139
+  role: notes_stage
+  excerpt: M_s=\Sigma_0=\frac{20}{9}\widehat T_m^2.
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: Ms_nat = sp.N('1.6685425296562397', 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: Ms_comp = sp.N('1.80594111095636', 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: That_nat = sp.N(sp.sqrt(9*Ms_nat/20), 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: That_comp = sp.N(sp.sqrt(9*Ms_comp/20), 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

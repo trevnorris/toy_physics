@@ -1,0 +1,132 @@
+schema_version: 1
+candidate_id: fit_stage_253_k_corr
+parameter_name: K_corr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_253_k_corr__phase_b__k_corr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: T_1T=\mathcal K_{\rm corr},
+- path: paper/stages/stage_253.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: T_{\max}=\frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+- path: paper/stages/stage_253.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: =\frac{s_c\mathcal K_{\rm corr}}{t_*}.
+- path: paper/stages/stage_253.tex
+  line: 125
+  role: paper_stage_tex
+  excerpt: \frac{\mathcal K_{\rm corr}}{Tt_{\rm cross}^{\rm phys}}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: T_1T=\mathcal K_{\rm corr},
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: So Stage 253 does not make the corridor stronger. It makes the Stage-252 microscopic compiler **physically calibratable
+    and screenable**.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: '- what interstitial stiffness corresponds to the reduced barrier force,'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: '- if the microscopic event-equivalent export rate is already the correct coarse lattice turnover, then \(\Upsilon_{\rm
+    lat}=1\),'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 432
+  role: notes_stage
+  excerpt: \boxed{T_1 T = \mathcal K_{\rm corr}.}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 443
+  role: notes_stage
+  excerpt: \frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 445
+  role: notes_stage
+  excerpt: \frac{s_c\,\mathcal K_{\rm corr}}{t_*}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 457
+  role: notes_stage
+  excerpt: 0.548938655\,\frac{\mathcal K_{\rm corr}}{t_*}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 460
+  role: notes_stage
+  excerpt: 'So the Korringa side is the cleanest of the three condensed-matter companions: once \(t_*\) and the material-specific
+    \(\mathcal K_{\rm corr}\) are fixed, the ceiling temperature follows immediately.'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 518
+  role: notes_stage
+  excerpt: \frac{\mathcal K_{\rm corr}}{T\,t_{\rm cross}^{\rm phys}}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 559
+  role: notes_stage
+  excerpt: Once \(t_*\) and \(\mathcal K_{\rm corr}\) are fixed, the aligned-spin survival condition becomes the exact ceiling
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 560
+  role: notes_stage
+  excerpt: \(T_{\max}=\mathcal K_{\rm corr}/t_{\rm cross}^{\rm phys}\).
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 576
+  role: notes_stage
+  excerpt: 3. the material-dependent constants \(\zeta_{\rm ep}\) and \(\mathcal K_{\rm corr}\),
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 579
+  role: notes_stage
+  excerpt: 'So the correct reading is:'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 584
+  role: notes_stage
+  excerpt: That is why this stage is correctly a **companion** to the core PDE ladder rather than a theorem stage of the ladder
+    itself.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 594
+  role: notes_stage
+  excerpt: 3. Insert candidate-host values of \(\lambda_{\rm ep}\omega_D\), effective interstitial stiffness, and \(\mathcal
+    K_{\rm corr}\).
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: Kcorr, T = sp.symbols("K_corr T", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: T_max = sp.simplify(Kcorr / t_cross_phys)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: T_max_expected = sp.simplify(s_c * Kcorr / t_star)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: assert sp.simplify(Pi_T - Kcorr / (T * t_cross_phys)) == 0
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: print(f"T_max coeff           = {T_max_coeff_num:.9f} * K_corr / t_*")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

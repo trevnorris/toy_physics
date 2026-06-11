@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_175_sigma_n
+parameter_name: Sigma_N
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_175_sigma_n__phase_b__sigma_n.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '175'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 7
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 11
+  role: notes_stage
+  excerpt: \Sigma_r^{(Z)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 15
+  role: notes_stage
+  excerpt: \Sigma_r^{(N)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 37
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}=\delta\ln\chi_\alpha^2,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 39
+  role: notes_stage
+  excerpt: \Sigma_r^{(Z)}=\delta\ln\Upsilon_r,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 41
+  role: notes_stage
+  excerpt: \Sigma_r^{(N)}=\delta\ln\!\left(\frac{\Lambda_r^2}{K}\right).
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 93
+  role: notes_stage
+  excerpt: \sum_r \rho_r^{(N)}\Sigma_r^{(N)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 95
+  role: notes_stage
+  excerpt: \omega_B \sum_\alpha \rho_\alpha^{(B)}\Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 97
+  role: notes_stage
+  excerpt: \omega_Z \sum_r \rho_r^{(Z)}\Sigma_r^{(Z)}.
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 124
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 218
+  role: notes_stage
+  excerpt: \Sigma_r^{(Z)}=\delta\ln\Upsilon_r,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 223
+  role: notes_stage
+  excerpt: \Sigma_r^{(N)}=2\,\delta\ln\Lambda_r-\delta_K
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 373
+  role: notes_stage
+  excerpt: which implies \(\Sigma_r^{(N)}=0\) individually.
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: Sigma_B = d ln chi^2,
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: Sigma_Z = d ln Upsilon,
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: Sigma_N = d ln(Lambda^2/K).
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: '# Sigma_B = 2 dln(c/varpi) - dK = dln(chi^2)'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: Sigma_B_direct = sp.simplify(2 * dlog(expr_c) - kappa)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: Sigma_B_shape = sp.simplify(dlog((chi**2).subs(subs_eps)))
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: expect_zero("Sigma_B - dln(chi^2)", Sigma_B_direct - Sigma_B_shape)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: '# Sigma_Z = dln(Q/Delta) - dK = dln(Upsilon)'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: Sigma_Z_direct = sp.simplify(dlog(expr_Z) - kappa)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: Sigma_Z_shape = sp.simplify(dlog(expr_U))
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: expect_zero("Sigma_Z - dln(Upsilon)", Sigma_Z_direct - Sigma_Z_shape)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: '# Sigma_N = 2 dln(P/Delta) - dK = dln(Lambda^2/K)'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Sigma_N_direct = sp.simplify(2 * dlog(expr_PoverDelta_phys) - kappa)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: Sigma_N_shape = sp.simplify(dlog((Lambda**2 / K).subs(subs_eps)))
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: expect_zero("Sigma_N - dln(Lambda^2/K)", Sigma_N_direct - Sigma_N_shape)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: '# Note (red-team F1 resolution): the differential Sigma_N claim is fully and'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: '# "2 dln(P/Delta) - 2 dln Lambda" / "Sigma_N - (2 dln Lambda - dK)" lines reduced'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: 'Sigma_B_cons = sp.simplify(Sigma_B_direct.subs({schi: 0}))'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: 'Sigma_Z_cons = sp.simplify(Sigma_Z_direct.subs({su: 0, sw: 0, sr: 0, sgu: 0, sgw: 0}))'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: 'Sigma_N_common = sp.simplify(Sigma_N_direct.subs({su: 0, sw: 0, sr: 0, sgu: 0, sgw: 0}))'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: expect_zero("Conservative-shape branch Sigma_B", Sigma_B_cons)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: expect_zero("Conservative-shape branch Sigma_Z", Sigma_Z_cons)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: expect_zero("Common-shape branch Sigma_N + dK", Sigma_N_common + kappa)
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: '# Weighted aggregate no-go: Xi_load = sum_r rho_r^(N) * Sigma_N. With all'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: '# wall-normalized shapes frozen, Sigma_N = -kappa per port, so'
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 161
+  role: sympy_script
+  excerpt: Xi_load_frozen = (rho1 + rho2) * Sigma_N_common
+- path: scripts/moving_throat_pde_stage175_wall_normalized_load_shape_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: print("    Sigma_B = d ln chi^2")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

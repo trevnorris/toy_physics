@@ -1,0 +1,19 @@
+candidate_id: fit_stage071_canonical_tanh_and_natural_closure
+parameter_name: K_m
+origin_claims:
+  - parameter: K_m
+    introduced_at_stage: 071
+    introduced_at_line: 93
+    citation:
+      path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+      line: 93
+      excerpt: "`K_m = T_X / ell.`"
+constraints:
+  - parameter: K_m
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+      line: 95
+      excerpt: "This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell support scale."
+downstream_dependents: [73, 74]
+provenance_findings: []

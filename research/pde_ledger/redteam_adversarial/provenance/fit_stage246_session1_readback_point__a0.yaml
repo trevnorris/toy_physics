@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage246_session1_readback_point
+parameter_name: a0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_session1_readback_point__phase_b__a0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '246'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: Sigma0 = sp.symbols("Sigma0", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: Pi_sigma = sp.simplify(Sigma0 * (1 - R_sigma * S_sigma))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: a0, b0 = sp.symbols("a0 b0", real=True)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: a_r = sp.simplify(a0 * s_r)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: section("8. Exact sign-change threshold for a0>0, b0<0")
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: r_thr = sp.simplify(sp.sqrt((a0 - b0 - 1) * r_sigma**2))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: assert sp.simplify(sigma_min_transport - (1 - (a0 - b0) * s_r)) == 0
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: '# Verify the Session-I orientation (a0>0, b0<0) selects the boundary-minimum branch'
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: 'a0p = sp.symbols("a0p", positive=True)   # stands in for a0 > 0'
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: a_r_or = a0p * s_r
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: assert sp.simplify(sigma_min_branch - (1 - (a0p - b0n) * s_r)) == 0
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 227
+  role: sympy_script
+  excerpt: 'a0: sp.Float("2.2"),'
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 272
+  role: sympy_script
+  excerpt: print("- exact stationary mouth-law packet Pi = Sigma0[1 - R S],")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

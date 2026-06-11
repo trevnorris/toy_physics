@@ -1,0 +1,36 @@
+schema_version: 1
+candidate_id: fit_stage118_frozen_n5_eos
+parameter_name: n_eos
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage118_frozen_n5_eos__phase_b__n_eos.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '118'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 18
+  role: notes_stage
+  excerpt: '- a gauged 4D GNLS matter sector with confinement \(V_{\rm conf}(\mathbf X;a,L)\) and frozen \(n=5\) EOS, so the
+    bulk matter Hamiltonian has both gradient and compressional terms, fileciteturn33file4'
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 205
+  role: notes_stage
+  excerpt: 'Use one external mouth amplitude \(u\) and let it couple to:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

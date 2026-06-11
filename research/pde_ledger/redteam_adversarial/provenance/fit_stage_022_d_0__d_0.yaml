@@ -1,0 +1,106 @@
+schema_version: 1
+candidate_id: fit_stage_022_d_0
+parameter_name: D_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_d_0__phase_b__d_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 146
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~023 uses the Stage~022 bridge to define \(P_0=N_0/D_0\) for the full grouped
+    bundle.  The 2.5PN and 4PN bridge sections use \eqref{eq:app-stage022-p0-target} as the shared outgoing-normalization
+    condition.  Later same-charge and weak-axisymmetric stages use the ratio \(P_1/P_0\) as the transported prefactor slope.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 309
+  role: notes_stage
+  excerpt: At the universal point-particle 2.5PN level, the only internal quantity that matters is the isotropic static outgoing
+    prefactor `P_0 = N_0 / D_0` (or `mhat_0^2 P_0` in invariant form).
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: D0, D2, D4 = sp.symbols("D0 D2 D4", nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Dcons = D0 + D2 * omega**2 + D4 * omega**4
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: Yresp = sp.expand(sp.series(D0 / Dcons, omega, 0, 6).removeO())
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: print("Y_resp(ω) = D0 / D_cons(ω) =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: expect_zero("u2 formula", u2 + D2 / D0)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: expect_zero("u4 formula", u4 - (D2**2 - D0 * D4) / D0**2)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: D0, D2, D4 = sp.symbols("D0 D2 D4", nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Dcons = D0 + D2 * omega**2 + D4 * omega**4
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: Pref = sp.expand(sp.series(D0 * Nfac / Dcons**2, omega, 0, 6).removeO())
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: expect_zero("P0 formula", P0 - N0 / D0)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: expect_zero("P2 formula", P2 - (D0 * N2 - 2 * D2 * N0) / D0**2)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: P4 - (D0**2 * N4 - 2 * D0 * (D2 * N2 + D4 * N0) + 3 * D2**2 * N0) / D0**3,
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 339
+  role: sympy_script
+  excerpt: print("    u2 = -D2/D0 and u4 = (D2^2 - D0 D4)/D0^2;")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 341
+  role: sympy_script
+  excerpt: print("    Pref(ω) = D0 N(ω) / D_cons(ω)^2,")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 343
+  role: sympy_script
+  excerpt: print("    P0 = N0/D0,")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 344
+  role: sympy_script
+  excerpt: print("    P2 = (D0 N2 - 2 D2 N0)/D0^2,")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 345
+  role: sympy_script
+  excerpt: print("    P4 = (D0^2 N4 - 2 D0(D2 N2 + D4 N0) + 3 D2^2 N0)/D0^3;")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

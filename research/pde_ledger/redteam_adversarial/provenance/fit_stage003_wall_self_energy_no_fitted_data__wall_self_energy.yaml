@@ -1,0 +1,207 @@
+schema_version: 1
+candidate_id: fit_stage003_wall_self_energy_no_fitted_data
+parameter_name: wall_self_energy
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage003_wall_self_energy_no_fitted_data__phase_b__wall_self_energy.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '003'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_003.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 003]{Stage 003: Minimal BdG--Wall Coupling and First Pole Shifts}'
+- path: paper/stages/stage_003.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~003 turns on the first conservative matter-support dynamics.  It reduces the linearized
+    BdG sector to stable normal coordinates, couples them to the wall through the confinement variation from Stage~001, integrates
+    them out exactly, and obtains the first microscopic origin of wall pole shifts and grouped real \(P_2\) conservative response
+    coefficients.}
+- path: paper/stages/stage_003.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the Stage~001 coupling \(\delta V_{\rm conf}=-(V_{\rm wall}'/\ell_c)\eta\),
+    the Stage~002 wall coordinates, the assumption of stable BdG normal modes with positive frequencies, and harmonic selection
+    on an isotropic reference throat.}
+- path: paper/stages/stage_003.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: For grouped lane \(A\in\{20,21,22\}\), let \(q_A\) be the wall amplitude and \(X_{A\alpha}\) the stable BdG support
+    coordinates.  The reduced Lagrangian is
+- path: paper/stages/stage_003.tex
+  line: 104
+  role: paper_stage_tex
+  excerpt: \paragraph{3. One-wall-mode pole shift.}
+- path: paper/stages/stage_003.tex
+  line: 129
+  role: paper_stage_tex
+  excerpt: This is the first explicit reduced formula for how matter support shifts a wall pole.
+- path: paper/stages/stage_003.tex
+  line: 155
+  role: paper_stage_tex
+  excerpt: Conversely, a nonzero defect must come from anisotropy in wall data, matter support frequencies, or wall--matter
+    overlaps.
+- path: paper/stages/stage_003.tex
+  line: 162
+  role: paper_stage_tex
+  excerpt: '\item The pole shift has the expected avoided-crossing sign: the lower wall-like pole moves down when coupled
+    to a higher stable matter mode.'
+- path: paper/stages/stage_003.tex
+  line: 166
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stages~004--021 add the projected Maxwell/mixed self-energies and reduce them to the
+    matched one-port normal form on the same operator structure.  Stage~022 converts the \(D_A\) operator moments into normalized
+    grouped response moments.  Stage~023 collects the Stage~003 BdG moments as \(B_{A0},B_{A2},B_{A4}\).}
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 3: Minimal BdG–Wall Coupling and First Pole Shifts'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 10
+  role: notes_stage
+  excerpt: 1. lifted the old finite-dimensional geometry variables `(a,L)` into a distributed wall field,
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 11
+  role: notes_stage
+  excerpt: 2. established the geometry-only modal structure and finite-throat D/N benchmark,
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 16
+  role: notes_stage
+  excerpt: So the goal here is not yet “solve the full coupled GNLS + localized Maxwell + moving-wall PDE.”
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 20
+  role: notes_stage
+  excerpt: '- couple those matter modes to the wall modes through the already-derived confinement variation,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 36
+  role: notes_stage
+  excerpt: 'That parent is strong enough to support reduced-sector work, but it is still **not** a fully solved moving-throat
+    PDE theorem. The unresolved sectors still include the completed moving-throat dynamics and the dynamic derivation of the
+    pole/compliance data. The 2PN and 3PN summaries make the bottleneck especially sharp: the remaining conservative-to-radiative
+    bridge is no longer algebraic bookkeeping, but the microscopic derivation of the grouped real `P2` constitutive law and
+    the geometry completion, followed by the narrow passive/outgoing quadrupole-normalization gap. See `atom_work.md`, `4d_2pn.tex`,
+    `4d_3pn_summary.md`, and `4d_1pn_full_summary.md`.'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 40
+  role: notes_stage
+  excerpt: '- the geometry-only wall PDE is not enough,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 41
+  role: notes_stage
+  excerpt: '- the next live conservative data must come from **coupling wall motion to actual matter support modes**,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 44
+  role: notes_stage
+  excerpt: '> how do stable BdG modes renormalize the wall response, shift the pole data, and preserve or split the grouped
+    real `P2` degeneracy?'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 54
+  role: notes_stage
+  excerpt: V_{\rm conf}(X;\Sigma)=V_{\rm wall}\!\left(\frac{\Sigma(X,t)}{\ell_c}\right),
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 62
+  role: notes_stage
+  excerpt: -\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t).
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 65
+  role: notes_stage
+  excerpt: So the wall displacement enters the linearized GNLS/BdG problem as a direct source.
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 66
+  role: notes_stage
+  excerpt: Once the linearized matter sector is decomposed into normal modes, the wall–matter coupling is bilinear.
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 70
+  role: notes_stage
+  excerpt: '- the axisymmetric wall sector couples only to axisymmetric matter modes,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 71
+  role: notes_stage
+  excerpt: '- each grouped real `l=2` wall channel couples only inside the real `l=2` matter bundle,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 85
+  role: notes_stage
+  excerpt: What matters for the present derivation is that this move introduces no fitted
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 87
+  role: notes_stage
+  excerpt: are fixed on the chosen branch, the wall self-energy is forced by the exact
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 97
+  role: notes_stage
+  excerpt: be the two lowest axisymmetric wall coordinates, and let
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 119
+  role: notes_stage
+  excerpt: '- `C_{A\alpha}` are wall–matter overlap integrals generated by the confinement variation and the BdG mode profiles.'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 121
+  role: notes_stage
+  excerpt: At this level, the scalar matter sector does not yet radiate or dissipate. It produces a conservative self-energy.
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 129
+  role: notes_stage
+  excerpt: let \(q_A(t)\) be the wall amplitude and let \(X_{A\alpha}(t)\) be stable BdG quadrupole coordinates with frequencies
+    \(\varpi_{A\alpha}\).
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 180
+  role: notes_stage
+  excerpt: Substituting back into the wall equations gives the exact effective axisymmetric kernel
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 300
+  role: notes_stage
+  excerpt: 'The simplest nontrivial example is one wall mode \(q\) coupled to one stable BdG mode \(X\):'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 316
+  role: notes_stage
+  excerpt: Writing the uncoupled wall frequency as
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 331
+  role: notes_stage
+  excerpt: If the matter mode is above the wall mode, \(\varpi^2>\Omega_\eta^2\), and the coupling is weak, then the wall-like
+    pole shifts by
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 348
+  role: notes_stage
+  excerpt: This is the first explicit closed formula for the way matter support shifts a wall pole.
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 350
+  role: notes_stage
+  excerpt: In the language of the earlier hierarchy, this is the reduced-sector prototype for how the open pole data are supposed
+    to arise once the wall is no longer treated in isolation.
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 377
+  role: notes_stage
+  excerpt: '- if the wall parameters, matter frequencies, and couplings are channel-independent,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 391
+  role: notes_stage
+  excerpt: '- the wall baseline,'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 393
+  role: notes_stage
+  excerpt: '- or the wall–matter overlap integrals.'
+- path: notes/stages/moving_throat_pde_stage003_bdg_coupling.md
+  line: 407
+  role: notes_stage
+  excerpt: The present reduced kernels show how those pole shifts arise structurally once the wall is coupled to stable matter
+    support modes.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

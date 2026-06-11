@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage020_even_gate_determinant_1_27
+parameter_name: even_gate_determinant
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage020_even_gate_determinant_1_27__phase_b__even_gate_determinant.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '020'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_020.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: It solves the first-order even gates in parent-wall slope variables.
+- path: paper/stages/stage_020.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: The live gates are
+- path: paper/stages/stage_020.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \label{eq:stage020-gates}
+- path: paper/stages/stage_020.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: H_{\rm even}=D_{41}-\frac23D_{21}-\frac{D_{01}}{27},
+- path: paper/stages/stage_020.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \paragraph{Even compensation.}
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 4
+  role: sympy_script
+  excerpt: This script verifies the exact wall-slope solve of the even gates once the
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: H_even = sp.expand(D41 - sp.Rational(2, 3) * D21 - D01 / sp.Integer(27))
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: '[sp.diff(H_even, dKSigma), sp.diff(H_even, dMSigma)],'
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: assert_zero('even-gate solve determinant', coeff_matrix.det() - sp.Rational(1, 27))
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: sol = sp.solve([sp.Eq(K1, 0), sp.Eq(H_even, 0)], [dKSigma, dMSigma], dict=True)[0]
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: lines.append(f'H_even = {H_even}')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: lines.append(f'dKSigma_from_even_gates = {sol[dKSigma]}')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: lines.append(f'dMSigma_from_even_gates = {sol[dMSigma]}')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: lines.append('The parent wall slopes are fixed uniquely by the even gates, and the residual first-order')
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,48 @@
+schema_version: 1
+candidate_id: fit_stage_115_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_115_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '115'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_115.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The
+    computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+- path: paper/stages/stage_115.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check parent overlap ratios before interpreting them as actual branch values.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 16
+  role: notes_stage
+  excerpt: which is exactly the branch that preserves the canonical outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 92
+  role: notes_stage
+  excerpt: 'gives a normalized response with exactly the same outgoing fingerprint:'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: '"normalized outgoing fingerprint preserved",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

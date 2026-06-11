@@ -1,0 +1,139 @@
+schema_version: 1
+candidate_id: fit_stage_242_c_mix
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_242_c_mix__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '242'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_242.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: '\claimstatus{Mixed: \StatusExactClosure{}, \StatusOpen{}.}'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 127
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 129
+  role: notes_stage
+  excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 223
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}\le C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 224
+  role: notes_stage
+  excerpt: \quad\text{mixed-only enough},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 233
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}>2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 240
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 255
+  role: notes_stage
+  excerpt: \frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 539
+  role: notes_stage
+  excerpt: M_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 550
+  role: notes_stage
+  excerpt: M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 559
+  role: notes_stage
+  excerpt: The mixed-only product law is
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 563
+  role: notes_stage
+  excerpt: R_{\rm target}M_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 653
+  role: notes_stage
+  excerpt: M_{\rm mix},\,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 762
+  role: notes_stage
+  excerpt: M_{\rm mix}\frac{1-\epsilon}{(1-\zeta\epsilon)^2}.
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: C_mix = sp.simplify(8 * Lambda * (1 - eps) / sp.pi**2)
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '# Stage 240 fixes the selected-branch loading ratio Pi_tr/C_mix = 4/3.'
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: Pi_tr = sp.Rational(4, 3) * C_mix
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '"selected branch lies above mixed-only bound",'
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '# Strict lowest-symmetric-twin window inclusion: C_mix < Pi_tr < 2 C_mix.'
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: ratio = sp.nsimplify(Pi_tr / C_mix)
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 277
+  role: sympy_script
+  excerpt: M_mix = sp.simplify(
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 281
+  role: sympy_script
+  excerpt: M_tr = sp.simplify(M_mix * S)
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 283
+  role: sympy_script
+  excerpt: assert_zero("mixed-only product law", sp.simplify(R_target * M_mix - C_mix))
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 286
+  role: sympy_script
+  excerpt: sp.diff(M_tr, zeta) - M_mix * (1 - eps) / (1 - zeta * eps) ** 2,
+- path: scripts/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.py
+  line: 308
+  role: sympy_script
+  excerpt: print("  M_mix        =", sp.simplify(M_mix.subs(sample)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

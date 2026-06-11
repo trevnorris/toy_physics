@@ -1,0 +1,102 @@
+schema_version: 1
+candidate_id: fit_stage156_mouth_bias_increase_224_59_pct
+parameter_name: mouth_bias_increase_pct
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_mouth_bias_increase_224_59_pct__phase_b__mouth_bias_increase_pct.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '156'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_156.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 156]{Stage 156: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution}'
+- path: paper/stages/stage_156.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~156 is a co-evolving core--mouth transport ledger step.  Its audit target is the verification
+    output quoted below.}
+- path: paper/stages/stage_156.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 156: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 6
+  role: notes_stage
+  excerpt: compensated branch once the mouth profile and the core loading ratio are allowed
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 20
+  role: notes_stage
+  excerpt: \(\mathfrak g_{\rm fp}(\Sigma_0)\) increases monotonically over the physical
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 49
+  role: notes_stage
+  excerpt: renormalization of the mouth traction.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 65
+  role: notes_stage
+  excerpt: Its selected mixed response and mouth bias are
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 77
+  role: notes_stage
+  excerpt: finite — it just sits at a higher traction/bias point than the earlier
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 82
+  role: notes_stage
+  excerpt: '## 3. Comparison with earlier mouth-only corrections'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 84
+  role: notes_stage
+  excerpt: The earlier fixed-core mouth analysis gave approximately
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 133
+  role: notes_stage
+  excerpt: full core–mouth co-evolving closure requires roughly a
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 135
+  role: notes_stage
+  excerpt: '- \(60.48\%\) traction increase,'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 136
+  role: notes_stage
+  excerpt: '- and a \(224.59\%\) mouth-bias increase,'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 144
+  role: notes_stage
+  excerpt: This is the sharpest Family-1 mouth/core result so far.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 151
+  role: notes_stage
+  excerpt: 4. and exact compensation is recovered only on a **renormalized** finite-bias,
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 154
+  role: notes_stage
+  excerpt: So the mouth-side problem is no longer branch selection and no longer a broad
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: core–mouth co-evolution.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

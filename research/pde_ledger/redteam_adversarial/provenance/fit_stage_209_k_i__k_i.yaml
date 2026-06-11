@@ -1,0 +1,143 @@
+schema_version: 1
+candidate_id: fit_stage_209_k_i
+parameter_name: k_i
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_209_k_i__phase_b__k_i.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '209'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 21
+  role: notes_stage
+  excerpt: '- the **gradient-optimal** ray `\(r_{ij}^{\rm grad}=k_j/k_i\)`,'
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 50
+  role: notes_stage
+  excerpt: k_i>0,
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 62
+  role: notes_stage
+  excerpt: k_{ij}(r)=\frac{k_i+r k_j}{\sqrt{1+r^2}}.
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 100
+  role: notes_stage
+  excerpt: A_\star:=k_i^2-2H_0 u_\star,
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 102
+  role: notes_stage
+  excerpt: B_\star:=2k_i k_j-4H_0 v_\star,
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 127
+  role: notes_stage
+  excerpt: '{k_i+r k_j+\sqrt{A_\star+B_\star r+C_\star r^2}}.'
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 164
+  role: notes_stage
+  excerpt: \frac{k_i+r k_j+\sqrt{A_\star+B_\star r+C_\star r^2}}{\sqrt{1+r^2}},
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 189
+  role: notes_stage
+  excerpt: 2(k_j-k_i r)\sqrt{A_\star+B_\star r+C_\star r^2}
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 224
+  role: notes_stage
+  excerpt: 4(k_j-k_i r)^2\bigl(A_\star+B_\star r+C_\star r^2\bigr).
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 345
+  role: notes_stage
+  excerpt: r_{ij,\star}^{\rm opt}=r_{ij}^{\rm grad}=\frac{k_j}{k_i}.
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 355
+  role: notes_stage
+  excerpt: k_i=k_j,
+- path: notes/stages/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem.md
+  line: 438
+  role: notes_stage
+  excerpt: \bigl(k_i,k_j,H_0,
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: ki, kj, H0, r = sp.symbols("k_i k_j H0 r", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: kij = sp.simplify((ki + kj * r) / sp.sqrt(1 + r**2))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: tau = sp.simplify(2 * H0 / (kij + sp.sqrt(kij**2 - 2 * H0 * kappa)))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: A = sp.simplify(ki**2 - 2 * H0 * u)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: B = sp.simplify(2 * ki * kj - 4 * H0 * v)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: tau_expected = sp.simplify(2 * H0 * sp.sqrt(1 + r**2) / (ki + kj * r + S))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("k_ij(r) =")
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: sp.pprint(kij)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: sp.simplify((1 + r**2) * (kij**2 - 2 * H0 * kappa) - (A + B * r + C * r**2)),
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: Phi = sp.simplify((ki + kj * r + S) / sp.sqrt(1 + r**2))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: N = sp.simplify(2 * (kj - ki * r) * S + B + 2 * (C - A) * r - B * r**2)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: Q = sp.expand(J**2 - 4 * (kj - ki * r) ** 2 * (A + B * r + C * r**2))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: expect_zero("quartic factorization identity", Q - (J - 2 * (kj - ki * r) * S) * (J + 2 * (kj - ki * r) * S))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: expect_zero("N - (J + 2(kj-kir)S)", N - (J + 2 * (kj - ki * r) * S))
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: r_grad = sp.simplify(kj / ki)
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: 'tau_sym = sp.simplify(tau.subs({kj: ki, w: u}))'
+- path: scripts/moving_throat_pde_stage209_pairwise_ratio_optimizer_and_mixed_ray_winner_theorem_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: 'Qorig = sp.expand(Q.subs({A: ki**2 - 2 * H0 * u, B: 2 * ki * kj - 4 * H0 * v, C: kj**2 - 2 * H0 * w}))'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,35 @@
+schema_version: 1
+candidate_id: fit_stage133_residual_freedom_fixed
+parameter_name: M_minus
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage133_residual_freedom_fixed__phase_b__m_minus.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '133'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage133_coupled_mouth_fixedpoint.md
+  line: 77
+  role: notes_stage
+  excerpt: So the source parameter \(\Pi\) is no longer an input. It is the fixed point of a
+- path: scripts/moving_throat_pde_stage133_coupled_mouth_fixedpoint_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: print("Pi = Mplus*S(Pi,kappa_plus) + Mminus*S(Pi,kappa_minus)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

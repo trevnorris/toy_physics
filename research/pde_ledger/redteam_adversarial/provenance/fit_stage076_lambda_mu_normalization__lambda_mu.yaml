@@ -1,0 +1,101 @@
+schema_version: 1
+candidate_id: fit_stage076_lambda_mu_normalization
+parameter_name: lambda_mu
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage076_lambda_mu_normalization__phase_b__lambda_mu.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '076'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_076.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \Theta_w=25\lambda_\mu^2\rho_w^2}.
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 60
+  role: notes_stage
+  excerpt: '`mu_* = lambda_mu h_w,`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 66
+  role: notes_stage
+  excerpt: and `lambda_mu` keeps track of whether one chooses the wall enthalpy itself (`lambda_mu = 1`) or a nearby local
+    chemical-potential normalization.
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 71
+  role: notes_stage
+  excerpt: '`        = lambda_mu^2 m^2 rho_w^2 c_(s,w)^2 / (4 hbar^2).`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 89
+  role: notes_stage
+  excerpt: '`Theta_w = lambda_mu^2 rho_w^2 / (16 ell^2).`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 93
+  role: notes_stage
+  excerpt: '> the wall-depth datum is exactly the square of the active-shell density, measured in healing-width units, up
+    to the one local normalization factor `lambda_mu`.'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 113
+  role: notes_stage
+  excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2.`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 125
+  role: notes_stage
+  excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2`'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact algebraic reduction of Theta_w under the local enthalpy lock mu_* = lambda_mu h_w.
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact healing-lock reduction Theta_w = lambda_mu^2 rho_w^2 / (16 ell^2).
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Reference-branch form Theta_w = 25 lambda_mu^2 rho_w^2 in normalized Family-1 wall units.
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: lambda_mu, rho_w, ell, a = sp.symbols("lambda_mu rho_w ell a", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 'enthalpy_lock = mu_star_sym - lambda_mu * m * csw**2 / 4  # set this to zero'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '# Closed-form target from notes section 2: Theta_w = lambda_mu^2 m^2 rho_w^2 c_sw^2 / (4 hbar^2).'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '# in the enthalpy lock (mu_* = lambda_mu * m * c_sw^2 / 4).'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: Theta_target = sp.Rational(1, 4) * lambda_mu**2 * m**2 * rho_w**2 * csw**2 / hbar**2
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Theta_heal_target = sp.simplify(lambda_mu**2 * rho_w**2 / (16 * ell**2))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: ref_target = sp.simplify((1 / ref_factor)**2 / 16) * lambda_mu**2 * rho_w**2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

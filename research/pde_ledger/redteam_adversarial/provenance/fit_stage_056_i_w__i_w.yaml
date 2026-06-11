@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_056_i_w
+parameter_name: I_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_056_i_w__phase_b__i_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '056'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 106
+  role: notes_stage
+  excerpt: '`I_W = int_0^L ds chi_0(s) = 2 sqrt(2L)/pi.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 119
+  role: notes_stage
+  excerpt: '`Omega_Pe := I_Pe / I_W`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 143
+  role: notes_stage
+  excerpt: '`dOmega_Pe/dPe = Cov_Pe(chi_0,s) / I_W.`'
+- path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: I_W = sp.simplify(sp.integrate(chi0, (s, 0, L)))
+- path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("I_W =", I_W)
+- path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: Omega_Pe = sp.simplify(I_Pe / I_W)
+- path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# Covariance identity dOmega/dPe = Cov(chi0,s)/I_W.'
+- path: scripts/moving_throat_pde_stage056_transport_source_asymmetry_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: expect_zero("dOmega/dPe - Cov/I_W", sp.diff(Omega_Pe, Pe) - Cov / I_W)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

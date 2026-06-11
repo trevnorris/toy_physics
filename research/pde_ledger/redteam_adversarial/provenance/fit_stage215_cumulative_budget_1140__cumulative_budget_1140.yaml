@@ -1,0 +1,97 @@
+schema_version: 1
+candidate_id: fit_stage215_cumulative_budget_1140
+parameter_name: cumulative_budget_1140
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage215_cumulative_budget_1140__phase_b__cumulative_budget_1140.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '215'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_215.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Support-\(\le4\) finite search ledger, primitive-quadruple winner theorem, global support-cardinality-four
+    improvement/no-improvement theorem, and preferred cumulative budget \(1140\).}
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 30
+  role: notes_stage
+  excerpt: 7. and the exact **finite evaluation budget theorem** for the whole support-`<=4` local search.
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 414
+  role: notes_stage
+  excerpt: '## 7. Exact finite evaluation budget theorem'
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 422
+  role: notes_stage
+  excerpt: So the exact four-coordinate interior budget per envelope is
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 427
+  role: notes_stage
+  excerpt: Across the `\({\rm lo}/{\rm hi}\)` envelopes, the full support-cardinality-`4` interior budget is therefore
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 433
+  role: notes_stage
+  excerpt: Stage 212 already closed the support-`<=3` search with the exact finite budget
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 438
+  role: notes_stage
+  excerpt: Therefore the entire local search up through four active primitive coordinates has the exact finite budget
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 440
+  role: notes_stage
+  excerpt: \boxed{600+540=1140}
+- path: notes/stages/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem.md
+  line: 494
+  role: notes_stage
+  excerpt: 5. The entire local search up through four active primitive coordinates now has a finite certified budget of at
+    most `1140` exact candidate evaluations.
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: subbanner("IV. Exact finite evaluation budget theorem")
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: support_le3_budget = 10 * 12 + 10 * 48
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: full_eval_total = support_le3_budget + quad_eval_total
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: print(f"imported support<=3 budget = {support_le3_budget}")
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: print(f"interior quadruple evaluation budget = {quad_eval_total}")
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 205
+  role: sympy_script
+  excerpt: print(f"full support<=4 budget = {full_eval_total}")
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 207
+  role: sympy_script
+  excerpt: expect_zero("quadruple interior budget - 540", quad_eval_total - 540)
+- path: scripts/moving_throat_pde_stage215_full_primitive_quadruple_ranking_theorem_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: expect_zero("full support<=4 budget - 1140", full_eval_total - 1140)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

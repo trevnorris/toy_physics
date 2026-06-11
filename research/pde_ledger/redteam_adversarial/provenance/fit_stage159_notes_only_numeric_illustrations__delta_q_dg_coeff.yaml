@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage159_notes_only_numeric_illustrations
+parameter_name: Delta_Q_dg_coeff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage159_notes_only_numeric_illustrations__phase_b__delta_q_dg_coeff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '159'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_159.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_159.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Even preservation forces \(\delta\mathfrak g=0\), \(\delta\kappa_W=0\), leaving \(\Delta_Q=-9\sigma_*\delta\gamma_W/(1-\sigma_*)\).
+- path: paper/stages/stage_159.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 9
+  role: notes_stage
+  excerpt: (\delta\Sigma_0,\delta\mathfrak g,\delta\mathcal S)
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 11
+  role: notes_stage
+  excerpt: (\delta M_s,\delta M_q,\delta\Pi).
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 25
+  role: notes_stage
+  excerpt: \delta\mathcal C := \delta\rho_R - 4\,\delta\sigma_W,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 28
+  role: notes_stage
+  excerpt: defect `\delta\mathfrak g`, not on `\delta\Sigma_0` or `\delta\mathcal S`,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 31
+  role: notes_stage
+  excerpt: \delta\mathfrak g = 0,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 33
+  role: notes_stage
+  excerpt: \delta\kappa_W = 0,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 37
+  role: notes_stage
+  excerpt: \Delta_Q = \chi_Q-1
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 39
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 44
+  role: notes_stage
+  excerpt: '`(\delta\Sigma_0,\delta\mathfrak g,\delta\mathcal S)\to(b,a_0,a_5)` projection.'
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 47
+  role: notes_stage
+  excerpt: '`\delta\gamma_W`.'
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 95
+  role: notes_stage
+  excerpt: \delta M_s=\delta\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 97
+  role: notes_stage
+  excerpt: \delta M_q
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 99
+  role: notes_stage
+  excerpt: -\frac14\,\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 100
+  role: notes_stage
+  excerpt: -\Sigma_0^{\rm can}\,\delta\mathcal R,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 104
+  role: notes_stage
+  excerpt: \delta\mathcal R
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 106
+  role: notes_stage
+  excerpt: -\frac{\delta\mathfrak g}{\sqrt{1+\mathfrak r_{F1}^2}}
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 107
+  role: notes_stage
+  excerpt: +O(\delta\mathfrak g^2),
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 114
+  role: notes_stage
+  excerpt: \delta\rho_R=\Xi\,\delta\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 117
+  role: notes_stage
+  excerpt: \delta\sigma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 119
+  role: notes_stage
+  excerpt: -\Xi\,\delta M_q
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 122
+  role: notes_stage
+  excerpt: \frac14\,\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 124
+  role: notes_stage
+  excerpt: \Sigma_0^{\rm can}\,\delta\mathcal R
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 131
+  role: notes_stage
+  excerpt: \delta\mathcal C
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 133
+  role: notes_stage
+  excerpt: \delta\rho_R-4\,\delta\sigma_W
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 135
+  role: notes_stage
+  excerpt: -4\Xi\,\Sigma_0^{\rm can}\,\delta\mathcal R.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 146
+  role: notes_stage
+  excerpt: \delta\mathcal C
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 148
+  role: notes_stage
+  excerpt: -16\sigma_*\,\delta\mathcal R.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 155
+  role: notes_stage
+  excerpt: \delta\mathcal C
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 158
+  role: notes_stage
+  excerpt: \delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 159
+  role: notes_stage
+  excerpt: +O(\delta\mathfrak g^2).
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 170
+  role: notes_stage
+  excerpt: \delta\mathcal C
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 172
+  role: notes_stage
+  excerpt: 7.84345671020202\,\sigma_*\,\delta\mathfrak g.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 176
+  role: notes_stage
+  excerpt: The important structural point is that the `\delta\Sigma_0` pieces cancel exactly.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 178
+  role: notes_stage
+  excerpt: whereas `\delta\mathfrak g` is the genuine normal/off-compensation defect.
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 204
+  role: notes_stage
+  excerpt: \delta E_2
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 208
+  role: notes_stage
+  excerpt: \delta E_4
+- path: notes/stages/moving_throat_pde_stage159_hybrid_outlet_projection.md
+  line: 214
+  role: notes_stage
+  excerpt: \Delta_Q:=\chi_Q-1.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

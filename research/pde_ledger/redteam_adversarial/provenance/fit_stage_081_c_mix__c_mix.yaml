@@ -1,0 +1,167 @@
+schema_version: 1
+candidate_id: fit_stage_081_c_mix
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_081_c_mix__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 081
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_081.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}=\frac{\Pi_{\rm tr}-C_{\rm mix}}{C_{\rm mix}-\epsilon_{\rm blk}(2C_{\rm mix}-\Pi_{\rm tr})}.
+- path: paper/stages/stage_081.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \frac{\Pi_{\rm tr}}{C_{\rm mix}}=1+\zeta_{\rm req}.
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 25
+  role: notes_stage
+  excerpt: '`Pi_suff^(chi) / C_mix ≈ 3.46622291347846,`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 29
+  role: notes_stage
+  excerpt: '`Pi_max^(F1) / C_mix ≈ 3.46752922945601.`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 31
+  role: notes_stage
+  excerpt: So the entire remaining explicit Family-1 theorem gap is now compressed to a very narrow `Pi_tr / C_mix` window.
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 39
+  role: notes_stage
+  excerpt: '`zeta_req = (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ],`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 45
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 77
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_suff^(chi)(lambda_mu); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 80
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_fail^(chi)(lambda_mu); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 84
+  role: notes_stage
+  excerpt: '`Pi_suff^(J) := C_mix Q( zeta_suff^(J); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 86
+  role: notes_stage
+  excerpt: '`Pi_fail^(J) := C_mix Q( zeta_fail^(J); eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 113
+  role: notes_stage
+  excerpt: '`:= C_mix Q( zeta_max^(F1); eps_blk )`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 114
+  role: notes_stage
+  excerpt: '` = C_mix [ 1 + (1 - 2 eps_blk) zeta_max^(F1) ] / [ 1 - eps_blk zeta_max^(F1) ].`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 132
+  role: notes_stage
+  excerpt: '`Pi_suff^(chi) / C_mix = 1 + zeta_suff^(chi)(1)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 135
+  role: notes_stage
+  excerpt: '`Pi_fail^(chi) / C_mix = 1 + zeta_fail^(chi)(1)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 140
+  role: notes_stage
+  excerpt: '`Pi_max^(F1) / C_mix = 1 + zeta_max^(F1)`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 145
+  role: notes_stage
+  excerpt: '`Pi_suff^(J) / C_mix ≈ 3.44257571477179,`'
+- path: notes/stages/moving_throat_pde_stage081_family1_pi_thresholds.md
+  line: 147
+  role: notes_stage
+  excerpt: '`Pi_fail^(J) / C_mix ≈ 3.46752736855058.`'
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: product variable Pi_tr / C_mix.
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: zeta, Pi, Cmix, eps_blk = sp.symbols('zeta Pi Cmix eps_blk', real=True)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: zeta_expr = (Pi - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Q = sp.simplify(Pi_of_zeta / Cmix)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: print("Pi_suff^(chi)/C_mix =", Pi_suff_chi_over_C)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("Pi_fail^(chi)/C_mix =", Pi_fail_chi_over_C)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("Pi_suff^(J)/C_mix   =", Pi_suff_J_over_C)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("Pi_fail^(J)/C_mix   =", Pi_fail_J_over_C)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print("Pi_max^(F1)/C_mix   =", Pi_max_over_C)
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: print("  Pi_suff^(chi)/C_mix =", sp.N(Pi_suff_chi_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("  Pi_fail^(chi)/C_mix =", sp.N(Pi_fail_chi_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: print("  Pi_suff^(J)/C_mix   =", sp.N(Pi_suff_J_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print("  Pi_fail^(J)/C_mix   =", sp.N(Pi_fail_J_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print("  Pi_max^(F1)/C_mix   =", sp.N(Pi_max_over_C.subs(eps_blk, 0), 20))
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: print("Pi_tr = C_mix Q(zeta_req;eps_blk)")
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("The explicit Family-1 hard ceiling is Pi_max^(F1) = C_mix Q(zeta_max^(F1);eps_blk).")
+- path: scripts/moving_throat_pde_stage081_family1_pi_thresholds_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("At eps_blk = 0 and lambda_mu = 1 the natural success threshold is Pi_tr/C_mix <= 3.46622291347846.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

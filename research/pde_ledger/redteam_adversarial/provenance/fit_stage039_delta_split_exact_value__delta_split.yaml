@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage039_delta_split_exact_value
+parameter_name: delta_split
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage039_delta_split_exact_value__phase_b__delta_split.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 039
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_039.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 039]{Stage 039: First Non-Flat \texorpdfstring{$U$}{U} Doublet and Direction Splitting}'
+- path: paper/stages/stage_039.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} inside the first split--\(U\) continuum extension.}
+- path: paper/stages/stage_039.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage039_split_u_sector_sympy_audit.txt}.  Mathematica audit:
+    \StageFile{mathematica/moving_throat_pde_stage039_split_u_sector_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage039_split_u_sector_mathematica_audit.txt}.}'
+- path: paper/stages/stage_039.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: K_{U1}=K_U(1+\delta_U),
+- path: paper/stages/stage_039.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \delta_U=\frac{\pi^2T_U}{L^2K_U}.
+- path: paper/stages/stage_039.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage039-split-placement}
+- path: paper/stages/stage_039.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \delta_{\rm split}
+- path: paper/stages/stage_039.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: =\frac{\delta_0+\epsilon_\eta\delta_U/(1+\delta_U)}{1-\epsilon_\eta},
+- path: paper/stages/stage_039.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \epsilon_{W,{\rm split}}
+- path: paper/stages/stage_039.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: =\epsilon_W\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right]}.
+- path: paper/stages/stage_039.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: R_U=\frac{1+\rho_0/(1+\delta_U)}{1+\rho_0}}.
+- path: paper/stages/stage_039.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: The exact direction-splitting invariant is
+- path: paper/stages/stage_039.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: D_{\rm dir}=-\frac{\kappa_0\kappa_1g_W\rho_0\delta_U}{1+\delta_U}}.
+- path: paper/stages/stage_039.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \delta_U=0\ \text{or}\ \rho_0=0}.
+- path: paper/stages/stage_039.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: On the constructive branch, \(\rho_0>0\) and \(\delta_U>0\) imply a genuine direction split.
+- path: paper/stages/stage_039.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The split placement law \eqref{eq:app-stage039-split-placement}, the direction factor \eqref{eq:app-stage039-RU},
+    and the collinearity theorem \eqref{eq:app-stage039-collinearity}.}
+- path: paper/stages/stage_039.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~040 packages this direction split into generalized selected-branch functions;
+    Stages~044--046 test whether the resulting branch can still satisfy the target.}
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 039: First Non-Flat `U` Doublet, Exact Split Continuum Map, and the Direction-Splitting
+    Theorem'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 7
+  role: notes_stage
+  excerpt: '`eps_eta, eps_W, rho, Z_W, delta_0, Lambda`,'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 26
+  role: notes_stage
+  excerpt: 2. the bare anisotropy ratio shifts to a new exact value `delta_split`,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 27
+  role: notes_stage
+  excerpt: 3. the mixed-sector blocking ratio becomes an exact split quantity `eps_W_split`,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 29
+  role: notes_stage
+  excerpt: 5. and the old Stage-038 one-direction picture survives **iff** the new direction-splitting invariant vanishes.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 31
+  role: notes_stage
+  excerpt: So the flat-`U` assumption was not harmless bookkeeping. It was precisely what made source, support, and mixed
+    loading all point in the same wall-basis direction.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 45
+  role: notes_stage
+  excerpt: '`K_(U1) = K_U + pi^2 T_U / L^2 = K_U (1 + delta_U),`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 47
+  role: notes_stage
+  excerpt: where the new internal axial-splitting ratio is
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 49
+  role: notes_stage
+  excerpt: '`delta_U := pi^2 T_U / (L^2 K_U).`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 53
+  role: notes_stage
+  excerpt: '`delta_U = 0.`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 73
+  role: notes_stage
+  excerpt: '## 2. Exact split direct softening and shifted anisotropy'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 79
+  role: notes_stage
+  excerpt: '`A_1 = [K_eta^(eff)(1 + delta_0) - c_(etaU)^2 / K_(U1)] / mu_eta,`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 85
+  role: notes_stage
+  excerpt: '`delta_0 := pi^2 T_w / (L^2 K_eta^(eff)),`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 93
+  role: notes_stage
+  excerpt: '`A_1 = A_0 (1 + delta_split),`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 97
+  role: notes_stage
+  excerpt: '`delta_split = [ delta_0 + eps_eta delta_U / (1 + delta_U) ] / (1 - eps_eta).`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 101
+  role: notes_stage
+  excerpt: For small `delta_U`,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 103
+  role: notes_stage
+  excerpt: '`delta_split = delta_0/(1 - eps_eta) + [eps_eta/(1 - eps_eta)] delta_U + O(delta_U^2).`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 107
+  role: notes_stage
+  excerpt: '## 3. Exact split mixed blocking ratio'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 109
+  role: notes_stage
+  excerpt: The `U/W` block also feels the split directly through the overlap-weighted inverse kernel
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 121
+  role: notes_stage
+  excerpt: one finds the exact split blocking ratio
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 123
+  role: notes_stage
+  excerpt: '`eps_W_split = eps_W [ 1 - (2/11) delta_U / (1 + delta_U) ].`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 127
+  role: notes_stage
+  excerpt: For small `delta_U`,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 129
+  role: notes_stage
+  excerpt: '`eps_W_split = eps_W [ 1 - (2/11) delta_U ] + O(delta_U^2).`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

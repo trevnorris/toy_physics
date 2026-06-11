@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage028_eigenvalues_exact
+parameter_name: alpha_crit
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage028_eigenvalues_exact__phase_b__alpha_crit.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 028
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_028.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~028 stops treating the wall-profile angle as an external choice.  The support/mixed
+    branch induces an attractive rank-one load along the D/N overlap vector, and the selected profile is the lower eigenvector
+    of the loaded wall matrix.}
+- path: paper/stages/stage_028.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the two N/N wall modes, the overlap vector \(v=(\kappa_0,\kappa_1)^T\), and
+    a positive loading coefficient \(\alpha\).}
+- path: paper/stages/stage_028.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: K_{\rm eff}=K_{\rm bare}-\alpha vv^T,
+- path: paper/stages/stage_028.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \alpha>0}.
+- path: paper/stages/stage_028.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: K_0+K_1-\alpha(\kappa_0^2+\kappa_1^2)
+- path: paper/stages/stage_028.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: \sqrt{\left(\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)\right)^2+4\alpha^2\kappa_0^2\kappa_1^2}
+- path: paper/stages/stage_028.tex
+  line: 75
+  role: paper_stage_tex
+  excerpt: =\frac{2\alpha\kappa_0\kappa_1}{\Delta K_{\rm ax}+\alpha(\kappa_0^2-\kappa_1^2)}}.
+- path: paper/stages/stage_028.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage028-alpha-crit}
+- path: paper/stages/stage_028.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm crit}
+- path: paper/stages/stage_028.tex
+  line: 87
+  role: paper_stage_tex
+  excerpt: The stable side of this reduced branch is \(0\leq\alpha<\alpha_{\rm crit}\).
+- path: paper/stages/stage_028.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~028 outputs the rank-one wall matrix \eqref{eq:app-stage028-Keff}, exact eigenvalues
+    \eqref{eq:app-stage028-eigenvalues}, the selected angle law \eqref{eq:app-stage028-angle-law}, and the softening threshold
+    \eqref{eq:app-stage028-alpha-crit}.}
+- path: paper/stages/stage_028.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: \item The eigenvalues follow from the characteristic polynomial of the \(2\times2\) symmetric matrix \(K_{\rm bare}-\alpha
+    vv^T\).
+- path: paper/stages/stage_028.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: \item The threshold is checked by \(\det(K_{\rm bare}-\alpha vv^T)=0\).
+- path: paper/stages/stage_028.tex
+  line: 98
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~029 derives \(\alpha\) dynamically from the coupled wall/BdG/Maxwell/mixed Schur
+    complement.  Stages~030--034 use the selected lower eigenvalue and eigenvector overlap to define \(\lambda_-\), \(s_-\),
+    and the softening-depth normal form.}
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 92
+  role: notes_stage
+  excerpt: '`E_eff[q] = (1/2) q^T K_bare q - (alpha/2) (v . q)^2`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 96
+  role: notes_stage
+  excerpt: '`alpha > 0`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 100
+  role: notes_stage
+  excerpt: '`K_eff = K_bare - alpha v v^T`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 104
+  role: notes_stage
+  excerpt: '`K_eff = [[K_0 - alpha kappa_0^2,      -alpha kappa_0 kappa_1],`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 105
+  role: notes_stage
+  excerpt: '`         [    -alpha kappa_0 kappa_1,  K_1 - alpha kappa_1^2 ]].`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 117
+  role: notes_stage
+  excerpt: '`tr(K_eff) = K_0 + K_1 - alpha (kappa_0^2 + kappa_1^2)`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 119
+  role: notes_stage
+  excerpt: '`det(K_eff) = K_0 K_1 - alpha ( K_1 kappa_0^2 + K_0 kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 124
+  role: notes_stage
+  excerpt: '` = (1/2) [ K_0 + K_1 - alpha (kappa_0^2 + kappa_1^2)`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 125
+  role: notes_stage
+  excerpt: '`          +- sqrt( (Delta K_ax + alpha (kappa_0^2 - kappa_1^2))^2`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 126
+  role: notes_stage
+  excerpt: '`                   + 4 alpha^2 kappa_0^2 kappa_1^2 ) ]`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 133
+  role: notes_stage
+  excerpt: '` = 2 alpha kappa_0 kappa_1 / ( Delta K_ax + alpha (kappa_0^2 - kappa_1^2) )`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 145
+  role: notes_stage
+  excerpt: For any positive loading `alpha > 0`, the denominator is positive and the numerator is negative, so
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 163
+  role: notes_stage
+  excerpt: '`theta = alpha kappa_0 kappa_1 / Delta K_ax + O(alpha^2)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 214
+  role: notes_stage
+  excerpt: '` = 2 alpha kappa_0 kappa_1 / ( Delta K_ax + alpha (kappa_0^2 - kappa_1^2) )`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 240
+  role: notes_stage
+  excerpt: '`alpha_crit = K_0 K_1 / ( K_1 kappa_0^2 + K_0 kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 246
+  role: notes_stage
+  excerpt: '- for `alpha < alpha_crit`, the loaded quadrupole wall mode remains stable,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 247
+  role: notes_stage
+  excerpt: '- for `alpha = alpha_crit`, the branch goes marginal,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 248
+  role: notes_stage
+  excerpt: '- for `alpha > alpha_crit`, the minimal reduced wall operator predicts a quadrupole instability/condensation.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 287
+  role: notes_stage
+  excerpt: '- and there is an exact softening threshold `alpha_crit` for the loaded wall quadrupole mode.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 291
+  role: notes_stage
+  excerpt: '> derive the actual effective loading strength `alpha` and the associated loaded wall eigenmode from the coupled
+    wall/BdG/Maxwell/mixed operator, then insert that eigenpair into the Stage-027 normalization equation.'
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: • and the exact softening threshold alpha_crit.
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: alpha = sp.symbols("alpha", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: K_eff = sp.simplify(K_bare - alpha * (v * v.T))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: tr_expected = sp.simplify(K0 + K1 - alpha * (kappa0**2 + kappa1**2))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: det_expected = sp.simplify(K0 * K1 - alpha * (K1 * kappa0**2 + K0 * kappa1**2))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: disc = sp.simplify((DeltaK + alpha * (kappa0**2 - kappa1**2))**2 + 4 * alpha**2 * kappa0**2 * kappa1**2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

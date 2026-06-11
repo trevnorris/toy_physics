@@ -1,0 +1,163 @@
+schema_version: 1
+candidate_id: fit_stage_016_boundary_value
+parameter_name: boundary_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_016_boundary_value__phase_b__boundary_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '016'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_016.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \paragraph{Boundary controls.}
+- path: paper/stages/stage_016.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: quadratic recovery is not relying on a broken boundary reader that always
+- path: paper/stages/stage_016.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: linear wall closure, subject to the explicitly checked boundary class.
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: value = sp.factor(sp.together(sp.simplify(expr)))
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 'if value == 0:'
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: 'def boundary_value(expr: sp.Expr, var: sp.Symbol) -> sp.Expr:'
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: linear_boundary_density = -Bfun * etaf
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: quad_boundary_density = -Afun * etaf**2 / 2
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: -Bfun * sp.diff(etaf, w_ibp) - (sp.diff(linear_boundary_density, w_ibp) + linear_bulk_density),
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: -Afun * etaf * sp.diff(etaf, w_ibp) - (sp.diff(quad_boundary_density, w_ibp) + quad_bulk_density),
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: -Afun * etaf * sp.diff(etaf, w_ibp) - (sp.diff(-quad_boundary_density, w_ibp) + quad_bulk_density),
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: nonzero_boundary_probe = boundary_value(sp.atan(w_ibp), w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: assert_nonzero('boundary operator detects nonzero endpoint discharge', nonzero_boundary_probe)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: linear_boundary_concrete = boundary_value(-Bfun_concrete * eta_concrete, w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: linear_boundary_lorentz = boundary_value(linear_lorentz_density, w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: linear_boundary_lorentz_endpoint = boundary_value(-Bfun_lorentz_endpoint * eta_lorentz, w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: quad_boundary_concrete = boundary_value(-Afun_concrete * eta_concrete**2 / 2, w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: quad_boundary_lorentz = boundary_value(-Afun_concrete * eta_lorentz**2 / 2, w_ibp)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: assert_zero('concrete linear IBP boundary discharge', linear_boundary_concrete)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: assert_zero('lorentzian-profile linear IBP boundary discharge', linear_boundary_lorentz)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: assert_zero('lorentzian finite-endpoint boundary discharge', linear_boundary_lorentz_endpoint + 2)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: assert_zero('concrete linear IBP with boundary', linear_cross_concrete - (linear_boundary_concrete + linear_bulk_concrete))
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: assert_zero('concrete quadratic IBP boundary discharge', quad_boundary_concrete)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: assert_zero('lorentzian-profile quadratic IBP boundary discharge', quad_boundary_lorentz)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: assert_zero('concrete quadratic IBP with boundary', quad_cross_concrete - (quad_boundary_concrete + quad_bulk_concrete))
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: assert_zero('Y20 spherical-Laplacian eigenvalue', spherical_laplacian_Y20 + 6 * Y20)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 179
+  role: sympy_script
+  excerpt: assert_nonzero('mutated Y20 spherical-Laplacian eigenvalue should fail', spherical_laplacian_Y20 + 5 * Y20)
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 230
+  role: sympy_script
+  excerpt: lines.append("The carried linear boundary term is\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 231
+  role: sympy_script
+  excerpt: lines.append("  [-T_w(R0,w) R0' eta]_{boundary}.\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: lines.append("The carried quadratic boundary term is\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 239
+  role: sympy_script
+  excerpt: lines.append("  [-1/2 T_{w,R}(R0,w) R0' eta^2]_{boundary}.\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 240
+  role: sympy_script
+  excerpt: lines.append("The boundary operator is also checked on atan(w), whose endpoint discharge is nonzero.\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 241
+  role: sympy_script
+  excerpt: lines.append("The linear and quadratic boundary discharges also vanish on a second decaying Lorentzian eta profile.\n")
+- path: scripts/moving_throat_pde_stage016_parent_throat_action_candidate_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: lines.append("A Lorentzian finite-endpoint probe gives boundary discharge -2, so nonzero finite limits are distinguished.\n")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

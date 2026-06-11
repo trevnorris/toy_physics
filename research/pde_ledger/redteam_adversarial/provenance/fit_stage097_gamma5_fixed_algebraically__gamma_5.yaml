@@ -1,0 +1,88 @@
+schema_version: 1
+candidate_id: fit_stage097_gamma5_fixed_algebraically
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage097_gamma5_fixed_algebraically__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 097
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 44
+  role: notes_stage
+  excerpt: On the minimal isotropic outgoing `l=2` branch, the 2.5PN audit already fixed the odd coefficient algebraically
+    as
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 46
+  role: notes_stage
+  excerpt: '`Gammabar_5 = 9 Kbar_2^(5/2) / Kbar_0^(3/2)`.'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 50
+  role: notes_stage
+  excerpt: '`Gammabar_5 = 9 Kbar_0 / (32 Omega_Q^5).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 53
+  role: notes_stage
+  excerpt: It is already determined by the same two quantities `(Kbar_0, Omega_Q)`.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 77
+  role: notes_stage
+  excerpt: '`Gammabar_5^target = 2 G / (5 c^5).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 96
+  role: notes_stage
+  excerpt: '`Gammabar_5 = N_Q Gammabar_5^target = N_Q * 2 G / (5 c^5).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 110
+  role: notes_stage
+  excerpt: '`R_5 := Gammabar_5 / (2G/(5c^5)) - 1,`'
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Gamma5 = sp.simplify(9 * K2**sp.Rational(5, 2) / K0**sp.Rational(3, 2))
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: Gamma5_expected = sp.simplify(9 * K0 / (32 * Omega**5))
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: assert sp.simplify(Gamma5 - Gamma5_expected) == 0
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: Gamma5_target = sp.simplify(9 * K2_target**sp.Rational(5, 2) / K0_target**sp.Rational(3, 2))
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: assert sp.simplify(Gamma5_target - 2 * G / (5 * c**5)) == 0
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: R5 = sp.simplify(Gamma5.subs(subs_actual) / Gamma5_target - 1)
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print('Gamma5 =', Gamma5_expected)
+- path: scripts/moving_throat_pde_stage097_single_normalization_defect_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print('Gamma5_target =', Gamma5_target)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

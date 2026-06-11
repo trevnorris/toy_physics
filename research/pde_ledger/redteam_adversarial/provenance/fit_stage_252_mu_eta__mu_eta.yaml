@@ -1,0 +1,121 @@
+schema_version: 1
+candidate_id: fit_stage_252_mu_eta
+parameter_name: mu_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_252_mu_eta__phase_b__mu_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_252.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: At the safe edge, with \(T=1/s_c\) and \(\Gamma_3s_c^3+\Gamma_5s_c^5=\mu_\eta(s_0^2-s_c^2)\), the total minimum
+    exported energy is \cref{eq:app-part08-main-safe-energy}, and the channel energies are obtained by multiplying by \(f_{\rm
+    vac}(s_c)\) or \(f_{\rm lat}(s_c)\).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: \Gamma_3 s_c^3+\Gamma_5 s_c^5=\mu_\eta(s_0^2-s_c^2).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 98
+  role: notes_stage
+  excerpt: \mu_\eta(s_0^2-s_c^2),
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: s_0:=\frac{1}{t_{\rm collapse,0}}=\sqrt{\kappa_V/\mu_\eta},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: \mu_\eta(s_0^2-s_c^2).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 325
+  role: notes_stage
+  excerpt: \frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 334
+  role: notes_stage
+  excerpt: '- and the effective dressing inertia \(\mu_\eta\),'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: \frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2),
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: \frac{V_{\rm in}^2}{2}(e^2-1)\,\mu_\eta(s_0^2-s_c^2).
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: \mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: \gamma_{\rm vac,safe}^{\rm eq}=f_{\rm vac}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: \gamma_{\rm lat,safe}^{\rm eq}=f_{\rm lat}(s_c)\,\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 447
+  role: notes_stage
+  excerpt: \mu_\eta=1.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 479
+  role: notes_stage
+  excerpt: '{\tfrac12(e^2-1)\mu_\eta(s_0^2-s_c^2)}}'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 528
+  role: notes_stage
+  excerpt: \frac{V_{\rm in}^2}{2}(e^2-1)\mu_\eta(s_0^2-s_c^2),
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: sc, s0, mu_eta = sp.symbols("s_c s_0 mu_eta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: safe_eq = sp.Eq(G3 * sc**3 + G5 * sc**5, mu_eta * (s0**2 - sc**2))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: Et_safe_reduced = sp.simplify(Et_safe_expected.subs(safe_combo, mu_eta * (s0**2 - sc**2)))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: gamma_safe_eq = sp.simplify(mu_eta * (s0**2 - sc**2) / sc)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: assert sp.simplify(Et_safe_reduced - Vin**2 * (sp.E**2 - 1) * mu_eta * (s0**2 - sc**2) / 2) == 0
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: '# gamma_eff,safe^eq = mu_eta (s0^2 - s_c^2)/s_c is actually exercised (not X-X).'
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: G3 * sc**3 + G5 * sc**5, mu_eta * (s0**2 - sc**2)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: assert sp.simplify(gamma_safe_eq_bridged - mu_eta * (s0**2 - sc**2) / sc) == 0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

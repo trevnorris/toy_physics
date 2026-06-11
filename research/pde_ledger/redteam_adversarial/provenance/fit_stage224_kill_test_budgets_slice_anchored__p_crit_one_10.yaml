@@ -1,0 +1,204 @@
+schema_version: 1
+candidate_id: fit_stage224_kill_test_budgets_slice_anchored
+parameter_name: P_crit_one_10
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_kill_test_budgets_slice_anchored__phase_b__p_crit_one_10.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '224'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_224.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~224 converts the primitive-branch compatibility result into the actual weak-axisymmetric
+    branch packet that the moving-throat PDE must return.}
+- path: paper/stages/stage_224.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_224.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation maps grouped lane prefactors into trace/anomaly coordinates, rewrites
+    the anisotropic packet in terms of $\Xi_1=P_1/P_0$, and transports the static normalization margin through the one-scalar
+    weak-axisymmetric ceiling.}
+- path: paper/stages/stage_224.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Actual-branch kill test: the branch survives only if the transported quantity $(\Delta_{\rm
+    norm}+T_{\rm quad})(1+|\varepsilon\Xi_1|)/\hat m_0^2$ stays below the critical prefactor budget.}'
+- path: paper/stages/stage_224.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the stage assumptions against the declared one-port, selected-branch, weak-axisymmetric, or rigid-mouth
+    closure before citing the output.
+- path: paper/stages/stage_224.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth
+    tracking alone.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: The compiler from the final branch packet to the actual grouped prefactors, the isotropic and weak-axisymmetric
+    ceiling inequalities, the exact one-scalar reduction
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: and the explicit headroom numbers below are exact consequences of that reduced closure. The numerical values are
+    exact evaluations at the Stage-223 compatibility point
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 13
+  role: notes_stage
+  excerpt: \bar P_0=P_{0,\mathrm{target,compat}}\approx 0.002069792318062885.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: 'This stage does **not** solve the full moving-throat PDE. It performs the first honest actual-branch transport
+    step: it converts the final `5`PN branch packet into the exact prefactor variables that the surviving same-charge dynamic
+    window cares about.'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: Stage 223 forced the primitive finite-throat one-port branch onto the exact isotropic `5`PN target surface and
+    found that the wall-like same-charge corridor survives only inside a **finite normalization window**.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: 'But that still left one gap:'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: The next honest step is therefore not another primitive scan. It is to compile the real PDE-selected branch data
+    into the same prefactor variables the Stage-223 window uses.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 5. and the explicit anisotropy headroom left at the Stage-223 compatibility point.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: '> “does the actual branch packet land inside one explicit finite corridor in `\Delta_{\rm norm}` and weak-axisymmetric
+    outgoing-prefactor slope?”'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 103
+  role: notes_stage
+  excerpt: P_{\rm both}^{(10)}=0.0028313316855593175,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 105
+  role: notes_stage
+  excerpt: P_{\rm one}^{(10)}=0.0035965105896846573.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 110
+  role: notes_stage
+  excerpt: P_{\rm both}^{(30)}=0.00817339430971383,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 112
+  role: notes_stage
+  excerpt: P_{\rm one}^{(30)}=0.0116633929790174.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: For any chosen ceiling `P_{\rm crit}`, define
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 132
+  role: notes_stage
+  excerpt: \max\{P_{20},P_{21},P_{22}\}\le P_{\rm crit}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 143
+  role: notes_stage
+  excerpt: \le P_{\rm crit}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 163
+  role: notes_stage
+  excerpt: \boxed{\bar P_0\le P_{\rm crit}.}
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 170
+  role: notes_stage
+  excerpt: \hat m_0^{\,2}P_{\rm crit}-T_{\rm quad}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: then isotropic survival at ceiling `P_{\rm crit}` is equivalent to
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 186
+  role: notes_stage
+  excerpt: \frac{T_{\rm quad}}{P_{\rm crit}}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: The later grouped moving-throat notes collapse the weak-axisymmetric outgoing slippage bundle to one scalar amplitude
+    with grouped signature
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 231
+  role: notes_stage
+  excerpt: This matters because the actual same-charge window is not generic in the full `(a_{P_0},b_{P_0})` plane. On the
+    weak-axisymmetric branch it collapses to a one-dimensional axisymmetric line.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 245
+  role: notes_stage
+  excerpt: So the worst surviving lane is always the one with the larger sign of `a_{P_0}`. Therefore the exact robust all-lane
+    ceiling test collapses to
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: P_{\rm crit}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: Equivalently, in the one-scalar `\Xi_1` language,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 258
+  role: notes_stage
+  excerpt: P_{\rm crit}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: P_{\rm crit}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 272
+  role: notes_stage
+  excerpt: The actual moving-throat branch now lives or dies, at this transported level, by one explicit inequality in
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 289
+  role: notes_stage
+  excerpt: \frac{T_{\rm quad}(1+|\epsilon\Xi_1|)}{P_{\rm crit}}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: '## 6. Explicit headroom at the Stage-223 compatibility point'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: Stage 223 found the concrete compatibility point
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: \bar P_0=P_{0,\rm target,compat}
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 305
+  role: notes_stage
+  excerpt: '|\epsilon\Xi_1|\le \frac{P_{\rm crit}}{\bar P_0}-1,'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: '|a_{P_0}|\le \frac{P_{\rm crit}-\bar P_0}{4},'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

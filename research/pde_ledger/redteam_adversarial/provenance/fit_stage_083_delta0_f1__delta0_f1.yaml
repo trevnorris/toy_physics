@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage_083_delta0_f1
+parameter_name: Delta0_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_delta0_f1__phase_b__delta0_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: Delta0_F1 = sp.simplify(
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: expect_close("Delta_0(F1) numeric anchor", Delta0_F1, sp.Float("1.73302079021525e-4"), 1e-16)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("Delta_0(F1) =", sp.N(Delta0_F1, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: Pe_minus_chi = sp.N(Xi_chi_coeff * Delta0_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: Pe_minus_J = sp.N(Xi_J_coeff * Delta0_F1, 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

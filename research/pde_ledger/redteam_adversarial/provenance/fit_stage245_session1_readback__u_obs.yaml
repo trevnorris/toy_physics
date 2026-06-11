@@ -1,0 +1,166 @@
+schema_version: 1
+candidate_id: fit_stage245_session1_readback
+parameter_name: U_obs
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback__phase_b__u_obs.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '245'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_245.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage245-direct-observables}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: 'It compiles the second lifted lane from Stage 243 into the actual physical observables that the compact program
+    already uses:'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: 1. the exact finite update of the physical observables `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: So the direct observables are
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 486
+  role: notes_stage
+  excerpt: and similarly for the finite observable compiler above, so long as the orbit-side forcing `f_U` and signed mouth
+    coupling `\chi_{UV}` are carried independently.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 561
+  role: notes_stage
+  excerpt: 1. It turns the abstract Stage-243 `U/V` free-energy lane into an **exact finite compiler** for the physical observables
+    `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`.
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: U_obs = sp.Float("0.14313458")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: V_obs = sp.Float("-0.03619791")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 211
+  role: sympy_script
+  excerpt: eps_ref_obs = sp.Float("0.3")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: aU_obs = sp.Float("2.5")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: aV_obs = sp.Float("3.0")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: gUV_obs = sp.Float("0.95")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 216
+  role: sympy_script
+  excerpt: eps_eta_obs = sp.N(eps_ref_obs * sp.exp(V_obs), 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: R_ratio_obs = sp.N(((1 - eps_ref_obs * sp.exp(V_obs)) / (1 - eps_ref_obs)) * sp.exp(-U_obs), 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: y_dep_obs = sp.N(sp.Matrix([0, -V_obs, U_obs - V_obs]), 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: chi_UV_obs = sp.N(aV_obs * V_obs / U_obs, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 221
+  role: sympy_script
+  excerpt: chi_lambda_obs = sp.N(chi_UV_obs / gUV_obs, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: Delta_obs = sp.N(aU_obs * aV_obs - chi_UV_obs**2, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: fU_obs = sp.N(U_obs * Delta_obs / aV_obs, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 225
+  role: sympy_script
+  excerpt: U_rebuilt = sp.N((aV_obs * fU_obs) / Delta_obs, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 226
+  role: sympy_script
+  excerpt: V_rebuilt = sp.N((chi_UV_obs * fU_obs) / Delta_obs, 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 227
+  role: sympy_script
+  excerpt: R1_obs = sp.N(-U_obs - eps_ref_obs * V_obs / (1 - eps_ref_obs), 16)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 229
+  role: sympy_script
+  excerpt: print("epsilon_eta(obs)      =", eps_eta_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 230
+  role: sympy_script
+  excerpt: print("R_target/R_ref(obs)   =", R_ratio_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 231
+  role: sympy_script
+  excerpt: print("y_dep(obs)            =")
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: sp.pprint(y_dep_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: print("chi_UV inferred       =", chi_UV_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 234
+  role: sympy_script
+  excerpt: print("chi_lambda inferred   =", chi_lambda_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 235
+  role: sympy_script
+  excerpt: print("Delta_UV inferred     =", Delta_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 236
+  role: sympy_script
+  excerpt: print("f_U inferred          =", fU_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 239
+  role: sympy_script
+  excerpt: print("R1_obs                =", R1_obs)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 241
+  role: sympy_script
+  excerpt: assert abs(float(eps_eta_obs) - 0.28933482) < 5e-9
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: assert abs(float(R_ratio_obs) - 0.87984149) < 5e-9
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 245
+  role: sympy_script
+  excerpt: assert abs(float(R1_obs) - (-0.12762119)) < 5e-9
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

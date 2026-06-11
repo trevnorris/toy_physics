@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage130_pi_star_exact_unique
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage130_pi_star_exact_unique__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '130'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_130.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+- path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Pi_star = sp.nsolve(gPi - g_minus, 1.5, tol=1e-30, maxsteps=100, prec=80)
+- path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: print("Pi_* =", sp.N(Pi_star, 30))
+- path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: print("x_* = 1/Pi_* =", sp.N(1/Pi_star, 30))
+- path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: print("g(Pi_*) =", sp.N(gPi.subs(Pi, Pi_star), 30))
+- path: scripts/moving_throat_pde_stage130_mouth_bias_map_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("g'(Pi_*) =", sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

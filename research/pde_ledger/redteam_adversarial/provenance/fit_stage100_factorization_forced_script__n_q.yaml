@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage100_factorization_forced_script
+parameter_name: N_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage100_factorization_forced_script__phase_b__n_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '100'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_100.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_100.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) while keeping \(\chi_Q\) symbolic; the canonical
+    condition \(\chi_Q=1\) is fixed downstream at Stage~105 from the Stage~104 outgoing fingerprint.}
+- path: paper/stages/stage_100.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Full odd normalization factorizes as \(\widehat m_0^{\,2}\chi_Q N_Q=1\).
+- path: paper/stages/stage_100.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 7
+  role: notes_stage
+  excerpt: '`N_Q := Kbar_0 / Kbar_0^target`.'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 34
+  role: notes_stage
+  excerpt: '- the even moments depend only on `N_Q`,'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 35
+  role: notes_stage
+  excerpt: '- the odd Burke–Thorne coefficient depends on `chi_Q N_Q`.'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 53
+  role: notes_stage
+  excerpt: '`N_Q := Kbar_0/Kbar_0^target`,'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 57
+  role: notes_stage
+  excerpt: '`Kbar_2/Kbar_2^target = N_Q,`'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 59
+  role: notes_stage
+  excerpt: '`Kbar_4/Kbar_4^target = N_Q.`'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 77
+  role: notes_stage
+  excerpt: '`Gammabar_5 / Gammabar_5^target = chi_Q N_Q.`'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 91
+  role: notes_stage
+  excerpt: '`mhat_0^2 chi_Q N_Q = 1.`'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 95
+  role: notes_stage
+  excerpt: '`N_Q = 1/(mhat_0^2 chi_Q).`'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 103
+  role: notes_stage
+  excerpt: Stage 82 said the remaining reduced theorem gap was one scalar normalization defect `N_Q - 1`.
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 107
+  role: notes_stage
+  excerpt: '- if the branch is only *conservatively* known, the even defect is `N_Q - 1`;'
+- path: notes/stages/moving_throat_pde_stage100_outgoing_normalization_factorization.md
+  line: 108
+  role: notes_stage
+  excerpt: '- if the branch is *retarded* but not yet proven canonical, the full 2.5PN odd defect is `mhat_0^2 chi_Q N_Q -
+    1`;'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: 'Stage 100 SymPy audit: outgoing-normalization factorization mhat_0^2 chi_Q N_Q = 1.'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: (iii) "outgoing l=2 DtN fingerprint against the normalized z=omega a/c_s
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: expansion" — stage 104 proves the exact outgoing fingerprint, and stage
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: matching. Both are downstream of this stage, so this stage carries chi_Q
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: This stage owns Check (i) — the `mhat_0^2 chi_Q N_Q = 1` closure — which is
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# chi_Q is a free real parameter at this stage. Its pinning to 1 by the l=2'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: '# outgoing fingerprint is proved at stage 104. Declaring it positive would'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: NQ = sp.symbols('N_Q', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: NQ_derived = sp.simplify(K0 / K0_t)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: print('NQ =', NQ_derived)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print('K2/K2_target - NQ =', sp.simplify(K2/K2_t - NQ_derived))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print('K4/K4_target - NQ =', sp.simplify(K4/K4_t - NQ_derived))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print('Gamma5/Gamma5_target - chiQ*NQ =', sp.simplify(Gamma5/Gamma5_t - chiQ*NQ_derived))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert sp.simplify(K2/K2_t - NQ_derived) == 0
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: assert sp.simplify(K4/K4_t - NQ_derived) == 0
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: assert sp.simplify(Gamma5/Gamma5_t - chiQ*NQ_derived) == 0
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '# (the point-particle 2.5PN coefficient with source-map factor mhat_0^2 matches'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: '# the GR target). Substituting the script-derived Gamma_5 = chi_Q N_Q Gamma_5_target,'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '# the residual factorizes as Gamma_5_target * (mhat_0^2 chi_Q N_Q - 1).'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: '# wrong factor, the ratio below would not equal (mhat_0^2 chi_Q N_Q - 1).'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: closure_check = sp.simplify(closure_ratio - (mhat0**2 * chiQ * NQ_derived - 1))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print('closure_ratio - (mhat0^2 chi_Q N_Q - 1) =', closure_check)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '# the factorization mhat_0^2 chi_Q N_Q = 1 is forced.'
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: 'print(''\nClosure ledger: mhat_0^2 * Gamma_5 = Gamma_5_target  <=>  mhat_0^2 chi_Q N_Q = 1'')'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

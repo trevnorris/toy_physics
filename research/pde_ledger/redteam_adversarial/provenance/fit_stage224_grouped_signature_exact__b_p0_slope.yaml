@@ -1,0 +1,92 @@
+schema_version: 1
+candidate_id: fit_stage224_grouped_signature_exact
+parameter_name: b_P0_slope
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_grouped_signature_exact__phase_b__b_p0_slope.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '224'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: '> “does the actual branch packet land inside one explicit finite corridor in `\Delta_{\rm norm}` and weak-axisymmetric
+    outgoing-prefactor slope?”'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: So the actual branch packet already determines the three lane-wise static prefactors that must be compared against
+    the transported same-charge window.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 101
+  role: notes_stage
+  excerpt: 'At the stricter `10%`-loss benchmark:'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 108
+  role: notes_stage
+  excerpt: 'At the looser `30%`-loss benchmark:'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: '### 3.1 Calibrated-branch lower bound on `\hat m_0`'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 189
+  role: notes_stage
+  excerpt: So the same-charge corridor places a direct lower bound on the source-map factor of the actual calibrated branch.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: and identify that amplitude with the physical outgoing-prefactor slope
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 276
+  role: notes_stage
+  excerpt: '- and the weak-axisymmetric outgoing-prefactor slope `\Xi_1=P_1/P_0`.'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 278
+  role: notes_stage
+  excerpt: '### 5.1 Calibrated-branch bound with weak anisotropy included'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 280
+  role: notes_stage
+  excerpt: If the actual branch is exactly calibrated,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 292
+  role: notes_stage
+  excerpt: So weak-axisymmetric prefactor loading raises the lower bound on the source-map factor linearly in the absolute
+    outgoing slope.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 311
+  role: notes_stage
+  excerpt: '### 6.1 Stricter `10%`-loss benchmark'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 330
+  role: notes_stage
+  excerpt: '### 6.2 Looser `30%`-loss benchmark'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: '> the idea is still alive, but the actual moving-throat branch now has to land inside a sharply delimited corridor
+    in `\Delta_{\rm norm}` and weak-axisymmetric outgoing-prefactor slope, or equivalently in `\Delta_{\rm norm}`, `a_{P_0}`,
+    and `b_{P_0}`.'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 432
+  role: notes_stage
+  excerpt: 7. the calibrated-branch lower bounds on `\hat m_0^{\,2}`,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

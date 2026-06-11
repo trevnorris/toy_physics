@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage050_enhancement_factor_exact
+parameter_name: S_zeta_n
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage050_enhancement_factor_exact__phase_b__s_zeta_n.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '050'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_050.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 050]{Stage 050: Exact Comparison of Physical \texorpdfstring{$\zeta$}{zeta} Against the Required
+    Threshold}'
+- path: paper/stages/stage_050.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~050 compares \(\zeta_n^{\rm phys}\) against \(\zeta_{\rm req}\) and proves that the
+    lowest symmetric twin is the natural first support branch.}
+- path: paper/stages/stage_050.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~048 threshold \(\zeta_{\rm req}\) and Stage~049 D/N support tower.}
+- path: paper/stages/stage_050.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage050_zeta_threshold_comparison_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage050_zeta_threshold_comparison_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage050_zeta_threshold_comparison_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage050_zeta_threshold_comparison_mathematica_audit.txt}.}'
+- path: paper/stages/stage_050.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: The lowest symmetric twin lane has \(\zeta_0=1\).  Therefore its enhancement factor is
+- path: paper/stages/stage_050.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}\leq1
+- path: paper/stages/stage_050.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}>\frac{1}{(2n+1)^2}
+- path: paper/stages/stage_050.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: x\leq x_{\max}(n;\zeta_{\rm req})
+- path: paper/stages/stage_050.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: =\frac{1}{n(n+1)}\left[\frac{1}{(2n+1)^2\zeta_{\rm req}}-1\right]}.
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 050: Exact Comparison of the Physical Coherent `zeta` Against `zeta_req`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 7
+  role: notes_stage
+  excerpt: '`zeta_phys >= zeta_req`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 11
+  role: notes_stage
+  excerpt: '`zeta_n^(phys)`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 16
+  role: notes_stage
+  excerpt: '`zeta_n^(twin)`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 25
+  role: notes_stage
+  excerpt: '`zeta_0^(twin)=1`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 38
+  role: notes_stage
+  excerpt: '`zeta_req <= 1`;'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 41
+  role: notes_stage
+  excerpt: '`zeta_n^(twin) < 1/(2n+1)^2`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 45
+  role: notes_stage
+  excerpt: '`zeta_req > 1/(2n+1)^2`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 50
+  role: notes_stage
+  excerpt: '`x <= x_max(n; zeta_req)`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 51
+  role: notes_stage
+  excerpt: '`   = [ 1 / ( (2n+1)^2 zeta_req ) - 1 ] / [ n(n+1) ].`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 65
+  role: notes_stage
+  excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ],`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 71
+  role: notes_stage
+  excerpt: '`S(zeta;eps) = 1 + zeta (1-eps) / (1 - eps zeta),`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 75
+  role: notes_stage
+  excerpt: '`zeta_phys >= zeta_req.`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 85
+  role: notes_stage
+  excerpt: '`zeta_0^(twin) = 1.`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 99
+  role: notes_stage
+  excerpt: '`zeta_req <= 1`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 114
+  role: notes_stage
+  excerpt: '`zeta_n^(twin)`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 121
+  role: notes_stage
+  excerpt: '`zeta_n^(twin) < 1 / (2n+1)^2.`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 125
+  role: notes_stage
+  excerpt: '`zeta_req <= 1 / (2n+1)^2.`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 131
+  role: notes_stage
+  excerpt: '- `n=1` impossible if `zeta_req > 1/9`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 132
+  role: notes_stage
+  excerpt: '- `n=2` impossible if `zeta_req > 1/25`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 133
+  role: notes_stage
+  excerpt: '- `n=3` impossible if `zeta_req > 1/49`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 144
+  role: notes_stage
+  excerpt: '`zeta_req <= 1 / (2n+1)^2`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 148
+  role: notes_stage
+  excerpt: '`zeta_n^(twin) >= zeta_req`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 154
+  role: notes_stage
+  excerpt: '`x <= x_max(n; zeta_req)`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 155
+  role: notes_stage
+  excerpt: '`   = [ 1 / ( (2n+1)^2 zeta_req ) - 1 ] / [ n(n+1) ].`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 168
+  role: notes_stage
+  excerpt: '`= 1 + zeta_n^(twin) (1-eps) / (1 - eps zeta_n^(twin)).`'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 170
+  role: notes_stage
+  excerpt: Because `S` is strictly increasing in `zeta`, the upper bound on `zeta_n^(twin)` gives the exact enhancement ceiling
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 197
+  role: notes_stage
+  excerpt: '- the lowest symmetric twin lane has `zeta=1` and therefore `S=2` exactly,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 198
+  role: notes_stage
+  excerpt: '- `zeta_req <= 1` is equivalent to `S_req <= 2`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 199
+  role: notes_stage
+  excerpt: '- every higher harmonic obeys the exact impossibility bound `zeta_req <= (2n+1)^(-2)`,'
+- path: notes/stages/moving_throat_pde_stage050_zeta_threshold_comparison.md
+  line: 200
+  role: notes_stage
+  excerpt: '- when that bound is satisfied, the exact softness threshold is `x <= x_max(n;zeta_req)`,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

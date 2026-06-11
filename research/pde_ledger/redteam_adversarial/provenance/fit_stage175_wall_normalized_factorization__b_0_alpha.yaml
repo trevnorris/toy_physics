@@ -1,0 +1,97 @@
+schema_version: 1
+candidate_id: fit_stage175_wall_normalized_factorization
+parameter_name: B_0_alpha
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage175_wall_normalized_factorization__phase_b__b_0_alpha.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '175'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 7
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 9
+  role: notes_stage
+  excerpt: 2\,\delta\ln\!\left(\frac{c_\alpha}{\varpi_\alpha}\right)-\delta_K,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 23
+  role: notes_stage
+  excerpt: '> factor the microscopic support/port data by the wall baseline and determine whether the remaining grouped defect
+    is a generic static-shape problem, or a much narrower **outgoing-load mismatch**.'
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 29
+  role: notes_stage
+  excerpt: B_{0,\alpha}=K\,\chi_\alpha^2,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 37
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}=\delta\ln\chi_\alpha^2,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 68
+  role: notes_stage
+  excerpt: B_{0,\alpha}=\frac{c_\alpha^2}{\varpi_\alpha^2},
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 95
+  role: notes_stage
+  excerpt: \omega_B \sum_\alpha \rho_\alpha^{(B)}\Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 111
+  role: notes_stage
+  excerpt: \chi_\alpha:=\frac{c_\alpha}{\sqrt K\,\varpi_\alpha}.
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 117
+  role: notes_stage
+  excerpt: B_{0,\alpha}=K\,\chi_\alpha^2.
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 124
+  role: notes_stage
+  excerpt: \Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 126
+  role: notes_stage
+  excerpt: \delta\ln\chi_\alpha^2.
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 130
+  role: notes_stage
+  excerpt: Thus the BdG support sector contributes to the remaining grouped loading defect only through the drift of the wall-normalized
+    support shape \(\chi_\alpha\).
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 240
+  role: notes_stage
+  excerpt: \sum_\alpha \rho_\alpha^{(B)}\,\delta\ln\chi_\alpha^2,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 278
+  role: notes_stage
+  excerpt: \delta\ln\chi_\alpha^2=0
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 279
+  role: notes_stage
+  excerpt: \qquad\text{for all BdG modes }\alpha,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 312
+  role: notes_stage
+  excerpt: \delta\ln\chi_\alpha^2=0,
+- path: notes/stages/moving_throat_pde_stage175_wall_normalized_load_shape.md
+  line: 434
+  role: notes_stage
+  excerpt: 1. the BdG support defect is exactly the drift of the wall-normalized support shape \(\chi_\alpha\);
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

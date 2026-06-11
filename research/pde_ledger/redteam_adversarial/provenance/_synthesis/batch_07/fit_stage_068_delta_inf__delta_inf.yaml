@@ -1,0 +1,25 @@
+candidate_id: fit_stage_068_delta_inf
+parameter_name: Delta_inf
+origin_claims:
+  - parameter: Delta_inf
+    introduced_at_stage: 061
+    introduced_at_line: 166
+    citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 166
+      excerpt: "`Delta_inf(kappa,eta)`"
+constraints:
+  - parameter: Delta_inf
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 154
+      excerpt: "It is now a concrete competition between source susceptibility and support/source coupling on one side, and the exact support geometry functions `Delta_0`, `Delta_inf` on the other."
+downstream_dependents: [066, 068, 069]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "Delta_inf is a symbolic axial support-geometry function Delta_inf(kappa,eta) from the Stage-061 operator theorem, carried symbolically through 066 and 068 (the stage-068 sympy script declares it as a free positive symbol). It has no scalar value at stage 068; the scanner's target-value extraction has no numeric ledger value to attribute here."
+    citations:
+      - { path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py, line: 39, excerpt: "C2, W_wall, Pe_req, Delta0, Deltainf = sp.symbols(" }
+      - { path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md, line: 103, excerpt: "- the axial functions `Delta_0`, `Delta_inf`," }

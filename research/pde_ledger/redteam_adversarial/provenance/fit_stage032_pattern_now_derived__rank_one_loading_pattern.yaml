@@ -1,0 +1,117 @@
+schema_version: 1
+candidate_id: fit_stage032_pattern_now_derived
+parameter_name: rank_one_loading_pattern
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_pattern_now_derived__phase_b__rank_one_loading_pattern.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '032'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_032.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: At zero loading, the selected mode is the constant branch and
+- path: paper/stages/stage_032.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: \item At zero loading the normalization denominator is \(\kappa_0\), giving \(\widehat m_-=1\) at onset.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 10
+  role: notes_stage
+  excerpt: That was honest, but it also meant one important part of the selected-branch normalization problem had not yet
+    been tied back to an explicit finite-throat mode model.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 14
+  role: notes_stage
+  excerpt: '> in the first explicit finite-throat axial source model, does the same D/N overlap structure that generates the
+    mixed-sector loading also determine the selected source map, so that `mhat_-` stops being an independent parameter?'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 17
+  role: notes_stage
+  excerpt: In the first local isotropic kernel model built on the exact N/N wall basis and the exact D/N half-wave, every
+    relevant wall–internal and source–wall coupling is determined by the same overlap vector
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 36
+  role: notes_stage
+  excerpt: which is now completely determined by the conservative selected-mode spectral data and the outgoing transfer factor.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 95
+  role: notes_stage
+  excerpt: '- one BdG support half-wave `phi(s) = phi f_0(s)`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 96
+  role: notes_stage
+  excerpt: '- one mixed `A_w/F_(mu w)/J^w` half-wave `W(s) = W f_0(s)`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 130
+  role: notes_stage
+  excerpt: This is exactly the pattern that had been assumed abstractly in Stage 029; now it is derived from the explicit
+    finite-throat basis and local isotropic kernels.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 183
+  role: notes_stage
+  excerpt: So the external source vector in wall-coordinate space is simply
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 195
+  role: notes_stage
+  excerpt: At zero loading the lower mode is just the flat branch, so
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 207
+  role: notes_stage
+  excerpt: So on the natural D/N source branch the abstract factor `mhat_-` is gone.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 208
+  role: notes_stage
+  excerpt: It is completely fixed by the same selected overlap `s_-` that already controls the wall loading.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 231
+  role: notes_stage
+  excerpt: The selected-branch normalization problem cannot be hidden inside a huge undetermined source-map amplification
+    on the natural D/N source branch.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 232
+  role: notes_stage
+  excerpt: The source factor is real, positive, monotone, and modest.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 270
+  role: notes_stage
+  excerpt: 1. it derives the Stage-029 loading structure from explicit local isotropic kernels,
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 283
+  role: notes_stage
+  excerpt: The next honest step is therefore to write the full selected-branch normalization equation directly in microscopic
+    coupling language and see what exact stability and reachability constraints it imposes.
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: 'def banner(title: str) -> None:'
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: raise AssertionError(f"{name} is not zero")
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: raise AssertionError(f"{name} is not zero")
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: '# Identify the lower one by symbolic comparison at a probe point (alpha0=1, A=1, DK=1).'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

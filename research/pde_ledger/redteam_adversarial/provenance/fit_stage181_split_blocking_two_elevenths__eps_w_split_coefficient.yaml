@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage181_split_blocking_two_elevenths
+parameter_name: eps_W_split_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_split_blocking_two_elevenths__phase_b__eps_w_split_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '181'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 8
+  role: notes_stage
+  excerpt: \Xi_1=\frac{\delta\ln \mathcal T_{\mathrm{eff},A}^2}{\epsilon\lambda_A},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 12
+  role: notes_stage
+  excerpt: \frac{Z_{W,A}(1+\rho_A)^2}{\Omega_{W,A}^2(1-\epsilon_{W,A})^2}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 15
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,A}}{R_{\mathrm{target},A}}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 25
+  role: notes_stage
+  excerpt: \epsilon
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 27
+  role: notes_stage
+  excerpt: \epsilon_W^{(\mathrm{split})}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 29
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 34
+  role: notes_stage
+  excerpt: M_{\mathrm{mix}}\,S(\zeta;\epsilon),
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 36
+  role: notes_stage
+  excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 42
+  role: notes_stage
+  excerpt: \frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 58
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 61
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_\eta}{R_{\mathrm{target}}},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 69
+  role: notes_stage
+  excerpt: \zeta_Z-\omega_W+\frac{2\chi_1}{1+\chi_0}+\frac{2\epsilon_1}{1-\epsilon},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 72
+  role: notes_stage
+  excerpt: with the exact split-blocking drift
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 75
+  role: notes_stage
+  excerpt: \epsilon_1
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 77
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 79
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\,\delta_{U,1}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 105
+  role: notes_stage
+  excerpt: the mixed blocking ratio is the split quantity
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 107
+  role: notes_stage
+  excerpt: \epsilon
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 109
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 116
+  role: notes_stage
+  excerpt: \frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 124
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_\eta}{R_{\mathrm{target}}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 126
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 140
+  role: notes_stage
+  excerpt: '- and the split mixed blocking ratio \(\epsilon\).'
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 142
+  role: notes_stage
+  excerpt: The support-enhancement factor \(S(\zeta;\epsilon)\) and the total baseline \(M_{\mathrm{tr}}\) do **not** enter.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 150
+  role: notes_stage
+  excerpt: M_{\mathrm{tr}} = M_{\mathrm{mix}}\,S(\zeta;\epsilon),
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 152
+  role: notes_stage
+  excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\zeta\epsilon}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 158
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 174
+  role: notes_stage
+  excerpt: \frac{(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 209
+  role: notes_stage
+  excerpt: \delta\ln Z_{W,A}=\epsilon\lambda_A\,\zeta_Z,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 211
+  role: notes_stage
+  excerpt: \delta\ln \Omega_{W,A}^2=\epsilon\lambda_A\,\omega_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 214
+  role: notes_stage
+  excerpt: \delta\chi_{0,A}=\epsilon\lambda_A\,\chi_1,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 216
+  role: notes_stage
+  excerpt: \delta\epsilon_{W,A}=\epsilon\lambda_A\,\varepsilon_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 218
+  role: notes_stage
+  excerpt: \delta\delta_{U,A}=\epsilon\lambda_A\,\delta_{U,1},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 220
+  role: notes_stage
+  excerpt: \delta\epsilon_{\eta,A}=\epsilon\lambda_A\,\eta_1.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 227
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 229
+  role: notes_stage
+  excerpt: \zeta_Z-\omega_W+\frac{2\chi_1}{1+\chi_0}+\frac{2\epsilon_1}{1-\epsilon},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 231
+  role: notes_stage
+  excerpt: where \(\epsilon_1\) is the weak-axisymmetric drift of the split blocking ratio
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 233
+  role: notes_stage
+  excerpt: \epsilon
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 235
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 240
+  role: notes_stage
+  excerpt: \epsilon_1
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

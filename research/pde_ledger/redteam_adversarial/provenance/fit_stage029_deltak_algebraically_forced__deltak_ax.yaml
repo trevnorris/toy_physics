@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage029_deltaK_algebraically_forced
+parameter_name: DeltaK_ax
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage029_deltak_algebraically_forced__phase_b__deltak_ax.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 029
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: DeltaK_ax = sp.symbols("DeltaK_ax", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'K1 = K0 + DeltaK_ax  # K1 > K0 by physical assumption (axial stiffness ordering)'
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: DeltaK = sp.simplify(K1t - K0t)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: '# Sanity check: K0t = K0 - Xi0, K1t = K1 - Xi0, K1 = K0 + DeltaK_ax, so'
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: '# (K1t - K0t) - DeltaK_ax = 0 is algebraically forced by the construction.'
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: expect_zero("DeltaK_tilde - DeltaK_bare (Xi_0 cancellation)", DeltaK - DeltaK_ax)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: disc = sp.simplify((DeltaK + alpha0 * xi) ** 2 + 4 * alpha0**2 * eta**2)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: (DeltaK + alpha0 * xi) * sp.sin(2 * theta) - 2 * alpha0 * eta * sp.cos(2 * theta)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: tan2theta = sp.simplify(2 * alpha0 * eta / (DeltaK + alpha0 * xi))
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 246
+  role: sympy_script
+  excerpt: DeltaK = sp.simplify(K1t - K0t)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 261
+  role: sympy_script
+  excerpt: disc = sp.simplify((DeltaK + al * xi) ** 2 + 4 * al**2 * eta**2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

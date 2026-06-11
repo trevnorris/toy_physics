@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_082_zeta_max
+parameter_name: zeta_max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_082_zeta_max__phase_b__zeta_max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 082
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_082.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The support-demand function \(\zeta_{\rm req}\), physical support map \(\zeta_{\rm phys}\),
+    and operator-selected bias \(\mathrm{Pe}_*\).}
+- path: paper/stages/stage_082.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage082-zeta-req}
+- path: paper/stages/stage_082.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+- path: paper/stages/stage_082.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage082-zeta-phys}
+- path: paper/stages/stage_082.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm phys}(\mathrm{Pe},\eta;\kappa)
+- path: paper/stages/stage_082.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: =\zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+- path: paper/stages/stage_082.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: -\zeta_{\rm phys}(\mathrm{Pe}_*(\Xi,\eta,\kappa),\eta;\kappa)}.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 5
+  role: notes_stage
+  excerpt: The explicit Family-1 branch phase ended with a hard support ceiling in the selected-branch product variable `Pi_tr`,
+    but that result was still being carried through several intermediate variables (`Pe_req`, `zeta_req`, `Pi_tr/C_mix`).
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 14
+  role: notes_stage
+  excerpt: '`:= zeta_req(Pi_tr,C_mix,eps_blk) - zeta_phys(Pe_*(Xi,eta,kappa),eta;kappa),`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 18
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 25
+  role: notes_stage
+  excerpt: '`zeta_phys(Pe,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 52
+  role: notes_stage
+  excerpt: and the localized `4+1` Maxwell sector
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 96
+  role: notes_stage
+  excerpt: '`zeta_phys(Pe,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 111
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 118
+  role: notes_stage
+  excerpt: '`zeta_req ? zeta_phys`.'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 127
+  role: notes_stage
+  excerpt: '`:= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 128
+  role: notes_stage
+  excerpt: '` - zeta_phys(Pe_*(Xi,eta,kappa),eta;kappa).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 159
+  role: notes_stage
+  excerpt: Since `zeta_phys(Pe,eta;kappa)` is strictly increasing in `Pe`, the physical support ratio obeys the exact bounds
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 161
+  role: notes_stage
+  excerpt: '`zeta_-(Xi,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 162
+  role: notes_stage
+  excerpt: '`:= zeta_phys( Xi Delta_0(kappa,eta), eta; kappa )`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 163
+  role: notes_stage
+  excerpt: '`<= zeta_phys(Pe_*,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 164
+  role: notes_stage
+  excerpt: '`<= zeta_phys( Xi Delta_inf(kappa,eta), eta; kappa )`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 165
+  role: notes_stage
+  excerpt: '`: = zeta_+(Xi,eta;kappa).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 169
+  role: notes_stage
+  excerpt: '`R_-(...) := zeta_req - zeta_+ <= R_quad <= zeta_req - zeta_- =: R_+(...).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 181
+  role: notes_stage
+  excerpt: Because `zeta_req` is strictly increasing in `Pi_tr`, the bounded residual can be translated back into exact product
+    thresholds.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 185
+  role: notes_stage
+  excerpt: '`Q(zeta;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 186
+  role: notes_stage
+  excerpt: '`:= [ 1 + (1 - 2 eps_blk) zeta ] / [ 1 - eps_blk zeta ].`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 190
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 200
+  role: notes_stage
+  excerpt: '`Pi_suff := C_mix Q( zeta_-(Xi,eta;kappa) ; eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 202
+  role: notes_stage
+  excerpt: '`Pi_fail := C_mix Q( zeta_+(Xi,eta;kappa) ; eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 223
+  role: notes_stage
+  excerpt: '`= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 224
+  role: notes_stage
+  excerpt: '` - zeta_phys(Pe_*(Xi_F1,37,12321/5), 37; 12321/5).`'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1. Exact inverse map between zeta_req and Pi_tr.
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: zeta = sp.symbols("zeta", real=True)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: zeta_minus, zeta_plus = sp.symbols("zeta_- zeta_+", real=True)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify((Pi_tr - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi_tr)))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Q = sp.simplify((1 + (1 - 2 * eps_blk) * zeta) / (1 - eps_blk * zeta))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("zeta_req(Pi_tr,C_mix,eps_blk) =")
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: sp.pprint(zeta_req)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: print("\nQ(zeta;eps_blk) =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

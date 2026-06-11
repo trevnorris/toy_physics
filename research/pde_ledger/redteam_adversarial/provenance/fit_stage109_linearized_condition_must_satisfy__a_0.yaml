@@ -1,0 +1,98 @@
+schema_version: 1
+candidate_id: fit_stage109_linearized_condition_must_satisfy
+parameter_name: a_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage109_linearized_condition_must_satisfy__phase_b__a_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '109'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_109.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: First-order outgoing defect is \(\Delta_Q=5b+a_0/3+9a_5\).
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 15
+  role: notes_stage
+  excerpt: \Sigma_0=\varepsilon a_0,
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 19
+  role: notes_stage
+  excerpt: with the even slots adjusted to preserve the canonical conservative fingerprint.
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 23
+  role: notes_stage
+  excerpt: \chi_Q=\frac{3(S\beta^5+9\Sigma_5)}{3S-\Sigma_0}
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 31
+  role: notes_stage
+  excerpt: \varepsilon\left(5b+\frac{a_0}{3}+9a_5\right)
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 39
+  role: notes_stage
+  excerpt: 'The coefficient `s` drops out to first order. This matches the exact Class-A invariance: overall mouth renormalization
+    does not move the normalized outgoing quadrupole fingerprint.'
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 46
+  role: notes_stage
+  excerpt: So a genuine effective radius/sound-speed shift that is not removed by the even-moment matching will move the outgoing
+    normalization linearly.
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 51
+  role: notes_stage
+  excerpt: \delta\chi_Q^{(0)}=\frac{a_0}{3},
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 57
+  role: notes_stage
+  excerpt: \boxed{(b,\,a_0,\,a_5).}
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 65
+  role: notes_stage
+  excerpt: 5b+\frac{a_0}{3}+9a_5=0.
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 71
+  role: notes_stage
+  excerpt: a_5=-\frac{5b}{9}-\frac{a_0}{27}.
+- path: notes/stages/moving_throat_pde_stage109_linearized_branch_selection.md
+  line: 79
+  role: notes_stage
+  excerpt: '> compute the isotropic moving-throat DtN branch data `(b, a_0, a_5)` and test whether they satisfy the exact
+    nonlinear condition of Stage 91, or at least the linearized condition above.'
+- path: scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: s, b, a0, a5 = sp.symbols('s b a0 a5', real=True)
+- path: scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: Sigma0 = eps*a0
+- path: scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: chi = sp.simplify(3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0))
+- path: scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: expected = 1 + eps*(5*b + a0/sp.Integer(3) + 9*a5)
+- path: scripts/moving_throat_pde_stage109_linearized_branch_selection_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: expected_a5_sol = -sp.Rational(5, 9)*b - sp.Rational(1, 27)*a0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

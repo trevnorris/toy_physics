@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage171_outlet_feed_coefficients
+parameter_name: delta_gamma_W_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage171_outlet_feed_coefficients__phase_b__delta_gamma_w_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '171'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 171: Exact Microscopic Decomposition of the Linear Grouped Outlet Obstructions'
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 7
+  role: notes_stage
+  excerpt: \mathcal K_A:=\delta D_{A,2}+\frac19\,\delta D_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 9
+  role: notes_stage
+  excerpt: \mathcal G_A:=\delta N_{A,0}-P_0\,\delta D_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 15
+  role: notes_stage
+  excerpt: \delta\kappa_W^{(A)}=
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 18
+  role: notes_stage
+  excerpt: \delta\gamma_W^{(A)}=
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 36
+  role: notes_stage
+  excerpt: \mathcal W_A:=\frac19\,\delta K_A-\delta M_A,
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 38
+  role: notes_stage
+  excerpt: \mathcal B_A:=\delta B_{A,2}+\frac19\,\delta B_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 40
+  role: notes_stage
+  excerpt: \mathcal Z_A:=\delta Z_{A,2}+\frac19\,\delta Z_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 46
+  role: notes_stage
+  excerpt: -P_0\,\delta K_A
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 47
+  role: notes_stage
+  excerpt: +P_0\,\delta B_{A,0}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 53
+  role: notes_stage
+  excerpt: \mathcal N_A:=\delta N_{A,0}+P_0\,\delta Z_{A,0}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 67
+  role: notes_stage
+  excerpt: '## 1. Carry-forward full-bundle coefficients'
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 83
+  role: notes_stage
+  excerpt: and outgoing-transfer coefficient
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 85
+  role: notes_stage
+  excerpt: N_{A,0}=N_0+\delta N_{A,0}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 89
+  role: notes_stage
+  excerpt: '- \(K_A,M_A\) are the grouped wall baseline coefficients,'
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 96
+  role: notes_stage
+  excerpt: D_{A,n}=D_n+\delta D_{A,n},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 98
+  role: notes_stage
+  excerpt: N_{A,0}=N_0+\delta N_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 102
+  role: notes_stage
+  excerpt: \mathcal K_A=\delta D_{A,2}+\frac19\,\delta D_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 104
+  role: notes_stage
+  excerpt: \mathcal G_A=\delta N_{A,0}-P_0\,\delta D_{A,0}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 109
+  role: notes_stage
+  excerpt: \delta D_{A,0}=\delta K_A-\delta B_{A,0}-\delta Z_{A,0},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 112
+  role: notes_stage
+  excerpt: \delta D_{A,2}=-\delta M_A-\delta B_{A,2}-\delta Z_{A,2}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 119
+  role: notes_stage
+  excerpt: \left(\frac19\,\delta K_A-\delta M_A\right)
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 121
+  role: notes_stage
+  excerpt: \left(\delta B_{A,2}+\frac19\,\delta B_{A,0}\right)
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 123
+  role: notes_stage
+  excerpt: \left(\delta Z_{A,2}+\frac19\,\delta Z_{A,0}\right).
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 133
+  role: notes_stage
+  excerpt: \delta N_{A,0}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 134
+  role: notes_stage
+  excerpt: -P_0\bigl(\delta K_A-\delta B_{A,0}-\delta Z_{A,0}\bigr)
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 136
+  role: notes_stage
+  excerpt: -P_0\,\delta K_A+P_0\,\delta B_{A,0}+\mathcal N_A.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 148
+  role: notes_stage
+  excerpt: '## 2. Exact BdG contribution to the outlet obstructions'
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 159
+  role: notes_stage
+  excerpt: c_{A\alpha}=c_\alpha+\delta c_{A\alpha},
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 161
+  role: notes_stage
+  excerpt: \varpi_{A\alpha}=\varpi_\alpha+\delta\varpi_{A\alpha}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 166
+  role: notes_stage
+  excerpt: \delta B_{A,0}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 170
+  role: notes_stage
+  excerpt: \frac{2 c_\alpha}{\varpi_\alpha^2}\,\delta c_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 172
+  role: notes_stage
+  excerpt: \frac{2 c_\alpha^2}{\varpi_\alpha^3}\,\delta\varpi_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 178
+  role: notes_stage
+  excerpt: \delta B_{A,2}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 182
+  role: notes_stage
+  excerpt: \frac{2 c_\alpha}{\varpi_\alpha^4}\,\delta c_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 184
+  role: notes_stage
+  excerpt: \frac{4 c_\alpha^2}{\varpi_\alpha^5}\,\delta\varpi_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 195
+  role: notes_stage
+  excerpt: 2 c_\alpha\left(\frac{1}{\varpi_\alpha^4}+\frac{1}{9\varpi_\alpha^2}\right)\delta c_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 197
+  role: notes_stage
+  excerpt: 2 c_\alpha^2\left(\frac{2}{\varpi_\alpha^5}+\frac{1}{9\varpi_\alpha^3}\right)\delta\varpi_{A\alpha}
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 206
+  role: notes_stage
+  excerpt: P_0\,\delta B_{A,0}.
+- path: notes/stages/moving_throat_pde_stage171_microscopic_grouped_obstructions.md
+  line: 208
+  role: notes_stage
+  excerpt: So the support sector can source \(\gamma_W\) even when the outgoing transfer is perfectly isotropic, simply because
+    the normalization quotient reweights any static conservative lane splitting.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

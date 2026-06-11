@@ -1,0 +1,202 @@
+schema_version: 1
+candidate_id: fit_stage208_canonical_two_ray_screen
+parameter_name: a_i_equal_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage208_canonical_two_ray_screen__phase_b__a_i_equal_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '208'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_208.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 208]{Stage 208: Pairwise mixed-ray audit}'
+- path: paper/stages/stage_208.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: '\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}'
+- path: paper/stages/stage_208.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~208 opens the first genuinely mixed search sector by allowing two primitive coordinates
+    to move together.}
+- path: paper/stages/stage_208.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_208.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves the gradient-synergy law, isolates the off-diagonal curvature
+    leverage \(2a_ia_jh_{ij}\), constructs pairwise curvature envelopes, compares the gradient-optimal and equal-mix screen
+    rays, and states the pairwise promotion rule.}
+- path: paper/stages/stage_208.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Pairwise mixed-ray cone, gradient and off-diagonal Hessian synergy laws, canonical two-ray
+    screen, promotion/deferral rule, and minimal packet for the full ratio optimizer.}
+- path: paper/stages/stage_208.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VI realization compiler and finite mixed-ray search.  Downstream
+    papers should cite \resultanchor{MTDC-T10.3} for this local stage range and \resultanchor{MTDC-T10} for the full Part
+    VI compiler.}
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 208: Pairwise Mixed Rays, Exact Off-Diagonal Hessian Synergy, and the Canonical Two-Ray
+    Audit'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 206 scalarized search framework and the Stage 207 primitive certified sieve,
+    once local pairwise diagonal/off-diagonal Hessian envelopes are supplied on the chosen mixed-ray intervals.**'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 25
+  role: notes_stage
+  excerpt: '> what is the first exact mixed-ray family, how do the off-diagonal Hessian terms enter it, and what is the smallest
+    certified pairwise audit that can possibly beat the primitive winners?'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 31
+  role: notes_stage
+  excerpt: 1. the exact **pairwise mixed-ray cone** built from two canonically oriented primitive descent directions,
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 32
+  role: notes_stage
+  excerpt: 2. the exact **gradient-synergy theorem** for the initial mixed slope,
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 33
+  role: notes_stage
+  excerpt: 3. the exact **off-diagonal curvature-synergy law** and the proof that the equal-mix ray maximizes cross-Hessian
+    leverage,
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 34
+  role: notes_stage
+  excerpt: 4. the exact **mixed-ray curvature-envelope theorem** and certified bracket theorem for a fixed mixing ratio,
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 37
+  role: notes_stage
+  excerpt: '- the **equal-mix synergy** ray,'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 38
+  role: notes_stage
+  excerpt: 6. and the exact rule that the full one-parameter pairwise optimizer is now the only missing step beyond this first
+    mixed-ray screen.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 40
+  role: notes_stage
+  excerpt: So Stage 208 is the first theorem-level audit of genuine two-coordinate mixed rays.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 45
+  role: notes_stage
+  excerpt: '## 1. Carry-forward primitive data and the pairwise mixed-ray cone'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 82
+  role: notes_stage
+  excerpt: The first genuine mixed-ray cone is the one-parameter family
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 99
+  role: notes_stage
+  excerpt: Mixed rays involving a turning primitive axis are deferred to the next stage.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 105
+  role: notes_stage
+  excerpt: The oriented initial slope on the pairwise mixed ray is
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 122
+  role: notes_stage
+  excerpt: Differentiating gives the exact first-order mixed-slope law
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 130
+  role: notes_stage
+  excerpt: Therefore the mixed-slope magnitude has a unique maximizer
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 142
+  role: notes_stage
+  excerpt: 'So the first mixed-ray theorem is:'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 152
+  role: notes_stage
+  excerpt: Thus a mixed ray can improve the **first-order** descent rate even when the off-diagonal Hessian entry vanishes.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 153
+  role: notes_stage
+  excerpt: The off-diagonal Hessian is therefore the first genuinely new **curvature** datum, not the first source of mixed-ray
+    advantage.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 159
+  role: notes_stage
+  excerpt: Along the pairwise mixed ray define the oriented Hessian entries
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 176
+  role: notes_stage
+  excerpt: Then the exact mixed second directional derivative is
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 218
+  role: notes_stage
+  excerpt: The **equal-mix ray**
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 247
+  role: notes_stage
+  excerpt: '## 4. Exact mixed-ray curvature envelopes and certified brackets'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 249
+  role: notes_stage
+  excerpt: Fix a pair `\((i,j)\)` and a chosen mixing ratio `\(r\ge0\)`.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 250
+  role: notes_stage
+  excerpt: Assume the pairwise mixed ray is valid on an interval
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 262
+  role: notes_stage
+  excerpt: Because the weights are nonnegative for `\(r\ge0\)`, the exact mixed curvature bounds are
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 277
+  role: notes_stage
+  excerpt: So the pairwise mixed ray is again inside the exact Stage 206 certified framework, now with slope magnitude `\(k_{ij}(r)\)`
+    and curvature envelope `\([\underline\kappa_{ij}(r),\overline\kappa_{ij}(r)]\)`.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 287
+  role: notes_stage
+  excerpt: define the mixed discriminants
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 309
+  role: notes_stage
+  excerpt: then there exists one unique true mixed-ray closure point on that ray, lying in
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 321
+  role: notes_stage
+  excerpt: Although the full pairwise cone is one-parameter, two exact rays already isolate the two independent advantages
+    a mixed ray can exploit.
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 354
+  role: notes_stage
+  excerpt: '### 5.2 Equal-mix synergy ray'
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 356
+  role: notes_stage
+  excerpt: The exact equal-mix ray is
+- path: notes/stages/moving_throat_pde_stage208_pairwise_mixed_rays_and_off_diagonal_hessian_synergy.md
+  line: 382
+  role: notes_stage
+  excerpt: The gradient-optimal and equal-mix rays coincide iff
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

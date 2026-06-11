@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage245_eps_eta_session1_match
+parameter_name: epsilon_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_eps_eta_session1_match__phase_b__epsilon_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '245'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_245.tex
+  line: 12
+  role: paper_stage_tex
+  excerpt: \epsilon_\eta=\epsilon_{\eta,{\rm ref}}e^V.
+- path: paper/stages/stage_245.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+- path: paper/stages/stage_245.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \frac{1-\epsilon_{\eta,{\rm ref}}e^V}{1-\epsilon_{\eta,{\rm ref}}}e^{-U}.
+- path: paper/stages/stage_245.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage245-finite-epseta}
+- path: paper/stages/stage_245.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \epsilon_\eta(r)
+- path: paper/stages/stage_245.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \epsilon_{\eta,{\rm ref}}\exp\left(\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)}\right),
+- path: paper/stages/stage_245.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \frac{1-\epsilon_{\eta,{\rm ref}}\exp(\chi_{UV}f_U/\Delta_{UV})}{1-\epsilon_{\eta,{\rm ref}}}
+- path: paper/stages/stage_245.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+- path: paper/stages/stage_245.tex
+  line: 78
+  role: paper_stage_tex
+  excerpt: U=\varepsilon u_1+O(\varepsilon^2),
+- path: paper/stages/stage_245.tex
+  line: 80
+  role: paper_stage_tex
+  excerpt: V=\varepsilon v_1+O(\varepsilon^2).
+- path: paper/stages/stage_245.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: =-\frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1,
+- path: paper/stages/stage_245.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: \frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: 2. dressing motion `\epsilon_\eta`,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 31
+  role: notes_stage
+  excerpt: V=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: together with the exact selected-branch identity relating `\mathcal T^2`, `\epsilon_\eta`, and `R_{\rm target}`.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 51
+  role: notes_stage
+  excerpt: '- and the barrier-session Section I, which reported a nonzero `V`, active `\epsilon_\eta`, and a positive `U/V`
+    drain once the rigid-mouth assumption was relaxed.'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: 1. the exact finite update of the physical observables `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 91
+  role: notes_stage
+  excerpt: V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 101
+  role: notes_stage
+  excerpt: \epsilon_\eta=\epsilon_{\eta,\rm ref}e^V.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: R_{\rm target}\,\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 114
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}\,e^{-U}.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 276
+  role: notes_stage
+  excerpt: \epsilon_\eta(r)
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 278
+  role: notes_stage
+  excerpt: \epsilon_{\eta,\rm ref}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 288
+  role: notes_stage
+  excerpt: 1-\epsilon_{\eta,\rm ref}\exp\!\left(\chi_{UV}f_U/\Delta_{UV}\right)
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 290
+  role: notes_stage
+  excerpt: 1-\epsilon_{\eta,\rm ref}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 301
+  role: notes_stage
+  excerpt: '- `V` moves `\epsilon_\eta` directly,'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 318
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}\\
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: This gives the physical interpretation immediately.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 347
+  role: notes_stage
+  excerpt: '- The dressing activation changes `K_\eta^{(\rm eff)}` directly and shifts `\mu_W` by the same amount with opposite
+    sign.'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 373
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 381
+  role: notes_stage
+  excerpt: U=\varepsilon u_1+O(\varepsilon^2),
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 383
+  role: notes_stage
+  excerpt: V=\varepsilon v_1+O(\varepsilon^2).
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 393
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 395
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 402
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 417
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 426
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,\rm ref}}{1-\epsilon_{\eta,\rm ref}}\,v_1.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: 3. and once `V` is activated, the target-ratio packet is no longer determined by `\Xi_1` alone.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 452
+  role: notes_stage
+  excerpt: \epsilon_\eta,\qquad
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

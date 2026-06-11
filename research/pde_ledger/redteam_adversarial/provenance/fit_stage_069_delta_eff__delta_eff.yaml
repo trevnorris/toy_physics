@@ -1,0 +1,207 @@
+schema_version: 1
+candidate_id: fit_stage_069_delta_eff
+parameter_name: Delta_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_069_delta_eff__phase_b__delta_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 069
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_069.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: W_{\rm wall}<\mathrm{Pe}_{\rm req}/\Delta_\infty &\Rightarrow& \text{universal fail},\\[0.25em]
+- path: paper/stages/stage_069.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: W_{\rm wall}>\mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{universal matched success},\\[0.25em]
+- path: paper/stages/stage_069.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \mathrm{Pe}_{\rm req}/\Delta_\infty\leq W_{\rm wall}\leq \mathrm{Pe}_{\rm req}/\Delta_0 &\Rightarrow& \text{profile-sensitive
+    band}.
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf` to `Pe_req / Delta_0`.'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 31
+  role: notes_stage
+  excerpt: '- if `W_wall <= Pe_req / Delta_inf`, the branch fails;'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 32
+  role: notes_stage
+  excerpt: '- if `W_wall >= Pe_req / Delta_0`, the branch succeeds;'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 34
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < Pe_req / Delta_0`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 68
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / Delta_inf,`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 78
+  role: notes_stage
+  excerpt: '`W_wall >= Pe_req / Delta_0,`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 88
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < Pe_req / Delta_0`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 96
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < P_res Pe_req / Delta_inf`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 100
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_0 < W_wall < P_res Pe_req / Delta_0`'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: '[Pe_req / Delta_inf, Pe_req / Delta_0].'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: '- The matched window `[Pe_req/Delta_inf, Pe_req/Delta_0]` is the Stage 066'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: '- Source for the matched-window form `Pe_req/Delta_inf`:'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: '`Pe_req/Deltainf` and `Pe_req/Delta_0`; it does not re-derive it.'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: Pe_req, Delta0, Delta_gap = sp.symbols("Pe_req Delta_0 Delta_gap", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: Deltainf = sp.simplify(Delta0 + Delta_gap)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: Wfail_match = sp.simplify(Pe_req / Deltainf)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: Wsuff_match = sp.simplify(Pe_req / Delta0)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# (matched fail edge from W_match(Delta_inf) = 0, P_res from band-edge'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '# Encodes the theorem "W_match(Delta_eff) = Pe_req / Delta_eff" with'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: '# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: Delta_eff = sp.symbols("Delta_eff", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: W_match_generator = Pe_req / Delta_eff
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: '"matched fail edge from W_match(Delta_inf)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: W_match_generator.subs(Delta_eff, Deltainf) - Wfail_match,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '"matched success edge from W_match(Delta_0)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: W_match_generator.subs(Delta_eff, Delta0) - Wsuff_match,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '"W_match decreasing in Delta_eff",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: -sp.diff(W_match_generator, Delta_eff) * Delta_eff**2 / Pe_req,
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: Wsuff_match - Wfail_match - Pe_req * (Deltainf - Delta0) / (Delta0 * Deltainf),
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: expect_positive("Delta_inf - Delta_0", Deltainf - Delta0)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: '"resonance fail threshold - Pe_req/(C_res^2 Delta_inf)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: Wfail_res - Pe_req / (Cres2 * Deltainf),
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: '"resonance success threshold - Pe_req/(C_res^2 Delta_0)",'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: Wsuff_res - Pe_req / (Cres2 * Delta0),
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: delta_fail = sp.simplify(Wfail_res - Wfail_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: delta_succ = sp.simplify(Wsuff_res - Wsuff_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: print("Failure-side profile-sensitive width =", delta_fail)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: provenance_gap
+  severity: needs_triage
+  summary: 'Delta_eff is an audit-script-only construct: it is introduced solely in the stage-069 sympy audit as a free interpolation
+    symbol ranging over [Delta_0, Delta_inf] to verify monotonicity of W_match. It does NOT appear anywhere in the stage-069
+    notes (grep for ''delta_eff''/''effective'' returns nothing) and has no numeric ledger value, so no notes-backed origin
+    or constraint can be asserted. Not a ledger parameter value.'
+  citations:
+  - path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+    line: 97
+    excerpt: Delta_eff = sp.symbols("Delta_eff", positive=True, real=True)
+  - path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+    line: 96
+    excerpt: '# Delta_eff ranging over [Delta_0, Delta_inf] on the matched branch.'
+  - path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 1
+    excerpt: '# Moving-Throat PDE — Stage 69: Final Reduced Verdict for the Support/Source Program'
+downstream_dependents: []
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_069_delta_eff__delta_eff.yaml

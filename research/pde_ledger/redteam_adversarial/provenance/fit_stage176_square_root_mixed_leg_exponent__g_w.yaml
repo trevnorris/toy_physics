@@ -1,0 +1,96 @@
+schema_version: 1
+candidate_id: fit_stage176_square_root_mixed_leg_exponent
+parameter_name: G_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage176_square_root_mixed_leg_exponent__phase_b__g_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '176'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_176.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Factors the outgoing load into mixed-leg, interference, and hybridization slippages; under
+    rigidity, zero defect requires \(G_W/\Omega_W^2\propto\sqrt K\).}
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: K, OU2, OW2, R, GU, GW = sp.symbols("K OU2 OW2 R GU GW", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Lambda = (OU2 * GW + R * GU) / (OU2 * OW2 - R**2)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: Mcal = GW / (sp.sqrt(K) * OW2)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: Ical = R * GU / (OU2 * GW)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: dK, dOU, dOW, dR, dGU, dGW = sp.symbols("dK dOU dOW dR dGU dGW", real=True)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: GWp = GW * sp.exp(eps * dGW)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: Lambdap = (OU2p * GWp + Rp * GUp) / (OU2p * OW2p - Rp**2)
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: dlnM = dGW - dOW - sp.Rational(1, 2) * dK
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: dlnI = dR + dGU - dOU - dGW
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: + 2 / (1 + Ical) * dGW
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print("  d ln M = d ln G_W - d ln Omega_W^2 - 1/2 dK")
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: print("  d ln I = d ln R + d ln G_U - d ln Omega_U^2 - d ln G_W")
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '#   dlnI = dR + dGU - dOU - dGW = 0  ->  dGU = dOU + dGW - dR'
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: 'rigid = {dGU: dOU + dGW - dR, dOW: 2 * dR - dOU}'
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: print("      Sigma^(N) = 2 d ln[ G_W / (Omega_W^2 sqrt(K)) ].")
+- path: scripts/moving_throat_pde_stage176_outgoing_load_factorization_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: print("  obeys the square-root wall-loading law G_W / Omega_W^2 ∝ sqrt(K).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,48 @@
+schema_version: 1
+candidate_id: fit_stage104_unit_product_m0hat2_chiQ_NQ
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage104_unit_product_m0hat2_chiq_nq__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '104'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_104.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_104.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: paper/stages/stage_104.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 5
+  role: notes_stage
+  excerpt: Compute the canonical compact passive/outgoing quadrupole normalization directly from an explicit outgoing `l=2`
+    Dirichlet-to-Neumann model instead of carrying the coefficient `chi_Q` symbolically.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

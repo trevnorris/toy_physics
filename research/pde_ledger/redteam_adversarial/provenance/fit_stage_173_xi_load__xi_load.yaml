@@ -1,0 +1,151 @@
+schema_version: 1
+candidate_id: fit_stage_173_xi_load
+parameter_name: Xi_load
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_173_xi_load__phase_b__xi_load.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '173'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_173.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 173]{Stage 173: Weak-axisymmetric loading mismatch}'
+- path: paper/stages/stage_173.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~173 is the original-stage audit card for \emph{Weak-axisymmetric loading mismatch}.  Its
+    purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_173.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage173_axisymmetric_loading_mismatch_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage173_axisymmetric_loading_mismatch_mathematica_audit.txt}.}'
+- path: paper/stages/stage_173.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{On the even-preserving branch, the remaining grouped defect is the scalar \(\Xi_{\rm load}=N_{01}/N_0-D_{01}/D_0\).}
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 173: Weak-Axisymmetric Transport of the Physical Slopes and Collapse to One Static
+    Loading Mismatch'
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 90
+  role: notes_stage
+  excerpt: \Xi_{\rm load}:=
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 98
+  role: notes_stage
+  excerpt: \Delta_Q^{(20)}=\epsilon\,\Xi_{\rm load},
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 100
+  role: notes_stage
+  excerpt: \Delta_Q^{(21)}=\frac{\epsilon}{2}\,\Xi_{\rm load},
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 102
+  role: notes_stage
+  excerpt: \Delta_Q^{(22)}=-\epsilon\,\Xi_{\rm load}.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 110
+  role: notes_stage
+  excerpt: '> compute the single weak-axisymmetric **static loading mismatch** \(\Xi_{\rm load}\).'
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 253
+  role: notes_stage
+  excerpt: The remaining first-order physics is only in the static loading.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 257
+  role: notes_stage
+  excerpt: '## 4. The remaining linear grouped defect is one static loading mismatch'
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 278
+  role: notes_stage
+  excerpt: \Xi_{\rm load}:=\delta_N-\delta_D.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 284
+  role: notes_stage
+  excerpt: P_0^{(A)}=P_0\bigl[1+\epsilon\,\lambda_A\,\Xi_{\rm load}\bigr]+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 289
+  role: notes_stage
+  excerpt: \Delta_Q^{(20)}=\epsilon\,\Xi_{\rm load},
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 291
+  role: notes_stage
+  excerpt: \Delta_Q^{(21)}=\frac{\epsilon}{2}\,\Xi_{\rm load},
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 293
+  role: notes_stage
+  excerpt: \Delta_Q^{(22)}=-\epsilon\,\Xi_{\rm load}.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 441
+  role: notes_stage
+  excerpt: \Xi_{\rm load}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 446
+  role: notes_stage
+  excerpt: '> compute the weak-axisymmetric static operator slope \(D_{01}/D_0\) and the weak-axisymmetric static outgoing-transfer
+    slope \(N_{01}/N_0\) on the actual moving-throat branch — and, on the even-preserving branch, only their difference \(\Xi_{\rm
+    load}\).'
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: slopes and the collapse to one static loading mismatch.
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 4. Remaining defect Xi_load = N01/N0 - D01/D0.
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: banner("Single static loading mismatch")
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: Xi_load = sp.simplify(N01/N0 - D01/D0)
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: print("Xi_load =", Xi_load)
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: Delta20 = sp.simplify(lam20 * Xi_load)
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: Delta21 = sp.simplify(lam21 * Xi_load)
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: Delta22 = sp.simplify(lam22 * Xi_load)
+- path: scripts/moving_throat_pde_stage173_axisymmetric_loading_mismatch_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: print("  remaining defect Xi_load = N01/N0 - D01/D0")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

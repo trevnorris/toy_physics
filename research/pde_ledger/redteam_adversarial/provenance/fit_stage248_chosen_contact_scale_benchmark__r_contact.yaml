@@ -1,0 +1,198 @@
+schema_version: 1
+candidate_id: fit_stage248_chosen_contact_scale_benchmark
+parameter_name: r_contact
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_chosen_contact_scale_benchmark__phase_b__r_contact.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '248'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_248.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: then the finite-radius threshold law is \cref{eq:app-part08-main-vcrit-new}.  The pure-Coulomb contact threshold
+    is \cref{eq:app-part08-main-vcrit-coul}.  The classical comparison window is therefore
+- path: paper/stages/stage_248.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: v_{\rm crit,new}<v_0<v_{\rm contact,Coul}.
+- path: paper/stages/stage_248.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \sqrt{r_{\rm contact}(1-Er_{\rm contact})}
+- path: paper/stages/stage_248.tex
+  line: 62
+  role: paper_stage_tex
+  excerpt: \frac{\arcsin\sqrt{Er_{\rm contact}}}{\sqrt E}
+- path: paper/stages/stage_248.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: for \(Er_{\rm contact}<1\).
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: 4. and the declared Session-II benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 47
+  role: notes_stage
+  excerpt: 6. and the exact window condition that says when the lowered branch reaches contact while the pure Coulomb reference
+    still turns back.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 55
+  role: notes_stage
+  excerpt: and the declared Session-II benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: Session-II benchmark numbers explicitly confined to the benchmark-only
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: '- The same-charge barrier audit had already shown that the linear dynamic mixed bundle does **not** generate a
+    new conservative kernel class at large distance. Linear time dependence only makes the already-admissible short-range
+    families frequency dependent, while the first outgoing correction is phase lag / pumping rather than direct conservative
+    barrier lowering.'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 133
+  role: notes_stage
+  excerpt: 'Assume the lowered branch has one barrier peak between the launch point and the chosen contact scale:'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: The minimum launch speed required to reach the top of the reduced barrier is determined by
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 159
+  role: notes_stage
+  excerpt: '### 2.2 Pure-Coulomb contact threshold at the same launch radius'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 165
+  role: notes_stage
+  excerpt: the energy needed to reach a chosen contact radius \(r_{\rm contact}\) from the same \(r_0\) is
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: v_{\rm contact,Coul}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: \sqrt{\frac{2}{m_s}\left(\frac1{r_{\rm contact}}-\frac1{r_0}\right)}.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 180
+  role: notes_stage
+  excerpt: Let the lowered branch be single-peaked on \([r_{\rm contact},r_0]\), so that crossing the peak is sufficient to
+    reach contact. Then if
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 183
+  role: notes_stage
+  excerpt: v_{\rm crit,new}<v_0<v_{\rm contact,Coul},
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: E_{\rm Coul}(v_0)<\frac1{r_{\rm contact}}.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 192
+  role: notes_stage
+  excerpt: So the lowered branch reaches the contact scale while the pure Coulomb branch still turns back outside it.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 287
+  role: notes_stage
+  excerpt: If the inner comparison point is the chosen contact radius \(r_{\rm contact}\), then
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 293
+  role: notes_stage
+  excerpt: \int_{r_{\rm contact}}^{1/E}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 297
+  role: notes_stage
+  excerpt: 'The integral closes in elementary form for \(Er_{\rm contact}<1\):'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 306
+  role: notes_stage
+  excerpt: \sqrt{r_{\rm contact}\bigl(1-Er_{\rm contact}\bigr)}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: \frac{\arcsin\sqrt{Er_{\rm contact}}}{\sqrt{E}}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: So once the lowered branch gives \(I_{\rm new}<I_{\rm Coul}\), the enhancement is completely fixed.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: This normal form is not needed for the Session-II benchmark itself, but it is the right local compiler for later
+    near-threshold analysis.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: So the same turning-point event chain also determines the first dynamic confinement-width trigger.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 405
+  role: notes_stage
+  excerpt: '## 6. Session-II benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 415
+  role: notes_stage
+  excerpt: r_{\rm contact}=0.18,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 454
+  role: notes_stage
+  excerpt: For the pure Coulomb contact comparison,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: v_{\rm contact,Coul}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 511
+  role: notes_stage
+  excerpt: '### 6.4 Above-threshold contact demonstration'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 521
+  role: notes_stage
+  excerpt: So the lowered branch is above its own barrier while the pure Coulomb branch is still below the energy needed for
+    the same contact radius.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 538
+  role: notes_stage
+  excerpt: 'So the benchmark does exactly what Stage 248 needs it to do: it exhibits a concrete speed range where the lowered
+    branch reaches the chosen contact scale and the Coulomb comparison does not.'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 555
+  role: notes_stage
+  excerpt: That is within the numerical tolerance implied by the reported Session-II discrete reference value \(0.30222297\),
+    so the closed-form Coulomb side of the compiler is consistent with the dynamic benchmark.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 566
+  role: notes_stage
+  excerpt: 2. the barrier peak determines a finite launch threshold
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 570
+  role: notes_stage
+  excerpt: 3. there is an exact comparison threshold for the same contact scale on the pure Coulomb branch,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 586
+  role: notes_stage
+  excerpt: The event-chain improvement still sits on a short-range/open-system front end, and the linear dynamic mixed bundle
+    still contributes phase-lag / pumping rather than a new conservative kernel class.
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. the exact Coulomb contact-threshold formula,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

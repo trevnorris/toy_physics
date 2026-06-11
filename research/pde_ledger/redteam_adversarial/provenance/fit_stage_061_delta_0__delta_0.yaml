@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage_061_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_061_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '061'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 11
+  role: notes_stage
+  excerpt: '`Xi_fail = Pe_req / Delta_inf(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Xi_suff = Pe_req / Delta_0(kappa,eta).`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 32
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 34
+  role: notes_stage
+  excerpt: '`G_suff = Pe_req / [ kappa Delta_0(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 43
+  role: notes_stage
+  excerpt: '`chi_sigma <= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_inf ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 45
+  role: notes_stage
+  excerpt: '`chi_sigma >= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_0 ]`    -> succeed,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 49
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 <= T_X Pe_req / [ chi_sigma L^2 Delta_inf ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 51
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 >= T_X Pe_req / [ chi_sigma L^2 Delta_0 ]`    -> succeed;'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 54
+  role: notes_stage
+  excerpt: '`Delta_0 -> 1/2,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 56
+  role: notes_stage
+  excerpt: '`Delta_inf -> 1,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 65
+  role: notes_stage
+  excerpt: '`Delta_0^(inf) = (1-sech(sqrt(kappa)))/kappa,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 67
+  role: notes_stage
+  excerpt: '`Delta_inf^(inf) = tanh(sqrt(kappa))/sqrt(kappa),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 118
+  role: notes_stage
+  excerpt: '`Xi_fail = Pe_req / Delta_inf(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 120
+  role: notes_stage
+  excerpt: '`Xi_suff = Pe_req / Delta_0(kappa,eta).`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 124
+  role: notes_stage
+  excerpt: '`G_fail(kappa,eta) = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 126
+  role: notes_stage
+  excerpt: '`G_suff(kappa,eta) = Pe_req / [ kappa Delta_0(kappa,eta) ].`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 144
+  role: notes_stage
+  excerpt: '`chi_sigma <= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_inf(kappa,eta) ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 146
+  role: notes_stage
+  excerpt: '`chi_sigma >= T_X Pe_req / [ Lambda_phi^2 L^2 Delta_0(kappa,eta) ]`    -> succeed.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 150
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 <= T_X Pe_req / [ chi_sigma L^2 Delta_inf(kappa,eta) ]`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 152
+  role: notes_stage
+  excerpt: '`Lambda_phi^2 >= T_X Pe_req / [ chi_sigma L^2 Delta_0(kappa,eta) ]`    -> succeed.'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 154
+  role: notes_stage
+  excerpt: So the microscopic theorem gap is no longer “somehow get a large enough `Xi`.” It is now a concrete competition
+    between source susceptibility and support/source coupling on one side, and the exact support geometry functions `Delta_0`,
+    `Delta_inf` on the other.
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 162
+  role: notes_stage
+  excerpt: '`Delta_0(kappa,eta)`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 166
+  role: notes_stage
+  excerpt: '`Delta_inf(kappa,eta)`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 172
+  role: notes_stage
+  excerpt: '`lim_(kappa->0+) Delta_0 = 1/2,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 174
+  role: notes_stage
+  excerpt: '`lim_(kappa->0+) Delta_inf = 1.`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 194
+  role: notes_stage
+  excerpt: '`lim_(eta->+infty) Delta_0(kappa,eta) = (1-sech(sqrt(kappa)))/kappa,`'
+- path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+  line: 196
+  role: notes_stage
+  excerpt: '`lim_(eta->+infty) Delta_inf(kappa,eta) = tanh(sqrt(kappa))/sqrt(kappa).`'
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: Delta0 = sp.simplify(eta * (sp.cosh(alpha) - 1) / (alpha**2 * (alpha*sp.sinh(alpha) + eta*sp.cosh(alpha))))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: Delta_inf = sp.simplify((sp.cosh(alpha) + (eta/alpha)*sp.sinh(alpha) - 1) / (alpha*sp.sinh(alpha) + eta*sp.cosh(alpha)))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: print("Delta_0 =", Delta0)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: print("Delta_inf =", Delta_inf)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: Xi_fail = sp.simplify(Pe_req / Delta_inf)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Xi_suff = sp.simplify(Pe_req / Delta0)
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: chi_fail = sp.simplify(TX * Pe_req / (Lam**2 * L**2 * Delta_inf))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: chi_suff = sp.simplify(TX * Pe_req / (Lam**2 * L**2 * Delta0))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: Lam2_fail = sp.simplify(TX * Pe_req / (chi * L**2 * Delta_inf))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: Lam2_suff = sp.simplify(TX * Pe_req / (chi * L**2 * Delta0))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: Delta0_k0 = sp.simplify(sp.limit(Delta0, kappa, 0, dir='+'))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: Delta_inf_k0 = sp.simplify(sp.limit(Delta_inf, kappa, 0, dir='+'))
+- path: scripts/moving_throat_pde_stage061_microscopic_gain_thresholds_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print("lim_{kappa->0+} Delta_0 =", Delta0_k0)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

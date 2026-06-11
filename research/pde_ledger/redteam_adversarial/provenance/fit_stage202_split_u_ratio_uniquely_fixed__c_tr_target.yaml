@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage202_split_u_ratio_uniquely_fixed
+parameter_name: C_tr_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage202_split_u_ratio_uniquely_fixed__phase_b__c_tr_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '202'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_202.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 202]{Stage 202: Free-quintuple target graph}'
+- path: paper/stages/stage_202.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~202 removes the abstract target-orbit language by solving the three monomial constraints
+    explicitly as a graph over the five free microscopic coordinates.}
+- path: paper/stages/stage_202.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage202_free_quintuple_target_graph_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_202.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation solves first for the split-\(U\) depth coordinate, then \(T_U^{\rm
+    graph}\), then \(K_{\eta,*}^{\rm graph}\), and finally \(\mu_W^{\rm graph}\).  It then proves that every target-orbit
+    point is exactly one such graph point.}
+- path: paper/stages/stage_202.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Exact target graph \(\mathbf x_*^{\rm graph}(\mathbf y)\), graph errors \((E_T,E_K,E_\mu)\),
+    and the first reduced-family test in graph-error coordinates.}
+- path: paper/stages/stage_202.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check target monomial ratios are formed against the declared target values before taking logarithms.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 202: Exact Free-Quintuple Target Graph, Same-Free-Quintuple Closure Surface, and the
+    First Reduced-Family Test'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 8
+  role: notes_stage
+  excerpt: It removes the last abstractness from the Stage 201 realization compiler by solving the target orbit explicitly
+    as a graph over the five free microscopic coordinates.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 26
+  role: notes_stage
+  excerpt: '> to evaluate the target-orbit comparison, one still first computes the quotient packet'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 34
+  role: notes_stage
+  excerpt: '> solve the target-orbit constraints **directly** for the dependent triple'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 47
+  role: notes_stage
+  excerpt: 1. the exact **free-quintuple target graph**
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 54
+  role: notes_stage
+  excerpt: 2. the exact theorem that the target orbit `\(\mathcal O_*\)` is the graph of `\(\Phi_*\)`,
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 85
+  role: notes_stage
+  excerpt: So Stage 202 is the first place where the target branch becomes an explicit five-variable closure surface rather
+    than an abstract quotient orbit.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 134
+  role: notes_stage
+  excerpt: Fix the target orbit by the exact target values
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 137
+  role: notes_stage
+  excerpt: \mathfrak C_{{\rm tr},*}^{\rm target},
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 139
+  role: notes_stage
+  excerpt: \mathfrak C_{{\rm nt},*}^{\rm target},
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 141
+  role: notes_stage
+  excerpt: \epsilon_{\eta,*}^{\rm target}.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 145
+  role: notes_stage
+  excerpt: Then the target orbit is
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 151
+  role: notes_stage
+  excerpt: \mathfrak C_{{\rm tr},*}(\mathbf x)=\mathfrak C_{{\rm tr},*}^{\rm target},\
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 152
+  role: notes_stage
+  excerpt: \mathfrak C_{{\rm nt},*}(\mathbf x)=\mathfrak C_{{\rm nt},*}^{\rm target},\
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 153
+  role: notes_stage
+  excerpt: \epsilon_\eta(\mathbf x)=\epsilon_{\eta,*}^{\rm target}
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 160
+  role: notes_stage
+  excerpt: '## 2. Exact free-quintuple base and direct split-`U` target graph'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 171
+  role: notes_stage
+  excerpt: The first direct target quantity solved from `\(\mathfrak C_{{\rm tr},*}\)` is the split-`U` ratio
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 175
+  role: notes_stage
+  excerpt: So define the exact free-quintuple target graph
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 181
+  role: notes_stage
+  excerpt: \frac{\mathfrak C_{{\rm tr},*}^{\rm target}}
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 193
+  role: notes_stage
+  excerpt: \mathfrak C_{{\rm tr},*}^{\rm target}.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 197
+  role: notes_stage
+  excerpt: So the tracking monomial already fixes the target split-`U` ratio uniquely on every same-free-quintuple slice.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 201
+  role: notes_stage
+  excerpt: '## 3. Exact dependent-triple target graph'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 203
+  role: notes_stage
+  excerpt: '### 3.1 Target throat-depth coordinate'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 215
+  role: notes_stage
+  excerpt: '### 3.2 Target dressing coordinate'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 221
+  role: notes_stage
+  excerpt: the target wall stiffness is
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 226
+  role: notes_stage
+  excerpt: \frac{c_{\eta U}^2}{K_U\,\epsilon_{\eta,*}^{\rm target}}.
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 230
+  role: notes_stage
+  excerpt: '### 3.3 Target mixed-mass coordinate'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 232
+  role: notes_stage
+  excerpt: 'Substitute the graph target data into the nontracking monomial to obtain the exact target mixed-mass coordinate:'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 237
+  role: notes_stage
+  excerpt: \frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 253
+  role: notes_stage
+  excerpt: \frac{\mathfrak C_{{\rm nt},*}^{\rm target}\,c_{\eta U}^2\,(K_W^{(\mathrm{eff})})^2}
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 254
+  role: notes_stage
+  excerpt: '{\epsilon_{\eta,*}^{\rm target}\,K_U\,\lambda_W^2}'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 268
+  role: notes_stage
+  excerpt: '## 4. Exact target-orbit graph theorem'
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 270
+  role: notes_stage
+  excerpt: Define the exact microscopic target-graph map
+- path: notes/stages/moving_throat_pde_stage202_free_quintuple_target_graph.md
+  line: 282
+  role: notes_stage
+  excerpt: \boxed{\textbf{Theorem (Stage 202 exact target graph).}}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage_247_a_2
+parameter_name: A_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_a_2__phase_b__a_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: A_2\frac{e^{-4\kappa r}}{r^2},
+- path: paper/stages/stage_247.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: A_2=\alpha_2+\frac12\mathcal C_2.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: A_2=\alpha_2+\frac12\mathcal C_2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: A_2\frac{e^{-4\kappa r}}{r^2}.
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: A2 = sp.simplify(alpha2 + sp.Rational(1, 2) * C2)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: '- A2 * sp.exp(-4 * kappa * r) / r**2'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: print("A2                    =", A2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

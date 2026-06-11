@@ -1,0 +1,57 @@
+schema_version: 1
+candidate_id: fit_stage_026_a_w
+parameter_name: A_w
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_026_a_w__phase_b__a_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '026'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 67
+  role: notes_stage
+  excerpt: 'For the trapped support channel and the mixed `A_w / F_(mu w) / J^w` channel, use the exact finite-throat D/N
+    ladder already isolated in the frozen-wall benchmark:'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 244
+  role: notes_stage
+  excerpt: It is to determine whether the actual quadrupolar wall stiffness of the throat satisfies the explicit algebraic
+    relation above after support and internal gauge loading are included.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    - paper/stages/stage_026.tex
+    - research/pde_ledger/paper/stages/stage_026.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+    - paper/stages/stage_026.tex
+    - research/pde_ledger/paper/stages/stage_026.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

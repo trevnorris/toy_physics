@@ -1,0 +1,176 @@
+schema_version: 1
+candidate_id: fit_stage160_tangent_susceptibility_coefficients
+parameter_name: dPi_tan_coeff_S
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage160_tangent_susceptibility_coefficients__phase_b__dpi_tan_coeff_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '160'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_160.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 160]{Stage 160: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN Gate}'
+- path: paper/stages/stage_160.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+- path: paper/stages/stage_160.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 160: Bare Mixed-Port Slippage Theorem and the Collapse of the Last Tangential DtN
+    Gate'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 18
+  role: notes_stage
+  excerpt: '> actually controls `\delta\gamma_W` under a tangential co-evolving mouth'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 43
+  role: notes_stage
+  excerpt: So the last linear 2.5PN obstruction is not “any tangential mouth deformation.”
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 64
+  role: notes_stage
+  excerpt: Stage 114 gave the concrete core-level outlet coefficients
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 204
+  role: notes_stage
+  excerpt: At first order, pure-scale preservation means that the bare even and odd coefficients
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 231
+  role: notes_stage
+  excerpt: So the tangential mouth deformation is not dangerous by itself.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 239
+  role: notes_stage
+  excerpt: '## 4. Tangential DtN susceptibility'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 241
+  role: notes_stage
+  excerpt: To connect this to the actual co-evolving mouth data, define the tangential
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 247
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 250
+  role: notes_stage
+  excerpt: where the Stage 159 tangential mouth deformation is
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 252
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm tan}
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 267
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 298
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 307
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 323
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 331
+  role: notes_stage
+  excerpt: \,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 335
+  role: notes_stage
+  excerpt: Substituting the explicit tangential transport,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 426
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 432
+  role: notes_stage
+  excerpt: '> compute the tangential mixed-port slippage susceptibility `\Upsilon_\Pi` on the'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 443
+  role: notes_stage
+  excerpt: 2. perturb the bare mixed side-channel by the tangential mouth deformation,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 446
+  role: notes_stage
+  excerpt: 4. and extract the coefficient `\Upsilon_\Pi`.
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 4. Final defect laws after inserting the tangential-mouth transport.
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: dkW = sp.expand(kW.coeff(eps, 1))
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: dgW = sp.expand(gW.coeff(eps, 1))
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: banner("Tangential DtN susceptibility and final defect law")
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: dPi_tan = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: dgW_tan = sp.simplify(UpsilonPi * dPi_tan / (1 + rc))
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: DeltaQ = sp.simplify(-9 * sigma_star * dgW_tan / (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: NQm1 = sp.simplify(9 * sigma_star * dgW_tan / (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print("dPi_tan =", dPi_tan)
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: print("dγ_W =", dgW_tan)
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("4) if dγ_0 - dκ_0/3 = Upsilon_Pi dPi_tan, then")
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("   Δ_Q = -9 σ_* Upsilon_Pi dPi_tan / [(1-σ_*)(1+r_c)]")
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: print("   N_Q-1 = +9 σ_* Upsilon_Pi dPi_tan / [(1-σ_*)(1+r_c)]")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

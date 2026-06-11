@@ -1,0 +1,100 @@
+schema_version: 1
+candidate_id: fit_stage194_canonical_even_moment_ratios
+parameter_name: L2_over_L0_1_9
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage194_canonical_even_moment_ratios__phase_b__l2_over_l0_1_9.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '194'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 215
+  role: notes_stage
+  excerpt: '- `S` is an overall mouth normalization,'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 296
+  role: notes_stage
+  excerpt: The overall scale `S` is not a separate obstruction by itself. It matters only through the normalized ratios above.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 309
+  role: notes_stage
+  excerpt: \overline K_0=\frac{54Gc_s^5}{5a^5c^5},
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 311
+  role: notes_stage
+  excerpt: \overline K_2=\frac{6Gc_s^3}{5a^3c^5},
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 313
+  role: notes_stage
+  excerpt: \overline K_4=\frac{8Gc_s}{15ac^5},
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 315
+  role: notes_stage
+  excerpt: \overline\Gamma_5=\frac{2G}{5c^5}.
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: banner("STAGE 194 — EXACT OUTGOING l=2 DTN FINGERPRINT, FIXING OF chi_Q, AND THE ISOTROPIC DEFORMATION ALGEBRA")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: '# I. Exact outgoing spherical l=2 DtN fingerprint'
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: subbanner("I. Exact outgoing spherical l=2 DtN fingerprint")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '# II. Exact matching to the retarded grouped-P2 one-pole module'
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: subbanner("II. Exact matching to the retarded grouped-P2 one-pole module")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '"retarded module matches outgoing DtN branch when chi_Q = 1",'
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: expect_zero("odd-coefficient matching fixes chi_Q - 1", sp.simplify((odd_coeff_ret - odd_coeff_out) * 27 * c_s**5
+    / (sp.I * a**5) - (chi_Q - 1)))
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: print("1. The exact outgoing spherical l=2 DtN operator has the small-z fingerprint")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: print("2. Matching the carried retarded grouped-P2 one-pole module to that exact outgoing DtN")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: print("   fingerprint fixes the last canonical outgoing scalar exactly:")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: print("4. Therefore the only isotropic DtN-side data that can move chi_Q while keeping the")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 224
+  role: sympy_script
+  excerpt: print("   canonical even fingerprint fixed are beta, Sigma_0, and Sigma_5.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

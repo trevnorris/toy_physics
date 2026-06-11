@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage057_x_identified_as_stiffness_ratio
+parameter_name: x
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage057_x_identified_as_stiffness_ratio__phase_b__x.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '057'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_057.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 057]{Stage 057: Physical \texorpdfstring{$(\mathrm{Pe},\kappa,\eta)$}{(Pe,kappa,eta)} Placement
+    Map}'
+- path: paper/stages/stage_057.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the lowest-lane physical support map.}
+- path: paper/stages/stage_057.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage057_physical_parameter_map_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage057_physical_parameter_map_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage057_physical_parameter_map_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage057_physical_parameter_map_mathematica_audit.txt}.}'
+- path: paper/stages/stage_057.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \boxed{
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 9
+  role: notes_stage
+  excerpt: The last remaining Stage-055 unknown is therefore the support-compliance variable previously written as `x`.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 11
+  role: notes_stage
+  excerpt: This stage converts the whole explicit non-twin family into a directly physical parameter map.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 15
+  role: notes_stage
+  excerpt: 1. the old abstract support parameter is exactly
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 17
+  role: notes_stage
+  excerpt: '`x = pi^2 / (kappa + pi^2/4),`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 31
+  role: notes_stage
+  excerpt: 3. the physical explicit lowest-lane ratio is therefore
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 40
+  role: notes_stage
+  excerpt: 5. its exact closure ceiling is
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 42
+  role: notes_stage
+  excerpt: '`zeta_max(kappa) = (pi^2/4)(kappa + pi^2/4)/kappa;`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 45
+  role: notes_stage
+  excerpt: '`zeta_req <= zeta_max(kappa),`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 53
+  role: notes_stage
+  excerpt: '- `Pe` — axial support-source transport bias,'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 59
+  role: notes_stage
+  excerpt: '## 1. Exact physical support parameters'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 61
+  role: notes_stage
+  excerpt: Carry forward the finite-throat support operator with base stiffness `K_X`, axial tension `T_X`, and Robin mouth
+    coefficient `h`.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 71
+  role: notes_stage
+  excerpt: The mixed D/N lane has
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 78
+  role: notes_stage
+  excerpt: '`x = pi^2 T_X / (L^2 K_W^(eff))`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 81
+  role: notes_stage
+  excerpt: Thus the old abstract `x` is exactly the inverse stiffness ratio of the physical support operator.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 85
+  role: notes_stage
+  excerpt: '## 2. Exact Robin softening in physical form'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 98
+  role: notes_stage
+  excerpt: So the exact softening factor simplifies to
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 104
+  role: notes_stage
+  excerpt: This is algebraically cleaner than the Stage-054 `x`-form and makes the physical support meaning explicit.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 108
+  role: notes_stage
+  excerpt: '## 3. Exact physical explicit lowest-lane family'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 110
+  role: notes_stage
+  excerpt: 'Combining Stage 056 with the Robin support branch gives the first fully physical explicit family:'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 118
+  role: notes_stage
+  excerpt: '`= pi Pe (2 Pe exp(Pe) + pi)`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 119
+  role: notes_stage
+  excerpt: '`  / [ (4 Pe^2 + pi^2)(exp(Pe)-1) ]`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 125
+  role: notes_stage
+  excerpt: '`zeta_0^(exp+R)(alpha,eta)`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 126
+  role: notes_stage
+  excerpt: '`= Omega_exp(alpha)^2 / [1 - x/4 + x y(eta)^2/pi^2].`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 132
+  role: notes_stage
+  excerpt: '`x = pi^2/(kappa + pi^2/4).`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 136
+  role: notes_stage
+  excerpt: '## 4. Exact monotone placement map'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 160
+  role: notes_stage
+  excerpt: So weaker mouth pinning (smaller `eta`) always helps the support lane.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 175
+  role: notes_stage
+  excerpt: '- more axial source drift helps,'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 181
+  role: notes_stage
+  excerpt: '## 5. Exact closure window in physical form'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 183
+  role: notes_stage
+  excerpt: On the constructive branch `Pe >= 0`, the exact baseline point is
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 201
+  role: notes_stage
+  excerpt: '`zeta_max(kappa)`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 204
+  role: notes_stage
+  excerpt: Therefore the exact constructive-branch window is
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 206
+  role: notes_stage
+  excerpt: '`1 <= zeta_0^(Pe+R)(Pe,eta;kappa) <= zeta_max(kappa)`'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 210
+  role: notes_stage
+  excerpt: This is the first explicit reachability ceiling written entirely in physical operator variables.
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 214
+  role: notes_stage
+  excerpt: '## 6. Exact reachability criterion and stiffness ceiling'
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 216
+  role: notes_stage
+  excerpt: The Stage-052 support demand is reachable on this physical family exactly when
+- path: notes/stages/moving_throat_pde_stage057_physical_parameter_map.md
+  line: 218
+  role: notes_stage
+  excerpt: '`zeta_req <= zeta_max(kappa)`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

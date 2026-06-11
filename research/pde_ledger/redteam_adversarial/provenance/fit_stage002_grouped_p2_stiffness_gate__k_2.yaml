@@ -1,0 +1,68 @@
+schema_version: 1
+candidate_id: fit_stage002_grouped_p2_stiffness_gate
+parameter_name: K_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage002_grouped_p2_stiffness_gate__phase_b__k_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '002'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_002.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: L_{2m}=\frac12 M_2\dot q_{2m}^{\,2}-\frac12K_2q_{2m}^{\,2},
+- path: paper/stages/stage_002.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: K_2=\int dw\left[
+- path: paper/stages/stage_002.tex
+  line: 104
+  role: paper_stage_tex
+  excerpt: M_2\ddot q_{2m}+K_2q_{2m}=0
+- path: paper/stages/stage_002.tex
+  line: 114
+  role: paper_stage_tex
+  excerpt: \item The grouped \(P_2\) degeneracy follows because \(K_2\) and \(M_2\) do not depend on the real component label
+    on an isotropic reference throat.
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 134
+  role: notes_stage
+  excerpt: \frac12 K_2\,q_{2m}^2,
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 142
+  role: notes_stage
+  excerpt: K_2=
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 152
+  role: notes_stage
+  excerpt: M_2\,\ddot q_{2m}+K_2\,q_{2m}=0.
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 287
+  role: sympy_script
+  excerpt: K2 = sp.Integral(T_w * sp.diff(beta2, w) ** 2 + (K_eta + 6 * T_omega) * beta2**2, (w, wL, wR))
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 288
+  role: sympy_script
+  excerpt: l2 = sp.Rational(1, 2) * (M2 * sp.diff(q(t), t) ** 2 - K2 * q(t) ** 2)
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 290
+  role: sympy_script
+  excerpt: expect_zero("single-component P2 Euler-Lagrange equation", el2.lhs + M2 * sp.diff(q(t), t, 2) + K2 * q(t))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

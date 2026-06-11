@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage141_gain_pair_no_longer_free
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage141_gain_pair_no_longer_free__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '141'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_141.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 11
+  role: notes_stage
+  excerpt: M_q=-\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 19
+  role: notes_stage
+  excerpt: M_q=-M_s\frac{(\mathfrak g_c-\mathfrak r)^2}{1+\mathfrak r^2}.
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 24
+  role: notes_stage
+  excerpt: M_q=-\frac{M_s}{4},
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 28
+  role: notes_stage
+  excerpt: M_q=-\Sigma_m.
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 36
+  role: notes_stage
+  excerpt: M_q\approx -0.24270,
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 42
+  role: notes_stage
+  excerpt: M_q\approx -0.45149.
+- path: notes/stages/moving_throat_pde_stage141_mouth_gain_status.md
+  line: 45
+  role: notes_stage
+  excerpt: 5. Under the self-matched mouth susceptibility closure,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

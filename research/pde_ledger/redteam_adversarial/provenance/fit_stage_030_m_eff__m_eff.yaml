@@ -1,0 +1,109 @@
+schema_version: 1
+candidate_id: fit_stage_030_m_eff
+parameter_name: M_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_030_m_eff__phase_b__m_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '030'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_030.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~030 translates the selected lower eigenvalue and odd coefficient into normalized-response
+    language.  The stage defines the selected static prefactor \(P_{0,-}\), relates it to the Hellmann--Feynman derivative
+    of the eigenvalue, and states the selected quadrupole target.}
+- path: paper/stages/stage_030.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: The Stage~029 odd coefficient gives
+- path: paper/stages/stage_030.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: \item Normalizing \(D_-/D_{-0}\) gives the response coefficients as quotients by \(\lambda_-\).
+- path: paper/stages/stage_030.tex
+  line: 103
+  role: paper_stage_tex
+  excerpt: \item The outgoing coefficient contains only \(\beta_0s_-/\lambda_-\), matching the selected projection of Stage~029.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 029 reached the first exact operator-selected odd quadrupole coefficient,
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 34
+  role: notes_stage
+  excerpt: So the selected-branch normalization problem is no longer “some outgoing coefficient somewhere.”
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 43
+  role: notes_stage
+  excerpt: '`K_eff^(0) = [[A, 0], [0, B]] - alpha_0 v v^T`,'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 114
+  role: notes_stage
+  excerpt: Here the Stage-029 odd coefficient is
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 123
+  role: notes_stage
+  excerpt: Exactly as in Stage 022, the even coefficients are
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 129
+  role: notes_stage
+  excerpt: The selected odd coefficient is
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 220
+  role: notes_stage
+  excerpt: If `lambda_-` is too large, the selected outgoing coefficient is too small.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 233
+  role: notes_stage
+  excerpt: We no longer need to talk vaguely about an operator-level odd coefficient.
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 4. Closed selected-branch odd coefficient and static prefactor formulas.
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: expect_zero("u2 coefficient check", sp.expand(Ysel).coeff(w, 2) - u2)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: expect_zero("u4 coefficient check", sp.expand(Ysel).coeff(w, 4) - u4)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: expect_zero("Gamma5 coefficient check", sp.expand(sp.im(Ysel)).coeff(w, 5) - Gamma5)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: M_eff = sp.Matrix([
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: 'for val, _mult, vects in M_eff.eigenvects():'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: '# Part III. Selected odd coefficient and static prefactor'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: banner("PART III — SELECTED ODD COEFFICIENT AND STATIC PREFACTOR")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

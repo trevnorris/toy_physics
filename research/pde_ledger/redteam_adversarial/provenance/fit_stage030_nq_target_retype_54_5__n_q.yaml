@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage030_nq_target_retype_54_5
+parameter_name: N_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage030_nq_target_retype_54_5__phase_b__n_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '030'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_030.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: \widehat m_-^{\,2}P_{0,-}=N_Q^{\rm target}}.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 187
+  role: notes_stage
+  excerpt: '`lambda_- = mhat_-^2 beta_0 s_- / N_Q^(target)`,'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 191
+  role: notes_stage
+  excerpt: '`N_Q^(target) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: NQ_target = 54 * G * cs**5 / (5 * a**5 * c**5)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: cond2 = mhat**2 * P0_sel - NQ_target
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: lambda_req = sp.simplify(mhat**2 * beta0 * s_minus_closed / NQ_target)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: '#   (lam_- - lambda_req) + (mhat^2*P0_sel - NQ_target)*lam_-/NQ_target = 0'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: '# lambda_req := mhat^2*beta0*s/NQ_target; both sides collapse to 0 without'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: '# when the constraint mhat^2 P0_sel = NQ_target holds) is recorded here'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

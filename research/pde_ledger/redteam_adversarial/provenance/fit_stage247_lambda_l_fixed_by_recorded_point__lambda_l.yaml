@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage247_lambda_l_fixed_by_recorded_point
+parameter_name: lambda_L
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_lambda_l_fixed_by_recorded_point__phase_b__lambda_l.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \mathfrak L(r):=\Lambda(r)\varrho(r),
+- path: paper/stages/stage_247.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: S_{\rm leak}=\frac{8\sqrt2\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}\mathfrak L,
+- path: paper/stages/stage_247.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: \frac{512\eta_{\rm leak}^{2}\mu_wq\rho_0}{\pi^4\lambda^2}\mathfrak L^2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: The **Session-I benchmark specialization** used below additionally sets the work-channel embedding to unit weight
+    and reads the weighted `U/V` lowering directly from the recorded stationary run.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: 4. assemble the minimal reduced stationary compiler and benchmark it against the recorded Session-I softening point.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: \mathfrak L(r):=\Lambda(r)\varrho(r).
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: \frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 206
+  role: notes_stage
+  excerpt: \frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: '- `\lambda_L\ge 0` converts the open-subsystem leakage source into stationary barrier units,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 309
+  role: notes_stage
+  excerpt: '- `\lambda_W\ge 0` converts the reduced Session-I work scalar into stationary barrier units,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 322
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 366
+  role: notes_stage
+  excerpt: '## 4. Session-I one-point benchmark at the strongest softening point'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 404
+  role: notes_stage
+  excerpt: and taking the session specialization `\alpha_6=\alpha_2=0` for this benchmark slice, the exact Stage-247 baseline
+    gives
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 425
+  role: notes_stage
+  excerpt: '### 4.1 Imported packet values on the benchmark slice'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 438
+  role: notes_stage
+  excerpt: \frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 443
+  role: notes_stage
+  excerpt: \lambda=1,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: \mathfrak L(r_{\rm soft})=\Lambda(r_{\rm soft})\varrho(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 487
+  role: notes_stage
+  excerpt: '### 4.2 Exact benchmark decomposition'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 491
+  role: notes_stage
+  excerpt: \lambda_W=1.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 495
+  role: notes_stage
+  excerpt: \lambda_L,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 500
+  role: notes_stage
+  excerpt: \lambda_L
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 518
+  role: notes_stage
+  excerpt: \lambda_L=0.26971918.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 522
+  role: notes_stage
+  excerpt: So the benchmark decomposition is
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 547
+  role: notes_stage
+  excerpt: '### 4.3 Residual structure of the benchmark'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 549
+  role: notes_stage
+  excerpt: 'The benchmark also makes the packet split numerically transparent:'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 571
+  role: notes_stage
+  excerpt: \lambda_L=0.26971918.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 586
+  role: notes_stage
+  excerpt: 4. It reduces the remaining stationary embedding freedom, on the benchmark slice, to a single leakage-to-barrier
+    coefficient once the work channel is taken in the Session-I normalization.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 604
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 606
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 618
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}+\lambda_W\mathcal W_w^{\rm sess}+\Delta E_{UV}+\mathcal M_\sigma,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 620
+  role: notes_stage
+  excerpt: and the Session-I strongest-softening point is reproduced by the concrete benchmark decomposition above.
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: 'Lvar = sp.symbols("Lvar", positive=True, real=True)  # shorthand for Lambda(r)*varrho(r)'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: lambda_L, lambda_W = sp.symbols("lambda_L lambda_W", nonnegative=True, real=True)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: V_eff = V_short - lambda_L * S_leak - lambda_W * W_sess - E_UV - M_sigma
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: lowering_expected = lambda_L * S_leak + lambda_W * W_sess + E_UV + M_sigma
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: assert abs(float(lambda_L_soft) - 0.26971918) < 1e-6
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

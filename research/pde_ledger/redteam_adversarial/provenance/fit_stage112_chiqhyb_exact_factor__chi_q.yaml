@@ -1,0 +1,106 @@
+schema_version: 1
+candidate_id: fit_stage112_chiQhyb_exact_factor
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage112_chiqhyb_exact_factor__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '112'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_112.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When
+    cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an
+    unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 5
+  role: notes_stage
+  excerpt: Combine the geometric Robin core and the hidden mixed side-channel and determine whether an explicit compensated
+    moving-throat outlet can preserve the canonical outgoing quadrupole branch.
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 35
+  role: notes_stage
+  excerpt: Imposing the canonical conservative even fingerprint,
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 77
+  role: notes_stage
+  excerpt: \chi_Q^{\rm hyb}
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: / Stage 111 compensation seam; this script only checks the exact `chi_Q`
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: this script keeps that two-branch naming and only checks the exact `chi_Q`
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: chi_A = sp.simplify(((-L5/L0) / sp.Rational(1, 27)).subs(sols[0]))
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: print('chi_Q branch A =', chi_A)
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: assert sp.simplify(chi_A - (1 - 9*sigma*gamma)) == 0
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: chi_B = sp.simplify(((-L5/L0) / sp.Rational(1, 27)).subs(sols[1]))
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: print('chi_Q branch B =', chi_B)
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: assert sp.simplify(chi_B - (1 - 9*sigma*gamma)/(1 - sigma)) == 0
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: assert sp.simplify(chi_B.subs(gamma, sp.Rational(1, 9)) - 1) == 0
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: chi_B_general = (1 - 9*sigma*gamma)/(1 - sigma)
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Preservation chi_B = 1 iff sigma*(1 - 9*gamma) = 0: on the'
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: expect_zero('chi_B - 1 factorizes as sigma(1-9 gamma)',
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: sp.together(chi_B_general - 1).as_numer_denom()[0] - sigma*(1 - 9*gamma))
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: 'expect_zero(''degenerate sigma=0: chi_B = 1 for any gamma'','
+- path: scripts/moving_throat_pde_stage112_hybrid_robin_mixed_compensation_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: chi_B_general.subs(sigma, 0) - 1)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

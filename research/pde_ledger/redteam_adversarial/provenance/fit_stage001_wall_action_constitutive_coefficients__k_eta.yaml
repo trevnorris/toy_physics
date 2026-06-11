@@ -1,0 +1,203 @@
+schema_version: 1
+candidate_id: fit_stage001_wall_action_constitutive_coefficients
+parameter_name: K_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage001_wall_action_constitutive_coefficients__phase_b__k_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '001'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_001.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Inputs}{The stage imports the exact \((4+1)\)-dimensional parent theory: gauged GNLS matter, localized
+    Maxwell field, corrected charge ontology, and confinement potential.  It also imports the lower-order requirement that
+    the moving-throat PDE expose the already-visible \(P_0\oplus P_2\) support sector, the separate geometry-completion channel,
+    and the mixed Maxwell channels retained outside the strict zero-mode brane limit.}'
+- path: paper/stages/stage_001.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \Sigma(\mathbf X,t)=r-R(\Omega,w,t),
+- path: paper/stages/stage_001.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \Omega=\mathbf x/r\in S^2.
+- path: paper/stages/stage_001.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: a(t)=\frac{1}{4\pi}\int_{S^2}R(\Omega,0,t)\,d\Omega,
+- path: paper/stages/stage_001.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: and, if \(W_b(\Omega,t)\) is defined implicitly by
+- path: paper/stages/stage_001.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: R(\Omega,W_b(\Omega,t),t)=0,
+- path: paper/stages/stage_001.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: L(t)=\frac{1}{4\pi}\int_{S^2}W_b(\Omega,t)\,d\Omega.
+- path: paper/stages/stage_001.tex
+  line: 81
+  role: paper_stage_tex
+  excerpt: Since \(\Sigma=r-R\), a wall perturbation \(R=R_0+\eta\) gives
+- path: paper/stages/stage_001.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: \delta\Sigma=-\eta(\Omega,w,t),
+- path: paper/stages/stage_001.tex
+  line: 91
+  role: paper_stage_tex
+  excerpt: =-\frac{V_{\rm wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\eta(\Omega,w,t)}.
+- path: paper/stages/stage_001.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: R(\Omega,w,t)=R_0(w)+\eta(\Omega,w,t).
+- path: paper/stages/stage_001.tex
+  line: 101
+  role: paper_stage_tex
+  excerpt: 'Expand \(\eta\) in real spherical harmonics:'
+- path: paper/stages/stage_001.tex
+  line: 104
+  role: paper_stage_tex
+  excerpt: \eta(\Omega,w,t)
+- path: paper/stages/stage_001.tex
+  line: 105
+  role: paper_stage_tex
+  excerpt: =\eta_0(w,t)Y_{00}(\Omega)
+- path: paper/stages/stage_001.tex
+  line: 106
+  role: paper_stage_tex
+  excerpt: +\sum_{m\in P_2({\rm real})}q_{2m}(w,t)Y^{\rm real}_{2m}(\Omega)
+- path: paper/stages/stage_001.tex
+  line: 107
+  role: paper_stage_tex
+  excerpt: +\eta_{\ge3}(\Omega,w,t).
+- path: paper/stages/stage_001.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \int_{S^2}Y_{00}^2\,d\Omega=1,
+- path: paper/stages/stage_001.tex
+  line: 122
+  role: paper_stage_tex
+  excerpt: \frac{1}{4\pi}\int_{S^2}Y_{00}\,d\Omega=\frac{1}{2\sqrt\pi}.
+- path: paper/stages/stage_001.tex
+  line: 132
+  role: paper_stage_tex
+  excerpt: \eta_0(w,t)=\alpha_a(w)\delta a(t)+\alpha_L(w)\delta L(t)+g(w,t),
+- path: paper/stages/stage_001.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: S_{\eta}^{(2)}
+- path: paper/stages/stage_001.tex
+  line: 141
+  role: paper_stage_tex
+  excerpt: =\frac12\int dt\,dw\,d\Omega\,\sqrt{\gamma_0}
+- path: paper/stages/stage_001.tex
+  line: 143
+  role: paper_stage_tex
+  excerpt: \mu_\eta(w)(\partial_t\eta)^2
+- path: paper/stages/stage_001.tex
+  line: 144
+  role: paper_stage_tex
+  excerpt: -T_w(w)(\partial_w\eta)^2
+- path: paper/stages/stage_001.tex
+  line: 145
+  role: paper_stage_tex
+  excerpt: -T_\Omega(w)\eta(-\Delta_{S^2})\eta
+- path: paper/stages/stage_001.tex
+  line: 146
+  role: paper_stage_tex
+  excerpt: -K_\eta(w)\eta^2
+- path: paper/stages/stage_001.tex
+  line: 149
+  role: paper_stage_tex
+  excerpt: 'The coefficients \(\mu_\eta,T_w,T_\Omega,K_\eta\) are branch constitutive functions.  From this point onward the
+    ledger adopts the densitized one-dimensional convention: the background surface weight \(\sqrt{\gamma_0}\) is absorbed
+    into the effective axial coefficients and mode profiles, so the reduced formulas are written with respect to \(dw\).  The
+    weighted surface form is still legitimate, but then the Euler--Lagrange operator carries the extra first-derivative term
+    coming from \(\partial_w\sqrt{\gamma_0}\); the SymPy and Mathematica audits check both forms explicitly.'
+- path: paper/stages/stage_001.tex
+  line: 159
+  role: paper_stage_tex
+  excerpt: \mu_\eta\,\partial_t^2q_{lm}
+- path: paper/stages/stage_001.tex
+  line: 160
+  role: paper_stage_tex
+  excerpt: -\partial_w\!\bigl(T_w\partial_wq_{lm}\bigr)
+- path: paper/stages/stage_001.tex
+  line: 161
+  role: paper_stage_tex
+  excerpt: +\bigl[K_\eta+l(l+1)T_\Omega\bigr]q_{lm}
+- path: paper/stages/stage_001.tex
+  line: 189
+  role: paper_stage_tex
+  excerpt: +\mathcal C_\eta[\eta],
+- path: paper/stages/stage_001.tex
+  line: 191
+  role: paper_stage_tex
+  excerpt: where \(\mathcal C_\eta\) contains the coupling \eqref{eq:app-stage001-delta-v}.  The localized Maxwell equation
+    linearizes to
+- path: paper/stages/stage_001.tex
+  line: 207
+  role: paper_stage_tex
+  excerpt: are retained.  Their later suppression in the far-field brane limit is a reduction, not an ontology deletion.
+- path: paper/stages/stage_001.tex
+  line: 216
+  role: paper_stage_tex
+  excerpt: Let \(u_B(\omega)\) denote projected effort variables and \(j_A(\omega)\) the corresponding generalized fluxes
+    or tractions.  The reduced response operator is written
+- path: paper/stages/stage_001.tex
+  line: 219
+  role: paper_stage_tex
+  excerpt: j_A(\omega)=\sum_B Z_{{\rm eff},AB}(\omega)u_B(\omega).
+- path: paper/stages/stage_001.tex
+  line: 223
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The stage outputs the shape-field closure \eqref{eq:app-stage001-sigma}, the confinement variation
+    \eqref{eq:app-stage001-delta-v}, the harmonic split \eqref{eq:app-stage001-harmonic-expansion}, the modal wall PDE \eqref{eq:app-stage001-modal-wall-pde},
+    and the response-operator target \eqref{eq:app-stage001-response-operator}.  These are the definitions without which later
+    grouped response coefficients have no PDE-side interpretation.}
+- path: paper/stages/stage_001.tex
+  line: 227
+  role: paper_stage_tex
+  excerpt: \item The sign check for \(\delta V_{\rm conf}\) follows from \(\delta\Sigma=-\eta\).
+- path: paper/stages/stage_001.tex
+  line: 232
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~002 uses the same wall action to recover \((a,L)\).  Stage~003 uses \eqref{eq:app-stage001-delta-v}
+    as the wall--BdG coupling.  Stages~004--021 use the retained mixed variables as the port-active gauge sector and reduce
+    them to the one-port normal form.  Stages~022--023 use the grouped real \(P_2\) response operator to formulate the outgoing-normalization
+    product.}
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 21
+  role: notes_stage
+  excerpt: '`r = R(Omega,w,t)`,'
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 47
+  role: notes_stage
+  excerpt: A pure moving-wall field `R(theta,phi,w,t)` makes the multipoles visible, but is less clean as a bulk coupling
+    variable.
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 51
+  role: notes_stage
+  excerpt: '`Sigma(x,y,z,w,t) = r - R(Omega,w,t)`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

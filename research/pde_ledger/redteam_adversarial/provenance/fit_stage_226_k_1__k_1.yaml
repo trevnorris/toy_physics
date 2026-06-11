@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage_226_k_1
+parameter_name: K_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_226_k_1__phase_b__k_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '226'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_226.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, and the
+    conservative-shape-preserving branch used by the grouped outlet package.}
+- path: paper/stages/stage_226.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Strict first-order packet: $\Xi_1$ is the prefactor slope, while $K_1$ and $H_{\rm even}$
+    are separate conservative gates; the survivor is a pure-transfer corridor rather than arbitrary grouped anisotropy.}'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 10
+  role: notes_stage
+  excerpt: \Xi_{\rm load},\qquad K_1,\qquad H_{\rm even},
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 26
+  role: notes_stage
+  excerpt: K_1=D_{21}+\frac{D_{01}}{9},
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 173
+  role: notes_stage
+  excerpt: K_1=D_{21}+\frac{D_{01}}{9},
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: \boxed{K_1=\left(\frac19-u_2\right)D_{01},}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 201
+  role: notes_stage
+  excerpt: K_1\approx 0.0621939470719309\,D_{01},
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: K1 = D21 + D01 / 9
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: K1_comp = sp.simplify(K1.subs(D21, -u2 * D01))
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: assert sp.simplify(K1_comp - (sp.Rational(1, 9) - u2) * D01) == 0
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: print("K1 on compensation surface =", K1_comp)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: K1_mixed = sp.expand(sp.simplify(D21_mixed + D01_mixed / 9))
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: K1_coeff_D01 = sp.simplify((sp.Rational(1, 9) - u2_s))
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 207
+  role: sympy_script
+  excerpt: assert_close(float(sp.N(K1_coeff_D01, 18)), 0.0621939470719309)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 211
+  role: sympy_script
+  excerpt: print("K1 =", sp.N(K1_coeff_D01, 16), "* D01")
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: '[sp.N(K1_mixed.coeff(v), 30) for v in mixed_vars],'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

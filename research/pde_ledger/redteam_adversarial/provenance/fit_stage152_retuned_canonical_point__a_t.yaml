@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage152_retuned_canonical_point
+parameter_name: A_T
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_retuned_canonical_point__phase_b__a_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '152'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 54
+  role: notes_stage
+  excerpt: A_T\approx -4.27263956256927,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 148
+  role: notes_stage
+  excerpt: on the positive interpolation line between the uniform family and the self-matched
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 157
+  role: notes_stage
+  excerpt: uniformity than like a sharpening toward the self-matched derivative branch.
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: AT = mp.mpf("-4.27263956256927")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: deltaT = AT * delta_g + BT * delta_S
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

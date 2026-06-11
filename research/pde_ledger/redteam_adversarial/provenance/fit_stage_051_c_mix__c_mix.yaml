@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage_051_c_mix
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_051_c_mix__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '051'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_051.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The tracking-branch product \(\Pi_{\rm tr}=F_{\rm tr}G_{\rm tr}\) and \(C_{\rm mix}=8\Lambda(1-\epsilon)/\pi^2\).}
+- path: paper/stages/stage_051.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage051-Cmix}
+- path: paper/stages/stage_051.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+- path: paper/stages/stage_051.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: The required enhancement is \(S_{\rm req}=\Pi_{\rm tr}/C_{\rm mix}\).  Since the lowest twin gives \(S_0=2\), it
+    is sufficient iff
+- path: paper/stages/stage_051.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \Pi_{\rm tr}\leq2C_{\rm mix}
+- path: paper/stages/stage_051.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}^{({\rm twin,req})}=\frac{G_{\rm tr}}{2}.
+- path: paper/stages/stage_051.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~052 uses this criterion to split the support problem into mixed-only, lowest-twin,
+    and non-twin regimes.}
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 71
+  role: notes_stage
+  excerpt: '`S_req := M_req / M_mix,`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 75
+  role: notes_stage
+  excerpt: with the mixed-only product law from Stage 047
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 77
+  role: notes_stage
+  excerpt: '`R_target M_mix = 8 Lambda (1 - eps) / pi^2.`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 87
+  role: notes_stage
+  excerpt: '`S_req = M_req / M_mix`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 88
+  role: notes_stage
+  excerpt: '`     = [ R_target M_req ] / [ R_target M_mix ]`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 120
+  role: notes_stage
+  excerpt: '### Mixed-baseline threshold'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 122
+  role: notes_stage
+  excerpt: Since `S_req <= 2` is equivalent to `M_req <= 2 M_mix`, the exact mixed-only baseline threshold is simply
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 124
+  role: notes_stage
+  excerpt: '`M_mix >= M_mix^(twin,req)`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 127
+  role: notes_stage
+  excerpt: So the lowest twin succeeds exactly when the mixed branch already supplies at least half of the total load demanded
+    by the physical selected point.
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 129
+  role: notes_stage
+  excerpt: '### Wall-to-mixed overlap threshold'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 133
+  role: notes_stage
+  excerpt: '`M_mix = 8 Z_W (1 + chi_0)^2 / [ pi^2 (1 - eps_eta) (1 - eps) ],`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 135
+  role: notes_stage
+  excerpt: the exact wall/mixed overlap threshold is
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 145
+  role: notes_stage
+  excerpt: So even before the full PDE is solved, the lowest-twin support test is already equivalent to an explicit lower
+    bound on the wall-to-mixed overlap strength.
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 149
+  role: notes_stage
+  excerpt: '## 4. Exact twin-saturation depth at fixed mixed baseline'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 153
+  role: notes_stage
+  excerpt: '`M_req = 2 M_mix,`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 157
+  role: notes_stage
+  excerpt: '`G_tr(xi,delta;R_tr) = 2 M_mix.`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 161
+  role: notes_stage
+  excerpt: '`xi_(2x)(M_mix,delta;R)`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 162
+  role: notes_stage
+  excerpt: '`= [ 2 M_mix (9 + 2 R^2) - 9 delta`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 163
+  role: notes_stage
+  excerpt: '`    + sqrt( [2 M_mix (9 + 2 R^2) - 9 delta]^2 + 648 M_mix delta ) ] / 18.`'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 165
+  role: notes_stage
+  excerpt: This is the exact depth at which the lowest twin lane is just saturated by the mixed baseline.
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 181
+  role: notes_stage
+  excerpt: '- the mixed-only product scale is'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 190
+  role: notes_stage
+  excerpt: '- the exact required mixed baseline is'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 192
+  role: notes_stage
+  excerpt: '`M_mix^(twin,req) = G_tr/2`,'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 193
+  role: notes_stage
+  excerpt: '- and the exact twin-saturation depth at fixed mixed baseline is the closed quadratic root `xi_(2x)` above.'
+- path: notes/stages/moving_throat_pde_stage051_lowest_twin_criterion.md
+  line: 203
+  role: notes_stage
+  excerpt: '> **does the completed moving-throat operator produce enough mixed baseline / radiative scale to satisfy the exact
+    twin-sufficiency product test, or must the physical lowest support lane become non-twin before the normalization target
+    can be met?**'
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: '- M_mix^(twin,req),'
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 5. Exact quadratic root xi_(2x) solving G_tr = 2 M_mix.
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: the `M_mix <-> Z_W` bridge stays explicit instead of being silently replayed.
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Mmix, ZW = sp.symbols("M_mix Z_W", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Cmix = sp.simplify(8 * Lambda * (1 - eps) / pi**2)
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: Sreq = sp.simplify(Pi / Cmix)
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("C_mix = 8 Lambda (1-eps) / pi^2 =")
+- path: scripts/moving_throat_pde_stage051_lowest_twin_criterion_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: sp.pprint(Cmix)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

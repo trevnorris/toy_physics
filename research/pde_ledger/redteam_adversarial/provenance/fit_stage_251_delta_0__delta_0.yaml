@@ -1,0 +1,91 @@
+schema_version: 1
+candidate_id: fit_stage_251_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_251_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '251'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_251.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage251-delta0}
+- path: paper/stages/stage_251.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \Delta_0=\Omega_{U,0}^2\Omega_{W,0}^2-R_0^2,
+- path: paper/stages/stage_251.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: \Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: \Delta_0:=\Omega_{U,0}^2\Omega_{W,0}^2-R_0^2,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 145
+  role: notes_stage
+  excerpt: N_0(\omega)=\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2}\,\omega^2+O(\omega^4).
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: \delta D_0^{\rm odd}(\omega)
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: \gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2}.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: \delta D_-^{\rm odd}(\omega)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Delta0 = sp.simplify(OmU0**2 * OmW0**2 - R0**2)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: Delta_omega = sp.simplify(A0 * W0 - R0**2)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: N0_scalar = sp.simplify((A0 * gW0) ** 2 / Delta_omega**2)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("Delta0                =", Delta0)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: assert sp.simplify(N0_coeff2 - eta0**2 * OmU0**4 / Delta0**2) == 0
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: print("delta s (weak export) =", root_shift)
+- path: scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: print("delta s (derived)     =", eps1_sol)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

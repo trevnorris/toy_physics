@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage021_retained_reduced_adapter_couplings
+parameter_name: Omega_A_l
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage021_retained_reduced_adapter_couplings__phase_b__omega_a_l.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '021'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_021.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \Sigma_l^{({\rm EM}+{\rm mix},{\rm cons})}(\omega)
+- path: paper/stages/stage_021.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \frac{g_{A,l}^2W_l(\omega)+2g_{A,l}g_{W,l}R_l+g_{W,l}^2A_l(\omega)}
+- path: paper/stages/stage_021.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: '{A_l(\omega)W_l(\omega)-R_l^2}.'
+- path: paper/stages/stage_021.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: Replacing \(W_l(\omega)\) by \(W_l(\omega)-\Pi_l^{\rm out}(\omega)\) gives
+- path: paper/stages/stage_021.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: N_l(\omega)=
+- path: paper/stages/stage_021.tex
+  line: 49
+  role: paper_stage_tex
+  excerpt: \frac{\bigl[A_l(\omega)g_{W,l}+R_lg_{A,l}\bigr]^2}
+- path: paper/stages/stage_021.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: '{\bigl[A_l(\omega)W_l(\omega)-R_l^2\bigr]^2}.'
+- path: paper/stages/stage_021.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: \frac{(\Omega_{A,l}^2g_{W,l}+R_lg_{A,l})^2}
+- path: paper/stages/stage_021.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: '{(\Omega_{A,l}^2\Omega_{W,l}^2-R_l^2)^2}\ge0.'
+- path: paper/stages/stage_021.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: \widehat Y_2^{\rm out}(\omega)
+- path: paper/stages/stage_021.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: =1+\frac{a^2\omega^2}{9c_s^2}
+- path: paper/stages/stage_021.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: +\frac{4a^4\omega^4}{81c_s^4}
+- path: paper/stages/stage_021.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: +i\frac{a^5\omega^5}{27c_s^5}
+- path: paper/stages/stage_021.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: +O(\omega^6),
+- path: paper/stages/stage_021.tex
+  line: 73
+  role: paper_stage_tex
+  excerpt: \delta D_2^{\rm odd}(\omega)
+- path: paper/stages/stage_021.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: =-iN_2(0)\frac{a^5}{27c_s^5}\omega^5+O(\omega^7).
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 26
+  role: notes_stage
+  excerpt: '> how do localized Maxwell modes and the mixed `A_w/F_{\mu w}/J^w` sector feed into the wall response, and how
+    does an outgoing `l=2` branch transfer its `i \omega^5` signature to the wall/worldtube operator?'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: • a scalar derivative-coupling check showing why the dangerous i*omega scalar
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: t, omega = sp.symbols("t omega", real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: OA, OW = sp.symbols("Omega_A Omega_W", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: Aker = OA**2 - omega**2
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Wker = OW**2 - omega**2
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: D_cons = sp.simplify(K - M * omega**2 - Sigma_cons)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("Sigma_EM+mix^cons(omega) =")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: print("D_cons(omega) = K - M omega^2 - Sigma_EM+mix^cons(omega) =")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: toy = (N0 - G2 * omega**2) / (D0 - S2 * omega**2 + omega**4)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: toy_series = sp.expand(sp.series(toy, omega, 0, 5).removeO())
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: z0_toy = sp.simplify(toy_series.coeff(omega, 0))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: z2_toy = sp.simplify(toy_series.coeff(omega, 2))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: z4_toy = sp.simplify(toy_series.coeff(omega, 4))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: Sigma_series = sp.expand(sp.series(Sigma_cons, omega, 0, 5).removeO())
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 172
+  role: sympy_script
+  excerpt: z0 = sp.simplify(Sigma_series.coeff(omega, 0))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: z2 = sp.simplify(Sigma_series.coeff(omega, 2))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: z4 = sp.simplify(Sigma_series.coeff(omega, 4))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: omega = sp.symbols("omega", real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: OA, OW = sp.symbols("Omega_A Omega_W", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 207
+  role: sympy_script
+  excerpt: Aker = OA**2 - omega**2
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: Wker = OW**2 - omega**2
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: N_omega = sp.simplify((Sigma_first - Sigma_cons) / Pi)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: print("Sigma_full(omega) =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

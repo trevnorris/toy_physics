@@ -1,0 +1,60 @@
+schema_version: 1
+candidate_id: fit_stage228_rq_requirement_threshold
+parameter_name: RQ_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage228_rq_requirement_threshold__phase_b__rq_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '228'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_228.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth
+    tracking alone.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: with only negligible wall-pole frequency drift.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 343
+  role: notes_stage
+  excerpt: again with negligible wall-pole frequency drift.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 361
+  role: notes_stage
+  excerpt: \mathcal R_{Q,\rm req}\approx 21.8545662963584.
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 2
+  role: sympy_script
+  excerpt: from typing import Iterable, Sequence
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: 'def positive_frequency_roots_from_coeffs(coeffs: Sequence[complex]) -> list[float]:'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 350
+  role: sympy_script
+  excerpt: poles = positive_frequency_roots_from_coeffs(coeffs)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 409
+  role: sympy_script
+  excerpt: '# Negligible pole-frequency drift.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

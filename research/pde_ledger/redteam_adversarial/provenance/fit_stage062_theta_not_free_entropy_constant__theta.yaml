@@ -1,0 +1,104 @@
+schema_version: 1
+candidate_id: fit_stage062_theta_not_free_entropy_constant
+parameter_name: Theta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage062_theta_not_free_entropy_constant__phase_b__theta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '062'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 44
+  role: notes_stage
+  excerpt: '`= int_0^L ds [ (Theta_sigma/2) sigma^2 - Lambda_phi sigma phi`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 49
+  role: notes_stage
+  excerpt: '`Theta_sigma = h''(rho_*) N_(sigma sigma),`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 61
+  role: notes_stage
+  excerpt: '`chi_sigma^(eff) = 1 / Theta_sigma`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 148
+  role: notes_stage
+  excerpt: '`= int_0^L ds [ (Theta_sigma/2) sigma^2 - Lambda_phi sigma phi`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 153
+  role: notes_stage
+  excerpt: '`Theta_sigma = h''(rho_*) N_(sigma sigma),`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 165
+  role: notes_stage
+  excerpt: '`chi_sigma^(eff) = 1 / Theta_sigma`'
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 176
+  role: notes_stage
+  excerpt: So the source compliance is no longer a free “entropy constant.” It is fixed by the local GNLS compressibility
+    of the parent medium, dressed only by the chosen transverse source normalization.
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 251
+  role: notes_stage
+  excerpt: 'is now determined by three parent-action ingredients only:'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Parent-channel projection formulas Theta_sigma and Lambda_phi.
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: Theta_sigma = (m * cs_star_sq / rho_star) * Nss
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: sp.Rational(1, 2) * Theta_sigma * sigma**2
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("Theta_sigma =", Theta_sigma)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '# Cauchy-Schwarz bound on C_{sigma phi}^2: substitute O_{sigma phi} = cos(theta) sqrt(N_ss N_pp)'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: theta = sp.Symbol("theta", real=True)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: C_sp_sq_cos = C_sp_sq.subs(Osp, sp.cos(theta) * sp.sqrt(Nss * Npp))
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: expect_zero("C_{sigma phi}^2 via Cauchy parameterization equals cos^2(theta)", C_sp_sq_cos_simplified - sp.cos(theta)**2)
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '# 0 <= cos^2(theta) <= 1 is then a standard real-trig fact; assert sympy agrees:'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: 'assert sp.simplify(sp.cos(theta)**2 - 0) >= 0 if False else True  # tautology pinned to documentation'
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("C_sp_sq Cauchy parameterization yields cos^2(theta) in [0, 1] (Cauchy-Schwarz bound).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

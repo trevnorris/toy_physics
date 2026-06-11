@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage026_kappa_overlap_2sqrt2_over_pi
+parameter_name: kappa
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage026_kappa_overlap_2sqrt2_over_pi__phase_b__kappa.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '026'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_026.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~026 evaluates the first concrete axial overlap model.  It chooses a finite interval,
+    a constant N/N wall/brane profile, and the lowest D/N half-wave for support and mixed channels.  The result is the exact
+    overlap \(\kappa=2\sqrt2/\pi\) and the first finite-throat branch-level normalization equation.}
+- path: paper/stages/stage_026.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage026-kappa-n}
+- path: paper/stages/stage_026.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \kappa_n=\int_0^L \nu_0(s)f_n(s)\,ds
+- path: paper/stages/stage_026.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage026-kappa0}
+- path: paper/stages/stage_026.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \kappa:=\kappa_0=\frac{2\sqrt2}{\pi}}.
+- path: paper/stages/stage_026.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: I_{\eta\phi}=\kappa,
+- path: paper/stages/stage_026.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: I_{\eta w}=\kappa,
+- path: paper/stages/stage_026.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: I_{uw}=\kappa.
+- path: paper/stages/stage_026.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: C=\kappa\lambda_B,
+- path: paper/stages/stage_026.tex
+  line: 80
+  role: paper_stage_tex
+  excerpt: G_W=\kappa\lambda_W,
+- path: paper/stages/stage_026.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: R=\kappa\lambda_R}.
+- path: paper/stages/stage_026.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: \Delta&=\Omega_U^2\Omega_W^2-\kappa^2\lambda_R^2,\\
+- path: paper/stages/stage_026.tex
+  line: 90
+  role: paper_stage_tex
+  excerpt: Q&=\lambda_U^2\Omega_W^2+2\kappa^2\lambda_U\lambda_W\lambda_R+\kappa^2\lambda_W^2\Omega_U^2,\\
+- path: paper/stages/stage_026.tex
+  line: 91
+  role: paper_stage_tex
+  excerpt: \mathcal P&=\kappa(\Omega_U^2\lambda_W+\lambda_R\lambda_U).
+- path: paper/stages/stage_026.tex
+  line: 98
+  role: paper_stage_tex
+  excerpt: X=\frac{\kappa^2\lambda_B^2}{\varpi^2}.
+- path: paper/stages/stage_026.tex
+  line: 107
+  role: paper_stage_tex
+  excerpt: \frac{\kappa^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}
+- path: paper/stages/stage_026.tex
+  line: 108
+  role: paper_stage_tex
+  excerpt: '{\Delta\left(K\Delta-\Delta\kappa^2\lambda_B^2/\varpi^2-Q\right)}'
+- path: paper/stages/stage_026.tex
+  line: 116
+  role: paper_stage_tex
+  excerpt: =\frac{\kappa^2\lambda_B^2}{\varpi^2}
+- path: paper/stages/stage_026.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: +\frac{\widehat m_{\rm rad}^{\,2}\kappa^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}
+- path: paper/stages/stage_026.tex
+  line: 132
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~026 outputs the finite-throat D/N overlap \eqref{eq:app-stage026-kappa0}, the concrete
+    couplings \eqref{eq:app-stage026-couplings}, the finite-throat normalization law \eqref{eq:app-stage026-normalization},
+    and the required stiffness formula \eqref{eq:app-stage026-Kreq}.}
+- path: paper/stages/stage_026.tex
+  line: 135
+  role: paper_stage_tex
+  excerpt: \item Direct integration of \(\nu_0f_n\) gives \(\kappa_n=\sqrt2/[(n+1/2)\pi]\).
+- path: paper/stages/stage_026.tex
+  line: 136
+  role: paper_stage_tex
+  excerpt: \item The lowest D/N mode is dominant because \(|\kappa_n|\) decreases as \((n+1/2)^{-1}\).
+- path: paper/stages/stage_026.tex
+  line: 137
+  role: paper_stage_tex
+  excerpt: \item The support/mixed coupling vanishes if \(\kappa=0\), but the D/N lowest mode has \(\kappa>0\).
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 22
+  role: notes_stage
+  excerpt: '`kappa = 2 sqrt(2) / pi`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 122
+  role: notes_stage
+  excerpt: '`kappa_n = int_0^L ds u_0(s) f_n(s) = sqrt(2) / ( (n + 1/2) pi )`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 126
+  role: notes_stage
+  excerpt: '`kappa = kappa_0 = 2 sqrt(2) / pi`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 130
+  role: notes_stage
+  excerpt: '`kappa ~= 0.900316316`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 134
+  role: notes_stage
+  excerpt: '`I_(eta,phi) = int_0^L ds u_0 f_0 = kappa`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 138
+  role: notes_stage
+  excerpt: '`I_(eta,w)   = int_0^L ds u_0 f_0 = kappa`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 140
+  role: notes_stage
+  excerpt: '`I_(u,w)     = int_0^L ds u_0 f_0 = kappa`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 142
+  role: notes_stage
+  excerpt: So on this concrete branch all radial/axial overlap information collapses to the single geometric constant `kappa`.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 146
+  role: notes_stage
+  excerpt: '- the constant wall/brane mode couples to the `n`th D/N throat wave with strength `kappa_n ~ 1/(n+1/2)`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 168
+  role: notes_stage
+  excerpt: '`C   = kappa lambda_B`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 172
+  role: notes_stage
+  excerpt: '`G_W = kappa lambda_W`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 174
+  role: notes_stage
+  excerpt: '`R   = kappa lambda_R`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 178
+  role: notes_stage
+  excerpt: '`Delta = Omega_U^2 Omega_W^2 - kappa^2 lambda_R^2`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 180
+  role: notes_stage
+  excerpt: '`Q = lambda_U^2 Omega_W^2 + 2 kappa^2 lambda_U lambda_W lambda_R + kappa^2 lambda_W^2 Omega_U^2`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 182
+  role: notes_stage
+  excerpt: '`P = kappa ( Omega_U^2 lambda_W + lambda_R lambda_U )`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 186
+  role: notes_stage
+  excerpt: '`X = C^2 / varpi^2 = kappa^2 lambda_B^2 / varpi^2`.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 190
+  role: notes_stage
+  excerpt: '`B_0 = kappa^2 lambda_B^2 / varpi^2`,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

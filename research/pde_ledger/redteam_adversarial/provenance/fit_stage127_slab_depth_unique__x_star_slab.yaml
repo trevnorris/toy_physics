@@ -1,0 +1,91 @@
+schema_version: 1
+candidate_id: fit_stage127_slab_depth_unique
+parameter_name: x_star_slab
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage127_slab_depth_unique__phase_b__x_star_slab.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '127'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_127.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Slab and truncated-exponential families reach the lower branch at moderate penetration depths.
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 8
+  role: notes_stage
+  excerpt: '## 1. Uniform slab source'
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 13
+  role: notes_stage
+  excerpt: \sigma_x^{\rm slab}(z)=\frac{1}{xL},
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 24
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm slab}(x)
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 35
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm slab}(x)=\mathfrak g_-^{F1}
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 37
+  role: notes_stage
+  excerpt: gives the unique Family-1 slab depth
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 40
+  role: notes_stage
+  excerpt: x_*^{\rm slab}\approx 0.797839360904564.
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 90
+  role: notes_stage
+  excerpt: x_*^{\rm slab}\approx 0.80.
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: '# Uniform slab family'
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: g_slab = sp.simplify(2*sp.sin(sp.pi*x/2)/(sp.pi*x))
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: print("g_slab(x) =", g_slab)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: x0_slab = sp.nsolve(sp.Eq(g_slab, gminus), 0.8, tol=1e-30, maxsteps=200, prec=80)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: print("x_*^slab =", x0_slab)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: res_slab = sp.N(g_slab.subs(x, x0_slab) - gminus, 30)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: print("residual slab =", res_slab)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: 'if abs(float(res_slab)) > 1e-20 or abs(float(res_exp)) > 1e-20:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

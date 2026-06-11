@@ -1,0 +1,210 @@
+schema_version: 1
+candidate_id: fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+parameter_name: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_253_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit__phase_b__moving_throat_pde_stage253_physi_2c39c327799b.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 253]{Stage 253: Physical calibration and material thresholds}'
+- path: paper/stages/stage_253.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl}.}'
+- path: paper/stages/stage_253.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \subsection{Physical calibration dictionary}
+- path: paper/stages/stage_253.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \label{subsec:app-part08-stage253-calibration}
+- path: paper/stages/stage_253.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: Stage 253 introduces the explicit physical dictionary
+- path: paper/stages/stage_253.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-physical-dictionary}
+- path: paper/stages/stage_253.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: The safe-edge lattice event-equivalent rate is
+- path: paper/stages/stage_253.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-lat-safe-rate}
+- path: paper/stages/stage_253.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: A coarse transport projection factor \(\Upsilon_{\rm lat}>0\) defines the physical lattice-turnover rate
+- path: paper/stages/stage_253.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-lattice-turn-rate}
+- path: paper/stages/stage_253.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: Thus the electron-phonon turnover threshold is \cref{eq:app-part08-main-ep-threshold}, and the product form is
+- path: paper/stages/stage_253.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-ep-product}
+- path: paper/stages/stage_253.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: The legacy Session-V slice is recovered by choosing
+- path: paper/stages/stage_253.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-upsilon-session}
+- path: paper/stages/stage_253.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: This is a calibration slice, not a new branch law.
+- path: paper/stages/stage_253.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: For the harmonic interstitial companion,
+- path: paper/stages/stage_253.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-physical-radius}
+- path: paper/stages/stage_253.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: and
+- path: paper/stages/stage_253.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-chi-lattice}
+- path: paper/stages/stage_253.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: This is only a geometric trigger.  The force-matched stiffness requires
+- path: paper/stages/stage_253.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-force-match}
+- path: paper/stages/stage_253.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-kturn}
+- path: paper/stages/stage_253.tex
+  line: 81
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-k-aint}
+- path: paper/stages/stage_253.tex
+  line: 85
+  role: paper_stage_tex
+  excerpt: The Korringa companion is the cleanest physical map.  With
+- path: paper/stages/stage_253.tex
+  line: 87
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-korringa}
+- path: paper/stages/stage_253.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: the ceiling temperature is
+- path: paper/stages/stage_253.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-tmax}
+- path: paper/stages/stage_253.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: \subsection{Material-screening ratios}
+- path: paper/stages/stage_253.tex
+  line: 100
+  role: paper_stage_tex
+  excerpt: \label{subsec:app-part08-stage253-screening-ratios}
+- path: paper/stages/stage_253.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: 'The companion ends with four screening ratios:'
+- path: paper/stages/stage_253.tex
+  line: 104
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-pi-ep}
+- path: paper/stages/stage_253.tex
+  line: 112
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-pi-chi}
+- path: paper/stages/stage_253.tex
+  line: 116
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-pi-k}
+- path: paper/stages/stage_253.tex
+  line: 123
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-pi-t}
+- path: paper/stages/stage_253.tex
+  line: 129
+  role: paper_stage_tex
+  excerpt: The materials companion is then
+- path: paper/stages/stage_253.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-final-screen}
+- path: paper/stages/stage_253.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: This is not a claim that any particular host passes.  It is the reduced threshold stack that a candidate host must
+    satisfy after the physical unit map and material constants are supplied.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 253: Physical Calibration and Material-Threshold Companion from the Stage-252 Microscopic
+    Export and Cold-Survival Compiler'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: 1. the Stage-252 channel-resolved microscopic export / cold-survival compiler,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: 2. the exact safe-edge lattice event-equivalent rate
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - paper/stages/stage_253.tex
+    - research/pde_ledger/paper/stages/stage_253.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - paper/stages/stage_253.tex
+    - research/pde_ledger/paper/stages/stage_253.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

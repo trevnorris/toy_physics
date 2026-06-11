@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage_083_a_f1
+parameter_name: A_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_a_f1__phase_b__a_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: A_F1 = sp.simplify((kappa_F1 + pi**2 / 4) / (kappa_F1 + y_F1**2))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("A_F1 =", sp.N(A_F1, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: zeta_F1 = sp.simplify(A_F1 * Omega**2)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: zeta_max_F1 = sp.N(A_F1 * pi**2 / 4, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: '# Monotonicity check: zeta_F1(Pe) = A_F1 * Omega(Pe)^2 should be monotone'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

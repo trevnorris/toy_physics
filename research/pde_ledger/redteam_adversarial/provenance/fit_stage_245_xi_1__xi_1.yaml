@@ -1,0 +1,141 @@
+schema_version: 1
+candidate_id: fit_stage_245_xi_1
+parameter_name: Xi_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_245_xi_1__phase_b__xi_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '245'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_245.tex
+  line: 85
+  role: paper_stage_tex
+  excerpt: \Xi_1^{\rm nr}=u_1,
+- path: paper/stages/stage_245.tex
+  line: 87
+  role: paper_stage_tex
+  excerpt: \mathcal R_1^{\rm nr}+\Xi_1^{\rm nr}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 71
+  role: notes_stage
+  excerpt: 3. the precise relation between the new finite packet and the earlier weak-axisymmetric scalar `\Xi_1`.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 371
+  role: notes_stage
+  excerpt: \delta\ln\mathcal T^2=\Xi_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 373
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_\eta)=\mathcal R_1+\Xi_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 409
+  role: notes_stage
+  excerpt: \Xi_1^{\rm nr}=u_1,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 415
+  role: notes_stage
+  excerpt: \mathcal R_1^{\rm nr}+\Xi_1^{\rm nr}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: 3. and once `V` is activated, the target-ratio packet is no longer determined by `\Xi_1` alone.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 438
+  role: notes_stage
+  excerpt: So the compact front-end packet `(\Delta_{\rm norm},\Xi_1)` is the rigid-mouth projection of a larger two-leg packet
+    on the non-rigid branch.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 516
+  role: notes_stage
+  excerpt: which matches the Session-I value.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 546
+  role: notes_stage
+  excerpt: \Xi_1^{\rm nr}\approx 0.14313458,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: So the session’s `\Xi_1` readback remains the direct transfer scalar, while the newly active dressing leg contributes
+    the additional selected-branch residual.
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 5. the weak-axisymmetric first-order packet (Xi_1, R_1),
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: Xi1_nr = coeff_linear(log_T, eps)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: RpXi1 = coeff_linear(log_one_minus, eps)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: RpXi1_expected = sp.simplify(-eps_eta_ref * v1 / (1 - eps_eta_ref))
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print("Xi1_nr                =", Xi1_nr)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: print("R1 + Xi1              =", RpXi1)
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: assert sp.simplify(Xi1_nr - u1) == 0
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: assert sp.simplify(RpXi1 - RpXi1_expected) == 0
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: assert sp.simplify(R1_nr + Xi1_nr - RpXi1) == 0
+- path: scripts/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.py
+  line: 257
+  role: sympy_script
+  excerpt: print("- exact weak-axisymmetric packet (Xi_1, R_1),")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    - paper/stages/stage_245.tex
+    - research/pde_ledger/paper/stages/stage_245.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+    - paper/stages/stage_245.tex
+    - research/pde_ledger/paper/stages/stage_245.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

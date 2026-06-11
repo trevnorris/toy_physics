@@ -1,0 +1,45 @@
+schema_version: 1
+candidate_id: fit_stage008_source_profile_must_match_weight
+parameter_name: S_w
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage008_source_profile_must_match_weight__phase_b__s_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 008
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_008.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 008]{Stage 008: Projected Maxwell extension and clean matching}'
+- path: paper/stages/stage_008.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_008.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: 'The source profile \(S(w)\) must be matched to the localized Maxwell weight:'
+- path: paper/stages/stage_008.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: Stage~008 exports the matching conditions
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

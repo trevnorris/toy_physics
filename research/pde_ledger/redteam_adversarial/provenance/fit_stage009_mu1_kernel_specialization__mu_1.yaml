@@ -1,0 +1,57 @@
+schema_version: 1
+candidate_id: fit_stage009_mu1_kernel_specialization
+parameter_name: mu_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage009_mu1_kernel_specialization__phase_b__mu_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 009
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_009.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_009.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: =X(0)+\ell\mu_1X'(0)+O(\ell^2),
+- path: paper/stages/stage_009.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \mu_1=\int_0^\infty u\,w(u)\,du .
+- path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: gamma_mu1 = sp.integrate(u * Wgamma_unit, (u, 0, sp.oo))
+- path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: assert_zero("Gamma one-sided first moment", gamma_mu1 - 2)
+- path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: avg_Q_gamma_leading - (q0 + ell * gamma_mu1 * q1))
+- path: scripts/moving_throat_pde_stage009_projected_maxwell_near_throat_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: print("  μ1 =", sp.sstr(gamma_mu1))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

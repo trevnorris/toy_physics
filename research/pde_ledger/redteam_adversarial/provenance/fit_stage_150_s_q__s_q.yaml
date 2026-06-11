@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_150_s_q
+parameter_name: S_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_150_s_q__phase_b__s_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '150'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  line: 71
+  role: notes_stage
+  excerpt: \Pi_*=\Sigma_m^*\left[4-\mathcal S_q(\Pi_*)\right].
+- path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  line: 92
+  role: notes_stage
+  excerpt: Using the fixed-point relation \(\Pi_*=\Sigma_m^*(4-\mathcal S_q(\Pi_*))\), this can
+- path: notes/stages/moving_throat_pde_stage150_full_profile_residual.md
+  line: 98
+  role: notes_stage
+  excerpt: 4T_s(x;\Pi_*)-T_q(x;\Pi_*)-(4-\mathcal S_q(\Pi_*))x
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Sq_symbolic = Aq_s*k - Cq_s*Pi
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: 'Sq = Sq_symbolic.subs({Aq_s: Aq, Cq_s: Cq})'
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: print("S_q(Pi) =", Sq_symbolic)
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: print("S_q(Pi) [expanded] =")
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: sp.pprint(Sq)
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("T_q'(0)-S_q", sp.diff(Tq, x).subs(x, 0) - Sq)
+- path: scripts/moving_throat_pde_stage150_full_profile_residual_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: R = Sigma * (4*Ts - Tq - (4 - Sq)*x)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

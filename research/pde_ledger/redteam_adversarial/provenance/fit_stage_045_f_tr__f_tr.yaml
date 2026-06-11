@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage_045_f_tr
+parameter_name: F_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_045_f_tr__phase_b__f_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '045'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 214
+  role: notes_stage
+  excerpt: '`R_target = F_tr(xi,delta;R_tr)`,'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 218
+  role: notes_stage
+  excerpt: '`F_tr(xi,delta;R)`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 224
+  role: notes_stage
+  excerpt: '`R_target - F_tr( xi_phys, delta; R_tr ),`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 242
+  role: notes_stage
+  excerpt: '- and the exact collapse of the normalization residual to the tracking function `F_tr`.'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: F_track_stage044 = sp.simplify(F_cont_stage044.subs(R_phi, R_U))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: F_track_expected = sp.simplify(
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: expect_zero("Stage-044 tracking F collapse", F_track_stage044 - F_track_expected)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: F_tr_from_stage044 = sp.simplify(
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: F_tr_expected = sp.simplify(
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: expect_zero("F_tr collapse from Stage-044 residual", F_tr_from_stage044 - F_tr_expected)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: print("coherent normalization residual =", sp.simplify(R_target - F_tr_from_stage044))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

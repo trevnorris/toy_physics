@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage174_self_similarity_weights
+parameter_name: omega_B
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage174_self_similarity_weights__phase_b__omega_b.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '174'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 29
+  role: notes_stage
+  excerpt: \omega_B(\delta_B-\delta_K)
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 31
+  role: notes_stage
+  excerpt: \omega_Z(\delta_Z-\delta_K),
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 46
+  role: notes_stage
+  excerpt: \omega_B:=\frac{B_0}{D_0},
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 48
+  role: notes_stage
+  excerpt: \omega_Z:=\frac{Z_0}{D_0},
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 86
+  role: notes_stage
+  excerpt: \omega_K:=\frac{K}{D_0},
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 88
+  role: notes_stage
+  excerpt: \omega_B:=\frac{B_0}{D_0},
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 90
+  role: notes_stage
+  excerpt: \omega_Z:=\frac{Z_0}{D_0}.
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 97
+  role: notes_stage
+  excerpt: \omega_K\,\delta_K
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 99
+  role: notes_stage
+  excerpt: \omega_B\,\delta_B
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 101
+  role: notes_stage
+  excerpt: \omega_Z\,\delta_Z.
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 111
+  role: notes_stage
+  excerpt: \omega_K-\omega_B-\omega_Z=1.
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 119
+  role: notes_stage
+  excerpt: \omega_K\delta_K
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 121
+  role: notes_stage
+  excerpt: \omega_B\delta_B
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 123
+  role: notes_stage
+  excerpt: \omega_Z\delta_Z,
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 132
+  role: notes_stage
+  excerpt: \omega_B(\delta_B-\delta_K)
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 134
+  role: notes_stage
+  excerpt: \omega_Z(\delta_Z-\delta_K).
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 306
+  role: notes_stage
+  excerpt: \omega_B \sum_\alpha \rho_\alpha^{(B)}\Sigma_\alpha^{(B)}
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 308
+  role: notes_stage
+  excerpt: \omega_Z \sum_r \rho_r^{(Z)}\Sigma_r^{(Z)}.
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 395
+  role: notes_stage
+  excerpt: 'It is to determine whether the actual moving-throat branch breaks static self-similarity, and if so through which
+    defect family:'
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 419
+  role: notes_stage
+  excerpt: \omega_B(\delta_B-\delta_K)
+- path: notes/stages/moving_throat_pde_stage174_static_self_similarity.md
+  line: 421
+  role: notes_stage
+  excerpt: \omega_Z(\delta_Z-\delta_K);
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: omegaK = K / D0
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: omegaB = B0 / D0
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: omegaZ = Z0 / D0
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: expect_zero("weight identity", omegaK - omegaB - omegaZ - 1)
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: deltaD - (omegaK * deltaK - omegaB * deltaB - omegaZ * deltaZ),
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: Xi_wall_ref = sp.simplify((deltaN - deltaK) + omegaB * (deltaB - deltaK) + omegaZ * (deltaZ - deltaK))
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: expect_zero("Xi_load mismatch-field form", Xi_sigma - (SigmaN + omegaB * SigmaB + omegaZ * SigmaZ))
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: print("Xi_load mismatch-field prototype =", sp.simplify(SigmaN + omegaB * SigmaB + omegaZ * SigmaZ))
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("  delta_D = omegaK deltaK - omegaB deltaB - omegaZ deltaZ")
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: print("  omegaK - omegaB - omegaZ = 1")
+- path: scripts/moving_throat_pde_stage174_static_self_similarity_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: print("  Xi_load = (deltaN-deltaK) + omegaB(deltaB-deltaK) + omegaZ(deltaZ-deltaK)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

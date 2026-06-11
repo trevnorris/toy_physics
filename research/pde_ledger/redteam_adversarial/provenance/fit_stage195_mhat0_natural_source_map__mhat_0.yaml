@@ -1,0 +1,75 @@
+schema_version: 1
+candidate_id: fit_stage195_mhat0_natural_source_map
+parameter_name: mhat_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage195_mhat0_natural_source_map__phase_b__mhat_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: P0, chi_Q, mhat0 = sp.symbols("P0 chi_Q mhat_0", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: Delta_norm = sp.simplify(mhat0**2 * P0 - P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: odd_closure = sp.simplify(mhat0**2 * chi_Q * N_Q - 1)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: NQ_from_odd = sp.simplify(1 / (mhat0**2 * chi_Q))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: (mhat0**2 * Gamma5 - Gamma5_target).subs(P0, N_Q * P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: '"observable odd condition factorizes as Gamma5_target*(mhat0^2 chi_Q N_Q - 1)",'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: odd_condition_residual - Gamma5_target * (mhat0**2 * chi_Q * N_Q - 1),
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: NQ_pt = sp.simplify(NQ_from_odd.subs(mhat0, 1))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: 'Delta_norm_pt = sp.simplify(Delta_norm_NQ.subs({mhat0: 1, N_Q: NQ_pt}))'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: print("      mhat_0^2 chi_Q N_Q = 1.")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: print("      Delta_norm = P0^target (mhat_0^2 N_Q - 1),")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: print("4. On the natural point-particle source-map branch mhat_0 -> 1, the conservative")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

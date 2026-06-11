@@ -1,0 +1,46 @@
+schema_version: 1
+candidate_id: fit_stage121_aspect_ratio_37_20_reference_freeze
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_aspect_ratio_37_20_reference_freeze__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '121'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_121.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement,
+    finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane
+    ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_121.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check parent overlap ratios before interpreting them as actual branch values.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 91
+  role: notes_stage
+  excerpt: the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real
+    throat geometry, not to a detached bookkeeping cavity.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 98
+  role: notes_stage
+  excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

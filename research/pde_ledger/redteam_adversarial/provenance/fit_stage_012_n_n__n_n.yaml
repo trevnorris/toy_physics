@@ -1,0 +1,117 @@
+schema_version: 1
+candidate_id: fit_stage_012_n_n
+parameter_name: n_n
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_n_n__phase_b__n_n.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '012'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_012.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_012.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: of these primitives determine the \(z_n\) and \(n_n\) slots used in
+- path: paper/stages/stage_012.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: shifts.  This is the step that connects the projection-first mouth data to the
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: bundle. Instead of inserting abstract bundle corrections z_n and n_n directly,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: from __future__ import annotations
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: 'def banner(title: str) -> str:'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: '# difference receive NO contribution from the z0 channel: they must equal'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 205
+  role: sympy_script
+  excerpt: f"primitive fixed-target compatibility has no z0 channel in {slip}",
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: f"primitive transported-target compatibility has no z0 channel in {slip}",
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: '# Conversely, the normalization K surface alone DOES retain a q1/d1 channel'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: '"primitive normalization K surface retains q1 channel from z0",'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 219
+  role: sympy_script
+  excerpt: '"primitive normalization K surface retains d1 channel from z0",'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: lines.append(banner("1) Primitive one-port Maxwell/mixed formulas"))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: lines.append(banner("2) Induced bundle corrections z0, z2, z4, n0, n2, n4"))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 257
+  role: sympy_script
+  excerpt: lines.append(banner("3) Reading the primitive slippages"))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 267
+  role: sympy_script
+  excerpt: lines.append(banner("4) Direct primitive contribution to Xi1 = P1/P0"))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 276
+  role: sympy_script
+  excerpt: lines.append(banner("5) Direct primitive contribution to the isotropic compatibility shift"))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 286
+  role: sympy_script
+  excerpt: lines.append(banner("6) Practical reading"))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_012.tex
+    attempted_sources:
+    - paper/stages/stage_012.tex
+    - research/pde_ledger/paper/stages/stage_012.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_012.tex
+    attempted_sources:
+    - paper/stages/stage_012.tex
+    - research/pde_ledger/paper/stages/stage_012.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

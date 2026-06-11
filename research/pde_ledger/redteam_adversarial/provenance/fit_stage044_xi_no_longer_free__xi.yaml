@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage044_xi_no_longer_free
+parameter_name: xi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage044_xi_no_longer_free__phase_b__xi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '044'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_044.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: The selected determinant becomes an equation for \(\xi\).  After collecting terms, the physical softening depth
+    satisfies
+- path: paper/stages/stage_044.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \xi^2+B_{\rm cont}\xi+C_{\rm cont}=0},
+- path: paper/stages/stage_044.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: Once the physical root \(\xi_{\rm phys}\in(0,1)\) is selected, the normalization gate is
+- path: paper/stages/stage_044.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=F_{\rm cont}(\xi_{\rm phys})}.
+- path: paper/stages/stage_044.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: 'Two exact special surfaces are useful diagnostics: a minimal-kernel source-tied surface and an interference-matched
+    tracking surface.  They are distinguished by whether the direction-splitting term \((R_U-R_\phi)^2\) survives.'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 14
+  role: notes_stage
+  excerpt: The main result is that the continuum-selected wall branch is pinned by one exact quadratic equation for the softening
+    depth `xi`, and the 2.5PN normalization test then becomes one exact residual equation evaluated on that root.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 71
+  role: notes_stage
+  excerpt: '`n_req(xi,delta;m,q,r)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 72
+  role: notes_stage
+  excerpt: '`= [ xi(delta + xi) - m( delta + (1 + q^2) xi ) ]`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 73
+  role: notes_stage
+  excerpt: '`  / [ delta + (1 + r^2) xi - m (q-r)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 88
+  role: notes_stage
+  excerpt: '`= [ xi(delta + xi) - M_mix( delta + (1 + lambda_0 R_U^2) xi ) ]`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 89
+  role: notes_stage
+  excerpt: '`  / [ delta + (1 + lambda_0 R_phi^2) xi - M_mix lambda_0 (R_U - R_phi)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 97
+  role: notes_stage
+  excerpt: The key structural simplification is that the continuum-selected branch equation is exactly quadratic in `xi`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 101
+  role: notes_stage
+  excerpt: '`xi^2 + B_cont xi + C_cont = 0,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 116
+  role: notes_stage
+  excerpt: '`xi_phys`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 121
+  role: notes_stage
+  excerpt: '`xi_phys = 0`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 135
+  role: notes_stage
+  excerpt: '`F_(q,r,t)(xi,delta;m)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 136
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + q r) xi ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 137
+  role: notes_stage
+  excerpt: '`  [ delta + (1 + r t) xi - m(q-r)(q-t) ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 138
+  role: notes_stage
+  excerpt: '`  / [ (1 - xi) D_(q,r)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 143
+  role: notes_stage
+  excerpt: '`= [ delta + xi - m q(q-r) ]^2 + [ m(q-r) + r xi ]^2.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 147
+  role: notes_stage
+  excerpt: '`F_cont(xi)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 148
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + lambda_0 R_U R_phi) xi ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 149
+  role: notes_stage
+  excerpt: '`  [ delta + (1 + lambda_0 R_phi) xi`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 151
+  role: notes_stage
+  excerpt: '`  / [ (1 - xi) D_cont(xi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 155
+  role: notes_stage
+  excerpt: '`D_cont(xi)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 156
+  role: notes_stage
+  excerpt: '`= [ delta + xi - lambda_0 M_mix R_U (R_U - R_phi) ]^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 157
+  role: notes_stage
+  excerpt: '`  + lambda_0 [ M_mix (R_U - R_phi) + R_phi xi ]^2.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 161
+  role: notes_stage
+  excerpt: '`R_target = F_cont( xi_phys ).`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 165
+  role: notes_stage
+  excerpt: 1. the quadratic branch-selection equation for `xi_phys`,
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 166
+  role: notes_stage
+  excerpt: 2. the normalization residual equation `R_target - F_cont(xi_phys) = 0`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 204
+  role: notes_stage
+  excerpt: '`M_mix + M_supp = G_q(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 210
+  role: notes_stage
+  excerpt: '`G_q(xi,delta) = xi(delta+xi) / [ delta + (1 + q^2) xi ].`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 252
+  role: notes_stage
+  excerpt: '- the exact quadratic physical branch equation for `xi_phys`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 267
+  role: notes_stage
+  excerpt: '`R_target - F_cont(xi_phys)`'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: the physical softening depth xi.
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. The physical root xi_phys is the branch that reduces to xi=0 when the loads vanish.
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: xi, delta = sp.symbols("xi delta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: (xi * (delta + xi) - Mmix * (delta + (1 + lambda0 * RU**2) * xi))
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: / (delta + (1 + lambda0 * Rphi**2) * xi - Mmix * lambda0 * (RU - Rphi)**2)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: branch_expected = sp.expand(xi**2 + B_cont * xi + C_cont)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_010_r_fixed
+parameter_name: R_fixed
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_010_r_fixed__phase_b__r_fixed.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '010'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_010.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: With \(S=M+B_2+Z_2\) and \(T=B_4+Z_4\), the one-pole and fixed-target
+- path: paper/stages/stage_010.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: Eliminating \(K\) gives the fixed-target compatibility variation
+- path: paper/stages/stage_010.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: \label{eq:stage010-compat-fixed}
+- path: paper/stages/stage_010.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: \delta\mathcal C_{\rm fixed}
+- path: paper/stages/stage_010.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: \partial_{z_0}\delta\mathcal C_{\rm fixed}=0.
+- path: paper/stages/stage_010.tex
+  line: 130
+  role: paper_stage_tex
+  excerpt: \mathcal R_{\rm fixed}
+- path: paper/stages/stage_010.tex
+  line: 135
+  role: paper_stage_tex
+  excerpt: \eqref{eq:stage010-compat-fixed} or \eqref{eq:stage010-compat-transport}.
+- path: scripts/moving_throat_pde_stage010_projected_maxwell_push_bundle_master_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: assert_zero("fixed-target compatibility z0 cancellation", sp.diff(dcompat_direct, z0))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

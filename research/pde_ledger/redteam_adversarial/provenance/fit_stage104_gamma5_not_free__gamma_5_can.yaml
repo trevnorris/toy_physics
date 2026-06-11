@@ -1,0 +1,64 @@
+schema_version: 1
+candidate_id: fit_stage104_gamma5_not_free
+parameter_name: Gamma_5_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage104_gamma5_not_free__phase_b__gamma_5_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '104'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_104.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 104: Exact Outgoing `l=2` DtN Fingerprint'
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 5
+  role: notes_stage
+  excerpt: Compute the canonical compact passive/outgoing quadrupole normalization directly from an explicit outgoing `l=2`
+    Dirichlet-to-Neumann model instead of carrying the coefficient `chi_Q` symbolically.
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 83
+  role: notes_stage
+  excerpt: This is exactly the outgoing compact `l=2` fingerprint used earlier in the reduced 2.5PN program, but now derived
+    directly from the explicit DtN model.
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 87
+  role: notes_stage
+  excerpt: The canonical outgoing coefficient is therefore not free. On the exact spherical outgoing `l=2` DtN branch, the
+    leading odd quadrupole coefficient is fixed to
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 89
+  role: notes_stage
+  excerpt: \Gamma_{5,\rm can}^{\rm DtN}=\frac{a^5}{27c_s^5}.
+- path: notes/stages/moving_throat_pde_stage104_outgoing_dtn_fingerprint.md
+  line: 92
+  role: notes_stage
+  excerpt: So any later normalization mismatch must come from branch selection or source normalization, not from ambiguity
+    in the canonical outgoing `l=2` DtN model itself.
+- path: scripts/moving_throat_pde_stage104_outgoing_dtn_fingerprint_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("  The explicit outgoing spherical l=2 DtN model reproduces the canonical compact")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,84 @@
+schema_version: 1
+candidate_id: fit_stage_108_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_108_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '108'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 21
+  role: notes_stage
+  excerpt: Thus pure mouth normalization is invisible to the normalized outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 35
+  role: notes_stage
+  excerpt: So if the conservative even fingerprint is kept canonical,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 49
+  role: notes_stage
+  excerpt: So a pure effective radius/sound-speed rescaling cannot move the canonical outgoing normalization without simultaneously
+    spoiling the already fixed even moments.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 102
+  role: notes_stage
+  excerpt: 'The canonical value `chi_Q = 1` is robust against:'
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 105
+  role: notes_stage
+  excerpt: 2. pure effective radius/sound-speed rescaling once the conservative even fingerprint is fixed.
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: '# Class A: pure scale -- anchor normalized scaled response to the literal canonical fingerprint'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: print('solutions preserving canonical even fingerprint =', sol_beta)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: '# Anchor the Class C locus value to the notes submanifold reduced to beta=1 (Sigma5 = -Sigma0/27),'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# instead of re-substituting the solved value back into the same equation.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    - paper/stages/stage_108.tex
+    - research/pde_ledger/paper/stages/stage_108.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage108_robustness_classes.md
+    - paper/stages/stage_108.tex
+    - research/pde_ledger/paper/stages/stage_108.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

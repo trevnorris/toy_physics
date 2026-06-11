@@ -1,0 +1,141 @@
+schema_version: 1
+candidate_id: fit_stage025_mhat_ang_already_fixed
+parameter_name: mhat_ang
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage025_mhat_ang_already_fixed__phase_b__mhat_ang.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '025'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_025.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the Stage~024 isotropic angular collapse, the Stage~023 definitions of \(D_0\)
+    and \(N_0\), and the one-mode reduced couplings \(C,G_U,G_W,R\).}
+- path: paper/stages/stage_025.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
+- path: paper/stages/stage_025.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: \item The angular source map does not appear because Stage~024 already fixed \(\widehat m_{\rm ang}=1\).
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 024 removed the angular ambiguity.
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 8
+  role: notes_stage
+  excerpt: '`mhat_ang = 1`'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 12
+  role: notes_stage
+  excerpt: That means the next honest simplification is not angular. It is **radial/axial**.
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 26
+  role: notes_stage
+  excerpt: '`mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 95
+  role: notes_stage
+  excerpt: 'Because Stage 024 already proved `mhat_ang = 1`, the remaining source normalization is purely radial/axial:'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 97
+  role: notes_stage
+  excerpt: '`mhat_0 = mhat_rad`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 101
+  role: notes_stage
+  excerpt: '`mhat_rad^2 P^2 / [ Delta ( K Delta - Delta C^2 / varpi^2 - Q ) ] = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 205
+  role: notes_stage
+  excerpt: and `mhat_rad`.
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 209
+  role: notes_stage
+  excerpt: '`mhat_rad^2 P^2 / [ Delta (K Delta - Delta X - Q) ] ?= 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 216
+  role: notes_stage
+  excerpt: '- if not, the failure is not mysterious — it is in one of the radial/axial quantities `X`, `Delta`, `Q`, `P`,
+    or `mhat_rad`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 224
+  role: notes_stage
+  excerpt: '### Angular layer'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 236
+  role: notes_stage
+  excerpt: '`mhat_rad^2 P^2 / [ Delta (K Delta - Delta C^2 / varpi^2 - Q) ] = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 'follows after the Stage-024 angular theorem:'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: mhat = sp.symbols("mhat", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: '# imply mhat^2*P0 = gamma_GR/Gamma5_port = 54*G*c_s^5/(5*a^5*c^5).'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: equation_residual = sp.simplify(mhat**2 * P0_compact - target)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: '# Solvability check: mhat^2 = target / P0_compact must be positive on the'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: mhat_sq = sp.simplify(target / P0_compact)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: mhat_sq_at_sample = sp.nsimplify(mhat_sq.subs(sample_with_units))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: print(f"mhat^2 on sample = {mhat_sq_at_sample}")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: 'if mhat_sq_at_sample <= 0:'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"mhat^2 on sample is not positive: {mhat_sq_at_sample}")'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: residual_at_Pzero = sp.simplify((mhat**2 * P0_compact - target).subs(P_zero_sub))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: print(f"(mhat^2*P0 - target) at P=0 = {residual_at_Pzero}")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: expect_zero("(mhat^2*P0 - target) at P=0 equals -target", residual_at_Pzero + target)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage181_two_elevenths_split_coefficient
+parameter_name: delta_U
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_two_elevenths_split_coefficient__phase_b__delta_u.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '181'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 8
+  role: notes_stage
+  excerpt: \Xi_1=\frac{\delta\ln \mathcal T_{\mathrm{eff},A}^2}{\epsilon\lambda_A},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 22
+  role: notes_stage
+  excerpt: \frac{1+\chi_0/(1+\delta_U)}{1+\chi_0},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 29
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 49
+  role: notes_stage
+  excerpt: 3. and determine whether coherent support can help cancel the grouped defect.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 77
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 79
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\,\delta_{U,1}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 109
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 209
+  role: notes_stage
+  excerpt: \delta\ln Z_{W,A}=\epsilon\lambda_A\,\zeta_Z,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 211
+  role: notes_stage
+  excerpt: \delta\ln \Omega_{W,A}^2=\epsilon\lambda_A\,\omega_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 214
+  role: notes_stage
+  excerpt: \delta\chi_{0,A}=\epsilon\lambda_A\,\chi_1,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 216
+  role: notes_stage
+  excerpt: \delta\epsilon_{W,A}=\epsilon\lambda_A\,\varepsilon_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 218
+  role: notes_stage
+  excerpt: \delta\delta_{U,A}=\epsilon\lambda_A\,\delta_{U,1},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 220
+  role: notes_stage
+  excerpt: \delta\epsilon_{\eta,A}=\epsilon\lambda_A\,\eta_1.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 227
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 235
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 242
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 244
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\,\delta_{U,1}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 255
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 257
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\,\delta_{U,1}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 272
+  role: notes_stage
+  excerpt: 5. split-\(U\) axial drift \( \delta_{U,1} \).
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 288
+  role: notes_stage
+  excerpt: \mathcal R_1:=\frac{\delta\ln R_{\mathrm{target},A}}{\epsilon\lambda_A}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 319
+  role: notes_stage
+  excerpt: \frac{1+\chi_0/(1+\delta_U)}{1+\chi_0}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 321
+  role: notes_stage
+  excerpt: \frac{\chi_0+\delta_U+1}{(1+\chi_0)(1+\delta_U)}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 325
+  role: notes_stage
+  excerpt: \delta\ln R_{\mathrm{tr},A}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 334
+  role: notes_stage
+  excerpt: -\frac{\chi_0(1+\chi_0)\,\delta_{U,1}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 335
+  role: notes_stage
+  excerpt: +\delta_U(1+\delta_U)\,\chi_1}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 336
+  role: notes_stage
+  excerpt: '{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}.'
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 342
+  role: notes_stage
+  excerpt: '- the tracking-factor drift depends only on \((\chi_1,\delta_{U,1})\),'
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 353
+  role: notes_stage
+  excerpt: \chi_1=\delta_{U,1}=0,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 366
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 389
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 408
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 410
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\delta_{U,1}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 420
+  role: notes_stage
+  excerpt: '> \((Z_W,\Omega_W^2,\chi_0,\epsilon_W,\delta_U)\)'
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: eps_eta, epsW, deltaU, chi0, zeta = sp.symbols("eps_eta epsW deltaU chi0 zeta", real=True)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: eps = sp.simplify(epsW * (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: epsW1, deltaU1, eta1 = sp.symbols("varepsilon_W deltaU_1 eta_1", real=True)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: eps1 = sp.simplify(sp.diff(eps, epsW) * epsW1 + sp.diff(eps, deltaU) * deltaU1)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: (1 - sp.Rational(2, 11) * deltaU / (1 + deltaU)) * epsW1
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '- (sp.Rational(2, 11) * epsW / (1 + deltaU)**2) * deltaU1'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

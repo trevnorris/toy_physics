@@ -1,0 +1,75 @@
+schema_version: 1
+candidate_id: fit_stage_064_g_eq
+parameter_name: G_eq
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_064_g_eq__phase_b__g_eq.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '064'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 48
+  role: notes_stage
+  excerpt: '`G_eq = g_phi^2 I_1 / K_X;`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 53
+  role: notes_stage
+  excerpt: '`G_eq = g_phi^2 N_(phi phi) / [ K_X H_w ],`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 176
+  role: notes_stage
+  excerpt: '`G_eq = Delta K_X^(eq) / K_X = g_phi^2 I_1 / K_X.`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 190
+  role: notes_stage
+  excerpt: '`G_eq = g_phi^2 N_(phi phi) / [ K_X H_w ].`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 198
+  role: notes_stage
+  excerpt: '`G_eq = rho_w g_phi^2 N_(phi phi) / [ m c_(s,w)^2 K_X ].`'
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: G_eq = g_phi^2 * I1 / K_X = g_phi^2 N_pp / (K_X H_w),
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Geq = sp.simplify(g_phi**2 * I1 / KX)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: print("G_eq =", Geq)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: Geq_const = sp.simplify(Geq.subs(const_subs))
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: print("G_eq | H=const =", Geq_const)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: expect_zero("matched-layer gain vs Stage-062 best-alignment formula", Geq_const - g_phi**2 * Npp / (KX * Hw))
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 179
+  role: sympy_script
+  excerpt: print("3. The exact eliminated-source gain is G_eq = g_phi^2 I1/K_X.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

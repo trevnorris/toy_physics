@@ -1,0 +1,104 @@
+schema_version: 1
+candidate_id: fit_stage_031_delta_kappa
+parameter_name: delta_kappa
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_031_delta_kappa__phase_b__delta_kappa.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '031'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_031.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \frac{2(\Delta K_{\rm ax})^2\Pi_\kappa}{R_\lambda^3}>0}.
+- path: paper/stages/stage_031.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: P_{0,-}(0)=\frac{\beta_0\kappa_0^2}{A}.
+- path: paper/stages/stage_031.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm crit}=\frac{AB}{B\kappa_0^2+A\kappa_1^2}}.
+- path: paper/stages/stage_031.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \item The positivity of \(ds_-/d\alpha_0\) follows from \((\Delta K_{\rm ax})^2\Pi_\kappa>0\) and \(R_\lambda>0\).
+- path: paper/stages/stage_031.tex
+  line: 73
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~032 modifies the target by fixing \(\widehat m_-\).  Stage~035 upgrades the reachability
+    statement into the explicit monotone shape function \(F(\xi,\delta)\).}
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 28
+  role: notes_stage
+  excerpt: '`B = K_1 - Xi_0 = A + Delta K_ax`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 34
+  role: notes_stage
+  excerpt: '`R = sqrt( (Delta K_ax + alpha_0 delta_kappa)^2 + 4 alpha_0^2 KappaProd )`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 38
+  role: notes_stage
+  excerpt: '`d s_- / d alpha_0 = 2 Delta K_ax^2 KappaProd / R^3`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 42
+  role: notes_stage
+  excerpt: '`Delta K_ax > 0`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 44
+  role: notes_stage
+  excerpt: '`KappaProd = kappa_0^2 kappa_1^2 > 0`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 94
+  role: notes_stage
+  excerpt: '`s_-(0) = kappa_0^2`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 98
+  role: notes_stage
+  excerpt: '`P_{0,-}(0) = beta_0 kappa_0^2 / (K_0 - Xi_0)`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 108
+  role: notes_stage
+  excerpt: '`lambda_- lambda_+ = A B - alpha_0 ( B kappa_0^2 + A kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 112
+  role: notes_stage
+  excerpt: '`alpha_crit = A B / ( B kappa_0^2 + A kappa_1^2 )`.'
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: delta_kappa = x0 - x1
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: KappaProd = x0 * x1
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: R = sp.sqrt((DK + alpha * delta_kappa) ** 2 + 4 * alpha**2 * KappaProd)
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: ds_expected = sp.simplify(2 * DK**2 * KappaProd / R**3)
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: print("  • exact overlap derivative ds_-/dalpha = 2 DK^2 kappa0^2 kappa1^2 / R^3")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

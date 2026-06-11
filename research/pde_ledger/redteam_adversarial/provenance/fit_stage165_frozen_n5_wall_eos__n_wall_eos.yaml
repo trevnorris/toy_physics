@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage165_frozen_n5_wall_eos
+parameter_name: n_wall_eos
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage165_frozen_n5_wall_eos__phase_b__n_wall_eos.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '165'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_165.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Stage~163 off-family scalar, the lower compensated Family--1 branch,
+    the grouped real \(P_2\) weak-axisymmetric signature, and the wall/BdG/Maxwell/mixed bundle notation.  It does not modify
+    the parent action or the charge/notation firewall.}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 27
+  role: notes_stage
+  excerpt: '4. and after the frozen `n=5` wall-EOS reduction the whole actual branch-drift problem collapses to only four
+    independent microscopic drifts:'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 36
+  role: notes_stage
+  excerpt: '## 1. Lower-branch conditions already fixed'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 44
+  role: notes_stage
+  excerpt: 'are pinned at first order on the exact lower branch:'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 135
+  role: notes_stage
+  excerpt: So the actual background mixed-flow drift is already determined by the remaining shell/gauge/geometry drifts.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 328
+  role: notes_stage
+  excerpt: '## 7. Frozen `n=5` wall-EOS reduction'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 395
+  role: notes_stage
+  excerpt: But these are exactly the lower-branch fixed-\(\mathfrak g\) and fixed-\(\mathfrak r\) conditions used above.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 411
+  role: notes_stage
+  excerpt: The explicit lower compensated Family-1 branch now determines the linearized drifts of
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 419
+  role: notes_stage
+  excerpt: 'After also using the frozen `n=5` wall-EOS identity, the actual branch-drift problem is no longer eight-dimensional.
+    It is only four-dimensional:'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 4. n=5 wall EOS gives d ln c_{s,w} = 2 d ln rho_w.
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '# 4. n=5 wall EOS'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: print("\nAfter n=5 wall EOS (d ln c_s,w = 2 d ln rho_w):")
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: 'print("  n=5 wall EOS: d ln c_s,w = 2 d ln rho_w")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

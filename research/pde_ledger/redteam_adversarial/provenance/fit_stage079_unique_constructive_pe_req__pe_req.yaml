@@ -1,0 +1,139 @@
+schema_version: 1
+candidate_id: fit_stage079_unique_constructive_Pe_req
+parameter_name: Pe_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage079_unique_constructive_pe_req__phase_b__pe_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 079
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_079.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 079]{Stage 079: Exact Family--1 Map from Quadrupole Demand to Required Transport Bias}'
+- path: paper/stages/stage_079.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~079 converts a required support ratio into the transport bias required on the explicit
+    Family--1 branch.}
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 079: Exact Family-1 Map from Quadrupole Demand `zeta_req` to the Required Transport
+    Bias `Pe_req`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 078 closed the explicit Family-1 wall-depth subprogram and showed that the natural branch is not wall-depth
+    starved. The remaining serious bottleneck was therefore no longer the supply side `Theta_w`, but the demand side `Pe_req`
+    coming from the quadrupole-normalization branch.
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 7
+  role: notes_stage
+  excerpt: The next honest step is to eliminate the abstract `Pe_req` in favor of the explicit support-ratio demand `zeta_req`
+    carried from Stages 052 and 059.
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 27
+  role: notes_stage
+  excerpt: '`zeta_F1(Pe_req) = zeta_req.`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 31
+  role: notes_stage
+  excerpt: '`zeta_req <= zeta_max^(F1) := A_F1 pi^2 / 4`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 37
+  role: notes_stage
+  excerpt: So even before the final moving-throat quadrupole normalization is solved, the explicit Family-1 branch can only
+    support the selected quadrupole branch if its required support ratio stays below this concrete `O(1)` ceiling.
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 100
+  role: notes_stage
+  excerpt: '## 3. Exact inversion problem for `Pe_req`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 102
+  role: notes_stage
+  excerpt: Given a selected quadrupole-branch demand `zeta_req`, the required transport bias is the unique constructive root
+    of
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 104
+  role: notes_stage
+  excerpt: '`A_F1 Omega_(Pe_req)^2 = zeta_req.`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 108
+  role: notes_stage
+  excerpt: '`Omega_(Pe_req)^2 = zeta_req / A_F1.`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 112
+  role: notes_stage
+  excerpt: '`A_F1 <= zeta_req <= A_F1 pi^2/4.`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 116
+  role: notes_stage
+  excerpt: '- if `zeta_req < A_F1`, the demand is already met at zero transport bias;'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 117
+  role: notes_stage
+  excerpt: '- if `A_F1 <= zeta_req <= zeta_max^(F1)`, there is a unique constructive `Pe_req`;'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 118
+  role: notes_stage
+  excerpt: '- if `zeta_req > zeta_max^(F1)`, the Family-1 branch fails irrespective of wall depth.'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 137
+  role: notes_stage
+  excerpt: '`zeta_req = A_F1 (1 + eps_z),`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 139
+  role: notes_stage
+  excerpt: the required transport bias is approximately
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 141
+  role: notes_stage
+  excerpt: '`Pe_req ~= (pi/(4-pi)) eps_z.`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 149
+  role: notes_stage
+  excerpt: Before this step, the remaining bottleneck was written as the abstract Peclet requirement `Pe_req`.
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 151
+  role: notes_stage
+  excerpt: After this step, the explicit Family-1 branch no longer needs `Pe_req` as an independent concept.
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 154
+  role: notes_stage
+  excerpt: '`zeta_req <-> Pe_req`'
+- path: notes/stages/moving_throat_pde_stage079_family1_quadrupole_pe_map.md
+  line: 162
+  role: notes_stage
+  excerpt: '> does the final selected quadrupole branch demand a support ratio `zeta_req` that stays below this explicit Family-1
+    ceiling?'
+- path: scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: Verifies the explicit Family-1 map from the selected quadrupole demand zeta_req
+- path: scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: into the required constructive transport bias Pe_req.
+- path: scripts/moving_throat_pde_stage079_family1_quadrupole_pe_map_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: print("A unique constructive Pe_req exists iff A_F1 <= zeta_req <= zeta_max^(F1).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

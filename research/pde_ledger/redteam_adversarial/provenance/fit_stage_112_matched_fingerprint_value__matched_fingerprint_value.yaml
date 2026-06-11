@@ -1,0 +1,35 @@
+schema_version: 1
+candidate_id: fit_stage_112_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_112_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '112'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 35
+  role: notes_stage
+  excerpt: Imposing the canonical conservative even fingerprint,
+- path: notes/stages/moving_throat_pde_stage112_hybrid_robin_mixed_compensation.md
+  line: 86
+  role: notes_stage
+  excerpt: With that value,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

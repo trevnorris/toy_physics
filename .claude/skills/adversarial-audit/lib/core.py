@@ -31,9 +31,28 @@ STATE_MACHINE = [
 ]
 
 
+_LOADER = yaml.CSafeLoader if hasattr(yaml, "CSafeLoader") else yaml.SafeLoader
+
+
 class NoAliasDumper(yaml.SafeDumper):
     def ignore_aliases(self, data: Any) -> bool:
         return True
+
+
+if hasattr(yaml, "CSafeDumper"):
+    class NoAliasCDumper(yaml.CSafeDumper):
+        def ignore_aliases(self, data: Any) -> bool:
+            return True
+
+    _C_DUMPER = NoAliasCDumper
+else:
+    _C_DUMPER = None
+
+# CSafeDumper is not content-neutral for this campaign manifest: it double-quotes
+# and escapes some astral Unicode scalars where SafeDumper emits single-quoted
+# Unicode text. Keep artifact writes on the proven no-alias SafeDumper.
+_DUMPER = NoAliasDumper
+
 
 WRITE_COMMANDS = {
     "init",
@@ -41,6 +60,7 @@ WRITE_COMMANDS = {
     "phase-a-ingest",
     "apply-alias-map",
     "phase-b-build",
+    "phase-b-build-all",
     "phase-b-ingest",
     "benchmark-ingest",
     "phase-c-render",
@@ -226,18 +246,50 @@ def slug(text: str) -> str:
     return out or "item"
 
 
+PHASE_B_FILENAME_STEM_MAX = 220
+
+
+def bounded_phase_b_stem(candidate_id: str, parameter_name: str, marker: str) -> str:
+    candidate_slug = slug(candidate_id)
+    parameter_slug = slug(parameter_name)
+    stem = f"{candidate_slug}{marker}{parameter_slug}"
+    if len(stem) <= PHASE_B_FILENAME_STEM_MAX:
+        return stem
+    digest = hashlib.sha1(f"{candidate_id}\0{parameter_name}".encode("utf-8")).hexdigest()[:12]
+    prefix = f"{candidate_slug}{marker}"
+    available = PHASE_B_FILENAME_STEM_MAX - len(prefix) - len(digest) - 1
+    if available >= 16:
+        shortened_parameter = parameter_slug[:available].rstrip("_") or parameter_slug[:available]
+        return f"{prefix}{shortened_parameter}_{digest}"
+
+    available = PHASE_B_FILENAME_STEM_MAX - len(marker) - len(digest) - 2
+    candidate_available = max(16, min(len(candidate_slug), available // 2))
+    parameter_available = max(16, available - candidate_available)
+    shortened_candidate = candidate_slug[:candidate_available].rstrip("_") or candidate_slug[:candidate_available]
+    shortened_parameter = parameter_slug[:parameter_available].rstrip("_") or parameter_slug[:parameter_available]
+    return f"{shortened_candidate}{marker}{shortened_parameter}_{digest}"
+
+
+def phase_b_prompt_path(env: Env, candidate_id: str, parameter_name: str) -> Path:
+    return env.artifact_root / "tmp_prompts" / f"{bounded_phase_b_stem(candidate_id, parameter_name, '__phase_b__')}.md"
+
+
+def phase_b_bundle_path(env: Env, candidate_id: str, parameter_name: str) -> Path:
+    return env.artifact_root / "provenance" / f"{bounded_phase_b_stem(candidate_id, parameter_name, '__')}.yaml"
+
+
 def load_yaml(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     with path.open(encoding="utf-8") as f:
-        return yaml.safe_load(f) or {}
+        return yaml.load(f, Loader=_LOADER) or {}
 
 
 def write_yaml(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
     with tmp.open("w", encoding="utf-8") as f:
-        yaml.dump(data, f, Dumper=NoAliasDumper, default_flow_style=False, sort_keys=False, width=120, allow_unicode=True)
+        yaml.dump(data, f, Dumper=_DUMPER, default_flow_style=False, sort_keys=False, width=120, allow_unicode=True)
     tmp.replace(path)
 
 
@@ -252,8 +304,9 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace")
 
 
-def require_manifest_lock(command: str) -> None:
-    if command in WRITE_COMMANDS and os.environ.get("ADVERSARIAL_MANIFEST_LOCKED") != "1":
+def require_manifest_lock(command: str, *, writes_manifest: bool | None = None) -> None:
+    writes = command in WRITE_COMMANDS if writes_manifest is None else writes_manifest
+    if writes and os.environ.get("ADVERSARIAL_MANIFEST_LOCKED") != "1":
         print(
             f"error: {command} writes MANIFEST.yaml and must be invoked through adversarial.sh flock locking",
             file=sys.stderr,
@@ -1357,18 +1410,22 @@ def build_target_layer(env: Env, out_path: Path) -> dict[str, Any]:
     return payload
 
 
-def load_or_build_target_layer(env: Env) -> dict[str, Any]:
+def load_or_build_target_layer(env: Env, *, build_missing: bool = True) -> dict[str, Any]:
     path = target_layer_path(env)
     if not path.exists():
+        if not build_missing:
+            raise SystemExit(f"error: target layer missing for read-only path: {env.rel(path)}")
         return build_target_layer(env, path)
     data = load_yaml(path)
     if not isinstance(data, dict) or not isinstance(data.get("records"), list):
+        if not build_missing:
+            raise SystemExit(f"error: target layer malformed for read-only path: {env.rel(path)}")
         return build_target_layer(env, path)
     return data
 
 
-def target_layer_by_candidate(env: Env) -> dict[str, dict[str, Any]]:
-    data = load_or_build_target_layer(env)
+def target_layer_by_candidate(env: Env, *, build_missing: bool = True) -> dict[str, dict[str, Any]]:
+    data = load_or_build_target_layer(env, build_missing=build_missing)
     return {str(record.get("candidate_id")): record for record in data.get("records") or []}
 
 
@@ -1712,10 +1769,7 @@ class GraphSourceIndex:
 
     @classmethod
     def load(cls, path: Path) -> "GraphSourceIndex":
-        text = path.read_text(encoding="utf-8")
-        if path.suffix.lower() in {".yaml", ".yml"}:
-            return cls(yaml.safe_load(text) or {})
-        return cls(yaml.safe_load(text) or {})
+        return cls(load_yaml(path) or {})
 
     def source_nodes(self, query: str) -> list[dict[str, Any]]:
         terms = graph_normalize_terms(query)
@@ -1755,8 +1809,12 @@ def graph_source_index(env: Env) -> GraphSourceIndex:
     return cached
 
 
-def query_graph_source(env: Env, source_queries: list[str]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    index = graph_source_index(env)
+def query_graph_source(
+    env: Env,
+    source_queries: list[str],
+    graph_index: GraphSourceIndex | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    index = graph_index or graph_source_index(env)
     errors: list[dict[str, Any]] = []
     for query in source_queries:
         nodes = index.source_nodes(query)
@@ -2080,6 +2138,8 @@ def update_benchmarks_for_candidate(env: Env, candidate: dict[str, Any]) -> None
     Real sourced benchmark entries are created by benchmark-ingest and must be preserved
     across later provenance rebuilds for the same candidate.
     """
+    if not candidate.get("dry_run"):
+        return
     data = ensure_benchmarks_file(env)
     cid = candidate["id"]
     placeholder_id = f"{cid}__dry_run_benchmark_placeholder"
@@ -2107,9 +2167,8 @@ def update_benchmarks_for_candidate(env: Env, candidate: dict[str, Any]) -> None
                 "external_match_policy": "For real campaign use, replace this placeholder with an agent-built sourced benchmark entry.",
             }
         )
-    if candidate.get("dry_run"):
-        data["entries"] = entries
-        write_yaml(env.benchmarks_path, data)
+    data["entries"] = entries
+    write_yaml(env.benchmarks_path, data)
 
 
 def render_template(env: Env, template_name: str, replacements: dict[str, str]) -> str:
@@ -2121,7 +2180,7 @@ def render_template(env: Env, template_name: str, replacements: dict[str, str]) 
 
 
 def yaml_block(data: Any) -> str:
-    return yaml.safe_dump(data, default_flow_style=False, sort_keys=False, width=120, allow_unicode=True).rstrip()
+    return yaml.dump(data, Dumper=_DUMPER, default_flow_style=False, sort_keys=False, width=120, allow_unicode=True).rstrip()
 
 
 def stage_source_context(env: Env, stages: list[str]) -> list[dict[str, Any]]:
@@ -3233,7 +3292,11 @@ def source_evidence_for_candidate(env: Env, entry: dict[str, Any], target_parame
     return evidence[:40]
 
 
-def graph_context_for_candidate(env: Env, entry: dict[str, Any]) -> dict[str, Any]:
+def graph_context_for_candidate(
+    env: Env,
+    entry: dict[str, Any],
+    graph_index: GraphSourceIndex | None = None,
+) -> dict[str, Any]:
     contexts = []
     gaps = []
     seen_sources: set[tuple[str, ...]] = set()
@@ -3251,7 +3314,7 @@ def graph_context_for_candidate(env: Env, entry: dict[str, Any]) -> dict[str, An
         if key in seen_sources:
             continue
         seen_sources.add(key)
-        nodes, errors = query_graph_source(env, source_queries)
+        nodes, errors = query_graph_source(env, source_queries, graph_index)
         if not nodes:
             gaps.append(
                 {
@@ -3266,10 +3329,15 @@ def graph_context_for_candidate(env: Env, entry: dict[str, Any]) -> dict[str, An
     return {"contexts": contexts, "graph_gaps": gaps}
 
 
-def phase_b_target_parameters(env: Env, entry: dict[str, Any]) -> list[str]:
+def phase_b_target_parameters(
+    env: Env,
+    entry: dict[str, Any],
+    target_layer: dict[str, dict[str, Any]] | None = None,
+) -> list[str]:
     if entry.get("dry_run"):
         return [str(p) for p in entry.get("parameter_names") or ["unclassified_target_parameter"]]
-    record = target_layer_by_candidate(env).get(str(entry.get("id")))
+    targets_by_id = target_layer if target_layer is not None else target_layer_by_candidate(env)
+    record = targets_by_id.get(str(entry.get("id")))
     if not record:
         return [str(p) for p in entry.get("parameter_names") or ["unclassified_target_parameter"]]
     targets = [str(record.get("primary_target_parameter") or "unclassified_target_parameter")]
@@ -3278,17 +3346,32 @@ def phase_b_target_parameters(env: Env, entry: dict[str, Any]) -> list[str]:
     return [target for target in targets if target]
 
 
-def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
-    manifest = load_manifest(env)
+def phase_b_bundle_paths_written(env: Env, entry: dict[str, Any], params: list[str]) -> bool:
+    if not params:
+        return False
+    candidate_id = str(entry.get("id"))
+    return all(phase_b_bundle_path(env, candidate_id, param).exists() for param in params)
+
+
+def build_provenance_for_entry(
+    env: Env,
+    manifest: dict[str, Any],
+    candidate_id: str,
+    *,
+    graph_index: GraphSourceIndex | None = None,
+    target_layer: dict[str, dict[str, Any]] | None = None,
+    save: bool = False,
+    render: bool = False,
+) -> dict[str, Any]:
     entry = (manifest.get("candidates") or {}).get(candidate_id)
     if not entry:
         raise SystemExit(f"error: unknown candidate: {candidate_id}")
     if entry.get("duplicate_of"):
         raise SystemExit(f"error: {candidate_id} is an alias of {entry.get('duplicate_of')}; build provenance on the canonical")
 
-    params = phase_b_target_parameters(env, entry)
+    params = phase_b_target_parameters(env, entry, target_layer)
     evidence = source_evidence_for_candidate(env, entry, params)
-    graph_context = graph_context_for_candidate(env, entry)
+    graph_context = graph_context_for_candidate(env, entry, graph_index)
     provenance_paths: list[str] = []
     for param in params:
         prompt_payload = dict(entry)
@@ -3302,7 +3385,7 @@ def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
                 "CANDIDATE_YAML": yaml_block(prompt_payload),
             },
         )
-        prompt_path = env.artifact_root / "tmp_prompts" / f"{candidate_id}__phase_b__{slug(param)}.md"
+        prompt_path = phase_b_prompt_path(env, candidate_id, param)
         write_text(prompt_path, phase_b_prompt)
         payload = {
             "schema_version": 1,
@@ -3343,7 +3426,7 @@ def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
                     "gaps": graph_context["graph_gaps"],
                 }
             )
-        path = env.artifact_root / "provenance" / f"{candidate_id}__{slug(param)}.yaml"
+        path = phase_b_bundle_path(env, candidate_id, param)
         write_yaml(path, payload)
         provenance_paths.append(env.rel(path))
 
@@ -3355,10 +3438,184 @@ def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
         entry["phase_b_status"] = "synthesis_pending"
     manifest["candidates"][candidate_id] = entry
     update_benchmarks_for_candidate(env, entry)
-    render_fit_file(env, manifest)
-    render_batches(env, manifest)
-    save_manifest(env, manifest)
-    return {"candidate_id": candidate_id, "provenance_paths": provenance_paths, "status": entry["status"]}
+    if render:
+        render_fit_file(env, manifest)
+        render_batches(env, manifest)
+    if save:
+        save_manifest(env, manifest)
+    return {
+        "candidate_id": candidate_id,
+        "provenance_paths": provenance_paths,
+        "status": entry["status"],
+        "bundle_count": len(provenance_paths),
+    }
+
+
+def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
+    manifest = load_manifest(env)
+    return build_provenance_for_entry(
+        env,
+        manifest,
+        candidate_id,
+        graph_index=graph_source_index(env),
+        target_layer=target_layer_by_candidate(env),
+        save=True,
+        render=True,
+    )
+
+
+def read_ids_file(path_text: str) -> tuple[list[str], list[str]]:
+    path = Path(path_text).expanduser()
+    if not path.is_absolute():
+        path = (Path.cwd() / path).resolve()
+    ids: list[str] = []
+    duplicate_ids: list[str] = []
+    seen: set[str] = set()
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        candidate_id = raw_line.split("#", 1)[0].strip()
+        if not candidate_id:
+            continue
+        if candidate_id in seen:
+            duplicate_ids.append(candidate_id)
+            continue
+        seen.add(candidate_id)
+        ids.append(candidate_id)
+    return ids, duplicate_ids
+
+
+def phase_b_not_eligible_reason(entry: dict[str, Any] | None) -> str | None:
+    if entry is None:
+        return "unknown_candidate"
+    if entry.get("duplicate_of"):
+        return f"duplicate_of:{entry.get('duplicate_of')}"
+    if entry.get("status") != "scanned":
+        return f"status:{entry.get('status', 'unknown')}"
+    return None
+
+
+def manifest_count_summary(manifest: dict[str, Any]) -> dict[str, dict[str, int]]:
+    candidates = (manifest.get("candidates") or {}).values()
+    return {
+        "status_counts": dict(sorted(Counter(str(entry.get("status", "unknown")) for entry in candidates).items())),
+        "phase_b_status_counts": dict(
+            sorted(Counter(str(entry.get("phase_b_status", "unset")) for entry in candidates).items())
+        ),
+    }
+
+
+def phase_b_build_all(env: Env, args: argparse.Namespace) -> dict[str, Any]:
+    manifest = load_manifest(env)
+    candidates = manifest.get("candidates") or {}
+    if args.ids_file:
+        candidate_ids, duplicate_ids = read_ids_file(args.ids_file)
+        ids_source = str(Path(args.ids_file).expanduser())
+    else:
+        candidate_ids = sorted(str(candidate_id) for candidate_id in candidates)
+        duplicate_ids = []
+        ids_source = "auto"
+
+    target_layer = target_layer_by_candidate(env, build_missing=not args.dry)
+    graph_index = None if args.dry else graph_source_index(env)
+    target_items: list[tuple[str, list[str]]] = []
+    skipped_already_built: list[str] = []
+    skipped_not_eligible: list[dict[str, str]] = []
+    target_errors: list[dict[str, str]] = []
+    errors: list[dict[str, str]] = []
+
+    for candidate_id in candidate_ids:
+        entry = candidates.get(candidate_id)
+        reason = phase_b_not_eligible_reason(entry)
+        if reason:
+            skipped_not_eligible.append({"candidate_id": candidate_id, "reason": reason})
+            continue
+        try:
+            params = phase_b_target_parameters(env, entry, target_layer)
+            already_built = phase_b_bundle_paths_written(env, entry, params)
+        except (Exception, SystemExit) as exc:
+            error = {"candidate_id": candidate_id, "error": str(exc)}
+            target_errors.append(error)
+            errors.append(error)
+            continue
+        if not args.force and already_built:
+            skipped_already_built.append(candidate_id)
+            continue
+        target_items.append((candidate_id, params))
+
+    limit = args.limit
+    if limit is not None and limit < 0:
+        raise SystemExit("error: --limit must be non-negative")
+    selected_items = target_items[:limit] if limit is not None else target_items
+    limited_out_count = max(0, len(target_items) - len(selected_items))
+    target_distribution = Counter(len(params) for _candidate_id, params in target_items)
+    selected_distribution = Counter(len(params) for _candidate_id, params in selected_items)
+
+    built = 0
+    total_bundles_written = 0
+    built_distribution: Counter[int] = Counter()
+    built_ids: list[str] = []
+    if not args.dry:
+        for candidate_id, _params in selected_items:
+            try:
+                result = build_provenance_for_entry(
+                    env,
+                    manifest,
+                    candidate_id,
+                    graph_index=graph_index,
+                    target_layer=target_layer,
+                    save=False,
+                    render=False,
+                )
+            except SystemExit as exc:
+                errors.append({"candidate_id": candidate_id, "error": str(exc)})
+                continue
+            except Exception as exc:
+                errors.append({"candidate_id": candidate_id, "error": f"{type(exc).__name__}: {exc}"})
+                continue
+            bundle_count = int(result.get("bundle_count") or len(result.get("provenance_paths") or []))
+            built += 1
+            total_bundles_written += bundle_count
+            built_distribution[bundle_count] += 1
+            built_ids.append(candidate_id)
+
+        if built:
+            render_fit_file(env, manifest)
+            render_batches(env, manifest)
+            save_manifest(env, manifest)
+
+    target_parameter_counts = {candidate_id: len(params) for candidate_id, params in selected_items}
+    report: dict[str, Any] = {
+        "dry": bool(args.dry),
+        "force": bool(args.force),
+        "ids_source": ids_source,
+        "ids_considered": len(candidate_ids),
+        "duplicate_ids_ignored": duplicate_ids,
+        "limit": limit,
+        "target_set_size": len(target_items) + len(target_errors),
+        "buildable_target_count": len(target_items),
+        "target_error_count": len(target_errors),
+        "selected_target_count": len(selected_items),
+        "limited_out_count": limited_out_count,
+        "built": built,
+        "would_build": len(selected_items) if args.dry else 0,
+        "skipped_already_built": len(skipped_already_built),
+        "skipped_not_eligible": len(skipped_not_eligible),
+        "total_bundles_written": total_bundles_written,
+        "target_bundles_per_candidate_distribution": dict(sorted(target_distribution.items())),
+        "selected_bundles_per_candidate_distribution": dict(sorted(selected_distribution.items())),
+        "built_bundles_per_candidate_distribution": dict(sorted(built_distribution.items())),
+        "target_parameter_counts": target_parameter_counts,
+        "errors": errors,
+    }
+    if skipped_already_built:
+        report["skipped_already_built_sample"] = skipped_already_built[:20]
+    if skipped_not_eligible:
+        report["skipped_not_eligible_sample"] = skipped_not_eligible[:20]
+    if built_ids:
+        report["built_candidate_ids"] = built_ids
+    if not args.dry:
+        report["saved_manifest"] = bool(built)
+        report["final_manifest_counts"] = manifest_count_summary(manifest)
+    return report
 
 
 def citation_path_under_notes(path_text: Any) -> bool:
@@ -3528,11 +3785,12 @@ def normalize_phase_b_synthesis_file(env: Env, source: Path) -> tuple[dict[str, 
 
 
 def provenance_path_for_parameter(env: Env, entry: dict[str, Any], parameter_name: str) -> Path:
-    slug_param = slug(parameter_name)
+    expected = phase_b_bundle_path(env, str(entry["id"]), parameter_name)
+    expected_rel = env.rel(expected)
     for path_text in entry.get("paths", {}).get("provenance") or []:
-        if path_text.endswith(f"__{slug_param}.yaml"):
+        if path_text == expected_rel or Path(path_text).name == expected.name:
             return env.abs_from_rel(path_text)
-    return env.artifact_root / "provenance" / f"{entry['id']}__{slug_param}.yaml"
+    return expected
 
 
 def provenance_complete_for_candidate(env: Env, entry: dict[str, Any]) -> bool:
@@ -3996,6 +4254,10 @@ def cmd_phase_b_build(env: Env, args: argparse.Namespace) -> None:
     print(yaml_block(build_provenance(env, args.candidate_id)))
 
 
+def cmd_phase_b_build_all(env: Env, args: argparse.Namespace) -> None:
+    print(yaml_block(phase_b_build_all(env, args)))
+
+
 def cmd_phase_b_ingest(env: Env, args: argparse.Namespace) -> None:
     print(yaml_block(ingest_phase_b_syntheses(env, args.syntheses)))
 
@@ -4268,6 +4530,13 @@ def build_parser() -> argparse.ArgumentParser:
     pb.add_argument("candidate_id")
     pb.set_defaults(func=cmd_phase_b_build)
 
+    pba = sub.add_parser("phase-b-build-all")
+    pba.add_argument("--ids-file")
+    pba.add_argument("--limit", type=int)
+    pba.add_argument("--force", action="store_true")
+    pba.add_argument("--dry", action="store_true")
+    pba.set_defaults(func=cmd_phase_b_build_all)
+
     pbi = sub.add_parser("phase-b-ingest")
     pbi.add_argument("syntheses", nargs="+")
     pbi.set_defaults(func=cmd_phase_b_ingest)
@@ -4333,7 +4602,10 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
-    require_manifest_lock(args.command)
+    writes_manifest = args.command in WRITE_COMMANDS
+    if args.command == "phase-b-build-all" and getattr(args, "dry", False):
+        writes_manifest = False
+    require_manifest_lock(args.command, writes_manifest=writes_manifest)
     env = Env(args.config_path)
     args.func(env, args)
 

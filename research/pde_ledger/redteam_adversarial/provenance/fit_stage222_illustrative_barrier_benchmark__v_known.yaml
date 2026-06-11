@@ -1,0 +1,56 @@
+schema_version: 1
+candidate_id: fit_stage222_illustrative_barrier_benchmark
+parameter_name: V_known
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage222_illustrative_barrier_benchmark__phase_b__v_known.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: So the next question is no longer whether a new spatial kernel class exists. It is whether an explicit admissible
+    pole can make the already-known quadrupolar family large enough **before** passive/outgoing widening destroys the gain.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 352
+  role: notes_stage
+  excerpt: V_{\rm known}(1)\approx 1.181909222592,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 356
+  role: notes_stage
+  excerpt: \Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 2
+  role: sympy_script
+  excerpt: from typing import Iterable, Sequence
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 211
+  role: sympy_script
+  excerpt: '# Illustrative barrier benchmark at x = 1'
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: V_known = sp.Float('1.181909222592')
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: DeltaV_req_num = V_known - epsilon
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,31 @@
+schema_version: 1
+candidate_id: fit_stage150_residual_tangent_matched
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage150_residual_tangent_matched__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '150'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_150.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Exact residual \(R_*(x)=\Phi_*(x)-\Pi_*x\) is tangent-matched but has negative curvature at the mouth.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

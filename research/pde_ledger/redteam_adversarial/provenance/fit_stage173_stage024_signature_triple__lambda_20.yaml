@@ -1,0 +1,112 @@
+schema_version: 1
+candidate_id: fit_stage173_stage024_signature_triple
+parameter_name: lambda_20
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage173_stage024_signature_triple__phase_b__lambda_20.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '173'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 23
+  role: notes_stage
+  excerpt: \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1,
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 27
+  role: notes_stage
+  excerpt: D_{A,0}=D_0+\epsilon\,\lambda_A D_{01}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 30
+  role: notes_stage
+  excerpt: D_{A,2}=D_2+\epsilon\,\lambda_A D_{21}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 32
+  role: notes_stage
+  excerpt: D_{A,4}=D_4+\epsilon\,\lambda_A D_{41}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 35
+  role: notes_stage
+  excerpt: N_{A,0}=N_0+\epsilon\,\lambda_A N_{01}+O(\epsilon^2).
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 66
+  role: notes_stage
+  excerpt: If the canonical conservative even fingerprint is preserved at first order,
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 127
+  role: notes_stage
+  excerpt: D_{A,0}=D_0+\epsilon\,\lambda_A D_{01}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 130
+  role: notes_stage
+  excerpt: D_{A,2}=D_2+\epsilon\,\lambda_A D_{21}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 133
+  role: notes_stage
+  excerpt: D_{A,4}=D_4+\epsilon\,\lambda_A D_{41}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 136
+  role: notes_stage
+  excerpt: N_{A,0}=N_0+\epsilon\,\lambda_A N_{01}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 140
+  role: notes_stage
+  excerpt: \lambda_{20}=1,\qquad \lambda_{21}=\frac12,\qquad \lambda_{22}=-1.
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 145
+  role: notes_stage
+  excerpt: u_2^{(A)}=u_2+\epsilon\,\lambda_A u_2^{(1)}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 148
+  role: notes_stage
+  excerpt: u_4^{(A)}=u_4+\epsilon\,\lambda_A u_4^{(1)}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 151
+  role: notes_stage
+  excerpt: P_0^{(A)}=P_0+\epsilon\,\lambda_A P_1+O(\epsilon^2).
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 208
+  role: notes_stage
+  excerpt: 'Now impose preservation of the canonical conservative even fingerprint:'
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 226
+  role: notes_stage
+  excerpt: 'So on the even-preserving branch, all three conservative grouped operator slopes are fixed by a single static
+    slope \(D_{01}\):'
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 228
+  role: notes_stage
+  excerpt: D_{A,0}=D_0\bigl[1+\epsilon\,\lambda_A \delta_D\bigr]+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 231
+  role: notes_stage
+  excerpt: D_{A,2}=D_2\bigl[1+\epsilon\,\lambda_A \delta_D\bigr]+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 234
+  role: notes_stage
+  excerpt: D_{A,4}=D_4\bigl[1+\epsilon\,\lambda_A \delta_D\bigr]+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 284
+  role: notes_stage
+  excerpt: P_0^{(A)}=P_0\bigl[1+\epsilon\,\lambda_A\,\Xi_{\rm load}\bigr]+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage173_axisymmetric_loading_mismatch.md
+  line: 348
+  role: notes_stage
+  excerpt: 'So the Stage 171 obstruction pair has now been rewritten in the sharpest static form yet:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

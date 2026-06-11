@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage165_gstar_literal
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage165_gstar_literal__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '165'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: rstar = sp.sqrt(4107 - 100*sp.pi**2) / (10*sp.pi)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: gstar = sp.Float("0.758035078944663", 30)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Tm_pref = 3*sp.sqrt(10)*sp.Integer(3)**sp.Rational(3, 4) / (5*sp.pi*gstar*(1 + rstar**2)**sp.Rational(1, 4))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: v_pref = 9*sp.sqrt(10)*sp.Integer(3)**sp.Rational(1, 4)*rstar / (20*(1 + rstar**2)**sp.Rational(3, 4))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: ratio_pref = sp.sqrt(3)*sp.pi*gstar*rstar / (4*sp.sqrt(1 + rstar**2))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: prod_pref = 81*rstar / (10*sp.pi*gstar*(1 + rstar**2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

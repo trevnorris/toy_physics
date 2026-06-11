@@ -1,0 +1,213 @@
+schema_version: 1
+candidate_id: fit_stage_223_mathrm
+parameter_name: mathrm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_223_mathrm__phase_b__mathrm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '223'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 123
+  role: notes_stage
+  excerpt: P_0=P_{0,\mathrm{target}},
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 125
+  role: notes_stage
+  excerpt: where for the fully calibrated moving-throat branch
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 127
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target}}=\frac{54Gc_s^5}{5a^5c^5\,\hat m_0^{\,2}}.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: In this stage the target is kept symbolic as \(P_{0,\mathrm{target}}\), because the first question on the primitive
+    branch is compatibility rather than full calibration.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 138
+  role: notes_stage
+  excerpt: K_{\mathrm{pole}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: K_{\mathrm{norm}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 146
+  role: notes_stage
+  excerpt: \frac{N_0}{P_{0,\mathrm{target}}}+B_0+Z_0.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 151
+  role: notes_stage
+  excerpt: K_{\mathrm{pole}}=K_{\mathrm{norm}},
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \frac{N_0}{P_{0,\mathrm{target}}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: First, this is **not** a generic fit condition. It is the exact consequence of trying to hit the same isotropic
+    target surface from the conservative one-pole side and the outgoing-normalization side.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: Second, the compatibility equation does **not** determine every coupling. It tells us whether the primitive branch
+    wants a normalization target that is even compatible with its own conservative one-pole structure.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \frac{P^2/\Delta^2}{P_{0,\mathrm{target}}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 252
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 259
+  role: notes_stage
+  excerpt: K_{\mathrm{compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: D_{0,\mathrm{compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 267
+  role: notes_stage
+  excerpt: K_{\mathrm{compat}}-B_0-Z_0
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 279
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}\approx 0.00207.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 287
+  role: notes_stage
+  excerpt: Using \(K=K_{\mathrm{compat}}\), the conservative pole census is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: 'Carry forward the same illustrative local barrier benchmark from Stage 222 at \(x=1\):'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 331
+  role: notes_stage
+  excerpt: V_{\mathrm{known}}(1)\approx 1.181909222592,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 335
+  role: notes_stage
+  excerpt: \Delta V_{\mathrm{req}}(1)\approx 1.081909222592.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 339
+  role: notes_stage
+  excerpt: \mathcal R_{Q,*}^{\mathrm{req}}(\eta=0.1)
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 343
+  role: notes_stage
+  excerpt: \mathcal R_{Q,*}^{\mathrm{req}}(\eta=0.3)
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 347
+  role: notes_stage
+  excerpt: 'Now scan \(\lambda_W\) **along the exact compatibility surface**, i.e. always resetting \(K\) to \(K_{\mathrm{compat}}(\lambda_W)\).
+    The resulting branch-compatible target and wall-like residue/linewidth figures are:'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 349
+  role: notes_stage
+  excerpt: '| \(\lambda_W\) | \(P_{0,\mathrm{target,compat}}\) | \(K_{\mathrm{compat}}\) | lower wall \(\mathcal R_Q\) | upper
+    wall \(\mathcal R_Q\) |'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 359
+  role: notes_stage
+  excerpt: '- increasing \(\lambda_W\) raises the branch-compatible static target \(P_{0,\mathrm{target,compat}}\),'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 360
+  role: notes_stage
+  excerpt: '- the same move lowers the required wall stiffness \(K_{\mathrm{compat}}\),'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 367
+  role: notes_stage
+  excerpt: At the stricter \(10\%\)-loss benchmark,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 371
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 380
+  role: notes_stage
+  excerpt: At the looser \(30\%\)-loss benchmark,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 384
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 389
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 411
+  role: notes_stage
+  excerpt: '### 7.2 The dynamic corridor is not killed automatically by that calibration'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 413
+  role: notes_stage
+  excerpt: On the concrete sample slice, once the branch is moved to the compatibility wall stiffness, both wall-like poles
+    still clear the stricter \(10\%\)-loss benchmark.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 459
+  role: notes_stage
+  excerpt: \frac{N_0}{P_{0,\mathrm{target,compat}}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 463
+  role: notes_stage
+  excerpt: 4. the primitive specialization of \(P_{0,\mathrm{target,compat}}\),
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 466
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}},
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    - paper/stages/stage_223.tex
+    - research/pde_ledger/paper/stages/stage_223.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+    - paper/stages/stage_223.tex
+    - research/pde_ledger/paper/stages/stage_223.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

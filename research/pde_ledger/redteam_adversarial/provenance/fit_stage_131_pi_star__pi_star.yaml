@@ -1,0 +1,95 @@
+schema_version: 1
+candidate_id: fit_stage_131_pi_star
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_131_pi_star__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '131'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: Tm, qstar, A0p = sp.symbols("T_m q_* A0p", real=True)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: Pi_star = sp.nsolve(gPi - g_minus, 1.5, tol=1e-30, maxsteps=100, prec=80)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: V1_star = sp.N(Pi_star, 30)*Theta_sigma/L
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: print("Pi_* =", sp.N(Pi_star, 30))
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: print("V1_* =", V1_star)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: gprime_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: print("g'(Pi_*) =", gprime_star)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: threshold_residual = sp.simplify((Tm - qstar*A0p) - Pi*Theta_sigma/L)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Pi_star_paper = sp.Float("1.50882951349316", 50)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: Pi_star_num = sp.N(Pi_star, 50)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: assert abs(Pi_star_num - Pi_star_paper) < sp.Float("1e-14", 50), (
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: 'f"Pi_* mismatch vs notes Sec. 1: computed {Pi_star_num}, paper {Pi_star_paper}"'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: gprime_num = sp.N(gprime_star, 50)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: gPi_at_star = sp.N(gPi.subs(Pi, Pi_star), 40)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: lower_residual = abs(sp.N(gPi_at_star - g_minus, 40))
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: sing_sep = sp.N(g_nat - gPi_at_star, 30)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: upper_sep = abs(sp.N(gPi_at_star - g_plus_exact, 30))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

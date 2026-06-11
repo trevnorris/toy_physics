@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage037_branch_data_exact_kernel_functionals
+parameter_name: A
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage037_branch_data_exact_kernel_functionals__phase_b__a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '037'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_037.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~037 replaces the abstract selected-mode data from Part~II by closed formulas obtained
+    from a concrete continuum kernel.  It extracts the baseline scalar stiffness \(A\), axial gap \(\Delta K_{\rm ax}\), mixed
+    loading \(\alpha_{\rm mix}\), outgoing normalization numerator \(\beta_0\), dimensionless mixed baseline \(M_{\rm mix}\),
+    and anisotropy ratio \(\delta\).}
+- path: paper/stages/stage_037.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: A=K_0-\frac{g_U^2}{\Omega_U^2},
+- path: paper/stages/stage_037.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}=\frac{8\alpha_{\rm mix}}{\pi^2A},
+- path: paper/stages/stage_037.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: \delta=\frac{\Delta K_{\rm ax}}{A}}.
+- path: paper/stages/stage_037.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage037-A-DK-continuum}
+- path: paper/stages/stage_037.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: A=\frac{K_UK_\eta^{\rm eff}-c_{\eta U}^2}{\mu_\eta K_U},
+- path: paper/stages/stage_037.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Closed continuum formulas \eqref{eq:app-stage037-A-DK-continuum}--\eqref{eq:app-stage037-M-delta-continuum}
+    and the stability gate \eqref{eq:app-stage037-stability}.}
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 037: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 18
+  role: notes_stage
+  excerpt: The main result is that the first continuum operator already produces all of the key reduced quantities in closed
+    form. After exact mode projection and mass normalization, one finds
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 20
+  role: notes_stage
+  excerpt: '`A = [ K_U (K_eta + 6 T_Omega) - c_(eta U)^2 ] / (mu_eta K_U),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 30
+  role: notes_stage
+  excerpt: '`M_mix = 8 alpha_mix / (pi^2 A),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 52
+  role: notes_stage
+  excerpt: '- a mixed `W(s,t)` field representing the `A_w/F_(mu w)/J^w` lane on the same D/N branch.'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 176
+  role: notes_stage
+  excerpt: '`A_U(omega)   = Omega_U^2 - omega^2,`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 178
+  role: notes_stage
+  excerpt: '`A_phi(omega) = varpi^2 - omega^2,`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 180
+  role: notes_stage
+  excerpt: '`A_W(omega)   = Omega_W^2 - omega^2 - Pi_out(omega).`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 188
+  role: notes_stage
+  excerpt: '`Xi(omega) = g_U^2 / A_U(omega),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 190
+  role: notes_stage
+  excerpt: '`alpha(omega) = g_B^2 / A_phi(omega)`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 191
+  role: notes_stage
+  excerpt: '`             + ( A_U(omega) g_W + g_R g_U )^2`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 192
+  role: notes_stage
+  excerpt: '`               / [ A_U(omega) Delta_UW(omega) ],`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 194
+  role: notes_stage
+  excerpt: '`Delta_UW(omega) = A_U(omega) A_W(omega) - g_R^2 sigma.`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 207
+  role: notes_stage
+  excerpt: '`A = K_0 - g_U^2 / Omega_U^2,`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 213
+  role: notes_stage
+  excerpt: '`M_mix = 8 alpha_mix / (pi^2 A),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 215
+  role: notes_stage
+  excerpt: '`delta = DeltaK_ax / A.`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 233
+  role: notes_stage
+  excerpt: '`A = [ K_U K_eta^(eff) - c_(eta U)^2 ] / ( mu_eta K_U ),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 278
+  role: notes_stage
+  excerpt: '`A > 0`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 303
+  role: notes_stage
+  excerpt: The first explicit finite-throat continuum operator already determines
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 305
+  role: notes_stage
+  excerpt: '- `A`,'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 315
+  role: notes_stage
+  excerpt: '> determine whether the completed moving-throat PDE places the actual defect on the admissible Stage-035/036 branch
+    geometry generated by these continuum-kernel quantities.'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: A, DeltaK_ax, alpha_mix, beta_0, M_mix, delta.
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: raise AssertionError(f"{name} is not zero")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: raise AssertionError(f"{name} is not zero")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: banner("STAGE 37 — CONTINUUM-KERNEL EXTRACTION AUDIT")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: A_U, A_phi, A_W = sp.symbols("A_U A_phi A_W", real=True)
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: '[A_U, 0,   0,         -gR * kappa0],'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: '[0,   A_U, 0,         -gR * kappa1],'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: '[0,   0,   A_phi,      0],'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: '[-gR * kappa0, -gR * kappa1, 0, A_W],'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: Delta_UW = sp.simplify(A_U * A_W - gR**2 * sigma)
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: Xi = sp.simplify(gU**2 / A_U)
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: alpha = sp.simplify(gB**2 / A_phi + (A_U * gW + gR * gU) ** 2 / (A_U * Delta_UW))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

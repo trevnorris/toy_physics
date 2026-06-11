@@ -1,0 +1,149 @@
+schema_version: 1
+candidate_id: fit_stage197_p0_target_quadrupole_normalization
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage197_p0_target_quadrupole_normalization__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '197'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_197.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_197.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 20
+  role: notes_stage
+  excerpt: 'and Stage 193 then fixed the conservative front-end theorem target:'
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 150
+  role: notes_stage
+  excerpt: P_0^{\rm target}(N_Q-1),
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 152
+  role: notes_stage
+  excerpt: P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5},
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 163
+  role: notes_stage
+  excerpt: P_0^{\rm target}(\chi_Q^{-1}-1).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 172
+  role: notes_stage
+  excerpt: P_0^{\rm target}(\chi_Q^{-1}-1)
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 184
+  role: notes_stage
+  excerpt: P_0^{\rm target}=\frac{54Gc_s^5}{5a^5c^5}>0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 252
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 285
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '# III. Natural source-map reduction: Delta_norm = P0_target(1/chi_Q - 1)'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: P0_target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: Delta_norm_pt = sp.simplify(P0_target * (N_Q - 1))
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("P0^target =")
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: sp.pprint(P0_target)
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: '"Delta_norm - P0^target(1/chi_Q - 1)",'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: Delta_norm_pt - P0_target * (1 / chi_from_series - 1),
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: '"chi_Q*(Delta_norm/P0_target + 1) - 1",'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: sp.simplify(chi_from_series * (Delta_norm_pt / P0_target + 1) - 1),
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: '"Delta_norm/P0_target + (chi_Q - 1)/chi_Q",'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: sp.simplify(Delta_norm_pt / P0_target + (chi_from_series - 1) / chi_from_series),
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Delta_norm_symbolic = sp.simplify(P0_target * (1 / chi_Q - 1))
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: 'sp.simplify(Delta_norm_symbolic.subs({chi_Q: 1 + Delta_Q}) + P0_target * Delta_Q / (1 + Delta_Q)),'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: Delta_norm_def = sp.simplify(P0_target * (1 / chi_from_def - 1))
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: '"Delta_norm + P0_target*closure_num/[3(S beta^5 + 9 Sigma5)]",'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: sp.simplify(Delta_norm_def + P0_target * closure_num / (3 * (S * beta**5 + 9 * Sigma5))),
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: Delta_norm_linear_expected = -eps * P0_target * (5 * eps_beta + dSigma0 / (3 * S) + 9 * dSigma5 / S)
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: '"linearized Delta_norm + eps P0_target*(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S)",'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: print("      Delta_norm = P0^target (1/chi_Q - 1).")
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 221
+  role: sympy_script
+  excerpt: print("3. Because P0^target > 0 on the physical branch, the final Packet-A retarded finish line is")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

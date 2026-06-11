@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage132_source_family_fixed_claim
+parameter_name: sigma_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage132_source_family_fixed_claim__phase_b__sigma_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '132'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 11
+  role: notes_stage
+  excerpt: \sigma_{\Pi}(z)=\frac{\Pi e^{-\Pi z/L}}{L(1-e^{-\Pi})}.
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 39
+  role: notes_stage
+  excerpt: 1.50882951349316\,\frac{\Theta_\sigma}{L}.
+- path: notes/stages/moving_throat_pde_stage132_mouth_boundary_layer_status.md
+  line: 57
+  role: notes_stage
+  excerpt: \Pi_m=\frac{L}{\Theta_\sigma}\left(
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage048_zeta_req_threshold
+parameter_name: zeta_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage048_zeta_req_threshold__phase_b__zeta_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 048
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_048.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the reduced support-compensation theorem; \StatusOpen{} for actual PDE placement
+    of \(\zeta_{\rm phys}\).}
+- path: paper/stages/stage_048.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The support factor \(S(\zeta;\epsilon)\), mixed baseline \(M_{\rm mix}\), and tracking-branch
+    required load \(M_{\rm req}\).}
+- path: paper/stages/stage_048.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage048-Sreq}
+- path: paper/stages/stage_048.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: S_{\rm req}=\frac{M_{\rm req}}{M_{\rm mix}}.
+- path: paper/stages/stage_048.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: Solving \(S(\zeta;\epsilon)=S_{\rm req}\) gives the exact inverse
+- path: paper/stages/stage_048.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage048-zeta-req}
+- path: paper/stages/stage_048.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+- path: paper/stages/stage_048.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only
+    branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds
+    iff
+- path: paper/stages/stage_048.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm phys}\geq\zeta_{\rm req}}.
+- path: paper/stages/stage_048.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The exact threshold \eqref{eq:app-stage048-zeta-req} and success condition \eqref{eq:app-stage048-success-iff}.}
+- path: paper/stages/stage_048.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stages~049--057 derive \(\zeta_{\rm phys}\) from finite-throat support, overlap, Robin
+    compliance, and transport bias.}
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 7
+  role: notes_stage
+  excerpt: '`M_tr = M_mix S(zeta;eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 11
+  role: notes_stage
+  excerpt: '`S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps).`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 22
+  role: notes_stage
+  excerpt: For any finite target ratio `R_target > 1`, any stable geometry `(delta,R_tr)`, and any mixed-only baseline below
+    the tracking critical load, there is a unique coherent support ratio `zeta_req` that hits the target before softening.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 24
+  role: notes_stage
+  excerpt: So the remaining theorem gap is not a reduced closure obstruction. It is whether the completed moving-throat PDE
+    supplies a physical `zeta` large enough to reach that exact required value.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 73
+  role: notes_stage
+  excerpt: '`M_tr = M_mix S(zeta;eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 75
+  role: notes_stage
+  excerpt: '`S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 81
+  role: notes_stage
+  excerpt: '`0 <= zeta < 1/eps.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 85
+  role: notes_stage
+  excerpt: '`dS/dzeta = (1-eps)/(1-zeta eps)^2 > 0,`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 93
+  role: notes_stage
+  excerpt: '`lim_(zeta -> 1/eps^-) S(zeta;eps) = +infinity.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 97
+  role: notes_stage
+  excerpt: The inverse map is exact. If `S_req > 1`, then the unique support ratio producing that enhancement is
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 99
+  role: notes_stage
+  excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 103
+  role: notes_stage
+  excerpt: '`1/eps - zeta_req`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 104
+  role: notes_stage
+  excerpt: '`= (1-eps) / [ eps ( 1 + eps (S_req - 2) ) ] > 0.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 106
+  role: notes_stage
+  excerpt: So every finite required enhancement lies strictly inside the stability window.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 134
+  role: notes_stage
+  excerpt: '`xi_req in (0,1)`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 138
+  role: notes_stage
+  excerpt: '`F_tr(xi_req,delta;R_tr) = R_target.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 140
+  role: notes_stage
+  excerpt: Define the corresponding required total load by
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 142
+  role: notes_stage
+  excerpt: '`M_req := G_tr(xi_req,delta;R_tr).`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 144
+  role: notes_stage
+  excerpt: Because `0 < xi_req < 1` and `G_tr` is strictly increasing,
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 146
+  role: notes_stage
+  excerpt: '`0 < M_req < M_crit(delta,R_tr).`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 148
+  role: notes_stage
+  excerpt: So the normalization target, if finite, is always associated with a finite stable-side required load.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 164
+  role: notes_stage
+  excerpt: '`M_mix >= M_req,`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 168
+  role: notes_stage
+  excerpt: '`zeta_req = 0.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 174
+  role: notes_stage
+  excerpt: '`M_mix < M_req,`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 176
+  role: notes_stage
+  excerpt: define the exact required enhancement factor
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 178
+  role: notes_stage
+  excerpt: '`S_req := M_req / M_mix > 1.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 182
+  role: notes_stage
+  excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 184
+  role: notes_stage
+  excerpt: And because `M_req < M_crit`, one has
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 186
+  role: notes_stage
+  excerpt: '`S_req < S_crit := M_crit / M_mix,`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

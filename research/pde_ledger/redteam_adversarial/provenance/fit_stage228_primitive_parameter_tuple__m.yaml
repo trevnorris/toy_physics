@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage228_primitive_parameter_tuple
+parameter_name: M
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage228_primitive_parameter_tuple__phase_b__m.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '228'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_228.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.3}.}
+- path: paper/stages/stage_228.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: '\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}'
+- path: paper/stages/stage_228.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_228.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.3} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 228: Numerator/Denominator Split of the Pure-Transfer Corridor and the First Actual
+    Dynamic-Window Test'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 74
+  role: notes_stage
+  excerpt: (\lambda_B,\lambda_U,\lambda_W,\lambda_R,\Omega_U,\Omega_W,\varpi,M)
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 359
+  role: notes_stage
+  excerpt: At the stricter `10%`-loss benchmark,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: 3. determine whether the real branch looks locally more numerator-like or denominator-like,
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 'def vector_to_float_list(v: sp.Matrix, digits: int = 15) -> list[float]:'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: 'def coeff_vector(expr: sp.Expr, vars_: list[sp.Symbol]) -> sp.Matrix:'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: return sp.Matrix([sp.simplify(expr.coeff(v)) for v in vars_])
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: 'def unit_vector(v: sp.Matrix) -> sp.Matrix:'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: K, M = sp.symbols("K M", positive=True)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: xK, xM = sp.symbols("xK xM", real=True)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: Md = M * sp.exp(eps * xM)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: D21 = sp.simplify(sp.diff(-(Md + B2d + Z2d), eps).subs(eps, 0))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: 'M: sp.Integer(1),'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: 'zero_nonmixed = {xK: 0, xM: 0, xLB: 0, xV: 0}'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: M_transfer = sp.Matrix([
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: assert M_transfer.rank() == 3
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: transfer_null = M_transfer.nullspace()
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: T = sp.Matrix.hstack(*transfer_null)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: M_num = sp.Matrix([
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 228
+  role: sympy_script
+  excerpt: M_den = sp.Matrix([
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 234
+  role: sympy_script
+  excerpt: M_both = sp.Matrix([
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 242
+  role: sympy_script
+  excerpt: assert M_num.rank() == 4
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: assert len(M_num.nullspace()) == 1
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: assert M_den.rank() == 4
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 245
+  role: sympy_script
+  excerpt: assert len(M_den.nullspace()) == 1
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 246
+  role: sympy_script
+  excerpt: assert M_both.rank() == 5
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 247
+  role: sympy_script
+  excerpt: assert len(M_both.nullspace()) == 0
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: det_reduced = sp.factor(sp.simplify(sp.Matrix.vstack(pi_coeff.T * T, delta_coeff.T * T).det()))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 257
+  role: sympy_script
+  excerpt: print("rank(pure-transfer) =", M_transfer.rank(), " nullity =", len(transfer_null))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 258
+  role: sympy_script
+  excerpt: print("rank(+ numerator rigidity) =", M_num.rank(), " nullity =", len(M_num.nullspace()))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 259
+  role: sympy_script
+  excerpt: print("rank(+ denominator rigidity) =", M_den.rank(), " nullity =", len(M_den.nullspace()))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 260
+  role: sympy_script
+  excerpt: print("rank(+ both rigidities) =", M_both.rank(), " nullity =", len(M_both.nullspace()))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 266
+  role: sympy_script
+  excerpt: 'def orient_positive_xi(v: sp.Matrix) -> sp.Matrix:'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 268
+  role: sympy_script
+  excerpt: xi_val = sp.N((pi_coeff.T * uv)[0] * 0 + (sp.Matrix([sp.N(sp.expand(Xi_transfer).coeff(var), 50) for var in mixed_vars]).T
+    * uv)[0], 40)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 271
+  role: sympy_script
+  excerpt: Xi_coeff_num = sp.Matrix([sp.N(sp.expand(Xi_transfer).coeff(v), 50) for v in mixed_vars])
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 273
+  role: sympy_script
+  excerpt: v_num = orient_positive_xi(M_num.nullspace()[0])
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

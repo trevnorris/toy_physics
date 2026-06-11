@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage_196_l7_coeff_in_y
+parameter_name: L7_coeff_in_Y
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_196_l7_coeff_in_y__phase_b__l7_coeff_in_y.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '196'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 93
+  role: notes_stage
+  excerpt: A useful one-coefficient representative is
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 138
+  role: notes_stage
+  excerpt: So all coefficients through `O(\omega^5)` are unchanged.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 268
+  role: notes_stage
+  excerpt: These formulas do not contain any higher odd coefficient.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 270
+  role: notes_stage
+  excerpt: 'Likewise the outgoing-normalization factor is still compiled only from the `z^5` coefficient:'
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 332
+  role: notes_stage
+  excerpt: The Burke–Thorne slot is the leading odd grouped-`P2` coefficient,
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 347
+  role: notes_stage
+  excerpt: '> they cannot alter the `\omega^5` coefficient and therefore cannot alter the reduced point-particle `2.5`PN closure.'
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 386
+  role: notes_stage
+  excerpt: So the retarded finish line is not a family of hidden coefficients.
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: chi_from_series = sp.simplify(-27 * sp.I * z5_coeff)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: print("z^5 coefficient in the matched normalized DtN response =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: sp.pprint(z5_coeff)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: print("chi_Q extracted from the matched z^5 coefficient =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: subbanner("V. Representative first higher-odd coefficient")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: L7_coeff_in_Y = sp.simplify(sp.expand(Ydef7_series).coeff(z, 7).coeff(L7, 1))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: print("coefficient multiplying L7 at z^7 in the normalized DtN response =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: sp.pprint(L7_coeff_in_Y)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: expect_zero("L7 enters normalized response first at z^7", L7_coeff_in_Y + sp.I / L0)
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: print("   So every coefficient through O(omega^5) is unchanged.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

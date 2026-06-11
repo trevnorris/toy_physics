@@ -1,0 +1,75 @@
+schema_version: 1
+candidate_id: fit_stage134_pi_star_carried_literal
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage134_pi_star_carried_literal__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '134'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Pi_star = sp.Float("1.50882951349316")
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: S_star = sp.N(S_q.subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("S_q(Pi_star) =", S_star)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: 'print("Canonical gain line: M_s = Pi_star - S_q(Pi_star) M_q")'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: sp.pprint(sp.N(Pi_star - S_star*M_q, 30))
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '# Check 2: S_q evaluated at three independent numeric Pi values matches'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Targets are NOT computed by re-typing S(Pi, pi/2) here; they are literals'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'print("OK: S_q matches independent numeric targets at Pi=1/2, 1, 2")'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: S_star_target = sp.Float("0.658075937605428", 30)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: diff_star = abs(sp.N(S_star - S_star_target, 30))
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: 'assert diff_star < sp.Float("1e-12"), f"S_q(Pi_star) mismatch: diff={diff_star}"'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: 'print("OK: S_q(Pi_star) matches notes value 0.658075937605428")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

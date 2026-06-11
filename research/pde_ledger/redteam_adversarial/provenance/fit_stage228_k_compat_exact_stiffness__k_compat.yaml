@@ -1,0 +1,113 @@
+schema_version: 1
+candidate_id: fit_stage228_k_compat_exact_stiffness
+parameter_name: K_compat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage228_k_compat_exact_stiffness__phase_b__k_compat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '228'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223
+    compatibility branch and the Stage-227 pure-transfer corridor.**'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 51
+  role: notes_stage
+  excerpt: 3. the explicit positive-\(\Xi_1\) unit directions on the concrete compatibility branch;
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: 5. and the sharp verdict that **neither** rigid split is killed by the dynamic window on the concrete compatibility
+    point — the first ceiling is still the transported static one.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: '### 1.1 Concrete compatibility branch'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 77
+  role: notes_stage
+  excerpt: '- and the exact isotropic compatibility wall stiffness'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 79
+  role: notes_stage
+  excerpt: K_{\rm compat}\approx 24.473754879290965.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 292
+  role: notes_stage
+  excerpt: Now carry those two unit directions into the actual pole census of the concrete compatibility branch.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 294
+  role: notes_stage
+  excerpt: At the undeformed compatibility point, the wall-like poles are
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 359
+  role: notes_stage
+  excerpt: At the stricter `10%`-loss benchmark,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 422
+  role: notes_stage
+  excerpt: So on the actual sample compatibility point,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 449
+  role: notes_stage
+  excerpt: 4. On the concrete compatibility point, however, **neither** split is killed by the actual dynamic window.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: 'The paired SymPy audit verifies all of the following directly on the Stage-223 compatibility branch:'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 478
+  role: notes_stage
+  excerpt: 6. the undeformed compatibility-branch wall-like pole census and \(\mathcal R_Q\) values;
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: 3. determine whether the real branch looks locally more numerator-like or denominator-like,
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: '# Stage 223 compatibility wall stiffness.'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: D0_compat = sp.simplify(3 * (sp.Integer(1) + B2_s + Z2_s) ** 2 / (B4_s + Z4_s))
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: K_compat = sp.simplify(B0_s + Z0_s + D0_compat)
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: sample_full[K] = K_compat
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 314
+  role: sympy_script
+  excerpt: '# 5. Full pole census on the Stage 223 compatibility branch'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 337
+  role: sympy_script
+  excerpt: 'K: float(sp.N(K_compat, 30)),'
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 375
+  role: sympy_script
+  excerpt: print("\nVerified undeformed compatibility-branch wall-like poles:")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

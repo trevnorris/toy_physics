@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage224_t_quad_target_scale
+parameter_name: T_quad
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_t_quad_target_scale__phase_b__t_quad.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '224'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_224.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the normalized prefactor packet $(\Delta_{\rm norm},a_{P_0},b_{P_0})$, the weak-axisymmetric
+    signature $(1,1/2,-1)$, the line $b_{P_0}=3a_{P_0}$, and the target scale $T_{\rm quad}=54Gc_s^5/(5a^5c^5)$.}
+- path: paper/stages/stage_224.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Actual-branch kill test: the branch survives only if the transported quantity $(\Delta_{\rm
+    norm}+T_{\rm quad})(1+|\varepsilon\Xi_1|)/\hat m_0^2$ stays below the critical prefactor budget.}'
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: P_0^{(20)},\qquad P_0^{(21)},\qquad P_0^{(22)},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 41
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 77
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 78
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 79
+  role: notes_stage
+  excerpt: T_{\rm quad}:=\frac{54Gc_s^5}{5a^5c^5}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 111
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}+4a_{P_0},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 140
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}-a_{P_0}+b_{P_0},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}-a_{P_0}-b_{P_0}
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 170
+  role: notes_stage
+  excerpt: \hat m_0^{\,2}P_{\rm crit}-T_{\rm quad}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 177
+  role: notes_stage
+  excerpt: If the real branch already hits the universal quadrupole normalization exactly,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 186
+  role: notes_stage
+  excerpt: \frac{T_{\rm quad}}{P_{\rm crit}}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 200
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 214
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 216
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 223
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 240
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 242
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}\bigl(1+|\epsilon\Xi_1|\bigr)
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 289
+  role: notes_stage
+  excerpt: \frac{T_{\rm quad}(1+|\epsilon\Xi_1|)}{P_{\rm crit}}.
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 306
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 317
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 325
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 336
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 404
+  role: notes_stage
+  excerpt: \bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 408
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}\le \hat m_0^{\,2}P_{\rm crit}-T_{\rm quad},
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 416
+  role: notes_stage
+  excerpt: \lambda_{20}=1,\quad \lambda_{21}=\frac12,\quad \lambda_{22}=-1,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 421
+  role: notes_stage
+  excerpt: \qquad
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: Delta_norm, T_quad, mhat0 = sp.symbols("Delta_norm T_quad mhat0", positive=True)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: Pbar = (Delta_norm + T_quad) / mhat0**2
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: expected_rhs = sp.simplify(mhat0**2 * Pcrit - T_quad)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: calibrated_lower_bound = sp.simplify(T_quad / Pcrit)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: calibrated_weak_bound = sp.simplify(T_quad * (1 + sp.Abs(eps * Xi1)) / Pcrit)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

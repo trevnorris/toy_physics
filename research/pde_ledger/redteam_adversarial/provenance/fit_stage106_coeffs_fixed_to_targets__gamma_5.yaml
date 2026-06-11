@@ -1,0 +1,124 @@
+schema_version: 1
+candidate_id: fit_stage106_coeffs_fixed_to_targets
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage106_coeffs_fixed_to_targets__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '106'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 40
+  role: notes_stage
+  excerpt: 'With \(N_Q=1\), the canonical invariant low-frequency quadrupole coefficients are fixed to their target values:'
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 49
+  role: notes_stage
+  excerpt: \overline \Gamma_5=\frac{2G}{5c^5}.
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 56
+  role: notes_stage
+  excerpt: \gamma_{\rm quad}^{\rm eff}
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 58
+  role: notes_stage
+  excerpt: \hat m_0^{\,2}\Gamma_5
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 75
+  role: notes_stage
+  excerpt: Therefore the reduced nonspinning point-particle 2.5PN theorem is **closed on the canonical outgoing DtN branch**,
+    conditional on that branch realization and the strict point-particle limit.
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 79
+  role: notes_stage
+  excerpt: 'What remains open is no longer a reduced PN bookkeeping problem. It is the deeper PDE-side branch-selection theorem:'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: Gamma5_target = sp.simplify(2 * G / (5 * c**5))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: Gamma5 = sp.simplify(NQ_general * Gamma5_target)
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print("Gamma5 =", Gamma5)
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '"target identity Gamma5_target - 9 sqrt(K2_target^5 / K0_target^3)",'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Gamma5_target - 9 * sp.sqrt(K2_target**5 / K0_target**3),
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: gamma_eff_canonical = sp.simplify((m0hat**2 * Gamma5).subs(chi_Q, 1))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: '"canonical gamma_eff - target",'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: gamma_eff_canonical - Gamma5_target,
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '# N_Q = 1/chi_Q, so gamma_eff = m0hat^2 * N_Q * Gamma5_target collapses to'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '# Gamma5_target / chi_Q. Expanding around chi_Q = 1 + Delta_Q gives a real'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: '# first-order slope of -Gamma5_target. This exercises the algebra non-trivially'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: gamma_eff_off = (m0hat**2 * Gamma5).subs([(m0hat, 1), (chi_Q, 1 + Delta_Q)])
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: gamma_eff_series = sp.series(gamma_eff_off, Delta_Q, 0, 2).removeO()
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: linear_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 1))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: zeroth_coeff = sp.simplify(gamma_eff_series.coeff(Delta_Q, 0))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '"Delta_Q zeroth-order coefficient equals Gamma5_target",'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: zeroth_coeff - Gamma5_target,
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: print("  The effective odd coefficient m0hat^2 Gamma5 then reproduces 2G/(5 c^5) exactly.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,57 @@
+schema_version: 1
+candidate_id: fit_stage124_what_is_now_fixed
+parameter_name: mathfrak_g_pm_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage124_what_is_now_fixed__phase_b__mathfrak_g_pm_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '124'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 5
+  role: notes_stage
+  excerpt: After Stages 121–123, the explicit outlet-core branch is no longer described by a free \((\mathfrak r,\mathfrak
+    g)\) pair.
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 11
+  role: notes_stage
+  excerpt: \mathfrak r_{F1}
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 20
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm nat}=1.
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 23
+  role: notes_stage
+  excerpt: 3. **Canonical compensation family at that same \(\mathfrak r\)**
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 25
+  role: notes_stage
+  excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663,
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 27
+  role: notes_stage
+  excerpt: \mathfrak g_+^{F1}\approx 2.79795199200529.
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 39
+  role: notes_stage
+  excerpt: '> does the actual GNLS + localized-Maxwell throat core pick the naive equal-normalized mouth branch, or does it
+    shift by a modest amount onto the lower compensated branch that preserves the canonical outgoing quadrupole fingerprint?'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

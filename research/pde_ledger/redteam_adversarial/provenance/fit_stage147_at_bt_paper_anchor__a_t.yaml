@@ -1,0 +1,163 @@
+schema_version: 1
+candidate_id: fit_stage147_AT_BT_paper_anchor
+parameter_name: A_T
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage147_at_bt_paper_anchor__phase_b__a_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '147'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_147.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Traction shift is one kernel projection with coefficients \(A_T\approx-4.27264\), \(B_T\approx0.134875\).
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 40
+  role: notes_stage
+  excerpt: A_T\,(\bar g_\varsigma-\mathfrak g_*)
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 48
+  role: notes_stage
+  excerpt: A_T
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 67
+  role: notes_stage
+  excerpt: A_T \approx -4.27263956256927,
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 77
+  role: notes_stage
+  excerpt: \frac{|A_T|}{B_T}\approx 31.6785.
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 102
+  role: notes_stage
+  excerpt: A_T\Big(c(x)-\mathfrak g_*\Big)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: AT = sp.N(
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: print("A_T =", AT)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("|A_T|/B_T =", sp.N(abs(AT)/BT, 20))
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: AT_paper = sp.Float("-4.27263956256927", 30)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: 'f"A_T deviates from paper-quoted value: {sp.N(AT)} vs {AT_paper}"'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: 'print("PASS: A_T matches paper-quoted -4.27263956256927 to 1e-12")'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: 'print("PASS: B_T matches paper-quoted 0.134875005736706 to 1e-12")'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: assert abs(sp.N(sp.Abs(AT)/BT) - ratio_crosscheck) < sp.Float("1e-3", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'f"|A_T|/B_T computed ratio cross-check deviates from 31.6785: {sp.N(sp.Abs(AT)/BT)}"'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: 'print("PASS: |A_T|/B_T computed ratio cross-check (not a paper literal) matches 31.6785 to 1e-3")'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: '# --- Audit assertion: A_T from automatic differentiation of T_m(Pi) (independent) ---'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '# gives A_T = -(dT_m/dPi)/(dg/dPi) at Pi_*. sp.diff regenerates the (1-S/4)^2 factor and'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: '# the S'' factor on its own, so a hand-written sign/power error in the closed-form AT'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: AT_autodiff = sp.N(-(dTm_dPi.subs(Pi, Pi_star)) / (dg_dPi.subs(Pi, Pi_star)), 30)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: AT_30 = sp.N(AT, 30)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: assert abs(AT_autodiff - AT_30) < sp.Float("1e-20", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: 'f"A_T autodiff route disagrees with closed form: {AT_autodiff} vs {AT_30}"'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: 'print("PASS: A_T closed form agrees with autodiff of T_m(Pi) (residual < 1e-20)")'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: dT = sp.simplify(eps*(AT*(gbar-gminus) + BT*(Sbar-Sformula.subs(Pi, Pi_star))))
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: Wcenter = sp.simplify(AT*(c-gminus) + BT*(Kq-Sformula.subs(Pi, Pi_star)))
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: '# LHS integrates W_* numerically, RHS uses the algebraic A_T, B_T and the moment'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: Wstar_x = AT*(c - g_star) + BT*(Kq - S_star)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: rhs_moment = sp.N(AT*(gbar_s - g_star) + BT*(Sbar_s - S_star), 30)
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: '# constants -A_T*g_*, -B_T*S_* -- they vanish against (smallsigma - Sigma_*) because'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: '# not that it equals -A_T*g_*-B_T*S_*. The kernel''s defining centering condition is'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: '# DOES test the constants: dropping them leaves integral Sigma_*(A_T c + B_T Kq) ='
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: '# A_T*g_* + B_T*S_* != 0, so a missing-centering bug now fails here.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

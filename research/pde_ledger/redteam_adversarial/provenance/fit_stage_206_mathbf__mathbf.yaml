@@ -1,0 +1,175 @@
+schema_version: 1
+candidate_id: fit_stage_206_mathbf
+parameter_name: mathbf
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_206_mathbf__phase_b__mathbf.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '206'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_206.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the oriented residual \(H_{\mathbf s}\), local data \((H_0,K_0)\), and a curvature
+    envelope \(\underline K_1\le H_{\mathbf s}''\le\overline K_1\) on a validity interval.}
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 22
+  role: notes_stage
+  excerpt: \Phi_{\mathbf s}(\tau)=1.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 52
+  role: notes_stage
+  excerpt: \mathbf y_{\mathbf s}(\tau)=\mathbf y_\circ\odot e^{\tau\mathbf s},
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 54
+  role: notes_stage
+  excerpt: \Phi_{\mathbf s}(\tau):=\widehat\chi_Q(\mathbf y_{\mathbf s}(\tau)).
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 58
+  role: notes_stage
+  excerpt: h_{\mathbf s}(\tau):=\ln \Phi_{\mathbf s}(\tau).
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 63
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 65
+  role: notes_stage
+  excerpt: \operatorname{sgn}\!\bigl(h_{\mathbf s}(0)\bigr)\,h_{\mathbf s}(\tau).
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 68
+  role: notes_stage
+  excerpt: If necessary, replace `\(\mathbf s\)` by `\(-\mathbf s\)` so that the forward search direction is toward the closure
+    slice. Then the oriented local data are
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 71
+  role: notes_stage
+  excerpt: H_0:=H_{\mathbf s}(0)=\bigl|\ln\Phi_{\mathbf s}(0)\bigr|>0,
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 73
+  role: notes_stage
+  excerpt: K_0:=H_{\mathbf s}'(0)<0.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 79
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau)=0.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 88
+  role: notes_stage
+  excerpt: This is the natural Stage 205 continuation because it removes the sign bookkeeping while keeping the exact logarithmic
+    scalarization.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 103
+  role: notes_stage
+  excerpt: H_{\mathbf s}''(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 123
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 236
+  role: notes_stage
+  excerpt: H_{\mathbf s}'(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 255
+  role: notes_stage
+  excerpt: H_{\mathbf s}'(\tau)<0
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 270
+  role: notes_stage
+  excerpt: 2. `\(\underline K_1\le H_{\mathbf s}''(\tau)\le\overline K_1\)` on `\([0,T]\)`,
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 278
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau)\ge H_-(\tau)>0,
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 283
+  role: notes_stage
+  excerpt: H_{\mathbf s}(\tau_{\rm hi})\le H_+(\tau_{\rm hi})=0,
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 286
+  role: notes_stage
+  excerpt: '- and because `\(H_{\mathbf s}''(\tau)<0\)` on `\([0,\tau_{\rm hi}]\)`, the true root is unique.'
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 313
+  role: notes_stage
+  excerpt: H_{\mathbf s}''(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 341
+  role: notes_stage
+  excerpt: H_{\mathbf s}'(\tau)
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 369
+  role: notes_stage
+  excerpt: W_{\mathbf s}:=\tau_{\rm hi}-\tau_{\rm lo}.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 375
+  role: notes_stage
+  excerpt: W_{\mathbf s}>0
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 393
+  role: notes_stage
+  excerpt: W_{\mathbf s}
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 411
+  role: notes_stage
+  excerpt: W_{\mathbf s}
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 426
+  role: notes_stage
+  excerpt: Let two admissible rays `\(\mathbf s_a\)` and `\(\mathbf s_b\)` have certified brackets
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 458
+  role: notes_stage
+  excerpt: \mathcal Q_{\mathbf s}:=(\tau_{\rm hi},\ W_{\mathbf s}).
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 461
+  role: notes_stage
+  excerpt: Smaller `\(\tau_{\rm hi}\)` means the ray reaches closure no later than a smaller guaranteed time, while smaller
+    `\(W_{\mathbf s}\)` means the local placement is more sharply certified.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 467
+  role: notes_stage
+  excerpt: 3. among overlapping candidates, sort lexicographically by `\(\mathcal Q_{\mathbf s}\)`.
+- path: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+  line: 512
+  role: notes_stage
+  excerpt: 'Those three ingredients determine:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    - paper/stages/stage_206.tex
+    - research/pde_ledger/paper/stages/stage_206.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage206_certified_ray_ranking_and_local_bracketing_theorem.md
+    - paper/stages/stage_206.tex
+    - research/pde_ledger/paper/stages/stage_206.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

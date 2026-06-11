@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage158_canonical_quartet_literals
+parameter_name: r_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage158_canonical_quartet_literals__phase_b__r_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '158'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_158.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 158]{Stage 158: Linear Defect Transport from the Renormalized Family-1 Canonical Point}'
+- path: paper/stages/stage_158.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point,
+    and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside
+    the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_158.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check deviations are taken about the renormalized co-evolving canonical point.
+- path: paper/stages/stage_158.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: '\item Even-preservation of the canonical gate is verified downstream: see \ref{stage:159}.'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 158: Linear Defect Transport from the Renormalized Family-1 Canonical Point'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 8
+  role: notes_stage
+  excerpt: '> explicit co-evolving Family-1 canonical fixed point, and translate that'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 15
+  role: notes_stage
+  excerpt: '`(Sigma0_can, g_*, S_can)`.'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 19
+  role: notes_stage
+  excerpt: '`(delta Sigma0, delta g, delta S) -> (b, a0, a5)`'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 25
+  role: notes_stage
+  excerpt: '## 1. Renormalized canonical base point'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 30
+  role: notes_stage
+  excerpt: \Sigma_0^{\rm can}
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 33
+  role: notes_stage
+  excerpt: \widehat T_{m,\rm can}
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 37
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm can}=\mathfrak g_*
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 40
+  role: notes_stage
+  excerpt: \mathcal R_{\rm can}=\frac14,
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 42
+  role: notes_stage
+  excerpt: \mathcal S_{\rm can}
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 46
+  role: notes_stage
+  excerpt: \Pi_{\rm can}
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 112
+  role: notes_stage
+  excerpt: '## 3. Mouth-gain transport at the co-evolving canonical point'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 122
+  role: notes_stage
+  excerpt: Therefore around the co-evolving canonical point,
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 146
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}}{\sqrt{1+\mathfrak r_{F1}^2}}\,\delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 175
+  role: notes_stage
+  excerpt: \frac{40}{9}\widehat T_{m,\rm can}\,\delta\widehat T_m
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 202
+  role: notes_stage
+  excerpt: Linearizing about the renormalized canonical point gives
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 213
+  role: notes_stage
+  excerpt: Substituting `R_* = 1/4`, `S_* = S_can`, and the exact `delta R` transport,
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 219
+  role: notes_stage
+  excerpt: \left(1-\frac14\mathcal S_{\rm can}\right)\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 221
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}}{4}\,\delta\mathcal S
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 223
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_{F1}^2}}\,\delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 256
+  role: notes_stage
+  excerpt: So the co-evolving canonical point is now surrounded by a fully explicit linear
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 355
+  role: notes_stage
+  excerpt: So if the actual branch stays close to the canonical outgoing value
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 372
+  role: notes_stage
+  excerpt: In this subcase the even branch stays canonical and the whole residual defect is
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 384
+  role: notes_stage
+  excerpt: 1. the exact co-evolving Family-1 canonical point is known,
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 387
+  role: notes_stage
+  excerpt: '`delta Sigma0, delta g, delta S -> delta M_s, delta M_q, delta Pi`'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 410
+  role: notes_stage
+  excerpt: canonical even `l=2` fingerprint while allowing a nontrivial odd renormalization.
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. Linear gain transport for M_s = Sigma0 and M_q = -Sigma0 R.
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. Linear slope transport for Pi = Sigma0 (1 - R S).
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: banner("STAGE 158 — LINEAR DEFECT TRANSPORT AROUND THE RENORMALIZED CANONICAL POINT")
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: Sigma0, dSigma0, Rstar, dR = sp.symbols("Sigma0 dSigma0 Rstar dR", real=True)
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Mq = -(Sigma0 + dSigma0) * (Rstar + dR)
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: 'Mq_lin = sp.expand(Mq).subs({dSigma0 * dR: 0})'
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Mq0 = -Sigma0 * Rstar
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("delta Mq law", (Mq_lin - Mq0) - (-Rstar * dSigma0 - Sigma0 * dR))
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: Pi = (Sigma0 + dSigma0) * (1 - (Rstar + dR) * (Sstar + dS))
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 'Pi_lin = sp.expand(Pi).subs({dSigma0 * dR: 0, dSigma0 * dS: 0, dR * dS: 0})'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

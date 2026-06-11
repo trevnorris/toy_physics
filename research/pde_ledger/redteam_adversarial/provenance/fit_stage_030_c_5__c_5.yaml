@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_030_c_5
+parameter_name: C_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_030_c_5__phase_b__c_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '030'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: D = D0 + D2 w^2 + D4 w^4 - i C5 w^5 + ...
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: D0, D2, D4, C5 = sp.symbols("D0 D2 D4 C5", nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Dsel = D0 + D2 * w**2 + D4 * w**4 - I * C5 * w**5
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Gamma5 = C5 / D0
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: C5_sel = sp.simplify(beta5 * s_minus_closed)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: Gamma5_sel = sp.simplify(C5_sel / lam_minus)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: print("C5_sel =")
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: sp.pprint(C5_sel)
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: '# definitions on lines 101-104 (C5_sel := G5*beta0*s, Gamma5_sel := C5_sel/lam_-,'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: '# content of this relation is the identification Gamma5 = C5/D0 at the selected'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

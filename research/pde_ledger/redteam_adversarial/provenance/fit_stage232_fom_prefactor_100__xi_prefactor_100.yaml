@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage232_fom_prefactor_100
+parameter_name: Xi_prefactor_100
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_fom_prefactor_100__phase_b__xi_prefactor_100.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: \Xi_\chi = 100\,\Theta_w^{(\chi)}\Lambda_\ell^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 157
+  role: notes_stage
+  excerpt: \Xi_J = 100\,\Theta_w^{(J)}\Lambda_\ell^2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: 'for Pe_test in (mp.mpf("1.0"), mp.mpf("10.0"), mp.mpf("100.0")):'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: assert Delta_0 < Delta_closed(mp.mpf("1000")) < Delta_inf
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: Xi_chi = 100 * Theta_w_chi * Lambda_ell**2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: Xi_J = 100 * Theta_w_J * Lambda_ell**2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

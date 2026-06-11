@@ -1,0 +1,72 @@
+schema_version: 1
+candidate_id: fit_stage244_leakage_forced_through_fixed_demand
+parameter_name: Pi_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage244_leakage_forced_through_fixed_demand__phase_b__pi_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '244'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+  line: 235
+  role: notes_stage
+  excerpt: Thus, once the selected-branch amplitude is fixed, the one-mode bulk work lane is not independent of the leakage
+    lane.
+- path: notes/stages/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.md
+  line: 538
+  role: notes_stage
+  excerpt: Stage 244 closes five concrete bookkeeping gaps.
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 4. the exact pullback through the Stage 242 selected-support demand Pi_tr,
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Pi_tr = sp.simplify(sp.Rational(4, 3) * C_mix)
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: Pi_tr_varrho = sp.simplify(Pi_tr.subs(1 - eps, sp.Rational(3, 2) * varrho))
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: E0_pull = sp.simplify(eta_leak * Pi_tr)
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("Pi_tr                 =", Pi_tr)
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: print("Pi_tr(varrho)         =", Pi_tr_varrho)
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: assert sp.simplify(Pi_tr - Pi_expected) == 0
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: assert sp.simplify(Pi_tr_varrho - Pi_expected_varrho) == 0
+- path: scripts/moving_throat_pde_stage244_selected_branch_leakage_and_scalar_photon_work_compiler_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: print("- exact pullback through the Stage 242 selected-support demand Pi_tr,")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

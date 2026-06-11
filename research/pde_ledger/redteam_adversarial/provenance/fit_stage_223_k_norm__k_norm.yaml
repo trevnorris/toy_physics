@@ -1,0 +1,136 @@
+schema_version: 1
+candidate_id: fit_stage_223_k_norm
+parameter_name: K_norm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_223_k_norm__phase_b__k_norm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '223'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_223.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~223 asks whether the same primitive branch can satisfy the conservative one-pole condition
+    and the outgoing normalization target simultaneously.}
+- path: paper/stages/stage_223.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation eliminates the static stiffness through the one-pole condition and
+    compares the resulting $D_0$ with the normalization equation $P_0=N_0/D_0=P_{0,{\rm target}}$.}
+- path: paper/stages/stage_223.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 6
+  role: notes_stage
+  excerpt: '**Exact within the carried isotropic finite-throat primitive one-port wall/BdG/Maxwell/mixed closure** once the
+    exact isotropic one-pole and outgoing-normalization target surface is imposed.'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: '> if the same primitive one-port branch is required to satisfy the exact isotropic one-pole and outgoing-normalization
+    conditions, does the dynamic same-charge corridor survive or die?'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: 1. the exact symbolic compatibility equation between the isotropic one-pole condition and the isotropic outgoing-normalization
+    condition,
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: with normalized conservative response
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: The isotropic outgoing-normalization condition is
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 142
+  role: notes_stage
+  excerpt: The outgoing-normalization condition solves for the same wall stiffness as
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: K_{\mathrm{norm}}
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: So simultaneous isotropic one-pole success and isotropic normalization success require
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 151
+  role: notes_stage
+  excerpt: K_{\mathrm{pole}}=K_{\mathrm{norm}},
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: First, this is **not** a generic fit condition. It is the exact consequence of trying to hit the same isotropic
+    target surface from the conservative one-pole side and the outgoing-normalization side.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: Second, the compatibility equation does **not** determine every coupling. It tells us whether the primitive branch
+    wants a normalization target that is even compatible with its own conservative one-pole structure.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 213
+  role: notes_stage
+  excerpt: The overlap-renormalized primitive data are
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 277
+  role: notes_stage
+  excerpt: while the same primitive family, when forced onto the exact isotropic one-pole/normalization compatibility surface,
+    wants
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 409
+  role: notes_stage
+  excerpt: The isotropic one-pole and normalization conditions do not conflict abstractly. They reduce to one exact compatibility
+    equation.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 417
+  role: notes_stage
+  excerpt: The dynamic corridor survives only for a finite range of the branch-compatible static target. So the eventual PDE-selected
+    normalization cannot be arbitrarily large on this primitive family if the dynamic same-charge corridor is to remain alive.
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 431
+  role: notes_stage
+  excerpt: '> an explicit primitive finite-throat branch can satisfy the exact isotropic `5`PN compatibility surface **and**
+    still retain a wall-like dynamic same-charge corridor, but only inside a finite branch-compatible normalization window.'
+- path: notes/stages/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.md
+  line: 435
+  role: notes_stage
+  excerpt: 1. extract the actual branch-compatible normalization target from the moving-throat PDE,
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: '# Exact isotropic one-pole condition and normalization compatibility'
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: K_norm = sp.simplify(N0 / P0_target + B0 + Z0)
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: P0_target_compat_solved = sp.solve(sp.Eq(K_norm, K_pole), P0_target)[0]
+- path: scripts/moving_throat_pde_stage223_5pn_isotropic_target_surface_primitive_branch_compatibility_and_dynamic_survival_window_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: print('K_norm =', K_norm)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage233_calibrated_branch_delta_norm
+parameter_name: Delta_norm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage233_calibrated_branch_delta_norm__phase_b__delta_norm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '233'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_233.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves that rigid mouth tracking $\delta\ln R_{\rm tr}=0$ implies
+    $\Xi_1=\delta\ln\mathfrak N_*$, interprets the static ceiling as an internal transfer/turbulence gate, and identifies
+    the remaining finite packet.}
+- path: paper/stages/stage_233.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.5} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: \delta\ln R_{\rm tr}=0,
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: \Theta_1=\delta\ln R_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 87
+  role: notes_stage
+  excerpt: \Xi_1=\delta\ln \mathfrak N_* - B_*\,\delta\ln R_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln \epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 103
+  role: notes_stage
+  excerpt: \bigl(\delta\ln R_{\rm tr},\ \delta\ln\mathfrak N_*,\ \delta\ln\epsilon_\eta\bigr).
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 118
+  role: notes_stage
+  excerpt: \boxed{\delta\ln R_{\rm tr}=0.}
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: \boxed{\Xi_1=\delta\ln\mathfrak N_*,}
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 132
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 133
+  role: notes_stage
+  excerpt: -\delta\ln\mathfrak N_*.
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 189
+  role: notes_stage
+  excerpt: \frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}(1+|\epsilon\Xi_1|)\le P_{\rm crit},
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 199
+  role: notes_stage
+  excerpt: \frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: On a calibrated branch with
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=0,
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 218
+  role: notes_stage
+  excerpt: \Xi_1=\delta\ln\mathfrak N_*.
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 223
+  role: notes_stage
+  excerpt: '|\epsilon\,\delta\ln\mathfrak N_*|'
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 225
+  role: notes_stage
+  excerpt: \frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 238
+  role: notes_stage
+  excerpt: \frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1.
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: '|\epsilon\,\delta\ln\mathfrak N_*|'
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 274
+  role: notes_stage
+  excerpt: '|\epsilon\,\delta\ln\mathfrak N_*|'
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 321
+  role: notes_stage
+  excerpt: \delta\ln R_{\rm tr}=0
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: \Xi_1=\delta\ln\mathfrak N_*,
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 341
+  role: notes_stage
+  excerpt: '> \bigl(\delta\ln R_{\rm tr},\delta\ln\mathfrak N_*,\delta\ln\epsilon_\eta\bigr)'
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 355
+  role: notes_stage
+  excerpt: \Theta_1=\delta\ln R_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 357
+  role: notes_stage
+  excerpt: \Xi_1=\delta\ln\mathfrak N_* - B_*\,\delta\ln R_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 360
+  role: notes_stage
+  excerpt: -\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta-\Xi_1;
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: \delta\ln R_{\rm tr}=0
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 366
+  role: notes_stage
+  excerpt: \Theta_1=0,\quad \Xi_1=\delta\ln\mathfrak N_*;
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 386
+  role: notes_stage
+  excerpt: \frac{P_{\rm crit}\hat m_0^{\,2}}{\Delta_{\rm norm}+T_{\rm quad}}-1;
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 388
+  role: notes_stage
+  excerpt: 6. its calibrated-branch simplification
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 390
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=0
+- path: notes/stages/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.md
+  line: 398
+  role: notes_stage
+  excerpt: \bar P_0=\frac{\Delta_{\rm norm}+T_{\rm quad}}{\hat m_0^{\,2}}
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: epsilon, Pcrit, mhat0, Delta_norm, Tquad = sp.symbols(
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: '"epsilon Pcrit mhat0 Delta_norm Tquad", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: gate_rhs = Pcrit * mhat0**2 / (Delta_norm + Tquad) - 1
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Pbar_expr = (Delta_norm + Tquad) / mhat0**2
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: 'gate_rhs_cal = sp.simplify(gate_rhs.subs({Delta_norm: 0}))'
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("Calibrated branch Delta_norm = 0 ->", gate_rhs_cal)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

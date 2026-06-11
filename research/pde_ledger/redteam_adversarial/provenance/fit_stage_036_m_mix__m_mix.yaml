@@ -1,0 +1,220 @@
+schema_version: 1
+candidate_id: fit_stage_036_m_mix
+parameter_name: M_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_036_m_mix__phase_b__m_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '036'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_036.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~036 isolates the support-feasibility condition that remains after the normalization
+    locus has selected \(\xi_{\rm req}\).  The total loading must exceed the mixed-sector baseline by a nonnegative support/BdG
+    contribution.  This requirement becomes the exact frontier \(M_{\rm mix}\leq G(\xi_{\rm req},\delta)\).}
+- path: paper/stages/stage_036.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: \delta)\), the mixed-sector baseline \(\alpha_{\rm mix}=\mathcal X^2/(\Omega_U^2\Delta_0)\), and the dimensionless
+    variables \(\xi,\delta\).}
+- path: paper/stages/stage_036.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \paragraph{1. Dimensionless mixed baseline and support function.}
+- path: paper/stages/stage_036.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm req}=\alpha_{\rm mix}+\frac{g_{B,{\rm req}}^2}{\varpi^2},
+- path: paper/stages/stage_036.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm mix}=\frac{\mathcal X^2}{\Omega_U^2\Delta_0}.
+- path: paper/stages/stage_036.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage036-Mmix}
+- path: paper/stages/stage_036.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}:=\frac{8\alpha_{\rm mix}}{\pi^2A}
+- path: paper/stages/stage_036.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: =\frac{\pi^2A}{8}\left[G(\xi_{\rm req},\delta)-M_{\rm mix}\right]}.
+- path: paper/stages/stage_036.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+- path: paper/stages/stage_036.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: The maximum is the dimensionless form of the refined stability bound on the mixed-sector baseline.
+- path: paper/stages/stage_036.tex
+  line: 109
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+- path: paper/stages/stage_036.tex
+  line: 111
+  role: paper_stage_tex
+  excerpt: If \(R_{\rm target}<1\), the branch cannot hit the target on the stable side.  If \(R_{\rm target}\geq1\) but \(M_{\rm
+    mix}>G(\xi_{\rm req},\delta)\), the required support loading is negative and the physical branch is inadmissible in this
+    reduced closure.
+- path: paper/stages/stage_036.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~036 outputs the dimensionless mixed baseline \eqref{eq:app-stage036-Mmix}, the support-feasibility
+    function \eqref{eq:app-stage036-G}, the required support loading \eqref{eq:app-stage036-gBreq}, the monotonicity derivative
+    \eqref{eq:app-stage036-G-derivative}, and the final admissibility test \eqref{eq:app-stage036-final-test}.}
+- path: paper/stages/stage_036.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \item \(M_{\rm mix}\leq G\) is exactly the nonnegativity of \(g_{B,{\rm req}}^2\).
+- path: paper/stages/stage_036.tex
+  line: 122
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Part~III begins by computing continuum-kernel placement data that feed \(A\), \(\Delta
+    K_{\rm ax}\), \(\beta_0\), \(M_{\rm mix}\), and hence \(R_{\rm target}\), \(\delta\), and the exact frontier.  Later support-completion
+    stages ask whether rank-two support and coherent D/N support can place the actual branch inside the admissible region.}
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 25
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`,'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 29
+  role: notes_stage
+  excerpt: '`M_mix = 8 alpha_mix / (pi^2 A)`'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 34
+  role: notes_stage
+  excerpt: '`M_mix <= G(xi_req,delta)`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 46
+  role: notes_stage
+  excerpt: Split the total loading into the mixed-sector baseline and the support contribution,
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 48
+  role: notes_stage
+  excerpt: '`alpha_req = alpha_mix + g_B,req^2 / varpi^2`,'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 52
+  role: notes_stage
+  excerpt: '`alpha_mix = Chi^2 / ( Omega_U^2 Delta_0 )`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 54
+  role: notes_stage
+  excerpt: Now define the dimensionless mixed baseline
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 56
+  role: notes_stage
+  excerpt: '`M_mix := 8 alpha_mix / (pi^2 A)`'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 66
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 70
+  role: notes_stage
+  excerpt: '`G(xi_req,delta) >= M_mix`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 92
+  role: notes_stage
+  excerpt: '`M_mix < G_max(delta)`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 94
+  role: notes_stage
+  excerpt: That is of course equivalent to the refined stability bound `alpha_mix < alpha_crit`, but the present stage makes
+    the same statement directly in the dimensionless selected-branch geometry.
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 98
+  role: notes_stage
+  excerpt: '## 3. The exact admissible region in `(R_target, M_mix)` space'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 106
+  role: notes_stage
+  excerpt: 'For fixed `delta`, the stable selected quadrupole branch therefore traces an exact parametric admissibility frontier
+    in the `(R_target, M_mix)` plane:'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 113
+  role: notes_stage
+  excerpt: '- and the support feasibility test is then simply whether the actual baseline `M_mix` lies below the critical
+    value `G(xi_req,delta)`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 118
+  role: notes_stage
+  excerpt: 2. `M_mix <= G(xi_req,delta)` to keep the required support loading nonnegative.
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 140
+  role: notes_stage
+  excerpt: So just above onset, the admissible mixed baseline grows linearly with the excess normalization demand.
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 151
+  role: notes_stage
+  excerpt: For any fixed `delta`, the completed moving-throat PDE must determine a physical point `(R_target, M_mix)` such
+    that
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 154
+  role: notes_stage
+  excerpt: '- and `M_mix` lies below the exact support-feasibility frontier.'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact factorization of the required support loading through G - M_mix.
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: '- `xi`, `delta`, and `M_mix` are the same Stage 035/036 dimensionless support'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: Mmix = sp.symbols("M_mix", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: alpha_mix = sp.simplify(Chi**2 / (OmegaU**2 * Delta0))
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: Mmix_expr = sp.simplify(8 * alpha_mix / (sp.pi**2 * A))
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: gBreq_sq_over_varpi2 = sp.simplify(a_req - alpha_mix)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    - paper/stages/stage_036.tex
+    - research/pde_ledger/paper/stages/stage_036.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+    - paper/stages/stage_036.tex
+    - research/pde_ledger/paper/stages/stage_036.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

@@ -1,0 +1,108 @@
+schema_version: 1
+candidate_id: fit_stage_045_r_tr
+parameter_name: R_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_045_r_tr__phase_b__r_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '045'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_045.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage045-Rtr}
+- path: paper/stages/stage_045.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The exact tracking condition \eqref{eq:app-stage045-tracking} and coherent tracking factor
+    \eqref{eq:app-stage045-Rtr}.}
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 23
+  role: notes_stage
+  excerpt: '`R_tr = R_U = R_phi`.'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 125
+  role: notes_stage
+  excerpt: '`R_tr := R_U = R_phi`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 130
+  role: notes_stage
+  excerpt: '`1 - R_tr`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 133
+  role: notes_stage
+  excerpt: '`R_tr - 1/(1+delta_U)`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 138
+  role: notes_stage
+  excerpt: '`1/(1+delta_U) < R_tr < 1.`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 168
+  role: notes_stage
+  excerpt: '- one common direction factor `R_tr`,'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 193
+  role: notes_stage
+  excerpt: '`B_tr = delta - M_tr ( 1 + lambda_0 R_tr^2 ),`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 199
+  role: notes_stage
+  excerpt: '`M_tr = G_tr(xi,delta;R_tr)`,'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 214
+  role: notes_stage
+  excerpt: '`R_target = F_tr(xi,delta;R_tr)`,'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 224
+  role: notes_stage
+  excerpt: '`R_target - F_tr( xi_phys, delta; R_tr ),`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 239
+  role: notes_stage
+  excerpt: '- the exact tracking factor `R_tr`,'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. The common direction factor R_tr has the exact range identities used in the note.
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: R_tr = sp.simplify((1 + chi_0 / (1 + delta_U)) / (1 + chi_0))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("R_tr =", R_tr)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: expr1 = sp.simplify(1 - R_tr)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: expr2 = sp.simplify(R_tr - 1 / (1 + delta_U))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("1 - R_tr =", expr1)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("R_tr - 1/(1+delta_U) =", expr2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

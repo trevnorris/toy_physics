@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage_012_assert_nonzero
+parameter_name: assert_nonzero
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_assert_nonzero__phase_b__assert_nonzero.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '012'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: 'def assert_zero(label: str, expr: sp.Expr) -> None:'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"{label} failed: {sp.sstr(residue)}")'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: 'def assert_nonzero(label: str, expr: sp.Expr) -> None:'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: raise AssertionError(f"{label} unexpectedly vanished")
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Q, S2, H, Delta, P, Gw = sp.symbols("Q S2 H Delta P Gw", nonzero=True)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: assert_zero("z0 closed form", z0 - (Delta * q1 - Q * d1) / Delta**2)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: assert_zero("n0 closed form", n0 - 2 * P * (Delta * p1 - P * d1) / Delta**3)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: assert_zero("z0 Frechet derivative", z0 - frechet(Z0))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: assert_zero("z2 Frechet derivative", z2 - frechet(Z2))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: assert_zero("z4 Frechet derivative", z4 - frechet(Z4))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: assert_zero("n0 Frechet derivative", n0 - frechet(N0))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: assert_zero("n2 Frechet derivative", n2 - frechet(N2))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: assert_zero("n4 Frechet derivative", n4 - frechet(N4))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: D0sym, N0sym = sp.symbols("D0 N0", nonzero=True)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: K, B0, Z0slot, N0base, D0target, Ptarget, S, T = sp.symbols("K B0 Z0slot N0base D0target Ptarget S T", nonzero=True)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: assert_zero("primitive transported-target normalization K surface", K_norm_transport_p - (B0 + Z0slot + ell * z0
+    + D0target))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: assert_zero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: assert_nonzero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: assert_nonzero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: assert_nonzero(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 226
+  role: sympy_script
+  excerpt: assert_nonzero(
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

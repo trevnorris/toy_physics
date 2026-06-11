@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage189_mhat0_quadrupole_normalization_target
+parameter_name: mhat_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage189_mhat0_quadrupole_normalization_target__phase_b__mhat_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '189'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 205
+  role: sympy_script
+  excerpt: G, c, mhat0 = sp.symbols("G c mhat_0", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: P0_target = sp.simplify(54 * G * cs**5 / (5 * a**5 * c**5 * mhat0**2))
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: '"mhat0^2 Gamma5 - 2G/(5c^5) at P0_target",'
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: (mhat0**2 * Gamma5 - 2 * G / (5 * c**5)).subs(P0, P0_target),
+- path: scripts/moving_throat_pde_stage189_transfer_shape_prefactor_compiler_sympy_audit.py
+  line: 235
+  role: sympy_script
+  excerpt: print("      mhat0^2 P0 = 54 G c_s^5 / (5 a^5 c^5).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

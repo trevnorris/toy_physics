@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage192_canonical_quotient_section
+parameter_name: K_eta_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage192_canonical_quotient_section__phase_b__k_eta_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '192'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_192.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Builds exact projectors \(Q_{\rm quot}\), \(O_{\rm orb}\), showing quotient failure lives only
+    on \((T_U,K_\eta^{\rm eff},\mu_W)\).}
+- path: paper/stages/stage_192.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block
+    narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a
+    second independent proof.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 19
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}=(q_{\rm tr},q_{\rm nt},q_\eta).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 28
+  role: notes_stage
+  excerpt: '>    \((q_{\rm tr},q_{\rm nt},q_\eta)\)?'
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 36
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 40
+  role: notes_stage
+  excerpt: S_{(T,K_\eta,\mu)},
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 48
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu),
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 72
+  role: notes_stage
+  excerpt: \Delta_{K_\eta}\\
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 81
+  role: notes_stage
+  excerpt: (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 91
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 116
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 125
+  role: notes_stage
+  excerpt: (T,K_\eta,\mu).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 130
+  role: notes_stage
+  excerpt: P_{(T,K_\eta,\mu)}:=M_*[:,(T,K_\eta,\mu)]
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 142
+  role: notes_stage
+  excerpt: \det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 150
+  role: notes_stage
+  excerpt: P_{(T,K_\eta,\mu)}^{-1}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 168
+  role: notes_stage
+  excerpt: E_{(T,K_\eta,\mu)}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 172
+  role: notes_stage
+  excerpt: (T,K_\eta,\mu)
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 174
+  role: notes_stage
+  excerpt: in the ordered drift basis `\((\lambda,c,\gamma,U,K_\eta,W,\mu,T)\)`.
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 179
+  role: notes_stage
+  excerpt: S_{(T,K_\eta,\mu)}:=E_{(T,K_\eta,\mu)}\,P_{(T,K_\eta,\mu)}^{-1}.
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 185
+  role: notes_stage
+  excerpt: S_{(T,K_\eta,\mu)}=
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 200
+  role: notes_stage
+  excerpt: \boxed{M_*S_{(T,K_\eta,\mu)}=I_3.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 202
+  role: notes_stage
+  excerpt: So `\(S_{(T,K_\eta,\mu)}\)` is an exact right inverse of the quotient map.
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 206
+  role: notes_stage
+  excerpt: \mathbf q=(q_{\rm tr},q_{\rm nt},q_\eta)^T
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 210
+  role: notes_stage
+  excerpt: \boxed{\Delta\mathbf x_{\rm quot}:=S_{(T,K_\eta,\mu)}\,\mathbf q.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 219
+  role: notes_stage
+  excerpt: \boxed{Q_{\rm quot}:=S_{(T,K_\eta,\mu)}M_*,}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 266
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 271
+  role: notes_stage
+  excerpt: \boxed{\Delta\mathbf x_{\rm fail}=Q_{\rm quot}\Delta\mathbf x=S_{(T,K_\eta,\mu)}\mathbf q.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 278
+  role: notes_stage
+  excerpt: \boxed{(\Delta_{K_\eta})_{\rm fail}=-q_\eta,}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 281
+  role: notes_stage
+  excerpt: \boxed{(\Delta_\mu)_{\rm fail}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 288
+  role: notes_stage
+  excerpt: '> \((\Delta_T,\Delta_{K_\eta},\Delta_\mu)\).'
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 314
+  role: notes_stage
+  excerpt: \boxed{(\Delta_{K_\eta})_{\rm orbit}=2\Delta_c-\Delta_U,}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 378
+  role: notes_stage
+  excerpt: (\Theta_1,\Xi_1,\mathcal R_1).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 384
+  role: notes_stage
+  excerpt: S_{(T,K_\eta,\mu)}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 395
+  role: notes_stage
+  excerpt: '- the dependent pivot block `\(P_{(T,K_\eta,\mu)}\)` and its inverse,'
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 396
+  role: notes_stage
+  excerpt: '- the exact right-inverse section `\(S_{(T,K_\eta,\mu)}\)`,'
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 399
+  role: notes_stage
+  excerpt: '- the exact formulas for the failure components in terms of `\((q_{\rm tr},q_{\rm nt},q_\eta)\)`,'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: '# (Delta_lambda, Delta_c, Delta_gamma, Delta_U, Delta_Keta, Delta_W, Delta_mu, Delta_T)'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: '# Dependent coordinates in the order (T, K_eta, mu)'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: Keta_idx = 4
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: Pdep = sp.Matrix.hstack(Mstar[:, T_idx], Mstar[:, Keta_idx], Mstar[:, mu_idx])
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

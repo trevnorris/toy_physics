@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage161_gamma0_star_branch_value
+parameter_name: gamma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_gamma0_star_branch_value__phase_b__gamma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '161'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_161.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 11
+  role: notes_stage
+  excerpt: \delta\mathfrak B_W:=\delta\gamma_0-\frac13\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 26
+  role: notes_stage
+  excerpt: \bigl(\Xi_\gamma-2\Xi_L\bigr),
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 31
+  role: notes_stage
+  excerpt: \Xi_\gamma:=\frac{\delta\ln\gamma_0}{\delta\Pi_{\rm tan}},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 38
+  role: notes_stage
+  excerpt: '- the odd bare-port normalization strain `\Xi_\gamma`, and'
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 43
+  role: notes_stage
+  excerpt: \gamma_0\propto (L_W/a)^2,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 47
+  role: notes_stage
+  excerpt: \Xi_\gamma=2\Xi_L,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 65
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 75
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9}\,(1+\varepsilon_\gamma).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 84
+  role: notes_stage
+  excerpt: \gamma_0-\frac13\kappa_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 86
+  role: notes_stage
+  excerpt: \frac{1+r_c}{9}\,\bigl(\varepsilon_\gamma-\varepsilon_\kappa\bigr).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 92
+  role: notes_stage
+  excerpt: Linearizing about the compensated branch `\varepsilon_\kappa=\varepsilon_\gamma=0` gives
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 98
+  role: notes_stage
+  excerpt: \bigl(\delta\varepsilon_\gamma-\delta\varepsilon_\kappa\bigr).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 102
+  role: notes_stage
+  excerpt: Because the basepoint already satisfies `\varepsilon_\gamma-\varepsilon_\kappa=0`, the direct hybridization drift
+    `\delta r_c` drops out automatically at this stage.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 162
+  role: notes_stage
+  excerpt: \varepsilon_\gamma
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 164
+  role: notes_stage
+  excerpt: \frac{9\gamma_0}{1+r_c}-1.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 170
+  role: notes_stage
+  excerpt: \delta\varepsilon_\gamma
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 172
+  role: notes_stage
+  excerpt: \frac{9\,\delta\gamma_0}{1+r_{c,*}}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 178
+  role: notes_stage
+  excerpt: \gamma_{0,*}=
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 184
+  role: notes_stage
+  excerpt: \delta\varepsilon_\gamma
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 186
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 195
+  role: notes_stage
+  excerpt: \delta\varepsilon_\gamma-\delta\varepsilon_\kappa
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 197
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 205
+  role: notes_stage
+  excerpt: It says that the only first-order source of bare mixed-port slippage is the failure of the odd bare-port normalization
+    `\gamma_0` to track the square of the D/N tube ratio `L_W/a`.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 216
+  role: notes_stage
+  excerpt: \Xi_\gamma
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 218
+  role: notes_stage
+  excerpt: \frac{\delta\ln\gamma_0}{\delta\Pi_{\rm tan}},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 232
+  role: notes_stage
+  excerpt: \bigl(\Xi_\gamma-2\Xi_L\bigr)
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 242
+  role: notes_stage
+  excerpt: \bigl(\Xi_\gamma-2\Xi_L\bigr).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 261
+  role: notes_stage
+  excerpt: 0.462362334687869\,\bigl(\Xi_\gamma-2\Xi_L\bigr).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 268
+  role: notes_stage
+  excerpt: \Xi_{\rm slip}:=\Xi_\gamma-2\Xi_L.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 410
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 417
+  role: notes_stage
+  excerpt: \gamma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 428
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 436
+  role: notes_stage
+  excerpt: \Xi_\gamma=2\Xi_L,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 449
+  role: notes_stage
+  excerpt: \delta\gamma_W=0,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 479
+  role: notes_stage
+  excerpt: \Xi_{\rm slip}=\Xi_\gamma-2\Xi_L,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 494
+  role: notes_stage
+  excerpt: '> \gamma_0 = 4L_W^2/(3\pi^2 a^2)'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: B_W = ((1+r_c)/9) (eps_gamma - eps_kappa).
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: dB_W = ((1+r_c*)/9) (d eps_gamma - d eps_kappa).
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: d eps_gamma - d eps_kappa = d ln gamma_0 - 2 d ln(LW/a).
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+parameter_name: moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_252_moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit__phase_b__moving_throat_pde_stage253_physical_ca_f0ea7d3b2f97.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_252.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_252.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \label{subsec:app-part08-stage252-heat-partition}
+- path: paper/stages/stage_252.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: Split the microscopic coefficients as
+- path: paper/stages/stage_252.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-split}
+- path: paper/stages/stage_252.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-shape-integrals}
+- path: paper/stages/stage_252.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: The integrated energies are
+- path: paper/stages/stage_252.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-evac-elat}
+- path: paper/stages/stage_252.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: With \(\mathfrak r_V=\mathcal I_3/\mathcal I_2\), the fractions are
+- path: paper/stages/stage_252.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-fractions}
+- path: paper/stages/stage_252.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: The partition drift obeys
+- path: paper/stages/stage_252.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-fraction-drift}
+- path: paper/stages/stage_252.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: So slow events sample the cubic split, fast rough events sample the quintic split.
+- path: paper/stages/stage_252.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: For a single-growth cold event
+- path: paper/stages/stage_252.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-single-growth}
+- path: paper/stages/stage_252.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-single-growth-integrals}
+- path: paper/stages/stage_252.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: The event-equivalent rates are
+- path: paper/stages/stage_252.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-equivalent-rates}
+- path: paper/stages/stage_252.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: At the safe edge, with \(T=1/s_c\) and \(\Gamma_3s_c^3+\Gamma_5s_c^5=\mu_\eta(s_0^2-s_c^2)\), the total minimum
+    exported energy is \cref{eq:app-part08-main-safe-energy}, and the channel energies are obtained by multiplying by \(f_{\rm
+    vac}(s_c)\) or \(f_{\rm lat}(s_c)\).
+- path: paper/stages/stage_252.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: 'The old Session-IV \(3:1\) heat split becomes a coefficient-surface condition:'
+- path: paper/stages/stage_252.tex
+  line: 78
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-three-one-surface}
+- path: paper/stages/stage_252.tex
+  line: 85
+  role: paper_stage_tex
+  excerpt: It is speed-independent only on the special family where both cubic and quintic channels have the same lattice
+    fraction.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 252: Vacuum-vs-Lattice Heat Partition and Cold-Survival Compiler from the Microscopic
+    Export Kernel'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: 1. the Stage-251 microscopic export kernel
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: 2. the exact channel split
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 19
+  role: notes_stage
+  excerpt: 3. the exact exported-power identities from Stage 251,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: 4. an arbitrary finite event window \([0,T]\) with square-integrable \(\ddot V\) and \(\dddot V\),
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 21
+  role: notes_stage
+  excerpt: 5. the single-growth cold-event specialization
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: 6. and the Stage-251 event-safe equality on the cold edge
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: This stage is a **channel-resolved energy compiler**. It does not yet map the result to \(\lambda_{\rm ep}\omega_D\),
+    \(k_{\rm eff}\), or \(T_{\max}\); that is the Stage-253 job.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 36
+  role: notes_stage
+  excerpt: Stage 251 replaced the Session-IV phenomenological envelope law
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: by the first microscopic passive/export kernel carried by the moving-throat wall/BdG/localized-Maxwell/mixed stack,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: It also gave the exact channel-resolved power split
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: but it deliberately stopped one step before the actual heat-partition problem.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: 'So the next honest question is:'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: '> for a chosen cold event, what fraction of the exported energy goes into the vacuum outlet, what fraction goes
+    into the lattice outlet, and what total export is minimally required for the cold event to survive?'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: 'The main results are:'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 64
+  role: notes_stage
+  excerpt: 1. the exact vacuum-vs-lattice split depends on one scalar event-shape quotient,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: 3. the Stage-251 safe surface implies an exact **safe-edge exported-energy theorem**,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 67
+  role: notes_stage
+  excerpt: 4. the Session-IV `3:1` heat split becomes a microscopic coefficient surface rather than a by-hand partition,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: 5. and the microscopic event-equivalent damping rates that Stage 253 must map into condensed-matter variables are
+    now explicit.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

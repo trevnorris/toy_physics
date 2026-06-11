@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage_039_d_dir
+parameter_name: D_dir
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_039_d_dir__phase_b__d_dir.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 039
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_039.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 039]{Stage 039: First Non-Flat \texorpdfstring{$U$}{U} Doublet and Direction Splitting}'
+- path: paper/stages/stage_039.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~039 tests the simplifying assumption that the source, support, and loading directions
+    are collinear.  The first non-flat \(U\) doublet preserves scalar placement but generically breaks direction collinearity.}
+- path: paper/stages/stage_039.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: The directional deformation is carried by
+- path: paper/stages/stage_039.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: The exact direction-splitting invariant is
+- path: paper/stages/stage_039.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage039-Ddir}
+- path: paper/stages/stage_039.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: D_{\rm dir}=-\frac{\kappa_0\kappa_1g_W\rho_0\delta_U}{1+\delta_U}}.
+- path: paper/stages/stage_039.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: D_{\rm dir}=0
+- path: paper/stages/stage_039.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: On the constructive branch, \(\rho_0>0\) and \(\delta_U>0\) imply a genuine direction split.
+- path: paper/stages/stage_039.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The split placement law \eqref{eq:app-stage039-split-placement}, the direction factor \eqref{eq:app-stage039-RU},
+    and the collinearity theorem \eqref{eq:app-stage039-collinearity}.}
+- path: paper/stages/stage_039.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~040 packages this direction split into generalized selected-branch functions;
+    Stages~044--046 test whether the resulting branch can still satisfy the target.}
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 039: First Non-Flat `U` Doublet, Exact Split Continuum Map, and the Direction-Splitting
+    Theorem'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 21
+  role: notes_stage
+  excerpt: The main result is that the **scalar placement map survives**, but the **directional simplicity does not**.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 25
+  role: notes_stage
+  excerpt: 1. the direct wall softening becomes mode-dependent,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 28
+  role: notes_stage
+  excerpt: 4. the mixed loading vector rotates away from the source/support direction,
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 29
+  role: notes_stage
+  excerpt: 5. and the old Stage-038 one-direction picture survives **iff** the new direction-splitting invariant vanishes.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 31
+  role: notes_stage
+  excerpt: So the flat-`U` assumption was not harmless bookkeeping. It was precisely what made source, support, and mixed
+    loading all point in the same wall-basis direction.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 73
+  role: notes_stage
+  excerpt: '## 2. Exact split direct softening and shifted anisotropy'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 75
+  role: notes_stage
+  excerpt: The wall-U coupling is still diagonal in the N/N basis, but the denominators are no longer the same. The direct
+    softening therefore becomes
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 109
+  role: notes_stage
+  excerpt: The `U/W` block also feels the split directly through the overlap-weighted inverse kernel
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 133
+  role: notes_stage
+  excerpt: '## 4. Exact mixed loading vector and the direction-splitting theorem'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 155
+  role: notes_stage
+  excerpt: with the exact direction-ratio factor
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 161
+  role: notes_stage
+  excerpt: In Stage 037–038 the mixed loading direction was proportional to the source/support vector `v = (kappa_0,kappa_1)^T`.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 168
+  role: notes_stage
+  excerpt: The exact direction-splitting invariant is
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 170
+  role: notes_stage
+  excerpt: '`D_dir := kappa_0 z_1 - kappa_1 z_0`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 176
+  role: notes_stage
+  excerpt: '`D_dir = 0  <=>  delta_U = 0  or  rho_0 = 0,`'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 183
+  role: notes_stage
+  excerpt: are the only ways to keep the old one-direction Stage-038 geometry exactly intact.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 189
+  role: notes_stage
+  excerpt: So on the natural constructive branch `rho_0 > 0`, the first axial `U` structure pushes the mixed loading direction
+    away from the flat-doublet direction in a controlled linear way.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 195
+  role: notes_stage
+  excerpt: Even though the directions split, the scalar placement data themselves still factorize cleanly.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 221
+  role: notes_stage
+  excerpt: What changes is the **directional geometry** seen by the selected branch.
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 246
+  role: notes_stage
+  excerpt: '- the source map direction,'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 247
+  role: notes_stage
+  excerpt: '- the support direction,'
+- path: notes/stages/moving_throat_pde_stage039_split_u_sector.md
+  line: 248
+  role: notes_stage
+  excerpt: '- and the mixed loading direction.'
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. The direct wall softening becomes mode-dependent and yields an exact shifted
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: vector v, and the exact direction-splitting invariant factors cleanly.
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: subbanner("39.1 — Exact U-mode split and direct wall softening")
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: 'expect_zero("A0 direct - expected", A0.subs({c_etaU**2: eps_eta * K_U * K_eta_eff}) - A0_expected)'
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: 'expect_zero("A1 direct - expected", A1.subs({c_etaU**2: eps_eta * K_U * K_eta_eff}) - A1_expected)'
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: eps_W_direct = sp.simplify(c_UW**2 * S_U / K_W_eff)
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: '"eps_W direct - split formula",'
+- path: scripts/moving_throat_pde_stage039_split_u_sector_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: 'eps_W_direct.subs({c_UW**2: eps_W * K_U * K_W_eff / sigma}) - eps_W_split,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

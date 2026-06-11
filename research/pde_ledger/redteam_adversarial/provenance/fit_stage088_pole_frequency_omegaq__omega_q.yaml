@@ -1,0 +1,139 @@
+schema_version: 1
+candidate_id: fit_stage088_pole_frequency_OmegaQ
+parameter_name: Omega_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage088_pole_frequency_omegaq__phase_b__omega_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 088
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_088.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The minimal isotropic conservative precursor \(Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\).}
+- path: paper/stages/stage_088.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: Y_Q^{\rm cons}(\omega)
+- path: paper/stages/stage_088.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: =c_0+\frac{c_1}{1-\omega^2/\Omega_Q^2},
+- path: paper/stages/stage_088.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \Omega_Q=\frac{3c_s}{2a}}.
+- path: paper/stages/stage_088.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: Y_Q^{\rm cons}(\omega)
+- path: paper/stages/stage_088.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: +\frac{\rho_\alpha-1}{\rho_\alpha}\frac{1}{1-\omega^2/\Omega_Q^2}.
+- path: paper/stages/stage_088.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: Matching coefficients gives
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega) = c0 + c1 / (1 - omega^2 / Omega_Q^2),`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 19
+  role: notes_stage
+  excerpt: '`Omega_Q = 3 c_s / (2 a).`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 44
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega)`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 46
+  role: notes_stage
+  excerpt: '`  + (alpha_req - alpha_mix)/alpha_req * 1/(1 - omega^2/Omega_Q^2).`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 54
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega)`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 56
+  role: notes_stage
+  excerpt: '`  + (rho_alpha - 1)/rho_alpha * 1/(1 - omega^2/Omega_Q^2).`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 158
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega) = c0 + c1/(1 - omega^2/Omega_Q^2),`'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: rho_alpha, omega, Omega_Q = sp.symbols("rho_alpha omega Omega_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: Y_loading = sp.simplify(alpha_mix/alpha_req + (alpha_req-alpha_mix)/alpha_req/(1 - omega**2/Omega_Q**2))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Y_rho = sp.simplify(1/rho_alpha + (rho_alpha-1)/rho_alpha/(1 - omega**2/Omega_Q**2))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: print("Y_loading(omega) =", Y_loading)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: print("Y_rho(omega)     =", Y_rho)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# Strategy: extract c1 as the pole residue at u = omega^2/Omega_Q^2 -> 1, then'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '# Substitute omega**2 = u * Omega_Q**2 (Y_rho depends on omega only through'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: '# omega**2 so this gives a clean rational function of u). Subbing on the'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '# combined ratio `omega**2/Omega_Q**2 -> u` fails after sp.simplify reshapes'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: Y_rho_u = sp.simplify(Y_rho.subs(omega**2, u * Omega_Q**2))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: Y_rho - (c0_extracted + c1_extracted/(1 - omega**2/Omega_Q**2))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: '# Minimal isotropic quadrupole module: paper Y_Q^cons = 3/4 + (1/4)/(1-omega^2/Omega_Q^2).'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: Y_Q_paper = sp.Rational(3, 4) + sp.Rational(1, 4)/(1 - omega**2/Omega_Q**2)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: Y_Q_paper_u = sp.simplify(Y_Q_paper.subs(omega**2, u * Omega_Q**2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

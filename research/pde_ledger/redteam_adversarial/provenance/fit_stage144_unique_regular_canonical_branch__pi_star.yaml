@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage144_unique_regular_canonical_branch
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage144_unique_regular_canonical_branch__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '144'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  line: 82
+  role: notes_stage
+  excerpt: For comparison, the self-matched derivative-profile point \(\mathfrak g=\pi/4\) occurs at
+- path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  line: 88
+  role: notes_stage
+  excerpt: So the canonical compensated branch is reached **before** the self-matched derivative point
+- path: notes/stages/moving_throat_pde_stage144_unique_regular_canonical_branch.md
+  line: 100
+  role: notes_stage
+  excerpt: branch that preserves the canonical outgoing quadrupole fingerprint.
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: Pi_star = sp.N(sp.nsolve(sp.Eq(gPi, gminus), 1.5), 30)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: That_star = sp.N(That.subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: print("Pi_*          =", Pi_star)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: print("That(Pi_*)    =", That_star)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Sigma0_star = sp.N(Sigma0.subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: print("Sigma0(Pi_*)  =", Sigma0_star)
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: 'if not (float(Pi_star) > 0 and float(Pi_match) > float(Pi_star)):'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: 'if not (abs(sp.N(Pi_star - sp.Rational(''1.50882951349316''), 30)) < TOL):'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"Pi_* drift: got {Pi_star}, expected 1.50882951349316")'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: 'if not (abs(sp.N(That_star - sp.Rational(''0.901484054174205''), 30)) < TOL):'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"That(Pi_*) drift: got {That_star}, expected 0.901484054174205")'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: 'if not (abs(sp.N(Sigma0_star - sp.Rational(''1.80594111095636''), 30)) < TOL):'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"Sigma0(Pi_*) drift: got {Sigma0_star}, expected 1.80594111095636")'
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: print(f"Pi_*       = {Pi_star}")
+- path: scripts/moving_throat_pde_stage144_unique_regular_canonical_branch_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: print(f"That_*     = {That_star}")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

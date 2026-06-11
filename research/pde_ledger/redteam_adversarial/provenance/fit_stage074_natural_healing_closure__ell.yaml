@@ -1,0 +1,218 @@
+schema_version: 1
+candidate_id: fit_stage074_natural_healing_closure
+parameter_name: ell
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage074_natural_healing_closure__phase_b__ell.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '074'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_074.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Family--1 geometry \(L/\ell=37\) and closure \(\ell=\hbar/(2mc_{s,w})\).}
+- path: paper/stages/stage_074.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \ell=\frac{\hbar}{2mc_{s,w}}}.
+- path: paper/stages/stage_074.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: Using \(\kappa=4\chi_s^2+(4/5)\Lambda_\ell^2\) gives
+- path: paper/stages/stage_074.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \kappa=\frac95\Lambda_\ell^2=\frac{12321}{5},
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 7
+  role: notes_stage
+  excerpt: '`Lambda_ell = 37,`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 21
+  role: notes_stage
+  excerpt: '`ell_h^2 = hbar^2 / (4 m^2 c_s^2).`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 33
+  role: notes_stage
+  excerpt: '`(1 - ell_h^2 nabla^2) eta = s / (rho_0 m c_s^2),`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 37
+  role: notes_stage
+  excerpt: '`ell_h^2 = hbar^2 / (4 m^2 c_s^2).`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 41
+  role: notes_stage
+  excerpt: '`ell_h = hbar / (2 m c_s).`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 49
+  role: notes_stage
+  excerpt: The canonical wall branch already uses a thin active shell of width `ell`.
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 53
+  role: notes_stage
+  excerpt: '`ell = ell_h = hbar / (2 m c_(s,w)).`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 67
+  role: notes_stage
+  excerpt: '`ell = hbar / (2 m c_(s,w)),`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 71
+  role: notes_stage
+  excerpt: '`chi_s = L / (2 ell) = Lambda_ell / 2.`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 73
+  role: notes_stage
+  excerpt: Since Stage 073 fixed `Lambda_ell = 37`, the same branch now fixes
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 85
+  role: notes_stage
+  excerpt: '`kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 87
+  role: notes_stage
+  excerpt: 'Insert `chi_s = Lambda_ell/2`:'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 89
+  role: notes_stage
+  excerpt: '`kappa = 4 (Lambda_ell^2 / 4) + (4/5) Lambda_ell^2`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 90
+  role: notes_stage
+  excerpt: '`      = (1 + 4/5) Lambda_ell^2`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 91
+  role: notes_stage
+  excerpt: '`      = (9/5) Lambda_ell^2.`'
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 93
+  role: notes_stage
+  excerpt: With `Lambda_ell = 37`,
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 125
+  role: notes_stage
+  excerpt: After Stages 056–057, the explicit Family-1 throat-support branch has fixed
+- path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+  line: 127
+  role: notes_stage
+  excerpt: '`Lambda_ell = 37,`'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: '- use the exact GNLS healing/compliance width ell = hbar/(2 m c_s),'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: '- verify chi_s = Lambda_ell/2,'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: '- verify kappa = (9/5) Lambda_ell^2 on the explicit Family-1 branch,'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Lambda_ell = sp.symbols("Lambda_ell", positive=True)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: hbar, m_psi, c_s, ell, L = sp.symbols("hbar m_psi c_s ell L", positive=True)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: '# Apply the GNLS healing/compliance width: ell = hbar / (2 m c_s),'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: '# equivalently c_s = hbar / (2 m_psi ell).'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: chi_in_ell = sp.simplify(chi_def.subs(c_s, hbar / (2 * m_psi * ell)))
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: print("chi (after healing-length substitution) =", chi_in_ell)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: '# Re-express L/ell as the dimensionless ratio Lambda_ell.'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: chi_lock = sp.simplify(chi_in_ell.subs(L, Lambda_ell * ell))
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: '# Family-1 branch coefficient: kappa = 4 chi_s^2 + (4/5) Lambda_ell^2.'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: '# verifies that, with chi_s locked to Lambda_ell/2, kappa reduces to'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# (9/5) Lambda_ell^2.'
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: kappa_lock = sp.simplify(4 * chi_lock**2 + sp.Rational(4, 5) * Lambda_ell**2)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("kappa(Lambda_ell) =", kappa_lock)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: expect_zero("chi_s - Lambda_ell/2", chi_lock - Lambda_ell / 2)
+- path: scripts/moving_throat_pde_stage074_family1_healing_lock_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: expect_zero("kappa - (9/5) Lambda_ell^2", kappa_lock - sp.Rational(9, 5) * Lambda_ell**2)
+origin_claims:
+- parameter: ell
+  introduced_at_stage: 60
+  introduced_at_line: 53
+  citation:
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 53
+    excerpt: '`ell = ell_h = hbar / (2 m c_(s,w)).`'
+constraints:
+- parameter: ell
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 55
+    excerpt: This is a **controlled local closure**, not yet a theorem of the full moving-throat PDE, but it is the first
+      honest way to tie the support scale to the parent GNLS medium instead of leaving it free.
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: free_choice
+  severity: low
+  summary: Candidate label 'natural_healing_closure' matches the notes' 'natural next closure ... controlled local closure,
+    not yet a theorem'. The wall width ell is posited equal to the GNLS healing width ell_h = hbar/(2 m c_sw) — an ansatz
+    (free_choice), not a derivation. The notes themselves disclaim it as not-yet-a-theorem.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 37
+    excerpt: '`ell_h^2 = hbar^2 / (4 m^2 c_s^2).`'
+  - path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+    line: 23
+    excerpt: If the active wall width on the explicit throat-support branch is identified with that same local conservative
+      healing width on the support layer, then the branch acquires an exact support lock.
+downstream_dependents:
+- '075'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage074_natural_healing_closure__ell.yaml

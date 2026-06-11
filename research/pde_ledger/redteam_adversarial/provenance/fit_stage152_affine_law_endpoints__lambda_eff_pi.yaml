@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage152_affine_law_endpoints
+parameter_name: lambda_eff_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_affine_law_endpoints__phase_b__lambda_eff_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '152'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 50
+  role: notes_stage
+  excerpt: Using the previously frozen canonical derivatives and rigidity coefficients,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 132
+  role: notes_stage
+  excerpt: '## 4. Effective positive-family interpretation'
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 137
+  role: notes_stage
+  excerpt: \lambda_{\rm eff}^{(\Pi)}\approx 0.380487632771110,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 139
+  role: notes_stage
+  excerpt: \lambda_{\rm eff}^{(T)}\approx 0.378939241176339.
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 145
+  role: notes_stage
+  excerpt: \lambda_{\rm eff}\approx 0.38
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 153
+  role: notes_stage
+  excerpt: 1-\lambda_{\rm eff}\approx 0.62.
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: 'return mp.quad(lambda t: Sigma_star(t) * func(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: 'return mp.quad(lambda t: Sigma_star(t) * (f(t) - af) * (h(t) - ah), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: 'Z1 = mp.quad(lambda t: sigma1_unnorm(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: 'g1 = mp.quad(lambda t: sigma1(t) * c_kernel(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: 'S1 = mp.quad(lambda t: sigma1(t) * S_q_kernel(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: '# Effective interpolation parameter from Stage 148 affine laws'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: print("lambda_eff^(Pi)   =", lam_Pi)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: print("lambda_eff^(T)    =", lam_T)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: expect_close("lambda_eff^(Pi) scale", float(lam_Pi), 0.380487632771110, tol=1e-6)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: expect_close("lambda_eff^(T) scale", float(lam_T), 0.378939241176339, tol=1e-6)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: 'mp.quad(lambda t: Sigma_star(t)*(1 - (R_star(t)-avg(R_star))) * c_kernel(t), [0,1]) - g_star,'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: print("  broadening toward the uniform family (lambda_eff ≈ 0.38).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

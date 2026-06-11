@@ -1,0 +1,81 @@
+schema_version: 1
+candidate_id: fit_stage_195_p_2
+parameter_name: P_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_p_2__phase_b__p_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_195.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_195.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+    `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+    natural point-particle source-map branch already isolated by the 2.5PN package.**'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 14
+  role: notes_stage
+  excerpt: Stage 193 froze the exact isotropic grouped-real `P2` conservative one-pole carrier
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 38
+  role: notes_stage
+  excerpt: '> once the isotropic grouped-real `P2` branch is already conservative one-pole and the outgoing `l=2` fingerprint
+    has fixed `\chi_Q`, how does the last observable normalization condition factor through the source map?'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 93
+  role: notes_stage
+  excerpt: \boxed{\bar P_2=\frac{\bar P_0}{4\Omega_Q^2},}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{\bar P_2}{\bar P_2^{\rm target}}=N_Q,
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: print("1. The isotropic retarded grouped-P2 one-pole branch carries the exact odd ratio")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_195.tex
+    attempted_sources:
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_195.tex
+    attempted_sources:
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

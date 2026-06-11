@@ -1,0 +1,167 @@
+schema_version: 1
+candidate_id: fit_stage038_delta_fixed_by_eps_eta
+parameter_name: delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage038_delta_fixed_by_eps_eta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 038
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_038.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~037 formulas for \(A\), \(M_{\rm mix}\), \(\delta\), and the selected outgoing normalization
+    target.}
+- path: paper/stages/stage_038.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \delta_0=\frac{\pi^2T_w}{L^2K_\eta^{\rm eff}},
+- path: paper/stages/stage_038.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \delta=\frac{\delta_0}{1-\epsilon_\eta},
+- path: paper/stages/stage_038.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: Thus \((\epsilon_W,\Lambda)\) fix the product scale, \(\epsilon_\eta\) fixes the geometry lane through \(\delta\),
+    and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 20
+  role: notes_stage
+  excerpt: '`delta_0 = pi^2 T_w / ( L^2 K_eta^(eff) ).`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 24
+  role: notes_stage
+  excerpt: '`delta = delta_0 / (1 - eps_eta),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 65
+  role: notes_stage
+  excerpt: '`delta_0 := pi^2 T_w / ( L^2 K_eta^(eff) ),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 87
+  role: notes_stage
+  excerpt: '`delta = delta_0 / (1 - eps_eta),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 101
+  role: notes_stage
+  excerpt: So among the inertial masses only the ratio `mu_W / mu_eta` survives in the conservative-to-outgoing transfer factor,
+    while the geometry coordinate `delta` and the mixed baseline `M_mix` are purely stiffness/coupling ratios.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 115
+  role: notes_stage
+  excerpt: '`R_target M_mix = N_Q^(target) Delta_0 / Omega_U^2.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 135
+  role: notes_stage
+  excerpt: '`d delta / d eps_eta = delta_0 / (1 - eps_eta)^2 > 0,`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 176
+  role: notes_stage
+  excerpt: '`delta = delta_0 / (1 - eps_eta)`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 205
+  role: notes_stage
+  excerpt: '`R_target = F(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 207
+  role: notes_stage
+  excerpt: '`M_mix <= G(xi,delta).`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 213
+  role: notes_stage
+  excerpt: '`delta = delta_0 / (1 - eps_eta),`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 228
+  role: notes_stage
+  excerpt: '> compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat
+    PDE and check whether the resulting point lies inside the exact Stage-035/036 admissible region.'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: delta = sp.simplify(sp.pi**2 * T_w * K_U / (L**2 * (K_U * Keta_eff - c_etaU**2)))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: print(f"delta     = {delta}")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: eps_eta, eps_W, rho, Z_W, delta0, Lambda = sp.symbols(
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '"eps_eta eps_W rho Z_W delta0 Lambda", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: 'T_w: delta0 * L**2 * Keta_eff / sp.pi**2,'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: 'T_w: delta0 * L**2 * Keta_eff / sp.pi**2,'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: delta_dimless = apply_dimless(delta)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: expect_zero("delta - delta0/(1-eps_eta)", delta_dimless - delta0 / (1 - eps_eta))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: print(f"delta(dimless)    = {sp.simplify(delta_dimless)}")
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: Delta0 = sp.symbols("Delta0", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: delta_expr = delta0 / (1 - eps_eta)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: d_delta_deps_eta = sp.simplify(sp.diff(delta_expr, eps_eta))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: expect_zero("d delta / d eps_eta factorization", d_delta_deps_eta - delta0 / (1 - eps_eta) ** 2)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: '# (0 < eps_eta < 1, 0 < eps_W < 1, 1 + rho > 0, Z_W > 0, Lambda > 0, delta0 > 0)'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: '# delta = delta0/(1 - eps_eta), d delta / d eps_eta = + delta0/(1 - eps_eta)^2'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: '"sign(d delta / d eps_eta) - 1",'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: d_delta_deps_eta * (1 - eps_eta)**2 / delta0 - 1,
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: print("  delta increases with eps_eta")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

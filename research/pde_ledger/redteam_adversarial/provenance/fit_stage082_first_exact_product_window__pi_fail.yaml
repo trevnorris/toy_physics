@@ -1,0 +1,96 @@
+schema_version: 1
+candidate_id: fit_stage082_first_exact_product_window
+parameter_name: Pi_fail
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage082_first_exact_product_window__phase_b__pi_fail.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 082
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_082.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: R_{\rm quad}>0\Rightarrow\text{support failure}.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 134
+  role: notes_stage
+  excerpt: '- `R_quad > 0`  ->  the explicit lowest-lane support branch fails.'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 171
+  role: notes_stage
+  excerpt: 'So the reduced PDE already has theorem-level success/failure bounds:'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 174
+  role: notes_stage
+  excerpt: '- if `R_- > 0`, failure is guaranteed;'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 196
+  role: notes_stage
+  excerpt: '`Pi_tr >= Pi_fail(Xi,eta,kappa ; C_mix,eps_blk)`  -> guaranteed failure,'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 202
+  role: notes_stage
+  excerpt: '`Pi_fail := C_mix Q( zeta_+(Xi,eta;kappa) ; eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 204
+  role: notes_stage
+  excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator rather
+    than through the intermediate `Pe_req` bookkeeping.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 210
+  role: notes_stage
+  excerpt: The explicit Family-1 branch now drops out immediately by inserting the fixed geometry/support data
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 2. Exact product thresholds Pi_suff and Pi_fail from lower/upper support ratios.
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: Pi_fail = sp.simplify(Cmix * Q.subs(zeta, zeta_plus))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("\nPi_fail =")
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: sp.pprint(Pi_fail)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: expect_zero("zeta_req(Pi_fail)-zeta_+", zeta_req.subs(Pi_tr, Pi_fail) - zeta_plus)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '"R_quad(Pi_fail, zeta_phys=zeta_+)",'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: 'R_quad.subs({Pi_tr: Pi_fail, zeta_phys: zeta_plus}),'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: '# from stage 075 with alpha_r = 10, paper eq. app-stage075-fail / app-stage075-succeed).'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: print("  Pi_tr >= C_mix Q(zeta_+,eps_blk)  -> guaranteed failure if zeta_phys <= zeta_+")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

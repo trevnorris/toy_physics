@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage_131_pi_theta_sigma_l
+parameter_name: Pi_Theta_sigma_L
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_131_pi_theta_sigma_l__phase_b__pi_theta_sigma_l.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '131'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_131.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Canonical branch is the parent threshold \(T_m-q_*A'_0=\Pi_*\Theta_\sigma/L\).
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 19
+  role: notes_stage
+  excerpt: \Pi_m=\frac{V_1L}{\Theta_\sigma},
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 39
+  role: notes_stage
+  excerpt: \frac{\Pi_*\,\Theta_\sigma}{L}
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 41
+  role: notes_stage
+  excerpt: 1.50882951349316\,\frac{\Theta_\sigma}{L}.
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 64
+  role: notes_stage
+  excerpt: 1.50882951349316\,\frac{\Theta_\sigma}{L}.
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{L}{\Theta_\sigma}\left(T_m-q_*A_0'\right)-\Pi_*.
+- path: notes/stages/moving_throat_pde_stage131_parent_mouth_threshold.md
+  line: 128
+  role: notes_stage
+  excerpt: 1.509\,\Theta_\sigma/L\ ?
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: Theta_sigma, L = sp.symbols("Theta_sigma L", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: V1 = Pi*Theta_sigma/L
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: V1_star = sp.N(Pi_star, 30)*Theta_sigma/L
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: threshold_residual = sp.simplify((Tm - qstar*A0p) - Pi*Theta_sigma/L)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

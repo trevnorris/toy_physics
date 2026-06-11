@@ -1,0 +1,159 @@
+schema_version: 1
+candidate_id: fit_stage178_doubled_slope_factors
+parameter_name: kappa_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage178_doubled_slope_factors__phase_b__kappa_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '178'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 30
+  role: notes_stage
+  excerpt: \sum_r \rho_r^{(N)}\bigl(\nu_r-\kappa_1\bigr)
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 32
+  role: notes_stage
+  excerpt: \bar\nu_N-\kappa_1,
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 37
+  role: notes_stage
+  excerpt: '- \(\kappa_1\) is the weak-axisymmetric wall-baseline slope,'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 70
+  role: notes_stage
+  excerpt: \delta\ln K_A=\epsilon\lambda_A\,\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 123
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,(\nu_r-\kappa_1).
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 136
+  role: notes_stage
+  excerpt: \sum_r \rho_r^{(N)}(\nu_r-\kappa_1).
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 149
+  role: notes_stage
+  excerpt: \bar\nu_N-\kappa_1,
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 158
+  role: notes_stage
+  excerpt: \frac{P_1}{P_0}=\Xi_1=\bar\nu_N-\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 165
+  role: notes_stage
+  excerpt: '- and the wall-baseline slope \(\kappa_1\).'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 261
+  role: notes_stage
+  excerpt: \mathfrak m_r:=\mathfrak g_{W,r}-\mathfrak o_{W,r}-\frac12\kappa_1,
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 291
+  role: notes_stage
+  excerpt: \kappa_1
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 301
+  role: notes_stage
+  excerpt: \sigma_r=\nu_r-\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 312
+  role: notes_stage
+  excerpt: \sum_r \rho_r^{(N)}(\nu_r-\kappa_1)
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 314
+  role: notes_stage
+  excerpt: \bar\nu_N-\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 331
+  role: notes_stage
+  excerpt: \bar\nu_N=\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 341
+  role: notes_stage
+  excerpt: \bar\nu_N=\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 350
+  role: notes_stage
+  excerpt: \nu_r=\kappa_1
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 379
+  role: notes_stage
+  excerpt: \Xi_1\approx \nu_{r_*}-\kappa_1
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 380
+  role: notes_stage
+  excerpt: =2(\mathfrak p_{r_*}-\mathfrak d_{r_*})-\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 399
+  role: notes_stage
+  excerpt: \Xi_1=-\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 443
+  role: notes_stage
+  excerpt: '> of the real moving-throat outgoing ports, and check whether their outgoing-weighted average equals \(\kappa_1\).'
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Exact collapse Xi_1 = sum_r rho_r^(N) (nu_r - kappa_1) = nubar_N - kappa_1.
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: slippage formula sigma_r = nu_r - kappa_1.
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: banner("2. Weighted collapse Xi_1 = nubar_N - kappa_1")
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: nu1, nu2, nu3, kappa1 = sp.symbols('nu1 nu2 nu3 kappa1', real=True)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: Xi = sp.expand(rho1 * (nu1 - kappa1) + rho2 * (nu2 - kappa1) + rho3 * (nu3 - kappa1))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '"Xi_1 - (nubar_N - kappa_1)",'
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Xi.subs(rho3, 1 - rho1 - rho2) - (nu_bar.subs(rho3, 1 - rho1 - rho2) - kappa1),
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: m_r = gW - oW - sp.Rational(1, 2) * kappa1
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: kappa1
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: expect_zero("nu_r - [kappa1 + sigma_r]", nu_direct - nu_expected)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: sigma_r = sp.simplify(nu_expected - kappa1)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: print("Hence Xi_1 = sum_r rho_r^(N) sigma_r = sum_r rho_r^(N)(nu_r-kappa1).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

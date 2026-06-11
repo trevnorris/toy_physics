@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage047_epsilon_support_saturation
+parameter_name: epsilon
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage047_epsilon_support_saturation__phase_b__epsilon.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '047'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_047.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: M_{\rm tr}=M_{\rm mix}S(\zeta;\epsilon),
+- path: paper/stages/stage_047.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: S(\zeta;\epsilon)=1+\frac{\zeta(1-\epsilon)}{1-\epsilon\zeta}}.
+- path: paper/stages/stage_047.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}}.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

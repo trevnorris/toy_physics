@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage_250_t_cross
+parameter_name: t_cross
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_250_t_cross__phase_b__t_cross.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '250'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_250.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section{Stage 250: Crossing-vs-collapse Goldilocks window}'
+- path: paper/stages/stage_250.tex
+  line: 2
+  role: paper_stage_tex
+  excerpt: \label{sec:app-part08:crossing-vs-collapse-goldilocks-window}
+- path: paper/stages/stage_250.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_250.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage250-cross-time}
+- path: paper/stages/stage_250.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: t_{\rm cross}(E)
+- path: paper/stages/stage_250.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}}
+- path: paper/stages/stage_250.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: Within this closure the safe window is one-sided because \(t_{\rm collapse}\) is energy-independent and \(t_{\rm
+    cross}(E)\) decreases monotonically.  Any upper edge requires an additional high-energy failure mechanism outside Stage
+    250.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 250: Crossing-vs-Collapse / Goldilocks-Window Compiler from the Stage-248 Event Chain
+    and the Relaxed Wall-Timescale Closure'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: \text{crossing outruns collapse}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: 'Stage 248 supplied the dynamic crossing branch:'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: 2. the characteristic reduced crossing-time compiler,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: \mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}},
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: '- Stage 248 supplied the dynamic crossing branch, the peak energy \(V_{\rm peak}\), and the turning-point trigger
+    width \(\lambda_{\rm th}\).'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: '- Stage 249 fixed the aligned branch as the preferred hidden-channel export branch for the benchmark dynamic check,
+    but deliberately left the scalar crossing law unchanged.'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 82
+  role: notes_stage
+  excerpt: '- a classical crossing window exists relative to Coulomb,'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 88
+  role: notes_stage
+  excerpt: '- whether a successful crossing event survives its own relaxed dressing-leg drain,'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: Hence the characteristic crossing-time compiler is
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 140
+  role: notes_stage
+  excerpt: t_{\rm cross}(E)
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: \frac{d t_{\rm cross}}{dE}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: \mathcal S(E)=\frac{t_{\rm cross}(E)}{t_{\rm collapse}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: 2. \(t_{\rm cross}(E)\) decreases monotonically with \(E\),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: Therefore once \(E\) crosses the lower edge, the reduced timescale inequality stays satisfied for all larger energies
+    on the same branch.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: '### 4.2 Crossing-time compiler in speed form'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 302
+  role: notes_stage
+  excerpt: so the characteristic crossing time can be written exactly as
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 305
+  role: notes_stage
+  excerpt: t_{\rm cross}(v_0)
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 500
+  role: notes_stage
+  excerpt: '### 7.6 Dynamic cross-check with actual aligned trajectories'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 576
+  role: notes_stage
+  excerpt: T_{\rm traj}\quad\leadsto\quad t_{\rm cross},
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 607
+  role: notes_stage
+  excerpt: t_{\rm cross}(E)\downarrow,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 626
+  role: notes_stage
+  excerpt: '- Stage 248 gave the dynamic crossing branch,'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 638
+  role: notes_stage
+  excerpt: 2. The characteristic crossing-time compiler from the active width \(\lambda_{\rm eff}\).
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 4
+  role: sympy_script
+  excerpt: SymPy audit for the crossing-vs-collapse / Goldilocks-window compiler built on
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. the characteristic crossing-time compiler,
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '# 2. Characteristic crossing-time compiler.'
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: section("2. Characteristic crossing-time compiler")
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: tcross = sp.simplify(lam_eff / vbar)
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: dtcross_dE = sp.simplify(sp.diff(tcross, E))
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("t_cross(E)            =", tcross)
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("dt_cross/dE           =", dtcross_dE)
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: dtcross_dE_gap = sp.simplify(dtcross_dE.subs(E, Vpeak + x))
+- path: scripts/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: print("dt_cross/dE (x=E-Vpeak) =", dtcross_dE_gap)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,76 @@
+schema_version: 1
+candidate_id: fit_stage_002_gamma_ab
+parameter_name: Gamma_AB
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_002_gamma_ab__phase_b__gamma_ab.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '002'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_002.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: On the axisymmetric branch, the angular-stiffness term vanishes because \(l=0\).  In the densitized one-dimensional
+    convention inherited from Stage~001, the background surface weight has already been absorbed into the effective axial
+    coefficients and profiles, so the reduction is written with respect to \(dw\) rather than \(\sqrt{\gamma_0}\,dw\).  The
+    action therefore reduces to a Lagrangian
+- path: paper/stages/stage_002.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: M_{AB}\ddot Q^B+\Gamma_{AB}\dot Q^B=-\frac{\partial H_{\rm tot}}{\partial Q^A}
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 4
+  role: notes_stage
+  excerpt: This note is the first continuation after the Phase-1 scaffold and the finite-throat D/N benchmark.
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 65
+  role: notes_stage
+  excerpt: '`sqrt(gamma_0)` factor.'
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 108
+  role: notes_stage
+  excerpt: M_{AB}\,\ddot Q^B+\Gamma_{AB}\,\dot Q^B=-\frac{\partial H_{\rm tot}}{\partial Q^A}.
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 112
+  role: notes_stage
+  excerpt: '- any damping matrix `Gamma_AB` is an effective/open-system completion that would enter after coupling to matter/gauge/exterior
+    channels.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+    source_queries:
+    - notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+    - paper/stages/stage_002.tex
+    - research/pde_ledger/paper/stages/stage_002.tex
+    nodes:
+    - id: EQ_WALL_P2_STIFFNESS
+      label: Grouped P2 stiffness gate
+      layer: equation_anchor
+      type: equation
+      status: effective_linear_wall_closure
+      meaning: Shows grouped real P2 is next harmonic family of the wall action.
+      expression: K_2 = ∫dw [T_w β_2′² + (K_η+6T_Ω)β_2²]
+      sources:
+      - notes/pde_audit_full.md
+      - research/pde_ledger/paper/stages/stage_002.tex
+      parent_node: PHYS_GROUPED_P2_SHAPE_RESPONSE
+      legacy_sources:
+      - pde_audit_full.md
+      - moving_throat_pde_stage002_breathing_reduction.md
+  graph_gaps: []
+provenance_findings: []

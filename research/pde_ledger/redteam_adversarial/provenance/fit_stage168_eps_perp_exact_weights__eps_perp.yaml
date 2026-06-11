@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage168_eps_perp_exact_weights
+parameter_name: eps_perp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage168_eps_perp_exact_weights__phase_b__eps_perp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '168'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 35
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 78
+  role: notes_stage
+  excerpt: \delta_\perp=0.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 81
+  role: notes_stage
+  excerpt: So any nonzero first-order \(\delta_\perp\) must come from **violations** of the lower-branch transport laws themselves.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 90
+  role: notes_stage
+  excerpt: \varepsilon_L
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 97
+  role: notes_stage
+  excerpt: \varepsilon_v
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 111
+  role: notes_stage
+  excerpt: \varepsilon_T
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 126
+  role: notes_stage
+  excerpt: '- \(\varepsilon_L\) measures departure from the exact lower-branch D/N geometric similarity law \(L_W\propto a\);'
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 127
+  role: notes_stage
+  excerpt: '- \(\varepsilon_v\) measures slippage of the mixed background flow away from its exact lower-branch transport
+    law;'
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 128
+  role: notes_stage
+  excerpt: '- \(\varepsilon_T\) measures slippage of the mouth traction away from its exact lower-branch transport law.'
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 138
+  role: notes_stage
+  excerpt: \delta\ln L_W=\delta\ln a+\varepsilon_L,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 144
+  role: notes_stage
+  excerpt: +\varepsilon_v,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 149
+  role: notes_stage
+  excerpt: +\varepsilon_T,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 154
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 156
+  role: notes_stage
+  excerpt: -\mathfrak g_*\,\varepsilon_T
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 157
+  role: notes_stage
+  excerpt: -\left(\mathfrak g_*+\frac{1}{2\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_v
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 158
+  role: notes_stage
+  excerpt: -\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_L.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 167
+  role: notes_stage
+  excerpt: \varepsilon_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 169
+  role: notes_stage
+  excerpt: \mathfrak g_*\,\varepsilon_T
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 170
+  role: notes_stage
+  excerpt: +\left(\mathfrak g_*+\frac{1}{2\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_v
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 171
+  role: notes_stage
+  excerpt: +\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\varepsilon_L.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 177
+  role: notes_stage
+  excerpt: \delta_\perp=-\varepsilon_\perp.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 184
+  role: notes_stage
+  excerpt: '> it is one scalar normal-slippage combination \(\varepsilon_\perp\).'
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 200
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 202
+  role: notes_stage
+  excerpt: -0.758035078944663\,\varepsilon_T
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 203
+  role: notes_stage
+  excerpt: -1.00314310113848\,\varepsilon_v
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 204
+  role: notes_stage
+  excerpt: -1.88373219118005\,\varepsilon_L.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 222
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_*^2}}\,\delta_\perp,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 232
+  role: notes_stage
+  excerpt: So using \(\delta_\perp=-\varepsilon_\perp\),
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 240
+  role: notes_stage
+  excerpt: \varepsilon_\perp.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 261
+  role: notes_stage
+  excerpt: 1.52843317823248\,\varepsilon_\perp.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 273
+  role: notes_stage
+  excerpt: 1.15860596492310\,\varepsilon_T
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 275
+  role: notes_stage
+  excerpt: 1.53323719829507\,\varepsilon_v
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 277
+  role: notes_stage
+  excerpt: 2.87915877990416\,\varepsilon_L.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 280
+  role: notes_stage
+  excerpt: So the same scalar off-bundle combination \(\varepsilon_\perp\) that drives the normal family defect also drives
+    the non-tangential mouth-bias defect.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 290
+  role: notes_stage
+  excerpt: \frac{16\sigma_*}{\sqrt{1+\mathfrak r_*^2}}\,\delta_\perp,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 297
+  role: notes_stage
+  excerpt: \frac{16}{\sqrt{1+\mathfrak r_*^2}}\delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 307
+  role: notes_stage
+  excerpt: \frac{80}{\sqrt{1+\mathfrak r_*^2}}\delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 317
+  role: notes_stage
+  excerpt: \frac{16}{\sqrt{1+\mathfrak r_*^2}}\delta_\perp
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 323
+  role: notes_stage
+  excerpt: Using \(\delta_\perp=-\varepsilon_\perp\), these become
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 328
+  role: notes_stage
+  excerpt: -\frac{16\sigma_*}{\sqrt{1+\mathfrak r_*^2}}\,\varepsilon_\perp,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

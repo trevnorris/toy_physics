@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage115_gq_exact_two_branch_law
+parameter_name: g_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage115_gq_exact_two_branch_law__phase_b__g_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '115'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_115.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Coupling balance \(g_s^2(K_sK_q+\lambda^2)=4(K_sg_q-\lambda g_s)^2\) realizes the compensated branch.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 6
+  role: notes_stage
+  excerpt: Determine when the concrete two-channel core model of Stage 114 lands exactly on the nontrivial compensated canonical
+    branch found algebraically in Stage 112.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 16
+  role: notes_stage
+  excerpt: which is exactly the branch that preserves the canonical outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 36
+  role: notes_stage
+  excerpt: \frac{(K_s g_q-\lambda g_s)^2}
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 46
+  role: notes_stage
+  excerpt: 4\bigl(K_s g_q-\lambda g_s\bigr)^2.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 52
+  role: notes_stage
+  excerpt: g_q=
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 60
+  role: notes_stage
+  excerpt: So the required Robin–mixed balance is not a mystery coefficient fit. It is an explicit codimension-one surface
+    in the concrete core-coupling space.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 92
+  role: notes_stage
+  excerpt: 'gives a normalized response with exactly the same outgoing fingerprint:'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: g_s, g_q = sp.symbols("g_s g_q", real=True)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: sigma_c = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q * (1 + r_c))
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: gq_solutions = sp.solve(sp.Eq(balance_eq, 0), g_q)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: print("\nExact coupling-balance solutions for g_q:")
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: 'for sol in gq_solutions:'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: gq_branch = sp.simplify(gq_solutions[0])
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: sigma_c.subs(g_q, gq_branch) - sigma_star,
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: 'g_q: gq_branch,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

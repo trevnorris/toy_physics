@@ -1,0 +1,152 @@
+schema_version: 1
+candidate_id: fit_stage_126_mathfrak
+parameter_name: mathfrak
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_126_mathfrak__phase_b__mathfrak.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '126'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_126.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+- path: paper/stages/stage_126.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 6
+  role: notes_stage
+  excerpt: Evaluate explicit positive localized source laws and determine whether the physical lower compensated branch can
+    be reached without exotic sign-changing mouth profiles.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 8
+  role: notes_stage
+  excerpt: '## 1. Self-matched derivative profile'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 25
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm match}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 36
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm match}=\frac{\pi}{4}\approx 0.785398163397448.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 40
+  role: notes_stage
+  excerpt: This already lies much closer to the physical lower compensated branch than the naive point-source value \(\mathfrak
+    g=1\).
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 46
+  role: notes_stage
+  excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 48
+  role: notes_stage
+  excerpt: Therefore the self-matched source overshoots the exact compensated lower branch by
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 50
+  role: notes_stage
+  excerpt: \Delta\mathfrak g_{\rm match}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 52
+  role: notes_stage
+  excerpt: \frac{\pi}{4}-\mathfrak g_-^{F1}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 56
+  role: notes_stage
+  excerpt: Since traction scales as \(\mathfrak g^{-1}\),
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 61
+  role: notes_stage
+  excerpt: \frac{\pi/4}{\mathfrak g_-^{F1}}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 65
+  role: notes_stage
+  excerpt: So the exact Family-1 compensated branch is only a **3.61% traction enhancement** away from the self-matched derivative
+    profile.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 80
+  role: notes_stage
+  excerpt: \mathfrak g_\xi
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 87
+  role: notes_stage
+  excerpt: \frac{2}{\pi}<\mathfrak g_-^{F1}<\frac{\pi}{4},
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 91
+  role: notes_stage
+  excerpt: \mathfrak g_{\xi_*}=\mathfrak g_-^{F1}.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 98
+  role: notes_stage
+  excerpt: \frac{\frac{\pi}{4}-\mathfrak g_-^{F1}}{\frac{\pi}{4}-\frac{2}{\pi}}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 105
+  role: notes_stage
+  excerpt: So only an **18.4% admixture** of the fully washed positive profile \(1/L\) into the self-matched derivative profile
+    reaches the exact lower compensated branch.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 111
+  role: notes_stage
+  excerpt: '- the point-source branch \(\mathfrak g=1\) is too high,'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 112
+  role: notes_stage
+  excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 115
+  role: notes_stage
+  excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of
+    positive localized mouth sources.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_126.tex
+    attempted_sources:
+    - paper/stages/stage_126.tex
+    - research/pde_ledger/paper/stages/stage_126.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    - paper/stages/stage_126.tex
+    - research/pde_ledger/paper/stages/stage_126.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_126.tex
+    attempted_sources:
+    - paper/stages/stage_126.tex
+    - research/pde_ledger/paper/stages/stage_126.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage126_positive_source_families.md
+    - paper/stages/stage_126.tex
+    - research/pde_ledger/paper/stages/stage_126.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

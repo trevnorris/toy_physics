@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage139_gains_land_exactly_on_canonical
+parameter_name: M_q_comp_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage139_gains_land_exactly_on_canonical__phase_b__m_q_comp_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '139'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_139.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection}
+    block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive
+    equal-normalized limit.}
+- path: paper/stages/stage_139.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Natural and exact-compensated gain pairs are evaluated on the Family--1 branch.
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 9
+  role: notes_stage
+  excerpt: '> once the geometric core branch is fixed, what mouth gains does the actual throat-core'
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 10
+  role: notes_stage
+  excerpt: '> ask for at the canonical compensation point `\Pi_*`?'
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 68
+  role: notes_stage
+  excerpt: So the actual Family-1 mouth gains selected at the canonical compensation point are
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 91
+  role: notes_stage
+  excerpt: '## 3. Exact compensated branch'
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 93
+  role: notes_stage
+  excerpt: On the exact compensated family,
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 106
+  role: notes_stage
+  excerpt: M_s^{\rm comp,*}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 115
+  role: notes_stage
+  excerpt: M_q^{\rm comp,*}=-\frac{M_s^{\rm comp,*}}{4}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 124
+  role: notes_stage
+  excerpt: '## 4. Quantitative comparison'
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 128
+  role: notes_stage
+  excerpt: \frac{M_s^{\rm comp,*}}{M_s^{\rm nat,*}}-1
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 131
+  role: notes_stage
+  excerpt: \frac{|M_q^{\rm comp,*}|}{|M_q^{\rm nat,*}|}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 136
+  role: notes_stage
+  excerpt: by about a factor `1.86` to land exactly on the canonical compensated branch.
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 139
+  role: notes_stage
+  excerpt: much closer to the lower compensated branch than to the forbidden upper one.
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 153
+  role: notes_stage
+  excerpt: '- exact compensated canonical branch:'
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 161
+  role: notes_stage
+  excerpt: mouth core stays on the natural branch or shifts modestly toward the lower compensated one.
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: Pi_star = sp.N('1.50882951349316', 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: Sq_star = sp.N('0.658075937605429', 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: Ms_nat = sp.N(Pi_star / (1 - Rq_nat * Sq_star), 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: '# g_- is the LOWER compensated branch g_c = rF - (1/2) sqrt(1 + rF^2) (notes stage139 lines'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: '# 91-100). R_q^comp = 1/4 is DEFINITIONAL on this branch (true for any rF) AND branch-blind'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: '# branch, below) and the natural-branch R_q^nat != 1/4 (line 41), NOT R_q^comp = 1/4.'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: Rq_comp = sp.N((g_minus - rF)**2 / (1 + rF**2), 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: Ms_comp = sp.N(Pi_star / (1 - Rq_comp * Sq_star), 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: Mq_comp = sp.N(-Rq_comp * Ms_comp, 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: print('S_q(Pi_*) =', Sq_star)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: print('R_q^comp =', Rq_comp)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: print('M_s^comp,* =', Ms_comp)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: print('M_q^comp,* =', Mq_comp)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: print('shell gain fractional shift =', sp.N(Ms_comp/Ms_nat - 1, 20))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: print('mixed gain magnitude ratio =', sp.N(abs(Mq_comp)/abs(Mq_nat), 20))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: '# This DISCRIMINATES the lower compensated branch (g_- ~ 0.758) from the upper (g_+ ~ 2.79),'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: '# Compensated-branch mouth gains vs notes literals'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: assert abs(Ms_comp - sp.Float('1.80594111095636', 20)) < tol_literal, (Ms_comp,)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: assert abs(Mq_comp - sp.Float('-0.451485277739090', 20)) < tol_literal, (Mq_comp,)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '# confirm it equals the imported Stage 134 literal Sq_star. This exercises the'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: S_kernel = (Pi_star * (kappa_q*sp.tanh(kappa_q)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: + Pi_star*(sp.exp(-Pi_star)/sp.cosh(kappa_q) - 1))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: / ((1 - sp.exp(-Pi_star)) * (kappa_q**2 - Pi_star**2)))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: assert abs(Sq_recon - Sq_star) < tol_literal, (Sq_recon, Sq_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

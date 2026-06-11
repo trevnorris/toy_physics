@@ -1,0 +1,131 @@
+schema_version: 1
+candidate_id: fit_stage_032_mhat_sq
+parameter_name: mhat_sq
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_032_mhat_sq__phase_b__mhat_sq.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '032'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_032.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage032-mhat-minus}
+- path: paper/stages/stage_032.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage032-mhat-bound}
+- path: paper/stages/stage_032.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: Combining \(P_{0,-}=\beta_0s_-/\lambda_-\) with \eqref{eq:app-stage032-mhat-minus} gives
+- path: paper/stages/stage_032.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~032 outputs the source-map factor \eqref{eq:app-stage032-mhat-minus}, the bound \eqref{eq:app-stage032-mhat-bound},
+    and the invariant selected product \eqref{eq:app-stage032-Nminus}.}
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 7
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-}`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 9
+  role: notes_stage
+  excerpt: but the source-map factor `mhat_-` was still being carried as an abstract branch datum.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 14
+  role: notes_stage
+  excerpt: '> in the first explicit finite-throat axial source model, does the same D/N overlap structure that generates the
+    mixed-sector loading also determine the selected source map, so that `mhat_-` stops being an independent parameter?'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 23
+  role: notes_stage
+  excerpt: '`mhat_- = (v.e_-)/kappa_0`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 27
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 34
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-} = beta_0 s_-^2 / (kappa_0^2 lambda_-)`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 41
+  role: notes_stage
+  excerpt: '`1 <= mhat_-^2 < 11/9`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 201
+  role: notes_stage
+  excerpt: '`mhat_- = J_-(alpha_0) / J_-(0) = (v.e_-) / kappa_0`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 205
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 207
+  role: notes_stage
+  excerpt: So on the natural D/N source branch the abstract factor `mhat_-` is gone.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 220
+  role: notes_stage
+  excerpt: '`1 <= mhat_-^2 < sigma / kappa_0^2 = 11/9`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 224
+  role: notes_stage
+  excerpt: '`1 <= mhat_-^2 < 11/9`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 228
+  role: notes_stage
+  excerpt: '`1 <= mhat_- < sqrt(11/9)`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 240
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-}`'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 248
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-} = beta_0 s_-^2 / ( kappa_0^2 lambda_- )`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 254
+  role: notes_stage
+  excerpt: This is sharper than the Stage-030 formulation because there is no longer an independent `mhat_-` datum on the
+    natural D/N source branch.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 273
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`.'
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: mhat_sq = sp.simplify(s_minus_nat / kappa0**2)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: print("mhat_-^2 =", mhat_sq)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 195
+  role: sympy_script
+  excerpt: expect_zero("mhat_-^2(alpha=0) - 1", sp.simplify(mhat_sq.subs(alpha0, 0) - 1))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: expect_zero("limit_{alpha->oo} mhat_-^2 - 11/9", sp.simplify(sp.limit(mhat_sq, alpha0, sp.oo) - sp.Rational(11,
+    9)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

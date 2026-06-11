@@ -1,0 +1,128 @@
+schema_version: 1
+candidate_id: fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9
+parameter_name: sigma
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_sigma_88_9pi2_and_mhat_limit_11_9__phase_b__sigma.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '032'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_032.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: Since \(s_-\) increases from \(\kappa_0^2\) toward \(\sigma=\kappa_0^2+\kappa_1^2\),
+- path: paper/stages/stage_032.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: 1\leq\widehat m_-^{\,2}<\frac{\sigma}{\kappa_0^2}=\frac{11}{9}}.
+- path: paper/stages/stage_032.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \item The upper bound \(11/9\) follows from \(\sigma/\kappa_0^2=(\kappa_0^2+\kappa_1^2)/\kappa_0^2=1+2/9\).
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 75
+  role: notes_stage
+  excerpt: '`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 83
+  role: notes_stage
+  excerpt: '`sigma / kappa_0^2 = 11 / 9`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 146
+  role: notes_stage
+  excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 156
+  role: notes_stage
+  excerpt: '`Delta_UW(omega) = A_U(omega) A_W(omega) - g_R^2 sigma`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 163
+  role: notes_stage
+  excerpt: '`Delta_0 = Omega_U^2 Omega_W^2 - g_R^2 sigma`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 216
+  role: notes_stage
+  excerpt: '`kappa_0^2 <= s_- < sigma`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 220
+  role: notes_stage
+  excerpt: '`1 <= mhat_-^2 < sigma / kappa_0^2 = 11/9`.'
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("sigma =", sp.simplify(kappa0**2 + kappa1**2))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("sigma/kappa0^2 =", sp.simplify((kappa0**2 + kappa1**2) / kappa0**2))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: expect_zero("sigma - 88/(9 pi^2)", kappa0**2 + kappa1**2 - sp.Rational(88, 9) / sp.pi**2)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: expect_zero("sigma/kappa0^2 - 11/9", (kappa0**2 + kappa1**2) / kappa0**2 - sp.Rational(11, 9))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: Sigma = sp.simplify(Bmat * Kint.inv() * Bmat.T)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: sigma = sp.simplify((v.T * v)[0])
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: alpha = sp.simplify(gB**2 / Aphi + (AU * gW + gR * gU)**2 / (AU * (AU * AW - gR**2 * sigma)))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: Sigma_target = sp.simplify(Xi * I2 + alpha * (v * v.T))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: print("Sigma =")
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: sp.pprint(Sigma)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: expect_zero("Sigma - [Xi I + alpha vv^T]", Sigma - Sigma_target)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: sigma_sym = sp.symbols("sigma", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: lambda_minus = sp.simplify((A + B - alpha0 * sigma_sym - R) / 2)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: s_minus = sp.simplify(sp.Rational(1, 2) * (sigma_sym + ((DK + alpha0 * delta_kappa) * delta_kappa + 4 * alpha0
+    * Kprod) / R))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: 'sigma_sym: kappa0**2 + kappa1**2,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

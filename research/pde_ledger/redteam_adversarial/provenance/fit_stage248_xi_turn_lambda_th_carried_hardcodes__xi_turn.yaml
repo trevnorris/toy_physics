@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage248_xi_turn_lambda_th_carried_hardcodes
+parameter_name: Xi_turn
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_xi_turn_lambda_th_carried_hardcodes__phase_b__xi_turn.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '248'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_248.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl}.}'
+- path: paper/stages/stage_248.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: For subbarrier energy \(V(r_0)<E<V_{\rm peak}\), turning points solve
+- path: paper/stages/stage_248.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage248-turning-points}
+- path: paper/stages/stage_248.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage248-turning-transport}
+- path: paper/stages/stage_248.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: The WKB action and transmission ratio are \cref{eq:app-part08-main-wkb-action,eq:app-part08-main-transmission-ratio}.  The
+    pure-Coulomb outer turning point is exact,
+- path: paper/stages/stage_248.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage248-coul-turn}
+- path: paper/stages/stage_248.tex
+  line: 49
+  role: paper_stage_tex
+  excerpt: r_{\rm turn,Coul}(E)=\frac1E,
+- path: paper/stages/stage_248.tex
+  line: 85
+  role: paper_stage_tex
+  excerpt: \Xi_{\rm turn}(E)=\Xi_1(r_+(E)),
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 248: Dynamic Event-Chain Compiler from the Relaxed Stationary Barrier Front End, Turning
+    Points, Threshold Speed, and WKB'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: 3. the standard turning-point / WKB reduction for a smooth single-peak barrier,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: 'What was still missing was the **dynamic event chain** that turns that stationary front end into the objects actually
+    used by the Session-II scattering test:'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 3. the subbarrier turning points,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: 5. the dynamic turning-point diagnostics carried by the same lowered branch,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 47
+  role: notes_stage
+  excerpt: 6. and the exact window condition that says when the lowered branch reaches contact while the pure Coulomb reference
+    still turns back.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: '- `scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py`'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: '- `mathematica/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_mathematica_audit.wl`'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 82
+  role: notes_stage
+  excerpt: '- “the outer turning point moves inward,”'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: '- and “the turning-point branch carries a definite dynamic gradient trigger.”'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 192
+  role: notes_stage
+  excerpt: So the lowered branch reaches the contact scale while the pure Coulomb branch still turns back outside it.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: '## 3. Turning-point compiler and subbarrier WKB event chain'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: '### 3.1 Turning points'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 207
+  role: notes_stage
+  excerpt: The classically forbidden interval is bounded by the turning points
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 217
+  role: notes_stage
+  excerpt: Here \(r_+(E)\) is the outer turning point and \(r_-(E)\) is the inner turning point.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 219
+  role: notes_stage
+  excerpt: Differentiating the turning-point equation gives the exact transport law
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 227
+  role: notes_stage
+  excerpt: '- \(V''(r_+(E))<0\), hence \(dr_+/dE<0\): the outer turning point moves inward as energy rises;'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: '- \(V''(r_-(E))>0\), hence \(dr_-/dE>0\): the inner turning point moves outward as energy rises.'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 262
+  role: notes_stage
+  excerpt: Differentiating under the integral sign and using the vanishing boundary terms at the turning points gives
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 281
+  role: notes_stage
+  excerpt: 'the outer turning point is exact:'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 284
+  role: notes_stage
+  excerpt: r_{\rm turn,Coul}(E)=\frac1E.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 339
+  role: notes_stage
+  excerpt: Then the turning points are
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 366
+  role: notes_stage
+  excerpt: '## 5. Dynamic turning-point diagnostics carried forward'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 368
+  role: notes_stage
+  excerpt: Even before the magnetic/helicity branch is added, the turning-point event chain naturally carries two reduced
+    diagnostics that are useful later.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: '### 5.1 Dynamic barrier scalar at the outer turning point'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 375
+  role: notes_stage
+  excerpt: \Xi_{\rm turn}(E):=\Xi_1\bigl(r_+(E)\bigr).
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 386
+  role: notes_stage
+  excerpt: Solving the threshold condition \(\chi_\lambda=1\) at the outer turning point gives
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: So the same turning-point event chain also determines the first dynamic confinement-width trigger.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 428
+  role: notes_stage
+  excerpt: r_{\rm turn,new}=0.39096144,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 434
+  role: notes_stage
+  excerpt: with the additional turning-point diagnostics
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: \Xi_{\rm turn}=0.34437471,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: '### 6.2 Subbarrier launch speed and Coulomb turning point'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

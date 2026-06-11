@@ -1,0 +1,195 @@
+schema_version: 1
+candidate_id: fit_stage030_lambda_req_target_ratio
+parameter_name: lambda_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage030_lambda_req_target_ratio__phase_b__lambda_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '030'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_030.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the static selected matrix from Stage~029, the lower eigenvalue \(\lambda_-\),
+    the selected eigenvector \(e_-\), and the overlap \(s_-=(v\cdot e_-)^2\).}
+- path: paper/stages/stage_030.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage030-lambda-minus}
+- path: paper/stages/stage_030.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \lambda_-=\frac{A+B-\alpha_0\sigma-
+- path: paper/stages/stage_030.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: R_\lambda=\sqrt{(\Delta K_{\rm ax}+\alpha_0\delta_\kappa)^2+4\alpha_0^2\Pi_\kappa}.
+- path: paper/stages/stage_030.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \sigma+\frac{(\Delta K_{\rm ax}+\alpha_0\delta_\kappa)\delta_\kappa+4\alpha_0\Pi_\kappa}{R_\lambda}
+- path: paper/stages/stage_030.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: s_-=-\frac{d\lambda_-}{d\alpha_0}}.
+- path: paper/stages/stage_030.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: D_{-0}=\lambda_-.
+- path: paper/stages/stage_030.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: \Gamma_{5,-}=\frac{a^5}{27c_s^5}\frac{\beta_0s_-}{\lambda_-}.
+- path: paper/stages/stage_030.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: P_{0,-}=\frac{\beta_0s_-}{\lambda_-}
+- path: paper/stages/stage_030.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: =-\beta_0\frac{d\ln\lambda_-}{d\alpha_0}}.
+- path: paper/stages/stage_030.tex
+  line: 98
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~030 outputs the lower eigenvalue \eqref{eq:app-stage030-lambda-minus}, the selected overlap
+    \eqref{eq:app-stage030-s-minus}, the Hellmann--Feynman identity \eqref{eq:app-stage030-HF}, the selected prefactor \eqref{eq:app-stage030-P0minus},
+    and the target \eqref{eq:app-stage030-selected-target}.}
+- path: paper/stages/stage_030.tex
+  line: 101
+  role: paper_stage_tex
+  excerpt: \item Differentiating the eigenvalue with respect to \(\alpha_0\) gives \(d\lambda_-/d\alpha_0=-e_-^Tvv^Te_-=-s_-\).
+- path: paper/stages/stage_030.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: \item Normalizing \(D_-/D_{-0}\) gives the response coefficients as quotients by \(\lambda_-\).
+- path: paper/stages/stage_030.tex
+  line: 103
+  role: paper_stage_tex
+  excerpt: \item The outgoing coefficient contains only \(\beta_0s_-/\lambda_-\), matching the selected projection of Stage~029.
+- path: paper/stages/stage_030.tex
+  line: 106
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~031 proves that \(P_{0,-}\) is monotone on the stable branch.  Stage~032 replaces
+    the abstract \(\widehat m_-\) by the natural D/N source-map factor.  Stage~034 uses \(\lambda_-\) and \(s_-\) to build
+    the softening-depth normal form.}
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 18
+  role: notes_stage
+  excerpt: If the conservative selected lower wall eigenvalue is written as `lambda_-(omega)`, then the normalized selected-mode
+    response has the low-frequency form
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 28
+  role: notes_stage
+  excerpt: '`P_{0,-} = beta_0 (v.e_-)^2 / lambda_-(0)`'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 32
+  role: notes_stage
+  excerpt: '`P_{0,-} = - beta_0 d(ln lambda_-)/d alpha_0`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 61
+  role: notes_stage
+  excerpt: '`lambda_-`'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 70
+  role: notes_stage
+  excerpt: '`lambda_+ = ( A + B - alpha_0 sigma + R ) / 2`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 74
+  role: notes_stage
+  excerpt: '`D_{-0} = lambda_-`'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 76
+  role: notes_stage
+  excerpt: is the selected conservative wall stiffness at zero frequency.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 84
+  role: notes_stage
+  excerpt: '`(v.e_-)^2 = - d lambda_- / d alpha_0`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 109
+  role: notes_stage
+  excerpt: Write the selected wall operator in the same low-frequency form used in Stage 022,
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 132
+  role: notes_stage
+  excerpt: '`           = beta_5 s_- / lambda_-`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 152
+  role: notes_stage
+  excerpt: '`P_{0,-} = beta_0 s_- / lambda_-`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 158
+  role: notes_stage
+  excerpt: '`P_{0,-} = - beta_0 d(ln lambda_-)/d alpha_0`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 183
+  role: notes_stage
+  excerpt: So the selected branch is required to hit exactly the same normalization stack as the isotropic Stage-022/025 branch,
+    but now with the selected-mode prefactor in place of the old isotropic lane prefactor.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 187
+  role: notes_stage
+  excerpt: '`lambda_- = mhat_-^2 beta_0 s_- / N_Q^(target)`,'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 199
+  role: notes_stage
+  excerpt: '`lambda_- = beta_0 s_- * 5 a^5 c^5 / (54 G c_s^5)`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 211
+  role: notes_stage
+  excerpt: '`lambda_- lambda_+ = A B - alpha_0 ( B kappa_0^2 + A kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 220
+  role: notes_stage
+  excerpt: If `lambda_-` is too large, the selected outgoing coefficient is too small.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 221
+  role: notes_stage
+  excerpt: If `lambda_-` is too small, the branch is close to instability.
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 225
+  role: notes_stage
+  excerpt: '> what conservative selected eigenvalue `lambda_-` and selected overlap `s_-` does the physical moving-throat
+    branch produce, and does their ratio land on the universal target before the wall mode softens?'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 236
+  role: notes_stage
+  excerpt: '`P_{0,-} = beta_0 (v.e_-)^2 / lambda_-`'
+- path: notes/stages/moving_throat_pde_stage030_selected_mode_normalization.md
+  line: 240
+  role: notes_stage
+  excerpt: '`P_{0,-} = - beta_0 d(ln lambda_-)/d alpha_0`.'
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 3. Exact Hellmann–Feynman selected overlap s_- = -(d lambda_- / d alpha).
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: print("lambda_- =")
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: print("lambda_+ =")
+- path: scripts/moving_throat_pde_stage030_selected_mode_normalization_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: '"P0_sel + beta0*d(log lambda_-)/d alpha",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

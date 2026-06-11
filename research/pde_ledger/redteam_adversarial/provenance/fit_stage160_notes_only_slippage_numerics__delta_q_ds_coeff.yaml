@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage160_notes_only_slippage_numerics
+parameter_name: Delta_Q_dS_coeff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage160_notes_only_slippage_numerics__phase_b__delta_q_ds_coeff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '160'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_160.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_160.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \(\delta\gamma_W=(\delta\gamma_0-\delta\kappa_0/3)/(1+\mathfrak r_{F1}^2)\).
+- path: paper/stages/stage_160.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 8
+  role: notes_stage
+  excerpt: \Delta_Q
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 10
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 18
+  role: notes_stage
+  excerpt: '> actually controls `\delta\gamma_W` under a tangential co-evolving mouth'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 24
+  role: notes_stage
+  excerpt: two-channel core model, the effective odd defect `\delta\gamma_W` is controlled
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 27
+  role: notes_stage
+  excerpt: \delta\mathfrak B_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 29
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 35
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 37
+  role: notes_stage
+  excerpt: \frac{\delta\mathfrak B_W}{1+r_{c,*}}
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 39
+  role: notes_stage
+  excerpt: \frac{\delta\mathfrak B_W}{1+\mathfrak r_{F1}^2}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 50
+  role: notes_stage
+  excerpt: \delta\mathfrak B_W=0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 52
+  role: notes_stage
+  excerpt: \delta\gamma_W=0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 54
+  role: notes_stage
+  excerpt: \Delta_Q=0
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 64
+  role: notes_stage
+  excerpt: Stage 114 gave the concrete core-level outlet coefficients
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 88
+  role: notes_stage
+  excerpt: r_c=r_{c,*}+\delta r_c,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 90
+  role: notes_stage
+  excerpt: \kappa_0=\frac{1+r_{c,*}}{3}+\delta\kappa_0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 92
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_{c,*}}{9}+\delta\gamma_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 97
+  role: notes_stage
+  excerpt: \delta\kappa_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 99
+  role: notes_stage
+  excerpt: \frac{\delta\kappa_0}{1+r_{c,*}}
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 101
+  role: notes_stage
+  excerpt: \frac{\kappa_{0,*}}{(1+r_{c,*})^2}\,\delta r_c,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 104
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 106
+  role: notes_stage
+  excerpt: \frac{\delta\gamma_0}{1+r_{c,*}}
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{\gamma_{0,*}}{(1+r_{c,*})^2}\,\delta r_c.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 120
+  role: notes_stage
+  excerpt: \delta\gamma_W-\frac13\,\delta\kappa_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 124
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 131
+  role: notes_stage
+  excerpt: The dependence on `\delta r_c` cancels identically.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 142
+  role: notes_stage
+  excerpt: \delta\kappa_W=0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 144
+  role: notes_stage
+  excerpt: \delta\mathfrak g=0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 150
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 154
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 168
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 170
+  role: notes_stage
+  excerpt: \frac{\delta\mathfrak B_W}{1+\mathfrak r_{F1}^2},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 172
+  role: notes_stage
+  excerpt: \delta\mathfrak B_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 174
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 185
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 187
+  role: notes_stage
+  excerpt: 0.240311770175051\,\delta\mathfrak B_W.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 194
+  role: notes_stage
+  excerpt: \delta\mathfrak B_W.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 204
+  role: notes_stage
+  excerpt: At first order, pure-scale preservation means that the bare even and odd coefficients
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_211_l_r
+parameter_name: L_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_211_l_r__phase_b__l_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '211'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: Lr = sp.simplify((1 + r**2 + s**2) * sp.diff(Delta, r) - 2 * r * Delta)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: Nr = sp.simplify(2 * Mr * sqrtDelta + Lr)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("L_r =")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: sp.pprint(Lr)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: Ccross = sp.expand(Ms * Lr - Mr * Ls)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: Sr = sp.expand(Lr**2 - 4 * Mr**2 * Delta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

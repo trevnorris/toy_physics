@@ -1,0 +1,180 @@
+schema_version: 1
+candidate_id: fit_stage_239_mu
+parameter_name: mu
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_239_mu__phase_b__mu.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '239'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_239.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation diagonalizes the packet in $(U,V)$, derives the exact microscopic
+    correction $(\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V)$, and identifies the Cartesian orbit-lock point.}
+- path: paper/stages/stage_239.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 23
+  role: notes_stage
+  excerpt: '- clearing the static transfer-shape defect changes only `\mu_W`,'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: '- clearing the post-static dressing defect adds the equal `K_\eta^{(\mathrm{eff})}`–`\mu_W` shift.'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 51
+  role: notes_stage
+  excerpt: commuting transfer/dressing legs, support-blindness, and the Cartesian
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 71
+  role: notes_stage
+  excerpt: So after the first static gate is cleared, the remaining obstruction is already the equal-drift `K_\eta`–`\mu`
+    ray.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: '## 2. Exact physical projectors and the two commuting finite legs'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 210
+  role: notes_stage
+  excerpt: '### 2.3 Exact commutativity'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 219
+  role: notes_stage
+  excerpt: the two finite legs commute exactly.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 245
+  role: notes_stage
+  excerpt: \Delta_\mu
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 286
+  role: notes_stage
+  excerpt: U=\Delta_\mu-\Delta_{K_\eta},
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 294
+  role: notes_stage
+  excerpt: '- `U` is the microscopic `\mu_W-K_\eta^{(\mathrm{eff})}` difference,'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: So a pure transfer-shape defect is carried microscopically by a `\mu_W` shift only.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 335
+  role: notes_stage
+  excerpt: So a pure dressing defect is carried microscopically by the exact equal-drift `K_\eta^{(\mathrm{eff})}`–`\mu_W`
+    ray.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 366
+  role: notes_stage
+  excerpt: Thus the first static ceiling is cleared by changing only `\mu_W`.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 380
+  role: notes_stage
+  excerpt: '- `\mu_W`.'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 402
+  role: notes_stage
+  excerpt: 1. the static-only `\mu_W` correction,
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 403
+  role: notes_stage
+  excerpt: 2. the post-static equal `K_\eta`–`\mu_W` dressing correction.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 522
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V).
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 524
+  role: notes_stage
+  excerpt: 4. The static-only correction changes only `\mu_W`.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 525
+  role: notes_stage
+  excerpt: 5. The post-static dressing correction is the equal `K_\eta`–`\mu_W` shift.
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 547
+  role: notes_stage
+  excerpt: together with the exact target-ratio formula
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: '- the exact complementary physical projectors and the commuting finite transfer/dressing legs,'
+- path: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+  line: 556
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)=(0,-V,U-V),
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 2. The exact target-ratio formula
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. The complementary physical projectors and the two commuting finite legs
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: (Delta_T, Delta_Keta, Delta_mu) = (0, -V, U - V)
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '"target-ratio formula from U,V",'
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: '"exact commutativity / factorization of transfer and dressing legs",'
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: '#   Delta_Keta = -q_eta,   Delta_mu = q_nt - q_eta.'
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 259
+  role: sympy_script
+  excerpt: assert_zero(sp.diff(T2_stage238, zeta), "Stage 238 branch formula for T^2 is support-blind w.r.t. zeta")
+- path: scripts/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.py
+  line: 260
+  role: sympy_script
+  excerpt: assert_zero(sp.diff(T2_stage238, M_mix), "Stage 238 branch formula for T^2 is support-blind w.r.t. M_mix")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    - paper/stages/stage_239.tex
+    - research/pde_ledger/paper/stages/stage_239.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage239_rigid_mouth_physical_normal_form_exact_physical_to_microscopic_correction_compiler_and_cartesian_orbit_lock_theorem_sympy_audit.md
+    - paper/stages/stage_239.tex
+    - research/pde_ledger/paper/stages/stage_239.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

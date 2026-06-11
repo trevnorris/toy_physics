@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage_083_pe_minus_j
+parameter_name: Pe_minus_J
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_pe_minus_j__phase_b__pe_minus_j.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: Pe_minus_chi = sp.N(Xi_chi_coeff * Delta0_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: Pe_minus_J = sp.N(Xi_J_coeff * Delta0_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: print("Pe_-^(chi) =", Pe_minus_chi)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: print("Pe_-^(J)   =", Pe_minus_J)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: expect_close("Pe_-^(chi) numeric check", Pe_minus_chi, sp.Float("96.5285247264385"), 1e-10)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: expect_close("Pe_-^(J) numeric check", Pe_minus_J, sp.Float("22.0062226330754"), 1e-10)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: zeta_minus_chi = sp.N(zeta_F1.subs(Pe_sym, Pe_minus_chi), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: zeta_minus_J = sp.N(zeta_F1.subs(Pe_sym, Pe_minus_J), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: print("zeta_-^(chi) =", zeta_minus_chi)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: print("zeta_-^(J)   =", zeta_minus_J)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: expect_close("zeta_-^(chi) numeric check", zeta_minus_chi, sp.Float("2.46622291347846"), 1e-12)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: expect_close("zeta_-^(J) numeric check", zeta_minus_J, sp.Float("2.44257571477179"), 1e-12)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print("Pi_suff^(chi)/C_mix at eps_blk=0 =", sp.N(1 + zeta_minus_chi, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: print("Pi_suff^(J)/C_mix at eps_blk=0   =", sp.N(1 + zeta_minus_J, 30))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

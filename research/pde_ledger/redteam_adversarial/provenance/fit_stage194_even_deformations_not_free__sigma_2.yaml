@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage194_even_deformations_not_free
+parameter_name: Sigma_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage194_even_deformations_not_free__phase_b__sigma_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '194'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic Deformation
+    Algebra'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 36
+  role: notes_stage
+  excerpt: 1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 59
+  role: notes_stage
+  excerpt: \frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\,\sigma_Q^{\rm can}\,\omega^5}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 66
+  role: notes_stage
+  excerpt: '- `\sigma_Q^{\rm can}` is the canonical compact outgoing normalization,'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 69
+  role: notes_stage
+  excerpt: Matching the even coefficients of Stage 193 to the canonical compact outgoing `l=2` branch fixes
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 74
+  role: notes_stage
+  excerpt: \sigma_Q^{\rm can}=\frac{9}{8\Omega_Q^5}=\frac{4a^5}{27c_s^5}.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 90
+  role: notes_stage
+  excerpt: '## 2. Exact outgoing spherical `l=2` DtN fingerprint'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 158
+  role: notes_stage
+  excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 182
+  role: notes_stage
+  excerpt: Matching the leading odd coefficient yields
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 186
+  role: notes_stage
+  excerpt: So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar is
+    fixed exactly.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 198
+  role: notes_stage
+  excerpt: So after the canonical DtN model is inserted, the only reduced outgoing uncertainty left is deviation of the **actual**
+    moving-throat isotropic branch from the exact compact outgoing fingerprint.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 210
+  role: notes_stage
+  excerpt: +\Sigma_0+\Sigma_2 z^2+\Sigma_4 z^4+i\Sigma_5 z^5+O(z^6).
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 217
+  role: notes_stage
+  excerpt: '- `\Sigma_0,\Sigma_2,\Sigma_4` are isotropic even throat-core self-energy data,'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 218
+  role: notes_stage
+  excerpt: '- `\Sigma_5` is the first extra isotropic odd `l=2` core outlet.'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 226
+  role: notes_stage
+  excerpt: L_0=-3S+\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 228
+  role: notes_stage
+  excerpt: L_2=\frac{S\beta^2}{3}+\Sigma_2,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 230
+  role: notes_stage
+  excerpt: L_4=\frac{S\beta^4}{9}+\Sigma_4,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 232
+  role: notes_stage
+  excerpt: L_5=\frac{S\beta^5}{9}+\Sigma_5.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 250
+  role: notes_stage
+  excerpt: '### 4.1 Canonical-even matching conditions'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 252
+  role: notes_stage
+  excerpt: Demand that the deformed branch preserve the canonical even fingerprint
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 267
+  role: notes_stage
+  excerpt: \Sigma_2=-\frac{3S\beta^2-3S+\Sigma_0}{9},
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 269
+  role: notes_stage
+  excerpt: \Sigma_4=-\frac{3S\beta^4-3S+\Sigma_0}{27}.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 272
+  role: notes_stage
+  excerpt: So the even deformations are not free once the canonical conservative moments are held fixed.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 280
+  role: notes_stage
+  excerpt: \frac{3\big(S\beta^5+9\Sigma_5\big)}{3S-\Sigma_0}.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 287
+  role: notes_stage
+  excerpt: \frac{3S(\beta^5-1)+\Sigma_0+27\Sigma_5}{3S-\Sigma_0}.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 293
+  role: notes_stage
+  excerpt: 2. static additive core shift `\Sigma_0`,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 294
+  role: notes_stage
+  excerpt: 3. odd isotropic `l=2` core outlet `\Sigma_5`.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 296
+  role: notes_stage
+  excerpt: The overall scale `S` is not a separate obstruction by itself. It matters only through the normalized ratios above.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 321
+  role: notes_stage
+  excerpt: '- the exact outgoing `l=2` fingerprint,'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 337
+  role: notes_stage
+  excerpt: Matching the exact DtN fingerprint to the retarded grouped-`P2` module gives
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 347
+  role: notes_stage
+  excerpt: (\beta,\Sigma_0,\Sigma_5).
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 361
+  role: notes_stage
+  excerpt: 2. keep the Stage 194 exact outgoing `l=2` fingerprint,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 364
+  role: notes_stage
+  excerpt: (\beta,\Sigma_0,\Sigma_5),
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: sigma_Q_can = sp.simplify(sp.Integer(9) / (8 * Omega_Q**5))
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: / (1 - omega**2 / Omega_Q**2 - sp.I * chi_Q * sigma_Q_can * omega**5)
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: print("sigma_Q^can =")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: sp.pprint(sigma_Q_can)
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: expect_zero("sigma_Q^can - 4 a^5/(27 c_s^5)", sigma_Q_can - 4 * a**5 / (27 * c_s**5))
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Sigma0, Sigma2, Sigma4, Sigma5 = sp.symbols("Sigma_0 Sigma_2 Sigma_4 Sigma_5", real=True)
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: L0 = sp.simplify(-3 * S + Sigma0)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

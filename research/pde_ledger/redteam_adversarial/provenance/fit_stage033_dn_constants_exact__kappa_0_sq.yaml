@@ -1,0 +1,180 @@
+schema_version: 1
+candidate_id: fit_stage033_dn_constants_exact
+parameter_name: kappa_0_sq
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage033_dn_constants_exact__phase_b__kappa_0_sq.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '033'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_033.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: Using \(\kappa_0^2=8/\pi^2\) and \(\kappa_1^2=16/(9\pi^2)\),
+- path: paper/stages/stage_033.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \frac{\mathcal X^2}{\Delta_0^2}\frac{s_-(\alpha_0)^2}{\kappa_0^2\lambda_-(\alpha_0)}=N_Q^{\rm target},
+- path: paper/stages/stage_033.tex
+  line: 71
+  role: paper_stage_tex
+  excerpt: s_-(0)=\kappa_0^2,
+- path: paper/stages/stage_033.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: N_-(0)=\frac{\beta_0\kappa_0^2}{A}
+- path: paper/stages/stage_033.tex
+  line: 80
+  role: paper_stage_tex
+  excerpt: =\frac{\mathcal X^2\kappa_0^2}{A\Delta_0^2}}.
+- path: paper/stages/stage_033.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: \mathcal X^2\leq\frac{N_Q^{\rm target}A\Delta_0^2}{\kappa_0^2}}.
+- path: paper/stages/stage_033.tex
+  line: 98
+  role: paper_stage_tex
+  excerpt: \frac{\beta_0\kappa_0^2}{A}
+- path: paper/stages/stage_033.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: +\alpha_0\frac{\beta_0\kappa_0^2(4A\kappa_1^2+\Delta K_{\rm ax}\kappa_0^2)}{A^2\Delta K_{\rm ax}}
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 7
+  role: notes_stage
+  excerpt: '`beta_0 s_-^2 / (kappa_0^2 lambda_-) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 63
+  role: notes_stage
+  excerpt: '- and the finite-throat overlap constants `kappa_0`, `kappa_1`, `sigma` already fixed exactly.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 71
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`,'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 78
+  role: notes_stage
+  excerpt: '`              = beta_0 s_-(alpha_0)^2 / ( kappa_0^2 lambda_-(alpha_0) )`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 90
+  role: notes_stage
+  excerpt: '`Chi^2 / Delta_0^2 * s_-(alpha_0)^2 / ( kappa_0^2 lambda_-(alpha_0) )`'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 131
+  role: notes_stage
+  excerpt: '`             / [ (A + Delta K_ax) kappa_0^2 + A kappa_1^2 ]`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 135
+  role: notes_stage
+  excerpt: '`kappa_0^2 = 8 / pi^2`,'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 137
+  role: notes_stage
+  excerpt: '`kappa_1^2 = 16 / (9 pi^2)`,'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 159
+  role: notes_stage
+  excerpt: '`  / ( kappa_0^2 lambda_-^2 )`'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 167
+  role: notes_stage
+  excerpt: '`s_-(0) = kappa_0^2`,'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 173
+  role: notes_stage
+  excerpt: '`N_-(0) = beta_0 kappa_0^2 / A = Chi^2 kappa_0^2 / ( A Delta_0^2 )`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 181
+  role: notes_stage
+  excerpt: '`Chi^2 <= N_Q^(target) A Delta_0^2 / kappa_0^2`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 185
+  role: notes_stage
+  excerpt: '`K_0 >= g_U^2 / Omega_U^2 + kappa_0^2 Chi^2 / ( N_Q^(target) Delta_0^2 )`.'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 201
+  role: notes_stage
+  excerpt: '`= beta_0 kappa_0^2 / A`'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 202
+  role: notes_stage
+  excerpt: '`  + alpha_0 beta_0 kappa_0^2 ( 4 A kappa_1^2 + Delta K_ax kappa_0^2 ) / ( A^2 Delta K_ax )`'
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: kappa0_sq = sp.Rational(8) / sp.pi**2
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: kappa1_sq = sp.Rational(16) / (9 * sp.pi**2)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: sigma = sp.simplify(kappa0_sq + kappa1_sq)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: delta_kappa = sp.simplify(kappa0_sq - kappa1_sq)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: Kprod = sp.simplify(kappa0_sq * kappa1_sq)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: R = sp.sqrt((DeltaK + alpha0 * delta_kappa)**2 + 4 * alpha0**2 * Kprod)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: s_minus = sp.simplify(sp.Rational(1, 2) * (sigma + ((DeltaK + alpha0 * delta_kappa) * delta_kappa + 4 * alpha0
+    * Kprod) / R))
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: Nminus = sp.simplify(beta0 * s_minus**2 / (kappa0_sq * lambda_minus))
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: dN_formula = sp.simplify(beta0 * (2 * s_minus * ds * lambda_minus + s_minus**3) / (kappa0_sq * lambda_minus**2))
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: alpha_crit = sp.simplify(A * (A + DeltaK) / ((A + DeltaK) * kappa0_sq + A * kappa1_sq))
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: expect_zero("N_-(0) - beta0 kappa0^2 / A", N0 - beta0 * kappa0_sq / A)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: coef1_target = sp.simplify(beta0 * kappa0_sq * (4 * A * kappa1_sq + DeltaK * kappa0_sq) / (A**2 * DeltaK))
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: 'N0_mic = sp.simplify((beta0 * kappa0_sq / A).subs({beta0: beta0_mic, A: A_mic}))'
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '"K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]",'
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: K0_onset - (gU**2 / OmegaU**2 + kappa0_sq * Chi**2 / (NQ * Delta0**2)),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage020_wall_slopes_fixed_uniquely
+parameter_name: Xi1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage020_wall_slopes_fixed_uniquely__phase_b__xi1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '020'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: Xi1 = sp.expand(N01 / N0 - D01 / D0)
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: 'Xi1_comp = sp.simplify(Xi1.subs(sol).subs({D0: KSigma - B0 - Z0}))'
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: assert_zero('compensated Xi1', Xi1_comp - (N01/N0 - 27*(B41 + Z41)/(KSigma - B0 - Z0)))
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: lines.append(f'Xi1 = {Xi1}')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: lines.append(f'Xi1_on_compensated_branch = {Xi1_comp}')
+- path: scripts/moving_throat_pde_stage020_parent_throat_action_weak_axisym_packet_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: lines.append('normalization defect collapses to one scalar Xi1.')
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,123 @@
+schema_version: 1
+candidate_id: fit_stage090_locked_triple_Pe_req
+parameter_name: Pe_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage090_locked_triple_pe_req__phase_b__pe_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 090
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_090.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \item the support theorem depends only on \(\rho_\alpha=\alpha_{\rm req}/\alpha_{\rm mix}\);
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 18
+  role: notes_stage
+  excerpt: '`zeta_req = 1/3,`'
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 19
+  role: notes_stage
+  excerpt: '`Pe_req = 0,`'
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 33
+  role: notes_stage
+  excerpt: 3. the support theorem depends only on `rho_alpha = alpha_req/alpha_mix`;
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: zeta_req = 1/3,
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: inside the exact success region with zero required transport bias.
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify(c_pole / c_contact)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("zeta_req  =", zeta_req)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: expect_zero("zeta_req - 1/3", zeta_req - sp.Rational(1, 3))
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: expect_zero("zeta_req - (rho_alpha - 1)", zeta_req - (rho_alpha - 1))
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: delta_zeta_max = sp.N(zeta_max_f1 - zeta_req, 25)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: delta_A_F1 = sp.N(A_F1 - zeta_req, 25)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("zeta_max^(F1)  - zeta_req  =", delta_zeta_max)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("A_F1           - zeta_req  =", delta_A_F1)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '"zeta_req lies below the hard Family-1 ceiling",'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: bool(zeta_req < zeta_max_f1),
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: '"zeta_req lies below the zero-bias Family-1 baseline",'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: bool(zeta_req < A_F1),
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: '# Stage 075 transport map: zeta_req < A_F1 ==> Pe_req = 0. The inequality'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: '# above is the carry-forward proxy for the locked triple value Pe_req = 0'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: Pe_req = sp.Integer(0)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: expect_zero("Pe_req (carry-forward from Stage 075 transport map)", Pe_req)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("  zeta_req  = 1/3 lies below the hard ceiling,")
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: print("  zeta_req  = 1/3 < A_F1 so Pe_req = 0.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

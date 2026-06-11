@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage014_even_gate_constants_2_3_1_27
+parameter_name: He_bundle_coefficients
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage014_even_gate_constants_2_3_1_27__phase_b__he_bundle_coefficients.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '014'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: '# from a naive bundle pull-back that contains all six slips, and assert that'
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: '# Bundle pull-back consistency: rebuild K1, H_even from z0d/z2d/z4d and'
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: K1_bundle = sp.simplify(-(z2d + z0d/sp.Integer(9)))
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: assert_zero("K1 bundle pull-back consistency", K1 - K1_bundle)
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: He_bundle = sp.simplify(-(z4d) + sp.Rational(2,3)*z2d - z0d/sp.Integer(27))
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: assert_zero("H_even bundle pull-back consistency", He - He_bundle)
+- path: scripts/moving_throat_pde_stage014_projected_maxwell_mouth_taylor_gate_bridge_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: print("2) Primitive-to-bundle mouth-derivative map (divide out mu1)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

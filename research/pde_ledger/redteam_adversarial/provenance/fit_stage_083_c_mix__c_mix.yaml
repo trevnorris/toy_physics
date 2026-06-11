@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage_083_c_mix
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_c_mix__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 151
+  role: notes_stage
+  excerpt: '`Pi = C_mix Q(zeta;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 157
+  role: notes_stage
+  excerpt: '`Pi_suff^(F1) = C_mix Q( zeta_-^(F1); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 159
+  role: notes_stage
+  excerpt: '`Pi_fail^(F1) = C_mix Q( zeta_+^(F1); eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 163
+  role: notes_stage
+  excerpt: '`Pi_suff^(F1) / C_mix = 1 + zeta_-^(F1),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 165
+  role: notes_stage
+  excerpt: '`Pi_fail^(F1) / C_mix = 1 + zeta_+^(F1).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 169
+  role: notes_stage
+  excerpt: '`Pi_suff^(chi)/C_mix ≈ 3.46622291347846,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 171
+  role: notes_stage
+  excerpt: '`Pi_fail^(chi)/C_mix ≈ 3.46752913273870,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 173
+  role: notes_stage
+  excerpt: '`Pi_suff^(J)/C_mix   ≈ 3.44257571477179,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 175
+  role: notes_stage
+  excerpt: '`Pi_fail^(J)/C_mix   ≈ 3.46752736855058,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 179
+  role: notes_stage
+  excerpt: '`Pi_max^(F1)/C_mix ≈ 3.46752922945601.`'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 3. Direct operator-selected transport, zeta, and Pi/C_mix windows for the natural
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: '# 3. Direct zeta and Pi/C_mix windows'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print("Pi_suff^(chi)/C_mix at eps_blk=0 =", sp.N(1 + zeta_minus_chi, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: print("Pi_fail^(chi)/C_mix at eps_blk=0 =", sp.N(1 + zeta_plus_chi, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: print("Pi_suff^(J)/C_mix at eps_blk=0   =", sp.N(1 + zeta_minus_J, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: print("Pi_fail^(J)/C_mix at eps_blk=0   =", sp.N(1 + zeta_plus_J, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: print("Pi_max^(F1)/C_mix at eps_blk=0   =", sp.N(1 + zeta_max_F1, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: print("  zeta_phys(F1) and Pi/C_mix windows are monotone in Xi on the stable branch")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

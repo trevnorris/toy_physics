@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_138_k_s
+parameter_name: K_s
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_138_k_s__phase_b__k_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '138'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 16
+  role: notes_stage
+  excerpt: \mathfrak r:=\frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 18
+  role: notes_stage
+  excerpt: \mathfrak g_c:=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}},
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 20
+  role: notes_stage
+  excerpt: \Sigma_0:=\frac{L g_s^2}{K_s\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 30
+  role: notes_stage
+  excerpt: K_sg_q-\lambda g_s = g_s\sqrt{K_sK_q}(\mathfrak g_c-\mathfrak r),
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: Ks, Kq, lam, gs, gq = sp.symbols('K_s K_q lam g_s g_q', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: Ms = sp.simplify(L*gs**2/(Ks*Theta))
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: Mq = sp.simplify(-L*(Ks*gq - lam*gs)**2/(Ks*(Ks*Kq + lam**2)*Theta))
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 'lam: r*sp.sqrt(Ks*Kq),'
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: 'gq: gc*gs*sp.sqrt(Kq/Ks),'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,158 @@
+schema_version: 1
+candidate_id: fit_stage_023_b_0
+parameter_name: B_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_023_b_0__phase_b__b_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '023'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_023.tex
+  line: 175
+  role: paper_stage_tex
+  excerpt: \bar D_0=\bar K-\bar B_0-\bar Z_0,
+- path: paper/stages/stage_023.tex
+  line: 230
+  role: paper_stage_tex
+  excerpt: \widehat m_0^{\,2}\frac{N_0}{K-B_0-Z_0}
+- path: paper/stages/stage_023.tex
+  line: 235
+  role: paper_stage_tex
+  excerpt: D_0=K-B_0-Z_0.
+- path: paper/stages/stage_023.tex
+  line: 297
+  role: paper_stage_tex
+  excerpt: \item The final normalization equation is a stability-sensitive branch test because \(D_0=K-B_0-Z_0\) must remain
+    positive on the stable side.
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 308
+  role: notes_stage
+  excerpt: '`mhat_0^2 * N_0 / ( K - B_0 - Z_0 ) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 314
+  role: notes_stage
+  excerpt: '> does the true moving-throat branch produce coupled bundle data `(K, M, B_n, Z_n, N_n)` whose isotropic static
+    ratio `N_0/(K-B_0-Z_0)` lands on the universal target?'
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 410
+  role: notes_stage
+  excerpt: '- Increasing the conservative support renormalizations `B_0` or `Z_0` lowers the denominator `D_0 = K-B_0-Z_0`
+    and therefore also raises `P_0`.'
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 463
+  role: notes_stage
+  excerpt: '`mhat_0^2 N_0 / (K-B_0-Z_0)`'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: • the exact normalization ratio mhat^2 N0/(K-B0-Z0),
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: B020, B021, B022 = sp.symbols("B0_20 B0_21 B0_22", real=True)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: D020 = sp.simplify(K20 - B020 - Z020)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: D021 = sp.simplify(K21 - B021 - Z021)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: D022 = sp.simplify(K22 - B022 - Z022)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 234
+  role: sympy_script
+  excerpt: Bbar0, aB0, bB0 = grouped_parts(B020, B021, B022)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 252
+  role: sympy_script
+  excerpt: expect_zero("aD0 - (aK - aB0 - aZ0)", aD0 - (aK - aB0 - aZ0))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 253
+  role: sympy_script
+  excerpt: expect_zero("bD0 - (bK - bB0 - bZ0)", bD0 - (bK - bB0 - bZ0))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 334
+  role: sympy_script
+  excerpt: '# full-bundle form mhat^2 * N0/(K - B0 - Z0) = 54 G c_s^5/(5 a^5 c^5)'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 335
+  role: sympy_script
+  excerpt: '# after substituting D0 = K - B0 - Z0. This exercises the paper''s'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 337
+  role: sympy_script
+  excerpt: '# and explicit (K, B0, Z0) denominators.'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 338
+  role: sympy_script
+  excerpt: K_sym, B0_sym, Z0_sym = sp.symbols("K_sym B0_sym Z0_sym", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 340
+  role: sympy_script
+  excerpt: norm_explicit = mhat**2 * N0 / (K_sym - B0_sym - Z0_sym) - 54 * G * c_s**5 / (5 * a**5 * c**5)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 342
+  role: sympy_script
+  excerpt: '"normalization abstract == explicit under D0 = K - B0 - Z0",'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 343
+  role: sympy_script
+  excerpt: sp.simplify(norm_abstract.subs(D0, K_sym - B0_sym - Z0_sym) - norm_explicit),
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 429
+  role: sympy_script
+  excerpt: K, B0, Z0, N0 = sp.symbols("K B0 Z0 N0", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 431
+  role: sympy_script
+  excerpt: P0 = sp.simplify(N0 / (K - B0 - Z0))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 435
+  role: sympy_script
+  excerpt: dB = sp.simplify(sp.diff(P0, B0))
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 441
+  role: sympy_script
+  excerpt: print("dP0/dB0 =")
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 448
+  role: sympy_script
+  excerpt: expect_zero("dP0/dN0 - 1/D0", dN.subs(K - B0 - Z0, D0) - 1 / D0)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 449
+  role: sympy_script
+  excerpt: expect_zero("dP0/dB0 - N0/D0^2", dB.subs(K - B0 - Z0, D0) - N0 / D0**2)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 450
+  role: sympy_script
+  excerpt: expect_zero("dP0/dZ0 - N0/D0^2", dZ.subs(K - B0 - Z0, D0) - N0 / D0**2)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 451
+  role: sympy_script
+  excerpt: expect_zero("dP0/dK + N0/D0^2", dK.subs(K - B0 - Z0, D0) + N0 / D0**2)
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 490
+  role: sympy_script
+  excerpt: print("    support softening B0,Z0 raises P0, while increasing K lowers it.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

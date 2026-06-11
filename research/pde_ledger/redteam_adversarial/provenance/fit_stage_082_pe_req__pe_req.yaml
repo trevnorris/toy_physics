@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_082_pe_req
+parameter_name: Pe_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_082_pe_req__phase_b__pe_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 082
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_082.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The support-demand function \(\zeta_{\rm req}\), physical support map \(\zeta_{\rm phys}\),
+    and operator-selected bias \(\mathrm{Pe}_*\).}
+- path: paper/stages/stage_082.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage082-zeta-req}
+- path: paper/stages/stage_082.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+- path: paper/stages/stage_082.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: =\zeta_{\rm req}(\Pi_{\rm tr},C_{\rm mix},\epsilon_{\rm blk})
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 5
+  role: notes_stage
+  excerpt: The explicit Family-1 branch phase ended with a hard support ceiling in the selected-branch product variable `Pi_tr`,
+    but that result was still being carried through several intermediate variables (`Pe_req`, `zeta_req`, `Pi_tr/C_mix`).
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 14
+  role: notes_stage
+  excerpt: '`:= zeta_req(Pi_tr,C_mix,eps_blk) - zeta_phys(Pe_*(Xi,eta,kappa),eta;kappa),`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 18
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 111
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 118
+  role: notes_stage
+  excerpt: '`zeta_req ? zeta_phys`.'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 127
+  role: notes_stage
+  excerpt: '`:= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 169
+  role: notes_stage
+  excerpt: '`R_-(...) := zeta_req - zeta_+ <= R_quad <= zeta_req - zeta_- =: R_+(...).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 175
+  role: notes_stage
+  excerpt: '- only the strip `R_- <= 0 < R_+` requires the full fixed-point solve.'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 181
+  role: notes_stage
+  excerpt: Because `zeta_req` is strictly increasing in `Pi_tr`, the bounded residual can be translated back into exact product
+    thresholds.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 190
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk).`'
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 204
+  role: notes_stage
+  excerpt: This is the first exact product-window theorem derived directly from the coupled support/source operator rather
+    than through the intermediate `Pe_req` bookkeeping.
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 210
+  role: notes_stage
+  excerpt: The explicit Family-1 branch now drops out immediately by inserting the fixed geometry/support data
+- path: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+  line: 223
+  role: notes_stage
+  excerpt: '`= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1. Exact inverse map between zeta_req and Pi_tr.
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify((Pi_tr - Cmix) / (Cmix - eps_blk * (2 * Cmix - Pi_tr)))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("zeta_req(Pi_tr,C_mix,eps_blk) =")
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: sp.pprint(zeta_req)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '"inverse map zeta_req(C_mix*Q(zeta)) - zeta",'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: zeta_req.subs(Pi_tr, sp.simplify(Cmix * Q)) - zeta,
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: expect_zero("zeta_req(Pi_suff)-zeta_-", zeta_req.subs(Pi_tr, Pi_suff) - zeta_minus)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: expect_zero("zeta_req(Pi_fail)-zeta_+", zeta_req.subs(Pi_tr, Pi_fail) - zeta_plus)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: R_quad = sp.simplify(zeta_req - zeta_phys)
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# F3 (v2): directional content of zeta_req. The inverse-map theorem'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '# (notes section 4) relies on zeta_req being strictly increasing in Pi_tr'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: '# Verify by factoring d zeta_req / d Pi_tr into a sign-controlled'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: dzeta_req_dPi = sp.simplify(sp.diff(zeta_req, Pi_tr))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print(f"\ndzeta_req/dPi_tr = {dzeta_req_dPi}")
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: num, den = sp.fraction(sp.together(dzeta_req_dPi))
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '"numerator(d zeta_req/d Pi_tr) - C_mix*(1 - eps_blk)",'
+- path: scripts/moving_throat_pde_stage082_master_quadrupole_residual_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: '"denominator(d zeta_req/d Pi_tr) - (C_mix - eps_blk*(2*C_mix - Pi_tr))**2",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    - paper/stages/stage_082.tex
+    - research/pde_ledger/paper/stages/stage_082.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage082_master_quadrupole_residual.md
+    - paper/stages/stage_082.tex
+    - research/pde_ledger/paper/stages/stage_082.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

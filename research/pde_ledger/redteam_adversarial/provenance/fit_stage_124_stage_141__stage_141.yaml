@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage_124_stage_141
+parameter_name: stage_141
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_124_stage_141__phase_b__stage_141.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '124'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_124.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~124]{Stage~124: Explicit Core-Solve Status After Geometric Branch Selection}'
+- path: paper/stages/stage_124.tex
+  line: 2
+  role: paper_stage_tex
+  excerpt: \label{stage:124}
+- path: paper/stages/stage_124.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part IV; primary anchor \resultanchor{MTDC-T8}.}
+- path: paper/stages/stage_124.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~141 is a core outlet realization ledger step.  Its audit target is the verification
+    output quoted below.}
+- path: paper/stages/stage_124.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the compensated outlet conditions, a two-channel shell/mixed Schur complement,
+    finite D/N mixed-tube geometry, and parent-action overlap data.  It does not change the parent action or the grouped-lane
+    ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_124.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: none yet.  Mathematica audit: none yet.}'
+- path: paper/stages/stage_124.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Core outlet realization} block.  The
+    computation isolates the parent-level compensation surface and normalized core/mouth target values.}
+- path: paper/stages/stage_124.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block
+    narrative above and in the source stage.}
+- path: paper/stages/stage_124.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \stagefield{Checks}{\begin{verificationchecklist}
+- path: paper/stages/stage_124.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages 125--139 and the positive mouth-source branch.  When cited
+    downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional
+    actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 124: Explicit Core-Solve Status After Geometric Branch Selection'
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 5
+  role: notes_stage
+  excerpt: After Stages 121–123, the explicit outlet-core branch is no longer described by a free \((\mathfrak r,\mathfrak
+    g)\) pair.
+- path: notes/stages/moving_throat_pde_stage124_core_branch_status.md
+  line: 41
+  role: notes_stage
+  excerpt: That is a much smaller and more concrete target than the one we had before Stage 121.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

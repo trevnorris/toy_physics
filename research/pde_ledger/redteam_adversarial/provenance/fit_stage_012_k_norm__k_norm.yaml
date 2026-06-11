@@ -1,0 +1,114 @@
+schema_version: 1
+candidate_id: fit_stage_012_k_norm
+parameter_name: K_norm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_k_norm__phase_b__k_norm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '012'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_012.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_012.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: Stage~021 reduced normal form.
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: K_norm_p = sp.solve(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: K_norm_transport_p = sp.solve(
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: compat_transport_p = sp.simplify(K_norm_transport_p - K_one_p)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: compat = K_norm_p.subs(ell, 0) - K_one_p.subs(ell, 0)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: dCompat = sp.simplify((sp.series(sp.expand(K_norm_p - K_one_p), ell, 0, 2).removeO() - compat) / ell)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: '"K_norm solve round-trip",'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: (N0base + ell * n0) / (K_norm_p - B0 - (Z0slot + ell * z0)) - Ptarget,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: assert_zero("primitive transported-target normalization K surface", K_norm_transport_p - (B0 + Z0slot + ell * z0
+    + D0target))
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: '# The derived z0 = (Delta*q1 - Q*d1)/Delta**2 enters K_norm_p and K_one_p'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: sp.diff(K_norm_p - K_one_p, slip) - sp.diff(compat_direct_p, slip),
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: sp.diff(K_norm_transport_p - K_one_p, slip) - sp.diff(compat_transport_p, slip),
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: '# Conversely, the normalization K surface alone DOES retain a q1/d1 channel'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: '"primitive normalization K surface retains q1 channel from z0",'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 216
+  role: sympy_script
+  excerpt: sp.diff(K_norm_p, q1),
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 219
+  role: sympy_script
+  excerpt: '"primitive normalization K surface retains d1 channel from z0",'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: sp.diff(K_norm_p, d1),
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 263
+  role: sympy_script
+  excerpt: '"So the first isotropic normalization shift is controlled by the primitive transfer-leg slippage p1,\n"'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 283
+  role: sympy_script
+  excerpt: '"even though the normalization K surface still carries z0 before compatibility elimination.\n"'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 289
+  role: sympy_script
+  excerpt: '"  - (q1, d1, p1) are the first static normalization movers,\n"'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,25 @@
+candidate_id: fit_stage073_paper_fixes_geometry_ratios
+parameter_name: L_over_a
+origin_claims:
+  - parameter: L_over_a
+    introduced_at_stage: 073
+    introduced_at_line: 54
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 54
+      excerpt: "`Lambda_* := L/a = 37/20.`"
+constraints:
+  - parameter: L_over_a
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 56
+      excerpt: "This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE."
+downstream_dependents: [74]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: low
+    summary: "The stage-073 paper card prints L/a=37/20 inside a boxed 'Derivation' equation with claim-status 'ExactClosure for the declared Family-1 reference geometry'. The notes are careful to call this a 'reference-branch numerical freeze, not a new theorem', and the card's Inputs field correctly says 'reference finite-throat geometry selected earlier'. The boxed Derivation framing risks reading as a derived ratio; substantively it is a posited/carried reference value (free_choice). Mild presentational tension, not a derive-vs-fit mismatch."
+    citations:
+      - { path: paper/stages/stage_073.tex, line: 17, excerpt: "\\frac{L}{a}=\\frac{37}{20}," }
+      - { path: paper/stages/stage_073.tex, line: 5, excerpt: "\\claimstatus{\\StatusReduced{} / \\StatusExactClosure{} for the declared Family--1 reference geometry.}" }

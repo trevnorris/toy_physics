@@ -1,0 +1,138 @@
+schema_version: 1
+candidate_id: fit_stage_095_c_pole
+parameter_name: c_pole
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_095_c_pole__phase_b__c_pole.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 095
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_095.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 77 proved that on the natural isotropic branch the geometry lane is dynamically inert through `O(omega^4)`
+    with respect to the grouped real `P2` conservative quadrupole module:'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 11
+  role: notes_stage
+  excerpt: '> if isotropy is weakly broken and the scalar/geometry lane mixes with the grouped-`P2` quadrupole carrier, how
+    do the contamination numbers turn on?'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 25
+  role: notes_stage
+  excerpt: Take one grouped-`P2` quadrupole carrier `q` and one scalar/geometry mode `g`.
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 29
+  role: notes_stage
+  excerpt: '`D_q(omega) = K_stat + K_pole /(1 - omega^2/Omega_Q^2)`,'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 41
+  role: notes_stage
+  excerpt: Integrating out the scalar/geometry mode gives the exact effective quadrupole kernel
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 80
+  role: notes_stage
+  excerpt: '`eps_2 = Omega_Q^2 K_(g,2)^eff / K_pole`,'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 82
+  role: notes_stage
+  excerpt: '`eps_4 = Omega_Q^4 K_(g,4)^eff / K_pole`,'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 94
+  role: notes_stage
+  excerpt: '## 3. Consequence for the contact/pole fractions'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 98
+  role: notes_stage
+  excerpt: '`c_pole = (1 + eps_4) / [ 4 (1 + eps_2)^2 ]`.'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 102
+  role: notes_stage
+  excerpt: '`c_pole = 1/4 [ 1 + eps_4 - 2 eps_2 + O(chi^4) ]`.'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 104
+  role: notes_stage
+  excerpt: Because both `eps_2` and `eps_4` are already `O(chi^2)`, the deviation from the `1/4` pole fraction is itself `O(chi^2)`.
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 125
+  role: notes_stage
+  excerpt: '- the grouped real `P2` branch is the dynamic quadrupole carrier,'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 127
+  role: notes_stage
+  excerpt: '- and the Stage-74 `3/4 + 1/4` split is the correct actual branch value unless a genuine symmetry-breaking or
+    extra `l=2` geometry pole is later found.'
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: Kstat, Kpole, OQ = sp.symbols('Kstat Kpole OQ', nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: eps2 = sp.simplify(OQ**2 * K2corr / Kpole)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: eps4 = sp.simplify(OQ**4 * K4corr / Kpole)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Pole fraction expansion.'
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: cpole = sp.simplify((1 + eps4) / (4 * (1 + eps2)**2))
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: cpole_series = sp.expand(sp.series(cpole, chi, 0, 3).removeO())
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: print('c_pole =', cpole_series)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: delta = sp.simplify(cpole_series - sp.Rational(1, 4))
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print('delta c_pole =', delta)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: chi1 = sp.simplify(sp.diff(cpole, chi).subs(chi, 0))
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: chi2 = sp.simplify(sp.diff(cpole, chi, 2).subs(chi, 0))
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print('d c_pole / dchi |0 =', chi1)
+- path: scripts/moving_throat_pde_stage095_second_order_geometry_contamination_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: print('d^2 c_pole / dchi^2 |0 =', chi2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage253_K_turn_force_match
+parameter_name: K_turn
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_k_turn_force_match__phase_b__k_turn.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: A coarse transport projection factor \(\Upsilon_{\rm lat}>0\) defines the physical lattice-turnover rate
+- path: paper/stages/stage_253.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-lattice-turn-rate}
+- path: paper/stages/stage_253.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \gamma_{\rm lat,turn}^{\rm phys}
+- path: paper/stages/stage_253.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: Thus the electron-phonon turnover threshold is \cref{eq:app-part08-main-ep-threshold}, and the product form is
+- path: paper/stages/stage_253.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: r_{\rm turn}^{\rm phys}=\frac{r_{\rm turn}}{\lambda_{\rm ref}}\lambda_{\rm phys},
+- path: paper/stages/stage_253.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \chi_{\lambda,{\rm lattice}}(r_{\rm turn})
+- path: paper/stages/stage_253.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \frac{2\lambda_{\rm phys}}{r_{\rm turn}^{\rm phys}}
+- path: paper/stages/stage_253.tex
+  line: 62
+  role: paper_stage_tex
+  excerpt: \frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+- path: paper/stages/stage_253.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \frac{|V_{\rm red}'(r_{\rm turn})|}{r_{\rm turn}}
+- path: paper/stages/stage_253.tex
+  line: 72
+  role: paper_stage_tex
+  excerpt: \mathcal K_{\rm turn}\frac{E_*}{\lambda_{\rm phys}^{2}},
+- path: paper/stages/stage_253.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-kturn}
+- path: paper/stages/stage_253.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: \mathcal K_{\rm turn}=\frac{\lambda_{\rm ref}^{2}}{r_{\rm turn}}|V_{\rm red}'(r_{\rm turn})|.
+- path: paper/stages/stage_253.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: k_{\rm eff,req}=4\mathcal K_{\rm turn}\frac{E_*}{a_{\rm int}^{2}}.
+- path: paper/stages/stage_253.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \Pi_\chi=\frac{2\lambda_{\rm ref}}{r_{\rm turn}},
+- path: paper/stages/stage_253.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \frac{k_{\rm eff}\lambda_{\rm phys}^{2}}{\mathcal K_{\rm turn}E_*}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 23
+  role: notes_stage
+  excerpt: \(\Upsilon_{\rm lat}>0\) relating the Stage-252 event-equivalent lattice export rate to a coarse lattice-turnover
+    rate,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 26
+  role: notes_stage
+  excerpt: \gamma_{\rm lat,turn}^{\rm phys}=\zeta_{\rm ep}\,\lambda_{\rm ep}\,\omega_D,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: 6. and, for the benchmark slice, the same reduced turning-point and crossing-time data already carried by Sessions
+    II–V.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: '- an electron-phonon turnover threshold \(\lambda_{\rm ep}\omega_D\),'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 60
+  role: notes_stage
+  excerpt: 1. the lattice-turnover threshold is an exact algebraic image of the Stage-252 safe-edge rate once one introduces
+    a single explicit coarse transport factor \(\Upsilon_{\rm lat}\),
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 87
+  role: notes_stage
+  excerpt: '- Stage 250 turned the relaxed same-charge branch into a crossing-vs-collapse problem.'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 106
+  role: notes_stage
+  excerpt: '- what lattice-turnover threshold a real host must satisfy,'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 146
+  role: notes_stage
+  excerpt: On the Session-V turning-point slice, the natural choice is
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 148
+  role: notes_stage
+  excerpt: \lambda_{\rm ref}=\lambda_{\rm th}(r_{\rm turn}).
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 163
+  role: notes_stage
+  excerpt: by defining the coarse physical lattice-turnover rate
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 166
+  role: notes_stage
+  excerpt: \gamma_{\rm lat,turn}^{\rm phys}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: This is the physical rate that Stage 253 identifies with the standard condensed-matter turnover lane
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: \gamma_{\rm lat,turn}^{\rm phys}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: '- if the microscopic event-equivalent export rate is already the correct coarse lattice turnover, then \(\Upsilon_{\rm
+    lat}=1\),'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 189
+  role: notes_stage
+  excerpt: '## 2. Microscopic lattice-turnover compiler'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: which is exactly the Session-V turnover product.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 293
+  role: notes_stage
+  excerpt: Take the turning point \(r_{\rm turn}\) on the reduced branch and attach the physical radius by
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: r_{\rm turn}^{\rm phys}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: \frac{r_{\rm turn}}{\lambda_{\rm ref}}\,\lambda_{\rm phys}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 312
+  role: notes_stage
+  excerpt: \chi_{\lambda,\rm lattice}(r_{\rm turn})
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 314
+  role: notes_stage
+  excerpt: \frac{2\lambda_{\rm phys}}{r_{\rm turn}^{\rm phys}}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: \frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: Let the reduced barrier potential near the turning point be \(V_{\rm red}(r)\). Under the physical energy map
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: the physical barrier force at the turning point is
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 332
+  role: notes_stage
+  excerpt: F_{\rm barrier}^{\rm phys}(r_{\rm turn})
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

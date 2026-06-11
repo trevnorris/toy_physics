@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage172_wl_canonical_banner
+parameter_name: u_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage172_wl_canonical_banner__phase_b__u_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '172'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_172.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Identifies \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), reducing the linear
+    grouped outlet problem to physical slopes.}
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 3
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 172: Collapse of the Linear Grouped Outlet Problem to the Physical Slopes `u_2^{(1)}`
+    and `P_1`'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 26
+  role: notes_stage
+  excerpt: 1. the grouped conservative even response coefficient \(u_2\), and
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 32
+  role: notes_stage
+  excerpt: \mathfrak K_1=-D_0\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 42
+  role: notes_stage
+  excerpt: -\frac{3(1-\sigma_*)}{\sigma_*}\,\delta u_2^{(A)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 58
+  role: notes_stage
+  excerpt: '> compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) on the actual moving-throat branch.'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 66
+  role: notes_stage
+  excerpt: u_2^{(A)}=-\frac{D_{A,2}}{D_{A,0}},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 75
+  role: notes_stage
+  excerpt: u_2=\frac19,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 88
+  role: notes_stage
+  excerpt: u_2^{(A)}=u_2+\epsilon\,\lambda_A\,u_2^{(1)}+O(\epsilon^2),
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 99
+  role: notes_stage
+  excerpt: a_{u,2}=\frac{\epsilon}{4}\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 101
+  role: notes_stage
+  excerpt: b_{u,2}=\frac{3\epsilon}{4}\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 129
+  role: notes_stage
+  excerpt: \delta u_2^{(A)}
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 131
+  role: notes_stage
+  excerpt: -\frac{\delta D_{A,2}+u_2\,\delta D_{A,0}}{D_0},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 144
+  role: notes_stage
+  excerpt: -D_0\,\delta u_2^{(A)}+\left(\frac19-u_2\right)\delta D_{A,0},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 157
+  role: notes_stage
+  excerpt: u_2=\frac19,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 162
+  role: notes_stage
+  excerpt: \mathcal K_A=-D_0\,\delta u_2^{(A)}.
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 169
+  role: notes_stage
+  excerpt: \mathcal K_A=-D_0\,\delta u_2^{(A)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 190
+  role: notes_stage
+  excerpt: \delta u_2^{(A)}=\epsilon\,\lambda_A\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 197
+  role: notes_stage
+  excerpt: \mathfrak K_1=-D_0\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 238
+  role: notes_stage
+  excerpt: the first-order variation on the canonical branch \((u_2,u_4)=(1/9,4/81)\) is
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 248
+  role: notes_stage
+  excerpt: \delta u_4^{(A)}=\frac89\,\delta u_2^{(A)}.
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 256
+  role: notes_stage
+  excerpt: '> u_4^{(1)}=\frac89\,u_2^{(1)}.'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 281
+  role: notes_stage
+  excerpt: -\frac{3(1-\sigma_*)}{\sigma_*}\,\delta u_2^{(A)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 300
+  role: notes_stage
+  excerpt: -\frac{3(1-\sigma_*)}{\sigma_*}\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 313
+  role: notes_stage
+  excerpt: '- \(\kappa_1\) is controlled only by the physical grouped-response slope \(u_2^{(1)}\),'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 328
+  role: notes_stage
+  excerpt: \delta u_2^{(A)}=0,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 330
+  role: notes_stage
+  excerpt: u_2^{(1)}=0.
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 357
+  role: notes_stage
+  excerpt: '> after even canonical preservation has killed the conservative grouped-response slope \(u_2^{(1)}\), the entire
+    remaining linear grouped quadrupole-normalization defect is just the weak-axisymmetric logarithmic slope of the physical
+    outgoing prefactor.'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 362
+  role: notes_stage
+  excerpt: '- now to \((u_2^{(1)},P_1/P_0)\),'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 384
+  role: notes_stage
+  excerpt: (-D_0 u_2^{(1)},\ D_0 P_1);
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 388
+  role: notes_stage
+  excerpt: u_4^{(1)}=\frac89\,u_2^{(1)};
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 392
+  role: notes_stage
+  excerpt: \kappa_1=-\frac{3(1-\sigma_*)}{\sigma_*}u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 403
+  role: notes_stage
+  excerpt: '> compute the weak-axisymmetric physical slopes \(u_2^{(1)}\) and \(P_1/P_0\) — and, on the even-preserving branch,
+    just \(P_1/P_0\) — directly from the actual grouped moving-throat response.'
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. Exact first-order variation formulas for the physical grouped variables u_2^(A) and P_0^(A).
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. Canonical-even collapse K_A = -D_0 delta u_2^(A) at u_2 = 1/9.
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 4. Equivalence of the microscopic even-consistency relation to delta u_4 = (8/9) delta u_2.
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: D0, N0, u2 = sp.symbols("D0 N0 u2", real=True, nonzero=True)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: D2 = -u2 * D0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: u2A = -DA2 / DA0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: delta_u2 = sp.simplify((sp.series(u2A, eps, 0, 2).removeO() - u2) / (eps * lam))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

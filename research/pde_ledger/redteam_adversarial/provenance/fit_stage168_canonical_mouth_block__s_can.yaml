@@ -1,0 +1,100 @@
+schema_version: 1
+candidate_id: fit_stage168_canonical_mouth_block
+parameter_name: S_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage168_canonical_mouth_block__phase_b__s_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '168'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 190
+  role: notes_stage
+  excerpt: On the renormalized co-evolving canonical point,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 222
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_*^2}}\,\delta_\perp,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 228
+  role: notes_stage
+  excerpt: \left(1-\frac14\mathcal S_{\rm can}\right)\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 229
+  role: notes_stage
+  excerpt: -\frac{\Sigma_0^{\rm can}}{4}\delta\mathcal S.
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 239
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}\mathcal S_{\rm can}}{\sqrt{1+\mathfrak r_*^2}}\,
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 374
+  role: notes_stage
+  excerpt: Requiring preservation of the canonical conservative even \(l=2\) fingerprint means
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 392
+  role: notes_stage
+  excerpt: '> exact first-order preservation of the canonical conservative even branch kills the weighted scalar slippage
+    combination \(\varepsilon_\perp\) and the mixed-lane scale defect \(\delta\kappa_W\).'
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 457
+  role: notes_stage
+  excerpt: That is the smallest next derivation step that can actually move the theorem forward.
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. Exact cancellation of the lower-branch transport laws from Stage 165.
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: Sigma0, S_can, dSigma0, dS = sp.symbols("Sigma0 S_can dSigma0 dS", real=True)
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: deltaPi = (1 - sp.Rational(1, 4) * S_can) * dSigma0 - Sigma0 * dS / 4 + Sigma0 * S_can * delta_perp_slip / s
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: (1 - sp.Rational(1, 4) * S_can) * dSigma0
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: '- Sigma0 * dS / 4'
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: '- Sigma0 * S_can * eps_perp / s'
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: Pi_epsT = -Sigma0_num * S_num * g_num / s_num
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: Pi_epsv = -Sigma0_num * S_num * (g_num + B_num) / s_num
+- path: scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: Pi_epsL = -Sigma0_num * S_num * C_num / s_num
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

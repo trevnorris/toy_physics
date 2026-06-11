@@ -1,0 +1,200 @@
+schema_version: 1
+candidate_id: fit_stage231_dynamic_budget_carry
+parameter_name: B_dyn_both_inf
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage231_dynamic_budget_carry__phase_b__b_dyn_both_inf.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '231'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_231.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~231 rewrites the selected-branch dynamic-class map in the physical continuum-placement
+    variables.}
+- path: paper/stages/stage_231.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 231: Continuum Placement Pullback of the Selected-Branch Dynamic-Class Map'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried universal selected-branch D/N geometry, the exact continuum placement map, and the
+    Stage-230 selected-branch classifier-to-dynamic-window compiler.**'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: It takes the exact Stage-230 dynamic classifier
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 12
+  role: notes_stage
+  excerpt: and pulls it all the way back through the actual continuum selected-branch placement map, so the same-charge dynamic
+    verdict is expressed directly in the physical kernel ratios of the moving-throat branch.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 18
+  role: notes_stage
+  excerpt: 'Stage 230 solved the exact dynamic-sign problem on the full selected-branch classifier half-line:'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: '- the wall-like dynamic window never became the first kill condition,'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: '> pull that classifier and its dynamic sign thresholds back through the **actual continuum selected-branch placement
+    map**, so the same-charge verdict is stated directly in the physical kernel ratios of the moving-throat branch.'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 48
+  role: notes_stage
+  excerpt: so larger normalization demand ratio always pushes the physical selected branch in the denominator-like / dynamically
+    safer direction;
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: 5. and the refined verdict that even on the **actual continuum-selected branch** the dynamic window is still not
+    the first kill condition.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: F\to+\infty\quad(\xi\to1^-),
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: '### 1.2 Exact selected-branch classifier and Stage-230 dynamic thresholds'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 160
+  role: notes_stage
+  excerpt: \delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*}\approx 0.723111617875019,
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: '- if \(\delta\ge \delta_*^{(\rm dyn)}\), the nonempty dynamic ceiling is infinite on the whole selected branch;'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: '> larger normalization demand ratio \(R_{\rm target}\) always pushes the physical selected branch in the denominator-like
+    / dynamically safer direction.'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: So every dynamic-class condition on the abstract selected branch has a unique continuum-placement target curve.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 348
+  role: notes_stage
+  excerpt: '## 4. Two pulled-back dynamic-class surfaces'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 358
+  role: notes_stage
+  excerpt: \delta_c=\delta_*^{(\rm dyn)}=\frac{8}{9\mathcal R_*}\approx 0.723111617875019.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 377
+  role: notes_stage
+  excerpt: '> once the physical normalization demand ratio exceeds \(R_{\rm flip}(\delta)\), the lower wall-like pole improves
+    and the nonempty dynamic ceiling becomes infinite.'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 381
+  role: notes_stage
+  excerpt: \delta\ge \delta_*^{(\rm dyn)},
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 451
+  role: notes_stage
+  excerpt: So the physical selected branch becomes dynamically sign-safe quite early.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 452
+  role: notes_stage
+  excerpt: For \(\delta=0.75\), the nonempty dynamic ceiling is already infinite from onset, even though the branch is not
+    yet denominator-like from onset because \(0.75<8/9\).
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 505
+  role: notes_stage
+  excerpt: \text{nonempty dynamic ceiling infinite},
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 520
+  role: notes_stage
+  excerpt: '- lowering \(M_{\rm mix}\) first drives the actual branch across the dynamic sign-flip threshold,'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 523
+  role: notes_stage
+  excerpt: This is the first exact continuum-kernel dynamic-class map.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 531
+  role: notes_stage
+  excerpt: \inf B_{\rm dyn}^{(\rm both)}
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 536
+  role: notes_stage
+  excerpt: B_{\rm stat}^{(\rm both)},
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 539
+  role: notes_stage
+  excerpt: \inf B_{\rm dyn}^{(\rm nonempty)}
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 549
+  role: notes_stage
+  excerpt: \mathcal R_{\rm phys}(\delta,R_{\rm target})\subseteq [0,\infty).
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 554
+  role: notes_stage
+  excerpt: B_{\rm dyn}^{(\rm both)}(\text{physical})
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 556
+  role: notes_stage
+  excerpt: B_{\rm stat}^{(\rm both)},
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 561
+  role: notes_stage
+  excerpt: B_{\rm dyn}^{(\rm nonempty)}(\text{physical})
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 569
+  role: notes_stage
+  excerpt: '> even on the actual continuum-selected branch, the first kill condition remains the transported static \(\Xi_1\)
+    budget, not the wall-like dynamic window.'
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 584
+  role: notes_stage
+  excerpt: 3. there is an exact pulled-back sign-flip threshold \(R_{\rm flip}(\delta)\) beyond which the nonempty dynamic
+    ceiling is infinite;
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 591
+  role: notes_stage
+  excerpt: 6. but nowhere on the continuum placement map does the dynamic window become the first kill condition.
+- path: notes/stages/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.md
+  line: 594
+  role: notes_stage
+  excerpt: The remaining first kill condition is still the **static placement of \(\Xi_1\) on the actual moving-throat branch**,
+    not the wall-like dynamic window.
+- path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+  line: 2
+  role: sympy_script
+  excerpt: from typing import Callable, Sequence
+- path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 'print("=== Stage 231 SymPy audit: continuum pullback of the selected-branch dynamic-class map ===")'
+- path: scripts/moving_throat_pde_stage231_continuum_placement_pullback_of_the_selected_branch_dynamic_class_map_sympy_audit.py
+  line: 180
+  role: sympy_script
+  excerpt: '# Carried from Stage 230 selected-branch sign-flip data: s_minus_den/s_minus_num in scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

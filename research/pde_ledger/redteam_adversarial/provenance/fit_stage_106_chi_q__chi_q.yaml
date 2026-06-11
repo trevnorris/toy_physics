@@ -1,0 +1,128 @@
+schema_version: 1
+candidate_id: fit_stage_106_chi_q
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_106_chi_q__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '106'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_106.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_106.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: paper/stages/stage_106.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: paper/stages/stage_106.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 7
+  role: notes_stage
+  excerpt: \chi_Q=1
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 15
+  role: notes_stage
+  excerpt: \hat m_0^{\,2}\,\chi_Q\,N_Q=1,
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 20
+  role: notes_stage
+  excerpt: '- \(\chi_Q\) is the outgoing quadrupole normalization factor,'
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 30
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 73
+  role: notes_stage
+  excerpt: 5. and the explicit compact passive/outgoing grouped-`P2` DtN model gives \(\chi_Q=1\).
+- path: notes/stages/moving_throat_pde_stage106_canonical_outgoing_reduced_closure.md
+  line: 81
+  role: notes_stage
+  excerpt: '> Does the completed moving-throat PDE actually realize the canonical compact passive/outgoing grouped-`P2` DtN
+    branch, rather than a deformed branch with \(\chi_Q\neq1\)?'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: '* Stage 105 (chiQ_fix_from_outgoing_dtn) fixes chi_Q = 1 from that fingerprint'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 'This stage uses chi_Q = 1 as a carry-in and focuses on item (i): factorization'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: separability of m0hat^2 * chi_Q * N_Q and the closure to N_Q = 1.
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: m0hat, chi_Q, N_Q = sp.symbols("m0hat chi_Q N_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: constraint = sp.Eq(m0hat**2 * chi_Q * N_Q, 1)
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: NQ_canonical = sp.simplify(NQ_general.subs(chi_Q, 1))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: gamma_eff_canonical = sp.simplify((m0hat**2 * Gamma5).subs(chi_Q, 1))
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '# N_Q = 1/chi_Q, so gamma_eff = m0hat^2 * N_Q * Gamma5_target collapses to'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '# Gamma5_target / chi_Q. Expanding around chi_Q = 1 + Delta_Q gives a real'
+- path: scripts/moving_throat_pde_stage106_canonical_outgoing_reduced_closure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: gamma_eff_off = (m0hat**2 * Gamma5).subs([(m0hat, 1), (chi_Q, 1 + Delta_Q)])
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_106.tex
+    attempted_sources:
+    - paper/stages/stage_106.tex
+    - research/pde_ledger/paper/stages/stage_106.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_106.tex
+    attempted_sources:
+    - paper/stages/stage_106.tex
+    - research/pde_ledger/paper/stages/stage_106.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

@@ -1,0 +1,182 @@
+schema_version: 1
+candidate_id: fit_stage126_g_match_pi_over_4_card
+parameter_name: mathfrak_g_match
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage126_g_match_pi_over_4_card__phase_b__mathfrak_g_match.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '126'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_126.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Self-matched derivative profile gives \(\mathfrak g=\pi/4\); a positive convex family hits the lower branch.
+- path: paper/stages/stage_126.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 8
+  role: notes_stage
+  excerpt: '## 1. Self-matched derivative profile'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 13
+  role: notes_stage
+  excerpt: \sigma_{\rm match}(z)=k\cos(kz),
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 25
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm match}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 27
+  role: notes_stage
+  excerpt: \int_0^L \sigma_{\rm match}(z)\cos(kz)\,dz
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 36
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm match}=\frac{\pi}{4}\approx 0.785398163397448.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 40
+  role: notes_stage
+  excerpt: This already lies much closer to the physical lower compensated branch than the naive point-source value \(\mathfrak
+    g=1\).
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 46
+  role: notes_stage
+  excerpt: \mathfrak g_-^{F1}\approx 0.758035078944663.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 48
+  role: notes_stage
+  excerpt: Therefore the self-matched source overshoots the exact compensated lower branch by
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 50
+  role: notes_stage
+  excerpt: \Delta\mathfrak g_{\rm match}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 52
+  role: notes_stage
+  excerpt: \frac{\pi}{4}-\mathfrak g_-^{F1}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 56
+  role: notes_stage
+  excerpt: Since traction scales as \(\mathfrak g^{-1}\),
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 59
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(-)}}{\mathcal T_m^{\rm match}}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 61
+  role: notes_stage
+  excerpt: \frac{\pi/4}{\mathfrak g_-^{F1}}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 65
+  role: notes_stage
+  excerpt: So the exact Family-1 compensated branch is only a **3.61% traction enhancement** away from the self-matched derivative
+    profile.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 80
+  role: notes_stage
+  excerpt: \mathfrak g_\xi
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 87
+  role: notes_stage
+  excerpt: \frac{2}{\pi}<\mathfrak g_-^{F1}<\frac{\pi}{4},
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 91
+  role: notes_stage
+  excerpt: \mathfrak g_{\xi_*}=\mathfrak g_-^{F1}.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 98
+  role: notes_stage
+  excerpt: \frac{\frac{\pi}{4}-\mathfrak g_-^{F1}}{\frac{\pi}{4}-\frac{2}{\pi}}
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 105
+  role: notes_stage
+  excerpt: So only an **18.4% admixture** of the fully washed positive profile \(1/L\) into the self-matched derivative profile
+    reaches the exact lower compensated branch.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 111
+  role: notes_stage
+  excerpt: '- the point-source branch \(\mathfrak g=1\) is too high,'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 112
+  role: notes_stage
+  excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: '# Self-matched derivative profile'
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: sigma_match = k*sp.cos(k*z)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: norm_match = sp.simplify(sp.integrate(sigma_match, (z, 0, L)))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: g_match = sp.simplify(sp.integrate(sigma_match*sp.cos(k*z), (z, 0, L)))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: print("sigma_match normalization =", norm_match)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: print("g_match =", g_match)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: 'if sp.simplify(norm_match - 1) != 0 or sp.simplify(g_match - sp.pi/4) != 0:'
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: raise AssertionError("Self-matched profile formulas failed.")
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: print("delta_g_match =", delta_g)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: print("T_- / T_match =", traction_ratio)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: print("g_match numeric =", sp.N(sp.pi/4, 20))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: min_match = sp.calculus.util.minimum(k*sp.cos(k*z), z, sp.Interval(0, L))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: print("min sigma_match on [0,L] =", min_match)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: 'if sp.simplify(min_match) != 0:'
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: raise AssertionError("sigma_match minimum on [0,L] should be 0 (at z=L).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

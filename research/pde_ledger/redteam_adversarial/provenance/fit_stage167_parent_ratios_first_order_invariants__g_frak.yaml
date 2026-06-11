@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage167_parent_ratios_first_order_invariants
+parameter_name: g_frak
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage167_parent_ratios_first_order_invariants__phase_b__g_frak.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '167'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 30
+  role: notes_stage
+  excerpt: \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 32
+  role: notes_stage
+  excerpt: \mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 282
+  role: notes_stage
+  excerpt: '### 4.2 Normalized mixed background flow \(\mathfrak r\)'
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 286
+  role: notes_stage
+  excerpt: \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 290
+  role: notes_stage
+  excerpt: \delta\ln\mathfrak r
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 300
+  role: notes_stage
+  excerpt: \delta\ln\mathfrak r=0.
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 304
+  role: notes_stage
+  excerpt: '### 4.3 Normalized mouth-coupling ratio \(\mathfrak g\)'
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 308
+  role: notes_stage
+  excerpt: \mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}},
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 312
+  role: notes_stage
+  excerpt: \delta\ln\mathfrak g
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 322
+  role: notes_stage
+  excerpt: \delta\ln\mathfrak g=0.
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 326
+  role: notes_stage
+  excerpt: So both parent compensation coordinates \((\mathfrak r,\mathfrak g)\) are exact first-order invariants.
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 336
+  role: notes_stage
+  excerpt: \delta\ln\mathfrak g-\delta\ln\mathfrak r,
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 356
+  role: notes_stage
+  excerpt: \mathfrak g_*\,
+- path: notes/stages/moving_throat_pde_stage167_bundle_transport_tangent_compensation.md
+  line: 359
+  role: notes_stage
+  excerpt: \frac{1}{4\sqrt{1+\mathfrak r_*^2}}\,
+- path: scripts/moving_throat_pde_stage167_bundle_transport_tangent_compensation_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. Exact first-order invariance of r_c, frak r, frak g.
+- path: scripts/moving_throat_pde_stage167_bundle_transport_tangent_compensation_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: expect_zero("delta ln frak r", dr)
+- path: scripts/moving_throat_pde_stage167_bundle_transport_tangent_compensation_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: expect_zero("delta ln frak g", dg)
+- path: scripts/moving_throat_pde_stage167_bundle_transport_tangent_compensation_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: print("  delta ln r_c    = delta ln frak r = delta ln frak g = 0")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

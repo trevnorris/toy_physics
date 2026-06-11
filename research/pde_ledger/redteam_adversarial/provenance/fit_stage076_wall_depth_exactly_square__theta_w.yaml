@@ -1,0 +1,153 @@
+schema_version: 1
+candidate_id: fit_stage076_wall_depth_exactly_square
+parameter_name: Theta_w
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage076_wall_depth_exactly_square__phase_b__theta_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '076'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_076.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~076 expresses the remaining wall-depth datum \(\Theta_w\) in normalized Family--1 density
+    variables.}
+- path: paper/stages/stage_076.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage076-theta}
+- path: paper/stages/stage_076.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \Theta_w=25\lambda_\mu^2\rho_w^2}.
+- path: paper/stages/stage_076.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The wall-depth lock \eqref{eq:app-stage076-theta}.}
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 7
+  role: notes_stage
+  excerpt: '`Theta_w := 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2),`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 11
+  role: notes_stage
+  excerpt: '`Upsilon_w = alpha_r^2 Theta_w,`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 15
+  role: notes_stage
+  excerpt: The next honest step is to stop treating `Theta_w` as an opaque constant.
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 70
+  role: notes_stage
+  excerpt: '`Theta_w = 4 rho_w^2 mu_*^2 / (hbar^2 c_(s,w)^2)`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 89
+  role: notes_stage
+  excerpt: '`Theta_w = lambda_mu^2 rho_w^2 / (16 ell^2).`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 113
+  role: notes_stage
+  excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2.`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 115
+  role: notes_stage
+  excerpt: This is the cleanest algebraic reduction of `Theta_w` so far.
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 125
+  role: notes_stage
+  excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2`'
+- path: notes/stages/moving_throat_pde_stage076_n5_wall_depth_lock.md
+  line: 129
+  role: notes_stage
+  excerpt: So the only real remaining task on this branch is now to choose the correct effective wall density `rho_w` on the
+    active shell and compare the resulting `Theta_w` to the explicit Stage-075 threshold window.
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact algebraic reduction of Theta_w under the local enthalpy lock mu_* = lambda_mu h_w.
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact healing-lock reduction Theta_w = lambda_mu^2 rho_w^2 / (16 ell^2).
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Reference-branch form Theta_w = 25 lambda_mu^2 rho_w^2 in normalized Family-1 wall units.
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: Theta_w = sp.simplify(4 * rho_w**2 * mu_star_solved**2 / (hbar**2 * csw**2))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '# Closed-form target from notes section 2: Theta_w = lambda_mu^2 m^2 rho_w^2 c_sw^2 / (4 hbar^2).'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: Theta_target = sp.Rational(1, 4) * lambda_mu**2 * m**2 * rho_w**2 * csw**2 / hbar**2
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: print("Theta_w (enthalpy lock) =", Theta_w)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: expect_zero("Theta_w under enthalpy lock", Theta_w - Theta_target)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# Substitute c_sw in Theta_w using the inverse relation (solve for c_sw):'
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: Theta_w_in_ell = sp.simplify(Theta_w.subs(csw, csw_from_ell))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Theta_heal_target = sp.simplify(lambda_mu**2 * rho_w**2 / (16 * ell**2))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: expect_zero("healing-lock reduction", Theta_w_in_ell - Theta_heal_target)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: print("Theta_w (healing lock) =", Theta_heal_target)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Theta_ref = sp.simplify(Theta_heal_target.subs(ref_sub))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("Theta_w (reference branch, general a) =", Theta_ref)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: Theta_ref_norm = sp.simplify(Theta_ref.subs(a, 1))
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("Theta_w (reference branch, normalized wall units) =", Theta_ref_norm)
+- path: scripts/moving_throat_pde_stage076_n5_wall_depth_lock_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: expect_zero("normalized reference factor", Theta_ref_norm - ref_target)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

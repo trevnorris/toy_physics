@@ -1,0 +1,119 @@
+schema_version: 1
+candidate_id: fit_stage170_canonical_u2_u4
+parameter_name: u_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage170_canonical_u2_u4__phase_b__u_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '170'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 73
+  role: notes_stage
+  excerpt: u_2^{(A)}=-\frac{D_{A,2}}{D_{A,0}},
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 90
+  role: notes_stage
+  excerpt: u_2=\frac19,
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 100
+  role: notes_stage
+  excerpt: \delta u_2^{(A)}
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 175
+  role: notes_stage
+  excerpt: \delta E_2^{(A)}=\delta u_2^{(A)};
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 187
+  role: notes_stage
+  excerpt: \delta u_2^{(A)}
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 204
+  role: notes_stage
+  excerpt: -\frac{3(1-\sigma_*)}{\sigma_*}\,\delta u_2^{(A)},
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 255
+  role: notes_stage
+  excerpt: \delta E_2^{(A)}=\delta u_2^{(A)},
+- path: notes/stages/moving_throat_pde_stage170_linear_grouped_outlet_map.md
+  line: 262
+  role: notes_stage
+  excerpt: \delta u_4^{(A)}=\frac89\,\delta u_2^{(A)}.
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. Linear grouped-bundle transport formulas for delta u2, delta u4, delta P0.
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: u2 = sp.Rational(1, 9)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: D2 = -u2 * D0
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: u2_full = - (D2 + eps*dD2) / (D0 + eps*dD0)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: du2 = sp.expand(sp.series(u2_full, eps, 0, 2).removeO()).coeff(eps, 1)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: expect_zero("delta u2 + (dD2 + dD0/9)/D0", du2 + (dD2 + dD0/9)/D0)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: du2_hyb = - sigma * dkappa / (3 * (1 - sigma))
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: dkappa_from_du2 = sp.solve(sp.Eq(sp.Symbol('du2sym'), du2_hyb), dkappa)[0].subs(sp.Symbol('du2sym'), du2)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: dkappa_from_du2 - 3*(1-sigma)*(dD2 + dD0/9)/(sigma*D0)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: du4_from_kappa = sp.simplify(du4_from_hyb.subs(dkappa, dkappa_from_du2))
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: expect_zero("delta u4 - (8/9) delta u2", du4_from_kappa - sp.Rational(8,9) * du2)
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: relation = sp.simplify(sp.solve(sp.Eq(du4, sp.Rational(8,9)*du2), dD4)[0])
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: 'a_kappa_from_map = sp.simplify(sp.expand(dkappa_from_du2.subs({dD2: aD2, dD0: aD0})))'
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: 'b_kappa_from_map = sp.simplify(sp.expand(dkappa_from_du2.subs({dD2: bD2, dD0: bD0})))'
+- path: scripts/moving_throat_pde_stage170_linear_grouped_outlet_map_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: 'dkW[A] = dkappa_from_du2.subs({dD2: eps_l*lam*D2_1, dD0: eps_l*lam*D0_1})'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

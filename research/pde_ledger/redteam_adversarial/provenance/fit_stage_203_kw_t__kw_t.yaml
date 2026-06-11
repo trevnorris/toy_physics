@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage_203_kw_t
+parameter_name: KW_t
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_203_kw_t__phase_b__kw_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '203'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: KW_t = KW0 * sp.exp(t * kapW)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: '* KW_t**2'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: '* ((gamma_t**2 * lam_t**2 * sigma) / (KU_t * KW_t)) ** (-Estar)'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

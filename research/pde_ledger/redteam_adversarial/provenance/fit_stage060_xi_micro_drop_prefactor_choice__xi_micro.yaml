@@ -1,0 +1,172 @@
+schema_version: 1
+candidate_id: fit_stage060_xi_micro_drop_prefactor_choice
+parameter_name: Xi_micro
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage060_xi_micro_drop_prefactor_choice__phase_b__xi_micro.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '060'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_060.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 060]{Stage 060: Entropic Source Microclosure and Microscopic Gain}'
+- path: paper/stages/stage_060.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage060_entropic_microclosure_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage060_entropic_microclosure_mathematica_audit.txt}.}'
+- path: paper/stages/stage_060.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: with a strictly positive mobility and a convex local entropy contribution.  The resulting stationary zero-flux
+    state is the same exponential branch.  The microscopic source/support coupling is then summarized by a dimensionless gain
+    \(G_{\rm micro}\), later projected explicitly from the parent action.
+- path: paper/stages/stage_060.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{A positive-density microclosure for the transport source family and the definition of the microscopic
+    gain variable.}
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 060: Entropic Source Microclosure and the Microscopic Support/Source Gain'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 13
+  role: notes_stage
+  excerpt: 'The next honest step is to derive that quantity from the first explicit microscopic closure that is still compatible
+    with the parent 4D ontology:'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 24
+  role: notes_stage
+  excerpt: 1. the first explicit microscopic source/support free energy can be written as
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 67
+  role: notes_stage
+  excerpt: '`Pe = Xi_micro Delta(Pe;kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 69
+  role: notes_stage
+  excerpt: with the exact microscopic coupling
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 71
+  role: notes_stage
+  excerpt: '`Xi_micro = Lambda_phi^2 L^2 / (Theta_sigma T_X)`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 87
+  role: notes_stage
+  excerpt: So the operator strength is no longer an arbitrary ratio of mobility and diffusion. On the first explicit microscopic
+    closure, it collapses to one entropic-support gain
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 89
+  role: notes_stage
+  excerpt: '`Xi_micro = chi_sigma Lambda_phi^2 L^2/T_X.`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 93
+  role: notes_stage
+  excerpt: '## 1. Microscopic source/support free energy'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 151
+  role: notes_stage
+  excerpt: This is the microscopic origin of the Stage-058 phenomenological pair `(D_sigma,mu_sigma)`.
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 186
+  role: notes_stage
+  excerpt: '## 4. Exact microscopic coupling `Xi_micro`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 201
+  role: notes_stage
+  excerpt: Therefore the Stage-058 branch equation is recovered with the exact microscopic coupling
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 203
+  role: notes_stage
+  excerpt: '`Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X).`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 211
+  role: notes_stage
+  excerpt: '`Xi_micro = chi_sigma Lambda_phi^2 L^2/T_X.`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 215
+  role: notes_stage
+  excerpt: '`Xi_micro = mu_sigma Lambda_phi^2 L^2/(D_sigma T_X).`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 252
+  role: notes_stage
+  excerpt: So this microscopic closure is automatically passive.
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 264
+  role: notes_stage
+  excerpt: 'After Stage 060, the same quantity is an explicit microscopic gain:'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 266
+  role: notes_stage
+  excerpt: '`Xi_micro = chi_sigma Lambda_phi^2 L^2/T_X.`'
+- path: notes/stages/moving_throat_pde_stage060_entropic_microclosure.md
+  line: 278
+  role: notes_stage
+  excerpt: '> compute the actual moving-throat values of `chi_sigma`, `Lambda_phi`, `T_X`, and `L`, form `Xi_micro`, and compare
+    it directly to the exact support thresholds from Stage 059.'
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: Stage 60 SymPy audit — entropic source microclosure and microscopic Xi.
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: banner("STAGE 60 — ENTROPIC SOURCE MICROCLOSURE")
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# take the nonzero branch matching dphi/L != 0'
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: '#      so the headline Xi_micro value below has a physical basis.'
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: '# 4) microscopic Xi from support normalization'
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: Xi_micro = sp.simplify(Lam * phi_from_Phi / Theta / Delta)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: print("Xi_micro =", Xi_micro)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: expect_zero("Xi_micro - Lambda^2 L^2/(Theta T_X)", Xi_micro - Lam**2 * L**2 / (Theta * T_X))
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: expect_zero("Xi_micro susceptibility form", Xi_micro.subs(Theta, 1/chi) - chi * Lam**2 * L**2 / T_X)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: expect_zero("Xi_micro phenomenological form", Xi_micro.subs(Theta, Dsig/Msig) - Msig*Lam**2 * L**2/(Dsig*T_X))
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: print("4. The microscopic support/source gain is Xi_micro = Lambda_phi^2 L^2/(Theta_sigma T_X) = chi_sigma Lambda_phi^2
+    L^2/T_X.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,112 @@
+schema_version: 1
+candidate_id: fit_stage031_hf_identity_derived_not_assumed
+parameter_name: dlambda_minus_dalpha
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage031_hf_identity_derived_not_assumed__phase_b__dlambda_minus_dalpha.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '031'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_031.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage031-ds-dalpha}
+- path: paper/stages/stage_031.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage031-dP-dalpha}
+- path: paper/stages/stage_031.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~031 outputs the derivative identities \eqref{eq:app-stage031-ds-dalpha}--\eqref{eq:app-stage031-dP-dalpha},
+    the refined threshold \eqref{eq:app-stage031-alpha-crit}, and the unique stable crossing theorem.}
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: lam_minus = sp.simplify((2 * A + DK - alpha * sigma - R) / 2)
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: s_minus = sp.simplify(-sp.diff(lam_minus, alpha))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: ds_exact = sp.simplify(sp.diff(s_minus, alpha))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: expect_zero("ds_-/dalpha exact formula", ds_exact - ds_expected)
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("ds_-/dalpha =")
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: P0_sel = sp.simplify(beta0 * s_minus / lam_minus)
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: dP_physical = beta0 * (ds_expected * lam_minus + s_minus**2) / lam_minus**2
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: expect_zero("dP0_-/dalpha direct identity", sp.simplify(dP_direct - dP_physical))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("dP0_-/dalpha =")
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: expect_zero("lambda_-(0)", sp.simplify(lam_minus.subs(alpha, 0) - A))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: expect_zero("s_-(0)", sp.simplify(s_minus.subs(alpha, 0) - x0))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: expect_zero("det factorization", sp.expand(lam_minus * lam_plus - (A * (A + DK) - alpha * T0)))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: lam_minus_crit = sp.together(lam_minus.subs(alpha, alpha_crit)).replace(
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: expect_zero("lam_-(alpha_crit)", sp.simplify(lam_minus_crit))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: sp.expand(lam_minus * lam_plus - T0 * (alpha_crit - alpha)),
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: P0_factored = sp.simplify(beta0 * s_minus * lam_plus / (T0 * (alpha_crit - alpha)))
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: print("  • exact overlap derivative ds_-/dalpha = 2 DK^2 kappa0^2 kappa1^2 / R^3")
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("  • exact monotonicity identity for dP0_-/dalpha")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

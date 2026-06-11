@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage021_outgoing_fingerprint_omega5_coefficient
+parameter_name: a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage021_outgoing_fingerprint_omega5_coefficient__phase_b__a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '021'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_021.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 021]{Stage 021: Reduced Maxwell/mixed one-port normal form}'
+- path: paper/stages/stage_021.tex
+  line: 2
+  role: paper_stage_tex
+  excerpt: \label{stage:021}
+- path: paper/stages/stage_021.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part I; primary anchor \resultanchor{MTDC-T4}.}
+- path: paper/stages/stage_021.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_021.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \paragraph{Source and audit.}
+- path: paper/stages/stage_021.tex
+  line: 8
+  role: paper_stage_tex
+  excerpt: This stage corresponds to
+- path: paper/stages/stage_021.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \StageFile{scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py}.
+- path: paper/stages/stage_021.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: It retains the earlier reduced Maxwell/mixed calculation as the one-port
+- path: paper/stages/stage_021.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: normal form used downstream.  This is now the tail of the projection-first
+- path: paper/stages/stage_021.tex
+  line: 12
+  role: paper_stage_tex
+  excerpt: derivation, not the primary EM derivation.
+- path: paper/stages/stage_021.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: \paragraph{Mixed gauge invariants.}
+- path: paper/stages/stage_021.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: Under \(A_0\mapsto A_0-\partial_t\chi\), \(A_a\mapsto A_a+\partial_a\chi\),
+- path: paper/stages/stage_021.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: and \(A_w\mapsto A_w+\partial_w\chi\), the mixed fields
+- path: paper/stages/stage_021.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_021.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage021-mixed-fields}
+- path: paper/stages/stage_021.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: E_w=-\partial_tA_w-\partial_wA_0,
+- path: paper/stages/stage_021.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \qquad
+- path: paper/stages/stage_021.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: C_a=\partial_aA_w-\partial_wA_a
+- path: paper/stages/stage_021.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_021.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: are gauge invariant.
+- path: paper/stages/stage_021.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \paragraph{Reduced lane.}
+- path: paper/stages/stage_021.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: For one harmonic lane, eliminating the brane-like coordinate \(A_l\) and the
+- path: paper/stages/stage_021.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: mixed coordinate \(W_l\) gives
+- path: paper/stages/stage_021.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_021.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage021-self-energy}
+- path: paper/stages/stage_021.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \Sigma_l^{({\rm EM}+{\rm mix},{\rm cons})}(\omega)
+- path: paper/stages/stage_021.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \frac{g_{A,l}^2W_l(\omega)+2g_{A,l}g_{W,l}R_l+g_{W,l}^2A_l(\omega)}
+- path: paper/stages/stage_021.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: '{A_l(\omega)W_l(\omega)-R_l^2}.'
+- path: paper/stages/stage_021.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_021.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: The low-frequency conservative coefficients are
+- path: paper/stages/stage_021.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \begin{align}
+- path: paper/stages/stage_021.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage021-z-coeffs}
+- path: paper/stages/stage_021.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: z_0&=\frac{N_0^{\rm cons}}{\Delta_0},\\
+- path: paper/stages/stage_021.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: z_2&=\frac{N_0^{\rm cons}S_2-G_2\Delta_0}{\Delta_0^2},\\
+- path: paper/stages/stage_021.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: z_4&=\frac{N_0^{\rm cons}(S_2^2-\Delta_0)-S_2G_2\Delta_0}{\Delta_0^3}.
+- path: paper/stages/stage_021.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \end{align}
+- path: paper/stages/stage_021.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \paragraph{Outgoing transfer.}
+- path: paper/stages/stage_021.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: Replacing \(W_l(\omega)\) by \(W_l(\omega)-\Pi_l^{\rm out}(\omega)\) gives
+- path: paper/stages/stage_021.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: the first-order transfer factor
+- path: paper/stages/stage_021.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

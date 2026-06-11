@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_008_z2_int
+parameter_name: Z2_int
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_008_z2_int__phase_b__z2_int.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 008
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_008.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: S(w)=\frac{Z(w)}{Z_{\rm int}},
+- path: paper/stages/stage_008.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: Z_{\rm int}=\int Z(w)\,dw .
+- path: paper/stages/stage_008.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \mu_{\rm eff}^{\rm proj}=\frac{\mu_0}{Z_{\rm int}},
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: print("\n" + "=" * 88)
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: print(title)
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: print("=" * 88)
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Zint, IWZ = sp.symbols("Z_int I_WZ", positive=True, nonzero=True)
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("Start from the weighted bulk equation")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("  ∂_M(Z F^{MN}) + (1/ξ) ∂^N(H B) = μ0 J^N")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: print("with B := ∂·A and H(w) an arbitrary gauge-fixing weight.")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print("For a brane component ν ∈ {0,1,2,3}, projection with W(w) gives")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("  ∂_μ Proj_W[Z F^{μν}] + Boundary[W Z F^{wν}] - Proj_{W'}[Z F^{wν}] + (1/ξ) ∂^ν Proj_W[H B] = μ0 Proj_W[J^ν]")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: print("Under boundary decay / compact support in w:")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("  ∂_μ Proj_W[Z F^{μν}] - Proj_{W'}[Z F^{wν}] + (1/ξ) ∂^ν Proj_W[H B] = μ0 Proj_W[J^ν]")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("So H(w) changes only the projected gauge-driver term.")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("The homogeneous laws and the transverse leakage term stay the same.")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: print("Assume the zero-mode / far-field brane ansatz")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: print("  A_μ(x,w) = a_μ(x),   A_w = 0,   ∂_w A_μ = 0,   F^{wν} = 0,   J^ν(x,w) = j^ν(x) S(w).")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: print("Then B = ∂·a is independent of w, and the projected equation becomes")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("  I_WZ ∂_μ f^{μν} + (I_WH/ξ) ∂^ν(∂·a) = μ0 I_WS j^ν")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("with")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("  I_WZ := ∫ W(w) Z(w) dw")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: print("  I_WH := ∫ W(w) H(w) dw")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print("  I_WS := ∫ W(w) S(w) dw")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("After dividing by I_WZ:")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("  ∂_μ f^{μν} + (1/xi_eff_proj) ∂^ν(∂·a) = mu0_eff_proj j^ν")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("where")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("  mu0_eff_proj  =", sp.sstr(mu0_eff_proj))
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("  1/xi_eff_proj =", sp.sstr(inv_xi_eff_proj))
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("  xi_eff_proj   =", sp.sstr(xi_eff_proj))
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: print("This shows that projection-first produces BOTH an effective coupling and an effective gauge parameter.")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("Use the normalization ∫W(w) dw = 1.")
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: print()
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: print("Case H = 1 (unweighted gauge fixing):")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

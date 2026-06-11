@@ -1,0 +1,112 @@
+schema_version: 1
+candidate_id: fit_stage_187_ctr_ratio
+parameter_name: Ctr_ratio
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_187_ctr_ratio__phase_b__ctr_ratio.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '187'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 113
+  role: notes_stage
+  excerpt: '## 2. Exact finite log-ratio variables'
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 122
+  role: notes_stage
+  excerpt: Define the exact finite log-ratio vector
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 149
+  role: notes_stage
+  excerpt: Because the three direct branch quantities are monomials, equality of invariants between two states is **exactly
+    linear in these finite log-ratios**.
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 217
+  role: notes_stage
+  excerpt: Choose the five free finite log-ratios
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. The exact finite log-ratio equalities of the three monomial invariants are
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 3. Substituting those exact finite laws annihilates all invariant log-ratio
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: '# Finite log-ratio variables between two positive microscopic states.'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: '# Exact monomial-ratio equations in logarithmic form.'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("Exact finite log-ratio equations:")
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Positive primitive ratios (xtilde/x) for the eight microscopic variables.'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: Ctr_ratio = (rG * rC / rU) ** (1 + deltaU) * (rT / rU) ** (1 + chi)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Cnt_ratio = (rL ** 2 * rM / (rEta * rW ** 2)) * (
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: eps_ratio = rC ** 2 / (rU * rEta)
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: '"log C_tr ratio - row_tr",'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(Ctr_ratio), force=True) - row_tr.subs(log_subs),
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: '"log C_nt ratio - row_nt",'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(Cnt_ratio), force=True) - row_nt.subs(log_subs),
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: '"log epsilon_eta ratio - row_eta",'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(eps_ratio), force=True) - row_eta.subs(log_subs),
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: '# Same matrix as Stage 186, but now acting on finite log-ratios.'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: print("M_* Delta x = 0, but now Delta x is a finite log-ratio vector rather than an")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

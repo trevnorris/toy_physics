@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage197_chi_q_unity_packet_a_target
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage197_chi_q_unity_packet_a_target__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '197'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_197.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_197.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole Packet-A
+    scalar.}
+- path: paper/stages/stage_197.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: paper/stages/stage_197.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 197: Exact Conditional Packet-A Closure Theorem, the Equivalence `\Delta_{\rm branch}=0
+    \iff \chi_Q=1`, and the Final Retarded Finish-Line Reduction'
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 16
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 18
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 24
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 28
+  role: notes_stage
+  excerpt: \chi_Q,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 32
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}\chi_Q N_Q=1,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 47
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 52
+  role: notes_stage
+  excerpt: \chi_Q=1
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 56
+  role: notes_stage
+  excerpt: \Delta_Q:=\chi_Q-1=0,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 60
+  role: notes_stage
+  excerpt: \chi_Q=1
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 80
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm pole}=0.}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 100
+  role: notes_stage
+  excerpt: So after the isotropic front end is imposed, the only Packet-A entry that can still be nonzero is `\Delta_{\rm
+    norm}`.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 106
+  role: notes_stage
+  excerpt: \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1.}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 112
+  role: notes_stage
+  excerpt: \boxed{N_Q=\chi_Q^{-1}.}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 118
+  role: notes_stage
+  excerpt: From Stage 196, every extra isotropic retarded contribution whose first nonzero term is `O(\omega^7)` or `O(z^7)`
+    leaves `\chi_Q` unchanged. So the finish-line theorem below is already stable against all higher odd isotropic retarded
+    tails beyond theorem order.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 127
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 129
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 136
+  role: notes_stage
+  excerpt: a_2=b_2=a_4=b_4=a_{P_0}=b_{P_0}=\Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 141
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 143
+  role: notes_stage
+  excerpt: (0,0,0,0,0,0,0,\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 148
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 156
+  role: notes_stage
+  excerpt: N_Q=\frac{1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 163
+  role: notes_stage
+  excerpt: P_0^{\rm target}(\chi_Q^{-1}-1).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 169
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 172
+  role: notes_stage
+  excerpt: P_0^{\rm target}(\chi_Q^{-1}-1)
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 188
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 190
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 192
+  role: notes_stage
+  excerpt: \chi_Q^{-1}-1=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 194
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 204
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 206
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 213
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 217
+  role: notes_stage
+  excerpt: \Delta_Q:=\chi_Q-1=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 229
+  role: notes_stage
+  excerpt: \chi_Q
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 235
+  role: notes_stage
+  excerpt: \chi_Q-1
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

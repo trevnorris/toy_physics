@@ -1,0 +1,143 @@
+schema_version: 1
+candidate_id: fit_stage181_transfer_shape_27pi2_over_20
+parameter_name: R_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_transfer_shape_27pi2_over_20__phase_b__r_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '181'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 15
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,A}}{R_{\mathrm{target},A}}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 39
+  role: notes_stage
+  excerpt: R_{\mathrm{target}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 49
+  role: notes_stage
+  excerpt: 3. and determine whether coherent support can help cancel the grouped defect.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 61
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_\eta}{R_{\mathrm{target}}},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 88
+  role: notes_stage
+  excerpt: \partial_\zeta \ln R_{\mathrm{target}} = 0,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 113
+  role: notes_stage
+  excerpt: R_{\mathrm{target}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 124
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_\eta}{R_{\mathrm{target}}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 171
+  role: notes_stage
+  excerpt: R_{\mathrm{target}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 179
+  role: notes_stage
+  excerpt: \frac{\partial R_{\mathrm{target}}}{\partial \zeta}=0,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 181
+  role: notes_stage
+  excerpt: \frac{\partial \ln R_{\mathrm{target}}}{\partial \zeta}=0.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 288
+  role: notes_stage
+  excerpt: \mathcal R_1:=\frac{\delta\ln R_{\mathrm{target},A}}{\epsilon\lambda_A}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 290
+  role: notes_stage
+  excerpt: Using the coherent-branch expression for \(R_{\mathrm{target}}\),
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 292
+  role: notes_stage
+  excerpt: R_{\mathrm{target}}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 395
+  role: notes_stage
+  excerpt: \partial_\zeta \ln R_{\mathrm{target}}
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: '2. Exact support-blindness: d/dzeta of T^2 and R_target vanish.'
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: R_target = sp.simplify(Lam * (1 - eps_eta) * (1 - eps)**2 / (ZW * (1 + chi0)**2))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: T2_selected = sp.simplify(sp.Rational(27) * sp.pi**2 * G * c_s**5 / (20 * a**5 * c**5) * (1 - eps_eta) / R_target)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: R_target_loaded = sp.simplify(product_loaded / Mtr)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: T2_loaded = sp.simplify((Lam / OmegaW2) * (1 - eps_eta) / R_target_loaded)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: expect_zero("support-loaded R_target reconstruction", R_target_loaded - R_target)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: expect_zero("d/dzeta ln R_target (support-loaded route)", sp.diff(sp.log(R_target_loaded), zeta))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: R_target_spoiled = sp.simplify(product_loaded / (Mmix + Msupp_spoiled))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: dlnR_spoiled = sp.simplify(sp.diff(sp.log(R_target_spoiled), zeta).subs(bad, 1))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("spoiled d/dzeta ln R_target =", dlnR_spoiled)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: raise AssertionError("Expected a spoiled support packet to break R_target blindness.")
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: R_target_pert = Lam_pert * (1 - (eps_eta + s*eta1)) * (1 - eps_pert)**2 \
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: R1_derived = sp.simplify(sp.diff(sp.log(R_target_pert), s).subs(s, 0))
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: expect_zero("R_1 derived from R_target matches closed form", R1_derived - R1)
+- path: scripts/moving_throat_pde_stage181_coherent_tracking_defect_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: print("  The coherent support ratio zeta drops out identically from T^2 and R_target.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

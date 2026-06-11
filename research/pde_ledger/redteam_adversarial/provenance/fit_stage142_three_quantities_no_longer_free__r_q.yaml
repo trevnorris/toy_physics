@@ -1,0 +1,147 @@
+schema_version: 1
+candidate_id: fit_stage142_three_quantities_no_longer_free
+parameter_name: R_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage142_three_quantities_no_longer_free__phase_b__r_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '142'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_142.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Identifying \(\mathfrak g_c=\mathfrak g_\Pi\) gives \(\Pi=\Sigma_0[1-R_q(\Pi)\mathcal S_q(\Pi)]\).
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 36
+  role: notes_stage
+  excerpt: R_q(\Pi):=-\frac{M_q}{M_s}
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 47
+  role: notes_stage
+  excerpt: \Sigma_0\Big[1-R_q(\Pi)\,\mathcal S_q(\Pi)\Big],
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 62
+  role: notes_stage
+  excerpt: \frac{\Pi}{1-R_q(\Pi)\mathcal S_q(\Pi)}.
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 70
+  role: notes_stage
+  excerpt: '## 2. Self-matched mouth susceptibility closure'
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 72
+  role: notes_stage
+  excerpt: Under the self-matched closure from Stage 140,
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 81
+  role: notes_stage
+  excerpt: \sqrt{\frac{9\Pi}{20\left[1-R_q(\Pi)\mathcal S_q(\Pi)\right]}}.
+- path: notes/stages/moving_throat_pde_stage142_selfconsistent_mouth_branch.md
+  line: 112
+  role: notes_stage
+  excerpt: R_q(\Pi_*)=\frac14,
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Rq = sp.simplify((gPi-r)**2/(1+r**2))
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: Sigma0 = Pi/(1-Rq*Sq)
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: print("R_q(Pi) =", Rq)
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: Rq_minus = sp.simplify(((gminus-r)**2)/(1+r**2))
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: expect_zero("R_q(g_minus)-1/4", Rq_minus - sp.Rational(1,4))
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: Rq_star = sp.N(Rq.subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: print("R_q(Pi_*)  =", Rq_star)
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '# (R1, solver-consistency) R_q(Pi_*) = 1/4 holds IDENTICALLY at the solved'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: '# point because Pi_* was found from gPi(Pi_*) = g_-, and R_q(g_-) = 1/4 for any'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: Rq_star_residual = abs(float(Rq_star - sp.Rational(1,4)))
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print(f"R_q(Pi_*) - 1/4 (solver-consistency) = {Rq_star - sp.Rational(1,4)}")
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: 'if Rq_star_residual > 1e-15:'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: raise AssertionError(f"R_q(Pi_*) does not equal 1/4 at nsolve'd Pi_* (residual {Rq_star_residual}).")
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# (R1, NON-tautological anchor) Evaluate R_q at STAGE 131''s INDEPENDENTLY-DERIVED Pi_*'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: '# right, so R_q lands on 1/4. A typo in gPi or a wrong r breaks this.'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: Rq_at_ext = sp.N(Rq.subs(Pi, Pi_ext), 30)
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: Rq_ext_residual = abs(float(Rq_at_ext - sp.Rational(1,4)))
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: print(f"R_q(Pi_ext) - 1/4 (independent anchor) = {Rq_at_ext - sp.Rational(1,4)}")
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: 'if Rq_ext_residual > 1e-12:'
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: raise AssertionError(f"R_q at external Pi_*={Pi_ext} is not 1/4 (residual {Rq_ext_residual}); gPi or r is off.")
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: print("  Pi = Sigma0 * [1 - R_q(Pi) S_q(Pi)]")
+- path: scripts/moving_throat_pde_stage142_selfconsistent_mouth_branch_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("  Sigma0(Pi) = Pi / (1 - R_q(Pi) S_q(Pi))")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage181_lambda_prefactor_27pi2_20
+parameter_name: Lambda_prefactor
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage181_lambda_prefactor_27pi2_20__phase_b__lambda_prefactor.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '181'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 8
+  role: notes_stage
+  excerpt: \Xi_1=\frac{\delta\ln \mathcal T_{\mathrm{eff},A}^2}{\epsilon\lambda_A},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 41
+  role: notes_stage
+  excerpt: \Lambda\,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 115
+  role: notes_stage
+  excerpt: \Lambda\,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 130
+  role: notes_stage
+  excerpt: \Lambda
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 173
+  role: notes_stage
+  excerpt: \Lambda\,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 209
+  role: notes_stage
+  excerpt: \delta\ln Z_{W,A}=\epsilon\lambda_A\,\zeta_Z,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 211
+  role: notes_stage
+  excerpt: \delta\ln \Omega_{W,A}^2=\epsilon\lambda_A\,\omega_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 214
+  role: notes_stage
+  excerpt: \delta\chi_{0,A}=\epsilon\lambda_A\,\chi_1,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 216
+  role: notes_stage
+  excerpt: \delta\epsilon_{W,A}=\epsilon\lambda_A\,\varepsilon_W,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 218
+  role: notes_stage
+  excerpt: \delta\delta_{U,A}=\epsilon\lambda_A\,\delta_{U,1},
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 220
+  role: notes_stage
+  excerpt: \delta\epsilon_{\eta,A}=\epsilon\lambda_A\,\eta_1.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 227
+  role: notes_stage
+  excerpt: \frac{\delta\ln\mathcal T_A^2}{\epsilon\lambda_A}
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 288
+  role: notes_stage
+  excerpt: \mathcal R_1:=\frac{\delta\ln R_{\mathrm{target},A}}{\epsilon\lambda_A}.
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 294
+  role: notes_stage
+  excerpt: \Lambda\,
+- path: notes/stages/moving_throat_pde_stage181_coherent_tracking_defect.md
+  line: 327
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,\Theta_1,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

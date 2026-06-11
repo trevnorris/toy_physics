@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: fit_stage115_gamma_0_pure_scale_ansatz
+parameter_name: gamma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage115_gamma_0_pure_scale_ansatz__phase_b__gamma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '115'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 6
+  role: notes_stage
+  excerpt: Determine when the concrete two-channel core model of Stage 114 lands exactly on the nontrivial compensated canonical
+    branch found algebraically in Stage 112.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 16
+  role: notes_stage
+  excerpt: which is exactly the branch that preserves the canonical outgoing quadrupole fingerprint.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 25
+  role: notes_stage
+  excerpt: \gamma_c=\frac19.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 60
+  role: notes_stage
+  excerpt: So the required Robin–mixed balance is not a mystery coefficient fit. It is an explicit codimension-one surface
+    in the concrete core-coupling space.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 69
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9}.
+- path: notes/stages/moving_throat_pde_stage115_core_balance_compensation.md
+  line: 92
+  role: notes_stage
+  excerpt: 'gives a normalized response with exactly the same outgoing fingerprint:'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: kappa0, gamma0, z = sp.symbols("kappa0 gamma0 z", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: gamma0_can = sp.simplify((1 + r_c) / 9)
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '- sigma_c / (1 - (kappa0 / (1 + r_c)) * z**2 - sp.I * (gamma0 / (1 + r_c)) * z**5)'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: 'gamma0: gamma0_can,'
+- path: scripts/moving_throat_pde_stage115_core_balance_compensation_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: print("gamma0  =", gamma0_can)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

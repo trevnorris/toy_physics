@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage_247_vrebuild_soft
+parameter_name: Vrebuild_soft
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_vrebuild_soft__phase_b__vrebuild_soft.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 78
+  role: paper_stage_tex
+  excerpt: The Session-I benchmark is useful as an audit point, not as a general theorem.  At the strongest softening point,
+    the Stage 247 decomposition reads
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: 4. assemble the minimal reduced stationary compiler and benchmark it against the recorded Session-I softening point.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: \frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}\approx 0.31446203,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 366
+  role: notes_stage
+  excerpt: '## 4. Session-I one-point benchmark at the strongest softening point'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 368
+  role: notes_stage
+  excerpt: Appendix B.2 of the barrier-session write-up records the strongest stationary softening point at
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 370
+  role: notes_stage
+  excerpt: r_{\rm soft}=0.18,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: V_{\rm eff}(r_{\rm soft})=1.74701126,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 374
+  role: notes_stage
+  excerpt: V_{\rm Coul}(r_{\rm soft})=5.55555556,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 378
+  role: notes_stage
+  excerpt: \frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}=0.31446203.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 412
+  role: notes_stage
+  excerpt: V_{\rm short}^{(1p)}(r_{\rm soft})=3.74163698.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 418
+  role: notes_stage
+  excerpt: \frac{V_{\rm short}^{(1p)}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 421
+  role: notes_stage
+  excerpt: which is **not yet** the full Session-I softening.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 429
+  role: notes_stage
+  excerpt: \mathcal W_w^{\rm sess}(r_{\rm soft})=1.51632107,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 431
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})=0.21064278.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: \mathfrak L(r_{\rm soft})=\Lambda(r_{\rm soft})\varrho(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 463
+  role: notes_stage
+  excerpt: S_{\rm leak}(r_{\rm soft})=0.31069599.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 482
+  role: notes_stage
+  excerpt: \mathcal M_\sigma(r_{\rm soft})=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r_{\rm soft})\bigr]
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 497
+  role: notes_stage
+  excerpt: 'which is fixed exactly by the recorded softening point:'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 502
+  role: notes_stage
+  excerpt: \frac{V_{\rm short}^{(1p)}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 504
+  role: notes_stage
+  excerpt: \mathcal W_w^{\rm sess}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 506
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 508
+  role: notes_stage
+  excerpt: \mathcal M_\sigma(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 510
+  role: notes_stage
+  excerpt: V_{\rm eff}^{\rm sess}(r_{\rm soft})}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 511
+  role: notes_stage
+  excerpt: '{S_{\rm leak}(r_{\rm soft})}.'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 551
+  role: notes_stage
+  excerpt: V_{\rm short}^{(1p)}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 552
+  role: notes_stage
+  excerpt: \mathcal W_w^{\rm sess}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 556
+  role: notes_stage
+  excerpt: so work plus orbit-side drain alone do **not** yet reach the recorded softening.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 559
+  role: notes_stage
+  excerpt: V_{\rm short}^{(1p)}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 560
+  role: notes_stage
+  excerpt: \mathcal W_w^{\rm sess}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 561
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 562
+  role: notes_stage
+  excerpt: \mathcal M_\sigma(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 620
+  role: notes_stage
+  excerpt: and the Session-I strongest-softening point is reproduced by the concrete benchmark decomposition above.
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 6. and a Session-I one-point benchmark decomposition at r_soft = 0.18.
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: '# 6. Session-I one-point benchmark at r_soft = 0.18.'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: subs_soft = {
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: Delta_num = sp.N(Delta.subs(subs_soft), 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: D0_num = sp.N(D0.subs(subs_soft), 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 219
+  role: sympy_script
+  excerpt: Vshort_num = sp.N(V_short.subs(subs_soft), 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: M_sigma_num = sp.N(M_sigma.subs(subs_soft), 16)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,177 @@
+schema_version: 1
+candidate_id: fit_stage105_omega_q_pole_frequency
+parameter_name: Omega_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage105_omega_q_pole_frequency__phase_b__omega_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '105'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_105.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the outgoing \(l=2\) DtN fingerprint against the normalized \(z=\omega a/c_s\) expansion.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 5
+  role: notes_stage
+  excerpt: Use the explicit DtN fingerprint to determine the last reduced 2.5PN scalar
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 15
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm ret}(\omega)
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 21
+  role: notes_stage
+  excerpt: 1-\omega^2/\Omega_Q^2
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 22
+  role: notes_stage
+  excerpt: -i\,\chi_Q\,\sigma_Q^{\rm can}\,\omega^5
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 24
+  role: notes_stage
+  excerpt: +O(\omega^6).
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 29
+  role: notes_stage
+  excerpt: \Omega_Q=\frac{3c_s}{2a}.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 34
+  role: notes_stage
+  excerpt: \sigma_Q^{\rm can}:=\frac{9}{8\Omega_Q^5}.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 36
+  role: notes_stage
+  excerpt: Using \(\Omega_Q=3c_s/(2a)\),
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 47
+  role: notes_stage
+  excerpt: Expanding through \(O(\omega^5)\) gives
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 49
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm ret}(\omega)
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 51
+  role: notes_stage
+  excerpt: 1+\frac{a^2\omega^2}{9c_s^2}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 52
+  role: notes_stage
+  excerpt: +\frac{4a^4\omega^4}{81c_s^4}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 53
+  role: notes_stage
+  excerpt: +i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 54
+  role: notes_stage
+  excerpt: +O(\omega^6).
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 59
+  role: notes_stage
+  excerpt: \widehat Y_2^{\rm out}(\omega)
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 61
+  role: notes_stage
+  excerpt: 1+\frac{a^2\omega^2}{9c_s^2}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 62
+  role: notes_stage
+  excerpt: +\frac{4a^4\omega^4}{81c_s^4}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 63
+  role: notes_stage
+  excerpt: +i\,\frac{a^5\omega^5}{27c_s^5}
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 64
+  role: notes_stage
+  excerpt: +O(\omega^6).
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 67
+  role: notes_stage
+  excerpt: Matching the \(O(\omega^5)\) coefficient yields
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 72
+  role: notes_stage
+  excerpt: So on the canonical compact passive/outgoing grouped-`P2` DtN branch, the last reduced normalization scalar is
+    fixed exactly.
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 74
+  role: notes_stage
+  excerpt: '## General deformed DtN obstruction'
+- path: notes/stages/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn.md
+  line: 98
+  role: notes_stage
+  excerpt: That means the only reduced 2.5PN obstruction left after the present calculation is a deviation of the actual moving-throat
+    DtN branch from the canonical outgoing `l=2` coefficient \(\xi_Q=1\).
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: '- `Omega_Q = 3 c_s / (2 a)` is the same minimal-isotropic pole scale fixed by'
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: a, c_s, omega, chi_Q = sp.symbols("a c_s omega chi_Q", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: Omega_Q = sp.simplify(3*c_s/(2*a))
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: sigma_can = sp.simplify(sp.Rational(9, 8) / Omega_Q**5)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: print("Omega_Q =", Omega_Q)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Yret = sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2/Omega_Q**2 - sp.I*chi_Q*sigma_can*omega**5)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Yret_series = sp.expand(sp.series(Yret, omega, 0, 6).removeO())
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: print("\nY_Q^ret(omega) =")
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: expect_zero("omega^2 coefficient", Yret_series.coeff(omega, 2) - a**2/(9*c_s**2))
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: expect_zero("omega^4 coefficient", Yret_series.coeff(omega, 4) - 4*a**4/(81*c_s**4))
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: expect_zero("imag omega^5 coefficient", Yret_series.coeff(omega, 5)/sp.I - chi_Q*a**5/(27*c_s**5))
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: outgoing_omega5_coeff = sp.simplify(outgoing_z5_coeff * (a/c_s)**5)
+- path: scripts/moving_throat_pde_stage105_chiQ_fix_from_outgoing_dtn_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: chi_sol = sp.solve(sp.Eq(Yret_series.coeff(omega, 5)/sp.I, outgoing_omega5_coeff), chi_Q)[0]
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

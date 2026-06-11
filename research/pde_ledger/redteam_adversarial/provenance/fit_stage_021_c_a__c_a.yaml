@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_021_c_a
+parameter_name: C_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_c_a__phase_b__c_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '021'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_021.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: C_a=\partial_aA_w-\partial_wA_a
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 42
+  role: notes_stage
+  excerpt: '`C_a = F_{aw} = ∂_a A_w - ∂_w A_a`,'
+- path: notes/stages/moving_throat_pde_stage021_reduced_one_port_normal_form.md
+  line: 72
+  role: notes_stage
+  excerpt: '`C_a = ∂_a A_w - ∂_w A_a`,'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: • exact gauge-invariant mixed 4+1 Maxwell combinations E_w and C_a,
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Ca = sp.diff(Aw, x) - sp.diff(Aa, w)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Cap = sp.diff(Awp, x) - sp.diff(Aap, w)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: expect_zero("C_a=F_aw gauge variation", sp.simplify(Cap - Ca))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("So the mixed fields E_w = F_w0 and C_a = F_aw are honest gauge-invariant observables.")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 366
+  role: sympy_script
+  excerpt: print("  • the mixed 4+1 Maxwell fields E_w = F_w0 and C_a = F_aw are gauge invariant;")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

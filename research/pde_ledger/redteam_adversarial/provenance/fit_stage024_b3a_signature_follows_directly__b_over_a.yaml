@@ -1,0 +1,186 @@
+schema_version: 1
+candidate_id: fit_stage024_b3a_signature_follows_directly
+parameter_name: b_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage024_b3a_signature_follows_directly__phase_b__b_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '024'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_024.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 024]{Stage 024: Explicit Overlap Integrals, \texorpdfstring{$O(3)$}{O(3)} Isotropy, and First Axisymmetric
+    Splitting}'
+- path: paper/stages/stage_024.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{The angular identities and grouped splitting law are \StatusExactClosure{} once the real-STF basis
+    and reduced overlap closure are adopted.  The separated radial/axial ansatz is \StatusReduced{}.}
+- path: paper/stages/stage_024.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~024 takes the grouped coefficients of Stage~023 and gives them their first explicit
+    overlap-integral interpretation.  It proves that the angular source map is exact on the canonical isotropic branch, that
+    \(O(3)\)-invariant kernels collapse the grouped lanes to common values, and that the first weak-axisymmetric quadrupole
+    splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).}
+- path: paper/stages/stage_024.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.txt}.  Mathematica audit:
+    \StageFile{mathematica/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage024_overlap_isotropy_mathematica_audit.txt}.}'
+- path: paper/stages/stage_024.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \paragraph{3. Isotropic overlap factorization.}
+- path: paper/stages/stage_024.tex
+  line: 71
+  role: paper_stage_tex
+  excerpt: The angular factor is diagonal by \eqref{eq:app-stage024-Y-orthonormal}.  The radial/axial overlaps are
+- path: paper/stages/stage_024.tex
+  line: 167
+  role: paper_stage_tex
+  excerpt: in the five real STF lanes.  Grouping the cosine/sine pairs gives
+- path: paper/stages/stage_024.tex
+  line: 225
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~024 outputs the real-STF normalization \eqref{eq:app-stage024-Y-orthonormal}, the angular
+    source-map identity \eqref{eq:app-stage024-source-map}, the isotropic overlap formulas \eqref{eq:app-stage024-B-moments}--\eqref{eq:app-stage024-D-isotropic},
+    the grouped isotropy collapse \eqref{eq:app-stage024-isotropic-collapse}, the weak-axisymmetric signature \eqref{eq:app-stage024-lambda-signature},
+    the line \(b=3a\), and the normalization transport coefficient \eqref{eq:app-stage024-PA-transport}.}
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 024: Explicit Overlap Integrals, the `O(3)` Isotropy Theorem, and the First Axisymmetric
+    Splitting Law'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 17
+  role: notes_stage
+  excerpt: The next honest step is therefore **not** another abstract ratio manipulation. It is to write the first actual
+    overlap-integral model for the grouped real `P2` bundle and ask what the angular geometry already forces before the unsolved
+    radial/axial PDE is touched.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 26
+  role: notes_stage
+  excerpt: 4. explicit common radial/axial overlap formulas for `B_n`, `Z_n`, and `N_n`,
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 30
+  role: notes_stage
+  excerpt: So Stage 024 is the first point where the words “actual overlap integrals on the moving-throat branch” become mathematically
+    concrete.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 88
+  role: notes_stage
+  excerpt: '## 3. Explicit overlap-integral factorization on the isotropic branch'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 106
+  role: notes_stage
+  excerpt: 'Then all angular overlaps collapse by orthonormality, and every microscopic coupling becomes lane-independent:'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 116
+  role: notes_stage
+  excerpt: The radial/axial overlap integrals are
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 126
+  role: notes_stage
+  excerpt: These are exactly the Stage-023 radial/axial overlap objects specialized to an
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 207
+  role: notes_stage
+  excerpt: The angular matrix that perturbs any `l=2` overlap is then
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 337
+  role: notes_stage
+  excerpt: So on that branch the remaining theorem gap is not isotropy itself. It is the actual scalar value of the common
+    radial/axial overlap data.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 366
+  role: notes_stage
+  excerpt: 1. compute the **common radial/axial isotropic overlap integrals** on the natural branch,
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: This script verifies the first explicit overlap-integral layer beyond the abstract
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: • the exact axisymmetric quadrupole triple-overlap matrix,
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: • and representative isotropic overlap formulas for C_alpha, B_n, Z_n, N_n,
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: PDE, but it does verify the first explicit angular overlap rules the PDE must obey
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: assembly, now evaluated with the first exact real-STF overlap algebra.
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: '- No new normalization convention is introduced here; the overlap matrix only'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: 'def quad_overlap(A: sp.Matrix, B: sp.Matrix) -> sp.Expr:'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: 'def triple_overlap(A: sp.Matrix, Q: sp.Matrix, B: sp.Matrix) -> sp.Expr:'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: gram = sp.Matrix([[quad_overlap(A, B) for B in NBASIS] for A in NBASIS])
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 220
+  role: sympy_script
+  excerpt: '# III. Isotropic radial/axial overlap moments'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: 'def isotropic_overlap_moments() -> None:'
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 224
+  role: sympy_script
+  excerpt: banner("SECTION III — ISOTROPIC RADIAL/AXIAL OVERLAP MOMENTS")
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 396
+  role: sympy_script
+  excerpt: M = sp.Matrix([[triple_overlap(A, Q, B) for B in NBASIS] for A in NBASIS])
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 398
+  role: sympy_script
+  excerpt: subbanner("IV.1 — Exact five-mode triple-overlap matrix for Y20")
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 473
+  role: sympy_script
+  excerpt: print("defect law as the microscopic grouped overlaps.")
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 483
+  role: sympy_script
+  excerpt: isotropic_overlap_moments()
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

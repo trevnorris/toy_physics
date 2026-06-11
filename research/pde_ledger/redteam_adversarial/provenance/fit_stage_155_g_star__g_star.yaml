@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_155_g_star
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_155_g_star__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '155'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: g_star = 0.758035078944663
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: S_star = 0.658075937605429
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: Pi_star = 1.50882951349316
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Sigma0_star = 1.80594111095636
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: sig = normalize(Pi_star * np.exp(-Pi_star * x))
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: sig, niter, err = solve_fixed_point(Sigma0_star)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Pi_fp = Sigma0_star * (1 - R_fp * S_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: dg = sp.Float(g_fp - g_star, 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage_157_delta_kappa_w
+parameter_name: delta_kappa_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_157_delta_kappa_w__phase_b__delta_kappa_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '157'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_157.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_157.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 5. Tangent motion on the lower compensated family keeps delta R = 0.
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 6. Canonical-even preservation pins delta C = delta kappa_W = 0 (non-degenerate
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: dg, dr = sp.symbols("delta_g delta_r", real=True)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: expect_zero("tangent motion keeps delta R = 0", dR.subs(dg, gp * dr))
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: deltaC, dkappa = sp.symbols("deltaC delta_kappa", real=True)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: dE2 = (deltaC - 9 * sigma_star * dkappa) / (27 * (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: dE4 = (5 * deltaC - 72 * sigma_star * dkappa) / (243 * (1 - sigma_star))
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: even_preservation = sp.solve([sp.Eq(dE2, 0), sp.Eq(dE4, 0)], [deltaC, dkappa], dict=True)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: 'if even_preservation != [{deltaC: 0, dkappa: 0}]:'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: raise AssertionError("Canonical-even preservation should pin deltaC = delta kappa_W = 0.")
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '# constraint pair {dE2=0, dE4=0} and asserts the trivial kernel {deltaC:0, dkappa:0}.'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: '# so the imposed constraint pins deltaC = delta_kappa_W = 0. (The 9/72/5/27/243'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: '"canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27*sigma_star)",'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 delta_Sigma0 Sstar delta_S", real=True)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

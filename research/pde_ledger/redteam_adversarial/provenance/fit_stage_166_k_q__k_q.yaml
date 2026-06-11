@@ -1,0 +1,125 @@
+schema_version: 1
+candidate_id: fit_stage_166_k_q
+parameter_name: K_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_166_k_q__phase_b__k_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '166'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_166.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Inverts the four observables \((\Theta_w,K_s,K_q,P_0)\) to determine the four remaining microscopic
+    drifts.}
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 22
+  role: notes_stage
+  excerpt: K_q,
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 31
+  role: notes_stage
+  excerpt: '- \(K_q\) is the mixed side-channel stiffness,'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 40
+  role: notes_stage
+  excerpt: '> derive the four bundle observables \((\Theta_w,K_s,K_q,P_0)\) on the actual branch.'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 72
+  role: notes_stage
+  excerpt: K_q \propto \mathcal Z_q\,\frac{c_s^2}{L_W^2},
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 79
+  role: notes_stage
+  excerpt: \delta\ln K_q = \delta\ln \mathcal Z_q + 2\,\delta\ln c_s - 2\,\delta\ln a.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 132
+  role: notes_stage
+  excerpt: \delta\ln K_q
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 139
+  role: notes_stage
+  excerpt: They are exact algebraic images of \((\Theta_w,K_s,K_q,P_0)\).
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 167
+  role: notes_stage
+  excerpt: \delta\ln K_q
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 199
+  role: notes_stage
+  excerpt: \delta\ln \mathcal Z_q = \delta\ln K_q - \frac25\,\delta\ln P_0.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 224
+  role: notes_stage
+  excerpt: '> compute \((\Theta_w,K_s,K_q,P_0)\), or equivalently \((\Theta_w,K_s,K_q,N_0/D_0)\), on the actual isotropic
+    branch.'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 232
+  role: notes_stage
+  excerpt: 3. the mixed-channel stiffness drift \(\delta\ln K_q\),
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: Theta_w, K_s, K_q, P_0  ->  rho_w, a, c_s, Z_q.
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: dTheta, dKs, dKq, dP = sp.symbols("dTheta dKs dKq dP", real=True)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: eq3 = sp.Eq(dKq, dZ + 2 * dcs - 2 * da)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: expect_zero("dZ general", sol[dZ] - (dKq - sp.Rational(2, 5) * dP))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: expect_zero("Kq law", eq3.lhs.subs(sol) - eq3.rhs.subs(sol))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: sol_bundle[dZ] - (dKq - sp.Rational(2, 5) * (dN0 - dD0)),
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: expect_zero("frozen dZ", sol_frozen[dZ] - (dKq - sp.Rational(2, 5) * dP))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: print("  delta ln Z_q   = delta ln K_q - 2/5 delta ln P_0")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_166.tex
+    attempted_sources:
+    - paper/stages/stage_166.tex
+    - research/pde_ledger/paper/stages/stage_166.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_166.tex
+    attempted_sources:
+    - paper/stages/stage_166.tex
+    - research/pde_ledger/paper/stages/stage_166.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

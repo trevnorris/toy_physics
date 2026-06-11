@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage086_natural_lambda_mu_unblocked
+parameter_name: lambda_mu
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage086_natural_lambda_mu_unblocked__phase_b__lambda_mu.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 086
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_086.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: In the unblocked branch at \(\lambda_\mu=1\), the Family--1 success/failure window is
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 16
+  role: notes_stage
+  excerpt: '`rho_alpha <= rho_suff^(chi)(lambda_mu;eps_blk)`  -> guaranteed success,'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 18
+  role: notes_stage
+  excerpt: '`rho_alpha >= rho_fail^(chi)(lambda_mu;eps_blk)`  -> guaranteed failure,'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 22
+  role: notes_stage
+  excerpt: '`rho_alpha < rho_max^(F1)(eps_blk).`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 24
+  role: notes_stage
+  excerpt: At `eps_blk = 0` and `lambda_mu = 1`, the natural shell-weighted Family-1 window is simply
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 42
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 46
+  role: notes_stage
+  excerpt: '`Q(zeta;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 47
+  role: notes_stage
+  excerpt: '`= [ 1 + (1 - 2 eps_blk) zeta ] / [ 1 - eps_blk zeta ].`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 55
+  role: notes_stage
+  excerpt: '`rho_suff^(chi)(lambda_mu;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 56
+  role: notes_stage
+  excerpt: '`:= Q( zeta_suff^(chi)(lambda_mu) ; eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 58
+  role: notes_stage
+  excerpt: '`rho_fail^(chi)(lambda_mu;eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 59
+  role: notes_stage
+  excerpt: '`:= Q( zeta_fail^(chi)(lambda_mu) ; eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 63
+  role: notes_stage
+  excerpt: '`rho_suff^(J) := Q( zeta_suff^(J) ; eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 65
+  role: notes_stage
+  excerpt: '`rho_fail^(J) := Q( zeta_fail^(J) ; eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 69
+  role: notes_stage
+  excerpt: '`rho_max^(F1)(eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 70
+  role: notes_stage
+  excerpt: '`:= Q( zeta_max^(F1) ; eps_blk )`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 71
+  role: notes_stage
+  excerpt: '` = [ 1 + (1 - 2 eps_blk) zeta_max^(F1) ] / [ 1 - eps_blk zeta_max^(F1) ].`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 81
+  role: notes_stage
+  excerpt: '`eps_blk = 0,`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 95
+  role: notes_stage
+  excerpt: Using the Stage-080/081 values at `lambda_mu = 1`,
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 127
+  role: notes_stage
+  excerpt: '`eps_blk < 1 / zeta_max^(F1) ≈ 0.405263689711371.`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 133
+  role: notes_stage
+  excerpt: '`d rho_max^(F1) / d eps_blk`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 134
+  role: notes_stage
+  excerpt: '`= zeta_max^(F1) [ zeta_max^(F1) - 1 ] / [ 1 - eps_blk zeta_max^(F1) ]^2 > 0,`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 146
+  role: notes_stage
+  excerpt: '`rho_alpha < rho_max^(F1)(eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 150
+  role: notes_stage
+  excerpt: '`rho_alpha <= rho_suff^(chi)(lambda_mu;eps_blk)`.'
+- path: notes/stages/moving_throat_pde_stage086_family1_loading_ratio_window.md
+  line: 152
+  role: notes_stage
+  excerpt: At the natural shell-weighted normalization `lambda_mu = 1` and in the unblocked limit, that means
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: eps = sp.symbols("eps", real=True)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: Q = sp.simplify((1 + (1 - 2 * eps) * zeta) / (1 - eps * zeta))
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: print("Q(zeta;eps) =", Q)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: expect_zero("Q(zeta;0) - (1+zeta)", sp.simplify(Q.subs(eps, 0) - (1 + zeta)))
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: 'rho_suff_chi = sp.N(Q.subs({zeta: zeta_suff_chi, eps: 0}), 30)'
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: 'rho_fail_chi = sp.N(Q.subs({zeta: zeta_fail_chi, eps: 0}), 30)'
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: 'rho_suff_J = sp.N(Q.subs({zeta: zeta_suff_J, eps: 0}), 30)'
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: 'rho_max = sp.N(Q.subs({zeta: zeta_max, eps: 0}), 30)'
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: print("rho_suff^(chi)(eps=0) =", rho_suff_chi)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: print("rho_fail^(chi)(eps=0) =", rho_fail_chi)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("rho_suff^(J)(eps=0)   =", rho_suff_J)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("rho_max^(F1)(eps=0)   =", rho_max)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: eps_cap = sp.N(1 / zeta_max, 25)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("eps_blk cap = 1/zeta_max =", eps_cap)
+- path: scripts/moving_throat_pde_stage086_family1_loading_ratio_window_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: Qmax_eps = sp.simplify(Q.subs(zeta, zeta_max))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

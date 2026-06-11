@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage233_stage224_ceiling_carry
+parameter_name: Pbar
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage233_stage224_ceiling_carry__phase_b__pbar.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '233'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Pbar_expr = (Delta_norm + Tquad) / mhat0**2
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: Pbar = sp.Symbol("Pbar", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: gate_rhs_pbar = Pcrit / Pbar - 1
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: assert_zero(sp.simplify(gate_rhs - (Pcrit / Pbar_expr - 1)))
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: print("Equivalent Pbar form:", gate_rhs_pbar)
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("Calibrated branch Delta_norm = 0 ->", gate_rhs_cal)
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: Pbar_num = sp.Float("0.002069792318062885")
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: recovered_robust = sp.N(Pcrit_robust / Pbar_num - 1, 30)
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: recovered_nonempty = sp.N(Pcrit_nonempty / Pbar_num - 1, 30)
+- path: scripts/moving_throat_pde_stage233_rigid_mouth_orbit_lock_compiler_and_the_static_turbulence_gate_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: print("Pbar compatibility point =", Pbar_num)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

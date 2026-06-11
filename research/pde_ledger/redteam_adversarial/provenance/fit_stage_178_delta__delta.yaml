@@ -1,0 +1,120 @@
+schema_version: 1
+candidate_id: fit_stage_178_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_178_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '178'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 19
+  role: notes_stage
+  excerpt: '> P_r,\qquad \Delta_r,\qquad N_{0}^{(r)}=\frac{P_r^2}{\Delta_r^2},'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 40
+  role: notes_stage
+  excerpt: N_{A,0}^{(r)}=\frac{P_{A,r}^2}{\Delta_{A,r}^2},
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 70
+  role: notes_stage
+  excerpt: \delta\ln K_A=\epsilon\lambda_A\,\kappa_1.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 74
+  role: notes_stage
+  excerpt: 'For each outgoing port \(r\), define the weak-axisymmetric logarithmic slopes of the **actual static numerator**
+    \(P_r\) and **actual static detuning** \(\Delta_r\):'
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 77
+  role: notes_stage
+  excerpt: \delta\ln P_{A,r}=\epsilon\lambda_A\,\mathfrak p_r,
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 79
+  role: notes_stage
+  excerpt: \delta\ln \Delta_{A,r}=\epsilon\lambda_A\,\mathfrak d_r.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 85
+  role: notes_stage
+  excerpt: N_{A,0}^{(r)}=\frac{P_{A,r}^2}{\Delta_{A,r}^2}.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 90
+  role: notes_stage
+  excerpt: \delta\ln N_{A,0}^{(r)}=\epsilon\lambda_A\,\nu_r,
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 108
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{\Lambda_{A,r}^2}{K_A}\right),
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 110
+  role: notes_stage
+  excerpt: \Lambda_{A,r}=\frac{P_{A,r}}{\Delta_{A,r}}.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 114
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{\Lambda_{A,r}^2}{K_A}\right)
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 116
+  role: notes_stage
+  excerpt: \delta\ln N_{A,0}^{(r)}-\delta\ln K_A.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 121
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{\Lambda_{A,r}^2}{K_A}\right)
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 178
+  role: notes_stage
+  excerpt: \Delta_r=\Omega_{U,r}^2\Omega_{W,r}^2-R_r^2.
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 213
+  role: notes_stage
+  excerpt: \chi_r:=\frac{\Omega_{U,r}^2\Omega_{W,r}^2}{\Delta_r}
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 216
+  role: notes_stage
+  excerpt: \zeta_r:=\frac{R_r^2}{\Delta_r}
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 354
+  role: notes_stage
+  excerpt: Because \(\nu_r=\delta\ln N_{A,0}^{(r)}/(\epsilon\lambda_A)\), this is equivalent to
+- path: notes/stages/moving_throat_pde_stage178_outgoing_port_coloading_theorem.md
+  line: 441
+  role: notes_stage
+  excerpt: '> \nu_r=\frac{\delta\ln N_{A,0}^{(r)}}{\epsilon\lambda_A}'
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: N_{A,0}^{(r)} = P_{A,r}^2 / Delta_{A,r}^2.
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: Delta = OU2 * OW2 - R**2
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: d_from_series = sp.simplify((sp.series(D_A / Delta, eps, 0, 2).removeO() - 1) / (eps * lam))
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: chi = sp.simplify(OU2 * OW2 / Delta)
+- path: scripts/moving_throat_pde_stage178_outgoing_port_coloading_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: zeta = sp.simplify(R**2 / Delta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

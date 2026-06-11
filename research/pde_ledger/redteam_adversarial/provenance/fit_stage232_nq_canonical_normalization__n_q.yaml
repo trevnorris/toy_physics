@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage232_nq_canonical_normalization
+parameter_name: N_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_nq_canonical_normalization__phase_b__n_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: The same support/source branch is selected by the exact fixed-point law
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: for the benchmark \(\lambda_\mu=1\).
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: N_Q=1.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: 1. **Static same-sign Maxwell shaping** is still not the answer.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: That is the cleanest current stopping point.
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 267
+  role: sympy_script
+  excerpt: print("4. The carried unresolved packet is (d ln R_tr, d ln R_target, d ln epsilon_eta), together with N_Q = 1.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

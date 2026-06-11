@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage131_g_minus_closed_form_aspect_ratio
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage131_g_minus_closed_form_aspect_ratio__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '131'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: 'print(f"PASS: g_-^F1 closed form matches literal 0.758035078944663")'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: '# Anchor (1): Pi_* matches the notes-quoted value 1.50882951349316 (Sec. 1).'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: 'print("PASS: Pi_* matches notes Sec. 1 value 1.50882951349316")'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# Anchor (2): g''(Pi_*) matches the notes-quoted slope 0.0714453558083195 (Sec. 3).'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: 'print("PASS: g''(Pi_*) matches notes Sec. 3 value 0.0714453558083195")'
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: '# (4b) SINGULAR equal-normalized branch EXCLUDED: separation matches notes Delta g_-.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

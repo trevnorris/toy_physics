@@ -1,0 +1,161 @@
+schema_version: 1
+candidate_id: fit_stage121_r_geom_exact_branch
+parameter_name: L
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_r_geom_exact_branch__phase_b__l.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '121'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_121.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Identifying the mixed D/N tube with the throat span gives \(\mathfrak r_{\rm geom}(L/a)=\sqrt{12(L/a)^2/\pi^2-1}\).
+- path: paper/stages/stage_121.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check the D/N mixed-tube length normalization against the chosen \(L/a\).
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 13
+  role: notes_stage
+  excerpt: The parent 4D stack already keeps the throat geometry explicit through the collective throat variables `(a,L)`
+    in the confinement / geometry sector, while the localized-Maxwell/plasma papers keep the mixed channels
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 20
+  role: notes_stage
+  excerpt: L/a \approx 1.85.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 26
+  role: notes_stage
+  excerpt: \boxed{L_W=L.}
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 35
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 37
+  role: notes_stage
+  excerpt: Imposing \(L_W=L\) gives the exact geometric hybridization branch
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 40
+  role: notes_stage
+  excerpt: \mathfrak r_{\rm geom}\!\left(\frac{L}{a}\right)
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 42
+  role: notes_stage
+  excerpt: \sqrt{\frac{12}{\pi^2}\left(\frac{L}{a}\right)^2-1}.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 51
+  role: notes_stage
+  excerpt: \frac{L}{a}\ge \frac{\pi}{2\sqrt3}\approx 0.9069,
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 60
+  role: notes_stage
+  excerpt: \frac{L}{a}=\frac{37}{20},
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 85
+  role: notes_stage
+  excerpt: With \(L_W=L\), the auxiliary mixed-tube pole is simply
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 88
+  role: notes_stage
+  excerpt: \Omega_W=\frac{\pi c_s}{2L},
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 91
+  role: notes_stage
+  excerpt: the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real
+    throat geometry, not to a detached bookkeeping cavity.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 98
+  role: notes_stage
+  excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: banner("STAGE 121 — GEOMETRIC SELECTION OF r")
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: L,a,LW,r = sp.symbols('L a L_W r', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: LW_formula = sp.pi*a/2 * sp.sqrt((1+r**2)/3)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: r_geom = sp.solve(sp.Eq(LW, LW_formula), r)[0]
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: r_geom_simplified = sp.simplify(r_geom.subs(LW, L))
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: print("r_geom(L/a) =", r_geom_simplified)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: r_geom_simplified**2 - (12*L**2/(sp.pi**2 * a**2) - 1)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: LW_formula.subs(r, r_geom_simplified) - L
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: 'r_F1 = sp.simplify(r_geom_simplified.subs({L: R*a}))'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: '"r_F1 symbolic value at L/a = 37/20",'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Notes (boxed): with L_W = L, the mixed-tube pole is Omega_W = pi c_s / (2 L).'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: OmegaW_formula_LW = sp.pi * c_s / (2 * LW)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: OmegaW_at_LW_eq_L = OmegaW_formula_LW.subs(LW, L)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("Omega_W(L_W = L) =", OmegaW_at_LW_eq_L)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '"Omega_W identification at L_W = L",'
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: OmegaW_at_LW_eq_L - sp.pi*c_s/(2*L)
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: print("existence threshold L/a >=", threshold, "≈", sp.N(threshold, 20))
+- path: scripts/moving_throat_pde_stage121_geometric_r_selection_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: sp.simplify(r_geom_simplified.subs(L, a*threshold))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

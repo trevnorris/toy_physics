@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage162_rF1_family1_radius
+parameter_name: r_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage162_rf1_family1_radius__phase_b__r_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '162'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: rF1 = sp.Float("1.77799353547498", 30)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: slope_num = sp.N(slope.subs(r, rF1), 30)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: print("r_F1 =", rF1)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

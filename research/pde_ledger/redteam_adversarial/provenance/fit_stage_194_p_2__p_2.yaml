@@ -1,0 +1,121 @@
+schema_version: 1
+candidate_id: fit_stage_194_p_2
+parameter_name: P_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_194_p_2__phase_b__p_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '194'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_194.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 194]{Stage 194: Outgoing \(l=2\) fingerprint}'
+- path: paper/stages/stage_194.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~194 is the original-stage audit card for \emph{Outgoing \(l=2\) fingerprint}.  Its purpose
+    is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_194.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_194.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_194.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_194.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical
+    compact branch.}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 193 isotropic grouped-real `P2` conservative surface, the reduced 2.5PN outgoing
+    compiler, and the canonical compact passive/outgoing `l=2` DtN closure already isolated in the 5PN notes.**'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 14
+  role: notes_stage
+  excerpt: Stage 193 froze the conservative grouped-real `P2` target surface
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 28
+  role: notes_stage
+  excerpt: '> once the grouped-real `P2` branch is isotropic and one-pole conservative, what fixes the **leading outgoing
+    `l=2` normalization** on the actual passive/outgoing branch?'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 34
+  role: notes_stage
+  excerpt: 'which multiplies the leading odd `\omega^5` term in the isotropic retarded grouped-`P2` module. This stage freezes
+    the next audited theorem target:'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 48
+  role: notes_stage
+  excerpt: '## 1. Carry-forward retarded grouped-`P2` module'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 51
+  role: notes_stage
+  excerpt: The corresponding retarded grouped-`P2` one-pole-plus-contact module is written as
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 164
+  role: notes_stage
+  excerpt: Compare the Stage 194 retarded grouped-`P2` module
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 337
+  role: notes_stage
+  excerpt: Matching the exact DtN fingerprint to the retarded grouped-`P2` module gives
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '# II. Exact matching to the retarded grouped-P2 one-pole module'
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: subbanner("II. Exact matching to the retarded grouped-P2 one-pole module")
+- path: scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: print("2. Matching the carried retarded grouped-P2 one-pole module to that exact outgoing DtN")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_194.tex
+    attempted_sources:
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_194.tex
+    attempted_sources:
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

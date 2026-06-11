@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage246_two_moment_source_matrix
+parameter_name: M_src
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_two_moment_source_matrix__phase_b__m_src.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '246'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_246.tex
+  line: 71
+  role: paper_stage_tex
+  excerpt: \det M_{\rm src}=\frac{14}{425}.
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 295
+  role: notes_stage
+  excerpt: \det M_{\rm src}=\frac{14}{425}>0.
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: M_src = sp.Matrix([[sp.Rational(1, 3), -sp.Rational(1, 15)],
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: det_M_src = sp.simplify(M_src.det())
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: inv_check = sp.simplify(M_src * sp.Matrix([a_inv, b_inv]) - vec_tilde)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: print("M_src                 =")
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: sp.pprint(M_src)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: print("det(M_src)            =", det_M_src)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: assert det_M_src == sp.Rational(14, 425)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,111 @@
+schema_version: 1
+candidate_id: fit_stage224_stage223_carryover_ceilings
+parameter_name: Pcrit_both_10
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage224_stage223_carryover_ceilings__phase_b__pcrit_both_10.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '224'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 103
+  role: notes_stage
+  excerpt: P_{\rm both}^{(10)}=0.0028313316855593175,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 110
+  role: notes_stage
+  excerpt: P_{\rm both}^{(30)}=0.00817339430971383,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 313
+  role: notes_stage
+  excerpt: For **both wall-like poles** to remain alive,
+- path: notes/stages/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.md
+  line: 332
+  role: notes_stage
+  excerpt: For **both wall-like poles** to remain alive,
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: Pcrit = sp.symbols("Pcrit", positive=True)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: isotropic_ceiling = sp.simplify(Pbar - Pcrit)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: expected_rhs = sp.simplify(mhat0**2 * Pcrit - T_quad)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: assert sp.expand((Pbar - Pcrit) * mhat0**2) == sp.expand(Delta_norm - expected_rhs)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: calibrated_lower_bound = sp.simplify(T_quad / Pcrit)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("Pbar <= Pcrit  <=>  Delta_norm <=", expected_rhs)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: 'print("Calibrated branch (Delta_norm = 0):  mhat0^2 >=", calibrated_lower_bound)'
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: calibrated_weak_bound = sp.simplify(T_quad * (1 + sp.Abs(eps * Xi1)) / Pcrit)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: print("Calibrated weak-axisymmetric lower bound on mhat0^2:", calibrated_weak_bound)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: '"both_10": Decimal("0.0028313316855593175"),'
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: '"both_30": Decimal("0.00817339430971383"),'
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: 'for key, Pcrit_val in ceilings.items():'
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: eps_xi_budget = Pcrit_val / barP0_compat - Decimal(1)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: a_budget = (Pcrit_val - barP0_compat) / Decimal(4)
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: Pcrit_val = ceilings[key]
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: assert_close(float((eps_xi_budget + Decimal(1)) * barP0_compat), float(Pcrit_val))
+- path: scripts/moving_throat_pde_stage224_pde_branch_packet_compiler_weak_axisymmetric_ceiling_transport_and_first_actual_branch_kill_test_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: assert_close(float(barP0_compat + Decimal(4) * a_budget), float(Pcrit_val))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

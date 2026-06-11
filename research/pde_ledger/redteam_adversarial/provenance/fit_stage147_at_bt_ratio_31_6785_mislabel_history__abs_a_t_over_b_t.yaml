@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage147_AT_BT_ratio_31_6785_mislabel_history
+parameter_name: abs_A_T_over_B_T
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage147_at_bt_ratio_31_6785_mislabel_history__phase_b__abs_a_t_over_b_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '147'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 73
+  role: notes_stage
+  excerpt: So the canonical branch is vastly more sensitive to overlap changes than to
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 86
+  role: notes_stage
+  excerpt: 'as a single weighted overlap:'
+- path: notes/stages/moving_throat_pde_stage147_first_order_rigidity_kernel.md
+  line: 114
+  role: notes_stage
+  excerpt: '> Family-1 point only through its overlap with one known rigidity kernel.'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: print("|A_T|/B_T =", sp.N(abs(AT)/BT, 20))
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert abs(sp.N(AT) - AT_paper) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: assert abs(sp.N(BT) - BT_paper) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: assert abs(sp.N(sp.Abs(AT)/BT) - ratio_crosscheck) < sp.Float("1e-3", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'f"|A_T|/B_T computed ratio cross-check deviates from 31.6785: {sp.N(sp.Abs(AT)/BT)}"'
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: assert abs(AT_autodiff - AT_30) < sp.Float("1e-20", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: assert abs(norm_s - 1) < sp.Float("1e-30", 40) and abs(norm_Sigma - 1) < sp.Float("1e-30", 40), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: assert abs(lhs_proj - rhs_moment) < sp.Float("1e-22", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: assert abs(center_resid) < sp.Float("1e-22", 30), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: assert abs(g_star_moment - g_star) < sp.Float("1e-25", 40), \
+- path: scripts/moving_throat_pde_stage147_first_order_rigidity_kernel_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: assert abs(S_star_moment - S_star) < sp.Float("1e-25", 40), \
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

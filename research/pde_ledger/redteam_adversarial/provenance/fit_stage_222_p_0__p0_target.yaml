@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage_222_p_0
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_p_0__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live
+    in the mixed sector rather than in pure brane Maxwell shaping.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 348
+  role: notes_stage
+  excerpt: '## 7. Comparison to the illustrative barrier benchmark'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: 'Carry forward the same illustrative reduced barrier benchmark at \(x=1\):'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: '- **fails** the \(10\%\)-loss benchmark,'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 377
+  role: notes_stage
+  excerpt: '- but **passes** the \(30\%\)-loss benchmark.'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 391
+  role: notes_stage
+  excerpt: 'Now scan the outgoing-leg coupling \(\lambda_W\) while keeping all other sample parameters fixed. The resulting
+    static prefactor \(P_0\) and upper-wall residue/linewidth figure \(\mathcal R_{Q,*}\) are:'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 434
+  role: notes_stage
+  excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine
+    the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 435
+  role: notes_stage
+  excerpt: 2. **Compatibility with the exact isotropic target surface.** This stage does not yet force the primitive branch
+    onto the 5PN / 2.5PN / 4PN isotropic one-pole and outgoing-normalization surface.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local barrier
+    requirement must be pulled back from the actual same-charge branch.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 438
+  role: notes_stage
+  excerpt: So the right continuation is not another generic resonance story. It is to ask whether the same primitive branch
+    can remain useful **after** it is forced onto the exact isotropic target surface.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - paper/stages/stage_222.tex
+    - research/pde_ledger/paper/stages/stage_222.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - paper/stages/stage_222.tex
+    - research/pde_ledger/paper/stages/stage_222.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

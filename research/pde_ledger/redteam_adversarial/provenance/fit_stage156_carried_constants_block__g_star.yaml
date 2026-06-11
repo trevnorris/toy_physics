@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage156_carried_constants_block
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_carried_constants_block__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '156'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_156.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\).
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 19
+  role: notes_stage
+  excerpt: Scanning the exact self-consistent Family-1 map shows that the fixed-point moment
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 25
+  role: notes_stage
+  excerpt: has a unique positive root on that analyzed interval.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 27
+  role: notes_stage
+  excerpt: That numerically located root is
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 37
+  role: notes_stage
+  excerpt: \Sigma_0=\frac{20}{9}\widehat T_m^2,
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 42
+  role: notes_stage
+  excerpt: \widehat T_{m,\rm can}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 55
+  role: notes_stage
+  excerpt: At that renormalized traction, the exact self-consistent fixed point satisfies
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 86
+  role: notes_stage
+  excerpt: (\Pi_{\rm corr},\widehat T_{m,\rm corr})
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 91
+  role: notes_stage
+  excerpt: (\Pi_1,\widehat T_{m,1})
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 98
+  role: notes_stage
+  excerpt: (\Pi_{\rm can},\widehat T_{m,\rm can})
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 106
+  role: notes_stage
+  excerpt: (\Pi_*,\widehat T_{m,*})
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 127
+  role: notes_stage
+  excerpt: \frac{\widehat T_{m,\rm can}}{\widehat T_{m,*}}-1
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 1. Solve the fixed point as a function of Sigma0.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Solve the unique root g_fp(Sigma0) = g_*.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 3. Report the renormalized canonical Sigma0, T_hat, S_can, Pi_can.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: rF1 = 1.77799353547498
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: g_star = 0.758035078944663
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: Pi_star = 1.50882951349316
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: Sigma0_star = 1.80594111095636
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: T_hat_star = 0.901484054174204
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: return ((gv - rF1) ** 2) / (1 + rF1**2)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: 'def next_sigma(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: ph = Sigma0 * (Ts(sig) - R(sig) * Tq(sig))
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'def solve_fixed_point(Sigma0: float, maxit: int = 500) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: sig = normalize(Pi_star * np.exp(-Pi_star * x))
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: sig_new = next_sigma(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: 'def g_fp(Sigma0: float) -> float:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: sig = solve_fixed_point(Sigma0)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Sigma0_can = bisect(3.0, 6.0, g_star, 55)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: sig_can = solve_fixed_point(Sigma0_can)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: Pi_can = Sigma0_can * (1 - R_can * S_can)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: T_hat_can = math.sqrt(9 * Sigma0_can / 20)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("Sigma0_can =", Sigma0_can)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: print("T_hat_can  =", T_hat_can)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: print("Sigma0 ratio - 1 =", Sigma0_can / Sigma0_star - 1)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: print("Pi ratio - 1     =", Pi_can / Pi_star - 1)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: print("T_hat ratio - 1  =", T_hat_can / T_hat_star - 1)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: 'if abs(g_can - g_star) > 1e-10:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: 'if abs(Sigma0_can - 4.651033550168867) > 1e-10:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: raise AssertionError("Sigma0_can deviates from notes value 4.651033550168867.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

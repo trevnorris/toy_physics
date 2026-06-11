@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage222_numerical_primitive_slice
+parameter_name: lambda_B
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage222_numerical_primitive_slice__phase_b__lambda_b.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_222.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part VII; primary anchor \resultanchor{MTDC-T11}, local subanchor \resultanchor{MTDC-T11.2}.}
+- path: paper/stages/stage_222.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: '\claimstatus{Mixed: \StatusExactClosure{}, \StatusNumerical{}.}'
+- path: paper/stages/stage_222.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_222.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds the Part VII same-charge sieve, rigid-mouth normal form, and selected
+    twin-support branch.  Downstream papers should cite \resultanchor{MTDC-T11.2} for this local stage range and \resultanchor{MTDC-T11}
+    for the full Part VII compiler.}
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 222: Concrete Finite-Throat Primitive Branch, Pole Census, and the Residue/Linewidth
+    Survival Test'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried isotropic finite-throat primitive one-port wall/BdG/Maxwell/mixed closure** once the
+    lowest N/N wall/U profile and the lowest D/N half-wave support/W profile are fixed.'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: \frac{27c_s^5}{a^5\omega_*^5N(\omega_*)},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live
+    in the mixed sector rather than in pure brane Maxwell shaping.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 50
+  role: notes_stage
+  excerpt: \chi_{qq}(\omega)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: \delta=\omega-\omega_*,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 88
+  role: notes_stage
+  excerpt: C=\kappa\lambda_B,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: G_U=\lambda_U,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: G_W=\kappa\lambda_W,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 94
+  role: notes_stage
+  excerpt: R=\kappa\lambda_R.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 97
+  role: notes_stage
+  excerpt: The conservative dynamic one-port wall/BdG/Maxwell/mixed bundle is therefore
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 99
+  role: notes_stage
+  excerpt: K_B(\omega)=K-M\omega^2-\frac{C^2}{\varpi^2-\omega^2},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 102
+  role: notes_stage
+  excerpt: A(\omega)=\Omega_U^2-\omega^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: W(\omega)=\Omega_W^2-\omega^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: \Delta(\omega)=A(\omega)W(\omega)-R^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 110
+  role: notes_stage
+  excerpt: Q(\omega)=G_U^2W(\omega)+2G_UG_WR+G_W^2A(\omega),
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: D(\omega)=K_B(\omega)-\frac{Q(\omega)}{\Delta(\omega)}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: \Delta_0=\Omega_U^2\Omega_W^2-R^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: D_0=K-\frac{C^2}{\varpi^2}-\frac{Q_0}{\Delta_0}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: y=\omega^2.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: \Bigl((K-My)(\varpi^2-y)-C^2\Bigr)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 145
+  role: notes_stage
+  excerpt: \Bigl((\Omega_U^2-y)(\Omega_W^2-y)-R^2\Bigr)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: (\varpi^2-y)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 148
+  role: notes_stage
+  excerpt: \Bigl(G_U^2(\Omega_W^2-y)+2G_UG_WR+G_W^2(\Omega_U^2-y)\Bigr).
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: D(\omega)=\frac{F(\omega^2)}{(\varpi^2-\omega^2)\,\Delta(\omega)}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 163
+  role: notes_stage
+  excerpt: For a simple conservative wall-like pole \(\omega_*\) with
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 165
+  role: notes_stage
+  excerpt: D_0(\omega_*)=0,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: D_0'(\omega_*)\neq 0,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 169
+  role: notes_stage
+  excerpt: \Delta(\omega_*)\neq 0,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 173
+  role: notes_stage
+  excerpt: \Pi_{\rm out}(\omega)=i\Gamma_5\omega^5,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 180
+  role: notes_stage
+  excerpt: N(\omega)=\frac{P(\omega)^2}{\Delta(\omega)^2},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: P(\omega)=A(\omega)G_W+RG_U.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 187
+  role: notes_stage
+  excerpt: \chi_{qq}(\omega)=\frac1{D_\Pi(\omega)},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: \chi_{qq}(\omega)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: \frac{1/D_0'(\omega_*)}{\delta-i\gamma_*},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 196
+  role: notes_stage
+  excerpt: \frac{\Gamma_5\omega_*^5N(\omega_*)}{|D_0'(\omega_*)|}.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

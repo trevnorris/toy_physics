@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage246_lower_branch_forced
+parameter_name: sigma_min
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_lower_branch_forced__phase_b__sigma_min.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '246'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_246.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \mathfrak g[\sigma]=\int_0^1\sigma(x)c(x)\,dx,
+- path: paper/stages/stage_246.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \mathcal S[\sigma]=\int_0^1\sigma(x)K_q(x)\,dx.
+- path: paper/stages/stage_246.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage246-rsigma-def}
+- path: paper/stages/stage_246.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \mathcal R[\sigma]
+- path: paper/stages/stage_246.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \frac{(\mathfrak g[\sigma]-\mathfrak r_{F1})^2}{1+\mathfrak r_{F1}^2},
+- path: paper/stages/stage_246.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: The compensated family is \cref{eq:app-part08-main-source-family}.  Its exact minimum is
+- path: paper/stages/stage_246.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage246-sigma-min}
+- path: paper/stages/stage_246.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \sigma_{\min}(a,b)=
+- path: paper/stages/stage_246.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: \mathrm{signchg}(a,b)\iff \sigma_{\min}(a,b)<0.
+- path: paper/stages/stage_246.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2}.
+- path: paper/stages/stage_246.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage246-msigma-packet}
+- path: paper/stages/stage_246.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: \mathcal M_\sigma(r)=
+- path: paper/stages/stage_246.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: \sigma(x;r),
+- path: paper/stages/stage_246.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: \sigma_{\min}(r),
+- path: paper/stages/stage_246.tex
+  line: 98
+  role: paper_stage_tex
+  excerpt: \mathfrak g[\sigma](r),
+- path: paper/stages/stage_246.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: \mathcal S[\sigma](r),
+- path: paper/stages/stage_246.tex
+  line: 100
+  role: paper_stage_tex
+  excerpt: \mathcal R[\sigma](r)
+- path: paper/stages/stage_246.tex
+  line: 106
+  role: paper_stage_tex
+  excerpt: \mathfrak g[\sigma](r)
+- path: paper/stages/stage_246.tex
+  line: 110
+  role: paper_stage_tex
+  excerpt: \mathcal S[\sigma](r)
+- path: paper/stages/stage_246.tex
+  line: 114
+  role: paper_stage_tex
+  excerpt: 'On the Session-I orientation \(a_0>0\), \(b_0<0\), the minimum is boundary-controlled:'
+- path: paper/stages/stage_246.tex
+  line: 117
+  role: paper_stage_tex
+  excerpt: \sigma_{\min}(r)=1-(a_0-b_0)s(r),
+- path: paper/stages/stage_246.tex
+  line: 119
+  role: paper_stage_tex
+  excerpt: \mathrm{signchg}(r)\iff r<r_\sigma\sqrt{a_0-b_0-1}.
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried positive-source Family-1 mouth-bias theorem, the carried two-moment source map \((\mathfrak
+    g[\sigma],\mathcal S[\sigma])\), and the declared mean-preserving two-mode compensated source family with the radial attenuation
+    closure**'
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: s(r)=\frac{r_\sigma^2}{r^2+r_\sigma^2},
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: '**used here as the minimal continuation that reproduces the sampled Session-I source point.**'
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: 2. the exact mouth-bias functional \(\mathfrak g[\sigma]\),
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: 3. the exact shell-loading functional \(\mathcal S[\sigma]\),
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: 4. the exact mixed-to-shell loading ratio \(\mathcal R[\sigma]\),
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 26
+  role: notes_stage
+  excerpt: \sigma(x)=1+a\cos(\pi x)+b\cos(2\pi x),
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: \mathfrak g[\sigma](r_{\rm eval})\approx 0.82823667,
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: \mathcal R[\sigma](r_{\rm eval})\approx 0.21677037,
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: \sigma_{\min}<0.
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 74
+  role: notes_stage
+  excerpt: \mathfrak g[\sigma]
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 76
+  role: notes_stage
+  excerpt: \mathcal S[\sigma].
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 103
+  role: notes_stage
+  excerpt: \mathfrak g[\sigma]=\int_0^1 \sigma(x)\,c(x)\,dx,
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 105
+  role: notes_stage
+  excerpt: \mathcal S[\sigma]=\int_0^1 \sigma(x)\,K_q(x)\,dx.
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 111
+  role: notes_stage
+  excerpt: \sigma(x)\ge 0,
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: \int_0^1 \sigma(x)\,dx=1,
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 117
+  role: notes_stage
+  excerpt: 0\le \mathfrak g[\sigma]\le 1.
+- path: notes/stages/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.md
+  line: 123
+  role: notes_stage
+  excerpt: \mathcal R[\sigma]
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

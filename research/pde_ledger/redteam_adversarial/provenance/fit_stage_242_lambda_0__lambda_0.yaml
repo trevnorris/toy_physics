@@ -1,0 +1,210 @@
+schema_version: 1
+candidate_id: fit_stage_242_lambda_0
+parameter_name: Lambda_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_242_lambda_0__phase_b__lambda_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '242'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: It takes the exact Stage-241 selected twin-support curve and shows how an **actual coherent branch state** is placed
+    on that curve, how the Stage-241 ranking region is therefore fixed, and how the separate orbit-lock packet is compiled
+    directly from the physical placement variables.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta).
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 78
+  role: notes_stage
+  excerpt: (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 111
+  role: notes_stage
+  excerpt: (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda,\zeta).
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 129
+  role: notes_stage
+  excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon)}{\pi^2}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: \frac{\pi^2\Pi_{\rm tr}}{16\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: \frac{\pi^2}{16\Lambda}\cdot\frac43\cdot\frac{8\Lambda(1-\epsilon)}{\pi^2}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: \varrho_{W\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: \varrho_{U\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 188
+  role: notes_stage
+  excerpt: \epsilon_{W\Lambda}=\frac{1}{2+\beta^2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \epsilon_{U\Lambda}=\frac{\beta}{1+\beta+\beta^2}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 197
+  role: notes_stage
+  excerpt: \epsilon>\epsilon_{W\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 199
+  role: notes_stage
+  excerpt: 0<\varrho<\varrho_{W\Lambda},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: \epsilon_{U\Lambda}<\epsilon<\epsilon_{W\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 205
+  role: notes_stage
+  excerpt: \varrho_{W\Lambda}<\varrho<\varrho_{U\Lambda},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 209
+  role: notes_stage
+  excerpt: 0<\epsilon<\epsilon_{U\Lambda}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 211
+  role: notes_stage
+  excerpt: \varrho_{U\Lambda}<\varrho<\frac23.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 214
+  role: notes_stage
+  excerpt: So once the coherent branch returns \(\epsilon\), the Stage-241 primitive ranking is fixed with no additional support
+    solve.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: '- the demand-side ratio from Stage 240 is fixed to'
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 286
+  role: notes_stage
+  excerpt: \frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 295
+  role: notes_stage
+  excerpt: \Lambda_0:=\frac{27\pi^2Gc_s^5}{20a^5c^5},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 297
+  role: notes_stage
+  excerpt: \widehat Z_W = Z_W\frac{\Lambda_0}{\Lambda}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 305
+  role: notes_stage
+  excerpt: \Lambda_0\frac{(1-\epsilon_\eta)(1-\epsilon)^2}{\widehat Z_W(1+\chi_0)^2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 333
+  role: notes_stage
+  excerpt: \epsilon_{\eta,\rm ref},\Lambda_{\rm ref}),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 355
+  role: notes_stage
+  excerpt: \ln\frac{\Lambda}{\Lambda_{\rm ref}}
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: \ln \widehat Z_W = \ln Z_W - \ln\Lambda + \ln\Lambda_0,
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 375
+  role: notes_stage
+  excerpt: with the constant \(\Lambda_0\) dropping out of the quotient packet.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 387
+  role: notes_stage
+  excerpt: d\ln\Lambda).
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 406
+  role: notes_stage
+  excerpt: (d\ln Z_W-d\ln\Lambda)
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: d\ln\Lambda-d\ln Z_W
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 490
+  role: notes_stage
+  excerpt: -d\ln\Lambda+d\ln Z_W
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 523
+  role: notes_stage
+  excerpt: (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 556
+  role: notes_stage
+  excerpt: \frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 565
+  role: notes_stage
+  excerpt: \frac{8\Lambda(1-\epsilon)}{\pi^2}.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 575
+  role: notes_stage
+  excerpt: So support compensation cannot rescue orbit-lock failure, and orbit lock does not determine support enhancement.
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 682
+  role: notes_stage
+  excerpt: It is already determined by
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 685
+  role: notes_stage
+  excerpt: (\chi_0,\delta_U,Z_W,\epsilon_W,\epsilon_\eta,\Lambda),
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 727
+  role: notes_stage
+  excerpt: \epsilon_{W\Lambda}=\frac{1}{2+\beta^2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 729
+  role: notes_stage
+  excerpt: \epsilon_{U\Lambda}=\frac{\beta}{1+\beta+\beta^2},
+- path: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+  line: 734
+  role: notes_stage
+  excerpt: \widehat Z_W = Z_W\Lambda_0/\Lambda,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    - paper/stages/stage_242.tex
+    - research/pde_ledger/paper/stages/stage_242.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage242_actual_twin_support_placement_and_coherent_orbit_lock_compiler_sympy_audit.md
+    - paper/stages/stage_242.tex
+    - research/pde_ledger/paper/stages/stage_242.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

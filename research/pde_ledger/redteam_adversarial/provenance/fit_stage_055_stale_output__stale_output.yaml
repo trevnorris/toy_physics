@@ -1,0 +1,37 @@
+schema_version: 1
+candidate_id: fit_stage_055_stale_output
+parameter_name: stale_output
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_055_stale_output__phase_b__stale_output.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '055'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_055.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage055_explicit_reachability_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage055_explicit_reachability_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.txt}.}'
+- path: paper/stages/stage_055.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Combined reachability window \eqref{eq:app-stage055-reachability-window}.}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

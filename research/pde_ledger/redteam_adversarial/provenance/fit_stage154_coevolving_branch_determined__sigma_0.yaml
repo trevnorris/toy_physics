@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage154_coevolving_branch_determined
+parameter_name: Sigma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage154_coevolving_branch_determined__phase_b__sigma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '154'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_154.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Nonlinear fixed-point map \(\Sigma\propto e^{-\Phi_{\Sigma_0}[\Sigma]}\), with \(\mathcal R[\Sigma]=(\mathfrak
+    g[\Sigma]-\mathfrak r_{F1})^2/(1+\mathfrak r_{F1}^2)\).
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 17
+  role: notes_stage
+  excerpt: \Sigma(x)\ge 0,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 19
+  role: notes_stage
+  excerpt: \int_0^1 \Sigma(x)\,dx = 1,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 23
+  role: notes_stage
+  excerpt: \mathfrak g[\Sigma]
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 25
+  role: notes_stage
+  excerpt: \int_0^1 \Sigma(x)\cos\!\left(\frac{\pi x}{2}\right)dx,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 27
+  role: notes_stage
+  excerpt: \mathcal S[\Sigma]
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 29
+  role: notes_stage
+  excerpt: \int_0^1 \Sigma(x)\,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 33
+  role: notes_stage
+  excerpt: On the explicit Family-1 core branch, the shell/mixed loading ratio is not free.
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 37
+  role: notes_stage
+  excerpt: \mathcal R[\Sigma]
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 39
+  role: notes_stage
+  excerpt: \frac{\bigl(\mathfrak g[\Sigma]-\mathfrak r_{F1}\bigr)^2}{1+\mathfrak r_{F1}^2},
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 47
+  role: notes_stage
+  excerpt: \mathcal T_s[\Sigma](x)=\int_0^1 \min(x,y)\,\Sigma(y)\,dy,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 51
+  role: notes_stage
+  excerpt: \mathcal T_q[\Sigma](x)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 56
+  role: notes_stage
+  excerpt: \Sigma(y)\,dy.
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 62
+  role: notes_stage
+  excerpt: \Phi_{\Sigma_0}[\Sigma](x)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 64
+  role: notes_stage
+  excerpt: \Sigma_0
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 66
+  role: notes_stage
+  excerpt: \mathcal T_s[\Sigma](x)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 68
+  role: notes_stage
+  excerpt: \mathcal R[\Sigma]\,\mathcal T_q[\Sigma](x)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 76
+  role: notes_stage
+  excerpt: \Sigma(x)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 78
+  role: notes_stage
+  excerpt: \frac{e^{-\Phi_{\Sigma_0}[\Sigma](x)}}
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 79
+  role: notes_stage
+  excerpt: '{\int_0^1 e^{-\Phi_{\Sigma_0}[\Sigma](y)}dy}.'
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 92
+  role: notes_stage
+  excerpt: \mathfrak g[\Sigma]=\mathfrak g_*,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 105
+  role: notes_stage
+  excerpt: \mathcal R[\Sigma]=\frac14.
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 162
+  role: notes_stage
+  excerpt: \Pi[\Sigma]
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 164
+  role: notes_stage
+  excerpt: \Phi'_{\Sigma_0}[\Sigma](0)
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 166
+  role: notes_stage
+  excerpt: \Sigma_0\Bigl[1-\mathcal R[\Sigma]\,\mathcal S[\Sigma]\Bigr].
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 170
+  role: notes_stage
+  excerpt: Hence the co-evolving canonical branch is determined by the coupled conditions
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 173
+  role: notes_stage
+  excerpt: \Sigma
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 175
+  role: notes_stage
+  excerpt: \frac{e^{-\Phi_{\Sigma_0}[\Sigma]}}
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 176
+  role: notes_stage
+  excerpt: '{\int e^{-\Phi_{\Sigma_0}[\Sigma]}},'
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 178
+  role: notes_stage
+  excerpt: \mathfrak g[\Sigma]=\mathfrak g_*,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 180
+  role: notes_stage
+  excerpt: \Pi=\Sigma_0\left(1-\frac14\mathcal S[\Sigma]\right).
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 183
+  role: notes_stage
+  excerpt: Under the self-matched susceptibility closure from Stage 140,
+- path: notes/stages/moving_throat_pde_stage154_coevolving_core_mouth_map.md
+  line: 186
+  role: notes_stage
+  excerpt: \Sigma_0=\frac{20}{9}\widehat T_m^2.
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 4. Linearized slope identity dPi in terms of dSigma0, dS, dR.
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 dSigma0 Sstar dS", real=True)
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Pi = (Sigma0 + dSigma0) * (1 - (Rstar + dR) * (Sstar + dS))
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Pi_lin = sp.expand(sp.series(Pi, dSigma0, 0, 2).removeO())
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# manually drop quadratic dR*dS, dSigma*dR, dSigma*dS terms'
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: 'dSigma0*dR: 0,'
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: 'dSigma0*dS: 0,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,105 @@
+schema_version: 1
+candidate_id: fit_stage088_natural_identification_fixes_exactly
+parameter_name: c_contact
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage088_natural_identification_fixes_exactly__phase_b__c_contact.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 088
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_088.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} under the natural contact-plus-pole interpretation of the minimal isotropic
+    conservative quadrupole precursor.}
+- path: paper/stages/stage_088.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~088 supplies the one missing loading ratio by reading the minimal isotropic conservative
+    quadrupole module as contact plus pole.}
+- path: paper/stages/stage_088.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: The natural contact-plus-pole reading writes
+- path: paper/stages/stage_088.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage088-contact-pole}
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 23
+  role: notes_stage
+  excerpt: This stage shows that under the natural **contact-plus-pole** reading of the explicit support/source branch,
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 25
+  role: notes_stage
+  excerpt: '- the mixed baseline contributes the static contact fraction,'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 39
+  role: notes_stage
+  excerpt: '## 1. Natural contact-plus-pole identification'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 58
+  role: notes_stage
+  excerpt: So the contact fraction and pole residue are
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 75
+  role: notes_stage
+  excerpt: So the support/source loading ratio is directly encoded in the static-contact / pole-residue split of the conservative
+    quadrupole precursor.
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 79
+  role: notes_stage
+  excerpt: '## 2. Matching to the minimal isotropic quadrupole module'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 92
+  role: notes_stage
+  excerpt: 'So the natural contact-plus-pole interpretation of the minimal isotropic quadrupole branch fixes the explicit
+    support demand exactly:'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 143
+  role: notes_stage
+  excerpt: '> if the actual passive/outgoing branch is the natural contact-plus-pole realization of the minimal isotropic
+    conservative module, then it selects'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 156
+  role: notes_stage
+  excerpt: Under the natural unblocked contact-plus-pole identification of the passive/outgoing isotropic quadrupole branch,
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 176
+  role: notes_stage
+  excerpt: '> **if the actual passive/outgoing quadrupole branch realizes the minimal isotropic conservative precursor in
+    the natural contact-plus-pole way, then the explicit support/source side is comfortably compatible with it.**'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. exact contact-plus-pole decomposition in terms of rho_alpha = alpha_req/alpha_mix;
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: '# With c0, c1 now derived (not defined), the contact-plus-pole reconstruction'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '"contact-plus-pole reconstruction",'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: '# rho_min (derived above from c_contact = 3/4) and confirm Pi_tr = (4/3) C_mix.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage083_windows_now_derived_directly
+parameter_name: zeta_fail
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage083_windows_now_derived_directly__phase_b__zeta_fail.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_083.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage083-zeta-direct}
+- path: paper/stages/stage_083.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm F1}^{\rm op}=
+- path: paper/stages/stage_083.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm phys}(\mathrm{Pe}_*(\Xi_{\rm F1},37,12321/5),37;12321/5).
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 7
+  role: notes_stage
+  excerpt: '`R_quad = zeta_req - zeta_phys(Pe_*),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 52
+  role: notes_stage
+  excerpt: '`zeta_phys(Pe,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 87
+  role: notes_stage
+  excerpt: '`zeta_-^(F1)(Xi_F1) = zeta_phys(Pe_-^(F1),37;12321/5),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 91
+  role: notes_stage
+  excerpt: '`zeta_+^(F1)(Xi_F1) = zeta_phys(Pe_+^(F1),37;12321/5).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 127
+  role: notes_stage
+  excerpt: '`zeta_-^(chi)(1) ≈ 2.46622291347846,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 129
+  role: notes_stage
+  excerpt: '`zeta_+^(chi)(1) ≈ 2.46752913273870,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 131
+  role: notes_stage
+  excerpt: '`zeta_-^(J)(1)   ≈ 2.44257571477179,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 133
+  role: notes_stage
+  excerpt: '`zeta_+^(J)(1)   ≈ 2.46752736855058.`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 137
+  role: notes_stage
+  excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 139
+  role: notes_stage
+  excerpt: So on the natural shell-weighted branch the guaranteed-success lower window already sits less than about `1.31e-3`
+    below the hard ceiling, while the guaranteed-failure upper window differs from the ceiling only in the seventh decimal
+    place.
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 151
+  role: notes_stage
+  excerpt: '`Pi = C_mix Q(zeta;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 153
+  role: notes_stage
+  excerpt: '`Q(zeta;eps_blk) = [1 + (1 - 2 eps_blk) zeta] / [1 - eps_blk zeta],`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 157
+  role: notes_stage
+  excerpt: '`Pi_suff^(F1) = C_mix Q( zeta_-^(F1); eps_blk ),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 159
+  role: notes_stage
+  excerpt: '`Pi_fail^(F1) = C_mix Q( zeta_+^(F1); eps_blk ).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 163
+  role: notes_stage
+  excerpt: '`Pi_suff^(F1) / C_mix = 1 + zeta_-^(F1),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 165
+  role: notes_stage
+  excerpt: '`Pi_fail^(F1) / C_mix = 1 + zeta_+^(F1).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 171
+  role: notes_stage
+  excerpt: '`Pi_fail^(chi)/C_mix ≈ 3.46752913273870,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 175
+  role: notes_stage
+  excerpt: '`Pi_fail^(J)/C_mix   ≈ 3.46752736855058,`'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 3. Direct operator-selected transport, zeta, and Pi/C_mix windows for the natural
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"y_F1 fails defining equation: residual = {y_residual}")'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: '# 3. Direct zeta and Pi/C_mix windows'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: zeta_F1 = sp.simplify(A_F1 * Omega**2)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: zeta_minus_chi = sp.N(zeta_F1.subs(Pe_sym, Pe_minus_chi), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: zeta_plus_chi = sp.N(zeta_F1.subs(Pe_sym, Pe_plus_chi), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: zeta_minus_J = sp.N(zeta_F1.subs(Pe_sym, Pe_minus_J), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: zeta_plus_J = sp.N(zeta_F1.subs(Pe_sym, Pe_plus_J), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: zeta_max_F1 = sp.N(A_F1 * pi**2 / 4, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: '# Monotonicity check: zeta_F1(Pe) = A_F1 * Omega(Pe)^2 should be monotone'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: '# stable branch.  Check d zeta / d Pe > 0 at a sample of representative Pe'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: dzeta_dPe = sp.diff(zeta_F1, Pe_sym)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: deriv_num = sp.N(dzeta_dPe.subs(Pe_sym, Pe_test_val), 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: 'print(f"  d zeta / d Pe at Pe = {Pe_test_val} : {deriv_num}")'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: 'f"zeta_F1 not monotone increasing at Pe = {Pe_test_val}: deriv = {deriv_num}"'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: print("zeta_-^(chi) =", zeta_minus_chi)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: print("zeta_+^(chi) =", zeta_plus_chi)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: print("zeta_-^(J)   =", zeta_minus_J)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: print("zeta_+^(J)   =", zeta_plus_J)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

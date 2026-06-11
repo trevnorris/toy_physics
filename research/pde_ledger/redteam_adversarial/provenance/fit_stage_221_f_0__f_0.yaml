@@ -1,0 +1,72 @@
+schema_version: 1
+candidate_id: fit_stage_221_f_0
+parameter_name: F_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_221_f_0__phase_b__f_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '221'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_221.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports Stage~220 and expands near a simple conservative pole $F_0(\omega_*)=0$ with $F_0^\prime(\omega_*)\ne0$;
+    the wall-like specialization also assumes $D_0(\omega_*)=0$ and $\Delta_0(\omega_*)\ne0$.}
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: F_0(\omega_*)=0,
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: F_0'(\omega_*)\neq 0,
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: F_0'(\omega_*)>0,
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 145
+  role: notes_stage
+  excerpt: F_0(\omega_*)=0,
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: F_0'(\omega_*)\neq 0,
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: F_0:=F_\Pi\big|_{\Pi=0}.
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: F_0'(\omega_*)\,\delta
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 184
+  role: notes_stage
+  excerpt: A_*:=\frac{\mathcal N_s(\omega_*)}{F_0'(\omega_*)},
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 186
+  role: notes_stage
+  excerpt: \gamma_*:=\frac{\Gamma_* Z_*}{|F_0'(\omega_*)|}.
+- path: notes/stages/moving_throat_pde_stage221_resonance_linewidth_tradeoff_dispersive_no_free_lunch_theorem_and_linear_survival_window_sympy_audit.md
+  line: 541
+  role: notes_stage
+  excerpt: F_\Pi(\omega)=F_0'(\omega_*)\,\delta-\Pi(\omega_*)Z_*,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

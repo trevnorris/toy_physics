@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage029_alpha_derived_dynamically
+parameter_name: alpha
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage029_alpha_derived_dynamically__phase_b__alpha.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 029
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_029.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~029 gives the loading coefficient \(\alpha\) a microscopic origin.  The coupled response
+    Schur complement splits into an isotropic softening \(\Xi I_2\) and a directional load \(\alpha vv^T\).  That same load
+    carries the outgoing \(i\omega^5\) branch into the selected mode.}
+- path: paper/stages/stage_029.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \Sigma_{\rm wall}(\omega)=\Xi(\omega)I_2+\alpha(\omega)vv^T},
+- path: paper/stages/stage_029.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage029-Xi-alpha}
+- path: paper/stages/stage_029.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \alpha(\omega)=\frac{\lambda_B^2}{A_\phi(\omega)}+
+- path: paper/stages/stage_029.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \alpha_0=\frac{\lambda_B^2}{\varpi^2}+
+- path: paper/stages/stage_029.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \begin{pmatrix}K_0-\Xi_0&0\\0&K_1-\Xi_0\end{pmatrix}-\alpha_0vv^T.
+- path: paper/stages/stage_029.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage029-alpha-out}
+- path: paper/stages/stage_029.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: \alpha(\omega)=\alpha_{\rm cons}(\omega)+\beta(\omega)\Pi_{\rm out}(\omega)+O(\Pi_{\rm out}^2),
+- path: paper/stages/stage_029.tex
+  line: 110
+  role: paper_stage_tex
+  excerpt: \item The static directional load \(\alpha_0\) is positive if the stable denominators are positive.
+- path: paper/stages/stage_029.tex
+  line: 115
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~030 normalizes the selected operator and defines \(P_{0,-}=\beta_0s_-/\lambda_-\).  Stage~033
+    rewrites \(\beta_0\) and \(\alpha_0\) in microscopic coupling variables.  Later retarded stages reuse the fact that the
+    outgoing bridge is carried by the same selected directional load.}
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 028 deliberately introduced a reduced loading parameter `alpha` to turn the free profile angle `theta` into
+    a real eigenproblem. That was the right move at the time, but it also left the central spectral question unfinished:'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 7
+  role: notes_stage
+  excerpt: '> what does `alpha` actually come from in the coupled wall/BdG/Maxwell/mixed operator, and how does the same operator
+    feed the outgoing `l=2` odd term into the *selected* wall quadrupole mode?'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 15
+  role: notes_stage
+  excerpt: '- and a rank-1 directional load `alpha(omega) v v^T`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 107
+  role: notes_stage
+  excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 115
+  role: notes_stage
+  excerpt: '`alpha(omega) = lambda_B^2 / A_phi(omega)`'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 125
+  role: notes_stage
+  excerpt: '`D_wall(omega) = [ D_eta^(bare)(omega) - Xi(omega) I_2 ] - alpha(omega) v v^T`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 130
+  role: notes_stage
+  excerpt: 2. `alpha(omega)` is the **directional loading strength** along the D/N overlap vector `v`.
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 149
+  role: notes_stage
+  excerpt: '`alpha_0 = lambda_B^2 / varpi^2`'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 154
+  role: notes_stage
+  excerpt: '`K_eff^(0) = [[K_0 - Xi_0, 0], [0, K_1 - Xi_0]] - alpha_0 v v^T`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 163
+  role: notes_stage
+  excerpt: '`alpha -> alpha_0`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 168
+  role: notes_stage
+  excerpt: '`= 2 alpha_0 kappa_0 kappa_1 / ( Delta K_ax + alpha_0 (kappa_0^2 - kappa_1^2) )`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 171
+  role: notes_stage
+  excerpt: for positive `alpha_0`, the selected lower eigenvector still rotates in the negative `u_1` direction, i.e. toward
+    the Stage-027 max-coupling branch and away from the blind-angle branch.
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 177
+  role: notes_stage
+  excerpt: '`alpha_crit`'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 198
+  role: notes_stage
+  excerpt: '`Sigma_wall(omega) = Xi(omega) I_2 + alpha(omega) v v^T`,'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 200
+  role: notes_stage
+  excerpt: with the same closed formula for `alpha(omega)` but with the dressed `Delta_UW(omega)`.
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 204
+  role: notes_stage
+  excerpt: '`alpha(omega) = alpha_cons(omega) + beta(omega) Pi_out(omega) + O(Pi_out^2)`'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 240
+  role: notes_stage
+  excerpt: '`alpha(omega) = alpha_even(omega) + i beta_5 omega^5 + O(omega^7)`'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 312
+  role: notes_stage
+  excerpt: '`alpha_0 = lambda_B^2 / varpi^2 + ( Omega_U^2 lambda_W + lambda_R lambda_U )^2 / ( Omega_U^2 Delta_0 )`.'
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 324
+  role: notes_stage
+  excerpt: 1. compute the conservative branch data `(Xi_0, alpha_0)` on the true moving-throat branch,
+- path: notes/stages/moving_throat_pde_stage029_dynamic_loading.md
+  line: 325
+  role: notes_stage
+  excerpt: 2. check that `alpha_0 < alpha_crit` so the selected quadrupole wall mode stays on the stable side,
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: Xi(omega) I_2 + alpha(omega) v v^T,
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: • the conservative static limits Xi_0 and alpha_0,
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: • the first-order outgoing expansion of alpha(omega),
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: alpha = sp.simplify(lambda_B**2 / Aphi + (AU * lambda_W + lambda_R * lambda_U) ** 2 / (AU * Delta_UW))
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: Sigma_expected = sp.simplify(Xi * I2 + alpha * (v * v.T))
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: expect_zero("Sigma - (Xi I + alpha vv^T)", Sigma - Sigma_expected)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: 'alpha0 = sp.simplify(alpha.subs({omega: 0, Pi: 0}))'
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: print("alpha_0 =", alpha0)
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: '[K0t - alpha0 * kappa0**2, -alpha0 * kappa0 * kappa1],'
+- path: scripts/moving_throat_pde_stage029_dynamic_loading_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: '[-alpha0 * kappa0 * kappa1, K1t - alpha0 * kappa1**2],'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,119 @@
+schema_version: 1
+candidate_id: fit_stage165_pinned_parent_ratios
+parameter_name: g_frak
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage165_pinned_parent_ratios__phase_b__g_frak.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '165'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 36
+  role: notes_stage
+  excerpt: '## 1. Lower-branch conditions already fixed'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 40
+  role: notes_stage
+  excerpt: \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 42
+  role: notes_stage
+  excerpt: \mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 44
+  role: notes_stage
+  excerpt: 'are pinned at first order on the exact lower branch:'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 46
+  role: notes_stage
+  excerpt: \delta\mathfrak g=0,
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 48
+  role: notes_stage
+  excerpt: \delta\mathfrak r=0.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 67
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}2\sqrt{\frac{1+\mathfrak r^2}3}.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 69
+  role: notes_stage
+  excerpt: 'Differentiate at fixed \(\mathfrak r\):'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 81
+  role: notes_stage
+  excerpt: '## 3. Exact background-flow transport from fixed \(\mathfrak r\)'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 98
+  role: notes_stage
+  excerpt: Using \(\delta\mathfrak r=0\) gives
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 135
+  role: notes_stage
+  excerpt: So the actual background mixed-flow drift is already determined by the remaining shell/gauge/geometry drifts.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 139
+  role: notes_stage
+  excerpt: '## 4. Exact traction transport from fixed \(\mathfrak g\)'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 146
+  role: notes_stage
+  excerpt: \frac{1}{\mathfrak g_*},
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 151
+  role: notes_stage
+  excerpt: Using the same healing-lock shell reduction and \(\delta\mathfrak g=0\),
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 198
+  role: notes_stage
+  excerpt: \mathfrak r_* \approx 1.77799353547498,
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 200
+  role: notes_stage
+  excerpt: \mathfrak g_* \approx 0.758035078944663,
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 204
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}2\sqrt{\frac{1+\mathfrak r_*^2}3}.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 212
+  role: notes_stage
+  excerpt: \frac{3\sqrt{10}\,3^{3/4}}{5\pi\mathfrak g_*(1+\mathfrak r_*^2)^{1/4}}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 221
+  role: notes_stage
+  excerpt: -\frac{9\sqrt{10}\,3^{1/4}\mathfrak r_*}{20(1+\mathfrak r_*^2)^{3/4}}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 260
+  role: notes_stage
+  excerpt: -\frac{\sqrt3\,\pi\,\mathfrak g_* \mathfrak r_*}{4q_*\sqrt{1+\mathfrak r_*^2}}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 283
+  role: notes_stage
+  excerpt: -\frac{81\mathfrak r_*}{10\pi\mathfrak g_*(1+\mathfrak r_*^2)}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 395
+  role: notes_stage
+  excerpt: But these are exactly the lower-branch fixed-\(\mathfrak g\) and fixed-\(\mathfrak r\) conditions used above.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 411
+  role: notes_stage
+  excerpt: The explicit lower compensated Family-1 branch now determines the linearized drifts of
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

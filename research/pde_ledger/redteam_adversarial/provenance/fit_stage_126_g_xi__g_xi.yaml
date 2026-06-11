@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_126_g_xi
+parameter_name: g_xi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_126_g_xi__phase_b__g_xi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '126'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: g_xi = sp.simplify(sp.integrate(sigma_xi*sp.cos(k*z), (z, 0, L)))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: print("g_xi =", g_xi)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: xi_star = sp.simplify(sp.solve(sp.Eq(g_xi, gminus), xi)[0])
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: g_xi_star = sp.simplify(g_xi.subs(xi, xi_star) - gminus)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("g_xi(xi_*) - g_- =", g_xi_star)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: 'if sp.simplify(g_xi_star) != 0:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

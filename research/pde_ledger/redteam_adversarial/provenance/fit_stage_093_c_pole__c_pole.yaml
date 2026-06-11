@@ -1,0 +1,57 @@
+schema_version: 1
+candidate_id: fit_stage_093_c_pole
+parameter_name: c_pole
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_093_c_pole__phase_b__c_pole.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 093
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_093.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the static limit \(\epsilon_2=\epsilon_4=0\) returns \(c_{\rm pole}=1/4\).
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 9
+  role: notes_stage
+  excerpt: 1. derive the minimal isotropic `3/4 + 1/4` conservative quadrupole module directly from the grouped-`P2` + geometry
+    split;
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 20
+  role: notes_stage
+  excerpt: '- if the actual isotropic grouped-`P2` conservative branch is one pole,'
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 23
+  role: notes_stage
+  excerpt: then the conservative quadrupole module is forced to be
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 47
+  role: notes_stage
+  excerpt: '> - one isotropic grouped-`P2` pole,'
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 53
+  role: notes_stage
+  excerpt: '`c_pole = (1 + eps_4) / [ 4 (1 + eps_2)^2 ]`.'
+- path: notes/stages/moving_throat_pde_stage093_grouped_p2_status_update.md
+  line: 64
+  role: notes_stage
+  excerpt: '- The minimal isotropic quadrupole module is no longer just imported from the outgoing-moment analysis; it is
+    directly recovered from the grouped-`P2` + static-geometry split.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage246_rF1_coefficient
+parameter_name: r_F1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage246_rf1_coefficient__phase_b__r_f1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '246'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: rF1 = sp.sqrt(sp.Rational(12, 1) / sp.pi**2 * (sp.Rational(37, 20))**2 - 1)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: R_sigma = sp.simplify((g_sigma - rF1)**2 / (1 + rF1**2))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: R_of_g = sp.simplify((g_sym - rF1)**2 / (1 + rF1**2))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: g_minus = sp.simplify(rF1 - sp.sqrt(1 + rF1**2) / 2)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: g_plus = sp.simplify(rF1 + sp.sqrt(1 + rF1**2) / 2)
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: print("r_F1                  =", sp.N(rF1, 16))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 161
+  role: sympy_script
+  excerpt: print("g_minus(r_F1)         =", sp.N(g_minus, 16))
+- path: scripts/moving_throat_pde_stage246_compensated_multimode_source_compiler_beyond_positive_family1_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print("g_plus(r_F1)          =", sp.N(g_plus, 16))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

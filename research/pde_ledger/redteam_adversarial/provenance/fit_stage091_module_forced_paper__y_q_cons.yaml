@@ -1,0 +1,164 @@
+schema_version: 1
+candidate_id: fit_stage091_module_forced_paper
+parameter_name: Y_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage091_module_forced_paper__phase_b__y_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 091
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_091.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~091]{Stage~091: Deriving the 3/4 + 1/4 Conservative Quadrupole Module from the Grouped-P2 + Geometry
+    Split}'
+- path: paper/stages/stage_091.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_091.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Static-geometry plus one-pole grouped carrier forces the \(3/4+1/4\) conservative quadrupole module and hence \(\rho_\alpha=4/3\),
+    \(\zeta_{\rm req}=1/3\).
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 091: Deriving the `3/4 + 1/4` Conservative Quadrupole Module from the Grouped-`P2`
+    + Geometry Split'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 11
+  role: notes_stage
+  excerpt: from the minimal isotropic conservative quadrupole module, but it did so by taking the contact-plus-pole representation
+    as the natural reading of the explicit support/source branch.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 15
+  role: notes_stage
+  excerpt: '> derive that same `3/4 + 1/4` split directly from the conservative **grouped real `P2` + geometry** organization
+    already frozen by the 3PN program.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 21
+  role: notes_stage
+  excerpt: '- if the isotropic grouped-`P2` conservative branch is carried by one effective pole,'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 32
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 34
+  role: notes_stage
+  excerpt: So the `3/4 + 1/4` conservative module is no longer just a plausible parametrization. Under the minimal grouped-`P2`
+    + static-geometry realization, it is forced.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 38
+  role: notes_stage
+  excerpt: '## 1. Frozen input from the conservative hierarchy'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 40
+  role: notes_stage
+  excerpt: The 3PN conservative split already says that the higher conservative payload is organized as
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 48
+  role: notes_stage
+  excerpt: The important structural point is that the geometry lane appears there as a **static** completion, while the grouped-`P2`
+    middle block carries the nontrivial higher-order conservative quadrupole structure.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 58
+  role: notes_stage
+  excerpt: So the only remaining move is to combine those two facts in the smallest consistent way.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 64
+  role: notes_stage
+  excerpt: Take the isotropic conservative quadrupole module in the form
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 66
+  role: notes_stage
+  excerpt: '`K_Q^cons(omega) = K_geom + K_pole /(1 - omega^2/Omega_Q^2)`.'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 74
+  role: notes_stage
+  excerpt: This is the smallest realization compatible with the 3PN conservative split if the grouped-`P2` side is the only
+    dynamic quadrupole lane and geometry contributes only the static completion.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 78
+  role: notes_stage
+  excerpt: '`K_Q^cons(omega) = K0 + K2 omega^2 + K4 omega^4 + O(omega^6)`'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 115
+  role: notes_stage
+  excerpt: Therefore the normalized conservative quadrupole response is forced to be
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 117
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega)`'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 118
+  role: notes_stage
+  excerpt: '`= K_Q^cons(omega) / K0`'
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 121
+  role: notes_stage
+  excerpt: This is exactly the minimal isotropic conservative quadrupole module previously isolated from the outgoing `l=2`
+    moment matching.
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 129
+  role: notes_stage
+  excerpt: Stage 71 already proved that on the explicit support/source branch the static contact fraction and the finite conservative
+    pole map to the loading ratio as
+- path: notes/stages/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation.md
+  line: 165
+  role: notes_stage
+  excerpt: '> if the actual conservative grouped-`P2` branch is one isotropic pole and the geometry lane contributes only
+    the static completion through `O(omega^4)`, then the `3/4 + 1/4` conservative quadrupole module is forced algebraically.'
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: Derive the minimal isotropic conservative quadrupole module directly from a
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: static geometry contact term plus one isotropic grouped-P2 conservative pole.
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: the scalar `Kcons(omega)` ansatz that the upstream orthogonality result
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Kcons = sp.simplify(Kgeom + Kpole / (1 - omega**2 / OmegaQ**2))
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: series = sp.expand(sp.series(Kcons, omega, 0, 6).removeO())
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: print("K_Q^cons(omega) =", Kcons)
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: Yhat = sp.simplify(Kcons.subs(Kgeom, Kgeom_sol) / K0_on_branch)
+- path: scripts/moving_throat_pde_stage091_grouped_p2_static_geometry_derivation_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("  Yhat_Q^cons = 3/4 + (1/4)/(1-omega^2/OmegaQ^2),")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

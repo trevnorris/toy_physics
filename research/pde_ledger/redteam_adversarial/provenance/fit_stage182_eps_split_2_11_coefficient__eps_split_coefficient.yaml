@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage182_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage182_eps_split_2_11_coefficient__phase_b__eps_split_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '182'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_182.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Reduces the defect to \((\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta)\) plus dressing
+    slippage \(\Sigma_\eta\), and isolates \(\Sigma_{\rm tr}\).}
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 182: Microscopic Coherent-Kernel Slippage Decomposition and the Exact Tracking/Nontracking
+    Split'
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 10
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_1}{1-\epsilon},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 12
+  role: notes_stage
+  excerpt: \epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 14
+  role: notes_stage
+  excerpt: \epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right],
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 18
+  role: notes_stage
+  excerpt: \epsilon_1
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 20
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 22
+  role: notes_stage
+  excerpt: \frac{2\epsilon_W}{11(1+\delta_U)^2}\,\delta_{U,1}.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 38
+  role: notes_stage
+  excerpt: \Sigma_\epsilon,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 50
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 52
+  role: notes_stage
+  excerpt: \frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 71
+  role: notes_stage
+  excerpt: So the grouped defect splits exactly into a tracking piece and a genuinely nontracking mixed/outgoing piece.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 85
+  role: notes_stage
+  excerpt: \epsilon_\eta=\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 89
+  role: notes_stage
+  excerpt: \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 106
+  role: notes_stage
+  excerpt: \delta\ln \lambda_{W,A}=\epsilon\lambda_A\,\lambda_1,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 108
+  role: notes_stage
+  excerpt: \delta\ln c_{\eta U,A}=\epsilon\lambda_A\,c_1,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 110
+  role: notes_stage
+  excerpt: \delta\ln \gamma_A=\epsilon\lambda_A\,\gamma_1,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 113
+  role: notes_stage
+  excerpt: \delta\ln K_{U,A}=\epsilon\lambda_A\,\kappa_U,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 115
+  role: notes_stage
+  excerpt: \delta\ln K_{\eta,A}^{(\mathrm{eff})}=\epsilon\lambda_A\,\kappa_\eta,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 117
+  role: notes_stage
+  excerpt: \delta\ln K_{W,A}^{(\mathrm{eff})}=\epsilon\lambda_A\,\kappa_W,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 120
+  role: notes_stage
+  excerpt: \delta\ln \mu_{W,A}=\epsilon\lambda_A\,\mu_1,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 122
+  role: notes_stage
+  excerpt: \delta\ln T_{U,A}=\epsilon\lambda_A\,\tau_1.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 124
+  role: notes_stage
+  excerpt: Because the grouped weak-axisymmetric branch keeps the scalar size variables lane-invariant at first order, the
+    axial scale \(L\) is held fixed here. If one later wants an explicit effective axial-size drift, it can be restored by
+    replacing
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 177
+  role: notes_stage
+  excerpt: \epsilon_\eta=\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 182
+  role: notes_stage
+  excerpt: \eta_1=\epsilon_\eta\,(2c_1-\kappa_U-\kappa_\eta).
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 186
+  role: notes_stage
+  excerpt: For the unsplit mixed blocking ratio,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 188
+  role: notes_stage
+  excerpt: \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 193
+  role: notes_stage
+  excerpt: \varepsilon_W=\epsilon_W\,(2\gamma_1+2\lambda_1-\kappa_U-\kappa_W).
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 197
+  role: notes_stage
+  excerpt: For the split-\(U\) axial ratio,
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 251
+  role: notes_stage
+  excerpt: \Sigma_\eta:=2c_1-\kappa_U-\kappa_\eta=\frac{\eta_1}{\epsilon_\eta},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 256
+  role: notes_stage
+  excerpt: \Sigma_\epsilon:=2\gamma_1+2\lambda_1-\kappa_U-\kappa_W=\frac{\varepsilon_W}{\epsilon_W},
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 276
+  role: notes_stage
+  excerpt: +\frac{2}{1-\epsilon}
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 278
+  role: notes_stage
+  excerpt: \left(1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right)\varepsilon_W
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 279
+  role: notes_stage
+  excerpt: -\frac{2\epsilon_W}{11(1+\delta_U)^2}\delta_{U,1}
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 289
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 291
+  role: notes_stage
+  excerpt: \frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 304
+  role: notes_stage
+  excerpt: 3. mixed-blocking similarity slippage \(\Sigma_\epsilon\),
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 305
+  role: notes_stage
+  excerpt: 4. split-\(U\) axial-ratio slippage \(\Sigma_\delta\).
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 315
+  role: notes_stage
+  excerpt: \Xi_1=-\frac{\eta_1}{1-\epsilon_\eta}-\mathcal R_1.
+- path: notes/stages/moving_throat_pde_stage182_microscopic_coherent_slippage.md
+  line: 322
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

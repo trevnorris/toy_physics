@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage225_K_compat_P0_target_pin
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage225_k_compat_p0_target_pin__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '225'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 146
+  role: notes_stage
+  excerpt: P_{0,\mathrm{target,compat}}
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 582
+  role: notes_stage
+  excerpt: D_0,\qquad D_2,\qquad D_4,\qquad u_2,\qquad u_4,\qquad P_{0,\mathrm{target,compat}};
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: P0_target_compat = sp.simplify(N0_s / D0_compat)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 239
+  role: sympy_script
+  excerpt: assert_close(float(P0_target_compat.evalf()), 0.00206979231806289)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 250
+  role: sympy_script
+  excerpt: print("P0_target,compat       =", sp.N(P0_target_compat, 18))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

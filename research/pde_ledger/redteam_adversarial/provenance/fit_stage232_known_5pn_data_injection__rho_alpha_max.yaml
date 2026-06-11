@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage232_known_5pn_data_injection
+parameter_name: rho_alpha_max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_known_5pn_data_injection__phase_b__rho_alpha_max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: \zeta_{\max}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: The same support/source branch is selected by the exact fixed-point law
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 105
+  role: notes_stage
+  excerpt: \frac{\cosh(\alpha x)+(\eta/\alpha)\sinh(\alpha x)-\cosh(\alpha(1-x))}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 106
+  role: notes_stage
+  excerpt: '{\alpha\sinh\alpha+\eta\cosh\alpha},'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 108
+  role: notes_stage
+  excerpt: \alpha=\sqrt\kappa.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: \frac{\eta(\cosh\alpha-1)}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 122
+  role: notes_stage
+  excerpt: '{\alpha^2(\alpha\sinh\alpha+\eta\cosh\alpha)}'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 128
+  role: notes_stage
+  excerpt: \frac{\cosh\alpha+(\eta/\alpha)\sinh\alpha-1}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 129
+  role: notes_stage
+  excerpt: '{\alpha\sinh\alpha+\eta\cosh\alpha}'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: for the benchmark \(\lambda_\mu=1\).
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(\chi)}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(J)}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 223
+  role: notes_stage
+  excerpt: \rho_\alpha^{\rm req}=\frac43.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 234
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(\chi)}-\frac43
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(J)}-\frac43
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 255
+  role: notes_stage
+  excerpt: \frac{\rho_{\alpha,\max}^{(\chi)}}{4/3}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: \frac{\rho_{\alpha,\max}^{(J)}}{4/3}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 274
+  role: notes_stage
+  excerpt: \zeta_{\max}-\zeta_{\rm phys}^{(\chi)}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 280
+  role: notes_stage
+  excerpt: \zeta_{\max}-\zeta_{\rm phys}^{(J)}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: 1. **Static same-sign Maxwell shaping** is still not the answer.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: That is the cleanest current stopping point.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: \zeta_{\max}=A_K\pi^2/4;
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 385
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(\chi)},\quad
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 386
+  role: notes_stage
+  excerpt: \rho_{\alpha,\max}^{(J)};
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 392
+  role: notes_stage
+  excerpt: \rho_\alpha^{\rm req}=\frac43;
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 394
+  role: notes_stage
+  excerpt: 8. and the proximity of both explicit Family-1 points to the ceiling \(\zeta_{\max}\).
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: 'max_iter: int = 300,'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: 'for _ in range(max_iter):'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: '# 2. Robin support equation and zeta_max ceiling'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: zeta_max = A_K * mp.pi**2 / 4
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("zeta_max =", zeta_max)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: assert_close(float(zeta_max), 2.4675297457259358, tol=5e-15)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: alpha = mp.sqrt(kappa)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: denom = alpha * mp.sinh(alpha) + eta * mp.cosh(alpha)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: mp.cosh(alpha * x)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: + (eta / alpha) * mp.sinh(alpha * x)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '- mp.cosh(alpha * (1 - x))'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: Delta_0 = eta * (mp.cosh(alpha) - 1) / (alpha**2 * denom)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: Delta_inf = (mp.cosh(alpha) + (eta / alpha) * mp.sinh(alpha) - 1) / denom
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: (mp.e**alpha - q) / (p + alpha) + (mp.e**(-alpha) - q) / (p - alpha)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: fit_stage121_r_not_tunable
+parameter_name: mathfrak_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage121_r_not_tunable__phase_b__mathfrak_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '121'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_121.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Identifying the mixed D/N tube with the throat span gives \(\mathfrak r_{\rm geom}(L/a)=\sqrt{12(L/a)^2/\pi^2-1}\).
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 7
+  role: notes_stage
+  excerpt: \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}}
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 35
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 40
+  role: notes_stage
+  excerpt: \mathfrak r_{\rm geom}\!\left(\frac{L}{a}\right)
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 65
+  role: notes_stage
+  excerpt: \mathfrak r_{F1}
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 77
+  role: notes_stage
+  excerpt: r_c^{F1}=\mathfrak r_{F1}^2\approx 3.16126101219081.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 91
+  role: notes_stage
+  excerpt: the first D/N half-wave of the actual throat corridor. So the mixed side-channel is now tied directly to the real
+    throat geometry, not to a detached bookkeeping cavity.
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 97
+  role: notes_stage
+  excerpt: '- before Stage 121, the normalized hybridization \(\mathfrak r\) was free;'
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 98
+  role: notes_stage
+  excerpt: '- after identifying the mixed D/N tube with the actual throat length, it is fixed to'
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 100
+  role: notes_stage
+  excerpt: \mathfrak r_{F1}\approx 1.778
+- path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+  line: 104
+  role: notes_stage
+  excerpt: So the next question is no longer “what is \(\mathfrak r\)?” It is “what normalized mouth-coupling ratio \(\mathfrak
+    g\) does the actual core pick at this geometrically fixed \(\mathfrak r\)?”
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

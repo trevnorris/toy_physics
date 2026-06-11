@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage_067_iprime_dual
+parameter_name: Iprime_dual
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_067_iprime_dual__phase_b__iprime_dual.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '067'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_067.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: The exact self-dual stationary point of the shape family is
+- path: paper/stages/stage_067.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage067-self-dual}
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 19
+  role: notes_stage
+  excerpt: 1. the benchmark has an **exact self-duality**,
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 20
+  role: notes_stage
+  excerpt: 2. that self-duality forces an exact stationary point at
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 65
+  role: notes_stage
+  excerpt: '## 2. Exact self-duality'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 80
+  role: notes_stage
+  excerpt: So the overlap obeys the exact duality law
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 94
+  role: notes_stage
+  excerpt: Because `C^2(r) = C^2(pi / r)`, the self-dual point is
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 98
+  role: notes_stage
+  excerpt: Differentiating the duality relation gives
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 106
+  role: notes_stage
+  excerpt: is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian
+    benchmark family.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 114
+  role: notes_stage
+  excerpt: Evaluating the exact dimensionless overlap at the self-dual point gives
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 162
+  role: notes_stage
+  excerpt: '- exact duality `C^2(r) = C^2(pi/r)`,'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: '3. Exact self-duality implication:'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: '- SymPy handles all exact norm/duality algebra.'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: '# 2. Exact duality algebra'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: subbanner("2. Exact duality implication")
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: duality_rhs = (r / sp.sqrt(sp.pi)) * I(sp.pi / r)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: C2_dual = sp.simplify(duality_rhs**2 / (r * sp.sqrt(2 * sp.pi)))
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: '# checks it equals C^2(pi/r). Holds for ANY function I; the duality identity for the'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: expect_zero("C^2(r) - C^2(pi/r) under duality", C2_dual - C2_target)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: subbanner("3. Exact stationary point at the self-dual ratio")
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: Istar, Iprime_left, Iprime_dual = sp.symbols(
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: '"I_star Iprime_left Iprime_dual",'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: duality_tangent = sp.simplify(
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: Iprime_left - (Istar / sp.sqrt(sp.pi) - sp.sqrt(sp.pi) * Iprime_dual / r)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: duality_tangent_at_rstar = sp.simplify(
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: duality_tangent.subs(r, rstar).subs(Iprime_dual, Iprime_left)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: print("differentiated overlap duality at r_* =", duality_tangent_at_rstar)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: '# Tautological: the substitution Iprime_left -> Istar/(2*sqrt(pi)) is the solution of'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: '"self-dual overlap-slope relation",'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: duality_tangent_at_rstar.subs(Iprime_left, Istar / (2 * sp.sqrt(sp.pi))),
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: dC2_selfdual = sp.simplify(
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: (2 * Istar * Iprime_left * rstar - Istar**2)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: '# Tautological: dC2_selfdual is a hand-written derivative formula, then the slope value'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: '"stationary derivative of C^2 at the self-dual point",'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: dC2_selfdual.subs(Iprime_left, Istar / (2 * sp.sqrt(sp.pi))),
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: dC2_selfdual.subs(Iprime_left, Istar / (2 * sp.sqrt(sp.pi)) + delta_bad)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("broken self-dual derivative =", dC2_broken)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: raise AssertionError("Expected a perturbed self-dual tangent to break stationarity.")
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("Hence the self-dual point r_* = sqrt(pi) is an exact stationary point.")
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 172
+  role: sympy_script
+  excerpt: '# 5. Numerical duality checks'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

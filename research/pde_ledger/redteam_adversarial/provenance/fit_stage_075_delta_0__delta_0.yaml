@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_075_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_075_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '075'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_075.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage075-Delta0}
+- path: paper/stages/stage_075.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \Delta_0\left(\frac{12321}{5},37\right)
+- path: paper/stages/stage_075.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage075-Deltainf}
+- path: paper/stages/stage_075.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \Delta_\infty\left(\frac{12321}{5},37\right)
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 25
+  role: notes_stage
+  excerpt: '`Upsilon_fail = Pe_req / [ Lambda_ell^2 Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 27
+  role: notes_stage
+  excerpt: '`Upsilon_suff = Pe_req / [ Lambda_ell^2 Delta_0(kappa,eta) ].`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 39
+  role: notes_stage
+  excerpt: '`Delta_0(12321/5,37) ≈ 1.73302079021525e-4,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 41
+  role: notes_stage
+  excerpt: '`Delta_inf(12321/5,37) ≈ 2.01447565540522e-2.`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 51
+  role: notes_stage
+  excerpt: '`Xi_fail = Pe_req / Delta_inf ≈ 49.6407091004953 * Pe_req,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 53
+  role: notes_stage
+  excerpt: '`Xi_suff = Pe_req / Delta_0 ≈ 5770.27122609299 * Pe_req.`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 69
+  role: notes_stage
+  excerpt: '`Delta_inf ~ 1/alpha,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 71
+  role: notes_stage
+  excerpt: '`Delta_0 ~ eta / [ alpha^2 (alpha + eta) ],`'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: '- evaluate Delta_0 and Delta_inf on the explicit Family-1 / healing-locked branch,'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Delta0 = sp.simplify(
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Deltainf = sp.simplify(
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Delta0_sym = eta_sym * (sp.cosh(alpha_sym) - 1) / (
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: Deltainf_sym = (sp.cosh(alpha_sym) + (eta_sym / alpha_sym) * sp.sinh(alpha_sym) - 1) / (
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: delta0_identity = sp.simplify(
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Delta0_sym
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: deltainf_identity = sp.simplify(
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Deltainf_sym
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print("Delta_0 algebraic identity (free alpha, eta) =", delta0_identity)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("Delta_inf algebraic identity (free alpha, eta) =", deltainf_identity)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: assert delta0_identity == 0
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: assert deltainf_identity == 0
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# Large-alpha: alpha * Delta_inf -> 1 (since Delta_inf ~ 1/alpha in that limit).'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# A wrong factor in numerator or denominator of Delta_inf would change this limit.'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: large_alpha_check = sp.limit(alpha_sym * Deltainf_sym, alpha_sym, sp.oo)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: print("alpha * Delta_inf large-alpha limit =", large_alpha_check)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# Small-alpha: Delta_0 -> 1/2 (since cosh(alpha)-1 ~ alpha^2/2 and'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: small_alpha_check_delta0 = sp.limit(Delta0_sym, alpha_sym, 0)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("Delta_0 small-alpha limit =", small_alpha_check_delta0)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: assert small_alpha_check_delta0 == sp.Rational(1, 2)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: 'print("PASS: alpha * Delta_inf -> 1 (large-alpha) and Delta_0 -> 1/2 (small-alpha)")'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("Delta_0 =", Delta0)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("Delta_inf =", Deltainf)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("Delta_0 (numeric) =", sp.N(Delta0, 20))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("Delta_inf (numeric) =", sp.N(Deltainf, 20))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: Upsilon_fail = sp.simplify(Pe_req / (Lambda_ell**2 * Deltainf))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: Upsilon_suff = sp.simplify(Pe_req / (Lambda_ell**2 * Delta0))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

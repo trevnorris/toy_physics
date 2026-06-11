@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage186_wl_matches_reference_matrix
+parameter_name: M_star_matrix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage186_wl_matches_reference_matrix__phase_b__m_star_matrix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '186'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 134
+  role: notes_stage
+  excerpt: \begin{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 143
+  role: notes_stage
+  excerpt: \end{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 145
+  role: notes_stage
+  excerpt: \begin{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 154
+  role: notes_stage
+  excerpt: \end{pmatrix}_{\!\rm grp}.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 159
+  role: notes_stage
+  excerpt: \begin{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 163
+  role: notes_stage
+  excerpt: \end{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 173
+  role: notes_stage
+  excerpt: \begin{pmatrix}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 177
+  role: notes_stage
+  excerpt: \end{pmatrix}.
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 1. Build the exact 3x8 monomial-drift matrix M_*.
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: M = sp.Matrix([
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

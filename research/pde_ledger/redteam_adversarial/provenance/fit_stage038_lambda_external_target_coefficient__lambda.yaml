@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage038_lambda_external_target_coefficient
+parameter_name: Lambda
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage038_lambda_external_target_coefficient__phase_b__lambda.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 038
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_038.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \Lambda=\frac{27\pi^2Gc_s^5K_W^{\rm eff}}{20a^5c^5\mu_W}.
+- path: paper/stages/stage_038.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon_W)^2}{Z_W(1+\rho)^2}}.
+- path: paper/stages/stage_038.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: =\frac{8\Lambda(1-\epsilon_W)}{\pi^2}
+- path: paper/stages/stage_038.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: Thus \((\epsilon_W,\Lambda)\) fix the product scale, \(\epsilon_\eta\) fixes the geometry lane through \(\delta\),
+    and \((\epsilon_\eta,Z_W,\rho)\) redistribute the point along a fixed product curve.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 28
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 32
+  role: notes_stage
+  excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 38
+  role: notes_stage
+  excerpt: '`R_target M_mix = 8 Lambda (1 - eps_W) / pi^2`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 41
+  role: notes_stage
+  excerpt: That means three apparently independent microscopic lanes only redistribute the defect **along** a fixed product
+    curve, while the mixed-sector stability ratio `eps_W` and the radiative demand scale `Lambda` set the product itself.
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 69
+  role: notes_stage
+  excerpt: '`Lambda := 27 pi^2 G c_s^5 K_W^(eff) / (20 a^5 c^5 mu_W).`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 91
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 110
+  role: notes_stage
+  excerpt: '`= 8 Lambda (1 - eps_W) / pi^2`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 122
+  role: notes_stage
+  excerpt: 1. the pair `(eps_W, Lambda)` sets the product scale,
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 139
+  role: notes_stage
+  excerpt: '`d R_target / d eps_eta = - Lambda (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 147
+  role: notes_stage
+  excerpt: '`d R_target / d eps_W = - 2 Lambda (1 - eps_eta) (1 - eps_W) / [ Z_W (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 156
+  role: notes_stage
+  excerpt: '`d R_target / d Z_W = - Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W^2 (1 + rho)^2 ] < 0.`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 164
+  role: notes_stage
+  excerpt: '`d R_target / d rho = - 2 Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^3 ].`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 183
+  role: notes_stage
+  excerpt: '`R_target M_mix = 8 Lambda (1 - eps_W) / pi^2`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 217
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps_W)^2 / [ Z_W (1 + rho)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage038_dimensionless_continuum_placement.md
+  line: 228
+  role: notes_stage
+  excerpt: '> compute the dimensionless kernel ratios `(eps_eta, eps_W, rho, Z_W, delta_0, Lambda)` from the completed moving-throat
+    PDE and check whether the resulting point lies inside the exact Stage-035/036 admissible region.'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: eps_eta, eps_W, rho, Z_W, delta0, Lambda = sp.symbols(
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: '"eps_eta eps_W rho Z_W delta0 Lambda", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: 'G: 20 * Lambda * a**5 * c_light**5 * mu_W / (27 * sp.pi**2 * c_s**5 * KWeff),'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: 'G: 20 * Lambda * a**5 * c_light**5 * mu_W / (27 * sp.pi**2 * c_s**5 * KWeff),'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '"R_target - Lambda (1-eps_eta)(1-eps_W)^2 / [Z_W (1+rho)^2]",'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: R_dimless - Lambda * (1 - eps_eta) * (1 - eps_W) ** 2 / (Z_W * (1 + rho) ** 2),
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: expect_zero("R_target M_mix - 8 Lambda (1-eps_W)/pi^2", product - 8 * Lambda * (1 - eps_W) / sp.pi**2)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: expect_zero("8 Lambda (1-eps_W)/pi^2 - NQ * KWeff(1-eps_W)/mu_W",
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: 8 * Lambda * (1 - eps_W) / sp.pi**2
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: R_expr = Lambda * (1 - eps_eta) * (1 - eps_W) ** 2 / (Z_W * (1 + rho) ** 2)
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: expect_zero("d R / d Z_W factorization", dR_dZ + Lambda * (1 - eps_eta) * (1 - eps_W) ** 2 / (Z_W**2 * (1 + rho)
+    ** 2))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: expect_zero("d R / d eps_eta factorization", dR_deps_eta + Lambda * (1 - eps_W) ** 2 / (Z_W * (1 + rho) ** 2))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: expect_zero("d R / d eps_W factorization", dR_deps_W + 2 * Lambda * (1 - eps_eta) * (1 - eps_W) / (Z_W * (1 + rho)
+    ** 2))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: expect_zero("d R / d rho factorization", dR_drho + 2 * Lambda * (1 - eps_eta) * (1 - eps_W) ** 2 / (Z_W * (1 +
+    rho) ** 3))
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: '# (0 < eps_eta < 1, 0 < eps_W < 1, 1 + rho > 0, Z_W > 0, Lambda > 0, delta0 > 0)'
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 192
+  role: sympy_script
+  excerpt: dR_dZ * Z_W**2 * (1 + rho)**2 / (Lambda * (1 - eps_eta) * (1 - eps_W)**2) + 1,
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: dR_deps_eta * Z_W * (1 + rho)**2 / (Lambda * (1 - eps_W)**2) + 1,
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: dR_deps_W * Z_W * (1 + rho)**2 / (2 * Lambda * (1 - eps_eta) * (1 - eps_W)) + 1,
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 216
+  role: sympy_script
+  excerpt: dR_drho * Z_W * (1 + rho)**3 / (2 * Lambda * (1 - eps_eta) * (1 - eps_W)**2) + 1,
+- path: scripts/moving_throat_pde_stage038_dimensionless_continuum_placement_sympy_audit.py
+  line: 226
+  role: sympy_script
+  excerpt: print("together with the product relation R_target M_mix = 8 Lambda (1-eps_W)/pi^2.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,107 @@
+schema_version: 1
+candidate_id: fit_stage_139_m_q
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_139_m_q__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '139'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_139.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 33
+  role: notes_stage
+  excerpt: \Pi_* = M_s + M_q\,\mathcal S_q(\Pi_*).
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 37
+  role: notes_stage
+  excerpt: M_q=-R_q M_s,
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 46
+  role: notes_stage
+  excerpt: M_q^*(R_q)=-R_q M_s^*(R_q).
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 79
+  role: notes_stage
+  excerpt: M_q^{\rm nat,*}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 115
+  role: notes_stage
+  excerpt: M_q^{\rm comp,*}=-\frac{M_s^{\rm comp,*}}{4}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 131
+  role: notes_stage
+  excerpt: \frac{|M_q^{\rm comp,*}|}{|M_q^{\rm nat,*}|}
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 151
+  role: notes_stage
+  excerpt: M_q\approx -0.24270;
+- path: notes/stages/moving_throat_pde_stage139_family1_actual_mouth_gains.md
+  line: 157
+  role: notes_stage
+  excerpt: M_q\approx -0.45149.
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: Mq_nat = sp.N(-Rq_nat * Ms_nat, 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: Mq_comp = sp.N(-Rq_comp * Ms_comp, 30)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: print('M_q^nat,* =', Mq_nat)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: print('M_q^comp,* =', Mq_comp)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: print('mixed gain magnitude ratio =', sp.N(abs(Mq_comp)/abs(Mq_nat), 20))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert abs(Mq_nat - sp.Float('-0.242696939724365', 20)) < tol_literal, (Mq_nat,)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: assert abs(Mq_comp - sp.Float('-0.451485277739090', 20)) < tol_literal, (Mq_comp,)
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# Documented identity (NOT independent): with M_s = Pi_*/(1 - R_q S_q) and M_q = -R_q M_s'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: '# the outlet form Pi_* = M_s + M_q S_q is true by construction; kept only as a structural'
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: sp.N(Pi_star - (Ms_nat + Mq_nat * Sq_star), 5))
+- path: scripts/moving_throat_pde_stage139_family1_actual_mouth_gains_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: sp.N(Pi_star - (Ms_comp + Mq_comp * Sq_star), 5))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

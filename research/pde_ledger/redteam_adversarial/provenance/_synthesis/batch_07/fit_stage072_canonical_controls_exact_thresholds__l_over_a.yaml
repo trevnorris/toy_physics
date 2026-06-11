@@ -1,0 +1,13 @@
+candidate_id: fit_stage072_canonical_controls_exact_thresholds
+parameter_name: L_over_a
+origin_claims: []
+constraints: []
+downstream_dependents: []
+provenance_findings:
+  - type: provenance_gap
+    severity: needs_triage
+    summary: "The candidate targets L_over_a at stage 072, but the parameter L/a (aspect ratio) does not appear anywhere in stage 072's notes or paper card, and the mechanical bundle's source_evidence is empty. Stage 072 derives the explicit threshold surfaces in terms of the three controls chi_s = m c_sw L/hbar, Lambda_ell = L/ell, and Upsilon_w — none of which is L/a. The lone 'aspect ratio' mention (notes line 103) refers to the shell ratio Lambda_ell = L/ell, not L/a. No notes-backed origin or constraint for L_over_a can be asserted at this stage (L/a is fixed downstream at stage 073)."
+    citations:
+      - { path: redteam_adversarial/provenance/fit_stage072_canonical_controls_exact_thresholds__l_over_a.yaml, line: 21, excerpt: "source_evidence: []" }
+      - { path: notes/stages/moving_throat_pde_stage072_explicit_branch_thresholds.md, line: 9, excerpt: "`Lambda_ell = L / ell,`" }
+      - { path: notes/stages/moving_throat_pde_stage072_explicit_branch_thresholds.md, line: 103, excerpt: "So the fail threshold decreases with increasing shell aspect ratio, while the sufficiency threshold saturates to a finite constant multiple of `Pe_req`." }

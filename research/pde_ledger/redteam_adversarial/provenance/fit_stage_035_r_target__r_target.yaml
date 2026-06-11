@@ -1,0 +1,215 @@
+schema_version: 1
+candidate_id: fit_stage_035_r_target
+parameter_name: R_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_035_r_target__phase_b__r_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '035'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_035.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~035 non-dimensionalizes the softening-depth target.  The selected normalization product
+    factors into an onset value times a universal D/N shape function \(F(\xi,\delta)\).  Strict monotonicity of \(F\) upgrades
+    the Stage~033 onset inequality into a unique stable normalization locus.}
+- path: paper/stages/stage_035.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: The dimensionless target ratio is
+- path: paper/stages/stage_035.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage035-Rtarget}
+- path: paper/stages/stage_035.tex
+  line: 54
+  role: paper_stage_tex
+  excerpt: R_{\rm target}:=\frac{N_Q^{\rm target}}{N_-(0)}
+- path: paper/stages/stage_035.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: =\frac{N_Q^{\rm target}A}{\beta_0\kappa_0^2}}.
+- path: paper/stages/stage_035.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \boxed{F(\xi,\delta)=R_{\rm target}}.
+- path: paper/stages/stage_035.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: R_{\rm target}<1\Rightarrow\text{no stable hit},
+- path: paper/stages/stage_035.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=1\Rightarrow\xi_{\rm req}=0,
+- path: paper/stages/stage_035.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: R_{\rm target}>1\Rightarrow\exists!\,\xi_{\rm req}\in(0,1)}.
+- path: paper/stages/stage_035.tex
+  line: 120
+  role: paper_stage_tex
+  excerpt: If \(R_{\rm target}=1+\varepsilon_R\), then
+- path: paper/stages/stage_035.tex
+  line: 125
+  role: paper_stage_tex
+  excerpt: For large target ratio,
+- path: paper/stages/stage_035.tex
+  line: 128
+  role: paper_stage_tex
+  excerpt: 1-\xi_{\rm req}\simeq\frac{C(\delta)}{R_{\rm target}}.
+- path: paper/stages/stage_035.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~035 outputs the shape function \eqref{eq:app-stage035-F}, the target ratio \eqref{eq:app-stage035-Rtarget},
+    the monotonicity derivative \eqref{eq:app-stage035-F-derivative}, the existence/uniqueness theorem \eqref{eq:app-stage035-existence},
+    and the required total loading \eqref{eq:app-stage035-alpha-req}.}
+- path: paper/stages/stage_035.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~036 pairs \(F\) with the support-feasibility function \(G\).  Part~III later
+    computes continuum placement data that determine \(R_{\rm target}\), \(M_{\rm mix}\), and \(\delta\).}
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 13
+  role: notes_stage
+  excerpt: '`F(xi,delta) = R_target`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 65
+  role: notes_stage
+  excerpt: So the full selected-branch target becomes
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 67
+  role: notes_stage
+  excerpt: '`F(xi,delta) = R_target`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 71
+  role: notes_stage
+  excerpt: '`R_target := N_Q^(target) / N_-(0)`'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 72
+  role: notes_stage
+  excerpt: '`          = N_Q^(target) A / ( beta_0 kappa_0^2 )`.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 75
+  role: notes_stage
+  excerpt: All dependence on the microscopic transfer factor and the overall wall scale has collapsed into the single dimensionless
+    target ratio `R_target`.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 108
+  role: notes_stage
+  excerpt: '- if `R_target < 1`, the target is impossible on the stable branch,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 109
+  role: notes_stage
+  excerpt: '- if `R_target = 1`, the only hit is the unloaded onset point `xi = 0`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 110
+  role: notes_stage
+  excerpt: '- if `R_target > 1`, there is one and only one stable selected-branch softening depth `xi_req` that hits the target.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 129
+  role: notes_stage
+  excerpt: So once the unique `xi_req` solving `F(xi,delta)=R_target` is known, the unique required total directional loading
+    follows immediately from the formula above.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 171
+  role: notes_stage
+  excerpt: So if the target is only slightly above onset,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 173
+  role: notes_stage
+  excerpt: '`R_target = 1 + eps_R`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 185
+  role: notes_stage
+  excerpt: For very large target ratio `R_target`, the unique solution lies close to softening and obeys
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 187
+  role: notes_stage
+  excerpt: '`1 - xi_req ~= C(delta) / R_target`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 201
+  role: notes_stage
+  excerpt: The completed moving-throat PDE has to determine the microscopic quantities entering
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 203
+  role: notes_stage
+  excerpt: '`R_target = N_Q^(target) A / ( beta_0 kappa_0^2 )`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 211
+  role: notes_stage
+  excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: F_target = sp.simplify((9 * delta + 11 * xi) ** 4 / (81 * (1 - xi) * (9 * delta**2 + 18 * delta * xi + 11 * xi**2)
+    ** 2))
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: expect_zero("F - closed D/N form", F - F_target)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: R_target = sp.simplify(NQ * A / (beta0 * kappa0_sq))
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("R_target =", R_target)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: 'print("Normalization locus: F(xi,delta) = R_target")'
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: dF = sp.simplify(sp.diff(F_target, xi))
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: dF_target = sp.simplify(
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: expect_zero("dF/dxi - manifestly positive form", dF - dF_target)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: expect_zero("F(0,delta) - 1", sp.simplify(F_target.subs(xi, 0) - 1))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    - paper/stages/stage_035.tex
+    - research/pde_ledger/paper/stages/stage_035.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+    - paper/stages/stage_035.tex
+    - research/pde_ledger/paper/stages/stage_035.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

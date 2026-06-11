@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_151_a_t
+parameter_name: A_T
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_151_a_t__phase_b__a_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '151'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 109
+  role: notes_stage
+  excerpt: A_T\,\delta\mathfrak g_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 113
+  role: notes_stage
+  excerpt: '- A_T\,\operatorname{Cov}_*(c,R_*)'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: at sampled rational Pi_star values, while keeping r1, r2, A_T, B_T, and gprime
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: '# (symbolic in r1, r2, A_T, B_T, gprime). The full all-Pi_star symbolic proof is'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: AT, BT = sp.symbols("A_T B_T", real=True)
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: deltaT = AT * dg + BT * dS
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: f"[Pi={Pi_star}] M7 deltaT + A_T*CovcR + B_T*CovKR",
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: deltaT + AT * CovcR + BT * CovKR,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

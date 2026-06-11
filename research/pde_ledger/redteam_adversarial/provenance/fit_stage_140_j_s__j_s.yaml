@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_140_j_s
+parameter_name: J_s
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_140_j_s__phase_b__j_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '140'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 22
+  role: notes_stage
+  excerpt: N_{\sigma\sigma}^{(m)} = J_s = \frac{4\pi a^2\ell}{3},
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 29
+  role: notes_stage
+  excerpt: \Theta_\sigma = H_w J_s.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 40
+  role: notes_stage
+  excerpt: g_s=\mathcal T_m J_s,
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: Js = 4*sp.pi*a**2*ell/3
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: Theta = Hw*Js
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: gs = Tm*Js
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

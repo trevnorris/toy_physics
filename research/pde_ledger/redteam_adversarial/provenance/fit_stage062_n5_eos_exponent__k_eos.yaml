@@ -1,0 +1,53 @@
+schema_version: 1
+candidate_id: fit_stage062_n5_eos_exponent
+parameter_name: K_eos
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage062_n5_eos_exponent__phase_b__k_eos.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '062'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_062.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{GNLS compressional stiffness for the frozen \(n=5\) EOS and support/source profiles \(\chi_\phi\),
+    \(\chi_\sigma\).}
+- path: paper/stages/stage_062.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: For the frozen \(n=5\) EOS,
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 21
+  role: notes_stage
+  excerpt: with the frozen `n=5` EOS
+- path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+  line: 88
+  role: notes_stage
+  excerpt: The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen stiff
+    EOS,
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: 1. n=5 EOS identities h'(rho)=m c_s^2/rho.
+- path: scripts/moving_throat_pde_stage062_parent_action_gain_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: '# EOS identities'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

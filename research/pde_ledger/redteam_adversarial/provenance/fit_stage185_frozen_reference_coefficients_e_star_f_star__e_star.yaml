@@ -1,0 +1,103 @@
+schema_version: 1
+candidate_id: fit_stage185_frozen_reference_coefficients_E_star_F_star
+parameter_name: E_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage185_frozen_reference_coefficients_e_star_f_star__phase_b__e_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '185'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: E_star = 2 * epsWs / (1 - epss) * (11 + 9 * deltaUs) / (11 * (1 + deltaUs))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: F_star = 2 * chi0s / (1 + deltaUs) + 4 * epsWs * deltaUs / (11 * (1 - epss) * (1 + deltaUs) ** 2)
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: Sigma_nt = Sigma_Z + E_star * Sigma_eps - F_star * Sigma_delta
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: Cnt_ratio = sp.simplify(Zratio * epsW_ratio ** E_star * deltaU_ratio ** (-F_star))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: gamma_ratio ** (2 * E_star)
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: '* lamW_ratio ** (2 + 2 * E_star)'
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: '* TU_ratio ** (-F_star)'
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: '* KU_ratio ** (F_star - E_star)'
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: / (Keta_ratio * KWeff_ratio ** (2 + E_star))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: C_tr_star = chi0s * deltaUs / ((1 + chi0s) * (1 + deltaUs) * (1 + chi0s + deltaUs))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: A_tr_star = 2 * chi0s / ((1 + chi0s) * (1 + deltaUs))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: Sigma_Z + 2 * chi0s / (1 + chi0s) * Sigma_chi + E_star * Sigma_eps
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: expect_zero("Theta_1 independent slippage law", Theta1 - (-C_tr_star * Sigma_tr))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 211
+  role: sympy_script
+  excerpt: expect_zero("Xi_1 independent slippage law", Xi1 - (A_tr_star * Sigma_tr + Sigma_nt))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: expect_zero("Theta_1 monomial law", Theta1 - (-C_tr_star * Sigma_tr_compiled))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: expect_zero("Xi_1 monomial law", Xi1 - (A_tr_star * Sigma_tr_compiled + Sigma_nt_compiled))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 222
+  role: sympy_script
+  excerpt: Mstar_minor = sp.Matrix(
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 229
+  role: sympy_script
+  excerpt: expect_zero("det M_*^(tau,keta,mu) - (1+chi0s)", Mstar_minor.det() - (1 + chi0s))
+- path: scripts/moving_throat_pde_stage185_microscopic_monomials_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: mu_sol = sp.simplify(keta + 2 * kW - 2 * lam1 - E_star * Sigma_eps + F_star * Sigma_delta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

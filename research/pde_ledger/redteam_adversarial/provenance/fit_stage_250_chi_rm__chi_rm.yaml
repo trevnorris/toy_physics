@@ -1,0 +1,213 @@
+schema_version: 1
+candidate_id: fit_stage_250_chi_rm
+parameter_name: chi_rm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_250_chi_rm__phase_b__chi_rm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '250'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_250.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \mu_\eta\ddot V=g_{UV}\chi_{\rm peak}V.
+- path: paper/stages/stage_250.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+- path: paper/stages/stage_250.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \sqrt{\frac{m_sg_{UV}\chi_{\rm peak}}{2\mu_\eta(E-V_{\rm peak})}}.
+- path: paper/stages/stage_250.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}=V_{\rm peak}+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2\alpha},
+- path: paper/stages/stage_250.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: (\lambda_{\rm eff},\chi_{\rm peak},g_{UV},\mu_\eta/m_s).
+- path: paper/stages/stage_250.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}-V_{\rm peak}\propto\lambda_{\rm eff}^{2}\chi_{\rm peak}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: 5. and the Session-III proton-proxy / aligned-branch benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 20
+  role: notes_stage
+  excerpt: 'It does not modify the Stage-247 stationary lowered branch, and it does not add the Stage-251 damping/export kernel
+    yet.  Its job is narrower: turn the relaxed branch into an explicit survival criterion of the form'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: '- Stage 249 fixed the aligned branch as the preferred hidden-channel export branch for the benchmark dynamic check,
+    but deliberately left the scalar crossing law unchanged.'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: \mu_\eta\,\ddot V = g_{UV}\,\chi_{\rm peak}\,V,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: \chi_{\rm peak}:=\max\chi_\lambda(r)
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: \Gamma_{\rm coll}=\sqrt{\frac{g_{UV}\chi_{\rm peak}}{\mu_\eta}},
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 212
+  role: notes_stage
+  excerpt: \sqrt{\frac{m_s g_{UV}\chi_{\rm peak}}{2\mu_\eta\,(E-V_{\rm peak})}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 234
+  role: notes_stage
+  excerpt: \frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 255
+  role: notes_stage
+  excerpt: A finite upper edge can only appear if one adds extra energy dependence to the collapse law or an additional high-energy
+    failure mechanism.  Those are outside Stage 250 and belong to later damping/export work.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 291
+  role: notes_stage
+  excerpt: \frac{\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}}{\mu_\eta}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 315
+  role: notes_stage
+  excerpt: \frac{\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}/\mu_\eta}}{\sqrt{v_0^2-v_{\rm crit,new}^2}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 339
+  role: notes_stage
+  excerpt: \frac{\sqrt{2}\,\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}}}{2\sqrt{\alpha}}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: \frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2\alpha}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 365
+  role: notes_stage
+  excerpt: \lambda_{\rm eff},\qquad \chi_{\rm peak},\qquad g_{UV},\qquad \alpha.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 386
+  role: notes_stage
+  excerpt: \chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 390
+  role: notes_stage
+  excerpt: \chi_{\rm peak}=\max \chi_\lambda(r),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 397
+  role: notes_stage
+  excerpt: \bigl(\lambda_{\rm eff},\chi_{\rm peak}\bigr).
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 404
+  role: notes_stage
+  excerpt: '## 7. Session-III benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 406
+  role: notes_stage
+  excerpt: Use the Session-II/III reduced benchmark values
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 417
+  role: notes_stage
+  excerpt: \chi_{\rm peak}=21.73204372,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 525
+  role: notes_stage
+  excerpt: \chi_{\rm peak}^{\rm raw}\approx 50.74399964.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: (\lambda_{\rm eff},\chi_{\rm peak}),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 561
+  role: notes_stage
+  excerpt: \lambda_{\rm eff}^2\chi_{\rm peak}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 572
+  role: notes_stage
+  excerpt: The Stage-248 branch already determines the exact path-time integral
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 589
+  role: notes_stage
+  excerpt: E>V_{\rm peak}+\frac{m_s}{\mu_\eta}\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 596
+  role: notes_stage
+  excerpt: \lambda_{\rm eff},\qquad \chi_{\rm peak},\qquad g_{UV},\qquad \mu_\eta/m_s,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 601
+  role: notes_stage
+  excerpt: '### 9.4 It explains why the benchmark window was one-sided'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 620
+  role: notes_stage
+  excerpt: 2. The aligned-vs-anti-aligned selection enters only through the chosen benchmark branch; the scalar timescale
+    compiler itself is orientation-blind.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 621
+  role: notes_stage
+  excerpt: 3. The stage does not yet include the damping/export kernel that can stabilize slower cold events.  That belongs
+    to Stage 251.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 622
+  role: notes_stage
+  excerpt: 4. The physical-unit mapping of \(\lambda_{\rm eff},\chi_{\rm peak},\mu_\eta\) into a material-specific device
+    remains downstream.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 629
+  role: notes_stage
+  excerpt: '- and Stage 251 must replace the purely characteristic collapse law by a microscopic damping/export kernel.'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 644
+  role: notes_stage
+  excerpt: v_{\rm safe,min}^2=v_{\rm crit,new}^2+\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}/\mu_\eta.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 646
+  role: notes_stage
+  excerpt: 7. The full Session-III benchmark specialization, including
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    - paper/stages/stage_250.tex
+    - research/pde_ledger/paper/stages/stage_250.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+    - paper/stages/stage_250.tex
+    - research/pde_ledger/paper/stages/stage_250.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

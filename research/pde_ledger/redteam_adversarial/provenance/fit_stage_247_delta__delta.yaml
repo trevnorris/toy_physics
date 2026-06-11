@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage_247_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage247-delta-q-p}
+- path: paper/stages/stage_247.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: \Delta=\Omega_U^2\Omega_W^2-R_{\rm mix}^{2},
+- path: paper/stages/stage_247.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: D_0=K_*-\frac{Q}{\Delta}.
+- path: paper/stages/stage_247.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \Delta E_{UV}=\eta_{UV}\mathcal D_{UV},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: \Delta=\Omega_U^2\Omega_W^2-R_{\rm mix}^2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: D_0=K_* - \frac{Q}{\Delta}.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 111
+  role: notes_stage
+  excerpt: \chi_{qU}=\frac{P_U}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: \chi_{qW}=\frac{P}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 116
+  role: notes_stage
+  excerpt: \chi_{UU}=\frac{K_*\Omega_W^2-G_W^2}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 118
+  role: notes_stage
+  excerpt: \chi_{UW}=\frac{K_*R_{\rm mix}+G_UG_W}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 120
+  role: notes_stage
+  excerpt: \chi_{WW}=\frac{K_*\Omega_U^2-G_U^2}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: '- and it is already tied to the same denominator pair `(\Delta,D_0)` that also feeds the outgoing-normalization
+    stack.'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 217
+  role: notes_stage
+  excerpt: \mathcal D_{UV}(r)=\frac{\chi_{UV}(r)^2 a_V f_U(r)^2}{\Delta_{UV}(r)^2},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 219
+  role: notes_stage
+  excerpt: \Delta_{UV}=a_Ua_V-\chi_{UV}^2.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 225
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r):=\eta_{UV}\mathcal D_{UV}(r),
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 310
+  role: notes_stage
+  excerpt: '- `\Delta E_{UV}` is already the weighted orbit-side drain scalar,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 324
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 345
+  role: notes_stage
+  excerpt: '- `\Delta E_{UV}` is the orbit-side non-rigid drain,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 406
+  role: notes_stage
+  excerpt: \Delta=142.17750000,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 431
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})=0.21064278.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 506
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 561
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r_{\rm soft})-
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 608
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 618
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}+\lambda_W\mathcal W_w^{\rm sess}+\Delta E_{UV}+\mathcal M_\sigma,
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Delta = sp.simplify(OmU2 * OmW2 - Rmix**2)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: D0 = sp.simplify(Kstar - Q / Delta)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: chiqU = sp.simplify(PU / (Delta * D0))
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: chiqW = sp.simplify(P / (Delta * D0))
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: chiUU = sp.simplify((Kstar * OmW2 - GW**2) / (Delta * D0))
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: chiUW = sp.simplify((Kstar * Rmix + GU * GW) / (Delta * D0))
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: chiWW = sp.simplify((Kstar * OmU2 - GU**2) / (Delta * D0))
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: print("Delta                 =", Delta)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: Delta_UV = sp.simplify(a_U * a_V - chi_UV**2)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: D_UV = sp.simplify(chi_UV**2 * a_V * f_U**2 / Delta_UV**2)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: print("Delta_UV              =", Delta_UV)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("DeltaE_UV             =", E_UV)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: Delta_num = sp.N(Delta.subs(subs_soft), 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 255
+  role: sympy_script
+  excerpt: print("Delta(session)        =", Delta_num)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

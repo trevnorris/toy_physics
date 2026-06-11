@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_243_e_w
+parameter_name: E_w
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_243_e_w__phase_b__e_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '243'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_243.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: E_w(w)=E_0we^{-w^2},
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: A_w,\qquad J^w,\qquad F_{\mu w},\qquad E_w,\qquad C_a
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 220
+  role: notes_stage
+  excerpt: E_w(w)=E_0\,w e^{-w^2}.
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 229
+  role: notes_stage
+  excerpt: \int_{-\infty}^{+\infty} j^w(w)E_w(w)\,dw
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 684
+  role: notes_stage
+  excerpt: J^w E_w,
+- path: scripts/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: E_w = E0 * w * sp.exp(-w**2)
+- path: scripts/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: W_work = sp.simplify(sp.integrate(j_w * E_w, (w, -sp.oo, sp.oo)))
+- path: scripts/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: print("Field     E_w(w)      =", E_w)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

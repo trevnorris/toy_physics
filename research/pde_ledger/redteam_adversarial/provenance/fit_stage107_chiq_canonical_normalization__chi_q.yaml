@@ -1,0 +1,104 @@
+schema_version: 1
+candidate_id: fit_stage107_chiQ_canonical_normalization
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage107_chiq_canonical_normalization__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '107'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_107.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Deformed branch \(S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5\) gives explicit
+    \(\chi_Q\).
+- path: paper/stages/stage_107.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When
+    cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an
+    unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 5
+  role: notes_stage
+  excerpt: Replace the symbolic branch parameter `xi_Q` by an explicit low-frequency moving-throat DtN deformation model and
+    derive the exact map from deformation data to the retarded quadrupole normalization factor `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 22
+  role: notes_stage
+  excerpt: so the canonical outgoing normalization is `chi_Q = 1`.
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 77
+  role: notes_stage
+  excerpt: \chi_Q=\frac{-L_5/L_0}{1/27}.
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 80
+  role: notes_stage
+  excerpt: '## Exact canonical-even matching conditions'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 82
+  role: notes_stage
+  excerpt: Demand that the deformed branch preserve the canonical conservative even fingerprint,
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 104
+  role: notes_stage
+  excerpt: \chi_Q=
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 111
+  role: notes_stage
+  excerpt: \chi_Q-1=
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 118
+  role: notes_stage
+  excerpt: 'This is the first explicit moving-throat DtN deformation model for the last reduced 2.5PN scalar. It shows exactly
+    which isotropic branch data can move the canonical value `chi_Q = 1`:'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 124
+  role: notes_stage
+  excerpt: Overall scale `S` is not itself an independent obstruction; it only enters through the ratios above.
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: chiQ = sp.simplify((-L5 / L0) / sp.Rational(1, 27))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: print('chi_Q =', chiQ)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: chi_even = sp.simplify(chiQ.subs(sol))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print('chi_Q under canonical-even matching =', sp.factor(chi_even))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '''chi_Q - 3(S beta^5 + 9 Sigma5)/(3S - Sigma0)'','
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: chi_even - 3*(S*beta**5 + 9*Sigma5)/(3*S - Sigma0)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print('  chi_Q  =', sp.factor(chi_even))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

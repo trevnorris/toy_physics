@@ -1,0 +1,57 @@
+schema_version: 1
+candidate_id: fit_stage_065_v_0f
+parameter_name: V_0f
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_065_v_0f__phase_b__v_0f.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '065'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_065.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Thin-wall confinement \(V_{\rm conf}(r;a)=V_0f((r-a)/\ell)\) and matched active layer.}
+- path: paper/stages/stage_065.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: Inserting this into the matched-layer gain yields thresholds directly in terms of \(V_0\), \(\ell\), support stiffness,
+    and wall geometry.  Stage~066 packages those quantities into the dimensionless wall figure of merit.
+- path: paper/stages/stage_065.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~066 defines \(W_{\rm wall}\), the scalar control of the matched support/source
+    theorem.}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_065.tex
+    attempted_sources:
+    - paper/stages/stage_065.tex
+    - research/pde_ledger/paper/stages/stage_065.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_065.tex
+    attempted_sources:
+    - paper/stages/stage_065.tex
+    - research/pde_ledger/paper/stages/stage_065.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

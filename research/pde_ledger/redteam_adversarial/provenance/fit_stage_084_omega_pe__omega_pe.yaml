@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage_084_omega_pe
+parameter_name: Omega_Pe
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_084_omega_pe__phase_b__omega_pe.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 084
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 56
+  role: notes_stage
+  excerpt: '`= Omega_Pe^2 (kappa + pi^2/4)/(kappa + y(eta)^2),`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 58
+  role: notes_stage
+  excerpt: '`Omega_Pe`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 62
+  role: notes_stage
+  excerpt: '`Omega_0 = 1,`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

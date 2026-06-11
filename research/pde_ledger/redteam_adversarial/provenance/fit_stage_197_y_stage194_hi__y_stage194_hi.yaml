@@ -1,0 +1,64 @@
+schema_version: 1
+candidate_id: fit_stage_197_y_stage194_hi
+parameter_name: Y_stage194_hi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_197_y_stage194_hi__phase_b__y_stage194_hi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '197'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: L0_stage194 = -3 * S + Sigma0
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: L2_stage194 = S * beta**2 / 3 + Sigma2
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: L4_stage194 = S * beta**4 / 9 + Sigma4
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: L5_stage194 = S * beta**5 / 9 + Sigma5
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Y_stage194_hi = sp.simplify(
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: L0_stage194 / (L0_stage194 + L2_stage194 * z**2 + L4_stage194 * z**4 + sp.I * L5_stage194 * z**5 + sp.I * L7 *
+    z**7)
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Y_stage194_hi_series = sp.series(Y_stage194_hi, z, 0, 8).removeO()
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: 'Y_stage194_matched = sp.simplify(Y_stage194_hi_series.subs({Sigma2: Sigma2_match, Sigma4: Sigma4_match}))'
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

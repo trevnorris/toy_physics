@@ -1,0 +1,88 @@
+schema_version: 1
+candidate_id: fit_stage_226_k_compat
+parameter_name: K_compat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_226_k_compat__phase_b__k_compat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '226'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223
+    compatibility branch, the Stage-225 primitive compiler, and the imported strict `5`PN even-gate package.**'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 12
+  role: notes_stage
+  excerpt: then determines exactly whether the corridor dies or survives on the concrete noncanonical compatibility branch.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 3. the explicit mixed-sector-only strict-even-gate solve on the concrete Stage-223 compatibility point;
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 60
+  role: notes_stage
+  excerpt: '### 1.1 Explicit one-port compatibility branch from Stages 223–225'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 98
+  role: notes_stage
+  excerpt: P_{0,\rm compat}=\frac{N_0}{D_0}\approx 0.002069792318062885.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: At this same compatibility point the robust carried budgets were
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 199
+  role: notes_stage
+  excerpt: On the explicit Stage-223 compatibility branch the coefficients are numerically
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 471
+  role: notes_stage
+  excerpt: '- the concrete noncanonical compatibility-point coefficients in front of `D_{01}`;'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: '# 2. Primitive compiler on the explicit Stage 223 compatibility branch'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: D0_compat = sp.simplify(3 * (sp.Integer(1) + B2_s + Z2_s) ** 2 / (B4_s + Z4_s))
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 161
+  role: sympy_script
+  excerpt: K_compat = sp.simplify(B0_s + Z0_s + D0_compat)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: sample_full[K] = K_compat
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: assert_close(float(sp.N(K_compat, 16)), 24.4737548792910)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: print("\nVerified Stage 223 compatibility branch:")
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: print("K_compat =", sp.N(K_compat, 16))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

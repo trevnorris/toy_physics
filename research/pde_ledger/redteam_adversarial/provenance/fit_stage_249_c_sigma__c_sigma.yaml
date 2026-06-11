@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage_249_c_sigma
+parameter_name: C_sigma
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_249_c_sigma__phase_b__c_sigma.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '249'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_249.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: The minimal orientation closure introduces \(\sigma=+1\) for aligned and \(\sigma=-1\) for anti-aligned, with
+- path: paper/stages/stage_249.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \Phi_{h,\sigma}=\Phi_{h,0}+\sigma\Phi_{h,1},
+- path: paper/stages/stage_249.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \mathcal C_{h,\sigma}=\mathcal C_{h,0}+\sigma\mathcal C_{h,1}.
+- path: paper/stages/stage_249.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: \dot H_{{\rm sub},\sigma}
+- path: paper/stages/stage_249.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: =\Gamma_0+\sigma\Gamma_1
+- path: paper/stages/stage_249.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: =\Gamma_0(1+\sigma\alpha_h),
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: \sigma\in\{+1,-1\},
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: \sigma=+1\;\text{(aligned)},
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: \sigma=-1\;\text{(anti-aligned)}.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 201
+  role: notes_stage
+  excerpt: \Phi_{h,\sigma}(t;E)=\Phi_{h,0}(t;E)+\sigma\,\Phi_{h,1}(t;E),
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 204
+  role: notes_stage
+  excerpt: \mathcal C_{h,\sigma}(t;E)=\mathcal C_{h,0}(t;E)+\sigma\,\mathcal C_{h,1}(t;E).
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 211
+  role: notes_stage
+  excerpt: \dot H_{{\rm sub},\sigma}(t;E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 213
+  role: notes_stage
+  excerpt: \Gamma_0(t;E)+\sigma\,\Gamma_1(t;E),
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 237
+  role: notes_stage
+  excerpt: \dot H_{{\rm sub},\sigma}(t;E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 239
+  role: notes_stage
+  excerpt: \Gamma_0(t;E)\bigl[1+\sigma\,\alpha_h(t;E)\bigr].
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 281
+  role: notes_stage
+  excerpt: The orientation label `\sigma` enters only through the hidden-channel export functional \(H_{{\rm sub},\sigma}\).  That
+    is why this stage is a diagnostic layered on top of Stage 248 rather than a replacement for it.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 326
+  role: notes_stage
+  excerpt: \mathcal H_\sigma(E)
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 328
+  role: notes_stage
+  excerpt: \int_{I_E}\dot H_{{\rm sub},\sigma}(t;E)\,dt.
+- path: notes/stages/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.md
+  line: 518
+  role: notes_stage
+  excerpt: \sigma\in\{+1,-1\}
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: sigma = sp.symbols("sigma", real=True)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: Phi_sigma = Phi0 + sigma * Phi1
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: C_sigma = C0 + sigma * C1
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: Hdot_sigma = sp.expand(-Phi_sigma - 2 * C_sigma)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: Hdot_expected = sp.expand((-(Phi0 + 2 * C0)) + sigma * (-(Phi1 + 2 * C1)))
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: Hdot_factored = sp.simplify((Gamma0 + sigma * Gamma1).subs(Gamma1, alpha_h * Gamma0))
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: print("Phi_sigma             =", Phi_sigma)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print("C_sigma               =", C_sigma)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: print("Hdot_sigma            =", Hdot_sigma)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("Gamma0(1+sigma alpha) =", Hdot_factored)
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: assert sp.simplify(Hdot_sigma - Hdot_expected) == 0
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: assert sp.simplify(Hdot_factored - Gamma0 * (1 + sigma * alpha_h)) == 0
+- path: scripts/moving_throat_pde_stage249_conditional_helicity_export_diagnostic_compiler_on_the_dynamic_event_chain_and_aligned_vs_anti_aligned_mixed_sector_closure_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: assert sp.simplify(Hdot_scale - eta_h * G0 * (1 + sigma * alpha_h)) == 0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

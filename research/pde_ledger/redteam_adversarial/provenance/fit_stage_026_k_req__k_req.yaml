@@ -1,0 +1,134 @@
+schema_version: 1
+candidate_id: fit_stage_026_k_req
+parameter_name: K_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_026_k_req__phase_b__k_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '026'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_026.tex
+  line: 111
+  role: paper_stage_tex
+  excerpt: Solving for the required wall stiffness gives
+- path: paper/stages/stage_026.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage026-Kreq}
+- path: paper/stages/stage_026.tex
+  line: 115
+  role: paper_stage_tex
+  excerpt: K_{\rm req}
+- path: paper/stages/stage_026.tex
+  line: 129
+  role: paper_stage_tex
+  excerpt: K_\eta+6T_\Omega=K_{\rm req}.
+- path: paper/stages/stage_026.tex
+  line: 132
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~026 outputs the finite-throat D/N overlap \eqref{eq:app-stage026-kappa0}, the concrete
+    couplings \eqref{eq:app-stage026-couplings}, the finite-throat normalization law \eqref{eq:app-stage026-normalization},
+    and the required stiffness formula \eqref{eq:app-stage026-Kreq}.}
+- path: paper/stages/stage_026.tex
+  line: 138
+  role: paper_stage_tex
+  excerpt: \item Solving \eqref{eq:app-stage026-normalization} for \(K\) gives \eqref{eq:app-stage026-Kreq}.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 28
+  role: notes_stage
+  excerpt: '- the brane-like internal gauge frequency,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 29
+  role: notes_stage
+  excerpt: '- the mixed-channel frequency,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 85
+  role: notes_stage
+  excerpt: The associated support and mixed frequencies are taken to be
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 108
+  role: notes_stage
+  excerpt: and keep `Omega_U` as the reduced internal restoring frequency of the brane-like zero mode `u_0` (so its frequency
+    need not come from an axial gradient term).
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 212
+  role: notes_stage
+  excerpt: 'It can be solved exactly for the required wall stiffness:'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 214
+  role: notes_stage
+  excerpt: '`K_req = kappa^2 lambda_B^2 / varpi^2 + Q / Delta`'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 238
+  role: notes_stage
+  excerpt: '`K_eta + 6 T_Omega = K_req`.'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: • and exact solution of the normalization equation for the required wall
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: stiffness K_req on the branch.
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 181
+  role: sympy_script
+  excerpt: '# IV. Exact branch-level normalization test and required wall stiffness'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 195
+  role: sympy_script
+  excerpt: '# Solve exactly for the required wall stiffness and verify by back-substitution'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: K_req = sp.solve(sp.Eq(residual, 0), K)[0]
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: subbanner("IV.2 — Exact required wall stiffness")
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: print("K_req =")
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: sp.pprint(sp.simplify(K_req))
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: '# Independent structural check: the paper''s eq:app-stage026-Kreq states the'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: '# three-term decomposition K_req = B0 + Q/Delta + mhat^2 * kappa^2 * (...)^2'
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: K_req_paper = (
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: expect_zero("K_req - K_req_paper", sp.simplify(K_req - K_req_paper))
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: expect_zero("residual @ K_req", residual.subs(K, K_req))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

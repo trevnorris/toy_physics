@@ -1,0 +1,139 @@
+schema_version: 1
+candidate_id: fit_stage137_gains_from_derived_core_response
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage137_gains_from_derived_core_response__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '137'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_137.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Explicit gains are \(M_s=Lg_s^2/(K_s\Theta_\sigma)\), \(M_q=-L(K_sg_q-\lambda g_s)^2/[K_s(K_sK_q+\lambda^2)\Theta_\sigma]\).
+- path: paper/stages/stage_137.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 5
+  role: notes_stage
+  excerpt: Derive the actual coupled mouth-layer gains `(M_s,M_q)` from an explicit
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 84
+  role: notes_stage
+  excerpt: M_q=
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 91
+  role: notes_stage
+  excerpt: This is the first direct derivation of `(M_s,M_q)` from the explicit parent throat-core
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 97
+  role: notes_stage
+  excerpt: \Pi=M_s+M_q\,\mathcal S_q(\Pi),
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 119
+  role: notes_stage
+  excerpt: Once these are known on a branch, `(M_s,M_q)` are fixed.
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 131
+  role: notes_stage
+  excerpt: M_q=
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: Mq = sp.simplify(-L * sigma_c / Theta)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: print('M_q =', Mq)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: '# Anchor M_s, M_q against the literal forms quoted in paper/stages/stage_137.tex.'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: '# Ms and Mq above were built via the route L*rho_c/Theta and -L*sigma_c/Theta;'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: '# Any sign/factor error in rho_c, sigma_c, Ms, or Mq propagation will fail this.'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Mq_paper = -L * (Ks*gq - lam*gs)**2 / (Ks * (Ks*Kq + lam**2) * Theta)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: assert sp.simplify(Mq - Mq_paper) == 0
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: print('M_q matches paper card closed form.')
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '# Family-1 fixed-point law (notes stage137 :94-101): Pi = M_s + M_q * S_q(Pi). At a'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: '# NONZERO susceptibility S_q the map value is Pi = M_s + M_q * S_q; the mixed contribution'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# M_q * S_q must equal the matrix-Schur reconstruction -L*sigma_c_schur*S_q/Theta (M_q'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: 'Pi_map = Ms + Mq * Sq_var                       # fixed-point map at a generic, NONZERO S_q'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: 'mixed_contribution = sp.simplify(Pi_map - Ms)   # isolates the M_q * S_q term (not deleted)'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: 'Mq_from_schur = -L * sigma_c_schur / Theta      # M_q rebuilt from the matrix-Schur sigma_c'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: assert sp.simplify(mixed_contribution - Mq_from_schur * Sq_var) == 0, (
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: '"M_q * S_q outlet term does not match -L*sigma_c_schur*S_q/Theta (sign/factor of M_q)"'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print('Outlet mixed channel M_q*S_q matches the matrix-Schur reconstruction (S_q != 0).')
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: '# Sanity: a flipped-sign M_q would NOT satisfy the above (guard is non-vacuous).'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: assert sp.simplify(mixed_contribution - (-Mq_from_schur) * Sq_var) != 0, (
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: '"outlet check is vacuous: +M_q and -M_q both pass"'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

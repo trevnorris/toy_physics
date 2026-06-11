@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage_048_zeta_rm
+parameter_name: zeta_rm
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_048_zeta_rm__phase_b__zeta_rm.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 048
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_048.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the reduced support-compensation theorem; \StatusOpen{} for actual PDE placement
+    of \(\zeta_{\rm phys}\).}
+- path: paper/stages/stage_048.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The support factor \(S(\zeta;\epsilon)\), mixed baseline \(M_{\rm mix}\), and tracking-branch
+    required load \(M_{\rm req}\).}
+- path: paper/stages/stage_048.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: Solving \(S(\zeta;\epsilon)=S_{\rm req}\) gives the exact inverse
+- path: paper/stages/stage_048.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage048-zeta-req}
+- path: paper/stages/stage_048.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}=\frac{S_{\rm req}-1}{1+\epsilon(S_{\rm req}-2)}}.
+- path: paper/stages/stage_048.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: On the stable side the support factor is strictly increasing up to its softening pole.  Hence if the mixed-only
+    branch is below the required load, there is a unique \(\zeta_{\rm req}\) below the pole.  The support branch succeeds
+    iff
+- path: paper/stages/stage_048.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm phys}\geq\zeta_{\rm req}}.
+- path: paper/stages/stage_048.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The exact threshold \eqref{eq:app-stage048-zeta-req} and success condition \eqref{eq:app-stage048-success-iff}.}
+- path: paper/stages/stage_048.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stages~049--057 derive \(\zeta_{\rm phys}\) from finite-throat support, overlap, Robin
+    compliance, and transport bias.}
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 7
+  role: notes_stage
+  excerpt: '`M_tr = M_mix S(zeta;eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 11
+  role: notes_stage
+  excerpt: '`S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps).`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 22
+  role: notes_stage
+  excerpt: For any finite target ratio `R_target > 1`, any stable geometry `(delta,R_tr)`, and any mixed-only baseline below
+    the tracking critical load, there is a unique coherent support ratio `zeta_req` that hits the target before softening.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 24
+  role: notes_stage
+  excerpt: So the remaining theorem gap is not a reduced closure obstruction. It is whether the completed moving-throat PDE
+    supplies a physical `zeta` large enough to reach that exact required value.
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 73
+  role: notes_stage
+  excerpt: '`M_tr = M_mix S(zeta;eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 75
+  role: notes_stage
+  excerpt: '`S(zeta;eps) = 1 + zeta(1-eps)/(1-zeta eps),`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 81
+  role: notes_stage
+  excerpt: '`0 <= zeta < 1/eps.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 85
+  role: notes_stage
+  excerpt: '`dS/dzeta = (1-eps)/(1-zeta eps)^2 > 0,`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 93
+  role: notes_stage
+  excerpt: '`lim_(zeta -> 1/eps^-) S(zeta;eps) = +infinity.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 99
+  role: notes_stage
+  excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 103
+  role: notes_stage
+  excerpt: '`1/eps - zeta_req`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 168
+  role: notes_stage
+  excerpt: '`zeta_req = 0.`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 182
+  role: notes_stage
+  excerpt: '`zeta_req = (S_req - 1) / [ 1 + eps (S_req - 2) ].`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 190
+  role: notes_stage
+  excerpt: '`zeta_crit = (S_crit - 1) / [ 1 + eps (S_crit - 2) ].`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 194
+  role: notes_stage
+  excerpt: '`zeta_crit - zeta_req`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 206
+  role: notes_stage
+  excerpt: '`M_mix S(zeta;eps) = G_tr(xi_phys,delta;R_tr).`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 210
+  role: notes_stage
+  excerpt: '`dxi_phys/dzeta`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 211
+  role: notes_stage
+  excerpt: '`= M_mix (dS/dzeta) / (dG_tr/dxi)|_(xi_phys)`'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 231
+  role: notes_stage
+  excerpt: '- the coherent support-enhancement factor `S(zeta;eps)` is strictly increasing and invertible,'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 234
+  role: notes_stage
+  excerpt: '- and whenever `M_mix < M_req`, there is a unique coherent support ratio `zeta_req < zeta_crit < 1/eps` that reaches
+    the target before softening.'
+- path: notes/stages/moving_throat_pde_stage048_support_compensation_theorem.md
+  line: 244
+  role: notes_stage
+  excerpt: '> **does the actual moving-throat PDE produce a physical support ratio `zeta` large enough to reach the exact
+    required value `zeta_req` on the real branch?**'
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact support-enhancement inverse map zeta(S).
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact support-feasibility formulas zeta_req and zeta_crit.
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Exact stability margins zeta_req < 1/eps and zeta_req < zeta_crit when S_req < S_crit.
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: eps, zeta = sp.symbols("eps zeta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: S = sp.simplify(1 + zeta * (1 - eps) / (1 - zeta * eps))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("S(zeta;eps) =", S)
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: expect_zero("S(zeta=0)-1", sp.simplify(S.subs(zeta, 0) - 1))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: expect_zero("dS/dzeta - (1-eps)/(1-zeta eps)^2", sp.diff(S, zeta) - (1 - eps) / (1 - zeta * eps) ** 2)
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print("limit zeta->(1/eps)^- of S =", sp.limit(S, zeta, 1 / eps, dir="-"))
+- path: scripts/moving_throat_pde_stage048_support_compensation_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: limit_phys = sp.limit(S_phys, zeta, 1 / eps_phys, dir="-")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

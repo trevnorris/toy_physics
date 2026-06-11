@@ -1,0 +1,216 @@
+schema_version: 1
+candidate_id: fit_stage_253_max
+parameter_name: max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_253_max__phase_b__max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-tmax}
+- path: paper/stages/stage_253.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: T_{\max}=\frac{\mathcal K_{\rm corr}}{t_{\rm cross}^{\rm phys}}
+- path: paper/stages/stage_253.tex
+  line: 127
+  role: paper_stage_tex
+  excerpt: \frac{T_{\max}}{T}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 253: Physical Calibration and Material-Threshold Companion from the Stage-252 Microscopic
+    Export and Cold-Survival Compiler'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 14
+  role: notes_stage
+  excerpt: 3. the explicit physical calibration dictionary
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: 6. and, for the benchmark slice, the same reduced turning-point and crossing-time data already carried by Sessions
+    II–V.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: This stage is a **physical-calibration / materials companion**. It is not part of the core PDE theorem ladder.
+    Its job is to translate the exact reduced Stage-252 outputs into experimentally recognizable threshold equations while
+    keeping the unit map and coarse-graining assumptions explicit.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: '- a force-matched interstitial stiffness \(k_{\rm eff}\),'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: '- or a Korringa-limited thermal spin-survival ceiling \(T_{\max}\).'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 61
+  role: notes_stage
+  excerpt: 2. the Session-V formulas are recovered as one particular calibration slice of that exact map,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: 3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: '- `scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py`'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: checks the symbolic calibration identities, the legacy Session-V recovery
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 73
+  role: notes_stage
+  excerpt: Session-V benchmark readback.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 74
+  role: notes_stage
+  excerpt: '- `mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl`'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 76
+  role: notes_stage
+  excerpt: confined to the benchmark-only specialization layer.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 77
+  role: notes_stage
+  excerpt: '- All decimal values appearing in the benchmark subsections below are either'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 78
+  role: notes_stage
+  excerpt: declared benchmark inputs or benchmark-derived outputs. The theorem path above
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: '- Session V then translated the older phenomenological lattice thresholds into the condensed-matter variables
+    \(\lambda_{\rm ep}\omega_D\), \(k_{\rm eff}\), and \(T_{\max}\).'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: But it still could **not** say, without one more calibration move,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 108
+  role: notes_stage
+  excerpt: '- or how the spin-survival condition translates into a temperature ceiling.'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 110
+  role: notes_stage
+  excerpt: There was also one important conceptual mismatch left open. Session V’s phenomenological lattice damping scalar
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: 2. and make explicit the extra calibration/projection factor needed to connect it to the exact microscopic Stage-252
+    object.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 127
+  role: notes_stage
+  excerpt: '## 1. Physical calibration dictionary'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 185
+  role: notes_stage
+  excerpt: This is a calibration factor, not a new dynamical degree of freedom.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 216
+  role: notes_stage
+  excerpt: So the lattice side is no longer a vague materials statement. It is one exact inequality with one explicit calibration
+    factor.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 224
+  role: notes_stage
+  excerpt: The exact Stage-253 map reproduces that older threshold if one chooses the calibration slice
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 249
+  role: notes_stage
+  excerpt: So the Session-V parameter map is not discarded. It is recovered as a definite calibration slice of the exact Stage-252/253
+    bridge.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 251
+  role: notes_stage
+  excerpt: '### 2.2 Benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 253
+  role: notes_stage
+  excerpt: Use the Stage-252 benchmark slice
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 277
+  role: notes_stage
+  excerpt: The legacy Session-V slice is recovered by the benchmark factor
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 291
+  role: notes_stage
+  excerpt: '## 3. Harmonic interstitial trigger and force-matched stiffness compiler'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 321
+  role: notes_stage
+  excerpt: '### 3.1 Force-matched stiffness'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 338
+  role: notes_stage
+  excerpt: Force matching against the harmonic trap
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 351
+  role: notes_stage
+  excerpt: Define the reduced force-matching coefficient
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: So the stiffness formula is an exact companion of the reduced barrier force **only after** one adds the force-matching
+    assumption. It is not a pure consequence of the geometric \(\chi_\lambda\) trigger.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 378
+  role: notes_stage
+  excerpt: '### 3.2 Session-V benchmark slice'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 380
+  role: notes_stage
+  excerpt: On the turning-point benchmark carried by the session,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 401
+  role: notes_stage
+  excerpt: If one inserts the Session-V force-matching benchmark
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 428
+  role: notes_stage
+  excerpt: '## 4. Korringa-limited thermal spin-survival compiler'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - paper/stages/stage_253.tex
+    - research/pde_ledger/paper/stages/stage_253.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+    - paper/stages/stage_253.tex
+    - research/pde_ledger/paper/stages/stage_253.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

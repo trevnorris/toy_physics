@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage120_branch_exists_iff
+parameter_name: mathfrak_g
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage120_branch_exists_iff__phase_b__mathfrak_g.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '120'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  line: 14
+  role: notes_stage
+  excerpt: \mathfrak r=\frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  line: 18
+  role: notes_stage
+  excerpt: \mathfrak g=\frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}},
+- path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  line: 26
+  role: notes_stage
+  excerpt: 1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2,
+- path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  line: 30
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+- path: notes/stages/moving_throat_pde_stage120_core_parameter_status.md
+  line: 39
+  role: notes_stage
+  excerpt: '> “What branch values of \((\mathfrak r,\mathfrak g)\) does the actual GNLS + localized-Maxwell throat core select?”'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

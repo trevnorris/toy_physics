@@ -1,0 +1,123 @@
+schema_version: 1
+candidate_id: fit_stage186_rank3_codimension_status_claim
+parameter_name: chi_0_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage186_rank3_codimension_status_claim__phase_b__chi_0_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '186'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 72
+  role: notes_stage
+  excerpt: \chi_0^{\,1+\delta_{U,*}}\,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 73
+  role: notes_stage
+  excerpt: \delta_U^{\,1+\chi_{0,*}},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 89
+  role: notes_stage
+  excerpt: F_*=\frac{2\chi_{0,*}}{1+\delta_{U,*}}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 95
+  role: notes_stage
+  excerpt: \chi_0=\frac{\gamma c_{\eta U}}{K_U},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 112
+  role: notes_stage
+  excerpt: \left(\frac{\pi^2T_U}{L^2K_U}\right)^{1+\chi_{0,*}},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 174
+  role: notes_stage
+  excerpt: 0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 191
+  role: notes_stage
+  excerpt: \det M_*^{(\tau,\kappa_\eta,\mu_1)} = 1+\chi_{0,*} > 0.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 194
+  role: notes_stage
+  excerpt: So the monomial-drift map has exact rank three on the constructive coherent branch \(\chi_{0,*}>0\). Therefore
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 239
+  role: notes_stage
+  excerpt: e^{\,U-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Gamma+C-U)}\,T_U,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 258
+  role: notes_stage
+  excerpt: F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Gamma+C-U).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 276
+  role: notes_stage
+  excerpt: (1+\chi_{0,*})\!\left[
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 277
+  role: notes_stage
+  excerpt: U-\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\Gamma+C-U)-U
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 323
+  role: notes_stage
+  excerpt: \frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U),
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 334
+  role: notes_stage
+  excerpt: F_*\frac{1+\delta_{U,*}}{1+\chi_{0,*}}(\gamma_1+c_1-\kappa_U).
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Verify the convenient 3x3 minor det = 1 + chi_*.
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: chi, delta = sp.symbols("chi delta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: dlog_Ctr = (1 + delta) * (gam1 + c1 - kU) + (1 + chi) * (tau1 - kU)
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '[0, 1 + delta, 1 + delta, -(2 + chi + delta), 0, 0, 0, 1 + chi],'
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'if det_minor != 1 + chi:'
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '"tau1 - [kU - ((1+delta)/(1+chi)) (gam1+c1-kU)]",'
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: tau_formula - (kU - (1 + delta) * (gam1 + c1 - kU) / (1 + chi)),
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: '- F * (1 + delta) * (gam1 + c1 - kU) / (1 + chi)'
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Tau_exp = U - (1 + delta) * (Gam + C - U) / (1 + chi)
+- path: scripts/moving_throat_pde_stage186_similarity_orbit_closure_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: Ctr_orbit = (1 + delta) * (Gam + C - U) + (1 + chi) * (Tau_exp - U)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

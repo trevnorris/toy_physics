@@ -1,0 +1,75 @@
+schema_version: 1
+candidate_id: fit_stage090_minimal_module_upstream_contradiction
+parameter_name: c_contact
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage090_minimal_module_upstream_contradiction__phase_b__c_contact.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 090
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_090.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The explicit Family--1 support/source side and the minimal isotropic contact-plus-pole conservative
+    precursor.}
+- path: paper/stages/stage_090.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \item the natural contact-plus-pole reading gives \(\rho_\alpha=4/3\);
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 15
+  role: notes_stage
+  excerpt: Under the natural contact-plus-pole realization of the minimal isotropic conservative quadrupole precursor, it
+    selects
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 34
+  role: notes_stage
+  excerpt: 4. the natural contact-plus-pole interpretation of the minimal isotropic conservative quadrupole precursor gives
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 49
+  role: notes_stage
+  excerpt: '> does the actual moving-throat grouped-`P2` / geometry branch really realize the minimal isotropic conservative
+    quadrupole precursor in the natural contact-plus-pole way?'
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 63
+  role: notes_stage
+  excerpt: '- the outgoing branch no longer leaves a free loading-ratio datum under the natural minimal isotropic contact-plus-pole
+    identification,'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: reconfirms that the minimal isotropic contact-plus-pole module carries
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: c_contact = sp.Rational(3, 4)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: rho_alpha = sp.simplify(1 / c_contact)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify(c_pole / c_contact)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("c_contact =", c_contact)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

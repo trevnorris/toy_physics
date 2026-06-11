@@ -1,0 +1,76 @@
+schema_version: 1
+candidate_id: fit_stage040_lambda_exact_closed_form
+parameter_name: lambda_minus
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage040_lambda_exact_closed_form__phase_b__lambda_minus.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '040'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_040.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The selected lower eigenvalue \(\lambda_-=A_0(1-\xi)\), loading vector \(z=z_0(1,q)^T\), and
+    source vector \(s=s_0(1,t)^T\).}
+- path: paper/stages/stage_040.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: For the split--\(U\) continuum, using \(\lambda_0=\kappa_1^2/\kappa_0^2=2/9\),
+- path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  line: 45
+  role: notes_stage
+  excerpt: '`lambda_- = A_0 (1 - xi),`'
+- path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  line: 117
+  role: notes_stage
+  excerpt: '`lambda_0 := kappa_1^2 / kappa_0^2 = 2/9,`'
+- path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  line: 121
+  role: notes_stage
+  excerpt: '`q = - sqrt(lambda_0) R_U = - (sqrt(2)/3) R_U,`'
+- path: notes/stages/moving_throat_pde_stage040_generalized_selected_branch.md
+  line: 125
+  role: notes_stage
+  excerpt: '`eta = (s_1 z_1)/(s_0 z_0) = lambda_0 R_U = (2/9) R_U.`'
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: lam_minus = A0 * (1 - xi)
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: '# z = (z0, q*z0)^T. The selected-branch claim is that lam_minus = A0*(1-xi)'
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: e_minus = sp.Matrix([1, q * xi / (delta + xi)])
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: eig_residual = sp.simplify(M_perturbed * e_minus - lam_minus * e_minus)
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: F_general = sp.simplify((A0 / lam_minus) * z_overlap_sq * s_overlap_sq)
+- path: scripts/moving_throat_pde_stage040_generalized_selected_branch_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '# while the loading vector obeys z1/z0 = (kappa1/kappa0) R_U = -sqrt(lambda0) R_U.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

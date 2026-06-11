@@ -1,0 +1,203 @@
+schema_version: 1
+candidate_id: fit_stage226_k1_h_even_open_gates
+parameter_name: H_even
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage226_k1_h_even_open_gates__phase_b__h_even.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '226'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_226.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 226]{Stage 226: Strict 5PN even-gate package}'
+- path: paper/stages/stage_226.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~226 imports the strict first-order conservative gates and separates the normalization
+    defect from the even-response defects.}
+- path: paper/stages/stage_226.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports $\Xi_{\rm load}$, $K_1$, $H_{\rm even}$, the canonical hidden-even relation, and the
+    conservative-shape-preserving branch used by the grouped outlet package.}
+- path: paper/stages/stage_226.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_226.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves $\Xi_{\rm load}=\Xi_1=P_1/P_0$, shows that monomial/orbit
+    rigidity kills the load defect but not the even gates, and narrows the viable same-charge corridor to a pure outgoing-transfer
+    deformation with the conservative front end frozen.}
+- path: paper/stages/stage_226.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Strict first-order packet: $\Xi_1$ is the prefactor slope, while $K_1$ and $H_{\rm even}$
+    are separate conservative gates; the survivor is a pure-transfer corridor rather than arbitrary grouped anisotropy.}'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 226: Strict `5`PN Even-Gate Package, the Surviving Mixed Corridor, and the Pure-Transfer
+    Subcorridor'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223
+    compatibility branch, the Stage-225 primitive compiler, and the imported strict `5`PN even-gate package.**'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 10
+  role: notes_stage
+  excerpt: \Xi_{\rm load},\qquad K_1,\qquad H_{\rm even},
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: H_{\rm even}=D_{41}-\frac{2}{3}D_{21}-\frac{D_{01}}{27}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: '> carry the Stage-225 mixed-sector survivor into the stricter imported `5`PN even-gate package and see whether
+    the corridor collapses or survives.'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 43
+  role: notes_stage
+  excerpt: 2. the exact comparison between the Stage-225 compensation surface and the stricter `5`PN even-gate package;
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 3. the explicit mixed-sector-only strict-even-gate solve on the concrete Stage-223 compatibility point;
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: 'Insert this into the stricter imported `5`PN even gates:'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: H_{\rm even}=D_{41}-\frac{2}{3}D_{21}-\frac{D_{01}}{27}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: \boxed{H_{\rm even}=\left(\frac{D_4}{D_0}+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 194
+  role: notes_stage
+  excerpt: \boxed{H_{\rm even}=\left(-3u_2^2+\frac{2u_2}{3}-\frac1{27}\right)D_{01}.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 197
+  role: notes_stage
+  excerpt: So the Stage-225 conservative-shape preservation and the stricter imported `5`PN even gates are **not** the same
+    condition. They agree only on the canonical branch for which the coefficients above vanish.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: H_{\rm even}\approx -0.0116042611571584\,D_{01}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 207
+  role: notes_stage
+  excerpt: \boxed{\text{Stage-225 compensation + strict `5`PN even gates} \iff D_{01}=0.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 219
+  role: notes_stage
+  excerpt: '## 4. Mixed-sector-only strict even-gate corridor'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 225
+  role: notes_stage
+  excerpt: The strict even-gate matrix on the concrete branch is
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 234
+  role: notes_stage
+  excerpt: So the mixed sector **survives** the strict imported `5`PN even-gate package as a three-dimensional corridor.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 268
+  role: notes_stage
+  excerpt: So the strict even-gate package does **not** kill the mixed-sector corridor. It only deforms it relative to the
+    weaker Stage-225 compensation surface.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 270
+  role: notes_stage
+  excerpt: Let `\Pi_{\rm even}` denote the ambient-Euclidean orthogonal projector onto this nullspace. Then the induced operator
+    norm of the same-charge functional on the strict corridor is
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 272
+  role: notes_stage
+  excerpt: \sigma_{\rm even}=\|\Pi_{\rm even}\,\Xi_1\|_2.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 276
+  role: notes_stage
+  excerpt: \boxed{\sigma_{\rm even}\approx 2.67386816837173.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 287
+  role: notes_stage
+  excerpt: 2. the stricter imported `5`PN even-gate package.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: So a **two-dimensional** mixed-sector corridor still survives even after imposing both the Stage-225 compensation
+    surface and the imported strict `5`PN even gates.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 373
+  role: notes_stage
+  excerpt: '### 6.1 Strict three-dimensional even-gate corridor'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 377
+  role: notes_stage
+  excerpt: \sigma_{\rm even}\approx 2.67386816837173,
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 425
+  role: notes_stage
+  excerpt: And in fact the pure-transfer subcorridor leaves slightly **more** same-charge headroom than the larger strict
+    even-gate corridor, because the surviving `\Xi_1` functional is a little more concentrated there.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 441
+  role: notes_stage
+  excerpt: 2. The Stage-225 compensation surface is weaker than the stricter imported `5`PN even-gate package.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 446
+  role: notes_stage
+  excerpt: 4. Even after that sharpening, a nontrivial mixed-sector corridor still survives.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: '- the exact formulas obtained by inserting the Stage-225 compensation surface into the imported strict `5`PN even
+    gates;'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 472
+  role: notes_stage
+  excerpt: '- the strict mixed-only even-gate matrix, its rank-`2` nullity-`3` solve, the displayed raw null basis, the corresponding
+    `\Xi_1` values, and the induced corridor norm `\sigma_{\rm even}`;'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 477
+  role: notes_stage
+  excerpt: '- `moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py`'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: 'print("=== Stage 226 SymPy audit: strict 5PN even-gate package and pure-transfer subcorridor ===")'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: '# 1. Exact bridge Xi_load = Xi1 and strict-even formulas'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: H_even = D41 - sp.Rational(2, 3) * D21 - D01 / 27
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

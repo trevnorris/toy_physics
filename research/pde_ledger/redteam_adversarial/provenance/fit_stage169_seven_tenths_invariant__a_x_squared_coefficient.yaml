@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage169_seven_tenths_invariant
+parameter_name: A_x_squared_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage169_seven_tenths_invariant__phase_b__a_x_squared_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '169'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 35
+  role: notes_stage
+  excerpt: The linear grouped-anisotropy problem moves entirely into the direct outlet coefficients
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 337
+  role: notes_stage
+  excerpt: At linear order, the only grouped-anisotropy dangers that remain are the **direct outlet coefficients**
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 360
+  role: notes_stage
+  excerpt: 3. therefore the remaining **linear** grouped-anisotropy bottleneck is entirely in the direct outlet coefficients
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 372
+  role: notes_stage
+  excerpt: '> derive the direct weak grouped-anisotropy contribution to the outlet coefficients'
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 374
+  role: notes_stage
+  excerpt: '> and only after that return to the quadratic scalar feed-down coefficients'
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: expect_zero("linear coefficient in averaged log-observable", lin_coeff)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

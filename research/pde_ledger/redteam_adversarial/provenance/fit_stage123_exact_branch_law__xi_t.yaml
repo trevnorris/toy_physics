@@ -1,0 +1,131 @@
+schema_version: 1
+candidate_id: fit_stage123_exact_branch_law
+parameter_name: Xi_T
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage123_exact_branch_law__phase_b__xi_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '123'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_123.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Converts the Family--1 compensated target to normalized parent flow and traction numbers \((\Xi_v,\Xi_T)\).
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 58
+  role: notes_stage
+  excerpt: \Xi_T
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 68
+  role: notes_stage
+  excerpt: \Xi_T
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 78
+  role: notes_stage
+  excerpt: \Xi_T^{\rm nat}
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 88
+  role: notes_stage
+  excerpt: \Xi_T^{(\pm)}
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 97
+  role: notes_stage
+  excerpt: \Xi_T^{(-)}\approx 1.22297517701464,
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 99
+  role: notes_stage
+  excerpt: \Xi_T^{(+)}\approx 0.331334521644609.
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 115
+  role: notes_stage
+  excerpt: \Xi_T^{\rm nat}\approx 0.927;
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 119
+  role: notes_stage
+  excerpt: \Xi_T^{(-)}\approx 1.223
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 127
+  role: notes_stage
+  excerpt: '> (\Xi_v,\Xi_T)\approx(-1.017,\;1.223)'
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 129
+  role: notes_stage
+  excerpt: '> on the lower compensated branch, or does it remain on the naive equal-normalized source branch \((\Xi_T\approx0.927)\)?'
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 147
+  role: notes_stage
+  excerpt: \;\Xi_T.
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 155
+  role: notes_stage
+  excerpt: the required background mixed flow and mouth traction are determined immediately.
+- path: notes/stages/moving_throat_pde_stage123_parent_normalized_branch_values.md
+  line: 162
+  role: notes_stage
+  excerpt: '- one normalized mouth-traction number \(\Xi_T\),'
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: '# Parent-normalized Xi_T:'
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: Xi_T = sp.symbols('Xi_T', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Xi_T_def = sp.simplify(Tm*a*sp.sqrt(mu0*rho*L*ell)/(sp.sqrt(Zq*m)))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Xi_T_expr = sp.simplify(Xi_T_def.subs(Tm, sp.solve(sp.Eq(g, g_from_parent), Tm)[0]))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: print("Xi_T(g) =", Xi_T_expr)
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: expect_zero("Xi_T law", Xi_T_expr - 3*sp.sqrt(30)/(10*sp.sqrt(sp.pi)*g))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: Xi_T_nat = sp.simplify(3*sp.sqrt(30)/(10*sp.sqrt(sp.pi)))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: Xi_T_minus = sp.simplify(Xi_T_nat/gminus)
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: Xi_T_plus  = sp.simplify(Xi_T_nat/gplus)
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("Xi_T(nat) =", Xi_T_nat, "≈", sp.N(Xi_T_nat, 20))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("Xi_T(-) =", Xi_T_minus, "≈", sp.N(Xi_T_minus, 20))
+- path: scripts/moving_throat_pde_stage123_parent_normalized_branch_values_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("Xi_T(+) =", Xi_T_plus, "≈", sp.N(Xi_T_plus, 20))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

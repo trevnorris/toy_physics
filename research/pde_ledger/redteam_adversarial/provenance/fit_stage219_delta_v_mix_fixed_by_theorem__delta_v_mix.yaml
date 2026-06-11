@@ -1,0 +1,198 @@
+schema_version: 1
+candidate_id: fit_stage219_delta_v_mix_fixed_by_theorem
+parameter_name: delta_V_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage219_delta_v_mix_fixed_by_theorem__phase_b__delta_v_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '219'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_219.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 219]{Stage 219: One-port mixed-bundle static kernel}'
+- path: paper/stages/stage_219.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~219 inserts the isotropic one-port wall/BdG/Maxwell/mixed bundle into the completed
+    same-charge audit and asks whether the static mixed sector creates a new long-range attractive family.}
+- path: paper/stages/stage_219.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the one-port static bundle, the admissible conditions $\Omega_U^2>0$, $\Delta>0$, $D_0>0$,
+    the primitive source profiles $x^{-3}$ and $e^{-2\kappa x}/x$, and the outgoing-prefactor bridge $P_0=N_0/D_0$.}
+- path: paper/stages/stage_219.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_219.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation forms the static $3\times3$ kernel $\mathcal K_{\rm red}$, proves
+    $\det\mathcal K_{\rm red}=\Delta D_0$, computes the inverse susceptibility entries, factors the wall--mixed load $\Lambda=P/\Delta$,
+    and expands the on-shell correction $-J^T\mathcal K_{\rm red}^{-1}J/2$ into source products.}
+- path: paper/stages/stage_219.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Exact square-law suppression theorem: the one-port static mixed bundle produces only $x^{-6}$,
+    $e^{-2\kappa x}x^{-4}$, and $e^{-4\kappa x}x^{-2}$ product families, and no new $-1/x$ or Yukawa-strength long-range same-charge
+    attraction.}'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 219: One-Port Mixed-Bundle Static Kernel and the Square-Law Suppression Test'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried isotropic one-port wall/BdG/Maxwell/mixed closure, once the reduced static branch is
+    taken on the admissible side**'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: \Delta>0,
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 14
+  role: notes_stage
+  excerpt: This is the first post-Stage 218 insertion of actual reduced bundle data into the now-closed local mixed-ray ledger.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: It computes the first honest same-charge kernel already implied by the one-port mixed bundle.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: Stage 218 closed the local mixed-ray search sieve.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: The first such insertion is the static same-charge audit of the isotropic one-port wall/BdG/Maxwell/mixed bundle.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: '> does the minimal static mixed bundle create a genuinely new long-range same-charge attractive family, or does
+    it only renormalize short-range kernels that were already present?'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 37
+  role: notes_stage
+  excerpt: 4. the exact bridge from the wall–mixed susceptibility to the same outgoing-prefactor objects that already appear
+    in the 5PN / 2.5PN normalization chain,
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 39
+  role: notes_stage
+  excerpt: '6. and the square-law suppression verdict: **the static one-port mixed bundle creates no new long-range attractive
+    law.**'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 41
+  role: notes_stage
+  excerpt: So Stage 219 keeps the same-charge mixed corridor alive, but in a sharply narrowed form.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: The one-port Maxwell/mixed block is then controlled by
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 55
+  role: notes_stage
+  excerpt: \Delta:=\Omega_U^2\Omega_W^2-R^2,
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 66
+  role: notes_stage
+  excerpt: D_0:=K_* - \frac{Q}{\Delta}.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 72
+  role: notes_stage
+  excerpt: N_0=\frac{P^2}{\Delta^2},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: '- mixed `A_w/F_{\mu w}/J^w` coordinate `W`.'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 128
+  role: notes_stage
+  excerpt: \det \mathcal K_{\rm red}=\Delta D_0.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 136
+  role: notes_stage
+  excerpt: \Delta>0,
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \delta V_{\rm mix}(r)
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 165
+  role: notes_stage
+  excerpt: \delta V_{\rm mix}(r)\le 0.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 169
+  role: notes_stage
+  excerpt: 'So the first one-port mixed-bundle conclusion is immediate:'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: '> the static mixed bundle is always attractive or neutral at second order in the external same-charge load.'
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 180
+  role: notes_stage
+  excerpt: \chi_{qU}:=(\mathcal K_{\rm red}^{-1})_{qU}=\frac{P_U}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 185
+  role: notes_stage
+  excerpt: \chi_{qW}:=(\mathcal K_{\rm red}^{-1})_{qW}=\frac{P}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \frac{K_*\Omega_W^2-G_W^2}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: \frac{K_*R+G_UG_W}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 200
+  role: notes_stage
+  excerpt: \frac{K_*\Omega_U^2-G_U^2}{\Delta D_0}.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: So every static same-charge correction is controlled by the same denominator `\Delta D_0`.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 207
+  role: notes_stage
+  excerpt: If the reduced external load is collinear in source space,
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 217
+  role: notes_stage
+  excerpt: \delta V_{\rm mix}(r)
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 221
+  role: notes_stage
+  excerpt: \chi_s=\frac{\mathcal N_s}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: \Delta s_q^2
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 236
+  role: notes_stage
+  excerpt: So the first PDE-constrained static mixed kernel is **not** a free radial law.
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 245
+  role: notes_stage
+  excerpt: \Lambda:=\frac{P}{\Delta}.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

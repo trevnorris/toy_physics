@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_252_r_v
+parameter_name: r_V
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_252_r_v__phase_b__r_v.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_252.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: With \(\mathfrak r_V=\mathcal I_3/\mathcal I_2\), the fractions are
+- path: paper/stages/stage_252.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: f_{\rm vac}(\mathfrak r_V)=
+- path: paper/stages/stage_252.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \frac{\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V},
+- path: paper/stages/stage_252.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: f_{\rm lat}(\mathfrak r_V)=
+- path: paper/stages/stage_252.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V}.
+- path: paper/stages/stage_252.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \frac{df_{\rm lat}}{d\mathfrak r_V}
+- path: paper/stages/stage_252.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}{(\Gamma_3+\Gamma_5\mathfrak r_V)^2}.
+- path: paper/stages/stage_252.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: \mathfrak r_V=s^2.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 152
+  role: notes_stage
+  excerpt: \mathfrak r_V(T):=\frac{\mathcal I_3(T)}{\mathcal I_2(T)}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: f_{\rm vac}(\mathfrak r_V)
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 160
+  role: notes_stage
+  excerpt: \frac{\Gamma_3^{\rm vac}+\Gamma_5^{\rm vac}\mathfrak r_V}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 161
+  role: notes_stage
+  excerpt: '{\Gamma_3+\Gamma_5\mathfrak r_V},'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 166
+  role: notes_stage
+  excerpt: f_{\rm lat}(\mathfrak r_V)
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 168
+  role: notes_stage
+  excerpt: \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 169
+  role: notes_stage
+  excerpt: '{\Gamma_3+\Gamma_5\mathfrak r_V},'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 178
+  role: notes_stage
+  excerpt: Treat \(\mathfrak r_V\) as the event-shape variable. Then
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: \frac{d f_{\rm lat}}{d\mathfrak r_V}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 184
+  role: notes_stage
+  excerpt: '{(\Gamma_3+\Gamma_5\mathfrak r_V)^2}.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 199
+  role: notes_stage
+  excerpt: \lim_{\mathfrak r_V\to\infty} f_{\rm lat}(\mathfrak r_V)=\frac{\Gamma_5^{\rm lat}}{\Gamma_5}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 240
+  role: notes_stage
+  excerpt: \mathfrak r_V=s^2.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 516
+  role: notes_stage
+  excerpt: \mathfrak r_V=\mathcal I_3/\mathcal I_2,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 520
+  role: notes_stage
+  excerpt: \mathfrak r_V=s^2.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 551
+  role: notes_stage
+  excerpt: 2. the realized event shape quotient \(\mathfrak r_V\) on the cold branch,
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: I2, I3, rV = sp.symbols("I2 I3 r_V", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: fv = sp.simplify((Ev / Et).subs(I3, rV * I2))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: fl = sp.simplify((El / Et).subs(I3, rV * I2))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print("f_vac(r_V)            =", fv)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("f_lat(r_V)            =", fl)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: assert sp.simplify(fv - (G3v + G5v * rV) / (G3 + G5 * rV)) == 0
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: assert sp.simplify(fl - (G3l + G5l * rV) / (G3 + G5 * rV)) == 0
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: dfl = sp.simplify(sp.diff(fl, rV))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: dfl_expected = sp.simplify((G5l * G3v - G3l * G5v) / (G3 + G5 * rV) ** 2)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: fl_r0 = sp.simplify(sp.limit(fl, rV, 0))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: fl_rinf = sp.simplify(sp.limit(fl, rV, sp.oo))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: print("d f_lat / d r_V       =", dfl)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: print("endpoint r_V -> 0     =", fl_r0)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: print("endpoint r_V -> oo    =", fl_rinf)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: 'fv_sc = sp.simplify(fl.subs(rV, sc**2))  # intentionally compute lattice fraction here first'
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: fl_sc = sp.simplify(fl.subs(rV, sc**2))
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: fvac_sc = sp.simplify(fv.subs(rV, sc**2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

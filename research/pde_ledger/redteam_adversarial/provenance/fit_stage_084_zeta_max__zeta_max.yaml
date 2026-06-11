@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage_084_zeta_max
+parameter_name: zeta_max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_084_zeta_max__phase_b__zeta_max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 084
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 23
+  role: notes_stage
+  excerpt: '- the localized `4+1` Maxwell equation,'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 55
+  role: notes_stage
+  excerpt: '`zeta_phys(Pe,eta;kappa)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 73
+  role: notes_stage
+  excerpt: '`zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 78
+  role: notes_stage
+  excerpt: '`Pi_tr = C_mix Q(zeta_req;eps_blk),`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 80
+  role: notes_stage
+  excerpt: '`Q(zeta;eps_blk) = [1 + (1 - 2 eps_blk) zeta]/[1 - eps_blk zeta].`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 91
+  role: notes_stage
+  excerpt: '`= zeta_req(Pi_tr,C_mix,eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 92
+  role: notes_stage
+  excerpt: '` - zeta_phys(Pe_*(Xi,eta,kappa),eta;kappa).`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 127
+  role: notes_stage
+  excerpt: '- support ratio `zeta`,'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 132
+  role: notes_stage
+  excerpt: '`zeta_-^(chi) ≈ 2.46622291347846,`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 134
+  role: notes_stage
+  excerpt: '`zeta_+^(chi) ≈ 2.46752913273870,`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 138
+  role: notes_stage
+  excerpt: '`zeta_-^(J) ≈ 2.44257571477179,`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 140
+  role: notes_stage
+  excerpt: '`zeta_+^(J) ≈ 2.46752736855058,`'
+- path: notes/stages/moving_throat_pde_stage084_full_reduced_pde_writeup.md
+  line: 144
+  role: notes_stage
+  excerpt: '`zeta_max^(F1) ≈ 2.46752922945601.`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

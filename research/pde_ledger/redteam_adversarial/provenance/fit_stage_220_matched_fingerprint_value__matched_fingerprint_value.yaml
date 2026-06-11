@@ -1,0 +1,90 @@
+schema_version: 1
+candidate_id: fit_stage_220_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '220'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 37
+  role: notes_stage
+  excerpt: 4. separate the in-phase barrier reshaping from the out-of-phase pumping / leakage channel,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 114
+  role: notes_stage
+  excerpt: On the outgoing `l=2` branch the first odd fingerprint begins at `i\omega^5`, not at an even static correction.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 115
+  role: notes_stage
+  excerpt: So the same reduced sector that can carry dynamic pumping is also the sector that carries the radiative quadrupole
+    bridge.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 117
+  role: notes_stage
+  excerpt: That is exactly why the dynamic barrier audit has to distinguish **real in-phase reshaping** from **imaginary out-of-phase
+    pumping**.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 218
+  role: notes_stage
+  excerpt: '- `\Re\,\mathfrak V_{\rm mix}` is the in-phase conservative barrier reshaping.'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 219
+  role: notes_stage
+  excerpt: '- `\Im\,\mathfrak V_{\rm mix}` is the quadrature / pumping / leakage channel.'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 425
+  role: notes_stage
+  excerpt: So the first outgoing correction is **purely phase-lag / pumping** at linear order.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 518
+  role: notes_stage
+  excerpt: The pumping / leakage diagnostic is
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 610
+  role: notes_stage
+  excerpt: 4. Ask whether any resonance window gives a materially larger conservative reshaping before absorptive loading
+    takes over.
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: assert all(v == 0 for v in inverse_checks.values())
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    - paper/stages/stage_220.tex
+    - research/pde_ledger/paper/stages/stage_220.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+    - paper/stages/stage_220.tex
+    - research/pde_ledger/paper/stages/stage_220.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

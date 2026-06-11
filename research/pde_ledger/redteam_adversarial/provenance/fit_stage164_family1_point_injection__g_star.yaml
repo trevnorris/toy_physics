@@ -1,0 +1,89 @@
+schema_version: 1
+candidate_id: fit_stage164_family1_point_injection
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage164_family1_point_injection__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '164'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: Tm, Js, Zq, mu0, Lw, qstar, vw0, Isq, cs = sp.symbols(
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '"T_m J_s Z_q mu_0 L_W qstar v_w0 I_sq c_s", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: lam_gen = -qstar * vw0 * Isq
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: first_expected = -sp.Rational(27,40) * sp.pi * mpsi**2 * Zq * csw**3 / (hbar * mu0 * qstar * rho_w * Tm * vw0 *
+    a**2 * Lw**2)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: second_expected = sp.Rational(27,320) * sp.pi**3 * mpsi**2 * Zq * cs**2 * csw**3 / (hbar * mu0 * qstar**2 * rho_w
+    * vw0**2 * a**2 * Lw**3)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: rstar = sp.symbols("rstar", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: gstar = sp.symbols("gstar", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: s = sp.sqrt(1 + rstar**2)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: delta_perp = sp.expand(gstar*first_heal + b*second_heal)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: (gstar + b)*(dlnZ - dlnrho)
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: + 3*(gstar + b)*dlncsw
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: '- gstar*dlnTm'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: '- (gstar + 2*b)*dlnv'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: '- 2*(gstar + b)*dlna'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: '- (2*gstar + 3*b)*dlnLw'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,72 @@
+schema_version: 1
+candidate_id: fit_stage092_forced_carrier_ledger_label
+parameter_name: Y_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage092_forced_carrier_ledger_label__phase_b__y_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 092
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_092.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~092]{Stage~092: Exact Obstruction Formula if the Geometry Lane Carries Dynamic Even Moments}'
+- path: paper/stages/stage_092.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage092_dynamic_geometry_obstruction_mathematica_audit.txt}.}'
+- path: paper/stages/stage_092.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 74 showed that the grouped-`P2` + geometry split forces the `3/4 + 1/4` conservative quadrupole module **if**
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 7
+  role: notes_stage
+  excerpt: '- the grouped-`P2` side is one isotropic conservative pole,'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 39
+  role: notes_stage
+  excerpt: 'Keep the grouped-`P2` side as one isotropic conservative pole:'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 43
+  role: notes_stage
+  excerpt: Then the total conservative isotropic quadrupole module is
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 45
+  role: notes_stage
+  excerpt: '`K_Q^cons(omega) = K_g(omega) + K_P2(omega)`.'
+- path: notes/stages/moving_throat_pde_stage092_dynamic_geometry_obstruction.md
+  line: 112
+  role: notes_stage
+  excerpt: It is the exact consequence of the **static-geometry** realization.
+- path: scripts/moving_throat_pde_stage092_dynamic_geometry_obstruction_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("K_Q^cons(omega) =", K)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

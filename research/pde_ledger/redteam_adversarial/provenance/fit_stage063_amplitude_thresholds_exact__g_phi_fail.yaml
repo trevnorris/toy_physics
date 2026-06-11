@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage063_amplitude_thresholds_exact
+parameter_name: g_phi_fail
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage063_amplitude_thresholds_exact__phase_b__g_phi_fail.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '063'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_063.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~063 turns the microscopic gain formula into exact fail/succeed surfaces for confinement-loading
+    amplitude and source/support coherence.}
+- path: paper/stages/stage_063.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The parent gain formula, \(G_{\rm fail}\), \(G_{\rm suff}\), and the Cauchy bound on \(C_{\sigma\phi}^2\).}
+- path: paper/stages/stage_063.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage063-gphi-thresholds}
+- path: paper/stages/stage_063.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: g_{\phi,{\rm fail}}^2
+- path: paper/stages/stage_063.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: =\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm fail}}{\rho_*O_{\sigma\phi}^2},
+- path: paper/stages/stage_063.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: g_{\phi,{\rm suff}}^2
+- path: paper/stages/stage_063.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: =\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm suff}}{\rho_*O_{\sigma\phi}^2}}.
+- path: paper/stages/stage_063.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: At fixed \(g_\phi\), the coherence thresholds are
+- path: paper/stages/stage_063.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: C_{\rm fail}^2=\frac{mc_{s,*}^2K_XG_{\rm fail}}{\rho_*g_\phi^2N_{\phi\phi}},
+- path: paper/stages/stage_063.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: C_{\rm suff}^2=\frac{mc_{s,*}^2K_XG_{\rm suff}}{\rho_*g_\phi^2N_{\phi\phi}}}.
+- path: paper/stages/stage_063.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: C_{\rm fail}^2>1
+- path: paper/stages/stage_063.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \text{no source profile in this support channel can reach even the fail threshold.}
+- path: paper/stages/stage_063.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Amplitude thresholds \eqref{eq:app-stage063-gphi-thresholds}, coherence thresholds \eqref{eq:app-stage063-coherence-thresholds},
+    and Cauchy no-go \eqref{eq:app-stage063-cauchy-nogo}.}
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 7
+  role: notes_stage
+  excerpt: '`G_micro = rho_* g_phi^2 O_(sigma phi)^2 / [ m c_(s*)^2 K_X N_(sigma sigma) ]`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 11
+  role: notes_stage
+  excerpt: '`G_micro = [ rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) ] C_(sigma phi)^2.`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 15
+  role: notes_stage
+  excerpt: '- the parent confinement-loading amplitude `g_phi`,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 16
+  role: notes_stage
+  excerpt: '- and the source/support coherence factor `C_(sigma phi)^2`.'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 22
+  role: notes_stage
+  excerpt: 1. inserting the parent gain into the Stage-061 thresholds gives the exact parent fail/succeed conditions
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 24
+  role: notes_stage
+  excerpt: '`g_phi^2 <= g_(phi,fail)^2`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 26
+  role: notes_stage
+  excerpt: '`g_phi^2 >= g_(phi,suff)^2`  -> succeed,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 30
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 31
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X N_(sigma sigma) G_fail / [ rho_* O_(sigma phi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 33
+  role: notes_stage
+  excerpt: '`g_(phi,suff)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 34
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X N_(sigma sigma) G_suff / [ rho_* O_(sigma phi)^2 ];`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 37
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 38
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X G_fail / [ rho_* N_(phi phi) C_(sigma phi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 40
+  role: notes_stage
+  excerpt: '`g_(phi,suff)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 41
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X G_suff / [ rho_* N_(phi phi) C_(sigma phi)^2 ];`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 44
+  role: notes_stage
+  excerpt: '`C_fail^2 = m c_(s*)^2 K_X G_fail / [ rho_* g_phi^2 N_(phi phi) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 46
+  role: notes_stage
+  excerpt: '`C_suff^2 = m c_(s*)^2 K_X G_suff / [ rho_* g_phi^2 N_(phi phi) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 50
+  role: notes_stage
+  excerpt: '`C_fail^2 <= C_suff^2;`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 51
+  role: notes_stage
+  excerpt: '4. because `0 <= C_(sigma phi)^2 <= 1`, there is an immediate Cauchy-based no-go theorem:'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 55
+  role: notes_stage
+  excerpt: '`rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) < G_fail,`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 57
+  role: notes_stage
+  excerpt: then the branch fails **for every possible** source profile in the chosen support channel;
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 58
+  role: notes_stage
+  excerpt: 5. the exact “best-case” reachable gain at fixed `g_phi` is therefore
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 60
+  role: notes_stage
+  excerpt: '`G_max(g_phi) = rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X),`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 62
+  role: notes_stage
+  excerpt: attained only at perfect alignment `C_(sigma phi)^2 = 1`;
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 65
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 71
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 72
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 T_X N_(sigma sigma) Pe_req / [ rho_* L^2 O_(sigma phi)^2 Delta_inf(kappa,eta) ],`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

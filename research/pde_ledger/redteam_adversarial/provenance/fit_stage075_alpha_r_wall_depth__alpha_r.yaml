@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage075_alpha_r_wall_depth
+parameter_name: alpha_r
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage075_alpha_r_wall_depth__phase_b__alpha_r.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '075'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_075.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: With \(V_0=\alpha_r\mu_*\), \(\alpha_r=10\), and \(\Upsilon_w=100\Theta_w\), the Family--1 threshold window is
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 59
+  role: notes_stage
+  excerpt: '## 2. Large-`alpha` interpretation of the reference branch'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 63
+  role: notes_stage
+  excerpt: '`alpha := sqrt(kappa) = 111/sqrt(5) ≈ 49.6407091,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 65
+  role: notes_stage
+  excerpt: which is already deep in the large-`alpha` regime.
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 69
+  role: notes_stage
+  excerpt: '`Delta_inf ~ 1/alpha,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 71
+  role: notes_stage
+  excerpt: '`Delta_0 ~ eta / [ alpha^2 (alpha + eta) ],`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 77
+  role: notes_stage
+  excerpt: '`Xi_fail ≈ alpha,`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 91
+  role: notes_stage
+  excerpt: '`alpha_r = 10.`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 95
+  role: notes_stage
+  excerpt: '`V0 = alpha_r mu_*`'
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 100
+  role: notes_stage
+  excerpt: '`          = alpha_r^2 Theta_w,`'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: '- reduce the remaining amplitude to Upsilon_w = alpha_r^2 Theta_w with alpha_r = 10,'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: alpha_r = sp.Integer(10)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# Upsilon_w = alpha_r^2 Theta_w with alpha_r^2 = 100. Lock the value so any'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: 'assert alpha_r**2 == 100, "paper Inputs line lock: alpha_r^2 must equal 100"'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: print("alpha_r^2 (paper Inputs line lock) =", alpha_r**2, "  PASS")
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: alpha = sp.sqrt(kappa)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: eta * (sp.cosh(alpha) - 1) /
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: (alpha**2 * (alpha * sp.sinh(alpha) + eta * sp.cosh(alpha)))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: (sp.cosh(alpha) + (eta / alpha) * sp.sinh(alpha) - 1) /
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: (alpha * sp.sinh(alpha) + eta * sp.cosh(alpha))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: '# the defining algebraic identities for *all* positive alpha_sym, eta_sym,'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# not just the substituted numeric values alpha = 111/sqrt(5), eta = 37.'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: alpha_sym, eta_sym = sp.symbols("alpha_sym eta_sym", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Delta0_sym = eta_sym * (sp.cosh(alpha_sym) - 1) / (
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: alpha_sym**2 * (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym))
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: Deltainf_sym = (sp.cosh(alpha_sym) + (eta_sym / alpha_sym) * sp.sinh(alpha_sym) - 1) / (
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Delta0_sym
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: '- eta_sym * (sp.cosh(alpha_sym) - 1) / alpha_sym**2'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: (alpha_sym * sp.sinh(alpha_sym) + eta_sym * sp.cosh(alpha_sym)) * Deltainf_sym
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: '- (sp.cosh(alpha_sym) + (eta_sym / alpha_sym) * sp.sinh(alpha_sym) - 1)'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print("Delta_0 algebraic identity (free alpha, eta) =", delta0_identity)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("Delta_inf algebraic identity (free alpha, eta) =", deltainf_identity)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# Large-alpha: alpha * Delta_inf -> 1 (since Delta_inf ~ 1/alpha in that limit).'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: large_alpha_check = sp.limit(alpha_sym * Deltainf_sym, alpha_sym, sp.oo)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: print("alpha * Delta_inf large-alpha limit =", large_alpha_check)
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: assert large_alpha_check == 1
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# Small-alpha: Delta_0 -> 1/2 (since cosh(alpha)-1 ~ alpha^2/2 and'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '# alpha*sinh(alpha)+eta*cosh(alpha) ~ eta as alpha -> 0).'
+- path: scripts/moving_throat_pde_stage075_family1_threshold_window_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: small_alpha_check_delta0 = sp.limit(Delta0_sym, alpha_sym, 0)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

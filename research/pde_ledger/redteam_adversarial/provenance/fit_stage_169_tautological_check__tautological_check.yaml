@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_169_tautological_check
+parameter_name: tautological_check
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_169_tautological_check__phase_b__tautological_check.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '169'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_169.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \stagefield{Checks}{\begin{verificationchecklist}
+- path: paper/stages/stage_169.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check that tangent-compensated isotropic drift is not counted as an off-family failure mode.
+- path: paper/stages/stage_169.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the weak-axisymmetric signature \((1,1/2,-1)\) before reducing grouped defects to a scalar.
+- path: paper/stages/stage_169.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check that grouped real \(P_2\) anisotropy is not allowed to feed scalar slippages linearly.
+- path: paper/stages/stage_169.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \end{verificationchecklist}}
+- path: scripts/moving_throat_pde_stage169_no_linear_p2_scalar_slippage_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 'Checks:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

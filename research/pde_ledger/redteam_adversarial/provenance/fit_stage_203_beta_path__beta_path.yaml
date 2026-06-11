@@ -1,0 +1,145 @@
+schema_version: 1
+candidate_id: fit_stage_203_beta_path
+parameter_name: beta_path
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_203_beta_path__phase_b__beta_path.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '203'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  line: 334
+  role: notes_stage
+  excerpt: be an arbitrary candidate family sharing the same free-quintuple path `\(\mathbf y(\tau)\)` as the graph family.
+- path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  line: 456
+  role: notes_stage
+  excerpt: be a continuous free-quintuple path, and let
+- path: notes/stages/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem.md
+  line: 493
+  role: notes_stage
+  excerpt: The graph residual `\(\widehat\Delta_Q(\tau)\)` is continuous because both the free path and the graph lift are
+    continuous and `\(\chi_Q\)` is continuous on the carried reduced branch. So the conclusion follows immediately from the
+    intermediate value theorem.
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 273
+  role: sympy_script
+  excerpt: subbanner("VI. Stage 197 scalar closure composed with an explicit Stage 202 graph path")
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 275
+  role: sympy_script
+  excerpt: Siso, beta, Sigma0, Sigma5 = sp.symbols("S beta Sigma_0 Sigma_5", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 282
+  role: sympy_script
+  excerpt: beta_path = sp.simplify(sp.Integer(2) ** (2 * tau - 1))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 283
+  role: sympy_script
+  excerpt: gamma_path = sp.simplify(gamma_bar * beta_path)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 284
+  role: sympy_script
+  excerpt: cetaU_path = sp.simplify(cetaU_bar * sp.exp(rho * tau))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 285
+  role: sympy_script
+  excerpt: y_graph_path = sp.Matrix([lam_bar, cetaU_path, gamma_path, KU_bar, KW_bar])
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 286
+  role: sympy_script
+  excerpt: graph_path_subs = {
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 288
+  role: sympy_script
+  excerpt: 'cetaU: cetaU_path,'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 289
+  role: sympy_script
+  excerpt: 'gamma: gamma_path,'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 294
+  role: sympy_script
+  excerpt: T_graph_lift = sp.simplify(T_graph.subs(graph_path_subs))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 295
+  role: sympy_script
+  excerpt: Keta_graph_lift = sp.simplify(Keta_graph.subs(graph_path_subs))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 296
+  role: sympy_script
+  excerpt: mu_graph_lift = sp.simplify(mu_graph.subs(graph_path_subs))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 298
+  role: sympy_script
+  excerpt: (gamma_path * cetaU_path / KU_bar) ** (1 + deltaUs)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 303
+  role: sympy_script
+  excerpt: '* ((gamma_path**2 * lam_bar**2 * sigma) / (KU_bar * KW_bar)) ** Estar'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 306
+  role: sympy_script
+  excerpt: epsEta_graph_lift = sp.simplify(cetaU_path**2 / (KU_bar * Keta_graph_lift))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 312
+  role: sympy_script
+  excerpt: chi_from_stage197 = sp.simplify(3 * (Siso * beta**5 + 9 * Sigma5) / (3 * Siso - Sigma0))
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 313
+  role: sympy_script
+  excerpt: closure_num_stage197 = sp.simplify(3 * Siso * (beta**5 - 1) + Sigma0 + 27 * Sigma5)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 315
+  role: sympy_script
+  excerpt: beta_lift = normalize(y_graph_path[2] / gamma_bar)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 319
+  role: sympy_script
+  excerpt: 'chi_from_stage197.subs({beta: beta_lift, Sigma0: 0, Sigma5: 0})'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 323
+  role: sympy_script
+  excerpt: 'closure_num_stage197.subs({beta: beta_lift, Sigma0: 0, Sigma5: 0})'
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 327
+  role: sympy_script
+  excerpt: print("Explicit free-quintuple graph path y(tau) =")
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 328
+  role: sympy_script
+  excerpt: sp.pprint(y_graph_path)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 329
+  role: sympy_script
+  excerpt: print("beta_path(tau) =")
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 330
+  role: sympy_script
+  excerpt: sp.pprint(beta_path)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 336
+  role: sympy_script
+  excerpt: expect_zero("beta_path - gamma(tau)/gamma_bar", beta_lift - beta_path)
+- path: scripts/moving_throat_pde_stage203_free_quintuple_scalar_closure_slice_and_crossing_theorem_sympy_audit.py
+  line: 341
+  role: sympy_script
+  excerpt: '"Stage 197 closure numerator identity on the graph path",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,209 @@
+schema_version: 1
+candidate_id: fit_stage_197_delta_q
+parameter_name: Delta_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_197_delta_q__phase_b__delta_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '197'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_197.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_197.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_197.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Proves \(\Delta_{\rm branch}=0\iff \chi_Q=1\) and hence \(\Delta_Q=\chi_Q-1\) is the sole Packet-A
+    scalar.}
+- path: paper/stages/stage_197.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 197: Exact Conditional Packet-A Closure Theorem, the Equivalence `\Delta_{\rm branch}=0
+    \iff \chi_Q=1`, and the Final Retarded Finish-Line Reduction'
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 16
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 18
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}),
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 24
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 47
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 56
+  role: notes_stage
+  excerpt: \Delta_Q:=\chi_Q-1=0,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 80
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm pole}=0.}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 100
+  role: notes_stage
+  excerpt: So after the isotropic front end is imposed, the only Packet-A entry that can still be nonzero is `\Delta_{\rm
+    norm}`.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 127
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 129
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 136
+  role: notes_stage
+  excerpt: a_2=b_2=a_4=b_4=a_{P_0}=b_{P_0}=\Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 141
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 143
+  role: notes_stage
+  excerpt: (0,0,0,0,0,0,0,\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 148
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 169
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 188
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 190
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 204
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 213
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 217
+  role: notes_stage
+  excerpt: \Delta_Q:=\chi_Q-1=0.
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 250
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 267
+  role: notes_stage
+  excerpt: \Sigma_0=\delta\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 269
+  role: notes_stage
+  excerpt: \Sigma_5=\delta\Sigma_5,
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 276
+  role: notes_stage
+  excerpt: +\frac{\delta\Sigma_0}{3S}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 277
+  role: notes_stage
+  excerpt: +\frac{9\,\delta\Sigma_5}{S}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 283
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 288
+  role: notes_stage
+  excerpt: +\frac{\delta\Sigma_0}{3S}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 289
+  role: notes_stage
+  excerpt: +\frac{9\,\delta\Sigma_5}{S}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 317
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}=0
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 337
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm branch}=0 \iff \chi_Q=1}
+- path: notes/stages/moving_throat_pde_stage197_conditional_packetA_closure_theorem.md
+  line: 388
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: Delta_norm = sp.symbols("Delta_norm", real=True)
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: Delta_branch = sp.Matrix([0, 0, 0, 0, 0, 0, 0, Delta_norm])
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: print("Delta_branch after imposing the carried isotropic one-pole front end =")
+- path: scripts/moving_throat_pde_stage197_conditional_packetA_closure_theorem_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: sp.pprint(Delta_branch)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_197.tex
+    attempted_sources:
+    - paper/stages/stage_197.tex
+    - research/pde_ledger/paper/stages/stage_197.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_197.tex
+    attempted_sources:
+    - paper/stages/stage_197.tex
+    - research/pde_ledger/paper/stages/stage_197.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

@@ -1,0 +1,242 @@
+schema_version: 1
+candidate_id: fit_stage_068_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_068_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 068
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 68: Resonance-Corrected Thresholds for the Sech–Gaussian Benchmark Family'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 18
+  role: notes_stage
+  excerpt: The next question is how that benchmark changes the actual support/source survival thresholds derived earlier.
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 22
+  role: notes_stage
+  excerpt: '- on the Stage-064 equilibrium-matched branch, the ideal coherence remains `C^2 = 1`,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 23
+  role: notes_stage
+  excerpt: '- on the independent sech–Gaussian benchmark family, the best possible coherence is `C_res^2`,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 26
+  role: notes_stage
+  excerpt: That means the resonance benchmark is useful, but it does **not** rewrite the theorem structure. It only sharpens
+    it.
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 36
+  role: notes_stage
+  excerpt: On the Stage-064 matched equilibrium branch,
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 40
+  role: notes_stage
+  excerpt: so the matched-branch gain is
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 67
+  role: notes_stage
+  excerpt: Stage 066 gave the universal matched-branch window
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 69
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / Delta_inf`  -> matched-branch fail,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 71
+  role: notes_stage
+  excerpt: '`W_wall >= Pe_req / Delta_0`    -> matched-branch succeed.'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 76
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / [ C^2(r) Delta_inf ]`  -> fail on the profile family,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 78
+  role: notes_stage
+  excerpt: '`W_wall >= Pe_req / [ C^2(r) Delta_0 ]`    -> succeed on the profile family.'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 82
+  role: notes_stage
+  excerpt: '`W_wall <= P_res Pe_req / Delta_inf`  -> resonance-family fail,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 84
+  role: notes_stage
+  excerpt: '`W_wall >= P_res Pe_req / Delta_0`    -> resonance-family succeed,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 103
+  role: notes_stage
+  excerpt: '- the axial functions `Delta_0`, `Delta_inf`,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 110
+  role: notes_stage
+  excerpt: '> the explicit independent sech–Gaussian family comes within `0.56%` of the exact matched-layer ideal.'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 119
+  role: notes_stage
+  excerpt: Because the resonance family differs from the matched branch only by the factor `P_res = 1.005612...`, the only
+    region where profile choice can change the reduced verdict is a very narrow band.
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 123
+  role: notes_stage
+  excerpt: '- matched-branch guaranteed success:'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 124
+  role: notes_stage
+  excerpt: '`W_wall >= Pe_req / Delta_0,`'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 126
+  role: notes_stage
+  excerpt: '`W_wall >= P_res Pe_req / Delta_0.`'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 130
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_0 <= W_wall < P_res Pe_req / Delta_0,`'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 136
+  role: notes_stage
+  excerpt: '- matched-branch guaranteed failure:'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 137
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / Delta_inf,`'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 139
+  role: notes_stage
+  excerpt: '`W_wall <= P_res Pe_req / Delta_inf.`'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 149
+  role: notes_stage
+  excerpt: Before this stage, the independent-profile benchmark from the memo could have been interpreted as potentially introducing
+    a qualitatively new source/support theorem.
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 156
+  role: notes_stage
+  excerpt: '- provides a strong benchmark,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 157
+  role: notes_stage
+  excerpt: '- and nearly saturates the matched branch,'
+- path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+  line: 164
+  role: notes_stage
+  excerpt: It is the actual wall/axial branch data entering `W_wall`, `Delta_0`, and `Delta_inf`.
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: C2, W_wall, Pe_req, Delta0, Deltainf = sp.symbols(
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: '"C2 W_wall Pe_req Delta_0 Delta_inf", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# The required wall figure on the matched branch is W_wall = Pe_req/Delta.'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# On the profile family at coherence C^2, it is W_wall = Pe_req/(C^2 Delta).'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: Cres, Delta_sym_pre = sp.symbols("C_res Delta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: sp.Eq(sp.Symbol("Wm", positive=True) * Delta_sym_pre, Pe_req),
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: sp.Eq(C2 * sp.Symbol("Wp", positive=True) * Delta_sym_pre, Pe_req),
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '#   W_match * Delta = Pe_req      (Delta = Delta_inf for failure,'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: '#                                  Delta = Delta_0   for success)'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: Delta_sym  = sp.symbols("Delta", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: '# Solve the matched balance W_match * Delta = Pe_req for W_match:'
+- path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: W_match_sol = sp.solve(sp.Eq(W_match_sym * Delta_sym, Pe_req), W_match_sym)[0]
+origin_claims:
+- parameter: Delta_0
+  introduced_at_stage: 49
+  introduced_at_line: 162
+  citation:
+    path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+    line: 162
+    excerpt: '`Delta_0(kappa,eta)`'
+constraints:
+- parameter: Delta_0
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+    line: 154
+    excerpt: It is now a concrete competition between source susceptibility and support/source coupling on one side, and the
+      exact support geometry functions `Delta_0`, `Delta_inf` on the other.
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    - paper/stages/stage_068.tex
+    - research/pde_ledger/paper/stages/stage_068.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    - paper/stages/stage_068.tex
+    - research/pde_ledger/paper/stages/stage_068.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+- type: provenance_gap
+  severity: low
+  summary: Delta_0 is a symbolic axial support-geometry function Delta_0(kappa,eta) from the Stage-061 operator theorem, carried
+    symbolically through 066 and 068 (the stage-068 sympy script declares it as a free positive symbol). It has no scalar
+    value at stage 068; the scanner's target-value extraction has no numeric ledger value to attribute here.
+  citations:
+  - path: scripts/moving_throat_pde_stage068_resonance_thresholds_sympy_audit.py
+    line: 39
+    excerpt: C2, W_wall, Pe_req, Delta0, Deltainf = sp.symbols(
+  - path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md
+    line: 103
+    excerpt: '- the axial functions `Delta_0`, `Delta_inf`,'
+downstream_dependents:
+- '054'
+- 068
+- 069
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_068_delta_0__delta_0.yaml

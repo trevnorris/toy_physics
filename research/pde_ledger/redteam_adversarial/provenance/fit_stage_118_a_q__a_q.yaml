@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_118_a_q
+parameter_name: A_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_118_a_q__phase_b__a_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '118'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 33
+  role: notes_stage
+  excerpt: \delta A_w(\mathbf X,t)=q(t)\,\mathcal A_q(\mathbf X),
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 54
+  role: notes_stage
+  excerpt: \mathcal A_q(\mathbf X)=\Xi_q(\Omega,w)\,\chi_{1/2}(z),
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 165
+  role: notes_stage
+  excerpt: A_w=A_{w0}+q\,\mathcal A_q.
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 171
+  role: notes_stage
+  excerpt: '- q_* v_{w0}\int d^4X\,\varrho_s\,\mathcal A_q\;s q.'
+- path: notes/stages/moving_throat_pde_stage118_parent_core_extraction.md
+  line: 180
+  role: notes_stage
+  excerpt: \mathcal I_{sq}:=\int d^4X\,\varrho_s\,\mathcal A_q.
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: rho0, varrho_s, v0, qstar, A_q, s, q, m = sp.symbols(
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '"rho0 varrho_s v0 qstar A_q s q m", real=True'
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: expr = sp.expand(sp.Rational(1,2)*m*(rho0 + s*varrho_s)*(v0 - (qstar/m)*q*A_q)**2)
+- path: scripts/moving_throat_pde_stage118_parent_core_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: expect_zero("bilinear sq coefficient", sq_coeff + qstar*varrho_s*v0*A_q)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

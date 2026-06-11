@@ -1,0 +1,153 @@
+schema_version: 1
+candidate_id: fit_stage_186_mathcal
+parameter_name: mathcal
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_186_mathcal__phase_b__mathcal.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '186'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_186.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Shows the zero-defect equations are the tangent equations of a five-parameter monomial-preserving
+    similarity orbit \(\mathcal G_*\).}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 47
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 49
+  role: notes_stage
+  excerpt: \delta\mathbf x \in T_{\mathrm{id}}\mathcal G_*,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 52
+  role: notes_stage
+  excerpt: where \(\mathcal G_*\) is the exact five-parameter monomial-preserving similarity orbit defined below and \(\delta\mathbf
+    x\) is the microscopic grouped weak-axisymmetric log-drift vector.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 124
+  role: notes_stage
+  excerpt: Since the grouped weak-axisymmetric branch keeps the scalar axial scale \(L\) fixed at first order in the present
+    reduction, \(L\) is inert here.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 227
+  role: notes_stage
+  excerpt: 'and determine the remaining three scalings by exact monomial preservation:'
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 262
+  role: notes_stage
+  excerpt: Call the resulting five-parameter multiplicative family \(\mathcal G_*\).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 268
+  role: notes_stage
+  excerpt: 'By construction, the orbit \(\mathcal G_*\) preserves the three direct branch monomials exactly:'
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 272
+  role: notes_stage
+  excerpt: \delta_{\mathcal G_*}\ln\mathfrak C_{{\rm tr},*}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 284
+  role: notes_stage
+  excerpt: \delta_{\mathcal G_*}\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 298
+  role: notes_stage
+  excerpt: \delta_{\mathcal G_*}\ln\mathfrak C_{{\rm nt},*}=0.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 301
+  role: notes_stage
+  excerpt: So \(\mathcal G_*\) is an exact monomial-preserving similarity orbit, not merely a first-order ansatz.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 341
+  role: notes_stage
+  excerpt: \ker M_* = T_{\mathrm{id}}\mathcal G_*.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 345
+  role: notes_stage
+  excerpt: So the Stage 185 linear zero-defect ledger is not an isolated set of three equations. It is the tangent-space equation
+    of the exact five-parameter similarity orbit \(\mathcal G_*\).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 353
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 375
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 379
+  role: notes_stage
+  excerpt: \delta\mathbf x \in T_{\mathrm{id}}\mathcal G_*.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 383
+  role: notes_stage
+  excerpt: Equivalently, within this tangent-space theorem, the coherent weak-axisymmetric defect vanishes exactly when the
+    microscopic grouped drift is tangent to the finite monomial-preserving similarity orbit \(\mathcal G_*\).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 401
+  role: notes_stage
+  excerpt: '> does the actual moving-throat branch follow a tangent direction inside the exact similarity orbit \(\mathcal
+    G_*\)?'
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 407
+  role: notes_stage
+  excerpt: 'If the actual grouped weak-axisymmetric moving-throat branch leaves \(T_{\mathrm{id}}\mathcal G_*\), then the
+    failure is immediately localized:'
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 419
+  role: notes_stage
+  excerpt: On the coherent local D/N tracking branch, the entire first grouped weak-axisymmetric normalization problem is
+    equivalent to the action of an exact five-parameter multiplicative similarity orbit \(\mathcal G_*\) on the microscopic
+    kernel couplings
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 434
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 436
+  role: notes_stage
+  excerpt: \delta\mathbf x \in T_{\mathrm{id}}\mathcal G_*.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 442
+  role: notes_stage
+  excerpt: '> determine whether the true moving-throat grouped weak-axisymmetric branch is tangent to the exact monomial-preserving
+    similarity orbit \(\mathcal G_*\).'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    - paper/stages/stage_186.tex
+    - research/pde_ledger/paper/stages/stage_186.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+    - paper/stages/stage_186.tex
+    - research/pde_ledger/paper/stages/stage_186.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

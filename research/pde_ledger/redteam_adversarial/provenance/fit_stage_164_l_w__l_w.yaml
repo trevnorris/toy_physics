@@ -1,0 +1,133 @@
+schema_version: 1
+candidate_id: fit_stage_164_l_w
+parameter_name: L_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_164_l_w__phase_b__l_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '164'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_164.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Rewrites the Stage 163 off-family scalar in explicit branch-variable drifts of \((\mathcal
+    Z_q,\allowbreak \rho_w,\allowbreak c_{s,w},\allowbreak c_s,\allowbreak \mathcal T_m,\allowbreak v_{w0},\allowbreak a,\allowbreak
+    L_W)\).}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 31
+  role: notes_stage
+  excerpt: (a,L_W,\rho_w,c_{s,w},c_s,\mathcal Z_q,\mathcal T_m,v_{w0}),
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 99
+  role: notes_stage
+  excerpt: g_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi}{\sqrt2\,L_W^{3/2}},
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 101
+  role: notes_stage
+  excerpt: K_q=\frac{\mathcal Z_q}{\mu_0}\,\frac{\pi^2 c_s^2}{4L_W^2},
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 118
+  role: notes_stage
+  excerpt: -\frac32\,\delta\ln L_W,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 130
+  role: notes_stage
+  excerpt: -2\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 153
+  role: notes_stage
+  excerpt: I_q=\frac{2\sqrt{2L_W}}{\pi}.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 158
+  role: notes_stage
+  excerpt: \mathcal I_{sq}\propto a^2\ell\,L_W^{1/2},
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 166
+  role: notes_stage
+  excerpt: 2\,\delta\ln a+\delta\ln\ell+\frac12\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 180
+  role: notes_stage
+  excerpt: -2\,\delta\ln L_W,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 193
+  role: notes_stage
+  excerpt: -3\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 200
+  role: notes_stage
+  excerpt: (K_s,a,\ell,L_W,\mathcal Z_q,\mathcal T_m,v_{w0},c_s).
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 228
+  role: notes_stage
+  excerpt: '{\rho_w\,\mathcal T_m\,v_{w0}\,a^2L_W^2},'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 237
+  role: notes_stage
+  excerpt: '{\rho_w\,v_{w0}^2\,a^2L_W^3}.'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 252
+  role: notes_stage
+  excerpt: -2\,\delta\ln L_W,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 265
+  role: notes_stage
+  excerpt: -3\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 274
+  role: notes_stage
+  excerpt: '- \((a,L_W)\) are the wall-geometry coordinates,'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 313
+  role: notes_stage
+  excerpt: -\left(2\mathfrak g_*+\frac{3}{4\sqrt{1+\mathfrak r_*^2}}\right)\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 355
+  role: notes_stage
+  excerpt: 1.88373219118005\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 398
+  role: notes_stage
+  excerpt: \right)\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 422
+  role: notes_stage
+  excerpt: 2.48499999999999\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 449
+  role: notes_stage
+  excerpt: (\mathcal Z_q,\rho_w,c_{s,w},c_s,\mathcal T_m,v_{w0},a,L_W).
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '"T_m J_s Z_q mu_0 L_W qstar v_w0 I_sq c_s", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: print("coeff[ln(L_W)]       =", sp.N(-(2*g_num + 3*b_num), 20))
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: print("    dln[(g_q K_s)/(g_s lam)] = dln Z_q + 3 dln c_sw - dln rho_w - dln T_m - dln v_w0 - 2 dln a - 2 dln L_W")
+- path: scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: print("    dln[(K_s K_q)/lam^2] = dln Z_q + 2 dln c_s + 3 dln c_sw - dln rho_w - 2 dln v_w0 - 2 dln a - 3 dln L_W")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

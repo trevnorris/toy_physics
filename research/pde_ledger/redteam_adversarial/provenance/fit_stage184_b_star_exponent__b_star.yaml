@@ -1,0 +1,72 @@
+schema_version: 1
+candidate_id: fit_stage184_b_star_exponent
+parameter_name: B_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage184_b_star_exponent__phase_b__b_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '184'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 38
+  role: notes_stage
+  excerpt: and the starred quantities are the coherent reference-branch values about which the weak-axisymmetric grouped perturbation
+    is taken.
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Bstar = sp.simplify(2 * (1 + chi0 + deltaU) / deltaU)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Cstar = sp.simplify((1 + chi0) * (1 + deltaU) * (1 + chi0 + deltaU) / (chi0 * deltaU))
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: print("B_* =", Bstar)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: print("C_* =", Cstar)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: SigmaTr = sp.simplify(-Cstar * Theta1)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: SigmaNT = sp.simplify(Xi1 + Bstar * Theta1)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: Ttr = sp.simplify(Rtr**(-Cstar))
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: Ttr0 = sp.simplify(Rtr0**(-Cstar))
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: Ntr = sp.simplify(T2 * Rtr**Bstar)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Ntr0 = sp.simplify(T20 * Rtr0**Bstar)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

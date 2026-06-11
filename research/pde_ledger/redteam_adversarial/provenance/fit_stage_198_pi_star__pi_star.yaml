@@ -1,0 +1,143 @@
+schema_version: 1
+candidate_id: fit_stage_198_pi_star
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_198_pi_star__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '198'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Ctr_star, Cnt_star, epsEta_star = sp.symbols(
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: '"Ctr_star Cnt_star epsEta_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: '* (gamma**2 * lamW**2 * sigma / (KU * KW)) ** Estar'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '* (pi**2 * TU / (L**2 * KU)) ** (-Fstar)'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: Keta_orbit = sp.simplify(cEtaU**2 / (KU * epsEta_star))
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '* (Ctr_star / (gamma * cEtaU / KU) ** (1 + deltaUs)) ** (sp.Rational(1, 1) / (1 + chi0s))'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Cnt_star * Keta_orbit * KW**2 / lamW**2
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '* (gamma**2 * lamW**2 * sigma / (KU * KW)) ** (-Estar)'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: '* (pi**2 * TU_orbit / (L**2 * KU)) ** Fstar'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '"epsEta(Keta_orbit) / epsEta_star - 1",'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: 'epsEta.subs({Keta: Keta_orbit}) / epsEta_star - 1,'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: '"Ctr(TU_orbit) / Ctr_star - 1",'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: 'Ctr.subs({TU: TU_orbit}) / Ctr_star - 1,'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: '"Cnt(muW_orbit,Keta_orbit,TU_orbit) / Cnt_star - 1",'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: 'Cnt.subs({muW: muW_orbit, Keta: Keta_orbit, TU: TU_orbit}) / Cnt_star - 1,'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: 'Ctr_ratio = sp.simplify(Ctr.subs({TU: TU_actual}) / Ctr_star)'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: 'epsEta_ratio = sp.simplify(epsEta.subs({Keta: Keta_actual}) / epsEta_star)'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: 'Cnt.subs({TU: TU_actual, Keta: Keta_actual, muW: muW_actual}) / Cnt_star'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: print("epsEta(actual) / epsEta_star =")
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: expect_zero("Cnt ratio - m_mu/(m_K m_T^F_*)", Cnt_ratio - mMu / (mK * mT**Fstar))
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: qnt_expected = sp.simplify(mu - kappa - Fstar * tau)
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: Mstar = sp.Matrix(
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: '[2 * (1 + Estar), 0, 2 * Estar, Fstar - Estar, -1, -(2 + Estar), 1, -Fstar],'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 164
+  role: sympy_script
+  excerpt: q_from_M = sp.simplify(Mstar * Dx_mis)
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: '* sp.exp(-qnt_expected + qeta_expected - Fstar * qtr_expected / (1 + chi0s))'
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: mu_inv = sp.simplify(qnt - qeta + Fstar * qtr / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage198_exact_finite_orbit_law_sympy_audit.py
+  line: 224
+  role: sympy_script
+  excerpt: sp.simplify(mu_inv - kappa_inv - Fstar * tau_inv - qnt),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

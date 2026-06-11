@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage028_theta_minus_sign_fixed
+parameter_name: theta_minus
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage028_theta_minus_sign_fixed__phase_b__theta_minus.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 028
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_028.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~028 stops treating the wall-profile angle as an external choice.  The support/mixed
+    branch induces an attractive rank-one load along the D/N overlap vector, and the selected profile is the lower eigenvector
+    of the loaded wall matrix.}
+- path: paper/stages/stage_028.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage028-qtheta}
+- path: paper/stages/stage_028.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: q_0=\cos\theta,
+- path: paper/stages/stage_028.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: q_1=\sin\theta.
+- path: paper/stages/stage_028.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: \tan(2\theta_-)
+- path: paper/stages/stage_028.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: Since \(\kappa_0\kappa_1<0\), positive loading drives \(\theta_-<0\), toward the max-coupling direction and away
+    from the blind-angle branch.
+- path: paper/stages/stage_028.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: \item The sign of \(\theta_-\) is fixed because \(\kappa_0>0\) and \(\kappa_1<0\).
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 027 replaced the constant axial wall/brane branch by the first nonconstant N/N family and showed that the
+    whole normalization problem depends on one profile angle `theta` through
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 7
+  role: notes_stage
+  excerpt: '`kappa(theta) = kappa_0 cos(theta) + kappa_1 sin(theta)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 11
+  role: notes_stage
+  excerpt: '> the profile angle `theta` was being chosen by hand rather than produced by a reduced moving-throat operator.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 13
+  role: notes_stage
+  excerpt: The next honest step is therefore to make `theta` an **output** of the first loaded axial eigenproblem.
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 52
+  role: notes_stage
+  excerpt: '`q_0 = cos(theta)`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 54
+  role: notes_stage
+  excerpt: '`q_1 = sin(theta)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 84
+  role: notes_stage
+  excerpt: '`kappa(theta) = v . q`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 109
+  role: notes_stage
+  excerpt: It is still reduced and minimal, but it already converts the free profile angle `theta` into a dynamical eigenvector
+    problem.
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 130
+  role: notes_stage
+  excerpt: Parameterizing the eigenvector by `theta`, the exact stationarity condition is
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 132
+  role: notes_stage
+  excerpt: '`tan(2 theta)`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 147
+  role: notes_stage
+  excerpt: '`theta < 0`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 163
+  role: notes_stage
+  excerpt: '`theta = alpha kappa_0 kappa_1 / Delta K_ax + O(alpha^2)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 173
+  role: notes_stage
+  excerpt: '`tan(2 theta) -> 2 kappa_0 kappa_1 / (kappa_0^2 - kappa_1^2)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 183
+  role: notes_stage
+  excerpt: '`theta -> theta_max`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 187
+  role: notes_stage
+  excerpt: '`tan(theta_max) = kappa_1 / kappa_0 = - sqrt(2) / 3`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 201
+  role: notes_stage
+  excerpt: '`tan(theta_blind) = 3 sqrt(2) / 2`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 205
+  role: notes_stage
+  excerpt: '`kappa(theta_blind)=0`,'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 213
+  role: notes_stage
+  excerpt: '`tan(2 theta)`'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 218
+  role: notes_stage
+  excerpt: the selected `theta` always lies in the negative-coupling direction.
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 222
+  role: notes_stage
+  excerpt: '`theta_blind > 0`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 260
+  role: notes_stage
+  excerpt: '- and the profile-dressed overlap `kappa(theta)`.'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 263
+  role: notes_stage
+  excerpt: They are linked because the same support/mixed loading that wants a larger `|kappa|` also rotates the wall toward
+    `theta_max` and softens the lower wall eigenvalue.
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 267
+  role: notes_stage
+  excerpt: '> can I pick a `theta` that makes the algebra work?'
+- path: notes/stages/moving_throat_pde_stage028_loaded_profile_selection.md
+  line: 271
+  role: notes_stage
+  excerpt: '> does the actual loaded wall eigenmode selected by the throat operator carry the right pair `(lambda_-, kappa(theta))`
+    to satisfy the outgoing quadrupole normalization target while remaining on the stable branch?'
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: • exact profile-angle equation tan(2 theta),
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: theta = sp.symbols("theta", real=True)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: lam_minus = sp.simplify((tr_expected - sp.sqrt(disc)) / 2)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: char = sp.expand((x - lam_minus) * (x - lam_plus) - (x**2 - tr_eff * x + det_eff))
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: sp.pprint(lam_minus)
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: return K_eff, lam_minus, lam_plus, det_eff
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: K_eff, lam_minus, lam_plus, det_eff = eigenvalue_ledger()
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: q = sp.Matrix([sp.cos(theta), sp.sin(theta)])
+- path: scripts/moving_throat_pde_stage028_loaded_profile_selection_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: dE = sp.simplify(sp.expand_trig(sp.diff(E, theta)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

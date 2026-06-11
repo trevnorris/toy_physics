@@ -1,0 +1,98 @@
+schema_version: 1
+candidate_id: fit_stage252_vin_benchmark_calibration_match
+parameter_name: V_in_match
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage252_vin_benchmark_calibration_match__phase_b__v_in_match.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: 5. and the microscopic event-equivalent damping rates that Stage 253 must map into condensed-matter variables are
+    now explicit.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 77
+  role: notes_stage
+  excerpt: '- Stage 251 replaced the phenomenological damping scalar by the microscopic cubic-plus-quintic export kernel and
+    derived exact channel-resolved exported-power formulas.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: '### 2.1 Event-equivalent damping rates'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 330
+  role: notes_stage
+  excerpt: It says that once the event is pinned to the cold-survival edge, the **minimum total exported energy** is completely
+    fixed by
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 434
+  role: notes_stage
+  excerpt: '## 5. Session-IV benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: '### 5.1 Safe-edge energy match to Session IV'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 474
+  role: notes_stage
+  excerpt: If one uses this only as a **benchmark calibration** of the initial active-leg amplitude, the safe-edge energy
+    theorem gives
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 476
+  role: notes_stage
+  excerpt: V_{\rm in,match}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: So the old benchmark numbers are absorbed by the new microscopic compiler without keeping the heat partition phenomenological.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 496
+  role: notes_stage
+  excerpt: This is a calibration consistency check, not a theorem that the realized branch must use the speed-independent
+    `3:1` family.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 557
+  role: notes_stage
+  excerpt: 4. and any branch-dependent calibration of the initial active-leg amplitude if one wants absolute per-event energies
+    rather than fractions.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 559
+  role: notes_stage
+  excerpt: So the live bottleneck has moved from “invent a damping partition” to “compute the realized microscopic coefficient
+    split and then map it physically.”
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 572
+  role: notes_stage
+  excerpt: 3. Carry the same microscopic compiler into the harmonic-trap stiffness and Korringa-limited spin-survival maps.
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: Vin_match_num = math.sqrt(E_diss_num / safe_energy_pref_num)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 219
+  role: sympy_script
+  excerpt: print("V_in match            =", Vin_match_num)
+- path: scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py
+  line: 229
+  role: sympy_script
+  excerpt: assert abs(Vin_match_num - 0.008217712598897912) < 1e-15
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,226 @@
+schema_version: 1
+candidate_id: fit_stage_069_c_res
+parameter_name: C_res
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_069_c_res__phase_b__c_res.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 069
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_069.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+- path: paper/stages/stage_069.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The matched wall theorem, profile penalty benchmark, and operator-selected support/source thresholds.}
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 6
+  role: notes_stage
+  excerpt: This stage closes the present reduced support/source program.
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 16
+  role: notes_stage
+  excerpt: 3. **Stages 067–068:** the first explicit independent-profile benchmark family has an exact self-dual resonance
+    at
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 19
+  role: notes_stage
+  excerpt: '`C_res^2 = 0.994418836451529...`,'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 20
+  role: notes_stage
+  excerpt: so its threshold penalty is only
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 21
+  role: notes_stage
+  excerpt: '`P_res = 1.005612487760576...`.'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 29
+  role: notes_stage
+  excerpt: 'The universal matched-branch theorem from Stages 061 and 066 is still the main result:'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 50
+  role: notes_stage
+  excerpt: '`C_res^2 = 0.994418836451529...`,'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 52
+  role: notes_stage
+  excerpt: '`P_res = 1.005612487760576...`.'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 54
+  role: notes_stage
+  excerpt: So the independent-profile benchmark modifies the universal wall thresholds only by about `0.56%`.
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 92
+  role: notes_stage
+  excerpt: And even there, the explicit independent sech–Gaussian family changes the matched thresholds only by the tiny factor
+    `P_res = 1.005612...`.
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 96
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_inf < W_wall < P_res Pe_req / Delta_inf`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 100
+  role: notes_stage
+  excerpt: '`Pe_req / Delta_0 < W_wall < P_res Pe_req / Delta_0`'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 117
+  role: notes_stage
+  excerpt: '- an explicit independent-profile resonance family,'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 146
+  role: notes_stage
+  excerpt: '- the sech–Gaussian resonance is real,'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 149
+  role: notes_stage
+  excerpt: '- but the claim that this **alone** proves threshold survival is too strong.'
+- path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+  line: 153
+  role: notes_stage
+  excerpt: That is exactly the kind of result that helps us finish the reduced phase cleanly.
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 2. The Stage-068 resonance family shifts both thresholds by the exact penalty
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: factor P_res = 1 / C_res^2.
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: the resonance-family refinement sits in two narrow side-bands.
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: '- `P_res = 1/C_res^2` is the Stage 068 resonance penalty; this script keeps'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: '- Source for the resonance penalty `P_res = 1 + Pres_gap`:'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: resonance amplification factor. This script imports the form symbolically
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: as `Pres = 1 + Pres_gap` and asserts the band-edge ratio matches; it does
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: Pres_gap, v_fail, v_succ = sp.symbols("Pres_gap v_fail v_succ", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Pres = sp.simplify(1 + Pres_gap)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: Cres2 = sp.simplify(1 / Pres)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: Wfail_res = sp.simplify(Pres * Wfail_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: Wsuff_res = sp.simplify(Pres * Wsuff_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: '# Wfail_match, Wsuff_match, Wfail_res, Wsuff_res are constructed here from'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: '# threshold values is asserted by the F1 consolidation block below'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# (matched fail edge from W_match(Delta_inf) = 0, P_res from band-edge'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '# ratio matches (1 + Pres_gap) = 0), but the upstream derivations'
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("Matched-branch fail threshold       =", Wfail_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("Matched-branch success threshold    =", Wsuff_match)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("Resonance-family fail threshold     =", Wfail_res)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("Resonance-family success threshold  =", Wsuff_res)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: expect_zero("P_res - 1/C_res^2", Pres - 1 / Cres2)
+- path: scripts/moving_throat_pde_stage069_final_reduced_verdict_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: expect_positive("matched success threshold - matched fail threshold", Wsuff_match - Wfail_match)
+origin_claims:
+- parameter: C_res
+  introduced_at_stage: 55
+  introduced_at_line: 116
+  citation:
+    path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 116
+    excerpt: '`C_res^2 := C^2(sqrt(pi))`'
+constraints:
+- parameter: C_res
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 147
+    excerpt: '- the `sqrt(pi)` ratio is not numerology but the exact self-dual stationary point of that benchmark family,'
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: Candidate is keyed to stage 069 with value 0.994418836451529, but C_res first enters the ledger at stage 067 as
+    the exactly-computed coherence maximum C^2(sqrt(pi)). Stage 069 only restates it; the notes correctly attribute origin
+    to stages 067-068.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage069_final_reduced_verdict.md
+    line: 19
+    excerpt: '`C_res^2 = 0.994418836451529...`,'
+  - path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+    line: 117
+    excerpt: '`        = 0.9944188364515293487...`'
+downstream_dependents:
+- '070'
+- '071'
+- '072'
+- '073'
+- '074'
+- '075'
+- '076'
+- '077'
+- 078
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_069_c_res__c_res.yaml

@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage_228_delta_1
+parameter_name: delta_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_228_delta_1__phase_b__delta_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '228'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_228.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the split $\Xi_1=2(\pi_1-\delta_1)$, numerator-rigid and denominator-rigid subcorridors,
+    and the wall-like branch data from the finite-throat primitive slice.}
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 12
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}=2\,\delta\ln\Lambda,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 14
+  role: notes_stage
+  excerpt: \Lambda=\frac{P}{\Delta},
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}=2\,\delta\ln\Lambda.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 41
+  role: notes_stage
+  excerpt: \Xi_1=2(\pi_1-\delta_1),
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 45
+  role: notes_stage
+  excerpt: \delta_1:=\frac{\Delta_{01}}{\Delta};
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 49
+  role: notes_stage
+  excerpt: '- pure-transfer + \(\delta_1=0\) leaves a 1D **denominator-rigid** survivor,'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 91
+  role: notes_stage
+  excerpt: \Delta=\Omega_U^2\Omega_W^2-R^2,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: N_0=\frac{P^2}{\Delta^2}.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 109
+  role: notes_stage
+  excerpt: \Lambda=\frac{P}{\Delta}
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: \delta_1:=\frac{\Delta_{01}}{\Delta}.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 125
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta},
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: \Xi_1 = 2(\pi_1-\delta_1).
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 148
+  role: notes_stage
+  excerpt: \delta_1
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: '- pure-transfer + denominator rigidity \(\delta_1=0\):'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 194
+  role: notes_stage
+  excerpt: \det[(\pi_1,\delta_1)|_{\rm pure\ transfer}]
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 208
+  role: notes_stage
+  excerpt: \text{pure-transfer} + \delta_1=0 \Rightarrow \text{1D survivor},
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 213
+  role: notes_stage
+  excerpt: \text{pure-transfer} + \pi_1=0 + \delta_1=0 \Rightarrow \text{only the trivial drift}.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 241
+  role: notes_stage
+  excerpt: \delta_1(v_{\rm num})\approx -0.86805617,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: \Xi_1=-2\delta_1.
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: '### 3.2 Denominator-rigid branch \(\delta_1=0\)'
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 264
+  role: notes_stage
+  excerpt: \delta_1(v_{\rm den})=0,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: \delta\ln P_0 \approx +1.73611235,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 319
+  role: notes_stage
+  excerpt: \delta\ln \mathcal R_{Q,+} \approx -0.52346582,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 321
+  role: notes_stage
+  excerpt: \delta\ln \mathcal R_{Q,-} \approx +0.71358484,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 336
+  role: notes_stage
+  excerpt: \delta\ln P_0 \approx +0.69293215,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 339
+  role: notes_stage
+  excerpt: \delta\ln \mathcal R_{Q,+} \approx -0.35245541,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 341
+  role: notes_stage
+  excerpt: \delta\ln \mathcal R_{Q,-} \approx -0.23169484,
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 472
+  role: notes_stage
+  excerpt: \Xi_1 = 2(\pi_1-\delta_1);
+- path: notes/stages/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.md
+  line: 474
+  role: notes_stage
+  excerpt: 2. the exact row formulas for \(\pi_1\) and \(\delta_1\);
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: Delta = OmU**2 * OmW**2 - R**2
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: Z0 = Q / Delta
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Z2 = (Q * S2 - H_mix * Delta) / Delta**2
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Z4 = (Q * (S2**2 - Delta) - S2 * H_mix * Delta) / Delta**3
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: N0 = P**2 / Delta**2
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: Deltad = OmUd**2 * OmWd**2 - Rd**2
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: Z0d = Qd / Deltad
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: Z2d = (Qd * S2d - H_mix_d * Deltad) / Deltad**2
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Z4d = (Qd * (S2d**2 - Deltad) - S2d * H_mix_d * Deltad) / Deltad**3
+- path: scripts/moving_throat_pde_stage228_numerator_denominator_split_of_the_pure_transfer_corridor_and_first_actual_dynamic_window_test_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: N0d = Pd**2 / Deltad**2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

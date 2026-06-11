@@ -1,0 +1,115 @@
+schema_version: 1
+candidate_id: fit_stage_135_m_q
+parameter_name: M_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_135_m_q__phase_b__m_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '135'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_135.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Inheriting the compensated outlet ratio gives \(M_s=4\Sigma_m\), \(M_q=-\Sigma_m\), and \(\Sigma_m^*\approx0.451485\).
+- path: paper/stages/stage_135.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the gain pair \((M_s,M_q)\) against outlet consistency.
+- path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  line: 36
+  role: notes_stage
+  excerpt: M_q = -\Sigma_m,
+- path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  line: 52
+  role: notes_stage
+  excerpt: M_q = -\Sigma_m,
+- path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  line: 99
+  role: notes_stage
+  excerpt: M_q^* = -\Sigma_m^*
+- path: notes/stages/moving_throat_pde_stage135_outlet_consistent_mouth_closure.md
+  line: 125
+  role: notes_stage
+  excerpt: M_q^*\mathcal S_q(\Pi_*)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: M_s = 4 Sigma_m,   M_q = -Sigma_m.
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: '# Build the generic mouth-gain law M_s + M_q*S_q with independent symbols, then'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: '# substitute the outlet-consistent reduction M_s = 4*Sigma_m, M_q = -Sigma_m and'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: M_s_sym, M_q_sym = sp.symbols("M_s_sym M_q_sym", real=True)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: generic_law = M_s_sym + M_q_sym * S_q
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: 'reduced_law = generic_law.subs({M_s_sym: 4*Sigma_m, M_q_sym: -Sigma_m})'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: print("M_s + M_q*S_q - Sigma_m*(4 - S_q) =", residual_sub)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: M_q_star = sp.N(-Sigma_star, 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("M_q^* =", M_q_star)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: M_q_target = sp.Float("-0.451485277739090", 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: assert abs(M_q_star - M_q_target) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: 'f"M_q^* mismatch: {M_q_star} vs {M_q_target}"'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: print("Sigma_m^*, M_s^*, M_q^* anchored to notes values within tolerance.")
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# Step 4: mixed-lane correction M_q^* * S_q(Pi_*) (notes line 125-127 ref value).'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: mixed_correction = sp.N(M_q_star * S_star, 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("M_q^* * S_q(Pi_*) =", mixed_correction)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

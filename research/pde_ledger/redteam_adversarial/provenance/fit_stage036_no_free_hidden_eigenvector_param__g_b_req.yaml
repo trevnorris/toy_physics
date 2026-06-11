@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage036_no_free_hidden_eigenvector_param
+parameter_name: g_B_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage036_no_free_hidden_eigenvector_param__phase_b__g_b_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '036'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_036.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~036 isolates the support-feasibility condition that remains after the normalization
+    locus has selected \(\xi_{\rm req}\).  The total loading must exceed the mixed-sector baseline by a nonnegative support/BdG
+    contribution.  This requirement becomes the exact frontier \(M_{\rm mix}\leq G(\xi_{\rm req},\delta)\).}
+- path: paper/stages/stage_036.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the Stage~035 total loading \(\alpha_{\rm req}(\xi,
+- path: paper/stages/stage_036.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm req}=\alpha_{\rm mix}+\frac{g_{B,{\rm req}}^2}{\varpi^2},
+- path: paper/stages/stage_036.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: G(\xi,\delta):=\frac{8\alpha_{\rm req}}{\pi^2A}
+- path: paper/stages/stage_036.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage036-gBreq}
+- path: paper/stages/stage_036.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \frac{g_{B,{\rm req}}^2}{\varpi^2}
+- path: paper/stages/stage_036.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: =\frac{\pi^2A}{8}\left[G(\xi_{\rm req},\delta)-M_{\rm mix}\right]}.
+- path: paper/stages/stage_036.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+- path: paper/stages/stage_036.tex
+  line: 81
+  role: paper_stage_tex
+  excerpt: For fixed \(\delta\), the normalization target chooses \(\xi_{\rm req}\) by
+- path: paper/stages/stage_036.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: F(\xi_{\rm req},\delta)=R_{\rm target},
+- path: paper/stages/stage_036.tex
+  line: 107
+  role: paper_stage_tex
+  excerpt: F(\xi_{\rm req},\delta)=R_{\rm target},
+- path: paper/stages/stage_036.tex
+  line: 109
+  role: paper_stage_tex
+  excerpt: M_{\rm mix}\leq G(\xi_{\rm req},\delta)}.
+- path: paper/stages/stage_036.tex
+  line: 111
+  role: paper_stage_tex
+  excerpt: If \(R_{\rm target}<1\), the branch cannot hit the target on the stable side.  If \(R_{\rm target}\geq1\) but \(M_{\rm
+    mix}>G(\xi_{\rm req},\delta)\), the required support loading is negative and the physical branch is inadmissible in this
+    reduced closure.
+- path: paper/stages/stage_036.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~036 outputs the dimensionless mixed baseline \eqref{eq:app-stage036-Mmix}, the support-feasibility
+    function \eqref{eq:app-stage036-G}, the required support loading \eqref{eq:app-stage036-gBreq}, the monotonicity derivative
+    \eqref{eq:app-stage036-G-derivative}, and the final admissibility test \eqref{eq:app-stage036-final-test}.}
+- path: paper/stages/stage_036.tex
+  line: 116
+  role: paper_stage_tex
+  excerpt: \item Substituting \(\alpha_{\rm req}\) from Stage~035 into \(8\alpha_{\rm req}/(\pi^2A)\) gives \(G\).
+- path: paper/stages/stage_036.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \item \(M_{\rm mix}\leq G\) is exactly the nonnegativity of \(g_{B,{\rm req}}^2\).
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 9
+  role: notes_stage
+  excerpt: and gave the exact total loading required once the unique solution `xi_req` is found.
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 14
+  role: notes_stage
+  excerpt: '`g_B,req^2 >= 0`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 25
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`,'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 34
+  role: notes_stage
+  excerpt: '`M_mix <= G(xi_req,delta)`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 42
+  role: notes_stage
+  excerpt: From Stage 035 the required total loading is
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 44
+  role: notes_stage
+  excerpt: '`alpha_req(xi,delta) = 9 pi^2 A xi (xi + delta) / [ 8 (9 delta + 11 xi) ]`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 48
+  role: notes_stage
+  excerpt: '`alpha_req = alpha_mix + g_B,req^2 / varpi^2`,'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 61
+  role: notes_stage
+  excerpt: '`G(xi,delta) := 8 alpha_req / (pi^2 A)`'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 64
+  role: notes_stage
+  excerpt: The required support loading becomes
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 66
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2 = (pi^2 A / 8) [ G(xi_req,delta) - M_mix ]`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 70
+  role: notes_stage
+  excerpt: '`G(xi_req,delta) >= M_mix`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 112
+  role: notes_stage
+  excerpt: '- the normalization target picks out a unique `xi_req`,'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 113
+  role: notes_stage
+  excerpt: '- and the support feasibility test is then simply whether the actual baseline `M_mix` lies below the critical
+    value `G(xi_req,delta)`.'
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 118
+  role: notes_stage
+  excerpt: 2. `M_mix <= G(xi_req,delta)` to keep the required support loading nonnegative.
+- path: notes/stages/moving_throat_pde_stage036_support_feasibility_frontier.md
+  line: 132
+  role: notes_stage
+  excerpt: '`xi_req ~= (R_target - 1) / (1 + 8/(9 delta))`,'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact factorization of the required support loading through G - M_mix.
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '# Stage 035 eq.(alpha-req): required support amplitude carried into Stage 036.'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: a_req = sp.simplify(9 * sp.pi**2 * A * xi * (xi + delta) / (8 * (9 * delta + 11 * xi)))
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: gBreq_sq_over_varpi2 = sp.simplify(a_req - alpha_mix)
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: '# Definitional self-consistency: a_req and G are both hardcoded closed forms,'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: '# so this just confirms a_req = (pi^2 A / 8) G after Mmix_expr cancels.'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '"g_B,req^2/varpi^2 - (pi^2 A / 8) (G - M_mix)",'
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: gBreq_sq_over_varpi2 - (sp.pi**2 * A / 8) * (G - Mmix_expr),
+- path: scripts/moving_throat_pde_stage036_support_feasibility_frontier_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: xi_req = sp.symbols("xi_req", nonnegative=True, real=True)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

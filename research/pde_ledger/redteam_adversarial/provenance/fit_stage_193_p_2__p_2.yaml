@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage_193_p_2
+parameter_name: P_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_193_p_2__phase_b__p_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '193'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_193.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_193.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 193: Exact Isotropic Grouped-`P2` Target Surface and the Scalar/Geometry Firewall'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Packet-A grouped-bundle hierarchy of Stage 191, the microscopic orbit/quotient split
+    of Stage 192, and the reduced 5PN isotropic grouped-real `P2` closure.**'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 10
+  role: notes_stage
+  excerpt: 1. the exact **isotropic grouped-real `P2` conservative target surface**, and
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 33
+  role: notes_stage
+  excerpt: '> before worrying about outgoing normalization, orbit lock, or the realized coherent placement point, the completed
+    moving-throat PDE must first land on one exact **conservative isotropic grouped-real `P2` surface**.'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 105
+  role: notes_stage
+  excerpt: '## 2. Exact isotropic grouped-real `P2` conservative target surface'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 149
+  role: notes_stage
+  excerpt: This is the exact grouped-real `P2` conservative front-end surface the completed PDE must hit before later outgoing
+    or orbit-side tests even matter.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 327
+  role: notes_stage
+  excerpt: '### 6.1 Conservative grouped-real `P2` target surface'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 380
+  role: notes_stage
+  excerpt: 1. it tells us what exact conservative grouped-real `P2` state the PDE must realize,
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: banner("STAGE 193 — EXACT ISOTROPIC GROUPED-P2 TARGET SURFACE AND THE SCALAR/GEOMETRY FIREWALL")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_193.tex
+    attempted_sources:
+    - paper/stages/stage_193.tex
+    - research/pde_ledger/paper/stages/stage_193.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_193.tex
+    attempted_sources:
+    - paper/stages/stage_193.tex
+    - research/pde_ledger/paper/stages/stage_193.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

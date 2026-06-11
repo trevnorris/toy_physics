@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage067_C_res_unique_global_max
+parameter_name: C_res_squared
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage067_c_res_unique_global_max__phase_b__c_res_squared.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '067'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_067.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 067]{Stage 067: Exact Sech--Gaussian Coherence Resonance Benchmark}'
+- path: paper/stages/stage_067.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+- path: paper/stages/stage_067.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage067_sech_gaussian_sympy_audit.txt}.  Mathematica audit: \StageFile{mathematica/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.wl};
+    transcript: \StageFile{mathematica/output/moving_throat_pde_stage067_sech_gaussian_resonance_mathematica_audit.txt}.}'
+- path: paper/stages/stage_067.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage067-Cres}
+- path: paper/stages/stage_067.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: C_{\rm res}^2\simeq0.994418836451529}.
+- path: paper/stages/stage_067.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: The corresponding penalty factor is
+- path: paper/stages/stage_067.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage067-Pres}
+- path: paper/stages/stage_067.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: P_{\rm res}=\frac{1}{C_{\rm res}^2}\simeq1.005612487760576}.
+- path: paper/stages/stage_067.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The near-perfect benchmark coherence \eqref{eq:app-stage067-Cres} and penalty \eqref{eq:app-stage067-Pres}.}
+- path: paper/stages/stage_067.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~068 applies \(P_{\rm res}\) to the matched thresholds; Stage~069 gives the final
+    support/source verdict.}
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 67: Exact Sech–Gaussian Coherence Resonance Benchmark'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 6
+  role: notes_stage
+  excerpt: 'The memo you shared suggests a concrete transverse profile benchmark for the parent source/support coherence:'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 8
+  role: notes_stage
+  excerpt: '- fluid/compressional source profile:'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 13
+  role: notes_stage
+  excerpt: This stage checks that benchmark carefully and places it in the right role inside the reduced theorem program.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 15
+  role: notes_stage
+  excerpt: The result is useful, but more limited than the memo’s strongest interpretation.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 19
+  role: notes_stage
+  excerpt: 1. the benchmark has an **exact self-duality**,
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 22
+  role: notes_stage
+  excerpt: 3. the corresponding maximal coherence is
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 23
+  role: notes_stage
+  excerpt: '`C_res^2 = 0.994418836451529...`,'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 24
+  role: notes_stage
+  excerpt: 4. so the best independent sech–Gaussian mismatch branch gets within about `0.56%` of the exact matched-layer ideal,
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 25
+  role: notes_stage
+  excerpt: 5. but this does **not** by itself prove threshold survival, because the survival theorem still depends on the
+    wall/source figure of merit from Stages 061–066, not on coherence alone.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 27
+  role: notes_stage
+  excerpt: So the memo is genuinely helpful as an explicit benchmark family, but it is not itself the final theorem.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 88
+  role: notes_stage
+  excerpt: That is the key exact structural fact behind the resonance.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 92
+  role: notes_stage
+  excerpt: '## 3. Exact stationary resonance point'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 106
+  role: notes_stage
+  excerpt: is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian
+    benchmark family.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 116
+  role: notes_stage
+  excerpt: '`C_res^2 := C^2(sqrt(pi))`'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 119
+  role: notes_stage
+  excerpt: So the best independent sech–Gaussian profile mismatch falls short of perfect support/source matching by only
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 121
+  role: notes_stage
+  excerpt: '`1 - C_res^2 = 0.0055811635484706513...`'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 125
+  role: notes_stage
+  excerpt: Equivalently, the resonance penalty factor is
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 127
+  role: notes_stage
+  excerpt: '`P_res := 1 / C_res^2`'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 130
+  role: notes_stage
+  excerpt: That is the exact multiplicative penalty by which the explicit independent-profile family misses the ideal matched-layer
+    branch.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 136
+  role: notes_stage
+  excerpt: This benchmark is important, but it does **not** supersede the earlier parent equilibrium result.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 148
+  role: notes_stage
+  excerpt: '- the present sech–Gaussian family is a strong **independent-profile benchmark**,'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 149
+  role: notes_stage
+  excerpt: '- the Stage-064 branch is the **equilibrium-matched** benchmark.'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 151
+  role: notes_stage
+  excerpt: The new resonance result therefore tells us that even a fairly natural profile mismatch can get extremely close
+    to the exact matched limit. But it does not replace the matched-limit theorem.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 157
+  role: notes_stage
+  excerpt: Before this stage, the mismatch between an ideal matched source/support branch and a concrete profile family was
+    still diffuse.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 161
+  role: notes_stage
+  excerpt: '- exact stationary resonance at `w_g / w_f = sqrt(pi)`,'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 163
+  role: notes_stage
+  excerpt: '- maximal coherence `C_res^2 = 0.994418836451529...`,'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 164
+  role: notes_stage
+  excerpt: '- penalty factor `P_res = 1.005612487760576...`.'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 166
+  role: notes_stage
+  excerpt: 'So the user memo is mathematically useful — but the strongest justified conclusion is not “automatic threshold
+    survival.” The justified conclusion is:'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 168
+  role: notes_stage
+  excerpt: '> the first explicit independent-profile family almost saturates the ideal matched source/support branch.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

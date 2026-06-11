@@ -1,0 +1,170 @@
+schema_version: 1
+candidate_id: fit_stage_177_xi_1
+parameter_name: Xi_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_177_xi_1__phase_b__xi_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '177'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_177.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Shows all weak-axisymmetric outgoing slippages inherit the same grouped signature and collapse
+    to \(\Xi_1=P_1/P_0\).}
+- path: paper/stages/stage_177.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the conservative-shape-preserving hypothesis before using \(\Xi_1=P_1/P_0\).
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 43
+  role: notes_stage
+  excerpt: \Xi_{\rm load}^{(A)}=\epsilon\,\lambda_A\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 49
+  role: notes_stage
+  excerpt: \Xi_1
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 62
+  role: notes_stage
+  excerpt: '- but to one weighted scalar combination \(\Xi_1\).'
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 67
+  role: notes_stage
+  excerpt: \Xi_1=\frac{P_1}{P_0}.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 75
+  role: notes_stage
+  excerpt: '> compute the single weak-axisymmetric amplitude \(\Xi_1\), or equivalently \(P_1/P_0\), from the microscopic
+    moving-throat branch.'
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 189
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 191
+  role: notes_stage
+  excerpt: \Xi_1:=\sum_r \rho_r^{(N)}\sigma_r.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 197
+  role: notes_stage
+  excerpt: \Xi_1
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 212
+  role: notes_stage
+  excerpt: \Xi_{\rm load}^{(20)}=\epsilon\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 214
+  role: notes_stage
+  excerpt: \Xi_{\rm load}^{(21)}=\frac{\epsilon}{2}\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 216
+  role: notes_stage
+  excerpt: \Xi_{\rm load}^{(22)}=-\epsilon\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 237
+  role: notes_stage
+  excerpt: a_\Xi=\frac{\epsilon}{4}\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 239
+  role: notes_stage
+  excerpt: b_\Xi=\frac{3\epsilon}{4}\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 262
+  role: notes_stage
+  excerpt: \frac{P_1}{P_0}=\Xi_1.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 269
+  role: notes_stage
+  excerpt: '> the remaining weak-axisymmetric grouped `2.5`PN defect is exactly the logarithmic slope of the outgoing prefactor,
+    and its microscopic content is the weighted port combination \(\Xi_1\) above.'
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 288
+  role: notes_stage
+  excerpt: \Delta_Q^{(20)}=\epsilon\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 290
+  role: notes_stage
+  excerpt: \Delta_Q^{(21)}=\frac{\epsilon}{2}\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 292
+  role: notes_stage
+  excerpt: \Delta_Q^{(22)}=-\epsilon\,\Xi_1,
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 298
+  role: notes_stage
+  excerpt: \Xi_1=\frac{P_1}{P_0}
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 325
+  role: notes_stage
+  excerpt: \Xi_1=2\sum_r \rho_r^{(N)}\,\mathfrak m_r.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 341
+  role: notes_stage
+  excerpt: \Xi_1\approx
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 350
+  role: notes_stage
+  excerpt: \Xi_1\approx 2\,\mathfrak m_{r_*}.
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 376
+  role: notes_stage
+  excerpt: 3. the full remaining grouped defect collapses to one weighted scalar \(\Xi_1\),
+- path: notes/stages/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage.md
+  line: 389
+  role: notes_stage
+  excerpt: '> \Xi_1=\frac{P_1}{P_0}'
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. Exact grouped trace/anomaly law for Xi_A = eps lambda_A Xi_1.
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: Xi1, epsilon = sp.symbols("Xi1 epsilon", real=True)
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: Xi20 = epsilon * lam20 * Xi1
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: Xi21 = epsilon * lam21 * Xi1
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: Xi22 = epsilon * lam22 * Xi1
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: expect_zero("a_Xi - eps Xi1/4", a_Xi - epsilon * Xi1 / 4)
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: expect_zero("b_Xi - 3 eps Xi1/4", b_Xi - 3 * epsilon * Xi1 / 4)
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: print("  Xi_A = eps lambda_A Xi1  =>  abar=0, a=eps Xi1/4, b=3 eps Xi1/4")
+- path: scripts/moving_throat_pde_stage177_weak_axisymmetric_outgoing_slippage_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: print("  On the conservative-shape-preserving branch, Xi1 = P1/P0.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

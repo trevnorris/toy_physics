@@ -1,0 +1,69 @@
+schema_version: 1
+candidate_id: fit_stage_211_c_cross
+parameter_name: C_cross
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_211_c_cross__phase_b__c_cross.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '211'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_211.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation forms the two stationary numerator equations, eliminates square roots
+    through quartic cross-consistency and sextic square conditions, constructs a finite algebraic candidate set, and compares
+    interior brackets against optimized pairwise boundaries.}
+- path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 230
+  role: notes_stage
+  excerpt: '### 3.1 Exact quartic cross-consistency polynomial'
+- path: notes/stages/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 232
+  role: notes_stage
+  excerpt: Multiply the stationary numerators crosswise to remove the square root.
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: Ccross = sp.expand(Ms * Lr - Mr * Ls)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("C_cross(r,s) =")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: sp.pprint(Ccross)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: expect_zero("cross-elimination identity", Ms * Nr - Mr * Ns - Ccross)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: poly_C = sp.Poly(Ccross, r, s)
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: print(f"deg C_cross = {poly_C.total_degree()}")
+- path: scripts/moving_throat_pde_stage211_full_interior_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: raise AssertionError("C_cross is not quartic")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

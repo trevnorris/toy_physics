@@ -1,0 +1,198 @@
+schema_version: 1
+candidate_id: fit_stage_227_m_transfer
+parameter_name: M_transfer
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_227_m_transfer__phase_b__m_transfer.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '227'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_227.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 227]{Stage 227: Pure-transfer load factor and co-loading no-go}'
+- path: paper/stages/stage_227.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~227 factors the pure-transfer survivor into the one-port load factor and proves the
+    first co-loading no-go.}
+- path: paper/stages/stage_227.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_227.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Pure-transfer theorem: $\Xi_1=2\delta\ln(P/\Delta)$.  If the outgoing transfer shape is rigid
+    while interference and hybridization ratios are also rigid, then nontrivial co-loading is impossible.}'
+- path: paper/stages/stage_227.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check whether the row is algebraic, numerical placement, or open branch-realization before transferring it
+    to another paper.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 227: Pure-Transfer Load Factor, Outgoing-Rigidity Sieve, and the First Co-Loading
+    No-Go'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat one-port weak-axisymmetric logarithmic-slope closure built on the Stage-223
+    compatibility branch and the Stage-226 pure-transfer subcorridor.**'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 36
+  role: notes_stage
+  excerpt: 1. the exact pure-transfer theorem
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: 3. the exact pure-transfer identity
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 64
+  role: notes_stage
+  excerpt: \text{only the trivial pure-transfer drift survives;}
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: '> does some pure-transfer effect survive?'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 114
+  role: notes_stage
+  excerpt: '### 1.2 Stage-226 pure-transfer corridor'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: '## 2. Exact pure-transfer load theorem'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: Because the pure-transfer corridor has
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 239
+  role: notes_stage
+  excerpt: Then on the Stage-226 pure-transfer corridor,
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 272
+  role: notes_stage
+  excerpt: on the pure-transfer corridor.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 290
+  role: notes_stage
+  excerpt: 'are imposed on the pure-transfer corridor, the exact reduced `2 x 2` rigidity matrix on the Stage-226 basis has
+    nonzero determinant:'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 292
+  role: notes_stage
+  excerpt: \det[(i,h)|_{\rm pure\ transfer}]
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 312
+  role: notes_stage
+  excerpt: '> if both the interference ratio and the hybridization ratio are frozen, the pure-transfer same-charge mechanism
+    dies on this concrete branch.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: So the pure-transfer corridor is not synonymous with a raw mixed-leg effect.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 387
+  role: notes_stage
+  excerpt: '### 6.1 Reference pure-transfer corridor'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 389
+  role: notes_stage
+  excerpt: \sigma_{\rm transfer}\approx 2.31561904.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 446
+  role: notes_stage
+  excerpt: '> the strict even-gate survivor is a pure-transfer mixed corridor.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 464
+  role: notes_stage
+  excerpt: '> the idea survives Stage 227, but only as a very structured outgoing co-loading effect. Pure transfer is real,
+    but it is not generically “just the mixed leg.” And the first exact no-go now says that simultaneous interference and
+    hybridization rigidity kills the mechanism on this concrete branch.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 474
+  role: notes_stage
+  excerpt: '- the exact Stage-226 pure-transfer corridor on the explicit finite-throat compatibility branch;'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 475
+  role: notes_stage
+  excerpt: '- the exact pure-transfer theorem'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 491
+  role: notes_stage
+  excerpt: '- the nonzero pure-transfer rigidity determinant for the combined `i=h=0` filter;'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 494
+  role: notes_stage
+  excerpt: '- and the transported stricter `10%`-loss dynamic ceilings on the reference pure-transfer corridor and on each
+    rigid survivor.'
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 497
+  role: notes_stage
+  excerpt: '- `moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py`'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: 'print("=== Stage 227 SymPy audit: pure-transfer load factor and outgoing-rigidity sieve ===")'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: '# 2. Pure-transfer corridor from Stage 226'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: M_transfer = sp.Matrix([
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: assert M_transfer.rank() == 3
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: transfer_null = M_transfer.nullspace()
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: assert len(transfer_null) == 2
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: T = sp.Matrix.hstack(*transfer_null)
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: 'for basis_vec, exp_basis in zip(transfer_null, expected_t):'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print("\nVerified Stage 226 pure-transfer corridor basis:")
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 163
+  role: sympy_script
+  excerpt: 'for idx, basis_vec in enumerate(transfer_null, start=1):'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: '# 3. Exact pure-transfer theorem'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

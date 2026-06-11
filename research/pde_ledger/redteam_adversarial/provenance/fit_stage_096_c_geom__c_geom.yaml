@@ -1,0 +1,153 @@
+schema_version: 1
+candidate_id: fit_stage_096_c_geom
+parameter_name: c_geom
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_096_c_geom__phase_b__c_geom.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 096
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_096.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~096]{Stage~096: Actual Branch Verdict for the Geometry-Lane Check}'
+- path: paper/stages/stage_096.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~096 is a geometry-lane firewall ledger step.  Its audit target is the verification output
+    quoted below.}
+- path: paper/stages/stage_096.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier,
+    the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or
+    the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_096.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage096_geometry_lane_check_verdict_mathematica_audit.wl}.}'
+- path: paper/stages/stage_096.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_096.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: The natural isotropic branch is conservatively clean; only genuine symmetry breaking or a second dynamic \(l=2\)
+    geometry pole can reopen the issue.
+- path: paper/stages/stage_096.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 096: Actual Branch Verdict for the Geometry-Lane Check'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 7
+  role: notes_stage
+  excerpt: '> on the actual moving-throat branch, does the geometry lane stay dynamically inert through `O(omega^4)`?'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 12
+  role: notes_stage
+  excerpt: '- `scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py`'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 24
+  role: notes_stage
+  excerpt: '- and the 3PN result that the leftover scalar contribution is a **static** geometry completion rather than a second
+    dynamic quadrupole pole.'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 26
+  role: notes_stage
+  excerpt: On that branch, Stage 77 proves exactly that the scalar/geometry `l=0` lane and the grouped real `l=2` bundle are
+    block diagonal in the quadratic wall theory.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 27
+  role: notes_stage
+  excerpt: So the geometry lane cannot contribute dynamic `omega^2` or `omega^4` moments to the isotropic quadrupole module.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 43
+  role: notes_stage
+  excerpt: '`c_geom = 3/4`.'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 55
+  role: notes_stage
+  excerpt: So the geometry-lane check comes out **clean** on the actual isotropic branch.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 64
+  role: notes_stage
+  excerpt: What remains open is no longer whether the geometry lane contaminates the minimal isotropic quadrupole module.
+    It does not, on the current actual branch.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 70
+  role: notes_stage
+  excerpt: So the geometry-lane check is now finished at reduced level.
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: 'This checkpoint script re-establishes the geometry-lane verdict directly:'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: l=2 bundle, so the geometry contamination numbers vanish on that branch;
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: banner("STAGE 096 — GEOMETRY-LANE CHECK VERDICT")
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: '# the geometry contamination numbers.'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: c_geom = sp.simplify(1 - c_pole)
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: Yhat_cons = sp.simplify(c_geom + c_pole / (1 - omega**2 / Omega_Q**2))
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: rho_alpha = sp.simplify(1 / c_geom)
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify(c_pole / c_geom)
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: print("c_geom =", c_geom)
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: expect_zero("c_geom - 3/4", c_geom - sp.Rational(3, 4))
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: print("On the actual isotropic branch, the geometry lane stays dynamically inert:")
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: print("  c_geom = 3/4,")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

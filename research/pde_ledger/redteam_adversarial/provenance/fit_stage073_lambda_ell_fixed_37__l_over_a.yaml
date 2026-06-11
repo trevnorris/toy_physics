@@ -1,0 +1,61 @@
+schema_version: 1
+candidate_id: fit_stage073_Lambda_ell_fixed_37
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage073_lambda_ell_fixed_37__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '073'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 94
+  role: notes_stage
+  excerpt: So the first explicit throat-support branch is now pinned to one concrete large-`eta` Robin regime.
+origin_claims:
+- parameter: L_over_a
+  introduced_at_stage: 59
+  introduced_at_line: 54
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 54
+    excerpt: '`Lambda_* := L/a = 37/20.`'
+constraints:
+- parameter: L_over_a
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: low
+  summary: This candidate is named for Lambda_ell=37 but targets the underlying L_over_a=37/20. Lambda_ell=37 is internal_consistency
+    GIVEN the frozen ratios (37 = (L/a)/(ell/a) = (37/20)/(1/20)); but the load-bearing parameter L/a=37/20 is itself a posited
+    reference freeze (free_choice). The derived 37 inherits its status from the two posited geometry inputs (L/a, ell/a).
+    No external published-target evidence in notes.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 70
+    excerpt: '`Lambda_ell := L/ell = (L/a)/(ell/a) = (37/20)/(1/20) = 37.`'
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 74
+    excerpt: '`Lambda_ell = 37.`'
+downstream_dependents:
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage073_lambda_ell_fixed_37__l_over_a.yaml

@@ -1,0 +1,220 @@
+schema_version: 1
+candidate_id: fit_stage_195_chi_q
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_chi_q__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_195.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_195.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Factorizes the observable odd closure as \(\widehat m_0^{2}\chi_QN_Q=1\) and collapses \(\Delta_{\rm
+    norm}\).}
+- path: paper/stages/stage_195.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: paper/stages/stage_195.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 195: Exact Source-Map Reduction of the Canonical Outgoing Branch, the Factorization
+    `m_{\hat 0}^{\,2}\chi_Q N_Q=1`, and the Collapse of `\Delta_{\rm norm}`'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+    `P2` conservative surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and deformation algebra, and the reduced
+    natural point-particle source-map branch already isolated by the 2.5PN package.**'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 8
+  role: notes_stage
+  excerpt: It upgrades Stage 194 from the canonical outgoing DtN fixing `\chi_Q=1` to the exact **source-map reduction** of
+    the last isotropic retarded normalization defect.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 20
+  role: notes_stage
+  excerpt: and Stage 194 then inserted the exact compact passive/outgoing spherical `l=2` DtN branch and fixed the canonical
+    outgoing scalar
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 22
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 38
+  role: notes_stage
+  excerpt: '> once the isotropic grouped-real `P2` branch is already conservative one-pole and the outgoing `l=2` fingerprint
+    has fixed `\chi_Q`, how does the last observable normalization condition factor through the source map?'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 46
+  role: notes_stage
+  excerpt: \frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 50
+  role: notes_stage
+  excerpt: \boxed{m_{\hat 0}^{\,2}\chi_Q N_Q=1,}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 57
+  role: notes_stage
+  excerpt: N_Q=\frac{1}{\chi_Q}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 80
+  role: notes_stage
+  excerpt: \frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\sigma_Q^{\rm can}\omega^5}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 97
+  role: notes_stage
+  excerpt: \boxed{\bar\Gamma_5=\chi_Q\frac{9\bar P_0}{32\Omega_Q^5}=\chi_Q\frac{a^5\bar P_0}{27c_s^5}.}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 115
+  role: notes_stage
+  excerpt: \frac{\bar\Gamma_5}{\bar\Gamma_5^{\rm target}}=\chi_Q N_Q,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 124
+  role: notes_stage
+  excerpt: So Stage 194's outgoing scalar `\chi_Q` multiplies the same isotropic conservative normalization ratio `N_Q` that
+    already carries the even packet.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 139
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}\chi_Q N_Q=1.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 145
+  role: notes_stage
+  excerpt: N_Q=\frac{1}{m_{\hat 0}^{\,2}\chi_Q},
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 147
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}N_Q=\frac{1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 170
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}N_Q=\frac{1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 177
+  role: notes_stage
+  excerpt: P_0^{\rm target}\left(\frac{1}{\chi_Q}-1\right).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 185
+  role: notes_stage
+  excerpt: \boxed{\Delta_Q:=\chi_Q-1.}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 215
+  role: notes_stage
+  excerpt: N_Q=\frac{1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 223
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 232
+  role: notes_stage
+  excerpt: \frac{1}{\chi_Q}-1
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 234
+  role: notes_stage
+  excerpt: -\frac{\chi_Q-1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 239
+  role: notes_stage
+  excerpt: N_Q-1=-(\chi_Q-1)+O\!\big((\chi_Q-1)^2\big).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 264
+  role: notes_stage
+  excerpt: \chi_Q=
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 273
+  role: notes_stage
+  excerpt: N_Q=\frac{1}{\chi_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 283
+  role: notes_stage
+  excerpt: So the source-map-reduced conservative normalization ratio is already an explicit function of the same isotropic
+    DtN deformation data that control `\chi_Q`.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 370
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 388
+  role: notes_stage
+  excerpt: So once the canonical outgoing DtN fingerprint of Stage 194 is carried through the exact source-map reduction,
+    the Packet-A normalization residual of Stage 191 closes automatically.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 394
+  role: notes_stage
+  excerpt: '- through Stage 194''s fixing `\chi_Q=1`,'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 401
+  role: notes_stage
+  excerpt: Stage 194 left the hierarchy with one exact outgoing scalar `\chi_Q`, but the observable point-particle branch
+    still carried the source-map factor `m_{\hat 0}`.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 408
+  role: notes_stage
+  excerpt: m_{\hat 0}^{\,2}\chi_Q N_Q=1.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 416
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 424
+  role: notes_stage
+  excerpt: N_Q=\chi_Q^{-1}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 427
+  role: notes_stage
+  excerpt: It is purely the outgoing scalar `\chi_Q-1`.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 447
+  role: notes_stage
+  excerpt: 1. keep the Stage 194 exact outgoing `l=2` fingerprint,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

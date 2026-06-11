@@ -1,0 +1,64 @@
+schema_version: 1
+candidate_id: fit_stage_073_t_x
+parameter_name: T_X
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_073_t_x__phase_b__t_x.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '073'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 84
+  role: notes_stage
+  excerpt: '`K_m = T_X / ell.`'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 88
+  role: notes_stage
+  excerpt: '`eta := K_m L / T_X = L/ell = Lambda_ell.`'
+origin_claims:
+- parameter: T_X
+  introduced_at_stage: 56
+  introduced_at_line: 53
+  citation:
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 53
+    excerpt: '`T_X = (hbar^2 / (4 m rho_w)) N_(phi phi),`'
+constraints:
+- parameter: T_X
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 17
+    excerpt: '- the axial support tension is fixed by the GNLS gradient term,'
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: T_X is the derived parent-shell support tension first defined at stage 070; stage 073 does not redefine or numerically
+    fix it — it appears only inside the carried K_m=T_X/ell closure (notes lines 84, 88). The candidate anchors to 073; the
+    origin and derivation are at 070.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 84
+    excerpt: '`K_m = T_X / ell.`'
+  - path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    line: 69
+    excerpt: '`T_X = pi a^2 ell hbar^2 / (3 m rho_w),`'
+downstream_dependents:
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_073_t_x__t_x.yaml

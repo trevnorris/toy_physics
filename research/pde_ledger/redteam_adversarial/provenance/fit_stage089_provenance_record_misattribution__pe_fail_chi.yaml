@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage089_provenance_record_misattribution
+parameter_name: Pe_fail_chi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage089_provenance_record_misattribution__phase_b__pe_fail_chi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 089
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  line: 30
+  role: notes_stage
+  excerpt: '`rho_suff^(chi) ≈ 3.46622291347846,`'
+- path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  line: 32
+  role: notes_stage
+  excerpt: '`rho_fail^(chi) ≈ 3.46752913273870,`'
+- path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  line: 42
+  role: notes_stage
+  excerpt: '`Delta_suff := rho_suff^(chi) - 4/3`'
+- path: notes/stages/moving_throat_pde_stage089_family1_minimal_isotropic_verdict.md
+  line: 45
+  role: notes_stage
+  excerpt: '`Delta_fail := rho_fail^(chi) - 4/3`'
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '# CARRY-FORWARD: Pe_suff_chi and Pe_fail_chi are the loading-ratio Pe values'
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: '# that produce the upstream rho_suff^(chi) and rho_fail^(chi) thresholds.'
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: Pe_suff_chi = sp.Float("96.5285247264386")
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: Pe_fail_chi = sp.Float("11220.5441626259")
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: zeta_suff = sp.simplify(zeta_F1.subs(Pe, Pe_suff_chi))
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: zeta_fail = sp.simplify(zeta_F1.subs(Pe, Pe_fail_chi))
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: rho_fail = sp.simplify(Q.subs(zeta, zeta_fail))
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: expect_close("rho_fail vs Stage-082 quote", rho_fail, sp.Float("3.46752913273870", 30), sp.Float("1e-12", 30))
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: Delta_fail = sp.N(rho_fail - rho_min, 25)
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: print("rho_fail  =", sp.N(rho_fail, 25))
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("Delta_fail =", Delta_fail)
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: 'if not (rho_min < rho_suff < rho_fail < rho_max):'
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: raise AssertionError("Family-1 loading-ratio ordering failed.")
+- path: scripts/moving_throat_pde_stage089_family1_minimal_isotropic_verdict_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: '# success margin below is the can-fail assertion establishing the boxed Output'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

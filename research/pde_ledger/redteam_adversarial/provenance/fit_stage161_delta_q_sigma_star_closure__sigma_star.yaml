@@ -1,0 +1,147 @@
+schema_version: 1
+candidate_id: fit_stage161_delta_q_sigma_star_closure
+parameter_name: sigma_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_delta_q_sigma_star_closure__phase_b__sigma_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '161'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_161.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Last defect is \(\Delta_Q=-\sigma_*\Xi_{\rm slip}\delta\Pi_{\rm tan}/(1-\sigma_*)\), with \(\Xi_{\rm slip}=\Xi_\gamma-2\Xi_L\).
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 291
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{(1-\sigma_*)(1+r_{c,*})}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 296
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{(1-\sigma_*)(1+r_{c,*})}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 306
+  role: notes_stage
+  excerpt: \frac{\sigma_*}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 315
+  role: notes_stage
+  excerpt: \frac{\sigma_*}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 325
+  role: notes_stage
+  excerpt: 1. the hybrid branch weight `\sigma_*`,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 333
+  role: notes_stage
+  excerpt: 0.832409471081635\,\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 343
+  role: notes_stage
+  excerpt: \frac{\sigma_*\Xi_{\rm slip}}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 345
+  role: notes_stage
+  excerpt: 0.832409471081635\,\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 355
+  role: notes_stage
+  excerpt: \frac{\sigma_*\Xi_{\rm slip}}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 357
+  role: notes_stage
+  excerpt: 0.832409471081635\,\delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 366
+  role: notes_stage
+  excerpt: \delta\Sigma_0
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 376
+  role: notes_stage
+  excerpt: \frac{\sigma_*\Xi_{\rm slip}}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 388
+  role: notes_stage
+  excerpt: \frac{\sigma_*\Xi_{\rm slip}}{1-\sigma_*}
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 485
+  role: notes_stage
+  excerpt: -\frac{\sigma_*}{1-\sigma_*}
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: rc_star, drc, deps_k, deps_g = sp.symbols("r_c_star dr_c d_eps_k d_eps_g", real=True)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: 'BW_pert = BW.subs({eps_kappa: eps * deps_k, eps_gamma: eps * deps_g, rc: rc_star + eps * drc})'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("linearized slippage law", dBW - (1 + rc_star) * (deps_g - deps_k) / 9)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: Xi_gamma, Xi_L, sigma_star = sp.symbols("Xi_gamma Xi_L sigma_*", real=True)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: dPi_tan, dSigma0, dS, dThat = sp.symbols("dPi_tan dSigma0 dS dThat", real=True)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: UpsilonPi = sp.simplify((1 + rc_star) * (Xi_gamma - 2 * Xi_L) / 9)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: DeltaQ = sp.simplify(-9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: NQm1 = sp.simplify(9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: DeltaQ + sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: NQm1 - sigma_star * (Xi_gamma - 2 * Xi_L) * dPi_tan / (1 - sigma_star),
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: dPi_tan_expr = sp.Float("0.832409471081635") * dSigma0 - sp.Float("1.16275838754222") * dS
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: print("Delta_Q in (dSigma0,dS) =", DeltaQ_mouth)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: '# Use dSigma0 ≈ 6.42981496203006 dThat.'
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: DeltaQ_T = sp.expand(DeltaQ_mouth.subs(dSigma0, sp.Float("6.42981496203006") * dThat))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("5) Delta_Q = -(sigma_*/(1-sigma_*)) (Xi_gamma - 2 Xi_L) dPi_tan")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

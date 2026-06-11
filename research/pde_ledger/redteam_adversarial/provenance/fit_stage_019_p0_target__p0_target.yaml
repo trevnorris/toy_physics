@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_019_p0_target
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_019_p0_target__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 019
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_019.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: It rewrites the isotropic one-pole and outgoing-normalization targets in
+- path: paper/stages/stage_019.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: K_\Sigma=B_0+Z_0+\frac{N_0}{P_{0,\rm target}},
+- path: paper/stages/stage_019.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: P_{0,\rm target}=\frac{54Gc_s^5}{5a^5c^5\widehat m_0^{\,2}}.
+- path: paper/stages/stage_019.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \frac{N_0}{P_{0,\rm target}}
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: (KSigma, MSigma) to the isotropic grouped-P2 bundle moments and target surface.
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: P0_target = sp.Rational(54) * G * cs**5 / (sp.Rational(5) * a**5 * c**5 * mhat0**2)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: K_from_norm = sp.simplify(sp.solve(sp.Eq(P0, P0_target), KSigma)[0])
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: assert_zero('K from normalization closed form', K_from_norm - (B0 + Z0 + N0/P0_target))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert_zero('compatibility equation', compatibility - (3*(MSigma + B2 + Z2)**2/(B4 + Z4) - N0/P0_target))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: lines.append(f'P0_target = {P0_target}')
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

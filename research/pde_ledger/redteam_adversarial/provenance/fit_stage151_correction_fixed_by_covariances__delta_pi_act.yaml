@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage151_correction_fixed_by_covariances
+parameter_name: delta_Pi_act
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage151_correction_fixed_by_covariances__phase_b__delta_pi_act.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '151'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_151.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{}.}
+- path: paper/stages/stage_151.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the regular canonical mouth branch, positive deformations of the source
+    profile, the first-order rigidity kernel, and the full mouth potential.  It does not change the parent action or the grouped-lane
+    ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_151.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Actual selected deformation is the centered residual \(R_*\); correction is fixed by two covariances.
+- path: paper/stages/stage_151.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages 154--163 and the linearized defect transport.  When cited downstream,
+    the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional actual-branch
+    theorem.}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 5
+  role: notes_stage
+  excerpt: Project the exact full-profile mouth residual \(R_*(x)\) onto the previously derived
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 8
+  role: notes_stage
+  excerpt: This produces the **actual** first-order non-exponential correction selected by the
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 15
+  role: notes_stage
+  excerpt: The exact self-consistent positive mouth source is
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 29
+  role: notes_stage
+  excerpt: \Sigma_{\rm act}(x)
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 42
+  role: notes_stage
+  excerpt: 'So the actual selected deformation is not free:'
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 43
+  role: notes_stage
+  excerpt: it is exactly the centered residual of the full mouth potential.
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 56
+  role: notes_stage
+  excerpt: Then the actual first-order shifts are
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 59
+  role: notes_stage
+  excerpt: \delta \mathfrak g_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 61
+  role: notes_stage
+  excerpt: \int_0^1 c(x)\,\delta\Sigma_*(x)\,dx
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 68
+  role: notes_stage
+  excerpt: \delta \mathcal S_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 70
+  role: notes_stage
+  excerpt: \int_0^1 K_q(x)\,\delta\Sigma_*(x)\,dx
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 96
+  role: notes_stage
+  excerpt: \delta\Pi_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 98
+  role: notes_stage
+  excerpt: -\frac{\delta\mathfrak g_{\rm act}}{\mathfrak g_*'}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 104
+  role: notes_stage
+  excerpt: The normalized mouth traction shift is
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 107
+  role: notes_stage
+  excerpt: \delta \widehat T_{m,{\rm act}}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 109
+  role: notes_stage
+  excerpt: A_T\,\delta\mathfrak g_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 111
+  role: notes_stage
+  excerpt: B_T\,\delta\mathcal S_{\rm act}
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 119
+  role: notes_stage
+  excerpt: it is the projection of the exact residual \(R_*(x)\) against the same rigidity
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 126
+  role: notes_stage
+  excerpt: 'The mouth-side ambiguity is now reduced to one actual physical object:'
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 135
+  role: notes_stage
+  excerpt: bias retuning, and traction retuning follow automatically.
+- path: notes/stages/moving_throat_pde_stage151_first_order_selected_correction.md
+  line: 138
+  role: notes_stage
+  excerpt: 'It is simply: what are the actual numerical covariances of \(R_*(x)\) on the'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 'The SymPy engine is an exact multi-point cross-check: it verifies M1-M7 exactly'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: '# intentional EXACT, MULTI-POINT cross-check at concrete rational Pi_star values'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'for factor in expr.args:'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: expanded = _expand_linear_exponentials(factor)
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: factor_terms = expanded.args if expanded.is_Add else (expanded,)
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: terms = [term * factor_term for term in terms for factor_term in factor_terms]
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: 'for exp_factor in list(dependent.atoms(sp.exp)):'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: exponent = exp_factor.args[0]
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: dependent = dependent / exp_factor
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: 'def _exact_unit_integrate(expr, *args, **kwargs):'
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: sp.integrate = _exact_unit_integrate
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: delta_Sigma = sp.simplify(ser.coeff(eps, 1))
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: f"[Pi={Pi_star}] M1 delta_Sigma + Sigma_star*(R - <R>)",
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: delta_Sigma + Sigma_star * (pert - Rbar),
+- path: scripts/moving_throat_pde_stage151_first_order_selected_correction_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: f"[Pi={Pi_star}] M3 int delta_Sigma dx",
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_204_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_204_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '204'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 152
+  role: notes_stage
+  excerpt: \mathbf y(\tau_0+\Delta\tau)
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 154
+  role: notes_stage
+  excerpt: \mathbf y(\tau_0)\odot e^{\Delta\tau\mathbf s_{\tau_0}}+O(\Delta\tau^2).
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 167
+  role: notes_stage
+  excerpt: \mathfrak a_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 173
+  role: notes_stage
+  excerpt: \sigma_\delta(
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 181
+  role: notes_stage
+  excerpt: \sigma_T(\mathbf s):=s_U+\sigma_\delta(\mathbf s),
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 192
+  role: notes_stage
+  excerpt: +F_*\sigma_\delta(\mathbf s).
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 198
+  role: notes_stage
+  excerpt: \delta_{U,*}^{\rm graph}(\tau)
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 200
+  role: notes_stage
+  excerpt: \delta_{U,*}^{\rm graph}(0)
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 201
+  role: notes_stage
+  excerpt: \,e^{\sigma_\delta\tau},
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 249
+  role: notes_stage
+  excerpt: \dot{\Delta\mathbf x}_{\mathbf s}^{\rm graph}
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 302
+  role: notes_stage
+  excerpt: M_*\dot{\Delta\mathbf x}_{\mathbf s}^{\rm graph}=0.
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 322
+  role: notes_stage
+  excerpt: \sigma_\delta\sim \delta_{U,*}^{\rm graph},
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 332
+  role: notes_stage
+  excerpt: '| Primitive ray | `\(\sigma_\delta\)` | `\(\sigma_T\)` | `\(\sigma_{K_\eta}\)` | `\(\sigma_\mu\)` |'
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 343
+  role: notes_stage
+  excerpt: \(\delta_{U,*}^{\rm graph}\), \(T_U^{\rm graph}\), or
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 345
+  role: notes_stage
+  excerpt: 2. The direct tracking quantity `\(\delta_{U,*}^{\rm graph}\)` is controlled only by the combination
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 365
+  role: notes_stage
+  excerpt: \Delta_{\mathbf s}(\tau):=\Phi_{\mathbf s}(\tau)-1.
+- path: notes/stages/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor.md
+  line: 373
+  role: notes_stage
+  excerpt: \Delta_{\mathbf s}(\tau)=0.
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: aStar = sp.simplify((1 + deltaUs) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: sigma_delta = sp.simplify(-aStar * (sgam + sc - sU))
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: sigma_T = sp.simplify(sU + sigma_delta)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: + Fstar * sigma_delta
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: delta_graph_0 = sp.simplify(
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: (CtrT / ((gam0 * c0 / KU0) ** (1 + deltaUs))) ** (sp.Rational(1, 1) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: delta_graph_tau_direct = sp.simplify(
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: (CtrT / ((gam_tau * c_tau / KU_tau) ** (1 + deltaUs))) ** (sp.Rational(1, 1) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: delta_graph_tau_exp = sp.simplify(delta_graph_0 * sp.exp(sigma_delta * tau))
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: print("delta_U^graph(0) =")
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: sp.pprint(delta_graph_0)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: print("sigma_delta =")
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: sp.pprint(sigma_delta)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: print("delta_U^graph(tau) [direct] =")
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: sp.pprint(delta_graph_tau_direct)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: print("delta_U^graph(tau) [exp form] =")
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: sp.pprint(delta_graph_tau_exp)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: expect_zero("delta_U^graph direct - exp form", delta_graph_tau_direct - delta_graph_tau_exp)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: T_graph_0 = sp.simplify(Lgeom**2 * KU0 * delta_graph_0 / sp.pi**2)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: T_graph_tau_direct = sp.simplify(Lgeom**2 * KU_tau * delta_graph_tau_direct / sp.pi**2)
+- path: scripts/moving_throat_pde_stage204_explicit_log_ray_sweep_and_scalar_root_predictor_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: '* delta_graph_0**Fstar'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

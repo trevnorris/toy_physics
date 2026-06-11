@@ -1,0 +1,64 @@
+schema_version: 1
+candidate_id: fit_stage_073_k_m
+parameter_name: K_m
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_073_k_m__phase_b__k_m.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '073'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 84
+  role: notes_stage
+  excerpt: '`K_m = T_X / ell.`'
+- path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+  line: 88
+  role: notes_stage
+  excerpt: '`eta := K_m L / T_X = L/ell = Lambda_ell.`'
+origin_claims:
+- parameter: K_m
+  introduced_at_stage: 57
+  introduced_at_line: 93
+  citation:
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    line: 93
+    excerpt: '`K_m = T_X / ell.`'
+constraints:
+- parameter: K_m
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md
+    line: 95
+    excerpt: This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with
+      the same wall-shell support scale.
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: stale_provenance_anchor
+  severity: low
+  summary: K_m = T_X/ell is introduced at stage 071 as a posited natural Robin closure; stage 073 only carries it (notes line
+    84) to compute eta. The candidate anchors to 073; the origin and the free_choice classification both live at stage 071.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 82
+    excerpt: Stage 071 adopted the first natural local mouth closure
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 84
+    excerpt: '`K_m = T_X / ell.`'
+downstream_dependents:
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_073_k_m__k_m.yaml

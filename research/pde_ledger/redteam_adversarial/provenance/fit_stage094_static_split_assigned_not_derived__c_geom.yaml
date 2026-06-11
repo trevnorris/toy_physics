@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage094_static_split_assigned_not_derived
+parameter_name: c_geom
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage094_static_split_assigned_not_derived__phase_b__c_geom.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 094
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_094.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~094]{Stage~094: Isotropic Geometry-Decoupling Theorem}'
+- path: paper/stages/stage_094.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~094 is a geometry-lane firewall ledger step.  Its audit target is the verification output
+    quoted below.}
+- path: paper/stages/stage_094.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the Part III minimal isotropic module, the grouped real \(P_2\) carrier,
+    the static/dynamic geometry split, and the branch identity \(K_0K_4=4K_2^2\).  It does not change the parent action or
+    the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_094.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage094_isotropic_geometry_decoupling_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage094_isotropic_geometry_decoupling_mathematica_audit.txt}.}'
+- path: paper/stages/stage_094.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_094.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Orthogonality of \(l=0\) geometry and grouped \(l=2\) wall modes gives \(K_{g,2}=K_{g,4}=0\) on the isotropic branch.
+- path: paper/stages/stage_094.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check \(l=0\) and \(l=2\) orthogonality before applying the geometry firewall.
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 094: Isotropic Geometry-Decoupling Theorem'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 75 showed that the only remaining reduced obstruction to the `3/4 + 1/4` conservative quadrupole module is
+    dynamic contamination from the geometry lane through the two numbers
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 13
+  role: notes_stage
+  excerpt: '> on the actual **isotropic** moving-throat branch, can the geometry lane contribute nonzero `omega^2` or `omega^4`
+    moments to the grouped real `P2` conservative module at linear order?'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 19
+  role: notes_stage
+  excerpt: '- on an isotropic reference throat, the scalar/geometry `l=0` lane and the grouped real `l=2` lanes are exactly
+    orthogonal in the quadratic wall theory,'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 20
+  role: notes_stage
+  excerpt: '- therefore the dynamic `l=0` geometry lane cannot contribute to the grouped real `P2` conservative module at
+    linear order,'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 21
+  role: notes_stage
+  excerpt: '- and the only geometry contribution allowed on that branch is the already-identified **static** completion.'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 39
+  role: notes_stage
+  excerpt: From the distributed wall lift, the quadratic geometry action is
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 87
+  role: notes_stage
+  excerpt: That means the scalar/geometry lane can renormalize only the scalar sector, while the grouped real `P2` channels
+    evolve independently through their own isotropic quadrupole operator.
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 95
+  role: notes_stage
+  excerpt: 'Now interpret the 3PN static geometry completion exactly the way the 3PN result says it should be interpreted:'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 98
+  role: notes_stage
+  excerpt: '- the leftover geometry completion is a scalar/pair-side static remainder.'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 100
+  role: notes_stage
+  excerpt: Because the isotropic quadratic wall theory has no `l=0 <-> l=2` bilinear mixing, the scalar geometry lane cannot
+    feed any dynamic even moments into the isotropic grouped-`P2` conservative quadrupole module.
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 122
+  role: notes_stage
+  excerpt: '`c_geom = 3/4`.'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 132
+  role: notes_stage
+  excerpt: 'Nonzero geometry contamination at `O(omega^2)` or `O(omega^4)` requires at least one of the following:'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 135
+  role: notes_stage
+  excerpt: 2. **a genuine second dynamic `l=2` geometry pole** independent of the grouped-`P2` pole already being used as
+    the quadrupole carrier,
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 142
+  role: notes_stage
+  excerpt: '> on the isotropic linear moving-throat branch, the geometry lane is dynamically inert through `O(omega^4)` with
+    respect to the grouped real `P2` conservative quadrupole module.'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 151
+  role: notes_stage
+  excerpt: '- the scalar/geometry lane is `l=0`,'
+- path: notes/stages/moving_throat_pde_stage094_isotropic_geometry_decoupling.md
+  line: 153
+  role: notes_stage
+  excerpt: '- so the geometry lane contributes only the already-known static completion and no dynamic `omega^2` or `omega^4`
+    contamination.'
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: c_geom = sp.Rational(3, 4)
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: assert c_geom == sp.Rational(3, 4)
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: assert c_pole + c_geom == 1
+- path: scripts/moving_throat_pde_stage094_isotropic_geometry_decoupling_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print('eps_2 =', eps_2, '; eps_4 =', eps_4, '; c_pole =', c_pole, '; c_geom =', c_geom)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

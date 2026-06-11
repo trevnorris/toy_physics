@@ -1,0 +1,169 @@
+schema_version: 1
+candidate_id: fit_stage077_Theta_w_chi_derived_directly
+parameter_name: Theta_w
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage077_theta_w_chi_derived_directly__phase_b__theta_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '077'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_077.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 077]{Stage 077: Shell-Weighted Extraction of \texorpdfstring{$\Theta_w$}{Theta w} on Family--1}'
+- path: paper/stages/stage_077.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage077_family1_theta_extraction_mathematica_audit.txt}.}'
+- path: paper/stages/stage_077.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: Using \eqref{eq:app-stage076-theta}, the natural shell-weighted datum is
+- path: paper/stages/stage_077.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage077-theta-chi}
+- path: paper/stages/stage_077.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \Theta_w^{(\chi)}=25\lambda_\mu^2\langle\rho_r^2\rangle_\chi
+- path: paper/stages/stage_077.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage077-theta-J}
+- path: paper/stages/stage_077.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \Theta_w^{(J)}=25\lambda_\mu^2\langle\rho_r\rangle_\chi^2
+- path: paper/stages/stage_077.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Natural and conservative Family--1 wall-depth data \eqref{eq:app-stage077-theta-chi}--\eqref{eq:app-stage077-theta-J}.}
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 077: Shell-Weighted Extraction of `Theta_w` on the Explicit Family-1 Wall'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 7
+  role: notes_stage
+  excerpt: '`Theta_w = 25 lambda_mu^2 rho_w^2`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 71
+  role: notes_stage
+  excerpt: '`Theta(xi) = 25 lambda_mu^2 rho_r(xi)^2.`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 73
+  role: notes_stage
+  excerpt: So the natural effective branch datum is the support-weighted average of `Theta`, not `Theta` evaluated on a point
+    and not `Theta` built from the averaged density after the square is taken.
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 77
+  role: notes_stage
+  excerpt: '`Theta_w^(chi) = 25 lambda_mu^2 < rho_r^2 >_chi.`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 93
+  role: notes_stage
+  excerpt: '`Theta_w^(chi) = 25 lambda_mu^2 <rho_r^2>_chi`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 96
+  role: notes_stage
+  excerpt: This is the first concrete branch value of `Theta_w` derived directly from an explicit wall-support profile rather
+    than left symbolic.
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 102
+  role: notes_stage
+  excerpt: 'For bookkeeping it is also useful to record the stricter Jensen-style lower-envelope obtained by averaging the
+    density first and squaring afterward:'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 104
+  role: notes_stage
+  excerpt: '`Theta_w^(J) := 25 lambda_mu^2 <rho_r>_chi^2`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 113
+  role: notes_stage
+  excerpt: '`Theta_w^(chi) >= Theta_w^(J).`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 115
+  role: notes_stage
+  excerpt: So `Theta_w^(J)` can be used as a very conservative branch floor, while `Theta_w^(chi)` is the natural quadratic-energy
+    matching value.
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 125
+  role: notes_stage
+  excerpt: '`Theta_w^(chi) ≈ 4.06863235008162 lambda_mu^2`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 129
+  role: notes_stage
+  excerpt: '`Theta_w^(J) ≈ 0.927552032539308 lambda_mu^2.`'
+- path: notes/stages/moving_throat_pde_stage077_family1_theta_extraction.md
+  line: 131
+  role: notes_stage
+  excerpt: So the final branch-level question is no longer “what is `Theta_w`?”
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Numerical effective wall-depth datum Theta_w^(chi) and conservative Jensen floor Theta_w^(J).
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: banner("STAGE 077 — SHELL-WEIGHTED THETA EXTRACTION")
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: Theta_chi = mp.mpf('25') * R2
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: Theta_J = mp.mpf('25') * (R1**2)
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("Theta_w^(chi) / lambda_mu^2 =", Theta_chi)
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("Theta_w^(J)   / lambda_mu^2 =", Theta_J)
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: '"Theta_w^(chi)",'
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Theta_chi,
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '"Theta_w^(J)",'
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: Theta_J,
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: 'if not (Theta_chi >= Theta_J > 0):'
+- path: scripts/moving_throat_pde_stage077_family1_theta_extraction_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: raise AssertionError("Expected Theta_w^(chi) >= Theta_w^(J) > 0")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,135 @@
+schema_version: 1
+candidate_id: fit_stage045_tracking_forced
+parameter_name: R_U
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage045_tracking_forced__phase_b__r_u.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '045'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_045.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The continuum support kernel and rank--2 branch variables \(R_U\), \(R_\phi\).}
+- path: paper/stages/stage_045.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: R_\phi=R_U=R_{\rm tr}}.
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 23
+  role: notes_stage
+  excerpt: '`R_tr = R_U = R_phi`.'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 101
+  role: notes_stage
+  excerpt: '`R_phi = R_U`.'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 125
+  role: notes_stage
+  excerpt: '`R_tr := R_U = R_phi`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 181
+  role: notes_stage
+  excerpt: '`lambda_0 M_mix M_supp (R_U - R_phi)^2.`'
+- path: notes/stages/moving_throat_pde_stage045_coherent_local_tracking.md
+  line: 185
+  role: notes_stage
+  excerpt: '`R_U - R_phi = 0,`'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: R_U, R_phi = sp.symbols("R_U R_phi", real=True)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: xi * (delta + xi) - Mmix * (delta + (1 + lam0 * R_U ** 2) * xi)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: delta + (1 + lam0 * R_phi ** 2) * xi - Mmix * lam0 * (R_U - R_phi) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: branch_track = sp.together(sp.simplify(branch_eq.subs(R_phi, R_U)))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: xi ** 2 + (delta - M_tr_sym * (1 + lam0 * R_U ** 2)) * xi - delta * M_tr_sym
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: M_tr_req - xi * (delta + xi) / (delta + (1 + lam0 * R_U ** 2) * xi),
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 168
+  role: sympy_script
+  excerpt: G_tr_expected = sp.simplify(9 * xi * (delta + xi) / (9 * delta + (9 + 2 * R_U ** 2) * xi))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: '# Import Stage-044 F_cont residual; substitute tracking (R_phi -> R_U)'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: (delta + xi - Mmix * lam0 * R_U * (R_U - R_phi)) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: + lam0 * (Mmix * (R_U - R_phi) + R_phi * xi) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 179
+  role: sympy_script
+  excerpt: (delta + (1 + lam0 * R_U * R_phi) * xi) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 180
+  role: sympy_script
+  excerpt: '* (delta + (1 + lam0 * R_phi) * xi - Mmix * lam0 * (R_U - R_phi) * (R_U - 1)) ** 2'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: F_track_stage044 = sp.simplify(F_cont_stage044.subs(R_phi, R_U))
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: (delta + (1 + lam0 * R_U ** 2) * xi) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: '* (delta + (1 + lam0 * R_U) * xi) ** 2'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 187
+  role: sympy_script
+  excerpt: / ((1 - xi) * ((delta + xi) ** 2 + lam0 * R_U ** 2 * xi ** 2) ** 2)
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 192
+  role: sympy_script
+  excerpt: F_cont_stage044.subs([(R_phi, R_U), (lam0, lam0_dn)])
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 195
+  role: sympy_script
+  excerpt: (9 * delta + (9 + 2 * R_U ** 2) * xi) ** 2
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: '* (9 * delta + (9 + 2 * R_U) * xi) ** 2'
+- path: scripts/moving_throat_pde_stage045_coherent_local_tracking_sympy_audit.py
+  line: 197
+  role: sympy_script
+  excerpt: / (81 * (1 - xi) * (9 * delta ** 2 + 18 * delta * xi + (9 + 2 * R_U ** 2) * xi ** 2) ** 2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

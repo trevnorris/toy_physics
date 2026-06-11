@@ -1,0 +1,19 @@
+candidate_id: fit_stage070_wall_shell_fixes_quintuple
+parameter_name: K_X
+origin_claims:
+  - parameter: K_X
+    introduced_at_stage: 070
+    introduced_at_line: 55
+    citation:
+      path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+      line: 55
+      excerpt: "`K_X = H_w N_(phi phi) + (hbar^2 / (4 m rho_w)) G_(phi phi),`"
+constraints:
+  - parameter: K_X
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+      line: 18
+      excerpt: "- the axial support stiffness is fixed by compressibility plus transverse curvature,"
+downstream_dependents: [71, 73, 74]
+provenance_findings: []

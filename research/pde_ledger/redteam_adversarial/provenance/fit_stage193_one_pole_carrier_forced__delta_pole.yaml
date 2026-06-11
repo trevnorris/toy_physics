@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage193_one_pole_carrier_forced
+parameter_name: Delta_pole
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage193_one_pole_carrier_forced__phase_b__delta_pole.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '193'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_193.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_193.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_193.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Freezes the isotropic one-pole conservative target surface and proves the scalar/geometry lane
+    enters the grouped carrier only at quadratic anisotropy order.}
+- path: paper/stages/stage_193.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 25
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 27
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 35
+  role: notes_stage
+  excerpt: That surface is the real front-end theorem target. It is where the grouped `20/21/22` bundle stops being an arbitrary
+    three-lane packet and becomes the minimal isotropic one-pole conservative carrier needed by the higher-order chain.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 43
+  role: notes_stage
+  excerpt: 2. the exact one-pole surface
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 45
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=\bar\nu_4-4\bar\nu_2^{\,2}=0,
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 153
+  role: notes_stage
+  excerpt: '## 3. Exact one-pole conservative surface'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 155
+  role: notes_stage
+  excerpt: The second theorem target is the exact one-pole conservative identity
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 158
+  role: notes_stage
+  excerpt: \mathcal S_{\rm pole}^{(\mathrm{cons})}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 173
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 180
+  role: notes_stage
+  excerpt: Therefore the one-pole surface is exactly equivalent to
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 204
+  role: notes_stage
+  excerpt: \mathcal S_{\rm iso+pole}^{(\mathrm{cons})}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 209
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 217
+  role: notes_stage
+  excerpt: Once the isotropic one-pole surface is imposed, the common grouped conservative carrier is forced into a one-parameter
+    form.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 229
+  role: notes_stage
+  excerpt: and the one-pole surface gives
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 233
+  role: notes_stage
+  excerpt: the unique isotropic one-pole conservative precursor through `O(ω^4)` is
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 252
+  role: notes_stage
+  excerpt: '> the grouped `20/21/22` conservative carrier must be isotropic and one-pole, and therefore must reduce to the'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 337
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 358
+  role: notes_stage
+  excerpt: \delta\mathcal D_{2,\rm geom}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 394
+  role: notes_stage
+  excerpt: '- the exact one-pole identity'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 395
+  role: notes_stage
+  excerpt: \(\Delta_{\rm pole}=-(3D_2^2+D_0D_4)/D_0^2\),
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 396
+  role: notes_stage
+  excerpt: '- exact equivalence of the one-pole surface to'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: '# II. Exact one-pole identity in D-space'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: subbanner("II. Exact one-pole conservative identity")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: Delta_pole = sp.simplify(nu4_common - 4 * nu2_common**2)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("Delta_pole =")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: sp.pprint(Delta_pole)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '"Delta_pole + (3 D2^2 + D0 D4)/D0^2",'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: Delta_pole + (3 * D2**2 + D0 * D4) / D0**2,
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: D4_onepole = sp.simplify(-3 * D2**2 / D0)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: '"one-pole surface equivalence",'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: sp.simplify(Delta_pole.subs(D4, D4_onepole)),
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: '# III. Exact one-parameter carrier on the one-pole surface'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Y_pole = sp.simplify(sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2 / OmegaQ2))
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: Y_pole_series = sp.series(Y_pole, omega, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: Y_expected = sp.expand(1 + nu2_common * omega**2 + nu4_common.subs(D4, D4_onepole) * omega**4)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

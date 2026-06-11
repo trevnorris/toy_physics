@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: fit_stage116_gamma0_compensation_backfill
+parameter_name: gamma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage116_gamma0_compensation_backfill__phase_b__gamma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '116'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 6
+  role: notes_stage
+  excerpt: Give the concrete core-balance theorem a geometric throat-core realization rather than leaving the bare mixed-channel
+    data `(\kappa_0,\gamma_0)` abstract.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 46
+  role: notes_stage
+  excerpt: So the auxiliary mixed-tube length is fixed to
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 60
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9}.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 74
+  role: notes_stage
+  excerpt: \gamma_c=\frac19.
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: '# gamma0 is an upstream-carried input (Stage 115 compensation requirement) with'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: 'gamma0_bare = sp.simplify((1 + r_c) / 9)                            # upstream-carried input (Stage 115), not
+    derived in-stage'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: gamma_c = sp.simplify(gamma0_bare / common_scale)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("  gamma0_bare (upstream-carried input, Stage 115)   =", gamma0_bare)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("  gamma_c = gamma0_bare/(1+r_c) =", gamma_c)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: 'print("  Bare mixed coefficients: kappa0 =", kappa0_bare, ", gamma0 =", gamma0_bare)'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: 'print("  Final coefficients: kappa_c =", kappa_c, ", gamma_c =", gamma_c)'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

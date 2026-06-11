@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage_137_d_w_bare
+parameter_name: D_W_bare
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_137_d_w_bare__phase_b__d_w_bare.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '137'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 'kappa0, gamma0 = sp.symbols(''kappa0 gamma0'', positive=True, real=True)  # bare mixed pair, reused in F2'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: '# the finite-D term removes at the static point D = 1 (D_W_bare(0) = 1).'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '# matrix route v^T M_core^{-1} v evaluated on the bare denominator D_W_bare(z), using the'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: D_W_bare = 1 - kappa0*z_var**2 - sp.I*gamma0*z_var**5
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '# Independent source: the inverted physical matrix on the bare denominator.'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: delta_Lambda_matrix = sp.simplify(delta_Lambda_schur.subs(D_sch, D_W_bare))
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: '"reduced core susceptibility does not match the M_core Schur source on D_W_bare(z)"'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

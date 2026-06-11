@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage152_carried_point_block
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage152_carried_point_block__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '152'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 16
+  role: notes_stage
+  excerpt: \Sigma_m^*\approx 0.451485277739090,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 54
+  role: notes_stage
+  excerpt: A_T\approx -4.27263956256927,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 56
+  role: notes_stage
+  excerpt: B_T\approx 0.134875005736706,
+- path: notes/stages/moving_throat_pde_stage152_family1_actual_correction.md
+  line: 101
+  role: notes_stage
+  excerpt: \Sigma_1(x)=
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: Pi_star = mp.mpf("1.50882951349316")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: Sigma_m_star = mp.mpf("0.451485277739090")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: g_star = mp.mpf("0.758035078944663")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: S_star = mp.mpf("0.658075937605429")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: gprime_star = mp.mpf("0.0714453558083195")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: AT = mp.mpf("-4.27263956256927")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: BT = mp.mpf("0.134875005736706")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: Tstar = mp.mpf("0.901484054174205")
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: 'def Sigma_star(x):'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: return Pi_star * mp.e**(-Pi_star * x) / (1 - mp.e**(-Pi_star))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: return (1 - mp.e**(-Pi_star * x)) / (Pi_star * (1 - mp.e**(-Pi_star))) - x * mp.e**(-Pi_star)/(1 - mp.e**(-Pi_star))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Cq = Pi_star / ((1 - mp.e**(-Pi_star)) * (k**2 - Pi_star**2))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Aq = Cq * (k * mp.sinh(k) + Pi_star * mp.e**(-Pi_star)) / (k * mp.cosh(k))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: return Aq * mp.sinh(k*x) - Cq * mp.cosh(k*x) + Cq * mp.e**(-Pi_star*x)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: 'def R_star(x):'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: return Sigma_m_star * (4*T_s(x) - T_q(x)) - Pi_star*x
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: deriv = (R_star(h) - R_star(0)) / h
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: print("R(0) =", R_star(0))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("R(1) =", R_star(1))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: 'return mp.quad(lambda t: Sigma_star(t) * func(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: 'return mp.quad(lambda t: Sigma_star(t) * (f(t) - af) * (h(t) - ah), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Cov_cR = cov(c_kernel, R_star)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: Cov_SR = cov(S_q_kernel, R_star)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: deltaPi = Cov_cR / gprime_star
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: deltaT = AT * delta_g + BT * delta_S
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("Pi_corr           =", Pi_star + deltaPi)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("T_corr            =", Tstar + deltaT)
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: 'def sigma1_unnorm(x):'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: return mp.e**(-Pi_star * x - R_star(x))
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: 'Z1 = mp.quad(lambda t: sigma1_unnorm(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: 'def sigma1(x):'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: return sigma1_unnorm(x) / Z1
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: 'g1 = mp.quad(lambda t: sigma1(t) * c_kernel(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: 'S1 = mp.quad(lambda t: sigma1(t) * S_q_kernel(t), [0, 1])'
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: deltaPi1 = -(g1 - g_star) / gprime_star
+- path: scripts/moving_throat_pde_stage152_family1_actual_correction_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: deltaT1 = AT * (g1 - g_star) + BT * (S1 - S_star)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,157 @@
+schema_version: 1
+candidate_id: fit_stage234_canonical_least_deformation_family
+parameter_name: Xi_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage234_canonical_least_deformation_family__phase_b__xi_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '234'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: \Xi_1=\delta\ln \mathfrak N_*,
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 39
+  role: notes_stage
+  excerpt: So the next honest step is to eliminate the remaining quotient bookkeeping and write the same-charge static gate
+    directly in those observables.
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 150
+  role: notes_stage
+  excerpt: \Xi_1
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: (\mathcal R_1+\Xi_1).
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 188
+  role: notes_stage
+  excerpt: '### 3.1 `R_{\rm tr}` cancels out of `\Xi_1`'
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 202
+  role: notes_stage
+  excerpt: \Xi_1
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 211
+  role: notes_stage
+  excerpt: \boxed{\partial_{\delta\ln R_{\rm tr}}\Xi_1=0.}
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 246
+  role: notes_stage
+  excerpt: \boxed{q_{\rm nt}=\Xi_1.}
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 251
+  role: notes_stage
+  excerpt: \Xi_1 = \delta\ln \mathfrak N_*
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 273
+  role: notes_stage
+  excerpt: \boxed{\Xi_1 = -R_1 - c_\eta E_1.}
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 328
+  role: notes_stage
+  excerpt: \Xi_1 = \xi,
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: So even before the full PDE branch is known, the direct observable chart already gives a canonical least-deformation
+    family that realizes any chosen \(\Xi_1\).
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 384
+  role: notes_stage
+  excerpt: \Xi_1=-\delta\ln R_{\rm target}-c_\eta\,\delta\ln\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 408
+  role: notes_stage
+  excerpt: \Xi_1
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 431
+  role: notes_stage
+  excerpt: '- the exact cancellation of `R_tr` out of `\Xi_1`,'
+- path: notes/stages/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.md
+  line: 432
+  role: notes_stage
+  excerpt: '- the rigid-mouth reduction `q_{\rm nt}=\Xi_1`,'
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Xi1 = sp.simplify(qnt1 + (B_star / C_star) * qtr1)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Rcal1 = sp.simplify(-Xi1 - c_eta * qeta1)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: assert_zero(Xi1 + R1 + c_eta * E1)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: E1_inv = sp.simplify(-(1 - eps_eta_star) / eps_eta_star * (Rcal1 + Xi1))
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Xi1_pretty = -R1 - c_eta * E1
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: print("Xi1 =", Xi1_pretty)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: assert_zero(sp.diff(Xi1, r1))
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: Xi1_rigid = sp.simplify(Xi1.subs(rigid))
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: assert_zero(Xi1_rigid - qnt1_rigid)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: print("d Xi1 / d(ln R_tr) =", sp.diff(Xi1, r1))
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: print("Rigid-mouth first-order Xi1 = q_nt^(1) =", sp.simplify(Xi1_pretty.subs(rigid)))
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 156
+  role: sympy_script
+  excerpt: Xi1_twoobs = -R1 - c_eta * E1
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: print("Xi1 =", Xi1_pretty)
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: 'Xi_target = sp.simplify(Xi1_twoobs.subs({E1: 0, R1: -xi}))'
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 180
+  role: sympy_script
+  excerpt: 'Xi_dressing = sp.simplify(Xi1_twoobs.subs({R1: 0, E1: -xi / c_eta}))'
+- path: scripts/moving_throat_pde_stage234_direct_branch_observable_static_gate_and_the_two_observable_kill_test_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: 'assert_zero(sp.simplify(Xi1_twoobs.subs({R1: R1_bal, E1: E1_bal}) - xi))'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

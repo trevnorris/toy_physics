@@ -1,0 +1,25 @@
+candidate_id: fit_stage_068_p_res
+parameter_name: P_res
+origin_claims:
+  - parameter: P_res
+    introduced_at_stage: 067
+    introduced_at_line: 127
+    citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 127
+      excerpt: "`P_res := 1 / C_res^2`"
+constraints:
+  - parameter: P_res
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+      line: 116
+      excerpt: "`C_res^2 := C^2(sqrt(pi))`"
+downstream_dependents: [068, 069]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "Candidate is keyed to stage 068 with value 1.005612, but P_res first enters the ledger at stage 067 as the reciprocal of the exactly-computed coherence maximum C_res^2=C^2(sqrt(pi)). Stage 068 only carries it; the stage-068 notes correctly attribute origin to stage 067."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage068_resonance_thresholds.md, line: 16, excerpt: "`P_res = 1 / C_res^2 = 1.005612487760576...`" }
+      - { path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md, line: 128, excerpt: "`      = 1.0056124877605762169...`" }

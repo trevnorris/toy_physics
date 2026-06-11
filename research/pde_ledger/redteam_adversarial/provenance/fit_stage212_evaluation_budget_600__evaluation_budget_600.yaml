@@ -1,0 +1,126 @@
+schema_version: 1
+candidate_id: fit_stage212_evaluation_budget_600
+parameter_name: evaluation_budget_600
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage212_evaluation_budget_600__phase_b__evaluation_budget_600.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '212'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_212.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Support-\(\le3\) finite search ledger, primitive-triple ranking theorem, global three-coordinate
+    improvement/no-improvement theorem, and finite evaluation budget \(600\).}
+- path: paper/stages/stage_212.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Mark candidate evaluation as \StatusNumerical{} when actual local packet values are inserted.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 29
+  role: notes_stage
+  excerpt: 6. and the exact **finite evaluation budget theorem** for the whole up-to-three-coordinate local sieve.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 411
+  role: notes_stage
+  excerpt: '## 7. Exact finite evaluation budget theorem'
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 415
+  role: notes_stage
+  excerpt: '### 7.1 Imported Stage 209 pairwise budget'
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 426
+  role: notes_stage
+  excerpt: exact candidate evaluations (six for the lower envelope and six for the upper envelope) on a compact admissible
+    ratio interval.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 431
+  role: notes_stage
+  excerpt: exact candidate evaluations.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 433
+  role: notes_stage
+  excerpt: '### 7.2 New Stage 211 interior triple budget'
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 448
+  role: notes_stage
+  excerpt: interior candidate evaluations per triple.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 453
+  role: notes_stage
+  excerpt: exact candidate evaluations.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 455
+  role: notes_stage
+  excerpt: '### 7.3 Full up-to-three-coordinate budget'
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 457
+  role: notes_stage
+  excerpt: Therefore the entire local search up through three active primitive coordinates has the exact finite budget
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 460
+  role: notes_stage
+  excerpt: 120+480=600
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 463
+  role: notes_stage
+  excerpt: exact candidate evaluations once the local slope data, envelope blocks, and admissible validity maps are supplied.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 469
+  role: notes_stage
+  excerpt: new candidate evaluations plus exact interval comparisons.
+- path: notes/stages/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem.md
+  line: 515
+  role: notes_stage
+  excerpt: 5. The entire local search up through three active primitive coordinates now has a finite certified budget of at
+    most `600` exact candidate evaluations.
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 188
+  role: sympy_script
+  excerpt: '# IV. Exact finite evaluation budget theorem'
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: subbanner("IV. Exact finite evaluation budget theorem")
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: print(f"pairwise evaluation budget = {pair_eval_total}")
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: print(f"interior triple evaluation budget = {triple_eval_total}")
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 200
+  role: sympy_script
+  excerpt: print(f"full up-to-three-coordinate budget = {full_eval_total}")
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: expect_zero("pairwise budget - 120", pair_eval_total - 120)
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: expect_zero("triple interior budget - 480", triple_eval_total - 480)
+- path: scripts/moving_throat_pde_stage212_full_primitive_triple_ranking_theorem_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: expect_zero("full budget - 600", full_eval_total - 600)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

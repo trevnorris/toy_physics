@@ -1,0 +1,177 @@
+schema_version: 1
+candidate_id: fit_stage157_expected_values_sidecar_json
+parameter_name: Pi_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage157_expected_values_sidecar_json__phase_b__pi_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '157'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_157.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point,
+    and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside
+    the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_157.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check deviations are taken about the renormalized co-evolving canonical point.
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 36
+  role: notes_stage
+  excerpt: The numerics below are carried directly from Stage 155 for the frozen canonical
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 38
+  role: notes_stage
+  excerpt: renormalized canonical branch.
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 40
+  role: notes_stage
+  excerpt: At the old canonical traction from Stage 155, the solved positive fixed point on the
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 61
+  role: notes_stage
+  excerpt: \Sigma_0^{\rm can}\approx 4.651033550168867,
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 63
+  role: notes_stage
+  excerpt: \widehat T_{m,\rm can}\approx 1.4467083664567613,
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 65
+  role: notes_stage
+  excerpt: \Pi_{\rm can}\approx 3.871564377479002.
+- path: notes/stages/moving_throat_pde_stage157_core_mouth_coevolution_status.md
+  line: 75
+  role: notes_stage
+  excerpt: '- the lower compensated branch remains the only regular canonical branch inside the explicit Family-1 closure,'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact self-matched traction law Sigma0 = 20 T_hat^2 / 9.
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. The carried Stage 156 renormalized canonical tuple satisfies the exact
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 4. The renormalized point is genuinely above the original canonical point.
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 6. Canonical-even preservation pins delta C = delta kappa_W = 0 (non-degenerate
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: 7. The Stage 158 expansion point is the renormalized canonical tuple.
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: Sigma0_can = sp.Float(str(constants["Sigma0_can_expected"]), 30)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: S_can = sp.Float(str(constants["S_can_expected"]), 30)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: Pi_can = sp.Float(str(constants["Pi_can_expected"]), 30)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: T_hat_can = sp.Float(str(constants["T_hat_can_expected"]), 30)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: expect_close("self-matched traction law", Sigma0_can, sp.Rational(20, 9) * T_hat_can**2)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: R_can = sp.N(((g_star_num - rF1) ** 2) / (1 + rF1**2), 25)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: expect_close("R_can = 1/4", R_can, sp.Rational(1, 4))
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: expect_close("Pi_can identity", Pi_can, Sigma0_can * (1 - sp.Rational(1, 4) * S_can))
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("Sigma0_can  =", Sigma0_can)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("T_hat_can   =", T_hat_can)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("S_can       =", S_can)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: print("Pi_can      =", Pi_can)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: 'if not (float(Sigma0_can) > float(Sigma0_star) and float(T_hat_can) > float(T_hat_star) and float(Pi_can) > float(Pi_star)):'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: raise AssertionError("Renormalized canonical tuple should sit strictly above the original canonical point.")
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: print("canonical-even preservation solutions =", even_preservation)
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: raise AssertionError("Canonical-even preservation should pin deltaC = delta kappa_W = 0.")
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: '# --- Audit assertion: canonical-even non-degeneracy (carried-coefficient consistency) ---'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: '# CONSULT Q3 (batch 7), option (ii): py:107-110 already imposes the canonical-even'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: '# trivial: the carried canonical-even projection coefficients [[1, -9*sigma_star],'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: '# so the imposed constraint pins deltaC = delta_kappa_W = 0. (The 9/72/5/27/243'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: '# coefficients are CARRIED canonical-even projection coefficients; the stage notes do not'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: '"canonical-even non-degeneracy: trivial kernel forces delta C = 0 (det = -27*sigma_star)",'
+- path: scripts/moving_throat_pde_stage157_core_mouth_coevolution_status_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: 'print("dPi_tan at the renormalized canonical point =", dPi_expected.subs({Sigma0: Sigma0_can, Sstar: S_can}))'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

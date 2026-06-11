@@ -1,0 +1,151 @@
+schema_version: 1
+candidate_id: fit_stage_200_eps_beta
+parameter_name: eps_beta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_200_eps_beta__phase_b__eps_beta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '200'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'def eps_eta_monomial(c_eta_u, k_u, k_eta):'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: eps1 = eps_eta_monomial(c1, KU1, Keta1)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: eps2 = eps_eta_monomial(c2, KU2, Keta2)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: eps_ratio = simplify_expr((eps2 / eps1).subs(ratio_subs))
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: print("epsEta_2 / epsEta_1 =")
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: sp.pprint(eps_ratio)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: sp.log(eps_ratio.subs(ratio_to_logs)),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 201
+  role: sympy_script
+  excerpt: epsEta_star = eps_eta_monomial(cs, KUs, Ketas)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 225
+  role: sympy_script
+  excerpt: epsEta_witness = eps_eta_monomial(rc_w * cs, rU_w * KUs, PhiK_w * Ketas)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 236
+  role: sympy_script
+  excerpt: '"ln[epsEta(witness) / epsEta(*)]",'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 237
+  role: sympy_script
+  excerpt: sp.expand_log(sp.log(epsEta_witness / epsEta_star), force=True),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 242
+  role: sympy_script
+  excerpt: epsEta_x = eps_eta_monomial(cx, KUx, Ketax)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 250
+  role: sympy_script
+  excerpt: sp.log(epsEta_x / epsEta_star),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 260
+  role: sympy_script
+  excerpt: sp.log(epsEta_x / epsEta_witness),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 281
+  role: sympy_script
+  excerpt: Ctr_target, Cnt_target, epsEta_target = sp.symbols(
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 282
+  role: sympy_script
+  excerpt: '"Ctr_target Cnt_target epsEta_target", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 286
+  role: sympy_script
+  excerpt: Keta_orbit = sp.simplify(cf**2 / (KUf * epsEta_target))
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 311
+  role: sympy_script
+  excerpt: epsEta_actual_ratio = simplify_expr(eps_eta_monomial(cf, KUf, Keta_actual) / epsEta_target)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 315
+  role: sympy_script
+  excerpt: expect_zero("epsEta(actual) / epsEta_* - 1/m_K", epsEta_actual_ratio - 1 / mK)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 322
+  role: sympy_script
+  excerpt: sp.log(epsEta_actual_ratio),
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 404
+  role: sympy_script
+  excerpt: S, beta, Sigma0, Sigma5 = sp.symbols("S beta Sigma_0 Sigma_5", nonzero=True, real=True)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 405
+  role: sympy_script
+  excerpt: eps = sp.symbols("eps", real=True)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 406
+  role: sympy_script
+  excerpt: eps_beta, dSigma0, dSigma5 = sp.symbols("eps_beta dSigma_0 dSigma_5", real=True)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 408
+  role: sympy_script
+  excerpt: chi_from_def = sp.simplify(3 * (S * beta**5 + 9 * Sigma5) / (3 * S - Sigma0))
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 412
+  role: sympy_script
+  excerpt: 'beta: 1 + eps * eps_beta,'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 413
+  role: sympy_script
+  excerpt: 'Sigma0: eps * dSigma0,'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 414
+  role: sympy_script
+  excerpt: 'Sigma5: eps * dSigma5,'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 417
+  role: sympy_script
+  excerpt: eps,
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 421
+  role: sympy_script
+  excerpt: DeltaQ_linear_expected = eps * (5 * eps_beta + dSigma0 / (3 * S) + 9 * dSigma5 / S)
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 424
+  role: sympy_script
+  excerpt: '"Delta_Q^lin - eps(5 eps_beta + dSigma0/(3S) + 9 dSigma5/S)",'
+- path: scripts/moving_throat_pde_stage200_reference_free_home_stretch_theorem_sympy_audit.py
+  line: 441
+  role: sympy_script
+  excerpt: print("      (C_tr, C_nt, eps_eta)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

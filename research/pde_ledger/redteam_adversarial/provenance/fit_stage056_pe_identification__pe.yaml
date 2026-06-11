@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage056_pe_identification
+parameter_name: Pe
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage056_pe_identification__phase_b__pe.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '056'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_056.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage056-Pe}
+- path: paper/stages/stage_056.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \mathrm{Pe}=\frac{v_\sigma L}{D_\sigma}},
+- path: paper/stages/stage_056.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: the normalized stationary family is exactly the Stage~053 exponential source with \(\alpha=\mathrm{Pe}\).  Therefore
+- path: paper/stages/stage_056.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage056-Omega-Pe}
+- path: paper/stages/stage_056.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \Omega_{\mathrm{Pe}}
+- path: paper/stages/stage_056.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: =\frac{\pi\mathrm{Pe}(2\mathrm{Pe}e^{\mathrm{Pe}}+\pi)}{(4\mathrm{Pe}^2+\pi^2)(e^{\mathrm{Pe}}-1)}}.
+- path: paper/stages/stage_056.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Transport interpretation \eqref{eq:app-stage056-Pe} and physical overlap factor \eqref{eq:app-stage056-Omega-Pe}.}
+- path: paper/stages/stage_056.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~057 uses \(\mathrm{Pe}\) as the physical transport coordinate of \(\zeta_0\).}
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 21
+  role: notes_stage
+  excerpt: '`sigma_Pe(s)`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 22
+  role: notes_stage
+  excerpt: '`= Pe exp(Pe s/L) / (exp(Pe)-1),`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 26
+  role: notes_stage
+  excerpt: '`Pe := v_sigma L / D_sigma.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 28
+  role: notes_stage
+  excerpt: So the old abstract bias parameter is exactly the axial **Peclet number** of the lowest support-source transport
+    problem.
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 79
+  role: notes_stage
+  excerpt: '`sigma_Pe(s)`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 80
+  role: notes_stage
+  excerpt: '`= Pe exp(Pe s/L) / (exp(Pe)-1),`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 84
+  role: notes_stage
+  excerpt: '`Pe := v_sigma L / D_sigma.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 90
+  role: notes_stage
+  excerpt: '- `Pe = 0`: symmetric uniform source, i.e. the twin baseline;'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 91
+  role: notes_stage
+  excerpt: '- `Pe > 0`: constructive branch, with source weight shifted toward the D/N bottom antinode;'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 92
+  role: notes_stage
+  excerpt: '- `Pe < 0`: destructive branch, with source weight shifted toward the mouth where the D/N mode is smallest.'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 110
+  role: notes_stage
+  excerpt: '`I_Pe = int_0^L ds sigma_Pe(s) chi_0(s)`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 114
+  role: notes_stage
+  excerpt: '`I_Pe = 2 sqrt(2L) Pe (2 Pe exp(Pe) + pi)`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 115
+  role: notes_stage
+  excerpt: '`       / [ (4 Pe^2 + pi^2) (exp(Pe)-1) ].`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 119
+  role: notes_stage
+  excerpt: '`Omega_Pe := I_Pe / I_W`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 120
+  role: notes_stage
+  excerpt: '`= pi Pe (2 Pe exp(Pe) + pi)`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 121
+  role: notes_stage
+  excerpt: '`  / [ (4 Pe^2 + pi^2) (exp(Pe)-1) ].`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 123
+  role: notes_stage
+  excerpt: So the abstract Stage-053 factor `Omega_exp(alpha)` is now identified exactly as `Omega_Pe` on a concrete operator
+    branch.
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 131
+  role: notes_stage
+  excerpt: '`p_Pe(s) := sigma_Pe(s)/L.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 135
+  role: notes_stage
+  excerpt: '`I_Pe = L E_Pe[chi_0],`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 139
+  role: notes_stage
+  excerpt: '`dI_Pe/dPe = Cov_Pe(chi_0,s),`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 143
+  role: notes_stage
+  excerpt: '`dOmega_Pe/dPe = Cov_Pe(chi_0,s) / I_W.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 149
+  role: notes_stage
+  excerpt: '`dOmega_Pe/dPe > 0`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 151
+  role: notes_stage
+  excerpt: for `Pe >= 0`.
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 163
+  role: notes_stage
+  excerpt: '`Omega_Pe(0) = 1,`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 165
+  role: notes_stage
+  excerpt: '`lim_(Pe -> +infinity) Omega_Pe = pi/2.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 169
+  role: notes_stage
+  excerpt: '`1 <= Omega_Pe <= pi/2.`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 175
+  role: notes_stage
+  excerpt: '`Omega_Pe`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 176
+  role: notes_stage
+  excerpt: '`= 1 + ((4-pi)/(2 pi)) Pe + O(Pe^2).`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 182
+  role: notes_stage
+  excerpt: '`Omega_Pe`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 183
+  role: notes_stage
+  excerpt: '`= pi/2 - pi^3/(8 Pe^2) + O(Pe^-3).`'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 197
+  role: notes_stage
+  excerpt: '- the asymmetry parameter is the physical Peclet number'
+- path: notes/stages/moving_throat_pde_stage056_transport_source_asymmetry.md
+  line: 199
+  role: notes_stage
+  excerpt: '`Pe = v_sigma L / D_sigma`,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

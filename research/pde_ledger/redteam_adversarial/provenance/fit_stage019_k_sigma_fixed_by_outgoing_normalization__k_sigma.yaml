@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage019_K_Sigma_fixed_by_outgoing_normalization
+parameter_name: K_Sigma
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage019_k_sigma_fixed_by_outgoing_normalization__phase_b__k_sigma.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 019
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_019.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_019.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: D_0=K_\Sigma-B_0-Z_0,\qquad
+- path: paper/stages/stage_019.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: D_2=-(M_\Sigma+B_2+Z_2),\qquad
+- path: paper/stages/stage_019.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: K_\Sigma=B_0+Z_0+
+- path: paper/stages/stage_019.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \frac{3(M_\Sigma+B_2+Z_2)^2}{B_4+Z_4}.
+- path: paper/stages/stage_019.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: K_\Sigma=B_0+Z_0+\frac{N_0}{P_{0,\rm target}},
+- path: paper/stages/stage_019.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: =\frac{3(M_\Sigma+B_2+Z_2)^2}{B_4+Z_4}.
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: (KSigma, MSigma) to the isotropic grouped-P2 bundle moments and target surface.
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: KSigma, MSigma = sp.symbols('KSigma MSigma', real=True, nonzero=True)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: D0 = KSigma - B0 - Z0
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: D2 = -(MSigma + B2 + Z2)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: one_pole_numerator = D0 * (B4 + Z4) - 3 * (MSigma + B2 + Z2)**2
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: K_from_one_pole = sp.simplify(sp.solve(sp.Eq(one_pole_defect, 0), KSigma)[0])
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: K_from_norm = sp.simplify(sp.solve(sp.Eq(P0, P0_target), KSigma)[0])
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: assert_zero('K from one-pole closed form', K_from_one_pole - (B0 + Z0 + 3*(MSigma + B2 + Z2)**2/(B4 + Z4)))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: assert_zero('compatibility equation', compatibility - (3*(MSigma + B2 + Z2)**2/(B4 + Z4) - N0/P0_target))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: N2_const_closed = 2 * N0 * (B2 + MSigma + Z2) / (B0 - KSigma + Z0)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: + 2 * B2 * MSigma
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: '- 2 * B4 * KSigma'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: '- 2 * KSigma * Z4'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: + MSigma**2
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: + 2 * MSigma * Z2
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: ) / (B0 - KSigma + Z0) ** 2
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: 'N4_const.subs({KSigma: K_from_one_pole})'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: N4_md_one_pole = -5 * (MSigma + B2 + Z2)**2 * N0 / (KSigma - B0 - Z0)**2
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: assert_zero('N4 one-pole md form', N4_const.subs(KSigma, K_from_one_pole) - N4_md_one_pole.subs(KSigma, K_from_one_pole))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: M_roots = sp.solve(sp.Eq(one_pole_numerator, 0), MSigma)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: M_root_positive = sp.sqrt((KSigma - B0 - Z0) * (B4 + Z4) / 3) - (B2 + Z2)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: M_root_negative = -sp.sqrt((KSigma - B0 - Z0) * (B4 + Z4) / 3) - (B2 + Z2)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: root_gap = sp.sqrt((KSigma - B0 - Z0) * (B4 + Z4) / 3)
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: '''one-pole numerator factorization in MSigma'','
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: one_pole_numerator + 3 * (MSigma - M_root_positive) * (MSigma - M_root_negative),
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: u2_root_positive = sp.simplify(u2.subs(MSigma, M_root_positive))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: u2_root_negative = sp.simplify(u2.subs(MSigma, M_root_negative))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: 'KSigma: sp.Integer(13),'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: 'KSigma: sp.Integer(4),'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: 'KSigma: sp.Integer(105),'
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 182
+  role: sympy_script
+  excerpt: MSigma_example = sp.integrate(mu_eta * beta**2, (w, -sp.oo, sp.oo))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 183
+  role: sympy_script
+  excerpt: KSigma_example = sp.integrate(T_w * sp.diff(beta, w)**2 + (K_eta + 6*T_omega) * beta**2, (w, -sp.oo, sp.oo))
+- path: scripts/moving_throat_pde_stage019_parent_throat_action_isotropic_bundle_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: assert_zero('concrete wall inertia integral', MSigma_example - sp.sqrt(sp.pi))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

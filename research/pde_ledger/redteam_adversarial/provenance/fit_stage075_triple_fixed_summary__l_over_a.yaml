@@ -1,0 +1,32 @@
+schema_version: 1
+candidate_id: fit_stage075_triple_fixed_summary
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage075_triple_fixed_summary__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '075'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage075_family1_threshold_window.md
+  line: 89
+  role: notes_stage
+  excerpt: But on the actual Family-1 wall branch the radial soft-wall profile already carries a fixed dimensionless depth
+    parameter
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

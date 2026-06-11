@@ -1,0 +1,44 @@
+schema_version: 1
+candidate_id: fit_stage232_family1_geometry_normalization
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage232_family1_geometry_normalization__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 197
+  role: notes_stage
+  excerpt: Here the exact overlap-boost law is
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 268
+  role: notes_stage
+  excerpt: So the explicit support/source branch overshoots the canonical isotropic demand by a factor of about \(7.4\) in
+    the \(\zeta\) variable.
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: from typing import Callable, Tuple
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: '# 6. Overlap boost and physical support ratios'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

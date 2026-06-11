@@ -1,0 +1,108 @@
+schema_version: 1
+candidate_id: fit_stage_033_k0_onset
+parameter_name: K0_onset
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_033_k0_onset__phase_b__k0_onset.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '033'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_033.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~033 writes the selected target in microscopic coupling variables and states the stability
+    and onset gates.  This is the last form of the branch test before the eigenvalue variables are eliminated in favor of
+    the softening depth.}
+- path: paper/stages/stage_033.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \paragraph{3. Onset condition.}
+- path: paper/stages/stage_033.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage033-onset}
+- path: paper/stages/stage_033.tex
+  line: 111
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~033 outputs the coupling-level definitions \eqref{eq:app-stage033-defs}, the stability
+    gate \eqref{eq:app-stage033-stability}, the microscopic target \eqref{eq:app-stage033-micro-target}, the onset condition
+    \eqref{eq:app-stage033-onset}, and the weak-loading expansion \eqref{eq:app-stage033-weak-loading}.}
+- path: paper/stages/stage_033.tex
+  line: 115
+  role: paper_stage_tex
+  excerpt: \item The onset condition follows from monotonicity of \(N_-\).
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 033: Microscopic Selected-Branch Normalization Equation, Exact Stability Gate, and
+    the First Coupling-Level Onset Criterion'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 34
+  role: notes_stage
+  excerpt: 'There is also a useful exact necessary onset condition:'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 36
+  role: notes_stage
+  excerpt: So the first coupling-level onset test is already exact.
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 152
+  role: notes_stage
+  excerpt: '## 4. Exact monotonicity and the branch-onset criterion'
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 164
+  role: notes_stage
+  excerpt: So the zero-loading value is now an exact **necessary onset condition** for the universal target.
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 183
+  role: notes_stage
+  excerpt: This may be read as an onset stiffness bound,
+- path: notes/stages/moving_throat_pde_stage033_microscopic_normalization_equation.md
+  line: 245
+  role: notes_stage
+  excerpt: 3. check the exact necessary onset inequality
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Exact zero-loading onset value.
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 5. Exact onset stiffness rearrangement.
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: banner("STAGE 33.3 — ZERO-LOADING ONSET VALUE")
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: K0_onset = sp.simplify(sp.solve(sp.Eq(N0_mic, NQ), K0)[0])
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print("K0_onset =", K0_onset)
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: '"K0_onset - [gU^2/OmegaU^2 + kappa0^2 Chi^2/(NQ Delta0^2)]",'
+- path: scripts/moving_throat_pde_stage033_microscopic_normalization_equation_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: K0_onset - (gU**2 / OmegaU**2 + kappa0_sq * Chi**2 / (NQ * Delta0**2)),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

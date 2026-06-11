@@ -1,0 +1,209 @@
+schema_version: 1
+candidate_id: fit_stage_195_delta_q
+parameter_name: Delta_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_195_delta_q__phase_b__delta_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '195'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_195.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_195.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_195.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Factorizes the observable odd closure as \(\widehat m_0^{2}\chi_QN_Q=1\) and collapses \(\Delta_{\rm
+    norm}\).}
+- path: paper/stages/stage_195.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 195: Exact Source-Map Reduction of the Canonical Outgoing Branch, the Factorization
+    `m_{\hat 0}^{\,2}\chi_Q N_Q=1`, and the Collapse of `\Delta_{\rm norm}`'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 31
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 175
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 185
+  role: notes_stage
+  excerpt: \boxed{\Delta_Q:=\chi_Q-1.}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 190
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 192
+  role: notes_stage
+  excerpt: -\,P_0^{\rm target}\,\frac{\Delta_Q}{1+\Delta_Q}.
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 289
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 291
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}\big|_{m_{\hat 0}\to 1}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 298
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 309
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 327
+  role: notes_stage
+  excerpt: \Sigma_0=\delta\Sigma_0,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 329
+  role: notes_stage
+  excerpt: \Sigma_5=\delta\Sigma_5,
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 337
+  role: notes_stage
+  excerpt: -\frac{\delta\Sigma_0}{3S}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 338
+  role: notes_stage
+  excerpt: -\frac{9\,\delta\Sigma_5}{S}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 345
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}^{\rm pt}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 350
+  role: notes_stage
+  excerpt: +\frac{\delta\Sigma_0}{3S}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 351
+  role: notes_stage
+  excerpt: +\frac{9\,\delta\Sigma_5}{S}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 384
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm norm}=0,}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 386
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm norm}^{\rm pt}=0.}
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 392
+  role: notes_stage
+  excerpt: '- Stage 191''s observable branch residual `\Delta_{\rm norm}`,'
+- path: notes/stages/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch.md
+  line: 416
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}=P_0^{\rm target}(\chi_Q^{-1}-1).
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: Delta_norm = sp.simplify(mhat0**2 * P0 - P0_target)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: Delta_norm_NQ = sp.simplify(Delta_norm.subs(P0, N_Q * P0_target))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: Delta_norm_from_odd = sp.simplify(Delta_norm_NQ.subs(N_Q, NQ_from_odd))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("Delta_norm =")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: sp.pprint(Delta_norm_NQ)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print("Delta_norm after imposing odd closure =")
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: sp.pprint(Delta_norm_from_odd)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: expect_zero("Delta_norm from odd closure - P0_target*(1/chi_Q - 1)", Delta_norm_from_odd - P0_target * (1 / chi_Q
+    - 1))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: Delta_Q = sp.symbols("Delta_Q", real=True)
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: Delta_norm_DeltaQ = sp.simplify(Delta_norm_from_odd.subs(chi_Q, 1 + Delta_Q))
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: '"Delta_norm in terms of Delta_Q",'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: Delta_norm_DeltaQ + P0_target * Delta_Q / (1 + Delta_Q),
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: 'Delta_norm_pt = sp.simplify(Delta_norm_NQ.subs({mhat0: 1, N_Q: NQ_pt}))'
+- path: scripts/moving_throat_pde_stage195_source_map_reduction_of_canonical_outgoing_branch_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: print("Delta_norm on the natural point-particle source-map branch =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_195.tex
+    attempted_sources:
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_195.tex
+    attempted_sources:
+    - paper/stages/stage_195.tex
+    - research/pde_ledger/paper/stages/stage_195.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

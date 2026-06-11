@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage055_reachability_window_exact
+parameter_name: x
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage055_reachability_window_exact__phase_b__x.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '055'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_055.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 055]{Stage 055: Explicit Reachability of the Non-Twin Lowest Support Lane}'
+- path: paper/stages/stage_055.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the combined overlap/compliance reachability window.}
+- path: paper/stages/stage_055.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage055_explicit_reachability_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage055_explicit_reachability_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage055_explicit_reachability_mathematica_audit.txt}.}'
+- path: paper/stages/stage_055.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \boxed{
+- path: paper/stages/stage_055.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \frac{\pi^2}{4}\frac{4}{4-x}
+- path: paper/stages/stage_055.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: inside the explicit non-twin lowest-lane family.  Thus every non-twin support rescue must pass through a finite
+    overlap-plus-compliance window.  Demands above this window cannot be reached by this family, regardless of transport bias.
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 055: Explicit Reachability of the Non-Twin Lowest Support Lane'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stages 053 and 054 isolated the two exact lowest-lane resources:'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 8
+  role: notes_stage
+  excerpt: '- Robin-compliance softening, with ceiling `A_K <= 4/(4-x)`.'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 10
+  role: notes_stage
+  excerpt: 'The next honest question is therefore the combined one:'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 12
+  role: notes_stage
+  excerpt: '> for the first explicit moving-throat operator family that includes both effects, what is the exact reachable
+    window of the physical lowest support ratio?'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 16
+  role: notes_stage
+  excerpt: Using the explicit exponential source asymmetry from Stage 053 and the explicit Robin-compliance softening from
+    Stage 054, the lowest support ratio is
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 18
+  role: notes_stage
+  excerpt: '`zeta_0^(exp+R)(alpha,eta)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 19
+  role: notes_stage
+  excerpt: '`= Omega_exp(alpha)^2 / [ 1 - x/4 + x y(eta)^2 / pi^2 ],`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 23
+  role: notes_stage
+  excerpt: The main result is that this family has the exact closure range
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 25
+  role: notes_stage
+  excerpt: '`1 <= zeta_0^(exp+R) <= pi^2 / (4 - x),`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 27
+  role: notes_stage
+  excerpt: so the explicit family reaches a Stage-052 demand `zeta_req` **iff**
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 29
+  role: notes_stage
+  excerpt: '`zeta_req <= pi^2 / (4 - x)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 33
+  role: notes_stage
+  excerpt: This gives the first exact operator-level reachability theorem for the non-twin lowest support lane.
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 37
+  role: notes_stage
+  excerpt: '## 1. Explicit combined lowest-lane support ratio'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 39
+  role: notes_stage
+  excerpt: Carry forward the explicit constructive pieces.
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 45
+  role: notes_stage
+  excerpt: '`Omega_exp(alpha)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 46
+  role: notes_stage
+  excerpt: '`= pi alpha (2 alpha exp(alpha) + pi)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 47
+  role: notes_stage
+  excerpt: '`  / [ (4 alpha^2 + pi^2) (exp(alpha)-1) ],`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 51
+  role: notes_stage
+  excerpt: '`Omega_exp(0)=1,`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 53
+  role: notes_stage
+  excerpt: '`lim_(alpha -> +infinity) Omega_exp(alpha)=pi/2.`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 60
+  role: notes_stage
+  excerpt: '`= 1 / [ 1 - x/4 + x y(eta)^2 / pi^2 ],`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 66
+  role: notes_stage
+  excerpt: '`lim_(eta -> 0^+) A_K(eta)=4/(4-x).`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 68
+  role: notes_stage
+  excerpt: So the explicit combined family is
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 70
+  role: notes_stage
+  excerpt: '`zeta_0^(exp+R)(alpha,eta)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 71
+  role: notes_stage
+  excerpt: '`= Omega_exp(alpha)^2 A_K(eta)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 72
+  role: notes_stage
+  excerpt: '`= Omega_exp(alpha)^2 / [ 1 - x/4 + x y(eta)^2 / pi^2 ].`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 76
+  role: notes_stage
+  excerpt: '## 2. Exact closure range of the explicit family'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 86
+  role: notes_stage
+  excerpt: '`zeta_0^(exp+R)=1.`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 96
+  role: notes_stage
+  excerpt: '`zeta_0,max^(exp+R)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 97
+  role: notes_stage
+  excerpt: '`= (pi/2)^2 * 4/(4-x)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 98
+  role: notes_stage
+  excerpt: '`= pi^2 / (4 - x).`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 102
+  role: notes_stage
+  excerpt: '`1 <= zeta_0^(exp+R) <= pi^2/(4-x)`'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 110
+  role: notes_stage
+  excerpt: '## 3. Exact reachability criterion for the Stage-052 threshold'
+- path: notes/stages/moving_throat_pde_stage055_explicit_lowest_lane_reachability.md
+  line: 116
+  role: notes_stage
+  excerpt: The explicit family can satisfy that exactly when
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

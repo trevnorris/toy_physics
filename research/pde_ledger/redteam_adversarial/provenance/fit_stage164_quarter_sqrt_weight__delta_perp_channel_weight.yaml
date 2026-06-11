@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage164_quarter_sqrt_weight
+parameter_name: delta_perp_channel_weight
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage164_quarter_sqrt_weight__phase_b__delta_perp_channel_weight.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '164'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_164.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 164]{Stage 164: Microscopic log-imbalance channels}'
+- path: paper/stages/stage_164.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~164 is the original-stage audit card for \emph{Microscopic log-imbalance channels}.  Its
+    purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_164.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage164_microscopic_log_channels_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage164_microscopic_log_channels_mathematica_audit.txt}.}'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 164: Explicit Microscopic Log-Imbalance Channels on the Linearized Wall/BdG/Maxwell/Mixed
+    Branch'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 7
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 10
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 13
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right).
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 18
+  role: notes_stage
+  excerpt: '> what do the two logarithmic imbalance channels'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 20
+  role: notes_stage
+  excerpt: '> \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right),'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 22
+  role: notes_stage
+  excerpt: '> \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right)'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 29
+  role: notes_stage
+  excerpt: the two channels collapse to concrete logarithmic drifts of the microscopic variables
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 36
+  role: notes_stage
+  excerpt: it is no longer “compute the channels somehow,” but only to determine the actual linearized
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 52
+  role: notes_stage
+  excerpt: 'So the two Stage 163 logarithmic channels already have an exact microscopic meaning:'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 55
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 57
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{\mathfrak g}{\mathfrak r}\right),
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 62
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 64
+  role: notes_stage
+  excerpt: -\delta\ln r_c.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 70
+  role: notes_stage
+  excerpt: '- The first channel is the logarithmic drift of the **relative mouth-coupling ratio**'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 72
+  role: notes_stage
+  excerpt: '- The second channel is exactly the negative logarithmic drift of the'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 78
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 81
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{\mathfrak g}{\mathfrak r}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 84
+  role: notes_stage
+  excerpt: \delta\ln r_c.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 107
+  role: notes_stage
+  excerpt: So before using any overlap simplification, the two logarithmic channels are exactly
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 110
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 112
+  role: notes_stage
+  excerpt: \delta\ln K_s
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 113
+  role: notes_stage
+  excerpt: +\delta\ln\mathcal Z_q
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 114
+  role: notes_stage
+  excerpt: -\delta\ln\mathcal T_m
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 115
+  role: notes_stage
+  excerpt: -\delta\ln v_{w0}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 116
+  role: notes_stage
+  excerpt: -\delta\ln J_s
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 117
+  role: notes_stage
+  excerpt: -\delta\ln\mathcal I_{sq}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 118
+  role: notes_stage
+  excerpt: -\frac32\,\delta\ln L_W,
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 123
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right)
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 125
+  role: notes_stage
+  excerpt: \delta\ln K_s
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 126
+  role: notes_stage
+  excerpt: +\delta\ln\mathcal Z_q
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 127
+  role: notes_stage
+  excerpt: +2\,\delta\ln c_s
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 128
+  role: notes_stage
+  excerpt: -2\,\delta\ln v_{w0}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 129
+  role: notes_stage
+  excerpt: -2\,\delta\ln\mathcal I_{sq}
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 130
+  role: notes_stage
+  excerpt: -2\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 136
+  role: notes_stage
+  excerpt: 'At this level the two channels are controlled by four microscopic sectors:'
+- path: notes/stages/moving_throat_pde_stage164_microscopic_log_channels.md
+  line: 139
+  role: notes_stage
+  excerpt: 2. the mixed-channel localization norm \(\mathcal Z_q\),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,41 @@
+schema_version: 1
+candidate_id: fit_stage113_preserved_exactly_when
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage113_preserved_exactly_when__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '113'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_113.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~114--141 and any outlet model used to preserve \(\chi_Q=1\).  When
+    cited downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an
+    unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+  line: 13
+  role: notes_stage
+  excerpt: \chi_Q^{\rm R}=\frac{3}{3-\rho_R}.
+- path: notes/stages/moving_throat_pde_stage113_outlet_model_status.md
+  line: 35
+  role: notes_stage
+  excerpt: \chi_Q^{\rm hyb}=\frac{1-9\sigma_W\gamma_W}{1-\sigma_W},
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

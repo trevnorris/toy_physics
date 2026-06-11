@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage247_session1_softening_point
+parameter_name: a0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_session1_softening_point__phase_b__a0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 6. and a Session-I one-point benchmark decomposition at r_soft = 0.18.
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: r_sigma, a0, b0, rF1, xi_R = sp.symbols("r_sigma a0 b0 rF1 xi_R", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: g_r = sp.simplify(2 * (1 + a0 * s / 3 - b0 * s / 15) / sp.pi)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: sigma_min = sp.simplify(1 - (a0 - b0) * s)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 184
+  role: sympy_script
+  excerpt: '# 6. Session-I one-point benchmark at r_soft = 0.18.'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: section("6. Session-I one-point benchmark")
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 202
+  role: sympy_script
+  excerpt: 'a0: sp.Float("2.2"),'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: '# F2: the inverted Lvar reproduces the recorded benchmark work scalar, and'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: '#     matches the paper-stated Lvar(r_soft) = 20.01677473.'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 239
+  role: sympy_script
+  excerpt: '# F5: pin independently derived benchmark quantities to the paper figures.'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 245
+  role: sympy_script
+  excerpt: '# F4: lowered potential is below the baseline on the benchmark slice (lowering theorem).'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 248
+  role: sympy_script
+  excerpt: '# F5: forward benchmark decomposition with the paper''s lambda_L (falsifiable closure).'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 281
+  role: sympy_script
+  excerpt: print("- and a consistent Session-I one-point benchmark decomposition at r_soft = 0.18.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage098_rho_alpha_selected_ratio
+parameter_name: rho_alpha
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage098_rho_alpha_selected_ratio__phase_b__rho_alpha.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 098
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_098.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: With \(\rho_\alpha=4/3\), any branch with \(\zeta_{\max}>1\) passes the support test; Family--1 does.
+- path: paper/stages/stage_098.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages~100--106 and any downstream use of \(\rho_\alpha=4/3\), \(\zeta_{\rm
+    req}=1/3\), or \(N_Q\).  When cited downstream, the status tag above must be carried with the result; the card is a derivation
+    ledger entry, not an unconditional actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 10
+  role: notes_stage
+  excerpt: '> does the explicit Family-1 support/source side still need to be checked separately once the actual branch loading
+    ratio is fixed?'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 16
+  role: notes_stage
+  excerpt: '`rho_alpha = 4/3`,'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 32
+  role: notes_stage
+  excerpt: '`zeta_req = (rho_alpha - 1) / (1 - eps_blk (2 - rho_alpha)).`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 36
+  role: notes_stage
+  excerpt: '`rho_alpha = 4/3`'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 68
+  role: notes_stage
+  excerpt: '> for the actual isotropic branch with `rho_alpha = 4/3`, any explicit support/source family whose constructive
+    ceiling satisfies `zeta_max > 1` already passes the support test throughout the full admissible blocked regime.'
+- path: notes/stages/moving_throat_pde_stage098_family1_support_is_automatic.md
+  line: 70
+  role: notes_stage
+  excerpt: So the support/source side is automatic once the actual isotropic branch is fixed.
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: rho = sp.Rational(4, 3)
+- path: scripts/moving_throat_pde_stage098_family1_support_is_automatic_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: zeta_req = sp.simplify((rho - 1) / (1 - eps * (2 - rho)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

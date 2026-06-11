@@ -1,0 +1,49 @@
+schema_version: 1
+candidate_id: fit_stage_243_k_turn
+parameter_name: K_turn
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_243_k_turn__phase_b__k_turn.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '243'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 59
+  role: notes_stage
+  excerpt: '- **Stage 242**, which turned selected support placement and coherent orbit lock into an actual branch packet,'
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 98
+  role: notes_stage
+  excerpt: Stage 242 returns the concrete front-end packet
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 215
+  role: notes_stage
+  excerpt: So the leakage channel is nonzero as soon as the transverse-current lift `\ell_w` is turned on.
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 600
+  role: notes_stage
+  excerpt: '> turning on `J^w`, turning on non-rigid `U/V` response, or allowing compensated sign-changing source data does
+    **not** adjoin a new `1/x`-type or Yukawa-`1/x` same-charge attraction.'
+- path: notes/stages/moving_throat_pde_stage243_relaxed_constraint_branch_declaration_and_short_range_open_system_compiler_sympy_audit.md
+  line: 679
+  role: notes_stage
+  excerpt: 'Stage 244 should take the newly declared open-system lane and compile the reduced observables that actually turn
+    on once `J^w` is allowed:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

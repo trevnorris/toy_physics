@@ -1,0 +1,60 @@
+schema_version: 1
+candidate_id: fit_stage_207_q_i
+parameter_name: Q_i
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_207_q_i__phase_b__q_i.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '207'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 367
+  role: notes_stage
+  excerpt: \mathcal Q_i:=(\tau_{i,\rm hi},W_i)
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 375
+  role: notes_stage
+  excerpt: 3. among overlapping surviving rows, sort lexicographically by `\(\mathcal Q_i\)`.
+- path: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+  line: 429
+  role: notes_stage
+  excerpt: Those data determine the entire primitive certified ray table, the primitive eliminations, and—when brackets separate—the
+    exact primitive winner.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    - paper/stages/stage_207.tex
+    - research/pde_ledger/paper/stages/stage_207.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage207_primitive_ray_hessian_envelopes_and_certified_ray_table.md
+    - paper/stages/stage_207.tex
+    - research/pde_ledger/paper/stages/stage_207.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

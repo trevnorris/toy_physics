@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_168_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_168_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '168'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+  line: 374
+  role: notes_stage
+  excerpt: Requiring preservation of the canonical conservative even \(l=2\) fingerprint means
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    - paper/stages/stage_168.tex
+    - research/pde_ledger/paper/stages/stage_168.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage168_off_bundle_slippage.md
+    - paper/stages/stage_168.tex
+    - research/pde_ledger/paper/stages/stage_168.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

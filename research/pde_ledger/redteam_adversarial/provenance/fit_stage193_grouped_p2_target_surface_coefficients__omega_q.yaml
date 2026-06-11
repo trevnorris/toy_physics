@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage193_grouped_p2_target_surface_coefficients
+parameter_name: Omega_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage193_grouped_p2_target_surface_coefficients__phase_b__omega_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '193'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 49
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm cons}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 51
+  role: notes_stage
+  excerpt: \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2},
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 63
+  role: notes_stage
+  excerpt: D_A^{(\mathrm{cons})}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 65
+  role: notes_stage
+  excerpt: D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6),
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 138
+  role: notes_stage
+  excerpt: D_Q^{(\mathrm{cons})}(\omega)=D_0+D_2\omega^2+D_4\omega^4+O(\omega^6),
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 142
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm cons}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 144
+  role: notes_stage
+  excerpt: \frac{D_0}{D_Q^{(\mathrm{cons})}(\omega)}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 146
+  role: notes_stage
+  excerpt: 1+\bar\nu_2\omega^2+\bar\nu_4\omega^4+O(\omega^6).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 222
+  role: notes_stage
+  excerpt: \Omega_Q^2:=-\frac{D_0}{4D_2}.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 227
+  role: notes_stage
+  excerpt: \bar\nu_2=-\frac{D_2}{D_0}=\frac{1}{4\Omega_Q^2},
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 231
+  role: notes_stage
+  excerpt: \bar\nu_4=4\bar\nu_2^{\,2}=\frac{1}{4\Omega_Q^4},
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 236
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm cons}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 238
+  role: notes_stage
+  excerpt: \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 243
+  role: notes_stage
+  excerpt: \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 245
+  role: notes_stage
+  excerpt: 1+\frac{\omega^2}{4\Omega_Q^2}+\frac{\omega^4}{4\Omega_Q^4}+O(\omega^6)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 247
+  role: notes_stage
+  excerpt: 1+\bar\nu_2\omega^2+\bar\nu_4\omega^4+O(\omega^6).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 253
+  role: notes_stage
+  excerpt: '> \(\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}\)'
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 268
+  role: notes_stage
+  excerpt: \mathcal D^{(0)}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 270
+  role: notes_stage
+  excerpt: \mathcal D_{l=0}(\omega)\oplus \mathcal D_{l=2}(\omega)\oplus\cdots.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 279
+  role: notes_stage
+  excerpt: \mathcal D(\omega,\chi)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 282
+  role: notes_stage
+  excerpt: \mathcal D_{0}(\omega) & \chi\,C^T(\omega)\\[4pt]
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 283
+  role: notes_stage
+  excerpt: \chi\,C(\omega) & \mathcal D_{2}(\omega)I_3
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 295
+  role: notes_stage
+  excerpt: \mathcal D_{2,\rm eff}(\omega,\chi)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 297
+  role: notes_stage
+  excerpt: \mathcal D_2(\omega)I_3
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 299
+  role: notes_stage
+  excerpt: \chi^2\,C(\omega)\,\mathcal D_0(\omega)^{-1}C(\omega)^T.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 309
+  role: notes_stage
+  excerpt: \partial_\chi\mathcal D_{2,\rm eff}(\omega,\chi)\big|_{\chi=0}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 344
+  role: notes_stage
+  excerpt: \widehat Y_Q^{\rm cons}(\omega)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 346
+  role: notes_stage
+  excerpt: \frac34+\frac14\frac{1}{1-\omega^2/\Omega_Q^2}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 347
+  role: notes_stage
+  excerpt: +O(\omega^6)
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 398
+  role: notes_stage
+  excerpt: '- the exact `\(\frac34+\frac14(1-\omega^2/\Omega_Q^2)^{-1}\)` series on that surface,'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: omega = sp.symbols("omega", real=True)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: OmegaQ2 = sp.simplify(-D0 / (4 * D2))
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Y_pole = sp.simplify(sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2 / OmegaQ2))
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: Y_pole_series = sp.series(Y_pole, omega, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: Y_expected = sp.expand(1 + nu2_common * omega**2 + nu4_common.subs(D4, D4_onepole) * omega**4)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: print("Omega_Q^2 =")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: sp.pprint(OmegaQ2)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: print("Y_pole(omega) =")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: 'D0scalar = sp.symbols("D0scalar", nonzero=True, real=True)  # eliminated l=0 scalar/geometry block D_0(omega)'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: 'D2blk = sp.symbols("D2blk", nonzero=True, real=True)         # leading isotropic grouped l=2 block D_2(omega)'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

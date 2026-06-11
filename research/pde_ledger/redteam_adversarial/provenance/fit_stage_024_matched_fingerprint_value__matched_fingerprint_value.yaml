@@ -1,0 +1,127 @@
+schema_version: 1
+candidate_id: fit_stage_024_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_024_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '024'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_024.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~024 takes the grouped coefficients of Stage~023 and gives them their first explicit
+    overlap-integral interpretation.  It proves that the angular source map is exact on the canonical isotropic branch, that
+    \(O(3)\)-invariant kernels collapse the grouped lanes to common values, and that the first weak-axisymmetric quadrupole
+    splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).}
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 25
+  role: notes_stage
+  excerpt: 3. an `O(3)` isotropy theorem showing that every isotropic reduced kernel collapses the three grouped lanes to
+    one common value,
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 70
+  role: notes_stage
+  excerpt: So on the natural isotropic source map the **angular** matching matrix is exactly the identity.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 223
+  role: notes_stage
+  excerpt: 'So the weak axisymmetric quadrupole background does **not** produce an arbitrary lane splitting. It produces one
+    universal angular fingerprint:'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 229
+  role: notes_stage
+  excerpt: After regrouping the `c/s` pairs into the three grouped lanes, the pattern is
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 337
+  role: notes_stage
+  excerpt: So on that branch the remaining theorem gap is not isotropy itself. It is the actual scalar value of the common
+    radial/axial overlap data.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 371
+  role: notes_stage
+  excerpt: 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-024 angular fingerprints.
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 216
+  role: sympy_script
+  excerpt: print("to collapse to one common scalar value on the isotropic branch.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    source_queries:
+    - notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+    - paper/stages/stage_024.tex
+    - research/pde_ledger/paper/stages/stage_024.tex
+    nodes:
+    - id: MT_STAGE024_OVERLAP_ISOTROPY
+      label: Stage 024 overlap isotropy theorem
+      layer: derivation
+      type: moving_throat_stage
+      status: exact_within_O3_reduced_kernel
+      meaning: Proves angular source map identity and O(3) isotropy; first weak-axisymmetric splitting law.
+      math:
+      - mhat_ang=1
+      - (20,21,22)~(1,1/2,-1)
+      - b=3a
+      sources:
+      - research/pde_ledger/paper/stages/stage_024.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage024_overlap_isotropy.md
+    - id: EQ_WEAK_AXISYM_SIGNATURE
+      label: Weak-axisymmetric grouped signature
+      layer: equation_anchor
+      type: equation
+      status: exact_angular_first_order
+      meaning: Diagnostic first-order splitting law for a weak axisymmetric quadrupole perturbation.
+      expression: (20,21,22) ~ (1, 1/2, -1), equivalently b=3a
+      sources:
+      - research/pde_ledger/paper/stages/stage_024.tex
+      - notes/pde_audit_full.md
+      - notes/5pn/5pn_notes_full.md
+      parent_node: MATH_WEAK_AXISYM_SPLITTING
+      legacy_sources:
+      - moving_throat_pde_stage024_overlap_isotropy.md
+      - pde_audit_full.md
+      - 5pn_notes_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_024.tex
+        line: 149
+        heading_level: paragraph
+        heading: 4. Weak-axisymmetric quadrupole splitting.
+        nearest_label:
+          name: eq:app-stage024-deltaK-axisym
+          line: 152
+        nearby_labels:
+        - name: eq:app-stage024-deltaK-axisym
+          line: 152
+        - name: eq:app-stage007-MAB20
+          line: 157
+        - name: eq:app-stage007-axisym-matrix
+          line: 162
+        - name: eq:app-stage007-lambda-signature
+          line: 169
+        - name: eq:app-stage007-x-signature
+          line: 179
+        - name: eq:app-stage007-b-3a
+          line: 188
+        match_basis: semantic_heading_match
+        match_score: 0.612
+        confidence: medium
+  graph_gaps: []
+provenance_findings: []

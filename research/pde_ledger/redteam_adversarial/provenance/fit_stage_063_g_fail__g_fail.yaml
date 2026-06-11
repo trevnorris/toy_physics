@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage_063_g_fail
+parameter_name: G_fail
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_063_g_fail__phase_b__g_fail.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '063'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_063.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~063 turns the microscopic gain formula into exact fail/succeed surfaces for confinement-loading
+    amplitude and source/support coherence.}
+- path: paper/stages/stage_063.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The parent gain formula, \(G_{\rm fail}\), \(G_{\rm suff}\), and the Cauchy bound on \(C_{\sigma\phi}^2\).}
+- path: paper/stages/stage_063.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: g_{\phi,{\rm fail}}^2
+- path: paper/stages/stage_063.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: =\frac{mc_{s,*}^2K_XN_{\sigma\sigma}G_{\rm fail}}{\rho_*O_{\sigma\phi}^2},
+- path: paper/stages/stage_063.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: C_{\rm fail}^2=\frac{mc_{s,*}^2K_XG_{\rm fail}}{\rho_*g_\phi^2N_{\phi\phi}},
+- path: paper/stages/stage_063.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: C_{\rm fail}^2>1
+- path: paper/stages/stage_063.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: \text{no source profile in this support channel can reach even the fail threshold.}
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 22
+  role: notes_stage
+  excerpt: 1. inserting the parent gain into the Stage-061 thresholds gives the exact parent fail/succeed conditions
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 24
+  role: notes_stage
+  excerpt: '`g_phi^2 <= g_(phi,fail)^2`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 30
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 31
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X N_(sigma sigma) G_fail / [ rho_* O_(sigma phi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 37
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 38
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X G_fail / [ rho_* N_(phi phi) C_(sigma phi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 44
+  role: notes_stage
+  excerpt: '`C_fail^2 = m c_(s*)^2 K_X G_fail / [ rho_* g_phi^2 N_(phi phi) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 50
+  role: notes_stage
+  excerpt: '`C_fail^2 <= C_suff^2;`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 55
+  role: notes_stage
+  excerpt: '`rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) < G_fail,`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 57
+  role: notes_stage
+  excerpt: then the branch fails **for every possible** source profile in the chosen support channel;
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 65
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 71
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 78
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 86
+  role: notes_stage
+  excerpt: So the remaining PDE-side theorem gap is no longer “find some support/source gain.” It is now the exact comparison
+    of one parent confinement-loading amplitude and one source/support coherence factor against the explicit fail/succeed
+    thresholds above.
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 94
+  role: notes_stage
+  excerpt: '`G_micro <= G_fail(kappa,eta)`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 102
+  role: notes_stage
+  excerpt: 'Then the fail/succeed thresholds on the parent loading amplitude are exact:'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 104
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 105
+  role: notes_stage
+  excerpt: '`= m c_(s*)^2 K_X N_(sigma sigma) G_fail / [ rho_* O_(sigma phi)^2 ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 112
+  role: notes_stage
+  excerpt: '- if `g_phi^2 <= g_(phi,fail)^2`, the chosen parent branch cannot reach the target inside this operator family,'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 114
+  role: notes_stage
+  excerpt: '- only the interval `g_(phi,fail)^2 < g_phi^2 < g_(phi,suff)^2` still requires the full fixed-point solve.'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 130
+  role: notes_stage
+  excerpt: '`C_fail^2 = m c_(s*)^2 K_X G_fail / [ rho_* g_phi^2 N_(phi phi) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 136
+  role: notes_stage
+  excerpt: '- if `C_(sigma phi)^2 <= C_fail^2`, fail;'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 140
+  role: notes_stage
+  excerpt: Because `G_fail <= G_suff`, one has
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 142
+  role: notes_stage
+  excerpt: '`C_fail^2 <= C_suff^2.`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 164
+  role: notes_stage
+  excerpt: '`G_max(g_phi) < G_fail(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 166
+  role: notes_stage
+  excerpt: then the branch fails for **every possible** source profile in that support channel.
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 172
+  role: notes_stage
+  excerpt: '`rho_* g_phi^2 N_(phi phi) / (m c_(s*)^2 K_X) < G_fail(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 184
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 194
+  role: notes_stage
+  excerpt: 'For failure:'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 196
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 228
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2 = m c_(s*)^2 K_X G_fail / rho_*,`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 234
+  role: notes_stage
+  excerpt: '`g_(phi,fail)^2 = m c_(s*)^2 T_X Pe_req / [ rho_* L^2 Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage063_parent_thresholds.md
+  line: 256
+  role: notes_stage
+  excerpt: '> does the completed moving-throat branch generate sufficient **parent confinement loading** and sufficient **source/support
+    coherence** to cross the explicit fail/succeed surfaces above?'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,97 @@
+schema_version: 1
+candidate_id: fit_stage102_everything_else_fixed
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage102_everything_else_fixed__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '102'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_102.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_102.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Retarded \(2.5\)PN factorization} block.  The
+    computation isolates the reduced product \(\widehat m_0^{\,2}\chi_QN_Q=1\) and the canonical condition \(\chi_Q=1\).}
+- path: paper/stages/stage_102.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 102: At 2.5PN the Only Live Retarded Obstruction is the Leading `omega^5` Outgoing
+    Normalization'
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 5
+  role: notes_stage
+  excerpt: Stage 84 reduced the last finite reduced 2.5PN question to one outgoing-normalization factor `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 13
+  role: notes_stage
+  excerpt: So the only live retarded obstruction at 2.5PN is the leading `omega^5` outgoing-normalization factor `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 22
+  role: notes_stage
+  excerpt: '`= 3/4 + (1/4)/(1 - omega^2/Omega_Q^2 - i chi_Q sigma_Q^can omega^5 - i tau_Q omega^7) + O(omega^8).`'
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 28
+  role: notes_stage
+  excerpt: '`  + i chi_Q 9/(32 Omega_Q^5) omega^5 + O(omega^6).`'
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 32
+  role: notes_stage
+  excerpt: So at 2.5PN order, the only retarded parameter that matters is `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 44
+  role: notes_stage
+  excerpt: 5. so the only remaining reduced obstruction is
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 46
+  role: notes_stage
+  excerpt: '`Delta_Q = chi_Q - 1`.'
+- path: notes/stages/moving_throat_pde_stage102_higher_odd_irrelevance.md
+  line: 56
+  role: notes_stage
+  excerpt: '> does the actual passive/outgoing grouped-`P2` quadrupole branch have the canonical compact outgoing `omega^5`
+    coefficient, i.e. `chi_Q = 1`?'
+- path: scripts/moving_throat_pde_stage102_higher_odd_irrelevance_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: D3 — the canonical odd coefficient at omega^5 equals chiQ * 9/(32 Omega^5).
+- path: scripts/moving_throat_pde_stage102_higher_odd_irrelevance_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: Omega, chiQ, tauQ = sp.symbols('Omega chiQ tauQ', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage102_higher_odd_irrelevance_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: Y = sp.Rational(3,4) + sp.Rational(1,4) / (1 - omega**2/Omega**2 - sp.I*chiQ*sigma_can*omega**5 - sp.I*tauQ*omega**7)
+- path: scripts/moving_throat_pde_stage102_higher_odd_irrelevance_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: sp.im(Yser5.coeff(omega, 5)) - chiQ * sp.Rational(9, 32) / Omega**5)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

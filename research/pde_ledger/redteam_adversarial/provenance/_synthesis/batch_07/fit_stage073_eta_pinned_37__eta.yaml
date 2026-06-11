@@ -1,0 +1,25 @@
+candidate_id: fit_stage073_eta_pinned_37
+parameter_name: eta
+origin_claims:
+  - parameter: eta
+    introduced_at_stage: 073
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 92
+      excerpt: "`eta = 37.`"
+constraints:
+  - parameter: eta
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 88
+      excerpt: "`eta := K_m L / T_X = L/ell = Lambda_ell.`"
+downstream_dependents: [74]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "eta=37 is forced (internal_consistency) by eta = K_m L/T_X = L/ell = Lambda_ell = 37 given the stage-071 mouth closure and the frozen geometry ratios. However its numeric value is wholly inherited from upstream posited choices: the K_m=T_X/ell closure (free_choice, stage 071) and the L/a, ell/a reference freezes (free_choice, this stage). Classified internal_consistency because, given those inputs, 37 is forced; flagged because the inputs are not themselves derived."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 84, excerpt: "`K_m = T_X / ell.`" }
+      - { path: notes/stages/moving_throat_pde_stage071_tanh_wall_branch.md, line: 95, excerpt: "This is not a universal theorem of the parent PDE; it is the first natural local Robin closure consistent with the same wall-shell support scale." }

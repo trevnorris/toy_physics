@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage032_kappa_values_exact
+parameter_name: kappa_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage032_kappa_values_exact__phase_b__kappa_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '032'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_032.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~032 removes the abstract selected source-map factor on the natural D/N branch.  The
+    same finite-throat D/N load that drives the selected wall profile also couples the orbital/worldtube source to the selected
+    mode, giving \(\widehat m_-^2=s_-/\kappa_0^2\).}
+- path: paper/stages/stage_032.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: v=(\kappa_0,\kappa_1)^T.
+- path: paper/stages/stage_032.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: J_-(0)=g_QQ_{\rm STF}\kappa_0.
+- path: paper/stages/stage_032.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \widehat m_-=\frac{v\cdot e_-}{\kappa_0},
+- path: paper/stages/stage_032.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: \widehat m_-^{\,2}=\frac{s_-}{\kappa_0^2}}.
+- path: paper/stages/stage_032.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: Since \(s_-\) increases from \(\kappa_0^2\) toward \(\sigma=\kappa_0^2+\kappa_1^2\),
+- path: paper/stages/stage_032.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: 1\leq\widehat m_-^{\,2}<\frac{\sigma}{\kappa_0^2}=\frac{11}{9}}.
+- path: paper/stages/stage_032.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: =\frac{\beta_0s_-^2}{\kappa_0^2\lambda_-}}.
+- path: paper/stages/stage_032.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: \item At zero loading the normalization denominator is \(\kappa_0\), giving \(\widehat m_-=1\) at onset.
+- path: paper/stages/stage_032.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \item The upper bound \(11/9\) follows from \(\sigma/\kappa_0^2=(\kappa_0^2+\kappa_1^2)/\kappa_0^2=1+2/9\).
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 14
+  role: notes_stage
+  excerpt: '> in the first explicit finite-throat axial source model, does the same D/N overlap structure that generates the
+    mixed-sector loading also determine the selected source map, so that `mhat_-` stops being an independent parameter?'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 17
+  role: notes_stage
+  excerpt: In the first local isotropic kernel model built on the exact N/N wall basis and the exact D/N half-wave, every
+    relevant wall–internal and source–wall coupling is determined by the same overlap vector
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 19
+  role: notes_stage
+  excerpt: '`v = (kappa_0, kappa_1)^T`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 23
+  role: notes_stage
+  excerpt: '`mhat_- = (v.e_-)/kappa_0`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 27
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 34
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-} = beta_0 s_-^2 / (kappa_0^2 lambda_-)`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 36
+  role: notes_stage
+  excerpt: which is now completely determined by the conservative selected-mode spectral data and the outgoing transfer factor.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 67
+  role: notes_stage
+  excerpt: '`kappa_0 = 2 sqrt(2) / pi`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 69
+  role: notes_stage
+  excerpt: '`kappa_1 = - 4 / (3 pi)`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 71
+  role: notes_stage
+  excerpt: '`v = (kappa_0, kappa_1)^T`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 75
+  role: notes_stage
+  excerpt: '`sigma = v.v = kappa_0^2 + kappa_1^2 = 88 / (9 pi^2)`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 79
+  role: notes_stage
+  excerpt: '`kappa_0^2 = 8 / pi^2`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 83
+  role: notes_stage
+  excerpt: '`sigma / kappa_0^2 = 11 / 9`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 183
+  role: notes_stage
+  excerpt: So the external source vector in wall-coordinate space is simply
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 197
+  role: notes_stage
+  excerpt: '`J_-(0) = g_Q Q_STF kappa_0`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 201
+  role: notes_stage
+  excerpt: '`mhat_- = J_-(alpha_0) / J_-(0) = (v.e_-) / kappa_0`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 205
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 216
+  role: notes_stage
+  excerpt: '`kappa_0^2 <= s_- < sigma`,'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 220
+  role: notes_stage
+  excerpt: '`1 <= mhat_-^2 < sigma / kappa_0^2 = 11/9`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 231
+  role: notes_stage
+  excerpt: The selected-branch normalization problem cannot be hidden inside a huge undetermined source-map amplification
+    on the natural D/N source branch.
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 248
+  role: notes_stage
+  excerpt: '`mhat_-^2 P_{0,-} = beta_0 s_-^2 / ( kappa_0^2 lambda_- )`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 252
+  role: notes_stage
+  excerpt: '`beta_0 s_-^2 / ( kappa_0^2 lambda_- ) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 260
+  role: notes_stage
+  excerpt: '- and the known flat-branch overlap `kappa_0`.'
+- path: notes/stages/moving_throat_pde_stage032_source_map_from_mode_integrals.md
+  line: 273
+  role: notes_stage
+  excerpt: '`mhat_-^2 = s_- / kappa_0^2`.'
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: kappa0 = sp.simplify(sp.integrate(u0 * f0, (s, 0, L)))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: kappa1 = sp.simplify(sp.integrate(u1 * f0, (s, 0, L)))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("kappa0 =", kappa0)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print("kappa1 =", kappa1)
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("sigma =", sp.simplify(kappa0**2 + kappa1**2))
+- path: scripts/moving_throat_pde_stage032_source_map_from_mode_integrals_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("sigma/kappa0^2 =", sp.simplify((kappa0**2 + kappa1**2) / kappa0**2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,31 @@
+candidate_id: fit_stage070_n5_eos_exponent
+parameter_name: n
+origin_claims:
+  - parameter: n
+    introduced_at_stage: 062
+    introduced_at_line: 92
+    citation:
+      path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+      line: 92
+      excerpt: "`U(rho) = K rho^5 / 4,`"
+constraints:
+  - parameter: n
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+      line: 88
+      excerpt: "The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen stiff EOS,"
+downstream_dependents: [70, 71, 73, 74, 167]
+provenance_findings:
+  - type: paper_card_overclaim
+    severity: needs_triage
+    summary: "The stage-070 paper card lists 'frozen n=5 compressional stiffness' as an Input, but stage 070's OWN notes and sympy audit never mention n=5 or any EOS exponent — they use only the generic stiffness H_w = m c_s^2/rho_w. The n=5 value is a posited ansatz of the parent EOS U(rho)=K rho^5/4 introduced upstream at stage 062 ('the frozen stiff EOS'); stage 070 silently inherits it. The scanner anchored the candidate to 070, but 070 establishes no notes-level provenance for it."
+    citations:
+      - { path: paper/stages/stage_070.tex, line: 7, excerpt: "\\stagefield{Inputs}{A support perturbation \\(\\delta\\rho(s,y)=q(s)\\chi_\\phi(y)\\), wall density \\(\\rho_w\\), and frozen \\(n=5\\) compressional stiffness.}" }
+      - { path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md, line: 39, excerpt: "`H_w := h'(rho_w) = m c_(s,w)^2 / rho_w.`" }
+      - { path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md, line: 86, excerpt: "## 1. Parent 4D matter energy and the `n=5` compressional stiffness" }
+  - type: free_choice
+    severity: low
+    summary: "n=5 is a posited model ansatz (the stiff-polytropic EOS exponent P=K rho^5), not derived or matched to any external target; the notes present it as a frozen choice of the parent action."
+    citations:
+      - { path: notes/stages/moving_throat_pde_handoff_full.md, line: 154, excerpt: "The frozen stiff-polytropic equation of state is" }

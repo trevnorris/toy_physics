@@ -1,0 +1,25 @@
+candidate_id: fit_stage074_chi_s_now_fixes
+parameter_name: chi_s
+origin_claims:
+  - parameter: chi_s
+    introduced_at_stage: 074
+    introduced_at_line: 75
+    citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 75
+      excerpt: "`chi_s = 37/2 = 18.5.`"
+constraints:
+  - parameter: chi_s
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 71
+      excerpt: "`chi_s = L / (2 ell) = Lambda_ell / 2.`"
+downstream_dependents: [75]
+provenance_findings:
+  - type: constraint_kind_ambiguous
+    severity: low
+    summary: "chi_s = 37/2 is FORCED (internal_consistency) by chi_s = L/(2 ell) = Lambda_ell/2 once the healing-lock closure ell = hbar/(2 m c_sw) is imposed and Lambda_ell=37 is fixed. But its numeric value is wholly inherited from upstream posited choices: the healing-lock closure (free_choice, this stage) and the L/a, ell/a reference freezes (free_choice, stage 073). Classified internal_consistency because the value is algebraically forced given the closure; flagged because the closure and geometry inputs are not themselves derived."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md, line: 67, excerpt: "`ell = hbar / (2 m c_(s,w)),`" }
+      - { path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md, line: 73, excerpt: "Since Stage 073 fixed `Lambda_ell = 37`, the same branch now fixes" }

@@ -1,0 +1,105 @@
+schema_version: 1
+candidate_id: fit_stage172_canonical_branch_collapse
+parameter_name: G1_frak
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage172_canonical_branch_collapse__phase_b__g1_frak.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '172'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_172.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Identifies \(\mathfrak K_1=-D_0u_2^{(1)}\) and \(\mathfrak G_1=D_0P_1\), reducing the linear
+    grouped outlet problem to physical slopes.}
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 9
+  role: notes_stage
+  excerpt: \mathfrak K_1,\qquad \mathfrak G_1,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 32
+  role: notes_stage
+  excerpt: \mathfrak K_1=-D_0\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 34
+  role: notes_stage
+  excerpt: \mathfrak G_1=D_0\,P_1,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 118
+  role: notes_stage
+  excerpt: '## 2. Exact collapse of the Stage 171 obstruction pair'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 120
+  role: notes_stage
+  excerpt: Stage 171 reduced the direct grouped outlet obstructions to
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 166
+  role: notes_stage
+  excerpt: 'So the Stage 171 outlet-obstruction pair has now been rewritten directly in the physical grouped response variables:'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 183
+  role: notes_stage
+  excerpt: \mathcal K_A=\epsilon\,\lambda_A\,\mathfrak K_1,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 185
+  role: notes_stage
+  excerpt: \mathcal G_A=\epsilon\,\lambda_A\,\mathfrak G_1.
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 197
+  role: notes_stage
+  excerpt: \mathfrak K_1=-D_0\,u_2^{(1)},
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 199
+  role: notes_stage
+  excerpt: \mathfrak G_1=D_0\,P_1.
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 209
+  role: notes_stage
+  excerpt: \mathfrak K_1=-\frac{4D_0}{\epsilon}\,a_{u,2}
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 215
+  role: notes_stage
+  excerpt: \mathfrak G_1=\frac{4D_0}{\epsilon}\,a_P
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 322
+  role: notes_stage
+  excerpt: Once the hidden-even canonical fingerprint is preserved, one imposes
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 361
+  role: notes_stage
+  excerpt: '- first to \((\mathfrak K_1,\mathfrak G_1)\),'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 374
+  role: notes_stage
+  excerpt: '> compute the primitive grouped perturbations of the wall/BdG/Maxwell/mixed bundle and then form \(\mathfrak K_1,\mathfrak
+    G_1\).'
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 380
+  role: notes_stage
+  excerpt: 1. the microscopic obstruction pair is exactly the physical grouped-response/prefactor slope pair,
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 382
+  role: notes_stage
+  excerpt: (\mathfrak K_1,\mathfrak G_1)
+- path: notes/stages/moving_throat_pde_stage172_physical_slope_collapse.md
+  line: 396
+  role: notes_stage
+  excerpt: 4. and once the even canonical fingerprint is preserved, the remaining linear grouped `2.5`PN defect is simply
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

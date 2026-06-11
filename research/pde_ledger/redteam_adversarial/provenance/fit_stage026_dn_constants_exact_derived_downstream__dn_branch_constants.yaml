@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage026_dn_constants_exact_derived_downstream
+parameter_name: dn_branch_constants
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage026_dn_constants_exact_derived_downstream__phase_b__dn_branch_constants.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '026'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_026.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~026 evaluates the first concrete axial overlap model.  It chooses a finite interval,
+    a constant N/N wall/brane profile, and the lowest D/N half-wave for support and mixed channels.  The result is the exact
+    overlap \(\kappa=2\sqrt2/\pi\) and the first finite-throat branch-level normalization equation.}
+- path: paper/stages/stage_026.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: The minimal branch keeps \(n=0\).  The exact overlap is
+- path: paper/stages/stage_026.tex
+  line: 49
+  role: paper_stage_tex
+  excerpt: \paragraph{2. Branch-level coupling constants.}
+- path: paper/stages/stage_026.tex
+  line: 126
+  role: paper_stage_tex
+  excerpt: Thus the first concrete branch condition is
+- path: paper/stages/stage_026.tex
+  line: 128
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage026-branch-condition}
+- path: paper/stages/stage_026.tex
+  line: 141
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~027 tests nonconstant wall/brane profiles.  Stage~032 reuses the same finite-throat
+    D/N source overlap to fix \(\widehat m_-\).  Stages~035--036 use the exact D/N constants derived from this branch.}
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 026: Concrete Finite-Throat Axial Modes, Exact Overlap Constants, and the First Branch-Level
+    Normalization Test'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 20
+  role: notes_stage
+  excerpt: The main result of this stage is that on the first natural mixed axial branch the whole overlap problem collapses
+    to a single geometric constant
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 33
+  role: notes_stage
+  excerpt: It is the value of a small number of branch parameters on one concrete finite-throat mode family.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 91
+  role: notes_stage
+  excerpt: On the minimal branch we keep only `n=0`.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 93
+  role: notes_stage
+  excerpt: '### 1.3 Wall and brane-like profile choice on the first concrete branch'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 95
+  role: notes_stage
+  excerpt: The first concrete isotropic branch is therefore
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 102
+  role: notes_stage
+  excerpt: On that branch we write
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 110
+  role: notes_stage
+  excerpt: This is the simplest branch that
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 118
+  role: notes_stage
+  excerpt: '## 2. Exact axial overlap constants'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 124
+  role: notes_stage
+  excerpt: So the lowest branch value is
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 132
+  role: notes_stage
+  excerpt: The needed minimal-branch overlap integrals are therefore
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 142
+  role: notes_stage
+  excerpt: So on this concrete branch all radial/axial overlap information collapses to the single geometric constant `kappa`.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 147
+  role: notes_stage
+  excerpt: '- so the lowest trapped half-wave `n=0` is automatically the dominant branch,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 154
+  role: notes_stage
+  excerpt: '## 3. Explicit minimal-branch coefficients'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 166
+  role: notes_stage
+  excerpt: On the concrete branch this becomes
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 176
+  role: notes_stage
+  excerpt: So the minimal-branch Stage-025 quantities are
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 202
+  role: notes_stage
+  excerpt: '## 4. First branch-level normalization test'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 210
+  role: notes_stage
+  excerpt: This is the first fully explicit branch-level normalization equation derived from an actual finite-throat mode
+    problem.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 218
+  role: notes_stage
+  excerpt: 'So on this branch the GR quadrupole target is equivalent to one concrete statement:'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 226
+  role: notes_stage
+  excerpt: '## 5. Interpreting the wall stiffness on this branch'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 240
+  role: notes_stage
+  excerpt: This is important for the roadmap because the conservative 3PN program already isolated a separate geometry lane,
+    and the Stage-025 gap still involved the unsolved wall stiffness. On the present branch, the higher-order quadrupole normalization
+    target directly constrains that same geometry-side combination.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 252
+  role: notes_stage
+  excerpt: 'The following are exact on the chosen finite-throat branch:'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 257
+  role: notes_stage
+  excerpt: '- the minimal-branch value `kappa = 2 sqrt(2) / pi`,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 262
+  role: notes_stage
+  excerpt: What is **not** yet fixed from first principles are the branch parameters
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 275
+  role: notes_stage
+  excerpt: It is one explicit finite-throat branch equation in a short list of reduced parameters.
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 285
+  role: notes_stage
+  excerpt: '> compute the radial/axial overlap integrals on the true branch.'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 287
+  role: notes_stage
+  excerpt: After this stage, the first concrete finite-throat branch shows that
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 290
+  role: notes_stage
+  excerpt: '- the lowest D/N half-wave is automatically the dominant support/mixed branch,'
+- path: notes/stages/moving_throat_pde_stage026_concrete_axial_overlaps.md
+  line: 294
+  role: notes_stage
+  excerpt: It is to decide whether the real moving-throat branch is better approximated by this N/N–D/N axial family or whether
+    a different wall-profile family is forced by the full PDE.
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: This script verifies the first concrete finite-throat axial branch used after the
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: • the minimal-branch value kappa = 2*sqrt(2)/pi,
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: stiffness K_req on the branch.
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: formal integrals into one explicit branch-level algebraic normalization test.
+- path: scripts/moving_throat_pde_stage026_concrete_axial_overlaps_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: subbanner("II.2 — Lowest-branch overlap")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

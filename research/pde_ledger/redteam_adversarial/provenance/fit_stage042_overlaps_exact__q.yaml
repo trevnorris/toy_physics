@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage042_overlaps_exact
+parameter_name: q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage042_overlaps_exact__phase_b__q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '042'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_042.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~041 selected branch with \(n=n_{\rm req}\), mixed direction \(q\), support direction
+    \(r\), and source direction \(t\).}
+- path: paper/stages/stage_042.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: With \(n=n_{\rm req}\), the selected eigenvector ratio is
+- path: paper/stages/stage_042.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_042.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage042-evec-rank2}
+- path: paper/stages/stage_042.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: =\frac{m(q-r)+r\xi}{\delta+\xi-mq(q-r)}}.
+- path: paper/stages/stage_042.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_042.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_042.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage042-Dqr}
+- path: paper/stages/stage_042.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: D_{q,r}(\xi,\delta;m)
+- path: paper/stages/stage_042.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: =[\delta+\xi-mq(q-r)]^2+[m(q-r)+r\xi]^2.
+- path: paper/stages/stage_042.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_042.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_042.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage042-z-overlap}
+- path: paper/stages/stage_042.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: =\frac{[\delta+(1+qr)\xi]^2}{D_{q,r}(\xi,\delta;m)}},
+- path: paper/stages/stage_042.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_042.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_042.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage042-s-overlap}
+- path: paper/stages/stage_042.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: =\frac{[\delta+(1+rt)\xi-m(q-r)(q-t)]^2}{D_{q,r}(\xi,\delta;m)}}.
+- path: paper/stages/stage_042.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_042.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: The one-vector result is recovered only when \(r=q\).  Otherwise, the selected-mode normalization sees a three-direction
+    geometry.
+- path: paper/stages/stage_042.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The rank--2 eigenvector \eqref{eq:app-stage042-evec-rank2} and overlap formulas \eqref{eq:app-stage042-z-overlap}--\eqref{eq:app-stage042-s-overlap}.}
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 13
+  role: notes_stage
+  excerpt: 'So the right next question is:'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 25
+  role: notes_stage
+  excerpt: That gives an exact generalized normalization function `F_(q,r,t)(xi,delta;m)`. The old Stage-040 law is recovered
+    as the special case `r=q`.
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 35
+  role: notes_stage
+  excerpt: '`K_loaded / A_0 = diag(1,1+delta) - m (1,q)^T(1,q) - n (1,r)^T(1,r),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 43
+  role: notes_stage
+  excerpt: '`n = n_req(xi,delta;m,q,r).`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 48
+  role: notes_stage
+  excerpt: '`= [ m(q-r) + r xi ] / [ delta + xi - m q(q-r) ].`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 65
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + q r) xi ]^2`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 66
+  role: notes_stage
+  excerpt: '`  / D_(q,r)(xi,delta;m),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 69
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + r t) xi - m (q-r)(q-t) ]^2`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 70
+  role: notes_stage
+  excerpt: '`  / D_(q,r)(xi,delta;m),`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 74
+  role: notes_stage
+  excerpt: '`D_(q,r)(xi,delta;m)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 75
+  role: notes_stage
+  excerpt: '`= [ delta + xi - m q(q-r) ]^2 + [ m(q-r) + r xi ]^2.`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 77
+  role: notes_stage
+  excerpt: So the normalization data no longer factor through one direction only. The mixed/outgoing overlap and the source
+    overlap are deformed differently once `q != r`.
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 85
+  role: notes_stage
+  excerpt: '`F_(q,r,t)(xi,delta;m)`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 86
+  role: notes_stage
+  excerpt: '`= [ delta + (1 + q r) xi ]^2`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 87
+  role: notes_stage
+  excerpt: '`  [ delta + (1 + r t) xi - m(q-r)(q-t) ]^2`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 88
+  role: notes_stage
+  excerpt: '`  / [ (1 - xi) D_(q,r)(xi,delta;m)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 92
+  role: notes_stage
+  excerpt: It is the object that the outgoing quadrupole bridge now depends on whenever the support direction and the mixed
+    direction differ.
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 100
+  role: notes_stage
+  excerpt: '`r = q,`'
+- path: notes/stages/moving_throat_pde_stage042_rank2_selected_mode_normalization.md
+  line: 104
+  role: notes_stage
+  excerpt: '`D_(q,q) = (delta + xi)^2 + q^2 xi^2,`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

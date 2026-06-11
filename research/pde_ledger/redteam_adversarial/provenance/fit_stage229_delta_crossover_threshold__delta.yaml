@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage229_delta_crossover_threshold
+parameter_name: delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage229_delta_crossover_threshold__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '229'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_229.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation factorizes the selected branch into numerator-like and denominator-like
+    pieces, derives the classifier threshold $\delta=8/9$, and proves the near-softening denominator-like signature.}
+- path: paper/stages/stage_229.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Selected-branch classifier theorem: the pure-transfer defect is denominator-like near softening,
+    with crossover controlled by the exact threshold $\delta=8/9$.}'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: '- **denominator-rigid** \((\delta_1=0)\),'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 23
+  role: notes_stage
+  excerpt: \Xi_1 = 2(\pi_1-\delta_1),
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: \delta_1:=\frac{\Delta_{01}}{\Delta},
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: '- denominator-rigid \((\delta_1=0)\).'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 42
+  role: notes_stage
+  excerpt: \frac{\bigl[\kappa_0^2(x+\Delta K_{\rm ax})+\kappa_1^2x\bigr]^2}
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 43
+  role: notes_stage
+  excerpt: '{\kappa_0^2(x+\Delta K_{\rm ax})^2+\kappa_1^2x^2}.'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: \delta=\frac{\Delta K_{\rm ax}}{A};
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: \delta=\frac89
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 65
+  role: notes_stage
+  excerpt: 5. and the sharp conclusion that the actual selected branch is **never** literally one of the rigid Stage-228 subcorridors
+    — it is an exact co-loading product — but it becomes unambiguously **denominator-like** near softening, and for all \(\delta\ge
+    8/9\) it is denominator-like on the entire stable branch.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: '> what are the actual selected-branch ratios \((\xi,\delta)\) on the physical moving-throat branch, and where
+    do they land on this universal classifier map?'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 80
+  role: notes_stage
+  excerpt: \Xi_1 = 2(\pi_1-\delta_1),
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: \delta_1:=\frac{\Delta_{01}}{\Delta},
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: '- the 1D denominator-rigid branch \(\delta_1=0\).'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 116
+  role: notes_stage
+  excerpt: \delta:=\frac{\Delta K_{\rm ax}}{A},
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 120
+  role: notes_stage
+  excerpt: \delta>0.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 127
+  role: notes_stage
+  excerpt: \Delta K_{\rm ax}=A\delta,
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 131
+  role: notes_stage
+  excerpt: N_-(x)=\frac{8\beta_0}{\pi^2 A}\,F(\xi,\delta),
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 136
+  role: notes_stage
+  excerpt: F(\xi,\delta)
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 138
+  role: notes_stage
+  excerpt: \frac{(9\delta+11\xi)^4}
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: '{81(1-\xi)(9\delta^2+18\delta\xi+11\xi^2)^2}.'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 148
+  role: notes_stage
+  excerpt: F(\xi,\delta)=F_{\rm num}(\xi,\delta)\,F_{\rm den}(\xi),
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: F_{\rm num}(\xi,\delta)
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \frac{(9\delta+11\xi)^4}
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 157
+  role: notes_stage
+  excerpt: '{81(9\delta^2+18\delta\xi+11\xi^2)^2},'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: L_{\rm num}(\xi,\delta)
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: \frac{72\delta^2}
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 196
+  role: notes_stage
+  excerpt: '{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)},'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 208
+  role: notes_stage
+  excerpt: \mathcal R_{ND}(\xi,\delta)
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 212
+  role: notes_stage
+  excerpt: \frac{72\delta^2(1-\xi)}{(9\delta+11\xi)(9\delta^2+18\delta\xi+11\xi^2)}.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 239
+  role: notes_stage
+  excerpt: \mathcal R_{ND}(0,\delta)=\frac{8}{9\delta}.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 245
+  role: notes_stage
+  excerpt: '- numerator-like if \(0<\delta<8/9\),'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 246
+  role: notes_stage
+  excerpt: '- exactly balanced if \(\delta=8/9\),'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: '- denominator-like if \(\delta>8/9\).'
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 257
+  role: notes_stage
+  excerpt: L_{\rm num}(\xi,\delta)\to
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 258
+  role: notes_stage
+  excerpt: \frac{72\delta^2}{(9\delta+11)(9\delta^2+18\delta+11)},
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: \lim_{\xi\to1^-}\mathcal R_{ND}(\xi,\delta)=0.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 280
+  role: notes_stage
+  excerpt: \mathcal R_{ND}(\xi,\delta)=1.
+- path: notes/stages/moving_throat_pde_stage229_selected_branch_numerator_denominator_signature_and_softening_depth_crossover_theorem_sympy_audit.md
+  line: 290
+  role: notes_stage
+  excerpt: \mathcal P(\xi,\delta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

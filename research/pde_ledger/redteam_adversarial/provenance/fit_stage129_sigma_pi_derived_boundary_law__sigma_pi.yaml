@@ -1,0 +1,159 @@
+schema_version: 1
+candidate_id: fit_stage129_sigma_pi_derived_boundary_law
+parameter_name: sigma_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage129_sigma_pi_derived_boundary_law__phase_b__sigma_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '129'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_129.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Electrochemical zero-flux law yields the exponential source profile \(\sigma_\Pi\).
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 27
+  role: notes_stage
+  excerpt: F_{\rm mouth}[\sigma]
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 31
+  role: notes_stage
+  excerpt: \Theta_\sigma\,\sigma\!\left(\ln\frac{\sigma}{\sigma_*}-1\right)
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 33
+  role: notes_stage
+  excerpt: V_m(z)\,\sigma
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 39
+  role: notes_stage
+  excerpt: \Theta_\sigma>0
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 65
+  role: notes_stage
+  excerpt: \mu_\sigma^{\rm chem}(z)
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 67
+  role: notes_stage
+  excerpt: \Theta_\sigma\ln\!\frac{\sigma}{\sigma_*}
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 78
+  role: notes_stage
+  excerpt: J_\sigma
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 80
+  role: notes_stage
+  excerpt: -M_\sigma\,\sigma\,\partial_z\mu_\sigma^{\rm chem},
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 82
+  role: notes_stage
+  excerpt: M_\sigma>0.
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 86
+  role: notes_stage
+  excerpt: J_\sigma
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 88
+  role: notes_stage
+  excerpt: -M_\sigma\left(\Theta_\sigma\,\sigma'(z)+V_1\sigma(z)\right).
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 93
+  role: notes_stage
+  excerpt: \partial_t \sigma + \partial_z J_\sigma = 0,
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 95
+  role: notes_stage
+  excerpt: J_\sigma=0,
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 99
+  role: notes_stage
+  excerpt: \Theta_\sigma\,\sigma'(z)+V_1\sigma(z)=0.
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 104
+  role: notes_stage
+  excerpt: \sigma(z)=C\,e^{-V_1 z/\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 109
+  role: notes_stage
+  excerpt: \int_0^L dz\,\sigma(z)=1,
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 114
+  role: notes_stage
+  excerpt: \sigma_{\Pi}(z)
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 118
+  role: notes_stage
+  excerpt: \Pi:=\frac{V_1L}{\Theta_\sigma}>0.
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 133
+  role: notes_stage
+  excerpt: \Pi_m=\frac{V_1L}{\Theta_\sigma}
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 135
+  role: notes_stage
+  excerpt: \frac{L}{\Theta_\sigma}
+- path: notes/stages/moving_throat_pde_stage129_mouth_boundary_layer.md
+  line: 150
+  role: notes_stage
+  excerpt: So the mouth-source ambiguity has collapsed from a free profile \(\sigma(z)\) to a
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: sigma_star = sp.symbols("sigma_star", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: sigma = Pi*sp.exp(-Pi*z/L)/(L*(1-sp.exp(-Pi)))
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: J = -M*(Theta*sp.diff(sigma, z) + V1*sigma)
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: print("sigma_Pi(z) =", sp.simplify(sigma))
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: print("Normalization =", sp.simplify(sp.integrate(sigma, (z, 0, L))))
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: print("Zero-flux current J_sigma =", J_sub)
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: mu = Theta*sp.log(sigma/sigma_star) + V1*z
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: res = sp.simplify(Theta*sp.diff(sigma, z) + V1*sigma)
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: J_from_mu = -M*sigma*sp.diff(mu, z)
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: raise AssertionError("Onsager current does not match -M*sigma*d(mu)/dz.")
+- path: scripts/moving_throat_pde_stage129_mouth_boundary_layer_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: 'if sp.simplify(sp.integrate(sigma, (z, 0, L)) - 1) != 0:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

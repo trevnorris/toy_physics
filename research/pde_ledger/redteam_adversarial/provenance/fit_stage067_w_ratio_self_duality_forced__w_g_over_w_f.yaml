@@ -1,0 +1,135 @@
+schema_version: 1
+candidate_id: fit_stage067_w_ratio_self_duality_forced
+parameter_name: w_g_over_w_f
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage067_w_ratio_self_duality_forced__phase_b__w_g_over_w_f.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '067'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 2
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 67: Exact Sech–Gaussian Coherence Resonance Benchmark'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 6
+  role: notes_stage
+  excerpt: 'The memo you shared suggests a concrete transverse profile benchmark for the parent source/support coherence:'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 13
+  role: notes_stage
+  excerpt: This stage checks that benchmark carefully and places it in the right role inside the reduced theorem program.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 19
+  role: notes_stage
+  excerpt: 1. the benchmark has an **exact self-duality**,
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 24
+  role: notes_stage
+  excerpt: 4. so the best independent sech–Gaussian mismatch branch gets within about `0.56%` of the exact matched-layer ideal,
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 27
+  role: notes_stage
+  excerpt: So the memo is genuinely helpful as an explicit benchmark family, but it is not itself the final theorem.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 49
+  role: notes_stage
+  excerpt: The overlap is
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 80
+  role: notes_stage
+  excerpt: So the overlap obeys the exact duality law
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 106
+  role: notes_stage
+  excerpt: is not just numerically close to optimal. It is the **exact self-dual stationary point** of the explicit sech–Gaussian
+    benchmark family.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 114
+  role: notes_stage
+  excerpt: Evaluating the exact dimensionless overlap at the self-dual point gives
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 119
+  role: notes_stage
+  excerpt: So the best independent sech–Gaussian profile mismatch falls short of perfect support/source matching by only
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 130
+  role: notes_stage
+  excerpt: That is the exact multiplicative penalty by which the explicit independent-profile family misses the ideal matched-layer
+    branch.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 136
+  role: notes_stage
+  excerpt: This benchmark is important, but it does **not** supersede the earlier parent equilibrium result.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 148
+  role: notes_stage
+  excerpt: '- the present sech–Gaussian family is a strong **independent-profile benchmark**,'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 149
+  role: notes_stage
+  excerpt: '- the Stage-064 branch is the **equilibrium-matched** benchmark.'
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 151
+  role: notes_stage
+  excerpt: The new resonance result therefore tells us that even a fairly natural profile mismatch can get extremely close
+    to the exact matched limit. But it does not replace the matched-limit theorem.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 157
+  role: notes_stage
+  excerpt: Before this stage, the mismatch between an ideal matched source/support branch and a concrete profile family was
+    still diffuse.
+- path: notes/stages/moving_throat_pde_stage067_sech_gaussian_resonance.md
+  line: 168
+  role: notes_stage
+  excerpt: '> the first explicit independent-profile family almost saturates the ideal matched source/support branch.'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 2. Exact algebraic form of the coherence factor in terms of the dimensionless overlap I(r).
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: '- mpmath handles the non-elementary overlap integral numerics.'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '# Dimensionless overlap variable.'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '# sech-Gaussian overlap is exercised numerically in section 5.'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: print("differentiated overlap duality at r_* =", duality_tangent_at_rstar)
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: '"self-dual overlap-slope relation",'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: '# 4. Numerical overlap benchmark'
+- path: scripts/moving_throat_pde_stage067_sech_gaussian_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: subbanner("4. Numerical evaluation of the non-elementary overlap")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

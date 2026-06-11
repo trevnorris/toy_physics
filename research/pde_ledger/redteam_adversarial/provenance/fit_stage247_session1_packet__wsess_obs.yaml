@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage247_session1_packet
+parameter_name: Wsess_obs
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_session1_packet__phase_b__wsess_obs.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_247.tex
+  line: 12
+  role: paper_stage_tex
+  excerpt: Q=G_U^2\Omega_W^2+2G_UG_WR_{\rm mix}+G_W^2\Omega_U^2,
+- path: paper/stages/stage_247.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: P=\Omega_U^2G_W+R_{\rm mix}G_U,
+- path: paper/stages/stage_247.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: With primitive short-range source amplitudes \(\beta_Q,\beta_U,\beta_W\), the product-family coefficients are
+- path: paper/stages/stage_247.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \mathcal C_6=\chi_{qq}\beta_Q^2,
+- path: paper/stages/stage_247.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \mathcal C_4=\chi_{qU}\beta_Q\beta_U+\chi_{qW}\beta_Q\beta_W,
+- path: paper/stages/stage_247.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \mathcal C_2=\chi_{UU}\beta_U^2+2\chi_{UW}\beta_U\beta_W+\chi_{WW}\beta_W^2.
+- path: paper/stages/stage_247.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: S_{\rm leak}=\frac{8\sqrt2\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}\mathfrak L,
+- path: paper/stages/stage_247.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: \frac{512\eta_{\rm leak}^{2}\mu_wq\rho_0}{\pi^4\lambda^2}\mathfrak L^2,
+- path: paper/stages/stage_247.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \Delta E_{UV}=\eta_{UV}\mathcal D_{UV},
+- path: paper/stages/stage_247.tex
+  line: 72
+  role: paper_stage_tex
+  excerpt: \mathcal M_\sigma(r)=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r)\bigr],
+- path: paper/stages/stage_247.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: The stationary compiler is \cref{eq:app-part08-intro-veff230}; the lowering identity is \cref{eq:app-part08-main-lowering-identity}.
+- path: paper/stages/stage_247.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: This shows that, once the one-port baseline is fixed, the recorded stationary lowering can be decomposed into work,
+    \(U/V\) drain, compensated source response, and one remaining leakage-to-barrier embedding coefficient.  It does not change
+    the short-range kernel class.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 247: Relaxed Stationary Barrier Compiler from One-Port Short-Range, Leakage, `U/V`
+    Drain, and Compensated Source Packets'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: 2. the exact Stage-244 leakage / work compiler,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 33
+  role: notes_stage
+  excerpt: (S_{\rm leak},\,\mathcal W_w),
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 48
+  role: notes_stage
+  excerpt: 'It has four jobs:'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 51
+  role: notes_stage
+  excerpt: 2. import the Stage-244 leakage / work packet into barrier units,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 61
+  role: notes_stage
+  excerpt: '- **Stage 244**, which attached leakage and scalar-photon work to the selected-support packet,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: '- **Stage 246**, which converted the sign-changing source branch into explicit mouth/source observables,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 98
+  role: notes_stage
+  excerpt: Q=G_U^2\Omega_W^2+2G_UG_WR_{\rm mix}+G_W^2\Omega_U^2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 101
+  role: notes_stage
+  excerpt: P=\Omega_U^2G_W+R_{\rm mix}G_U,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 116
+  role: notes_stage
+  excerpt: \chi_{UU}=\frac{K_*\Omega_W^2-G_W^2}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 118
+  role: notes_stage
+  excerpt: \chi_{UW}=\frac{K_*R_{\rm mix}+G_UG_W}{\Delta D_0},
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: P_U=G_U\Omega_W^2+R_{\rm mix}G_W.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 129
+  role: notes_stage
+  excerpt: \beta_Q,\qquad \beta_U,\qquad \beta_W,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 133
+  role: notes_stage
+  excerpt: \mathcal C_6=\chi_{qq}\beta_Q^2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 136
+  role: notes_stage
+  excerpt: \mathcal C_4=\chi_{qU}\beta_Q\beta_U+\chi_{qW}\beta_Q\beta_W,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 139
+  role: notes_stage
+  excerpt: \mathcal C_2=\chi_{UU}\beta_U^2+2\chi_{UW}\beta_U\beta_W+\chi_{WW}\beta_W^2.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 187
+  role: notes_stage
+  excerpt: '### 2.1 Stage-244 leakage and reduced Session-I work scalar'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 196
+  role: notes_stage
+  excerpt: S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: \frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 206
+  role: notes_stage
+  excerpt: \frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 225
+  role: notes_stage
+  excerpt: \Delta E_{UV}(r):=\eta_{UV}\mathcal D_{UV}(r),
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: where `\eta_{UV}` is the same Session-I barrier-lowering weight carried in the stationary script.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: \mathcal M_\sigma(r):=\xi_R\bigl[\mathcal R_\infty-\mathcal R(r)\bigr],
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: '- `\lambda_L\ge 0` converts the open-subsystem leakage source into stationary barrier units,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: '- `(S_{\rm leak},\mathcal W_w^{\rm sess})` are support-side / open-system objects,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

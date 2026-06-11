@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage_046_f_flat
+parameter_name: F_flat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_046_f_flat__phase_b__f_flat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '046'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_046.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: G_{\rm tr}>G_{\rm flat},
+- path: paper/stages/stage_046.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: F_{\rm tr}<F_{\rm flat}
+- path: paper/stages/stage_046.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: E_{\rm tr}-E_{\rm flat}=F_{\rm flat}-F_{\rm tr}>0}.
+- path: paper/stages/stage_046.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: Thus the first coherent local D/N kernel worsens the selected normalization relative to the flat branch.  Support
+    enhancement must compensate this deficit.
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 15
+  role: notes_stage
+  excerpt: '> does the physical split-`U` deformation help or hurt the normalization test relative to the old flat branch?'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 28
+  role: notes_stage
+  excerpt: '- requires **more** total loading than the flat branch,'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 29
+  role: notes_stage
+  excerpt: '- but delivers **less** normalized response than the flat branch.'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 46
+  role: notes_stage
+  excerpt: The old flat branch is recovered at
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 52
+  role: notes_stage
+  excerpt: '`G_flat(xi,delta) = G_tr(xi,delta;1) = 9 xi (xi + delta) / (9 delta + 11 xi),`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 54
+  role: notes_stage
+  excerpt: '`F_flat(xi,delta) = F_tr(xi,delta;1)`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 101
+  role: notes_stage
+  excerpt: '## 3. Exact comparison with the flat branch'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 105
+  role: notes_stage
+  excerpt: '`G_tr(xi,delta;R_tr) > G_flat(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 107
+  role: notes_stage
+  excerpt: '`F_tr(xi,delta;R_tr) < F_flat(xi,delta).`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 111
+  role: notes_stage
+  excerpt: '### 3.1 Exact loading excess over the flat branch'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 113
+  role: notes_stage
+  excerpt: '`G_tr - G_flat`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 119
+  role: notes_stage
+  excerpt: '`G_tr - G_flat > 0.`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 121
+  role: notes_stage
+  excerpt: '### 3.2 Exact normalization deficit relative to the flat branch'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 123
+  role: notes_stage
+  excerpt: '`F_flat - F_tr`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 143
+  role: notes_stage
+  excerpt: '`F_flat - F_tr > 0.`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 145
+  role: notes_stage
+  excerpt: So the split-`U` tracking branch is **strictly below** the flat-branch normalization function at fixed `(xi,delta)`.
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 161
+  role: notes_stage
+  excerpt: '`G_flat(xi,delta) <= G_tr(xi,delta;R) <= xi,`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 163
+  role: notes_stage
+  excerpt: '`1/(1 - xi) <= F_tr(xi,delta;R) <= F_flat(xi,delta).`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 169
+  role: notes_stage
+  excerpt: so the physical kernel sits strictly between the strong-split endpoint and the flat branch.
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 179
+  role: notes_stage
+  excerpt: and the flat-branch residual
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 181
+  role: notes_stage
+  excerpt: '`E_flat(xi) := R_target - F_flat(xi,delta).`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 185
+  role: notes_stage
+  excerpt: '`E_tr - E_flat = F_flat - F_tr > 0`'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 189
+  role: notes_stage
+  excerpt: So the local split-`U` deformation worsens the normalization residual relative to the old flat branch.
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 203
+  role: notes_stage
+  excerpt: '- the exact loading excess `G_tr - G_flat`,'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 204
+  role: notes_stage
+  excerpt: '- the exact normalization deficit `F_flat - F_tr`,'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 206
+  role: notes_stage
+  excerpt: '- and the exact residual ordering `E_tr > E_flat` at fixed `(xi,delta)` on the constructive split-`U` branch.'
+- path: notes/stages/moving_throat_pde_stage046_tracking_branch_bounds.md
+  line: 220
+  role: notes_stage
+  excerpt: '> the completed moving-throat PDE must supply kernel data strong enough to overcome this exact tracking-branch
+    deficit, not merely to match the old flat-branch heuristic.'
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Flat-branch and strong-split endpoint limits.
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Exact flat-branch comparison formulas G_tr - G_flat and F_flat - F_tr.
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: G_flat = sp.simplify(G_tr.subs(R, 1))
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: F_flat = sp.simplify(F_tr.subs(R, 1))
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: banner("1. Flat and strong-split endpoints")
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("G_flat =", G_flat)
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: print("F_flat =", F_flat)
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: banner("3. Exact comparison with the flat branch")
+- path: scripts/moving_throat_pde_stage046_tracking_branch_bounds_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: delta_G = sp.factor(sp.simplify(G_tr - G_flat))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

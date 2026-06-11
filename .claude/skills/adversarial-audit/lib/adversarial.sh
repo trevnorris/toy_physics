@@ -16,6 +16,7 @@
 #   family-build [--out PATH]    Render a read-only concept-family map.
 #   render-critic [--prefix N]   Render the Phase A completeness-critic prompt.
 #   phase-b-build <ID>           Build one parameter-value provenance slice.
+#   phase-b-build-all [--dry]    Bulk-build pending Phase B mechanical slices.
 #   phase-b-ingest <YAML...>     Ingest agent Phase B synthesis into provenance.
 #   benchmark-ingest <YAML...>   Ingest sourced benchmark entries.
 #   phase-c-render <ID>          Render the adversarial prompt for one candidate.
@@ -50,11 +51,12 @@ find_config() {
 }
 
 ensure_config_loaded() {
-  if [[ -n "${CONFIG:-}" ]]; then return 0; fi
-  CONFIG="$(find_config)" || {
-    echo "error: no .redteam-config.yaml with adversarial section found from $PWD" >&2
-    exit 1
-  }
+  if [[ -z "${CONFIG:-}" ]]; then
+    CONFIG="$(find_config)" || {
+      echo "error: no .redteam-config.yaml with adversarial section found from $PWD" >&2
+      exit 1
+    }
+  fi
   PROJECT_ROOT="$(dirname "$CONFIG")"
   ARTIFACT_ROOT="$("${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" artifact-root)"
   MANIFEST_LOCK="$ARTIFACT_ROOT/.manifest.lock"
@@ -123,6 +125,23 @@ cmd_render_critic() {
 cmd_phase_b_build() {
   ensure_config_loaded
   _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-b-build "$@"
+}
+
+cmd_phase_b_build_all() {
+  ensure_config_loaded
+  local dry=0
+  local arg
+  for arg in "$@"; do
+    if [[ "$arg" == "--dry" ]]; then
+      dry=1
+      break
+    fi
+  done
+  if [[ "$dry" == "1" ]]; then
+    run_core phase-b-build-all "$@"
+  else
+    _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-b-build-all "$@"
+  fi
 }
 
 cmd_phase_b_ingest() {
@@ -222,6 +241,7 @@ main() {
     family-build)      cmd_family_build "$@" ;;
     render-critic)     cmd_render_critic "$@" ;;
     phase-b-build)     cmd_phase_b_build "$@" ;;
+    phase-b-build-all) cmd_phase_b_build_all "$@" ;;
     phase-b-ingest)    cmd_phase_b_ingest "$@" ;;
     benchmark-ingest)  cmd_benchmark_ingest "$@" ;;
     phase-c-render)    cmd_phase_c_render "$@" ;;

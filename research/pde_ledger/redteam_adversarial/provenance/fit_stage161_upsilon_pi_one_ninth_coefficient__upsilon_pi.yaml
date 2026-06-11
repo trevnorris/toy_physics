@@ -1,0 +1,104 @@
+schema_version: 1
+candidate_id: fit_stage161_upsilon_pi_one_ninth_coefficient
+parameter_name: Upsilon_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage161_upsilon_pi_one_ninth_coefficient__phase_b__upsilon_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '161'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 9
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 14
+  role: notes_stage
+  excerpt: That is already a sharp theorem gate, but it still treats `\Upsilon_\Pi` as a black box.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 23
+  role: notes_stage
+  excerpt: \Upsilon_\Pi
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 36
+  role: notes_stage
+  excerpt: So the last linear 2.5PN obstruction is controlled only by the difference between
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 49
+  role: notes_stage
+  excerpt: \Upsilon_\Pi=0,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 239
+  role: notes_stage
+  excerpt: \Upsilon_\Pi
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 259
+  role: notes_stage
+  excerpt: \Upsilon_\Pi
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 274
+  role: notes_stage
+  excerpt: \Upsilon_\Pi
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 292
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan},
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 297
+  role: notes_stage
+  excerpt: \Upsilon_\Pi\,\delta\Pi_{\rm tan}.
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 445
+  role: notes_stage
+  excerpt: \Upsilon_\Pi=0,
+- path: notes/stages/moving_throat_pde_stage161_dn_similarity_slippage.md
+  line: 459
+  role: notes_stage
+  excerpt: It says that the reduced 2.5PN obstruction survives only if the tangential co-evolving mouth deformation drives
+    the concrete mixed side-channel **out of its compensation-selected D/N similarity class**.
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: UpsilonPi = sp.simplify((1 + rc_star) * (Xi_gamma - 2 * Xi_L) / 9)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: print("Upsilon_Pi =", UpsilonPi)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: DeltaQ = sp.simplify(-9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: NQm1 = sp.simplify(9 * sigma_star * UpsilonPi * dPi_tan / ((1 - sigma_star) * (1 + rc_star)))
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: Upsilon_prefactor = sp.N((1 + rF1**2) / 9, 18)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: print("(1+r_F1^2)/9 =", Upsilon_prefactor)
+- path: scripts/moving_throat_pde_stage161_dn_similarity_slippage_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: print("4) Upsilon_Pi = ((1+r_c*)/9) (Xi_gamma - 2 Xi_L)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

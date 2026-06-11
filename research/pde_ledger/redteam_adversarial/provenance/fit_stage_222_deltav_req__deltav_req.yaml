@@ -1,0 +1,122 @@
+schema_version: 1
+candidate_id: fit_stage_222_deltav_req
+parameter_name: DeltaV_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_deltav_req__phase_b__deltav_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_222.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Check that orbit-lock claims require the rigid-mouth packet variables and do not follow from generic mouth
+    tracking alone.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: 4. the exact low-loss survival inequality against a required local barrier reduction,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 235
+  role: notes_stage
+  excerpt: 1. the pole frequency \(\omega_*\), and
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: Let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\), and impose the same low-loss
+    condition as in Stage 221,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 259
+  role: notes_stage
+  excerpt: \Delta V_{\rm req}(x).
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: 2\,\Delta V_{\rm req}(x)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 276
+  role: notes_stage
+  excerpt: 2\,\Delta V_{\rm req}(x)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 356
+  role: notes_stage
+  excerpt: \Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 360
+  role: notes_stage
+  excerpt: \mathcal R_{Q,*}^{\rm req}(\eta=0.1)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 364
+  role: notes_stage
+  excerpt: \mathcal R_{Q,*}^{\rm req}(\eta=0.3)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local barrier
+    requirement must be pulled back from the actual same-charge branch.
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 'def positive_frequency_roots(poly_expr: sp.Expr, y: sp.Symbol) -> list[float]:'
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: '"""Return positive real frequencies omega = sqrt(y) from a polynomial in y."""'
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: eta, x, DeltaV_req = sp.symbols('eta x DeltaV_req', positive=True)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: 2 * DeltaV_req * (1 + eta**2) * x**6 / eta
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: print('Required R_Q,* >=', survival_threshold)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: wall_uncoupled = positive_frequency_roots(KB_num_y, y)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: internal_uncoupled = positive_frequency_roots(Delta_y, y)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 179
+  role: sympy_script
+  excerpt: coupled_poles = positive_frequency_roots(F_y_num, y)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: DeltaV_req_num = V_known - epsilon
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: threshold_eta_01 = float(sp.N((2 * DeltaV_req_num * (1 + sp.Rational(1, 10) ** 2) / sp.Rational(1, 10)), 30))
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 218
+  role: sympy_script
+  excerpt: threshold_eta_03 = float(sp.N((2 * DeltaV_req_num * (1 + sp.Rational(3, 10) ** 2) / sp.Rational(3, 10)), 30))
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 245
+  role: sympy_script
+  excerpt: coupled_scan = positive_frequency_roots(sp.expand(F_y.subs(scan_subs)), y)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

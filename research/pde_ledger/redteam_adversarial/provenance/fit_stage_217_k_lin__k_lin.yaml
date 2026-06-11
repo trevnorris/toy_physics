@@ -1,0 +1,119 @@
+schema_version: 1
+candidate_id: fit_stage_217_k_lin
+parameter_name: K_lin
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_217_k_lin__phase_b__k_lin.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '217'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_217.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \item Do not cite the finite sieve as proof that the nonlinear PDE realizes the winning branch.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 286
+  role: notes_stage
+  excerpt: K_{\rm lin}:=k_\lambda+r k_c+s k_\gamma+t k_U+u k_W.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 292
+  role: notes_stage
+  excerpt: M_r:=S k_c-r K_{\rm lin}
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 299
+  role: notes_stage
+  excerpt: M_s:=S k_\gamma-s K_{\rm lin}
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 306
+  role: notes_stage
+  excerpt: M_t:=S k_U-t K_{\rm lin}
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 313
+  role: notes_stage
+  excerpt: M_u:=S k_W-u K_{\rm lin}
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: line = "=" * 88
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: print("\n" + line)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: print(line)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: line = "-" * 88
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: print("\n" + line)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: print(line)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: Klin = sp.simplify(kL + r * kc + s * kg + t * kU + u * kW)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: Mr = sp.simplify(S * kc - r * Klin)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: Ms = sp.simplify(S * kg - s * Klin)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 82
+  role: sympy_script
+  excerpt: Mt = sp.simplify(S * kU - t * Klin)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: Mu = sp.simplify(S * kW - u * Klin)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: Phi = (Klin + sp.sqrt(Delta)) / sp.sqrt(S)
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 209
+  role: sympy_script
+  excerpt: Klin_diag = Klin
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 211
+  role: sympy_script
+  excerpt: expect_zero("L_r(diag) - 2 K_lin M_r", sp.simplify(Lr_diag - 2 * Klin_diag * Mr_diag))
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 212
+  role: sympy_script
+  excerpt: expect_zero("L_s(diag) - 2 K_lin M_s", sp.simplify(Ls_diag - 2 * Klin_diag * Ms_diag))
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: expect_zero("L_t(diag) - 2 K_lin M_t", sp.simplify(Lt_diag - 2 * Klin_diag * Mt_diag))
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 214
+  role: sympy_script
+  excerpt: expect_zero("L_u(diag) - 2 K_lin M_u", sp.simplify(Lu_diag - 2 * Klin_diag * Mu_diag))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

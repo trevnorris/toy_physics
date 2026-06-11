@@ -1,0 +1,49 @@
+schema_version: 1
+candidate_id: fit_stage_096_numbering_script_output_band_plan
+parameter_name: NUMBERING_SCRIPT_OUTPUT_BAND_PLAN
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_096_numbering_script_output_band_plan__phase_b__numbering_script_output_band_plan.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 096
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_096.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~096 is a geometry-lane firewall ledger step.  Its audit target is the verification output
+    quoted below.}
+- path: paper/stages/stage_096.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage096_geometry_lane_check_verdict_mathematica_audit.wl}.}'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 11
+  role: notes_stage
+  excerpt: 'Script-backed status:'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 12
+  role: notes_stage
+  excerpt: '- `scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py`'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: 'This checkpoint script re-establishes the geometry-lane verdict directly:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

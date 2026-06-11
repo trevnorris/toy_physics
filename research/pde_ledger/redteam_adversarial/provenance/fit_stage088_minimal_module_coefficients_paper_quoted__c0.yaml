@@ -1,0 +1,159 @@
+schema_version: 1
+candidate_id: fit_stage088_minimal_module_coefficients_paper_quoted
+parameter_name: c0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage088_minimal_module_coefficients_paper_quoted__phase_b__c0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 088
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 13
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega) = c0 + c1 / (1 - omega^2 / Omega_Q^2),`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 17
+  role: notes_stage
+  excerpt: '`c0 = 3/4,`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 60
+  role: notes_stage
+  excerpt: '`c0 = 1/rho_alpha,`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 65
+  role: notes_stage
+  excerpt: '`c0 + c1 = 1`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 71
+  role: notes_stage
+  excerpt: '`rho_alpha = 1/c0 = 1/(1-c1),`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 73
+  role: notes_stage
+  excerpt: '`zeta_req = rho_alpha - 1 = c1/c0.`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 83
+  role: notes_stage
+  excerpt: '`c0 = 3/4,`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 90
+  role: notes_stage
+  excerpt: '`zeta_req = c1/c0 = (1/4)/(3/4) = 1/3.`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 158
+  role: notes_stage
+  excerpt: '`Y_Q^cons(omega) = c0 + c1/(1 - omega^2/Omega_Q^2),`'
+- path: notes/stages/moving_throat_pde_stage088_loading_ratio_from_minimal_module.md
+  line: 162
+  role: notes_stage
+  excerpt: '`c0 = 3/4,`'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. exact inverse map from (c0,c1) to rho_alpha and zeta_req;
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3. match to the minimal isotropic quadrupole module c0=3/4, c1=1/4;
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: c0, c1 = sp.symbols("c0 c1", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: '# Recover (c0, c1) from Y_rho by independent paths, rather than defining them.'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: '# recover c0 by subtraction at u = 0. This avoids the tautological'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: '# "define c0 := 1/rho_alpha then assert c0 == 1/rho_alpha" pattern.'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: c0_extracted = sp.simplify(Y_rho_u.subs(u, 0) - c1_extracted)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("c0 extracted from Y_rho (subtract pole at u=0) =", c0_extracted)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: expect_zero("c0_extracted - 1/rho_alpha", c0_extracted - 1/rho_alpha)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: '# With c0, c1 now derived (not defined), the contact-plus-pole reconstruction'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: Y_rho - (c0_extracted + c1_extracted/(1 - omega**2/Omega_Q**2))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: expect_zero("c0 + c1 - 1", c0_extracted + c1_extracted - 1)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: rho_from_c0 = sp.simplify(1/c0)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: zeta_from_c = sp.simplify(c1/c0)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("rho_alpha from c0 =", rho_from_c0)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: print("zeta_req from (c0,c1) =", zeta_from_c)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: expect_zero("rho(c0(rho)) - rho", rho_from_c0.subs(c0, c0_extracted) - rho_alpha)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: 'zeta_from_c.subs({c0: c0_extracted, c1: c1_extracted}) - (rho_alpha - 1),'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '# Extract (c0, c1) from the paper form by the same independent path; do NOT'
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: c0_paper = sp.simplify(Y_Q_paper_u.subs(u, 0) - c1_paper)
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: expect_zero("c0_paper - 3/4", c0_paper - sp.Rational(3, 4))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: rho_min = sp.simplify(rho_from_c0.subs(c0, c0_paper))
+- path: scripts/moving_throat_pde_stage088_loading_ratio_from_minimal_module_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: 'zeta_min = sp.simplify(zeta_from_c.subs({c0: c0_paper, c1: c1_paper}))'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,200 @@
+schema_version: 1
+candidate_id: fit_stage_251_s_c
+parameter_name: s_c
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_251_s_c__phase_b__s_c.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '251'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_251.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section{Stage 251: Microscopic export kernel}'
+- path: paper/stages/stage_251.tex
+  line: 2
+  role: paper_stage_tex
+  excerpt: \label{sec:app-part08:microscopic-export-kernel}
+- path: paper/stages/stage_251.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_251.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: Stage 251 replaces the phenomenological \(\gamma_{\rm tot}\dot V\) envelope law by the first microscopic odd export
+    operator seen by the active dressing leg.  Project
+- path: paper/stages/stage_251.tex
+  line: 12
+  role: paper_stage_tex
+  excerpt: where \(q_0\) is the derivative-coupled scalar outlet and \(q_-\) is the selected mixed quadrupole outlet.
+- path: paper/stages/stage_251.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: For the scalar lane, take
+- path: paper/stages/stage_251.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage251-scalar-coupling}
+- path: paper/stages/stage_251.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: the scalar outgoing factor gives
+- path: paper/stages/stage_251.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: Thus the microscopic kernel is \cref{eq:app-part08-main-kexp}.
+- path: paper/stages/stage_251.tex
+  line: 92
+  role: paper_stage_tex
+  excerpt: For an event with crossing rate \(s_c=1/t_{\rm cross}\), strict monotonicity of \(F\) gives the safe half-plane
+    \cref{eq:app-part08-main-safe-half-plane}.  In the benchmark cold event, this becomes
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 251: Microscopic Damping/Export Kernel Replacing the Phenomenological `V`-Leg Envelope
+    Law'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 14
+  role: notes_stage
+  excerpt: 3. the moving-throat scalar derivative-coupled outgoing lane,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 19
+  role: notes_stage
+  excerpt: This stage is a **microscopic export-kernel compiler**, not a materials theorem and not a full nonlinear damping
+    solve.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 41
+  role: notes_stage
+  excerpt: The session write-up was explicit that this was only an **envelope closure**, not a microscopic theorem of the
+    completed PDE.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: 3. the derivative-coupled scalar outlet contributes the exact cubic coefficient
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 64
+  role: notes_stage
+  excerpt: 4. the resulting microscopic collapse law is not Ohmic and does **not** admit a finite analogue of the Session-IV
+    unconditional threshold `\gamma_{\rm crit}`,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 80
+  role: notes_stage
+  excerpt: '- The moving-throat outgoing program already proved that a derivative-coupled scalar outlet first appears at odd
+    order `\omega^3`, while the selected mixed quadrupole outlet appears at odd order `\omega^5`.'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 94
+  role: notes_stage
+  excerpt: '- and a phenomenological shedding rate can rescue a slow cold event.'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 100
+  role: notes_stage
+  excerpt: '- whether the finite Session-IV `\gamma_{\rm crit}` survives microscopic replacement,'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: '## 1. Microscopic odd export channels seen by the active `V` leg'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 109
+  role: notes_stage
+  excerpt: Write the active dressing variable as its projection onto the first outgoing scalar and selected outgoing quadrupole
+    channels,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 115
+  role: notes_stage
+  excerpt: '- `q_0` is the derivative-coupled scalar outlet,'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 119
+  role: notes_stage
+  excerpt: '### 1.1 Derivative-coupled scalar outlet'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 121
+  role: notes_stage
+  excerpt: In the reduced scalar mixed-port lane, take the first derivative coupling
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: with outgoing scalar port law
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: '### 1.3 First microscopic export kernel'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 209
+  role: notes_stage
+  excerpt: It says that the phenomenological Session-IV `\gamma_{\rm tot}\dot V` law is not the first microscopic export law
+    of the branch.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 210
+  role: notes_stage
+  excerpt: 'The first microscopic law is **super-Ohmic**: cubic if the derivative-coupled scalar lane is active, quintic if
+    the selected quadrupole lane is the first live outlet.'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 224
+  role: notes_stage
+  excerpt: Then the first microscopic active-leg equation is
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 243
+  role: notes_stage
+  excerpt: So the exact microscopic export kernel is
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 250
+  role: notes_stage
+  excerpt: This replaces the Session-IV envelope scalar `\gamma_{\rm tot}`.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 293
+  role: notes_stage
+  excerpt: 'So after the total derivative is removed, the microscopic export power is positive-definite:'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 309
+  role: notes_stage
+  excerpt: '## 4. Collapse law from the microscopic kernel'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 316
+  role: notes_stage
+  excerpt: Substituting into the microscopic equation gives the exact characteristic polynomial
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: '> the minimal microscopic export kernel does **not** admit a finite analogue of the Session-IV unconditional threshold
+    `\gamma_{\rm crit}`.'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 374
+  role: notes_stage
+  excerpt: So both microscopic channels slow the collapse, and the quintic channel is weighted by the extra factor `s_0^2`
+    relative to the cubic one.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 382
+  role: notes_stage
+  excerpt: s_c:=\frac{1}{t_{\rm cross}}
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 387
+  role: notes_stage
+  excerpt: s_+\le s_c
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 389
+  role: notes_stage
+  excerpt: F(s_c)\ge 0.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 391
+  role: notes_stage
+  excerpt: Therefore the exact microscopic safe condition is
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

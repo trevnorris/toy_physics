@@ -1,0 +1,93 @@
+schema_version: 1
+candidate_id: fit_stage140_carried_gain_magnitudes
+parameter_name: M_s_comp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage140_carried_gain_magnitudes__phase_b__m_s_comp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '140'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_140.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection}
+    block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive
+    equal-normalized limit.}
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 15
+  role: notes_stage
+  excerpt: Take the mouth source to live on the same active shell layer as the shell/compliance mode.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 98
+  role: notes_stage
+  excerpt: '- exact compensated branch requires'
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 100
+  role: notes_stage
+  excerpt: M_s^{\rm comp,*}\approx 1.80594111095636,
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 102
+  role: notes_stage
+  excerpt: M_q^{\rm comp,*}\approx -0.451485277739090.
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 115
+  role: notes_stage
+  excerpt: \widehat T_m^{\rm comp,*}
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 116
+  role: notes_stage
+  excerpt: =\sqrt{\frac{9M_s^{\rm comp,*}}{20}}
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 121
+  role: notes_stage
+  excerpt: So the exact outlet-consistent compensated branch requires only
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 124
+  role: notes_stage
+  excerpt: \frac{\widehat T_m^{\rm comp,*}}{\widehat T_m^{\rm nat,*}}-1
+- path: notes/stages/moving_throat_pde_stage140_selfmatched_mouth_susceptibility.md
+  line: 143
+  role: notes_stage
+  excerpt: On the explicit Family-1 branch, the natural and exact-compensated mouth closures differ
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: Ms_comp = sp.N('1.80594111095636', 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: That_comp = sp.N(sp.sqrt(9*Ms_comp/20), 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: print('That_comp =', That_comp)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: print('fractional traction enhancement =', sp.N(That_comp/That_nat - 1, 20))
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: assert sp.Abs(That_comp - sp.Float('0.901484054174206', 30)) < sp.Float('1e-12', 30)
+- path: scripts/moving_throat_pde_stage140_selfmatched_mouth_susceptibility_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: assert sp.Abs(sp.N(That_comp/That_nat - 1, 30) - sp.Float('0.0403588161624', 30)) < sp.Float('1e-12', 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

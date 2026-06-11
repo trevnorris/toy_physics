@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage155_carried_constants_block
+parameter_name: S_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_carried_constants_block__phase_b__s_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '155'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: canonical traction Sigma0*.
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: rF1 = 1.77799353547498
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: g_star = 0.758035078944663
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: S_star = 0.658075937605429
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: Pi_star = 1.50882951349316
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Sigma0_star = 1.80594111095636
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: return ((gv - rF1) ** 2) / (1 + rF1**2)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'def Phi(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: return Sigma0 * (Ts(sig) - R(sig) * Tq(sig))
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'def next_sigma(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: ph = Phi(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: 'def solve_fixed_point(Sigma0: float, maxit: int = 400) -> tuple[np.ndarray, int, float]:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: sig = normalize(Pi_star * np.exp(-Pi_star * x))
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: sig_new = next_sigma(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: sig, niter, err = solve_fixed_point(Sigma0_star)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Pi_fp = Sigma0_star * (1 - R_fp * S_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: dg = sp.Float(g_fp - g_star, 30)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: r = sp.Float(rF1, 30)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

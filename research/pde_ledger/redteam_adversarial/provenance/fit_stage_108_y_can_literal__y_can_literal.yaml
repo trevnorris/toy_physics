@@ -1,0 +1,92 @@
+schema_version: 1
+candidate_id: fit_stage_108_y_can_literal
+parameter_name: Y_can_literal
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_108_y_can_literal__phase_b__y_can_literal.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '108'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_108.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin
+    mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology;
+    it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_108.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Pure scale is harmless; pure argument shift is harmless only if even moments remain canonical; additive throat-core
+    data can move \(\chi_Q\).
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 5
+  role: notes_stage
+  excerpt: Classify which explicit isotropic DtN perturbations leave the canonical outgoing normalization untouched and which
+    ones genuinely shift it.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 35
+  role: notes_stage
+  excerpt: So if the conservative even fingerprint is kept canonical,
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 49
+  role: notes_stage
+  excerpt: So a pure effective radius/sound-speed rescaling cannot move the canonical outgoing normalization without simultaneously
+    spoiling the already fixed even moments.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 60
+  role: notes_stage
+  excerpt: If the even moments are held canonical, then
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 72
+  role: notes_stage
+  excerpt: So an additive throat-core channel can move `chi_Q` even while leaving the lower even moments unchanged.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 80
+  role: notes_stage
+  excerpt: So a static additive core shift is a genuine candidate branch-selection effect.
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 84
+  role: notes_stage
+  excerpt: The deformation preserves the canonical outgoing normalization iff
+- path: notes/stages/moving_throat_pde_stage108_robustness_classes.md
+  line: 102
+  role: notes_stage
+  excerpt: 'The canonical value `chi_Q = 1` is robust against:'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: '# Class A: pure scale -- anchor normalized scaled response to the literal canonical fingerprint'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: '# (appendix eq:app-part04-Yout-dtn) so the check is falsifiable, not a bare S-cancellation.'
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: Y_can_literal = 1 + z**2/sp.Integer(9) + 4*z**4/sp.Integer(81) + I*z**5/sp.Integer(27)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: expect_zero('pure scale invariance', sp.expand(Y_scale) - Y_can_literal)
+- path: scripts/moving_throat_pde_stage108_robustness_classes_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: print('solutions preserving canonical even fingerprint =', sol_beta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

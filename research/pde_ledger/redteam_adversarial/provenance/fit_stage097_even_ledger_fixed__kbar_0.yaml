@@ -1,0 +1,108 @@
+schema_version: 1
+candidate_id: fit_stage097_even_ledger_fixed
+parameter_name: Kbar_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage097_even_ledger_fixed__phase_b__kbar_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 097
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 29
+  role: notes_stage
+  excerpt: '`Kbar_Q^cons(omega)`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 30
+  role: notes_stage
+  excerpt: '`= Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`.'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 34
+  role: notes_stage
+  excerpt: '`Kbar_2 = Kbar_0 / (4 Omega_Q^2),`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 36
+  role: notes_stage
+  excerpt: '`Kbar_4 = Kbar_0 / (4 Omega_Q^4).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 38
+  role: notes_stage
+  excerpt: So once `Kbar_0` and `Omega_Q` are known, the entire even conservative ledger is fixed.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 44
+  role: notes_stage
+  excerpt: On the minimal isotropic outgoing `l=2` branch, the 2.5PN audit already fixed the odd coefficient algebraically
+    as
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 46
+  role: notes_stage
+  excerpt: '`Gammabar_5 = 9 Kbar_2^(5/2) / Kbar_0^(3/2)`.'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 50
+  role: notes_stage
+  excerpt: '`Gammabar_5 = 9 Kbar_0 / (32 Omega_Q^5).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 53
+  role: notes_stage
+  excerpt: It is already determined by the same two quantities `(Kbar_0, Omega_Q)`.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 61
+  role: notes_stage
+  excerpt: '`Kbar_0^target = 64 G Omega_Q^5 / (45 c^5),`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 69
+  role: notes_stage
+  excerpt: '`Kbar_0^target = 54 G c_s^5 / (5 a^5 c^5).`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 73
+  role: notes_stage
+  excerpt: '`Kbar_2^target = Kbar_0^target / (4 Omega_Q^2),`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 75
+  role: notes_stage
+  excerpt: '`Kbar_4^target = Kbar_0^target / (4 Omega_Q^4),`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 80
+  role: notes_stage
+  excerpt: The only possible mismatch is the overall normalization of `Kbar_0`.
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 88
+  role: notes_stage
+  excerpt: '`N_Q := Kbar_0 / Kbar_0^target`.'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 92
+  role: notes_stage
+  excerpt: '`Kbar_2 = N_Q Kbar_2^target,`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 94
+  role: notes_stage
+  excerpt: '`Kbar_4 = N_Q Kbar_4^target,`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 104
+  role: notes_stage
+  excerpt: '`R_0 := Kbar_0 / Kbar_0^target - 1,`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 106
+  role: notes_stage
+  excerpt: '`R_2 := Kbar_2 / Kbar_2^target - 1,`'
+- path: notes/stages/moving_throat_pde_stage097_single_normalization_defect.md
+  line: 108
+  role: notes_stage
+  excerpt: '`R_4 := Kbar_4 / Kbar_4^target - 1,`'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

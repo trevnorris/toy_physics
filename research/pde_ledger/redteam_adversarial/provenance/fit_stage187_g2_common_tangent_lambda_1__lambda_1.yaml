@@ -1,0 +1,104 @@
+schema_version: 1
+candidate_id: fit_stage187_g2_common_tangent_lambda_1
+parameter_name: Lambda_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage187_g2_common_tangent_lambda_1__phase_b__lambda_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '187'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 70
+  role: notes_stage
+  excerpt: \lambda_W,
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 91
+  role: notes_stage
+  excerpt: \left(\frac{\lambda_W^2\mu_W}{K_\eta^{(\mathrm{eff})}(K_W^{(\mathrm{eff})})^2}\right)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 92
+  role: notes_stage
+  excerpt: \left(\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}\right)^{E_*}
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 117
+  role: notes_stage
+  excerpt: x=(\lambda_W,c_{\eta U},\gamma,K_U,K_\eta^{(\mathrm{eff})},K_W^{(\mathrm{eff})},\mu_W,T_U),
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 120
+  role: notes_stage
+  excerpt: \widetilde x=(\widetilde\lambda_W,\widetilde c_{\eta U},\widetilde\gamma,\widetilde K_U,\widetilde K_\eta^{(\mathrm{eff})},\widetilde
+    K_W^{(\mathrm{eff})},\widetilde\mu_W,\widetilde T_U).
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 127
+  role: notes_stage
+  excerpt: \Delta_\lambda\\
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 138
+  role: notes_stage
+  excerpt: \ln(\widetilde\lambda_W/\lambda_W)\\
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 172
+  role: notes_stage
+  excerpt: 2(1+E_*)\Delta_\lambda
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 219
+  role: notes_stage
+  excerpt: (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_W)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 251
+  role: notes_stage
+  excerpt: 2\Delta_c-\Delta_U+2\Delta_W-2\Delta_\lambda
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 253
+  role: notes_stage
+  excerpt: E_*(2\Delta_\gamma+2\Delta_\lambda-\Delta_U-\Delta_W)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 277
+  role: notes_stage
+  excerpt: 2\Delta_c-\Delta_U+2\Delta_W-2\Delta_\lambda
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 279
+  role: notes_stage
+  excerpt: E_*(2\Delta_\gamma+2\Delta_\lambda-\Delta_U-\Delta_W)
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 295
+  role: notes_stage
+  excerpt: \Delta_\lambda=
+- path: notes/stages/moving_throat_pde_stage187_orbit_quotient_closure.md
+  line: 296
+  role: notes_stage
+  excerpt: \ln(\widetilde\lambda_W/\lambda_W),
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: '"Delta_lambda Delta_c Delta_gamma Delta_U Delta_eta Delta_W Delta_mu Delta_T",'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: '"r_lambda r_c r_gamma r_U r_eta r_W r_mu r_T", positive=True'
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: print("  Delta_mu  = 2 Delta_c - Delta_U + 2 Delta_W - 2 Delta_lambda")
+- path: scripts/moving_throat_pde_stage187_orbit_quotient_closure_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: print("              - E_*(2 Delta_gamma + 2 Delta_lambda - Delta_U - Delta_W)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

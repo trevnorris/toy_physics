@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage184_eps_split_2_11_coefficient
+parameter_name: eps_split_coefficient
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage184_eps_split_2_11_coefficient__phase_b__eps_split_coefficient.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '184'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_184.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Identifies exact branch composites \(\mathfrak T_*\), \(\mathfrak N_*\), and \(\epsilon_\eta\)
+    whose logarithmic drifts are the three normal-form coordinates.}
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 27
+  role: notes_stage
+  excerpt: \epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 52
+  role: notes_stage
+  excerpt: \boxed{\delta\ln \epsilon_\eta = \Sigma_\eta.}
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 80
+  role: notes_stage
+  excerpt: \delta\ln R_{{\rm tr},A}=\epsilon\lambda_A\,\Theta_1.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 92
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 94
+  role: notes_stage
+  excerpt: \epsilon=\epsilon_W\!\left[1-\frac{2}{11}\frac{\delta_U}{1+\delta_U}\right].
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 100
+  role: notes_stage
+  excerpt: \delta\ln \mathcal T_A^2=\epsilon\lambda_A\,\Xi_1.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 112
+  role: notes_stage
+  excerpt: \Lambda_0(1-\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 124
+  role: notes_stage
+  excerpt: \delta\ln(1-\epsilon_{\eta,A})
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 126
+  role: notes_stage
+  excerpt: \epsilon\lambda_A\,(\mathcal R_1+\Xi_1).
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 131
+  role: notes_stage
+  excerpt: \delta\ln \epsilon_{\eta,A}=\epsilon\lambda_A\,\Sigma_\eta,
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 138
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 144
+  role: notes_stage
+  excerpt: \boxed{\delta\ln\epsilon_\eta=\Sigma_\eta.}
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 215
+  role: notes_stage
+  excerpt: Freeze the background coefficient at the coherent reference branch,
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 250
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2},
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 260
+  role: notes_stage
+  excerpt: \frac{Z_W(1+\chi_0)^2}{\Omega_W^2(1-\epsilon)^2}
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 279
+  role: notes_stage
+  excerpt: \Sigma_\eta = \delta\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 285
+  role: notes_stage
+  excerpt: \mathfrak D:=\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 298
+  role: notes_stage
+  excerpt: \mathfrak E:=\frac{R_{\rm target}\,\mathcal T^2}{\Lambda_0}=1-\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 308
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 313
+  role: notes_stage
+  excerpt: '- as the logarithmic drift of the microscopic ratio \(\epsilon_\eta\), or'
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 314
+  role: notes_stage
+  excerpt: '- as the logarithmic drift of the selected-branch composite \(\mathfrak E=1-\epsilon_\eta\).'
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 359
+  role: notes_stage
+  excerpt: \delta\ln \epsilon_\eta=0.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 369
+  role: notes_stage
+  excerpt: 3. **dressing:** is the microscopic dressing ratio \(\epsilon_\eta\) invariant?
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 383
+  role: notes_stage
+  excerpt: \delta\ln \epsilon_\eta = \Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 398
+  role: notes_stage
+  excerpt: \frac{R_{\rm target}\mathcal T^2}{\Lambda_0}=1-\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 413
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta=0.
+- path: notes/stages/moving_throat_pde_stage184_branch_invariant_coordinates.md
+  line: 431
+  role: notes_stage
+  excerpt: '> \epsilon_\eta,'
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 1. The exact branch identity R_target * T^2 = Lambda0 * (1 - eps_eta).
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 4. The microscopic dressing ratio gives delta ln eps_eta = Sigma_eta.
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: (R_tr, N_*, eps_eta) at first grouped order.
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: chi0, deltaU, eps_eta = sp.symbols('chi0 deltaU eps_eta', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: eps_eta_var = eps_eta * (1 + small * SigmaEta)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: selected_branch_E = sp.simplify(1 - eps_eta_var)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: sp.series(sp.log(selected_branch_E / (1 - eps_eta)), small, 0, 2).removeO().coeff(small, 1)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: R1_branch_law = sp.simplify(-Xi1 - eps_eta / (1 - eps_eta) * SigmaEta)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '"R_target T^2 drift - delta ln(1 - eps_eta)",'
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: dln_eps_eta = sp.simplify(sp.series(sp.log(eps_eta_var / eps_eta), small, 0, 2).removeO().coeff(small, 1))
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: print("delta ln eps_eta =", dln_eps_eta)
+- path: scripts/moving_throat_pde_stage184_branch_invariant_coordinates_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: expect_zero("delta ln eps_eta - Sigma_eta", dln_eps_eta - SigmaEta)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

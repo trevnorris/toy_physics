@@ -1,0 +1,203 @@
+schema_version: 1
+candidate_id: fit_stage024_mhat_ang_exactly_one
+parameter_name: mhat_ang
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage024_mhat_ang_exactly_one__phase_b__mhat_ang.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '024'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_024.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{The angular identities and grouped splitting law are \StatusExactClosure{} once the real-STF basis
+    and reduced overlap closure are adopted.  The separated radial/axial ansatz is \StatusReduced{}.}
+- path: paper/stages/stage_024.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~024 takes the grouped coefficients of Stage~023 and gives them their first explicit
+    overlap-integral interpretation.  It proves that the angular source map is exact on the canonical isotropic branch, that
+    \(O(3)\)-invariant kernels collapse the grouped lanes to common values, and that the first weak-axisymmetric quadrupole
+    splitting has the universal signature \((1,1/2,-1)\), equivalently \(b=3a\).}
+- path: paper/stages/stage_024.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: Thus the real grouped quadrupole ports have a canonical normalized angular basis.
+- path: paper/stages/stage_024.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: \paragraph{2. Angular source-map identity.}
+- path: paper/stages/stage_024.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage024-mhat-factor}
+- path: paper/stages/stage_024.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: \widehat m_0=\widehat m_{\rm rad}\widehat m_{\rm ang},
+- path: paper/stages/stage_024.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: \boxed{\widehat m_{\rm ang}=1}
+- path: paper/stages/stage_024.tex
+  line: 71
+  role: paper_stage_tex
+  excerpt: The angular factor is diagonal by \eqref{eq:app-stage024-Y-orthonormal}.  The radial/axial overlaps are
+- path: paper/stages/stage_024.tex
+  line: 155
+  role: paper_stage_tex
+  excerpt: The angular matrix is
+- path: paper/stages/stage_024.tex
+  line: 225
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~024 outputs the real-STF normalization \eqref{eq:app-stage024-Y-orthonormal}, the angular
+    source-map identity \eqref{eq:app-stage024-source-map}, the isotropic overlap formulas \eqref{eq:app-stage024-B-moments}--\eqref{eq:app-stage024-D-isotropic},
+    the grouped isotropy collapse \eqref{eq:app-stage024-isotropic-collapse}, the weak-axisymmetric signature \eqref{eq:app-stage024-lambda-signature},
+    the line \(b=3a\), and the normalization transport coefficient \eqref{eq:app-stage024-PA-transport}.}
+- path: paper/stages/stage_024.tex
+  line: 228
+  role: paper_stage_tex
+  excerpt: \item The angular source map is checked by inserting the source expansion and using orthonormality of \(Y_A\).
+- path: paper/stages/stage_024.tex
+  line: 229
+  role: paper_stage_tex
+  excerpt: \item The isotropic collapse is checked by verifying that all angular integrals reduce to \(\delta_{AB}\) and all
+    remaining radial/axial data are lane-independent.
+- path: paper/stages/stage_024.tex
+  line: 235
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stages~025--026 use \(\widehat m_{\rm ang}=1\) to focus on radial/axial normalization.  Stages~164--200
+    later reuse \(b=3a\) as the weak-axisymmetric orbit signature.  The same prefactor slope becomes \(\Xi_1=P_1/P_0\) in
+    the weak-axisymmetric and same-charge analysis.}
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 7
+  role: notes_stage
+  excerpt: '`mhat_0^2 N_0 / (K - B_0 - Z_0) = 54 G c_s^5 / (5 a^5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 17
+  role: notes_stage
+  excerpt: The next honest step is therefore **not** another abstract ratio manipulation. It is to write the first actual
+    overlap-integral model for the grouped real `P2` bundle and ask what the angular geometry already forces before the unsolved
+    radial/axial PDE is touched.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 24
+  role: notes_stage
+  excerpt: 2. an exact angular source-map identity for the grouped `20/21/22` quadrupole ports,
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 40
+  role: notes_stage
+  excerpt: be the canonical real STF basis already used in the 2.5PN audit. Define the real angular functions
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 54
+  role: notes_stage
+  excerpt: So this basis is orthonormal without any further angular normalization choices.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 56
+  role: notes_stage
+  excerpt: That one fact already matters for the theorem gate, because it means the grouped real quadrupole bundle has a **canonical
+    angular basis** on the isotropic throat.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 60
+  role: notes_stage
+  excerpt: '## 2. Exact angular source-map identity'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 70
+  role: notes_stage
+  excerpt: So on the natural isotropic source map the **angular** matching matrix is exactly the identity.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 72
+  role: notes_stage
+  excerpt: This means that the still-open source normalization `mhat_0` factors as
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 74
+  role: notes_stage
+  excerpt: '`mhat_0 = mhat_rad * mhat_ang`,'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 78
+  role: notes_stage
+  excerpt: '`mhat_ang = 1`'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 82
+  role: notes_stage
+  excerpt: So the remaining normalization gap is not an angular mismatch between the orbital STF source and the grouped real
+    throat ports. It is a **radial/axial and port-amplitude** issue.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 104
+  role: notes_stage
+  excerpt: Assume the reference throat and the reduced kernels are `O(3)` invariant, so that the angular dependence enters
+    only through scalar contractions.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 106
+  role: notes_stage
+  excerpt: 'Then all angular overlaps collapse by orthonormality, and every microscopic coupling becomes lane-independent:'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 127
+  role: notes_stage
+  excerpt: '`O(3)`-invariant kernel. This stage adds the angular closure and the symmetry'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 207
+  role: notes_stage
+  excerpt: The angular matrix that perturbs any `l=2` overlap is then
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 223
+  role: notes_stage
+  excerpt: 'So the weak axisymmetric quadrupole background does **not** produce an arbitrary lane splitting. It produces one
+    universal angular fingerprint:'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 264
+  role: notes_stage
+  excerpt: '- higher-rank angular content,'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 313
+  role: notes_stage
+  excerpt: '## 6. What Stage 024 changes in the theorem problem'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 317
+  role: notes_stage
+  excerpt: '### 6.1 The angular part of the source map is no longer open'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 321
+  role: notes_stage
+  excerpt: '`mhat_ang = 1`'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 325
+  role: notes_stage
+  excerpt: So the remaining source normalization issue is radial/axial and dynamical, not angular.
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 370
+  role: notes_stage
+  excerpt: '`mhat_rad^2 N_0 / (K - B_0 - Z_0)`,'
+- path: notes/stages/moving_throat_pde_stage024_overlap_isotropy.md
+  line: 371
+  role: notes_stage
+  excerpt: 4. and then, only after that, study symmetry breaking around that branch using the exact Stage-024 angular fingerprints.
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: • the exact angular source-map identity,
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: PDE, but it does verify the first explicit angular overlap rules the PDE must obey
+- path: scripts/moving_throat_pde_stage024_overlap_isotropy_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: 'for i in range(1, len(lst)):'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

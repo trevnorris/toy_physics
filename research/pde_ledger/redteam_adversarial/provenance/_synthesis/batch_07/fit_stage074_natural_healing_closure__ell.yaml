@@ -1,0 +1,25 @@
+candidate_id: fit_stage074_natural_healing_closure
+parameter_name: ell
+origin_claims:
+  - parameter: ell
+    introduced_at_stage: 074
+    introduced_at_line: 53
+    citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 53
+      excerpt: "`ell = ell_h = hbar / (2 m c_(s,w)).`"
+constraints:
+  - parameter: ell
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md
+      line: 55
+      excerpt: "This is a **controlled local closure**, not yet a theorem of the full moving-throat PDE, but it is the first honest way to tie the support scale to the parent GNLS medium instead of leaving it free."
+downstream_dependents: [75]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "Candidate label 'natural_healing_closure' matches the notes' 'natural next closure ... controlled local closure, not yet a theorem'. The wall width ell is posited equal to the GNLS healing width ell_h = hbar/(2 m c_sw) — an ansatz (free_choice), not a derivation. The notes themselves disclaim it as not-yet-a-theorem."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md, line: 37, excerpt: "`ell_h^2 = hbar^2 / (4 m^2 c_s^2).`" }
+      - { path: notes/stages/moving_throat_pde_stage074_family1_healing_lock.md, line: 23, excerpt: "If the active wall width on the explicit throat-support branch is identified with that same local conservative healing width on the support layer, then the branch acquires an exact support lock." }

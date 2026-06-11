@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage060_gamma_derived_rate
+parameter_name: gamma
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage060_gamma_derived_rate__phase_b__gamma.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '060'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: gamma = sp.symbols('gamma', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: sigma_ansatz = Cnorm*sp.exp(gamma*s)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: gamma_solved = sp.solve(sp.Eq(ode_ansatz, 0), gamma)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: '# take the nonzero branch matching dphi/L != 0'
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: gamma_derived = [g for g in gamma_solved if g != 0][0] if gamma_solved else None
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("gamma_derived =", gamma_derived)
+- path: scripts/moving_throat_pde_stage060_entropic_microclosure_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: sp.simplify(gamma_derived - Lam*dphi/(Theta*L)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

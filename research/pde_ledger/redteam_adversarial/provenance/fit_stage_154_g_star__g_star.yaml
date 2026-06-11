@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_154_g_star
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_154_g_star__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '154'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: g_star = r - sp.sqrt(1 + r**2) / 2
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: expect_zero("R(g_star) - 1/4", R.subs(g, g_star) - sp.Rational(1, 4))
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: R_shift = sp.expand(R.subs(g, g_star + dg))
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Sigma0, dSigma0, Sstar, dS = sp.symbols("Sigma0 dSigma0 Sstar dS", real=True)
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: Rstar, dR = sp.symbols("Rstar dR", real=True)
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Pi = (Sigma0 + dSigma0) * (1 - (Rstar + dR) * (Sstar + dS))
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: Pi0 = Sigma0 * (1 - Rstar*Sstar)
+- path: scripts/moving_throat_pde_stage154_coevolving_core_mouth_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: dPi_expected = sp.expand((1 - Rstar*Sstar)*dSigma0 - Sigma0*(Rstar*dS + Sstar*dR))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

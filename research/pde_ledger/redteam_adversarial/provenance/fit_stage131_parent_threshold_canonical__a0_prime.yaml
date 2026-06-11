@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage131_parent_threshold_canonical
+parameter_name: A0_prime
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage131_parent_threshold_canonical__phase_b__a0_prime.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '131'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_131.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: gprime_star = sp.N(sp.diff(gPi, Pi).subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: print("g'(Pi_*) =", gprime_star)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: gprime_paper = sp.Float("0.0714453558083195", 50)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: gprime_num = sp.N(gprime_star, 50)
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: assert abs(gprime_num - gprime_paper) < sp.Float("1e-14", 50), (
+- path: scripts/moving_throat_pde_stage131_parent_mouth_threshold_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: 'f"g''(Pi_*) mismatch vs notes Sec. 3: computed {gprime_num}, paper {gprime_paper}"'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

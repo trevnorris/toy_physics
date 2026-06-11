@@ -1,0 +1,50 @@
+schema_version: 1
+candidate_id: fit_stage_200_stale_output
+parameter_name: stale_output
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_200_stale_output__phase_b__stale_output.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '200'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_200.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~200 is the original-stage audit card for \emph{Reference-free home-stretch theorem}.  Its
+    purpose is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_200.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Combines Packet A and Packet B into the four-scalar final verdict packet \((\Delta_Q,q_{\rm
+    tr},q_{\rm nt},q_\eta)\).}
+- path: notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  line: 39
+  role: notes_stage
+  excerpt: 'The main outputs are:'
+- path: notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  line: 442
+  role: notes_stage
+  excerpt: 1. feed the actual completed moving-throat PDE output into the Packet-A compiler to extract `\(\chi_Q\)`,
+- path: notes/stages/moving_throat_pde_stage200_reference_free_home_stretch_theorem.md
+  line: 443
+  role: notes_stage
+  excerpt: 2. feed the same output into the Packet-B orbit-relative compiler to extract
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

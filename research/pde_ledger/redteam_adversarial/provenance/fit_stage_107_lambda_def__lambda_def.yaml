@@ -1,0 +1,176 @@
+schema_version: 1
+candidate_id: fit_stage_107_lambda_def
+parameter_name: Lambda_def
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_107_lambda_def__phase_b__lambda_def.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '107'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_107.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage~107]{Stage~107: General Isotropic l=2 DtN Deformation Algebra}'
+- path: paper/stages/stage_107.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~107 is a outlet deformation and compensation ledger step.  Its audit target is the verification
+    output quoted below.}
+- path: paper/stages/stage_107.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the canonical outgoing DtN expansion, a general isotropic deformation, Robin
+    mouth loading, and a hidden mixed side-channel pole.  It does not change the parent action or the grouped-lane ontology;
+    it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_107.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage107_general_dtn_deformation_mathematica_audit.txt}.}'
+- path: paper/stages/stage_107.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Outlet deformation and compensation}
+    block.  The computation isolates the admissible deformation classes and the compensated Robin--mixed constraints.}
+- path: paper/stages/stage_107.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Deformed branch \(S\Lambda_2^{\rm out}(\beta z)+\Sigma_0+\Sigma_2z^2+\Sigma_4z^4+i\Sigma_5z^5\) gives explicit
+    \(\chi_Q\).
+- path: paper/stages/stage_107.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check pure scale and pure argument deformations separately.
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 107: General Isotropic `l=2` DtN Deformation Algebra'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 5
+  role: notes_stage
+  excerpt: Replace the symbolic branch parameter `xi_Q` by an explicit low-frequency moving-throat DtN deformation model and
+    derive the exact map from deformation data to the retarded quadrupole normalization factor `chi_Q`.
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 11
+  role: notes_stage
+  excerpt: \Lambda_2^{\rm out}(z)
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 24
+  role: notes_stage
+  excerpt: '## General isotropic deformation model'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 26
+  role: notes_stage
+  excerpt: Take the first explicit isotropic moving-throat deformation family
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 29
+  role: notes_stage
+  excerpt: \Lambda_2^{\rm def}(z)
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 31
+  role: notes_stage
+  excerpt: S\,\Lambda_2^{\rm out}(\beta z)
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 44
+  role: notes_stage
+  excerpt: \Lambda_2^{\rm def}(z)=L_0+L_2 z^2+L_4 z^4+iL_5 z^5+O(z^6),
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 57
+  role: notes_stage
+  excerpt: '## Normalized deformation law'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 61
+  role: notes_stage
+  excerpt: \widehat Y_2^{\rm def}(z):=\frac{L_0}{L_0+L_2 z^2+L_4 z^4+iL_5 z^5}+O(z^6).
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 66
+  role: notes_stage
+  excerpt: \widehat Y_2^{\rm def}(z)
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 75
+  role: notes_stage
+  excerpt: So the deformation-normalized quadrupole factor is
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 82
+  role: notes_stage
+  excerpt: Demand that the deformed branch preserve the canonical conservative even fingerprint,
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 118
+  role: notes_stage
+  excerpt: 'This is the first explicit moving-throat DtN deformation model for the last reduced 2.5PN scalar. It shows exactly
+    which isotropic branch data can move the canonical value `chi_Q = 1`:'
+- path: notes/stages/moving_throat_pde_stage107_general_dtn_deformation.md
+  line: 120
+  role: notes_stage
+  excerpt: '- argument deformation `beta`,'
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: 'def banner(title: str) -> None:'
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 'def expect_zero(name: str, expr: sp.Expr) -> None:'
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: banner('STAGE 107 — GENERAL ISOTROPIC DTN DEFORMATION ALGEBRA')
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: Lambda_out = -3 + z**2/sp.Integer(3) + z**4/sp.Integer(9) + I*z**5/sp.Integer(9)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: print('Lambda_out(z) =', Lambda_out)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 30
+  role: sympy_script
+  excerpt: Lambda_def = sp.expand(S*Lambda_out.subs(z, beta*z) + Sigma0 + Sigma2*z**2 + Sigma4*z**4 + I*Sigma5*z**5)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: print('Lambda_def(z) =', Lambda_def)
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: L0 = sp.simplify(Lambda_def.subs(z, 0))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: L2 = sp.simplify(sp.expand(Lambda_def).coeff(z, 2))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: L4 = sp.simplify(sp.expand(Lambda_def).coeff(z, 4))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: L5 = sp.simplify(sp.im(sp.expand(Lambda_def).coeff(z, 5)))
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Y_direct = sp.series(L0 / Lambda_def, z, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage107_general_dtn_deformation_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: print('Y_def(z) =', sp.expand(Y_formula))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

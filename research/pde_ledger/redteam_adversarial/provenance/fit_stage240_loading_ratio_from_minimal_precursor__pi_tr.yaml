@@ -1,0 +1,103 @@
+schema_version: 1
+candidate_id: fit_stage240_loading_ratio_from_minimal_precursor
+parameter_name: Pi_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage240_loading_ratio_from_minimal_precursor__phase_b__pi_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '240'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1.  Pi_tr / C_mix = alpha_req / alpha_mix = rho_alpha
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: Pi_tr = (4/3) C_mix
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: varrho = pi^2 Pi_tr / (16 Lambda) = 2(1-eps_*)/3
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: Pi_tr, C_mix = sp.symbols("Pi_tr C_mix", positive=True)
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: Pi_tr_expr = NQ_target * alpha_req / beta0
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: sp.simplify(Pi_tr_expr / C_mix_expr - rho_alpha),
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: '"Pi_tr / C_mix = alpha_req / alpha_mix",'
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: Pi_tr_spec = sp.simplify(NQ_target_spec * alpha_req / beta0)
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: sp.simplify(Pi_tr_spec / C_mix_spec - rho_alpha),
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: Pi_tr_selected = sp.simplify(rho_min_from_c0 * C_mix)
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: Pi_tr_selected - sp.Rational(4, 3) * C_mix,
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: '"Pi_tr = (4/3) C_mix on the minimal isotropic branch",'
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: S_req = sp.simplify(Pi_tr_selected / C_mix)
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: assert_zero(S_req - sp.Rational(4, 3), "S_req = Pi_tr / C_mix = 4/3")
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: '# Also verify by substitution into the symbolic Pi_tr/C_mix representation.'
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 171
+  role: sympy_script
+  excerpt: varrho_symbolic = sp.simplify(sp.pi**2 * Pi_tr / (16 * Lambda))
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: sp.simplify(varrho_symbolic.subs(Pi_tr, sp.Rational(4, 3) * C_mix_Lambda) - 2 * (1 - eps_star) / 3),
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 185
+  role: sympy_script
+  excerpt: '# Encode the exact regime meaning in terms of Pi_tr and C_mix.'
+- path: scripts/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: 'if not (C_mix.subs(C_mix, 1) < Pi_tr_selected.subs(C_mix, 1) < 2 * C_mix.subs(C_mix, 1)):'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

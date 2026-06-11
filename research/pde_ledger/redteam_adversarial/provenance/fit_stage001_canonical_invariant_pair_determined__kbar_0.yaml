@@ -1,0 +1,64 @@
+schema_version: 1
+candidate_id: fit_stage001_canonical_invariant_pair_determined
+parameter_name: Kbar_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage001_canonical_invariant_pair_determined__phase_b__kbar_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '001'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 65
+  role: notes_stage
+  excerpt: verifies the real-harmonic bookkeeping, confinement linearization sign, and
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 69
+  role: notes_stage
+  excerpt: harmonic, chain-rule, and wall-action bookkeeping is not resting on a single
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 216
+  role: notes_stage
+  excerpt: or constrained, not as coefficients to be refit stage by stage to rescue the
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 414
+  role: notes_stage
+  excerpt: Define measured fluxes as the matching projected normal fluxes / generalized tractions,
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 436
+  role: notes_stage
+  excerpt: '- and the canonical pair `(Kbar_0, Kbar_2)` on the passive/outgoing quadrupole branch.'
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 471
+  role: notes_stage
+  excerpt: On the passive/outgoing isotropic quadrupole branch, the same mode-resolved response should determine the canonical
+    invariant pair
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 473
+  role: notes_stage
+  excerpt: '- `Kbar_0`,'
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 474
+  role: notes_stage
+  excerpt: '- `Kbar_2`,'
+- path: notes/stages/moving_throat_pde_stage001_geometry_lift.md
+  line: 484
+  role: notes_stage
+  excerpt: '### Advantage 1 — it matches the actual ontology'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

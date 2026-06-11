@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage_220_d_pi
+parameter_name: D_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_d_pi__phase_b__d_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '220'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: D_Pi = sp.together(K_B - Q_Pi / Delta_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print('D_Pi         =', D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: assert sp.simplify(det_identity - Delta_Pi * D_Pi) == 0
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'print(''\nVerified determinant identity: det(K_dyn) = Delta_Pi * D_Pi'')'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: 'assert sp.simplify(D_Pi.subs({omega: 0, Pi: 0}) - D0_static) == 0'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: chi_qq = 1 / D_Pi
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: chi_qU = P_U / (Delta_Pi * D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: chi_qW = P / (Delta_Pi * D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: chi_UU = (K_B * Wfun - G_W**2) / (Delta_Pi * D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: chi_UW = (K_B * R + G_U * G_W) / (Delta_Pi * D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: chi_WW = (K_B * A - G_U**2) / (Delta_Pi * D_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: chi_s = sp.together(N_s / (Delta_Pi * D_Pi))
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 226
+  role: sympy_script
+  excerpt: 'D_sample = sp.N(D_Pi.subs({**sample_subs, Pi: 0}))'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: print('D_Pi(sample, Pi=0)     =', D_sample)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

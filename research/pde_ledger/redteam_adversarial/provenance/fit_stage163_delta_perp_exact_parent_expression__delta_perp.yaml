@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage163_delta_perp_exact_parent_expression
+parameter_name: delta_perp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage163_delta_perp_exact_parent_expression__phase_b__delta_perp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '163'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_163.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_163.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: The first true off-family drift is the scalar \(\delta_\perp\), with explicit microscopic parent-action formula.
+- path: paper/stages/stage_163.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check tangent motion on the parent compensation family gives \(\delta_\perp=0\).
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 15
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 17
+  role: notes_stage
+  excerpt: \delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 19
+  role: notes_stage
+  excerpt: \mathfrak g_-'(\mathfrak r_*)\,\delta\mathfrak r,
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 27
+  role: notes_stage
+  excerpt: compute \(\delta_\perp\) on the true moving-throat branch.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 65
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 67
+  role: notes_stage
+  excerpt: \delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 69
+  role: notes_stage
+  excerpt: \mathfrak g_-'(\mathfrak r_*)\,\delta\mathfrak r.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 77
+  role: notes_stage
+  excerpt: \delta\mathcal F
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 79
+  role: notes_stage
+  excerpt: 4\sqrt{1+\mathfrak r_*^2}\,\delta_\perp.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 82
+  role: notes_stage
+  excerpt: So \(\delta_\perp\) is literally the normalized first-order parent compensation defect.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 100
+  role: notes_stage
+  excerpt: \delta R_q
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 102
+  role: notes_stage
+  excerpt: -\frac{\delta_\perp}{\sqrt{1+\mathfrak r_*^2}}
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 104
+  role: notes_stage
+  excerpt: -\frac{\delta\mathcal F}{4(1+\mathfrak r_*^2)}.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 108
+  role: notes_stage
+  excerpt: So the whole first-order departure from exact compensation is carried by the same scalar \(\delta_\perp\).
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 117
+  role: notes_stage
+  excerpt: \delta R_q
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 119
+  role: notes_stage
+  excerpt: -0.490216044387626\,\delta_\perp,
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 124
+  role: notes_stage
+  excerpt: \delta\mathcal F
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 126
+  role: notes_stage
+  excerpt: 8.15966765224253\,\delta_\perp.
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 142
+  role: notes_stage
+  excerpt: \delta\mathfrak r
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 146
+  role: notes_stage
+  excerpt: \delta\ln\lambda
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 147
+  role: notes_stage
+  excerpt: -\frac12\delta\ln K_s
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 148
+  role: notes_stage
+  excerpt: -\frac12\delta\ln K_q
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 152
+  role: notes_stage
+  excerpt: \delta\mathfrak g
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 156
+  role: notes_stage
+  excerpt: \delta\ln g_q
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 157
+  role: notes_stage
+  excerpt: -\delta\ln g_s
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 158
+  role: notes_stage
+  excerpt: +\frac12\delta\ln K_s
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 159
+  role: notes_stage
+  excerpt: -\frac12\delta\ln K_q
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 163
+  role: notes_stage
+  excerpt: Substituting into the definition of \(\delta_\perp\) and simplifying gives the exact microscopic residual
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 166
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 169
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 172
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right).
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 182
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right),
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 186
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right).
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 201
+  role: notes_stage
+  excerpt: \delta_\perp
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 204
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{g_qK_s}{g_s\lambda}\right)
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 207
+  role: notes_stage
+  excerpt: \delta\ln\!\left(\frac{K_sK_q}{\lambda^2}\right).
+- path: notes/stages/moving_throat_pde_stage163_off_family_normal_coordinate.md
+  line: 219
+  role: notes_stage
+  excerpt: \delta\mathcal C
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

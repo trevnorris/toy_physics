@@ -1,0 +1,147 @@
+schema_version: 1
+candidate_id: fit_stage_070_j_1
+parameter_name: J_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_070_j_1__phase_b__j_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '070'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 7
+  role: notes_stage
+  excerpt: '`W_wall = 4 pi a^2 L^2 J_1 V0^2 / (T_X ell),`'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 9
+  role: notes_stage
+  excerpt: but the actual branch data `(T_X, J_1, kappa, eta)` were still being treated as external inputs.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 20
+  role: notes_stage
+  excerpt: '- and on the matched thin-wall branch it is exactly the same object as the Stage-058/059 fixed-point coupling.'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 120
+  role: notes_stage
+  excerpt: '`J_1 = I_f / H_w.`'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 124
+  role: notes_stage
+  excerpt: '`W_wall = 4 pi a^2 L^2 J_1 V0^2 / (T_X ell).`'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 132
+  role: notes_stage
+  excerpt: '> on the matched thin-wall branch, `W_wall` is independent of the throat radius `a` and independent of the detailed
+    wall-shape moment `I_f`.'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 142
+  role: notes_stage
+  excerpt: On the matched thin-wall branch, the exact Stage-064 gain is
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 162
+  role: notes_stage
+  excerpt: exactly on the explicit matched thin-wall branch.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 182
+  role: notes_stage
+  excerpt: '- `J_1`,'
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: J1 = sp.simplify(If / Hw)
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: '# --- Anchoring cross-check: verify J_1 = I_f/H_w in the constant-H_w limit'
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: '# and Stage-065''s J_1 = I_f / H_w absorbs the shell measure 4 pi a^2 ell into J_1''s'
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: '# normalization. The structural identity I_1 / J_1 = 4 pi a^2 ell is what makes Xi = W_wall.'
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: J1_stage48 = sp.simplify(If_sym / Hw)
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: expect_zero("I1 / J1 - 4 pi a^2 ell (sech profile)", sp.simplify(I1_constH/J1_stage48 - 4*pi*a**2*ell))
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: Wwall = sp.simplify(4 * pi * a**2 * L**2 * J1 * V0**2 / (Tx * ell))
+- path: scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("J_1 =", J1)
+origin_claims:
+- parameter: J_1
+  introduced_at_stage: 53
+  introduced_at_line: 69
+  citation:
+    path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    line: 69
+    excerpt: '`J_1 = I_f / H_w,`'
+constraints:
+- parameter: J_1
+  constraint_kind: internal_consistency
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 120
+    excerpt: '`J_1 = I_f / H_w.`'
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    - paper/stages/stage_070.tex
+    - research/pde_ledger/paper/stages/stage_070.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    - paper/stages/stage_070.tex
+    - research/pde_ledger/paper/stages/stage_070.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+- type: stale_provenance_anchor
+  severity: low
+  summary: J_1 is the weighted wall-profile moment J_1 = I_f/H_w introduced upstream at stage 065; stage 070 carries it into
+    the explicit shell collapse. The candidate anchors to 070; the definitional origin is 065. J_1 is a derived integral object
+    with no numeric value here (depends on the still-generic wall profile).
+  citations:
+  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 118
+    excerpt: Stage 065 already showed that, for an almost constant-compressibility active layer,
+  - path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+    line: 46
+    excerpt: '`G_eq^(tw) = 4 pi a^2 V0^2 J_1 / (K_X ell);`'
+downstream_dependents:
+- '071'
+- '073'
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage_070_j_1__j_1.yaml

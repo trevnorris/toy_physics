@@ -1,0 +1,162 @@
+schema_version: 1
+candidate_id: fit_stage_232_lambda_mu_1
+parameter_name: lambda_mu_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_232_lambda_mu_1__phase_b__lambda_mu_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '232'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 6
+  role: notes_stage
+  excerpt: '**Exact within the carried same-charge barrier chain plus the numerically located `5`PN Family-1 support/source
+    branch on the refreshed `\Lambda_{\rm EM}` geometry.**'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 21
+  role: notes_stage
+  excerpt: 'The `5`PN continuation then did something new: it actually **numerically located** the explicit Family-1 support/source
+    branch on the refreshed exact `\Lambda_{\rm EM}` geometry. That means the next honest stage is no longer more support
+    algebra. It is simply:'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: '### 1.1 Refreshed exact `\Lambda_{\rm EM}` geometry branch'
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 42
+  role: notes_stage
+  excerpt: \Lambda_\ell:=\frac{L}{\ell}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 20\,\Lambda_{\rm EM}
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: \eta=\Lambda_\ell\approx 36.94973154240256,
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: \chi_s=\frac{L}{2\ell}=\frac{\Lambda_\ell}{2}\approx 18.47486577120128,
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 61
+  role: notes_stage
+  excerpt: 4\chi_s^2+\frac45\Lambda_\ell^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: \frac95\Lambda_\ell^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 92
+  role: notes_stage
+  excerpt: The same support/source branch is selected by the exact fixed-point law
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 149
+  role: notes_stage
+  excerpt: for the benchmark \(\lambda_\mu=1\).
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: \Xi_\chi = 100\,\Theta_w^{(\chi)}\Lambda_\ell^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 157
+  role: notes_stage
+  excerpt: \Xi_J = 100\,\Theta_w^{(J)}\Lambda_\ell^2
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: 1. **Static same-sign Maxwell shaping** is still not the answer.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: That is the cleanest current stopping point.
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 352
+  role: notes_stage
+  excerpt: 1. the exact refreshed `\Lambda_{\rm EM}` geometry formulas
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 354
+  role: notes_stage
+  excerpt: \Lambda_\ell=\frac{20\sqrt2\,\pi}{x_{01}},
+- path: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+  line: 356
+  role: notes_stage
+  excerpt: \kappa=\frac95\Lambda_\ell^2;
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# 1. Refreshed exact Lambda_EM geometry'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: Lambda_ell = 20 * mp.sqrt(2) * mp.pi / x01
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: chi_s = Lambda_ell / 2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: eta = Lambda_ell
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: kappa = mp.mpf(9) / 5 * Lambda_ell**2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: print("Lambda_ell =", Lambda_ell)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: assert_close(float(Lambda_ell), 36.94973154240256, tol=5e-14)
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: 'integrand = lambda xx: K_kernel(xx) * Sigma_Pe(xx, Pe)'
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: Xi_chi = 100 * Theta_w_chi * Lambda_ell**2
+- path: scripts/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: Xi_J = 100 * Theta_w_J * Lambda_ell**2
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    - paper/stages/stage_232.tex
+    - research/pde_ledger/paper/stages/stage_232.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage232_known_5pn_data_injection_and_current_branch_verdict_sympy_audit.md
+    - paper/stages/stage_232.tex
+    - research/pde_ledger/paper/stages/stage_232.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

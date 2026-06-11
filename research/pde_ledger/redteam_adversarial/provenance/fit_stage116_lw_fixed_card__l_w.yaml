@@ -1,0 +1,123 @@
+schema_version: 1
+candidate_id: fit_stage116_LW_fixed_card
+parameter_name: L_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage116_lw_fixed_card__phase_b__l_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '116'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_116.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: First D/N mixed half-wave fixes \(L_W=\pi a\sqrt{(1+r_c)/3}/2\) and the bare outgoing scale.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 10
+  role: notes_stage
+  excerpt: 'Take the mixed side-channel to live on a finite auxiliary tube of length `L_W` with the first D/N half-wave:'
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 16
+  role: notes_stage
+  excerpt: q'(L_W)=0.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 21
+  role: notes_stage
+  excerpt: k_W=\frac{\pi}{2L_W},
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 23
+  role: notes_stage
+  excerpt: \Omega_W=\frac{\pi c_s}{2L_W}.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 34
+  role: notes_stage
+  excerpt: =\frac{4L_W^2}{\pi^2 a^2}.
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 49
+  role: notes_stage
+  excerpt: L_W
+- path: notes/stages/moving_throat_pde_stage116_dn_mixed_tube_realization.md
+  line: 89
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+r_c}{3}},
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: a, L_W = sp.symbols("a L_W", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: '# D/N half-wave eigenvalue derivation: solve q'''' + k^2 q = 0 with q(0)=0, q''(L_W)=0.'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 25
+  role: sympy_script
+  excerpt: '# q(x) = sin(k*x) satisfies q(0)=0; the second BC requires cos(k*L_W) = 0, so the'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# smallest positive eigenvalue is k_W = pi/(2*L_W).'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: bc_right = sp.simplify(sp.diff(q_trial, x_var).subs(x_var, L_W))
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: k_W_value = sp.pi / (2 * L_W)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: '"D/N trial satisfies q''(L_W) = 0 at k = pi/(2 L_W)",'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: kappa0_derived - 4 * L_W**2 / (sp.pi**2 * a**2),
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: L_W_required = sp.solve(
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: L_W,
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("Required tube length L_W =", sp.simplify(L_W_required))
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: '"tube-length law: L_W = pi a sqrt((1+r_c)/3) / 2",'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: sp.simplify(L_W_required - sp.pi * a * sp.sqrt((1 + r_c) / 3) / 2),
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'kappa0_bare = sp.simplify(kappa0_from_tube.subs(L_W, L_W_required))  # derived tube coeff at required length'
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: print("  kappa0_bare (derived tube coeff at L_W_required) =", kappa0_bare)
+- path: scripts/moving_throat_pde_stage116_dn_mixed_tube_realization_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("  D/N half-wave mixed tube length:", sp.simplify(L_W_required))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

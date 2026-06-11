@@ -1,0 +1,211 @@
+schema_version: 1
+candidate_id: fit_stage_201_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_201_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '201'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_201.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation forms the target monomial ratios, logs them to obtain the quotient
+    coordinates, solves the dependent-triple repair equation \(M_*\Delta\mathbf x_{\rm rep}=-\mathbf q\), exponentiates the
+    repair, and proves the projected state is the unique target-orbit point with the same free quintuple.}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 16
+  role: notes_stage
+  excerpt: \Delta_{\rm full}=0
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 35
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep},
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 151
+  role: notes_stage
+  excerpt: \Delta_Q(\mathbf x):=\chi_Q(\mathbf x)-1.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 158
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_Q(\mathbf x),\
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 226
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}=0
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 252
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 257
+  role: notes_stage
+  excerpt: \Delta\mathbf x=
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 258
+  role: notes_stage
+  excerpt: (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 269
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm quot}=S_{(T,K_\eta,\mu)}\,\mathbf q,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 274
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}:=-S_{(T,K_\eta,\mu)}\,\mathbf q.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 281
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 310
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x_{\rm rep}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 318
+  role: notes_stage
+  excerpt: M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 322
+  role: notes_stage
+  excerpt: This is the exact microscopic meaning of “repair to the target orbit while keeping the free similarity coordinates
+    fixed.”
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 406
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x_{\rm rep}=-\mathbf q,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 410
+  role: notes_stage
+  excerpt: M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 418
+  role: notes_stage
+  excerpt: The support of `\(\Delta\mathbf x_{\rm rep}\)` lies only on the dependent triple, so the free quintuple is unchanged.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 420
+  role: notes_stage
+  excerpt: 'Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates are
+    fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 453
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}(\mathbf x\mid\mathcal Z_*)=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 502
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}^{\rm lin}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 504
+  role: notes_stage
+  excerpt: -S_{(T,K_\eta,\mu)}\,M_*\,\Delta\mathbf x,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 509
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm lin}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 512
+  role: notes_stage
+  excerpt: \delta\chi_Q,\
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 513
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '# (Delta_lambda, Delta_c, Delta_gamma, Delta_U, Delta_Keta, Delta_W, Delta_mu, Delta_T)'
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '[0, 1 + deltaUs, 1 + deltaUs, -(2 + chi0s + deltaUs), 0, 0, 0, 1 + chi0s],'
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: Delta_real_int = sp.Matrix([chiQ - 1, qtr, qnt, qeta])
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: print("Delta_real^int =")
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: sp.pprint(Delta_real_int)
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: print("Delta x_rep =")
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: expect_zero("M_* Delta x_rep + q", simplify_log(Mstar * dx_rep + qvec))
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 219
+  role: sympy_script
+  excerpt: expect_zero("log(x_proj/x) - Delta x_rep", simplify_log(dx_from_projection - dx_rep))
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 232
+  role: sympy_script
+  excerpt: Delta_int = sp.Matrix([chiQ - 1, sp.log(Ctr2 / Ctr_star), sp.log(Cnt2 / Cnt_star), sp.log(eps2 / epsEta_star)])
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 233
+  role: sympy_script
+  excerpt: Delta_pair = sp.Matrix([chiQ - 1, sp.log(Ctr2 / Ctr1), sp.log(Cnt2 / Cnt1), sp.log(eps2 / eps1)])
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: simplify_log(Delta_pair.subs(witness_subs) - Delta_int),
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: '"Delta_lambda Delta_c Delta_gamma Delta_U Delta_Keta Delta_W Delta_mu Delta_T",'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    - paper/stages/stage_201.tex
+    - research/pde_ledger/paper/stages/stage_201.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+    - paper/stages/stage_201.tex
+    - research/pde_ledger/paper/stages/stage_201.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

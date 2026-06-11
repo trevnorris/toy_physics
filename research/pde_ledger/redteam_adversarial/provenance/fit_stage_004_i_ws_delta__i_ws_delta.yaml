@@ -1,0 +1,39 @@
+schema_version: 1
+candidate_id: fit_stage_004_i_ws_delta
+parameter_name: I_WS_delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_004_i_ws_delta__phase_b__i_ws_delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '004'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: I_WS_delta = sp.simplify(W_match.subs(w, 0))
+- path: scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: mu_proj_delta = sp.simplify(mu0 * I_WS_delta / I_WZ)
+- path: scripts/moving_throat_pde_stage004_projected_maxwell_bundle_index_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: assert_zero("delta-source projection/reduction ratio", mu_proj_delta / mu_red - sp.sqrt(2))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

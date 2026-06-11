@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage134_sq_spotcheck_anchor_literals
+parameter_name: S_q_at_half
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage134_sq_spotcheck_anchor_literals__phase_b__s_q_at_half.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '134'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 10
+  role: notes_stage
+  excerpt: '- one **first mixed D/N half-wave** lane.'
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 31
+  role: notes_stage
+  excerpt: the first D/N half-wave on the actual throat span.
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: S_q_at_half = sp.N(S_q.subs(Pi, sp.Rational(1, 2)), 30)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: target_half = sp.Float("0.608336415687717065435990381419", 30)
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: ("S_q(1/2)", S_q_at_half, target_half),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

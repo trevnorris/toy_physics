@@ -1,0 +1,169 @@
+schema_version: 1
+candidate_id: fit_stage_226_xi_1
+parameter_name: Xi_1
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_226_xi_1__phase_b__xi_1.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '226'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_226.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves $\Xi_{\rm load}=\Xi_1=P_1/P_0$, shows that monomial/orbit
+    rigidity kills the load defect but not the even gates, and narrows the viable same-charge corridor to a pure outgoing-transfer
+    deformation with the conservative front end frozen.}
+- path: paper/stages/stage_226.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Strict first-order packet: $\Xi_1$ is the prefactor slope, while $K_1$ and $H_{\rm even}$
+    are separate conservative gates; the survivor is a pure-transfer corridor rather than arbitrary grouped anisotropy.}'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0},
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 109
+  role: notes_stage
+  excerpt: D_{01},\qquad D_{21},\qquad D_{41},\qquad N_{01},\qquad \Xi_1.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 119
+  role: notes_stage
+  excerpt: \Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: '|\epsilon\Xi_1|\lesssim 0.367930328492646'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 130
+  role: notes_stage
+  excerpt: '|\epsilon\Xi_1|\lesssim 0.737619063660757'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: '|\epsilon\Xi_1|\lesssim 2.94889585703134,'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: '|\epsilon\Xi_1|\lesssim 4.63505472371892.'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 150
+  role: notes_stage
+  excerpt: \Xi_1=\frac{P_1}{P_0}=\frac{N_{01}}{N_0}-\frac{D_{01}}{D_0}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: \boxed{\Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 260
+  role: notes_stage
+  excerpt: \Xi_1(w_1)\approx 1.33691841376792,
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 263
+  role: notes_stage
+  excerpt: \Xi_1(w_2)\approx -13.9944400566810,
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: \Xi_1(w_3)\approx -5.02163500066813.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 272
+  role: notes_stage
+  excerpt: \sigma_{\rm even}=\|\Pi_{\rm even}\,\Xi_1\|_2.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 330
+  role: notes_stage
+  excerpt: \Xi_1(t_1)\approx 11.0106276743889,
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 332
+  role: notes_stage
+  excerpt: \Xi_1(t_2)\approx -5.66658382170817.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 344
+  role: notes_stage
+  excerpt: \Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0}.}
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 353
+  role: notes_stage
+  excerpt: \sigma_{\rm transfer}=\|\Pi_{\rm transfer}\,\Xi_1\|_2.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 368
+  role: notes_stage
+  excerpt: If the operator norm of `\Xi_1` on a corridor is `\sigma`, then the transported Stage-224 ceiling law becomes
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 425
+  role: notes_stage
+  excerpt: And in fact the pure-transfer subcorridor leaves slightly **more** same-charge headroom than the larger strict
+    even-gate corridor, because the surviving `\Xi_1` functional is a little more concentrated there.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 439
+  role: notes_stage
+  excerpt: \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 451
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}.
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: \Xi_{\rm load}=\Xi_1=\frac{P_1}{P_0};
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 472
+  role: notes_stage
+  excerpt: '- the strict mixed-only even-gate matrix, its rank-`2` nullity-`3` solve, the displayed raw null basis, the corresponding
+    `\Xi_1` values, and the induced corridor norm `\sigma_{\rm even}`;'
+- path: notes/stages/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.md
+  line: 473
+  role: notes_stage
+  excerpt: '- the pure-transfer `3 x 5` intersection system, its rank-`3` nullity-`2` solve, the displayed raw basis, the
+    corresponding `\Xi_1` and `N_{01}` values, and the induced norm `\sigma_{\rm transfer}`;'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: '# 1. Exact bridge Xi_load = Xi1 and strict-even formulas'
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Xi1 = sp.simplify(P1 / P0)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: assert sp.simplify(Xi1 - Xi_load) == 0
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: print("Xi_load = Xi1 =", Xi1)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: Xi1_mixed = sp.expand(sp.simplify(N01_mixed / N0_s - D01_mixed / D0_s))
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: Xi_coeff = coeff_vector(Xi1_mixed, mixed_vars)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 264
+  role: sympy_script
+  excerpt: print("Xi1(w) =", Xi_w)
+- path: scripts/moving_throat_pde_stage226_strict_5pn_even_gate_package_surviving_mixed_corridor_and_pure_transfer_subcorridor_sympy_audit.py
+  line: 316
+  role: sympy_script
+  excerpt: print("Xi1(t) =", Xi_t)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

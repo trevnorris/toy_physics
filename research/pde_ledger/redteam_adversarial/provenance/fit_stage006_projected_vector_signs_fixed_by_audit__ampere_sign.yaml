@@ -1,0 +1,86 @@
+schema_version: 1
+candidate_id: fit_stage006_projected_vector_signs_fixed_by_audit
+parameter_name: ampere_sign
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage006_projected_vector_signs_fixed_by_audit__phase_b__ampere_sign.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '006'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_006.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_006.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: It checks the \(3+1\) vector signs, the measured-field/source-flux split, and
+- path: paper/stages/stage_006.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: With the convention \(F^{i0}=E_i\), the projected Faraday and Ampere signs are
+- path: paper/stages/stage_006.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \label{eq:stage006-ampere}
+- path: paper/stages/stage_006.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: and the vector-law sign convention used by the rest of the projected Maxwell
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: '# nu = 1,2,3 (Ampere-like law)'
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: print("\nAmpere-like components from the projected inhomogeneous equation:")
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: assert_zero(f"Ampere component {i}", residue)
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 261
+  role: sympy_script
+  excerpt: assert_nonzero("mutated leakage IBP sign should fail", projected_transverse_derivative - (boundary_ZFw1 + Pgp(ZFw1)))
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 295
+  role: sympy_script
+  excerpt: '"concrete projected Ampere 1",'
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 299
+  role: sympy_script
+  excerpt: '"concrete projected Ampere 2",'
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 303
+  role: sympy_script
+  excerpt: '"concrete projected Ampere 3",'
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 367
+  role: sympy_script
+  excerpt: '"mutated concrete Faraday sign should fail",'
+- path: scripts/moving_throat_pde_stage006_projected_maxwell_vector_sympy_audit.py
+  line: 371
+  role: sympy_script
+  excerpt: 'print("Concrete checks: Faraday/Ampere sign maps, explicit boundary discharge, E-vs-D distinction, and nonzero
+    leakage all pass.")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

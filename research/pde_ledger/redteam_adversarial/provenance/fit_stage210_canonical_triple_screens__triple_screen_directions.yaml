@@ -1,0 +1,154 @@
+schema_version: 1
+candidate_id: fit_stage210_canonical_triple_screens
+parameter_name: triple_screen_directions
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage210_canonical_triple_screens__phase_b__triple_screen_directions.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '210'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_210.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports primitive triples, the positive spherical simplex \(a_i^2+a_j^2+a_k^2=1\), pairwise
+    edge packets, and local gradient/Hessian data.}
+- path: paper/stages/stage_210.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation reduces every boundary edge to an imported pairwise search, proves
+    the three-coordinate gradient-synergy law, computes total cross leverage, defines fixed-simplex brackets, and gives canonical
+    gradient/equal-mix triple screens.}
+- path: paper/stages/stage_210.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Boundary reduction for triples, three-coordinate gradient and curvature synergy, canonical
+    triple-screen audit, interior-screen dominance criterion, and non-improvement filter.}
+- path: paper/stages/stage_210.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check all pairwise and triple boundary faces are imported from already-certified lower-support ledgers.
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 210: Three-Coordinate Mixed-Simplex, Exact Interior Gradient/Curvature Synergy, and
+    the Canonical Triple-Screen Audit'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 206 scalarized search framework and the fully optimized Stage 209 pairwise certified
+    sieve, once a local oriented `3 x 3` Hessian-envelope block and a triple-simplex validity map are supplied on the chosen
+    three-coordinate patch.**'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 24
+  role: notes_stage
+  excerpt: 1. the exact **positive spherical simplex** for a monotone primitive triple,
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: 6. the exact **canonical triple-screen audit** consisting of three optimized boundary rows plus two interior canonical
+    rows,
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: 7. and the exact **interior-screen dominance criterion** that certifies a genuine three-coordinate improvement
+    over all pairwise winners.
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: Now fix a monotone primitive triple `\((i,j,k)\)` with
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 223
+  role: notes_stage
+  excerpt: Let the oriented symmetric Hessian block along the triple ray be
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 410
+  role: notes_stage
+  excerpt: '## 6. The canonical triple-screen audit'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 413
+  role: notes_stage
+  excerpt: 'The smallest exact screen set is instead:'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 423
+  role: notes_stage
+  excerpt: 2. the unique interior gradient-optimal screen point
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 427
+  role: notes_stage
+  excerpt: 3. the unique interior equal-mix barycentric screen point
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 432
+  role: notes_stage
+  excerpt: So the exact Stage 210 triple-screen packet is
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 446
+  role: notes_stage
+  excerpt: This is the exact three-coordinate analogue of the Stage 208 canonical pairwise screen, but with the three pairwise
+    boundaries already fully optimized and imported rather than re-audited.
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 450
+  role: notes_stage
+  excerpt: '## 7. Exact interior-screen dominance criterion'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: '### Exact interior-screen dominance theorem'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: If either canonical interior screen satisfies
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 488
+  role: notes_stage
+  excerpt: '- the actual root at the chosen interior screen point is bounded above by its certified upper bracket,'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 490
+  role: notes_stage
+  excerpt: '- so the interior screen point already certifies a strict interior improvement over all pairwise edges.'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 509
+  role: notes_stage
+  excerpt: then neither canonical interior screen beats the best pairwise edge winner.
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 554
+  role: notes_stage
+  excerpt: 2. a genuine interior triple ray always beats the pairwise edges at the first-order gradient level,
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 557
+  role: notes_stage
+  excerpt: '5. and the smallest honest interior audit is now a five-row screen:'
+- path: notes/stages/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit.md
+  line: 564
+  role: notes_stage
+  excerpt: The next real question is whether the full two-parameter interior simplex optimizer can produce a certified winner
+    that beats both canonical interior screens and all optimized pairwise edges.
+- path: scripts/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: banner("STAGE 210 — THREE-COORDINATE MIXED-SIMPLEX AND THE CANONICAL TRIPLE-SCREEN AUDIT")
+- path: scripts/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_sympy_audit.py
+  line: 242
+  role: sympy_script
+  excerpt: '# VI. Canonical interior screen values'
+- path: scripts/moving_throat_pde_stage210_three_coordinate_mixed_simplex_audit_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: subbanner("VI. Canonical interior screen values")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

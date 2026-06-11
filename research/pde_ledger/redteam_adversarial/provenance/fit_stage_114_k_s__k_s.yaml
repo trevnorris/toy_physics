@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage_114_k_s
+parameter_name: K_s
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_114_k_s__phase_b__k_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '114'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 18
+  role: notes_stage
+  excerpt: K_s & \lambda\\[2pt]
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 48
+  role: notes_stage
+  excerpt: \frac{g_s^2}{K_s}
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 50
+  role: notes_stage
+  excerpt: \frac{(K_s g_q-\lambda g_s)^2}
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 51
+  role: notes_stage
+  excerpt: '{K_s\big(K_sK_q D_W^{\rm bare}(z)+\lambda^2\big)}.'
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 57
+  role: notes_stage
+  excerpt: r_c:=\frac{\lambda^2}{K_sK_q}.
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 73
+  role: notes_stage
+  excerpt: \rho_c=\frac{g_s^2}{K_s},
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 79
+  role: notes_stage
+  excerpt: \frac{(K_s g_q-\lambda g_s)^2}
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 80
+  role: notes_stage
+  excerpt: '{K_s^2K_q(1+r_c)},'
+- path: notes/stages/moving_throat_pde_stage114_concrete_core_schur.md
+  line: 97
+  role: notes_stage
+  excerpt: '- one static shell stiffness `K_s`,'
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: K_s, K_q, lam = sp.symbols("K_s K_q lam", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# [[K_s, lam],[lam, -K_q D]] [s,q]^T = u [g_s,g_q]^T'
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: M = sp.Matrix([[K_s, lam], [lam, -K_q * D]])
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: rho_c = g_s**2 / K_s
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: r_c = lam**2 / (K_s * K_q)
+- path: scripts/moving_throat_pde_stage114_concrete_core_schur_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: sigma_tilde = (K_s * g_q - lam * g_s)**2 / (K_s**2 * K_q)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

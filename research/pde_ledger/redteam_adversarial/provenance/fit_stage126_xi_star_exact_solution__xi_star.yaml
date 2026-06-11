@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage126_xi_star_exact_solution
+parameter_name: xi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage126_xi_star_exact_solution__phase_b__xi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '126'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 6
+  role: notes_stage
+  excerpt: Evaluate explicit positive localized source laws and determine whether the physical lower compensated branch can
+    be reached without exotic sign-changing mouth profiles.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 8
+  role: notes_stage
+  excerpt: '## 1. Self-matched derivative profile'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 48
+  role: notes_stage
+  excerpt: Therefore the self-matched source overshoots the exact compensated lower branch by
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 65
+  role: notes_stage
+  excerpt: So the exact Family-1 compensated branch is only a **3.61% traction enhancement** away from the self-matched derivative
+    profile.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 105
+  role: notes_stage
+  excerpt: So only an **18.4% admixture** of the fully washed positive profile \(1/L\) into the self-matched derivative profile
+    reaches the exact lower compensated branch.
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 112
+  role: notes_stage
+  excerpt: '- the exact self-matched D/N derivative source gives \(\mathfrak g=\pi/4\),'
+- path: notes/stages/moving_throat_pde_stage126_positive_source_families.md
+  line: 115
+  role: notes_stage
+  excerpt: So the canonical branch no longer looks like a delicate coefficient fit. It sits inside a simple exact family of
+    positive localized mouth sources.
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: xi_star = sp.simplify(sp.solve(sp.Eq(g_xi, gminus), xi)[0])
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: print("xi_* =", xi_star)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: print("xi_* numeric =", sp.N(xi_star, 20))
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: g_xi_star = sp.simplify(g_xi.subs(xi, xi_star) - gminus)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("g_xi(xi_*) - g_- =", g_xi_star)
+- path: scripts/moving_throat_pde_stage126_positive_source_families_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: 'if sp.simplify(g_xi_star) != 0:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

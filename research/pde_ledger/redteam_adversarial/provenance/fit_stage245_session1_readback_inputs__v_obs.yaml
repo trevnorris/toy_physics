@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage245_session1_readback_inputs
+parameter_name: V_obs
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage245_session1_readback_inputs__phase_b__v_obs.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '245'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_245.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: Stage 245 compiles the abstract non-rigid lane into the actual finite physical variables used by the rigid-mouth
+    chart.  The carried chart is \cref{eq:app-part08-main-uv-chart}; hence
+- path: paper/stages/stage_245.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage245-direct-observables}
+- path: paper/stages/stage_245.tex
+  line: 10
+  role: paper_stage_tex
+  excerpt: \mathcal T^2=\mathcal T_{\rm ref}^{2}e^U,
+- path: paper/stages/stage_245.tex
+  line: 12
+  role: paper_stage_tex
+  excerpt: \epsilon_\eta=\epsilon_{\eta,{\rm ref}}e^V.
+- path: paper/stages/stage_245.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: R_{\rm target}\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+- path: paper/stages/stage_245.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \frac{R_{\rm target}}{R_{\rm target,ref}}
+- path: paper/stages/stage_245.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \frac{1-\epsilon_{\eta,{\rm ref}}e^V}{1-\epsilon_{\eta,{\rm ref}}}e^{-U}.
+- path: paper/stages/stage_245.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \frac12a_UU^2+\frac12a_VV^2-\chi_{UV}(r)UV-f_U(r)U.
+- path: paper/stages/stage_245.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: The stationary solution is \cref{eq:app-part08-main-uv-stationary}, with \(\Delta_{UV}\) given by \cref{eq:app-part08-main-delta-uv}.  In
+    finite physical variables,
+- path: paper/stages/stage_245.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: \mathcal T_{\rm ref}^2\exp\left(\frac{a_Vf_U(r)}{\Delta_{UV}(r)}\right),
+- path: paper/stages/stage_245.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage245-finite-epseta}
+- path: paper/stages/stage_245.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \epsilon_\eta(r)
+- path: paper/stages/stage_245.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \epsilon_{\eta,{\rm ref}}\exp\left(\frac{\chi_{UV}(r)f_U(r)}{\Delta_{UV}(r)}\right),
+- path: paper/stages/stage_245.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \frac{R_{\rm target}(r)}{R_{\rm target,ref}}
+- path: paper/stages/stage_245.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \frac{1-\epsilon_{\eta,{\rm ref}}\exp(\chi_{UV}f_U/\Delta_{UV})}{1-\epsilon_{\eta,{\rm ref}}}
+- path: paper/stages/stage_245.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: \exp(-a_Vf_U/\Delta_{UV}).
+- path: paper/stages/stage_245.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+- path: paper/stages/stage_245.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: (a_V-\chi_{UV})f_U/\Delta_{UV}
+- path: paper/stages/stage_245.tex
+  line: 73
+  role: paper_stage_tex
+  excerpt: The drain \(\mathcal D_{UV}\) is given by \cref{eq:app-part08-main-uv-drain}; it is nonnegative even when \(U\)
+    and \(V\) have opposite signs.
+- path: paper/stages/stage_245.tex
+  line: 78
+  role: paper_stage_tex
+  excerpt: U=\varepsilon u_1+O(\varepsilon^2),
+- path: paper/stages/stage_245.tex
+  line: 80
+  role: paper_stage_tex
+  excerpt: V=\varepsilon v_1+O(\varepsilon^2).
+- path: paper/stages/stage_245.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: =-\frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1,
+- path: paper/stages/stage_245.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: \frac{\epsilon_{\eta,{\rm ref}}}{1-\epsilon_{\eta,{\rm ref}}}v_1.
+- path: paper/stages/stage_245.tex
+  line: 97
+  role: paper_stage_tex
+  excerpt: Thus the direct outgoing-prefactor scalar remains the \(U\) leg, while active dressing adds an independent selected-branch
+    residual.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: 'It compiles the second lifted lane from Stage 243 into the actual physical observables that the compact program
+    already uses:'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 11
+  role: notes_stage
+  excerpt: 2. dressing motion `\epsilon_\eta`,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: U=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 31
+  role: notes_stage
+  excerpt: V=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right),
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 34
+  role: notes_stage
+  excerpt: together with the exact selected-branch identity relating `\mathcal T^2`, `\epsilon_\eta`, and `R_{\rm target}`.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 51
+  role: notes_stage
+  excerpt: '- and the barrier-session Section I, which reported a nonzero `V`, active `\epsilon_\eta`, and a positive `U/V`
+    drain once the rigid-mouth assumption was relaxed.'
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: 1. the exact finite update of the physical observables `(\mathcal T^2,\epsilon_\eta,R_{\rm target})`,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: U:=\ln\!\left(\frac{\mathcal T^2}{\mathcal T_{\rm ref}^2}\right),
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 91
+  role: notes_stage
+  excerpt: V:=\ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 95
+  role: notes_stage
+  excerpt: So the direct observables are
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 99
+  role: notes_stage
+  excerpt: \mathcal T^2=\mathcal T_{\rm ref}^2 e^U,
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 101
+  role: notes_stage
+  excerpt: \epsilon_\eta=\epsilon_{\eta,\rm ref}e^V.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: R_{\rm target}\,\mathcal T^2=\Lambda_0(1-\epsilon_\eta)
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 112
+  role: notes_stage
+  excerpt: \frac{R_{\rm target}}{R_{\rm target,ref}}
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 114
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,\rm ref}e^V}{1-\epsilon_{\eta,\rm ref}}\,e^{-U}.
+- path: notes/stages/moving_throat_pde_stage245_nonrigid_mouth_dressing_packet_and_uv_drain_compiler_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: Stage 245 keeps this exact chart and only changes the law that determines the finite point `(U,V)`.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

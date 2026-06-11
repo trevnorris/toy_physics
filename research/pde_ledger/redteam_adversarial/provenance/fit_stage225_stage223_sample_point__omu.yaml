@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage225_stage223_sample_point
+parameter_name: OmU
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage225_stage223_sample_point__phase_b__omu.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '225'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: OmU, OmW = sp.symbols("OmU OmW", positive=True)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: Delta = OmU**2 * OmW**2 - R**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: S2 = OmU**2 + OmW**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: Q = GU**2 * OmW**2 + 2 * GU * GW * R + GW**2 * OmU**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: P = OmU**2 * GW + R * GU
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: OmUd = OmU * sp.exp(eps * xOU)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: Deltad = OmUd**2 * OmWd**2 - Rd**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: S2d = OmUd**2 + OmWd**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: Qd = GUd**2 * OmWd**2 + 2 * GUd * GWd * Rd + GWd**2 * OmUd**2
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: Pd = OmUd**2 * GWd + Rd * GUd
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: Delta1 = 2 * OmU**2 * OmW**2 * (xOU + xOW) - 2 * R**2 * xLR
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: S2_1 = 2 * OmU**2 * xOU + 2 * OmW**2 * xOW
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: + 2 * GW**2 * OmU**2 * (xLW + xOU)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: P1_raw = OmU**2 * GW * (2 * xOU + xLW) + R * GU * (xLR + xLU)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: 'OmU: sp.Integer(1),'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

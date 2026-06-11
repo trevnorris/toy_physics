@@ -1,0 +1,45 @@
+schema_version: 1
+candidate_id: fit_stage_008_inv_xi
+parameter_name: inv_xi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_008_inv_xi__phase_b__inv_xi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 008
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_008.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: inv_xi_eff_proj = sp.simplify(I_WH / (xi * I_WZ))
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: assert_zero("reciprocal consistency (tautology by construction)", inv_xi_eff_proj * xi_eff_proj - 1)
+- path: scripts/moving_throat_pde_stage008_projected_maxwell_extension_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: print("  1/xi_eff_proj =", sp.sstr(inv_xi_eff_proj))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

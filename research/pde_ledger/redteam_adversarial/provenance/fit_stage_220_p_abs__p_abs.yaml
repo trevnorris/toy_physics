@@ -1,0 +1,121 @@
+schema_version: 1
+candidate_id: fit_stage_220_p_abs
+parameter_name: P_abs
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_p_abs__phase_b__p_abs.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '220'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 47
+  role: notes_stage
+  excerpt: '6. and the resulting survival gate: **the only linear dynamic corridor left is resonant dispersive enhancement
+    of the already-known short-range families, and that corridor must beat its own absorptive load to count as real barrier
+    engineering.**'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 428
+  role: notes_stage
+  excerpt: Define the absorbed-power diagnostic by
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 431
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}(x,\omega)
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 439
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}^{(1)}(x,\omega)
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 480
+  role: notes_stage
+  excerpt: But those are exactly the regions where the same transfer factors also amplify `\mathcal T_J` and therefore the
+    absorptive channel once the passive/outgoing port is restored.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 485
+  role: notes_stage
+  excerpt: '> can the real dispersive enhancement of the already-known short-range attractive families become large enough
+    **before** the absorptive / leakage channel simply turns the mechanism into disguised heating or branch loss?'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 521
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}(x,\omega)
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 530
+  role: notes_stage
+  excerpt: 2. `\overline P_{\rm abs}` must stay small enough that the effect is not just covert heating / leakage.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 551
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}^{(1)}=\frac{\omega\Gamma}{2}\mathcal T_J^2\ge0.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 553
+  role: notes_stage
+  excerpt: '- Therefore the only surviving linear dynamic corridor is resonant dispersive enhancement of the already-known
+    short-range families, and that corridor must defeat its own absorptive load to count as real barrier engineering.'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 587
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}^{(1)}>0
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 608
+  role: notes_stage
+  excerpt: \overline P_{\rm abs}.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 610
+  role: notes_stage
+  excerpt: 4. Ask whether any resonance window gives a materially larger conservative reshaping before absorptive loading
+    takes over.
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 195
+  role: sympy_script
+  excerpt: P_abs = sp.factor(-omega * imag_part)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 196
+  role: sympy_script
+  excerpt: '# General (not sample-only) non-negativity: P_abs = (omega*Gamma/2) * T_J0^2,'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: assert sp.simplify(P_abs - omega * Gamma / 2 * T_J0**2) == 0
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 204
+  role: sympy_script
+  excerpt: print('P_abs = -omega * Im(deltaV_linear) =', P_abs)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 229
+  role: sympy_script
+  excerpt: 'P_abs_sample = sp.N(P_abs.subs({**sample_subs, Gamma: sp.Rational(1, 10)}))'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 236
+  role: sympy_script
+  excerpt: print('P_abs(sample)          =', P_abs_sample)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 240
+  role: sympy_script
+  excerpt: assert abs(float(sp.re(V_phase_sample))) < 1e-12
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 241
+  role: sympy_script
+  excerpt: assert abs(float(sp.im(V_phase_sample))) > 0
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 242
+  role: sympy_script
+  excerpt: assert P_abs_sample > 0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage134_kappa_q_first_mode_choice
+parameter_name: kappa_q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage134_kappa_q_first_mode_choice__phase_b__kappa_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '134'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 23
+  role: notes_stage
+  excerpt: \boxed{\kappa_s=0,}
+- path: notes/stages/moving_throat_pde_stage134_family1_mouth_fixedpoint.md
+  line: 29
+  role: notes_stage
+  excerpt: \boxed{\kappa_q=\frac{\pi}{2},}
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: 'def S(Pi, kappa):'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: Pi * (kappa * sp.tanh(kappa) + Pi * (sp.exp(-Pi) / sp.cosh(kappa) - 1))
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 24
+  role: sympy_script
+  excerpt: / ((1 - sp.exp(-Pi)) * (kappa**2 - Pi**2))
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# Check 1: the kappa -> 0 limit of S equals 1 exactly (static shell channel).'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '# Check 2: S_q evaluated at three independent numeric Pi values matches'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: '# Targets are NOT computed by re-typing S(Pi, pi/2) here; they are literals'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'print("OK: S_q matches independent numeric targets at Pi=1/2, 1, 2")'
+- path: scripts/moving_throat_pde_stage134_family1_mouth_fixedpoint_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: 'print("OK: S_q(Pi_star) matches notes value 0.658075937605428")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

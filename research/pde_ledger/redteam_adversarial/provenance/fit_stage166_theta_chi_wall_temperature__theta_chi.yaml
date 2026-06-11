@@ -1,0 +1,162 @@
+schema_version: 1
+candidate_id: fit_stage166_theta_chi_wall_temperature
+parameter_name: Theta_chi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage166_theta_chi_wall_temperature__phase_b__theta_chi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '166'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_166.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Inverts the four observables \((\Theta_w,K_s,K_q,P_0)\) to determine the four remaining microscopic
+    drifts.}
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 18
+  role: notes_stage
+  excerpt: \Theta_w,
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 29
+  role: notes_stage
+  excerpt: '- \(\Theta_w\) is the explicit Family-1 wall-depth datum,'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 40
+  role: notes_stage
+  excerpt: '> derive the four bundle observables \((\Theta_w,K_s,K_q,P_0)\) on the actual branch.'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 50
+  role: notes_stage
+  excerpt: \Theta_w = 25\,\lambda_\mu^2\rho_w^2.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 55
+  role: notes_stage
+  excerpt: \delta\ln \Theta_w = 2\,\delta\ln \rho_w.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 105
+  role: notes_stage
+  excerpt: \frac12\,\delta\ln \Theta_w,
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 114
+  role: notes_stage
+  excerpt: \frac14\,\delta\ln \Theta_w,
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 123
+  role: notes_stage
+  excerpt: \frac14\,\delta\ln \Theta_w
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 139
+  role: notes_stage
+  excerpt: They are exact algebraic images of \((\Theta_w,K_s,K_q,P_0)\).
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 158
+  role: notes_stage
+  excerpt: \frac14\,\delta\ln \Theta_w
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 181
+  role: notes_stage
+  excerpt: \Theta_w^{(\chi)} \approx 4.06863235008162\,\lambda_\mu^2.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 185
+  role: notes_stage
+  excerpt: \delta\ln \Theta_w = 0.
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 205
+  role: notes_stage
+  excerpt: \rho_w^{(\chi)}
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 207
+  role: notes_stage
+  excerpt: \sqrt{\Theta_w^{(\chi)}/25}\,\lambda_\mu^{-1}
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 224
+  role: notes_stage
+  excerpt: '> compute \((\Theta_w,K_s,K_q,P_0)\), or equivalently \((\Theta_w,K_s,K_q,N_0/D_0)\), on the actual isotropic
+    branch.'
+- path: notes/stages/moving_throat_pde_stage166_bundle_inversion_four_drifts.md
+  line: 230
+  role: notes_stage
+  excerpt: 1. the explicit wall-depth drift \(\delta\ln\Theta_w\),
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: Theta_w, K_s, K_q, P_0  ->  rho_w, a, c_s, Z_q.
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: 4. Report the explicit Family-1 frozen-wall simplification and rho_w^(chi).
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 35
+  role: sympy_script
+  excerpt: dTheta, dKs, dKq, dP = sp.symbols("dTheta dKs dKq dP", real=True)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: eq1 = sp.Eq(dTheta, 2 * drho)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: expect_zero("drho general", sol[drho] - sp.Rational(1, 2) * dTheta)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: expect_zero("da general", sol[da] - (sp.Rational(1, 2) * dKs - sp.Rational(1, 4) * dTheta))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: expect_zero("dcs general", sol[dcs] - (sp.Rational(1, 2) * dKs - sp.Rational(1, 4) * dTheta + sp.Rational(1, 5)
+    * dP))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: expect_zero("Theta law", eq1.lhs.subs(sol) - eq1.rhs.subs(sol))
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: sol_bundle[dcs] - (sp.Rational(1, 2) * dKs - sp.Rational(1, 4) * dTheta + sp.Rational(1, 5) * (dN0 - dD0)),
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: 'sol_frozen = {k: sp.simplify(v.subs(dTheta, 0)) for k, v in sol.items()}'
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: Theta_chi = sp.Float("4.06863235008162", 30)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: rho_chi = sp.sqrt(Theta_chi / 25)
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: print("rho_w^(chi) =", sp.N(rho_chi, 18), "* lambda_mu^(-1)")
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: print("  delta ln rho_w = 1/2 delta ln Theta_w")
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("  delta ln a     = 1/2 delta ln K_s - 1/4 delta ln Theta_w")
+- path: scripts/moving_throat_pde_stage166_bundle_inversion_four_drifts_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: print("  delta ln c_s   = 1/2 delta ln K_s - 1/4 delta ln Theta_w + 1/5 delta ln P_0")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

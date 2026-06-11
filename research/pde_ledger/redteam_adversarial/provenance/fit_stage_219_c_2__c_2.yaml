@@ -1,0 +1,47 @@
+schema_version: 1
+candidate_id: fit_stage_219_c_2
+parameter_name: C_2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_219_c_2__phase_b__c_2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '219'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 314
+  role: notes_stage
+  excerpt: \mathcal C_2\,\frac{e^{-4\kappa x}}{x^2}
+- path: notes/stages/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.md
+  line: 329
+  role: notes_stage
+  excerpt: \mathcal C_2=
+- path: scripts/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: C2 = sp.simplify(
+- path: scripts/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: + C2 * sp.exp(-4 * kappa * x) / x**2
+- path: scripts/moving_throat_pde_stage219_one_port_mixed_bundle_static_kernel_and_square_law_suppression_test_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: print('C2 =', C2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

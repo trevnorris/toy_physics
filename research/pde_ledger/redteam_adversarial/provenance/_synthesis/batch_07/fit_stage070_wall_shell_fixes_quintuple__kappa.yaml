@@ -1,0 +1,25 @@
+candidate_id: fit_stage070_wall_shell_fixes_quintuple
+parameter_name: kappa
+origin_claims:
+  - parameter: kappa
+    introduced_at_stage: 061
+    introduced_at_line: 96
+    citation:
+      path: notes/stages/moving_throat_pde_stage061_microscopic_gain_thresholds.md
+      line: 96
+      excerpt: "`kappa = K_X L^2 / T_X.`"
+constraints:
+  - parameter: kappa
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+      line: 112
+      excerpt: "This is the first explicit parent formula for the geometry/support parameter `kappa`."
+downstream_dependents: [71, 73, 74]
+provenance_findings:
+  - type: stale_provenance_anchor
+    severity: low
+    summary: "kappa = K_X L^2/T_X is defined upstream at stage 061; stage 070 supplies its first explicit GNLS-shell expression (4(m c_sw L/hbar)^2 + (I_g/I_f)(L/ell)^2) but does not first introduce the quantity. The candidate anchors to 070; the definitional origin is 061."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md, line: 47, excerpt: "Using the Stage-061 geometry parameter" }
+      - { path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md, line: 110, excerpt: "`      = 4 (m c_(s,w) L / hbar)^2 + (I_g / I_f) (L / ell)^2.`" }

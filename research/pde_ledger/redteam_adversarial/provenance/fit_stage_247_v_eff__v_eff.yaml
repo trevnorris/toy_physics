@@ -1,0 +1,134 @@
+schema_version: 1
+candidate_id: fit_stage_247_v_eff
+parameter_name: V_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_247_v_eff__phase_b__v_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: With primitive short-range source amplitudes \(\beta_Q,\beta_U,\beta_W\), the product-family coefficients are
+- path: paper/stages/stage_247.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: The stationary compiler is \cref{eq:app-part08-intro-veff230}; the lowering identity is \cref{eq:app-part08-main-lowering-identity}.
+- path: paper/stages/stage_247.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: This shows that, once the one-port baseline is fixed, the recorded stationary lowering can be decomposed into work,
+    \(U/V\) drain, compensated source response, and one remaining leakage-to-barrier embedding coefficient.  It does not change
+    the short-range kernel class.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: \frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}\approx 0.31446203,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 131
+  role: notes_stage
+  excerpt: the exact one-port product-family coefficients are
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 292
+  role: notes_stage
+  excerpt: V_{\rm eff}^{(247)}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 318
+  role: notes_stage
+  excerpt: V_{\rm short}^{(1p)}(r)-V_{\rm eff}^{(247)}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 333
+  role: notes_stage
+  excerpt: V_{\rm eff}^{(247)}(r)\le V_{\rm short}^{(1p)}(r).
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: V_{\rm eff}(r_{\rm soft})=1.74701126,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 378
+  role: notes_stage
+  excerpt: \frac{V_{\rm eff}(r_{\rm soft})}{V_{\rm Coul}(r_{\rm soft})}=0.31446203.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 493
+  role: notes_stage
+  excerpt: Then the Stage-247 compiler requires only one additional leakage embedding coefficient,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 510
+  role: notes_stage
+  excerpt: V_{\rm eff}^{\rm sess}(r_{\rm soft})}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 545
+  role: notes_stage
+  excerpt: '> 5. and one remaining leakage-to-barrier embedding coefficient.'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 586
+  role: notes_stage
+  excerpt: 4. It reduces the remaining stationary embedding freedom, on the benchmark slice, to a single leakage-to-barrier
+    coefficient once the work channel is taken in the Session-I normalization.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 600
+  role: notes_stage
+  excerpt: V_{\rm eff}^{(247)}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 616
+  role: notes_stage
+  excerpt: V_{\rm short}^{(1p)}-V_{\rm eff}^{(247)}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 638
+  role: notes_stage
+  excerpt: 1. take `V_{\rm eff}^{(247)}(r)` as the lowered stationary front end,
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: V_eff = V_short - lambda_L * S_leak - lambda_W * W_sess - E_UV - M_sigma
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 176
+  role: sympy_script
+  excerpt: lowering_gap = sp.expand(V_short - V_eff)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 213
+  role: sympy_script
+  excerpt: Veff_obs = sp.Float("1.74701126")
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 246
+  role: sympy_script
+  excerpt: Veff_session = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 247
+  role: sympy_script
+  excerpt: assert float(Vshort_num - Veff_session) >= 0
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: Veff_forward = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 250
+  role: sympy_script
+  excerpt: assert abs(float(Veff_forward) - float(Veff_obs)) < 1e-6
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 264
+  role: sympy_script
+  excerpt: print("V_eff rebuilt         =", Vrebuild_soft)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

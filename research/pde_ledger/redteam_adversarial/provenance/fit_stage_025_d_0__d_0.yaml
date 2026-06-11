@@ -1,0 +1,155 @@
+schema_version: 1
+candidate_id: fit_stage_025_d_0
+parameter_name: D_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_025_d_0__phase_b__d_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '025'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_025.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: '\stagefield{Purpose}{Stage~025 strips the isotropic branch to the smallest radial/axial module that can carry
+    the outgoing quadrupole normalization: one stable BdG support mode, one brane-like internal gauge coordinate, and one
+    mixed port-active coordinate.  The stage turns the formal ratio \(N_0/D_0\) into an explicit scalar expression.}'
+- path: paper/stages/stage_025.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the Stage~024 isotropic angular collapse, the Stage~023 definitions of \(D_0\)
+    and \(N_0\), and the one-mode reduced couplings \(C,G_U,G_W,R\).}
+- path: paper/stages/stage_025.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage025-D0-N0}
+- path: paper/stages/stage_025.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: D_0=K-X-\frac{Q}{\Delta},
+- path: paper/stages/stage_025.tex
+  line: 55
+  role: paper_stage_tex
+  excerpt: P_0=\frac{N_0}{D_0}
+- path: paper/stages/stage_025.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: D_0=K-\frac{C^2}{\varpi^2}-\frac{Q}{\Delta}>0}.
+- path: paper/stages/stage_025.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: \frac{\partial P_0}{\partial K}=-\frac{N_0}{D_0^2}<0,
+- path: paper/stages/stage_025.tex
+  line: 84
+  role: paper_stage_tex
+  excerpt: \frac{\partial P_0}{\partial X}=+\frac{N_0}{D_0^2}>0.
+- path: paper/stages/stage_025.tex
+  line: 91
+  role: paper_stage_tex
+  excerpt: \item Substitution of \(D_0\) and \(N_0\) into \(P_0=N_0/D_0\) gives \eqref{eq:app-stage025-P0}.
+- path: paper/stages/stage_025.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: \item The sign of \(\partial_KP_0\) and \(\partial_XP_0\) follows from \(N_0>0\) and \(D_0>0\).
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 77
+  role: notes_stage
+  excerpt: '`D_0 = K - C^2 / varpi^2 - Q / Delta`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 85
+  role: notes_stage
+  excerpt: '`P_0 = N_0 / D_0`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 115
+  role: notes_stage
+  excerpt: '`D_0 > 0`.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 159
+  role: notes_stage
+  excerpt: '`partial_K P_0 = - N_0 / D_0^2`,'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 161
+  role: notes_stage
+  excerpt: '`partial_X P_0 = + N_0 / D_0^2`.'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: • exact closed formula for P0 = N0 / D0,
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: D0 = sp.simplify(K - B0 - Z0)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: print("D0    =", D0)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: return Delta, Q, P, B0, Z0, N0, D0
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: Delta, Q, P, B0, Z0, N0, D0 = zero_frequency_coefficients()
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: P0 = sp.simplify(N0 / D0)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: '# stability branch (Delta > 0, D0 > 0, so P0_compact > 0; and target > 0'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 158
+  role: sympy_script
+  excerpt: Delta, Q, P, B0, Z0, N0, D0 = zero_frequency_coefficients()
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 159
+  role: sympy_script
+  excerpt: compact_denom = sp.simplify(Delta * D0)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: expect_zero("Delta*D0 - (K*Delta - Delta*C^2/varpi^2 - Q)", compact_denom - (K * Delta - Delta * C**2 / varpi**2
+    - Q))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: d0_value = sp.nsimplify(D0.subs(SAMPLE_POINT))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: p0_pos = sp.nsimplify((N0 / D0).subs(SAMPLE_POINT))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: print(f"D0    on sample = {d0_value}")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: 'raise AssertionError(f"D0 on sample is not positive: {d0_value}")'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: print("If Delta > 0 and D0 > 0, then P0 > 0 whenever P != 0.")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 188
+  role: sympy_script
+  excerpt: Delta, Q, P, B0, Z0, N0, D0 = zero_frequency_coefficients()
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

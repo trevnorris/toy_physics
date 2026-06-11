@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage044_rank2_inserted_direction_data
+parameter_name: M_supp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage044_rank2_inserted_direction_data__phase_b__m_supp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '044'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_044.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} after the physical support-direction data are inserted.}
+- path: paper/stages/stage_044.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The Stage~043 replacements \(q=tR_U\), \(r=tR_\phi\), mixed baseline \(M_{\rm mix}\), and support
+    loading \(M_{\rm supp}\).}
+- path: paper/stages/stage_044.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: =\delta-M_{\rm mix}(1+t^2R_U^2)-M_{\rm supp}(1+t^2R_\phi^2),
+- path: paper/stages/stage_044.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: =-\delta(M_{\rm mix}+M_{\rm supp})
+- path: paper/stages/stage_044.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: +t^2M_{\rm mix}M_{\rm supp}(R_U-R_\phi)^2.
+- path: paper/stages/stage_044.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~045 shows the first coherent D/N kernel lands on the tracking surface; Stage~047
+    packages support enhancement on that surface.}
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 043 extracted the actual support/BdG loading data from the continuum operator:'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 7
+  role: notes_stage
+  excerpt: '- the support direction factor `R_phi`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 8
+  role: notes_stage
+  excerpt: '- and the physical support baseline `M_supp`.'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 10
+  role: notes_stage
+  excerpt: That means the Stage-041/042 rank-2 problem is no longer a family of possible closures. The continuum kernel now
+    supplies the data needed to write the **actual physical selected-branch equations**.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 16
+  role: notes_stage
+  excerpt: 'So the selected-branch problem is now no longer “support-tied or tracking?” in the abstract. It is an explicit
+    continuum-selected closure with two exact special surfaces:'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 37
+  role: notes_stage
+  excerpt: '### Support/BdG lane'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 39
+  role: notes_stage
+  excerpt: '`M_supp`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 57
+  role: notes_stage
+  excerpt: So the actual mixed and support direction ratios entering the selected-branch problem are
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 69
+  role: notes_stage
+  excerpt: Stage 041 gave the exact support-loading theorem
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 79
+  role: notes_stage
+  excerpt: '`n_req = M_supp,`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 87
+  role: notes_stage
+  excerpt: '`M_supp`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 108
+  role: notes_stage
+  excerpt: '`  - M_supp (1 + lambda_0 R_phi^2),`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 111
+  role: notes_stage
+  excerpt: '`= - delta (M_mix + M_supp)`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 112
+  role: notes_stage
+  excerpt: '`  + lambda_0 M_mix M_supp (R_U - R_phi)^2.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 123
+  role: notes_stage
+  excerpt: when `M_mix = M_supp = 0`.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 174
+  role: notes_stage
+  excerpt: If the support-interference ratio vanishes,
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 182
+  role: notes_stage
+  excerpt: and Stage 043 shows that the support direction is exactly source-tied.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 200
+  role: notes_stage
+  excerpt: so the support and mixed directions coincide exactly.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 204
+  role: notes_stage
+  excerpt: '`M_mix + M_supp = G_q(xi,delta),`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 214
+  role: notes_stage
+  excerpt: '`M_tot = M_mix + M_supp.`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 228
+  role: notes_stage
+  excerpt: '`lambda_0 M_mix M_supp Delta_R^2`'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 232
+  role: notes_stage
+  excerpt: So the mismatch penalty is exact, positive, and quadratic in the support/mixed direction split.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 246
+  role: notes_stage
+  excerpt: The support-direction bottleneck is now resolved at the reduced-theorem level.
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 250
+  role: notes_stage
+  excerpt: '- the actual continuum-selected support direction `R_phi`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 251
+  role: notes_stage
+  excerpt: '- the actual continuum-selected support baseline `M_supp`,'
+- path: notes/stages/moving_throat_pde_stage044_continuum_selected_rank2_closure.md
+  line: 256
+  role: notes_stage
+  excerpt: '- and the exact mismatch penalty `lambda_0 M_mix M_supp (R_U - R_phi)^2`.'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1. Inserting the continuum-selected support baseline M_supp and support direction
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: R_phi into the Stage-041 support theorem gives an exact quadratic equation for
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: one-direction tracking law with total loading M_mix + M_supp.
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 6. The genuine rank-2 mismatch penalty enters as +lambda0 M_mix M_supp (R_U-R_phi)^2.
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Mmix, Msupp = sp.symbols("M_mix M_supp", nonnegative=True, real=True)
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: '# Stage-041 support theorem with q=t RU and r=t Rphi, t^2=lambda0.'
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: branch_eq = sp.expand(sp.factor((sp.together(n_req - Msupp)).as_numer_denom()[0]))
+- path: scripts/moving_throat_pde_stage044_continuum_selected_rank2_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: print("numerator of n_req - M_supp =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

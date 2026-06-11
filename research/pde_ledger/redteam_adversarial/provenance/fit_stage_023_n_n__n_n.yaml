@@ -1,0 +1,89 @@
+schema_version: 1
+candidate_id: fit_stage_023_n_n
+parameter_name: N_n
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_023_n_n__phase_b__n_n.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '023'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_023.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~023 writes the entire grouped real \(20/21/22\) bundle in one place.  It combines the
+    wall baseline, BdG support moments, projection-first Maxwell/matched mixed conservative moments, and outgoing-transfer
+    moments; introduces exact weighted projectors for the grouped lanes; states the isotropic normalization test in full-bundle
+    variables; and derives the first-order anisotropy transport laws.}
+- path: paper/stages/stage_023.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are the Stage~003 BdG moments, the Stages~004--021 projected Maxwell-to-\(Z_n,N_n\)
+    packet and matched one-port conservative/transfer moments, the Stage~022 response/prefactor conversion, and the grouped
+    metric \(G_{\rm grp}=\operatorname{diag}(1,2,2)\).}
+- path: paper/stages/stage_023.tex
+  line: 206
+  role: paper_stage_tex
+  excerpt: N_{20,n}=N_{21,n}=N_{22,n}=N_n.
+- path: paper/stages/stage_023.tex
+  line: 260
+  role: paper_stage_tex
+  excerpt: N_{An}=N_n+\delta N_{An},
+- path: paper/stages/stage_023.tex
+  line: 295
+  role: paper_stage_tex
+  excerpt: \item The isotropic limit sets all grouped defects to zero and collapses \((20,21,22)\) to one common \(D_n,N_n\)
+    packet.
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 288
+  role: notes_stage
+  excerpt: '`N_(20,n)=N_(21,n)=N_(22,n)=N_n`.'
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 314
+  role: notes_stage
+  excerpt: '> does the true moving-throat branch produce coupled bundle data `(K, M, B_n, Z_n, N_n)` whose isotropic static
+    ratio `N_0/(K-B_0-Z_0)` lands on the universal target?'
+- path: notes/stages/moving_throat_pde_stage023_full_grouped_bundle.md
+  line: 350
+  role: notes_stage
+  excerpt: '`N_(A,n) = N_n + delta N_(A,n)`'
+- path: scripts/moving_throat_pde_stage023_full_grouped_bundle_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: subbanner("II.0 — Representative one-port derivation of Z_n and N_n")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: paper/stages/stage_023.tex
+    source_queries:
+    - paper/stages/stage_023.tex
+    - research/pde_ledger/paper/stages/stage_023.tex
+    nodes:
+    - id: MT_STAGE023_FULL_GROUPED_BUNDLE
+      label: Stage 023 full grouped bundle
+      layer: derivation
+      type: moving_throat_stage
+      status: exact_within_reduced_bundle
+      meaning: Writes full 20/21/22 bundle, projectors, anisotropy defects, and target ratio.
+      math:
+      - D0=K-B0-Z0
+      - P0=N0/D0
+      sources:
+      - research/pde_ledger/paper/stages/stage_023.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage023_full_grouped_bundle.md
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage253_calibration_slice_nominal_constants
+parameter_name: s_c
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_calibration_slice_nominal_constants__phase_b__s_c.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl}.}'
+- path: paper/stages/stage_253.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: r^{\rm phys}=\frac{\lambda_{\rm phys}}{\lambda_{\rm ref}}r,
+- path: paper/stages/stage_253.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: The safe-edge lattice event-equivalent rate is
+- path: paper/stages/stage_253.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-lat-safe-rate}
+- path: paper/stages/stage_253.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \gamma_{\rm lat,safe}^{\rm eq}
+- path: paper/stages/stage_253.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: f_{\rm lat}(s_c)\mu_\eta\frac{s_0^2-s_c^2}{s_c}.
+- path: paper/stages/stage_253.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: A coarse transport projection factor \(\Upsilon_{\rm lat}>0\) defines the physical lattice-turnover rate
+- path: paper/stages/stage_253.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-lattice-turn-rate}
+- path: paper/stages/stage_253.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \gamma_{\rm lat,turn}^{\rm phys}
+- path: paper/stages/stage_253.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \frac{\gamma_{\rm lat,safe}^{\rm eq}}{\Upsilon_{\rm lat}t_*}
+- path: paper/stages/stage_253.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm ep}\lambda_{\rm ep}\omega_D.
+- path: paper/stages/stage_253.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: Thus the electron-phonon turnover threshold is \cref{eq:app-part08-main-ep-threshold}, and the product form is
+- path: paper/stages/stage_253.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: (\lambda_{\rm ep}\omega_Dt_{\rm cross}^{\rm phys})_{\min}^{(253)}
+- path: paper/stages/stage_253.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: \frac{f_{\rm lat}(s_c)\mu_\eta(s_0^2-s_c^2)}{\Upsilon_{\rm lat}\zeta_{\rm ep}s_c^2}.
+- path: paper/stages/stage_253.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: The legacy Session-V slice is recovered by choosing
+- path: paper/stages/stage_253.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \Upsilon_{\rm lat}^{\rm sess}
+- path: paper/stages/stage_253.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \frac{\gamma_{\rm lat,safe}^{\rm eq}}{\gamma_{\rm lattice}^{\rm red}}.
+- path: paper/stages/stage_253.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: r_{\rm turn}^{\rm phys}=\frac{r_{\rm turn}}{\lambda_{\rm ref}}\lambda_{\rm phys},
+- path: paper/stages/stage_253.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-chi-lattice}
+- path: paper/stages/stage_253.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \chi_{\lambda,{\rm lattice}}(r_{\rm turn})
+- path: paper/stages/stage_253.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: \frac{2\lambda_{\rm phys}}{r_{\rm turn}^{\rm phys}}
+- path: paper/stages/stage_253.tex
+  line: 62
+  role: paper_stage_tex
+  excerpt: \frac{2\lambda_{\rm ref}}{r_{\rm turn}}.
+- path: paper/stages/stage_253.tex
+  line: 69
+  role: paper_stage_tex
+  excerpt: \frac{E_*\lambda_{\rm ref}^{2}}{\lambda_{\rm phys}^{2}}
+- path: paper/stages/stage_253.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \frac{|V_{\rm red}'(r_{\rm turn})|}{r_{\rm turn}}
+- path: paper/stages/stage_253.tex
+  line: 72
+  role: paper_stage_tex
+  excerpt: \mathcal K_{\rm turn}\frac{E_*}{\lambda_{\rm phys}^{2}},
+- path: paper/stages/stage_253.tex
+  line: 76
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-kturn}
+- path: paper/stages/stage_253.tex
+  line: 77
+  role: paper_stage_tex
+  excerpt: \mathcal K_{\rm turn}=\frac{\lambda_{\rm ref}^{2}}{r_{\rm turn}}|V_{\rm red}'(r_{\rm turn})|.
+- path: paper/stages/stage_253.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: For \(\lambda_{\rm phys}=a_{\rm int}/2\),
+- path: paper/stages/stage_253.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: k_{\rm eff,req}=4\mathcal K_{\rm turn}\frac{E_*}{a_{\rm int}^{2}}.
+- path: paper/stages/stage_253.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: =\frac{s_c\mathcal K_{\rm corr}}{t_*}.
+- path: paper/stages/stage_253.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: \subsection{Material-screening ratios}
+- path: paper/stages/stage_253.tex
+  line: 100
+  role: paper_stage_tex
+  excerpt: \label{subsec:app-part08-stage253-screening-ratios}
+- path: paper/stages/stage_253.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: 'The companion ends with four screening ratios:'
+- path: paper/stages/stage_253.tex
+  line: 107
+  role: paper_stage_tex
+  excerpt: \frac{\Upsilon_{\rm lat}\zeta_{\rm ep}\lambda_{\rm ep}\omega_Dt_*}{\gamma_{\rm lat,safe}^{\rm eq}}
+- path: paper/stages/stage_253.tex
+  line: 109
+  role: paper_stage_tex
+  excerpt: \frac{\lambda_{\rm ep}\omega_D}{(\lambda_{\rm ep}\omega_D)_{\min}^{(253)}},
+- path: paper/stages/stage_253.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \Pi_\chi=\frac{2\lambda_{\rm ref}}{r_{\rm turn}},
+- path: paper/stages/stage_253.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \frac{k_{\rm eff}\lambda_{\rm phys}^{2}}{\mathcal K_{\rm turn}E_*}
+- path: paper/stages/stage_253.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage253-final-screen}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 253: Physical Calibration and Material-Threshold Companion from the Stage-252 Microscopic
+    Export and Cold-Survival Compiler'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 7
+  role: notes_stage
+  excerpt: 1. the Stage-252 channel-resolved microscopic export / cold-survival compiler,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

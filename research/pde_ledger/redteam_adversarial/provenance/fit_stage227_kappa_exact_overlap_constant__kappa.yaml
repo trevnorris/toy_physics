@@ -1,0 +1,71 @@
+schema_version: 1
+candidate_id: fit_stage227_kappa_exact_overlap_constant
+parameter_name: kappa
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage227_kappa_exact_overlap_constant__phase_b__kappa.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '227'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 88
+  role: notes_stage
+  excerpt: \kappa=\frac{2\sqrt2}{\pi}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 102
+  role: notes_stage
+  excerpt: G_W=\kappa\lambda_W,
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: R=\kappa\lambda_R,
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: kappa = sp.symbols("kappa", positive=True)
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: C = kappa * lamB
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: GW = kappa * lamW
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: R = kappa * lamR
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: Cd = kappa * lamBd
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: GWd = kappa * lamWd
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: Rd = kappa * lamRd
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: 'kappa: 2 * sp.sqrt(2) / sp.pi,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

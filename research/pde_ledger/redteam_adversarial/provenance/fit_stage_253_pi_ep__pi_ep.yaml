@@ -1,0 +1,43 @@
+schema_version: 1
+candidate_id: fit_stage_253_pi_ep
+parameter_name: Pi_ep
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_253_pi_ep__phase_b__pi_ep.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: Pi_ep = sp.simplify(Upsilon_lat * zeta_ep * lambda_ep_omega_D * t_star / gamma_lat_safe_eq)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: print("Pi_ep                 =", Pi_ep)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: assert sp.simplify(Pi_ep - lambda_ep_omega_D / threshold_lambda) == 0
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: print("- and the exact material-screening ratios (Pi_ep, Pi_chi, Pi_k, Pi_T).")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

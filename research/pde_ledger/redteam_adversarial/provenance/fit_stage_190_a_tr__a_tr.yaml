@@ -1,0 +1,63 @@
+schema_version: 1
+candidate_id: fit_stage_190_a_tr
+parameter_name: A_tr
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_190_a_tr__phase_b__a_tr.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '190'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: Atr = sp.simplify(2 * chi0 / ((1 + chi0) * (1 + deltaU)))
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 190
+  role: sympy_script
+  excerpt: print("A_tr =")
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: sp.pprint(Atr)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 194
+  role: sympy_script
+  excerpt: expect_zero("Xi_direct - (A_tr Sigma_tr + Sigma_nt)", Xi_direct - (Atr * Sigma_tr + Sigma_nt))
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 203
+  role: sympy_script
+  excerpt: Xi = sp.simplify(Atr * Str + Snt)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 210
+  role: sympy_script
+  excerpt: '[Atr, 1, 0],'
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 223
+  role: sympy_script
+  excerpt: Sigma_nt_rec = sp.simplify(Xi + Atr / Ctr * Theta)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 227
+  role: sympy_script
+  excerpt: expect_zero("A_tr/C_tr - 2(1+chi0+deltaU)/deltaU", sp.simplify(Atr / Ctr - 2 * (1 + chi0 + deltaU) / deltaU))
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 231
+  role: sympy_script
+  excerpt: expect_zero("grouped-defect cancellation theorem", Xi.subs(Snt, -Atr * Str))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

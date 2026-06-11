@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage043_support_direction_extracted_not_guessed
+parameter_name: R_phi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage043_support_direction_extracted_not_guessed__phase_b__r_phi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '043'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_043.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: The reduced rank--2 formalism contains an abstract support direction \(r\).  The continuum support extraction evaluates
+    this direction from the actual support/BdG overlap data.  In the notation used later, the physical direction is written
+    in terms of a source-side ratio \(R_\phi\), while the mixed direction is governed by \(R_U\).  Thus the support completion
+    problem is not merely whether additional support load exists; it is whether
+- path: paper/stages/stage_043.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: R_\phi=R_U
+- path: paper/stages/stage_043.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: R_\phi\ne R_U.
+- path: paper/stages/stage_043.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: r=tR_\phi,
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 9
+  role: notes_stage
+  excerpt: 'The minimal Stage-037 continuum operator implicitly answered that only in the most degenerate case: because the
+    support mode `phi` coupled directly to the wall through the same overlap vector `v`, the support direction was exactly
+    source-tied.'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 13
+  role: notes_stage
+  excerpt: The first symmetry-allowed extension is to turn on the bilinear `U/phi` coupling. Once that is done, the support
+    direction can be extracted exactly from the continuum kernel rather than guessed.
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 36
+  role: notes_stage
+  excerpt: '`L_(Uphi) = + c_(Uphi) int_0^L U phi ds.`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 42
+  role: notes_stage
+  excerpt: '`L_(eta phi) = - g_B (v.Q) Phi,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 44
+  role: notes_stage
+  excerpt: '`L_(Uphi)    = + g_S (v.U) Phi,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 89
+  role: notes_stage
+  excerpt: '`sigma_0 = c_(etaU) c_(Uphi) / ( K_U c_(etaphi) ).`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 99
+  role: notes_stage
+  excerpt: '`y_1 / y_0 = (kappa_1 / kappa_0) R_phi,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 103
+  role: notes_stage
+  excerpt: '`R_phi := [ 1 + sigma_0/(1+delta_U) ] / (1 + sigma_0).`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 115
+  role: notes_stage
+  excerpt: '`R_phi = 1.`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 119
+  role: notes_stage
+  excerpt: '`D_phi := kappa_0 y_1 - kappa_1 y_0`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 125
+  role: notes_stage
+  excerpt: '`D_phi = 0  <=>  sigma_0 = 0  or  delta_U = 0.`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 141
+  role: notes_stage
+  excerpt: '`A_phi^(eff) = K_phi^(eff) - g_S^2 v.D_U.v,`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 145
+  role: notes_stage
+  excerpt: '`K_phi^(eff) := K_phi + pi^2 T_phi / (4 L^2).`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 157
+  role: notes_stage
+  excerpt: '`eps_phi := c_(Uphi)^2 sigma / ( K_U K_phi^(eff) ),`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 161
+  role: notes_stage
+  excerpt: '`eps_phi^(split) = eps_phi [ 1 - (2/11) delta_U/(1+delta_U) ].`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 166
+  role: notes_stage
+  excerpt: '`= 8 Z_phi (1 + sigma_0)^2`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 167
+  role: notes_stage
+  excerpt: '`  / [ pi^2 (1 - eps_eta) (1 - eps_phi^(split)) ],`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 171
+  role: notes_stage
+  excerpt: '`Z_phi := c_(etaphi)^2 / ( K_eta^(eff) K_phi^(eff) ).`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 185
+  role: notes_stage
+  excerpt: So the support vector `y` tracks the mixed vector `z` iff `R_phi = R_U`.
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 189
+  role: notes_stage
+  excerpt: '`D_(phi z) := y_0 z_1 - y_1 z_0`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 204
+  role: notes_stage
+  excerpt: '- the `eta/phi`–`U/phi` support lane.'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 212
+  role: notes_stage
+  excerpt: '`R_phi - R_U`'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 236
+  role: notes_stage
+  excerpt: '- the exact support-direction factor `R_phi`,'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 237
+  role: notes_stage
+  excerpt: '- the exact support direction-splitting invariant `D_phi`,'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 238
+  role: notes_stage
+  excerpt: '- the exact support-blocking ratio `eps_phi^(split)`,'
+- path: notes/stages/moving_throat_pde_stage043_support_direction_extraction.md
+  line: 251
+  role: notes_stage
+  excerpt: '> insert the exact continuum-selected quantities `(M_mix, M_supp, R_U, R_phi)` into the Stage-041/042 selected-branch
+    formulas and determine the physical selected branch.'
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1. Adding the first symmetry-allowed U/phi bilinear to the split-U continuum
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 2. The support-direction factor R_phi is
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: R_phi = [1 + sigma0/(1+delta_U)] / (1 + sigma0).
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: eps_phi^(split) = eps_phi [1 - (2/11) delta_U/(1+delta_U)].
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: M_supp = 8 Z_phi (1+sigma0)^2 / [pi^2 (1-eps_eta)(1-eps_phi^(split))].
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: 7. The exact mismatch formula R_phi - R_U is recovered.
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: KU, Keta_eff, Kphi_eff = sp.symbols("K_U K_eta_eff K_phi_eff", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: mu_eta, mu_phi = sp.symbols("mu_eta mu_phi", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: ceU, cB, cUphi, cW, cUW = sp.symbols("c_etaU c_etaphi c_Uphi c_etaW c_UW", real=True, nonzero=True)
+- path: scripts/moving_throat_pde_stage043_support_direction_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: eps_eta, Zphi = sp.symbols("eps_eta Z_phi", real=True)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

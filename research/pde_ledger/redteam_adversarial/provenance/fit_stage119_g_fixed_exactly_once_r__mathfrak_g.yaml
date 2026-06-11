@@ -1,0 +1,124 @@
+schema_version: 1
+candidate_id: fit_stage119_g_fixed_exactly_once_r
+parameter_name: mathfrak_g
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage119_g_fixed_exactly_once_r__phase_b__mathfrak_g.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '119'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_119.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Normalized ratios \((\mathfrak r,\mathfrak g)\) obey \(1+\mathfrak r^2=4(\mathfrak g-\mathfrak r)^2\).
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 13
+  role: notes_stage
+  excerpt: \mathfrak r := \frac{\lambda}{\sqrt{K_sK_q}},
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 15
+  role: notes_stage
+  excerpt: \mathfrak g := \frac{g_q\sqrt{K_s}}{g_s\sqrt{K_q}}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 26
+  role: notes_stage
+  excerpt: 1+\mathfrak r^2 = 4(\mathfrak g-\mathfrak r)^2.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 34
+  role: notes_stage
+  excerpt: Solving for \(\mathfrak g\) gives the exact two-branch law
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 37
+  role: notes_stage
+  excerpt: \mathfrak g
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 39
+  role: notes_stage
+  excerpt: \mathfrak r
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 41
+  role: notes_stage
+  excerpt: \frac12\sqrt{1+\mathfrak r^2}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 49
+  role: notes_stage
+  excerpt: '- \(\mathfrak r\) is the normalized static/mixed hybridization,'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 50
+  role: notes_stage
+  excerpt: '- \(\mathfrak g\) is the normalized relative mouth coupling of the mixed tube to the shell mode.'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 52
+  role: notes_stage
+  excerpt: Once \(\mathfrak r\) is fixed by the core background, the required mouth-coupling ratio is fixed exactly.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 64
+  role: notes_stage
+  excerpt: r_c=\mathfrak r^2.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 71
+  role: notes_stage
+  excerpt: \frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 77
+  role: notes_stage
+  excerpt: '## 4. Parent formulas for \(\mathfrak r\) and \(\mathfrak g\)'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 81
+  role: notes_stage
+  excerpt: \mathfrak r
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 95
+  role: notes_stage
+  excerpt: \mathfrak r
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 117
+  role: notes_stage
+  excerpt: \mathfrak g
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 126
+  role: notes_stage
+  excerpt: '- the normalized mixed background flow \(\mathfrak r\),'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 127
+  role: notes_stage
+  excerpt: '- the normalized mouth-traction strength \(\mathfrak g\).'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 139
+  role: notes_stage
+  excerpt: \frac{1}{\mathfrak r \pm \frac12\sqrt{1+\mathfrak r^2}}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 143
+  role: notes_stage
+  excerpt: So once the background mixed flow fixes \(\mathfrak r\), the traction amplitude required to preserve the canonical
+    outgoing quadrupole fingerprint is fixed exactly.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 161
+  role: notes_stage
+  excerpt: 1. choose the normalized mixed background flow \(\mathfrak r\),
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 164
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}},
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 168
+  role: notes_stage
+  excerpt: \mathfrak g=\mathfrak r\pm \frac12\sqrt{1+\mathfrak r^2}.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,92 @@
+schema_version: 1
+candidate_id: fit_stage_227_n_0
+parameter_name: N_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_227_n_0__phase_b__n_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '227'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_227.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation writes $N_0=\Lambda^2$, computes $\Xi_1=2\delta\ln\Lambda$, decomposes
+    the slope into mixed leg, interference, and hybridization components, and applies rigidity assumptions to each ratio.}
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 12
+  role: notes_stage
+  excerpt: \Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0},
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 26
+  role: notes_stage
+  excerpt: \Xi_1=\Xi_{\rm load}=\frac{N_{01}}{N_0}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 38
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta};
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 111
+  role: notes_stage
+  excerpt: N_0=\frac{P^2}{\Delta^2}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 129
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 141
+  role: notes_stage
+  excerpt: N_0=\frac{P^2}{\Delta^2}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 145
+  role: notes_stage
+  excerpt: \frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta}.
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \frac{N_{01}}{N_0}
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 477
+  role: notes_stage
+  excerpt: \Xi_1=\frac{N_{01}}{N_0}=2\frac{P_{01}}{P}-2\frac{\Delta_{01}}{\Delta};
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: N0 = P**2 / Delta**2
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: N0d = Pd**2 / Deltad**2
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: N01 = sp.simplify(sp.diff(N0d, eps).subs(eps, 0))
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: N01_mixed = sp.expand(sp.simplify(N01.subs(sample_full))).subs(zero_nonmixed)
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: N0_s = sp.simplify(N0.subs(sample_full))
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: Xi_transfer = sp.simplify(N01_mixed / N0_s)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

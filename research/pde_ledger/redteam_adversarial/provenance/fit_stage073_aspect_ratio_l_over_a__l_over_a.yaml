@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage073_aspect_ratio_L_over_a
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage073_aspect_ratio_l_over_a__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '073'
+notes_source_opened: true
+source_evidence: []
+origin_claims:
+- parameter: L_over_a
+  introduced_at_stage: 59
+  introduced_at_line: 54
+  citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 54
+    excerpt: '`Lambda_* := L/a = 37/20.`'
+constraints:
+- parameter: L_over_a
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 56
+    excerpt: This is a **reference-branch numerical freeze**, not a new theorem of the unsolved moving-throat PDE.
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: constraint_kind_ambiguous
+  severity: needs_triage
+  summary: L/a = 37/20 is the rational form of the carried 'preferred throat aspect ratio L/a ≈ 1.85'. The stage-073 notes
+    classify it as a posited reference-branch freeze ('carried', 'not a new theorem'), which supports free_choice. The audit
+    charter flags 37/20 as a possible published_target (external fit), but NO stage-073 (or upstream per-stage) notes line
+    names any external published number or shows a back-solve to one — it is presented purely as a carried constructive-hierarchy
+    value. Classified free_choice on the available evidence; the published_target possibility is unsubstantiated in notes
+    and would require finding the original selection of 1.85 below the 068-074 band.
+  citations:
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 48
+    excerpt: The lower-order stack already carries the preferred throat aspect ratio
+  - path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+    line: 18
+    excerpt: The carried constructive hierarchy also keeps the preferred aspect ratio
+downstream_dependents:
+- '074'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage073_aspect_ratio_l_over_a__l_over_a.yaml

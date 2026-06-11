@@ -1,0 +1,111 @@
+schema_version: 1
+candidate_id: fit_stage135_pi_star_import_sigma_m_star
+parameter_name: Pi_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage135_pi_star_import_sigma_m_star__phase_b__pi_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '135'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Pi_star = sp.Float("1.50882951349316")
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: S_star = sp.N(S_q.subs(Pi, Pi_star), 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Sigma_star = sp.N(sp.solve(sp.Eq(Pi_star, Sigma_var * (4 - S_star)), Sigma_var)[0], 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: M_s_star = sp.N(4 * Sigma_star, 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: M_q_star = sp.N(-Sigma_star, 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("S_q(Pi_star) =", S_star)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: s_in_range = bool(0 < S_star < 1)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: print("0 < S_q(Pi_star) < 1 ->", s_in_range)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: 'assert s_in_range, f"S_q(Pi_*) out of range: S_star = {S_star}"'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("Sigma_m^* =", Sigma_star)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("M_s^* =", M_s_star)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: print("M_q^* =", M_q_star)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: assert abs(Sigma_star - Sigma_target) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: 'f"Sigma_m^* mismatch: {Sigma_star} vs {Sigma_target}"'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: assert abs(M_s_star - M_s_target) < sp.Float("1e-11", 30), \
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'f"M_s^* mismatch: {M_s_star} vs {M_s_target}"'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: assert abs(M_q_star - M_q_target) < sp.Float("1e-12", 30), \
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: 'f"M_q^* mismatch: {M_q_star} vs {M_q_target}"'
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: mixed_correction = sp.N(M_q_star * S_star, 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: residual = sp.N(Pi_star - Sigma_star * (4 - S_star), 30)
+- path: scripts/moving_throat_pde_stage135_outlet_consistent_mouth_closure_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: print("Pi_star - Sigma_star*(4 - S_star) =", residual)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

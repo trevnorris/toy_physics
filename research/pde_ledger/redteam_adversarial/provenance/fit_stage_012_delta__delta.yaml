@@ -1,0 +1,187 @@
+schema_version: 1
+candidate_id: fit_stage_012_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_012_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '012'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_012.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \Delta=A\,W-R^2,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: Q, S2, H, Delta, P, Gw
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Q, S2, H, Delta, P, Gw = sp.symbols("Q S2 H Delta P Gw", nonzero=True)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: Z0 = Q / Delta
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: Z2 = (Q * S2 - H * Delta) / Delta**2
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: Z4 = (Q * (S2**2 - Delta) - S2 * H * Delta) / Delta**3
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: N0 = P**2 / Delta**2
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: N2 = 2 * P * (P * S2 - Delta * Gw) / Delta**3
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: N4 = (Delta**2 * Gw**2 - 2 * Delta * P**2 - 4 * Delta * P * S2 * Gw + 3 * P**2 * S2**2) / Delta**4
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: 'Delta: Delta + ell * d1,'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: assert_zero("z0 closed form", z0 - (Delta * q1 - Q * d1) / Delta**2)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: z2 - (-Delta**2 * h1 + Delta * (H * d1 + Q * s1 + S2 * q1) - 2 * Q * S2 * d1) / Delta**3,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: -Delta**2 * H * s1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: '- Delta**2 * S2 * h1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: '- Delta**2 * q1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: + 2 * Delta * H * S2 * d1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: + 2 * Delta * Q * S2 * s1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: + 2 * Delta * Q * d1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: + Delta * S2**2 * q1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: / Delta**4,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: assert_zero("n0 closed form", n0 - 2 * P * (Delta * p1 - P * d1) / Delta**3)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: 2 * Delta**2 * (Gw * p1 + P * g1)
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: '- 2 * Delta * P * (2 * Gw * d1 + P * s1 + 2 * S2 * p1)'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: / Delta**4
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: Delta**3 * Gw * g1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 122
+  role: sympy_script
+  excerpt: '- Delta**2 * Gw**2 * d1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: '- 2 * Delta**2 * Gw * P * s1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: '- 2 * Delta**2 * Gw * S2 * p1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: '- 2 * Delta**2 * P * S2 * g1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: '- 2 * Delta**2 * P * p1'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: + 6 * Delta * Gw * P * S2 * d1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 128
+  role: sympy_script
+  excerpt: + 3 * Delta * P**2 * S2 * s1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: + 3 * Delta * P**2 * d1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: + 3 * Delta * P * S2**2 * p1
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 133
+  role: sympy_script
+  excerpt: / Delta**5,
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: 'slips = {Q: q1, S2: s1, H: h1, Delta: d1, P: p1, Gw: g1}'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: Xi1_static - (2*p1/P - 2*d1/Delta + (Delta*q1 - Q*d1)/(D0sym*Delta**2)),
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: '# The derived z0 = (Delta*q1 - Q*d1)/Delta**2 enters K_norm_p and K_one_p'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: '"  Delta -> Delta + ell*d1,\n"'
+- path: scripts/moving_throat_pde_stage012_projected_maxwell_primitive_bridge_sympy_audit.py
+  line: 277
+  role: sympy_script
+  excerpt: lines.append(line("delta Compat^(primitive) =", dCompat))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

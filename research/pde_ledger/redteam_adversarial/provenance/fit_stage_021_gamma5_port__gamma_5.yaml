@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage_021_gamma5_port
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_021_gamma5_port__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '021'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: Gamma_port = sp.symbols("Gamma_port", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 240
+  role: sympy_script
+  excerpt: Dcorr = sp.simplify(-I * Gamma_port * omega**5 * N0)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 242
+  role: sympy_script
+  excerpt: '"delta D_2^(odd) composed from Section III N(0) closed form and Section IV Gamma5 = a^5/(27 c_s^5)",'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: Dcorr.subs(Gamma_port, a**5 / (27 * c_s**5))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 252
+  role: sympy_script
+  excerpt: print("If Pi_out = + i Gamma_port omega^5 + O(omega^7), then")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 301
+  role: sympy_script
+  excerpt: Gamma5_port = sp.simplify(sp.expand(Y2_hat_omega).coeff(omega, 5) / I)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 302
+  role: sympy_script
+  excerpt: expect_zero("Gamma5_port - a^5/(27 c_s^5)", Gamma5_port - a**5 / (27 * c_s**5))
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 304
+  role: sympy_script
+  excerpt: print("Gamma5_port =")
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 305
+  role: sympy_script
+  excerpt: sp.pprint(Gamma5_port)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 309
+  role: sympy_script
+  excerpt: '"Gamma5_port": Gamma5_port,'
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 322
+  role: sympy_script
+  excerpt: R, eta, gamma1 = sp.symbols("R eta gamma1", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 340
+  role: sympy_script
+  excerpt: Pi0 = I * gamma1 * omega
+- path: scripts/moving_throat_pde_stage021_reduced_one_port_normal_form_sympy_audit.py
+  line: 346
+  role: sympy_script
+  excerpt: sp.simplify(deltaD0 - I * gamma1 * eta**2 * OA**4 * omega**3 / (OA**2 * OW**2 - R**2) ** 2),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

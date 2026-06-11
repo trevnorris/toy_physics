@@ -1,0 +1,157 @@
+schema_version: 1
+candidate_id: fit_stage122_g_nat_unity_branch_ansatz
+parameter_name: g_nat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage122_g_nat_unity_branch_ansatz__phase_b__g_nat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '122'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 11
+  role: notes_stage
+  excerpt: '## 1. Natural equal-normalized local mouth source'
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 26
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm nat}=1.
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 69
+  role: notes_stage
+  excerpt: '## 3. Test of the natural branch'
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 71
+  role: notes_stage
+  excerpt: The natural equal-normalized mouth branch gives
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 73
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm nat}=1.
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 82
+  role: notes_stage
+  excerpt: Equivalently, the exact compensation defect evaluated on the natural branch is
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 84
+  role: notes_stage
+  excerpt: \mathcal C_{\rm nat}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 91
+  role: notes_stage
+  excerpt: so the natural branch misses the compensated surface.
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 97
+  role: notes_stage
+  excerpt: '|\mathfrak g_{\rm nat}-\mathfrak g_-^{F1}|'
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 99
+  role: notes_stage
+  excerpt: '|\mathfrak g_{\rm nat}-\mathfrak g_+^{F1}|.'
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 114
+  role: notes_stage
+  excerpt: So the natural equal-normalized mouth source is **not** automatically compensated, but it is much closer to the
+    lower compensated branch than to the upper one.
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 122
+  role: notes_stage
+  excerpt: the traction amplitude required to move from the natural branch \((\mathfrak g=1)\) to the compensated branches
+    is
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 125
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(\pm)}}{\mathcal T_m^{\rm nat}}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 134
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(-)}}{\mathcal T_m^{\rm nat}}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 137
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(+)}}{\mathcal T_m^{\rm nat}}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 154
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm nat}=1;
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: banner("STAGE 122 — NATURAL MOUTH-SOURCE BRANCH VS COMPENSATION FAMILY")
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: '# natural equal-normalized source branch'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: g_nat = sp.Integer(1)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: comp_def = sp.simplify(1 + rF**2 - 4*(g_nat - rF)**2)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: print("compensation defect on natural branch =", comp_def)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: print("delta g_minus =", sp.N(g_nat - gminus, 20))
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: print("delta g_plus  =", sp.N(gplus - g_nat, 20))
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: '# constant on every branch. Then T_m^(±)/T_m^nat = (C/g_±)/(C/g_nat) = g_nat/g_±.'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: '# C is carried symbolically so its cancellation is verified, not assumed; g_nat'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: '# is the equal-normalized natural-branch ansatz value (line 34), not 1/g_±.'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Tm_nat   = C / g_nat
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: T_ratio_minus = sp.simplify(Tm_minus / Tm_nat)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: T_ratio_plus  = sp.simplify(Tm_plus  / Tm_nat)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print("T_m(-)/T_m(nat) =", T_ratio_minus)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("T_m(+)/T_m(nat) =", T_ratio_plus)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: expect_nonzero("natural off compensation", comp_def)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

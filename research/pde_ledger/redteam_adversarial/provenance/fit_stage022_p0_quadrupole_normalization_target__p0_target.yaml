@@ -1,0 +1,165 @@
+schema_version: 1
+candidate_id: fit_stage022_p0_quadrupole_normalization_target
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_p0_quadrupole_normalization_target__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: The GR quadrupole target is
+- path: paper/stages/stage_022.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage022-p0-target}
+- path: paper/stages/stage_022.tex
+  line: 135
+  role: paper_stage_tex
+  excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+- path: paper/stages/stage_022.tex
+  line: 137
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~022 outputs the normalized response formulas \eqref{eq:app-stage022-u2u4}, the grouped
+    inverse map \eqref{eq:app-stage022-grouped-inverse}, the prefactor coefficients \eqref{eq:app-stage022-pref-coeffs}, the
+    odd coefficient \eqref{eq:app-stage022-k-gamma}, and the invariant normalization test \eqref{eq:app-stage022-p0-target}.}
+- path: paper/stages/stage_022.tex
+  line: 143
+  role: paper_stage_tex
+  excerpt: \item The final equality \eqref{eq:app-stage022-p0-target} is a branch test, not a proof of branch realization.
+- path: paper/stages/stage_022.tex
+  line: 146
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~023 uses the Stage~022 bridge to define \(P_0=N_0/D_0\) for the full grouped
+    bundle.  The 2.5PN and 4PN bridge sections use \eqref{eq:app-stage022-p0-target} as the shared outgoing-normalization
+    condition.  Later same-charge and weak-axisymmetric stages use the ratio \(P_1/P_0\) as the transported prefactor slope.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 16
+  role: notes_stage
+  excerpt: '> lift the one-lane Stage-021 result to the grouped real `20/21/22` bundle, convert the Stage-003 and Stages-004--021
+    conservative operator moments into the normalized grouped-response moments used by the 2.5PN package, and isolate the
+    exact normalization product that still has to hit the universal quadrupole target.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 256
+  role: notes_stage
+  excerpt: The universal GR quadrupole target is
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 279
+  role: notes_stage
+  excerpt: On the natural source-map branch `mhat_0 = 1 + O(a^2/r^2)`, this reduces to the familiar 2.5PN target
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 311
+  role: notes_stage
+  excerpt: That is a much sharper theorem target than “solve the whole quadrupole branch.”
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 318
+  role: notes_stage
+  excerpt: 2. and land the invariant product `mhat_0^2 P_0` on the target value above.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 334
+  role: notes_stage
+  excerpt: 4. and test whether the invariant normalization product `mhat_0^2 P_0` lands on the universal target.
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: • the invariant quadrupole normalization product that must hit the 2.5PN target.
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: '# V. Quadrupole normalization product and targets'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 252
+  role: sympy_script
+  excerpt: 'def quadrupole_normalization_target() -> None:'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 287
+  role: sympy_script
+  excerpt: NQ_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0 * Gamma5_port, gamma_GR), P0)[0])
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 295
+  role: sympy_script
+  excerpt: sp.pprint(NQ_target)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 298
+  role: sympy_script
+  excerpt: '"mhat=1 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 299
+  role: sympy_script
+  excerpt: sp.simplify(NQ_target.subs(mhat, 1) - 54 * G * c_s**5 / (5 * a**5 * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 303
+  role: sympy_script
+  excerpt: K2_target = sp.simplify(NQ_target * A_stage4)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 304
+  role: sympy_script
+  excerpt: K4_target = sp.simplify(NQ_target * B_stage4)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 306
+  role: sympy_script
+  excerpt: print("K0_target =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 307
+  role: sympy_script
+  excerpt: sp.pprint(NQ_target)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 308
+  role: sympy_script
+  excerpt: print("K2_target =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 309
+  role: sympy_script
+  excerpt: sp.pprint(K2_target)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 310
+  role: sympy_script
+  excerpt: print("K4_target =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 311
+  role: sympy_script
+  excerpt: sp.pprint(K4_target)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 314
+  role: sympy_script
+  excerpt: '"mhat=1 K2 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 315
+  role: sympy_script
+  excerpt: sp.simplify(K2_target.subs(mhat, 1) - 6 * G * c_s**3 / (5 * a**3 * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 318
+  role: sympy_script
+  excerpt: '"mhat=1 K4 target",'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 319
+  role: sympy_script
+  excerpt: sp.simplify(K4_target.subs(mhat, 1) - 8 * G * c_s / (15 * a * c**5)),
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 334
+  role: sympy_script
+  excerpt: quadrupole_normalization_target()
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 353
+  role: sympy_script
+  excerpt: print("  • the 2.5PN target is now the invariant normalization product")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

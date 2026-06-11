@@ -1,0 +1,167 @@
+schema_version: 1
+candidate_id: fit_stage160_canonical_branch_characterized_kappa_gamma
+parameter_name: gamma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage160_canonical_branch_characterized_kappa_gamma__phase_b__gamma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '160'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_160.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \(\delta\gamma_W=(\delta\gamma_0-\delta\kappa_0/3)/(1+\mathfrak r_{F1}^2)\).
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 6
+  role: notes_stage
+  excerpt: 'Stage 159 reduced the co-evolving Family-1 problem to one exact first-order obstruction:'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 10
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 18
+  role: notes_stage
+  excerpt: '> actually controls `\delta\gamma_W` under a tangential co-evolving mouth'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 24
+  role: notes_stage
+  excerpt: two-channel core model, the effective odd defect `\delta\gamma_W` is controlled
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 29
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 35
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 43
+  role: notes_stage
+  excerpt: So the last linear 2.5PN obstruction is not “any tangential mouth deformation.”
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 52
+  role: notes_stage
+  excerpt: \delta\gamma_W=0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 68
+  role: notes_stage
+  excerpt: \gamma_W=\frac{\gamma_0}{1+r_c},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 77
+  role: notes_stage
+  excerpt: \gamma_W=\frac19,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 83
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_c}{9}.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 92
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+r_{c,*}}{9}+\delta\gamma_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 104
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 106
+  role: notes_stage
+  excerpt: \frac{\delta\gamma_0}{1+r_{c,*}}
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{\gamma_{0,*}}{(1+r_{c,*})^2}\,\delta r_c.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 115
+  role: notes_stage
+  excerpt: \gamma_{0,*}=\frac{1+r_{c,*}}{9},
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 120
+  role: notes_stage
+  excerpt: \delta\gamma_W-\frac13\,\delta\kappa_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 124
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 140
+  role: notes_stage
+  excerpt: '`l=2` fingerprint forces'
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 150
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 154
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 168
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 174
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 185
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 207
+  role: notes_stage
+  excerpt: \delta\gamma_0=\frac13\,\delta\kappa_0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 217
+  role: notes_stage
+  excerpt: \delta\gamma_W=0.
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 264
+  role: notes_stage
+  excerpt: \delta\gamma_W
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 285
+  role: notes_stage
+  excerpt: -\frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 289
+  role: notes_stage
+  excerpt: \frac{9\sigma_*}{1-\sigma_*}\,\delta\gamma_W,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 417
+  role: notes_stage
+  excerpt: \delta\gamma_0-\frac13\,\delta\kappa_0,
+- path: notes/stages/moving_throat_pde_stage160_bare_mixed_port_slippage.md
+  line: 445
+  role: notes_stage
+  excerpt: '`\delta\mathfrak B_W = \delta\gamma_0 - \delta\kappa_0/3`,'
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: d gamma_W - (1/3) d kappa_W
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: = (d gamma_0 - (1/3) d kappa_0)/(1+r_c)
+- path: scripts/moving_throat_pde_stage160_bare_mixed_port_slippage_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: '3. Pure-scale harmlessness: if d gamma_0 = d kappa_0 / 3 then d gamma_W = 0.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

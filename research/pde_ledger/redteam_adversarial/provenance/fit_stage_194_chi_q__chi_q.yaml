@@ -1,0 +1,232 @@
+schema_version: 1
+candidate_id: fit_stage_194_chi_q
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_194_chi_q__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '194'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_194.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 194]{Stage 194: Outgoing \(l=2\) fingerprint}'
+- path: paper/stages/stage_194.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~194 is the original-stage audit card for \emph{Outgoing \(l=2\) fingerprint}.  Its purpose
+    is to verify the local step summarized in the output field and to preserve the exact dependencies needed by downstream
+    citations.}
+- path: paper/stages/stage_194.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_194.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_194.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_194.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Derives the exact outgoing spherical DtN fingerprint and fixes \(\chi_Q=1\) on the canonical
+    compact branch.}
+- path: paper/stages/stage_194.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: paper/stages/stage_194.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 194: Exact Outgoing `l=2` DtN Fingerprint, Fixing of `\chi_Q`, and the Isotropic Deformation
+    Algebra'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 32
+  role: notes_stage
+  excerpt: \chi_Q,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 36
+  role: notes_stage
+  excerpt: 1. the exact outgoing spherical `l=2` Dirichlet-to-Neumann fingerprint,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 39
+  role: notes_stage
+  excerpt: \chi_Q=1
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 42
+  role: notes_stage
+  excerpt: 3. and the exact first isotropic deformation algebra showing which DtN-side branch data can move `\chi_Q` while
+    preserving the canonical even moments.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 59
+  role: notes_stage
+  excerpt: \frac{1}{1-\omega^2/\Omega_Q^2-i\chi_Q\,\sigma_Q^{\rm can}\,\omega^5}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 67
+  role: notes_stage
+  excerpt: '- `\chi_Q` is the only reduced outgoing-normalization scalar that remains open before the explicit DtN model is
+    inserted.'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 69
+  role: notes_stage
+  excerpt: Matching the even coefficients of Stage 193 to the canonical compact outgoing `l=2` branch fixes
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 83
+  role: notes_stage
+  excerpt: +i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 86
+  role: notes_stage
+  excerpt: So the only leading retarded mismatch relative to the canonical compact branch is the multiplier `\chi_Q`.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 90
+  role: notes_stage
+  excerpt: '## 2. Exact outgoing spherical `l=2` DtN fingerprint'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 158
+  role: notes_stage
+  excerpt: This is the exact canonical compact outgoing `l=2` fingerprint.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 162
+  role: notes_stage
+  excerpt: '## 3. Exact fixing of `\chi_Q` on the canonical compact branch'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 170
+  role: notes_stage
+  excerpt: +i\,\chi_Q\,\frac{a^5\omega^5}{27c_s^5}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 182
+  role: notes_stage
+  excerpt: Matching the leading odd coefficient yields
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 184
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=1.}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 186
+  role: notes_stage
+  excerpt: So on the canonical compact passive/outgoing `l=2` DtN branch, the last reduced outgoing-normalization scalar is
+    fixed exactly.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 196
+  role: notes_stage
+  excerpt: \boxed{\chi_Q=\xi_Q.}
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 198
+  role: notes_stage
+  excerpt: So after the canonical DtN model is inserted, the only reduced outgoing uncertainty left is deviation of the **actual**
+    moving-throat isotropic branch from the exact compact outgoing fingerprint.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 250
+  role: notes_stage
+  excerpt: '### 4.1 Canonical-even matching conditions'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 252
+  role: notes_stage
+  excerpt: Demand that the deformed branch preserve the canonical even fingerprint
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 272
+  role: notes_stage
+  excerpt: So the even deformations are not free once the canonical conservative moments are held fixed.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 279
+  role: notes_stage
+  excerpt: \chi_Q=
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 286
+  role: notes_stage
+  excerpt: \chi_Q-1=
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 296
+  role: notes_stage
+  excerpt: The overall scale `S` is not a separate obstruction by itself. It matters only through the normalized ratios above.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 306
+  role: notes_stage
+  excerpt: from the reduced 2.5PN package, then the exact fixing `\chi_Q=1` immediately returns the canonical invariant tuple
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 321
+  role: notes_stage
+  excerpt: '- the exact outgoing `l=2` fingerprint,'
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 333
+  role: notes_stage
+  excerpt: The exact outgoing spherical `l=2` DtN model fixes the canonical odd coefficient directly. So `\chi_Q` is no longer
+    a placeholder on the compact passive/outgoing branch.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 337
+  role: notes_stage
+  excerpt: Matching the exact DtN fingerprint to the retarded grouped-`P2` module gives
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 339
+  role: notes_stage
+  excerpt: \chi_Q=1.
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 361
+  role: notes_stage
+  excerpt: 2. keep the Stage 194 exact outgoing `l=2` fingerprint,
+- path: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+  line: 368
+  role: notes_stage
+  excerpt: \chi_Q=1.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_194.tex
+    attempted_sources:
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_194.tex
+    attempted_sources:
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+  - source: notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage194_outgoing_l2_fingerprint_and_deformation_algebra.md
+    - paper/stages/stage_194.tex
+    - research/pde_ledger/paper/stages/stage_194.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

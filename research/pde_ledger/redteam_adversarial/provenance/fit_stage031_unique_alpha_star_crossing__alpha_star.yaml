@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage031_unique_alpha_star_crossing
+parameter_name: alpha_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage031_unique_alpha_star_crossing__phase_b__alpha_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '031'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_031.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The stage uses \(\lambda_-(\alpha_0)\), \(s_-(\alpha_0)\), \(P_{0,-}=\beta_0s_-/\lambda_-\),
+    and the stable interval \(0\leq\alpha_0<\alpha_{\rm crit}\).}
+- path: paper/stages/stage_031.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage031-ds-dalpha}
+- path: paper/stages/stage_031.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \frac{ds_-}{d\alpha_0}=
+- path: paper/stages/stage_031.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: Using \(d\lambda_-/d\alpha_0=-s_-\), one obtains
+- path: paper/stages/stage_031.tex
+  line: 25
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage031-dP-dalpha}
+- path: paper/stages/stage_031.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \frac{dP_{0,-}}{d\alpha_0}
+- path: paper/stages/stage_031.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: =\beta_0\frac{(ds_-/d\alpha_0)\lambda_-+s_-^2}{\lambda_-^2}>0
+- path: paper/stages/stage_031.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage031-alpha-crit}
+- path: paper/stages/stage_031.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm crit}=\frac{AB}{B\kappa_0^2+A\kappa_1^2}}.
+- path: paper/stages/stage_031.tex
+  line: 45
+  role: paper_stage_tex
+  excerpt: As \(\alpha_0\to\alpha_{\rm crit}^-\), \(\lambda_-\to0^+\) while \(s_-\) remains positive, so
+- path: paper/stages/stage_031.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: has a unique \(\alpha_*\in(0,\alpha_{\rm crit})\) such that \(P_{0,-}(\alpha_*)=P_{\rm target}\).  For the quadrupole
+    target,
+- path: paper/stages/stage_031.tex
+  line: 65
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~031 outputs the derivative identities \eqref{eq:app-stage031-ds-dalpha}--\eqref{eq:app-stage031-dP-dalpha},
+    the refined threshold \eqref{eq:app-stage031-alpha-crit}, and the unique stable crossing theorem.}
+- path: paper/stages/stage_031.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \item The positivity of \(ds_-/d\alpha_0\) follows from \((\Delta K_{\rm ax})^2\Pi_\kappa>0\) and \(R_\lambda>0\).
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 15
+  role: notes_stage
+  excerpt: It starts at the flat-branch value, diverges at the softening threshold, and therefore hits any target above its
+    starting value exactly once before instability.
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 32
+  role: notes_stage
+  excerpt: '`lambda_- = ( A + B - alpha_0 sigma - R ) / 2`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 34
+  role: notes_stage
+  excerpt: '`R = sqrt( (Delta K_ax + alpha_0 delta_kappa)^2 + 4 alpha_0^2 KappaProd )`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 38
+  role: notes_stage
+  excerpt: '`d s_- / d alpha_0 = 2 Delta K_ax^2 KappaProd / R^3`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 63
+  role: notes_stage
+  excerpt: '`d lambda_- / d alpha_0 = - s_-`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 67
+  role: notes_stage
+  excerpt: '`d P_{0,-} / d alpha_0`'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 68
+  role: notes_stage
+  excerpt: '`= beta_0 [ (d s_- / d alpha_0) lambda_- + s_-^2 ] / lambda_-^2`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 74
+  role: notes_stage
+  excerpt: '- `d s_- / d alpha_0 > 0`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 79
+  role: notes_stage
+  excerpt: '`d P_{0,-} / d alpha_0 > 0`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 88
+  role: notes_stage
+  excerpt: '## 3. Starting value at zero loading'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 90
+  role: notes_stage
+  excerpt: At `alpha_0 = 0`, the lower wall mode is just the flat `u_0` branch, so
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 96
+  role: notes_stage
+  excerpt: Therefore the selected prefactor starts at
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 100
+  role: notes_stage
+  excerpt: This is the exact stable-side starting value against which the universal target must be compared.
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 108
+  role: notes_stage
+  excerpt: '`lambda_- lambda_+ = A B - alpha_0 ( B kappa_0^2 + A kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 112
+  role: notes_stage
+  excerpt: '`alpha_crit = A B / ( B kappa_0^2 + A kappa_1^2 )`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 116
+  role: notes_stage
+  excerpt: '`lambda_-(alpha_crit) = 0`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 128
+  role: notes_stage
+  excerpt: as `alpha_0 -> alpha_crit^-` from the stable side.
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 140
+  role: notes_stage
+  excerpt: '- `P_{0,-}(alpha_0)` is continuous on `0 <= alpha_0 < alpha_crit`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 142
+  role: notes_stage
+  excerpt: '- starts at `P_{0,-}(0)`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 143
+  role: notes_stage
+  excerpt: '- and diverges at `alpha_crit^-`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 147
+  role: notes_stage
+  excerpt: '> for every target value `P_target > P_{0,-}(0)`, there exists a **unique** stable-side loading `alpha_*` with
+    `0 < alpha_* < alpha_crit` such that `P_{0,-}(alpha_*) = P_target`.'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 176
+  role: notes_stage
+  excerpt: 1. compute the physical stable-branch data `(Xi_0, beta_0, alpha_0)` from the coupled moving-throat operator,
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 178
+  role: notes_stage
+  excerpt: '`P_{0,-}(alpha_0) = beta_0 (v.e_-)^2 / lambda_-`,'
+- path: notes/stages/moving_throat_pde_stage031_selected_branch_reachability.md
+  line: 180
+  role: notes_stage
+  excerpt: 4. and check whether the resulting stable-side crossing sits on the natural passive/outgoing branch with `alpha_0
+    < alpha_crit`.
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: 1. Exact derivative of the selected overlap s_-(alpha).
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 2. Exact derivative formula for the selected prefactor P0_-(alpha).
+- path: scripts/moving_throat_pde_stage031_selected_branch_reachability_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 3. Initial-value formulas at alpha = 0.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

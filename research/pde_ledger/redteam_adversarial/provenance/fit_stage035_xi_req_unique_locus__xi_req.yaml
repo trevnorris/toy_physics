@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage035_xi_req_unique_locus
+parameter_name: xi_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage035_xi_req_unique_locus__phase_b__xi_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '035'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_035.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=1\Rightarrow\xi_{\rm req}=0,
+- path: paper/stages/stage_035.tex
+  line: 96
+  role: paper_stage_tex
+  excerpt: R_{\rm target}>1\Rightarrow\exists!\,\xi_{\rm req}\in(0,1)}.
+- path: paper/stages/stage_035.tex
+  line: 99
+  role: paper_stage_tex
+  excerpt: \paragraph{3. Required total loading.}
+- path: paper/stages/stage_035.tex
+  line: 102
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage035-alpha-req}
+- path: paper/stages/stage_035.tex
+  line: 104
+  role: paper_stage_tex
+  excerpt: \alpha_{\rm req}(\xi,\delta)=
+- path: paper/stages/stage_035.tex
+  line: 123
+  role: paper_stage_tex
+  excerpt: \xi_{\rm req}\simeq\frac{\varepsilon_R}{1+8/(9\delta)}.
+- path: paper/stages/stage_035.tex
+  line: 128
+  role: paper_stage_tex
+  excerpt: 1-\xi_{\rm req}\simeq\frac{C(\delta)}{R_{\rm target}}.
+- path: paper/stages/stage_035.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~035 outputs the shape function \eqref{eq:app-stage035-F}, the target ratio \eqref{eq:app-stage035-Rtarget},
+    the monotonicity derivative \eqref{eq:app-stage035-F-derivative}, the existence/uniqueness theorem \eqref{eq:app-stage035-existence},
+    and the required total loading \eqref{eq:app-stage035-alpha-req}.}
+- path: paper/stages/stage_035.tex
+  line: 137
+  role: paper_stage_tex
+  excerpt: \item The divergence as \(\xi\to1^-\) matches the selected eigenvalue approaching zero.
+- path: paper/stages/stage_035.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~036 pairs \(F\) with the support-feasibility function \(G\).  Part~III later
+    computes continuum placement data that determine \(R_{\rm target}\), \(M_{\rm mix}\), and \(\delta\).}
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 035: Dimensionless D/N Shape Function, Unique Normalization Locus, and Exact Required
+    Support Coupling'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 17
+  role: notes_stage
+  excerpt: 5. and the exact required total loading and required support loading then follow immediately.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 110
+  role: notes_stage
+  excerpt: '- if `R_target > 1`, there is one and only one stable selected-branch softening depth `xi_req` that hits the target.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 116
+  role: notes_stage
+  excerpt: '## 4. Exact required total loading'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 120
+  role: notes_stage
+  excerpt: '`alpha_req(xi,delta)`'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 129
+  role: notes_stage
+  excerpt: So once the unique `xi_req` solving `F(xi,delta)=R_target` is known, the unique required total directional loading
+    follows immediately from the formula above.
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 133
+  role: notes_stage
+  excerpt: '## 5. Exact required support coupling'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 145
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2 = alpha_req(xi_req,delta) - alpha_mix`'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 149
+  role: notes_stage
+  excerpt: '`g_B,req^2 / varpi^2`'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 150
+  role: notes_stage
+  excerpt: '`= 9 pi^2 A xi_req (xi_req + delta) / [ 8 (9 delta + 11 xi_req) ]`'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 155
+  role: notes_stage
+  excerpt: '`g_B,req^2 >= 0`.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 177
+  role: notes_stage
+  excerpt: '`xi_req ~= eps_R / ( 1 + 8/(9 delta) )`.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 179
+  role: notes_stage
+  excerpt: The required total loading then begins as
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 181
+  role: notes_stage
+  excerpt: '`alpha_req ~= pi^2 A xi_req / 8`.'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 187
+  role: notes_stage
+  excerpt: '`1 - xi_req ~= C(delta) / R_target`,'
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 211
+  role: notes_stage
+  excerpt: 1. the unique stable normalization locus `xi_req` is determined by `F(xi,delta)=R_target`,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 212
+  role: notes_stage
+  excerpt: 2. the unique required total loading is `alpha_req(xi_req,delta)`,
+- path: notes/stages/moving_throat_pde_stage035_dimensionless_normalization_locus.md
+  line: 213
+  role: notes_stage
+  excerpt: 3. and the unique required support coupling is `g_B,req^2 / varpi^2 = alpha_req - alpha_mix`.
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Exact required total loading alpha_req(xi, delta).
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 5. Exact required support-loading formula and near-onset / near-softening asymptotics.
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: banner("STAGE 35.3 — EXACT REQUIRED TOTAL LOADING AND SUPPORT COUPLING")
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: alpha_req = sp.simplify(alpha_x)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: alpha_req_target = sp.simplify(9 * sp.pi**2 * A * xi * (xi + delta) / (8 * (9 * delta + 11 * xi)))
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("alpha_req(xi,delta) =")
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: sp.pprint(alpha_req)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: expect_zero("alpha_req - closed D/N form", alpha_req - alpha_req_target)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: alpha_crit = sp.simplify(sp.limit(alpha_req_target, xi, 1, dir="-"))
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: gBreq_sq_over_varpi2 = sp.simplify(alpha_req_target - alpha_mix)
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: print("g_B,req^2 / varpi^2 =")
+- path: scripts/moving_throat_pde_stage035_dimensionless_normalization_locus_sympy_audit.py
+  line: 99
+  role: sympy_script
+  excerpt: sp.pprint(gBreq_sq_over_varpi2)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

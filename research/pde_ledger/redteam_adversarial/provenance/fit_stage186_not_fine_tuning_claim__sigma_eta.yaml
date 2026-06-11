@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage186_not_fine_tuning_claim
+parameter_name: Sigma_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage186_not_fine_tuning_claim__phase_b__sigma_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '186'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_186.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed equations supporting this card are collected in the corresponding block
+    narrative above and in the source stage.  The card restores original stage order and records the claim boundary, not a
+    second independent proof.}
+- path: paper/stages/stage_186.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before
+    interpretation.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 12
+  role: notes_stage
+  excerpt: \epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 16
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}=0,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 18
+  role: notes_stage
+  excerpt: \Sigma_{\rm nt}=0,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 20
+  role: notes_stage
+  excerpt: \Sigma_\eta=0.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 31
+  role: notes_stage
+  excerpt: (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_\eta^{(\mathrm{eff})},\ K_W^{(\mathrm{eff})},\ \mu_W,\ T_U).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 40
+  role: notes_stage
+  excerpt: \epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 47
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 62
+  role: notes_stage
+  excerpt: \delta\ln \mathfrak C_{{\rm tr},*}=\Sigma_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 64
+  role: notes_stage
+  excerpt: \delta\ln \mathfrak C_{{\rm nt},*}=\Sigma_{\rm nt},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 66
+  role: notes_stage
+  excerpt: \delta\ln \epsilon_\eta=\Sigma_\eta,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 83
+  role: notes_stage
+  excerpt: \epsilon_\eta=\frac{c_{\eta U}^2}{K_U K_\eta^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 95
+  role: notes_stage
+  excerpt: \chi_0=\frac{\gamma c_{\eta U}}{K_U},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 99
+  role: notes_stage
+  excerpt: \epsilon_W=\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 102
+  role: notes_stage
+  excerpt: Z_W=\frac{\lambda_W^2}{K_\eta^{(\mathrm{eff})}K_W^{(\mathrm{eff})}},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 111
+  role: notes_stage
+  excerpt: \left(\frac{\gamma c_{\eta U}}{K_U}\right)^{1+\delta_{U,*}}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 119
+  role: notes_stage
+  excerpt: \left(\frac{\lambda_W^2\mu_W}{K_\eta^{(\mathrm{eff})}(K_W^{(\mathrm{eff})})^2}\right)
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 120
+  role: notes_stage
+  excerpt: \left(\frac{\gamma^2\lambda_W^2\sigma}{K_U K_W^{(\mathrm{eff})}}\right)^{E_*}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 124
+  role: notes_stage
+  excerpt: Since the grouped weak-axisymmetric branch keeps the scalar axial scale \(L\) fixed at first order in the present
+    reduction, \(L\) is inert here.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 139
+  role: notes_stage
+  excerpt: \kappa_\eta\\
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 147
+  role: notes_stage
+  excerpt: \delta\ln c_{\eta U}\\
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 150
+  role: notes_stage
+  excerpt: \delta\ln K_\eta^{(\mathrm{eff})}\\
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 162
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 182
+  role: notes_stage
+  excerpt: \(\mathfrak C_{{\rm tr},*}\), \(\mathfrak C_{{\rm nt},*}\), and \(\epsilon_\eta\).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 186
+  role: notes_stage
+  excerpt: (\tau_1,\kappa_\eta,\mu_1).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 191
+  role: notes_stage
+  excerpt: \det M_*^{(\tau,\kappa_\eta,\mu_1)} = 1+\chi_{0,*} > 0.
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 213
+  role: notes_stage
+  excerpt: (\lambda_W,\ c_{\eta U},\ \gamma,\ K_U,\ K_W^{(\mathrm{eff})}).
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 219
+  role: notes_stage
+  excerpt: c_{\eta U} \mapsto e^{C}c_{\eta U},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 227
+  role: notes_stage
+  excerpt: 'and determine the remaining three scalings by exact monomial preservation:'
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 230
+  role: notes_stage
+  excerpt: K_\eta^{(\mathrm{eff})}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 232
+  role: notes_stage
+  excerpt: e^{\,2C-U}\,K_\eta^{(\mathrm{eff})},
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 284
+  role: notes_stage
+  excerpt: \delta_{\mathcal G_*}\ln\epsilon_\eta
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 314
+  role: notes_stage
+  excerpt: \kappa_\eta = 2c_1-\kappa_U,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 353
+  role: notes_stage
+  excerpt: \Theta_1=\Xi_1=\mathcal R_1=0
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 355
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}=\Sigma_{\rm nt}=\Sigma_\eta=0,
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 359
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 363
+  role: notes_stage
+  excerpt: \Sigma_{\rm nt}
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 367
+  role: notes_stage
+  excerpt: \Sigma_\eta
+- path: notes/stages/moving_throat_pde_stage186_similarity_orbit_closure.md
+  line: 369
+  role: notes_stage
+  excerpt: \delta\ln\epsilon_\eta.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,164 @@
+schema_version: 1
+candidate_id: fit_stage_022_d_a
+parameter_name: D_A
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_d_a__phase_b__d_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+    one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+    \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+    the exact invariant product that must match the universal quadrupole normalization.}
+- path: paper/stages/stage_022.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+    transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\) fingerprint,
+    and the grouped trace/anomaly map.}
+- path: paper/stages/stage_022.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: D_A^{\rm cons}(\omega)=D_{A0}+D_{A2}\omega^2+D_{A4}\omega^4+O(\omega^6).
+- path: paper/stages/stage_022.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: Y_A(\omega)=\frac{D_{A0}}{D_A^{\rm cons}(\omega)}
+- path: paper/stages/stage_022.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: =\frac{D_{A0}N_A(\omega)}{\left(D_A^{\rm cons}(\omega)\right)^2}
+- path: paper/stages/stage_022.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- path: paper/stages/stage_022.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: \item The inverse expansion of \(D_{A0}/D_A\) gives \(u_2,u_4\) with the signs shown in \eqref{eq:app-stage022-u2u4}.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 30
+  role: notes_stage
+  excerpt: '`D_A^(cons)(omega) = D_{A0} + D_{A2} omega^2 + D_{A4} omega^4 + O(omega^6)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 47
+  role: notes_stage
+  excerpt: 1. the conservative operator `D_A^(cons)`,
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 57
+  role: notes_stage
+  excerpt: '`Y_A(omega) = D_{A0} / D_A^(cons)(omega)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 125
+  role: notes_stage
+  excerpt: '`Pref_A(omega) = D_{A0} N_A(omega) / D_A^(cons)(omega)^2`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 144
+  role: notes_stage
+  excerpt: '- `D_A^(cons)` tells us the grouped response moments `u_2^(A), u_4^(A)`,'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts:
+  - source: paper/stages/stage_022.tex
+    source_queries:
+    - paper/stages/stage_022.tex
+    - research/pde_ledger/paper/stages/stage_022.tex
+    nodes:
+    - id: MT_STAGE022_GROUPED_P2_BRIDGE
+      label: Stage 022 grouped P2 normalization bridge
+      layer: derivation
+      type: moving_throat_stage
+      status: exact_within_reduced_bundle
+      meaning: Converts conservative operator moments into normalized grouped response and isolates P0=N0/D0.
+      math:
+      - u2=-D2/D0
+      - P0=N0/D0
+      - mhat0²P0=54Gc_s^5/(5a^5c^5)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+    - id: EQ_GROUPED_RESPONSE_MOMENTS
+      label: Grouped response moment conversion
+      layer: equation_anchor
+      type: equation
+      status: exact_within_reduced_bundle
+      meaning: Bridge from conservative operator moments to normalized grouped response moments.
+      expression: u_2^(A)=-D_A2/D_A0,   u_4^(A)=(D_A2²-D_A0D_A4)/D_A0²
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: MT_STAGE022_GROUPED_P2_BRIDGE
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/pde_ledger/paper/stages/stage_022.tex
+        line: 15
+        heading_level: paragraph
+        heading: 1. Conservative operator and normalized response.
+        nearest_label:
+          name: eq:app-stage022-d-operator
+          line: 18
+        nearby_labels:
+        - name: eq:app-stage022-d-operator
+          line: 18
+        - name: eq:app-stage022-y-response
+          line: 23
+        - name: eq:app-stage022-u2u4
+          line: 29
+        match_basis: semantic_heading_match
+        match_score: 0.589
+        confidence: medium
+    - id: EQ_P0_TARGET
+      label: Invariant quadrupole normalization target
+      layer: equation_anchor
+      type: equation
+      status: open_actual_branch_data
+      meaning: Central remaining 2.5PN/4PN moving-throat normalization target.
+      expression: mhat_0² P_0 = 54 G c_s⁵/(5 a⁵ c⁵)
+      sources:
+      - research/pde_ledger/paper/stages/stage_022.tex
+      - research/4d_2_5pn/paper/4d_2_5pn.tex
+      - research/4d_4pn/paper/4d_4pn.tex
+      - notes/moving_throat_pde_program_compact.md
+      parent_node: OPEN_QUAD_NORMALIZATION
+      legacy_sources:
+      - moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+      - 4d_2_5pn_summary.md
+      - 4d_4pn_summary.md
+      - pde_audit_full.md
+      tex_anchor:
+        file: research/4d_2_5pn/paper/4d_2_5pn.tex
+        line: 4995
+        heading_level: section
+        heading: Quadrupole normalization package
+        nearest_label:
+          name: app:quadrupole-normalization-package
+          line: 4996
+        nearby_labels:
+        - name: app:quadrupole-normalization-package
+          line: 4996
+        match_basis: semantic_heading_match
+        match_score: 0.655
+        confidence: medium
+  graph_gaps: []
+provenance_findings: []

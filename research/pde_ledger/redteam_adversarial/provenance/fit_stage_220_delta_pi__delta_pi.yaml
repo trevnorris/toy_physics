@@ -1,0 +1,206 @@
+schema_version: 1
+candidate_id: fit_stage_220_delta_pi
+parameter_name: Delta_Pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_220_delta_pi__phase_b__delta_pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '220'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_220.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports Stage~219, frequency-dependent BdG and Maxwell/mixed denominators, the outgoing dressing
+    $\Pi_{\rm out}(\omega)$, and the off-pole conditions $\varpi^2-\omega^2\ne0$, $\Delta_\Pi\ne0$, $D_\Pi\ne0$.}
+- path: paper/stages/stage_220.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation builds the dynamic $3\times3$ susceptibility, proves the determinant
+    identity $\det\mathcal K_\Pi=\Delta_\Pi D_\Pi$, repeats the product-family factorization at finite frequency, differentiates
+    the outgoing-port insertion, and separates in-phase conservative reshaping from quadrature pumping.}
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 9
+  role: notes_stage
+  excerpt: \Delta_\Pi(\omega)\neq 0,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: \Delta = \Omega_U^2\Omega_W^2 - R^2,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 72
+  role: notes_stage
+  excerpt: D_0 = K_* - \frac{Q}{\Delta},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 76
+  role: notes_stage
+  excerpt: N_0 = \frac{P^2}{\Delta^2},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: \Delta_\Pi(\omega):=A(\omega)W(\omega)-R^2,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 154
+  role: notes_stage
+  excerpt: D_\Pi(\omega):=K_B(\omega)-\frac{Q_\Pi(\omega)}{\Delta_\Pi(\omega)}.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 176
+  role: notes_stage
+  excerpt: \Delta_\Pi(\omega)\,D_\Pi(\omega).
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: '- the internal `(U,W)` block denominator `\Delta_\Pi`,'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: \chi_{qU}(\omega)=\frac{P_U(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 233
+  role: notes_stage
+  excerpt: \chi_{qW}(\omega)=\frac{P(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 238
+  role: notes_stage
+  excerpt: \chi_{UU}(\omega)=\frac{K_B(\omega)W(\omega)-G_W^2}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 241
+  role: notes_stage
+  excerpt: \chi_{UW}(\omega)=\frac{K_B(\omega)R+G_UG_W}{\Delta_\Pi(\omega)D_\Pi(\omega)},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: \chi_{WW}(\omega)=\frac{K_B(\omega)A(\omega)-G_U^2}{\Delta_\Pi(\omega)D_\Pi(\omega)}.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: So every dynamic same-charge correction is still controlled by the same denominator pair `\Delta_\Pi D_\Pi`.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 265
+  role: notes_stage
+  excerpt: \chi_s(\omega)=\frac{\mathcal N_s(\omega)}{\Delta_\Pi(\omega)D_\Pi(\omega)}.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 272
+  role: notes_stage
+  excerpt: \Delta_\Pi s_q^2
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 340
+  role: notes_stage
+  excerpt: 3. and the possibility of resonant amplification through the denominator pair `\Delta_\Pi D_\Pi`.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 381
+  role: notes_stage
+  excerpt: \delta\mathfrak V_{\rm mix}(x,\omega)
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 412
+  role: notes_stage
+  excerpt: \delta\mathfrak V_{\rm mix}^{(1)}(x,\omega)
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 420
+  role: notes_stage
+  excerpt: \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 422
+  role: notes_stage
+  excerpt: \Im\,\delta\mathfrak V_{\rm mix}^{(1)}=-\frac12\Gamma(\omega)\,\mathcal T_J(\omega)^2.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: \Delta_0(\omega)=\bigl(\Omega_U^2-\omega^2\bigr)\bigl(\Omega_W^2-\omega^2\bigr)-R^2,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 473
+  role: notes_stage
+  excerpt: D_0(\omega)=K_B(\omega)-\frac{Q_0(\omega)}{\Delta_0(\omega)},
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 479
+  role: notes_stage
+  excerpt: Only near zeros of `\Delta_0` or `D_0` can the real in-phase response be parametrically amplified.
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 540
+  role: notes_stage
+  excerpt: '- The dynamic reduced bundle is an exact `3 x 3` frequency-domain system with determinant `\Delta_\Pi D_\Pi`.'
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 549
+  role: notes_stage
+  excerpt: \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 565
+  role: notes_stage
+  excerpt: \det \mathcal K_{\rm dyn}=\Delta_\Pi D_\Pi,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 581
+  role: notes_stage
+  excerpt: \delta\mathfrak V_{\rm mix}^{(1)}=-\tfrac{i}{2}\Gamma\mathcal T_J^2,
+- path: notes/stages/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.md
+  line: 585
+  role: notes_stage
+  excerpt: \Re\,\delta\mathfrak V_{\rm mix}^{(1)}=0,
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: Delta0 = Omega_U**2 * Omega_W**2 - R**2
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: D0_static = sp.together(K_star - Q0 / Delta0)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: print('Delta =', Delta0)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Delta_Pi = A * Wfun - R**2
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: D_Pi = sp.together(K_B - Q_Pi / Delta_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print('Delta_Pi     =', Delta_Pi)
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: assert sp.simplify(det_identity - Delta_Pi * D_Pi) == 0
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'print(''\nVerified determinant identity: det(K_dyn) = Delta_Pi * D_Pi'')'
+- path: scripts/moving_throat_pde_stage220_dynamic_mixed_port_kernel_phase_lag_no_go_and_resonant_survival_gate_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: 'assert sp.simplify(Delta_Pi.subs({omega: 0, Pi: 0}) - Delta0) == 0'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_220.tex
+    attempted_sources:
+    - paper/stages/stage_220.tex
+    - research/pde_ledger/paper/stages/stage_220.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_220.tex
+    attempted_sources:
+    - paper/stages/stage_220.tex
+    - research/pde_ledger/paper/stages/stage_220.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

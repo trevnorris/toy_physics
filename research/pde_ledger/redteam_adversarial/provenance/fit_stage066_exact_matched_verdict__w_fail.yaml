@@ -1,0 +1,108 @@
+schema_version: 1
+candidate_id: fit_stage066_exact_matched_verdict
+parameter_name: W_fail
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage066_exact_matched_verdict__phase_b__w_fail.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '066'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_066.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the matched thin-wall theorem.}
+- path: paper/stages/stage_066.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~066 collapses the matched support/source threshold to one dimensionless wall control.}
+- path: paper/stages/stage_066.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: The exact matched-branch verdict is
+- path: paper/stages/stage_066.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: W_{\rm wall}\leq\frac{\mathrm{Pe}_{\rm req}}{\Delta_\infty}\Rightarrow\text{fail},
+- path: paper/stages/stage_066.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stages~067--069 quantify how much profile mismatch can change this matched verdict.}
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 21
+  role: notes_stage
+  excerpt: '`W_wall <= Pe_req / Delta_inf`  -> fail,'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 59
+  role: notes_stage
+  excerpt: '## 2. Exact fail/succeed thresholds in wall form'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 63
+  role: notes_stage
+  excerpt: '`G_fail = Pe_req / [ kappa Delta_inf(kappa,eta) ],`'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 69
+  role: notes_stage
+  excerpt: '`W_fail = Pe_req / Delta_inf(kappa,eta),`'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 75
+  role: notes_stage
+  excerpt: '- if `W_wall <= W_fail`, it fails,'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 77
+  role: notes_stage
+  excerpt: '- only if `W_fail < W_wall < W_suff` does one still need the full fixed-point solve.'
+- path: notes/stages/moving_throat_pde_stage066_wall_figure_of_merit.md
+  line: 122
+  role: notes_stage
+  excerpt: '`W_H <= Pe_req / Delta_inf`  -> fail,'
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: W_fail = Pe_req/Delta_inf,
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: W_wall <= W_fail  -> fail,
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: W_fail = sp.simplify(Pe_req / Deltainf)
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: print("W_fail =", W_fail)
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: V0_fail_sq = sp.simplify(TX * ell * Pe_req / (4 * sp.pi * a**2 * L**2 * J1 * Deltainf))
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: expect_zero("W_wall(V0_fail)^2 - W_fail", sp.simplify(W_wall.subs(V0**2, V0_fail_sq) - W_fail))
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: expect_zero("W_H(V0_fail)^2 - W_fail", sp.simplify(W_H.subs(V0**2, Hw * TX * ell * Pe_req / (4 * sp.pi * a**2 *
+    L**2 * If * Deltainf)) - W_fail))
+- path: scripts/moving_throat_pde_stage066_wall_figure_of_merit_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: print("2. Fail/succeed are equivalent to comparing W_wall against the exact bounds Pe_req/Delta_inf and Pe_req/Delta_0.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

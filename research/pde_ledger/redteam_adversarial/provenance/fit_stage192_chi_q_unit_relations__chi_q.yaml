@@ -1,0 +1,138 @@
+schema_version: 1
+candidate_id: fit_stage192_chi_q_unit_relations
+parameter_name: chi_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage192_chi_q_unit_relations__phase_b__chi_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '192'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_192.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_192.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_192.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: paper/stages/stage_192.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check the natural source-map reduction before setting \(N_Q=\chi_Q^{-1}\).
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 101
+  role: notes_stage
+  excerpt: 0 & 1+\delta_{U,*} & 1+\delta_{U,*} & -(2+\chi_{0,*}+\delta_{U,*}) & 0 & 0 & 0 & 1+\chi_{0,*}\\[4pt]
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 133
+  role: notes_stage
+  excerpt: 1+\chi_{0,*} & 0 & 0\\[4pt]
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 142
+  role: notes_stage
+  excerpt: \det P_{(T,K_\eta,\mu)}=1+\chi_{0,*}>0.
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 153
+  role: notes_stage
+  excerpt: \dfrac{1}{1+\chi_{0,*}} & 0 & 0\\[8pt]
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 155
+  role: notes_stage
+  excerpt: \dfrac{F_*}{1+\chi_{0,*}} & 1 & -1
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 193
+  role: notes_stage
+  excerpt: \dfrac{F_*}{1+\chi_{0,*}} & 1 & -1\\[8pt]
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 194
+  role: notes_stage
+  excerpt: \dfrac{1}{1+\chi_{0,*}} & 0 & 0
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 275
+  role: notes_stage
+  excerpt: \boxed{(\Delta_T)_{\rm fail}=\frac{q_{\rm tr}}{1+\chi_{0,*}},}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 281
+  role: notes_stage
+  excerpt: \boxed{(\Delta_\mu)_{\rm fail}=\frac{F_*}{1+\chi_{0,*}}q_{\rm tr}+q_{\rm nt}-q_\eta.}
+- path: notes/stages/moving_throat_pde_stage192_orbit_quotient_projectors.md
+  line: 310
+  role: notes_stage
+  excerpt: \boxed{\alpha_*:=\frac{1+\delta_{U,*}}{1+\chi_{0,*}}.}
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: '"chi0_star deltaU_star E_star F_star", positive=True, real=True'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: '[0, 1 + deltaUs, 1 + deltaUs, -(2 + chi0s + deltaUs), 0, 0, 0, 1 + chi0s],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: '[1 + chi0s, 0, 0],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: expect_zero("det(P) - (1+chi0_*)", sp.factor(Pdep.det()) - (1 + chi0s))
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: '[1 / (1 + chi0s), 0, 0],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: '[Fstar / (1 + chi0s), 1, -1],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: '[Fstar / (1 + chi0s), 1, -1],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: '[1 / (1 + chi0s), 0, 0],'
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: Fstar / (1 + chi0s) * qtr + qnt - qeta,
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 151
+  role: sympy_script
+  excerpt: qtr / (1 + chi0s),
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 160
+  role: sympy_script
+  excerpt: alpha = sp.simplify((1 + deltaUs) / (1 + chi0s))
+- path: scripts/moving_throat_pde_stage192_orbit_quotient_projectors_sympy_audit.py
+  line: 199
+  role: sympy_script
+  excerpt: print("   with determinant 1 + chi0_* > 0.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

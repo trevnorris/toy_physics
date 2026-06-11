@@ -1,0 +1,99 @@
+schema_version: 1
+candidate_id: fit_stage172_canonical_even_collapse_u2_pin
+parameter_name: u2
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage172_canonical_even_collapse_u2_pin__phase_b__u2.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '172'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: D0, N0, u2 = sp.symbols("D0 N0 u2", real=True, nonzero=True)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: D2 = -u2 * D0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: u2A = -DA2 / DA0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: delta_u2 = sp.simplify((sp.series(u2A, eps, 0, 2).removeO() - u2) / (eps * lam))
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("delta u_2^(A) =", delta_u2)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: '"K_A + D0*delta_u2 - (1/9-u2)*dD0",'
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: KA + D0 * delta_u2 - (sp.Rational(1, 9) - u2) * dD0,
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: banner("Canonical-even collapse at u2 = 1/9")
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '"K_A + D0*delta_u2 on canonical branch",'
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: (KA + D0 * delta_u2).subs(u2, sp.Rational(1, 9)),
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: u2_star = sp.Rational(1, 9)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: D2_star = -u2_star * D0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: D4_star = D0 * (u2_star**2 - u4_star)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: u2A_star = -DA2_star / DA0
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: delta_u2_star = sp.simplify((sp.series(u2A_star, eps, 0, 2).removeO() - u2_star) / (eps * lam))
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: print("delta u_2^(A) on canonical branch =", delta_u2_star)
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: (delta_u4_star - sp.Rational(8, 9) * delta_u2_star).subs(dD4, even_relation),
+- path: scripts/moving_throat_pde_stage172_physical_slope_collapse_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: (delta_kappa + 3 * (1 - sigma) * delta_u2 / sigma).subs(u2, sp.Rational(1, 9)),
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

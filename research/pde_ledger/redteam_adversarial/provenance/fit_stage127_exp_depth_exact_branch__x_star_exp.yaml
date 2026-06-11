@@ -1,0 +1,102 @@
+schema_version: 1
+candidate_id: fit_stage127_exp_depth_exact_branch
+parameter_name: x_star_exp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage127_exp_depth_exact_branch__phase_b__x_star_exp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '127'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_127.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source,
+    and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane
+    ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_127.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Slab and truncated-exponential families reach the lower branch at moderate penetration depths.
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 46
+  role: notes_stage
+  excerpt: '## 2. Truncated exponential source'
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 48
+  role: notes_stage
+  excerpt: Take the normalized positive exponential family
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 51
+  role: notes_stage
+  excerpt: \sigma_x^{\exp}(z)
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 64
+  role: notes_stage
+  excerpt: \mathfrak g_{\exp}(x)
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 73
+  role: notes_stage
+  excerpt: \mathfrak g_{\exp}(x)=\mathfrak g_-^{F1}
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 78
+  role: notes_stage
+  excerpt: x_*^{\exp}\approx 0.662765402623161.
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 82
+  role: notes_stage
+  excerpt: So an exponentially localized mouth source with penetration depth about \(0.66L\) reaches the exact lower compensated
+    branch.
+- path: notes/stages/moving_throat_pde_stage127_penetration_families.md
+  line: 88
+  role: notes_stage
+  excerpt: x_*^{\exp}\approx 0.66,
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: '# truncated exponential family'
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 22
+  role: sympy_script
+  excerpt: g_exp = sp.simplify(2*(2 + sp.pi*x*sp.exp(-1/x))/((4 + sp.pi**2*x**2)*(1 - sp.exp(-1/x))))
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: print("g_exp(x) =", g_exp)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: x0_exp = sp.nsolve(sp.Eq(g_exp, gminus), 0.66, tol=1e-30, maxsteps=200, prec=80)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 31
+  role: sympy_script
+  excerpt: print("x_*^exp  =", x0_exp)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 34
+  role: sympy_script
+  excerpt: res_exp = sp.N(g_exp.subs(x, x0_exp) - gminus, 30)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 36
+  role: sympy_script
+  excerpt: print("residual exp  =", res_exp)
+- path: scripts/moving_throat_pde_stage127_penetration_families_sympy_audit.py
+  line: 38
+  role: sympy_script
+  excerpt: 'if abs(float(res_slab)) > 1e-20 or abs(float(res_exp)) > 1e-20:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

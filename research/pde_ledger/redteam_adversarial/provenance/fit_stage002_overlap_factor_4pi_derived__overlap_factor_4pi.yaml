@@ -1,0 +1,102 @@
+schema_version: 1
+candidate_id: fit_stage002_overlap_factor_4pi_derived
+parameter_name: overlap_factor_4pi
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage002_overlap_factor_4pi_derived__phase_b__overlap_factor_4pi.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '002'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_002.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} inside the Stage~001 quadratic wall closure.  Damping and open-system completion
+    are not derived here.}
+- path: paper/stages/stage_002.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage002_breathing_reduction_mathematica_audit.wl}.  The audits check
+    the \(Y_{00}\) normalization bridge, the derived \(4\pi\) overlap factor, the conservative \((\delta a,\delta L)\) matrix
+    reduction, and the uncoupled grouped real \(P_2\) degeneracy.}'
+- path: paper/stages/stage_002.tex
+  line: 71
+  role: paper_stage_tex
+  excerpt: is recovered only after adding open-system or effective damping data.  Stage~002 derives the conservative part,
+    not the damping matrix.
+- path: paper/stages/stage_002.tex
+  line: 112
+  role: paper_stage_tex
+  excerpt: \item The factor \(4\pi\) in \eqref{eq:app-stage002-mass-matrix} and \eqref{eq:app-stage002-stiffness-matrix} follows
+    from the \(2\sqrt\pi\) normalization in \eqref{eq:app-stage002-two-mode-ansatz}.
+- path: paper/stages/stage_002.tex
+  line: 115
+  role: paper_stage_tex
+  excerpt: \item The reduction preserves the old \((a,L)\) closure but does not derive the old damping matrix.
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 63
+  role: notes_stage
+  excerpt: the effective one-dimensional fields and coefficients. So the reduced overlap
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 65
+  role: notes_stage
+  excerpt: '`sqrt(gamma_0)` factor.'
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 96
+  role: notes_stage
+  excerpt: 'So the distributed wall does exactly what it should do: it produces effective inertia and stiffness matrices by
+    overlap integrals of the wall profiles.'
+- path: notes/stages/moving_throat_pde_stage002_breathing_reduction.md
+  line: 186
+  role: notes_stage
+  excerpt: '`4\pi` overlap factor, the conservative `(a,L)` matrix system, and the'
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: • the resulting overlap-integral formulas for M_AB and K_AB,
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 15
+  role: sympy_script
+  excerpt: • the conservative Euler-Lagrange matrix form built from those overlap integrals,
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: angular_prefactor = sp.simplify(
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: expect_zero("angular prefactor from (2 sqrt(pi) Y00)^2 - 4 pi", angular_prefactor - 4 * sp.pi)
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 157
+  role: sympy_script
+  excerpt: expect_zero("reduced Lagrangian density from the action - target overlap form", lw - lw_target)
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: print("Recovered overlap matrices:")
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 302
+  role: sympy_script
+  excerpt: print("    the boxed overlap-integral formulas for M_AB and K_AB;")
+- path: scripts/moving_throat_pde_stage002_breathing_reduction_sympy_audit.py
+  line: 304
+  role: sympy_script
+  excerpt: print("    using those overlap integrals as coefficients;")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

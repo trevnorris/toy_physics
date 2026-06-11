@@ -1,0 +1,112 @@
+schema_version: 1
+candidate_id: fit_stage162_gamma0_one_ninth_r_form
+parameter_name: gamma_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage162_gamma0_one_ninth_r_form__phase_b__gamma_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '162'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 7
+  role: notes_stage
+  excerpt: \Xi_{\rm slip}=\Xi_\gamma-2\Xi_L,
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 15
+  role: notes_stage
+  excerpt: \gamma_0=\frac{4L_W^2}{3\pi^2 a^2}
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 61
+  role: notes_stage
+  excerpt: \gamma_0=\frac{1+\mathfrak r^2}{9}.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 72
+  role: notes_stage
+  excerpt: \ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 83
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 94
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 151
+  role: notes_stage
+  excerpt: So on the actual lower branch selected by the positive-source Family-1 throat core, the even-preservation gate
+    does more than kill the mouth-coupling drift. It pins the normalized static/mixed hybridization itself.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 182
+  role: notes_stage
+  excerpt: \delta\ln\gamma_0=0,
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 186
+  role: notes_stage
+  excerpt: \delta\gamma_0=0.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 193
+  role: notes_stage
+  excerpt: \delta\varepsilon_\gamma=0,
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 201
+  role: notes_stage
+  excerpt: \delta\gamma_W=0.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 215
+  role: notes_stage
+  excerpt: The first-order reduced 2.5PN obstruction disappears automatically.
+- path: notes/stages/moving_throat_pde_stage162_parent_compensation_rigidity.md
+  line: 237
+  role: notes_stage
+  excerpt: \delta\gamma_W=0,
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: d ln(gamma0) - 2 d ln(L_W/a) = 0.
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: '# Exact parent family formulas from Stage 119 (with gamma0 from Stages 115-116).'
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: gamma0 = (1 + r**2) / 9
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: print("gamma0(r) =", gamma0)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: dlog_gamma = sp.simplify(sp.diff(sp.log(gamma0), r) * dr)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("d ln gamma0 =", dlog_gamma)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: expect_zero("similarity identity", dlog_gamma - 2 * dlog_L)
+- path: scripts/moving_throat_pde_stage162_parent_compensation_rigidity_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: 'print("  On the exact parent family: d ln gamma0 = 2 d ln(L_W/a), so Xi_slip = 0.")'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

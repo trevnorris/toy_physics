@@ -1,0 +1,138 @@
+schema_version: 1
+candidate_id: fit_stage022_gamma_GR_quadrupole_target
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage022_gamma_gr_quadrupole_target__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~022 translates the Stages~004--021 projection-first Maxwell packet, through its matched
+    one-port outgoing normal form, into the grouped real \(P_2\) response language.  It converts conservative operator moments
+    \(D_{An}\) into normalized response moments \(u_n^{(A)}\), tracks the outgoing-transfer prefactor \(P_{An}\), and isolates
+    the exact invariant product that must match the universal quadrupole normalization.}
+- path: paper/stages/stage_022.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{The inputs are one conservative grouped-lane operator \(D_A^{\rm cons}(\omega)\), one outgoing
+    transfer factor \(N_A(\omega)\) exported by the matched Stage~021 one-port normal form, the compact outgoing \(l=2\) fingerprint,
+    and the grouped trace/anomaly map.}
+- path: paper/stages/stage_022.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: \paragraph{4. Multiplication by the compact outgoing fingerprint.}
+- path: paper/stages/stage_022.tex
+  line: 105
+  role: paper_stage_tex
+  excerpt: =K_{A0}+K_{A2}\omega^2+K_{A4}\omega^4+i\Gamma_5^{(A)}\omega^5+\cdots,
+- path: paper/stages/stage_022.tex
+  line: 109
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage022-k-gamma}
+- path: paper/stages/stage_022.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \Gamma_5^{(A)}&=G_5P_{A0}.
+- path: paper/stages/stage_022.tex
+  line: 120
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage022-gamma-gr}
+- path: paper/stages/stage_022.tex
+  line: 121
+  role: paper_stage_tex
+  excerpt: \gamma_{\rm GR}=\frac{2G}{5c^5}.
+- path: paper/stages/stage_022.tex
+  line: 137
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~022 outputs the normalized response formulas \eqref{eq:app-stage022-u2u4}, the grouped
+    inverse map \eqref{eq:app-stage022-grouped-inverse}, the prefactor coefficients \eqref{eq:app-stage022-pref-coeffs}, the
+    odd coefficient \eqref{eq:app-stage022-k-gamma}, and the invariant normalization test \eqref{eq:app-stage022-p0-target}.}
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 171
+  role: notes_stage
+  excerpt: '`= K_{A0} + K_{A2} omega^2 + K_{A4} omega^4 + i Gamma_5^(A) omega^5 + ...`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 181
+  role: notes_stage
+  excerpt: '`Gamma_5^(A) = G5 P_{A0}`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 258
+  role: notes_stage
+  excerpt: '`gamma_GR = 2 G / (5 c^5)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 262
+  role: notes_stage
+  excerpt: '`Gamma_5 = P_0 * a^5 / (27 c_s^5)`.'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: Gamma5 = sp.simplify(Ybranch.coeff(omega, 5) / I)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: expect_zero("Gamma5 formula", Gamma5 - G5 * P0)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: print("Gamma5 =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: sp.pprint(Gamma5)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: '"Gamma5": Gamma5,'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 285
+  role: sympy_script
+  excerpt: Gamma5_port = G5_stage4
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 286
+  role: sympy_script
+  excerpt: gamma_GR = sp.simplify(2 * G / (5 * c**5))
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 287
+  role: sympy_script
+  excerpt: NQ_target = sp.simplify(sp.solve(sp.Eq(mhat**2 * P0 * Gamma5_port, gamma_GR), P0)[0])
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 290
+  role: sympy_script
+  excerpt: print("Gamma5_port =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 291
+  role: sympy_script
+  excerpt: sp.pprint(Gamma5_port)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 292
+  role: sympy_script
+  excerpt: print("gamma_GR =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 293
+  role: sympy_script
+  excerpt: sp.pprint(gamma_GR)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 350
+  role: sympy_script
+  excerpt: print("    Gamma5 = G5 P0;")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

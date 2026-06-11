@@ -1,0 +1,126 @@
+schema_version: 1
+candidate_id: fit_stage225_xk_xm_forced_zero
+parameter_name: x_K
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage225_xk_xm_forced_zero__phase_b__x_k.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '225'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 8
+  role: notes_stage
+  excerpt: It takes the first actual finite-throat base branch that already satisfies the isotropic `5`PN compatibility surface,
+    perturbs it by weak-axisymmetric primitive microscopic drifts, and determines exactly which first-order mechanism families
+    can preserve the conservative grouped response while still carrying a nonzero same-charge scalar
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: It is to compute `\Xi_1` **microscopically** on the explicit finite-throat one-port branch, while keeping track
+    of the conservative grouped-`P2` conditions that the `5`PN branch still has to respect.
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 37
+  role: notes_stage
+  excerpt: (x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W})
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 233
+  role: notes_stage
+  excerpt: If the conservative grouped response is to remain fixed to first order,
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 279
+  role: notes_stage
+  excerpt: (x_K,x_M,x_{\lambda_B},x_{\varpi},x_{\lambda_U},x_{\lambda_W},x_{\lambda_R},x_{\Omega_U},x_{\Omega_W}),
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 343
+  role: notes_stage
+  excerpt: \boxed{D_{01}=Kx_K-B_{0,1}-Z_{0,1},}
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: -1.00975540977030\,x_K
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 384
+  role: notes_stage
+  excerpt: (x_K,x_M)
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 388
+  role: notes_stage
+  excerpt: D_{01}=Kx_K,
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: Ku_2 x_K - Mx_M = 0,
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 398
+  role: notes_stage
+  excerpt: -\frac{D_4}{D_0}Kx_K = 0.
+- path: notes/stages/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.md
+  line: 406
+  role: notes_stage
+  excerpt: x_K=0,
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: xK, xM = sp.symbols("xK xM", real=True)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 114
+  role: sympy_script
+  excerpt: Kd = K * sp.exp(eps * xK)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 191
+  role: sympy_script
+  excerpt: assert sp.simplify(D01_compiler - (K * xK - B0_1 - Z0_1)) == 0
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 262
+  role: sympy_script
+  excerpt: 'xK: float(sp.N(sp.expand(Xi1_s).coeff(xK), 16)),'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 273
+  role: sympy_script
+  excerpt: assert_close(Xi1_coeffs[xK], -1.00975540977030)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 291
+  role: sympy_script
+  excerpt: 'xM: xM, xK: xK, xLB: 0, xV: 0, xLU: 0, xLW: 0, xLR: 0, xOU: 0, xOW: 0'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 294
+  role: sympy_script
+  excerpt: 'xM: xM, xK: xK, xLB: 0, xV: 0, xLU: 0, xLW: 0, xLR: 0, xOU: 0, xOW: 0'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 297
+  role: sympy_script
+  excerpt: wall_solutions = sp.solve([sp.Eq(eq_wall_1, 0), sp.Eq(eq_wall_2, 0)], [xK, xM], dict=True)
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 299
+  role: sympy_script
+  excerpt: assert sp.simplify(wall_solutions[0][xK]) == 0
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 330
+  role: sympy_script
+  excerpt: 'xK: 0, xM: 0, xLB: 0, xV: 0'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 333
+  role: sympy_script
+  excerpt: 'xK: 0, xM: 0, xLB: 0, xV: 0'
+- path: scripts/moving_throat_pde_stage225_microscopic_xi1_compiler_first_order_conservative_compensation_surface_and_mixed_sector_survival_sieve_sympy_audit.py
+  line: 374
+  role: sympy_script
+  excerpt: 'Xi1_mixed = sp.expand(Xi1_s.subs({xK: 0, xM: 0, xLB: 0, xV: 0}))'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

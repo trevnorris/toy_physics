@@ -1,0 +1,69 @@
+schema_version: 1
+candidate_id: fit_stage_017_paragraph
+parameter_name: paragraph
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_017_paragraph__phase_b__paragraph.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '017'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_017.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{This stage is \StatusExact{} for the displayed algebraic identities inside the declared parent/projection
+    data, with \StatusReduced{} or \StatusExactClosure{} inherited where the local text invokes the matched reduction, mouth-kernel
+    closure, parent-action packet, or one-port normal form.}
+- path: paper/stages/stage_017.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \paragraph{Source and audit.}
+- path: paper/stages/stage_017.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \paragraph{Lane signature.}
+- path: paper/stages/stage_017.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: \paragraph{Wall-only obstruction.}
+- path: paper/stages/stage_017.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: \paragraph{Output.}
+- path: paper/stages/stage_017.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: and the wall-only gate obstruction.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_017.tex
+    attempted_sources:
+    - paper/stages/stage_017.tex
+    - research/pde_ledger/paper/stages/stage_017.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_017.tex
+    attempted_sources:
+    - paper/stages/stage_017.tex
+    - research/pde_ledger/paper/stages/stage_017.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

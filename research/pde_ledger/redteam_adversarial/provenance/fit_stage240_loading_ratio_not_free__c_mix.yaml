@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage240_loading_ratio_not_free
+parameter_name: C_mix
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage240_loading_ratio_not_free__phase_b__c_mix.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '240'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_240.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: '\stagefield{Output}{Exact selected loading ratio: $\rho_\alpha=4/3$, $\zeta_{\rm req}=1/3$, and $\Pi_{\rm tr}=4C_{\rm
+    mix}/3$, placing the branch on the symmetric lowest-twin support slice.}'
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: \rho_\alpha=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}=\frac43,
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 21
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}=\frac43\,C_{\rm mix}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 32
+  role: notes_stage
+  excerpt: S_{\rm req}:=\frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 36
+  role: notes_stage
+  excerpt: So the natural minimal isotropic passive/outgoing branch is **not** mixed-only and **not** non-twin.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: The barrier-audit Stage 142 records the same result in the same notation, and the matching `g2` step carries the
+    exact contact-plus-pole extraction that fixes the loading ratio.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}\le C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 86
+  role: notes_stage
+  excerpt: \text{mixed-only enough},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 96
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}>2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 102
+  role: notes_stage
+  excerpt: It was only the exact ratio \(\Pi_{\rm tr}/C_{\rm mix}\) selected by the passive/outgoing branch.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: This stage shows that the ratio is not free.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 117
+  role: notes_stage
+  excerpt: C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 119
+  role: notes_stage
+  excerpt: \frac{N_Q^{(\rm target)}}{\beta_0}\,\alpha_{\rm mix}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: \frac{\Pi_{\rm tr}}{C_{\rm mix}}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 128
+  role: notes_stage
+  excerpt: \frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 137
+  role: notes_stage
+  excerpt: \rho_\alpha:=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: \hat m_-^{\,2}\frac{s_-}{\lambda_-}\alpha_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 182
+  role: notes_stage
+  excerpt: '- the mixed baseline contributes the static contact fraction,'
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \frac{\alpha_{\rm mix}}{\alpha_{\rm req}}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 192
+  role: notes_stage
+  excerpt: \frac{\alpha_{\rm req}-\alpha_{\rm mix}}{\alpha_{\rm req}}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: \rho_\alpha:=\frac{\alpha_{\rm req}}{\alpha_{\rm mix}},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 247
+  role: notes_stage
+  excerpt: '## 3. Matching to the minimal isotropic quadrupole module'
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 283
+  role: notes_stage
+  excerpt: \rho_\alpha\,C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 285
+  role: notes_stage
+  excerpt: \frac43\,C_{\rm mix}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 301
+  role: notes_stage
+  excerpt: C_{\rm mix}=\frac{8\Lambda(1-\epsilon_*)}{\pi^2}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 304
+  role: notes_stage
+  excerpt: Substituting \(\Pi_{\rm tr}=\frac43 C_{\rm mix}\) gives
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 319
+  role: notes_stage
+  excerpt: \frac{\Pi_{\rm tr}}{C_{\rm mix}}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 334
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}\le C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 336
+  role: notes_stage
+  excerpt: \text{mixed-only enough},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 340
+  role: notes_stage
+  excerpt: C_{\rm mix}<\Pi_{\rm tr}\le 2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 346
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}>2C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 354
+  role: notes_stage
+  excerpt: \Pi_{\rm tr}=\frac43 C_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 361
+  role: notes_stage
+  excerpt: C_{\rm mix}<\Pi_{\rm tr}<2C_{\rm mix}.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 367
+  role: notes_stage
+  excerpt: '- mixed-only is **not** enough,'
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: \frac{\Pi_{\rm tr}}{C_{\rm mix}}=\frac43.
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: C_{\rm mix}
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 398
+  role: notes_stage
+  excerpt: \frac{N_Q^{(\rm target)}}{\beta_0}\alpha_{\rm mix},
+- path: notes/stages/moving_throat_pde_stage240_selected_branch_loading_ratio_from_the_minimal_isotropic_quadrupole_precursor_sympy_audit.md
+  line: 404
+  role: notes_stage
+  excerpt: \frac{\alpha_{\rm mix}}{\alpha_{\rm req}}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

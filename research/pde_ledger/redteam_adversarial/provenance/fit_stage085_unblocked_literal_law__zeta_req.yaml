@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage085_unblocked_literal_law
+parameter_name: zeta_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage085_unblocked_literal_law__phase_b__zeta_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 085
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_085.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \Pi_{\rm tr}=\frac{N_Q^{\rm target}}{\beta_0}\alpha_{\rm req},
+- path: paper/stages/stage_085.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: =\frac{\alpha_{\rm req}}{\alpha_{\rm mix}}
+- path: paper/stages/stage_085.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage085-zeta-rho}
+- path: paper/stages/stage_085.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \zeta_{\rm req}(\rho_\alpha,\epsilon_{\rm blk})
+- path: paper/stages/stage_085.tex
+  line: 34
+  role: paper_stage_tex
+  excerpt: =\frac{\rho_\alpha-1}{1-\epsilon_{\rm blk}(2-\rho_\alpha)}}.
+- path: paper/stages/stage_085.tex
+  line: 36
+  role: paper_stage_tex
+  excerpt: In the unblocked limit, \(\zeta_{\rm req}=\rho_\alpha-1\).
+- path: paper/stages/stage_085.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The cancellation theorem \eqref{eq:app-stage085-ratio} and reduced demand formula \eqref{eq:app-stage085-zeta-rho}.}
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 7
+  role: notes_stage
+  excerpt: '`R_quad = zeta_req(Pi_tr,C_mix,eps_blk) - zeta_phys(Pe_*),`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 23
+  role: notes_stage
+  excerpt: '`Pi_tr = (N_Q^(target)/beta_0) alpha_req,`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 29
+  role: notes_stage
+  excerpt: '`Pi_tr / C_mix = alpha_req / alpha_mix.`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 37
+  role: notes_stage
+  excerpt: '`Pi_tr = mhat_-^2 (s_- / lambda_-) alpha_req,`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 41
+  role: notes_stage
+  excerpt: So once the outgoing quadrupole branch is required to hit the `2G/(5 c^5)` normalization target, the explicit support
+    theorem no longer depends separately on `(mhat_-, beta_0, s_-, lambda_-)`.
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 42
+  role: notes_stage
+  excerpt: It depends only on the **loading ratio** `alpha_req / alpha_mix`.
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 60
+  role: notes_stage
+  excerpt: '`G_tr = 8 alpha_req / (pi^2 A),`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 72
+  role: notes_stage
+  excerpt: '`Pi_tr = (N_Q^(target)/beta_0) alpha_req,`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 78
+  role: notes_stage
+  excerpt: '`Pi_tr / C_mix = alpha_req / alpha_mix.`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 100
+  role: notes_stage
+  excerpt: '`Pi_tr = mhat_-^2 (s_- / lambda_-) alpha_req,`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 114
+  role: notes_stage
+  excerpt: '`zeta_req = (Pi_tr - C_mix) / [ C_mix - eps_blk (2 C_mix - Pi_tr) ].`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 118
+  role: notes_stage
+  excerpt: '`zeta_req`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 119
+  role: notes_stage
+  excerpt: '`= (alpha_req - alpha_mix)`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 120
+  role: notes_stage
+  excerpt: '`  / [ alpha_mix - eps_blk (2 alpha_mix - alpha_req) ].`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 124
+  role: notes_stage
+  excerpt: '`zeta_req`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 125
+  role: notes_stage
+  excerpt: '`= [ alpha_req/alpha_mix - 1 ]`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 126
+  role: notes_stage
+  excerpt: '`  / [ 1 - eps_blk ( 2 - alpha_req/alpha_mix ) ].`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 130
+  role: notes_stage
+  excerpt: '`rho_alpha := alpha_req / alpha_mix`.'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 132
+  role: notes_stage
+  excerpt: In the unblocked limit `eps_blk = 0`, this collapses to the especially simple law
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 134
+  role: notes_stage
+  excerpt: '`zeta_req = rho_alpha - 1.`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 144
+  role: notes_stage
+  excerpt: Before this step, the outgoing quadrupole branch seemed to require us to know separately
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 155
+  role: notes_stage
+  excerpt: '`rho_alpha = alpha_req / alpha_mix`.'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 173
+  role: notes_stage
+  excerpt: '`rho_alpha = alpha_req / alpha_mix`.'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 177
+  role: notes_stage
+  excerpt: '`zeta_req = zeta_req(rho_alpha, eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 181
+  role: notes_stage
+  excerpt: '`zeta_req(rho_alpha, eps_blk)`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 182
+  role: notes_stage
+  excerpt: '`= (rho_alpha - 1) / [ 1 - eps_blk (2 - rho_alpha) ].`'
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 184
+  role: notes_stage
+  excerpt: So the remaining support theorem gap is no longer “determine several separate outgoing coefficients.”
+- path: notes/stages/moving_throat_pde_stage085_quadrupole_demand_cancellation.md
+  line: 187
+  role: notes_stage
+  excerpt: '> **determine the normalized selected-branch loading ratio `rho_alpha` of the actual passive/outgoing moving-throat
+    quadrupole branch.**'
+- path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: alpha_req, alpha_mix = sp.symbols("alpha_req alpha_mix", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: G_tr = sp.simplify(8 * alpha_req / (pi**2 * A))
+- path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+  line: 39
+  role: sympy_script
+  excerpt: expect_zero("Pi_tr - NQ*alpha_req/beta0", Pi_tr - NQ * alpha_req / beta0)
+- path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: expect_zero("Pi_tr/C_mix - alpha_req/alpha_mix", sp.simplify(Pi_tr / C_mix - alpha_req / alpha_mix))
+- path: scripts/moving_throat_pde_stage085_quadrupole_demand_cancellation_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: expect_zero("Pi_sel - mhat^2 s_- alpha_req/lambda_-", Pi_sel - mhat**2 * s_minus * alpha_req / lam_minus)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

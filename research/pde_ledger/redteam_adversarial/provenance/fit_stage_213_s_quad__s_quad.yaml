@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage_213_s_quad
+parameter_name: S_quad
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_213_s_quad__phase_b__s_quad.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '213'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_213.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the support-\(\le3\) ledger, primitive quadruples, the positive four-simplex, and local
+    gradient/Hessian data.}
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 30
+  role: notes_stage
+  excerpt: 6. the exact **canonical quadruple-screen audit** consisting of four imported triple faces plus two interior canonical
+    rows,
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 37
+  role: notes_stage
+  excerpt: '## 1. Carry-forward primitive quadruple ledger and the positive spherical four-simplex'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 46
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 48
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 50
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 64
+  role: notes_stage
+  excerpt: The primitive quadruple set is then
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 70
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 74
+  role: notes_stage
+  excerpt: Every primitive triple belongs to exactly two primitive quadruples, because once three axes are fixed there are
+    exactly two remaining primitive directions that can complete the quadruple.
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 76
+  role: notes_stage
+  excerpt: Now fix a monotone primitive quadruple
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 79
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 110
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 112
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 114
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 123
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 130
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 142
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 149
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 161
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 168
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 180
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 187
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 202
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 204
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 206
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 285
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 287
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 308
+  role: notes_stage
+  excerpt: Let the oriented symmetric Hessian block along the quadruple ray be
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 362
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 446
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 448
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 459
+  role: notes_stage
+  excerpt: Define the ten exact quadratic discriminant coefficients
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 463
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 465
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 472
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 474
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 481
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 483
+  role: notes_stage
+  excerpt: \qquad
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 514
+  role: notes_stage
+  excerpt: '## 6. The canonical quadruple-screen audit'
+- path: notes/stages/moving_throat_pde_stage213_four_coordinate_mixed_simplex_and_support_cardinality_4_gate.md
+  line: 522
+  role: notes_stage
+  excerpt: \qquad
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,156 @@
+schema_version: 1
+candidate_id: fit_stage047_R_target_zeta_invariance
+parameter_name: R_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage047_r_target_zeta_invariance__phase_b__r_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '047'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_047.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~047 introduces the coherent support ratio \(\zeta\) and shows that it changes the available
+    loading but not the selected target ratio.}
+- path: paper/stages/stage_047.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: The coherent target ratio is
+- path: paper/stages/stage_047.tex
+  line: 26
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage047-Rtarget}
+- path: paper/stages/stage_047.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: R_{\rm target}=\frac{\Lambda(1-\epsilon_\eta)(1-\epsilon)^2}{Z_W(1+\chi_0)^2}}.
+- path: paper/stages/stage_047.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: It contains no \(\zeta\).  Therefore the support lane only supplies loading; it does not move the target locus
+    itself.
+- path: paper/stages/stage_047.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Support enhancement factor \eqref{eq:app-stage047-S} and target independence \eqref{eq:app-stage047-Rtarget}.}
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 7
+  role: notes_stage
+  excerpt: '> the first coherent local D/N kernel lands on the physical tracking branch, but the constructive split-`U` deformation
+    lowers `R_tr` below `1` and therefore worsens the normalization target relative to the old flat branch.'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 37
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps)^2 / [ Z_W (1 + chi_0)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 185
+  role: notes_stage
+  excerpt: '## 5. Exact target ratio and product law on the coherent branch'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 189
+  role: notes_stage
+  excerpt: '`R_target = Lambda (1 - eps_eta) (1 - eps)^2 / [ Z_W (1 + chi_0)^2 ].`'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 191
+  role: notes_stage
+  excerpt: So `R_target` is exactly independent of `zeta`.
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 195
+  role: notes_stage
+  excerpt: '`R_target M_tr`'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 200
+  role: notes_stage
+  excerpt: '`R_target M_tr`'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 221
+  role: notes_stage
+  excerpt: '- the target ratio `R_target` is independent of `zeta`,'
+- path: notes/stages/moving_throat_pde_stage047_coherent_kernel_map.md
+  line: 229
+  role: notes_stage
+  excerpt: '> for the first coherent local D/N kernel on the coherent tracking branch, the support lane enters only by increasing
+    the baseline through one exact enhancement factor, while the retarded demand ratio is still fixed by the mixed/outgoing
+    lane.'
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 4. Exact product law R_target * M_tr.
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: Rtarget = sp.simplify(Lambda * (1 - eps_eta) * (1 - eps) ** 2 / (ZW * (1 + chi0) ** 2))
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 100
+  role: sympy_script
+  excerpt: print("R_target =", Rtarget)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: product_actual = sp.simplify(Rtarget * Mtr)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: Rtarget_loaded = sp.simplify(product_expected / Mtr)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: print("R_target * M_tr =", product_actual)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: print("R_target reconstructed from the support-loaded product law =", Rtarget_loaded)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: expect_zero("support-loaded R_target reconstruction", Rtarget_loaded - Rtarget)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: expect_zero("dR_target_loaded/dzeta", sp.diff(Rtarget_loaded, zeta))
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 115
+  role: sympy_script
+  excerpt: '"R_target_loaded(zeta) - R_target_loaded(0)",'
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: sp.simplify(Rtarget_loaded - Rtarget_loaded.subs(zeta, 0)),
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: Rtarget_spoiled = sp.simplify(product_expected / (Mmix + Msupp_spoiled))
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: dRtarget_spoiled_num = sp.N(
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: sp.diff(Rtarget_spoiled, zeta).subs(
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: print("spoiled dR_target/dzeta at a probe point =", dRtarget_spoiled_num)
+- path: scripts/moving_throat_pde_stage047_coherent_kernel_map_sympy_audit.py
+  line: 155
+  role: sympy_script
+  excerpt: 'if abs(complex(dRtarget_spoiled_num)) < 1e-12:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

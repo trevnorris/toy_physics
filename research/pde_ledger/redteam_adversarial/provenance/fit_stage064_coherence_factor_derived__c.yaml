@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage064_coherence_factor_derived
+parameter_name: C
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage064_coherence_factor_derived__phase_b__c.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '064'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_064.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+- path: paper/stages/stage_064.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} inside the same local compressional linearization used in Stages~060--063.}
+- path: paper/stages/stage_064.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~064 shows that the parent equilibrium equations tie the source profile to the support
+    profile instead of leaving \(C_{\sigma\phi}\) arbitrary.}
+- path: paper/stages/stage_064.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: C_{\sigma\phi}^2=\frac{I_1^2}{N_{\phi\phi}I_2}\leq1}.
+- path: paper/stages/stage_064.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: C_{\sigma\phi}^2=1,
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 064: Parent Equilibrium Source/Support Alignment and the Exact Matched-Layer Gain'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 8
+  role: notes_stage
+  excerpt: '- and the source/support coherence `C_(sigma phi)^2`.'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 41
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = I_1^2 / [ N_(phi phi) I_2 ] <= 1;`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 49
+  role: notes_stage
+  excerpt: '4. in the thin active layer where `H(y)` is approximately constant, the branch becomes exactly matched:'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 51
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = 1,`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 115
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = O_(sigma phi)^2 / [ N_(phi phi) N_(sigma sigma) ]`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 118
+  role: notes_stage
+  excerpt: This is already a strong theorem statement. The coherence is no longer an unconstrained branch datum. It is fixed
+    by how much the compressional stiffness varies across the active support layer.
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 122
+  role: notes_stage
+  excerpt: '## 3. Exact coherence bound and the matched-layer limit'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 124
+  role: notes_stage
+  excerpt: By Cauchy–Schwarz,
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 130
+  role: notes_stage
+  excerpt: '`0 <= C_(sigma phi)^2 <= 1.`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 132
+  role: notes_stage
+  excerpt: 'The equality condition is also exact: `C_(sigma phi)^2 = 1` if and only if `1/H(y)` is constant on the support
+    of `chi_phi(y)`.'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 134
+  role: notes_stage
+  excerpt: So in the physically important thin-wall / matched-layer regime where the support lives in a narrow active layer
+    and the local compressional stiffness is nearly constant there,
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 146
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = 1.`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 148
+  role: notes_stage
+  excerpt: This is the first exact parent reason for expecting the near-matched branch rather than a strongly misaligned one.
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 182
+  role: notes_stage
+  excerpt: '## 5. Constant-compressibility reduction and contact with Stages 062–063'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 184
+  role: notes_stage
+  excerpt: In the matched-layer limit `H(y) ~ H_w`,
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 202
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = 1.`'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 213
+  role: notes_stage
+  excerpt: '- and one independent coherence factor `C_(sigma phi)^2`.'
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 225
+  role: notes_stage
+  excerpt: '`C_(sigma phi)^2 = I_1^2 / [ N_(phi phi) I_2 ],`'
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 21
+  role: sympy_script
+  excerpt: C^2 = I1^2 / (N_pp * I2).
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 23
+  role: sympy_script
+  excerpt: C^2 = 1,
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '5. A discrete two-point model verifies the Cauchy gap exactly:'
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: banner("STAGE 64 — PARENT EQUILIBRIUM SOURCE/SUPPORT ALIGNMENT")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: C2 = sp.simplify(Osp**2 / (Npp * Nss))
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("C_(sigma phi)^2 =", C2)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: banner("MATCHED-LAYER INTEGRAL REDUCTION (concrete Gaussian profile)")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: banner("CONSTANT-COMPRESSIBILITY / MATCHED-LAYER LIMIT")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: C2_const = sp.simplify(C2.subs(const_subs))
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: print("C^2 | H=const =", C2_const)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 121
+  role: sympy_script
+  excerpt: expect_zero("matched-layer coherence", C2_const - 1)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: banner("DISCRETE TWO-POINT CAUCHY GAP CHECK")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: expect_zero("two-point Cauchy gap identity", gap_disc - gap_expected)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: banner("GENERAL-H EQUILIBRIUM SOFTENING CHECK")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 161
+  role: sympy_script
+  excerpt: banner("ELIMINATED-SOURCE SOFTENING CHECK")
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: print("2. The coherence factor is exactly C^2 = I1^2/(N_pp I2) and reaches 1 when H is constant on the active layer.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

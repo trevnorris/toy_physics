@@ -1,0 +1,121 @@
+schema_version: 1
+candidate_id: fit_stage_196_matched_fingerprint_value
+parameter_name: matched_fingerprint_value
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_196_matched_fingerprint_value__phase_b__matched_fingerprint_value.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '196'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_196.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_196.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried Stage 191 Packet-A branch-residual hierarchy, the Stage 193 isotropic grouped-real
+    `P2` conservative one-pole surface, the Stage 194 exact outgoing `l=2` DtN fingerprint and isotropic deformation algebra,
+    the Stage 195 exact source-map reduction, and the reduced 2.5PN outgoing compiler.**'
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 13
+  role: notes_stage
+  excerpt: So the only live retarded obstruction that survives the full carried hierarchy is still the leading outgoing-normalization
+    scalar
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 23
+  role: notes_stage
+  excerpt: Stage 194 fixed the canonical compact passive/outgoing `l=2` fingerprint and isolated the outgoing scalar
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 52
+  role: notes_stage
+  excerpt: 5. and the final reduced statement that the only live retarded obstruction at `2.5`PN is
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 254
+  role: notes_stage
+  excerpt: Then the exact canonical-even matching conditions are still
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 342
+  role: notes_stage
+  excerpt: So in the standard small-velocity bookkeeping it sits **above** the universal point-particle `2.5`PN slot.
+- path: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+  line: 368
+  role: notes_stage
+  excerpt: So the only live retarded obstruction at reduced `2.5`PN order is still the single scalar `\chi_Q`.
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: 'Y_stage194_matched = sp.simplify(Y_stage194_hi_series.subs({Sigma2: Sigma2_match, Sigma4: Sigma4_match}))'
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: Y_stage194_through5 = sp.series(Y_stage194_matched, z, 0, 6).removeO()
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: z5_coeff = sp.simplify(sp.expand(Y_stage194_matched).coeff(z, 5))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: print("matched normalized DtN response through O(z^7) =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: sp.pprint(sp.expand(Y_stage194_matched))
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: print("z^5 coefficient in the matched normalized DtN response =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 152
+  role: sympy_script
+  excerpt: print("chi_Q extracted from the matched z^5 coefficient =")
+- path: scripts/moving_throat_pde_stage196_higher_odd_irrelevance_theorem_sympy_audit.py
+  line: 154
+  role: sympy_script
+  excerpt: print("chi_Q from the matched Stage 194 deformation algebra =")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    - paper/stages/stage_196.tex
+    - research/pde_ledger/paper/stages/stage_196.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage196_higher_odd_irrelevance_theorem.md
+    - paper/stages/stage_196.tex
+    - research/pde_ledger/paper/stages/stage_196.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

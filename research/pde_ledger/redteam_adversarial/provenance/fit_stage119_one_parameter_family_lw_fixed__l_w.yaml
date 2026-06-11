@@ -1,0 +1,100 @@
+schema_version: 1
+candidate_id: fit_stage119_one_parameter_family_LW_fixed
+parameter_name: L_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage119_one_parameter_family_lw_fixed__phase_b__l_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '119'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 69
+  role: notes_stage
+  excerpt: L_W
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 90
+  role: notes_stage
+  excerpt: \frac{8\sqrt2}{3}a^2\ell\sqrt{L_W},
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 98
+  role: notes_stage
+  excerpt: \frac{q_* v_{w0}\,a^2\ell\sqrt{L_W}}{\sqrt{K_sK_q}}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 108
+  role: notes_stage
+  excerpt: g_q=\frac{\mathcal Z_q}{\mu_0}\frac{\pi}{\sqrt2\,L_W^{3/2}}.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 112
+  role: notes_stage
+  excerpt: K_q=\frac{\mathcal Z_q}{\mu_0}\frac{\pi^2 c_s^2}{4L_W^2},
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 120
+  role: notes_stage
+  excerpt: '{\mathcal T_m J_s\,c_s\sqrt{\mu_0 L_W}}.'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 137
+  role: notes_stage
+  excerpt: '{J_s\,c_s\sqrt{\mu_0 L_W}}'
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 143
+  role: notes_stage
+  excerpt: So once the background mixed flow fixes \(\mathfrak r\), the traction amplitude required to preserve the canonical
+    outgoing quadrupole fingerprint is fixed exactly.
+- path: notes/stages/moving_throat_pde_stage119_parent_balance_family.md
+  line: 164
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}{2}\sqrt{\frac{1+\mathfrak r^2}{3}},
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: L_W, rc = sp.symbols("L_W rc", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: kappa0 = 4*L_W**2/(sp.pi**2*a**2)
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: L_sel = sp.solve(sp.Eq(kappa0, (1+rc)/3), L_W)[0]
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print("L_W =", sp.simplify(L_sel))
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: Kq = Zq*sp.pi**2*c_s**2/(4*mu0*L_W**2)
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: gq = Zq*sp.pi/(sp.sqrt(2)*mu0*L_W**sp.Rational(3,2))
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: ghat_expr - sp.sqrt(2*Zq*K_s)/(Tm*J_s*c_s*sp.sqrt(mu0*L_W))
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat + sp.sqrt(1+rhat**2)))
+- path: scripts/moving_throat_pde_stage119_parent_balance_sympy_audit.py
+  line: 83
+  role: sympy_script
+  excerpt: (J_s*sp.sqrt(L_W)*c_s*sp.sqrt(mu0)*(2*rhat - sp.sqrt(1+rhat**2)))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,198 @@
+schema_version: 1
+candidate_id: fit_stage191_fixed_by_previous_stages
+parameter_name: Delta_branch
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage191_fixed_by_previous_stages__phase_b__delta_branch.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '191'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_191.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the triangular normal form, the transfer-shape/outgoing-prefactor identity,
+    and the exact monomial quotient coordinates.  It compiles observable branch data rather than solving the nonlinear moving-throat
+    PDE.}
+- path: paper/stages/stage_191.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation composes the quotient map with the observable packet, equates the
+    direct coherent defect with the transfer-shape/outgoing-prefactor slope, and separates branch-side and orbit-side packets.}
+- path: paper/stages/stage_191.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Defines Packet A, Packet B, \(\Delta_{\rm branch}\), \(\Delta_{\rm orbit}\), and the exact
+    two-packet home-stretch theorem.}
+- path: paper/stages/stage_191.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check that direct transfer-shape drift \(\Xi_1\) is kept separate from selected-branch dressing residuals.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 191: Minimal PDE Data Packet, Exact Branch/Orbit Residuals, and the Home-Stretch Theorem'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the carried grouped real `P2` / coherent-branch / outgoing-compiler hierarchy already fixed in
+    Stages 188–190.**'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 14
+  role: notes_stage
+  excerpt: Stage 188 completed the first-order **branch-observable** front end in the direct observables
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 27
+  role: notes_stage
+  excerpt: Stage 189 carried the same branch-observable data into the exact **transfer-shape / grouped-response / outgoing-prefactor**
+    compiler,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 36
+  role: notes_stage
+  excerpt: 'Stage 190 then separated the **direct transfer-shape defect** from the **selected-branch dressing residual**,
+    proved the support-blindness theorem for the direct transfer shape, and promoted the main weak-axisymmetric no-go filters.
+    After that stage, the remaining gap was no longer “what microscopic channel is missing?” but rather:'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 38
+  role: notes_stage
+  excerpt: '> what is the smallest exact finite packet of branch data the completed PDE must return so that the final reduced
+    verdict is automatic?'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 44
+  role: notes_stage
+  excerpt: 1. the exact **Packet A** compiler from grouped-lane low-frequency data to the final branch residual packet
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 46
+  role: notes_stage
+  excerpt: \Delta_{\rm branch},
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 58
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 60
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}=0,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 106
+  role: notes_stage
+  excerpt: This is the smallest branch-side packet that still retains all low-frequency information needed by the reduced
+    endgame compiler.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 180
+  role: notes_stage
+  excerpt: \boxed{\Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}.}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 187
+  role: notes_stage
+  excerpt: \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 195
+  role: notes_stage
+  excerpt: '### 1.5 The exact final branch residual packet'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 197
+  role: notes_stage
+  excerpt: Collecting the previous quantities gives the exact branch-side verdict vector
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 200
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 203
+  role: notes_stage
+  excerpt: a_2,\ b_2,\ a_4,\ b_4,\ a_{P_0},\ b_{P_0},\ \Delta_{\rm pole},\ \Delta_{\rm norm}
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 210
+  role: notes_stage
+  excerpt: '### 1.6 Why `P_2` and `P_4` are compiled but not retained in `\Delta_{\rm branch}`'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 217
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,\Delta_{\rm pole}).
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 253
+  role: notes_stage
+  excerpt: Let `\(\chi_{0,*}\)` and `\(F_*\)` be the carried coherent-branch coefficients.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 284
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}:=
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 291
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}=0
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 301
+  role: notes_stage
+  excerpt: At the infinitesimal level, `\(\Delta_{\rm orbit}\)` is just the finite upgrade of the same three quotient directions
+    whose tangent compiler was fixed in Stages 187–188.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 314
+  role: notes_stage
+  excerpt: Within the carried grouped real `P_2` / coherent-branch / outgoing-prefactor hierarchy of Stages 188–190,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 326
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 328
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}=0.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 335
+  role: notes_stage
+  excerpt: 'It only has to supply the actual branch values needed to evaluate two exact finite residual vectors:'
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 337
+  role: notes_stage
+  excerpt: \Delta_{\rm branch},
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 339
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 347
+  role: notes_stage
+  excerpt: 1. **Compile Packet A** into `\(\Delta_{\rm branch}\)`.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 348
+  role: notes_stage
+  excerpt: 2. **Compile Packet B** into `\(\Delta_{\rm orbit}\)`.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 351
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}\neq 0,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 353
+  role: notes_stage
+  excerpt: then the branch fails the reduced GR-compatible grouped test.
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 356
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}=0
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 358
+  role: notes_stage
+  excerpt: \Delta_{\rm orbit}\neq 0,
+- path: notes/stages/moving_throat_pde_stage191_minimal_pde_data_packet.md
+  line: 360
+  role: notes_stage
+  excerpt: then the branch is isotropic and normalized on the grouped side but is still off the exact similarity orbit.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

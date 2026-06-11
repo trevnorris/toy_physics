@@ -1,0 +1,55 @@
+schema_version: 1
+candidate_id: fit_stage_190_b_x
+parameter_name: b_x
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_190_b_x__phase_b__b_x.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '190'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  line: 547
+  role: notes_stage
+  excerpt: b_x=\frac{x_{21}-x_{22}}{2}.
+- path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  line: 556
+  role: notes_stage
+  excerpt: 4a_x a_y+\frac45 b_x b_y,
+- path: notes/stages/moving_throat_pde_stage190_direct_defect_vs_dressing_split.md
+  line: 574
+  role: notes_stage
+  excerpt: b_x=3a_x,
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 251
+  role: sympy_script
+  excerpt: bx = sp.simplify((x21 - x22) / 2)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 257
+  role: sympy_script
+  excerpt: Ixy = sp.simplify(4 * ax * ay + sp.Rational(4, 5) * bx * by)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 258
+  role: sympy_script
+  excerpt: Ixx = sp.simplify(4 * ax**2 + sp.Rational(4, 5) * bx**2)
+- path: scripts/moving_throat_pde_stage190_direct_defect_vs_dressing_split_sympy_audit.py
+  line: 262
+  role: sympy_script
+  excerpt: expect_zero("b_x - 3 a_x", bx - 3 * ax)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

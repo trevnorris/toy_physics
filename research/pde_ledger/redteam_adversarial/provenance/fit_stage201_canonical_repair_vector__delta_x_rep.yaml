@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage201_canonical_repair_vector
+parameter_name: Delta_x_rep
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage201_canonical_repair_vector__phase_b__delta_x_rep.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '201'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_201.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~201 turns the reference-free four-scalar home-stretch theorem into an executable realization
+    audit.  It defines intrinsic target ratios, the quotient coordinates \((q_{\rm tr},q_{\rm nt},q_\eta)\), the canonical
+    dependent-triple repair vector, and the same-free-quintuple orbit projection.}
+- path: paper/stages/stage_201.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation forms the target monomial ratios, logs them to obtain the quotient
+    coordinates, solves the dependent-triple repair equation \(M_*\Delta\mathbf x_{\rm rep}=-\mathbf q\), exponentiates the
+    repair, and proves the projected state is the unique target-orbit point with the same free quintuple.}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 16
+  role: notes_stage
+  excerpt: \Delta_{\rm full}=0
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 26
+  role: notes_stage
+  excerpt: '> given one candidate microscopic state from the completed moving-throat PDE, how do we test it against the target
+    branch **without** choosing an arbitrary orbit representative, and how do we identify the unique microscopic correction
+    that would return it to the target orbit if only the quotient packet failed?'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 33
+  role: notes_stage
+  excerpt: 2. the exact **canonical dependent-triple repair vector**
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 35
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep},
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 151
+  role: notes_stage
+  excerpt: \Delta_Q(\mathbf x):=\chi_Q(\mathbf x)-1.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 158
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}(\mathbf x\mid \mathcal Z_*)
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_Q(\mathbf x),\
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 226
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}=0
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 240
+  role: notes_stage
+  excerpt: '## 3. Exact canonical dependent-triple repair vector'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 252
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 257
+  role: notes_stage
+  excerpt: \Delta\mathbf x=
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 258
+  role: notes_stage
+  excerpt: (\Delta_\lambda,\Delta_c,\Delta_\gamma,\Delta_U,\Delta_{K_\eta},\Delta_W,\Delta_\mu,\Delta_T)^T.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 267
+  role: notes_stage
+  excerpt: Then the exact canonical quotient representative is
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 269
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm quot}=S_{(T,K_\eta,\mu)}\,\mathbf q,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 271
+  role: notes_stage
+  excerpt: and the exact canonical **repair** vector is
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 274
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}:=-S_{(T,K_\eta,\mu)}\,\mathbf q.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 281
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 296
+  role: notes_stage
+  excerpt: So the repair demand has support only on the dependent triple
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 307
+  role: notes_stage
+  excerpt: 'the repair vector kills the quotient packet exactly:'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 310
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x_{\rm rep}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 318
+  role: notes_stage
+  excerpt: M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 322
+  role: notes_stage
+  excerpt: This is the exact microscopic meaning of “repair to the target orbit while keeping the free similarity coordinates
+    fixed.”
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 337
+  role: notes_stage
+  excerpt: Exponentiating the repair vector gives the exact canonical orbit projection
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 406
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x_{\rm rep}=-\mathbf q,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 410
+  role: notes_stage
+  excerpt: M_*(\Delta\mathbf x+\Delta\mathbf x_{\rm rep})=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 418
+  role: notes_stage
+  excerpt: The support of `\(\Delta\mathbf x_{\rm rep}\)` lies only on the dependent triple, so the free quintuple is unchanged.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 420
+  role: notes_stage
+  excerpt: 'Finally, uniqueness follows from the exact pivot block on `(T,K_\eta,\mu)`: once the five free coordinates are
+    fixed, the condition `\(M_*\Delta\mathbf x=0\)` determines the dependent triple uniquely.'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 453
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm int}(\mathbf x\mid\mathcal Z_*)=0.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 502
+  role: notes_stage
+  excerpt: \Delta\mathbf x_{\rm rep}^{\rm lin}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 504
+  role: notes_stage
+  excerpt: -S_{(T,K_\eta,\mu)}\,M_*\,\Delta\mathbf x,
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 509
+  role: notes_stage
+  excerpt: \Delta_{\rm real}^{\rm lin}
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 512
+  role: notes_stage
+  excerpt: \delta\chi_Q,\
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 513
+  role: notes_stage
+  excerpt: M_*\,\Delta\mathbf x
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 529
+  role: notes_stage
+  excerpt: No orbit representative and no pairwise witness are needed. The target orbit is specified by the three target monomial
+    values, and the quotient packet is just their intrinsic log-ratio packet.
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 531
+  role: notes_stage
+  excerpt: '### 9.2 The unique microscopic repair is now explicit'
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 533
+  role: notes_stage
+  excerpt: The exact repair vector is carried only by
+- path: notes/stages/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection.md
+  line: 562
+  role: notes_stage
+  excerpt: 4. and, if the branch misses the target orbit, compute the exact canonical dependent-triple repair
+- path: scripts/moving_throat_pde_stage201_explicit_realization_compiler_and_canonical_orbit_projection_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: chi0s, deltaUs, Estar, Fstar = sp.symbols(
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,36 @@
+schema_version: 1
+candidate_id: fit_stage169_family1_point_injection
+parameter_name: g_star
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage169_family1_point_injection__phase_b__g_star.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '169'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_169.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Pure grouped real \(P_2\) anisotropy cannot linearly source the scalar off-bundle slippages;
+    scalar feed-down starts quadratically.}
+- path: notes/stages/moving_throat_pde_stage169_no_linear_p2_scalar_slippage.md
+  line: 32
+  role: notes_stage
+  excerpt: Its scalar feed-down starts only at quadratic order, through the grouped invariant bilinears.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage248_session2_launch_parameters
+parameter_name: E_sub
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_session2_launch_parameters__phase_b__e_sub.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '248'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_248.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: For subbarrier energy \(V(r_0)<E<V_{\rm peak}\), turning points solve
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 44
+  role: notes_stage
+  excerpt: 3. the subbarrier turning points,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: '## 3. Turning-point compiler and subbarrier WKB event chain'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 200
+  role: notes_stage
+  excerpt: Now fix a subbarrier energy \(E\) satisfying
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 232
+  role: notes_stage
+  excerpt: '### 3.2 Launch speed for a chosen subbarrier energy'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 234
+  role: notes_stage
+  excerpt: If one wants the reduced trajectory to have energy \(E_{\rm sub}\) at launch radius \(r_0\), then
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 237
+  role: notes_stage
+  excerpt: v_{0,\rm sub}(E_{\rm sub})
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 239
+  role: notes_stage
+  excerpt: \sqrt{\frac{2}{m_s}\bigl(E_{\rm sub}-V(r_0)\bigr)}.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 378
+  role: notes_stage
+  excerpt: This quantity is not a new theorem by itself, but it tells the later weak-axisymmetric audit where the subbarrier
+    path is sitting on the transported front-end packet.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 417
+  role: notes_stage
+  excerpt: E_{\rm sub}=2.5.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 468
+  role: notes_stage
+  excerpt: '### 6.2 Subbarrier launch speed and Coulomb turning point'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 470
+  role: notes_stage
+  excerpt: At the fixed subbarrier energy \(E_{\rm sub}=2.5\), the launch speed is
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 472
+  role: notes_stage
+  excerpt: v_{0,\rm sub}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 571
+  role: notes_stage
+  excerpt: 4. the subbarrier branch is controlled by explicit turning points and an explicit WKB action,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 583
+  role: notes_stage
+  excerpt: It is a complete reduced scattering object with explicit classical and subbarrier compilers.
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 13
+  role: sympy_script
+  excerpt: 6. and the main Session-II benchmark relations reported in the barrier write-up.
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: '- The numeric constants in Section 5 are the carried Session-II benchmark packet'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 19
+  role: sympy_script
+  excerpt: from the Stage 248 barrier note and the benchmark ledger in
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 20
+  role: sympy_script
+  excerpt: '`CHECKPOINT_CONSTANT_PROVENANCE.md`; they are benchmark readbacks, not hidden'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: dE_dt.subs(rddot, -sp.diff(V(r(t)), r(t)) / m_s)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: E_at_vcrit = sp.simplify(E_launch_new.subs(v0, vcrit_new) - Vpeak)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: assert sp.simplify(delta_new.subs(v0, vcrit_new)) == 0
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: assert sp.simplify(delta_coul.subs(v0, vcontact_coul)) == 0
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 113
+  role: sympy_script
+  excerpt: Esub, hbar_eff = sp.symbols("Esub hbar_eff", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: v0_sub = sp.simplify(sp.sqrt(2 * (Esub - V0) / m_s))
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 120
+  role: sympy_script
+  excerpt: sp.sqrt(2 * m_s * (V(rv) - Esub)) / hbar_eff,
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 125
+  role: sympy_script
+  excerpt: rturn_coul = sp.simplify(1 / Esub)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 131
+  role: sympy_script
+  excerpt: sp.sqrt(rv * (1 - Esub * rv))
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: + sp.asin(sp.sqrt(Esub * rv)) / sp.sqrt(Esub)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 135
+  role: sympy_script
+  excerpt: coul_integrand = sp.simplify(sp.sqrt(2 * m_s * (1 / rv - Esub)) / hbar_eff)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: sp.pi / (2 * sp.sqrt(Esub))
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 141
+  role: sympy_script
+  excerpt: '- sp.sqrt(r_contact * (1 - Esub * r_contact))'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 142
+  role: sympy_script
+  excerpt: '- sp.asin(sp.sqrt(Esub * r_contact)) / sp.sqrt(Esub)'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: sp.limit(F_coul, rv, 1 / Esub, dir="-") - F_coul.subs(rv, r_contact)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: print("v_0,sub(E)            =", v0_sub)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 186
+  role: sympy_script
+  excerpt: '# Pre-substitution: the two forms are NOT identically equal (non-vacuous guard).'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 189
+  role: sympy_script
+  excerpt: lambda_th_gap = sp.simplify(lambda_th_gap_raw.subs(V(r_plus_E), E_turn))
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 198
+  role: sympy_script
+  excerpt: 'assert lambda_th_gap_raw != 0          # non-vacuous: identity is not free'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 230
+  role: sympy_script
+  excerpt: '# 5. Session-II benchmark specialization.'
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 234
+  role: sympy_script
+  excerpt: section("5. Session-II benchmark specialization")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

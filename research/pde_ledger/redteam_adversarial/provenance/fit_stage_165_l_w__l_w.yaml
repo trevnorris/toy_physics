@@ -1,0 +1,176 @@
+schema_version: 1
+candidate_id: fit_stage_165_l_w
+parameter_name: L_W
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_165_l_w__phase_b__l_w.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '165'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_165.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Shows \(\delta\ln L_W=\delta\ln a\) and reduces the lower compensated branch to four irreducible
+    drifts \((\delta\ln\mathcal Z_q,\delta\ln\rho_w,\delta\ln c_s,\delta\ln a)\).}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 165: Exact Lower-Branch Drift Laws for `L_W`, `v_{w0}`, and `\mathcal T_m`'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 13
+  role: notes_stage
+  excerpt: (\mathcal Z_q,\rho_w,c_{s,w},c_s,\mathcal T_m,v_{w0},a,L_W)
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 23
+  role: notes_stage
+  excerpt: \delta\ln L_W=\delta\ln a,
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 67
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}2\sqrt{\frac{1+\mathfrak r^2}3}.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 72
+  role: notes_stage
+  excerpt: \delta\ln L_W=\delta\ln a.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 87
+  role: notes_stage
+  excerpt: K_q=\frac{\mathcal Z_q}{\mu_0}\frac{\pi^2 c_s^2}{4L_W^2},
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 91
+  role: notes_stage
+  excerpt: \mathcal I_{sq}\propto a^2\ell L_W^{1/2},
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 110
+  role: notes_stage
+  excerpt: -3\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 122
+  role: notes_stage
+  excerpt: -\frac32\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 126
+  role: notes_stage
+  excerpt: Using the D/N co-transport law \(\delta\ln L_W=\delta\ln a\),
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 145
+  role: notes_stage
+  excerpt: \frac{\sqrt{2\mathcal Z_q K_s}}{J_s c_s \sqrt{\mu_0 L_W}}
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 163
+  role: notes_stage
+  excerpt: -2\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 175
+  role: notes_stage
+  excerpt: -\frac12\,\delta\ln L_W.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 204
+  role: notes_stage
+  excerpt: L_W=\frac{\pi a}2\sqrt{\frac{1+\mathfrak r_*^2}3}.
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 413
+  role: notes_stage
+  excerpt: '- `L_W`,'
+- path: notes/stages/moving_throat_pde_stage165_exact_branch_drifts.md
+  line: 432
+  role: notes_stage
+  excerpt: '> `L_W`, `v_{w0}`, `\mathcal T_m`, and `c_{s,w}` for us?'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 1. D/N law implies d ln L_W = d ln a at fixed r_*.
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 32
+  role: sympy_script
+  excerpt: dZ, drho, dcsw, dcs, dT, dv, da, dLW = sp.symbols(
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 33
+  role: sympy_script
+  excerpt: '"dZ drho dcsw dcs dT dv da dLW", real=True'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 37
+  role: sympy_script
+  excerpt: a, LW = sp.symbols("a LW", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: LW_law = sp.pi * a * sp.sqrt(1 + r**2) / (2 * sp.sqrt(3))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 41
+  role: sympy_script
+  excerpt: dlog_LW = sp.simplify(a * sp.diff(sp.log(LW_law), a))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: 'print("D/N law: L_W =", LW_law)'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: 'print("At fixed r_* : d ln L_W = d ln a")'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 44
+  role: sympy_script
+  excerpt: expect_zero("d ln L_W - d ln a at fixed r_*", dlog_LW - 1)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: eq_r = sp.Eq(dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW, 0)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: eq_g = sp.Eq(dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW, 0)
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("\nExact drift laws before using d ln L_W = d ln a:")
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: dv_DN = sp.simplify(dv_sol.subs(dLW, da))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: dT_DN = sp.simplify(dT_sol.subs(dLW, da))
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("\nAfter using d ln L_W = d ln a:")
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: 'channel_g = sp.simplify((dZ + 3*dcsw - drho - dT - dv - 2*da - 2*dLW).subs({dv: dv_sol, dT: dT_sol}))'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: 'channel_r = sp.simplify((dZ + 2*dcs + 3*dcsw - drho - 2*dv - 2*da - 3*dLW).subs({dv: dv_sol, dT: dT_sol}))'
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("  d ln L_W = d ln a")
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: print("  d ln v_w0 = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w + d ln c_s - d ln a - 3/2 d ln L_W")
+- path: scripts/moving_throat_pde_stage165_exact_branch_drifts_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: print("  d ln T_m  = 1/2 d ln(Z_q/rho_w) + 3/2 d ln c_s,w - d ln c_s - d ln a - 1/2 d ln L_W")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage_064_f_eff
+parameter_name: F_eff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_064_f_eff__phase_b__f_eff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '064'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 162
+  role: notes_stage
+  excerpt: so the effective support energy is
+- path: notes/stages/moving_throat_pde_stage064_equilibrium_alignment.md
+  line: 164
+  role: notes_stage
+  excerpt: '`F_eff(phi) = (1/2) [ K_X - Lambda^2 / Theta ] phi^2.`'
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 168
+  role: sympy_script
+  excerpt: F_eff = sp.simplify(F.subs(sigma, sigma_stat))
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 170
+  role: sympy_script
+  excerpt: print("F_eff =", F_eff)
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 172
+  role: sympy_script
+  excerpt: '"effective support softening",'
+- path: scripts/moving_throat_pde_stage064_equilibrium_alignment_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: F_eff - sp.Rational(1, 2) * (KX - Lambda**2 / Theta) * phi**2,
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,79 @@
+schema_version: 1
+candidate_id: fit_stage_122_t_m
+parameter_name: T_m
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_122_t_m__phase_b__t_m.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '122'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 120
+  role: notes_stage
+  excerpt: \mathfrak g \propto \frac{1}{\mathcal T_m},
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 125
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(\pm)}}{\mathcal T_m^{\rm nat}}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 134
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(-)}}{\mathcal T_m^{\rm nat}}
+- path: notes/stages/moving_throat_pde_stage122_mouth_source_compensation_test.md
+  line: 137
+  role: notes_stage
+  excerpt: \frac{\mathcal T_m^{(+)}}{\mathcal T_m^{\rm nat}}
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: '# Independent traction ratio from stage 119 boxed law  g = C / T_m,'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: '# constant on every branch. Then T_m^(±)/T_m^nat = (C/g_±)/(C/g_nat) = g_nat/g_±.'
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: Tm_nat   = C / g_nat
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: Tm_minus = C / gminus
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Tm_plus  = C / gplus
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 52
+  role: sympy_script
+  excerpt: T_ratio_minus = sp.simplify(Tm_minus / Tm_nat)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: T_ratio_plus  = sp.simplify(Tm_plus  / Tm_nat)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 54
+  role: sympy_script
+  excerpt: print("T_m(-)/T_m(nat) =", T_ratio_minus)
+- path: scripts/moving_throat_pde_stage122_mouth_source_compensation_test_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print("T_m(+)/T_m(nat) =", T_ratio_plus)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

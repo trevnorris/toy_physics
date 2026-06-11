@@ -1,0 +1,188 @@
+schema_version: 1
+candidate_id: fit_stage250_goldilocks_inputs
+parameter_name: chi_raw
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage250_goldilocks_inputs__phase_b__chi_raw.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '250'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_250.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
+- path: paper/stages/stage_250.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \mu_\eta\ddot V=g_{UV}\chi_{\rm peak}V.
+- path: paper/stages/stage_250.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+- path: paper/stages/stage_250.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: The survival ratio is
+- path: paper/stages/stage_250.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage250-survival-ratio}
+- path: paper/stages/stage_250.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \sqrt{\frac{m_sg_{UV}\chi_{\rm peak}}{2\mu_\eta(E-V_{\rm peak})}}.
+- path: paper/stages/stage_250.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}=V_{\rm peak}+\frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^{2}}{2\alpha},
+- path: paper/stages/stage_250.tex
+  line: 53
+  role: paper_stage_tex
+  excerpt: (\lambda_{\rm eff},\chi_{\rm peak},g_{UV},\mu_\eta/m_s).
+- path: paper/stages/stage_250.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: E_{\rm edge}-V_{\rm peak}\propto\lambda_{\rm eff}^{2}\chi_{\rm peak}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 31
+  role: notes_stage
+  excerpt: (r_{\rm peak},V_{\rm peak}),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: 4. the stability ratio
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 69
+  role: notes_stage
+  excerpt: '- Stage 248 supplied the dynamic crossing branch, the peak energy \(V_{\rm peak}\), and the turning-point trigger
+    width \(\lambda_{\rm th}\).'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 131
+  role: notes_stage
+  excerpt: and used the peak-over-barrier kinetic speed
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 134
+  role: notes_stage
+  excerpt: v_{\rm bar}(E)=\sqrt{\frac{2(E-V_{\rm peak})}{m_s}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: \lambda_{\rm eff}\sqrt{\frac{m_s}{2(E-V_{\rm peak})}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 152
+  role: notes_stage
+  excerpt: For fixed \((m_s,\lambda_{\rm eff},V_{\rm peak})\),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: -\frac{\lambda_{\rm eff}\sqrt{m_s}}{2\sqrt{2}\,(E-V_{\rm peak})^{3/2}}<0.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: \mu_\eta\,\ddot V = g_{UV}\,\chi_{\rm peak}\,V,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 175
+  role: notes_stage
+  excerpt: \chi_{\rm peak}:=\max\chi_\lambda(r)
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: \Gamma_{\rm coll}=\sqrt{\frac{g_{UV}\chi_{\rm peak}}{\mu_\eta}},
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 190
+  role: notes_stage
+  excerpt: \sqrt{\frac{\mu_\eta}{g_{UV}\chi_{\rm peak}}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: '## 3. Stability ratio and lower safe edge'
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 200
+  role: notes_stage
+  excerpt: Define the characteristic survival ratio
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 212
+  role: notes_stage
+  excerpt: \sqrt{\frac{m_s g_{UV}\chi_{\rm peak}}{2\mu_\eta\,(E-V_{\rm peak})}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 231
+  role: notes_stage
+  excerpt: V_{\rm peak}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 234
+  role: notes_stage
+  excerpt: \frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 282
+  role: notes_stage
+  excerpt: \frac{2(V_{\rm peak}-V(r_0))}{m_s},
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 291
+  role: notes_stage
+  excerpt: \frac{\lambda_{\rm eff}^2 g_{UV}\chi_{\rm peak}}{\mu_\eta}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 300
+  role: notes_stage
+  excerpt: E-V_{\rm peak}=\frac{m_s}{2}\bigl(v_0^2-v_{\rm crit,new}^2\bigr),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 310
+  role: notes_stage
+  excerpt: The corresponding survival ratio is
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 315
+  role: notes_stage
+  excerpt: \frac{\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}/\mu_\eta}}{\sqrt{v_0^2-v_{\rm crit,new}^2}}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 334
+  role: notes_stage
+  excerpt: Substituting into the stability ratio gives
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 339
+  role: notes_stage
+  excerpt: \frac{\sqrt{2}\,\lambda_{\rm eff}\sqrt{g_{UV}\chi_{\rm peak}}}{2\sqrt{\alpha}}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 340
+  role: notes_stage
+  excerpt: \,(E-V_{\rm peak})^{-1/2}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 348
+  role: notes_stage
+  excerpt: V_{\rm peak}
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: \frac{g_{UV}\chi_{\rm peak}\lambda_{\rm eff}^2}{2\alpha}.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 365
+  role: notes_stage
+  excerpt: \lambda_{\rm eff},\qquad \chi_{\rm peak},\qquad g_{UV},\qquad \alpha.
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 386
+  role: notes_stage
+  excerpt: \chi_\lambda(r)=\lambda\,\bigl|\partial_r\ln V(r)\bigr|,
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 390
+  role: notes_stage
+  excerpt: \chi_{\rm peak}=\max \chi_\lambda(r),
+- path: notes/stages/moving_throat_pde_stage250_crossing_vs_collapse_goldilocks_window_compiler_from_the_stage248_event_chain_and_relaxed_wall_timescale_closure_sympy_audit.md
+  line: 397
+  role: notes_stage
+  excerpt: \bigl(\lambda_{\rm eff},\chi_{\rm peak}\bigr).
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

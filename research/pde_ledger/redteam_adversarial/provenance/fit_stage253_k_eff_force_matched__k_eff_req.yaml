@@ -1,0 +1,190 @@
+schema_version: 1
+candidate_id: fit_stage253_k_eff_force_matched
+parameter_name: k_eff_req
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage253_k_eff_force_matched__phase_b__k_eff_req.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '253'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_253.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 253]{Stage 253: Physical calibration and material thresholds}'
+- path: paper/stages/stage_253.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_mathematica_audit.wl}.}'
+- path: paper/stages/stage_253.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \subsection{Physical calibration dictionary}
+- path: paper/stages/stage_253.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \label{subsec:app-part08-stage253-calibration}
+- path: paper/stages/stage_253.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: This is a calibration slice, not a new branch law.
+- path: paper/stages/stage_253.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: This is only a geometric trigger.  The force-matched stiffness requires
+- path: paper/stages/stage_253.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: k_{\rm eff,req}
+- path: paper/stages/stage_253.tex
+  line: 82
+  role: paper_stage_tex
+  excerpt: k_{\rm eff,req}=4\mathcal K_{\rm turn}\frac{E_*}{a_{\rm int}^{2}}.
+- path: paper/stages/stage_253.tex
+  line: 118
+  role: paper_stage_tex
+  excerpt: \frac{k_{\rm eff}\lambda_{\rm phys}^{2}}{\mathcal K_{\rm turn}E_*}
+- path: paper/stages/stage_253.tex
+  line: 120
+  role: paper_stage_tex
+  excerpt: \frac{k_{\rm eff}}{k_{\rm eff,req}},
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 28
+  role: notes_stage
+  excerpt: V_{\rm lattice}(r)=\tfrac12 k_{\rm eff}r_{\rm phys}^2,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 53
+  role: notes_stage
+  excerpt: '- a force-matched interstitial stiffness \(k_{\rm eff}\),'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: 3. the geometric trigger \(\chi_\lambda\) and the force-matched stiffness \(k_{\rm eff}\) separate cleanly,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 90
+  role: notes_stage
+  excerpt: '- Session V then translated the older phenomenological lattice thresholds into the condensed-matter variables
+    \(\lambda_{\rm ep}\omega_D\), \(k_{\rm eff}\), and \(T_{\max}\).'
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 269
+  role: notes_stage
+  excerpt: On the raw microscopic slice \(\Upsilon_{\rm lat}=1\), this implies the much stronger direct product requirement
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 304
+  role: notes_stage
+  excerpt: V_{\rm lattice}(r)=\frac12 k_{\rm eff} r_{\rm phys}^2,
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 340
+  role: notes_stage
+  excerpt: F_{\rm lattice}^{\rm phys}(r_{\rm turn})=k_{\rm eff}\,r_{\rm turn}^{\rm phys}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 345
+  role: notes_stage
+  excerpt: k_{\rm eff,req}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 351
+  role: notes_stage
+  excerpt: Define the reduced force-matching coefficient
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: k_{\rm eff,req}=\mathcal K_{\rm turn}\,\frac{E_*}{\lambda_{\rm phys}^2}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 372
+  role: notes_stage
+  excerpt: k_{\rm eff,req}=4\mathcal K_{\rm turn}\,\frac{E_*}{a_{\rm int}^2}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 408
+  role: notes_stage
+  excerpt: k_{\rm eff,req}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 417
+  role: notes_stage
+  excerpt: k_{\rm eff,req}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 503
+  role: notes_stage
+  excerpt: \frac{k_{\rm eff}\,\lambda_{\rm phys}^2}{\mathcal K_{\rm turn}E_*}
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 505
+  role: notes_stage
+  excerpt: \frac{k_{\rm eff}}{k_{\rm eff,req}}.
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 508
+  role: notes_stage
+  excerpt: The stiffness requirement is
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 523
+  role: notes_stage
+  excerpt: The spin-survival requirement is
+- path: notes/stages/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.md
+  line: 594
+  role: notes_stage
+  excerpt: 3. Insert candidate-host values of \(\lambda_{\rm ep}\omega_D\), effective interstitial stiffness, and \(\mathcal
+    K_{\rm corr}\).
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: k_eff_req = sp.simplify(E_star * lambda_ref * Vprime_turn_abs / (lambda_phys * r_turn_phys))
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 104
+  role: sympy_script
+  excerpt: k_eff_req_Kturn = sp.simplify(k_eff_req.subs(Vprime_turn_abs, K_turn_sym * r_turn / lambda_ref**2))
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: k_eff_req_aint = sp.simplify(k_eff_req_Kturn.subs(lambda_phys, a_int / 2))
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: print("k_eff,req             =", k_eff_req)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: print("k_eff,req via K_turn  =", k_eff_req_Kturn)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: print("a_int version         =", k_eff_req_aint)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: assert sp.simplify(k_eff_req - E_star * lambda_ref**2 * Vprime_turn_abs / (lambda_phys**2 * r_turn)) == 0
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 117
+  role: sympy_script
+  excerpt: assert sp.simplify(k_eff_req_Kturn - K_turn_sym * E_star / lambda_phys**2) == 0
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 118
+  role: sympy_script
+  excerpt: assert sp.simplify(k_eff_req_aint - 4 * K_turn_sym * E_star / a_int**2) == 0
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 140
+  role: sympy_script
+  excerpt: k_eff = sp.symbols("k_eff", positive=True, real=True)
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: Pi_k = sp.simplify(k_eff * lambda_phys**2 / (K_turn * E_star))
+- path: scripts/moving_throat_pde_stage253_physical_calibration_and_material_threshold_companion_from_the_stage252_export_and_cold_survival_compiler_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: assert sp.simplify(Pi_k_Kturn - k_eff / k_eff_req_Kturn) == 0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,196 @@
+schema_version: 1
+candidate_id: fit_stage230_stage228_rigid_slope_carry
+parameter_name: s_minus_den
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage230_stage228_rigid_slope_carry__phase_b__s_minus_den.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '230'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_230.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation computes the dynamic sign of the selected numerator/denominator split,
+    relates the classifier region to linewidth demand, and compares this with the static prefactor ceiling.}
+- path: paper/stages/stage_230.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 5
+  role: notes_stage
+  excerpt: '**Exact within the explicit finite-throat D/N selected-branch classifier closure built on the Stage-228 rigid
+    dynamic data and the Stage-229 selected-branch numerator/denominator classifier.**'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: '- **numerator-rigid** \((\pi_1=0)\), which is dynamically **denominator-carried**,'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: '- **denominator-rigid** \((\delta_1=0)\), which is dynamically **numerator-carried**,'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 21
+  role: notes_stage
+  excerpt: '> once the actual selected branch is an exact numerator/denominator **co-loading** product rather than one rigid
+    split, does the wall-like dynamic window ever become the first kill condition, or is the first real ceiling still the
+    transported static \(|\epsilon\Xi_1|\) budget?'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 40
+  role: notes_stage
+  excerpt: w_{\rm den}=\frac{1}{1+\mathcal R_{ND}},
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 42
+  role: notes_stage
+  excerpt: which split the selected branch into its numerator-carried and denominator-carried pieces;
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 70
+  role: notes_stage
+  excerpt: 'so the same-charge signal is carried entirely by the denominator:'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: So per unit \(\Xi_1\), the **denominator-carried** dynamic slopes are
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 87
+  role: notes_stage
+  excerpt: s_{+}^{(\rm den)}\approx -0.301516097158113,
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 89
+  role: notes_stage
+  excerpt: s_{-}^{(\rm den)}\approx +0.411024574532864.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 93
+  role: notes_stage
+  excerpt: The second is the **denominator-rigid** branch
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 151
+  role: notes_stage
+  excerpt: The selected branch has numerator-like and denominator-like log-slope contributions
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: L_{\rm num},\qquad L_{\rm den},
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 155
+  role: notes_stage
+  excerpt: \mathcal R_{ND}=\frac{L_{\rm num}}{L_{\rm den}}.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 160
+  role: notes_stage
+  excerpt: w_{\rm num}=\frac{L_{\rm num}}{L_{\rm num}+L_{\rm den}}
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: w_{\rm den}=\frac{L_{\rm den}}{L_{\rm num}+L_{\rm den}}
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 176
+  role: notes_stage
+  excerpt: \frac{\mathcal R_{ND}\,s_+^{(\rm num)}+s_+^{(\rm den)}}{1+\mathcal R_{ND}},
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 183
+  role: notes_stage
+  excerpt: \frac{\mathcal R_{ND}\,s_-^{(\rm num)}+s_-^{(\rm den)}}{1+\mathcal R_{ND}}.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 203
+  role: notes_stage
+  excerpt: s_+^{(\rm den)}<0.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 218
+  role: notes_stage
+  excerpt: s_-^{(\rm den)}>0.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 228
+  role: notes_stage
+  excerpt: \frac{s_-^{(\rm den)}}{-s_-^{(\rm num)}}
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 261
+  role: notes_stage
+  excerpt: That is already enough to show that the denominator-like part of the classifier map is dynamically safer than the
+    numerator-like part.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 267
+  role: notes_stage
+  excerpt: '### 4.1 Every denominator-like point has infinite nonempty dynamic ceiling'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 269
+  role: notes_stage
+  excerpt: Stage 229 already proved that denominator-like means
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 286
+  role: notes_stage
+  excerpt: 'So every denominator-like selected-branch point has the same split-sign dynamic response as the Stage-228 denominator-carried
+    rigid branch:'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 293
+  role: notes_stage
+  excerpt: In particular, the whole always-denominator regime from Stage 229,
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 331
+  role: notes_stage
+  excerpt: This is stronger than the Stage-229 denominator-like theorem.
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 390
+  role: notes_stage
+  excerpt: \frac{s_\pm^{(\rm num)}-s_\pm^{(\rm den)}}{(1+\mathcal R_{ND})^2}<0,
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 476
+  role: notes_stage
+  excerpt: '### 7.1 Pure denominator-carried limit \(\mathcal R_{ND}=0\)'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 490
+  role: notes_stage
+  excerpt: '### 7.2 Exact numerator/denominator balance \(\mathcal R_{ND}=1\)'
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 541
+  role: notes_stage
+  excerpt: 3. every denominator-like point therefore has infinite nonempty dynamic ceiling;
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 546
+  role: notes_stage
+  excerpt: the whole selected branch is denominator-like and hence has infinite nonempty dynamic ceiling on the whole stable
+    interval;
+- path: notes/stages/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.md
+  line: 576
+  role: notes_stage
+  excerpt: \mathcal R_*=\frac{s_-^{(\rm den)}}{-s_-^{(\rm num)}};
+- path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+  line: 2
+  role: sympy_script
+  excerpt: from typing import Sequence
+- path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 's_minus: float,'
+- path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: 'ell_minus: float,'
+- path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: 'if s_minus < 0:'
+- path: scripts/moving_throat_pde_stage230_selected_branch_classifier_to_dynamic_window_compiler_and_static_first_theorem_sympy_audit.py
+  line: 28
+  role: sympy_script
+  excerpt: finite_thresholds.append(ell_minus / (-s_minus))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

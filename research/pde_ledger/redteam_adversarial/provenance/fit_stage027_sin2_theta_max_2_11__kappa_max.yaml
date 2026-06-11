@@ -1,0 +1,193 @@
+schema_version: 1
+candidate_id: fit_stage027_sin2_theta_max_2_11
+parameter_name: kappa_max
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage027_sin2_theta_max_2_11__phase_b__kappa_max.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '027'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_027.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~027 checks whether the Stage~026 constant axial profile is too restrictive.  It introduces
+    the first nonconstant N/N profile, computes the profile-dependent D/N overlap \(\kappa(\theta)\), identifies an exact
+    blind-angle no-go, and derives the profile-dressed normalization gate.}
+- path: paper/stages/stage_027.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage027-kappa-theta}
+- path: paper/stages/stage_027.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \kappa(\theta)=\int_0^L\chi_\theta(s)f_0(s)\,ds
+- path: paper/stages/stage_027.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: =\kappa_0\cos\theta+\kappa_1\sin\theta},
+- path: paper/stages/stage_027.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage027-kappa0-kappa1}
+- path: paper/stages/stage_027.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \kappa_0=\frac{2\sqrt2}{\pi},
+- path: paper/stages/stage_027.tex
+  line: 52
+  role: paper_stage_tex
+  excerpt: \kappa_1=-\frac{4}{3\pi}}.
+- path: paper/stages/stage_027.tex
+  line: 56
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage027-kappa-explicit}
+- path: paper/stages/stage_027.tex
+  line: 57
+  role: paper_stage_tex
+  excerpt: \kappa(\theta)=\frac{2(-2\sin\theta+3\sqrt2\cos\theta)}{3\pi}.
+- path: paper/stages/stage_027.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: The maximum overlap magnitude is
+- path: paper/stages/stage_027.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage027-kappa-max}
+- path: paper/stages/stage_027.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: '|\kappa|_{\max}=\sqrt{\kappa_0^2+\kappa_1^2}=\frac{2\sqrt{22}}{3\pi}}.'
+- path: paper/stages/stage_027.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: \paragraph{3. Blind angle and max-coupling angle.}
+- path: paper/stages/stage_027.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: The blind angle satisfies \(\kappa(\theta)=0\), hence
+- path: paper/stages/stage_027.tex
+  line: 87
+  role: paper_stage_tex
+  excerpt: The positive-overlap maximum occurs at
+- path: paper/stages/stage_027.tex
+  line: 89
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage027-theta-max}
+- path: paper/stages/stage_027.tex
+  line: 91
+  role: paper_stage_tex
+  excerpt: \tan\theta_{\max}=\frac{\kappa_1}{\kappa_0}=-\frac{\sqrt2}{3},
+- path: paper/stages/stage_027.tex
+  line: 93
+  role: paper_stage_tex
+  excerpt: \sin^2\theta_{\max}=\frac{2}{11}}.
+- path: paper/stages/stage_027.tex
+  line: 114
+  role: paper_stage_tex
+  excerpt: 'where Stage~026''s required stiffness is evaluated with \(\kappa\to\kappa(\theta)\):'
+- path: paper/stages/stage_027.tex
+  line: 119
+  role: paper_stage_tex
+  excerpt: \frac{\lambda_B^2\kappa(\theta)^2}{\varpi^2}
+- path: paper/stages/stage_027.tex
+  line: 121
+  role: paper_stage_tex
+  excerpt: +\frac{\widehat m_{\rm rad}^{\,2}\kappa(\theta)^2(\Omega_U^2\lambda_W+\lambda_R\lambda_U)^2}{N_Q^{\rm target}\Delta(\theta)^2},
+- path: paper/stages/stage_027.tex
+  line: 125
+  role: paper_stage_tex
+  excerpt: \Delta(\theta)=\Omega_U^2\Omega_W^2-\lambda_R^2\kappa(\theta)^2,
+- path: paper/stages/stage_027.tex
+  line: 128
+  role: paper_stage_tex
+  excerpt: Q(\theta)=\lambda_U^2\Omega_W^2+2\lambda_U\lambda_W\lambda_R\kappa(\theta)^2+\lambda_W^2\Omega_U^2\kappa(\theta)^2.
+- path: paper/stages/stage_027.tex
+  line: 131
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~027 outputs \(\kappa(\theta)\), the blind-angle no-go \eqref{eq:app-stage027-blind-angle},
+    the max-coupling angle \eqref{eq:app-stage027-theta-max}, and the profile-dressed branch equation \eqref{eq:app-stage027-Kgate}.}
+- path: paper/stages/stage_027.tex
+  line: 135
+  role: paper_stage_tex
+  excerpt: \item The blind angle gives \(\kappa=0\), so every D/N-mediated outgoing numerator vanishes.
+- path: paper/stages/stage_027.tex
+  line: 136
+  role: paper_stage_tex
+  excerpt: \item The max-coupling angle follows from aligning \((\cos\theta,\sin\theta)\) with \((\kappa_0,\kappa_1)\).
+- path: paper/stages/stage_027.tex
+  line: 140
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~028 derives \(\theta\) dynamically rather than selecting it by hand.  The exact
+    value \(\sin^2\theta_{\max}=2/11\) is later echoed in the D/N branch constants used by the selected-mode formulas.}
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 7
+  role: notes_stage
+  excerpt: '`kappa_0 = 2 sqrt(2) / pi`.'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 18
+  role: notes_stage
+  excerpt: '`kappa(theta)`,'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 21
+  role: notes_stage
+  excerpt: '- and there is also an exact **max-coupling angle** where the wall/support overlap is stronger than on the constant
+    branch.'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 26
+  role: notes_stage
+  excerpt: '> which axial profile is selected by the real moving-throat eigenproblem, and does it lie near the Stage-026 branch,
+    the max-coupling branch, or the blind-angle no-go branch?'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 93
+  role: notes_stage
+  excerpt: '`kappa_0 = int_0^L ds u_0 f_0 = 2 sqrt(2) / pi`,'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 95
+  role: notes_stage
+  excerpt: '`kappa_1 = int_0^L ds u_1 f_0 = -4 / (3 pi)`.'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 99
+  role: notes_stage
+  excerpt: '`kappa(theta) = int_0^L ds chi_theta f_0`'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 100
+  role: notes_stage
+  excerpt: '`             = kappa_0 cos(theta) + kappa_1 sin(theta)`'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 107
+  role: notes_stage
+  excerpt: '`kappa(theta) = rho cos(theta - theta_max)`,'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 111
+  role: notes_stage
+  excerpt: '`rho = sqrt(kappa_0^2 + kappa_1^2) = 2 sqrt(22) / (3 pi)`.'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 113
+  role: notes_stage
+  excerpt: That means the family can reach a maximal overlap magnitude
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 115
+  role: notes_stage
+  excerpt: '`|kappa|_max = 2 sqrt(22) / (3 pi) ~= 0.994031`.'
+- path: notes/stages/moving_throat_pde_stage027_nonconstant_axial_family.md
+  line: 119
+  role: notes_stage
+  excerpt: '`kappa_0 = 2 sqrt(2) / pi ~= 0.900316`.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

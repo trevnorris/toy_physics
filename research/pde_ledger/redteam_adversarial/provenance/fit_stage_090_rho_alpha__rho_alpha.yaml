@@ -1,0 +1,103 @@
+schema_version: 1
+candidate_id: fit_stage_090_rho_alpha
+parameter_name: rho_alpha
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_090_rho_alpha__phase_b__rho_alpha.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 090
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_090.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \item the support theorem depends only on \(\rho_\alpha=\alpha_{\rm req}/\alpha_{\rm mix}\);
+- path: paper/stages/stage_090.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \item the natural contact-plus-pole reading gives \(\rho_\alpha=4/3\);
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 17
+  role: notes_stage
+  excerpt: '`rho_alpha = 4/3,`'
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 33
+  role: notes_stage
+  excerpt: 3. the support theorem depends only on `rho_alpha = alpha_req/alpha_mix`;
+- path: notes/stages/moving_throat_pde_stage090_updated_reduced_status.md
+  line: 36
+  role: notes_stage
+  excerpt: '`rho_alpha = 4/3`;'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: rho_alpha = 4/3,
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: '- rho_suff^(chi) is carried from the Stage 086 support window audit.'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: rho_alpha = sp.simplify(1 / c_contact)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: print("rho_alpha =", rho_alpha)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: expect_zero("rho_alpha - 4/3", rho_alpha - sp.Rational(4, 3))
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: expect_zero("zeta_req - (rho_alpha - 1)", zeta_req - (rho_alpha - 1))
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: '# - rho_suff_chi from Stage 086'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 71
+  role: sympy_script
+  excerpt: rho_suff_chi = sp.Float("3.46622291347846", 30)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: delta_rho_suff = sp.N(rho_suff_chi - rho_alpha, 25)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: print("rho_suff^(chi) =", sp.N(rho_suff_chi, 25))
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("rho_suff^(chi) - rho_alpha =", delta_rho_suff)
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 89
+  role: sympy_script
+  excerpt: '"rho_alpha lies inside the exact Family-1 success region",'
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: bool(rho_alpha < rho_suff_chi),
+- path: scripts/moving_throat_pde_stage090_updated_reduced_status_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: print("  rho_alpha = 4/3 lies strictly inside the success region,")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

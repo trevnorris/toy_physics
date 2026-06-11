@@ -1,0 +1,100 @@
+schema_version: 1
+candidate_id: fit_stage099_conservative_split_exact
+parameter_name: Yhat_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage099_conservative_split_exact__phase_b__yhat_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 099
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_099.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 7
+  role: notes_stage
+  excerpt: After the grouped-`P2` conservative closure, the geometry-lane check, the explicit Family-1 support/source analysis,
+    and the passive/outgoing quadrupole reduction, the remaining theorem gap is no longer diffuse.
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 18
+  role: notes_stage
+  excerpt: 2. The conservative quadrupole module is exactly
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 20
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 43
+  role: notes_stage
+  excerpt: '`Kbar_Q^cons(omega) = Kbar_0 [ 3/4 + (1/4)/(1 - omega^2/Omega_Q^2) ]`.'
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 71
+  role: notes_stage
+  excerpt: It only needs to determine the actual radiative normalization of the passive/outgoing grouped-`P2` quadrupole branch.
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 87
+  role: notes_stage
+  excerpt: '> the actual isotropic grouped-`P2` one-pole branch is conservatively clean, the explicit Family-1 support/source
+    side is already sufficient, and the only remaining reduced theorem gap is the single passive/outgoing quadrupole normalization
+    defect `N_Q - 1`.'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 17
+  role: sympy_script
+  excerpt: This stage exercises the static-slot value and pole residue of Yhat_Q^cons
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Yhat_Q_cons = sp.simplify(sp.Rational(3, 4) + sp.Rational(1, 4) / (1 - omega**2 / Omega_Q**2))
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 47
+  role: sympy_script
+  excerpt: print("Yhat_Q^cons(omega) =", Yhat_Q_cons)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: '# Static slot: Yhat_Q^cons(omega=0) = 1'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: expect_zero("Yhat_Q^cons static slot equals 1",
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: Yhat_Q_cons.subs(omega, 0) - 1)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: '# Pole structure: residue of Yhat_Q^cons at omega = Omega_Q is -Omega_Q/8.'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: expect_zero("Yhat_Q^cons pole residue at omega=Omega_Q is -Omega_Q/8",
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 57
+  role: sympy_script
+  excerpt: sp.residue(Yhat_Q_cons, omega, Omega_Q) - (-Omega_Q / 8))
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: '# Conservative quadrupole structural relations (forced by Yhat_Q^cons):'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

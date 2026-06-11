@@ -1,0 +1,171 @@
+schema_version: 1
+candidate_id: fit_stage247_lambda_L_backsolve
+parameter_name: lambda_L
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage247_lambda_l_backsolve__phase_b__lambda_l.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '247'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_247.tex
+  line: 58
+  role: paper_stage_tex
+  excerpt: \mathfrak L(r):=\Lambda(r)\varrho(r),
+- path: paper/stages/stage_247.tex
+  line: 60
+  role: paper_stage_tex
+  excerpt: S_{\rm leak}=\frac{8\sqrt2\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}\mathfrak L,
+- path: paper/stages/stage_247.tex
+  line: 66
+  role: paper_stage_tex
+  excerpt: \frac{512\eta_{\rm leak}^{2}\mu_wq\rho_0}{\pi^4\lambda^2}\mathfrak L^2,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 191
+  role: notes_stage
+  excerpt: \mathfrak L(r):=\Lambda(r)\varrho(r).
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 198
+  role: notes_stage
+  excerpt: \frac{8\sqrt2\,\eta_{\rm leak}\mu_w\rho_0}{\pi^{5/2}\lambda^3}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 206
+  role: notes_stage
+  excerpt: \frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 296
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 298
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 308
+  role: notes_stage
+  excerpt: '- `\lambda_L\ge 0` converts the open-subsystem leakage source into stationary barrier units,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 309
+  role: notes_stage
+  excerpt: '- `\lambda_W\ge 0` converts the reduced Session-I work scalar into stationary barrier units,'
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 320
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 322
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 438
+  role: notes_stage
+  excerpt: \frac{512\,\eta_{\rm leak}^2\mu_w q\rho_0}{\pi^4\lambda^2}
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 443
+  role: notes_stage
+  excerpt: \lambda=1,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 456
+  role: notes_stage
+  excerpt: \mathfrak L(r_{\rm soft})=\Lambda(r_{\rm soft})\varrho(r_{\rm soft})
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 491
+  role: notes_stage
+  excerpt: \lambda_W=1.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 495
+  role: notes_stage
+  excerpt: \lambda_L,
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 500
+  role: notes_stage
+  excerpt: \lambda_L
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 518
+  role: notes_stage
+  excerpt: \lambda_L=0.26971918.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 571
+  role: notes_stage
+  excerpt: \lambda_L=0.26971918.
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 604
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 606
+  role: notes_stage
+  excerpt: \lambda_W \mathcal W_w^{\rm sess}(r)
+- path: notes/stages/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.md
+  line: 618
+  role: notes_stage
+  excerpt: \lambda_L S_{\rm leak}+\lambda_W\mathcal W_w^{\rm sess}+\Delta E_{UV}+\mathcal M_\sigma,
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: 'Lvar = sp.symbols("Lvar", positive=True, real=True)  # shorthand for Lambda(r)*varrho(r)'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 173
+  role: sympy_script
+  excerpt: lambda_L, lambda_W = sp.symbols("lambda_L lambda_W", nonnegative=True, real=True)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 175
+  role: sympy_script
+  excerpt: V_eff = V_short - lambda_L * S_leak - lambda_W * W_sess - E_UV - M_sigma
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 177
+  role: sympy_script
+  excerpt: lowering_expected = lambda_L * S_leak + lambda_W * W_sess + E_UV + M_sigma
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 238
+  role: sympy_script
+  excerpt: lambda_L_soft = sp.N((Vshort_num - Wsess_obs - UVdrop_obs - M_sigma_num - Veff_obs) / S_soft, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 243
+  role: sympy_script
+  excerpt: assert abs(float(lambda_L_soft) - 0.26971918) < 1e-6
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: lambda_L_paper = sp.Float("0.26971918")
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 246
+  role: sympy_script
+  excerpt: Veff_session = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 248
+  role: sympy_script
+  excerpt: '# F5: forward benchmark decomposition with the paper''s lambda_L (falsifiable closure).'
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: Veff_forward = sp.N(Vshort_num - lambda_L_paper * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 251
+  role: sympy_script
+  excerpt: Vrebuild_soft = sp.N(Vshort_num - lambda_L_soft * S_soft - Wsess_obs - UVdrop_obs - M_sigma_num, 16)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 263
+  role: sympy_script
+  excerpt: print("lambda_L(session)     =", lambda_L_soft)
+- path: scripts/moving_throat_pde_stage247_relaxed_stationary_barrier_compiler_from_one_port_short_range_leakage_uv_and_compensated_source_packets_sympy_audit.py
+  line: 268
+  role: sympy_script
+  excerpt: assert lambda_L_soft > 0
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

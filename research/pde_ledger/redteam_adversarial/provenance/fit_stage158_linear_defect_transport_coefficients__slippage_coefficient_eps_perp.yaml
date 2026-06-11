@@ -1,0 +1,78 @@
+schema_version: 1
+candidate_id: fit_stage158_linear_defect_transport_coefficients
+parameter_name: slippage_coefficient_eps_perp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage158_linear_defect_transport_coefficients__phase_b__slippage_coefficient_eps_perp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '158'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_158.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Co-evolving core--mouth transport} block.  The
+    computation isolates the transport of deviations into \(\Delta_Q\), D/N similarity slippage, and the final normal coordinate
+    \(\delta_\perp\).}
+- path: paper/stages/stage_158.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: '\item Tangent motion on the parent compensation family giving \(\delta_\perp=0\) is verified downstream: see \ref{stage:162}
+    and \ref{stage:163}.'
+- path: notes/stages/moving_throat_pde_stage158_linear_defect_transport.md
+  line: 151
+  role: notes_stage
+  excerpt: with numerical coefficient
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: eps, s, b, a0, a5 = sp.symbols("eps s b a0 a5", real=True)
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: S = 1 + eps * s
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: beta = 1 + eps * b
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: Sigma_0 = eps * a0
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: Sigma_5 = eps * a5
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 90
+  role: sympy_script
+  excerpt: chi_lin = sp.expand(sp.series(chi, eps, 0, 2).removeO())
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 91
+  role: sympy_script
+  excerpt: chi_expected = 1 + eps * (5 * b + a0 / 3 + 9 * a5)
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '# 5. Numerical coefficients at the Stage 156 point'
+- path: scripts/moving_throat_pde_stage158_linear_defect_transport_sympy_audit.py
+  line: 97
+  role: sympy_script
+  excerpt: banner("Numerical coefficients at the renormalized canonical point")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

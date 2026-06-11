@@ -1,0 +1,117 @@
+schema_version: 1
+candidate_id: fit_stage125_lower_branch_unique
+parameter_name: branch_sign
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage125_lower_branch_unique__phase_b__branch_sign.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '125'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_125.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the lower compensated core branch, positivity of the local mouth source,
+    and the explicit GNLS/localized-Maxwell boundary-layer reduction.  It does not change the parent action or the grouped-lane
+    ontology; it works inside the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_125.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Positive normalized sources satisfy \(0\le\mathfrak g[\sigma]\le1\), ruling out the upper compensated branch.
+- path: paper/stages/stage_125.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check positivity of the mouth source; do not use signed fitting to reach the upper branch.
+- path: paper/stages/stage_125.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: \item Check the Family--1 compensation point against the lower branch, not the singular equal-normalized branch.
+- path: paper/stages/stage_125.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{This stage feeds Stages 133--145 and the coupled mouth fixed-point law.  When cited
+    downstream, the status tag above must be carried with the result; the card is a derivation ledger entry, not an unconditional
+    actual-branch theorem.}
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 10
+  role: notes_stage
+  excerpt: by an explicit **localized mouth-source law** and determine which compensation branch is physically admissible.
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 30
+  role: notes_stage
+  excerpt: interval, not arbitrary sign-changing, multimode, or nonlocalized mouth data.
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 32
+  role: notes_stage
+  excerpt: After normalizing to the point-source branch \(\sigma(z)=\delta(z)\), the mouth-bias factor becomes
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 57
+  role: notes_stage
+  excerpt: This immediately selects the physically admissible compensation branch.
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 59
+  role: notes_stage
+  excerpt: On the explicit Family-1 branch, the carried branch values are
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 70
+  role: notes_stage
+  excerpt: \text{the upper compensated branch is impossible for any positive localized source law.}
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 79
+  role: notes_stage
+  excerpt: \text{within this positive localized-source setup, the lower compensated branch is the unique physically admissible
+    compensated Family-1 branch.}
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 87
+  role: notes_stage
+  excerpt: 'The outlet-core ambiguity is no longer “which branch do we choose?” Within a localized positive source model on
+    the first D/N throat interval:'
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 89
+  role: notes_stage
+  excerpt: '- the upper compensated branch is ruled out,'
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 90
+  role: notes_stage
+  excerpt: '- the lower compensated branch is the only canonical candidate.'
+- path: notes/stages/moving_throat_pde_stage125_positive_source_theorem.md
+  line: 92
+  role: notes_stage
+  excerpt: So the remaining question is not branch sign, but the **shape** of the positive source profile \(\sigma(z)\).
+- path: scripts/moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: expect_zero("lower branch balance relation", 1 + r**2 - 4 * (gminus - r) ** 2)
+- path: scripts/moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
+  line: 56
+  role: sympy_script
+  excerpt: expect_zero("upper branch balance relation", 1 + r**2 - 4 * (gplus - r) ** 2)
+- path: scripts/moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: print("\nExplicit Family-1 compensated branches:")
+- path: scripts/moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: '# NOT wrapped in abs(): a small NEGATIVE moment (a sign error in the closed form)'
+- path: scripts/moving_throat_pde_stage125_positive_source_theorem_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: print("the upper compensated branch is impossible and the lower branch is unique.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

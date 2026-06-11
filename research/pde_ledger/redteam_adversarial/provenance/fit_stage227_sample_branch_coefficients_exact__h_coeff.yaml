@@ -1,0 +1,83 @@
+schema_version: 1
+candidate_id: fit_stage227_sample_branch_coefficients_exact
+parameter_name: H_coeff
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage227_sample_branch_coefficients_exact__phase_b__h_coeff.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '227'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.md
+  line: 256
+  role: notes_stage
+  excerpt: '### 3.1 Exact sample-branch coefficients'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 'def coeff_vector(expr: sp.Expr, vars_: list[sp.Symbol]) -> sp.Matrix:'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 16
+  role: sympy_script
+  excerpt: return sp.Matrix([sp.N(expr.coeff(v), 40) for v in vars_])
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: '[sp.simplify(D01_mixed.coeff(v)) for v in mixed_vars],'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: '[sp.simplify(D21_mixed.coeff(v)) for v in mixed_vars],'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 145
+  role: sympy_script
+  excerpt: '[sp.simplify(D41_mixed.coeff(v)) for v in mixed_vars],'
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 206
+  role: sympy_script
+  excerpt: i_row = sp.Matrix([[sp.simplify(i_expr.coeff(v)) for v in mixed_vars]])
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 207
+  role: sympy_script
+  excerpt: h_row = sp.Matrix([[sp.simplify(h_expr.coeff(v)) for v in mixed_vars]])
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 208
+  role: sympy_script
+  excerpt: m_row = sp.Matrix([[sp.simplify(m_expr.coeff(v)) for v in mixed_vars]])
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 244
+  role: sympy_script
+  excerpt: Xi_coeff = coeff_vector(Xi_transfer, mixed_vars)
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 246
+  role: sympy_script
+  excerpt: Xi_vi = float(sp.N((Xi_coeff.T * vi)[0], 18))
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 247
+  role: sympy_script
+  excerpt: Xi_vh = float(sp.N((Xi_coeff.T * vh)[0], 18))
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 248
+  role: sympy_script
+  excerpt: Xi_vm = float(sp.N((Xi_coeff.T * vm)[0], 18))
+- path: scripts/moving_throat_pde_stage227_pure_transfer_load_factor_outgoing_rigidity_sieve_and_first_co_loading_no_go_sympy_audit.py
+  line: 264
+  role: sympy_script
+  excerpt: sigma_transfer = float(sp.N(sp.sqrt((Xi_coeff.T * proj_transfer * Xi_coeff)[0]), 20))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

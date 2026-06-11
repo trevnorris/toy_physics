@@ -1,0 +1,51 @@
+schema_version: 1
+candidate_id: fit_stage103_split_exact_status
+parameter_name: conservative_split_3_4_1_4
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage103_split_exact_status__phase_b__conservative_split_3_4_1_4.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '103'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_103.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the cleaned conservative isotropic branch, the source-map factor \(\widehat
+    m_0\), the conservative normalization \(N_Q\), and the outgoing \(l=2\) DtN coefficient \(\chi_Q\).  It does not change
+    the parent action or the grouped-lane ontology; it works inside the declared reduced branch and tests the next algebraic
+    or realization condition.}
+- path: paper/stages/stage_103.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check the product \(\widehat m_0^{\,2}\chi_QN_Q\) keeps source, conservative, and outgoing factors separate.
+- path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  line: 7
+  role: notes_stage
+  excerpt: '- the actual isotropic grouped-`P2` conservative branch is geometry-clean through `O(omega^4)`,'
+- path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  line: 8
+  role: notes_stage
+  excerpt: '- the conservative quadrupole split is exactly `3/4 + 1/4`,'
+- path: notes/stages/moving_throat_pde_stage103_reduced_25pn_conditional_closure.md
+  line: 29
+  role: notes_stage
+  excerpt: '> compute the leading outgoing `omega^5` normalization of the actual passive/outgoing grouped-`P2` quadrupole
+    branch and determine whether it equals the canonical compact outgoing value.'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

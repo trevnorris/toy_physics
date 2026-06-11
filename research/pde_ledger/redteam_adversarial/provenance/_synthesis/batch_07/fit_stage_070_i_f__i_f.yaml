@@ -1,0 +1,25 @@
+candidate_id: fit_stage_070_i_f
+parameter_name: I_f
+origin_claims:
+  - parameter: I_f
+    introduced_at_stage: 065
+    introduced_at_line: 73
+    citation:
+      path: notes/stages/moving_throat_pde_stage065_thin_wall_confinement.md
+      line: 73
+      excerpt: "`I_f := int dxi f'(xi)^2,`"
+constraints:
+  - parameter: I_f
+    constraint_kind: internal_consistency
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+      line: 91
+      excerpt: "`I_f := int dxi f'(xi)^2,`"
+downstream_dependents: [71, 73, 74]
+provenance_findings:
+  - type: provenance_gap
+    severity: low
+    summary: "I_f is a defined dimensionless wall-shape moment (integral of f'(xi)^2), not a fixed scalar — its value depends on the chosen wall profile f, which stage 070 leaves generic (numerically pinned only downstream when the canonical tanh wall is chosen at stage 071/073). It is a derived integral object, not a fitted number, and carries no numeric value at stage 070."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md, line: 89, excerpt: "Define the dimensionless wall-shape moments" }
+      - { path: paper/stages/stage_070.tex, line: 51, excerpt: "\\stagefield{Downstream use}{Stage~071 evaluates these for the canonical tanh wall; Stages~073--074 fix the Family--1 geometry and healing lock.}" }

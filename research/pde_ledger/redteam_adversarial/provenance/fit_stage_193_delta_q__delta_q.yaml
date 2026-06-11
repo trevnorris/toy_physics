@@ -1,0 +1,138 @@
+schema_version: 1
+candidate_id: fit_stage_193_delta_q
+parameter_name: Delta_Q
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_193_delta_q__phase_b__delta_q.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '193'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_193.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the isotropic grouped-\(P_2\) one-pole front end, the compact outgoing \(l=2\)
+    DtN fingerprint, and the natural point-particle source-map reduction.  It is the Packet-A branch-side finish line.}
+- path: paper/stages/stage_193.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation states the exact isotropic target surface, attaches the outgoing
+    \(l=2\) fingerprint and source-map factor, proves higher odd terms are irrelevant at the current order, and collapses
+    Packet A to \(\Delta_Q=\chi_Q-1\).}
+- path: paper/stages/stage_193.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check the isotropic one-pole target surface before using \(\Delta_Q=\chi_Q-1\).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 25
+  role: notes_stage
+  excerpt: \Delta_{\rm branch}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 27
+  role: notes_stage
+  excerpt: (a_2,b_2,a_4,b_4,a_{P_0},b_{P_0},\Delta_{\rm pole},\Delta_{\rm norm}).
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 45
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=\bar\nu_4-4\bar\nu_2^{\,2}=0,
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 161
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}:=\bar\nu_4-4\bar\nu_2^{\,2}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 173
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 209
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 337
+  role: notes_stage
+  excerpt: \Delta_{\rm pole}=0.
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 358
+  role: notes_stage
+  excerpt: \delta\mathcal D_{2,\rm geom}
+- path: notes/stages/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface.md
+  line: 395
+  role: notes_stage
+  excerpt: \(\Delta_{\rm pole}=-(3D_2^2+D_0D_4)/D_0^2\),
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 86
+  role: sympy_script
+  excerpt: Delta_pole = sp.simplify(nu4_common - 4 * nu2_common**2)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 92
+  role: sympy_script
+  excerpt: print("Delta_pole =")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 93
+  role: sympy_script
+  excerpt: sp.pprint(Delta_pole)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 95
+  role: sympy_script
+  excerpt: '"Delta_pole + (3 D2^2 + D0 D4)/D0^2",'
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 96
+  role: sympy_script
+  excerpt: Delta_pole + (3 * D2**2 + D0 * D4) / D0**2,
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: sp.simplify(Delta_pole.subs(D4, D4_onepole)),
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: Delta_geom = sp.simplify(Deff - D2blk * I3)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 149
+  role: sympy_script
+  excerpt: print("Delta_geom = D_eff - D2 I =")
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: sp.pprint(Delta_geom)
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 168
+  role: sympy_script
+  excerpt: print("      Delta_pole = -(3 D2^2 + D0 D4)/D0^2,"
+- path: scripts/moving_throat_pde_stage193_isotropic_grouped_p2_target_surface_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: print("      a2 = b2 = a4 = b4 = 0,   Delta_pole = 0,"
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: paper/stages/stage_193.tex
+    attempted_sources:
+    - paper/stages/stage_193.tex
+    - research/pde_ledger/paper/stages/stage_193.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: paper/stages/stage_193.tex
+    attempted_sources:
+    - paper/stages/stage_193.tex
+    - research/pde_ledger/paper/stages/stage_193.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

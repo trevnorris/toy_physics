@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage251_session4_rate_constants
+parameter_name: gamma_crit
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage251_session4_rate_constants__phase_b__gamma_crit.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '251'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_251.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: Stage 251 replaces the phenomenological \(\gamma_{\rm tot}\dot V\) envelope law by the first microscopic odd export
+    operator seen by the active dressing leg.  Project
+- path: paper/stages/stage_251.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \Pi_0^{\rm out}(\omega)=i\gamma_1\omega+O(\omega^3).
+- path: paper/stages/stage_251.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage251-gamma30}
+- path: paper/stages/stage_251.tex
+  line: 31
+  role: paper_stage_tex
+  excerpt: \Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+- path: paper/stages/stage_251.tex
+  line: 33
+  role: paper_stage_tex
+  excerpt: \Gamma_3=\Pi_{V0}^{2}\Gamma_{3,0}.
+- path: paper/stages/stage_251.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage251-gamma5}
+- path: paper/stages/stage_251.tex
+  line: 38
+  role: paper_stage_tex
+  excerpt: \Gamma_{5,-}=\frac{a^5}{27c_s^5}P_{0,-},
+- path: paper/stages/stage_251.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: \Gamma_5=\Pi_{V-}^{2}\Gamma_{5,-}.
+- path: paper/stages/stage_251.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \Gamma_3V^{(3)}-
+- path: paper/stages/stage_251.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: \Gamma_5V^{(5)}=
+- path: paper/stages/stage_251.tex
+  line: 59
+  role: paper_stage_tex
+  excerpt: \mathcal D_V(s)=\mu_\eta s^2-\kappa_V+\Gamma_3s^3+\Gamma_5s^5.
+- path: paper/stages/stage_251.tex
+  line: 64
+  role: paper_stage_tex
+  excerpt: \dot V(\Gamma_3V^{(3)}-\Gamma_5V^{(5)})
+- path: paper/stages/stage_251.tex
+  line: 68
+  role: paper_stage_tex
+  excerpt: \Gamma_3\ddot V^{2}
+- path: paper/stages/stage_251.tex
+  line: 70
+  role: paper_stage_tex
+  excerpt: \Gamma_5\dddot V^{2},
+- path: paper/stages/stage_251.tex
+  line: 75
+  role: paper_stage_tex
+  excerpt: \mathcal P_{\rm exp}=\Gamma_3\ddot V^{2}+\Gamma_5\dddot V^{2}\ge0.
+- path: paper/stages/stage_251.tex
+  line: 81
+  role: paper_stage_tex
+  excerpt: F(s)=\Gamma_5s^5+\Gamma_3s^3+\mu_\eta s^2-\kappa_V.
+- path: paper/stages/stage_251.tex
+  line: 83
+  role: paper_stage_tex
+  excerpt: For positive \((\Gamma_3,\Gamma_5,\mu_\eta,\kappa_V)\), \(F(0)<0\), \(F(s)\to+\infty\), and \(F'(s)>0\) for \(s>0\).  Therefore
+    there is exactly one positive growth root.  The small-kernel slowdown is
+- path: paper/stages/stage_251.tex
+  line: 86
+  role: paper_stage_tex
+  excerpt: s_+=s_0-\frac{\Gamma_3s_0^2+\Gamma_5s_0^4}{2\mu_\eta}+O(\Gamma^2),
+- path: paper/stages/stage_251.tex
+  line: 95
+  role: paper_stage_tex
+  excerpt: \widehat\Gamma_3+0.3013336471\widehat\Gamma_5\ge 289.61004918.
+- path: paper/stages/stage_251.tex
+  line: 97
+  role: paper_stage_tex
+  excerpt: This is the exact event-level replacement for the old \(\gamma_{\rm safe}\) inequality.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 22
+  role: notes_stage
+  excerpt: \gamma_{\rm tot}\,\dot V
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 30
+  role: notes_stage
+  excerpt: Stage 250 turned the relaxed branch into a Goldilocks-window criterion,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 36
+  role: notes_stage
+  excerpt: \gamma_{\rm tot}=\gamma_{\rm vac}+\gamma_{\rm lattice},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 38
+  role: notes_stage
+  excerpt: t_{\rm collapse}^{\rm damped}=\frac{1}{\gamma_{\rm crit}-\gamma_{\rm tot}}
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 39
+  role: notes_stage
+  excerpt: \ \ (\gamma_{\rm tot}<\gamma_{\rm crit}).
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: \Gamma_5=\Pi_{V-}^2\,\Gamma_{5,-},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 56
+  role: notes_stage
+  excerpt: \Gamma_{5,-}=\frac{a^5}{27c_s^5}P_{0,-},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 60
+  role: notes_stage
+  excerpt: \Gamma_3=\Pi_{V0}^2\,\Gamma_{3,0},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 62
+  role: notes_stage
+  excerpt: \Gamma_{3,0}=\gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2},
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 64
+  role: notes_stage
+  excerpt: 4. the resulting microscopic collapse law is not Ohmic and does **not** admit a finite analogue of the Session-IV
+    unconditional threshold `\gamma_{\rm crit}`,
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 65
+  role: notes_stage
+  excerpt: 5. but it does give an exact event-level safe surface replacing `\gamma_{\rm safe}`.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 83
+  role: notes_stage
+  excerpt: So Stage 251 is not a speculative add-on. It is the direct derivation-stack replacement for the Session-IV `\gamma_{\rm
+    tot}` closure.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 100
+  role: notes_stage
+  excerpt: '- whether the finite Session-IV `\gamma_{\rm crit}` survives microscopic replacement,'
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 128
+  role: notes_stage
+  excerpt: \Pi_0^{\rm out}(\omega)=i\gamma_1\omega+O(\omega^3).
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 151
+  role: notes_stage
+  excerpt: -i\Gamma_{3,0}\,\omega^3+O(\omega^5),
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 156
+  role: notes_stage
+  excerpt: \Gamma_{3,0}
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 158
+  role: notes_stage
+  excerpt: \gamma_1\eta_0^2\frac{\Omega_{U,0}^4}{\Delta_0^2}.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 164
+  role: notes_stage
+  excerpt: \Gamma_3=\Pi_{V0}^2\,\Gamma_{3,0}.
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 174
+  role: notes_stage
+  excerpt: -i\Gamma_{5,-}\,\omega^5+O(\omega^7),
+- path: notes/stages/moving_throat_pde_stage251_microscopic_damping_export_kernel_replacing_the_phenomenological_v_leg_envelope_law_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: \Gamma_{5,-}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

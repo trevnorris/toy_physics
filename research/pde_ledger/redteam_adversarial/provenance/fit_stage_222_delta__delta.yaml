@@ -1,0 +1,212 @@
+schema_version: 1
+candidate_id: fit_stage_222_delta
+parameter_name: Delta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_222_delta__phase_b__delta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '222'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 46
+  role: notes_stage
+  excerpt: alive beyond the strict far-field brane reduction, so the linear same-charge dynamic corridor still has to live
+    in the mixed sector rather than in pure brane Maxwell shaping.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: \frac{A_{qq,*}}{\delta-i\gamma_*},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 54
+  role: notes_stage
+  excerpt: \delta=\omega-\omega_*,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 107
+  role: notes_stage
+  excerpt: \Delta(\omega)=A(\omega)W(\omega)-R^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 113
+  role: notes_stage
+  excerpt: D(\omega)=K_B(\omega)-\frac{Q(\omega)}{\Delta(\omega)}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 118
+  role: notes_stage
+  excerpt: \Delta_0>0,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: \Delta_0=\Omega_U^2\Omega_W^2-R^2,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 126
+  role: notes_stage
+  excerpt: D_0=K-\frac{C^2}{\varpi^2}-\frac{Q_0}{\Delta_0}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 153
+  role: notes_stage
+  excerpt: D(\omega)=\frac{F(\omega^2)}{(\varpi^2-\omega^2)\,\Delta(\omega)}.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 169
+  role: notes_stage
+  excerpt: \Delta(\omega_*)\neq 0,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 180
+  role: notes_stage
+  excerpt: N(\omega)=\frac{P(\omega)^2}{\Delta(\omega)^2},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: \frac{1/D_0'(\omega_*)}{\delta-i\gamma_*},
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 244
+  role: notes_stage
+  excerpt: Let \(\Delta V_{\rm req}(x)\) be the local barrier reduction required at radius \(x\), and impose the same low-loss
+    condition as in Stage 221,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 259
+  role: notes_stage
+  excerpt: \Delta V_{\rm req}(x).
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 266
+  role: notes_stage
+  excerpt: 2\,\Delta V_{\rm req}(x)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 276
+  role: notes_stage
+  excerpt: 2\,\Delta V_{\rm req}(x)
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 307
+  role: notes_stage
+  excerpt: \Delta_0\approx 1.90933940817883,
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 348
+  role: notes_stage
+  excerpt: '## 7. Comparison to the illustrative barrier benchmark'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 350
+  role: notes_stage
+  excerpt: 'Carry forward the same illustrative reduced barrier benchmark at \(x=1\):'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 356
+  role: notes_stage
+  excerpt: \Delta V_{\rm req}(1)=V_{\rm known}(1)-\epsilon\approx 1.081909222592.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 376
+  role: notes_stage
+  excerpt: '- **fails** the \(10\%\)-loss benchmark,'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 377
+  role: notes_stage
+  excerpt: '- but **passes** the \(30\%\)-loss benchmark.'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 391
+  role: notes_stage
+  excerpt: 'Now scan the outgoing-leg coupling \(\lambda_W\) while keeping all other sample parameters fixed. The resulting
+    static prefactor \(P_0\) and upper-wall residue/linewidth figure \(\mathcal R_{Q,*}\) are:'
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 434
+  role: notes_stage
+  excerpt: 1. **Actual overlap extraction.** The sample couplings are illustrative. The real moving-throat PDE must determine
+    the branch-level overlap data \(\lambda_B,\lambda_U,\lambda_W,\lambda_R\) on the actual branch.
+- path: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+  line: 436
+  role: notes_stage
+  excerpt: 3. **Actual barrier data.** The benchmark \(\Delta V_{\rm req}(1)\) used here is illustrative. The true local barrier
+    requirement must be pulled back from the actual same-charge branch.
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: Delta = A * W - R**2
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: D = sp.together(K_B - Q / Delta)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: print('Delta(omega) =', Delta)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 98
+  role: sympy_script
+  excerpt: D - F_y.subs(y, omega**2) / ((varpi**2 - omega**2) * Delta)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 105
+  role: sympy_script
+  excerpt: print('with D(omega) = F(omega^2)/((varpi^2-omega^2) Delta(omega))')
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: eta, x, DeltaV_req = sp.symbols('eta x DeltaV_req', positive=True)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: 2 * DeltaV_req * (1 + eta**2) * x**6 / eta
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 150
+  role: sympy_script
+  excerpt: Delta0 = sp.simplify(Delta.subs(omega, 0))
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: N_omega = sp.simplify((A * G_W + R * G_U) ** 2 / Delta**2)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 162
+  role: sympy_script
+  excerpt: print('Delta0 =', sp.N(Delta0.subs(numerical_slice), 18))
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 167
+  role: sympy_script
+  excerpt: assert_close(float(sp.N(Delta0.subs(numerical_slice), 30)), 1.9093394081788311)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 174
+  role: sympy_script
+  excerpt: Delta_y = sp.expand(((Omega_U**2 - y) * (Omega_W**2 - y) - R**2).subs(numerical_slice))
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 178
+  role: sympy_script
+  excerpt: internal_uncoupled = positive_frequency_roots(Delta_y, y)
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 215
+  role: sympy_script
+  excerpt: DeltaV_req_num = V_known - epsilon
+- path: scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+  line: 217
+  role: sympy_script
+  excerpt: threshold_eta_01 = float(sp.N((2 * DeltaV_req_num * (1 + sp.Rational(1, 10) ** 2) / sp.Rational(1, 10)), 30))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - paper/stages/stage_222.tex
+    - research/pde_ledger/paper/stages/stage_222.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.md
+    - paper/stages/stage_222.tex
+    - research/pde_ledger/paper/stages/stage_222.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

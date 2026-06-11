@@ -1,0 +1,82 @@
+schema_version: 1
+candidate_id: fit_stage_096_yhat_cons
+parameter_name: Yhat_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_096_yhat_cons__phase_b__yhat_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 096
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_096.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: paper/stages/stage_096.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: The natural isotropic branch is conservatively clean; only genuine symmetry breaking or a second dynamic \(l=2\)
+    geometry pole can reopen the issue.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 14
+  role: notes_stage
+  excerpt: obstruction formula to the clean `3/4 + 1/4` conservative module.
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 37
+  role: notes_stage
+  excerpt: '## 2. Consequence for the conservative quadrupole module'
+- path: notes/stages/moving_throat_pde_stage096_geometry_lane_check_verdict.md
+  line: 47
+  role: notes_stage
+  excerpt: '`Yhat_Q^cons(omega) = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2)`.'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 3/4 + 1/4 conservative quadrupole module;
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: 'Constant provenance:'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 106
+  role: sympy_script
+  excerpt: Yhat_cons = sp.simplify(c_geom + c_pole / (1 - omega**2 / Omega_Q**2))
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 107
+  role: sympy_script
+  excerpt: Yhat_expected = sp.simplify(
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 116
+  role: sympy_script
+  excerpt: print("Yhat_Q^cons(omega) =", Yhat_cons)
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: '"Yhat_Q^cons - [3/4 + (1/4)/(1 - omega^2/Omega_Q^2)]",'
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: Yhat_cons - Yhat_expected,
+- path: scripts/moving_throat_pde_stage096_geometry_lane_check_verdict_sympy_audit.py
+  line: 134
+  role: sympy_script
+  excerpt: print("  Yhat_Q^cons = 3/4 + (1/4)/(1 - omega^2/Omega_Q^2),")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

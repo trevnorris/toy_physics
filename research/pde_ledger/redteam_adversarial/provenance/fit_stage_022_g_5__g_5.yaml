@@ -1,0 +1,87 @@
+schema_version: 1
+candidate_id: fit_stage_022_g_5
+parameter_name: G_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_022_g_5__phase_b__g_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '022'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_022.tex
+  line: 91
+  role: paper_stage_tex
+  excerpt: =1+A\omega^2+B\omega^4+iG_5\omega^5+O(\omega^6),
+- path: paper/stages/stage_022.tex
+  line: 100
+  role: paper_stage_tex
+  excerpt: G_5=\frac{a^5}{27c_s^5}.
+- path: paper/stages/stage_022.tex
+  line: 113
+  role: paper_stage_tex
+  excerpt: \Gamma_5^{(A)}&=G_5P_{A0}.
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 154
+  role: notes_stage
+  excerpt: '`= 1 + A omega^2 + B omega^4 + i G5 omega^5 + O(omega^6)`'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 162
+  role: notes_stage
+  excerpt: '`G5 = a^5 / (27 c_s^5)`.'
+- path: notes/stages/moving_throat_pde_stage022_grouped_p2_normalization_bridge.md
+  line: 181
+  role: notes_stage
+  excerpt: '`Gamma_5^(A) = G5 P_{A0}`.'
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 101
+  role: sympy_script
+  excerpt: A, B, G5 = sp.symbols("A B G5", real=True)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: Y2_out = 1 + A * omega**2 + B * omega**4 + I * G5 * omega**5
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 136
+  role: sympy_script
+  excerpt: expect_zero("Gamma5 formula", Gamma5 - G5 * P0)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 272
+  role: sympy_script
+  excerpt: G5_stage4 = sp.simplify(Y2_hat.coeff(omega, 5) / I)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 277
+  role: sympy_script
+  excerpt: expect_zero("Stage-021 G5 coefficient", G5_stage4 - a**5 / (27 * c_s**5))
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 282
+  role: sympy_script
+  excerpt: print("G5_stage4 =")
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 283
+  role: sympy_script
+  excerpt: sp.pprint(G5_stage4)
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 285
+  role: sympy_script
+  excerpt: Gamma5_port = G5_stage4
+- path: scripts/moving_throat_pde_stage022_grouped_p2_sympy_audit.py
+  line: 350
+  role: sympy_script
+  excerpt: print("    Gamma5 = G5 P0;")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

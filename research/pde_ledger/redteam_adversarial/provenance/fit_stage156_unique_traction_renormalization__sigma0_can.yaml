@@ -1,0 +1,192 @@
+schema_version: 1
+candidate_id: fit_stage156_unique_traction_renormalization
+parameter_name: Sigma0_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage156_unique_traction_renormalization__phase_b__sigma0_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '156'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_156.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 156]{Stage 156: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution}'
+- path: paper/stages/stage_156.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point,
+    and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside
+    the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_156.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.txt}.  Mathematica
+    audit: \StageFile{mathematica/moving_throat_pde_stage156_renormalized_canonical_branch_mathematica_audit.wl}; transcript:
+    \StageFile{mathematica/output/moving_throat_pde_stage156_renormalized_canonical_branch_mathematica_audit.txt}.}'
+- path: paper/stages/stage_156.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Exact compensation is restored at \(\Sigma_0^{\rm can}\approx4.65103\), \(\widehat T_{m,{\rm can}}\approx1.44671\).
+- path: paper/stages/stage_156.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check deviations are taken about the renormalized co-evolving canonical point.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 156: Renormalized Canonical Branch Under Full Core–Mouth Co-Evolution'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 13
+  role: notes_stage
+  excerpt: rather than imposing the old canonical traction by hand.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 17
+  role: notes_stage
+  excerpt: '## 1. Unique renormalized canonical gain'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 19
+  role: notes_stage
+  excerpt: Scanning the exact self-consistent Family-1 map shows that the fixed-point moment
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 30
+  role: notes_stage
+  excerpt: \Sigma_0^{\rm can}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 39
+  role: notes_stage
+  excerpt: this corresponds to the renormalized canonical traction
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 42
+  role: notes_stage
+  excerpt: \widehat T_{m,\rm can}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 53
+  role: notes_stage
+  excerpt: '## 2. The restored canonical fixed point'
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 58
+  role: notes_stage
+  excerpt: \mathfrak g_{\rm can}=\mathfrak g_*
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 61
+  role: notes_stage
+  excerpt: \mathcal R_{\rm can}=\frac14.
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 68
+  role: notes_stage
+  excerpt: \mathcal S_{\rm can}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 71
+  role: notes_stage
+  excerpt: \Pi_{\rm can}
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 95
+  role: notes_stage
+  excerpt: The full co-evolving canonical solve instead gives
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 98
+  role: notes_stage
+  excerpt: (\Pi_{\rm can},\widehat T_{m,\rm can})
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 104
+  role: notes_stage
+  excerpt: Relative to the original canonical point
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 113
+  role: notes_stage
+  excerpt: \frac{\Sigma_0^{\rm can}}{\Sigma_0^*}-1
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 120
+  role: notes_stage
+  excerpt: \frac{\Pi_{\rm can}}{\Pi_*}-1
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 127
+  role: notes_stage
+  excerpt: \frac{\widehat T_{m,\rm can}}{\widehat T_{m,*}}-1
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 132
+  role: notes_stage
+  excerpt: So exact preservation of the canonical outgoing quadrupole branch under the analyzed
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 150
+  role: notes_stage
+  excerpt: 3. but the old canonical point is not the final self-consistent point,
+- path: notes/stages/moving_throat_pde_stage156_renormalized_canonical_branch.md
+  line: 156
+  role: notes_stage
+  excerpt: unique regular canonical branch.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 3
+  role: sympy_script
+  excerpt: moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 5
+  role: sympy_script
+  excerpt: Numerical/SymPy audit for the renormalized canonical Family-1 branch under full
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: 1. Solve the fixed point as a function of Sigma0.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: 2. Solve the unique root g_fp(Sigma0) = g_*.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 3. Report the renormalized canonical Sigma0, T_hat, S_can, Pi_can.
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 27
+  role: sympy_script
+  excerpt: Sigma0_star = 1.80594111095636
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: 'def next_sigma(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: ph = Sigma0 * (Ts(sig) - R(sig) * Tq(sig))
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'def solve_fixed_point(Sigma0: float, maxit: int = 500) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: sig_new = next_sigma(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: 'def g_fp(Sigma0: float) -> float:'
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: sig = solve_fixed_point(Sigma0)
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: banner("STAGE 156 — RENORMALIZED CANONICAL BRANCH")
+- path: scripts/moving_throat_pde_stage156_renormalized_canonical_branch_sympy_audit.py
+  line: 103
+  role: sympy_script
+  excerpt: Sigma0_can = bisect(3.0, 6.0, g_star, 55)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

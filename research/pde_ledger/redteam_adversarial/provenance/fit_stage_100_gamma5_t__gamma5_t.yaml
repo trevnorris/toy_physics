@@ -1,0 +1,59 @@
+schema_version: 1
+candidate_id: fit_stage_100_gamma5_t
+parameter_name: Gamma5_t
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_100_gamma5_t__phase_b__gamma5_t.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '100'
+notes_source_opened: true
+source_evidence:
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 40
+  role: sympy_script
+  excerpt: Gamma5 = sp.simplify(sp.im(Yser.coeff(omega, 5)) * K0)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 45
+  role: sympy_script
+  excerpt: Gamma5_t = sp.simplify(2*G/(5*c**5))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 51
+  role: sympy_script
+  excerpt: print('Gamma5 =', Gamma5)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: print('Gamma5/Gamma5_target - chiQ*NQ =', sp.simplify(Gamma5/Gamma5_t - chiQ*NQ_derived))
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 58
+  role: sympy_script
+  excerpt: assert sp.simplify(Gamma5/Gamma5_t - chiQ*NQ_derived) == 0
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: closure_residual = sp.simplify(mhat0**2 * Gamma5 - Gamma5_t)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: closure_ratio = sp.simplify(closure_residual / Gamma5_t)
+- path: scripts/moving_throat_pde_stage100_outgoing_normalization_factorization_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: print('closure_residual / Gamma5_target =', closure_ratio)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

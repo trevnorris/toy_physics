@@ -1,0 +1,242 @@
+schema_version: 1
+candidate_id: fit_stage070_n5_eos_exponent
+parameter_name: n
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: complete
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage070_n5_eos_exponent__phase_b__n.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '070'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_070.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 070]{Stage 070: Explicit GNLS Wall-Shell Reduction for the First Support Branch}'
+- path: paper/stages/stage_070.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: \stagefield{Part / anchor}{Part III; secondary anchor \resultanchor{MTDC-T7}.}
+- path: paper/stages/stage_070.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} / \StatusReduced{} for the thin GNLS shell support reduction.}
+- path: paper/stages/stage_070.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~070 begins the explicit Family--1 construction by deriving support stiffness and gradient
+    energy from the parent GNLS shell.}
+- path: paper/stages/stage_070.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and frozen
+    \(n=5\) compressional stiffness.}
+- path: paper/stages/stage_070.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.py};
+    transcript: \StageFile{scripts/output/moving_throat_pde_stage070_gnls_wall_shell_sympy_audit.txt}.  Mathematica audit:
+    \StageFile{mathematica/moving_throat_pde_stage070_gnls_wall_shell_mathematica_audit.wl}; transcript: \StageFile{mathematica/output/moving_throat_pde_stage070_gnls_wall_shell_mathematica_audit.txt}.}'
+- path: paper/stages/stage_070.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: \subsection*{Derivation}
+- path: paper/stages/stage_070.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: The quadratic support energy is
+- path: paper/stages/stage_070.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_070.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: E^{(2)}[q]=\frac12\int_0^L ds\,[T_Xq'(s)^2+K_Xq(s)^2].
+- path: paper/stages/stage_070.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_070.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: The coefficients are
+- path: paper/stages/stage_070.tex
+  line: 19
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_070.tex
+  line: 27
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_070.tex
+  line: 28
+  role: paper_stage_tex
+  excerpt: For a thin shell with moments \(I_f=\int f'^2d\xi\) and \(I_g=\int f''^2d\xi\),
+- path: paper/stages/stage_070.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_070.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage070-thin-TK}
+- path: paper/stages/stage_070.tex
+  line: 35
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_070.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_070.tex
+  line: 42
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_070.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: The matched wall control is
+- path: paper/stages/stage_070.tex
+  line: 44
+  role: paper_stage_tex
+  excerpt: \begin{equation}
+- path: paper/stages/stage_070.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \end{equation}
+- path: paper/stages/stage_070.tex
+  line: 50
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{The parent-shell coefficients \eqref{eq:app-stage070-TX-KX}--\eqref{eq:app-stage070-Wwall-Xi}.}
+- path: paper/stages/stage_070.tex
+  line: 51
+  role: paper_stage_tex
+  excerpt: \stagefield{Downstream use}{Stage~071 evaluates these for the canonical tanh wall; Stages~073--074 fix the Family--1
+    geometry and healing lock.}
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 070: Explicit GNLS Wall-Shell Reduction for the First Support Branch'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 5
+  role: notes_stage
+  excerpt: The reduced support/source program ended with the wall figure of merit
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 9
+  role: notes_stage
+  excerpt: but the actual branch data `(T_X, J_1, kappa, eta)` were still being treated as external inputs.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 11
+  role: notes_stage
+  excerpt: The next honest step is to derive those quantities from the parent GNLS action on the first explicit wall-support
+    branch.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 13
+  role: notes_stage
+  excerpt: This stage does that for a thin active shell around the throat wall.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 15
+  role: notes_stage
+  excerpt: The main result is that, once the support field is taken to be a linearized density mode living on the wall shell,
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 17
+  role: notes_stage
+  excerpt: '- the axial support tension is fixed by the GNLS gradient term,'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 18
+  role: notes_stage
+  excerpt: '- the axial support stiffness is fixed by compressibility plus transverse curvature,'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 19
+  role: notes_stage
+  excerpt: '- the reduced wall figure of merit simplifies enormously,'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 20
+  role: notes_stage
+  excerpt: '- and on the matched thin-wall branch it is exactly the same object as the Stage-058/059 fixed-point coupling.'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 22
+  role: notes_stage
+  excerpt: So the explicit moving-throat branch is now much more concrete.
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 26
+  role: notes_stage
+  excerpt: '## 1. Parent quadratic wall-shell support energy'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 28
+  role: notes_stage
+  excerpt: 'Start from the parent GNLS matter energy density near a static wall background `rho_w`:'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 30
+  role: notes_stage
+  excerpt: '`H_psi = (hbar^2 / 2m) |grad sqrt(rho)|^2 + U(rho) + V_conf rho.`'
+- path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+  line: 32
+  role: notes_stage
+  excerpt: Linearize around the wall layer with a real density perturbation `delta rho`. To quadratic order in the compressive
+    support sector, the standard GNLS expansion gives
+origin_claims:
+- parameter: n
+  introduced_at_stage: 50
+  introduced_at_line: 92
+  citation:
+    path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 92
+    excerpt: '`U(rho) = K rho^5 / 4,`'
+constraints:
+- parameter: n
+  constraint_kind: free_choice
+  evidence_citation:
+    path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 88
+    excerpt: The parent 4D theory already fixes the matter sector to the gauged GNLS form with confinement and the frozen
+      stiff EOS,
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings:
+- type: paper_card_overclaim
+  severity: needs_triage
+  summary: The stage-070 paper card lists 'frozen n=5 compressional stiffness' as an Input, but stage 070's OWN notes and
+    sympy audit never mention n=5 or any EOS exponent — they use only the generic stiffness H_w = m c_s^2/rho_w. The n=5 value
+    is a posited ansatz of the parent EOS U(rho)=K rho^5/4 introduced upstream at stage 062 ('the frozen stiff EOS'); stage
+    070 silently inherits it. The scanner anchored the candidate to 070, but 070 establishes no notes-level provenance for
+    it.
+  citations:
+  - path: paper/stages/stage_070.tex
+    line: 7
+    excerpt: \stagefield{Inputs}{A support perturbation \(\delta\rho(s,y)=q(s)\chi_\phi(y)\), wall density \(\rho_w\), and
+      frozen \(n=5\) compressional stiffness.}
+  - path: notes/stages/moving_throat_pde_stage070_gnls_wall_shell.md
+    line: 39
+    excerpt: '`H_w := h''(rho_w) = m c_(s,w)^2 / rho_w.`'
+  - path: notes/stages/moving_throat_pde_stage062_parent_action_gain.md
+    line: 86
+    excerpt: '## 1. Parent 4D matter energy and the `n=5` compressional stiffness'
+- type: free_choice
+  severity: low
+  summary: n=5 is a posited model ansatz (the stiff-polytropic EOS exponent P=K rho^5), not derived or matched to any external
+    target; the notes present it as a frozen choice of the parent action.
+  citations:
+  - path: notes/stages/moving_throat_pde_handoff_full.md
+    line: 154
+    excerpt: The frozen stiff-polytropic equation of state is
+downstream_dependents:
+- '070'
+- '071'
+- '073'
+- '074'
+- '167'
+synthesis_ingested_at: '2026-06-11T17:55:40Z'
+agent_synthesis_path: redteam_adversarial/provenance/_synthesis/batch_07/fit_stage070_n5_eos_exponent__n.yaml

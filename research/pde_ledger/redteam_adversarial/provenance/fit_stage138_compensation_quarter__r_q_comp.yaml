@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: fit_stage138_compensation_quarter
+parameter_name: R_q_comp
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage138_compensation_quarter__phase_b__r_q_comp.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '138'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_138.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 138]{Stage 138: Normalized Mouth-Gain Family and Compensation Ratio}'
+- path: paper/stages/stage_138.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Coupled mouth fixed point and gain selection}
+    block.  The computation isolates the finite-bias regular canonical mouth branch and the gain pair that replaces the naive
+    equal-normalized limit.}
+- path: paper/stages/stage_138.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Gain ratio \(R_q=(\mathfrak g_c-\mathfrak r)^2/(1+\mathfrak r^2)\); exact compensation gives \(R_q=1/4\).
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 138: Normalized Mouth-Gain Family and Compensation Ratio'
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 6
+  role: notes_stage
+  excerpt: used for the throat-core compensation family.
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 58
+  role: notes_stage
+  excerpt: '## 2. Exact compensation family'
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 72
+  role: notes_stage
+  excerpt: Therefore on the exact compensated branch,
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 90
+  role: notes_stage
+  excerpt: Stage 137 plus the exact core-balance compensation surface.
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 96
+  role: notes_stage
+  excerpt: The actual mouth gains are completely controlled by one overall amplitude `\Sigma_0`
+- path: notes/stages/moving_throat_pde_stage138_normalized_mouth_gain_family.md
+  line: 102
+  role: notes_stage
+  excerpt: On the exact compensated branch this collapses to
+- path: scripts/moving_throat_pde_stage138_normalized_mouth_gain_family_sympy_audit.py
+  line: 26
+  role: sympy_script
+  excerpt: '# Compensation family check'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

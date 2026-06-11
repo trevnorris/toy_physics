@@ -1,0 +1,191 @@
+schema_version: 1
+candidate_id: fit_stage183_canonical_sigma_nt
+parameter_name: Sigma_nt
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage183_canonical_sigma_nt__phase_b__sigma_nt.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '183'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_183.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Compresses the coherent weak-axisymmetric problem to \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\)
+    with triangular map to \((\Theta_1,\Xi_1,\mathcal R_1)\).}
+- path: paper/stages/stage_183.tex
+  line: 20
+  role: paper_stage_tex
+  excerpt: \item Check raw microscopic slopes have been compiled into \((\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta)\) before
+    interpretation.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 8
+  role: notes_stage
+  excerpt: (\Sigma_Z,\Sigma_\chi,\Sigma_\epsilon,\Sigma_\delta,\Sigma_\eta),
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 12
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr}:=(1+\chi_0)\Sigma_\delta+(1+\delta_U)\Sigma_\chi.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 28
+  role: notes_stage
+  excerpt: \Sigma_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 30
+  role: notes_stage
+  excerpt: \Sigma_{\rm nt},
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 32
+  role: notes_stage
+  excerpt: \Sigma_\eta,
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 34
+  role: notes_stage
+  excerpt: where \(\Sigma_{\rm nt}\) is the genuine **nontracking transfer-shape slippage**
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 37
+  role: notes_stage
+  excerpt: \Sigma_{\rm nt}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 39
+  role: notes_stage
+  excerpt: \Sigma_Z
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 40
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 44
+  role: notes_stage
+  excerpt: \right]\Sigma_\delta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 53
+  role: notes_stage
+  excerpt: -\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}\,\Sigma_{\rm tr},
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 60
+  role: notes_stage
+  excerpt: \frac{2\chi_0}{(1+\chi_0)(1+\delta_U)}\,\Sigma_{\rm tr}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 61
+  role: notes_stage
+  excerpt: +\Sigma_{\rm nt},
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 68
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\,\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 75
+  role: notes_stage
+  excerpt: '- \(\Sigma_{\rm tr}\) controls tracking drift,'
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 76
+  role: notes_stage
+  excerpt: '- \(\Sigma_{\rm nt}\) controls the nontracking transfer-shape defect,'
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 77
+  role: notes_stage
+  excerpt: '- \(\Sigma_\eta\) controls the residual dressing mismatch between the direct transfer shape and the selected-branch
+    demand ratio.'
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 89
+  role: notes_stage
+  excerpt: \Sigma_Z
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 90
+  role: notes_stage
+  excerpt: +\frac{2\chi_0}{(1+\chi_0)(1+\delta_U)}\,\Sigma_{\rm tr}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 91
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 95
+  role: notes_stage
+  excerpt: \right]\Sigma_\delta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 100
+  role: notes_stage
+  excerpt: \Sigma_{\rm nt}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 102
+  role: notes_stage
+  excerpt: \Sigma_Z
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 103
+  role: notes_stage
+  excerpt: +\frac{2\epsilon_W}{1-\epsilon}\frac{11+9\delta_U}{11(1+\delta_U)}\,\Sigma_\epsilon
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 107
+  role: notes_stage
+  excerpt: \right]\Sigma_\delta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 115
+  role: notes_stage
+  excerpt: A_{\rm tr}\,\Sigma_{\rm tr}
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 116
+  role: notes_stage
+  excerpt: +\Sigma_{\rm nt},
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 122
+  role: notes_stage
+  excerpt: So \(\Sigma_{\rm nt}\) is the first branch-adapted scalar beyond \(\Sigma_{\rm tr}\).
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 127
+  role: notes_stage
+  excerpt: \Sigma_\eta:=2c_1-\kappa_U-\kappa_\eta=\frac{\eta_1}{\epsilon_\eta}.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 134
+  role: notes_stage
+  excerpt: (\Sigma_{\rm tr},\Sigma_{\rm nt},\Sigma_\eta).
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 146
+  role: notes_stage
+  excerpt: -\frac{\chi_0\delta_U}{(1+\chi_0)(1+\delta_U)(1+\chi_0+\delta_U)}\,\Sigma_{\rm tr}.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 158
+  role: notes_stage
+  excerpt: \Theta_1=-C_{\rm tr}\Sigma_{\rm tr}.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 162
+  role: notes_stage
+  excerpt: Likewise, by construction of \(\Sigma_{\rm nt}\),
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 165
+  role: notes_stage
+  excerpt: \Xi_1=A_{\rm tr}\Sigma_{\rm tr}+\Sigma_{\rm nt}.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 173
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 181
+  role: notes_stage
+  excerpt: -\frac{\epsilon_\eta}{1-\epsilon_\eta}\Sigma_\eta.
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 191
+  role: notes_stage
+  excerpt: 1. the tracking-factor drift \(\Theta_1\) measures only \(\Sigma_{\rm tr}\);
+- path: notes/stages/moving_throat_pde_stage183_triangular_normal_form.md
+  line: 192
+  role: notes_stage
+  excerpt: 2. once the universal tracking feed-through is removed, the grouped defect \(\Xi_1\) measures only \(\Sigma_{\rm
+    nt}\);
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

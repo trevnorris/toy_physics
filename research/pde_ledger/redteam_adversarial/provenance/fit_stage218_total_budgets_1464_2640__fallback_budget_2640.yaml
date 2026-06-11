@@ -1,0 +1,158 @@
+schema_version: 1
+candidate_id: fit_stage218_total_budgets_1464_2640
+parameter_name: fallback_budget_2640
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage218_total_budgets_1464_2640__phase_b__fallback_budget_2640.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '218'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_218.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation proves the boundary-identification theorem \(\partial\Delta_5^+=\mathcal
+    S_{\le4}^{\rm loc}\), proves the support ceiling, splices the support-five interior and support-\(\le4\) intervals, classifies
+    support-five outcomes, and records the exact evaluation budget.}
+- path: paper/stages/stage_218.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Final local mixed-ray closure theorem, certified support-\(\le5\) splice interval, preferred
+    total budget \(1464\), fallback budget \(2640\), and finite-candidate status of any remaining ambiguity.}
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 31
+  role: notes_stage
+  excerpt: 6. and the exact **final evaluation-budget theorem** for the full local mixed-ray search.
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 38
+  role: notes_stage
+  excerpt: interval theorems, and carried budget formulas.
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 41
+  role: notes_stage
+  excerpt: Stage 215 and Stage 217 budget constants explicit rather than hidden.
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 324
+  role: notes_stage
+  excerpt: '## 7. Exact evaluation-budget theorem'
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 336
+  role: notes_stage
+  excerpt: The already-finished support-`<=4` search budget from Stage 215 is
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 340
+  role: notes_stage
+  excerpt: So the exact preferred total budget for the full support-`<=5` local search is
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 351
+  role: notes_stage
+  excerpt: candidate evaluations, giving the fallback total
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 354
+  role: notes_stage
+  excerpt: 1140+1500=2640.
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 358
+  role: notes_stage
+  excerpt: So even the fallback full local search is finite and explicit.
+- path: notes/stages/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure.md
+  line: 370
+  role: notes_stage
+  excerpt: '- The preferred exact total evaluation budget is `1464`, with fallback chart budget `2640`.'
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 328
+  role: sympy_script
+  excerpt: subbanner("IV. Exact support-five candidate filters and final budget ledger")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 334
+  role: sympy_script
+  excerpt: '"fallback_projected_degree_pattern": (5, 5, 5, 6),'
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 337
+  role: sympy_script
+  excerpt: projected_per_envelope = math.prod(support_five_packet["fallback_projected_degree_pattern"])
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 341
+  role: sympy_script
+  excerpt: print("fallback projected degree pattern =", support_five_packet["fallback_projected_degree_pattern"])
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 348
+  role: sympy_script
+  excerpt: '# load-bearing imported support-<=4 budget is the paper-stated value 1140.'
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 349
+  role: sympy_script
+  excerpt: support_le4_budget = 1140
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 350
+  role: sympy_script
+  excerpt: support5_lifted_budget = 2 * lifted_per_envelope
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 351
+  role: sympy_script
+  excerpt: support5_fallback_budget = 2 * projected_per_envelope
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 353
+  role: sympy_script
+  excerpt: preferred_total = support_le4_budget + support5_lifted_budget
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 354
+  role: sympy_script
+  excerpt: fallback_total = support_le4_budget + support5_fallback_budget
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 356
+  role: sympy_script
+  excerpt: print(f"support<=4 paper budget = {support_le4_budget}")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 357
+  role: sympy_script
+  excerpt: print(f"support-five lifted budget = {support5_lifted_budget}")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 358
+  role: sympy_script
+  excerpt: print(f"support-five fallback budget = {support5_fallback_budget}")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 359
+  role: sympy_script
+  excerpt: print(f"preferred full support<=5 budget = {preferred_total}")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 360
+  role: sympy_script
+  excerpt: print(f"fallback full support<=5 budget = {fallback_total}")
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 362
+  role: sympy_script
+  excerpt: expect_zero("support<=4 paper budget - 1140", support_le4_budget - 1140)
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 363
+  role: sympy_script
+  excerpt: expect_zero("support-five lifted budget - 324", support5_lifted_budget - 324)
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 364
+  role: sympy_script
+  excerpt: expect_zero("support-five fallback budget - 1500", support5_fallback_budget - 1500)
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 366
+  role: sympy_script
+  excerpt: expect_zero("fallback full support<=5 paper sum - 2640", fallback_total - 2640)
+- path: scripts/moving_throat_pde_stage218_full_support_cardinality_5_completion_and_local_mixed_ray_search_closure_sympy_audit.py
+  line: 368
+  role: sympy_script
+  excerpt: print("\nAll Stage 218 imported ledger, splice, classification, and budget checks verified.")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

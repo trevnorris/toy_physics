@@ -1,0 +1,209 @@
+schema_version: 1
+candidate_id: fit_stage217_preferred_bound_162_budgets
+parameter_name: candidate_bound_162
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage217_preferred_bound_162_budgets__phase_b__candidate_bound_162.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '217'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_217.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the support-five ratio chart, certified root objectives, compact admissible windows,
+    and the Stage~216 boundary ledger.}
+- path: paper/stages/stage_217.tex
+  line: 11
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_217.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation writes the four stationary numerator equations, lifts by one auxiliary
+    square-root variable, obtains degree pattern \((3,3,3,3,2)\), proves the preferred \(162\)-candidate bound per envelope,
+    and gives a square-root-free fallback bound.}
+- path: paper/stages/stage_217.tex
+  line: 15
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Finite support-five interior candidate set, preferred budget \(324\), fallback budget \(1500\),
+    and support-five interior improvement/non-improvement theorem.}
+- path: paper/stages/stage_217.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VI appendix narrative above and in the source stage.  The card restores original stage order and records the claim boundary;
+    it should not be read as a second independent proof.}
+- path: paper/stages/stage_217.tex
+  line: 21
+  role: paper_stage_tex
+  excerpt: \item Check lifted algebraic candidates are filtered by positivity, admissibility, and validity intervals.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 217: Unique Five-Coordinate Mixed Simplex, Exact Face Reduction, Full Interior Optimizer,
+    and the Finite Algebraic Candidate Set'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 7
+  role: notes_stage
+  excerpt: Stage 216 now supplies the support-cardinality-`5` gate and the exact five-face boundary splice. Because there
+    is only **one** primitive five-coordinate simplex,
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 17
+  role: notes_stage
+  excerpt: Stage 215 finished the full support-`<=4` search, and Stage 216 then built the unique positive spherical five-simplex,
+    reduced its full codimension-one boundary back to the Stage 215 quadruple packets, and isolated the two canonical five-way
+    interior screens.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 21
+  role: notes_stage
+  excerpt: '> can the **unique interior five-coordinate** mixed branch beat the already-finished support-`<=4` ledger, and
+    can that interior optimization again be reduced to a finite algebraic candidate set rather than a free four-parameter
+    continuum scan?'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 31
+  role: notes_stage
+  excerpt: 5. the exact finite algebraic candidate-set theorem with lifted Bézout bound `162`,
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 32
+  role: notes_stage
+  excerpt: 6. the direct square-root-free elimination into three quintic cross-consistency polynomials plus one sextic square
+    condition on a chosen interior chart, giving the projected bound `750`,
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 34
+  role: notes_stage
+  excerpt: 8. and the exact local improvement / non-improvement theorems against the imported Stage 215 five-face boundary
+    ledger.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 36
+  role: notes_stage
+  excerpt: So Stage 217 turns the last genuinely new local mixed-simplex problem into a finite candidate problem.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 93
+  role: notes_stage
+  excerpt: So the entire codimension-one boundary is already closed by the Stage 215 ledger.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 372
+  role: notes_stage
+  excerpt: '## 4. Exact lifted polynomial stationary system and finite candidate set'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 407
+  role: notes_stage
+  excerpt: Hence the lifted Bézout candidate bound is
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 409
+  role: notes_stage
+  excerpt: \boxed{3\cdot 3\cdot 3\cdot 3\cdot 2 = 162.}
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 425
+  role: notes_stage
+  excerpt: '### Exact lifted finite candidate-set theorem'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 427
+  role: notes_stage
+  excerpt: Assume the optimizer does not sit on an artificial outer boundary of the chosen ratio window and that the lifted
+    stationary set is zero-dimensional on that window. Then every interior optimizer of `\(\tau_\star\)` belongs to the finite
+    admissible set `\(\mathcal C_{5,\star}^{\rm int,lift}\)`.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 441
+  role: notes_stage
+  excerpt: This is the preferred exact candidate compiler for the unique support-cardinality-`5` interior problem.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 445
+  role: notes_stage
+  excerpt: '## 5. Direct square-root-free elimination and the projected candidate bound'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 484
+  role: notes_stage
+  excerpt: So on a nondegenerate `r`-chart every interior stationary point lies in the projected algebraic pre-candidate set
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 499
+  role: notes_stage
+  excerpt: Because the three cross-consistency polynomials are quintic and the square condition is sextic, Bézout gives the
+    projected one-chart bound
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 506
+  role: notes_stage
+  excerpt: This projected bound is useful, but the lifted `162`-point system above remains the preferred exact compiler because
+    it avoids chart-dependent square-root degeneracies.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 584
+  role: notes_stage
+  excerpt: be the exact interior certified interval supplied by the lifted finite candidate compiler.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 586
+  role: notes_stage
+  excerpt: Because the whole codimension-one boundary is already closed by the imported Stage 215 five-face ledger, the local
+    five-coordinate comparison is now exact.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 596
+  role: notes_stage
+  excerpt: then every admissible interior five-coordinate winner beats every admissible support-`<=4` boundary winner. So
+    the unique support-cardinality-`5` simplex carries a genuine interior improvement.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 606
+  role: notes_stage
+  excerpt: then no admissible interior five-coordinate optimizer beats the already-finished support-`<=4` boundary ledger
+    on the chosen window.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 614
+  role: notes_stage
+  excerpt: The lifted interior candidate compiler contributes at most
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 616
+  role: notes_stage
+  excerpt: \boxed{162}
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 618
+  role: notes_stage
+  excerpt: stationary candidates per envelope on the chosen window, hence at most
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 622
+  role: notes_stage
+  excerpt: candidate evaluations across the `{lo,hi}` envelopes.
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 632
+  role: notes_stage
+  excerpt: '- Its entire codimension-one boundary is already closed by Stage 215.'
+- path: notes/stages/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction.md
+  line: 634
+  role: notes_stage
+  excerpt: '- Every interior optimizer lies in a finite admissible candidate set with lifted Bézout bound `162`.'
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 137
+  role: sympy_script
+  excerpt: print(f"Lifted Bezout bound = {bezout_lift}")
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 138
+  role: sympy_script
+  excerpt: 'if bezout_lift != 162:'
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: raise AssertionError("Unexpected lifted Bezout bound")
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 144
+  role: sympy_script
+  excerpt: subbanner("IV. Direct square-root-free elimination and projected candidate bound")
+- path: scripts/moving_throat_pde_stage217_full_interior_five_coordinate_simplex_optimizer_and_finite_candidate_reduction_sympy_audit.py
+  line: 166
+  role: sympy_script
+  excerpt: print(f"Projected one-chart Bezout bound = {bezout_proj}")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

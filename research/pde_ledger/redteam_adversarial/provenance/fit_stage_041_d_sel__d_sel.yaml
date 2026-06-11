@@ -1,0 +1,150 @@
+schema_version: 1
+candidate_id: fit_stage_041_d_sel
+parameter_name: D_sel
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_041_d_sel__phase_b__d_sel.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '041'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_041.tex
+  line: 5
+  role: paper_stage_tex
+  excerpt: \claimstatus{\StatusExactClosure{} for the two-rank selected-mode determinant.}
+- path: paper/stages/stage_041.tex
+  line: 6
+  role: paper_stage_tex
+  excerpt: \stagefield{Purpose}{Stage~041 adds a second loading direction for physical support and proves that the selected-branch
+    determinant remains linear in the support loading.}
+- path: paper/stages/stage_041.tex
+  line: 7
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Mixed baseline \(m\), mixed direction \((1,q)\), support loading \(n\), support direction \((1,r)\),
+    and selected lower depth \(\xi\).}
+- path: paper/stages/stage_041.tex
+  line: 23
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage041-Dsel}
+- path: paper/stages/stage_041.tex
+  line: 24
+  role: paper_stage_tex
+  excerpt: D_{\rm sel}
+- path: paper/stages/stage_041.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: Solving the linear equation \(D_{\rm sel}=0\) for \(n\) gives
+- path: paper/stages/stage_041.tex
+  line: 47
+  role: paper_stage_tex
+  excerpt: on every regular branch.  Additional mixed baseline always lowers the support loading needed to reach the same
+    selected depth.
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 9
+  role: notes_stage
+  excerpt: '> what happens when the selected wall branch is loaded by **two** directions rather than one?'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 17
+  role: notes_stage
+  excerpt: 1. the selected lower branch with mixed loading `z` and support loading `y` is still solvable in closed form,
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 19
+  role: notes_stage
+  excerpt: 3. increasing the mixed baseline always lowers the support needed to hit a given selected branch,
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 23
+  role: notes_stage
+  excerpt: So the flat-`U` simplification did not just hide a numerical correction. It hid the first place where the support
+    direction itself becomes a real theorem variable.
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 27
+  role: notes_stage
+  excerpt: '## 1. Exact rank-2 loaded selected branch'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 29
+  role: notes_stage
+  excerpt: Work in the 2D wall basis of Stages 22–23 and write the diagonal baseline as
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 35
+  role: notes_stage
+  excerpt: '- a mixed baseline loading carried by `z`,'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 50
+  role: notes_stage
+  excerpt: The full selected-branch matrix is therefore
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 54
+  role: notes_stage
+  excerpt: As before, parameterize the lower selected eigenvalue by the softening depth
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 64
+  role: notes_stage
+  excerpt: '`D_sel = xi (delta + xi)`'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 92
+  role: notes_stage
+  excerpt: If the two directions differ, the mixed baseline modifies the *support* denominator directly. That effect was absent
+    in the collinear Stage-035/036/040 branch.
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 101
+  role: notes_stage
+  excerpt: So, whenever the branch is regular, **increasing the mixed baseline always lowers the support loading needed to
+    reach the same softening depth**.
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 124
+  role: notes_stage
+  excerpt: '- mixed baseline loading `m`,'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 129
+  role: notes_stage
+  excerpt: '> **If the physical support/BdG loading follows the deformed mixed direction, the rank-2 completion introduces
+    no new selected-branch geometry.**'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 238
+  role: notes_stage
+  excerpt: '- the selected-branch determinant with two loading directions,'
+- path: notes/stages/moving_throat_pde_stage041_rank2_support_completion.md
+  line: 250
+  role: notes_stage
+  excerpt: If it aligns with `z`, the Stage-040 one-parameter deformation is already the whole selected-branch geometry.
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 7
+  role: sympy_script
+  excerpt: 1. The selected lower branch for a diagonal 2x2 baseline plus two rank-1
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 11
+  role: sympy_script
+  excerpt: 3. The mixed-baseline monotonicity theorem dn_req/dm < 0 is exact.
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: subbanner("41.2 — Exact monotonicity with respect to mixed baseline loading")
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 143
+  role: sympy_script
+  excerpt: print("1. The selected rank-2 wall problem remains analytically solvable because the")
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: print("3. The mixed baseline always lowers the support needed to hit the same branch:")
+- path: scripts/moving_throat_pde_stage041_rank2_support_sympy_audit.py
+  line: 153
+  role: sympy_script
+  excerpt: print("5. If support stays tied to the original source direction, the selected branch")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

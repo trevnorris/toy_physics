@@ -1,0 +1,40 @@
+schema_version: 1
+candidate_id: fit_stage078_verdict_fixed_pair
+parameter_name: L_over_a
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage078_verdict_fixed_pair__phase_b__l_over_a.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 078
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage078_family1_branch_verdict.md
+  line: 99
+  role: notes_stage
+  excerpt: '> determine the actual quadrupole-side requirement `Pe_req` from the completed moving-throat / outgoing-normalization
+    branch and compare it to the explicit success/failure bands above.'
+- path: scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py
+  line: 59
+  role: sympy_script
+  excerpt: '# chi-datum''s corresponding thresholds. The two windows nest with overlap.'
+- path: scripts/moving_throat_pde_stage078_family1_branch_verdict_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '"ceiling (window overlap)"'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

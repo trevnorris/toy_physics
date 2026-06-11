@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage_037_deltak_ax
+parameter_name: DeltaK_ax
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_037_deltak_ax__phase_b__deltak_ax.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '037'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 037: Exact Continuum-Kernel Extraction of `A`, `DeltaK_ax`, `beta_0`, and `M_mix`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 22
+  role: notes_stage
+  excerpt: '`DeltaK_ax = pi^2 T_w / (mu_eta L^2),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 139
+  role: notes_stage
+  excerpt: '`DeltaK_ax = pi^2 T_w / (mu_eta L^2),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 215
+  role: notes_stage
+  excerpt: '`delta = DeltaK_ax / A.`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 235
+  role: notes_stage
+  excerpt: '`DeltaK_ax = pi^2 T_w / ( mu_eta L^2 ),`'
+- path: notes/stages/moving_throat_pde_stage037_continuum_kernel_extraction.md
+  line: 306
+  role: notes_stage
+  excerpt: '- `DeltaK_ax`,'
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: A, DeltaK_ax, alpha_mix, beta_0, M_mix, delta.
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 102
+  role: sympy_script
+  excerpt: DeltaK_ax = sp.simplify(sp.pi**2 * T_w / (mu_eta * L**2))
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 108
+  role: sympy_script
+  excerpt: print(f"DeltaK_ax   = {DeltaK_ax}")
+- path: scripts/moving_throat_pde_stage037_continuum_kernel_sympy_audit.py
+  line: 165
+  role: sympy_script
+  excerpt: delta = sp.simplify(DeltaK_ax / A)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

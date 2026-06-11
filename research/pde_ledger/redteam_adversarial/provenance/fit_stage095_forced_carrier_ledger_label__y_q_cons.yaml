@@ -1,0 +1,50 @@
+schema_version: 1
+candidate_id: fit_stage095_forced_carrier_ledger_label
+parameter_name: Y_Q_cons
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage095_forced_carrier_ledger_label__phase_b__y_q_cons.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 095
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_095.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The verification step belongs to the \emph{Geometry-lane firewall} block.  The computation
+    isolates the forced conservative carrier \(\widehat Y_Q^{\rm cons}=3/4+(1/4)/(1-\omega^2/\Omega_Q^2)\) or the obstruction
+    variables \((\epsilon_2,\epsilon_4)\).}
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 5
+  role: notes_stage
+  excerpt: 'Stage 77 proved that on the natural isotropic branch the geometry lane is dynamically inert through `O(omega^4)`
+    with respect to the grouped real `P2` conservative quadrupole module:'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 27
+  role: notes_stage
+  excerpt: Write the conservative reduced kernel as
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 94
+  role: notes_stage
+  excerpt: '## 3. Consequence for the contact/pole fractions'
+- path: notes/stages/moving_throat_pde_stage095_second_order_geometry_contamination.md
+  line: 123
+  role: notes_stage
+  excerpt: 'So the current reduced hierarchy supports the clean conservative reading:'
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

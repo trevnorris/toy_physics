@@ -1,0 +1,67 @@
+schema_version: 1
+candidate_id: fit_stage099_forced_by_yhatQcons_script
+parameter_name: Gamma_5
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage099_forced_by_yhatqcons_script__phase_b__gamma_5.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 099
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage099_reduced_finish_line.md
+  line: 76
+  role: notes_stage
+  excerpt: '- compute `Gammabar_5` on that branch,'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 12
+  role: sympy_script
+  excerpt: (dynamic-geometry obstruction); the reduction is asserted explicitly at
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: Gamma5_struct = 9 * K0_sym / (32 * Omega_Q**5)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# Equivalent Gamma_5 forms: derived from K_n series, and from canonical odd coeff.'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: expect_zero("Gamma_5 sqrt form matches canonical odd-coeff form",
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: 9 * K2_struct**sp.Rational(5, 2) / K0_sym**sp.Rational(3, 2) - Gamma5_struct)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: '# Gammabar_5 / (2 G / (5 c^5)) = N_Q  (with K0 = N_Q * K0_target).'
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 79
+  role: sympy_script
+  excerpt: expect_zero("Gamma_5 normalization equals N_Q on chi_Q=1 branch",
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 80
+  role: sympy_script
+  excerpt: Gamma5_struct.subs(K0_sym, N_Q * K0_target) / (2 * G / (5 * c**5)) - N_Q)
+- path: scripts/moving_throat_pde_stage099_reduced_finish_line_sympy_audit.py
+  line: 84
+  role: sympy_script
+  excerpt: print("Gamma5_struct =", sp.factor(Gamma5_struct))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

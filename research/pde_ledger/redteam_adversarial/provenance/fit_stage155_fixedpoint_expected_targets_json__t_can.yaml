@@ -1,0 +1,121 @@
+schema_version: 1
+candidate_id: fit_stage155_fixedpoint_expected_targets_json
+parameter_name: T_can
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage155_fixedpoint_expected_targets_json__phase_b__t_can.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '155'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_155.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 155]{Stage 155: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction}'
+- path: paper/stages/stage_155.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{This stage imports the nonlinear co-evolving source map, the renormalized canonical fixed point,
+    and the compensated outlet projection.  It does not change the parent action or the grouped-lane ontology; it works inside
+    the declared reduced branch and tests the next algebraic or realization condition.}
+- path: paper/stages/stage_155.tex
+  line: 22
+  role: paper_stage_tex
+  excerpt: \item Check deviations are taken about the renormalized co-evolving canonical point.
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 155: Family-1 Co-Evolving Fixed Point at Frozen Canonical Traction'
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 6
+  role: notes_stage
+  excerpt: 'holding the previously selected canonical traction fixed:'
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 19
+  role: notes_stage
+  excerpt: '> If the physical mouth traction is left at the old canonical value, does the'
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 33
+  role: notes_stage
+  excerpt: from the canonical exponential seed converges to a positive fixed point
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 98
+  role: notes_stage
+  excerpt: So at fixed canonical traction the co-evolving mouth profile actually stays very
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 99
+  role: notes_stage
+  excerpt: 'close to the old canonical bias:'
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 143
+  role: notes_stage
+  excerpt: '- so at **fixed** canonical traction the self-consistent branch remains close in'
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 153
+  role: notes_stage
+  excerpt: That means exact preservation of the canonical outgoing quadrupole fingerprint now
+- path: notes/stages/moving_throat_pde_stage155_frozen_traction_fixedpoint.md
+  line: 154
+  role: notes_stage
+  excerpt: requires a **retuned traction**, not just the old canonical value.
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: canonical traction Sigma0*.
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 29
+  role: sympy_script
+  excerpt: Sigma0_star = 1.80594111095636
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 63
+  role: sympy_script
+  excerpt: 'def Phi(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: return Sigma0 * (Ts(sig) - R(sig) * Tq(sig))
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: 'def next_sigma(sig: np.ndarray, Sigma0: float) -> np.ndarray:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: ph = Phi(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: 'def solve_fixed_point(Sigma0: float, maxit: int = 400) -> tuple[np.ndarray, int, float]:'
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: sig_new = next_sigma(sig, Sigma0)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 81
+  role: sympy_script
+  excerpt: sig, niter, err = solve_fixed_point(Sigma0_star)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 85
+  role: sympy_script
+  excerpt: Pi_fp = Sigma0_star * (1 - R_fp * S_fp)
+- path: scripts/moving_throat_pde_stage155_frozen_traction_fixedpoint_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: print("  At frozen canonical traction, the co-evolving fixed point remains close in Pi")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

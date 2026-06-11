@@ -1,0 +1,194 @@
+schema_version: 1
+candidate_id: fit_stage252_three_to_one_split
+parameter_name: f_lat
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage252_three_to_one_split__phase_b__f_lat.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '252'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_252.tex
+  line: 1
+  role: paper_stage_tex
+  excerpt: '\section[Stage 252]{Stage 252: Vacuum/lattice heat partition}'
+- path: paper/stages/stage_252.tex
+  line: 4
+  role: paper_stage_tex
+  excerpt: '\stagefield{Verification}{SymPy audit: \StageFile{scripts/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.py}.  Mathematica
+    audit: none yet.}'
+- path: paper/stages/stage_252.tex
+  line: 14
+  role: paper_stage_tex
+  excerpt: \Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+- path: paper/stages/stage_252.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: \Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat},
+- path: paper/stages/stage_252.tex
+  line: 18
+  role: paper_stage_tex
+  excerpt: \Gamma_n^{\rm vac},\Gamma_n^{\rm lat}\ge0.
+- path: paper/stages/stage_252.tex
+  line: 29
+  role: paper_stage_tex
+  excerpt: \label{eq:app-part08-stage252-evac-elat}
+- path: paper/stages/stage_252.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: E_{\rm lat}=\Gamma_3^{\rm lat}\mathcal I_2+\Gamma_5^{\rm lat}\mathcal I_3.
+- path: paper/stages/stage_252.tex
+  line: 40
+  role: paper_stage_tex
+  excerpt: f_{\rm lat}(\mathfrak r_V)=
+- path: paper/stages/stage_252.tex
+  line: 41
+  role: paper_stage_tex
+  excerpt: \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}{\Gamma_3+\Gamma_5\mathfrak r_V}.
+- path: paper/stages/stage_252.tex
+  line: 46
+  role: paper_stage_tex
+  excerpt: \frac{df_{\rm lat}}{d\mathfrak r_V}
+- path: paper/stages/stage_252.tex
+  line: 48
+  role: paper_stage_tex
+  excerpt: \frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}{(\Gamma_3+\Gamma_5\mathfrak r_V)^2}.
+- path: paper/stages/stage_252.tex
+  line: 72
+  role: paper_stage_tex
+  excerpt: \gamma_{\rm lat}^{\rm eq}(s)=\Gamma_3^{\rm lat}s^2+\Gamma_5^{\rm lat}s^4.
+- path: paper/stages/stage_252.tex
+  line: 74
+  role: paper_stage_tex
+  excerpt: At the safe edge, with \(T=1/s_c\) and \(\Gamma_3s_c^3+\Gamma_5s_c^5=\mu_\eta(s_0^2-s_c^2)\), the total minimum
+    exported energy is \cref{eq:app-part08-main-safe-energy}, and the channel energies are obtained by multiplying by \(f_{\rm
+    vac}(s_c)\) or \(f_{\rm lat}(s_c)\).
+- path: paper/stages/stage_252.tex
+  line: 79
+  role: paper_stage_tex
+  excerpt: f_{\rm lat}(s_c)=\frac34
+- path: paper/stages/stage_252.tex
+  line: 81
+  role: paper_stage_tex
+  excerpt: \Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}s_c^2
+- path: paper/stages/stage_252.tex
+  line: 85
+  role: paper_stage_tex
+  excerpt: It is speed-independent only on the special family where both cubic and quintic channels have the same lattice
+    fraction.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 1
+  role: notes_stage
+  excerpt: '# Moving-Throat PDE — Stage 252: Vacuum-vs-Lattice Heat Partition and Cold-Survival Compiler from the Microscopic
+    Export Kernel'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 13
+  role: notes_stage
+  excerpt: \Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: \Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 17
+  role: notes_stage
+  excerpt: \Gamma_n^{\rm vac},\Gamma_n^{\rm lat}\ge 0,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 50
+  role: notes_stage
+  excerpt: \mathcal P_{\rm lat}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 52
+  role: notes_stage
+  excerpt: \Gamma_3^{\rm lat}\ddot V^{\,2}+\Gamma_5^{\rm lat}\dddot V^{\,2},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: '> for a chosen cold event, what fraction of the exported energy goes into the vacuum outlet, what fraction goes
+    into the lattice outlet, and what total export is minimally required for the cold event to survive?'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 64
+  role: notes_stage
+  excerpt: 1. the exact vacuum-vs-lattice split depends on one scalar event-shape quotient,
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 78
+  role: notes_stage
+  excerpt: '- Session IV used a by-hand vacuum/lattice split to estimate exported energies and cold-event rescue.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 79
+  role: notes_stage
+  excerpt: '- Session V then mapped that phenomenological lattice component into condensed-matter quantities.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: '- it computes the exact microscopic vacuum/lattice fractions on a chosen event,'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 85
+  role: notes_stage
+  excerpt: '- and it packages the result in the form that Stage 253 can translate into \(\lambda_{\rm ep}\omega_D\), trap
+    stiffness, and thermal-survival variables.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 100
+  role: notes_stage
+  excerpt: '- and that Session IV’s default split numerically placed most of the dissipated energy in the lattice channel.'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 104
+  role: notes_stage
+  excerpt: '- what the exact vacuum-vs-lattice fraction is on a general cold event,'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 105
+  role: notes_stage
+  excerpt: '- how that fraction depends on the relative cubic vs quintic loading of the two channels,'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 115
+  role: notes_stage
+  excerpt: 'Split the Stage-251 microscopic coefficients into vacuum and lattice pieces:'
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 117
+  role: notes_stage
+  excerpt: \Gamma_3=\Gamma_3^{\rm vac}+\Gamma_3^{\rm lat},
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 119
+  role: notes_stage
+  excerpt: \Gamma_5=\Gamma_5^{\rm vac}+\Gamma_5^{\rm lat}.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: E_{\rm lat}(T)=\Gamma_3^{\rm lat}\,\mathcal I_2(T)+\Gamma_5^{\rm lat}\,\mathcal I_3(T),
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 166
+  role: notes_stage
+  excerpt: f_{\rm lat}(\mathfrak r_V)
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 168
+  role: notes_stage
+  excerpt: \frac{\Gamma_3^{\rm lat}+\Gamma_5^{\rm lat}\mathfrak r_V}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 171
+  role: notes_stage
+  excerpt: f_{\rm vac}+f_{\rm lat}=1.
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 181
+  role: notes_stage
+  excerpt: \frac{d f_{\rm lat}}{d\mathfrak r_V}
+- path: notes/stages/moving_throat_pde_stage252_vacuum_vs_lattice_heat_partition_and_cold_survival_compiler_from_the_microscopic_export_kernel_sympy_audit.md
+  line: 183
+  role: notes_stage
+  excerpt: \frac{\Gamma_5^{\rm lat}\Gamma_3^{\rm vac}-\Gamma_3^{\rm lat}\Gamma_5^{\rm vac}}
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

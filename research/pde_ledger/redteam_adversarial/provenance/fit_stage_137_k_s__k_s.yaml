@@ -1,0 +1,91 @@
+schema_version: 1
+candidate_id: fit_stage_137_k_s
+parameter_name: K_s
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_137_k_s__phase_b__k_s.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '137'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_137.tex
+  line: 16
+  role: paper_stage_tex
+  excerpt: Explicit gains are \(M_s=Lg_s^2/(K_s\Theta_\sigma)\), \(M_q=-L(K_sg_q-\lambda g_s)^2/[K_s(K_sK_q+\lambda^2)\Theta_\sigma]\).
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 67
+  role: notes_stage
+  excerpt: \rho_c=\frac{g_s^2}{K_s},
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 70
+  role: notes_stage
+  excerpt: \frac{(K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)}.
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 79
+  role: notes_stage
+  excerpt: \frac{L g_s^2}{K_s\Theta_\sigma},
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 87
+  role: notes_stage
+  excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 113
+  role: notes_stage
+  excerpt: 1. the shell stiffness `K_s`,
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 129
+  role: notes_stage
+  excerpt: \frac{L g_s^2}{K_s\Theta_\sigma},
+- path: notes/stages/moving_throat_pde_stage137_core_to_mouth_gain_map.md
+  line: 132
+  role: notes_stage
+  excerpt: -\frac{L (K_sg_q-\lambda g_s)^2}{K_s(K_sK_q+\lambda^2)\Theta_\sigma}.
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 6
+  role: sympy_script
+  excerpt: Ks, Kq, lam, gs, gq = sp.symbols('K_s K_q lam g_s g_q', positive=True, real=True)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 9
+  role: sympy_script
+  excerpt: rho_c = sp.simplify(gs**2 / Ks)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 10
+  role: sympy_script
+  excerpt: sigma_c = sp.simplify((Ks*gq - lam*gs)**2 / (Ks*(Ks*Kq + lam**2)))
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 18
+  role: sympy_script
+  excerpt: 'M_core = sp.Matrix([[Ks, lam], [lam, -Kq * D_sch]])   # physical core stiffness matrix'
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 42
+  role: sympy_script
+  excerpt: Ms_paper = L * gs**2 / (Ks * Theta)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 43
+  role: sympy_script
+  excerpt: Mq_paper = -L * (Ks*gq - lam*gs)**2 / (Ks * (Ks*Kq + lam**2) * Theta)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 55
+  role: sympy_script
+  excerpt: r_c = lam**2 / (Ks * Kq)
+- path: scripts/moving_throat_pde_stage137_core_to_mouth_gain_map_sympy_audit.py
+  line: 94
+  role: sympy_script
+  excerpt: expr_rc = sp.simplify((Ks*gq - lam*gs)**2 / (Ks**2*Kq*(1 + lam**2/(Ks*Kq))))
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,217 @@
+schema_version: 1
+candidate_id: fit_stage_237_epsilon_eta
+parameter_name: epsilon_eta
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_237_epsilon_eta__phase_b__epsilon_eta.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '237'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_237.tex
+  line: 9
+  role: paper_stage_tex
+  excerpt: \stagefield{Inputs}{Imports the finite static-blind curve, microscopic log drifts $(c_1,\kappa_U,\kappa_\eta)$,
+    and the support-sector variables.}
+- path: paper/stages/stage_237.tex
+  line: 13
+  role: paper_stage_tex
+  excerpt: \stagefield{Derivation ledger}{The derivation derives $q_\eta=2c_1-\kappa_U-\kappa_\eta$, shows the finite static-blind
+    curve is support-blind, and identifies the post-static orbit-lock correction.}
+- path: paper/stages/stage_237.tex
+  line: 17
+  role: paper_stage_tex
+  excerpt: \stagefield{Verification note}{The detailed theorem-block formulas supporting this card are collected in the Part
+    VII appendix narrative above and in the source stage.  The card preserves the original stage order and records the claim
+    boundary; it should not be read as a second independent proof of actual nonlinear branch realization.}
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 10
+  role: notes_stage
+  excerpt: '> it computes the surviving rigid-mouth dressing coordinate `q_eta` exactly in the actual branch observables and
+    in the actual microscopic variables, and shows that this post-static obstruction is completely blind to the coherent support-enhancement
+    sector.'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 13
+  role: notes_stage
+  excerpt: Once the first static ceiling `q_nt = 0` has been cleared, the remaining obstruction is exactly the single actual-branch
+    scalar
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 15
+  role: notes_stage
+  excerpt: q_\eta = \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\mathrm{ref}}}\right),
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 25
+  role: notes_stage
+  excerpt: (\Delta_T,\Delta_{K_\eta},\Delta_\mu)
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 27
+  role: notes_stage
+  excerpt: -q_\eta(0,1,1).
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 29
+  role: notes_stage
+  excerpt: 'So after the first static gate is cleared, the entire unresolved same-charge obstruction is one scalar: the dressing
+    coordinate `q_eta`.'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 33
+  role: notes_stage
+  excerpt: '> how do we compute `q_eta` on the actual coherent branch, rather than only locating its microscopic carrier?'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 37
+  role: notes_stage
+  excerpt: (R_{\rm tr},\,R_{\rm target},\,\epsilon_\eta),
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 39
+  role: notes_stage
+  excerpt: and the dressing coordinate is simply the logarithmic ratio of `\epsilon_\eta` itself. This stage isolates that
+    fact, pushes it through the rigid-mouth static gate, and shows that the surviving dressing obstruction is rigorously support-blind.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 47
+  role: notes_stage
+  excerpt: (R_{\rm tr,ref},\,R_{\rm target,ref},\,\epsilon_{\eta,\rm ref}),
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 59
+  role: notes_stage
+  excerpt: +\ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 63
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 65
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 80
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}\right)
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 84
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 86
+  role: notes_stage
+  excerpt: \ln\!\left(\frac{\epsilon_\eta}{\epsilon_{\eta,\rm ref}}\right).
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 93
+  role: notes_stage
+  excerpt: '- `q_eta` is the pure dressing logarithmic ratio.'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 97
+  role: notes_stage
+  excerpt: '## 2. Exact finite static-blind curve and direct computation of `q_eta`'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 108
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_\eta}{1-\epsilon_{\eta,\rm ref}}.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 115
+  role: notes_stage
+  excerpt: Parameterizing that curve by `q_eta`, we use
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 117
+  role: notes_stage
+  excerpt: \epsilon_\eta=\epsilon_{\eta,\rm ref}e^{q_\eta},
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 124
+  role: notes_stage
+  excerpt: \frac{1-\epsilon_{\eta,\rm ref}e^{q_\eta}}{1-\epsilon_{\eta,\rm ref}}.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 128
+  role: notes_stage
+  excerpt: 'Conversely, once the static gate has been cleared, `q_eta` can be computed directly from the actual branch target
+    observable alone:'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 131
+  role: notes_stage
+  excerpt: q_\eta
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 134
+  role: notes_stage
+  excerpt: \frac{1-(1-\epsilon_{\eta,\rm ref})\,R_{\rm target}/R_{\rm target,ref}}
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 135
+  role: notes_stage
+  excerpt: '{\epsilon_{\eta,\rm ref}}'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 142
+  role: notes_stage
+  excerpt: '- the dressing observable `\epsilon_\eta`, or'
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 147
+  role: notes_stage
+  excerpt: q_{\rm nt}=0,\ q_\eta=0
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 150
+  role: notes_stage
+  excerpt: \ \epsilon_\eta=\epsilon_{\eta,\rm ref}.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 159
+  role: notes_stage
+  excerpt: q_\eta=\delta\ln\epsilon_\eta,
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 167
+  role: notes_stage
+  excerpt: \frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}\,\delta\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 172
+  role: notes_stage
+  excerpt: c_\eta:=\frac{\epsilon_{\eta,*}}{1-\epsilon_{\eta,*}}.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 177
+  role: notes_stage
+  excerpt: q_{\rm nt}=-R_1-c_\eta E_1,
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 179
+  role: notes_stage
+  excerpt: q_\eta=E_1,
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 186
+  role: notes_stage
+  excerpt: E_1:=\delta\ln\epsilon_\eta.
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 193
+  role: notes_stage
+  excerpt: R_1=-c_\eta q_\eta,
+- path: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+  line: 195
+  role: notes_stage
+  excerpt: q_\eta=-\frac{R_1}{c_\eta}.
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps:
+  - source: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    - paper/stages/stage_237.tex
+    - research/pde_ledger/paper/stages/stage_237.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path
+provenance_findings:
+- type: graph_gap
+  severity: needs_triage
+  summary: The atlas graph wrapper returned no source nodes for one or more primary sources.
+  gaps:
+  - source: notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    attempted_sources:
+    - notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    - research/pde_ledger/notes/stages/moving_throat_pde_stage237_actual_branch_dressing_compiler_finite_static_blind_curve_and_support_blind_post_static_orbit_lock_theorem_sympy_audit.md
+    - paper/stages/stage_237.tex
+    - research/pde_ledger/paper/stages/stage_237.tex
+    graph_gap: true
+    reason: no atlas node tied to this source path

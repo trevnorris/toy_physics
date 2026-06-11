@@ -1,0 +1,189 @@
+schema_version: 1
+candidate_id: fit_stage054_robin_branch_determined
+parameter_name: A_K
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage054_robin_branch_determined__phase_b__a_k.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '054'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_054.tex
+  line: 30
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage054-AK}
+- path: paper/stages/stage_054.tex
+  line: 32
+  role: paper_stage_tex
+  excerpt: A_K(\eta)=\frac{K_W^{\rm eff}}{K_{\phi,0}^{\rm eff}}
+- path: paper/stages/stage_054.tex
+  line: 37
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage054-AK-window}
+- path: paper/stages/stage_054.tex
+  line: 39
+  role: paper_stage_tex
+  excerpt: 1\leq A_K\leq\frac{4}{4-x}}.
+- path: paper/stages/stage_054.tex
+  line: 43
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Robin root \eqref{eq:app-stage054-robin-root}, softening factor \eqref{eq:app-stage054-AK},
+    and ceiling \eqref{eq:app-stage054-AK-window}.}
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 32
+  role: notes_stage
+  excerpt: '`A_K(eta) := K_W^(eff) / K_(phi,0)^(eff)`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 38
+  role: notes_stage
+  excerpt: '`A_K = 1` at the symmetric D/N point to the exact maximum'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 40
+  role: notes_stage
+  excerpt: '`A_K,max = 4/(4-x)`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 105
+  role: notes_stage
+  excerpt: '`A_K(eta) := K_W^(eff) / K_(phi,0)^(eff).`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 121
+  role: notes_stage
+  excerpt: '`A_K(eta)`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 134
+  role: notes_stage
+  excerpt: '`A_K = 1.`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 140
+  role: notes_stage
+  excerpt: '`A_K,max = 1 / (1 - x/4) = 4 / (4 - x).`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 144
+  role: notes_stage
+  excerpt: '`1 <= A_K < 4/(4-x)`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 148
+  role: notes_stage
+  excerpt: Because the map `y -> eta = y tan y` is strictly increasing on `(0,pi/2)`, and `A_K` is strictly decreasing in
+    `y`, the softening factor is strictly decreasing in `eta`.
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 149
+  role: notes_stage
+  excerpt: So weaker mouth pinning means stronger support softening.
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 157
+  role: notes_stage
+  excerpt: '`A_K >= zeta_req`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 163
+  role: notes_stage
+  excerpt: '`A_K <= 4/(4-x)`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 183
+  role: notes_stage
+  excerpt: '`A_K = 1 / [ 1 - x/4 + x y^2 / pi^2 ] >= zeta_req,`'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 213
+  role: notes_stage
+  excerpt: '- the Robin-deformed lowest support branch is determined by'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 219
+  role: notes_stage
+  excerpt: '`A_K = 1 / [ 1 - x/4 + x y^2 / pi^2 ]`,'
+- path: notes/stages/moving_throat_pde_stage054_robin_softening_support_lane.md
+  line: 223
+  role: notes_stage
+  excerpt: '`1 <= A_K <= 4/(4-x)`'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 49
+  role: sympy_script
+  excerpt: AK = sp.simplify(KW_expr / Kphi)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 53
+  role: sympy_script
+  excerpt: print("A_K =", AK)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 60
+  role: sympy_script
+  excerpt: 'AK_x = sp.simplify((KW / (KX + TX * y**2 / L**2)).subs({KX: KX_from_x, TX: TX_from_x}))'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 61
+  role: sympy_script
+  excerpt: print("A_K in x,y form =", AK_x)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 62
+  role: sympy_script
+  excerpt: expect_zero("A_K x-form", AK_x - 1 / (1 - x / 4 + x * y**2 / pi**2))
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: AK_sym = sp.simplify(1 / (1 - x / 4 + x * y**2 / pi**2))
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 65
+  role: sympy_script
+  excerpt: AK_DN = sp.simplify(AK_sym.subs(y, pi / 2))
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 66
+  role: sympy_script
+  excerpt: AK_soft = sp.simplify(sp.limit(AK_sym, y, 0, dir="+"))
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 67
+  role: sympy_script
+  excerpt: print("A_K(y=pi/2) =", AK_DN)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: print("A_K(y->0+) =", AK_soft)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 69
+  role: sympy_script
+  excerpt: expect_zero("DN limit", AK_DN - 1)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 70
+  role: sympy_script
+  excerpt: expect_zero("soft-mouth limit", AK_soft - 4 / (4 - x))
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 72
+  role: sympy_script
+  excerpt: '# Monotonicity certificate: A_K is strictly decreasing in y on (0, pi/2)'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 73
+  role: sympy_script
+  excerpt: '# with 0 < x < 4. Verify the closed form of dA_K/dy; positivity of the'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: '# prefactor 2*x*y/pi^2 on the assumed domain then implies dA_K/dy < 0,'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: '# which together with the endpoint values brackets A_K in [1, 4/(4-x)].'
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 76
+  role: sympy_script
+  excerpt: dAK_dy = sp.diff(AK_sym, y)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 77
+  role: sympy_script
+  excerpt: dAK_dy_expected = -2 * x * y / (pi**2 * (1 - x / 4 + x * y**2 / pi**2) ** 2)
+- path: scripts/moving_throat_pde_stage054_robin_softening_sympy_audit.py
+  line: 78
+  role: sympy_script
+  excerpt: expect_zero("dA_K/dy closed form", dAK_dy - dAK_dy_expected)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

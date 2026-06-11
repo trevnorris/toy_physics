@@ -1,0 +1,139 @@
+schema_version: 1
+candidate_id: fit_stage248_v0_cross_benchmark_speed
+parameter_name: v0_cross
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage248_v0_cross_benchmark_speed__phase_b__v0_cross.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '248'
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 16
+  role: notes_stage
+  excerpt: 4. and the declared Session-II benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 55
+  role: notes_stage
+  excerpt: and the declared Session-II benchmark specialization.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 58
+  role: notes_stage
+  excerpt: Session-II benchmark numbers explicitly confined to the benchmark-only
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 68
+  role: notes_stage
+  excerpt: '- The same-charge barrier audit had already shown that the linear dynamic mixed bundle does **not** generate a
+    new conservative kernel class at large distance. Linear time dependence only makes the already-admissible short-range
+    families frequency dependent, while the first outgoing correction is phase lag / pumping rather than direct conservative
+    barrier lowering.'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 144
+  role: notes_stage
+  excerpt: The minimum launch speed required to reach the top of the reduced barrier is determined by
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 180
+  role: notes_stage
+  excerpt: Let the lowered branch be single-peaked on \([r_{\rm contact},r_0]\), so that crossing the peak is sufficient to
+    reach contact. Then if
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 323
+  role: notes_stage
+  excerpt: So once the lowered branch gives \(I_{\rm new}<I_{\rm Coul}\), the enhancement is completely fixed.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 362
+  role: notes_stage
+  excerpt: This normal form is not needed for the Session-II benchmark itself, but it is the right local compiler for later
+    near-threshold analysis.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 396
+  role: notes_stage
+  excerpt: So the same turning-point event chain also determines the first dynamic confinement-width trigger.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 405
+  role: notes_stage
+  excerpt: '## 6. Session-II benchmark specialization'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 515
+  role: notes_stage
+  excerpt: v_{0,\rm cross}=2.59221845.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 525
+  role: notes_stage
+  excerpt: E_{\rm Coul}(v_{0,\rm cross})
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 527
+  role: notes_stage
+  excerpt: \frac12 v_{0,\rm cross}^2+\frac15,
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 531
+  role: notes_stage
+  excerpt: r_{\rm turn,Coul}(v_{0,\rm cross})
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 533
+  role: notes_stage
+  excerpt: \frac{1}{E_{\rm Coul}(v_{0,\rm cross})}
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 538
+  role: notes_stage
+  excerpt: 'So the benchmark does exactly what Stage 248 needs it to do: it exhibits a concrete speed range where the lowered
+    branch reaches the chosen contact scale and the Coulomb comparison does not.'
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 555
+  role: notes_stage
+  excerpt: That is within the numerical tolerance implied by the reported Session-II discrete reference value \(0.30222297\),
+    so the closed-form Coulomb side of the compiler is consistent with the dynamic benchmark.
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 566
+  role: notes_stage
+  excerpt: 2. the barrier peak determines a finite launch threshold
+- path: notes/stages/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.md
+  line: 586
+  role: notes_stage
+  excerpt: The event-chain improvement still sits on a short-range/open-system front end, and the linear dynamic mixed bundle
+    still contributes phase-lag / pumping rather than a new conservative kernel class.
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 249
+  role: sympy_script
+  excerpt: vcross_num = 2.59221845
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 274
+  role: sympy_script
+  excerpt: Ecoul_cross_num = 0.5 * vcross_num**2 + 1.0 / r0_num
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 275
+  role: sympy_script
+  excerpt: rcoul_turn_cross_num = 1.0 / Ecoul_cross_num
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 297
+  role: sympy_script
+  excerpt: print("v_cross(session)      =", vcross_num)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 298
+  role: sympy_script
+  excerpt: print("Coulomb turnback at v_cross =", rcoul_turn_cross_num)
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 308
+  role: sympy_script
+  excerpt: assert vcrit_num < vcross_num < vcontact_num
+- path: scripts/moving_throat_pde_stage248_dynamic_event_chain_compiler_from_relaxed_stationary_barrier_front_end_turning_point_threshold_speed_and_wkb_sympy_audit.py
+  line: 309
+  role: sympy_script
+  excerpt: assert abs(rcoul_turn_cross_num - rcoul_turn_report) < 3e-6
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

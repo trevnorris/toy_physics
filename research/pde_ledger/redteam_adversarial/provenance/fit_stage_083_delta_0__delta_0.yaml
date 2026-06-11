@@ -1,0 +1,127 @@
+schema_version: 1
+candidate_id: fit_stage_083_delta_0
+parameter_name: Delta_0
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_083_delta_0__phase_b__delta_0.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- 083
+notes_source_opened: true
+source_evidence:
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 30
+  role: notes_stage
+  excerpt: '`Pe_* = Xi Delta(Pe_*;kappa,eta).`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 34
+  role: notes_stage
+  excerpt: '`dPe_*/dXi = Delta(Pe_*;kappa,eta) / [ 1 - Xi partial_Pe Delta(Pe_*;kappa,eta) ].`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 38
+  role: notes_stage
+  excerpt: '`Delta > 0,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 40
+  role: notes_stage
+  excerpt: '`partial_Pe Delta > 0,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 44
+  role: notes_stage
+  excerpt: '`1 - Xi partial_Pe Delta > 0.`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 75
+  role: notes_stage
+  excerpt: '`Pe_-^(F1) = Xi_F1 Delta_0(kappa_F1,eta_F1),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 77
+  role: notes_stage
+  excerpt: '`Pe_+^(F1) = Xi_F1 Delta_inf(kappa_F1,eta_F1),`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 81
+  role: notes_stage
+  excerpt: '`Delta_0(kappa_F1,eta_F1) ≈ 1.73302079021525e-4,`'
+- path: notes/stages/moving_throat_pde_stage083_family1_direct_operator_window.md
+  line: 83
+  role: notes_stage
+  excerpt: '`Delta_inf(kappa_F1,eta_F1) ≈ 2.01447565540522e-2.`'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 8
+  role: sympy_script
+  excerpt: 2. Exact Family-1 support/source constants and Delta_0, Delta_inf.
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 46
+  role: sympy_script
+  excerpt: Delta = sp.Function("Delta")
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 48
+  role: sympy_script
+  excerpt: fixed_point = sp.Eq(Pe, Xi * Delta(Pe))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 50
+  role: sympy_script
+  excerpt: dPe_expected = sp.simplify(Delta(Pe) / (1 - Xi * sp.diff(Delta(Pe), Pe)))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 64
+  role: sympy_script
+  excerpt: Delta0_F1 = sp.simplify(
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 68
+  role: sympy_script
+  excerpt: DeltaInf_F1 = sp.simplify(
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 74
+  role: sympy_script
+  excerpt: expect_close("Delta_0(F1) numeric anchor", Delta0_F1, sp.Float("1.73302079021525e-4"), 1e-16)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 75
+  role: sympy_script
+  excerpt: expect_close("Delta_inf(F1) numeric anchor", DeltaInf_F1, sp.Float("2.01447565540522e-2"), 1e-15)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 87
+  role: sympy_script
+  excerpt: print("Delta_0(F1) =", sp.N(Delta0_F1, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 88
+  role: sympy_script
+  excerpt: print("Delta_inf(F1) =", sp.N(DeltaInf_F1, 30))
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 109
+  role: sympy_script
+  excerpt: Pe_minus_chi = sp.N(Xi_chi_coeff * Delta0_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 110
+  role: sympy_script
+  excerpt: Pe_plus_chi = sp.N(Xi_chi_coeff * DeltaInf_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 111
+  role: sympy_script
+  excerpt: Pe_minus_J = sp.N(Xi_J_coeff * Delta0_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 112
+  role: sympy_script
+  excerpt: Pe_plus_J = sp.N(Xi_J_coeff * DeltaInf_F1, 30)
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 139
+  role: sympy_script
+  excerpt: '# stable branch" follows because Pe = Xi * Delta is monotone in Xi on the'
+- path: scripts/moving_throat_pde_stage083_family1_direct_operator_window_sympy_audit.py
+  line: 169
+  role: sympy_script
+  excerpt: print("  dPe_*/dXi = Delta / (1 - Xi dDelta/dPe)")
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

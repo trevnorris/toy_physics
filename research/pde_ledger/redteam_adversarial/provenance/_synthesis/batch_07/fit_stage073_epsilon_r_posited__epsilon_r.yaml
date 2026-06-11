@@ -1,0 +1,25 @@
+candidate_id: fit_stage073_epsilon_r_posited
+parameter_name: epsilon_r
+origin_claims:
+  - parameter: epsilon_r
+    introduced_at_stage: 073
+    introduced_at_line: 30
+    citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 30
+      excerpt: "`epsilon_r = 0.05 = 1/20.`"
+constraints:
+  - parameter: epsilon_r
+    constraint_kind: free_choice
+    evidence_citation:
+      path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 18
+      excerpt: "- the balanced thin-layer-consistent Family-1 radial wall branch"
+downstream_dependents: [74]
+provenance_findings:
+  - type: free_choice
+    severity: low
+    summary: "epsilon_r = 1/20 (ell/a) is a posited reference-branch value listed among the 'frozen inputs' as 'the balanced thin-layer-consistent Family-1 radial wall branch'. It is neither derived from ledger-internal consistency nor matched to an external published number; it is an ansatz/convention setting the thin-wall scale. Candidate label 'epsilon_r_posited' matches."
+    citations:
+      - { path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md, line: 15, excerpt: "The relevant frozen inputs are:" }
+      - { path: paper/stages/stage_073.tex, line: 19, excerpt: "\\frac{\\ell}{a}=\\frac{1}{20}}." }

@@ -1,0 +1,118 @@
+schema_version: 1
+candidate_id: fit_stage_025_p0_compact
+parameter_name: P0_target
+dry_run: false
+dry_run_id: null
+non_binding: false
+generated_content_kind: mechanical_evidence_bundle
+synthesis_status: pending
+agent_prompt_path: redteam_adversarial/tmp_prompts/fit_stage_025_p0_compact__phase_b__p0_target.md
+agent_synthesis_required: true
+dry_run_fixture: false
+fixture_note: null
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+  - file/source provenance
+  - result/stage provenance without value genealogy
+anchor_stages:
+- '025'
+notes_source_opened: true
+source_evidence:
+- path: paper/stages/stage_025.tex
+  line: 61
+  role: paper_stage_tex
+  excerpt: Because Stage~024 gives \(\widehat m_{\rm ang}=1\), the normalization target is
+- path: paper/stages/stage_025.tex
+  line: 63
+  role: paper_stage_tex
+  excerpt: \label{eq:app-stage025-normalization-target}
+- path: paper/stages/stage_025.tex
+  line: 67
+  role: paper_stage_tex
+  excerpt: =N_Q^{\rm target}}.
+- path: paper/stages/stage_025.tex
+  line: 88
+  role: paper_stage_tex
+  excerpt: \stagefield{Output}{Stage~025 outputs the explicit one-mode target \eqref{eq:app-stage025-normalization-target},
+    the stability gate \eqref{eq:app-stage025-stability}, and the first monotonicity signs \eqref{eq:app-stage025-monotonicity}.}
+- path: paper/stages/stage_025.tex
+  line: 94
+  role: paper_stage_tex
+  excerpt: \item If \(\mathcal P=0\), then \(N_0=0\) and a positive quadrupole target cannot be reached.
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 99
+  role: notes_stage
+  excerpt: So the full isotropic target becomes
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 168
+  role: notes_stage
+  excerpt: 'The second statement is useful because it makes the normalization target operational: stronger support dressing
+    pushes the bridge **up**, while a stiffer bare wall pushes it **down**.'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 182
+  role: notes_stage
+  excerpt: So the normalization target is not asking for generic “more coupling.”
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 215
+  role: notes_stage
+  excerpt: '- if it lands on the target, the passive/outgoing grouped quadrupole bridge is closed on the minimal isotropic
+    branch;'
+- path: notes/stages/moving_throat_pde_stage025_minimal_isotropic_normalization.md
+  line: 238
+  role: notes_stage
+  excerpt: That is the sharpest reduced theorem target reached so far.
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 14
+  role: sympy_script
+  excerpt: • exact target equation on the minimal isotropic branch,
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 119
+  role: sympy_script
+  excerpt: '# target coefficient 54/5 is carried forward from'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 123
+  role: sympy_script
+  excerpt: target = sp.simplify(54 * G * c_s**5 / (5 * a**5 * c**5))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 124
+  role: sympy_script
+  excerpt: equation_residual = sp.simplify(mhat**2 * P0_compact - target)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 126
+  role: sympy_script
+  excerpt: subbanner("II.2 — Exact target equation")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 127
+  role: sympy_script
+  excerpt: print("Target residual =")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 129
+  role: sympy_script
+  excerpt: '# Solvability check: mhat^2 = target / P0_compact must be positive on the'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 130
+  role: sympy_script
+  excerpt: '# stability branch (Delta > 0, D0 > 0, so P0_compact > 0; and target > 0'
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 132
+  role: sympy_script
+  excerpt: mhat_sq = sp.simplify(target / P0_compact)
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 146
+  role: sympy_script
+  excerpt: residual_at_Pzero = sp.simplify((mhat**2 * P0_compact - target).subs(P_zero_sub))
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 147
+  role: sympy_script
+  excerpt: print(f"(mhat^2*P0 - target) at P=0 = {residual_at_Pzero}")
+- path: scripts/moving_throat_pde_stage025_minimal_isotropic_normalization_sympy_audit.py
+  line: 148
+  role: sympy_script
+  excerpt: expect_zero("(mhat^2*P0 - target) at P=0 equals -target", residual_at_Pzero + target)
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

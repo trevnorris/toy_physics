@@ -1,0 +1,320 @@
+schema_version: 1
+description: Reviewable concept-variant aliases for adversarial target resolution. Variants map to one canonical concept id;
+  seeded chains are non-primary family overlays.
+aliases:
+  Sigma_0_can: Sigma0_can
+  Sigma0_can: Sigma0_can
+  Sigma0_num: Sigma0_can
+  Sigma0_can_expected: Sigma0_can
+  Sigma_0_can_expected: Sigma0_can
+  Sigma_0_star: Sigma0_star
+  Sigma0_hat: Sigma0_hat
+  chi_q: chi_Q
+  chiQ: chi_Q
+  chi_Q: chi_Q
+  chi_Q_R: chi_Q
+  chi_Q_hyb: chi_Q
+  m0_hat: mhat_0
+  mhat0: mhat_0
+  mhat_0: mhat_0
+  m_hat_0: mhat_0
+  m_hat0: mhat_0
+  mhat_minus: mhat_0
+  P0target: P0_target
+  P_0_target: P0_target
+  P0_target: P0_target
+  P_0: P0_target
+  P0_compact: P0_target
+  NQ_target: N_Q
+  N_Q_target: N_Q
+  NQ_from_def: N_Q
+  N_Q: N_Q
+  Gamma5_target: Gamma_5
+  Gamma5_port: Gamma_5
+  Gamma_5: Gamma_5
+  gamma_GR: Gamma_5
+  normalization_54_5: Gamma_5
+  coefficient_54_over_5: Gamma_5
+  target_coefficient_54_5: Gamma_5
+  L_over_a: L_over_a
+  Lambda_ell: L_over_a
+  ell_over_a: L_over_a
+  aspect_ratio: L_over_a
+  aspect_ratio_37_20: L_over_a
+  aspect_ratio_37_over_20: L_over_a
+  rF1: r_F1
+  r_F1: r_F1
+  r_f1: r_F1
+  r_star: r_F1
+  mathfrak_r_F1: r_F1
+  mathfrak_r_geom: r_F1
+  g_F1: g_star
+  g_minus_F1: g_star
+  mathfrak_g_minus_F1: g_star
+  T_can: T_can
+  T_m_can: T_can
+  T_hat_can: T_can
+  T_hat_can_expected: T_can
+  T_hat_m: T_can
+  S_can: S_can
+  S_can_expected: S_can
+  Pi_can: Pi_can
+  Pi_can_expected: Pi_can
+  V_known: V_known
+  V_known_x1: V_known
+  DeltaV_req: DeltaV_req
+  lambda_L: lambda_L
+  lambda_L_soft: lambda_L
+  lambda_L_paper: lambda_L
+  Lvar_soft: lambda_L
+  K_eta: K_eta
+  T_Omega: T_Omega
+  T_w: T_w
+  mu_eta: mu_eta
+  K_Sigma: K_Sigma
+  Theta_w: Theta_w
+  Theta_w_chi: Theta_w
+  Theta_w_J: Theta_w
+key_rules:
+- pattern: (?:^|_)sigma0_num(?:_|$)
+  target: Sigma0_num
+- pattern: (?:^|_)sigma0_can(?:_|$)
+  target: Sigma0_can
+- pattern: (?:^|_)sigma_0_can(?:_|$)
+  target: Sigma_0_can
+- pattern: fixedpoint_expected_targets_json
+  target: Sigma0_can
+  multi_target: true
+- pattern: canonical_quartet_literals
+  target: Sigma0_can
+  multi_target: true
+- pattern: canonical_mouth_block
+  target: Sigma0_can
+  multi_target: true
+- pattern: (?:^|_)chi_?q(?:_|$)|chiq|chiQ
+  target: chi_Q
+- pattern: unit_product_m0hat2_chiQ_NQ
+  target: chi_Q
+  multi_target: true
+- pattern: (?:^|_)m0hat|mhat0|mhat_0|m_hat_0
+  target: mhat_0
+- pattern: (?:^|_)nq(?:_|$)|nq_target|NQ_target
+  target: N_Q
+- pattern: (?:^|_)p0target|p0_target|p_0_target|universal_p0
+  target: P0_target
+- pattern: 54_5|54_over_5|quadrupole_normalization|normalization_target
+  target: P0_target
+- pattern: aspect_ratio|37_20|37_over_20
+  target: L_over_a
+- pattern: rexact_closed_form_4107|radical_constant_forced_by_rf1
+  target: r_F1
+- pattern: (?:^|_)lambda_l(?:_|$)|lambda_L
+  target: lambda_L
+- pattern: vknown|V_known|barrier_benchmark
+  target: V_known
+- pattern: wall_action_constitutive_coefficients
+  target: K_eta
+  multi_target: true
+- pattern: calibration_slice|benchmark_masses|stage252_slice_inputs
+  target: mu_eta
+  multi_target: true
+multi_target_key_patterns:
+- block
+- bundle
+- calibration_slice
+- canonical_quartet
+- constants_block
+- expected_targets
+- inputs
+- packet
+- quintuple
+- slice
+chains:
+  chain_quad_54_5:
+    description: 54/5 plus gamma_GR quadrupole normalization target.
+    concepts:
+    - P0_target
+    - N_Q
+    - Gamma_5
+    - mhat_0
+    expected_stages:
+    - 019
+    - '022'
+    - '023'
+    - '025'
+    - '030'
+    - '189'
+    - '193'
+    - '195'
+    - '197'
+    - '223'
+    expected_candidate_ids:
+    - fit_stage019_P0_target_upstream_pin
+    - fit_stage019_p0target_54_5_raw_retype
+    - fit_stage022_p0_quadrupole_normalization_target
+    - fit_stage023_nq_target_gr_quadrupole_match
+    - fit_stage025_target_coefficient_54_5
+    - fit_stage030_nq_target_retype_54_5
+    - fit_stage189_mhat0_quadrupole_normalization_target
+    - fit_stage189_normalization_target_2g_5c5
+    - fit_stage195_p0_target_canonical_value
+    - fit_stage197_p0_target_quadrupole_normalization
+    - fit_stage223_p0_target_calibration_coefficient
+  chain_aspect_37_20:
+    description: 37/20 aspect-ratio cascade into Family-1, including the 4107 radical.
+    concepts:
+    - L_over_a
+    - r_F1
+    - g_star
+    - epsilon_r
+    - eta
+    expected_stages:
+    - '073'
+    - '121'
+    - '131'
+    - '139'
+    - '146'
+    - '148'
+    - '168'
+    expected_candidate_ids:
+    - fit_stage073_Lambda_ell_fixed_37
+    - fit_stage073_aspect_ratio_L_over_a
+    - fit_stage073_wall_fraction_epsilon_r
+    - fit_stage121_aspect_ratio_37_20_reference_freeze
+    - fit_stage121_aspect_ratio_37_over_20
+    - fit_stage146_aspect_ratio_37_20_primitive
+    - fit_stage148_radical_constant_forced_by_rf1
+    - fit_stage168_rexact_closed_form_4107
+  chain_chi_Q_norm:
+    description: chi_Q / mhat_0 / N_Q outgoing normalization chain.
+    concepts:
+    - chi_Q
+    - mhat_0
+    - N_Q
+    - sigma_Q_can
+    - xi_Q
+    expected_stages:
+    - '100'
+    - '101'
+    - '104'
+    - '105'
+    - '107'
+    - '108'
+    - '192'
+    - '194'
+    - '195'
+    - '196'
+    - '197'
+    - '232'
+    expected_candidate_ids:
+    - fit_stage100_chiQ_fixed_downstream_card
+    - fit_stage104_unit_product_m0hat2_chiQ_NQ
+    - fit_stage105_chiQ_eq_1_by_matching_card
+    - fit_stage105_chi_q_canonical_fix
+    - fit_stage105_chi_q_canonical_unity
+    - fit_stage_105_chi_q
+    - fit_stage194_chi_Q_canonical_fixing
+    - fit_stage195_mhat0_natural_source_map
+    - fit_stage196_sigma_Q_canonical_outgoing_scale
+    - fit_stage197_chi_q_unity_packet_a_target
+    - fit_stage232_nq_canonical_normalization
+  chain_sigma0_transport:
+    description: Sigma0_can / T_can transport chain, including 867/876 digit drift.
+    concepts:
+    - Sigma0_can
+    - T_can
+    - S_can
+    - Pi_can
+    expected_stages:
+    - '155'
+    - '156'
+    - '157'
+    - '158'
+    - '163'
+    - '168'
+    expected_candidate_ids:
+    - fit_stage155_fixedpoint_expected_targets_json
+    - fit_stage156_unique_traction_renormalization
+    - fit_stage157_expected_values_sidecar_json
+    - fit_stage158_canonical_quartet_literals
+    - fit_stage163_sigma0_can_digit_variant
+    - fit_stage168_canonical_mouth_block
+    - fit_stage168_sigma0_num_digit_variant
+  chain_barrier_222_224:
+    description: Barrier 222-224 chain, including V_known.
+    concepts:
+    - V_known
+    - DeltaV_req
+    - epsilon_barrier
+    - lambda_20
+    - lambda_21
+    - lambda_22
+    - barP0_compat
+    - T_quad
+    expected_stages:
+    - '222'
+    - '223'
+    - '224'
+    expected_candidate_ids:
+    - fit_stage222_illustrative_barrier_benchmark
+    - fit_stage222_vknown_barrier_benchmark
+    - fit_stage223_barrier_benchmark_and_eta_window
+    - fit_stage224_grouped_signature_exact
+    - fit_stage224_kill_test_budgets_slice_anchored
+    - fit_stage224_t_quad_target_scale
+  chain_calibration_245_253:
+    description: Calibration 245-253 chain, including lambda_L and CODATA mass-ratio carriers.
+    concepts:
+    - lambda_L
+    - epsilon_eta
+    - K_turn
+    - f_lat
+    - gamma_lattice_red
+    - gamma_lattice_legacy
+    - mu_eta
+    - Upsilon_lat
+    - m_s
+    expected_stages:
+    - '245'
+    - '247'
+    - '248'
+    - '250'
+    - '253'
+    expected_candidate_ids:
+    - fit_stage245_eps_eta_session1_match
+    - fit_stage247_lambda_L_backsolve
+    - fit_stage247_lambda_L_closure
+    - fit_stage247_lambda_l_fixed_by_recorded_point
+    - fit_stage248_xi_turn_lambda_th_carried_hardcodes
+    - fit_stage250_benchmark_masses_and_window
+    - fit_stage253_calibration_slice_nominal_constants
+    - fit_stage253_K_turn_force_match
+    - fit_stage253_upsilon_lat_calibration
+  chain_wall_action:
+    description: Wall-action coefficients plus mhat/P0 normalization carriers.
+    concepts:
+    - K_eta
+    - T_Omega
+    - T_w
+    - mu_eta
+    - mhat_0
+    - P0_target
+    - K_Sigma
+    expected_stages:
+    - '001'
+    - 019
+    - '022'
+    - 038
+    - '193'
+    - '223'
+    expected_candidate_ids:
+    - fit_stage001_wall_action_constitutive_coefficients
+    - fit_stage019_K_Sigma_fixed_by_one_pole
+    - fit_stage019_K_Sigma_fixed_by_outgoing_normalization
+    - fit_stage019_P0_target_upstream_pin
+    - fit_stage022_mhat0_unity_branch
+    - fit_stage022_p0_quadrupole_normalization_target
+    - fit_stage038_mhat_p0_fitted_scales
+    - fit_stage193_p0_target_surface_frozen_without_derivation_edge
+    - fit_stage223_p0_target_import_unprovenanced
+    - fit_stage223_universal_p0_target

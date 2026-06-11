@@ -35,7 +35,13 @@ Run from either `/var/projects/toy_physics` or `/var/projects/toy_physics/resear
 - `phase-a-scan --stages NNN ... [--prefix NAME]` runs the broad mechanical Phase A modalities, writes YAML fragments, unions candidates, and renders all four modality prompts plus the completeness-critic prompt.
 - `phase-a-ingest <fragment.yaml> [<fragment.yaml> ...]` ingests agent-emitted Phase A fragments under the manifest lock and re-renders `fit_insertion_points.yaml` plus `BATCHES.md`.
 - `render-critic [--prefix NAME]` re-renders the completeness-critic prompt from the current manifest union and every fragment file under `phase_a_fragments/`.
-- `phase-b-build <candidate_id>` builds a mechanical parameter-value evidence bundle, renders the Phase B provenance-builder prompt, and updates manifest status to `provenance_built`.
+- `target-resolve [--out PATH]` reads `MANIFEST.yaml` without a lock and writes the reviewable clean target identity sidecar. Default: `redteam_adversarial/provenance/_target_layer.yaml`.
+- `dedup-propose [--out PATH]` reads `MANIFEST.yaml` plus `_target_layer.yaml` without a lock and writes a strict value-anchored alias-map proposal; it mutates no campaign state.
+- `apply-alias-map <map.yaml>` applies a reviewed alias map under the manifest lock, setting `duplicate_of` on aliases and merging attribution onto canonicals.
+- `family-build [--out PATH]` reads canonical candidates plus `_target_layer.yaml` without a lock and writes a reviewable concept-family map; re-run it after alias application.
+- `phase-b-build <candidate_id>` builds a mechanical parameter-value evidence bundle and renders the Phase B provenance-builder prompt. Real candidates remain pre-synthesis with `synthesis_status: pending`; dry-run fixtures keep the straight-through `provenance_built` path.
+- `phase-b-ingest <synthesis.yaml> [<synthesis.yaml> ...]` ingests agent Phase B synthesis under the manifest lock, enforcing `notes/` citations for origin and constraint claims before moving real candidates to `provenance_built`.
+- `benchmark-ingest <bench.yaml> [<bench.yaml> ...]` ingests sourced benchmark entries under the manifest lock. Every entry needs a real URL, DOI, CODATA identifier, or textbook reference/page.
 - `phase-c-render <candidate_id>` renders the adversarial prompt under `redteam_adversarial/tmp_prompts/` and updates status to `audit_pending`.
 - `set-status <candidate_id> <status> [--note TEXT]` advances a candidate through the state machine under the manifest lock; `blocked` is reachable from any state.
 - `codex-defense <candidate_id> <parameter> [iter]` renders a defense prompt and invokes Codex, resuming the session keyed by parameter.
@@ -97,7 +103,25 @@ For a bounded scan or dry-run fixture:
 
 ### Phase B Build
 
-1. Choose a scanned candidate:
+Step 4 Phase B starts with mechanical grouping, then clean-agent synthesis:
+
+```bash
+$AA target-resolve
+$AA dedup-propose
+# clean orchestrator/agent review of redteam_adversarial/provenance/_dedup_proposal.yaml
+$AA apply-alias-map redteam_adversarial/provenance/<reviewed_alias_map>.yaml
+$AA family-build
+```
+
+`target-resolve` creates `_concept_aliases.yaml` if needed, then resolves one clean `primary_target_parameter` per scanned real candidate. Resolution priority is deterministic: `candidate_key` rules first, key-token matches second, and `parameter_names` fallback only when the key is uninformative. The sidecar records `target_values` from citation excerpts and cited source lines, including `sp.Float`, `sp.Rational`, `sp.Integer`, JSON colon values, chained equalities, fractions, decimals, and closed-form radicals.
+
+`dedup-propose` aliases only candidates with the same anchor stage, same concept-normalized primary target, the same non-empty normalized target value with high confidence on both sides, and strict citation identity/adjacency. The old no-conflicting-value fallback is intentionally absent. Ambiguous groups are disjoint from alias groups; the generator fails if an id appears in both.
+
+`family-build` keys primary families on conceptual parameter identity alone. Values are member attributes, and divergent values inside one conceptual family emit `value_divergence`. D3 headline chains are emitted as named non-primary overlays with hard `coverage_warning` findings for expected mechanical misses. Every canonical candidate maps to at least one primary family; unmapped count must be zero.
+
+For each reviewed family/canonical candidate:
+
+1. Choose a canonical scanned candidate:
    ```bash
    $AA candidate-info <candidate_id>
    ```
@@ -105,8 +129,18 @@ For a bounded scan or dry-run fixture:
    ```bash
    $AA phase-b-build <candidate_id>
    ```
-3. Verify the generated `provenance/*.yaml` is parameter-value provenance only. It is a mechanical evidence bundle, not interpretive synthesis.
-4. Give the rendered `tmp_prompts/*__phase_b__*.md` prompt to a clean provenance agent. Every attribution must cite the per-stage `notes/` source. If origin claims contradict each other, keep the contradiction as a finding. If graph lookup misses a source, keep `graph_gap`.
+3. Verify the generated `provenance/*.yaml` is parameter-value provenance only. It is a mechanical evidence bundle, not interpretive synthesis, and real candidates stay at pre-synthesis state with `synthesis_status: pending`.
+4. Give the rendered `tmp_prompts/*__phase_b__*.md` prompt plus the relevant per-stage `notes/` files to a clean provenance agent. Every origin claim and constraint must cite the opened `notes/` source. If origin claims contradict each other, keep the contradiction as a `provenance_findings` entry. If graph lookup misses a source, keep `graph_gap`.
+5. Ingest the agent YAML:
+   ```bash
+   $AA phase-b-ingest redteam_adversarial/tmp_prompts/<agent_synthesis>.yaml
+   ```
+6. Run benchmark agents for claimed external matches and ingest only sourced entries:
+   ```bash
+   $AA benchmark-ingest redteam_adversarial/tmp_prompts/<benchmarks>.yaml
+   ```
+
+Benchmarks are never adjudicated from model memory. Each benchmark entry is keyed by `family_id` or `candidate_id` and must include the literature value, a real source citation, and how it was obtained (`web_lookup`, `textbook`, or `CODATA`).
 
 ### Phase C Batch
 
@@ -183,6 +217,10 @@ All writes are under `research/pde_ledger/redteam_adversarial/` except the addit
 - `MANIFEST.yaml`
 - `fit_insertion_points.yaml`
 - `benchmarks.yaml`
+- `provenance/_concept_aliases.yaml`
+- `provenance/_target_layer.yaml`
+- `provenance/_dedup_proposal.yaml`
+- `provenance/_family_map.yaml`
 - `phase_a_fragments/*.yaml`
 - `provenance/*.yaml`
 - `reports/*.md`

@@ -2,7 +2,7 @@ schema_version: 1
 project_name: pde_ledger
 artifact_root: redteam_adversarial
 created_at: '2026-06-11T06:06:44Z'
-updated_at: '2026-06-11T08:39:41Z'
+updated_at: '2026-06-11T16:01:58Z'
 state_machine:
 - pending
 - scanned
@@ -17728,6 +17728,14 @@ candidates:
       stage: '105'
       excerpt: '| `\chi_Q = 1` (canonical pin) | py:53–55 / wl:58–59; sympy txt:19, math txt:17–18 | notes:69 (boxed); card
         line 16, appendix:326 `eq:app-part04-chiQ-equals-one` | MATCH (value); see F1 re anchoring |'
+    - path: paper/stages/stage_105.tex
+      line: 16
+      excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+      stage: '105'
+    - path: research/pde_ledger/paper/stages/stage_105.tex
+      line: 16
+      excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+      stage: '105'
     parameter_names:
     - chi_Q
     - matched_fingerprint_value
@@ -17776,6 +17784,7 @@ candidates:
     modality_attribution:
     - claim_label
     - existing_provenance
+    - graph
     - numeric_literal
     modality_fragments:
     - candidate_key: stage_105_chi_q
@@ -17986,6 +17995,35 @@ candidates:
         stage: '105'
         excerpt: '| `\chi_Q = 1` (canonical pin) | py:53–55 / wl:58–59; sympy txt:19, math txt:17–18 | notes:69 (boxed); card
           line 16, appendix:326 `eq:app-part04-chiQ-equals-one` | MATCH (value); see F1 re anchoring |'
+    - candidate_key: stage105_chiQ_eq_1_by_matching_card
+      modality: claim_label
+      anchor_stage: '105'
+      parameter_names:
+      - chi_Q
+      reason: The headline result chi_Q=1 is stated as obtained by "matching" to a branch, i.e. a matched value presented
+        as exact/derived.
+      citation:
+        path: paper/stages/stage_105.tex
+        line: 16
+        excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+        stage: '105'
+    - candidate_key: stage105_chi_q_canonical_fix
+      modality: graph
+      anchor_stage: '105'
+      parameter_names:
+      - chi_Q
+      reason: chi_Q has no node or derivation edge anywhere in the atlas graph, while the graph's nearest related gates (OPEN_QUAD_NORMALIZATION,
+        status open_actual_branch_data; CLAIM_25PN_QUAD_NARROWING, status conditional_theorem_open_normalization) still mark
+        the outgoing quadrupole normalization as open branch data — so the stage-105 'canonical condition chi_Q=1' could be
+        a posited/back-filled fix rather than a derived closure.
+      citation:
+        path: research/pde_ledger/paper/stages/stage_105.tex
+        line: 16
+        excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+        stage: '105'
+    alias_ids:
+    - fit_stage105_chiQ_eq_1_by_matching_card
+    - fit_stage105_chi_q_canonical_fix
   fit_stage_105_matched_fingerprint_value:
     id: fit_stage_105_matched_fingerprint_value
     candidate_key: stage_105_matched_fingerprint_value
@@ -43834,6 +43872,11 @@ candidates:
       excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for
         \(P_0\).
       stage: '022'
+    - path: research/pde_ledger/paper/stages/stage_022.tex
+      line: 135
+      excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for
+        \(P_0\).
+      stage: '022'
     parameter_names:
     - mhat_0
     batch_id: null
@@ -43860,6 +43903,7 @@ candidates:
       adjudication: null
     modality_attribution:
     - existing_provenance
+    - graph
     modality_fragments:
     - candidate_key: stage022_mhat0_unity_branch
       modality: existing_provenance
@@ -43875,6 +43919,22 @@ candidates:
         excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for
           \(P_0\).
         stage: '022'
+    - candidate_key: stage022_source_map_branch_mhat0_unity
+      modality: graph
+      anchor_stage: '022'
+      parameter_names:
+      - mhat_0
+      reason: Selecting the "leading natural source-map branch" mhat_0=1 is a branch choice with no supporting derivation
+        edge in the graph, and it is exactly the move that converts the invariant product into a pure P0 condition, so the
+        unity choice could be a convenience tuned to make the external target reachable.
+      citation:
+        path: research/pde_ledger/paper/stages/stage_022.tex
+        line: 135
+        excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for
+          \(P_0\).
+        stage: '022'
+    alias_ids:
+    - fit_stage022_source_map_branch_mhat0_unity
   fit_stage022_p0_quadrupole_normalization_target:
     id: fit_stage022_p0_quadrupole_normalization_target
     candidate_key: stage022_p0_quadrupole_normalization_target
@@ -43999,6 +44059,11 @@ candidates:
         excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for
           \(P_0\).
         stage: '022'
+    duplicate_of: fit_stage022_mhat0_unity_branch
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage022_mhat0_unity_branch by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage023_gamma5_port_27_coefficient:
     id: fit_stage023_gamma5_port_27_coefficient
     candidate_key: stage023_gamma5_port_27_coefficient
@@ -49938,7 +50003,12 @@ candidates:
       line: 30
       excerpt: '`epsilon_r = 0.05 = 1/20.`'
       stage: '073'
+    - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+      line: 30
+      excerpt: '`epsilon_r = 0.05 = 1/20.`'
+      stage: '073'
     parameter_names:
+    - ell_over_a
     - epsilon_r
     batch_id: null
     status: scanned
@@ -49948,6 +50018,12 @@ candidates:
     codex_session:
       by_parameter:
         epsilon_r:
+          session_id: null
+          log_paths: []
+          last_iter: null
+          last_exit: null
+          last_run: null
+        ell_over_a:
           session_id: null
           log_paths: []
           last_iter: null
@@ -49964,6 +50040,7 @@ candidates:
       adjudication: null
     modality_attribution:
     - existing_provenance
+    - numeric_literal
     modality_fragments:
     - candidate_key: stage073_epsilon_r_posited
       modality: existing_provenance
@@ -49978,6 +50055,22 @@ candidates:
         line: 30
         excerpt: '`epsilon_r = 0.05 = 1/20.`'
         stage: '073'
+    - candidate_key: stage073_wall_fraction_epsilon_r
+      modality: numeric_literal
+      anchor_stage: '073'
+      parameter_names:
+      - epsilon_r
+      - ell_over_a
+      reason: The radial wall-width fraction epsilon_r=1/20 is introduced as the "balanced thin-layer-consistent Family-1
+        radial wall branch" with no derivation in this band, and combined with L/a=37/20 it produces the round value Lambda_ell=37,
+        suggesting the pair may have been chosen to land on a convenient branch point.
+      citation:
+        path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+        line: 30
+        excerpt: '`epsilon_r = 0.05 = 1/20.`'
+        stage: '073'
+    alias_ids:
+    - fit_stage073_wall_fraction_epsilon_r
   fit_stage073_eta_pinned_37:
     id: fit_stage073_eta_pinned_37
     candidate_key: stage073_eta_pinned_37
@@ -50148,6 +50241,11 @@ candidates:
         line: 30
         excerpt: '`epsilon_r = 0.05 = 1/20.`'
         stage: '073'
+    duplicate_of: fit_stage073_epsilon_r_posited
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage073_epsilon_r_posited by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage074_chi_s_now_fixes:
     id: fit_stage074_chi_s_now_fixes
     candidate_key: stage074_chi_s_now_fixes
@@ -53753,6 +53851,11 @@ candidates:
         line: 16
         excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
         stage: '105'
+    duplicate_of: fit_stage_105_chi_q
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage_105_chi_q by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage105_chi_q_canonical_fix:
     id: fit_stage105_chi_q_canonical_fix
     candidate_key: stage105_chi_q_canonical_fix
@@ -53806,6 +53909,11 @@ candidates:
         line: 16
         excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
         stage: '105'
+    duplicate_of: fit_stage_105_chi_q
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage_105_chi_q by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage105_chi_q_canonical_unity:
     id: fit_stage105_chi_q_canonical_unity
     candidate_key: stage105_chi_q_canonical_unity
@@ -55681,6 +55789,7 @@ candidates:
       adjudication: null
     modality_attribution:
     - existing_provenance
+    - numeric_literal
     modality_fragments:
     - candidate_key: stage121_aspect_ratio_37_20_reference_freeze
       modality: existing_provenance
@@ -55697,6 +55806,21 @@ candidates:
         line: 60
         excerpt: \frac{L}{a}=\frac{37}{20},
         stage: '121'
+    - candidate_key: stage121_aspect_ratio_37_over_20
+      modality: numeric_literal
+      anchor_stage: '121'
+      parameter_names:
+      - L_over_a
+      reason: The "carried preferred aspect ratio" 37/20 is a suspiciously precise rational imported from outside the band
+        with no in-band derivation, then hardcoded as sp.Rational(37,20) in the stage 121/122/123/125 SymPy scripts; every
+        downstream branch number (r_F1, g_-^F1, Xi values, penetration depths) inherits it.
+      citation:
+        path: notes/stages/moving_throat_pde_stage121_geometric_r_selection.md
+        line: 60
+        excerpt: \frac{L}{a}=\frac{37}{20},
+        stage: '121'
+    alias_ids:
+    - fit_stage121_aspect_ratio_37_over_20
   fit_stage121_aspect_ratio_37_over_20:
     id: fit_stage121_aspect_ratio_37_over_20
     candidate_key: stage121_aspect_ratio_37_over_20
@@ -55749,6 +55873,11 @@ candidates:
         line: 60
         excerpt: \frac{L}{a}=\frac{37}{20},
         stage: '121'
+    duplicate_of: fit_stage121_aspect_ratio_37_20_reference_freeze
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage121_aspect_ratio_37_20_reference_freeze by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage121_lw_equals_l_identification:
     id: fit_stage121_lw_equals_l_identification
     candidate_key: stage121_lw_equals_l_identification
@@ -61738,6 +61867,7 @@ candidates:
     parameter_names:
     - S_can
     - Sigma0_can
+    - Sigma0_num
     - g_star
     batch_id: null
     status: scanned
@@ -61764,6 +61894,12 @@ candidates:
           last_iter: null
           last_exit: null
           last_run: null
+        Sigma0_num:
+          session_id: null
+          log_paths: []
+          last_iter: null
+          last_exit: null
+          last_run: null
     paths:
       report: null
       defense: null
@@ -61774,6 +61910,7 @@ candidates:
       adversarial: null
       adjudication: null
     modality_attribution:
+    - existing_provenance
     - numeric_literal
     modality_fragments:
     - candidate_key: stage168_canonical_mouth_block
@@ -61790,6 +61927,21 @@ candidates:
         line: 119
         excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
         stage: '168'
+    - candidate_key: stage168_sigma0_num_digit_variant
+      modality: existing_provenance
+      anchor_stage: '168'
+      parameter_names:
+      - Sigma0_num
+      reason: Second in-band carrier of the 4.651033550168876 variant that disagrees with the owning stage-156 value 4.651033550168867
+        in the last two digits; the pass-2 stage_168 report reconciled it only against the (equally drifted) 158/163-family
+        notes, never against the stage-156 owner, so the recorded provenance is internally circular.
+      citation:
+        path: research/pde_ledger/scripts/moving_throat_pde_stage168_off_bundle_slippage_sympy_audit.py
+        line: 119
+        excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
+        stage: '168'
+    alias_ids:
+    - fit_stage168_sigma0_num_digit_variant
   fit_stage168_eps_perp_exact_weights:
     id: fit_stage168_eps_perp_exact_weights
     candidate_key: stage168_eps_perp_exact_weights
@@ -61960,6 +62112,11 @@ candidates:
         line: 119
         excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
         stage: '168'
+    duplicate_of: fit_stage168_canonical_mouth_block
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage168_canonical_mouth_block by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage169_family1_point_injection:
     id: fit_stage169_family1_point_injection
     candidate_key: stage169_family1_point_injection
@@ -66523,8 +66680,15 @@ candidates:
       line: 213
       excerpt: '    V_known = sp.Float(''1.181909222592'')'
       stage: '222'
+    - path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+      line: 213
+      excerpt: '    V_known = sp.Float(''1.181909222592'')'
+      stage: '222'
     parameter_names:
+    - DeltaV_req
+    - V_known
     - V_known_x1
+    - epsilon
     - epsilon_barrier
     batch_id: null
     status: scanned
@@ -66545,6 +66709,24 @@ candidates:
           last_iter: null
           last_exit: null
           last_run: null
+        DeltaV_req:
+          session_id: null
+          log_paths: []
+          last_iter: null
+          last_exit: null
+          last_run: null
+        V_known:
+          session_id: null
+          log_paths: []
+          last_iter: null
+          last_exit: null
+          last_run: null
+        epsilon:
+          session_id: null
+          log_paths: []
+          last_iter: null
+          last_exit: null
+          last_run: null
     paths:
       report: null
       defense: null
@@ -66555,6 +66737,7 @@ candidates:
       adversarial: null
       adjudication: null
     modality_attribution:
+    - existing_provenance
     - numeric_literal
     modality_fragments:
     - candidate_key: stage222_illustrative_barrier_benchmark
@@ -66571,6 +66754,24 @@ candidates:
         line: 213
         excerpt: '    V_known = sp.Float(''1.181909222592'')'
         stage: '222'
+    - candidate_key: stage222_vknown_barrier_benchmark
+      modality: existing_provenance
+      anchor_stage: '222'
+      parameter_names:
+      - V_known
+      - epsilon
+      - DeltaV_req
+      reason: A pinned 13-digit decimal introduced only as "carry forward the same illustrative reduced barrier benchmark"
+        with NO named upstream owner stage (notes line 350; notes line 436 concedes the true requirement "must be pulled back
+        from the actual same-charge branch"), plus an unexplained epsilon=0.1 offset, sets the survival thresholds 21.8545662963584
+        / 7.86187368416853 - vague provenance with a back-filled smell.
+      citation:
+        path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+        line: 213
+        excerpt: '    V_known = sp.Float(''1.181909222592'')'
+        stage: '222'
+    alias_ids:
+    - fit_stage222_vknown_barrier_benchmark
   fit_stage222_numerical_primitive_slice:
     id: fit_stage222_numerical_primitive_slice
     candidate_key: stage222_numerical_primitive_slice
@@ -66889,6 +67090,11 @@ candidates:
         line: 213
         excerpt: '    V_known = sp.Float(''1.181909222592'')'
         stage: '222'
+    duplicate_of: fit_stage222_illustrative_barrier_benchmark
+    status_notes:
+    - status: scanned
+      note: Marked duplicate_of fit_stage222_illustrative_barrier_benchmark by alias map redteam_adversarial/provenance/_dedup_proposal.yaml
+      at: '2026-06-11T16:01:51Z'
   fit_stage223_barrier_benchmark_and_eta_window:
     id: fit_stage223_barrier_benchmark_and_eta_window
     candidate_key: stage223_barrier_benchmark_and_eta_window

@@ -10,8 +10,14 @@
 #   render-phase-a-prompts       Render blind Phase A modality prompts only.
 #   phase-a-scan --stages ...    Run the blind Phase A modalities and union them.
 #   phase-a-ingest <YAML...>     Ingest agent-emitted Phase A fragments.
+#   target-resolve [--out PATH]  Render read-only clean target identity sidecar.
+#   dedup-propose [--out PATH]   Render a read-only alias-map proposal.
+#   apply-alias-map <map.yaml>   Apply a reviewed alias map under the manifest lock.
+#   family-build [--out PATH]    Render a read-only concept-family map.
 #   render-critic [--prefix N]   Render the Phase A completeness-critic prompt.
 #   phase-b-build <ID>           Build one parameter-value provenance slice.
+#   phase-b-ingest <YAML...>     Ingest agent Phase B synthesis into provenance.
+#   benchmark-ingest <YAML...>   Ingest sourced benchmark entries.
 #   phase-c-render <ID>          Render the adversarial prompt for one candidate.
 #   set-status <ID> <STATUS>     Advance one candidate status under the manifest lock.
 #   codex-defense <ID> <PARAM>   Invoke Codex defense, resuming per parameter.
@@ -92,6 +98,23 @@ cmd_phase_a_ingest() {
   _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-a-ingest "$@"
 }
 
+cmd_target_resolve() {
+  run_core target-resolve "$@"
+}
+
+cmd_dedup_propose() {
+  run_core dedup-propose "$@"
+}
+
+cmd_apply_alias_map() {
+  ensure_config_loaded
+  _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" apply-alias-map "$@"
+}
+
+cmd_family_build() {
+  run_core family-build "$@"
+}
+
 cmd_render_critic() {
   ensure_config_loaded
   _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" render-critic "$@"
@@ -100,6 +123,16 @@ cmd_render_critic() {
 cmd_phase_b_build() {
   ensure_config_loaded
   _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-b-build "$@"
+}
+
+cmd_phase_b_ingest() {
+  ensure_config_loaded
+  _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" phase-b-ingest "$@"
+}
+
+cmd_benchmark_ingest() {
+  ensure_config_loaded
+  _manifest_locked "${PY_TIMEOUT[@]}" "$CORE" "$CONFIG" benchmark-ingest "$@"
 }
 
 cmd_phase_c_render() {
@@ -171,7 +204,7 @@ cmd_codex_defense() {
 }
 
 cmd_help() {
-  sed -n '3,28p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+  awk 'NR>=3 { if ($0 !~ /^#/) exit; sub(/^# ?/, ""); print }' "${BASH_SOURCE[0]}"
 }
 
 main() {
@@ -183,8 +216,14 @@ main() {
     render-phase-a-prompts) cmd_render_phase_a_prompts "$@" ;;
     phase-a-scan)      cmd_phase_a_scan "$@" ;;
     phase-a-ingest)    cmd_phase_a_ingest "$@" ;;
+    target-resolve)    cmd_target_resolve "$@" ;;
+    dedup-propose)     cmd_dedup_propose "$@" ;;
+    apply-alias-map)   cmd_apply_alias_map "$@" ;;
+    family-build)      cmd_family_build "$@" ;;
     render-critic)     cmd_render_critic "$@" ;;
     phase-b-build)     cmd_phase_b_build "$@" ;;
+    phase-b-ingest)    cmd_phase_b_ingest "$@" ;;
+    benchmark-ingest)  cmd_benchmark_ingest "$@" ;;
     phase-c-render)    cmd_phase_c_render "$@" ;;
     set-status)        cmd_set_status "$@" ;;
     codex-defense)     cmd_codex_defense "$@" ;;

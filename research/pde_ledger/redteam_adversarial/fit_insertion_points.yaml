@@ -1,5 +1,5 @@
 schema_version: 1
-generated_at: '2026-06-11T08:39:39Z'
+generated_at: '2026-06-11T16:01:51Z'
 dry_run_artifacts_present: false
 stage_results:
   '001':
@@ -1366,8 +1366,13 @@ candidates:
     line: 135
     excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
     stage: '022'
+  - path: research/pde_ledger/paper/stages/stage_022.tex
+    line: 135
+    excerpt: On the leading natural source-map branch \(\widehat m_0=1+O(a^2/r^2)\), this reduces to a direct target for \(P_0\).
+    stage: '022'
   modality_attribution:
   - existing_provenance
+  - graph
   batch_id: null
 - id: fit_stage022_p0_quadrupole_normalization_target
   dry_run: false
@@ -1404,6 +1409,7 @@ candidates:
   modality_attribution:
   - graph
   batch_id: null
+  duplicate_of: fit_stage022_mhat0_unity_branch
 - id: fit_stage023_gamma5_port_27_coefficient
   dry_run: false
   dry_run_id: null
@@ -3109,6 +3115,7 @@ candidates:
   anchor_stages:
   - '073'
   parameter_names:
+  - ell_over_a
   - epsilon_r
   status: scanned
   file_line_citations:
@@ -3116,8 +3123,13 @@ candidates:
     line: 30
     excerpt: '`epsilon_r = 0.05 = 1/20.`'
     stage: '073'
+  - path: notes/stages/moving_throat_pde_stage073_family1_geometry_map.md
+    line: 30
+    excerpt: '`epsilon_r = 0.05 = 1/20.`'
+    stage: '073'
   modality_attribution:
   - existing_provenance
+  - numeric_literal
   batch_id: null
 - id: fit_stage073_eta_pinned_37
   dry_run: false
@@ -3169,6 +3181,7 @@ candidates:
   modality_attribution:
   - numeric_literal
   batch_id: null
+  duplicate_of: fit_stage073_epsilon_r_posited
 - id: fit_stage074_chi_s_now_fixes
   dry_run: false
   dry_run_id: null
@@ -4201,6 +4214,7 @@ candidates:
   modality_attribution:
   - claim_label
   batch_id: null
+  duplicate_of: fit_stage_105_chi_q
 - id: fit_stage105_chi_q_canonical_fix
   dry_run: false
   dry_run_id: null
@@ -4217,6 +4231,7 @@ candidates:
   modality_attribution:
   - graph
   batch_id: null
+  duplicate_of: fit_stage_105_chi_q
 - id: fit_stage105_chi_q_canonical_unity
   dry_run: false
   dry_run_id: null
@@ -4761,6 +4776,7 @@ candidates:
     stage: '121'
   modality_attribution:
   - existing_provenance
+  - numeric_literal
   batch_id: null
 - id: fit_stage121_aspect_ratio_37_over_20
   dry_run: false
@@ -4778,6 +4794,7 @@ candidates:
   modality_attribution:
   - numeric_literal
   batch_id: null
+  duplicate_of: fit_stage121_aspect_ratio_37_20_reference_freeze
 - id: fit_stage121_lw_equals_l_identification
   dry_run: false
   dry_run_id: null
@@ -6568,6 +6585,7 @@ candidates:
   parameter_names:
   - S_can
   - Sigma0_can
+  - Sigma0_num
   - g_star
   status: scanned
   file_line_citations:
@@ -6576,6 +6594,7 @@ candidates:
     excerpt: Sigma0_num = sp.Float("4.651033550168876", 30)
     stage: '168'
   modality_attribution:
+  - existing_provenance
   - numeric_literal
   batch_id: null
 - id: fit_stage168_eps_perp_exact_weights
@@ -6628,6 +6647,7 @@ candidates:
   modality_attribution:
   - existing_provenance
   batch_id: null
+  duplicate_of: fit_stage168_canonical_mouth_block
 - id: fit_stage169_family1_point_injection
   dry_run: false
   dry_run_id: null
@@ -7923,7 +7943,10 @@ candidates:
   anchor_stages:
   - '222'
   parameter_names:
+  - DeltaV_req
+  - V_known
   - V_known_x1
+  - epsilon
   - epsilon_barrier
   status: scanned
   file_line_citations:
@@ -7931,7 +7954,12 @@ candidates:
     line: 213
     excerpt: '    V_known = sp.Float(''1.181909222592'')'
     stage: '222'
+  - path: research/pde_ledger/scripts/moving_throat_pde_stage222_concrete_finite_throat_primitive_branch_pole_census_and_residue_linewidth_survival_test_sympy_audit.py
+    line: 213
+    excerpt: '    V_known = sp.Float(''1.181909222592'')'
+    stage: '222'
   modality_attribution:
+  - existing_provenance
   - numeric_literal
   batch_id: null
 - id: fit_stage222_numerical_primitive_slice
@@ -8002,6 +8030,7 @@ candidates:
   modality_attribution:
   - existing_provenance
   batch_id: null
+  duplicate_of: fit_stage222_illustrative_barrier_benchmark
 - id: fit_stage223_barrier_benchmark_and_eta_window
   dry_run: false
   dry_run_id: null
@@ -14854,9 +14883,18 @@ candidates:
     stage: '105'
     excerpt: '| `\chi_Q = 1` (canonical pin) | py:53–55 / wl:58–59; sympy txt:19, math txt:17–18 | notes:69 (boxed); card
       line 16, appendix:326 `eq:app-part04-chiQ-equals-one` | MATCH (value); see F1 re anchoring |'
+  - path: paper/stages/stage_105.tex
+    line: 16
+    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+    stage: '105'
+  - path: research/pde_ledger/paper/stages/stage_105.tex
+    line: 16
+    excerpt: Matching the canonical grouped module to the exact outgoing DtN branch gives \(\chi_Q=1\).
+    stage: '105'
   modality_attribution:
   - claim_label
   - existing_provenance
+  - graph
   - numeric_literal
   batch_id: null
 - id: fit_stage_105_matched_fingerprint_value

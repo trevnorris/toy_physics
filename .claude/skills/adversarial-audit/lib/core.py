@@ -2,12 +2,15 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import os
 import re
 import shutil
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
+from fractions import Fraction
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -36,7 +39,10 @@ WRITE_COMMANDS = {
     "init",
     "phase-a-scan",
     "phase-a-ingest",
+    "apply-alias-map",
     "phase-b-build",
+    "phase-b-ingest",
+    "benchmark-ingest",
     "phase-c-render",
     "set-status",
     "record-codex-defense",
@@ -62,6 +68,23 @@ MODALITIES = [
 ]
 
 INGEST_MODALITIES = MODALITIES + ["completeness_critic"]
+
+ALIAS_ADJACENT_LINE_WINDOW = 3
+
+TARGET_LAYER_DEFAULT = "provenance/_target_layer.yaml"
+CONCEPT_ALIASES_DEFAULT = "provenance/_concept_aliases.yaml"
+
+PHASE_B_CONSTRAINT_KINDS = {
+    "internal_consistency",
+    "published_target",
+    "free_choice",
+}
+
+BENCHMARK_SOURCE_TYPES = {
+    "web_lookup",
+    "textbook",
+    "CODATA",
+}
 
 CLAIM_KEYWORDS = [
     "fit",
@@ -465,6 +488,976 @@ def normalized_param_name(text: str) -> str | None:
     if len(text) == 1 and text.isalpha():
         return None
     return text
+
+
+def normalize_family_param(text: Any) -> str:
+    value = str(text or "").strip()
+    value = value.replace("\\", "")
+    value = value.replace("{", "").replace("}", "")
+    value = value.replace("^", "_")
+    value = clean_param_piece(value)
+    return value.replace("_", "").lower()
+
+
+def normalized_parameter_family(parameter_names: Iterable[Any]) -> list[str]:
+    family = sorted({p for p in (normalize_family_param(param) for param in parameter_names) if p})
+    return family or ["unclassified_target_parameter"]
+
+
+def normalized_parameter_family_key(parameter_names: Iterable[Any]) -> str:
+    return "+".join(normalized_parameter_family(parameter_names))
+
+
+DEFAULT_CONCEPT_ALIAS_DATA: dict[str, Any] = {
+    "schema_version": 1,
+    "description": (
+        "Reviewable concept-variant aliases for adversarial target resolution. "
+        "Variants map to one canonical concept id; seeded chains are non-primary family overlays."
+    ),
+    "aliases": {
+        "Sigma_0_can": "Sigma0_can",
+        "Sigma0_can": "Sigma0_can",
+        "Sigma0_num": "Sigma0_can",
+        "Sigma0_can_expected": "Sigma0_can",
+        "Sigma_0_can_expected": "Sigma0_can",
+        "Sigma_0_star": "Sigma0_star",
+        "Sigma0_hat": "Sigma0_hat",
+        "chi_q": "chi_Q",
+        "chiQ": "chi_Q",
+        "chi_Q": "chi_Q",
+        "chi_Q_R": "chi_Q",
+        "chi_Q_hyb": "chi_Q",
+        "m0_hat": "mhat_0",
+        "mhat0": "mhat_0",
+        "mhat_0": "mhat_0",
+        "m_hat_0": "mhat_0",
+        "m_hat0": "mhat_0",
+        "mhat_minus": "mhat_0",
+        "P0target": "P0_target",
+        "P_0_target": "P0_target",
+        "P0_target": "P0_target",
+        "P_0": "P0_target",
+        "P0_compact": "P0_target",
+        "NQ_target": "N_Q",
+        "N_Q_target": "N_Q",
+        "NQ_from_def": "N_Q",
+        "N_Q": "N_Q",
+        "Gamma5_target": "Gamma_5",
+        "Gamma5_port": "Gamma_5",
+        "Gamma_5": "Gamma_5",
+        "gamma_GR": "Gamma_5",
+        "normalization_54_5": "Gamma_5",
+        "coefficient_54_over_5": "Gamma_5",
+        "target_coefficient_54_5": "Gamma_5",
+        "L_over_a": "L_over_a",
+        "Lambda_ell": "L_over_a",
+        "ell_over_a": "L_over_a",
+        "aspect_ratio": "L_over_a",
+        "aspect_ratio_37_20": "L_over_a",
+        "aspect_ratio_37_over_20": "L_over_a",
+        "rF1": "r_F1",
+        "r_F1": "r_F1",
+        "r_f1": "r_F1",
+        "r_star": "r_F1",
+        "mathfrak_r_F1": "r_F1",
+        "mathfrak_r_geom": "r_F1",
+        "g_F1": "g_star",
+        "g_minus_F1": "g_star",
+        "mathfrak_g_minus_F1": "g_star",
+        "T_can": "T_can",
+        "T_m_can": "T_can",
+        "T_hat_can": "T_can",
+        "T_hat_can_expected": "T_can",
+        "T_hat_m": "T_can",
+        "S_can": "S_can",
+        "S_can_expected": "S_can",
+        "Pi_can": "Pi_can",
+        "Pi_can_expected": "Pi_can",
+        "V_known": "V_known",
+        "V_known_x1": "V_known",
+        "DeltaV_req": "DeltaV_req",
+        "lambda_L": "lambda_L",
+        "lambda_L_soft": "lambda_L",
+        "lambda_L_paper": "lambda_L",
+        "Lvar_soft": "lambda_L",
+        "K_eta": "K_eta",
+        "T_Omega": "T_Omega",
+        "T_w": "T_w",
+        "mu_eta": "mu_eta",
+        "K_Sigma": "K_Sigma",
+        "Theta_w": "Theta_w",
+        "Theta_w_chi": "Theta_w",
+        "Theta_w_J": "Theta_w",
+    },
+    "key_rules": [
+        {"pattern": r"(?:^|_)sigma0_num(?:_|$)", "target": "Sigma0_num"},
+        {"pattern": r"(?:^|_)sigma0_can(?:_|$)", "target": "Sigma0_can"},
+        {"pattern": r"(?:^|_)sigma_0_can(?:_|$)", "target": "Sigma_0_can"},
+        {"pattern": r"fixedpoint_expected_targets_json", "target": "Sigma0_can", "multi_target": True},
+        {"pattern": r"canonical_quartet_literals", "target": "Sigma0_can", "multi_target": True},
+        {"pattern": r"canonical_mouth_block", "target": "Sigma0_can", "multi_target": True},
+        {"pattern": r"(?:^|_)chi_?q(?:_|$)|chiq|chiQ", "target": "chi_Q"},
+        {"pattern": r"unit_product_m0hat2_chiQ_NQ", "target": "chi_Q", "multi_target": True},
+        {"pattern": r"(?:^|_)m0hat|mhat0|mhat_0|m_hat_0", "target": "mhat_0"},
+        {"pattern": r"(?:^|_)nq(?:_|$)|nq_target|NQ_target", "target": "N_Q"},
+        {"pattern": r"(?:^|_)p0target|p0_target|p_0_target|universal_p0", "target": "P0_target"},
+        {"pattern": r"54_5|54_over_5|quadrupole_normalization|normalization_target", "target": "P0_target"},
+        {"pattern": r"aspect_ratio|37_20|37_over_20", "target": "L_over_a"},
+        {"pattern": r"rexact_closed_form_4107|radical_constant_forced_by_rf1", "target": "r_F1"},
+        {"pattern": r"(?:^|_)lambda_l(?:_|$)|lambda_L", "target": "lambda_L"},
+        {"pattern": r"vknown|V_known|barrier_benchmark", "target": "V_known"},
+        {"pattern": r"wall_action_constitutive_coefficients", "target": "K_eta", "multi_target": True},
+        {"pattern": r"calibration_slice|benchmark_masses|stage252_slice_inputs", "target": "mu_eta", "multi_target": True},
+    ],
+    "multi_target_key_patterns": [
+        r"block",
+        r"bundle",
+        r"calibration_slice",
+        r"canonical_quartet",
+        r"constants_block",
+        r"expected_targets",
+        r"inputs",
+        r"packet",
+        r"quintuple",
+        r"slice",
+    ],
+    "chains": {
+        "chain_quad_54_5": {
+            "description": "54/5 plus gamma_GR quadrupole normalization target.",
+            "concepts": ["P0_target", "N_Q", "Gamma_5", "mhat_0"],
+            "expected_stages": ["019", "022", "023", "025", "030", "189", "193", "195", "197", "223"],
+            "expected_candidate_ids": [
+                "fit_stage019_P0_target_upstream_pin",
+                "fit_stage019_p0target_54_5_raw_retype",
+                "fit_stage022_p0_quadrupole_normalization_target",
+                "fit_stage023_nq_target_gr_quadrupole_match",
+                "fit_stage025_target_coefficient_54_5",
+                "fit_stage030_nq_target_retype_54_5",
+                "fit_stage189_mhat0_quadrupole_normalization_target",
+                "fit_stage189_normalization_target_2g_5c5",
+                "fit_stage195_p0_target_canonical_value",
+                "fit_stage197_p0_target_quadrupole_normalization",
+                "fit_stage223_p0_target_calibration_coefficient",
+            ],
+        },
+        "chain_aspect_37_20": {
+            "description": "37/20 aspect-ratio cascade into Family-1, including the 4107 radical.",
+            "concepts": ["L_over_a", "r_F1", "g_star", "epsilon_r", "eta"],
+            "expected_stages": ["073", "121", "131", "139", "146", "148", "168"],
+            "expected_candidate_ids": [
+                "fit_stage073_Lambda_ell_fixed_37",
+                "fit_stage073_aspect_ratio_L_over_a",
+                "fit_stage073_wall_fraction_epsilon_r",
+                "fit_stage121_aspect_ratio_37_20_reference_freeze",
+                "fit_stage121_aspect_ratio_37_over_20",
+                "fit_stage146_aspect_ratio_37_20_primitive",
+                "fit_stage148_radical_constant_forced_by_rf1",
+                "fit_stage168_rexact_closed_form_4107",
+            ],
+        },
+        "chain_chi_Q_norm": {
+            "description": "chi_Q / mhat_0 / N_Q outgoing normalization chain.",
+            "concepts": ["chi_Q", "mhat_0", "N_Q", "sigma_Q_can", "xi_Q"],
+            "expected_stages": ["100", "101", "104", "105", "107", "108", "192", "194", "195", "196", "197", "232"],
+            "expected_candidate_ids": [
+                "fit_stage100_chiQ_fixed_downstream_card",
+                "fit_stage104_unit_product_m0hat2_chiQ_NQ",
+                "fit_stage105_chiQ_eq_1_by_matching_card",
+                "fit_stage105_chi_q_canonical_fix",
+                "fit_stage105_chi_q_canonical_unity",
+                "fit_stage_105_chi_q",
+                "fit_stage194_chi_Q_canonical_fixing",
+                "fit_stage195_mhat0_natural_source_map",
+                "fit_stage196_sigma_Q_canonical_outgoing_scale",
+                "fit_stage197_chi_q_unity_packet_a_target",
+                "fit_stage232_nq_canonical_normalization",
+            ],
+        },
+        "chain_sigma0_transport": {
+            "description": "Sigma0_can / T_can transport chain, including 867/876 digit drift.",
+            "concepts": ["Sigma0_can", "T_can", "S_can", "Pi_can"],
+            "expected_stages": ["155", "156", "157", "158", "163", "168"],
+            "expected_candidate_ids": [
+                "fit_stage155_fixedpoint_expected_targets_json",
+                "fit_stage156_unique_traction_renormalization",
+                "fit_stage157_expected_values_sidecar_json",
+                "fit_stage158_canonical_quartet_literals",
+                "fit_stage163_sigma0_can_digit_variant",
+                "fit_stage168_canonical_mouth_block",
+                "fit_stage168_sigma0_num_digit_variant",
+            ],
+        },
+        "chain_barrier_222_224": {
+            "description": "Barrier 222-224 chain, including V_known.",
+            "concepts": ["V_known", "DeltaV_req", "epsilon_barrier", "lambda_20", "lambda_21", "lambda_22", "barP0_compat", "T_quad"],
+            "expected_stages": ["222", "223", "224"],
+            "expected_candidate_ids": [
+                "fit_stage222_illustrative_barrier_benchmark",
+                "fit_stage222_vknown_barrier_benchmark",
+                "fit_stage223_barrier_benchmark_and_eta_window",
+                "fit_stage224_grouped_signature_exact",
+                "fit_stage224_kill_test_budgets_slice_anchored",
+                "fit_stage224_t_quad_target_scale",
+            ],
+        },
+        "chain_calibration_245_253": {
+            "description": "Calibration 245-253 chain, including lambda_L and CODATA mass-ratio carriers.",
+            "concepts": ["lambda_L", "epsilon_eta", "K_turn", "f_lat", "gamma_lattice_red", "gamma_lattice_legacy", "mu_eta", "Upsilon_lat", "m_s"],
+            "expected_stages": ["245", "247", "248", "250", "253"],
+            "expected_candidate_ids": [
+                "fit_stage245_eps_eta_session1_match",
+                "fit_stage247_lambda_L_backsolve",
+                "fit_stage247_lambda_L_closure",
+                "fit_stage247_lambda_l_fixed_by_recorded_point",
+                "fit_stage248_xi_turn_lambda_th_carried_hardcodes",
+                "fit_stage250_benchmark_masses_and_window",
+                "fit_stage253_calibration_slice_nominal_constants",
+                "fit_stage253_K_turn_force_match",
+                "fit_stage253_upsilon_lat_calibration",
+            ],
+        },
+        "chain_wall_action": {
+            "description": "Wall-action coefficients plus mhat/P0 normalization carriers.",
+            "concepts": ["K_eta", "T_Omega", "T_w", "mu_eta", "mhat_0", "P0_target", "K_Sigma"],
+            "expected_stages": ["001", "019", "022", "038", "193", "223"],
+            "expected_candidate_ids": [
+                "fit_stage001_wall_action_constitutive_coefficients",
+                "fit_stage019_K_Sigma_fixed_by_one_pole",
+                "fit_stage019_K_Sigma_fixed_by_outgoing_normalization",
+                "fit_stage019_P0_target_upstream_pin",
+                "fit_stage022_mhat0_unity_branch",
+                "fit_stage022_p0_quadrupole_normalization_target",
+                "fit_stage038_mhat_p0_fitted_scales",
+                "fit_stage193_p0_target_surface_frozen_without_derivation_edge",
+                "fit_stage223_p0_target_import_unprovenanced",
+                "fit_stage223_universal_p0_target",
+            ],
+        },
+    },
+}
+
+
+def concept_alias_path(env: Env) -> Path:
+    return env.artifact_root / CONCEPT_ALIASES_DEFAULT
+
+
+def target_layer_path(env: Env) -> Path:
+    return env.artifact_root / TARGET_LAYER_DEFAULT
+
+
+def ensure_concept_alias_file(env: Env) -> Path:
+    path = concept_alias_path(env)
+    if not path.exists():
+        write_yaml(path, DEFAULT_CONCEPT_ALIAS_DATA)
+    return path
+
+
+def load_concept_aliases(env: Env) -> dict[str, Any]:
+    path = ensure_concept_alias_file(env)
+    data = load_yaml(path)
+    if not isinstance(data, dict):
+        raise SystemExit(f"error: concept alias table must be a YAML mapping: {env.rel(path)}")
+    data.setdefault("aliases", {})
+    data.setdefault("key_rules", [])
+    data.setdefault("chains", {})
+    return data
+
+
+GREEK_NAME_MAP = {
+    "alpha": "alpha",
+    "beta": "beta",
+    "chi": "chi",
+    "delta": "delta",
+    "Delta": "Delta",
+    "epsilon": "epsilon",
+    "eta": "eta",
+    "Gamma": "Gamma",
+    "gamma": "gamma",
+    "kappa": "kappa",
+    "lambda": "lambda",
+    "Lambda": "Lambda",
+    "mu": "mu",
+    "Omega": "Omega",
+    "omega": "omega",
+    "Pi": "Pi",
+    "rho": "rho",
+    "Sigma": "Sigma",
+    "sigma": "sigma",
+    "Theta": "Theta",
+    "theta": "theta",
+    "xi": "xi",
+    "zeta": "zeta",
+}
+
+
+def normalize_symbol_match_key(text: Any) -> str:
+    value = str(text or "")
+    value = value.replace("\\widehat", "widehat")
+    value = value.replace("\\hat", "hat")
+    for tex, name in GREEK_NAME_MAP.items():
+        value = value.replace("\\" + tex, name)
+    value = value.replace("{", "").replace("}", "")
+    value = value.replace("^", "_")
+    value = value.replace("-", "_")
+    value = re.sub(r"[^A-Za-z0-9]+", "_", value)
+    return re.sub(r"_+", "_", value).strip("_").lower()
+
+
+def concept_alias_lookup(alias_data: dict[str, Any]) -> dict[str, str]:
+    cached = alias_data.get("_compiled_alias_lookup")
+    if isinstance(cached, dict):
+        return cached
+    lookup: dict[str, str] = {}
+    for variant, canonical in (alias_data.get("aliases") or {}).items():
+        canonical_text = str(canonical)
+        lookup[str(variant)] = canonical_text
+        lookup[normalize_symbol_match_key(variant)] = canonical_text
+        lookup[normalize_family_param(variant)] = canonical_text
+        lookup[canonical_text] = canonical_text
+        lookup[normalize_symbol_match_key(canonical_text)] = canonical_text
+        lookup[normalize_family_param(canonical_text)] = canonical_text
+    alias_data["_compiled_alias_lookup"] = lookup
+    return lookup
+
+
+def canonicalize_concept(value: Any, alias_data: dict[str, Any]) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return "unclassified_target_parameter"
+    lookup = concept_alias_lookup(alias_data)
+    return (
+        lookup.get(text)
+        or lookup.get(normalize_symbol_match_key(text))
+        or lookup.get(normalize_family_param(text))
+        or text
+    )
+
+
+def aliases_for_canonical(canonical: str, alias_data: dict[str, Any]) -> list[str]:
+    cache = alias_data.setdefault("_compiled_aliases_by_canonical", {})
+    if isinstance(cache, dict) and canonical in cache:
+        return list(cache[canonical])
+    variants = {canonical}
+    lookup = concept_alias_lookup(alias_data)
+    for variant, target in (alias_data.get("aliases") or {}).items():
+        if (lookup.get(str(target)) or lookup.get(normalize_symbol_match_key(target)) or str(target)) == canonical:
+            variants.add(str(variant))
+    result = sorted(variants)
+    if isinstance(cache, dict):
+        cache[canonical] = result
+    return result
+
+
+def target_search_variants(canonical: str, raw: str, alias_data: dict[str, Any]) -> list[str]:
+    variants = set(aliases_for_canonical(canonical, alias_data))
+    variants.add(raw)
+    variants.add(canonical)
+    expanded = set()
+    for variant in variants:
+        value = str(variant)
+        expanded.add(value)
+        expanded.add(value.replace("_", ""))
+        expanded.add(value.replace("_", "\\_"))
+        expanded.add(value.replace("_", " "))
+        if value == "L_over_a":
+            expanded.update({"L/a", "L}{a", "L\\over a", "\\frac{L}{a}"})
+        if value in {"mhat_0", "m0_hat"}:
+            expanded.update({"mhat0", "m_hat_0", "m_{\\hat 0}", "\\widehat m_0", "\\widehat m_0^{\\,2}"})
+        if value == "chi_Q":
+            expanded.update({"chiQ", "\\chi_Q", "\\chi_{Q}"})
+        if value == "Sigma0_can":
+            expanded.update({"Sigma0", "Sigma0_can", "Sigma_0_can", "\\Sigma_0", "\\Sigma_0^{\\rm can}"})
+        if value == "P0_target":
+            expanded.update({"P0target", "P_0", "P0", "P_0_target"})
+        if value == "N_Q":
+            expanded.update({"NQ", "NQ_target", "N_Q_target", "N_Q"})
+    return sorted({item for item in expanded if item}, key=lambda item: (-len(item), item))
+
+
+def strip_stage_key_prefix(candidate_key: Any) -> str:
+    key = str(candidate_key or "")
+    key = re.sub(r"^fit_", "", key)
+    key = re.sub(r"^stage_?0*\d+_?", "", key)
+    return key
+
+
+def plausible_parameter_names(entry: dict[str, Any], alias_data: dict[str, Any]) -> list[str]:
+    values = []
+    for param in entry.get("parameter_names") or []:
+        text = str(param or "").strip()
+        if not text:
+            continue
+        if text in {"matched_fingerprint_value", "stale_output", "assert_nonzero", "assert_zero", "paragraph"}:
+            continue
+        canonical = canonicalize_concept(text, alias_data)
+        if canonical not in values:
+            values.append(canonical)
+    return values
+
+
+def key_rule_target(candidate_key: str, alias_data: dict[str, Any]) -> tuple[str | None, str | None, bool]:
+    key = strip_stage_key_prefix(candidate_key)
+    for rule in alias_data.get("key_rules") or []:
+        pattern = str(rule.get("pattern") or "")
+        if pattern and re.search(pattern, key, re.IGNORECASE):
+            target = str(rule.get("target") or "")
+            if target:
+                return target, f"candidate_key rule /{pattern}/", bool(rule.get("multi_target"))
+    return None, None, False
+
+
+def parse_primary_target(entry: dict[str, Any], alias_data: dict[str, Any]) -> dict[str, Any]:
+    candidate_key = str(entry.get("candidate_key") or entry.get("id") or "")
+    key_suffix = strip_stage_key_prefix(candidate_key)
+    raw_target, basis, rule_multi = key_rule_target(candidate_key, alias_data)
+    resolution_confidence = "high"
+    low_reasons: list[str] = []
+    if raw_target:
+        raw = raw_target
+    else:
+        normalized_key = normalize_symbol_match_key(key_suffix)
+        matches = []
+        for param in entry.get("parameter_names") or []:
+            param_text = str(param or "")
+            candidate_forms = {normalize_symbol_match_key(param_text), normalize_family_param(param_text)}
+            canonical = canonicalize_concept(param_text, alias_data)
+            candidate_forms.add(normalize_symbol_match_key(canonical))
+            candidate_forms.add(normalize_family_param(canonical))
+            if any(form and re.search(rf"(?:^|_){re.escape(form)}(?:_|$)", normalized_key) for form in candidate_forms):
+                matches.append((param_text, canonical))
+        canonical_matches = []
+        for _raw, canonical in matches:
+            if canonical not in canonical_matches:
+                canonical_matches.append(canonical)
+        if len(canonical_matches) == 1:
+            raw = matches[0][0]
+            basis = "candidate_key matched manifest parameter"
+        else:
+            params = plausible_parameter_names(entry, alias_data)
+            if params:
+                raw = params[0]
+                basis = "parameter_names fallback because candidate_key was uninformative"
+                resolution_confidence = "low"
+                low_reasons.append("key_uninformative")
+                if len(params) > 1:
+                    low_reasons.append("multiple_plausible_targets")
+            else:
+                raw = "unclassified_target_parameter"
+                basis = "no resolvable candidate_key or parameter_names target"
+                resolution_confidence = "low"
+                low_reasons.append("no_plausible_target")
+    primary = canonicalize_concept(raw, alias_data)
+    additional: list[str] = []
+    key_patterns = alias_data.get("multi_target_key_patterns") or []
+    key_multi = rule_multi or any(re.search(str(pattern), key_suffix, re.IGNORECASE) for pattern in key_patterns)
+    if key_multi:
+        for param in plausible_parameter_names(entry, alias_data):
+            canonical = canonicalize_concept(param, alias_data)
+            if canonical != primary and canonical not in additional:
+                additional.append(canonical)
+    return {
+        "raw_primary_target_parameter": raw,
+        "primary_target_parameter": primary,
+        "resolution_basis": basis or "candidate_key parse",
+        "target_resolution_confidence": resolution_confidence,
+        "low_reasons": low_reasons,
+        "multi_target": bool(additional),
+        "additional_target_parameters": additional,
+    }
+
+
+def normalize_literal_value(text: str) -> str:
+    value = str(text).strip()
+    frac = re.fullmatch(r"\\frac\{([^{}]+)\}\{([^{}]+)\}", value)
+    if frac:
+        value = f"{frac.group(1)}/{frac.group(2)}"
+    value = value.replace(" ", "")
+    value = value.replace("\\,", "")
+    value = value.replace("{", "").replace("}", "")
+    value = value.replace("−", "-")
+    return value
+
+
+def fraction_text(value: Fraction) -> str:
+    if value.denominator == 1:
+        return str(value.numerator)
+    return f"{value.numerator}/{value.denominator}"
+
+
+def normalize_decimal_text(text: str) -> str:
+    value = text.strip().replace("_", "").replace("−", "-")
+    try:
+        decimal_value = Decimal(value)
+    except InvalidOperation:
+        return value
+    if decimal_value == decimal_value.to_integral_value():
+        return str(decimal_value.quantize(Decimal(1)))
+    frac = Fraction(decimal_value)
+    if frac.denominator <= 1000:
+        return fraction_text(frac)
+    return format(decimal_value.normalize(), "f").rstrip("0").rstrip(".")
+
+
+def normalize_extracted_value(raw: str) -> str:
+    value = normalize_literal_value(raw).strip().strip("`")
+    value = value.replace("'", '"')
+    sp_float = re.fullmatch(r"""sp\.Float\(\s*"([^"]+)"(?:\s*,\s*\d+)?\s*\)""", value)
+    if sp_float:
+        return normalize_decimal_text(sp_float.group(1))
+    sp_int = re.fullmatch(r"sp\.Integer\(\s*([-+]?\d+)\s*\)", value)
+    if sp_int:
+        return str(int(sp_int.group(1)))
+    sp_rat = re.fullmatch(r"sp\.Rational\(\s*([-+]?\d+)\s*,\s*([-+]?\d+)\s*\)", value)
+    if sp_rat:
+        return fraction_text(Fraction(int(sp_rat.group(1)), int(sp_rat.group(2))))
+    m_rat = re.fullmatch(r"Rational\[\s*([-+]?\d+)\s*,\s*([-+]?\d+)\s*\]", value)
+    if m_rat:
+        return fraction_text(Fraction(int(m_rat.group(1)), int(m_rat.group(2))))
+    frac = re.fullmatch(r"([-+]?\d+)\s*/\s*([-+]?\d+)", value)
+    if frac:
+        return fraction_text(Fraction(int(frac.group(1)), int(frac.group(2))))
+    if re.fullmatch(r"[-+]?\d+\.\d+(?:[eE][-+]?\d+)?", value):
+        return normalize_decimal_text(value)
+    if re.fullmatch(r"[-+]?\d+(?:[eE][-+]?\d+)?", value):
+        return normalize_decimal_text(value)
+    value = re.sub(r"\s+", "", value)
+    return value
+
+
+SP_FLOAT_RE = re.compile(r"""sp\.Float\(\s*["']([^"']+)["'](?:\s*,\s*\d+)?\s*\)""")
+SP_RATIONAL_RE = re.compile(r"sp\.Rational\(\s*([-+]?\d+)\s*,\s*([-+]?\d+)\s*\)")
+SP_INTEGER_RE = re.compile(r"sp\.Integer\(\s*([-+]?\d+)\s*\)")
+M_RATIONAL_RE = re.compile(r"Rational\[\s*([-+]?\d+)\s*,\s*([-+]?\d+)\s*\]")
+CLOSED_FORM_RE = re.compile(
+    r"(?:Sqrt\[[^\]\n]+\]|sqrt\([^\)\n]+\)|sp\.sqrt\([^\)\n]+\))(?:\s*/\s*(?:\([^)\n]+\)|[A-Za-z0-9_.*^+-]+))?"
+)
+VALUE_EXPR_RE = re.compile(
+    r"(sp\.Float\(\s*['\"][^'\"]+['\"](?:\s*,\s*\d+)?\s*\)|sp\.Rational\(\s*[-+]?\d+\s*,\s*[-+]?\d+\s*\)|sp\.Integer\(\s*[-+]?\d+\s*\)|Rational\[\s*[-+]?\d+\s*,\s*[-+]?\d+\s*\]|\\frac\{[-+]?\d+\}\{[-+]?\d+\}|[-+]?\d+\s*/\s*[-+]?\d+|[-+]?\d+\.\d+(?:[eE][-+]?\d+)?|[-+]?\d+(?:[eE][-+]?\d+)?)"
+)
+
+
+def add_value_candidate(values: list[dict[str, str]], raw: str, rule: str) -> None:
+    normalized = normalize_extracted_value(raw)
+    if not normalized:
+        return
+    item = {"raw": str(raw).strip(), "normalized": normalized, "comparison_key": normalized, "extraction_rule": rule}
+    if item not in values:
+        values.append(item)
+
+
+def extract_values_from_rhs(rhs: str) -> list[dict[str, str]]:
+    values: list[dict[str, str]] = []
+    masked = list(rhs)
+
+    def mask_span(start: int, end: int) -> None:
+        for i in range(start, end):
+            masked[i] = " "
+
+    for regex, rule, formatter in (
+        (SP_FLOAT_RE, "sp.Float", lambda m: f'sp.Float("{m.group(1)}")'),
+        (SP_RATIONAL_RE, "sp.Rational", lambda m: f"sp.Rational({m.group(1)},{m.group(2)})"),
+        (SP_INTEGER_RE, "sp.Integer", lambda m: f"sp.Integer({m.group(1)})"),
+        (M_RATIONAL_RE, "Rational[]", lambda m: f"Rational[{m.group(1)},{m.group(2)}]"),
+    ):
+        for match in regex.finditer(rhs):
+            add_value_candidate(values, formatter(match), rule)
+            mask_span(match.start(), match.end())
+
+    masked_text = "".join(masked)
+    for match in CLOSED_FORM_RE.finditer(masked_text):
+        add_value_candidate(values, match.group(0), "closed_form")
+        mask_span(match.start(), match.end())
+    masked_text = "".join(masked)
+
+    frac_54_5 = re.search(r"(?<!\d)54(?:\s*\*[^/\n;]+)?/\s*\(?\s*5(?!\d)", masked_text)
+    if frac_54_5:
+        add_value_candidate(values, "54/5", "coefficient_fraction_54_5")
+    for match in re.finditer(r"(?:^|=|:|->|\\to|\\mapsto)\s*" + VALUE_EXPR_RE.pattern, masked_text):
+        add_value_candidate(values, match.group(1), "relation_value")
+    for match in re.finditer(r"\\frac\{[-+]?\d+\}\{[-+]?\d+\}", masked_text):
+        add_value_candidate(values, match.group(0), "tex_fraction")
+    return values
+
+
+def extract_leading_values_from_rhs(rhs: str) -> list[dict[str, str]]:
+    values: list[dict[str, str]] = []
+    text = str(rhs or "").strip()
+    if not text:
+        return values
+    frac_54_5 = re.search(r"(?<!\d)54(?:\s*\*[^/\n;]+)?/\s*\(?\s*5(?!\d)", text[:160])
+    if frac_54_5:
+        add_value_candidate(values, "54/5", "coefficient_fraction_54_5")
+        return values
+    closed = CLOSED_FORM_RE.match(text)
+    if closed:
+        add_value_candidate(values, closed.group(0), "closed_form")
+        text = text[closed.end() :]
+    else:
+        first = VALUE_EXPR_RE.match(text)
+        if first:
+            add_value_candidate(values, first.group(1), "relation_value")
+            text = text[first.end() :]
+    while True:
+        chained = re.match(r"^\s*=\s*" + VALUE_EXPR_RE.pattern, text)
+        if not chained:
+            break
+        add_value_candidate(values, chained.group(1), "chained_relation_value")
+        text = text[chained.end() :]
+    return values
+
+
+def line_mentions_target(text: str, canonical: str, raw: str, alias_data: dict[str, Any]) -> bool:
+    normalized_line = normalize_symbol_match_key(text)
+    for variant in target_search_variants(canonical, raw, alias_data):
+        key = normalize_symbol_match_key(variant)
+        if key and re.search(rf"(?:^|_){re.escape(key)}(?:_|$)", normalized_line):
+            return True
+    return False
+
+
+def lhs_matches_target(lhs: str, canonical: str, alias_data: dict[str, Any]) -> bool:
+    return canonicalize_concept(lhs.strip().strip('"').strip("'"), alias_data) == canonical
+
+
+def extract_target_values_from_text(text: str, canonical: str, raw: str, alias_data: dict[str, Any]) -> list[dict[str, str]]:
+    source = str(text or "")
+    values: list[dict[str, str]] = []
+    for match in re.finditer(r"""["']([^"']+)["']\s*:\s*([^,\n#]+)""", source):
+        if lhs_matches_target(match.group(1), canonical, alias_data):
+            append_unique_items(values, extract_leading_values_from_rhs(match.group(2)))
+    assignment_re = re.compile(r"([\\A-Za-z][\\A-Za-z0-9_{}^]*)\s*(?::=|=|:)\s*([^#;\n]+)")
+    for match in assignment_re.finditer(source):
+        lhs = match.group(1)
+        if lhs_matches_target(lhs, canonical, alias_data) or line_mentions_target(lhs, canonical, raw, alias_data):
+            append_unique_items(values, extract_leading_values_from_rhs(match.group(2)))
+    if line_mentions_target(source, canonical, raw, alias_data):
+        for match in re.finditer(r"(?P<prefix>.{0,120}?)(?:=|:=|:|->|\\to|\\mapsto)\s*(?P<rhs>[^#;\n]+)", source):
+            if line_mentions_target(match.group("prefix"), canonical, raw, alias_data):
+                append_unique_items(values, extract_leading_values_from_rhs(match.group("rhs")))
+        if any(marker in strip_stage_key_prefix(raw).lower() for marker in ("37_20", "54_5")):
+            append_unique_items(values, extract_values_from_rhs(source))
+    return values
+
+
+VALUE_TOKEN_RE = r"(\\frac\{[^{}]+\}\{[^{}]+\}|[-+]?\d+\s*/\s*[-+]?\d+|[-+]?\d+\.\d+(?:[eE][-+]?\d+)?|[-+]?\d+(?:[eE][-+]?\d+)?)"
+
+
+def extract_literal_values(text: Any) -> list[str]:
+    source = str(text or "")
+    values: list[str] = []
+    for match in re.finditer(rf"(?:=|:=|\\to|->|\\mapsto)\s*{VALUE_TOKEN_RE}", source):
+        value = normalize_literal_value(match.group(1))
+        if value not in values:
+            values.append(value)
+    for match in re.finditer(r"\\frac\{[^{}]+\}\{[^{}]+\}", source):
+        value = normalize_literal_value(match.group(0))
+        if value not in values:
+            values.append(value)
+    for match in re.finditer(r"(?<![A-Za-z0-9_])[-+]?\d+\s*/\s*[-+]?\d+(?![A-Za-z0-9_])", source):
+        value = normalize_literal_value(match.group(0))
+        if value not in values:
+            values.append(value)
+    return values
+
+
+def candidate_literal_values(entry: dict[str, Any]) -> list[str]:
+    values: list[str] = []
+    for citation in entry.get("file_line_citations") or []:
+        append_unique_items(values, extract_literal_values(citation.get("excerpt")))
+    for fragment in entry.get("modality_fragments") or []:
+        citation = fragment.get("citation") or {}
+        append_unique_items(values, extract_literal_values(citation.get("excerpt")))
+    return sorted(values)
+
+
+def resolve_citation_source_path(env: Env, path_text: Any) -> Path:
+    text = str(path_text or "").strip()
+    p = Path(text)
+    if p.is_absolute():
+        return p
+    candidates = [
+        env.project_root / text,
+        env.repo_root / text,
+    ]
+    if text.startswith("research/pde_ledger/"):
+        candidates.insert(0, env.repo_root / text)
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
+SOURCE_LINE_CACHE: dict[Path, list[str] | None] = {}
+
+
+def read_citation_source_line(env: Env, citation: dict[str, Any]) -> str | None:
+    line_no = citation_line(citation)
+    if line_no is None:
+        return None
+    source_path = resolve_citation_source_path(env, citation.get("path"))
+    if source_path not in SOURCE_LINE_CACHE:
+        try:
+            SOURCE_LINE_CACHE[source_path] = read_text(source_path).splitlines()
+        except OSError:
+            SOURCE_LINE_CACHE[source_path] = None
+    lines = SOURCE_LINE_CACHE.get(source_path)
+    if lines is None:
+        return None
+    if 1 <= line_no <= len(lines):
+        return lines[line_no - 1].strip()
+    return None
+
+
+def target_value_sources(env: Env, entry: dict[str, Any]) -> list[dict[str, Any]]:
+    sources: list[dict[str, Any]] = []
+    for citation in entry.get("file_line_citations") or []:
+        if citation.get("excerpt"):
+            sources.append(
+                {
+                    "source_kind": "citation_excerpt",
+                    "path": citation.get("path"),
+                    "line": citation.get("line"),
+                    "text": str(citation.get("excerpt")),
+                }
+            )
+        source_line = read_citation_source_line(env, citation)
+        if source_line and source_line != citation.get("excerpt"):
+            sources.append(
+                {
+                    "source_kind": "cited_source_line",
+                    "path": citation.get("path"),
+                    "line": citation.get("line"),
+                    "text": source_line,
+                }
+            )
+    for fragment in entry.get("modality_fragments") or []:
+        citation = fragment.get("citation") or {}
+        if citation.get("excerpt"):
+            sources.append(
+                {
+                    "source_kind": "modality_fragment_excerpt",
+                    "path": citation.get("path"),
+                    "line": citation.get("line"),
+                    "text": str(citation.get("excerpt")),
+                }
+            )
+    deduped: list[dict[str, Any]] = []
+    seen = set()
+    for source in sources:
+        key = (source.get("source_kind"), source.get("path"), source.get("line"), source.get("text"))
+        if key not in seen:
+            seen.add(key)
+            deduped.append(source)
+    return deduped
+
+
+def target_value_evidence(env: Env, entry: dict[str, Any], target_info: dict[str, Any], alias_data: dict[str, Any]) -> list[dict[str, Any]]:
+    evidence: list[dict[str, Any]] = []
+    canonical = target_info["primary_target_parameter"]
+    raw = target_info["raw_primary_target_parameter"]
+    candidate_key = str(entry.get("candidate_key") or "")
+    for source in target_value_sources(env, entry):
+        values = extract_target_values_from_text(source.get("text") or "", canonical, raw, alias_data)
+        if not values and re.search(r"(?:37_20|37_over_20|54_5|54_over_5|4107)", candidate_key, re.IGNORECASE):
+            values = extract_values_from_rhs(str(source.get("text") or ""))
+        for value in values:
+            item = dict(value)
+            item["source_kind"] = source.get("source_kind")
+            item["path"] = source.get("path")
+            item["line"] = source.get("line")
+            if item not in evidence:
+                evidence.append(item)
+    evidence.sort(key=lambda item: (str(item.get("path")), str(item.get("line")), item.get("normalized", ""), item.get("raw", "")))
+    return evidence
+
+
+def target_layer_record(env: Env, entry: dict[str, Any], alias_data: dict[str, Any]) -> dict[str, Any]:
+    target_info = parse_primary_target(entry, alias_data)
+    value_evidence = target_value_evidence(env, entry, target_info, alias_data)
+    target_values = sorted({item["normalized"] for item in value_evidence if item.get("normalized")})
+    target_value_keys = sorted({item["comparison_key"] for item in value_evidence if item.get("comparison_key")})
+    low_reasons = list(target_info.get("low_reasons") or [])
+    if not target_values:
+        low_reasons.append("target_value_unresolved")
+    confidence = "low" if low_reasons or target_info.get("target_resolution_confidence") == "low" else "high"
+    basis_parts = [str(target_info.get("resolution_basis") or "candidate_key parse")]
+    if value_evidence:
+        value_sources = sorted(
+            {
+                f"{item.get('source_kind')}:{normalize_citation_path(item.get('path'))}:{item.get('line')}"
+                for item in value_evidence
+            }
+        )
+        basis_parts.append("values from " + ", ".join(value_sources[:4]))
+    else:
+        basis_parts.append("no confident target value extracted from citation/source line")
+    if low_reasons:
+        basis_parts.append("low: " + ", ".join(sorted(set(low_reasons))))
+    anchor_stages = [str(stage) for stage in entry.get("anchor_stages") or []]
+    return {
+        "candidate_id": str(entry.get("id")),
+        "candidate_key": str(entry.get("candidate_key") or ""),
+        "anchor_stages": anchor_stages,
+        "anchor_stage": anchor_stages[0] if len(anchor_stages) == 1 else "+".join(anchor_stages),
+        "raw_primary_target_parameter": target_info["raw_primary_target_parameter"],
+        "primary_target_parameter": target_info["primary_target_parameter"],
+        "additional_target_parameters": target_info.get("additional_target_parameters") or [],
+        "multi_target": bool(target_info.get("multi_target")),
+        "target_values": target_values,
+        "target_value_keys": target_value_keys,
+        "target_value_evidence": value_evidence,
+        "target_confidence": confidence,
+        "resolution_basis": "; ".join(basis_parts),
+    }
+
+
+def build_target_layer(env: Env, out_path: Path) -> dict[str, Any]:
+    manifest = load_manifest(env)
+    alias_data = load_concept_aliases(env)
+    scanned_entries = [
+        entry
+        for entry in (manifest.get("candidates") or {}).values()
+        if entry.get("status") == "scanned" and not entry.get("dry_run")
+    ]
+    records = [target_layer_record(env, entry, alias_data) for entry in sorted(scanned_entries, key=lambda item: str(item.get("id") or ""))]
+    confidence_counts = Counter(record.get("target_confidence") for record in records)
+    payload = {
+        "schema_version": 1,
+        "generated_at": now_iso(),
+        "source_manifest": env.rel(env.manifest_path),
+        "concept_aliases": env.rel(concept_alias_path(env)),
+        "read_only_manifest": True,
+        "rule": {
+            "primary_target_resolution": [
+                "candidate_key key_rules from _concept_aliases.yaml",
+                "candidate_key token match against manifest parameter_names when no key_rule fires",
+                "parameter_names fallback only when the key is uninformative",
+                "concept aliases canonicalize variants to one primary_target_parameter",
+            ],
+            "target_confidence": "low when key fallback/multiple plausible targets/no confident target value; high otherwise",
+            "value_extraction": [
+                "citation excerpt and cited source line are both scanned",
+                "sp.Float/sp.Rational/sp.Integer and Mathematica Rational[]",
+                "JSON colon values",
+                "chained equality/relation values",
+                "TeX/plain fractions, decimals, and integers",
+                "closed-form Sqrt/sqrt expressions",
+                "exact decimal/fraction normalization such as 0.05 == 1/20",
+            ],
+        },
+        "summary": {
+            "scanned_candidate_count": len(records),
+            "target_confidence_counts": dict(sorted(confidence_counts.items())),
+            "value_extracted_count": sum(1 for record in records if record.get("target_values")),
+            "multi_target_count": sum(1 for record in records if record.get("multi_target")),
+        },
+        "records": records,
+    }
+    write_yaml(out_path, payload)
+    return payload
+
+
+def load_or_build_target_layer(env: Env) -> dict[str, Any]:
+    path = target_layer_path(env)
+    if not path.exists():
+        return build_target_layer(env, path)
+    data = load_yaml(path)
+    if not isinstance(data, dict) or not isinstance(data.get("records"), list):
+        return build_target_layer(env, path)
+    return data
+
+
+def target_layer_by_candidate(env: Env) -> dict[str, dict[str, Any]]:
+    data = load_or_build_target_layer(env)
+    return {str(record.get("candidate_id")): record for record in data.get("records") or []}
+
+
+def citation_line(citation: dict[str, Any]) -> int | None:
+    value = citation.get("line")
+    if value is None:
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def normalize_citation_path(path_text: Any) -> str:
+    path = str(path_text or "").strip().replace("\\", "/")
+    match = re.search(r"(?:^|/)research/pde_ledger/(.+)$", path)
+    if match:
+        return match.group(1)
+    return path
+
+
+def citations_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    left_path = normalize_citation_path(left.get("path"))
+    right_path = normalize_citation_path(right.get("path"))
+    if not left_path or left_path != right_path:
+        return False
+    left_line = citation_line(left)
+    right_line = citation_line(right)
+    if left_line is not None and right_line is not None:
+        return abs(left_line - right_line) <= ALIAS_ADJACENT_LINE_WINDOW
+    if left_line is None and right_line is None:
+        return str(left.get("excerpt") or "") == str(right.get("excerpt") or "")
+    return False
+
+
+def entries_have_adjacent_citation(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    for left_cit in left.get("file_line_citations") or []:
+        for right_cit in right.get("file_line_citations") or []:
+            if citations_adjacent(left_cit, right_cit):
+                return True
+    return False
+
+
+def records_value_compatible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    left_values = set(left.get("literal_values") or [])
+    right_values = set(right.get("literal_values") or [])
+    if not left_values or not right_values:
+        return True
+    return bool(left_values & right_values)
+
+
+def records_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    if not records_share_parameter(left, right):
+        return False
+    if entries_have_adjacent_citation(left["entry"], right["entry"]):
+        return True
+    return records_value_compatible(left, right)
+
+
+def citation_summary(citations: list[dict[str, Any]]) -> dict[str, Any]:
+    paths = sorted({normalize_citation_path(c.get("path")) for c in citations if c.get("path")})
+    lines = sorted({citation_line(c) for c in citations if citation_line(c) is not None})
+    summary: dict[str, Any] = {
+        "paths": paths,
+        "adjacency_rule": f"same path and line distance <= {ALIAS_ADJACENT_LINE_WINDOW}; missing lines require identical excerpt",
+    }
+    if len(paths) == 1:
+        summary["path"] = paths[0]
+    if lines:
+        summary["line_min"] = min(lines)
+        summary["line_max"] = max(lines)
+    return summary
+
+
+def canonical_candidate_entries(manifest: dict[str, Any], *, scanned_only: bool = True) -> list[dict[str, Any]]:
+    entries = []
+    for entry in (manifest.get("candidates") or {}).values():
+        if entry.get("duplicate_of"):
+            continue
+        if scanned_only and entry.get("status") != "scanned":
+            continue
+        entries.append(entry)
+    return sorted(entries, key=lambda item: str(item.get("id") or ""))
+
+
+def stable_entry_id(prefix: str, parts: Iterable[Any]) -> str:
+    raw = "|".join(str(part) for part in parts)
+    digest = hashlib.sha1(raw.encode("utf-8")).hexdigest()[:12]
+    return f"{prefix}_{digest}"
 
 
 def add_param(params: list[str], value: str | None) -> None:
@@ -955,22 +1948,25 @@ def stage_results_from_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
 def render_fit_file(env: Env, manifest: dict[str, Any], stage_results: dict[str, Any] | None = None) -> None:
     candidates = []
     for entry in (manifest.get("candidates") or {}).values():
-        candidates.append(
-            {
-                "id": entry["id"],
-                "dry_run": entry.get("dry_run", False),
-                "dry_run_id": entry.get("dry_run_id"),
-                "anchor_stages": entry.get("anchor_stages", []),
-                "parameter_names": entry.get("parameter_names", []),
-                "status": entry.get("status"),
-                "file_line_citations": entry.get("file_line_citations", []),
-                "modality_attribution": entry.get("modality_attribution", []),
-                "batch_id": entry.get("batch_id"),
-            }
-        )
+        item = {
+            "id": entry["id"],
+            "dry_run": entry.get("dry_run", False),
+            "dry_run_id": entry.get("dry_run_id"),
+            "anchor_stages": entry.get("anchor_stages", []),
+            "parameter_names": entry.get("parameter_names", []),
+            "status": entry.get("status"),
+            "file_line_citations": entry.get("file_line_citations", []),
+            "modality_attribution": entry.get("modality_attribution", []),
+            "batch_id": entry.get("batch_id"),
+        }
+        if entry.get("phase_b_status"):
+            item["phase_b_status"] = entry.get("phase_b_status")
+        if entry.get("duplicate_of"):
+            item["duplicate_of"] = entry.get("duplicate_of")
+        candidates.append(item)
     candidates.sort(key=lambda item: item["id"])
     if stage_results is None:
-        stage_results = {}
+        stage_results = stage_results_from_manifest(manifest)
         for dry_run in (manifest.get("dry_runs") or {}).values():
             stage_results.update(dry_run.get("stage_results") or {})
     payload = {
@@ -987,27 +1983,86 @@ def render_batches(env: Env, manifest: dict[str, Any]) -> None:
     counts = defaultdict(int)
     dry_counts = defaultdict(int)
     verdict_count = 0
+    alias_count = 0
+    canonical_count = 0
+    alias_group_count = 0
+    batch_counts = defaultdict(int)
     for entry in (manifest.get("candidates") or {}).values():
         counts[entry.get("status", "unknown")] += 1
         if entry.get("dry_run"):
             dry_counts[entry.get("status", "unknown")] += 1
+        if entry.get("duplicate_of"):
+            alias_count += 1
+        else:
+            canonical_count += 1
+        if entry.get("alias_ids"):
+            alias_group_count += 1
+        batch = entry.get("batch") or entry.get("batch_id")
+        if batch:
+            batch_counts[str(batch)] += 1
         verdict = entry.get("verdict") or {}
         if verdict.get("adversarial") or verdict.get("adjudication"):
             verdict_count += 1
+    family_map_path = env.artifact_root / "provenance" / "_family_map.yaml"
+    family_map = load_yaml(family_map_path) if family_map_path.exists() else {}
+    family_summary = family_map.get("summary") or {}
+    family_rows = []
+    for family in family_map.get("families") or []:
+        member_count = len(family.get("member_candidate_ids") or [])
+        if member_count <= 1:
+            continue
+        family_rows.append(
+            [
+                str(family.get("family_id") or ""),
+                str(member_count),
+                ", ".join(str(p) for p in family.get("parameter_names") or []) or "-",
+                ", ".join(str(v) for v in family.get("representative_values") or []) or "-",
+                ", ".join(str(s) for s in family.get("stages_touched") or []) or "-",
+            ]
+        )
     lines = [
         "# Adversarial Audit Status",
         "",
         f"Generated: {now_iso()}",
         f"Project: {manifest.get('project_name', '?')}",
         "",
+        "Authoritative consult record: `BATCHING_DECISIONS.md`.",
+        "",
         "| Scope | Counts |",
         "|---|---|",
         f"| all candidates | {' '.join(f'{k}={v}' for k, v in sorted(counts.items())) or 'none'} |",
         f"| dry-run candidates | {' '.join(f'{k}={v}' for k, v in sorted(dry_counts.items())) or 'none'} |",
         f"| binding verdict fields populated | {verdict_count} |",
+        f"| dedup canonicals / aliases | canonical={canonical_count} aliases={alias_count} alias_groups={alias_group_count} |",
         "",
-        "Phase C batches are intentionally unset until the Step 3 batching consult.",
+        "## Phase B Dedup And Families",
+        "",
+        f"- Dedup state: {canonical_count} canonical entries, {alias_count} aliased entries.",
+        f"- Family map: `{env.rel(family_map_path)}`" if family_map else "- Family map: not rendered yet.",
     ]
+    if family_map:
+        lines.extend(
+            [
+                f"- Families: {family_summary.get('family_count', len(family_rows))}; singletons: {family_summary.get('singleton_count', 'unknown')}; unmapped canonicals: {family_summary.get('unmapped_canonical_count', 'unknown')}.",
+                "",
+                "Non-singleton family groupings:",
+                "",
+                "| Family | Members | Parameters | Values | Stages |",
+                "|---|---:|---|---|---|",
+            ]
+        )
+        if family_rows:
+            for family_id, member_count, params, values, stages in family_rows:
+                lines.append(f"| {family_id} | {member_count} | {params} | {values} | {stages} |")
+        else:
+            lines.append("| none | 0 | - | - | - |")
+    lines.extend(["", "## Phase C Batch Assignment", ""])
+    if batch_counts:
+        lines.extend(["| Batch | Candidate Count |", "|---|---:|"])
+        for batch, count in sorted(batch_counts.items()):
+            lines.append(f"| {batch} | {count} |")
+    else:
+        lines.append("batch assignment pending (Step 5)")
     write_text(env.batches_path, "\n".join(lines) + "\n")
 
 
@@ -1020,9 +2075,15 @@ def ensure_benchmarks_file(env: Env) -> dict[str, Any]:
 
 
 def update_benchmarks_for_candidate(env: Env, candidate: dict[str, Any]) -> None:
+    """Maintain only the dry-run placeholder owned by phase-b-build.
+
+    Real sourced benchmark entries are created by benchmark-ingest and must be preserved
+    across later provenance rebuilds for the same candidate.
+    """
     data = ensure_benchmarks_file(env)
     cid = candidate["id"]
-    entries = [e for e in data.get("entries", []) if e.get("candidate_id") != cid]
+    placeholder_id = f"{cid}__dry_run_benchmark_placeholder"
+    entries = [e for e in data.get("entries", []) if e.get("id") != placeholder_id]
     citations = [
         c
         for c in candidate.get("file_line_citations", [])
@@ -1032,7 +2093,7 @@ def update_benchmarks_for_candidate(env: Env, candidate: dict[str, Any]) -> None
     if candidate.get("dry_run") and "chi_Q" in params and citations:
         entries.append(
             {
-                "id": f"{cid}__dry_run_benchmark_placeholder",
+                "id": placeholder_id,
                 "candidate_id": cid,
                 "dry_run": True,
                 "dry_run_id": candidate.get("dry_run_id"),
@@ -1046,8 +2107,9 @@ def update_benchmarks_for_candidate(env: Env, candidate: dict[str, Any]) -> None
                 "external_match_policy": "For real campaign use, replace this placeholder with an agent-built sourced benchmark entry.",
             }
         )
-    data["entries"] = entries
-    write_yaml(env.benchmarks_path, data)
+    if candidate.get("dry_run"):
+        data["entries"] = entries
+        write_yaml(env.benchmarks_path, data)
 
 
 def render_template(env: Env, template_name: str, replacements: dict[str, str]) -> str:
@@ -1497,9 +2559,649 @@ def ingest_phase_a_fragments(env: Env, fragment_paths: list[str]) -> dict[str, A
     }
 
 
-def source_evidence_for_candidate(env: Env, entry: dict[str, Any]) -> list[dict[str, Any]]:
+def alias_member_evidence(entry: dict[str, Any], target_record: dict[str, Any] | None = None) -> dict[str, Any]:
+    target_record = target_record or {}
+    return {
+        "id": entry.get("id"),
+        "candidate_key": entry.get("candidate_key"),
+        "primary_target_parameter": target_record.get("primary_target_parameter"),
+        "raw_primary_target_parameter": target_record.get("raw_primary_target_parameter"),
+        "target_values": target_record.get("target_values") or [],
+        "target_value_keys": target_record.get("target_value_keys") or [],
+        "target_confidence": target_record.get("target_confidence"),
+        "citation": citation_summary(entry.get("file_line_citations") or []),
+        "citations": entry.get("file_line_citations") or [],
+        "modalities": entry.get("modality_attribution") or [],
+    }
+
+
+def dedup_record(entry: dict[str, Any], target_record: dict[str, Any]) -> dict[str, Any]:
+    anchor_stages = [str(stage) for stage in entry.get("anchor_stages") or []]
+    return {
+        "id": str(entry.get("id")),
+        "entry": entry,
+        "anchor_stage": anchor_stages[0] if len(anchor_stages) == 1 else "+".join(anchor_stages),
+        "primary_target_parameter": target_record.get("primary_target_parameter"),
+        "target_values": target_record.get("target_values") or [],
+        "target_value_keys": target_record.get("target_value_keys") or [],
+        "target_confidence": target_record.get("target_confidence"),
+        "target_record": target_record,
+        "citations": entry.get("file_line_citations") or [],
+        "modality_count": len(entry.get("modality_attribution") or []),
+    }
+
+
+def connected_components(
+    records: list[dict[str, Any]],
+    adjacent: Any,
+) -> list[list[dict[str, Any]]]:
+    remaining = {record["id"]: record for record in records}
+    components: list[list[dict[str, Any]]] = []
+    while remaining:
+        first_id = sorted(remaining)[0]
+        stack = [remaining.pop(first_id)]
+        component = []
+        while stack:
+            current = stack.pop()
+            component.append(current)
+            adjacent_ids = [
+                other_id
+                for other_id, other in remaining.items()
+                if adjacent(current, other)
+            ]
+            for other_id in sorted(adjacent_ids):
+                stack.append(remaining.pop(other_id))
+        components.append(sorted(component, key=lambda record: record["id"]))
+    return components
+
+
+def connected_alias_components(records: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    return connected_components(records, records_alias_adjacent)
+
+
+def records_share_parameter(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    return bool(set(left.get("parameter_family") or []) & set(right.get("parameter_family") or []))
+
+
+def component_parameter_family(component: list[dict[str, Any]]) -> list[str]:
+    param_sets = [set(record.get("parameter_family") or []) for record in component]
+    common = set.intersection(*param_sets) if param_sets else set()
+    if common:
+        return sorted(common)
+    return sorted(set().union(*param_sets)) if param_sets else []
+
+
+def component_value_conflict(component: list[dict[str, Any]]) -> bool:
+    value_sets = [set(record.get("literal_values") or []) for record in component if record.get("literal_values")]
+    if len(value_sets) < 2:
+        return False
+    return not set.intersection(*value_sets) and len(set().union(*value_sets)) > 1
+
+
+def split_component_by_literal_value(component: list[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    if not component_value_conflict(component):
+        return [component]
+    buckets: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    unknown: list[dict[str, Any]] = []
+    value_counts = Counter(value for record in component for value in (record.get("literal_values") or []))
+    for record in component:
+        values = record.get("literal_values") or []
+        if not values:
+            unknown.append(record)
+            continue
+        key = sorted(values, key=lambda value: (-value_counts[value], value))[0]
+        buckets[key].append(record)
+    if buckets and unknown:
+        largest_key = sorted(buckets, key=lambda key: (-len(buckets[key]), key))[0]
+        buckets[largest_key].extend(unknown)
+    elif unknown:
+        buckets["__no_literal_value__"].extend(unknown)
+    return [sorted(records, key=lambda record: record["id"]) for _key, records in sorted(buckets.items())]
+
+
+def choose_canonical(component: list[dict[str, Any]]) -> dict[str, Any]:
+    return sorted(component, key=lambda record: (-record["modality_count"], record["id"]))[0]
+
+
+def pure_path_prefix_variant(left_path: str, right_path: str) -> bool:
+    if not left_path or not right_path:
+        return False
+    left = left_path.strip("/")
+    right = right_path.strip("/")
+    return left == right or left.endswith("/" + right) or right.endswith("/" + left)
+
+
+def citation_pair_alias_eligible(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    left_raw = str(left.get("path") or "")
+    right_raw = str(right.get("path") or "")
+    left_path = normalize_citation_path(left_raw)
+    right_path = normalize_citation_path(right_raw)
+    left_line = citation_line(left)
+    right_line = citation_line(right)
+    if left_raw == right_raw and left_line == right_line:
+        return True
+    if left_path and left_path == right_path and left_line is not None and right_line is not None:
+        return abs(left_line - right_line) <= ALIAS_ADJACENT_LINE_WINDOW
+    if left_line is not None and right_line is not None and left_line == right_line:
+        return pure_path_prefix_variant(left_raw, right_raw) or pure_path_prefix_variant(left_path, right_path)
+    return False
+
+
+def records_have_alias_eligible_citation(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    for left_cit in left.get("citations") or []:
+        for right_cit in right.get("citations") or []:
+            if citation_pair_alias_eligible(left_cit, right_cit):
+                return True
+    return False
+
+
+def strict_target_alias_adjacent(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    return (
+        left.get("anchor_stage") == right.get("anchor_stage")
+        and left.get("primary_target_parameter") == right.get("primary_target_parameter")
+        and left.get("target_confidence") == "high"
+        and right.get("target_confidence") == "high"
+        and len(set(left.get("target_value_keys") or [])) == 1
+        and set(left.get("target_value_keys") or []) == set(right.get("target_value_keys") or [])
+        and records_have_alias_eligible_citation(left, right)
+    )
+
+
+def ambiguous_group_record(
+    stage: str,
+    primary_target_parameter: str,
+    records: list[dict[str, Any]],
+    reason: str,
+    components: list[list[dict[str, Any]]] | None = None,
+) -> dict[str, Any]:
+    return {
+        "anchor_stage": stage,
+        "primary_target_parameter": primary_target_parameter,
+        "reason": reason,
+        "component_count": len(components or []),
+        "members": [
+            alias_member_evidence(record["entry"], record.get("target_record"))
+            for record in sorted(records, key=lambda item: item["id"])
+        ],
+    }
+
+
+def build_dedup_proposal(env: Env, out_path: Path) -> dict[str, Any]:
+    manifest = load_manifest(env)
+    targets_by_id = target_layer_by_candidate(env)
+    scanned_entries = [
+        entry
+        for entry in (manifest.get("candidates") or {}).values()
+        if entry.get("status") == "scanned" and not entry.get("duplicate_of") and not entry.get("dry_run")
+    ]
+    records: list[dict[str, Any]] = []
+    for entry in scanned_entries:
+        target_record = targets_by_id.get(str(entry.get("id")))
+        if not target_record:
+            target_record = target_layer_record(env, entry, load_concept_aliases(env))
+        records.append(dedup_record(entry, target_record))
+
+    alias_groups: list[dict[str, Any]] = []
+    alias_member_ids: set[str] = set()
+    value_buckets: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    for record in records:
+        value_keys = sorted(set(record.get("target_value_keys") or []))
+        if record.get("target_confidence") != "high" or len(value_keys) != 1:
+            continue
+        value_buckets[(record["anchor_stage"], str(record.get("primary_target_parameter")), value_keys[0])].append(record)
+
+    for (stage, target, value_key), bucket in sorted(value_buckets.items()):
+        if len(bucket) < 2:
+            continue
+        for component in connected_components(bucket, strict_target_alias_adjacent):
+            if len(component) < 2:
+                continue
+            canonical = choose_canonical(component)
+            aliases = [record["id"] for record in component if record["id"] != canonical["id"]]
+            if not aliases:
+                continue
+            all_citations = [citation for record in component for citation in record.get("citations") or []]
+            alias_member_ids.update(record["id"] for record in component)
+            alias_groups.append(
+                {
+                    "canonical_id": canonical["id"],
+                    "aliases": sorted(aliases),
+                    "shared": {
+                        "anchor_stage": stage,
+                        "primary_target_parameter": target,
+                        "target_value": value_key,
+                        "citation": citation_summary(all_citations),
+                    },
+                    "canonical_selection_rule": "most modality attributions; ties broken by candidate id sort",
+                    "members": [alias_member_evidence(record["entry"], record.get("target_record")) for record in component],
+                }
+            )
+
+    ambiguous: list[dict[str, Any]] = []
+    ambiguous_member_ids: set[str] = set()
+    grouped_by_stage_target: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for record in records:
+        if record["id"] in alias_member_ids:
+            continue
+        grouped_by_stage_target[(record["anchor_stage"], str(record.get("primary_target_parameter")))].append(record)
+
+    for (stage, target), bucket in sorted(grouped_by_stage_target.items()):
+        if len(bucket) < 2:
+            continue
+        value_sets = {tuple(sorted(set(record.get("target_value_keys") or []))) for record in bucket}
+        confident_single_value = [
+            record
+            for record in bucket
+            if record.get("target_confidence") == "high" and len(set(record.get("target_value_keys") or [])) == 1
+        ]
+        all_same_site = False
+        if len(confident_single_value) >= 2 and len(value_sets) == 1:
+            all_same_site = any(
+                records_have_alias_eligible_citation(left, right)
+                for i, left in enumerate(confident_single_value)
+                for right in confident_single_value[i + 1 :]
+            )
+        reason_bits = []
+        if len(value_sets) > 1:
+            reason_bits.append("differing target values")
+        if any(record.get("target_confidence") != "high" for record in bucket):
+            reason_bits.append("one or more low-confidence target resolutions")
+        if not all_same_site:
+            reason_bits.append("citations are outside strict alias adjacency")
+        ambiguous_member_ids.update(record["id"] for record in bucket)
+        ambiguous.append(
+            ambiguous_group_record(
+                stage,
+                target,
+                bucket,
+                "; ".join(reason_bits) or "same stage and target but not strict same-value same-site aliases",
+                connected_components(bucket, lambda left, right: records_have_alias_eligible_citation(left, right)),
+            )
+        )
+
+    alias_groups.sort(key=lambda group: str(group["canonical_id"]))
+    ambiguous.sort(key=lambda group: (str(group.get("anchor_stage")), str(group.get("primary_target_parameter"))))
+    overlap = sorted(alias_member_ids & ambiguous_member_ids)
+    if overlap:
+        raise SystemExit("error: dedup proposal invariant failed; alias/ambiguous overlap: " + ", ".join(overlap[:20]))
+    total_aliases = sum(len(group.get("aliases") or []) for group in alias_groups)
+    standalone_ids = sorted({record["id"] for record in records} - alias_member_ids - ambiguous_member_ids)
+    payload = {
+        "schema_version": 1,
+        "generated_at": now_iso(),
+        "source_manifest": env.rel(env.manifest_path),
+        "target_layer": env.rel(target_layer_path(env)),
+        "read_only_manifest": True,
+        "rule": {
+            "alias": (
+                "same anchor_stage, same concept-normalized primary_target_parameter, exactly one non-empty normalized target_value "
+                "with high confidence on both sides, and strict citation identity/adjacency"
+            ),
+            "adjacent_line_window": ALIAS_ADJACENT_LINE_WINDOW,
+            "removed_fallbacks": "records_value_compatible/no-conflicting-value fallback and parameter-family union merging are disabled",
+            "canonical_selection": "highest modality-attribution count; ties by lexicographic candidate id",
+            "deletion_policy": "no deletions; aliases keep manifest entries and point duplicate_of to the canonical when applied",
+            "partition_invariant": "candidate ids may appear in exactly one of alias_groups, ambiguous, or standalone_canonical_ids",
+        },
+        "summary": {
+            "scanned_candidate_count": len(scanned_entries),
+            "alias_group_count": len(alias_groups),
+            "total_aliases": total_aliases,
+            "resulting_canonical_count": len(scanned_entries) - total_aliases,
+            "ambiguous_group_count": len(ambiguous),
+            "alias_ambiguous_id_overlap": len(overlap),
+            "standalone_canonical_count": len(standalone_ids),
+        },
+        "alias_groups": alias_groups,
+        "ambiguous": ambiguous,
+        "standalone_canonical_ids": standalone_ids,
+    }
+    write_yaml(out_path, payload)
+    return payload["summary"] | {"out": env.rel(out_path)}
+
+
+def resolve_output_path(env: Env, path_text: str | None, default_rel: str) -> Path:
+    if not path_text:
+        return env.artifact_root / default_rel
+    path = Path(path_text).expanduser()
+    if path.is_absolute():
+        return path
+    return (Path.cwd() / path).resolve()
+
+
+def merge_alias_into_canonical(canonical: dict[str, Any], alias: dict[str, Any]) -> None:
+    append_unique_items(canonical.setdefault("anchor_stages", []), alias.get("anchor_stages") or [])
+    append_unique_items(canonical.setdefault("file_line_citations", []), alias.get("file_line_citations") or [])
+    append_unique_items(canonical.setdefault("parameter_names", []), alias.get("parameter_names") or [])
+    append_unique_items(canonical.setdefault("modality_attribution", []), alias.get("modality_attribution") or [])
+    append_unique_items(canonical.setdefault("modality_fragments", []), alias.get("modality_fragments") or [])
+    append_unique_items(canonical.setdefault("alias_ids", []), [alias["id"]])
+    canonical["anchor_stages"] = sorted(canonical.get("anchor_stages") or [])
+    canonical["parameter_names"] = sorted(canonical.get("parameter_names") or [])
+    canonical["modality_attribution"] = sorted(canonical.get("modality_attribution") or [])
+    by_param = canonical.setdefault("codex_session", {}).setdefault("by_parameter", {})
+    for param in canonical.get("parameter_names") or []:
+        by_param.setdefault(param, new_codex_session_record())
+
+
+def apply_alias_map(env: Env, map_path_text: str) -> dict[str, Any]:
+    source = resolve_input_path(env, map_path_text)
+    data = load_yaml(source)
+    if not isinstance(data, dict):
+        raise SystemExit(f"error: alias map must be a YAML mapping: {env.rel(source)}")
+    groups = data.get("alias_groups")
+    if groups is None:
+        groups = data.get("groups")
+    if not isinstance(groups, list):
+        raise SystemExit(f"error: alias map missing list field: alias_groups")
+
+    manifest = load_manifest(env)
+    candidates = manifest.setdefault("candidates", {})
+    errors: list[str] = []
+    normalized_groups: list[tuple[str, list[str]]] = []
+    seen_aliases: dict[str, str] = {}
+    for index, group in enumerate(groups, 1):
+        if not isinstance(group, dict):
+            errors.append(f"group[{index}] must be a mapping")
+            continue
+        canonical_id = str(group.get("canonical_id") or "")
+        aliases = group.get("aliases")
+        if not canonical_id:
+            errors.append(f"group[{index}] missing canonical_id")
+            continue
+        if canonical_id not in candidates:
+            errors.append(f"group[{index}] unknown canonical_id: {canonical_id}")
+        canonical = candidates.get(canonical_id) or {}
+        if canonical.get("duplicate_of"):
+            errors.append(f"group[{index}] canonical_id is already an alias: {canonical_id} -> {canonical.get('duplicate_of')}")
+        if not isinstance(aliases, list) or not aliases:
+            errors.append(f"group[{index}] aliases must be a non-empty list")
+            continue
+        normalized_aliases = []
+        for alias in aliases:
+            alias_id = str(alias)
+            if alias_id == canonical_id:
+                errors.append(f"group[{index}] alias repeats canonical_id: {alias_id}")
+                continue
+            if alias_id not in candidates:
+                errors.append(f"group[{index}] unknown alias id: {alias_id}")
+                continue
+            existing_target = candidates[alias_id].get("duplicate_of")
+            if existing_target and existing_target != canonical_id:
+                errors.append(f"group[{index}] alias already points elsewhere: {alias_id} -> {existing_target}")
+                continue
+            if seen_aliases.get(alias_id) and seen_aliases[alias_id] != canonical_id:
+                errors.append(f"group[{index}] alias appears under multiple canonicals: {alias_id}")
+                continue
+            seen_aliases[alias_id] = canonical_id
+            normalized_aliases.append(alias_id)
+        normalized_groups.append((canonical_id, sorted(set(normalized_aliases))))
+    if errors:
+        raise SystemExit("error: malformed alias map:\n- " + "\n- ".join(errors))
+
+    applied = 0
+    already_applied = 0
+    for canonical_id, aliases in normalized_groups:
+        canonical = candidates[canonical_id]
+        for alias_id in aliases:
+            alias = candidates[alias_id]
+            if alias.get("duplicate_of") == canonical_id:
+                already_applied += 1
+                continue
+            merge_alias_into_canonical(canonical, alias)
+            alias["duplicate_of"] = canonical_id
+            alias.setdefault("status_notes", []).append(
+                {
+                    "status": alias.get("status"),
+                    "note": f"Marked duplicate_of {canonical_id} by alias map {env.rel(source)}",
+                    "at": now_iso(),
+                }
+            )
+            applied += 1
+        candidates[canonical_id] = canonical
+    render_fit_file(env, manifest)
+    render_batches(env, manifest)
+    save_manifest(env, manifest)
+    return {
+        "alias_map": env.rel(source),
+        "groups": len(normalized_groups),
+        "aliases_applied": applied,
+        "aliases_already_applied": already_applied,
+    }
+
+
+def family_member_record(entry: dict[str, Any], target_record: dict[str, Any], family_targets: list[str] | None = None) -> dict[str, Any]:
+    return {
+        "candidate_id": entry.get("id"),
+        "candidate_key": entry.get("candidate_key"),
+        "anchor_stages": entry.get("anchor_stages") or [],
+        "primary_target_parameter": target_record.get("primary_target_parameter"),
+        "family_targets": family_targets or [target_record.get("primary_target_parameter")],
+        "target_values": target_record.get("target_values") or [],
+        "target_value_keys": target_record.get("target_value_keys") or [],
+        "target_confidence": target_record.get("target_confidence"),
+        "resolution_basis": target_record.get("resolution_basis"),
+    }
+
+
+def family_value_divergence_finding(members: list[dict[str, Any]]) -> dict[str, Any] | None:
+    by_value: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    display_for_key: dict[str, str] = {}
+    for member in members:
+        keys = member.get("target_value_keys") or []
+        values = member.get("target_values") or []
+        for index, key in enumerate(keys):
+            if not key:
+                continue
+            display_for_key.setdefault(str(key), str(values[index] if index < len(values) else key))
+            by_value[str(key)].append(
+                {
+                    "candidate_id": member.get("candidate_id"),
+                    "stages": member.get("anchor_stages") or [],
+                    "primary_target_parameter": member.get("primary_target_parameter"),
+                }
+            )
+    if len(by_value) <= 1:
+        return None
+    return {
+        "type": "value_divergence",
+        "severity": "needs_agent_review",
+        "summary": "Same conceptual family carries divergent normalized target values.",
+        "distinct_values": [
+            {
+                "value_key": key,
+                "display_value": display_for_key.get(key, key),
+                "occurrences": by_value[key],
+            }
+            for key in sorted(by_value)
+        ],
+    }
+
+
+def family_record_for_members(
+    family_id: str,
+    family_kind: str,
+    members: list[tuple[dict[str, Any], dict[str, Any]]],
+    *,
+    primary_target_parameter: str | None = None,
+    concepts: list[str] | None = None,
+    primary_family: bool = True,
+    findings: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    member_records = [
+        family_member_record(entry, target_record, concepts or ([primary_target_parameter] if primary_target_parameter else None))
+        for entry, target_record in sorted(members, key=lambda item: str(item[0].get("id")))
+    ]
+    values = sorted({value for member in member_records for value in member.get("target_values") or []})
+    all_findings = list(findings or [])
+    divergence = family_value_divergence_finding(member_records)
+    if divergence:
+        all_findings.append(divergence)
+    return {
+        "family_id": family_id,
+        "family_kind": family_kind,
+        "primary_family": primary_family,
+        "primary_target_parameter": primary_target_parameter,
+        "concepts": concepts or ([primary_target_parameter] if primary_target_parameter else []),
+        "parameter_names": concepts or ([primary_target_parameter] if primary_target_parameter else []),
+        "representative_values": values,
+        "member_candidate_ids": [member["candidate_id"] for member in member_records],
+        "stages_touched": sorted({str(stage) for member in member_records for stage in member.get("anchor_stages") or []}),
+        "members": member_records,
+        "findings": all_findings,
+    }
+
+
+def build_seeded_chain_family(
+    chain_id: str,
+    chain: dict[str, Any],
+    canonical_entries: list[dict[str, Any]],
+    target_records: dict[str, dict[str, Any]],
+    alias_data: dict[str, Any],
+) -> dict[str, Any]:
+    concepts = sorted({canonicalize_concept(concept, alias_data) for concept in chain.get("concepts") or []})
+    members: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    concept_set = set(concepts)
+    for entry in canonical_entries:
+        record = target_records.get(str(entry.get("id")))
+        if not record:
+            continue
+        record_concepts = {record.get("primary_target_parameter")}
+        record_concepts.update(record.get("additional_target_parameters") or [])
+        if record_concepts & concept_set:
+            members.append((entry, record))
+    member_ids = {str(entry.get("id")) for entry, _record in members}
+    member_stages = {str(stage) for entry, _record in members for stage in entry.get("anchor_stages") or []}
+    warnings = []
+    missing_ids = [cid for cid in chain.get("expected_candidate_ids") or [] if cid not in member_ids]
+    missing_stages = [stage for stage in chain.get("expected_stages") or [] if str(stage) not in member_stages]
+    if missing_ids or missing_stages:
+        warnings.append(
+            {
+                "type": "coverage_warning",
+                "severity": "hard",
+                "summary": "Seeded chain mechanical concept matching missed expected coverage.",
+                "missing_expected_candidate_ids": missing_ids,
+                "missing_expected_stages": missing_stages,
+            }
+        )
+    return family_record_for_members(
+        chain_id,
+        "seeded_d3_chain",
+        members,
+        concepts=concepts,
+        primary_family=False,
+        findings=warnings,
+    ) | {"description": chain.get("description")}
+
+
+def build_family_map(env: Env, out_path: Path) -> dict[str, Any]:
+    manifest = load_manifest(env)
+    alias_data = load_concept_aliases(env)
+    targets_by_id = target_layer_by_candidate(env)
+    all_candidates = manifest.get("candidates") or {}
+    alias_count = sum(1 for entry in all_candidates.values() if entry.get("duplicate_of"))
+    canonical_entries = [
+        entry
+        for entry in all_candidates.values()
+        if not entry.get("duplicate_of") and not entry.get("dry_run")
+    ]
+    grouped: dict[str, list[tuple[dict[str, Any], dict[str, Any]]]] = defaultdict(list)
+    primary_candidate_family_map: dict[str, list[str]] = defaultdict(list)
+    candidate_family_map: dict[str, list[str]] = defaultdict(list)
+    target_records: dict[str, dict[str, Any]] = {}
+    for entry in canonical_entries:
+        record = targets_by_id.get(str(entry.get("id")))
+        if not record:
+            record = target_layer_record(env, entry, alias_data)
+        target_records[str(entry.get("id"))] = record
+        targets = [record.get("primary_target_parameter") or "unclassified_target_parameter"]
+        if record.get("multi_target"):
+            append_unique_items(targets, record.get("additional_target_parameters") or [])
+        for target in targets:
+            grouped[str(target)].append((entry, record))
+
+    families: list[dict[str, Any]] = []
+    for index, (target, members) in enumerate(sorted(grouped.items()), 1):
+        family_id = f"fam_{index:04d}_{slug(target)}"
+        family_kind = "conceptual_parameter" if len(members) > 1 else "explicit_singleton_conceptual_parameter"
+        family = family_record_for_members(
+            family_id,
+            family_kind,
+            members,
+            primary_target_parameter=target,
+            concepts=[target],
+            primary_family=True,
+        )
+        families.append(family)
+        for cid in family["member_candidate_ids"]:
+            primary_candidate_family_map[cid].append(family_id)
+            candidate_family_map[cid].append(family_id)
+
+    seeded_chain_families = [
+        build_seeded_chain_family(chain_id, chain, canonical_entries, target_records, alias_data)
+        for chain_id, chain in sorted((alias_data.get("chains") or {}).items())
+    ]
+    for chain_family in seeded_chain_families:
+        families.append(chain_family)
+        for cid in chain_family.get("member_candidate_ids") or []:
+            candidate_family_map[cid].append(chain_family["family_id"])
+
+    canonical_ids = sorted(str(entry["id"]) for entry in canonical_entries)
+    unmapped = [cid for cid in canonical_ids if not primary_candidate_family_map.get(cid)]
+    chain_summaries = {
+        family["family_id"]: {
+            "member_count": len(family.get("member_candidate_ids") or []),
+            "value_divergence": any(f.get("type") == "value_divergence" for f in family.get("findings") or []),
+            "coverage_warning": any(f.get("type") == "coverage_warning" for f in family.get("findings") or []),
+            "coverage_findings": [f for f in family.get("findings") or [] if f.get("type") == "coverage_warning"],
+        }
+        for family in seeded_chain_families
+    }
+    payload = {
+        "schema_version": 1,
+        "generated_at": now_iso(),
+        "source_manifest": env.rel(env.manifest_path),
+        "target_layer": env.rel(target_layer_path(env)),
+        "concept_aliases": env.rel(concept_alias_path(env)),
+        "read_only_manifest": True,
+        "rule": {
+            "family": (
+                "primary families are keyed by concept-normalized primary_target_parameter alone; target values are per-member "
+                "attributes and divergent values produce value_divergence findings"
+            ),
+            "alias_handling": "entries with duplicate_of are excluded; if no aliases are present this is a pre-apply map and should be re-run after apply-alias-map",
+            "seeded_chains": "D3 headline chains are emitted as non-primary named overlay families populated by concept matching with hard coverage warnings for expected misses",
+        },
+        "summary": {
+            "canonical_candidate_count": len(canonical_entries),
+            "alias_count_excluded": alias_count,
+            "pre_alias_map": alias_count == 0,
+            "rerun_after_alias_apply": alias_count == 0,
+            "family_count": len(families),
+            "concept_family_count": len(grouped),
+            "seeded_chain_count": len(seeded_chain_families),
+            "singleton_count": sum(
+                1
+                for family in families
+                if family.get("primary_family") and len(family.get("member_candidate_ids") or []) == 1
+            ),
+            "unmapped_canonical_count": len(unmapped),
+            "unmapped_canonical_ids": unmapped,
+            "seeded_chains": chain_summaries,
+        },
+        "primary_candidate_family_map": dict(sorted((cid, sorted(ids)) for cid, ids in primary_candidate_family_map.items())),
+        "candidate_family_map": dict(sorted((cid, sorted(ids)) for cid, ids in candidate_family_map.items())),
+        "seeded_chain_families": seeded_chain_families,
+        "families": families,
+    }
+    write_yaml(out_path, payload)
+    return payload["summary"] | {"out": env.rel(out_path)}
+
+
+def source_evidence_for_candidate(env: Env, entry: dict[str, Any], target_parameters: list[str] | None = None) -> list[dict[str, Any]]:
     evidence: list[dict[str, Any]] = []
-    params = [str(p) for p in entry.get("parameter_names") or []]
+    params = [str(p) for p in (target_parameters if target_parameters is not None else entry.get("parameter_names") or [])]
     param_needles = {p for p in params}
     param_needles.update(p.replace("_", "\\_") for p in params)
     param_needles.update(p.replace("_", "") for p in params)
@@ -1564,18 +3266,34 @@ def graph_context_for_candidate(env: Env, entry: dict[str, Any]) -> dict[str, An
     return {"contexts": contexts, "graph_gaps": gaps}
 
 
+def phase_b_target_parameters(env: Env, entry: dict[str, Any]) -> list[str]:
+    if entry.get("dry_run"):
+        return [str(p) for p in entry.get("parameter_names") or ["unclassified_target_parameter"]]
+    record = target_layer_by_candidate(env).get(str(entry.get("id")))
+    if not record:
+        return [str(p) for p in entry.get("parameter_names") or ["unclassified_target_parameter"]]
+    targets = [str(record.get("primary_target_parameter") or "unclassified_target_parameter")]
+    if record.get("multi_target"):
+        append_unique_items(targets, [str(p) for p in record.get("additional_target_parameters") or []])
+    return [target for target in targets if target]
+
+
 def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
     manifest = load_manifest(env)
     entry = (manifest.get("candidates") or {}).get(candidate_id)
     if not entry:
         raise SystemExit(f"error: unknown candidate: {candidate_id}")
+    if entry.get("duplicate_of"):
+        raise SystemExit(f"error: {candidate_id} is an alias of {entry.get('duplicate_of')}; build provenance on the canonical")
 
-    evidence = source_evidence_for_candidate(env, entry)
+    params = phase_b_target_parameters(env, entry)
+    evidence = source_evidence_for_candidate(env, entry, params)
     graph_context = graph_context_for_candidate(env, entry)
     provenance_paths: list[str] = []
-    for param in entry.get("parameter_names") or ["unclassified_target_parameter"]:
+    for param in params:
         prompt_payload = dict(entry)
         prompt_payload["phase_b_parameter_name"] = param
+        prompt_payload["phase_b_target_parameters"] = params
         phase_b_prompt = render_template(
             env,
             "phase_b_provenance_builder.md",
@@ -1594,6 +3312,7 @@ def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
             "dry_run_id": entry.get("dry_run_id"),
             "non_binding": bool(entry.get("dry_run")),
             "generated_content_kind": "mechanical_evidence_bundle",
+            "synthesis_status": "pending",
             "agent_prompt_path": env.rel(prompt_path),
             "agent_synthesis_required": True,
             "dry_run_fixture": bool(entry.get("dry_run")),
@@ -1629,13 +3348,380 @@ def build_provenance(env: Env, candidate_id: str) -> dict[str, Any]:
         provenance_paths.append(env.rel(path))
 
     entry.setdefault("paths", {})["provenance"] = provenance_paths
-    transition(entry, "provenance_built")
+    if entry.get("dry_run"):
+        transition(entry, "provenance_built")
+        entry["phase_b_status"] = "dry_run_mechanical_complete"
+    else:
+        entry["phase_b_status"] = "synthesis_pending"
     manifest["candidates"][candidate_id] = entry
     update_benchmarks_for_candidate(env, entry)
     render_fit_file(env, manifest)
     render_batches(env, manifest)
     save_manifest(env, manifest)
     return {"candidate_id": candidate_id, "provenance_paths": provenance_paths, "status": entry["status"]}
+
+
+def citation_path_under_notes(path_text: Any) -> bool:
+    path = str(path_text or "").strip().replace("\\", "/")
+    if path.startswith("notes/"):
+        return True
+    return "/notes/" in path
+
+
+def validate_notes_citation(
+    errors: list[str],
+    file_label: str,
+    where: str,
+    citation: Any,
+    *,
+    citation_field: str,
+) -> dict[str, Any]:
+    if not isinstance(citation, dict):
+        errors.append(f"{file_label}: {where} {citation_field} must be a mapping")
+        return {}
+    path = citation.get("path")
+    line = citation.get("line")
+    excerpt = citation.get("excerpt")
+    if not path:
+        errors.append(f"{file_label}: {where} {citation_field} missing path")
+    elif not citation_path_under_notes(path):
+        errors.append(f"{file_label}: {where} {citation_field}.path must be under notes/: {path}")
+    if line is None:
+        errors.append(f"{file_label}: {where} {citation_field} missing line")
+    if not excerpt:
+        errors.append(f"{file_label}: {where} {citation_field} missing excerpt")
+    return dict(citation)
+
+
+def validate_optional_citation(errors: list[str], file_label: str, where: str, citation: Any) -> dict[str, Any]:
+    if not isinstance(citation, dict):
+        errors.append(f"{file_label}: {where} citation must be a mapping")
+        return {}
+    path = citation.get("path")
+    if not path:
+        errors.append(f"{file_label}: {where} citation missing path")
+    if "line" not in citation:
+        errors.append(f"{file_label}: {where} citation missing line")
+    if not citation.get("excerpt"):
+        errors.append(f"{file_label}: {where} citation missing excerpt")
+    return dict(citation)
+
+
+def normalize_phase_b_synthesis_file(env: Env, source: Path) -> tuple[dict[str, Any] | None, list[str]]:
+    file_label = env.rel(source)
+    errors: list[str] = []
+    if not source.exists():
+        return None, [f"{file_label}: synthesis file does not exist"]
+    try:
+        data = load_yaml(source)
+    except yaml.YAMLError as exc:
+        return None, [f"{file_label}: invalid YAML: {exc}"]
+    if not isinstance(data, dict):
+        return None, [f"{file_label}: top-level YAML must be a mapping"]
+    candidate_id = str(data.get("candidate_id") or "")
+    parameter_name = str(data.get("parameter_name") or data.get("parameter") or "")
+    if not candidate_id:
+        errors.append(f"{file_label}: missing required field: candidate_id")
+    if not parameter_name:
+        errors.append(f"{file_label}: missing required field: parameter_name")
+
+    origin_claims_raw = data.get("origin_claims")
+    constraints_raw = data.get("constraints")
+    downstream_raw = data.get("downstream_dependents", [])
+    findings_raw = data.get("provenance_findings", [])
+    if not isinstance(origin_claims_raw, list):
+        errors.append(f"{file_label}: origin_claims must be a list")
+        origin_claims_raw = []
+    if not isinstance(constraints_raw, list):
+        errors.append(f"{file_label}: constraints must be a list")
+        constraints_raw = []
+    if not isinstance(downstream_raw, list):
+        errors.append(f"{file_label}: downstream_dependents must be a list")
+        downstream_raw = []
+    if not isinstance(findings_raw, list):
+        errors.append(f"{file_label}: provenance_findings must be a list")
+        findings_raw = []
+
+    origin_claims: list[dict[str, Any]] = []
+    for index, claim in enumerate(origin_claims_raw, 1):
+        where = f"origin_claims[{index}]"
+        if not isinstance(claim, dict):
+            errors.append(f"{file_label}: {where} must be a mapping")
+            continue
+        for field in ("parameter", "introduced_at_stage", "introduced_at_line"):
+            if claim.get(field) in (None, ""):
+                errors.append(f"{file_label}: {where} missing {field}")
+        normalized = dict(claim)
+        normalized["citation"] = validate_notes_citation(
+            errors,
+            file_label,
+            where,
+            claim.get("citation"),
+            citation_field="citation",
+        )
+        origin_claims.append(normalized)
+
+    constraints: list[dict[str, Any]] = []
+    for index, constraint in enumerate(constraints_raw, 1):
+        where = f"constraints[{index}]"
+        if not isinstance(constraint, dict):
+            errors.append(f"{file_label}: {where} must be a mapping")
+            continue
+        if not constraint.get("parameter"):
+            errors.append(f"{file_label}: {where} missing parameter")
+        kind = constraint.get("constraint_kind")
+        if kind not in PHASE_B_CONSTRAINT_KINDS:
+            errors.append(
+                f"{file_label}: {where} constraint_kind must be one of {', '.join(sorted(PHASE_B_CONSTRAINT_KINDS))}; got {kind!r}"
+            )
+        normalized = dict(constraint)
+        normalized["evidence_citation"] = validate_notes_citation(
+            errors,
+            file_label,
+            where,
+            constraint.get("evidence_citation"),
+            citation_field="evidence_citation",
+        )
+        constraints.append(normalized)
+
+    downstream_dependents: list[str] = []
+    for index, stage in enumerate(downstream_raw, 1):
+        try:
+            downstream_dependents.append(f"{int(str(stage)):03d}")
+        except (TypeError, ValueError):
+            errors.append(f"{file_label}: downstream_dependents[{index}] is not a stage number: {stage!r}")
+
+    findings: list[dict[str, Any]] = []
+    for index, finding in enumerate(findings_raw, 1):
+        where = f"provenance_findings[{index}]"
+        if not isinstance(finding, dict):
+            errors.append(f"{file_label}: {where} must be a mapping")
+            continue
+        for field in ("type", "severity", "summary"):
+            if not finding.get(field):
+                errors.append(f"{file_label}: {where} missing {field}")
+        citations = finding.get("citations", [])
+        if not isinstance(citations, list):
+            errors.append(f"{file_label}: {where} citations must be a list")
+            citations = []
+        normalized = dict(finding)
+        normalized["citations"] = [
+            validate_optional_citation(errors, file_label, f"{where}.citations[{c_index}]", citation)
+            for c_index, citation in enumerate(citations, 1)
+        ]
+        findings.append(normalized)
+
+    if errors:
+        return None, errors
+    return (
+        {
+            "candidate_id": candidate_id,
+            "parameter_name": parameter_name,
+            "origin_claims": origin_claims,
+            "constraints": constraints,
+            "downstream_dependents": sorted(set(downstream_dependents)),
+            "provenance_findings": findings,
+            "source_path": env.rel(source),
+        },
+        [],
+    )
+
+
+def provenance_path_for_parameter(env: Env, entry: dict[str, Any], parameter_name: str) -> Path:
+    slug_param = slug(parameter_name)
+    for path_text in entry.get("paths", {}).get("provenance") or []:
+        if path_text.endswith(f"__{slug_param}.yaml"):
+            return env.abs_from_rel(path_text)
+    return env.artifact_root / "provenance" / f"{entry['id']}__{slug_param}.yaml"
+
+
+def provenance_complete_for_candidate(env: Env, entry: dict[str, Any]) -> bool:
+    paths = entry.get("paths", {}).get("provenance") or []
+    if not paths:
+        return False
+    for path_text in paths:
+        path = env.abs_from_rel(path_text)
+        if not path.exists():
+            return False
+        data = load_yaml(path)
+        if data.get("synthesis_status") != "complete":
+            return False
+    return True
+
+
+def ingest_phase_b_syntheses(env: Env, synthesis_paths: list[str]) -> dict[str, Any]:
+    normalized_payloads: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for path_text in synthesis_paths:
+        source = resolve_input_path(env, path_text)
+        payload, file_errors = normalize_phase_b_synthesis_file(env, source)
+        errors.extend(file_errors)
+        if payload is not None:
+            normalized_payloads.append(payload)
+    if errors:
+        raise SystemExit("error: malformed Phase B synthesis input:\n- " + "\n- ".join(errors))
+
+    manifest = load_manifest(env)
+    candidates = manifest.get("candidates") or {}
+    plans: list[tuple[dict[str, Any], dict[str, Any], Path, dict[str, Any]]] = []
+    updated_paths: list[str] = []
+    completed_candidates: list[str] = []
+    for payload in normalized_payloads:
+        candidate_id = payload["candidate_id"]
+        entry = candidates.get(candidate_id)
+        if not entry:
+            raise SystemExit(f"error: unknown candidate in synthesis: {candidate_id}")
+        if entry.get("duplicate_of"):
+            raise SystemExit(f"error: {candidate_id} is an alias of {entry.get('duplicate_of')}; ingest synthesis for the canonical")
+        path = provenance_path_for_parameter(env, entry, payload["parameter_name"])
+        if not path.exists():
+            raise SystemExit(
+                f"error: provenance bundle does not exist for {candidate_id} parameter {payload['parameter_name']}: {env.rel(path)}"
+            )
+        existing = load_yaml(path)
+        if existing.get("candidate_id") != candidate_id:
+            raise SystemExit(f"error: provenance bundle candidate_id mismatch: {env.rel(path)}")
+        if str(existing.get("parameter_name")) != payload["parameter_name"]:
+            raise SystemExit(
+                f"error: provenance bundle parameter_name mismatch for {env.rel(path)}: {existing.get('parameter_name')!r}"
+            )
+        plans.append((payload, entry, path, existing))
+
+    for payload, entry, path, existing in plans:
+        append_unique_items(existing.setdefault("origin_claims", []), payload["origin_claims"])
+        append_unique_items(existing.setdefault("constraints", []), payload["constraints"])
+        append_unique_items(existing.setdefault("downstream_dependents", []), payload["downstream_dependents"])
+        append_unique_items(existing.setdefault("provenance_findings", []), payload["provenance_findings"])
+        existing["synthesis_status"] = "complete"
+        existing["synthesis_ingested_at"] = now_iso()
+        existing["agent_synthesis_path"] = payload["source_path"]
+        write_yaml(path, existing)
+        updated_paths.append(env.rel(path))
+        entry["phase_b_status"] = "synthesis_partial"
+        if provenance_complete_for_candidate(env, entry):
+            transition(entry, "provenance_built")
+            entry["phase_b_status"] = "synthesis_complete"
+            completed_candidates.append(candidate_id)
+        candidates[candidate_id] = entry
+
+    render_fit_file(env, manifest)
+    render_batches(env, manifest)
+    save_manifest(env, manifest)
+    return {
+        "ingested_syntheses": [payload["source_path"] for payload in normalized_payloads],
+        "updated_provenance_paths": updated_paths,
+        "completed_candidates": sorted(set(completed_candidates)),
+    }
+
+
+def citation_is_real(value: Any) -> bool:
+    placeholder = {"", "none", "n/a", "na", "tbd", "todo", "model memory", "memory", "from memory"}
+    if isinstance(value, str):
+        return value.strip().lower() not in placeholder
+    if isinstance(value, dict):
+        flattened = " ".join(str(v).strip() for v in value.values() if v not in (None, ""))
+        return flattened.strip().lower() not in placeholder
+    return False
+
+
+def normalize_benchmark_entries(data: Any, file_label: str) -> tuple[list[dict[str, Any]], list[str]]:
+    errors: list[str] = []
+    if isinstance(data, dict):
+        entries_raw = data.get("entries")
+        if entries_raw is None and any(key in data for key in ("claim", "value", "source_type", "source_citation")):
+            entries_raw = [data]
+    elif isinstance(data, list):
+        entries_raw = data
+    else:
+        return [], [f"{file_label}: top-level YAML must be a mapping or list"]
+    if not isinstance(entries_raw, list):
+        return [], [f"{file_label}: missing list field: entries"]
+    entries: list[dict[str, Any]] = []
+    for index, entry in enumerate(entries_raw, 1):
+        where = f"entries[{index}]"
+        if not isinstance(entry, dict):
+            errors.append(f"{file_label}: {where} must be a mapping")
+            continue
+        candidate_id = entry.get("candidate_id")
+        family_id = entry.get("family_id")
+        if not candidate_id and not family_id:
+            errors.append(f"{file_label}: {where} must include candidate_id or family_id")
+        if candidate_id and family_id:
+            errors.append(f"{file_label}: {where} must key by either candidate_id or family_id, not both")
+        for field in ("claim", "value", "source_type", "source_citation", "obtained_note"):
+            if entry.get(field) in (None, ""):
+                errors.append(f"{file_label}: {where} missing {field}")
+        if entry.get("source_type") not in BENCHMARK_SOURCE_TYPES:
+            errors.append(
+                f"{file_label}: {where} source_type must be one of {', '.join(sorted(BENCHMARK_SOURCE_TYPES))}; got {entry.get('source_type')!r}"
+            )
+        if not citation_is_real(entry.get("source_citation")):
+            errors.append(f"{file_label}: {where} source_citation must be a real URL, DOI, CODATA identifier, or textbook ref+page")
+        normalized = dict(entry)
+        if not normalized.get("id"):
+            normalized["id"] = stable_entry_id(
+                "bench",
+                [
+                    normalized.get("family_id") or normalized.get("candidate_id"),
+                    normalized.get("claim"),
+                    normalized.get("value"),
+                    normalized.get("source_type"),
+                    normalized.get("source_citation"),
+                ],
+            )
+        normalized["ingested_at"] = now_iso()
+        entries.append(normalized)
+    return ([], errors) if errors else (entries, [])
+
+
+def ingest_benchmarks(env: Env, benchmark_paths: list[str]) -> dict[str, Any]:
+    normalized_entries: list[dict[str, Any]] = []
+    errors: list[str] = []
+    source_paths: list[str] = []
+    for path_text in benchmark_paths:
+        source = resolve_input_path(env, path_text)
+        file_label = env.rel(source)
+        if not source.exists():
+            errors.append(f"{file_label}: benchmark file does not exist")
+            continue
+        try:
+            data = load_yaml(source)
+        except yaml.YAMLError as exc:
+            errors.append(f"{file_label}: invalid YAML: {exc}")
+            continue
+        entries, file_errors = normalize_benchmark_entries(data, file_label)
+        errors.extend(file_errors)
+        for entry in entries:
+            entry["ingested_from"] = file_label
+        normalized_entries.extend(entries)
+        source_paths.append(file_label)
+    if errors:
+        raise SystemExit("error: malformed benchmark input:\n- " + "\n- ".join(errors))
+
+    data = ensure_benchmarks_file(env)
+    existing_by_id = {str(entry.get("id")): entry for entry in data.get("entries", []) if entry.get("id")}
+    inserted = 0
+    updated = 0
+    unchanged = 0
+    for entry in normalized_entries:
+        entry_id = str(entry["id"])
+        if entry_id not in existing_by_id:
+            existing_by_id[entry_id] = entry
+            inserted += 1
+        elif existing_by_id[entry_id] == entry:
+            unchanged += 1
+        else:
+            existing_by_id[entry_id] = entry
+            updated += 1
+    data["entries"] = sorted(existing_by_id.values(), key=lambda item: str(item.get("id")))
+    write_yaml(env.benchmarks_path, data)
+    return {
+        "ingested_benchmark_files": source_paths,
+        "entries_inserted": inserted,
+        "entries_updated": updated,
+        "entries_unchanged": unchanged,
+        "benchmark_path": env.rel(env.benchmarks_path),
+    }
 
 
 def load_benchmarks_for_candidate(env: Env, candidate_id: str) -> list[dict[str, Any]]:
@@ -1648,6 +3734,12 @@ def render_phase_c(env: Env, candidate_id: str) -> dict[str, Any]:
     entry = (manifest.get("candidates") or {}).get(candidate_id)
     if not entry:
         raise SystemExit(f"error: unknown candidate: {candidate_id}")
+    if entry.get("duplicate_of"):
+        raise SystemExit(f"error: {candidate_id} is an alias of {entry.get('duplicate_of')}; render Phase C on the canonical")
+    if not entry.get("dry_run") and entry.get("status") != "provenance_built":
+        raise SystemExit(
+            f"error: {candidate_id} status is {entry.get('status')}; run phase-b-ingest before phase-c-render"
+        )
     frozen = read_text(env.config_path_value("frozen_directive"))
     provenance_docs = []
     for path_text in entry.get("paths", {}).get("provenance") or []:
@@ -1866,6 +3958,26 @@ def cmd_phase_a_ingest(env: Env, args: argparse.Namespace) -> None:
     print(yaml_block(ingest_phase_a_fragments(env, args.fragments)))
 
 
+def cmd_target_resolve(env: Env, args: argparse.Namespace) -> None:
+    out_path = resolve_output_path(env, args.out, TARGET_LAYER_DEFAULT)
+    payload = build_target_layer(env, out_path)
+    print(yaml_block(payload["summary"] | {"out": env.rel(out_path), "concept_aliases": env.rel(concept_alias_path(env))}))
+
+
+def cmd_dedup_propose(env: Env, args: argparse.Namespace) -> None:
+    out_path = resolve_output_path(env, args.out, "provenance/_dedup_proposal.yaml")
+    print(yaml_block(build_dedup_proposal(env, out_path)))
+
+
+def cmd_apply_alias_map(env: Env, args: argparse.Namespace) -> None:
+    print(yaml_block(apply_alias_map(env, args.map_path)))
+
+
+def cmd_family_build(env: Env, args: argparse.Namespace) -> None:
+    out_path = resolve_output_path(env, args.out, "provenance/_family_map.yaml")
+    print(yaml_block(build_family_map(env, out_path)))
+
+
 def cmd_render_critic(env: Env, args: argparse.Namespace) -> None:
     manifest = load_manifest(env)
     path = render_critic_prompt(env, prefix=args.prefix or "phase_a", manifest=manifest)
@@ -1882,6 +3994,14 @@ def cmd_render_critic(env: Env, args: argparse.Namespace) -> None:
 
 def cmd_phase_b_build(env: Env, args: argparse.Namespace) -> None:
     print(yaml_block(build_provenance(env, args.candidate_id)))
+
+
+def cmd_phase_b_ingest(env: Env, args: argparse.Namespace) -> None:
+    print(yaml_block(ingest_phase_b_syntheses(env, args.syntheses)))
+
+
+def cmd_benchmark_ingest(env: Env, args: argparse.Namespace) -> None:
+    print(yaml_block(ingest_benchmarks(env, args.benchmarks)))
 
 
 def cmd_phase_c_render(env: Env, args: argparse.Namespace) -> None:
@@ -2124,6 +4244,22 @@ def build_parser() -> argparse.ArgumentParser:
     ingest.add_argument("fragments", nargs="+")
     ingest.set_defaults(func=cmd_phase_a_ingest)
 
+    target = sub.add_parser("target-resolve")
+    target.add_argument("--out")
+    target.set_defaults(func=cmd_target_resolve)
+
+    dedup = sub.add_parser("dedup-propose")
+    dedup.add_argument("--out")
+    dedup.set_defaults(func=cmd_dedup_propose)
+
+    alias = sub.add_parser("apply-alias-map")
+    alias.add_argument("map_path")
+    alias.set_defaults(func=cmd_apply_alias_map)
+
+    family = sub.add_parser("family-build")
+    family.add_argument("--out")
+    family.set_defaults(func=cmd_family_build)
+
     critic = sub.add_parser("render-critic")
     critic.add_argument("--prefix", default="phase_a")
     critic.set_defaults(func=cmd_render_critic)
@@ -2131,6 +4267,14 @@ def build_parser() -> argparse.ArgumentParser:
     pb = sub.add_parser("phase-b-build")
     pb.add_argument("candidate_id")
     pb.set_defaults(func=cmd_phase_b_build)
+
+    pbi = sub.add_parser("phase-b-ingest")
+    pbi.add_argument("syntheses", nargs="+")
+    pbi.set_defaults(func=cmd_phase_b_ingest)
+
+    bi = sub.add_parser("benchmark-ingest")
+    bi.add_argument("benchmarks", nargs="+")
+    bi.set_defaults(func=cmd_benchmark_ingest)
 
     pc = sub.add_parser("phase-c-render")
     pc.add_argument("candidate_id")

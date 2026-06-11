@@ -1,0 +1,14 @@
+schema_version: 1
+generated_at:
+dry_run_artifacts_present: false
+stage_results: {}
+candidates:
+  - id:
+    dry_run: false
+    dry_run_id:
+    anchor_stages: []
+    parameter_names: []
+    status:
+    file_line_citations: []
+    modality_attribution: []
+    batch_id:

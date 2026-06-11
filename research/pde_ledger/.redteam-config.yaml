@@ -176,3 +176,24 @@ status_only_candidates:
 - 153
 - 84
 - 93
+adversarial:
+  project_name: pde_ledger
+  repo_root: ../..
+  artifact_root: redteam_adversarial
+  frozen_directive: ../../docs/adversarial_audit_directive.md
+  atlas_graph: ../../graph/fluid_universe_derivation_atlas_graph.yaml
+  query_graph: ../../graph/query_graph.py
+  phase_a_seeds:
+    pass2_reconciliation: redteam/pass2/RECONCILIATION_AUGMENTATION.md
+    pass2_stage_reports_glob: redteam/pass2/reports/stage_{stage}.md
+    checkpoint_provenance: notes/CHECKPOINT_CONSTANT_PROVENANCE.md
+  codex:
+    chat_wrapper: ~/.claude/hooks/codex-chat/codex-chat
+    sandbox: workspace-write
+  limits:
+    max_iterations: 2
+    phase_a_parallelism_max: 4
+    phase_b_parallelism_max: 2
+    phase_c_parallelism_max: 1
+    defense_parallelism_max: 1
+    math_script_parallelism_max: 2

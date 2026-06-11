@@ -1,0 +1,20 @@
+schema_version: 1
+candidate_id:
+parameter_name:
+dry_run: false
+dry_run_id:
+non_binding: false
+taxonomy:
+  ledger_scope: parameter-value provenance only
+  excluded_layers:
+    - file/source provenance
+    - result/stage provenance without value genealogy
+anchor_stages: []
+notes_source_opened: false
+source_evidence: []
+origin_claims: []
+constraints: []
+graph_context:
+  contexts: []
+  graph_gaps: []
+provenance_findings: []

@@ -1,0 +1,24 @@
+id:
+candidate_key:
+dry_run: false
+dry_run_id:
+anchor_stages: []
+file_line_citations: []
+parameter_names: []
+batch_id:
+status: pending
+status_timestamps:
+  pending:
+codex_session:
+  by_parameter: {}
+paths:
+  report:
+  defense:
+  verdict:
+  provenance: []
+  phase_c_prompt:
+verdict:
+  adversarial:
+  adjudication:
+modality_attribution: []
+modality_fragments: []

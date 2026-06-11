@@ -1,0 +1,12 @@
+schema_version: 1
+entries:
+  - id:
+    candidate_id:
+    dry_run: false
+    dry_run_id:
+    non_binding: false
+    claim:
+    value:
+    source_type:
+    source_citations: []
+    external_match_policy: Phase C must use this sourced benchmark entry, not model memory.
